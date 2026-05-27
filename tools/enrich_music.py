@@ -7,9 +7,11 @@ Deezer : API publique, pas d'auth requise.
   - https://api.deezer.com/search/album?q=...
   - https://api.deezer.com/search/artist?q=...
 
-Spotify : nécessite Client Credentials (https://developer.spotify.com/dashboard).
-  - Échange un access_token côté serveur (cf. _spotify_token).
-  - Endpoint /v1/search avec type=track,album,artist.
+Spotify : nécessite Client Credentials (https://developer.spotify.com/dashboard)
+  ET un compte Spotify Premium ACTIF côté propriétaire de l'app (politique 2025,
+  message : « Active premium subscription required for the owner of the app »).
+  Sans Premium, l'API renvoie 403 sur tous les endpoints — on retombe alors
+  proprement sur Deezer seul.
 
 Pour chaque reco musique/album/artiste :
   1. Si type=album → recherche en album (Deezer + Spotify).
@@ -151,27 +153,27 @@ def main():
 
     session = requests.Session()
 
-    # Spotify : optionnel ET soumis à l'approbation « Extended Quota Mode »
-    # depuis fin 2024 — sans approbation, /search renvoie HTTP 403 même avec
-    # un token Client Credentials valide. On teste donc le token ET un appel
-    # /search pour décider si Spotify est exploitable.
+    # Spotify : Client Credentials exige désormais que le PROPRIÉTAIRE de l'app
+    # ait une souscription Premium ACTIVE (politique 2025, message explicite :
+    # « Active premium subscription required for the owner of the app »). Le
+    # token Client Credentials s'obtient quand même mais TOUS les endpoints
+    # renvoient 403 sans Premium. On teste avec un appel léger pour décider.
     token = None
     if spotify_id and spotify_secret:
         token = spotify_token(session, spotify_id, spotify_secret)
         if token:
             probe = session.get(
-                f"{SPOTIFY_BASE}/search",
+                f"{SPOTIFY_BASE}/markets",
                 headers={"Authorization": f"Bearer {token}"},
-                params={"q": "test", "type": "track", "limit": 1},
                 timeout=15,
             )
             if probe.status_code == 200:
-                log.info("Spotify : OK (token + /search autorisés).")
+                log.info("Spotify : OK (token + API autorisés).")
             else:
                 log.warning(
-                    "Spotify : token OK mais /search renvoie HTTP %s. "
-                    "Probablement le mode développement par défaut depuis 2024 "
-                    "(demande l'« Extended Quota Mode » sur le dashboard). "
+                    "Spotify : token OK mais l'API renvoie HTTP %s. "
+                    "Cause habituelle : le propriétaire de l'app n'a pas de "
+                    "souscription Premium active (requis depuis 2025). "
                     "On continue avec Deezer seul.", probe.status_code,
                 )
                 token = None
