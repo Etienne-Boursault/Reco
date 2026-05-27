@@ -1,0 +1,124 @@
+/*
+ * Styles globaux. Les couleurs et polices sont pilotées par des variables CSS
+ * injectées par <Layout> à partir du thème de chaque source (multi-podcast).
+ *
+ * Polices : valeurs libres par défaut (Anton ≈ énergie typo type "Bref",
+ * Inter pour le corps). Pour utiliser une vraie police d'une série, déposez le
+ * fichier dans public/fonts/ et déclarez-le en @font-face plus bas.
+ */
+
+:root {
+  /* Valeurs par défaut, surchargées par le thème de la source. */
+  --bg: #0e0e10;
+  --surface: #17171c;
+  --text: #f6f4ee;
+  --muted: #9a99a3;
+  --accent: #ffd23f;
+  --accent-text: #0e0e10;
+
+  --font-display: 'Anton', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --radius: 14px;
+  --maxw: 1200px;
+  --gap: clamp(0.8rem, 2vw, 1.4rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1vw + 0.6rem, 17px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.wrap {
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline: auto;
+}
+
+/* Boutons / puces ---------------------------------------------------------- */
+.chip {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
+  background: transparent;
+  color: var(--text);
+  padding: 0.4em 0.85em;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chip[aria-pressed='true'],
+.chip.is-active {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+/* Grille fluide des recos -------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--gap);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Apparition douce au chargement / au filtrage. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

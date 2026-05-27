@@ -1,0 +1,388 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import RecoCard from '../../components/RecoCard.astro';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+// Recos de cette source (les « discarded » sont masquées du public).
+const recos = (await getCollection('recos'))
+  .filter((r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded')
+  .map((r) => r.data);
+
+// Épisodes indexés par guid pour afficher le numéro/titre sur les cartes.
+const episodes = (await getCollection('episodes')).filter(
+  (e) => e.data.sourceId.id === source.id,
+);
+const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
+
+const TYPE_LABELS: Record<string, string> = {
+  film: 'Films',
+  serie: 'Séries',
+  livre: 'Livres',
+  bd: 'BD',
+  musique: 'Musique',
+  album: 'Albums',
+  podcast: 'Podcasts',
+  jeu: 'Jeux',
+  spectacle: 'Spectacles',
+  lieu: 'Lieux',
+  autre: 'Autres',
+};
+
+// Types présents (pour les filtres), triés par fréquence.
+const counts = new Map<string, number>();
+for (const r of recos) counts.set(r.type, (counts.get(r.type) ?? 0) + 1);
+const types = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+
+// Vue « par épisode » : épisodes ayant ≥1 reco, du plus récent au plus ancien.
+const recoCountByEp = new Map<string, number>();
+for (const r of recos)
+  recoCountByEp.set(r.episodeGuid, (recoCountByEp.get(r.episodeGuid) ?? 0) + 1);
+const episodesWithRecos = episodes
+  .map((e) => e.data)
+  .filter((e) => recoCountByEp.has(e.guid))
+  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
+
+const ytThumb = (url?: string) => {
+  const id = url?.match(/[?&]v=([\w-]+)/)?.[1];
+  return id ? `https://i.ytimg.com/vi/${id}/mqdefault.jpg` : null;
+};
+const epLabel = (e: { season?: number; number?: number }) =>
+  e.season && e.number ? `S${e.season}·E${e.number}` : e.number ? `#${e.number}` : '';
+---
+
+<Layout
+  title={`${data.title} — recommandations`}
+  description={data.description}
+  theme={data.theme}
+>
+  <header class="head wrap">
+    <a class="back" href="/">← tous les podcasts</a>
+    <h1>{data.title}</h1>
+    {data.tagline && <p class="tag">{data.tagline}</p>}
+    <p class="stat">
+      {recos.length} recommandations
+      <a class="review-link" href={`/${source.id}/verifier`}>· vérifier</a>
+    </p>
+  </header>
+
+  <div class="tabs wrap" role="tablist">
+    <button class="tab" data-view="all" aria-pressed="false">
+      Toutes les recos
+    </button>
+    <button class="tab is-active" data-view="episodes" aria-pressed="true">
+      Par épisode
+    </button>
+  </div>
+
+  <!-- Vue 1 : toutes les recos (recherche + filtres) -->
+  <div id="view-all" hidden>
+    <div class="toolbar wrap">
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Rechercher un titre, un auteur…"
+        autocomplete="off"
+        aria-label="Rechercher une recommandation"
+      />
+      <div class="filters" role="group" aria-label="Filtrer par type">
+        <button class="chip is-active" data-filter="all" aria-pressed="true">
+          Tout
+        </button>
+        {
+          types.map(([t, n]) => (
+            <button class="chip" data-filter={t} aria-pressed="false">
+              {TYPE_LABELS[t] ?? t} <span class="n">{n}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <main class="wrap">
+      {
+        recos.length === 0 ? (
+          <p class="empty">
+            Pas encore de recommandation. Lance le pipeline (voir tools/README.md)
+            pour les importer.
+          </p>
+        ) : (
+          <ul class="grid" id="reco-grid">
+            {recos.map((r) => (
+              <RecoCard
+                reco={r}
+                episodeNumber={epByGuid.get(r.episodeGuid)?.number}
+                episodeTitle={epByGuid.get(r.episodeGuid)?.title}
+              />
+            ))}
+          </ul>
+        )
+      }
+      <p class="noresult visually-hidden" id="noresult">Aucun résultat.</p>
+    </main>
+  </div>
+
+  <!-- Vue 2 : par épisode (miniatures, plus récent d'abord) — vue par défaut -->
+  <div id="view-episodes" class="wrap">
+    <ul class="ep-grid">
+      {
+        episodesWithRecos.map((e) => {
+          const thumb = ytThumb(e.youtubeUrl);
+          return (
+            <li class="ep-card">
+              <a href={`/${source.id}/episode/${e.guid}`}>
+                <div
+                  class="ep-thumb"
+                  style={thumb ? `background-image:url(${thumb})` : undefined}
+                >
+                  {epLabel(e) && <span class="ep-badge">{epLabel(e)}</span>}
+                </div>
+                <div class="ep-meta">
+                  <span class="ep-ttl">{e.youtubeTitle ?? e.title}</span>
+                  <span class="ep-cnt">{recoCountByEp.get(e.guid)} recos</span>
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</Layout>
+
+<script>
+  // Filtrage 100% client : par type (chips) et par texte (recherche).
+  const grid = document.getElementById('reco-grid');
+  const search = document.getElementById('search') as HTMLInputElement | null;
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
+  const noresult = document.getElementById('noresult');
+
+  let activeType = 'all';
+  let term = '';
+
+  function apply() {
+    if (!grid) return;
+    const cards = Array.from(grid.children) as HTMLElement[];
+    let visible = 0;
+    for (const card of cards) {
+      const okType = activeType === 'all' || card.dataset.type === activeType;
+      const okText = !term || (card.dataset.search ?? '').includes(term);
+      const show = okType && okText;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    }
+    if (noresult) noresult.classList.toggle('visually-hidden', visible !== 0);
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      activeType = chip.dataset.filter ?? 'all';
+      chips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      apply();
+    });
+  });
+
+  search?.addEventListener('input', () => {
+    term = search.value.trim().toLowerCase();
+    apply();
+  });
+
+  // Bascule entre « Toutes les recos » et « Par épisode ».
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));
+  const views: Record<string, HTMLElement | null> = {
+    all: document.getElementById('view-all'),
+    episodes: document.getElementById('view-episodes'),
+  };
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const view = tab.dataset.view ?? 'all';
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-pressed', String(on));
+      });
+      for (const [key, el] of Object.entries(views)) {
+        if (el) el.hidden = key !== view;
+      }
+    });
+  });
+</script>
+
+<style>
+  .head {
+    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .head h1 {
+    font-size: clamp(2.6rem, 9vw, 6.5rem);
+    margin: 0.6rem 0 0.3rem;
+  }
+  .tag {
+    color: var(--text);
+    margin: 0;
+  }
+  .stat {
+    color: var(--muted);
+    margin: 0.3rem 0 0;
+    font-size: 0.85rem;
+  }
+  .review-link {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .review-link:hover {
+    color: var(--accent);
+  }
+  /* Onglets de vue */
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.4rem auto 0;
+  }
+  .tab {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid color-mix(in oklab, var(--text) 16%, transparent);
+    border-radius: 999px;
+    padding: 0.45em 1.1em;
+    cursor: pointer;
+    transition: all 0.16s ease;
+  }
+  .tab:hover {
+    color: var(--text);
+  }
+  .tab.is-active {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+  }
+  /* Grille « par épisode » */
+  .ep-grid {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    gap: var(--gap);
+  }
+  .ep-card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ep-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    background: var(--surface);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    transition:
+      transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.2s ease;
+  }
+  .ep-card a:hover .ep-thumb {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .ep-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: color-mix(in oklab, var(--bg) 78%, transparent);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius) 0 8px 0;
+  }
+  .ep-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.5rem 0.2rem 0;
+  }
+  .ep-ttl {
+    font-weight: 600;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ep-cnt {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.9rem 0;
+    margin-bottom: 1.4rem;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  .search {
+    flex: 1 1 240px;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.6em 1em;
+    font: inherit;
+  }
+  .search:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .n {
+    opacity: 0.6;
+    font-size: 0.78em;
+  }
+  .empty,
+  .noresult {
+    color: var(--muted);
+    padding: 2rem 0 4rem;
+  }
+  main {
+    padding-bottom: 4rem;
+  }
+</style>

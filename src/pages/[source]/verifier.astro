@@ -1,0 +1,247 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+// Recos de la source, brouillons (à vérifier) d'abord.
+const recos = (await getCollection('recos'))
+  .filter((r) => r.data.sourceId.id === source.id)
+  .map((r) => r.data)
+  .sort((a, b) => Number(a.status === 'validated') - Number(b.status === 'validated'));
+
+const episodes = (await getCollection('episodes')).filter(
+  (e) => e.data.sourceId.id === source.id,
+);
+const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
+
+/** Convertit « HH:MM:SS » (ou « MM:SS ») en secondes. */
+function tsToSeconds(ts?: string): number | null {
+  if (!ts) return null;
+  const parts = ts.split(':').map((p) => Number(p.trim()));
+  if (parts.some(Number.isNaN)) return null;
+  return parts.reduce((acc, p) => acc * 60 + p, 0);
+}
+
+function verifyUrl(youtubeUrl?: string, timestamp?: string): string | null {
+  const s = tsToSeconds(timestamp);
+  if (!youtubeUrl || s === null) return null;
+  return `${youtubeUrl}&t=${Math.max(0, s)}s`;
+}
+
+/** Formate des secondes en « HH:MM:SS ». */
+function secToTc(s: number): string {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  return [h, m, s % 60].map((n) => String(n).padStart(2, '0')).join(':');
+}
+/** Timecode vidéo (= timecode du transcript, l'audio Acast/YT est aligné). */
+function videoTc(timestamp?: string): string {
+  const s = tsToSeconds(timestamp);
+  return s === null ? (timestamp ?? '') : secToTc(Math.max(0, s));
+}
+
+const draftCount = recos.filter((r) => r.status === 'draft').length;
+---
+
+<Layout title={`Vérifier — ${data.title}`} theme={data.theme}>
+  <header class="head wrap">
+    <a class="back" href={`/${source.id}`}>← retour au catalogue</a>
+    <h1>Vérifier les recos</h1>
+    <p class="stat">
+      {recos.length} recos · <strong>{draftCount}</strong> à valider
+    </p>
+    <p class="hint">
+      Outil de relecture : clique sur le timecode pour sauter au bon moment de la
+      vidéo, vérifie, puis passe la reco en <code>validated</code> dans son fichier
+      JSON. (Page non destinée au public.)
+    </p>
+  </header>
+
+  <main class="wrap">
+    {
+      recos.length === 0 ? (
+        <p class="empty">Aucune reco pour l'instant.</p>
+      ) : (
+        <ul class="rows">
+          {recos.map((r) => {
+            const ep = epByGuid.get(r.episodeGuid);
+            const url = verifyUrl(ep?.youtubeUrl, r.timestamp);
+            return (
+              <li class:list={['row', { done: r.status === 'validated' }]}>
+                <div class="line1">
+                  <span class="type">{r.type}</span>
+                  <span class="ttl">{r.title}</span>
+                  {r.creator && <span class="creator">· {r.creator}</span>}
+                  <span class="status">{r.status}</span>
+                </div>
+                <div class="line2">
+                  {ep?.season && ep?.number ? (
+                    <span class="epnum">S{ep.season}·E{ep.number}</span>
+                  ) : ep?.number ? (
+                    <span class="epnum">#{ep.number}</span>
+                  ) : null}
+                  {ep?.youtubeTitle && <span class="yttitle">{ep.youtubeTitle}</span>}
+                  {r.extractors && r.extractors.length >= 2 && (
+                    <span class="conf" title={`Confirmée par ${r.extractors.join(', ')}`}>
+                      ⭐ {r.extractors.length} LLMs
+                    </span>
+                  )}
+                  {r.recommendedBy && <span>reco de {r.recommendedBy}</span>}
+                  {(ep?.audioDuration || ep?.youtubeDuration) && (
+                    <span class="dur">
+                      🎧 {ep.audioDuration ? secToTc(ep.audioDuration) : '?'} · ▶{' '}
+                      {ep.youtubeDuration ? secToTc(ep.youtubeDuration) : '?'}
+                    </span>
+                  )}
+                  {url ? (
+                    <a class="tc" href={url} target="_blank" rel="noopener noreferrer">
+                      ▶ {videoTc(r.timestamp)}
+                    </a>
+                  ) : (
+                    r.timestamp && <span class="tc tc--off">⏱ {r.timestamp} (pas de vidéo liée)</span>
+                  )}
+                </div>
+                {r.quote && <p class="quote">« {r.quote} »</p>}
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  .head {
+    padding: clamp(2rem, 6vw, 3.5rem) 0 1.2rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .head h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 0.5rem 0 0.3rem;
+  }
+  .stat {
+    color: var(--muted);
+    margin: 0;
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 0.85rem;
+    max-width: 60ch;
+    margin: 0.6rem 0 0;
+  }
+  code {
+    background: var(--surface);
+    padding: 0.1em 0.4em;
+    border-radius: 6px;
+  }
+  .rows {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .row {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+  }
+  .row.done {
+    border-left-color: color-mix(in oklab, var(--text) 20%, transparent);
+    opacity: 0.6;
+  }
+  .line1 {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .type {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+  .ttl {
+    font-weight: 700;
+  }
+  .creator {
+    color: var(--muted);
+  }
+  .status {
+    margin-left: auto;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .line2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .epnum {
+    color: var(--accent);
+    border: 1px solid color-mix(in oklab, var(--text) 16%, transparent);
+    border-radius: 6px;
+    padding: 0.02em 0.4em;
+  }
+  .yttitle {
+    color: color-mix(in oklab, var(--text) 75%, transparent);
+  }
+  .conf {
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+    border-radius: 6px;
+    padding: 0.02em 0.45em;
+    font-weight: 600;
+  }
+  .tc {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .tc:hover {
+    text-decoration: underline;
+  }
+  .tc--off {
+    color: var(--muted);
+  }
+  .quote {
+    margin: 0.45rem 0 0;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: color-mix(in oklab, var(--text) 80%, transparent);
+  }
+  .empty {
+    color: var(--muted);
+    padding: 2rem 0;
+  }
+</style>

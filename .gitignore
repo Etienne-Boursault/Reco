@@ -1,0 +1,48 @@
+# Build
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Python pipeline
+tools/.venv/
+__pycache__/
+*.pyc
+tools/cache/
+
+# Sortie du pipeline (re-générable, gros)
+tools/output/
+
+# Listes de travail (dispatch entre main et portable)
+tools/dispatch/
+
+# Backups Acast & swaps temporaires (re-générables)
+*.acast.txt
+*.yt.tmp.txt
+
+# Inventaires générés
+docs/inventaire-*.md
+
+# Secrets & API keys (NE JAMAIS COMMITTER)
+.env
+.env.*
+!.env.example
+
+# Bases locales d'outils auxiliaires (ruflo / claude-flow)
+.claude-flow/
+.swarm/
+agentdb.rvf
+agentdb.rvf.lock
+ruvector.db
+.mcp.json
+
+# Profils & journaux locaux Claude
+.claude/
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

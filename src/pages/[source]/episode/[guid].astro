@@ -1,0 +1,156 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import RecoCard from '../../../components/RecoCard.astro';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  const recos = await getCollection('recos');
+  const episodes = await getCollection('episodes');
+
+  const paths = [];
+  for (const source of sources) {
+    const sRecos = recos.filter(
+      (r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded',
+    );
+    const guidsWithRecos = new Set(sRecos.map((r) => r.data.episodeGuid));
+    const sEpisodes = episodes.filter(
+      (e) => e.data.sourceId.id === source.id && guidsWithRecos.has(e.data.guid),
+    );
+    for (const episode of sEpisodes) {
+      paths.push({
+        params: { source: source.id, guid: episode.data.guid },
+        props: {
+          source,
+          episode: episode.data,
+          recos: sRecos
+            .filter((r) => r.data.episodeGuid === episode.data.guid)
+            .map((r) => r.data),
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+const { source, episode, recos } = Astro.props;
+const data = source.data;
+
+const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
+const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+const epNum =
+  episode.season && episode.number
+    ? `S${episode.season}·E${episode.number}`
+    : episode.number
+      ? `#${episode.number}`
+      : '';
+const epTitle = episode.youtubeTitle ?? episode.title;
+---
+
+<Layout title={`${epTitle} — ${data.title}`} theme={data.theme}>
+  <header class="head wrap">
+    <a class="back" href={`/${source.id}`}>← {data.title}</a>
+    <div class="ep-hero">
+      {
+        episode.youtubeUrl ? (
+          <a class="thumb" href={episode.youtubeUrl} target="_blank" rel="noopener noreferrer">
+            {thumb && <img src={thumb} alt={epTitle} loading="lazy" />}
+            <span class="play">▶</span>
+          </a>
+        ) : (
+          thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" />
+        )
+      }
+      <div class="ep-info">
+        {epNum && <span class="epnum">{epNum}</span>}
+        <h1>{epTitle}</h1>
+        <p class="count">{recos.length} recommandation{recos.length > 1 ? 's' : ''}</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <ul class="grid">
+      {
+        recos.map((r) => (
+          <RecoCard
+            reco={r}
+            episodeNumber={episode.number}
+            episodeTitle={epTitle}
+          />
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .head {
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0 1.5rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .ep-hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .thumb {
+    position: relative;
+    flex: 0 0 auto;
+    width: min(100%, 360px);
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+    display: block;
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 2.5rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  a.thumb:hover .play {
+    opacity: 1;
+  }
+  .ep-info {
+    flex: 1 1 280px;
+  }
+  .epnum {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .ep-info h1 {
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    margin: 0.3rem 0;
+  }
+  .count {
+    color: var(--muted);
+    margin: 0;
+  }
+  main {
+    padding-bottom: 4rem;
+  }
+</style>

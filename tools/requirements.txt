@@ -1,0 +1,14 @@
+# Pipeline de collecte « Reco » — dépendances Python (3.12)
+# Installer dans un venv : voir tools/README.md
+
+# Étape 1 — lecture du flux RSS Acast
+feedparser>=6.0,<7
+
+# Étape 2 — téléchargement + transcription locale
+faster-whisper>=1.0,<2     # transcription Whisper en local (CTranslate2, CPU/GPU)
+yt-dlp>=2024.0             # téléchargement audio YouTube (si pas d'audioUrl)
+requests>=2.31,<3          # téléchargement des enclosures audio HTTP
+
+# Étape 3 — extraction des recos via LLM
+anthropic>=0.40            # SDK API Anthropic (modèle claude-opus-4-7)
+python-dotenv>=1.0,<2      # chargement de tools/.env (ANTHROPIC_API_KEY)

@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+
+interface ThemeColors {
+  bg: string;
+  surface: string;
+  text: string;
+  muted: string;
+  accent: string;
+  accentText?: string;
+}
+interface Theme {
+  fontDisplay?: string;
+  fontBody?: string;
+  colors?: ThemeColors;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: Theme;
+}
+
+const { title, description, theme } = Astro.props;
+const c = theme?.colors;
+
+// Variables CSS de thème injectées par source (multi-podcast).
+const styleVars = c
+  ? [
+      `--bg:${c.bg}`,
+      `--surface:${c.surface}`,
+      `--text:${c.text}`,
+      `--muted:${c.muted}`,
+      `--accent:${c.accent}`,
+      `--accent-text:${c.accentText ?? '#0e0e10'}`,
+    ].join(';')
+  : undefined;
+---
+
+<!doctype html>
+<html lang="fr" style={styleVars}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
