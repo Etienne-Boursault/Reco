@@ -71,10 +71,15 @@ interface RecoLike {
     youtube?: string;
     instagram?: string;
     website?: string;
+    /** URL JustWatch EXACTE du film/série (renvoyée par TMDB).
+     *  Page qui a les vrais deeplinks « Watch on Netflix » etc. */
+    justwatch?: string;
   };
   /** Liens explicites fournis par la reco — gardés tels quels (pas filtrés). */
   links?: { label: string; url: string; kind?: RecoLinkKind; ethics?: Ethics }[];
-  /** Plateformes de streaming (renseigné par enrich_tmdb.py pour film/serie). */
+  /** Plateformes de streaming (info brute TMDB).
+   *  ⚠️ Pas utilisées comme liens (les URLs ne sont que des recherches), mais
+   *  conservées pour affichage informatif des plateformes où le film est dispo. */
   watchProviders?: {
     label: string;
     url: string;
@@ -120,16 +125,14 @@ function linksForMusic(reco: RecoLike): ResolvedLink[] {
 }
 
 function linksForFilmOrSeries(reco: RecoLike): ResolvedLink[] {
-  // Priorité aux plateformes finales détectées (TMDB watch providers).
-  if (reco.watchProviders && reco.watchProviders.length > 0) {
-    return reco.watchProviders.map((p) => ({
-      label: p.label,
-      url: p.url,
-      kind: 'streaming' as const,
-      ethics: p.ethics ?? 'neutral',
-    }));
+  // 1) URL JustWatch EXACTE de la fiche (donnée par TMDB) — c'est là qu'il y
+  //    a les vrais boutons « Watch on Netflix », « Watch on Apple TV », etc.
+  if (reco.externalIds?.justwatch) {
+    return [
+      { label: 'JustWatch', url: reco.externalIds.justwatch, kind: 'streaming', ethics: 'neutral' },
+    ];
   }
-  // Fallback : JustWatch (agrégateur neutre).
+  // 2) Sinon : recherche JustWatch (pour les films non enrichis TMDB).
   const q = enc(query(reco.title, reco.creator));
   return [
     { label: 'JustWatch', url: `https://www.justwatch.com/fr/recherche?q=${q}`, kind: 'streaming', ethics: 'neutral' },

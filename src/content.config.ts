@@ -122,6 +122,7 @@ const recos = defineCollection({
         youtube: z.string().optional(),     // vidéo YT précise (id ou URL)
         instagram: z.string().optional(),   // handle Instagram (sans @)
         website: z.string().url().optional(),
+        justwatch: z.string().url().optional(), // URL JustWatch EXACTE (via TMDB)
       })
       .partial()
       .optional(),

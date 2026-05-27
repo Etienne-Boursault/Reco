@@ -191,21 +191,27 @@ def tmdb_search(
     return None
 
 
-def tmdb_watch_providers(session: requests.Session, tmdb_id: str, kind: str, title: str) -> list[dict]:
-    """Récupère les watch providers FR + mappe en liens éthiques."""
+def tmdb_watch_providers(session: requests.Session, tmdb_id: str, kind: str, title: str) -> tuple[str | None, list[dict]]:
+    """Récupère le `link` JustWatch du film + les watch providers FR.
+
+    Retourne (justwatch_url, providers). Le justwatch_url est l'URL EXACTE de la
+    page JustWatch du film (renvoyée par TMDB) — c'est là qu'on trouve les vrais
+    deeplinks « Watch on Netflix » etc. C'est notre lien streaming principal.
+    Les providers sont conservés à titre informatif (debug / évolutions futures).
+    """
     data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers")
     fr = ((data or {}).get("results") or {}).get("FR") or {}
+    justwatch_url = fr.get("link") or None
     seen: set[str] = set()
-    links: list[dict] = []
-    # On parcourt dans l'ordre de préférence : streaming inclus > free > rent > buy.
+    providers: list[dict] = []
     for slot in ("flatrate", "free", "ads", "rent", "buy"):
         for prov in fr.get(slot, []) or []:
             name = (prov.get("provider_name") or "").strip()
             if not name or name in seen:
                 continue
             seen.add(name)
-            links.append(_provider_link(name, title))
-    return links
+            providers.append(_provider_link(name, title))
+    return justwatch_url, providers
 
 
 def main():
@@ -231,7 +237,9 @@ def main():
         d = read_json(p)
         if d.get("type") not in ("film", "serie"):
             continue
-        if not args.force and (d.get("externalIds") or {}).get("tmdb"):
+        ext = d.get("externalIds") or {}
+        if not args.force and ext.get("tmdb") and ext.get("justwatch"):
+            # Déjà enrichi complètement.
             continue
         targets.append((p, d))
 
@@ -249,26 +257,36 @@ def main():
         creator = d.get("creator")
         label = f"{title} ({creator})" if creator else title
         log.info("[%d/%d] %s [%s]", i, len(targets), label[:60], d["type"])
-        found = tmdb_search(session, d["type"], title, creator)
-        if not found:
-            log.info("  → TMDB : pas trouvé")
-            not_found += 1
-            time.sleep(RATE_LIMIT_SLEEP)
-            continue
-        tmdb_id, kind = found
-        providers = tmdb_watch_providers(session, tmdb_id, kind, d["title"])
+        # On réutilise le tmdb_id déjà connu si possible — économise 1 appel API.
+        ext = d.get("externalIds") or {}
+        if ext.get("tmdb") and ext.get("tmdbType"):
+            tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
+            log.info("  ↻ TMDB id déjà connu : %s (%s)", tmdb_id, kind)
+        else:
+            found = tmdb_search(session, d["type"], title, creator)
+            if not found:
+                log.info("  → TMDB : pas trouvé")
+                not_found += 1
+                time.sleep(RATE_LIMIT_SLEEP)
+                continue
+            tmdb_id, kind = found
+        justwatch_url, providers = tmdb_watch_providers(session, tmdb_id, kind, d["title"])
         ids = dict(d.get("externalIds") or {})
         ids["tmdb"] = tmdb_id
         ids["tmdbType"] = kind
+        if justwatch_url:
+            ids["justwatch"] = justwatch_url
+        elif "justwatch" in ids:
+            del ids["justwatch"]
         d["externalIds"] = ids
         if providers:
             d["watchProviders"] = providers
         elif "watchProviders" in d:
-            # Pas de provider FR : on retire l'éventuel cache obsolète.
             del d["watchProviders"]
         if write_json_if_changed(p, d):
             enriched += 1
-        log.info("  → tmdb_id=%s (%s) · %d providers", tmdb_id, kind, len(providers))
+        log.info("  → tmdb_id=%s (%s) · JustWatch=%s · %d providers info",
+                 tmdb_id, kind, "OK" if justwatch_url else "—", len(providers))
         time.sleep(RATE_LIMIT_SLEEP)
 
     log.info("Terminé : %d enrichis · %d non trouvés · %d inchangés.",
