@@ -74,6 +74,10 @@ interface RecoLike {
     /** URL JustWatch EXACTE du film/série (renvoyée par TMDB).
      *  Page qui a les vrais deeplinks « Watch on Netflix » etc. */
     justwatch?: string;
+    /** URL Deezer / Spotify EXACTES (track / album / artist) — peuplées par
+     *  tools/enrich_music.py. Préférées à une recherche quand disponibles. */
+    deezer?: string;
+    spotify?: string;
   };
   /** Liens explicites fournis par la reco — gardés tels quels (pas filtrés). */
   links?: { label: string; url: string; kind?: RecoLinkKind; ethics?: Ethics }[];
@@ -110,17 +114,21 @@ function linksForBookOrComic(reco: RecoLike): ResolvedLink[] {
 
 function linksForMusic(reco: RecoLike): ResolvedLink[] {
   const q = enc(query(reco.title, reco.creator));
-  // Bandcamp en 1er (modèle artiste-first). Puis les grandes plateformes
-  // accessibles facilement comme demandé : Deezer, Spotify, Qobuz, Apple,
-  // YT Music, Tidal.
+  // Bandcamp en 1er (modèle artiste-first), puis Deezer & Spotify avec URL
+  // EXACTE quand on a été enrichi (sinon recherche), puis Qobuz / Apple / YT
+  // Music / Tidal en recherche (pas d'API pour deeplinks publics).
+  const deezerUrl = reco.externalIds?.deezer
+    ?? `https://www.deezer.com/fr/search/${q}`;
+  const spotifyUrl = reco.externalIds?.spotify
+    ?? `https://open.spotify.com/search/${q}`;
   return [
-    { label: 'Bandcamp',    url: `https://bandcamp.com/search?q=${q}`,                       kind: 'streaming', ethics: 'indie'   },
-    { label: 'Deezer',      url: `https://www.deezer.com/fr/search/${q}`,                     kind: 'streaming', ethics: 'neutral' },
-    { label: 'Spotify',     url: `https://open.spotify.com/search/${q}`,                      kind: 'streaming', ethics: 'neutral' },
-    { label: 'Qobuz',       url: `https://www.qobuz.com/fr-fr/search?q=${q}`,                 kind: 'buy',       ethics: 'indie'   },
-    { label: 'Apple Music', url: `https://music.apple.com/fr/search?term=${q}`,               kind: 'streaming', ethics: 'neutral' },
-    { label: 'YT Music',    url: `https://music.youtube.com/search?q=${q}`,                   kind: 'streaming', ethics: 'neutral' },
-    { label: 'Tidal',       url: `https://tidal.com/search?q=${q}`,                           kind: 'streaming', ethics: 'neutral' },
+    { label: 'Bandcamp',    url: `https://bandcamp.com/search?q=${q}`,             kind: 'streaming', ethics: 'indie'   },
+    { label: 'Deezer',      url: deezerUrl,                                        kind: 'streaming', ethics: 'neutral' },
+    { label: 'Spotify',     url: spotifyUrl,                                       kind: 'streaming', ethics: 'neutral' },
+    { label: 'Qobuz',       url: `https://www.qobuz.com/fr-fr/search?q=${q}`,      kind: 'buy',       ethics: 'indie'   },
+    { label: 'Apple Music', url: `https://music.apple.com/fr/search?term=${q}`,    kind: 'streaming', ethics: 'neutral' },
+    { label: 'YT Music',    url: `https://music.youtube.com/search?q=${q}`,        kind: 'streaming', ethics: 'neutral' },
+    { label: 'Tidal',       url: `https://tidal.com/search?q=${q}`,                kind: 'streaming', ethics: 'neutral' },
   ];
 }
 

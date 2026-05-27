@@ -123,6 +123,8 @@ const recos = defineCollection({
         instagram: z.string().optional(),   // handle Instagram (sans @)
         website: z.string().url().optional(),
         justwatch: z.string().url().optional(), // URL JustWatch EXACTE (via TMDB)
+        deezer: z.string().url().optional(),    // URL Deezer EXACTE (track/album/artist)
+        spotify: z.string().url().optional(),   // URL Spotify EXACTE (track/album/artist)
       })
       .partial()
       .optional(),
