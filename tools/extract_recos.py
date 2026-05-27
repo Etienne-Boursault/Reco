@@ -73,7 +73,7 @@ BATCH_POLL_SECONDS = 20
 
 VALID_TYPES = {
     "film", "serie", "livre", "bd", "musique", "album",
-    "podcast", "jeu", "spectacle", "lieu", "autre",
+    "podcast", "jeu", "spectacle", "lieu", "artiste", "video", "autre",
 }
 
 SYSTEM_PROMPT = (
@@ -90,8 +90,14 @@ Voici un extrait de transcription d'un épisode du podcast « {podcast_title} »
 Les intervenants sont : {hosts}. Des invités peuvent aussi recommander des œuvres.
 
 Extrais la liste des ŒUVRES RECOMMANDÉES (films, séries, livres, BD, musiques,
-albums, podcasts, jeux, spectacles, lieux…). Une « reco » est une œuvre qu'un
-intervenant conseille, vante, ou invite à découvrir.
+albums, podcasts, jeux, spectacles, lieux, artistes/personnes, vidéos YouTube…).
+Une « reco » est une œuvre ou une personne qu'un intervenant conseille, vante,
+ou invite à découvrir/suivre.
+
+Types possibles dans le champ "type" :
+  film, serie, livre, bd, musique, album, podcast, jeu, spectacle, lieu,
+  artiste (humoriste, musicien, créateur — la personne elle-même est la reco),
+  video (vidéo YouTube précise ou chaîne YT), autre.
 
 IMPORTANT — la transcription est AUTOMATIQUE et imparfaite : les noms propres et
 titres d'œuvres contiennent souvent des coquilles phonétiques (ex. « Mortal »

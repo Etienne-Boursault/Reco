@@ -26,6 +26,8 @@ const recoType = z.enum([
   'jeu',
   'spectacle',
   'lieu',
+  'artiste',  // personne (humoriste, musicien, journaliste, etc.) → Insta + site
+  'video',    // vidéo YT spécifique (chaîne, vidéo virale) → lien YT direct
   'autre',
 ]);
 
@@ -88,7 +90,7 @@ const link = z.object({
   label: z.string(), // ex: "Place des Libraires"
   url: z.string().url(),
   // streaming = écouter/voir ; buy = acheter ; borrow = emprunter ; info = fiche.
-  kind: z.enum(['buy', 'borrow', 'streaming', 'info', 'official']).default('info'),
+  kind: z.enum(['buy', 'borrow', 'streaming', 'info', 'official', 'social']).default('info'),
   // Marqueur de provenance pour la politique éditoriale.
   ethics: z.enum(['indie', 'neutral', 'avoid']).default('neutral'),
 });
@@ -113,11 +115,25 @@ const recos = defineCollection({
     externalIds: z
       .object({
         tmdb: z.string().optional(),
+        tmdbType: z.enum(['movie', 'tv']).optional(),
         imdb: z.string().optional(),
         isbn: z.string().optional(),
         musicbrainz: z.string().optional(),
+        youtube: z.string().optional(),     // vidéo YT précise (id ou URL)
+        instagram: z.string().optional(),   // handle Instagram (sans @)
+        website: z.string().url().optional(),
       })
       .partial()
+      .optional(),
+    // Plateformes de streaming pour film/serie (peuplé par enrich_tmdb.py).
+    watchProviders: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string().url(),
+          ethics: z.enum(['indie', 'neutral', 'avoid']).optional(),
+        }),
+      )
       .optional(),
     // draft = extrait par IA ; validated = relu/confirmé ; discarded = écarté
     // (faux positif, pas une vraie reco). Le site public masque les discarded.
