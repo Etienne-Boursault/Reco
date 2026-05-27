@@ -40,6 +40,11 @@ ruvector.db
 # Profils & journaux locaux Claude
 .claude/
 
+# Coverage (artefacts pytest-cov)
+.coverage
+.coverage.*
+htmlcov/
+
 # OS / éditeurs
 .DS_Store
 Thumbs.db
