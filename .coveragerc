@@ -1,0 +1,19 @@
+# Configuration de coverage.py
+[run]
+source = tools
+# Modules exclus du calcul de couverture :
+# - jetables (scripts one-shot) ou trop dépendants d'I/O réel.
+omit =
+    tools/recover_jeremy_json.py
+    tools/rebalance_watcher.py
+    tools/compare_models.py
+    tools/.venv/*
+
+[report]
+# Lignes systématiquement exclues de la couverture (guards triviaux,
+# branches "if __name__" qui sont nettoyées par le test du main()).
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    raise NotImplementedError
+    \.\.\.

@@ -72,3 +72,70 @@ def test_write_json_preserves_accents_utf8(tmp_path: Path):
     text = target.read_text(encoding="utf-8")
     # Le contenu doit être en UTF-8 lisible (pas d'\uXXXX).
     assert "Bérengère" in text
+
+
+# ===== load_source ========================================================
+def test_load_source_raises_when_missing(monkeypatch, tmp_path: Path):
+    import common
+    monkeypatch.setattr(common, "SOURCES_DIR", tmp_path)
+    import pytest
+    with pytest.raises(FileNotFoundError):
+        common.load_source("inconnu")
+
+
+def test_load_source_returns_data(monkeypatch, tmp_path: Path):
+    import common
+    monkeypatch.setattr(common, "SOURCES_DIR", tmp_path)
+    (tmp_path / "ubm.json").write_text('{"id": "ubm", "title": "UBM"}', encoding="utf-8")
+    data = common.load_source("ubm")
+    assert data["title"] == "UBM"
+
+
+# ===== list_episode_files =================================================
+def test_list_episode_files_empty_when_dir_absent(monkeypatch, tmp_path: Path):
+    import common
+    monkeypatch.setattr(common, "EPISODES_DIR", tmp_path)
+    # Aucun sous-dossier pour 'ubm' → liste vide.
+    assert common.list_episode_files("ubm") == []
+
+
+def test_list_episode_files_returns_sorted(monkeypatch, tmp_path: Path):
+    import common
+    monkeypatch.setattr(common, "EPISODES_DIR", tmp_path)
+    src_dir = tmp_path / "ubm"
+    src_dir.mkdir()
+    (src_dir / "b.json").write_text("{}", encoding="utf-8")
+    (src_dir / "a.json").write_text("{}", encoding="utf-8")
+    (src_dir / "ignore.txt").write_text("x", encoding="utf-8")  # filtre *.json
+    files = common.list_episode_files("ubm")
+    assert [p.name for p in files] == ["a.json", "b.json"]
+
+
+# ===== Chemins helpers ====================================================
+def test_path_helpers_compose_correctly():
+    from common import (
+        episodes_dir_for, recos_dir_for, transcript_path_for,
+        EPISODES_DIR, RECOS_DIR, TRANSCRIPTS_DIR,
+    )
+    assert episodes_dir_for("ubm") == EPISODES_DIR / "ubm"
+    assert recos_dir_for("ubm") == RECOS_DIR / "ubm"
+    # transcript : le guid est slugifié pour éviter les chars problématiques.
+    p = transcript_path_for("ubm", "abc-123")
+    assert p.parent == TRANSCRIPTS_DIR / "ubm"
+    assert p.name == "abc-123.txt"
+
+
+def test_transcript_path_slugifies_guid():
+    from common import transcript_path_for
+    # Si le guid contient des caractères spéciaux, ils sont normalisés.
+    p = transcript_path_for("ubm", "Bérengère")
+    assert "berengere" in p.name
+
+
+# ===== get_logger =========================================================
+def test_get_logger_returns_same_logger_idempotent():
+    import common, logging
+    l1 = common.get_logger("reco-test-x")
+    l2 = common.get_logger("reco-test-x")
+    assert l1 is l2  # même instance, par nom
+    assert l1.level == logging.INFO
