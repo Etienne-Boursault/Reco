@@ -4,12 +4,34 @@ import Layout from '../layouts/Layout.astro';
 
 const sources = await getCollection('sources');
 const recos = await getCollection('recos');
+const episodes = await getCollection('episodes');
 
-const countBySource = new Map<string, number>();
+// Stats par source : nb recos (hors discarded), nb ⭐ confirmées (≥2 LLMs),
+// nb épisodes ayant au moins une reco non-discarded.
+interface SourceStats {
+  recos: number;
+  confirmed: number;
+  episodes: number;
+}
+const stats = new Map<string, SourceStats>();
+const epWithReco = new Map<string, Set<string>>(); // sourceId → guids d'épisodes
 for (const r of recos) {
-  if (r.data.status === 'discarded') continue; // non comptées publiquement.
+  if (r.data.status === 'discarded') continue;
   const id = r.data.sourceId.id;
-  countBySource.set(id, (countBySource.get(id) ?? 0) + 1);
+  const s = stats.get(id) ?? { recos: 0, confirmed: 0, episodes: 0 };
+  s.recos += 1;
+  if ((r.data.extractors?.length ?? 0) >= 2) s.confirmed += 1;
+  stats.set(id, s);
+  if (!epWithReco.has(id)) epWithReco.set(id, new Set());
+  epWithReco.get(id)!.add(r.data.episodeGuid);
+}
+for (const [id, set] of epWithReco) {
+  const s = stats.get(id);
+  if (s) s.episodes = set.size;
+}
+
+function fmt(n: number): string {
+  return n.toLocaleString('fr-FR');
 }
 ---
 
@@ -26,18 +48,32 @@ for (const r of recos) {
   <main class="wrap">
     <ul class="grid sources">
       {
-        sources.map((s) => (
-          <li class="src reveal">
-            <a href={`/${s.id}`}>
-              <span class="src-count">{countBySource.get(s.id) ?? 0} recos</span>
-              <h2>{s.data.title}</h2>
-              {s.data.tagline && <p class="src-tag">{s.data.tagline}</p>}
-              {s.data.hosts.length > 0 && (
-                <p class="src-hosts">{s.data.hosts.join(' & ')}</p>
-              )}
-            </a>
-          </li>
-        ))
+        sources.map((s) => {
+          const st = stats.get(s.id) ?? { recos: 0, confirmed: 0, episodes: 0 };
+          return (
+            <li class="src reveal">
+              <a href={`/${s.id}`}>
+                <span class="src-count">{fmt(st.recos)} recos</span>
+                <h2>{s.data.title}</h2>
+                {s.data.tagline && <p class="src-tag">{s.data.tagline}</p>}
+                {s.data.hosts.length > 0 && (
+                  <p class="src-hosts">par {s.data.hosts.join(' & ')}</p>
+                )}
+                <p class="src-stats">
+                  <span>{fmt(st.episodes)} épisodes</span>
+                  {st.confirmed > 0 && (
+                    <>
+                      <span class="dot">·</span>
+                      <span class="conf" title="Recommandations confirmées par 2 LLMs indépendants">
+                        ⭐ {fmt(st.confirmed)} confirmées
+                      </span>
+                    </>
+                  )}
+                </p>
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
   </main>
@@ -106,6 +142,24 @@ for (const r of recos) {
     margin: 0.3rem 0 0;
     color: var(--muted);
     font-size: 0.9rem;
+  }
+  .src-stats {
+    margin: 0.9rem 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    color: var(--muted);
+    font-size: 0.82rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+  .src-stats .dot {
+    opacity: 0.4;
+  }
+  .src-stats .conf {
+    color: var(--accent);
+    font-weight: 600;
   }
   .foot {
     padding: 2rem 0 3rem;
