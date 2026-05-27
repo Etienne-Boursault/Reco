@@ -4,9 +4,8 @@ source = tools
 # Modules exclus du calcul de couverture :
 # - jetables (scripts one-shot) ou trop dépendants d'I/O réel.
 omit =
-    tools/recover_jeremy_json.py
-    tools/rebalance_watcher.py
     tools/compare_models.py
+    tools/eval_local_llm.py
     tools/.venv/*
 
 [report]

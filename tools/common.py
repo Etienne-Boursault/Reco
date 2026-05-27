@@ -6,6 +6,7 @@ Centralise :
   - la lecture des sources (podcasts) ;
   - la lecture / écriture *idempotente* des fichiers JSON conformes au schéma ;
   - la fabrication d'identifiants stables (slug, prefixe de reco) ;
+  - les helpers texte/timestamp/YouTube partagés ;
   - un logger simple et homogène pour tous les scripts.
 
 Tout le pipeline écrit en UTF-8 (accents français corrects) et n'écrit un
@@ -36,6 +37,14 @@ RECOS_DIR: Path = CONTENT_DIR / "recos"
 OUTPUT_DIR: Path = TOOLS_DIR / "output"
 TRANSCRIPTS_DIR: Path = OUTPUT_DIR / "transcripts"
 AUDIO_DIR: Path = OUTPUT_DIR / "audio"
+
+
+# --- Regex pré-compilées ----------------------------------------------------
+_RE_YT_ID = re.compile(r"[?&]v=([A-Za-z0-9_-]+)")
+_RE_NON_ALNUM_SPACE = re.compile(r"[^a-z0-9 ]+")
+_RE_WHITESPACE = re.compile(r"\s+")
+_RE_SLUG_NONALNUM = re.compile(r"[^a-z0-9]+")
+_RE_SLUG_NONALNUM_STRICT = re.compile(r"[^a-z0-9]")
 
 
 # --- Logging ----------------------------------------------------------------
@@ -69,7 +78,7 @@ def slugify(value: str) -> str:
     value = unicodedata.normalize("NFKD", value)
     value = value.encode("ascii", "ignore").decode("ascii")
     value = value.lower()
-    value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+    value = _RE_SLUG_NONALNUM.sub("-", value).strip("-")
     return value or "x"
 
 
@@ -86,7 +95,89 @@ def reco_prefix(source_id: str) -> str:
     if len(initials) >= 2:
         return initials
     # Repli : 3 premiers caractères alphanumériques.
-    return re.sub(r"[^a-z0-9]", "", source_id)[:3] or "rec"
+    return _RE_SLUG_NONALNUM_STRICT.sub("", source_id)[:3] or "rec"
+
+
+# --- Helpers texte ----------------------------------------------------------
+def normalize_text(s: str | None) -> str:
+    """Normalisation robuste pour l'appariement (sans accent, casse, ponct.).
+
+    Contrairement à `slugify`, ne remplace pas les espaces par des tirets : le
+    résultat reste un texte lisible utilisable pour comparaison ou recherche.
+    """
+    if not s:
+        return ""
+    s = s.lower()
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = _RE_NON_ALNUM_SPACE.sub(" ", s)
+    return _RE_WHITESPACE.sub(" ", s).strip()
+
+
+# --- Helpers YouTube --------------------------------------------------------
+def extract_youtube_id(url: str | None) -> str | None:
+    """Extrait l'identifiant d'une URL YouTube (watch?v=…). None si introuvable."""
+    if not url:
+        return None
+    m = _RE_YT_ID.search(url)
+    return m.group(1) if m else None
+
+
+def download_youtube_thumbnail(video_id: str) -> bytes | None:
+    """Télécharge la miniature YouTube (maxres puis hq en repli).
+
+    Renvoie les octets de l'image, ou None si rien d'exploitable n'est trouvé.
+    Les images < 2000 octets sont considérées comme des placeholders (404 JPG
+    transparent renvoyé par YouTube). Timeout 30 s, gère les RequestException.
+    """
+    try:
+        import requests  # noqa: PLC0415 — import paresseux.
+    except ImportError:  # pragma: no cover
+        return None
+    for quality in ("maxresdefault", "hqdefault"):
+        url = f"https://i.ytimg.com/vi/{video_id}/{quality}.jpg"
+        try:
+            resp = requests.get(url, timeout=30)
+        except requests.exceptions.RequestException:
+            continue
+        if resp.status_code == 200 and len(resp.content) >= 2000:
+            return resp.content
+    return None
+
+
+# --- Helpers timestamps -----------------------------------------------------
+def format_timestamp(seconds: float | int) -> str:
+    """Formate un nombre de secondes en « HH:MM:SS »."""
+    seconds = int(seconds)
+    h, rem = divmod(seconds, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+def parse_timestamp(ts: str | None) -> int | None:
+    """Convertit un timestamp « HH:MM:SS » / « MM:SS » / « SS » en secondes.
+
+    Renvoie None si la chaîne est vide ou ne peut être parsée.
+    """
+    if not ts:
+        return None
+    try:
+        parts = [int(x) for x in ts.split(":")]
+    except (ValueError, AttributeError):
+        return None
+    s = 0
+    for p in parts:
+        s = s * 60 + p
+    return s
+
+
+def episode_label(season: int | None, number: int | None) -> str:
+    """Étiquette compacte d'un épisode : « S5E12 », « #42 » ou chaîne vide."""
+    if season and number:
+        return f"S{season}E{number}"
+    if number:
+        return f"#{number}"
+    return ""
 
 
 # --- Lecture des sources ----------------------------------------------------
@@ -109,8 +200,8 @@ def read_json(path: Path) -> dict[str, Any]:
 
 
 def _serialize(data: dict[str, Any]) -> str:
-    """Sérialise en JSON lisible, UTF-8, accents conservés, clé triée stable."""
-    return json.dumps(data, ensure_ascii=False, indent=2, sort_keys=False) + "\n"
+    """Sérialise en JSON lisible, UTF-8, accents conservés, clés triées stables."""
+    return json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
 def write_json_if_changed(path: Path, data: dict[str, Any]) -> bool:
@@ -149,6 +240,20 @@ def list_episode_files(source_id: str) -> list[Path]:
     if not d.exists():
         return []
     return sorted(d.glob("*.json"))
+
+
+def find_episode_by_guid(source_id: str, guid: str) -> Path:
+    """Retrouve le fichier JSON d'un épisode par son guid.
+
+    Centralisé ici pour éviter la duplication dans transcribe / extract_recos /
+    compare_models. Lève FileNotFoundError si aucun épisode ne correspond.
+    """
+    for path in list_episode_files(source_id):
+        if read_json(path).get("guid") == guid:
+            return path
+    raise FileNotFoundError(
+        f"Aucun épisode avec guid « {guid} » dans la source « {source_id} »."
+    )
 
 
 # --- Clients API (imports paresseux) ---------------------------------------

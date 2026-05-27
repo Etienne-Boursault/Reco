@@ -35,6 +35,7 @@ from pathlib import Path
 from typing import Any
 
 import feedparser  # type: ignore
+import requests
 
 from common import (
     episodes_dir_for,
@@ -45,6 +46,15 @@ from common import (
     slugify,
     write_json_if_changed,
 )
+
+# Certains hébergeurs (Acast, libsyn…) refusent les User-Agent vides ou
+# « python-urllib » par défaut. On force un UA navigateur générique.
+_HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; reco-fetch/1.0)"}
+
+# Valeurs « durées » qui sont en réalité des années (présentes dans des
+# tags <itunes:episode> mal renseignés, ex. « 2024 »).
+_YEAR_MIN = 1990
+_YEAR_MAX = 2100
 
 
 def _parse_date(entry: Any) -> str | None:
@@ -69,20 +79,30 @@ def _extract_number(entry: Any) -> int | None:
     itunes_ep = entry.get("itunes_episode") if isinstance(entry, dict) else None
     if itunes_ep:
         try:
-            return int(str(itunes_ep).strip())
+            n = int(str(itunes_ep).strip())
         except (TypeError, ValueError):
-            pass
+            n = None
+        if n is not None and not _YEAR_MIN <= n <= _YEAR_MAX:
+            return n
+        # Sinon (année plausible ou parsing échoué) : on tente le titre.
 
     title = entry.get("title", "") or ""
     # Motifs explicites prioritaires.
     m = re.search(r"(?:#|ep(?:isode|\.)?\s*|épisode\s*)(\d{1,4})", title, re.IGNORECASE)
     if m:
-        return int(m.group(1))
+        n = int(m.group(1))
+        if _YEAR_MIN <= n <= _YEAR_MAX:
+            return None  # année probable, pas un numéro d'épisode
+        return n
     return None
 
 
 def _parse_duration(raw: Any) -> int | None:
-    """Convertit une durée itunes (« H:MM:SS », « MM:SS » ou secondes) en secondes."""
+    """Convertit une durée itunes (« H:MM:SS », « MM:SS » ou secondes) en secondes.
+
+    Renvoie None pour 0 / négatif / non-parsable : une durée nulle ou négative
+    n'a pas de sens et trahit un tag itunes manquant.
+    """
     if not raw:
         return None
     raw = str(raw).strip()
@@ -94,8 +114,11 @@ def _parse_duration(raw: Any) -> int | None:
         seconds = 0
         for n in nums:
             seconds = seconds * 60 + n
-        return seconds
-    return int(raw) if raw.isdigit() else None
+        return seconds if seconds > 0 else None
+    if raw.isdigit():
+        seconds = int(raw)
+        return seconds if seconds > 0 else None
+    return None
 
 
 def _extract_audio_url(entry: Any) -> str | None:
@@ -136,7 +159,8 @@ def _existing_index(source_id: str) -> dict[str, Path]:
     for path in list_episode_files(source_id):
         try:
             data = read_json(path)
-        except Exception:  # noqa: BLE001 — fichier corrompu : on l'ignore.
+        except Exception as exc:  # noqa: BLE001 — fichier corrompu : on l'ignore.
+            log.warning("Fichier corrompu ignoré : %s (%s)", path, exc)
             continue
         guid = data.get("guid")
         if guid:
@@ -238,8 +262,19 @@ def fetch_episodes(source_id: str, limit: int | None = None,
             f"Renseigne-le dans le JSON de la source ou passe --rss."
         )
 
+    if not isinstance(rss_url, str) or not rss_url.startswith(("http://", "https://")):
+        raise ValueError(
+            f"URL RSS invalide pour « {source_id} » : {rss_url!r}. "
+            "Doit commencer par http:// ou https://."
+        )
+
     log.info("Lecture du flux RSS : %s", rss_url)
-    feed = feedparser.parse(rss_url)
+    try:
+        resp = requests.get(rss_url, timeout=30, headers=_HTTP_HEADERS)
+        resp.raise_for_status()
+        feed = feedparser.parse(resp.text)
+    except requests.RequestException as exc:
+        raise RuntimeError(f"Téléchargement RSS échoué : {exc}") from exc
     if feed.bozo and not feed.entries:
         raise RuntimeError(
             f"Échec du parsing RSS ({getattr(feed, 'bozo_exception', 'inconnu')})."

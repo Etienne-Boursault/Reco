@@ -9,30 +9,42 @@ Sortie dans tools/dispatch/ :
   - laptop_guids.txt     : guids assignés au portable
 
 Le serveur de fichiers (port 8001 sur tools/) les expose automatiquement.
+
+Usage :
+    python make_dispatch.py --source un-bon-moment
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
 from common import list_episode_files, log, read_json, transcript_path_for
 
-# Vitesses mesurées : main ~50 min/ép. (CPU small), portable ~27 min/ép. (GPU).
-# Part du portable ≈ vitesse_portable / (vitesse_main + vitesse_portable) ≈ 64 %.
-LAPTOP_SHARE = 0.64
+# Vitesses mesurées (minutes / épisode) pour pondérer la répartition.
+# - main : CPU, faster-whisper small
+# - portable : GPU, whisper.cpp
+MAIN_SPEED_MIN_PER_EP = 50
+LAPTOP_SPEED_MIN_PER_EP = 27
+
+# Part du portable = vitesse_portable_inverse / somme_inverses. Comme une
+# vitesse PLUS PETITE en min/épisode = PLUS RAPIDE, on prend l'inverse.
+_inv_main = 1.0 / MAIN_SPEED_MIN_PER_EP
+_inv_laptop = 1.0 / LAPTOP_SPEED_MIN_PER_EP
+LAPTOP_SHARE = _inv_laptop / (_inv_main + _inv_laptop)
 
 DISPATCH_DIR = Path(__file__).resolve().parent / "dispatch"
-SOURCE_ID = "un-bon-moment"
 
 
-def main() -> None:
+def make_dispatch(source_id: str) -> tuple[int, int, int]:
+    """Calcule et écrit le dispatch. Renvoie (total, main_n, laptop_n)."""
     pending = []
-    for path in list_episode_files(SOURCE_ID):
+    for path in list_episode_files(source_id):
         ep = read_json(path)
         guid = ep["guid"]
         # Déjà transcrit ? on saute.
-        if transcript_path_for(SOURCE_ID, guid).exists():
+        if transcript_path_for(source_id, guid).exists():
             continue
         # Pas de vidéo YouTube ? on garde pour la machine principale en repli
         # (Acast) — pas envoyé au portable qui exige YouTube.
@@ -82,6 +94,15 @@ def main() -> None:
     log.info("Pending: %d épisodes  →  main: %d   portable: %d",
              total, main_n, laptop_n)
     log.info("Écrit dans %s", DISPATCH_DIR)
+    return total, main_n, laptop_n
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", required=True,
+                        help="Identifiant de la source (ex: un-bon-moment).")
+    args = parser.parse_args()
+    make_dispatch(args.source)
 
 
 if __name__ == "__main__":

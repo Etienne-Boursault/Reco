@@ -1,5 +1,6 @@
 ---
 import { resolveLinks } from '../data/merchants';
+import { TYPE_LABELS } from '../utils/recoTypes';
 
 interface Props {
   reco: {
@@ -20,22 +21,6 @@ interface Props {
 }
 
 const { reco, episodeTitle, episodeNumber } = Astro.props;
-
-const TYPE_LABELS: Record<string, string> = {
-  film: 'Film',
-  serie: 'Série',
-  livre: 'Livre',
-  bd: 'BD',
-  musique: 'Musique',
-  album: 'Album',
-  podcast: 'Podcast',
-  jeu: 'Jeu',
-  spectacle: 'Spectacle',
-  lieu: 'Lieu',
-  artiste: 'Artiste',
-  video: 'Vidéo',
-  autre: 'Autre',
-};
 
 // Liens : ceux fournis par le pipeline, sinon générés (éthiques) à la volée.
 const rawLinks =
@@ -109,7 +94,18 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
             aria-label={l.label}
           >
             {l.icon ? (
-              <img src={l.icon} alt="" width="20" height="20" loading="lazy" />
+              <>
+                <img
+                  src={l.icon}
+                  alt=""
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                  data-fallback={l.label}
+                  onerror="this.style.display='none';const s=this.nextElementSibling;if(s)s.hidden=false;"
+                />
+                <span class="link-text" hidden>{l.label}</span>
+              </>
             ) : (
               <span class="link-text">{l.label}</span>
             )}

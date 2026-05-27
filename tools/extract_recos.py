@@ -30,33 +30,24 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import time
-import unicodedata
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
-
-def _norm(s: str | None) -> str:
-    """Normalisation robuste pour l'appariement (sans accent, casse, ponct.)."""
-    if not s:
-        return ""
-    s = s.lower()
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    s = re.sub(r"[^a-z0-9 ]+", " ", s)
-    return re.sub(r"\s+", " ", s).strip()
+Provider = Literal["anthropic", "openai"]
 
 from dotenv import load_dotenv
 
 from common import (
     TOOLS_DIR,
+    find_episode_by_guid,
     list_episode_files,
     load_source,
     log,
     make_anthropic_client,
     make_openai_client,
+    normalize_text,
     read_json,
     reco_prefix,
     recos_dir_for,
@@ -70,8 +61,21 @@ MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 8000
 # Nombre approximatif de caractères par chunk (~ contexte raisonnable + marge coût).
 CHUNK_CHARS = 24_000
+# Recouvrement entre chunks pour ne pas couper une reco en deux à la jonction.
+CHUNK_OVERLAP_CHARS = 500
 # Intervalle de scrutation du statut d'un batch (Message Batches API).
 BATCH_POLL_SECONDS = 20
+# Sécurité : on n'attend pas plus de 4 h qu'un batch se termine.
+BATCH_TIMEOUT_SECONDS = 4 * 3600
+# Statuts terminaux possibles pour un batch (cf. doc API Message Batches).
+TERMINAL_STATUSES = {"ended", "errored", "canceled", "expired"}
+
+# Regex pré-compilées (chemins chauds des chunks/json).
+_RE_NON_ALNUM = re.compile(r"[^a-z0-9 ]+")
+_RE_SPACES = re.compile(r"\s+")
+_RE_FENCE = re.compile(r"^```(?:json)?\s*(.*?)\s*```$", re.DOTALL)
+_RE_JSON_OBJ = re.compile(r"\{.*\}", re.DOTALL)
+_RE_STEM_DIGITS = re.compile(r"(\d+)")
 
 VALID_TYPES = {
     "film", "serie", "livre", "bd", "musique", "album",
@@ -146,11 +150,23 @@ Réponds avec un objet JSON de la forme : {{"recos": [ ... ]}} et RIEN d'autre.
 """
 
 
-def _chunk_transcript(text: str, max_chars: int = CHUNK_CHARS) -> list[str]:
+# Alias historique : préserve la rétro-compat des tests qui importent _norm.
+def _norm(s: str | None) -> str:
+    """Alias compatibilité — utilise désormais `common.normalize_text`."""
+    return normalize_text(s)
+
+
+def _chunk_transcript(text: str, max_chars: int = CHUNK_CHARS,
+                      overlap_chars: int = CHUNK_OVERLAP_CHARS) -> list[str]:
     """
     Découpe la transcription en morceaux d'au plus `max_chars`, en coupant sur
     des frontières de lignes (donc de segments horodatés) pour ne pas tronquer
     une phrase au milieu.
+
+    Ajoute un recouvrement (`overlap_chars`) entre chunks consécutifs pour ne
+    pas perdre une reco qui tomberait pile à la jonction. Le recouvrement
+    n'est appliqué que si > 0 et que les chunks sont suffisamment grands pour
+    le supporter.
     """
     lines = text.splitlines(keepends=True)
     chunks: list[str] = []
@@ -159,8 +175,18 @@ def _chunk_transcript(text: str, max_chars: int = CHUNK_CHARS) -> list[str]:
     for line in lines:
         if size + len(line) > max_chars and current:
             chunks.append("".join(current))
-            current = [line]
-            size = len(line)
+            # Démarre le chunk suivant avec un overlap : les dernières lignes
+            # du chunk précédent dont la longueur cumulée approche overlap_chars.
+            overlap_lines: list[str] = []
+            ov_size = 0
+            if overlap_chars > 0:
+                for prev_line in reversed(current):
+                    if ov_size + len(prev_line) > overlap_chars:
+                        break
+                    overlap_lines.insert(0, prev_line)
+                    ov_size += len(prev_line)
+            current = overlap_lines + [line]
+            size = ov_size + len(line)
         else:
             current.append(line)
             size += len(line)
@@ -176,12 +202,12 @@ def _extract_json_block(raw: str) -> dict[str, Any]:
     """
     raw = raw.strip()
     # Retire un éventuel bloc de code Markdown.
-    fence = re.match(r"^```(?:json)?\s*(.*?)\s*```$", raw, re.DOTALL)
+    fence = _RE_FENCE.match(raw)
     if fence:
         raw = fence.group(1).strip()
     # Si du texte entoure le JSON, isole le premier objet { … }.
     if not raw.startswith("{"):
-        m = re.search(r"\{.*\}", raw, re.DOTALL)
+        m = _RE_JSON_OBJ.search(raw)
         if m:
             raw = m.group(0)
     return json.loads(raw)
@@ -225,7 +251,7 @@ def _dedupe(recos: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     out_by_key: dict[str, dict[str, Any]] = {}
     for reco in recos:
-        k = _norm(reco["title"])
+        k = normalize_text(reco["title"])
         if k not in out_by_key:
             out_by_key[k] = reco
             continue
@@ -266,45 +292,89 @@ def _parse_recos_from_content(content: Any) -> list[dict[str, Any]]:
     return data.get("recos", []) if isinstance(data, dict) else []
 
 
+# --- Adaptateurs LLM (dispatch sans duck-typing implicite) -----------------
+class _AnthropicExtractor:
+    """Petit adaptateur autour du SDK anthropic pour appels synchrones."""
+
+    def __init__(self, client: Any) -> None:
+        self.client = client
+
+    def extract(self, model: str, podcast_title: str, hosts: str,
+                chunk: str) -> list[dict[str, Any]]:
+        params = _request_params(model, podcast_title, hosts, chunk)
+        message = self.client.messages.create(**params)
+        return _parse_recos_from_content(message.content)
+
+
+class _OpenAIExtractor:
+    """Adaptateur OpenAI Chat Completions (JSON object response_format)."""
+
+    def __init__(self, client: Any) -> None:
+        self.client = client
+
+    def extract(self, model: str, podcast_title: str, hosts: str,
+                chunk: str) -> list[dict[str, Any]]:
+        prompt = USER_TEMPLATE.format(
+            podcast_title=podcast_title, hosts=hosts,
+            types=", ".join(sorted(VALID_TYPES)), chunk=chunk,
+        )
+        resp = self.client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+            response_format={"type": "json_object"},
+            max_tokens=MAX_TOKENS,
+        )
+        raw = resp.choices[0].message.content or ""
+        try:
+            data = _extract_json_block(raw)
+        except json.JSONDecodeError:
+            log.warning("Réponse non-JSON ignorée pour un chunk (OpenAI).")
+            return []
+        return data.get("recos", []) if isinstance(data, dict) else []
+
+
+_EXTRACTOR_REGISTRY: dict[str, type] = {
+    "anthropic": _AnthropicExtractor,
+    "openai": _OpenAIExtractor,
+}
+
+
+def _make_extractor(client: Any, provider: Provider | None = None) -> Any:
+    """Choisit l'adaptateur LLM, typé par `provider` (préféré) ou par classe client.
+
+    Si `provider` est fourni, dispatch direct via le registre. Sinon, fallback
+    rétro-compatible : on inspecte le module/classe du client pour décider.
+    """
+    if provider is not None:
+        cls = _EXTRACTOR_REGISTRY.get(provider)
+        if cls is None:
+            raise ValueError(f"Provider LLM inconnu : {provider!r}")
+        return cls(client)
+    # Fallback : inspection du module pour identifier le SDK.
+    module = type(client).__module__ or ""
+    if module.startswith("openai") or hasattr(client, "chat"):
+        return _OpenAIExtractor(client)
+    return _AnthropicExtractor(client)
+
+
+def _call_llm(client: Any, model: str, podcast_title: str, hosts: str,
+              chunk: str, provider: Provider | None = None) -> list[dict[str, Any]]:
+    """Dispatche vers l'adaptateur Anthropic ou OpenAI."""
+    return _make_extractor(client, provider).extract(model, podcast_title, hosts, chunk)
+
+
+# Conservés en alias pour la rétro-compat des tests historiques.
 def _call_anthropic(client: Any, model: str, podcast_title: str, hosts: str,
                     chunk: str) -> list[dict[str, Any]]:
-    """Appel synchrone sur un chunk ; renvoie la liste de recos brutes."""
-    params = _request_params(model, podcast_title, hosts, chunk)
-    message = client.messages.create(**params)
-    return _parse_recos_from_content(message.content)
+    return _AnthropicExtractor(client).extract(model, podcast_title, hosts, chunk)
 
 
 def _call_openai(client: Any, model: str, podcast_title: str, hosts: str,
                  chunk: str) -> list[dict[str, Any]]:
-    """Idem _call_anthropic, mais via l'API OpenAI Chat Completions."""
-    prompt = USER_TEMPLATE.format(
-        podcast_title=podcast_title, hosts=hosts,
-        types=", ".join(sorted(VALID_TYPES)), chunk=chunk,
-    )
-    resp = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
-        ],
-        response_format={"type": "json_object"},
-        max_tokens=MAX_TOKENS,
-    )
-    raw = resp.choices[0].message.content or ""
-    try:
-        data = _extract_json_block(raw)
-    except json.JSONDecodeError:
-        log.warning("Réponse non-JSON ignorée pour un chunk (OpenAI).")
-        return []
-    return data.get("recos", []) if isinstance(data, dict) else []
-
-
-def _call_llm(client: Any, model: str, podcast_title: str, hosts: str,
-              chunk: str) -> list[dict[str, Any]]:
-    """Dispatche vers Anthropic ou OpenAI selon le type du client."""
-    if hasattr(client, "chat"):  # OpenAI client a .chat.completions
-        return _call_openai(client, model, podcast_title, hosts, chunk)
-    return _call_anthropic(client, model, podcast_title, hosts, chunk)
+    return _OpenAIExtractor(client).extract(model, podcast_title, hosts, chunk)
 
 
 def _next_reco_index(source_id: str) -> int:
@@ -314,32 +384,69 @@ def _next_reco_index(source_id: str) -> int:
         return 1
     max_idx = 0
     for path in d.glob("*.json"):
-        m = re.search(r"(\d+)", path.stem)
+        m = _RE_STEM_DIGITS.search(path.stem)
         if m:
             max_idx = max(max_idx, int(m.group(1)))
     return max_idx + 1
 
 
-def _existing_reco_keys(source_id: str) -> set[tuple[str, str, str]]:
-    """
-    Indexe les recos déjà écrites par (episodeGuid, titre, créateur) pour ne pas
-    recréer de doublons lors d'une ré-exécution (idempotence inter-runs).
-    """
-    keys: set[tuple[str, str, str]] = set()
-    d = recos_dir_for(source_id)
-    if not d.exists():
-        return keys
-    for path in d.glob("*.json"):
+def _build_existing_index(source_id: str) -> dict[tuple[str, str], Path]:
+    """Indexe les recos déjà écrites par (episodeGuid, titre_normalisé)."""
+    target_dir = recos_dir_for(source_id)
+    existing_map: dict[tuple[str, str], Path] = {}
+    if not target_dir.exists():
+        return existing_map
+    for path in target_dir.glob("*.json"):
         try:
             r = read_json(path)
-        except Exception:  # noqa: BLE001
+        except (OSError, ValueError, json.JSONDecodeError):
             continue
-        keys.add((
-            r.get("episodeGuid", ""),
-            (r.get("title") or "").lower(),
-            (r.get("creator") or "").lower(),
-        ))
-    return keys
+        key = (r.get("episodeGuid", ""), normalize_text(r.get("title")))
+        existing_map[key] = path
+    return existing_map
+
+
+def _merge_reco(existing: dict[str, Any], new: dict[str, Any],
+                provider: str) -> dict[str, Any]:
+    """Fusionne une nouvelle extraction dans une reco existante.
+
+    Règles :
+      - `timestamp` est TOUJOURS mis à jour (recalage YT).
+      - `quote` n'est mis à jour QUE si la reco n'est pas `validated`.
+      - `creator`, `year` complétés s'ils étaient vides.
+      - `extractors` reçoit le provider courant (set trié).
+    """
+    merged = dict(existing)
+    if new.get("timestamp"):
+        merged["timestamp"] = new["timestamp"]
+    if existing.get("status") != "validated" and new.get("quote"):
+        merged["quote"] = new["quote"]
+    for k in ("creator", "year"):
+        if k in new and not existing.get(k):
+            merged[k] = new[k]
+    merged["extractors"] = sorted(
+        set((existing.get("extractors") or []) + [provider])
+    )
+    return merged
+
+
+def _create_reco(source_id: str, guid: str, reco: dict[str, Any],
+                 prefix: str, index: int, provider: str) -> dict[str, Any]:
+    """Construit le dict d'une NOUVELLE reco (draft)."""
+    full: dict[str, Any] = {
+        "id": f"{prefix}-{index:04d}",
+        "sourceId": source_id,
+        "episodeGuid": guid,
+        "title": reco["title"],
+        "type": reco["type"],
+    }
+    for key_name in ("creator", "year", "recommendedBy", "quote", "timestamp"):
+        if key_name in reco:
+            full[key_name] = reco[key_name]
+    full["links"] = []
+    full["status"] = "draft"
+    full["extractors"] = [provider]
+    return full
 
 
 def _persist_recos(source_id: str, guid: str,
@@ -347,15 +454,7 @@ def _persist_recos(source_id: str, guid: str,
                    provider: str = "anthropic") -> int:
     """
     Normalise, déduplique et persiste les recos brutes d'un épisode en mode
-    UPSERT (préserve le travail humain) :
-
-      - Si une reco existe déjà (mêmes guid+titre+créateur) :
-          * `timestamp` est TOUJOURS mis à jour (recalage YT).
-          * `quote` n'est mis à jour QUE si la reco n'est pas `validated`
-            (on ne réécrit pas du contenu déjà curé par un humain).
-          * `creator` et `year` sont complétés s'ils étaient vides.
-          * `status`, `recommendedBy`, `links`, `id`, `note` sont PRÉSERVÉS.
-      - Sinon, on écrit une nouvelle reco en `draft`.
+    UPSERT (préserve le travail humain).
 
     Renvoie le nombre de fichiers créés ou modifiés.
     """
@@ -366,85 +465,53 @@ def _persist_recos(source_id: str, guid: str,
     if not normalized:
         return 0
 
-    # Map (guid, titre_normalisé) -> chemin du fichier existant.
-    # Match par titre uniquement (le créateur varie souvent d'un run à l'autre).
+    existing_map = _build_existing_index(source_id)
     target_dir = recos_dir_for(source_id)
-    existing_map: dict[tuple[str, str], Path] = {}
-    if target_dir.exists():
-        for path in target_dir.glob("*.json"):
-            try:
-                r = read_json(path)
-            except Exception:  # noqa: BLE001
-                continue
-            key = (r.get("episodeGuid", ""), _norm(r.get("title")))
-            existing_map[key] = path
-
     prefix = reco_prefix(source_id)
     index = _next_reco_index(source_id)
     new_count = 0
     upd_count = 0
 
     for reco in normalized:
-        key = (guid, _norm(reco["title"]))
+        key = (guid, normalize_text(reco["title"]))
 
         if key in existing_map:
             path = existing_map[key]
             existing = read_json(path)
-            merged = dict(existing)
-            # Timestamp : on met à jour systématiquement (recalage YT).
-            if reco.get("timestamp"):
-                merged["timestamp"] = reco["timestamp"]
-            # Quote : préservée pour les recos déjà validées.
-            if existing.get("status") != "validated" and reco.get("quote"):
-                merged["quote"] = reco["quote"]
-            # creator / year : complète s'ils étaient vides.
-            for k in ("creator", "year"):
-                if k in reco and not existing.get(k):
-                    merged[k] = reco[k]
-            # extractors : on ajoute le provider courant à la liste.
-            merged["extractors"] = sorted(
-                set((existing.get("extractors") or []) + [provider])
-            )
+            merged = _merge_reco(existing, reco, provider)
             if write_json_if_changed(path, merged):
                 upd_count += 1
                 log.info("  ↻ MAJ %s — « %s » (extractors=%s)",
                          path.name, reco["title"], merged["extractors"])
             continue
 
-        # Nouvelle reco.
-        full: dict[str, Any] = {
-            "id": f"{prefix}-{index:04d}",
-            "sourceId": source_id,
-            "episodeGuid": guid,
-            "title": reco["title"],
-            "type": reco["type"],
-        }
-        for key_name in ("creator", "year", "recommendedBy", "quote", "timestamp"):
-            if key_name in reco:
-                full[key_name] = reco[key_name]
-        full["links"] = []
-        full["status"] = "draft"
-        full["extractors"] = [provider]
-
+        full = _create_reco(source_id, guid, reco, prefix, index, provider)
         path = target_dir / f"{index:04d}.json"
         if write_json_if_changed(path, full):
             new_count += 1
-            log.info("  + NEW %s — « %s » (extractor=%s)", path.name, reco["title"], provider)
+            log.info("  + NEW %s — « %s » (extractor=%s)",
+                     path.name, reco["title"], provider)
         existing_map[key] = path
         index += 1
 
-    log.info("Épisode %s : %d nouvelle(s), %d mise(s) à jour.", guid, new_count, upd_count)
+    log.info("Épisode %s : %d nouvelle(s), %d mise(s) à jour.",
+             guid, new_count, upd_count)
     return new_count + upd_count
 
 
 def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
                         dry_run: bool, model: str = MODEL,
-                        provider: str = "anthropic") -> int:
+                        provider: str = "anthropic",
+                        source: dict[str, Any] | None = None) -> int:
     """
     Extraction SYNCHRONE d'un épisode (1 appel API par chunk, à la suite).
     Si `dry_run`, n'appelle pas l'API et n'écrit rien (affiche seulement le plan).
+
+    `source` peut être fourni par l'appelant pour éviter un rechargement à
+    chaque épisode lorsqu'on traite une liste (boucle main).
     """
-    source = load_source(source_id)
+    if source is None:
+        source = load_source(source_id)
     episode = read_json(episode_path)
     guid = episode["guid"]
     transcript_path = transcript_path_for(source_id, guid)
@@ -473,27 +540,22 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
     raw_recos: list[dict[str, Any]] = []
     for i, chunk in enumerate(chunks, 1):
         log.info("  Chunk %d/%d…", i, len(chunks))
-        raw_recos.extend(_call_llm(client, model, podcast_title, hosts, chunk))
+        raw_recos.extend(_call_llm(client, model, podcast_title, hosts, chunk,
+                                   provider))  # type: ignore[arg-type]
 
     return _persist_recos(source_id, guid, raw_recos, provider)
 
 
-def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
-                      model: str = MODEL,
-                      poll_seconds: int = BATCH_POLL_SECONDS,
-                      provider: str = "anthropic") -> int:
-    """
-    Extraction par LOT via la Message Batches API (−50 % de coût, asynchrone).
+# --- Batch helpers ---------------------------------------------------------
+def _build_batch_requests(source_id: str, episode_paths: list[Path],
+                          podcast_title: str, hosts: str,
+                          model: str) -> tuple[list[dict[str, Any]],
+                                               dict[str, str],
+                                               list[str]]:
+    """Prépare les requêtes batch.
 
-    Toutes les requêtes (1 par chunk, tous épisodes confondus) sont soumises en
-    un seul batch, puis on attend la fin du traitement et on écrit les recos par
-    épisode. Idéal pour traiter beaucoup d'épisodes d'un coup.
+    Renvoie (requests, custom_id → guid, liste des guids traitables).
     """
-    source = load_source(source_id)
-    podcast_title = source.get("title", source_id)
-    hosts = ", ".join(source.get("hosts", [])) or "inconnus"
-
-    # 1. Construire les requêtes en mémorisant custom_id -> guid.
     requests: list[dict[str, Any]] = []
     cid_to_guid: dict[str, str] = {}
     guids: list[str] = []
@@ -514,28 +576,44 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
             })
             cid_to_guid[cid] = guid
             n += 1
+    return requests, cid_to_guid, guids
 
-    if not requests:
-        log.warning("Aucun chunk à traiter (transcriptions manquantes ?).")
-        return 0
 
-    log.info("Batch : %d requête(s) sur %d épisode(s), modèle %s.",
-             len(requests), len(guids), model)
-
-    # 2. Soumettre le batch.
+def _submit_batch(client: Any, requests: list[dict[str, Any]]) -> str:
+    """Soumet le batch et renvoie son identifiant."""
     batch = client.messages.batches.create(requests=requests)
-    batch_id = batch.id
-    log.info("Batch créé : %s. Traitement en cours…", batch_id)
+    log.info("Batch créé : %s. Traitement en cours…", batch.id)
+    return batch.id
 
-    # 3. Scruter jusqu'à la fin.
+
+def _poll_batch_until_done(client: Any, batch_id: str,
+                           poll_seconds: int,
+                           timeout_seconds: int = BATCH_TIMEOUT_SECONDS) -> None:
+    """Scrute le statut d'un batch jusqu'à un état terminal.
+
+    Lève `TimeoutError` si le batch dépasse `timeout_seconds`.
+    """
+    deadline = time.time() + timeout_seconds
     while True:
         batch = client.messages.batches.retrieve(batch_id)
-        if batch.processing_status == "ended":
-            break
-        log.info("  … statut=%s", batch.processing_status)
+        status = batch.processing_status
+        if status in TERMINAL_STATUSES:
+            if status != "ended":
+                log.warning("Batch %s terminé avec statut=%s", batch_id, status)
+            return
+        log.info("  … statut=%s", status)
+        if time.time() > deadline:
+            raise TimeoutError(
+                f"Batch {batch_id} pas terminé après {timeout_seconds}s "
+                f"(dernier statut: {status})."
+            )
         time.sleep(poll_seconds)
 
-    # 4. Récupérer et regrouper les résultats par épisode.
+
+def _collect_results(client: Any, batch_id: str,
+                     cid_to_guid: dict[str, str],
+                     guids: list[str]) -> dict[str, list[dict[str, Any]]]:
+    """Récupère les résultats batch et regroupe les recos brutes par guid."""
     raw_by_guid: dict[str, list[dict[str, Any]]] = {g: [] for g in guids}
     errors = 0
     for entry in client.messages.batches.results(batch_id):
@@ -548,38 +626,46 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
             )
         else:
             errors += 1
-            log.warning("  Requête %s en échec : %s", entry.custom_id, entry.result.type)
+            log.warning("  Requête %s en échec : %s",
+                        entry.custom_id, entry.result.type)
     if errors:
         log.warning("%d requête(s) en échec dans le batch.", errors)
+    return raw_by_guid
 
-    # 5. Écrire les recos par épisode.
+
+def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
+                      model: str = MODEL,
+                      poll_seconds: int = BATCH_POLL_SECONDS,
+                      provider: str = "anthropic") -> int:
+    """
+    Extraction par LOT via la Message Batches API (−50 % de coût, asynchrone).
+
+    Toutes les requêtes (1 par chunk, tous épisodes confondus) sont soumises en
+    un seul batch, puis on attend la fin du traitement et on écrit les recos par
+    épisode.
+    """
+    source = load_source(source_id)
+    podcast_title = source.get("title", source_id)
+    hosts = ", ".join(source.get("hosts", [])) or "inconnus"
+
+    requests, cid_to_guid, guids = _build_batch_requests(
+        source_id, episode_paths, podcast_title, hosts, model
+    )
+    if not requests:
+        log.warning("Aucun chunk à traiter (transcriptions manquantes ?).")
+        return 0
+    log.info("Batch : %d requête(s) sur %d épisode(s), modèle %s.",
+             len(requests), len(guids), model)
+
+    batch_id = _submit_batch(client, requests)
+    _poll_batch_until_done(client, batch_id, poll_seconds)
+    raw_by_guid = _collect_results(client, batch_id, cid_to_guid, guids)
+
     total = 0
     for guid in guids:
         total += _persist_recos(source_id, guid, raw_by_guid[guid], provider)
     log.info("Batch terminé : %d nouvelle(s) reco(s) écrite(s) au total.", total)
     return total
-
-
-# Compat : les anciens tests et scripts internes importent _make_client depuis
-# ce module. On délègue désormais à common.make_anthropic_client (extrait pour
-# casser le couplage entre scripts frères — ocr_thumbnails, rematch_with_ocr…).
-def _make_client() -> Any:
-    """Initialise le client Anthropic — alias historique vers common.make_anthropic_client."""
-    return make_anthropic_client()
-
-
-def _make_openai_client() -> Any:
-    """Initialise le client OpenAI — alias historique vers common.make_openai_client."""
-    return make_openai_client()
-
-
-def _find_episode_by_guid(source_id: str, guid: str) -> Path:
-    for path in list_episode_files(source_id):
-        if read_json(path).get("guid") == guid:
-            return path
-    raise FileNotFoundError(
-        f"Aucun épisode avec guid « {guid} » dans « {source_id} »."
-    )
 
 
 def main() -> None:
@@ -611,18 +697,18 @@ def main() -> None:
     if args.dry_run:
         client = None
     elif args.provider == "openai":
-        client = _make_openai_client()
+        client = make_openai_client()
         if args.model == MODEL:  # encore le défaut Anthropic -> on switche
             args.model = "gpt-4o-mini"
         if args.batch:
             log.warning("--batch ignoré avec --provider openai (mode synchrone).")
             args.batch = False
     else:
-        client = _make_client()
+        client = make_anthropic_client()
 
     # Liste des épisodes ciblés.
     if args.guid:
-        paths = [_find_episode_by_guid(args.source, args.guid)]
+        paths = [find_episode_by_guid(args.source, args.guid)]
     else:
         paths = list_episode_files(args.source)
         if args.limit is not None:
@@ -634,12 +720,13 @@ def main() -> None:
                           args.poll_interval, args.provider)
         return
 
-    # Mode synchrone (ou dry-run).
+    # Mode synchrone (ou dry-run) : charge la source UNE fois.
+    source = load_source(args.source) if paths else None
     log.info("%d épisode(s) à traiter pour extraction.", len(paths))
     for path in paths:
         try:
             extract_for_episode(args.source, path, client, args.dry_run,
-                                args.model, args.provider)
+                                args.model, args.provider, source=source)
         except Exception as exc:  # noqa: BLE001 — on continue sur l'épisode suivant.
             log.error("Échec extraction sur %s : %s", path.name, exc)
 

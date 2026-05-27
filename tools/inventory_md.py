@@ -1,11 +1,23 @@
-"""Génère docs/inventaire-un-bon-moment.md — tableau de bord complet."""
+"""Génère docs/inventaire-<source>.md — tableau de bord complet d'une source.
+
+Usage :
+    python inventory_md.py --source un-bon-moment
+"""
 from __future__ import annotations
-import json, collections
+
+import argparse
+import collections
+from datetime import date
 from pathlib import Path
 
-EP_DIR = Path("src/content/episodes/un-bon-moment")
-TR_DIR = Path("tools/output/transcripts/un-bon-moment")
-RECO_DIR = Path("src/content/recos/un-bon-moment")
+from common import (
+    EPISODES_DIR,
+    PROJECT_ROOT,
+    RECOS_DIR,
+    TRANSCRIPTS_DIR,
+    log,
+    read_json,
+)
 
 # Guids en cours de re-transcription depuis l'audio YouTube (le worker portable
 # remplace progressivement le transcript Acast actuel par un transcript YT
@@ -36,124 +48,178 @@ ACAST_BACKUP_GUIDS = {
     "cbfadce5-1677-43ec-8665-8b47daeda6b7",
 }
 
-def fmt_dur(secs):
+# Seuil pour décider qu'une vidéo est un épisode complet (vs un extrait).
+FULL_EPISODE_SECONDS = 1800  # 30 min
+
+
+def fmt_dur(secs: int | float | None) -> str:
+    """Formate une durée en secondes vers « MmnSS ». 0/None → « — »."""
     if not secs:
         return "—"
     secs = int(secs)
-    m = secs // 60
-    s = secs % 60
-    return f"{m}mn{s:02d}"
+    minutes = secs // 60
+    seconds = secs % 60
+    return f"{minutes}mn{seconds:02d}"
 
-eps = []
-for p in EP_DIR.glob("*.json"):
-    with open(p, encoding="utf-8") as f:
-        eps.append((p, json.load(f)))
 
-recos_by_guid = collections.Counter()
-for r in RECO_DIR.glob("*.json"):
-    with open(r, encoding="utf-8") as f:
-        recos_by_guid[json.load(f).get("episodeGuid", "")] += 1
+def _load_episodes(ep_dir: Path) -> list[tuple[Path, dict]]:
+    eps: list[tuple[Path, dict]] = []
+    for path in ep_dir.glob("*.json"):
+        eps.append((path, read_json(path)))
+    eps.sort(key=lambda item: (item[1].get("season") or 0,
+                               item[1].get("number") or 9999))
+    return eps
 
-eps.sort(key=lambda item: (item[1].get("season") or 0, item[1].get("number") or 9999))
 
-n_total = len(eps)
-n_extracts = sum(1 for _, d in eps
-                 if (d.get("youtubeDuration") or 0) < 1800
-                 and (d.get("audioDuration") or 0) >= 1800)
-n_with_recos = sum(1 for _, d in eps if recos_by_guid[d["guid"]] > 0)
-n_with_transcript = sum(1 for _, d in eps if (TR_DIR / f"{d['guid']}.txt").exists())
-total_recos = sum(recos_by_guid.values())
+def _count_recos(reco_dir: Path) -> collections.Counter:
+    counts: collections.Counter = collections.Counter()
+    if not reco_dir.exists():
+        return counts
+    for path in reco_dir.glob("*.json"):
+        counts[read_json(path).get("episodeGuid", "")] += 1
+    return counts
 
-n_yt_retranscribe = len(YT_RETRANSCRIBE_GUIDS)
-n_acast_backup = len(ACAST_BACKUP_GUIDS)
 
-lines = [
-    "# Inventaire complet — un-bon-moment",
-    "",
-    f"_Généré le 2026-05-26. Total : {n_total} épisodes._",
-    "",
-    (f"**Résumé** : {n_with_recos}/{n_total} avec recos · "
-     f"{n_with_transcript}/{n_total} transcrits · "
-     f"{total_recos} recos extraites · "
-     f"⚠️ **{n_extracts} épisodes avec lien YT vers un extrait <30min**"),
-    "",
-    "## Source des transcripts",
-    "",
-    "Trois cas selon l'origine de l'audio transcrit (les timecodes du transcript "
-    "s'alignent sur cet audio, ce qui détermine l'exactitude du lien « ▶ vérifier "
-    "à HH:MM:SS ») :",
-    "",
-    "- ✅ **YT** : audio téléchargé depuis la vidéo YouTube via yt-dlp. Timecodes "
-    "  alignés sur la vidéo, lien de relecture exact. État cible.",
-    f"- 🔄 **Acast → YT en cours** : {n_yt_retranscribe} épisodes étaient transcrits "
-    "  depuis l'audio Acast (timecodes décalés par rapport à la vidéo YT à cause "
-    "  du montage). Le worker portable refait la transcription depuis l'audio YT. "
-    f"  {n_acast_backup} d'entre eux ont une **sauvegarde** `{{guid}}.acast.txt` "
-    "  pour cross-valider les nouvelles recos contre les anciennes.",
-    "- 🎧 **Acast (volontaire)** : pour les épisodes dont aucune vidéo YT complète "
-    "  n'existe sur la chaîne (ex. #18 « Alice DAVID et BÉRENGÈRE KRIEF »). Seul "
-    "  l'audio Acast est disponible.",
-    "",
-    "## Plan de cross-validation des recos (post re-transcription YT)",
-    "",
-    "1. Re-extraction LLM (Anthropic + OpenAI) sur le nouveau transcript YT → "
-    "   nouvelles recos avec timestamps alignés vidéo.",
-    "2. Pour les épisodes avec backup Acast : comparer les nouvelles recos YT aux "
-    "   recos Acast existantes. Le champ `extractors` s'enrichit alors avec des "
-    "   marqueurs additionnels (`anthropic-yt`, `anthropic-acast`, etc.).",
-    "3. Une reco présente dans les **deux sources** (Acast et YT) ET extraite par "
-    "   les **deux LLMs** est un signal de robustesse maximal (⭐⭐).",
-    "",
-    "## Tableau",
-    "",
-    "| # | Titre | Audio | Lien YT | YT dur | Recos | Source transcript | Backup Acast | Recos | Miniature |",
-    "|---|---|---:|---|---:|---:|:-:|:-:|:-:|:-:|",
-]
+def _episode_label(season: int | None, number: int | None) -> str:
+    if season and number:
+        return f"**S{season}E{number}**"
+    if number:
+        return f"**#{number}**"
+    return "—"
 
-for _, d in eps:
-    g = d["guid"]
-    s = d.get("season")
-    n = d.get("number")
-    if s and n:
-        label = f"**S{s}E{n}**"
-    elif n:
-        label = f"**#{n}**"
-    else:
-        label = "—"
-    title = (d.get("title") or "").replace("|", "／")
-    if len(title) > 65:
-        title = title[:62] + "…"
-    aud = fmt_dur(d.get("audioDuration"))
-    ytd = fmt_dur(d.get("youtubeDuration"))
-    yt = d.get("youtubeUrl") or ""
-    is_extract = (d.get("youtubeDuration") or 0) < 1800 and (d.get("audioDuration") or 0) >= 1800
-    yt_cell = f"[lien]({yt})" if yt else "—"
-    if is_extract:
-        yt_cell += " ⚠️"
-    nr = recos_by_guid[g]
-    has_t = (TR_DIR / f"{g}.txt").exists()
-    has_acast_backup = (TR_DIR / f"{g}.acast.txt").exists()
-    # Source du transcript actuel
-    if g in YT_RETRANSCRIBE_GUIDS:
-        if has_t:
-            source_cell = "🔄 Acast → YT"
-        else:
-            source_cell = "⏳ en cours"
-    elif has_t:
-        source_cell = "✅ YT" if yt else "🎧 Acast"
-    else:
-        source_cell = "❌"
-    backup_cell = "✅" if has_acast_backup else ("—" if g not in YT_RETRANSCRIBE_GUIDS else "—")
-    if nr > 0:
-        recos_cell = "✅"
-    elif not has_t:
-        recos_cell = "⏳"
-    else:
-        recos_cell = "❌"
-    thumb_cell = "✅" if yt else "❌"
-    lines.append(f"| {label} | {title} | {aud} | {yt_cell} | {ytd} | {nr} | {source_cell} | {backup_cell} | {recos_cell} | {thumb_cell} |")
 
-out = Path("docs/inventaire-un-bon-moment.md")
-out.parent.mkdir(exist_ok=True)
-out.write_text("\n".join(lines), encoding="utf-8", newline="\n")
-print(f"Écrit : {out} ({len(lines)} lignes)")
+def _truncate_title(title: str, limit: int = 65) -> str:
+    title = (title or "").replace("|", "／")
+    if len(title) > limit:
+        return title[:limit - 3] + "…"
+    return title
+
+
+def _source_cell(guid: str, has_transcript: bool, has_youtube: bool) -> str:
+    if guid in YT_RETRANSCRIBE_GUIDS:
+        return "🔄 Acast → YT" if has_transcript else "⏳ en cours"
+    if has_transcript:
+        return "✅ YT" if has_youtube else "🎧 Acast"
+    return "❌"
+
+
+def _recos_cell(n_recos: int, has_transcript: bool) -> str:
+    if n_recos > 0:
+        return "✅"
+    if not has_transcript:
+        return "⏳"
+    return "❌"
+
+
+def generate(source_id: str) -> Path:
+    """Produit `docs/inventaire-<source_id>.md`. Renvoie le chemin écrit."""
+    ep_dir = EPISODES_DIR / source_id
+    transcripts_dir = TRANSCRIPTS_DIR / source_id
+    reco_dir = RECOS_DIR / source_id
+
+    eps = _load_episodes(ep_dir)
+    recos_by_guid = _count_recos(reco_dir)
+
+    n_total = len(eps)
+    n_extracts = sum(
+        1 for _, d in eps
+        if (d.get("youtubeDuration") or 0) < FULL_EPISODE_SECONDS
+        and (d.get("audioDuration") or 0) >= FULL_EPISODE_SECONDS
+    )
+    n_with_recos = sum(1 for _, d in eps if recos_by_guid[d["guid"]] > 0)
+    n_with_transcript = sum(
+        1 for _, d in eps if (transcripts_dir / f"{d['guid']}.txt").exists()
+    )
+    total_recos = sum(recos_by_guid.values())
+    n_yt_retranscribe = len(YT_RETRANSCRIBE_GUIDS)
+    n_acast_backup = len(ACAST_BACKUP_GUIDS)
+
+    today = date.today().isoformat()
+    lines: list[str] = [
+        f"# Inventaire complet — {source_id}",
+        "",
+        f"_Généré le {today}. Total : {n_total} épisodes._",
+        "",
+        (f"**Résumé** : {n_with_recos}/{n_total} avec recos · "
+         f"{n_with_transcript}/{n_total} transcrits · "
+         f"{total_recos} recos extraites · "
+         f"⚠️ **{n_extracts} épisodes avec lien YT vers un extrait <30min**"),
+        "",
+        "## Source des transcripts",
+        "",
+        "Trois cas selon l'origine de l'audio transcrit (les timecodes du transcript "
+        "s'alignent sur cet audio, ce qui détermine l'exactitude du lien « ▶ vérifier "
+        "à HH:MM:SS ») :",
+        "",
+        "- ✅ **YT** : audio téléchargé depuis la vidéo YouTube via yt-dlp. Timecodes "
+        "  alignés sur la vidéo, lien de relecture exact. État cible.",
+        f"- 🔄 **Acast → YT en cours** : {n_yt_retranscribe} épisodes étaient transcrits "
+        "  depuis l'audio Acast (timecodes décalés par rapport à la vidéo YT à cause "
+        "  du montage). Le worker portable refait la transcription depuis l'audio YT. "
+        f"  {n_acast_backup} d'entre eux ont une **sauvegarde** `{{guid}}.acast.txt` "
+        "  pour cross-valider les nouvelles recos contre les anciennes.",
+        "- 🎧 **Acast (volontaire)** : pour les épisodes dont aucune vidéo YT complète "
+        "  n'existe sur la chaîne (ex. #18 « Alice DAVID et BÉRENGÈRE KRIEF »). Seul "
+        "  l'audio Acast est disponible.",
+        "",
+        "## Plan de cross-validation des recos (post re-transcription YT)",
+        "",
+        "1. Re-extraction LLM (Anthropic + OpenAI) sur le nouveau transcript YT → "
+        "   nouvelles recos avec timestamps alignés vidéo.",
+        "2. Pour les épisodes avec backup Acast : comparer les nouvelles recos YT aux "
+        "   recos Acast existantes. Le champ `extractors` s'enrichit alors avec des "
+        "   marqueurs additionnels (`anthropic-yt`, `anthropic-acast`, etc.).",
+        "3. Une reco présente dans les **deux sources** (Acast et YT) ET extraite par "
+        "   les **deux LLMs** est un signal de robustesse maximal (⭐⭐).",
+        "",
+        "## Tableau",
+        "",
+        "| # | Titre | Audio | Lien YT | YT dur | Recos | Source transcript | Backup Acast | Recos | Miniature |",
+        "|---|---|---:|---|---:|---:|:-:|:-:|:-:|:-:|",
+    ]
+
+    for _, d in eps:
+        guid = d["guid"]
+        season = d.get("season")
+        ep_number = d.get("number")
+        label = _episode_label(season, ep_number)
+        title = _truncate_title(d.get("title") or "")
+        aud_dur = fmt_dur(d.get("audioDuration"))
+        yt_dur = fmt_dur(d.get("youtubeDuration"))
+        yt_url = d.get("youtubeUrl") or ""
+        is_extract = (
+            (d.get("youtubeDuration") or 0) < FULL_EPISODE_SECONDS
+            and (d.get("audioDuration") or 0) >= FULL_EPISODE_SECONDS
+        )
+        yt_cell = f"[lien]({yt_url})" if yt_url else "—"
+        if is_extract:
+            yt_cell += " ⚠️"
+        n_recos = recos_by_guid[guid]
+        has_transcript = (transcripts_dir / f"{guid}.txt").exists()
+        has_acast_backup = (transcripts_dir / f"{guid}.acast.txt").exists()
+        source_cell = _source_cell(guid, has_transcript, bool(yt_url))
+        backup_cell = "✅" if has_acast_backup else "—"
+        recos_cell = _recos_cell(n_recos, has_transcript)
+        thumb_cell = "✅" if yt_url else "❌"
+        lines.append(
+            f"| {label} | {title} | {aud_dur} | {yt_cell} | {yt_dur} | "
+            f"{n_recos} | {source_cell} | {backup_cell} | {recos_cell} | {thumb_cell} |"
+        )
+
+    out = PROJECT_ROOT / "docs" / f"inventaire-{source_id}.md"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    log.info("Écrit : %s (%d lignes)", out, len(lines))
+    return out
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", required=True,
+                        help="Identifiant de la source (ex: un-bon-moment).")
+    args = parser.parse_args()
+    generate(args.source)
+
+
+if __name__ == "__main__":
+    main()

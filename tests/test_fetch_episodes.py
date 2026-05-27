@@ -9,6 +9,7 @@ from types import SimpleNamespace
 from typing import Any
 
 import pytest
+import responses
 
 import fetch_episodes
 from fetch_episodes import (
@@ -65,6 +66,22 @@ def test_extract_number_invalid_itunes_falls_back_to_title():
     assert _extract_number({"itunes_episode": "abc", "title": "Ep 12"}) == 12
 
 
+def test_extract_number_ignores_year_in_itunes_tag():
+    """Tag <itunes:episode> contenant une année (2024) → ignoré."""
+    # Avec un titre sans numéro → None.
+    assert _extract_number({"itunes_episode": "2024", "title": "Hors-série"}) is None
+
+
+def test_extract_number_ignores_year_pattern_in_title():
+    """« Épisode 2024 » est probablement l'année, pas un numéro d'épisode."""
+    assert _extract_number({"title": "Episode 2024 — bilan"}) is None
+
+
+def test_extract_number_keeps_low_numbers():
+    """Un numéro plausible (<1990) est conservé."""
+    assert _extract_number({"itunes_episode": "1989"}) == 1989
+
+
 def test_extract_number_empty_dict_returns_none():
     # Entrée RSS sans titre, description, ni `itunes_episode` : aucun numéro
     # à extraire. (Le nom précédent évoquait des entrées non-dict, mais
@@ -84,6 +101,10 @@ def test_extract_number_empty_dict_returns_none():
     ("", None),
     ("nawak", None),
     ("12:ab", None),
+    # 0 ou négatif : valeurs inutilisables → None.
+    ("0", None),
+    ("0:00", None),
+    ("0:00:00", None),
 ])
 def test_parse_duration_various_formats(raw, expected):
     assert _parse_duration(raw) == expected
@@ -241,7 +262,12 @@ def _make_fake_feed(entries: list[dict], bozo: bool = False, bozo_exc: Any = Non
 
 @pytest.fixture
 def isolated_dirs(tmp_path, monkeypatch):
-    """Isole SOURCES_DIR / EPISODES_DIR dans un tmp_path pour ne rien polluer."""
+    """Isole SOURCES_DIR / EPISODES_DIR dans un tmp_path pour ne rien polluer.
+
+    Stub aussi `requests.get` : le pipeline télécharge le flux RSS via
+    `requests.get(rss_url)` puis passe `resp.text` à `feedparser.parse`.
+    Les tests gardent leur stub de `feedparser.parse` ignorant l'argument.
+    """
     import common
     sources = tmp_path / "sources"
     episodes = tmp_path / "episodes"
@@ -249,6 +275,10 @@ def isolated_dirs(tmp_path, monkeypatch):
     episodes.mkdir()
     monkeypatch.setattr(common, "SOURCES_DIR", sources)
     monkeypatch.setattr(common, "EPISODES_DIR", episodes)
+
+    fake_resp = SimpleNamespace(text="<rss/>", raise_for_status=lambda: None)
+    monkeypatch.setattr(fetch_episodes.requests, "get",
+                        lambda url, **kw: fake_resp)
     return SimpleNamespace(sources=sources, episodes=episodes, root=tmp_path)
 
 
@@ -326,12 +356,14 @@ def test_fetch_episodes_rss_override_used(isolated_dirs, monkeypatch):
     _write_source(isolated_dirs.sources, "ubm", {"id": "ubm"})  # pas de rssUrl
     received = {}
 
-    def fake_parse(url):
+    def fake_get(url, **kw):
         received["url"] = url
-        return _make_fake_feed([])
+        return SimpleNamespace(text="<rss/>", raise_for_status=lambda: None)
 
-    monkeypatch.setattr(fetch_episodes.feedparser, "parse", fake_parse)
-    # Pas de bozo et pas d'entries → 0 écrit, mais on a quand même appelé parse.
+    monkeypatch.setattr(fetch_episodes.requests, "get", fake_get)
+    monkeypatch.setattr(fetch_episodes.feedparser, "parse",
+                        lambda _txt: _make_fake_feed([]))
+    # Pas de bozo et pas d'entries → 0 écrit, mais on a quand même appelé requests.
     written = run_fetch("ubm", rss_override="https://override/rss")
     assert written == 0
     assert received["url"] == "https://override/rss"
@@ -384,6 +416,45 @@ def test_fetch_episodes_preserves_transcript_and_guests(isolated_dirs, monkeypat
     assert merged["youtubeUrl"].endswith("=DEJA")    # préservé
 
 
+def test_fetch_episodes_invalid_rss_url_raises(isolated_dirs):
+    """URL ne commençant pas par http(s):// → ValueError explicite."""
+    _write_source(isolated_dirs.sources, "ubm",
+                  {"id": "ubm", "rssUrl": "ftp://nope/rss"})
+    with pytest.raises(ValueError, match="invalide"):
+        run_fetch("ubm")
+
+
+def test_fetch_episodes_http_failure_raises(isolated_dirs, monkeypatch):
+    """`requests.get` qui plante → RuntimeError clair."""
+    import requests as requests_lib
+    _write_source(isolated_dirs.sources, "ubm",
+                  {"id": "ubm", "rssUrl": "https://x/rss"})
+
+    def boom(url, **kw):
+        raise requests_lib.ConnectionError("offline")
+
+    monkeypatch.setattr(fetch_episodes.requests, "get", boom)
+    with pytest.raises(RuntimeError, match="Téléchargement RSS"):
+        run_fetch("ubm")
+
+
+def test_fetch_episodes_corrupt_existing_logs_warning(isolated_dirs, monkeypatch, caplog):
+    """Le fichier d'épisode corrompu déclenche un log.warning explicite."""
+    _write_source(isolated_dirs.sources, "ubm", {"id": "ubm", "rssUrl": "https://x/rss"})
+    out_dir = isolated_dirs.episodes / "ubm"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "broken.json").write_text("{ pas du JSON", encoding="utf-8")
+
+    monkeypatch.setattr(
+        fetch_episodes.feedparser, "parse",
+        lambda _txt: _make_fake_feed([]),
+    )
+    import logging
+    with caplog.at_level(logging.WARNING, logger="reco"):
+        run_fetch("ubm")
+    assert any("corrompu" in r.message.lower() for r in caplog.records)
+
+
 def test_fetch_episodes_skips_corrupt_existing_index(isolated_dirs, monkeypatch):
     """Un fichier corrompu dans le dossier d'épisodes n'empêche pas le fetch."""
     _write_source(isolated_dirs.sources, "ubm", {"id": "ubm", "rssUrl": "https://x/rss"})
@@ -401,6 +472,27 @@ def test_fetch_episodes_skips_corrupt_existing_index(isolated_dirs, monkeypatch)
     )
     # Le fetch doit fonctionner et créer un nouveau fichier.
     assert run_fetch("ubm") == 1
+
+
+def test_main_invokes_fetch_episodes(monkeypatch):
+    captured = {}
+
+    def fake(source, limit=None, rss_override=None):
+        captured.update(dict(source=source, limit=limit, rss=rss_override))
+        return 0
+
+    monkeypatch.setattr(fetch_episodes, "fetch_episodes", fake)
+    monkeypatch.setattr(sys, "argv",
+                        ["fetch_episodes.py", "--source", "ubm",
+                         "--limit", "3", "--rss", "https://x/rss"])
+    fetch_episodes.main()
+    assert captured == {"source": "ubm", "limit": 3, "rss": "https://x/rss"}
+
+
+def test_main_requires_source(monkeypatch):
+    monkeypatch.setattr(sys, "argv", ["fetch_episodes.py"])
+    with pytest.raises(SystemExit):
+        fetch_episodes.main()
 
 
 def test_fetch_episodes_collision_falls_back_to_guid_slug(isolated_dirs, monkeypatch):

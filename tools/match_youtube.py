@@ -20,13 +20,14 @@ from __future__ import annotations
 
 import argparse
 import re
-import unicodedata
 from difflib import SequenceMatcher
 
 from common import (
+    extract_youtube_id,
     list_episode_files,
     load_source,
     log,
+    normalize_text,
     read_json,
     write_json_if_changed,
 )
@@ -36,13 +37,11 @@ _SUFFIX_RE = re.compile(r"\((?:un bon moment|a good time)[^)]*\)", re.IGNORECASE
 
 
 def _normalize(text: str) -> str:
-    """Minuscule, sans accents, sans ponctuation, espaces normalisés."""
-    text = _SUFFIX_RE.sub(" ", text)
-    text = unicodedata.normalize("NFKD", text)
-    text = "".join(c for c in text if not unicodedata.combining(c))
-    text = text.lower()
-    text = re.sub(r"[^a-z0-9 ]+", " ", text)
-    return re.sub(r"\s+", " ", text).strip()
+    """Minuscule, sans accents, sans ponctuation, espaces normalisés.
+
+    Wrapper qui retire d'abord le suffixe podcast puis applique `common.normalize_text`.
+    """
+    return normalize_text(_SUFFIX_RE.sub(" ", text or ""))
 
 
 # Mots vides ignorés pour la comparaison « par contenu ».
@@ -96,12 +95,6 @@ def _fetch_channel_videos(channel_url: str) -> list[dict[str, str]]:
     return videos
 
 
-def _video_id(url: str) -> str | None:
-    """Extrait l'identifiant d'une URL YouTube watch?v=…."""
-    m = re.search(r"[?&]v=([A-Za-z0-9_-]+)", url or "")
-    return m.group(1) if m else None
-
-
 def _parse_se(title: str) -> tuple[int | None, int | None]:
     """Extrait (saison, épisode) d'un titre type « (Un Bon Moment, S5-E31) »."""
     m = re.search(r"\bS(\d+)\s*[-–·.]?\s*E(\d+)\b", title or "", re.IGNORECASE)
@@ -118,9 +111,14 @@ def _apply_video_meta(episode: dict, video: dict) -> bool:
         episode["youtubeTitle"] = title
         changed = True
     dur = video.get("duration")
-    if dur and episode.get("youtubeDuration") != int(dur):
-        episode["youtubeDuration"] = int(dur)
-        changed = True
+    if dur:
+        try:
+            dur_int = int(dur)
+        except (TypeError, ValueError):
+            dur_int = None
+        if dur_int is not None and episode.get("youtubeDuration") != dur_int:
+            episode["youtubeDuration"] = dur_int
+            changed = True
     season, number = _parse_se(title or "")
     if season and episode.get("season") != season:
         episode["season"] = season
@@ -165,7 +163,7 @@ def match_youtube(source_id: str, threshold: float, force: bool, dry_run: bool) 
 
         if existing and not force:
             # Déjà associé : on complète titre/durée/saison/numéro si possible.
-            video = meta_by_id.get(_video_id(existing) or "")
+            video = meta_by_id.get(extract_youtube_id(existing) or "")
             if video:
                 changed = _apply_video_meta(episode, video)
         else:

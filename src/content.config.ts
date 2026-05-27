@@ -101,7 +101,19 @@ const recos = defineCollection({
   schema: z.object({
     id: z.string(),
     sourceId: reference('sources'),
-    episodeGuid: z.string(), // relie à episodes[].guid
+    // Relie à episodes[].guid. On garde un `z.string()` plutôt que
+    // `reference('episodes')` parce que :
+    //  - les recos sont stockées par `id` (ex. `ubm-0001`) alors qu'Astro
+    //    indexe les épisodes par leur chemin de fichier (slug). Un
+    //    `reference('episodes')` exigerait que les fichiers d'épisodes
+    //    soient nommés d'après leur `guid`, ce qui n'est pas le cas
+    //    aujourd'hui (les épisodes sont nommés `ep-NNN.json`).
+    //  - le pipeline d'extraction peut produire une reco avant que le
+    //    fichier d'épisode correspondant ne soit présent (matching YT
+    //    asynchrone). Un `reference()` casserait le build dans ce cas.
+    //  - les pages joignent les deux collections via un `Map<guid, ep>`,
+    //    ce qui reste lisible et performant.
+    episodeGuid: z.string(),
     title: z.string(),
     creator: z.string().optional(), // auteur·rice / réalisateur·rice / artiste
     type: recoType,

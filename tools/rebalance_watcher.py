@@ -4,9 +4,10 @@ rebalance_watcher.py — Watcher de coordination main (CPU) ⇄ portable (GPU).
 Tourne sur la machine principale et fait deux choses :
 
   1. **Rapatriement périodique** : toutes les 10 min, pull tous les .txt nouveaux
-     depuis le portable (http://llm.local:8002) vers le dossier projet. Ainsi,
-     un guid déjà transcrit par le portable apparaît localement et la transcribe
-     en cours sur main le saute automatiquement (cache par existence de fichier).
+     depuis le portable (par défaut http://llm.local:8002) vers le dossier
+     projet. Ainsi, un guid déjà transcrit par le portable apparaît localement
+     et la transcribe en cours sur main le saute automatiquement (cache par
+     existence de fichier).
 
   2. **Rééquilibrage** : dès que le portable a fini sa liste initiale (49 .txt
      servis), réécrit `dispatch/laptop_guids.txt` avec ~75 % de ce qu'il reste
@@ -16,10 +17,18 @@ Tourne sur la machine principale et fait deux choses :
 
 S'arrête quand tous les épisodes (ayant une vidéo YT) ont leur transcription
 localement sur la machine principale.
+
+Usage :
+    python rebalance_watcher.py --source un-bon-moment
+
+Configurable par variables d'environnement (optionnel) :
+    LAPTOP_URL  (défaut: http://llm.local:8002)
+    SSH_HOST    (défaut: llm@llm.local)
 """
 
 from __future__ import annotations
 
+import argparse
 import os
 import re
 import subprocess
@@ -30,20 +39,27 @@ from pathlib import Path
 
 from common import list_episode_files, log, read_json, transcript_path_for
 
-LAPTOP_URL = "http://192.168.1.127:8002"  # IP directe (mDNS llm.local flanche parfois)
+# --- Configuration --------------------------------------------------------
+# Surchargeable par env pour adapter à un autre setup sans toucher au code.
+LAPTOP_URL = os.environ.get("LAPTOP_URL", "http://llm.local:8002")
+SSH_HOST = os.environ.get("SSH_HOST", "llm@llm.local")
+
 DISPATCH = Path(__file__).resolve().parent / "dispatch"
-TRANSCRIPTS_DIR = Path(__file__).resolve().parent / "output" / "transcripts" / "un-bon-moment"
-SOURCE = "un-bon-moment"
 PORTABLE_INITIAL = 49        # taille de la liste laptop_guids.txt initiale
 POLL_SECONDS = 600           # 10 min
 HANDOVER_RATIO = 0.75        # part du restant main donnée au portable
 HANG_THRESHOLD = 45 * 60     # 45 min sans nouveau transcript -> kill+relance
 
-# Accès SSH au portable (pour relancer le worker après rééquilibrage).
-SSH_KEY = Path(os.environ["USERPROFILE"]) / ".ssh" / "reco_laptop"
-SSH_HOST = "llm@192.168.1.127"
+# Clé SSH : ~/.ssh/reco_laptop, en gérant Windows (USERPROFILE) et POSIX (HOME).
+_HOME = os.environ.get("USERPROFILE") or os.environ.get("HOME") or "."
+SSH_KEY = Path(_HOME) / ".ssh" / "reco_laptop"
 SSH_OPTS = ["-i", str(SSH_KEY), "-o", "StrictHostKeyChecking=accept-new",
             "-o", "BatchMode=yes", "-o", "ConnectTimeout=10"]
+
+
+def transcripts_dir_for(source_id: str) -> Path:
+    """Dossier des transcripts d'une source (sur la machine principale)."""
+    return Path(__file__).resolve().parent / "output" / "transcripts" / source_id
 
 
 def laptop_transcripts() -> set[str] | None:
@@ -56,12 +72,12 @@ def laptop_transcripts() -> set[str] | None:
         return None
 
 
-def pull_missing(remote_files: set[str]) -> int:
+def pull_missing(remote_files: set[str], transcripts_dir: Path) -> int:
     """Télécharge les fichiers absents en local. Renvoie le nombre récupéré."""
-    TRANSCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+    transcripts_dir.mkdir(parents=True, exist_ok=True)
     new = 0
     for fname in remote_files:
-        target = TRANSCRIPTS_DIR / fname
+        target = transcripts_dir / fname
         if target.exists():
             continue
         try:
@@ -73,12 +89,12 @@ def pull_missing(remote_files: set[str]) -> int:
     return new
 
 
-def main_remaining_guids() -> list[str]:
+def main_remaining_guids(source_id: str) -> list[str]:
     """Guids de main_guids.txt qui n'ont PAS encore de transcript local."""
     raw = (DISPATCH / "main_guids.txt").read_text(encoding="utf-8").splitlines()
     pending = []
     for guid in (g.strip() for g in raw):
-        if guid and not transcript_path_for(SOURCE, guid).exists():
+        if guid and not transcript_path_for(source_id, guid).exists():
             pending.append(guid)
     return pending
 
@@ -110,9 +126,9 @@ def relaunch_worker_on_laptop() -> bool:
     return False
 
 
-def rebalance() -> int:
+def rebalance(source_id: str) -> int:
     """Réécrit laptop_guids.txt avec la queue arrière de main. Renvoie taille."""
-    pending = main_remaining_guids()
+    pending = main_remaining_guids(source_id)
     if not pending:
         return 0
     n = max(1, int(round(len(pending) * HANDOVER_RATIO)))
@@ -130,30 +146,34 @@ def rebalance() -> int:
     return n
 
 
-def global_missing() -> int:
+def global_missing(source_id: str) -> int:
     """Compte les épisodes (avec YT) sans transcript local."""
     missing = 0
-    for path in list_episode_files(SOURCE):
+    for path in list_episode_files(source_id):
         ep = read_json(path)
-        if ep.get("youtubeUrl") and not transcript_path_for(SOURCE, ep["guid"]).exists():
+        if ep.get("youtubeUrl") and not transcript_path_for(source_id, ep["guid"]).exists():
             missing += 1
     return missing
 
 
-def main() -> None:
+def watch_loop(source_id: str) -> None:
+    """Boucle principale du watcher (sortie quand plus rien à transcrire)."""
+    transcripts_dir = transcripts_dir_for(source_id)
     guids_written = False     # nouvelle laptop_guids.txt déjà écrite
     worker_kicked = False     # nouveau worker portable lancé
     last_count = -1           # dernier nb de transcripts vus côté portable
     last_change = time.time() # quand le compteur a bougé pour la dernière fois
-    log.info("Watcher de rééquilibrage démarré (poll %ds, %s).", POLL_SECONDS, LAPTOP_URL)
+    log.info("Watcher de rééquilibrage démarré (poll %ds, %s).",
+             POLL_SECONDS, LAPTOP_URL)
     while True:
         remote = laptop_transcripts()
         if remote is None:
-            log.warning("portable injoignable (llm.local:8002), je retente dans 60 s")
+            log.warning("portable injoignable (%s), je retente dans 60 s",
+                        LAPTOP_URL)
             time.sleep(60)
             continue
 
-        new = pull_missing(remote)
+        new = pull_missing(remote, transcripts_dir)
         if new:
             log.info("pull : %d nouveau(x) transcript(s) rapatrié(s)", new)
 
@@ -161,7 +181,7 @@ def main() -> None:
         if len(remote) != last_count:
             last_count = len(remote)
             last_change = time.time()
-        elif time.time() - last_change > HANG_THRESHOLD and global_missing() > 0:
+        elif time.time() - last_change > HANG_THRESHOLD and global_missing(source_id) > 0:
             mins = int((time.time() - last_change) / 60)
             log.warning("HANG détecté : aucun nouveau transcript depuis %d min — "
                         "je tue et relance le worker portable.", mins)
@@ -175,20 +195,28 @@ def main() -> None:
             if not guids_written:
                 log.info("Portable a terminé sa liste initiale (%d transcripts servis).",
                          len(remote))
-                rebalance()        # écrit la nouvelle liste + tente la relance SSH
+                rebalance(source_id)
                 guids_written = True
                 worker_kicked = laptop_worker_running()
             elif not worker_kicked:
                 if not laptop_worker_running():
                     worker_kicked = relaunch_worker_on_laptop()
 
-        missing = global_missing()
+        missing = global_missing(source_id)
         log.info("État : portable=%d transcripts, à faire (global)=%d",
                  len(remote), missing)
         if missing == 0:
             log.info("Tout est transcrit. Fin du watcher.")
             return
         time.sleep(POLL_SECONDS)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", required=True,
+                        help="Identifiant de la source (ex: un-bon-moment).")
+    args = parser.parse_args()
+    watch_loop(args.source)
 
 
 if __name__ == "__main__":

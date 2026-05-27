@@ -30,9 +30,13 @@ from pathlib import Path
 from typing import Any
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from common import (
     AUDIO_DIR,
+    find_episode_by_guid,
+    format_timestamp,
     list_episode_files,
     log,
     read_json,
@@ -55,22 +59,34 @@ _HTTP_HEADERS = {
 }
 
 
-def _format_timestamp(seconds: float) -> str:
-    """Formate un nombre de secondes en « HH:MM:SS »."""
-    seconds = int(seconds)
-    h, rem = divmod(seconds, 3600)
-    m, s = divmod(rem, 60)
-    return f"{h:02d}:{m:02d}:{s:02d}"
+# Alias historique : délègue à common.format_timestamp.
+_format_timestamp = format_timestamp
+
+
+def _make_http_session() -> requests.Session:
+    """Session HTTP avec retry exponentiel (3 essais) sur erreurs transitoires."""
+    session = requests.Session()
+    retry = Retry(
+        total=3, backoff_factor=1.0,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=frozenset(("GET", "HEAD")),
+        raise_on_status=False,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+    return session
 
 
 def _download_http(url: str, dest: Path) -> Path:
-    """Télécharge un fichier audio HTTP(S) en streaming. Renvoie le chemin."""
+    """Télécharge un fichier audio HTTP(S) en streaming, avec retries. Renvoie le chemin."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists() and dest.stat().st_size > 0:
         log.info("Audio déjà téléchargé : %s", dest.name)
         return dest
     log.info("Téléchargement de l'audio : %s", url)
-    with requests.get(url, stream=True, timeout=60, headers=_HTTP_HEADERS) as resp:
+    session = _make_http_session()
+    with session.get(url, stream=True, timeout=60, headers=_HTTP_HEADERS) as resp:
         resp.raise_for_status()
         tmp = dest.with_suffix(dest.suffix + ".part")
         with tmp.open("wb") as fh:
@@ -214,17 +230,6 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
     return True
 
 
-def _find_episode_by_guid(source_id: str, guid: str) -> Path:
-    """Retrouve le fichier JSON d'un épisode par son guid."""
-    for path in list_episode_files(source_id):
-        if read_json(path).get("guid") == guid:
-            return path
-    raise FileNotFoundError(
-        f"Aucun épisode avec guid « {guid} » dans la source « {source_id} ». "
-        f"Lance d'abord fetch_episodes.py."
-    )
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Télécharge et transcrit l'audio des épisodes (faster-whisper)."
@@ -253,7 +258,7 @@ def main() -> None:
     language = args.language or None
 
     if args.guid:
-        path = _find_episode_by_guid(args.source, args.guid)
+        path = find_episode_by_guid(args.source, args.guid)
         transcribe_episode(args.source, path, args.model, language, args.force, args.youtube)
         return
 

@@ -17,11 +17,11 @@ import pytest
 
 import common
 import extract_recos
+from common import find_episode_by_guid as _find_episode_by_guid  # alias local
 from extract_recos import (
     _chunk_transcript,
     _dedupe,
     _extract_json_block,
-    _find_episode_by_guid,
     _next_reco_index,
     _norm,
     _normalize_reco,
@@ -157,10 +157,21 @@ def test_chunk_transcript_single_chunk():
 
 def test_chunk_transcript_splits_on_lines():
     text = "AAAA\nBBBB\nCCCC\n"
-    chunks = _chunk_transcript(text, max_chars=6)
-    # Chaque ligne fait 5 chars, donc on doit obtenir plusieurs chunks.
+    # overlap_chars=0 : pas de recouvrement, on peut tester l'invariant
+    # « la concat des chunks reproduit le texte d'origine ».
+    chunks = _chunk_transcript(text, max_chars=6, overlap_chars=0)
     assert len(chunks) >= 2
     assert "".join(chunks) == text
+
+
+def test_chunk_transcript_overlap_repeats_last_lines():
+    """Avec un overlap > 0, le début du chunk N+1 reprend la fin du chunk N."""
+    text = "AAAA\nBBBB\nCCCC\nDDDD\n"
+    chunks = _chunk_transcript(text, max_chars=6, overlap_chars=5)
+    # On a forcément au moins 2 chunks et le 2e doit commencer par un fragment
+    # déjà présent à la fin du 1er (le recouvrement préserve les recos à cheval).
+    assert len(chunks) >= 2
+    assert any(line in chunks[1] for line in chunks[0].splitlines(keepends=True))
 
 
 def test_chunk_transcript_empty():
@@ -472,7 +483,7 @@ def test_main_anthropic_sync(tmp_source, monkeypatch):
     fake_client.messages.create.return_value = _fake_anthropic_message(
         {"recos": [{"title": "Truc", "type": "film"}]}
     )
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
         "--guid", tmp_source.guid,
@@ -485,7 +496,7 @@ def test_main_openai_switches_default_model(tmp_source, monkeypatch):
     fake_client.chat.completions.create.return_value = _fake_openai_response(
         {"recos": [{"title": "Truc", "type": "film"}]}
     )
-    monkeypatch.setattr(extract_recos, "_make_openai_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_openai_client", lambda: fake_client)
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
         "--guid", tmp_source.guid, "--provider", "openai",
@@ -500,7 +511,7 @@ def test_main_openai_batch_warning(tmp_source, monkeypatch, caplog):
     fake_client.chat.completions.create.return_value = _fake_openai_response(
         {"recos": []}
     )
-    monkeypatch.setattr(extract_recos, "_make_openai_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_openai_client", lambda: fake_client)
     # --batch + --provider openai : doit warn et basculer en sync.
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
@@ -517,7 +528,7 @@ def test_main_all_with_limit(tmp_source, monkeypatch):
     # Pas de transcript pour EP002 -> il sera silently skipped (return 0).
     fake_client = MagicMock(spec=["messages"])
     fake_client.messages.create.return_value = _fake_anthropic_message({"recos": []})
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
         "--all", "--limit", "1",
@@ -539,7 +550,7 @@ def test_main_batch_mode(tmp_source, monkeypatch):
                             type="succeeded",
                             message=SimpleNamespace(content=ok_msg.content))),
     ]
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
         "--all", "--batch", "--poll-interval", "0",
@@ -553,7 +564,7 @@ def test_main_episode_extraction_failure_is_logged(tmp_source, monkeypatch, capl
         raise RuntimeError("boom")
     monkeypatch.setattr(extract_recos, "extract_for_episode", boom)
     fake_client = MagicMock(spec=["messages"])
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: fake_client)
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
     _run_main(monkeypatch, [
         "extract_recos.py", "--source", tmp_source.source_id,
         "--guid", tmp_source.guid,
@@ -571,7 +582,7 @@ def test_make_client_missing_key(monkeypatch):
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
     monkeypatch.setattr(dotenv, "load_dotenv", lambda *a, **k: None)
     with pytest.raises(RuntimeError, match="ANTHROPIC_API_KEY"):
-        extract_recos._make_client()
+        extract_recos.make_anthropic_client()
 
 
 def test_make_openai_client_missing_key(monkeypatch):
@@ -580,7 +591,7 @@ def test_make_openai_client_missing_key(monkeypatch):
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
     monkeypatch.setattr(dotenv, "load_dotenv", lambda *a, **k: None)
     with pytest.raises(RuntimeError, match="OPENAI_API_KEY"):
-        extract_recos._make_openai_client()
+        extract_recos.make_openai_client()
 
 
 def test_make_client_with_key(monkeypatch):
@@ -588,7 +599,7 @@ def test_make_client_with_key(monkeypatch):
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
     fake_anthropic = MagicMock()
     monkeypatch.setitem(sys.modules, "anthropic", fake_anthropic)
-    extract_recos._make_client()
+    extract_recos.make_anthropic_client()
     fake_anthropic.Anthropic.assert_called_once_with(api_key="fake-key")
 
 
@@ -597,5 +608,5 @@ def test_make_openai_client_with_key(monkeypatch):
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
     fake_openai = MagicMock()
     monkeypatch.setitem(sys.modules, "openai", fake_openai)
-    extract_recos._make_openai_client()
+    extract_recos.make_openai_client()
     fake_openai.OpenAI.assert_called_once_with(api_key="fake-key")

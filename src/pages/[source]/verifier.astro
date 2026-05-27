@@ -53,7 +53,13 @@ function videoTc(timestamp?: string): string {
 const draftCount = recos.filter((r) => r.status === 'draft').length;
 ---
 
-<Layout title={`Vérifier — ${data.title}`} theme={data.theme}>
+<!--
+  Page de relecture interne — NON destinée au grand public.
+  - `noindex`  : empêche l'indexation (meta robots ajouté par le Layout).
+  - sitemap    : la route `/verifier` est exclue du sitemap (cf. astro.config.mjs).
+  - robots.txt : `Disallow: /*/verifier` (cf. public/robots.txt).
+-->
+<Layout title={`Vérifier — ${data.title}`} theme={data.theme} noindex>
   <header class="head wrap">
     <a class="back" href={`/${source.id}`}>← retour au catalogue</a>
     <h1>Vérifier les recos</h1>

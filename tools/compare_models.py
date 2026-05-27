@@ -19,8 +19,8 @@ import subprocess
 import time
 from pathlib import Path
 
-from common import OUTPUT_DIR, log, read_json
-from transcribe import _format_timestamp, _resolve_audio, _find_episode_by_guid
+from common import OUTPUT_DIR, find_episode_by_guid, format_timestamp, log, read_json
+from transcribe import _resolve_audio
 
 # Épisode de test par défaut (« avec Hakim Jemili », contient la reco « Mortel »).
 DEFAULT_GUID = "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad"
@@ -46,7 +46,7 @@ def _transcribe_clip(clip: Path, model_name: str, language: str | None) -> tuple
     log.info("[%s] chargement du modèle…", model_name)
     model = WhisperModel(model_name, device="cpu", compute_type="int8")
     segments, info = model.transcribe(str(clip), language=language, vad_filter=True, beam_size=5)
-    lines = [f"[{_format_timestamp(seg.start)}] {seg.text.strip()}" for seg in segments]
+    lines = [f"[{format_timestamp(seg.start)}] {seg.text.strip()}" for seg in segments]
     elapsed = time.time() - t0
     log.info("[%s] terminé en %.0f s (langue %s).", model_name, elapsed, info.language)
     return "\n".join(lines) + "\n", elapsed
@@ -64,7 +64,7 @@ def main() -> None:
     args = parser.parse_args()
 
     models = [m.strip() for m in args.models.split(",") if m.strip()]
-    episode = read_json(_find_episode_by_guid(args.source, args.guid))
+    episode = read_json(find_episode_by_guid(args.source, args.guid))
     audio = _resolve_audio(args.source, episode)  # réutilise l'audio en cache.
 
     out_dir = OUTPUT_DIR / "compare" / args.guid

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /*/verifier
+Allow: /
+
+Sitemap: https://reco.example/sitemap-index.xml

@@ -345,13 +345,13 @@ def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
 
 # ===== _find_episode_by_guid ================================================
 def test_find_episode_by_guid_found(ep_setup):
-    p = tr._find_episode_by_guid(ep_setup["src"], "ep-1")
+    p = tr.find_episode_by_guid(ep_setup["src"], "ep-1")
     assert p == ep_setup["ep_path"]
 
 
 def test_find_episode_by_guid_missing(ep_setup):
     with pytest.raises(FileNotFoundError, match="Aucun épisode"):
-        tr._find_episode_by_guid(ep_setup["src"], "inconnu")
+        tr.find_episode_by_guid(ep_setup["src"], "inconnu")
 
 
 # ===== main =================================================================

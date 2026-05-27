@@ -22,7 +22,7 @@ import ocr_thumbnails
     (None, None),
 ])
 def test_video_id(url, expected):
-    assert ocr_thumbnails._video_id(url) == expected
+    assert ocr_thumbnails.extract_youtube_id(url) == expected
 
 
 # ===== _download_thumb ======================================================
@@ -33,7 +33,7 @@ def test_download_thumb_maxres_ok():
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200, content_type="image/jpeg",
     )
-    assert ocr_thumbnails._download_thumb("abc") == big
+    assert ocr_thumbnails.download_youtube_thumbnail("abc") == big
 
 
 @responses.activate
@@ -47,7 +47,7 @@ def test_download_thumb_falls_back_to_hq():
         responses.GET, "https://i.ytimg.com/vi/abc/hqdefault.jpg",
         body=big, status=200,
     )
-    assert ocr_thumbnails._download_thumb("abc") == big
+    assert ocr_thumbnails.download_youtube_thumbnail("abc") == big
 
 
 @responses.activate
@@ -57,7 +57,7 @@ def test_download_thumb_all_fail():
             responses.GET, f"https://i.ytimg.com/vi/abc/{q}.jpg",
             status=404,
         )
-    assert ocr_thumbnails._download_thumb("abc") is None
+    assert ocr_thumbnails.download_youtube_thumbnail("abc") is None
 
 
 # ===== _read_number =========================================================
@@ -115,9 +115,10 @@ def test_run_writes_number(ep_env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200,
     )
-    # Stub make_anthropic_client (importé paresseusement dans run()).
-    import common
-    monkeypatch.setattr(common, "make_anthropic_client",
+    # `make_anthropic_client` est importé dans le namespace `ocr_thumbnails`
+    # au moment du `from common import …` (binding local). Pour le mocker,
+    # on patche cette référence locale, pas la fonction dans `common`.
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client",
                         lambda: _client_returning("42"))
     written = ocr_thumbnails.run("src", dry_run=False)
     assert written == 1
@@ -129,14 +130,14 @@ def test_run_skip_if_number_already_set(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E", "number": 5,
                             "youtubeUrl": "https://www.youtube.com/watch?v=abc"})
     import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: MagicMock())
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
 
 def test_run_skip_if_no_youtube_url(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E"})
     import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: MagicMock())
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
 
@@ -144,7 +145,7 @@ def test_run_skip_if_video_id_unparsable(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E",
                             "youtubeUrl": "https://youtu.be/xyz"})
     import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: MagicMock())
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
 
@@ -158,7 +159,7 @@ def test_run_thumb_missing_warns_continues(ep_env, monkeypatch):
             status=404,
         )
     import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: MagicMock())
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
 
@@ -174,7 +175,7 @@ def test_run_dry_run_does_not_call_client(ep_env, monkeypatch):
     # _make_client ne doit PAS être appelé en dry-run.
     import extract_recos
     sentinel = MagicMock(side_effect=AssertionError("ne doit pas être appelé"))
-    monkeypatch.setattr(extract_recos, "_make_client", sentinel)
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", sentinel)
     assert ocr_thumbnails.run("src", dry_run=True) == 0
     sentinel.assert_not_called()
 
@@ -188,8 +189,7 @@ def test_run_no_number_in_ocr(ep_env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200,
     )
-    import common
-    monkeypatch.setattr(common, "make_anthropic_client",
+    monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client",
                         lambda: _client_returning("NONE"))
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 

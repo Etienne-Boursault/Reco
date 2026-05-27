@@ -46,6 +46,15 @@ def test_apply_video_meta_partial_update():
     assert ep["youtubeDuration"] == 200
 
 
+def test_apply_video_meta_invalid_duration_ignored():
+    """Si yt-dlp renvoie une durée non-numérique, on ignore au lieu de crasher."""
+    ep = {"youtubeTitle": "T"}
+    video = {"title": "T", "duration": "pas un nombre"}
+    # Pas d'exception ; pas de mise à jour de duration.
+    _apply_video_meta(ep, video)
+    assert "youtubeDuration" not in ep
+
+
 # ===== Fixtures pour match_youtube() complet ==============================
 @pytest.fixture
 def isolated_dirs(tmp_path, monkeypatch):

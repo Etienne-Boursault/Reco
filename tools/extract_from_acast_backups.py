@@ -21,7 +21,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
 from common import TRANSCRIPTS_DIR, log
 
 
@@ -95,10 +94,14 @@ def main():
             run_extraction(guid, args.source, "openai")
         finally:
             # 4) Restaurer l'état initial même en cas d'erreur
-            if txt.exists() and not acast_backup.exists():
-                txt.rename(acast_backup)
-            if yt_tmp.exists():
-                yt_tmp.rename(txt)
+            try:
+                if txt.exists() and not acast_backup.exists():
+                    txt.rename(acast_backup)
+                if yt_tmp.exists():
+                    yt_tmp.rename(txt)
+            except OSError as exc:  # noqa: BLE001 — on log et on continue.
+                log.warning("Restauration de l'état initial pour %s échouée : %s",
+                            guid, exc)
 
     log.info("\nTerminé.")
 

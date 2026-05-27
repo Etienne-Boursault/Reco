@@ -3,11 +3,11 @@ from __future__ import annotations
 
 import pytest
 
+from common import extract_youtube_id as _video_id  # alias local pour les tests
 from match_youtube import (
     _normalize,
     _parse_se,
     _similarity,
-    _video_id,
 )
 
 

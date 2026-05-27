@@ -27,15 +27,12 @@ from __future__ import annotations
 import argparse
 import base64
 import os
-import sys
 import time
-from pathlib import Path
 from urllib.parse import quote
 
 import requests
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).parent))
 from common import TOOLS_DIR, log, read_json, recos_dir_for, write_json_if_changed
 
 DEEZER_BASE = "https://api.deezer.com"

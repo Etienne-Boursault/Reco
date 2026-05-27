@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import RecoCard from '../../components/RecoCard.astro';
+import { TYPE_LABELS_PLURAL, episodeLabel } from '../../utils/recoTypes';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -25,20 +26,6 @@ const episodes = (await getCollection('episodes')).filter(
 );
 const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
 
-const TYPE_LABELS: Record<string, string> = {
-  film: 'Films',
-  serie: 'Séries',
-  livre: 'Livres',
-  bd: 'BD',
-  musique: 'Musique',
-  album: 'Albums',
-  podcast: 'Podcasts',
-  jeu: 'Jeux',
-  spectacle: 'Spectacles',
-  lieu: 'Lieux',
-  autre: 'Autres',
-};
-
 // Types présents (pour les filtres), triés par fréquence.
 const counts = new Map<string, number>();
 for (const r of recos) counts.set(r.type, (counts.get(r.type) ?? 0) + 1);
@@ -57,8 +44,7 @@ const ytThumb = (url?: string) => {
   const id = url?.match(/[?&]v=([\w-]+)/)?.[1];
   return id ? `https://i.ytimg.com/vi/${id}/mqdefault.jpg` : null;
 };
-const epLabel = (e: { season?: number; number?: number }) =>
-  e.season && e.number ? `S${e.season}·E${e.number}` : e.number ? `#${e.number}` : '';
+const epLabel = episodeLabel;
 ---
 
 <Layout
@@ -103,7 +89,7 @@ const epLabel = (e: { season?: number; number?: number }) =>
         {
           types.map(([t, n]) => (
             <button class="chip" data-filter={t} aria-pressed="false">
-              {TYPE_LABELS[t] ?? t} <span class="n">{n}</span>
+              {TYPE_LABELS_PLURAL[t] ?? t} <span class="n">{n}</span>
             </button>
           ))
         }
@@ -161,11 +147,18 @@ const epLabel = (e: { season?: number; number?: number }) =>
               .toLowerCase();
             return (
               <li class="ep-card" data-search={searchKey}>
-                <a href={`/${source.id}/episode/${e.guid}`}>
-                  <div
-                    class="ep-thumb"
-                    data-thumb={thumb ?? ''}
-                  >
+                <a href={`/${source.id}/episode/${e.guid}`} aria-label={epTitle}>
+                  <div class="ep-thumb">
+                    {thumb && (
+                      <img
+                        src={thumb}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        width="320"
+                        height="180"
+                      />
+                    )}
                     {epLabel(e) && <span class="ep-badge">{epLabel(e)}</span>}
                   </div>
                   <div class="ep-meta">
@@ -184,55 +177,9 @@ const epLabel = (e: { season?: number; number?: number }) =>
 </Layout>
 
 <script>
-  // --- Helpers de recherche tolérante --------------------------------------
-  // - normalize() : retire accents et casse pour comparer "vérino" et "verino".
-  // - levenshtein() : distance d'édition (nb minimum d'opérations
-  //   insertion/suppression/substitution pour passer d'une string à l'autre).
-  // - fuzzyMatch() : combine substring et Levenshtein avec un seuil dépendant
-  //   de la longueur du token de la query — petits seuils sur les courts mots
-  //   pour éviter les faux positifs ; plus permissif sur les longs.
-
-  function normalize(s: string): string {
-    // [̀-ͯ] = combining diacritical marks (équivalent ASCII de \p{Diacritic}).
-    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-  }
-
-  function levenshtein(a: string, b: string): number {
-    const m = a.length;
-    const n = b.length;
-    if (m === 0) return n;
-    if (n === 0) return m;
-    let prev = new Array<number>(n + 1);
-    let curr = new Array<number>(n + 1);
-    for (let j = 0; j <= n; j++) prev[j] = j;
-    for (let i = 1; i <= m; i++) {
-      curr[0] = i;
-      for (let j = 1; j <= n; j++) {
-        const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
-        curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
-      }
-      [prev, curr] = [curr, prev];
-    }
-    return prev[n];
-  }
-
-  /** Tous les tokens de la query doivent matcher (substring OU Levenshtein). */
-  function fuzzyMatch(query: string, normalizedText: string): boolean {
-    const q = normalize(query).trim();
-    if (!q) return true;
-    const tokens = q.split(/\s+/);
-    const words = normalizedText.split(/[\s'’,()/-]+/).filter(Boolean);
-    for (const tok of tokens) {
-      if (normalizedText.includes(tok)) continue;
-      const threshold = tok.length <= 4 ? 1 : tok.length <= 7 ? 2 : 3;
-      const ok = words.some((w) => {
-        if (Math.abs(w.length - tok.length) > threshold) return false;
-        return levenshtein(tok, w) <= threshold;
-      });
-      if (!ok) return false;
-    }
-    return true;
-  }
+  // Helpers de recherche tolérante (normalize / levenshtein / fuzzyMatch)
+  // partagés via src/utils/search.ts pour éviter la duplication entre pages.
+  import { fuzzyMatch } from '../../utils/search';
 
   // --- Filtrage 100 % client : par type (chips) et par texte (fuzzy) -------
   const grid = document.getElementById('reco-grid');
@@ -312,32 +259,10 @@ const epLabel = (e: { season?: number; number?: number }) =>
     if (epNoresult) epNoresult.classList.toggle('visually-hidden', count !== 0);
   });
 
-  // --- Lazy-load des miniatures (Intersection Observer) --------------------
-  // Plutôt que charger 1000+ images au load, on attend qu'une thumb entre
-  // dans le viewport pour poser le `background-image`. Gain sur mobile.
-  const lazyThumbs = document.querySelectorAll<HTMLElement>('.ep-thumb[data-thumb]');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(
-      (entries, obs) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const el = entry.target as HTMLElement;
-          const url = el.dataset.thumb;
-          if (url) el.style.backgroundImage = `url(${url})`;
-          el.removeAttribute('data-thumb');
-          obs.unobserve(el);
-        }
-      },
-      { rootMargin: '200px 0px' },
-    );
-    lazyThumbs.forEach((el) => io.observe(el));
-  } else {
-    // Repli sans IntersectionObserver : tout charger.
-    lazyThumbs.forEach((el) => {
-      const url = el.dataset.thumb;
-      if (url) el.style.backgroundImage = `url(${url})`;
-    });
-  }
+  // Le lazy-load des miniatures utilise désormais l'attribut natif
+  // `loading="lazy"` sur les <img> rendues côté SSR (meilleure a11y :
+  // l'image vit dans le DOM avec son texte alternatif, et le navigateur
+  // gère la priorité de chargement).
 </script>
 
 <style>
@@ -423,12 +348,17 @@ const epLabel = (e: { season?: number; number?: number }) =>
     aspect-ratio: 16 / 9;
     border-radius: var(--radius);
     background: var(--surface);
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
     border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
     transition:
       transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
       border-color 0.2s ease;
+  }
+  .ep-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .ep-card a:hover .ep-thumb {
     transform: translateY(-4px);

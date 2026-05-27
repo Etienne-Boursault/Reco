@@ -44,6 +44,26 @@ export const AVOID_DOMAINS = [
 
 const enc = (s: string) => encodeURIComponent(s.trim());
 
+/**
+ * Vrai si la chaîne est une URL absolue http(s) bien formée. Utilisé pour
+ * filtrer les valeurs externes (website, youtube) qui pourraient être tout
+ * et n'importe quoi (chaîne vide, chemin relatif, `javascript:`, …).
+ */
+export function isSafeUrl(u: unknown): boolean {
+  if (typeof u !== 'string' || u.length === 0) return false;
+  try {
+    const parsed = new URL(u);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+/** ID YouTube : 11 caractères alphanumériques + `_`/`-`. */
+const YT_ID_RE = /^[\w-]{11}$/;
+/** URL YouTube reconnue (youtube.com ou youtu.be). */
+const YT_URL_RE = /^https?:\/\/(?:www\.|m\.)?(?:youtube\.com|youtu\.be)\//i;
+
 /** Construit la requête de recherche à partir des champs de la reco.
  *  Évite la duplication quand le LLM met le même contenu dans title et
  *  creator (cas observé pour les types `artiste` où title=creator=nom). */
@@ -99,16 +119,26 @@ function linksForBookOrComic(reco: RecoLike): ResolvedLink[] {
   const q = enc(query(reco.title, reco.creator));
   const out: ResolvedLink[] = [];
   if (reco.externalIds?.isbn) {
+    // Si on a l'ISBN, on cible la fiche exacte chez Place des Libraires.
+    // Pas besoin du 2e lien générique « recherche par titre » qui ferait
+    // doublon — on complète juste par Lalibrairie.com.
     out.push({
       label: 'Place des Libraires',
       url: `https://www.placedeslibraires.fr/liste/?q=${enc(reco.externalIds.isbn)}`,
       kind: 'buy', ethics: 'indie',
     });
+  } else {
+    out.push({
+      label: 'Place des Libraires',
+      url: `https://www.placedeslibraires.fr/liste/?q=${q}`,
+      kind: 'buy', ethics: 'indie',
+    });
   }
-  out.push(
-    { label: 'Place des Libraires', url: `https://www.placedeslibraires.fr/liste/?q=${q}`, kind: 'buy', ethics: 'indie' },
-    { label: 'Lalibrairie.com',     url: `https://www.lalibrairie.com/livres/recherche.html?q=${q}`, kind: 'buy', ethics: 'indie' },
-  );
+  out.push({
+    label: 'Lalibrairie.com',
+    url: `https://www.lalibrairie.com/livres/recherche.html?q=${q}`,
+    kind: 'buy', ethics: 'indie',
+  });
   return out;
 }
 
@@ -191,8 +221,8 @@ function linksForArtist(reco: RecoLike): ResolvedLink[] {
   } else {
     out.push({ label: 'Instagram', url: `https://www.google.com/search?q=site%3Ainstagram.com+${q}`, kind: 'social', ethics: 'neutral' });
   }
-  if (reco.externalIds?.website) {
-    out.push({ label: 'Site officiel', url: reco.externalIds.website, kind: 'official', ethics: 'indie' });
+  if (isSafeUrl(reco.externalIds?.website)) {
+    out.push({ label: 'Site officiel', url: reco.externalIds!.website!, kind: 'official', ethics: 'indie' });
   }
   out.push({ label: 'Fnac Spectacles', url: `https://www.fnacspectacles.com/recherche/?searchTerm=${q}`, kind: 'buy', ethics: 'neutral' });
   return out;
@@ -200,10 +230,22 @@ function linksForArtist(reco: RecoLike): ResolvedLink[] {
 
 function linksForVideo(reco: RecoLike): ResolvedLink[] {
   // Vidéo ou chaîne YouTube : si on a l'URL exacte, on l'utilise. Sinon, recherche YT.
-  if (reco.externalIds?.youtube) {
-    const id = reco.externalIds.youtube;
-    const url = id.startsWith('http') ? id : `https://www.youtube.com/watch?v=${id}`;
-    return [{ label: 'YouTube', url, kind: 'streaming', ethics: 'neutral' }];
+  // On valide :
+  //  - soit un ID YouTube canonique (11 caractères [A-Za-z0-9_-]),
+  //  - soit une URL absolue http(s) sur youtube.com / youtu.be.
+  // Toute autre valeur est ignorée → on retombe sur la recherche.
+  const yt = reco.externalIds?.youtube;
+  if (typeof yt === 'string' && yt.length > 0) {
+    if (YT_ID_RE.test(yt)) {
+      return [{
+        label: 'YouTube',
+        url: `https://www.youtube.com/watch?v=${yt}`,
+        kind: 'streaming', ethics: 'neutral',
+      }];
+    }
+    if (isSafeUrl(yt) && YT_URL_RE.test(yt)) {
+      return [{ label: 'YouTube', url: yt, kind: 'streaming', ethics: 'neutral' }];
+    }
   }
   const q = enc(query(reco.title, reco.creator));
   return [

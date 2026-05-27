@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import RecoCard from '../../../components/RecoCard.astro';
+import { episodeLabel } from '../../../utils/recoTypes';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -38,12 +39,7 @@ const data = source.data;
 
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
 const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
-const epNum =
-  episode.season && episode.number
-    ? `S${episode.season}·E${episode.number}`
-    : episode.number
-      ? `#${episode.number}`
-      : '';
+const epNum = episodeLabel(episode);
 const epTitle = episode.youtubeTitle ?? episode.title;
 ---
 

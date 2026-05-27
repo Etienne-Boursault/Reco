@@ -55,10 +55,17 @@ def fake_modules(monkeypatch, tmp_path):
 
     # extract_recos
     extract_mod = types.ModuleType("extract_recos")
-    extract_mod._make_client = MagicMock(return_value="FAKE-CLIENT")
     extract_mod.extract_all_batch = MagicMock()
     extract_mod.extract_for_episode = MagicMock()
     monkeypatch.setitem(sys.modules, "extract_recos", extract_mod)
+
+    # `make_anthropic_client` est importé paresseusement dans `rp.run()` —
+    # patcher `common.make_anthropic_client` suffit donc à intercepter l'appel.
+    import common as common_mod
+    fake_client_factory = MagicMock(return_value="FAKE-CLIENT")
+    monkeypatch.setattr(common_mod, "make_anthropic_client", fake_client_factory)
+    # Pour les assertions des tests, on expose le mock via une clé du dict.
+    extract_mod._make_client = fake_client_factory  # accès des tests, non-utilisé par rp
 
     # Liste d'épisodes factice
     paths = [tmp_path / "a.json", tmp_path / "b.json", tmp_path / "c.json"]

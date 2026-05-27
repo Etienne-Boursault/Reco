@@ -2,9 +2,18 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Site multi-source de recommandations de podcasts.
-// `site` sera ajusté selon le déploiement (Netlify/Vercel/GitHub Pages).
+// `site` est lu depuis l'environnement pour s'adapter au déploiement
+// (Netlify/Vercel/GitHub Pages). Valeur de repli pour le dev local.
 export default defineConfig({
-  site: 'https://reco.example',
+  site: process.env.SITE_URL || 'https://reco.example',
   trailingSlash: 'ignore',
-  integrations: [sitemap()],
+  // Précharge la page cible au survol d'un lien — UX plus vive pour la
+  // navigation catalogue → fiche épisode (réseau peu coûteux).
+  prefetch: { defaultStrategy: 'hover' },
+  integrations: [
+    sitemap({
+      // Exclut les pages de relecture interne (non destinées au public).
+      filter: (page) => !page.includes('/verifier'),
+    }),
+  ],
 });

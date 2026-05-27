@@ -37,7 +37,6 @@ def test_episode_minimal_fields():
     assert e.season is None
     assert e.number is None
     assert e.status == "active"
-    assert e.extractors == []
 
 
 def test_episode_all_fields():
@@ -46,18 +45,31 @@ def test_episode_all_fields():
         audio_url="https://a", audio_duration=3600,
         youtube_url="https://y", youtube_title="yt", youtube_duration=3700,
         season=5, number=32,
-        status="discarded", extractors=["anthropic", "openai"],
+        status="discarded",
     )
     assert e.season == 5 and e.number == 32
-    assert "anthropic" in e.extractors
+    assert e.status == "discarded"
 
 
 def test_reco_default_status_is_draft():
     r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
              title="Mortel", type="serie")
     assert r.status == "draft"
-    assert r.recommended_by == []
+    assert r.recommended_by is None
     assert r.extractors == []
+
+
+def test_reco_recommended_by_accepts_string():
+    r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
+             title="Mortel", type="serie", recommended_by="Kyan")
+    assert r.recommended_by == "Kyan"
+
+
+def test_reco_types_cover_all_content_kinds():
+    """Couvre les types nouveaux pour rester synchronisés avec content.config.ts."""
+    for t in ("bd", "album", "spectacle", "lieu", "artiste", "video"):
+        r = Reco(id="x", source_id="s", episode_guid="g", title="T", type=t)
+        assert r.type == t
 
 
 def test_reco_with_extractors():

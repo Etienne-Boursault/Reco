@@ -1,21 +1,26 @@
 """
 domain.py — Entités du domaine et ports (Clean Architecture).
 
-Ce module est le **cœur métier indépendant** du pipeline Reco : il définit
-les objets manipulés (Source, Episode, Reco, TranscriptSegment) sous forme
-de dataclasses immutables-friendly, ainsi que les interfaces (ports) que les
-adaptateurs doivent implémenter.
+Ce module est le **cœur métier indépendant** du pipeline Reco. Il sert
+aujourd'hui de **référence type / documentation vivante** des objets
+métier (Source, Episode, Reco, TranscriptSegment) et des interfaces
+attendues (les `Protocol` sont des **ports** au sens hexagonal — ils
+balisent l'évolution future vers des use cases et adaptateurs séparés).
+
+Le pipeline actuel manipule directement des `dict` JSON (cf. `common.py`)
+et n'instancie pas (encore) ces dataclasses : elles servent de contrat
+documenté, et les `RecoType` / `RecoStatus` sont l'unique source de
+vérité côté Python pour les valeurs admises (à garder synchronisée avec
+`src/content.config.ts`).
 
 Principes appliqués :
-  - **Single Responsibility** : chaque dataclass = une entité, chaque Protocol
-    = un port (une intention claire).
-  - **Open/Closed** : on ajoute un nouveau podcast en créant une `Source`
-    + en écrivant un adaptateur pour son flux RSS — pas en modifiant le coeur.
-  - **Dependency Inversion** : les use cases dépendent de ces Protocols, pas
-    d'implémentations concrètes (Anthropic, OpenAI, yt-dlp, requests…).
-
-Les objets sont volontairement passifs (`@dataclass`) : la logique vit dans
-les use cases (`usecases/`) et les adaptateurs (`adapters/`).
+  - **Single Responsibility** : chaque dataclass = une entité, chaque
+    Protocol = un port (une intention claire).
+  - **Open/Closed** : on ajoute un podcast en créant une `Source` +
+    un adaptateur pour son flux — pas en modifiant le coeur.
+  - **Dependency Inversion** : les futurs use cases dépendront de ces
+    Protocols, pas d'implémentations concrètes (Anthropic, OpenAI,
+    yt-dlp, requests…).
 """
 from __future__ import annotations
 
@@ -25,8 +30,13 @@ from typing import Iterable, Literal, Protocol
 
 
 # ===== Entités ==============================================================
+# Synchronisé avec `src/content.config.ts` (z.enum `recoType`).
 RecoStatus = Literal["draft", "validated", "discarded"]
-RecoType = Literal["livre", "film", "serie", "musique", "podcast", "jeu", "autre"]
+RecoType = Literal[
+    "film", "serie", "livre", "bd",
+    "musique", "album", "podcast", "jeu",
+    "spectacle", "lieu", "artiste", "video", "autre",
+]
 
 
 @dataclass
@@ -55,7 +65,6 @@ class Episode:
     season: int | None = None                  # ex. saison 5 du podcast
     number: int | None = None                  # ex. épisode 42
     status: str = "active"                     # active | discarded
-    extractors: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -69,7 +78,7 @@ class Reco:
     creator: str | None = None
     timestamp: str | None = None               # HH:MM:SS dans le transcript
     quote: str | None = None
-    recommended_by: list[str] = field(default_factory=list)
+    recommended_by: str | None = None          # nom (cf. `recommendedBy` côté JSON)
     status: RecoStatus = "draft"
     extractors: list[str] = field(default_factory=list)  # LLMs qui l'ont trouvée
 

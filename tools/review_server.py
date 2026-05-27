@@ -18,14 +18,17 @@ Usage :
 from __future__ import annotations
 
 import argparse
+import bisect
 import html
 import re
+import threading
 import urllib.parse
-from functools import partial
+from functools import lru_cache, partial
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
 from common import (
+    extract_youtube_id,
     list_episode_files,
     load_source,
     log,
@@ -33,6 +36,28 @@ from common import (
     recos_dir_for,
     write_json_if_changed,
 )
+
+# Limite max sur les requêtes POST (en octets) — protège contre l'épuisement RAM.
+_MAX_POST_BYTES = 1 << 20  # 1 MiB
+
+# Valide les identifiants de reco postés (cf. `id` POST). Format conventionnel :
+# minuscules alphanumériques + tirets/underscores (ex. « ubm-0042 »).
+_RE_RECO_ID = re.compile(r"^[a-z0-9_-]+$")
+
+# Security headers ajoutés à chaque réponse HTML (sans casser l'iframe YouTube).
+_SECURITY_HEADERS: dict[str, str] = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+    # CSP : permet l'iframe YouTube (player) et les miniatures i.ytimg.com.
+    "Content-Security-Policy": (
+        "default-src 'self'; "
+        "img-src 'self' data: https://i.ytimg.com; "
+        "style-src 'unsafe-inline'; "
+        "frame-src https://www.youtube.com https://www.youtube-nocookie.com; "
+        "script-src 'none'; base-uri 'none'; form-action 'self'"
+    ),
+}
 
 # Mots qui marquent la fin de la liste de noms dans un titre descriptif.
 _STOP = re.compile(
@@ -67,6 +92,9 @@ def _parse_guests(title: str, hosts: list[str]) -> list[str]:
 # Évite un scan O(n) de tous les JSON à chaque POST de validation : pour 1000
 # recos, ça transforme un O(1000) en un O(1) après le premier appel.
 _RECO_PATH_CACHE: dict[tuple[str, str], Path] = {}
+# Verrou pour les modifications du cache (les tests et les requêtes HTTP peuvent
+# y accéder depuis plusieurs threads).
+_RECO_CACHE_LOCK = threading.Lock()
 
 
 def _rebuild_reco_path_cache(source_id: str) -> None:
@@ -80,21 +108,31 @@ def _rebuild_reco_path_cache(source_id: str) -> None:
         if rid:
             new_cache[(source_id, rid)] = p
     # Remplace en bloc les entrées de cette source (évite les états transitoires).
-    keys_to_drop = [k for k in _RECO_PATH_CACHE if k[0] == source_id]
-    for k in keys_to_drop:
-        del _RECO_PATH_CACHE[k]
-    _RECO_PATH_CACHE.update(new_cache)
+    with _RECO_CACHE_LOCK:
+        keys_to_drop = [k for k in _RECO_PATH_CACHE if k[0] == source_id]
+        for k in keys_to_drop:
+            del _RECO_PATH_CACHE[k]
+        _RECO_PATH_CACHE.update(new_cache)
+
+
+def _invalidate_reco_path_cache(source_id: str) -> None:
+    """Vide les entrées de cache d'une source (après une écriture)."""
+    with _RECO_CACHE_LOCK:
+        for k in [k for k in _RECO_PATH_CACHE if k[0] == source_id]:
+            del _RECO_PATH_CACHE[k]
 
 
 def _reco_path(source_id: str, reco_id: str) -> Path | None:
     """Retrouve le fichier JSON d'une reco par son id (cache mémoire)."""
     key = (source_id, reco_id)
-    cached = _RECO_PATH_CACHE.get(key)
+    with _RECO_CACHE_LOCK:
+        cached = _RECO_PATH_CACHE.get(key)
     if cached and cached.exists():
         return cached
     # Cache miss ou fichier disparu : on reconstruit pour cette source.
     _rebuild_reco_path_cache(source_id)
-    return _RECO_PATH_CACHE.get(key)
+    with _RECO_CACHE_LOCK:
+        return _RECO_PATH_CACHE.get(key)
 
 
 def _ts_seconds(ts: str | None) -> int | None:
@@ -117,10 +155,13 @@ def _fmt(seconds: int) -> str:
     return f"{h:02d}:{m:02d}:{s:02d}"
 
 
-def _yt_id(url: str) -> str:
-    """Identifiant de la vidéo depuis une URL YouTube (vide si absent)."""
-    m = re.search(r"[?&]v=([A-Za-z0-9_-]+)", url or "")
-    return m.group(1) if m else ""
+def _yt_id(url: str | None) -> str:
+    """Identifiant de la vidéo depuis une URL YouTube (vide si absent).
+
+    Wrapper qui s'appuie sur `common.extract_youtube_id` (renvoie "" plutôt que
+    None pour rester compatible avec le rendu HTML existant).
+    """
+    return extract_youtube_id(url) or ""
 
 
 def _embed_url(video_url: str, start_seconds: int) -> str:
@@ -130,10 +171,7 @@ def _embed_url(video_url: str, start_seconds: int) -> str:
             if vid else "")
 
 
-from functools import lru_cache  # noqa: E402
-
-
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=128)
 def _load_transcript(source_id: str, guid: str) -> tuple[tuple[int, str], ...]:
     """Renvoie la transcription parsée : tuple de (seconde_de_début, texte)."""
     from common import transcript_path_for  # noqa: PLC0415 — import paresseux.
@@ -151,10 +189,22 @@ def _load_transcript(source_id: str, guid: str) -> tuple[tuple[int, str], ...]:
 
 def _context_around(items: tuple[tuple[int, str], ...], target_sec: int,
                     n_before: int = 3, n_after: int = 4) -> list[tuple[int, str]]:
-    """Lignes du transcript autour d'un timecode cible (±n lignes)."""
+    """Lignes du transcript autour d'un timecode cible (±n lignes).
+
+    Cherche l'index le plus proche par bissection (O(log n)) puis ajuste en
+    comparant le voisin précédent (les timecodes sont monotones croissants).
+    """
     if not items:
         return []
-    idx = min(range(len(items)), key=lambda i: abs(items[i][0] - target_sec))
+    times = [it[0] for it in items]
+    pos = bisect.bisect_left(times, target_sec)
+    # Choix du voisin le plus proche entre pos et pos-1.
+    if pos >= len(items):
+        idx = len(items) - 1
+    elif pos == 0:
+        idx = 0
+    else:
+        idx = pos if abs(items[pos][0] - target_sec) < abs(items[pos - 1][0] - target_sec) else pos - 1
     start = max(0, idx - n_before)
     end = min(len(items), idx + n_after + 1)
     return [items[i] for i in range(start, end)]
@@ -162,47 +212,17 @@ def _context_around(items: tuple[tuple[int, str], ...], target_sec: int,
 
 _ORDER = {"draft": 0, "validated": 1, "discarded": 2}
 
-_STYLE = """
-  body{font-family:system-ui,sans-serif;background:#0e0e10;color:#f6f4ee;margin:0;padding:1.5rem;}
-  h1{font-size:1.4rem;} .meta{color:#9a99a3;}
-  .back{color:#9a99a3;text-decoration:none;font-weight:600;font-size:.9rem;}
-  .back:hover{color:#ffd23f;}
-  .ep{max-width:820px;margin:1.2rem auto;}
-  .eph{font-size:1rem;border-bottom:1px solid #2a2a30;padding-bottom:.4rem;margin:0 0 .4rem;}
-  .eph a{color:#f6f4ee;text-decoration:none;} .eph a:hover{color:#ffd23f;}
-  .cnt{color:#9a99a3;font-size:.75rem;font-weight:400;}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;max-width:920px;margin:1rem auto 2rem;}
-  .thumb{position:relative;aspect-ratio:16/9;border-radius:10px;background:#17171c;background-size:cover;background-position:center;border:1px solid #2a2a30;text-decoration:none;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
-  .thumb:hover{outline:2px solid #ffd23f;outline-offset:1px;}
-  .thumb.done{opacity:.4;}
-  .thumb.empty{opacity:.55;outline:1px dashed #7a4d00;}
-  .thumb.empty .tcount{color:#ffb74d;}
-  .tbadge{align-self:flex-start;background:rgba(14,14,16,.8);color:#ffd23f;font-size:.72rem;font-weight:700;padding:.15em .55em;border-radius:0 0 6px 0;}
-  .tcount{background:rgba(14,14,16,.8);color:#f6f4ee;font-size:.72rem;padding:.2em .55em;text-align:center;}
-  ul{list-style:none;padding:0;margin:0;}
-  .row{background:#17171c;border:1px solid #2a2a30;border-left:3px solid #ffd23f;border-radius:10px;padding:.7rem 1rem;margin:.5rem 0;}
-  .row.done{border-left-color:#3a3a40;opacity:.55;}
-  .row.discarded{border-left-color:#6b3a3a;opacity:.45;}
-  .discard{background:transparent;color:#9a99a3;border:1px solid #3a3a40;}
-  .discard:hover{border-color:#6b3a3a;color:#d88;}
-  .hd{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem;}
-  .type{color:#ffd23f;font-size:.7rem;text-transform:uppercase;font-weight:700;letter-spacing:.05em;}
-  .st{margin-left:auto;color:#9a99a3;font-size:.7rem;text-transform:uppercase;}
-  .conf{background:#1f1c0a;color:#ffd23f;border:1px solid #ffd23f55;border-radius:6px;padding:.05em .45em;font-size:.7rem;font-weight:600;}
-  .conf.solo{background:transparent;color:#7a7a82;border-color:#3a3a40;font-weight:400;text-transform:uppercase;}
-  .player{position:fixed;top:.6rem;right:.6rem;width:min(360px,32vw);aspect-ratio:16/9;border:0;border-radius:8px;background:#000;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.6);}
-  .context{font-size:.82rem;color:#bfbcb3;background:#0e0e10;border:1px dashed #2a2a30;border-radius:8px;padding:.5em .8em;margin:.4rem 0;line-height:1.5;}
-  .ctx{opacity:.65;}
-  .ctx-here{color:#ffd23f;font-weight:600;}
-  .tc{color:#ffd23f;font-weight:600;text-decoration:none;} .tc.off{color:#9a99a3;}
-  .dur{color:#8a8a92;font-size:.78rem;}
-  .epnum{color:#ffd23f;background:#0e0e10;border:1px solid #2a2a30;border-radius:6px;padding:.05em .4em;font-size:.78rem;}
-  .q{font-style:italic;color:#cfcdc6;font-size:.88rem;margin:.4rem 0;}
-  .who{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.4rem;}
-  label{background:#0e0e10;border:1px solid #2a2a30;border-radius:999px;padding:.25em .7em;font-size:.85rem;cursor:pointer;}
-  input[type=text]{background:#0e0e10;border:1px solid #2a2a30;color:#f6f4ee;border-radius:999px;padding:.3em .7em;}
-  button{background:#ffd23f;color:#0e0e10;border:0;border-radius:999px;padding:.35em 1em;font-weight:700;cursor:pointer;}
-"""
+# CSS externalisé pour ne pas alourdir ce module et faciliter l'édition visuelle.
+_CSS_PATH = Path(__file__).parent / "review_server.css"
+
+
+@lru_cache(maxsize=1)
+def _style() -> str:
+    """Charge la feuille de style (cachée pour éviter l'I/O répété)."""
+    try:
+        return _CSS_PATH.read_text(encoding="utf-8")
+    except OSError:
+        return ""
 
 
 def _shell(source_title: str, subtitle: str, inner: str) -> str:
@@ -211,7 +231,7 @@ def _shell(source_title: str, subtitle: str, inner: str) -> str:
         '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         f"<title>Relecture — {html.escape(source_title)}</title>"
-        f"<style>{_STYLE}</style></head><body>"
+        f"<style>{_style()}</style></head><body>"
         f"<h1>Relecture — {html.escape(source_title)}</h1>"
         f'<p class="meta">{subtitle}</p>{inner}</body></html>'
     )
@@ -253,9 +273,17 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str) -> str:
     cls = {"validated": "done", "discarded": "discarded"}.get(status, "")
     extractors = r.get("extractors") or []
     if len(extractors) >= 2:
-        conf_badge = f'<span class="conf" title="Confirmée par {", ".join(extractors)}">⭐ {len(extractors)} LLMs</span>'
+        joined = html.escape(", ".join(extractors))
+        conf_badge = (
+            f'<span class="conf" title="Confirmée par {joined}">'
+            f'⭐ {len(extractors)} LLMs</span>'
+        )
     elif extractors:
-        conf_badge = f'<span class="conf solo" title="Trouvée par {extractors[0]} uniquement">{extractors[0]}</span>'
+        first = html.escape(extractors[0])
+        conf_badge = (
+            f'<span class="conf solo" title="Trouvée par {first} uniquement">'
+            f'{first}</span>'
+        )
     else:
         conf_badge = ""
     return f"""
@@ -301,7 +329,10 @@ def _ep_header(ep: dict, recs: list[dict]) -> str:
 def _load_groups(source_id: str):
     """Renvoie (source, episodes_par_guid, recos_par_guid triés)."""
     source = load_source(source_id)
-    episodes = {read_json(p)["guid"]: read_json(p) for p in list_episode_files(source_id)}
+    episodes: dict[str, dict] = {}
+    for p in list_episode_files(source_id):
+        ep = read_json(p)
+        episodes[ep["guid"]] = ep
     recos = [read_json(p) for p in sorted(recos_dir_for(source_id).glob("*.json"))]
     groups: dict[str, list[dict]] = {}
     for r in recos:
@@ -372,7 +403,8 @@ def _render_episode(source_id: str, guid: str) -> str:
     cards = "".join(_reco_card(r, ep, hosts, source_id) for r in recs)
     # Iframe partagée : clique sur un timecode -> la vidéo charge ici (pas
     # d'onglet, pas de re-chargement YouTube intermédiaire).
-    player = '<iframe name="ytplayer" class="player" allowfullscreen></iframe>'
+    player = ('<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
+              'allowfullscreen></iframe>')
     inner = (f'{back}{player}<section class="ep">'
              f'{_ep_header(ep, recs)}<ul>{cards}</ul></section>')
     return _shell(source.get("title", source_id), "Relecture d'un épisode.", inner)
@@ -385,7 +417,12 @@ class Handler(BaseHTTPRequestHandler):
 
     def _send(self, code: int, body: str = "", headers: dict | None = None) -> None:
         self.send_response(code)
-        for k, v in (headers or {"Content-Type": "text/html; charset=utf-8"}).items():
+        # Headers explicites (Location pour 3xx, etc.) priment sur les défauts.
+        out_headers = {"Content-Type": "text/html; charset=utf-8"}
+        out_headers.update(_SECURITY_HEADERS)
+        if headers:
+            out_headers.update(headers)
+        for k, v in out_headers.items():
             self.send_header(k, v)
         self.end_headers()
         if body:
@@ -403,8 +440,18 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         length = int(self.headers.get("Content-Length", 0))
+        # Garde-fou : refuse les payloads anormalement gros (DoS / mauvais client).
+        if length > _MAX_POST_BYTES:
+            log.warning("POST refusé : Content-Length=%d > %d", length, _MAX_POST_BYTES)
+            self._send(413, "Payload too large")
+            return
         data = urllib.parse.parse_qs(self.rfile.read(length).decode("utf-8"))
         reco_id = (data.get("id") or [""])[0]
+        # Valide le format de l'id avant tout I/O (rejette les chemins exotiques).
+        if not _RE_RECO_ID.match(reco_id):
+            log.warning("POST refusé : reco_id invalide « %s »", reco_id)
+            self._send(303, headers={"Location": "/"})
+            return
         names = data.get("who", []) + [n for n in data.get("other", []) if n.strip()]
         recommended = " & ".join(dict.fromkeys(n.strip() for n in names if n.strip()))
 
@@ -424,7 +471,11 @@ class Handler(BaseHTTPRequestHandler):
                     del reco["recommendedBy"]
                 reco["status"] = "validated"
                 log.info("Validé : %s -> %s", reco_id, recommended or "(personne)")
-            write_json_if_changed(path, reco)
+            if write_json_if_changed(path, reco):
+                # Le contenu a changé : on jette le cache pour cette source
+                # (l'id ne bouge pas mais on reste prudent face à un éventuel
+                # déplacement de fichier).
+                _invalidate_reco_path_cache(self.source_id)
         # PRG : on revient sur la page de l'épisode pour enchaîner ses recos.
         loc = f"/ep?guid={urllib.parse.quote(guid)}" if guid else "/"
         self._send(303, headers={"Location": loc})

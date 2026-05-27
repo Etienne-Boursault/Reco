@@ -1,0 +1,29 @@
+# Configuration coverage.py pour le pipeline Python.
+# Lancer :  pytest --cov=tools --cov-config=tools/.coveragerc
+
+[run]
+branch = True
+source = tools
+omit =
+    tools/.venv/*
+    tools/output/*
+    tools/cache/*
+    tools/dispatch/*
+    # Scripts trop dépendants d'I/O réel non mockable raisonnablement.
+    tools/compare_models.py
+    tools/eval_local_llm.py
+
+[report]
+# Affichage : on saute les lignes triviales / de garde.
+exclude_lines =
+    pragma: no cover
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    \.\.\.
+show_missing = True
+skip_covered = False
+precision = 1
+
+[html]
+directory = htmlcov

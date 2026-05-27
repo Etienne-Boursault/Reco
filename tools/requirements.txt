@@ -1,5 +1,18 @@
 # Pipeline de collecte « Reco » — dépendances Python (3.12)
 # Installer dans un venv : voir tools/README.md
+#
+# Stratégie de versioning :
+#  - On épingle un INTERVALLE (>=min, <maj-suivant) plutôt qu'une version
+#    exacte. Avantages : on profite des correctifs (patch + mineur) sans se
+#    prendre une rupture API d'une version majeure.
+#  - Le bas de la fourchette est la version minimale réellement testée
+#    localement ; le haut exclut la prochaine majeure (semver).
+#  - Pour les libs sans versioning semver propre (yt-dlp, anthropic) on
+#    laisse une borne basse seulement — leurs maj contiennent souvent des
+#    fixes critiques (anti-blocage YouTube, nouveaux modèles).
+#  - En cas de bug de reproductibilité, geler les versions exactes dans
+#    un `requirements.lock` séparé (pip freeze) — laisser ce fichier
+#    permissif pour le développement.
 
 # Étape 1 — lecture du flux RSS Acast
 feedparser>=6.0,<7

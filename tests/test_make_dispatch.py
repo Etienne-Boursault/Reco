@@ -6,6 +6,8 @@ TRANSCRIPTS_DIR temporaire. C'est un script « pur fichiers » sans réseau.
 from __future__ import annotations
 
 import json
+import math
+import sys
 from pathlib import Path
 
 import pytest
@@ -41,7 +43,7 @@ def test_dispatch_splits_pending_by_share(isolated_dirs):
             youtubeUrl=f"https://www.youtube.com/watch?v=v{i}",
             date=f"2024-01-{i+1:02d}",
         )
-    make_dispatch.main()
+    make_dispatch.make_dispatch("un-bon-moment")
 
     main_guids = (dispatch_dir / "main_guids.txt").read_text(encoding="utf-8").splitlines()
     laptop_guids = (dispatch_dir / "laptop_guids.txt").read_text(encoding="utf-8").splitlines()
@@ -67,7 +69,7 @@ def test_dispatch_excludes_already_transcribed(isolated_dirs):
     src_trans.mkdir(parents=True, exist_ok=True)
     (src_trans / "g01.txt").write_text("hello", encoding="utf-8")
 
-    make_dispatch.main()
+    make_dispatch.make_dispatch("un-bon-moment")
 
     eps_map = json.loads((dispatch_dir / "episodes.json").read_text(encoding="utf-8"))
     assert "g01" not in eps_map
@@ -81,10 +83,39 @@ def test_dispatch_excludes_episodes_without_youtube(isolated_dirs):
     _make_episode(eps_dir, "un-bon-moment", "g01", audioUrl="https://acast")  # pas de yt
     _make_episode(eps_dir, "un-bon-moment", "g02",
                   youtubeUrl="https://www.youtube.com/watch?v=v2")
-    make_dispatch.main()
+    make_dispatch.make_dispatch("un-bon-moment")
     eps_map = json.loads((dispatch_dir / "episodes.json").read_text(encoding="utf-8"))
     assert "g01" not in eps_map
     assert "g02" in eps_map
+
+
+def test_main_requires_source(monkeypatch):
+    """main() exige --source : sans, SystemExit (argparse)."""
+    import make_dispatch
+    monkeypatch.setattr(sys, "argv", ["make_dispatch.py"])
+    with pytest.raises(SystemExit):
+        make_dispatch.main()
+
+
+def test_main_dispatches_for_argparse_source(isolated_dirs, monkeypatch):
+    """main() avec --source bidule appelle make_dispatch sur cette source."""
+    _, eps_dir, _, dispatch_dir = isolated_dirs
+    import make_dispatch
+    _make_episode(eps_dir, "podcast-x", "g1",
+                  youtubeUrl="https://www.youtube.com/watch?v=v1")
+    monkeypatch.setattr(sys, "argv", ["make_dispatch.py", "--source", "podcast-x"])
+    make_dispatch.main()
+    eps_map = json.loads((dispatch_dir / "episodes.json").read_text(encoding="utf-8"))
+    assert "g1" in eps_map
+
+
+def test_laptop_share_derived_from_speeds():
+    """LAPTOP_SHARE est calculée depuis les constantes, pas codée en dur."""
+    import make_dispatch
+    inv_main = 1.0 / make_dispatch.MAIN_SPEED_MIN_PER_EP
+    inv_laptop = 1.0 / make_dispatch.LAPTOP_SPEED_MIN_PER_EP
+    expected = inv_laptop / (inv_main + inv_laptop)
+    assert math.isclose(make_dispatch.LAPTOP_SHARE, expected)
 
 
 def test_dispatch_files_use_lf_endings(isolated_dirs):
@@ -95,6 +126,6 @@ def test_dispatch_files_use_lf_endings(isolated_dirs):
     for i in range(3):
         _make_episode(eps_dir, "un-bon-moment", f"g{i:02d}",
                       youtubeUrl=f"https://www.youtube.com/watch?v=v{i}")
-    make_dispatch.main()
+    make_dispatch.make_dispatch("un-bon-moment")
     raw = (dispatch_dir / "main_guids.txt").read_bytes()
     assert b"\r\n" not in raw, "le fichier dispatch doit être en LF pour le bash portable"

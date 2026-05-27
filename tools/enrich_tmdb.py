@@ -28,13 +28,11 @@ import argparse
 import os
 import sys
 import time
-from pathlib import Path
 from urllib.parse import quote
 
 import requests
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).parent))
 from common import (
     TOOLS_DIR,
     log,
@@ -148,16 +146,22 @@ def _provider_link(provider_name: str, title: str) -> dict:
     }
 
 
-def _tmdb_get(session: requests.Session, path: str, params: dict | None = None) -> dict | None:
+def _tmdb_get(
+    session: requests.Session,
+    path: str,
+    params: dict | None = None,
+    api_key: str | None = None,
+) -> dict | None:
     """GET TMDB avec auth, journalise les erreurs.
 
     La clé API est passée à `session.get` via `params=` (jamais via header
-    custom) pour rester compatible avec l'API v3 de TMDB. On utilise
-    `os.environ.get` plutôt que `os.environ[...]` pour éviter une KeyError
-    profondément dans la stack si la clé n'a pas été chargée — la validation
-    explicite a lieu dans `main()` au démarrage.
+    custom) pour rester compatible avec l'API v3 de TMDB.
+
+    `api_key` est explicite quand fourni par `main()` ; sinon on retombe sur
+    `os.environ` pour rester compatible avec les appels directs (tests).
     """
-    api_key = os.environ.get("TMDB_API_KEY", "")
+    if api_key is None:
+        api_key = os.environ.get("TMDB_API_KEY", "")
     full = {"api_key": api_key, **(params or {})}
     try:
         r = session.get(f"{TMDB_BASE}{path}", params=full, timeout=15)
@@ -172,7 +176,8 @@ def _tmdb_get(session: requests.Session, path: str, params: dict | None = None) 
 
 
 def tmdb_search(
-    session: requests.Session, reco_type: str, title: str, creator: str | None = None
+    session: requests.Session, reco_type: str, title: str,
+    creator: str | None = None, api_key: str | None = None,
 ) -> tuple[str, str] | None:
     """Cherche le titre sur TMDB. Retourne (tmdb_id, kind in {'movie','tv'}) ou None.
 
@@ -193,14 +198,18 @@ def tmdb_search(
 
     for kind in (primary, secondary):
         for q, extra in queries:
-            data = _tmdb_get(session, f"/search/{kind}", {"query": q, **extra})
+            data = _tmdb_get(session, f"/search/{kind}",
+                             {"query": q, **extra}, api_key=api_key)
             results = (data or {}).get("results") or []
             if results:
                 return str(results[0]["id"]), kind
     return None
 
 
-def tmdb_watch_providers(session: requests.Session, tmdb_id: str, kind: str, title: str) -> tuple[str | None, list[dict]]:
+def tmdb_watch_providers(
+    session: requests.Session, tmdb_id: str, kind: str, title: str,
+    api_key: str | None = None,
+) -> tuple[str | None, list[dict]]:
     """Récupère le `link` JustWatch du film + les watch providers FR.
 
     Retourne (justwatch_url, providers). Le justwatch_url est l'URL EXACTE de la
@@ -208,7 +217,7 @@ def tmdb_watch_providers(session: requests.Session, tmdb_id: str, kind: str, tit
     deeplinks « Watch on Netflix » etc. C'est notre lien streaming principal.
     Les providers sont conservés à titre informatif (debug / évolutions futures).
     """
-    data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers")
+    data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers", api_key=api_key)
     fr = ((data or {}).get("results") or {}).get("FR") or {}
     justwatch_url = fr.get("link") or None
     seen: set[str] = set()
@@ -235,7 +244,8 @@ def main():
     args = parser.parse_args()
 
     load_dotenv(TOOLS_DIR / ".env")
-    if not os.getenv("TMDB_API_KEY"):
+    api_key = os.getenv("TMDB_API_KEY")
+    if not api_key:
         log.error("TMDB_API_KEY absent de tools/.env. "
                   "Crée un compte sur https://www.themoviedb.org/ → Settings → API.")
         sys.exit(1)
@@ -272,14 +282,15 @@ def main():
             tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
             log.info("  ↻ TMDB id déjà connu : %s (%s)", tmdb_id, kind)
         else:
-            found = tmdb_search(session, d["type"], title, creator)
+            found = tmdb_search(session, d["type"], title, creator, api_key=api_key)
             if not found:
                 log.info("  → TMDB : pas trouvé")
                 not_found += 1
                 time.sleep(RATE_LIMIT_SLEEP)
                 continue
             tmdb_id, kind = found
-        justwatch_url, providers = tmdb_watch_providers(session, tmdb_id, kind, d["title"])
+        justwatch_url, providers = tmdb_watch_providers(
+            session, tmdb_id, kind, d["title"], api_key=api_key)
         ids = dict(d.get("externalIds") or {})
         ids["tmdb"] = tmdb_id
         ids["tmdbType"] = kind

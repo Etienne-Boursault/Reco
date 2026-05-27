@@ -48,6 +48,11 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
     log.info("=== Pipeline Reco — source « %s » — étapes : %s ===",
              source_id, ", ".join(steps))
 
+    # Indicateurs d'échec de chaque étape pour la synthèse finale.
+    fetch_failed = False
+    transcribe_failed = False
+    extract_failed = False
+
     # --- Étape 1 : fetch ---------------------------------------------------
     if "fetch" in steps:
         log.info("--- [1/?] FETCH ---")
@@ -55,6 +60,7 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
         try:
             fetch_episodes(source_id, limit=limit)
         except Exception as exc:  # noqa: BLE001
+            fetch_failed = True
             log.error("Étape fetch échouée : %s", exc)
 
     # On (re)liste les épisodes après fetch.
@@ -70,22 +76,26 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
             try:
                 transcribe_episode(source_id, path, whisper_model, language, force)
             except Exception as exc:  # noqa: BLE001 — on continue.
+                transcribe_failed = True
                 log.error("Transcription échouée sur %s : %s", path.name, exc)
 
     # --- Étape 3 : extract -------------------------------------------------
     if "extract" in steps:
         log.info("--- [3/?] EXTRACT (%d épisode[s], modèle %s%s) ---",
                  len(episode_paths), extract_model, ", batch" if batch else "")
+        from common import make_anthropic_client  # noqa: PLC0415
         from extract_recos import (  # noqa: PLC0415
-            _make_client, extract_all_batch, extract_for_episode,
+            extract_all_batch, extract_for_episode,
         )
         client = None
         if not dry_run:
             try:
-                client = _make_client()
+                client = make_anthropic_client()
             except Exception as exc:  # noqa: BLE001
+                extract_failed = True
                 log.error("Impossible d'initialiser le client Anthropic : %s", exc)
                 log.error("Étape extract abandonnée.")
+                _log_pipeline_summary(fetch_failed, transcribe_failed, extract_failed)
                 return
 
         if batch and not dry_run:
@@ -93,6 +103,7 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
             try:
                 extract_all_batch(source_id, episode_paths, client, extract_model)
             except Exception as exc:  # noqa: BLE001
+                extract_failed = True
                 log.error("Extraction par batch échouée : %s", exc)
         else:
             for path in episode_paths:
@@ -100,9 +111,23 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
                 try:
                     extract_for_episode(source_id, path, client, dry_run, extract_model)
                 except Exception as exc:  # noqa: BLE001 — on continue.
+                    extract_failed = True
                     log.error("Extraction échouée sur %s (%s) : %s", path.name, guid, exc)
 
+    _log_pipeline_summary(fetch_failed, transcribe_failed, extract_failed)
     log.info("=== Pipeline terminé. ===")
+
+
+def _log_pipeline_summary(fetch_failed: bool, transcribe_failed: bool,
+                          extract_failed: bool) -> None:
+    """Affiche un récap des étapes en échec, si applicable."""
+    failed = [name for name, flag in (
+        ("fetch", fetch_failed),
+        ("transcribe", transcribe_failed),
+        ("extract", extract_failed),
+    ) if flag]
+    if failed:
+        log.warning("Synthèse : étape(s) en échec → %s.", ", ".join(failed))
 
 
 def main() -> None:

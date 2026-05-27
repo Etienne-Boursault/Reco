@@ -17,24 +17,29 @@ from __future__ import annotations
 import argparse
 import base64
 import json
-import sys
+import re
 from difflib import SequenceMatcher
-from pathlib import Path
 
 import requests
 
-sys.path.insert(0, str(Path(__file__).parent))
-from common import list_episode_files, load_source, log, read_json, write_json_if_changed
+from common import (
+    download_youtube_thumbnail,
+    extract_youtube_id,
+    list_episode_files,
+    load_source,
+    log,
+    make_anthropic_client,
+    read_json,
+    write_json_if_changed,
+)
 from match_youtube import (
     _apply_video_meta,
     _fetch_channel_videos,
     _normalize,
-    _video_id,
 )
 
 MIN_FULL_EPISODE_SECONDS = 30 * 60
 OCR_MODEL = "claude-haiku-4-5"
-_HEADERS = {"User-Agent": "Mozilla/5.0"}
 _OCR_PROMPT = (
     "Cette miniature de podcast YouTube affiche-t-elle un numéro d'épisode "
     "(ex. « ÉPISODE 42 », « EP 42 », « #42 ») ? Réponds UNIQUEMENT par le nombre "
@@ -42,22 +47,9 @@ _OCR_PROMPT = (
 )
 
 
-def _download_thumb(video_id: str) -> bytes | None:
-    """Télécharge la miniature YouTube (maxres, repli hqdefault)."""
-    for quality in ("maxresdefault", "hqdefault"):
-        url = f"https://i.ytimg.com/vi/{video_id}/{quality}.jpg"
-        try:
-            r = requests.get(url, headers=_HEADERS, timeout=30)
-        except requests.RequestException:
-            continue
-        if r.ok and len(r.content) > 2000:
-            return r.content
-    return None
-
-
 def _ocr_episode_number(client, video_id: str) -> int | None:
     """OCR de la miniature → numéro d'épisode (ou None si non lisible)."""
-    image = _download_thumb(video_id)
+    image = download_youtube_thumbnail(video_id)
     if not image:
         return None
     b64 = base64.standard_b64encode(image).decode()
@@ -75,7 +67,6 @@ def _ocr_episode_number(client, video_id: str) -> int | None:
         }],
     )
     text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
-    import re
     m = re.search(r"\d+", text)
     return int(m.group()) if m else None
 
@@ -104,8 +95,6 @@ def _episode_is_extract(d: dict) -> bool:
 
 
 def rematch(source_id: str, only_guid: str | None, dry_run: bool) -> None:
-    from common import make_anthropic_client  # noqa: PLC0415 — paresseux.
-
     # 1) Charger tous les épisodes + vidéos chaîne.
     ep_paths = list(list_episode_files(source_id))
     episodes = [(p, read_json(p)) for p in ep_paths]
@@ -114,7 +103,7 @@ def rematch(source_id: str, only_guid: str | None, dry_run: bool) -> None:
     src_cfg = load_source(source_id)
     channel = src_cfg["youtubeChannel"]
     videos = _fetch_channel_videos(channel)
-    used_ids = {_video_id(d.get("youtubeUrl") or "") for _, d in episodes
+    used_ids = {extract_youtube_id(d.get("youtubeUrl") or "") for _, d in episodes
                 if d.get("youtubeUrl")}
     used_ids.discard(None)
 
@@ -137,7 +126,7 @@ def rematch(source_id: str, only_guid: str | None, dry_run: bool) -> None:
         expected = ep.get("number")
         log.info("\n=== %s (attend #%s) ===", ep.get("title", "?")[:55], expected)
         # Important : libérer l'id actuel pour qu'il ne soit pas dans used_ids.
-        current_id = _video_id(ep.get("youtubeUrl") or "")
+        current_id = extract_youtube_id(ep.get("youtubeUrl") or "")
         candidates = _candidates(ep, videos, used_ids - {current_id})
         if not candidates:
             log.warning("  Aucun candidat ≥ 30 min — on garde le lien actuel.")

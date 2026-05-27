@@ -26,6 +26,10 @@ interface Props {
   ogType?: 'website' | 'article';
   /** Thème de couleurs de la source (multi-podcast). */
   theme?: Theme;
+  /** Si vrai, ajoute `<meta name="robots" content="noindex, nofollow">`.
+   *  Utilisé pour les pages internes (ex. `/<source>/verifier`) qu'on ne
+   *  veut pas voir indexées par les moteurs de recherche. */
+  noindex?: boolean;
 }
 
 const {
@@ -34,6 +38,7 @@ const {
   ogImage,
   ogType = 'website',
   theme,
+  noindex = false,
 } = Astro.props;
 
 // URL canonique de la page (utilise `site` de astro.config + le pathname courant).
@@ -65,6 +70,7 @@ const themeColor = c?.bg ?? '#0e0e10';
     <meta name="theme-color" content={themeColor} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
     {/* Open Graph (Facebook, LinkedIn…) */}

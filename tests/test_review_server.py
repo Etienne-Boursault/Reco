@@ -473,6 +473,36 @@ def test_handler_post_unknown_id(fake_source):
     assert h._sent_headers["Location"] == "/"
 
 
+def test_handler_post_payload_too_large(fake_source):
+    """Content-Length > 1 MiB -> 413 Payload too large."""
+    h = _FakeHandler(fake_source, "/save", b"id=ubm-001")
+    # Surcharge Content-Length pour simuler un payload énorme sans charger 1 MiB.
+    h.headers = {"Content-Length": str((1 << 20) + 1)}
+    h.do_POST()
+    assert h._status == 413
+
+
+def test_handler_post_invalid_reco_id(fake_source):
+    """Un reco_id avec caractères interdits (path traversal, espaces…) est rejeté."""
+    body = b"id=../etc/passwd&action=validate"
+    h = _FakeHandler(fake_source, "/save", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+    # La reco existante ne doit PAS avoir été modifiée
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["status"] == "draft"
+
+
+def test_handler_security_headers_set(fake_source):
+    h = _FakeHandler(fake_source, "/")
+    h.do_GET()
+    assert h._sent_headers.get("X-Content-Type-Options") == "nosniff"
+    assert h._sent_headers.get("X-Frame-Options") == "DENY"
+    assert "youtube.com" in h._sent_headers.get("Content-Security-Policy", "")
+
+
 def test_handler_log_message_silent(fake_source):
     """log_message est volontairement silencieux (pas d'exception)."""
     h = _FakeHandler(fake_source, "/")

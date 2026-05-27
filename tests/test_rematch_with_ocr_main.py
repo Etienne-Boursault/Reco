@@ -26,7 +26,7 @@ def test_download_thumb_max_ok():
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200,
     )
-    assert rematch_with_ocr._download_thumb("abc") == big
+    assert rematch_with_ocr.download_youtube_thumbnail("abc") == big
 
 
 @responses.activate
@@ -40,24 +40,27 @@ def test_download_thumb_falls_back():
         responses.GET, "https://i.ytimg.com/vi/abc/hqdefault.jpg",
         body=big, status=200,
     )
-    assert rematch_with_ocr._download_thumb("abc") == big
+    assert rematch_with_ocr.download_youtube_thumbnail("abc") == big
 
 
-@responses.activate
 def test_download_thumb_request_exception(monkeypatch):
-    """Une RequestException sur maxres → on enchaîne sur hq."""
+    """Une RequestException sur maxres → on enchaîne sur hq.
+
+    `_download_thumb` est désormais un alias vers `common.download_youtube_thumbnail`
+    qui importe `requests` paresseusement ; on patche donc directement le module
+    `requests` (impact global pour ce test).
+    """
     big = b"\xff\xd8" + b"x" * 3000
-    # Patch requests.get pour lever sur maxres puis renvoyer big sur hq.
-    real_get = requests.get
     calls = {"n": 0}
+
     def fake(url, **kw):
         calls["n"] += 1
         if "maxresdefault" in url:
             raise requests.ConnectionError("boom")
-        r = SimpleNamespace(ok=True, content=big)
-        return r
-    monkeypatch.setattr(rematch_with_ocr.requests, "get", fake)
-    assert rematch_with_ocr._download_thumb("abc") == big
+        return SimpleNamespace(status_code=200, content=big)
+
+    monkeypatch.setattr(requests, "get", fake)
+    assert rematch_with_ocr.download_youtube_thumbnail("abc") == big
     assert calls["n"] == 2
 
 
@@ -68,7 +71,7 @@ def test_download_thumb_all_fail():
             responses.GET, f"https://i.ytimg.com/vi/abc/{q}.jpg",
             status=404,
         )
-    assert rematch_with_ocr._download_thumb("abc") is None
+    assert rematch_with_ocr.download_youtube_thumbnail("abc") is None
 
 
 # ===== _ocr_episode_number ==================================================
@@ -208,8 +211,8 @@ def test_rematch_applies_match_when_ocr_matches(env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/full1/maxresdefault.jpg",
         body=big, status=200,
     )
-    import common
-    monkeypatch.setattr(common, "make_anthropic_client",
+    # Bind local dans rematch_with_ocr (from common import …) → patcher ici.
+    monkeypatch.setattr(rematch_with_ocr, "make_anthropic_client",
                         lambda: _client_returning("7"))
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
@@ -233,9 +236,8 @@ def test_rematch_no_ocr_match_keeps_original(env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/full1/maxresdefault.jpg",
         body=big, status=200,
     )
-    import common
     # OCR renvoie 99 ≠ 7 → on garde l'original.
-    monkeypatch.setattr(common, "make_anthropic_client",
+    monkeypatch.setattr(rematch_with_ocr, "make_anthropic_client",
                         lambda: _client_returning("99"))
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
@@ -251,8 +253,7 @@ def test_rematch_no_candidates_logs_warning(env, monkeypatch):
     # Aucune vidéo ≥ 30 min sur la chaîne.
     monkeypatch.setattr(rematch_with_ocr, "_fetch_channel_videos",
                         lambda c: [{"id": "x", "title": "x", "duration": 60}])
-    import common
-    monkeypatch.setattr(common, "make_anthropic_client", lambda: MagicMock())
+    monkeypatch.setattr(rematch_with_ocr, "make_anthropic_client", lambda: MagicMock())
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
     assert out["youtubeUrl"].endswith("v=short")
