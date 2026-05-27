@@ -63,7 +63,7 @@ const epLabel = (e: { season?: number; number?: number }) =>
 
 <Layout
   title={`${data.title} — recommandations`}
-  description={data.description}
+  description={data.description ?? `${recos.length} recommandations extraites des ${episodesWithRecos.length} épisodes du podcast ${data.title}.`}
   theme={data.theme}
 >
   <header class="head wrap">
@@ -77,11 +77,11 @@ const epLabel = (e: { season?: number; number?: number }) =>
   </header>
 
   <div class="tabs wrap" role="tablist">
-    <button class="tab" data-view="all" aria-pressed="false">
-      Toutes les recos
-    </button>
     <button class="tab is-active" data-view="episodes" aria-pressed="true">
       Par épisode
+    </button>
+    <button class="tab" data-view="all" aria-pressed="false">
+      Toutes les recos
     </button>
   </div>
 
@@ -134,30 +134,47 @@ const epLabel = (e: { season?: number; number?: number }) =>
   </div>
 
   <!-- Vue 2 : par épisode (miniatures, plus récent d'abord) — vue par défaut -->
-  <div id="view-episodes" class="wrap">
-    <ul class="ep-grid">
-      {
-        episodesWithRecos.map((e) => {
-          const thumb = ytThumb(e.youtubeUrl);
-          return (
-            <li class="ep-card">
-              <a href={`/${source.id}/episode/${e.guid}`}>
-                <div
-                  class="ep-thumb"
-                  style={thumb ? `background-image:url(${thumb})` : undefined}
-                >
-                  {epLabel(e) && <span class="ep-badge">{epLabel(e)}</span>}
-                </div>
-                <div class="ep-meta">
-                  <span class="ep-ttl">{e.youtubeTitle ?? e.title}</span>
-                  <span class="ep-cnt">{recoCountByEp.get(e.guid)} recos</span>
-                </div>
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
+  <div id="view-episodes">
+    <div class="toolbar wrap">
+      <input
+        id="ep-search"
+        class="search"
+        type="search"
+        placeholder="Rechercher un épisode ou un invité…"
+        autocomplete="off"
+        aria-label="Rechercher un épisode"
+      />
+      <span class="ep-count"><span id="ep-visible">{episodesWithRecos.length}</span> épisodes</span>
+    </div>
+
+    <div class="wrap">
+      <ul class="ep-grid" id="ep-grid">
+        {
+          episodesWithRecos.map((e) => {
+            const thumb = ytThumb(e.youtubeUrl);
+            const epTitle = e.youtubeTitle ?? e.title;
+            const searchKey = `${epTitle} ${epLabel(e)}`.toLowerCase();
+            return (
+              <li class="ep-card" data-search={searchKey}>
+                <a href={`/${source.id}/episode/${e.guid}`}>
+                  <div
+                    class="ep-thumb"
+                    data-thumb={thumb ?? ''}
+                  >
+                    {epLabel(e) && <span class="ep-badge">{epLabel(e)}</span>}
+                  </div>
+                  <div class="ep-meta">
+                    <span class="ep-ttl">{epTitle}</span>
+                    <span class="ep-cnt">{recoCountByEp.get(e.guid)} recos</span>
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <p class="noresult visually-hidden" id="ep-noresult">Aucun épisode trouvé.</p>
+    </div>
   </div>
 </Layout>
 
@@ -221,6 +238,51 @@ const epLabel = (e: { season?: number; number?: number }) =>
       }
     });
   });
+
+  // --- Recherche dans la vue « Par épisode » -------------------------------
+  const epGrid = document.getElementById('ep-grid');
+  const epSearch = document.getElementById('ep-search') as HTMLInputElement | null;
+  const epVisible = document.getElementById('ep-visible');
+  const epNoresult = document.getElementById('ep-noresult');
+  epSearch?.addEventListener('input', () => {
+    if (!epGrid) return;
+    const q = epSearch.value.trim().toLowerCase();
+    let count = 0;
+    for (const card of Array.from(epGrid.children) as HTMLElement[]) {
+      const show = !q || (card.dataset.search ?? '').includes(q);
+      card.style.display = show ? '' : 'none';
+      if (show) count++;
+    }
+    if (epVisible) epVisible.textContent = String(count);
+    if (epNoresult) epNoresult.classList.toggle('visually-hidden', count !== 0);
+  });
+
+  // --- Lazy-load des miniatures (Intersection Observer) --------------------
+  // Plutôt que charger 1000+ images au load, on attend qu'une thumb entre
+  // dans le viewport pour poser le `background-image`. Gain sur mobile.
+  const lazyThumbs = document.querySelectorAll<HTMLElement>('.ep-thumb[data-thumb]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const el = entry.target as HTMLElement;
+          const url = el.dataset.thumb;
+          if (url) el.style.backgroundImage = `url(${url})`;
+          el.removeAttribute('data-thumb');
+          obs.unobserve(el);
+        }
+      },
+      { rootMargin: '200px 0px' },
+    );
+    lazyThumbs.forEach((el) => io.observe(el));
+  } else {
+    // Repli sans IntersectionObserver : tout charger.
+    lazyThumbs.forEach((el) => {
+      const url = el.dataset.thumb;
+      if (url) el.style.backgroundImage = `url(${url})`;
+    });
+  }
 </script>
 
 <style>
@@ -282,11 +344,16 @@ const epLabel = (e: { season?: number; number?: number }) =>
     color: var(--accent-text);
     border-color: var(--accent);
   }
+  .ep-count {
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
   /* Grille « par épisode » */
   .ep-grid {
     list-style: none;
     padding: 0;
-    margin: 1.4rem 0 4rem;
+    margin: 0 0 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
     gap: var(--gap);

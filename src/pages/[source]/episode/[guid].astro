@@ -47,7 +47,13 @@ const epNum =
 const epTitle = episode.youtubeTitle ?? episode.title;
 ---
 
-<Layout title={`${epTitle} — ${data.title}`} theme={data.theme}>
+<Layout
+  title={`${epTitle} — ${data.title}`}
+  description={`${recos.length} recommandations extraites de ${epTitle}, épisode du podcast ${data.title}.`}
+  ogImage={thumb ?? undefined}
+  ogType="article"
+  theme={data.theme}
+>
   <header class="head wrap">
     <a class="back" href={`/${source.id}`}>← {data.title}</a>
     <div class="ep-hero">

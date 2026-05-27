@@ -16,14 +16,32 @@ interface Theme {
 }
 
 interface Props {
+  /** Titre de la page (utilisé dans <title>, og:title, twitter:title). */
   title: string;
+  /** Description courte (≤ 160 car.) utilisée partout en meta. */
   description?: string;
+  /** URL absolue d'une image de partage (1200×630 recommandé). Sinon, image par défaut. */
+  ogImage?: string;
+  /** Type Open Graph (`website` par défaut, `article` pour une page épisode/reco). */
+  ogType?: 'website' | 'article';
+  /** Thème de couleurs de la source (multi-podcast). */
   theme?: Theme;
 }
 
-const { title, description, theme } = Astro.props;
-const c = theme?.colors;
+const {
+  title,
+  description = 'Recommandations d’œuvres mentionnées dans des podcasts.',
+  ogImage,
+  ogType = 'website',
+  theme,
+} = Astro.props;
 
+// URL canonique de la page (utilise `site` de astro.config + le pathname courant).
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Image de partage : celle de la page, sinon une image par défaut à la racine.
+const socialImage = new URL(ogImage ?? '/og-default.png', Astro.site).toString();
+
+const c = theme?.colors;
 // Variables CSS de thème injectées par source (multi-podcast).
 const styleVars = c
   ? [
@@ -35,6 +53,8 @@ const styleVars = c
       `--accent-text:${c.accentText ?? '#0e0e10'}`,
     ].join(';')
   : undefined;
+// Couleur de thème mobile (status bar Android, barre adresse iOS).
+const themeColor = c?.bg ?? '#0e0e10';
 ---
 
 <!doctype html>
@@ -42,8 +62,25 @@ const styleVars = c
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={themeColor} />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    {/* Open Graph (Facebook, LinkedIn…) */}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:locale" content="fr_FR" />
+
+    {/* Twitter Cards */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
