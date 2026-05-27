@@ -19,7 +19,7 @@
   "watchProviders": [
     {
       "label": "TF1+",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20TF1%2B",
+      "url": "https://www.tf1.fr/recherche?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
@@ -29,8 +29,8 @@
     },
     {
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Paramount%2B%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Slumdog%20Millionaire",
+      "ethics": "avoid"
     },
     {
       "label": "HBO Max",
@@ -39,17 +39,17 @@
     },
     {
       "label": "Paramount Plus Premium",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Paramount%20Plus%20Premium",
+      "url": "https://www.paramountplus.com/fr/search/?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20HBO%20Max%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Slumdog%20Millionaire",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
@@ -59,12 +59,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Slumdog%20Millionaire",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
@@ -89,23 +89,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Slumdog%20Millionaire",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Slumdog%20Millionaire%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Slumdog%20Millionaire",
+      "ethics": "indie"
     }
   ]
 }

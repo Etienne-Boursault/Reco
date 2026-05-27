@@ -19,27 +19,27 @@
   "watchProviders": [
     {
       "label": "Molotov TV",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Molotov%20TV",
+      "url": "https://www.molotov.tv/search?q=Rocky%20III",
       "ethics": "neutral"
     },
     {
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Cine%2B%20OCS%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Rocky%20III",
+      "ethics": "avoid"
     },
     {
       "label": "MGM Amazon Channel",
-      "url": "https://www.google.com/search?q=Rocky%20III%20MGM%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Rocky%20III",
+      "ethics": "avoid"
     },
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=Rocky%20III%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Rocky%20III",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Rocky%20III",
       "ethics": "neutral"
     },
     {
@@ -49,12 +49,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Rocky%20III",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Rocky%20III",
       "ethics": "neutral"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Rocky%20III",
       "ethics": "neutral"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Rocky%20III%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Rocky%20III",
       "ethics": "neutral"
     }
   ]

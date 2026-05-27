@@ -22,7 +22,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Le%20sens%20de%20la%20vie",
       "ethics": "neutral"
     },
     {
@@ -32,8 +32,8 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20sens%20de%20la%20vie",
+      "ethics": "avoid"
     },
     {
       "label": "YouTube",
@@ -42,12 +42,12 @@
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Le%20sens%20de%20la%20vie",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Le%20sens%20de%20la%20vie",
       "ethics": "neutral"
     },
     {
@@ -57,17 +57,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Le%20sens%20de%20la%20vie",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Le%20sens%20de%20la%20vie",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Le%20sens%20de%20la%20vie%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Le%20sens%20de%20la%20vie",
       "ethics": "neutral"
     }
   ]

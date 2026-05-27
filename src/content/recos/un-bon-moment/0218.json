@@ -21,13 +21,13 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Parks%20and%20Recreation%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Parks%20and%20Recreation",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Parks%20and%20Recreation%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parks%20and%20Recreation",
+      "ethics": "avoid"
     },
     {
       "label": "Amazon Video",

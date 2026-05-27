@@ -21,27 +21,27 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20bonne%20ann%C3%A9e",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {
       "label": "Cinemas a la Demande",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Cinemas%20a%20la%20Demande",
+      "url": "https://www.cinemasalademande.com/?s=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {
@@ -51,12 +51,12 @@
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=La%20bonne%20ann%C3%A9e",
       "ethics": "neutral"
     },
     {

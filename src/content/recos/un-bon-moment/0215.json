@@ -26,18 +26,18 @@
     },
     {
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.google.com/search?q=Curb%20Your%20Enthusiasm%20HBO%20Max%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Curb%20Your%20Enthusiasm",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Curb%20Your%20Enthusiasm%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Curb%20Your%20Enthusiasm",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Curb%20Your%20Enthusiasm%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Curb%20Your%20Enthusiasm",
+      "ethics": "avoid"
     }
   ]
 }

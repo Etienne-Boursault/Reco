@@ -21,48 +21,48 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mon%20oncle%20d%27Am%C3%A9rique",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Mon%20oncle%20d%27Am%C3%A9rique",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
+      "ethics": "indie"
     }
   ]
 }

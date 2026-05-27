@@ -20,7 +20,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Before%20Sunset",
       "ethics": "neutral"
     },
     {
@@ -30,12 +30,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Sunset",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Before%20Sunset",
       "ethics": "neutral"
     },
     {
@@ -45,12 +45,12 @@
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Before%20Sunset",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Before%20Sunset",
       "ethics": "neutral"
     },
     {
@@ -60,17 +60,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Before%20Sunset",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Before%20Sunset",
+      "ethics": "indie"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Before%20Sunset%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Before%20Sunset",
       "ethics": "neutral"
     }
   ]

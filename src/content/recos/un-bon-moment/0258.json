@@ -22,27 +22,27 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=8%C2%BD",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=8%C2%BD",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=8%C2%BD",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=8%C2%BD%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=8%C2%BD",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=8%C2%BD",
       "ethics": "neutral"
     },
     {
@@ -52,17 +52,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=8%C2%BD",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=8%C2%BD%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=8%C2%BD",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=8%C2%BD%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=8%C2%BD",
       "ethics": "neutral"
     }
   ]

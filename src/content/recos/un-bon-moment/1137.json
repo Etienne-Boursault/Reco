@@ -21,32 +21,32 @@
   "watchProviders": [
     {
       "label": "Artiflix",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Artiflix",
-      "ethics": "neutral"
+      "url": "https://www.artiflix.com/search?q=The%20Fighter",
+      "ethics": "indie"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Fighter",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Fighter",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=The%20Fighter",
       "ethics": "neutral"
     },
     {
       "label": "Cinemas a la Demande",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Cinemas%20a%20la%20Demande",
+      "url": "https://www.cinemasalademande.com/?s=The%20Fighter",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=The%20Fighter%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=The%20Fighter",
       "ethics": "neutral"
     },
     {

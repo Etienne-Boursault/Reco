@@ -26,12 +26,12 @@
     },
     {
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Amazon%20Prime%20Video%20with%20Ads",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
@@ -41,12 +41,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Everything%20Everywhere%20All%20at%20Once",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
@@ -56,12 +56,12 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
@@ -71,23 +71,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Everything%20Everywhere%20All%20at%20Once",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Everything%20Everywhere%20All%20at%20Once%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Everything%20Everywhere%20All%20at%20Once",
+      "ethics": "indie"
     }
   ]
 }

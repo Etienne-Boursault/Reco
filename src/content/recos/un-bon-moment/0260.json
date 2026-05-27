@@ -21,18 +21,18 @@
   "watchProviders": [
     {
       "label": "Plex",
-      "url": "https://www.google.com/search?q=White%20Fire%20Plex",
+      "url": "https://watch.plex.tv/search?q=White%20Fire",
       "ethics": "neutral"
     },
     {
       "label": "Plex Channel",
-      "url": "https://www.google.com/search?q=White%20Fire%20Plex%20Channel",
+      "url": "https://watch.plex.tv/search?q=White%20Fire",
       "ethics": "neutral"
     },
     {
       "label": "Filmzie",
-      "url": "https://www.google.com/search?q=White%20Fire%20Filmzie",
-      "ethics": "neutral"
+      "url": "https://www.filmzie.com/search?q=White%20Fire",
+      "ethics": "indie"
     }
   ]
 }

@@ -20,13 +20,13 @@
   "watchProviders": [
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Les%20nouveaux%20monstres%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Les%20nouveaux%20monstres",
+      "ethics": "indie"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Les%20nouveaux%20monstres%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Les%20nouveaux%20monstres",
+      "ethics": "indie"
     }
   ]
 }

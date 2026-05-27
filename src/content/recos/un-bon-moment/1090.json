@@ -21,7 +21,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=I%27m%20Still%20Here%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=I%27m%20Still%20Here",
       "ethics": "neutral"
     },
     {
@@ -36,8 +36,8 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=I%27m%20Still%20Here%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=I%27m%20Still%20Here",
+      "ethics": "avoid"
     }
   ]
 }

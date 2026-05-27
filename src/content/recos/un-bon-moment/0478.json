@@ -18,27 +18,27 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Resident%20Evil",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Resident%20Evil",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Resident%20Evil",
       "ethics": "neutral"
     },
     {
       "label": "Cinemas a la Demande",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Cinemas%20a%20la%20Demande",
+      "url": "https://www.cinemasalademande.com/?s=Resident%20Evil",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Resident%20Evil",
       "ethics": "neutral"
     },
     {
@@ -48,17 +48,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Resident%20Evil",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Resident%20Evil",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Resident%20Evil%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Resident%20Evil",
       "ethics": "neutral"
     },
     {

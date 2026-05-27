@@ -20,17 +20,17 @@
   "watchProviders": [
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Paterson%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Paterson",
       "ethics": "neutral"
     },
     {
       "label": "Molotov TV",
-      "url": "https://www.google.com/search?q=Paterson%20Molotov%20TV",
+      "url": "https://www.molotov.tv/search?q=Paterson",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Paterson%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Paterson",
       "ethics": "neutral"
     },
     {
@@ -40,12 +40,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Paterson%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Paterson",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Paterson%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Paterson",
       "ethics": "neutral"
     },
     {
@@ -55,8 +55,8 @@
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Paterson%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Paterson",
+      "ethics": "indie"
     },
     {
       "label": "Amazon Video",
@@ -65,27 +65,27 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Paterson%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Paterson",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Paterson%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Paterson",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Paterson%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Paterson",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Paterson%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Paterson",
+      "ethics": "indie"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Paterson%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Paterson",
       "ethics": "neutral"
     }
   ]

@@ -20,7 +20,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
@@ -30,12 +30,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lawrence%20of%20Arabia",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
@@ -45,17 +45,17 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Lawrence%20of%20Arabia",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
@@ -65,17 +65,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Lawrence%20of%20Arabia%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Lawrence%20of%20Arabia",
       "ethics": "neutral"
     }
   ]

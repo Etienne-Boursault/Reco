@@ -19,17 +19,17 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=High%20Maintenance%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=High%20Maintenance",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=High%20Maintenance%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=High%20Maintenance",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=High%20Maintenance%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=High%20Maintenance",
       "ethics": "neutral"
     }
   ]

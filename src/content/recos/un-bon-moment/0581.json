@@ -20,12 +20,12 @@
   "watchProviders": [
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=The%20Terror%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Terror",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=The%20Terror%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Terror",
       "ethics": "neutral"
     },
     {

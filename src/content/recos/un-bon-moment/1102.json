@@ -20,22 +20,22 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Searching%20for%20Sugar%20Man",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Searching%20for%20Sugar%20Man",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Searching%20for%20Sugar%20Man",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Searching%20for%20Sugar%20Man",
       "ethics": "neutral"
     },
     {
@@ -45,18 +45,18 @@
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Searching%20for%20Sugar%20Man",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Searching%20for%20Sugar%20Man",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Searching%20for%20Sugar%20Man%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Searching%20for%20Sugar%20Man",
+      "ethics": "indie"
     }
   ]
 }

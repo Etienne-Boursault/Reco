@@ -19,22 +19,22 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Femme%20de%20m%C3%A9nage",
+      "ethics": "avoid"
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     },
     {
@@ -44,17 +44,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=La%20Femme%20de%20m%C3%A9nage%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=La%20Femme%20de%20m%C3%A9nage",
       "ethics": "neutral"
     }
   ]

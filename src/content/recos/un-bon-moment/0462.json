@@ -20,27 +20,27 @@
   "watchProviders": [
     {
       "label": "MUBI",
-      "url": "https://www.google.com/search?q=Drive%20MUBI",
-      "ethics": "neutral"
+      "url": "https://mubi.com/fr/films?q=Drive",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Drive%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Drive",
       "ethics": "neutral"
     },
     {
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.google.com/search?q=Drive%20Cine%2B%20OCS%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive",
+      "ethics": "avoid"
     },
     {
       "label": "MUBI Amazon Channel",
-      "url": "https://www.google.com/search?q=Drive%20MUBI%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive",
+      "ethics": "avoid"
     },
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=Drive%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Drive",
       "ethics": "neutral"
     },
     {
@@ -50,12 +50,12 @@
     },
     {
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.google.com/search?q=Drive%20HBO%20Max%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Drive%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Drive",
       "ethics": "neutral"
     },
     {
@@ -65,12 +65,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Drive%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Drive",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Drive%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Drive",
       "ethics": "neutral"
     },
     {
@@ -80,13 +80,13 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Drive%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Drive",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Drive%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Drive",
+      "ethics": "indie"
     },
     {
       "label": "Amazon Video",
@@ -95,23 +95,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Drive%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Drive",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Drive%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Drive",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Drive%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Drive",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Drive%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Drive",
+      "ethics": "indie"
     }
   ]
 }

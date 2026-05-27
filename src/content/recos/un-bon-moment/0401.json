@@ -19,8 +19,8 @@
   "watchProviders": [
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Will%20Hunting",
+      "ethics": "indie"
     },
     {
       "label": "Paramount Plus",
@@ -29,17 +29,17 @@
     },
     {
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Paramount%2B%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting",
+      "ethics": "avoid"
     },
     {
       "label": "Paramount Plus Premium",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Paramount%20Plus%20Premium",
+      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Will%20Hunting",
       "ethics": "neutral"
     },
     {
@@ -49,12 +49,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Will%20Hunting",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Will%20Hunting",
       "ethics": "neutral"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Will%20Hunting",
       "ethics": "neutral"
     },
     {
@@ -74,17 +74,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Will%20Hunting",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Will%20Hunting",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Will%20Hunting%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Will%20Hunting",
       "ethics": "neutral"
     }
   ]

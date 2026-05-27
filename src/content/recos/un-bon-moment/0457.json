@@ -20,13 +20,13 @@
   "watchProviders": [
     {
       "label": "Molotov TV",
-      "url": "https://www.google.com/search?q=Ma%20vie%20en%20l%27air%20Molotov%20TV",
+      "url": "https://www.molotov.tv/search?q=Ma%20vie%20en%20l%27air",
       "ethics": "neutral"
     },
     {
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.google.com/search?q=Ma%20vie%20en%20l%27air%20Cine%2B%20OCS%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Ma%20vie%20en%20l%27air",
+      "ethics": "avoid"
     }
   ]
 }

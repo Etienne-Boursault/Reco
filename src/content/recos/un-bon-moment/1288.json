@@ -24,22 +24,22 @@
     },
     {
       "label": "TF1+",
-      "url": "https://www.google.com/search?q=Clem%20TF1%2B",
+      "url": "https://www.tf1.fr/recherche?q=Clem",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Clem%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Clem",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Clem%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Clem",
       "ethics": "neutral"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Clem%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Clem",
       "ethics": "neutral"
     }
   ]

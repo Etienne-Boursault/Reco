@@ -22,22 +22,22 @@
   "watchProviders": [
     {
       "label": "Molotov TV",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Molotov%20TV",
+      "url": "https://www.molotov.tv/search?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
       "label": "France TV Amazon Channel",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20France%20TV%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=%C3%80%20l%27abordage",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
@@ -47,12 +47,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=%C3%80%20l%27abordage",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
@@ -62,12 +62,12 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
@@ -77,18 +77,18 @@
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=%C3%80%20l%27abordage",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=%C3%80%20l%27abordage%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=%C3%80%20l%27abordage",
+      "ethics": "indie"
     }
   ]
 }

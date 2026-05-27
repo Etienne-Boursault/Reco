@@ -20,22 +20,22 @@
   "watchProviders": [
     {
       "label": "MUBI",
-      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20MUBI",
-      "ethics": "neutral"
+      "url": "https://mubi.com/fr/films?q=Un%20air%20de%20famille",
+      "ethics": "indie"
     },
     {
       "label": "MUBI Amazon Channel",
-      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20MUBI%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20air%20de%20famille",
+      "ethics": "avoid"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Un%20air%20de%20famille",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Un%20air%20de%20famille",
       "ethics": "neutral"
     }
   ]

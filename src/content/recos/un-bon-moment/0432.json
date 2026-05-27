@@ -25,17 +25,17 @@
     },
     {
       "label": "TF1+",
-      "url": "https://www.google.com/search?q=Gladiator%20TF1%2B",
+      "url": "https://www.tf1.fr/recherche?q=Gladiator",
       "ethics": "neutral"
     },
     {
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.google.com/search?q=Gladiator%20Amazon%20Prime%20Video%20with%20Ads",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator",
+      "ethics": "avoid"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Gladiator%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Gladiator",
       "ethics": "neutral"
     },
     {
@@ -45,12 +45,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Gladiator%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Gladiator",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Gladiator%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Gladiator",
       "ethics": "neutral"
     },
     {
@@ -60,17 +60,17 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Gladiator%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Gladiator",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Gladiator%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Gladiator",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Gladiator%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Gladiator",
       "ethics": "neutral"
     },
     {
@@ -80,23 +80,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Gladiator%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Gladiator",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Gladiator%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Gladiator",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Gladiator%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Gladiator",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Gladiator%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Gladiator",
+      "ethics": "indie"
     }
   ]
 }

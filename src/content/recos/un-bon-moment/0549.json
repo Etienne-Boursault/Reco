@@ -20,7 +20,7 @@
   "watchProviders": [
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Papicha%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Papicha",
       "ethics": "neutral"
     },
     {
@@ -30,12 +30,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Papicha%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papicha",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Papicha%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Papicha",
       "ethics": "neutral"
     },
     {
@@ -45,12 +45,12 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Papicha%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Papicha",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Papicha%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Papicha",
       "ethics": "neutral"
     },
     {
@@ -60,17 +60,17 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Papicha%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Papicha",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Papicha%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Papicha",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Papicha%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Papicha",
       "ethics": "neutral"
     }
   ]

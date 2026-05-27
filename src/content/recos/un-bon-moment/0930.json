@@ -21,37 +21,37 @@
   "watchProviders": [
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=P%C3%A9ril%20Jeune",
       "ethics": "neutral"
     },
     {
       "label": "Molotov TV",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20Molotov%20TV",
+      "url": "https://www.molotov.tv/search?q=P%C3%A9ril%20Jeune",
       "ethics": "neutral"
     },
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=P%C3%A9ril%20Jeune",
       "ethics": "neutral"
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=P%C3%A9ril%20Jeune",
+      "ethics": "avoid"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=P%C3%A9ril%20Jeune",
+      "ethics": "indie"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=P%C3%A9ril%20Jeune",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=P%C3%A9ril%20Jeune%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=P%C3%A9ril%20Jeune",
       "ethics": "neutral"
     }
   ]

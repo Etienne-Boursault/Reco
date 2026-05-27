@@ -22,17 +22,17 @@
   "watchProviders": [
     {
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20Cine%2B%20OCS%20Amazon%20Channel",
-      "ethics": "neutral"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
+      "ethics": "avoid"
     },
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
       "ethics": "neutral"
     },
     {
@@ -42,12 +42,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
       "ethics": "neutral"
     },
     {
@@ -57,8 +57,8 @@
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
+      "ethics": "indie"
     },
     {
       "label": "Amazon Video",
@@ -67,12 +67,12 @@
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Tout%20le%20monde%20il%20est%20beau%2C%20tout%20le%20monde%20il%20est%20gentil",
       "ethics": "neutral"
     }
   ]

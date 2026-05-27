@@ -21,12 +21,12 @@
   "watchProviders": [
     {
       "label": "M6+",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20M6%2B",
+      "url": "https://www.6play.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
@@ -36,12 +36,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20p%27tit%20truc%20en%20plus",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
@@ -51,12 +51,12 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
@@ -66,23 +66,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=Un%20p%27tit%20truc%20en%20plus",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=Un%20p%27tit%20truc%20en%20plus",
+      "ethics": "indie"
     }
   ]
 }

@@ -44,9 +44,19 @@ export const AVOID_DOMAINS = [
 
 const enc = (s: string) => encodeURIComponent(s.trim());
 
-/** Construit la requête de recherche à partir des champs de la reco. */
+/** Construit la requête de recherche à partir des champs de la reco.
+ *  Évite la duplication quand le LLM met le même contenu dans title et
+ *  creator (cas observé pour les types `artiste` où title=creator=nom). */
 function query(title: string, creator?: string): string {
-  return creator ? `${title} ${creator}` : title;
+  const t = title.trim();
+  const c = creator?.trim();
+  if (!c) return t;
+  // Dédupe : si creator est inclus dans title ou inversement, on garde le plus long.
+  const tn = t.toLowerCase();
+  const cn = c.toLowerCase();
+  if (tn === cn || tn.includes(cn)) return t;
+  if (cn.includes(tn)) return c;
+  return `${t} ${c}`;
 }
 
 interface RecoLike {

@@ -21,12 +21,12 @@
   "watchProviders": [
     {
       "label": "SFR Play",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20SFR%20Play",
+      "url": "https://www.sfrplay.fr/recherche?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
       "label": "Apple TV Store",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Apple%20TV%20Store",
+      "url": "https://tv.apple.com/fr/search?term=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
@@ -36,12 +36,12 @@
     },
     {
       "label": "Canal VOD",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Canal%20VOD",
-      "ethics": "neutral"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27Auberge%20Espagnole",
+      "ethics": "avoid"
     },
     {
       "label": "Orange VOD",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Orange%20VOD",
+      "url": "https://video.orange.fr/search?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
@@ -51,17 +51,17 @@
     },
     {
       "label": "Rakuten TV",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Rakuten%20TV",
+      "url": "https://rakuten.tv/fr/search?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
       "label": "LaCinetek",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20LaCinetek",
-      "ethics": "neutral"
+      "url": "https://www.lacinetek.com/fr/?text=L%27Auberge%20Espagnole",
+      "ethics": "indie"
     },
     {
       "label": "Sooner",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Sooner",
+      "url": "https://www.sooner.fr/recherche?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
@@ -71,23 +71,23 @@
     },
     {
       "label": "Pathé Home",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Path%C3%A9%20Home",
+      "url": "https://www.pathehome.com/recherche?text=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
       "label": "VIVA by videofutur",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20VIVA%20by%20videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
       "label": "Premiere Max",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20Premiere%20Max",
+      "url": "https://www.premieremax.com/search?q=L%27Auberge%20Espagnole",
       "ethics": "neutral"
     },
     {
       "label": "ARTE Boutique",
-      "url": "https://www.google.com/search?q=L%27Auberge%20Espagnole%20ARTE%20Boutique",
-      "ethics": "neutral"
+      "url": "https://boutique.arte.tv/search?q=L%27Auberge%20Espagnole",
+      "ethics": "indie"
     }
   ]
 }
