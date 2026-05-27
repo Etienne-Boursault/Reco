@@ -13,5 +13,81 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "437586",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Molotov TV",
+      "url": "https://www.google.com/search?q=Mid90s%20Molotov%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=Mid90s%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Mid90s%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Mid90s%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Mid90s&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Mid90s%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Mid90s%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Mid90s",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Mid90s%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Mid90s%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mid90s",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Mid90s%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Mid90s%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Mid90s%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

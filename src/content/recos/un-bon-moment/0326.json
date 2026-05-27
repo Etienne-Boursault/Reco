@@ -12,5 +12,56 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "756",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Fantasia",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Fantasia%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Fantasia&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Fantasia%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Fantasia",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fantasia",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Fantasia%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Fantasia%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Fantasia%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

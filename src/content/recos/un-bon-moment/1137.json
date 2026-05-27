@@ -13,5 +13,56 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "45317",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Artiflix",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Artiflix",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cinemas a la Demande",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Cinemas%20a%20la%20Demande",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=The%20Fighter%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Fighter",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=The%20Fighter&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=The%20Fighter",
+      "ethics": "neutral"
+    }
   ]
 }

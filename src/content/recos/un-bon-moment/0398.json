@@ -14,5 +14,16 @@
     "anthropic",
     "openai"
   ],
-  "year": 1999
+  "year": 1999,
+  "externalIds": {
+    "tmdb": "4291",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=L%27%C3%A9t%C3%A9%20de%20Kikujiro%20Orange%20VOD",
+      "ethics": "neutral"
+    }
+  ]
 }

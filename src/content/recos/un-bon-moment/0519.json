@@ -12,5 +12,86 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "458156",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=John%20Wick",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=John%20Wick%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=John%20Wick%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=John%20Wick%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=John%20Wick%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=John%20Wick%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cinemas a la Demande",
+      "url": "https://www.google.com/search?q=John%20Wick%20Cinemas%20a%20la%20Demande",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=John%20Wick%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=John%20Wick%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=John%20Wick%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=John%20Wick%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=John%20Wick&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=John%20Wick",
+      "ethics": "neutral"
+    }
   ]
 }

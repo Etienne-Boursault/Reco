@@ -11,5 +11,26 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "95396",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Severance",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Severance",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Apple TV Amazon Channel",
+      "url": "https://www.google.com/search?q=Severance%20Apple%20TV%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

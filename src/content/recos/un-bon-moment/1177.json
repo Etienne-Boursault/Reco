@@ -13,5 +13,21 @@
     "anthropic",
     "openai"
   ],
-  "creator": "Jeff Orlowski"
+  "creator": "Jeff Orlowski",
+  "externalIds": {
+    "tmdb": "656690",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=The%20Social%20Dilemma%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
+  ]
 }

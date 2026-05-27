@@ -12,5 +12,16 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "84958",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Loki",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -13,5 +13,56 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "39543",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20LaCinetek",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
   ]
 }

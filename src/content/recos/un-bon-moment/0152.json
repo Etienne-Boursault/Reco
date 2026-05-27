@@ -12,5 +12,16 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "463088",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Game%20Changers%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    }
   ]
 }

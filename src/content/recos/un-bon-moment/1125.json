@@ -13,5 +13,21 @@
     "anthropic",
     "openai"
   ],
-  "creator": "Bill Lawrence, Jason Sudeikis"
+  "creator": "Bill Lawrence, Jason Sudeikis",
+  "externalIds": {
+    "tmdb": "97546",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Ted%20Lasso",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Amazon Channel",
+      "url": "https://www.google.com/search?q=Ted%20Lasso%20Apple%20TV%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
+  ]
 }

@@ -13,5 +13,21 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "77601",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Wild%20Wild%20Country",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Wild%20Wild%20Country%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

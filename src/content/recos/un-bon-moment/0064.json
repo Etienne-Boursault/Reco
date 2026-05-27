@@ -12,5 +12,31 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "81241",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Dispatches%20from%20Elsewhere%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Dispatches%20from%20Elsewhere%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dispatches%20from%20Elsewhere",
+      "ethics": "avoid"
+    }
   ]
 }

@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "204284",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Rehearsal",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.google.com/search?q=The%20Rehearsal%20HBO%20Max%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -11,5 +11,26 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "61986",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Bloodline",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Bloodline%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Bloodline%20SFR%20Play",
+      "ethics": "neutral"
+    }
   ]
 }

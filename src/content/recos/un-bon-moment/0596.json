@@ -12,5 +12,66 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "80",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Before%20Sunset&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Before%20Sunset",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20LaCinetek",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Sunset",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20ARTE%20Boutique",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Before%20Sunset%20Rakuten%20TV",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -12,5 +12,51 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "2316",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Office",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Office",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=The%20Office%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=The%20Office%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=The%20Office%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=The%20Office%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office",
+      "ethics": "avoid"
+    }
   ]
 }

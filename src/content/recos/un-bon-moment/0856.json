@@ -14,5 +14,16 @@
     "anthropic",
     "openai"
   ],
-  "year": 1995
+  "year": 1995,
+  "externalIds": {
+    "tmdb": "433725",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=L%27%C3%A2ge%20des%20possibles%20Sooner",
+      "ethics": "neutral"
+    }
+  ]
 }

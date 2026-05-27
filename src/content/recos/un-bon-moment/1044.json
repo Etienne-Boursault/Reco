@@ -13,5 +13,61 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "419743",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Disobedience%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Disobedience&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Disobedience%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Disobedience%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Disobedience",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Disobedience%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Disobedience%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Disobedience",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Disobedience%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Disobedience%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

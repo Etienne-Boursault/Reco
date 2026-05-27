@@ -11,5 +11,36 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "62824",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Clem",
+      "ethics": "neutral"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=Clem%20TF1%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Clem%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Clem%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Clem%20Orange%20VOD",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -13,5 +13,16 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "49064",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Bagar%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    }
   ]
 }

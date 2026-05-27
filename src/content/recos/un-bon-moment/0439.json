@@ -12,5 +12,96 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "8961",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Bad%20Boys%202",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bad%20Boys%202",
+      "ethics": "neutral"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20TF1%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Bad%20Boys%202",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20HBO%20Max%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Bad%20Boys%202&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Bad%20Boys%202",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bad%20Boys%202",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Bad%20Boys%202%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

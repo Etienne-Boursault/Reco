@@ -13,5 +13,76 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "1152014",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "M6+",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20M6%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Un%20p%27tit%20truc%20en%20plus&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Un%20p%27tit%20truc%20en%20plus",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20p%27tit%20truc%20en%20plus",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Un%20p%27tit%20truc%20en%20plus%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -10,5 +10,46 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "637",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Vie%20est%20belle",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=La%20Vie%20est%20belle%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

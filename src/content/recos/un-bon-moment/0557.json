@@ -13,5 +13,61 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "76329",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cinemas a la Demande",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Cinemas%20a%20la%20Demande",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20bonne%20ann%C3%A9e",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=La%20bonne%20ann%C3%A9e%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=La%20bonne%20ann%C3%A9e&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=La%20bonne%20ann%C3%A9e",
+      "ethics": "neutral"
+    }
   ]
 }

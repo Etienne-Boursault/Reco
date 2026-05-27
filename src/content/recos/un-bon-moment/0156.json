@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "157065",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=La%20Chute%20de%20la%20maison%20Usher",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=La%20Chute%20de%20la%20maison%20Usher%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

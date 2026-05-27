@@ -13,5 +13,86 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "15",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Molotov TV",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Molotov%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Citizen%20Kane&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Citizen%20Kane",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20LaCinetek",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Citizen%20Kane",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20ARTE%20Boutique",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Citizen%20Kane%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

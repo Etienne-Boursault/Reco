@@ -13,5 +13,76 @@
     "anthropic",
     "openai"
   ],
-  "year": 1993
+  "year": 1993,
+  "externalIds": {
+    "tmdb": "9739",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Demolition%20Man",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20HBO%20Max%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Demolition%20Man&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Demolition%20Man",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Demolition%20Man",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Demolition%20Man%20Premiere%20Max",
+      "ethics": "neutral"
+    }
+  ]
 }

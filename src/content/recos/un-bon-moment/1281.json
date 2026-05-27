@@ -11,5 +11,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "873",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=Columbo%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo",
+      "ethics": "avoid"
+    }
   ]
 }

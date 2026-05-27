@@ -12,5 +12,31 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "14646",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "MUBI",
+      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20MUBI",
+      "ethics": "neutral"
+    },
+    {
+      "label": "MUBI Amazon Channel",
+      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20MUBI%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Un%20air%20de%20famille%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

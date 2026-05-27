@@ -11,5 +11,9 @@
   "extractors": [
     "anthropic",
     "openai"
-  ]
+  ],
+  "externalIds": {
+    "tmdb": "434398",
+    "tmdbType": "movie"
+  }
 }

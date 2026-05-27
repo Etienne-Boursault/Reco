@@ -11,5 +11,9 @@
   "status": "draft",
   "extractors": [
     "anthropic"
-  ]
+  ],
+  "externalIds": {
+    "tmdb": "63498",
+    "tmdbType": "tv"
+  }
 }

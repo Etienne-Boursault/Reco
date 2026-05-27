@@ -10,5 +10,86 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "939243",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=Sonic%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=Sonic%20TF1%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=Sonic",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Sonic%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount+ Amazon Channel",
+      "url": "https://www.google.com/search?q=Sonic%20Paramount%2B%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount Plus Premium",
+      "url": "https://www.google.com/search?q=Sonic%20Paramount%20Plus%20Premium",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Sonic%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Sonic%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Sonic%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Sonic%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Sonic%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Sonic%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Sonic%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Sonic%20Orange%20VOD",
+      "ethics": "neutral"
+    }
   ]
 }

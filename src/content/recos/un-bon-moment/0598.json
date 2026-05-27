@@ -12,5 +12,96 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "1584",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Molotov TV",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Molotov%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=School%20of%20Rock",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount+ Amazon Channel",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Paramount%2B%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount Plus Premium",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Paramount%20Plus%20Premium",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=School%20of%20Rock&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=School%20of%20Rock",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=School%20of%20Rock%20Sooner",
+      "ethics": "neutral"
+    }
   ]
 }

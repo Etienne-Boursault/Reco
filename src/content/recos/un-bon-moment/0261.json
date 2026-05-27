@@ -12,5 +12,51 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "1174382",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
   ]
 }

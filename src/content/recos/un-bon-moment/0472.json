@@ -11,5 +11,76 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "21575",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20Proph%C3%A8te",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Molotov TV",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Molotov%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20LaCinetek",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Un%20Proph%C3%A8te%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
   ]
 }

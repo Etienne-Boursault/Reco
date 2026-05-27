@@ -12,5 +12,41 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "63247",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Westworld%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Westworld%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Westworld%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Westworld%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Westworld%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Westworld",
+      "ethics": "avoid"
+    }
   ]
 }

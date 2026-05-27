@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "45004",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Les%20nouveaux%20monstres%20LaCinetek",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Les%20nouveaux%20monstres%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
   ]
 }

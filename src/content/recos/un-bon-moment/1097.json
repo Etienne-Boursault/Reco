@@ -11,5 +11,31 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "90816",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Valid%C3%A9",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Valid%C3%A9%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal+ Séries",
+      "url": "https://www.google.com/search?q=Valid%C3%A9%20Canal%2B%20S%C3%A9ries",
+      "ethics": "neutral"
+    }
   ]
 }

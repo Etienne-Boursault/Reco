@@ -13,6 +13,7 @@ interface Props {
     timestamp?: string;
     links?: { label: string; url: string; kind?: string; ethics?: string }[];
     externalIds?: Record<string, string | undefined>;
+    watchProviders?: { label: string; url: string; ethics?: string }[];
   };
   episodeTitle?: string;
   episodeNumber?: number;
@@ -31,6 +32,8 @@ const TYPE_LABELS: Record<string, string> = {
   jeu: 'Jeu',
   spectacle: 'Spectacle',
   lieu: 'Lieu',
+  artiste: 'Artiste',
+  video: 'Vidéo',
   autre: 'Autre',
 };
 
@@ -90,11 +93,19 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
       <div class="links">
         {links.map((l) => (
           <a
-            class:list={['link', { indie: l.ethics === 'indie' }]}
+            class:list={[
+              'link',
+              { indie: l.ethics === 'indie' },
+              { avoid: l.ethics === 'avoid' },
+            ]}
             href={l.url}
             target="_blank"
             rel="noopener noreferrer"
-            title={l.label}
+            title={
+              l.ethics === 'avoid'
+                ? `${l.label} (plateforme moins recommandée selon nos critères éthiques)`
+                : l.label
+            }
             aria-label={l.label}
           >
             {l.icon ? (
@@ -168,6 +179,7 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   }
   /* Bouton-icône rond : on affiche le logo de la plateforme. */
   .link {
+    position: relative; /* pour le badge ::after sur .avoid */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -194,6 +206,33 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   /* Liseré doré pour les plateformes indépendantes. */
   .link.indie {
     border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  }
+  /* Plateforme à éviter (Amazon/Bolloré) : opacité réduite + croix subtile
+     en survol pour signaler que ce n'est pas notre premier choix. */
+  .link.avoid {
+    opacity: 0.5;
+    filter: grayscale(0.7);
+  }
+  .link.avoid::after {
+    content: '!';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #c84a4a;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .link.avoid:hover {
+    opacity: 0.85;
+    filter: none;
   }
   .link img {
     width: 20px;

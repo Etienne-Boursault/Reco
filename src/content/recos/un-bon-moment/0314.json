@@ -12,5 +12,16 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "61244",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Happy%20Valley%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    }
   ]
 }

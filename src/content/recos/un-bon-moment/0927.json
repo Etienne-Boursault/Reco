@@ -12,5 +12,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "1100",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=How%20I%20Met%20Your%20Mother",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=How%20I%20Met%20Your%20Mother%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=How%20I%20Met%20Your%20Mother",
+      "ethics": "avoid"
+    }
   ]
 }

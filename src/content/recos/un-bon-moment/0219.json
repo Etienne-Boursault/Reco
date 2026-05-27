@@ -11,5 +11,21 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "284656",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Canal+ Séries",
+      "url": "https://www.google.com/search?q=Empathie%20Canal%2B%20S%C3%A9ries",
+      "ethics": "neutral"
+    }
   ]
 }

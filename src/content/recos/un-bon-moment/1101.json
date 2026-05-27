@@ -11,5 +11,26 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "70708",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=Striptease%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Striptease%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    }
   ]
 }

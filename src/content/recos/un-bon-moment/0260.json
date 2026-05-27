@@ -13,5 +13,26 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "858718",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Plex",
+      "url": "https://www.google.com/search?q=White%20Fire%20Plex",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Plex Channel",
+      "url": "https://www.google.com/search?q=White%20Fire%20Plex%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Filmzie",
+      "url": "https://www.google.com/search?q=White%20Fire%20Filmzie",
+      "ethics": "neutral"
+    }
   ]
 }

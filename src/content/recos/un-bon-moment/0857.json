@@ -12,5 +12,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "47496",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Les%20Grands%20Ducs%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Les%20Grands%20Ducs%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Les%20Grands%20Ducs%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "559969",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=El%20Camino",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=El%20Camino%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

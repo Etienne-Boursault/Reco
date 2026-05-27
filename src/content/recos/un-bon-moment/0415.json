@@ -12,5 +12,46 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "1429",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=L%27Attaque%20des%20Titans",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=L%27Attaque%20des%20Titans",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/fr/search?q=L%27Attaque%20des%20Titans",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Animation Digital Network",
+      "url": "https://www.google.com/search?q=L%27Attaque%20des%20Titans%20Animation%20Digital%20Network",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=L%27Attaque%20des%20Titans%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Anime Digital Network Amazon Channel",
+      "url": "https://www.google.com/search?q=L%27Attaque%20des%20Titans%20Anime%20Digital%20Network%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Crunchyroll Amazon Channel",
+      "url": "https://www.google.com/search?q=L%27Attaque%20des%20Titans%20Crunchyroll%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

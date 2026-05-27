@@ -12,5 +12,16 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "72820",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=I%27m%20Sorry%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -10,5 +10,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "96129",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

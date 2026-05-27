@@ -11,5 +11,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "473033",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Uncut%20Gems",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Uncut%20Gems%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

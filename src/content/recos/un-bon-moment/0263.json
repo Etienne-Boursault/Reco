@@ -12,5 +12,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "21182",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=I%20Feel%20Good%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=I%20Feel%20Good%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=I%20Feel%20Good%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

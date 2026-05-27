@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "25197",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Molotov TV",
+      "url": "https://www.google.com/search?q=Ma%20vie%20en%20l%27air%20Molotov%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Cine+ OCS Amazon Channel",
+      "url": "https://www.google.com/search?q=Ma%20vie%20en%20l%27air%20Cine%2B%20OCS%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

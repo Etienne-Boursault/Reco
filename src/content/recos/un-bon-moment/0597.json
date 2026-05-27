@@ -14,5 +14,51 @@
     "anthropic",
     "openai"
   ],
-  "year": 2014
+  "year": 2014,
+  "externalIds": {
+    "tmdb": "85350",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "MUBI",
+      "url": "https://www.google.com/search?q=Boyhood%20MUBI",
+      "ethics": "neutral"
+    },
+    {
+      "label": "MUBI Amazon Channel",
+      "url": "https://www.google.com/search?q=Boyhood%20MUBI%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Boyhood%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Boyhood%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Boyhood",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Boyhood%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Boyhood%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Boyhood%20Premiere%20Max",
+      "ethics": "neutral"
+    }
+  ]
 }

@@ -12,5 +12,61 @@
     "anthropic",
     "openai"
   ],
-  "year": 2025
+  "year": 2025,
+  "externalIds": {
+    "tmdb": "1166170",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20TF1%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27%C3%A2me%20id%C3%A9ale",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=L%27%C3%A2me%20id%C3%A9ale%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
+  ]
 }

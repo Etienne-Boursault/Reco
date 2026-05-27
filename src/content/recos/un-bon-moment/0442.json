@@ -11,5 +11,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "1102776",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Aka",
+      "ethics": "neutral"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=Aka%20TF1%2B",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=Aka%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

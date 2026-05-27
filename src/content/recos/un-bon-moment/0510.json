@@ -10,5 +10,61 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "23827",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Shadowz",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Shadowz",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Shadowz Amazon Channel",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Shadowz%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Paranormal%20Activity&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Paranormal%20Activity",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paranormal%20Activity",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Paranormal%20Activity%20Premiere%20Max",
+      "ethics": "neutral"
+    }
   ]
 }

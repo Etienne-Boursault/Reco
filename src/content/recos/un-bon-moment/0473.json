@@ -11,5 +11,9 @@
   "status": "draft",
   "extractors": [
     "openai"
-  ]
+  ],
+  "externalIds": {
+    "tmdb": "1002109",
+    "tmdbType": "movie"
+  }
 }

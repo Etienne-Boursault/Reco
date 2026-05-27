@@ -11,5 +11,9 @@
   "status": "draft",
   "extractors": [
     "openai"
-  ]
+  ],
+  "externalIds": {
+    "tmdb": "90591",
+    "tmdbType": "tv"
+  }
 }

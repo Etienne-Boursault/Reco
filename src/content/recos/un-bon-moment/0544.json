@@ -12,5 +12,21 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "60715",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=bref",
+      "ethics": "neutral"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.google.com/search?q=bref%20TF1%2B",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -14,5 +14,21 @@
     "anthropic",
     "openai"
   ],
-  "year": 2019
+  "year": 2019,
+  "externalIds": {
+    "tmdb": "81355",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=When%20They%20See%20Us",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.google.com/search?q=When%20They%20See%20Us%20Netflix%20Standard%20with%20Ads",
+      "ethics": "neutral"
+    }
+  ]
 }

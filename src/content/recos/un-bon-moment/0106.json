@@ -14,5 +14,76 @@
     "anthropic",
     "openai"
   ],
-  "year": 2023
+  "year": 2023,
+  "externalIds": {
+    "tmdb": "915935",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Anatomie%20d%27une%20chute&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Anatomie%20d%27une%20chute",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Rakuten%20TV",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Sooner",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anatomie%20d%27une%20chute",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Path%C3%A9%20Home",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20VIVA%20by%20videofutur",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20Premiere%20Max",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://www.google.com/search?q=Anatomie%20d%27une%20chute%20ARTE%20Boutique",
+      "ethics": "neutral"
+    }
+  ]
 }

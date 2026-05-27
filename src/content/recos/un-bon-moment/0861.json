@@ -13,5 +13,16 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "85271",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=WandaVision",
+      "ethics": "neutral"
+    }
   ]
 }

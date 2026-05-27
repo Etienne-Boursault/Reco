@@ -10,5 +10,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "118642",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=Mr.%20%26%20Mrs.%20Smith%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

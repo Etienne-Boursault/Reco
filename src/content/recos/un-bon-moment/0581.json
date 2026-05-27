@@ -12,5 +12,26 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "75191",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=The%20Terror%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://www.google.com/search?q=The%20Terror%20Apple%20TV%20Store",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Terror",
+      "ethics": "avoid"
+    }
   ]
 }

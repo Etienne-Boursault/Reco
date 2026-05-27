@@ -13,5 +13,21 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "102619",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=I%20May%20Destroy%20You",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.google.com/search?q=I%20May%20Destroy%20You%20HBO%20Max%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

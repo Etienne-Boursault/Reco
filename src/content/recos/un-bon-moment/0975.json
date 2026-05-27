@@ -12,5 +12,36 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "11497",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.google.com/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29%20Canal%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://www.google.com/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29%20Orange%20VOD",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.google.com/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29%20Sooner",
+      "ethics": "neutral"
+    }
   ]
 }

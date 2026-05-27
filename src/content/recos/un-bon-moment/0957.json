@@ -11,5 +11,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "222023",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.google.com/search?q=Jury%20Duty%20Amazon%20Prime%20Video%20with%20Ads",
+      "ethics": "neutral"
+    }
   ]
 }

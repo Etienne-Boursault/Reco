@@ -12,5 +12,36 @@
   "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "62715",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/fr/search?q=Dragon%20Ball%20Super",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Animation Digital Network",
+      "url": "https://www.google.com/search?q=Dragon%20Ball%20Super%20Animation%20Digital%20Network",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.google.com/search?q=Dragon%20Ball%20Super%20SFR%20Play",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Anime Digital Network Amazon Channel",
+      "url": "https://www.google.com/search?q=Dragon%20Ball%20Super%20Anime%20Digital%20Network%20Amazon%20Channel",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Crunchyroll Amazon Channel",
+      "url": "https://www.google.com/search?q=Dragon%20Ball%20Super%20Crunchyroll%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

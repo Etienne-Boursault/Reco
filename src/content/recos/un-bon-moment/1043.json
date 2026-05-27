@@ -11,5 +11,21 @@
   "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "externalIds": {
+    "tmdb": "236338",
+    "tmdbType": "tv"
+  },
+  "watchProviders": [
+    {
+      "label": "Animation Digital Network",
+      "url": "https://www.google.com/search?q=Looking%20Animation%20Digital%20Network",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Anime Digital Network Amazon Channel",
+      "url": "https://www.google.com/search?q=Looking%20Anime%20Digital%20Network%20Amazon%20Channel",
+      "ethics": "neutral"
+    }
   ]
 }

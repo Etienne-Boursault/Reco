@@ -13,5 +13,16 @@
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "externalIds": {
+    "tmdb": "319287",
+    "tmdbType": "movie"
+  },
+  "watchProviders": [
+    {
+      "label": "LaCinetek",
+      "url": "https://www.google.com/search?q=Fantomas%20LaCinetek",
+      "ethics": "neutral"
+    }
   ]
 }
