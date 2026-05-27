@@ -153,7 +153,12 @@ const epLabel = (e: { season?: number; number?: number }) =>
           episodesWithRecos.map((e) => {
             const thumb = ytThumb(e.youtubeUrl);
             const epTitle = e.youtubeTitle ?? e.title;
-            const searchKey = `${epTitle} ${epLabel(e)}`.toLowerCase();
+            // Normalisation SSR (sans accents + lowercase) pour la recherche
+            // tolérante côté client. Cf. helper fuzzyMatch() dans le <script>.
+            const searchKey = `${epTitle} ${epLabel(e)} ${e.title}`
+              .normalize('NFD')
+              .replace(/[̀-ͯ]/g, '')
+              .toLowerCase();
             return (
               <li class="ep-card" data-search={searchKey}>
                 <a href={`/${source.id}/episode/${e.guid}`}>
@@ -179,7 +184,57 @@ const epLabel = (e: { season?: number; number?: number }) =>
 </Layout>
 
 <script>
-  // Filtrage 100% client : par type (chips) et par texte (recherche).
+  // --- Helpers de recherche tolérante --------------------------------------
+  // - normalize() : retire accents et casse pour comparer "vérino" et "verino".
+  // - levenshtein() : distance d'édition (nb minimum d'opérations
+  //   insertion/suppression/substitution pour passer d'une string à l'autre).
+  // - fuzzyMatch() : combine substring et Levenshtein avec un seuil dépendant
+  //   de la longueur du token de la query — petits seuils sur les courts mots
+  //   pour éviter les faux positifs ; plus permissif sur les longs.
+
+  function normalize(s: string): string {
+    // [̀-ͯ] = combining diacritical marks (équivalent ASCII de \p{Diacritic}).
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  }
+
+  function levenshtein(a: string, b: string): number {
+    const m = a.length;
+    const n = b.length;
+    if (m === 0) return n;
+    if (n === 0) return m;
+    let prev = new Array<number>(n + 1);
+    let curr = new Array<number>(n + 1);
+    for (let j = 0; j <= n; j++) prev[j] = j;
+    for (let i = 1; i <= m; i++) {
+      curr[0] = i;
+      for (let j = 1; j <= n; j++) {
+        const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+        curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+      }
+      [prev, curr] = [curr, prev];
+    }
+    return prev[n];
+  }
+
+  /** Tous les tokens de la query doivent matcher (substring OU Levenshtein). */
+  function fuzzyMatch(query: string, normalizedText: string): boolean {
+    const q = normalize(query).trim();
+    if (!q) return true;
+    const tokens = q.split(/\s+/);
+    const words = normalizedText.split(/[\s'’,()/-]+/).filter(Boolean);
+    for (const tok of tokens) {
+      if (normalizedText.includes(tok)) continue;
+      const threshold = tok.length <= 4 ? 1 : tok.length <= 7 ? 2 : 3;
+      const ok = words.some((w) => {
+        if (Math.abs(w.length - tok.length) > threshold) return false;
+        return levenshtein(tok, w) <= threshold;
+      });
+      if (!ok) return false;
+    }
+    return true;
+  }
+
+  // --- Filtrage 100 % client : par type (chips) et par texte (fuzzy) -------
   const grid = document.getElementById('reco-grid');
   const search = document.getElementById('search') as HTMLInputElement | null;
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
@@ -194,7 +249,7 @@ const epLabel = (e: { season?: number; number?: number }) =>
     let visible = 0;
     for (const card of cards) {
       const okType = activeType === 'all' || card.dataset.type === activeType;
-      const okText = !term || (card.dataset.search ?? '').includes(term);
+      const okText = !term || fuzzyMatch(term, card.dataset.search ?? '');
       const show = okType && okText;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
@@ -215,7 +270,7 @@ const epLabel = (e: { season?: number; number?: number }) =>
   });
 
   search?.addEventListener('input', () => {
-    term = search.value.trim().toLowerCase();
+    term = search.value;
     apply();
   });
 
@@ -246,10 +301,10 @@ const epLabel = (e: { season?: number; number?: number }) =>
   const epNoresult = document.getElementById('ep-noresult');
   epSearch?.addEventListener('input', () => {
     if (!epGrid) return;
-    const q = epSearch.value.trim().toLowerCase();
+    const q = epSearch.value;
     let count = 0;
     for (const card of Array.from(epGrid.children) as HTMLElement[]) {
-      const show = !q || (card.dataset.search ?? '').includes(q);
+      const show = !q.trim() || fuzzyMatch(q, card.dataset.search ?? '');
       card.style.display = show ? '' : 'none';
       if (show) count++;
     }

@@ -61,7 +61,16 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
 <li
   class="card reveal"
   data-type={reco.type}
-  data-search={`${reco.title} ${reco.creator ?? ''} ${typeLabel}`.toLowerCase()}
+  data-search={
+    // Normalisation SSR : lowercase + sans accents pour permettre une recherche
+    // tolérante côté client sans avoir à re-normaliser à chaque keystroke.
+    // Le range [̀-ͯ] cible les combining diacritical marks (U+0300–U+036F)
+    // décomposées par NFD.
+    `${reco.title} ${reco.creator ?? ''} ${typeLabel} ${episodeTitle ?? ''}`
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+  }
 >
   <div class="card-top">
     <span class="type">{typeLabel}</span>
