@@ -151,12 +151,30 @@ def main():
 
     session = requests.Session()
 
-    # Spotify : optionnel — on continue avec Deezer seul si les clés manquent.
+    # Spotify : optionnel ET soumis à l'approbation « Extended Quota Mode »
+    # depuis fin 2024 — sans approbation, /search renvoie HTTP 403 même avec
+    # un token Client Credentials valide. On teste donc le token ET un appel
+    # /search pour décider si Spotify est exploitable.
     token = None
     if spotify_id and spotify_secret:
         token = spotify_token(session, spotify_id, spotify_secret)
         if token:
-            log.info("Spotify : OK (token obtenu).")
+            probe = session.get(
+                f"{SPOTIFY_BASE}/search",
+                headers={"Authorization": f"Bearer {token}"},
+                params={"q": "test", "type": "track", "limit": 1},
+                timeout=15,
+            )
+            if probe.status_code == 200:
+                log.info("Spotify : OK (token + /search autorisés).")
+            else:
+                log.warning(
+                    "Spotify : token OK mais /search renvoie HTTP %s. "
+                    "Probablement le mode développement par défaut depuis 2024 "
+                    "(demande l'« Extended Quota Mode » sur le dashboard). "
+                    "On continue avec Deezer seul.", probe.status_code,
+                )
+                token = None
         else:
             log.warning("Spotify : échec du token, on continue sans.")
     else:
