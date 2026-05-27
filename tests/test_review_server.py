@@ -17,6 +17,18 @@ import review_server as rs
 
 
 # ===== Fixtures =============================================================
+@pytest.fixture(autouse=True)
+def _clear_review_server_caches():
+    """Le cache module-level `_RECO_PATH_CACHE` (et le LRU `_load_transcript`)
+    persistent entre tests : on les vide avant chaque test pour éviter de
+    récupérer des Paths obsolètes pointant vers un tmp_path précédent."""
+    rs._RECO_PATH_CACHE.clear()
+    rs._load_transcript.cache_clear()
+    yield
+    rs._RECO_PATH_CACHE.clear()
+    rs._load_transcript.cache_clear()
+
+
 @pytest.fixture
 def fake_source(tmp_path, monkeypatch):
     """Construit une arborescence de contenu minimale + redirige les chemins."""

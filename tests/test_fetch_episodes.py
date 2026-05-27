@@ -65,12 +65,11 @@ def test_extract_number_invalid_itunes_falls_back_to_title():
     assert _extract_number({"itunes_episode": "abc", "title": "Ep 12"}) == 12
 
 
-def test_extract_number_handles_non_dict():
-    # `entry.get` non disponible : la fonction ne doit pas crasher.
-    entry = SimpleNamespace()
-    # SimpleNamespace n'a pas .get -> sera traité comme dict-like par .get implicite?
-    # En fait `_extract_number` appelle entry.get(...) ; SimpleNamespace n'a pas .get.
-    # On teste donc avec un dict vide pour rester réaliste.
+def test_extract_number_empty_dict_returns_none():
+    # Entrée RSS sans titre, description, ni `itunes_episode` : aucun numéro
+    # à extraire. (Le nom précédent évoquait des entrées non-dict, mais
+    # `_extract_number` appelle `.get` — on teste donc un dict vide,
+    # cas réaliste où le parseur RSS renvoie une entry minimale.)
     assert _extract_number({}) is None
 
 

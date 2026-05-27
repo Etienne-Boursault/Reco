@@ -149,14 +149,23 @@ def _provider_link(provider_name: str, title: str) -> dict:
 
 
 def _tmdb_get(session: requests.Session, path: str, params: dict | None = None) -> dict | None:
-    """GET TMDB avec auth, journalise les erreurs."""
-    full = {"api_key": os.environ["TMDB_API_KEY"], **(params or {})}
+    """GET TMDB avec auth, journalise les erreurs.
+
+    La clé API est passée à `session.get` via `params=` (jamais via header
+    custom) pour rester compatible avec l'API v3 de TMDB. On utilise
+    `os.environ.get` plutôt que `os.environ[...]` pour éviter une KeyError
+    profondément dans la stack si la clé n'a pas été chargée — la validation
+    explicite a lieu dans `main()` au démarrage.
+    """
+    api_key = os.environ.get("TMDB_API_KEY", "")
+    full = {"api_key": api_key, **(params or {})}
     try:
         r = session.get(f"{TMDB_BASE}{path}", params=full, timeout=15)
     except requests.RequestException as e:
         log.error("  HTTP : %s", e)
         return None
     if r.status_code != 200:
+        # On n'inclut pas `params` dans le log d'erreur : il contient la clé API.
         log.error("  TMDB %s → %s : %s", path, r.status_code, r.text[:200])
         return None
     return r.json()

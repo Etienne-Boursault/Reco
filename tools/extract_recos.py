@@ -55,6 +55,8 @@ from common import (
     list_episode_files,
     load_source,
     log,
+    make_anthropic_client,
+    make_openai_client,
     read_json,
     reco_prefix,
     recos_dir_for,
@@ -558,36 +560,17 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     return total
 
 
+# Compat : les anciens tests et scripts internes importent _make_client depuis
+# ce module. On délègue désormais à common.make_anthropic_client (extrait pour
+# casser le couplage entre scripts frères — ocr_thumbnails, rematch_with_ocr…).
 def _make_client() -> Any:
-    """Initialise le client Anthropic (clé via ANTHROPIC_API_KEY)."""
-    try:
-        import anthropic  # noqa: PLC0415 — import paresseux.
-    except ImportError as exc:  # pragma: no cover
-        raise RuntimeError(
-            "Le SDK anthropic n'est pas installé (pip install -r requirements.txt)."
-        ) from exc
-    load_dotenv(TOOLS_DIR / ".env")
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "Variable d'environnement ANTHROPIC_API_KEY manquante. "
-            "Copie tools/.env.example en tools/.env et renseigne la clé, "
-            "ou exporte-la dans ton shell."
-        )
-    return anthropic.Anthropic(api_key=api_key)
+    """Initialise le client Anthropic — alias historique vers common.make_anthropic_client."""
+    return make_anthropic_client()
 
 
 def _make_openai_client() -> Any:
-    """Initialise un client OpenAI (clé via OPENAI_API_KEY)."""
-    try:
-        import openai  # noqa: PLC0415 — import paresseux.
-    except ImportError as exc:  # pragma: no cover
-        raise RuntimeError("Le SDK openai n'est pas installé (pip install openai).") from exc
-    load_dotenv(TOOLS_DIR / ".env")
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise RuntimeError("Variable d'environnement OPENAI_API_KEY manquante.")
-    return openai.OpenAI(api_key=api_key)
+    """Initialise le client OpenAI — alias historique vers common.make_openai_client."""
+    return make_openai_client()
 
 
 def _find_episode_by_guid(source_id: str, guid: str) -> Path:

@@ -24,7 +24,7 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).parent))
-from common import list_episode_files, log, read_json, write_json_if_changed
+from common import list_episode_files, load_source, log, read_json, write_json_if_changed
 from match_youtube import (
     _apply_video_meta,
     _fetch_channel_videos,
@@ -104,12 +104,14 @@ def _episode_is_extract(d: dict) -> bool:
 
 
 def rematch(source_id: str, only_guid: str | None, dry_run: bool) -> None:
-    from extract_recos import _make_client  # client Anthropic
+    from common import make_anthropic_client  # noqa: PLC0415 — paresseux.
 
     # 1) Charger tous les épisodes + vidéos chaîne.
     ep_paths = list(list_episode_files(source_id))
     episodes = [(p, read_json(p)) for p in ep_paths]
-    src_cfg = read_json(Path("src/content/sources") / f"{source_id}.json")
+    # load_source utilise common.SOURCES_DIR (absolu) — évite les bugs liés
+    # au répertoire courant quand le script est lancé via SSH ou wrapper.
+    src_cfg = load_source(source_id)
     channel = src_cfg["youtubeChannel"]
     videos = _fetch_channel_videos(channel)
     used_ids = {_video_id(d.get("youtubeUrl") or "") for _, d in episodes
@@ -129,7 +131,7 @@ def rematch(source_id: str, only_guid: str | None, dry_run: bool) -> None:
     if not targets:
         return
 
-    client = None if dry_run else _make_client()
+    client = None if dry_run else make_anthropic_client()
 
     for p, ep in targets:
         expected = ep.get("number")

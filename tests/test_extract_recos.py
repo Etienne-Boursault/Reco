@@ -564,15 +564,21 @@ def test_main_episode_extraction_failure_is_logged(tmp_source, monkeypatch, capl
 # ===== _make_client / _make_openai_client (erreurs clés API) ===============
 def test_make_client_missing_key(monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-    # On empêche load_dotenv de réécrire la variable.
+    # On empêche load_dotenv de réécrire la variable. extract_recos._make_client
+    # délègue à common.make_anthropic_client qui ré-importe load_dotenv depuis
+    # le module dotenv : patcher dotenv.load_dotenv couvre les deux chemins.
+    import dotenv
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
+    monkeypatch.setattr(dotenv, "load_dotenv", lambda *a, **k: None)
     with pytest.raises(RuntimeError, match="ANTHROPIC_API_KEY"):
         extract_recos._make_client()
 
 
 def test_make_openai_client_missing_key(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    import dotenv
     monkeypatch.setattr(extract_recos, "load_dotenv", lambda *a, **k: None)
+    monkeypatch.setattr(dotenv, "load_dotenv", lambda *a, **k: None)
     with pytest.raises(RuntimeError, match="OPENAI_API_KEY"):
         extract_recos._make_openai_client()
 

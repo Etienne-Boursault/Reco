@@ -65,9 +65,9 @@ def _read_number(client, image: bytes) -> int | None:
 
 
 def run(source_id: str, dry_run: bool) -> int:
-    from extract_recos import _make_client  # réutilise l'init client + .env.
+    from common import make_anthropic_client  # noqa: PLC0415 — paresseux.
 
-    client = None if dry_run else _make_client()
+    client = None if dry_run else make_anthropic_client()
     written = 0
     for path in list_episode_files(source_id):
         episode = read_json(path)

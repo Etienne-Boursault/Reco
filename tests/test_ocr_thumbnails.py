@@ -115,9 +115,9 @@ def test_run_writes_number(ep_env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200,
     )
-    # Stub _make_client via le module extract_recos importé dans run().
-    import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client",
+    # Stub make_anthropic_client (importé paresseusement dans run()).
+    import common
+    monkeypatch.setattr(common, "make_anthropic_client",
                         lambda: _client_returning("42"))
     written = ocr_thumbnails.run("src", dry_run=False)
     assert written == 1
@@ -188,8 +188,8 @@ def test_run_no_number_in_ocr(ep_env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/abc/maxresdefault.jpg",
         body=big, status=200,
     )
-    import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client",
+    import common
+    monkeypatch.setattr(common, "make_anthropic_client",
                         lambda: _client_returning("NONE"))
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 

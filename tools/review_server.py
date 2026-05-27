@@ -63,12 +63,38 @@ def _parse_guests(title: str, hosts: list[str]) -> list[str]:
     return guests
 
 
-def _reco_path(source_id: str, reco_id: str) -> Path | None:
-    """Retrouve le fichier JSON d'une reco par son id."""
+# Cache reco_id → Path, invalidé après chaque écriture (cf. _persist_reco_status).
+# Évite un scan O(n) de tous les JSON à chaque POST de validation : pour 1000
+# recos, ça transforme un O(1000) en un O(1) après le premier appel.
+_RECO_PATH_CACHE: dict[tuple[str, str], Path] = {}
+
+
+def _rebuild_reco_path_cache(source_id: str) -> None:
+    """(Re)construit le cache reco_id → Path pour une source."""
+    new_cache: dict[tuple[str, str], Path] = {}
     for p in recos_dir_for(source_id).glob("*.json"):
-        if read_json(p).get("id") == reco_id:
-            return p
-    return None
+        try:
+            rid = read_json(p).get("id")
+        except (OSError, ValueError):
+            continue
+        if rid:
+            new_cache[(source_id, rid)] = p
+    # Remplace en bloc les entrées de cette source (évite les états transitoires).
+    keys_to_drop = [k for k in _RECO_PATH_CACHE if k[0] == source_id]
+    for k in keys_to_drop:
+        del _RECO_PATH_CACHE[k]
+    _RECO_PATH_CACHE.update(new_cache)
+
+
+def _reco_path(source_id: str, reco_id: str) -> Path | None:
+    """Retrouve le fichier JSON d'une reco par son id (cache mémoire)."""
+    key = (source_id, reco_id)
+    cached = _RECO_PATH_CACHE.get(key)
+    if cached and cached.exists():
+        return cached
+    # Cache miss ou fichier disparu : on reconstruit pour cette source.
+    _rebuild_reco_path_cache(source_id)
+    return _RECO_PATH_CACHE.get(key)
 
 
 def _ts_seconds(ts: str | None) -> int | None:

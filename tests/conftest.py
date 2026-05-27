@@ -4,9 +4,27 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
+from unittest.mock import MagicMock
 
 import pytest
+
+
+@pytest.fixture
+def anthropic_client_returning():
+    """Factory : fabrique un MagicMock Anthropic dont messages.create renvoie
+    un message texte donné. Mutualise un helper qui était dupliqué entre
+    test_ocr_thumbnails.py et test_rematch_with_ocr_main.py."""
+
+    def _make(text: str):
+        block = SimpleNamespace(type="text", text=text)
+        msg = SimpleNamespace(content=[block])
+        client = MagicMock()
+        client.messages.create.return_value = msg
+        return client
+
+    return _make
 
 
 @pytest.fixture

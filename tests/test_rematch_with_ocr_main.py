@@ -142,7 +142,10 @@ def env(tmp_path, monkeypatch):
     )
     monkeypatch.setattr(rematch_with_ocr, "list_episode_files",
                         lambda s: sorted(eps_dir.glob("*.json")))
-    monkeypatch.chdir(tmp_path)
+    # rematch_with_ocr.rematch() utilise common.load_source qui lit dans
+    # common.SOURCES_DIR (chemin absolu) — on redirige cette constante.
+    import common
+    monkeypatch.setattr(common, "SOURCES_DIR", sources_dir)
     return eps_dir
 
 
@@ -205,8 +208,8 @@ def test_rematch_applies_match_when_ocr_matches(env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/full1/maxresdefault.jpg",
         body=big, status=200,
     )
-    import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client",
+    import common
+    monkeypatch.setattr(common, "make_anthropic_client",
                         lambda: _client_returning("7"))
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
@@ -230,9 +233,9 @@ def test_rematch_no_ocr_match_keeps_original(env, monkeypatch):
         responses.GET, "https://i.ytimg.com/vi/full1/maxresdefault.jpg",
         body=big, status=200,
     )
-    import extract_recos
+    import common
     # OCR renvoie 99 ≠ 7 → on garde l'original.
-    monkeypatch.setattr(extract_recos, "_make_client",
+    monkeypatch.setattr(common, "make_anthropic_client",
                         lambda: _client_returning("99"))
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
@@ -248,8 +251,8 @@ def test_rematch_no_candidates_logs_warning(env, monkeypatch):
     # Aucune vidéo ≥ 30 min sur la chaîne.
     monkeypatch.setattr(rematch_with_ocr, "_fetch_channel_videos",
                         lambda c: [{"id": "x", "title": "x", "duration": 60}])
-    import extract_recos
-    monkeypatch.setattr(extract_recos, "_make_client", lambda: MagicMock())
+    import common
+    monkeypatch.setattr(common, "make_anthropic_client", lambda: MagicMock())
     rematch_with_ocr.rematch("src", only_guid=None, dry_run=False)
     out = json.loads((env / "a.json").read_text("utf-8"))
     assert out["youtubeUrl"].endswith("v=short")

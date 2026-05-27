@@ -149,3 +149,49 @@ def list_episode_files(source_id: str) -> list[Path]:
     if not d.exists():
         return []
     return sorted(d.glob("*.json"))
+
+
+# --- Clients API (imports paresseux) ---------------------------------------
+# Centralisé ici pour éviter le couplage entre scripts frères qui partageaient
+# l'usage du même client Anthropic (ocr_thumbnails, rematch_with_ocr, etc.)
+def make_anthropic_client():
+    """Initialise un client Anthropic.
+
+    Lit `ANTHROPIC_API_KEY` depuis `tools/.env` (via python-dotenv) ou
+    l'environnement. Import du SDK paresseux pour ne pas l'imposer aux scripts
+    qui n'en ont pas besoin (ex. fetch_episodes).
+    """
+    try:
+        import anthropic  # noqa: PLC0415 — import paresseux.
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError(
+            "Le SDK anthropic n'est pas installé (pip install -r requirements.txt)."
+        ) from exc
+    from dotenv import load_dotenv  # noqa: PLC0415 — import paresseux.
+    import os  # noqa: PLC0415
+    load_dotenv(TOOLS_DIR / ".env")
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "Variable d'environnement ANTHROPIC_API_KEY manquante. "
+            "Copie tools/.env.example en tools/.env et renseigne la clé, "
+            "ou exporte-la dans ton shell."
+        )
+    return anthropic.Anthropic(api_key=api_key)
+
+
+def make_openai_client():
+    """Initialise un client OpenAI. Cf. `make_anthropic_client` pour le pattern."""
+    try:
+        import openai  # noqa: PLC0415 — import paresseux.
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError(
+            "Le SDK openai n'est pas installé (pip install openai)."
+        ) from exc
+    from dotenv import load_dotenv  # noqa: PLC0415 — import paresseux.
+    import os  # noqa: PLC0415
+    load_dotenv(TOOLS_DIR / ".env")
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("Variable d'environnement OPENAI_API_KEY manquante.")
+    return openai.OpenAI(api_key=api_key)
