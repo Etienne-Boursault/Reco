@@ -146,11 +146,29 @@ def _provider_link(provider_name: str, title: str) -> dict:
     }
 
 
+class TMDBAPIError(RuntimeError):
+    """Erreur HTTP ou réseau TMDB — distincte d'un « non trouvé » légitime.
+
+    Levée uniquement quand `_tmdb_get(..., strict=True)` est utilisé (appels
+    UI ré-enrichissement) ; le mode batch CLI continue à retourner `None`
+    pour skipper la reco sans casser la passe.
+
+    `status_code` : code HTTP renvoyé par TMDB (utile pour distinguer 401 =
+    clé invalide / 429 = rate-limit / 5xx = panne TMDB). `None` si l'erreur
+    est réseau (timeout, DNS) avant qu'on ait pu recevoir un statut.
+    """
+
+    def __init__(self, message: str, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
+
+
 def _tmdb_get(
     session: requests.Session,
     path: str,
     params: dict | None = None,
     api_key: str | None = None,
+    strict: bool = False,
 ) -> dict | None:
     """GET TMDB avec auth, journalise les erreurs.
 
@@ -159,6 +177,10 @@ def _tmdb_get(
 
     `api_key` est explicite quand fourni par `main()` ; sinon on retombe sur
     `os.environ` pour rester compatible avec les appels directs (tests).
+
+    `strict=True` : en cas d'erreur HTTP (401, 500…) ou réseau, lève
+    `TMDBAPIError` au lieu de retourner `None`. Permet à l'UI de distinguer
+    « API indisponible » d'un vrai « titre introuvable ».
     """
     if api_key is None:
         api_key = os.environ.get("TMDB_API_KEY", "")
@@ -167,10 +189,17 @@ def _tmdb_get(
         r = session.get(f"{TMDB_BASE}{path}", params=full, timeout=15)
     except requests.RequestException as e:
         log.error("  HTTP : %s", e)
+        if strict:
+            raise TMDBAPIError(f"TMDB {path} : {e}") from e
         return None
     if r.status_code != 200:
         # On n'inclut pas `params` dans le log d'erreur : il contient la clé API.
         log.error("  TMDB %s → %s : %s", path, r.status_code, r.text[:200])
+        if strict:
+            raise TMDBAPIError(
+                f"TMDB {path} → HTTP {r.status_code}",
+                status_code=r.status_code,
+            )
         return None
     return r.json()
 
@@ -178,6 +207,7 @@ def _tmdb_get(
 def tmdb_search(
     session: requests.Session, reco_type: str, title: str,
     creator: str | None = None, api_key: str | None = None,
+    strict: bool = False,
 ) -> tuple[str, str] | None:
     """Cherche le titre sur TMDB. Retourne (tmdb_id, kind in {'movie','tv'}) ou None.
 
@@ -199,7 +229,8 @@ def tmdb_search(
     for kind in (primary, secondary):
         for q, extra in queries:
             data = _tmdb_get(session, f"/search/{kind}",
-                             {"query": q, **extra}, api_key=api_key)
+                             {"query": q, **extra}, api_key=api_key,
+                             strict=strict)
             results = (data or {}).get("results") or []
             if results:
                 return str(results[0]["id"]), kind
@@ -208,7 +239,7 @@ def tmdb_search(
 
 def tmdb_watch_providers(
     session: requests.Session, tmdb_id: str, kind: str, title: str,
-    api_key: str | None = None,
+    api_key: str | None = None, strict: bool = False,
 ) -> tuple[str | None, list[dict]]:
     """Récupère le `link` JustWatch du film + les watch providers FR.
 
@@ -217,7 +248,8 @@ def tmdb_watch_providers(
     deeplinks « Watch on Netflix » etc. C'est notre lien streaming principal.
     Les providers sont conservés à titre informatif (debug / évolutions futures).
     """
-    data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers", api_key=api_key)
+    data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers",
+                     api_key=api_key, strict=strict)
     fr = ((data or {}).get("results") or {}).get("FR") or {}
     justwatch_url = fr.get("link") or None
     seen: set[str] = set()
@@ -252,6 +284,8 @@ def enrich_one(
       réutilise l'id sans re-chercher (économise 1 appel API).
     - Si `force=True` : ignore les ids existants et relance `tmdb_search` (cas
       du bouton « Ré-enrichir » de l'UI quand le titre a été corrigé).
+      Dans ce mode, propage les erreurs HTTP/réseau comme `TMDBAPIError` —
+      l'UI distingue ainsi « titre vraiment introuvable » de « API down ».
     - Récupère `watch_providers` et met à jour la reco IN-PLACE :
       `externalIds.tmdb`, `externalIds.tmdbType`, `externalIds.justwatch`,
       `watchProviders` (les deux derniers sont supprimés si l'API ne renvoie rien).
@@ -268,18 +302,23 @@ def enrich_one(
         types_list[0] if types_list else "film",
     )
 
+    # En mode `force=True` (bouton UI Ré-enrichir), on remonte les vraies
+    # erreurs HTTP (401/500/timeout) sous forme d'exception, pour qu'elles
+    # soient distinguées d'un « titre vraiment introuvable ». En mode batch
+    # CLI (`force=False`), on garde l'ancien comportement « skip silencieux ».
     ext = dict(reco.get("externalIds") or {})
     if not force and ext.get("tmdb") and ext.get("tmdbType"):
         tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
     else:
-        found = tmdb_search(session, reco_type, title, creator, api_key=api_key)
+        found = tmdb_search(session, reco_type, title, creator,
+                            api_key=api_key, strict=force)
         if not found:
             reco["_enrich_status"] = "not_found"
             return reco
         tmdb_id, kind = found
 
     justwatch_url, providers = tmdb_watch_providers(
-        session, tmdb_id, kind, title, api_key=api_key
+        session, tmdb_id, kind, title, api_key=api_key, strict=force,
     )
     ext["tmdb"] = tmdb_id
     ext["tmdbType"] = kind

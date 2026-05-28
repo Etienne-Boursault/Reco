@@ -1,5 +1,10 @@
 {
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/271267-the-chair-company/watch?locale=FR",
+    "tmdb": "271267",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
@@ -10,8 +15,20 @@
   "sourceId": "un-bon-moment",
   "status": "draft",
   "timestamp": "01:48:01",
-  "title": "The Cher Company",
+  "title": "The Chair Company",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Chair%20Company"
+    },
+    {
+      "ethics": "avoid",
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Chair%20Company"
+    }
   ]
 }

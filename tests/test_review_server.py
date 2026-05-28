@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import io
 import json
+import urllib.parse
 from pathlib import Path
 from unittest.mock import patch
 
@@ -388,13 +389,14 @@ class _FakeHandler(rs.Handler):
     """Sous-classe le Handler pour bypasser BaseHTTPRequestHandler.__init__
     (qui voudrait lire depuis le socket)."""
 
-    def __init__(self, source_id: str, path: str, body: bytes = b""):
+    def __init__(self, source_id: str, path: str, body: bytes = b"",
+                 accept: str = ""):
         # On NE PAS appeler super().__init__ pour éviter le parsing HTTP.
         self.source_id = source_id
         self.path = path
         self.rfile = io.BytesIO(body)
         self.wfile = io.BytesIO()
-        self.headers = {"Content-Length": str(len(body))}
+        self.headers = {"Content-Length": str(len(body)), "Accept": accept}
         self._status = None
         self._sent_headers: dict[str, str] = {}
 
@@ -527,3 +529,577 @@ def test_main_parses_args_and_serves(monkeypatch):
     monkeypatch.setattr("sys.argv", ["review_server.py", "--source", "demo", "--port", "9999"])
     rs.main()
     assert captured["addr"] == ("127.0.0.1", 9999)
+
+
+# ===== Édition inline + Ré-enrichissement ===================================
+def _write_reco(recos_dir: Path, reco: dict) -> Path:
+    p = recos_dir / f"{reco['id']}.json"
+    p.write_text(json.dumps(reco), encoding="utf-8")
+    return p
+
+
+def test_edit_mode_renders_form(fake_source):
+    """GET /ep?guid=…&edit=Y : la carte Y est en mode édition."""
+    # Patche une reco avec externalIds + watchProviders pour exercer <details>.
+    from common import recos_dir_for
+    p = recos_dir_for(fake_source) / "ubm-edit.json"
+    p.write_text(json.dumps({
+        "id": "ubm-edit", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "EditMe", "creator": "X", "status": "draft",
+        "externalIds": {"tmdb": "42"},
+        "watchProviders": [{"label": "Netflix", "url": "https://nf/x"}],
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+
+    h = _FakeHandler(fake_source, "/ep?guid=ep-001&edit=ubm-edit")
+    h.do_GET()
+    body = h.wfile.getvalue().decode("utf-8")
+    assert 'name="title"' in body
+    assert 'name="creator"' in body
+    assert 'name="types" value="film"' in body
+    assert "<details>" in body
+    assert 'name="ext_tmdb"' in body
+    # Les autres cartes restent en mode normal
+    assert "Solo" in body
+
+
+def test_edit_invalid_id_no_edit_mode(fake_source):
+    """GET /ep?guid=X&edit=<invalide> : aucun crash, pas de mode édition."""
+    h = _FakeHandler(fake_source, "/ep?guid=ep-001&edit=../etc/passwd")
+    h.do_GET()
+    assert h._status == 200
+    body = h.wfile.getvalue().decode("utf-8")
+    # Pas de formulaire d'édition
+    assert 'name="title"' not in body
+
+
+def test_post_edit_updates_title_creator_types(fake_source):
+    body = b"id=ubm-001&title=Mortel%20S2&creator=Nouveau&types=film&types=serie"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"].startswith("/ep?guid=ep-001")
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Mortel S2"
+    assert reco["creator"] == "Nouveau"
+    assert reco["types"] == ["film", "serie"]
+
+
+def test_post_edit_no_types_rejected(fake_source):
+    body = b"id=ubm-001&title=X"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+    # Non modifié
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Mortel"
+
+
+def test_post_edit_empty_title_rejected(fake_source):
+    body = b"id=ubm-001&title=&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Mortel"
+
+
+def test_post_edit_empty_creator_drops_key(fake_source):
+    body = b"id=ubm-001&title=Mortel&creator=&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert "creator" not in reco
+
+
+def test_post_edit_updates_ext_tmdb(fake_source, tmp_path):
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-004.json"
+    p.write_text(json.dumps({
+        "id": "ubm-004", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "X", "status": "draft",
+        "externalIds": {"tmdb": "old-id"},
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    body = b"id=ubm-004&title=X&types=film&ext_tmdb=new-id"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    reco = read_json(p)
+    assert reco["externalIds"]["tmdb"] == "new-id"
+
+
+def test_post_edit_clearing_ext_removes_key(fake_source):
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-005.json"
+    p.write_text(json.dumps({
+        "id": "ubm-005", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "X", "status": "draft",
+        "externalIds": {"tmdb": "abc", "imdb": "tt123"},
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    body = b"id=ubm-005&title=X&types=film&ext_tmdb=&ext_imdb=tt123"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    reco = read_json(p)
+    assert "tmdb" not in reco["externalIds"]
+    assert reco["externalIds"]["imdb"] == "tt123"
+
+
+def test_post_edit_watch_providers_preserve_and_drop(fake_source):
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-006.json"
+    p.write_text(json.dumps({
+        "id": "ubm-006", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "X", "status": "draft",
+        "watchProviders": [
+            {"label": "Netflix", "url": "https://netflix.com/x"},
+            {"label": "Canal+", "url": "https://canal.tv/x"},
+        ],
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    # On garde Netflix, on vide Canal+ → exclu
+    body = (b"id=ubm-006&title=X&types=film"
+            b"&wp_label_0=Netflix&wp_url_0=https://netflix.com/x"
+            b"&wp_label_1=Canal%2B&wp_url_1=")
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    reco = read_json(p)
+    assert reco["watchProviders"] == [
+        {"label": "Netflix", "url": "https://netflix.com/x"}
+    ]
+
+
+def test_post_edit_clearing_all_ext_drops_externalIds_key(fake_source):
+    """Vider le SEUL champ ext présent → la clé externalIds disparait."""
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-007.json"
+    p.write_text(json.dumps({
+        "id": "ubm-007", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "X", "status": "draft",
+        "externalIds": {"tmdb": "abc"},
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    body = b"id=ubm-007&title=X&types=film&ext_tmdb="
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    reco = read_json(p)
+    assert "externalIds" not in reco
+
+
+def test_post_edit_no_providers_drops_watchProviders_key(fake_source):
+    """Ne soumettre aucun wp_label_<i> → watchProviders est supprimé."""
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-008.json"
+    p.write_text(json.dumps({
+        "id": "ubm-008", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "X", "status": "draft",
+        "watchProviders": [{"label": "Netflix", "url": "https://nf/x"}],
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    body = b"id=ubm-008&title=X&types=film"  # aucun wp_*
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    reco = read_json(p)
+    assert "watchProviders" not in reco
+
+
+def test_post_reenrich_music_exception_graceful(fake_source, monkeypatch):
+    """L'enricher Music lève → warning, JSON non corrompu, 303 OK."""
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-009.json"
+    p.write_text(json.dumps({
+        "id": "ubm-009", "episodeGuid": "ep-001", "types": ["musique"],
+        "title": "Tube", "status": "draft",
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+
+    def kaboom(reco, *, session, spotify_token=None, force=False):
+        raise RuntimeError("Deezer down")
+
+    import enrich_music
+    monkeypatch.setattr(enrich_music, "enrich_one", kaboom)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-009")
+    h.do_POST()
+    assert h._status == 303
+    reco = read_json(p)
+    assert reco["title"] == "Tube"
+    assert "_enrich_status" not in reco
+
+
+def test_post_edit_invalid_reco_id(fake_source):
+    body = b"id=../bad&title=X&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+
+
+def test_post_reenrich_film_calls_tmdb(fake_source, monkeypatch):
+    calls = []
+
+    def fake_enrich_one(reco, *, session, api_key=None, force=False):
+        calls.append({"reco_id": reco.get("id"), "force": force, "api_key": api_key})
+        reco["externalIds"] = {"tmdb": "999"}
+        reco["_enrich_status"] = "ok"
+        return reco
+
+    import enrich_tmdb
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", fake_enrich_one)
+    body = b"id=ubm-001"
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert h._status == 303
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    # Flash de succès doit accompagner la redirection (UX).
+    assert "flash=" in loc
+    assert "kind=success" in loc
+    assert "TMDB" in urllib.parse.unquote(loc)
+    assert len(calls) == 1
+    assert calls[0]["force"] is True
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["externalIds"]["tmdb"] == "999"
+    assert "_enrich_status" not in reco
+
+
+def test_post_reenrich_not_found_emits_warning_flash(fake_source, monkeypatch):
+    def fake_not_found(reco, *, session, api_key=None, force=False):
+        reco["_enrich_status"] = "not_found"
+        return reco
+    import enrich_tmdb
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", fake_not_found)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001")
+    h.do_POST()
+    loc = h._sent_headers["Location"]
+    assert "kind=warning" in loc
+    assert "non%20trouv" in loc  # "non trouvé" url-encodé
+
+
+def test_post_reenrich_exception_emits_error_flash(fake_source, monkeypatch):
+    import enrich_tmdb
+    monkeypatch.setattr(enrich_tmdb, "enrich_one",
+                        lambda r, **k: (_ for _ in ()).throw(RuntimeError("boom")))
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001")
+    h.do_POST()
+    loc = h._sent_headers["Location"]
+    assert "kind=error" in loc
+    assert "RuntimeError" in urllib.parse.unquote(loc)
+
+
+def test_post_reenrich_401_message_says_api_key_invalid(fake_source, monkeypatch):
+    """HTTP 401 (clé invalide/expirée) → message UI clair, pas générique."""
+    import enrich_tmdb
+    def kaboom(reco, **k):
+        raise enrich_tmdb.TMDBAPIError("TMDB /search → HTTP 401", status_code=401)
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", kaboom)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "error"
+    assert "clé API invalide" in payload["message"]
+
+
+def test_post_reenrich_429_message_says_rate_limit(fake_source, monkeypatch):
+    import enrich_tmdb
+    def kaboom(reco, **k):
+        raise enrich_tmdb.TMDBAPIError("TMDB → 429", status_code=429)
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", kaboom)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert "rate-limit" in payload["message"]
+
+
+def test_post_reenrich_not_found_includes_title(fake_source, monkeypatch):
+    """not_found mentionne le titre exact de l'œuvre pour aider l'utilisateur."""
+    import enrich_tmdb
+    def not_found(reco, **k):
+        reco["_enrich_status"] = "not_found"
+        return reco
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", not_found)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "warning"
+    # Le fixture stocke ubm-001 = "Mortel"
+    assert "Mortel" in payload["message"]
+    assert "non trouvée" in payload["message"]
+
+
+def test_post_reenrich_500_message_says_http(fake_source, monkeypatch):
+    """Autre code HTTP (5xx) → message générique avec le code."""
+    import enrich_tmdb
+    def kaboom(reco, **k):
+        raise enrich_tmdb.TMDBAPIError("TMDB → 503", status_code=503)
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", kaboom)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert "HTTP 503" in payload["message"]
+
+
+def test_post_reenrich_network_error_message(fake_source, monkeypatch):
+    """Erreur réseau (status_code None) → message dédié, distinct du HTTP error."""
+    import enrich_tmdb
+    def kaboom(reco, **k):
+        raise enrich_tmdb.TMDBAPIError("DNS fail")  # pas de status_code
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", kaboom)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "error"
+    assert "réseau" in payload["message"]
+
+
+def test_post_edit_emits_success_flash(fake_source):
+    body = b"id=ubm-001&title=Nouveau&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    assert "kind=success" in loc
+    assert "enregistr" in urllib.parse.unquote(loc)
+
+
+def test_post_reenrich_json_response(fake_source, monkeypatch):
+    """Accept: application/json → réponse JSON avec card_html, pas de 303."""
+    def fake_one(reco, *, session, api_key=None, force=False):
+        reco["externalIds"] = {"tmdb": "42"}
+        reco["_enrich_status"] = "ok"
+        return reco
+    import enrich_tmdb
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", fake_one)
+    h = _FakeHandler(fake_source, "/reenrich", b"id=ubm-001",
+                     accept="application/json")
+    h.do_POST()
+    assert h._status == 200
+    assert h._sent_headers["Content-Type"].startswith("application/json")
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "success"
+    assert "TMDB" in payload["message"]
+    assert payload["card_html"].startswith("\n    <li class=\"row")
+
+
+def test_post_edit_json_response(fake_source):
+    """Accept: JSON sur /edit → JSON + card_html."""
+    body = b"id=ubm-001&title=Nouveau&types=film"
+    h = _FakeHandler(fake_source, "/edit", body, accept="application/json")
+    h.do_POST()
+    assert h._status == 200
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "success"
+    assert "Nouveau" in payload["card_html"]
+
+
+def test_post_invalid_id_json_response(fake_source):
+    """Accept JSON + reco_id invalide → JSON kind=error, status 200 (UI gère)."""
+    h = _FakeHandler(fake_source, "/edit", b"id=../bad",
+                     accept="application/json")
+    h.do_POST()
+    assert h._status == 200
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "error"
+    assert payload["card_html"] == ""
+
+
+def test_get_card_returns_fragment(fake_source):
+    """GET /card?id=ubm-001 → fragment HTML (li.row) sans le shell de page."""
+    h = _FakeHandler(fake_source, "/card?id=ubm-001")
+    h.do_GET()
+    assert h._status == 200
+    body = h.wfile.getvalue().decode("utf-8")
+    assert "<li class=\"row" in body
+    # Fragment seul : pas le shell complet (pas de <body>, pas de <h1>).
+    assert "<body>" not in body
+    assert "<h1>" not in body
+
+
+def test_get_card_invalid_id(fake_source):
+    h = _FakeHandler(fake_source, "/card?id=../bad")
+    h.do_GET()
+    assert h._status == 404
+
+
+def test_get_card_unknown_id(fake_source):
+    h = _FakeHandler(fake_source, "/card?id=ubm-zzz")
+    h.do_GET()
+    assert h._status == 404
+
+
+def test_shell_includes_client_js_and_toast_zone():
+    """La coquille HTML doit injecter le JS client + le container toast."""
+    out = rs._shell("Test", "subtitle", "<p>inner</p>")
+    assert 'id="toast-zone"' in out
+    assert "<script>" in out
+    assert "fetch(action" in out
+
+
+def test_kind_for_empty_returns_info():
+    """Garde-fou : statuts vides → kind 'info' (fallback défensif)."""
+    from review_edit import _kind_for
+    assert _kind_for([]) == "info"
+
+
+def test_get_ep_renders_flash_banner(fake_source):
+    h = _FakeHandler(
+        fake_source,
+        "/ep?guid=ep-001&flash=Bravo&kind=success",
+        b"",
+    )
+    h.do_GET()
+    assert h._status == 200
+    body = h.wfile.getvalue().decode("utf-8")
+    assert 'class="flash flash-success"' in body
+    assert "Bravo" in body
+
+
+def test_get_ep_flash_kind_invalid_falls_back_to_info(fake_source):
+    h = _FakeHandler(
+        fake_source, "/ep?guid=ep-001&flash=hi&kind=<script>", b"",
+    )
+    h.do_GET()
+    body = h.wfile.getvalue().decode("utf-8")
+    assert 'flash-info' in body
+    # Le kind injecté `<script>` ne doit JAMAIS être interpolé tel quel dans
+    # un attribut/balise (le shell contient un <script> légitime pour le JS
+    # client, c'est attendu — mais pas avec le payload).
+    assert "flash-<script>" not in body
+    assert 'class="flash flash-<' not in body
+
+
+def test_post_reenrich_music_calls_enricher(fake_source, monkeypatch):
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-mus.json"
+    p.write_text(json.dumps({
+        "id": "ubm-mus", "episodeGuid": "ep-001", "types": ["musique"],
+        "title": "Air", "status": "draft",
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    calls = []
+
+    def fake_music(reco, *, session, spotify_token=None, force=False):
+        calls.append({"force": force, "token": spotify_token})
+        reco["externalIds"] = {"deezer": "https://deezer.com/x"}
+        reco["_enrich_status"] = "ok"
+        return reco
+
+    import enrich_music
+    monkeypatch.setattr(enrich_music, "enrich_one", fake_music)
+    body = b"id=ubm-mus"
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert calls and calls[0]["force"] is True
+    reco = read_json(p)
+    assert reco["externalIds"]["deezer"] == "https://deezer.com/x"
+
+
+def test_post_reenrich_multi_type_calls_both(fake_source, monkeypatch):
+    from common import recos_dir_for, read_json
+    p = recos_dir_for(fake_source) / "ubm-fa.json"
+    p.write_text(json.dumps({
+        "id": "ubm-fa", "episodeGuid": "ep-001", "types": ["film", "album"],
+        "title": "Mix", "status": "draft",
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+
+    tmdb_calls, music_calls = [], []
+
+    def fake_tmdb(reco, *, session, api_key=None, force=False):
+        tmdb_calls.append(force)
+        reco["_enrich_status"] = "ok"
+        return reco
+
+    def fake_music(reco, *, session, spotify_token=None, force=False):
+        music_calls.append(force)
+        reco["_enrich_status"] = "ok"
+        return reco
+
+    import enrich_tmdb, enrich_music  # noqa: E401
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", fake_tmdb)
+    monkeypatch.setattr(enrich_music, "enrich_one", fake_music)
+    body = b"id=ubm-fa"
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert tmdb_calls == [True]
+    assert music_calls == [True]
+
+
+def test_post_reenrich_non_targetable_is_noop(fake_source, monkeypatch):
+    """Une reco de type 'livre' n'est traitée par aucun enricher."""
+    from common import read_json, recos_dir_for
+    calls = []
+
+    def boom(*args, **kwargs):
+        calls.append(1)
+        raise AssertionError("ne devrait pas être appelé")
+
+    import enrich_tmdb, enrich_music  # noqa: E401
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", boom)
+    monkeypatch.setattr(enrich_music, "enrich_one", boom)
+    body = b"id=ubm-002"  # type=livre
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"].startswith("/ep?guid=ep-001")
+    assert calls == []
+    # JSON inchangé
+    reco = read_json(recos_dir_for(fake_source) / "ubm-002.json")
+    assert reco["title"] == "Solo"
+
+
+def test_post_reenrich_api_exception_graceful(fake_source, monkeypatch):
+    """L'API lève → log warning, 303 vers /ep, JSON non corrompu."""
+    from common import read_json, recos_dir_for
+
+    def kaboom(reco, *, session, api_key=None, force=False):
+        raise RuntimeError("API down")
+
+    import enrich_tmdb
+    monkeypatch.setattr(enrich_tmdb, "enrich_one", kaboom)
+    body = b"id=ubm-001"
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"].startswith("/ep?guid=ep-001")
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Mortel"
+    assert "_enrich_status" not in reco
+
+
+def test_post_reenrich_invalid_id(fake_source):
+    body = b"id=../bad"
+    h = _FakeHandler(fake_source, "/reenrich", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+
+
+def test_reco_card_shows_edit_and_reenrich_buttons(fake_source):
+    """La carte d'une reco enrichissable affiche les 2 boutons."""
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft"}
+    ep = {"guid": "g", "title": "Ep"}
+    out = rs._reco_card(r, ep, [], fake_source)
+    assert "btn-edit" in out
+    assert "btn-reenrich" in out
+    assert "/reenrich" in out
+
+
+def test_reco_card_no_reenrich_for_book(fake_source):
+    """Reco de type livre (non enrichissable) : pas de bouton reenrich."""
+    r = {"id": "x", "title": "T", "types": ["livre"], "status": "draft"}
+    ep = {"guid": "g", "title": "Ep"}
+    out = rs._reco_card(r, ep, [], fake_source)
+    assert "btn-edit" in out
+    assert "btn-reenrich" not in out

@@ -415,6 +415,51 @@ def test_enrich_one_reuses_known_id_skips_search(monkeypatch):
 
 
 @responses.activate
+def test_enrich_one_force_raises_on_http_error(monkeypatch):
+    """force=True : un HTTP 401 doit lever TMDBAPIError (pas être avalé en
+    'not_found'). C'est ce qui permet à l'UI de différencier 'titre inconnu'
+    de 'clé invalide / API down'."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/tv",
+        json={"status_message": "Invalid API key"}, status=401,
+    )
+    reco = {"id": "a", "types": ["serie"], "title": "X"}
+    with pytest.raises(enrich_tmdb.TMDBAPIError):
+        enrich_tmdb.enrich_one(
+            reco, session=requests.Session(), api_key="fake", force=True,
+        )
+
+
+def test_enrich_one_force_raises_on_network_error(monkeypatch):
+    """force=True : si requests lève (timeout, DNS), TMDBAPIError remonte."""
+    import requests as _rq
+    class _Sess:
+        def get(self, *a, **kw):
+            raise _rq.ConnectionError("DNS fail")
+    reco = {"id": "a", "types": ["film"], "title": "X"}
+    with pytest.raises(enrich_tmdb.TMDBAPIError):
+        enrich_tmdb.enrich_one(reco, session=_Sess(), api_key="k", force=True)
+
+
+@responses.activate
+def test_enrich_one_no_force_keeps_silent_skip_on_http_error(monkeypatch):
+    """force=False (mode CLI batch) : un HTTP 401 reste silencieux pour
+    permettre au batch de continuer sur les autres recos."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    for path in ("/3/search/movie", "/3/search/tv"):
+        responses.add(
+            responses.GET, f"https://api.themoviedb.org{path}",
+            json={"err": "x"}, status=401,
+        )
+    reco = {"id": "a", "types": ["film"], "title": "X"}
+    out = enrich_tmdb.enrich_one(
+        reco, session=requests.Session(), api_key="fake", force=False,
+    )
+    assert out["_enrich_status"] == "not_found"
+
+
+@responses.activate
 def test_enrich_one_force_ignores_known_id_and_re_searches(monkeypatch):
     """force=True : on relance /search même si tmdb_id déjà connu (cas UI bouton
     Ré-enrichir après correction de titre — l'ancien id peut être obsolète)."""

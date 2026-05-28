@@ -1,18 +1,9 @@
-"""
-review_server.py — Outil de relecture LOCAL (hors site public).
+"""review_server.py — Outil de relecture LOCAL (hors site public).
 
-Sert une page web locale pour valider rapidement les recos extraites :
-  - timecode cliquable (ouvre la vidéo YouTube de l'épisode au bon moment) ;
-  - citation (contexte) ;
-  - boutons des participants probables (hôtes + invité déduit du titre) +
-    champ libre → on coche qui a recommandé, on valide.
+Sert une page web locale (http.server stdlib, sans dépendance) pour valider /
+écarter / éditer / ré-enrichir les recos extraites par IA.
 
-Valider écrit `recommendedBy` et passe `status` à « validated » dans le JSON.
-Aucune dépendance externe (http.server de la stdlib).
-
-Usage :
-    python review_server.py --source un-bon-moment [--port 8000]
-    puis ouvrir http://localhost:8000
+Usage : ``python review_server.py --source un-bon-moment [--port 8000]``
 """
 
 from __future__ import annotations
@@ -27,7 +18,10 @@ from functools import lru_cache, partial
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from common import (
+    TOOLS_DIR,
     extract_youtube_id,
     list_episode_files,
     load_source,
@@ -36,26 +30,28 @@ from common import (
     recos_dir_for,
     write_json_if_changed,
 )
+from review_edit import apply_edit, apply_reenrich, is_reenrichable, render_edit_form
 
-# Limite max sur les requêtes POST (en octets) — protège contre l'épuisement RAM.
+# Limite max sur les requêtes POST (en octets) — anti-DoS.
 _MAX_POST_BYTES = 1 << 20  # 1 MiB
 
-# Valide les identifiants de reco postés (cf. `id` POST). Format conventionnel :
-# minuscules alphanumériques + tirets/underscores (ex. « ubm-0042 »).
+# Format conventionnel des reco_id POST : minuscules alphanum + tirets/underscores.
 _RE_RECO_ID = re.compile(r"^[a-z0-9_-]+$")
 
-# Security headers ajoutés à chaque réponse HTML (sans casser l'iframe YouTube).
+# Security headers (CSP autorise l'iframe YouTube et les miniatures).
 _SECURITY_HEADERS: dict[str, str] = {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
     "Referrer-Policy": "no-referrer",
-    # CSP : permet l'iframe YouTube (player) et les miniatures i.ytimg.com.
     "Content-Security-Policy": (
         "default-src 'self'; "
         "img-src 'self' data: https://i.ytimg.com; "
         "style-src 'unsafe-inline'; "
         "frame-src https://www.youtube.com https://www.youtube-nocookie.com; "
-        "script-src 'none'; base-uri 'none'; form-action 'self'"
+        # 'unsafe-inline' nécessaire pour le petit JS embarqué (toast + AJAX
+        # partiel). Le serveur est strictement local (127.0.0.1) donc le risque
+        # XSS est confiné — toutes les entrées sont déjà html.escape côté Py.
+        "script-src 'unsafe-inline'; base-uri 'none'; form-action 'self'"
     ),
 }
 
@@ -88,12 +84,8 @@ def _parse_guests(title: str, hosts: list[str]) -> list[str]:
     return guests
 
 
-# Cache reco_id → Path, invalidé après chaque écriture (cf. _persist_reco_status).
-# Évite un scan O(n) de tous les JSON à chaque POST de validation : pour 1000
-# recos, ça transforme un O(1000) en un O(1) après le premier appel.
+# Cache reco_id → Path, invalidé après chaque écriture (évite scan O(n) à chaque POST).
 _RECO_PATH_CACHE: dict[tuple[str, str], Path] = {}
-# Verrou pour les modifications du cache (les tests et les requêtes HTTP peuvent
-# y accéder depuis plusieurs threads).
 _RECO_CACHE_LOCK = threading.Lock()
 
 
@@ -107,10 +99,8 @@ def _rebuild_reco_path_cache(source_id: str) -> None:
             continue
         if rid:
             new_cache[(source_id, rid)] = p
-    # Remplace en bloc les entrées de cette source (évite les états transitoires).
     with _RECO_CACHE_LOCK:
-        keys_to_drop = [k for k in _RECO_PATH_CACHE if k[0] == source_id]
-        for k in keys_to_drop:
+        for k in [k for k in _RECO_PATH_CACHE if k[0] == source_id]:
             del _RECO_PATH_CACHE[k]
         _RECO_PATH_CACHE.update(new_cache)
 
@@ -129,8 +119,7 @@ def _reco_path(source_id: str, reco_id: str) -> Path | None:
         cached = _RECO_PATH_CACHE.get(key)
     if cached and cached.exists():
         return cached
-    # Cache miss ou fichier disparu : on reconstruit pour cette source.
-    _rebuild_reco_path_cache(source_id)
+    _rebuild_reco_path_cache(source_id)  # cache miss ou fichier disparu
     with _RECO_CACHE_LOCK:
         return _RECO_PATH_CACHE.get(key)
 
@@ -156,11 +145,7 @@ def _fmt(seconds: int) -> str:
 
 
 def _yt_id(url: str | None) -> str:
-    """Identifiant de la vidéo depuis une URL YouTube (vide si absent).
-
-    Wrapper qui s'appuie sur `common.extract_youtube_id` (renvoie "" plutôt que
-    None pour rester compatible avec le rendu HTML existant).
-    """
+    """Id YouTube depuis une URL (chaîne vide si absent — compat HTML)."""
     return extract_youtube_id(url) or ""
 
 
@@ -189,16 +174,11 @@ def _load_transcript(source_id: str, guid: str) -> tuple[tuple[int, str], ...]:
 
 def _context_around(items: tuple[tuple[int, str], ...], target_sec: int,
                     n_before: int = 3, n_after: int = 4) -> list[tuple[int, str]]:
-    """Lignes du transcript autour d'un timecode cible (±n lignes).
-
-    Cherche l'index le plus proche par bissection (O(log n)) puis ajuste en
-    comparant le voisin précédent (les timecodes sont monotones croissants).
-    """
+    """Lignes du transcript autour d'un timecode cible (bissection O(log n))."""
     if not items:
         return []
     times = [it[0] for it in items]
     pos = bisect.bisect_left(times, target_sec)
-    # Choix du voisin le plus proche entre pos et pos-1.
     if pos >= len(items):
         idx = len(items) - 1
     elif pos == 0:
@@ -211,14 +191,12 @@ def _context_around(items: tuple[tuple[int, str], ...], target_sec: int,
 
 
 _ORDER = {"draft": 0, "validated": 1, "discarded": 2}
-
-# CSS externalisé pour ne pas alourdir ce module et faciliter l'édition visuelle.
 _CSS_PATH = Path(__file__).parent / "review_server.css"
 
 
 @lru_cache(maxsize=1)
 def _style() -> str:
-    """Charge la feuille de style (cachée pour éviter l'I/O répété)."""
+    """Feuille de style (cachée pour éviter l'I/O répété)."""
     try:
         return _CSS_PATH.read_text(encoding="utf-8")
     except OSError:
@@ -226,42 +204,116 @@ def _style() -> str:
 
 
 def _shell(source_title: str, subtitle: str, inner: str) -> str:
-    """Gabarit HTML commun (en-tête, style, titre)."""
+    """Gabarit HTML commun (en-tête, style, titre).
+
+    Inclut :
+      - le container `#toast-zone` pour le macaron de feedback en bas à droite,
+      - un petit JS qui intercepte les clics sur `.btn-reenrich` et les submits
+        sur les formulaires `/edit` pour faire des requêtes AJAX (fetch JSON)
+        et remplacer la carte ciblée sans recharger toute la page. Le formulaire
+        garde son `action`/`method` natif : si JS est désactivé, le serveur
+        retombe sur le 303 + bandeau classique (rétrocompat).
+    """
     return (
         '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         f"<title>Relecture — {html.escape(source_title)}</title>"
         f"<style>{_style()}</style></head><body>"
         f"<h1>Relecture — {html.escape(source_title)}</h1>"
-        f'<p class="meta">{subtitle}</p>{inner}</body></html>'
+        f'<p class="meta">{subtitle}</p>{inner}'
+        '<div id="toast-zone" aria-live="polite" aria-atomic="true"></div>'
+        f"<script>{_client_script()}</script>"
+        "</body></html>"
     )
 
 
-def _reco_card(r: dict, ep: dict, hosts: list, source_id: str) -> str:
+_CLIENT_JS = r"""
+(() => {
+  // Toast bas-droite, auto-disparait après 4s.
+  function toast(message, kind) {
+    const zone = document.getElementById('toast-zone');
+    if (!zone) return;
+    const el = document.createElement('div');
+    el.className = 'toast toast-' + (kind || 'info');
+    el.textContent = message;
+    zone.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 4000);
+  }
+
+  // Remplace la carte (li.row) qui contient la reco_id par le HTML reçu.
+  function replaceCard(reco_id, html) {
+    if (!html) return;
+    const current = document.querySelector('input[name="id"][value="' + CSS.escape(reco_id) + '"]');
+    const li = current && current.closest('li.row');
+    if (!li) return;
+    const tmpl = document.createElement('template');
+    tmpl.innerHTML = html.trim();
+    const fresh = tmpl.content.firstElementChild;
+    if (fresh) li.replaceWith(fresh);
+  }
+
+  async function ajaxPost(action, formData, reco_id) {
+    try {
+      const r = await fetch(action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new URLSearchParams(formData),
+      });
+      const data = await r.json();
+      if (data.card_html) replaceCard(reco_id, data.card_html);
+      if (data.message) toast(data.message, data.kind || 'info');
+    } catch (err) {
+      toast('Erreur réseau : ' + err.message, 'error');
+    }
+  }
+
+  // Délégation : intercepte les submits sur les formulaires AJAX-able.
+  document.addEventListener('submit', (e) => {
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    const action = form.getAttribute('action') || '';
+    if (action !== '/edit' && action !== '/reenrich') return;
+    e.preventDefault();
+    const fd = new FormData(form);
+    const reco_id = fd.get('id');
+    if (!reco_id) return;
+    ajaxPost(action, fd, reco_id);
+  });
+})();
+"""
+
+
+def _client_script() -> str:
+    return _CLIENT_JS
+
+
+def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
+               edit_id: str | None = None) -> str:
     """Carte d'une reco : timecode vidéo embarquable, contexte, candidats."""
+    if edit_id and r.get("id") == edit_id:
+        return render_edit_form(r, ep)
     secs = _ts_seconds(r.get("timestamp"))
     yt = ep.get("youtubeUrl")
     if yt and secs is not None:
         tv = max(0, secs)
-        embed = _embed_url(yt, tv)
-        # target="ytplayer" charge dans l'iframe partagée au lieu d'un onglet.
-        link = (f'<a class="tc" target="ytplayer" href="{html.escape(embed)}">'
+        link = (f'<a class="tc" target="ytplayer" href="{html.escape(_embed_url(yt, tv))}">'
                 f'▶ {_fmt(tv)}</a>')
     elif r.get("timestamp"):
         link = f'<span class="tc off">⏱ {html.escape(r.get("timestamp", ""))}</span>'
     else:
         link = ""
-
-    # Contexte : ±3 lignes du transcript autour du timecode → permet de juger
-    # rapidement si la reco est valide sans ouvrir la vidéo.
     ctx_html = ""
     if secs is not None:
         ctx = _context_around(_load_transcript(source_id, ep.get("guid", "")), secs)
         if ctx:
-            spans = []
-            for sec, txt in ctx:
-                tag = "ctx-here" if abs(sec - secs) < 3 else "ctx"
-                spans.append(f'<span class="{tag}">{html.escape(txt)}</span>')
+            spans = [
+                f'<span class="{"ctx-here" if abs(sec - secs) < 3 else "ctx"}">'
+                f'{html.escape(txt)}</span>' for sec, txt in ctx
+            ]
             ctx_html = f'<div class="context">{" ".join(spans)}</div>'
     current = r.get("recommendedBy", "")
     boxes = "".join(
@@ -271,19 +323,25 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str) -> str:
     )
     status = r.get("status", "draft")
     cls = {"validated": "done", "discarded": "discarded"}.get(status, "")
+    reco_id_esc = html.escape(r.get("id", ""))
+    guid_q = urllib.parse.quote(ep.get("guid", ""))
+    edit_btn = (f'<a class="btn-edit" href="/ep?guid={guid_q}&edit='
+                f'{urllib.parse.quote(r.get("id", ""))}">✎ Éditer</a>')
+    reenrich_btn = (
+        f'<form method="post" action="/reenrich" class="reenrich-form">'
+        f'<input type="hidden" name="id" value="{reco_id_esc}">'
+        f'<button type="submit" class="btn-reenrich">🔄 Ré-enrichir</button>'
+        f'</form>'
+    ) if is_reenrichable(r) else ""
     extractors = r.get("extractors") or []
     if len(extractors) >= 2:
-        joined = html.escape(", ".join(extractors))
-        conf_badge = (
-            f'<span class="conf" title="Confirmée par {joined}">'
-            f'⭐ {len(extractors)} LLMs</span>'
-        )
+        conf_badge = (f'<span class="conf" title="Confirmée par '
+                      f'{html.escape(", ".join(extractors))}">'
+                      f'⭐ {len(extractors)} LLMs</span>')
     elif extractors:
         first = html.escape(extractors[0])
-        conf_badge = (
-            f'<span class="conf solo" title="Trouvée par {first} uniquement">'
-            f'{first}</span>'
-        )
+        conf_badge = (f'<span class="conf solo" title="Trouvée par {first} '
+                      f'uniquement">{first}</span>')
     else:
         conf_badge = ""
     return f"""
@@ -293,7 +351,9 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str) -> str:
         {f"<i>· {html.escape(r['creator'])}</i>" if r.get('creator') else ''}
         {link}
         {conf_badge}
-        <span class="st">{html.escape(status)}</span></div>
+        <span class="st">{html.escape(status)}</span>
+        {edit_btn}
+        {reenrich_btn}</div>
       {ctx_html}
       {f'<p class="q">« {html.escape(r["quote"])} »</p>' if r.get('quote') else ''}
       <form method="post" action="/save">
@@ -337,8 +397,7 @@ def _load_groups(source_id: str):
     groups: dict[str, list[dict]] = {}
     for r in recos:
         groups.setdefault(r.get("episodeGuid", ""), []).append(r)
-    # Tri : par statut (drafts en 1er), puis confirmées-par-2 en tête de la
-    # tranche draft pour qu'elles surgissent en premier dans la relecture.
+    # Tri : drafts en 1er, puis confirmées-par-N en tête de la tranche draft.
     for g in groups.values():
         g.sort(key=lambda r: (_ORDER.get(r.get("status", "draft"), 0),
                               -len(r.get("extractors") or [])))
@@ -346,18 +405,15 @@ def _load_groups(source_id: str):
 
 
 def _render_index(source_id: str) -> str:
-    """Page d'accueil : galerie de miniatures, TOUS les épisodes à leur emplacement."""
+    """Page d'accueil : galerie de miniatures, tous les épisodes."""
     source, episodes, groups = _load_groups(source_id)
 
     def _key(guid: str):
-        # Tri par emplacement chronologique : saison puis numéro.
-        # Pré-S5 = season=None → groupe 0 ; S5 = groupe 5. Sans-numéro = 9999.
         ep = episodes.get(guid, {})
         return (ep.get("season") or 0, ep.get("number") or 9999)
 
     thumbs = []
     todo = 0
-    # Itérer sur tous les épisodes connus, pas seulement ceux ayant des recos
     for guid in sorted(episodes.keys(), key=_key):
         ep = episodes.get(guid, {})
         recs = groups.get(guid, [])
@@ -367,9 +423,7 @@ def _render_index(source_id: str) -> str:
         ep_num = f"S{season}·E{num}" if season and num else (f"#{num}" if num else "?")
         vid = _yt_id(ep.get("youtubeUrl", ""))
         style = f'style="background-image:url(https://i.ytimg.com/vi/{vid}/mqdefault.jpg)"' if vid else ""
-        # États visuels :
-        #   .done   = toutes les recos sont validated → grisé
-        #   .empty  = aucune reco (extraction LLM n'a rien trouvé ou épisode-jeu)
+        # .done = tout validated (grisé) · .empty = aucune reco (orange).
         cls = "thumb"
         if not recs:
             cls += " empty"
@@ -391,7 +445,19 @@ def _render_index(source_id: str) -> str:
     return _shell(source.get("title", source_id), subtitle, inner)
 
 
-def _render_episode(source_id: str, guid: str) -> str:
+def _flash_banner(flash: str | None, kind: str) -> str:
+    """Bandeau de feedback en haut de page (après PRG depuis /edit ou /reenrich)."""
+    if not flash:
+        return ""
+    safe_kind = kind if kind in ("success", "warning", "error", "info") else "info"
+    return (f'<div class="flash flash-{safe_kind}" role="status">'
+            f'{html.escape(flash)}</div>')
+
+
+def _render_episode(
+    source_id: str, guid: str, edit_id: str | None = None,
+    *, flash: str | None = None, flash_kind: str = "info",
+) -> str:
     """Page d'un épisode : son en-tête + ses recos à relire."""
     source, episodes, groups = _load_groups(source_id)
     hosts = source.get("hosts", [])
@@ -400,12 +466,12 @@ def _render_episode(source_id: str, guid: str) -> str:
     back = '<a class="back" href="/">← tous les épisodes</a>'
     if not ep:
         return _shell(source.get("title", source_id), "Épisode introuvable.", back)
-    cards = "".join(_reco_card(r, ep, hosts, source_id) for r in recs)
-    # Iframe partagée : clique sur un timecode -> la vidéo charge ici (pas
-    # d'onglet, pas de re-chargement YouTube intermédiaire).
+    # `edit_id` inconnu de l'épisode → _reco_card ignore et rend la carte normale.
+    cards = "".join(_reco_card(r, ep, hosts, source_id, edit_id) for r in recs)
     player = ('<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
               'allowfullscreen></iframe>')
-    inner = (f'{back}{player}<section class="ep">'
+    banner = _flash_banner(flash, flash_kind)
+    inner = (f'{back}{banner}{player}<section class="ep">'
              f'{_ep_header(ep, recs)}<ul>{cards}</ul></section>')
     return _shell(source.get("title", source_id), "Relecture d'un épisode.", inner)
 
@@ -416,13 +482,12 @@ class Handler(BaseHTTPRequestHandler):
         super().__init__(*args, **kwargs)
 
     def _send(self, code: int, body: str = "", headers: dict | None = None) -> None:
+        # Headers explicites (Location pour 3xx) priment sur les défauts.
         self.send_response(code)
-        # Headers explicites (Location pour 3xx, etc.) priment sur les défauts.
-        out_headers = {"Content-Type": "text/html; charset=utf-8"}
-        out_headers.update(_SECURITY_HEADERS)
+        out = {"Content-Type": "text/html; charset=utf-8", **_SECURITY_HEADERS}
         if headers:
-            out_headers.update(headers)
-        for k, v in out_headers.items():
+            out.update(headers)
+        for k, v in out.items():
             self.send_header(k, v)
         self.end_headers()
         if body:
@@ -433,52 +498,142 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/":
             self._send(200, _render_index(self.source_id))
         elif parsed.path == "/ep":
-            guid = urllib.parse.parse_qs(parsed.query).get("guid", [""])[0]
-            self._send(200, _render_episode(self.source_id, guid))
+            qs = urllib.parse.parse_qs(parsed.query)
+            guid = qs.get("guid", [""])[0]
+            edit_id = qs.get("edit", [""])[0] or None
+            if edit_id and not _RE_RECO_ID.match(edit_id):
+                edit_id = None  # garde-fou : format invalide → mode normal
+            flash = qs.get("flash", [""])[0] or None
+            kind = qs.get("kind", [""])[0]
+            if kind not in ("success", "warning", "error", "info"):
+                kind = "info"
+            self._send(200, _render_episode(
+                self.source_id, guid, edit_id, flash=flash, flash_kind=kind,
+            ))
+        elif parsed.path == "/card":
+            # Fragment HTML d'une seule carte — pour le rafraîchissement
+            # partiel côté JS après /edit ou /reenrich.
+            qs = urllib.parse.parse_qs(parsed.query)
+            reco_id = qs.get("id", [""])[0]
+            self._send_card_fragment(reco_id)
         else:
             self._send(404, "Not found")
 
+    def _send_card_fragment(self, reco_id: str) -> None:
+        """Renvoie le HTML d'une carte seule (200) ou 404."""
+        if not _RE_RECO_ID.match(reco_id):
+            self._send(404, "Not found")
+            return
+        path = _reco_path(self.source_id, reco_id)
+        if path is None:
+            self._send(404, "Not found")
+            return
+        reco = read_json(path)
+        source, episodes, _groups = _load_groups(self.source_id)
+        ep = episodes.get(reco.get("episodeGuid", ""))
+        if not ep:
+            self._send(404, "Not found")
+            return
+        hosts = source.get("hosts", [])
+        self._send(200, _reco_card(reco, ep, hosts, self.source_id))
+
+    def _wants_json(self) -> bool:
+        """True si le client réclame du JSON (côté JS via fetch)."""
+        return "application/json" in (self.headers.get("Accept") or "")
+
     def do_POST(self) -> None:  # noqa: N802
         length = int(self.headers.get("Content-Length", 0))
-        # Garde-fou : refuse les payloads anormalement gros (DoS / mauvais client).
         if length > _MAX_POST_BYTES:
             log.warning("POST refusé : Content-Length=%d > %d", length, _MAX_POST_BYTES)
             self._send(413, "Payload too large")
             return
-        data = urllib.parse.parse_qs(self.rfile.read(length).decode("utf-8"))
+        data = urllib.parse.parse_qs(
+            self.rfile.read(length).decode("utf-8"), keep_blank_values=True
+        )
         reco_id = (data.get("id") or [""])[0]
-        # Valide le format de l'id avant tout I/O (rejette les chemins exotiques).
         if not _RE_RECO_ID.match(reco_id):
             log.warning("POST refusé : reco_id invalide « %s »", reco_id)
-            self._send(303, headers={"Location": "/"})
+            self._reply_post("", "", "error", "ID invalide.", reco_id)
             return
+        route = urllib.parse.urlparse(self.path).path
+        path = _reco_path(self.source_id, reco_id)
+        guid, flash, kind = "", "", ""
+        if path is None:
+            pass  # path inconnu → redirige vers /
+        elif route == "/edit":
+            ok, guid = apply_edit(path, data)
+            if not ok:
+                log.warning("Edit refusé : payload invalide pour %s", reco_id)
+                guid = ""  # redirige vers /
+            else:
+                _invalidate_reco_path_cache(self.source_id)
+                log.info("Édité : %s", reco_id)
+                flash, kind = "Modifications enregistrées.", "success"
+        elif route == "/reenrich":
+            guid, flash, kind = apply_reenrich(path, reco_id)
+            _invalidate_reco_path_cache(self.source_id)
+        else:
+            guid = self._save_status(path, reco_id, data)
+        self._reply_post(guid, flash, kind, flash, reco_id)
+
+    def _reply_post(self, guid: str, flash: str, kind: str,
+                    message: str, reco_id: str) -> None:
+        """Termine un POST : JSON si Accept JSON, sinon 303 PRG (fallback non-JS)."""
+        if self._wants_json():
+            self._send_json_post(guid, kind or "info", message, reco_id)
+            return
+        if guid:
+            loc = f"/ep?guid={urllib.parse.quote(guid)}"
+            if flash:
+                loc += (f"&flash={urllib.parse.quote(flash)}"
+                        f"&kind={urllib.parse.quote(kind)}")
+        else:
+            loc = "/"
+        self._send(303, headers={"Location": loc})
+
+    def _send_json_post(self, guid: str, kind: str, message: str,
+                        reco_id: str) -> None:
+        """Réponse JSON pour fetch côté client. Inclut le HTML de la carte
+        fraîche pour permettre l'update partiel sans rechargement."""
+        import json as _json  # noqa: PLC0415
+        card_html = ""
+        path = _reco_path(self.source_id, reco_id)
+        if path and guid:
+            try:
+                reco = read_json(path)
+                source, episodes, _g = _load_groups(self.source_id)
+                ep = episodes.get(reco.get("episodeGuid", ""))
+                if ep:
+                    card_html = _reco_card(
+                        reco, ep, source.get("hosts", []), self.source_id
+                    )
+            except Exception as exc:  # noqa: BLE001
+                log.warning("Rebuild card_html pour %s : %s", reco_id, exc)
+        body = _json.dumps({
+            "kind": kind, "message": message, "card_html": card_html,
+        }, ensure_ascii=False)
+        self._send(200, body, headers={"Content-Type": "application/json; charset=utf-8"})
+
+    def _save_status(self, path: Path, reco_id: str, data: dict) -> str:
+        """POST /save : validate ou discard. Retourne le guid pour la redirection."""
         names = data.get("who", []) + [n for n in data.get("other", []) if n.strip()]
         recommended = " & ".join(dict.fromkeys(n.strip() for n in names if n.strip()))
-
         action = (data.get("action") or ["validate"])[0]
-        guid = ""
-        path = _reco_path(self.source_id, reco_id)
-        if path:
-            reco = read_json(path)
-            guid = reco.get("episodeGuid", "")
-            if action == "discard":
-                reco["status"] = "discarded"
-                log.info("Écarté : %s", reco_id)
-            else:
-                if recommended:
-                    reco["recommendedBy"] = recommended
-                elif "recommendedBy" in reco:
-                    del reco["recommendedBy"]
-                reco["status"] = "validated"
-                log.info("Validé : %s -> %s", reco_id, recommended or "(personne)")
-            if write_json_if_changed(path, reco):
-                # Le contenu a changé : on jette le cache pour cette source
-                # (l'id ne bouge pas mais on reste prudent face à un éventuel
-                # déplacement de fichier).
-                _invalidate_reco_path_cache(self.source_id)
-        # PRG : on revient sur la page de l'épisode pour enchaîner ses recos.
-        loc = f"/ep?guid={urllib.parse.quote(guid)}" if guid else "/"
-        self._send(303, headers={"Location": loc})
+        reco = read_json(path)
+        guid = reco.get("episodeGuid", "")
+        if action == "discard":
+            reco["status"] = "discarded"
+            log.info("Écarté : %s", reco_id)
+        else:
+            if recommended:
+                reco["recommendedBy"] = recommended
+            elif "recommendedBy" in reco:
+                del reco["recommendedBy"]
+            reco["status"] = "validated"
+            log.info("Validé : %s -> %s", reco_id, recommended or "(personne)")
+        if write_json_if_changed(path, reco):
+            _invalidate_reco_path_cache(self.source_id)
+        return guid
 
     def log_message(self, *args):  # silence le log HTTP par défaut.
         pass
@@ -489,6 +644,10 @@ def main() -> None:
     parser.add_argument("--source", default="un-bon-moment")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
+
+    # Charge tools/.env pour que TMDB_API_KEY / SPOTIFY_* soient disponibles
+    # dans os.environ — le bouton « Ré-enrichir » en a besoin.
+    load_dotenv(TOOLS_DIR / ".env")
 
     handler = partial(Handler, source_id=args.source)
     server = HTTPServer(("127.0.0.1", args.port), handler)
