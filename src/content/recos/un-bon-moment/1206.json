@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1206",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6302667b4913bd00126c374c",
-  "title": "le livre de Mora de Winter",
-  "type": "livre",
   "creator": "Mora de Winter",
-  "recommendedBy": "Invité",
-  "quote": "la dernière œuvre qui m'a vraiment mis une claque c'est le livre de Mora de Winter",
-  "timestamp": "01:10:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6302667b4913bd00126c374c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1206",
+  "links": [],
+  "quote": "la dernière œuvre qui m'a vraiment mis une claque c'est le livre de Mora de Winter",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:41",
+  "title": "le livre de Mora de Winter",
+  "types": [
+    "livre"
   ]
 }

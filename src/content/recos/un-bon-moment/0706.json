@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0706",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Groum",
-  "type": "serie",
   "creator": "N/A",
-  "recommendedBy": "Navo",
-  "quote": "je venais de terminer la saison 2 de Grum.",
-  "timestamp": "00:03:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0706",
+  "links": [],
+  "quote": "je venais de terminer la saison 2 de Grum.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:45",
+  "title": "Groum",
+  "types": [
+    "serie"
   ]
 }

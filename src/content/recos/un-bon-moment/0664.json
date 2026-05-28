@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0664",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
-  "title": "Killing Joke",
-  "type": "musique",
   "creator": "Killing Joke",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'avoue que c'est axé. Du killing joke.",
-  "timestamp": "01:03:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2217199357"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2217199357"
-  }
+  "id": "ubm-0664",
+  "links": [],
+  "quote": "J'avoue que c'est axé. Du killing joke.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:11",
+  "title": "Killing Joke",
+  "types": [
+    "musique"
+  ]
 }

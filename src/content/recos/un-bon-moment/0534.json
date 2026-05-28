@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0534",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Taylor Swift",
-  "type": "musique",
-  "quote": "Taylor Swift",
-  "timestamp": "00:57:51",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3579685431"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3579685431"
-  }
+  "id": "ubm-0534",
+  "links": [],
+  "quote": "Taylor Swift",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:51",
+  "title": "Taylor Swift",
+  "types": [
+    "musique"
+  ]
 }

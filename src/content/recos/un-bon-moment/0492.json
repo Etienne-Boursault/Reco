@@ -1,67 +1,69 @@
 {
-  "id": "ubm-0492",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Le Claude",
-  "type": "film",
   "creator": "André Dussolier, Valérie Donzely",
-  "quote": "Oui, et la ville est géniale.",
-  "timestamp": "01:37:10",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/64934-le-nouveau-jean-claude/watch?locale=FR",
+    "tmdb": "64934",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "64934",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/64934-le-nouveau-jean-claude/watch?locale=FR"
-  },
+  "id": "ubm-0492",
+  "links": [],
+  "quote": "Oui, et la ville est géniale.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:10",
+  "title": "Le Claude",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Claude",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20Claude"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20Claude&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20Claude&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Claude",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Claude"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Le%20Claude",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Le%20Claude"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Claude",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20Claude"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Le%20Claude",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Le%20Claude"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Claude"
     }
   ]
 }

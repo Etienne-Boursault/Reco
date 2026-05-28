@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0509",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Get Backers",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'avais un manga que j'aimais bien qui s'appelait Get Backers.",
-  "timestamp": "01:12:09",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0509",
+  "links": [],
+  "quote": "J'avais un manga que j'aimais bien qui s'appelait Get Backers.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:09",
+  "title": "Get Backers",
+  "types": [
+    "autre"
   ]
 }

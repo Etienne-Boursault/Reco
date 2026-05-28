@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0866",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "OJ: Made in America",
-  "type": "autre",
   "creator": "Ezra Edelman",
-  "year": 2016,
-  "recommendedBy": "Invité",
-  "quote": "ça avait eu l'oscar du meilleur documentaire en 2016 je crois c'est en cinq ou six parties et là c'est une fresque",
-  "timestamp": "00:22:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-0866",
+  "links": [],
+  "quote": "ça avait eu l'oscar du meilleur documentaire en 2016 je crois c'est en cinq ou six parties et là c'est une fresque",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:22:14",
+  "title": "OJ: Made in America",
+  "types": [
+    "autre"
+  ],
+  "year": 2016
 }

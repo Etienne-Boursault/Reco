@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1130",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240e1c5d8481001225962c",
-  "title": "Discographie de Diams",
-  "type": "album",
   "creator": "Diams",
-  "recommendedBy": "Navo",
-  "quote": "je vous recommande tout l'oeuvre intégrale de Diams parce qu'il y a tout de non",
-  "timestamp": "01:12:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240e1c5d8481001225962c",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1130",
+  "links": [],
+  "quote": "je vous recommande tout l'oeuvre intégrale de Diams parce qu'il y a tout de non",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:43",
+  "title": "Discographie de Diams",
+  "types": [
+    "album"
   ]
 }

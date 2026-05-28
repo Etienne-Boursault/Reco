@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0042",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
-  "title": "L'horizon des événements",
-  "type": "album",
   "creator": "Kyan Khojandi",
-  "year": 2023,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est mon premier album.",
-  "timestamp": "00:01:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/262200072"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/262200072"
-  }
+  "id": "ubm-0042",
+  "links": [],
+  "quote": "C'est mon premier album.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:01:05",
+  "title": "L'horizon des événements",
+  "types": [
+    "album"
+  ],
+  "year": 2023
 }

@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1124",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b2f213ca1cc001201a69f",
-  "title": "Diego Alari",
-  "type": "autre",
   "creator": "Diego Alari",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "moi je vous recommande Diego Alari sur Tiktok",
-  "timestamp": "01:18:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1124",
+  "links": [],
+  "quote": "moi je vous recommande Diego Alari sur Tiktok",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:23",
+  "title": "Diego Alari",
+  "types": [
+    "autre"
   ]
 }

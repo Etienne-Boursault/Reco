@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0316",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Murderbot",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Murderbot",
-  "timestamp": "01:50:20",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR",
+    "tmdb": "241554",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "241554",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR"
-  },
+  "id": "ubm-0316",
+  "links": [],
+  "quote": "Murderbot",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:20",
+  "title": "Murderbot",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV",
-      "url": "https://tv.apple.com/fr/search?term=Murderbot",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Murderbot"
     },
     {
+      "ethics": "avoid",
       "label": "Apple TV Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Murderbot",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Murderbot"
     }
   ]
 }

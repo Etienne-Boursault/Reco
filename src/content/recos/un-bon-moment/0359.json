@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0359",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Henry fait que ça",
-  "type": "autre",
   "creator": "Henri fait que ça",
-  "recommendedBy": "Navo",
-  "quote": "Henri fait que ça, c'est un artiste.",
-  "timestamp": "02:07:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0359",
+  "links": [],
+  "quote": "Henri fait que ça, c'est un artiste.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:07:11",
+  "title": "Henry fait que ça",
+  "types": [
+    "autre"
   ]
 }

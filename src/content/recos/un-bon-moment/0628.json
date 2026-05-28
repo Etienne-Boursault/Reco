@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0628",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "Conte une histoire",
-  "type": "podcast",
   "creator": "Navo",
-  "recommendedBy": "Navo",
-  "quote": "C'est un programme pour Amazon Prime qui consiste à inviter des guest de talent.",
-  "timestamp": "00:12:10",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0628",
+  "links": [],
+  "quote": "C'est un programme pour Amazon Prime qui consiste à inviter des guest de talent.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:12:10",
+  "title": "Conte une histoire",
+  "types": [
+    "podcast"
   ]
 }

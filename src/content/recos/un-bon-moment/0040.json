@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0040",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
-  "title": "Comedy Club",
-  "type": "autre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "Le Comedy Club, c'est très gros.",
-  "timestamp": "00:06:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0040",
+  "links": [],
+  "quote": "Le Comedy Club, c'est très gros.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:06:58",
+  "title": "Comedy Club",
+  "types": [
+    "autre"
   ]
 }

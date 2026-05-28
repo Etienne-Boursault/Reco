@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1050",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
-  "title": "Hygiène Mentale",
-  "type": "podcast",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je conseille l'hygiène mentale. L'hygiène générale pour tous les gens",
-  "timestamp": "01:41:32",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1050",
+  "links": [],
+  "quote": "Je conseille l'hygiène mentale. L'hygiène générale pour tous les gens",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:32",
+  "title": "Hygiène Mentale",
+  "types": [
+    "podcast"
   ]
 }

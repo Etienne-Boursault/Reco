@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0675",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
-  "title": "Yers and Yers",
-  "type": "serie",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "c'est une série qui raconte l'histoire d'une famille américaine au quotidien",
-  "timestamp": "01:06:06",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0675",
+  "links": [],
+  "quote": "c'est une série qui raconte l'histoire d'une famille américaine au quotidien",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:06:06",
+  "title": "Yers and Yers",
+  "types": [
+    "serie"
   ]
 }

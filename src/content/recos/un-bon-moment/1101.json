@@ -1,37 +1,39 @@
 {
-  "id": "ubm-1101",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Striptease",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "rêve grosse traites aussi c'est vrai parce que non mais c'est vrai mais t'as des plans c'est striptease quand même ouais c'est vrai",
-  "timestamp": "00:19:51",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR",
+    "tmdb": "70708",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "70708",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR"
-  },
+  "id": "ubm-1101",
+  "links": [],
+  "quote": "rêve grosse traites aussi c'est vrai parce que non mais c'est vrai mais t'as des plans c'est striptease quand même ouais c'est vrai",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:19:51",
+  "title": "Striptease",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Striptease",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Striptease"
     }
   ]
 }

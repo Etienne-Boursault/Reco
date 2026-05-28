@@ -1,37 +1,39 @@
 {
-  "id": "ubm-0442",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69a169ac519334f049d06785",
-  "title": "Aka",
-  "type": "film",
-  "recommendedBy": "Navo",
-  "quote": "ah pour Aka",
-  "timestamp": "00:24:33",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1102776-aka/watch?locale=FR",
+    "tmdb": "1102776",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1102776",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1102776-aka/watch?locale=FR"
-  },
+  "id": "ubm-0442",
+  "links": [],
+  "quote": "ah pour Aka",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:24:33",
+  "title": "Aka",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Aka",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Aka"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Aka",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Aka"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Aka",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Aka"
     }
   ]
 }

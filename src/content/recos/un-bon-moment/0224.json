@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0224",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Muse",
-  "type": "musique",
-  "quote": "Ah, si, il y a muse.",
-  "timestamp": "01:38:00",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/4195713"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/4195713"
-  }
+  "id": "ubm-0224",
+  "links": [],
+  "quote": "Ah, si, il y a muse.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:38:00",
+  "title": "Muse",
+  "types": [
+    "musique"
+  ]
 }

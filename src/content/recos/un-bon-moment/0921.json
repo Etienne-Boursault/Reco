@@ -1,94 +1,96 @@
 {
-  "id": "ubm-0921",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "L'Auberge Espagnole",
-  "type": "film",
   "creator": "Cédric Klapisch",
-  "year": 2002,
-  "recommendedBy": "Navo",
-  "quote": "Quand on revoit l'auberge espagnol, on s'est dit, on a le droit de faire ça.",
-  "timestamp": "00:03:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1555-l-auberge-espagnole/watch?locale=FR",
+    "tmdb": "1555",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1555",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1555-l-auberge-espagnole/watch?locale=FR"
-  },
+  "id": "ubm-0921",
+  "links": [],
+  "quote": "Quand on revoit l'auberge espagnol, on s'est dit, on a le droit de faire ça.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:56",
+  "title": "L'Auberge Espagnole",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=L%27Auberge%20Espagnole&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=L%27Auberge%20Espagnole&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27Auberge%20Espagnole",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=L%27Auberge%20Espagnole",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Auberge%20Espagnole",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=L%27Auberge%20Espagnole",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=L%27Auberge%20Espagnole"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=L%27Auberge%20Espagnole",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=L%27Auberge%20Espagnole"
     }
-  ]
+  ],
+  "year": 2002
 }

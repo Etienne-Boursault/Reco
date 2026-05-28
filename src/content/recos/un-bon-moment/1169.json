@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1169",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599de12076e6c001696556a",
-  "title": "La prochaine fois que tu mordras la poussière",
-  "type": "livre",
   "creator": "Panayotis Pascot",
-  "recommendedBy": "Navo",
-  "quote": "C'est un très beau livre, très touchant.",
-  "timestamp": "01:12:55",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599de12076e6c001696556a",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1169",
+  "links": [],
+  "quote": "C'est un très beau livre, très touchant.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:55",
+  "title": "La prochaine fois que tu mordras la poussière",
+  "types": [
+    "livre"
   ]
 }

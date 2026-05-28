@@ -1,47 +1,49 @@
 {
-  "id": "ubm-1288",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "Clem",
-  "type": "serie",
-  "recommendedBy": "intervenant",
-  "quote": "on recommande Clem",
-  "timestamp": "01:05:12",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/62824-clem/watch?locale=FR",
+    "tmdb": "62824",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "62824",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/62824-clem/watch?locale=FR"
-  },
+  "id": "ubm-1288",
+  "links": [],
+  "quote": "on recommande Clem",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:05:12",
+  "title": "Clem",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Clem",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Clem"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Clem",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Clem"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Clem",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Clem"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Clem",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Clem"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Clem",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Clem"
     }
   ]
 }

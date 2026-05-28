@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0553",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "Cours, cours et cours encore",
-  "type": "musique",
   "creator": "Team Dup",
-  "recommendedBy": "Navo",
-  "quote": "Tiens, cours, cours et cours encore de Team Dup.",
-  "timestamp": "01:53:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/130008474"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/130008474"
-  }
+  "id": "ubm-0553",
+  "links": [],
+  "quote": "Tiens, cours, cours et cours encore de Team Dup.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:53:41",
+  "title": "Cours, cours et cours encore",
+  "types": [
+    "musique"
+  ]
 }

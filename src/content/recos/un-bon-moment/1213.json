@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1213",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b2f213ca1cc001201a69f",
-  "title": "Pourquoi la trans n'existe pas",
-  "type": "livre",
   "creator": "Jean-Michel Tatillon",
-  "recommendedBy": "Bertrand",
-  "quote": "c'est un livre qui s'appelle Pourquoi la trans n'existe pas",
-  "timestamp": "01:18:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1213",
+  "links": [],
+  "quote": "c'est un livre qui s'appelle Pourquoi la trans n'existe pas",
+  "recommendedBy": "Bertrand",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:03",
+  "title": "Pourquoi la trans n'existe pas",
+  "types": [
+    "livre"
   ]
 }

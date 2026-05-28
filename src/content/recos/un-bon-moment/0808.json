@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0808",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Imagine",
-  "type": "podcast",
   "creator": "Lisa Del Moitié",
-  "recommendedBy": "intervenant",
-  "quote": "C'est un autre podcast qui s'appelle Imagine, ça parle de ça.",
-  "timestamp": "00:29:52",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0808",
+  "links": [],
+  "quote": "C'est un autre podcast qui s'appelle Imagine, ça parle de ça.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:52",
+  "title": "Imagine",
+  "types": [
+    "podcast"
   ]
 }

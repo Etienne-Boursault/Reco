@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0056",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Rock Macabre",
-  "type": "autre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "on a fait une website ensemble qui s'appelle Rock Macabre, qui est une communauté musicale.",
-  "timestamp": "00:43:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0056",
+  "links": [],
+  "quote": "on a fait une website ensemble qui s'appelle Rock Macabre, qui est une communauté musicale.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:44",
+  "title": "Rock Macabre",
+  "types": [
+    "autre"
   ]
 }

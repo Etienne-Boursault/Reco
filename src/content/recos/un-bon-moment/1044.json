@@ -1,74 +1,76 @@
 {
-  "id": "ubm-1044",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
-  "title": "Disobedience",
-  "type": "film",
   "creator": "Sebastian Lelio",
-  "year": 2017,
-  "recommendedBy": "Navo",
-  "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",
-  "timestamp": "01:33:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/419743-disobedience/watch?locale=FR",
+    "tmdb": "419743",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "419743",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/419743-disobedience/watch?locale=FR"
-  },
+  "id": "ubm-1044",
+  "links": [],
+  "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:56",
+  "title": "Disobedience",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Disobedience",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Disobedience&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Disobedience&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Disobedience",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Disobedience",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Disobedience",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Disobedience",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Disobedience",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Disobedience"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Disobedience",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Disobedience",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Disobedience"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Disobedience",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Disobedience"
     }
-  ]
+  ],
+  "year": 2017
 }

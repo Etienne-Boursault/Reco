@@ -1,53 +1,55 @@
 {
-  "id": "ubm-0764",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Westworld",
-  "type": "serie",
   "creator": "Jonathan Nolan, Lisa Joy",
-  "recommendedBy": "Inconnu",
-  "quote": "Et j'ai adoré la série \"Westworld\".",
-  "timestamp": "00:59:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=FR",
+    "tmdb": "63247",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "63247",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=FR"
-  },
+  "id": "ubm-0764",
+  "links": [],
+  "quote": "Et j'ai adoré la série \"Westworld\".",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:49",
+  "title": "Westworld",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Westworld",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Westworld"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Westworld",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Westworld"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Westworld",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Westworld"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Westworld",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Westworld"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Westworld",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Westworld"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Westworld",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Westworld"
     }
   ]
 }

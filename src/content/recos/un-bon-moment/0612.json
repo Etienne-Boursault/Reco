@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0612",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Alphie",
-  "type": "autre",
   "creator": "Alphie",
-  "recommendedBy": "Navo",
-  "quote": "Enfin c'est Alphie, c'est un mec qui fait Alphie qu'on aime.",
-  "timestamp": "01:44:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0612",
+  "links": [],
+  "quote": "Enfin c'est Alphie, c'est un mec qui fait Alphie qu'on aime.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:44:26",
+  "title": "Alphie",
+  "types": [
+    "autre"
   ]
 }

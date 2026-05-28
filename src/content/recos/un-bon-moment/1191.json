@@ -1,21 +1,23 @@
 {
-  "id": "ubm-1191",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "Future Nostalgia",
-  "type": "album",
   "creator": "Dua Lipa",
-  "year": 2020,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa.",
-  "timestamp": "01:41:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/182811182"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/182811182"
-  }
+  "id": "ubm-1191",
+  "links": [],
+  "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:18",
+  "title": "Future Nostalgia",
+  "types": [
+    "album"
+  ],
+  "year": 2020
 }

@@ -1,39 +1,41 @@
 {
-  "id": "ubm-0277",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Community",
-  "type": "serie",
   "creator": "Dan Harmon",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Puis après il a joué parfaitement bien un rôle fantastique dans Community qui est une série culte des années 2010",
-  "timestamp": "01:15:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/18347-community/watch?locale=FR",
+    "tmdb": "18347",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "18347",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/18347-community/watch?locale=FR"
-  },
+  "id": "ubm-0277",
+  "links": [],
+  "quote": "Puis après il a joué parfaitement bien un rôle fantastique dans Community qui est une série culte des années 2010",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:49",
+  "title": "Community",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Community",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Community"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Community",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Community"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Community",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Community"
     }
   ]
 }

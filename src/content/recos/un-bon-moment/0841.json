@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0841",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "BREF",
-  "type": "autre",
   "creator": "Kyan Khojandi, Navo",
-  "recommendedBy": "Kyan Khojandi, Navo",
-  "quote": "On sort le DVD de bref.",
-  "timestamp": "00:56:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0841",
+  "links": [],
+  "quote": "On sort le DVD de bref.",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:43",
+  "title": "BREF",
+  "types": [
+    "autre"
   ]
 }

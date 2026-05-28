@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1114",
-  "sourceId": "un-bon-moment",
+  "creator": "D. Part Dieu",
   "episodeGuid": "6302667b4913bd00126c374c",
-  "title": "Monstres",
-  "type": "livre",
-  "recommendedBy": "Navo",
-  "quote": "C'est en lisant monstres de part dieu je sais pas si vous l'avez lu.",
-  "timestamp": "00:21:08",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "D. Part Dieu"
+  "id": "ubm-1114",
+  "links": [],
+  "quote": "C'est en lisant monstres de part dieu je sais pas si vous l'avez lu.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:08",
+  "title": "Monstres",
+  "types": [
+    "livre"
+  ]
 }

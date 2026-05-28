@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1033",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
-  "title": "Préapartie",
-  "type": "spectacle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je le recommande, Navo, Préapartie, Kian, dans la caméra, super spectacle, voilà.",
-  "timestamp": "00:23:58",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1033",
+  "links": [],
+  "quote": "je le recommande, Navo, Préapartie, Kian, dans la caméra, super spectacle, voilà.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:23:58",
+  "title": "Préapartie",
+  "types": [
+    "spectacle"
   ]
 }

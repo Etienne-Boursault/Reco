@@ -1,34 +1,36 @@
 {
-  "id": "ubm-1125",
-  "sourceId": "un-bon-moment",
+  "creator": "Bill Lawrence, Jason Sudeikis",
   "episodeGuid": "65240aefc8996500127ede97",
-  "title": "Ted Lasso",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Ted Lasso est exceptionnel.",
-  "timestamp": "00:57:32",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR",
+    "tmdb": "97546",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Bill Lawrence, Jason Sudeikis",
-  "externalIds": {
-    "tmdb": "97546",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR"
-  },
+  "id": "ubm-1125",
+  "links": [],
+  "quote": "Ted Lasso est exceptionnel.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:32",
+  "title": "Ted Lasso",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV",
-      "url": "https://tv.apple.com/fr/search?term=Ted%20Lasso",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Ted%20Lasso"
     },
     {
+      "ethics": "avoid",
       "label": "Apple TV Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Ted%20Lasso",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Ted%20Lasso"
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1294",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
-  "title": "le nouveau spectacle du Capucine",
-  "type": "spectacle",
-  "recommendedBy": "Navo",
-  "quote": "je vous invite à aller découvrir le nouveau spectacle.",
-  "timestamp": "01:30:48",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1294",
+  "links": [],
+  "quote": "je vous invite à aller découvrir le nouveau spectacle.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:48",
+  "title": "le nouveau spectacle du Capucine",
+  "types": [
+    "spectacle"
   ]
 }

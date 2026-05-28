@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0132",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Un jour meilleur",
-  "type": "musique",
   "creator": "Artiste inconnu",
-  "recommendedBy": "Invité",
-  "quote": "cette chanson me fait du bien",
-  "timestamp": "00:38:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0132",
+  "links": [],
+  "quote": "cette chanson me fait du bien",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:38:19",
+  "title": "Un jour meilleur",
+  "types": [
+    "musique"
   ]
 }

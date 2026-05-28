@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1059",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "Humoriste du Monde",
-  "type": "autre",
   "creator": "Charlet",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je vous invite à aller voir le Netflix de Charlet dans Humoriste du Monde",
-  "timestamp": "01:00:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1059",
+  "links": [],
+  "quote": "Je vous invite à aller voir le Netflix de Charlet dans Humoriste du Monde",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:00:05",
+  "title": "Humoriste du Monde",
+  "types": [
+    "autre"
   ]
 }

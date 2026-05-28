@@ -1,26 +1,28 @@
 {
-  "id": "ubm-0532",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Only Murders in the Building",
-  "type": "serie",
-  "quote": "only murders in the building",
-  "timestamp": "00:58:12",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/107113-only-murders-in-the-building/watch?locale=FR",
+    "tmdb": "107113",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "107113",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/107113-only-murders-in-the-building/watch?locale=FR"
-  },
+  "id": "ubm-0532",
+  "links": [],
+  "quote": "only murders in the building",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:12",
+  "title": "Only Murders in the Building",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Only%20Murders%20in%20the%20Building",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Only%20Murders%20in%20the%20Building"
     }
   ]
 }

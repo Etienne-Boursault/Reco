@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0956",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "The Rehearsal",
-  "type": "serie",
   "creator": "Nathan Fielder",
-  "recommendedBy": "Navo",
-  "quote": "je rire seul que j'aime beaucoup vous connaissez peut-être Adam ouais c'est après avec Nathan Fielder c'est génial",
-  "timestamp": "01:53:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/204284-the-rehearsal/watch?locale=FR",
+    "tmdb": "204284",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "204284",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/204284-the-rehearsal/watch?locale=FR"
-  },
+  "id": "ubm-0956",
+  "links": [],
+  "quote": "je rire seul que j'aime beaucoup vous connaissez peut-être Adam ouais c'est après avec Nathan Fielder c'est génial",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:53:18",
+  "title": "The Rehearsal",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=The%20Rehearsal",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=The%20Rehearsal"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Rehearsal",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Rehearsal"
     }
   ]
 }

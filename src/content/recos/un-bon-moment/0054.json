@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0054",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
-  "title": "Mathieu Chédid",
-  "type": "musique",
-  "quote": "Son dernier album.",
-  "timestamp": "01:06:26",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/142704126"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/142704126"
-  }
+  "id": "ubm-0054",
+  "links": [],
+  "quote": "Son dernier album.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:06:26",
+  "title": "Mathieu Chédid",
+  "types": [
+    "musique"
+  ]
 }

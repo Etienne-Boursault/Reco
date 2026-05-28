@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0420",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Chamelez",
-  "type": "serie",
-  "quote": "Je connais, série Chamelez.",
-  "timestamp": "01:27:23",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0420",
+  "links": [],
+  "quote": "Je connais, série Chamelez.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:23",
+  "title": "Chamelez",
+  "types": [
+    "serie"
   ]
 }

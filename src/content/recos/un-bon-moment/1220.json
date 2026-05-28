@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1220",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Je craque",
-  "type": "spectacle",
   "creator": "non spécifié",
-  "recommendedBy": "non spécifié",
-  "quote": "Je craque.",
-  "timestamp": "01:09:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b305f3ca1cc001201a861",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1220",
+  "links": [],
+  "quote": "Je craque.",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:49",
+  "title": "Je craque",
+  "types": [
+    "spectacle"
   ]
 }

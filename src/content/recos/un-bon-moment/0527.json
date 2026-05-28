@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0527",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "The Voice",
-  "type": "autre",
   "creator": "Autres",
-  "recommendedBy": "Non précisé",
-  "quote": "Moi, je vous recommande de regarder The Voice.",
-  "timestamp": "01:11:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0527",
+  "links": [],
+  "quote": "Moi, je vous recommande de regarder The Voice.",
+  "recommendedBy": "Non précisé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:41",
+  "title": "The Voice",
+  "types": [
+    "autre"
   ]
 }

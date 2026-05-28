@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0673",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
-  "title": "Queen",
-  "type": "musique",
   "creator": "Queen",
-  "recommendedBy": "inconnu",
-  "quote": "je suis fan de queen, je suis très fan de queen",
-  "timestamp": "00:52:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/9997018"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/9997018"
-  }
+  "id": "ubm-0673",
+  "links": [],
+  "quote": "je suis fan de queen, je suis très fan de queen",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:52:14",
+  "title": "Queen",
+  "types": [
+    "musique"
+  ]
 }

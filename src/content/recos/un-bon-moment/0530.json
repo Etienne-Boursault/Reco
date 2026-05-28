@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0530",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Café Visionnaire",
-  "type": "lieu",
   "creator": "Café Visionnaire",
-  "recommendedBy": "Navo",
-  "quote": "Oui, il y a un café visionnaire à Toulouse.",
-  "timestamp": "00:15:12",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0530",
+  "links": [],
+  "quote": "Oui, il y a un café visionnaire à Toulouse.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:15:12",
+  "title": "Café Visionnaire",
+  "types": [
+    "lieu"
   ]
 }

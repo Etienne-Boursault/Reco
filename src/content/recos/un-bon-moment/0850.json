@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0850",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Il est trop tard, on fera pas l'amour",
-  "type": "musique",
   "creator": "Vincent Delherme",
-  "recommendedBy": "Navo",
-  "quote": "C'est le titre. Il est trop tard, on fera pas l'amour, c'est un duo avec Jean-Marie Violette.",
-  "timestamp": "00:15:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0850",
+  "links": [],
+  "quote": "C'est le titre. Il est trop tard, on fera pas l'amour, c'est un duo avec Jean-Marie Violette.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:15:36",
+  "title": "Il est trop tard, on fera pas l'amour",
+  "types": [
+    "musique"
   ]
 }

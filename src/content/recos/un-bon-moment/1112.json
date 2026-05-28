@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1112",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61cb19444f2d030012ddd82a",
-  "title": "Vidéo sur le surendettement",
-  "type": "autre",
   "creator": "EREK",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
-  "timestamp": "01:31:22",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1112",
+  "links": [],
+  "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:22",
+  "title": "Vidéo sur le surendettement",
+  "types": [
+    "autre"
   ]
 }

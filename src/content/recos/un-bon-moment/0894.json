@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0894",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652408a9c8996500127e39e9",
-  "title": "Discovery",
-  "type": "album",
   "creator": "Daft Punk",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Tu peux être les Daft Punk. Tu trouveras Discovery à un ball dans une brocante.",
-  "timestamp": "00:35:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/302127"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/302127"
-  }
+  "id": "ubm-0894",
+  "links": [],
+  "quote": "Tu peux être les Daft Punk. Tu trouveras Discovery à un ball dans une brocante.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:35:00",
+  "title": "Discovery",
+  "types": [
+    "album"
+  ]
 }

@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0429",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "SpiderZ",
-  "type": "autre",
   "creator": "SpiderZ",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est SpiderZ qui est un rappeur pas très connu français et c'est le gars que je suis et que j'écoute depuis dix ans",
-  "timestamp": "00:28:57",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0429",
+  "links": [],
+  "quote": "c'est SpiderZ qui est un rappeur pas très connu français et c'est le gars que je suis et que j'écoute depuis dix ans",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:57",
+  "title": "SpiderZ",
+  "types": [
+    "autre"
   ]
 }

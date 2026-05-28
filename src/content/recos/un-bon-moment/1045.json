@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1045",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
-  "title": "Close Up",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Mais j'adore Zoé Marshall et Faustine Cosiel et Florian Cosiel pour une mini-série qu'ils ont réalisé qui s'appelle \"Close Up\".",
-  "timestamp": "01:34:47",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
   "externalIds": {
     "tmdb": "63498",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1045",
+  "links": [],
+  "quote": "Mais j'adore Zoé Marshall et Faustine Cosiel et Florian Cosiel pour une mini-série qu'ils ont réalisé qui s'appelle \"Close Up\".",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:47",
+  "title": "Close Up",
+  "types": [
+    "serie"
+  ]
 }

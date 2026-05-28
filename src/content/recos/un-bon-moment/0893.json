@@ -1,98 +1,100 @@
 {
-  "id": "ubm-0893",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652408a9c8996500127e39e9",
-  "title": "La grande bellezza",
-  "type": "film",
   "creator": "Paolo Sorrentino",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "À part le Grande beauté ?",
-  "timestamp": "00:33:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/179144-la-grande-bellezza/watch?locale=FR",
+    "tmdb": "179144",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "179144",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/179144-la-grande-bellezza/watch?locale=FR"
-  },
+  "id": "ubm-0893",
+  "links": [],
+  "quote": "À part le Grande beauté ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:24",
+  "title": "La grande bellezza",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20grande%20bellezza",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=La%20grande%20bellezza&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=La%20grande%20bellezza&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20grande%20bellezza",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20grande%20bellezza",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20grande%20bellezza",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20grande%20bellezza"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20grande%20bellezza",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20grande%20bellezza"
     }
   ]
 }

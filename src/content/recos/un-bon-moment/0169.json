@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0169",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Pink Floyd: The Wall",
-  "type": "album",
   "creator": "Pink Floyd",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Pink Floyd The Wall",
-  "timestamp": "00:40:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/12114248"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/12114248"
-  }
+  "id": "ubm-0169",
+  "links": [],
+  "quote": "Pink Floyd The Wall",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:23",
+  "title": "Pink Floyd: The Wall",
+  "types": [
+    "album"
+  ]
 }

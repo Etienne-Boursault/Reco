@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0603",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Diablo 3",
-  "type": "jeu",
   "creator": "Blizzard Entertainment",
-  "recommendedBy": "Navo",
-  "quote": "il a fini Diablo 3",
-  "timestamp": "00:23:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0603",
+  "links": [],
+  "quote": "il a fini Diablo 3",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:23:43",
+  "title": "Diablo 3",
+  "types": [
+    "jeu"
   ]
 }

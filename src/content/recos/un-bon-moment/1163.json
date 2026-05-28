@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1163",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Yebba",
-  "type": "musique",
   "creator": "Yebba Smith",
-  "recommendedBy": "Navo",
-  "quote": "Yéba Smith.",
-  "timestamp": "01:10:52",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/1484144902"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/1484144902"
-  }
+  "id": "ubm-1163",
+  "links": [],
+  "quote": "Yéba Smith.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:52",
+  "title": "Yebba",
+  "types": [
+    "musique"
+  ]
 }

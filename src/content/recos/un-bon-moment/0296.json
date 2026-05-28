@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0296",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Le spectacle de Léopold",
-  "type": "spectacle",
   "creator": "Léopold",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "j'adore le spectacle de Léopold",
-  "timestamp": "00:18:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0296",
+  "links": [],
+  "quote": "j'adore le spectacle de Léopold",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:21",
+  "title": "Le spectacle de Léopold",
+  "types": [
+    "spectacle"
   ]
 }

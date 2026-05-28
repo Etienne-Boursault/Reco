@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1205",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6302667b4913bd00126c374c",
-  "title": "Humoriste du Monde",
-  "type": "autre",
   "creator": "Dib",
-  "recommendedBy": "Invité",
-  "quote": "moi je dirais Dib il a une demi-heure de stand-up disponible sur Humoriste du Monde dans Québec francophone",
-  "timestamp": "01:10:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6302667b4913bd00126c374c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1205",
+  "links": [],
+  "quote": "moi je dirais Dib il a une demi-heure de stand-up disponible sur Humoriste du Monde dans Québec francophone",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:19",
+  "title": "Humoriste du Monde",
+  "types": [
+    "autre"
   ]
 }

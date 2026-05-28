@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1160",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Where Should We Begin?",
-  "type": "podcast",
   "creator": "Esther Perel",
-  "recommendedBy": "Marina Rolman",
-  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple, et qui fait un podcast tout chaque épisode, elle traite un couple, t'as une session entière, c'est incroyable.",
-  "timestamp": "00:16:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1160",
+  "links": [],
+  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple, et qui fait un podcast tout chaque épisode, elle traite un couple, t'as une session entière, c'est incroyable.",
+  "recommendedBy": "Marina Rolman",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:16:00",
+  "title": "Where Should We Begin?",
+  "types": [
+    "podcast"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1269",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Esther Pérel Podcast",
-  "type": "podcast",
   "creator": "Esther Pérel",
-  "recommendedBy": "Invité non identifié",
-  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple...",
-  "timestamp": "00:15:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1269",
+  "links": [],
+  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple...",
+  "recommendedBy": "Invité non identifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:15:58",
+  "title": "Esther Pérel Podcast",
+  "types": [
+    "podcast"
   ]
 }

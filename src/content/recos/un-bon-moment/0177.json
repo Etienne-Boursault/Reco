@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0177",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Bataar sensible",
-  "type": "spectacle",
   "creator": "Alexandre Cominec",
-  "recommendedBy": "inconnu",
-  "quote": "Bataar sensible",
-  "timestamp": "01:53:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0177",
+  "links": [],
+  "quote": "Bataar sensible",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:53:43",
+  "title": "Bataar sensible",
+  "types": [
+    "spectacle"
   ]
 }

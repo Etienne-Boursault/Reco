@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0533",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Madonna",
-  "type": "musique",
-  "quote": "madonna",
-  "timestamp": "00:57:42",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3988249831"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3988249831"
-  }
+  "id": "ubm-0533",
+  "links": [],
+  "quote": "madonna",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:42",
+  "title": "Madonna",
+  "types": [
+    "musique"
+  ]
 }

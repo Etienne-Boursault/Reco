@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1250",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Gipsy Kings",
-  "type": "musique",
   "creator": "Gipsy Kings",
-  "recommendedBy": "Julien Doré",
-  "quote": "Très très fort.",
-  "timestamp": "00:35:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/958716562"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/958716562"
-  }
+  "id": "ubm-1250",
+  "links": [],
+  "quote": "Très très fort.",
+  "recommendedBy": "Julien Doré",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:35:00",
+  "title": "Gipsy Kings",
+  "types": [
+    "musique"
+  ]
 }

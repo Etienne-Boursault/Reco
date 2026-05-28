@@ -1,74 +1,76 @@
 {
-  "id": "ubm-0557",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
-  "title": "La bonne année",
-  "type": "film",
   "creator": "Claude Lelouch",
-  "recommendedBy": "Navo",
-  "quote": "La bonne année de Claude Lelouch. Pas un des plus connus. Chez d'œuvre totale.",
-  "timestamp": "00:57:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/76329-la-bonne-annee/watch?locale=FR",
+    "tmdb": "76329",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "76329",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/76329-la-bonne-annee/watch?locale=FR"
-  },
+  "id": "ubm-0557",
+  "links": [],
+  "quote": "La bonne année de Claude Lelouch. Pas un des plus connus. Chez d'œuvre totale.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:01",
+  "title": "La bonne année",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20bonne%20ann%C3%A9e",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20bonne%20ann%C3%A9e",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20bonne%20ann%C3%A9e"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=La%20bonne%20ann%C3%A9e&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=La%20bonne%20ann%C3%A9e&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=La%20bonne%20ann%C3%A9e",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=La%20bonne%20ann%C3%A9e"
     }
   ]
 }

@@ -7,7 +7,7 @@ interface Props {
     id: string;
     title: string;
     creator?: string;
-    type: string;
+    types: string[];
     year?: number;
     recommendedBy?: string;
     quote?: string;
@@ -42,13 +42,21 @@ const links = rawLinks.slice(0, 4).map((l) => {
   };
 });
 
-const typeLabel = TYPE_LABELS[reco.type] ?? reco.type;
+// Multi-types : on affiche le label du premier + un compteur « +N » pour les
+// autres, avec tous les labels en tooltip (title=). Une reco sans types tombe
+// proprement sur la chaîne vide.
+const types = reco.types ?? [];
+const typeLabels = types.map((t) => TYPE_LABELS[t] ?? t);
+const primaryLabel = typeLabels[0] ?? '';
+const typeLabel =
+  typeLabels.length > 1 ? `${primaryLabel} +${typeLabels.length - 1}` : primaryLabel;
+const typeTitle = typeLabels.join(', ');
 const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
 ---
 
 <li
   class="card reveal"
-  data-type={reco.type}
+  data-types={types.join(',')}
   data-search={
     // Normalisation SSR : lowercase + sans accents pour permettre une recherche
     // tolérante côté client sans avoir à re-normaliser à chaque keystroke.
@@ -61,7 +69,7 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   }
 >
   <div class="card-top">
-    <span class="type">{typeLabel}</span>
+    <span class="type" title={typeTitle}>{typeLabel}</span>
     {reco.year && <span class="year">{reco.year}</span>}
   </div>
 

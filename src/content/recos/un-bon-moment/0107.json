@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0107",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c1b296596600156961a7",
-  "title": "Zao de Sagazan",
-  "type": "musique",
   "creator": "Zao de Sagazan",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je crois qu'il faut vraiment l'écouter.",
-  "timestamp": "00:56:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2585576812"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2585576812"
-  }
+  "id": "ubm-0107",
+  "links": [],
+  "quote": "Je crois qu'il faut vraiment l'écouter.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:58",
+  "title": "Zao de Sagazan",
+  "types": [
+    "musique"
+  ]
 }

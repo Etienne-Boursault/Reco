@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1061",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "Verino",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi j'aime beaucoup ce que Verrino il fait, je trouve ça très fort",
-  "timestamp": "01:09:20",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1061",
+  "links": [],
+  "quote": "Moi j'aime beaucoup ce que Verrino il fait, je trouve ça très fort",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:20",
+  "title": "Verino",
+  "types": [
+    "autre"
   ]
 }

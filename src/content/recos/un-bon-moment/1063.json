@@ -1,14 +1,16 @@
 {
-  "id": "ubm-1063",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "Le Labo de Lioxx",
-  "type": "autre",
-  "quote": "Le labo Deliox. Si tu veux apprendre à faire de l'impression 3D, de l'électronique, une lampe pour chez toi que tu programme toi-même.",
-  "timestamp": "01:13:15",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1063",
+  "links": [],
+  "quote": "Le labo Deliox. Si tu veux apprendre à faire de l'impression 3D, de l'électronique, une lampe pour chez toi que tu programme toi-même.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:15",
+  "title": "Le Labo de Lioxx",
+  "types": [
+    "autre"
   ]
 }

@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0757",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "pasquinade.fr",
-  "type": "autre",
-  "quote": "Donc 'pasquinade', c'était le fait de faire des blagues, et c'est devenu maintenant un site internet, pasquinade.fr.",
-  "timestamp": "00:14:34",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0757",
+  "links": [],
+  "quote": "Donc 'pasquinade', c'était le fait de faire des blagues, et c'est devenu maintenant un site internet, pasquinade.fr.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:14:34",
+  "title": "pasquinade.fr",
+  "types": [
+    "autre"
   ]
 }

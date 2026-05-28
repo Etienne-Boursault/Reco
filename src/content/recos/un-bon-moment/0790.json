@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0790",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Le Fils de l'homme",
-  "type": "livre",
   "creator": "Jean-Baptiste Del Amo",
-  "quote": "un livre, Le Fils de l'homme de Jean-Baptiste Delamo, qui vient gagner le prix du roman FNAX, c'est un très, très beau livre sur la violence patriarchale",
-  "timestamp": "00:57:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0790",
+  "links": [],
+  "quote": "un livre, Le Fils de l'homme de Jean-Baptiste Delamo, qui vient gagner le prix du roman FNAX, c'est un très, très beau livre sur la violence patriarchale",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:17",
+  "title": "Le Fils de l'homme",
+  "types": [
+    "livre"
   ]
 }

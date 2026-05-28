@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0168",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Jamel Comedy Club",
-  "type": "spectacle",
   "creator": "Jamel Debbouze",
-  "recommendedBy": "Navo",
-  "quote": "Jamel Comedy Club.",
-  "timestamp": "00:16:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0168",
+  "links": [],
+  "quote": "Jamel Comedy Club.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:16:56",
+  "title": "Jamel Comedy Club",
+  "types": [
+    "spectacle"
   ]
 }

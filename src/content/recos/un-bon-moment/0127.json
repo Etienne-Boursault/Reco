@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0127",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Plaisirisc Dépendance",
-  "type": "album",
   "creator": "Adèle Castillon",
-  "recommendedBy": "inconnu",
-  "quote": "C'est Adèle Castillon, qui a sorti un album qui s'appelle « Plaisirisc Dépendance » et il est hyper personnel et très beau.",
-  "timestamp": "01:10:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0127",
+  "links": [],
+  "quote": "C'est Adèle Castillon, qui a sorti un album qui s'appelle « Plaisirisc Dépendance » et il est hyper personnel et très beau.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:40",
+  "title": "Plaisirisc Dépendance",
+  "types": [
+    "album"
   ]
 }

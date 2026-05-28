@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0951",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed94b586967e0017c06729",
-  "title": "Spectacle de Blondine Léo",
-  "type": "spectacle",
   "creator": "Blondine Léo",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je vais recommander une humoriste, Blondine Léo. Oui. Qui est une copine et que je trouve très drôle.",
-  "timestamp": "01:09:12",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed94b586967e0017c06729",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0951",
+  "links": [],
+  "quote": "je vais recommander une humoriste, Blondine Léo. Oui. Qui est une copine et que je trouve très drôle.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:12",
+  "title": "Spectacle de Blondine Léo",
+  "types": [
+    "spectacle"
   ]
 }

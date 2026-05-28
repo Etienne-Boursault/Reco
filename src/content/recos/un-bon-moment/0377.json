@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0377",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Les nouveaux monstres",
-  "type": "film",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "Oui un film qui s'appelle Les nouveaux monstres",
-  "timestamp": "01:31:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/45004-i-nuovi-mostri/watch?locale=FR",
+    "tmdb": "45004",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "45004",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/45004-i-nuovi-mostri/watch?locale=FR"
-  },
+  "id": "ubm-0377",
+  "links": [],
+  "quote": "Oui un film qui s'appelle Les nouveaux monstres",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:00",
+  "title": "Les nouveaux monstres",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Les%20nouveaux%20monstres",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Les%20nouveaux%20monstres"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Les%20nouveaux%20monstres",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Les%20nouveaux%20monstres"
     }
   ]
 }

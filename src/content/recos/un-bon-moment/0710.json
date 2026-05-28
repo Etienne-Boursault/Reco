@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0710",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Primer",
-  "type": "film",
   "creator": "Shane Carruth",
-  "recommendedBy": "Invité",
-  "quote": "Primer, c'est un film de voyage dans le temps, que ça sert à rien de le regarder pour n'importe qui qui a envie de passer un bon moment.",
-  "timestamp": "00:32:22",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "14337",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0710",
+  "links": [],
+  "quote": "Primer, c'est un film de voyage dans le temps, que ça sert à rien de le regarder pour n'importe qui qui a envie de passer un bon moment.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:32:22",
+  "title": "Primer",
+  "types": [
+    "film"
+  ]
 }

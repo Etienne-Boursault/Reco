@@ -1,96 +1,98 @@
 {
-  "id": "ubm-0421",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Citizen Kane",
-  "type": "film",
-  "quote": "Citizen Kane.",
-  "timestamp": "01:27:31",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=FR",
+    "tmdb": "15",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "15",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=FR"
-  },
+  "id": "ubm-0421",
+  "links": [],
+  "quote": "Citizen Kane.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:31",
+  "title": "Citizen Kane",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Citizen%20Kane&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Citizen%20Kane&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Citizen%20Kane",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Citizen%20Kane"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Citizen%20Kane",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Citizen%20Kane"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Citizen%20Kane",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Citizen%20Kane"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Citizen%20Kane",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Citizen%20Kane"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Citizen%20Kane",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Citizen%20Kane"
     }
   ]
 }

@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0312",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "La nuit retrouvée",
-  "type": "bd",
   "creator": "Pénélope Bagieu",
-  "recommendedBy": "inconnu",
-  "quote": "la nuit retrouvée c'est la... le roman graphique de... de... de Penelope basse juste moi",
-  "timestamp": "00:37:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6947cd11f7567117395ad287",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0312",
+  "links": [],
+  "quote": "la nuit retrouvée c'est la... le roman graphique de... de... de Penelope basse juste moi",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:37:19",
+  "title": "La nuit retrouvée",
+  "types": [
+    "bd"
   ]
 }

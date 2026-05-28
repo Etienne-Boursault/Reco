@@ -1,84 +1,86 @@
 {
-  "id": "ubm-0892",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652408a9c8996500127e39e9",
-  "title": "Je ne suis pas un héros",
-  "type": "film",
   "creator": "Rudy Milstein",
-  "year": 2023,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Vous êtes à la fiche d'un film qui s'appelle Je ne suis pas un héros qui sort le 15 novembre au cinéma.",
-  "timestamp": "00:28:52",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1004255-je-ne-suis-pas-un-heros/watch?locale=FR",
+    "tmdb": "1004255",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1004255",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1004255-je-ne-suis-pas-un-heros/watch?locale=FR"
-  },
+  "id": "ubm-0892",
+  "links": [],
+  "quote": "Vous êtes à la fiche d'un film qui s'appelle Je ne suis pas un héros qui sort le 15 novembre au cinéma.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:52",
+  "title": "Je ne suis pas un héros",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Je%20ne%20suis%20pas%20un%20h%C3%A9ros"
     }
-  ]
+  ],
+  "year": 2023
 }

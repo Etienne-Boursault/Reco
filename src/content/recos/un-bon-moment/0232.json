@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0232",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Grobanger",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "Je recommande.",
-  "timestamp": "01:32:54",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0232",
+  "links": [],
+  "quote": "Je recommande.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:54",
+  "title": "Grobanger",
+  "types": [
+    "autre"
   ]
 }

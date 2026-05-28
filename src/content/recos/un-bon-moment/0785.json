@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0785",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Les bestiaires",
-  "type": "livre",
   "creator": "Non spécifié",
-  "recommendedBy": "Non spécifié",
-  "quote": "je lis les bestiaires.",
-  "timestamp": "00:49:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0785",
+  "links": [],
+  "quote": "je lis les bestiaires.",
+  "recommendedBy": "Non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:49:50",
+  "title": "Les bestiaires",
+  "types": [
+    "livre"
   ]
 }

@@ -1,123 +1,125 @@
 {
-  "id": "ubm-0189",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "Benjamin Button",
-  "type": "film",
   "creator": "David Fincher",
-  "recommendedBy": "Invité",
-  "quote": "Par exemple, l'autre fois, j'allais pas bien, j'ai regardé Benjamin Buten.",
-  "timestamp": "01:19:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/4922-the-curious-case-of-benjamin-button/watch?locale=FR",
+    "tmdb": "4922",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "4922",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/4922-the-curious-case-of-benjamin-button/watch?locale=FR"
-  },
+  "id": "ubm-0189",
+  "links": [],
+  "quote": "Par exemple, l'autre fois, j'allais pas bien, j'ai regardé Benjamin Buten.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:04",
+  "title": "Benjamin Button",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Benjamin%20Button",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Benjamin%20Button",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Benjamin%20Button&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Benjamin%20Button&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Benjamin%20Button",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Benjamin%20Button",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Benjamin%20Button"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Benjamin%20Button",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Benjamin%20Button"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Benjamin%20Button",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Benjamin%20Button"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Benjamin%20Button",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Benjamin%20Button"
     }
   ]
 }

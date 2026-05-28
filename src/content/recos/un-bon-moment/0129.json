@@ -1,29 +1,31 @@
 {
-  "id": "ubm-0129",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "The Bear",
-  "type": "serie",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "The Bear. Saison 2 exceptionnelle. J'ai beaucoup aimé la saison 2.",
-  "timestamp": "01:12:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=FR",
+    "tmdb": "136315",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "136315",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=FR"
-  },
+  "id": "ubm-0129",
+  "links": [],
+  "quote": "The Bear. Saison 2 exceptionnelle. J'ai beaucoup aimé la saison 2.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:46",
+  "title": "The Bear",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Bear",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Bear"
     }
   ]
 }

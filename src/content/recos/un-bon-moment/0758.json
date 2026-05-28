@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0758",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Adib Al-Qaliday",
-  "type": "autre",
-  "quote": "On adore. C'est génial.",
-  "timestamp": "00:15:53",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0758",
+  "links": [],
+  "quote": "On adore. C'est génial.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:15:53",
+  "title": "Adib Al-Qaliday",
+  "types": [
+    "autre"
   ]
 }

@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0428",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "Showbiz",
-  "type": "album",
   "creator": "Muse",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels showbiz c'est vraiment des gars de 20 ans dans un garage en Angleterre qui font de la musique",
-  "timestamp": "00:26:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/339679"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1999,
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/339679"
-  }
+  "id": "ubm-0428",
+  "links": [],
+  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels showbiz c'est vraiment des gars de 20 ans dans un garage en Angleterre qui font de la musique",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:26:23",
+  "title": "Showbiz",
+  "types": [
+    "album"
+  ],
+  "year": 1999
 }

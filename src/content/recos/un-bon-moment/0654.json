@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0654",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
-  "title": "Ici Japon",
-  "type": "autre",
   "creator": "Non spécifié",
-  "recommendedBy": "Non spécifié",
-  "quote": "il y a un type qui s'appelle ici japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo le japon en général",
-  "timestamp": "01:14:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0654",
+  "links": [],
+  "quote": "il y a un type qui s'appelle ici japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo le japon en général",
+  "recommendedBy": "Non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:19",
+  "title": "Ici Japon",
+  "types": [
+    "autre"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1017",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Le musée imaginaire d'Holy",
-  "type": "lieu",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "le musée d'Holy le musée imaginaire d'Holy il va arriver à Paris",
-  "timestamp": "01:22:21",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1017",
+  "links": [],
+  "quote": "le musée d'Holy le musée imaginaire d'Holy il va arriver à Paris",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:21",
+  "title": "Le musée imaginaire d'Holy",
+  "types": [
+    "lieu"
   ]
 }

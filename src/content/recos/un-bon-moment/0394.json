@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0394",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "La Malédiction du dosar numéro",
-  "type": "spectacle",
   "creator": "Yann Métét",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il a fait un spectacle qui s'appelle la malédiction du dosar numéro",
-  "timestamp": "02:19:12",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0394",
+  "links": [],
+  "quote": "il a fait un spectacle qui s'appelle la malédiction du dosar numéro",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:19:12",
+  "title": "La Malédiction du dosar numéro",
+  "types": [
+    "spectacle"
   ]
 }

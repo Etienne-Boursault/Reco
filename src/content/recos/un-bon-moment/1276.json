@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1276",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65c7a2673210d00017783f8b",
-  "title": "Quentin Ratioville",
-  "type": "spectacle",
-  "recommendedBy": "Walidia",
-  "quote": "s'il y a des gens que je vous invite à aller voir et qui... ouais, c'est des spectacles qui peuvent transformer une petite partie de ta vie",
-  "timestamp": "01:15:10",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1276",
+  "links": [],
+  "quote": "s'il y a des gens que je vous invite à aller voir et qui... ouais, c'est des spectacles qui peuvent transformer une petite partie de ta vie",
+  "recommendedBy": "Walidia",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:10",
+  "title": "Quentin Ratioville",
+  "types": [
+    "spectacle"
   ]
 }

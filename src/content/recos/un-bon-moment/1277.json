@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1277",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6a10a31516a6aa135ed729e1",
-  "title": "Les Champs de sacs plastiques",
-  "type": "album",
   "creator": "Jean-Jacques Solot",
-  "year": 2023,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "L'album s'appelle... - Les champs de sac plastique.",
-  "timestamp": "00:04:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-1277",
+  "links": [],
+  "quote": "L'album s'appelle... - Les champs de sac plastique.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:04:26",
+  "title": "Les Champs de sacs plastiques",
+  "types": [
+    "album"
+  ],
+  "year": 2023
 }

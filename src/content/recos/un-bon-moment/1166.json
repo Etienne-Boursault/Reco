@@ -1,37 +1,39 @@
 {
-  "id": "ubm-1166",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Severance",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Seb Brent s'en est sur Apple+ disponible sur ma canal mais vraiment... C'est vraiment, c'est d'une écriture.",
-  "timestamp": "01:13:45",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/95396-severance/watch?locale=FR",
+    "tmdb": "95396",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "95396",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/95396-severance/watch?locale=FR"
-  },
+  "id": "ubm-1166",
+  "links": [],
+  "quote": "Seb Brent s'en est sur Apple+ disponible sur ma canal mais vraiment... C'est vraiment, c'est d'une écriture.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:45",
+  "title": "Severance",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV",
-      "url": "https://tv.apple.com/fr/search?term=Severance",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Severance"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Severance",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Severance"
     },
     {
+      "ethics": "avoid",
       "label": "Apple TV Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Severance",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Severance"
     }
   ]
 }

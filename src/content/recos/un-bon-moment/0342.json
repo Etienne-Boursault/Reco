@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0342",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "Stigler Brown Incident",
-  "type": "autre",
   "creator": "inconnu",
-  "recommendedBy": "Navo",
-  "quote": "je vous recommande de vous renseigner sur le Stigler Brown Incident",
-  "timestamp": "01:52:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6960deefb86949aa06496e27",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0342",
+  "links": [],
+  "quote": "je vous recommande de vous renseigner sur le Stigler Brown Incident",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:52:19",
+  "title": "Stigler Brown Incident",
+  "types": [
+    "autre"
   ]
 }

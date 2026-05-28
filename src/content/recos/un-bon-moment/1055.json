@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1055",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "Faire kiffer les anges",
-  "type": "autre",
-  "year": 1998,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est aussi inspiré d'un documentaire sur Arte qui s'appelait Faire kiffer les anges",
-  "timestamp": "00:40:55",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
-  ]
+  ],
+  "id": "ubm-1055",
+  "links": [],
+  "quote": "c'est aussi inspiré d'un documentaire sur Arte qui s'appelait Faire kiffer les anges",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:55",
+  "title": "Faire kiffer les anges",
+  "types": [
+    "autre"
+  ],
+  "year": 1998
 }

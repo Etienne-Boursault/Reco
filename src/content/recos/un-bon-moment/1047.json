@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1047",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
-  "title": "Pomme",
-  "type": "spectacle",
-  "recommendedBy": "Manu",
-  "quote": "Moi je vais aller voir le concert de POM à la CIGARLE. Donc ça c'est un petit coup de coeur...",
-  "timestamp": "01:37:58",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1047",
+  "links": [],
+  "quote": "Moi je vais aller voir le concert de POM à la CIGARLE. Donc ça c'est un petit coup de coeur...",
+  "recommendedBy": "Manu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:58",
+  "title": "Pomme",
+  "types": [
+    "spectacle"
   ]
 }

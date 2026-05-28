@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0144",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Tessa B",
-  "type": "musique",
-  "quote": "une artiste qu'on peut retrouver sur Instagram qui s'appelle Tessa B",
-  "timestamp": "01:22:26",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/737940812"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/737940812"
-  }
+  "id": "ubm-0144",
+  "links": [],
+  "quote": "une artiste qu'on peut retrouver sur Instagram qui s'appelle Tessa B",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:26",
+  "title": "Tessa B",
+  "types": [
+    "musique"
+  ]
 }

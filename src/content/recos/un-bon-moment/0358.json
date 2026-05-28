@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0358",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Lou Garou",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Lou Garou, c'est bien, j'ai vu l'épisode 4 hier, j'ai adoré.",
-  "timestamp": "02:06:39",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0358",
+  "links": [],
+  "quote": "Lou Garou, c'est bien, j'ai vu l'épisode 4 hier, j'ai adoré.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:06:39",
+  "title": "Lou Garou",
+  "types": [
+    "serie"
   ]
 }

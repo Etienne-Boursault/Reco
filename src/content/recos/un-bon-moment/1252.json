@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1252",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Tiff",
-  "type": "musique",
   "creator": "Tiff",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tiff.",
-  "timestamp": "01:11:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/65121042"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/65121042"
-  }
+  "id": "ubm-1252",
+  "links": [],
+  "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tiff.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:01",
+  "title": "Tiff",
+  "types": [
+    "musique"
+  ]
 }

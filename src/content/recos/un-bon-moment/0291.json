@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0291",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "The Legend of Hei",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "The Legend of Hei. C'est un animé chinois. Il est sur Youtube. C'est exceptionnel.",
-  "timestamp": "02:07:40",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "tmdb": "16339",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "16339",
-    "tmdbType": "tv"
-  }
+  "id": "ubm-0291",
+  "links": [],
+  "quote": "The Legend of Hei. C'est un animé chinois. Il est sur Youtube. C'est exceptionnel.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:07:40",
+  "title": "The Legend of Hei",
+  "types": [
+    "serie"
+  ]
 }

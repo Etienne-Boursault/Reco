@@ -1,93 +1,95 @@
 {
-  "id": "ubm-0547",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "American History X",
-  "type": "film",
   "creator": "Tony Kaye",
-  "recommendedBy": "Invité",
-  "quote": "American Historics.",
-  "timestamp": "00:59:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/73-american-history-x/watch?locale=FR",
+    "tmdb": "73",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "73",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/73-american-history-x/watch?locale=FR"
-  },
+  "id": "ubm-0547",
+  "links": [],
+  "quote": "American Historics.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:05",
+  "title": "American History X",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=American%20History%20X"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=American%20History%20X",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=American%20History%20X"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=American%20History%20X",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=American%20History%20X"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=American%20History%20X",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=American%20History%20X"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=American%20History%20X",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=American%20History%20X"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=American%20History%20X&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=American%20History%20X&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=American%20History%20X",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=American%20History%20X"
     }
   ]
 }

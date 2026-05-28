@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0522",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "Le Roof Man",
-  "type": "film",
   "creator": "N/A",
-  "recommendedBy": "Navo",
-  "quote": "Regardez le film avec Channing Tatoumou.",
-  "timestamp": "00:28:24",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "69e13325fb440758726a665f",
   "externalIds": {
     "tmdb": "25699",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0522",
+  "links": [],
+  "quote": "Regardez le film avec Channing Tatoumou.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:24",
+  "title": "Le Roof Man",
+  "types": [
+    "film"
+  ]
 }

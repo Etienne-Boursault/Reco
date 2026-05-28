@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0568",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6a05e43cc7ea4a3c85664972",
-  "title": "Les Chevaliers du Baphomet",
-  "type": "jeu",
   "creator": "Yves Grolet",
-  "recommendedBy": "Navo",
-  "quote": "c'est un jeu sur PlayStation 1",
-  "timestamp": "01:22:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0568",
+  "links": [],
+  "quote": "c'est un jeu sur PlayStation 1",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:28",
+  "title": "Les Chevaliers du Baphomet",
+  "types": [
+    "jeu"
   ]
 }

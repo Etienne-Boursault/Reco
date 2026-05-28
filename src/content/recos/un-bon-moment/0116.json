@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0116",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "Maman",
-  "type": "musique",
   "creator": "Gérard Lenorman",
-  "recommendedBy": "Inconnu",
-  "quote": "Allez écouter ce truc.",
-  "timestamp": "01:23:57",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3571016741"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3571016741"
-  }
+  "id": "ubm-0116",
+  "links": [],
+  "quote": "Allez écouter ce truc.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:23:57",
+  "title": "Maman",
+  "types": [
+    "musique"
+  ]
 }

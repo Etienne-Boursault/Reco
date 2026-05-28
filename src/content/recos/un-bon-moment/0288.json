@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0288",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Pluribus",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "Pluribus. Moi je kiffe.",
-  "timestamp": "02:06:14",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0288",
+  "links": [],
+  "quote": "Pluribus. Moi je kiffe.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:06:14",
+  "title": "Pluribus",
+  "types": [
+    "autre"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1012",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "L'école c'est de la merde",
-  "type": "podcast",
-  "recommendedBy": "invité",
-  "quote": "il a fait un podcast qui est trop bien l'école c'est de la merde",
-  "timestamp": "01:43:38",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1012",
+  "links": [],
+  "quote": "il a fait un podcast qui est trop bien l'école c'est de la merde",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:43:38",
+  "title": "L'école c'est de la merde",
+  "types": [
+    "podcast"
   ]
 }

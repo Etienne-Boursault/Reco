@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0037",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63614bd05e627e0011144c04",
-  "title": "Une fille pour deux",
-  "type": "spectacle",
-  "recommendedBy": "Laurent Baffie",
-  "quote": "alors je voudrais recommander cette pièce une fille pour deux",
-  "timestamp": "00:58:46",
-  "links": [],
-  "status": "validated",
   "creator": "Benjamin Baffy",
+  "episodeGuid": "63614bd05e627e0011144c04",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0037",
+  "links": [],
+  "quote": "alors je voudrais recommander cette pièce une fille pour deux",
+  "recommendedBy": "Laurent Baffie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:46",
+  "title": "Une fille pour deux",
+  "types": [
+    "spectacle"
   ]
 }

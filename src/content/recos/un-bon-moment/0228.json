@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0228",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Yoroi",
-  "type": "autre",
-  "recommendedBy": "Invité",
-  "quote": "Allez voir Yoroi.",
-  "timestamp": "00:31:32",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0228",
+  "links": [],
+  "quote": "Allez voir Yoroi.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:32",
+  "title": "Yoroi",
+  "types": [
+    "autre"
   ]
 }

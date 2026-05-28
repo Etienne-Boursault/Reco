@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0803",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Les gens qui jouent",
-  "type": "podcast",
   "creator": "Fanny Ruet et Morgane Canignan",
-  "recommendedBy": "Morgane Canignan",
-  "quote": "C'est un podcast assez... On est très vite collé à ce podcast.",
-  "timestamp": "00:03:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0803",
+  "links": [],
+  "quote": "C'est un podcast assez... On est très vite collé à ce podcast.",
+  "recommendedBy": "Morgane Canignan",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:01",
+  "title": "Les gens qui jouent",
+  "types": [
+    "podcast"
   ]
 }

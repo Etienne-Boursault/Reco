@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0694",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
-  "title": "But de Dennis Bergkamp",
-  "type": "autre",
   "creator": "Dennis Bergkamp",
-  "recommendedBy": "inconnu",
-  "quote": "je vous invite à aller le voir sur youtube avec les commentaires hollandais",
-  "timestamp": "00:50:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0694",
+  "links": [],
+  "quote": "je vous invite à aller le voir sur youtube avec les commentaires hollandais",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:50:34",
+  "title": "But de Dennis Bergkamp",
+  "types": [
+    "autre"
   ]
 }

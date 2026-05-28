@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0487",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Les Chiens de Navarre",
-  "type": "spectacle",
   "creator": "Les Chiens de Navarre",
-  "recommendedBy": "Navo",
-  "quote": "La dernière pièce des chiens de Navarre, qui était super...",
-  "timestamp": "01:30:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0487",
+  "links": [],
+  "quote": "La dernière pièce des chiens de Navarre, qui était super...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:20",
+  "title": "Les Chiens de Navarre",
+  "types": [
+    "spectacle"
   ]
 }

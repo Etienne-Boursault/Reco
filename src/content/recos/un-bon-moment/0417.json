@@ -1,62 +1,64 @@
 {
-  "id": "ubm-0417",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "La Femme de ménage",
-  "type": "film",
-  "recommendedBy": "Navé",
-  "quote": "J'ai regardé la femme de ménage.",
-  "timestamp": "01:26:17",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1368166-the-housemaid/watch?locale=FR",
+    "tmdb": "1368166",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1368166",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1368166-the-housemaid/watch?locale=FR"
-  },
+  "id": "ubm-0417",
+  "links": [],
+  "quote": "J'ai regardé la femme de ménage.",
+  "recommendedBy": "Navé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:17",
+  "title": "La Femme de ménage",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Femme%20de%20m%C3%A9nage"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Femme%20de%20m%C3%A9nage",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Femme%20de%20m%C3%A9nage"
     }
   ]
 }

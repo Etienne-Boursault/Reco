@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0325",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Mickey Mouse",
-  "type": "autre",
   "creator": "Walt Disney",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Vous voyez Walt Disney ? Disney, Mickey. C'est écrit par Walt Disney. C'est une personne Walt Disney.",
-  "timestamp": "00:51:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6955067456c11ef4099abd99",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0325",
+  "links": [],
+  "quote": "Vous voyez Walt Disney ? Disney, Mickey. C'est écrit par Walt Disney. C'est une personne Walt Disney.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:47",
+  "title": "Mickey Mouse",
+  "types": [
+    "autre"
   ]
 }

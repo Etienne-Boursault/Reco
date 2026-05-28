@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1039",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
-  "title": "Tales from the Click",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Allez, moi, je vais recommander Tels from the Click.",
-  "timestamp": "01:21:29",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1039",
+  "links": [],
+  "quote": "Allez, moi, je vais recommander Tels from the Click.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:29",
+  "title": "Tales from the Click",
+  "types": [
+    "autre"
   ]
 }

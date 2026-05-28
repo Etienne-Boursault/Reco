@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0810",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Je veux de la lumière",
-  "type": "musique",
   "creator": "Finéon",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un petit peu, ouais.",
-  "timestamp": "01:26:39",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0810",
+  "links": [],
+  "quote": "C'est un petit peu, ouais.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:39",
+  "title": "Je veux de la lumière",
+  "types": [
+    "musique"
   ]
 }

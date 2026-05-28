@@ -194,9 +194,9 @@ def test_main_missing_api_key_exits(reco_env, monkeypatch):
 @responses.activate
 def test_main_enriches_one_reco(reco_env, monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
-    _write_reco(reco_env, "a.json", {"id": "a", "type": "film", "title": "Mortel"})
+    _write_reco(reco_env, "a.json", {"id": "a", "types": ["film"], "title": "Mortel"})
     # Ignorée car type=livre.
-    _write_reco(reco_env, "b.json", {"id": "b", "type": "livre", "title": "X"})
+    _write_reco(reco_env, "b.json", {"id": "b", "types": ["livre"], "title": "X"})
 
     responses.add(
         responses.GET,
@@ -228,7 +228,7 @@ def test_main_enriches_one_reco(reco_env, monkeypatch):
 def test_main_limit_caps_targets(reco_env, monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     for i in range(3):
-        _write_reco(reco_env, f"{i}.json", {"id": str(i), "type": "film", "title": f"T{i}"})
+        _write_reco(reco_env, f"{i}.json", {"id": str(i), "types": ["film"], "title": f"T{i}"})
 
     # Une seule recherche/provider, car --limit 1.
     responses.add(
@@ -255,7 +255,7 @@ def test_main_limit_caps_targets(reco_env, monkeypatch):
 def test_main_skips_already_enriched_without_force(reco_env, monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     _write_reco(reco_env, "a.json", {
-        "id": "a", "type": "film", "title": "M",
+        "id": "a", "types": ["film"], "title": "M",
         "externalIds": {"tmdb": "1", "tmdbType": "movie", "justwatch": "u"},
     })
     monkeypatch.setattr(sys, "argv", ["enrich_tmdb.py", "--source", "src"])
@@ -268,7 +268,7 @@ def test_main_force_reuses_known_id(reco_env, monkeypatch):
     """--force + tmdb_id déjà connu : pas de /search, juste /watch/providers."""
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     _write_reco(reco_env, "a.json", {
-        "id": "a", "type": "serie", "title": "Engrenages",
+        "id": "a", "types": ["serie"], "title": "Engrenages",
         "externalIds": {"tmdb": "10", "tmdbType": "tv"},
     })
     responses.add(
@@ -288,7 +288,7 @@ def test_main_force_reuses_known_id(reco_env, monkeypatch):
 @responses.activate
 def test_main_not_found_keeps_reco_untouched(reco_env, monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
-    _write_reco(reco_env, "a.json", {"id": "a", "type": "film", "title": "Introuvable"})
+    _write_reco(reco_env, "a.json", {"id": "a", "types": ["film"], "title": "Introuvable"})
     responses.add(
         responses.GET,
         "https://api.themoviedb.org/3/search/movie",
@@ -310,7 +310,7 @@ def test_main_not_found_keeps_reco_untouched(reco_env, monkeypatch):
 def test_main_no_targets_returns_early(reco_env, monkeypatch):
     """Aucun fichier film/série → main retourne sans appeler l'API."""
     monkeypatch.setenv("TMDB_API_KEY", "fake")
-    _write_reco(reco_env, "a.json", {"id": "a", "type": "livre", "title": "X"})
+    _write_reco(reco_env, "a.json", {"id": "a", "types": ["livre"], "title": "X"})
     monkeypatch.setattr(sys, "argv", ["enrich_tmdb.py", "--source", "src"])
     enrich_tmdb.main()
 
@@ -320,7 +320,7 @@ def test_main_force_re_searches_and_removes_stale_justwatch(reco_env, monkeypatc
     """--force : reco déjà enrichie, mais on re-cherche et le justwatch disparaît."""
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     _write_reco(reco_env, "a.json", {
-        "id": "a", "type": "film", "title": "M",
+        "id": "a", "types": ["film"], "title": "M",
         "externalIds": {"tmdb": "1", "tmdbType": "movie", "justwatch": "stale"},
         "watchProviders": [{"label": "old"}],
     })

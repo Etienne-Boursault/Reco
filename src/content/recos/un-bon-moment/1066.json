@@ -1,32 +1,34 @@
 {
-  "id": "ubm-1066",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "Uncut Gems",
-  "type": "film",
   "creator": "Safdie Brothers",
-  "quote": "Moi c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut James. C'est Uncut James avec Adam Sandler et franchement j'ai kiffé.",
-  "timestamp": "01:15:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/473033-uncut-gems/watch?locale=FR",
+    "tmdb": "473033",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "473033",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/473033-uncut-gems/watch?locale=FR"
-  },
+  "id": "ubm-1066",
+  "links": [],
+  "quote": "Moi c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut James. C'est Uncut James avec Adam Sandler et franchement j'ai kiffé.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:28",
+  "title": "Uncut Gems",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Uncut%20Gems",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Uncut%20Gems"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Uncut%20Gems",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Uncut%20Gems"
     }
   ]
 }

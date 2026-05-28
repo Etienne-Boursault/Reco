@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1147",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "Révalité",
-  "type": "album",
   "creator": "M (Mathieu Chedid)",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "l'album Révalité du live qui est allé streamer ça ou aller offrir ça pour les fêtes de Noël",
-  "timestamp": "01:10:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/303859177"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/303859177"
-  }
+  "id": "ubm-1147",
+  "links": [],
+  "quote": "l'album Révalité du live qui est allé streamer ça ou aller offrir ça pour les fêtes de Noël",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:02",
+  "title": "Révalité",
+  "types": [
+    "album"
+  ]
 }

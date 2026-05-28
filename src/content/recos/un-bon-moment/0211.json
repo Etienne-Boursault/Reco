@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0211",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Un amour paisible",
-  "type": "livre",
   "creator": "Augustin Trapnard",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Augustin Trapnard, un bouquin sur l'amour.",
-  "timestamp": "00:18:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0211",
+  "links": [],
+  "quote": "Augustin Trapnard, un bouquin sur l'amour.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:50",
+  "title": "Un amour paisible",
+  "types": [
+    "livre"
   ]
 }

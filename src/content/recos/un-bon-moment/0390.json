@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0390",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Ma vie sans moustache",
-  "type": "livre",
   "creator": "Mathias Malzieu",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "ma vie sans moustache à mon appareil aussi incroyable c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
-  "timestamp": "02:13:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0390",
+  "links": [],
+  "quote": "ma vie sans moustache à mon appareil aussi incroyable c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:13:17",
+  "title": "Ma vie sans moustache",
+  "types": [
+    "livre"
   ]
 }

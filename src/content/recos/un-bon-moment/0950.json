@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0950",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed94b586967e0017c06729",
-  "title": "Nouvel album de Nash",
-  "type": "album",
   "creator": "Nash",
-  "recommendedBy": "Navo",
-  "quote": "on peut écouter le nouvel album de Nash ? Yeah, carrément.",
-  "timestamp": "01:08:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed94b586967e0017c06729",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0950",
+  "links": [],
+  "quote": "on peut écouter le nouvel album de Nash ? Yeah, carrément.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:23",
+  "title": "Nouvel album de Nash",
+  "types": [
+    "album"
   ]
 }

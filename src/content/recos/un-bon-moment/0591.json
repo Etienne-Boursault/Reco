@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0591",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
-  "title": "Vue",
-  "type": "autre",
-  "recommendedBy": "intervenant non spécifié",
-  "quote": "c'est la chaîne Vue c'est une émission de télé il diffuse tous les jours",
-  "timestamp": "01:21:33",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0591",
+  "links": [],
+  "quote": "c'est la chaîne Vue c'est une émission de télé il diffuse tous les jours",
+  "recommendedBy": "intervenant non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:33",
+  "title": "Vue",
+  "types": [
+    "autre"
   ]
 }

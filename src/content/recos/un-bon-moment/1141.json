@@ -1,78 +1,80 @@
 {
-  "id": "ubm-1141",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Hereditary",
-  "type": "film",
   "creator": "Ari Aster",
-  "year": 2018,
-  "quote": "Si vous avez vu \"Midsommar\", \"Hérédité\", du même réel, il est très bon.",
-  "timestamp": "01:13:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/493922-hereditary/watch?locale=FR",
+    "tmdb": "493922",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "493922",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/493922-hereditary/watch?locale=FR"
-  },
+  "id": "ubm-1141",
+  "links": [],
+  "quote": "Si vous avez vu \"Midsommar\", \"Hérédité\", du même réel, il est très bon.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:24",
+  "title": "Hereditary",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Hereditary",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Hereditary"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Hereditary",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Hereditary",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Hereditary"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Hereditary",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Hereditary"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Hereditary&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Hereditary&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Hereditary",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Hereditary"
     }
-  ]
+  ],
+  "year": 2018
 }

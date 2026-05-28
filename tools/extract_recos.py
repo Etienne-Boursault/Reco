@@ -226,7 +226,7 @@ def _normalize_reco(item: dict[str, Any]) -> dict[str, Any] | None:
     if rtype not in VALID_TYPES:
         rtype = "autre"
 
-    reco: dict[str, Any] = {"title": title, "type": rtype}
+    reco: dict[str, Any] = {"title": title, "types": [rtype]}
 
     # Champs optionnels : seulement s'ils sont présents et non vides.
     for key in ("creator", "recommendedBy", "quote", "timestamp"):
@@ -260,6 +260,15 @@ def _dedupe(recos: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for fld in ("creator", "year", "recommendedBy", "quote", "timestamp"):
             if fld in reco and not existing.get(fld):
                 existing[fld] = reco[fld]
+        # Fusion des types : union dédupliquée, ordre stable.
+        seen_t: set[str] = set()
+        merged_types: list[str] = []
+        for t in (existing.get("types") or []) + (reco.get("types") or []):
+            if t and t not in seen_t:
+                seen_t.add(t)
+                merged_types.append(t)
+        if merged_types:
+            existing["types"] = merged_types
     return list(out_by_key.values())
 
 
@@ -427,6 +436,17 @@ def _merge_reco(existing: dict[str, Any], new: dict[str, Any],
     merged["extractors"] = sorted(
         set((existing.get("extractors") or []) + [provider])
     )
+    # Fusion des types : union dédupliquée, ordre stable (existants en tête).
+    existing_types = existing.get("types") or []
+    new_types = new.get("types") or []
+    seen: set[str] = set()
+    merged_types: list[str] = []
+    for t in list(existing_types) + list(new_types):
+        if t and t not in seen:
+            seen.add(t)
+            merged_types.append(t)
+    if merged_types:
+        merged["types"] = merged_types
     return merged
 
 
@@ -438,7 +458,7 @@ def _create_reco(source_id: str, guid: str, reco: dict[str, Any],
         "sourceId": source_id,
         "episodeGuid": guid,
         "title": reco["title"],
-        "type": reco["type"],
+        "types": list(reco["types"]),
     }
     for key_name in ("creator", "year", "recommendedBy", "quote", "timestamp"):
         if key_name in reco:

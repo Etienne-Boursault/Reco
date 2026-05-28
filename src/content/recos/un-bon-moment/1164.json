@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1164",
-  "sourceId": "un-bon-moment",
+  "creator": "Jungle",
   "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Jungle",
-  "type": "musique",
-  "recommendedBy": "Marina Rollman",
-  "quote": "Mais le premier truc qui me vient, c'est un groupe qui s'appelle Jungle.",
-  "timestamp": "01:11:15",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2181330357"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Jungle",
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2181330357"
-  }
+  "id": "ubm-1164",
+  "links": [],
+  "quote": "Mais le premier truc qui me vient, c'est un groupe qui s'appelle Jungle.",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:15",
+  "title": "Jungle",
+  "types": [
+    "musique"
+  ]
 }

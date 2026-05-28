@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0285",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Burger Quiz",
-  "type": "autre",
   "creator": "Kada Raoune",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Burger Quiz, ouais.",
-  "timestamp": "02:03:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0285",
+  "links": [],
+  "quote": "Burger Quiz, ouais.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:03:19",
+  "title": "Burger Quiz",
+  "types": [
+    "autre"
   ]
 }

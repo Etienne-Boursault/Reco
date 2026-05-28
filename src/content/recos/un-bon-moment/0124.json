@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0124",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Hunter: The Gungeon",
-  "type": "jeu",
-  "recommendedBy": "Navo",
-  "quote": "Je vois Hunter the Gungeon.",
-  "timestamp": "00:39:17",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0124",
+  "links": [],
+  "quote": "Je vois Hunter the Gungeon.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:39:17",
+  "title": "Hunter: The Gungeon",
+  "types": [
+    "jeu"
   ]
 }

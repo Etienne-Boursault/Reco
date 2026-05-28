@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1014",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69e13325fb440758726a665f",
-  "title": "Fabrizio Buccella",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi je peux, je vais vous recommander le professeur Fabrizio Buccella. C'est quoi, c'est une chaîne YouTube ? Car il parle aussi de physique quantité.",
-  "timestamp": "01:14:21",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1014",
+  "links": [],
+  "quote": "Moi je peux, je vais vous recommander le professeur Fabrizio Buccella. C'est quoi, c'est une chaîne YouTube ? Car il parle aussi de physique quantité.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:21",
+  "title": "Fabrizio Buccella",
+  "types": [
+    "autre"
   ]
 }

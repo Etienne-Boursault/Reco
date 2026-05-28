@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1264",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "ses arrêts",
-  "type": "album",
   "creator": "Sia",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "elle vient de sortir un album très récemment ses arrêts",
-  "timestamp": "01:07:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/196846052"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/196846052"
-  }
+  "id": "ubm-1264",
+  "links": [],
+  "quote": "elle vient de sortir un album très récemment ses arrêts",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:07:31",
+  "title": "ses arrêts",
+  "types": [
+    "album"
+  ]
 }

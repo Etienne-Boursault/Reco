@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0133",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Amé jusqu'à l'impossible",
-  "type": "musique",
   "creator": "Tina Arena",
-  "recommendedBy": "Invité",
-  "quote": "il y a tina arena, aimé jusqu'à l'impossible",
-  "timestamp": "00:42:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/536176"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/536176"
-  }
+  "id": "ubm-0133",
+  "links": [],
+  "quote": "il y a tina arena, aimé jusqu'à l'impossible",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:40",
+  "title": "Amé jusqu'à l'impossible",
+  "types": [
+    "musique"
+  ]
 }

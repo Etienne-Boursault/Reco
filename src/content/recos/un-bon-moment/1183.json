@@ -1,34 +1,36 @@
 {
-  "id": "ubm-1183",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "I May Destroy You",
-  "type": "serie",
   "creator": "Michaela Coel",
-  "recommendedBy": "Marion",
-  "quote": "ça s'appelle I made destroy you",
-  "timestamp": "01:05:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/102619-i-may-destroy-you/watch?locale=FR",
+    "tmdb": "102619",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "102619",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/102619-i-may-destroy-you/watch?locale=FR"
-  },
+  "id": "ubm-1183",
+  "links": [],
+  "quote": "ça s'appelle I made destroy you",
+  "recommendedBy": "Marion",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:05:36",
+  "title": "I May Destroy You",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=I%20May%20Destroy%20You",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=I%20May%20Destroy%20You"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=I%20May%20Destroy%20You",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=I%20May%20Destroy%20You"
     }
   ]
 }

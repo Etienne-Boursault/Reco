@@ -1,28 +1,30 @@
 {
-  "id": "ubm-0837",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "My Name Is Earl",
-  "type": "serie",
   "creator": "Greg Garcia",
-  "recommendedBy": "inconnu",
-  "quote": "C'était My Name Is Earl, parce que c'était pas une site comme...",
-  "timestamp": "00:31:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/2317-my-name-is-earl/watch?locale=FR",
+    "tmdb": "2317",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "2317",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/2317-my-name-is-earl/watch?locale=FR"
-  },
+  "id": "ubm-0837",
+  "links": [],
+  "quote": "C'était My Name Is Earl, parce que c'était pas une site comme...",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:30",
+  "title": "My Name Is Earl",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=My%20Name%20Is%20Earl",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=My%20Name%20Is%20Earl"
     }
   ]
 }

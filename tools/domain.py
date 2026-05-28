@@ -74,7 +74,7 @@ class Reco:
     source_id: str
     episode_guid: str
     title: str
-    type: RecoType
+    types: list[RecoType] = field(default_factory=list)
     creator: str | None = None
     timestamp: str | None = None               # HH:MM:SS dans le transcript
     quote: str | None = None

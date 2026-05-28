@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0832",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Écriture 2000",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "on a constitué un collectif d'écriture, qui s'appelle Écriture 2000 d'ailleurs.",
-  "timestamp": "00:27:47",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0832",
+  "links": [],
+  "quote": "on a constitué un collectif d'écriture, qui s'appelle Écriture 2000 d'ailleurs.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:47",
+  "title": "Écriture 2000",
+  "types": [
+    "autre"
   ]
 }

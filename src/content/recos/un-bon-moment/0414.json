@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0414",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Chabless",
-  "type": "serie",
   "creator": "Netflix",
-  "recommendedBy": "Navé",
-  "quote": "Chabless sur Netflix qui est une très bonne série.",
-  "timestamp": "01:25:42",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0414",
+  "links": [],
+  "quote": "Chabless sur Netflix qui est une très bonne série.",
+  "recommendedBy": "Navé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:25:42",
+  "title": "Chabless",
+  "types": [
+    "serie"
   ]
 }

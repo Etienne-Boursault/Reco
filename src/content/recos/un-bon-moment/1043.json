@@ -1,32 +1,34 @@
 {
-  "id": "ubm-1043",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
-  "title": "Looking",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Alors ça, il y a une série qui s'appelle Looking. Qui est une série produite par HBO, qui est terminée, qui a fait deux saisons. Vraiment, c'est que des gays ultra sexy.",
-  "timestamp": "01:32:34",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/236338/watch?locale=FR",
+    "tmdb": "236338",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "236338",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/236338/watch?locale=FR"
-  },
+  "id": "ubm-1043",
+  "links": [],
+  "quote": "Alors ça, il y a une série qui s'appelle Looking. Qui est une série produite par HBO, qui est terminée, qui a fait deux saisons. Vraiment, c'est que des gays ultra sexy.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:34",
+  "title": "Looking",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Animation Digital Network",
-      "url": "https://animationdigitalnetwork.com/search?q=Looking",
-      "ethics": "neutral"
+      "url": "https://animationdigitalnetwork.com/search?q=Looking"
     },
     {
+      "ethics": "avoid",
       "label": "Anime Digital Network Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Looking",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Looking"
     }
   ]
 }

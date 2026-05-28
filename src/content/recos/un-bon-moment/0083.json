@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0083",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63614bd05e627e0011144c04",
-  "title": "Soup Miso",
-  "type": "spectacle",
   "creator": "Laurent Baffy",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "autre spectacle haute aide de 10h soup miso de Laurent Baffy",
-  "timestamp": "00:59:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63614bd05e627e0011144c04",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0083",
+  "links": [],
+  "quote": "autre spectacle haute aide de 10h soup miso de Laurent Baffy",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:09",
+  "title": "Soup Miso",
+  "types": [
+    "spectacle"
   ]
 }

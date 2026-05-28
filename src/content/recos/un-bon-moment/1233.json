@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1233",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652406c019376d001282c4d8",
-  "title": "Ace of Bass",
-  "type": "musique",
   "creator": "Ace of Base",
-  "recommendedBy": "Invité",
-  "quote": "C'est qui est le premier. Ace of Bays.",
-  "timestamp": "00:21:33",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/93851026"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/93851026"
-  }
+  "id": "ubm-1233",
+  "links": [],
+  "quote": "C'est qui est le premier. Ace of Bays.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:33",
+  "title": "Ace of Bass",
+  "types": [
+    "musique"
+  ]
 }

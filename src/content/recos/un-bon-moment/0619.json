@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0619",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
-  "title": "Ma vie",
-  "type": "album",
   "creator": "Némir",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Mais là, il a son album qui est sorti et je regarde son clip sur ma vie.",
-  "timestamp": "00:50:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/103029242"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/103029242"
-  }
+  "id": "ubm-0619",
+  "links": [],
+  "quote": "Mais là, il a son album qui est sorti et je regarde son clip sur ma vie.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:50:18",
+  "title": "Ma vie",
+  "types": [
+    "album"
+  ]
 }

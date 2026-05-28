@@ -1,38 +1,40 @@
 {
-  "id": "ubm-0927",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "How I Met Your Mother",
-  "type": "serie",
   "creator": "Carter Bays, Craig Thomas",
-  "recommendedBy": "Navo",
-  "quote": "le rapport c'est que dans la saison 2 apparaît le personnage de Saul Goodman",
-  "timestamp": "00:55:32",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1100-how-i-met-your-mother/watch?locale=FR",
+    "tmdb": "1100",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1100",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1100-how-i-met-your-mother/watch?locale=FR"
-  },
+  "id": "ubm-0927",
+  "links": [],
+  "quote": "le rapport c'est que dans la saison 2 apparaît le personnage de Saul Goodman",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:55:32",
+  "title": "How I Met Your Mother",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=How%20I%20Met%20Your%20Mother",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=How%20I%20Met%20Your%20Mother"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=How%20I%20Met%20Your%20Mother",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=How%20I%20Met%20Your%20Mother"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=How%20I%20Met%20Your%20Mother",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=How%20I%20Met%20Your%20Mother"
     }
   ]
 }

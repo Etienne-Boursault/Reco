@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0404",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "le roi Léo",
-  "type": "autre",
   "creator": "Osamu Tezuka",
-  "recommendedBy": "Navo",
-  "quote": "le roi Léo etc",
-  "timestamp": "01:01:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0404",
+  "links": [],
+  "quote": "le roi Léo etc",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:45",
+  "title": "le roi Léo",
+  "types": [
+    "autre"
   ]
 }

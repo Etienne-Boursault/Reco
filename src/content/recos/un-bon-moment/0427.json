@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0427",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "Origin of Symmetry",
-  "type": "album",
   "creator": "Muse",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels",
-  "timestamp": "00:26:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/1248725"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2001,
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/1248725"
-  }
+  "id": "ubm-0427",
+  "links": [],
+  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:26:21",
+  "title": "Origin of Symmetry",
+  "types": [
+    "album"
+  ],
+  "year": 2001
 }

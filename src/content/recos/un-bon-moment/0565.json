@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0565",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6a05e43cc7ea4a3c85664972",
-  "title": "Michael Jackson",
-  "type": "autre",
   "creator": "Michael Jackson",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est vrai que j'ai gardé ça.",
-  "timestamp": "00:12:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0565",
+  "links": [],
+  "quote": "C'est vrai que j'ai gardé ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:12:54",
+  "title": "Michael Jackson",
+  "types": [
+    "autre"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1243",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240e1c5d8481001225962c",
-  "title": "violets",
-  "type": "spectacle",
   "creator": "Nordine Gansu",
-  "recommendedBy": "Invité",
-  "quote": "pour Nordine",
-  "timestamp": "01:12:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240e1c5d8481001225962c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1243",
+  "links": [],
+  "quote": "pour Nordine",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:30",
+  "title": "violets",
+  "types": [
+    "spectacle"
   ]
 }

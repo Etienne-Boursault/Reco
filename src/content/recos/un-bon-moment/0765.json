@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0765",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Bagar Bagar",
-  "type": "album",
   "creator": "Julien Granel",
-  "recommendedBy": "Julien Granel",
-  "quote": "D'ailleurs, je vous ai ramené à des petits vinyles. Oh yes, c'est tellement gentil. Des quarante-feintours, c'est des petits vinyles.",
-  "timestamp": "00:04:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/150616822"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/150616822"
-  }
+  "id": "ubm-0765",
+  "links": [],
+  "quote": "D'ailleurs, je vous ai ramené à des petits vinyles. Oh yes, c'est tellement gentil. Des quarante-feintours, c'est des petits vinyles.",
+  "recommendedBy": "Julien Granel",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:04:34",
+  "title": "Bagar Bagar",
+  "types": [
+    "album"
+  ]
 }

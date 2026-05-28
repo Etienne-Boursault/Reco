@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0399",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "L'effroyable jardin",
-  "type": "film",
   "creator": "Jean Becker",
-  "recommendedBy": "intervenant",
-  "quote": "un de mes films préférés c'est l'effroyable jardin il est absolument magnifique Jacques Villeret dedans il est exceptionnel",
-  "timestamp": "00:24:38",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0399",
+  "links": [],
+  "quote": "un de mes films préférés c'est l'effroyable jardin il est absolument magnifique Jacques Villeret dedans il est exceptionnel",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:24:38",
+  "title": "L'effroyable jardin",
+  "types": [
+    "film"
   ],
   "year": 2003
 }

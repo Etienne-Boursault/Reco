@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1305",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
-  "title": "Hello Carey",
-  "type": "musique",
   "creator": "Big Floyd",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un rappeur qui s'appelle Hello Carey.",
-  "timestamp": "01:47:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1305",
+  "links": [],
+  "quote": "C'est un rappeur qui s'appelle Hello Carey.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:00",
+  "title": "Hello Carey",
+  "types": [
+    "musique"
   ]
 }

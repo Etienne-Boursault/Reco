@@ -1,32 +1,34 @@
 {
-  "id": "ubm-0637",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
-  "title": "Black Mirror",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Ce que Black Mirror, c'est le futur ou c'est maintenant ?",
-  "timestamp": "00:17:41",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=FR",
+    "tmdb": "42009",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "42009",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=FR"
-  },
+  "id": "ubm-0637",
+  "links": [],
+  "quote": "Ce que Black Mirror, c'est le futur ou c'est maintenant ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:17:41",
+  "title": "Black Mirror",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Black%20Mirror",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Black%20Mirror"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Black%20Mirror",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Black%20Mirror"
     }
   ]
 }

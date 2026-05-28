@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1099",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Iron & Wine",
-  "type": "album",
   "creator": "Iron & Wine",
-  "recommendedBy": "Ambroise",
-  "quote": "je recommanderais un musicien que j'adore, qui vient de sortir un nouvel album que j'adore, qui s'appelle \"Iron and Wine\". C'est de la folque américaine.",
-  "timestamp": "01:04:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/185286652"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/185286652"
-  }
+  "id": "ubm-1099",
+  "links": [],
+  "quote": "je recommanderais un musicien que j'adore, qui vient de sortir un nouvel album que j'adore, qui s'appelle \"Iron and Wine\". C'est de la folque américaine.",
+  "recommendedBy": "Ambroise",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:47",
+  "title": "Iron & Wine",
+  "types": [
+    "album"
+  ]
 }

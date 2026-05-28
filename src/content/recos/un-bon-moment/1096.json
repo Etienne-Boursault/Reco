@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1096",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Écriture : Mémoires d'un métier",
-  "type": "livre",
   "creator": "Stephen King",
-  "recommendedBy": "Navo",
-  "quote": "Donc, tu peux lire l'écriture de Stephen King.",
-  "timestamp": "00:40:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1096",
+  "links": [],
+  "quote": "Donc, tu peux lire l'écriture de Stephen King.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:31",
+  "title": "Écriture : Mémoires d'un métier",
+  "types": [
+    "livre"
   ]
 }

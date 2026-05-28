@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0248",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "La Comédie humaine",
-  "type": "livre",
   "creator": "Honoré de Balzac",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est les Balzac, c'est les cils.",
-  "timestamp": "01:12:06",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0248",
+  "links": [],
+  "quote": "C'est les Balzac, c'est les cils.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:06",
+  "title": "La Comédie humaine",
+  "types": [
+    "livre"
   ]
 }

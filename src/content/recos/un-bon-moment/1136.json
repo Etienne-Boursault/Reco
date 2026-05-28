@@ -1,94 +1,96 @@
 {
-  "id": "ubm-1136",
-  "sourceId": "un-bon-moment",
+  "creator": "Daniel Kwan, Daniel Scheinert",
   "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Everything Everywhere All at Once",
-  "type": "film",
-  "year": 2022,
-  "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",
-  "timestamp": "01:11:28",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/545611-everything-everywhere-all-at-once/watch?locale=FR",
+    "tmdb": "545611",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Daniel Kwan, Daniel Scheinert",
-  "externalIds": {
-    "tmdb": "545611",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/545611-everything-everywhere-all-at-once/watch?locale=FR"
-  },
+  "id": "ubm-1136",
+  "links": [],
+  "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:28",
+  "title": "Everything Everywhere All at Once",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Everything%20Everywhere%20All%20at%20Once&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Everything%20Everywhere%20All%20at%20Once&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Everything%20Everywhere%20All%20at%20Once"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Everything%20Everywhere%20All%20at%20Once",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Everything%20Everywhere%20All%20at%20Once"
     }
-  ]
+  ],
+  "year": 2022
 }

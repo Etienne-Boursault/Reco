@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0647",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
-  "title": "ASKIP",
-  "type": "autre",
   "creator": "Julien Jocelyn, Valentin Vincent",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "moi je voulais recommander une émission qui s'appelle ASKIP c'est sur Twitch",
-  "timestamp": "01:08:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0647",
+  "links": [],
+  "quote": "moi je voulais recommander une émission qui s'appelle ASKIP c'est sur Twitch",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:40",
+  "title": "ASKIP",
+  "types": [
+    "autre"
   ]
 }

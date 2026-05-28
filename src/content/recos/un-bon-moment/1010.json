@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1010",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Spectacle d'Adèle Fougasi",
-  "type": "spectacle",
   "creator": "Adèle Fougasi",
-  "recommendedBy": "invité",
-  "quote": "J'aurais dit toujours Adèle Fougasi, mais j'ai l'impression qu'il faut aller voir Adèle Fougasi parce que si on aime les propositions un peu inédites.",
-  "timestamp": "01:40:52",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1010",
+  "links": [],
+  "quote": "J'aurais dit toujours Adèle Fougasi, mais j'ai l'impression qu'il faut aller voir Adèle Fougasi parce que si on aime les propositions un peu inédites.",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:40:52",
+  "title": "Spectacle d'Adèle Fougasi",
+  "types": [
+    "spectacle"
   ]
 }

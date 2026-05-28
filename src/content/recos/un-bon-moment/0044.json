@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0044",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
-  "title": "Ne me quitte pas",
-  "type": "musique",
   "creator": "Jacques Brel",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je suis fan de ne me quitte pas",
-  "timestamp": "00:21:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2296855"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2296855"
-  }
+  "id": "ubm-0044",
+  "links": [],
+  "quote": "je suis fan de ne me quitte pas",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:20",
+  "title": "Ne me quitte pas",
+  "types": [
+    "musique"
+  ]
 }

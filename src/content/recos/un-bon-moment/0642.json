@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0642",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
-  "title": "Freddy Fred",
-  "type": "autre",
   "creator": "Freddy Fred",
-  "recommendedBy": "Invité",
-  "quote": "Incroyable, Freddy Fred. C'est toi qui m'a fait découvrir ça. C'est des scénariés avec son chien.",
-  "timestamp": "01:16:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0642",
+  "links": [],
+  "quote": "Incroyable, Freddy Fred. C'est toi qui m'a fait découvrir ça. C'est des scénariés avec son chien.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:16:17",
+  "title": "Freddy Fred",
+  "types": [
+    "autre"
   ]
 }

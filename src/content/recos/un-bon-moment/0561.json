@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0561",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
-  "title": "L'amour, c'est sur-côté",
-  "type": "livre",
   "creator": "Murad Winter",
-  "recommendedBy": "David",
-  "quote": "On peut parler des livres de Murad Winter. L'amour, c'est sur-côté.",
-  "timestamp": "01:42:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0561",
+  "links": [],
+  "quote": "On peut parler des livres de Murad Winter. L'amour, c'est sur-côté.",
+  "recommendedBy": "David",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:34",
+  "title": "L'amour, c'est sur-côté",
+  "types": [
+    "livre"
   ]
 }

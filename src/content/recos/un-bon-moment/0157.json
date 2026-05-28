@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0157",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ea7880de9a2a62c42248f5",
-  "title": "Indiana Jones et la Dernière Croisade",
-  "type": "film",
   "creator": "Steven Spielberg",
-  "recommendedBy": "Navo",
-  "quote": "la dernière croisade de Indiana Jones.",
-  "timestamp": "00:56:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/89-indiana-jones-and-the-last-crusade/watch?locale=FR",
+    "tmdb": "89",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "89",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/89-indiana-jones-and-the-last-crusade/watch?locale=FR"
-  },
+  "id": "ubm-0157",
+  "links": [],
+  "quote": "la dernière croisade de Indiana Jones.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:00",
+  "title": "Indiana Jones et la Dernière Croisade",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Indiana%20Jones%20et%20la%20Derni%C3%A8re%20Croisade"
     }
   ]
 }

@@ -1,116 +1,118 @@
 {
-  "id": "ubm-0373",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Matrix",
-  "type": "film",
-  "quote": "C'est Matrix.",
-  "timestamp": "00:26:17",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/603-the-matrix/watch?locale=FR",
+    "tmdb": "603",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "603",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/603-the-matrix/watch?locale=FR"
-  },
+  "id": "ubm-0373",
+  "links": [],
+  "quote": "C'est Matrix.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:26:17",
+  "title": "Matrix",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Matrix"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Matrix",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Matrix&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Matrix&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Matrix"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Matrix"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Matrix",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Matrix"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Matrix",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Matrix"
     }
   ]
 }

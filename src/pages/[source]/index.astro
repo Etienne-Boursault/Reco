@@ -28,7 +28,8 @@ const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
 
 // Types présents (pour les filtres), triés par fréquence.
 const counts = new Map<string, number>();
-for (const r of recos) counts.set(r.type, (counts.get(r.type) ?? 0) + 1);
+// Une reco multi-types compte dans chaque type (le filtre est inclusif).
+for (const r of recos) for (const t of r.types) counts.set(t, (counts.get(t) ?? 0) + 1);
 const types = [...counts.entries()].sort((a, b) => b[1] - a[1]);
 
 // Vue « par épisode » : épisodes ayant ≥1 reco, du plus récent au plus ancien.
@@ -195,7 +196,9 @@ const epLabel = episodeLabel;
     const cards = Array.from(grid.children) as HTMLElement[];
     let visible = 0;
     for (const card of cards) {
-      const okType = activeType === 'all' || card.dataset.type === activeType;
+      const okType =
+        activeType === 'all' ||
+        (card.dataset.types?.split(',').includes(activeType) ?? false);
       const okText = !term || fuzzyMatch(term, card.dataset.search ?? '');
       const show = okType && okText;
       card.style.display = show ? '' : 'none';

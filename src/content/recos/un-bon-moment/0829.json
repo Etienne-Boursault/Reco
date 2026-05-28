@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0829",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6316136e9623160014506e77",
-  "title": "Je pense trop",
-  "type": "livre",
   "creator": "Christelle Petit-Cola",
-  "recommendedBy": "Maurice Barthélémy",
-  "quote": "Live tel bouquin, je pense trop, de Christelle Petit-Cola, en l'occurrence.",
-  "timestamp": "00:06:07",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6316136e9623160014506e77",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0829",
+  "links": [],
+  "quote": "Live tel bouquin, je pense trop, de Christelle Petit-Cola, en l'occurrence.",
+  "recommendedBy": "Maurice Barthélémy",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:06:07",
+  "title": "Je pense trop",
+  "types": [
+    "livre"
   ]
 }

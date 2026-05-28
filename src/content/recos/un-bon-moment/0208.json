@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0208",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6903fad795ee8b1815229b88",
-  "title": "Thomas s'acclimate",
-  "type": "autre",
   "creator": "Navo et Audrey",
-  "recommendedBy": "Navo",
-  "quote": "Thomas s'acclimate c'est sur Maï Canal",
-  "timestamp": "01:48:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6903fad795ee8b1815229b88",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0208",
+  "links": [],
+  "quote": "Thomas s'acclimate c'est sur Maï Canal",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:48:46",
+  "title": "Thomas s'acclimate",
+  "types": [
+    "autre"
   ]
 }

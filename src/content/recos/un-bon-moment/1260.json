@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1260",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "Tous les morceaux",
-  "type": "livre",
   "creator": "Grand-mère de Matthieu Chedid",
-  "recommendedBy": "Matthieu Chedid",
-  "quote": "et même ces romans d'ailleurs qui sont incroyables mais donc il y a des recueils je crois chez Flamarion qui est un espèce de recueil où il y a toute sa poésie",
-  "timestamp": "00:18:55",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1260",
+  "links": [],
+  "quote": "et même ces romans d'ailleurs qui sont incroyables mais donc il y a des recueils je crois chez Flamarion qui est un espèce de recueil où il y a toute sa poésie",
+  "recommendedBy": "Matthieu Chedid",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:55",
+  "title": "Tous les morceaux",
+  "types": [
+    "livre"
   ]
 }

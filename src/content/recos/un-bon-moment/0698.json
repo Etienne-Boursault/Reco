@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0698",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
-  "title": "Le spectacle de D'Arabère",
-  "type": "spectacle",
   "creator": "D'Arabère",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'allais voir son spectacle, j'ai tellement aimé.",
-  "timestamp": "01:05:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0698",
+  "links": [],
+  "quote": "J'allais voir son spectacle, j'ai tellement aimé.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:05:50",
+  "title": "Le spectacle de D'Arabère",
+  "types": [
+    "spectacle"
   ]
 }

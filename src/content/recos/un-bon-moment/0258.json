@@ -1,70 +1,72 @@
 {
-  "id": "ubm-0258",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "8½",
-  "type": "film",
   "creator": "Federico Fellini",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi, je vois régulièrement 8 et demi de Fellini. Tu vois. Parce que c'est de la poésie pure.",
-  "timestamp": "01:44:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/422-8/watch?locale=FR",
+    "tmdb": "422",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1963,
-  "externalIds": {
-    "tmdb": "422",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/422-8/watch?locale=FR"
-  },
+  "id": "ubm-0258",
+  "links": [],
+  "quote": "Moi, je vois régulièrement 8 et demi de Fellini. Tu vois. Parce que c'est de la poésie pure.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:44:40",
+  "title": "8½",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=8%C2%BD"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=8%C2%BD",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=8%C2%BD"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=8%C2%BD"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=8%C2%BD",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=8%C2%BD"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=8%C2%BD"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=8%C2%BD",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=8%C2%BD"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=8%C2%BD"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=8%C2%BD"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=8%C2%BD",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=8%C2%BD"
     }
-  ]
+  ],
+  "year": 1963
 }

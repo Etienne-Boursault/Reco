@@ -1,103 +1,105 @@
 {
-  "id": "ubm-0711",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Inception",
-  "type": "film",
   "creator": "Christopher Nolan",
-  "recommendedBy": "Invité",
-  "quote": "Vous pensez que vous avez compris 'Inception', mais vous n'avez pas compris.",
-  "timestamp": "00:33:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/27205-inception/watch?locale=FR",
+    "tmdb": "27205",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "27205",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/27205-inception/watch?locale=FR"
-  },
+  "id": "ubm-0711",
+  "links": [],
+  "quote": "Vous pensez que vous avez compris 'Inception', mais vous n'avez pas compris.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:15",
+  "title": "Inception",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Inception",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Inception"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Inception",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Inception&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Inception&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Inception",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Inception",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Inception",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Inception",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Inception",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Inception"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Inception",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Inception",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Inception"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Inception",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Inception"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Inception",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Inception"
     }
   ]
 }

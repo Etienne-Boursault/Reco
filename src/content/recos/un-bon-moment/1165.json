@@ -1,29 +1,31 @@
 {
-  "id": "ubm-1165",
-  "sourceId": "un-bon-moment",
+  "creator": "autre",
   "episodeGuid": "6584658132930b0016c5272b",
-  "title": "The Patient",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Le Psy qui se fait enlever ? Ouais, qui se fait enlever.",
-  "timestamp": "01:11:37",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/135868-the-patient/watch?locale=FR",
+    "tmdb": "135868",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "autre",
-  "externalIds": {
-    "tmdb": "135868",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/135868-the-patient/watch?locale=FR"
-  },
+  "id": "ubm-1165",
+  "links": [],
+  "quote": "Le Psy qui se fait enlever ? Ouais, qui se fait enlever.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:37",
+  "title": "The Patient",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Patient",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Patient"
     }
   ]
 }

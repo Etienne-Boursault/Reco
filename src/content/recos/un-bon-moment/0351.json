@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0351",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Mario",
-  "type": "jeu",
   "creator": "Nintendo",
-  "recommendedBy": "intervenant",
-  "quote": "C'est Mario 1.",
-  "timestamp": "01:12:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0351",
+  "links": [],
+  "quote": "C'est Mario 1.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:23",
+  "title": "Mario",
+  "types": [
+    "jeu"
   ]
 }

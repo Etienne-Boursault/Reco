@@ -254,7 +254,7 @@ def main():
     targets = []
     for p in sorted(recos_dir.glob("*.json")):
         d = read_json(p)
-        if d.get("type") not in ("film", "serie"):
+        if not any(t in ("film", "serie") for t in (d.get("types") or [])):
             continue
         ext = d.get("externalIds") or {}
         if not args.force and ext.get("tmdb") and ext.get("justwatch"):
@@ -275,14 +275,20 @@ def main():
         title = d["title"]
         creator = d.get("creator")
         label = f"{title} ({creator})" if creator else title
-        log.info("[%d/%d] %s [%s]", i, len(targets), label[:60], d["type"])
+        # Choisit film/serie en priorité pour orienter la recherche TMDB.
+        types_list = d.get("types") or []
+        reco_type = next(
+            (t for t in types_list if t in ("film", "serie")),
+            types_list[0] if types_list else "film",
+        )
+        log.info("[%d/%d] %s [%s]", i, len(targets), label[:60], reco_type)
         # On réutilise le tmdb_id déjà connu si possible — économise 1 appel API.
         ext = d.get("externalIds") or {}
         if ext.get("tmdb") and ext.get("tmdbType"):
             tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
             log.info("  ↻ TMDB id déjà connu : %s (%s)", tmdb_id, kind)
         else:
-            found = tmdb_search(session, d["type"], title, creator, api_key=api_key)
+            found = tmdb_search(session, reco_type, title, creator, api_key=api_key)
             if not found:
                 log.info("  → TMDB : pas trouvé")
                 not_found += 1

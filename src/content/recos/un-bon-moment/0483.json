@@ -1,81 +1,83 @@
 {
-  "id": "ubm-0483",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Jumanji",
-  "type": "film",
-  "quote": "Non, Jumanji c'est possible.",
-  "timestamp": "01:15:40",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8844-jumanji/watch?locale=FR",
+    "tmdb": "8844",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "8844",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/8844-jumanji/watch?locale=FR"
-  },
+  "id": "ubm-0483",
+  "links": [],
+  "quote": "Non, Jumanji c'est possible.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:40",
+  "title": "Jumanji",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Jumanji",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Jumanji&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Jumanji&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jumanji",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Jumanji",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Jumanji"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jumanji",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Jumanji",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Jumanji"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Jumanji",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Jumanji"
     }
   ]
 }

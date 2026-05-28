@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0851",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Aynés Varda",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "la chanson parle d'Aynés Varda mais au-delà d'Aynés Varda ça parle du fait de tracer sa vie",
-  "timestamp": "00:29:32",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0851",
+  "links": [],
+  "quote": "la chanson parle d'Aynés Varda mais au-delà d'Aynés Varda ça parle du fait de tracer sa vie",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:32",
+  "title": "Aynés Varda",
+  "types": [
+    "autre"
   ]
 }

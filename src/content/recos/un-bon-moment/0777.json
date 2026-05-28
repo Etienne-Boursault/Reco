@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0777",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61accf4f45d15e00135c6ef2",
-  "title": "Hello, this is John",
-  "type": "autre",
   "creator": "Frères Duplace",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Ils ont écrit un bouquin ensemble.",
-  "timestamp": "00:18:32",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0777",
+  "links": [],
+  "quote": "Ils ont écrit un bouquin ensemble.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:32",
+  "title": "Hello, this is John",
+  "types": [
+    "autre"
   ]
 }

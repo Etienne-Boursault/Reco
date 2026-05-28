@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0187",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "Iris",
-  "type": "serie",
-  "recommendedBy": "Invité",
-  "quote": "Tu as vu la série Iris? Ça m'a parlé 100% du temps.",
-  "timestamp": "00:56:36",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
   "externalIds": {
     "tmdb": "31505",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0187",
+  "links": [],
+  "quote": "Tu as vu la série Iris? Ça m'a parlé 100% du temps.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:36",
+  "title": "Iris",
+  "types": [
+    "serie"
+  ]
 }

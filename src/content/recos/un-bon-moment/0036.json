@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0036",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "63614bd05e627e0011144c04",
-  "title": "Les Clés de bagnole",
-  "type": "film",
-  "recommendedBy": "Kyan Khojandi & Laurent Baffie",
-  "quote": "l'intro de Les Clés de Bagnoles, c'est une des meilleures intros de films.",
-  "timestamp": "00:16:23",
-  "links": [],
-  "status": "validated",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0036",
+  "links": [],
+  "quote": "l'intro de Les Clés de Bagnoles, c'est une des meilleures intros de films.",
+  "recommendedBy": "Kyan Khojandi & Laurent Baffie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:23",
+  "title": "Les Clés de bagnole",
+  "types": [
+    "film"
   ]
 }

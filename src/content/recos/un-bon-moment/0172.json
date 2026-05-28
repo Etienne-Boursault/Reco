@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0172",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Scatman",
-  "type": "musique",
   "creator": "Scatman John",
-  "recommendedBy": "Inconnu",
-  "quote": "Scatman World",
-  "timestamp": "00:48:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/99360002"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/99360002"
-  }
+  "id": "ubm-0172",
+  "links": [],
+  "quote": "Scatman World",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:48:00",
+  "title": "Scatman",
+  "types": [
+    "musique"
+  ]
 }

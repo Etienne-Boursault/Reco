@@ -1,58 +1,60 @@
 {
-  "id": "ubm-0967",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Hôtel du Nord",
-  "type": "film",
   "creator": "Marcel Carné",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Regarde hôtel du Nord. Les dialogues de Jean Sondre c'est extraordinaire.",
-  "timestamp": "01:42:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/48369-hotel-du-nord/watch?locale=FR",
+    "tmdb": "48369",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "48369",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/48369-hotel-du-nord/watch?locale=FR"
-  },
+  "id": "ubm-0967",
+  "links": [],
+  "quote": "Regarde hôtel du Nord. Les dialogues de Jean Sondre c'est extraordinaire.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:31",
+  "title": "Hôtel du Nord",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=H%C3%B4tel%20du%20Nord",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=H%C3%B4tel%20du%20Nord",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=H%C3%B4tel%20du%20Nord",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=H%C3%B4tel%20du%20Nord",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=H%C3%B4tel%20du%20Nord",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=H%C3%B4tel%20du%20Nord",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=H%C3%B4tel%20du%20Nord"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=H%C3%B4tel%20du%20Nord",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=H%C3%B4tel%20du%20Nord"
     }
   ]
 }

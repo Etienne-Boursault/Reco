@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1009",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Histoire Crépu",
-  "type": "autre",
-  "recommendedBy": "invité",
-  "quote": "Moi, je recommande la chaîne YouTube Histoire Crépu. C'est une chaîne qui parle des colonisations, de racisme, etc.",
-  "timestamp": "01:39:22",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1009",
+  "links": [],
+  "quote": "Moi, je recommande la chaîne YouTube Histoire Crépu. C'est une chaîne qui parle des colonisations, de racisme, etc.",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:39:22",
+  "title": "Histoire Crépu",
+  "types": [
+    "autre"
   ]
 }

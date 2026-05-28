@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0214",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Art",
-  "type": "spectacle",
   "creator": "Yasmina Reza",
-  "recommendedBy": "Navo",
-  "quote": "Il joue Art de Yasmina Reza qui est une pièce exceptionnelle qu'on peut voir d'ailleurs.",
-  "timestamp": "00:33:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0214",
+  "links": [],
+  "quote": "Il joue Art de Yasmina Reza qui est une pièce exceptionnelle qu'on peut voir d'ailleurs.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:53",
+  "title": "Art",
+  "types": [
+    "spectacle"
   ]
 }

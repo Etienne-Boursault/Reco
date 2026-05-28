@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0868",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Fucking Fred",
-  "type": "spectacle",
   "creator": "Orelsan",
-  "year": 2019,
-  "recommendedBy": "Invité",
-  "quote": "qui est la vidéo la plus marrante de l'année 2019 qui est fucking fred qu'est-ce que c'est que ce truc là",
-  "timestamp": "00:31:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-0868",
+  "links": [],
+  "quote": "qui est la vidéo la plus marrante de l'année 2019 qui est fucking fred qu'est-ce que c'est que ce truc là",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:44",
+  "title": "Fucking Fred",
+  "types": [
+    "spectacle"
+  ],
+  "year": 2019
 }

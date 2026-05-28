@@ -1,34 +1,36 @@
 {
-  "id": "ubm-1089",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
-  "title": "Masters of the Universe: Revelation",
-  "type": "serie",
   "creator": "Kevin Smith",
-  "year": 2021,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",
-  "timestamp": "01:04:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/96658-masters-of-the-universe-revelation/watch?locale=FR",
+    "tmdb": "96658",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "96658",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/96658-masters-of-the-universe-revelation/watch?locale=FR"
-  },
+  "id": "ubm-1089",
+  "links": [],
+  "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:28",
+  "title": "Masters of the Universe: Revelation",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Masters%20of%20the%20Universe%3A%20Revelation",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Masters%20of%20the%20Universe%3A%20Revelation"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Masters%20of%20the%20Universe%3A%20Revelation",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Masters%20of%20the%20Universe%3A%20Revelation"
     }
-  ]
+  ],
+  "year": 2021
 }

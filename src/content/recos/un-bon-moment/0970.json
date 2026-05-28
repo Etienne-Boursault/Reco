@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0970",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Interview de Billy Wilder par Volker Schlöndorff",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Il y a un sketch que je vous recommande de Billy Wilder. Il est en train de décacheter son courrier, c'est ce grand metteur renseignement, Shlondorf, il l'interview.",
-  "timestamp": "01:17:03",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0970",
+  "links": [],
+  "quote": "Il y a un sketch que je vous recommande de Billy Wilder. Il est en train de décacheter son courrier, c'est ce grand metteur renseignement, Shlondorf, il l'interview.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:03",
+  "title": "Interview de Billy Wilder par Volker Schlöndorff",
+  "types": [
+    "autre"
   ]
 }

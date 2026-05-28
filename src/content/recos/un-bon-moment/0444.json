@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0444",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69a169ac519334f049d06785",
-  "title": "Fitness Plus",
-  "type": "autre",
   "creator": "Apple",
-  "recommendedBy": "intervenant",
-  "quote": "je suis abonné fitness plus sur Apple",
-  "timestamp": "00:51:33",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69a169ac519334f049d06785",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0444",
+  "links": [],
+  "quote": "je suis abonné fitness plus sur Apple",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:33",
+  "title": "Fitness Plus",
+  "types": [
+    "autre"
   ]
 }

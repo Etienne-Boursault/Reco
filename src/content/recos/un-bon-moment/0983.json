@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0983",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "L'Entourloupe",
-  "type": "film",
   "creator": "Jean-Pierre Mocky",
-  "recommendedBy": "Aroun",
-  "quote": "J'ai vu un film, ça s'appelle l'Enterloop... c'est Jean-Pierre Mariel... c'est l'histoire des vendeurs qui doivent aller vendre des encyclopédies de médecine dans les fermes de la France d'avant, c'est exceptionnel",
-  "timestamp": "01:51:57",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
+  "episodeGuid": "697d34fef1dd68ab365aea03",
   "externalIds": {
     "tmdb": "76374",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0983",
+  "links": [],
+  "quote": "J'ai vu un film, ça s'appelle l'Enterloop... c'est Jean-Pierre Mariel... c'est l'histoire des vendeurs qui doivent aller vendre des encyclopédies de médecine dans les fermes de la France d'avant, c'est exceptionnel",
+  "recommendedBy": "Aroun",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:51:57",
+  "title": "L'Entourloupe",
+  "types": [
+    "film"
+  ]
 }

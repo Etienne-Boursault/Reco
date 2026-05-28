@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0966",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Brazil",
-  "type": "film",
   "creator": "Terry Gilliam",
-  "year": 1985,
-  "recommendedBy": "Invité",
-  "quote": "pour moi, c'est vrai, c'était fondateur pour moi, c'est cet univers-là",
-  "timestamp": "00:51:42",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
+  "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "386948",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0966",
+  "links": [],
+  "quote": "pour moi, c'est vrai, c'était fondateur pour moi, c'est cet univers-là",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:42",
+  "title": "Brazil",
+  "types": [
+    "film"
+  ],
+  "year": 1985
 }

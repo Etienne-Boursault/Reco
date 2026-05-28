@@ -1,71 +1,73 @@
 {
-  "id": "ubm-0510",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Paranormal Activity",
-  "type": "film",
-  "quote": "une fois que je suis rentré chez moi j'étais un peu en train de me dire je sais pas j'ai un peu peur mais j'étais avec mon ex il fallait que je sois le bonhomme.",
-  "timestamp": "01:20:58",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/23827-paranormal-activity/watch?locale=FR",
+    "tmdb": "23827",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "23827",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/23827-paranormal-activity/watch?locale=FR"
-  },
+  "id": "ubm-0510",
+  "links": [],
+  "quote": "une fois que je suis rentré chez moi j'étais un peu en train de me dire je sais pas j'ai un peu peur mais j'étais avec mon ex il fallait que je sois le bonhomme.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:58",
+  "title": "Paranormal Activity",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "Shadowz",
-      "url": "https://shadowz.fr/search?q=Paranormal%20Activity",
-      "ethics": "indie"
+      "url": "https://shadowz.fr/search?q=Paranormal%20Activity"
     },
     {
+      "ethics": "avoid",
       "label": "Shadowz Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paranormal%20Activity",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Paranormal%20Activity",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Paranormal%20Activity&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Paranormal%20Activity&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Paranormal%20Activity",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Paranormal%20Activity",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Paranormal%20Activity",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Paranormal%20Activity"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paranormal%20Activity",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Paranormal%20Activity",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Paranormal%20Activity"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Paranormal%20Activity",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Paranormal%20Activity"
     }
   ]
 }

@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0659",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
-  "title": "Peaceful Cuisine",
-  "type": "autre",
   "creator": "Non spécifié",
-  "recommendedBy": "Non spécifié",
-  "quote": "moi c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander c'est une chaîne qui a déjà plusieurs millions d'abonnés c'est de la SMR mais en cuisine",
-  "timestamp": "01:20:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0659",
+  "links": [],
+  "quote": "moi c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander c'est une chaîne qui a déjà plusieurs millions d'abonnés c'est de la SMR mais en cuisine",
+  "recommendedBy": "Non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:24",
+  "title": "Peaceful Cuisine",
+  "types": [
+    "autre"
   ]
 }

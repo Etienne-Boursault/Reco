@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1171",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a2673210d00017783f8b",
-  "title": "Spectacle de Quentin Ratieville",
-  "type": "spectacle",
   "creator": "Quentin Ratieville",
-  "recommendedBy": "Walidia",
-  "quote": "c'est quelqu'un qui s'appelle Quentin Ratioville, qui est un jeune humoriste atteint de deux maladies auto-immunes",
-  "timestamp": "01:14:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a2673210d00017783f8b",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1171",
+  "links": [],
+  "quote": "c'est quelqu'un qui s'appelle Quentin Ratioville, qui est un jeune humoriste atteint de deux maladies auto-immunes",
+  "recommendedBy": "Walidia",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:13",
+  "title": "Spectacle de Quentin Ratieville",
+  "types": [
+    "spectacle"
   ]
 }

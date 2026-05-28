@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0634",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "Queen of Snakes",
-  "type": "podcast",
   "creator": "Juliette de la Croix",
-  "recommendedBy": "Natou",
-  "quote": "Ainsi que « Queen of Snakes » avec Juliette de la Croix.",
-  "timestamp": "01:14:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0634",
+  "links": [],
+  "quote": "Ainsi que « Queen of Snakes » avec Juliette de la Croix.",
+  "recommendedBy": "Natou",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:54",
+  "title": "Queen of Snakes",
+  "types": [
+    "podcast"
   ]
 }

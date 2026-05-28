@@ -1,84 +1,86 @@
 {
-  "id": "ubm-0514",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "La Trilogie d'Oslo",
-  "type": "film",
   "creator": "N/A",
-  "recommendedBy": "Navo",
-  "quote": "Il y a une trilogie qui s'appelle La Trilogie d'Oslo qui est sur My Canal, il me semble. Il est hyper bien.",
-  "timestamp": "01:41:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1228681-sex/watch?locale=FR",
+    "tmdb": "1228681",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1228681",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1228681-sex/watch?locale=FR"
-  },
+  "id": "ubm-0514",
+  "links": [],
+  "quote": "Il y a une trilogie qui s'appelle La Trilogie d'Oslo qui est sur My Canal, il me semble. Il est hyper bien.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:26",
+  "title": "La Trilogie d'Oslo",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Trilogie%20d%27Oslo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Trilogie%20d%27Oslo",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Trilogie%20d%27Oslo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Trilogie%20d%27Oslo"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20Trilogie%20d%27Oslo",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20Trilogie%20d%27Oslo"
     }
   ]
 }

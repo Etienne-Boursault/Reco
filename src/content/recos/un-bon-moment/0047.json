@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0047",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
-  "title": "Horizon des événements",
-  "type": "album",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je commence toujours par montrer que c'est cool",
-  "timestamp": "00:45:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/262200072"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/262200072"
-  }
+  "id": "ubm-0047",
+  "links": [],
+  "quote": "je commence toujours par montrer que c'est cool",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:45:02",
+  "title": "Horizon des événements",
+  "types": [
+    "album"
+  ]
 }

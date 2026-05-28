@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0946",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "Suzane de Sagazan",
-  "type": "musique",
-  "recommendedBy": "Zazie",
-  "quote": "j'aime bien Zao de Sagazan",
-  "timestamp": "01:22:53",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/608499622"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/608499622"
-  }
+  "id": "ubm-0946",
+  "links": [],
+  "quote": "j'aime bien Zao de Sagazan",
+  "recommendedBy": "Zazie",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:53",
+  "title": "Suzane de Sagazan",
+  "types": [
+    "musique"
+  ]
 }

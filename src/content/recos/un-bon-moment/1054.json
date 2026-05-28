@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1054",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
-  "title": "Monday Morning Podcast",
-  "type": "podcast",
   "creator": "Bill Burr",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Il a un podcast, c'est tous les lundis, il fait un podcast.",
-  "timestamp": "01:48:06",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1054",
+  "links": [],
+  "quote": "Il a un podcast, c'est tous les lundis, il fait un podcast.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:48:06",
+  "title": "Monday Morning Podcast",
+  "types": [
+    "podcast"
   ]
 }

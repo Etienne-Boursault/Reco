@@ -1,18 +1,20 @@
 {
-  "id": "ubm-1256",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6550c05703445c0011dd8343",
-  "title": "Barbara Angel",
-  "type": "musique",
-  "recommendedBy": "intervenant",
-  "quote": "moi, Barbara Angel",
-  "timestamp": "01:19:20",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/645107332"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/645107332"
-  }
+  "id": "ubm-1256",
+  "links": [],
+  "quote": "moi, Barbara Angel",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:20",
+  "title": "Barbara Angel",
+  "types": [
+    "musique"
+  ]
 }

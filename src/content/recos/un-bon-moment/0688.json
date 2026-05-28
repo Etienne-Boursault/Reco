@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0688",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
-  "title": "M",
-  "type": "musique",
   "creator": "Matthieu Chedid",
-  "recommendedBy": "Ben",
-  "quote": "Je dois dire, mais il est là, donc je vais un peu parler... M.",
-  "timestamp": "01:02:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/1907452977"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/1907452977"
-  }
+  "id": "ubm-0688",
+  "links": [],
+  "quote": "Je dois dire, mais il est là, donc je vais un peu parler... M.",
+  "recommendedBy": "Ben",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:14",
+  "title": "M",
+  "types": [
+    "musique"
+  ]
 }

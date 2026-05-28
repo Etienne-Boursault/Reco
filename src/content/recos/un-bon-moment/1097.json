@@ -1,42 +1,44 @@
 {
-  "id": "ubm-1097",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Validé",
-  "type": "serie",
-  "recommendedBy": "Amboise",
-  "quote": "Par exemple, valider, c'est vrai qu'il y avait plusieurs références qu'on avait en tête.",
-  "timestamp": "00:29:20",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/90816-valide/watch?locale=FR",
+    "tmdb": "90816",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "90816",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/90816-valide/watch?locale=FR"
-  },
+  "id": "ubm-1097",
+  "links": [],
+  "quote": "Par exemple, valider, c'est vrai qu'il y avait plusieurs références qu'on avait en tête.",
+  "recommendedBy": "Amboise",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:20",
+  "title": "Validé",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Valid%C3%A9",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Valid%C3%A9"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Valid%C3%A9",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Valid%C3%A9"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
     }
   ]
 }

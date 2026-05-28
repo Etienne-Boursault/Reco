@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0953",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed94b586967e0017c06729",
-  "title": "Compte de SS Molotov",
-  "type": "autre",
   "creator": "SS Molotov",
-  "recommendedBy": "Navo",
-  "quote": "Son blase, c'est genre S.S.Mulotov, Molotov. Très intelligent, très drôle.",
-  "timestamp": "01:10:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed94b586967e0017c06729",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0953",
+  "links": [],
+  "quote": "Son blase, c'est genre S.S.Mulotov, Molotov. Très intelligent, très drôle.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:47",
+  "title": "Compte de SS Molotov",
+  "types": [
+    "autre"
   ]
 }

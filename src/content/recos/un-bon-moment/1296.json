@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1296",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "Call of Duty: Warzone",
-  "type": "jeu",
   "creator": "Activision",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'ai repris Final Fantasy X, un jeu de mon adolescence.",
-  "timestamp": "00:58:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1296",
+  "links": [],
+  "quote": "J'ai repris Final Fantasy X, un jeu de mon adolescence.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:54",
+  "title": "Call of Duty: Warzone",
+  "types": [
+    "jeu"
   ]
 }

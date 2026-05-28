@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0756",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Mangdebol",
-  "type": "autre",
-  "quote": "Mangdebol, j'avais fait une interview avec une femme volée qui m'avait passé un livre co-écrit par des musulmanes qui en parlaient, des musulmanes volés non volés.",
-  "timestamp": "00:03:03",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0756",
+  "links": [],
+  "quote": "Mangdebol, j'avais fait une interview avec une femme volée qui m'avait passé un livre co-écrit par des musulmanes qui en parlaient, des musulmanes volés non volés.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:03",
+  "title": "Mangdebol",
+  "types": [
+    "autre"
   ]
 }

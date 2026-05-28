@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0537",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Wellington",
-  "type": "autre",
-  "quote": "c'est un plat qui s'appelle le Wellington",
-  "timestamp": "01:02:51",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0537",
+  "links": [],
+  "quote": "c'est un plat qui s'appelle le Wellington",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:51",
+  "title": "Wellington",
+  "types": [
+    "autre"
   ]
 }

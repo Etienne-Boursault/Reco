@@ -1,29 +1,31 @@
 {
-  "id": "ubm-0216",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Ally McBeal",
-  "type": "serie",
   "creator": "David E. Kelley",
-  "recommendedBy": "Navo",
-  "quote": "moi, j'aime aussi beaucoup Allie McBille qui est quelque chose... Enfin, son romantisme, j'adore ça",
-  "timestamp": "01:08:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1480-ally-mcbeal/watch?locale=FR",
+    "tmdb": "1480",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1480",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1480-ally-mcbeal/watch?locale=FR"
-  },
+  "id": "ubm-0216",
+  "links": [],
+  "quote": "moi, j'aime aussi beaucoup Allie McBille qui est quelque chose... Enfin, son romantisme, j'adore ça",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:04",
+  "title": "Ally McBeal",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Ally%20McBeal",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Ally%20McBeal"
     }
   ]
 }

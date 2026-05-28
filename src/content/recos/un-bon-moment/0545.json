@@ -1,95 +1,97 @@
 {
-  "id": "ubm-0545",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "Les Noces Rebelles",
-  "type": "film",
   "creator": "Sam Mendes",
-  "recommendedBy": "Navo",
-  "quote": "Ouais, c'est un super film.",
-  "timestamp": "00:52:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/4148-revolutionary-road/watch?locale=FR",
+    "tmdb": "4148",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2008,
-  "externalIds": {
-    "tmdb": "4148",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/4148-revolutionary-road/watch?locale=FR"
-  },
+  "id": "ubm-0545",
+  "links": [],
+  "quote": "Ouais, c'est un super film.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:52:50",
+  "title": "Les Noces Rebelles",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Les%20Noces%20Rebelles&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Les%20Noces%20Rebelles&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Noces%20Rebelles",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Noces%20Rebelles"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Les%20Noces%20Rebelles",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Les%20Noces%20Rebelles"
     }
-  ]
+  ],
+  "year": 2008
 }

@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0842",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Des trains à travers la peine",
-  "type": "podcast",
   "creator": "Baptiste et Nicolas",
-  "recommendedBy": "Navo",
-  "quote": "Des trains à travers la peine c'est un podcast que je fais avec deux copains qui s'appelle Baptiste et Nicolas. Où on diffuse des oeuvres du répertoire francophone, chanson, film, extrait de bouquin et on en parle autour d'un thème.",
-  "timestamp": "01:03:27",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0842",
+  "links": [],
+  "quote": "Des trains à travers la peine c'est un podcast que je fais avec deux copains qui s'appelle Baptiste et Nicolas. Où on diffuse des oeuvres du répertoire francophone, chanson, film, extrait de bouquin et on en parle autour d'un thème.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:27",
+  "title": "Des trains à travers la peine",
+  "types": [
+    "podcast"
   ]
 }

@@ -1,93 +1,95 @@
 {
-  "id": "ubm-0902",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240a35cc56a90012ec386b",
-  "title": "Le Grand Bain",
-  "type": "film",
   "creator": "Gilles Lellouche",
-  "recommendedBy": "inconnu",
-  "quote": "Le grand bain, ouais, super.",
-  "timestamp": "00:18:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/484482-le-grand-bain/watch?locale=FR",
+    "tmdb": "484482",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "484482",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/484482-le-grand-bain/watch?locale=FR"
-  },
+  "id": "ubm-0902",
+  "links": [],
+  "quote": "Le grand bain, ouais, super.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:28",
+  "title": "Le Grand Bain",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20Grand%20Bain&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20Grand%20Bain&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Grand%20Bain",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Grand%20Bain",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Le%20Grand%20Bain",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Le%20Grand%20Bain"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Le%20Grand%20Bain",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Le%20Grand%20Bain"
     }
   ]
 }

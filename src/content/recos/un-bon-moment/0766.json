@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0766",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Life in Cartoon Motion",
-  "type": "album",
   "creator": "Mika",
-  "recommendedBy": "Navo",
-  "quote": "j'ai une souvenir du premier album de Mika Life in Cartoon Motion qui était un peu une bombe pop et colorée",
-  "timestamp": "00:51:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/107231"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/107231"
-  }
+  "id": "ubm-0766",
+  "links": [],
+  "quote": "j'ai une souvenir du premier album de Mika Life in Cartoon Motion qui était un peu une bombe pop et colorée",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:09",
+  "title": "Life in Cartoon Motion",
+  "types": [
+    "album"
+  ]
 }

@@ -1,28 +1,30 @@
 {
-  "id": "ubm-0195",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "I'm Sorry",
-  "type": "serie",
   "creator": "Nathan Fielder",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est après avec Nathan Fielder c'est génial",
-  "timestamp": "01:53:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/72820-i-m-sorry/watch?locale=FR",
+    "tmdb": "72820",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "72820",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/72820-i-m-sorry/watch?locale=FR"
-  },
+  "id": "ubm-0195",
+  "links": [],
+  "quote": "c'est après avec Nathan Fielder c'est génial",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:53:19",
+  "title": "I'm Sorry",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=I%27m%20Sorry",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=I%27m%20Sorry"
     }
   ]
 }

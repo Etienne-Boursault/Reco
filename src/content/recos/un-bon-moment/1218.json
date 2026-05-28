@@ -1,71 +1,73 @@
 {
-  "id": "ubm-1218",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Titanic",
-  "type": "film",
-  "quote": "Je lui montrerais... Titanic.",
-  "timestamp": "00:51:48",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR",
+    "tmdb": "597",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "597",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR"
-  },
+  "id": "ubm-1218",
+  "links": [],
+  "quote": "Je lui montrerais... Titanic.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:48",
+  "title": "Titanic",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Titanic",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Titanic",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Titanic&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Titanic&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Titanic",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Titanic",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Titanic",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Titanic"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Titanic",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Titanic",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Titanic",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Titanic"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Titanic",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Titanic"
     }
   ]
 }

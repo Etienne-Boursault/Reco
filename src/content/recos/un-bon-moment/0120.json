@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0120",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "Soprano",
-  "type": "autre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "On a plein d'artistes. Soprano.",
-  "timestamp": "01:27:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c3998e40b300163f8618",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0120",
+  "links": [],
+  "quote": "On a plein d'artistes. Soprano.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:43",
+  "title": "Soprano",
+  "types": [
+    "autre"
   ]
 }

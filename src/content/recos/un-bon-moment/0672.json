@@ -1,93 +1,95 @@
 {
-  "id": "ubm-0672",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
-  "title": "Requiem for a Dream",
-  "type": "film",
   "creator": "Darren Aronofsky",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "j'avais envie de parler avec vous de la musique du film requm foredream",
-  "timestamp": "00:31:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/641-requiem-for-a-dream/watch?locale=FR",
+    "tmdb": "641",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "641",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/641-requiem-for-a-dream/watch?locale=FR"
-  },
+  "id": "ubm-0672",
+  "links": [],
+  "quote": "j'avais envie de parler avec vous de la musique du film requm foredream",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:50",
+  "title": "Requiem for a Dream",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "avoid",
       "label": "Lionsgate+ Amazon Channels",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Requiem%20for%20a%20Dream",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Plex Channel",
-      "url": "https://watch.plex.tv/search?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://watch.plex.tv/search?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Requiem%20for%20a%20Dream&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Requiem%20for%20a%20Dream&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Requiem%20for%20a%20Dream",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Requiem%20for%20a%20Dream",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Requiem%20for%20a%20Dream"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Requiem%20for%20a%20Dream",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Requiem%20for%20a%20Dream"
     }
   ]
 }

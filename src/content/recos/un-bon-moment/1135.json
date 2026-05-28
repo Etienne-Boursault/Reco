@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1135",
-  "sourceId": "un-bon-moment",
+  "creator": "Winter Zuko",
   "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Winter Zuko",
-  "type": "musique",
-  "recommendedBy": "Navo",
-  "quote": "Winter Zuko, très bon artiste.",
-  "timestamp": "01:10:52",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/15411111"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Winter Zuko",
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/15411111"
-  }
+  "id": "ubm-1135",
+  "links": [],
+  "quote": "Winter Zuko, très bon artiste.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:52",
+  "title": "Winter Zuko",
+  "types": [
+    "musique"
+  ]
 }

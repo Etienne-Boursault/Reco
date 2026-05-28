@@ -1,34 +1,36 @@
 {
-  "id": "ubm-0838",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Fleabag",
-  "type": "serie",
   "creator": "Phoebe Waller-Bridge",
-  "recommendedBy": "inconnu",
-  "quote": "c'est un truc que je montre pas mal aux gens qui veulent écrire des séries de maintenant",
-  "timestamp": "00:36:25",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR",
+    "tmdb": "67070",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "67070",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
-  },
+  "id": "ubm-0838",
+  "links": [],
+  "quote": "c'est un truc que je montre pas mal aux gens qui veulent écrire des séries de maintenant",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:36:25",
+  "title": "Fleabag",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
     }
   ]
 }

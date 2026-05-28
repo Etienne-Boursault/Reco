@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0524",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "Karma",
-  "type": "album",
   "creator": "Bigflo & Oli",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est pas mon album préféré de Big Flo. Oli, c'est dans mes albums préférés, tout court.",
-  "timestamp": "00:30:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/933704401"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/933704401"
-  }
+  "id": "ubm-0524",
+  "links": [],
+  "quote": "c'est pas mon album préféré de Big Flo. Oli, c'est dans mes albums préférés, tout court.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:30:56",
+  "title": "Karma",
+  "types": [
+    "album"
+  ]
 }

@@ -1,98 +1,100 @@
 {
-  "id": "ubm-0519",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "John Wick",
-  "type": "film",
   "creator": "N/A",
-  "recommendedBy": "Navo",
-  "quote": "Il y a du John Wick.",
-  "timestamp": "00:02:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/458156-john-wick-chapter-3-parabellum/watch?locale=FR",
+    "tmdb": "458156",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "458156",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/458156-john-wick-chapter-3-parabellum/watch?locale=FR"
-  },
+  "id": "ubm-0519",
+  "links": [],
+  "quote": "Il y a du John Wick.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:56",
+  "title": "John Wick",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=John%20Wick"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=John%20Wick"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=John%20Wick"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=John%20Wick"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=John%20Wick&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=John%20Wick&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=John%20Wick",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=John%20Wick"
     }
   ]
 }

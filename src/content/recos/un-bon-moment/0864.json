@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0864",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "The Defiant Ones",
-  "type": "autre",
   "creator": "Allen Hughes",
-  "year": 2017,
-  "recommendedBy": "Invité",
-  "quote": "il ya defiant ones donc c'est l'histoire de docteur dr et jimi à yovine qui était sur netflix qui était ouf qu'était en cinq parties",
-  "timestamp": "00:18:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "anthropic",
     "openai"
-  ]
+  ],
+  "id": "ubm-0864",
+  "links": [],
+  "quote": "il ya defiant ones donc c'est l'histoire de docteur dr et jimi à yovine qui était sur netflix qui était ouf qu'était en cinq parties",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:44",
+  "title": "The Defiant Ones",
+  "types": [
+    "autre"
+  ],
+  "year": 2017
 }

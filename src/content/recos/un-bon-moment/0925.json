@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0925",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Nippon et Compte",
-  "type": "film",
   "creator": "Cédric Klapisch",
-  "recommendedBy": "Navo",
-  "quote": "en fait c'était naze mais ça apprend",
-  "timestamp": "00:53:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0925",
+  "links": [],
+  "quote": "en fait c'était naze mais ça apprend",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:53:00",
+  "title": "Nippon et Compte",
+  "types": [
+    "film"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0051",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
-  "title": "Bond Organisé",
-  "type": "musique",
   "creator": "OM",
-  "quote": "C'est une chanson qui prend 3 millions par jour en ce moment.",
-  "timestamp": "00:56:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0051",
+  "links": [],
+  "quote": "C'est une chanson qui prend 3 millions par jour en ce moment.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:54",
+  "title": "Bond Organisé",
+  "types": [
+    "musique"
   ]
 }

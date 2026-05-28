@@ -1,18 +1,20 @@
 {
-  "id": "ubm-1196",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
-  "title": "Hello Carry",
-  "type": "musique",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Un rappeur qui s'appelle Hello Carey. Hello Carey, ouais. Que vous produisez en plus, les gars ?",
-  "timestamp": "01:46:59",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3562509991"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3562509991"
-  }
+  "id": "ubm-1196",
+  "links": [],
+  "quote": "Un rappeur qui s'appelle Hello Carey. Hello Carey, ouais. Que vous produisez en plus, les gars ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:46:59",
+  "title": "Hello Carry",
+  "types": [
+    "musique"
+  ]
 }

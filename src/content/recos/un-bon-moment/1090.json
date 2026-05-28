@@ -1,44 +1,46 @@
 {
-  "id": "ubm-1090",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
-  "title": "I'm Still Here",
-  "type": "film",
   "creator": "Joaquin Phoenix",
-  "year": 2010,
-  "recommendedBy": "Julien",
-  "quote": "Il y a un style here de Joachim Phoenix qui est pour moi une des références absolues du faux documentaire.",
-  "timestamp": "01:05:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/43939-i-m-still-here/watch?locale=FR",
+    "tmdb": "43939",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "43939",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/43939-i-m-still-here/watch?locale=FR"
-  },
+  "id": "ubm-1090",
+  "links": [],
+  "quote": "Il y a un style here de Joachim Phoenix qui est pour moi une des références absolues du faux documentaire.",
+  "recommendedBy": "Julien",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:05:03",
+  "title": "I'm Still Here",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=I%27m%20Still%20Here",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=I%27m%20Still%20Here"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=I%27m%20Still%20Here&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=I%27m%20Still%20Here&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=I%27m%20Still%20Here",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=I%27m%20Still%20Here"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=I%27m%20Still%20Here",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=I%27m%20Still%20Here"
     }
-  ]
+  ],
+  "year": 2010
 }

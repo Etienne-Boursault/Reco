@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1085",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Donda Da Tape",
-  "type": "album",
   "creator": "Alpha One",
-  "recommendedBy": "Navo",
-  "quote": "C'est la Danda Da Tape d'Alpha One. C'est pas un album, mais c'est le truc que j'ai trouvé le plus aboutillé, le plus réussi.",
-  "timestamp": "00:57:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1085",
+  "links": [],
+  "quote": "C'est la Danda Da Tape d'Alpha One. C'est pas un album, mais c'est le truc que j'ai trouvé le plus aboutillé, le plus réussi.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:00",
+  "title": "Donda Da Tape",
+  "types": [
+    "album"
   ]
 }

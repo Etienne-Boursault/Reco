@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0816",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61ce14aa42581b0012d8ddb0",
-  "title": "Aérosseph",
-  "type": "autre",
   "creator": "Aérosseph",
-  "recommendedBy": "Roman Frécinès",
-  "quote": "c'est assez intéressant.",
-  "timestamp": "01:09:35",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0816",
+  "links": [],
+  "quote": "c'est assez intéressant.",
+  "recommendedBy": "Roman Frécinès",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:35",
+  "title": "Aérosseph",
+  "types": [
+    "autre"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0633",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "Chambre froide",
-  "type": "autre",
   "creator": "Swann Périsset",
-  "recommendedBy": "Natou",
-  "quote": "J'ai beaucoup aimé son dernier court métrage.",
-  "timestamp": "01:14:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0633",
+  "links": [],
+  "quote": "J'ai beaucoup aimé son dernier court métrage.",
+  "recommendedBy": "Natou",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:44",
+  "title": "Chambre froide",
+  "types": [
+    "autre"
   ]
 }

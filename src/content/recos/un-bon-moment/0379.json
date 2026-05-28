@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0379",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Adèle Fougasi",
-  "type": "autre",
   "creator": "Adèle Fougasi",
-  "recommendedBy": "invité",
-  "quote": "Et j'aime beaucoup Adèle Fougasi",
-  "timestamp": "01:48:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0379",
+  "links": [],
+  "quote": "Et j'aime beaucoup Adèle Fougasi",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:48:04",
+  "title": "Adèle Fougasi",
+  "types": [
+    "autre"
   ]
 }

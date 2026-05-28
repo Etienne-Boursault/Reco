@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0700",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
-  "title": "Vérino",
-  "type": "autre",
-  "recommendedBy": "Tania",
-  "quote": "\"Bah, il y a quand même pas mal Vérino, hein.\"",
-  "timestamp": "01:34:28",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0700",
+  "links": [],
+  "quote": "\"Bah, il y a quand même pas mal Vérino, hein.\"",
+  "recommendedBy": "Tania",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:28",
+  "title": "Vérino",
+  "types": [
+    "autre"
   ]
 }

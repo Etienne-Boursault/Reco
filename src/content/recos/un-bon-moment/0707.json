@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0707",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Décalage",
-  "type": "film",
   "creator": "N/A",
-  "recommendedBy": "Navo",
-  "quote": "ça s'appelle Décalage avec le A un peu de travers.",
-  "timestamp": "00:05:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/18300-decalage-horaire/watch?locale=FR",
+    "tmdb": "18300",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "18300",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/18300-decalage-horaire/watch?locale=FR"
-  },
+  "id": "ubm-0707",
+  "links": [],
+  "quote": "ça s'appelle Décalage avec le A un peu de travers.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:05:11",
+  "title": "Décalage",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=D%C3%A9calage",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=D%C3%A9calage"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=D%C3%A9calage&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=D%C3%A9calage&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=D%C3%A9calage",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=D%C3%A9calage"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=D%C3%A9calage",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=D%C3%A9calage"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=D%C3%A9calage",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=D%C3%A9calage"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=D%C3%A9calage",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=D%C3%A9calage"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=D%C3%A9calage",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=D%C3%A9calage"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=D%C3%A9calage",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=D%C3%A9calage"
     }
   ]
 }

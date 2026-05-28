@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0984",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "M. Phi",
-  "type": "podcast",
-  "recommendedBy": "Navo",
-  "quote": "J'avais parlé de M. Sophie, je reparle de M. Sophie... ça parle de philosophie, il fait des fausses interviews... c'est marrant et il parle pas mal d'IA",
-  "timestamp": "01:52:53",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0984",
+  "links": [],
+  "quote": "J'avais parlé de M. Sophie, je reparle de M. Sophie... ça parle de philosophie, il fait des fausses interviews... c'est marrant et il parle pas mal d'IA",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:52:53",
+  "title": "M. Phi",
+  "types": [
+    "podcast"
   ]
 }

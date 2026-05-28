@@ -1,63 +1,65 @@
 {
-  "id": "ubm-1102",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Searching for Sugar Man",
-  "type": "film",
-  "year": 2012,
-  "recommendedBy": "Navo",
-  "quote": "looking for sugar men ouais qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud",
-  "timestamp": "00:20:56",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/84334-searching-for-sugar-man/watch?locale=FR",
+    "tmdb": "84334",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "84334",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/84334-searching-for-sugar-man/watch?locale=FR"
-  },
+  "id": "ubm-1102",
+  "links": [],
+  "quote": "looking for sugar men ouais qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:56",
+  "title": "Searching for Sugar Man",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Searching%20for%20Sugar%20Man",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Searching%20for%20Sugar%20Man",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Searching%20for%20Sugar%20Man",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Searching%20for%20Sugar%20Man",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Searching%20for%20Sugar%20Man",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Searching%20for%20Sugar%20Man",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Searching%20for%20Sugar%20Man",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Searching%20for%20Sugar%20Man"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Searching%20for%20Sugar%20Man",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Searching%20for%20Sugar%20Man"
     }
-  ]
+  ],
+  "year": 2012
 }

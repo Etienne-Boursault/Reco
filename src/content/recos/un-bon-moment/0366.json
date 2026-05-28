@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0366",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6970a1759448a95f223d530c",
-  "title": "Développement Impersonnel",
-  "type": "livre",
   "creator": "Julia de Funes",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il a écrit un livre qui s'appelle Développement Impersonnel.",
-  "timestamp": "00:54:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6970a1759448a95f223d530c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0366",
+  "links": [],
+  "quote": "il a écrit un livre qui s'appelle Développement Impersonnel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:54:49",
+  "title": "Développement Impersonnel",
+  "types": [
+    "livre"
   ]
 }

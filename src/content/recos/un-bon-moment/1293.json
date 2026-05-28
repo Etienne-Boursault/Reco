@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1293",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
-  "title": "SPOT",
-  "type": "podcast",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un super podcast.",
-  "timestamp": "00:36:41",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1293",
+  "links": [],
+  "quote": "C'est un super podcast.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:36:41",
+  "title": "SPOT",
+  "types": [
+    "podcast"
   ]
 }

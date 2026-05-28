@@ -1,18 +1,20 @@
 {
-  "id": "ubm-1180",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
-  "title": "Colombo",
-  "type": "serie",
-  "recommendedBy": "invité",
-  "quote": "Colombo, on peut regarder Colombo?",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
   "externalIds": {
     "tmdb": "48332",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1180",
+  "links": [],
+  "quote": "Colombo, on peut regarder Colombo?",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "title": "Colombo",
+  "types": [
+    "serie"
+  ]
 }

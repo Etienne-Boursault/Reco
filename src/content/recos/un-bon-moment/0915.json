@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0915",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65241146d963060012045fb6",
-  "title": "L'Horreur d'Omange",
-  "type": "spectacle",
-  "quote": "C'est l'horreur d'omange",
-  "timestamp": "01:03:12",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0915",
+  "links": [],
+  "quote": "C'est l'horreur d'omange",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:12",
+  "title": "L'Horreur d'Omange",
+  "types": [
+    "spectacle"
   ]
 }

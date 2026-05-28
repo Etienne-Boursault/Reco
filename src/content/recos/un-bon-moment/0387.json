@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0387",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Indignez-vous !",
-  "type": "livre",
   "creator": "Stephane Hessel",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'était le best seller indignez-vous",
-  "timestamp": "00:43:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0387",
+  "links": [],
+  "quote": "c'était le best seller indignez-vous",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:24",
+  "title": "Indignez-vous !",
+  "types": [
+    "livre"
   ]
 }

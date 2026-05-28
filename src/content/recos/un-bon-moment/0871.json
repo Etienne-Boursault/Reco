@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0871",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Une autre histoire d'amour",
-  "type": "musique",
   "creator": "Tim Dup",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "moi je recommande une chanson de team dupe qui s'appelle une autre histoire d'amour une très belle chanson allez écouter c'est super",
-  "timestamp": "01:07:29",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/768816712"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/768816712"
-  }
+  "id": "ubm-0871",
+  "links": [],
+  "quote": "moi je recommande une chanson de team dupe qui s'appelle une autre histoire d'amour une très belle chanson allez écouter c'est super",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:07:29",
+  "title": "Une autre histoire d'amour",
+  "types": [
+    "musique"
+  ]
 }

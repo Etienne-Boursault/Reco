@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0130",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Torthosa",
-  "type": "musique",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "La musique de fin a été faite par Torthosa.",
-  "timestamp": "01:13:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0130",
+  "links": [],
+  "quote": "La musique de fin a été faite par Torthosa.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:28",
+  "title": "Torthosa",
+  "types": [
+    "musique"
   ]
 }

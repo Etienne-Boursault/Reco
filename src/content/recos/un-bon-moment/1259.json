@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1259",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "jeudi m",
-  "type": "album",
   "creator": "Matthieu Chedid",
-  "year": 2021,
-  "recommendedBy": "Navo",
-  "quote": "je trouve que révalité ton dernier album que t'as sorti maintenant il y a un an et demi je crois je crois que c'est ton meilleur album",
-  "timestamp": "00:14:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-1259",
+  "links": [],
+  "quote": "je trouve que révalité ton dernier album que t'as sorti maintenant il y a un an et demi je crois je crois que c'est ton meilleur album",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:14:11",
+  "title": "jeudi m",
+  "types": [
+    "album"
+  ],
+  "year": 2021
 }

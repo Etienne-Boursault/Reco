@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0961",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6903fad795ee8b1815229b88",
-  "title": "La vie de ta mère",
-  "type": "spectacle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Blandine Lehou La vie de ta mère à l'européen",
-  "timestamp": "01:45:39",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0961",
+  "links": [],
+  "quote": "Blandine Lehou La vie de ta mère à l'européen",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:45:39",
+  "title": "La vie de ta mère",
+  "types": [
+    "spectacle"
   ]
 }

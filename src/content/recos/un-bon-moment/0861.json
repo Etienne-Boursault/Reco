@@ -1,29 +1,31 @@
 {
-  "id": "ubm-0861",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "WandaVision",
-  "type": "serie",
   "creator": "Marvel",
-  "recommendedBy": "Navo",
-  "quote": "Je recommande \"Vanda Vision\", \"Vanda Vision\" qui est un Marvel qu'on peut trouver, je crois, sur Disney+",
-  "timestamp": "01:12:39",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=FR",
+    "tmdb": "85271",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "85271",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=FR"
-  },
+  "id": "ubm-0861",
+  "links": [],
+  "quote": "Je recommande \"Vanda Vision\", \"Vanda Vision\" qui est un Marvel qu'on peut trouver, je crois, sur Disney+",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:39",
+  "title": "WandaVision",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=WandaVision",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=WandaVision"
     }
   ]
 }

@@ -1,88 +1,90 @@
 {
-  "id": "ubm-0786",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Les Nouveaux Sauvages",
-  "type": "film",
-  "quote": "le film que j'ai regardé hier soir, tiens, que j'aime bien revoir super souvent, c'est Les Nouveaux Sauvages.",
-  "timestamp": "00:56:18",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/265195-relatos-salvajes/watch?locale=FR",
+    "tmdb": "265195",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2014,
-  "externalIds": {
-    "tmdb": "265195",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/265195-relatos-salvajes/watch?locale=FR"
-  },
+  "id": "ubm-0786",
+  "links": [],
+  "quote": "le film que j'ai regardé hier soir, tiens, que j'aime bien revoir super souvent, c'est Les Nouveaux Sauvages.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:18",
+  "title": "Les Nouveaux Sauvages",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Les%20Nouveaux%20Sauvages&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Les%20Nouveaux%20Sauvages&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Nouveaux%20Sauvages",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Les%20Nouveaux%20Sauvages",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Nouveaux%20Sauvages",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Les%20Nouveaux%20Sauvages"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Les%20Nouveaux%20Sauvages",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Les%20Nouveaux%20Sauvages"
     }
-  ]
+  ],
+  "year": 2014
 }

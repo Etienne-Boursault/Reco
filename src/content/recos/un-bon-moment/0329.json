@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0329",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Los Aguios Nuevos",
-  "type": "serie",
-  "recommendedBy": "invité",
-  "quote": "Moi j'ai aimé 2 séries Los Aguios Nuevos",
-  "timestamp": "01:34:43",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0329",
+  "links": [],
+  "quote": "Moi j'ai aimé 2 séries Los Aguios Nuevos",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:43",
+  "title": "Los Aguios Nuevos",
+  "types": [
+    "serie"
   ]
 }

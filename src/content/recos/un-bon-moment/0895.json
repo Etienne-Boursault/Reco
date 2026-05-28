@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0895",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652408a9c8996500127e39e9",
-  "title": "Que la vie normale",
-  "type": "spectacle",
   "creator": "Gaëlle Malais",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi j'ai mis en scène que la vie normale vraiment. Qui a un excellent spectacle de Gaëlle Malais.",
-  "timestamp": "00:41:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652408a9c8996500127e39e9",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0895",
+  "links": [],
+  "quote": "Moi j'ai mis en scène que la vie normale vraiment. Qui a un excellent spectacle de Gaëlle Malais.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:41:14",
+  "title": "Que la vie normale",
+  "types": [
+    "spectacle"
   ]
 }

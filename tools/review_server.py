@@ -288,7 +288,7 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str) -> str:
         conf_badge = ""
     return f"""
     <li class="row {cls}">
-      <div class="hd"><span class="type">{html.escape(r.get('type',''))}</span>
+      <div class="hd"><span class="type">{html.escape(", ".join(r.get('types', [])))}</span>
         <b>{html.escape(r.get('title',''))}</b>
         {f"<i>· {html.escape(r['creator'])}</i>" if r.get('creator') else ''}
         {link}

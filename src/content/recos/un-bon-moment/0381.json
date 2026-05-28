@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0381",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Soussano",
-  "type": "musique",
   "creator": "Soussano",
-  "recommendedBy": "invité",
-  "quote": "Un artiste que j'ai découvert récemment, un chanteur qui t'appelle Soussano... Il fait notamment des acoustiques formidables, aller écouter sur les plateformes",
-  "timestamp": "01:50:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/910945342"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/910945342"
-  }
+  "id": "ubm-0381",
+  "links": [],
+  "quote": "Un artiste que j'ai découvert récemment, un chanteur qui t'appelle Soussano... Il fait notamment des acoustiques formidables, aller écouter sur les plateformes",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:31",
+  "title": "Soussano",
+  "types": [
+    "musique"
+  ]
 }

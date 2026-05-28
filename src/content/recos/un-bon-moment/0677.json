@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0677",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
-  "title": "Kendrick Lamar",
-  "type": "musique",
-  "quote": "Kendrick Lamar, Kendrick Lamar.",
-  "timestamp": "00:00:08",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2783963122"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2783963122"
-  }
+  "id": "ubm-0677",
+  "links": [],
+  "quote": "Kendrick Lamar, Kendrick Lamar.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:00:08",
+  "title": "Kendrick Lamar",
+  "types": [
+    "musique"
+  ]
 }

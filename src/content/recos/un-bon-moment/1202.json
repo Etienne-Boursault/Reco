@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1202",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61cb19444f2d030012ddd82a",
-  "title": "la vidéo sur le surendettement",
-  "type": "autre",
   "creator": "E.R.E.K.",
-  "recommendedBy": "Jeremy Ferrari",
-  "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
-  "timestamp": "01:31:22",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1202",
+  "links": [],
+  "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
+  "recommendedBy": "Jeremy Ferrari",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:22",
+  "title": "la vidéo sur le surendettement",
+  "types": [
+    "autre"
   ]
 }

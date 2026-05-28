@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0388",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Route",
-  "type": "jeu",
   "creator": "autre",
-  "recommendedBy": "Navo",
-  "quote": "j'ai très envie de faire ce jeu là",
-  "timestamp": "00:51:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0388",
+  "links": [],
+  "quote": "j'ai très envie de faire ce jeu là",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:59",
+  "title": "Route",
+  "types": [
+    "jeu"
   ]
 }

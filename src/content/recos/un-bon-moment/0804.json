@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0804",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Advitam",
-  "type": "spectacle",
   "creator": "Alex Vizorek",
-  "recommendedBy": "Morgane Canignan",
-  "quote": "J'espère que tu fais chier les cons.",
-  "timestamp": "00:16:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0804",
+  "links": [],
+  "quote": "J'espère que tu fais chier les cons.",
+  "recommendedBy": "Morgane Canignan",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:16:01",
+  "title": "Advitam",
+  "types": [
+    "spectacle"
   ]
 }

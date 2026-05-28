@@ -186,7 +186,7 @@ def main():
     targets = []
     for p in sorted(recos_dir.glob("*.json")):
         d = read_json(p)
-        if d.get("type") not in target_types:
+        if not any(t in target_types for t in (d.get("types") or [])):
             continue
         ext = d.get("externalIds") or {}
         if not args.force and ext.get("deezer") and (not token or ext.get("spotify")):
@@ -202,7 +202,14 @@ def main():
     for i, (p, d) in enumerate(targets, 1):
         title = d["title"]
         creator = d.get("creator")
-        reco_type = d["type"]
+        # On choisit le type pertinent pour orienter la recherche (track vs album
+        # vs artist). Si la reco a plusieurs types, on prend le premier qui tombe
+        # dans la cible musicale ; à défaut, le premier de la liste.
+        types_list = d.get("types") or []
+        reco_type = next(
+            (t for t in types_list if t in target_types),
+            types_list[0] if types_list else "musique",
+        )
         log.info("[%d/%d] %s%s [%s]", i, len(targets), title[:50],
                  f" ({creator})" if creator else "", reco_type)
         ids = dict(d.get("externalIds") or {})

@@ -1,31 +1,33 @@
 {
-  "id": "ubm-0972",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Mr. & Mrs. Smith",
-  "type": "serie",
-  "quote": "Mais Mr & Mrs. Miss exceptionnel. Il faut prendre ce truc qui est un blockbuster il faut faire un truc niche, réaliste c'est trop fort",
-  "timestamp": "01:16:08",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/118642-mr-mrs-smith/watch?locale=FR",
+    "tmdb": "118642",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "118642",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/118642-mr-mrs-smith/watch?locale=FR"
-  },
+  "id": "ubm-0972",
+  "links": [],
+  "quote": "Mais Mr & Mrs. Miss exceptionnel. Il faut prendre ce truc qui est un blockbuster il faut faire un truc niche, réaliste c'est trop fort",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:16:08",
+  "title": "Mr. & Mrs. Smith",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith"
     }
   ]
 }

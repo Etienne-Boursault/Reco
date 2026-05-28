@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0774",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Feel Good",
-  "type": "autre",
   "creator": "G-loid",
-  "recommendedBy": "Navo",
-  "quote": "qui a un projet perso qui s'appelle G-loid et la sortie de mixtape incroyable et notamment un morceau qui s'appelle Feel Good qui est fou",
-  "timestamp": "01:33:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0774",
+  "links": [],
+  "quote": "qui a un projet perso qui s'appelle G-loid et la sortie de mixtape incroyable et notamment un morceau qui s'appelle Feel Good qui est fou",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:45",
+  "title": "Feel Good",
+  "types": [
+    "autre"
   ]
 }

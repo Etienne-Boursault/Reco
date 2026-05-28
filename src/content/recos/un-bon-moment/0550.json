@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0550",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "The Pit",
-  "type": "serie",
-  "recommendedBy": "intervenant",
-  "quote": "Ça s'appelle The Pit.",
-  "timestamp": "01:37:48",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
   "externalIds": {
     "tmdb": "87310",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0550",
+  "links": [],
+  "quote": "Ça s'appelle The Pit.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:48",
+  "title": "The Pit",
+  "types": [
+    "serie"
+  ]
 }

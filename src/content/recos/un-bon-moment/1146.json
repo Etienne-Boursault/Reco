@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1146",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "Feldup",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "la chaîne feldup qui est une qui est un youtubeur qui plonge dans des meandres d'internet et de avec un petit côté un peu bizarre horreur de tout ce qui est un peu caché bizarroïde sur internet",
-  "timestamp": "01:08:34",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1146",
+  "links": [],
+  "quote": "la chaîne feldup qui est une qui est un youtubeur qui plonge dans des meandres d'internet et de avec un petit côté un peu bizarre horreur de tout ce qui est un peu caché bizarroïde sur internet",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:34",
+  "title": "Feldup",
+  "types": [
+    "autre"
   ]
 }

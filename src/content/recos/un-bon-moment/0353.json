@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0353",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Fatlip",
-  "type": "musique",
   "creator": "Fatlip",
-  "recommendedBy": "intervenant",
-  "quote": "Chanson qui s'appelle Fatlip.",
-  "timestamp": "01:13:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2218721367"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2218721367"
-  }
+  "id": "ubm-0353",
+  "links": [],
+  "quote": "Chanson qui s'appelle Fatlip.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:02",
+  "title": "Fatlip",
+  "types": [
+    "musique"
+  ]
 }

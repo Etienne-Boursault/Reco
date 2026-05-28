@@ -1,89 +1,91 @@
 {
-  "id": "ubm-0525",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "La Zone d'Intérêt",
-  "type": "film",
   "creator": "Jonathan Glazer",
-  "recommendedBy": "N/A",
-  "quote": "Dernière claque, la zone d'intérêt.",
-  "timestamp": "00:31:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR",
+    "tmdb": "467244",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "467244",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR"
-  },
+  "id": "ubm-0525",
+  "links": [],
+  "quote": "Dernière claque, la zone d'intérêt.",
+  "recommendedBy": "N/A",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:43",
+  "title": "La Zone d'Intérêt",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
     }
   ]
 }

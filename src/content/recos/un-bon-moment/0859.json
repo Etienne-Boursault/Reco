@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0859",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Happy End",
-  "type": "album",
   "creator": "Albin de la Simone",
-  "recommendedBy": "inconnu",
-  "quote": "Il y a un album instrumentale d'Albin de la Simone, qui est sorti, qui est très très bon.",
-  "timestamp": "01:11:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/239747392"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2021,
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/239747392"
-  }
+  "id": "ubm-0859",
+  "links": [],
+  "quote": "Il y a un album instrumentale d'Albin de la Simone, qui est sorti, qui est très très bon.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:13",
+  "title": "Happy End",
+  "types": [
+    "album"
+  ],
+  "year": 2021
 }

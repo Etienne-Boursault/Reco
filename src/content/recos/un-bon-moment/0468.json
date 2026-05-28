@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0468",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Une expo au Luxembourg sur les ancres de soulages",
-  "type": "autre",
   "creator": "Soulages",
-  "recommendedBy": "Invité",
-  "quote": "j'ai été voir une expo au Luxembourg sur les ancres de soulages.",
-  "timestamp": "01:20:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0468",
+  "links": [],
+  "quote": "j'ai été voir une expo au Luxembourg sur les ancres de soulages.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:01",
+  "title": "Une expo au Luxembourg sur les ancres de soulages",
+  "types": [
+    "autre"
   ]
 }

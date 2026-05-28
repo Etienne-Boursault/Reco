@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0284",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Jardin d'hiver",
-  "type": "autre",
   "creator": "Odyssis",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Jardin d'hiver exceptionnel.",
-  "timestamp": "02:01:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0284",
+  "links": [],
+  "quote": "Jardin d'hiver exceptionnel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:01:01",
+  "title": "Jardin d'hiver",
+  "types": [
+    "autre"
   ]
 }

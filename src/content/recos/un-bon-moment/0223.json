@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0223",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "We Are the Champions",
-  "type": "musique",
   "creator": "Queen",
-  "quote": "We are the champions.",
-  "timestamp": "01:37:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/67503808"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/67503808"
-  }
+  "id": "ubm-0223",
+  "links": [],
+  "quote": "We are the champions.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:53",
+  "title": "We Are the Champions",
+  "types": [
+    "musique"
+  ]
 }

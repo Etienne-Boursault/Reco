@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0350",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Zelda",
-  "type": "jeu",
   "creator": "Nintendo",
-  "recommendedBy": "intervenant",
-  "quote": "Zelda, Mortal Kombat, c'était les deux jeux que j'ai joué.",
-  "timestamp": "01:11:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0350",
+  "links": [],
+  "quote": "Zelda, Mortal Kombat, c'était les deux jeux que j'ai joué.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:59",
+  "title": "Zelda",
+  "types": [
+    "jeu"
   ]
 }

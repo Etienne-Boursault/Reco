@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0298",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Starmania",
-  "type": "spectacle",
-  "recommendedBy": "Navo",
-  "quote": "on avait mis Starmania",
-  "timestamp": "00:27:46",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0298",
+  "links": [],
+  "quote": "on avait mis Starmania",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:46",
+  "title": "Starmania",
+  "types": [
+    "spectacle"
   ]
 }

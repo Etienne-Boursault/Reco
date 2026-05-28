@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0991",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "Bien sûr que les poissons froid",
-  "type": "livre",
   "creator": "Fanny Ruwet",
-  "recommendedBy": "Navo",
-  "quote": "Bien sûr que les poissons froid de Fanny Ruez un roman",
-  "timestamp": "01:27:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0991",
+  "links": [],
+  "quote": "Bien sûr que les poissons froid de Fanny Ruez un roman",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:01",
+  "title": "Bien sûr que les poissons froid",
+  "types": [
+    "livre"
   ]
 }

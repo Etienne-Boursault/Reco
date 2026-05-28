@@ -1,93 +1,95 @@
 {
-  "id": "ubm-0812",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61ce14aa42581b0012d8ddb0",
-  "title": "Matrix Resurrections",
-  "type": "film",
   "creator": "Lana Wachowski",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'ai peur un peu du 4.",
-  "timestamp": "00:42:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/624860-the-matrix-resurrections/watch?locale=FR",
+    "tmdb": "624860",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "624860",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/624860-the-matrix-resurrections/watch?locale=FR"
-  },
+  "id": "ubm-0812",
+  "links": [],
+  "quote": "J'ai peur un peu du 4.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:50",
+  "title": "Matrix Resurrections",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix%20Resurrections",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Matrix%20Resurrections&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Matrix%20Resurrections&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix%20Resurrections",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix%20Resurrections",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Matrix%20Resurrections",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Matrix%20Resurrections"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Matrix%20Resurrections",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Matrix%20Resurrections"
     }
   ]
 }

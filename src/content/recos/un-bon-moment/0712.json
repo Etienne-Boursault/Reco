@@ -1,113 +1,115 @@
 {
-  "id": "ubm-0712",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Jurassic Park",
-  "type": "film",
   "creator": "Steven Spielberg",
-  "recommendedBy": "Invité",
-  "quote": "Pour la première fois avec le T-Rex et l'œil qui passe par le machin.",
-  "timestamp": "00:43:42",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/329-jurassic-park/watch?locale=FR",
+    "tmdb": "329",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "329",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/329-jurassic-park/watch?locale=FR"
-  },
+  "id": "ubm-0712",
+  "links": [],
+  "quote": "Pour la première fois avec le T-Rex et l'œil qui passe par le machin.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:42",
+  "title": "Jurassic Park",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Jurassic%20Park"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Jurassic%20Park"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Jurassic%20Park&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Jurassic%20Park&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jurassic%20Park",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Jurassic%20Park"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Jurassic%20Park",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Jurassic%20Park"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Jurassic%20Park"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Jurassic%20Park",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Jurassic%20Park"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Jurassic%20Park",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Jurassic%20Park"
     }
   ]
 }

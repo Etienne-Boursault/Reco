@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0770",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Dichon",
-  "type": "album",
   "creator": "Ichon",
-  "recommendedBy": "Navo",
-  "quote": "l'album Dichon qui est sorti que je trouve magnifique",
-  "timestamp": "01:30:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0770",
+  "links": [],
+  "quote": "l'album Dichon qui est sorti que je trouve magnifique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:23",
+  "title": "Dichon",
+  "types": [
+    "album"
   ]
 }

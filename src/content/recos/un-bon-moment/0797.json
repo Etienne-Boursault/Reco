@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0797",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Vice",
-  "type": "film",
-  "quote": "Moi, je vous recommande le film Vice, sur Dick Chenet, qui est une comédie... Magnifique. Noir, dure, mais le film est dure, et vraiment marrant, et enfin, c'est bien fait.",
-  "timestamp": "01:02:42",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR",
+    "tmdb": "150540",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2018,
-  "externalIds": {
-    "tmdb": "150540",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR"
-  },
+  "id": "ubm-0797",
+  "links": [],
+  "quote": "Moi, je vous recommande le film Vice, sur Dick Chenet, qui est une comédie... Magnifique. Noir, dure, mais le film est dure, et vraiment marrant, et enfin, c'est bien fait.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:42",
+  "title": "Vice",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Vice",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Vice&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Vice&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Vice",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Vice"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Vice",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Vice"
     }
-  ]
+  ],
+  "year": 2018
 }

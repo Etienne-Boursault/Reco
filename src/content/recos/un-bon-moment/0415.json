@@ -1,58 +1,60 @@
 {
-  "id": "ubm-0415",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "L'Attaque des Titans",
-  "type": "serie",
   "creator": "Hajime Isayama",
-  "recommendedBy": "Navé",
-  "quote": "J'ai fini l'attaque des titans.",
-  "timestamp": "01:26:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1429/watch?locale=FR",
+    "tmdb": "1429",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1429",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1429/watch?locale=FR"
-  },
+  "id": "ubm-0415",
+  "links": [],
+  "quote": "J'ai fini l'attaque des titans.",
+  "recommendedBy": "Navé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:09",
+  "title": "L'Attaque des Titans",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=L%27Attaque%20des%20Titans",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=L%27Attaque%20des%20Titans",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "neutral",
       "label": "Crunchyroll",
-      "url": "https://www.crunchyroll.com/fr/search?q=L%27Attaque%20des%20Titans",
-      "ethics": "neutral"
+      "url": "https://www.crunchyroll.com/fr/search?q=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "neutral",
       "label": "Animation Digital Network",
-      "url": "https://animationdigitalnetwork.com/search?q=L%27Attaque%20des%20Titans",
-      "ethics": "neutral"
+      "url": "https://animationdigitalnetwork.com/search?q=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=L%27Attaque%20des%20Titans",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "avoid",
       "label": "Anime Digital Network Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Attaque%20des%20Titans",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Attaque%20des%20Titans"
     },
     {
+      "ethics": "avoid",
       "label": "Crunchyroll Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Attaque%20des%20Titans",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Attaque%20des%20Titans"
     }
   ]
 }

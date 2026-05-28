@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1057",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "Paname Art Café",
-  "type": "lieu",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "allez découvrir le Paname, super sale à Paris",
-  "timestamp": "00:43:01",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1057",
+  "links": [],
+  "quote": "allez découvrir le Paname, super sale à Paris",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:01",
+  "title": "Paname Art Café",
+  "types": [
+    "lieu"
   ]
 }

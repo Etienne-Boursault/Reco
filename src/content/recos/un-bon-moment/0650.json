@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0650",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
-  "title": "La Beaux-Familie Business",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "il y a La Beaux-Familie Business",
-  "timestamp": "01:12:12",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0650",
+  "links": [],
+  "quote": "il y a La Beaux-Familie Business",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:12",
+  "title": "La Beaux-Familie Business",
+  "types": [
+    "serie"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0229",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Fire Festival",
-  "type": "autre",
-  "recommendedBy": "Invité",
-  "quote": "Evidemment, au Netflix, ils ont sorti Fire Festival.",
-  "timestamp": "00:33:45",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0229",
+  "links": [],
+  "quote": "Evidemment, au Netflix, ils ont sorti Fire Festival.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:45",
+  "title": "Fire Festival",
+  "types": [
+    "autre"
   ]
 }

@@ -82,7 +82,7 @@ function query(title: string, creator?: string): string {
 interface RecoLike {
   title: string;
   creator?: string;
-  type: string;
+  types: string[];
   externalIds?: {
     isbn?: string;
     tmdb?: string;
@@ -124,13 +124,13 @@ function linksForBookOrComic(reco: RecoLike): ResolvedLink[] {
     // doublon — on complète juste par Lalibrairie.com.
     out.push({
       label: 'Place des Libraires',
-      url: `https://www.placedeslibraires.fr/liste/?q=${enc(reco.externalIds.isbn)}`,
+      url: `https://www.placedeslibraires.fr/listeliv.php?base=allbooks&mots_recherche=${enc(reco.externalIds.isbn)}`,
       kind: 'buy', ethics: 'indie',
     });
   } else {
     out.push({
       label: 'Place des Libraires',
-      url: `https://www.placedeslibraires.fr/liste/?q=${q}`,
+      url: `https://www.placedeslibraires.fr/listeliv.php?base=allbooks&mots_recherche=${q}`,
       kind: 'buy', ethics: 'indie',
     });
   }
@@ -264,12 +264,9 @@ function linksForOther(reco: RecoLike): ResolvedLink[] {
 // API publique
 // =====================================================================
 
-/**
- * Renvoie une liste de liens éthiques pour une reco, classés du plus pertinent
- * au moins pertinent. Peut être vide si aucune plateforme dédiée ne convient.
- */
-export function resolveLinks(reco: RecoLike): ResolvedLink[] {
-  switch (reco.type) {
+/** Calcule les liens pour UN type donné (helper interne). */
+function linksForType(type: string, reco: RecoLike): ResolvedLink[] {
+  switch (type) {
     case 'livre':
     case 'bd':
       return linksForBookOrComic(reco);
@@ -294,4 +291,26 @@ export function resolveLinks(reco: RecoLike): ResolvedLink[] {
     default:
       return linksForOther(reco);
   }
+}
+
+/**
+ * Renvoie une liste de liens éthiques pour une reco, classés du plus pertinent
+ * au moins pertinent. Peut être vide si aucune plateforme dédiée ne convient.
+ *
+ * Pour les recos multi-types (ex. un livre adapté en film), on fusionne les
+ * liens de chaque type en dédupliquant par URL — l'ordre suit celui de
+ * `reco.types` (premier type → liens d'abord).
+ */
+export function resolveLinks(reco: RecoLike): ResolvedLink[] {
+  const types = reco.types && reco.types.length > 0 ? reco.types : ['autre'];
+  const merged: ResolvedLink[] = [];
+  const seenUrls = new Set<string>();
+  for (const t of types) {
+    for (const link of linksForType(t, reco)) {
+      if (seenUrls.has(link.url)) continue;
+      seenUrls.add(link.url);
+      merged.push(link);
+    }
+  }
+  return merged;
 }

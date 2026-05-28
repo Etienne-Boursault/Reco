@@ -1,76 +1,78 @@
 {
-  "id": "ubm-0478",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Resident Evil",
-  "type": "film",
-  "quote": "Resident Evil c'était pas...",
-  "timestamp": "01:14:56",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1577-resident-evil-apocalypse/watch?locale=FR",
+    "tmdb": "1577",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1577",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1577-resident-evil-apocalypse/watch?locale=FR"
-  },
+  "id": "ubm-0478",
+  "links": [],
+  "quote": "Resident Evil c'était pas...",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:56",
+  "title": "Resident Evil",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Resident%20Evil"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Resident%20Evil",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Resident%20Evil"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Resident%20Evil",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Resident%20Evil"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Resident%20Evil&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Resident%20Evil&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Resident%20Evil",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Resident%20Evil"
     }
   ]
 }

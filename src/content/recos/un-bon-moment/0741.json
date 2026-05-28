@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0741",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
-  "title": "The Office",
-  "type": "serie",
   "creator": "Greg Daniels",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "The Office, Steve Carell et tout, n'hésitez pas à aller voir The Office, c'est incroyable.",
-  "timestamp": "01:30:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/2316-the-office/watch?locale=FR",
+    "tmdb": "2316",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "2316",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/2316-the-office/watch?locale=FR"
-  },
+  "id": "ubm-0741",
+  "links": [],
+  "quote": "The Office, Steve Carell et tout, n'hésitez pas à aller voir The Office, c'est incroyable.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:20",
+  "title": "The Office",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Office",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Office"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
     },
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Office",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Office"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Office",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Office"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=The%20Office",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20Office"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Office",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Office"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
     }
   ]
 }

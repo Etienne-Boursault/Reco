@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0181",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Histoire de la French Touch",
-  "type": "podcast",
   "creator": "Radio France",
-  "recommendedBy": "invité",
-  "quote": "un truc sur Redbanger la French Touch voilà histoire de la French Touch [...] c'est génial",
-  "timestamp": "01:56:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0181",
+  "links": [],
+  "quote": "un truc sur Redbanger la French Touch voilà histoire de la French Touch [...] c'est génial",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:56:49",
+  "title": "Histoire de la French Touch",
+  "types": [
+    "podcast"
   ]
 }

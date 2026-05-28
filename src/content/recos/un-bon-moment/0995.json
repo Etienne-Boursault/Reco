@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0995",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Lawrence of Arabia",
-  "type": "film",
   "creator": "David Lean",
-  "year": 1962,
-  "quote": "Laurence d'Arabie, c'est génial. C'est top. Laurence d'Arabie, si vous avez quatre heures à tuer.",
-  "timestamp": "01:27:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/947-lawrence-of-arabia/watch?locale=FR",
+    "tmdb": "947",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "947",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/947-lawrence-of-arabia/watch?locale=FR"
-  },
+  "id": "ubm-0995",
+  "links": [],
+  "quote": "Laurence d'Arabie, c'est génial. C'est top. Laurence d'Arabie, si vous avez quatre heures à tuer.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:05",
+  "title": "Lawrence of Arabia",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Lawrence%20of%20Arabia&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Lawrence%20of%20Arabia&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lawrence%20of%20Arabia",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Lawrence%20of%20Arabia",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lawrence%20of%20Arabia",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Lawrence%20of%20Arabia"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Lawrence%20of%20Arabia",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Lawrence%20of%20Arabia"
     }
-  ]
+  ],
+  "year": 1962
 }

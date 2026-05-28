@@ -1,67 +1,69 @@
 {
-  "id": "ubm-1086",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "The White Lotus",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Une série de \"White Lotus\". Je sais pas si vous l'avez vu. C'est une magnifique série américaine.",
-  "timestamp": "00:57:35",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR",
+    "tmdb": "111803",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "111803",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR"
-  },
+  "id": "ubm-1086",
+  "links": [],
+  "quote": "Une série de \"White Lotus\". Je sais pas si vous l'avez vu. C'est une magnifique série américaine.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:35",
+  "title": "The White Lotus",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=The%20White%20Lotus",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=The%20White%20Lotus"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=The%20White%20Lotus",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20White%20Lotus"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=The%20White%20Lotus",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=The%20White%20Lotus"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=The%20White%20Lotus",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=The%20White%20Lotus"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=The%20White%20Lotus",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=The%20White%20Lotus"
     }
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0305",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Le Silencio",
-  "type": "lieu",
   "creator": "David Lynch",
-  "recommendedBy": "non spécifié",
-  "quote": "Vous savez, le club de Feux David Lynch.",
-  "timestamp": "00:49:10",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0305",
+  "links": [],
+  "quote": "Vous savez, le club de Feux David Lynch.",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:49:10",
+  "title": "Le Silencio",
+  "types": [
+    "lieu"
   ]
 }

@@ -1,28 +1,30 @@
 {
-  "id": "ubm-0314",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Happy Valley",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il faut que je regarde Happy Valley apparemment",
-  "timestamp": "01:50:08",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/61244-happy-valley/watch?locale=FR",
+    "tmdb": "61244",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "61244",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/61244-happy-valley/watch?locale=FR"
-  },
+  "id": "ubm-0314",
+  "links": [],
+  "quote": "il faut que je regarde Happy Valley apparemment",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:08",
+  "title": "Happy Valley",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Happy%20Valley",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Happy%20Valley"
     }
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0111",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "Radiohead",
-  "type": "autre",
   "creator": "Radiohead",
-  "recommendedBy": "intervenant",
-  "quote": "Et puis, plus récemment, des groupes comme Radiohead",
-  "timestamp": "00:22:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c3998e40b300163f8618",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0111",
+  "links": [],
+  "quote": "Et puis, plus récemment, des groupes comme Radiohead",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:22:04",
+  "title": "Radiohead",
+  "types": [
+    "autre"
   ]
 }

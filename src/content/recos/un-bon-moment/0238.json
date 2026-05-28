@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0238",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Ambroise Kerminati",
-  "type": "autre",
-  "quote": "je recommande la chaîne Ambroise de Ambroise Kerminati",
-  "timestamp": "02:24:21",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0238",
+  "links": [],
+  "quote": "je recommande la chaîne Ambroise de Ambroise Kerminati",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:24:21",
+  "title": "Ambroise Kerminati",
+  "types": [
+    "autre"
   ]
 }

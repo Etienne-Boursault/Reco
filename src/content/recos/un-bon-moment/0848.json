@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0848",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Vincent Delherme sur scène",
-  "type": "spectacle",
   "creator": "Vincent Delherme",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Faut vraiment aller voir Vincent Delherme sur scène",
-  "timestamp": "00:06:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0848",
+  "links": [],
+  "quote": "Faut vraiment aller voir Vincent Delherme sur scène",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:06:36",
+  "title": "Vincent Delherme sur scène",
+  "types": [
+    "spectacle"
   ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0334",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "La Civilisation",
-  "type": "album",
   "creator": "Orelsan",
-  "recommendedBy": "Alice Roitier",
-  "quote": "C'est la pochette bleue, là, avec les...",
-  "timestamp": "00:05:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/270762122"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/270762122"
-  }
+  "id": "ubm-0334",
+  "links": [],
+  "quote": "C'est la pochette bleue, là, avec les...",
+  "recommendedBy": "Alice Roitier",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:05:56",
+  "title": "La Civilisation",
+  "types": [
+    "album"
+  ]
 }

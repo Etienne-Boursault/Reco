@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0449",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69a169ac519334f049d06785",
-  "title": "Succession",
-  "type": "autre",
-  "recommendedBy": "Invité",
-  "quote": "succession qui a la dajo de je sais plus qui",
-  "timestamp": "01:05:55",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0449",
+  "links": [],
+  "quote": "succession qui a la dajo de je sais plus qui",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:05:55",
+  "title": "Succession",
+  "types": [
+    "autre"
   ]
 }

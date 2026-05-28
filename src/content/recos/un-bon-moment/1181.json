@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1181",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
-  "title": "D'une",
-  "type": "livre",
-  "recommendedBy": "Navo",
-  "quote": "Je recommanderais aux gens de lire d'une, c'est quand même vachement bien.",
-  "timestamp": "01:42:49",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1181",
+  "links": [],
+  "quote": "Je recommanderais aux gens de lire d'une, c'est quand même vachement bien.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:49",
+  "title": "D'une",
+  "types": [
+    "livre"
   ]
 }

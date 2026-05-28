@@ -1,96 +1,98 @@
 {
-  "id": "ubm-0479",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Sonic",
-  "type": "film",
-  "quote": "Ah, il y a Sonic aussi.",
-  "timestamp": "01:15:44",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/939243-sonic-the-hedgehog-3/watch?locale=FR",
+    "tmdb": "939243",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "939243",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/939243-sonic-the-hedgehog-3/watch?locale=FR"
-  },
+  "id": "ubm-0479",
+  "links": [],
+  "quote": "Ah, il y a Sonic aussi.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:44",
+  "title": "Sonic",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Sonic"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Sonic",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Sonic"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Sonic",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Sonic"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Sonic"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Sonic",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Sonic"
     }
   ]
 }

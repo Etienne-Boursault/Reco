@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0512",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Formidable",
-  "type": "musique",
   "creator": "Stromae",
-  "quote": "C'est aussi un plat. Et bah c'est le nom du plat.",
-  "timestamp": "01:29:12",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/69879254"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/69879254"
-  }
+  "id": "ubm-0512",
+  "links": [],
+  "quote": "C'est aussi un plat. Et bah c'est le nom du plat.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:29:12",
+  "title": "Formidable",
+  "types": [
+    "musique"
+  ]
 }

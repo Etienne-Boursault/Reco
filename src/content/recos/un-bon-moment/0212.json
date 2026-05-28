@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0212",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Les Hauts de Hurlevent",
-  "type": "livre",
   "creator": "Emily Brontë",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Léa Durlevand, des Médis Brontés. Le plus grand livre jamais écrit sur l'amour en 1847.",
-  "timestamp": "00:18:51",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0212",
+  "links": [],
+  "quote": "Léa Durlevand, des Médis Brontés. Le plus grand livre jamais écrit sur l'amour en 1847.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:51",
+  "title": "Les Hauts de Hurlevent",
+  "types": [
+    "livre"
   ],
   "year": 1847
 }

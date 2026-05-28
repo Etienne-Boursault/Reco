@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0137",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Un de ses albums",
-  "type": "autre",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je voulais que ça fasse un son avec des riverbes du carnage",
-  "timestamp": "00:44:29",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0137",
+  "links": [],
+  "quote": "je voulais que ça fasse un son avec des riverbes du carnage",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:44:29",
+  "title": "Un de ses albums",
+  "types": [
+    "autre"
   ]
 }

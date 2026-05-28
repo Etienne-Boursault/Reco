@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0259",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Mr. Nobody",
-  "type": "film",
   "creator": "Jaco Van Dormael",
-  "recommendedBy": "Navo",
-  "quote": "Oui, c'est Mr. Nobody.",
-  "timestamp": "01:47:25",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/31011-mr-nobody/watch?locale=FR",
+    "tmdb": "31011",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "31011",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/31011-mr-nobody/watch?locale=FR"
-  },
+  "id": "ubm-0259",
+  "links": [],
+  "quote": "Oui, c'est Mr. Nobody.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:25",
+  "title": "Mr. Nobody",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Mr.%20Nobody"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mr.%20Nobody",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Mr.%20Nobody"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Mr.%20Nobody",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Mr.%20Nobody"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20Nobody",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Mr.%20Nobody"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Mr.%20Nobody",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Mr.%20Nobody"
     }
   ]
 }

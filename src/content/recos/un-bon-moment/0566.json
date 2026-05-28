@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0566",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6a05e43cc7ea4a3c85664972",
-  "title": "The Crown",
-  "type": "serie",
   "creator": "Peter Morgan",
-  "recommendedBy": "Navo",
-  "quote": "Elle a utilisé une méthode de recherche un peu bizarre.",
-  "timestamp": "00:31:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/65494-the-crown/watch?locale=FR",
+    "tmdb": "65494",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "65494",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/65494-the-crown/watch?locale=FR"
-  },
+  "id": "ubm-0566",
+  "links": [],
+  "quote": "Elle a utilisé une méthode de recherche un peu bizarre.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:31:14",
+  "title": "The Crown",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Crown",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Crown"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Crown",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Crown"
     }
   ]
 }

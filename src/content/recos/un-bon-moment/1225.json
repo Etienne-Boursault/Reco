@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1225",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Joseph Foussin",
-  "type": "autre",
   "creator": "non spécifié",
-  "recommendedBy": "non spécifié",
-  "quote": "Joseph Foussin, détective Foussin.",
-  "timestamp": "01:12:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b305f3ca1cc001201a861",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1225",
+  "links": [],
+  "quote": "Joseph Foussin, détective Foussin.",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:28",
+  "title": "Joseph Foussin",
+  "types": [
+    "autre"
   ]
 }

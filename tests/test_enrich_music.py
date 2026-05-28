@@ -227,9 +227,9 @@ def test_main_deezer_only_no_spotify_env(reco_env, monkeypatch):
     """Sans SPOTIFY_CLIENT_ID/SECRET, on enrichit seulement Deezer."""
     monkeypatch.delenv("SPOTIFY_CLIENT_ID", raising=False)
     monkeypatch.delenv("SPOTIFY_CLIENT_SECRET", raising=False)
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "One More Time"})
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "One More Time"})
     # Type non ciblé ignoré.
-    _w(reco_env, "b.json", {"id": "b", "type": "film", "title": "X"})
+    _w(reco_env, "b.json", {"id": "b", "types": ["film"], "title": "X"})
 
     responses.add(
         responses.GET, "https://api.deezer.com/search/track",
@@ -246,7 +246,7 @@ def test_main_deezer_only_no_spotify_env(reco_env, monkeypatch):
 def test_main_with_spotify_token_ok(reco_env, monkeypatch):
     monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
     monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "sec")
-    _w(reco_env, "a.json", {"id": "a", "type": "album", "title": "Discovery",
+    _w(reco_env, "a.json", {"id": "a", "types": ["album"], "title": "Discovery",
                             "creator": "Daft Punk"})
     # Token OK + markets probe OK.
     responses.add(
@@ -280,7 +280,7 @@ def test_main_spotify_token_ok_but_probe_403_disables_spotify(reco_env, monkeypa
     """Token OK + /markets renvoie 403 → on continue Deezer seul."""
     monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
     monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "sec")
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X"})
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X"})
     responses.add(
         responses.POST, "https://accounts.spotify.com/api/token",
         json={"access_token": "tok"}, status=200,
@@ -304,7 +304,7 @@ def test_main_spotify_token_ok_but_probe_403_disables_spotify(reco_env, monkeypa
 def test_main_spotify_token_fails(reco_env, monkeypatch):
     monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
     monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "sec")
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X"})
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X"})
     responses.add(
         responses.POST, "https://accounts.spotify.com/api/token",
         json={"error": "bad"}, status=400,
@@ -331,10 +331,10 @@ def test_main_limit_and_skip_already_enriched(reco_env, monkeypatch):
     monkeypatch.delenv("SPOTIFY_CLIENT_ID", raising=False)
     monkeypatch.delenv("SPOTIFY_CLIENT_SECRET", raising=False)
     # Sans token, on skippe si deezer déjà présent.
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X",
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X",
                             "externalIds": {"deezer": "https://d/1"}})
-    _w(reco_env, "b.json", {"id": "b", "type": "musique", "title": "Y"})
-    _w(reco_env, "c.json", {"id": "c", "type": "musique", "title": "Z"})
+    _w(reco_env, "b.json", {"id": "b", "types": ["musique"], "title": "Y"})
+    _w(reco_env, "c.json", {"id": "c", "types": ["musique"], "title": "Z"})
     responses.add(
         responses.GET, "https://api.deezer.com/search/track",
         json={"data": [{"link": "https://d/2"}]}, status=200,
@@ -359,7 +359,7 @@ def test_main_no_targets_returns_early(reco_env, monkeypatch):
 def test_main_force_replaces_existing(reco_env, monkeypatch):
     monkeypatch.delenv("SPOTIFY_CLIENT_ID", raising=False)
     monkeypatch.delenv("SPOTIFY_CLIENT_SECRET", raising=False)
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X",
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X",
                             "externalIds": {"deezer": "https://old"}})
     responses.add(
         responses.GET, "https://api.deezer.com/search/track",
@@ -376,7 +376,7 @@ def test_main_deezer_not_found_logs(reco_env, monkeypatch):
     """Couvre la branche 'pas trouvé' de la boucle main."""
     monkeypatch.delenv("SPOTIFY_CLIENT_ID", raising=False)
     monkeypatch.delenv("SPOTIFY_CLIENT_SECRET", raising=False)
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X"})
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X"})
     for k in ("track", "album", "artist"):
         responses.add(
             responses.GET, f"https://api.deezer.com/search/{k}",
@@ -393,7 +393,7 @@ def test_main_spotify_not_found_for_reco(reco_env, monkeypatch):
     """Token Spotify OK, Deezer trouve, Spotify ne trouve pas → branche logique."""
     monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
     monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "sec")
-    _w(reco_env, "a.json", {"id": "a", "type": "musique", "title": "X"})
+    _w(reco_env, "a.json", {"id": "a", "types": ["musique"], "title": "X"})
     responses.add(
         responses.POST, "https://accounts.spotify.com/api/token",
         json={"access_token": "tok"}, status=200,

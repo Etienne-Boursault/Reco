@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0473",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Police Flash 80",
-  "type": "film",
-  "recommendedBy": "Navo",
-  "quote": "Oui, je joue dans Police Flash 80.",
-  "timestamp": "00:12:04",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
   "externalIds": {
     "tmdb": "1002109",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0473",
+  "links": [],
+  "quote": "Oui, je joue dans Police Flash 80.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:12:04",
+  "title": "Police Flash 80",
+  "types": [
+    "film"
+  ]
 }

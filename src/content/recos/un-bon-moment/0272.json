@@ -1,67 +1,69 @@
 {
-  "id": "ubm-0272",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Kika",
-  "type": "film",
-  "recommendedBy": "invitée",
-  "quote": "Il y a un film qui sort, là, qui s'appelle Kika, que j'ai vu en avant-première. C'est hallucinant.",
-  "timestamp": "01:43:54",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR",
+    "tmdb": "8223",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "8223",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR"
-  },
+  "id": "ubm-0272",
+  "links": [],
+  "quote": "Il y a un film qui sort, là, qui s'appelle Kika, que j'ai vu en avant-première. C'est hallucinant.",
+  "recommendedBy": "invitée",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:43:54",
+  "title": "Kika",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Kika",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Kika"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Kika",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Kika"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Kika",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Kika"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Kika",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Kika"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Kika",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Kika"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Kika",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Kika"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Kika",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Kika"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Kika",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Kika"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Kika",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Kika"
     }
   ]
 }

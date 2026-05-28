@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0158",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ea7880de9a2a62c42248f5",
-  "title": "Pulsion",
-  "type": "spectacle",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Navo",
-  "quote": "J'ai adoré pulsion.",
-  "timestamp": "00:58:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0158",
+  "links": [],
+  "quote": "J'ai adoré pulsion.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:23",
+  "title": "Pulsion",
+  "types": [
+    "spectacle"
   ]
 }

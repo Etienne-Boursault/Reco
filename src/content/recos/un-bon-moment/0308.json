@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0308",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Cementix",
-  "type": "jeu",
-  "recommendedBy": "invité",
-  "quote": "Cementix c'est un jeu où faut trouver un mot",
-  "timestamp": "01:34:08",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0308",
+  "links": [],
+  "quote": "Cementix c'est un jeu où faut trouver un mot",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:08",
+  "title": "Cementix",
+  "types": [
+    "jeu"
   ]
 }

@@ -1,69 +1,71 @@
 {
-  "id": "ubm-0385",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Fargo",
-  "type": "serie",
   "creator": "Noah Hawley",
-  "recommendedBy": "Invité",
-  "quote": "à un moment j'ai recommandé la dernière saison de Fargo",
-  "timestamp": "00:06:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR",
+    "tmdb": "60622",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "60622",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR"
-  },
+  "id": "ubm-0385",
+  "links": [],
+  "quote": "à un moment j'ai recommandé la dernière saison de Fargo",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:06:02",
+  "title": "Fargo",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Fargo",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "MGM Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Fargo",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Fargo",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Fargo"
     }
   ]
 }

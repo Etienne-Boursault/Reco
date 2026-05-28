@@ -1,95 +1,97 @@
 {
-  "id": "ubm-0645",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
-  "title": "Parasite",
-  "type": "film",
   "creator": "Bong Joon-ho",
-  "recommendedBy": "invité",
-  "quote": "en parlant de films de Cannes, parasites je viens de l'acheter j'adore c'est fou c'est une vraie comédie noire",
-  "timestamp": "01:03:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/496243/watch?locale=FR",
+    "tmdb": "496243",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2019,
-  "externalIds": {
-    "tmdb": "496243",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/496243/watch?locale=FR"
-  },
+  "id": "ubm-0645",
+  "links": [],
+  "quote": "en parlant de films de Cannes, parasites je viens de l'acheter j'adore c'est fou c'est une vraie comédie noire",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:11",
+  "title": "Parasite",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Parasite",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Parasite&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Parasite&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parasite",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Parasite"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Parasite",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Parasite",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Parasite"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Parasite",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Parasite"
     }
-  ]
+  ],
+  "year": 2019
 }

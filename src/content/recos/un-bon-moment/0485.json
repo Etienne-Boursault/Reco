@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0485",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Le Troisième Cerveau",
-  "type": "livre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un bouquin allemand, j'ai déjà eu une idée, t'as dit le troisième.",
-  "timestamp": "01:17:24",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0485",
+  "links": [],
+  "quote": "C'est un bouquin allemand, j'ai déjà eu une idée, t'as dit le troisième.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:24",
+  "title": "Le Troisième Cerveau",
+  "types": [
+    "livre"
   ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0300",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "M.",
-  "type": "musique",
   "creator": "M.",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un extrait d'une chanson de M.",
-  "timestamp": "00:33:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3867905081"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3867905081"
-  }
+  "id": "ubm-0300",
+  "links": [],
+  "quote": "C'est un extrait d'une chanson de M.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:36",
+  "title": "M.",
+  "types": [
+    "musique"
+  ]
 }

@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0935",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Megan Trainor",
-  "type": "musique",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "écoutez du Megan Trenor ça met en patate",
-  "timestamp": "01:15:06",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/113420702"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/113420702"
-  }
+  "id": "ubm-0935",
+  "links": [],
+  "quote": "écoutez du Megan Trenor ça met en patate",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:06",
+  "title": "Megan Trainor",
+  "types": [
+    "musique"
+  ]
 }

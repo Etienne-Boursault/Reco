@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0862",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Documentaire sur Orelsan",
-  "type": "autre",
   "creator": "Clément Cotentin",
-  "recommendedBy": "Clem",
-  "quote": "C'est une vraie réussite ce documentaire pour moi c'est ton premier vrai gros documentaire.",
-  "timestamp": "00:03:08",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0862",
+  "links": [],
+  "quote": "C'est une vraie réussite ce documentaire pour moi c'est ton premier vrai gros documentaire.",
+  "recommendedBy": "Clem",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:08",
+  "title": "Documentaire sur Orelsan",
+  "types": [
+    "autre"
   ]
 }

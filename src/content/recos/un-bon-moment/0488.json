@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0488",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Le Coupier de la Porte",
-  "type": "film",
   "creator": "Thomas N. Gégell",
-  "recommendedBy": "Navo",
-  "quote": "Un sublime film, moi, que j'ai trouvé vraiment qui m'a vachement inspiré.",
-  "timestamp": "01:31:08",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0488",
+  "links": [],
+  "quote": "Un sublime film, moi, que j'ai trouvé vraiment qui m'a vachement inspiré.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:08",
+  "title": "Le Coupier de la Porte",
+  "types": [
+    "film"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0708",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Splice",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est un logiciel qui s'appelle Splice.",
-  "timestamp": "00:28:25",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0708",
+  "links": [],
+  "quote": "c'est un logiciel qui s'appelle Splice.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:25",
+  "title": "Splice",
+  "types": [
+    "autre"
   ]
 }

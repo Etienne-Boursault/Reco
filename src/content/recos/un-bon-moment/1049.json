@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1049",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
-  "title": "Les Fondements",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Tu as vu les fondrements sur canal ou pas ? Non, toujours pas. Regarde ça, c'est incroyable.",
-  "timestamp": "01:40:34",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1049",
+  "links": [],
+  "quote": "Tu as vu les fondrements sur canal ou pas ? Non, toujours pas. Regarde ça, c'est incroyable.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:40:34",
+  "title": "Les Fondements",
+  "types": [
+    "serie"
   ]
 }

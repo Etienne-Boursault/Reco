@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0339",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "De bons amis",
-  "type": "autre",
   "creator": "Nicolas Beguet",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est un excellent documentaire qui s'appelle De bons amis de Nicolas Beguet",
-  "timestamp": "01:44:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6960deefb86949aa06496e27",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0339",
+  "links": [],
+  "quote": "C'est un excellent documentaire qui s'appelle De bons amis de Nicolas Beguet",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:44:45",
+  "title": "De bons amis",
+  "types": [
+    "autre"
   ]
 }

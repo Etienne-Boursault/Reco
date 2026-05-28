@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0638",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
-  "title": "This Is America",
-  "type": "musique",
   "creator": "Childish Gambino",
-  "quote": "Dans un morceau de Charlie Jean Gambino, d'ailleurs, comme ça s'appelle This is America...",
-  "timestamp": "00:29:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/496157642"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/496157642"
-  }
+  "id": "ubm-0638",
+  "links": [],
+  "quote": "Dans un morceau de Charlie Jean Gambino, d'ailleurs, comme ça s'appelle This is America...",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:56",
+  "title": "This Is America",
+  "types": [
+    "musique"
+  ]
 }

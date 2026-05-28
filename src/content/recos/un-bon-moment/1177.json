@@ -1,34 +1,36 @@
 {
-  "id": "ubm-1177",
-  "sourceId": "un-bon-moment",
+  "creator": "Jeff Orlowski",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
-  "title": "The Social Dilemma",
-  "type": "film",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Sur Netflix, il y a le social dilemma qui résume un peu tout ça.",
-  "timestamp": "00:21:54",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/656690-the-social-dilemma/watch?locale=FR",
+    "tmdb": "656690",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Jeff Orlowski",
-  "externalIds": {
-    "tmdb": "656690",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/656690-the-social-dilemma/watch?locale=FR"
-  },
+  "id": "ubm-1177",
+  "links": [],
+  "quote": "Sur Netflix, il y a le social dilemma qui résume un peu tout ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:54",
+  "title": "The Social Dilemma",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma"
     }
   ]
 }

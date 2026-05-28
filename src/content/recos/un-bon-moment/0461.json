@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0461",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "That's My People",
-  "type": "autre",
   "creator": "NTM",
-  "recommendedBy": "Navo",
-  "quote": "Clip de That's My People, le légendaire morceau d'NTM.",
-  "timestamp": "00:12:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0461",
+  "links": [],
+  "quote": "Clip de That's My People, le légendaire morceau d'NTM.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:12:04",
+  "title": "That's My People",
+  "types": [
+    "autre"
   ]
 }

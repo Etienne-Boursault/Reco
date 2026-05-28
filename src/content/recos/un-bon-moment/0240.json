@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0240",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Michael Jackson",
-  "type": "musique",
-  "quote": "moi dans ce cas je recommande Michael Jackson",
-  "timestamp": "02:25:41",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/4603408"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/4603408"
-  }
+  "id": "ubm-0240",
+  "links": [],
+  "quote": "moi dans ce cas je recommande Michael Jackson",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:25:41",
+  "title": "Michael Jackson",
+  "types": [
+    "musique"
+  ]
 }

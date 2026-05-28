@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1275",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65c7a2673210d00017783f8b",
-  "title": "Wallydia",
-  "type": "spectacle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "vous savez quoi, aller voir les théâtres près de chez vous, dites, on veut Wallydia dans notre théâtre.",
-  "timestamp": "01:02:12",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1275",
+  "links": [],
+  "quote": "vous savez quoi, aller voir les théâtres près de chez vous, dites, on veut Wallydia dans notre théâtre.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:12",
+  "title": "Wallydia",
+  "types": [
+    "spectacle"
   ]
 }

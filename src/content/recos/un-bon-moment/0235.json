@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0235",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "PowerWash Simulator",
-  "type": "jeu",
-  "quote": "je dirais le jeu vidéo powerwash simulator",
-  "timestamp": "02:15:59",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0235",
+  "links": [],
+  "quote": "je dirais le jeu vidéo powerwash simulator",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:15:59",
+  "title": "PowerWash Simulator",
+  "types": [
+    "jeu"
   ]
 }

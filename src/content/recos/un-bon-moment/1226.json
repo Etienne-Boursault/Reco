@@ -1,78 +1,80 @@
 {
-  "id": "ubm-1226",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652406c019376d001282c4d8",
-  "title": "La Nuit du 12",
-  "type": "film",
   "creator": "Dominik Moll",
-  "recommendedBy": "Big Flow",
-  "quote": "J'ai radé la nuit du douze par exemple.",
-  "timestamp": "00:02:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/925102-la-nuit-du-12/watch?locale=FR",
+    "tmdb": "925102",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "925102",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/925102-la-nuit-du-12/watch?locale=FR"
-  },
+  "id": "ubm-1226",
+  "links": [],
+  "quote": "J'ai radé la nuit du douze par exemple.",
+  "recommendedBy": "Big Flow",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:02",
+  "title": "La Nuit du 12",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Nuit%20du%2012",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Nuit%20du%2012",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Nuit%20du%2012",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Nuit%20du%2012"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20Nuit%20du%2012",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20Nuit%20du%2012"
     }
   ]
 }

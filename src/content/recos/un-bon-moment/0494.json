@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0494",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69c7de338ac24e236cb65e12",
-  "title": "Mesdames",
-  "type": "album",
   "creator": "Grand Corps Malade",
-  "recommendedBy": "Navo",
-  "quote": "L'album de Grand Corps Malade, qui a quand même très bien marché.",
-  "timestamp": "00:10:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/367313217"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/367313217"
-  }
+  "id": "ubm-0494",
+  "links": [],
+  "quote": "L'album de Grand Corps Malade, qui a quand même très bien marché.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:10:54",
+  "title": "Mesdames",
+  "types": [
+    "album"
+  ]
 }

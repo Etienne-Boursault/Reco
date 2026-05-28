@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0863",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Dig",
-  "type": "autre",
   "creator": "Non spécifié",
-  "recommendedBy": "Clément Cotentin",
-  "quote": "C'est vraiment une référence faudrait que les gens aillent le voir c'est vraiment un truc de ouf.",
-  "timestamp": "00:12:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0863",
+  "links": [],
+  "quote": "C'est vraiment une référence faudrait que les gens aillent le voir c'est vraiment un truc de ouf.",
+  "recommendedBy": "Clément Cotentin",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:12:17",
+  "title": "Dig",
+  "types": [
+    "autre"
   ]
 }

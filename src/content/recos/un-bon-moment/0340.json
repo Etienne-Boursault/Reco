@@ -1,118 +1,120 @@
 {
-  "id": "ubm-0340",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "Charlie",
-  "type": "film",
   "creator": "autre",
-  "recommendedBy": "Navo",
-  "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » et le nom en français c'est Charlie.",
-  "timestamp": "01:47:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/118-charlie-and-the-chocolate-factory/watch?locale=FR",
+    "tmdb": "118",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "118",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/118-charlie-and-the-chocolate-factory/watch?locale=FR"
-  },
+  "id": "ubm-0340",
+  "links": [],
+  "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » et le nom en français c'est Charlie.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:41",
+  "title": "Charlie",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Charlie",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Charlie&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Charlie&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Charlie"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Charlie",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Charlie",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Charlie"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Charlie",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Charlie"
     }
   ]
 }

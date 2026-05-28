@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1150",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61cb19444f2d030012ddd82a",
-  "title": "Spectacle de Capucine la ventriloque",
-  "type": "spectacle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je vous invite à aller découvrir le nouveau spectacle c'est parce qu'il en parle beaucoup dans le moment non mais le nouveau spectacle du capucine enfin le premier spectacle capucine la ventriloque",
-  "timestamp": "01:31:11",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1150",
+  "links": [],
+  "quote": "je vous invite à aller découvrir le nouveau spectacle c'est parce qu'il en parle beaucoup dans le moment non mais le nouveau spectacle du capucine enfin le premier spectacle capucine la ventriloque",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:11",
+  "title": "Spectacle de Capucine la ventriloque",
+  "types": [
+    "spectacle"
   ]
 }

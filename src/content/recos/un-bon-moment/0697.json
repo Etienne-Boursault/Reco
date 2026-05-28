@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0697",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
-  "title": "Le livre de Raymond Doménec",
-  "type": "livre",
   "creator": "Raymond Doménec",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je lis aussi un livre de Raymond Doménec, ancien sélectionneur de l'équipe de France, lequel il donne ses meilleurs conseils d'entraîneur.",
-  "timestamp": "01:04:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0697",
+  "links": [],
+  "quote": "Je lis aussi un livre de Raymond Doménec, ancien sélectionneur de l'équipe de France, lequel il donne ses meilleurs conseils d'entraîneur.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:47",
+  "title": "Le livre de Raymond Doménec",
+  "types": [
+    "livre"
   ]
 }

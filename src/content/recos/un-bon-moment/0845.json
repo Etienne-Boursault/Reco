@@ -1,95 +1,97 @@
 {
-  "id": "ubm-0845",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "À l'abordage",
-  "type": "film",
   "creator": "Guillaume Braque",
-  "recommendedBy": "Navo",
-  "quote": "Moi je recommanderais un film qui s'appelle \"A l'abordage de Guillaume Braque\". Qui est un metteur en scène que j'adore.",
-  "timestamp": "01:04:27",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/665753-a-l-abordage/watch?locale=FR",
+    "tmdb": "665753",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2020,
-  "externalIds": {
-    "tmdb": "665753",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/665753-a-l-abordage/watch?locale=FR"
-  },
+  "id": "ubm-0845",
+  "links": [],
+  "quote": "Moi je recommanderais un film qui s'appelle \"A l'abordage de Guillaume Braque\". Qui est un metteur en scène que j'adore.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:27",
+  "title": "À l'abordage",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "avoid",
       "label": "France TV Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=%C3%80%20l%27abordage",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=%C3%80%20l%27abordage&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=%C3%80%20l%27abordage&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=%C3%80%20l%27abordage",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=%C3%80%20l%27abordage",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=%C3%80%20l%27abordage",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=%C3%80%20l%27abordage"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=%C3%80%20l%27abordage",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=%C3%80%20l%27abordage"
     }
-  ]
+  ],
+  "year": 2020
 }

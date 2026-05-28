@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0236",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "le podcast de Yacine et Dedo",
-  "type": "podcast",
-  "quote": "j'ai envie d'envoyer de la force aux amis yacine et dédo",
-  "timestamp": "02:21:59",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0236",
+  "links": [],
+  "quote": "j'ai envie d'envoyer de la force aux amis yacine et dédo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:21:59",
+  "title": "le podcast de Yacine et Dedo",
+  "types": [
+    "podcast"
   ]
 }

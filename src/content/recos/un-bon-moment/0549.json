@@ -1,78 +1,80 @@
 {
-  "id": "ubm-0549",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "Papicha",
-  "type": "film",
   "creator": "Mounia Medour",
-  "recommendedBy": "inconnu",
-  "quote": "Bah en fait, c'est un film qui m'a beaucoup marqué, qui a vraiment changé ma vie",
-  "timestamp": "01:27:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/592807-papicha/watch?locale=FR",
+    "tmdb": "592807",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "592807",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/592807-papicha/watch?locale=FR"
-  },
+  "id": "ubm-0549",
+  "links": [],
+  "quote": "Bah en fait, c'est un film qui m'a beaucoup marqué, qui a vraiment changé ma vie",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:30",
+  "title": "Papicha",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Papicha",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Papicha&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Papicha&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papicha",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Papicha",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Papicha",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Papicha",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Papicha",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Papicha"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Papicha",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Papicha",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Papicha",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Papicha"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Papicha",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Papicha"
     }
   ]
 }

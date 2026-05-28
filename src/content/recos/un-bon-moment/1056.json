@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1056",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "Les Fabs de Daïdo et Dako",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "si vous voulez les voir c'est de quoi on parle ça s'appelle les facts de Daidako y'a une chaîne carrément youtube ou sur my canal si vous avez canal plus allez voir",
-  "timestamp": "00:45:50",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1056",
+  "links": [],
+  "quote": "si vous voulez les voir c'est de quoi on parle ça s'appelle les facts de Daidako y'a une chaîne carrément youtube ou sur my canal si vous avez canal plus allez voir",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:45:50",
+  "title": "Les Fabs de Daïdo et Dako",
+  "types": [
+    "serie"
   ]
 }

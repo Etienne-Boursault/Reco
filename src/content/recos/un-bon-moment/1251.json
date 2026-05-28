@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1251",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Ritamitsu",
-  "type": "autre",
   "creator": "Ritamitsu",
-  "recommendedBy": "Invité",
-  "quote": "C'est un beau la voix.",
-  "timestamp": "00:36:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1251",
+  "links": [],
+  "quote": "C'est un beau la voix.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:36:14",
+  "title": "Ritamitsu",
+  "types": [
+    "autre"
   ]
 }

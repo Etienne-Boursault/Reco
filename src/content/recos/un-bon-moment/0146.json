@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0146",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed94b586967e0017c06729",
-  "title": "Bouler le feu",
-  "type": "album",
   "creator": "Juliette Armanet",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je lui dis, \"Ouais, du coup, j'ai eu hyper peur de sortir ce truc-là, j'ai l'impression que ça n'a pas marché...\"",
-  "timestamp": "01:03:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/370601937"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/370601937"
-  }
+  "id": "ubm-0146",
+  "links": [],
+  "quote": "je lui dis, \"Ouais, du coup, j'ai eu hyper peur de sortir ce truc-là, j'ai l'impression que ça n'a pas marché...\"",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:30",
+  "title": "Bouler le feu",
+  "types": [
+    "album"
+  ]
 }

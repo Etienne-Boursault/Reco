@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1192",
-  "sourceId": "un-bon-moment",
+  "creator": "N/A",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "Gangstories",
-  "type": "podcast",
-  "recommendedBy": "Anis",
-  "quote": "j'ai écouté Gangstories de...",
-  "timestamp": "01:42:07",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "N/A"
+  "id": "ubm-1192",
+  "links": [],
+  "quote": "j'ai écouté Gangstories de...",
+  "recommendedBy": "Anis",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:07",
+  "title": "Gangstories",
+  "types": [
+    "podcast"
+  ]
 }

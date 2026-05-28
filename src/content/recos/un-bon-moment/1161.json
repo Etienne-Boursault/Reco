@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1161",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Yoga",
-  "type": "livre",
   "creator": "Emmanuel Carrère",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "j'ai relu Yoga, je sais pas pourquoi, juste après avoir eu mon diagnostic",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "timestamp": "00:39:06"
+  "id": "ubm-1161",
+  "links": [],
+  "quote": "j'ai relu Yoga, je sais pas pourquoi, juste après avoir eu mon diagnostic",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:39:06",
+  "title": "Yoga",
+  "types": [
+    "livre"
+  ]
 }

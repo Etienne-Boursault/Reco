@@ -1,108 +1,110 @@
 {
-  "id": "ubm-0598",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "School of Rock",
-  "type": "film",
   "creator": "Richard Linklater",
-  "recommendedBy": "Navo",
-  "quote": "il a fait des films le plus connu, je pense, School of Rock avec Black Black.",
-  "timestamp": "00:03:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1584-the-school-of-rock/watch?locale=FR",
+    "tmdb": "1584",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1584",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1584-the-school-of-rock/watch?locale=FR"
-  },
+  "id": "ubm-0598",
+  "links": [],
+  "quote": "il a fait des films le plus connu, je pense, School of Rock avec Black Black.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:28",
+  "title": "School of Rock",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=School%20of%20Rock"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=School%20of%20Rock"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=School%20of%20Rock&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=School%20of%20Rock&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=School%20of%20Rock",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=School%20of%20Rock"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=School%20of%20Rock"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=School%20of%20Rock",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=School%20of%20Rock"
     }
   ]
 }

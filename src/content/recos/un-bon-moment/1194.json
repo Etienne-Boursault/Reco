@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1194",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
-  "title": "Trxns",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est une chaîne qui s'appelle Trans. Mais à la place du A, c'est un X. Donc, impossible à prononcer. Et en fait, c'est une chaîne. C'est des gars qui font des vidéos sur Pokémon.",
-  "timestamp": "01:45:34",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1194",
+  "links": [],
+  "quote": "C'est une chaîne qui s'appelle Trans. Mais à la place du A, c'est un X. Donc, impossible à prononcer. Et en fait, c'est une chaîne. C'est des gars qui font des vidéos sur Pokémon.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:45:34",
+  "title": "Trxns",
+  "types": [
+    "autre"
   ]
 }

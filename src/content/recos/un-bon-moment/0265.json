@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0265",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Un ours dans le Jura",
-  "type": "film",
   "creator": "Non précisé",
-  "recommendedBy": "Non précisé",
-  "quote": "Un ours dans le Jurape.",
-  "timestamp": "00:14:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1210732-un-ours-dans-le-jura/watch?locale=FR",
+    "tmdb": "1210732",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1210732",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1210732-un-ours-dans-le-jura/watch?locale=FR"
-  },
+  "id": "ubm-0265",
+  "links": [],
+  "quote": "Un ours dans le Jurape.",
+  "recommendedBy": "Non précisé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:14:40",
+  "title": "Un ours dans le Jura",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20ours%20dans%20le%20Jura",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20ours%20dans%20le%20Jura",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Un%20ours%20dans%20le%20Jura"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Un%20ours%20dans%20le%20Jura",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Un%20ours%20dans%20le%20Jura"
     }
   ]
 }

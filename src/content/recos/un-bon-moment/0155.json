@@ -1,28 +1,30 @@
 {
-  "id": "ubm-0155",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "661c1bf83fb7ab00162aa674",
-  "title": "Extraordinary",
-  "type": "serie",
   "creator": "Disney+",
-  "recommendedBy": "Navo",
-  "quote": "Extraordinary, c'est une série sur une femme qui a des pouvoirs, c'est ça ?",
-  "timestamp": "01:15:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "661c1bf83fb7ab00162aa674",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/47907-extraordinary/watch?locale=FR",
+    "tmdb": "47907",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "47907",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/47907-extraordinary/watch?locale=FR"
-  },
+  "id": "ubm-0155",
+  "links": [],
+  "quote": "Extraordinary, c'est une série sur une femme qui a des pouvoirs, c'est ça ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:00",
+  "title": "Extraordinary",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Extraordinary",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Extraordinary"
     }
   ]
 }

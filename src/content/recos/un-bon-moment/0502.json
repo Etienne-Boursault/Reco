@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0502",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69d112dba691c8ebbb9a19d9",
-  "title": "Cine & Rencontre",
-  "type": "spectacle",
   "creator": "Shirley",
-  "recommendedBy": "Navo",
-  "quote": "Allez voir ça",
-  "timestamp": "01:24:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0502",
+  "links": [],
+  "quote": "Allez voir ça",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:24:20",
+  "title": "Cine & Rencontre",
+  "types": [
+    "spectacle"
   ]
 }

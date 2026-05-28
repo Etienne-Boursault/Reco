@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0264",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Les Pires",
-  "type": "film",
   "creator": "Non précisé",
-  "recommendedBy": "Non précisé",
-  "quote": "Il décroche un rôle dans le film Les Pires.",
-  "timestamp": "00:11:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/962543-les-pires/watch?locale=FR",
+    "tmdb": "962543",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "962543",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/962543-les-pires/watch?locale=FR"
-  },
+  "id": "ubm-0264",
+  "links": [],
+  "quote": "Il décroche un rôle dans le film Les Pires.",
+  "recommendedBy": "Non précisé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:11:59",
+  "title": "Les Pires",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Les%20Pires&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Les%20Pires&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Pires",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Les%20Pires"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Pires",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Pires"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Les%20Pires",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Les%20Pires"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Les%20Pires",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Les%20Pires"
     }
   ]
 }

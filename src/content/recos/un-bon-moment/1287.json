@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1287",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "Familiar Man",
-  "type": "film",
   "creator": "Nicolas Cage",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est un film avec Nicolas Cage ou en gros il va ou pas rejoindre sa meuf truc de Noël",
-  "timestamp": "00:47:55",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1287",
+  "links": [],
+  "quote": "c'est un film avec Nicolas Cage ou en gros il va ou pas rejoindre sa meuf truc de Noël",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:55",
+  "title": "Familiar Man",
+  "types": [
+    "film"
   ]
 }

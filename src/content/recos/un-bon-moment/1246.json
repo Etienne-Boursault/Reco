@@ -1,73 +1,75 @@
 {
-  "id": "ubm-1246",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Coco",
-  "type": "film",
   "creator": "Pixar",
-  "recommendedBy": "Navo",
-  "quote": "Très bon film.",
-  "timestamp": "00:02:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/354912-coco/watch?locale=FR",
+    "tmdb": "354912",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "354912",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/354912-coco/watch?locale=FR"
-  },
+  "id": "ubm-1246",
+  "links": [],
+  "quote": "Très bon film.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:20",
+  "title": "Coco",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Coco",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Coco",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Coco&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Coco&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Coco",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Coco",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Coco",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Coco"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Coco",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Coco",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Coco",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Coco"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Coco",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Coco"
     }
   ]
 }

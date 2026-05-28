@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0456",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69a169ac519334f049d06785",
-  "title": "Boulet Bill",
-  "type": "livre",
   "creator": "Auteur inconnu",
-  "recommendedBy": "Invité",
-  "quote": "moi c'était boulet bill",
-  "timestamp": "01:41:37",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69a169ac519334f049d06785",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0456",
+  "links": [],
+  "quote": "moi c'était boulet bill",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:37",
+  "title": "Boulet Bill",
+  "types": [
+    "livre"
   ]
 }

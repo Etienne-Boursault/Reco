@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0535",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Pink",
-  "type": "musique",
-  "quote": "prochaine chanson je crois que c'est pink",
-  "timestamp": "00:58:42",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/60200391"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/60200391"
-  }
+  "id": "ubm-0535",
+  "links": [],
+  "quote": "prochaine chanson je crois que c'est pink",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:42",
+  "title": "Pink",
+  "types": [
+    "musique"
+  ]
 }

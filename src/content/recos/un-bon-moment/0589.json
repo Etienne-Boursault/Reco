@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0589",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
-  "title": "Fire in the Booth",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "j'aimerais recommander Fire in the Booth j'ai une émission de freestyle en angleterre moi je suis fan de rap anglais, de grime de Drill anglaise et tout",
-  "timestamp": "01:19:39",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0589",
+  "links": [],
+  "quote": "j'aimerais recommander Fire in the Booth j'ai une émission de freestyle en angleterre moi je suis fan de rap anglais, de grime de Drill anglaise et tout",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:39",
+  "title": "Fire in the Booth",
+  "types": [
+    "autre"
   ]
 }

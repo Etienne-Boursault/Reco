@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1280",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
-  "title": "Nicky Larson",
-  "type": "autre",
   "creator": "Tsukasa Hojo",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Joe, Nikky, la ripage, sonne, DEP.",
-  "timestamp": "00:57:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1280",
+  "links": [],
+  "quote": "Joe, Nikky, la ripage, sonne, DEP.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:50",
+  "title": "Nicky Larson",
+  "types": [
+    "autre"
   ]
 }

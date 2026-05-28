@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1083",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61accf4f45d15e00135c6ef2",
-  "title": "Les mecs que je veux",
-  "type": "podcast",
   "creator": "Rosa Bursztein",
-  "recommendedBy": "Marina Rollman",
-  "quote": "Les mecs que je veux qu'en de Rosa Bernstein, qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
-  "timestamp": "01:02:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1083",
+  "links": [],
+  "quote": "Les mecs que je veux qu'en de Rosa Bernstein, qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:21",
+  "title": "Les mecs que je veux",
+  "types": [
+    "podcast"
   ]
 }

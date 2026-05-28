@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0515",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Les Pieds sur Terre",
-  "type": "podcast",
   "creator": "Sonia Croedland",
-  "recommendedBy": "Navo",
-  "quote": "Moi, j'ai le podcast Les Pieds sur Terre sur France Culture de Sonia Croedland qui est formidable que je vous invite à écouter.",
-  "timestamp": "01:41:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0515",
+  "links": [],
+  "quote": "Moi, j'ai le podcast Les Pieds sur Terre sur France Culture de Sonia Croedland qui est formidable que je vous invite à écouter.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:18",
+  "title": "Les Pieds sur Terre",
+  "types": [
+    "podcast"
   ]
 }

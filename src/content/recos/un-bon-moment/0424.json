@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0424",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Mélodrama",
-  "type": "musique",
   "creator": "Théodora et DC",
-  "quote": "Elle est Mélodrama avec Théodora et DC.",
-  "timestamp": "01:28:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0424",
+  "links": [],
+  "quote": "Elle est Mélodrama avec Théodora et DC.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:28:03",
+  "title": "Mélodrama",
+  "types": [
+    "musique"
   ]
 }

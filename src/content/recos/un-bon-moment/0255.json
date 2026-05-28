@@ -1,22 +1,24 @@
 {
-  "id": "ubm-0255",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Panique",
-  "type": "film",
   "creator": "Julien Duvivier",
-  "year": 1948,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est Panique de Du Vivier. Panique de Du Vivier. Avec Michel Simon, 1948.",
-  "timestamp": "01:40:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "tmdb": "96903",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "96903",
-    "tmdbType": "movie"
-  }
+  "id": "ubm-0255",
+  "links": [],
+  "quote": "C'est Panique de Du Vivier. Panique de Du Vivier. Avec Michel Simon, 1948.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:40:56",
+  "title": "Panique",
+  "types": [
+    "film"
+  ],
+  "year": 1948
 }

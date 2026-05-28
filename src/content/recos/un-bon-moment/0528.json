@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0528",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "Professeur Fabrizio Buccella",
-  "type": "autre",
   "creator": "Autres",
-  "recommendedBy": "Non précisé",
-  "quote": "Moi je peux, je vais vous recommander le professeur Fabrizio Buccella.",
-  "timestamp": "01:14:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0528",
+  "links": [],
+  "quote": "Moi je peux, je vais vous recommander le professeur Fabrizio Buccella.",
+  "recommendedBy": "Non précisé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:21",
+  "title": "Professeur Fabrizio Buccella",
+  "types": [
+    "autre"
   ]
 }

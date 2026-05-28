@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0053",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
-  "title": "Destroyer",
-  "type": "autre",
-  "quote": "Destroyer.",
-  "timestamp": "01:01:03",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0053",
+  "links": [],
+  "quote": "Destroyer.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:03",
+  "title": "Destroyer",
+  "types": [
+    "autre"
   ]
 }

@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0061",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Upload",
-  "type": "serie",
   "creator": "Greg Daniels, Mike Schur",
-  "recommendedBy": "Navo",
-  "quote": "j'ai fini récemment upload sur amazon oh là là et tu sais je me disais ça faisait longtemps que j'avais pas ri oui c'est vraiment drôle vraiment ça fait longtemps je fais mais là j'en vraiment les vannes sont super très très bien",
-  "timestamp": "01:19:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/86248-upload/watch?locale=FR",
+    "tmdb": "86248",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "86248",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/86248-upload/watch?locale=FR"
-  },
+  "id": "ubm-0061",
+  "links": [],
+  "quote": "j'ai fini récemment upload sur amazon oh là là et tu sais je me disais ça faisait longtemps que j'avais pas ri oui c'est vraiment drôle vraiment ça fait longtemps je fais mais là j'en vraiment les vannes sont super très très bien",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:49",
+  "title": "Upload",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload"
     }
   ]
 }

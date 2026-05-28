@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0840",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Écriture de Stephen King",
-  "type": "livre",
   "creator": "Stephen King",
-  "recommendedBy": "inconnu",
-  "quote": "Tu peux lire l'écriture de Stephen King.",
-  "timestamp": "00:40:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0840",
+  "links": [],
+  "quote": "Tu peux lire l'écriture de Stephen King.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:31",
+  "title": "Écriture de Stephen King",
+  "types": [
+    "livre"
   ]
 }

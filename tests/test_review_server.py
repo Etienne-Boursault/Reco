@@ -78,7 +78,7 @@ def fake_source(tmp_path, monkeypatch):
         {
             "id": "ubm-001",
             "episodeGuid": "ep-001",
-            "type": "film",
+            "types": ["film"],
             "title": "Mortel",
             "creator": "F. Garcia",
             "timestamp": "00:10:30",
@@ -89,7 +89,7 @@ def fake_source(tmp_path, monkeypatch):
         {
             "id": "ubm-002",
             "episodeGuid": "ep-001",
-            "type": "livre",
+            "types": ["livre"],
             "title": "Solo",
             "timestamp": "01:02:03",
             "status": "validated",
@@ -99,7 +99,7 @@ def fake_source(tmp_path, monkeypatch):
         {
             "id": "ubm-003",
             "episodeGuid": "ep-001",
-            "type": "musique",
+            "types": ["musique"],
             "title": "Hozier",
             "status": "discarded",
         },
@@ -229,7 +229,7 @@ def test_shell_escapes_title():
 
 def test_reco_card_minimal():
     """Reco minimale : pas de timestamp, pas de citation, pas d'extractors."""
-    r = {"id": "x", "title": "Truc", "type": "film", "status": "draft"}
+    r = {"id": "x", "title": "Truc", "types": ["film"], "status": "draft"}
     ep = {"guid": "g", "title": "Ep", "youtubeUrl": "https://www.youtube.com/watch?v=V"}
     out = rs._reco_card(r, ep, ["Alice"], "src")
     assert "Truc" in out
@@ -243,7 +243,7 @@ def test_reco_card_full(fake_source):
     r = {
         "id": "ubm-001",
         "title": "Mortel",
-        "type": "film",
+        "types": ["film"],
         "creator": "F. Garcia",
         "timestamp": "00:10:30",
         "quote": "extra",
@@ -270,7 +270,7 @@ def test_reco_card_full(fake_source):
 
 
 def test_reco_card_solo_extractor():
-    r = {"id": "x", "title": "T", "type": "film", "status": "draft",
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft",
          "extractors": ["claude"], "timestamp": "00:01:00"}
     ep = {"guid": "g", "title": "Ep", "youtubeUrl": None}
     out = rs._reco_card(r, ep, [], "src")
@@ -281,14 +281,14 @@ def test_reco_card_solo_extractor():
 
 
 def test_reco_card_no_timestamp_no_yt():
-    r = {"id": "x", "title": "T", "type": "film", "status": "validated"}
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "validated"}
     ep = {"guid": "g", "title": "Ep"}
     out = rs._reco_card(r, ep, [], "src")
     assert "row done" in out  # statut validated -> classe done
 
 
 def test_reco_card_discarded():
-    r = {"id": "x", "title": "T", "type": "film", "status": "discarded"}
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "discarded"}
     ep = {"guid": "g", "title": "Ep"}
     out = rs._reco_card(r, ep, [], "src")
     assert "row discarded" in out

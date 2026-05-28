@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1300",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
-  "title": "Orelsan",
-  "type": "autre",
   "creator": "Orelsan",
-  "recommendedBy": "Big Flo",
-  "quote": "Orelsan, quand on adore et qu'on remercie, il existait.",
-  "timestamp": "00:07:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1300",
+  "links": [],
+  "quote": "Orelsan, quand on adore et qu'on remercie, il existait.",
+  "recommendedBy": "Big Flo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:07:19",
+  "title": "Orelsan",
+  "types": [
+    "autre"
   ]
 }

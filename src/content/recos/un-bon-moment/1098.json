@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1098",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Si tu t'imaginais",
-  "type": "musique",
   "creator": "Jean Yanne",
-  "recommendedBy": "Xavier",
-  "quote": "écoutez sa chanson \"Si tu t'en irais\". Qui est une chanson d'amour humoristique puisqu'il fait des fautes de français dans les verbes.",
-  "timestamp": "01:04:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1098",
+  "links": [],
+  "quote": "écoutez sa chanson \"Si tu t'en irais\". Qui est une chanson d'amour humoristique puisqu'il fait des fautes de français dans les verbes.",
+  "recommendedBy": "Xavier",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:20",
+  "title": "Si tu t'imaginais",
+  "types": [
+    "musique"
   ]
 }

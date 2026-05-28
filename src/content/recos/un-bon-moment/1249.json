@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1249",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Bonnie M",
-  "type": "musique",
   "creator": "Bonnie M",
-  "recommendedBy": "Invité",
-  "quote": "J'entends plus Bonnie M que Daft Punk.",
-  "timestamp": "00:36:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/364953"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/364953"
-  }
+  "id": "ubm-1249",
+  "links": [],
+  "quote": "J'entends plus Bonnie M que Daft Punk.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:36:54",
+  "title": "Bonnie M",
+  "types": [
+    "musique"
+  ]
 }

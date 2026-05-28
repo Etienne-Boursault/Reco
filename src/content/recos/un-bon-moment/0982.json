@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0982",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Fhyn",
-  "type": "musique",
-  "recommendedBy": "Aroun",
-  "quote": "Un autre qui s'est fait l'électro que s'appelle Fine, F H Y N",
-  "timestamp": "01:51:03",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/552679012"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/552679012"
-  }
+  "id": "ubm-0982",
+  "links": [],
+  "quote": "Un autre qui s'est fait l'électro que s'appelle Fine, F H Y N",
+  "recommendedBy": "Aroun",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:51:03",
+  "title": "Fhyn",
+  "types": [
+    "musique"
+  ]
 }

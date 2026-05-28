@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0470",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Tout va bien, Not To Be",
-  "type": "film",
   "creator": "Ernst Lubitsch",
-  "recommendedBy": "Invité",
-  "quote": "Allez voir aussi Tout bien Not To Be de Lubitsch, qui est un classique de la comédie.",
-  "timestamp": "01:20:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0470",
+  "links": [],
+  "quote": "Allez voir aussi Tout bien Not To Be de Lubitsch, qui est un classique de la comédie.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:50",
+  "title": "Tout va bien, Not To Be",
+  "types": [
+    "film"
   ]
 }

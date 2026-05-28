@@ -1,58 +1,60 @@
 {
-  "id": "ubm-0257",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Better Call Saul",
-  "type": "serie",
   "creator": "Vince Gilligan",
-  "recommendedBy": "Navo",
-  "quote": "Effectivement, Vince Gilligan, qui a fait l'excellent Breaking Bad et l'excellent Better Call Saul.",
-  "timestamp": "01:45:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR",
+    "tmdb": "60059",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "60059",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR"
-  },
+  "id": "ubm-0257",
+  "links": [],
+  "quote": "Effectivement, Vince Gilligan, qui a fait l'excellent Breaking Bad et l'excellent Better Call Saul.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:45:40",
+  "title": "Better Call Saul",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul"
     }
   ]
 }

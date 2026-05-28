@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1024",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Démétri Martin",
-  "type": "spectacle",
   "creator": "Demetri Martin",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "tu peux en parler un peu de démétrie martine",
-  "timestamp": "00:57:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1024",
+  "links": [],
+  "quote": "tu peux en parler un peu de démétrie martine",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:31",
+  "title": "Démétri Martin",
+  "types": [
+    "spectacle"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1109",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65241146d963060012045fb6",
-  "title": "Dava",
-  "type": "spectacle",
-  "recommendedBy": "Navo",
-  "quote": "Dava ils sont super ils sont sur Tiktok",
-  "timestamp": "01:04:36",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1109",
+  "links": [],
+  "quote": "Dava ils sont super ils sont sur Tiktok",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:36",
+  "title": "Dava",
+  "types": [
+    "spectacle"
   ]
 }

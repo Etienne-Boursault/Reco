@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1091",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
-  "title": "Chaîne YouTube Irosseph",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "La chaîne d'Aérosseph, si vous aimez l'univers Marvel.",
-  "timestamp": "01:09:18",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1091",
+  "links": [],
+  "quote": "La chaîne d'Aérosseph, si vous aimez l'univers Marvel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:18",
+  "title": "Chaîne YouTube Irosseph",
+  "types": [
+    "autre"
   ]
 }

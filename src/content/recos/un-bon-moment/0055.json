@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0055",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Mortal",
-  "type": "serie",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "Mortal, je ne connaissais pas tout ce truc-là.",
-  "timestamp": "00:42:00",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
     "tmdb": "90591",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0055",
+  "links": [],
+  "quote": "Mortal, je ne connaissais pas tout ce truc-là.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:00",
+  "title": "Mortal",
+  "types": [
+    "serie"
+  ]
 }

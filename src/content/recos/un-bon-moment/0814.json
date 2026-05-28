@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0814",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61ce14aa42581b0012d8ddb0",
-  "title": "Nymphomaniac",
-  "type": "musique",
   "creator": "Nacim Vibes",
-  "recommendedBy": "Roman Frécinès",
-  "quote": "il y a un son qui s'appelle Nymphomaniac. Le clip est vraiment cool.",
-  "timestamp": "01:08:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0814",
+  "links": [],
+  "quote": "il y a un son qui s'appelle Nymphomaniac. Le clip est vraiment cool.",
+  "recommendedBy": "Roman Frécinès",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:19",
+  "title": "Nymphomaniac",
+  "types": [
+    "musique"
   ]
 }

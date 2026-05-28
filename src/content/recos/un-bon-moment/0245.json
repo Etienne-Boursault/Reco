@@ -1,69 +1,71 @@
 {
-  "id": "ubm-0245",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Mon oncle d'Amérique",
-  "type": "film",
   "creator": "Alain Resnais",
-  "recommendedBy": "Invité",
-  "quote": "Il a fait un film qui était mon oncle d'Amérique",
-  "timestamp": "00:45:32",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=FR",
+    "tmdb": "39543",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "39543",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=FR"
-  },
+  "id": "ubm-0245",
+  "links": [],
+  "quote": "Il a fait un film qui était mon oncle d'Amérique",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:45:32",
+  "title": "Mon oncle d'Amérique",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Mon%20oncle%20d%27Am%C3%A9rique"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Mon%20oncle%20d%27Am%C3%A9rique",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Mon%20oncle%20d%27Am%C3%A9rique"
     }
   ]
 }

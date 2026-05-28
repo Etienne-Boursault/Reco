@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1080",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Ichon",
-  "type": "album",
   "creator": "Ichon",
-  "recommendedBy": "Julien",
-  "quote": "l'album Dichon qui est sorti que je trouve magnifique",
-  "timestamp": "01:30:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/244108722"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/244108722"
-  }
+  "id": "ubm-1080",
+  "links": [],
+  "quote": "l'album Dichon qui est sorti que je trouve magnifique",
+  "recommendedBy": "Julien",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:23",
+  "title": "Ichon",
+  "types": [
+    "album"
+  ]
 }

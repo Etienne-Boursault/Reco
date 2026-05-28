@@ -1,87 +1,89 @@
 {
-  "id": "ubm-0220",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "La Pampa",
-  "type": "film",
   "creator": "Antoine Chevrolier",
-  "quote": "La Pampa de Antoine Chevrolier.",
-  "timestamp": "01:33:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1001006-la-pampa/watch?locale=FR",
+    "tmdb": "1001006",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1001006",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1001006-la-pampa/watch?locale=FR"
-  },
+  "id": "ubm-0220",
+  "links": [],
+  "quote": "La Pampa de Antoine Chevrolier.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:21",
+  "title": "La Pampa",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=La%20Pampa"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Pampa",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20Pampa"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Pampa",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Pampa"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Pampa",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Pampa"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Pampa",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Pampa"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20Pampa",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20Pampa"
     }
   ]
 }

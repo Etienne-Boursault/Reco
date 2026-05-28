@@ -200,8 +200,10 @@ def test_extract_json_invalid_raises():
 
 # ===== _normalize_reco =====================================================
 def test_normalize_reco_minimal():
+    # L'INPUT du LLM utilise `type` singulier (interface du prompt) ; la sortie
+    # normalisée Python utilise `types` (liste, schéma interne).
     r = _normalize_reco({"title": "Foo", "type": "film"})
-    assert r == {"title": "Foo", "type": "film"}
+    assert r == {"title": "Foo", "types": ["film"]}
 
 
 def test_normalize_reco_no_title_returns_none():
@@ -211,7 +213,7 @@ def test_normalize_reco_no_title_returns_none():
 
 def test_normalize_reco_invalid_type_becomes_autre():
     r = _normalize_reco({"title": "Foo", "type": "n_importe_quoi"})
-    assert r["type"] == "autre"
+    assert r["types"] == ["autre"]
 
 
 def test_normalize_reco_strips_optional_fields():
@@ -239,6 +241,7 @@ def test_normalize_reco_year_variants(year_in, year_out):
 
 # ===== _parse_recos_from_content ===========================================
 def test_parse_recos_from_content_ok():
+    # Le LLM renvoie `type` singulier (interface du prompt) ; pass-through brut.
     msg = _fake_anthropic_message({"recos": [{"title": "X", "type": "film"}]})
     out = _parse_recos_from_content(msg.content)
     assert out == [{"title": "X", "type": "film"}]
@@ -270,6 +273,7 @@ def test_next_reco_index_with_files(tmp_source):
 
 
 def test_persist_recos_new(tmp_source):
+    # `_persist_recos` consomme du brut LLM (type singulier) ; il normalise.
     raw = [{"title": "Mortel", "type": "serie", "creator": "F. Garcia",
             "year": 2019, "timestamp": "00:42:00"}]
     n = _persist_recos(tmp_source.source_id, tmp_source.guid, raw,
@@ -320,7 +324,7 @@ def test_persist_recos_preserves_validated_quote(tmp_source):
     existing = {
         "id": "ubm-0001", "sourceId": tmp_source.source_id,
         "episodeGuid": tmp_source.guid,
-        "title": "Mortel", "type": "serie",
+        "title": "Mortel", "types": ["serie"],
         "quote": "citation curée à la main",
         "links": [], "status": "validated", "extractors": ["anthropic"],
     }
@@ -335,6 +339,24 @@ def test_persist_recos_preserves_validated_quote(tmp_source):
     assert data["quote"] == "citation curée à la main"
     # Timestamp est toujours mis à jour.
     assert data["timestamp"] == "00:12:00"
+
+
+def test_persist_recos_merges_types_across_extractors(tmp_source):
+    """Deux LLMs trouvent la même œuvre avec des types différents : fusion."""
+    # LLM 1 (anthropic) : type "livre".
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "livre"}],
+                   "anthropic")
+    # LLM 2 (openai) : même titre mais type "film" → union dédupliquée.
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film"}],
+                   "openai")
+    files = list(tmp_source.recos_dir.glob("*.json"))
+    assert len(files) == 1
+    data = json.loads(files[0].read_text(encoding="utf-8"))
+    # Types fusionnés (ordre stable : existant d'abord).
+    assert data["types"] == ["livre", "film"]
+    assert sorted(data["extractors"]) == ["anthropic", "openai"]
 
 
 def test_persist_recos_skips_corrupted_existing_file(tmp_source):

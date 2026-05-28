@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0580",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
-  "title": "Blood Song",
-  "type": "livre",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "je vais recommander une série de livres qui s'appelle Blood Song, la voix du sang, qui est très très connue",
-  "timestamp": "01:17:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0580",
+  "links": [],
+  "quote": "je vais recommander une série de livres qui s'appelle Blood Song, la voix du sang, qui est très très connue",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:18",
+  "title": "Blood Song",
+  "types": [
+    "livre"
   ]
 }

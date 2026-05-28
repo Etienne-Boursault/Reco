@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0614",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Chronomusique",
-  "type": "autre",
   "creator": "Michel Sylvain",
-  "recommendedBy": "Navo",
-  "quote": "Et moi je vais dire chronomusique. Chronomusique ouais, super chacune.",
-  "timestamp": "01:46:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0614",
+  "links": [],
+  "quote": "Et moi je vais dire chronomusique. Chronomusique ouais, super chacune.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:46:46",
+  "title": "Chronomusique",
+  "types": [
+    "autre"
   ]
 }

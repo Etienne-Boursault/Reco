@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0630",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "Fianso",
-  "type": "autre",
   "creator": "Fianso",
-  "recommendedBy": "Navo",
-  "quote": "En deuxième invité, nous avions le rappeur Fianso.",
-  "timestamp": "00:13:37",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0630",
+  "links": [],
+  "quote": "En deuxième invité, nous avions le rappeur Fianso.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:13:37",
+  "title": "Fianso",
+  "types": [
+    "autre"
   ]
 }

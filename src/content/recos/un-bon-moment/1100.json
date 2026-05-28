@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1100",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "La Première Gorgée de bière et autres plaisirs minuscules",
-  "type": "livre",
   "creator": "Philippe Delerm",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est un livre hyper agréable à lire, qu'on peut lire d'ailleurs, à n'importe quel moment, on peut prendre une page",
-  "timestamp": "00:37:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1100",
+  "links": [],
+  "quote": "c'est un livre hyper agréable à lire, qu'on peut lire d'ailleurs, à n'importe quel moment, on peut prendre une page",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:37:44",
+  "title": "La Première Gorgée de bière et autres plaisirs minuscules",
+  "types": [
+    "livre"
   ]
 }

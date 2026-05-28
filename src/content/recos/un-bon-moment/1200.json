@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1200",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61cb19444f2d030012ddd82a",
-  "title": "Alcooliques Anonymes",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "aller aux alcooliques anonymes.",
-  "timestamp": "00:40:20",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1200",
+  "links": [],
+  "quote": "aller aux alcooliques anonymes.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:20",
+  "title": "Alcooliques Anonymes",
+  "types": [
+    "autre"
   ]
 }

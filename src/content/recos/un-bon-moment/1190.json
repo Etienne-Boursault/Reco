@@ -1,37 +1,39 @@
 {
-  "id": "ubm-1190",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "High Maintenance",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Et l'autre aussi, série HBO, Eye Maintenance, la blague que j'ai révisée il y a deux jours, j'ai dit ça, il y a deux jours, Eye Maintenance, pareil, série HBO",
-  "timestamp": "01:37:42",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/67243-high-maintenance/watch?locale=FR",
+    "tmdb": "67243",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "67243",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/67243-high-maintenance/watch?locale=FR"
-  },
+  "id": "ubm-1190",
+  "links": [],
+  "quote": "Et l'autre aussi, série HBO, Eye Maintenance, la blague que j'ai révisée il y a deux jours, j'ai dit ça, il y a deux jours, Eye Maintenance, pareil, série HBO",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:42",
+  "title": "High Maintenance",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=High%20Maintenance",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=High%20Maintenance"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=High%20Maintenance",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=High%20Maintenance"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=High%20Maintenance",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=High%20Maintenance"
     }
   ]
 }

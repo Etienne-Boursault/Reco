@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0425",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Adolescence",
-  "type": "film",
-  "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
-  "timestamp": "01:28:29",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "tmdb": "434398",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "434398",
-    "tmdbType": "movie"
-  }
+  "id": "ubm-0425",
+  "links": [],
+  "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:28:29",
+  "title": "Adolescence",
+  "types": [
+    "film"
+  ]
 }

@@ -1,34 +1,36 @@
 {
-  "id": "ubm-0976",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6970a1759448a95f223d530c",
-  "title": "Up",
-  "type": "film",
   "creator": "Pete Docter",
-  "year": 2009,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "La dernière fois que ça m'a fait ça, c'était dans Up, voilà, exactement.",
-  "timestamp": "01:31:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1084577-balls-up/watch?locale=FR",
+    "tmdb": "1084577",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "1084577",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1084577-balls-up/watch?locale=FR"
-  },
+  "id": "ubm-0976",
+  "links": [],
+  "quote": "La dernière fois que ça m'a fait ça, c'était dans Up, voilà, exactement.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:31:13",
+  "title": "Up",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up"
     }
-  ]
+  ],
+  "year": 2009
 }

@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0792",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Blue",
-  "type": "album",
   "creator": "Joni Mitchell",
-  "quote": "qui est un album de Johnny Mitchell qui s'appelle \"Blue\". Et je conseille à tout le monde de l'écouter tout le temps.",
-  "timestamp": "00:58:08",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/254297"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1971,
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/254297"
-  }
+  "id": "ubm-0792",
+  "links": [],
+  "quote": "qui est un album de Johnny Mitchell qui s'appelle \"Blue\". Et je conseille à tout le monde de l'écouter tout le temps.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:08",
+  "title": "Blue",
+  "types": [
+    "album"
+  ],
+  "year": 1971
 }

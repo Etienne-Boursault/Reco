@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1223",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Julie Albertine",
-  "type": "autre",
   "creator": "non spécifié",
-  "recommendedBy": "non spécifié",
-  "quote": "Ouais, Julie Albertine.",
-  "timestamp": "01:12:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b305f3ca1cc001201a861",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1223",
+  "links": [],
+  "quote": "Ouais, Julie Albertine.",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:11",
+  "title": "Julie Albertine",
+  "types": [
+    "autre"
   ]
 }

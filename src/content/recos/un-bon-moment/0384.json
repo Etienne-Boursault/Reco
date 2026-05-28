@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0384",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "M. Sophie",
-  "type": "podcast",
   "creator": "M. Sophie",
-  "recommendedBy": "invité",
-  "quote": "Bah du coup J'avais parlé de M. Sophie Je reparle de M. Sophie",
-  "timestamp": "01:52:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0384",
+  "links": [],
+  "quote": "Bah du coup J'avais parlé de M. Sophie Je reparle de M. Sophie",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:52:53",
+  "title": "M. Sophie",
+  "types": [
+    "podcast"
   ]
 }

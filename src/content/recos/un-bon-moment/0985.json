@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0985",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Le Précepteur",
-  "type": "podcast",
-  "recommendedBy": "Navo",
-  "quote": "Il donne des cours de philosophie sur Youtube... il m'a refait ma culture philosophique",
-  "timestamp": "01:53:16",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0985",
+  "links": [],
+  "quote": "Il donne des cours de philosophie sur Youtube... il m'a refait ma culture philosophique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:53:16",
+  "title": "Le Précepteur",
+  "types": [
+    "podcast"
   ]
 }

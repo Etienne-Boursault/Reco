@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0828",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6316136e9623160014506e77",
-  "title": "Fore : Comme un hypersensible",
-  "type": "livre",
   "creator": "Maurice Barthélémy",
-  "recommendedBy": "Maurice Barthélémy",
-  "quote": "actuellement, on enregistre ce podcast, tu es en train de jouer un spectacle qui est l'adaptation d'un livre que tu as écrit, qui s'appelle \"Fore\" comme un hypersensible.",
-  "timestamp": "00:03:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6316136e9623160014506e77",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0828",
+  "links": [],
+  "quote": "actuellement, on enregistre ce podcast, tu es en train de jouer un spectacle qui est l'adaptation d'un livre que tu as écrit, qui s'appelle \"Fore\" comme un hypersensible.",
+  "recommendedBy": "Maurice Barthélémy",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:03",
+  "title": "Fore : Comme un hypersensible",
+  "types": [
+    "livre"
   ]
 }

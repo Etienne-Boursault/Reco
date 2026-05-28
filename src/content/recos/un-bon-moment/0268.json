@@ -1,58 +1,60 @@
 {
-  "id": "ubm-0268",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Friends",
-  "type": "serie",
   "creator": "David Crane, Marta Kauffman",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Dans Friends, il y a la scène géniale où il y a Ross qui imagine le bruit d'un dinosaure.",
-  "timestamp": "01:23:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR",
+    "tmdb": "1668",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1668",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR"
-  },
+  "id": "ubm-0268",
+  "links": [],
+  "quote": "Dans Friends, il y a la scène géniale où il y a Ross qui imagine le bruit d'un dinosaure.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:23:13",
+  "title": "Friends",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Friends",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Friends"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Friends",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Friends"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Friends",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Friends"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Friends",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Friends"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Friends",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Friends"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
     }
   ]
 }

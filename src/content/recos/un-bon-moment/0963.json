@@ -1,31 +1,33 @@
 {
-  "id": "ubm-0963",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Seinfeld",
-  "type": "serie",
-  "quote": "vous voyez, dans cet épisode, dans Seinfeld, où Jerry Seinfeld, il a un amie, enfin un copain, une connaissance de lycée",
-  "timestamp": "00:46:56",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR",
+    "tmdb": "1400",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "1400",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR"
-  },
+  "id": "ubm-0963",
+  "links": [],
+  "quote": "vous voyez, dans cet épisode, dans Seinfeld, où Jerry Seinfeld, il a un amie, enfin un copain, une connaissance de lycée",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:46:56",
+  "title": "Seinfeld",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Seinfeld",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Seinfeld"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Seinfeld",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Seinfeld"
     }
   ]
 }

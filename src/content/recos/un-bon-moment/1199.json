@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1199",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
-  "title": "Laura Felpin",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Et Laura Felpin, qu'on a reçu hier.",
-  "timestamp": "01:48:26",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1199",
+  "links": [],
+  "quote": "Et Laura Felpin, qu'on a reçu hier.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:48:26",
+  "title": "Laura Felpin",
+  "types": [
+    "autre"
   ]
 }

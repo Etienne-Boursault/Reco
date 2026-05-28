@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0567",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6a05e43cc7ea4a3c85664972",
-  "title": "Babylone",
-  "type": "film",
   "creator": "Damien Chazelle",
-  "recommendedBy": "Léna",
-  "quote": "j'ai regardé Babylone j'ai adoré",
-  "timestamp": "01:18:20",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "externalIds": {
     "tmdb": "603433",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0567",
+  "links": [],
+  "quote": "j'ai regardé Babylone j'ai adoré",
+  "recommendedBy": "Léna",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:20",
+  "title": "Babylone",
+  "types": [
+    "film"
+  ]
 }

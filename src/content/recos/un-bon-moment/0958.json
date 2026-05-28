@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0958",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "3e2u1h",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "moi je recommande la chaîne Twitch de j'ai écrit comment ? ah je connais pas 3e2u1h je crois",
-  "timestamp": "01:47:54",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0958",
+  "links": [],
+  "quote": "moi je recommande la chaîne Twitch de j'ai écrit comment ? ah je connais pas 3e2u1h je crois",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:54",
+  "title": "3e2u1h",
+  "types": [
+    "autre"
   ]
 }

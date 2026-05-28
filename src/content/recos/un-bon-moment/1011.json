@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1011",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
-  "title": "Des mecs solides",
-  "type": "podcast",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "dans le podcast Emotion il y a un sujet en 3 parties sur les masculinités qui s'appellent des mecs solides c'est hyper bien.",
-  "timestamp": "01:43:38",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1011",
+  "links": [],
+  "quote": "dans le podcast Emotion il y a un sujet en 3 parties sur les masculinités qui s'appellent des mecs solides c'est hyper bien.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:43:38",
+  "title": "Des mecs solides",
+  "types": [
+    "podcast"
   ]
 }

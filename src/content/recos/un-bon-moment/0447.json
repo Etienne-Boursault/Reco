@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0447",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69a169ac519334f049d06785",
-  "title": "Zébrollo",
-  "type": "autre",
   "creator": "Christophe",
-  "recommendedBy": "Invité",
-  "quote": "Zébrollo je l'adore",
-  "timestamp": "01:03:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69a169ac519334f049d06785",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0447",
+  "links": [],
+  "quote": "Zébrollo je l'adore",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:19",
+  "title": "Zébrollo",
+  "types": [
+    "autre"
   ]
 }

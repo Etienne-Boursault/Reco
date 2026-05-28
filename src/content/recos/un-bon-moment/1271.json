@@ -1,28 +1,30 @@
 {
-  "id": "ubm-1271",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Drinking",
-  "type": "serie",
   "creator": "autre",
-  "recommendedBy": "Navo",
-  "quote": "Drinking en tout cas, c'est pas mal.",
-  "timestamp": "01:12:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/39532-drinking-made-easy/watch?locale=FR",
+    "tmdb": "39532",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "39532",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/39532-drinking-made-easy/watch?locale=FR"
-  },
+  "id": "ubm-1271",
+  "links": [],
+  "quote": "Drinking en tout cas, c'est pas mal.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:15",
+  "title": "Drinking",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Drinking",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Drinking"
     }
   ]
 }

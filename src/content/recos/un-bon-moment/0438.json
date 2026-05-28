@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0438",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "L'album de D6",
-  "type": "album",
   "creator": "D6",
-  "recommendedBy": "inconnu",
-  "quote": "je recommande l'album de D6 super super album de D6",
-  "timestamp": "01:46:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0438",
+  "links": [],
+  "quote": "je recommande l'album de D6 super super album de D6",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:46:44",
+  "title": "L'album de D6",
+  "types": [
+    "album"
   ]
 }

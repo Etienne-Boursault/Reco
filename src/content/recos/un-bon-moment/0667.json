@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0667",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
-  "title": "Gaming Historian",
-  "type": "podcast",
   "creator": "YouTube",
-  "recommendedBy": "Navo",
-  "quote": "Alors, c'est en anglais. Mais, c'est un gars qui fait l'histoire des jeux vidéo.",
-  "timestamp": "01:34:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0667",
+  "links": [],
+  "quote": "Alors, c'est en anglais. Mais, c'est un gars qui fait l'histoire des jeux vidéo.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:36",
+  "title": "Gaming Historian",
+  "types": [
+    "podcast"
   ]
 }

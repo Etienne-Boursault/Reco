@@ -1,30 +1,32 @@
 {
-  "id": "ubm-0856",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "L'âge des possibles",
-  "type": "film",
   "creator": "Pascal Ferrand",
-  "recommendedBy": "Inconnu",
-  "quote": "j'ai été voir un film qui s'appelait «L'âge des possibles». Fin des années 90, c'est le premier film de Pascal Ferrand",
-  "timestamp": "00:40:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/433725-l-age-des-possibles/watch?locale=FR",
+    "tmdb": "433725",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1995,
-  "externalIds": {
-    "tmdb": "433725",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/433725-l-age-des-possibles/watch?locale=FR"
-  },
+  "id": "ubm-0856",
+  "links": [],
+  "quote": "j'ai été voir un film qui s'appelait «L'âge des possibles». Fin des années 90, c'est le premier film de Pascal Ferrand",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:46",
+  "title": "L'âge des possibles",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=L%27%C3%A2ge%20des%20possibles",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=L%27%C3%A2ge%20des%20possibles"
     }
-  ]
+  ],
+  "year": 1995
 }

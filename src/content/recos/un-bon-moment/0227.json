@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0227",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Chasseur de Monde",
-  "type": "autre",
   "creator": "Alexandre Astier",
-  "quote": "c'était peut-être la sortie de Chasseur de Monde qui était un gros documentaire avec Alexandre Astier.",
-  "timestamp": "00:18:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0227",
+  "links": [],
+  "quote": "c'était peut-être la sortie de Chasseur de Monde qui était un gros documentaire avec Alexandre Astier.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:40",
+  "title": "Chasseur de Monde",
+  "types": [
+    "autre"
   ]
 }

@@ -116,7 +116,7 @@ const recos = defineCollection({
     episodeGuid: z.string(),
     title: z.string(),
     creator: z.string().optional(), // auteur·rice / réalisateur·rice / artiste
-    type: recoType,
+    types: z.array(recoType).min(1),
     year: z.number().int().optional(),
     recommendedBy: z.string().optional(), // Kyan / Navo / invité…
     quote: z.string().optional(), // citation ou contexte dans l'épisode

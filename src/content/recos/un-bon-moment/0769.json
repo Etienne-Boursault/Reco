@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0769",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Orelsan",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est Aurèle Sann",
-  "timestamp": "01:08:41",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0769",
+  "links": [],
+  "quote": "c'est Aurèle Sann",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:41",
+  "title": "Orelsan",
+  "types": [
+    "autre"
   ]
 }

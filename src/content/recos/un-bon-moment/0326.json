@@ -1,68 +1,70 @@
 {
-  "id": "ubm-0326",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Fantasia",
-  "type": "film",
   "creator": "Walt Disney",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Fais-moi un lancement à Anastasia. Est-ce qu'on parle d'Anastasia ? Fantasia.",
-  "timestamp": "00:53:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/756-fantasia/watch?locale=FR",
+    "tmdb": "756",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "756",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/756-fantasia/watch?locale=FR"
-  },
+  "id": "ubm-0326",
+  "links": [],
+  "quote": "Fais-moi un lancement à Anastasia. Est-ce qu'on parle d'Anastasia ? Fantasia.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:53:31",
+  "title": "Fantasia",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Fantasia",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Fantasia",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Fantasia&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Fantasia&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Fantasia",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Fantasia",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Fantasia"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fantasia",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Fantasia",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Fantasia",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Fantasia"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Fantasia",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Fantasia"
     }
   ]
 }

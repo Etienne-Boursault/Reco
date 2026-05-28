@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0822",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "630baf2b552ddd0013718a16",
-  "title": "Hydraulic Press",
-  "type": "autre",
   "creator": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est l'inverse de ça, en fait.",
-  "timestamp": "01:09:39",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "630baf2b552ddd0013718a16",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0822",
+  "links": [],
+  "quote": "C'est l'inverse de ça, en fait.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:39",
+  "title": "Hydraulic Press",
+  "types": [
+    "autre"
   ]
 }

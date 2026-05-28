@@ -1,48 +1,50 @@
 {
-  "id": "ubm-0975",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "Charlie (All Dogs Go to Heaven)",
-  "type": "film",
-  "year": 1989,
-  "recommendedBy": "Navo",
-  "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » Et le nom en français c'est Charlie",
-  "timestamp": "01:47:38",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/11497-all-dogs-go-to-heaven/watch?locale=FR",
+    "tmdb": "11497",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "11497",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/11497-all-dogs-go-to-heaven/watch?locale=FR"
-  },
+  "id": "ubm-0975",
+  "links": [],
+  "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » Et le nom en français c'est Charlie",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:38",
+  "title": "Charlie (All Dogs Go to Heaven)",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     }
-  ]
+  ],
+  "year": 1989
 }

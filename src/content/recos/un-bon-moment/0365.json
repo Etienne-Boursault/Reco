@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0365",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6970a1759448a95f223d530c",
-  "title": "Avatar",
-  "type": "film",
   "creator": "James Cameron",
-  "recommendedBy": "Navo",
-  "quote": "J'avais lu que pour Avatar.",
-  "timestamp": "00:45:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/19995-avatar/watch?locale=FR",
+    "tmdb": "19995",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "19995",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/19995-avatar/watch?locale=FR"
-  },
+  "id": "ubm-0365",
+  "links": [],
+  "quote": "J'avais lu que pour Avatar.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:45:59",
+  "title": "Avatar",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Avatar",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Avatar",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Avatar&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Avatar&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Avatar",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Avatar",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Avatar",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Avatar"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Avatar",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Avatar",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Avatar",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Avatar"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Avatar",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Avatar"
     }
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1095",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Masterclass de Charlie Kaufman",
-  "type": "autre",
   "creator": "Charlie Kaufman",
-  "recommendedBy": "Navo",
-  "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
-  "timestamp": "00:38:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1095",
+  "links": [],
+  "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:38:58",
+  "title": "Masterclass de Charlie Kaufman",
+  "types": [
+    "autre"
   ]
 }

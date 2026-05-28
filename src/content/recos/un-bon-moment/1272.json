@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1272",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Seb Brent",
-  "type": "serie",
   "creator": "autre",
-  "recommendedBy": "Intervenant",
-  "quote": "Comment Seb Brent ?",
-  "timestamp": "01:14:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1272",
+  "links": [],
+  "quote": "Comment Seb Brent ?",
+  "recommendedBy": "Intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:40",
+  "title": "Seb Brent",
+  "types": [
+    "serie"
   ]
 }

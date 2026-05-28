@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1142",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6550c05703445c0011dd8343",
-  "title": "James BKS",
-  "type": "musique",
-  "recommendedBy": "Navo",
-  "quote": "James BKS a un nouvel album et il est super",
-  "timestamp": "01:20:42",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3665594672"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3665594672"
-  }
+  "id": "ubm-1142",
+  "links": [],
+  "quote": "James BKS a un nouvel album et il est super",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:42",
+  "title": "James BKS",
+  "types": [
+    "musique"
+  ]
 }

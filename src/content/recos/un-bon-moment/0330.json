@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0330",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Empathie",
-  "type": "serie",
   "creator": "Florence Lompret et Thomas Giorne",
-  "recommendedBy": "inconnu",
-  "quote": "Empathie c'est incroyable",
-  "timestamp": "01:35:51",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
+    "tmdb": "284656",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "284656",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
-  },
+  "id": "ubm-0330",
+  "links": [],
+  "quote": "Empathie c'est incroyable",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:35:51",
+  "title": "Empathie",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }
   ]
 }

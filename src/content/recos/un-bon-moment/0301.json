@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0301",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Lady Gaga",
-  "type": "musique",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je suis allé au concert de Lady Gaga.",
-  "timestamp": "00:33:53",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2947516331"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/2947516331"
-  }
+  "id": "ubm-0301",
+  "links": [],
+  "quote": "Je suis allé au concert de Lady Gaga.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:53",
+  "title": "Lady Gaga",
+  "types": [
+    "musique"
+  ]
 }

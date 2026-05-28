@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0251",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Le roman de la vie de Balzac",
-  "type": "livre",
   "creator": "Stéphane Swagg",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Le roman de la vie de Balzac par Stéphane Swagg, c'est prodigieux.",
-  "timestamp": "01:13:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0251",
+  "links": [],
+  "quote": "Le roman de la vie de Balzac par Stéphane Swagg, c'est prodigieux.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:09",
+  "title": "Le roman de la vie de Balzac",
+  "types": [
+    "livre"
   ]
 }

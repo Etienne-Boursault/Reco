@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0558",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
-  "title": "Al-Tarba",
-  "type": "album",
   "creator": "Al-Tarba",
-  "recommendedBy": "David",
-  "quote": "Al-Tarba qui est un rappeur. Mais il fait plein de styles. On va dire, on va le mettre dans le rap.",
-  "timestamp": "01:40:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/505186011"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/505186011"
-  }
+  "id": "ubm-0558",
+  "links": [],
+  "quote": "Al-Tarba qui est un rappeur. Mais il fait plein de styles. On va dire, on va le mettre dans le rap.",
+  "recommendedBy": "David",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:40:45",
+  "title": "Al-Tarba",
+  "types": [
+    "album"
+  ]
 }

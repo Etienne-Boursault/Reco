@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0992",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "Fiascorama",
-  "type": "livre",
   "creator": "Thomas VDB",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Les livres de Thomas BDB j'adore j'ai rigolé le dernier incroyable Fiasco Rama",
-  "timestamp": "01:27:32",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0992",
+  "links": [],
+  "quote": "Les livres de Thomas BDB j'adore j'ai rigolé le dernier incroyable Fiasco Rama",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:32",
+  "title": "Fiascorama",
+  "types": [
+    "livre"
   ]
 }

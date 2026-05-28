@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0269",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Science étonnante",
-  "type": "autre",
   "creator": "David Wapre",
-  "recommendedBy": "invitée",
-  "quote": "Eh ben moi, je recommande... parce que je crois que j'ai jamais recommandé Science étonnante sur YouTube de David Wapre, qui est hyper bien tissé.",
-  "timestamp": "01:41:35",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0269",
+  "links": [],
+  "quote": "Eh ben moi, je recommande... parce que je crois que j'ai jamais recommandé Science étonnante sur YouTube de David Wapre, qui est hyper bien tissé.",
+  "recommendedBy": "invitée",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:41:35",
+  "title": "Science étonnante",
+  "types": [
+    "autre"
   ]
 }

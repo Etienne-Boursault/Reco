@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0135",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "La Scène",
-  "type": "musique",
   "creator": "Mathieu Chédid",
-  "recommendedBy": "Invité",
-  "quote": "la scène des mois",
-  "timestamp": "00:47:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/13621853"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/13621853"
-  }
+  "id": "ubm-0135",
+  "links": [],
+  "quote": "la scène des mois",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:17",
+  "title": "La Scène",
+  "types": [
+    "musique"
+  ]
 }

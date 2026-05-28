@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0702",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
-  "title": "L'heure de l'ascension",
-  "type": "livre",
   "creator": "Blanche Gardin",
-  "year": 2014,
-  "recommendedBy": "Intervenant",
-  "quote": "C'est un petit spectacle, elle a fait l'heure de l'ascension en bouquin.",
-  "timestamp": "01:35:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-0702",
+  "links": [],
+  "quote": "C'est un petit spectacle, elle a fait l'heure de l'ascension en bouquin.",
+  "recommendedBy": "Intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:35:34",
+  "title": "L'heure de l'ascension",
+  "types": [
+    "livre"
+  ],
+  "year": 2014
 }

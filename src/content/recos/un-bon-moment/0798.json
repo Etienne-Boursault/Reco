@@ -1,108 +1,110 @@
 {
-  "id": "ubm-0798",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
-  "title": "Le Parrain",
-  "type": "film",
   "creator": "Francis Ford Coppola",
-  "recommendedBy": "Julien Doré",
-  "quote": "J'ai regardé le parrain.",
-  "timestamp": "00:10:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/238-the-godfather/watch?locale=FR",
+    "tmdb": "238",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "238",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/238-the-godfather/watch?locale=FR"
-  },
+  "id": "ubm-0798",
+  "links": [],
+  "quote": "J'ai regardé le parrain.",
+  "recommendedBy": "Julien Doré",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:10:34",
+  "title": "Le Parrain",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Le%20Parrain"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Le%20Parrain"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20Parrain&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20Parrain&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Parrain",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Le%20Parrain"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Le%20Parrain",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Le%20Parrain"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Parrain"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Le%20Parrain",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Le%20Parrain"
     }
   ]
 }

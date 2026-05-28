@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1175",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
-  "title": "Crocodile Fury",
-  "type": "film",
-  "recommendedBy": "Navo",
-  "quote": "En moins cringe il y a Crocodile Fury qui est un gros classique qui est incroyable.",
-  "timestamp": "01:00:35",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "tmdb": "194209",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "194209",
-    "tmdbType": "movie"
-  }
+  "id": "ubm-1175",
+  "links": [],
+  "quote": "En moins cringe il y a Crocodile Fury qui est un gros classique qui est incroyable.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:00:35",
+  "title": "Crocodile Fury",
+  "types": [
+    "film"
+  ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0338",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6960deefb86949aa06496e27",
-  "title": "Taylor Swift",
-  "type": "musique",
   "creator": "Taylor Swift",
-  "recommendedBy": "Intervenant",
-  "quote": "Elle a tout ré-enregistré de son côté.",
-  "timestamp": "00:47:37",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3579685431"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3579685431"
-  }
+  "id": "ubm-0338",
+  "links": [],
+  "quote": "Elle a tout ré-enregistré de son côté.",
+  "recommendedBy": "Intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:37",
+  "title": "Taylor Swift",
+  "types": [
+    "musique"
+  ]
 }

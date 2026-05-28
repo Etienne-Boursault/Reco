@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1286",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "Mourir seul",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "en fait ça s'appelle mourir seul et c'est vraiment une série super",
-  "timestamp": "00:47:02",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
   "externalIds": {
     "tmdb": "1581971",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1286",
+  "links": [],
+  "quote": "en fait ça s'appelle mourir seul et c'est vraiment une série super",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:02",
+  "title": "Mourir seul",
+  "types": [
+    "serie"
+  ]
 }

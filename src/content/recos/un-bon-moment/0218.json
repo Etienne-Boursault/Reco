@@ -1,39 +1,41 @@
 {
-  "id": "ubm-0218",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Parks and Recreation",
-  "type": "serie",
   "creator": "Greg Daniels, Michael Schur",
-  "recommendedBy": "Navo",
-  "quote": "Parc & Rec, c'est... Je trouve, c'est sous-côté en France. Tout le monde n'est pas à Parc & Rec.",
-  "timestamp": "01:08:37",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=FR",
+    "tmdb": "8592",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "8592",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=FR"
-  },
+  "id": "ubm-0218",
+  "links": [],
+  "quote": "Parc & Rec, c'est... Je trouve, c'est sous-côté en France. Tout le monde n'est pas à Parc & Rec.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:37",
+  "title": "Parks and Recreation",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Parks%20and%20Recreation",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Parks%20and%20Recreation"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parks%20and%20Recreation",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parks%20and%20Recreation"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Parks%20and%20Recreation",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Parks%20and%20Recreation"
     }
   ]
 }

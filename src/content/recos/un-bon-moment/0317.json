@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0317",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "La Nuit",
-  "type": "livre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "déjà moi je recommande la nuit c'est un super cadeau",
-  "timestamp": "01:54:26",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0317",
+  "links": [],
+  "quote": "déjà moi je recommande la nuit c'est un super cadeau",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:54:26",
+  "title": "La Nuit",
+  "types": [
+    "livre"
   ]
 }

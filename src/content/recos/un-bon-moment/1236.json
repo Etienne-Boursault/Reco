@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1236",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "652406c019376d001282c4d8",
-  "title": "Défense Arena",
-  "type": "lieu",
-  "recommendedBy": "Navo",
-  "quote": "Venez à la Défense Arena.",
-  "timestamp": "01:22:04",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1236",
+  "links": [],
+  "quote": "Venez à la Défense Arena.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:04",
+  "title": "Défense Arena",
+  "types": [
+    "lieu"
   ]
 }

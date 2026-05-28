@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0674",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
-  "title": "Inside Jamel Comedy Club",
-  "type": "serie",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "c'est génial ça",
-  "timestamp": "01:03:44",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "externalIds": {
     "tmdb": "90849",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0674",
+  "links": [],
+  "quote": "c'est génial ça",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:44",
+  "title": "Inside Jamel Comedy Club",
+  "types": [
+    "serie"
+  ]
 }

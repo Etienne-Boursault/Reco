@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0426",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Le rêve américain",
-  "type": "film",
   "creator": "Anthony Martiano",
-  "recommendedBy": "Navot",
-  "quote": "Moi, je recommande le rêve américain de Anthony Martiano, le film...",
-  "timestamp": "01:30:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "tmdb": "1365378",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1365378",
-    "tmdbType": "movie"
-  }
+  "id": "ubm-0426",
+  "links": [],
+  "quote": "Moi, je recommande le rêve américain de Anthony Martiano, le film...",
+  "recommendedBy": "Navot",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:30:23",
+  "title": "Le rêve américain",
+  "types": [
+    "film"
+  ]
 }

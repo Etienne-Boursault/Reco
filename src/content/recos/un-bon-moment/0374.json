@@ -1,56 +1,58 @@
 {
-  "id": "ubm-0374",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Wild Wild West",
-  "type": "film",
-  "quote": "Il a jeté à la place Wild, Wild West.",
-  "timestamp": "00:26:28",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8487-wild-wild-west/watch?locale=FR",
+    "tmdb": "8487",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "8487",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/8487-wild-wild-west/watch?locale=FR"
-  },
+  "id": "ubm-0374",
+  "links": [],
+  "quote": "Il a jeté à la place Wild, Wild West.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:26:28",
+  "title": "Wild Wild West",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Wild%20Wild%20West",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Wild%20Wild%20West"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Wild%20Wild%20West",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Wild%20Wild%20West"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Wild%20Wild%20West",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Wild%20Wild%20West"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Wild%20Wild%20West",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Wild%20Wild%20West"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Wild%20Wild%20West",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Wild%20Wild%20West"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Wild%20Wild%20West",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Wild%20Wild%20West"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Wild%20Wild%20West",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Wild%20Wild%20West"
     }
   ]
 }

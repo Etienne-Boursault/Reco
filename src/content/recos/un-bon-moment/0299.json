@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0299",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Albert Dupontel",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Albert Dupontel, qui est un génie complet",
-  "timestamp": "00:29:56",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0299",
+  "links": [],
+  "quote": "Albert Dupontel, qui est un génie complet",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:56",
+  "title": "Albert Dupontel",
+  "types": [
+    "autre"
   ]
 }

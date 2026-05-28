@@ -1,31 +1,33 @@
 {
-  "id": "ubm-0632",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "The Witcher",
-  "type": "serie",
-  "quote": "on a joué pour The Witcher.",
-  "timestamp": "00:20:38",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/71912-the-witcher/watch?locale=FR",
+    "tmdb": "71912",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "71912",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/71912-the-witcher/watch?locale=FR"
-  },
+  "id": "ubm-0632",
+  "links": [],
+  "quote": "on a joué pour The Witcher.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:38",
+  "title": "The Witcher",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Witcher",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Witcher"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Witcher",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Witcher"
     }
   ]
 }

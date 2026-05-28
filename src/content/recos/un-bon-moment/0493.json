@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0493",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69c7de338ac24e236cb65e12",
-  "title": "I Created Disco",
-  "type": "album",
   "creator": "Calvin Harris",
-  "recommendedBy": "Navo",
-  "quote": "Il a fait I Created Disco.",
-  "timestamp": "00:09:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/1205334"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/1205334"
-  }
+  "id": "ubm-0493",
+  "links": [],
+  "quote": "Il a fait I Created Disco.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:09:46",
+  "title": "I Created Disco",
+  "types": [
+    "album"
+  ]
 }

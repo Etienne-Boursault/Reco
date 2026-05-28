@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0776",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Julien Grenel",
-  "type": "autre",
   "creator": "Julien Grenel",
-  "recommendedBy": "Navo",
-  "quote": "le prochain album de Julien Grenin j'espère bientôt",
-  "timestamp": "01:34:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0776",
+  "links": [],
+  "quote": "le prochain album de Julien Grenin j'espère bientôt",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:05",
+  "title": "Julien Grenel",
+  "types": [
+    "autre"
   ]
 }

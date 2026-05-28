@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0057",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Le Premier Jour du Reste de Ta Vie",
-  "type": "film",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "qui est un de mes films.",
-  "timestamp": "00:47:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/12169-le-premier-jour-du-reste-de-ta-vie/watch?locale=FR",
+    "tmdb": "12169",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "12169",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/12169-le-premier-jour-du-reste-de-ta-vie/watch?locale=FR"
-  },
+  "id": "ubm-0057",
+  "links": [],
+  "quote": "qui est un de mes films.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:21",
+  "title": "Le Premier Jour du Reste de Ta Vie",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Le%20Premier%20Jour%20du%20Reste%20de%20Ta%20Vie"
     }
   ]
 }

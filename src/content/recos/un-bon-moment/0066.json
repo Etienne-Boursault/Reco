@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0066",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Euphoria",
-  "type": "serie",
   "creator": "Sam Levinson",
-  "recommendedBy": "Navo",
-  "quote": "c'est euphoria hbio euphoria il y a un avant un après quoi tu on réalisera plus jamais",
-  "timestamp": "01:26:16",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/85552-euphoria/watch?locale=FR",
+    "tmdb": "85552",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "85552",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/85552-euphoria/watch?locale=FR"
-  },
+  "id": "ubm-0066",
+  "links": [],
+  "quote": "c'est euphoria hbio euphoria il y a un avant un après quoi tu on réalisera plus jamais",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:16",
+  "title": "Euphoria",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Euphoria",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Euphoria"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Euphoria",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Euphoria"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Euphoria",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Euphoria"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Euphoria",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Euphoria"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Euphoria",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Euphoria"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Euphoria",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Euphoria"
     }
   ]
 }

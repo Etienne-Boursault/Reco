@@ -1,95 +1,97 @@
 {
-  "id": "ubm-0469",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Bright Star",
-  "type": "film",
   "creator": "Jane Campion",
-  "recommendedBy": "Invité",
-  "quote": "Eh bien, Bright Star. Bright Star. De Jane Campion.",
-  "timestamp": "01:20:42",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/29963-bright-star/watch?locale=FR",
+    "tmdb": "29963",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2009,
-  "externalIds": {
-    "tmdb": "29963",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/29963-bright-star/watch?locale=FR"
-  },
+  "id": "ubm-0469",
+  "links": [],
+  "quote": "Eh bien, Bright Star. Bright Star. De Jane Campion.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:42",
+  "title": "Bright Star",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "MUBI",
-      "url": "https://mubi.com/fr/films?q=Bright%20Star",
-      "ethics": "indie"
+      "url": "https://mubi.com/fr/films?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "label": "MUBI Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Bright%20Star",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Bright%20Star"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Bright%20Star",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Bright%20Star",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Bright%20Star"
     }
-  ]
+  ],
+  "year": 2009
 }

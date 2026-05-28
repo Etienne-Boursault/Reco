@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0321",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Étincelle Vol 2",
-  "type": "album",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il sort un album Vendredi qui s'appelle Étincelle Vol 2",
-  "timestamp": "01:56:06",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/356500427"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/356500427"
-  }
+  "id": "ubm-0321",
+  "links": [],
+  "quote": "il sort un album Vendredi qui s'appelle Étincelle Vol 2",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:56:06",
+  "title": "Étincelle Vol 2",
+  "types": [
+    "album"
+  ]
 }

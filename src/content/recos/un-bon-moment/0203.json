@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0203",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6903fad795ee8b1815229b88",
-  "title": "Cabos",
-  "type": "autre",
   "creator": "Cabos",
-  "recommendedBy": "Navo",
-  "quote": "meilleure chocolaterie de France Pour moi C'est assez pub Gratos pour eux Cabos à moulouse",
-  "timestamp": "01:39:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6903fad795ee8b1815229b88",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0203",
+  "links": [],
+  "quote": "meilleure chocolaterie de France Pour moi C'est assez pub Gratos pour eux Cabos à moulouse",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:39:30",
+  "title": "Cabos",
+  "types": [
+    "autre"
   ]
 }

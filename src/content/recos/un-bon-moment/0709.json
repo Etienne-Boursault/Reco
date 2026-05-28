@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0709",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Perfect Video",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Il y a Perfect Video qui marche très bien aussi.",
-  "timestamp": "00:28:48",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0709",
+  "links": [],
+  "quote": "Il y a Perfect Video qui marche très bien aussi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:48",
+  "title": "Perfect Video",
+  "types": [
+    "autre"
   ]
 }

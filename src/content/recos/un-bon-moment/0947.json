@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0947",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "Mitch CK officiel",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je voulais vous recommander un compte Instagram. Il est aussi sur TikTok, je crois. C'est Mitch. CK officiel.",
-  "timestamp": "01:26:23",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0947",
+  "links": [],
+  "quote": "Je voulais vous recommander un compte Instagram. Il est aussi sur TikTok, je crois. C'est Mitch. CK officiel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:23",
+  "title": "Mitch CK officiel",
+  "types": [
+    "autre"
   ]
 }

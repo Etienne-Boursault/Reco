@@ -1,93 +1,95 @@
 {
-  "id": "ubm-0433",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "300",
-  "type": "film",
   "creator": "Zack Snyder",
-  "recommendedBy": "intervenants",
-  "quote": "mais il y a aussi un peu de Gladiator, des 300 je crois que ça s'appelle",
-  "timestamp": "01:02:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1271-300/watch?locale=FR",
+    "tmdb": "1271",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1271",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1271-300/watch?locale=FR"
-  },
+  "id": "ubm-0433",
+  "links": [],
+  "quote": "mais il y a aussi un peu de Gladiator, des 300 je crois que ça s'appelle",
+  "recommendedBy": "intervenants",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:36",
+  "title": "300",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=300",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=300"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=300",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=300"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=300",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=300"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=300",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=300"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=300&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=300&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=300",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=300"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=300",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=300"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=300",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=300"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=300",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=300"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=300",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=300"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=300",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=300"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=300",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=300"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=300",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=300"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=300",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=300"
     }
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0050",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
-  "title": "La Peau de chagrin",
-  "type": "livre",
   "creator": "Honoré de Balzac",
-  "recommendedBy": "Invité",
-  "quote": "Franchement, il y avait un côté cool.",
-  "timestamp": "00:27:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0050",
+  "links": [],
+  "quote": "Franchement, il y avait un côté cool.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:15",
+  "title": "La Peau de chagrin",
+  "types": [
+    "livre"
   ]
 }

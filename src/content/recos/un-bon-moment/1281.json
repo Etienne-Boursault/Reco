@@ -1,37 +1,39 @@
 {
-  "id": "ubm-1281",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
-  "title": "Columbo",
-  "type": "serie",
-  "recommendedBy": "invité",
-  "quote": "\"Columbo, on peut regarder Columbo?\"",
-  "timestamp": "01:36:22",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/873-columbo/watch?locale=FR",
+    "tmdb": "873",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "873",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/873-columbo/watch?locale=FR"
-  },
+  "id": "ubm-1281",
+  "links": [],
+  "quote": "\"Columbo, on peut regarder Columbo?\"",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:36:22",
+  "title": "Columbo",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
     }
   ]
 }

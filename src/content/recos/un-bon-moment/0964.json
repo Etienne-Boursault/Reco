@@ -1,89 +1,91 @@
 {
-  "id": "ubm-0964",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Un p'tit truc en plus",
-  "type": "film",
   "creator": "Artus",
-  "year": 2024,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "La Pampa de Antoine Chevrolier. Très beau. Super film. Le plus connu des acteurs, c'est Artus.",
-  "timestamp": "01:33:18",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1152014-un-p-tit-truc-en-plus/watch?locale=FR",
+    "tmdb": "1152014",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "1152014",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1152014-un-p-tit-truc-en-plus/watch?locale=FR"
-  },
+  "id": "ubm-0964",
+  "links": [],
+  "quote": "La Pampa de Antoine Chevrolier. Très beau. Super film. Le plus connu des acteurs, c'est Artus.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:18",
+  "title": "Un p'tit truc en plus",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "M6+",
-      "url": "https://www.6play.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.6play.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Un%20p%27tit%20truc%20en%20plus&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Un%20p%27tit%20truc%20en%20plus&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Un%20p%27tit%20truc%20en%20plus"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Un%20p%27tit%20truc%20en%20plus",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Un%20p%27tit%20truc%20en%20plus"
     }
-  ]
+  ],
+  "year": 2024
 }

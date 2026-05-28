@@ -1,87 +1,89 @@
 {
-  "id": "ubm-0367",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6970a1759448a95f223d530c",
-  "title": "Highlander",
-  "type": "film",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Highlander.",
-  "timestamp": "01:13:00",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8009-highlander/watch?locale=FR",
+    "tmdb": "8009",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "8009",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/8009-highlander/watch?locale=FR"
-  },
+  "id": "ubm-0367",
+  "links": [],
+  "quote": "Highlander.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:00",
+  "title": "Highlander",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Highlander",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Highlander&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Highlander&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Highlander",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Highlander",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Highlander",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Highlander",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Highlander"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Highlander",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Highlander",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Highlander"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Highlander",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Highlander"
     }
   ]
 }

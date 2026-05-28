@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0151",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "661c1bf83fb7ab00162aa674",
-  "title": "Pulsion",
-  "type": "spectacle",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "pour ceux qui n'ont pas vu mon nouveau spectacle une bonne soirée, sachez que je ne joue plus, mais il est disponible sur le site www.unebonneboutique.com en streaming, donc vous pouvez le voir quand vous voulez.",
-  "timestamp": "00:00:25",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "661c1bf83fb7ab00162aa674",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0151",
+  "links": [],
+  "quote": "pour ceux qui n'ont pas vu mon nouveau spectacle une bonne soirée, sachez que je ne joue plus, mais il est disponible sur le site www.unebonneboutique.com en streaming, donc vous pouvez le voir quand vous voulez.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:00:25",
+  "title": "Pulsion",
+  "types": [
+    "spectacle"
   ]
 }

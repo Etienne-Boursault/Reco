@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0244",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Bojack Horseman",
-  "type": "serie",
-  "recommendedBy": "Intervenant",
-  "quote": "Il y a des séries comme Bojack Horseman, ça remonte carrément jusqu'à la grand-mère",
-  "timestamp": "00:13:16",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR",
+    "tmdb": "61222",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "61222",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR"
-  },
+  "id": "ubm-0244",
+  "links": [],
+  "quote": "Il y a des séries comme Bojack Horseman, ça remonte carrément jusqu'à la grand-mère",
+  "recommendedBy": "Intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:13:16",
+  "title": "Bojack Horseman",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Bojack%20Horseman",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Bojack%20Horseman"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Bojack%20Horseman",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Bojack%20Horseman"
     }
   ]
 }

@@ -1,83 +1,85 @@
 {
-  "id": "ubm-0412",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Blood Diamond",
-  "type": "film",
   "creator": "Edward Zwick",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Il allait dans une cage à requin.",
-  "timestamp": "00:27:10",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1372-blood-diamond/watch?locale=FR",
+    "tmdb": "1372",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1372",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1372-blood-diamond/watch?locale=FR"
-  },
+  "id": "ubm-0412",
+  "links": [],
+  "quote": "Il allait dans une cage à requin.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:10",
+  "title": "Blood Diamond",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Blood%20Diamond"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Blood%20Diamond",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Blood%20Diamond&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Blood%20Diamond&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Blood%20Diamond",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Blood%20Diamond"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Blood%20Diamond",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Blood%20Diamond"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Blood%20Diamond",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Blood%20Diamond"
     }
   ]
 }

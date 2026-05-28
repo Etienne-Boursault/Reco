@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0663",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
-  "title": "Tom et Jerry",
-  "type": "autre",
   "creator": "Hanna-Barbera",
-  "recommendedBy": "invité",
-  "quote": "Alors que Tom et Jerry et Manuel Valls.",
-  "timestamp": "00:55:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0663",
+  "links": [],
+  "quote": "Alors que Tom et Jerry et Manuel Valls.",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:55:00",
+  "title": "Tom et Jerry",
+  "types": [
+    "autre"
   ]
 }

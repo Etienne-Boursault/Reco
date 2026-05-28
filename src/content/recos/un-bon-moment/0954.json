@@ -1,27 +1,29 @@
 {
-  "id": "ubm-0954",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "661c1bf83fb7ab00162aa674",
-  "title": "The Game Changers",
-  "type": "film",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je ne l'avais vu sur les Netflix\nGame Changers",
-  "timestamp": "00:05:05",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/463088-the-game-changers/watch?locale=FR",
+    "tmdb": "463088",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "463088",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/463088-the-game-changers/watch?locale=FR"
-  },
+  "id": "ubm-0954",
+  "links": [],
+  "quote": "je ne l'avais vu sur les Netflix\nGame Changers",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:05:05",
+  "title": "The Game Changers",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=The%20Game%20Changers",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20Game%20Changers"
     }
   ]
 }

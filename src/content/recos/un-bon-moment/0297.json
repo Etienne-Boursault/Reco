@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0297",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Le bruit blanc",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "j'ai découvert récemment ces extra...",
-  "timestamp": "00:22:37",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0297",
+  "links": [],
+  "quote": "j'ai découvert récemment ces extra...",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:22:37",
+  "title": "Le bruit blanc",
+  "types": [
+    "autre"
   ]
 }

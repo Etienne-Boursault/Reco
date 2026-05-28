@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0800",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
-  "title": "Iliona",
-  "type": "musique",
   "creator": "Iliona",
-  "recommendedBy": "Julien",
-  "quote": "un artiste que j'ai rencontré, que j'aime beaucoup qui s'appelle Iliona, qui est une chanteuse belge qui fait des chansons assez incroyables",
-  "timestamp": "01:03:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3660747332"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3660747332"
-  }
+  "id": "ubm-0800",
+  "links": [],
+  "quote": "un artiste que j'ai rencontré, que j'aime beaucoup qui s'appelle Iliona, qui est une chanteuse belge qui fait des chansons assez incroyables",
+  "recommendedBy": "Julien",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:03:23",
+  "title": "Iliona",
+  "types": [
+    "musique"
+  ]
 }

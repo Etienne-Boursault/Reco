@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0818",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "630baf2b552ddd0013718a16",
-  "title": "Starsky et Hutch",
-  "type": "autre",
   "creator": "autre",
-  "recommendedBy": "Invité",
-  "quote": "Starsky chez Flunch.",
-  "timestamp": "00:58:12",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "630baf2b552ddd0013718a16",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0818",
+  "links": [],
+  "quote": "Starsky chez Flunch.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:12",
+  "title": "Starsky et Hutch",
+  "types": [
+    "autre"
   ]
 }

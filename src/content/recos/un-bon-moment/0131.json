@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0131",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Le réseau sympa cool",
-  "type": "autre",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "Le réseau, c'est super.",
-  "timestamp": "01:12:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0131",
+  "links": [],
+  "quote": "Le réseau, c'est super.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:04",
+  "title": "Le réseau sympa cool",
+  "types": [
+    "autre"
   ]
 }

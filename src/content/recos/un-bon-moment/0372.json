@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0372",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Les aphorismes d'Arun",
-  "type": "autre",
   "creator": "Navo",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "n'hésitez pas à acheter, sautez-vous, sautez-vous.",
-  "timestamp": "00:21:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0372",
+  "links": [],
+  "quote": "n'hésitez pas à acheter, sautez-vous, sautez-vous.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:56",
+  "title": "Les aphorismes d'Arun",
+  "types": [
+    "autre"
   ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0049",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
-  "title": "Misery is a Butterfly",
-  "type": "album",
   "creator": "Blonde Redhead",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "c'est un album que j'adore de Blonde Redhead",
-  "timestamp": "00:48:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/10966642"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/10966642"
-  }
+  "id": "ubm-0049",
+  "links": [],
+  "quote": "c'est un album que j'adore de Blonde Redhead",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:48:48",
+  "title": "Misery is a Butterfly",
+  "types": [
+    "album"
+  ]
 }

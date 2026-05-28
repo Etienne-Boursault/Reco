@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0801",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
-  "title": "Pensez Futile",
-  "type": "autre",
   "creator": "Navo",
-  "recommendedBy": "Navo",
-  "quote": "Ouais, Pensez Futile.",
-  "timestamp": "01:04:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0801",
+  "links": [],
+  "quote": "Ouais, Pensez Futile.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:14",
+  "title": "Pensez Futile",
+  "types": [
+    "autre"
   ]
 }

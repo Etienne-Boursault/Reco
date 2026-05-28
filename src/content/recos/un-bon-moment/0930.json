@@ -1,59 +1,61 @@
 {
-  "id": "ubm-0930",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Péril Jeune",
-  "type": "film",
   "creator": "Lucas Belvaux",
-  "year": 1996,
-  "recommendedBy": "Cédric Klapisch",
-  "quote": "le Péril Jeune ça a 30 ans",
-  "timestamp": "01:11:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/33095-le-peril-jeune/watch?locale=FR",
+    "tmdb": "33095",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "33095",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/33095-le-peril-jeune/watch?locale=FR"
-  },
+  "id": "ubm-0930",
+  "links": [],
+  "quote": "le Péril Jeune ça a 30 ans",
+  "recommendedBy": "Cédric Klapisch",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:19",
+  "title": "Péril Jeune",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=P%C3%A9ril%20Jeune",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=P%C3%A9ril%20Jeune",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=P%C3%A9ril%20Jeune",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=P%C3%A9ril%20Jeune",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=P%C3%A9ril%20Jeune",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=P%C3%A9ril%20Jeune",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=P%C3%A9ril%20Jeune"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=P%C3%A9ril%20Jeune",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=P%C3%A9ril%20Jeune"
     }
-  ]
+  ],
+  "year": 1996
 }

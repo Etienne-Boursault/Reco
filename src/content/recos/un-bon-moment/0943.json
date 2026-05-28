@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0943",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6599c1b296596600156961a7",
-  "title": "Zaho de Sagazan",
-  "type": "album",
-  "recommendedBy": "Eddie",
-  "quote": "une artiste française qui a sorti un album, je crois, il y a un nom qui s'appelle Zao de Sagazan.",
-  "timestamp": "00:56:54",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/591004402"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/591004402"
-  }
+  "id": "ubm-0943",
+  "links": [],
+  "quote": "une artiste française qui a sorti un album, je crois, il y a un nom qui s'appelle Zao de Sagazan.",
+  "recommendedBy": "Eddie",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:54",
+  "title": "Zaho de Sagazan",
+  "types": [
+    "album"
+  ]
 }

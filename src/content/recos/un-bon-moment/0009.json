@@ -1,94 +1,96 @@
 {
-  "id": "ubm-0009",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
-  "title": "Full Metal Jacket",
-  "type": "film",
   "creator": "Stanley Kubrick",
-  "year": 1987,
-  "recommendedBy": "Carlito",
-  "quote": "Je suis tombé sur Full Metal Jacket, qui était le film Trostier.",
-  "timestamp": "00:38:59",
-  "links": [],
-  "status": "discarded",
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/600-full-metal-jacket/watch?locale=FR",
+    "tmdb": "600",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "600",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/600-full-metal-jacket/watch?locale=FR"
-  },
+  "id": "ubm-0009",
+  "links": [],
+  "quote": "Je suis tombé sur Full Metal Jacket, qui était le film Trostier.",
+  "recommendedBy": "Carlito",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:38:59",
+  "title": "Full Metal Jacket",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Full%20Metal%20Jacket",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Full%20Metal%20Jacket&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Full%20Metal%20Jacket&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Full%20Metal%20Jacket",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Full%20Metal%20Jacket",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Full%20Metal%20Jacket",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Full%20Metal%20Jacket"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Full%20Metal%20Jacket",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Full%20Metal%20Jacket"
     }
-  ]
+  ],
+  "year": 1987
 }

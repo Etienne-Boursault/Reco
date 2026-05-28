@@ -1,48 +1,50 @@
 {
-  "id": "ubm-0416",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Dragon Ball Super",
-  "type": "serie",
   "creator": "Akira Toriyama",
-  "recommendedBy": "Navé",
-  "quote": "J'ai regardé Dragon Ball Super.",
-  "timestamp": "01:26:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/62715/watch?locale=FR",
+    "tmdb": "62715",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "62715",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/62715/watch?locale=FR"
-  },
+  "id": "ubm-0416",
+  "links": [],
+  "quote": "J'ai regardé Dragon Ball Super.",
+  "recommendedBy": "Navé",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:13",
+  "title": "Dragon Ball Super",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Crunchyroll",
-      "url": "https://www.crunchyroll.com/fr/search?q=Dragon%20Ball%20Super",
-      "ethics": "neutral"
+      "url": "https://www.crunchyroll.com/fr/search?q=Dragon%20Ball%20Super"
     },
     {
+      "ethics": "neutral",
       "label": "Animation Digital Network",
-      "url": "https://animationdigitalnetwork.com/search?q=Dragon%20Ball%20Super",
-      "ethics": "neutral"
+      "url": "https://animationdigitalnetwork.com/search?q=Dragon%20Ball%20Super"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Dragon%20Ball%20Super",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Dragon%20Ball%20Super"
     },
     {
+      "ethics": "avoid",
       "label": "Anime Digital Network Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super"
     },
     {
+      "ethics": "avoid",
       "label": "Crunchyroll Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super"
     }
   ]
 }

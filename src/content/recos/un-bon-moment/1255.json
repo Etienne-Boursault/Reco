@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1255",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c05703445c0011dd8343",
-  "title": "Jack Daniels Bar",
-  "type": "lieu",
   "creator": "Strafel",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il y a un bar, Strafel, le bar d'Jack Daniels incroyable",
-  "timestamp": "00:56:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c05703445c0011dd8343",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1255",
+  "links": [],
+  "quote": "il y a un bar, Strafel, le bar d'Jack Daniels incroyable",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:48",
+  "title": "Jack Daniels Bar",
+  "types": [
+    "lieu"
   ]
 }

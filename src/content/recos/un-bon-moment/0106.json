@@ -1,90 +1,92 @@
 {
-  "id": "ubm-0106",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c1b296596600156961a7",
-  "title": "Anatomie d'une chute",
-  "type": "film",
   "creator": "Justine Trier",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "A Diatomie d'une chute de Justine Trier, magnifique, fou d'un cul.",
-  "timestamp": "00:56:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/915935-anatomie-d-une-chute/watch?locale=FR",
+    "tmdb": "915935",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2023,
-  "externalIds": {
-    "tmdb": "915935",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/915935-anatomie-d-une-chute/watch?locale=FR"
-  },
+  "id": "ubm-0106",
+  "links": [],
+  "quote": "A Diatomie d'une chute de Justine Trier, magnifique, fou d'un cul.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:44",
+  "title": "Anatomie d'une chute",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Anatomie%20d%27une%20chute&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Anatomie%20d%27une%20chute&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Anatomie%20d%27une%20chute",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anatomie%20d%27une%20chute",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Anatomie%20d%27une%20chute",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Anatomie%20d%27une%20chute"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Anatomie%20d%27une%20chute",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Anatomie%20d%27une%20chute"
     }
-  ]
+  ],
+  "year": 2023
 }

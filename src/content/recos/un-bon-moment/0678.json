@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0678",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
-  "title": "Happy",
-  "type": "musique",
   "creator": "Pharrell Williams",
-  "quote": "T'as un Happy ! Parelle Williams. Parelle Williams, ça a Mappy ? Happy ? Parelle Williams ?",
-  "timestamp": "00:01:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/701326562"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/701326562"
-  }
+  "id": "ubm-0678",
+  "links": [],
+  "quote": "T'as un Happy ! Parelle Williams. Parelle Williams, ça a Mappy ? Happy ? Parelle Williams ?",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:01:03",
+  "title": "Happy",
+  "types": [
+    "musique"
+  ]
 }

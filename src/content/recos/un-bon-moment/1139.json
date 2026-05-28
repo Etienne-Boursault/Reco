@@ -1,118 +1,120 @@
 {
-  "id": "ubm-1139",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Beau Is Afraid",
-  "type": "film",
   "creator": "Ari Aster",
-  "year": 2023,
-  "quote": "\"Boy's The Fred\". T'as pas de films préférés de ta vie ?",
-  "timestamp": "01:12:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/798286-beau-is-afraid/watch?locale=FR",
+    "tmdb": "798286",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "798286",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/798286-beau-is-afraid/watch?locale=FR"
-  },
+  "id": "ubm-1139",
+  "links": [],
+  "quote": "\"Boy's The Fred\". T'as pas de films préférés de ta vie ?",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:43",
+  "title": "Beau Is Afraid",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "indie",
       "label": "MUBI",
-      "url": "https://mubi.com/fr/films?q=Beau%20Is%20Afraid",
-      "ethics": "indie"
+      "url": "https://mubi.com/fr/films?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "avoid",
       "label": "MUBI Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Beau%20Is%20Afraid&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Beau%20Is%20Afraid&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Beau%20Is%20Afraid",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Beau%20Is%20Afraid"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Beau%20Is%20Afraid",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Beau%20Is%20Afraid"
     }
-  ]
+  ],
+  "year": 2023
 }

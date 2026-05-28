@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1152",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61cb19444f2d030012ddd82a",
-  "title": "Suivez Babac",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "allez voir suvetez au babac sur tiktok il est très drôle",
-  "timestamp": "01:32:17",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1152",
+  "links": [],
+  "quote": "allez voir suvetez au babac sur tiktok il est très drôle",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:17",
+  "title": "Suivez Babac",
+  "types": [
+    "autre"
   ]
 }

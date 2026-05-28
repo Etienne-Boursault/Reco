@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0762",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Retour à Rince",
-  "type": "livre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "Oui, dans la sociologie, j'ai lu Retour à Rince, qui est dingue aussi...",
-  "timestamp": "00:50:44",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0762",
+  "links": [],
+  "quote": "Oui, dans la sociologie, j'ai lu Retour à Rince, qui est dingue aussi...",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:50:44",
+  "title": "Retour à Rince",
+  "types": [
+    "livre"
   ]
 }

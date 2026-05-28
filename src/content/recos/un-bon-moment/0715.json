@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0715",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Run",
-  "type": "serie",
   "creator": "Wallerbridge",
-  "recommendedBy": "invité",
-  "quote": "J'ai vu Run. Qui est sur...",
-  "timestamp": "01:19:54",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "11912",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0715",
+  "links": [],
+  "quote": "J'ai vu Run. Qui est sur...",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:54",
+  "title": "Run",
+  "types": [
+    "serie"
+  ]
 }

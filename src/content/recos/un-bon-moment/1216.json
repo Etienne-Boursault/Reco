@@ -1,71 +1,73 @@
 {
-  "id": "ubm-1216",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Bambi",
-  "type": "film",
-  "quote": "Bambi? Bambi!",
-  "timestamp": "00:51:55",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/3170-bambi/watch?locale=FR",
+    "tmdb": "3170",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "3170",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/3170-bambi/watch?locale=FR"
-  },
+  "id": "ubm-1216",
+  "links": [],
+  "quote": "Bambi? Bambi!",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:55",
+  "title": "Bambi",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Bambi",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Bambi",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Bambi&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Bambi&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Bambi",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Bambi",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Bambi",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Bambi"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bambi",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Bambi",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Bambi",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Bambi"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Bambi",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Bambi"
     }
   ]
 }

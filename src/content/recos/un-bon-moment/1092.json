@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1092",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "630baf2b552ddd0013718a16",
-  "title": "Alexandre Kominek",
-  "type": "spectacle",
-  "recommendedBy": "Navo",
-  "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
-  "timestamp": "01:08:08",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1092",
+  "links": [],
+  "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:08",
+  "title": "Alexandre Kominek",
+  "types": [
+    "spectacle"
   ]
 }

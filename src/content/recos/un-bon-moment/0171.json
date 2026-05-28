@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0171",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Game of Thrones",
-  "type": "serie",
   "creator": "David Benioff, D.B. Weiss",
-  "recommendedBy": "Inconnu",
-  "quote": "c'est dans tes séries préférées",
-  "timestamp": "00:44:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR",
+    "tmdb": "1399",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1399",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR"
-  },
+  "id": "ubm-0171",
+  "links": [],
+  "quote": "c'est dans tes séries préférées",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:44:40",
+  "title": "Game of Thrones",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Game%20of%20Thrones",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Game%20of%20Thrones"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Game%20of%20Thrones",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Game%20of%20Thrones"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Game%20of%20Thrones",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Game%20of%20Thrones"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Game%20of%20Thrones",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Game%20of%20Thrones"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Game%20of%20Thrones",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Game%20of%20Thrones"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Game%20of%20Thrones",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Game%20of%20Thrones"
     }
   ]
 }

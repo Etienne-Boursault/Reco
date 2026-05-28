@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0542",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "musée d'Holy",
-  "type": "lieu",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "le musée d'Holy",
-  "timestamp": "01:22:22",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0542",
+  "links": [],
+  "quote": "le musée d'Holy",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:22",
+  "title": "musée d'Holy",
+  "types": [
+    "lieu"
   ]
 }

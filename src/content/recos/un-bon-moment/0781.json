@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0781",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61accf4f45d15e00135c6ef2",
-  "title": "Rien ne s'oppose à la nuit",
-  "type": "livre",
   "creator": "Delphine de Vigan",
-  "recommendedBy": "Navo",
-  "quote": "un livre de Delphine de Vigan qui s'appelle \"Rien de s'opposer à la nuit\", mais en même temps elle en a vendu des millions d'exemplaires",
-  "timestamp": "01:01:33",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0781",
+  "links": [],
+  "quote": "un livre de Delphine de Vigan qui s'appelle \"Rien de s'opposer à la nuit\", mais en même temps elle en a vendu des millions d'exemplaires",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:33",
+  "title": "Rien ne s'oppose à la nuit",
+  "types": [
+    "livre"
   ]
 }

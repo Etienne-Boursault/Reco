@@ -1,32 +1,34 @@
 {
-  "id": "ubm-1001",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69c7de338ac24e236cb65e12",
-  "title": "Bref",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "la dernière fois que j'ai eu cet effet je pense que c'était sur bref 2 tout a été remis en cause",
-  "timestamp": "01:37:07",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
+    "tmdb": "60715",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "60715",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
-  },
+  "id": "ubm-1001",
+  "links": [],
+  "quote": "la dernière fois que j'ai eu cet effet je pense que c'était sur bref 2 tout a été remis en cause",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:07",
+  "title": "Bref",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Bref"
     }
   ]
 }

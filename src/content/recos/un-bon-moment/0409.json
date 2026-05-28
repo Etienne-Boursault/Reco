@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0409",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "Magnifique",
-  "type": "album",
   "creator": "Vald",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'écoute en boucle Magnificate de Vald",
-  "timestamp": "01:22:57",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/948885301"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/948885301"
-  }
+  "id": "ubm-0409",
+  "links": [],
+  "quote": "J'écoute en boucle Magnificate de Vald",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:57",
+  "title": "Magnifique",
+  "types": [
+    "album"
+  ]
 }

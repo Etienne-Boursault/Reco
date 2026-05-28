@@ -1,48 +1,50 @@
 {
-  "id": "ubm-0993",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "Akira",
-  "type": "film",
   "creator": "Katsuhiro Otomo",
-  "year": 1988,
-  "quote": "je parle de akira film de autobot classique de l'animation",
-  "timestamp": "00:42:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/149-akira/watch?locale=FR",
+    "tmdb": "149",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "149",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/149-akira/watch?locale=FR"
-  },
+  "id": "ubm-0993",
+  "links": [],
+  "quote": "je parle de akira film de autobot classique de l'animation",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:00",
+  "title": "Akira",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Animation Digital Network",
-      "url": "https://animationdigitalnetwork.com/search?q=Akira",
-      "ethics": "neutral"
+      "url": "https://animationdigitalnetwork.com/search?q=Akira"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Akira",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Akira"
     },
     {
+      "ethics": "neutral",
       "label": "Molotov TV",
-      "url": "https://www.molotov.tv/search?q=Akira",
-      "ethics": "neutral"
+      "url": "https://www.molotov.tv/search?q=Akira"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Akira",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Akira"
     },
     {
+      "ethics": "avoid",
       "label": "Anime Digital Network Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Akira",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Akira"
     }
-  ]
+  ],
+  "year": 1988
 }

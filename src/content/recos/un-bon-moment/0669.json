@@ -1,48 +1,50 @@
 {
-  "id": "ubm-0669",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
-  "title": "Silicon Valley",
-  "type": "serie",
   "creator": "HBO",
-  "recommendedBy": "Yacine",
-  "quote": "Moi, je recommande Silicon Valley, qui est une série super bien et qui a vraiment...",
-  "timestamp": "01:37:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60573-silicon-valley/watch?locale=FR",
+    "tmdb": "60573",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "60573",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60573-silicon-valley/watch?locale=FR"
-  },
+  "id": "ubm-0669",
+  "links": [],
+  "quote": "Moi, je recommande Silicon Valley, qui est une série super bien et qui a vraiment...",
+  "recommendedBy": "Yacine",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:37:13",
+  "title": "Silicon Valley",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Silicon%20Valley",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Silicon%20Valley"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Silicon%20Valley",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Silicon%20Valley"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Silicon%20Valley",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Silicon%20Valley"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Silicon%20Valley",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Silicon%20Valley"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Silicon%20Valley",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Silicon%20Valley"
     }
   ]
 }

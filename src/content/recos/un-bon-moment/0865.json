@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0865",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6336c79af131c60012c20984",
-  "title": "Looking for Sugar Man",
-  "type": "autre",
   "creator": "Malik Bendjelloul",
-  "year": 2012,
-  "recommendedBy": "Invité",
-  "quote": "qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud mais personne ne sait ce qu'il est devenu",
-  "timestamp": "00:20:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6336c79af131c60012c20984",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-0865",
+  "links": [],
+  "quote": "qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud mais personne ne sait ce qu'il est devenu",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:56",
+  "title": "Looking for Sugar Man",
+  "types": [
+    "autre"
+  ],
+  "year": 2012
 }

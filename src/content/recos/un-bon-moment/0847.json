@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0847",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Une Bonne Soirée",
-  "type": "spectacle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "janvier dans toute la France",
-  "timestamp": "00:00:13",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0847",
+  "links": [],
+  "quote": "janvier dans toute la France",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:00:13",
+  "title": "Une Bonne Soirée",
+  "types": [
+    "spectacle"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0290",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Dival's Plane",
-  "type": "autre",
   "creator": "Gene Rocco",
-  "recommendedBy": "Navo",
-  "quote": "Donc je vais dire Dival's Plane puisqu'on en parlait tout à l'heure.",
-  "timestamp": "02:07:25",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0290",
+  "links": [],
+  "quote": "Donc je vais dire Dival's Plane puisqu'on en parlait tout à l'heure.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:07:25",
+  "title": "Dival's Plane",
+  "types": [
+    "autre"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0475",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Gaston Lagaffe",
-  "type": "bd",
   "creator": "André Franquin",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'aimerais refaire un Gaston Lagaffe.",
-  "timestamp": "00:41:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0475",
+  "links": [],
+  "quote": "J'aimerais refaire un Gaston Lagaffe.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:41:34",
+  "title": "Gaston Lagaffe",
+  "types": [
+    "bd"
   ]
 }

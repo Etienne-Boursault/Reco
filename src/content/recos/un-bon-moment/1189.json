@@ -1,21 +1,23 @@
 {
-  "id": "ubm-1189",
-  "sourceId": "un-bon-moment",
+  "creator": "N/A",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "Dave",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Dave sur Canal, et enfin, c'est à la base d'une série... Dave ? Ouais, Dave, c'est un rappeur.",
-  "timestamp": "01:36:43",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "tmdb": "97084",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "N/A",
-  "externalIds": {
-    "tmdb": "97084",
-    "tmdbType": "tv"
-  }
+  "id": "ubm-1189",
+  "links": [],
+  "quote": "Dave sur Canal, et enfin, c'est à la base d'une série... Dave ? Ouais, Dave, c'est un rappeur.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:36:43",
+  "title": "Dave",
+  "types": [
+    "serie"
+  ]
 }

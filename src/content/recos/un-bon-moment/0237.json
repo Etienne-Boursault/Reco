@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0237",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "No I'm Not a Human",
-  "type": "jeu",
-  "quote": "j'ai envie de conseiller un jeu indé mais je l'ai vu t'as mal tourné sur Twitch",
-  "timestamp": "02:22:40",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0237",
+  "links": [],
+  "quote": "j'ai envie de conseiller un jeu indé mais je l'ai vu t'as mal tourné sur Twitch",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:22:40",
+  "title": "No I'm Not a Human",
+  "types": [
+    "jeu"
   ]
 }

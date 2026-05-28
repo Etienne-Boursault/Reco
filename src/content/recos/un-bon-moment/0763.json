@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0763",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Izut",
-  "type": "musique",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "J'ai découvert la chanteuse Izut.",
-  "timestamp": "00:59:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3856161211"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3856161211"
-  }
+  "id": "ubm-0763",
+  "links": [],
+  "quote": "J'ai découvert la chanteuse Izut.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:11",
+  "title": "Izut",
+  "types": [
+    "musique"
+  ]
 }

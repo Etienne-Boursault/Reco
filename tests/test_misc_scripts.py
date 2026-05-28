@@ -47,7 +47,7 @@ def test_refresh_skips_recos_without_providers(monkeypatch, tmp_path: Path):
 
     (recos_dir / "001.json").write_text(json.dumps({
         "title": "Un livre",
-        "type": "livre",
+        "types": ["livre"],
     }), encoding="utf-8")
 
     monkeypatch.setattr(sys, "argv", ["refresh", "--source", "ubm"])

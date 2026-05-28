@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1069",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "Emotion sur la confiance en soi",
-  "type": "podcast",
-  "recommendedBy": "Navo",
-  "quote": "Je vous invite à écouter le podcast « Emotion sur la confiance en soi » où je suis interviewé d'ailleurs, en tant que mec à confiance en lui.",
-  "timestamp": "00:52:16",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1069",
+  "links": [],
+  "quote": "Je vous invite à écouter le podcast « Emotion sur la confiance en soi » où je suis interviewé d'ailleurs, en tant que mec à confiance en lui.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:52:16",
+  "title": "Emotion sur la confiance en soi",
+  "types": [
+    "podcast"
   ]
 }

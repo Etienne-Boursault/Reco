@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0239",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Cocovoit",
-  "type": "autre",
   "creator": "Ambroise Kerminati",
-  "quote": "c'est le gars qui a produit réalisé écrit des trucs genre Cocovoit",
-  "timestamp": "02:24:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0239",
+  "links": [],
+  "quote": "c'est le gars qui a produit réalisé écrit des trucs genre Cocovoit",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:24:40",
+  "title": "Cocovoit",
+  "types": [
+    "autre"
   ]
 }

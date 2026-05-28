@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0588",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
-  "title": "Fouloscopie",
-  "type": "autre",
   "creator": "Patrick Beau",
-  "recommendedBy": "Navo",
-  "quote": "Fouloscopie un mec qui analyse les fous c'est très intéressant pourquoi les fous se comportent d'une certaine façon",
-  "timestamp": "01:18:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0588",
+  "links": [],
+  "quote": "Fouloscopie un mec qui analyse les fous c'est très intéressant pourquoi les fous se comportent d'une certaine façon",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:49",
+  "title": "Fouloscopie",
+  "types": [
+    "autre"
   ]
 }

@@ -1,78 +1,80 @@
 {
-  "id": "ubm-0596",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Before Sunset",
-  "type": "film",
   "creator": "Richard Linklater",
-  "recommendedBy": "Navo",
-  "quote": "il a fait une trilogie qui s'appelle Before Sunset, Before Sunrise et Before Midnight, qui est une trilogie que je trouve magnifique sur un couple.",
-  "timestamp": "00:03:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/80-before-sunset/watch?locale=FR",
+    "tmdb": "80",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "80",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/80-before-sunset/watch?locale=FR"
-  },
+  "id": "ubm-0596",
+  "links": [],
+  "quote": "il a fait une trilogie qui s'appelle Before Sunset, Before Sunrise et Before Midnight, qui est une trilogie que je trouve magnifique sur un couple.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:14",
+  "title": "Before Sunset",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Before%20Sunset&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Before%20Sunset&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Sunset",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Before%20Sunset"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Before%20Sunset",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Before%20Sunset"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Sunset",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Before%20Sunset"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Before%20Sunset",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Before%20Sunset"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Before%20Sunset",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Before%20Sunset"
     }
   ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0322",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Mortal",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "parce que justement, tu déneiges, c'est un énorme énorme de déneigé.",
-  "timestamp": "00:05:00",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
   "externalIds": {
     "tmdb": "90591",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0322",
+  "links": [],
+  "quote": "parce que justement, tu déneiges, c'est un énorme énorme de déneigé.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:05:00",
+  "title": "Mortal",
+  "types": [
+    "serie"
+  ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0270",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "James",
-  "type": "livre",
   "creator": "Percival Everett",
-  "recommendedBy": "invitée",
-  "quote": "Donc c'est assez rigolo à lire. Ça s'appelle James, de Percival et Vrète.",
-  "timestamp": "01:43:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0270",
+  "links": [],
+  "quote": "Donc c'est assez rigolo à lire. Ça s'appelle James, de Percival et Vrète.",
+  "recommendedBy": "invitée",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:43:19",
+  "title": "James",
+  "types": [
+    "livre"
   ]
 }

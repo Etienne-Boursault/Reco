@@ -1,28 +1,30 @@
 {
-  "id": "ubm-1104",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6336c79af131c60012c20984",
-  "title": "O.J.: Made in America",
-  "type": "serie",
-  "year": 2016,
-  "recommendedBy": "Navo",
-  "quote": "oj simpson made in america pas la série le doc qui est une série doc c'est aussi un peu piège et donc c'est espn qu'elle fait ça ça avait eu l'oscar du meilleur documentaire en 2016",
-  "timestamp": "00:22:07",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/66738-o-j-made-in-america/watch?locale=FR",
+    "tmdb": "66738",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "66738",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/66738-o-j-made-in-america/watch?locale=FR"
-  },
+  "id": "ubm-1104",
+  "links": [],
+  "quote": "oj simpson made in america pas la série le doc qui est une série doc c'est aussi un peu piège et donc c'est espn qu'elle fait ça ça avait eu l'oscar du meilleur documentaire en 2016",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:22:07",
+  "title": "O.J.: Made in America",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=O.J.%3A%20Made%20in%20America",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=O.J.%3A%20Made%20in%20America"
     }
-  ]
+  ],
+  "year": 2016
 }

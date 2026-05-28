@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1174",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
-  "title": "Whitefire",
-  "type": "film",
-  "recommendedBy": "Navo",
-  "quote": "Bah en vrai le... Whitefire.",
-  "timestamp": "01:00:18",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1174",
+  "links": [],
+  "quote": "Bah en vrai le... Whitefire.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:00:18",
+  "title": "Whitefire",
+  "types": [
+    "film"
   ]
 }

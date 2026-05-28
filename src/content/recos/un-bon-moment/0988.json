@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0988",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Comment j'ai retrouvé Xavier Dupont de Ligonnès",
-  "type": "livre",
-  "recommendedBy": "Navo",
-  "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
-  "timestamp": "02:13:22",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0988",
+  "links": [],
+  "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:13:22",
+  "title": "Comment j'ai retrouvé Xavier Dupont de Ligonnès",
+  "types": [
+    "livre"
   ]
 }

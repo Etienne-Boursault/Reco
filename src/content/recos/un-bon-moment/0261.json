@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0261",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Gérald Le Conquérant",
-  "type": "film",
   "creator": "Non précisé",
-  "recommendedBy": "Alexandra Arrott",
-  "quote": "Alexandra et Fabrice, vous êtes dans un film qui s'appelle Gérald.",
-  "timestamp": "00:02:52",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1174382-gerald-le-conquerant/watch?locale=FR",
+    "tmdb": "1174382",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1174382",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1174382-gerald-le-conquerant/watch?locale=FR"
-  },
+  "id": "ubm-0261",
+  "links": [],
+  "quote": "Alexandra et Fabrice, vous êtes dans un film qui s'appelle Gérald.",
+  "recommendedBy": "Alexandra Arrott",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:52",
+  "title": "Gérald Le Conquérant",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     }
   ]
 }

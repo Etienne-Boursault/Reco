@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0039",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
-  "title": "Paname",
-  "type": "autre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "Au Paname, c'est d'abord qu'on travaille.",
-  "timestamp": "00:02:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0039",
+  "links": [],
+  "quote": "Au Paname, c'est d'abord qu'on travaille.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:58",
+  "title": "Paname",
+  "types": [
+    "autre"
   ]
 }

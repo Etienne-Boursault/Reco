@@ -1,33 +1,35 @@
 {
-  "id": "ubm-1184",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "The Morning Show",
-  "type": "serie",
-  "recommendedBy": "Marion",
-  "quote": "une série qui s'appelle The Morning Show",
-  "timestamp": "01:07:22",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=FR",
+    "tmdb": "90282",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "90282",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=FR"
-  },
+  "id": "ubm-1184",
+  "links": [],
+  "quote": "une série qui s'appelle The Morning Show",
+  "recommendedBy": "Marion",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:07:22",
+  "title": "The Morning Show",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV",
-      "url": "https://tv.apple.com/fr/search?term=The%20Morning%20Show",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20Morning%20Show"
     },
     {
+      "ethics": "avoid",
       "label": "Apple TV Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Morning%20Show",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Morning%20Show"
     }
   ]
 }

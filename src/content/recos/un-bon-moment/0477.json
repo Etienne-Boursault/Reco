@@ -1,81 +1,83 @@
 {
-  "id": "ubm-0477",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
-  "title": "Mortal Kombat",
-  "type": "film",
-  "quote": "Mortal Kombat est dingue.",
-  "timestamp": "01:15:00",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/460465-mortal-kombat/watch?locale=FR",
+    "tmdb": "460465",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "460465",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/460465-mortal-kombat/watch?locale=FR"
-  },
+  "id": "ubm-0477",
+  "links": [],
+  "quote": "Mortal Kombat est dingue.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:00",
+  "title": "Mortal Kombat",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Mortal%20Kombat"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mortal%20Kombat",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Mortal%20Kombat&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Mortal%20Kombat&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Mortal%20Kombat"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mortal%20Kombat",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Mortal%20Kombat"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Mortal%20Kombat",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Mortal%20Kombat"
     }
   ]
 }

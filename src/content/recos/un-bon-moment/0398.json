@@ -1,30 +1,32 @@
 {
-  "id": "ubm-0398",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "L'été de Kikujiro",
-  "type": "film",
   "creator": "Takeshi Kitano",
-  "recommendedBy": "intervenant",
-  "quote": "moi je recommande l'été de kikujou quel incroyable film",
-  "timestamp": "00:39:58",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/4291/watch?locale=FR",
+    "tmdb": "4291",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1999,
-  "externalIds": {
-    "tmdb": "4291",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/4291/watch?locale=FR"
-  },
+  "id": "ubm-0398",
+  "links": [],
+  "quote": "moi je recommande l'été de kikujou quel incroyable film",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:39:58",
+  "title": "L'été de Kikujiro",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=L%27%C3%A9t%C3%A9%20de%20Kikujiro",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=L%27%C3%A9t%C3%A9%20de%20Kikujiro"
     }
-  ]
+  ],
+  "year": 1999
 }

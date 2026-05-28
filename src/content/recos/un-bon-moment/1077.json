@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1077",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
-  "title": "On a bouffé le silence",
-  "type": "livre",
   "creator": "Gringe",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je suis en train de lire [...] Ensemble on a bois en silence de Gringe [...] je pense qu'il est assez bon auteur quand même",
-  "timestamp": "01:20:07",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1077",
+  "links": [],
+  "quote": "je suis en train de lire [...] Ensemble on a bois en silence de Gringe [...] je pense qu'il est assez bon auteur quand même",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:07",
+  "title": "On a bouffé le silence",
+  "types": [
+    "livre"
   ]
 }

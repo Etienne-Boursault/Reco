@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1273",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599de12076e6c001696556a",
-  "title": "Amour",
-  "type": "spectacle",
   "creator": "Bérangère Creff",
-  "recommendedBy": "Bérangère Creff",
-  "quote": "qui s'appelait Amour, qui s'appelle toujours Amour, qui existe maintenant, qui est sur Canal Plus",
-  "timestamp": "00:07:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599de12076e6c001696556a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1273",
+  "links": [],
+  "quote": "qui s'appelait Amour, qui s'appelle toujours Amour, qui existe maintenant, qui est sur Canal Plus",
+  "recommendedBy": "Bérangère Creff",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:07:40",
+  "title": "Amour",
+  "types": [
+    "spectacle"
   ]
 }

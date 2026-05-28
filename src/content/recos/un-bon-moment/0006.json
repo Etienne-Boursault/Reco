@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0006",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
-  "title": "Mortel",
-  "type": "serie",
-  "recommendedBy": "Hakim Jemili",
-  "quote": "moi j'ai kiffé Mortel j'ai kiffé Mortel sur Netflix une série française en plus",
-  "timestamp": "00:58:17",
-  "links": [],
-  "status": "validated",
   "creator": "Inconnu",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR",
+    "tmdb": "94801",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "94801",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR"
-  },
+  "id": "ubm-0006",
+  "links": [],
+  "quote": "moi j'ai kiffé Mortel j'ai kiffé Mortel sur Netflix une série française en plus",
+  "recommendedBy": "Hakim Jemili",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:17",
+  "title": "Mortel",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Mortel",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Mortel"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Mortel",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Mortel"
     }
   ]
 }

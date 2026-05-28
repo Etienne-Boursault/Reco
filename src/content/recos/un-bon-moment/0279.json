@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0279",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Entre les deux",
-  "type": "spectacle",
-  "recommendedBy": "intervenant",
-  "quote": "Entre les deux, revues sur Internet.",
-  "timestamp": "01:38:28",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0279",
+  "links": [],
+  "quote": "Entre les deux, revues sur Internet.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:38:28",
+  "title": "Entre les deux",
+  "types": [
+    "spectacle"
   ]
 }

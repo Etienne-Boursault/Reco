@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1068",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "Temps pour l'amour",
-  "type": "bd",
   "creator": "Sophie Landa",
-  "recommendedBy": "Navo",
-  "quote": "Lisez ça, c'est super.",
-  "timestamp": "00:40:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1068",
+  "links": [],
+  "quote": "Lisez ça, c'est super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:59",
+  "title": "Temps pour l'amour",
+  "types": [
+    "bd"
   ]
 }

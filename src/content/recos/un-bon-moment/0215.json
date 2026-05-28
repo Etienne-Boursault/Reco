@@ -1,44 +1,46 @@
 {
-  "id": "ubm-0215",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Curb Your Enthusiasm",
-  "type": "serie",
   "creator": "Larry David",
-  "recommendedBy": "Navo",
-  "quote": "moi, je lui ai fait découvrir Curb et elle adore",
-  "timestamp": "01:07:16",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/4546-curb-your-enthusiasm/watch?locale=FR",
+    "tmdb": "4546",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "4546",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/4546-curb-your-enthusiasm/watch?locale=FR"
-  },
+  "id": "ubm-0215",
+  "links": [],
+  "quote": "moi, je lui ai fait découvrir Curb et elle adore",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:07:16",
+  "title": "Curb Your Enthusiasm",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Curb%20Your%20Enthusiasm",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Curb%20Your%20Enthusiasm"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Curb%20Your%20Enthusiasm",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Curb%20Your%20Enthusiasm"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Curb%20Your%20Enthusiasm",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Curb%20Your%20Enthusiasm"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Curb%20Your%20Enthusiasm",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Curb%20Your%20Enthusiasm"
     }
   ]
 }

@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1241",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240e1c5d8481001225962c",
-  "title": "Oral San",
-  "type": "musique",
   "creator": "Oral San",
-  "year": 2009,
-  "recommendedBy": "Invité",
-  "quote": "Oralson à la Fnac pour 9€ en 2009",
-  "timestamp": "01:07:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3620226452"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3620226452"
-  }
+  "id": "ubm-1241",
+  "links": [],
+  "quote": "Oralson à la Fnac pour 9€ en 2009",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:07:23",
+  "title": "Oral San",
+  "types": [
+    "musique"
+  ],
+  "year": 2009
 }

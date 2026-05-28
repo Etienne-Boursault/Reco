@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0108",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c1b296596600156961a7",
-  "title": "Ballad Mental",
-  "type": "autre",
   "creator": "Ballad Mental",
-  "recommendedBy": "Navo",
-  "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
-  "timestamp": "00:58:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c1b296596600156961a7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0108",
+  "links": [],
+  "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:03",
+  "title": "Ballad Mental",
+  "types": [
+    "autre"
   ]
 }

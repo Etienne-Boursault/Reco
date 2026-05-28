@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1081",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "Clou",
-  "type": "album",
   "creator": "Clou",
-  "recommendedBy": "Clément Victorovic",
-  "quote": "je suis en train d'écouter l'album d'une chanteuse qui s'appelle Clou qui a sorti son album la semaine dernière",
-  "timestamp": "01:32:33",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/215904762"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/215904762"
-  }
+  "id": "ubm-1081",
+  "links": [],
+  "quote": "je suis en train d'écouter l'album d'une chanteuse qui s'appelle Clou qui a sorti son album la semaine dernière",
+  "recommendedBy": "Clément Victorovic",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:33",
+  "title": "Clou",
+  "types": [
+    "album"
+  ]
 }

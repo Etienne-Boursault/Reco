@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0595",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
-  "title": "La politesse du désespoir",
-  "type": "livre",
   "creator": "Jean-Marie Bigard",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "La politesse du désespoir aussi.",
-  "timestamp": "01:08:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0595",
+  "links": [],
+  "quote": "La politesse du désespoir aussi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:41",
+  "title": "La politesse du désespoir",
+  "types": [
+    "livre"
   ]
 }

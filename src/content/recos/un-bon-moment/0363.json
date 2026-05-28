@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0363",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6970a1759448a95f223d530c",
-  "title": "Pour quelques pépins de pastèque",
-  "type": "film",
   "creator": "Barouche Rodanie",
-  "recommendedBy": "Navo",
-  "quote": "Il y a un film qui est génial. C'est un réalisateur aveuglant qui s'appelle Pour quelques pépins de pastèque.",
-  "timestamp": "00:13:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6970a1759448a95f223d530c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0363",
+  "links": [],
+  "quote": "Il y a un film qui est génial. C'est un réalisateur aveuglant qui s'appelle Pour quelques pépins de pastèque.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:13:48",
+  "title": "Pour quelques pépins de pastèque",
+  "types": [
+    "film"
   ]
 }

@@ -1,35 +1,37 @@
 {
-  "id": "ubm-0691",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
-  "title": "When They See Us",
-  "type": "serie",
   "creator": "Ava DuVernay",
-  "recommendedBy": "Invité",
-  "quote": "C'est \"When they see us\". [...] C'est sur Netflix. C'est 4 fois une heure et quart sur une histoire vraie. [...] Vraiment, pour moi c'est la claque cinématographique de l'année dernière quand j'ai vu ça.",
-  "timestamp": "01:34:03",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/81355-when-they-see-us/watch?locale=FR",
+    "tmdb": "81355",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2019,
-  "externalIds": {
-    "tmdb": "81355",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/81355-when-they-see-us/watch?locale=FR"
-  },
+  "id": "ubm-0691",
+  "links": [],
+  "quote": "C'est \"When they see us\". [...] C'est sur Netflix. C'est 4 fois une heure et quart sur une histoire vraie. [...] Vraiment, pour moi c'est la claque cinématographique de l'année dernière quand j'ai vu ça.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:34:03",
+  "title": "When They See Us",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=When%20They%20See%20Us",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=When%20They%20See%20Us"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=When%20They%20See%20Us",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=When%20They%20See%20Us"
     }
-  ]
+  ],
+  "year": 2019
 }

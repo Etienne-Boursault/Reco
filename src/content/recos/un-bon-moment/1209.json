@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1209",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6302667b4913bd00126c374c",
-  "title": "Horizon des événements",
-  "type": "album",
   "creator": "Ken",
-  "recommendedBy": "Navo",
-  "quote": "moi je recommande l'horizon des événements de Ken qu'aujourd'hui",
-  "timestamp": "01:12:11",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/262200072"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/262200072"
-  }
+  "id": "ubm-1209",
+  "links": [],
+  "quote": "moi je recommande l'horizon des événements de Ken qu'aujourd'hui",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:11",
+  "title": "Horizon des événements",
+  "types": [
+    "album"
+  ]
 }

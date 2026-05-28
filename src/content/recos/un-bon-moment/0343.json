@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0343",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Amanda Day",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il a dit que j'ai franchine ligne",
-  "timestamp": "00:11:08",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0343",
+  "links": [],
+  "quote": "il a dit que j'ai franchine ligne",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:11:08",
+  "title": "Amanda Day",
+  "types": [
+    "autre"
   ]
 }

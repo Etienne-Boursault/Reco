@@ -1,74 +1,76 @@
 {
-  "id": "ubm-1138",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240f8a7a4ced00123481d1",
-  "title": "Vice",
-  "type": "film",
   "creator": "Adam McKay",
-  "year": 2018,
-  "quote": "Et il y en a un deuxième, c'est Vice.",
-  "timestamp": "01:12:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR",
+    "tmdb": "150540",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "150540",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR"
-  },
+  "id": "ubm-1138",
+  "links": [],
+  "quote": "Et il y en a un deuxième, c'est Vice.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:20",
+  "title": "Vice",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Vice",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Vice&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Vice&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Vice",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Vice"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Vice",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Vice"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Vice",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Vice"
     }
-  ]
+  ],
+  "year": 2018
 }

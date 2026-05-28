@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0295",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "693c1da59bb376c45d3fe84f",
-  "title": "Big Flow",
-  "type": "autre",
   "creator": "Big Flo",
-  "recommendedBy": "Navo",
-  "quote": "Je dis que... je dis la vérité et je t'ai dit que c'était super.",
-  "timestamp": "00:06:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0295",
+  "links": [],
+  "quote": "Je dis que... je dis la vérité et je t'ai dit que c'était super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:06:56",
+  "title": "Big Flow",
+  "types": [
+    "autre"
   ]
 }

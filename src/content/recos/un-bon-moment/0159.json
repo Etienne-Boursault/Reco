@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0159",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68ea7880de9a2a62c42248f5",
-  "title": "Fiasco Ramas",
-  "type": "livre",
   "creator": "Thomas VDB",
-  "recommendedBy": "Navo",
-  "quote": "Et ben c'est trop bien parce que son livre, il t'entend sa voix, et c'est vraiment son style en écriture.",
-  "timestamp": "01:49:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0159",
+  "links": [],
+  "quote": "Et ben c'est trop bien parce que son livre, il t'entend sa voix, et c'est vraiment son style en écriture.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:49:48",
+  "title": "Fiasco Ramas",
+  "types": [
+    "livre"
   ]
 }

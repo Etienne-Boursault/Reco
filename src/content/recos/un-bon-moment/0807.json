@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0807",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "L'Inde d'Allemagne",
-  "type": "autre",
-  "recommendedBy": "intervenant",
-  "quote": "L'Inde d'Allemagne, c'est un artiste incroyable.",
-  "timestamp": "00:27:48",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0807",
+  "links": [],
+  "quote": "L'Inde d'Allemagne, c'est un artiste incroyable.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:48",
+  "title": "L'Inde d'Allemagne",
+  "types": [
+    "autre"
   ]
 }

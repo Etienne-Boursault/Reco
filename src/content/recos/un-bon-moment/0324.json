@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0324",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Anastasia",
-  "type": "film",
   "creator": "Don Bluth",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'espère que vous passez une belle après-me tout le monde. On est ensemble. Tout de suite, on se fait un truc un peu à l'ancienne. Tranquille, on se fait un petit Anastasia.",
-  "timestamp": "00:53:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/9444-anastasia/watch?locale=FR",
+    "tmdb": "9444",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "9444",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/9444-anastasia/watch?locale=FR"
-  },
+  "id": "ubm-0324",
+  "links": [],
+  "quote": "J'espère que vous passez une belle après-me tout le monde. On est ensemble. Tout de suite, on se fait un truc un peu à l'ancienne. Tranquille, on se fait un petit Anastasia.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:53:47",
+  "title": "Anastasia",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Anastasia",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Anastasia",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Anastasia&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Anastasia&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Anastasia",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Anastasia",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Anastasia",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Anastasia"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anastasia",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Anastasia",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Anastasia",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Anastasia"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Anastasia",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Anastasia"
     }
   ]
 }

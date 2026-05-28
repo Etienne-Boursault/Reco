@@ -1,18 +1,20 @@
 {
-  "id": "ubm-1110",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Meghan Trainor",
-  "type": "musique",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "elle est Megan Trenor le matin / écoutez du Megan Trenor / ça met en patate",
-  "timestamp": "01:15:06",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3975583911"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3975583911"
-  }
+  "id": "ubm-1110",
+  "links": [],
+  "quote": "elle est Megan Trenor le matin / écoutez du Megan Trenor / ça met en patate",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:06",
+  "title": "Meghan Trainor",
+  "types": [
+    "musique"
+  ]
 }

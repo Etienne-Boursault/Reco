@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0267",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Hachi: A Dog's Tale",
-  "type": "film",
   "creator": "Lasse Hallström",
-  "recommendedBy": "Navo",
-  "quote": "Il a attendu son maître mort pendant 9 ans à la gare de Shibuya.",
-  "timestamp": "01:19:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/28178-hachi-a-dog-s-tale/watch?locale=FR",
+    "tmdb": "28178",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "28178",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/28178-hachi-a-dog-s-tale/watch?locale=FR"
-  },
+  "id": "ubm-0267",
+  "links": [],
+  "quote": "Il a attendu son maître mort pendant 9 ans à la gare de Shibuya.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:24",
+  "title": "Hachi: A Dog's Tale",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Cinemas a la Demande",
-      "url": "https://www.cinemasalademande.com/?s=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.cinemasalademande.com/?s=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Hachi%3A%20A%20Dog%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Hachi%3A%20A%20Dog%27s%20Tale&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Hachi%3A%20A%20Dog%27s%20Tale&c=movies"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Hachi%3A%20A%20Dog%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Hachi%3A%20A%20Dog%27s%20Tale"
     }
   ]
 }

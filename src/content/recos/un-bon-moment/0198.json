@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0198",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6903fad795ee8b1815229b88",
-  "title": "Fiasco Raman",
-  "type": "livre",
   "creator": "Thomas VDB",
-  "recommendedBy": "Thomas VDB",
-  "quote": "Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
-  "timestamp": "00:10:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6903fad795ee8b1815229b88",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0198",
+  "links": [],
+  "quote": "Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:10:54",
+  "title": "Fiasco Raman",
+  "types": [
+    "livre"
   ]
 }

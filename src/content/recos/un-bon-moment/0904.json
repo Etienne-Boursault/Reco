@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0904",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240a35cc56a90012ec386b",
-  "title": "Les Inséparables",
-  "type": "autre",
   "creator": "Éric Judor",
-  "recommendedBy": "Invité",
-  "quote": "il y a un dessin animé avec Éric Judor qui sort en décembre. Ça s'appelle les inséparables.",
-  "timestamp": "01:17:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240a35cc56a90012ec386b",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0904",
+  "links": [],
+  "quote": "il y a un dessin animé avec Éric Judor qui sort en décembre. Ça s'appelle les inséparables.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:01",
+  "title": "Les Inséparables",
+  "types": [
+    "autre"
   ]
 }

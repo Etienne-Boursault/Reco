@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0760",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "Voyage au bout de la nuit",
-  "type": "livre",
   "creator": "Louis-Ferdinand Céline",
-  "recommendedBy": "intervenant",
-  "quote": "tu dis au voyage au bout de la nuit de Céline, tu as des trucs comme ça aussi.",
-  "timestamp": "00:48:06",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0760",
+  "links": [],
+  "quote": "tu dis au voyage au bout de la nuit de Céline, tu as des trucs comme ça aussi.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:48:06",
+  "title": "Voyage au bout de la nuit",
+  "types": [
+    "livre"
   ]
 }

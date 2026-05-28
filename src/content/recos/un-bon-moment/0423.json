@@ -1,81 +1,83 @@
 {
-  "id": "ubm-0423",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Taxi Driver",
-  "type": "film",
-  "quote": "Taxi Driver.",
-  "timestamp": "01:27:43",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/103-taxi-driver/watch?locale=FR",
+    "tmdb": "103",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "103",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/103-taxi-driver/watch?locale=FR"
-  },
+  "id": "ubm-0423",
+  "links": [],
+  "quote": "Taxi Driver.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:43",
+  "title": "Taxi Driver",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Taxi%20Driver&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Taxi%20Driver&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Taxi%20Driver",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Taxi%20Driver"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Taxi%20Driver",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Taxi%20Driver"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Taxi%20Driver",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Taxi%20Driver"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Taxi%20Driver",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Taxi%20Driver"
     }
   ]
 }

@@ -1,63 +1,65 @@
 {
-  "id": "ubm-0459",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Nos Futurs",
-  "type": "film",
   "creator": "Rémi Besançon",
-  "recommendedBy": "Gilles Le Louch",
-  "quote": "Mais c'est Nos Futurs.",
-  "timestamp": "00:03:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/344475-nos-futurs/watch?locale=FR",
+    "tmdb": "344475",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "344475",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/344475-nos-futurs/watch?locale=FR"
-  },
+  "id": "ubm-0459",
+  "links": [],
+  "quote": "Mais c'est Nos Futurs.",
+  "recommendedBy": "Gilles Le Louch",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:48",
+  "title": "Nos Futurs",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Nos%20Futurs"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Nos%20Futurs",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Nos%20Futurs"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Nos%20Futurs"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Nos%20Futurs"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Nos%20Futurs"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Nos%20Futurs",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Nos%20Futurs"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Nos%20Futurs"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Nos%20Futurs",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Nos%20Futurs"
     }
   ]
 }

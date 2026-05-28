@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1106",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65240a35cc56a90012ec386b",
-  "title": "Coco Rico",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "moi j'ai Coco Rico, c'est mon sketch show sur Canal.",
-  "timestamp": "01:17:12",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1106",
+  "links": [],
+  "quote": "moi j'ai Coco Rico, c'est mon sketch show sur Canal.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:12",
+  "title": "Coco Rico",
+  "types": [
+    "serie"
   ]
 }

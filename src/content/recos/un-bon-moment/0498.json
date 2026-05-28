@@ -1,37 +1,39 @@
 {
-  "id": "ubm-0498",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69c7de338ac24e236cb65e12",
-  "title": "Bloodline",
-  "type": "serie",
-  "quote": "on la regarde bloodline t'as déjà vu bloodline je te conseille bloodline",
-  "timestamp": "01:39:49",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/61986-bloodline/watch?locale=FR",
+    "tmdb": "61986",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "61986",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/61986-bloodline/watch?locale=FR"
-  },
+  "id": "ubm-0498",
+  "links": [],
+  "quote": "on la regarde bloodline t'as déjà vu bloodline je te conseille bloodline",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:39:49",
+  "title": "Bloodline",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Bloodline",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Bloodline"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Bloodline",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Bloodline"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Bloodline",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Bloodline"
     }
   ]
 }

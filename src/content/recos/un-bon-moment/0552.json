@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0552",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "I Think You Should Leave",
-  "type": "serie",
   "creator": "Tim Robinson",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je recommande, d'ailleurs, I think you should leave.",
-  "timestamp": "01:51:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/88728-i-think-you-should-leave-with-tim-robinson/watch?locale=FR",
+    "tmdb": "88728",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "88728",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/88728-i-think-you-should-leave-with-tim-robinson/watch?locale=FR"
-  },
+  "id": "ubm-0552",
+  "links": [],
+  "quote": "Je recommande, d'ailleurs, I think you should leave.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:51:36",
+  "title": "I Think You Should Leave",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave"
     }
   ]
 }

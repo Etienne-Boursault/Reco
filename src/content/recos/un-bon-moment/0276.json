@@ -1,34 +1,36 @@
 {
-  "id": "ubm-0276",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Fleabag",
-  "type": "serie",
   "creator": "Phoebe Waller-Bridge",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Regarde Fleabag. Mais Fleabag aussi dedans. Fleabag c'est fou. Fleabag la saison 2 est mieux que la 1",
-  "timestamp": "01:09:55",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR",
+    "tmdb": "67070",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "67070",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
-  },
+  "id": "ubm-0276",
+  "links": [],
+  "quote": "Regarde Fleabag. Mais Fleabag aussi dedans. Fleabag c'est fou. Fleabag la saison 2 est mieux que la 1",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:55",
+  "title": "Fleabag",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
     }
   ]
 }

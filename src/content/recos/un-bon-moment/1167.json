@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1167",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599de12076e6c001696556a",
-  "title": "Les pieds sur terre",
-  "type": "podcast",
   "creator": "Sonia Kronlund",
-  "recommendedBy": "Navo",
-  "quote": "écoutez ça, c'est génial.",
-  "timestamp": "01:11:08",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599de12076e6c001696556a",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1167",
+  "links": [],
+  "quote": "écoutez ça, c'est génial.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:08",
+  "title": "Les pieds sur terre",
+  "types": [
+    "podcast"
   ]
 }

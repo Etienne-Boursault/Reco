@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0323",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Patrick Bruel",
-  "type": "musique",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "rien ne bat un CD de Patrick Bruel.",
-  "timestamp": "00:03:52",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/600876"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/600876"
-  }
+  "id": "ubm-0323",
+  "links": [],
+  "quote": "rien ne bat un CD de Patrick Bruel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:03:52",
+  "title": "Patrick Bruel",
+  "types": [
+    "musique"
+  ]
 }

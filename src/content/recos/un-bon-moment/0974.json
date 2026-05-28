@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0974",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Romain Frayssinet (spectacle précédent)",
-  "type": "spectacle",
   "creator": "Romain Frayssinet",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je recommande son spectacle précédent qui est en ligne je crois",
-  "timestamp": "01:54:48",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6947cd11f7567117395ad287",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0974",
+  "links": [],
+  "quote": "je recommande son spectacle précédent qui est en ligne je crois",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:54:48",
+  "title": "Romain Frayssinet (spectacle précédent)",
+  "types": [
+    "spectacle"
   ]
 }

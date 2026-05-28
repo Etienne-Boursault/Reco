@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0652",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
-  "title": "la montagne",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "on est en plein montage de notre série la montagne",
-  "timestamp": "01:10:00",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0652",
+  "links": [],
+  "quote": "on est en plein montage de notre série la montagne",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:00",
+  "title": "la montagne",
+  "types": [
+    "autre"
   ]
 }

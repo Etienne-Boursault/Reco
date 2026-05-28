@@ -1,73 +1,75 @@
 {
-  "id": "ubm-0556",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
-  "title": "Comment c'est loin",
-  "type": "film",
   "creator": "Orelsan",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Non, dans le film, comment c'est loin, il est arrivé dans la boulangerie, il dit, je vais prendre ça.",
-  "timestamp": "00:43:01",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/366564-comment-c-est-loin/watch?locale=FR",
+    "tmdb": "366564",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "366564",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/366564-comment-c-est-loin/watch?locale=FR"
-  },
+  "id": "ubm-0556",
+  "links": [],
+  "quote": "Non, dans le film, comment c'est loin, il est arrivé dans la boulangerie, il dit, je vais prendre ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:01",
+  "title": "Comment c'est loin",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Comment%20c%27est%20loin&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Comment%20c%27est%20loin&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Comment%20c%27est%20loin",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Comment%20c%27est%20loin",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Comment%20c%27est%20loin"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Comment%20c%27est%20loin",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Comment%20c%27est%20loin"
     }
   ]
 }

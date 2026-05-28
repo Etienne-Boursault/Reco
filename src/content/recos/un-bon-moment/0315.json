@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0315",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Big Boys",
-  "type": "serie",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Big Boys",
-  "timestamp": "01:50:14",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "tmdb": "202851",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "202851",
-    "tmdbType": "tv"
-  }
+  "id": "ubm-0315",
+  "links": [],
+  "quote": "Big Boys",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:14",
+  "title": "Big Boys",
+  "types": [
+    "serie"
+  ]
 }

@@ -85,7 +85,7 @@ const draftCount = recos.filter((r) => r.status === 'draft').length;
             return (
               <li class:list={['row', { done: r.status === 'validated' }]}>
                 <div class="line1">
-                  <span class="type">{r.type}</span>
+                  <span class="type">{r.types.join(', ')}</span>
                   <span class="ttl">{r.title}</span>
                   {r.creator && <span class="creator">· {r.creator}</span>}
                   <span class="status">{r.status}</span>

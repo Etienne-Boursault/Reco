@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0955",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "68ef607e58893bb6e322c623",
-  "title": "Pièces sur Terre",
-  "type": "podcast",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "les pièces sur Terre tous les jours deux portraits de 15 minutes c'est exceptionnel",
-  "timestamp": "01:56:59",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0955",
+  "links": [],
+  "quote": "les pièces sur Terre tous les jours deux portraits de 15 minutes c'est exceptionnel",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:56:59",
+  "title": "Pièces sur Terre",
+  "types": [
+    "podcast"
   ]
 }

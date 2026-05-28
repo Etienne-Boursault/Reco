@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1159",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Désirer",
-  "type": "livre",
   "creator": "Marina Rollman",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Marina vient de publier un texte dans un recueil de textes sur le désir qui s'appelle « Désirer ».",
-  "timestamp": "00:01:04",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1159",
+  "links": [],
+  "quote": "Marina vient de publier un texte dans un recueil de textes sur le désir qui s'appelle « Désirer ».",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:01:04",
+  "title": "Désirer",
+  "types": [
+    "livre"
   ]
 }

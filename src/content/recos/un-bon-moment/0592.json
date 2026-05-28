@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0592",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
-  "title": "Bananagram",
-  "type": "jeu",
-  "recommendedBy": "Navo",
-  "quote": "moi je suis très bananagram",
-  "timestamp": "00:49:15",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0592",
+  "links": [],
+  "quote": "moi je suis très bananagram",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:49:15",
+  "title": "Bananagram",
+  "types": [
+    "jeu"
   ]
 }

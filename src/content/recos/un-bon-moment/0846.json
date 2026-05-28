@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0846",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
-  "title": "Iron and Wine",
-  "type": "musique",
-  "recommendedBy": "Navo",
-  "quote": "je recommanderais un musicien que j'adore, qui vient de sortir un nouvel album que j'adore, qui s'appelle 'Iron and Wine'.",
-  "timestamp": "01:04:49",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/1137144582"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/1137144582"
-  }
+  "id": "ubm-0846",
+  "links": [],
+  "quote": "je recommanderais un musicien que j'adore, qui vient de sortir un nouvel album que j'adore, qui s'appelle 'Iron and Wine'.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:04:49",
+  "title": "Iron and Wine",
+  "types": [
+    "musique"
+  ]
 }

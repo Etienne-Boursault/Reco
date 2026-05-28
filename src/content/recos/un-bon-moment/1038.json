@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1038",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
-  "title": "Stardust",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "j'ai une chaîne recommandée, c'est Stardust, ça parle des avions, de l'aviation et tout.",
-  "timestamp": "01:21:12",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1038",
+  "links": [],
+  "quote": "j'ai une chaîne recommandée, c'est Stardust, ça parle des avions, de l'aviation et tout.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:12",
+  "title": "Stardust",
+  "types": [
+    "autre"
   ]
 }

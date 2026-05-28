@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1210",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6322de1f35ce9e001229f98a",
-  "title": "Nardwuar",
-  "type": "autre",
   "creator": "Nardwuar",
-  "recommendedBy": "Navo",
-  "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
-  "timestamp": "00:20:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6322de1f35ce9e001229f98a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1210",
+  "links": [],
+  "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:46",
+  "title": "Nardwuar",
+  "types": [
+    "autre"
   ]
 }

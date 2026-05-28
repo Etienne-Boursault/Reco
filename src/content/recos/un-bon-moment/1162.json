@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1162",
-  "sourceId": "un-bon-moment",
+  "creator": "Louis-Médias",
   "episodeGuid": "6584658132930b0016c5272b",
-  "title": "Stimie",
-  "type": "podcast",
-  "recommendedBy": "Navo",
-  "quote": "Le podcast s'appelle Stimie, c'est super sauf qu'il est sur une app qui s'appelle Storytel, qui est super.",
-  "timestamp": "00:52:19",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "creator": "Louis-Médias"
+  "id": "ubm-1162",
+  "links": [],
+  "quote": "Le podcast s'appelle Stimie, c'est super sauf qu'il est sur une app qui s'appelle Storytel, qui est super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:52:19",
+  "title": "Stimie",
+  "types": [
+    "podcast"
+  ]
 }

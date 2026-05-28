@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0773",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "G-loid",
-  "type": "autre",
   "creator": "G-loid",
-  "recommendedBy": "Navo",
-  "quote": "il y a aussi un des deux senteurs de Jungle qui a un projet perso qui s'appelle G-loid",
-  "timestamp": "01:33:41",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0773",
+  "links": [],
+  "quote": "il y a aussi un des deux senteurs de Jungle qui a un projet perso qui s'appelle G-loid",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:41",
+  "title": "G-loid",
+  "types": [
+    "autre"
   ]
 }

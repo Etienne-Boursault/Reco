@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0860",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Des trains à travers la plaine",
-  "type": "podcast",
   "creator": "Philippe Léon",
-  "recommendedBy": "Navo",
-  "quote": "Il fait un podcast qui s'appelle \"Des trains à travers la plaine\". [...] C'est \"Extrait de bouquin\", \"Extrait de film\" et \"Chanson française\" autour d'un thème. Donc c'est très très bien.",
-  "timestamp": "01:12:13",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0860",
+  "links": [],
+  "quote": "Il fait un podcast qui s'appelle \"Des trains à travers la plaine\". [...] C'est \"Extrait de bouquin\", \"Extrait de film\" et \"Chanson française\" autour d'un thème. Donc c'est très très bien.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:13",
+  "title": "Des trains à travers la plaine",
+  "types": [
+    "podcast"
   ]
 }

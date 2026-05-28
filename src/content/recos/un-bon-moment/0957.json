@@ -1,32 +1,34 @@
 {
-  "id": "ubm-0957",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "Jury Duty",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "avec Jury Dutty je sais pas si vous avez vu aussi Dury Dutty mais c'est quasiment de la réalité c'est génial",
-  "timestamp": "01:57:26",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR",
+    "tmdb": "222023",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "222023",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR"
-  },
+  "id": "ubm-0957",
+  "links": [],
+  "quote": "avec Jury Dutty je sais pas si vous avez vu aussi Dury Dutty mais c'est quasiment de la réalité c'est génial",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:57:26",
+  "title": "Jury Duty",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty"
     }
   ]
 }

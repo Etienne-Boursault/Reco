@@ -1,32 +1,34 @@
 {
-  "id": "ubm-0282",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Devil's Plan",
-  "type": "serie",
-  "recommendedBy": "intervenant",
-  "quote": "Divals Plane.",
-  "timestamp": "01:42:21",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/214582/watch?locale=FR",
+    "tmdb": "214582",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "214582",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/214582/watch?locale=FR"
-  },
+  "id": "ubm-0282",
+  "links": [],
+  "quote": "Divals Plane.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:21",
+  "title": "Devil's Plan",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan"
     }
   ]
 }

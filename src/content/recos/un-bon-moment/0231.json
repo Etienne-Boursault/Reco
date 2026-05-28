@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0231",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "691488fcc1ed8717c54570d4",
-  "title": "Mona Guba",
-  "type": "musique",
-  "recommendedBy": "Invité",
-  "quote": "On a rencontré une rappeuse qui était là la semaine dernière dans l'émission. Elle s'appelle Mona Guba.",
-  "timestamp": "00:39:59",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3681586622"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3681586622"
-  }
+  "id": "ubm-0231",
+  "links": [],
+  "quote": "On a rencontré une rappeuse qui était là la semaine dernière dans l'émission. Elle s'appelle Mona Guba.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:39:59",
+  "title": "Mona Guba",
+  "types": [
+    "musique"
+  ]
 }

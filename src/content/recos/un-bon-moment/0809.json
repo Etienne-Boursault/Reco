@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0809",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Cœur",
-  "type": "album",
   "creator": "Clara Luciani",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'ai écouté l'album de Clara Luciani, je pense, tout l'été.",
-  "timestamp": "01:26:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/228610222"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/228610222"
-  }
+  "id": "ubm-0809",
+  "links": [],
+  "quote": "J'ai écouté l'album de Clara Luciani, je pense, tout l'été.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:26:26",
+  "title": "Cœur",
+  "types": [
+    "album"
+  ]
 }

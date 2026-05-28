@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0150",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65ed94b586967e0017c06729",
-  "title": "Blondine Léo",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "je vais recommander une humoriste, Blondine Léo.",
-  "timestamp": "01:09:13",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0150",
+  "links": [],
+  "quote": "je vais recommander une humoriste, Blondine Léo.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:09:13",
+  "title": "Blondine Léo",
+  "types": [
+    "autre"
   ]
 }

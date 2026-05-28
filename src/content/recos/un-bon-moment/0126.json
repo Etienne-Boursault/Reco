@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0126",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Une île",
-  "type": "serie",
   "creator": "Leticia Casta",
-  "recommendedBy": "Navo",
-  "quote": "C'est une série qui s'appelait Une île avec Leticia Casta sur Arte, je crois.",
-  "timestamp": "00:44:13",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "65c7a407bb568b0017862c8f",
   "externalIds": {
     "tmdb": "87780",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0126",
+  "links": [],
+  "quote": "C'est une série qui s'appelait Une île avec Leticia Casta sur Arte, je crois.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:44:13",
+  "title": "Une île",
+  "types": [
+    "serie"
+  ]
 }

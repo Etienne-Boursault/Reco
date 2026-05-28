@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0059",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Bref",
-  "type": "serie",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "Que je comprends ce que tu veux faire.",
-  "timestamp": "00:48:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
+    "tmdb": "60715",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "60715",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
-  },
+  "id": "ubm-0059",
+  "links": [],
+  "quote": "Que je comprends ce que tu veux faire.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:48:15",
+  "title": "Bref",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Bref"
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0393",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
-  "title": "Documentaire de Nico",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je recommande de dire en commentaire ce que vous avez pensé du documentaire pour nico",
-  "timestamp": "02:17:44",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0393",
+  "links": [],
+  "quote": "je recommande de dire en commentaire ce que vous avez pensé du documentaire pour nico",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "02:17:44",
+  "title": "Documentaire de Nico",
+  "types": [
+    "autre"
   ]
 }

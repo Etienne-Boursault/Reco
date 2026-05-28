@@ -1,71 +1,73 @@
 {
-  "id": "ubm-0631",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "Le Nouveau",
-  "type": "film",
-  "quote": "j'avais aidé à écrire un film, ça s'appelle Le Nouveau.",
-  "timestamp": "00:25:14",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/257211-the-intern/watch?locale=FR",
+    "tmdb": "257211",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "257211",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/257211-the-intern/watch?locale=FR"
-  },
+  "id": "ubm-0631",
+  "links": [],
+  "quote": "j'avais aidé à écrire un film, ça s'appelle Le Nouveau.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:25:14",
+  "title": "Le Nouveau",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20Nouveau&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20Nouveau&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Nouveau",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Le%20Nouveau"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Nouveau",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Nouveau"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Le%20Nouveau",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Le%20Nouveau"
     }
   ]
 }

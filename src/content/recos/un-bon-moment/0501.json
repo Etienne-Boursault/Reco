@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0501",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69d112dba691c8ebbb9a19d9",
-  "title": "Dr Love",
-  "type": "spectacle",
   "creator": "inconnu",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Allez voir Dr Love",
-  "timestamp": "01:24:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0501",
+  "links": [],
+  "quote": "Allez voir Dr Love",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:24:26",
+  "title": "Dr Love",
+  "types": [
+    "spectacle"
   ]
 }

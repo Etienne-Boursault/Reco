@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0413",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "699968af0e5c959d5971943f",
-  "title": "Section d'Assaut",
-  "type": "musique",
   "creator": "section d'assaut",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je crois que la BO, ou alors c'est pas la BO.",
-  "timestamp": "00:27:46",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/71844509"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/71844509"
-  }
+  "id": "ubm-0413",
+  "links": [],
+  "quote": "Je crois que la BO, ou alors c'est pas la BO.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:27:46",
+  "title": "Section d'Assaut",
+  "types": [
+    "musique"
+  ]
 }

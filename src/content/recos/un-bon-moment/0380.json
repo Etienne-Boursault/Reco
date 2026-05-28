@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0380",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Semantic",
-  "type": "jeu",
   "creator": "autre",
-  "recommendedBy": "invité",
-  "quote": "En ce moment je suis accro à un jeu qui vient de sortir Ça s'appelle Semantic",
-  "timestamp": "01:48:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0380",
+  "links": [],
+  "quote": "En ce moment je suis accro à un jeu qui vient de sortir Ça s'appelle Semantic",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:48:30",
+  "title": "Semantic",
+  "types": [
+    "jeu"
   ]
 }

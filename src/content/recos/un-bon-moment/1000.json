@@ -1,21 +1,23 @@
 {
-  "id": "ubm-1000",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "To Be or Not to Be",
-  "type": "film",
   "creator": "Ernst Lubitsch",
-  "year": 1942,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Allez voir aussi Tout bien Not To Be de Lubitsch, qui est un classique de la comédie. Très drôle. Vraiment, de Ernst Lubitsch.",
-  "timestamp": "01:20:49",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
+  "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
     "tmdb": "22998",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1000",
+  "links": [],
+  "quote": "Allez voir aussi Tout bien Not To Be de Lubitsch, qui est un classique de la comédie. Très drôle. Vraiment, de Ernst Lubitsch.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:20:49",
+  "title": "To Be or Not to Be",
+  "types": [
+    "film"
+  ],
+  "year": 1942
 }

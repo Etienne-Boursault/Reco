@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0460",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Bref",
-  "type": "serie",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est la série. Bref.",
-  "timestamp": "00:14:31",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
+    "tmdb": "60715",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "60715",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
-  },
+  "id": "ubm-0460",
+  "links": [],
+  "quote": "C'est la série. Bref.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:14:31",
+  "title": "Bref",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Bref",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Bref"
     }
   ]
 }

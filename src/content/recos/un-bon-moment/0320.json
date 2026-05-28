@@ -1,18 +1,20 @@
 {
-  "id": "ubm-0320",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6947cd11f7567117395ad287",
-  "title": "Mina Tindall",
-  "type": "album",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "l'album de ma très très bonne amie Mina Tindall qui vient de sortir",
-  "timestamp": "01:55:12",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/942466201"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/942466201"
-  }
+  "id": "ubm-0320",
+  "links": [],
+  "quote": "l'album de ma très très bonne amie Mina Tindall qui vient de sortir",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:55:12",
+  "title": "Mina Tindall",
+  "types": [
+    "album"
+  ]
 }

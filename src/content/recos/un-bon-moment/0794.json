@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0794",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "Des trains à travers la plaine",
-  "type": "podcast",
   "creator": "Ambroise Kerminati, Baptiste Pignon, Nicolas Roux",
-  "quote": "je recommande, parce que j'ai envie de le recommander maintenant, parce que je suis sûr que vous allez kiffer tous les deux, le podcast \"Des trains à travers la plaine\".",
-  "timestamp": "00:59:24",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0794",
+  "links": [],
+  "quote": "je recommande, parce que j'ai envie de le recommander maintenant, parce que je suis sûr que vous allez kiffer tous les deux, le podcast \"Des trains à travers la plaine\".",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:24",
+  "title": "Des trains à travers la plaine",
+  "types": [
+    "podcast"
   ]
 }

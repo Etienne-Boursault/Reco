@@ -1,39 +1,41 @@
 {
-  "id": "ubm-0924",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Les Grands Ducs",
-  "type": "film",
   "creator": "Jean Rochefort, Philippe Noiré, Jean-Pierre Marielle",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "il y a ce film des Grands Ducs qui est incroyable que je recommande d'ailleurs les Grands Ducs avec Jean Rochefort, Philippe Noiré et Jean-Pierre Marielle",
-  "timestamp": "00:43:25",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR",
+    "tmdb": "47496",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "47496",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR"
-  },
+  "id": "ubm-0924",
+  "links": [],
+  "quote": "il y a ce film des Grands Ducs qui est incroyable que je recommande d'ailleurs les Grands Ducs avec Jean Rochefort, Philippe Noiré et Jean-Pierre Marielle",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:43:25",
+  "title": "Les Grands Ducs",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Les%20Grands%20Ducs"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Grands%20Ducs"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Les%20Grands%20Ducs"
     }
   ]
 }

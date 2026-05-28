@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0622",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
-  "title": "Franck Dubosc",
-  "type": "spectacle",
   "creator": "Franck Dubosc",
-  "recommendedBy": "Invité",
-  "quote": "moi, j'ai un déclencheur, et après, je m'y suis mis. Je me suis mis à Paris. Moi, je sais que j'avais vu le spectacle de Franck Dubosc.",
-  "timestamp": "00:04:19",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0622",
+  "links": [],
+  "quote": "moi, j'ai un déclencheur, et après, je m'y suis mis. Je me suis mis à Paris. Moi, je sais que j'avais vu le spectacle de Franck Dubosc.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:04:19",
+  "title": "Franck Dubosc",
+  "types": [
+    "spectacle"
   ]
 }

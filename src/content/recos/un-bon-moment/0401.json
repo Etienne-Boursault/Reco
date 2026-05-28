@@ -1,92 +1,94 @@
 {
-  "id": "ubm-0401",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
-  "title": "Will Hunting",
-  "type": "film",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Will Hunting",
-  "timestamp": "00:42:52",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR",
+    "tmdb": "489",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "489",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR"
-  },
+  "id": "ubm-0401",
+  "links": [],
+  "quote": "Will Hunting",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:52",
+  "title": "Will Hunting",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Will%20Hunting",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus",
-      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting"
     },
     {
+      "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.paramountplus.com/fr/search/?q=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Will%20Hunting&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Will%20Hunting&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Will%20Hunting",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Will%20Hunting"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Will%20Hunting"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Will%20Hunting",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Will%20Hunting"
     }
   ]
 }

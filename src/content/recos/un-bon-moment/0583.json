@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0583",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
-  "title": "Pap the Kid",
-  "type": "musique",
   "creator": "inconnu",
-  "recommendedBy": "Pierre",
-  "quote": "Donc je vais mettre en avant \"Pap the Kid\" et \"Ashile\" qui sont deux rappeurs / chanteurs.",
-  "timestamp": "01:18:39",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/547692982"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/547692982"
-  }
+  "id": "ubm-0583",
+  "links": [],
+  "quote": "Donc je vais mettre en avant \"Pap the Kid\" et \"Ashile\" qui sont deux rappeurs / chanteurs.",
+  "recommendedBy": "Pierre",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:39",
+  "title": "Pap the Kid",
+  "types": [
+    "musique"
+  ]
 }

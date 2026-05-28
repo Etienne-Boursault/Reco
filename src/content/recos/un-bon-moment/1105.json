@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1105",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240a35cc56a90012ec386b",
-  "title": "Album de Jain",
-  "type": "album",
   "creator": "Jain",
-  "recommendedBy": "Navo",
-  "quote": "Eh ben moi, je recommande l'album de Jane.",
-  "timestamp": "01:13:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/6868796"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/6868796"
-  }
+  "id": "ubm-1105",
+  "links": [],
+  "quote": "Eh ben moi, je recommande l'album de Jane.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:15",
+  "title": "Album de Jain",
+  "types": [
+    "album"
+  ]
 }

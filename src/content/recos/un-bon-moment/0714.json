@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0714",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "Le Bureau des Légendes",
-  "type": "serie",
-  "recommendedBy": "invité",
-  "quote": "J'ai vu en trois semaines le bureau des légendes. Ah, c'est bien. Tout. Donc, c'est une série assez géniale.",
-  "timestamp": "01:19:26",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/62476-le-bureau-des-legendes/watch?locale=FR",
+    "tmdb": "62476",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "62476",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/62476-le-bureau-des-legendes/watch?locale=FR"
-  },
+  "id": "ubm-0714",
+  "links": [],
+  "quote": "J'ai vu en trois semaines le bureau des légendes. Ah, c'est bien. Tout. Donc, c'est une série assez géniale.",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:26",
+  "title": "Le Bureau des Légendes",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
     }
   ]
 }

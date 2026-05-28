@@ -1,57 +1,59 @@
 {
-  "id": "ubm-1188",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
-  "title": "Better Call Saul",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "idées devant Better Call Saul, saison 3, épisode 9",
-  "timestamp": "01:21:07",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR",
+    "tmdb": "60059",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "60059",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR"
-  },
+  "id": "ubm-1188",
+  "links": [],
+  "quote": "idées devant Better Call Saul, saison 3, épisode 9",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:07",
+  "title": "Better Call Saul",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul"
     }
   ]
 }

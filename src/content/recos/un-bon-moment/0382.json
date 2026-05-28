@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0382",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "697d34fef1dd68ab365aea03",
-  "title": "Fine",
-  "type": "musique",
   "creator": "Fine",
-  "recommendedBy": "invité",
-  "quote": "Un autre qui s'est fait l'électro Que s'appelle Fine F H Y N",
-  "timestamp": "01:51:05",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3993488721"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3993488721"
-  }
+  "id": "ubm-0382",
+  "links": [],
+  "quote": "Un autre qui s'est fait l'électro Que s'appelle Fine F H Y N",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:51:05",
+  "title": "Fine",
+  "types": [
+    "musique"
+  ]
 }

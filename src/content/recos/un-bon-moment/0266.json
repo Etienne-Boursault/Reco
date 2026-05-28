@@ -1,58 +1,60 @@
 {
-  "id": "ubm-0266",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6929611768e521ed8d86a91b",
-  "title": "Breaking Bad",
-  "type": "serie",
   "creator": "Vince Gilligan",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "On est à Albuquerque.",
-  "timestamp": "01:17:00",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1396-breaking-bad/watch?locale=FR",
+    "tmdb": "1396",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "1396",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/1396-breaking-bad/watch?locale=FR"
-  },
+  "id": "ubm-0266",
+  "links": [],
+  "quote": "On est à Albuquerque.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:00",
+  "title": "Breaking Bad",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Breaking%20Bad"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Breaking%20Bad"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Breaking%20Bad"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Breaking%20Bad",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Breaking%20Bad"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Breaking%20Bad"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Breaking%20Bad"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Breaking%20Bad",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Breaking%20Bad"
     }
   ]
 }

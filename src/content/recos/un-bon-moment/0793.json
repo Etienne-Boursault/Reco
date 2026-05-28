@@ -1,32 +1,34 @@
 {
-  "id": "ubm-0793",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
-  "title": "What We Do In The Shadows",
-  "type": "serie",
-  "quote": "Une série, une série que je trouve ultra drôle. C'est \"What We Do In The Shadow\".",
-  "timestamp": "00:58:18",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/83631-what-we-do-in-the-shadows/watch?locale=FR",
+    "tmdb": "83631",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "83631",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/83631-what-we-do-in-the-shadows/watch?locale=FR"
-  },
+  "id": "ubm-0793",
+  "links": [],
+  "quote": "Une série, une série que je trouve ultra drôle. C'est \"What We Do In The Shadow\".",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:58:18",
+  "title": "What We Do In The Shadows",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
     }
   ]
 }

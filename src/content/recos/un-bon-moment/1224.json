@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1224",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "Fred Cham",
-  "type": "autre",
   "creator": "non spécifié",
-  "recommendedBy": "non spécifié",
-  "quote": "Le Fred Cham aussi, qui est un...",
-  "timestamp": "01:12:22",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b305f3ca1cc001201a861",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1224",
+  "links": [],
+  "quote": "Le Fred Cham aussi, qui est un...",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:22",
+  "title": "Fred Cham",
+  "types": [
+    "autre"
   ]
 }

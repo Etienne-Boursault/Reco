@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0048",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
-  "title": "Solaï Nuit",
-  "type": "musique",
   "creator": "Kyan Khojandi",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "la batterie j'ai fait jouer un copain qui s'appelle Damien Gouzou",
-  "timestamp": "00:56:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/1508040052"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/1508040052"
-  }
+  "id": "ubm-0048",
+  "links": [],
+  "quote": "la batterie j'ai fait jouer un copain qui s'appelle Damien Gouzou",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:40",
+  "title": "Solaï Nuit",
+  "types": [
+    "musique"
+  ]
 }

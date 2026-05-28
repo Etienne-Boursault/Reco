@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0775",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "les chroniques de Clément Victorovic",
-  "type": "autre",
   "creator": "Clément Victorovic",
-  "recommendedBy": "Navo",
-  "quote": "moi je recommande les chroniques de Clément Victorovic sur ma canal aller les voir une par matin",
-  "timestamp": "01:33:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0775",
+  "links": [],
+  "quote": "moi je recommande les chroniques de Clément Victorovic sur ma canal aller les voir une par matin",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:33:53",
+  "title": "les chroniques de Clément Victorovic",
+  "types": [
+    "autre"
   ]
 }

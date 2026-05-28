@@ -1,32 +1,34 @@
 {
-  "id": "ubm-0219",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Empathie",
-  "type": "serie",
-  "quote": "Moi je vous conseille un petit empathie, la série. En fait j'ai trouvé ça bouleversant.",
-  "timestamp": "01:32:02",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
+    "tmdb": "284656",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "284656",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
-  },
+  "id": "ubm-0219",
+  "links": [],
+  "quote": "Moi je vous conseille un petit empathie, la série. En fait j'ai trouvé ça bouleversant.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:02",
+  "title": "Empathie",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }
   ]
 }

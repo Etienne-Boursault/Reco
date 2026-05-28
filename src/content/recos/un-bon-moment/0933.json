@@ -1,94 +1,96 @@
 {
-  "id": "ubm-0933",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "La chèvre",
-  "type": "film",
   "creator": "Francis Veber",
-  "year": 1981,
-  "recommendedBy": "Cédric Klapisch",
-  "quote": "j'ai adoré la chèvre",
-  "timestamp": "01:12:40",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/19123-la-chevre/watch?locale=FR",
+    "tmdb": "19123",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "19123",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/19123-la-chevre/watch?locale=FR"
-  },
+  "id": "ubm-0933",
+  "links": [],
+  "quote": "j'ai adoré la chèvre",
+  "recommendedBy": "Cédric Klapisch",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:40",
+  "title": "La chèvre",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=La%20ch%C3%A8vre",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=La%20ch%C3%A8vre&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=La%20ch%C3%A8vre&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20ch%C3%A8vre",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20ch%C3%A8vre",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20ch%C3%A8vre",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20ch%C3%A8vre"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=La%20ch%C3%A8vre",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=La%20ch%C3%A8vre"
     }
-  ]
+  ],
+  "year": 1981
 }

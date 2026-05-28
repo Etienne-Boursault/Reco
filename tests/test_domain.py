@@ -53,7 +53,7 @@ def test_episode_all_fields():
 
 def test_reco_default_status_is_draft():
     r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
-             title="Mortel", type="serie")
+             title="Mortel", types=["serie"])
     assert r.status == "draft"
     assert r.recommended_by is None
     assert r.extractors == []
@@ -61,20 +61,27 @@ def test_reco_default_status_is_draft():
 
 def test_reco_recommended_by_accepts_string():
     r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
-             title="Mortel", type="serie", recommended_by="Kyan")
+             title="Mortel", types=["serie"], recommended_by="Kyan")
     assert r.recommended_by == "Kyan"
 
 
 def test_reco_types_cover_all_content_kinds():
     """Couvre les types nouveaux pour rester synchronisés avec content.config.ts."""
     for t in ("bd", "album", "spectacle", "lieu", "artiste", "video"):
-        r = Reco(id="x", source_id="s", episode_guid="g", title="T", type=t)
-        assert r.type == t
+        r = Reco(id="x", source_id="s", episode_guid="g", title="T", types=[t])
+        assert r.types == [t]
+
+
+def test_reco_supports_multiple_types():
+    """Une reco peut porter plusieurs types (livre ET film par ex.)."""
+    r = Reco(id="x", source_id="s", episode_guid="g", title="Dune",
+             types=["livre", "film"])
+    assert r.types == ["livre", "film"]
 
 
 def test_reco_with_extractors():
     r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
-             title="Mortel", type="serie",
+             title="Mortel", types=["serie"],
              extractors=["anthropic", "openai"])
     assert len(r.extractors) == 2
 

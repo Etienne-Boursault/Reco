@@ -1,20 +1,22 @@
 {
-  "id": "ubm-1122",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b2f213ca1cc001201a69f",
-  "title": "George K",
-  "type": "musique",
   "creator": "George K",
-  "recommendedBy": "Pauline",
-  "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
-  "timestamp": "01:15:35",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/1769065537"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/1769065537"
-  }
+  "id": "ubm-1122",
+  "links": [],
+  "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
+  "recommendedBy": "Pauline",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:15:35",
+  "title": "George K",
+  "types": [
+    "musique"
+  ]
 }

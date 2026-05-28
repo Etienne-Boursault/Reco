@@ -1,38 +1,40 @@
 {
-  "id": "ubm-0857",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "Les Grands Ducs",
-  "type": "film",
   "creator": "Patrice Leconte",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Allez voir les Grands Ducs, c'est un très très bon film.",
-  "timestamp": "01:08:28",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR",
+    "tmdb": "47496",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "47496",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR"
-  },
+  "id": "ubm-0857",
+  "links": [],
+  "quote": "Allez voir les Grands Ducs, c'est un très très bon film.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:08:28",
+  "title": "Les Grands Ducs",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Les%20Grands%20Ducs"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Grands%20Ducs"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Les%20Grands%20Ducs",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Les%20Grands%20Ducs"
     }
   ]
 }

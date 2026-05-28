@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0825",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "63160ce353f4d80012fcd7d0",
-  "title": "Odia",
-  "type": "autre",
-  "recommendedBy": "Alex",
-  "quote": "si tu es envie d'aller le chercher tu cherches un truc un peu que les gens ne connaissent pas quoi ça un truc il ya moyen beaucoup sur youtube tu tournes beaucoup sur youtube",
-  "timestamp": "01:32:40",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0825",
+  "links": [],
+  "quote": "si tu es envie d'aller le chercher tu cherches un truc un peu que les gens ne connaissent pas quoi ça un truc il ya moyen beaucoup sur youtube tu tournes beaucoup sur youtube",
+  "recommendedBy": "Alex",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:32:40",
+  "title": "Odia",
+  "types": [
+    "autre"
   ]
 }

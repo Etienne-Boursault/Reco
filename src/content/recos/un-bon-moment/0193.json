@@ -1,34 +1,36 @@
 {
-  "id": "ubm-0193",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "68fa552292f5a6f127100027",
-  "title": "Empathie",
-  "type": "serie",
   "creator": "Florence Lompré",
-  "recommendedBy": "Navo",
-  "quote": "la série empathie avec Florence Lompré j'ai commencé c'est exceptionnel tout est bien à tous les niveaux",
-  "timestamp": "01:50:51",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
+    "tmdb": "284656",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "284656",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
-  },
+  "id": "ubm-0193",
+  "links": [],
+  "quote": "la série empathie avec Florence Lompré j'ai commencé c'est exceptionnel tout est bien à tous les niveaux",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:51",
+  "title": "Empathie",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal+",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
+      "ethics": "avoid",
       "label": "Canal+ Séries",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }
   ]
 }

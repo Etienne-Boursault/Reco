@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1231",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652406c019376d001282c4d8",
-  "title": "Francis Cabrel",
-  "type": "musique",
   "creator": "Francis Cabrel",
-  "recommendedBy": "Invité",
-  "quote": "Bah oui, c'est à trouver quelque chose. Cabrel.",
-  "timestamp": "00:21:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/72064755"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/72064755"
-  }
+  "id": "ubm-1231",
+  "links": [],
+  "quote": "Bah oui, c'est à trouver quelque chose. Cabrel.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:09",
+  "title": "Francis Cabrel",
+  "types": [
+    "musique"
+  ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1023",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Derby Girl",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "Moi, j'ai la série Derby Girl dans laquelle j'ai joué",
-  "timestamp": "01:50:39",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "anthropic"
-  ],
   "externalIds": {
     "tmdb": "112390",
     "tmdbType": "tv"
-  }
+  },
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1023",
+  "links": [],
+  "quote": "Moi, j'ai la série Derby Girl dans laquelle j'ai joué",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:50:39",
+  "title": "Derby Girl",
+  "types": [
+    "serie"
+  ]
 }

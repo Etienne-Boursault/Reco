@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0140",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Noeum Sensu",
-  "type": "spectacle",
-  "quote": "Noeum sensu va sortir son spectacle c'est incroyable",
-  "timestamp": "01:18:54",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0140",
+  "links": [],
+  "quote": "Noeum sensu va sortir son spectacle c'est incroyable",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:54",
+  "title": "Noeum Sensu",
+  "types": [
+    "spectacle"
   ]
 }

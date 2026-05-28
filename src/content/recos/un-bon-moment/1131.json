@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1131",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "65240e1c5d8481001225962c",
-  "title": "Spinal ND",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "je recommande Splinal Nd la chaîne Youtube de Splinal Nd qui a fait toute une série sur les sectes et comment ça fonctionne",
-  "timestamp": "01:13:03",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1131",
+  "links": [],
+  "quote": "je recommande Splinal Nd la chaîne Youtube de Splinal Nd qui a fait toute une série sur les sectes et comment ça fonctionne",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:03",
+  "title": "Spinal ND",
+  "types": [
+    "autre"
   ]
 }

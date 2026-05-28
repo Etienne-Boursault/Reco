@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1005",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69d112dba691c8ebbb9a19d9",
-  "title": "Les 624 types de prof",
-  "type": "autre",
   "creator": "Lucas Pasteur",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Je vais recommander la vidéo de Shays Lucas Pasteur le cas un peu besé et je vous conseille de la regarder en entier",
-  "timestamp": "01:25:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1005",
+  "links": [],
+  "quote": "Je vais recommander la vidéo de Shays Lucas Pasteur le cas un peu besé et je vous conseille de la regarder en entier",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:25:36",
+  "title": "Les 624 types de prof",
+  "types": [
+    "autre"
   ]
 }

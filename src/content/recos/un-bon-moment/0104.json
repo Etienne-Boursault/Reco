@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0104",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c1b296596600156961a7",
-  "title": "Love & Tendress",
-  "type": "autre",
   "creator": "invité",
-  "recommendedBy": "invité",
-  "quote": "Surtout Love & Tendress, il y a un peu ce côté là.",
-  "timestamp": "00:10:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c1b296596600156961a7",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0104",
+  "links": [],
+  "quote": "Surtout Love & Tendress, il y a un peu ce côté là.",
+  "recommendedBy": "invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:10:56",
+  "title": "Love & Tendress",
+  "types": [
+    "autre"
   ]
 }

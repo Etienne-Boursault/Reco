@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0811",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "61c5abab76bee100120dd720",
-  "title": "Creative Explained",
-  "type": "autre",
   "creator": "Armen Adam-Jan",
-  "recommendedBy": "Navo",
-  "quote": "C'est un d'un Américain, il explique un peu des petits trucs, si vous faites un peu de jardinage...",
-  "timestamp": "01:27:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "61c5abab76bee100120dd720",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0811",
+  "links": [],
+  "quote": "C'est un d'un Américain, il explique un peu des petits trucs, si vous faites un peu de jardinage...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:17",
+  "title": "Creative Explained",
+  "types": [
+    "autre"
   ]
 }

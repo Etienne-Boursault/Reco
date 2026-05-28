@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0346",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Le Merlin",
-  "type": "autre",
-  "quote": "Là, au moins, non, j'ai tellement envie de faire bien que ça me paralyse.",
-  "timestamp": "00:26:19",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0346",
+  "links": [],
+  "quote": "Là, au moins, non, j'ai tellement envie de faire bien que ça me paralyse.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:26:19",
+  "title": "Le Merlin",
+  "types": [
+    "autre"
   ]
 }

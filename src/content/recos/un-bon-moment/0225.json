@@ -1,14 +1,16 @@
 {
-  "id": "ubm-0225",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Bibliothèque sans frontières",
-  "type": "autre",
-  "quote": "la bibliothèque sans frontières.",
-  "timestamp": "01:38:50",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0225",
+  "links": [],
+  "quote": "la bibliothèque sans frontières.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:38:50",
+  "title": "Bibliothèque sans frontières",
+  "types": [
+    "autre"
   ]
 }

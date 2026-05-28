@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0467",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "Le dernier album de Sébastien Tellier",
-  "type": "album",
   "creator": "Sébastien Tellier",
-  "recommendedBy": "Invité",
-  "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
-  "timestamp": "01:19:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0467",
+  "links": [],
+  "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:56",
+  "title": "Le dernier album de Sébastien Tellier",
+  "types": [
+    "album"
   ]
 }

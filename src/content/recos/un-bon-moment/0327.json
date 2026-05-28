@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0327",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6955067456c11ef4099abd99",
-  "title": "Bérengère Krief: Le Spectacle",
-  "type": "spectacle",
   "creator": "Bérengère Krief",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "C'est le meilleur spectacle de Bérengère.",
-  "timestamp": "00:56:47",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6955067456c11ef4099abd99",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0327",
+  "links": [],
+  "quote": "C'est le meilleur spectacle de Bérengère.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:56:47",
+  "title": "Bérengère Krief: Le Spectacle",
+  "types": [
+    "spectacle"
   ]
 }

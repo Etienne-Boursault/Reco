@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1018",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "The Big Year",
-  "type": "autre",
-  "recommendedBy": "Navo",
-  "quote": "c'est un doc sur un mec avec son frère qui prenne un van c'est indépendant ils ont mis ça sur youtube c'est genre une pure merveille je veux que tout le monde regarde ça ou en gros il est parti faire un pokedex où il s'est intéressé à l'observation des oiseaux",
-  "timestamp": "01:23:35",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1018",
+  "links": [],
+  "quote": "c'est un doc sur un mec avec son frère qui prenne un van c'est indépendant ils ont mis ça sur youtube c'est genre une pure merveille je veux que tout le monde regarde ça ou en gros il est parti faire un pokedex où il s'est intéressé à l'observation des oiseaux",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:23:35",
+  "title": "The Big Year",
+  "types": [
+    "autre"
   ]
 }

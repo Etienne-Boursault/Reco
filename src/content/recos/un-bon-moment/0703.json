@@ -1,68 +1,70 @@
 {
-  "id": "ubm-0703",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
-  "title": "The Handmaid's Tale",
-  "type": "serie",
   "creator": "Bruce Miller",
-  "recommendedBy": "Tania",
-  "quote": "C'est The Handmaid's Tale. Qui veut dire? Elle est incroyable.",
-  "timestamp": "01:42:34",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/69478-the-handmaid-s-tale/watch?locale=FR",
+    "tmdb": "69478",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "69478",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/69478-the-handmaid-s-tale/watch?locale=FR"
-  },
+  "id": "ubm-0703",
+  "links": [],
+  "quote": "C'est The Handmaid's Tale. Qui veut dire? Elle est incroyable.",
+  "recommendedBy": "Tania",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:42:34",
+  "title": "The Handmaid's Tale",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "MGM Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Handmaid%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=The%20Handmaid%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=The%20Handmaid%27s%20Tale",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     }
   ]
 }

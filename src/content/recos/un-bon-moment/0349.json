@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0349",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "696cca4c98f7a1123e758f0d",
-  "title": "Mortal Kombat",
-  "type": "jeu",
   "creator": "Midway Games",
-  "recommendedBy": "intervenant",
-  "quote": "Moi, j'ai joué à Mortal Kombat.",
-  "timestamp": "01:11:54",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0349",
+  "links": [],
+  "quote": "Moi, j'ai joué à Mortal Kombat.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:54",
+  "title": "Mortal Kombat",
+  "types": [
+    "jeu"
   ]
 }

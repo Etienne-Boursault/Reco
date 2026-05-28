@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0602",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Mario 3",
-  "type": "jeu",
   "creator": "Nintendo",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "moi j'ai fini Mario 3",
-  "timestamp": "00:23:42",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0602",
+  "links": [],
+  "quote": "moi j'ai fini Mario 3",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:23:42",
+  "title": "Mario 3",
+  "types": [
+    "jeu"
   ]
 }

@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0934",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Navi",
-  "type": "autre",
   "creator": "Lyosha Schneider",
-  "recommendedBy": "Navo",
-  "quote": "donc allez voir ce n'est pas juste le frère devenu Schneider",
-  "timestamp": "01:14:26",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0934",
+  "links": [],
+  "quote": "donc allez voir ce n'est pas juste le frère devenu Schneider",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:26",
+  "title": "Navi",
+  "types": [
+    "autre"
   ]
 }

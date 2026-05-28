@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0690",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
-  "title": "Quarantaine",
-  "type": "musique",
   "creator": "Chanson non spécifiée",
-  "recommendedBy": "Navo",
-  "quote": "C'est le début d'une chanson qui s'appelle Quarantaine.",
-  "timestamp": "01:13:50",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0690",
+  "links": [],
+  "quote": "C'est le début d'une chanson qui s'appelle Quarantaine.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:50",
+  "title": "Quarantaine",
+  "types": [
+    "musique"
   ]
 }

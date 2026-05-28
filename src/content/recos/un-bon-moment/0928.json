@@ -1,69 +1,71 @@
 {
-  "id": "ubm-0928",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652415a1c899650012820b3f",
-  "title": "Amélie Poulain",
-  "type": "film",
   "creator": "Jean-Pierre Jeunet",
-  "year": 2001,
-  "recommendedBy": "Cédric Klapisch",
-  "quote": "c'était la sortie d'Amélie Poulain",
-  "timestamp": "01:01:49",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR",
+    "tmdb": "194",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "194",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR"
-  },
+  "id": "ubm-0928",
+  "links": [],
+  "quote": "c'était la sortie d'Amélie Poulain",
+  "recommendedBy": "Cédric Klapisch",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:49",
+  "title": "Amélie Poulain",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Am%C3%A9lie%20Poulain",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Am%C3%A9lie%20Poulain",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Am%C3%A9lie%20Poulain",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Am%C3%A9lie%20Poulain",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Am%C3%A9lie%20Poulain"
     }
-  ]
+  ],
+  "year": 2001
 }

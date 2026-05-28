@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0523",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69e13325fb440758726a665f",
-  "title": "Les Preuves du Feu",
-  "type": "film",
   "creator": "Félix Lefer",
-  "recommendedBy": "Navo",
-  "quote": "franchement, j'ai adoré le film Les preuves du feu",
-  "timestamp": "00:29:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "tmdb": "635624",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "635624",
-    "tmdbType": "movie"
-  }
+  "id": "ubm-0523",
+  "links": [],
+  "quote": "franchement, j'ai adoré le film Les preuves du feu",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:15",
+  "title": "Les Preuves du Feu",
+  "types": [
+    "film"
+  ]
 }

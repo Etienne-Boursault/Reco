@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1158",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6584658132930b0016c5272b",
-  "title": "La prochaine fois que tu mordras la poussière",
-  "type": "livre",
   "creator": "Panayotis Pascot",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Panayotis vient de sortir son premier roman qui s'appelle « La prochaine fois que tu mordras la poussière ».",
-  "timestamp": "00:00:59",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6584658132930b0016c5272b",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1158",
+  "links": [],
+  "quote": "Panayotis vient de sortir son premier roman qui s'appelle « La prochaine fois que tu mordras la poussière ».",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:00:59",
+  "title": "La prochaine fois que tu mordras la poussière",
+  "types": [
+    "livre"
   ]
 }

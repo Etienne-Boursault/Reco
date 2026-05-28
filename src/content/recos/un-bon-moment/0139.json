@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0139",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65ed91d2d4b6e10017bf9747",
-  "title": "Faux Amis",
-  "type": "autre",
   "creator": "N/A",
-  "recommendedBy": "Invité",
-  "quote": "j'ai écrit des magouges, j'ai écrivé des fausses lettres d'amour",
-  "timestamp": "00:59:21",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0139",
+  "links": [],
+  "quote": "j'ai écrit des magouges, j'ai écrivé des fausses lettres d'amour",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:59:21",
+  "title": "Faux Amis",
+  "types": [
+    "autre"
   ]
 }

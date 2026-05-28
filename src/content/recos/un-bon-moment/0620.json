@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0620",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
-  "title": "Le Règlement",
-  "type": "autre",
   "creator": "Julien Méniel",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Moi, j'ai une chaîne que j'adore, c'est le Règlement. J'adore cette chaîne. C'est une chaîne qui parle de rap.",
-  "timestamp": "00:51:43",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-0620",
+  "links": [],
+  "quote": "Moi, j'ai une chaîne que j'adore, c'est le Règlement. J'adore cette chaîne. C'est une chaîne qui parle de rap.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:43",
+  "title": "Le Règlement",
+  "types": [
+    "autre"
   ]
 }

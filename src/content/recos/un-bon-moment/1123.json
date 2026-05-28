@@ -1,17 +1,19 @@
 {
-  "id": "ubm-1123",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "633b2f213ca1cc001201a69f",
-  "title": "La Diagonale de la Joie",
-  "type": "livre",
   "creator": "Corinne Sombrun",
-  "recommendedBy": "Bertrand",
-  "quote": "moi j'ai lu le livre de Corinne Sombrin qui s'appelle La Diagonale de la Joie",
-  "timestamp": "01:16:23",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
   "extractors": [
     "anthropic",
     "openai"
+  ],
+  "id": "ubm-1123",
+  "links": [],
+  "quote": "moi j'ai lu le livre de Corinne Sombrin qui s'appelle La Diagonale de la Joie",
+  "recommendedBy": "Bertrand",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:16:23",
+  "title": "La Diagonale de la Joie",
+  "types": [
+    "livre"
   ]
 }

@@ -1,20 +1,22 @@
 {
-  "id": "ubm-0546",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
-  "title": "Titanic",
-  "type": "film",
   "creator": "James Cameron",
-  "recommendedBy": "Invité",
-  "quote": "T'as pas vu Titanic ?",
-  "timestamp": "00:55:19",
-  "links": [],
-  "status": "draft",
-  "extractors": [
-    "openai"
-  ],
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
     "tmdb": "102041",
     "tmdbType": "movie"
-  }
+  },
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0546",
+  "links": [],
+  "quote": "T'as pas vu Titanic ?",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:55:19",
+  "title": "Titanic",
+  "types": [
+    "film"
+  ]
 }

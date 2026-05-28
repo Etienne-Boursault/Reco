@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0959",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6903fad795ee8b1815229b88",
-  "title": "Fiasco Roman",
-  "type": "livre",
   "creator": "Thomas VDB",
-  "recommendedBy": "Thomas VDB",
-  "quote": "j'ai fait mon livre. Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
-  "timestamp": "00:10:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6903fad795ee8b1815229b88",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-0959",
+  "links": [],
+  "quote": "j'ai fait mon livre. Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:10:53",
+  "title": "Fiasco Roman",
+  "types": [
+    "livre"
   ]
 }

@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1143",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6550c2836b767e0012a65d8d",
-  "title": "Réalité",
-  "type": "album",
   "creator": "Matthieu Chédid",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "je crois que c'est ton meilleur album et je trouve ça fou qu'après 30 ans de carrière on arrive encore à sortir son meilleur album",
-  "timestamp": "00:14:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/303859177"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/303859177"
-  }
+  "id": "ubm-1143",
+  "links": [],
+  "quote": "je crois que c'est ton meilleur album et je trouve ça fou qu'après 30 ans de carrière on arrive encore à sortir son meilleur album",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:14:14",
+  "title": "Réalité",
+  "types": [
+    "album"
+  ]
 }

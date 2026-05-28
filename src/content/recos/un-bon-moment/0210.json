@@ -1,21 +1,23 @@
 {
-  "id": "ubm-0210",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "690f87b14e59613eaf07e566",
-  "title": "Iris",
-  "type": "serie",
   "creator": "Doriane",
-  "recommendedBy": "Navo",
-  "quote": "Quelle excellente série. Je crois que j'avais déjà dit. On l'a recommandé à fond.",
-  "timestamp": "00:01:35",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "externalIds": {
+    "tmdb": "31505",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "31505",
-    "tmdbType": "tv"
-  }
+  "id": "ubm-0210",
+  "links": [],
+  "quote": "Quelle excellente série. Je crois que j'avais déjà dit. On l'a recommandé à fond.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:01:35",
+  "title": "Iris",
+  "types": [
+    "serie"
+  ]
 }

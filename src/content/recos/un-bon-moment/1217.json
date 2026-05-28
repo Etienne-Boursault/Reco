@@ -1,56 +1,58 @@
 {
-  "id": "ubm-1217",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "633b305f3ca1cc001201a861",
-  "title": "La Vie est belle",
-  "type": "film",
-  "quote": "Je sais pas, il y a quoi de très triste, la vie est belle?",
-  "timestamp": "00:51:52",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/637-la-vita-e-bella/watch?locale=FR",
+    "tmdb": "637",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "637",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/637-la-vita-e-bella/watch?locale=FR"
-  },
+  "id": "ubm-1217",
+  "links": [],
+  "quote": "Je sais pas, il y a quoi de très triste, la vie est belle?",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:51:52",
+  "title": "La Vie est belle",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Vie%20est%20belle",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=La%20Vie%20est%20belle",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=La%20Vie%20est%20belle",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Vie%20est%20belle",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=La%20Vie%20est%20belle",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=La%20Vie%20est%20belle",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=La%20Vie%20est%20belle"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=La%20Vie%20est%20belle",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=La%20Vie%20est%20belle"
     }
   ]
 }

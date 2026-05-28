@@ -1,119 +1,121 @@
 {
-  "id": "ubm-0968",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Mulholland Drive",
-  "type": "film",
   "creator": "David Lynch",
-  "year": 2001,
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "J'ai adoré Milo Land Drive.",
-  "timestamp": "01:44:57",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=FR",
+    "tmdb": "1018",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "1018",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=FR"
-  },
+  "id": "ubm-0968",
+  "links": [],
+  "quote": "J'ai adoré Milo Land Drive.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:44:57",
+  "title": "Mulholland Drive",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "label": "MUBI",
-      "url": "https://mubi.com/fr/films?q=Mulholland%20Drive",
-      "ethics": "indie"
+      "url": "https://mubi.com/fr/films?q=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Mulholland%20Drive"
     },
     {
+      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive"
     },
     {
+      "ethics": "avoid",
       "label": "MUBI Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.sfrplay.fr/recherche?q=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Mulholland%20Drive"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Mulholland%20Drive&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Mulholland%20Drive&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mulholland%20Drive",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Mulholland%20Drive"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Mulholland%20Drive",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Mulholland%20Drive"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Mulholland%20Drive"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Mulholland%20Drive",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Mulholland%20Drive"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Mulholland%20Drive",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Mulholland%20Drive"
     }
-  ]
+  ],
+  "year": 2001
 }

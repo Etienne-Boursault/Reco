@@ -1,38 +1,40 @@
 {
-  "id": "ubm-0581",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
-  "title": "The Terror",
-  "type": "serie",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "Et en série The Terror sur Prime Video, trop bien.",
-  "timestamp": "01:17:36",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/75191-the-terror/watch?locale=FR",
+    "tmdb": "75191",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "75191",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/75191-the-terror/watch?locale=FR"
-  },
+  "id": "ubm-0581",
+  "links": [],
+  "quote": "Et en série The Terror sur Prime Video, trop bien.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:36",
+  "title": "The Terror",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Terror",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Terror"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=The%20Terror",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=The%20Terror"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Terror",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Terror"
     }
   ]
 }

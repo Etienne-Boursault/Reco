@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0253",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Bergeryo",
-  "type": "autre",
   "creator": "Unspecified",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "Bergeryo, c'est Bergeryo, non ?",
-  "timestamp": "01:13:15",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0253",
+  "links": [],
+  "quote": "Bergeryo, c'est Bergeryo, non ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:13:15",
+  "title": "Bergeryo",
+  "types": [
+    "autre"
   ]
 }

@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0281",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
-  "title": "Skyjo",
-  "type": "jeu",
-  "recommendedBy": "intervenant",
-  "quote": "Ça s'appelle comment ? Skyjo.",
-  "timestamp": "01:40:30",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0281",
+  "links": [],
+  "quote": "Ça s'appelle comment ? Skyjo.",
+  "recommendedBy": "intervenant",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:40:30",
+  "title": "Skyjo",
+  "types": [
+    "jeu"
   ]
 }

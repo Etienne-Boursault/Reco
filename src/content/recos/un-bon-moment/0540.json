@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0540",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69eb3617a5ffb248cb456a89",
-  "title": "Marvel",
-  "type": "autre",
   "creator": "inconnu",
-  "recommendedBy": "inconnu",
-  "quote": "si vous aimez le Marvel",
-  "timestamp": "01:21:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0540",
+  "links": [],
+  "quote": "si vous aimez le Marvel",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:53",
+  "title": "Marvel",
+  "types": [
+    "autre"
   ]
 }

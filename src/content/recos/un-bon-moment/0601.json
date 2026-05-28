@@ -1,33 +1,35 @@
 {
-  "id": "ubm-0601",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "El Camino",
-  "type": "film",
   "creator": "Vince Gilligan",
-  "recommendedBy": "Navo",
-  "quote": "tu as vu El Camino de Breaking Bad",
-  "timestamp": "00:16:53",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/559969-el-camino-a-breaking-bad-movie/watch?locale=FR",
+    "tmdb": "559969",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "559969",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/559969-el-camino-a-breaking-bad-movie/watch?locale=FR"
-  },
+  "id": "ubm-0601",
+  "links": [],
+  "quote": "tu as vu El Camino de Breaking Bad",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:16:53",
+  "title": "El Camino",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=El%20Camino",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=El%20Camino"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=El%20Camino",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=El%20Camino"
     }
   ]
 }

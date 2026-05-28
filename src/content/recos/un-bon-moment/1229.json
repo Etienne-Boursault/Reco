@@ -1,63 +1,65 @@
 {
-  "id": "ubm-1229",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "652406c019376d001282c4d8",
-  "title": "Succession",
-  "type": "serie",
   "creator": "Jesse Armstrong",
-  "recommendedBy": "Invité",
-  "quote": "Bonne série.",
-  "timestamp": "00:20:57",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/76331-succession/watch?locale=FR",
+    "tmdb": "76331",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "76331",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/76331-succession/watch?locale=FR"
-  },
+  "id": "ubm-1229",
+  "links": [],
+  "quote": "Bonne série.",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:57",
+  "title": "Succession",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Succession",
-      "ethics": "neutral"
+      "url": "https://play.max.com/search?q=Succession"
     },
     {
+      "ethics": "avoid",
       "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Succession",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Succession"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Succession",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Succession"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Succession",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Succession"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Succession",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Succession"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Succession",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Succession"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Succession",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Succession"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Succession",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Succession"
     }
   ]
 }

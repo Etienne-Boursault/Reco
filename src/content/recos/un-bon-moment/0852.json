@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0852",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "panorama",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "pour panorama",
-  "timestamp": "00:29:26",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0852",
+  "links": [],
+  "quote": "pour panorama",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:26",
+  "title": "panorama",
+  "types": [
+    "autre"
   ]
 }

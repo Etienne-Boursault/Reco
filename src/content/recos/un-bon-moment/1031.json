@@ -1,15 +1,17 @@
 {
-  "id": "ubm-1031",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
-  "title": "Doc Jero",
-  "type": "autre",
-  "recommendedBy": "Kyan Khojandi",
-  "quote": "mon conseil c'est Doc Jero voilà c'est Doc Jero je vais vous expliquer pourquoi le double saut dans tel jeu est vraiment important qu'est-ce que le level design qu'il explique il décortique les jeux vidéos",
-  "timestamp": "01:19:42",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "anthropic"
+  ],
+  "id": "ubm-1031",
+  "links": [],
+  "quote": "mon conseil c'est Doc Jero voilà c'est Doc Jero je vais vous expliquer pourquoi le double saut dans tel jeu est vraiment important qu'est-ce que le level design qu'il explique il décortique les jeux vidéos",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:42",
+  "title": "Doc Jero",
+  "types": [
+    "autre"
   ]
 }

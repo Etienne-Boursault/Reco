@@ -1,32 +1,34 @@
 {
-  "id": "ubm-1103",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6336c79af131c60012c20984",
-  "title": "The Movies That Made Us",
-  "type": "serie",
-  "recommendedBy": "Navo",
-  "quote": "tous les movies that made us toys that made us et tout c'est les coulisses de la création de films",
-  "timestamp": "00:21:14",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/93219-the-movies-that-made-us/watch?locale=FR",
+    "tmdb": "93219",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "93219",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/93219-the-movies-that-made-us/watch?locale=FR"
-  },
+  "id": "ubm-1103",
+  "links": [],
+  "quote": "tous les movies that made us toys that made us et tout c'est les coulisses de la création de films",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:21:14",
+  "title": "The Movies That Made Us",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us"
     }
   ]
 }

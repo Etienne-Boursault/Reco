@@ -1,17 +1,19 @@
 {
-  "id": "ubm-0118",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6599c3998e40b300163f8618",
-  "title": "A2 à 3",
-  "type": "album",
   "creator": "Vianet",
-  "year": 2023,
-  "recommendedBy": "Inconnu",
-  "quote": "Je rappelle que Vianet, tu sors un album qui s'appelle A2 à 3.",
-  "timestamp": "01:27:17",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6599c3998e40b300163f8618",
   "extractors": [
     "openai"
-  ]
+  ],
+  "id": "ubm-0118",
+  "links": [],
+  "quote": "Je rappelle que Vianet, tu sors un album qui s'appelle A2 à 3.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:27:17",
+  "title": "A2 à 3",
+  "types": [
+    "album"
+  ],
+  "year": 2023
 }

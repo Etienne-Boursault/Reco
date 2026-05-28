@@ -1,16 +1,18 @@
 {
-  "id": "ubm-1237",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240aefc8996500127ede97",
-  "title": "Street Fighter",
-  "type": "jeu",
   "creator": "Capcom",
-  "recommendedBy": "Navo",
-  "quote": "c'est la musique de Street Fighter",
-  "timestamp": "00:20:30",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240aefc8996500127ede97",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1237",
+  "links": [],
+  "quote": "c'est la musique de Street Fighter",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:20:30",
+  "title": "Street Fighter",
+  "types": [
+    "jeu"
   ]
 }

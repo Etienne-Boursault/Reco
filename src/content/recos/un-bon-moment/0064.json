@@ -1,43 +1,45 @@
 {
-  "id": "ubm-0064",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
-  "title": "Dispatches from Elsewhere",
-  "type": "serie",
   "creator": "Jason Segel, Ellen Wong",
-  "recommendedBy": "Navo",
-  "quote": "c'est une série que j'ai adoré sauf le dernier épisode mais j'ai quand même la conseiller c'est dispatch from elsewhere",
-  "timestamp": "01:22:20",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/81241-dispatches-from-elsewhere/watch?locale=FR",
+    "tmdb": "81241",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "81241",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/81241-dispatches-from-elsewhere/watch?locale=FR"
-  },
+  "id": "ubm-0064",
+  "links": [],
+  "quote": "c'est une série que j'ai adoré sauf le dernier épisode mais j'ai quand même la conseiller c'est dispatch from elsewhere",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:22:20",
+  "title": "Dispatches from Elsewhere",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Dispatches%20from%20Elsewhere",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dispatches%20from%20Elsewhere",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dispatches%20from%20Elsewhere"
     }
   ]
 }

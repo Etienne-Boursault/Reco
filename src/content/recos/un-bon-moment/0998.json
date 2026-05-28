@@ -1,19 +1,21 @@
 {
-  "id": "ubm-0998",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69b595f063444515f923af4a",
-  "title": "My God Is Blue",
-  "type": "album",
   "creator": "Sébastien Tellier",
-  "recommendedBy": "Laetitia",
-  "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
-  "timestamp": "01:19:55",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/572789451"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/album/572789451"
-  }
+  "id": "ubm-0998",
+  "links": [],
+  "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
+  "recommendedBy": "Laetitia",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:55",
+  "title": "My God Is Blue",
+  "types": [
+    "album"
+  ]
 }

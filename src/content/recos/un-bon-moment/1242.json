@@ -1,19 +1,21 @@
 {
-  "id": "ubm-1242",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65240e1c5d8481001225962c",
-  "title": "Diams",
-  "type": "musique",
   "creator": "Diams",
-  "recommendedBy": "Invité",
-  "quote": "j'écoute beaucoup Diams",
-  "timestamp": "01:12:45",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3496392891"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "deezer": "https://www.deezer.com/track/3496392891"
-  }
+  "id": "ubm-1242",
+  "links": [],
+  "quote": "j'écoute beaucoup Diams",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:12:45",
+  "title": "Diams",
+  "types": [
+    "musique"
+  ]
 }

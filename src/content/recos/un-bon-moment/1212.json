@@ -1,14 +1,16 @@
 {
-  "id": "ubm-1212",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "6322de1f35ce9e001229f98a",
-  "title": "Tiktok",
-  "type": "autre",
-  "quote": "Moi j'aime bien recommander du Tiktok parce que je suis premier.",
-  "timestamp": "01:01:44",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1212",
+  "links": [],
+  "quote": "Moi j'aime bien recommander du Tiktok parce que je suis premier.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:44",
+  "title": "Tiktok",
+  "types": [
+    "autre"
   ]
 }

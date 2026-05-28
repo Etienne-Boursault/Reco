@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0582",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
-  "title": "Petit Voyou",
-  "type": "musique",
   "creator": "inconnu",
-  "recommendedBy": "Pierre",
-  "quote": "Non, petit voyou il s'appelle. Petit voyou. Petit chenapon.",
-  "timestamp": "01:18:09",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0582",
+  "links": [],
+  "quote": "Non, petit voyou il s'appelle. Petit voyou. Petit chenapon.",
+  "recommendedBy": "Pierre",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:18:09",
+  "title": "Petit Voyou",
+  "types": [
+    "musique"
   ]
 }

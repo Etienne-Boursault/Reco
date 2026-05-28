@@ -1,103 +1,105 @@
 {
-  "id": "ubm-0432",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
-  "title": "Gladiator",
-  "type": "film",
   "creator": "Ridley Scott",
-  "recommendedBy": "intervenants",
-  "quote": "mais il y a aussi un peu de Gladiator",
-  "timestamp": "01:02:35",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/98-gladiator/watch?locale=FR",
+    "tmdb": "98",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "openai"
   ],
-  "externalIds": {
-    "tmdb": "98",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/98-gladiator/watch?locale=FR"
-  },
+  "id": "ubm-0432",
+  "links": [],
+  "quote": "mais il y a aussi un peu de Gladiator",
+  "recommendedBy": "intervenants",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:02:35",
+  "title": "Gladiator",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "TF1+",
-      "url": "https://www.tf1.fr/recherche?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.tf1.fr/recherche?q=Gladiator"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Gladiator",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Gladiator&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Gladiator&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Gladiator",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Gladiator"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Gladiator",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Gladiator"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Gladiator"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Gladiator",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Gladiator"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Gladiator",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Gladiator"
     }
   ]
 }

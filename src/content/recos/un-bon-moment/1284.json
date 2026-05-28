@@ -1,14 +1,16 @@
 {
-  "id": "ubm-1284",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
-  "title": "Insomniacs",
-  "type": "autre",
-  "quote": "pour l'instant c'est juste ça s'appelle Insomniac mais si ça s'appelle Insomniac et c'est des dialogues entre mon angoisse, ma créativité, ma libido",
-  "timestamp": "00:32:24",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-1284",
+  "links": [],
+  "quote": "pour l'instant c'est juste ça s'appelle Insomniac mais si ça s'appelle Insomniac et c'est des dialogues entre mon angoisse, ma créativité, ma libido",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:32:24",
+  "title": "Insomniacs",
+  "types": [
+    "autre"
   ]
 }

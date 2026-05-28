@@ -1,16 +1,18 @@
 {
-  "id": "ubm-0855",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "63357716bc3f1e0012abed65",
-  "title": "coursdusoir.com",
-  "type": "autre",
   "creator": "Inconnu",
-  "recommendedBy": "Inconnu",
-  "quote": "coursdusoir.com, il y a un site que tu recommandes pour apprendre le piano.",
-  "timestamp": "00:42:56",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "63357716bc3f1e0012abed65",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0855",
+  "links": [],
+  "quote": "coursdusoir.com, il y a un site que tu recommandes pour apprendre le piano.",
+  "recommendedBy": "Inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:42:56",
+  "title": "coursdusoir.com",
+  "types": [
+    "autre"
   ]
 }

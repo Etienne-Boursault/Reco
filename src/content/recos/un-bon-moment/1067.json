@@ -1,31 +1,33 @@
 {
-  "id": "ubm-1067",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "Don't F**k with Cats",
-  "type": "serie",
-  "quote": "Don't fuck with cats sur Netflix. Il paraît que c'est très bien. C'est fou.",
-  "timestamp": "01:17:36",
-  "links": [],
-  "status": "draft",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR",
+    "tmdb": "96129",
+    "tmdbType": "tv"
+  },
   "extractors": [
     "anthropic"
   ],
-  "externalIds": {
-    "tmdb": "96129",
-    "tmdbType": "tv",
-    "justwatch": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR"
-  },
+  "id": "ubm-1067",
+  "links": [],
+  "quote": "Don't fuck with cats sur Netflix. Il paraît que c'est très bien. C'est fou.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:17:36",
+  "title": "Don't F**k with Cats",
+  "types": [
+    "serie"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats"
     }
   ]
 }

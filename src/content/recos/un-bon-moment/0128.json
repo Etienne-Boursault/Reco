@@ -1,80 +1,82 @@
 {
-  "id": "ubm-0128",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "65c7a407bb568b0017862c8f",
-  "title": "Annette",
-  "type": "film",
   "creator": "Leos Carax",
-  "recommendedBy": "inconnu",
-  "quote": "Aller voir « Annette » qui est ratée. Annette de Léo Scarrax avec Adam Driver, son mien role. C'est un film magnifique.",
-  "timestamp": "01:11:14",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/424277-annette/watch?locale=FR",
+    "tmdb": "424277",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 2021,
-  "externalIds": {
-    "tmdb": "424277",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/424277-annette/watch?locale=FR"
-  },
+  "id": "ubm-0128",
+  "links": [],
+  "quote": "Aller voir « Annette » qui est ratée. Annette de Léo Scarrax avec Adam Driver, son mien role. C'est un film magnifique.",
+  "recommendedBy": "inconnu",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:11:14",
+  "title": "Annette",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Annette",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Annette&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Annette&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Annette",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Annette",
-      "ethics": "neutral"
+      "url": "https://video.orange.fr/search?q=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Annette",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Annette",
-      "ethics": "neutral"
+      "url": "https://rakuten.tv/fr/search?q=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Annette",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Annette",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Annette",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Annette"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Annette",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Annette"
     },
     {
+      "ethics": "indie",
       "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Annette",
-      "ethics": "indie"
+      "url": "https://boutique.arte.tv/search?q=Annette"
     }
-  ]
+  ],
+  "year": 2021
 }

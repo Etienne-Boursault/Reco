@@ -1,15 +1,17 @@
 {
-  "id": "ubm-0617",
-  "sourceId": "un-bon-moment",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
-  "title": "The Four",
-  "type": "autre",
-  "recommendedBy": "Fadili",
-  "quote": "c'était dans une émission, une émiseuse qui s'appelait The Four",
-  "timestamp": "00:50:03",
-  "links": [],
-  "status": "draft",
   "extractors": [
     "openai"
+  ],
+  "id": "ubm-0617",
+  "links": [],
+  "quote": "c'était dans une émission, une émiseuse qui s'appelait The Four",
+  "recommendedBy": "Fadili",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:50:03",
+  "title": "The Four",
+  "types": [
+    "autre"
   ]
 }

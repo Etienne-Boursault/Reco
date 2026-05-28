@@ -1,75 +1,77 @@
 {
-  "id": "ubm-0246",
-  "sourceId": "un-bon-moment",
-  "episodeGuid": "69207579d35aa096b5a8ee47",
-  "title": "Le sens de la vie",
-  "type": "film",
   "creator": "Monty Python",
-  "recommendedBy": "Invité",
-  "quote": "il faut que je le revoie, c'est formidable",
-  "timestamp": "00:53:02",
-  "links": [],
-  "status": "draft",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/4543-monty-python-s-the-meaning-of-life/watch?locale=FR",
+    "tmdb": "4543",
+    "tmdbType": "movie"
+  },
   "extractors": [
     "anthropic",
     "openai"
   ],
-  "year": 1983,
-  "externalIds": {
-    "tmdb": "4543",
-    "tmdbType": "movie",
-    "justwatch": "https://www.themoviedb.org/movie/4543-monty-python-s-the-meaning-of-life/watch?locale=FR"
-  },
+  "id": "ubm-0246",
+  "links": [],
+  "quote": "il faut que je le revoie, c'est formidable",
+  "recommendedBy": "Invité",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:53:02",
+  "title": "Le sens de la vie",
+  "types": [
+    "film"
+  ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://tv.apple.com/fr/search?term=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Le%20sens%20de%20la%20vie&c=movies",
-      "ethics": "neutral"
+      "url": "https://play.google.com/store/search?q=Le%20sens%20de%20la%20vie&c=movies"
     },
     {
+      "ethics": "avoid",
       "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20sens%20de%20la%20vie",
-      "ethics": "avoid"
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "indie",
       "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Le%20sens%20de%20la%20vie",
-      "ethics": "indie"
+      "url": "https://www.lacinetek.com/fr/?text=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://www.sooner.fr/recherche?q=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "avoid",
       "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20sens%20de%20la%20vie",
-      "ethics": "avoid"
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://www.pathehome.com/recherche?text=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://www.videofutur.fr/recherche?q=Le%20sens%20de%20la%20vie"
     },
     {
+      "ethics": "neutral",
       "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Le%20sens%20de%20la%20vie",
-      "ethics": "neutral"
+      "url": "https://www.premieremax.com/search?q=Le%20sens%20de%20la%20vie"
     }
-  ]
+  ],
+  "year": 1983
 }
