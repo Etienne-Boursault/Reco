@@ -315,6 +315,130 @@ def test_main_no_targets_returns_early(reco_env, monkeypatch):
     enrich_tmdb.main()
 
 
+# ===== enrich_one / is_targetable ==========================================
+def test_is_targetable_true_for_film():
+    assert enrich_tmdb.is_targetable({"types": ["film"]}) is True
+    assert enrich_tmdb.is_targetable({"types": ["serie", "podcast"]}) is True
+
+
+def test_is_targetable_false_for_other_types():
+    assert enrich_tmdb.is_targetable({"types": ["livre"]}) is False
+    assert enrich_tmdb.is_targetable({}) is False
+    assert enrich_tmdb.is_targetable({"types": []}) is False
+
+
+@responses.activate
+def test_enrich_one_found(monkeypatch):
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET,
+        "https://api.themoviedb.org/3/search/movie",
+        json={"results": [{"id": 42}]},
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        "https://api.themoviedb.org/3/movie/42/watch/providers",
+        json={"results": {"FR": {
+            "link": "https://www.justwatch.com/fr/film/x",
+            "flatrate": [{"provider_name": "Netflix"}],
+        }}},
+        status=200,
+    )
+    reco = {"id": "a", "types": ["film"], "title": "X"}
+    out = enrich_tmdb.enrich_one(reco, session=requests.Session(), api_key="fake")
+    assert out is reco
+    assert out["externalIds"]["tmdb"] == "42"
+    assert out["externalIds"]["tmdbType"] == "movie"
+    assert out["externalIds"]["justwatch"].endswith("/film/x")
+    assert out["watchProviders"][0]["label"] == "Netflix"
+    assert out["_enrich_status"] == "ok"
+
+
+@responses.activate
+def test_enrich_one_not_found_does_not_touch_existing_fields(monkeypatch):
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/movie",
+        json={"results": []}, status=200,
+    )
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/tv",
+        json={"results": []}, status=200,
+    )
+    reco = {"id": "a", "types": ["film"], "title": "Introuvable",
+            "externalIds": {"isbn": "999"}}
+    out = enrich_tmdb.enrich_one(reco, session=requests.Session(), api_key="fake")
+    assert out["_enrich_status"] == "not_found"
+    # Champs préexistants intacts, pas de tmdb ajouté.
+    assert out["externalIds"] == {"isbn": "999"}
+    assert "watchProviders" not in out
+
+
+@responses.activate
+def test_enrich_one_handles_api_error_as_not_found(monkeypatch):
+    """Si toutes les requêtes /search renvoient 500 (HTTP error), enrich_one
+    retombe gracieusement sur 'not_found' (cf. _tmdb_get qui retourne None)."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/movie",
+        json={"err": "boom"}, status=500,
+    )
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/tv",
+        json={"err": "boom"}, status=500,
+    )
+    reco = {"id": "a", "types": ["film"], "title": "X"}
+    out = enrich_tmdb.enrich_one(reco, session=requests.Session(), api_key="fake")
+    assert out["_enrich_status"] == "not_found"
+    assert "externalIds" not in out
+
+
+@responses.activate
+def test_enrich_one_reuses_known_id_skips_search(monkeypatch):
+    """tmdb + tmdbType déjà connus → pas d'appel /search, juste /watch/providers."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    responses.add(
+        responses.GET,
+        "https://api.themoviedb.org/3/tv/10/watch/providers",
+        json={"results": {"FR": {"link": "https://jw/x", "flatrate": []}}},
+        status=200,
+    )
+    reco = {"id": "a", "types": ["serie"], "title": "E",
+            "externalIds": {"tmdb": "10", "tmdbType": "tv"}}
+    out = enrich_tmdb.enrich_one(reco, session=requests.Session(), api_key="fake")
+    assert out["externalIds"]["tmdb"] == "10"
+    assert out["externalIds"]["justwatch"] == "https://jw/x"
+    assert out["_enrich_status"] == "ok"
+    # Une seule requête HTTP enregistrée par responses → pas de /search appelé.
+    assert len(responses.calls) == 1
+
+
+@responses.activate
+def test_enrich_one_force_ignores_known_id_and_re_searches(monkeypatch):
+    """force=True : on relance /search même si tmdb_id déjà connu (cas UI bouton
+    Ré-enrichir après correction de titre — l'ancien id peut être obsolète)."""
+    monkeypatch.setenv("TMDB_API_KEY", "fake")
+    # /search retourne un NOUVEL id 99 (différent du 10 stocké).
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/search/tv",
+        json={"results": [{"id": 99}]}, status=200,
+    )
+    responses.add(
+        responses.GET, "https://api.themoviedb.org/3/tv/99/watch/providers",
+        json={"results": {"FR": {"link": "https://jw/99", "flatrate": []}}},
+        status=200,
+    )
+    reco = {"id": "a", "types": ["serie"], "title": "Nouveau Titre",
+            "externalIds": {"tmdb": "10", "tmdbType": "tv"}}
+    out = enrich_tmdb.enrich_one(
+        reco, session=requests.Session(), api_key="fake", force=True,
+    )
+    assert out["externalIds"]["tmdb"] == "99"      # remplacé
+    assert out["externalIds"]["justwatch"] == "https://jw/99"
+    assert out["_enrich_status"] == "ok"
+
+
 @responses.activate
 def test_main_force_re_searches_and_removes_stale_justwatch(reco_env, monkeypatch):
     """--force : reco déjà enrichie, mais on re-cherche et le justwatch disparaît."""

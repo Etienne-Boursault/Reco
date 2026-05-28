@@ -207,6 +207,72 @@ def test_spotify_url_for_musique_cascades():
     assert out == "https://s/album/1"
 
 
+# ===== enrich_one / is_targetable ==========================================
+@pytest.mark.parametrize("reco,expected", [
+    ({"types": ["musique"]}, True), ({"types": ["album"]}, True),
+    ({"types": ["artiste"]}, True), ({"types": ["film", "musique"]}, True),
+    ({"types": ["film"]}, False), ({"types": []}, False), ({}, False),
+])
+def test_is_targetable(reco, expected):
+    assert enrich_music.is_targetable(reco) is expected
+
+
+@responses.activate
+def test_enrich_one_deezer_only_no_token():
+    responses.add(responses.GET, "https://api.deezer.com/search/track",
+                  json={"data": [{"link": "https://d/t/1"}]}, status=200)
+    reco = {"id": "a", "types": ["musique"], "title": "X"}
+    out = enrich_music.enrich_one(reco, session=requests.Session(), spotify_token=None)
+    assert out is reco
+    assert out["externalIds"]["deezer"] == "https://d/t/1"
+    assert "spotify" not in out["externalIds"]
+    assert out["_enrich_status"] == "ok"
+
+@responses.activate
+def test_enrich_one_deezer_and_spotify():
+    responses.add(responses.GET, "https://api.deezer.com/search/album",
+                  json={"data": [{"link": "https://d/a/9"}]}, status=200)
+    responses.add(responses.GET, "https://api.spotify.com/v1/search",
+                  json={"albums": {"items": [{"external_urls": {"spotify": "https://s/a/9"}}]}},
+                  status=200)
+    reco = {"id": "a", "types": ["album"], "title": "Discovery", "creator": "Daft Punk"}
+    out = enrich_music.enrich_one(reco, session=requests.Session(), spotify_token="tok")
+    assert out["externalIds"]["deezer"].endswith("/a/9")
+    assert out["externalIds"]["spotify"].endswith("/a/9")
+    assert out["_enrich_status"] == "ok"
+
+@responses.activate
+def test_enrich_one_not_found_leaves_reco_untouched():
+    for k in ("track", "album", "artist"):
+        responses.add(responses.GET, f"https://api.deezer.com/search/{k}",
+                      json={"data": []}, status=200)
+    reco = {"id": "a", "types": ["musique"], "title": "Inconnu"}
+    out = enrich_music.enrich_one(reco, session=requests.Session(), spotify_token=None)
+    assert out["_enrich_status"] == "not_found"
+    assert "externalIds" not in out
+
+def test_enrich_one_no_op_on_already_enriched_without_force(monkeypatch):
+    """Sans token et Deezer déjà rempli, enrich_one sans force ne ré-appelle pas l'API."""
+    s = requests.Session()
+    monkeypatch.setattr(s, "get",
+                        lambda *a, **kw: (_ for _ in ()).throw(AssertionError("ne doit pas appeler")))
+    reco = {"id": "a", "types": ["musique"], "title": "X",
+            "externalIds": {"deezer": "https://d/1"}}
+    out = enrich_music.enrich_one(reco, session=s, spotify_token=None)
+    assert out["_enrich_status"] == "not_found"
+    assert out["externalIds"] == {"deezer": "https://d/1"}
+
+@responses.activate
+def test_enrich_one_force_replaces_existing():
+    responses.add(responses.GET, "https://api.deezer.com/search/track",
+                  json={"data": [{"link": "https://d/new"}]}, status=200)
+    reco = {"id": "a", "types": ["musique"], "title": "X",
+            "externalIds": {"deezer": "https://d/old"}}
+    out = enrich_music.enrich_one(reco, session=requests.Session(),
+                                  spotify_token=None, force=True)
+    assert out["externalIds"]["deezer"] == "https://d/new"
+
+
 # ===== main() ===============================================================
 @pytest.fixture
 def reco_env(tmp_path, monkeypatch):

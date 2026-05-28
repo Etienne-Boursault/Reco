@@ -232,6 +232,70 @@ def tmdb_watch_providers(
     return justwatch_url, providers
 
 
+def is_targetable(reco: dict) -> bool:
+    """True si la reco a au moins un type que cet enricher traite (film/serie)."""
+    return any(t in ("film", "serie") for t in (reco.get("types") or []))
+
+
+def enrich_one(
+    reco: dict,
+    *,
+    session: requests.Session,
+    api_key: str | None = None,
+    force: bool = False,
+) -> dict:
+    """Enrichit une reco film/série avec TMDB.
+
+    - Lit `reco['title']`, `reco['creator']` (réalisateur si présent), `reco['types']`.
+    - Choisit le type pertinent (film/serie) pour orienter la recherche.
+    - Si `externalIds.tmdb` + `externalIds.tmdbType` déjà présents et `force=False` :
+      réutilise l'id sans re-chercher (économise 1 appel API).
+    - Si `force=True` : ignore les ids existants et relance `tmdb_search` (cas
+      du bouton « Ré-enrichir » de l'UI quand le titre a été corrigé).
+    - Récupère `watch_providers` et met à jour la reco IN-PLACE :
+      `externalIds.tmdb`, `externalIds.tmdbType`, `externalIds.justwatch`,
+      `watchProviders` (les deux derniers sont supprimés si l'API ne renvoie rien).
+    - Si TMDB ne trouve rien, ne touche pas aux champs existants et ajoute un
+      champ NON PERSISTÉ `_enrich_status='not_found'` au dict retourné — utile
+      pour les logs / l'UI. Le CLI prend soin de le retirer avant write.
+    - Retourne la reco modifiée (même référence).
+    """
+    title = reco["title"]
+    creator = reco.get("creator")
+    types_list = reco.get("types") or []
+    reco_type = next(
+        (t for t in types_list if t in ("film", "serie")),
+        types_list[0] if types_list else "film",
+    )
+
+    ext = dict(reco.get("externalIds") or {})
+    if not force and ext.get("tmdb") and ext.get("tmdbType"):
+        tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
+    else:
+        found = tmdb_search(session, reco_type, title, creator, api_key=api_key)
+        if not found:
+            reco["_enrich_status"] = "not_found"
+            return reco
+        tmdb_id, kind = found
+
+    justwatch_url, providers = tmdb_watch_providers(
+        session, tmdb_id, kind, title, api_key=api_key
+    )
+    ext["tmdb"] = tmdb_id
+    ext["tmdbType"] = kind
+    if justwatch_url:
+        ext["justwatch"] = justwatch_url
+    elif "justwatch" in ext:
+        del ext["justwatch"]
+    reco["externalIds"] = ext
+    if providers:
+        reco["watchProviders"] = providers
+    elif "watchProviders" in reco:
+        del reco["watchProviders"]
+    reco["_enrich_status"] = "ok"
+    return reco
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Enrichit les recos film/série avec leurs watch providers FR via TMDB."
@@ -254,7 +318,7 @@ def main():
     targets = []
     for p in sorted(recos_dir.glob("*.json")):
         d = read_json(p)
-        if not any(t in ("film", "serie") for t in (d.get("types") or [])):
+        if not is_targetable(d):
             continue
         ext = d.get("externalIds") or {}
         if not args.force and ext.get("tmdb") and ext.get("justwatch"):
@@ -275,40 +339,30 @@ def main():
         title = d["title"]
         creator = d.get("creator")
         label = f"{title} ({creator})" if creator else title
-        # Choisit film/serie en priorité pour orienter la recherche TMDB.
         types_list = d.get("types") or []
         reco_type = next(
             (t for t in types_list if t in ("film", "serie")),
             types_list[0] if types_list else "film",
         )
         log.info("[%d/%d] %s [%s]", i, len(targets), label[:60], reco_type)
-        # On réutilise le tmdb_id déjà connu si possible — économise 1 appel API.
-        ext = d.get("externalIds") or {}
-        if ext.get("tmdb") and ext.get("tmdbType"):
-            tmdb_id, kind = ext["tmdb"], ext["tmdbType"]
-            log.info("  ↻ TMDB id déjà connu : %s (%s)", tmdb_id, kind)
-        else:
-            found = tmdb_search(session, reco_type, title, creator, api_key=api_key)
-            if not found:
-                log.info("  → TMDB : pas trouvé")
-                not_found += 1
-                time.sleep(RATE_LIMIT_SLEEP)
-                continue
-            tmdb_id, kind = found
-        justwatch_url, providers = tmdb_watch_providers(
-            session, tmdb_id, kind, d["title"], api_key=api_key)
-        ids = dict(d.get("externalIds") or {})
-        ids["tmdb"] = tmdb_id
-        ids["tmdbType"] = kind
-        if justwatch_url:
-            ids["justwatch"] = justwatch_url
-        elif "justwatch" in ids:
-            del ids["justwatch"]
-        d["externalIds"] = ids
-        if providers:
-            d["watchProviders"] = providers
-        elif "watchProviders" in d:
-            del d["watchProviders"]
+        # On log la réutilisation d'id avant l'appel (enrich_one ne re-loggue pas).
+        ext_pre = d.get("externalIds") or {}
+        had_id = bool(ext_pre.get("tmdb") and ext_pre.get("tmdbType"))
+        if had_id:
+            log.info("  ↻ TMDB id déjà connu : %s (%s)",
+                     ext_pre["tmdb"], ext_pre["tmdbType"])
+
+        enrich_one(d, session=session, api_key=api_key)
+        status = d.pop("_enrich_status", None)
+        if status == "not_found":
+            log.info("  → TMDB : pas trouvé")
+            not_found += 1
+            time.sleep(RATE_LIMIT_SLEEP)
+            continue
+        tmdb_id = d["externalIds"]["tmdb"]
+        kind = d["externalIds"]["tmdbType"]
+        justwatch_url = d["externalIds"].get("justwatch")
+        providers = d.get("watchProviders") or []
         if write_json_if_changed(p, d):
             enriched += 1
         log.info("  → tmdb_id=%s (%s) · JustWatch=%s · %d providers info",

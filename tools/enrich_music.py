@@ -135,6 +135,60 @@ def spotify_url_for(reco_type: str, title: str, creator: str | None,
     return None
 
 
+_TARGET_TYPES = {"musique", "album", "artiste"}
+
+
+def is_targetable(reco: dict) -> bool:
+    """True si la reco a au moins un type musical (musique/album/artiste)."""
+    return any(t in _TARGET_TYPES for t in (reco.get("types") or []))
+
+
+def enrich_one(
+    reco: dict,
+    *,
+    session: requests.Session,
+    spotify_token: str | None = None,
+    force: bool = False,
+) -> dict:
+    """Enrichit une reco musique/album/artiste in-place.
+
+    - Cherche sur Deezer (toujours) et Spotify (si `spotify_token` fourni).
+    - Met à jour `externalIds.deezer` et `externalIds.spotify` (selon résultats).
+    - Sans `force` : ne re-cherche que les champs absents.
+    - Ajoute `_enrich_status` ('ok' si au moins un champ mis à jour, sinon
+      'not_found') au dict — le CLI doit le retirer avant write.
+    - Retourne la reco (même référence).
+    """
+    title = reco["title"]
+    creator = reco.get("creator")
+    types_list = reco.get("types") or []
+    reco_type = next(
+        (t for t in types_list if t in _TARGET_TYPES),
+        types_list[0] if types_list else "musique",
+    )
+    ids = dict(reco.get("externalIds") or {})
+    changed = False
+
+    if force or not ids.get("deezer"):
+        url = deezer_url_for(reco_type, title, creator, session)
+        if url:
+            ids["deezer"] = url
+            changed = True
+
+    if spotify_token and (force or not ids.get("spotify")):
+        url = spotify_url_for(reco_type, title, creator, session, spotify_token)
+        if url:
+            ids["spotify"] = url
+            changed = True
+
+    if changed:
+        reco["externalIds"] = ids
+        reco["_enrich_status"] = "ok"
+    else:
+        reco["_enrich_status"] = "not_found"
+    return reco
+
+
 # ===== Pipeline ==========================================================
 def main():
     parser = argparse.ArgumentParser()
@@ -181,12 +235,11 @@ def main():
                     "Deezer seul.")
 
     # Cibler les recos musique/album/artiste.
-    target_types = {"musique", "album", "artiste"}
     recos_dir = recos_dir_for(args.source)
     targets = []
     for p in sorted(recos_dir.glob("*.json")):
         d = read_json(p)
-        if not any(t in target_types for t in (d.get("types") or [])):
+        if not is_targetable(d):
             continue
         ext = d.get("externalIds") or {}
         if not args.force and ext.get("deezer") and (not token or ext.get("spotify")):
@@ -202,39 +255,29 @@ def main():
     for i, (p, d) in enumerate(targets, 1):
         title = d["title"]
         creator = d.get("creator")
-        # On choisit le type pertinent pour orienter la recherche (track vs album
-        # vs artist). Si la reco a plusieurs types, on prend le premier qui tombe
-        # dans la cible musicale ; à défaut, le premier de la liste.
         types_list = d.get("types") or []
         reco_type = next(
-            (t for t in types_list if t in target_types),
+            (t for t in types_list if t in _TARGET_TYPES),
             types_list[0] if types_list else "musique",
         )
         log.info("[%d/%d] %s%s [%s]", i, len(targets), title[:50],
                  f" ({creator})" if creator else "", reco_type)
-        ids = dict(d.get("externalIds") or {})
-        changed = False
-
-        if args.force or not ids.get("deezer"):
-            url = deezer_url_for(reco_type, title, creator, session)
-            if url:
-                ids["deezer"] = url
-                changed = True
-                log.info("  Deezer  : %s", url)
-            else:
+        ext_before = dict(d.get("externalIds") or {})
+        enrich_one(d, session=session, spotify_token=token, force=args.force)
+        d.pop("_enrich_status", None)
+        ext_after = d.get("externalIds") or {}
+        # Logs comportementalement équivalents à l'ancienne boucle.
+        if args.force or not ext_before.get("deezer"):
+            if ext_after.get("deezer") and ext_after.get("deezer") != ext_before.get("deezer"):
+                log.info("  Deezer  : %s", ext_after["deezer"])
+            elif not ext_after.get("deezer"):
                 log.info("  Deezer  : pas trouvé")
-
-        if token and (args.force or not ids.get("spotify")):
-            url = spotify_url_for(reco_type, title, creator, session, token)
-            if url:
-                ids["spotify"] = url
-                changed = True
-                log.info("  Spotify : %s", url)
-            else:
+        if token and (args.force or not ext_before.get("spotify")):
+            if ext_after.get("spotify") and ext_after.get("spotify") != ext_before.get("spotify"):
+                log.info("  Spotify : %s", ext_after["spotify"])
+            elif not ext_after.get("spotify"):
                 log.info("  Spotify : pas trouvé")
-
-        if changed:
-            d["externalIds"] = ids
+        if ext_after != ext_before:
             if write_json_if_changed(p, d):
                 enriched += 1
         time.sleep(RATE_LIMIT_SLEEP)
