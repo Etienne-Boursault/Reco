@@ -255,8 +255,23 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
     </li>"""
 
 
-def _ep_header(ep: dict, recs: list[dict]) -> str:
-    """En-tête d'épisode : numéro, titre YT, durées, compteur."""
+def _ep_nav_link(side: str, guid: str | None) -> str:
+    """Flèche prev/next ou placeholder désactivé (pour garder l'alignement)."""
+    arrow = "←" if side == "prev" else "→"
+    label = "Épisode précédent" if side == "prev" else "Épisode suivant"
+    cls = f"eph-arrow eph-arrow-{side}"
+    if guid:
+        href = f"/ep?guid={urllib.parse.quote(guid)}"
+        return (f'<a class="{cls}" href="{href}" title="{label}" '
+                f'aria-label="{label}">{arrow}</a>')
+    return f'<span class="{cls} disabled" aria-hidden="true">{arrow}</span>'
+
+
+def _ep_header(
+    ep: dict, recs: list[dict],
+    *, prev_guid: str | None = None, next_guid: str | None = None,
+) -> str:
+    """En-tête d'épisode : numéro, titre YT, durées, compteur, navigation."""
     season, num = ep.get("season"), ep.get("number")
     ep_num = f"S{season}·E{num}" if season and num else (f"#{num}" if num else "")
     badge = f'<b class="epnum">{ep_num}</b> ' if ep_num else ""
@@ -270,8 +285,12 @@ def _ep_header(ep: dict, recs: list[dict]) -> str:
         warn = ' style="color:#e08a8a"' if (ad and vd and abs(vd - ad) > 300) else ""
         dur = f'<span class="dur"{warn}>🎧 {_fmt(ad) if ad else "?"} · ▶ {_fmt(vd) if vd else "?"}{diff}</span>'
     n_draft = sum(1 for r in recs if r.get("status", "draft") == "draft")
-    return (f'<h2 class="eph">{badge}{title_html} '
-            f'<span class="cnt">{len(recs)} recos · {n_draft} à valider</span> {dur}</h2>')
+    prev_a = _ep_nav_link("prev", prev_guid)
+    next_a = _ep_nav_link("next", next_guid)
+    return (f'<div class="eph-row">{prev_a}'
+            f'<h2 class="eph">{badge}{title_html} '
+            f'<span class="cnt">{len(recs)} recos · {n_draft} à valider</span> {dur}</h2>'
+            f'{next_a}</div>')
 
 
 def _load_groups(source_id: str):
@@ -353,6 +372,15 @@ def _render_episode(
     back = '<a class="back" href="/">← tous les épisodes</a>'
     if not ep:
         return _shell(source.get("title", source_id), "Épisode introuvable.", back)
+    # Navigation prev/next dans l'ordre (saison, numéro) — même tri que la
+    # galerie d'index pour rester cohérent.
+    def _key(g: str):
+        e = episodes.get(g, {})
+        return (e.get("season") or 0, e.get("number") or 9999)
+    ordered = sorted(episodes.keys(), key=_key)
+    idx = ordered.index(guid) if guid in ordered else -1
+    prev_guid = ordered[idx - 1] if idx > 0 else None
+    next_guid = ordered[idx + 1] if 0 <= idx < len(ordered) - 1 else None
     guests_panel = _render_guests_panel(guid, ep, recs, hosts)
     cards = "".join(
         _reco_card(r, ep, hosts, source_id, edit_id, siblings=recs) for r in recs
@@ -361,5 +389,6 @@ def _render_episode(
               'allowfullscreen></iframe>')
     banner = _flash_banner(flash, flash_kind)
     inner = (f'{back}{banner}{player}<section class="ep">'
-             f'{_ep_header(ep, recs)}{guests_panel}<ul>{cards}</ul></section>')
+             f'{_ep_header(ep, recs, prev_guid=prev_guid, next_guid=next_guid)}'
+             f'{guests_panel}<ul>{cards}</ul></section>')
     return _shell(source.get("title", source_id), "Relecture d'un épisode.", inner)

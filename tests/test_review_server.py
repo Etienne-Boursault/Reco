@@ -14,6 +14,7 @@ from unittest.mock import patch
 
 import pytest
 
+import review_render as rr
 import review_server as rs
 
 
@@ -193,6 +194,45 @@ def test_embed_url():
 
 def test_embed_url_no_video_id():
     assert rs._embed_url("https://example.com", 10) == ""
+
+
+def test_ep_nav_link_with_guid_renders_anchor():
+    """Flèche cliquable : un <a> vers /ep?guid=<guid> avec aria-label."""
+    out = rr._ep_nav_link("prev", "abc-123")
+    assert '<a class="eph-arrow eph-arrow-prev"' in out
+    assert "/ep?guid=abc-123" in out
+    assert 'aria-label="Épisode précédent"' in out
+    assert "←" in out
+
+
+def test_ep_nav_link_without_guid_renders_disabled_span():
+    """Sans guid : span désactivé pour garder l'alignement visuel."""
+    out = rr._ep_nav_link("next", None)
+    assert '<span class="eph-arrow eph-arrow-next disabled"' in out
+    assert "aria-hidden" in out
+    assert "→" in out
+    assert "<a " not in out
+
+
+def test_ep_nav_link_escapes_guid_in_href():
+    """Garde-fou XSS : un guid pathologique est %-encodé."""
+    out = rr._ep_nav_link("prev", 'a"b<c')
+    assert 'a"b<c' not in out  # le brut ne fuit pas
+    assert "a%22b%3Cc" in out
+
+
+def test_render_episode_has_navigation_arrows(fake_source):
+    """Avec 2 épisodes : la nav doit présenter des flèches eph-arrow."""
+    out = rr._render_episode(fake_source, "ep-002")
+    assert "/ep?guid=ep-001" in out or "/ep?guid=ep-002" in out
+    assert "eph-arrow" in out
+
+
+def test_render_episode_at_boundary_has_disabled_arrow(fake_source):
+    """Aux extrémités, une flèche est disabled (span sans <a>)."""
+    out = rr._render_episode(fake_source, "ep-001")
+    assert "eph-arrow" in out
+    assert "disabled" in out
 
 
 def test_load_transcript_missing(fake_source, monkeypatch):

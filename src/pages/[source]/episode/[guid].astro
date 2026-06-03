@@ -15,15 +15,28 @@ export async function getStaticPaths() {
       (r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded',
     );
     const guidsWithRecos = new Set(sRecos.map((r) => r.data.episodeGuid));
-    const sEpisodes = episodes.filter(
-      (e) => e.data.sourceId.id === source.id && guidsWithRecos.has(e.data.guid),
-    );
-    for (const episode of sEpisodes) {
+    // Épisodes triés (saison, numéro) pour calculer prev/next stables.
+    const sEpisodes = episodes
+      .filter(
+        (e) => e.data.sourceId.id === source.id && guidsWithRecos.has(e.data.guid),
+      )
+      .sort((a, b) => {
+        const sa = a.data.season ?? 0;
+        const sb = b.data.season ?? 0;
+        if (sa !== sb) return sa - sb;
+        return (a.data.number ?? 9999) - (b.data.number ?? 9999);
+      });
+    for (let i = 0; i < sEpisodes.length; i++) {
+      const episode = sEpisodes[i];
+      const prev = sEpisodes[i - 1];
+      const next = sEpisodes[i + 1];
       paths.push({
         params: { source: source.id, guid: episode.data.guid },
         props: {
           source,
           episode: episode.data,
+          prevGuid: prev?.data.guid ?? null,
+          nextGuid: next?.data.guid ?? null,
           recos: sRecos
             .filter((r) => r.data.episodeGuid === episode.data.guid)
             .map((r) => r.data),
@@ -34,7 +47,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { source, episode, recos } = Astro.props;
+const { source, episode, recos, prevGuid, nextGuid } = Astro.props;
 const data = source.data;
 
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
@@ -52,22 +65,36 @@ const epTitle = episode.youtubeTitle ?? episode.title;
 >
   <header class="head wrap">
     <a class="back" href={`/${source.id}`}>← {data.title}</a>
-    <div class="ep-hero">
-      {
-        episode.youtubeUrl ? (
-          <a class="thumb" href={episode.youtubeUrl} target="_blank" rel="noopener noreferrer">
-            {thumb && <img src={thumb} alt={epTitle} loading="lazy" />}
-            <span class="play">▶</span>
-          </a>
-        ) : (
-          thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" />
-        )
-      }
-      <div class="ep-info">
-        {epNum && <span class="epnum">{epNum}</span>}
-        <h1>{epTitle}</h1>
-        <p class="count">{recos.length} recommandation{recos.length > 1 ? 's' : ''}</p>
+    <div class="ep-nav">
+      {prevGuid ? (
+        <a class="ep-arrow ep-arrow-prev" href={`/${source.id}/episode/${prevGuid}`}
+           title="Épisode précédent" aria-label="Épisode précédent">‹</a>
+      ) : (
+        <span class="ep-arrow disabled" aria-hidden="true">‹</span>
+      )}
+      <div class="ep-hero">
+        {
+          episode.youtubeUrl ? (
+            <a class="thumb" href={episode.youtubeUrl} target="_blank" rel="noopener noreferrer">
+              {thumb && <img src={thumb} alt={epTitle} loading="lazy" />}
+              <span class="play">▶</span>
+            </a>
+          ) : (
+            thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" />
+          )
+        }
+        <div class="ep-info">
+          {epNum && <span class="epnum">{epNum}</span>}
+          <h1>{epTitle}</h1>
+          <p class="count">{recos.length} recommandation{recos.length > 1 ? 's' : ''}</p>
+        </div>
       </div>
+      {nextGuid ? (
+        <a class="ep-arrow ep-arrow-next" href={`/${source.id}/episode/${nextGuid}`}
+           title="Épisode suivant" aria-label="Épisode suivant">›</a>
+      ) : (
+        <span class="ep-arrow disabled" aria-hidden="true">›</span>
+      )}
     </div>
   </header>
 
@@ -99,12 +126,43 @@ const epTitle = episode.youtubeTitle ?? episode.title;
   .back:hover {
     color: var(--accent);
   }
+  .ep-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
   .ep-hero {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 1.2rem;
     align-items: center;
-    margin-top: 1rem;
+  }
+  .ep-arrow {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease;
+  }
+  .ep-arrow:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+  .ep-arrow.disabled {
+    opacity: 0.25;
+    cursor: default;
   }
   .thumb {
     position: relative;
