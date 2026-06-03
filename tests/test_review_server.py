@@ -192,8 +192,23 @@ def test_embed_url():
     assert "autoplay=1" in out
 
 
+def test_embed_url_uses_nocookie_and_safe_params():
+    """L'embed YouTube doit passer par nocookie.com + rel=0 + playsinline=1
+    pour éviter l'erreur 153 et limiter les recommendations / autoplay mobile."""
+    out = rs._embed_url("https://www.youtube.com/watch?v=XYZ", 0)
+    assert "youtube-nocookie.com" in out
+    assert "rel=0" in out
+    assert "playsinline=1" in out
+
+
 def test_embed_url_no_video_id():
     assert rs._embed_url("https://example.com", 10) == ""
+
+
+def test_referrer_policy_allows_youtube_embed_validation():
+    """Referrer-Policy doit envoyer l'origine (sinon YT erreur 153)."""
+    assert (rs._SECURITY_HEADERS["Referrer-Policy"]
+            == "strict-origin-when-cross-origin")
 
 
 def test_ep_nav_link_with_guid_renders_anchor():

@@ -91,9 +91,15 @@ def _yt_id(url: str | None) -> str:
 
 
 def _embed_url(video_url: str, start_seconds: int) -> str:
-    """URL d'embed YouTube positionnée à `start_seconds`, prête à jouer."""
+    """URL d'embed YouTube positionnée à `start_seconds`, prête à jouer.
+
+    Utilise `youtube-nocookie.com` plutôt que `youtube.com` : moins de cookies
+    + autorisé sur certaines vidéos qui refusent l'embed standard (réduit les
+    erreurs 153 « embed disabled »).
+    """
     vid = _yt_id(video_url)
-    return (f"https://www.youtube.com/embed/{vid}?start={start_seconds}&autoplay=1"
+    return (f"https://www.youtube-nocookie.com/embed/{vid}"
+            f"?start={start_seconds}&autoplay=1&rel=0&playsinline=1"
             if vid else "")
 
 

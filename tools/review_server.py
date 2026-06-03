@@ -58,7 +58,10 @@ _RE_RECO_ID = re.compile(r"^[a-z0-9_-]+$")
 _SECURITY_HEADERS: dict[str, str] = {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
-    "Referrer-Policy": "no-referrer",
+    # `strict-origin-when-cross-origin` (et pas `no-referrer`) : l'embed YouTube
+    # exige un referer valide, sinon erreur 153 « Erreur de configuration du
+    # lecteur vidéo ». On envoie l'origine (pas le chemin) — privacy-safe.
+    "Referrer-Policy": "strict-origin-when-cross-origin",
     "Content-Security-Policy": (
         "default-src 'self'; "
         "img-src 'self' data: https://i.ytimg.com; "
