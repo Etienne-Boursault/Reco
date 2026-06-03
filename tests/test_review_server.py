@@ -250,6 +250,14 @@ def test_render_episode_at_boundary_has_disabled_arrow(fake_source):
     assert "disabled" in out
 
 
+def test_render_episode_includes_player_close_button(fake_source):
+    """Le wrap player contient un bouton ✕ data-player-close."""
+    out = rr._render_episode(fake_source, "ep-001")
+    assert "data-player-wrap" in out
+    assert "data-player-close" in out
+    assert 'class="player-close"' in out
+
+
 def test_load_transcript_missing(fake_source, monkeypatch):
     rs._load_transcript.cache_clear()
     items = rs._load_transcript(fake_source, "guid-inconnu")

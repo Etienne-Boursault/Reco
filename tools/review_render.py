@@ -391,8 +391,16 @@ def _render_episode(
     cards = "".join(
         _reco_card(r, ep, hosts, source_id, edit_id, siblings=recs) for r in recs
     )
-    player = ('<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
-              'allowfullscreen></iframe>')
+    # `data-player-wrap` permet au JS client de réafficher le bloc après que
+    # l'utilisateur ait cliqué la croix puis re-cliqué un timecode.
+    player = (
+        '<div class="player-wrap" data-player-wrap>'
+        '<button type="button" class="player-close" data-player-close '
+        'title="Fermer le lecteur" aria-label="Fermer le lecteur">✕</button>'
+        '<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
+        'allowfullscreen></iframe>'
+        '</div>'
+    )
     banner = _flash_banner(flash, flash_kind)
     inner = (f'{back}{banner}{player}<section class="ep">'
              f'{_ep_header(ep, recs, prev_guid=prev_guid, next_guid=next_guid)}'

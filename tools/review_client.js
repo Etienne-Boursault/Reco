@@ -65,6 +65,30 @@
     consumeFlashFromUrl();
   }
 
+  // --- Player YouTube : fermeture + réouverture ---
+  // ✕ vide l'iframe (about:blank pour stopper la lecture) et masque le bloc.
+  // Tout clic sur un timecode (a[target="ytplayer"]) ré-affiche le bloc.
+  function setupPlayerToggle() {
+    const wrap = document.querySelector('[data-player-wrap]');
+    if (!wrap) return;
+    const iframe = wrap.querySelector('iframe.player');
+    document.addEventListener('click', (e) => {
+      const closeBtn = e.target.closest('[data-player-close]');
+      if (closeBtn) {
+        if (iframe) iframe.src = 'about:blank';
+        wrap.classList.add('hidden');
+        return;
+      }
+      const tc = e.target.closest('a[target="ytplayer"]');
+      if (tc) wrap.classList.remove('hidden');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPlayerToggle);
+  } else {
+    setupPlayerToggle();
+  }
+
   // Délégation : intercepte les submits sur les formulaires AJAX-able.
   document.addEventListener('submit', (e) => {
     const form = e.target;
