@@ -1,5 +1,11 @@
 {
-  "creator": "Patrick Beau",
+  "creator": "Mehdi Moussaïd",
+  "customLinks": [
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@Fouloscopie"
+    }
+  ],
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
   "extractors": [
     "anthropic",
@@ -14,6 +20,6 @@
   "timestamp": "01:18:49",
   "title": "Fouloscopie",
   "types": [
-    "autre"
+    "livre"
   ]
 }

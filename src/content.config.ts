@@ -140,6 +140,23 @@ const recos = defineCollection({
       })
       .partial()
       .optional(),
+    // Override d'URL par plateforme auto-générée. Clé = label exact tel que
+    // produit par merchants.ts (ex. "Place des Libraires", "JustWatch"…).
+    // Permet de remplacer un lien de recherche par un lien direct sans
+    // toucher au reste. Valeur vide = pas d'override (lien auto conservé).
+    linkOverrides: z.record(z.string(), z.string().url()).optional(),
+    // Liens manuels ajoutés via le review_server (libellé + URL + logo
+    // optionnel ; si logoUrl est vide, Astro retombe sur le favicon Google
+    // du domaine de l'URL).
+    customLinks: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string().url(),
+          logoUrl: z.string().url().optional(),
+        }),
+      )
+      .optional(),
     // Plateformes de streaming pour film/serie (peuplé par enrich_tmdb.py).
     watchProviders: z
       .array(

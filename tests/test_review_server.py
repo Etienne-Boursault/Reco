@@ -587,11 +587,15 @@ def test_post_edit_updates_title_creator_types(fake_source):
 
 
 def test_post_edit_no_types_rejected(fake_source):
+    """Types vides → redirige vers la page épisode + flash d'erreur (H6)."""
     body = b"id=ubm-001&title=X"
     h = _FakeHandler(fake_source, "/edit", body)
     h.do_POST()
     assert h._status == 303
-    assert h._sent_headers["Location"] == "/"
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    assert "kind=error" in loc
+    assert "type" in urllib.parse.unquote(loc).lower()
     # Non modifié
     from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
@@ -599,11 +603,15 @@ def test_post_edit_no_types_rejected(fake_source):
 
 
 def test_post_edit_empty_title_rejected(fake_source):
+    """Titre vide → redirige vers la page épisode + flash d'erreur (H6)."""
     body = b"id=ubm-001&title=&types=film"
     h = _FakeHandler(fake_source, "/edit", body)
     h.do_POST()
     assert h._status == 303
-    assert h._sent_headers["Location"] == "/"
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    assert "kind=error" in loc
+    assert "titre" in urllib.parse.unquote(loc).lower()
     from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
     assert reco["title"] == "Mortel"
@@ -1103,3 +1111,290 @@ def test_reco_card_no_reenrich_for_book(fake_source):
     out = rs._reco_card(r, ep, [], fake_source)
     assert "btn-edit" in out
     assert "btn-reenrich" not in out
+
+
+# ===== Guests panel + /rename-guest =========================================
+def test_get_ep_includes_guests_panel(fake_source):
+    h = _FakeHandler(fake_source, "/ep?guid=ep-001")
+    h.do_GET()
+    body = h.wfile.getvalue().decode("utf-8")
+    assert 'class="guests"' in body
+    assert '/rename-guest' in body
+    assert "ajouter un invité" in body
+
+
+def test_post_rename_guest_add_redirects_with_flash(fake_source):
+    body = b"guid=ep-001&action=add&new=Charlie"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    assert h._status == 303
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    assert "kind=success" in loc
+    # L'invité a bien été ajouté dans l'épisode
+    from common import find_episode_by_guid, read_json
+    ep = read_json(find_episode_by_guid(fake_source, "ep-001"))
+    assert "Charlie" in ep.get("guests", [])
+
+
+def test_post_rename_guest_rename_propagates(fake_source):
+    """Renomme Alice → Alicia : tous les recommendedBy sont mis à jour."""
+    body = b"guid=ep-001&old=Alice&new=Alicia"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    from common import read_json, recos_dir_for
+    r2 = read_json(recos_dir_for(fake_source) / "ubm-002.json")
+    assert r2["recommendedBy"] == "Alicia"
+
+
+def test_post_rename_guest_delete_removes_everywhere(fake_source):
+    body = b"guid=ep-001&old=Alice&action=delete"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    from common import read_json, recos_dir_for
+    r2 = read_json(recos_dir_for(fake_source) / "ubm-002.json")
+    assert "recommendedBy" not in r2
+
+
+def test_post_rename_guest_invalid_guid_redirects_to_root(fake_source):
+    """M6 : un guid avec caractères interdits → /."""
+    body = b"guid=../etc/passwd&action=add&new=X"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+
+
+def test_post_rename_guest_unknown_guid_redirects_to_root(fake_source):
+    body = b"guid=ep-999&action=add&new=X"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    assert h._status == 303
+    assert h._sent_headers["Location"] == "/"
+
+
+def test_post_rename_guest_add_host_blocked(fake_source):
+    """H1 : ajouter Alice (qui est hôte du podcast) → refusé."""
+    body = b"guid=ep-001&action=add&new=Alice"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    loc = h._sent_headers["Location"]
+    assert "kind=warning" in loc
+    assert "h" in urllib.parse.unquote(loc).lower()  # "hôte" url-encoded
+
+
+def test_post_rename_guest_missing_guid_redirects_to_root(fake_source):
+    body = b"action=add&new=X"
+    h = _FakeHandler(fake_source, "/rename-guest", body)
+    h.do_POST()
+    assert h._sent_headers["Location"] == "/"
+
+
+# ===== /ep avec overrides + customLinks dans le formulaire ==================
+def test_get_ep_with_edit_includes_overrides_section(fake_source):
+    """Le formulaire d'édition (sur une reco film) inclut le block override JustWatch."""
+    h = _FakeHandler(fake_source, "/ep?guid=ep-001&edit=ubm-001")
+    h.do_GET()
+    body = h.wfile.getvalue().decode("utf-8")
+    assert "JustWatch" in body
+    assert "Modifier un lien automatique" in body
+
+
+def test_post_edit_writes_custom_links_via_form(fake_source):
+    body = (b"id=ubm-001&title=Mortel&types=film"
+            b"&cl_label_0=FNAC&cl_url_0=https%3A%2F%2Ffnac.com%2Fx&cl_logo_0=")
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["customLinks"] == [
+        {"label": "FNAC", "url": "https://fnac.com/x"}
+    ]
+
+
+def test_post_edit_writes_link_overrides_via_form(fake_source):
+    body = (b"id=ubm-001&title=Mortel&types=film"
+            b"&lo_JustWatch=https%3A%2F%2Fjustwatch.com%2Fexact")
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    from common import read_json, recos_dir_for
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["linkOverrides"] == {"JustWatch": "https://justwatch.com/exact"}
+
+
+def test_post_edit_with_empty_title_responds_with_error_flash(fake_source):
+    """H6 : titre vide → flash d'erreur (kind=error), redirige vers l'épisode."""
+    body = b"id=ubm-001&title=&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    loc = h._sent_headers["Location"]
+    assert loc.startswith("/ep?guid=ep-001")
+    assert "kind=error" in loc
+
+
+def test_consume_flash_from_url_strips_params_in_client_js():
+    """Le JS embarqué contient bien la fonction qui nettoie les params PRG."""
+    out = rs._shell("Test", "sub", "<p/>")
+    assert "consumeFlashFromUrl" in out
+
+
+def test_reco_card_filters_placeholder_guests_from_candidates(fake_source):
+    """Un nom 'non spécifié' présent dans ep.guests ne doit pas devenir une checkbox."""
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft"}
+    ep = {"guid": "g", "title": "Ep", "guests": ["non spécifié", "Charlie"]}
+    out = rs._reco_card(r, ep, [], fake_source)
+    assert "Charlie" in out
+    assert "non spécifié" not in out
+
+
+def test_reco_card_filters_placeholder_in_recommendedBy(fake_source):
+    """recommendedBy='non spécifié' n'est pas proposé."""
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft",
+         "recommendedBy": "non spécifié"}
+    ep = {"guid": "g", "title": "Ep"}
+    out = rs._reco_card(r, ep, [], fake_source)
+    assert 'value="non spécifié"' not in out
+
+
+def test_reco_card_dedups_guests_already_in_candidates(fake_source):
+    """Un nom déjà candidate (via hosts/parse) n'est pas ré-ajouté depuis ep.guests."""
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft"}
+    ep = {"guid": "g", "title": "avec Charlie", "guests": ["Charlie"]}
+    out = rs._reco_card(r, ep, ["Kyan"], fake_source)
+    # Charlie doit apparaître une seule fois
+    assert out.count('value="Charlie"') == 1
+
+
+def test_reco_path_returns_cached_after_warming(fake_source):
+    """Premier appel : rebuild. Deuxième appel : retombe sur cache (couverture
+    branche `if cached and cached.exists(): return cached`)."""
+    p1 = rs._reco_path(fake_source, "ubm-001")
+    assert p1 is not None
+    p2 = rs._reco_path(fake_source, "ubm-001")
+    assert p1 == p2
+
+
+def test_rebuild_reco_path_cache_skips_corrupt_json(fake_source):
+    """Un JSON illisible dans le dossier recos est tolérré (lignes 111-112)."""
+    from common import recos_dir_for
+    bad = recos_dir_for(fake_source) / "_corrompu.json"
+    bad.write_text("{not valid json", encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    rs._rebuild_reco_path_cache(fake_source)
+    # Les autres recos restent indexées normalement.
+    assert rs._reco_path(fake_source, "ubm-001") is not None
+
+
+def test_get_card_for_orphan_reco_returns_404(fake_source):
+    """Une reco dont episodeGuid pointe vers un épisode inconnu → 404 sur /card."""
+    from common import recos_dir_for
+    orphan = recos_dir_for(fake_source) / "ubm-orphan.json"
+    orphan.write_text(json.dumps({
+        "id": "ubm-orphan", "episodeGuid": "ep-zzz", "types": ["film"],
+        "title": "Orphan", "status": "draft",
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    h = _FakeHandler(fake_source, "/card?id=ubm-orphan")
+    h.do_GET()
+    assert h._status == 404
+
+
+def test_render_index_done_class_when_all_validated(fake_source):
+    """Si toutes les recos sont validées → classe `done` sur la miniature."""
+    from common import recos_dir_for
+    # Marque toutes les recos de ep-001 comme validated
+    for fn in ["ubm-001.json", "ubm-003.json"]:
+        p = recos_dir_for(fake_source) / fn
+        d = json.loads(p.read_text(encoding="utf-8"))
+        d["status"] = "validated"
+        p.write_text(json.dumps(d), encoding="utf-8")
+    out = rs._render_index(fake_source)
+    # Avant : 1 draft → not done. Après : 0 draft → "thumb done".
+    assert "thumb done" in out
+
+
+def test_post_edit_json_with_error_returns_error_kind(fake_source):
+    """POST /edit avec titre vide en JSON → kind=error dans payload."""
+    body = b"id=ubm-001&title=&types=film"
+    h = _FakeHandler(fake_source, "/edit", body, accept="application/json")
+    h.do_POST()
+    assert h._status == 200
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "error"
+
+
+def test_rebuild_cache_clears_existing_entries(fake_source):
+    """Couvre la branche `del _RECO_PATH_CACHE[k]` (ligne 117) :
+    le cache contient déjà des entrées pour la source, rebuild les retire."""
+    # Warm-up : remplit le cache.
+    assert rs._reco_path(fake_source, "ubm-001") is not None
+    assert any(k[0] == fake_source for k in rs._RECO_PATH_CACHE)
+    rs._rebuild_reco_path_cache(fake_source)
+    # Cache encore peuplé après rebuild (les entrées sont juste refraîchies)
+    assert any(k[0] == fake_source for k in rs._RECO_PATH_CACHE)
+
+
+def test_style_oserror_returns_empty_string(monkeypatch, tmp_path):
+    """Couvre `except OSError → return ""` dans _style."""
+    import review_render
+    review_render._style.cache_clear()
+    monkeypatch.setattr(review_render, "_CSS_PATH", tmp_path / "does-not-exist.css")
+    assert review_render._style() == ""
+    review_render._style.cache_clear()
+
+
+def test_reco_card_collects_sibling_recommenders(fake_source):
+    """Une reco dont un sibling a un recommendedBy : la liste de candidates
+    inclut ce nom (ligne 289)."""
+    r = {"id": "x", "title": "T", "types": ["film"], "status": "draft"}
+    ep = {"guid": "g", "title": "Ep"}
+    siblings = [{"id": "y", "recommendedBy": "Camille"}]
+    out = rs._reco_card(r, ep, [], fake_source, siblings=siblings)
+    assert 'value="Camille"' in out
+
+
+def test_post_edit_invalid_payload_with_unreadable_reco(fake_source, monkeypatch):
+    """Couvre `except (OSError, ValueError)` autour de read_json sur reject."""
+    from common import recos_dir_for
+    # On rejette via title vide ET on fait planter read_json après coup.
+    real_read = rs.read_json
+    def picky_read(p):
+        if "ubm-001" in str(p):
+            raise OSError("simu disk fail")
+        return real_read(p)
+    monkeypatch.setattr(rs, "read_json", picky_read)
+    body = b"id=ubm-001&title=&types=film"
+    h = _FakeHandler(fake_source, "/edit", body)
+    h.do_POST()
+    # On accepte un 303 même en l'absence de guid lisible.
+    assert h._status == 303
+    # guid manquant → redirige /
+    assert h._sent_headers["Location"] == "/"
+
+
+def test_send_json_post_rebuild_exception_swallowed(fake_source, monkeypatch):
+    """Lignes 603-604 : si la reconstruction de la carte plante, on renvoie
+    quand même un JSON sans card_html, sans propagation d'exception."""
+    # On force _reco_card à planter pendant la rebuild post-/edit.
+    real_card = rs._reco_card
+    calls = []
+    def boom(*a, **kw):
+        calls.append(1)
+        if calls == [1]:
+            raise RuntimeError("rebuild fail")
+        return real_card(*a, **kw)
+    monkeypatch.setattr(rs, "_reco_card", boom)
+    body = b"id=ubm-001&title=NewTitle&types=film"
+    h = _FakeHandler(fake_source, "/edit", body, accept="application/json")
+    h.do_POST()
+    payload = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert payload["kind"] == "success"
+    assert payload["card_html"] == ""
+
+
+def test_get_ep_unknown_guid_returns_back_link(fake_source):
+    """GET /ep?guid=inconnu renvoie un message + lien de retour."""
+    h = _FakeHandler(fake_source, "/ep?guid=inconnu")
+    h.do_GET()
+    body = h.wfile.getvalue().decode("utf-8")
+    assert "introuvable" in body

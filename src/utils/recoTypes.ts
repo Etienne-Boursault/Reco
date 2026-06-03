@@ -24,6 +24,24 @@ export const TYPE_LABELS: Record<string, string> = {
   autre: 'Autre',
 };
 
+/** Emoji représentant le type — utilisé en lieu et place du libellé sur les
+ *  cartes. Le libellé reste accessible via title= / aria-label. */
+export const TYPE_EMOJIS: Record<string, string> = {
+  film: '🎬',
+  serie: '📺',
+  livre: '📖',
+  bd: '💭',
+  musique: '🎵',
+  album: '💿',
+  podcast: '🎙️',
+  jeu: '🎮',
+  spectacle: '🎭',
+  lieu: '📍',
+  artiste: '🎤',
+  video: '📹',
+  autre: '✨',
+};
+
 /** Libellé pluriel — utilisé dans les filtres / chips de la page catalogue. */
 export const TYPE_LABELS_PLURAL: Record<string, string> = {
   film: 'Films',
