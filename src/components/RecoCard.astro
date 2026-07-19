@@ -140,13 +140,16 @@ function iconForHost(host: string): string {
 //    par un agent lors d'un remplissage automatique — ne doit JAMAIS devenir
 //    un href cliquable. Double garde avec la validation au write
 //    (tools/review_edit.py).
-//  - C2 : on applique AUSSI la politique éthique (`isAvoidedUrl` : anti-Amazon
-//    / anti-Bolloré) aux liens EXPLICITES (reco.links, customLinks), qui
-//    court-circuitaient sinon le résolveur. La politique tient quelle que soit
-//    la provenance du lien.
-const mergedLinks = [...customLinks, ...rawLinks].filter(
-  (l) => isSafeUrl(l.url) && !isAvoidedUrl(l.url),
-);
+//  - C2 : on applique AUSSI la politique éthique aux liens EXPLICITES
+//    (reco.links, customLinks), qui court-circuitaient sinon le résolveur.
+//    ARBITRAGE PRODUIT (2026-07-19) : un lien Amazon/Bolloré n'est PAS
+//    supprimé — sinon une œuvre disponible UNIQUEMENT là-bas se retrouverait
+//    sans aucun lien utile. Il est MARQUÉ `ethics: 'avoid'`, ce qui déclenche
+//    la classe `.avoid` (badge + infobulle « plateforme moins recommandée »).
+//    C'est l'intention d'origine du schéma, qui prévoit déjà cette valeur.
+const mergedLinks = [...customLinks, ...rawLinks]
+  .filter((l) => isSafeUrl(l.url))
+  .map((l) => (isAvoidedUrl(l.url) ? { ...l, ethics: 'avoid' as const } : l));
 const linkSeen = new Map<string, (typeof mergedLinks)[number]>();
 for (const l of mergedLinks) {
   const k = l.label.toLowerCase();

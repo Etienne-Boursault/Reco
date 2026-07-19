@@ -100,7 +100,7 @@ describe('RecoCard — sécurité des liens (S2)', () => {
     expect(html).toContain('justwatch.com');
   });
 
-  it('C2 — un lien explicite vers un domaine banni (Amazon) est retiré', async () => {
+  it('C2 — un lien explicite vers un domaine banni (Amazon) est CONSERVÉ mais marqué avoid', async () => {
     const html = await renderProps({
       reco: {
         ...baseReco,
@@ -111,7 +111,12 @@ describe('RecoCard — sécurité des liens (S2)', () => {
         ],
       },
     });
-    expect(html).not.toContain('amazon.fr');
+    // Arbitrage produit 2026-07-19 : ne PAS supprimer — une œuvre disponible
+    // uniquement sur une plateforme proscrite se retrouverait sans aucun lien
+    // utile. On la garde en l'affichant avec le badge d'avertissement.
+    expect(html).toContain('amazon.fr');
+    expect(html).toContain('link avoid');
+    expect(html).toContain('moins recommandée');
     expect(html).toContain('justwatch.com');
   });
 });
