@@ -59,6 +59,30 @@ export function isSafeUrl(u: unknown): boolean {
   }
 }
 
+/**
+ * Vrai si l'URL pointe vers un domaine banni par la politique éditoriale
+ * (Amazon + galaxie Bolloré, cf. `AVOID_DOMAINS`). Compare le hostname exact
+ * ET ses sous-domaines (`www.amazon.fr`, `boutique.canalplus.com`, …) mais
+ * PAS les substrings trompeuses (`notamazon.fr` ≠ `amazon.fr`).
+ *
+ * Sert à filtrer AUSSI les liens explicites (`reco.links`, `customLinks`) qui
+ * court-circuiteraient sinon le résolveur : la politique « jamais Amazon /
+ * Bolloré » doit tenir quelle que soit la provenance du lien (D1, C2).
+ */
+export function isAvoidedUrl(u: unknown): boolean {
+  if (typeof u !== 'string' || u.length === 0) return false;
+  let host: string;
+  try {
+    host = new URL(u).hostname.toLowerCase();
+  } catch {
+    return false;
+  }
+  return AVOID_DOMAINS.some((d) => host === d || host.endsWith(`.${d}`));
+}
+
+/** Handle Instagram valide : 1 à 30 caractères parmi lettres/chiffres/`.`/`_`. */
+const IG_HANDLE_RE = /^[A-Za-z0-9._]{1,30}$/;
+
 /** ID YouTube : 11 caractères alphanumériques + `_`/`-`. */
 const YT_ID_RE = /^[\w-]{11}$/;
 /** URL YouTube reconnue (youtube.com ou youtu.be). */
@@ -216,8 +240,12 @@ function linksForArtist(reco: RecoLike): ResolvedLink[] {
   // sinon on génère des recherches.
   const q = enc(query(reco.title, reco.creator));
   const out: ResolvedLink[] = [];
-  if (reco.externalIds?.instagram) {
-    out.push({ label: 'Instagram', url: `https://www.instagram.com/${reco.externalIds.instagram.replace(/^@/, '')}/`, kind: 'social', ethics: 'neutral' });
+  // C1 : le handle est interpolé dans un path Instagram — on le valide avant
+  // (jamais d'injection de path/query hostile). Un handle absent OU invalide
+  // retombe sur une recherche Google `site:instagram.com`.
+  const igHandle = reco.externalIds?.instagram?.replace(/^@/, '').trim();
+  if (igHandle && IG_HANDLE_RE.test(igHandle)) {
+    out.push({ label: 'Instagram', url: `https://www.instagram.com/${igHandle}/`, kind: 'social', ethics: 'neutral' });
   } else {
     out.push({ label: 'Instagram', url: `https://www.google.com/search?q=site%3Ainstagram.com+${q}`, kind: 'social', ethics: 'neutral' });
   }

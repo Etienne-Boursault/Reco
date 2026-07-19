@@ -1,6 +1,13 @@
 ---
-import { resolveLinks } from '../data/merchants';
+// S2 (revue 2026-07-19) : on réutilise le validateur d'URL unique de
+// merchants (`isSafeUrl`) au lieu d'un doublon local, et `isAvoidedUrl` pour
+// appliquer la politique éthique (anti-Amazon/Bolloré) AUSSI aux liens
+// explicites (C2). SSOT : merchants.ts.
+import { resolveLinks, isSafeUrl, isAvoidedUrl } from '../data/merchants';
 import { TYPE_LABELS, TYPE_EMOJIS } from '../utils/recoTypes';
+import { t } from '../i18n';
+import AudioExcerpt from './AudioExcerpt.astro';
+import OutboundLink from './OutboundLink.astro';
 
 interface Props {
   reco: {
@@ -10,19 +17,57 @@ interface Props {
     types: string[];
     year?: number;
     recommendedBy?: string;
-    quote?: string;
-    timestamp?: string;
+    // D2/D3 (revue 2026-07-19) : `quote`, `timestamp` et `watchProviders`
+    // étaient déclarés ici mais jamais rendus par la carte (portés par la page
+    // épisode / l'enrichissement). Retirés de l'interface pour refléter ce que
+    // RecoCard consomme réellement — les champs supplémentaires passés par les
+    // appelants restent tolérés (typage structurel).
     links?: { label: string; url: string; kind?: string; ethics?: string }[];
     externalIds?: Record<string, string | undefined>;
-    watchProviders?: { label: string; url: string; ethics?: string }[];
     customLinks?: { label: string; url: string; logoUrl?: string }[];
     linkOverrides?: Record<string, string>;
+    // `reco` (défaut) ou `citation` (œuvre évoquée mais pas recommandée).
+    kind?: string;
+    // Story 4 — œuvre présentée par un·e invité·e (auto-promo). Reste une
+    // reco mais affichée avec un badge distinct pour ne pas la confondre
+    // avec une vraie recommandation de l'équipe.
+    guestWork?: boolean;
   };
   episodeTitle?: string;
   episodeNumber?: number;
+  /**
+   * Item #12 : extrait audio compact en bas de card (opt-in).
+   * Slot par défaut désactivé pour ne pas casser les vues existantes.
+   */
+  audio?: {
+    youtubeId?: string | null;
+    acastUrl?: string | null;
+    startSeconds?: number | null;
+  };
+  /**
+   * X3 — Si fourni, affiche un lien discret « Signaler » qui pointe vers
+   * `/<sourceId>/report/<recoId>`. Optionnel pour compat ascendante
+   * (sans sourceId, le lien n'est pas affiché).
+   */
+  sourceId?: string;
+  /**
+   * N5 — Affiche le badge « œuvre d'invité » sur la carte (défaut `true`).
+   * La page épisode le passe à `false` dans sa sous-section dédiée « Œuvres
+   * des invité·es » : le titre de section porte déjà l'info, répéter le badge
+   * sur chaque carte serait bruyant. Le badge reste actif partout ailleurs
+   * (galeries, catalogue, timeline, page œuvre).
+   */
+  showGuestWorkBadge?: boolean;
 }
 
-const { reco, episodeTitle, episodeNumber } = Astro.props;
+const {
+  reco,
+  episodeTitle,
+  episodeNumber,
+  audio,
+  sourceId,
+  showGuestWorkBadge = true,
+} = Astro.props;
 
 // Liens : ceux fournis par le pipeline, sinon générés (éthiques) à la volée.
 // `linkOverrides[label]` remplace l'URL d'un lien auto-généré spécifique
@@ -44,13 +89,64 @@ const customLinks = (reco.customLinks ?? []).map((l) => ({
   logoUrl: l.logoUrl,
 }));
 
-// On affiche le logo (favicon) de chaque plateforme plutôt que son nom.
-// Source des icônes : DuckDuckGo (privacy-friendly) ; pour les liens manuels
-// dépourvus de `logoUrl`, on retombe sur le service Google Favicon (sz=64).
+// F-CRIT-6 — On affiche le logo (favicon) de chaque plateforme plutôt que
+// son nom, MAIS plus via DuckDuckGo (`icons.duckduckgo.com/ip3/...`) : ce
+// CDN tiers fuite l'host visité à un service externe (cohérence ADR 0034
+// "no tracker tiers"). Stratégie self-hosted :
+//   1. Si le lien custom apporte son propre `logoUrl`, on l'utilise tel quel
+//      (généralement une URL de leur propre CDN — résolu côté éditeur·rice).
+//   2. Sinon on essaie un favicon local par host sous
+//      `/icons/platforms/<host>.svg` (les hosts whitelistés sont déployés
+//      manuellement — Phase 4 expose le placeholder `link.svg`).
+//   3. Sinon on retombe sur le texte (link-text).
 // Dédup par label (case-insensitive) : si l'utilisateur ajoute un customLink
 // portant le même nom qu'un lien auto, on garde le SIEN (customLinks d'abord
 // dans la concat → première occurrence gagne).
-const mergedLinks = [...customLinks, ...rawLinks];
+const PLATFORM_ICON_BASE = '/icons/platforms/';
+const PLATFORM_ICON_PLACEHOLDER = `${PLATFORM_ICON_BASE}link.svg`;
+const WHITELISTED_ICON_HOSTS = new Set<string>([
+  // Logos par plateforme déployés sous `public/icons/platforms/<host>.svg`
+  // (2026-07-19). Le host est le hostname COMPLET (cf. `iconForHost`). Ajouter
+  // une entrée ici SANS créer le SVG correspondant afficherait une image
+  // cassée → n'ajouter que des hosts dont le fichier existe.
+  'www.youtube.com',
+  'music.youtube.com',
+  'open.spotify.com',
+  'www.deezer.com',
+  'music.apple.com',
+  'podcasts.apple.com',
+  'tidal.com',
+  'www.qobuz.com',
+  'bandcamp.com',
+  'store.steampowered.com',
+  'itch.io',
+  'www.justwatch.com',
+  'www.instagram.com',
+  'www.google.com',
+  'www.fnacspectacles.com',
+  'www.billetreduc.com',
+  'www.placedeslibraires.fr',
+  'www.lalibrairie.com',
+  'duckduckgo.com',
+]);
+function iconForHost(host: string): string {
+  if (!host) return '';
+  if (WHITELISTED_ICON_HOSTS.has(host)) return `${PLATFORM_ICON_BASE}${host}.svg`;
+  return PLATFORM_ICON_PLACEHOLDER;
+}
+// Sécurité + éthique (revue 2026-07-19) :
+//  - S2 : ne rendre que des URLs http(s) via `isSafeUrl` (SSOT merchants). Un
+//    customLink hostile (javascript:, data:…) écrit hors formulaire — p. ex.
+//    par un agent lors d'un remplissage automatique — ne doit JAMAIS devenir
+//    un href cliquable. Double garde avec la validation au write
+//    (tools/review_edit.py).
+//  - C2 : on applique AUSSI la politique éthique (`isAvoidedUrl` : anti-Amazon
+//    / anti-Bolloré) aux liens EXPLICITES (reco.links, customLinks), qui
+//    court-circuitaient sinon le résolveur. La politique tient quelle que soit
+//    la provenance du lien.
+const mergedLinks = [...customLinks, ...rawLinks].filter(
+  (l) => isSafeUrl(l.url) && !isAvoidedUrl(l.url),
+);
 const linkSeen = new Map<string, (typeof mergedLinks)[number]>();
 for (const l of mergedLinks) {
   const k = l.label.toLowerCase();
@@ -59,16 +155,26 @@ for (const l of mergedLinks) {
 const links = Array.from(linkSeen.values()).slice(0, 6).map((l) => {
   let host = '';
   try {
-    host = new URL(l.url).hostname;
+    host = new URL(l.url).hostname.toLowerCase();
   } catch {
     /* URL invalide : pas d'icône, on retombera sur le texte. */
   }
+  // S1 (revue 2026-07-19) : un logoUrl custom n'est rendu en <img src> que s'il
+  // est http(s) ET hébergé sur un host whitelisté (objectif no-tracker, ADR
+  // 0034) — sinon fuite IP/Referer vers un tiers. À défaut : icône plateforme.
   const overrideLogo = (l as { logoUrl?: string }).logoUrl;
-  const icon = overrideLogo
-    ? overrideLogo
-    : host
-      ? `https://icons.duckduckgo.com/ip3/${host}.ico`
-      : '';
+  let overrideHost = '';
+  if (overrideLogo && isSafeUrl(overrideLogo)) {
+    try {
+      overrideHost = new URL(overrideLogo).hostname.toLowerCase();
+    } catch {
+      /* URL invalide : pas de logo custom. */
+    }
+  }
+  const icon =
+    overrideHost && WHITELISTED_ICON_HOSTS.has(overrideHost)
+      ? overrideLogo
+      : iconForHost(host);
   return { ...l, host, icon };
 });
 
@@ -83,16 +189,20 @@ const typeEmojis = types.map((t) => ({
 const typeLabel = typeLabels.join(' ');
 const typeTitle = typeLabels.join(', ');
 const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
+const isCitation = reco.kind === 'citation';
+const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
 ---
 
 <li
-  class="card reveal"
+  class:list={['card', 'reveal', { 'is-citation': isCitation }]}
   data-types={types.join(',')}
   data-search={
     // Normalisation SSR : lowercase + sans accents pour permettre une recherche
     // tolérante côté client sans avoir à re-normaliser à chaque keystroke.
-    // Le range [̀-ͯ] cible les combining diacritical marks (U+0300–U+036F)
-    // décomposées par NFD.
+    // F-L-4 : on utilise des unicode escapes (̀-ͯ) plutôt qu'un
+    // range avec combining marks inline — plus lisible et résistant aux
+    // re-encodages source (CRLF↔LF, conversion d'éditeur, etc.). Cible les
+    // combining diacritical marks décomposées par NFD.
     `${reco.title} ${reco.creator ?? ''} ${typeLabel} ${episodeTitle ?? ''}`
       .normalize('NFD')
       .replace(/[̀-ͯ]/g, '')
@@ -100,11 +210,30 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   }
 >
   <div class="card-top">
-    <span class="type" title={typeTitle} aria-label={typeTitle}>
-      {typeEmojis.map((t) => (
-        <span class="type-emoji" title={t.label} aria-label={t.label}>{t.emoji}</span>
+    {/* A1 (revue 2026-07-19) : un SEUL nom accessible, porté par le conteneur
+       `role="img"` + `aria-label` (la liste des types, ex. « Film, Livre »).
+       Les emojis enfants sont purement décoratifs pour l'AT (`aria-hidden`)
+       et ne gardent qu'un `title` pour le tooltip souris. L'ancienne structure
+       (aria-label sur un span sans rôle + role="img" par emoji + doublon
+       visually-hidden) provoquait une double annonce et un rôle mal ancré. */}
+    <span class="type" role="img" aria-label={typeTitle}>
+      {typeEmojis.map((tp) => (
+        <span class="type-emoji" title={tp.label} aria-hidden="true">{tp.emoji}</span>
       ))}
     </span>
+    {isCitation && (
+      <span class="kind-badge" aria-label={t('reco.citation.badgeA11y')}>
+        <span aria-hidden="true">📝</span> {t('reco.citation.badge')}
+      </span>
+    )}
+    {isGuestWork && (
+      <span class="kind-badge guestwork-badge" aria-label={t('reco.guestWork.badgeA11y')}>
+        {/* M3 : glyphe ⭐ — le 🎤 entrait en collision avec TYPE_EMOJIS['artiste']
+           (même emoji pour « badge œuvre d'invité » et « type artiste »). ⭐
+           n'est utilisé par aucun type. */}
+        <span aria-hidden="true">⭐</span> {t('reco.guestWork.badge')}
+      </span>
+    )}
     {reco.year && <span class="year">{reco.year}</span>}
   </div>
 
@@ -117,43 +246,82 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   </div>
 
   {
+    audio && (audio.youtubeId || audio.acastUrl) && (
+      <div class="card-audio">
+        <AudioExcerpt
+          youtubeId={audio.youtubeId ?? null}
+          acastUrl={audio.acastUrl ?? null}
+          startSeconds={audio.startSeconds ?? null}
+          id={reco.id}
+          title={reco.title}
+        />
+      </div>
+    )
+  }
+  {
+    sourceId && (
+      <p class="report-link-wrap">
+        <a
+          class="report-link"
+          href={`/${sourceId}/report/${reco.id}`}
+          rel="nofollow"
+          aria-label={t('report.linkA11y')}
+        >
+          <span aria-hidden="true">⚠</span> {t('report.link')}
+        </a>
+      </p>
+    )
+  }
+  {
     links.length > 0 && (
       <div class="links">
-        {links.map((l) => (
-          <a
-            class:list={[
-              'link',
-              { indie: l.ethics === 'indie' },
-              { avoid: l.ethics === 'avoid' },
-            ]}
-            href={l.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={
-              l.ethics === 'avoid'
-                ? `${l.label} (plateforme moins recommandée selon nos critères éthiques)`
-                : l.label
-            }
-            aria-label={l.label}
-          >
-            {l.icon ? (
-              <>
-                <img
-                  src={l.icon}
-                  alt=""
-                  width="20"
-                  height="20"
-                  loading="lazy"
-                  data-fallback={l.label}
-                  onerror="this.style.display='none';const s=this.nextElementSibling;if(s)s.hidden=false;"
-                />
-                <span class="link-text" hidden>{l.label}</span>
-              </>
-            ) : (
-              <span class="link-text">{l.label}</span>
-            )}
-          </a>
-        ))}
+        {links.map((l) => {
+          // D4 : on ne recalcule PAS `categorizeUrl(l.url)` ici — OutboundLink
+          // dérive lui-même la catégorie quand `category` est omise (même
+          // helper, résultat identique). Évite un import + une redondance.
+          const className = [
+            'link',
+            l.ethics === 'indie' ? 'indie' : '',
+            l.ethics === 'avoid' ? 'avoid' : '',
+          ]
+            .filter(Boolean)
+            .join(' ');
+          const title =
+            l.ethics === 'avoid'
+              ? `${l.label} (plateforme moins recommandée selon nos critères éthiques)`
+              : l.label;
+          const ariaLabel = `${l.label} ${t('a11y.externalLinkSuffix')}`;
+          return (
+            <OutboundLink
+              href={l.url}
+              sourceId={sourceId ?? 'unknown'}
+              recoId={reco.id}
+              class={className}
+              title={title}
+              ariaLabel={ariaLabel}
+            >
+              {/* H5 : `onerror` inline serait CSP-unfriendly. Le handler
+                 est centralisé dans Layout.astro via délégation
+                 `error` en phase de capture (cherche `data-fallback`). */}
+              {l.icon ? (
+                <>
+                  <img
+                    src={l.icon}
+                    alt=""
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                    decoding="async"
+                    data-fallback={l.label}
+                  />
+                  <span class="link-text" hidden>{l.label}</span>
+                </>
+              ) : (
+                <span class="link-text">{l.label}</span>
+              )}
+            </OutboundLink>
+          );
+        })}
       </div>
     )
   }
@@ -176,9 +344,41 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
     transform: translateY(-4px);
     border-color: var(--accent);
   }
+  /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret. */
+  .card.is-citation {
+    opacity: 0.7;
+    border-style: dashed;
+  }
+  .card.is-citation:hover {
+    opacity: 1;
+  }
+  .kind-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    border-radius: 999px;
+    padding: 0.15em 0.55em;
+    margin-left: 0.4rem;
+  }
+  /* Story 4 — badge « œuvre d'invité » : accent ambre pour se distinguer du
+     badge citation (neutre) sans dépendre de l'accent variable de la source.
+     H1 : la teinte vient de `--guestwork` (dérivée du thème, cf. global.css)
+     pour tenir le contraste AA sur les thèmes clairs comme sombres. */
+  .guestwork-badge {
+    color: var(--guestwork);
+    border-color: color-mix(in oklab, var(--guestwork) 45%, transparent);
+    background: color-mix(in oklab, var(--guestwork) 12%, transparent);
+  }
   .card-top {
     display: flex;
     align-items: center;
+    /* N3 : autorise le retour à la ligne (2 badges + année < 320px). */
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   .type {
@@ -188,7 +388,11 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
     line-height: 1;
   }
   .type-emoji {
+    /* H6 : `cursor: help` indique qu'un tooltip (title) est dispo au hover.
+       L'info textuelle est aussi présente dans .visually-hidden pour AT. */
     cursor: help;
+    display: inline-flex;
+    align-items: center;
   }
   .year {
     font-size: 0.8rem;
@@ -210,6 +414,9 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
     padding-top: 0.5rem;
     font-size: 0.78rem;
     color: var(--muted);
+  }
+  .card-audio {
+    margin-top: 0.4rem;
   }
   .links {
     display: flex;
@@ -240,10 +447,8 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
     border-color: var(--accent);
     background: color-mix(in oklab, var(--accent) 18%, transparent);
   }
-  .link:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+  /* P2-3 : `.link:focus-visible` retiré, la règle globale dans global.css
+     (`:where(...):focus-visible`) gère désormais halo + outline-offset. */
   /* Liseré doré pour les plateformes indépendantes. */
   .link.indie {
     border-color: color-mix(in oklab, var(--accent) 55%, transparent);
@@ -291,5 +496,22 @@ const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
   .link-text {
     font-size: 0.8rem;
     font-weight: 600;
+  }
+  /* X3 — lien Signaler : très discret, en bas de card. */
+  .report-link-wrap {
+    margin: 0.3rem 0 0;
+    font-size: 0.72rem;
+    text-align: right;
+  }
+  .report-link {
+    color: var(--muted);
+    text-decoration: none;
+    opacity: 0.7;
+  }
+  .report-link:hover,
+  .report-link:focus-visible {
+    color: var(--accent);
+    opacity: 1;
+    text-decoration: underline;
   }
 </style>
