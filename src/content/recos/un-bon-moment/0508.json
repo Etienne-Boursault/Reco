@@ -1,21 +1,71 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur « j'avais 9 ans en 1999 » → probablement un invité, non diarisé.",
+    "reason": "Anecdote perso substantielle (y a cru enfant, pote complotiste) avec discussion du postulat du film, mais aucune prescription au public.",
+    "verdict": "citation"
+  },
+  "creator": "Lana et Lilly Wachowski",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/603-the-matrix/watch?locale=FR",
     "tmdb": "603",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0508",
+  "kind": "citation",
   "links": [],
-  "quote": "Quand j'ai vu Matrix, c'est ça que je voulais prendre.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "moi quand j'ai vu Matrix ah c'est ça que je voulais prendre",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:10:12",
+  "status": "validated",
+  "timestamp": "01:10:14",
   "title": "Matrix",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

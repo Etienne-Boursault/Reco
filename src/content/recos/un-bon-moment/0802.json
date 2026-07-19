@@ -1,21 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon YT. Canonique = ubm-1089.",
+    "reason": "Doublon de ubm-1089 (meme reco, 01:04:28-29 : serie Masters of the Universe sur Netflix). ubm-1089 conserve comme canonique (titre complet 'Masters of the Universe: Revelation' + tmdb 96658 correct + watchProviders).",
+    "verdict": "discard"
+  },
   "creator": "Kevin Smith",
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "externalIds": {
     "tmdb": "931",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:02:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:02:12+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0802",
   "links": [],
-  "quote": "Je vous recommande la série Master of the Universe sur Netflix.",
+  "quote": "Je vous recommande la série Master of Universe sur Netflix.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:28",
+  "status": "discarded",
+  "timestamp": "01:04:29",
   "title": "Masters of the Universe",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

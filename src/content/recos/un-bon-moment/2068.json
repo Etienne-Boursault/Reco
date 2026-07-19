@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Rodney Dangerfield' (01:42:08) = auteur d'une blague a deviner dans le jeu 'devine la chute' (Montreux Comedy Club). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2068",
+  "links": [],
+  "quote": "René Dangerfield quand j'étais enfant mes parents déménageaient beaucoup mais pas avec moi",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:42:08",
+  "title": "Rodney Dangerfield",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

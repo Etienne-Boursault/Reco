@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom 'Adèle Fougazi' non vérifiable (WebSearch épuisé) — orthographe et identité à confirmer (genre incertain : 'il est tellement bon'). Reco émanant de Thomas Deseur (invité absent des métadonnées).",
+    "reason": "Artiste (humoriste) évoqué avec admiration ('il est tellement bon, j'oublie que je suis humoriste') mais sans prescription d'une œuvre précise ; segment d'admiration entre pairs.",
+    "verdict": "citation"
+  },
+  "creator": "Adel Fugazi",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3118",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.adelfugazi.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@adelfugazi"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/adel-fugazi/"
+    }
+  ],
+  "quote": "Et il n'y a pas longtemps, j'ai vu Adèle Fougazi. Et j'ai eu ce truc de... il est tellement bon que...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:38:34",
+  "title": "Le Temps d'une Pause",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "creator 'Aurel' -> Orelsan (film de 2015).",
+    "reason": "Exemple instrumental d'un procede comique (dispute chantee), scene de 'Comment c'est loin' citee en illustration.",
+    "verdict": "discard"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1582",
+  "links": [],
+  "quote": "T'as pensé dans Comment c'est loin, dans le film d'Aurel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:09",
+  "title": "Comment c'est loin",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-05",
+    "humanCorrection": "Titre corrigé Susano→Sus + Instagram @Susanooff (évite l'homonyme d'extrême droite)",
+    "model": "claude-opus-4-8",
+    "reason": "Susano (01:50, segment recos): 'Toi Haroun t'as quelque chose a recommander? Un chanteur qui s'appelle Susano... c'est hyper bien, il fait des acoustiques formidables, a l'ecouter sur les plateformes'. Reco par Haroun. Canonique. FLAG: Haroun previent qu'il existe un homonyme d'extreme droite -> le customLink doit pointer le BON Susano.",
+    "verdict": "validate"
+  },
+  "creator": "Susano",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "externalIds": {
+    "instagram": "Susanooff"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1612",
+  "kind": "reco",
+  "links": [],
+  "quote": "Un artiste que j'ai découvert récemment un chanteur qui s'appelle Susano...",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:50:31",
+  "title": "Sus",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Childish Gambino/Donald Glover discute longuement avec substance (parcours multi-medium: stand-up HBO, Community, musique, Mr&Mrs Smith). Admiration mais pas de prescription. Pas un invite.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2007",
+  "kind": "citation",
+  "links": [],
+  "quote": "par exemple j'ai vécu ça dernièrement avec Chalice Gambino tu vois, j'aime trop l'idée de...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:00",
+  "title": "Childish Gambino",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

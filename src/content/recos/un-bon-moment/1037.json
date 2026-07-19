@@ -1,17 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger : 'Pierre Croce'. Reco par Kheiron ~01:20:25.",
+    "reason": "Kheiron recommande explicitement 'toute la bande' dans le segment final (~01:20:25). Reel humoriste/YouTubeur. Orthographe officielle : Pierre Croce (pas 'Croze').",
+    "verdict": "validate"
+  },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1037",
+  "kind": "reco",
   "links": [],
-  "quote": "toute la bande Pierre Croze, moi, j'aime bien.",
-  "recommendedBy": "Navo",
+  "quote": "Toute la bande : Pierre Croze, Benjamin Macchia !",
+  "recommendedBy": "Kheiron",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:20:25",
   "title": "Pierre Croze",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

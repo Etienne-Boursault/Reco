@@ -1,5 +1,16 @@
 {
   "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +18,10 @@
   "links": [],
   "quote": "c'est un plat qui s'appelle le Wellington",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:51",
   "title": "Wellington",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

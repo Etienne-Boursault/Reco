@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom officiel Famille +1. Creator/recommendedBy actuels (Navo/Kyan) errones = Kemmler. Doublon: ubm-1004.",
+    "reason": "Famille +1 : podcast lance par Kemmler, annonce en fin d'episode (01:44:23 Kem, tu repars en studio ? ... je demarre un podcast qui s'appelle famille plus un sur toutes les plateformes). Podcast reel anime par Kemmler -> guest-work. Canonique.",
+    "verdict": "guest-work"
+  },
+  "creator": "Navo",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1396",
+  "kind": "reco",
+  "links": [],
+  "quote": "je démarre un podcast qui s'appelle famille plus un sur toutes les plateformes de podcast",
+  "recommendedBy": "Kemmler",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:32",
+  "title": "Famille plus un",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2129 (Anna = Nach ; « Peau neuf » = album « Peau Neuve », 00:53:35). Créateur « Anna Domange » = hallucination du nom de famille.",
+    "verdict": "discard"
+  },
+  "creator": "Anna (Anna Domange)",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:53:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2120",
+  "links": [],
+  "quote": "Anna, c'est qui sort un nouvel album. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:53:35",
+  "title": "Peau neuf",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Lovin' Fun' cite comme comparaison nostalgique pour decrire le format Dr Love ('T'as reinvente la radio libre... c'est Lovin' Fun', 00:13:55). Mention instrumentale, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:13:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1908",
+  "links": [],
+  "quote": "C'est Lovin' Fun. Nous, à l'époque, on avait ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:13:55",
+  "title": "Lovin' Fun",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

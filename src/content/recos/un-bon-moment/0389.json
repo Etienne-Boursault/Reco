@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "timestamp_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Aucune occurrence de « donjon »/« dragon » dans tout le transcript.",
+    "reason": "Titre et quote (« film Donjons et Dragons... c'etait bien marrant ») ABSENTS du transcript YouTube ; a 01:01:30 Fabien parle de son emancipation a 17 ans. Probable extraction Acast erronee / hallucination.",
+    "verdict": "discard"
+  },
   "creator": "John Francis Daley, Jonathan Goldstein",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "J'ai vu un film qui s'appelle Donjons et Dragons, c'était bien marrant.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:01:30",
   "title": "Donjons et Dragons : Une aventure fantastique",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

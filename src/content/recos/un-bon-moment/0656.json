@@ -1,17 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco gardee du triplet sumo (ubm-1028, ubm-3068 discard). Programme officiel NHK: 'Grand Sumo Highlights'",
+    "reason": "Prescription enthousiaste des resumes de sumo NHK par Virginie (oeuvre tierce, pas son oeuvre); reco gardee du triplet",
+    "verdict": "validate"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0656",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "NHK WORLD-JAPAN — Grand Sumo",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/ondemand/program/video/sumo/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — GRAND SUMO Highlights",
+      "url": "https://www.youtube.com/playlist?list=PLFEzXnIQVwV9JgQkOMJZM23G8g-wBBWKf"
+    }
+  ],
   "quote": "il faut aller sur NHK Sumo Japon",
-  "recommendedBy": "Non spécifié",
+  "recommendedBy": "Virginie Fortin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:15:45",
   "title": "NHK Sumo",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

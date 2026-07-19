@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "ajouter Tania Dutel aux invites de l'episode",
+    "reason": "Segment recommandations: Tania 'on va parler d'une serie que beaucoup n'ont pas vue, The Handmaid's Tale, elle est incroyable... c'est une excellente serie'. Reco explicite. Createur Bruce Miller OK.",
+    "verdict": "validate"
+  },
   "creator": "Bruce Miller",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
   "externalIds": {
@@ -6,17 +18,49 @@
     "tmdb": "69478",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0703",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est The Handmaid's Tale. Qui veut dire? Elle est incroyable.",
-  "recommendedBy": "Tania",
+  "quote": "C'est The Handmaid's Tale. Qu'est-ce qu'il veut dire ? Elle est incroyable.",
+  "recommendedBy": "Tania Dutel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:42:34",
+  "status": "validated",
+  "timestamp": "01:42:30",
   "title": "The Handmaid's Tale",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],
@@ -66,5 +110,6 @@
       "label": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     }
-  ]
+  ],
+  "year": 2017
 }

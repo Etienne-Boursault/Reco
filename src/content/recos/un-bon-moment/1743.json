@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Garde Cotiere', son d'Adib Alcalite, loue 'exceptionnel' (mais 'j'ai pas ecoute' dit l'autre) dans la discussion sur Adib qui reinvente sa musique. Oeuvre nommee+louee, pas un invite, pas de prescription. Borderline.",
+    "verdict": "citation"
+  },
+  "creator": "Adib Alcalité",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1743",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il a fait un son qui est exceptionnel !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:40",
+  "title": "Garde Cotière",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "musique"
+  ]
+}

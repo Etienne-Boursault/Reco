@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non diarize, probablement un invite (Jonathan Cohen, qui dit 'je viens de l'acheter') mais pas certain -> recommendedBy vide.",
+    "reason": "Recommandation culturelle explicite ('t'as une recommandation culturelle a soumettre? Parasite') + enthousiasme prescripteur ('j'adore, c'est magnifique, gros kiff'). Titre confirme dans le transcript (01:03:12).",
+    "verdict": "validate"
+  },
   "creator": "Bong Joon-ho",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
@@ -6,18 +18,48 @@
     "tmdb": "496243",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0645",
+  "kind": "reco",
   "links": [],
-  "quote": "en parlant de films de Cannes, parasites je viens de l'acheter j'adore c'est fou c'est une vraie comédie noire",
-  "recommendedBy": "invité",
+  "quote": "je viens de l'acheter j'en suis à la moitié j'adore",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:03:11",
+  "status": "validated",
+  "timestamp": "01:03:12",
   "title": "Parasite",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

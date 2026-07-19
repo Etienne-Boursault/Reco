@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:31:59 : 'on parle de Tenet, je l'ai pas vu... c'est comme s'ils l'avaient pas vu' -- bit comique sur l'incomprehensibilite, tremplin vers Primer. A 01:16:47 mention ambivalente 'moi j'ai pas aime, toi tu risques de bien aimer'. Pas de vraie prescription.",
+    "reason": "Mention instrumentale/comique (Tenet non vu, film 'incomprehensible')",
+    "verdict": "discard"
+  },
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2587",
+  "links": [],
+  "quote": "Quoi ? Tenet ? Allez, on parle de Tenet.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:31:59",
+  "title": "Tenet",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

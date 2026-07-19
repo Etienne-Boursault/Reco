@@ -1,17 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Feldup (Felix Dupuis), videaste ET musicien. Navo recommande la chaine YouTube ; il precise ne pas pouvoir recommander sa musique (jamais ecoutee).",
+    "reason": "Shout-out explicite de Navo pour la chaine YouTube Feldup: 'Petit shout-out pour Feldup' (01:08). Prescription claire (la chaine, contenus etranges/horreur d'internet).",
+    "verdict": "validate"
+  },
+  "creator": "Feldup",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1146",
+  "kind": "reco",
   "links": [],
-  "quote": "la chaîne feldup qui est une qui est un youtubeur qui plonge dans des meandres d'internet et de avec un petit côté un peu bizarre horreur de tout ce qui est un peu caché bizarroïde sur internet",
+  "quote": "Alors, je ne sais même pas si on dit Feldup ou Feldup. Je pense que c'est Feldup.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:34",
+  "status": "validated",
+  "timestamp": "01:08:32",
   "title": "Feldup",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

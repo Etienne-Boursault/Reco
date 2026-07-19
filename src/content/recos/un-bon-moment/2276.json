@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Film reel (2008, real. Adam McKay). Contexte = anecdote sur la salle de cinema, avis minimal ('c'est bien'). Requalifiable en citation si l'humain juge l'avis suffisant.",
+    "reason": "'Step Brothers' evoque seulement dans une anecdote sur le cine prive d'un ami (01:13:18 'on a regarde... avec Will Ferrell et John C. Reilly... c'est bien'), hors du tour de recommandations. Mention anecdotique, pas une prescription au public.",
+    "verdict": "discard"
+  },
+  "creator": "Adam McKay",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2276",
+  "links": [],
+  "quote": "on a regardé un film de Boulard un énorme Boulard les deux ados là qui ont 40 ans avec Will Ferrell et John C. Reilly",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:18",
+  "title": "Step Brothers",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

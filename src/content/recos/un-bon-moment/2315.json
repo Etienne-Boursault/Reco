@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre -> 'Comedian' (doc 2002, real. Christian Charles). ~00:30:30.",
+    "reason": "Documentaire 'Comedian' (2002, Jerry Seinfeld reconstruit son set) decrit avec substance (~00:30:30 : il remonte sur scene, bide, heckler). Fonction illustrative, pas prescription. Titre a corriger : 'The Comedian' -> 'Comedian' (2002). Attribution fluide.",
+    "verdict": "citation"
+  },
+  "creator": "Jerry Seinfeld",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2315",
+  "kind": "citation",
+  "links": [],
+  "quote": "tu vois ginsbourg qui apprend à jouer du piano tu vois dans \"The Comedian\" le film de Jerry Seinfeld qui est disponible sur Netflix d'ailleurs je crois",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:30:30",
+  "title": "The Comedian",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2002
+}

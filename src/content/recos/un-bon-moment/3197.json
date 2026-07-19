@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Eloge incident (« des trucs chambes ») ; verdict citation defendable, mais la mention sert la promo de La Flamme.",
+    "reason": "Mention instrumentale : « c'est adapte de Burning Love » cite pour expliquer l'origine de leur serie La Flamme (oeuvre d'invites). Comparaison/source en passant, pas de prescription (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Ben Stiller",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:52:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3197",
+  "links": [],
+  "quote": "C'est adapté de Burning Love, une série produite par Ben Stiller.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:52:44",
+  "title": "Burning Love",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

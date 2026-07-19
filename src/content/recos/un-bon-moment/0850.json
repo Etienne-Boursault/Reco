@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2995 (canonique, quote conforme au transcript).",
+    "reason": "Doublon de ubm-2995 (meme passage 00:15:36, chanson-duo de VD 'Il est trop tard...') ; variante ASR differente ('on fera pas l'amour' + 'Jean-Marie Violette') non presente dans le transcript courant.",
+    "verdict": "discard"
+  },
   "creator": "Vincent Delherme",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "C'est le titre. Il est trop tard, on fera pas l'amour, c'est un duo avec Jean-Marie Violette.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:36",
   "title": "Il est trop tard, on fera pas l'amour",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

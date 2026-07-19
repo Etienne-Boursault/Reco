@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Animals (Martin Garrix) = reponse du quiz DJ (00:27:26 il a sorti son premier single Animals... a 13-14 ans). Oeuvre citee dans un jeu -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Martin Garrix",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "27:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "27:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1576",
+  "links": [],
+  "quote": "il a sorti son premier single Animals",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "27:26",
+  "title": "Animals",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ],
+  "year": 2013
+}

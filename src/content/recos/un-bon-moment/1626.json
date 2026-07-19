@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie D'argent et de sang (Xavier Giannoli, 2023). Cite par Pierre Niney; titre OK.",
+    "reason": "Name-drop des credits du scenariste J.-B. Delafon ('des supers series'), sans presentation ni prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Yann",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1626",
+  "kind": "citation",
+  "links": [],
+  "quote": "le réalisateur, qui est super, lui qui a fait \"Barons Noirs\", \"D'argent et de sang\"",
+  "recommendedBy": "Pierre Niney",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:11:00",
+  "title": "D'argent et de sang",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

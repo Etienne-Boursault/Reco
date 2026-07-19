@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte = « Zaho de Sagazan » (chanteuse, Victoires de la musique 2024) ; transcript « Zao » = mistranscription, à corriger (WebSearch épuisé). Recommandé par un host (« je l'ai déjà dit l'autre jour ») mais lequel (Kyan/Navo) indéterminé → attribution vidée.",
+    "reason": "Artiste réelle recommandée avec enthousiasme dans le tour de recos : « moi, je suis toujours à fond sur eux... C'est Zao de Sagazan » (01:11:48). Le retrait « c'est pas si bien finalement » est ironique (parce que Zazie & Vianney l'avaient déjà citée).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6599de12076e6c001696556a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:58:04+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2196",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est Zao de Sagazan.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:48",
+  "title": "Zao de Sagazan",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

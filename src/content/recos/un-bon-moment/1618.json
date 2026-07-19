@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Alban Ivanov (00:59): anecdote people ('dans ce club il y a Alban Ivanov qui est inscrit'), sans avis.",
+    "verdict": "discard"
+  },
+  "creator": "Alban Ivanov",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1618",
+  "links": [],
+  "quote": "Il y a Alban Ivanov qui est inscrit",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:38",
+  "title": "Alban Ivanov",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

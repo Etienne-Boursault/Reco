@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Clément Viktorovitch est un chroniqueur non-invité (règle 6 → discard). La discussion est longue et élogieuse (« toujours très intéressant de les revoir », 00:04:38 puis 00:04:47-00:07:35) mais le titre est une PERSONNE/chroniqueur, pas une œuvre discrète recommandable. Guillaume Meurice (transcrit « Guillaume Maurice ») est cité dans le même souffle, même cas.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2479",
+  "links": [],
+  "quote": "à la maison je me fasse du Guillaume Maurice d'il y a quatre ans ou du Clément Viktorovitch que j'ai déjà vu mais c'est toujours très intéressant de les revoir et ça fait du bien quoi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:38",
+  "title": "Clément Viktorovitch",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

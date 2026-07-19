@@ -1,19 +1,60 @@
 {
-  "creator": "Julien Méniel",
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateur du draft 'Julien Méniel' ERRONÉ : c'est le créateur de DTC (ubm-1025) qui a bavé ici. 'Le Règlement' est une chaîne d'analyse rap, pas de Julien Méniel — créateur non vérifié (budget WebSearch épuisé), à corriger côté data.",
+    "reason": "Kyan prescrit explicitement la chaîne ('une chaîne que j'adore... je booste le règlement, allez voir cette chaîne', 00:51:44-00:52:14) : vraie reco d'une œuvre réelle par un host.",
+    "verdict": "validate"
+  },
+  "creator": "Max Brodi",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0620",
-  "links": [],
-  "quote": "Moi, j'ai une chaîne que j'adore, c'est le Règlement. J'adore cette chaîne. C'est une chaîne qui parle de rap.",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@LeReglement"
+    }
+  ],
+  "quote": "Moi, j'ai une chaîne que j'adore, c'est le règlement. J'adore cette chaîne.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:51:43",
+  "status": "validated",
+  "timestamp": "00:51:44",
   "title": "Le Règlement",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

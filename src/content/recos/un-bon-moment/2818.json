@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support de jeu : 'Danser le jerk' de Thierry Hazard identifiée dans le multi-blind test (00:48:58). Réponse de jeu = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Thierry Hazard",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:48:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2818",
+  "links": [],
+  "quote": "j'ai un danser le jerk de Thierry Hazard",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:48:58",
+  "title": "Le Jerk",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

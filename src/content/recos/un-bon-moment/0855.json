@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Sites inventes (gag).",
+    "reason": "'coursdusoir.com' + 'madamebrouillard.fr' = sites inventes dans un echange comique sur l'apprentissage du piano. Pas de vraie recommandation, oeuvres/sites inexistants.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0855",
   "links": [],
   "quote": "coursdusoir.com, il y a un site que tu recommandes pour apprendre le piano.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:56",
   "title": "coursdusoir.com",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2142.",
+    "reason": "Doublon de ubm-2142 (residu acast, meme passage 'Noam ... va sortir son spectacle').",
+    "verdict": "discard"
+  },
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "Noeum sensu va sortir son spectacle c'est incroyable",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:54",
   "title": "Noeum Sensu",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

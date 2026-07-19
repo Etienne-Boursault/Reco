@@ -1,18 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:42:07-08. Doublon a fusionner vers ubm-2592.",
+    "reason": "Doublon de ubm-2592 (Gang Stories, meme reco, meme instant 01:42:07-08). Source acast, titre 'Gangstories' colle. On garde ubm-2592 (source youtube, titre 'Gang Stories', creator Deezer) comme canonique.",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1192",
   "links": [],
   "quote": "j'ai écouté Gangstories de...",
-  "recommendedBy": "Anis",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:42:07",
   "title": "Gangstories",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

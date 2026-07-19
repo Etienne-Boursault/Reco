@@ -1,21 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle (Arte) mais mentionnee comme anecdote de casting/montage (l.1122 'coupe au montage... avoir dit a tout le monde d'aller regarder'). recommendedBy 'Navo' errone = anecdote d'un invite acteur.",
+    "reason": "Anecdote: un invite raconte avoir ete coupe au montage d'une serie ('Une ile' avec Laetitia Casta sur Arte) ou il avait une scene. Recit perso, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Leticia Casta",
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "externalIds": {
     "tmdb": "87780",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0126",
   "links": [],
-  "quote": "C'est une série qui s'appelait Une île avec Leticia Casta sur Arte, je crois.",
+  "quote": "Non, d'une série qui s'appelait Une île, avec Laetitia Casta sur Arte, je crois.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:44:13",
+  "status": "discarded",
+  "timestamp": "00:44:12",
   "title": "Une île",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

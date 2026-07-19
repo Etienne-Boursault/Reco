@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du couple. Doublon = ubm-1768 (meme passage 00:14:40). Dubosc = tiers, non-invite -> recommendedBy vide.",
+    "reason": "Discute a propos du renouveau de Franck Dubosc ('il prend tout le monde a contre-pied sur tout', renouveau apres les Cesar) a 00:14. Substance reelle mais pas de prescription et Kyan ne l'a pas vu ('j'ai pas vu ca').",
+    "verdict": "citation"
+  },
   "creator": "Non précisé",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,17 +18,57 @@
     "tmdb": "1210732",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0265",
+  "kind": "citation",
   "links": [],
-  "quote": "Un ours dans le Jurape.",
-  "recommendedBy": "Non précisé",
+  "quote": "Il prend tout le monde à contre-pied sur tout.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:14:40",
   "title": "Un ours dans le Jura",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

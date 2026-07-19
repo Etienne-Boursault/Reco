@@ -1,18 +1,64 @@
 {
-  "creator": "Chris Fleming",
+  "customLinks": [
+    {
+      "label": "IMDB",
+      "url": "https://www.imdb.com/fr/name/nm4955186/"
+    }
+  ],
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0559",
+  "kind": "reco",
   "links": [],
-  "quote": "J'ai découvert, mais vous avez peut-être dû le découvrir en même temps. Chris Fleming, le mec qui fait du stand-up aux États-Unis.",
-  "recommendedBy": "David",
+  "quote": "C'est lui.",
+  "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:41:30",
+  "status": "validated",
+  "timestamp": "01:42:03",
   "title": "Chris Fleming",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "artiste"
   ]
 }

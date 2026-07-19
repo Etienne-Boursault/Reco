@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur confirme : Pauline Grisonni (~01:41:45). Attribution du locuteur ambigue ('je recommande' + dispute 'C'est moi qui l'ai dit', taquineries envers Alice) -> recommendedBy vide (regle 3). Manifest suggerait Navo.",
+    "reason": "Podcast reel 'La Lecon' (Pauline Grisonni) recommande ; ce n'est pas l'oeuvre d'un invite present (Alice y etait juste invitee)",
+    "verdict": "validate"
+  },
+  "creator": "Pauline Grisonni",
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:07",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3202",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Orso Media (page officielle)",
+      "url": "https://orsomedia.io/medias/la-lecon"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/la-le%C3%A7on-le-podcast-sur-lart-d%C3%A9chouer/id1365852206"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/show/361782"
+    }
+  ],
+  "quote": "Moi, du coup, je recommande le podcast La Leçon.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:07",
+  "title": "La Leçon",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

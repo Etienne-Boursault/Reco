@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Madonna = comparaison en une ligne ('un tres bon exemple', 'ca pourrait etre une nouvelle chanteuse') dans la discussion longevite. Comparaison en passant.",
+    "verdict": "discard"
+  },
+  "creator": "Madonna",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:57:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1750",
+  "links": [],
+  "quote": "Madonna, c'est un très bon exemple",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:57:56",
+  "title": "Madonna",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

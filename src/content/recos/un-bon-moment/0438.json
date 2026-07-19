@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1448 (artiste probable : Disiz).",
+    "reason": "Doublon de ubm-1448 (meme moment : « je recommande l'album de... le dernier album... morceau 45 »). Nom d'artiste transcrit « D6 » ici / « This Is » ailleurs — meme reco.",
+    "verdict": "discard"
+  },
   "creator": "D6",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0438",
   "links": [],
   "quote": "je recommande l'album de D6 super super album de D6",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:46:44",
   "title": "L'album de D6",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

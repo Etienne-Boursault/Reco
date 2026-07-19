@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2268",
+    "reason": "Doublon de ubm-2268 (Bloques, meme ts 00:19:12), titre 'Bloque' au singulier = mistranscription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2262",
+  "links": [],
+  "quote": "bloqué ça les a vraiment marqués",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:12",
+  "title": "Bloqué",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

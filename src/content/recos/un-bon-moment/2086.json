@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'The Real Slim Shady' (00:53:48) = chanson support/reponse du jeu de la complicite. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Eminem",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2086",
+  "links": [],
+  "quote": "the real slim shady",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:53:48",
+  "title": "The Real Slim Shady",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

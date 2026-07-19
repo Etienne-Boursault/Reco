@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur : Florence Longpre (fiche dit 'Florence Lompre').",
+    "reason": "'La serie Empathie... Exceptionnel. Tout est bien a tous les niveaux, tout le temps'. Serie quebecoise de Florence Longpre (Crave/Canal+) confirmee. Eloge fort. Attribution incertaine.",
+    "verdict": "validate"
+  },
   "creator": "Florence Lompré",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
@@ -6,18 +19,57 @@
     "tmdb": "284656",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0193",
+  "kind": "reco",
   "links": [],
-  "quote": "la série empathie avec Florence Lompré j'ai commencé c'est exceptionnel tout est bien à tous les niveaux",
-  "recommendedBy": "Navo",
+  "quote": "La série Empathie, ça.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:50:51",
   "title": "Empathie",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

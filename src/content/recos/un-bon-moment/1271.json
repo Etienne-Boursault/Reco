@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2275 'Shrinking'.",
+    "reason": "'Drinking' = transcription erronee de 'Shrinking' (01:12:15 'Shrinking comme ca'). Doublon de ubm-2275.",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "6584658132930b0016c5272b",
   "externalIds": {
@@ -6,6 +19,17 @@
     "tmdb": "39532",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +38,10 @@
   "quote": "Drinking en tout cas, c'est pas mal.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:15",
   "title": "Drinking",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Kyan introduit explicitement 'gilles tu etais... dans le film d'Eric dans le sens de la fete'. Canonique (doublon degrade : ubm-0464).",
+    "reason": "Le Sens de la fete (Toledano/Nakache) : Gilles evoque avec substance le tournage (Bacri, esprit de troupe, casting transgenerationnel). Oeuvre passee de l'invite, discutee sans prescription -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Éric Toledano, Olivier Nakache",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1423",
+  "kind": "citation",
+  "links": [],
+  "quote": "le sens de la fête ça c'est que c'est un truc qui est devenu culte",
+  "recommendedBy": "Gilles Lellouche",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:04",
+  "title": "Le Sens de la fête",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

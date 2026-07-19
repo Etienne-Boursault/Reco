@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Daft Punk' (01:56:41) est le SUJET du podcast French Touch (ubm-2078), pas une oeuvre recommandee distincte. Doublon/faux positif.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2090",
+  "links": [],
+  "quote": "on a des podcasts sur Daft Punk",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:56:41",
+  "title": "Daft Punk",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

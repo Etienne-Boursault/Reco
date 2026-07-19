@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE (doublon ubm-0130 discarde). Tortosa = artiste de la musique de fin du podcast. Reco d'un host (juste apres 'mon spectacle sur Canal', probablement Kyan) mais lequel non confirmable -> vide.",
+    "reason": "Reco explicite: 'La musique de fin a ete faite par Tortosa. Donc allez ecouter... n'hesitez pas a l'ecouter.' Projet sorti en vinyle/album/Spotify.",
+    "verdict": "validate"
+  },
+  "creator": "Tortosa",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2155",
+  "kind": "reco",
+  "links": [],
+  "quote": "La musique de fin a été faite par Tortosa. Donc, allez écouter.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:26",
+  "title": "Tortosa",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "album"
+  ]
+}

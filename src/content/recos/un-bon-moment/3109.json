@@ -1,0 +1,59 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Host (Kyan ou Navo) non diarizable → recommendedBy vide (regle 3).",
+    "reason": "Un host place La Chevre (Francis Veber) dans son top 3, assume (« bah moi je crois que la chevre il est dans mon top 3 », « j'ai deja dit la chevre pour mes films preferes ») → prescription reelle. Comedie tierce, pas l'oeuvre d'un invite → validate.",
+    "verdict": "validate"
+  },
+  "creator": "Francis Veber",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3109",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/la-chevre"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "FilmoTV",
+      "url": "https://www.filmotv.fr/film/la-chevre/8659.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/la-chevre/umc.cmc.16zidkgxtiw2xer4ywgev9wrc"
+    }
+  ],
+  "quote": "bah moi je crois que la chèvre il est dans mon top 3",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:05:55",
+  "title": "La Chèvre",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1985
+}

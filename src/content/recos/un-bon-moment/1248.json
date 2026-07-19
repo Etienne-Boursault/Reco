@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Morceau support du 'multi-blind test de Navo' (jeu, 24:02-37:00). Chanson support de jeu -> discard.",
+    "verdict": "discard"
+  },
   "creator": "Daft Punk",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/66609426"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1248",
   "links": [],
   "quote": "J'entends plus Bonnie M que Daft Punk.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:36:54",
   "title": "Daft Punk",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

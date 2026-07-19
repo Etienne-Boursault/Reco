@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "GARDÉ ubm-3071 (Pitch). 'Peach' n'est pas identifiable comme série distincte ; proximité phonétique + saison 2 + co-écriture avec Florent Bernard → même œuvre que Pitch. Vérif web impossible (budget épuisé). Si 'Peach' est bien une série distincte, restaurer en guest-work.",
+    "reason": "Doublon très probable de ubm-3071 : 'Peach' = 'Pitch' mal transcrit (même série des hosts/invité, 'saison 2', même contexte de collaboration avec Flaubert/Xavier). 'on finit d'écrire la saison 2 de Peach' (00:43:10). Règle 13.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:10",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3075",
+  "links": [],
+  "quote": "on finit d'écrire la saison 2 de Peach et je trouvais ça hyper mignon.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:10",
+  "title": "Peach",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

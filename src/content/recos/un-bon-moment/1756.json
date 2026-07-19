@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Reference a une prestation de festival, pas une oeuvre.",
+    "reason": "'C'est ce que j'ai essaye de faire sur le montreux, la' (00:32) refere a une prestation au Montreux Comedy (gala), pas a une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1756",
+  "links": [],
+  "quote": "C'est ce que j'ai essayé de faire sur le montreux, là.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:48",
+  "title": "Montreux",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ]
+}

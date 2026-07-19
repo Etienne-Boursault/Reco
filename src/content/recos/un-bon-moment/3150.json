@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Film réel (Better Man, 2024, Michael Gracey, biopic Robbie Williams) mais aucune prescription, locuteur ne l'a pas vu.",
+    "reason": "Comparaison en passant / hearsay : « J'ai pas vu Better Man… il paraît que c'est ouf. J'ai pas vu ça. Mais je crois pas que ce soit ça » — évoqué comme exemple possible en brainstorm d'un biopic musical, non vu, puis écarté (règle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Michael Gracey",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3150",
+  "links": [],
+  "quote": "J'ai pas vu Better Man, le truc de Robbie Williams avec un singe. Il paraît que c'est ouf.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:19",
+  "title": "Better Man",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel : 'Faites entrer l'accuse' (fiche dit 'L'accuse').",
+    "reason": "'Faites entrer l'accuse' evoquee avec substance et appreciation personnelle ('je suis l'un des premiers clients... je trouvais ca incroyable') pour ancrer une discussion sur la fascination du true-crime. Sans prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2043",
+  "kind": "citation",
+  "links": [],
+  "quote": "Genre fait entrer l'accusé, je trouvais ça incroyable.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:41",
+  "title": "L'accusé",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

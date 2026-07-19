@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre specifique « Live in Concert » non prononce dans le transcript (« le travail de Richard Pryor » generique). Canonique conserve = ubm-2498.",
+    "reason": "Doublon de ubm-2498 (meme TC 00:56:20, meme contexte).",
+    "verdict": "discard"
+  },
   "creator": "Richard Pryor",
   "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "l'écouvret de Richard Pryor qui est disponible sur ocs et disponible sur mycanal",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:56:20",
   "title": "Richard Pryor: Live in Concert",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

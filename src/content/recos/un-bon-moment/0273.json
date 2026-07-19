@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'I-R-A' non identifiable ; artefact de transcription.",
+    "reason": "Transcription confuse a 01:44 ('Il s'appelle Lira. C'est le magazine Riba... les Pipas... c'est que les IA'). Bribe non identifiable comme oeuvre, semble evoquer des snacks ; faux positif.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0273",
   "links": [],
   "quote": "Et après, il y a un deuxième truc que j'aime bien. Il s'appelle I-R-A.",
-  "recommendedBy": "invitée",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:44:07",
   "title": "I-R-A",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

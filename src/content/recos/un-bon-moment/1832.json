@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2028",
+    "reason": "Doublon de ubm-2028 (chaine G Milgram).",
+    "verdict": "discard"
+  },
+  "creator": "J. Milgram",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:57+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:15:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1832",
+  "links": [],
+  "quote": "Donc vous allez aimer la chaîne de J. Milgram.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:15:19",
+  "title": "Chaîne de J. Milgram",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

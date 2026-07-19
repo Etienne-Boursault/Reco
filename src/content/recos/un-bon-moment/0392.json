@@ -1,18 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur = Luke Rhinehart (pseudonyme de George Cockcroft), transcript « Luke Reinhardt ». Titre « L'Homme-de » OK.",
+    "reason": "Kyan decrit et recommande : « c'est tres subversif... mais c'est vraiment fascinant... la version actuelle contient une interview de l'auteur, passionnant ».",
+    "verdict": "validate"
+  },
   "creator": "Luke Reinhardt",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:15:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0392",
+  "kind": "reco",
   "links": [],
   "quote": "le dernier livre donc un plus vieux livre mais que j'avais jamais lu jusque là de luke reinhardt même si c'est pas son beau vrai nom c'est un pseudo mais c'est en général il est connu là dessus ça s'appelle l'homme d",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "02:15:39",
   "title": "L'homme-dé",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

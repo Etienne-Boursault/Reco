@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2535 (canonique : titre correct « Bande Organisée », source YouTube, deux extracteurs). Mention dans un jeu de toute façon.",
+    "reason": "Doublon de ubm-2535 (même chanson « Bande Organisée » des rappeurs de Marseille, révélée dans le jeu de la complicité ~00:56). Titre mal orthographié « Bond Organisé », creator « OM » erroné.",
+    "verdict": "discard"
+  },
   "creator": "OM",
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "links": [],
   "quote": "C'est une chanson qui prend 3 millions par jour en ce moment.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:56:54",
   "title": "Bond Organisé",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

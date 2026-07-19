@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse d'une devinette (jeu « il a un oeil de verre » -> Colombo/Peter Falk, « c'est une carte du jeu »). Reponse de jeu (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Peter Falk",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:29:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3193",
+  "links": [],
+  "quote": "Il a un œil de verre, Colombo ? Peter Folk, ouais, il a un œil de verre.",
+  "recommendedBy": "Kyan Khojandi ou Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:29:58",
+  "title": "Colombo",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-0228",
+    "reason": "Doublon de ubm-0228 (Yoroi, 00:31:31) — et orthographe erronee 'Yaroi'.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1809",
+  "links": [],
+  "quote": "Allez voir Yoroi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:31:31",
+  "title": "Yaroi",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

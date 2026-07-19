@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Je te connaissais pas' (Oxmo Puccino) est la chanson que Tahnee a reprise pour un concours : mention instrumentale dans son anecdote (Oxmo l'a invitee a Planete Rap), pas une prescription au public.",
+    "verdict": "discard"
+  },
+  "creator": "Oxmo Puccino",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2139",
+  "links": [],
+  "quote": "Et du coup, je me suis filmé en train de chanter la chanson qui s'appelait \"Je te connaissais pas\".",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:41",
+  "title": "Je te connaissais pas",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

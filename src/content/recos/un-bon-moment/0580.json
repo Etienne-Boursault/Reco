@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conservee : ubm-2741 (youtube, titre le plus complet). Fusion du triplet Blood Song.",
+    "reason": "Doublon (regle 13) : meme reco que ubm-2741 (« Blood Song / Bloodsong, la voix du sang », 01:17:15-20). Extraction acast redondante.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0580",
   "links": [],
   "quote": "je vais recommander une série de livres qui s'appelle Blood Song, la voix du sang, qui est très très connue",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:17:18",
   "title": "Blood Song",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

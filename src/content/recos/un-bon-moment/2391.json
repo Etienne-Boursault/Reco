@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale (exemple).",
+    "reason": "Exemple rhétorique : « Dans The Holiday, Cameron Diaz fait des bandes annonces, c'est son métier » (01:27:54), pour illustrer une discussion sur les bandes-annonces. Pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Nancy Meyers",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:27:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2391",
+  "links": [],
+  "quote": "Dans The Holiday, il y a Cameron Diaz qui fait des bandes annonces. C'est ça, son métier.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:27:54",
+  "title": "The Holiday",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

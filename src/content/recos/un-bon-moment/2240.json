@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique des doublons (0625/2240). Attribution Navo confirmee: 'il faut que j'en fasse a chaque emission' = co-host recurrent. Titre exact = 'Cocovoit' (epele C-O-C-O-V-O-I-T a 01:33:57), pas 'Coco Voit' avec espace.",
+    "reason": "Reco explicite 'Allez voir Coco Voit, c'est un bon delire' a 01:33:35. Web-serie YouTube reelle (covoiturage).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2240",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir Coco Voit, c'est un bon délire",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:36",
+  "title": "Coco Voit",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

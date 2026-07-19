@@ -1,6 +1,31 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre réel = 'Ni pour ni contre (bien au contraire)' (2003, Klapisch). Quote actuelle ('c'était naze mais ça apprend') = artefact (concerne l'atelier d'acteurs). Vrai passage ~00:50:00 et ~01:09:53. À publier en guest-work une fois corrigé.",
+    "reason": "Guest-work de Klapisch mais titre méconnaissable et quote hors-sujet: à corriger avant publication.",
+    "verdict": "unsure"
+  },
   "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,6 +37,7 @@
   "status": "draft",
   "timestamp": "00:53:00",
   "title": "Nippon et Compte",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Recommande par un host (cinephile, prob. Kyan) -- attribution non certaine, laissee vide.",
+    "reason": "Reco explicite: 'deux films de Christian Bale que je te recommande. Il y a The Fighter... incroyable en jeu d'acteur, sublime... des chefs-d'oeuvre' (01:12:03).",
+    "verdict": "validate"
+  },
   "creator": "David O. Russell",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,17 +15,48 @@
     "tmdb": "45317",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1137",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a 'The Fighter'.",
+  "quote": "Il y a The Fighter.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:03",
   "title": "The Fighter",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Scatman' (00:48:00) = doublon de ubm-2055, reponse du jeu.",
+    "verdict": "discard"
+  },
   "creator": "Scatman John",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/99360002"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0172",
   "links": [],
   "quote": "Scatman World",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:48:00",
   "title": "Scatman",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

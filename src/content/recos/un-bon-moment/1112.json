@@ -1,18 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE du cluster surendettement (doublons discardés: 1202, 2864, 2869). « moi je recommande la vidéo sur le sur-endettement de [créateur] » (01:31:21-36) = reco explicite => validate. Nom du créateur incertain : le transcript épelle un nom compliqué (« E-H...Reka »), rendu tantôt « EREK »/« E.R.E.K. », tantôt « Eureka » (WebSearch épuisé) => title_suspect sur l'identité du créateur. Locuteur = un hôte (après « merci Jérémy ») mais Kyan vs Navo indéterminable => recommendedBy vidé + attribution_suspect.",
+    "reason": "Recommandation explicite fin d'émission; attribution hôte ambiguë",
+    "verdict": "validate"
+  },
   "creator": "EREK",
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1112",
+  "kind": "reco",
   "links": [],
   "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:31:22",
   "title": "Vidéo sur le surendettement",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0927.",
+    "reason": "Doublon de ubm-0927 (titre corrompu 'Why Met Your Mother') + mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Carter Bays, Craig Thomas",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2345",
+  "links": [],
+  "quote": "qui est une série dans l'américaine",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:33",
+  "title": "Why Met Your Mother",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

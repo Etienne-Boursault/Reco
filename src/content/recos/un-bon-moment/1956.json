@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Game of Thrones' cité comme anecdote people ('la petite-fille de Chaplin qui a joué notamment dans Game of Thrones') dans le fil nepo-baby, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "autre",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1956",
+  "links": [],
+  "quote": "qui a joué notamment dans Game of Thrones.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:26",
+  "title": "Game of Thrones",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

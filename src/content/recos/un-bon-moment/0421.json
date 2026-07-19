@@ -1,10 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Bit sarcastique, pas une reco.",
+    "reason": "'Citizen Kane' fait partie du meme bit sarcastique ('Moi je recommande Citizen Kane... le cinema en general'). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=FR",
     "tmdb": "15",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +32,10 @@
   "links": [],
   "quote": "Citizen Kane.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:31",
   "title": "Citizen Kane",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

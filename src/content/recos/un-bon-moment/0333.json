@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-1662.",
+    "reason": "Doublon de ubm-1662 (meme reco de l'album The Do / Shake Shook Shaken, meme passage 00:05:05). Titre 'Excellent Shake Shook Shaken' = artefact (adjectif capte dans le titre).",
+    "verdict": "discard"
+  },
   "creator": "Zodo",
   "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0333",
   "links": [],
   "quote": "Je te conseille d'écouter l'album, Excellent Shake Shook Shaken.",
-  "recommendedBy": "Alice Roitier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:05",
   "title": "Excellent Shake Shook Shaken",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ],

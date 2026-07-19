@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Serie web 'Bloque' reelle, mais utilisee ici comme exemple argumentatif (00:05:47). Non recommandee.",
+    "reason": "Mention instrumentale : Kyan cite une scene de la serie web 'Bloque' (replique d'Aurele/Grinche) comme EXEMPLE pour illustrer le propos 'raciste mais sympa'. Aucune recommandation ni avis sur l'oeuvre elle-meme.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:08:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2754",
+  "links": [],
+  "quote": "Il y a un peu ça, d'ailleurs, dans Bloqué, à un moment, Aurèle, il a une phrase comme ça où il dit, où Grinche lui dit, mais ton oncle, il est raciste. Il dit, ah ouais, putain, à chaque fois, j'oublie qu'il est raciste parce qu'il est sympa.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:05:47",
+  "title": "Bloqué",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

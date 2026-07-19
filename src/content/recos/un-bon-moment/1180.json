@@ -1,19 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1281 « Columbo » (fiche canonique : source YT, tmdb 873, watchProviders, timestamp 01:36:22). ubm-1180 est source Acast, timestamp 00:00:00 (nul), et tmdb 48332 errone.",
+    "verdict": "discard"
+  },
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
   "externalIds": {
     "tmdb": "48332",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1180",
   "links": [],
   "quote": "Colombo, on peut regarder Colombo?",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
+  "timestamp": "00:00:00",
   "title": "Colombo",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

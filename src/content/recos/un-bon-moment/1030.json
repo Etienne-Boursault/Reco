@@ -1,20 +1,68 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco gardee; ubm-0658 discard comme doublon. Attribution Kyan probable (style 'formidable/paradis de la joie') mais non diarise",
+    "reason": "Prescription enthousiaste de Toxic (Britney Spears) dans le segment de fin. Reco gardee du doublon",
+    "verdict": "validate"
+  },
   "creator": "Britney Spears",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/15391618"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1030",
-  "links": [],
-  "quote": "moi je vous conseille vraiment Britney Spears c'est toxique je crois Britney Spears toxique c'est une des choses les plus formidables qui existent",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/track/15391618"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/track/4fbaKWFRghusXd4bSBvvfN"
+    }
+  ],
+  "quote": "Britney Spears Toxic, c'est une des choses les plus formidables qui existent",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:17:31",
+  "status": "validated",
+  "timestamp": "01:17:34",
   "title": "Toxic",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

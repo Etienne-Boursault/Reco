@@ -1,18 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Astro Boy' cité comme simple exemple des licences de Tezuka ('il a fait des licences hyper connues comme Astro Boy, Le Roi Léo, etc.') — le sujet est le créateur, pas d'avis individuel sur l'œuvre.",
+    "verdict": "discard"
+  },
   "creator": "Osamu Tezuka",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0403",
   "links": [],
-  "quote": "comme Astro Boy",
+  "quote": "Il a fait des licences hyper connues comme Astro Boy, Le Roi Léo, etc.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:01:43",
+  "status": "discarded",
+  "timestamp": "01:01:29",
   "title": "Astro Boy",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "bd"
   ]
 }

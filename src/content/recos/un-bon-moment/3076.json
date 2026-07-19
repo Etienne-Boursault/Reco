@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Affection nostalgique pour la scène du T-Rex mais aucune prescription ni discussion de l'œuvre comme reco — limite citation, tranché en discard (exemple/anecdote en passant).",
+    "reason": "Anecdote de parentalité donnée en exemple, sans prescription : 'tu vois par exemple pendant le confinement je lui ai montré Jurassic Park... je veux voir ces yeux quand le T-Rex va arriver' (01:05:04). Le film est instrumental (capter la réaction d'un enfant), pas recommandé pour lui-même → règle 1.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:04",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3076",
+  "links": [],
+  "quote": "Tu vois par exemple pendant le confinement je lui ai montré Jurassic Park.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:04",
+  "title": "Jurassic Park",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,18 +1,66 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Le Trone des Frogz » (avec Z, Golden Moustache). Auteur = Yacine Belhousse. Invites a completer dans les metadonnees episode.",
+    "reason": "Web-serie Golden Moustache ecrite/co-realisee par Yacine Belhousse (invite), Dedo au casting. Promo explicite « Allez voir, c'est disponible sur la chaine Golden Moustache... c'est hilarant » (l.1095-1097). Oeuvre d'invite -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Golden Moustache",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0660",
+  "kind": "reco",
   "links": [],
-  "quote": "Allez voir le trône des frogs c'est hilarant d'ailleurs des dojos dedans.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Allez voir, c'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube.",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:36:08",
+  "status": "validated",
+  "timestamp": "00:36:06",
   "title": "Le trône des frogs",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "autre",
+    "video"
   ]
 }

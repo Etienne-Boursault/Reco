@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Middle East Sunshine' (00:04:15) = jeu de mots ChatGPT sur Little Miss Sunshine ('si c'etait un film sur la famille'). Exemple rhetorique, oeuvre inexistante -> faux positif.",
+    "verdict": "discard"
+  },
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0165",
   "links": [],
   "quote": "si c'était un film sur la famille, elle serait Middle East Sunshine.",
-  "recommendedBy": "Marine Léonardier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:04:15",
   "title": "Middle East Sunshine",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

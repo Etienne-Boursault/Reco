@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Contexte : liste de couples d'humoristes.",
+    "reason": "Blanche Gardin nommée comme exemple d'un couple d'humoristes (avec Louis C.K.) dans une discussion + blague, sans reco de son œuvre (00:56). Mention instrumentale (exemple/comparaison).",
+    "verdict": "discard"
+  },
+  "creator": "Blanche Gardin",
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:27:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2941",
+  "links": [],
+  "quote": "immense fantasme à Blanche Gardin",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:04",
+  "title": "Blanche Gardin",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

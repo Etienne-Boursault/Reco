@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2578",
+    "reason": "Doublon de ubm-2578 (meme passage 01:45:07: 'Le spectacle de Blanche sur myCanal dessine par Fabcaro, allez le voir'). Canonique = ubm-2578.",
+    "verdict": "discard"
+  },
+  "creator": "Blanche Gardin",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:45:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2584",
+  "links": [],
+  "quote": "Le spectacle de Blanche, sur MyCanal, dessiné par Fab Caro. Allez le voir.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:45:07",
+  "title": "Blanche Gardin: Spectacle",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

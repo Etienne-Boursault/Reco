@@ -1,18 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution Navo a confirmer (transcript non diarize ; question posee aux invites).",
+    "reason": "Recommandation explicite en reponse a « qu'est-ce que vous aimeriez recommander ? » : « Gaming Historian sur YouTube... c'est hyper interessant » (l.2887-2890).",
+    "verdict": "validate"
+  },
   "creator": "YouTube",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0667",
+  "kind": "reco",
   "links": [],
-  "quote": "Alors, c'est en anglais. Mais, c'est un gars qui fait l'histoire des jeux vidéo.",
+  "quote": "Alors, c'est en anglais, mais c'est un gars qui fait l'histoire des jeux vidéo.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:34:36",
+  "status": "validated",
+  "timestamp": "01:34:34",
   "title": "Gaming Historian",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "video"
   ]
 }

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0364.",
+    "reason": "Anecdote de tournage sur Bryan Cranston dans le jeu; pas de reco. Doublon de ubm-0364; titre errone 'Break Bad'.",
+    "verdict": "discard"
+  },
+  "creator": "Vince Gilligan",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:51:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1642",
+  "links": [],
+  "quote": "Ouais c'est le seul truc que j'ai regardé dans ma vie.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:42:20",
+  "title": "Break Bad",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Propos de la chroniqueuse Mona Guba sur sa carriere ; name-drop sans avis. Pas une reco.",
+    "reason": "Mona Guba (chroniqueuse) evoque ses premieres parties de concerts ('la premiere partie de Giorgio, Kerry James'). Name-drop de deux artistes dans le recit de sa propre carriere, sans avis ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Kerry James",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T12:56:09+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1472",
+  "links": [],
+  "quote": "Je suis contente la première partie de Giorgio, Kerry James",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:31",
+  "title": "Giorgio, Kerry James",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

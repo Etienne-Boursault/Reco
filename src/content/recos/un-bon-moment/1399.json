@@ -1,0 +1,65 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote personnelle : Retiens la nuit (Johnny Hallyday) est la chanson que Mosimann a chantee a 13 ans a un concours (00:24). Aucune prescription -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Johnny Hallyday",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "24:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "24:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "24:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1399",
+  "links": [],
+  "quote": "Retiens la nuit de Johnny Day",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:30",
+  "title": "Retiens la nuit",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

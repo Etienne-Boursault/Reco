@@ -1,7 +1,49 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Budget WebSearch epuise (200/200) : impossible de confirmer que 'Rire pour ne pas pleurer' est un livre reel de J.-M. Bigard. Echange philosophique semi-serieux ; risque d'artefact (reprise de la phrase 'rire pour ne pas pleurer' du dialogue). Reste draft, a confirmer par un humain avec acces web ; si reel, plutot une citation.",
+    "reason": "Attribue a Bigard ('c'est le livre de Bigard, hein? Je te signale', 01:08:12-01:08:28) mais titre non verifiable.",
+    "verdict": "unsure"
+  },
   "creator": "Jean-Marie Bigard",
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0594",
@@ -10,8 +52,9 @@
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "01:08:24",
+  "timestamp": "01:08:22",
   "title": "Rire pour ne pas pleurer",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

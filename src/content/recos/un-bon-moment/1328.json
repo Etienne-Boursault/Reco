@@ -1,0 +1,31 @@
+{
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:06:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1328",
+  "kind": "citation",
+  "links": [],
+  "quote": "Franchement, c'est un mec qui m'a beaucoup aidé !",
+  "recommendedBy": "Redouane Bougheraba",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:01:24",
+  "title": "Grand Corps Malade",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

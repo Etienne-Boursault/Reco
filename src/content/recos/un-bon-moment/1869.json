@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse/exemple dans un bit sur la litterature ('ca se passe dans les mines? Germinal'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Émile Zola",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:18:56+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1869",
+  "links": [],
+  "quote": "Germinal.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:29",
+  "title": "Germinal",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

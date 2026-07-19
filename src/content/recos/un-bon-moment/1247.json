@@ -1,17 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1134 (meme passage 29:11, meme quote); titre BOTW errone, fil Zelda TOTK canonique = ubm-1133.",
+    "verdict": "discard"
+  },
   "creator": "Nintendo",
   "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1247",
   "links": [],
-  "quote": "Franchement tant mieux pour eux s'ils ont trouvé le truc qui fait qu'ils savent direct et qu'ils sont sûrs d'eux.",
-  "recommendedBy": "invité",
+  "quote": "sincèrement, c'est pas pour rien que c'est un des meilleurs de jeu de tous les temps.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:25:40",
+  "status": "discarded",
+  "timestamp": "00:29:11",
   "title": "Zelda: Breath of the Wild",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

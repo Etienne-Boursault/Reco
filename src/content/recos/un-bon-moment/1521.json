@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse de jeu-devinette (le nom « Kylie Minogue » = la solution) / doublon de ubm-1508.",
+    "verdict": "discard"
+  },
+  "creator": "Kylie Minogue",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:32:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1521",
+  "links": [],
+  "quote": "Kylie Minogue",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:31:42",
+  "title": "Kylie Minogue",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

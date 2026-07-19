@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribue a Doria (ref. Constance sa co-autrice). Transcript non diarise.",
+    "reason": "'Constance c'est elle qui m'a fait decouvrir Fleabag, moi je ne connaissais pas et j'adore, evidemment'. Endossement enthousiaste. Attribution corrigee (etait Navo, mais Constance est la co-autrice de Doria).",
+    "verdict": "validate"
+  },
   "creator": "Phoebe Waller-Bridge",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,18 +18,58 @@
     "tmdb": "67070",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0217",
+  "kind": "reco",
   "links": [],
-  "quote": "celle qui m'a fait découvrir Fleabag, moi, je ne connaissais pas, j'adore évidemment",
-  "recommendedBy": "Navo",
+  "quote": "Constance, c'est elle qui m'a fait découvrir \"Fleabag\". Moi, je ne connaissais pas et j'adore.",
+  "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:07:12",
+  "status": "validated",
+  "timestamp": "01:08:10",
   "title": "Fleabag",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

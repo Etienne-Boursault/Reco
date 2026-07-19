@@ -1,0 +1,66 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Un homme heureux (00:32): anecdote confuse ('tout le monde va chercher de quel film tu parles... c'est un homme heureux'), pas une reco, pas de substance.",
+    "verdict": "discard"
+  },
+  "creator": "N/A",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1598",
+  "links": [],
+  "quote": "ils vont chercher de quel film tu parles.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:48",
+  "title": "Un homme heureux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

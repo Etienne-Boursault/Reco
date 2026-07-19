@@ -1,0 +1,30 @@
+{
+  "creator": "conte populaire russe",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1882",
+  "links": [],
+  "quote": "c'est un conte russe, hyper connu, mon enfance",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:00",
+  "title": "Le Navet géant",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle de Kyan (host), auto-promo explicite dans l'intro ([00:00:25] « mon nouveau spectacle Une Bonne Soiree... disponible sur le site unebonneboutique.com »). Host presentant sa propre oeuvre = guest-work. Oeuvre reelle.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "661c1bf83fb7ab00162aa674",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2111",
+  "kind": "reco",
+  "links": [],
+  "quote": "Pour ceux qui n'ont pas vu mon nouveau spectacle Une Bonne Soirée, sachez que je ne joue plus.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:25",
+  "title": "Une Bonne Soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

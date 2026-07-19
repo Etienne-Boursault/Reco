@@ -1,18 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Julie Albertine verifiee (stand-up FR/NY). Recommandeur probable Laura Domenge mais non certain.",
+    "reason": "Section 'recommandez un jeune humoriste' ; Julie Albertine (reelle, humoriste stand-up) recommandee ('ma pouline', 'maxi passages'). Attribution entre invites non certaine (fil Laura).",
+    "verdict": "validate"
+  },
   "creator": "non spécifié",
   "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1223",
+  "kind": "reco",
   "links": [],
-  "quote": "Ouais, Julie Albertine.",
-  "recommendedBy": "non spécifié",
+  "quote": "Julie Albertine qui fait des maxi passages en soi.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:11",
   "title": "Julie Albertine",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

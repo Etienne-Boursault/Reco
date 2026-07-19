@@ -1,10 +1,34 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre hallucine (Squid Game absent du transcript). Doublon de Shameless (canonique ubm-1473).",
+    "reason": "Titre 'Squid Game' errone : la quote et le timecode (~01:25:42) correspondent a la reco Shameless de Djilsi. Squid Game n'apparait nulle part dans le transcript. Doublon de ubm-1473, attribution 'Navo' egalement fausse.",
+    "verdict": "discard"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/93405/watch?locale=FR",
     "tmdb": "93405",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -13,9 +37,10 @@
   "quote": "Je peux recommander une série que j'ai découverte. Chabless. [...] Chabless sur Netflix qui est une très bonne série.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:25:42",
   "title": "Squid Game",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

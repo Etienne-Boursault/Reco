@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : Very Bad Blagues nomme pour situer une comedienne rencontree ('une des comediennes de Very Bad Blagues... c'etait tres tres fort'). Anecdote sur une personne, pas de prescription de la serie.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1852",
+  "links": [],
+  "quote": "Une des comédiennes de \"Very Bad Blag\"",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:12",
+  "title": "Very Bad Blagues",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

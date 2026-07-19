@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Bloc anecdote/jeu Nolan ; aucune reco.",
+    "reason": "Mention instrumentale (regle 1) : « Je comprends rien Tenet » (01:07:10, transcript « Tenede ») — vanne dans l'anecdote Nolan, pas une prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Christopher Nolan",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2740",
+  "links": [],
+  "quote": "Je comprends rien Ténède.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:07:10",
+  "title": "Tenet",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Insomniac (doublon ubm-1284). Existe surtout en texte sur Instagram : type 'podcast' a confirmer. guests metadonnees vide. Timecode 00:28:58 OK.",
+    "reason": "Projet d'Anna Apter ('Insomniac' : serie de textes Instagram - dialogues entre son angoisse, sa creativite, sa libido... - + version audio pour radio pirate) -> auto-promo invitee.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2747",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est des dialogues entre mon angoisse, ma créativité, ma libido, mon stress, ma peur, mon texte",
+  "recommendedBy": "Anna Apter",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:28:58",
+  "title": "Insomniac",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

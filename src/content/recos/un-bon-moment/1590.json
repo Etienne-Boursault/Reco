@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "The Lovely Bones (Peter Jackson) : anecdote-devinette du jeu (Ryan Gosling vire du film). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Peter Jackson",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1590",
+  "links": [],
+  "quote": "Ryan Gosling il a été viré du film La Nostalgie de l'Ange The Lovely Bones par Peter Jackson",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:20",
+  "title": "The Lovely Bones",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

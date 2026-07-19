@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1381 (Etre Humain / cine-rencontres de Shirley).",
+    "reason": "'Cine & Rencontre' = les cine-rencontres de Shirley (meme projet que le spectacle Etre Humain). Recommande par un host a 01:24:20 mais meme oeuvre que ubm-1381.",
+    "verdict": "discard"
+  },
   "creator": "Shirley",
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:24:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Allez voir ça",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:24:20",
   "title": "Cine & Rencontre",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

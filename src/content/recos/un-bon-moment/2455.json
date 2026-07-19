@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison/indice dans le jeu : personnage de Riad Sattouf cite pour decrire un trait (devinette Californication/Hank Moody) -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Riad Sattouf",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2455",
+  "links": [],
+  "quote": "Pascal Brutal c'est à dire qu'il y a une femme qui est sceptique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:11:16",
+  "title": "Pascal Brutal",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Bref cree par Kyan Khojandi & Navo (Bruno Muschio).",
+    "reason": "Oeuvre des hosts presentee par Kyan: 'je suis vraiment un fan de bref, je prefere le dire officiellement', discussion des themes et de la reussite de l'oeuvre ('moi qui ai fait bref'). Politique 2026-07-07: hosts traites comme invites => auto-promo = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2368",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je suis vraiment un fan de bref.",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:28:21",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

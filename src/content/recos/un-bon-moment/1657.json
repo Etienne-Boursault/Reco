@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Bete, heureusement que tu as un navaud derriere' (00:23) = fragment conversationnel ('bref' filler) sur le soutien de Navo a Kyan. Pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "creator": "Navo",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1657",
+  "links": [],
+  "quote": "Bête, heureusement que tu as un navaud derrière",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:12",
+  "title": "Bête",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre reelle (Herge, 00:50:05) mais mention comique sans avis prescriptif. Non recommandee.",
+    "reason": "Mention ironique dans une enumeration de lectures : 'Qu'est-ce que j'ai lu d'autre d'interessant ? Tintin au Congo. Faut le remettre dans ce contexte historique' — blague sur le colonialisme belge, pas une recommandation sincere.",
+    "verdict": "discard"
+  },
+  "creator": "Hergé",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:09:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:09:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2758",
+  "links": [],
+  "quote": "Tintin au Congo. Faut le remettre dans ce contexte historique.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:05",
+  "title": "Tintin au Congo",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

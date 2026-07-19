@@ -1,17 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Exemple de sketch cite (parodie de generique), pas une oeuvre recommandee. Doublon de ubm-2895.",
+    "reason": "Mention instrumentale : 'Starsky et Hutch' est le titre d'un SKETCH/parodie de generique fait par Bon Bain Voila (Starsky chez Flunch, Starsky auf Deutsch), pas une reco de la serie. Doublon de ubm-2895.",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:02:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0818",
   "links": [],
-  "quote": "Starsky chez Flunch.",
-  "recommendedBy": "Invité",
+  "quote": "c'est très très drôle Starsky et Hutch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:58:12",
   "title": "Starsky et Hutch",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Vincendeau Lherme » = mauvaise transcription de Vincent Delerm. Canonique = ubm-2507.",
+    "reason": "Doublon de ubm-2507 (Vincent Delerm, 01:21:54-01:22:02).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1257",
   "links": [],
   "quote": "j'aime bien vincendolèreme",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:54",
   "title": "Vincendeau Lherme",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

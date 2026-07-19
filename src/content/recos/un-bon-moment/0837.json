@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "My Name is Earl analyse avec substance (episode en prison, regle des sequences <30s, ~00:31:36-00:32:31) comme objet d'etude d'ecriture, sans prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "Greg Garcia",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
@@ -6,17 +14,48 @@
     "tmdb": "2317",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0837",
+  "kind": "citation",
   "links": [],
-  "quote": "C'était My Name Is Earl, parce que c'était pas une site comme...",
-  "recommendedBy": "inconnu",
+  "quote": "c'était My Name is Earl",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:31:30",
+  "status": "validated",
+  "timestamp": "00:32:31",
   "title": "My Name Is Earl",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

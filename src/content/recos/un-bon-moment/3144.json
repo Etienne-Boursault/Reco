@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Enchaine sur le tour de Navo mais l'echange est a plusieurs voix ; attribution host a confirmer.",
+    "reason": "Recommande dans le tour de recos (« Rick et Morty saison 9 », « genial », « l'episode du cornichon »).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:49",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3144",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/rick-and-morty/s9/ab553cdc-e15d-4597-b65f-bec9201fd2dd"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — saison 9",
+      "url": "https://www.allocine.fr/series/ficheserie-11561/saison-1000002557/"
+    }
+  ],
+  "quote": "Rick et Morty saison 9",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:26:49",
+  "title": "Rick et Morty",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2013
+}

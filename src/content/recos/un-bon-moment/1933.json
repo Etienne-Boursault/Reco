@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "« Bigflo & Oli » : simple name-drop d'un feat de Spider ZED (« il a un feat avec Big Flo et Oli »), qualifie de « la chanson la moins bien de tout ce qu'il a fait ». Mention en passant, pas de reco.",
+    "verdict": "discard"
+  },
+  "creator": "Big Flo et Oli",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1933",
+  "links": [],
+  "quote": "Il a un feat avec Big Flo et Oli.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:53",
+  "title": "Big Flo et Oli",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

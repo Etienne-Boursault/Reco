@@ -1,8 +1,27 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "doublon de ubm-2354 (rappeur LauCarre, transcrit 'Hello Carry'). Meme passage ~01:47.",
+    "verdict": "discard"
+  },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3562509991"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:46:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -11,9 +30,10 @@
   "quote": "Un rappeur qui s'appelle Hello Carey. Hello Carey, ouais. Que vous produisez en plus, les gars ?",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:46:59",
   "title": "Hello Carry",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

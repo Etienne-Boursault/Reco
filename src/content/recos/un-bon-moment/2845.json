@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2832.",
+    "reason": "Doublon de la reco Lynda Lemay / «La Centenaire».",
+    "verdict": "discard"
+  },
+  "creator": "Linda Lomé",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:16:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2845",
+  "links": [],
+  "quote": "Vous connaissez la chanson 'La centenaire de Linda Lomé' ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:27:11",
+  "title": "La centenaire de Linda Lomé",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

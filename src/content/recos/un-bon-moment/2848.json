@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel exact (variantes joutent/jouissent/foutent/jouent = gag recurrent de Kyan; cf. chanson «Les gens qui doutent» d'Anne Sylvestre, ligne 2454). Champ creator=«Navo» a corriger -> Fanny Ruwet (c'est SON podcast). Canonique du cluster; doublons discardes: ubm-2829, ubm-0803, ubm-2844, ubm-2841, ubm-2849. Introduit a 00:02:11 ('J'ai connu Morgane dans ton podcast').",
+    "reason": "Podcast «Les Gens Qui Doutent» de Fanny Ruwet (invitee), presente et endosse en debut d'episode (00:02-00:05). Auto-promo assumee d'une oeuvre d'invitee -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Navo",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:16:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2848",
+  "kind": "reco",
+  "links": [],
+  "quote": "Est-ce que tu kiffes, parfois ?",
+  "recommendedBy": "Fanny Ruwet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:06",
+  "title": "Les gens qui doutent",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

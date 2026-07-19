@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Collision source acast — autre épisode.",
+    "reason": "Collision : 'Cure de désalcoolisation' (Ferrari, cure en Suisse), absente de ce transcript. Contenu épisode Ferrari.",
+    "verdict": "discard"
+  },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:35:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +28,10 @@
   "quote": "la cure de désalcoolic anonyme que je fais en Suisse, elle est basée sur le programme des alcoolic anonymes.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:35:09",
   "title": "Cure de désalcoolisation",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

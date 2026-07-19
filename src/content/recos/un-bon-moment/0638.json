@@ -1,19 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Mention en exemple/comparaison en passant pendant une discussion sur les adlibs de la trap (regle 1) ; aucune substance ni prescription sur le morceau lui-meme.",
+    "verdict": "discard"
+  },
   "creator": "Childish Gambino",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/496157642"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:56",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0638",
   "links": [],
-  "quote": "Dans un morceau de Charlie Jean Gambino, d'ailleurs, comme ça s'appelle This is America...",
+  "quote": "dans un emorto de Childish Gambino d'ailleurs comme ça s'appelle this is america",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:29:56",
   "title": "This Is America",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

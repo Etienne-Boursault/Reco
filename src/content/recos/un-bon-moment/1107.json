@@ -1,16 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcription Acast corrompue (« L'horreur d'omange »/« Aurore Domange ») de « Laura Domenge » (cf. YouTube [01:03:09]). Doublon de ubm-2410 (canonique).",
+    "reason": "Garble Acast de « Laura Domenge » — doublon.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1107",
   "links": [],
   "quote": "L'horreur d'omange j'ai adoré les deux voilà",
-  "recommendedBy": "Laurie",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:03:11",
   "title": "Aurore Domange",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

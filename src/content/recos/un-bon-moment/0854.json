@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Titre-blague inexistant (Kyan se corrige aussitot).",
+    "reason": "'Des putes et un cigare' est un FAUX titre invente par Kyan pour blaguer sur le livre du pere de VD, immediatement corrige en 'la premiere gorgee de biere'. Oeuvre inexistante — discard.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0854",
   "links": [],
   "quote": "qui s'appelle \"Des Putes et un Cigarre\".",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:37:28",
   "title": "Des Putes et un Cigarre",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

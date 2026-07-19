@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.93,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2125 (TikTok de Swann Périssé, 01:09:43). Titre « Soine Périssé » = artefact.",
+    "verdict": "discard"
+  },
   "creator": "Soine Périssé",
   "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "je vais recommander le TikTok de Soine Périssé. Parce que, je sais pas, en ce moment, elle s'est mis une pile.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:43",
   "title": "TikTok de Soine Périssé",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

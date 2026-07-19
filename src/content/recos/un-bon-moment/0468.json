@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1425 (expo Soulages au Luxembourg).",
+    "verdict": "discard"
+  },
   "creator": "Soulages",
   "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0468",
   "links": [],
   "quote": "j'ai été voir une expo au Luxembourg sur les ancres de soulages.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:01",
   "title": "Une expo au Luxembourg sur les ancres de soulages",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

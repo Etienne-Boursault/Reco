@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Reco acast (timestamp 00:02:58) ; mentions concordantes dans le transcript YT ~00:02:57-00:02:59.",
+    "reason": "Le Paname (Paname Art Cafe) = salle de stand-up evoquee de facon instrumentale : 'je t'ai rencontre au Paname', 'salle d'entraide ou on bosse, les gens payent pas', 'reste ouvert tout l'ete'. Lieu de travail/rencontre des humoristes, aucune prescription pour l'auditeur.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0039",
   "links": [],
   "quote": "Au Paname, c'est d'abord qu'on travaille.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:02:58",
   "title": "Paname",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

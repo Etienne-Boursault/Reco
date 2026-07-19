@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel 'Claude' (pas 'Le Claude') ; creator 'Andre Dussollier, Valerie Donzelli' non etaye par le transcript ; la quote 'la ville est geniale' porte sur Strasbourg.",
+    "reason": "Pas une reco : 'Claude' = le film en tournage a Strasbourg, mentionne en passant pour expliquer la reco Strasbourg. Metadonnees artefact.",
+    "verdict": "discard"
+  },
   "creator": "André Dussolier, Valérie Donzely",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "64934",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -13,9 +36,10 @@
   "links": [],
   "quote": "Oui, et la ville est géniale.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:37:10",
   "title": "Le Claude",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1826",
+    "reason": "Doublon de ubm-1826 (chaine de Feldup).",
+    "verdict": "discard"
+  },
+  "creator": "Feldup",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:25:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2027",
+  "links": [],
+  "quote": "J'ai poncé la chaîne de Feldup. Et c'est une régalade. C'est vraiment",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:25:34",
+  "title": "Chaîne Feldup",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

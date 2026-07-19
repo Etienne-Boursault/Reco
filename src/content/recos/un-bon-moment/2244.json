@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle de Florence Foresti (Epilogue, 2019) qu'elle presente et commente elle-meme ('Epilogue, le dernier spectacle, je l'ai joue tres peu', 00:14:05). Oeuvre d'invitee -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Florence Foresti",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2244",
+  "kind": "reco",
+  "links": [],
+  "quote": "Là, Epilogue, le dernier spectacle, je l'ai joué très peu.",
+  "recommendedBy": "Florence Foresti",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:14:05",
+  "title": "Epilogue",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

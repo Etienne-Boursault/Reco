@@ -1,21 +1,76 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing",
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Film = Kika (2025) d'Alexe Poukine (fiche indique 'Alex Pouchkine'). ATTENTION: tmdb 8223 / watchProviders pointent le 'Kika' d'Almodovar (1993) — mauvais film, corriger le lien. Alexandra Roth = invitee -> guest_missing.",
+    "reason": "Reco explicite d'Alexandra (01:43-01:44) : 'un film qui sort la qui s'appelle Kika que j'ai vu en avant-premiere. C'est hallucinant... je l'ai vu et j'ai trouve ca genial.' Sortie 3 dec.",
+    "verdict": "validate"
+  },
+  "creator": "Alex Pouchkine",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR",
     "tmdb": "8223",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0272",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a un film qui sort, là, qui s'appelle Kika, que j'ai vu en avant-première. C'est hallucinant.",
-  "recommendedBy": "invitée",
+  "quote": "Il y a un film qui sort là qui s'appelle Kika que j'ai vu en avant-première. C'est hallucinant.",
+  "recommendedBy": "Alexandra Roth",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:43:54",
+  "status": "validated",
+  "timestamp": "01:43:55",
   "title": "Kika",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

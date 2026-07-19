@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre erroné : l'extracteur a lu « bouclier Verne » comme « Jules Verne ». Le référent réel est l'album Astérix « Le Bouclier Arverne », cité dans une blague de spoilers. Discard.",
+    "reason": "Mauvaise extraction : « j'ai commencé le bouclier Verne à Noël » (00:50:38) = « Le Bouclier Arverne » (album Astérix), PAS Jules Verne. C'est la suite immédiate du même gag de spoilers qu'Astérix. Ni Jules Verne ni une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2481",
+  "links": [],
+  "quote": "j'ai commencé le bouclier Verne à Noël",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:38",
+  "title": "Jules Verne",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

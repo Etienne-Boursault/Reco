@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1703 (meme passage ~01:09:17). Exemple rhetorique. Baz Luhrmann (correct).",
+    "reason": "Mention instrumentale (Moulin Rouge en exemple d'attentes romantiques irrealistes). Doublon de ubm-1703.",
+    "verdict": "discard"
+  },
+  "creator": "Baz Luhrmann",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1995",
+  "links": [],
+  "quote": "moi je me rappelle quand j'avais vu le Moulin Rouge leur histoire d'amour et tout je dis genre mais c'est fou l'amour c'est dingue et tout",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:17",
+  "title": "Moulin Rouge",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

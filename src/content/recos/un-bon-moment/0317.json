@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0312. Timecode ~01:54:24.",
+    "reason": "Doublon de ubm-0312 (livre 'La Nuit retrouvee', titre tronque en 'La Nuit'). Meme passage reco Kyan.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "déjà moi je recommande la nuit c'est un super cadeau",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:54:26",
   "title": "La Nuit",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

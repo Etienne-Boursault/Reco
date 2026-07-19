@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orelsan (Aurel) est clairement l'invité de l'épisode alors que les métadonnées listent guests:[] — à corriger côté épisode. « Comment c'est loin » est son film ; discuté ici en anecdote (le trou dans le canapé, l'ice tea au micro-ondes).",
+    "reason": "Œuvre PASSÉE de l'invité (film d'Orelsan, 2015) évoquée en anecdote par un host qui apprécie une vanne précise, sans promo d'actualité → citation (règle 17).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:23:40",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3146",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/comment-c-est-loin"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/comment-cest-loin"
+    }
+  ],
+  "quote": "Il y avait une vanne dans le film Comment c'est loin que j'avais kiffé.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:23:40",
+  "title": "Comment c'est loin",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

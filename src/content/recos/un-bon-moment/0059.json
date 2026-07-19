@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Œuvre du host mais comparaison en passant à ce timecode.",
+    "reason": "Mention instrumentale : Bref (série du host Kyan) citée en comparaison rhétorique sur la difficulté de pitcher (« vous avez dû montrer un épisode de bref parce que bref c'est pareil »). Pas de présentation ni de prescription.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
@@ -6,17 +15,47 @@
     "tmdb": "60715",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0059",
   "links": [],
-  "quote": "Que je comprends ce que tu veux faire.",
-  "recommendedBy": "Inconnu",
+  "quote": "vous avez dû montrer un épisode de bref",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:48:15",
+  "status": "discarded",
+  "timestamp": "00:48:16",
   "title": "Bref",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

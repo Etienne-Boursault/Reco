@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "creator 'Andre Franquin' correct.",
+    "reason": "Gaston Lagaffe evoque dans le brainstorm 'a refaire' avec substance (premisse du 1er album) mais sans prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "André Franquin",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0475",
+  "kind": "citation",
   "links": [],
   "quote": "J'aimerais refaire un Gaston Lagaffe.",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:41:34",
   "title": "Gaston Lagaffe",
+  "transcriptSource": "acast",
   "types": [
     "bd"
   ]

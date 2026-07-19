@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Floodcast = podcast des invites presents, prescrit explicitement (« Allez voir Floodcast. Le lien est dans la description. Vraiment, n'hesitez pas »). Auto-promo d'invites (regles 2/16).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3188",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/floodcast/id1019768302"
+    }
+  ],
+  "quote": "Allez voir Floodcast. Le lien est dans la description. Vraiment, n'hésitez pas. C'est un super, super, c'est un très bon moment.",
+  "recommendedBy": "Florent Bernard, Adrien Ménielle",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:35:30",
+  "title": "Floodcast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

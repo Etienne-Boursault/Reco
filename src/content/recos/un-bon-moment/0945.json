@@ -1,16 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique pour la chaine YouTube Balade Mentale (orthographe correcte). Recommandee via « Et moi, je recommande la chaine Balade Mental » juste apres la reco Bolche Geek de Navo => lecture = Kyan. Extracteurs partages (2x Navo, 1x Kyan) => attribution_suspect. Doublons discardes : ubm-0108, ubm-2204.",
+    "reason": "Canonique Balade Mentale; « Et moi » apres la reco de Navo => Kyan (extracteurs partages).",
+    "verdict": "validate"
+  },
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0945",
+  "kind": "reco",
   "links": [],
   "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:58:03",
   "title": "Balade Mentale",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "guests VIDE dans les metadonnees mais Woodkid EST invite (titre fait foi). creator='Woodkid' ok.",
+    "reason": "Iron, premier single de Woodkid (2011), presente/discute par lui a l'antenne (synchro teaser Assassin's Creed, viralite Facebook, trailer rediffuse). Oeuvre d'un invite = auto-promo/guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Woodkid",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2608",
+  "kind": "reco",
+  "links": [],
+  "quote": "En fait ce qui s'est passé c'est que moi quand j'ai sorti Iron, mon premier single.",
+  "recommendedBy": "Woodkid",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:03:08",
+  "title": "Iron",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ],
+  "year": 2011
+}

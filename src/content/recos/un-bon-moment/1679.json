@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple : « les créateurs font souvent les voix — Rick and Morty, South Park » (l.2394-2395), à propos de Walt Disney/Mickey. Pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1679",
+  "links": [],
+  "quote": "Tu vois Ricky Morty, South Park. C'est souvent les créateurs qui font les voix principales.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:52:36",
+  "title": "Rick and Morty",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

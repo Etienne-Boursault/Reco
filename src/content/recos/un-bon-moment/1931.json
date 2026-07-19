@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "« Le jeu des anecdotes de McFly & Carlito » cite comme comparaison pour decrire leur propre jeu (« on est sur le jeu des anecdotes de McFly Carlito mais en version historique »). Comparaison en passant.",
+    "verdict": "discard"
+  },
+  "creator": "McFly & Carlito",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1931",
+  "links": [],
+  "quote": "on est sur le jeu des anecdotes de McFly Carito mais en version historique",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:26:26",
+  "title": "Le jeu des anecdotes",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

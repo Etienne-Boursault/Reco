@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "L'Amour ouf (Gilles Lellouche, 2024). Auto-promo d'un projet de l'invite JP Zadi. Laura Felpin manque dans episode.guests.",
+    "reason": "Film ou JP Zadi tourne, promu par lui ('je suis en train de tourner dedans', 'ca va etre un classique') = auto-promo.",
+    "verdict": "guest-work"
+  },
+  "creator": "Gilles Lellouche",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:17:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2789",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est vraiment pas mal.",
+  "recommendedBy": "Jean-Pascal Zadi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:34",
+  "title": "L'Amour ouf",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "autre"
+  ]
+}

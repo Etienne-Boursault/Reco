@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:55:13+ : podcast de l'invitée Rosa Bursztein présenté par elle ('t'as ton podcast Les mecs que je veux ken', 230 épisodes, concept discuté). Auto-promo assumée → guest-work. Titre confirmé par WebSearch.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:04:05+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1716",
+  "kind": "reco",
+  "links": [],
+  "quote": "Déjà t'as ton podcast \"Les gens que je veux ken\" et je rappelle que tu ken avec chaque personne que tu reçois à l'émission.",
+  "recommendedBy": "Rosa Bursztein",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:55:13",
+  "title": "Les mecs que je veux ken",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

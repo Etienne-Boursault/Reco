@@ -1,20 +1,76 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artiste = MiiRA (Mayra Matte Nunes), qu'Alexandra epelle 'M-I-I-R-A' ; corriger 'Mira'->'MiiRA' et verifier le lien Deezer. Alexandra Roth = invitee hors metadonnees -> guest_missing.",
+    "reason": "Reco explicite d'Alexandra (Kyan lui donne la parole, 01:43) : 'une artiste incroyable... S'il vous plait, allez ecouter, vous allez kiffer.' Musique bresilienne.",
+    "verdict": "validate"
+  },
+  "creator": "Mira",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/2182322087"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0271",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a une chanteuse. C'est pas parce que c'est mon amie, mais vraiment, elle est exceptionnelle. Elle s'appelle Mira.",
-  "recommendedBy": "invitée",
+  "quote": "une chanteuse... elle s'appelle Mira et elle fait de la musique brésilienne.",
+  "recommendedBy": "Alexandra Roth",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:43:30",
+  "status": "validated",
+  "timestamp": "01:43:36",
   "title": "Mira",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chanson reelle « Mangez-moi » (Billy Ze Kick et les Gamins en Folie, 1994, effectivement sur les champignons) mais le creator « Guedro » est errone/incertain — les intervenants eux-memes hesitent ([00:43:09] « de Guedro ou de Guedre ? Je sais pas »). Anecdote sans reco → discard.",
+    "reason": "Mention anecdotique : une chanson « Mangez-moi » evoquee de memoire pendant la discussion sur les champignons hallucinogenes ([00:42:48-43:12] « Tu te rappelles ?... C'est le chant des psilos... Les enfants chantaient ca »). Aucune recommandation ni avis sur l'oeuvre = mention instrumentale/anecdote sans avis.",
+    "verdict": "discard"
+  },
+  "creator": "Guedro",
+  "episodeGuid": "661c1bf83fb7ab00162aa674",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2112",
+  "links": [],
+  "quote": "C'est une chanson de Guedro.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:08",
+  "title": "Mangez-moi",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

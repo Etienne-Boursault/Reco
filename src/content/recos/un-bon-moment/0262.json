@@ -1,21 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Comparaison thematique pour caracteriser le film des invites.",
+    "reason": "Comparaison en passant : 'le cote Bernie' (Dupontel) cite pour decrire le ton de Gerald ('ces gens qui projettent un reve'). Pas de substance propre ni de prescription.",
+    "verdict": "discard"
+  },
   "creator": "Albert Dupontel",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "tmdb": "92591",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0262",
   "links": [],
-  "quote": "On l'a reçu la semaine dernière, le film d'Albert Dupontel qui s'appelle Bernie.",
-  "recommendedBy": "Non précisé",
+  "quote": "C'est un film d'Albert Dupontel qui s'appelle Bernie.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:11:26",
+  "status": "discarded",
+  "timestamp": "00:11:24",
   "title": "Bernie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

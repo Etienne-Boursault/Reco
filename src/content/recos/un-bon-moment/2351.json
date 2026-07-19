@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "« Big Flo et Oli tu connais non ? » = vanne auto-referentielle des invites pendant une impro musicale (dedicace beatmaker), pas une oeuvre recommandee.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2351",
+  "links": [],
+  "quote": "Big Flo et Oli tu connais non ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:11:28",
+  "title": "Big Flo et Oli",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

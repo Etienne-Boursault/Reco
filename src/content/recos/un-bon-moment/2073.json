@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-06",
+    "humanCorrection": "Reco canonique chaîne Ego (+ vidéo l'usine à trombone / Paperclip Factory)",
+    "model": "claude-opus-4-8",
+    "reason": "Chaine YouTube Ego : 'je vous le recommande... c'est la chaine Ego sur YouTube' (01:55:34). Reco explicite. Lie a ubm-0180 (video phare de la chaine).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2073",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est la chaîne Ego sur YouTube",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:55:34",
+  "title": "Ego",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

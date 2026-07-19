@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom exact = Adel Fugazi (masculin, Jamel Comedy Club), spectacle « Le Temps d'une pause ». « je dis toujours » + enchaîne sur Navo → probablement Kyan, mais transcript non diarisé. Canonique du doublon Adèle Fougasi (ubm-1010).",
+    "reason": "Reco explicite (« il faut aller voir Adel Fugazi... moi j'ai le conseil c'est d'aller voir Adel Fugazi »).",
+    "verdict": "validate"
+  },
+  "creator": "Adèle Fugazi",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1374",
+  "kind": "reco",
+  "links": [],
+  "quote": "il faut aller voir Adèle Fugazi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:04",
+  "title": "Adèle Fugazi",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

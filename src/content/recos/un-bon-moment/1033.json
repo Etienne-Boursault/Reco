@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-2313/ubm-2324 (~00:23:57).",
+    "reason": "Doublon du passage 'je le recommande... super spectacle' (~00:23:57) : spectacle de Kyan Khojandi, Navo en 1ere partie. Titre 'Preapartie' = artefact de '1ere partie'. Canonique = ubm-2313.",
+    "verdict": "discard"
+  },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:23:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +32,10 @@
   "quote": "je le recommande, Navo, Préapartie, Kian, dans la caméra, super spectacle, voilà.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:23:58",
   "title": "Préapartie",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

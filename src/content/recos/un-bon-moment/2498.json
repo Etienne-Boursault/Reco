@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon Richard Pryor ; ubm-1254 (« Live in Concert ») -> discard. Titre generique fidele au transcript.",
+    "reason": "Reco explicite : « Decouvrez le travail de Richard Pryor... disponible sur OCS / MyCanal, donc allez voir » (00:56:20).",
+    "verdict": "validate"
+  },
+  "creator": "Richard Pryor",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2498",
+  "kind": "reco",
+  "links": [],
+  "quote": "Découvrez le travail de Richard Pryor, qui est disponible d'ailleurs sur OCS, c'est disponible sur My Canal, donc allez voir.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:20",
+  "title": "Richard Pryor",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

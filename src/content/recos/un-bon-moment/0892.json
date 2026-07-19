@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre des invites (auto-promo du film qui motive leur venue). guests[] de l'episode a completer : Isabelle Nanty + Vincent Dedienne. Timecode YT 00:28:55 confirme.",
+    "reason": "Film des deux invites (Vincent tete d'affiche, Isabelle joue sa mere), realise par Rudy Milstein, sortie 15 nov. 2023. Presente par les hosts et recommande dans le tour final (« Allez decouvrir le travail de Rudy Milstein dans Je ne suis pas un heros »).",
+    "verdict": "guest-work"
+  },
   "creator": "Rudy Milstein",
   "episodeGuid": "652408a9c8996500127e39e9",
   "externalIds": {
@@ -6,17 +18,50 @@
     "tmdb": "1004255",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "28:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0892",
+  "kind": "reco",
   "links": [],
-  "quote": "Vous êtes à la fiche d'un film qui s'appelle Je ne suis pas un héros qui sort le 15 novembre au cinéma.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Vous êtes à l'affiche d'un film qui s'appelle « Je ne suis pas un héros » qui sort le 15 novembre au cinéma.",
+  "recommendedBy": "Isabelle Nanty & Vincent Dedienne",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:28:52",
+  "status": "validated",
+  "timestamp": "00:28:55",
   "title": "Je ne suis pas un héros",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

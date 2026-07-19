@@ -1,19 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom correct : Cabosse (patisserie-chocolaterie, Mulhouse/Rixheim). Locuteur non identifiable. A trancher : un commerce est-il dans le perimetre du site ?",
+    "reason": "Reco enthousiaste sincere : 'meilleure chocolaterie de France pour moi c'est Cabosse a Mulhouse... un niveau au-dessus'. Lieu/commerce reel et ouvert (le 'ca a ferme' etait une blague, cf. gag 'fais croire'). Type=lieu.",
+    "verdict": "validate"
+  },
   "creator": "Cabos",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0203",
+  "kind": "reco",
   "links": [],
-  "quote": "meilleure chocolaterie de France Pour moi C'est assez pub Gratos pour eux Cabos à moulouse",
-  "recommendedBy": "Navo",
+  "quote": "meilleure chocolaterie de France pour moi c'est assez pub gratos pour eux Cabos à Mulhouse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:39:30",
   "title": "Cabos",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "lieu"
   ]
 }

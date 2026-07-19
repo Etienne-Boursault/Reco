@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Pas une oeuvre : 'Babylone' est le nom (et mot de passe wifi) de la maison de campagne de Natoo, evoquee en anecdote.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2208",
+  "links": [],
+  "quote": "Cette maison s'appelle Babylone",
+  "recommendedBy": "Natoo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:11:00",
+  "title": "Babylone",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

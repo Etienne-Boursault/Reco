@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur reel: Lucas Pastor (chaine YouTube CHAISE - d'ou 'la video de chaise'/'Shays'); corriger 'Pastore'->'Pastor'. Attribution Kyan/Navo indeterminee (non diarize).",
+    "reason": "Recommandation explicite: 'moi j'allais recommander la video... je vous conseille de la regarder en entier' (01:25:36). Video reelle 'Les 624 types de profs' de Lucas Pastor. Reco canonique du cluster 624.",
+    "verdict": "validate"
+  },
+  "creator": "Lucas Pastore",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1384",
+  "kind": "reco",
+  "links": [],
+  "quote": "la vidéo de chaise Lucas Pastore qui a un peu buzzé les 624 types de profs",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:36",
+  "title": "Les 624 types de profs",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

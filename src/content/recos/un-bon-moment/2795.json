@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre de l'invite = guest-work. Champ 'creator' incomplet (omet JP Zadi; a completer: Jean-Pascal Zadi & John Wax). Laura Felpin manque dans episode.guests.",
+    "reason": "Tout Simplement Noir = film de JP Zadi (co-ecrit/co-realise/joue par lui) qu'il presente comme son 1er role.",
+    "verdict": "guest-work"
+  },
+  "creator": "John Wax, Kamel Gemra, Johnny du Triple X",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2795",
+  "kind": "reco",
+  "links": [],
+  "quote": "La première fois que j'ai tourné dans un film, c'était dans Tout Simplement Noir frère.",
+  "recommendedBy": "Jean-Pascal Zadi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:32",
+  "title": "Tout Simplement Noir",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

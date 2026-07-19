@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2126 (« S.S. Molotov », 01:11:08 — même recommandation).",
+    "verdict": "discard"
+  },
   "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "C'est le conseil numéro 1 que les gens donnent.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:11:08",
   "title": "S.S. Molotov",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

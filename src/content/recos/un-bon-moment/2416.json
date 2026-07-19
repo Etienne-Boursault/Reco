@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Bref' (serie de Kyan, host) discutee comme reference technique comique (passer des vannes moyennes en rythme, 'comme dans Bref'), sans prescription. Oeuvre d'un host en discussion analytique = citation (pas auto-promo).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2416",
+  "kind": "citation",
+  "links": [],
+  "quote": "Est-ce que c'est comme dans \"Bref\", ça permet de passer des vannes qui sont un peu moyennes ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:04:59",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

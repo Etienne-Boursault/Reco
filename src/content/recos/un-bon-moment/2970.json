@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "« La Regle du Jeu » (2017), premier long metrage d'Ambroise Carminati (Ebim/Sympa Cool) - a ne pas confondre avec le film de Jean Renoir. Description transcript identique au film verifie (tourne en une nuit, jeu de la verite).",
+    "reason": "Long metrage d'Ambroise presente avec substance (~00:09:05, « on a fait un long metrage... dix comediens autour d'une table qui jouent a un jeu de la verite... le film dure 1h23 »). Oeuvre d'invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2970",
+  "kind": "reco",
+  "links": [],
+  "quote": "on a fait un long métrage en deux jours on a fait un long métrage c'est sympa démerdeur ça mon pote c'est la bizarre d'entendre non c'est vrai qu'on a mis sur Youtube d'ailleurs oui oui on avait ce désir absolu de créer des choses très vite et donc parfois on a trouvé des solutions la règle du jeu la règle du jeu la règle du jeu",
+  "recommendedBy": "Ambroise Carminati",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:05",
+  "title": "La règle du jeu",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

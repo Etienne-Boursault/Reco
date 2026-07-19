@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe Truman Show ; doublon 1687 discardé.",
+    "reason": "Reco explicite de Kyan : « on arrête tout, on regarde Truman Show », « regarde-le, c'est un film exceptionnel » (l.1131-1146). Titre officiel exact.",
+    "verdict": "validate"
+  },
+  "creator": "Peter Weir",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "22:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "22:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1675",
+  "kind": "reco",
+  "links": [],
+  "quote": "Mais vraiment, regarde-le, c'est un film exceptionnel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "22:29",
+  "title": "The Truman Show",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1998
+}

@@ -1,17 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timecode reel ~00:43:22 (le JSON indique « 42:22 »).",
+    "reason": "« Indignez-vous » cite comme exemple de format (best-seller tres court, « ca aurait pu etre un PDF »), pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Stephane Hessel",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "42:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0387",
   "links": [],
-  "quote": "c'était le best seller indignez-vous",
+  "quote": "En vrai, c'était le best-seller Indignez-vous.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:43:24",
+  "status": "discarded",
+  "timestamp": "42:22",
   "title": "Indignez-vous !",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

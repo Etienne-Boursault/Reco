@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Livre de l'invitee Nora. Timecodes ~00:00:43 (presentation) et ~01:54:25 (reco). Invitee absente de guests[].",
+    "reason": "'Couple' (roman-photo) de l'invitee Nora Hamzawi, presente par elle en ouverture et recommande par Kyan en cadeau Noel (auto-promo invitee).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1705",
+  "kind": "reco",
+  "links": [],
+  "quote": "et couple ce sont deux super cadeaux Noël",
+  "recommendedBy": "Nora Hamzawi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:54:25",
+  "title": "Couple",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

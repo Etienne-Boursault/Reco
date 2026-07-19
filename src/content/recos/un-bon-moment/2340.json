@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle: Aliocha Schneider (né 1993, acteur/chanteur, frère de Niels Schneider); joue Tom dans la série Salade grecque. Canonique (doublon ubm-0934 'Navi/Lyosha Schneider').",
+    "reason": "Navo recommande explicitement l'artiste dans le segment recos ('double recours', 'allez voir', 'j'ai écouté, des morceaux hyper bien'): acteur (Salade grecque) et musicien.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2340",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'ai découvert son nom m'échappe car il est compliqué celui qui joue le héros Aliosha Schneider",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:11",
+  "title": "Aliosha Schneider",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

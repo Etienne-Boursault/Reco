@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle : 'The Secret World of Alex Mack' (Nickelodeon, USA, 1994-98), titre FR 'Les Pouvoirs extraordinaires d'Alex Mack'. La locutrice la dit 'australienne' (erreur, c'est americaine). Evocation nostalgique -> citation plutot que validate.",
+    "reason": "Serie d'enfance evoquee avec substance en souvenir nostalgique ('ma reference, le seul truc que j'adorais'), sans prescription actuelle claire ; tangente declenchee par Enola Holmes (regle 4)",
+    "verdict": "citation"
+  },
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:46",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3206",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=3010.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Les_Incroyables_Pouvoirs_d'Alex"
+    }
+  ],
+  "quote": "Le seul truc que j'adorais, c'était, ça s'appelait Les Pouvoirs Extraordinaires d'Alex Mack.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:46",
+  "title": "Les Incroyables Pouvoirs d'Alex",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

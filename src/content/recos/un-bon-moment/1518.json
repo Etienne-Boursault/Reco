@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant : « ca m'a fait penser a un episode de Rick et Morty » — pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:24:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:24:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1518",
+  "links": [],
+  "quote": "ça m'a fait penser à un épisode de Rick et Morty",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:24:35",
+  "title": "Rick et Morty",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

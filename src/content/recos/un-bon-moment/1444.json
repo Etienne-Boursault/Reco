@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Attribution Emilien (ref « Odusku » = 12 Coups de Midi, lecture reprise apres), PAS Navo comme dans le draft.",
+    "reason": "Invite a recommander un Kundera, Emilien cite « L'Insoutenable Legerete de l'etre » (« celle sur laquelle j'ai le plus accroche... j'ai adore... le chef d'oeuvre »). Livre reel.",
+    "verdict": "validate"
+  },
+  "creator": "Milan Kundera",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:45:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:45:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1444",
+  "kind": "reco",
+  "links": [],
+  "quote": "la plus connue que pour le moment celle sur laquelle j'ai le plus accroché c'est l'insoutenable légèreté de l'être",
+  "recommendedBy": "Émilien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:45:56",
+  "title": "L'Insoutenable Légèreté de l'être",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

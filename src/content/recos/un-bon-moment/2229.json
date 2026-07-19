@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Le Royaume du Web est un evenement/convention YouTube (Squeezie), pas une oeuvre a consommer. De plus Navo n'en parle qu'en oui-dire ('j'ai beaucoup entendu parler... comme quoi ca se passait super bien').",
+    "verdict": "discard"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2229",
+  "links": [],
+  "quote": "J'ai beaucoup entendu parler de ce événement Royaume du web comme quoi ça se passait super bien",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:06:31",
+  "title": "Royaume du Web",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

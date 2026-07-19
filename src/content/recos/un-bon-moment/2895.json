@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Exemple de sketch cite, pas une oeuvre recommandee.",
+    "reason": "Mention instrumentale : sketch/parodie de generique de Bon Bain Voila cite en exemple (00:58:08), pas une reco de la serie Starsky et Hutch. Doublon de ubm-0818.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2895",
+  "links": [],
+  "quote": "Starsky et Hutch c'est ça Starsky et Hutch",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:58:08",
+  "title": "Starsky and Hutch",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

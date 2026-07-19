@@ -1,4 +1,15 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0956 (meme passage 01:53:18, show de Nathan Fielder). Titre errone 'I'm Sorry' (qui n'est PAS de Nathan Fielder) : le show cite est 'The Rehearsal'.",
+    "verdict": "discard"
+  },
   "creator": "Nathan Fielder",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
@@ -6,6 +17,17 @@
     "tmdb": "72820",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:53:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +36,10 @@
   "quote": "c'est après avec Nathan Fielder c'est génial",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:53:19",
   "title": "I'm Sorry",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

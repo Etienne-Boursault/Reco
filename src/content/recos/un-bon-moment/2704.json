@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Bill Burr évoqué avec avis ('me fait peur des fois, dis-le que tu rigoles') dans le même segment que Chappelle. Substance brève, pas de prescription. Locuteur non identifiable.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2704",
+  "kind": "citation",
+  "links": [],
+  "quote": "Et Bill Burr me fait peur des fois, je suis là : \"Dis-le que tu rigoles.\"",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:22",
+  "title": "Bill Burr",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

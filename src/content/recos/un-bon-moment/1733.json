@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2008 (Loup-Garou saison 2, outro 01:38:51). A fusionner.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:35:53+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1733",
+  "links": [],
+  "quote": "Il Lou Garou saison 2",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:38:51",
+  "title": "Lou Garou saison 2",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

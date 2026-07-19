@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Enthousiasme reel ('c'est genial, extraordinaire') mais aucune oeuvre nommable -> non publiable.",
+    "reason": "Documentaire sur l'euthanasie que le host ne parvient pas a nommer ('ce docu sur le...', 'Le choix de...', 'je sais plus de mots', 'je sais plus qui parlait de ca, d'Oria Thillier ou...'). Oeuvre non identifiable, titre 'Le Choix' = artefact tronque. Faux positif.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1672",
+  "links": [],
+  "quote": "Mais c'est génial ! Ce docu sur le... Ah oui c'est vrai... Le choix de...",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:56:05",
+  "title": "Le Choix",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

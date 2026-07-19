@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle : « François Daigle-Bérubé », Instagram @fdb_ceo (personnage d'Anthony Vendrame). Non diarizé : recommandeur non identifiable de façon sûre (hôte ou invité) → recommendedBy à compléter.",
+    "reason": "Recommandation explicite au public dans le tour de recos (01:07:23 : « je vous recommande quelqu'un... je vous conseille son compte »). Humoriste québécois (personnage d'entrepreneur parodique). Canonique du cluster FDB.",
+    "verdict": "validate"
+  },
+  "creator": "François D'Aigle Bérubé",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2121",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un humoriste québécois qui a un personnage d'entrepreneur vraiment con.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:07:30",
+  "title": "François D'Aigle Bérubé",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

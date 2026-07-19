@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1395 ; vrai titre = Pluribus.",
+    "reason": "Doublon de ubm-1395 (meme serie au meme timecode 01:39:09). Titre Parimud errone.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "la série que j'ai regardé très récemment pas que ça fasse écho pour moi mais j'ai été aussi assez bouleversé et assez décontenancé c'est purimus",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:39:09",
   "title": "Parimud",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

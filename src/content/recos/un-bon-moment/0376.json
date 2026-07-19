@@ -1,18 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Balade Mentale - video 'Les Futurs Lointains' (01:21): 'une video dans Balade Mentale qui est geniale... il y a le lien, c'est une super video'. Reco explicite d'une video precise. Locuteur incertain -> vide. Canonique.",
+    "verdict": "validate"
+  },
   "creator": "Ballade Mental",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0376",
+  "kind": "reco",
   "links": [],
-  "quote": "Les gars il explique qu'est-ce qui va se passer dans le futur. J'en compte que dans le futur, mais extrêmement lointain.",
-  "recommendedBy": "non spécifié",
+  "quote": "Il y a une vidéo dans Balade Mentale qui est géniale d'ailleurs...",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:21:28",
+  "status": "validated",
+  "timestamp": "01:21:24",
   "title": "Les Futurs Lointains",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

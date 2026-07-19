@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Jeu/anecdote -> discard meme si le film est reel (Lynne Ramsay).",
+    "reason": "Reponse d'une devinette (jeu) + anecdote biographique (film dont Barbara parlait beaucoup jeune, « un peu traumatisant »), sans prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2493",
+  "links": [],
+  "quote": "T'as vraiment, t'as dit W, E, espace, N, E, E, D, H, fois toujours pas, continue. - Kevin !",
+  "recommendedBy": "Barbara Biancardini",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:09:39",
+  "title": "We Need to Talk About Kevin",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

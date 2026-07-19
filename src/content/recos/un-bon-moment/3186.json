@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon du podcast des invites ; reco conservee = ubm-3188 (guest-work). « Flotcast » -> « Floodcast ».",
+    "reason": "Doublon du Floodcast (reco gardee = ubm-3188). « Flotcast » = coquille de Floodcast (regle 13).",
+    "verdict": "discard"
+  },
+  "creator": "Flaubert",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3186",
+  "links": [],
+  "quote": "Le flotcast, c'est un podcast à la base qui existe depuis 5 ans que Flaubert et Adrien ont créé il y a 5 ans",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:25:39",
+  "title": "Flotcast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

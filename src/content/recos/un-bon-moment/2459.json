@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Vanne/jeu de mots : Alexandre Astier surnomme « l'OA » (oreille absolue) vs la serie The OA, « a la base c'etait sur lui la serie OA... vu qu'il n'y a pas eu de saison 3 ils ont dit non ». Mention instrumentale (gag), aucune reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2459",
+  "links": [],
+  "quote": "À la base, c'était sur lui la série OA.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:07",
+  "title": "OA",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

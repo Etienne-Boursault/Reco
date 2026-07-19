@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.97,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Waka Waka (Shakira) = morceau à deviner dans le multi-blind test de Navo (00:34:04 : « Il y a Shakira avec Waka Waka »). Chanson support de jeu → discard.",
+    "verdict": "discard"
+  },
+  "creator": "Shakira",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2116",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:04",
+  "title": "Waka Waka",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

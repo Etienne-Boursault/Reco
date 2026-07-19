@@ -1,0 +1,86 @@
+{
+  "aliases": [
+    "Half Men"
+  ],
+  "creator": "Richard Gadd",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/257994-half-man/watch?locale=FR",
+    "tmdb": "257994",
+    "tmdbType": "tv"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:04:11+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T08:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T08:32:14+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:43:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1324",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'ai commencé une série qui s'appelle Halfman. Il y a genre trois épisodes, un truc comme ça, et c'est trop bien.",
+  "recommendedBy": "Caballero",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:32:59",
+  "title": "Half man",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Half%20man"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Half%20man"
+    }
+  ]
+}

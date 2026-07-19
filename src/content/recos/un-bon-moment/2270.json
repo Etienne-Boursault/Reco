@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Comparaison instrumentale a l'oeuvre des invites, pas une presentation ni une reco -> discard (cf. name-drop simple).",
+    "reason": "'Casseurs' = renvoi au film/projet Casseurs Flowters (Orelsan/Gringe) mentionne en comparaison ('faire un hit comme dans le film des casseurs', 00:26:04). Name-drop instrumental sans substance.",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2270",
+  "links": [],
+  "quote": "le film des casseurs",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:04",
+  "title": "Casseurs",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

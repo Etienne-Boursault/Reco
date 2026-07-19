@@ -1,0 +1,54 @@
+{
+  "aliases": [
+    "Intouchables",
+    "The Intouchables"
+  ],
+  "creator": "Olivier Nakache, Éric Toledano",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:09:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:47:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1894",
+  "kind": "citation",
+  "links": [],
+  "quote": "Les intouchables, les incorruptibles, les incorruptibles.",
+  "recommendedBy": "Antoine Gouy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:02:18",
+  "title": "Les Intouchables",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

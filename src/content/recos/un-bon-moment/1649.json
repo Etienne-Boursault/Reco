@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur meta 'Tom Bales, Navo' douteux (Navo = host, pas createur ; co-createur 'Sire' mentionne). Attribuer precisement a Tom Baldetti / Yassir a confirmer.",
+    "reason": "'Colocs' = format Instagram (150 posts) des invites, presente et prescrit ('vous pouvez aller decouvrir', C-O-L-O-C-S, 01:34). Auto-promo.",
+    "verdict": "guest-work"
+  },
+  "creator": "Tom Bales, Navo",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1649",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ouais, c'était comme ça. Ok. Attends, je sais... Ça fait un gars et une fille. Ouais. Vous avez fait rose-bleu, le même code. Ouais, c'est ça exactement.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:34:16",
+  "title": "Colocs",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

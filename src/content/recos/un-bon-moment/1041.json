@@ -1,16 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artiste Instagram @pataques ; affichage exact 'Pataques' (accent). Doublon: ubm-2373.",
+    "reason": "Navo recommande explicitement ('Navo t'as une reco? ... je vais recommander un compte Instagram Patakes ... un street artiste, c'est tres style ce qu'il fait'). Titre proche du handle = canonique; ubm-2373 = doublon avec titre errone 'Patakes'.",
+    "verdict": "validate"
+  },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1041",
+  "kind": "reco",
   "links": [],
   "quote": "Je vais recommander Pataques, P-A-T-A-Q-U-E-S.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:38:58",
   "title": "Pataques",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

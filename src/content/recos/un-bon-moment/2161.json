@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2162 (Trevor Noah).",
+    "reason": "Doublon de ubm-2162 (meme timecode 00:33:04, meme mention de Trevor Noah). De plus, 'The Daily Show' n'est PAS prononce dans le transcript — titre infere de Trevor Noah.",
+    "verdict": "discard"
+  },
+  "creator": "Trevor Noah",
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2161",
+  "links": [],
+  "quote": "Quand je regarde Trevor Noah aux States",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:04",
+  "title": "The Daily Show",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

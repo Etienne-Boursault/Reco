@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger 'Delherme' -> 'Delerm' dans le titre. Verdict vise: guest-work (spectacle live de Vincent Delerm).",
+    "reason": "Spectacle live de VD chaudement recommande par Kyan ('faut vraiment aller voir Vincent Delerm sur scene... ultra marrant') — guest-work (oeuvre de l'invite mise en avant), mais nom mal orthographie dans le titre ('Delherme').",
+    "verdict": "unsure"
+  },
   "creator": "Vincent Delherme",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,6 +36,7 @@
   "status": "draft",
   "timestamp": "00:06:36",
   "title": "Vincent Delherme sur scène",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

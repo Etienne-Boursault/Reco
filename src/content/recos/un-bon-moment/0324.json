@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-07",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timecode erroné ; de toute façon pas une reco.",
+    "reason": "« Anastasia » = bit du lancement radio de Camille + confusion avec Fantasia (l.2441-2455), pas le film de Don Bluth recommandé. Le timecode 00:56:01 pointe le spectacle de Bérengère (mismatch) ; vraie mention ~00:53:28.",
+    "verdict": "discard"
+  },
   "creator": "Don Bluth",
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
@@ -6,17 +18,38 @@
     "tmdb": "9444",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0324",
   "links": [],
-  "quote": "J'espère que vous passez une belle après-me tout le monde. On est ensemble. Tout de suite, on se fait un truc un peu à l'ancienne. Tranquille, on se fait un petit Anastasia.",
+  "quote": "Mais non j'étais forte aussi toi en imitation.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:53:47",
+  "status": "discarded",
+  "timestamp": "00:56:01",
   "title": "Anastasia",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

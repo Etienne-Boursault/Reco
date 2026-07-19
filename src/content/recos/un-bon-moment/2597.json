@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Discussion de groupe non diarisee, locuteur non identifiable.",
+    "reason": "Jeu reel discute avec substance et enthousiasme ('GeoGuessr c'est dingue, ils sont trop fins'; 'Fais GeoGuessr', 00:42:51-46:58), mais dans une digression sur la geolocalisation d'obsessionnels -> prescription instrumentale, citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2597",
+  "kind": "citation",
+  "links": [],
+  "quote": "GeoGuessr, c'est dingue.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:42:51",
+  "title": "GeoGuessr",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

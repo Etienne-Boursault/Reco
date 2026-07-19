@@ -1,21 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon Charlie (l'autre = ubm-0340). tmdb 11497 correct.",
+    "reason": "Reco explicite d'un film pour pleurer ('il faut regarder', 'si vous voulez pleurer jusqu'a epuisement'). All Dogs Go to Heaven (1989), titre FR 'Charlie'. Transcript non diarize : prescripteur non sur (extraction disait Navo, non confirmable) -> recommendedBy vide.",
+    "verdict": "validate"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/11497-all-dogs-go-to-heaven/watch?locale=FR",
     "tmdb": "11497",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0975",
+  "kind": "reco",
   "links": [],
   "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » Et le nom en français c'est Charlie",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:47:38",
   "title": "Charlie (All Dogs Go to Heaven)",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

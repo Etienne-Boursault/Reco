@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Burning Love (2012, web-serie US produite par Ben Stiller). Frontiere citation/discard (mention comme source).",
+    "reason": "Oeuvre reelle nommee comme format source de La Flamme, avec contexte ('adaptation d'un format americain qui s'appelait burning love produit par ben stiller', 00:01:23), sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Ben Stiller",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2285",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'est une adaptation d'un truc d'un format américain qui s'appelait burning love qui était produit par ben stiller",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:01:23",
+  "title": "Burning Love",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

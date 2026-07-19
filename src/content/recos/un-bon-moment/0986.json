@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1514 (createur « Yann Mete » errone).",
+    "verdict": "discard"
+  },
   "creator": "Yann Mété",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:19:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "ça fait un spectacle qui s'appelle la malédiction du dosar numéro et d'un son numéro et sur la jeanne qu'il a fait il raconte son iron man le spectacle est à péter derrière",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:19:09",
   "title": "La Malédiction du Dosar",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

@@ -1,0 +1,39 @@
+{
+  "creator": "Farrelly Brothers",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1540",
+  "links": [],
+  "quote": "Il n'a pas eu besoin de maquillage ou d'effets spéciaux dans Dumb et d'Humber.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:32",
+  "title": "Dumb and Dumber",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

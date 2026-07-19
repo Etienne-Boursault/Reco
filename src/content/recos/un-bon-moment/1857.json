@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Handle exact 'Slay' a verifier. Locuteur du bloc non identifiable (probablement Navo).",
+    "reason": "Reco : 'il y a Slay, Slay aussi super'. Compte/serie de fiction verticale TikTok (comme Idiotopia).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1857",
+  "kind": "reco",
+  "links": [],
+  "quote": "Slay aussi super",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:22",
+  "title": "Slay",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

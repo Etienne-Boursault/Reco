@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "À corriger : titre « DOMITOR ». Cible : citation/validate faible, recommendedBy Navo (attribution incertaine).",
+    "reason": "Artefact titre : « Demi-tor » = chaîne YouTube « DOMITOR » (épelée D-O-M-I-T-O-R, 'DemiThor' au son) sur le cinéma, 2 vidéos. Reco légère (« les deux étaient assez intéressantes »). Chaîne très obscure, difficile à vérifier/linker.",
+    "verdict": "unsure"
+  },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -11,6 +34,7 @@
   "status": "draft",
   "timestamp": "01:35:42",
   "title": "Demi-tor",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

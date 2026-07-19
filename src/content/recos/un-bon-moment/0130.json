@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2155 (canonique). Transcript ecrit 'Tortosa' (l.2043), pas 'Torthosa'.",
+    "reason": "Doublon acast de la reco Tortosa. Titre mal orthographie 'Torthosa'. Canonique = ubm-2155.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0130",
   "links": [],
   "quote": "La musique de fin a été faite par Torthosa.",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:28",
   "title": "Torthosa",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

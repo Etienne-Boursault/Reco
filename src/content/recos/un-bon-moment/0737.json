@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2642. recommendedBy Navo errone : c'est une invitee qui lit le livre, pas un host.",
+    "reason": "Doublon de ubm-2642 (Ensemble, on aboie en silence, de Gringe, meme moment 01:20). Titre corrompu 'Ensemble on a boit en silence'.",
+    "verdict": "discard"
+  },
   "creator": "Gringe",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Ah moi je suis en train de lire Ensemble on a bois en silence de Gringe",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:11",
   "title": "Ensemble on a boit en silence",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

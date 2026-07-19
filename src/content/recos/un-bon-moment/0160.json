@@ -1,6 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2104 — « Play » est un lapsus corrigé en direct par le locuteur en « Jacky » (« Pas Play du tout, pardon, Jacky », 01:53:11-13). Canonique = ubm-2104.",
+    "verdict": "discard"
+  },
   "creator": "Anthony Passeron",
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:53:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +31,10 @@
   "quote": "Jackie de Anthony Passeron, pourquoi je dis Play ? Parce que le concept, il revient sur son enfance.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:53:09",
   "title": "Play",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

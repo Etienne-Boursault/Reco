@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1516 (« Le Film Mental »).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:21:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +27,10 @@
   "quote": "ça s'appelle le film mental j'ai sorti ça au mois de septembre et je pars d'une question que je me pose et je déroule le fil",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:21:18",
   "title": "Le Film Mental",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

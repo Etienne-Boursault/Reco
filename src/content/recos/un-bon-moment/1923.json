@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Mike Hammer, c'est qui deja ?' — on cherche a se souvenir dans le brainstorm remake ; pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1923",
+  "links": [],
+  "quote": "Mike Hammer, c'est qui déjà ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:33",
+  "title": "Mike Hammer",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

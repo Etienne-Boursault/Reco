@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-3044 (canonique).",
+    "reason": "'LOL' (emission Prime Video, titre corrompu 'L'ole') est name-droppe pour expliquer le jeu du meme nom qu'ils vont faire ; mention instrumentale sans presentation. Doublon de ubm-3044.",
+    "verdict": "discard"
+  },
   "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "J'ai fait une émission sur Prime Video, ça s'appelle l'ole.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:57:48",
   "title": "L'ole",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

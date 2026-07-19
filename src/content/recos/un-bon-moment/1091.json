@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme oeuvre que ubm-2875 et ubm-0816. Titre « Chaine YouTube Irosseph » = transcription deformee du meme nom.",
+    "reason": "Doublon de ubm-2875 : meme chaine YouTube Marvel (« La chaine d'Aerosef, si vous aimez l'univers Marvel »). Conserve comme canonique : ubm-2875.",
+    "verdict": "discard"
+  },
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "La chaîne d'Aérosseph, si vous aimez l'univers Marvel.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:18",
   "title": "Chaîne YouTube Irosseph",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

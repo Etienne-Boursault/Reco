@@ -1,15 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon du fil Zelda TOTK (canonique ubm-1133). Le passage 29:08 'un des meilleurs jeux de tous les temps' concerne le jeu discute (Tears of the Kingdom), pas Breath of the Wild; BOTW n'est evoque que negativement ('plus envie d'y jouer, TOTK fait tout en mieux').",
+    "verdict": "discard"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1134",
   "links": [],
-  "quote": "En fait moi je me suis dit bah j'ai pu du tout de ma vie en vie de jouer à Breath of the Wild.",
+  "quote": "sincèrement, c'est pas pour rien que c'est un des meilleurs de jeu de tous les temps",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
+  "timestamp": "00:29:08",
   "title": "The Legend of Zelda: Breath of the Wild",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

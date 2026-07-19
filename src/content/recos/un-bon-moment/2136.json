@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote d'enfance de Tahnee (regardait des DVD/Montreux en boucle, apprenait les sketchs par coeur). Pas une reco, et titre 'Charlie' non identifiable (artefact).",
+    "verdict": "discard"
+  },
+  "creator": "Jamel Debbouze",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2136",
+  "links": [],
+  "quote": "Moi, Charlie, je la regardais, c'est montreux, en boucle. Puisque j'apprenais par cœur les sketchs.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:09:08",
+  "title": "Charlie (spectacles/DVD)",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Cite en comparaison 'si vous aimez ma vie en l'air' mais discute avec substance ~00:03:39-04:26 (1er film de Casta, retrouvailles 20 ans apres).",
+    "reason": "Ma vie en l'air (Bezancon) citee dans l'intro comme 1er film de Casta avec le realisateur + clin d'oeil (scene du canape) dans le film des invites : vraie substance mais pas de prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "Rémi Besançon",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
@@ -6,17 +15,48 @@
     "tmdb": "25197",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0457",
+  "kind": "citation",
   "links": [],
   "quote": "si vous aimez ma vie en l'air",
-  "recommendedBy": "Gilles Le Louch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:00",
+  "status": "validated",
+  "timestamp": "00:02:59",
   "title": "Ma vie en l'air",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

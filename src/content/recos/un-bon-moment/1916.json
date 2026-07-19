@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve : ubm-1578 (egalement discard).",
+    "reason": "Doublon de ubm-1578 (That's 70 Show, exemple rhetorique annees 70).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1916",
+  "links": [],
+  "quote": "quand je vois les trucs des années 70, même « That's 70 show », je n'ai pas connu les années 70 et je kiffais.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:30:47",
+  "title": "That's '70s Show",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

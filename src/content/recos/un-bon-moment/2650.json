@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Influence d'enfance citée avec substance par Éléonore (« moi c'était vraiment les nuls », « je voulais être Chantal Lauby dans les nuls »). Pas de prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2650",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'était les nuls les inconnus c'était l'époque les inconnus non moi c'était vraiment les nuls",
+  "recommendedBy": "Éléonore Costes",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:21:41",
+  "title": "Les Nuls",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

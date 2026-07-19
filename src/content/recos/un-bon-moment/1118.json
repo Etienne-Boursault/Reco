@@ -1,17 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommande par un INVITE (Julien Josselin ou Valentin Vincent), PAS Navo : Navo n'est sollicite qu'ensuite (« Navo, tu veux recommander ? » 01:01:22). Impossible de trancher entre les deux invites. Titre = film « White Fire »/« Vivre pour survivre ».",
+    "reason": "Nanar reel « White Fire » (1984, VF « Vivre pour survivre »), recommande dans le segment nanars : « le dernier qu'on a regarde... faut aimer le cringe » (01:00:20).",
+    "verdict": "validate"
+  },
   "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1118",
+  "kind": "reco",
   "links": [],
-  "quote": "Bah en vrai le... Whitefire.",
-  "recommendedBy": "Navo",
+  "quote": "franchement, vivre pour survivre. Ouais, Whitefire, c'est...",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:00:18",
+  "status": "validated",
+  "timestamp": "01:00:20",
   "title": "Whitefire",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

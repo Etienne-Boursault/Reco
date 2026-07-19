@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Le premier jour du reste de ta vie : uniquement dans la liste 'si vous aimez X' pour caracteriser le film des invites, sans substance propre = comparaison en passant.",
+    "verdict": "discard"
+  },
   "creator": "Rémi Besançon",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
@@ -6,17 +14,47 @@
     "tmdb": "12169",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0458",
   "links": [],
   "quote": "si vous aimez le premier jour du reste de ta vie",
-  "recommendedBy": "Gilles Le Louch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:05",
+  "status": "discarded",
+  "timestamp": "00:03:04",
   "title": "Le premier jour du reste de ta vie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

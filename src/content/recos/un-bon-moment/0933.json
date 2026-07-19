@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple rhétorique (même énumération des bonus LaCinetek: 'j'ai adoré La Chèvre'); pas une prescription réelle.",
+    "verdict": "discard"
+  },
   "creator": "Francis Veber",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,6 +14,17 @@
     "tmdb": "19123",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +33,10 @@
   "quote": "j'ai adoré la chèvre",
   "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:40",
   "title": "La chèvre",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

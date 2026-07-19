@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve : ubm-0486.",
+    "reason": "Doublon de ubm-0486 (Blackpink).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1420",
+  "links": [],
+  "quote": "En ce moment-là, j'écoute... Le dernier album de Blackpink, du coup.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:28:58",
+  "title": "Dernier album de Blackpink",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

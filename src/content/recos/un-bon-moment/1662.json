@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.7,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger createur 'Zodo' -> 'The Do'. Prescriptrice = Alice Moitie (invitee absente du champ guests). Verdict de fond = validate une fois le createur corrige. Canonique du triplet Shake Shook Shaken (0333, 1983 = doublons).",
+    "reason": "Reco explicite d'Alice Moitie ('je te conseille d'ecouter l'album qui est excellent, Shake Shook Shaken') = un validate sur le fond. MAIS le createur 'Zodo' est une mistranscription de 'The Do' (duo franco-finlandais ; album 2014, Victoire de la musique 2015). Metadonnee a corriger avant publication -> reste en draft.",
+    "verdict": "unsure"
+  },
+  "creator": "Zodo",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1662",
+  "links": [],
+  "quote": "Et je te conseille d'écouter l'album qui est excellent, Shake Shook Shaken.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:05:05",
+  "title": "Shake Shook Shaken",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2014
+}

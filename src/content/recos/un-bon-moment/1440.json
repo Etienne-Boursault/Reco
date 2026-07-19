@@ -1,0 +1,66 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Conan Exiles : Charlie explique s'en servir comme support pour son jeu de role perso (« on fait ca sur le jeu Conan Exile... monde ouvert »). Mention instrumentale, pas de prescription. Draft recommendedBy Navo douteux.",
+    "verdict": "discard"
+  },
+  "creator": "Funcom",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1440",
+  "links": [],
+  "quote": "on fait ça sur le jeu Conan Exile qui est un jeu un peu monde ouvert",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:20",
+  "title": "Conan Exiles",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

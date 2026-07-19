@@ -1,22 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "NB : Le Bureau des Légendes est une série (Canal+), pas un podcast — type « podcast » erroné, mais reco discardée quoi qu'il en soit.",
+    "reason": "Salve du jeu de la complicité (00:57:38, « Un podcast ! » / « Le Bureau des Légendes ! ») : deviné à la volée, aucune reco ni avis. Mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/62476-le-bureau-des-legendes/watch?locale=FR",
     "tmdb": "62476",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:15:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0052",
   "links": [],
-  "quote": "Le bureau des légendes.",
+  "quote": "Un podcast !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:57:39",
+  "status": "discarded",
+  "timestamp": "00:57:38",
   "title": "Le Bureau des Légendes",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "podcast"
   ],
   "watchProviders": [
     {

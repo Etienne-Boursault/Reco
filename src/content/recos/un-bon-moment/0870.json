@@ -1,22 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine (Kyan ou Navo, transcript non diarizé). L'humain peut requalifier en discard si trop anecdotique.",
+    "reason": "Squid Game lancé par les hosts en vanne (« tu vas kiffer Squid Game », « surtout la fin ») comme le hit évident que Clément a raté « dans sa grotte », immédiatement esquivé. Œuvre réelle nommée avec avis léger mais sans substance ni prescription — citation prudente, borderline discard.",
+    "verdict": "citation"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/93405/watch?locale=FR",
     "tmdb": "93405",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0870",
+  "kind": "citation",
   "links": [],
-  "quote": "squid game je sais ouf je n'ai même pas vu encore",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Tu vas kiffé Squid Game.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:05:47",
+  "status": "validated",
+  "timestamp": "01:05:49",
   "title": "Squid Game",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

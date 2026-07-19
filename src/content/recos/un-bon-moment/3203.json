@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Correction titre : 'Aimer' -> 'Aimee' (album 2020 de Julien Dore, sorti oct. 2020 ; episode nov. 2020 ; auto-transcript). Verif WebSearch bloquee (budget epuise). Locuteur = invitee (contexte 'Berangere' juste avant suggere Berengere ; manifest disait Alice) -> attribution vide (regle 3).",
+    "reason": "Album reel de Julien Dore recommande par une invitee ('j'aime beaucoup') - pas l'oeuvre d'un invite present",
+    "verdict": "validate"
+  },
+  "creator": "Julien Doré",
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:48",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3203",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.juliendoreofficiel.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/be-fr/album/aimee-julien-dore/jgkn5ykpf3z5b"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/182457842"
+    }
+  ],
+  "quote": "En musique, moi, en ce moment, j'écoute l'album de Julien Doré. Ouais. Aimer, ouais. J'aime beaucoup.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:48",
+  "title": "Aimer",
+  "transcriptSource": "acast",
+  "types": [
+    "album"
+  ]
+}

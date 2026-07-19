@@ -1,17 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invitée Alison Wheeler absente du champ guests. Titre « Baby J » correct.",
+    "reason": "Reco explicite d'Alison (« le spectacle de John Mulaney que j'ai beaucoup aimé », « super spectacle »). Spectacle Netflix « Baby J » de John Mulaney (rehab/intervention/addiction confirmés au transcript). Canonique du trio Mulaney.",
+    "verdict": "validate"
+  },
   "creator": "John Mulaney",
   "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1126",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a un spectacle que j'ai vu sur Netflix qui s'appelle \"C'est Baby G\" et c'est le spectacle de John Mulanik, j'ai beaucoup aimé.",
-  "recommendedBy": "Alison",
+  "quote": "C'est un spectacle que j'ai vu sur Netflix qui s'appelle... C'est Baby G.",
+  "recommendedBy": "Alison Wheeler",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:58:03",
+  "status": "validated",
+  "timestamp": "00:58:08",
   "title": "Baby J",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

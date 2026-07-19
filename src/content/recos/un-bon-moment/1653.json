@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle : 'Henry Fexa' (avec Y), magicien/humoriste. Recommande par un des invites (Tom/Yassir), a preciser.",
+    "reason": "Reco en fin d'emission : 'on a failli oublier un copain... Henri Fexa, c'est un artiste, on va le suivre', magicien de formation qui fait de tout (02:07). Prescription a decouvrir/suivre.",
+    "verdict": "validate"
+  },
+  "creator": "Henri Fexa",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:07:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:07:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:07:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:07:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1653",
+  "kind": "reco",
+  "links": [],
+  "quote": "Henri Fexa, c'est un artiste…",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:07:10",
+  "title": "Henri Fexa",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

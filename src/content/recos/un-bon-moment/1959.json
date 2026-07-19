@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "« Les fourmis » n'apparait nulle part dans le transcript ; hallucination greffee sur l'anecdote Bernard Werber.",
+    "verdict": "discard"
+  },
+  "creator": "Bernard Werber",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:02:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1959",
+  "links": [],
+  "quote": "Bernard Werber il m'a dit un truc trop cool un jour",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:48:31",
+  "title": "Les fourmis",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

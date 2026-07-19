@@ -1,20 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon: ubm-2302 ('Inside Jamel', 01:12:04) discarde. Contenu present dans le transcript YouTube malgre source acast.",
+    "reason": "Nommee dans la meme enumeration d'excellentes series francaises (01:12:03-04). Canonique de la paire de doublons (mieux renseignee: titre complet + externalIds tmdb).",
+    "verdict": "citation"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
     "tmdb": "90849",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0649",
+  "kind": "citation",
   "links": [],
   "quote": "il y a Inside Jamel, Comedy Club",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:04",
   "title": "Inside Jamel Comedy Club",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

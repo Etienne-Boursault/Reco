@@ -1,17 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator « Christophe Michel » confirmé (nommé à 01:43:50). Locuteur non déterminable au transcript non diarizé.",
+    "reason": "« Je conseille hygiène mentale » (01:41:33) : recommandation explicite de la chaîne YouTube de zététique.",
+    "verdict": "validate"
+  },
+  "creator": "Christophe Michel",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1050",
+  "kind": "reco",
   "links": [],
-  "quote": "Je conseille l'hygiène mentale. L'hygiène générale pour tous les gens",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Je conseille hygiène mentale.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:41:32",
+  "status": "validated",
+  "timestamp": "01:41:28",
   "title": "Hygiène Mentale",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "video",
+    "autre"
   ]
 }

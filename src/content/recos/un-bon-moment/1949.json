@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1461 (Le Pire Guide de Cyprien).",
+    "verdict": "discard"
+  },
+  "creator": "Cyprien",
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1949",
+  "links": [],
+  "quote": "Je l'ai reçu ! Je le recommande aussi je l'ai pas encore lu mais on l'a reçu !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:38",
+  "title": "Guide de Cyprien",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

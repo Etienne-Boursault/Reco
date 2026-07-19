@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le fan d'horreur qui recommande le film ('toi') n'est pas identifiable (Kyan ou Baptiste) -> recommendedBy vide.",
+    "reason": "Film reel (The Conjuring) cite par Florence dans une anecdote sur son aversion pour l'horreur ; endosse par un tiers ('toi tu adores ca, tu me dis il faut que tu ailles voir Conjuring', 00:00:58). Pas de prescription du locuteur -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2243",
+  "kind": "citation",
+  "links": [],
+  "quote": "tu me dis \"il faut que tu ailles voir Conjuring\"",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:58",
+  "title": "Conjuring",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

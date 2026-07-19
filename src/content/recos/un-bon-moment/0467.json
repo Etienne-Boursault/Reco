@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1424 (dernier album de Sebastien Tellier). Quote mal transcrite ('que je souffre des mains').",
+    "verdict": "discard"
+  },
   "creator": "Sébastien Tellier",
   "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0467",
   "links": [],
   "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:19:56",
   "title": "Le dernier album de Sébastien Tellier",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

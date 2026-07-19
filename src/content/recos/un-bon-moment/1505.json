@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant : « on commence a se rapprocher a des trucs a la Edmond Rostand... la tirade de Cyrano » — pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Edmond Rostand",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1505",
+  "links": [],
+  "quote": "on commence à se rapprocher à des trucs à la Edmond Rostand ou tu sais, la tirade de Cyrano",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:34",
+  "title": "Cyrano de Bergerac",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

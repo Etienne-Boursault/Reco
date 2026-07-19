@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "'Un film avec Gilles Lelouch' n'est pas un titre d'oeuvre : reprend le 'si vous aimez...' promouvant le film des invites (Gallienne 'exceptionnel dedans'). Doublon de ubm-1587.",
+    "verdict": "discard"
+  },
+  "creator": "Gilles Lelouch",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1593",
+  "links": [],
+  "quote": "si vous aimez si vous aimez si vous aimez si c'est qu'à stage Gilles Lelouch Rémi Besançon le truc marche bien et Guillaume Gallien il est exceptionnel dedans",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:10:18",
+  "title": "Un film avec Gilles Lelouch",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1146 (Feldup, meme passage 01:08). Titre 'je sais pas' = artefact.",
+    "verdict": "discard"
+  },
   "creator": "Feldup",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "feldup ou feldup je pense que c'est feldup",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:08:34",
   "title": "je sais pas",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

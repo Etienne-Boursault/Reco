@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Question/name-drop en passant : « C'est dans Sons of Anarchy ou pas ? Parce que j'ai pas vu la saison 5 » (l.1484-1485), dans le bit sur les gangs de bikers. Aucun avis ni substance.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2466",
+  "links": [],
+  "quote": "C'est dans Sons of Anarchy ou pas ? Parce que j'ai pas vu la saison 5.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:42",
+  "title": "Sons of Anarchy",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

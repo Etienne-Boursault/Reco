@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Back to Black' INFÉRÉ : le transcript dit seulement 'l'album d'Amy Winehouse'. Cohérent (Back to Black ~35 min < 40, culte). Locuteur ambigu (non diarisé). Limite discard (comparaison en passant, règle 1) — à trancher par l'humain.",
+    "reason": "Album réel non lié à un invité, jugement de valeur substantiel mais sans prescription : 'l'album d'Amy Winehouse, c'est moins de 40 minutes. C'est un des albums les plus cultes que j'ai entendus' (00:45:30). Mention en partie instrumentale (comparaison de durée avec un spectacle) mais endossement fort → citation.",
+    "verdict": "citation"
+  },
+  "creator": "Amy Winehouse",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3074",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/back-to-black-amy-winehouse/0060254746222"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/097eYvf9NKjFnv4xA9s2oV"
+    }
+  ],
+  "quote": "L'album d'Amy Winehouse, c'est moins de 40 minutes. C'est un des albums les plus cultes que j'ai entendus.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:45:30",
+  "title": "Back to Black",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2003
+}

@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artefact acast de « Patton Oswalt » (canonique = ubm-2665).",
+    "reason": "Doublon de ubm-2665 : « Patin de Svalte » est une mauvaise transcription acast de « Patton Oswalt », même passage ~00:58:38.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0060",
   "links": [],
   "quote": "J'aime beaucoup Patin de Svalte.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:58:46",
   "title": "Patin de Svalte",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

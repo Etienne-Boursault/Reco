@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Zelda (doublon ubm-1418).",
+    "reason": "Zelda BOTW : appreciation forte ('ca a ete une claque', 'c'est tres tres bien') en discussion nostalgique des jeux marquants ; pas de prescription directe.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1583",
+  "kind": "citation",
+  "links": [],
+  "quote": "Pareil avec le Zelda monde ouvert, Breath of the Wild. Zelda, ça a été une claque.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:37",
+  "title": "The Legend of Zelda: Breath of the Wild",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

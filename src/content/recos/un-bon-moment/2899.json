@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "'Aurel' = Orelsan (transcription erronée).",
+    "reason": "Doublon de ubm-2912 — même discussion (00:47:40) sur Orelsan ('Aurel') et son album. Canonique = ubm-2912.",
+    "verdict": "discard"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2899",
+  "links": [],
+  "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable. C'est son dernier album. J'ai jamais vu un truc aussi simple pour lui.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:40",
+  "title": "Aurel - Dernier album",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

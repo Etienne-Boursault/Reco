@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Pseudo probable « Supakitch » (Guillaume Grandot), partenaire « Koralie ». Doublon ubm-2502 -> discard. Orthographe non revalidee (budget WebSearch epuise).",
+    "reason": "Reco explicite : « Leur travail artistique est formidable », artiste contemporain, ami de Navo (01:22:03-29).",
+    "verdict": "validate"
+  },
+  "creator": "Guillaume Grandot",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2508",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est le travail de Guillaume Grandot Supakic, qui est un artiste contemporain.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:06",
+  "title": "Guillaume Grandot Supakic",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

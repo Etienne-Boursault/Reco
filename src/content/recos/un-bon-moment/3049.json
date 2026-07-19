@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe non confirmee par recherche web. Passage 01:11:55.",
+    "reason": "Section 'recommandez un jeune humoriste' ; 'Charlie Soignon, ah qui est pas mal'. Recommandeur invite non identifie.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3049",
+  "kind": "reco",
+  "links": [],
+  "quote": "Charlie Soignon.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:55",
+  "title": "Charlie Soignon",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

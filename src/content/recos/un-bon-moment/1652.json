@@ -1,0 +1,70 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel : 'Loups-Garous' (Canal+, cree par Fary & Panayotis Pascot, saison 2 diffusee vendredis des dec. 2025 - colle avec 'episode 4').",
+    "reason": "Reco en fin d'emission : 'j'ai vu l'episode 4 hier, j'ai adore', 'la saison 2 est mieux que la saison 1' (02:06). Serie reelle.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:06:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:06:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:06:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:06:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1652",
+  "kind": "reco",
+  "links": [],
+  "quote": "Loup-Garou ? C'est bien.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:06:43",
+  "title": "Loup-Garou",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

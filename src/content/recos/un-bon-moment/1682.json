@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Auto-référence au podcast lui-même (message d'auditrice « merci pour un bon moment », l.3019-3025). Pas une reco d'œuvre externe.",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1682",
+  "links": [],
+  "quote": "Je m'endors tous les soirs avec un bout d'un bon moment, et ça me fait beaucoup de bien.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:07:47",
+  "title": "Un Bon Moment",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'dans Boudou Sauve des eaux il [Michel Simon] est extraordinaire, une modernite de dingue' : exemple illustrant l'admiration pour Michel Simon dans le segment reco, sans prescription franche du film lui-meme.",
+    "verdict": "citation"
+  },
+  "creator": "Jean Renoir",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1792",
+  "kind": "citation",
+  "links": [],
+  "quote": "je sais pas dans Boudou Sauvé des eaux il est extraordinaire",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:41",
+  "title": "Boudu sauvé des eaux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

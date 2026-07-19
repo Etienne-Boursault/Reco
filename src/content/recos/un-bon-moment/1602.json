@@ -1,0 +1,67 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Le Pere Noel est une ordure (00:37): meme liste 'les films que j'aime... les pieces'. Enumeration en passant, pas de substance ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "N/A",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1602",
+  "links": [],
+  "quote": "Fusine d'indépendance ou Le Père Noël est une ordure.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:13",
+  "title": "Le Père Noël est une ordure",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "autre"
+  ]
+}

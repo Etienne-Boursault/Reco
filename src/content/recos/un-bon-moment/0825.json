@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "A restaurer si Acast confirme, mais 'Odia' est un artefact du passage 'Audiard' (deja ecarte, cf ubm-2934). Introuvable dans le transcript YouTube.",
+    "reason": "Artefact de transcription Acast: 'Odia' correspond au meme passage que 'Audiard' (~01:32:40, quote garbled 'si tu es envie d'aller le chercher...'). Dans le transcript YouTube le passage dit 'Audiard', pas 'Odia'. 'Odia' n'est pas une oeuvre reelle ici.",
+    "verdict": "discard"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0825",
   "links": [],
   "quote": "si tu es envie d'aller le chercher tu cherches un truc un peu que les gens ne connaissent pas quoi ça un truc il ya moyen beaucoup sur youtube tu tournes beaucoup sur youtube",
-  "recommendedBy": "Alex",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:32:40",
   "title": "Odia",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

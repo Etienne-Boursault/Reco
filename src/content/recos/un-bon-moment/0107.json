@@ -1,21 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0943 (canonique, orthographe correcte « Zaho de Sagazan » + lien Deezer album). Meme reco (Zaho de Sagazan).",
+    "reason": "Doublon de ubm-0943 (canonique, orthographe correcte + lien album).",
+    "verdict": "discard"
+  },
   "creator": "Zao de Sagazan",
   "episodeGuid": "6599c1b296596600156961a7",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/2585576812"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0107",
   "links": [],
-  "quote": "Je crois qu'il faut vraiment l'écouter.",
+  "quote": "C'est beau. C'est bien écrit. Ça remanie la chanson française.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:58",
+  "status": "discarded",
+  "timestamp": "00:57:56",
   "title": "Zao de Sagazan",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Frontiere discard/citation (le film est decrit avec un peu de substance), mais l'intention est anecdotique.",
+    "reason": "Mention instrumentale dans une anecdote de 'pire date' ('viens on va voir 120 battements par minute... c'est le pire date de ma vie', 00:49:37). Le film est le ressort du sketch, pas une prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2292",
+  "links": [],
+  "quote": "viens on va voir 120 battements par minute qui est un film sur des gens qui meurent du sida",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:37",
+  "title": "120 battements par minute",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

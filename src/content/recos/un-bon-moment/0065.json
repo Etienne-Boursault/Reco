@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2667.",
+    "reason": "Doublon de ubm-2667 (Love on the Spectrum, titre officiel) — même documentaire Netflix, même passage 01:23-01:26.",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:24:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "amour et autisme sur netflix c'est un de plus en fait au début ça fait un peu peur parce que ça fait très bachelor",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:24:04",
   "title": "Amour & Autisme",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

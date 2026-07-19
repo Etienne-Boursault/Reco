@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Thierry Henry evoque via des 'compiles TikTok d'interviews' dans la discussion sur l'intelligence des footballeurs. Anecdote/comparaison, pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1667",
+  "links": [],
+  "quote": "Après, je reconnais qu'un petit Thierry Henry, moi j'ai des compiles de Thierry Henry, il est unique, qui répond aux interviews.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:35:31",
+  "title": "Thierry Henry",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

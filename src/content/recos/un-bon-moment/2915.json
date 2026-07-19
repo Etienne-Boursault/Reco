@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le titre vers l'appli reellement recommandee par Astier ('If the Moon Were Only 1 Pixel' probable), puis validate en reco d'Alexandre Astier. guests vide -> ajouter Alexandre Astier.",
+    "reason": "Astier recommande positivement une petite appli de mise a l'echelle du systeme solaire (scroll du soleil aux frontieres, 'une petite appli chouette'). Vraie reco, MAIS le titre assigne 'To Scale: The Solar System' est en fait la VIDEO du desert (bille=Terre, evoquee separement par les hosts), pas l'appli d'Astier. L'appli decrite (scroll interminable, petites blagues de l'auteur) est vraisemblablement 'If the Moon Were Only 1 Pixel' (Josh Worth). Mismatch titre/substance non corrigeable par le script -> reste draft pour correction humaine du titre.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2915",
+  "links": [],
+  "quote": "Il y a une petite appli qui est chouette, qui permet de voyager du soleil à aux frontières du système solaire, comme ça.",
+  "recommendedBy": "Alexandre Astier",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:30",
+  "title": "To Scale: The Solar System",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

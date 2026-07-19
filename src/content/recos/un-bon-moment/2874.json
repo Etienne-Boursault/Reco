@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon avec ubm-0812 (meme film Resurrections). Les deux discarded.",
+    "reason": "Matrix Resurrections (4e film) non vu : « J'ai hate de voir le 4 » = anticipation, pas d'avis sur l'oeuvre. Doublon de ubm-0812.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2874",
+  "links": [],
+  "quote": "J'ai hâte de voir le 4.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:39",
+  "title": "The Matrix Resurrections",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

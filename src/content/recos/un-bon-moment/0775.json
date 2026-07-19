@@ -1,18 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2777 (chroniques de Clément Viktorovitch).",
+    "verdict": "discard"
+  },
   "creator": "Clément Victorovic",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0775",
   "links": [],
   "quote": "moi je recommande les chroniques de Clément Victorovic sur ma canal aller les voir une par matin",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:33:53",
   "title": "les chroniques de Clément Victorovic",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

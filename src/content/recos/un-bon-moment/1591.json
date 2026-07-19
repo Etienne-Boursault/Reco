@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "The Silence of the Lambs : anecdote-devinette du jeu (phobie de Nicole Kidman) — anecdote de surcroit dementie ('c'est faux'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1591",
+  "links": [],
+  "quote": "elle a refusé donc le silence des agneaux parce qu'il y avait un papillon",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:30:10",
+  "title": "The Silence of the Lambs",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

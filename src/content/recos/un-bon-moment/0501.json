@@ -1,18 +1,71 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite absent des metadonnees: Nordine Ganso.",
+    "reason": "Docteur Love, format d'impro/spectacle de Nordine Ganso (confirme web), presente en detail par lui a 00:12:38 puis re-recommande par un host en fin d'emission. Auto-promo d'invite.",
+    "verdict": "guest-work"
+  },
   "creator": "inconnu",
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "12:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "12:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "12:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0501",
+  "kind": "reco",
   "links": [],
-  "quote": "Allez voir Dr Love",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est un spectacle qu'on peut voir sur Prime.",
+  "recommendedBy": "Nordine Ganso",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:24:26",
+  "status": "validated",
+  "timestamp": "00:12:38",
   "title": "Dr Love",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

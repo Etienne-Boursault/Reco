@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "« Le premier épisode de Bref » [00:35:24] : gag d'ouverture du jeu photos historiques, doublé d'une anecdote réelle (diffusé le 29 août 2011, 29e anniversaire de Kyan). Œuvre du host en anecdote → citation. À basculer en discard si l'éditeur juge le gag purement instrumental.",
+    "reason": "Œuvre du host (Kyan) évoquée en anecdote dans le jeu.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2404",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le premier épisode de Bref",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:35:24",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2011
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Réponse de blind-test (« Il y a Nirvana ») suivie d'une anecdote sur le logo du groupe. Aucune prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Nirvana",
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:07:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2727",
+  "links": [],
+  "quote": "Il y a Nirvana.",
+  "recommendedBy": "Melha Bedia",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:07:20",
+  "title": "Nirvana",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

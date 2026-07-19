@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Des Trains a Travers la Plaine », anime par Ambroise Carminati, Baptiste Pignon et Nicolas Roux (verifie web). Createur complet a completer si besoin.",
+    "reason": "Podcast d'Ambroise presente par lui en fin d'emission (~01:03:23, « c'est un podcast que je fais avec deux copains... je l'ai deja recommande dans cette emission »). Oeuvre d'invite = guest-work. Canonique (regroupe 0842).",
+    "verdict": "guest-work"
+  },
+  "creator": "Ambroise, Baptiste, Nicolas",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2981",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est un podcast que je fais avec deux copains qui s'appellent Baptiste et Nicolas",
+  "recommendedBy": "Ambroise Carminati",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:03:23",
+  "title": "Des trains à travers la plaine",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

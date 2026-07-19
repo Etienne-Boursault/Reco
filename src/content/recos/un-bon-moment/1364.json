@@ -1,0 +1,29 @@
+{
+  "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:12:06+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1364",
+  "links": [],
+  "quote": "J'aurais kiffé.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:13:54",
+  "title": "Madame Blondel",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

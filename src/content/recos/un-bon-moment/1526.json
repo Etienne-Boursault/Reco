@@ -1,0 +1,39 @@
+{
+  "creator": "IAM",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1526",
+  "links": [],
+  "quote": "L'Empire du Côté Obscur, ouais, c'est ça.",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:16",
+  "title": "L'Empire du Côté Obscur",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

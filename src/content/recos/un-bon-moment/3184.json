@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Surgit dans un jeu de mots grooming -> Groom, mais la saison 2 est reellement evoquee comme a venir.",
+    "reason": "Groom = serie du host Kyan Khojandi (« tu sais que j'ai joue dans la saison 1 ? »), saison 2 teasee. Promo d'actualite d'une oeuvre de host (regle 17).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:23",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3184",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (saison 2)",
+      "url": "https://www.youtube.com/playlist?list=PL-CQtpSbsGq1-0x7i1IKUGrow0w79R2Fs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie-24135/saison-37011/"
+    }
+  ],
+  "quote": "Sinon, ça vous dit, on regarde une série ? Groom. Groom saison 2. Tu sais que j'ai joué dans la saison 1 ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:23",
+  "title": "Groom",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

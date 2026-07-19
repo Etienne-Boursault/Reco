@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Lieu du spectacle Yassir (ubm-1980).",
+    "reason": "'La Petite Loge' = lieu (le plus petit theatre de Paris) du spectacle de Yassir presente en outro (02:11). Doublon contextuel de ubm-1980.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:11:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1656",
+  "links": [],
+  "quote": "Qui est le plus petit théâtre de Paris.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:11:41",
+  "title": "La Petite Loge",
+  "transcriptSource": "acast",
+  "types": [
+    "lieu"
+  ]
+}

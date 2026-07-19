@@ -1,20 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support du jeu musical 'Devinez chanter' ('Le restaurant' de Francky Vincent). Doublon de ubm-1878/ubm-2046. Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Franchy Vincent",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/915362462"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0190",
   "links": [],
   "quote": "C'était Franchy Vincent, le restaurant.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:17:21",
   "title": "Franchy Vincent, le restaurant",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

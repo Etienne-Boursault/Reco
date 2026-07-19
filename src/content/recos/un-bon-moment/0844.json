@@ -1,17 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur a corriger: « Jean Yanne » (pas « Jean-Yann »). Recommande par un invite (probablement Xavier Lacaille), non diarize.",
+    "reason": "Recommandation explicite (~01:04:20) : « ecoutez sa chanson Si tu t'en irais... c'est super drole ». Chanson de Jean Yanne, verifiee.",
+    "verdict": "validate"
+  },
   "creator": "Jean-Yann",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0844",
+  "kind": "reco",
   "links": [],
-  "quote": "écoutez sa chanson 'Si tu t'en irais'.",
-  "recommendedBy": "Navo",
+  "quote": "écoutez sa chanson Si tu t'en irais qui est une chanson d'amour humoristique",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:22",
+  "status": "validated",
+  "timestamp": "01:04:21",
   "title": "Si tu t'en irais",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

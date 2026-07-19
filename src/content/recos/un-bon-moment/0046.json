@@ -1,17 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre réel du spectacle = « Pulsions » (pluriel), pas « Pulsion ». Source transcript acast ; timecode 00:24:56 aligné sur le transcript YouTube (00:24:53).",
+    "reason": "Spectacle de Kyan (host) cité en anecdote (conseil de sa femme sur « Pulsion(s) », 00:24:53), pas promu ici. host-work en anecdote = citation.",
+    "verdict": "citation"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0046",
+  "kind": "citation",
   "links": [],
   "quote": "quand tu fais pulsion",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:24:56",
   "title": "Pulsion",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

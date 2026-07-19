@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE (fusionne ubm-0127 + ubm-0948 discardes). Titre transcript: 'Plaisir, Risques, Depdendance' (l.1953). Locuteur non identifiable au transcript (pas de labels): 'une pote a sorti' -> pourrait etre un invite ou Navo; attribution 'Navo' d'origine non confirmable -> videe.",
+    "reason": "Reco explicite de l'album d'Adele Castillon: 'une pote qui a sorti un album que je trouve trop bien... hyper personnel et tres beau'. Canonique des 3 doublons.",
+    "verdict": "validate"
+  },
+  "creator": "Adèle Castillon",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2153",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un album que je trouve trop bien.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:41",
+  "title": "Plaisir, Risques, Dépendance",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

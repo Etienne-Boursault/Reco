@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0962 (meme mention du livre humblebrag a 01:26:32).",
+    "verdict": "discard"
+  },
+  "creator": "Harry Switzler",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:49:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1862",
+  "links": [],
+  "quote": "Vous connaissez le humble brag le livre de Harry Swittles",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:26:32",
+  "title": "humblebrag",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

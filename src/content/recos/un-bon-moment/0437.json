@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Rick et Morty cite comme point de comparaison pour recommander Solar Opposites (« les gens qui font Rick et Morty... », « dur d'etre mieux que Rick et Morty »). Name-drop / comparaison, pas prescrit en soi.",
+    "verdict": "discard"
+  },
   "creator": "Justin Roiland, Dan Harmon",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
@@ -6,17 +14,28 @@
     "tmdb": "60625",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0437",
   "links": [],
   "quote": "en gros les gens qui font Rik et Morty font un autre dessin animé qui est incroyable",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:44:38",
   "title": "Rick et Morty",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

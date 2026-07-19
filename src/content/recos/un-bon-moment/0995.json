@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.87,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0419. Bit sarcastique, pas une reco.",
+    "reason": "'Lawrence of Arabia' (~01:27:05) = doublon de ubm-0419 'Laurence d'Arabie', meme moment du bit sarcastique des hosts.",
+    "verdict": "discard"
+  },
   "creator": "David Lean",
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
@@ -6,16 +18,37 @@
     "tmdb": "947",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:27:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:27:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0995",
   "links": [],
-  "quote": "Laurence d'Arabie, c'est génial. C'est top. Laurence d'Arabie, si vous avez quatre heures à tuer.",
+  "quote": "Allez, Laurence d'Arabie, c'est génial. Allez, Laurence d'Arabie, c'est top. Allez voir Laurence d'Arabie, si vous avez 4 heures à tuer.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:05",
   "title": "Lawrence of Arabia",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

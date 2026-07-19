@@ -3,6 +3,17 @@
   "externalIds": {
     "deezer": "https://www.deezer.com/track/60200391"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -10,9 +21,10 @@
   "links": [],
   "quote": "prochaine chanson je crois que c'est pink",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:58:42",
   "title": "Pink",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

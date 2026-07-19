@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Domus Domus » est un titre invente dans le bit comique sur les faux sitcoms romains (00:33:14, duo fictif « Cazares et Fructus »). Oeuvre inventee dans l'episode -> discard (regle 3).",
+    "verdict": "discard"
+  },
+  "creator": "Cazares et Fructus",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:33:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2974",
+  "links": [],
+  "quote": "à l'époque sur la Domus allez le voir ça s'appelait Domus Domus",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:14",
+  "title": "Domus Domus",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -1,17 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2467 (meme passage 00:54). De plus mention instrumentale : la chaine YouTube de Julien Lepers sert de reponse dans le jeu-devinette « qu'est-ce qui tue le plus vite un vieux ». Titre « Julien Leperce » errone.",
+    "verdict": "discard"
+  },
   "creator": "Julien Leperce",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:54:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0662",
   "links": [],
   "quote": "Ecoute, je ne sais pas si c'est ce qui tue le plus vite à vieux, mais je vais m'abonner à la chaîne de Julien.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:54:27",
   "title": "Julien Leperce",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

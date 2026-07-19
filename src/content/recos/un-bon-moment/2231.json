@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon avec ubm-2215 (les deux -> discard car reponse de jeu).",
+    "reason": "Reponse du jeu Multi BlindTest (Gangsta's Paradise de Coolio, indice 'Paradise'/'Paradis'). Chanson support de jeu -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Coolio",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2231",
+  "links": [],
+  "quote": "Ah Gangsta's Paradise",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:12",
+  "title": "Gangsta's Paradise",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

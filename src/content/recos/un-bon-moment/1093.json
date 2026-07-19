@@ -1,17 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Rebond dans un tour de table multi-locuteurs ('moi... aussi', locuteur different de Cracking the Cryptic) : attribution Kyan/Navo/invite indeterminable -> recommendedBy vide.",
+    "reason": "Canonique de la chaine YouTube reelle 'Hydraulic Press Channel' ('une chaine que j'aime bien aussi c'est hydraulique presse', 01:09:39). Reco valide.",
+    "verdict": "validate"
+  },
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1093",
+  "kind": "reco",
   "links": [],
-  "quote": "Parce que moi, il y a une chaîne que j'aime bien aussi, c'est Hydraulic Press.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "parce que moi il y a une chaîne que j'aime bien aussi c'est hydraulique presse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:09:37",
   "title": "Hydraulic Press Channel",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

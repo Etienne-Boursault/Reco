@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Existence/orthographe non verifiees (WebSearch epuise) ; le transcript melange ses infos avec celles de Julien Menielle (infirmier, 'Dans ton corps') -> possible confusion. Meme locuteur que le bloc Navo.",
+    "reason": "Mention elogieuse en aparte ('on connait un autre gars tres marrant qui s'appelle Adrien Meniel, ultra marrant, tres tres fort aussi' [01:17:03]) declenchee par le nom de famille commun avec Julien Menielle. Louange sans prescription directe au public -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2164",
+  "kind": "citation",
+  "links": [],
+  "quote": "on connait un autre gars très marrant qui s'appelle Adrien Méniel ultra marrant même voilà et il est très très fort aussi",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:03",
+  "title": "Adrien Méniel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

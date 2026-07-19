@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "doublon de ubm-2348 (Orelsan, ~00:07). Meme name-drop.",
+    "verdict": "discard"
+  },
   "creator": "Orelsan",
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:07:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1300",
   "links": [],
   "quote": "Orelsan, quand on adore et qu'on remercie, il existait.",
-  "recommendedBy": "Big Flo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:07:19",
   "title": "Orelsan",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

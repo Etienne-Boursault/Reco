@@ -1,9 +1,33 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct: 'Revalite' (2022). Invite = Matthieu Chedid (-M-), a completer dans guests/guestsParsed. Passer en guest-work une fois le titre corrige.",
+    "reason": "Canonique de l'album studio 'Rêvalite' (-M-/Matthieu Chedid, 2022), presente par l'invite et salue comme son meilleur album par Kyan (00:14). Verdict vise = guest-work (auto-promo de l'invite), MAIS le titre 'Realite' est un artefact a corriger en 'Revalite' avant publication.",
+    "verdict": "unsure"
+  },
   "creator": "Matthieu Chédid",
   "episodeGuid": "6550c2836b767e0012a65d8d",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/303859177"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -15,6 +39,7 @@
   "status": "draft",
   "timestamp": "00:14:14",
   "title": "Réalité",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

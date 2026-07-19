@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même locuteur que ubm-3156 (probablement Kyan, non diarizé). Podcast « Happy End » / autrice « Blandine Lehoux » non revérifiables via WebSearch (budget épuisé) ; orthographe à confirmer.",
+    "reason": "Prescription : « Et il y a Happy End de Blandine Lehoux aussi, qui a sorti ça. C'est des portraits de gens, et ça se termine plutôt bien. »",
+    "verdict": "validate"
+  },
+  "creator": "Blandine Lehout",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3157",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle (Acast)",
+      "url": "https://shows.acast.com/happy-end-le-podcast"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/happy-end-le-podcast/id1878471112"
+    }
+  ],
+  "quote": "Et il y a Happy End de Blandine Lehoux aussi, qui a sorti ça. C'est des portraits de gens, et ça se termine plutôt bien.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:30",
+  "title": "Happy End",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

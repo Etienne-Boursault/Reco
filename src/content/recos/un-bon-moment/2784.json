@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "À supprimer côté données : faux positif évident.",
+    "reason": "Pas une œuvre : « C'est pas mal » est un tic verbal de Clément (« quand c'est bien, il dit : c'est pas mal », 00:36:33), pas un titre. Artefact d'extraction.",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2784",
+  "links": [],
+  "quote": "il dit, c'est pas mal.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:34",
+  "title": "C'est pas mal",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel : « Les Loups-Garous de Thiercelieux » (transcript dit « Loup-Tiers-Selin », artefact ; « Loup-Garou » est le nom courant).",
+    "reason": "Recommandation directe au public : « Si vous avez jamais joue au [Loup-Garou], jouez, c'est tres marrant aussi comme jeu de societe » (l.1448-1449).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2465",
+  "kind": "reco",
+  "links": [],
+  "quote": "Si vous avez jamais joué au Loup-Tiers-Selin, jouer, c'est très marrant aussi comme jeu de société.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:34",
+  "title": "Loup-Garou",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

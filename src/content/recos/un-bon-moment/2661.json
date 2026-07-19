@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non identifiable (chevauchement).",
+    "reason": "Film cité comme exemple de génie précoce (PTA à 25 ans) avec appréciation forte (« Magnolia mon film préféré »), discuté avec substance (personnages) mais sans prescription au public.",
+    "verdict": "citation"
+  },
+  "creator": "Paul Thomas Anderson",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2661",
+  "kind": "citation",
+  "links": [],
+  "quote": "je crois que c'était un truc pour bref mais qu'on l'avait jamais mis",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:47",
+  "title": "Magnolia",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1999
+}

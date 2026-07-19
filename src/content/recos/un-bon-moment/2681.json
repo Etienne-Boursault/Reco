@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Enonce par Navo (host), titre collectif (« les livres de Fabien Olicard »). guests[] vide dans l'episode -> a completer avec Fabien Olicard.",
+    "reason": "A 01:35:40 (tour de recommandations) : « j'ai lu tous les livres de Fabien Olicard ». Oeuvre de l'invite Olicard mise en avant dans son episode -> guestWork. recommendedBy = proprietaire (convention guest-work).",
+    "verdict": "guest-work"
+  },
+  "creator": "Fabien Olicard",
+  "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2681",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, j'ai lu tous les livres de Fabien Olicard.",
+  "recommendedBy": "Fabien Olicard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:35:41",
+  "title": "Les Livres de Fabien Olicard",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

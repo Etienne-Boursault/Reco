@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-06",
+    "humanCorrection": "Bref 2 fait partie du jeu → ni reco ni citation (retour Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "Bref 2, serie des hosts. Kyan la presente et recommande explicitement au public : 'je vous conseille d'aller voir la serie qu'on a faite avec Navo... va voir la serie' (00:41:39).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2053",
+  "kind": "reco",
+  "links": [],
+  "quote": "dans Bref 2 c'est la série qu'on a fait ensemble",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:39:19",
+  "title": "Bref 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

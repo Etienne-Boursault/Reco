@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon Acast -> canonique conserve = ubm-2525.",
+    "reason": "Doublon du but de Dennis Bergkamp (source Acast, 00:50:34) : meme reco que le canonique ubm-2525 ('je vous invite a aller le voir sur youtube avec les commentaires hollandais').",
+    "verdict": "discard"
+  },
   "creator": "Dennis Bergkamp",
   "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0694",
   "links": [],
   "quote": "je vous invite à aller le voir sur youtube avec les commentaires hollandais",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:50:34",
   "title": "But de Dennis Bergkamp",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

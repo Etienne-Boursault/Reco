@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'L'homme qui murmurait a l'oreille des chevaux' (01:23:02) = reference instrumentale pour illustrer que les chevaux font peur ('tu dormais jamais de ce film'). Pas de substance ni reco.",
+    "verdict": "discard"
+  },
+  "creator": "Robert Redford",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2060",
+  "links": [],
+  "quote": "mais quiconque a vu l'homme qui murmurait à l'oreille des chevaux tu dormais jamais de ce film",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:02",
+  "title": "L'homme qui murmurait à l'oreille des chevaux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1998
+}

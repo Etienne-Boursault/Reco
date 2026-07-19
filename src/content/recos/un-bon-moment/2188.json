@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Fight Club est un film réel mais ici pure comparaison. Timecode 00:15:02 exact.",
+    "reason": "Name-drop comparatif : « C'est Fight Club, tout le monde pleure ! » qualifie l'ambiance d'un stage de développement personnel. Mention instrumentale (comparaison humoristique), aucune prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6599de12076e6c001696556a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2188",
+  "links": [],
+  "quote": "C'est Fight Club, tout le monde pleure !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:02",
+  "title": "Fight Club",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

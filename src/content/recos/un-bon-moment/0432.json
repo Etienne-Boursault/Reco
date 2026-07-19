@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Gladiator cite comme BO d'ecriture (« il y a aussi un peu de Gladiator »). Mention instrumentale / comparaison.",
+    "verdict": "discard"
+  },
   "creator": "Ridley Scott",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
@@ -6,17 +14,56 @@
     "tmdb": "98",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0432",
   "links": [],
-  "quote": "mais il y a aussi un peu de Gladiator",
-  "recommendedBy": "intervenants",
+  "quote": "il y a aussi un peu de Gladiator",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:35",
   "title": "Gladiator",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

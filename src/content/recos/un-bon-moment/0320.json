@@ -1,8 +1,31 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1708. Timecode ~01:55:16.",
+    "reason": "Doublon de ubm-1708 (album de Mina Tindle). Orthographe erronee 'Mina Tindall' et attribution erronee (Kyan au lieu de Penelope).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/942466201"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:55:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +34,10 @@
   "quote": "l'album de ma très très bonne amie Mina Tindall qui vient de sortir",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:55:12",
   "title": "Mina Tindall",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

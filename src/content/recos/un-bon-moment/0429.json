@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le titre en « Spider ZED ». Recommande par un invite/Navo, PAS Kyan (Kyan dit ne pas connaitre l'artiste). Canonique ; doublon = ubm-1445.",
+    "reason": "Artiste REEL (Spider ZED, rappeur masque FR, feat « C'est pas bien » avec Bigflo & Oli) partage chaleureusement comme decouverte perso (« c'est une vraie decouverte », « on va aller voir »). Mais titre a corriger et attribution douteuse.",
+    "verdict": "unsure"
+  },
   "creator": "SpiderZ",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0429",
   "links": [],
@@ -13,6 +36,7 @@
   "status": "draft",
   "timestamp": "00:28:57",
   "title": "SpiderZ",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

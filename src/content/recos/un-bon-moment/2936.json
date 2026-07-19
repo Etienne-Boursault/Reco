@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote, pas une reco.",
+    "reason": "Titane cité comme décor d'une anecdote (engueulade pop-corn au cinéma), Rosa note juste « la palme d'or ». Aucune prescription ni avis sur le film => mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:12:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2936",
+  "links": [],
+  "quote": "la dernière fois que j'engueulais c'était des petites nanas je suis allée voir titane tu restes dans un cinéma du quartier latin",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:12:17",
+  "title": "Titane",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

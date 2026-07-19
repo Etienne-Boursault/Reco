@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "World Chase Tag (ligue de chat/tag competitif). Reco collective des deux hosts.",
+    "reason": "Recommandation explicite des hosts ('world chase tag, on va mettre le lien, allez voir', 01:09:18). Passion partagee des deux hosts ('c'est notre passion... on va se commenter des parties').",
+    "verdict": "validate"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2295",
+  "kind": "reco",
+  "links": [],
+  "quote": "world chase tag on va mettre le lien allez voir",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:09:18",
+  "title": "World Chase Tag",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

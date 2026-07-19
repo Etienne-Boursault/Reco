@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco = « La Dernière » ; le transcript dit « Le dernier, la dernière » (00:33:54, 00:46:04). Orthographe/forme canonique non vérifiable (WebSearch épuisé).",
+    "reason": "Morceau de l'album (« Le dernier, la dernière, où on va vraiment toucher le fond ensemble », 00:46:04). Titre d'invité/host = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2786",
+  "kind": "reco",
+  "links": [],
+  "quote": "la Dernière, où on va vraiment la toucher le fond ensemble.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:46:08",
+  "title": "La Dernière",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

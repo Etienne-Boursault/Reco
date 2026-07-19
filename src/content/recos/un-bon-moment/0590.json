@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Extraction fautive : 'chambe' = argot (excellent) decrivant Vu, pas un titre. 'Benjamin Tranier' absent du transcript (grep negatif). ts 01:21:11 tombe pendant le jingle 'Aurel in the booth'. A restaurer si Acast confirme.",
+    "reason": "Titre-artefact : 'Chambe' provient de l'argot 'c'est vraiment chambe' (01:22:01) qualifiant la chaine Vu, ce n'est pas une oeuvre. Le creator 'Benjamin Tranier' n'apparait nulle part dans le transcript.",
+    "verdict": "discard"
+  },
   "creator": "Benjamin Tranier",
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T09:12:55+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "c'est Chambé il a une écriture il a un site de fou il fait vraiment bien le bauf c'est un vrai personnage et je le trouve vraiment très drôle",
   "recommendedBy": "Gringe",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:11",
   "title": "Chambé",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

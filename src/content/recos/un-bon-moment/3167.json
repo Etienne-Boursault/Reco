@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "00:27:07 : 'Thomas Vizal qui a écrit des blagues... on va l'inviter'. Personne, pas une œuvre. Orthographe du nom non vérifiée.",
+    "reason": "Name-drop/éloge d'un collègue (auteur de blagues) qu'ils veulent inviter ; aucune œuvre consommable prescrite (règles 1/6).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:27:07",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3167",
+  "links": [],
+  "quote": "C'est Thomas Vizal qui a écrit des blagues sur tout le monde ! Qui dit « Dis donc Jean-Paul, c'est pas le dernier ! » Il est tellement bon sur ça ! On parle beaucoup de lui à chaque fois, on va l'inviter ! Thomas, on va t'inviter bientôt !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:27:07",
+  "title": "Thomas Vizal",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

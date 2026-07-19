@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'je suis tombee' (feminin) => Laura Felpin. guests episode a completer.",
+    "reason": "Laura partage une parodie de la chaine YouTube 'Le Monde a l'envers' avec appreciation (difficulte de 'jouer mal') mais dit explicitement 'c'est pas pour leur faire de la pub' => discussion substantielle sans prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2360",
+  "kind": "citation",
+  "links": [],
+  "quote": "je suis tombée sur une vidéo du Monde à l'envers, qui font plein de vidéos sur YouTube",
+  "recommendedBy": "Laura Felpin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "09:05",
+  "title": "Le Monde à l'envers",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

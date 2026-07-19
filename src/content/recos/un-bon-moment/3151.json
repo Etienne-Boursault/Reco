@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (Kyan ou l'invité Orelsan, tous deux musiciens, dans une discussion technique sur la prod) → recommendedBy vide (règle 3).",
+    "reason": "Artiste discuté avec substance et admiration sincère (« j'adore ses prods », « instinct de pur génie », « ça me touche en plein cœur ») mais dans une comparaison sur les philosophies de production, sans prescription claire (règle 4).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:10",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3151",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://stromae.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/5j4HeCoUlzhfWtjAfM1acR"
+    }
+  ],
+  "quote": "Stromae, c'est plus, pour moi, c'est un instinct de pur génie, quoi.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:59:10",
+  "title": "Stromae",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

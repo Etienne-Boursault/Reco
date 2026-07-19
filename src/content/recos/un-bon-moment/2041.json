@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson 'Jammin' de Bob Marley utilisee comme support d'un jeu a boire (anecdote lycee). Mention instrumentale. Canonique du doublon (vs ubm-1863).",
+    "verdict": "discard"
+  },
+  "creator": "Bob Marley",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "06:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2041",
+  "links": [],
+  "quote": "Quand on était au lycée, quand on fumait de la weed, il y avait la chanson. « Jamine » de Bob Marley, à chaque fois qu'il dit « Jamine », tu dois fumer une taff.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "06:53",
+  "title": "Jammin'",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

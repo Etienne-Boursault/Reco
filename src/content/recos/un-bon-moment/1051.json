@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur (Kyan ou Navo) non déterminable au transcript non diarizé.",
+    "reason": "« il y a une chaîne que je voulais vous recommander, c'est Peaceful Cuisine, que j'adore » (01:44:11). Recommandation explicite d'une chaîne d'ASMR cuisine.",
+    "verdict": "validate"
+  },
+  "creator": "Peaceful Cuisine",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1051",
+  "kind": "reco",
   "links": [],
-  "quote": "Peaceful Cuisine, c'est une chaîne qui n'a pas besoin forcément de mon aide ou quoi que ce soit, mais je trouve ça cool, c'est de la ASMR de cuisine.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est de l'ASMR de cuisine, en fait.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:44:27",
+  "status": "validated",
+  "timestamp": "01:44:11",
   "title": "Peaceful Cuisine",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

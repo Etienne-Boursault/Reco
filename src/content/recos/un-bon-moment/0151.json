@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Le champ quote actuel (« merci 10 millions de fois a vous ») est mal decoupe ; le vrai contexte est la ligne [00:00:17].",
+    "reason": "Spectacle de Kyan (host) qu'il fait lui-meme la promo dans le monologue d'intro ([00:00:17] « mon spectacle Pulsion qui est disponible sur cette chaine YouTube »). Auto-promo d'un host = guest-work. Oeuvre reelle.",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "661c1bf83fb7ab00162aa674",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0151",
+  "kind": "reco",
   "links": [],
-  "quote": "pour ceux qui n'ont pas vu mon nouveau spectacle une bonne soirée, sachez que je ne joue plus, mais il est disponible sur le site www.unebonneboutique.com en streaming, donc vous pouvez le voir quand vous voulez.",
+  "quote": "merci 10 millions de fois à vous.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:00:25",
+  "status": "validated",
+  "timestamp": "00:00:17",
   "title": "Pulsion",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
-  ]
+  ],
+  "year": 2020
 }

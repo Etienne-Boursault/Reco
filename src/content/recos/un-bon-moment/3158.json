@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution manifeste ERRONÉE : c'est l'invité Orelsan qui répond (« t'as un dernier bouquin que t'as kiffé ? — En ce moment je suis dans Ken Follett, sa trilogie sur les cathédrales »), pas Kyan. Orelsan absent des métadonnées guests → recommendedBy vide (règle 3). Titre représentatif « The Pillars of the Earth » / « Les Piliers de la Terre » (1er tome de la trilogie de Kingsbridge) — OK.",
+    "reason": "Œuvre réelle recommandée (« C'est vraiment pas mal », « c'est chanmé ») qui n'est PAS l'œuvre du locuteur → validate ; livre en cours de lecture.",
+    "verdict": "validate"
+  },
+  "creator": "Ken Follett",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:46",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3158",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253059530-les-piliers-de-la-terre-integrale-tomes-1-et-2-ken-follett/"
+    }
+  ],
+  "quote": "En ce moment, je suis dans Ken Follett, sa trilogie sur les cathédrales.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:46",
+  "title": "The Pillars of the Earth",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

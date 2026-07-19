@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Indice de jeu-devinette : « Madonna... elle a meme joue dans le film Street Fighter, as-tu la reponse ? » — pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Madonna",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:32:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1520",
+  "links": [],
+  "quote": "elle a même joué dans le film Street Fighter",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:31:11",
+  "title": "Madonna",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

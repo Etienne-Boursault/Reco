@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en une ligne ('le spoiler le plus nul... a part dans Walking Dead'). Pas de reco.",
+    "verdict": "discard"
+  },
+  "creator": "AMC",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2375",
+  "links": [],
+  "quote": "À part dans Walking Dead.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:10:02",
+  "title": "Walking Dead",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

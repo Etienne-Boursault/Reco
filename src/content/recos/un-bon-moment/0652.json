@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'La montagne' n'existe pas; contenu reel = La Flamme (ubm-2284).",
+    "reason": "Artefact: 'la montagne' = mauvaise transcription de 'en plein montage... la flamme'. Le transcript YouTube a 01:10:00 dit 'on est en plein montage de notre serie la flamme' (= annonce de La Flamme, cf. ubm-2284).",
+    "verdict": "discard"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "quote": "on est en plein montage de notre série la montagne",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:10:00",
   "title": "la montagne",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

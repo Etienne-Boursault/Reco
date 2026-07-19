@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:22:37 : 'bruit blanc' (son pour endormir bébé) — pas une œuvre.",
+    "verdict": "discard"
+  },
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "j'ai découvert récemment ces extra...",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:22:37",
   "title": "Le bruit blanc",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

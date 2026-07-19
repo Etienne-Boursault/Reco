@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse du jeu de la complicite (« un des trucs les plus anciens qui a eu 20/20 a tout... c'est Zelda »). Reponse de jeu-devinette.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2358",
+  "links": [],
+  "quote": "je sais que t'es fan de Zelda",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:33:24",
+  "title": "Zelda",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

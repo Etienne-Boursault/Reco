@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Comparaison -> discard.",
+    "reason": "Metaphore/comparaison : Minority Report cite pour illustrer l'impossibilite d'agir en prevention (precrime), sans prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Steven Spielberg",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2497",
+  "links": [],
+  "quote": "Minority Report, c'est le cas.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:14",
+  "title": "Minority Report",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

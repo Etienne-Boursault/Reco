@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1100 (canonique, titre officiel complet).",
+    "reason": "Doublon de ubm-1100 (livre de Philippe Delerm) ; titre ASR corrompu ('La premiere gorgia de biere').",
+    "verdict": "discard"
+  },
+  "creator": "Vincent Delerme",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3010",
+  "links": [],
+  "quote": "C'est un livre hyper agréable à lire qu'on peut lire d'ailleurs à n'importe quel moment.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:39:28",
+  "title": "La première gorgia de bière",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

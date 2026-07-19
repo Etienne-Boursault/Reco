@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:49:10 : le Silencio (club de David Lynch) = décor de l'anecdote de Léopold (soirée où il a rencontré une fille), pas une reco du lieu.",
+    "verdict": "discard"
+  },
   "creator": "David Lynch",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Vous savez, le club de Feux David Lynch.",
   "recommendedBy": "non spécifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:49:10",
   "title": "Le Silencio",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

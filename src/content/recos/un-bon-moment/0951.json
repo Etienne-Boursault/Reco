@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.93,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2124 (spectacle de Blandine Lehout, 01:09:12 — même recommandation). Titre « Blondine Léo » = artefact.",
+    "verdict": "discard"
+  },
   "creator": "Blondine Léo",
   "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "je vais recommander une humoriste, Blondine Léo. Oui. Qui est une copine et que je trouve très drôle.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:12",
   "title": "Spectacle de Blondine Léo",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

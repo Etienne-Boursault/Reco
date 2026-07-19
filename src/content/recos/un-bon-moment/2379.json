@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "TITRE: 'Kyron' = Kheiron (humoriste, etait dans Bref). Verdict vise: validate. Locuteur incertain (jeu de sketchs). NB: 'Cairon' de ubm-2378 = meme personne.",
+    "reason": "Reco reelle d'un spectacle ('aller voir son spectacle, il est super, il est tres fort, des heures de matos') mais TITRE A CORRIGER avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Kyron",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2379",
+  "links": [],
+  "quote": "Vu que Kyron, son principe, aller voir son spectacle, il est super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:46",
+  "title": "Kyron",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

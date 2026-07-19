@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2186 (meme reco Zaho de Sagazan, 01:22-23). Titre 'Zao de Sagazan' = artefact (Zao -> Zaho); on garde l'entree album mieux titree.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2183",
+  "links": [],
+  "quote": "Moi, je ne sais pas, mais j'aime bien Zao de Sagazan.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:22:51",
+  "title": "Zao de Sagazan",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,17 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur invité incertain. Compléter guests.",
+    "reason": "Recommandation dans le tour final : 'Tokyo Revenger manga super bien' (00:56:35). Œuvre réelle : 'Tokyo Revengers' de Ken Wakui. Canonique du doublon avec ubm-2825 (titre correct).",
+    "verdict": "validate"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0787",
+  "kind": "reco",
   "links": [],
-  "quote": "Tokyo Revenger, mon gars, super bien.",
+  "quote": "Tokyo Revenger manga super bien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:37",
+  "status": "validated",
+  "timestamp": "00:56:35",
   "title": "Tokyo Revengers",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "bd"
   ]
 }

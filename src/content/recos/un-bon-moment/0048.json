@@ -1,20 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco = « Solaï Nuit » ; le transcript écrit « Soleil Nuit ». Orthographe canonique non vérifiable (budget WebSearch épuisé).",
+    "reason": "Morceau de l'album (Mathilda au chant, Damien Gouzou à la batterie, 00:56:19→00:56:45). Titre d'invité/host = guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1508040052"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0048",
+  "kind": "reco",
   "links": [],
   "quote": "la batterie j'ai fait jouer un copain qui s'appelle Damien Gouzou",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:56:40",
   "title": "Solaï Nuit",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

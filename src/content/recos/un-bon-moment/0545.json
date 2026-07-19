@@ -6,18 +6,39 @@
     "tmdb": "4148",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "anthropic",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "00:52:47"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "anthropic",
+      "llmModel": "claude-haiku-4-5",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "00:52:48"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0545",
+  "kind": "reco",
   "links": [],
   "quote": "Ouais, c'est un super film.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:52:50",
+  "status": "validated",
+  "timestamp": "00:52:48",
   "title": "Les Noces Rebelles",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -31,11 +52,6 @@
       "ethics": "avoid",
       "label": "Paramount+ Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Paramount Plus Premium",
-      "url": "https://www.paramountplus.com/fr/search/?q=Les%20Noces%20Rebelles"
     },
     {
       "ethics": "neutral",
@@ -73,11 +89,6 @@
       "url": "https://www.sooner.fr/recherche?q=Les%20Noces%20Rebelles"
     },
     {
-      "ethics": "avoid",
-      "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Noces%20Rebelles"
-    },
-    {
       "ethics": "neutral",
       "label": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Les%20Noces%20Rebelles"
@@ -93,5 +104,8 @@
       "url": "https://www.premieremax.com/search?q=Les%20Noces%20Rebelles"
     }
   ],
-  "year": 2008
+  "year": 2008,
+  "aliases": [
+    "Revolutionary Road"
+  ]
 }

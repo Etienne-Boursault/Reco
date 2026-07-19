@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger : 'Benjamin Verrecchia' (partenaire de Pierre Croce). ~01:20:25.",
+    "reason": "Kheiron recommande 'toute la bande' dans le segment final (~01:20:25). Personne reelle, orthographe officielle : Benjamin Verrecchia (transcrit 'Macchia'/'Vireca'). Distinct de Pierre Croce (ubm-1037).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2321",
+  "kind": "reco",
+  "links": [],
+  "quote": "Toute la bande : Pierre Croze, Benjamin Macchia !",
+  "recommendedBy": "Kheiron",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:25",
+  "title": "Benjamin Macchia",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

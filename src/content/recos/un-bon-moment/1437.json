@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Croc-Blanc = REPONSE du jeu « devine chante » (indice : ecrivain californien 19e, mort a 40 ans = Jack London -> livre Croc-Blanc). Reponse de jeu. Draft recommendedBy Navo errone.",
+    "verdict": "discard"
+  },
+  "creator": "Jack London",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1437",
+  "links": [],
+  "quote": "allez je vous donne un livre cro blanc",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:16",
+  "title": "Cro-Blanc",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

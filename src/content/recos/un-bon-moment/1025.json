@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution 'Navo' probable (contexte 'Davo, t'en as ?') mais non diarizé. Créateur draft 'Julien Méniel' : le transcript dit 'Julien Meignel' ; orthographe réelle probable 'Julien Menuel' (non vérifiée, budget WebSearch épuisé).",
+    "reason": "Chaîne DTC ('Dans Ton Corps') prescrite ('DTC, dans la chaîne Dans Ton Corps... très très bien', 00:50:58) : vraie reco d'une œuvre réelle, créateur non-invité.",
+    "verdict": "validate"
+  },
   "creator": "Julien Méniel",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1025",
-  "links": [],
-  "quote": "C'est Julien Méniel qui nous donne, fait des espèces de petits épisodes sur des trucs de santé. Hyper intéressant.",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCOchT7ZJ4TXe3stdLW1Sfxw"
+    }
+  ],
+  "quote": "Allez, DTC. DTC, dans la chaîne Dans Ton Corps.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:51:01",
+  "status": "validated",
+  "timestamp": "00:50:58",
   "title": "Dans ton corps",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

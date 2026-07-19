@@ -1,18 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2272 'Steamy'.",
+    "reason": "'Stimie' = transcription erronee de 'Steamy'. Doublon de ubm-2272 (meme podcast Louis Media, meme timecode 00:52:19).",
+    "verdict": "discard"
+  },
   "creator": "Louis-Médias",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1162",
   "links": [],
   "quote": "Le podcast s'appelle Stimie, c'est super sauf qu'il est sur une app qui s'appelle Storytel, qui est super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:52:19",
   "title": "Stimie",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

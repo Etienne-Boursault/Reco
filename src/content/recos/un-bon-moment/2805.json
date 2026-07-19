@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Jain (0903, 1105, 2801, 2802 = doublons). Artiste = Jain (Jeanne Galice); album probable Zanaka (contient Makeba) ou The Fool (2023). Titre 'Jane' -> 'Jain'. Recommandeur = un hote ou Laura, incertain -> recommendedBy vide.",
+    "reason": "Recommandation explicite 'Moi je recommande l'album de Jane [Jain]' (01:15:12).",
+    "verdict": "validate"
+  },
+  "creator": "Jane",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2805",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je recommande l'album de Jane.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:15",
+  "title": "album de Jane",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

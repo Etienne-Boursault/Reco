@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "humanCorrection": "Politique host-work tranchée 2026-07-07 : œuvre d'un host présentée en promo → guest-work (comme les invités)",
+    "model": "claude-opus-4-8",
+    "reason": "Auto-promo d'un HOST : « Une bonne soiree » est le spectacle de Kyan Khojandi (« c'est mon spectacle donc venez », 01:06:59, repris en intro). Le path guest-work/auto-promo est reserve aux INVITES; promo de tournee des hosts = pas une reco tierce.",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2966",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est mon spectacle donc venez avec grand plaisir aussi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:06:59",
+  "title": "Une bonne soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

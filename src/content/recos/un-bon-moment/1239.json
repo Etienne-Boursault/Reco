@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même énoncé blind-test qu'ubm-2731.",
+    "reason": "Réponse de blind-test (« De Eiffel 65 »), doublon de ubm-2731 (« I'm Blue »). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Eiffel 65",
   "episodeGuid": "65240aefc8996500127ede97",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/89629797"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +35,10 @@
   "quote": "De Eiffel 65",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:20:14",
   "title": "Eiffel 65",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

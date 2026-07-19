@@ -1,8 +1,38 @@
 {
   "creator": "Laurent Baffy",
   "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:52:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0038",
   "links": [],
@@ -10,8 +40,9 @@
   "recommendedBy": "Laurent Baffie",
   "sourceId": "un-bon-moment",
   "status": "validated",
-  "timestamp": "01:00:36",
+  "timestamp": "00:59:09",
   "title": "Soupe miso",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

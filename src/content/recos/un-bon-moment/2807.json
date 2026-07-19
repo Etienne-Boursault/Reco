@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote familiale, pas une reco.",
+    "reason": "Meme anecdote que ubm-2806 (Cole Porter et Artie Shaw evoques ensemble par la grand-mere de Marina). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2807",
+  "links": [],
+  "quote": "quand j'étais petite, elle me racontait toujours qu'ils aimaient beaucoup Cole Porter et Artie Shaw avec mon grand-père",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:11",
+  "title": "Artie Shaw",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

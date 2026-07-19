@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : anecdote sur les profs de francais qui lui donnaient 'des bouquins de Boris Vian' — exemple d'un souvenir formateur, pas une prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Boris Vian",
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2182",
+  "links": [],
+  "quote": "en me donnant des bûches comme ça, des bouquins, de Boris Vian, des choses comme ça un peu folles.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:33",
+  "title": "Les œuvres de Boris Vian",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

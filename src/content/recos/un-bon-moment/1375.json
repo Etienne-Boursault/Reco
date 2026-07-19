@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre définitif « Cette éducation me déteste » (ex-provisoire « L'école c'est de la merde »). Créateur probable = Pierre Hillairet (monteur/réalisateur vidéo, court-métrage en 4e) mais non diarisé — à confirmer. Œuvre non trouvée en ligne (récente / titre provisoire).",
+    "reason": "Documentaire sur l'école réalisé par une personne présente et présenté par elle (« t'as fait un podcast sur l'école ? ouais... que j'ai envoyé à Arte »).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:12:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1375",
+  "kind": "reco",
+  "links": [],
+  "quote": "il a fait un podcast là-dessus qui est trop bien",
+  "recommendedBy": "Pierre Hillairet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:37",
+  "title": "Cette éducation me déteste",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

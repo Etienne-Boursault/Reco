@@ -1,0 +1,65 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'WandaVision' surgit du jeu de devinette super-héros (réponse 'Vision') — mention instrumentale de jeu ; 'c'est une super série' est un aparté bref.",
+    "verdict": "discard"
+  },
+  "creator": "Marvel",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1489",
+  "links": [],
+  "quote": "WandaVision, c'est une super série.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:40",
+  "title": "WandaVision",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

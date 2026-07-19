@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention comique et negative embarquee dans le jeu de mots sur « prescription » : « tu peux y aller... franchement c'est nul... il y a prescription... il est pas mal » (l.2400-2408). Avis negatif jete sans substance reelle, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Joss Whedon",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2470",
+  "links": [],
+  "quote": "Franchement, c'est nul.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:20:20",
+  "title": "Avengers : l'ère d'Ultron",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

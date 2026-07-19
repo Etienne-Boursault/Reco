@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2865 (extraction acast, 01:32:17). Titre « Suivez Babac » tronqué/déformé.",
+    "reason": "Doublon Théo Babac, titre tronqué",
+    "verdict": "discard"
+  },
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "quote": "allez voir suvetez au babac sur tiktok il est très drôle",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:32:17",
   "title": "Suivez Babac",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

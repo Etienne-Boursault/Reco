@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre « 300 000 ans » confirmé (spectacle militant d'histoire, L'Européen / Théâtre de la Madeleine). Doublon en discard : ubm-2109. Timecode réel ~01:33:45 (reco : 01:32:46, dans la fenêtre).",
+    "reason": "Spectacle « 300 000 ans » de Manon Bril (invitée) présenté par elle-même (« notre espèce a 300 000 ans, c'est le nom de mon spectacle », ~01:33:45) — auto-promo.",
+    "verdict": "guest-work"
+  },
+  "creator": "Manon",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2099",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est le nom de mon spectacle.",
+  "recommendedBy": "Manon Bril",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:32:46",
+  "title": "300 000 ans",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

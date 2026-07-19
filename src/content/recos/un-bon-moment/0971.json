@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0251 (biographie de Balzac par Zweig). 'Balzac, une vie'.",
+    "verdict": "discard"
+  },
   "creator": "Stefan Zweig",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "il disait le roman de la vie de Balzac par Stéphane Swagg, c'est prodigieux, c'était un envie de relire Balzac",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:08",
   "title": "Balzac, une vie",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

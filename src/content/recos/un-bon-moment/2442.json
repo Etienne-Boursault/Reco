@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2441. 'Psychomagie' (Jodorowsky) jamais mentionne dans l'episode.",
+    "reason": "Titre 'Psychomagie' absent du transcript (hallucination) ; le passage a 00:44:47 ('c'est vraiment bien comme bouquin... identifier tes propres schemas') concerne 'Tant pis pour l'amour' -> doublon de ubm-2441.",
+    "verdict": "discard"
+  },
+  "creator": "Sophie Lambda",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2442",
+  "links": [],
+  "quote": "c'est vraiment bien comme bouquin parce qu'elle te permet d'identifier tes propres schémas",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:47",
+  "title": "Psychomagie",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

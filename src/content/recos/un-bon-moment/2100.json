@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Une famille en or » (TF1, Camille Combal) — reco indiquait « La Famille en Or ». Monologue d'un host non identifiable avec certitude (Navo ou Kyan).",
+    "reason": "Enthousiasme réel pour l'émission (« je trouve ça génial, Combal est trop marrant, il invite des gens trop cool ») mais présenté comme anecdote de goût personnel (« est-ce que c'est vieillir ? ») sans prescription directe au public → citation.",
+    "verdict": "citation"
+  },
+  "creator": "Camille Combal",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2100",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'adore Camille Combal à la télé.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:56",
+  "title": "La Famille en Or",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

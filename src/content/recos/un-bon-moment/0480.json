@@ -1,5 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve : ubm-1585.",
+    "reason": "Doublon de ubm-1585 (The Last of Us, meme passage 01:15).",
+    "verdict": "discard"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +39,10 @@
   "links": [],
   "quote": "Le jeu est quand même super.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:30",
+  "status": "discarded",
+  "timestamp": "01:15:35",
   "title": "Last of Us",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

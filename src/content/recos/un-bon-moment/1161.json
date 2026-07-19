@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigee: recommande par Panayotis Pascot (invite), et non par Kyan comme indique dans la reco.",
+    "reason": "'Yoga' d'Emmanuel Carrere recommande par Panayotis a 00:39:15 ('j'ai lu Yoga qui est vraiment spectaculaire, un livre sur la depression'); il l'a relu apres son diagnostic et a rencontre l'auteur.",
+    "verdict": "validate"
+  },
   "creator": "Emmanuel Carrère",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1161",
+  "kind": "reco",
   "links": [],
-  "quote": "j'ai relu Yoga, je sais pas pourquoi, juste après avoir eu mon diagnostic",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "c'est celui d'Emmanuel Carrère dans yoga",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:39:06",
+  "status": "validated",
+  "timestamp": "00:39:15",
   "title": "Yoga",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

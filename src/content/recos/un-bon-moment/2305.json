@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Serie creee par les hosts. Egalement citee comme chaine a recommander ~01:19:39.",
+    "reason": "Bref = serie des DEUX hosts (Kyan Khojandi et Bruno Muschio dit Navo), presentee en detail par ses createurs (concept, DVD, com ~00:03:52-00:06:06). Auto-promo assumee du format -> guest-work (politique host-comme-invite).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "11:12:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2305",
+  "kind": "reco",
+  "links": [],
+  "quote": "ce que je me rappelle avec bref c'est que c'était comme ça dès le début",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "11:12:00",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

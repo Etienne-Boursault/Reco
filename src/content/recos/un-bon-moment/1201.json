@@ -1,16 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1150 (01:30:48). Titre « le nouveau spectacle du Capucine » = fragment de phrase, pas un vrai titre. Pas de recommendedBy à l'origine.",
+    "reason": "Doublon Capucine, titre-artefact",
+    "verdict": "discard"
+  },
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1201",
   "links": [],
   "quote": "Je vous invite à aller découvrir le nouveau spectacle.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:30:48",
   "title": "le nouveau spectacle du Capucine",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

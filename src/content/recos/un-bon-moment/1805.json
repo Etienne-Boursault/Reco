@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Exocet' (emission radio de Patrick Baud, 2005-2008 — pas 2003). Timestamp reel ~00:03:22 (reco a 00:00:00).",
+    "reason": "Oeuvre ancienne de l'invite Patrick Baud evoquee nostalgiquement par le host ('le presentateur d'Exocete qu'on a eu... c'etait une epoque plus fantastique... c'etait en 2003') — vraie oeuvre avec un peu de substance mais sans prescription ni presentation par l'invite.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1805",
+  "kind": "citation",
+  "links": [],
+  "quote": "Juste avant, il y avait un avant-axolote. Ça me touche, Exocète.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:00",
+  "title": "Exocète",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ],
+  "year": 2003
+}

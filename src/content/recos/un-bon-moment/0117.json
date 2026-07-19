@@ -1,19 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Recommandation explicite de Navo ('Nabot, tu as quelque chose a recommander?') : 'Je vous encourage a aller voir. C'est sur YouTube. C'est tres cool.' Serie YouTube 'How to Be Your Own Best Friend' (Ines Banzet-Benhagouga, 2021-2023) confirmee reelle.",
+    "verdict": "validate"
+  },
   "creator": "Inconnu",
   "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:06:09+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0117",
+  "kind": "reco",
   "links": [],
-  "quote": "Je vous encourage à aller voir, c'est sur YouTube. C'est très cool.",
+  "quote": "C'est super. Ce n'est pas très connu. Je vous encourage à aller voir.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:25:37",
+  "status": "validated",
+  "timestamp": "01:25:30",
   "title": "How to Be Your Own Best Friend",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

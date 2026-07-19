@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Role de doublage identifie dans un jeu, aucune incitation a voir le film.",
+    "reason": "Toy Story cite pour identifier le role de doublage de Pierre (Fourchette/Forky) pendant le jeu des anecdotes d'acteurs. Mention instrumentale, pas de presentation ni reco.",
+    "verdict": "discard"
+  },
+  "creator": "Pixar",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1633",
+  "links": [],
+  "quote": "Toy Story tu connais ?",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:30:20",
+  "title": "Toy Story",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

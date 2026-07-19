@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "DOUBLON fusionne : ubm-0584 (acast, « Ashile ») discarde comme doublon. ORTHOGRAPHE incertaine (« Achille » vs « Achile »/« Ashile ») — WebSearch epuise, a verifier en UI. Attribution Amixem inferee (cf. note ubm-2742). Guests VIDE => completer Amixem/Pierre Croce.",
+    "reason": "Reco explicite (01:18:48) : « ...Pab the Kid et Achille qui sont deux rappeurs slash chanteurs ». Rappeur/chanteur mis en avant par Amixem.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2737",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je vais mettre en avant Pab the Kid et Achille qui sont deux rappeurs slash chanteurs.",
+  "recommendedBy": "Amixem",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:48",
+  "title": "Achille",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

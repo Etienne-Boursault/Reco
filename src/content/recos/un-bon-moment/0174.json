@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Desperate Housewives' (00:53:32) = indice/reponse du jeu (Desperate + slim shady -> Eminem). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Marc Cherry",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "externalIds": {
@@ -6,17 +14,37 @@
     "tmdb": "693",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0174",
   "links": [],
-  "quote": "Desperate Housewives",
-  "recommendedBy": "Inconnu",
+  "quote": "Desperate Housewife",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:53:32",
   "title": "Desperate Housewives",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

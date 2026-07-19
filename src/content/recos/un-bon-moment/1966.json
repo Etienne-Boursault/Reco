@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1601 ('Cuisine et dependances', liste de films en passant).",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1966",
+  "links": [],
+  "quote": "j'aime j'ai un art de famille Fusine d'indépendance.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:10",
+  "title": "Fusil d'indépendance",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

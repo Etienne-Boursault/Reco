@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Meme moment que ubm-0481 (egalement discard).",
+    "reason": "Film Mario anime en hearsay : 'il parait qu'il est bien, je n'ai pas vu'. Pas de reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1586",
+  "links": [],
+  "quote": "Non, mais je crois que le Mario animé, là, il est bien.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:05",
+  "title": "The Super Mario Bros. Movie",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

@@ -1,18 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe 'Hard Disk' non revalidee (WebSearch epuise).",
+    "reason": "Recommandation par l'invite Mister V d'une chaine reelle d'analyse de clips/videos (Hard Disk) : 'je le trouve vraiment bon, il merite plus d'abonnes' ; oeuvre tierce (01:18).",
+    "verdict": "validate"
+  },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0644",
-  "links": [],
-  "quote": "C'est Hard Disk qui s'appelle... Oui, je connais ça Hard Disk. Voilà. Je le trouve vraiment bon. Et il mérite encore plus d'abonnés.",
-  "recommendedBy": "Yvick",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@hardisk"
+    }
+  ],
+  "quote": "Et il y a une autre chaîne mais qui a rien à voir avec de l'humour qui est plus dans l'analyse de vidéos et de clips... C'est Hard Disk il s'appelle ! Je le trouve vraiment bon et il mérite encore plus d'abonnés !",
+  "recommendedBy": "Mister V",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:18:05",
+  "status": "validated",
+  "timestamp": "01:18:01",
   "title": "Hard Disk",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

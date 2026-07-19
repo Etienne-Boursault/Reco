@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon; reco gardee = ubm-1029 (The Joe Rogan Experience)",
+    "reason": "Doublon de Joe Rogan (regle 13)",
+    "verdict": "discard"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "écoutez le podcast de Joe Rogan",
   "recommendedBy": "Non spécifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:16:18",
   "title": "Joe Rogan",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

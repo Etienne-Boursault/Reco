@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Lego = REPONSE du jeu « devine chante » de Greg Romano (indices chantes : « marque edite en 1932, creee par un charpentier... il a trouve vite »). Reponse de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Ole Kirk Christiansen",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1436",
+  "links": [],
+  "quote": "c'est une marque mondialement connue édité en 1932 créée par un charpentier",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:28",
+  "title": "Lego",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ],
+  "year": 1932
+}

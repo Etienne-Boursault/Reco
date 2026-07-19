@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Chaine YouTube The Great Review : 'il y a The Great Review... des essayistes tres tres droles... vraiment formidable' (01:56:12). Reco explicite.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2074",
+  "kind": "reco",
+  "links": [],
+  "quote": "après il y a d'autres gars dans le même truc il y a Great Review il y a The Great Review",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:12",
+  "title": "The Great Review",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

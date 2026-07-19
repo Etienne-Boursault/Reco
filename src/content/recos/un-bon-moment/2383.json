@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Radiostars » (2012, réal. Romain Lévy, co-écrit avec Manu Payet) — pas « Radio Star », et année 2006 erronée (→ 2012). Créateur à corriger (« Mathieu Amalric » douteux).",
+    "reason": "Film de l'invité Manu Payet célébré en épisode : « Découvrez Radio Star, super film » + « un des meilleurs films que tu as fait » (00:12), Manu endosse (« c'est une vraie réussite ce film »). Auto-promo de la filmo de l'invité.",
+    "verdict": "guest-work"
+  },
+  "creator": "Romain Lévy, Mathieu Amalric",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:12:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2383",
+  "kind": "reco",
+  "links": [],
+  "quote": "Découvrez Radio Star, si vous n'avez pas vu, super film de bandes.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:12:46",
+  "title": "Radio Star",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2006
+}

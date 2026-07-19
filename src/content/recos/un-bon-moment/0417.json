@@ -1,21 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention negative en passant, pas une reco.",
+    "reason": "Maxime : 'J'ai regarde la femme de menage, le film qui est sorti, un poil decu'. Mention comique sans prescription.",
+    "verdict": "discard"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/1368166-the-housemaid/watch?locale=FR",
     "tmdb": "1368166",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0417",
   "links": [],
   "quote": "J'ai regardé la femme de ménage.",
-  "recommendedBy": "Navé",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:26:17",
   "title": "La Femme de ménage",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

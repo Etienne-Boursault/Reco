@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigee Kyan->Bertrand (c'est Bertrand qui parle de sa video Yes Vous Aime a ce moment). Film reel (mockumentaire belge, 1992).",
+    "reason": "Bertrand (invite), en expliquant sa video parodie qu'on prenait pour vraie (01:02), dit 'moi je suis fan de C'est arrive pres de chez vous a l'epoque, mais je ne comprends pas qu'un film de cinema... ce n'est pas pareil qu'une video'. Appreciation reelle ('je suis fan') d'un film reel, mais usage comparatif/instrumental sans prescription -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3029",
+  "kind": "citation",
+  "links": [],
+  "quote": "moi je suis fan de C'est arrivé près de chez vous à l'époque",
+  "recommendedBy": "Bertrand Usclat",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:51",
+  "title": "C'est arrivé près de chez vous",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "~00:06:19-00:06:59.",
+    "reason": "Nekfeu : analyse technique du flow ('m'a tue sur le couplet', 'il a inverse', ~00:06:19). Substance sans prescription. Attribution fluide (le locuteur cite 'notre WhatsApp avec Navo').",
+    "verdict": "citation"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "13:11:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2309",
+  "kind": "citation",
+  "links": [],
+  "quote": "Nekfeu m'a tué sur le couplet avec Dajou voilà",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "13:11:00",
+  "title": "Nekfeu",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

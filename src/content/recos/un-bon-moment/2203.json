@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique pour la chaine YouTube recommandee par Navo (analyse d'EEAAO). Orthographe reelle = « Bolchegeek » (titre stocke « Bolche Geek »). Doublon discarde : ubm-0944.",
+    "reason": "Canonique; chaine YouTube recommandee par Navo (analyse EEAAO). Orthographe reelle Bolchegeek.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2203",
+  "kind": "reco",
+  "links": [],
+  "quote": "Bolche Geek qui, justement, une de ses vidéos, c'est une analyse de Everting Everywhere All At Once.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:39",
+  "title": "Bolche Geek",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

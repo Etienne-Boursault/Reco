@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Nausicaä de la Vallée du Vent' cité en comparaison en passant ('ça me rappelle vraiment Nausicaä') à propos des champignons/mycorhizes, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:29:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:29:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1499",
+  "links": [],
+  "quote": "Ça me rappelle vraiment Nausica.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:29:58",
+  "title": "Nausicaä de la Vallée du Vent",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

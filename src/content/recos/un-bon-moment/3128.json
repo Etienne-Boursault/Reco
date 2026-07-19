@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact du spectacle 'I Will Survive' à confirmer (WebSearch indisponible) ; décrit comme la dernière pièce des Chiens de Navarre, primée d'un Molière, avec Delphine Baril, sur les violences conjugales. Locuteur cinéphile non identifié (Thomas Deseur invité, ou un host).",
+    "reason": "Prescription explicite d'un spectacle réel des Chiens de Navarre ('Allez voir ça, c'est incroyable', dernière pièce, Molière) ; œuvre externe.",
+    "verdict": "validate"
+  },
+  "creator": "Les Chiens de Navarre",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:02",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3128",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.chiensdenavarre.com/i-will-survive"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Dates de tournée",
+      "url": "https://www.chiensdenavarre.com/saison-25-26"
+    }
+  ],
+  "quote": "Allez voir ça, I Will Survive, Des Chiens de Navarre, c'est incroyable.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:35:02",
+  "title": "I Will Survive",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

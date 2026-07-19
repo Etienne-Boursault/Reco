@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Titre reel 'Le Bureau des Legendes'.",
+    "reason": "Le Bureau des Legendes (serie, sur MyCanal) recommande positivement pendant le bit MyCanal : 'qui est sur MyCanal vraiment trop cool' (01:16:00). Reco.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2640",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le bureau des légendes tout ça... Qui est sur MyCanal vraiment trop cool.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:00",
+  "title": "Bureau des Légendes",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

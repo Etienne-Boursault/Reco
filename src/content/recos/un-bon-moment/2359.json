@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Debat collectif -> recommendedBy vide.",
+    "reason": "Debat comique multi-voix sur le scenario d'Interstellar (moqueries 'pas de scenar' + defense 'c'est ca qui est beau', blagues spoiler). Discussion substantielle mais aucune prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Christopher Nolan",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "06:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2359",
+  "kind": "citation",
+  "links": [],
+  "quote": "Pas de scénar, Interstellar ?",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:06:30",
+  "title": "Interstellar",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Film cite comme comparaison pour decrire le cheminement metamoderne de l'album d'Eddy (« c'est un peu le cheminement dans EEAAO »), sans prescription ni avis propre — mention instrumentale. Re-evoque a 00:57 uniquement via la video d'analyse Bolche Geek (voir ubm-2203).",
+    "reason": "Film utilise comme comparaison pour decrire le cheminement de l'album, sans prescription.",
+    "verdict": "discard"
+  },
   "creator": "Dan Kwan, Daniel Scheinert",
   "episodeGuid": "6599c1b296596600156961a7",
   "externalIds": {
@@ -6,18 +15,47 @@
     "tmdb": "545611",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0103",
   "links": [],
-  "quote": "c'est l'analyse de Voting Everywhere All At Once.",
-  "recommendedBy": "invité",
+  "quote": "C'est un peu le cheminement dans « Everything, Everywhere, All at Once ».",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:57:45",
+  "status": "discarded",
+  "timestamp": "00:10:08",
   "title": "Everything Everywhere All At Once",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

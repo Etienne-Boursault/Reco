@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Reponse de jeu-devinette.",
+    "reason": "The Mask est la reponse d'une devinette de jeu ('un costume mythique de Jim Carrey inspire de lui-meme, lequel ?').",
+    "verdict": "discard"
+  },
+  "creator": "Jim Carrey",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1634",
+  "links": [],
+  "quote": "En gros, quand ils ont fait le costume de The Mask, de ce que je comprends de la question, ils se sont inspirés d'un costume que lui-même avait déjà porté.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:48",
+  "title": "The Mask",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

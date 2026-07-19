@@ -1,17 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Chanson fictive creee pendant l'emission ; le pere du guest en 'anecdote' concerne cette invention.",
+    "reason": "« La Vitrine » est une chanson inventee EN DIRECT dans l'emission (jeu d'ecriture sur le theme vitrine/prostituee/jouet/SDF), pas une oeuvre publiee. Regle 3 (oeuvre inventee dans l'episode).",
+    "verdict": "discard"
+  },
   "creator": "Big Flo et Oli",
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1301",
   "links": [],
-  "quote": "Eh ben putain, je crois que c'était ma préférée dans la liste.",
+  "quote": "c'est une anecdote de mon père",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:28:34",
+  "status": "discarded",
+  "timestamp": "00:28:33",
   "title": "La Vitrine",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

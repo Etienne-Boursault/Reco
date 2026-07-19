@@ -1,17 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Bit comique : 'Bad Bunny a La Petite Loge le 8 octobre' derape en jeu de mots sur les barres chocolatees (Mars, Milky Way, Celebration...). Pas une vraie reco.",
+    "verdict": "discard"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:51:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:51:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0194",
   "links": [],
-  "quote": "et Bad Bunny aussi à la petite loge le 8 octobre",
+  "quote": "Et Bad Bunny aussi à La Petite Loge, le 8 octobre.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:51:20",
   "title": "Bad Bunny",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'What A Man' errone = 'WAP / Wet Ass Pussy' de Cardi B & Megan Thee Stallion. Meme passage 00:25 que ubm-2746 (source acast). Anna raconte sa reprise acoustique et son shadowban Instagram : la chanson n'est pas recommandee, elle est l'objet de la blague.",
+    "reason": "Doublon de ubm-2746 + mention instrumentale (anecdote de reprise/shadowban, pas une reco).",
+    "verdict": "discard"
+  },
   "creator": "Cardi B, Megan Thee Stallion",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1283",
   "links": [],
   "quote": "j'ai fait une reprise de la chanson de Cardi B et de Megan Thee Stallions qui s'appelle What As Pussy",
-  "recommendedBy": "Non précisé",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:25:24",
   "title": "What A Man",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

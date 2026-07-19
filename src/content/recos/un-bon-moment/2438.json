@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote d'enfance illustrant un sentiment de liberte creative ('quand je regardais Les Nuls... j'avais ce sentiment de liberte totale'), sans substance sur l'oeuvre ni prescription -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2438",
+  "links": [],
+  "quote": "quand je regardais Les Nuls sur Canal+, j'avais ce sentiment de liberté totale qu'ils avaient...",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:22:22",
+  "title": "Les Nuls",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

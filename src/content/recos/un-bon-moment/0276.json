@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Fleabag discute avec substance ('c'est fou', 'la saison 2 est mieux que la une') comme exemple d'arret au sommet. Pas de prescription explicite, pas un invite.",
+    "verdict": "citation"
+  },
   "creator": "Phoebe Waller-Bridge",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
@@ -6,18 +14,57 @@
     "tmdb": "67070",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0276",
+  "kind": "citation",
   "links": [],
-  "quote": "Regarde Fleabag. Mais Fleabag aussi dedans. Fleabag c'est fou. Fleabag la saison 2 est mieux que la 1",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Fleabag c'est fou ouais ! Fleabag la saison 2 est mieux que la une !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:09:55",
   "title": "Fleabag",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

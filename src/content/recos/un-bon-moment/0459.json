@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Nos Futurs : simple name-drop identifiant une collaboration passee avec Bezancon ('c'est nos futurs'), aucune substance ni avis.",
+    "verdict": "discard"
+  },
   "creator": "Rémi Besançon",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
@@ -6,17 +14,28 @@
     "tmdb": "344475",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0459",
   "links": [],
   "quote": "Mais c'est Nos Futurs.",
-  "recommendedBy": "Gilles Le Louch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:03:48",
   "title": "Nos Futurs",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

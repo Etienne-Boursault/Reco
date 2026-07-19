@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte : Mehdi Gatao (@mehdigatao), createur de la serie Idiotopia (cf. ubm-0960). Locuteur du bloc post-relais non identifiable (probablement Navo).",
+    "reason": "Reco explicite : 'allez Medi Gatao sur TikTok/Insta'. Createur reel (fiction verticale). ",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1856",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez Medi Gatao sur TikTok",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:15",
+  "title": "Medi Gatao",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

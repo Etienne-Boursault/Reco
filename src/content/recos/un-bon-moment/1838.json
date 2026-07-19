@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'Doria a pris l'anglais avec Friends. Super prof.' : anecdote instrumentale (apprentissage de l'anglais), sans discussion substantielle ni prescription de Friends. Friends apparait aussi comme reponse de jeu ailleurs (Ross le paleontologue).",
+    "verdict": "discard"
+  },
+  "creator": "David Crane, Marta Kauffman",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1838",
+  "links": [],
+  "quote": "Doria a pris l'anglais avec Friends.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:08:29",
+  "title": "Friends",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

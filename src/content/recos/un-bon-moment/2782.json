@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode 00:26:36 tombe sur une vraie mention (« un épisode de Bref », 00:26:36) ; la quote stockée provient d'une autre mention (~00:02:04). Les deux sont valides.",
+    "reason": "Série de Kyan (host) citée en exemple/anecdote de sa rythmique et de son mélange rire/émotion. host-work en anecdote = citation, pas promue ici.",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2782",
+  "kind": "citation",
+  "links": [],
+  "quote": "dès qu'on racontait des histoires, je mettais un point d'orgue, je mettais un point d'honneur à mettre de la musique, à mettre de l'émotion justement, à mélanger. On peut rigoler pendant une minute. On a déjà eu ça dans Bref, par exemple, une minute trente de gaulerie et les trente dernières secondes, bam, on cueille les gens",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:36",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

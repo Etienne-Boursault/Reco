@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Uncut Gems' cite comme comparaison pour decrire Marty Supreme ('la meme nervosite mais dans le monde du ping pong', 01:26:46). Point de reference, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:41:41+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1393",
+  "links": [],
+  "quote": "pas du tout Uncut Gems sur Netflix",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:26:46",
+  "title": "Uncut Gems",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

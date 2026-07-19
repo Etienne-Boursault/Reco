@@ -1,8 +1,31 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1709. Timecode ~01:56:06.",
+    "reason": "Doublon de ubm-1709 (album 'Etincelle volume 2' de Wax). Attribution erronee (Kyan).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/356500427"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +34,10 @@
   "quote": "il sort un album Vendredi qui s'appelle Étincelle Vol 2",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:56:06",
   "title": "Étincelle Vol 2",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

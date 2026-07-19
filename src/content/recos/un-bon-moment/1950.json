@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre probablement mistranscrit ; doublon 1953 également discardé.",
+    "reason": "'Beacon Hill/Beacon Rewind' — titre non identifiable (aucun film Sigourney Weaver correspondant), cité de façon instrumentale dans le jeu des personnalités. Canonique de la paire.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1950",
+  "links": [],
+  "quote": "Et Sigourney Weaver, quand tu la vois dans Beacon Rewind",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:42",
+  "title": "Beacon Hill",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

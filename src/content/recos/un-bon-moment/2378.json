@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "'Cairon' = Kheiron (meme personne que ubm-2379).",
+    "reason": "Pas une oeuvre: 'Cairon' (= Kheiron) est nomme pour attribuer la paternite d'une vanne ('je crois qu'elle etait de Cairon'). Faux positif. Le quote 'Peut-etre ca date' ne correspond a aucune oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2378",
+  "links": [],
+  "quote": "Peut-être ça date, c'est que en fait",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:19:11",
+  "title": "Cairon",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

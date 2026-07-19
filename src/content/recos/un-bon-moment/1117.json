@@ -1,20 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Album reel confirme (26/11/2021, 10 titres ; Deezer 262200072 = le lien de la reco). Orthographe officielle « L'horizon des evenements ».",
+    "reason": "Album « L'horizon des evenements » de Kyan (host) presente longuement par lui-meme (« c'est mon album », « dix textes ») ; Navo le recommande. Auto-promo assumee d'une oeuvre de host.",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "6302667b4913bd00126c374c",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/262200072"
   },
-  "extractors": [
-    "anthropic"
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:52:49+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
   ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
   "id": "ubm-1117",
+  "kind": "reco",
   "links": [],
-  "quote": "moi je recommande l'horizon des événements de Ken qu'aujourd'hui",
-  "recommendedBy": "Navo",
+  "quote": "moi je recommande l'horizon des événements de Ken Kojandi",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:11",
+  "status": "validated",
+  "timestamp": "01:12:12",
   "title": "L'Horizon des événements",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

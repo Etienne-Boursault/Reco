@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0180 (meme video, titre anglais 'Paperclip Factory', 01:55:38).",
+    "verdict": "discard"
+  },
+  "creator": "Ego",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:55:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2088",
+  "links": [],
+  "quote": "la vidéo l'usine à trombone Paperclip Factory",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:55:38",
+  "title": "Paperclip Factory",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

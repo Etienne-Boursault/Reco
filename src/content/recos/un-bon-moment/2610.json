@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator a corriger 'Yohan'->'Woodkid' (Yoann Lemoine). Titre 'Pale Yellow' ok (perf A COLORS SHOW). guests VIDE mais Woodkid invite.",
+    "reason": "Performance Woodkid 'Pale Yellow | A COLORS SHOW' (chanson de l'album S16, 2020, avec le chien 3D), montree a l'antenne ('Pour ceux qui ne l'ont pas vu, c'est ton episode colors'). Oeuvre d'invite presentee par lui.",
+    "verdict": "guest-work"
+  },
+  "creator": "Yohan",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2610",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le colors avec le chien en 3D, sur Iron.",
+  "recommendedBy": "Woodkid",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:34:35",
+  "title": "Pale Yellow",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

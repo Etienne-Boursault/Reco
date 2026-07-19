@@ -1,15 +1,45 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.45,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Type 'autre'. Endossement leger mais explicite d'une association caritative.",
+    "reason": "'Bibliotheque sans frontieres' citee positivement en fin d'episode (01:38:58) comme association a soutenir ('faites des dons... une asso qui fait des trucs cool', 'ca c'est bon, ca me plait'). Endossement reel d'une cause, MAIS ce n'est pas une oeuvre -> arbitrage humain: une asso/cause est-elle une reco publiable ?",
+    "verdict": "unsure"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0225",
   "links": [],
-  "quote": "la bibliothèque sans frontières.",
+  "quote": "Bibliothèque sans frontières.",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "01:38:50",
+  "timestamp": "01:38:58",
   "title": "Bibliothèque sans frontières",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

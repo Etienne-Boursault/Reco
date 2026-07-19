@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale (jeu).",
+    "reason": "« McFly et Carlito » = reponse dans un jeu de devinettes (00:42:22), pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2961",
+  "links": [],
+  "quote": "McFly et Carlito.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:42:22",
+  "title": "McFly et Carlito",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

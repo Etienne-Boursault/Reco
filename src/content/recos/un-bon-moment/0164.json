@@ -1,18 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Format viral (multiples versions), sans créateur ni lien canonique unique.",
+    "reason": "Prank viral « Never Ending Shampoo » recommandé par Navo — « un prank qui est vraiment drôle, l'énervement est hilarant, c'est trop marrant... vous le trouverez sur YouTube/TikTok ».",
+    "verdict": "validate"
+  },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:59:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0164",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est le Never Ending Shampoo Gag sur YouTube ou n'importe où sur TikTok, vous le trouverez.",
+  "quote": "C'est le Never Ending Shampoo gag sur YouTube ou n'importe où sur TikTok, vous le trouverez.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:59:20",
+  "status": "validated",
+  "timestamp": "01:59:24",
   "title": "Never Ending Shampoo Gag",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

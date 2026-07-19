@@ -1,17 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Borderline validate/citation : enthousiasme réel mais cadre partiellement ironique (critique Bouygues).",
+    "reason": "00:09:37 : Navo exprime un enthousiasme prescripteur et décrit l'attrait de l'émission ('moi j'adore l'agence... ce qui est super c'est que tu rentres dans des maisons... ça te fait relativiser le luxe'). Œuvre réelle (télé-réalité TF1).",
+    "verdict": "validate"
+  },
+  "creator": "TF1",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:09:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0294",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi j'adore. J'adore l'agence.",
+  "quote": "ça me fait penser à la nouvelle saison de l'agence sur tf1 il ya des moi j'adore j'adore l'agence je les adore tous ces agents immobiliers",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:09:38",
+  "status": "validated",
+  "timestamp": "00:09:37",
   "title": "L'agence",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ]
 }

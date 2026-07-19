@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur host non identifiable (probablement Kyan, qui anime le jeu d'impro) -> recommendedBy vide. ubm-2289 (Extras) = meme moment, discarde.",
+    "reason": "Recommandation explicite d'une serie de Ricky Gervais ('allez voir cette serie de Ricky Gervais, elle est incroyable', 00:39). L'oeuvre contenant la scene Liam Neeson est bien Life's Too Short (correction faite dans l'episode).",
+    "verdict": "validate"
+  },
+  "creator": "Ricky Gervais",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2290",
+  "kind": "reco",
+  "links": [],
+  "quote": "allez voir cette série de Ricky Gervais, elle est incroyable",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:54",
+  "title": "Life is too short",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

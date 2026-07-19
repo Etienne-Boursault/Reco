@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Inside' = contexte/projet ou ils ont eu des fous rires, nature ambigue.",
+    "reason": "Anecdote de fous rires sur un de leurs projets ('Inside'), instrumental a la question 'vos meilleurs fous rires' ; pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1579",
+  "links": [],
+  "quote": "Inside, à mon avis, il y avait des vrais fous rires.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:02",
+  "title": "Inside",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

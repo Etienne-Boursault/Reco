@@ -1,9 +1,33 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Gardé : ubm-3170 (Némir). C'est Fadily (pas Kyan comme dans le draft) qui recommande Némir. 'Ma vie' = clip évoqué ('je regarde son clip sur ma vie'), titre non vérifié faute de budget WebSearch.",
+    "reason": "Doublon de la reco Némir (gardé : ubm-3170), même passage (00:50:15-00:50:23) (règle 13).",
+    "verdict": "discard"
+  },
   "creator": "Némir",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/103029242"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +36,10 @@
   "quote": "Mais là, il a son album qui est sorti et je regarde son clip sur ma vie.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:50:18",
   "title": "Ma vie",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

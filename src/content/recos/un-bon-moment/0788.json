@@ -1,17 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur invité incertain. Compléter guests.",
+    "reason": "Recommandation dans le tour final : 'des exorcistes, une école d'exorcistes, incroyable, trop bien' (00:56:43). Œuvre réelle : 'Jujutsu Kaisen' de Gege Akutami. Titre déjà correct malgré l'artefact 'Tsukaisen' dans la quote.",
+    "verdict": "validate"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0788",
+  "kind": "reco",
   "links": [],
-  "quote": "Je joue sous Kaisen, mais ça, c'est déjà hyper connu. C'est un truc avec des exorcistes, une école d'exorcistes, incroyable.",
+  "quote": "je joue Tsukaisen mais ça c'est déjà hyper connu c'est un truc avec des exorcistes une école d'exorcistes incroyable",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:42",
+  "status": "validated",
+  "timestamp": "00:56:43",
   "title": "Jujutsu Kaisen",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "bd"
   ]
 }

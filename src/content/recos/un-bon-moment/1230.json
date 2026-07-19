@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Un des deux invités (Bigflo ou Oli), transcript non diarizé — attribution laissée vide.",
+    "reason": "Breaking Bad nommé comme grande série aux côtés de Succession ('il y a Breaking Bad et Succession aussi', 'une des meilleures séries'). Mention brève mais positive, pas de prescription développée.",
+    "verdict": "citation"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
@@ -6,17 +19,29 @@
     "tmdb": "1396",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1230",
+  "kind": "citation",
   "links": [],
   "quote": "Il y a Breaking Bad et Succession aussi.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:21:01",
   "title": "Breaking Bad",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

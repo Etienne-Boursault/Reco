@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Faux positif : 'la vie des autres c'est hyper important quand vous ferez des films' = sens litteral (retour du public en projection-test), pas le film Das Leben der Anderen. Tout le passage porte sur les test screenings.",
+    "verdict": "discard"
+  },
+  "creator": "Florian Henckel von Donnersmarck",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1798",
+  "links": [],
+  "quote": "la vie des autres c'est hyper important",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:19:25",
+  "title": "La vie des autres",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (Kyan ou Cyprien) — l'a revu le matin même.",
+    "reason": "Défense passionnée et prescriptive de 'La Soupe aux choux' (1981) pour sa seconde partie dramatique ('il faut qu'on le re-regarde... une scène qui te prend au cœur, à pleurer').",
+    "verdict": "validate"
+  },
+  "creator": "Louis de Funès",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1476",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai revu récemment la soupe aux choux et la première partie où ils pètent dans le...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:49",
+  "title": "La Soupe aux choux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1981
+}

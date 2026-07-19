@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "« The Onion » (journal satirique US) cité par Pablo Mira comme matrice du Gorafi (« 80% de l'ADN ») + anecdote (ancien auteur rencontré à New York) [00:58:16-00:59:09]. Substance sans prescription → citation.",
+    "reason": "Référence citée (influence du Gorafi), substance sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "The Onion",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2408",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'était l'onion peut-être.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:59:09",
+  "title": "The Onion",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

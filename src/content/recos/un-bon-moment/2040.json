@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0960 (meme serie Idiotopia, meme timecode 01:41:19 ; titre garble 'Idiotaopia').",
+    "verdict": "discard"
+  },
+  "creator": "Medi Gatao",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2040",
+  "links": [],
+  "quote": "Il fait Idiotopia",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:19",
+  "title": "Idiotaopia",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

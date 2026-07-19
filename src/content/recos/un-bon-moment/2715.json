@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger titre 'Aquaba'→'Akwaba' et creator 'Catégorique'→'KT Gorique' ; recommendedBy = Shirley Souagnon.",
+    "reason": "Titre et créateur = artefacts ASR à corriger : 'Aquaba' → album 'AKWABA' de la rappeuse KT Gorique (transcript 'catégorique' = 'KT Gorique'). Shirley Souagnon en a fait les interludes et le recommande chaleureusement ('je le kiffe, big up'). Reste en draft pour correction humaine (verdict cible validate).",
+    "verdict": "unsure"
+  },
+  "creator": "Catégorique",
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2715",
+  "links": [],
+  "quote": "Elle a un nouvel album qui s'appelle \"Aquaba\" dans lequel j'ai fait les interludes.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:25:34",
+  "title": "Aquaba",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

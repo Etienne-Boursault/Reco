@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Reponse dans le blind test, pas une reco.",
+    "reason": "Identification du groupe The Police (le groupe de Sting) pendant le multi-blind test. Mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
+  "creator": "Sting",
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2809",
+  "links": [],
+  "quote": "Le groupe de Sting.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:03",
+  "title": "Police",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

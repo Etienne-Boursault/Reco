@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.94,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Sylvie Vartan = name-drop de trivia dans le jeu des photos (00:57:12 : Beatles en 1ère partie de Sylvie Vartan à l'Olympia). Mention en passant sans avis → discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2132",
+  "links": [],
+  "quote": "C'est la première partie de Sylvie Vartan à l'Olympia.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:07",
+  "title": "Sylvie Vartan",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

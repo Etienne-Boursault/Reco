@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Quote hallucinee (celle de Rodrigue). Reco Yassir reelle = ubm-1980.",
+    "reason": "Artefact : la quote 'Allez voir Yassir, trop trop fort !' N'EXISTE PAS dans le transcript ; c'est en realite 'Allez voir Rodrigue' (00:15:18, cf. ubm-0344). La vraie reco Yassir = son spectacle a la Petite Loge (ubm-1980).",
+    "verdict": "discard"
+  },
+  "creator": "Yassir",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:11:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1655",
+  "links": [],
+  "quote": "Allez voir Yassir, trop trop fort !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:18",
+  "title": "Yassir",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle",
+    "artiste"
+  ]
+}

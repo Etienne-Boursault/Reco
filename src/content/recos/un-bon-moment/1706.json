@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0974. Timecode ~01:54:42.",
+    "reason": "Doublon de ubm-0974 (spectacle Romain Frayssinet).",
+    "verdict": "discard"
+  },
+  "creator": "Romane Frésiné",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1706",
+  "links": [],
+  "quote": "le dernier truc que j'ai envie de recommander c'est un spectacle que j'ai vu il y a 3-4 jours qui est celui de Romane Frésiné",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:54:40",
+  "title": "Spectacle de Romane Frésiné",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ]
+}

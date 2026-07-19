@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Feat / orthographe 'Rojay' non revalides (WebSearch epuise).",
+    "reason": "Morceau de l'invite Mister V (Saint Laurent, dispo, place dans la BO de NBA 2K20) presente par lui-meme = auto-promo d'une oeuvre de l'invite (regles 2/16).",
+    "verdict": "guest-work"
+  },
+  "creator": "Rojay",
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:31",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3172",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (clip officiel)",
+      "url": "https://www.youtube.com/watch?v=uWDkQCcxwCY"
+    }
+  ],
+  "quote": "on avait déjà sorti le son et en fait ils ont kiffé et ils l'ont mis dans le jeu",
+  "recommendedBy": "Mister V",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:33:31",
+  "title": "Saint Laurent",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Proposition ecartee en direct comme trop mainstream; pas une reco tenue.",
+    "reason": "'Audiard' est jete sur la table dans le segment reco finale PUIS rejete comme trop evident/connu ('Ah non! Il est la, Audiard... si tu as envie d'aller le chercher, tu n'as pas besoin de moi'). Reco non retenue, et pas une oeuvre precise (nom de realisateur). Astier bascule ensuite sur Python.",
+    "verdict": "discard"
+  },
+  "creator": "Jacques Audiard",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2934",
+  "links": [],
+  "quote": "Je vous conseille Audiard.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:32:34",
+  "title": "Audiard",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

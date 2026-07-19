@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Lefto et Tom' et créateur 'Greg Romano' non vérifiables (budget WebSearch épuisé). Greg Romano est auteur/équipe du programme, présent en coulisses mais pas invité assis. Reco émanant de Thomas Deseur (invité absent des métadonnées).",
+    "reason": "Éloge fort d'un spectacle passé de Greg Romano ('une des fois où j'ai le plus ri de ma vie') mais dans le segment où Thomas cite des humoristes qu'il admire ; pas de prescription d'actualité (spectacle passé).",
+    "verdict": "citation"
+  },
+  "creator": "Greg Romano",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:18",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3117",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/184729/evt.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://gregromano.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Theatreonline",
+      "url": "https://www.theatreonline.com/Spectacle/Greg-Romano-Leve-toi-et-tombe/63816"
+    }
+  ],
+  "quote": "Donc, il avait un spectacle qui s'appelait Lefto et Tom, qui était une des fois en salle où j'ai le plus ri de ma vie.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:38:18",
+  "title": "Lève-toi et tombe",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

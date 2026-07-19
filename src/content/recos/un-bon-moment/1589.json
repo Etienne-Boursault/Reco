@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Star Wars : prompt du jeu ('on vous propose un Star Wars, vous acceptez?') + anecdote perso, discussion conversationnelle sans prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1589",
+  "links": [],
+  "quote": "Star Wars c'est le premier film que j'ai vu au cinéma c'est vrai j'avais 5 ans",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:10",
+  "title": "Star Wars",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1977
+}

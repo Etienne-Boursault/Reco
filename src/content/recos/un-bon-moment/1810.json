@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Identification d'un meme/animé : 'Le truc d'anime avec les lunettes blanches. Ah c'est Evangelion. Je crois.' — reconnaissance d'une image, pas de reco ni substance.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1810",
+  "links": [],
+  "quote": "Ah, c'est Evangelion.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:51",
+  "title": "Evangelion",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie",
+    "autre"
+  ]
+}

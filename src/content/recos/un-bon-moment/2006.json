@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Star Academy citee comme exemple de 'flux' TV qui dure 20 ans, oppose aux objets 'cultes'. Exemple rhetorique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2006",
+  "links": [],
+  "quote": "La Starac, tu prends euh...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:28",
+  "title": "La Star Academy",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

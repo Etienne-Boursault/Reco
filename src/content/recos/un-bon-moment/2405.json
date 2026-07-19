@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "« C'est genre Vice-Versa… le Pixar » [00:34:17-00:34:25] : comparaison pour décrire la « roue des émotions » en crèche. Mention instrumentale (comparaison).",
+    "reason": "Comparaison, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Pixar",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2405",
+  "links": [],
+  "quote": "C'est vice versa quoi ? [...] Le Pixar.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:17",
+  "title": "Vice-Versa",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

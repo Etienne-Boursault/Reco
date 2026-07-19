@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe « Viktorovitch » (avec K). Canonique ; ubm-0775 (« Clément Victorovic ») est un doublon.",
+    "reason": "Chroniques de rhétorique de l'invité Clément Viktorovitch (émission Clique, Canal+) promues en fin d'épisode par un host (« moi je recommande les chroniques de Clément Viktorovitch sur myCanal, allez les voir »). Œuvre d'un invité → auto-promo.",
+    "verdict": "guest-work"
+  },
+  "creator": "Clément Victorovitch",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2777",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi je recommande les chroniques de Clément Victorovitch sur my canal ! Oh ! Allez les voir !",
+  "recommendedBy": "Clément Viktorovitch",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:53",
+  "title": "Chroniques de Clément Victorovitch",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Gag improvise, pas une chaine/oeuvre existante.",
+    "reason": "Pas une oeuvre : 'What About ism' = le concept rhetorique 'whataboutism' discute puis tourne en blague ('the what about ism... les tutoriels d'anglais de Navo sur la chaine') [00:51:30-00:51:37]. Aucune oeuvre reelle recommandee.",
+    "verdict": "discard"
+  },
+  "creator": "Navo",
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2165",
+  "links": [],
+  "quote": "c'est les tutoriels d'anglais de Navo sur la chaîne",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:35",
+  "title": "What About ism",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

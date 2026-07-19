@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'il fait des films, en Mortimer il est super' : mention en passant pour louer l'acteur Thomas N'Gijol (non-invite), pas une prescription du film. Contexte: eloge de l'acteur dans la reco Empathie.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2031",
+  "links": [],
+  "quote": "Il est super, en Mortimer, là, il est super.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:32:55",
+  "title": "Mortimer",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

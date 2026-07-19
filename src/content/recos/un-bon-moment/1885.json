@@ -1,0 +1,30 @@
+{
+  "creator": "William Shakespeare",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1885",
+  "links": [],
+  "quote": "C'est chez moi que se passe l'histoire d'amour de Roméo et Juliette.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:38",
+  "title": "Roméo et Juliette",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

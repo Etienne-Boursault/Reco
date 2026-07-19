@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Olappia' n'est pas une œuvre distincte — élément/anecdote interne du livre Fiascorama de Thomas VDB ('notamment Olappia'), titre incertain et créateur inconnu.",
+    "verdict": "discard"
+  },
+  "creator": "Auteur inconnu",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1502",
+  "links": [],
+  "quote": "notamment Olappia.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:28:16",
+  "title": "Olappia",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

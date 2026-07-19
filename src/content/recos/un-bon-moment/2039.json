@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1852 (meme mention de Very Bad Blagues, meme passage 01:00).",
+    "verdict": "discard"
+  },
+  "creator": "autre",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2039",
+  "links": [],
+  "quote": "C'était vraiment le moment où Very Bad Black c'était très très fort",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:28",
+  "title": "Very Bad Blag",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

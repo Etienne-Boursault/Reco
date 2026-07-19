@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Film cité par Éléonore comme référence de style pour son projet de chronique familiale (« un de mes films [préférés] », « je rêve de dépeindre une chronique comme ça »). Appréciation substantielle mais pas de prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
@@ -6,17 +14,49 @@
     "tmdb": "12169",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0057",
+  "kind": "citation",
   "links": [],
-  "quote": "qui est un de mes films.",
-  "recommendedBy": "Inconnu",
+  "quote": "je rêve de dépeindre une chronique comme ça",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:47:21",
+  "status": "validated",
+  "timestamp": "00:47:22",
   "title": "Le Premier Jour du Reste de Ta Vie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

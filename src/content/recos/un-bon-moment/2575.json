@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creatrice a corriger: Ellen DeGeneres (pas Hannah Einbinder); locuteur incertain (Paul/Kyan/Navo). Canonique de la paire 0705/2575",
+    "reason": "Spectacle 'Relatable' d'Ellen DeGeneres ('Helene de Generesse') cite avec substance ('c'est tellement drole comment ca commence', 'je suis comme vous tous') pour illustrer 'garder son recul' quand on devient connu. Sans prescription directe. Locuteur incertain (transcript non diarise).",
+    "verdict": "citation"
+  },
+  "creator": "Hannah Einbinder",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2575",
+  "kind": "citation",
+  "links": [],
+  "quote": "Hélène de Généresse, d'ailleurs, avec son spectacle Relatable, je crois que ça s'appelle. C'est tellement drôle comment ça commence.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:54",
+  "title": "Relatable",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

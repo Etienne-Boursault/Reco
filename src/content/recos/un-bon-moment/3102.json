@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le draft attribuait a tort « Kyan Khojandi » : c'est AZ (aux hosts on demande separement « vous jouez cet ete les gars ? »). Metadonnees invites VIDES.",
+    "reason": "Auto-promo du spectacle de l'invite AZ : « je viens de finir a l'europeen, je reprends Palais des Glaces en octobre » (00:17:18). Confirme en cloture (« AZ au Grand Palais des Glaces fin 2026 »). Regles 2/16/17 → guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3102",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.palaisdesglaces.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Billetterie officielle",
+      "url": "https://billetterie-palaisdesglaces.tickandlive.com/"
+    }
+  ],
+  "quote": "je reprends Palais des Glaces en octobre",
+  "recommendedBy": "AZ",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:18:19",
+  "title": "Palais des Glaces",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

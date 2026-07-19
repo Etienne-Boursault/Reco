@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0846 (meme artiste Iron & Wine, 01:04:47). Canonique: ubm-0846.",
+    "verdict": "discard"
+  },
   "creator": "Iron & Wine",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/185286652"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1099",
   "links": [],
   "quote": "je recommanderais un musicien que j'adore, qui vient de sortir un nouvel album que j'adore, qui s'appelle \"Iron and Wine\". C'est de la folque américaine.",
-  "recommendedBy": "Ambroise",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:04:47",
   "title": "Iron & Wine",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

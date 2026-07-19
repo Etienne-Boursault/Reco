@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'La Maison' = bar de Toulouse dans une anecdote ('j'arrive au bar La Maison', 01:26), pas une recommandation.",
+    "verdict": "discard"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0354",
   "links": [],
   "quote": "J'arrive au bar La Maison.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:26:02",
   "title": "La Maison",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

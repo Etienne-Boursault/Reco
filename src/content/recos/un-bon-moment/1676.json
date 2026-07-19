@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Indice du jeu-devinette de Camille (générosité de Keanu Reeves, l.1607-1622). Personnalité, pas une œuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1676",
+  "links": [],
+  "quote": "Keanu Reeves. Il a donné quelque chose sans rien attendre en retour.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:03",
+  "title": "Keanu Reeves",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

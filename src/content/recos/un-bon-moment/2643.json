@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Prolonge la meme blague que ubm-0733 (apporter un truc pour le faire dedicacer par Penelope).",
+    "reason": "Vanne de dedicace : 'J'ai apporte mon CD. Un album, des Beatles... J'adore tout ce que tu fais. Pour qu'elle me le dedicace' (00:08:56). Mention instrumentale/comique, pas une reco. 'The Beatles' comme titre d'album est errone.",
+    "verdict": "discard"
+  },
+  "creator": "The Beatles",
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2643",
+  "links": [],
+  "quote": "J'ai apporté mon CD. Un album, des Beatles.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:08:56",
+  "title": "The Beatles",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

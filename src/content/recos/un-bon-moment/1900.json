@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Spy Guys » n'apparaît pas dans le transcript (narration comique d'un chien espion, ~00:20:54) ; aucune série Disney+ de ce nom vérifiable.",
+    "reason": "Sketch improvisé « chien espion » riffant sur les vidéos Instagram de Pierre ; pas une prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Disney",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1900",
+  "links": [],
+  "quote": "la série sortira sur disney plus il ya 6 épisodes 30 minutes",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:20:54",
+  "title": "Spy Guys",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2024
+}

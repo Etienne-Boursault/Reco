@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique OrelSan (capte l'appreciation reelle; les mentions albums 2670/2671 et l'anecdote 1241 sont instrumentales -> discard). Orthographe correcte = 'OrelSan' (Aurelien Cotentin). recommendedBy = Paul Mirabel (invite reel).",
+    "reason": "Paul evoque OrelSan qui l'a aide a traverser l'adolescence (00:58:00, 'j'ai ecoute Aurel San, je me suis dit je suis pas tout seul, on a un autre gars qui galere en Normandie'). Substance/appreciation personnelle sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Aurel San",
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:02:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:02:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2674",
+  "kind": "citation",
+  "links": [],
+  "quote": "j'ai écouté Aurel San, je me suis dit, je suis pas tout seul, on a un autre gars qui galère en Normandie, merci.",
+  "recommendedBy": "Paul Mirabel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:08",
+  "title": "Aurel San",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

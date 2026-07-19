@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1143 (album Revalite, quote sur 'les titres' de l'album a 00:17). Titre 'Je dis M' = artefact.",
+    "verdict": "discard"
+  },
+  "creator": "Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2542",
+  "links": [],
+  "quote": "Et quand tu sors des titres rivalités, tu sens que c'est un banger tout de suite, ça part.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:17:32",
+  "title": "Je dis M",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

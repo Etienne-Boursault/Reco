@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Kyan Khojandi joue dans le film (adapte du roman de Fabcaro)",
+    "reason": "'Le Discours' (realise par Laurent Tirard, 2020) — film ou Kyan a tourne, promu par lui longuement ('la comedie est tres reussie... les gens ont adore a Angouleme... n'hesitez pas a aller le voir'). Auto-promo d'un projet du host.",
+    "verdict": "guest-work"
+  },
+  "creator": "Laurent Tirard",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:45:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2577",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai tourné dans le discours, tourné par... réalisé par Laurent Tirard.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:45:14",
+  "title": "Le Discours",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

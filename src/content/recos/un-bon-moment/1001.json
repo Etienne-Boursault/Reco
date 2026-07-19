@@ -1,21 +1,66 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger timecode -> 01:37:07 / 01:38:44 et titre (Bref -> Bref 2 ?), trancher l'attribution (invite bouleverse). Reste draft pour l'humain.",
+    "reason": "La quote extraite (00:49:35 gros et chauve comme le mec de Bref) est une punchline de freestyle de Kemmler visant Kyan -> mention instrumentale, PAS une reco. Mais Bref 2 est reellement encense ailleurs (01:37:07 et 01:38:44 j'ai pleure beaucoup). Artefact a corriger avant publication -> reste en draft.",
+    "verdict": "unsure"
+  },
+  "creator": "Kyan Khojandi",
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
     "tmdb": "60715",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1001",
   "links": [],
-  "quote": "la dernière fois que j'ai eu cet effet je pense que c'était sur bref 2 tout a été remis en cause",
+  "quote": "j'ai pas envie de devenir gros et chauve comme le mec de Bref",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "01:37:07",
+  "timestamp": "00:49:35",
   "title": "Bref",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

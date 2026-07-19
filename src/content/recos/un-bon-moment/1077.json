@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2642. recommendedBy Kyan errone : c'est une invitee qui lit le livre.",
+    "reason": "Doublon de ubm-2642 (Ensemble, on aboie en silence, de Gringe, meme moment 01:20). Titre hallucine 'On a bouffe le silence'.",
+    "verdict": "discard"
+  },
   "creator": "Gringe",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +32,10 @@
   "quote": "je suis en train de lire [...] Ensemble on a bois en silence de Gringe [...] je pense qu'il est assez bon auteur quand même",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:07",
   "title": "On a bouffé le silence",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

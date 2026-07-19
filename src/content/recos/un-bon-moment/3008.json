@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Sujet de la chanson Vie Varda, pas une reco.",
+    "reason": "Agnes Varda evoquee uniquement comme SUJET de la chanson 'Vie Varda' (cf. ubm-2996), pas comme oeuvre/artiste recommande. Mention instrumentale. Doublon d'entite avec ubm-0851.",
+    "verdict": "discard"
+  },
+  "creator": "Agnès Varda",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3008",
+  "links": [],
+  "quote": "la chanson parle d'Agnès Varda",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:32",
+  "title": "Agnès Varda",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

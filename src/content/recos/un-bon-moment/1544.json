@@ -1,0 +1,57 @@
+{
+  "creator": "Antoine Gouille",
+  "customLinks": [
+    {
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000002232.html"
+    }
+  ],
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:13:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:13:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:47:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1544",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est une série qui va s'appeler le Charles, bien nommé.",
+  "recommendedBy": "Antoine Gouy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:12:59",
+  "title": "Le Charles",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2024
+}

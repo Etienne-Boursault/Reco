@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2779 (compilation « Ed Rec Vol. 1 »).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2766",
+  "links": [],
+  "quote": "Quand j'avais 15 ans, il y a Edrec volume 1 qui est sorti et je me suis dit mais c'est le son du futur, c'est complètement fou.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:13",
+  "title": "Édène Volume 1",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

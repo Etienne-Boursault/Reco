@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Album 'Fantaisie militaire' de Bashung cite comme exemple du travail de pochette de Laurent Serossi (01:13). Mention instrumentale (portfolio du graphiste), pas une reco de l'album. Titre 'Fantasy Militaire' errone.",
+    "verdict": "discard"
+  },
+  "creator": "Bachung",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2550",
+  "links": [],
+  "quote": "C'est lui aussi qui avait fait la pochette sublime de l'album de Bachung \"Fantasy Militaire\"",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:14",
+  "title": "Fantasy Militaire",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

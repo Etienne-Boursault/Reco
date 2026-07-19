@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 0410 (Cameron Winter) — 'Geese' est le groupe de Cameron Winter, mentionné en contexte de la même reco ('il fait partie du groupe Geese').",
+    "verdict": "discard"
+  },
+  "creator": "Cameron Winter",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1494",
+  "links": [],
+  "quote": "Il fait partie du groupe Geese, G-E-E-S-E.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:25:13",
+  "title": "Geese",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

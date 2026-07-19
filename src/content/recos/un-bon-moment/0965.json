@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.62,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Discussion mutuelle Kyan/Navo, pas de recommandeur clair.",
+    "reason": "The Rehearsal (Nathan Fielder) discutee avec substance (comparaison a la logique de Navo, 'tu vas etre d'accord avec Nathan Fielder') mais reaction mitigee/negative ('trop bizarroide', 'pas vu en entier') et aucune prescription -> citation.",
+    "verdict": "citation"
+  },
   "creator": "Nathan Fielder",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,17 +15,38 @@
     "tmdb": "204284",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0965",
+  "kind": "citation",
   "links": [],
-  "quote": "T'as vu de The Rehearsal? [...] Tu vas être d'accord avec Nathan Fielder, je pense.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "T'as vu du « Rehearsal » ?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:15:51",
   "title": "The Rehearsal",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

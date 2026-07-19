@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1145 (meme invitation a lire le Tao, 00:37).",
+    "verdict": "discard"
+  },
   "creator": "Laozi",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1262",
   "links": [],
   "quote": "c'est donc des petites poésies comme ça de vie quoi qui te que je vous invite à lire le tao talking",
-  "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:37:23",
   "title": "Le Tao Te Ching",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

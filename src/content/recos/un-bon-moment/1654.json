@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle probable : 'Marion Haile' (humoriste/scenariste). Recommandee par un des invites, a preciser.",
+    "reason": "Reco en fin d'emission : 'Marion Hailey aussi, super humoriste et scenariste, j'aime beaucoup' (02:07).",
+    "verdict": "validate"
+  },
+  "creator": "Marion Hailey",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:08:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:08:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:08:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:07:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1654",
+  "kind": "reco",
+  "links": [],
+  "quote": "Marion Hailey aussi, super humoriste et scénariste.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:07:58",
+  "title": "Marion Hailey",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,17 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon avec ubm-3078 (même reco 'The Last of Us 2', même moment 01:30:52-55) — GARDÉ celui-ci, ubm-3078 discardé. Titre officiel : The Last of Us Part II (Naughty Dog, 2020).",
+    "reason": "Jeu réel non lié à un invité, prescription : 'et moi je recommande The Last of Us 2' (01:30:52). Recommandé par Kyan (le gamer : 'le premier je l'ai fait 11 fois').",
+    "verdict": "validate"
+  },
   "creator": "Naughty Dog",
   "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0742",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/2531310/The_Last_of_Us_Part_II_Remastered/"
+    }
+  ],
   "quote": "Et moi je recommande The Last of Us 2.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:30:55",
   "title": "The Last of Us 2",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

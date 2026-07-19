@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Feldup = YouTuber creepypasta/musique. Attribution indeterminee (locuteur du tour de recos).",
+    "reason": "'J'ai ponce la chaine de Feldup, et c'est une regalade' (02:25:34) — reco enthousiaste.",
+    "verdict": "validate"
+  },
+  "creator": "Feldup",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:25:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1826",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai poncé La chaîne de Feldup Et c'est une régalade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:25:34",
+  "title": "Chaîne de Feldup",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

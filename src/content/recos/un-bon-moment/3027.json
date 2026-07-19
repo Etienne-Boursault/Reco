@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigee Kyan->Martin (c'est Martin qui raconte son parcours a ce moment). Borderline citation/discard : mention instrumentale a son recit, mais engagement reel (il a monte la piece).",
+    "reason": "Martin (invite) raconte son parcours de metteur en scene (00:26) : 'je veux monter une piece de theatre qui s'appelle Pour ceux qui restent de Pascal Elbe... je veux reprendre cette piece' (puis Avignon, Theatre des Beliers avec Jordi Le Bolloc). Oeuvre reelle de Pascal Elbe qu'il a montee professionnellement = substance, mais aucune prescription au public (recit autobiographique) -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Pascal Elbé",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-3027",
+  "kind": "citation",
+  "links": [],
+  "quote": "je veux monter une pièce de théâtre qui s'appelle Pour ceux qui restent de Pascal Elbé",
+  "recommendedBy": "Martin Darondeau",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:55",
+  "title": "Pour ceux qui restent",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

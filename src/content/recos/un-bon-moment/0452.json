@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1460 (Inno Casablanca, 01:38:1x). Orthographe « Inocasa blanca ».",
+    "verdict": "discard"
+  },
   "creator": "Inocasa blanca",
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3564177861"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0452",
   "links": [],
   "quote": "si on parle dans la musique inocasablanca, super artiste",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:38:09",
   "title": "Inocasa blanca",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

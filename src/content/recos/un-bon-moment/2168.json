@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Performeur/technicien non-invite ; regle 6.",
+    "reason": "Dedicace a un realisateur : 'qui a realise la captation ? Stephane Boe... qui est excellent... grosse dedicace au Steph' [01:17:55-01:18:04]. Remerciement a un technicien (captation), pas une oeuvre recommandee au public.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2168",
+  "links": [],
+  "quote": "grosse dédicace au Steph",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:04",
+  "title": "Stéphane Boé",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "ATTENTION collision de nom : le spectacle live des hosts s'appelle aussi 'Une bonne soiree' (unebonnesoiree.fr dans la description). Mais le transcript (00:50:51-00:51:19) attribue SANS AMBIGUITE ce spectacle a Laurent Baffie ('le dernier spectacle... on est en tournee actuellement... ca s'appelle une bonne soiree'). Pas de champ creator (a completer : Laurent Baffie). Timecode 00:50:53 exact.",
+    "reason": "One-man show actuel de l'invite Laurent Baffie ('Une bonne soiree'), en tournee, presente par lui (structure : une soiree racontee avec flashbacks/digressions). Titre verbatim transcript a 00:50:59. Auto-promo invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2992",
+  "kind": "reco",
+  "links": [],
+  "quote": "et là le dernier spectacle je raconte une soirée qui m'est arrivée on est en tournée actuellement tu fais tout le spectacle sur une soirée sur une soirée ouais ça s'appelle une bonne soirée une des meilleures soirées de ma vie",
+  "recommendedBy": "Laurent Baffie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:50:53",
+  "title": "Une Bonne Soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

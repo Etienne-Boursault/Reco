@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel 'Rap vs Realite' (transcript 'Rea Prealite') ; oeuvre de l'invite, vanne saluee par un host -> 'reco de' laisse vide.",
+    "reason": "Serie web etablie de l'invite Mister V, evoquee/louee (la vanne du 42) mais SANS promo d'actualite - la promo de l'episode est l'album -> citation (regle 17).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:14",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3173",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (Rap VS Réalité)",
+      "url": "https://www.youtube.com/watch?v=1BE9wVnEink"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (Rap VS Réalité 2)",
+      "url": "https://www.youtube.com/watch?v=OSmSNK7Rano"
+    }
+  ],
+  "quote": "T'as une vanne dans Réa Préalité qui me fait marrer c'est du 42 quand t'as un anisot qui dit je vais te goumer je vais te goumer",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:44:14",
+  "title": "Rap versus Réalité",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

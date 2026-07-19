@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1150 (01:30:47). Titre « le nouveau spectacle de sa mère » capté sur la vanne « de sa mère » (Jérémy parle beaucoup de sa mère) : ce n'est pas l'œuvre recommandée (qui est le spectacle de Capucine).",
+    "reason": "Doublon Capucine, titre capté sur une vanne",
+    "verdict": "discard"
+  },
+  "creator": "Capucine",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2867",
+  "links": [],
+  "quote": "je vous invite à aller découvrir le nouveau spectacle de sa mère",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:47",
+  "title": "le nouveau spectacle de sa mère",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (celui qui montre la vidéo à l'autre) → recommendedBy vidé. Distinct de la reco Vulfpeck (groupe vs morceau précis), pas un doublon.",
+    "reason": "« 1612 » = morceau de Vulfpeck joué chez Stephen Colbert (00:52:35-00:52:44) : « ça dure 4 minutes et ça te retourne la tête, incroyable ». Endossement explicite d'une performance/morceau réel. NB : « c'est Romain Segouk » du transcript est un artefact (bruit), à ignorer.",
+    "verdict": "validate"
+  },
+  "creator": "Vulfpeck",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2483",
+  "kind": "reco",
+  "links": [],
+  "quote": "t'as vu la vidéo de 1612 un morceau qui joue chez Stephen Colbert",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:52:35",
+  "title": "1612",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

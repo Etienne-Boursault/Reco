@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme oeuvre que ubm-2875 (« Herosef »/« Aerosef ») et ubm-1091.",
+    "reason": "Doublon de ubm-2875 : meme chaine YouTube Marvel recommandee dans le meme passage (01:09:18-41). Conserve comme canonique : ubm-2875.",
+    "verdict": "discard"
+  },
   "creator": "Aérosseph",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0816",
   "links": [],
   "quote": "c'est assez intéressant.",
-  "recommendedBy": "Roman Frécinès",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:35",
   "title": "Aérosseph",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1104 (O.J.: Made in America). Titre « O.J. Simpson: Made in America » non officiel et attribution erronée (Kyan).",
+    "verdict": "discard"
+  },
+  "creator": "Ezra Edelman",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3021",
+  "links": [],
+  "quote": "O.J. Simpson, Made in America. Pas la série, le doc.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:22:12",
+  "title": "O.J. Simpson: Made in America",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ],
+  "year": 2016
+}

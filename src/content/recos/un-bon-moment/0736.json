@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-0733.",
+    "reason": "Doublon de ubm-0733 (California Dreamin' de Pénélope Bagieu). Ici mention de l'adaptation ('Ah c'etait bien', 00:15:14, cf. 'Et de California Dreaming' ligne suivante). Titre tronque 'California'.",
+    "verdict": "discard"
+  },
   "creator": "Rémyne",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Ah c'était bien.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:14",
   "title": "California",
+  "transcriptSource": "acast",
   "types": [
     "bd"
   ]

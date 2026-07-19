@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2757 (Pasquinade / pasquinade.fr). Canonique conserve en guest-work.",
+    "reason": "Doublon Acast du site Pasquinade.fr, canonique = ubm-2757 (guest-work Haroun). Meme site, source Acast (00:14:34).",
+    "verdict": "discard"
+  },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "Donc 'pasquinade', c'était le fait de faire des blagues, et c'est devenu maintenant un site internet, pasquinade.fr.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:14:34",
   "title": "pasquinade.fr",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

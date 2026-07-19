@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe verifiee (humoriste quebecoise). Locuteur non identifiable (non diarize).",
+    "reason": "« Virginie Fortin qui est exceptionnelle, elle est super » dans le tour de recommandations : prescription claire.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2886",
+  "kind": "reco",
+  "links": [],
+  "quote": "Virginie Fortin qui est exceptionnelle elle est super",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:37",
+  "title": "Virginie Fortin",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

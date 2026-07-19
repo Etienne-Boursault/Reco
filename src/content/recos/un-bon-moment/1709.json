@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe Etincelle (doublon ubm-0321). Oeuvre du mari de l'invitee (Wax), non guest-work (Wax non invite). Attribution corrigee: Penelope Bagieu. Timecode ~01:56:06. Invitee absente de guests[].",
+    "reason": "Penelope recommande 'Etincelle volume 2' de son mari Wax (sortie vendredi, duos avec MC Solaar/Ebony; elle a dessine la pochette).",
+    "verdict": "validate"
+  },
+  "creator": "Wax",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1709",
+  "kind": "reco",
+  "links": [],
+  "quote": "il sort un album vendredi qui s'appelle Étincelle volume 2",
+  "recommendedBy": "Penelope Bagieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:06",
+  "title": "Étincelle volume 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

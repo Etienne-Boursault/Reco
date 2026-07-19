@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator correct = Eleonore Costes (le 'Elo Honor Cost' est phonetique). Oeuvre confirmee = web-serie Genre Humaine, saison 2 (fin 2019).",
+    "reason": "Recommandation forte d'Audrey : 'la chaine d'Elo Honor Cost... Genre Humaine, saison 2... l'une des choses les plus intelligentes, droles et sensibles que j'ai vu ces derniers temps.'",
+    "verdict": "validate"
+  },
+  "creator": "Elo Honor Cost",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2223",
+  "kind": "reco",
+  "links": [],
+  "quote": "Un truc qui s'appelle Genre Humaine là c'est la saison 2",
+  "recommendedBy": "Audrey Pirault",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:15",
+  "title": "Genre Humaine",
+  "transcriptSource": "youtube",
+  "types": [
+    "video",
+    "autre"
+  ]
+}

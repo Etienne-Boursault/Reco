@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même œuvre et même passage que ubm-0742 (The Last of Us 2 / The Last of Us Part II).",
+    "reason": "Doublon de ubm-0742 : même reco de Kyan 'The Last of Us 2' au même moment (01:30:52-55). Règle 13 — GARDÉ ubm-0742.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3078",
+  "links": [],
+  "quote": "et moi je recommande The Last of Us 2",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:52",
+  "title": "The Last of Us Part II",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

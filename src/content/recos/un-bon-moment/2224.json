@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct = 'J'irai fumer chez vous', web-serie de Noman Hosni (le 'No Manosni' est phonetique).",
+    "reason": "Navo recommande dans son tour : 'No Manosni... Allez c'est incroyable... On ira fumer du cote de chez vous... Qu'est-ce que c'est drole.' Prescription.",
+    "verdict": "validate"
+  },
+  "creator": "No Manosni",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2224",
+  "kind": "reco",
+  "links": [],
+  "quote": "No Manosni. Allez c'est incroyable. No Manosni avec On ira fumer du côté de chez vous.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:54",
+  "title": "On ira fumer du côté de chez vous",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

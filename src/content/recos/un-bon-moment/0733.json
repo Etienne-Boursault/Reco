@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe California Dreamin' (doublon = ubm-0736, discard, qui capte la discussion d'adaptation a 00:15). Contexte de dedicace comique mais appreciation genuine.",
+    "reason": "California Dreamin' est la BD de Pénélope Bagieu (invitée), apportée en dédicace et adorée ('que j'avais adoré moi', 00:08:41). La vanne 'c'est pas d'elle du tout' est fausse : l'œuvre est bien d'elle. Œuvre d'invitée surfacée positivement -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Maldoror",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0733",
+  "kind": "reco",
   "links": [],
-  "quote": "J'ai ramené 'California Duming' que j'avais adoré morts.",
-  "recommendedBy": "Navo",
+  "quote": "J'ai ramené 'California Dreaming' que j'avais adoré moi.",
+  "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:08:40",
+  "status": "validated",
+  "timestamp": "00:08:41",
   "title": "California Dreaming",
+  "transcriptSource": "youtube",
   "types": [
-    "livre"
+    "livre",
+    "bd"
   ]
 }

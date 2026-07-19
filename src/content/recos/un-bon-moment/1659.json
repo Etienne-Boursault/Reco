@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Diamond in the sky' = fait du jeu trivia sur Sia ('vous avez ecrit Diamond in the sky pour Rihanna', 00:48). Mention instrumentale (indice de jeu). Titre reel = 'Diamonds' (Rihanna).",
+    "verdict": "discard"
+  },
+  "creator": "Rihanna",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1659",
+  "links": [],
+  "quote": "Ouais SIA vous avez écrit Diamond in the sky pour Rihanna vous l'avez écrit en 15 minutes avant de prendre un taxi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:48:28",
+  "title": "Diamond in the Sky",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

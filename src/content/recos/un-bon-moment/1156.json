@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2553 (album/live 'Revalite du Live' a offrir/streamer pour Noel, 01:09 ; meme projet live que le film de Bercy).",
+    "verdict": "discard"
+  },
   "creator": "M (Matthieu Chedid)",
   "episodeGuid": "6550c2836b767e0012a65d8d",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/502335491"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -12,9 +31,10 @@
   "quote": "il y a aussi l'album Révalité du live qui est allé streamer ça ou aller offrir ça pour les fêtes de Noël",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:54",
   "title": "Révalité (live)",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

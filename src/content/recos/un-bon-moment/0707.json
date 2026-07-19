@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:05:11 : le rythme de confinement de Kyan est presente comme un faux film ('ca s'appelle Decalage, avec le A un peu de travers'), clin d'oeil a 'Decalage horaire' (Dany Boon). Mention humoristique/instrumentale, aucune prescription. Le match externalIds vers 'Decalage horaire' est un faux positif.",
+    "reason": "Gag invente ('un film qui s'appelle Decalage'), pas une vraie reco",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
@@ -6,6 +15,17 @@
     "tmdb": "18300",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +34,10 @@
   "quote": "ça s'appelle Décalage avec le A un peu de travers.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:11",
   "title": "Décalage",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Correction titre : « sauce park » (transcript) -> « South Park » (regle 8).",
+    "reason": "Kian recommande explicitement un episode de South Park a propos de sa fille (« je vous recommande »).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:13",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3142",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Paramount+",
+      "url": "https://www.intl.paramountplus.com/fr/shows/south-park/episodes/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=546.html"
+    }
+  ],
+  "quote": "je lui ai mis un épisode de sauce park avec beaucoup de gros mots dedans et je vous recommande",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:13",
+  "title": "South Park",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

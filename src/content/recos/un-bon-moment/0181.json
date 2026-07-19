@@ -1,18 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2078 (meme podcast French Touch, 01:56:49).",
+    "verdict": "discard"
+  },
   "creator": "Radio France",
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0181",
   "links": [],
   "quote": "un truc sur Redbanger la French Touch voilà histoire de la French Touch [...] c'est génial",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:56:49",
   "title": "Histoire de la French Touch",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

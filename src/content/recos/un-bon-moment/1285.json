@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Note-titre lu par Anna en 'lectures de notes' (00:41) qu'elle qualifie de blague ratee ('c'est un peu nul, ca ne marche pas, c'etait la blague'). Variante acast. Canonique du cluster = ubm-2748 (aussi discard).",
+    "reason": "Doublon de ubm-2748 'Crushless' + idee-blague, pas une oeuvre.",
+    "verdict": "discard"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "crush less ça veut dire sans crush ça veut dire c'est une série sur quelqu'un qui n'a jamais plus de crush pour des raisons de santé mentale",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:41:16",
   "title": "Crush Less",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

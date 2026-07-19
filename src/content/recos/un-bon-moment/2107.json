@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Même passage (00:05:22-24) que ubm-2108.",
+    "reason": "Name-drop du parolier (« Mickey de Mickey 3D ») dans une discussion sur les droits d'auteur / la rente d'une chanson — mention instrumentale, pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Mickey",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2107",
+  "links": [],
+  "quote": "Ah purée ! Mickey de Mickey 3D.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:05:24",
+  "title": "Mickey 3D",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

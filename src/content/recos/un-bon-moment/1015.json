@@ -1,16 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE Roofman. Doublons discardes : ubm-0522 ('Le Roof Man') et ubm-1360 ('The Roof Man'). Titre reel = 'Roofman' (un seul mot, sans 'The'), non re-verifiable (WebSearch epuise) -> title_suspect. Invite a completer : Nassim Lyes.",
+    "reason": "Film 'Roofman' (2025, Channing Tatum) : histoire vraie d'une evasion + planque dans un Toys R Us. Reco genuine ('excellent film', 'regardez le film', 'on va mettre la reco'). Locuteur = Nassim : l'echange '00:29:09 tu preferes ce film ou Bagarre ? - Bagarre' identifie le raconteur comme Nassim (Bagarre est son film).",
+    "verdict": "validate"
+  },
   "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1015",
+  "kind": "reco",
   "links": [],
   "quote": "regardez le film avec Channing Tatoumou",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Nassim Lyes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:28:16",
   "title": "The Roofman",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

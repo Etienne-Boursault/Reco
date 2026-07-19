@@ -1,0 +1,30 @@
+{
+  "creator": "Michael Jackson",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "13:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1881",
+  "links": [],
+  "quote": "Et là, je suis allé le voir au cinéma, et ça m'a fait un petit flashback.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "13:53",
+  "title": "This Is It",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2009
+}

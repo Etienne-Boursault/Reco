@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Metadonnees guests=[] alors que l'episode a 2 invites (Baptiste Lecaplain, Camille Lavabre). Serie presentee par un·e invite·e mais lequel/laquelle non tranchable (transcript non diarise) -> recommendedBy vide. Existence/auteur de « Peach » non verifiables (budget WebSearch epuise).",
+    "reason": "Auto-promo par un·e invite·e de sa propre serie « Peach » (« j'ai une serie qui s'appelle Peach », « c'est une serie de mon genre », description de l'intrigue) (regles 2/16).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:04",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3136",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — chaîne officielle",
+      "url": "https://www.youtube.com/@pitch5351"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24718.html"
+    }
+  ],
+  "quote": "Parce que j'ai une série qui s'appelle Peach.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:40:04",
+  "title": "Pitch",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

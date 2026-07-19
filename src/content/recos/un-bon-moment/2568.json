@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'The Brilliant Mind avec John Nash' (= A Beautiful Mind / Un homme d'exception, Ron Howard) cite en comparaison rhetorique: les humoristes 'en mode mathematique, des chiffres autour de la tete'. Comparaison en passant, pas une reco. Titre erronne.",
+    "verdict": "discard"
+  },
+  "creator": "Ron Howard",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2568",
+  "links": [],
+  "quote": "c'est vraiment The Brilliant Mind avec John Nash",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:47",
+  "title": "A Brilliant Mind",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2001
+}

@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0984 ('M. Sophie' = mistranscription de Monsieur Phi).",
+    "verdict": "discard"
+  },
   "creator": "M. Sophie",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:52:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0384",
   "links": [],
   "quote": "Bah du coup J'avais parlé de M. Sophie Je reparle de M. Sophie",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:52:53",
   "title": "M. Sophie",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

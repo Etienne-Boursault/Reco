@@ -1,23 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Confusion film/serie dans le transcript ; probablement le film 'Un prophete' de Jacques Audiard (2009) ou une serie homonyme — nature a clarifier.",
+    "reason": "Oeuvre visionnee et appreciee ('j'aime beaucoup') mais echange confus film/serie, aucune prescription.",
+    "verdict": "citation"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/21575-un-prophete/watch?locale=FR",
     "tmdb": "21575",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0472",
+  "kind": "citation",
   "links": [],
   "quote": "En ce moment, je suis sur un prophète.",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:11:34",
+  "status": "validated",
+  "timestamp": "00:11:33",
   "title": "Un Prophète",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "serie"
   ],
   "watchProviders": [
     {

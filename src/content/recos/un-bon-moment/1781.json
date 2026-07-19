@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-06",
+    "humanCorrection": "Doublon de ubm-0243 (Éloge de la fuite, même œuvre évoquée 2 fois)",
+    "model": "claude-opus-4-8",
+    "reason": "'vous qui etes comportementaliste dans l'ame, je vous recommande ses ouvrages, c'est formidable' : recommandation explicite des ouvrages de Laborit (general). Doublon ubm-2015.",
+    "verdict": "validate"
+  },
+  "creator": "Henri Laborit",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1781",
+  "kind": "reco",
+  "links": [],
+  "quote": "je vous recommande ça, c'est un comportementaliste Laboris, c'est le premier qui a inventé les tranquillisants sur terre",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:20",
+  "title": "Ouvrages de Henri Laborit",
+  "transcriptSource": "acast",
+  "types": [
+    "livre"
+  ]
+}

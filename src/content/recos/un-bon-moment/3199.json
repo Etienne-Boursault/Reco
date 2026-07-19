@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre confirme dans le transcript ('La Source, pas La Vague, c'est moi qui l'ai ecrit', ~01:13). Berengere Krief co-autrice. Verification externe du titre/existence non faite (budget WebSearch epuise).",
+    "reason": "Court-metrage 'La Source' ecrit/realise par Alice David (invitee), co-ecrit par Berengere Krief (invitee), presente dans l'episode -> auto-promo invitee (regles 2 et 16)",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:29",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3199",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/la-source-1"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "FilmoTV",
+      "url": "https://www.filmotv.fr/film/la-source/16666.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=268405.html"
+    }
+  ],
+  "quote": "J'ai fait un film avec du surf dedans. Je faisais les deux trucs que je kiffe le plus en même temps.",
+  "recommendedBy": "Alice David",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:29",
+  "title": "La Source",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

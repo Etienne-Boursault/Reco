@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Mentionne dans un brainstorm/scenario d'ecriture; projet reel de Yacine mais presentation breve, confiance moderee",
+    "reason": "'Premiere fois', scene/plateau de test anime par Yacine Belhousse (invite), presente positivement ('super scene') (regle 2/16)",
+    "verdict": "guest-work"
+  },
+  "creator": "Yacine",
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3065",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "social",
+      "label": "Instagram — Premières Fois",
+      "url": "https://www.instagram.com/premieres.fois/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Theatreonline — Premières fois",
+      "url": "https://www.theatreonline.com/Spectacle/Premieres-fois/94127"
+    }
+  ],
+  "quote": "Yacine fait une super scène qui s'appelle Première fois.",
+  "recommendedBy": "Yacine Belhousse",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:44:55",
+  "title": "Première fois",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

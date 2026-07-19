@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Reponse de jeu-devinette, pas une reco.",
+    "reason": "Reponse du 'jeu des photos' (devinette) : photo de maisons a Albuquerque -> 'C'est sur Breaking Bad ?' (01:16:58). Oeuvre citee comme reponse de jeu -> discard.",
+    "verdict": "discard"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,17 +15,39 @@
     "tmdb": "1396",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0266",
   "links": [],
-  "quote": "On est à Albuquerque.",
+  "quote": "C'est sur Breaking Bad ?",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:17:00",
+  "status": "discarded",
+  "timestamp": "01:16:58",
   "title": "Breaking Bad",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

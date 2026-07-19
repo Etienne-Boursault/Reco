@@ -1,18 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon avec ubm-0608 (Demetri Martin, humoriste US, ~00:57:3x). Orthographe 'Demetri Martin' -> 'Demetri Martin' (correct). Quote 'tu peux en parler un peu de demetrie martine' = invite a en parler. Transcript par ailleurs inexploitable.",
+    "reason": "Canonique du doublon avec ubm-0608 (Demetri Martin) + orthographe a corriger + transcript inexploitable.",
+    "verdict": "discard"
+  },
   "creator": "Demetri Martin",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1024",
   "links": [],
-  "quote": "tu peux en parler un peu de démétrie martine",
+  "quote": "Là c'est des vannes de deux gars que j'adore qui s'appellent Demetri Martin",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:57:31",
+  "status": "discarded",
+  "timestamp": "00:51:09",
   "title": "Démétri Martin",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

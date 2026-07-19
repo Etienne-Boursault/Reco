@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Collision source acast — autre épisode.",
+    "reason": "Collision : 'Alcooliques Anonymes' lié à l'alcoolisme de Jérémy Ferrari (Anesthésie Générale), absent de ce transcript ('alcooliques anonymes'/'désalcool' = 0).",
+    "verdict": "discard"
+  },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +28,10 @@
   "quote": "j'en sais rien, moi, je leur dis, aller aux alcooliques anonymes.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:40:20",
   "title": "Alcooliques Anonymes",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

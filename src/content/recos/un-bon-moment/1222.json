@@ -1,18 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe incertaine ('Tani' ; possiblement Tahnee ?) a verifier. Laura Domenge absente du champ guests de l'episode.",
+    "reason": "Section explicite 'recommandez un jeune humoriste qu'on booste' ; Laura repond directement 'Ouais j'aime bien. Tani.' = recommandation prescriptive d'une humoriste.",
+    "verdict": "validate"
+  },
   "creator": "non spécifié",
   "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1222",
+  "kind": "reco",
   "links": [],
-  "quote": "Ouais, j'aime bien Tani.",
-  "recommendedBy": "non spécifié",
+  "quote": "Ouais j'aime bien. Tani.",
+  "recommendedBy": "Laura Domenge",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:11:59",
+  "status": "validated",
+  "timestamp": "01:12:00",
   "title": "Tani",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

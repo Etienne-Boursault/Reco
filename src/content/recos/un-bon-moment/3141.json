@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locutrice au feminin (« je suis allee voir ») = Camille Lavabre, mais metadonnees guests=[] a completer.",
+    "reason": "Dans le tour de recos, Camille (invitee) recommande avec substance et enthousiasme le dernier spectacle des Chiens de Navarre (« ils sont tres tres forts », « c'est la claque ») ; oeuvre d'un tiers (troupe de Jean-Christophe Meurisse), pas de l'invitee -> validate (regle 15).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:24:06",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3141",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.chiensdenavarre.com/spectacles"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-chiens-de-navarre.htm"
+    }
+  ],
+  "quote": "je suis allée voir le dernier spectacle des chiens de navarre",
+  "recommendedBy": "Camille Lavabre",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:24:06",
+  "title": "Les Chiens de Navarre",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

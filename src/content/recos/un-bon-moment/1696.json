@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Camille Combal = 2e invité (cf. titre « le gros rein de Camille Combal ») mais absent de guestsParsed — à ajouter aux métadonnées. Casting transcrit « Charlotte Gabry, Jean-François Quéré, Maxime Gasteuil » (vérifier orthographe Quéré).",
+    "reason": "Pièce de théâtre de Camille Combal présentée/promue : « on vous propose ça dans un an au Casino de Paris. Réservez maintenant » (l.2952-2964). Titre « La lettre » confirmé (l.2957). Tout le segment 01:04-01:07 est la promo de Camille.",
+    "verdict": "guest-work"
+  },
+  "creator": "Charlotte Gabry, Jean-François Quéré, Maxime Gasteuil",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1696",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est la pièce de théâtre avec Charlotte Gabry, Jean-François Quéré et Maxime Gasteuil.",
+  "recommendedBy": "Camille Combal",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:07:02",
+  "title": "La lettre",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

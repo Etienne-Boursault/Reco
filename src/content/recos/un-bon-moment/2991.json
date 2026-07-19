@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Champ creator existant 'Laurent Gerra' est ERRONE (confusion connue signalee dans le brief : Gerra est un autre imitateur, PAS l'invite). Le veritable auteur/invite est Laurent Baffie. creator non modifiable par apply_verdicts — a corriger a la main. Timecode 00:46:53 exact.",
+    "reason": "Livre a paraitre de l'invite Laurent Baffie ('Le Guide de la repartie'), presente et decrit en detail par lui (concept feux vert/orange/rouge, milliers de phrases). Titre verbatim transcript a 00:46:56. Auto-promo invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Laurent Gerra",
+  "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2991",
+  "kind": "reco",
+  "links": [],
+  "quote": "là il y a un bouquin sur la répartie qui va sortir le guide de la répartie",
+  "recommendedBy": "Laurent Baffie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:46:53",
+  "title": "Le Guide de la Répartie",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

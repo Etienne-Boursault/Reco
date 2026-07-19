@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verino = humoriste réel (vrai nom Olivier Balestriero) ; le champ creator 'Olivier Balestrier' est incomplet. Reco émanant de Thomas Deseur (invité absent des métadonnées).",
+    "reason": "Verino cité comme auteur du 'meilleur conseil reçu' avec forte admiration ('on l'adore') mais le contexte est une anecdote sur un conseil de carrière, pas une prescription directe de son œuvre.",
+    "verdict": "citation"
+  },
+  "creator": "Olivier Balestrier",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3120",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://verino.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Tournée Rodéo",
+      "url": "https://verino.fr/tournee-rodeo/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/verino/"
+    }
+  ],
+  "quote": "Moi, c'est Verino. [...] On l'adore, c'est très simple. On l'adore.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:45:16",
+  "title": "Verino",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Discard au merite (hearsay) ; canonique = ubm-1586 (egalement discard).",
+    "reason": "Doublon de ubm-1586 (film Mario anime, 'il parait qu'il est bien, je n'ai pas vu' = hearsay).",
+    "verdict": "discard"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "tmdb": "1226863",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +34,10 @@
   "links": [],
   "quote": "Je crois que Mario animé, il est bien.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:06",
   "title": "Mario",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

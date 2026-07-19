@@ -1,0 +1,39 @@
+{
+  "creator": "Benny Benassi",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1528",
+  "links": [],
+  "quote": "Satisfaction, ouais. De Benny Benassi, non, ça ? Exactement.",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:46",
+  "title": "Satisfaction",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

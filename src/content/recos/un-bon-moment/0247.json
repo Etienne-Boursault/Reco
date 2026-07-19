@@ -1,18 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'vous connaissez Simenon? c'est formidable, les analyses psychologiques des personnages c'est extraordinaire, il ecrivait Maigret en sept jours' : Maigret/Simenon discute avec admiration, sans prescription.",
+    "verdict": "citation"
+  },
   "creator": "Georges Simenon",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0247",
+  "kind": "citation",
   "links": [],
-  "quote": "Simonon, c'est formidable.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "il écrivait maigret en sept jours",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:11",
+  "status": "validated",
+  "timestamp": "01:12:26",
   "title": "Maigret",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "livre"
   ]
 }

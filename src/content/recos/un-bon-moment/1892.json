@@ -1,0 +1,31 @@
+{
+  "creator": "Francis Ford Coppola",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1892",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est un film cultissime.",
+  "recommendedBy": "Antoine Gouy",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:24",
+  "title": "The Godfather Part III",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,17 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2848. Titre «Les gens qui jouent» = variante-gag (residu Acast).",
+    "reason": "Doublon du podcast «Les gens qui doutent».",
+    "verdict": "discard"
+  },
   "creator": "Fanny Ruet et Morgane Canignan",
   "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:16:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0803",
   "links": [],
-  "quote": "C'est un podcast assez... On est très vite collé à ce podcast.",
-  "recommendedBy": "Morgane Canignan",
+  "quote": "J'encourage les gens à faire eux-mêmes des podcasts entre amis, pourquoi ?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:01",
+  "status": "discarded",
+  "timestamp": "00:03:46",
   "title": "Les gens qui jouent",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

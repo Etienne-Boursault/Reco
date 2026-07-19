@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique ; doublons ubm-2530 et ubm-0694 (meme moment 00:50:26-00:50:35) -> discard. Locuteur hote non departageable Kyan/Navo (echange a plusieurs voix) -> attribution videe. Titre en anglais et 'Denis'->'Dennis Bergkamp'.",
+    "reason": "Reco explicite : 'je vous invite a aller le voir sur YouTube avec des commentaires hollandais' -> le but iconique de Dennis Bergkamp (quart de finale CM 1998). Canonique retenu parmi 3 doublons Bergkamp (type 'video' le plus juste).",
+    "verdict": "validate"
+  },
+  "creator": "Denis Bergkamp",
+  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2525",
+  "kind": "reco",
+  "links": [],
+  "quote": "je vous invite que tu es allé le voir sur YouTube avec des commentaires hollandais",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:50:34",
+  "title": "Denis Bergkamp's goal in 1998 World Cup quarterfinal",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ],
+  "year": 1998
+}

@@ -1,21 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Existence de l'album 'Karma' non confirmable dans ma base (sortie possiblement posterieure a janv. 2026 ; WebSearch epuise) -> title_suspect. Attribution Bigflo & Oli explicite dans le transcript.",
+    "reason": "Album 'Karma' de Bigflo & Oli, coup de coeur explicite de Kyan : 'c'est pas mon album prefere de Bigflo & Oli, c'est dans mes albums preferes tout court' (00:30:56).",
+    "verdict": "validate"
+  },
   "creator": "Bigflo & Oli",
   "episodeGuid": "69e13325fb440758726a665f",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/933704401"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0524",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est pas mon album préféré de Big Flo. Oli, c'est dans mes albums préférés, tout court.",
+  "quote": "C'est pas mon album préféré de Big Flo Oli, c'est dans mes albums préférés, tout court.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:30:56",
   "title": "Karma",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

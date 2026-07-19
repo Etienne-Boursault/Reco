@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'The Rehearsal' de Nathan Fielder discute avec substance (le concept : mensonge puis repetitions pour avouer, 00:56:20-00:56:52). Pas de prescription claire, pas oeuvre d'invite.",
+    "verdict": "citation"
+  },
+  "creator": "Nathan Fielding",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2057",
+  "kind": "citation",
+  "links": [],
+  "quote": "j'aimerais leur dire",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:20",
+  "title": "The Rehearsal",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

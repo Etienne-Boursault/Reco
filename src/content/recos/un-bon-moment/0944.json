@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2203 (canonique, « Bolche Geek », quote substantielle sur l'analyse d'EEAAO).",
+    "reason": "Doublon de ubm-2203 (canonique Bolche Geek, quote substantielle).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "Ça doit être de Bolshegik. Bolshegik sur YouTube.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:57:38",
   "title": "Bolshegik",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

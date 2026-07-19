@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Je n'ai jamais vu le Roi Lion » (l.1178-1185) — banter sur les classiques non vus par Kyan ; « il faut que tu le voies » adressé à Kyan, pas de prescription au public.",
+    "verdict": "discard"
+  },
+  "creator": "Roger Allers, Rob Minkoff",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1692",
+  "links": [],
+  "quote": "Je n'ai jamais vu le Roi Lion.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:12",
+  "title": "Le Roi Lion",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

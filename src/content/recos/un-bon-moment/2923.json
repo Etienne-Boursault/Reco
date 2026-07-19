@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Avis mixte (gags salues, structure du film critiquee).",
+    "reason": "'Le Petit Baigneur, il y a des choses folles [gag Castagne genial], mais 3/4 du film sans que de Funes dise un mot'. Avis mixte substantiel sur l'oeuvre -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Louis de Funès",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2923",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le petit baigneur, par exemple, il y a des choses qui sont folles dans le petit baigneur.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:14",
+  "title": "Le Petit Baigneur",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

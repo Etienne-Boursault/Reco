@@ -1,18 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "L'emission sert aussi de dispositif au sketch (parodie sauces piquantes tout l'episode), mais l'appreciation de Kyan est substantielle et sincere -> citation plutot que discard.",
+    "reason": "Kyan exprime un avis fort sur l'emission Hot Ones ('je suis un enorme fan de Hot Ones', 00:06:28 ; 'la seule emission que je regarde meme si je connais pas l'interviewe') mais sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
   "creator": "N/A",
   "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0520",
+  "kind": "citation",
   "links": [],
-  "quote": "Moi, je suis un énorme fan de Hot Ones.",
+  "quote": "Moi, Kian, je suis un énorme fan de Hot Ones.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:06:28",
   "title": "Hot Ones",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "autre",
+    "video"
   ]
 }

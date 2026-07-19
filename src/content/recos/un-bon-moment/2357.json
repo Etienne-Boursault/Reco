@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "« Euphorique » = faux groupe norvegien tire d'un sketch du Palmashow (« David Marseille joue dans Bref... c'est un groupe norvegien, 8 kilos de son »), cite comme indice dans le jeu de devinette. Oeuvre fictive + indice de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "David Marseille",
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:23:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2357",
+  "links": [],
+  "quote": "il dit c'est un groupe norvégien ça s'appelle euphorique",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:39",
+  "title": "Euphorique",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

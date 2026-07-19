@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Point d'ancrage punk-rock ado (Sum 41) cite comme influence, sans prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2173",
+  "kind": "citation",
+  "links": [],
+  "quote": "j'ai adoré le punk rock, les blinks, Sum 41, tout ça",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:52",
+  "title": "Sum 41",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

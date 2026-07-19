@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Plateforme, pas une oeuvre recommandable.",
+    "reason": "« TikTok » = plateforme, pas une oeuvre. Sert d'amorce a la reco d'Elliot Doyle (01:01:44).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +27,10 @@
   "links": [],
   "quote": "Moi j'aime bien recommander du Tiktok parce que je suis premier.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:01:44",
   "title": "Tiktok",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du couple avec ubm-2635 (doublon openai).",
+    "reason": "Ring Fit Adventure (Nintendo, 2019) discute avec substance (capteur cuisse, mode aventure, mouvements programmes) mais avis mitige/critique ('moi j'aime bien' puis 'c'est vraiment ridicule', 'mal branle'). Pas de prescription nette.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2613",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est quoi le ring fit ? Ah, le truc de switch. C'est bien ou pas ? Bah, moi, j'aime bien.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:06",
+  "title": "Ring Fit Adventure",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

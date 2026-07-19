@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Passage réel vers 01:00:57, pas 00:55:57. Existence exacte d'une chanson 'Didou' de Carlos à confirmer.",
+    "reason": "'Didou/Didoudou' de Carlos lâché en jeu de mots sur le doudou d'enfance de l'invitée — mention instrumentale (règle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Carlos",
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:57",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3086",
+  "links": [],
+  "quote": "Didoudou ! Ouais ! Qui est une chanson assez connue ! De Carlos !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:57",
+  "title": "Didou",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

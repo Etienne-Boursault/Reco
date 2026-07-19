@@ -1,18 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Web série de François Descraques (création/réalisation, 2015) avec Éléonore Costes (rôle de Zoé), présentée par le duo invité (« on a fait une web série ensemble qui s'appelle Rock Macabre... communauté musicale... avec PV Nova »). Auto-promo d'œuvre d'invités.",
+    "verdict": "guest-work"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:43:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0056",
+  "kind": "reco",
   "links": [],
-  "quote": "on a fait une website ensemble qui s'appelle Rock Macabre, qui est une communauté musicale.",
-  "recommendedBy": "Inconnu",
+  "quote": "on a fait une web série ensemble qui s'appelle Rock Macabre qui est une communauté musicale",
+  "recommendedBy": "François Descraques & Éléonore Costes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:43:44",
   "title": "Rock Macabre",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« Whale poo » — faux produit inventé dans le délire (« filtre à caca de baleine sur Amazon »). Faux positif, pas une œuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1938",
+  "links": [],
+  "quote": "J'ai acheté un filtre sur Amazon qui filtre, qui filtre.",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:22",
+  "title": "Whale poo",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

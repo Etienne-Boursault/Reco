@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0375 (Marcel Ayme).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1620",
+  "links": [],
+  "quote": "La nouvelle de Marcel Aimé.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:19:17",
+  "title": "Marcel Aimé",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

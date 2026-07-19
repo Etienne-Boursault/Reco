@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Auteur : Harris Wittels (transcript : 'Harry Swittles/Sweetels'). Doublons : ubm-1854, ubm-1862, ubm-1861, ubm-0209, ubm-2037.",
+    "reason": "Livre reel 'Humblebrag: The Art of False Modesty' de Harris Wittels, discute avec substance (concept explique, auteur SNL decede) mais sans prescription nette. Canonique du cluster humblebrag (01:26 + 01:49 = une seule oeuvre).",
+    "verdict": "citation"
+  },
   "creator": "Harris Wittels",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:49:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0962",
+  "kind": "citation",
   "links": [],
   "quote": "Il y a un livre de Harris Whittles ce mec du SNL qui est mort aujourd'hui qui a inventé l'expression un mode brague",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:49:52",
   "title": "Humblebrag: The Art of False Modesty",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

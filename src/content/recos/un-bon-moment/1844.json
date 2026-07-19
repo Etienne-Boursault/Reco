@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse au jeu 'Le Presque Peach' (Kyan pitche mal un film, on devine) a 01:03:33 : 'le pere est medecin... sa fille est timide... Dirty dancing'. Reponse de jeu-devinette -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Emile Ardolino",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1844",
+  "links": [],
+  "quote": "Dirty dancing.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:03:33",
+  "title": "Dirty Dancing",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

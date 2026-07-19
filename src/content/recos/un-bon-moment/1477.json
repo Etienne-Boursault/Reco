@@ -1,0 +1,64 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "humanCorrection": "Politique host-work tranchée 2026-07-07 : validate → guest-work",
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Pulsions' (pluriel), spectacle intégral gratuit sur YouTube.",
+    "reason": "Kyan promeut son propre spectacle et invite à le voir ('il y a mon spectacle qui est gratuit sur YouTube, ça s'appelle Pulsions').",
+    "verdict": "validate"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:34:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1477",
+  "kind": "reco",
+  "links": [],
+  "quote": "si jamais t'as envie, il y a mon spectacle qui est gratuit sur YouTube, ça s'appelle Pulsion.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:34:09",
+  "title": "Pulsion",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

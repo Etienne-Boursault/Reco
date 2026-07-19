@@ -1,19 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "PAS Kyan (extraction erronee): c'est un INVITE qui repond a la question du host ('il etait la a ma 1re ou 2e scene'). Probablement Ahmed Sparrow (scene francaise, Detlo francais), non certain -> recommendedBy vide. Completer guests (Roman Frayssinet + Ahmed Sparrow).",
+    "reason": "Reco explicite d'un invite: 'j'adore son programme Gus... Gus de Jeremy Detlo sur YouTube' a 01:32:49. Oeuvre tierce reelle (Jeremy Detlo).",
+    "verdict": "validate"
+  },
   "creator": "Jérémy Detlo",
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0626",
+  "kind": "reco",
   "links": [],
-  "quote": "Et j'adore son programme Gus, je sais pas si t'as regardé.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "j'adore son programme Gus",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:32:49",
   "title": "Gus",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

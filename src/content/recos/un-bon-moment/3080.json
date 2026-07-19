@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon — reco gardée: ubm-3092. Titre transcrit 'Jim Queen'/'Jim Quinn' à vérifier.",
+    "reason": "Doublon de la même œuvre (film d'animation d'Alex Ramirès) présentée bien plus en détail à 01:37:40 (règle 13).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3080",
+  "links": [],
+  "quote": "Qui sort le 17 juin au cinéma.",
+  "recommendedBy": "Alex Ramirez",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:02:36",
+  "title": "Jim Queen",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2024
+}

@@ -1,22 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "The Office enumere dans une liste (« Seinfeld Friends The Office South Park », 00:35:29) illustrant la structure du 26 min. Name-drop.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/2316-the-office/watch?locale=FR",
     "tmdb": "2316",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0835",
   "links": [],
-  "quote": "tu prends le premier épisode d'une série que tu aimes bien, de Breaking Bad ou de The Office, ce que tu veux.",
+  "quote": "quand tu regardes Seinfeld Friends The Office South Park toutes ces séries là",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:29:17",
+  "status": "discarded",
+  "timestamp": "00:35:29",
   "title": "The Office",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

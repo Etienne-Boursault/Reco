@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2334.",
+    "reason": "Doublon de ubm-2334 (Chacun cherche son chat; titre corrompu 'Chacun cher son chat').",
+    "verdict": "discard"
+  },
+  "creator": "Cédric Klapisch",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2338",
+  "links": [],
+  "quote": "Chacun chère sans chat",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:26",
+  "title": "Chacun cher son chat",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

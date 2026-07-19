@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Album également promu en outro (cf. ubm-2522, discardé comme doublon). Canonique = cette reco.",
+    "reason": "GCM présente son album « Mesdames » : « sur l'album Mesdames, c'est la première fois où j'écris vraiment sur la musique ». Auto-promo invité.",
+    "verdict": "guest-work"
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:10:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2511",
+  "kind": "reco",
+  "links": [],
+  "quote": "Pour la petite histoire, sur l'album Mesdames, c'est la première fois où j'écris vraiment sur la musique.",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:10:23",
+  "title": "Mesdames",
+  "transcriptSource": "youtube",
+  "types": [
+    "album",
+    "musique"
+  ]
+}

@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'La Scene' de -M- (Mathieu Chedid) & Vanessa Paradis, chanson mixee dans le blind test de Navo : support de jeu, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Mathieu Chédid",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/13621853"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0135",
   "links": [],
   "quote": "la scène des mois",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:47:17",
   "title": "La Scène",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

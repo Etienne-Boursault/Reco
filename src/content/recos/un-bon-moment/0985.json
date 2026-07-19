@@ -1,17 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Le Precepteur (01:53, segment recos): 'tu connais le Precepteur? Il donne des cours de philo sur Youtube... je me parlais de le recommander aussi, je l'ai beaucoup ecoute... je recommande'. Reco explicite par Navo (chaine distincte de Monsieur Phi).",
+    "verdict": "validate"
+  },
+  "creator": "Le Précepteur",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:53:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:53:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:53:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:53:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0985",
+  "kind": "reco",
   "links": [],
-  "quote": "Il donne des cours de philosophie sur Youtube... il m'a refait ma culture philosophique",
+  "quote": "Tu connais le Précepteur ?",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:53:16",
+  "status": "validated",
+  "timestamp": "01:53:18",
   "title": "Le Précepteur",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "video",
+    "autre"
   ]
 }

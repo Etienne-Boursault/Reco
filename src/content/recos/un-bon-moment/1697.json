@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1683 (titre déformé « Los años noivos »).",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1697",
+  "links": [],
+  "quote": "Moi j'ai aimé deux séries : \"Los años noivos\"",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:34:43",
+  "title": "Los años noivos",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "01:41:32 : titre de 'good news' lu en fin d'épisode (record de capacité solaire du Royaume-Uni en 2025). Pas une œuvre — faux positif.",
+    "verdict": "discard"
+  },
+  "creator": "N/A",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:05:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1724",
+  "links": [],
+  "quote": "Le Royaume-Uni vient d'atteindre un record : plus de 20 gigawatts de capacité solaire installée en 2025.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:32",
+  "title": "Le Royaume-Uni",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

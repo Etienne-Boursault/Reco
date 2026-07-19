@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle: 'Verino' -> 'Verino' (accent aigu). Web-serie 'Dis donc internet !'.",
+    "reason": "Kyan recommande Verino ('J'adore Verino, tres tres fort...', 'qu'on va recevoir dans cette emission' = le host qui invite) et sa web-serie stand-up ('capsule toutes les semaines avec le public'). Reco explicite = validate.",
+    "verdict": "validate"
+  },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1061",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi j'aime beaucoup ce que Verrino il fait, je trouve ça très fort",
+  "quote": "Moi j'aime beaucoup ce que Verino il fait.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:09:20",
+  "status": "validated",
+  "timestamp": "01:09:19",
   "title": "Verino",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

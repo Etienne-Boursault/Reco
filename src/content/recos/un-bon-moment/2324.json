@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-2313.",
+    "reason": "Doublon de ubm-2313 : 'Navo, 1ere partie' = premiere partie du spectacle de Kyan (meme passage ~00:23:58), pas une oeuvre distincte.",
+    "verdict": "discard"
+  },
+  "creator": "Navo",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2324",
+  "links": [],
+  "quote": "super spectacle",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:58",
+  "title": "Navo, 1ère partie",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

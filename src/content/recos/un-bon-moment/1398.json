@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Meme segment de jeu que ubm-1913 (Tiesto).",
+    "reason": "Sensation (soiree/evenement de Tiesto) = trivia du quiz DJ (00:14:08 c'etait la White Sensation... il a fait la Sensation). Mention de jeu -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Tiesto",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T07:45:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1398",
+  "links": [],
+  "quote": "c'est la Sensation",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:14:13",
+  "title": "Sensation",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

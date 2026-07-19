@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Ils abusent graves' (dessins de Fred Cham + une autrice), reel, recommande dans le segment reco. Recommandeur incertain (hote - Kyan ou Navo; extracteur disait Kyan) -> recommendedBy vide.",
+    "reason": "Livre + compte Instagram 'Ils abusent graves' recommandes explicitement au segment reco.",
+    "verdict": "validate"
+  },
+  "creator": "Fred Cham",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2798",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je recommande le compte Instagram et le bouquin qui est sorti, qui s'appelle \"Ils abusent graves\".",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:32",
+  "title": "Ils abusent graves",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

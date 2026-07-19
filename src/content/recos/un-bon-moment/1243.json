@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ; canonique = ubm-2677 'Violet'. Titre 'violets' (typo).",
+    "reason": "Doublon du cluster Nordine (spectacle 'Violet').",
+    "verdict": "discard"
+  },
   "creator": "Nordine Gansu",
   "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1243",
   "links": [],
   "quote": "pour Nordine",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:30",
   "title": "violets",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

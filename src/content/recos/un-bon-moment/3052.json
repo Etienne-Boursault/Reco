@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Spectacle live de Kyan (Navo en 1re partie). Passage 00:00:12.",
+    "reason": "Kyan promeut son propre spectacle en tournee 'Une Bonne Soiree' ('ne ratez pas une bonne soiree, janvier dans toute la France', 'les dernieres') ; auto-promo du host.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-3052",
+  "kind": "reco",
+  "links": [],
+  "quote": "ne ratez pas une bonne soirée, janvier dans toute la France",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:12",
+  "title": "Une Bonne Soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

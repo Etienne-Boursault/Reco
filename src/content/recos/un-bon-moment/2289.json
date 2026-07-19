@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "La reco 'allez voir cette serie de Ricky Gervais elle est incroyable' est conservee sur ubm-2290 (Life is too short).",
+    "reason": "Attribution erronee corrigee en direct: la scene Liam Neeson ('j'ai le sida...') citee ici est dans Life's Too Short, pas Extras ('non c'est pas ca, c'est dans Life is too short', 00:39:01). Meme moment de reco que ubm-2290.",
+    "verdict": "discard"
+  },
+  "creator": "Ricky Gervais",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2289",
+  "links": [],
+  "quote": "allez voir cette série de Ricky Gerzais elle est incroyable",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:38:54",
+  "title": "Extras",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

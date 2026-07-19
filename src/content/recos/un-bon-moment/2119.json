@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.96,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "« L'amour c'est rien » (Mylène Farmer) = dernier morceau du blind test (00:37:26). Chanson support de jeu → discard.",
+    "verdict": "discard"
+  },
+  "creator": "Mylène Farmer",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2119",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:26",
+  "title": "L'Amour c'est rien",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

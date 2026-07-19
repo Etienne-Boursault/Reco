@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Album = 'LUX' (Rosalia, 2025), orchestral, largement cite 'album de l'annee'. Preciser le titre.",
+    "reason": "Reco explicite de Kyan : 'elle a fait un album qui est juste sublime... je pense que ca va te plaire... de la trempe d'un Woodkid, OVNI' (00:54-55).",
+    "verdict": "validate"
+  },
+  "creator": "Rosalía",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:54:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1982",
+  "kind": "reco",
+  "links": [],
+  "quote": "Elle a fait un album... Qui est juste sublime quoi...",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:56",
+  "title": "Rosalía - Album",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

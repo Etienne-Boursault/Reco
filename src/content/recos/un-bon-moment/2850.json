@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (erudition litteraire -> probablement un invite, pas Kyan comme extrait) : recommendedBy vide. L'oeuvre exacte est « Sous le soleil de Satan » de Bernanos (Mouchette en est le personnage) ; le titre « Mouchette » est imprecis. YT 00:20:58.",
+    "reason": "Partage d'une phrase aimee de Bernanos (« une phrase que j'adore... Me laissez aller tout au fond la ou le mepris des imbeciles n'irait meme pas vous chercher »). Substance litteraire sans prescription (« lisez ce livre »).",
+    "verdict": "citation"
+  },
+  "creator": "Georges Bernanos",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "20:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2850",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il y a une phrase que j'adore qui est de Bernanos qui est Mouchette sous le soleil de Satan. Elle dit « Me laissez aller tout au fond là où le mépris des imbéciles n'irait même pas vous chercher. »",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "20:58",
+  "title": "Mouchette",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

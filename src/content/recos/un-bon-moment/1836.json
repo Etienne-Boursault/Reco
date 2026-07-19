@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'Dans Hot Ones tu m'as bouleverse... tu commences a pleurer' : anecdote/eloge du passage de Doria dans Hot Ones, pas une prescription de l'emission. Mention instrumentale (anecdote sur l'invitee).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1836",
+  "links": [],
+  "quote": "Dans Hot Ones tu m'as bouleversé. Dans Hot Ones à un moment donné tu commences à pleurer.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:15",
+  "title": "Hot Ones",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

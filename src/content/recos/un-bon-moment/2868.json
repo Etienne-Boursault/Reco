@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE du cluster Laura (doublon discardé: 2863). « et il y a la dernière de Laura, l'Olympia... c'est dommage pour ceux qui l'ont pas vue, ça vaut le coup » (01:30:56) = reco positive => validate. Artiste « Laura » non identifiée et titre = « la dernière de Laura à l'Olympia » (l'Olympia = la salle, pas le titre) ; WebSearch épuisé => title_suspect fort. Même locuteur hôte ambigu que Capucine => recommendedBy vidé + attribution_suspect.",
+    "reason": "Recommandation fin d'émission (artiste DarkSmile); entité peu identifiable, attribution ambiguë",
+    "verdict": "validate"
+  },
+  "creator": "Laura",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2868",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est vrai que ça vaut le coup",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:30:56",
+  "title": "la dernière de Laura",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

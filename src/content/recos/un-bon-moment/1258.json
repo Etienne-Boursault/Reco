@@ -1,17 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre de l'invite Thomas Ngijol (le programme court Canal+ evoque en intro). guestWork=True.",
+    "reason": "Auto-promo : Thomas Ngijol recommande son propre sketch show « Selon Thomas » (Canal+/MyCanal), « l'annee prochaine, l'epilogue ».",
+    "verdict": "guest-work"
+  },
+  "creator": "Thomas",
   "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1258",
+  "kind": "reco",
   "links": [],
-  "quote": "je recommande selon Thomas quand même",
-  "recommendedBy": "intervenant",
+  "quote": "Moi je recommande 'Selon Thomas' quand même.",
+  "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:22:34",
+  "status": "validated",
+  "timestamp": "01:22:31",
   "title": "Selon Thomas",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "spectacle"
   ]
 }

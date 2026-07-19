@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Host jure As d'Or non identifiable ; recommendedBy vide. Challengers! laureat As d'Or Jeu de l'annee 2023 (YT 00:58:13).",
+    "reason": "« Challengers » nomme comme laureat As d'Or par un membre du jury (meme phrase que Ark Nova). Jeu reel, substance sans prescription explicite.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2858",
+  "kind": "citation",
+  "links": [],
+  "quote": "les gagnants, c'est Ark Nova, Challengers...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:15",
+  "title": "Challengers",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Handle volontairement obscur (jeu sur « Molotov » orthographié « Mulotov »/« Mulhoff », cf. 01:10:59-01:11:24) — vérifier le handle Instagram exact avant publication. Non diarizé : recommandeur à compléter.",
+    "reason": "Recommandation explicite (01:10:47-01:11:30 : « j'ai découvert quelqu'un de super... SS Mulotov sur Instagram... très intelligent, très drôle, très perché, j'adore »). Compte Instagram réel recommandé → validate. Canonique du cluster.",
+    "verdict": "validate"
+  },
+  "creator": "SS Mulotov",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2126",
+  "kind": "reco",
+  "links": [],
+  "quote": "Bah, comment elle s'appelle ?",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:28",
+  "title": "SS Mulotov",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

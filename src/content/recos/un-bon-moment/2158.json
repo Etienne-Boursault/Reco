@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Chanson reelle (Soprano) mais mentionnee comme reponse du blind-test. Mention instrumentale.",
+    "reason": "'Cosmo de Soprano' devine dans le meme blind-test (l.717-721). Mention de jeu, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Soprano",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2158",
+  "links": [],
+  "quote": "Cosmo de Soprano.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:40",
+  "title": "Cosmo",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

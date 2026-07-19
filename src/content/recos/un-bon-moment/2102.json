@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Comedian rhapsodie » (éd. Flammarion) — reco indiquait « Comedian Rhapsody ».",
+    "reason": "Premier livre de Thomas VDB évoqué par Florent Bernard comme contexte de Fiascorama (« le premier c'était Comedian Rhapsody... j'adore le format anecdote ») — discuté avec substance mais sans prescription directe → citation.",
+    "verdict": "citation"
+  },
+  "creator": "Thomas VDB",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2102",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le premier, c'était Comedian Rhapsody, c'est son passage de mec qui bosse dans la musique qui se met au stand-up.",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:50:45",
+  "title": "Comedian Rhapsody",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

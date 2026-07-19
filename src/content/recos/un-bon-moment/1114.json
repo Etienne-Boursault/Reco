@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact « Monstre » (Gerard Depardieu, 2017) ; createur a corriger (transcrit « D. Part Dieu »). Invite Panayotis Pascot absent des metadonnees guests.",
+    "reason": "Livre « Monstre » de Depardieu cité par Pana avec substance (il en lit un passage sur l'ombre et la lumiere) mais sans prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "D. Part Dieu",
   "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:52:49+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1114",
+  "kind": "citation",
   "links": [],
-  "quote": "C'est en lisant monstres de part dieu je sais pas si vous l'avez lu.",
-  "recommendedBy": "Navo",
+  "quote": "c'est en lisant monstres de Depardieu",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:21:08",
+  "status": "validated",
+  "timestamp": "00:21:06",
   "title": "Monstres",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

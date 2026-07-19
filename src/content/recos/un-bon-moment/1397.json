@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote de production, pas une prescription.",
+    "reason": "That's My People (NTM) discute avec substance (making-of : instru de Sully, prise unique conservee par accident technique, 00:12:28) mais sans prescription. Oeuvre reelle -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "NTM",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "12:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "12:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "12:31:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1397",
+  "kind": "citation",
+  "links": [],
+  "quote": "That's My People de NTM avec le sang de Chopin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:12:28",
+  "title": "That's My People",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "musique"
+  ]
+}

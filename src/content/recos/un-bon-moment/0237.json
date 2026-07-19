@@ -1,15 +1,68 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'No, I'm not a Human' (jeu indie horreur, Trioskaz/Critical Reflex, sept. 2025). Attribution indeterminee (locuteur du tour de recos).",
+    "reason": "'C'est un des jeux les plus bizarres que j'ai fait depuis longtemps, donc je vous le conseille... je recommande' (02:22:46-02:24:19) — prescription claire, longue presentation du gameplay.",
+    "verdict": "validate"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:22:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:22:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:22:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:22:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0237",
+  "kind": "reco",
   "links": [],
-  "quote": "j'ai envie de conseiller un jeu indé mais je l'ai vu t'as mal tourné sur Twitch",
+  "quote": "Le jeu se passe dans une maison tu ne sors jamais de la maison",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:22:40",
+  "status": "validated",
+  "timestamp": "02:22:46",
   "title": "No I'm Not a Human",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

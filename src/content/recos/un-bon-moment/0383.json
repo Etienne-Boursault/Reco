@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0983 ('L'Enterloop' = mistranscription de L'Entourloupe).",
+    "verdict": "discard"
+  },
   "creator": "Jean-Pierre Mariel",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:51:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0383",
   "links": [],
   "quote": "J'ai regardé des vieux films Récemment Et j'ai vu un film Ça s'appelle l'Enterloop",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:51:55",
   "title": "L'Enterloop",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Hallucination : ni 'You Left' ni 'Nittik' n'apparaissent dans le transcript. La quote rattachée ('une de mes plus grandes inspirations de dessin graphique') concerne Jamie Hewlett/Gorillaz. Faux positif.",
+    "verdict": "discard"
+  },
   "creator": "Nittik",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/686150602"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "et une de mes plus grandes inspirations de dessin graphique",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:47",
   "title": "You Left",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1573.",
+    "reason": "Doublon de ubm-1573 (spectacle de Lucas et Veufla).",
+    "verdict": "discard"
+  },
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1008",
   "links": [],
   "quote": "J'ai vu le spectacle de deux potes à moi il n'y a pas longtemps. Le spectacle de Luka et Vufla.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:38:30",
   "title": "Spectacle de Luka et Vufla",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

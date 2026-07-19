@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invité = Cédric Klapisch (compléter métadonnées).",
+    "reason": "Film emblématique de Klapisch, discuté tout au long de l'épisode (tournage en 4 mois, casting Cécile de France). Guest-work; recommendedBy réattribué de Navo à Cédric.",
+    "verdict": "guest-work"
+  },
   "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,17 +18,50 @@
     "tmdb": "1555",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0921",
+  "kind": "reco",
   "links": [],
-  "quote": "Quand on revoit l'auberge espagnol, on s'est dit, on a le droit de faire ça.",
-  "recommendedBy": "Navo",
+  "quote": "c'est L'Auberge Espagnole je pense que c'est son deuxième long métrage",
+  "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:56",
+  "status": "validated",
+  "timestamp": "00:50:40",
   "title": "L'Auberge Espagnole",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

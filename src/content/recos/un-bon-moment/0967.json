@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-06",
+    "humanCorrection": "Timecode recalé sur le passage réel 00:59:50 (était 01:00:51)",
+    "model": "claude-opus-4-8",
+    "reason": "'je peux voir Hotel du Nord plein de fois je trouve ca super' / 'regarde Hotel du Nord, les dialogues de Jeanson, c'est extraordinaire' : admiration cinephile (Carne), registre analytique sans prescription franche.",
+    "verdict": "citation"
+  },
   "creator": "Marcel Carné",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,17 +15,49 @@
     "tmdb": "48369",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0967",
+  "kind": "citation",
   "links": [],
-  "quote": "Regarde hôtel du Nord. Les dialogues de Jean Sondre c'est extraordinaire.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "je peux voir Hôtel du Nord plein de fois je trouve ça super",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:42:31",
+  "status": "validated",
+  "timestamp": "00:59:50",
   "title": "Hôtel du Nord",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

@@ -1,20 +1,72 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel = 'Civilisation' (Orelsan, 2021), pas 'La Civilisation'.",
+    "reason": "Album d'Orelsan evoque pour sa pochette iconique (shootee par Alice Moitie) : 'cette pochette tout le monde la connait, c'est exceptionnel'. Substance reelle mais aucune prescription d'ecoute.",
+    "verdict": "citation"
+  },
   "creator": "Orelsan",
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/270762122"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0334",
+  "kind": "citation",
   "links": [],
-  "quote": "C'est la pochette bleue, là, avec les...",
-  "recommendedBy": "Alice Roitier",
+  "quote": "Et tu as photographié aussi les albums d'Aurel-san qu'on connaît, La Civilisation.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:05:56",
   "title": "La Civilisation",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

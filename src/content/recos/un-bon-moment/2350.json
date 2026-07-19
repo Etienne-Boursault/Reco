@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = 'Salope' (Bigflo & Oli, album La Vraie Vie). Reference de comparaison, pas une reco.",
+    "reason": "« Starlops » = leur chanson « Salope » (sur la prostitution), citee EN PASSANT comme comparaison dans le jeu d'ecriture (« la prostituee, on a deja fait une chanson... »), sans prescription. Mention instrumentale + titre artefact.",
+    "verdict": "discard"
+  },
+  "creator": "Big Flo et Oli",
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2350",
+  "links": [],
+  "quote": "on a déjà fait une chanson sublime qui s'appelle Starlops elle est juste sublime cette chanson",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:03",
+  "title": "Starlops",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

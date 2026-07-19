@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Devine et chanter' = jeu de Greg Romano (chroniqueur, regle 6) joue sur le plateau (01:02). Pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Greg Romano",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1660",
+  "links": [],
+  "quote": "Oh on fait un \"Devine et chanter\" de Greg Romano...",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:02:12",
+  "title": "Devine et chanter",
+  "transcriptSource": "acast",
+  "types": [
+    "jeu"
+  ]
+}

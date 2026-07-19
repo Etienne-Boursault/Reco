@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco d'un invité non diarizé (Camille ou Bérengère), Kyan co-signe (« j'ai vu ça, c'est super »). Le champ creator « Netflix (série espagnole) » = plateforme, à vérifier (série espagnole, plateforme incertaine). Doublons 0329/1697/1990 discardés.",
+    "reason": "Segment reco artistique : « j'ai aimé deux séries : Los años nuevos... c'est super... j'ai adoré... le dernier épisode est une masterclass de comédiens » (l.3961-3985). Titre correct. Canonique du groupe.",
+    "verdict": "validate"
+  },
+  "creator": "Netflix (série espagnole)",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1683",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi j'ai aimé deux séries : \"Los años noivos\"",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:34:47",
+  "title": "Los años nuevos",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

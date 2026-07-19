@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Reference circulaire au podcast qu'on catalogue.",
+    "reason": "Auto-reference a l'emission elle-meme dans le pre-generique (00:00) : 'C'est une emission que je finance tout seul.' Contexte financement/sponsors, pas une oeuvre a recommander.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1769",
+  "links": [],
+  "quote": "C'est une émission que je finance tout seul.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:06",
+  "title": "Un Bon Moment",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

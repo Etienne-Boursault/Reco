@@ -1,18 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-3032 (canonique conserve). Cette version acast titre 'Diego Alari'.",
+    "reason": "Doublon de ubm-3032 (Diego Al(l)ary, meme reco de Kyan a 01:18:23-24). On garde ubm-3032 (source YouTube par defaut, orthographe la plus proche du transcript) comme canonique.",
+    "verdict": "discard"
+  },
   "creator": "Diego Alari",
   "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1124",
   "links": [],
   "quote": "moi je vous recommande Diego Alari sur Tiktok",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:23",
   "title": "Diego Alari",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

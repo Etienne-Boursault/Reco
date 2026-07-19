@@ -1,16 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE du cluster Capucine (doublons discardés: 1111, 1151, 1153, 1201, 2867). Recommandation du premier spectacle de « Capucine la ventriloque » (artiste DarkSmile / darksmile.fr, prod. de Jérémy Ferrari), ~01:30:52. Titre exact du spectacle non vérifiable (WebSearch épuisé) => title_suspect. Locuteur = un hôte (vanne « le spectacle de sa mère » au 3e pers. sur Jérémy) mais Kyan vs Navo indéterminable (pas de diarisation) => recommendedBy vidé + attribution_suspect.",
+    "reason": "Recommandation fin d'émission d'une artiste DarkSmile; attribution hôte ambiguë",
+    "verdict": "validate"
+  },
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1150",
+  "kind": "reco",
   "links": [],
   "quote": "je vous invite à aller découvrir le nouveau spectacle c'est parce qu'il en parle beaucoup dans le moment non mais le nouveau spectacle du capucine enfin le premier spectacle capucine la ventriloque",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:31:11",
   "title": "Spectacle de Capucine la ventriloque",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

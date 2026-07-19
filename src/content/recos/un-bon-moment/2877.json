@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Vrai passage ~00:27:53 (reco datee 00:29:32).",
+    "reason": "« La liste de Schindler m'a fait plus rire que ce spectacle » = vanne/comparaison rhetorique (mauvais commentaire imagine sur son propre spectacle), pas une recommandation.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2877",
+  "links": [],
+  "quote": "la liste de Schindler m'a fait beaucoup plus rire que ce spectacle",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:32",
+  "title": "La Liste de Schindler",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

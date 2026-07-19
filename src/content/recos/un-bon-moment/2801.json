@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2805 (01:15:12). Titre 'Motema' errone (mauvais parse de 'l'album de Jain').",
+    "reason": "Doublon de la reco 'album de Jain' (canonique ubm-2805); titre errone.",
+    "verdict": "discard"
+  },
+  "creator": "Jane",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2801",
+  "links": [],
+  "quote": "Moi, je recommande l'album de Jane.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:12",
+  "title": "Motéma",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

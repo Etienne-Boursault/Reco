@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:41:18. Doublon a fusionner vers ubm-1191.",
+    "reason": "Doublon de ubm-1191 : meme instant (01:41:18) et meme enonce ('l'album de Dua Lipa'). 'Dua Lipa' (artiste) est redondant avec l'album 'Future Nostalgia' garde en canonique.",
+    "verdict": "discard"
+  },
+  "creator": "Dua Lipa",
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:04:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2594",
+  "links": [],
+  "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:18",
+  "title": "Dua Lipa",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

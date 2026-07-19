@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom reel: Panayotis Pascot (transcription 'Pana'/'Pana Otis'/'Naotis'). Attribution Kyan/Navo indeterminee.",
+    "reason": "Panayotis Pascot: admiration reelle avec substance ('j'ai vu son spectacle, il m'inspire, ce qu'il fait c'est incroyable, tournee de zenith') MAIS cadre = discussion sur la com/reseaux ('c'est un bon exemple'), pas de prescription explicite au public. Citation. Canonique du cluster Panayotis.",
+    "verdict": "citation"
+  },
+  "creator": "Pana",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1911",
+  "kind": "citation",
+  "links": [],
+  "quote": "Pana je trouve que c'est un des mecs qui n'a pas le succès",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:42:52",
+  "title": "Pana",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

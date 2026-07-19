@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Kyan est celui qui s'etait trompe (« Merci d'avoir corrige, Navo »).",
+    "reason": "Fargo evoque en debut d'emission : Kyan corrige une reco passee (mauvaise saison) et raconte une scene qu'il a trouvee interessante — substance mais pas de prescription nette dans ce passage.",
+    "verdict": "citation"
+  },
   "creator": "Noah Hawley",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "externalIds": {
@@ -6,18 +15,58 @@
     "tmdb": "60622",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:06:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "06:03:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:02:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0385",
+  "kind": "citation",
   "links": [],
-  "quote": "à un moment j'ai recommandé la dernière saison de Fargo",
-  "recommendedBy": "Invité",
+  "quote": "En fait, j'avais pas vu la saison 4.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:06:02",
+  "status": "validated",
+  "timestamp": "00:05:37",
   "title": "Fargo",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],
@@ -67,5 +116,6 @@
       "label": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Fargo"
     }
-  ]
+  ],
+  "year": 2020
 }

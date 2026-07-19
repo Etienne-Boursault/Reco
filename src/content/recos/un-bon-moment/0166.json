@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon manifeste de ubm-2050 (meme moment 00:12:40, titre mal orthographie 'Marine Leonardier').",
+    "verdict": "discard"
+  },
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "allez voir Marine Léonardie sur scène.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:12:40",
   "title": "Marine Léonardier",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

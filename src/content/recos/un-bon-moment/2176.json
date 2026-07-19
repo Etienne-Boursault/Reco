@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support du meme jeu d'identification ('Girls Wanna Have Fun... c'est Cindy Lauper'). Pas une recommandation.",
+    "verdict": "discard"
+  },
+  "creator": "Cindy Lauper",
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2176",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:11",
+  "title": "Girls Just Want to Have Fun",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

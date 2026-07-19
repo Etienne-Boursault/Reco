@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Pas une oeuvre : la Silent Party est une activite (silent disco ou des YouTubers mixent) au sein de la convention Royaume du Web. Aucune prescription.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0629",
   "links": [],
   "quote": "Il y a une activité qui est la Silent Party où en fait, on te met un...",
-  "recommendedBy": "Audrey Piro",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:29",
   "title": "Silent Party",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

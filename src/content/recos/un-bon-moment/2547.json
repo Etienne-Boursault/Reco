@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte: 'Coline Rio' (un seul L), autrice-compositrice, album 'Ce qu'il restera de nous' (2023).",
+    "reason": "Matthieu recommande explicitement une autre artiste, 'voix divine', qu'il invitera a son concert feminin (01:08). Prescription claire.",
+    "verdict": "validate"
+  },
+  "creator": "Colline Rio",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2547",
+  "kind": "reco",
+  "links": [],
+  "quote": "une autre artiste qui s'appelle Colline Rio, qui aussi a une voix divine.",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:00",
+  "title": "Colline Rio",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

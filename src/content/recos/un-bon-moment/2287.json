@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Faux positif; le vrai contenu renvoie a Serge le Mytho (ubm-2288).",
+    "reason": "Titre halucine: le transcript dit 'la serie de jojo le serge de mito' (00:03:27) ou 'jojo' = surnom de Jonathan Cohen et l'oeuvre = Serge le Mytho. Aucun rapport avec l'anime JoJo's Bizarre Adventure.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2287",
+  "links": [],
+  "quote": "on vous a vu officiellement dans la série de jojo le serge de mito joué star",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:03:27",
+  "title": "JoJo's Bizarre Adventure",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

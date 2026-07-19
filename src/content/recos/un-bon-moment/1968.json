@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Exemple rhetorique, pas de reco.",
+    "reason": "'Le Cercle des poetes disparus' cite comme exemple rhetorique des references sur-utilisees quand on decrit un film. Titre 'The Poet's Society' hallucine.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:13:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1968",
+  "links": [],
+  "quote": "Le Cercle des Poets disparus.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:13:20",
+  "title": "The Poet's Society",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

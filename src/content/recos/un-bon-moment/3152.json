@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre : le transcript rend « The Rear Soul », phonétique de « The Rehearsal » (Nathan Fielder, 2 saisons HBO Max) — correction confiante. Créateur à corriger : « Nathan Fielder » (pas « Nathan Fielding »). Recommandé par un host ou par l'invité Orelsan (« c'est Thomas Bangalter qui me l'a montré ») → attribution incertaine, recommendedBy vide (règle 3).",
+    "reason": "Vraie prescription forte d'une œuvre réelle qui n'est PAS celle d'un invité : « il faut que vous regardez… je vous le conseille… il faudrait que tout le monde essaye » (série de Nathan Fielder, HBO Max).",
+    "verdict": "validate"
+  },
+  "creator": "Nathan Fielder",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:48",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3152",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/shows/rehearsal/609d8b4c-f0a6-4a5d-b9d3-bb0f2e207efb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-rehearsal/umc.cmc.2ptdqoypnddlvxg6a42mmd2o"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/the-rehearsal"
+    }
+  ],
+  "quote": "Déjà, aller voir le Cypher. The Rear Soul.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:48",
+  "title": "The Rehearsal",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

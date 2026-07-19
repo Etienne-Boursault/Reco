@@ -1,18 +1,68 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Fary, interroge 'un artiste a ecouter?', repond 'je dirais un jeune artiste s'appelle ZS... c'est tres fort' (signe chez Foufoune Palace). Reco explicite.",
+    "verdict": "validate"
+  },
+  "creator": "ZS",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:05:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:05:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:05:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:05:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0287",
+  "kind": "reco",
   "links": [],
-  "quote": "Et un artiste à écouter je dirais un jeune artiste qui s'appelle ZS.",
-  "recommendedBy": "Farid",
+  "quote": "Un jeune artiste s'appelle ZS",
+  "recommendedBy": "Fary",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:05:27",
+  "status": "validated",
+  "timestamp": "02:05:24",
   "title": "ZS",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = Waly Dia (monologue sur sa demarche de comedien politique, sans etiquette de locuteur). Doublon 'The Daily Show' (ubm-2161) discarde.",
+    "reason": "Waly cite Trevor Noah avec substance/appreciation dans sa reflexion sur les daily shows US : 'des gens qui remettent du fond dans un truc... il y a une intelligence... ca donne foi en l'humanite' [00:33:04]. Appreciation sans prescription directe -> citation. Canonique (nom prononce dans le transcript).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2162",
+  "kind": "citation",
+  "links": [],
+  "quote": "Quand je regarde Trevor Noah aux States, c'est des problématiques qui ne me touchent pas, qui ne me concernent pas. Et je trouve que c'est des gens qui remettent du fond dans un truc.",
+  "recommendedBy": "Waly Dia",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:33:04",
+  "title": "Trevor Noah",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

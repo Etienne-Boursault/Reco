@@ -1,21 +1,54 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:41:18. Doublon collapse : ubm-2594 (meme instant, 'Dua Lipa' artiste) est discard. Attribution VIDE car les extractions se contredisent (Kyan vs Navo) ; c'est un hote, probablement Kyan (l'autre hote que celui de Dave/High Maintenance), mais non trancable.",
+    "reason": "Reco explicite de l'album 'Future Nostalgia' de Dua Lipa : 'j'ai beaucoup aime l'album de Dua Lipa... en realisation c'est genial'. Album reel (2020). Canonique pour Dua Lipa.",
+    "verdict": "validate"
+  },
   "creator": "Dua Lipa",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/182811182"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1191",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa... De ? De Dua Lipa... Quoi ? Let's get physical...",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:41:18",
   "title": "Future Nostalgia",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ],

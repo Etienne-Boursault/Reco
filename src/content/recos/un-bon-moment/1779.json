@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'je peux voir le crime de Monsieur Lange de Renoir' / 'des plans extraordinaires' : admiration cinephile personnelle, sans prescription au public. PRIMAIRE (fusionner ubm-1784).",
+    "verdict": "citation"
+  },
+  "creator": "Jean Renoir",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1779",
+  "kind": "citation",
+  "links": [],
+  "quote": "je peux voir le crime de Monsieur Lang de Renoir",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:54",
+  "title": "Le Crime de Monsieur Lange",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

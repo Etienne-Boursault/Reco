@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Jeu, pas une reco.",
+    "reason": "'Est-ce qu'on peut dire Buffalo Soldier ?' : jeu de mots/blind test ('mais est-ce que c'est un titre qui est dans la chanson ? Non... J'avais envie de le dire'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Bob Marley",
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:43:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2811",
+  "links": [],
+  "quote": "On peut dire 'Buffalo Soldier'.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:45",
+  "title": "Buffalo Soldier",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

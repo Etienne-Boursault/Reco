@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2904 (Mona Guba) — extraction Acast à quote dégradée ('Je ne rappeuse des fristales sur Instagram'). Canonique = ubm-2904.",
+    "verdict": "discard"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "Je ne rappeuse des fristales sur Instagram.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:39",
   "title": "Mona Guba",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

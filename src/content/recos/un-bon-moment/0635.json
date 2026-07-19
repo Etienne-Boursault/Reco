@@ -1,21 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Borderline : si l'humain juge le 'c'est the shit' prescriptif, requalifier en citation.",
+    "reason": "Reponse du jeu de la complicite (indice videoprojecteur avec S et U -> Muse). Oeuvre citee dans un jeu -> discard. NB: Kyan ajoute un avis sincere ('Muse c'est the shit', defense vs Radiohead) mais dans le prolongement du jeu, pas une prescription autonome.",
+    "verdict": "discard"
+  },
   "creator": "Muse",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/4195713"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0635",
   "links": [],
-  "quote": "Quand j'avais 20 ans, c'était moi cette musique. C'était mon truc. J'écoutais Muse.",
+  "quote": "Et Muse c'est une copie",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:10:38",
+  "status": "discarded",
+  "timestamp": "01:10:40",
   "title": "Muse",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

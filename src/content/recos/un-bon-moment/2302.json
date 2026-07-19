@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve = ubm-0649 (mieux renseigne).",
+    "reason": "Doublon de ubm-0649 (Inside Jamel Comedy Club, meme moment 01:12:04, meme liste d'excellentes series francaises).",
+    "verdict": "discard"
+  },
+  "creator": "Jamel Debbouze",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2302",
+  "links": [],
+  "quote": "il y a Inside Jamel le comedy club",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:04",
+  "title": "Inside Jamel",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

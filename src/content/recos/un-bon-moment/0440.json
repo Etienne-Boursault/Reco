@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Débat cancel-culture (« Cancel Michael Jackson ou pas ? On peut écouter encore Michael ? ») — pas une reco d'œuvre. Le quote extrait est celui de la vanne banane (artefact).",
+    "verdict": "discard"
+  },
   "creator": "Michael Jackson",
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/4603408"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "c'est toi ? c'était sexuel j'étais juste un défié",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:10:33",
   "title": "Michael Jackson",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

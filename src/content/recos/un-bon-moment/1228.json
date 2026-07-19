@@ -1,17 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Canonique; ubm-2906 est le doublon YT (titre dégradé). Attribution Kyan retenue car il parle des influences de bref (son émission).",
+    "reason": "Court-métrage brésilien de Jorge Furtado (1989, Ilha das Flores) cité par Kyan comme influence de bref, avec incitation explicite à le découvrir ('tu vas sur YouTube, tu tapes L'Île aux fleurs, tu vas dire ah ok'). Titre et créateur corrects, confirmé dans le transcript YT (~00:03:45).",
+    "verdict": "validate"
+  },
   "creator": "Jorge Furtado",
   "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1228",
+  "kind": "reco",
   "links": [],
   "quote": "C'est carrément l'île aux fleurs mais que c'est pas très connu.",
-  "recommendedBy": "Big Flow",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:03:38",
   "title": "L'Île aux fleurs",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator exact = 'Vald' (et non 'Valde'). Doublon 0409 discardé.",
+    "reason": "Long 'billet' passionné de Cyprien sur l'album 'Magnificat' de Vald (2025) : 'j'écoute en boucle... vraie démarche d'artiste... cet album m'a vraiment touché'. Explicitement 'la chronique de Cyprien'. Canonique.",
+    "verdict": "validate"
+  },
+  "creator": "Valde",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1493",
+  "kind": "reco",
+  "links": [],
+  "quote": "Syp, j'écoute ton boucle Magnificat, de Valde, mais en boucle.",
+  "recommendedBy": "Cyprien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:59",
+  "title": "Magnificat",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

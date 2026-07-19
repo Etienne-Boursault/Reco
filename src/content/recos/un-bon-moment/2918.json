@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Kyan raconte substantiellement un gag de Futurama (extraterrestres a 1000 annees-lumiere qui recoivent Ally McBeal) pour illustrer le delai de la lumiere, avec appreciation ('C'est super'). Reference substantielle a une oeuvre reelle, sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2918",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il y a une blague comme ça dans Futurama ? Ah oui ? C'est des extraterrestres qui sont à mille années-lumière de la Terre.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:18",
+  "title": "Futurama",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

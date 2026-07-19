@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2824.",
+    "reason": "Doublon de ubm-2824 (même œuvre 'L'Homme-dé' de Luke Rhinehart, ~00:51). Canonique = ubm-2824 (titre le mieux orthographié). Attribution 'Kyan Khojandi' erronée de toute façon.",
+    "verdict": "discard"
+  },
+  "creator": "Luke Rhinehart",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2820",
+  "links": [],
+  "quote": "toi il faut que tu lises l'homme d'é",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:38",
+  "title": "L'Homme de dés",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« un realisateur que j'adore » + masterclass suivie + eloge de Boyhood et School of Rock. Prescription d'un artiste reel, pas un invite.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3181",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Detour Filmproduction (site officiel)",
+      "url": "https://www.detourfilm.com/"
+    }
+  ],
+  "quote": "qui est un réalisateur que j'adore",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:00",
+  "title": "Richard Linklater",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE (doublon ubm-1369 discarde). Titre reel de l'album inconnu du transcript ('Album de Tessabe' = placeholder) + orthographe 'Tessabe' non verifiable (WebSearch epuise) -> title_suspect. Invitee a completer : Anaïde Rozam.",
+    "reason": "Album de Tessabe (meilleure amie d'Anaide) : reco explicite d'Anaide 'l'album de Tessabe aussi, qui est sorti il y a pas longtemps, donc je vous le recommande' (01:11:50).",
+    "verdict": "validate"
+  },
+  "creator": "Tessabé",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:13+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1562",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et l'album de Tessabé aussi, qui est sorti il y a pas longtemps, donc je vous le recommande",
+  "recommendedBy": "Anaïde Rozam",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:50",
+  "title": "Album de Tessabé",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

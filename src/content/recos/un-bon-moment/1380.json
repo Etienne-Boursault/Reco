@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Lecture publicitaire sponsorisee (code promo 'unbonmoment20', 20 euros de reduction, backmarket.fr) en ouverture d'emission. Pas une recommandation editoriale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:40:55+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1380",
+  "links": [],
+  "quote": "On recommande l'application Back Market. Et il y a le site aussi, backmarket.fr.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:42",
+  "title": "Back Market",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

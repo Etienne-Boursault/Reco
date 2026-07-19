@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Charlene Juarez, pianiste, compagne de Joseph Chedid (frere de l'invite) ; a fait des premieres parties. Creator absent dans les donnees (le titre porte le nom).",
+    "reason": "Matthieu recommande Charlene Juarez, 'pianiste divine', album instrumental de piano 'merveilleux' (01:08). Prescription claire.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2548",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et puis, Charles aussi. Il y a Charlène Juarez, qui est la compagne de mon frère Joseph, et qui est une pianiste divine",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:07",
+  "title": "Charlène Juarez",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

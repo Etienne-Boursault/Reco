@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse de jeu ('la prof c'est Florence Foresti', 00:56:50) dans le jeu de contrale mental. Personne nommee, pas une oeuvre, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2300",
+  "links": [],
+  "quote": "la prof c'est Florence Foresti",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:50",
+  "title": "Florence Foresti",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

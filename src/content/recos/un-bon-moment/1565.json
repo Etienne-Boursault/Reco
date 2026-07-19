@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple/anecdote (« champion du monde PES 3 par exemple ») — mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1565",
+  "links": [],
+  "quote": "champion du monde PES 3 par exemple ouais ouais ça je l'ai déjà été",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:30",
+  "title": "PES 3",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote ('On est alle voir Chris Rock a Londres', 00:44:12) servant a expliquer l'origine du systeme de pochettes a telephone de leur spectacle -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2255",
+  "links": [],
+  "quote": "On est allé voir Chris Rock à Londres...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:12",
+  "title": "Chris Rock",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

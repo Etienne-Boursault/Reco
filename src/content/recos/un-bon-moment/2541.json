@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Deviné dans le jeu de la complicité (01:05, artiste à trouver dans une phrase → « Nekfeu ! »). Mention instrumentale (jeu), aucun avis ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Nekfeu",
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2541",
+  "links": [],
+  "quote": "Nekfeu !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:23",
+  "title": "Nekfeu",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

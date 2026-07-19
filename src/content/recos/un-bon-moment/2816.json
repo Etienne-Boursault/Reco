@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison rhétorique en passant : 'tu te rappelles ce moment dans Forrest Gump' pour illustrer une attitude de Mouloud. Film non discuté ni recommandé.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2816",
+  "links": [],
+  "quote": "tu te rappelles ce moment dans Forest Gump",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:01",
+  "title": "Forrest Gump",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

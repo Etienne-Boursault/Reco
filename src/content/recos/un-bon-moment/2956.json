@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre de l'invite Valentin Vincent (guest-work). guests vide a completer.",
+    "reason": "Serie Golden Moustache « Les Emmerdeurs » co-ecrite par l'invite Valentin Vincent, mise en avant avec fierte sur le plateau : « une vraie reussite... je suis tres fier de cette serie » (00:18:36).",
+    "verdict": "guest-work"
+  },
+  "creator": "Julien Rizot, Raphaël",
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:18+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2956",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'était une vraie réussite personnelle.",
+  "recommendedBy": "Valentin Vincent",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:18:36",
+  "title": "Les Emmerdeurs",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

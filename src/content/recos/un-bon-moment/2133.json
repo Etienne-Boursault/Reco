@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Album « Brûler le feu » de Juliette Armanet cité en contexte dans l'anecdote de Tristan (01:03:35 : elle l'écrivait quand ils ont parlé/qu'elle l'a conseillé). Name-drop d'anecdote sans substance ni prescription sur l'album → discard. (Titre transcrit « La brûlée le feu » = artefact.)",
+    "verdict": "discard"
+  },
+  "creator": "Juliette Armanet",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2133",
+  "links": [],
+  "quote": "elle écrivait son album justement « La brûlée le feu ».",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:03:34",
+  "title": "La brûlée le feu",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

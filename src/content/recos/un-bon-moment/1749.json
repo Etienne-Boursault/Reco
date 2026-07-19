@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Johnny Hallyday discute comme exemple de longevite/phases (Berger, Goldman, detection de David Hallyday). Substance moderee, pas de prescription, pas un invite.",
+    "verdict": "citation"
+  },
+  "creator": "Johnny Hallyday",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1749",
+  "kind": "citation",
+  "links": [],
+  "quote": "Mais Johnny Hallyday, c'est un bon exemple, je crois",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:20",
+  "title": "Johnny Hallyday",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

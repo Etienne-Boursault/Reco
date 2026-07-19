@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Sherlock (00:51): sert a identifier l'acteur Benedict Cumberbatch ('tu ne vois pas la serie Sherlock?'). Mention instrumentale, pas de reco de la serie.",
+    "verdict": "discard"
+  },
+  "creator": "Benedict Cumberbatch",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1604",
+  "links": [],
+  "quote": "Tu ne vois pas la série Sherlock ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:27",
+  "title": "Sherlock",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

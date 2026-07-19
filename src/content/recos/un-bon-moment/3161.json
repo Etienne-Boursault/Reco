@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Gardé comme reco de la série 'Bloqué' ; le doublon ubm-3166 ('Bloquée', contexte jeu) est discardé.",
+    "reason": "Crédit d'intro, œuvre passée des hosts (co-écrite), name-drop sans présentation → citation (règles 15/17).",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi, Bruno Muschio (Navo)",
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3161",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/bloques"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=19666.html"
+    }
+  ],
+  "quote": "co-auteur de Bloqué",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:30",
+  "title": "Bloqué",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

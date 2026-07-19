@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "La nouvelle de Marcel Ayme (01:16-01:19): discutee avec vraie substance (recit du rationnement) et lue par Monsieur Phi; la prescription porte sur Phi ('je vous encourage a soutenir Phi'), pas sur la nouvelle. Oeuvre classique, pas d'invite -> citation. Canonique; recommendedBy 'Monsieur Phi' errone a vider.",
+    "verdict": "citation"
+  },
   "creator": "Marcel Aymé",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0375",
+  "kind": "citation",
   "links": [],
   "quote": "Il lide les nouvelles, mais la francophone. L'idée elle est folle, donc c'est une demi-heure que tu peux écouter ou lui qui lit cette nouvelle de Marseille Aime.",
-  "recommendedBy": "Monsieur Phi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:19",
   "title": "La nouvelle de Marcel Aymé",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-1142.",
+    "reason": "Doublon de ubm-1142 : suite de la meme reco (« James BKS a un nouvel album, et il est super », 01:20:41).",
+    "verdict": "discard"
+  },
+  "creator": "James BKS",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2506",
+  "links": [],
+  "quote": "Enfin voilà, en tout cas, James BKS a un nouvel album.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:20:41",
+  "title": "James BKS - nouvel album",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timecode Acast 01:01:01 confirme cote YouTube (01:00:54-01:01:01). Aucune oeuvre recommandee.",
+    "reason": "Pas une oeuvre : anecdote sur une vanne d'Ornella Fleury (Le Grand Journal) sur le physique de Jonah Hill vs Brad Pitt. Mention instrumentale dans la discussion sur le roast, aucun titre d'oeuvre. Titre 'Moche' = artefact.",
+    "verdict": "discard"
+  },
   "creator": "Tomah Ismaël",
   "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0695",
   "links": [],
   "quote": "c'était une vanne méchante sur le physique de brat pitte qui était plus avantageux que celui de jonahill",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:01:01",
   "title": "Moche",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

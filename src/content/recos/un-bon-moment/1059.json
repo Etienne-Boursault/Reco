@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2423",
+    "reason": "Doublon de ubm-2423 (meme reco Shirley/Netflix @~01:00). Titre 'Humoriste du Monde' + createur 'Charlet' (artefact acast). On garde 2423.",
+    "verdict": "discard"
+  },
   "creator": "Charlet",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +32,10 @@
   "quote": "Je vous invite à aller voir le Netflix de Charlet dans Humoriste du Monde",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:00:05",
   "title": "Humoriste du Monde",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

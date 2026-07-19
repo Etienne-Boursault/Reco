@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Morceau (Evanescence, « My Immortal ») du multi-blind test — element de jeu, pas une recommandation.",
+    "reason": "Morceau du multi-blind test (jeu), pas une recommandation.",
+    "verdict": "discard"
+  },
+  "creator": "Evanescence",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2199",
+  "links": [],
+  "quote": "My Immortal, le plus connu exactement, 99.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:16",
+  "title": "My Immortal",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ],
+  "year": 1999
+}

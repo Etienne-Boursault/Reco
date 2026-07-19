@@ -1,20 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mona Guba = performeuse musicale non-invitee qui freestyle sur le plateau (regle 6) — ses oeuvres ne sont pas des recos.",
+    "verdict": "discard"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3681586622"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0231",
   "links": [],
-  "quote": "On a rencontré une rappeuse qui était là la semaine dernière dans l'émission. Elle s'appelle Mona Guba.",
-  "recommendedBy": "Invité",
+  "quote": "Elle s'appelle Mona Guba et elle va freestyler ici dans un bon moment.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:39:59",
+  "status": "discarded",
+  "timestamp": "00:40:03",
   "title": "Mona Guba",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

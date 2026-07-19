@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel: 'LaCinetek' (lacinetek.com), pas 'La Cinétech' (Klapisch épèle I-N-E-T-E-K à 01:12). creator 'Cédric Klapisch' correct.",
+    "reason": "LaCinetek, site de VOD dont Klapisch est cofondateur, présenté et promu par lui ('allez sur lacinetek.com'). Auto-promo -> guest-work. Canonique (doublons ubm-2346, ubm-0929).",
+    "verdict": "guest-work"
+  },
+  "creator": "Cédric Klapisch",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2339",
+  "kind": "reco",
+  "links": [],
+  "quote": "moi je suis aussi cofondateur de la cinétech la cinétech.com qui est un site pour voir des vieux films",
+  "recommendedBy": "Cédric",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:56",
+  "title": "La Cinétech",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

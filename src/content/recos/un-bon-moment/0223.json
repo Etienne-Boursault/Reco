@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'We are the champions' : chanson citee comme ce qui a ete chante au karaoke ('ca c'est pour federer tout le monde'), support d'anecdote. Mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Queen",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/67503808"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +30,10 @@
   "links": [],
   "quote": "We are the champions.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:37:53",
   "title": "We Are the Champions",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

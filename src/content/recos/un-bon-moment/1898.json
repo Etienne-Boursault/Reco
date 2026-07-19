@@ -1,0 +1,29 @@
+{
+  "creator": "Eminem",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1898",
+  "links": [],
+  "quote": "c'est son plus gros single de tous les temps de sa carrière",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:56",
+  "title": "I'm Not Afraid",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

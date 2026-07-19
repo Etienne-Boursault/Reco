@@ -1,21 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Les hosts la poussent a 'recommander Clem' car elle y a joue ('ca m'a mis les poils de jouer dedans'), elle refuse et recommande a la place I May Destroy You (ubm-1183). Pas de prescription reelle. Timecode 01:05:12 OK.",
+    "reason": "Marion refuse explicitement de recommander Clem ; mention instrumentale (taquinerie des hosts).",
+    "verdict": "discard"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/62824-clem/watch?locale=FR",
     "tmdb": "62824",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1288",
   "links": [],
   "quote": "on recommande Clem",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:05:12",
   "title": "Clem",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

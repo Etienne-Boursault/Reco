@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre = « Tenet » (film de Nolan, 2020), transcrit « Ténètes ».",
+    "reason": "Anecdote de spoiler (« Léopold m'a spoilé la plus grosse scène de Tenet », 00:26) ; aucun avis ni reco sur le film. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2533",
+  "links": [],
+  "quote": "Sachez que Léopold m'a spoilé la plus grosse scène de Ténètes",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:28",
+  "title": "Ténètes",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

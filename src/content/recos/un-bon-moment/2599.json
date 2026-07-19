@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Auto-promo assumee du host: 'mon spectacle... n'hesitez pas a aller voir le spectacle Une Bonne Soiree... dispo sur MyCanal' (00:53:48). Spectacle de Kyan Khojandi presente par lui-meme.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:53:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2599",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et je répète que mon spectacle est totalement disponible sur MyCanel très bientôt ou déjà disponible.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:53:48",
+  "title": "Une Bonne Soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

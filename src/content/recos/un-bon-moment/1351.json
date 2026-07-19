@@ -1,0 +1,64 @@
+{
+  "aliases": [
+    "Marvel"
+  ],
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T06:10:18+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T06:10:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:47:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1351",
+  "kind": "reco",
+  "linkOverrides": {
+    "YouTube": "https://www.youtube.com/irosef"
+  },
+  "links": [],
+  "quote": "Aïrocef, si vous aimez le Marvel sur YouTube, si vous aimez les gars qui décritent des trucs, Aïrocef, je trouve qu'il poste bien",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:57",
+  "title": "IRO SEF",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

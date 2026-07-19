@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale: anecdote de Laura sur ses roles ou elle meurt ('dans Grey's Anatomy t'es morte'). Pas de reco.",
+    "verdict": "discard"
+  },
+  "creator": "Shonda Rhimes",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2376",
+  "links": [],
+  "quote": "Dans Grey's Anatomy, t'es morte.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:05:00",
+  "title": "Grey's Anatomy",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

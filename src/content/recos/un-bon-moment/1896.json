@@ -1,0 +1,34 @@
+{
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/artist/218515175"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1896",
+  "kind": "reco",
+  "links": [],
+  "quote": "là en ce moment il y a une expo de Bobby le photographe",
+  "recommendedBy": "Oli",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:15:39",
+  "title": "Bobby",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

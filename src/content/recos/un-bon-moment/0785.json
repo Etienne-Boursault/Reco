@@ -1,17 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Renvoie à l'artbook/bestiaire de FFX, pas à une œuvre recommandable.",
+    "reason": "Pas une œuvre identifiable : 'je lis le bouquin avec tous les bestiaires, les histoires des persos' (00:50:02) désigne le guide/bestiaire du jeu Final Fantasy X, pas un titre publié précis. Le titre 'Les bestiaires' est un artefact générique.",
+    "verdict": "discard"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0785",
   "links": [],
-  "quote": "je lis les bestiaires.",
+  "quote": "je lis le bouquin avec tous les bestiaires",
   "recommendedBy": "Non spécifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:49:50",
+  "status": "discarded",
+  "timestamp": "00:50:02",
   "title": "Les bestiaires",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme artiste (Noam Sinseau) que la reco canonique ubm-2142 ; ici simple exemple, non prescriptif.",
+    "reason": "Name-drop en exemple ('je vois Noam, un copain a nous, qui mele poesie, stand-up, voguing') dans la discussion sur sortir du cadre du stand-up. Non prescriptif. Meme artiste que ubm-2142.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2138",
+  "links": [],
+  "quote": "Enfin, je vois Noam, qui est un copain à nous, qui mêle poésie, stand-up, voguing.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:26",
+  "title": "Noam",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop : 'Cocovoit' est cite dans l'enumeration des oeuvres d'Ambroise Carminati ('des trucs genre Cocovoit, Marius, Mademoiselle') pour justifier la reco de sa chaine (ubm-1825) — pas de reco autonome.",
+    "verdict": "discard"
+  },
   "creator": "Ambroise Kerminati",
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:24:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "links": [],
   "quote": "c'est le gars qui a produit réalisé écrit des trucs genre Cocovoit",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:24:40",
   "title": "Cocovoit",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

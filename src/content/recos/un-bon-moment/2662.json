@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non identifiable.",
+    "reason": "Cité (transcrit « Willem Ting » = Will Hunting) comme « un des meilleurs films du monde », exemple de jeunes auteurs (Damon/Affleck). Appréciation substantielle sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Gus Van Sant",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2662",
+  "kind": "citation",
+  "links": [],
+  "quote": "Willem Ting\nqui est un des meilleurs films du monde",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:03:05",
+  "title": "Good Will Hunting",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

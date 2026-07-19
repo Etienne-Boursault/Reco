@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator 'Jim Carrey' erroné (acteur, pas réalisateur ; The Mask réalisé par Chuck Russell) — sans incidence puisque discard.",
+    "reason": "Œuvre surgie comme réponse du jeu d'anecdotes (l'acteur venu en France = Jim Carrey ; The Mask = le carton New Line qui a financé Le Seigneur des Anneaux) ; pas de prescription (règles 1 et 12).",
+    "verdict": "discard"
+  },
+  "creator": "Jim Carrey",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "20:45",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3114",
+  "links": [],
+  "quote": "Avec The Mask ? Oui, The Mask. C'est The Mask. Moi, je trouve que ça a bien vieillit. C'est très cartoonesque. C'est super.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "20:45",
+  "title": "The Mask",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

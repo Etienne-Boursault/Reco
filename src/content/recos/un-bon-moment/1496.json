@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe à confirmer — probablement 'Gurky' (YouTubeur FR, contenus food/bizarres) ; le transcript hésite sur la prononciation.",
+    "reason": "Fanny recommande avec enthousiasme le créateur ('en ce moment je m'enfile tous les Gorky... c'est super, il est génial, good vibe').",
+    "verdict": "validate"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1496",
+  "kind": "reco",
+  "links": [],
+  "quote": "Du coup, en ce moment, je m'enfile tous les Gorky.",
+  "recommendedBy": "Fanny La Panny",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:26:27",
+  "title": "Gorky",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

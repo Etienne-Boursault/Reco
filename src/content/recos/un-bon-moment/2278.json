@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE spectacle Marina; doublon discarde: ubm-2283. Spectacle de stand-up de Marina Rollman diffuse sur myCanal (titre probable 'Un spectacle drole', a confirmer). La reco porte un titre generique.",
+    "reason": "Spectacle de Marina recommande en cloture a 01:15:49 ('allez voir le spectacle de Marina aussi sur Canal... des must-see'). Oeuvre de l'invitee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Marina Rollman",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2278",
+  "kind": "reco",
+  "links": [],
+  "quote": "allez voir le spectacle de Marina aussi sur Canal",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:49",
+  "title": "Spectacle de Marina Rollman",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

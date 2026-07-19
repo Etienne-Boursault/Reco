@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre de Kyan (host) en vanne, pas de reco.",
+    "reason": "'Bref 2' (oeuvre de Kyan, host) evoquee dans un echange comique : le host suggere a Maxime de la recommander, Maxime dit 'j'ai ete decu, j'ai pas regarde', puis vanne sur serie/emission. Aucune prescription genuine.",
+    "verdict": "discard"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0418",
   "links": [],
   "quote": "J'aime Bref 2.",
-  "recommendedBy": "Navé",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:26:45",
   "title": "Bref 2",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

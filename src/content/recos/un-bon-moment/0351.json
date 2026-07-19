@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1977 (Mario Bros).",
+    "reason": "Mario = enumeration nostalgie 'Madeleine de Proust' jeux video (01:12), sans prescription. Doublon de ubm-1977.",
+    "verdict": "discard"
+  },
   "creator": "Nintendo",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0351",
   "links": [],
   "quote": "C'est Mario 1.",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:23",
   "title": "Mario",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

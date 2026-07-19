@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0849 (canonique, titre correct).",
+    "reason": "Doublon de ubm-0849 (meme passage ~00:13:5x, album Les Amants paralleles) ; titre moins correct ici ('Les Amants en parallele').",
+    "verdict": "discard"
+  },
+  "creator": "Vincent Delerme",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "13:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2994",
+  "links": [],
+  "quote": "Si genre, tu es là, tu es en train de te dire « Ça fait un moment, je suis avec ma meuf. Tu écoutes Les Amants en parallèle. »",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "13:54",
+  "title": "Les Amants en parallèle",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

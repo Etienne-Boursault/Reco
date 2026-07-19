@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Comme un enfant' = artefact (absent du transcript). La chanson evoquee est le feat Camille Lellouche x Grand Corps Malade = 'Mais je t'aime' (l.732-741). Contexte = jeu de devinettes -> mention instrumentale.",
+    "reason": "Segment blind-test: on cherche le feat Camille Lellouche x Grand Corps Malade. Le titre stocke 'Comme un enfant' n'existe pas dans le transcript.",
+    "verdict": "discard"
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2159",
+  "links": [],
+  "quote": "Avec Grand Corps Malade.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:25:06",
+  "title": "Comme un enfant",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

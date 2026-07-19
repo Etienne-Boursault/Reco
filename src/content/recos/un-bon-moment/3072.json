@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Créateur à corriger : 'Jonathan Cohen' (pas 'Jonathan Le Cohen'). La Flamme (Canal+, 2020) co-écrite par l'invité Florent Bernard → guestWork.",
+    "reason": "Œuvre de l'invité Florent Bernard, présentée et promue : name-drop à 00:33:09 ('Il y a La Flamme avec Jonathan Le Cohen') puis promo explicite en fin d'épisode 'allez voir la flamme que tu as écrit / que j'ai co-écrit avec Jonathan Cohen et Jérémy Galant... c'est disponible partout' (01:32).",
+    "verdict": "guest-work"
+  },
+  "creator": "Jonathan Cohen",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3072",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/la-flamme"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=25777.html"
+    }
+  ],
+  "quote": "Il y a La Flamme avec Jonathan Le Cohen.",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:33:09",
+  "title": "La Flamme",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

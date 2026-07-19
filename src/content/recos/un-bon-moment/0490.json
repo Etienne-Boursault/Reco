@@ -1,18 +1,71 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Spectacle, avec Marie-Julie Baup et Thierry Lopez (creator du fichier 'Marie-Julie Bope' a corriger en 'Baup'). Attribution incertaine (meme intervenant qui tourne 'Claude' a Strasbourg).",
+    "reason": "Reco explicite : 'je recommande la piece Oublie-moi qui est juste exceptionnelle' (01:36:47).",
+    "verdict": "validate"
+  },
   "creator": "Marie-Julie Bope, Thierry Lopez",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0490",
+  "kind": "reco",
   "links": [],
-  "quote": "Je recommande la pièce oublie-moi, qui est juste exceptionnelle avec Marie-Julie Bope et Thierry Lopez.",
+  "quote": "Je recommande la pièce Oublie-moi qui est juste exceptionnelle avec Marie-Julie Baup et Thierry Lopez.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:36:48",
+  "status": "validated",
+  "timestamp": "01:36:49",
   "title": "Oublie-moi",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "autre"
   ]
 }

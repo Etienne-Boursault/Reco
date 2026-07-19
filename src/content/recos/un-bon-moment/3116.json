@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop instrumental dans le jeu d'anecdotes (Dexter Holland, chanteur des Offspring, dont on devine la 'seconde spécialité') ; aucune prescription de l'œuvre du groupe (règles 1 et 12).",
+    "verdict": "discard"
+  },
+  "creator": "The Offspring",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3116",
+  "links": [],
+  "quote": "Au-delà d'être le chanteur des Offspring",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:30",
+  "title": "Offspring",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

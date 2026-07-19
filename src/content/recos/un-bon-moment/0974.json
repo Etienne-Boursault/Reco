@@ -1,17 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe Frayssinet (6 doublons: 0318/0319/0974/1706/1707/1710). Nom correct 'Romain Frayssinet' (transcript le mal-orthographie 'Romane Fresine'). Timecode ~01:54:42-01:54:55.",
+    "reason": "Kyan recommande explicitement le spectacle de Romain Frayssinet (vu il y a 3-4 jours, complet; recommande le precedent en ligne sur YouTube + 'Romain Frayssinet en general').",
+    "verdict": "validate"
+  },
   "creator": "Romain Frayssinet",
   "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0974",
+  "kind": "reco",
   "links": [],
   "quote": "je recommande son spectacle précédent qui est en ligne je crois",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:54:48",
   "title": "Romain Frayssinet (spectacle précédent)",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

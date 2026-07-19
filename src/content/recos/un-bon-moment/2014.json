@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Le Raid = comedy club, mention en passant dans la liste des lieux ou joue Alexandra.",
+    "reason": "Comedy club cite en enumerant les dates d'Alexandra (Paname / Sacre / Raid) a 01:46. L'aside de Kyan 'qui est un super endroit, vraiment' est incident et non prescriptif ; une salle n'est pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2014",
+  "links": [],
+  "quote": "Ah, tiens, le Raid. Qui est un super endroit, vraiment.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:46:51",
+  "title": "Le Raid",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

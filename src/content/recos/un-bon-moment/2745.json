@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Non produit / indisponible (en cours d'ecriture). recommendedBy deja correct (Anna Apter). guests metadonnees vide. Timecode 00:11:36 OK.",
+    "reason": "Projet en ecriture d'Anna Apter ('les annees 20', titre provisoire, portraits en 2080 revenant sur 2020) presente sur le plateau -> auto-promo invitee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Anna Apter",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2745",
+  "kind": "reco",
+  "links": [],
+  "quote": "Titre provisoire, les années 20",
+  "recommendedBy": "Anna Apter",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:11:36",
+  "title": "Les années 20",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

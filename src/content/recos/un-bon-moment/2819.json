@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support de jeu : réponse 'Scrubs / TLC' (No Scrubs) donnée dans le multi-blind test (00:49:15). Réponse de jeu = discard.",
+    "verdict": "discard"
+  },
+  "creator": "TLC",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2819",
+  "links": [],
+  "quote": "Scrubs TLC",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:15",
+  "title": "Scrubs",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2805. La quote du fichier ne correspond pas au passage. Attribution 'Laura Felpin' non confirmee par le transcript.",
+    "reason": "Doublon de la reco 'album de Jain' (01:15:12).",
+    "verdict": "discard"
+  },
   "creator": "Jane",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/124797"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +35,10 @@
   "quote": "Franchement, moi, je te dis, à partir du moment où j'ai compris comment je fonctionnais par rapport à ça, j'ai toujours cru que j'étais un peu le fou avec ça, et en fait, je me suis rendu compte que c'était plus fort que moi, en fait, parce que vraiment, je me réveille.",
   "recommendedBy": "Laura Felpin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:13",
   "title": "Jane",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

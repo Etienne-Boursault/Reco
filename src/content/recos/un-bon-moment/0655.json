@@ -1,18 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco gardee; ubm-3067 (Chitty Flute) discard comme doublon, orthographe corrigee Shitty Flute (regle 8)",
+    "reason": "Reco de la chaine Shitty Flute par Kyan; orthographe correcte conservee (le doublon ubm-3067 dit 'Chitty Flute')",
+    "verdict": "validate"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0655",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — shittyflute",
+      "url": "https://www.youtube.com/channel/UCHMmLi8z1HbyhTEvfBgXpyg"
+    }
+  ],
   "quote": "je pleure de rire en écoutant shitty flute c'est un une chaîne avec des remixes de choses qu'on connaît jouer très très très très très mal à la flûte",
-  "recommendedBy": "Non spécifié",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:14:44",
   "title": "Shitty Flute",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

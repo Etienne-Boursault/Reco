@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1057",
+    "reason": "Doublon de ubm-1057 (meme reco du Paname @00:43:00). On garde 1057 (titre complet correct 'Paname Art Cafe').",
+    "verdict": "discard"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2420",
+  "links": [],
+  "quote": "Allez découvrir le Paname. Super sale à Paris.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:00",
+  "title": "Le Paname",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

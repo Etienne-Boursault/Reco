@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0268 (Friends), meme moment.",
+    "reason": "Mistranscription de 'Friends' (scene de Ross imaginant un bruit de dinosaure, 01:23). 'Swans'/'Rose' = erreurs de transcription. Doublon.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1767",
+  "links": [],
+  "quote": "Mais dans Swans, il y a la scène géniale où il y a Rose qui imagine le bruit d'un dinosaure.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:12",
+  "title": "Swans",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "serie"
+  ]
+}

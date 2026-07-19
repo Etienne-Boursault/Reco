@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1024 (Demetri Martin, ~00:57:3x). 'Demetrie Martine' = transcription deformee de Demetri Martin ; creator errone 'Adrien Meniel' ; quote = comparaison ('si Adrien faisait un spectacle ce serait...'). Canonique = ubm-1024. Transcript par ailleurs inexploitable.",
+    "reason": "Doublon de ubm-1024 (Demetri Martin) + comparaison instrumentale + titre deforme.",
+    "verdict": "discard"
+  },
   "creator": "Adrien Méniel",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "si Adrien Méniel faisait un spectacle ce serait démétrie martine",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:57:34",
   "title": "Démétrie Martine",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

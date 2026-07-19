@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "La Nouvelle Vague (00:41): le mouvement cinematographique cite comme concept/analogie ('des gens qui voulaient tourner librement'), pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1962",
+  "links": [],
+  "quote": "La nouvelle vague c'était on en pense qu'on en veut tu vois mais c'est des gens qui voulaient tourner librement prendre une caméra et tourner",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:45",
+  "title": "La Nouvelle Vague",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

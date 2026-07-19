@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« tu joues à Counter-Strike avec tes potes en LAN » — exemple illustrant le concept « être heureux sans le savoir / futur flashback ». Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1942",
+  "links": [],
+  "quote": "Est-ce que vous vous rappelez ou vous avez dit : \"Putain, j'étais en train de kiffer.\"",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:07:27",
+  "title": "Counter-Strike",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

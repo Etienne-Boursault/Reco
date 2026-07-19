@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre distincte de ubm-0270 (James). Attribution hote incertaine (Kyan ou Navo).",
+    "reason": "Reco de Percival Everett dans le segment recos (01:42) : 'un auteur qui est tres sympa... son bouquin Effacement qui avait ete adapte... c'est assez drole.' Effacement = Erasure (adapte en American Fiction).",
+    "verdict": "validate"
+  },
+  "creator": "Percival Everett",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1774",
+  "kind": "reco",
+  "links": [],
+  "quote": "il y a un auteur qui est très sympa qui s'appelle Percival Evret. Si vous n'aimez pas lire, il y a son bouquin Effacement qui avait été adapté.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:04",
+  "title": "Effacement",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

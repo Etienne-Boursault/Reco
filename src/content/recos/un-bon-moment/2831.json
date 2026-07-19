@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy vide: bit partage entre hosts (Kyan/Navo), attribution non tranchable. Canonique; doublon discarde: ubm-0804.",
+    "reason": "Spectacle reel d'Alex Vizorek («Ad Vitam», sur la mort) nomme avec sa thematique, dans le running gag «Alex est mort». «Promo» ironique, pas de vraie prescription au public. Alex Vizorek n'est ni invite ni host -> citation, pas guest-work.",
+    "verdict": "citation"
+  },
+  "creator": "Alex Vizorek",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:16:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2831",
+  "kind": "citation",
+  "links": [],
+  "quote": "Son nouveau spectacle s'appelle Ad Vitam, et c'est un spectacle sur la mort.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:01",
+  "title": "Ad Vitam",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

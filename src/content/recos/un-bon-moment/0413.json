@@ -1,20 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre = mauvaise transcription du groupe Sexion d'Assaut ; discussion sur le nom, pas de prescription.",
+    "reason": "Kyan pense qu'un titre de la BO de Blood Diamond est de 'Sexion d'Assaut' (transcrit 'Section d'Assaut'), puis digression sur le caractere problematique du nom du groupe. Aucune recommandation.",
+    "verdict": "discard"
+  },
   "creator": "section d'assaut",
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/71844509"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0413",
   "links": [],
-  "quote": "Je crois que la BO, ou alors c'est pas la BO.",
+  "quote": "Mais je crois que la BO, ou alors c'est pas la BO, mais c'est Section d'Assaut en français.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:27:46",
+  "status": "discarded",
+  "timestamp": "00:27:44",
   "title": "Section d'Assaut",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

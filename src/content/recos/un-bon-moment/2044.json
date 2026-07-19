@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple en passant de serie true-crime Netflix ('il y a les series genre Dahmer... ca se rapproche'). Mention instrumentale. Canonique du doublon (vs ubm-1867).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2044",
+  "links": [],
+  "quote": "Il y a les séries genre Damer sur Netflix et tout, tu vois.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:35",
+  "title": "Dahmer",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

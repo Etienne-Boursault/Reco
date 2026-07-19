@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger 'Poire et Serreau' -> 'Poiret et Serrault'. Verdict vise: validate (recommandation de Vincent Delerm).",
+    "reason": "VD recommande un duo comique pour aller mieux ('voir Poiret et Serrault' / Kyan: 'c'est genial') — recommandation reelle, mais nom faux 'Poire et Serreau' -> 'Poiret et Serrault' (Jean Poiret / Michel Serrault, verifie WebSearch).",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-3006",
+  "links": [],
+  "quote": "Voir Poire et Serreau",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:01",
+  "title": "Poire et Serreau",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

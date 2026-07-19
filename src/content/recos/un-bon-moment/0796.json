@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1088.",
+    "reason": "Doublon de ubm-1088 (même œuvre 'Le Loup' de Mai Lan Chapiron, ~01:00, titre-artefact 'Le Lou'). Canonique = ubm-1088.",
+    "verdict": "discard"
+  },
   "creator": "Mylan Shapiron",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "links": [],
   "quote": "dans la nouvelle création de Mylan, Mylan Shapiron, qui s'appelle 'Le Lou'.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:00:26",
   "title": "Le Lou",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

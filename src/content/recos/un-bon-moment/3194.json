@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe « Alphie » a confirmer. Recommande par un hote du Floodcast (« je l'ai deja conseille dans un floodcast ») puis apprecie par Navo -> locuteur exact incertain. Doublon ubm-0612 discarde.",
+    "reason": "Segment final « recommandation de chaine YouTube » : reco sincere d'un createur externe (monteur/analyste) - « je vous conseille », « j'aime beaucoup ce qu'il fait, n'hesitez pas a vous abonner ».",
+    "verdict": "validate"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:26",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3194",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCD_xY55emnPkzo4L2kWdhDg"
+    }
+  ],
+  "quote": "Alphi moi je trouve que c'est un gars en fait qui fait des... Je crois que c'est un monteur à la base.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:26",
+  "title": "Alphi",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

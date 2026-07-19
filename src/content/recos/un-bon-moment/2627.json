@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Complementaire de ubm-2628 (son album Les Failles).",
+    "reason": "'Allez decouvrir Pomme, si vous connaissez pas' : recommandation explicite au public de l'artiste Pomme (Kyan).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2627",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez découvrir Pomme, si vous connaissez pas.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:37:00",
+  "title": "Pomme",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

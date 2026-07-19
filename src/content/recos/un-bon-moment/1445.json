@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0429 (canonique).",
+    "reason": "Doublon de ubm-0429 (meme passage sur Spider ZED, « une deuxieme ecoute »).",
+    "verdict": "discard"
+  },
+  "creator": "Spider Z",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1445",
+  "links": [],
+  "quote": "En fait, c'est vraiment pas giga connu, mais c'est le seul gars où j'écoutais tous ses sons avant et maintenant, j'ai une deuxième écoute.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:09",
+  "title": "Spider Z",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

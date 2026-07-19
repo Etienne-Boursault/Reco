@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe 'Fadili Kamara' → 'Fadily Camara' (invitée de l'épisode). Simple présentation à 00:01:11, aucune œuvre.",
+    "reason": "Annonce/introduction de l'invitée par le host, pas une œuvre prescrite ; nom de l'invitée elle-même (règle 1, non-œuvre).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:11",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3164",
+  "links": [],
+  "quote": "Avec nous pour cette émission, on n'a pas un, mais deux, mais un invité et même une invitée, Fadili Kamara",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:01:11",
+  "title": "Fadili Kamara",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

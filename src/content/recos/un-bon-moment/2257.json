@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2246 et ubm-0592 ; tous discard.",
+    "reason": "Jeu mentionne en aparte (00:49:15) -> mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2257",
+  "links": [],
+  "quote": "Moi, je suis très bananagramme, vous connaissez bananagramme ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:15",
+  "title": "Bananagramme",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

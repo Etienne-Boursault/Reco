@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ; anecdote, pas une reco.",
+    "reason": "Doublon de ubm-1914 (meme passage 00:56:53, decor d'anecdote sur l'amitie). Titre generique L'album.",
+    "verdict": "discard"
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T07:45:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1402",
+  "links": [],
+  "quote": "je travaille sur l'album de Grand Corps Malade",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:53",
+  "title": "L'album",
+  "transcriptSource": "acast",
+  "types": [
+    "album"
+  ]
+}

@@ -1,17 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Attribution Charlie (profil histoire/mythologie, juste avant le tour d'Emilien). Draft sans recommendedBy.",
+    "reason": "Charlie recommande explicitement « Circe de Madeline Miller » dans le tour de recos finales (« un livre que je recommande souvent... je vous recommande les livres de Madeleine Miller, tres tres bien ecrits »). Livre reel (2018).",
+    "verdict": "validate"
+  },
   "creator": "Madeline Miller",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0436",
+  "kind": "reco",
   "links": [],
-  "quote": "je vous recommande les livres de Madeleine Miller ils sont très très très bien écrits",
-  "recommendedBy": "inconnu",
+  "quote": "il s'appelle Circé de Madeleine Miller",
+  "recommendedBy": "Charlie Danger",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:41:50",
+  "status": "validated",
+  "timestamp": "01:41:33",
   "title": "Circe",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

@@ -1,9 +1,33 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2805. Timestamp 01:13:15 errone (la reco Jain est a ~01:15:12; 01:13:15 = passage Janelle Monae).",
+    "reason": "Doublon de la reco 'album de Jain' (canonique ubm-2805).",
+    "verdict": "discard"
+  },
   "creator": "Jain",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/6868796"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -12,9 +36,10 @@
   "quote": "Eh ben moi, je recommande l'album de Jane.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:15",
   "title": "Album de Jain",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

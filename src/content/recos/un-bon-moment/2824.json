@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateur à corriger : 'Luke Reinhardt' -> 'Luke Rhinehart' (pseudo de George Cockcroft) ; titre à normaliser 'L'Homme-dé'. Locuteur invité incertain (Mouloud ou Augustin). Compléter guests.",
+    "reason": "Recommandation forte et détaillée d'un invité : 'toi il faut que tu lises l'homme dé... moi je pense qu'il faut que vous lisez ce truc... c'est un livre culte' avec résumé du roman (00:52). Œuvre réelle : 'L'Homme-dé' (The Dice Man, 1971) de Luke Rhinehart. Canonique parmi 3 doublons (2824/2820/1084).",
+    "verdict": "validate"
+  },
+  "creator": "Luke Reinhardt",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2824",
+  "kind": "reco",
+  "links": [],
+  "quote": "il faut que vous lisez ce truc",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:52:20",
+  "title": "L'homme-dé",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

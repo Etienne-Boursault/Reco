@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1994 (« Losanius Noebos », même passage l.4128-4130).",
+    "verdict": "discard"
+  },
+  "creator": "Noebos",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1699",
+  "links": [],
+  "quote": "Tu peux mettre Losanius... Ça, c'est trop bien !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:39:06",
+  "title": "Losanius",
+  "transcriptSource": "acast",
+  "types": [
+    "jeu"
+  ]
+}

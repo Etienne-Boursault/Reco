@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Alice Guy (pionnière du cinéma, 1re fiction) = réponse du jeu photos historiques [00:50:56], réelle mais instrumentale (jeu), aucune prescription au public — comme les autres réponses (Rosa Parks, Al Capone). À restaurer en citation si l'éditeur veut garder la pionnière du cinéma.",
+    "reason": "Réponse du jeu (figure historique) — mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Alice Guy",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2406",
+  "links": [],
+  "quote": "C'est elle qui a fait le premier film.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:56",
+  "title": "Alice Guy",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

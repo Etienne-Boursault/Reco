@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "'Derriere un micro' (docu-serie stand-up, Canal+) recommande explicitement : 'C'est tres bien', 'Mais allez voir derriere un micro' (01:16:07-17). Reco imperative.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2641",
+  "kind": "reco",
+  "links": [],
+  "quote": "Mais allez voir derrière un micro.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:17",
+  "title": "Derrière un micro",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

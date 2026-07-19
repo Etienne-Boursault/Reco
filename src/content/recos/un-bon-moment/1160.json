@@ -1,17 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE pour le podcast d'Esther Perel; doublons discardes: ubm-1269, ubm-2279. recommendedBy=Marina (invitee, 35 ans, elle l'ecoute). Titre correct de la serie de seances de couple: 'Where Should We Begin? with Esther Perel'.",
+    "reason": "Podcast d'Esther Perel recommande avec enthousiasme par Marina a 00:15:58 ('en ce moment j'ecoute vachement un podcast de Esther Perel... c'est incroyable'). Description = seances de couple, correspond a 'Where Should We Begin?'.",
+    "verdict": "validate"
+  },
   "creator": "Esther Perel",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1160",
+  "kind": "reco",
   "links": [],
-  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple, et qui fait un podcast tout chaque épisode, elle traite un couple, t'as une session entière, c'est incroyable.",
-  "recommendedBy": "Marina Rolman",
+  "quote": "en ce moment j'écoute vachement un podcast de Esther Perel qui est une thérapeute de couple et qui fait un podcast où chaque épisode elle traite un couple",
+  "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:16:00",
+  "status": "validated",
+  "timestamp": "00:15:58",
   "title": "Where Should We Begin?",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

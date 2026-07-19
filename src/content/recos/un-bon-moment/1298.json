@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:37:42-47 : le titre reel est 'High Maintenance' (ubm-1190). Pas une oeuvre distincte.",
+    "reason": "Artefact de transcription : 'Eye Maintenance' est une mauvaise retranscription de 'High Maintenance' (meme instant 01:37:41, source acast). Doublon degrade de ubm-1190.",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "links": [],
   "quote": "l'autre aussi, série HBO, Eye Maintenance, la blague que j'ai révisée il y a deux jours.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:37:41",
   "title": "Eye Maintenance",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

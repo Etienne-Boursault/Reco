@@ -1,21 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "01:19:54 : 'J'ai vu Run, sur OCS, de la co-autrice de Phoebe Waller-Bridge... c'est une recommandation bizarre mais j'aime bien la construction.' Reco assumee. Locuteur non certain -> recommendedBy vide. NB : creator 'Wallerbridge' imprecis (Run creee par Vicky Jones, produite par Phoebe Waller-Bridge).",
+    "reason": "Serie reelle (Run, HBO) presentee comme reco (ambivalente mais assumee)",
+    "verdict": "validate"
+  },
   "creator": "Wallerbridge",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "11912",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:45:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0715",
+  "kind": "reco",
   "links": [],
-  "quote": "J'ai vu Run. Qui est sur...",
-  "recommendedBy": "invité",
+  "quote": "J'ai vu Run, qui est sur...",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:54",
   "title": "Run",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

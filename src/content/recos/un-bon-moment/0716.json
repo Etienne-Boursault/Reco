@@ -1,22 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "01:21:28 : 'un truc que je recommande, Crashing, avec Pete Holmes, serie sur le stand-up, sur OCS, top top top.' Reco explicite. Locuteur non certain -> recommendedBy vide.",
+    "reason": "Serie reelle (Crashing, Pete Holmes) explicitement recommandee",
+    "verdict": "validate"
+  },
   "creator": "Pete Holmes",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "65251",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:45:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0716",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, c'est un truc que je recommande, crashing. C'est quoi? Avec Pete Holmes. C'est une série sur le stand-up.",
-  "recommendedBy": "invité",
+  "quote": "Moi, c'est un truc que je recommande, Crashing.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:21:28",
   "title": "Crashing",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

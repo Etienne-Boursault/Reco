@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "AZ enchaine en disant qu'il s'est effectivement mis aux echecs grace a la serie, mais sans aucun avis/prescription sur l'oeuvre elle-meme.",
+    "reason": "Exemple rhetorique pour illustrer les « lubies » (regle 1) : « imagine t'as vu la serie le jeu de la dame et bam tu te mets aux echecs ». La serie n'est pas prescrite, elle sert de reference culturelle.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3097",
+  "links": [],
+  "quote": "imagine t'as vu la série le jeu de la dame et bam tu te mets aux échecs",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:09:52",
+  "title": "Le Jeu de la dame",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

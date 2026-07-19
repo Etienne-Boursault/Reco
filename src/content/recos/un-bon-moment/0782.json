@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1083 (podcast de Rosa Bursztein) ; titre 'Le Coeur sur la table' errone pour cette citation. A discard.",
+    "reason": "Residu acast confondant deux podcasts : titre 'Le Coeur sur la table' mais la citation decrit le podcast de Rosa Bursztein ('les mecs que je veux... un petit podcast ou elle recoit des hommes et des femmes'). Doublon de ubm-1083.",
+    "verdict": "discard"
+  },
   "creator": "Rosa Bernstein",
   "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "le châtris arc, les mecs que je veux qu'en de Rosa Bernstein, qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:21",
   "title": "Le Coeur sur la table",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

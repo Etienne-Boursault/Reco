@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "'Eternal Sunshine of the Spotless Mind' cite comme 'un de ses meilleurs roles' (Jim Carrey qui 'joue' vraiment). Appreciation d'un role, dans l'argumentaire sur le genie d'acteur -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Jim Carrey",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2927",
+  "kind": "citation",
+  "links": [],
+  "quote": "Eternal Sunshine est un de ses meilleurs rôles.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:55",
+  "title": "Eternal Sunshine of the Spotless Mind",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,21 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur invité incertain. Compléter guests.",
+    "reason": "Recommandation explicite : 'moi je vous recommande le film Vice sur Dick Cheney... une comédie magnifique, noire, dure... vraiment marrant' (01:02:42). Œuvre réelle : 'Vice' (2018, Adam McKay).",
+    "verdict": "validate"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR",
     "tmdb": "150540",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0797",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, je vous recommande le film Vice, sur Dick Chenet, qui est une comédie... Magnifique. Noir, dure, mais le film est dure, et vraiment marrant, et enfin, c'est bien fait.",
+  "quote": "je vous recommande le film Vice",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:02:42",
   "title": "Vice",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

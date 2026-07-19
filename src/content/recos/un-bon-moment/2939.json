@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy était vide -> Rosa Bursztein (invitée absente de guests). Artiste réel (stand-up US).",
+    "reason": "Rosa : « j'ai deux humoristes américains que j'adore, Sam Morrill et Taylor Tomlinson » (00:55:10). Endossement explicite.",
+    "verdict": "validate"
+  },
+  "creator": "Sam Morrill",
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:27:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2939",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'adore Sam Morrill",
+  "recommendedBy": "Rosa Bursztein",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:55:10",
+  "title": "Sam Morrill",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

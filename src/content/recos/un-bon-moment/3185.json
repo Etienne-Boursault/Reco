@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Renvoie a l'app « 1 Second Everyday » mais ni titre ni prescription clairs ; concept/habitude plutot qu'oeuvre.",
+    "reason": "Concept « une seconde par jour » evoque de facon instrumentale ; attribution confuse (Pierre Lapin « pas le concepteur mais l'a popularise »). Pas de prescription d'une oeuvre precise (regle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:25",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3185",
+  "links": [],
+  "quote": "Le concepteur d'une seconde par jour. Ouais, enfin, pas le concepteur, mais en vrai, moi, c'est vrai.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:25",
+  "title": "Une seconde par jour",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

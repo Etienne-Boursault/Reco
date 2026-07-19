@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1793 : 'Pluto' = mauvais titre de la nouvelle serie de Vince Gilligan (= Pluribus).",
+    "verdict": "discard"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,6 +14,17 @@
     "tmdb": "91997",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -14,9 +33,10 @@
   "quote": "Bien entendu, Vince Gilligan, le créateur de Breaking Bad, il vient sortir une nouvelle série.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:43:13",
   "title": "Pluto",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

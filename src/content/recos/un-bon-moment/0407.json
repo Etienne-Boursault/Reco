@@ -1,8 +1,27 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1491 (The Beach Boys) — même moment 01:18:26.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3091992"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +30,10 @@
   "quote": "Ah c'est bien les Beach Boys",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:26",
   "title": "Beach Boys",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

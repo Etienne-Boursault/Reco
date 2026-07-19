@@ -1,23 +1,76 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Anthony Marciano (realisateur reel, collaborateur de Kyan) + Raphael Quenard : reco reelle. Titre officiel exact non verifiable (WebSearch epuise) -> title_suspect. Attribue aux hosts (screener via copain sur le film).",
+    "reason": "Reco sincere et detaillee d'un film a venir : 'le reve americain d'Anthony Marciano', sortie 22/02, base sur une histoire vraie, avec Raphael Quenard, vu en avant-premiere via copinage. Les deux hosts recommandent ensemble ('On recommande ensemble').",
+    "verdict": "validate"
+  },
   "creator": "Anthony Martiano",
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "tmdb": "1365378",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:59:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0426",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, je recommande le rêve américain de Anthony Martiano, le film...",
-  "recommendedBy": "Navot",
+  "quote": "Moi, je recommande le rêve américain d'Anthony Marciano, le film... Ah ouais, il est super, bah oui.",
+  "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:30:23",
+  "status": "validated",
+  "timestamp": "01:30:22",
   "title": "Le rêve américain",
+  "transcriptSource": "youtube",
   "types": [
     "film"
-  ]
+  ],
+  "year": 2025
 }

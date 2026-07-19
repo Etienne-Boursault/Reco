@@ -1,23 +1,74 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Comparaison + bit comique, pas de reco.",
+    "reason": "Highlander invoque comme reference/comparaison pour un projet perso de Pierre sur l'immortalite, puis riff comique ('Eylander le t-shirt, le sirop').",
+    "verdict": "discard"
+  },
   "episodeGuid": "6970a1759448a95f223d530c",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/8009-highlander/watch?locale=FR",
     "tmdb": "8009",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:05:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0367",
   "links": [],
-  "quote": "Highlander.",
+  "quote": "\"Eylander\" comme en... \"Eylander\" !",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:00",
+  "status": "discarded",
+  "timestamp": "01:13:02",
   "title": "Highlander",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "serie",
+    "autre"
   ],
   "watchProviders": [
     {

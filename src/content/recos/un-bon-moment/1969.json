@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite Pierre Niney absent des metadonnees. Canonique; doublon avec ubm-1630 (titre anglais 'Black Box').",
+    "reason": "Film de Pierre Niney (invite) avec Yann Gozlan, presente positivement ('le film est bien, il est sur le canal').",
+    "verdict": "guest-work"
+  },
+  "creator": "Yann Gozlan",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1969",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir Boite Noire.",
+  "recommendedBy": "Pierre Niney",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:17",
+  "title": "Boîte noire",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

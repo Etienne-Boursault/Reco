@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non identifiable de facon fiable -> recommendedBy vide (regle 3). Manifest suggerait Kyan. Titre confirme a 01:45:40.",
+    "reason": "Serie reelle 'Euphoria' (HBO, Zendaya) explicitement recommandee ('je recommande une serie qui s'appelle Euphoria')",
+    "verdict": "validate"
+  },
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:40",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3205",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/euphoria/4ffd33c9-e0d6-4cd6-bd13-34c266c79be0"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22215.html"
+    }
+  ],
+  "quote": "Moi, je recommande une série qui s'appelle Euphoria.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:40:40",
+  "title": "Euphoria",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

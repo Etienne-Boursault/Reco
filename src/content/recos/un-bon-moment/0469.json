@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript non diarize. Locuteur probable : Gilles Lellouche (meme sequence que Hitchcock/Lubitsch, 'm'a forme dans ma comedie'). A confirmer.",
+    "reason": "Bright Star (Jane Campion) : donne comme reco culturelle en fin d'emission ('j'ai regarde pas mal de vieux films... Bright Star'). Prescription au public.",
+    "verdict": "validate"
+  },
   "creator": "Jane Campion",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
@@ -6,18 +18,57 @@
     "tmdb": "29963",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0469",
+  "kind": "reco",
   "links": [],
-  "quote": "Eh bien, Bright Star. Bright Star. De Jane Campion.",
-  "recommendedBy": "Invité",
+  "quote": "Bright Star de Jane Campion moi je vous recommande d'aller voir",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:20:42",
+  "status": "validated",
+  "timestamp": "01:20:43",
   "title": "Bright Star",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

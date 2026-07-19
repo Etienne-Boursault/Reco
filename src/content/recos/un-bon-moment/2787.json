@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale/anecdote. Au segment reco (01:12:44) 'Le Wu-Tang' est meme ecarte au profit de l'album de Janelle Monae.",
+    "reason": "Anecdote (JP met du Wu-Tang avec sa 1re copine) - pas une recommandation.",
+    "verdict": "discard"
+  },
+  "creator": "Wu-Tang Clan",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:12:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2787",
+  "links": [],
+  "quote": "j'avais enlevé, j'avais mis Wu-Tang, là. Chessbox, chessmaster, boxbox.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:12:25",
+  "title": "Wu-Tang Clan discography",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

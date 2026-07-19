@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Charlie Danger absente de guests[]. Titre exact YouTube non verifie en ligne mais enonce par elle dans le transcript.",
+    "reason": "Charlie presente sa propre video « Comment est-ce que les archeologues du futur nous comprendront » (« J'ai fait une video d'ailleurs la-dessus qui s'appelle... »). Oeuvre d'invitee (chaine Les Revues du Monde).",
+    "verdict": "guest-work"
+  },
+  "creator": "Charlie Danger",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1930",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai fait une vidéo d'ailleurs là-dessus, qui s'appelle comment est-ce que les archéologues du futur nous comprendront.",
+  "recommendedBy": "Charlie Danger",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:17",
+  "title": "Comment est-ce que les archéologues du futur nous comprendront",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

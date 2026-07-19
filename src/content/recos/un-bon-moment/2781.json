@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop de Vulfpeck (« Wolf Peck ») pour situer Cory Wong (« le guitariste de ») ; pas recommandé en soi, titre « Wolfpack » erroné.",
+    "verdict": "discard"
+  },
+  "creator": "Wolfpack",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2781",
+  "links": [],
+  "quote": "Je suis en train d'écouter beaucoup un type qui s'appelle Corey Wong ! Qui est notamment le guitariste de Wolf Peck !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:33:15",
+  "title": "Wolfpack",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

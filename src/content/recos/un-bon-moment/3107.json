@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Createur a completer : Seinfeld = Larry David ET Jerry Seinfeld (le draft ne cite que Larry David). Host non diarizable → recommendedBy vide.",
+    "reason": "Renvoi en passant dans le meme elan que Curb (« ou Costanza dans Seinfeld je sais pas si t'as vu, en general les gens ont moins vu »), sans developpement ni eloge propre → citation plutot que validate (regle 15).",
+    "verdict": "citation"
+  },
+  "creator": "Larry David",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3107",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70153373"
+    }
+  ],
+  "quote": "ou Costanza dans Seinfeld je sais pas si t'as vu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:59:43",
+  "title": "Seinfeld",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

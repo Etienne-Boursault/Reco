@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "'j'ai eu Sugar Sammy en 1re partie' => tete d'affiche = Kyan (logique). Passage 00:35:35.",
+    "reason": "Sugar Sammy elogie ('a retourne le public') mais dans une anecdote illustrant la difficulte de passer apres un tres bon 1re partie ; substance sans prescription directe.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3042",
+  "kind": "citation",
+  "links": [],
+  "quote": "Mec, moi, j'ai eu Sugar Sammy en première partie. Il a retourné le public.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:35:35",
+  "title": "Sugar Sammy",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

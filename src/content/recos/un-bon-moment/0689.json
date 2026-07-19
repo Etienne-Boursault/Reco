@@ -1,18 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator 'Ben Mazuet' et types ['autre','livre'] à corriger (Ben Mazué / musique).",
+    "reason": "« Quand je marche » est une chanson de Ben Mazué (single de l'album Paradis, 2020, vérifié) ; le thème (« à quoi ça sert d'être excellent... ») est présenté et Ben élabore dessus. Auto-promo invité.",
+    "verdict": "guest-work"
+  },
   "creator": "Ben Mazuet",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0689",
+  "kind": "reco",
   "links": [],
-  "quote": "Exactement, c'est dans \"Quand je marche\" de Ben Mazu.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "c'est dans Quand je marche",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:21:06",
   "title": "Quand je marche",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "livre"
   ]
 }

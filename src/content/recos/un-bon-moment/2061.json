@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Emission radio des hosts 'Canicule Sentimentale' evoquee avec substance : 'quand on a ecrit Canicule Sentimentel sur France Inter ou on egratignait un peu nos familles' (01:19:39). Sans prescription, oeuvre des hosts.",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2061",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'est même des considérations que nous on a eues quand on a écrit Canicule Sentimentel sur France Inter",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:19:39",
+  "title": "Canicule Sentimentel",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

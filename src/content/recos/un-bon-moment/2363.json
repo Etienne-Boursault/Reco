@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reference culturelle en passant ('on a tous voulu etre rapide dans Fight Club', 'le poster avec la clope'). Pas de discussion substantielle ni de reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2363",
+  "links": [],
+  "quote": "On a tous voulu être rapide dans Fight Club.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:46",
+  "title": "Fight Club",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,22 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Attribution host: Kyan (les deux hosts sont plausibles, extraction concordante). Autre mention instrumentale a 00:19:50 (analogie chicha/monde souterrain) non extraite separement.",
+    "reason": "Reco explicite 'Regardez Demolition Man... c'est un classique' a 00:36:17. Film reel (1993, Marco Brambilla).",
+    "verdict": "validate"
+  },
+  "creator": "Marco Brambilla",
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/9739-demolition-man/watch?locale=FR",
     "tmdb": "9739",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0623",
+  "kind": "reco",
   "links": [],
-  "quote": "regardez demolition man vous allez comprendre",
+  "quote": "Regardez Demolition Man voilà",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:36:19",
   "title": "Demolition Man",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1040.",
+    "reason": "Doublon de ubm-1040 (meme podcast, 01:36-38). Titre 'Underciders' errone; canonique = ubm-1040 ('The Undersiders').",
+    "verdict": "discard"
+  },
+  "creator": "Cybelle",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2382",
+  "links": [],
+  "quote": "Moi j'en écoute pas tant que ça, et je suis tombé sur un podcast qui s'appelle The Underciders",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:36:51",
+  "title": "The Underciders",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

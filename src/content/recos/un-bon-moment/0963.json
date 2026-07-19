@@ -1,20 +1,75 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribue a Doria (inspirations d'Iris). Transcript non diarise.",
+    "reason": "Meme phrase que Curb : 'les series que j'aime beaucoup c'est Curb, Larry David, Seinfeld... dont j'adore l'etat d'esprit et dont je me sens tres proche'. Endossement enthousiaste. Attribution corrigee (etait absente).",
+    "verdict": "validate"
+  },
+  "creator": "Larry David, Jerry Seinfeld",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR",
     "tmdb": "1400",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0963",
+  "kind": "reco",
   "links": [],
-  "quote": "vous voyez, dans cet épisode, dans Seinfeld, où Jerry Seinfeld, il a un amie, enfin un copain, une connaissance de lycée",
+  "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",
+  "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:46:56",
+  "status": "validated",
+  "timestamp": "01:07:54",
   "title": "Seinfeld",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

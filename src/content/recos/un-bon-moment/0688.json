@@ -1,21 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Ben Mazué (répondant « et toi qui est ton exemple ? » après le Renaud de GCM) admire longuement M / Matthieu Chedid pour sa maîtrise de la jauge (DVD Olympia, show à Bercy). Admiration substantielle sans prescription directe.",
+    "verdict": "citation"
+  },
   "creator": "Matthieu Chedid",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1907452977"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0688",
+  "kind": "citation",
   "links": [],
-  "quote": "Je dois dire, mais il est là, donc je vais un peu parler... M.",
-  "recommendedBy": "Ben",
+  "quote": "j'avais été très admiratif de cette manière qu'il avait eu d'utiliser dans Bercy",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:02:14",
+  "status": "validated",
+  "timestamp": "01:01:10",
   "title": "M",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

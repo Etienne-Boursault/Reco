@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mario 3 = enumeration nostalgie 'Madeleine de Proust' jeux video de l'invite (01:12), sans prescription au public.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1975",
+  "links": [],
+  "quote": "Moi c'est Mario 3 ! Je vais finir Mario 3 et Sonic 2 !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:08",
+  "title": "Mario 3",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

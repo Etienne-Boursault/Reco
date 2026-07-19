@@ -1,18 +1,49 @@
 {
-  "creator": "Odyssis",
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-06",
+    "humanCorrection": "Creator corrigé : Henri Salvador (retour Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "'Jardin d'hiver' (Henri Salvador) loue 'exceptionnel', 'un son exceptionnel' comme exemple de retour reussi. Oeuvre precise louee avec substance, pas de prescription, pas un invite. Entree canonique (chanson) vs ubm-1751 (artiste).",
+    "verdict": "citation"
+  },
+  "creator": "Henri Salvador",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:01:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:00:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0284",
+  "kind": "citation",
   "links": [],
-  "quote": "Jardin d'hiver exceptionnel.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Jardin d'hiver exceptionnel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:01:01",
+  "status": "validated",
+  "timestamp": "02:00:57",
   "title": "Jardin d'hiver",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "album"
   ]
 }

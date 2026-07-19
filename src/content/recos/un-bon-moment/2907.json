@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Volume' non identifiable comme œuvre réelle dans le contexte ('Volume la dernière fois' ~00:02:19, discussion sur les films/le jeu d'acteurs). Faux positif / artefact de transcription.",
+    "verdict": "discard"
+  },
+  "creator": "inconnu",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2907",
+  "links": [],
+  "quote": "Volume la dernière fois.",
+  "recommendedBy": "Oli",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:02:19",
+  "title": "Volume",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

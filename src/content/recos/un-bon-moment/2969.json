@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel: « Darfimbabwour » (court metrage 2016, Ambroise Carminati / collectif Et Bim), verifie web. Le transcript le deforme en « Darfim Babour »/« Darfi Mabou ».",
+    "reason": "Court metrage du collectif Ebim presente par Ambroise (00:08:39, « il y a le Darfimbabwour... c'est le premier court metrage qui nous a fait connaitre sur Youtube, allez le voir »). Oeuvre d'invite = guest-work. Canonique (regroupe 0831).",
+    "verdict": "guest-work"
+  },
+  "creator": "Ébim",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2969",
+  "kind": "reco",
+  "links": [],
+  "quote": "il y a eu une super vidéo il y a le Darfim Babour qui est vraiment",
+  "recommendedBy": "Ambroise Carminati",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:08:39",
+  "title": "Darfim Babour",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ],
+  "year": 2016
+}

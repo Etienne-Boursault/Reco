@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Neil Brennan (co-auteur de Relatable / de Chappelle) evoque en anecdote: 'je lui ai serre la main a Montreal, on a trop kiffe, incroyable'. Name-drop d'une personne + '3 Mics' en passant, aucune oeuvre recommandee avec substance.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2576",
+  "links": [],
+  "quote": "Ah, Neil Brennan. Je lui ai serré la main à Montréal.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:40:19",
+  "title": "Neil Brennan",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

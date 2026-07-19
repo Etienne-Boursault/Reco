@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Les Quatre Accords toltèques (Don Miguel Ruiz) réel. Passage « d'où l'accord toltec... » à 00:28:01, timecode 00:28:04 conforme.",
+    "reason": "Le principe toltèque « ne pas prendre les choses personnellement » est discuté longuement avec substance (parentalité, ne pas prendre perso), mais le livre lui-même n'est pas recommandé — aucune prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6599de12076e6c001696556a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2190",
+  "kind": "citation",
+  "links": [],
+  "quote": "d'où l'accord toltec de ne prendre pas personnellement les choses",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:28:04",
+  "title": "Les Quatre Accords toltèques",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

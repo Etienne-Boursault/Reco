@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre réel : « Laura Domenge » (humoriste ; transcript rend « Laura Dommange » [01:03:09], spectacle capté à la Scala). Recommandé par un invité (Laurie Peret OU Pablo Mira, « j'ai adoré les deux » avec Laura Felpin) — impossible de trancher ; attribution d'origine « Navo » erronée (le tour de Navo vient plus tard, [01:04:15]). Orthographe non web-vérifiée (budget épuisé). Invités absents de guests[].",
+    "reason": "Reco spectacle réelle (Laura Domenge) par un invité.",
+    "verdict": "validate"
+  },
+  "creator": "Laura Dommange",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2410",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le dernier que j'ai vu, c'est Laura Dommange.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:03:08",
+  "title": "Laura Dommange",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

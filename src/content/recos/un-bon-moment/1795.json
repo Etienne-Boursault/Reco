@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-06",
+    "humanCorrection": "Doublon de ubm-0243 (Éloge de la fuite) — titre garbled",
+    "model": "claude-opus-4-8",
+    "reason": "'je parle d'un bouquin que j'ai lu, [l'eloge] de la fuite de Laborit, je vous recommande ca' : recommandation explicite. Titre reel : L'Eloge de la fuite (Henri Laborit). Doublon interne ubm-1785.",
+    "verdict": "validate"
+  },
+  "creator": "Laboris",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1795",
+  "kind": "reco",
+  "links": [],
+  "quote": "je parle d'un bouquin que j'ai lu de la fuite de Laboris je vous recommande ça",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:19",
+  "title": "La fuite de Laboris",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

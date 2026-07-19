@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Aznavour = réponse du multi-blind test (~00:21:36), morceau support de jeu → mention instrumentale. Doublon de ubm-1232.",
+    "verdict": "discard"
+  },
+  "creator": "Charles Aznavour",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2908",
+  "links": [],
+  "quote": "Aznavour.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:36",
+  "title": "Aznavour",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

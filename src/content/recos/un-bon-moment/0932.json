@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple rhétorique (même énumération des bonus LaCinetek) + 'Kurosawa' = nom de réalisateur, pas une œuvre précise.",
+    "verdict": "discard"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "j'ai adoré Kurosawa",
   "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:38",
   "title": "Kurosawa",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

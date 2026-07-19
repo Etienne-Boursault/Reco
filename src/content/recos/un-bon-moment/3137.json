@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Reference culturelle / anecdote (voyage a New York, « me sentir Carrie Bradshaw »), pas de discussion substantielle ni prescription de la serie (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Darren Star",
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3137",
+  "links": [],
+  "quote": "je voulais vivre cinq jours et me sentir carrie bradshaw",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:34",
+  "title": "Sex and the City",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

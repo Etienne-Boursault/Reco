@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Oeuvre de Balzac discutee avec substance (methode, 72 romans, 'envie de relire Balzac'). Titre 'La Comedie humaine' infere ; borderline mais engagement reel sur l'oeuvre de Balzac.",
+    "verdict": "citation"
+  },
   "creator": "Honoré de Balzac",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T10:27:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0248",
+  "kind": "citation",
   "links": [],
   "quote": "C'est les Balzac, c'est les cils.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:06",
   "title": "La Comédie humaine",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

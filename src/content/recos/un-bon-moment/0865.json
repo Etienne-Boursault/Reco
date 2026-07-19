@@ -1,19 +1,58 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1102 (même œuvre, Searching for Sugar Man). Titre erroné « Looking for » au lieu de « Searching for » (Clément se trompe dans l'épisode).",
+    "verdict": "discard"
+  },
   "creator": "Malik Bendjelloul",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0865",
   "links": [],
-  "quote": "qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud mais personne ne sait ce qu'il est devenu",
-  "recommendedBy": "Invité",
+  "quote": "Looking for Sugar Man qui était ouf sur un chanteur de folk",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:20:56",
+  "status": "discarded",
+  "timestamp": "00:21:56",
   "title": "Looking for Sugar Man",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "film"
   ],
   "year": 2012
 }

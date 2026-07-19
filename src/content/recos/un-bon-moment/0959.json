@@ -1,17 +1,44 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct : Fiascorama. Doublons : ubm-0198, ubm-0206.",
+    "reason": "Canonique du livre de Thomas VDB (invite) qu'il presente lui-meme : 'j'ai fait mon livre... qui est sorti'. Auto-promo assumee. Titre reel = 'Fiascorama' (Buchet Chastel, 2025) ; transcript garble en 'Fiasco Raman/Rama'.",
+    "verdict": "guest-work"
+  },
   "creator": "Thomas VDB",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:10:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-0959",
+  "kind": "reco",
   "links": [],
   "quote": "j'ai fait mon livre. Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:10:53",
   "title": "Fiasco Roman",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

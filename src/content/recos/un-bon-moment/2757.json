@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du SITE. Orthographe : transcript YT phonetique 'paskinad.fr' ; extraction Acast 'pasquinade.fr' ; Haroun explique l'etymologie (Pasquin -> Pasquinade), le titre correct est tres probablement 'Pasquinade' / pasquinade.fr. WebSearch epuise. Doublons discardes : ubm-0757 (Acast) et ubm-2762 (mishearing 'Pasquilane').",
+    "reason": "Pasquinade.fr est le site/projet cree par Haroun (l'invite) pour diffuser des humoristes au chapeau. Il le presente longuement et invite a s'y rendre. Auto-promo de l'invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:09:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:23:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2757",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir, allez voir sur paskinad.fr, du coup.",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:23:35",
+  "title": "Paskinad",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

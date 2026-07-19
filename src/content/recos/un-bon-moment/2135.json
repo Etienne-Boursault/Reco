@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verdict cible = citation. Corriger titre 'Shirley Soignon' -> 'Shirley Souagnon' (humoriste). Timecode reel ~00:05:41 (le 00:41:00 est faux). Appreciation collective des quatre ; recommendedBy peut rester vide.",
+    "reason": "Citation voulue : discussion nourrie et admirative de Shirley Souagnon (mentor de Tahnee), avec substance mais sans prescription explicite au public. Bloquee car titre a corriger.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2135",
+  "links": [],
+  "quote": "On a un point commun, tous les quatre, autour de la table, c'est qu'on aime particulièrement Shirley.",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:41:00",
+  "title": "Shirley Soignon",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

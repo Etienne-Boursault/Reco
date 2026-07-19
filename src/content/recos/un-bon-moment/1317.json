@@ -1,0 +1,34 @@
+{
+  "creator": "Richard Gadd",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:04:11+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1317",
+  "kind": "reco",
+  "linkOverrides": {
+    "JustWatch": "https://www.justwatch.com/fr/serie/mon-petit-renne"
+  },
+  "links": [],
+  "quote": "j'ai commencé une série qui s'appelle Halfman. C'est le gars qui a fait mon petit cerf.",
+  "recommendedBy": "Caballero",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:02",
+  "title": "Baby Reindeer",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

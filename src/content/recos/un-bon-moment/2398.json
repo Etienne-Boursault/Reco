@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Le discours » (réal. Laurent Tirard, d'après le livre de Fab Caro), avec Manu Payet. Titre correct.",
+    "reason": "Film à venir de l'invité : « on a fait un film ensemble qui s'appelle Le discours qui sort bientôt » (00:55:26). Auto-promo assumée d'un projet de l'invité.",
+    "verdict": "guest-work"
+  },
+  "creator": "Laurent Tirard",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2398",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est un film de Fab Caro.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:55:26",
+  "title": "Le discours",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

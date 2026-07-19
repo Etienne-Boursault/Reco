@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "FloodCast = podcast tiers (A. Menielle / F. Bernard) ou Paul est passe invite.",
+    "reason": "Episode du FloodCast (avec Bilal Hassani) fait par Paul, cite et loue ('un super episode vraiment', 'on met la ref') mais instrumental a l'introduction du jeu 'Anecdote de stars'. Substance reelle, pas de prescription nette -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1665",
+  "kind": "citation",
+  "links": [],
+  "quote": "Vous connaissez aussi le jeu du Floodcast que t'as fait. T'as fait le Floodcast avec Bilal Hassani qui était un super épisode vraiment.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:27",
+  "title": "Floodcast",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

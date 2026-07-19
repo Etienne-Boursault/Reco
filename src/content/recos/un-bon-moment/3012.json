@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0864 (The Defiant Ones). Titre tronqué (« Defiant Ones ») et attribution erronée (Kyan au lieu de Clément).",
+    "verdict": "discard"
+  },
+  "creator": "Dr. Dre, Jimmy Iovine",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-3012",
+  "links": [],
+  "quote": "il y a Defiant Ones",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:46",
+  "title": "Defiant Ones",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie",
+    "autre"
+  ],
+  "year": 2017
+}

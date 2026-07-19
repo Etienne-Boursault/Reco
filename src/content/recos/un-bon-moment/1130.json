@@ -1,17 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige de 'Navo' vers 'Paul Mirabel' (invite reel). Canonique Diams (1130 vs 1242). Orthographe correcte = 'Diam's' (avec apostrophe, Melanie Georgiades) -> titre a corriger en 'Discographie de Diam's'.",
+    "reason": "Paul recommande explicitement toute l'oeuvre integrale de Diam's (01:12:44, 'je vous recommande toute l'oeuvre integrale de Diams parce qu'il y a tout dedans'). Canonique du cluster Diams (capte 'discographie' mieux que le titre unique).",
+    "verdict": "validate"
+  },
   "creator": "Diams",
   "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1130",
+  "kind": "reco",
   "links": [],
   "quote": "je vous recommande tout l'oeuvre intégrale de Diams parce qu'il y a tout de non",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Paul Mirabel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:43",
   "title": "Discographie de Diams",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

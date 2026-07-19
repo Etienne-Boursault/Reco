@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Pinkalash' - JP precise 'j'ai pas joue, j'ai fait un rappeur dans un clip'. Titre douteux/non verifiable. Pas une reco.",
+    "reason": "Anecdote de carriere - clip ('un rappeur homo') de 'Fabrice' auquel JP a participe; mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Fabrice",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2796",
+  "links": [],
+  "quote": "Pinkalash, c'est tellement marrant.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:48",
+  "title": "Pinkalash",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

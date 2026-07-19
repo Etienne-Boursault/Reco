@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Tournee collective (Le Plaisir Tour) : Leandre, Anthony Giuliani, Rodrigue, Basile, Henry Fexa, Hugo Le Van + les invites.",
+    "reason": "'Le Plaisir Tour' = tournee collective des invites (verifiee : line-up inclut Tom Baldetti & Yassir), prescrite en fin d'emission ('Allez voir le spectacle de Leandre, Anthony Giuliani, Rodrigue, Basile', 02:02).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:02:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:02:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:07:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:02:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1651",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir le spectacle de Léandre, Anthony Giuliani, Rodrigue, Basile.",
+  "recommendedBy": "Tom Baldetti & Yassir",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:02:07",
+  "title": "Le Plaisir Tour",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

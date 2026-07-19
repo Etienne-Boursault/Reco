@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "quote 'C'etait sur le History Tour' ne correspond pas au titre 'Dangerous Tour' ; de toute facon non-reco.",
+    "reason": "Anecdote concert Michael Jackson (debat Dangerous 92 / History 98), recit en partie onirique ('tu te reveilles et tu pisses dans ton lit') ; pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Michael Jackson",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1412",
+  "links": [],
+  "quote": "C'était sur le History Tour.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:14:25",
+  "title": "Dangerous Tour",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ]
+}

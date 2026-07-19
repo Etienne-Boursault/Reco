@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Cher Journal' - programme que Laura a produit, ou Cedric a joue. Titre non verifiable (pas de web). Laura Felpin manque dans episode.guests.",
+    "reason": "Oeuvre produite par Laura Felpin citee en anecdote a propos de Cedric, avec avis leger ('tres bon programme').",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2791",
+  "kind": "citation",
+  "links": [],
+  "quote": "il a joué dans le Cher Journal",
+  "recommendedBy": "Laura Felpin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:24:05",
+  "title": "Cher Journal",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

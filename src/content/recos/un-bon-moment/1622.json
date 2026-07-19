@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0377 (Les Nouveaux Sauvages, exemple/comparaison en passant, pas de reco).",
+    "verdict": "discard"
+  },
+  "creator": "Damián Szifron",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1622",
+  "links": [],
+  "quote": "Oui il y a un film qui s'appelle Les nouveaux monstres",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:59",
+  "title": "Les Nouveaux Sauvages",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ],
+  "year": 2014
+}

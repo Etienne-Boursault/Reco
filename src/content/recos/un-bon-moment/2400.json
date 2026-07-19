@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Association indépendante d'accès à une alimentation de qualité (aligne avec la politique liens éthiques). Attribution Manu (il l'introduit) ; endossement aussi collectif par les hosts.",
+    "reason": "Recommandation explicite de l'association VRAC : « n'hésitez pas à vous renseigner sur l'association VRAC... Suivez-les » + « allez voir s'il n'y a pas un truc dans votre ville » (01:13). Cause portée par Manu (« moi c'est pour VRAC »).",
+    "verdict": "validate"
+  },
+  "creator": "Association VRAC",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2400",
+  "kind": "reco",
+  "links": [],
+  "quote": "l'association VRAC.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:00",
+  "title": "VRAC",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

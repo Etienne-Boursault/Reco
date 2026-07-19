@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Groupe blague (« c'est une blague ce groupe ») de l'invite (Bignan -> Valentin Vincent, qui a contacte « Jules Fou »/Julien Josselin). Findabilite douteuse ; champ creator errone (= nom du groupe). guests vide a completer. A reconsiderer en discard si non trouvable.",
+    "reason": "« Kauai Bukake » = groupe de punk rock des invites (« c'est notre groupe de punk rock », concerts a Bignan), annonce par l'invite (00:56:33). Auto-promo d'invite.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kauai Bukake",
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2964",
+  "kind": "reco",
+  "links": [],
+  "quote": "Kauai Bukake.",
+  "recommendedBy": "Valentin Vincent",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:56:33",
+  "title": "Kauai Bukake",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

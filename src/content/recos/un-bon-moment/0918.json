@@ -1,17 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Podcast « Votre Cerveau » d'Albert Moukheiber [01:06:11] — creator à corriger : « Albert Mukébert » → « Albert Moukheiber ». Recommandé par un host (Kyan ou Navo, « que tu m'as recommandé ») — indéterminable. Œuvre DISTINCTE du livre ubm-0919 (pas un doublon).",
+    "reason": "Reco réelle du podcast « Votre Cerveau ».",
+    "verdict": "validate"
+  },
   "creator": "Albert Mukébert",
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0918",
+  "kind": "reco",
   "links": [],
-  "quote": "Je recommande votre cerveau le podcast d'Albert Mukébert que tu m'as recommandé",
+  "quote": "Je recommande Votre Cerveau, le podcast d'Albert Moukéibert que tu m'as recommandé.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:06:15",
+  "status": "validated",
+  "timestamp": "01:06:11",
   "title": "Votre cerveau",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

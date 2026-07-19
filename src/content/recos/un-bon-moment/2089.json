@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Faux positif : fragment tronque 'l'usine a...' (01:56:01) dont la quote est une question 'est-ce que tu as une reco?'. Pas une oeuvre distincte.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2089",
+  "links": [],
+  "quote": "est-ce que tu as une reco ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:56:01",
+  "title": "l'usine à...",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

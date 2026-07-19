@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple/anecdote : le spectacle Le Roi Lion (Broadway/Londres) cité pour illustrer le public qui hue affectueusement le méchant. Mention instrumentale, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2658",
+  "links": [],
+  "quote": "quand tu vas voir le roi lion à la fin quand les acteurs ils passent",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:53",
+  "title": "Le Roi Lion",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

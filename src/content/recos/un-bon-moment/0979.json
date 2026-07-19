@@ -1,17 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Monsieur Phi (01:19): 'qui fait des videos sur Youtube qui sont super... je vous encourage a soutenir Monsieur Phi'. Reco valable mais DOUBLON de ubm-0984 (meme chaine recommandee dans l'episode). Titre 'Monsieur Phi' plus propre que le canonique 'M. Phi' -> l'humain peut preferer garder celui-ci.",
+    "verdict": "discard"
+  },
+  "creator": "Monsieur Phi",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0979",
   "links": [],
-  "quote": "Monsieur Phi qui fait des vidéos sur Youtube qui sont super sur la philosophie sur l'IA en ce moment mais beaucoup sur la filo ok a un Patreon et sur ce patron il fait des lectures et c'est là que j'ai entendu la nouvelle de Marseille Aime",
+  "quote": "Monsieur Phi qui fait des vidéos sur Youtube qui sont super sur la philosophie...",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:19:05",
   "title": "Monsieur Phi",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "video"
   ]
 }

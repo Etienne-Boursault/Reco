@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 0398 (L'été de Kikujiro) — 'Kikujiro', même film ; la quote rattachée (photo à 5 ans) est un artefact de timecode.",
+    "verdict": "discard"
+  },
+  "creator": "Takeshi Kitano",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1501",
+  "links": [],
+  "quote": "Cette photo de moi quand j'avais 5 ans, 6 ans, ça se voit, non ?",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:15",
+  "title": "Kikujiro",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique",
+    "film"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel a corriger : 'Le Comte de Monte-Cristo' (2024). Canonique; doublon avec ubm-1627 (simple comparaison a 00:12:21).",
+    "reason": "Film de Pierre Niney (invite) presente par lui : anecdote substantielle sur l'apnee apprise pour le role (avec le champion S. Mifsud).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1637",
+  "kind": "reco",
+  "links": [],
+  "quote": "Pour Monte Cristo. J'ai dû apprendre à faire de l'apnée.",
+  "recommendedBy": "Pierre Niney",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:36",
+  "title": "Monte Cristo",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

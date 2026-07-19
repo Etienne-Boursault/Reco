@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom introuvable en recherche ; possible artefact/handle.",
+    "reason": "Mention secondaire en passant apres la reco de Theo Haggai ('il y a Dawal aussi qui fait ca'), sans prescription propre ; nom 'Dawal' invérifiable (aucun artiste identifiable). Faible valeur.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:59:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2047",
+  "links": [],
+  "quote": "Il y a Dawal aussi qui fait ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:59:58",
+  "title": "Dawal",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

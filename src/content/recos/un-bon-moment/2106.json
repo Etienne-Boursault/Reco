@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom/handle officiel « Galansire » (Instagram @galansire) — reco indiquait « Galancir ».",
+    "reason": "Humoriste Instagram « Galansire » recommandé par Navo — « un gars que j'aime beaucoup sur Insta, il est vraiment très drôle, il a plein de personnages ».",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:00:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:00:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2106",
+  "kind": "reco",
+  "links": [],
+  "quote": "Il a un personnage d'ouvrier mesquin et il est vraiment très drôle.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:00:18",
+  "title": "Galancir",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

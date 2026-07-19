@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE du livre de la mere de Nassim. Doublons discardes : ubm-1359 ('Blague a part' = expression idiomatique mal parsee) et ubm-0521 ('La vie de ma mere' = artefact de 'le livre de ma mere'). Attribution corrigee de 'Navo' vers 'Nassim Lyes'. Titre 'L'histoire de la psychanalyse' possiblement descriptif/mal transcrit, non re-verifiable (WebSearch epuise) -> title_suspect. Invite a completer : Nassim Lyes.",
+    "reason": "Livre de la mere de Nassim (Malika), presente par Nassim (invite) : reco explicite ('je vous invite a le lire', 'regardez-le', 'lis-le et tu me diras ce que t'en penses'). Autobiographique, psychanalyse lacanienne, editions Champ Social. Pas guest-work (oeuvre de la mere, non-invitee).",
+    "verdict": "validate"
+  },
+  "creator": "Malika",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:12:06+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1365",
+  "kind": "reco",
+  "links": [],
+  "quote": "Blague à part, c'est sur sa vie, c'est autobiographique.",
+  "recommendedBy": "Nassim Lyes",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:24:12",
+  "title": "L'histoire de la psychanalyse",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ],
+  "year": 2023
+}

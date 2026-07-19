@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« Move like Jagger la musique » — air support d'une énigme du jeu « deviner-chanter ». Instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Maroon 5",
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1945",
+  "links": [],
+  "quote": "Move like Jagger la musique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:25:50",
+  "title": "Move Like Jagger",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "« Les Sardines » (Patrick Sébastien) — « l'une de mes musiques préférées » citée par Jérémy dans une anecdote de course/sobriété (01:17:28-32). Substance (avis positif) mais aucune prescription à l'auditeur => citation. Locuteur = Jérémy (son anecdote).",
+    "reason": "Chanson préférée citée en anecdote, sans prescription",
+    "verdict": "citation"
+  },
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2862",
+  "kind": "citation",
+  "links": [],
+  "quote": "une musique dans mes écouteurs qui se met l'une de mes musiques préférées et à un moment donné, ça ne dure pas longtemps. Les sardines.",
+  "recommendedBy": "Jérémy Ferrari",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:28",
+  "title": "Les Sardines",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

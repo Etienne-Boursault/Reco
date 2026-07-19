@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:00:30 crédit d'intro ; réapparaît en anecdote (le mec de bref) et dans le jeu. Aucune promo actuelle.",
+    "reason": "Œuvre passée des hosts (co-écrite), simple crédit d'intro + évocations en anecdote, sans promo d'actualité → citation (règles 15/17, exemple explicite du brief).",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi, Bruno Muschio (Navo)",
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3160",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    }
+  ],
+  "quote": "co-auteur de Bref",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:30",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "serie"
+  ]
+}

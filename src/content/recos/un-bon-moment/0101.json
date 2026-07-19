@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre « Aux deux vies » et createur « Juliette Manet » introuvables dans le transcript YouTube. Meme passage (00:01:01) que ubm-2205 : piste feat. Odevi de l'album prototype d'Eddy. Extraction acast probablement hallucinee. A restaurer si Acast confirme.",
+    "reason": "Titre et createur introuvables dans le transcript; extraction acast probablement hallucinee.",
+    "verdict": "discard"
+  },
   "creator": "Juliette Manet",
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0101",
   "links": [],
   "quote": "C'est magnifique.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:01:01",
   "title": "Aux deux vies",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

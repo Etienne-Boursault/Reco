@@ -1,19 +1,74 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du livre de Penelope. Titre a capitaliser 'La Nuit retrouvee' (non modifiable via script). WebSearch epuise: non verifie en ligne, mais transcript coherent (l.19, 01:54:24, 02:02:36). Timecodes ~00:00:47 et ~01:54:24. Invitee absente de guests[].",
+    "reason": "Roman graphique de l'invitee Penelope Bagieu, presente par elle en ouverture (auto-promo) et recommande par Kyan en cadeau Noel.",
+    "verdict": "guest-work"
+  },
   "creator": "Pénélope Bagieu",
   "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0312",
+  "kind": "reco",
   "links": [],
-  "quote": "la nuit retrouvée c'est la... le roman graphique de... de... de Penelope basse juste moi",
-  "recommendedBy": "inconnu",
+  "quote": "la nuit retrouvée c'est là le roman graphique de de de pénélope bagieu",
+  "recommendedBy": "Penelope Bagieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:37:19",
   "title": "La nuit retrouvée",
+  "transcriptSource": "youtube",
   "types": [
-    "bd"
+    "bd",
+    "livre"
   ]
 }

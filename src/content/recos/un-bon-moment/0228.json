@@ -1,16 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Yoroi' (film d'Orelsan/David Tomaszewski, sorti 29/10/2025), type = film (pas 'autre'). Attribution host indeterminee (Kyan ou Navo).",
+    "reason": "'Allez voir Yoroi' + 'c'est comme aller au Japon' — prescription claire (00:31:28-31).",
+    "verdict": "validate"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0228",
+  "kind": "reco",
   "links": [],
   "quote": "Allez voir Yoroi.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:31:32",
+  "status": "validated",
+  "timestamp": "00:31:30",
   "title": "Yoroi",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

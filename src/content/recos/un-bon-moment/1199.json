@@ -1,18 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommandee par un host (Kyan ou Navo). Non diarize.",
+    "reason": "Humoriste Laura Felpin recommandee dans le meme souffle qu'Anaide Rozam : « deux meufs que je voulais recommander... qu'on a recu dans un bon moment ». Titre verifie.",
+    "verdict": "validate"
+  },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1199",
+  "kind": "reco",
   "links": [],
-  "quote": "Et Laura Felpin, qu'on a reçu hier.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Et Laura Felpin qu'on a reçu hier. Qu'on a reçu dans un bon moment.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:48:26",
+  "status": "validated",
+  "timestamp": "01:48:25",
   "title": "Laura Felpin",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

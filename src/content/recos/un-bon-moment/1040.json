@@ -1,16 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution Kyan (host qui 'dit toujours des podcasts', avant le tour de Navo) plausible mais non confirmee (transcript non diarize). Doublon: ubm-2382.",
+    "reason": "Podcast Sybel (8 barons de la drogue devenus figures du hip-hop), recommande avec enthousiasme ('c'est super interessant, je kiffe, ca marche trop sur moi'). Titre correct = canonique du cluster; ubm-2382 = doublon avec titre errone 'Underciders'.",
+    "verdict": "validate"
+  },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1040",
+  "kind": "reco",
   "links": [],
-  "quote": "je tombais sur un podcast qui s'appelle \"The End of Siders\".",
-  "recommendedBy": "Alice",
+  "quote": "Je suis tombé sur un podcast Qui s'appelle The Underciders",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:37:00",
+  "status": "validated",
+  "timestamp": "01:37:02",
   "title": "The Undersiders",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le Gorafi, site satirique co-créé/écrit par l'invité Pablo Mira, présenté par lui-même (« c'est 80% de l'ADN de The Onion… on a rajouté la satire franco-française ») [00:58:22]. Auto-promo invité → guest-work. Pablo Mira absent de guests[].",
+    "reason": "Œuvre de l'invité Pablo Mira (co-créateur du Gorafi).",
+    "verdict": "guest-work"
+  },
+  "creator": "Le Gorafi",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2409",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le Gorafi, c'est vraiment 80% de l'ADN de The Onion.",
+  "recommendedBy": "Pablo Mira",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:22",
+  "title": "Le Gorafi",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

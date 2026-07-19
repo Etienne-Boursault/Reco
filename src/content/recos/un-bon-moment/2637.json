@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2626 (canonique = validate / This Is Paris).",
+    "reason": "Doublon de ubm-2626 (meme passage 01:21:36, documentaire Paris Hilton, extraction openai).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2637",
+  "links": [],
+  "quote": "Il y a un documentaire sur Paris Hilton, qui est sur YouTube.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:36",
+  "title": "Documentaire sur Paris Hilton",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

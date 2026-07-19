@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Collaborateur name-droppe ; la chanson est l'item (ubm-3009).",
+    "reason": "'Mathieu Bogart' (= Mathieu Boogaerts) name-drop comme co-auteur de la chanson 'Na na na' (l'item reel = ubm-3009). Musicien non-invite mentionne comme collaborateur, pas recommande en tant qu'artiste.",
+    "verdict": "discard"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +28,10 @@
   "quote": "il y a un morceau que tu fais avec Mathieu Bogart qui est un peu méconnu je trouve",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:32:59",
   "title": "Mathieu Bogart",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

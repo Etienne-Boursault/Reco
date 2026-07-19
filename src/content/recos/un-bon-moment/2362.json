@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote people sur le devouement de Brad Pitt (5-6 mois pour la scene du toit) ; l'avis porte sur l'acteur, pas sur le film. Mention instrumentale d'un exemple d'acteur americain investi.",
+    "verdict": "discard"
+  },
+  "creator": "Quentin Tarantino",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2362",
+  "links": [],
+  "quote": "il a dit qu'il avait travaillé, je crois, cinq ou six mois pour la scène dans... Once Upon a Time in Hollywood sur le toit.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:10",
+  "title": "Once Upon a Time in Hollywood",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2019
+}

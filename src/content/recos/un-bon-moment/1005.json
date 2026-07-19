@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1384.",
+    "reason": "Meme reco que ubm-1384 (Les 624 types de profs de Lucas Pastor).",
+    "verdict": "discard"
+  },
   "creator": "Lucas Pasteur",
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +32,10 @@
   "quote": "Je vais recommander la vidéo de Shays Lucas Pasteur le cas un peu besé et je vous conseille de la regarder en entier",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:25:36",
   "title": "Les 624 types de prof",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

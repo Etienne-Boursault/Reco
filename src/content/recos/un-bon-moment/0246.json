@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-06",
+    "humanCorrection": "Le sens de la vie cité, pas recommandé → citation (retour Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "The Meaning of Life (Monty Python) : 'vous avez pas vu ce truc la? alors ca manque a votre culture' = prescription explicite au public. PRIMAIRE (fusionner ubm-1782).",
+    "verdict": "validate"
+  },
   "creator": "Monty Python",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,18 +15,49 @@
     "tmdb": "4543",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0246",
+  "kind": "citation",
   "links": [],
-  "quote": "il faut que je le revoie, c'est formidable",
-  "recommendedBy": "Invité",
+  "quote": "c'est pour moi c'était fondateur pour moi",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:53:02",
+  "status": "validated",
+  "timestamp": "00:53:31",
   "title": "Le sens de la vie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

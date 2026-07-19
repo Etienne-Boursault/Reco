@@ -1,18 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon = ubm-2232 (citation). Ici titre = artiste seul et quote plus courte.",
+    "reason": "Doublon de ubm-2232 (meme anecdote 'spectacle de Franck Dubosc', ts 00:04:18).",
+    "verdict": "discard"
+  },
   "creator": "Franck Dubosc",
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0622",
   "links": [],
-  "quote": "moi, j'ai un déclencheur, et après, je m'y suis mis. Je me suis mis à Paris. Moi, je sais que j'avais vu le spectacle de Franck Dubosc.",
-  "recommendedBy": "Invité",
+  "quote": "j'avais vu le spectacle de Franck Dubosc",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:04:19",
+  "status": "discarded",
+  "timestamp": "00:04:18",
   "title": "Franck Dubosc",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

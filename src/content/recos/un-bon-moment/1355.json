@@ -1,0 +1,30 @@
+{
+  "creator": "Hal Elrod",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:10:18+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1355",
+  "links": [],
+  "quote": "c'est beaucoup plus stylé tu sais Miracle Morning tous ces trucs là",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:06:24",
+  "title": "Miracle Morning",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

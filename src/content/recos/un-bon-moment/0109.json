@@ -1,20 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Draft attribuait a tort; le locuteur des points d'ancrage cold wave/80s ne peut etre que Zazie (seule invitee assez agee). Quote extraite hors-sujet mais titre+timecode corrects.",
+    "reason": "Point d'ancrage musical (Pink Floyd, Dark Side of the Moon), 'premier choc' vécu en temps réel — substance mais pas de prescription au public. Attribution corrigée : locuteur ne à ~1962 (11 ans a la sortie 1973) = Zazie, pas Kyan (impossible chronologiquement).",
+    "verdict": "citation"
+  },
   "creator": "Pink Floyd",
   "episodeGuid": "6599c3998e40b300163f8618",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/12114240"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:06:09+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0109",
+  "kind": "citation",
   "links": [],
-  "quote": "mon premier choc, c'était Pink Floyd, Dark Side of the Moon, puisque j'avais 11 ans quand c'est sorti",
-  "recommendedBy": "intervenant",
+  "quote": "Franchement, toute ta vie, ça peut un peu servir.",
+  "recommendedBy": "Zazie",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:21:18",
+  "status": "validated",
+  "timestamp": "00:21:19",
   "title": "Dark Side of the Moon",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ],

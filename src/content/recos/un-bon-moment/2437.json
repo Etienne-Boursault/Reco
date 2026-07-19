@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invites reels (Monsieur Poulpe, Davy Mourier) absents des metadonnees episode (guests vide).",
+    "reason": "BD co-scenarisee par les invites Monsieur Poulpe & Davy Mourier (Delcourt 2019, coll. Une Case en Moins, dessin Ariel Bittum), presentee par eux (creation discutee, offerte en lot en fin d'emission) -> auto-promo invites.",
+    "verdict": "guest-work"
+  },
+  "creator": "Davy Poulpe",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2437",
+  "kind": "reco",
+  "links": [],
+  "quote": "Alain au pays des merveilles.",
+  "recommendedBy": "Monsieur Poulpe & Davy Mourier",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:01",
+  "title": "Alain au pays des merveilles",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

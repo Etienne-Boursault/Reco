@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'MacBook Pro' = mot du jeu d'impro puis du freestyle; produit, pas une oeuvre, aucune reco = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Apple",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2429",
+  "links": [],
+  "quote": "un MacBook Pro.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:14",
+  "title": "MacBook Pro",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

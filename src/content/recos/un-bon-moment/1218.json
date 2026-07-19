@@ -1,20 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Passage 00:51:48, jeu Devine la chute.",
+    "reason": "'Je lui montrerai Titanic' est la chute d'une blague du jeu 'Devine la chute' ; name-drop instrumental, pas une prescription.",
+    "verdict": "discard"
+  },
+  "creator": "James Cameron",
   "episodeGuid": "633b305f3ca1cc001201a861",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR",
     "tmdb": "597",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1218",
   "links": [],
-  "quote": "Je lui montrerais... Titanic.",
+  "quote": "Je lui montrerai Titanic.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:51:48",
   "title": "Titanic",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

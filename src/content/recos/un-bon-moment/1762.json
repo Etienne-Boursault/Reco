@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Name-drop d'un conseil de Palmade ; titre douteux.",
+    "reason": "Reponse a 'le meilleur conseil qu'on vous ait donne' (00:50) : name-drop de Pierre Palmade (qui a donne un conseil). Pas une oeuvre recommandee ; 'Les Princes de la ville' n'est pas attribuable a Palmade.",
+    "verdict": "discard"
+  },
+  "creator": "Pierre Palmade",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1762",
+  "links": [],
+  "quote": "Moi, c'est Pierre Palmade. Les princes de la ville.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:54",
+  "title": "Les Princes de la ville",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

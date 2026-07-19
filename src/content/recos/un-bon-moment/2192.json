@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Le champ quote du JSON (« Bah non, je suis dedans ») est erroné : il appartient à la discussion Panayotis (01:13:17). Le vrai passage Dîner de cons est à 01:13:25, dans le ±90s du timecode 01:13:26.",
+    "reason": "Reco explicite en fin de tour de recos : « Moi, j'ai vu le dîner de cons... c'est toujours un film aussi bien » (01:13:25). Film réel (Francis Veber).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6599de12076e6c001696556a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:58:04+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2192",
+  "kind": "reco",
+  "links": [],
+  "quote": "« Bah non, je suis dedans. »",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:26",
+  "title": "Le Dîner de cons",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

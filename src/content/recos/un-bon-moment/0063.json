@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur Kyan ou Éléonore, pas Navo (« on l'a tous les deux »).",
+    "reason": "Recommandation explicite : « et Leftovers, meilleure série pour moi de tous les temps ». Même locuteur qu'Upload/Paterson.",
+    "verdict": "validate"
+  },
   "creator": "Damon Lindelof, Tom Perrotta",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
@@ -6,17 +18,48 @@
     "tmdb": "54344",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0063",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est celui qui a fait le left only love left jim jamerche ouais c'est vu j'arrive pas à le dire et le left overs meilleurs séries oui pour moi de tous les temps",
-  "recommendedBy": "Navo",
+  "quote": "meilleure série pour moi de tous les temps",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:21:55",
+  "status": "validated",
+  "timestamp": "01:21:56",
   "title": "The Leftovers",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

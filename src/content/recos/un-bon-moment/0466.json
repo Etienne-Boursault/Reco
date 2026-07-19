@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reprend le passage 'si vous aimez' (~01:10:20) qui promeut le film des invites (couvert par ubm-1587).",
+    "reason": "'Gilou' + charabia : extraction degradee du promo film ('si vous aimez... Gilles Lelouch Remi Besancon'). Pas une oeuvre.",
+    "verdict": "discard"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Si vous aimez l'hétiacastale, gilolou, chrémie, Beaux-Encembre, le tricot margement",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:10:20",
   "title": "Gilou",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

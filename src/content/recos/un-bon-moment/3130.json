@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution host probable (amateur de rétro-gaming, comparé à Another World / Abe's Oddysee) mais Kyan/Navo indéterminé.",
+    "reason": "Prescription explicite d'un jeu vidéo rétro ('je recommande Flashback') ; jeu réel (Flashback, Delphine Software, 1992).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:17",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3130",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "GOG",
+      "url": "https://www.gog.com/en/game/flashback"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/245730/Flashback/"
+    }
+  ],
+  "quote": "Moi, je recommande, j'ai fait un peu de rétro gaming récemment et je recommande Flashback.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:36:17",
+  "title": "Flashback",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

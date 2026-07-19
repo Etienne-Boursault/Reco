@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'Ridicule' cite a cote de 'Les Grands Ducs' comme films de Leconte ayant relance Rochefort ; le 'allez voir' explicite ne porte que sur Les Grands Ducs. Ridicule = evoque avec contexte, sans prescription directe.",
+    "verdict": "citation"
+  },
+  "creator": "Patrice Leconte",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3005",
+  "kind": "citation",
+  "links": [],
+  "quote": "Les Grands Ducs, Ridicule.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:28",
+  "title": "Ridicule",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

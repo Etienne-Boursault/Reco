@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco émanant de Thomas Deseur (invité), pas d'un host. Les métadonnées 'guests' de l'épisode sont vides alors que l'épisode a deux invités (Thomas Deseur, Charles Brunet) — à compléter, d'où recommendedBy laissé vide.",
+    "reason": "Prescription réelle d'un film par l'invité Thomas Deseur (extrait de son livre, catégorie 'engueulé avec un parent') ; œuvre externe réelle (The Descendants, Alexander Payne, 2011).",
+    "verdict": "validate"
+  },
+  "creator": "Alexander Payne",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:48",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3111",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-2b33d599-499e-4eda-bb70-8861797d2733"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/the-descendants/umc.cmc.34fxe0vix3m61slwolaownfye"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=171157.html"
+    }
+  ],
+  "quote": "J'ai mis si tu viens de t'engueuler avec ton père, mais ça marche avec ta mère. J'ai mis The Descendant de Alexander Payne.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "09:48",
+  "title": "The Descendants",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

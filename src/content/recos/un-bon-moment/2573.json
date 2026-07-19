@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Bref = serie de Kyan Khojandi, mention en passant par Paul; substance faible, l'humain peut requalifier en discard",
+    "reason": "'Bref' (serie de Kyan) evoquee en passant par Paul comme exemple de fiction des hosts ('comme vous avez fait avec Bref'). Oeuvre d'un host passee en anecdote = citation ; substance faible.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2573",
+  "kind": "citation",
+  "links": [],
+  "quote": "Enfin, comme vous avez fait avec \"Bref\" ou même tu vois des longs métrages et tout",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:30:27",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

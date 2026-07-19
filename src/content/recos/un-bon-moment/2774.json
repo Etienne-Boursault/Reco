@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Album confirmé : Ichon « Pour de vrai » (2020, produit par PH Trigano et Crayon). Canonique ; ubm-0770 (titre « Dichon », attribué à Navo) et ubm-1080 sont des doublons.",
+    "reason": "Segment recommandations : Julien Granel recommande explicitement l'album « Pour de vrai » d'Ichon (« très bel album, magnifique album », « l'album il est incroyable »).",
+    "verdict": "validate"
+  },
+  "creator": "Ichon",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2774",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ichon, très bel album, magnifique album ! Ichon c'est un gars qui fait du rap, qui vient d'avoir 30 ans, il a sorti son premier album le jour de ses 30 ans, il s'appelle Pour de vrai !",
+  "recommendedBy": "Julien Granel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:31:39",
+  "title": "Pour de vrai",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 30
+}

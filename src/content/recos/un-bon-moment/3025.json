@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom « Invisible » confirmé (Canal+, présentée par Clément Cotentin). Doublon : ubm-3017 (« Chambay »).",
+    "reason": "« Invisible », émission créée et présentée par l'invité Clément Cotentin à Canal+ (décorticage de gestes sportifs en ultra-ralenti), qu'il invite à découvrir : « j'espère que les gens vont pouvoir aller le découvrir... maintenant c'est sur YouTube ». Œuvre du guest = guest-work. Canonique.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-3025",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'espère que les gens vont pouvoir aller le découvrir.",
+  "recommendedBy": "Clément Cotentin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:43",
+  "title": "Invisible",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Bref (serie de Kyan, host) discutee avec substance a propos de l'arret au sommet, recurrente dans l'episode. Oeuvre du host (pas d'un invite), pas de prescription => citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:35:53+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1730",
+  "kind": "citation",
+  "links": [],
+  "quote": "Je pense que quand tu fais un truc comme bref, quand tu fais un truc comme bref, derrière t'as forcément la volonté de faire quelque chose qui n'est pas un objet qu'on a déjà vu en télé !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:27",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

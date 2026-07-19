@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2296; 'La Beaux-Familie Business' n'est pas une oeuvre reelle, artefact de transcription.",
+    "reason": "Titre corrompu: le transcript YouTube dit 'la beau family business' (01:12:12) = mention de Family Business dans la liste. Doublon de ubm-2296 (Family Business).",
+    "verdict": "discard"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "quote": "il y a La Beaux-Familie Business",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:12",
   "title": "La Beaux-Familie Business",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

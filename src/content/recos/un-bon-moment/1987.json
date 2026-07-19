@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Magic System = chanson support du jeu 'devine en chantant' de Greg Romano (chroniqueur). Discard (chanson support de jeu).",
+    "verdict": "discard"
+  },
+  "creator": "Magic System",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:29:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1987",
+  "links": [],
+  "quote": "Feel the magic in the air",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:29:02",
+  "title": "Magic System",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

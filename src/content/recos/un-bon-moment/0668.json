@@ -1,4 +1,15 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2477 (meme passage 01:36, meme oeuvre Netflix). ubm-2477 mieux renseigne (titre officiel complet + creator Netflix). De plus recommendedBy « Navo » ici est faux : c'est Dedo qui recommande.",
+    "verdict": "discard"
+  },
   "creator": "Netflix",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "externalIds": {
@@ -6,6 +17,17 @@
     "tmdb": "96129",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +36,10 @@
   "quote": "Il s'appelle \"Don't fuck with cats\" en internet.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:36:25",
   "title": "Don't F**k with Cats",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

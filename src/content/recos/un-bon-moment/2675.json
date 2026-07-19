@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ; canonique = ubm-2677 'Violet' (spectacle nomme par Paul). Attribution 'Kyan' erronee (reco de Paul).",
+    "reason": "Doublon du cluster Nordine (niveau artiste).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:02:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2675",
+  "links": [],
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:00",
+  "title": "Nordine Gantso",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

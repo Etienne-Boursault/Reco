@@ -1,16 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1999.",
+    "reason": "Doublon de ubm-1999 (trivia Denis la Malice/Menace).",
+    "verdict": "discard"
+  },
+  "creator": "inconnu",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0306",
   "links": [],
-  "quote": "Denis Lamalice et Denis Lamalice sont deux BD à la base une anglaise et une américaine qui sont sorties chacune le même jour de la même année dans deux pays différents",
-  "recommendedBy": "inconnu",
+  "quote": "Denis Lamalice et Denis Lamalice sont deux BD à la base.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:54",
+  "status": "discarded",
+  "timestamp": "01:14:55",
   "title": "Denis Lamalice",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

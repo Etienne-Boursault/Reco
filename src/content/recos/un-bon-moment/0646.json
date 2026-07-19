@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme locuteur non identifiable que ubm-0645 (probablement Jonathan Cohen).",
+    "reason": "Recommandation avec substance et conseil de visionnage ('sur OCS c'est HBO... c'est du Shakespeare... il faut s'accrocher sur les 4 premiers'). Meme locuteur que Parasite. Titre confirme (01:03:41).",
+    "verdict": "validate"
+  },
   "creator": "Jesse Armstrong",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
@@ -6,18 +18,48 @@
     "tmdb": "76331",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0646",
+  "kind": "reco",
   "links": [],
-  "quote": "succession frère la série c'est du bio sur la fratrice tu vois les problèmes de riche les combats de famille c'est du Shakespeare",
-  "recommendedBy": "invité",
+  "quote": "c'est la série sur OCS c'est HBO",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:03:41",
   "title": "Succession",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2266",
+    "reason": "Doublon de ubm-2266 (meme chaine boxe, ts 01:16:43). Titre 'Lee Willy' variante.",
+    "verdict": "discard"
+  },
+  "creator": "Lee Willy",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2271",
+  "links": [],
+  "quote": "C'est un américain qui s'appelle Lee Willy",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:16:43",
+  "title": "Lee Willy",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

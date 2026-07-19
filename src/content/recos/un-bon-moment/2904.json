@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique; ubm-1235 est le doublon Acast. Corriger Mona Gouba→Mona Guba. À l'épisode (oct 2023) présentée comme jeune artiste rencontrée à leurs concerts; l'humain doit trancher reco vs chroniqueuse. Attribution Kyan/Navo?",
+    "reason": "Mona Guba = jeune rappeuse réelle (freestyles Instagram), recommandée publiquement ('allez voir', ~01:21:30). Titre à corriger (Gouba→Guba) et statut à clarifier: elle est aujourd'hui chroniqueuse d'Un bon moment (tension avec la règle 6).",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2904",
+  "links": [],
+  "quote": "Mona Gouba. Jeune rappeuse qui fait des freestyles sur son Instagram.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:21:30",
+  "title": "Mona Gouba",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

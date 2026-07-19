@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator 'Cédric Clapichon' -> Cédric Klapisch. Titre correct ici (doublons à titre corrompu discardés).",
+    "reason": "Film de Klapisch (1996) présenté par lui (genèse depuis un court-métrage, succès international). Guest-work. Canonique (doublons ubm-2343, ubm-2338).",
+    "verdict": "guest-work"
+  },
+  "creator": "Cédric Clapichon",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2334",
+  "kind": "reco",
+  "links": [],
+  "quote": "Chacun cherche son chat c'est un peu la même histoire",
+  "recommendedBy": "Cédric",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:28",
+  "title": "Chacun cherche son chat",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

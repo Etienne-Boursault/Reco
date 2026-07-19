@@ -1,19 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. Chaine YouTube reelle (essais video 'Every Frame a Painting') ; mention positive ('je soutenais la chaine'). A restaurer si transcript complet.",
+    "reason": "Transcript inexploitable : reco invérifiable.",
+    "verdict": "discard"
+  },
   "creator": "Every Frame a Painting",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:46:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:46:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0613",
   "links": [],
-  "quote": "Moi je soutenais Every Frame a Painting la chaîne.",
+  "quote": "Moi je soutenais Every Frame a Painting, la chaîne. Ah j'adore !",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:46:33",
+  "status": "discarded",
+  "timestamp": "01:46:34",
   "title": "Every Frame a Painting",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,18 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Effroyables jardins' (Jean Becker, 2003) — pas 'L'effroyable jardin'. Attribution incertaine (Cyprien à 24:38 / top de Fanny à 42:44).",
+    "reason": "Film adoré ('un de mes films préférés, absolument magnifique, Villeret exceptionnel dedans', 00:24:38) et cité comme top 1 (00:42:44). Prescription par enthousiasme. Canonique.",
+    "verdict": "validate"
+  },
   "creator": "Jean Becker",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0399",
+  "kind": "reco",
   "links": [],
-  "quote": "un de mes films préférés c'est l'effroyable jardin il est absolument magnifique Jacques Villeret dedans il est exceptionnel",
-  "recommendedBy": "intervenant",
+  "quote": "Un de mes films préférés, c'est L'Effroyable Jardin.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:24:38",
   "title": "L'effroyable jardin",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

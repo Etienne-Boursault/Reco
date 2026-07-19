@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse au jeu 'Le Presque Peach' a 01:05:12 ('le mec trop sympa qui dit bonjour a tout le monde' -> Truman Show). Reponse de jeu-devinette.",
+    "verdict": "discard"
+  },
+  "creator": "Peter Weir",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1847",
+  "links": [],
+  "quote": "Truman Show.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:19",
+  "title": "The Truman Show",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

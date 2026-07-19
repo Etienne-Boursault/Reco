@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = FloodCast (anime par Florent Bernard alias 'Flaubert'/FloBer et Adrien Menielle) ; 'Le Flou/Flot de Cast' est un artefact de transcription. Recommande par un host. Canonique ; doublon Acast = ubm-1193.",
+    "reason": "Vraie reco de podcast : « ils ont un podcast qui s'appelle [...] qu'on recommande d'ailleurs, allez decouvrir ». Reste en draft car titre a corriger avant publication (artefact).",
+    "verdict": "unsure"
+  },
+  "creator": "Flaubert, Adrien Meignel",
+  "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "28:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2349",
+  "links": [],
+  "quote": "allez découvrir",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:28:12",
+  "title": "Le Flou de Cast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

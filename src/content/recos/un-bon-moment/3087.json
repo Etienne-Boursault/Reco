@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "'Le diable s'habille en Prada' cité pour expliquer une private joke ('ma demi-queue'), sans prescription (règle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:21",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3087",
+  "links": [],
+  "quote": "ma demi-queue c'est une private joke sur le diable s'habillant Prada ! Parce qu'elle finit le film, elle a une demi-queue !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:21",
+  "title": "The Devil Wears Prada",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

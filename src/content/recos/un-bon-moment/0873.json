@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-3019 (même reco de Navo pour l'éditeur « Exemplaire »). Titre au pluriel erroné.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0873",
   "links": [],
   "quote": "moi je recommande exemplaires qui est une boîte d'édition de bouquin une espèce de maison de... éditeur de bouquin mais qui fait de l'auto édition surtout driver par les auteurs avec un financement participatif",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:08:45",
   "title": "Exemplaires",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.58,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Takeshi Castle' (jeu télévisé de Takeshi Kitano) évoqué dans le portrait de Kitano avec appréciation légère ('tu vas rigoler, c'est très très drôle, mondialement connu'), sans prescription ferme.",
+    "verdict": "citation"
+  },
+  "creator": "Takeshi Kitano",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1951",
+  "kind": "citation",
+  "links": [],
+  "quote": "Tu vas rigoler, ça, c'est très, très drôle.",
+  "recommendedBy": "Cyprien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:50",
+  "title": "Takeshi Castle",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

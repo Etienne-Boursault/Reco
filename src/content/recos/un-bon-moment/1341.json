@@ -1,0 +1,88 @@
+{
+  "aliases": [
+    "The Pitt"
+  ],
+  "creator": "R. Scott Gemmill",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/250307-the-pitt/watch?locale=FR",
+    "tmdb": "250307",
+    "tmdbType": "tv"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T14:47:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:47:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1341",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est une série que j'aime trop, j'en parle tout le temps, ça s'appelle The Pit.",
+  "recommendedBy": "Shirine Boutella",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:37:44",
+  "title": "The Pitt",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Pitt"
+    },
+    {
+      "ethics": "avoid",
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Pitt"
+    }
+  ]
+}

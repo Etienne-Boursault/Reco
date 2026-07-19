@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Host (Kyan ou Navo), non diarizable → recommendedBy vide (regle 3).",
+    "reason": "Reco d'un host a AZ : « je sais pas si tu regardes Curb Your Enthusiasm de Larry David... tout le monde adore regarder ce gars », avec description du ressort comique. Oeuvre tierce (Larry David), pas d'un invite → validate.",
+    "verdict": "validate"
+  },
+  "creator": "Larry David",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:35",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3106",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/curb-your-enthusiasm/umc.cmc.4koxxcdkbia1pne6zkt72mhva"
+    }
+  ],
+  "quote": "tu vois Larry David je sais pas si tu regardes Curb Your Enthusiasm de Larry David",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:59:35",
+  "title": "Curb Your Enthusiasm",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

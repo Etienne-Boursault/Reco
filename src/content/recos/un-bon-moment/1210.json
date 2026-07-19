@@ -1,17 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon Nardwuar/Nardouer (ubm-2957 discard). Attribution incertaine entre les deux hosts (extractions divergentes : Navo vs Kyan).",
+    "reason": "Nardwuar (intervieweur canadien, « chocs mentaux »), reco reelle : « n'hesitez pas a voir l'homme... sur YouTube. Il est tres drole » (00:20:45).",
+    "verdict": "validate"
+  },
   "creator": "Nardwuar",
   "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1210",
+  "kind": "reco",
   "links": [],
   "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:20:46",
   "title": "Nardwuar",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

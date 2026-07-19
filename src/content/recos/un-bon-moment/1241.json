@@ -1,20 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Anecdote / rappel du theme OrelSan (canonique = citation ubm-2674). Orthographe correcte 'OrelSan', titre 'Oral San' errone.",
+    "reason": "Anecdote sur l'achat de l'album d'OrelSan a la Fnac pour 9 euros en 2009 (01:07:24, 'Aurel San a la FNAC pour 9 euros en 2009'). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Oral San",
   "episodeGuid": "65240e1c5d8481001225962c",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3620226452"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1241",
   "links": [],
   "quote": "Oralson à la Fnac pour 9€ en 2009",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:07:23",
   "title": "Oral San",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ],

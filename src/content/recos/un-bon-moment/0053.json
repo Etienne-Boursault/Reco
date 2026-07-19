@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Destroyer » (type autre) = prop/scène d'une de leurs vidéos, pas un album/groupe. Mention en jeu.",
+    "reason": "« Destroyer » deviné dans le jeu de la complicité (~01:00-01:01) : désigne le Star Wars Destroyer détruit dans une vidéo de McFly & Carlito (« par rapport au Destroyer qu'ils ont détruit dans la vidéo »). Pas une œuvre recommandable.",
+    "verdict": "discard"
+  },
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "Destroyer.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:01:03",
   "title": "Destroyer",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,21 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator Ezra Edelman (ESPN, Oscar 2016) à renseigner. Doublons : ubm-0866, ubm-3021. Attribution corrigée (stockée Navo → Clément).",
+    "reason": "Éloge superlatif dirigé vers le public : « les docs de sport, à ne pas oublier. O.J. Simpson Made in America... c'est une fresque. Je crois que c'est le meilleur truc que j'ai jamais vu. » Canonique (titre officiel + watchProviders).",
+    "verdict": "validate"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/66738-o-j-made-in-america/watch?locale=FR",
     "tmdb": "66738",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1104",
+  "kind": "reco",
   "links": [],
-  "quote": "oj simpson made in america pas la série le doc qui est une série doc c'est aussi un peu piège et donc c'est espn qu'elle fait ça ça avait eu l'oscar du meilleur documentaire en 2016",
-  "recommendedBy": "Navo",
+  "quote": "O.J. Simpson, Made in America. Pas la série, le doc, qui est une série doc. C'est là où c'est un peu piège. Et donc, c'est ESPN qui avait fait ça. Ça avait eu l'Oscar du meilleur documentaire en 2016, je crois.",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:22:07",
+  "status": "validated",
+  "timestamp": "00:22:12",
   "title": "O.J.: Made in America",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

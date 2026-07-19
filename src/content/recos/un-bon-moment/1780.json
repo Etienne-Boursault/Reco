@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-06",
+    "humanCorrection": "Orthographe officielle : Gisèle Kérozène / Jan Kounen (retour Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "'Le Gisele Kerosene de Yann Kounen... Allez voir sur YouTube' : recommandation publique explicite (court-metrage de Jan Kounen). Locuteur (Kyan ou Navo) incertain -> recommendedBy vide.",
+    "verdict": "validate"
+  },
+  "creator": "Jan Kounen",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1780",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir sur YouTube.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:31",
+  "title": "Gisèle Kérozène",
+  "transcriptSource": "youtube",
+  "types": [
+    "video",
+    "film"
+  ]
+}

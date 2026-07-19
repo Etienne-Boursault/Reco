@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Jeu de mots dans un jeu ('faut parasiter les autres' -> 'le surnom et titre des memoires : Parasite... t'as eu un Oscar'). Mention instrumentale, pas de prescription du film Parasite.",
+    "verdict": "discard"
+  },
+  "creator": "Bong Joon-ho",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1841",
+  "links": [],
+  "quote": "C'est-à-dire le surnom et le titre des mémoires de Doriard : \"Parasite\". C'est beau, parce que t'as eu un Oscar en plus.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:01",
+  "title": "Parasite",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2019
+}

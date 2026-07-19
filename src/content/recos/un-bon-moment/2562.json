@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Tania decrit un de SES sketchs qui utilise 'Massacre a la tronconneuse' comme materiel ('j'avais un truc sur... qui me fait hurler de rire, ca ne marche jamais'). Le film est le sujet de la vanne, pas une reco. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2562",
+  "links": [],
+  "quote": "j'avais un truc sur Massacre à la tronçonneuse qui me fait hurler de rire",
+  "recommendedBy": "Tania Dutel",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:20:10",
+  "title": "The Texas Chain Saw Massacre",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

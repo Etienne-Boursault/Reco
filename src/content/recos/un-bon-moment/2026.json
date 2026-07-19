@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison : 'il y a un bel episode de Black Mirror... appelez-moi Black Mirror' (02:19:24) — reference pour qualifier une idee de film inventee sur le plateau, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:19:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2026",
+  "links": [],
+  "quote": "Bah tu vois il y a un bel épisode de Black Mirror",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:19:24",
+  "title": "Black Mirror",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

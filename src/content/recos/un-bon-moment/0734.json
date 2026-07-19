@@ -1,17 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "creator stocke 'Penelope Bajeux' mal orthographie -> Pénélope Bagieu (a corriger cote humain).",
+    "reason": "Pénélope présente sa propre BD, version anglaise 'The Witches' (adaptation de Sacrées Sorcières de Roald Dahl), sortie cette année, promo anglophone (00:14:16). Auto-promo d'invitee -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Penelope Bajeux",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0734",
+  "kind": "reco",
   "links": [],
-  "quote": "Donc j'ai la promo anglophone de ma BD qui sorti cette année.",
-  "recommendedBy": "Penelope Bajeux",
+  "quote": "j'ai de la promo anglophone de ma BD qui est sortie cette année.",
+  "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:14:12",
+  "status": "validated",
+  "timestamp": "00:14:09",
   "title": "The Witches",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

@@ -1,24 +1,74 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-06",
+    "humanCorrection": "Pas une recommandation → citation + timecode recalé 00:59:51 (évocation des classiques Duvivier)",
+    "model": "claude-opus-4-8",
+    "reason": "Panique de Duvivier : reponse directe de Dupontel a 'un classique a recommander?' -> 'un film que je vois souvent avec plaisir c'est Panique de Duvivier... c'est formidable, extraordinaire'. PRIMAIRE (fusionner ubm-1783).",
+    "verdict": "validate"
+  },
   "creator": "Julien Duvivier",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "96903",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0255",
+  "kind": "citation",
   "links": [],
-  "quote": "C'est Panique de Du Vivier. Panique de Du Vivier. Avec Michel Simon, 1948.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "je peux voir Panique de Duvier je trouve ça super",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:40:56",
+  "status": "validated",
+  "timestamp": "00:59:51",
   "title": "Panique",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "livre"
   ],
   "year": 1948
 }

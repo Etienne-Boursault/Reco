@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Jeu cite sans recommandation.",
+    "reason": "Mention instrumentale : « Je joue a Hearthstone » (00:02:47), anecdote sur ses dimanches, aucun avis/prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:18+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2955",
+  "links": [],
+  "quote": "Je joue à Hearthstone.",
+  "recommendedBy": "Valentin Vincent",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:02:47",
+  "title": "Hearthstone",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

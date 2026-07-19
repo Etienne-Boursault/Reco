@@ -1,17 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« C'est Succession parfois... Nicolas Brittel » — musique d'ambiance qu'il met parfois. Simple nommage sans substance ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Jesse Armstrong",
   "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0449",
   "links": [],
-  "quote": "succession qui a la dajo de je sais plus qui",
-  "recommendedBy": "Invité",
+  "quote": "Donc succession qui est à la date Joe de je sais plus qui.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:05:55",
   "title": "Succession",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ]
 }

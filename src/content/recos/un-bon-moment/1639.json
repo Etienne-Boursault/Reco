@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Exemple rhetorique.",
+    "reason": "Ace Ventura cite comme exemple rhetorique illustrant 'le ridicule flirte avec le genial' (jeu de Jim Carrey).",
+    "verdict": "discard"
+  },
+  "creator": "Tom Shadyac",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:51:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T17:51:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:23:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1639",
+  "links": [],
+  "quote": "Je suis fan de Jim Carrey, c'est pas pour rien ! Je pense que quand il s'envoie des espèces d'impros de farfelus 6000 dans Ace Ventura",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:53",
+  "title": "Ace Ventura",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

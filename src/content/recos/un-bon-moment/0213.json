@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Euphoria recommandee avec enthousiasme a 00:19 ('la photo est folle, les actrices sont incroyables') puis a 01:31 dans le tour de recos ('le dernier truc que j'ai regarde et aime... c'est vraiment trop bien'). Une meme oeuvre a 2 moments = 1 reco (canonique).",
+    "verdict": "validate"
+  },
   "creator": "Sam Levinson",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,18 +14,58 @@
     "tmdb": "85552",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0213",
+  "kind": "reco",
   "links": [],
-  "quote": "Non mais moi le dernier truc que j'ai regardé, que j'ai aimé c'est cette série là Euphoria.",
+  "quote": "Moi, j'ai découvert la série Euphoria. Je n'avais pas vu, je viens de la regarder.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:31:32",
+  "status": "validated",
+  "timestamp": "00:19:28",
   "title": "Euphoria",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

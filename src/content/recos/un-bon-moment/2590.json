@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:41:06-17. Recommandeur = Freddy Gladieux (absent de guests). Borderline discard/citation ; traite comme non-reco (boutade). Si l'humain veut le garder, ce serait recommendedBy 'Freddy Gladieux' + guest_missing.",
+    "reason": "Deflection semi-blague de Freddy Gladieux quand on lui demande une reco : 'je regarde tres peu de choses... le dernier truc qui m'a un peu interesse... Retour vers le futur'. Reactions sceptiques du groupe ('c'est forcement a regarder ?'). Pas une prescription sincere.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2590",
+  "links": [],
+  "quote": "le dernier truc qui m'a un peu intéressé... Retour vers le futur...",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:12",
+  "title": "Retour vers le futur",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

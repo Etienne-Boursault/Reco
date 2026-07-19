@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "À reconsidérer par l'humain si l'asso Indigo mérite une citation ; pas de prescription claire ici.",
+    "reason": "« Et Indigo, puisqu'on faisait le tour... On a soutenu le projet » (01:18) : mention en passant dans la ronde des assos soutenues, sans prescription au public, qui vire au bit comique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2390",
+  "links": [],
+  "quote": "Et Indigo, puisqu'on faisait le tour.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:02",
+  "title": "Indigo",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

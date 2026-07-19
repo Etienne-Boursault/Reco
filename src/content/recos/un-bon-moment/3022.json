@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "« Les retours vers le futur » = mé-transcription de Back to the Future, citée comme exemple d'épisode de la docusérie The Movies That Made Us (mention instrumentale) ; doublon éditorial de ubm-3014.",
+    "verdict": "discard"
+  },
+  "creator": "autre",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3022",
+  "links": [],
+  "quote": "qu'ils en ont ressorti récemment. Donc, il y a Les retours vers le futur",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:27",
+  "title": "Les retours vers le futur",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

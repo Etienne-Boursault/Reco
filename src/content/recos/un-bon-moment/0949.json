@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2121 (le compte Instagram @fdb_ceo de François Daigle-Bérubé, 01:07:51 — même recommandation).",
+    "verdict": "discard"
+  },
   "creator": "François Degle-Bérubé",
   "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "je vous conseille son compte, c'est François Degle-Bérubé, FDB, underscore, CEO.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:07:51",
   "title": "Compte Instagram de François Degle-Bérubé (FDB_CEO)",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

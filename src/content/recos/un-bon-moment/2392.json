@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du couple Hobbs & Shaw / F&F9 ; doublon = ubm-2401.",
+    "reason": "Mention d'une bande-annonce dans une discussion sur les bandes-annonces (01:28:01) ; le locuteur précise « je ne regarde pas vraiment Fast & Furious ». Aucune prescription.",
+    "verdict": "discard"
+  },
+  "creator": "David Leitch",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:28:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2392",
+  "links": [],
+  "quote": "C'est la bande annonce de Hobbs & Shaw, Fast & Furious 9.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:28:01",
+  "title": "Hobbs & Shaw",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2511 (guest-work Mesdames). Reco titrée 'Grand Corps Malade' (artiste) mais substance = promo du même album.",
+    "reason": "Doublon de ubm-2511 : auto-promo de l'album Mesdames en outro (« ton album est sorti... c'est disponible partout »). Même œuvre à un autre moment.",
+    "verdict": "discard"
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2522",
+  "links": [],
+  "quote": "Grand Corps mesdames est sorti ton album est sorti et c'est chambé c'est disponible partout",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:38:14",
+  "title": "Grand Corps Malade",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

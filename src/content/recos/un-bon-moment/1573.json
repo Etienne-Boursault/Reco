@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommandé par un invité (Anis ou Pierre), non diarisé. Duo réel Lucas Garat & Veufla, spectacle « En carence de fer » au Théâtre du Contrescarpe (Paris). Canonique des doublons Veufla.",
+    "reason": "Reco explicite d'un invité (« j'ai vu le spectacle de deux potes à moi, Lucas et Veufla... c'est hyper puissant »).",
+    "verdict": "validate"
+  },
+  "creator": "Lucas et Veufla",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1573",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'ai vu le spectacle de deux potes à moi le spectacle de Lucas et Veufla",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:38:33",
+  "title": "Lucas et Veufla",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "spectacle"
+  ]
+}

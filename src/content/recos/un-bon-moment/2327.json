@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Aphorisme 'la derniere cle du trousseau' ~01:01:59. Voir doublon halluciné ubm-2318.",
+    "reason": "Aphorisme attribue a Paulo Coelho dans le 'battle des petites phrases' (~01:01:59) : name-drop d'auteur sans oeuvre precise, mention instrumentale (jeu de citations). Pas une reco d'oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2327",
+  "links": [],
+  "quote": "ne vous découragez pas, c'est souvent la dernière clé du trousseau qui ouvre la porte",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:01:59",
+  "title": "Paulo Coelho",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

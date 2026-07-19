@@ -1,17 +1,72 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom exact = « Histoires Crépues » ; créateur = Seumboy Vrainom (transcrit « Sunboy »). Recommandé par un invité/host, non diarisé.",
+    "reason": "Reco explicite (« moi je recommande la chaîne YouTube Histoire Crépu... c'est hyper intéressant, ça fait du bien »).",
+    "verdict": "validate"
+  },
+  "creator": "Sunboy",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1009",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, je recommande la chaîne YouTube Histoire Crépu. C'est une chaîne qui parle des colonisations, de racisme, etc.",
-  "recommendedBy": "invité",
+  "quote": "la chaîne YouTube Histoire Crépu c'est une chaîne qui parle de décolonisation de racisme",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:39:22",
+  "status": "validated",
+  "timestamp": "01:39:25",
   "title": "Histoire Crépu",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

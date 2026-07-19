@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support du jeu musical 'Devinez chanter' ('Le restaurant' de Francky Vincent). Doublon de ubm-0190/ubm-2046. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Francky Vincent",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1878",
+  "links": [],
+  "quote": "C'était Francky Vincent, le restaurant.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:24",
+  "title": "Francky Vincent, le restaurant",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

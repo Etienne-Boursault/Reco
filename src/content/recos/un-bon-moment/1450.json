@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« j'ai sorti un doc sur les baleines... c'est sur ma chaîne » + « Maman, allez voir ça » — documentaire de Natoo (invitée), reco explicite + auto-promo.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1450",
+  "kind": "reco",
+  "links": [],
+  "quote": "Oui, j'ai sorti un doc sur les baleines.",
+  "recommendedBy": "Natoo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:01",
+  "title": "Un documentaire sur les baleines",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "C'est Thomas Deseur qui prescrit ('J'ai mis Crazy Stupid Love', extrait de son livre), pas Kyan comme au brouillon. Invité absent des métadonnées.",
+    "reason": "Prescription réelle d'un film par l'invité Thomas Deseur (extrait de son livre, catégorie chagrin d'amour) ; œuvre externe réelle (Crazy, Stupid, Love, 2011).",
+    "verdict": "validate"
+  },
+  "creator": "Glenn Ficarra, John Requa",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:05",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3121",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70167068"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/crazy-stupid-love/umc.cmc.3vej6ly9q94lncie8z6saklrp"
+    }
+  ],
+  "quote": "J'ai mis Crazy Stupid Love, qui est pour le coup une comédie romantique qui a des petits défauts, mais qui est... Bah, je trouve, elle a des bons persos.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:01:05",
+  "title": "Crazy, Stupid, Love",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

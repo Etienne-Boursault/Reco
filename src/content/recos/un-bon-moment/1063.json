@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2449.",
+    "reason": "Doublon de ubm-2449 (chaine YouTube Le Labo d'Heliox, 01:13:15) ; titre 'Le Labo de Lioxx' = artefact ASR.",
+    "verdict": "discard"
+  },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "Le labo Deliox. Si tu veux apprendre à faire de l'impression 3D, de l'électronique, une lampe pour chez toi que tu programme toi-même.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:15",
   "title": "Le Labo de Lioxx",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2823.",
+    "reason": "Doublon de ubm-2823 (même mixtape Alpha Wann, ~00:56:57, extraction Acast). Canonique = ubm-2823.",
+    "verdict": "discard"
+  },
   "creator": "Alpha One",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "links": [],
   "quote": "je pense que c'est le truc de rap que j'ai le plus écouté cette année. C'est la Danda Da Tape d'Alpha One.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:56:57",
   "title": "La Danda Da Tape",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

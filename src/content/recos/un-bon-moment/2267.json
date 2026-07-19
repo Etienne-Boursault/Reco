@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique pour Vu (emission France 5). Recommandeur ambigu : le locuteur s'adresse a Flaubert ('peut-etre Flaubert tu connais') donc ce n'est pas lui ; probablement Kyan ou Navo (voire Gringe qui n'a pas recommande) -> attribution vide + attribution_suspect.",
+    "reason": "Recommandation explicite de la chaine/emission 'Vu' (decryptage de l'actu par le montage) : 'si vous etes un jeune monteur, allez voir ca' (01:21:45-01:22:01).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2267",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ils ont une chaîne qui s'appelle \"Vu\"",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:45",
+  "title": "Vu",
+  "transcriptSource": "youtube",
+  "types": [
+    "video",
+    "autre"
+  ]
+}

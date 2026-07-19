@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conservee : ubm-2741. Attribution extracteur « Kyan Khojandi » remplacee par Amixem sur la canonique (cf. note ubm-2742).",
+    "reason": "Doublon (regle 13) : meme reco que ubm-2741 (meme passage 01:17:15-20, titre « Bloodsong » tronque).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2735",
+  "links": [],
+  "quote": "Je vais recommander une série de livres qui s'appelle Bloodsong, la voix du sang.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:20",
+  "title": "Bloodsong",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

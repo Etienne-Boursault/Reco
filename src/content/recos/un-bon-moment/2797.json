@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2804 (01:12:44-45). Titre 'The ArchAndroid' (2010) errone - JP recommande 'le dernier' album = The Age of Pleasure (2023). Attribution 'Navo' erronee (c'est JP Zadi).",
+    "reason": "Doublon de la reco Janelle Monae (canonique ubm-2804); titre errone.",
+    "verdict": "discard"
+  },
+  "creator": "Janelle Monáe",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2797",
+  "links": [],
+  "quote": "l'album de Janelle Monae. Le dernier.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:45",
+  "title": "The ArchAndroid",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2392.",
+    "reason": "Doublon de ubm-2392 (même bande-annonce Hobbs & Shaw / F&F9, 01:28:01).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2401",
+  "links": [],
+  "quote": "c'est la bande annonce de Hobbs & Shaw, Fast & Furious 9.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:28:01",
+  "title": "Fast & Furious 9",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

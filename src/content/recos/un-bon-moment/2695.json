@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution reelle floue (gag a plusieurs voix) → recommendedBy vide. Titre exact possiblement 'Pulsions'.",
+    "reason": "'Pulsion(s)' = web-serie de Kyan Khojandi (host-work) name-droppee dans un gag : un faux Cristiano Ronaldo anglophone dit 'go to see Pulsion on YouTube, this is very cool'. Name-drop d'oeuvre du host dans une anecdote comique → citation (pas guest-work, pas de vraie prescription).",
+    "verdict": "citation"
+  },
+  "creator": "non précisé",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:21:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2695",
+  "kind": "citation",
+  "links": [],
+  "quote": "Yes, yes, go to see Pulsion on YouTube.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:23:42",
+  "title": "Pulsion",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

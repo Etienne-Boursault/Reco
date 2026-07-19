@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'La Scala' = salle ou les invites viennent de finir leur exploitation ('je viens de finir l'exploitation a la Scala', 00:01). Lieu contextuel, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1981",
+  "links": [],
+  "quote": "La Scala, la petite salle de la Scala !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:01:26",
+  "title": "La Scala",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

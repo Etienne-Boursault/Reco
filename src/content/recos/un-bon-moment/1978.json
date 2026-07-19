@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Jeu d'un chroniqueur ; doublon de ubm-0352.",
+    "reason": "Arkanoid = Madeleine de Proust de GREG (chroniqueur, regle 6). Doublon de ubm-0352.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1978",
+  "links": [],
+  "quote": "Moi c'était Arkanoïde sur Amstrad CPC 6128 !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:48",
+  "title": "Arkanoid",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Saltburn (Emerald Fennell, 2023) decrit avec substance (cast Jacob Elordi / Barry Keoghan, pitch 'passe l'ete dans cette famille') mais en comparaison avec les week-ends de famille d'Alice, et 'bon bah ne regarde pas' (blague). Pas de prescription -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Emerald Fennell",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1670",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'était un film, un Saltburn !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:36",
+  "title": "Saltburn",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2023
+}

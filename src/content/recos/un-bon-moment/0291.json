@@ -1,22 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Reco finale forte de Navo: 'regardez The Legend of Hei, c'est sur Youtube en integralite, c'est exceptionnel'. Anime chinois. Reco explicite au public.",
+    "verdict": "validate"
+  },
+  "creator": "pseudonyme inconnu",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
     "tmdb": "16339",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:08:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:08:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:07:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:08:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0291",
+  "kind": "reco",
   "links": [],
-  "quote": "The Legend of Hei. C'est un animé chinois. Il est sur Youtube. C'est exceptionnel.",
+  "quote": "Regardez The Legend of Hei",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:07:40",
+  "status": "validated",
+  "timestamp": "02:08:19",
   "title": "The Legend of Hei",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "video",
+    "autre"
   ]
 }

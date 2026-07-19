@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre generique 'Esther Perel Podcast'; canonique ubm-1160 'Where Should We Begin?'.",
+    "reason": "Doublon generique du podcast d'Esther Perel (meme mention 00:15:58). Canonique = ubm-1160.",
+    "verdict": "discard"
+  },
   "creator": "Esther Pérel",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1269",
   "links": [],
   "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple...",
-  "recommendedBy": "Invité non identifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:58",
   "title": "Esther Pérel Podcast",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

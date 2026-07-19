@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:06:56 : Léopold dit avoir regardé l'épisode précédent d'Un Bon Moment 'avec Big Flow du groupe' ; name-drop d'un invité/épisode précédent (Bigflo), pas de prescription de son œuvre. 'c'était super' vise l'épisode, pas la musique.",
+    "verdict": "discard"
+  },
   "creator": "Big Flo",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Je dis que... je dis la vérité et je t'ai dit que c'était super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:06:56",
   "title": "Big Flow",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

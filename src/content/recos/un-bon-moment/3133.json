@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote (Kian chantant Creep au karaoke du Bronzo), pas de prescription ni discussion de l'oeuvre (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Radiohead",
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:56",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3133",
+  "links": [],
+  "quote": "avec Ian qui chantait Creep au piano, bar, karaoke.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "09:56",
+  "title": "Creep",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Discussion cinephile substantielle mais divisee: un host 'un des meilleurs films que j'ai vu / completement fou', l'autre 'j'ai pas kiffe / c'est nul' (01:11:28-01:13:20). Pas de prescription unifiee -> citation.",
+    "verdict": "citation"
+  },
   "creator": "Daniel Kwan, Daniel Scheinert",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,17 +14,29 @@
     "tmdb": "545611",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1136",
+  "kind": "citation",
   "links": [],
   "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:11:28",
   "title": "Everything Everywhere All at Once",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

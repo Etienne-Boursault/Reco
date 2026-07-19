@@ -1,19 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution non diarizee -> vide.",
+    "reason": "Recommandation appuyee d'une chaine reelle (Les Parasites) dans le jeu des recos : 'allez voir les Parasites, c'est tres bien fait, c'est vraiment du cinema' (01:13-01:14).",
+    "verdict": "validate"
+  },
   "creator": "Les Parasites",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0640",
-  "links": [],
-  "quote": "Allez, Les Parasites. Les Parasites. La chaîne Les Parasites. Ils ont d'ailleurs fait une série sur Canal Plus.",
-  "recommendedBy": "Invité",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCqS1gDNHEX3FgJ8dPfSuRoQ"
+    }
+  ],
+  "quote": "Allez les Parasites ! La chaîne Les Parasites ! Ils ont d'ailleurs fait une série sur Canal Plus, qui s'appelle L'Effondrement ! Il y en a quelques-uns là qui ont été mis en ligne sur Youtube ! Allez voir ! Allez voir les Parasites ! Allez voir ! C'est très très très très bien fait !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:53",
+  "status": "validated",
+  "timestamp": "01:13:52",
   "title": "Les Parasites",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

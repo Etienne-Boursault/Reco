@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1764.",
+    "reason": "Doublon de ubm-1764 (meme passage 00:57:08). Extrait comme artiste 'Larry David' alors que le canonique retient l'oeuvre (Curb Your Enthusiasm).",
+    "verdict": "discard"
+  },
+  "creator": "Larry David",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1771",
+  "links": [],
+  "quote": "Mais pour moi, quelqu'un qui a son âge, qui l'assume et qui parle de trucs de son âge, tu vois, je ne sais pas, Larry David est toujours marrant.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:08",
+  "title": "Larry David",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

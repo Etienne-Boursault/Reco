@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1116 (meme passage, bonne identification).",
+    "reason": "Mauvaise identification : « Midnighties de John Ayle » (01:11:39) interprete a tort en « Midnight in Paris » de Woody Allen. Le vrai film (description : jeunes filmes dans les annees 90) = Mid90s de Jonah Hill.",
+    "verdict": "discard"
+  },
+  "creator": "Woody Allen",
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2887",
+  "links": [],
+  "quote": "en film t'as Midnighties de John Ayle",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:11:39",
+  "title": "Midnight in Paris",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

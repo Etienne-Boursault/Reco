@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le titre en 'Putain de serie' avant publication. Une fois corrige -> guest-work de Jonathan Cohen (sa serie web qu'il recommande). Reste en draft pour decision humaine sur le titre.",
+    "reason": "Titre 'serie de merde' est un artefact: c'est une vanne recurrente corrigee en direct dans l'episode ('non c'est putain de serie'). Le vrai titre = 'Putain de serie', serie web de Jonathan Cohen recommandee ('allez la voir, elle est sur youtube, inspiree de The Office').",
+    "verdict": "unsure"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,6 +35,7 @@
   "status": "draft",
   "timestamp": "01:05:27",
   "title": "série de merde",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

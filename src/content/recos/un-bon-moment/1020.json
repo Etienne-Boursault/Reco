@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2266",
+    "reason": "Doublon de ubm-2266 (meme chaine boxe, ts 01:16:47). Titre 'Willy Boxing' tronque (manque 'Lee').",
+    "verdict": "discard"
+  },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T09:39:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1020",
   "links": [],
   "quote": "c'est un américain qui s'appelle Lee Willy qui est un historien et passionné de box [...] il prend des très grands boxeurs et il explique quelles sont leurs techniques, pourquoi ils sont forts",
-  "recommendedBy": "Clém",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:16:47",
   "title": "Willy Boxing",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

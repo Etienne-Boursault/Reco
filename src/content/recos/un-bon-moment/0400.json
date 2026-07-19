@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Louis de Funès est triste ce soir' est un gag inventé sur le moment (faux film dramatique improvisé), pas une œuvre réelle.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0400",
   "links": [],
   "quote": "Louis de Funes est Tristan ce soir c'est un super film",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:22:20",
   "title": "Louis de Funès",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

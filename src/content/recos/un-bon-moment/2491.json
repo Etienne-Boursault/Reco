@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre « La musique que j'ai écrite » = artefact issu de la phrase « une somme de souvenirs sur la musique que j'ai écrit » ; pas un vrai titre, ouvrage non paru en 2020 → unsure, reste draft. À reprendre si un titre publié est identifié.",
+    "reason": "Thomas VDB parle d'un livre de souvenirs sur la musique qu'il a écrit (00:50:14-00:51:28), envoyé à des éditeurs, non publié à l'enregistrement (2020) : « ça va peut-être sortir dans deux ans ». Œuvre d'invité réelle mais en cours.",
+    "verdict": "unsure"
+  },
+  "creator": "Thomas",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2491",
+  "links": [],
+  "quote": "j'ai commencé à écrire un livre de souvenirs par rapport à la musique",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:50:44",
+  "title": "La musique que j'ai écrite",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

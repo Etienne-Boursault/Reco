@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2415",
+    "reason": "Doublon de ubm-2415 (meme sketch Edouard @00:02:54). Titre 'Skatfall' = artefact. On garde 2415 comme canonique.",
+    "verdict": "discard"
+  },
+  "creator": "Edouard Beriardonné",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2426",
+  "links": [],
+  "quote": "Formidable sketch. Edouard Berdiadonné, allez le voir sur YouTube.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:02:54",
+  "title": "Skatfall",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

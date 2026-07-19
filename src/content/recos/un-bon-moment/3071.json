@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Pitch (myCanal), écrite par Kyan avec Xavier Mangon et co-écrite avec Florent Bernard (invité). Auto-promo d'actualité → guestWork.",
+    "reason": "Série des hosts co-écrite par l'invité Florent Bernard, promue en actu (règle 17) : 'a écrit pitch avec les deux saisons' + 'c'est disponible sur ma canal, n'hésitez pas à les voir pitch l'intégralité' (00:30-00:32).",
+    "verdict": "guest-work"
+  },
+  "creator": "Baptiste Lecaplain, Florent Bernard, Xavier Maingon",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:27",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3071",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24718.html"
+    }
+  ],
+  "quote": "on est sur une a écrit pitch avec les deux saisons la première saison la première j'avais écrit qu'avec des épisodes avec xavier",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:30:27",
+  "title": "Pitch",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

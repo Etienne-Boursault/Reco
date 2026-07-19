@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0862 (documentaire Orelsan). Titre « Aurelson (documentaire) » ; le passage (« ce documentaire sur ton frère disponible sur Amazon Prime ») désigne la même œuvre.",
+    "verdict": "discard"
+  },
+  "creator": "Clem",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3024",
+  "links": [],
+  "quote": "Les gens te connaissent maintenant pour ce documentaire sur ton frère qui est disponible sur Amazon Prime.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:31:42",
+  "title": "Aurelson (documentaire)",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

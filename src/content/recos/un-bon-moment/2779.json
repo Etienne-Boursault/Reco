@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre à corriger : « Edrec volume 1 » → « Ed Rec Vol. 1 » (Ed Banger Records, 2006). Locuteur = Julien Granel (autobiographie « j'ai grandi en écoutant les CD Ed Banger... né en 95 ») ; champ reco indiquait Kyan. Canonique ; ubm-2766 (« Édène Volume 1 ») est un doublon.",
+    "reason": "Compilation Ed Banger discutée comme influence formatrice (« quand j'avais 15 ans... c'est le son du futur, c'est complètement fou ») ; vraie substance mais pas de prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2779",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il y a Edrec volume 1 qui est sorti et je me suis dit mais c'est le son du futur, c'est complètement fou.",
+  "recommendedBy": "Julien Granel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:50:19",
+  "title": "Edrec volume 1",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Saga audio de François Descraques, présentée/promue avec infos de diffusion (« l'épopée temporelle disponible sur YouTube, applications de podcast, Audible »). Auto-promo d'œuvre d'invité.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2659",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est marrant",
+  "recommendedBy": "François Descraques",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:09",
+  "title": "L'Épopée temporelle",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast",
+    "video"
+  ]
+}

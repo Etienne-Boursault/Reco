@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-0220",
+    "reason": "Doublon de ubm-0220 (La Pampa). Titre 'Un p'tit truc en plus' = artefact : l'extracteur l'a tire du nom 'Artus' (acteur), mais l'oeuvre discutee est bien La Pampa ('La Pampa de Antoine Chevrolier'). Meme passage 01:33.",
+    "verdict": "discard"
+  },
   "creator": "Artus",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "1152014",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -14,9 +37,10 @@
   "quote": "La Pampa de Antoine Chevrolier. Très beau. Super film. Le plus connu des acteurs, c'est Artus.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:33:18",
   "title": "Un p'tit truc en plus",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

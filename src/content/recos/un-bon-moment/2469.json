@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le contexte (Occupation, resistance) designe l'Antigone de Jean Anouilh (1944), pas Sophocle -> corriger le createur.",
+    "reason": "Reference culturelle developpee (Antigone jouee sous l'Occupation, applaudissements de resistance a chaque « non ») pour illustrer « le contexte donne l'oeuvre » (l.2439-2450). Substance reelle sans prescription -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Sophocle",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2469",
+  "kind": "citation",
+  "links": [],
+  "quote": "Peut-être que c'est aussi ça, l'art sur scène. C'est que pendant la guerre, par exemple, pendant l'occupation, les gens allaient voir Antigone.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:20",
+  "title": "Antigone",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

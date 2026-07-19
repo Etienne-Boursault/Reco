@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'c'est dans La Cousine Bette de Balzac' + citation admiree (arrivistes/singes) : oeuvre de Balzac citee comme source de phrases admirees, avec substance, sans prescription. NB metadonnee 'by' etait Navo.",
+    "verdict": "citation"
+  },
+  "creator": "Honoré de Balzac",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2018",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'est dans la cousine bête de Balzac",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:07",
+  "title": "La Cousine Bette",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

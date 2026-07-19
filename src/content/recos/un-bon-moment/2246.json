@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon avec ubm-2257 et ubm-0592 (meme moment) ; tous discard.",
+    "reason": "Jeu mentionne en aparte au lancement du segment jeu ('Moi je suis tres bananagramme', 00:49:15) -> mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2246",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:18",
+  "title": "Bananagrams",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre et creator (Sonia Kronlund) corrects. Attribution Navo vs Kyan incertaine (transcript sans diarisation, meme locuteur que Splinalende).",
+    "reason": "Un host recommande explicitement le podcast France Culture 'Les Pieds sur terre' de Sonia Kronlund (01:13:39, 'C'est mega interessant... hyper original'). Reco substantielle.",
+    "verdict": "validate"
+  },
   "creator": "Sonia Kronlund",
   "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:02:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:02:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1132",
+  "kind": "reco",
   "links": [],
-  "quote": "les pieds sur terre de Sonia Kroland je crois que c'est son nom c'est un podcast France Culture quotidien de à peu près une demi heure",
+  "quote": "C'est un podcast France Culture quotidien.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:13:39",
   "title": "Les Pieds sur terre",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

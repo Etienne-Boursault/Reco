@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Existence/orthographe de « Willy l'ancien » (rappeur IA sur Skyrock) NON verifiable : budget WebSearch de la session epuise (200/200). Presente comme un phenomene reel externe (pas invente en episode), d'ou validate + flag. Metadonnees invites VIDES alors que Jason Brokers et AZ sont presents (titre + transcript).",
+    "reason": "Jason (invite) recommande avec substance un rappeur IA tiers qui le fascine (« ca fait une semaine que je suis fascine », « je trouve ca genial franchement », « hyper interessant »). Oeuvre tierce, pas auto-promo → validate (pas guest-work).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:10:26",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3098",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/3gzMRa6kszVHxXUiTpHFWb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/artist/380656181"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube Music",
+      "url": "https://music.youtube.com/channel/UC9v2_lYf6QKSD3FnSWxa11A"
+    }
+  ],
+  "quote": "ça fait une semaine que je suis fasciné par ça",
+  "recommendedBy": "Jason Brokers",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:10:26",
+  "title": "Willy l'ancien",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

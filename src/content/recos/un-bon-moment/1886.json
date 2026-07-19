@@ -1,0 +1,30 @@
+{
+  "creator": "Lac de Garde",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1886",
+  "links": [],
+  "quote": "Près de la plaine du... La ville où tout le monde se déteste.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:49",
+  "title": "Lac de Garde",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

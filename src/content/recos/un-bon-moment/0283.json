@@ -1,21 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Francis Cabrel discute avec substance (annees 80 'que des bangers', declin ensuite) + fandom 'j'ai le vinyle, grand fan'. Exemple de la these confort/creativite, sans prescription, pas un invite.",
+    "verdict": "citation"
+  },
   "creator": "Francis Cabrel",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/72064755"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:55:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0283",
+  "kind": "citation",
   "links": [],
-  "quote": "C'est vrai que j'ai pas la même appétence à aller écouter Francis Cabrel.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est vrai ? J'ai le vinyle, je suis un grand fan de Francis Cabrel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:55:34",
+  "status": "validated",
+  "timestamp": "01:55:19",
   "title": "Francis Cabrel",
+  "transcriptSource": "acast",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

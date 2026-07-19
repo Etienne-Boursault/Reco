@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:01:38-57. 'Anna Apter' = l'autrice ; l'oeuvre produite semble la serie 'Cher journal' (saison 1 en tournage). Titre = nom de personne, oeuvre reelle mal identifiee -> title_suspect. Attribution hote (Kyan vs Navo, tous deux producteurs) non trancable -> attribution_suspect. WebSearch impossible (budget epuise).",
+    "reason": "Host-work : le locuteur decrit produire 'Un bon moment' ('je montais les dernieres missions d'un bon moment', 'j'ai cree unebonneboutique.com') et 'lancer des concepts, dont Anna Apter'. Un hote presente une oeuvre de son ecurie de production. 'Anna est genial, super autrice'.",
+    "verdict": "guest-work"
+  },
+  "creator": "Anna Apter",
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:04:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2593",
+  "kind": "reco",
+  "links": [],
+  "quote": "« Anna est génial... »",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:01:51",
+  "title": "Anna Apter",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

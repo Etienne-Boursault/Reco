@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Name-drop illustratif (alumni Sciences Po), aucun avis. Non identifiable comme oeuvre.",
+    "reason": "Meme passage que ubm-3034 : Bertrand cite 'Romanov' dans sa liste de modeles de parcours Sciences Po 'independamment de ce que je peux penser d'eux' (00:47). Mention instrumentale, aucun avis. 'Romanov' intracable comme oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3035",
+  "links": [],
+  "quote": "c'est Big BD c'est Romanov",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:27",
+  "title": "Romanov",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

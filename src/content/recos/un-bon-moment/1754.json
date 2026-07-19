@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Cite pour raconter la filmo de l'acteur de Gerald.",
+    "reason": "Contexte biographique : 'il a eu un petit role dans L'Amour Ouf' (00:11), a propos du parcours de l'acteur Logan Lefebvre. Name-drop, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:12:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1754",
+  "links": [],
+  "quote": "Et après, il a eu un petit rôle dans L'Amour Ouf",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:11:59",
+  "title": "L'Amour Ouf",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

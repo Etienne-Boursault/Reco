@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Kanye West discute a deux reprises (methode: aller chercher les experts congas/Bangalter/Woodkid; longevite via Travis Scott). Substance reelle mais surtout illustratif. Pas d'oeuvre prescrite, pas un invite. Borderline citation/discard.",
+    "verdict": "citation"
+  },
+  "creator": "Kanye West",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1746",
+  "kind": "citation",
+  "links": [],
+  "quote": "Pourquoi on est là?",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:28:28",
+  "title": "Kanye West",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

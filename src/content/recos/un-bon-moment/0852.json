@@ -1,17 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Capitaliser le titre 'panorama' -> 'Panorama'.",
+    "reason": "Album Panorama (2019) de VD evoque en discutant sa methode (arrangement avant paroles) — substance sur la genese mais pas de prescription ; name-drop de l'album -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Vincent Delerm",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0852",
+  "kind": "citation",
   "links": [],
-  "quote": "pour panorama",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Pour Panorama ?",
+  "recommendedBy": "Vincent Delerm",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:29:26",
+  "status": "validated",
+  "timestamp": "00:29:27",
   "title": "panorama",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "album",
+    "musique"
   ]
 }

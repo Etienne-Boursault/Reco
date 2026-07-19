@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre -> 'OrelSan'. Discussion Kheiron ~00:16:12 ; reco finale hosts ~01:20:45. Doublons discardes : ubm-1035, ubm-2320.",
+    "reason": "OrelSan recommande explicitement dans le segment final 'chaine YouTube' ('Relsan, a fond !' ~01:20:45) + longuement admire par Kheiron (~00:16-00:18). Canonique OrelSan (rule 5 : meme artiste a 2 moments = 1 reco). Titre a corriger 'Aurel' -> 'OrelSan'. Attribution multiple.",
+    "verdict": "validate"
+  },
+  "creator": "Orel San",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2311",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'adore Aurel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:30",
+  "title": "Aurel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

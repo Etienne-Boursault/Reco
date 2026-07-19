@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = Kyan (« si je les dis moi... on va dire Kyan a pete un cable »). Demetri Martin cite au meme endroit, non retenu comme reco.",
+    "reason": "Malgre le cadre du jeu, prescription explicite : « deux gars que j'adore... allez voir sur Netflix ses specials... un des plus grands auteurs de One Line du moment ». Humoriste reel, pas un invite.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3192",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://anthonyjeselnik.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/anthonyjeselnik"
+    }
+  ],
+  "quote": "deux gars que j'adore qui s'appellent Demetri Martin et Anthony Djezelnik qui sont des one-liners",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:51:09",
+  "title": "Anthony Jeselnik",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

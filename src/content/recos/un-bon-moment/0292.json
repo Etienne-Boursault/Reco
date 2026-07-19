@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1735 (restaurant Namak, 02:08:56). Titre 'Namaq'. A fusionner.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:08:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0292",
   "links": [],
   "quote": "Moi je recommande le restaurant Namaq. C'est un restaurant ou bon, j'ai l'Iranien, mais c'est l'Iranien Fusion. C'est près de Saint-Lazare.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:08:59",
   "title": "Namaq",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

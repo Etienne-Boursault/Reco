@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateurs réels = Florence Longpré (créatrice/comédienne) & Thomas Ngijol (transcrit « Florence Lompret et Thomas Giorne ») — série québécoise Crave/Canal+. Reco du même invité non diarizé que Los años nuevos.",
+    "reason": "Segment reco artistique : « l'autre c'est Empathie ! C'est incroyable ! Elle est super cette série ! » (l.3997-4017). Titre correct.",
+    "verdict": "validate"
+  },
   "creator": "Florence Lompret et Thomas Giorne",
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
@@ -6,17 +18,57 @@
     "tmdb": "284656",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0330",
+  "kind": "reco",
   "links": [],
-  "quote": "Empathie c'est incroyable",
-  "recommendedBy": "inconnu",
+  "quote": "Empathie ! C'est incroyable ! J'aime Florence Lomprey de tout mon être !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:35:51",
+  "status": "validated",
+  "timestamp": "01:35:49",
   "title": "Empathie",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

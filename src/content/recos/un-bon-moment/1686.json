@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 0323 — même vanne du CD de Patrick Bruel comme grattoir à pare-brise (l.145).",
+    "verdict": "discard"
+  },
+  "creator": "Patrick Bruel",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1686",
+  "links": [],
+  "quote": "rien ne bat un CD de Patrick Bruel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:03:51",
+  "title": "CD de Patrick Bruel",
+  "transcriptSource": "acast",
+  "types": [
+    "musique"
+  ]
+}

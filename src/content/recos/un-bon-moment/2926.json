@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "'L'Avare': jeu de de Funes juge 'epoustouflant/dingue' (au mot pres a Moliere), cite comme preuve de son talent serieux. Appreciation substantielle dans un argumentaire cinephile -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Louis de Funès",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2926",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'est un avare époustouflant",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:05",
+  "title": "L'Avare",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

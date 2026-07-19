@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "La Cigale = salle où Tristan a joué son spectacle pour la première fois (00:50:32), citée dans une anecdote sur ses parents. Lieu, pas une œuvre → discard (faux positif).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2130",
+  "links": [],
+  "quote": "Quand j'ai joué la première fois le spectacle à 'La cigale', j'avais dit à ma mère que j'allais en parler.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:32",
+  "title": "La Cigale",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

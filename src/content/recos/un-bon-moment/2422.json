@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (Kyan producteur artistique ou un invite) — transcript non diarize.",
+    "reason": "'Whiplash' (Damien Chazelle) cite en comparaison pour le batteur Odilon des Fables ('un cote Whiplash, j'adore le film', ref faite dans leurs episodes). Avis positif + lien creatif = citation (pas de prescription au public).",
+    "verdict": "citation"
+  },
+  "creator": "Damien Chazelle",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:48:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2422",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'adore le film weplash.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:48:00",
+  "title": "Whiplash",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre reelle de l'invitee, citee biographiquement. Timecode ~00:16:20. Invitee absente de guests[].",
+    "reason": "'Ma vie est tout a fait fascinante' est le nom du blog BD de Penelope Bagieu, cite dans son recit d'origine (passage a l'autobio) sans prescription au public.",
+    "verdict": "citation"
+  },
+  "creator": "Pénélope Bagieu",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1700",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'était le moment où tu t'autorises entre guillemets mais en tout cas tu tu te dis je raconte ma live quoi je vais montrer du truc des tu vois c'était c'est vrai peut-être tu as raison",
+  "recommendedBy": "Penelope Bagieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:22",
+  "title": "Ma vie est tout à fait fascinante",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

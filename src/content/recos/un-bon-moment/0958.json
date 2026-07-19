@@ -1,5 +1,27 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1874 (meme passage 01:47:54, chaine Twitch de Roro/Romain). Titre-artefact '3e2u1h'.",
+    "verdict": "discard"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +30,10 @@
   "quote": "moi je recommande la chaîne Twitch de j'ai écrit comment ? ah je connais pas 3e2u1h je crois",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:47:54",
   "title": "3e2u1h",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

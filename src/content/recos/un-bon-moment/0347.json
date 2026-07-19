@@ -1,21 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1646 (documentaire Sia).",
+    "reason": "Doublon de ubm-1646 : la quote porte sur le documentaire Sia (chaine de Paul), pas sur l'artiste Sia comme reco distincte.",
+    "verdict": "discard"
+  },
   "creator": "Sia",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3454558661"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0347",
   "links": [],
-  "quote": "vraiment, je suis un grand fan de Sia.",
-  "recommendedBy": "Invité",
+  "quote": "Il y a un très très beau documentaire sur SIA fait par la chaîne de Paul sur Youtube qui est juste là, le lien est là !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:48:24",
+  "status": "discarded",
+  "timestamp": "00:47:50",
   "title": "Sia",
+  "transcriptSource": "acast",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2550. 'Fantaisie militaire' (Alain Bashung, 1998) cite pour sa pochette signee Laurent Serossi (01:13) ; mention instrumentale, pas une reco. Titre/creator corrects si le relecteur veut le ressusciter en citation.",
+    "verdict": "discard"
+  },
   "creator": "Alain Bashung",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "c'est lui aussi qui avait fait la pochette sublime de l'album de bachung fantaisie militaire",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:24",
   "title": "Fantaisie militaire",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon corrompu de ubm-1652.",
+    "reason": "Doublon de ubm-1652 : 'Lou Garou' = transcription corrompue de Loup-Garou au meme passage (02:06).",
+    "verdict": "discard"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:06:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "Lou Garou, c'est bien, j'ai vu l'épisode 4 hier, j'ai adoré.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:06:39",
   "title": "Lou Garou",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

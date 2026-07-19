@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger : 'Soixante' (le transcript dit '60'). Borderline : mention liee au sponsor MyCanal + venue de Pomme ; a arbitrer par l'humain (guest-work vs citation).",
+    "reason": "'60' = 'Soixante', l'emission Canal+ de Kyan Khojandi (60 artistes, 2019) ou Pomme a joue, pluggue comme dispo sur MyCanal ('Pour regarder 60 avec Pomme'). Oeuvre d'un host presentee par lui = guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2629",
+  "kind": "reco",
+  "links": [],
+  "quote": "Elle est dans 60, elle est passée dans 60. 60 qui est disponible sur My Canal d'ailleurs.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:37:21",
+  "title": "60",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

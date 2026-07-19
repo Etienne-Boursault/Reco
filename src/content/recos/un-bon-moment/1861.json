@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Harry Swittles' = l'AUTEUR (Harris Wittels), une personne, pas une oeuvre. Rattache au livre ubm-0962.",
+    "verdict": "discard"
+  },
+  "creator": "Harry Swittles",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1861",
+  "links": [],
+  "quote": "C'est le mec qui était un auteur du SNL qui est mort aujourd'hui le humble brag",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:26:34",
+  "title": "Harry Swittles",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

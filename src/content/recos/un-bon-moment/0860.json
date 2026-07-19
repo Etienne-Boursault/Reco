@@ -1,18 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Navo recommande le podcast 'Des trains a travers la plaine' (Ambroise Carminati) : 'c'est un conseil a donner... c'est tres, tres bien'. Titre correct.",
+    "verdict": "validate"
+  },
   "creator": "Philippe Léon",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0860",
+  "kind": "reco",
   "links": [],
-  "quote": "Il fait un podcast qui s'appelle \"Des trains à travers la plaine\". [...] C'est \"Extrait de bouquin\", \"Extrait de film\" et \"Chanson française\" autour d'un thème. Donc c'est très très bien.",
+  "quote": "C'est un podcast qui s'appelle des trains à travers la plaine.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:13",
+  "status": "validated",
+  "timestamp": "01:12:09",
   "title": "Des trains à travers la plaine",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

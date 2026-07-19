@@ -1,16 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "The Four = télé-crochet US présenté par P. Diddy, cité pour situer Evie McKinney (00:50:03). Pas une reco.",
+    "reason": "Émission TV citée uniquement comme contexte (là où Evie McKinney a été vue) : mention instrumentale sans avis sur l'œuvre (règle 1).",
+    "verdict": "discard"
+  },
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0617",
   "links": [],
   "quote": "c'était dans une émission, une émiseuse qui s'appelait The Four",
-  "recommendedBy": "Fadili",
+  "recommendedBy": "Fadily Camara",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:50:03",
   "title": "The Four",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

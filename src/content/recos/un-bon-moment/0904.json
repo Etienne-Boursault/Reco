@@ -1,19 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Les Inseparables (dessin anime avec Eric Judor, sortie dec. 2023), presente par JP comme son actu. Laura Felpin manque dans episode.guests.",
+    "reason": "JP Zadi annonce son projet a venir (dessin anime Les Inseparables) = auto-promo d'invite.",
+    "verdict": "guest-work"
+  },
   "creator": "Éric Judor",
   "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0904",
+  "kind": "reco",
   "links": [],
-  "quote": "il y a un dessin animé avec Éric Judor qui sort en décembre. Ça s'appelle les inséparables.",
-  "recommendedBy": "Invité",
+  "quote": "Il y a un dessin animé avec Eric Judor qui sort en décembre. Il s'appelle Les Inséparables.",
+  "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:17:01",
   "title": "Les Inséparables",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
-  ]
+    "autre",
+    "film"
+  ],
+  "year": 2024
 }

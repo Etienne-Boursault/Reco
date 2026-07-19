@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Zebre de Belleville' (00:15:50) = salle ou joue Marine, mention logistique ('on a repris aux zebres de belleville... complet'). Pas une oeuvre ni une reco de lieu.",
+    "verdict": "discard"
+  },
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0167",
   "links": [],
   "quote": "Il y a un zèbre de Belleville.",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:50",
   "title": "Zèbre de Belleville",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invités Bigflo & Oli à ajouter à episode.guests.",
+    "reason": "Succession qualifiée d'exceptionnelle / une des meilleures séries, générique 'ouf', 'tu connais pas Succession? je vous envie' — enthousiasme prescripteur. Présentée comme 'votre série préférée à vous deux' (B&O). Discussion réelle (pas la réponse blind-test, qui a déclenché l'échange).",
+    "verdict": "validate"
+  },
   "creator": "Jesse Armstrong",
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
@@ -6,17 +18,49 @@
     "tmdb": "76331",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1229",
+  "kind": "reco",
   "links": [],
-  "quote": "Bonne série.",
-  "recommendedBy": "Invité",
+  "quote": "C'est une bonne série. Exceptionnelle.",
+  "recommendedBy": "Bigflo & Oli",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:20:57",
+  "status": "validated",
+  "timestamp": "00:20:56",
   "title": "Succession",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

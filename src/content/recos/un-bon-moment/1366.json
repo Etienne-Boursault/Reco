@@ -1,0 +1,153 @@
+{
+  "aliases": [
+    "The Zone of Interest",
+    "La Zone d'Intérêt"
+  ],
+  "creator": "Jonathan Glazer",
+  "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR",
+    "tmdb": "467244",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:12:06+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:00:13+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1366",
+  "kind": "reco",
+  "links": [],
+  "quote": "Dernier coup de cœur, la zone d'intérêt.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:31:44",
+  "title": "Zone of Interest",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt&c=movies"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Cinemas a la Demande",
+      "url": "https://www.cinemasalademande.com/?s=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    }
+  ]
+}

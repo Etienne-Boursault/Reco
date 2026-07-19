@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1381 (Etre Humain).",
+    "reason": "Meme oeuvre que ubm-1381 (spectacle 'Etre Humain' de Shirley), ici en simple anecdote (un stand-upper entend son rodage). Doublon de ubm-1381.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1909",
+  "links": [],
+  "quote": "Un stand-upper dont je ne citerai pas le nom mais qui un jour entend mon rodage du dernier spectacle L'être humain.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:25",
+  "title": "L'être humain",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

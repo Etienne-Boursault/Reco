@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Faux Amis' n'est pas une oeuvre : mauvaise interpretation de 'fausses lettres d'amour', anecdote d'enfance de Lou (ecrivait de fausses lettres pour reconcilier ses parents). Pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0139",
   "links": [],
   "quote": "j'ai écrit des magouges, j'ai écrivé des fausses lettres d'amour",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:59:21",
   "title": "Faux Amis",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

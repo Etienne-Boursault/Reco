@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Bloc comique apocalypse.",
+    "reason": "Mention instrumentale/comparaison dans la meme vanne ('c'est lui qui monte Mad Max', gourou sur des motos) a 00:53:46. Pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:53:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2236",
+  "links": [],
+  "quote": "C'est lui qui monte Mad Max",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:53:46",
+  "title": "Mad Max",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

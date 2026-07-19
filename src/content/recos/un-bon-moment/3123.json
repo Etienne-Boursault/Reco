@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Flight' (le transcript dit aussi 'The Flight'). Reco de Thomas Deseur, pas Kyan. Invité absent des métadonnées.",
+    "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie peur de l'avion, extrait du livre) ; œuvre réelle avec Denzel Washington (Flight, Robert Zemeckis, 2012).",
+    "verdict": "validate"
+  },
+  "creator": "Robert Zemeckis",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:35",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3123",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70243453"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=193101.html"
+    }
+  ],
+  "quote": "Le film avec Denzel. Flight. The Flight. Où l'avion se retourne carrément.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:35",
+  "title": "Flight",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

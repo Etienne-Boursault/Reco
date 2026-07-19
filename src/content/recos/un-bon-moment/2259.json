@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0593 (version Acast deformee en 'Florent Peyre se plante des disques').",
+    "reason": "Spectacle HYPOTHETIQUE inexistant ('j'ai entendu parler d'un spectacle... Florence passe des disques. Ca m'aurait fait kiffer que ca existe', 00:49:36) -> n'existe pas.",
+    "verdict": "discard"
+  },
+  "creator": "Florence",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2259",
+  "links": [],
+  "quote": "D'ailleurs, j'ai entendu parler un jour d'un spectacle, je ne sais pas si on veut parler, « Florence passe des disques. »",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:35",
+  "title": "Florence passe des disques",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

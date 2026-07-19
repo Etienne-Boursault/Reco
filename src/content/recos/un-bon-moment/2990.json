@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite reel = Laurent Baffie (guests metadata VIDE, a completer). Champ creator existant 'Laurent Baffy' est une faute d'orthographe pour 'Laurent Baffie' (non modifiable par le script apply_verdicts). Timecode 00:09:16 exact (transcript 00:09:16-00:09:23).",
+    "reason": "Livre de l'invite Laurent Baffie presente par lui-meme et decrit substantiellement ('c'est un succes', il en a tire les meilleurs passages pour construire son one-man). Titre verbatim transcript a 00:09:20 et 00:48:19. Auto-promo invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Laurent Baffy",
+  "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2990",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai pris des meilleurs passages d'un bouquin. Je suis parti là-dessus. 500 questions que personne ne se pose.",
+  "recommendedBy": "Laurent Baffie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:16",
+  "title": "500 questions que personne ne se pose",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

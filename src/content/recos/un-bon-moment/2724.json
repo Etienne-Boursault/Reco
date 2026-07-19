@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre à corriger « Miss Kina » -> « Miskina, la pauvre ». Invitée absente du champ guests ; recommendedBy = propriétaire Melha Bedia.",
+    "reason": "Série « Miskina, la pauvre » créée par et avec l'invitée Melha Bedia (Prime Video) ; confirmée dans le transcript par « on fait la saison 2 » et « j'ai voulu me la raconter ». Auto-promo d'œuvre d'invitée.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2724",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ah oui moi j'adore une série. Miss Kina saison 1.",
+  "recommendedBy": "Melha Bedia",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:21",
+  "title": "Miss Kina",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

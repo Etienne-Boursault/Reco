@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Le Flodcast (00:24): 'Allez ecouter le Flodcast. C'est toujours bien meme de reecouter vu que c'est termine'. Prescription explicite au public. Locuteur (host) incertain -> vide.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1597",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez écouter le Flodcast. C'est toujours bien même de réécouter vu que c'est terminé mais n'hésitez pas à aller réécouter.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:24:54",
+  "title": "Le Flodcast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

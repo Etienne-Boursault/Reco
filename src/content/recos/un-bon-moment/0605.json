@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. Quote 'je suis meme dali Scatman' incoherent/garbled ; oeuvre = chanson 'Scatman' (Scatman John) plausible mais contexte illisible. A re-arbitrer si transcript complet.",
+    "reason": "Transcript inexploitable + quote garbled illisible.",
+    "verdict": "discard"
+  },
   "creator": "Scatman John",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/99360002"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +35,10 @@
   "quote": "je suis même dali Scatman",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:38:39",
   "title": "Scatman",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0376 (Les Futurs Lointains). NB: creator 'Kurzgesagt' errone (c'est la chaine francaise Balade Mentale).",
+    "verdict": "discard"
+  },
   "creator": "Kurzgesagt",
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +28,10 @@
   "quote": "Dans Ballade Mental qui est géniale d'ailleurs si vous voulez vous endormir dans l'espace profond ça s'appelle les Futurs Lointains il y a le lien qui est là vraiment c'est une super vidéo",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:23",
   "title": "Futurs Lointains",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

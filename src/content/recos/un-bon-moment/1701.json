@@ -1,0 +1,67 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~00:32:05. Performeuse recurrente de l'emission ('vient nous voir de temps en temps'), pas une reco.",
+    "reason": "Mona Guba est une rappeuse qui performe dans l'emission (freestyle live), pas une oeuvre recommandee. Performeuse non-invitee -> regle 6.",
+    "verdict": "discard"
+  },
+  "creator": "Mona Guba",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1701",
+  "links": [],
+  "quote": "on a quelqu'un qui qui vient nous voir de temps en temps elle s'appelle mona guba c'est une rappeuse qu'on a détecté sur les réseaux sociaux elle faisait des freestyles",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:05",
+  "title": "Mona Guba",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

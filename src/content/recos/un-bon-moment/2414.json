@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2413 (même « Je recommande GTA V » [01:04:24]). Gag de remplissage de Navo, pas une vraie reco.",
+    "reason": "Doublon + reco comique.",
+    "verdict": "discard"
+  },
+  "creator": "Rockstar Games",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2414",
+  "links": [],
+  "quote": "Je recommande GTA V.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:24",
+  "title": "GTA V",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

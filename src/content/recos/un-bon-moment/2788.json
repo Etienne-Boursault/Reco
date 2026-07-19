@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Les meufs c'est des mecs bien' de Mourad Winter (chez Click Edition), loue ('tres tres chauds', 'il est trop fort Mourad') et recommande au segment reco. ubm-0901 et ubm-2799 = doublons. Laura Felpin manque dans episode.guests.",
+    "reason": "Livre de Mourad Winter (romancier) recommande et loue par JP Zadi; canonique du cluster Mourad Winter.",
+    "verdict": "validate"
+  },
+  "creator": "Mourad Winter",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2788",
+  "kind": "reco",
+  "links": [],
+  "quote": "Très drôle, tu éclates de rire en lisant un bouquin.",
+  "recommendedBy": "Jean-Pascal Zadi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:58",
+  "title": "Les Meufs, c'est des mecs bien",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

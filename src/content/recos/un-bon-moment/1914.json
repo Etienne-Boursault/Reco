@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-1402. Distinct de Mesdames (ubm-0494, 00:11).",
+    "reason": "je travaille sur l'album de Grand Corps Malade (00:56:53) sert de decor temporel a une anecdote sur la reconciliation avec Kyan -- ni presentation ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1914",
+  "links": [],
+  "quote": "je travaille sur l'album de Grand Corps Malade",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:53",
+  "title": "Grand Corps Malade",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

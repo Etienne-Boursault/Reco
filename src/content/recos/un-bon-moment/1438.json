@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Scooby-Doo = REPONSE d'une question de quiz (« de quel dessin anime cree par Iwao Takamoto en 1969 est derivee la serie Velma »). Reponse de jeu. Draft recommendedBy Navo errone.",
+    "verdict": "discard"
+  },
+  "creator": "Iwao Takamoto",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1438",
+  "links": [],
+  "quote": "de quel dessin animé créé par Iwao Takamoto en 1969 est dérivé la série Velma",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:31",
+  "title": "Scooby-Doo",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 1969
+}

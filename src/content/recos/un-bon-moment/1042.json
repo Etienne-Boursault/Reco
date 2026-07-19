@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2374.",
+    "reason": "Doublon de ubm-2374 (meme reco, video 'Flics & Games' avec Laura Felpin, 01:39). Titre 'Fleak & Games' errone; canonique = ubm-2374.",
+    "verdict": "discard"
+  },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +28,10 @@
   "quote": "j'aimerais vous recommander une vidéo sur YouTube, qui n'a pas adoré, qui s'appelle \"Fleek & Games\".",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:39:11",
   "title": "Fleak & Games",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

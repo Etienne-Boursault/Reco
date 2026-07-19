@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Type 'lieu' — pas une oeuvre recommandable.",
+    "reason": "'Feminat' = salle de concert de Bordeaux (le Femina) evoquee dans une anecdote de tournee ('une des meilleures salles de France'). Un lieu n'est pas une oeuvre a recommander — discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3007",
+  "links": [],
+  "quote": "Féminat, c'est une des meilleures salles de France.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:44",
+  "title": "Féminat",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

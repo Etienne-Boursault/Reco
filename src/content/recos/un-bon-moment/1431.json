@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Sang froid : titre quebecois de Drive, cite DANS le jeu 'deviner chanter'. Support de jeu + doublon de ubm-0462.",
+    "verdict": "discard"
+  },
+  "creator": "Nicolas Winding Refn",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1431",
+  "links": [],
+  "quote": "c'est sang froid",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:14",
+  "title": "Sang froid",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2011
+}

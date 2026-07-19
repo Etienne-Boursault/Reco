@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle 'Sexe' de Berangere Krief : 'je vous recommande Berangere Krief... son spectacle qui s'appelle Sexe... que j'ai co-ecrit' (01:53). Reco explicite. Locutrice = celle qui a co-ecrit Sexe = Marine.",
+    "verdict": "validate"
+  },
+  "creator": "Bérangère Krief",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:53:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2069",
+  "kind": "reco",
+  "links": [],
+  "quote": "une amie à moi aussi qui s'appelle Bérangère Krièf qui a son spectacle qui s'appelle Sexe et qui est vraiment que tu as co-écrit oui que j'ai co-écrit",
+  "recommendedBy": "Marine Leonardi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:53:13",
+  "title": "Sexe",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

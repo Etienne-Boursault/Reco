@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "'Je t'ai vu dans le flambeau' - name-drop de la serie de Kyan Khojandi, sans avis substantiel. Mentionneur non identifiable -> recommendedBy vide.",
+    "reason": "Oeuvre de host (Le Flambeau, serie de Kyan) citee en name-drop, sans prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2790",
+  "kind": "citation",
+  "links": [],
+  "quote": "je t'ai vu dans le flambeau",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:04",
+  "title": "Le Flambeau",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

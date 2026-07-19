@@ -1,0 +1,70 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Role d'acteur, confirme par recherche (Kaamelott 2, A. Astier).",
+    "reason": "Projet de l'invite promu en outro : Thomas VDB joue dans Kaamelott (role de Goffanan, Kaamelott - Deuxieme Volet, confirme). Auto-promo assumee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Alexandre Astier",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1858",
+  "kind": "reco",
+  "links": [],
+  "quote": "Bah voilà il est dans Kaamelott",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:48:02",
+  "title": "Kaamelott",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie",
+    "film"
+  ]
+}

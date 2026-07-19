@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Le timecode ancre @00:17:57 est un name-drop ('depuis que j'ai fait bref il y a 15 ans') mais la fenetre contient la discussion substantielle sur Bref 2.",
+    "reason": "Bref = serie de Kyan (host), discutee avec substance dans la fenetre (sa carriere de realisateur + casting de Bref 2 : Raphael, 'il fallait une meuf', etc.). Auto-promo assumee du format (politique hosts=invites).",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1664",
+  "kind": "reco",
+  "links": [],
+  "quote": "Depuis que j'ai fait bref. Il y a 15 ans.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:57",
+  "title": "Bref",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

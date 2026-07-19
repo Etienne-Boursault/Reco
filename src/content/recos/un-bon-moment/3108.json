@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Host (Kyan ou Navo) non diarizable → recommendedBy vide (regle 3).",
+    "reason": "Un host affirme Magnolia comme film n°1 et le defend (« en un c'est Magnolia... et apres pour moi tous les autres films ils se tapent ») → prescription reelle. Film tiers (Paul Thomas Anderson), pas l'oeuvre d'un invite → validate.",
+    "verdict": "validate"
+  },
+  "creator": "Paul Thomas Anderson",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3108",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/magnolia/umc.cmc.mbdys1lghcq89larr77nlxnb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (où voir)",
+      "url": "https://www.allocine.fr/film/fichefilm-22858/telecharger-vod/"
+    }
+  ],
+  "quote": "en un c'est Magnolia",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:04:44",
+  "title": "Magnolia",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1999
+}

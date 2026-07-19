@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Nirvana cite comme exemple rhetorique dans la discussion sur le marketing/viralite (00:52). Pas de recommandation.",
+    "verdict": "discard"
+  },
+  "creator": "Nirvana",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2545",
+  "links": [],
+  "quote": "Nirvana, c'est extrêmement viral.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:52:44",
+  "title": "Nirvana",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

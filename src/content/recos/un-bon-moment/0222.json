@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'un endroit qui s'appelle le BAM' (01:37:43) : lieu (salon karaoke) mentionne dans une anecdote perso (ou Kyan a chante et s'est casse la voix), sans prescription. Pas une oeuvre.",
+    "verdict": "discard"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +26,10 @@
   "links": [],
   "quote": "c'est un endroit qui s'appelle le BAM.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:37:48",
   "title": "BAM",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

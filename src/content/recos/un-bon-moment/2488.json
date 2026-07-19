@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« Bah d'ailleurs tu devais jouer dans Bref ! » (01:09:58) : anecdote de casting (Thomas VDB devait y jouer en 2011 mais était en tournage). Œuvre du host (Kyan) mentionnée en anecdote SANS aucun avis sur la série → mention instrumentale, discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2488",
+  "links": [],
+  "quote": "Bah d'ailleurs tu devais jouer dans Bref !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:58",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2011
+}

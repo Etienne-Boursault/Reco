@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1374.",
+    "reason": "Doublon de ubm-1374 (Adel Fugazi).",
+    "verdict": "discard"
+  },
   "creator": "Adèle Fougasi",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1010",
   "links": [],
   "quote": "J'aurais dit toujours Adèle Fougasi, mais j'ai l'impression qu'il faut aller voir Adèle Fougasi parce que si on aime les propositions un peu inédites.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:40:52",
   "title": "Spectacle d'Adèle Fougasi",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

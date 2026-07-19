@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2648.",
+    "reason": "Doublon de ubm-2648 (Le Visiteur du futur, titre officiel) — même œuvre, autre mention à 00:39:47.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2657",
+  "links": [],
+  "quote": "vous avez eu un gros succès de fan avec visiteurs du futur",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:39:47",
+  "title": "Visiteurs du futur",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

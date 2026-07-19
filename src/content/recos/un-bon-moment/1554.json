@@ -1,0 +1,28 @@
+{
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1554",
+  "links": [],
+  "quote": "Ça s'appelle le deviné chanté de Greg Romano.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:18",
+  "title": "Le deviné chanté de Greg Romano",
+  "transcriptSource": "acast",
+  "types": [
+    "jeu"
+  ]
+}

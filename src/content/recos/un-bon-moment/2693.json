@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Borderline citation/discard : c'est la personne qui est citee pour une phrase, pas son oeuvre qui est discutee → traite en mention instrumentale.",
+    "reason": "Sugar Sammy (humoriste quebecois reel) cite uniquement comme source d'une maxime sur le stand-up ('ton niveau c'est celui de la derniere scene que t'as faite'). Aucune prescription ni avis sur son oeuvre — mention instrumentale (autorite citee pour une idee).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:21:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2693",
+  "links": [],
+  "quote": "C'est Sugar Sammy, un humoriste québécois qui dit : ton niveau c'est celui de la dernière scène que t'as faite.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:13",
+  "title": "Sugar Sammy",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

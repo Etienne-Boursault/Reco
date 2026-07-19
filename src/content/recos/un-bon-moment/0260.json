@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'je vous recommande White Fire' : recommandation explicite (nanar culte projete lors du spectacle Kyan/Navo). Locuteur Kyan ou Navo non certain (transcript non diarise) -> recommendedBy vide.",
+    "verdict": "validate"
+  },
   "creator": "A. V. R. Roth",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,18 +14,57 @@
     "tmdb": "858718",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0260",
+  "kind": "reco",
   "links": [],
-  "quote": "Je vous recommande White Fire. Ah, c'est bon, vieux White Fire. Mais c'est en soi, un chef-d'œuvre. C'est un chef-d'œuvre, un nanar.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "je vous recommande White Fire",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:47:49",
+  "status": "validated",
+  "timestamp": "01:47:44",
   "title": "White Fire",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

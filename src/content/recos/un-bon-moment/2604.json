@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Morceau (Boney M., Rasputin) du multi-blind test (32:46). Discard.",
+    "verdict": "discard"
+  },
+  "creator": "Boney M.",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2604",
+  "links": [],
+  "quote": "Bonnie M, Rasputine !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:32:46",
+  "title": "Rasputin",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

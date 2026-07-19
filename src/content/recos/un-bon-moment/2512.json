@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = un invité décrivant son propre spectacle (GCM ou Ben, non diarisé). Titre 'Céline' à préciser (Céline Dion, spectacle).",
+    "reason": "Le spectacle de Céline Dion (photo de René qui tombe) est cité en exemple de maîtrise émotionnelle sur scène : « elle est parfaite... un level de maîtrise... assez impressionnant ». Admiration substantielle sans prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2512",
+  "kind": "citation",
+  "links": [],
+  "quote": "par exemple Céline qu'on est donc allé voir en spectacle",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:47:23",
+  "title": "Céline",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

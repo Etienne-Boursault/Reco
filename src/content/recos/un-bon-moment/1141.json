@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Attribution host cinephile non certaine.",
+    "reason": "Reco explicite: 'Heredite, du meme realisateur [Ari Aster], il est tres bon. Et je vous le conseille' (01:13:24).",
+    "verdict": "validate"
+  },
   "creator": "Ari Aster",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,16 +15,29 @@
     "tmdb": "493922",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1141",
+  "kind": "reco",
   "links": [],
   "quote": "Si vous avez vu \"Midsommar\", \"Hérédité\", du même réel, il est très bon.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:13:24",
   "title": "Hereditary",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,19 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle: Meghan Trainor. Canonique (doublon ubm-0935 'Megan Trainor').",
+    "reason": "Kyan recommande explicitement dans le segment recos ('écoutez du Megan Trainor', 'petite recommandation de vitalité').",
+    "verdict": "validate"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3975583911"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1110",
+  "kind": "reco",
   "links": [],
   "quote": "elle est Megan Trenor le matin / écoutez du Megan Trenor / ça met en patate",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:15:06",
   "title": "Meghan Trainor",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

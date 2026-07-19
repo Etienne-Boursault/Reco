@@ -1,6 +1,26 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "= Jul (rappeur).",
+    "reason": "00:45:19 : réponse du multi-blind-test ('il y a Jul'). Support de jeu → discard.",
+    "verdict": "discard"
+  },
   "creator": "non spécifié",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +29,10 @@
   "quote": "Et il y a Jules.",
   "recommendedBy": "non spécifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:45:19",
   "title": "Jules",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

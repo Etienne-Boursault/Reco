@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommandation dans le segment « Les Roku d'Eddie » : Eddy la cite (« il parait que c'est formidable », il ne l'a pas vue) et Kyan co-signe fortement (« magnifique, fous dingue, faut vraiment aller voir »). Canonique du doublon avec ubm-2201 (metadonnees TMDB/watchProviders presentes ici). Createur stocke « Justine Trier » a corriger en « Justine Triet ». Invite recommandeur absent de guests.",
+    "reason": "Reco du segment Les Roku d'Eddie (Eddy la cite) co-signee fortement par Kyan.",
+    "verdict": "validate"
+  },
   "creator": "Justine Trier",
   "episodeGuid": "6599c1b296596600156961a7",
   "externalIds": {
@@ -6,18 +18,40 @@
     "tmdb": "915935",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0106",
+  "kind": "reco",
   "links": [],
-  "quote": "A Diatomie d'une chute de Justine Trier, magnifique, fou d'un cul.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Faut vraiment aller voir ce film.",
+  "recommendedBy": "Eddy de Pretto & Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:56:44",
   "title": "Anatomie d'une chute",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

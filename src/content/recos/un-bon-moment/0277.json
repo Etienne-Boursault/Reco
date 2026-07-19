@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Community, 'serie culte des annees 2010', 'role fantastique' de Glover, discute avec substance. Pas de prescription, pas un invite.",
+    "verdict": "citation"
+  },
   "creator": "Dan Harmon",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
@@ -6,18 +14,57 @@
     "tmdb": "18347",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0277",
+  "kind": "citation",
   "links": [],
-  "quote": "Puis après il a joué parfaitement bien un rôle fantastique dans Community qui est une série culte des années 2010",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est lui qui a joué parfaitement bien un rôle fantastique dans Community qui est une série culte des années 2010 !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:49",
+  "status": "validated",
+  "timestamp": "01:15:52",
   "title": "Community",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

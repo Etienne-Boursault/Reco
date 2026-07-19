@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco attribuée au guest (Thomas VDB). Guests épisode = « Thomas VDB » (déjà correct).",
+    "reason": "« Bon Chien Chien », dernier spectacle de l'invité Thomas VDB (00:03:57 : « mon dernier spectacle qui s'appelait Bon Chien Chien »), présenté par lui dans un contexte de promo. Œuvre d'invité → guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Thomas VDB",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2489",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'avais bien l'idée de pas disparaître complètement quoi de rester un peu présent quoi",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:04:35",
+  "title": "Bon Chien Chien",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

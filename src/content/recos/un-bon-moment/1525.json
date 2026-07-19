@@ -1,0 +1,40 @@
+{
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1525",
+  "kind": "citation",
+  "links": [],
+  "quote": "Moi, dans Californie, qui est notre chanson la plus écoutée de notre catalogue",
+  "recommendedBy": "Caballero & JeanJass",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:44:01",
+  "title": "Californie",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

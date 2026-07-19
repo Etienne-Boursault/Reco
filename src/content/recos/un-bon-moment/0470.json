@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1000 (To Be or Not to Be de Lubitsch) avec titre degrade ('Tout va bien, Not To Be').",
+    "verdict": "discard"
+  },
   "creator": "Ernst Lubitsch",
   "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0470",
   "links": [],
   "quote": "Allez voir aussi Tout bien Not To Be de Lubitsch, qui est un classique de la comédie.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:50",
   "title": "Tout va bien, Not To Be",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

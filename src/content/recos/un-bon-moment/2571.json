@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Steve Martin cite comme auteur d'une vanne du jeu 'Devinez la chute'. Reponse de jeu-devinette -> discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2571",
+  "links": [],
+  "quote": "Steve Martin, je crois que le sexe est la chose la plus belle et la plus naturelle parmi toutes les choses au monde",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:03",
+  "title": "Steve Martin",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

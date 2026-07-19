@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Anti-reco (film assume comme mauvais). Titre 'Denis' a verifier.",
+    "reason": "Film cite NEGATIVEMENT par Fabrice (01:02) : 'un film dans lequel j'ai joue qui etait tres mauvais... le realisateur perd le film.' Anti-recommandation, anecdote de mauvaise experience.",
+    "verdict": "discard"
+  },
+  "creator": "Jean-Paul Rouve",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1772",
+  "links": [],
+  "quote": "Il y a un film avec Jean-Paul Rouve.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:02:20",
+  "title": "Denis",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

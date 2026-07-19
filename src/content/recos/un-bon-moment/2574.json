@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "corriger titre: Orelsan; reco porte sur ses 3 albums (trilogie); ajouter Paul aux invites",
+    "reason": "Paul sur ses influences: 'si on prend Orelsan que j'aime beaucoup... si demain quelqu'un veut decouvrir le rap il ecoute ca [ses 3 albums], c'est un bon exemple'. Reco d'entree dans le rap. Titre 'Aurel San' -> 'Orelsan'.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2574",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, c'est beaucoup des rappeurs. Ouais, je te jure. Même, tu vois là, par exemple, si on prend Aurel San, que vous connaissez, et que j'aime beaucoup",
+  "recommendedBy": "Paul Mirabel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:08",
+  "title": "Aurel San",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

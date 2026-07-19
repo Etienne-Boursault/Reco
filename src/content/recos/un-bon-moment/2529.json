@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur indetermine (echange humour/stand-up a plusieurs voix, possiblement l'invite) -> attribution videe. Serie Netflix reelle.",
+    "reason": "'il y a une serie sur Netflix qui s'appelle Indian Matchmaking qui est assez incroyable' : appreciation reelle mais mobilisee comme exemple pour illustrer que certaines personnes n'aiment pas l'humour. Substance sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Netflix",
+  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2529",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y a une série sur Netflix qui s'appelle Indian Matchmaking qui est assez incroyable",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:34:54",
+  "title": "Indian Matchmaking",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

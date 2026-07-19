@@ -1,0 +1,41 @@
+{
+  "creator": "Vincent Delerme",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:09:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:47:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1349",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je recommande Vincent Delerme, la BO du film qu'il a fait.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:54:19",
+  "title": "Vincent Delerme",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "musique"
+  ]
+}

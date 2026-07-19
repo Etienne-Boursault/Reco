@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'L'italiano' (Toto Cutugno) devinee dans le multi-blind test — chanson support de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Toto Cutugno",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3011",
+  "links": [],
+  "quote": "L'italiano.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:53",
+  "title": "L'italiano",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

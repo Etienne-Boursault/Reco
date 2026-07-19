@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-05",
+    "humanCorrection": "Titre corrigé (« Le Pire Guide de Cyprien » → « Le pire guide du Japon ») ; œuvre réelle, validate maintenu",
+    "model": "claude-opus-4-8",
+    "reason": "« Le Pire Guide de Cyprien... je le recommande... il est incroyable » — reco explicite (x2), livre réel de Cyprien. Note : ironique (« je l'ai pas encore lu, on l'a reçu »), un co-host conteste. Locuteur non tranchable.",
+    "verdict": "validate"
+  },
+  "creator": "Cyprien",
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1461",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai reçu le pire guide de Cyprien ! Je l'ai pas encore lu je l'ai reçu alors du coup je le recommande ! Il est incroyable !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:36",
+  "title": "Le pire guide du Japon",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

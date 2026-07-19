@@ -1,21 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigée (stockée Navo → Clément). Série sœur « Toys That Made Us » = ubm-3013.",
+    "reason": "Docusérie Netflix citée comme influence : « movies that made us... les coulisses de la création de films. C'est ouf. C'est trop bien. » Substance + enthousiasme léger, sans prescription.",
+    "verdict": "citation"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/93219-the-movies-that-made-us/watch?locale=FR",
     "tmdb": "93219",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1103",
+  "kind": "citation",
   "links": [],
-  "quote": "tous les movies that made us toys that made us et tout c'est les coulisses de la création de films",
-  "recommendedBy": "Navo",
+  "quote": "Sur Netflix, tous les movies that made us, toys that made us et tout. C'est les coulisses de la création de films.",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:21:14",
+  "status": "validated",
+  "timestamp": "00:18:18",
   "title": "The Movies That Made Us",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

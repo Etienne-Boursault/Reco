@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "= 'Sliding Doors' (1998, Gwyneth Paltrow). Evoque pour le concept metro pris/pas pris / vies paralleles (comparaison pour 'Mourir seul' / 'Family Man'). Titre correct mais jamais prononce dans le transcript (film seulement decrit). Timestamp 00:00:00 invalide (mention ~00:48:17).",
+    "reason": "Mention instrumentale : le film illustre le concept de vies paralleles, sans prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Gwyneth Paltrow",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2751",
+  "links": [],
+  "quote": "Si, il y a un film avec Gwyneth Paltrow où elle prend ou elle ne prend pas le métro et tu finis par vivre deux films en parallèle.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:00",
+  "title": "Sliding Doors",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

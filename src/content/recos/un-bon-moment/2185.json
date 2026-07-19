@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger 'Plemo' -> 'Pleymo'. Si corrige, verdict = citation (influence, sans prescription).",
+    "reason": "Point d'ancrage nu-metal ado de Navo, mais titre 'Plemo' = artefact a corriger avant publication -> 'Pleymo' (groupe nu-metal francais). Reste en draft pour correction humaine.",
+    "verdict": "unsure"
+  },
+  "creator": "Plemo",
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:06:09+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2185",
+  "links": [],
+  "quote": "J'ai adoré le punk rock, les blinks, Sum 41, tout ça.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:22:36",
+  "title": "Plemo",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

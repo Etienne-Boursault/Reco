@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre = artefact de nom de fichier lu par Eddy (« ca s'appelle Odevi Vdef Max Mix », vdef = version definitive). Piste feat. Odevi de l'album prototype d'Eddy (00:01:01). Titre reel intracable => reste draft. Oeuvre d'invite (Eddy de Pretto) si un vrai titre est confirme.",
+    "reason": "Titre = artefact de nom de fichier lu par Eddy; titre reel intracable.",
+    "verdict": "unsure"
+  },
+  "creator": "Odevi",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2205",
+  "links": [],
+  "quote": "ça s'appelle Odevi Vdef Max Mix.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:01:01",
+  "title": "Odevi Vdef Max Mix",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

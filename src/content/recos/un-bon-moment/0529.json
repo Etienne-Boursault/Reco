@@ -1,18 +1,31 @@
 {
   "creator": "Les Inconnus",
   "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0529",
   "links": [],
-  "quote": "En fait c'était un trio d'humoristes.",
+  "quote": "c'est un peu comme si c'est comme les inconnus quoi de j'ai pas frangé la règle voilà les inconnus",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:01:59",
+  "status": "discarded",
+  "timestamp": "00:01:46",
   "title": "Les Inconnus",
+  "transcriptSource": "acast",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

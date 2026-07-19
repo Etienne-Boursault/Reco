@@ -1,20 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote perso (aller voir le film au ciné en banlieue avec son ex) — pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Oren Peli",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/23827-paranormal-activity/watch?locale=FR",
     "tmdb": "23827",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0510",
   "links": [],
-  "quote": "une fois que je suis rentré chez moi j'étais un peu en train de me dire je sais pas j'ai un peu peur mais j'étais avec mon ex il fallait que je sois le bonhomme.",
+  "quote": "le film paranormal activity qui sort",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:20:58",
+  "status": "discarded",
+  "timestamp": "01:20:57",
   "title": "Paranormal Activity",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

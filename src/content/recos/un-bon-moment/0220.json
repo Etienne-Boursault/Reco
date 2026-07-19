@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur probable Doria Tillier ('moi j'ai tourne avec lui [Artus] cet ete', 'j'ai eu une partition') mais non certain. Doublon: ubm-0964.",
+    "reason": "La Pampa (Antoine Chevrolier) recommandee fort a 01:33:18 : 'super film, hyper bien realise, j'ai adore la real et les acteurs, pose de vraies questions sur l'homosexualite dans la ruralite'. Canonique. Doublon: 0964.",
+    "verdict": "validate"
+  },
   "creator": "Antoine Chevrolier",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,16 +18,57 @@
     "tmdb": "1001006",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0220",
+  "kind": "reco",
   "links": [],
-  "quote": "La Pampa de Antoine Chevrolier.",
+  "quote": "Super film. Hyper bien réalisé.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:33:21",
   "title": "La Pampa",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

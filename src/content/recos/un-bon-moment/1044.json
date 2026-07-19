@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur masculin ('moi je suis un peu pareil') repondant a Laura, non identifie avec certitude (Navo/Kyan/Anis). Doublon: ubm-2370 ('Portrait of a Lady on Fire' est une hallucination — ce n'est PAS ce film).",
+    "reason": "Reco explicite ('allez le voir tout de suite, c'est super, c'est magnifique'). Film Rachel Weisz + Rachel McAdams / amour impossible / juives traditionnelles = Disobedience (2017, Sebastian Lelio). Titre correct = canonique; ubm-2370 = doublon avec titre halluciné.",
+    "verdict": "validate"
+  },
   "creator": "Sebastian Lelio",
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
   "externalIds": {
@@ -6,17 +18,30 @@
     "tmdb": "419743",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1044",
+  "kind": "reco",
   "links": [],
   "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:33:56",
   "title": "Disobedience",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

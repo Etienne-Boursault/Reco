@@ -1,0 +1,70 @@
+{
+  "creator": "Ramzy Bédia",
+  "customLinks": [
+    {
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000036006.html"
+    }
+  ],
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "externalIds": {
+    "tmdb": "1566481",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1329",
+  "kind": "reco",
+  "links": [],
+  "quote": "Marav, c'est l'histoire avec Ramzy Bédia.",
+  "recommendedBy": "Redouane Bougheraba",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:07:44",
+  "title": "Marave",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2023
+}

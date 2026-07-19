@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Documentaire Netflix recommandé par Navo (son tour dans la ronde, appelé « navo ») : longue présentation enthousiaste (« c'est super touchant », « hyper intéressant », « ça vaut le coup »). Titre officiel = canonique.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2667",
+  "kind": "reco",
+  "links": [],
+  "quote": "amour et autisme sur netflix c'est un documentaire",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:23:53",
+  "title": "Love on the Spectrum",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

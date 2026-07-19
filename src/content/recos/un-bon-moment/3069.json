@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme locuteur que Britney (ubm-1030), attribution Kyan probable mais non diarise",
+    "reason": "Take on Me (a-ha) evoque et loue ('c'est formidable') mais subordonne a Britney ('mais Britney Spears c'est la mieux'); mention/comparaison sans prescription principale (regle 4/15)",
+    "verdict": "citation"
+  },
+  "creator": "a-ha",
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:54",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3069",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/track/664107"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — Hunting High and Low",
+      "url": "https://www.deezer.com/en/album/80521"
+    }
+  ],
+  "quote": "Take on me, c'est formidable, mais Britney Spears, c'est la mieux",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:54",
+  "title": "Take on Me",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

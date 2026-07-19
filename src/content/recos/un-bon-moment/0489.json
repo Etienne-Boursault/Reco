@@ -1,17 +1,68 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Humoriste/parodiste TikTok + chaine YouTube 'Geronimo' (perso de cite parlant comme un DRH) — type artiste/video. PAS Geronimo Stilton ni le chef apache. Attribution = un host (parle du 'perso dans Police Flash 80' a un invite), mais Kyan vs Navo incertain.",
+    "reason": "Reco explicite repetee : 'Je recommande Geronimo... c'est genial' (01:35 et 01:36).",
+    "verdict": "validate"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0489",
+  "kind": "reco",
   "links": [],
-  "quote": "Je recommande Géronimo.",
+  "quote": "Je recommande Géronimo, que vous avez peut-être vu sur TikTok.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:36:46",
+  "status": "validated",
+  "timestamp": "01:35:20",
   "title": "Géronimo",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video",
+    "artiste"
   ]
 }

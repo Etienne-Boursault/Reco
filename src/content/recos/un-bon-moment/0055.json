@@ -1,21 +1,44 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre absent du transcript (artefact acast). Passage réel : 00:42:14 « moi je connaissais pas tous ces trucs là ».",
+    "reason": "Faux positif : aucun « Mortal » dans le transcript YouTube autour de 00:42. Le passage réel est une conversation sur les YouTubeurs/conventions geek qu'Éléonore ne connaissait pas (« moi je connaissais pas tous ces trucs là », Antoine Daniel/Cyprien) — aucune œuvre présentée.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
     "tmdb": "90591",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0055",
   "links": [],
   "quote": "Mortal, je ne connaissais pas tout ce truc-là.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:00",
   "title": "Mortal",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator « Sadek » probablement ERRONE : Sadek est un choregraphe cite juste avant (connu via Instagram) ; la piece est associee a Melody Mouray (« Melody Mouray, la, non ? »). A verifier/corriger en metadonnee. Locuteur du conseil incertain -> recommendedBy vide. YT 01:14:55.",
+    "reason": "Reco explicite du tour final de recommandations : pièce « La course des geants », reprise au theatre de la Renaissance, qualifiee « tres inventif ». Oeuvre reelle, avis positif clair.",
+    "verdict": "validate"
+  },
+  "creator": "Sadek",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2859",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est une pièce qui est à côté de chez vous. La course des géants.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:55",
+  "title": "La Course des géants",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

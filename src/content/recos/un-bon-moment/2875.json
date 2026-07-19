@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster chaine Marvel (doublons ubm-0816, ubm-1091). Orthographe incertaine : le transcript epelle « Herosef » mais les hosts hesitent (« il dit aerocef », « moi je dis aero »), non verifiable (web epuise) -> title_suspect.",
+    "reason": "Reco canonique de la chaine YouTube sur les theories de l'univers Marvel : « si vous adorez l'univers Marvel, si vous avez kiffe les theories sur les univers Marvel, je trouve qu'il est assez interessant. »",
+    "verdict": "validate"
+  },
+  "creator": "Herosef",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:40:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2875",
+  "kind": "reco",
+  "links": [],
+  "quote": "la chaîne d'Aerosef, si vous aimez l'univers Marvel.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:09:22",
+  "title": "Herosef",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

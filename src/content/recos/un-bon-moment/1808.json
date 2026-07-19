@@ -1,0 +1,67 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon 0226/1808. Identifie via WebSearch comme le format de jeu 'Meli-Melo' (Kyan/Navo).",
+    "reason": "'Melly Mello' = 'Meli-Melo', format de JEU maison numerote de l'emission (contexte 'on peut faire un Melly Mello 8' en pleine invention de jeu ; WebSearch : videos 'MELI-MELO / MELI-MELO 2 LEGENDARY / Meli Melo 4 - jeux hilarants avec Bigflo & Oli'). Auto-reference des hosts a leur propre contenu de jeu, pas une oeuvre externe recommandee.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T05:34:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "19:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1808",
+  "links": [],
+  "quote": "Regardez Melly Mello.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:58",
+  "title": "Melly Mello",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie",
+    "autre"
+  ]
+}

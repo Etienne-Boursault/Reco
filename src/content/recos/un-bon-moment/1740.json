@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Daniel Tirado, humoriste, credite deliberement ('je tiens a donner son nom', 'exceptionnel') comme influence (regle du 'choix le plus difficile'). Substance sur son influence mais aucune oeuvre prescrite. Borderline citation/discard.",
+    "verdict": "citation"
+  },
+  "creator": "Daniel Tirado",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1740",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est un humoriste canadien et ça a bouleversé ma façon de réfléchir il y a vraiment pas longtemps : Daniel Tirado !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:56",
+  "title": "Daniel Tirado",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

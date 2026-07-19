@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-2308.",
+    "reason": "Doublon de ubm-2308 : meme chanson de Stromae (~00:02:25). 'le mariage' = le THEME evoque, pas le titre ; la chanson est 'Le Sommeil'.",
+    "verdict": "discard"
+  },
+  "creator": "Stromae",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2323",
+  "links": [],
+  "quote": "il y a une chanson de Stromae que j'adore qui parle de cette thématique qui s'appelle le mariage",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:08:27",
+  "title": "le mariage",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

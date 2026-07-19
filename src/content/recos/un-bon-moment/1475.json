@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom exact : 'Sylvqin' (et non 'Sylvain Quint') — YouTubeur enquête/tech, vidéo forfait SFR Millennium (déc. 2025). Doublons 1500 et 1954 discardés.",
+    "reason": "Kyan recommande explicitement le YouTubeur ('abonnez-vous à leur chaîne, ils sont formidables'), auteur de la vidéo sur le forfait SFR Millennium. Canonique.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1475",
+  "kind": "reco",
+  "links": [],
+  "quote": "Si vous aimez ce genre de bail un peu sombre, il y a Micode et il y a aussi Sylve Quint. Abonnez-vous à leur chaîne, ils sont formidables.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:22",
+  "title": "Sylvain Quint",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "video"
+  ]
+}

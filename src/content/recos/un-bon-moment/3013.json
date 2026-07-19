@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Série sœur de ubm-1103. Attribution corrigée (stockée Kyan → Clément).",
+    "reason": "« The Toys That Made Us » (docusérie Netflix distincte), citée dans le même souffle que « The Movies That Made Us » avec le même enthousiasme (« coulisses de la création... c'est trop bien »). Œuvre réelle distincte, citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3013",
+  "kind": "citation",
+  "links": [],
+  "quote": "Sur Netflix, tous les movies that made us, toys that made us et tout. C'est les coulisses de la création de films.",
+  "recommendedBy": "Clément Cotentin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:18:18",
+  "title": "The Toys That Made Us",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

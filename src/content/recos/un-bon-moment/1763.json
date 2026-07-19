@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Exemple rhetorique (artiste qui se repete), pas une reco.",
+    "reason": "Les Rougon-Macquart cite en analogie rhetorique dans le debat sur la ringardise (00:55) : 'c'est le meme roman a chaque fois... on a compris ta formule'. 'J'aime bien lire la serie' incident, mais fonction = exemple rhetorique, pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Émile Zola",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1763",
+  "links": [],
+  "quote": "Émile Zola, si tu lis la série des Rogons Magars, qui est son grand succès, c'est le même roman à chaque fois.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:07",
+  "title": "Les Rougon-Macquart",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

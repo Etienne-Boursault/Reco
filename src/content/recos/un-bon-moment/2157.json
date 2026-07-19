@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creditee a tort a Claude Nougaro: 'L'envie d'aimer' est de Daniel Levy (comedie musicale Les Dix Commandements) — le transcript montre l'hesitation (l.673-677). Segment blind-test.",
+    "reason": "Chanson devinee dans le meme blind-test. Mention de jeu, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Claude Nougaro",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2157",
+  "links": [],
+  "quote": "L'envie d'aimer de... Claude Nougaro.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:14",
+  "title": "L'envie d'aimer",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

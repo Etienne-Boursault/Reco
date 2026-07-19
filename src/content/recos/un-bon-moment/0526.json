@@ -1,22 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Plusieurs voix affirment 'reco' (probablement un host) ; locuteur non identifiable avec certitude -> recommendedBy vide.",
+    "reason": "Film 'L'Innocent' (Louis Garrel, 2022) : reco explicite emise dans le jeu des celebrites puis affirmee ('L'innocent de Louis Garel qui est d'ailleurs reco', 'reco, comedie de fou', 'je l'ai vu trois fois moi, j'adore', 00:59:09-15).",
+    "verdict": "validate"
+  },
   "creator": "Louis Garrel",
   "episodeGuid": "69e13325fb440758726a665f",
   "externalIds": {
     "tmdb": "136365",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0526",
+  "kind": "reco",
   "links": [],
-  "quote": "Que l'innocent de Lui-Garrell qui est un... D'ailleurs, Reco. Reco, comédie de fille. Reco, je l'ai vu trois fois.",
-  "recommendedBy": "Non précisé",
+  "quote": "Vas-y, l'innocent avec Louis Garel.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:59:11",
+  "status": "validated",
+  "timestamp": "00:59:09",
   "title": "L'Innocent",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

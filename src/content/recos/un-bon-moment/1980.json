@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Yassir joue son spectacle a la Petite Loge (Paris).",
+    "reason": "Spectacle de l'invite Yassir presente en outro : 'Yassir a la Petite Loge... tous les vendredis a 19h30 a partir du 16 janvier' (02:11). Auto-promo assumee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Yassir",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:11:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1980",
+  "kind": "reco",
+  "links": [],
+  "quote": "Yassir à la Petite Loge. Qui est le plus petit théâtre de Paris.",
+  "recommendedBy": "Yassir",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:11:39",
+  "title": "Spectacle à la Petite Loge",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ],
+  "year": 2024
+}

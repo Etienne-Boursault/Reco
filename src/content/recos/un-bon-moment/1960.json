@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Bit comique : « je recommande Pian » — fragment non identifiable, pas d'oeuvre reelle.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:02:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:17:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1960",
+  "links": [],
+  "quote": "je recommande Pian",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:17:37",
+  "title": "Pian",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

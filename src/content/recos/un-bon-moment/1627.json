@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1637.",
+    "reason": "Doublon de ubm-1637 (meme oeuvre Monte-Cristo); ici simple comparaison en passant a 00:12:21.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:12:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1627",
+  "links": [],
+  "quote": "Tu vois, il y avait ça aussi dans Monte Cristo, il y avait ce côté, genre, je suis...",
+  "recommendedBy": "Pierre Niney",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:12:21",
+  "title": "Le Conte de Monte-Cristo",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

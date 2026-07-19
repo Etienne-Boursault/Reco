@@ -1,10 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mention en passant ('Non, Jumanji c'est...') dans la discussion d'adaptations, sans avis.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/8844-jumanji/watch?locale=FR",
     "tmdb": "8844",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "links": [],
   "quote": "Non, Jumanji c'est possible.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:40",
   "title": "Jumanji",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

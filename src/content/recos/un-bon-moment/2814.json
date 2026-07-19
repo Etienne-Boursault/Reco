@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : 'Drive' sert seulement à identifier le réalisateur Nicolas Winding Refn ('le réalisateur de Drive, entre autres') dans une anecdote sur une technique d'interview. Film non discuté ni recommandé.",
+    "verdict": "discard"
+  },
+  "creator": "Nicolas Winding Refn",
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2814",
+  "links": [],
+  "quote": "le réalisateur de Drive, entre autres",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:08:41",
+  "title": "Drive",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

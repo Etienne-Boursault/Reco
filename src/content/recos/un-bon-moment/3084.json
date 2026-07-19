@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "'Dumbledore' (Harry Potter) en comparaison en passant pour décrire le psy ('c'est un peu Dumbledore') — mention instrumentale (règle 1).",
+    "verdict": "discard"
+  },
+  "creator": "J.K. Rowling",
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3084",
+  "links": [],
+  "quote": "C'est un peu Dumbledore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:01",
+  "title": "Harry Potter",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

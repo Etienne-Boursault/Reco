@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Hollow Knight = mauvaise devinette dans le jeu 'devine ce que je vais recommander' ('bah oui Hollow Knight quand on a parle des jeux video la !'). La vraie reco annoncee etait 'De bons amis'. Faux positif.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1674",
+  "links": [],
+  "quote": "Bah oui Hollow Knight quand on a parlé des jeux vidéo là !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:44:35",
+  "title": "Hollow Knight",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

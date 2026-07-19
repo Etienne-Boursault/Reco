@@ -1,16 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige (etait Navo, qui ne fait qu'introduire ; l'oeuvre est de Dedo, presentee par Dedo). Invites a completer dans les metadonnees episode.",
+    "reason": "BD de Dedo presentee par lui : « j'ai fait une BD... White Spirit... c'est chez Delcourt, dans la collection de Davy Mourier » (l.3048-3095). Auto-promo d'invite -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Dedo",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0671",
+  "kind": "reco",
   "links": [],
-  "quote": "Une BD que ça s'appelle \"White Spirit\" qui est mon imblommage à ce qui s'appelait le nettoyant.",
-  "recommendedBy": "Navo",
+  "quote": "Une BD qui s'appelle \"White Spirit\" qui est mon humble hommage à ce qui s'appelait…",
+  "recommendedBy": "Dedo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:41:15",
   "title": "White Spirit",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

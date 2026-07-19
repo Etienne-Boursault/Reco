@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Indice/comparaison dans le 'jeu de la complicite' ('on connait tres bien le generique des Simpsons') -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Matt Groening",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2452",
+  "links": [],
+  "quote": "on connait très bien le générique des Simpsons",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:38",
+  "title": "Les Simpsons",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

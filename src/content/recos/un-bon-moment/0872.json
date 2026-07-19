@@ -1,20 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigée (stockée Kyan → réellement Clément, connaisseur qui présente le doc). Titre FR « Faites le mur ».",
+    "reason": "Clément recommande dans le tour de recos : « un doc qui m'a grave influencé... Exit Through the Gift Shop... super cool... un des documentaires phares de la culture du street art ». Creator Banksy correct.",
+    "verdict": "validate"
+  },
   "creator": "Banksy",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0872",
+  "kind": "reco",
   "links": [],
-  "quote": "il ya un doc aussi qui m'a grave influencé c'est un doc assez connu mais qui s'appelle exit through the gift shop",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est un doc assez connu, mais qui s'appelle \"Exit through the gift shop\".",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:07:46",
+  "status": "validated",
+  "timestamp": "01:07:47",
   "title": "Exit Through the Gift Shop",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "film"
   ],
   "year": 2010
 }

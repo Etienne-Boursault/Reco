@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Source Acast residuelle.",
+    "reason": "Titre-artefact : 'Wallydia' = nom de l'invite (Waly Dia) mal transcrit, pas une oeuvre distincte. Promo tournee ('on veut Wally Diyah dans notre theatre', Kyan) deja couverte par le guest-work ubm-1170 (Une heure a tuer).",
+    "verdict": "discard"
+  },
   "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "quote": "vous savez quoi, aller voir les théâtres près de chez vous, dites, on veut Wallydia dans notre théâtre.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:12",
   "title": "Wallydia",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

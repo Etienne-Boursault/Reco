@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Film reel (Leos Carax, 2021). Locuteur = le meme intervenant 'gourmand' que la reco album (l.1957 'je peux recommander autre chose?'), non identifiable au transcript sans labels.",
+    "reason": "Reco explicite: 'Annette de Leos Carax avec Adam Driver, son meilleur role. C'est un film magnifique... il faut le voir.'",
+    "verdict": "validate"
+  },
   "creator": "Leos Carax",
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "externalIds": {
@@ -6,18 +18,48 @@
     "tmdb": "424277",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0128",
+  "kind": "reco",
   "links": [],
-  "quote": "Aller voir « Annette » qui est ratée. Annette de Léo Scarrax avec Adam Driver, son mien role. C'est un film magnifique.",
-  "recommendedBy": "inconnu",
+  "quote": "C'est un film magnifique.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:11:14",
   "title": "Annette",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

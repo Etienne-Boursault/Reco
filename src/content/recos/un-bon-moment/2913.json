@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Diams cité dans le Jeu de la Complicité (devinette autour de l'album 'Dans ma bulle', ~01:15:36) → mention instrumentale, œuvre support de jeu. Lié à ubm-2901.",
+    "verdict": "discard"
+  },
+  "creator": "Diams",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2913",
+  "links": [],
+  "quote": "C'était Diams dans ma bulle.",
+  "recommendedBy": "Oli",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:36",
+  "title": "Diams",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

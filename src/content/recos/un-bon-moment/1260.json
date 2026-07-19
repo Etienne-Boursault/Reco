@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2544 (recueils de poesie de la grand-mere, chez Flammarion). Titre 'Tous les morceaux' = artefact.",
+    "verdict": "discard"
+  },
   "creator": "Grand-mère de Matthieu Chedid",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "et même ces romans d'ailleurs qui sont incroyables mais donc il y a des recueils je crois chez Flamarion qui est un espèce de recueil où il y a toute sa poésie",
   "recommendedBy": "Matthieu Chedid",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:18:55",
   "title": "Tous les morceaux",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

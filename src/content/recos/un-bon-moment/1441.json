@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1932.",
+    "reason": "« Manon Lepelle » (la personne) = meme sujet que ubm-1932 (le spectacle de Manon discute + extrait). Doublon ; on garde le spectacle comme canonique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1441",
+  "links": [],
+  "quote": "c'est vrai qu'elle l'a raconté ici on peut mettre l'extrait si tu veux",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:37:41",
+  "title": "Manon Lepellé",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

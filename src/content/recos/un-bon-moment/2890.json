@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact = « L'amour, c'est surcote » de Mourad Winter (2021, adapte au cinema) ; le transcript dit « c'est sur l'amour »/« l'amour c'est sur cote » = le titre. Canonique du cluster (doublons Acast ubm-1206 et conflation ubm-1208 discardes). Corriger le titre puis valider. Locuteur non identifiable.",
+    "reason": "Recommandation FORTE d'un livre (« la derniere oeuvre qui m'a mis une claque », rires), mais le titre « Mourad Winter » est le nom de l'auteur, pas le titre du livre : titre a corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Mourad",
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:49+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2890",
+  "links": [],
+  "quote": "la dernière oeuvre qui m'a vraiment mis une claque c'est le livre de Mourad Winter qu'est-ce que j'ai rigolé c'est sur l'amour non ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:41",
+  "title": "Mourad Winter",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

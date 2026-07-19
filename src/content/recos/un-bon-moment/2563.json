@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "video non nommee (sujet: sexisme dans les commentaires YouTube); titre stocke = nom du createur seulement",
+    "reason": "Kyan renvoie a une video de Fabien Olicard 'tres bien' sur le sexisme des commentaires (hommes juges sur le fond, femmes sur le physique). Discutee avec substance mais sans prescription au public. Video precise non nommee.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2563",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y a une vidéo que Fabien Olicard avait faite qui est très bien où il parle justement",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:38",
+  "title": "Fabien Olicard",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

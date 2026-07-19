@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2500 (Melly Hirtz).",
+    "reason": "Doublon de ubm-2500 : marque de sacs de Melly Hirtz, meme recommandation ; marque commerciale, pas une oeuvre distincte.",
+    "verdict": "discard"
+  },
+  "creator": "Melly Hirtz",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2501",
+  "links": [],
+  "quote": "La marque s'appelle comment? Weim. W-A-M-E.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:34",
+  "title": "WEIM",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

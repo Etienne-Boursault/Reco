@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'vous faites un peu cap ou pas cap, vous etes dans Jeux d'enfants' : comparaison en passant (dynamique des invites ~ le jeu du film), pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1840",
+  "links": [],
+  "quote": "Vous êtes dans \"Jeux d'enfants\".",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:15",
+  "title": "Jeux d'enfants",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

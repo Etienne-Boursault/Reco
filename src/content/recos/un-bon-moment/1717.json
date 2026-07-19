@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:54:06 : auto-référence/banter sur l'épisode en cours d'Un Bon Moment ('l'émission que Léopold voulait parfaite'). Pas une présentation/reco, quote artefact.",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi, Navo, Greg Romano",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:04:05+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1717",
+  "links": [],
+  "quote": "C'est quoi arrêter de couper c'est quoi ton budget l'émission l'émission que léopold voulait à l'émission où léopold ne voulait qu'elle soit parfaite l'émission que léopold ne veut pas que que vous voyez ça va être un super",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:06",
+  "title": "Un Bon Moment",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "podcast"
+  ]
+}

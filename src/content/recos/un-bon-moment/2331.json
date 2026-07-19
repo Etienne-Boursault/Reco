@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Zelig (Woody Allen) cité avec substance comme modèle du faux documentaire dont Klapisch s'inspire pour 'Ce qui me meut'. Aucune prescription au public -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Woody Allen",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2331",
+  "kind": "citation",
+  "links": [],
+  "quote": "je me dis que ce serait intéressant de faire un documentaire sur ce personnage-là. Donc, je repars un peu de ce que Woody Allen avait fait avec Zellig.",
+  "recommendedBy": "Cédric",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:25",
+  "title": "Zelig",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

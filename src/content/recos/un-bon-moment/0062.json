@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même bloc qu'Upload/Leftovers ; locuteur Kyan ou Éléonore, pas Navo.",
+    "reason": "Recommandation explicite : « c'est le film Paterson avec Adam Driver... et j'adore... c'est mon film apaisement, la troisième fois que je le vois ». Même locuteur qu'Upload.",
+    "verdict": "validate"
+  },
   "creator": "Jim Jarmusch",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
@@ -6,17 +18,48 @@
     "tmdb": "370755",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0062",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est le film paterson avec adame driver voilà il se passe rien et j'adore",
-  "recommendedBy": "Navo",
+  "quote": "c'est le film Paterson avec Adam Driver voilà il se passe rien et j'adore",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:20:38",
+  "status": "validated",
+  "timestamp": "01:20:37",
   "title": "Paterson",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

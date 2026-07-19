@@ -1,17 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Jeu interne de l'emission ('Devinez chanter') ecrit par le chroniqueur/auteur Greg Romano : pas une oeuvre recommandee (regle 6).",
+    "verdict": "discard"
+  },
   "creator": "Greg Romano",
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0188",
   "links": [],
-  "quote": "Ça s'appelle « Devinez chanter ».",
-  "recommendedBy": "Invité",
+  "quote": "Ça s'appelle « Devinez, chanter ». C'est un jeu qui est écrit par notre auteur Greg Romano qu'on s'aime beaucoup.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:10:49",
+  "status": "discarded",
+  "timestamp": "01:10:51",
   "title": "Devinez chanter",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

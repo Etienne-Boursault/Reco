@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Florence Foresti sur Ricky Gervais : 'Je l'aime trop... Je l'adore, c'est mon idole' (01:12:47) -> reco explicite d'un artiste.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2251",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je l'adore, c'est mon idole.",
+  "recommendedBy": "Florence Foresti",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:47",
+  "title": "Ricky Gervais",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,21 +1,44 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco acast orpheline (externalIds tmdb=194209 non verifie). A restaurer uniquement si l'audio acast le confirme.",
+    "reason": "Faux positif : 'Crocodile Fury' introuvable dans le transcript YouTube authoritative (0 occurrence de 'croco'/'fury'). Zone YT ~01:00 = dev de jeu, pas de films 'classiques'. Extraction acast 2026-05-28 superseded.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
   "externalIds": {
     "tmdb": "194209",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1175",
   "links": [],
   "quote": "En moins cringe il y a Crocodile Fury qui est un gros classique qui est incroyable.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:00:35",
   "title": "Crocodile Fury",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

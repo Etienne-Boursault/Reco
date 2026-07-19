@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "« Hilarious » est un spectacle de Louis C.K., pas de Carlin : attribution incertaine ; de toute facon mention instrumentale.",
+    "reason": "Bits d'humoristes sur la mort cites en exemple dans un riff (Carlin, Robin Williams, Johnny Carson) : mention instrumentale, pas de prescription. Attribution « Hilarious »/George Carlin douteuse.",
+    "verdict": "discard"
+  },
+  "creator": "George Carlin",
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2885",
+  "links": [],
+  "quote": "c'est dans Hilarious",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:19",
+  "title": "Hilarious",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

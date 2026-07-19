@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Œuvre réelle (MTV Unplugged in New York, Nirvana) mais convoquée comme simple exemple.",
+    "reason": "Exemple rhétorique : « Ou genre, par exemple, Nirvana, MTV Unplugged » cité pour illustrer le propos sur les réinterprétations live, pas de prescription (règle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Nirvana",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3149",
+  "links": [],
+  "quote": "Nirvana, Unplugged, MTV Unplugged.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:36",
+  "title": "MTV Unplugged",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

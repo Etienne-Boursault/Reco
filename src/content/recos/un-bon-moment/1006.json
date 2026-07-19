@@ -1,20 +1,72 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution Kyan/Navo indeterminee (non diarize).",
+    "reason": "Recommandation explicite: 'moi je recommande le film Marty Supreme... allez le voir' (01:26:22). Film reel (drame ping-pong). Reco canonique du cluster Marty Supreme.",
+    "verdict": "validate"
+  },
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
   "externalIds": {
     "tmdb": "1317288",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1006",
+  "kind": "reco",
   "links": [],
-  "quote": "bien moi, je recommande le film Marty Suprem il est sorti",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "le film Marty Suprême",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:26:19",
+  "status": "validated",
+  "timestamp": "01:26:22",
   "title": "Marty Supreme",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

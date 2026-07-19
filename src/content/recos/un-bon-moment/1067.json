@@ -1,20 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "'Don't F**k with Cats: Hunting an Internet Killer' (docu Netflix sur Luka Magnotta).",
+    "reason": "Docu Netflix cite dans le tour de recos mais sans prescription ferme : 'il parait que c'est tres bien' (oui-dire, le locuteur ne l'a pas vu) -> substance mais pas de prescription = citation.",
+    "verdict": "citation"
+  },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR",
     "tmdb": "96129",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1067",
+  "kind": "citation",
   "links": [],
-  "quote": "Don't fuck with cats sur Netflix. Il paraît que c'est très bien. C'est fou.",
+  "quote": "Don't fuck with cats sur Netflix",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:17:36",
+  "status": "validated",
+  "timestamp": "01:17:37",
   "title": "Don't F**k with Cats",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

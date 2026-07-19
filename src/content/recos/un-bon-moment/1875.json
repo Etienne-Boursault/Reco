@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte : Theo Haggai (street-artiste 'flacking'/kintsugi urbain ; fiche dit 'Theo Agaille').",
+    "reason": "Reco explicite : 'J'ai une recommandation, c'est Theo Haggai' + description detaillee (repare des bouts de trottoir casses et les transforme en oeuvre d'art). Artiste confirme. Attribution incertaine.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:59:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:59:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1875",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai une recommandation, c'est Théo Agaille.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:59:16",
+  "title": "Théo Agaille",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le titre en 'La Boite de petits pois' (GiedRe & Holly R, coll. Une Case en Moins / Delcourt). Verdict cible : guest-work (auto-promo Davy Mourier). Invites absents des metadonnees episode.",
+    "reason": "Titre errone : 'Une case en moins' est le nom de la COLLECTION de Davy Mourier, pas le livre. Oeuvre reelle = 'La Boite de petits pois' de GiedRe (ASR 'Guedre'), publiee dans cette collection ; promue par l'invite Davy ('le livre de Guedre que t'as sorti qui est super') -> nature guest-work / auto-promo, mais titre a corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Guédré",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "55:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2444",
+  "links": [],
+  "quote": "il y a le livre de Guédré aussi que t'as sorti qui est super",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:55:56",
+  "title": "Une case en moins",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd",
+    "livre"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution Bigflo: dans le bit voix IA, Drake le nomme 'Big Flo, big up my bro'. Invité à ajouter à episode.guests.",
+    "reason": "Bigflo, fan revendiqué de Drake ('le plus grand fan de Drake de France', 'je suis fan de Drake, il me régale'), analyse l'évolution de Drake album par album (~00:43:51). Discussion substantielle de fandom, sans prescription au public.",
+    "verdict": "citation"
+  },
+  "creator": "Drake",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:43:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2910",
+  "kind": "citation",
+  "links": [],
+  "quote": "je suis fan de Drake, je recite Drake.",
+  "recommendedBy": "Bigflo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:48",
+  "title": "Drake",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

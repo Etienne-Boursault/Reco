@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine (thread collectif Kyan/Navo/Léopold, non diarizé) → recommendedBy vide, humain complète.",
+    "reason": "01:41:16 : après un running gag (trop de livres), disclaimer d'admiration 'ce n'est pas une critique, j'adore ce que fait Fabien Olicard, génie'. Éloge sincère d'un artiste sans prescription/œuvre précise → citation.",
+    "verdict": "citation"
+  },
+  "creator": "Fabien Olicard",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:05:11+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:15+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:12:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1723",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'adore ce que fait Fabien Olicard.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:16",
+  "title": "Fabien Olicard",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

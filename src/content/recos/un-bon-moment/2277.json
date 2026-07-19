@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE spectacle Panayotis; doublon discarde: ubm-2282. Titre reel du one-man-show sur Netflix: 'Presque'. La reco porte un titre generique 'Spectacle de Panayotis'.",
+    "reason": "Spectacle de Panayotis recommande en cloture a 01:15:47 ('allez voir les spectacles de Pana sur Netflix... c'est vraiment des must-see'). Oeuvre de l'invite.",
+    "verdict": "guest-work"
+  },
+  "creator": "Panaïotis",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2277",
+  "kind": "reco",
+  "links": [],
+  "quote": "allez voir les spectacles de Pana sur Netflix",
+  "recommendedBy": "Panayotis Pascot",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:48",
+  "title": "Spectacle de Panaïotis",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

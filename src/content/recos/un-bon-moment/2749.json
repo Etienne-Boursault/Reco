@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Citee 2 fois : technique d'ecriture 'jouets/chambres' a 00:42:38 (= la quote stockee), puis en comparaison du parcours de Michaela Coel a 01:06:22. Le timestamp stocke 01:06:22 ne correspond pas a la quote (00:42:38, >90s d'ecart) -> a verifier.",
+    "reason": "Bref = serie de Kyan Khojandi & Navo (hosts), citee en anecdote -> oeuvre des hosts en anecdote = citation.",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2749",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est une technique qu'on a Navo et moi, qu'on a fait sur Bref, par exemple.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:06:22",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

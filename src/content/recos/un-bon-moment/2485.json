@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« Years and Years » (série de Russell T Davies) explicitement recommandée par Navo (01:05:53-01:06:36) : « hyper réaliste sur la migration, le nucléaire, le climat », « hyper déprimante mais vraiment scotchante ». Canonique du doublon avec 0675.",
+    "verdict": "validate"
+  },
+  "creator": "Russell T Davies",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2485",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est vraiment... mais vraiment scotchante.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:06:36",
+  "title": "Years and Years",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,6 +1,26 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Collision source acast — spectacle de Ferrari.",
+    "reason": "Collision : 'Anesthésie générale' = spectacle de Jérémy Ferrari (deux pans dont le système de santé), absent de ce transcript (grep 'santé'/'anesth' = 0). Extrait acast d'un autre épisode ; creator 'Kyan Khojandi' erroné.",
+    "verdict": "discard"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +29,10 @@
   "quote": "le spectacle, il est sur le, alors il y a deux pans dans le spectacle c'est on va dire le système de santé",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:17",
   "title": "Anesthésie générale",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

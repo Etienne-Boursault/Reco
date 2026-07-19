@@ -1,17 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "on l'a vu ensemble : recommande par un/des invite(s) (Kyan dit n'avoir rien a recommander) -> attribution non diarizee, videe. Doublon: ubm-0499.",
+    "reason": "Recommandation nette dans le bloc final (01:39:57) : on rajoute le dernier spectacle de Ricky Gervais Mortality... tu poses ton telephone... c'est super. Spectacle reel (Netflix 2025). Canonique (titre le mieux renseigne, inclut l'artiste).",
+    "verdict": "validate"
+  },
   "creator": "Ricky Gervais",
   "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1003",
+  "kind": "reco",
   "links": [],
   "quote": "on rajoute le dernier spectacle de Ricky Gervais mortality on l'a vu ensemble",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:39:59",
   "title": "Ricky Gervais: Mortality",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chanson confirmee. ~00:02:25-00:02:34. Voir ubm-2323 (doublon).",
+    "reason": "'Le Sommeil' (Stromae) : chanson REELLE (verifiee) et la description du transcript correspond (~00:02:25 : mari qui feint le bonheur, cernes/fatigue). Discutee ('elle est ouf musicalement') sans prescription. Attribution fluide.",
+    "verdict": "citation"
+  },
+  "creator": "Stromae",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "08:32:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2308",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y a une chanson de Stromae que j'adore qui parle de cette thématique qui s'appelle le mariage... le sommeil c'est une de nos préférés de Stromae",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "08:32:00",
+  "title": "Le Sommeil",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

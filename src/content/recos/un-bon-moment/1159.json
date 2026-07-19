@@ -1,19 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recueil collectif sur le desir; la contribution de Marina est sa nouvelle erotique 'Les Femmes Marrantes' (cf ubm-2273), aussi diffusee dans le podcast Steamy (cf ubm-2272). creator='Marina Rollman' est approximatif (anthologie multi-autrices).",
+    "reason": "Recueil 'Desirer' ou Marina a publie un texte, presente par Kyan a 00:01:07 ('marina vient de publier un texte dans un recueil de textes sur le desir qui s'appelle desirer'). Oeuvre publiee de l'invitee.",
+    "verdict": "guest-work"
+  },
   "creator": "Marina Rollman",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1159",
+  "kind": "reco",
   "links": [],
-  "quote": "Marina vient de publier un texte dans un recueil de textes sur le désir qui s'appelle « Désirer ».",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "marina se vient de publier un texte dans un recueil de textes sur le désir qui s'appelle désirer",
+  "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:01:04",
+  "status": "validated",
+  "timestamp": "00:01:07",
   "title": "Désirer",
+  "transcriptSource": "youtube",
   "types": [
-    "livre"
+    "livre",
+    "autre"
   ]
 }

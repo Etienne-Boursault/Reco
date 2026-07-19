@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle (Apple TV+, Bill Lawrence/Jason Segel, Harrison Ford). Echange confus entre 'The Patient' (rejete) et 'Shrinking'; attribution a Navo probable mais non certaine (Kyan intervient aussi). creator='Apple TV+' = diffuseur.",
+    "reason": "'Shrinking' recommande a 01:12:14 ('Shrinking en tout cas c'est pas mal... serie sur Apple TV+, avec Harrison Ford, c'est super') apres que Navo ait ete invite a recommander.",
+    "verdict": "validate"
+  },
+  "creator": "Apple TV+",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2275",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est une série sur Apple TV sur Apple Plus.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:19",
+  "title": "Shrinking",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

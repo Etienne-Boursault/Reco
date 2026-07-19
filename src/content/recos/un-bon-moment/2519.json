@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Réponse d'un jeu musical/devinette (« K2000 bah oui... Michael Knight »), mention instrumentale — pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2519",
+  "links": [],
+  "quote": "K2000 bah oui",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:32:14",
+  "title": "K2000",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

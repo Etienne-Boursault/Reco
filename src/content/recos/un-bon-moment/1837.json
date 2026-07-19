@@ -1,0 +1,70 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Endossement explicite porte sur Parks and Recreation, pas directement sur The Office.",
+    "reason": "The Office cite/discute ('je regarde The Office, tous les trucs VIP' ; sert de reference 'si vous aimez The Office') mais sans prescription enthousiaste directe -> citation. Locuteur incertain.",
+    "verdict": "citation"
+  },
+  "creator": "Greg Daniels, Ricky Gervais",
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1837",
+  "kind": "citation",
+  "links": [],
+  "quote": "Je regarde \"The Office\", enfin, tous les trucs VIP, Parks and Recreations, tout ça, quoi.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:30",
+  "title": "The Office",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

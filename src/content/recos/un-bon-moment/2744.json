@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "'comme dans Billy Elliot, l'acteur qui doit faire semblant de ne pas savoir danser' -> analogie pour dire qu'Anna ne sait pas dessiner mal. Aucune prescription. Attribution 'Kyan Khojandi' non pertinente. Timecode 00:09:24 OK.",
+    "reason": "Mention instrumentale : analogie, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2744",
+  "links": [],
+  "quote": "tu sais, c'est vrai, comme dans Billy Elliot, il doit faire genre, il sait pas danser au début",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:09:24",
+  "title": "Billy Elliot",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

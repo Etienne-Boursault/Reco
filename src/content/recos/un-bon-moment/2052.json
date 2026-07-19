@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Ruquier' (On n'est pas couche) (00:33:09) = anecdote familiale nostalgique ('on le matait... on adorait'). Pas d'avis prescriptif sur l'oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2052",
+  "links": [],
+  "quote": "il y avait dans le salon et vous le matiez quoi et on le matait",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:09",
+  "title": "Ruquier",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

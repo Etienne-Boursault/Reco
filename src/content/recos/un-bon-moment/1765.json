@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Exemple negatif (ringardise) ; artiste name-droppe.",
+    "reason": "Cite NEGATIVEMENT comme exemple de comique 'un peu deconnecte' dans le debat sur la ringardise (01:00) : 'Ricky Gervais ou Dave Chappelle... ils sont un peu deconnectes.' Exemple rhetorique negatif, pas une oeuvre ni une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1765",
+  "links": [],
+  "quote": "comme c'est un anglais, je peux le dire, Icky Gervais ou Dave Chappelle, je ressens un peu ce truc-là.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:32",
+  "title": "Ricky Gervais",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

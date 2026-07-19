@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Éditeur BD participatif « Exemplaire » (singulier, Lisa Mandel) confirmé. Lien à ajouter (aucun). Doublon : ubm-0873.",
+    "reason": "Recommandation explicite de Navo dans le tour de recos : « Moi, je recommande Exemplaire... je vous invite à aller acheter des bouquins édités par Exemplaire. » Canonique.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-3019",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je recommande \"Exemplaire\" qui est une boîte d'édition de bouquins.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:45",
+  "title": "Exemplaire",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

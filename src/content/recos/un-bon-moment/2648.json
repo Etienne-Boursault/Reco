@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Série créée/réalisée par François Descraques, Éléonore y joue (« un vrai duo... François tu réalisais, Eleanor tu jouais dedans »). Œuvre phare des invités, discutée tout du long. Canonique (mieux renseigné que ubm-2657).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2648",
+  "kind": "reco",
+  "links": [],
+  "quote": "Vous avez fait un vrai duo dans Le Visiteur du futur. François, tu réalisais et Eleanor, tu jouais dedans.",
+  "recommendedBy": "François Descraques",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:02:14",
+  "title": "Le Visiteur du futur",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

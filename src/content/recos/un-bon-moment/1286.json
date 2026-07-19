@@ -1,20 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Proprietaire incertain (Anna ou Marion) -> recommendedBy vide. Attribution stockee 'Kyan Khojandi' erronee. externalIds tmdb 1581971 = probable faux match (projet non produit). guests metadonnees vide. Timecode 00:47:18 OK.",
+    "reason": "Projet/serie en developpement d'une des invitees (pilote 'Mourir seul', titre depose, non produit) presente sur le plateau -> oeuvre d'invitee.",
+    "verdict": "guest-work"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
     "tmdb": "1581971",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:59:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1286",
+  "kind": "reco",
   "links": [],
-  "quote": "en fait ça s'appelle mourir seul et c'est vraiment une série super",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Eh ben, fais-le. Vite fait des petits tas de ci, de là.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:47:02",
+  "status": "validated",
+  "timestamp": "00:47:18",
   "title": "Mourir seul",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

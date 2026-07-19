@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe « Chrono Music » a confirmer. Locuteur possiblement Kyan Khojandi (« Et moi je vais dire... »), incertain.",
+    "reason": "Segment final : reco sincere d'une chaine YouTube externe de vulgarisation musicale, decrite avec substance (« super chel », « tres didactique », « hyper doue », « c'est trop bien »).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:46",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3195",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube (KronoMuzik)",
+      "url": "https://www.youtube.com/channel/UC5C9-4yOwA1NR2NHzq_r69g"
+    }
+  ],
+  "quote": "Et moi je vais dire Chrono Music.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:45:46",
+  "title": "KronoMuzik",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

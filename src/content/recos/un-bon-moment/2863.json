@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2868 (01:30:56). Titre « L'Olympia » = la salle, pas l'œuvre.",
+    "reason": "Doublon Laura, titre = nom de salle",
+    "verdict": "discard"
+  },
+  "creator": "Laura",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2863",
+  "links": [],
+  "quote": "et il y a la dernière de Laura l'Olympia",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:56",
+  "title": "L'Olympia",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

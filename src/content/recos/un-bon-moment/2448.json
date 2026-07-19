@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop dans le jeu : special de Bill Burr cite comme indice pour deviner un acteur -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Bill Burr",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2448",
+  "links": [],
+  "quote": "c'est dans Paper Tiger",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:02:00",
+  "title": "Paper Tiger",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle",
+    "film"
+  ]
+}

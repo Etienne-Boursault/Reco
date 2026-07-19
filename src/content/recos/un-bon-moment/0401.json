@@ -1,10 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1481 (Good Will Hunting) — même moment 00:42:52, name-drop dans la liste des tops de Fanny.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/489-good-will-hunting/watch?locale=FR",
     "tmdb": "489",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -13,9 +32,10 @@
   "quote": "Will Hunting",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:52",
   "title": "Will Hunting",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.96,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "« Baila Baila » de Kendji Girac = réponse du blind test (00:36:18). Chanson support de jeu → discard.",
+    "verdict": "discard"
+  },
+  "creator": "Kenji Girac",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2118",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:18",
+  "title": "Baila Baila Mi Amor",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,16 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Chasseurs de mondes' (doc Axolot 2019). Createur = Patrick Baud (Axolot), Astier est participant, pas l'auteur.",
+    "reason": "Patrick Baud (invite) decrit son propre documentaire exoplanetes (Axolot 2019, avec Alexandre Astier) pour expliquer son pic Google 2023 — auto-promo/presentation d'une oeuvre d'invite.",
+    "verdict": "guest-work"
+  },
   "creator": "Alexandre Astier",
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0227",
+  "kind": "reco",
   "links": [],
   "quote": "c'était peut-être la sortie de Chasseur de Monde qui était un gros documentaire avec Alexandre Astier.",
+  "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:18:40",
   "title": "Chasseur de Monde",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

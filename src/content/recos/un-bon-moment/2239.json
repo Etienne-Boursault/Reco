@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2242 (unsure, reste draft).",
+    "reason": "Doublon de ubm-2242 (meme livre 'Les 100 meilleures blagues de Carlos', ts 01:18:34).",
+    "verdict": "discard"
+  },
+  "creator": "Carlos Mencia",
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2239",
+  "links": [],
+  "quote": "J'ai un magnifique livre de blagues d'auteur américain Il s'appelle Les 100 meilleures blagues De Carlos",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:34",
+  "title": "Les 100 meilleures blagues",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

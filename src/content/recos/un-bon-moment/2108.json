@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Même passage (00:05:22-24) que ubm-2107.",
+    "reason": "Chanson « J'ai demandé à la lune » citée comme exemple de « rente à vie » en droits d'auteur (« qui a écrit cette chanson ? ») — mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Mickey 3D",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2108",
+  "links": [],
+  "quote": "Mais qui a écrit cette chanson ? Mickey de Mickey 3D.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:05:22",
+  "title": "J'ai demandé à la lune",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

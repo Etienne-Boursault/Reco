@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Album à venir de Julien Granel, sans titre et non sorti — simple vœu d'outro (« le prochain album de Julien Granel... on espère, bientôt »), pas une œuvre concrète existante.",
+    "verdict": "discard"
+  },
   "creator": "Julien Grenel",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "le prochain album de Julien Grenin j'espère bientôt",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:34:05",
   "title": "Julien Grenel",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

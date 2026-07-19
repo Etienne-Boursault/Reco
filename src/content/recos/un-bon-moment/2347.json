@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2333.",
+    "reason": "Doublon de ubm-2333 (Salade grecque; titre corrompu 'Salade Grec'). Reco explicite de Navo reportée sur le canonique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2347",
+  "links": [],
+  "quote": "j'ai adoré salade grec ça m'a fait super plaisir",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:48",
+  "title": "Salade Grec",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

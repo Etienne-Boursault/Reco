@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Trouver le vrai handle Twitch de 'Roro'/Romain (transcript garble : '3e2u1h', 'chaine Twitch de E').",
+    "reason": "Vraie reco ('Moi je recommande la chaine Twitch de...') d'un streamer surnomme Roro/Romain, MAIS le handle exact est inconnu (le recommandeur lui-meme : 'Comment? Ah je connais pas'). Titre a corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Romain (Roro)",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:18:56+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1874",
+  "links": [],
+  "quote": "Moi, je recommande la chaîne Twitch de E. […] Et sa chaîne YouTube de replay.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:47:54",
+  "title": "Chaîne Twitch de Roro",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

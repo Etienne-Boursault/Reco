@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Fhin/electro (01:51, segment recos): 'un autre qui fait l'electro qui s'appelle Fin, F-H-I-N... deux artistes que j'aime bien'. Reco par Haroun. Canonique (orthographe 'Fhin' = F-H-I-N du transcript).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:51:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1613",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et un autre qui fait l'électro. Qui s'appelle Fin. F-H-I-N",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:51:04",
+  "title": "Fhin",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution : anecdote de Pana. Invite Pana absent des metadonnees.",
+    "reason": "Fary discute avec substance et admiration (« son approche de la scene est fascinante ») dans une anecdote de mentorat (il a accompagne Pana), sans prescription directe au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2883",
+  "kind": "citation",
+  "links": [],
+  "quote": "son approche de la scène quoi c'est quand même fascinant Fary quand même",
+  "recommendedBy": "Panayotis Pascot",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:35:35",
+  "title": "Fary",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

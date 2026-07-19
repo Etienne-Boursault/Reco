@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "BD SF (~96 p., pitch type E.T./Seth Rogen) de l'invité Florent Bernard. Orthographe exacte du titre 'Holly et l'alien' non vérifiable via web (budget WebSearch épuisé) — repris du transcript.",
+    "reason": "BD de l'invité Florent Bernard, présentée en détail et promue en actu (sortie récente) : 'Holly et l'alien, une bande dessinée de science fiction... elle est sortie... c'est vendu partout, allez-y, si vous aimez le travail de Flore Bernard n'hésitez pas' (01:26-01:28). Auto-promo d'invité → guestWork.",
+    "verdict": "guest-work"
+  },
+  "creator": "Florent Bernard, David Combet",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3077",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Delcourt",
+      "url": "https://www.editions-delcourt.fr/bd/series/serie-ollie-et-l-alien/album-ollie-et-l-alien"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie de la Cité de la BD",
+      "url": "https://librairie.citebd.org/livre/9782413020158-ollie-et-l-alien-florent-bernard-david-combet/"
+    }
+  ],
+  "quote": "Holly et l'alien qui est une bande dessinée de science fiction",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:26:36",
+  "title": "Ollie et l'alien",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

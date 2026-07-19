@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Kyan evoque « Love et tendresse » comme l'un des deux morceaux qu'il a entendus (qualite metamoderne, « hyper important »). Titre non confirme par l'invite et inverifiable (budget WebSearch epuise) ; lecture possible = paraphrase du theme recurrent « l'amour et la tendresse ». Reste en draft : oeuvre d'invite (Eddy de Pretto) a valider si le titre est reel.",
+    "reason": "Titre non confirme par l'invite et inverifiable; possible paraphrase du theme.",
+    "verdict": "unsure"
+  },
   "creator": "invité",
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0104",
   "links": [],
   "quote": "Surtout Love & Tendress, il y a un peu ce côté là.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
   "status": "draft",
   "timestamp": "00:10:56",
   "title": "Love & Tendress",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

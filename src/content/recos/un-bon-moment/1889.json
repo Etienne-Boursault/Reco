@@ -1,0 +1,62 @@
+{
+  "aliases": [
+    "Nate Bergatti"
+  ],
+  "creator": "Nate Bergazzi",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "openai",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:43:43"
+    },
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "anthropic",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:42:40"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "anthropic",
+      "llmModel": "claude-haiku-4-5",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "01:42:42"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "openai",
+      "llmModel": "gpt-4o-mini",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "01:44:00"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1889",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est une émission de Joni Aleday. De Nate Bergazzi, en stand-up. Il a un style génial.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:44:00",
+  "title": "Nate Bargatze",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

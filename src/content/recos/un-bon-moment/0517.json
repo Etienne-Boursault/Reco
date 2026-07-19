@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1907 ; titre « Emotion » incomplet.",
+    "reason": "Doublon de ubm-1907 (podcast Émotions / série « Des mecs solides »).",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "il y a un sujet en 3 parties sur les masculinités qui s'appellent des mecs solides c'est hyper bien.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:43:40",
   "title": "Emotion",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

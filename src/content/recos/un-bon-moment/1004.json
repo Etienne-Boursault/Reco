@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1396 (canonique guest-work Kemmler).",
+    "reason": "Doublon de ubm-1396 (meme annonce du podcast a 01:44:31). Attribution Navo erronee.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "je démarre un podcast qui s'appelle famille plus 1 sur toutes les plateformes",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:44:31",
   "title": "Famille Plus 1",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

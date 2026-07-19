@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Stephen King (regroupe 0840, 2979, 2988 discardes).",
+    "reason": "Livre de Stephen King sur l'ecriture evoque a 00:40:31 (« tu peux lire l'ecriture de Stephen King... il parle un peu de methode ») dans un echange sur les bouquins de methode. Ton tiede (« tu peux lire »), pas d'enthousiasme prescripteur -> citation. Titre officiel correct.",
+    "verdict": "citation"
+  },
   "creator": "Stephen King",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1096",
+  "kind": "citation",
   "links": [],
   "quote": "Donc, tu peux lire l'écriture de Stephen King.",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:40:31",
   "title": "Écriture : Mémoires d'un métier",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

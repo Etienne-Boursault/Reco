@@ -1,17 +1,44 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre réel : « Montre jamais ça à personne » (Prime Video 2021/2022, réal. Clément Cotentin & Christophe Offenstein). Canonique ; doublons : ubm-3020, ubm-3024.",
+    "reason": "Documentaire d'Orelsan réalisé par l'invité Clément Cotentin, présenté et vanté par lui sur toute la première partie de l'épisode = auto-promo assumée (guest-work). Canonique de la série doc Orelsan.",
+    "verdict": "guest-work"
+  },
   "creator": "Clément Cotentin",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0862",
+  "kind": "reco",
   "links": [],
   "quote": "C'est une vraie réussite ce documentaire pour moi c'est ton premier vrai gros documentaire.",
-  "recommendedBy": "Clem",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:03:08",
   "title": "Documentaire sur Orelsan",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre obscure/entre-soi (realisee par Alfie, monteur de l'emission). Realite/findabilite non verifiable (budget WebSearch epuise). Reco neanmoins explicite dans le segment recommandations.",
+    "reason": "Reco explicite de Navo a 01:04:16 en reponse a 'T'as quelque chose a recommander Navo?' : 'Ouais, Pensez futile'. Oeuvre realisee par Alfie, le monteur de l'emission.",
+    "verdict": "validate"
+  },
   "creator": "Navo",
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:02:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:02:12+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0801",
+  "kind": "reco",
   "links": [],
-  "quote": "Ouais, Pensez Futile.",
+  "quote": "Pensez futile.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:14",
+  "status": "validated",
+  "timestamp": "01:04:16",
   "title": "Pensez Futile",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

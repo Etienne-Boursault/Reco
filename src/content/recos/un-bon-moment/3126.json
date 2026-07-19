@@ -1,0 +1,60 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Attribution Navo (host) probable. Old Boy figure aussi dans le livre de Thomas Deseur mais c'est le host qui le recommande ici.",
+    "reason": "Prescription explicite dans la rubrique reco de fin d'émission ('le meilleur film de tous les temps... il faut le réécouter mille fois') ; œuvre réelle (Oldboy, Park Chan-wook, 2003, version coréenne).",
+    "verdict": "validate"
+  },
+  "creator": "Park Chan-wook",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:24",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3126",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/old-boy-park-chan-wook-vod"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/old-boy-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=54137.html"
+    }
+  ],
+  "quote": "J'ai réécouté Old Boy hier. Le film coréen ? Ouais, pas la version américaine dégueulasse qui ont gâché. Honnêtement, je pense que c'est le meilleur film de tous les temps.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:32:24",
+  "title": "Oldboy",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2003
+}

@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Alain Resnais avait fait un film, mon oncle d'Amerique... un grand film tire de ce bouquin' : film tire de Laborit, discute/loue mais pas prescrit au public (la reco portait sur les livres de Laborit).",
+    "verdict": "citation"
+  },
   "creator": "Alain Resnais",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,18 +14,58 @@
     "tmdb": "39543",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0245",
+  "kind": "citation",
   "links": [],
-  "quote": "Il a fait un film qui était mon oncle d'Amérique",
-  "recommendedBy": "Invité",
+  "quote": "il a écrit plein de bouquins et dont Alain René avait fait un film qui était mon oncle d'Amérique",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:45:32",
+  "status": "validated",
+  "timestamp": "00:45:35",
   "title": "Mon oncle d'Amérique",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

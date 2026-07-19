@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invité Oli à ajouter à episode.guests.",
+    "reason": "Astérix & Obélix: Mission Cléopâtre cité parmi les films préférés d'Oli (liste mi-moqueuse, mais 'tu l'as dit, c'est vrai'). Œuvre réelle, goût personnel, sans prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2897",
+  "kind": "citation",
+  "links": [],
+  "quote": "Astérix, Seblix, Mision Cléopâtre.",
+  "recommendedBy": "Oli",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:02:56",
+  "title": "Astérix et Obélix: Mission Cléopâtre",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

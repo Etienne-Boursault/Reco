@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'The Beach Boys' évoqués comme musique joyeuse ('c'est bien les Beach Boys, très très bien') + documentaire jugé 'passionnant' — discuté avec un peu de substance, sans prescription. Canonique (0407 doublon).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1491",
+  "kind": "citation",
+  "links": [],
+  "quote": "Les Beach Boys, par exemple.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:26",
+  "title": "The Beach Boys",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

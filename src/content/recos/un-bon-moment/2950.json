@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrigé Navo -> Rosa Bursztein. Orthographe du nom non vérifiée (budget web épuisé).",
+    "reason": "Rosa recommande « mon amie aussi Laura Demange que je trouve génial » parmi les jeunes humoristes qui l'inspirent (01:10:11), dans le segment recommandations. Endossement explicite.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2950",
+  "kind": "reco",
+  "links": [],
+  "quote": "mon amie aussi Laura Demange que je trouve génial il y a plein de il y a tellement de jeunes humoristes de stand-up qui m'inspirent que je trouve hyper fortes",
+  "recommendedBy": "Rosa Bursztein",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:11",
+  "title": "Laura Demange",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

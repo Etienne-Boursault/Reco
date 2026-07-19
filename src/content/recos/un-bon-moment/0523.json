@@ -1,22 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-1361.",
+    "reason": "Doublon de 'L'epreuve du feu' (meme passage 00:29). Titre 'Les Preuves du Feu' = mauvaise transcription.",
+    "verdict": "discard"
+  },
   "creator": "Félix Lefer",
   "episodeGuid": "69e13325fb440758726a665f",
   "externalIds": {
     "tmdb": "635624",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0523",
   "links": [],
   "quote": "franchement, j'ai adoré le film Les preuves du feu",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:29:15",
   "title": "Les Preuves du Feu",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Personne citee dans une anecdote.",
+    "reason": "Stephane Mifsud, champion d'apnee, cite dans l'anecdote de tournage de Monte-Cristo. Performeur non-invite, pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1971",
+  "links": [],
+  "quote": "Champion du monde d'apnée. Il s'appelle Mifsud. Et il détient le record d'apnée.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:56",
+  "title": "Stéphane Mifsud",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

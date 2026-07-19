@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Type 'jeu' imprecis : LOL Qui rira le dernier est une emission Amazon Prime, pas un jeu video. Anecdote instrumentale au lancement du jeu du podcast.",
+    "reason": "Anecdote de host : Kyan raconte sa participation a l'emission LOL (Amazon Prime) pour introduire un mini-jeu joue en direct ('j'ai fait un jeu qui s'appelle LOL... j'ai adore... le but c'est...', 00:40:22). Substance + avis mais pas de prescription 'allez regarder' -> citation (host en anecdote).",
+    "verdict": "citation"
+  },
+  "creator": "Amazon Prime",
+  "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2892",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'ai fait un jeu qui s'appelle LOL sur Amazon Prime. J'ai adoré faire ce jeu. C'était trop kiffant.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:40:22",
+  "title": "LOL",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

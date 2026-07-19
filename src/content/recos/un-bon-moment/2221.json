@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0633. Si l'humain veut une reco 'chaine/creatrice' distincte, la conserver au nom de Swann Perisse.",
+    "reason": "Doublon de ubm-0633 : meme moment de reco, Swann Perisse est la creatrice du court-metrage Chambre froide (deja capturee dans le champ creator de ubm-0633). Entree redondante (nom de personne comme titre).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2221",
+  "links": [],
+  "quote": "J'aimerais également parler de Swan Périsset.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:27",
+  "title": "Swan Périsset",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

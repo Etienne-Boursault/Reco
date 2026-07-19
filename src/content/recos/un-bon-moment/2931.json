@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Reference a la musique/meme pour habiller un montage, pas une reco du film d'Aronofsky.",
+    "reason": "Mention instrumentale de production: 'On peut le montrer avec la video de Requiem for a Dream' renvoie a la MUSIQUE-meme des montages YouTube complotistes (le 'vieux montage YouTube avec la musique de Requiem for a Dream'), pas au film comme oeuvre. Aucun avis sur le film -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Darren Aronofsky",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2931",
+  "links": [],
+  "quote": "On peut le montrer avec la vidéo de Requiem for a Dream",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:30:49",
+  "title": "Requiem for a Dream",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

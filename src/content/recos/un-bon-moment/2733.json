@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "My Canal est le partenaire commercial du podcast (« c'est My Canal qui est partenaire de l'engagement ») : plateforme/placement, pas une œuvre culturelle.",
+    "verdict": "discard"
+  },
+  "creator": "Canal Plus",
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2733",
+  "links": [],
+  "quote": "C'est vachement bien. Il y a plein de trucs super.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:09",
+  "title": "My Canal",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

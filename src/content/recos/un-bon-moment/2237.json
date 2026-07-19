@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reste draft: oeuvre intracable (candidat possible 'Misery Loves Comedy' 2015, non verifie - budget WebSearch epuise). Dit par Kyan. A tracer puis validate si identifie.",
+    "reason": "Vraie reco ('je vous mets le lien sous la video, c'etait assez touchant') mais oeuvre non identifiable: titre descriptif 'documentaire sur la depression et les comiques', avec Sarah Silverman + Neil Brennan, a 00:57:49.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2237",
+  "links": [],
+  "quote": "C'était le documentaire sur la dépression et les comiques. Vous l'avez vu ce truc là avec Sarah Silverman, Neil Brennan et tout",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:57:49",
+  "title": "Documentaire sur la dépression et les comiques",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

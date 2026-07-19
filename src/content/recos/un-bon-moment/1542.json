@@ -1,0 +1,39 @@
+{
+  "creator": "Mourad Winter",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1542",
+  "kind": "reco",
+  "links": [],
+  "recommendedBy": "Kyan Khojandi & Doully",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:39",
+  "title": "Les meufs, c'est des mecs bien",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

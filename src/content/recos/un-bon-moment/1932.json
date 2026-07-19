@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Retrouver le vrai titre du spectacle + confirmer « Manon Lepelle » (le web ne renvoie que Manon Lepomme, autre humoriste). Manon n'est PAS invitee de cet episode. Canonique ; doublon = ubm-1441.",
+    "reason": "Le spectacle de Manon (Lepelle) est discute avec substance (blague sur l'« invention » du mot homosexualite en 1868, les Grecs, etymologie hetero/homo) et un extrait est diffuse — niveau citation. Mais titre = artefact (« Spectacle de Manon ») et identite « Manon Lepelle » non confirmee en ligne.",
+    "verdict": "unsure"
+  },
+  "creator": "Manon",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1932",
+  "links": [],
+  "quote": "c'est le truc du spectacle de Manon",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:36:56",
+  "title": "Spectacle de Manon",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

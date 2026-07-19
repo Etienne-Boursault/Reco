@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale (exemple, anecdote people).",
+    "reason": "Tony Robbins cite comme reference/exemple du phenomene coach (modele du personnage de Gourou), pas une oeuvre recommandee.",
+    "verdict": "discard"
+  },
   "creator": "Tony Robbins",
   "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0361",
   "links": [],
   "quote": "Tony Robbins.",
-  "recommendedBy": "Pierre Ninet",
+  "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:03:11",
   "title": "Tony Robbins",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

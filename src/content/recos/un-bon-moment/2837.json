@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle mais usage comparatif pour caracteriser l'invitee.",
+    "reason": "Comparaison en passant: une invitee comparee au personnage d'Aubrey Plaza dans Parks and Rec. Pas de prescription -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Greg Daniels, Michael Schur",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2837",
+  "links": [],
+  "quote": "Tu me fais penser à Aubrey Plaza dans... Parks and Rec ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:19",
+  "title": "Parks and Recreation",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

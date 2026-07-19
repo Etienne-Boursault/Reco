@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote de tournage dans le jeu.",
+    "reason": "Breaking Bad = cadre d'une anecdote de jeu sur Bryan Cranston (ne lisait pas l'episode suivant). Pas de prescription ('le seul truc que j'ai regarde').",
+    "verdict": "discard"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "6970a1759448a95f223d530c",
   "externalIds": {
@@ -6,17 +15,48 @@
     "tmdb": "1396",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0364",
   "links": [],
-  "quote": "merci pour le bémol.",
+  "quote": "C'est que des anecdotes sur Breaking Bad",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:43:00",
+  "status": "discarded",
+  "timestamp": "00:42:18",
   "title": "Breaking Bad",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

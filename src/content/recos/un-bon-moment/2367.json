@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Discussion sur le doublage VF de Friends (voix, negociations de cachets). La serie est le contexte, pas l'objet d'une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2367",
+  "links": [],
+  "quote": "la voix de Jennifer Aniston, la première voix dans Friends et tout, elle a eu du mal après à faire des pubs",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:20:28",
+  "title": "Friends",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,9 +1,31 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2767 (« Prose Combat » de MC Solaar).",
+    "verdict": "discard"
+  },
   "creator": "MC Solaar",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/257998812"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +34,10 @@
   "quote": "il y a un article formidable sur MC Solar quand il a écrit \"Pros Combat\" il a écrit ça en 4 jours",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:00:11",
   "title": "Pros Combat",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

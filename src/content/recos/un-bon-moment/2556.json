@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige de 'Kyan Khojandi' vers 'Matthieu' (c'est Matthieu qui raconte l'avoir connu).",
+    "reason": "Longue evocation de Yann Tiersen par Matthieu (qu'il a connu, meme manager) : authenticite, 'super beaux' morceaux, histoire de la BO d'Amelie Poulain (00:53-00:56). Substance reelle, avis positif mais pas de prescription directe -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Yann Tiersen",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2556",
+  "kind": "citation",
+  "links": [],
+  "quote": "Je pense aussi à Yann Tierssen, que j'ai bien connu à l'époque.",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:53:45",
+  "title": "Yann Tiersen",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

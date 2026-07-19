@@ -1,18 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco acast orpheline. A restaurer uniquement si l'audio acast le confirme.",
+    "reason": "Faux positif : 'Le mode d'emploi de tout' / 'Bellous' / 'Renault' introuvables dans le transcript YouTube authoritative. Zone YT ~01:02 = dev de jeu (moteur, point-and-click), aucune reco BD. Extraction acast 2026-05-28 superseded.",
+    "verdict": "discard"
+  },
   "creator": "Yassine Bellous et Ben Renault",
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1176",
   "links": [],
   "quote": "Moi je recommande le mode d'emploi de tout. De Yassine Bellous et Ben Renault.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:35",
   "title": "Le mode d'emploi de tout",
+  "transcriptSource": "acast",
   "types": [
     "bd"
   ]

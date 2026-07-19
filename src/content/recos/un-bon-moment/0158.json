@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Pulsions » (au pluriel), Kyan Khojandi & Bruno Muschio — reco indiquait « Pulsion ».",
+    "reason": "Spectacle « Pulsions » de Kyan (host) évoqué avec éloge par Navo sur le podcast (« j'ai adoré ce spectacle où tu parles de deuil, de rupture, de la mort de ton père ») — auto-promo du format.",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0158",
+  "kind": "reco",
   "links": [],
-  "quote": "J'ai adoré pulsion.",
-  "recommendedBy": "Navo",
+  "quote": "j'ai adoré Pulsion, j'ai adoré ce spectacle dans lequel tu parles de deuil, de rupture, de la mort de ton père, du rapport à l'autre.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:58:23",
+  "status": "validated",
+  "timestamp": "00:58:25",
   "title": "Pulsion",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

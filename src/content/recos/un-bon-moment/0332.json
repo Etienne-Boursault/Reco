@@ -1,18 +1,71 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateur = Julien Santini (champ actuellement « inconnu »). Reco d'un invité non diarizé (probablement Camille : indice « pourquoi tu ne le produis pas en émission »).",
+    "reason": "Reco du spectacle de l'humoriste Julien Santini : « j'ai pris un uppercut crochet, j'ai trouvé ça extraordinaire », « il faut le voir » (l.4073-4113). Artiste réel confirmé (WebSearch).",
+    "verdict": "validate"
+  },
   "creator": "inconnu",
   "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0332",
+  "kind": "reco",
   "links": [],
-  "quote": "J'ai vu Julien Santini là il y a 10 jours",
-  "recommendedBy": "inconnu",
+  "quote": "Et sur scène, j'ai vu Julien Santini, là, il y a 10 jours !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:37:48",
+  "status": "validated",
+  "timestamp": "01:37:45",
   "title": "Julien Santini",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

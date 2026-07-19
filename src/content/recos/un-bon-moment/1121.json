@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigee Navo->Martin (indice 'mon ami Jordi le Bollock' + mapping 1 reco/personne) ; a confirmer. Titre non verifiable (budget WebSearch epuise) : piece jouee au Theatre des Beliers a Paris.",
+    "reason": "Reco explicite dans le tour de recos final (01:15) : 'je recommande pour les parisiens c'est la course des géants... non vraiment la pièce est super cool'. Le locuteur dit 'avec mon ami Jordi le Bollock' : Jordi Le Bolloc a joué dans la piece de Martin 'Pour ceux qui restent' (00:27), et le tour attribue 1 reco/personne (Pauline=Georges K, Bertrand=Diagonale, Kyan=Diego, Navo=Inside), donc par elimination + indice Jordi c'est Martin, pas Navo comme extrait.",
+    "verdict": "validate"
+  },
   "creator": "Jordi Lebole",
   "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1121",
+  "kind": "reco",
   "links": [],
-  "quote": "je recommande pour les parisiens c'est la course des géants avec mon ami Jordi Lebole",
-  "recommendedBy": "Navo",
+  "quote": "moi je vais recommander bah c'est du théâtre et ça joue à Paris mais je recommande pour les parisiens c'est la course des géants avec mon ami Jordi le Bollock",
+  "recommendedBy": "Martin Darondeau",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:11",
+  "status": "validated",
+  "timestamp": "01:15:12",
   "title": "La Course des Géants",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

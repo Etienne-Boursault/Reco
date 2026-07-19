@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateur à corriger : « Nathan Fielder » (pas « Nathan Fielding »). Attribution host/invité incertaine → recommendedBy vide (règle 3).",
+    "reason": "Prescription d'une œuvre réelle non liée à un invité : Nathan for You présenté comme porte d'entrée à Nathan Fielder, « c'est vraiment hilarant aussi ».",
+    "verdict": "validate"
+  },
+  "creator": "Nathan Fielder",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3153",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/nathan-for-you/umc.cmc.63uhk37v68z22dz7jv8dgdfub"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/nathan-for-you"
+    }
+  ],
+  "quote": "Pour commencer, The Rear Soul, il y a Nathan For You. Oui, Nathan. Et ça, c'est vraiment hilarant aussi.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:19",
+  "title": "Nathan for You",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

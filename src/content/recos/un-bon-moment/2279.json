@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre generique 'Esther Perel's Podcast'; canonique ubm-1160.",
+    "reason": "Doublon du podcast d'Esther Perel (meme mention 00:15:58). Canonique = ubm-1160.",
+    "verdict": "discard"
+  },
+  "creator": "Esther Perel",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2279",
+  "links": [],
+  "quote": "j'écoute vachement un podcast de Esther Perel qui est une thérapeute de couple",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:58",
+  "title": "Esther Perel's Podcast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

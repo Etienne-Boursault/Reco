@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Quote/timestamp du draft (jeu, 00:24:36) a corriger vers l'echange genuine ~01:05:04. Attribution host (Kyan ou Navo) non diarizable → recommendedBy vide.",
+    "reason": "Au timestamp (00:24:36) c'est un intitule de jeu sur Steve Carell → discardable (regle 12). MAIS The Office est reellement salue plus tard (~01:05 : « The Office c'est genial », citee comme serie comedie preferee). Conserve en citation par un host (regle 13 : une seule reco par oeuvre).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3101",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70136120"
+    }
+  ],
+  "quote": "Steve Carell fan de The Office",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:24:36",
+  "title": "The Office",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

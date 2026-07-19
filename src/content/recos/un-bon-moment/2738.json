@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote people (regle 1), non une reco.",
+    "reason": "Mention instrumentale (regle 1) : Dunkerque cite dans l'anecdote d'Amixem sur une operation sponsorisee proposee pour le film (01:06:07-14 : « on m'a propose une operation sponsorisee pour le film Dunkerque »), pas un avis sur l'oeuvre.",
+    "verdict": "discard"
+  },
+  "creator": "Christopher Nolan",
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2738",
+  "links": [],
+  "quote": "Eh bien, je vais raconter l'anecdote que j'en suis très fier.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:06:07",
+  "title": "Dunkerque",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

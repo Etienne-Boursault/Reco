@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom exact = « Le Bordel Club » (projet fondateur de Kheiron avec Kyan Khojandi & Navo). Créateur = Kheiron (transcrit « Kéron »). Locuteur non diarizé (Kyan ou Navo) → recommendedBy laissé vide.",
+    "reason": "« Le Bordel Club » (transcript : « Bordel Comedy Club... Bordel Club pardon », l.2745-2749) cité par un host pour illustrer le fait de casser le 4e mur / humaniser le spectacle. Substance sur le concept mais pas de prescription ; projet passé.",
+    "verdict": "citation"
+  },
+  "creator": "Kéron",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1993",
+  "kind": "citation",
+  "links": [],
+  "quote": "Avec Kéron on avait un spectacle qui s'appelait le Bordel Comedy Club.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:01:18",
+  "title": "Bordel Comedy Club",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

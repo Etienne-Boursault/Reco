@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Pulsions' (avec s). Captation vendue sur la boutique (mentionnee en fin d'episode).",
+    "reason": "Auto-promo host: 'Pulsions', ancien spectacle de Kyan (200+ dates, traitant du deuil, interrompu par la pandemie), dont il pointe la captation disponible ('les gens qui veulent le voir, hop'). OEuvre d'un host presentee/pointee par lui -> guest-work, proprietaire Kyan Khojandi.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2932",
+  "kind": "reco",
+  "links": [],
+  "quote": "À un moment donné, je ne pouvais plus le jouer.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:06",
+  "title": "Pulsion",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

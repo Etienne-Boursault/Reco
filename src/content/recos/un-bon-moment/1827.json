@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chaine 'Les Revues du Monde' de Charlie Danger. Attribution indeterminee.",
+    "reason": "'C'est la chaine de Charlie Danger... que j'adore... ca s'appelle les revues du monde, des formats longs sur l'histoire quand tu veux te reposer' (02:26:33-45) — reco claire.",
+    "verdict": "validate"
+  },
+  "creator": "Charlie Danger",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:26:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:26:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1827",
+  "kind": "reco",
+  "links": [],
+  "quote": "Mais c'est la chaîne de Charlie Danger. Ça s'appelle les revues du monde. C'est des trucs quand tu veux vraiment te reposer",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:26:33",
+  "title": "Les revues du monde",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

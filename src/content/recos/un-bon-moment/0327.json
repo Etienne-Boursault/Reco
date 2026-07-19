@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verdict visé = guest-work (Bérengère Krief). Titre réel = « Sexe » (dit l.2561 ; tournée « Sexe », Olympia 1-3 oct. 2026). Corriger le titre puis publier en guest-work. Doublon 1992 discardé.",
+    "reason": "Vraie reco de type guest-work (spectacle de l'invitée Bérengère Krief, encensé par les hosts : « le meilleur spectacle », « ce sketch est extraordinaire », 70 dates, l.2559-2638). MAIS titre = artefact ; le script ne corrige pas les titres → reste draft.",
+    "verdict": "unsure"
+  },
   "creator": "Bérengère Krief",
   "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,6 +35,7 @@
   "status": "draft",
   "timestamp": "00:56:47",
   "title": "Bérengère Krief: Le Spectacle",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

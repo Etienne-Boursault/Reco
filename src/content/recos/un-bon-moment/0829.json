@@ -1,17 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator « Christelle Petit-Cola » erroné -> « Christelle Petitcollin » (à corriger à la main, hors script). Maurice invité absent de guests.",
+    "reason": "Maurice raconte que le livre « Je pense trop » de Christelle Petitcollin fut une révélation sur son hypersensibilité (00:06). Substance sans prescription explicite à l'auditeur => citation.",
+    "verdict": "citation"
+  },
   "creator": "Christelle Petit-Cola",
   "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:06:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0829",
+  "kind": "citation",
   "links": [],
-  "quote": "Live tel bouquin, je pense trop, de Christelle Petit-Cola, en l'occurrence.",
-  "recommendedBy": "Maurice Barthélémy",
+  "quote": "elle me dit non non c'est une fausse idée que tu as lis tel bouquin je pense trop de christelle petit colin en l'occurrence et là boum une révélation",
+  "recommendedBy": "Maurice Barthélemy",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:06:07",
+  "status": "validated",
+  "timestamp": "00:06:05",
   "title": "Je pense trop",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

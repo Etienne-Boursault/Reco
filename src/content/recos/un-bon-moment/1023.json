@@ -1,9 +1,33 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. Quote 'la serie Derby Girl dans laquelle j'ai joue' = auto-presentation d'une oeuvre par un intervenant. Guests reels absents des metadonnees (Florent Bernard / Adrien Menielle) : attribution 'Navo' non verifiable, possible guest-work. A restaurer/re-attribuer si transcript complet.",
+    "reason": "Transcript inexploitable + auto-presentation (possible guest-work) + guests absents des metadonnees.",
+    "verdict": "discard"
+  },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
     "tmdb": "112390",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -12,9 +36,10 @@
   "quote": "Moi, j'ai la série Derby Girl dans laquelle j'ai joué",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:50:39",
   "title": "Derby Girl",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

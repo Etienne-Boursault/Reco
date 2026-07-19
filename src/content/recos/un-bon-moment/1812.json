@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'NTP' est l'EP de Mona Guba (performeuse non-invitee, regle 6) : 'Ton EP sort le 7 novembre, il s'appelle NTP' (00:44:31) — pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Mona",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1812",
+  "links": [],
+  "quote": "Il sort le 7 novembre Il s'appelle NTP",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:31",
+  "title": "NTP",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2024
+}

@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Jeu de Cyprien (La Gamerie). guests VIDE mais Cyprien invite.",
+    "reason": "Make More Views, jeu mobile de Cyprien (studio La Gamerie, 2020, cliqueur/sim youtubeur), presente longuement puis 'Moi je recommande Make more views' (01:39:56). Auto-promo d'invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Cyprien",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2618",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un cliqueur, tu vois.",
+  "recommendedBy": "Cyprien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:25",
+  "title": "Make More Views",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

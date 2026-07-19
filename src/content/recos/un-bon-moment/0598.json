@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. Le quote decrit la filmo de Linklater ('il a fait... le plus connu School of Rock') plutot qu'une prescription directe de ce film. A re-arbitrer si transcript complet.",
+    "reason": "Transcript inexploitable + quote = name-drop de filmo plutot que prescription.",
+    "verdict": "discard"
+  },
   "creator": "Richard Linklater",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
@@ -6,17 +15,39 @@
     "tmdb": "1584",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0598",
   "links": [],
-  "quote": "il a fait des films le plus connu, je pense, School of Rock avec Black Black.",
+  "quote": "il a fait des films, le plus connu, je pense, c'est School of Rock avec Jack Black, qui est vraiment le truc le plus populaire",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:28",
+  "status": "discarded",
+  "timestamp": "00:00:00",
   "title": "School of Rock",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

@@ -1,8 +1,27 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'Muse' : mention instrumentale (discussion sur les chansons disponibles au karaoke, 'ah si il y a Muse mais j'ai pas chante Muse'), pas de recommandation.",
+    "verdict": "discard"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/4195713"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:38:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -10,9 +29,10 @@
   "links": [],
   "quote": "Ah, si, il y a muse.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:38:00",
   "title": "Muse",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

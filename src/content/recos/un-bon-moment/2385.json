@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Mention en anecdote, pas une reco.",
+    "reason": "Anecdote : « C'était dans Les Agités du Bocal, une émission genre en 2006-2007 » (00:29:02) — souvenir de la première fois où Kyan a vu Manu à la télé. Aucune prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2385",
+  "links": [],
+  "quote": "c'était dans Les Agités du Bocal, une émission genre en 2006-2007. Tu faisais ton premier spectacle.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:02",
+  "title": "Les Agités du Bocal",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

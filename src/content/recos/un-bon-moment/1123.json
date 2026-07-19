@@ -1,18 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution corrigee Martin->Bertrand : c'est Bertrand qui est nomme juste avant (01:16:20). Canonique du doublon Diagonale (l'autre = ubm-3037, titre tronque 'La Diagona de la joie', discard). Titre phonetiquement confirme par le transcript mais non verifie web (budget epuise).",
+    "reason": "Reco explicite et substantielle : le host demande '01:16:20 Bertrand ?' puis 'j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona[le] de la joie... c'est bouleversant... une ecriture entre la poesie et la revue scientifique'. Canonique du doublon (orthographe complete du titre).",
+    "verdict": "validate"
+  },
   "creator": "Corinne Sombrun",
   "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1123",
+  "kind": "reco",
   "links": [],
-  "quote": "moi j'ai lu le livre de Corinne Sombrin qui s'appelle La Diagonale de la Joie",
-  "recommendedBy": "Bertrand",
+  "quote": "j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona de la joie",
+  "recommendedBy": "Bertrand Usclat",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:16:23",
   "title": "La Diagonale de la Joie",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

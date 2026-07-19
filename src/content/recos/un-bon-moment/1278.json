@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco acast orpheline. A restaurer uniquement si l'audio acast le confirme.",
+    "reason": "Faux positif : 'Trousboy' introuvable dans le transcript YouTube authoritative. Zone YT ~00:25 = anecdote metro (fausse station Porte des Lilas), aucune BD ni 'faut s'ecouter'. Extraction acast 2026-05-28 superseded.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "\"C'est ça, faut s'écouter.\"",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:25:20",
   "title": "Trousboy",
+  "transcriptSource": "acast",
   "types": [
     "bd"
   ]

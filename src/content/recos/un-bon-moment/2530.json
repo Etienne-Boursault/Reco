@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon -> canonique conserve = ubm-2525.",
+    "reason": "Doublon du but de Dennis Bergkamp (00:50:26) : meme moment que le canonique ubm-2525. Fragment 'tres beau but de Denise Bergkamp en 98' sans l'invitation a le voir.",
+    "verdict": "discard"
+  },
+  "creator": "Denis Bergkamp",
+  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2530",
+  "links": [],
+  "quote": "très beau but de Denise Bergkamp en 98",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:26",
+  "title": "Denis Bergkamp",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

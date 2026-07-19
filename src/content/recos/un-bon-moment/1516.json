@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Format recent de Kyan, non indexe en ligne (attendu). Titre enonce par lui-meme.",
+    "reason": "Kyan presente son propre podcast/format « Le Fil Mental » (sorti en septembre) — auto-promo d'un host.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:21:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:20:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1516",
+  "kind": "reco",
+  "links": [],
+  "quote": "ça s'appelle le fil mental j'ai sorti ça au mois de septembre et je pars d'une question que je me pose et je déroule le fil",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:20:20",
+  "title": "Le fil mental",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

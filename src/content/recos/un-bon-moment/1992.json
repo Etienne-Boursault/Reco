@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 0327 (même spectacle « Sexe » de Bérengère Krief ; titre = prénom seul).",
+    "verdict": "discard"
+  },
+  "creator": "Bérangère Krief",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1992",
+  "links": [],
+  "quote": "C'est le meilleur spectacle de Bérangère.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:48",
+  "title": "Bérangère",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

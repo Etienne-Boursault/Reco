@@ -1,17 +1,58 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco gardee (titre officiel); ubm-0657 discard comme doublon",
+    "reason": "Prescription du podcast The Joe Rogan Experience par Virginie (fan de MMA/UFC, 'une grande fan'); oeuvre tierce. Reco gardee du doublon",
+    "verdict": "validate"
+  },
   "creator": "Joe Rogan",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:15",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1029",
-  "links": [],
-  "quote": "Joe Rogan c'est le Dieu du podcast en fait je pense que c'est le premier podcast aux États-Unis",
-  "recommendedBy": "Navo",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
+    }
+  ],
+  "quote": "Il faut écouter Joe Rogan, le podcast de Joe Rogan",
+  "recommendedBy": "Virginie Fortin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:16:17",
+  "status": "validated",
+  "timestamp": "01:16:15",
   "title": "The Joe Rogan Experience",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

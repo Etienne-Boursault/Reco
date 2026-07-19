@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop du dessin anime Asterix dans le jeu-devinette de la 'star mystere' (identifier la personne par sa filmo : 'il etait sur le dessin anime Asterix'). Mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0335",
   "links": [],
   "quote": "Il était sur le dessin animé asterique.",
-  "recommendedBy": "Paul de Saint-Sernin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:13:09",
   "title": "Asterix",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

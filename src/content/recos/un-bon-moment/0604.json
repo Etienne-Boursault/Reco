@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. Podcast reel ('2 Heures de Perdues') decrit comme 'tres connu' ; creator 'Antoine' douteux (podcast a plusieurs voix). A re-arbitrer si transcript complet.",
+    "reason": "Transcript inexploitable + creator douteux.",
+    "verdict": "discard"
+  },
   "creator": "Antoine",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "c'est déjà le podcast Deux Heures de Perdue qui est un podcast très connu",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:28:24",
   "title": "Deux Heures de Perdue",
+  "transcriptSource": "acast",
   "types": [
     "podcast"
   ]

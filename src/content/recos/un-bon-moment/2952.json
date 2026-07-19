@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy « Navo » sans objet (discard). Identification de jeu.",
+    "reason": "« Sans contrefaçon » de Mylène Farmer simplement identifiée dans le blind test (00:41:26), sans avis. Mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
+  "creator": "Mylène Farmer",
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2952",
+  "links": [],
+  "quote": "il y a un Mylène Farmer",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:26",
+  "title": "Sans contrefaçon",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

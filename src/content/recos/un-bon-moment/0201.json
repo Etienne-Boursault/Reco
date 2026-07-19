@@ -1,17 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Blague/non-reco : 'Van Gogh et le chocolat' lance comme fausse reco comique en reponse a la question. Pas une vraie recommandation.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0201",
   "links": [],
-  "quote": "Moi écoute comme ça, je dirais deux trucs pareils, Van Gogh.",
+  "quote": "Van Gogh",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:39:18",
+  "status": "discarded",
+  "timestamp": "01:39:17",
   "title": "Van Gogh",
+  "transcriptSource": "acast",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

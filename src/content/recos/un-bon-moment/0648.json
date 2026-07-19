@@ -1,21 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Source acast mais contenu bien present dans le transcript YouTube. Frontiere citation/discard (mention en liste).",
+    "reason": "Nommee comme exemple d'excellente serie francaise dans une enumeration elogieuse ('il y a d'excellentes series en France, il y a le bureau des legendes'), sans prescription individuelle. Presente dans le transcript YouTube a 01:12:02.",
+    "verdict": "citation"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/62476-le-bureau-des-legendes/watch?locale=FR",
     "tmdb": "62476",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0648",
+  "kind": "citation",
   "links": [],
   "quote": "il y a quand même d'excellente série en France, il y a le bureau des légendes",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:02",
   "title": "Le Bureau des Légendes",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

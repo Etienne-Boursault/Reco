@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Collision source acast — reco d'un autre épisode (Ferrari).",
+    "reason": "Collision d'épisode : 'Spectacle de Capucine' absent du transcript YouTube. Contenu de l'épisode UBM avec Jérémy Ferrari, extrait d'un transcript acast mismatché. Doublon de ubm-1294.",
+    "verdict": "discard"
+  },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:30:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1185",
   "links": [],
   "quote": "Je vous invite à aller découvrir le nouveau spectacle. Le premier spectacle de Capucine avant Triloc.",
-  "recommendedBy": "Jeremy Ferrari",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:30:48",
   "title": "Spectacle de Capucine Anav",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

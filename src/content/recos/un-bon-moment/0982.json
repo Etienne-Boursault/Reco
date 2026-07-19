@@ -1,19 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1613 ('Fhyn'). NB recommendedBy 'Aroun' = artefact pour Haroun.",
+    "verdict": "discard"
+  },
   "episodeGuid": "697d34fef1dd68ab365aea03",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/552679012"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:51:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0982",
   "links": [],
   "quote": "Un autre qui s'est fait l'électro que s'appelle Fine, F H Y N",
-  "recommendedBy": "Aroun",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:51:03",
   "title": "Fhyn",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

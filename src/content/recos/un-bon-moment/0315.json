@@ -1,21 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~01:50:14. Big Boys est une serie Channel 4 (Jack Rooke), pas BBC comme dit a l'oral -> champ creator 'BBC' imprecis. Relaye d'Amandine Gay.",
+    "reason": "Recommandation explicite dans le segment recos (relais Amandine Gay).",
+    "verdict": "validate"
+  },
+  "creator": "BBC",
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
     "tmdb": "202851",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0315",
+  "kind": "reco",
   "links": [],
-  "quote": "Big Boys",
+  "quote": "Big Boys en fait c'est une petite sélection série de la BBC",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:50:14",
   "title": "Big Boys",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

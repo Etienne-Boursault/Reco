@@ -1,18 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Gad Elmaleh n'est pas l'invite -> validate (oeuvre tierce), pas guest-work. Attribution Kyan : admiration bien documentee de Kyan pour Gad, coherente avec le monologue « je voulais faire de l'humour ».",
+    "reason": "Eloge fort et explicite du host : « c'est un spectacle qui a change ma vie. C'est sans aucun doute le spectacle qui a installe que je voulais faire de l'humour dans ma vie. » Spectacle reel de Gad Elmaleh (2005), titre confirme dans le transcript.",
+    "verdict": "validate"
+  },
   "creator": "Gad Elmaleh",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0813",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, c'est un spectacle qui a changé ma vie. Et c'est sans aucun doute le spectacle qui a installé que je voulais faire de l'humour dans ma vie.",
+  "quote": "Et c'est le nom du spectacle de Gade. Il avait tout vu. L'autre, c'est moi.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:00:44",
+  "status": "validated",
+  "timestamp": "01:00:28",
   "title": "L'autre, c'est moi",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

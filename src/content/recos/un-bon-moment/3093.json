@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateurs transcrits: Félix Lefebvre, Anja Verde Rosa, Suzanne Jouannet — orthographes à vérifier. Recommandeur incertain (non diarizé).",
+    "reason": "Film 'L'épreuve du feu' prescrit avec substance et enthousiasme ('super film très émouvant', 'trop bien joué'), pas l'œuvre d'un présent — vraie reco (validate).",
+    "verdict": "validate"
+  },
+  "creator": "Félix Lefebvre, Anja Verda Rosa, Suzanne Joannet",
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:21",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3093",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/l-epreuve-du-feu-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/lepreuve-du-feu-2025"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000001690.html"
+    }
+  ],
+  "quote": "L'oeuvre que j'ai beaucoup aimé moi c'est L'épreuve du feu ! C'est un film avec Félix Lefebvre et Anja...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:38:21",
+  "title": "L'épreuve du feu",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Meme segment de jeu que ubm-1398 (Sensation).",
+    "reason": "Tiesto = sujet du quiz DJ (00:13:38+, c'est le premier DJ a avoir...). Admiration en passant (une de mes idoles) dans le cadre du jeu -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Tiësto",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1913",
+  "links": [],
+  "quote": "Tiësto c'était pour moi adolescent une de mes idoles",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:01",
+  "title": "DJ Tiësto",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

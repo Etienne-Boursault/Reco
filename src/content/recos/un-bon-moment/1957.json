@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Idem ubm-0989 : le fakir sert a identifier Romain Puertolas, pas de prescription. Doublon.",
+    "verdict": "discard"
+  },
+  "creator": "Romain Puértolas",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:13:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1957",
+  "links": [],
+  "quote": "et qui avait écrit il y a très longtemps l'extraordinaire voyage du fakir qui s'était fait enfermé dans une armoire",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:13:29",
+  "title": "L'extraordinaire voyage du fakir qui s'était fait enfermer dans une armoire",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

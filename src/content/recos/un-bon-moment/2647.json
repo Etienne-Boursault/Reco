@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Quote 'un peu bigard' = reference a un style, pas une reco.",
+    "reason": "Anecdote de carriere de Laura : 'les premiers beats que j'ai pris au Jamel Comedy Club' (debuts stand-up, 00:34:39). Nom de lieu/emission cite sans avis ni prescription -> pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:34:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2647",
+  "links": [],
+  "quote": "C'était mon temps un peu bigard au Jamel Comedy Club",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:39",
+  "title": "Jamel Comedy Club",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

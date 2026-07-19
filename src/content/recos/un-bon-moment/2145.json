@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2135.",
+    "reason": "Doublon de ubm-2135 (meme discussion sur Shirley Souagnon, ~00:06:00).",
+    "verdict": "discard"
+  },
+  "creator": "Shirley Soignon",
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:32:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2145",
+  "links": [],
+  "quote": "Ben, moi, Shirley, alors improbable. Shirley Soignon.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:06:01",
+  "title": "Shirley",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

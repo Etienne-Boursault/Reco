@@ -1,19 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct : Thomas VDB s'acclimate (transcript coupe le 'VDB').",
+    "reason": "Emission de l'invite promue en outro : 'Thomas VDB s'acclimate, c'est sur MyCanal, ecrit par Navo aussi et Audrey'. Auto-promo assumee.",
+    "verdict": "guest-work"
+  },
   "creator": "Navo et Audrey",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0208",
+  "kind": "reco",
   "links": [],
-  "quote": "Thomas s'acclimate c'est sur Maï Canal",
-  "recommendedBy": "Navo",
+  "quote": "Thomas BDB S'acclimate c'est sur My Canal",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:48:46",
+  "status": "validated",
+  "timestamp": "01:48:47",
   "title": "Thomas s'acclimate",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Host non identifiable (Kyan ou Navo, transcript non diarisé) -> recommendedBy vide. Réalisateur = Patrice Leconte (le champ creator liste les acteurs Rochefort/Noiret/Marielle).",
+    "reason": "Recommandation publique explicite par un host ('ce film des grands ducs qui est incroyable que je recommande', 'allez voir les grands ducs', 'grand grand film d'acteurs').",
+    "verdict": "validate"
+  },
   "creator": "Jean Rochefort, Philippe Noiré, Jean-Pierre Marielle",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,18 +19,48 @@
     "tmdb": "47496",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:48:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:48:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0924",
+  "kind": "reco",
   "links": [],
-  "quote": "il y a ce film des Grands Ducs qui est incroyable que je recommande d'ailleurs les Grands Ducs avec Jean Rochefort, Philippe Noiré et Jean-Pierre Marielle",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "les grands ducs qui est incroyable que je recommande",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:43:25",
+  "status": "validated",
+  "timestamp": "00:48:27",
   "title": "Les Grands Ducs",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

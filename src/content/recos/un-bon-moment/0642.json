@@ -1,19 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom/plateforme non revalides (WebSearch epuise) ; attribution non diarizee -> vide.",
+    "reason": "Recommandation d'un compte reel (Freddy Fred, scenarios avec son chien) dans le jeu des recos : 'c'est genial, tu vas voir' (01:16).",
+    "verdict": "validate"
+  },
   "creator": "Freddy Fred",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:17",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0642",
+  "kind": "reco",
   "links": [],
-  "quote": "Incroyable, Freddy Fred. C'est toi qui m'a fait découvrir ça. C'est des scénariés avec son chien.",
-  "recommendedBy": "Invité",
+  "quote": "Freddy Fred ! C'est des scénariés avec son chien ! Tu vas voir la croyance ! Tu vas voir c'est génial !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:16:17",
   "title": "Freddy Fred",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

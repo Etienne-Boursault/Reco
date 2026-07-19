@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Probablement guest-work (oeuvre de l'invite) si le titre est confirme ; laisse en draft pour identification humaine.",
+    "reason": "Le passage renvoie clairement a une oeuvre musicale/comique reelle de Mister V devenue 'un vrai son' avec des streams (00:48-00:49), mais le transcript garble le titre ('Mirador' / 'Solidise' / 'Solidaise') ; identification/validation impossible (WebSearch epuise).",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:48:51",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3174",
+  "links": [],
+  "quote": "Mais alors, tu étais vachement dans l'eau, mais là, on t'a vu dans Mirador, c'est quand même un truc de ouf.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:48:51",
+  "title": "Solidaise",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant : 'ca fait un peu Magnolia... c'est pas de Magnolia, c'est de moi-meme'. Magnolia sert de reference comparative pour une scene de bref, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1791",
+  "links": [],
+  "quote": "tu as fait la scène de Magnolia et je ne me rappelle pas il fait ça il se retrouve",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:31:07",
+  "title": "Magnolia",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

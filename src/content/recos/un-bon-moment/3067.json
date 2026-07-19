@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon; reco gardee = ubm-0655 (Shitty Flute, orthographe correcte)",
+    "reason": "Doublon de Shitty Flute avec orthographe erronee 'Chitty Flute' (regle 13)",
+    "verdict": "discard"
+  },
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:49",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3067",
+  "links": [],
+  "quote": "je pleure de rire en écoutant Chitty Flute. C'est une chaîne avec des remixes de choses qu'on connaît jouées très, très, très, très mal à la flûte",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:49",
+  "title": "Chitty Flute",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

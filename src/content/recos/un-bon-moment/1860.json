@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "L'Europeen est une salle (lieu), pas une oeuvre. Contexte : Blandine joue son spectacle a l'Europeen. La vraie oeuvre = 'La vie de ta mere' (ubm-0961).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1860",
+  "links": [],
+  "quote": "Blandine, t'es en spectacle en ce moment à l'Européen.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:35",
+  "title": "L'Européen",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

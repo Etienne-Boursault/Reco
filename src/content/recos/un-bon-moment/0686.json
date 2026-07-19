@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même réplique « si je devais en garder qu'un, je dirais Renaud » (00:58:48). Canonique = ubm-2513.",
+    "reason": "« Rono » = coquille Acast de « Renaud » (aucune occurrence de 'Rono' en YouTube). Doublon de ubm-2513.",
+    "verdict": "discard"
+  },
   "creator": "Rono",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/635507082"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +35,10 @@
   "quote": "Peut-être si je devais en garder qu'un, je dirais 'Rono'.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:58:45",
   "title": "Rono",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reference vague (discours de remise de prix non identifie precisement). Canonique du cluster Villeneuve (ubm-1203, ubm-2889 discardes). Invite Pana absent des metadonnees.",
+    "reason": "Discours de Denis Villeneuve (remise de prix, recommande la psychanalyse) relaye par Pana avec substance et adhesion (« ca m'a fait kiffer »), mais instrumental a son propos sur la therapie, sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Denis Villeneuve",
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2876",
+  "kind": "citation",
+  "links": [],
+  "quote": "déjà il m'a envoyé un discours de Denis Villeneuve qui quand il reçoit un prix dit je conseille à tous les jeunes cinéastes",
+  "recommendedBy": "Panayotis Pascot",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:14",
+  "title": "Discours de Denis Villeneuve",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

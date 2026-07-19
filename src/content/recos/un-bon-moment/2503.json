@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Jeu -> discard.",
+    "reason": "Mention instrumentale : reponses de Thomas a un jeu (« Thomas a gagne », « il en a trouve quatre possibles » : Section d'Assaut, Renan Luce, Stromae, Nadiya).",
+    "verdict": "discard"
+  },
+  "creator": "Section d'Assaut",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2503",
+  "links": [],
+  "quote": "Section d'Assaut, désolé, et Renan Luce, la laine.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:21",
+  "title": "Section d'Assaut",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,17 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution Navo probable (host récurrent qui recommande 'comme d'hab', s'adresse à Kyan) mais transcript non diarisé. Broadway (2020) est bien le 2e roman de Fab Caro, dans le ton du Discours — conforme au transcript.",
+    "reason": "Segment recos de fin (01:24) : prescription claire d'un roman réel non lié à un invité — 'je vais vous conseiller Broadway de Fab Caro' + 'si vous avez aimé le discours je pense vraiment que vous kifferez Broadway'. Locuteur non-Kyan (il s'adresse à Kyan à la 3e pers.) qui cite 'comme d'hab' → host Navo.",
+    "verdict": "validate"
+  },
   "creator": "Fab Caro",
   "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:24:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:24:38",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0740",
-  "links": [],
-  "quote": "Je vais vous conseiller. \"Broadway\" de Fab Caro.",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782072907210-broadway-fabrice-caro/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Gallimard",
+      "url": "https://www.gallimard.fr/catalogue/broadway/9782072963674"
+    }
+  ],
+  "quote": "je vais vous conseiller Broadway de Fab Caro",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:24:38",
   "title": "Broadway",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

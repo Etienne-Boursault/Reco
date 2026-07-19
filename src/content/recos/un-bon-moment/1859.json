@@ -1,0 +1,68 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre d'Audrey Vernon (titre officiel : Comment epouser un milliardaire 2 - Noces de cristal).",
+    "reason": "Thomas VDB recommande le spectacle d'Audrey Vernon (sa compagne, NON invitee de l'episode) : 'Comment epouser un milliardaire 2, hyper bien, j'ai vu a Avignon'. Reco d'une oeuvre tierce (pas guest-work).",
+    "verdict": "validate"
+  },
+  "creator": "Audrey Vernon",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:49:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:49:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:49:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:49:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1859",
+  "kind": "reco",
+  "links": [],
+  "quote": "Qui fait le deuxième tome de 'Comment épouser un milliardaire'",
+  "recommendedBy": "Thomas VDB",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:49:15",
+  "title": "Comment épouser un milliardaire 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

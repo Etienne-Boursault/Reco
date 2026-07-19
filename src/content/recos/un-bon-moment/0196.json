@@ -1,6 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0957 (meme passage 01:58:06, titre correct 'Jury Duty'). Titre-artefact 'Dury Duty'.",
+    "verdict": "discard"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:58:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +31,10 @@
   "quote": "Dury Duty c'est vraiment sur Amazon c'est vraiment un petit bijou",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:58:08",
   "title": "Dury Duty",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Œuvre du host Kyan Khojandi citée en anecdote / repère temporel ('c'était tout frais, bref' ; distribution de Bref sur YouTube), sans presentation ni prescription -> citation (regle host-anecdote).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2435",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'était tout frais, bref",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:03:56",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

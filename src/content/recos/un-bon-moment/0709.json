@@ -1,5 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "'Perfect Video' (00:28:48) absent du transcript YouTube ; gap possible entre 00:28:45 et 00:28:55, juste apres la reco Splice. Extrait uniquement depuis Acast (openai). Discard -- a restaurer si Acast confirme.",
+    "reason": "Introuvable dans le transcript YouTube (extrait Acast uniquement)",
+    "verdict": "discard"
+  },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +28,10 @@
   "quote": "Il y a Perfect Video qui marche très bien aussi.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:28:48",
   "title": "Perfect Video",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

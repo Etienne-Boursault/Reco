@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre descriptif (pas un titre officiel) ; retrouver la video/lien exact du tuto Heimlich de McFly & Carlito. Doublon : ubm-2036.",
+    "reason": "Reco explicite : 'en lien la video de McFly et Carlito qui ont fait un tuto de Heimlich... prenez 30 secondes... comme ca vous allez apprendre'. Prescription claire d'un tuto premiers secours. Canonique.",
+    "verdict": "validate"
+  },
+  "creator": "McFly et Carlito",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2038",
+  "kind": "reco",
+  "links": [],
+  "quote": "Prenez alors voilà juste je fais un peu de mais prenez le temps d'aller vous renseigner pour les moins d'un an",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:12",
+  "title": "Vidéo de McFly et Carlito sur la manoeuvre d'Aimlich",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

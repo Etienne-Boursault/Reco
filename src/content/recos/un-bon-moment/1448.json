@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artiste tres probablement DISIZ (transcription « This Is » / « D6 » = « Disiz »), dernier album « On s'en rappellera pas » (nov. 2025). A confirmer a l'oreille ; si oui -> validate. Canonique ; doublon = ubm-0438.",
+    "reason": "Reco enthousiaste d'un album (« je recommande... super album... le dernier album... j'adore le morceau 45 »). Mais l'artiste est transcrit « This Is » (et « D6 » dans le doublon) — nom a confirmer avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "This Is",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1448",
+  "links": [],
+  "quote": "je recommande l'album de This Is",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:46:40",
+  "title": "This Is",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

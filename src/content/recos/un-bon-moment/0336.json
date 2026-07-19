@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre halluciné, introuvable dans le transcript.",
+    "reason": "Titre 'La Classe a Dede' ABSENT du transcript (hallucination). Le passage @00:09:01 = 'c'est vraiment le niveau 1 du quiz' du podcast d'Alice (deviner le sport). Faux positif, pas une oeuvre.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:09:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0336",
   "links": [],
   "quote": "C'est vraiment niveau 1 du quiz, mais...",
-  "recommendedBy": "Paul de Saint-Sernin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:09:01",
   "title": "La Classe à Dédé",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

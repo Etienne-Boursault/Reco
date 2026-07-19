@@ -1,17 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Bit sarcastique (classiques ultra-connus), pas une reco. Cf. doublon ubm-0995.",
+    "reason": "'Laurence d'Arabie' fait partie d'un bit sarcastique des hosts qui 'recommandent' des classiques ultra-connus pour se moquer du format ('si vous avez 4h a tuer', 'on en a jamais entendu parler de ce film', ironie). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "David Lean",
   "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0419",
   "links": [],
-  "quote": "Laurence d'Arabie, si vous avez quatre heures à tuer.",
-  "recommendedBy": "Navé",
+  "quote": "Allez voir Laurence d'Arabie, si vous avez 4 heures à tuer.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:27:09",
+  "status": "discarded",
+  "timestamp": "01:27:06",
   "title": "Laurence d'Arabie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

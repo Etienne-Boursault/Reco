@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Chaine YouTube Try : 'il y a Try qui est tres bon aussi' (01:56:15), meme tour de reco essayistes. Reco explicite.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2075",
+  "kind": "reco",
+  "links": [],
+  "quote": "il y a Try\nqui est très bon aussi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:15",
+  "title": "Try",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

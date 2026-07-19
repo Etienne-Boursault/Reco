@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript garble le titre en 'Leo de Hurlevent' ; oeuvre = Wuthering Heights, Emily Bronte, 1847 (identifie sans ambiguite : 'Emilie Bronte', '1847', 'unique roman'). Doublons: 0211, 2030, 1843.",
+    "reason": "Augustin (invite, 'un bouquin sur l'amour ?') recommande Les Hauts de Hurlevent d'Emily Bronte : 'Plus grand livre jamais ecrit sur l'amour', 'jamais on a pu ecrire un roman d'amour aussi beau'. Prescription forte. Canonique (titre + createur + annee corrects). Attribution corrigee (etait Kyan).",
+    "verdict": "validate"
+  },
   "creator": "Emily Brontë",
   "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0212",
+  "kind": "reco",
   "links": [],
-  "quote": "Léa Durlevand, des Médis Brontés. Le plus grand livre jamais écrit sur l'amour en 1847.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Léo de Hurlevent d'Émilie Brontë. Plus grand livre jamais écrit sur l'amour, 1847.",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:18:51",
+  "status": "validated",
+  "timestamp": "00:18:50",
   "title": "Les Hauts de Hurlevent",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ],

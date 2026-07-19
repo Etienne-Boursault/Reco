@@ -1,21 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator Malik Bendjelloul, 2012. Doublon : ubm-0865 (titre erroné). Attribution corrigée (stockée Navo → Clément).",
+    "reason": "Searching for Sugar Man dans sa liste de docs marquants : « qui était ouf... méga star en Afrique du Sud... celui-là il m'a marqué ». Substance + enthousiasme mais pas de prescription. Canonique (titre officiel + liens).",
+    "verdict": "citation"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/84334-searching-for-sugar-man/watch?locale=FR",
     "tmdb": "84334",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1102",
+  "kind": "citation",
   "links": [],
   "quote": "looking for sugar men ouais qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:20:56",
   "title": "Searching for Sugar Man",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel 'Soulages, une autre lumiere'. Expo terminee. recommendedBy probable : Laetitia Casta. Canonique du cluster Soulages (doublons: 0468,0999,1433,1929).",
+    "reason": "Vraie reco ('expo au Luxembourg sur les encres de Soulages... exceptionnellement beau') mais expo 'Soulages, une autre lumiere' (Musee du Luxembourg) close depuis le 11/01/2026 : decision humaine (publier en citation d'expo passee ou discard) + titre a normaliser.",
+    "verdict": "unsure"
+  },
+  "creator": "Pierre Soulages",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:34:38+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1425",
+  "links": [],
+  "quote": "j'ai été voir une expo au Luxembourg sur les encres de Soulages",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:59",
+  "title": "Exposition Soulages (encres)",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

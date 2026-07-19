@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'sur YouTube il y a les 50 minutes de Remi Boy qui sont incroyables' (01:55:13). Reco explicite. Locuteur du tour de recos ambigu -> vide.",
+    "verdict": "validate"
+  },
+  "creator": "Rémi Boy",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:55:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2071",
+  "kind": "reco",
+  "links": [],
+  "quote": "les 50 minutes de Rémi Boy qui sont incroyables",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:55:13",
+  "title": "Rémi Boy",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

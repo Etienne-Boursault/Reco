@@ -1,17 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2187 (album de Vianney, meme moment 01:27). Creator 'Vianet' = artefact de 'Vianney'.",
+    "verdict": "discard"
+  },
   "creator": "Vianet",
   "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0118",
   "links": [],
   "quote": "Je rappelle que Vianet, tu sors un album qui s'appelle A2 à 3.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:17",
   "title": "A2 à 3",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ],

@@ -1,0 +1,64 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Interstellar' — name-drop nu dans la liste des tops de Fanny, sans substance.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1482",
+  "links": [],
+  "quote": "Bah, j'avais dit aussi. Interstellar.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:42:56",
+  "title": "Interstellar",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

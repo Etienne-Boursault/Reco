@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2411 (canonique). Même mention du spectacle de danse « Murmuration » [01:03:50-01:03:52].",
+    "reason": "Doublon Acast de Murmuration.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0920",
   "links": [],
   "quote": "il y a des spectacles murmurations je sais pas si c'est un truc vraiment collectif tellement bien chiadé au millimètre près",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:03:52",
   "title": "Murmurations",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Réponse de multi-blind test (« Wasn't Me » de Shaggy) ; support de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Shaggy",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:24:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2773",
+  "links": [],
+  "quote": "Il y a Rocketman de Elton John et Wasn't Me de Shaggy.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:24:13",
+  "title": "Wasn't Me",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable (boilerplate 'Sous-titrage Societe Radio-Canada' repete) : invérifiable. Reco a priori legitime (Navo, 'Boyhood... super film'). A restaurer si transcript complet.",
+    "reason": "Transcript inexploitable : reco invérifiable.",
+    "verdict": "discard"
+  },
   "creator": "Richard Linklater",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
@@ -6,18 +15,38 @@
     "tmdb": "85350",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0597",
   "links": [],
-  "quote": "Boyhood que j'ai beaucoup aimé. C'est un super film.",
+  "quote": "il a fait surtout un film que j'adore et dont les images sont tirées dans cette photo Instagram. Boyhood, exactement.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:35",
+  "status": "discarded",
+  "timestamp": "00:00:00",
   "title": "Boyhood",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

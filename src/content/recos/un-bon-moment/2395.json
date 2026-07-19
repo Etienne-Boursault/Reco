@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre réel « Michèle » de Gérard Lenormand (1975), pas « Michel ». Réponse de jeu, pas une reco.",
+    "reason": "Chanson citée comme réponse à un jeu (« une chanson que tu kiffes mais que tu n'oses pas avouer », 01:32:14). Chanson support de jeu = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Gérard Lenormand",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2395",
+  "links": [],
+  "quote": "C'est Michel, un soir en décembre.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:32:14",
+  "title": "Michel",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

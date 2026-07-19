@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme mention que ubm-0351 (Mario).",
+    "reason": "Mario Bros = nostalgie 'Madeleine de Proust' de l'invite (01:12), sans prescription. Canonique du doublon avec ubm-0351.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1977",
+  "links": [],
+  "quote": "Ma Madeleine de Proust c'est Mario 1 ! Ouais ! Mario 1 c'est Mario Bros !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:12:22",
+  "title": "Mario Bros",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

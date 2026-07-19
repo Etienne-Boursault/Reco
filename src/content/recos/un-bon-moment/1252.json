@@ -1,9 +1,31 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2601 (meme passage 01:11:01). Orthographe correcte = 'Tif' (transcript 'T-I-F'), pas 'Tiff'.",
+    "verdict": "discard"
+  },
   "creator": "Tiff",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/65121042"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +34,10 @@
   "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tiff.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:11:01",
   "title": "Tiff",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre inventee dans un bit; doublon avec ubm-1641.",
+    "reason": "Film suedois invente ('L'hydre / Hydreos') dans le jeu 'on va chacun inventer un film pointu'. Titre 'The Hunt' hallucine (absent du transcript).",
+    "verdict": "discard"
+  },
+  "creator": "Thomas Vinterberg",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:14:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1628",
+  "links": [],
+  "quote": "Il y a un film suédois. L'hydre.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:14:23",
+  "title": "The Hunt",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

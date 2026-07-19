@@ -1,21 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon George K (l'autre = ubm-3030, discard). Pauline elle-meme hesite sur l'orthographe ('j'espere que je n'ai pas ecorche son nom, je crois que c'est Georges K') ; transcript dit 'Georges K', fichier dit 'George K' (avec lien Deezer). Non verifiable (WebSearch epuise).",
+    "reason": "Reco explicite de Pauline (host demande '01:15:31 Pauline tu as une chanson') : 'j'ai decouvert une artiste que j'aime beaucoup qui s'appelle Georges K... elle a fait une chanson sur Saigon qui est super belle'. Conserve comme canonique du doublon George K car porte un externalIds.deezer resolu.",
+    "verdict": "validate"
+  },
   "creator": "George K",
   "episodeGuid": "633b2f213ca1cc001201a69f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1769065537"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1122",
+  "kind": "reco",
   "links": [],
   "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
-  "recommendedBy": "Pauline",
+  "recommendedBy": "Pauline Clément",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:15:35",
   "title": "George K",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

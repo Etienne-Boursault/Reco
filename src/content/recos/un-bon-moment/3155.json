@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chaîne YouTube « Galen » (orthographe épelée par Navo) non revérifiable via WebSearch (budget épuisé) ; lien exact à confirmer côté humain.",
+    "reason": "Prescription explicite : « Moi, je recommande Galen, G-A-L-E-N sur YouTube, qui fait des analyses de tableaux » (Navo, interpellé nommément pour sa reco).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:25",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3155",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@gaalenn"
+    }
+  ],
+  "quote": "Moi, je recommande Galen, G-A-L-E-N sur YouTube, qui fait des analyses de tableaux.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:25",
+  "title": "Galen",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom correct = Emy LTR (Emy Letertre), videaste/realisatrice. Ajouter Natoo aux guests.",
+    "reason": "Recommandation d'une creatrice dans le tour de recos : 'on a deja evoque Amy LTR... On l'adore. Elle fait les courts-metrages de qualite. C'est une bosseuse.'",
+    "verdict": "validate"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2220",
+  "kind": "reco",
+  "links": [],
+  "quote": "Alors écoutez on a déjà évoqué Amy LTR tout à l'heure. On l'adore. Elle fait les courts-métrages de qualité. C'est une bosseuse.",
+  "recommendedBy": "Natoo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:18",
+  "title": "Amy LTR",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

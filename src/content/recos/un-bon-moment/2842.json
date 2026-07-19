@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Theo Babac reel (monteur/createur humoristique). Attribution incertaine: invitee ayant fait un episode avec lui, ou host -> recommendedBy vide.",
+    "reason": "Recommandation explicite ('on n'empeche pas de le recommander', 'il est incroyable', 'timing comique incroyable', 'tres fort, tres humble'). Createur video reel.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2842",
+  "kind": "reco",
+  "links": [],
+  "quote": "Mais Théo Babac, il est incroyable. Il a... Sa capacité à monter des vidéos drôles, son timing comique est incroyable.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:20",
+  "title": "Théo Babac",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

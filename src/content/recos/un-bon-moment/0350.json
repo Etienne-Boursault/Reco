@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Zelda = reponse de devinette + discussion nostalgie jeux video (01:10-11). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Nintendo",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0350",
   "links": [],
   "quote": "Zelda, Mortal Kombat, c'était les deux jeux que j'ai joué.",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:11:59",
   "title": "Zelda",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

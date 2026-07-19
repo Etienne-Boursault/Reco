@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop d'un podcast tiers : 'A bientot te revoir' est le podcast de Sophie Marie Larouie (non-invitee), mentionne car Navo en fut le parrain/1er episode (01:59:48) — pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Sophie Marie Larouie",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2025",
+  "links": [],
+  "quote": "D'ailleurs tu étais le parrain\nDe A bientôt te revoir\nDe A bientôt te revoir",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:59:48",
+  "title": "À bientôt te revoir",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

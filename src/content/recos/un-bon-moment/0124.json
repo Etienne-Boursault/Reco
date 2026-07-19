@@ -1,16 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = 'Enter the Gungeon' (transcript: 'Hunter The Gungeon' = mishear). C'est Grim qui raconte son 1er stream (l.1012 'Grim, est-ce que tu te rappelles de ton premier stream'), donc recommendedBy 'Navo' d'origine est errone. Avis negatif de surcroit.",
+    "reason": "Anecdote de Grim sur son tout premier stream (2019): il decrit le jeu qu'il streamait ('c'etait pas ouf'). Historique perso, pas une prescription.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0124",
   "links": [],
-  "quote": "Je vois Hunter the Gungeon.",
+  "quote": "Je vois Hunter The Gungeon, c'est vraiment un jeu, comment on dit, un roguelike ou je sais plus.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:39:17",
+  "status": "discarded",
+  "timestamp": "00:39:16",
   "title": "Hunter: The Gungeon",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

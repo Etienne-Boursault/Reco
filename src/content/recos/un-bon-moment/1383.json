@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle: 'Sarah Lele' -> 'Sarah Lele' avec accents (Sarah Lelele: humoriste belge). Titre a corriger en 'Sarah Lele' (accents e aigus). Attribution Shirley Souagnon.",
+    "reason": "Recommandation explicite: 'allez voir Sarah Lele de fou' (01:25:32), meme locutrice que Linda Fandel. Humoriste reelle confirmee web.",
+    "verdict": "validate"
+  },
+  "creator": "Sarah Lele",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1383",
+  "kind": "reco",
+  "links": [],
+  "quote": "allez voir Sarah Lele de fou",
+  "recommendedBy": "Shirley Souagnon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:32",
+  "title": "Sarah Lele",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

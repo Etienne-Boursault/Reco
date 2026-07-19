@@ -1,10 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Passage 00:51:52, jeu Devine la chute.",
+    "reason": "Proposition/exemple rhetorique dans le jeu 'Devine la chute' (film triste) ; mention instrumentale.",
+    "verdict": "discard"
+  },
   "episodeGuid": "633b305f3ca1cc001201a861",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/637-la-vita-e-bella/watch?locale=FR",
     "tmdb": "637",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +32,10 @@
   "links": [],
   "quote": "Je sais pas, il y a quoi de très triste, la vie est belle?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:51:52",
   "title": "La Vie est belle",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

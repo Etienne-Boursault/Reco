@@ -1,21 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Borderline validate/citation. Attribution Kyan etayee par la ref a ses 30 ans / souvenirs d'enfance (chambre, Matt Bellamy).",
+    "reason": "Kyan presente les deux premiers albums de Muse (« Origin of Symmetry et Showbiz... qui sont exceptionnels ») et propose de les faire decouvrir a Charlie — enthousiasme prescripteur. Album reel (Muse, 2001).",
+    "verdict": "validate"
+  },
   "creator": "Muse",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/1248725"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0427",
+  "kind": "reco",
   "links": [],
-  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels",
+  "quote": "Origin of Symmetry et Showbiz, les deux premiers albums qui sont exceptionnels.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:21",
+  "status": "validated",
+  "timestamp": "00:26:20",
   "title": "Origin of Symmetry",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ],

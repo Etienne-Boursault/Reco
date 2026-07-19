@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre confirme au transcript et en ligne (Gerald le Conquerant, 2025, real. F. Eboue). Alexandra Roth absente de guests alors que co-vedette -> guest_missing.",
+    "reason": "Film des invites, presente longuement (00:02-00:20) : realise par Fabrice Eboue, avec Alexandra Roth (revelation). Faux-documentaire inspire de Strip-tease, sortie 3 dec. 2025. Auto-promo assumee du format -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Non précisé",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,19 +18,62 @@
     "tmdb": "1174382",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0261",
+  "kind": "reco",
   "links": [],
-  "quote": "Alexandra et Fabrice, vous êtes dans un film qui s'appelle Gérald.",
-  "recommendedBy": "Alexandra Arrott",
+  "quote": "Franchement, déjà...",
+  "recommendedBy": "Fabrice Éboué & Alexandra Roth",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:02:52",
+  "status": "validated",
+  "timestamp": "00:02:59",
   "title": "Gérald Le Conquérant",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "spectacle"
   ],
   "watchProviders": [
     {
@@ -61,5 +116,6 @@
       "label": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=G%C3%A9rald%20Le%20Conqu%C3%A9rant"
     }
-  ]
+  ],
+  "year": 2026
 }

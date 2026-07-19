@@ -1,16 +1,66 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Bit d'emission, pas une oeuvre publiee.",
+    "reason": "Chips est un jeu de societe informel joue a l'antenne (bit : on chipse Navo), dont on explique les regles (01:41:26) -- pas une oeuvre culturelle recommandable (regle 3). Idem le jeu de la complicite.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0500",
   "links": [],
-  "quote": "excellent jeu si vous parlez, si vous dites la même chose en même temps le premier qui dit chips",
+  "quote": "je recommande le jeu Chips",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:41:27",
+  "status": "discarded",
+  "timestamp": "01:41:26",
   "title": "Chips",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "jeu"
   ]
 }

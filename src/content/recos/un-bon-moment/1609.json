@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Mirabel (01:40): reference dans une metaphore de discussion ('c'est en prenant la pomme? Mirabel... la metaphore avec ton film'), pas de reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1609",
+  "links": [],
+  "quote": "C'est en prenant la pomme ? Mirabel Que t'as vu la métaphore avec ton film ?",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:40:15",
+  "title": "Mirabel",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

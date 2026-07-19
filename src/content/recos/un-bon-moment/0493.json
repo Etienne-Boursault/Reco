@@ -1,21 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "I Created Disco cite comme trivia dans le quiz DJ (jeu des personnalites, 00:09:29+ : ou/comment Calvin Harris a enregistre son album). Oeuvre citee dans un jeu -> discard.",
+    "verdict": "discard"
+  },
   "creator": "Calvin Harris",
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/1205334"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "09:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:06:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0493",
   "links": [],
-  "quote": "Il a fait I Created Disco.",
+  "quote": "c'est vraiment un de mes artistes préférés",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:09:46",
+  "status": "discarded",
+  "timestamp": "00:10:00",
   "title": "I Created Disco",
+  "transcriptSource": "youtube",
   "types": [
     "album"
-  ]
+  ],
+  "year": 2007
 }

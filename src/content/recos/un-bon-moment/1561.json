@@ -1,0 +1,37 @@
+{
+  "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:13+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1561",
+  "links": [],
+  "quote": "D'ailleurs, le 3 qui est en tournage",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:59",
+  "title": "Bref 3",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

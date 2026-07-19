@@ -1,17 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Élément de blind-test : « C'est la musique de Street Fighter » (on devine le morceau, pas de reco du jeu). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Capcom",
   "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1237",
   "links": [],
-  "quote": "c'est la musique de Street Fighter",
+  "quote": "C'est la musique de Street Fighter.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:20:30",
   "title": "Street Fighter",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

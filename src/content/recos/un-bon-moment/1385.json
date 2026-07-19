@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite absent des metadonnees: Nordine Ganso.",
+    "reason": "'Blanc', prochain spectacle de Nordine Ganso (suite de 'Violet', serie de couleurs confirmee web), presente et developpe par lui (idees, com, Groenland) a 00:38:57. Projet a venir d'un invite = guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:41:41+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1385",
+  "kind": "reco",
+  "links": [],
+  "quote": "mon prochain spectacle qui va s'appeler Blanc",
+  "recommendedBy": "Nordine Ganso",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:38:57",
+  "title": "Blanc",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

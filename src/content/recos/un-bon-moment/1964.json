@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-05",
+    "humanCorrection": "Politique : performeur musical non-invité → hors recos (décision Etienne 2026-07-05)",
+    "model": "claude-opus-4-8",
+    "reason": "Mona Guba (01:11-01:14): invitee musicale qui vient faire un freestyle; les hosts renvoient a ses reseaux/streaming ('on te retrouve... Instagram TikTok Spotify Deezer'). Promo de l'oeuvre d'une invitee presente. Locuteur incertain -> vide. NB: Mona Guba absente des guests des metadonnees.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1964",
+  "kind": "reco",
+  "links": [],
+  "quote": "On te retrouve sur tes réseaux sociaux. Mona Guba. Instagram. TikTok. Spotify. Deezer",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:40",
+  "title": "Mona Guba",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

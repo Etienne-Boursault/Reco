@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = 'Fly Me to the Moon' (Sinatra). Segment blind-test (l.681-724). Mention instrumentale.",
+    "reason": "Chanson devinee dans un blind-test/jeu ('Are you ready?', 'il en reste trois', 'pour que les trois rendent le robot'). Mention de jeu, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Frank Sinatra",
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:40+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:23:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2156",
+  "links": [],
+  "quote": "Frank Sinatra, la musique de Noël, là. Flying to the moon.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:23:35",
+  "title": "Flying to the Moon",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

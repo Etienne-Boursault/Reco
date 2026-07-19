@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine : intervient juste après le Old Boy de Navo avec un 'moi' contrastif, vraisemblablement l'autre host (Kyan). creator = Darren Aronofsky.",
+    "reason": "Prescription explicite dans la rubrique reco ('le meilleur film de tous les temps') ; œuvre réelle (Black Swan, Darren Aronofsky, 2010).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3127",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/movies/black-swan/2RLJmebRIDpa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=125828.html"
+    }
+  ],
+  "quote": "Je trouve que c'est Black Swan, moi. Le meilleur film de tous les temps.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:01",
+  "title": "Black Swan",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2010
+}

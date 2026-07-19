@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre « 69 » invérifiable (budget WebSearch épuisé), émission MyCanal à confirmer. Attribuée à Navo car introduite comme son actu, mais collaboration Kyan/Navo possible.",
+    "reason": "Émission des hosts promue dans le tour d'actus de Navo : « regardez l'émission 69 qui doit être sorti sur MyCanal » (01:15:01), suivi de « Tu étais génial dedans ». Œuvre de host présentée par lui.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6599de12076e6c001696556a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2194",
+  "kind": "reco",
+  "links": [],
+  "quote": "Regardez l'émission 69 qui doit être sorti sur MyCanal.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:05",
+  "title": "69",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

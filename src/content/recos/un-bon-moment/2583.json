@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "spectacle d'Edouard Baer non nomme (preciser lequel, ~2020); ajouter Tania Dutel aux invites",
+    "reason": "Tania: 'je suis allee voir son spectacle, j'ai tellement aime le spectacle d'Edouard Baer, incroyable'. Enthousiasme prescripteur pour un artiste non-invite. Spectacle precis non nomme. Canonique de la paire 0698/2583.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2583",
+  "kind": "reco",
+  "links": [],
+  "quote": "parce que j'ai tellement aimé le spectacle d'Edouard Baer incroyable",
+  "recommendedBy": "Tania Dutel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:05:50",
+  "title": "Edouard Baer",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

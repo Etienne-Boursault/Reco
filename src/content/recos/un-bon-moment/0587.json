@@ -1,6 +1,35 @@
 {
-  "creator": "Navo",
+  "creator": "Clément Cotentin",
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T08:57:58+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
@@ -8,12 +37,14 @@
   "id": "ubm-0587",
   "links": [],
   "quote": "je recommande à tout le monde que ça s'appelle invisible [...] c'est sur canal ils sont quasiment tout en replay",
-  "recommendedBy": "Kyan Khojandi & Gringe",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
-  "timestamp": "01:18:15",
+  "timestamp": "01:18:13",
   "title": "Invisible",
+  "transcriptSource": "youtube",
   "types": [
+    "serie",
     "autre"
   ]
 }

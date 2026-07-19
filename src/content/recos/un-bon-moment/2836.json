@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locutrice = une invitee (Morgane ou Fanny, incertain), en contexte 'je veux ecrire une fiction'. recommendedBy vide.",
+    "reason": "Une invitee se dit 'grande fan' de Phoebe Waller-Bridge, son modele pour ecrire une fiction. Admiration/inspiration exprimee mais sans prescription au public -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2836",
+  "kind": "citation",
+  "links": [],
+  "quote": "Grande fan de... Phoebe Waller-Bridge !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:46:21",
+  "title": "Phoebe Waller-Bridge",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle « Maude Landry » (humoriste quebecoise, chaine YouTube confirmee). Locuteur non identifiable (transcript non diarize).",
+    "reason": "Recommandation claire (« aller voir le travail de Maud Landry, il est formidable... elle est trop bien, chaine YouTube »).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6302667b4913bd00126c374c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2884",
+  "kind": "reco",
+  "links": [],
+  "quote": "Maud Landry aller voir le travail de Maud Landry il est formidable il a une chaîne YouTube en plus elle est trop bien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:36",
+  "title": "Maud Landry",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

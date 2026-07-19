@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "~00:02:33-00:06:06.",
+    "reason": "Stromae (artiste) discute comme 'genie' (fond/forme/clip/com ~00:02:33). Substance sans prescription. Distinct de l'album (ubm-2303) et de la chanson (ubm-2308). Attribution fluide.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:58:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2307",
+  "kind": "citation",
+  "links": [],
+  "quote": "si si Stromae PNL génie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "09:58:00",
+  "title": "Stromae",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1044 (titre halluciné).",
+    "reason": "Doublon de ubm-1044 (meme passage 01:33:56). Titre 'Portrait of a Lady on Fire' est une HALLUCINATION: le film decrit (Rachel Weisz + Rachel McAdams, juives traditionnelles) est Disobedience, PAS Portrait of a Lady on Fire.",
+    "verdict": "discard"
+  },
+  "creator": "Céline Sciamma",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2370",
+  "links": [],
+  "quote": "Et un film Avec Rachel Weiss Et Rachel McAdam Qui s'appelait Je ne sais pas Comment qu'ils parlaient D'un amour impossible",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:33:56",
+  "title": "Portrait of a Lady on Fire",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

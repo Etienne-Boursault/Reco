@@ -1,21 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« le film dans lequel t'avais joué. Ah, pour Aka ? » — film joué par une invitée (échange Navo↔Natoo). Œuvre d'invité = validate même modeste. À VÉRIFIER (mention ténue, attribution incertaine).",
+    "verdict": "validate"
+  },
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/1102776-aka/watch?locale=FR",
     "tmdb": "1102776",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0442",
+  "kind": "reco",
   "links": [],
   "quote": "ah pour Aka",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:24:33",
   "title": "Aka",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

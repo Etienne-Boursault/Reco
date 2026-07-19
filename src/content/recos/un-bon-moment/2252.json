@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Version au titre generique 'Golden Globes' ; ubm-2261 'Golden Globes de Ricky Gervais' conserve comme canonique.",
+    "reason": "Doublon de ubm-2261 (meme quote et timecode 01:26:08). Canonique conserve = ubm-2261 (titre plus precis).",
+    "verdict": "discard"
+  },
+  "creator": "Ricky Gervais",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2252",
+  "links": [],
+  "quote": "Je tape le best-up des Golden Globes de Ricky Germain en ce moment.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:26:08",
+  "title": "Golden Globes",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Artiste cité en exemple dans une discussion de genre musical (« Avril Lavigne, Sum 41 »), pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Sum 41",
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2730",
+  "links": [],
+  "quote": "Avril Lavigne, Sum 41.",
+  "recommendedBy": "Alison Wheeler",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:08:00",
+  "title": "Sum 41",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

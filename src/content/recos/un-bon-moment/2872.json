@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Quote extraite « Le 2, il est senti, on a pete un cas » mais le transcript a 00:43:07 dit « Quand le 1, il est senti » : la louange vise le 1er film, le 2 n'est evoque que via le « 1,2,3 j'ai kiffe ».",
+    "reason": "Partie de la meme discussion-saga : Navo dit avoir tout revu au confinement (« je fais 1, 2, 3, j'ai kiffe »). Substance sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2872",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le 2, il est senti, on a pété un cas.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:07",
+  "title": "Matrix Reloaded",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

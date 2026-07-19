@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'No Diggity' de Blackstreet, chanson devinee dans le blind test de Navo : support de jeu-devinette, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Blackstreet",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/916496"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0136",
   "links": [],
   "quote": "non je sais pas qui c'est, no digidi et la scène, la scène de Mathieu Shedid et no digidi de black street",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:47:40",
   "title": "No Diggity",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

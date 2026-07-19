@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "OrelSan, meme entite que ubm-2311/ubm-2320.",
+    "reason": "Doublon de ubm-2311 : OrelSan recommande dans le segment final (~01:20:45). Titre 'Orslane' = artefact de 'OrelSan' (transcrit 'Orale San').",
+    "verdict": "discard"
+  },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +32,10 @@
   "quote": "Orale San, je crois qu'il a une chaîne YouTube. - Orale San, j'adore.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:54",
   "title": "Orslane",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

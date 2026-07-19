@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop en intro ('Je finis les chevaliers de Zodiac') — anecdote/vanne sans avis prescripteur ; l'anime revient plus loin comme gag de lot (figurine a 800 euros). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2993",
+  "links": [],
+  "quote": "Je finis les chevaliers de Zodiac.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:28",
+  "title": "Les Chevaliers du Zodiaque",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de la promo tournee ; conserver ubm-1170 comme oeuvre nommee.",
+    "reason": "Titre-artefact : 'Walidia' = nom de l'invite (Waly Dia) mal transcrit. 'N'hesitez pas a retrouver Walidia en tournee' [01:17:18] = promo tournee de l'invite, deja couverte par le guest-work ubm-1170 (Une heure a tuer).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2166",
+  "links": [],
+  "quote": "n'hésitez pas à retrouver Walidia en tournée",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:18",
+  "title": "Walidia",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

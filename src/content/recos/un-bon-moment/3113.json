@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Éloge 'miracle de cinéma' présent mais entièrement dans le cadre du jeu-devinette.",
+    "reason": "Œuvre citée dans le jeu d'anecdotes (Sean Connery a refusé Gandalf) ; discussion anecdotique sur le tournage, pas de prescription (règles 1 et 12).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "18:31",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3113",
+  "links": [],
+  "quote": "Le Seigneur des Anneaux. Le Seigneur des Anneaux, il n'y a pas compris.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "18:31",
+  "title": "Le Seigneur des Anneaux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

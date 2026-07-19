@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artiste reelle = Lynda Lemay (Quebecoise); «Linda Lome» = artefact -> corriger le champ creator en «Lynda Lemay». «La Centenaire» est bien sa chanson (verifie). Type a corriger: musique (pas spectacle). Canonique du cluster; doublons discardes: ubm-2845, ubm-2846, ubm-0807.",
+    "reason": "Recommandation d'artiste: 'Linda Lome est une artiste incroyable... si vous ne connaissez pas... c'est trop bien'. Navo initie le sujet (00:27:11).",
+    "verdict": "validate"
+  },
+  "creator": "Linda Lomé",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:27:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2832",
+  "kind": "reco",
+  "links": [],
+  "quote": "Linda Lomé est une artiste incroyable.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:27:46",
+  "title": "La centenaire",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

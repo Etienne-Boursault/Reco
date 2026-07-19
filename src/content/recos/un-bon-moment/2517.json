@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : Amy Winehouse citée comme exemple rhétorique du « génie au destin tragique » (« t'aimerais avoir sa carrière mais pas sa vie »), sans avis sur son œuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2517",
+  "links": [],
+  "quote": "Amy Winehouse genre",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:40",
+  "title": "Amy Winehouse",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

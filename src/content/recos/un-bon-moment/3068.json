@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon; reco gardee = ubm-0656",
+    "reason": "Doublon des resumes sumo NHK (regle 13)",
+    "verdict": "discard"
+  },
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3068",
+  "links": [],
+  "quote": "il faut aller sur NHK sumo Japon. Tu peux avoir les résumés",
+  "recommendedBy": "Virginie Fortin",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:43",
+  "title": "NHK Japan Highlight Sumo",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

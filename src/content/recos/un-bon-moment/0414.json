@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de Shameless (canonique ubm-1473). Titre mal transcrit.",
+    "reason": "'Chabless' = mauvaise transcription de 'Shameless' (Netflix). Meme reco que ubm-1473 (~01:25:40), doublon.",
+    "verdict": "discard"
+  },
   "creator": "Netflix",
   "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0414",
   "links": [],
   "quote": "Chabless sur Netflix qui est une très bonne série.",
-  "recommendedBy": "Navé",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:25:42",
   "title": "Chabless",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

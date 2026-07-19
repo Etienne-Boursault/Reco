@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Les nouveaux monstres / Les Nouveaux Sauvages (01:30): cite comme exemple pour appuyer un point ('c'est pour dire vraiment ca existe' - les films a sketches/remakes), pas de reco ni substance. Doublon de ubm-1622.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "697d34fef1dd68ab365aea03",
   "externalIds": {
@@ -6,17 +14,28 @@
     "tmdb": "45004",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0377",
   "links": [],
-  "quote": "Oui un film qui s'appelle Les nouveaux monstres",
-  "recommendedBy": "inconnu",
+  "quote": "Les nouveaux monstres, mais je trouve ça",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:31:00",
   "title": "Les nouveaux monstres",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

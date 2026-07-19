@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite reel = Paul Mirabel (guests metadata vide, guestsExcluded pieg). recommendedBy corrige de 'Kyan Khojandi' vers 'Paul Mirabel'. Canonique Nordine parmi 1128/1243/2675/2677 (spectacle nomme). Orthographe probable 'Nordine Ganso' (un seul T) et titre exact 'Violet' non verifiables (budget WebSearch epuise).",
+    "reason": "Paul recommande son ami Nordine Gantso et son spectacle 'Violet' (01:11:59-01:12:30, 'mes amis Nordine Gantso et Yazid Assoumani... Violet pour Nordine'). Canonique du cluster Nordine.",
+    "verdict": "validate"
+  },
+  "creator": "Nordine Gantso",
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:02:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2677",
+  "kind": "reco",
+  "links": [],
+  "recommendedBy": "Paul Mirabel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:30",
+  "title": "Violet",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Le fakir cite pour identifier l'auteur (« qui avait ecrit il y a tres longtemps... ») ; mention instrumentale. Doublon avec ubm-1957.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:13:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +27,10 @@
   "quote": "qui avait écrit il ya très longtemps l'extraordinaire voyage du faquir qui s'était fait enfermer dans une armo rica",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:13:29",
   "title": "L'Extraordinaire Voyage du fakir qui était resté coincé dans une armoire Ikea",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

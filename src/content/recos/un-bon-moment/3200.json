@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Borderline citation/discard : artiste reel dont une oeuvre est dans le studio ('c'est beau'), mais mention instrumentale a l'anecdote 'mes potes surfeurs' (~01:19:18). A reconsiderer en citation si l'humain le souhaite.",
+    "reason": "Name-drop d'un pote artiste de Kyan (Soupa Kitcho / Guillaume Grandot) mentionne en passant dans l'anecdote surf, sans prescription ni discussion de fond (regle 1)",
+    "verdict": "discard"
+  },
+  "creator": "Guillaume Grandot",
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:18",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3200",
+  "links": [],
+  "quote": "J'ai mon pote, Soupa, à Biarritz. Soupa qui a fait l'œuvre qui est derrière toi, tu vois.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:18",
+  "title": "Soupa Kitcho",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

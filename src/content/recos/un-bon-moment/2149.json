@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre tronque de 'La Verite si je mens!'. Mention dans une anecdote de castings rates (l.857-864), aucune prescription.",
+    "reason": "Anecdote de casting: un invite raconte un casting pour 'le prequel de La Verite si je mens'. Recit perso, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "29:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2149",
+  "links": [],
+  "quote": "où c'était le préquel de la vérité, si je mens.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "29:09",
+  "title": "Si je mens",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

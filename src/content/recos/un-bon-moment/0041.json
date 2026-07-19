@@ -1,18 +1,54 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp '13:09:00' malforme (13h > duree episode ~1h) ; timecode reel ~00:13:07 dans le transcript YT (a corriger a la main). Attribution floue (qui y etait hier ? guest ou host) → recommendedBy vide.",
+    "reason": "Le Fridge (Le Fridge Comedy, Barbes) = club/resto evoque avec un avis nettement positif et detaille : 'j'y etais hier... tres tres bien, franchement mortel, la scene est bonne, la carte est delicieuse'. Vrai lieu, endossement positif → reco (lieu).",
+    "verdict": "validate"
+  },
   "creator": "Inconnu",
   "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:21:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "13:09:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0041",
+  "kind": "reco",
   "links": [],
-  "quote": "Le Fridge. J'ai été hier, les mecs. Très, très bien, franchement, mortel.",
-  "recommendedBy": "Inconnu",
+  "quote": "J'y étais hier, les mecs. Alors ? Très, très bien. Franchement, mortel. La scène est bonne, la carte est délicieuse, la carte est chanmère.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:13:08",
+  "status": "validated",
+  "timestamp": "13:09:00",
   "title": "Le Fridge",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "lieu"
   ]
 }

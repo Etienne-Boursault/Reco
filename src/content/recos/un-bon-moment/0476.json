@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Faux positif : titre 'Les Hauts-de-la-Durail' absent du transcript (hallucination). Le moment 00:42:31 est 'a refaire les Au-dela du reel' (voir ubm-1406).",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "À refaire, les Hauts-de-la-Durail.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:31",
   "title": "Les Hauts-de-la-Durail",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

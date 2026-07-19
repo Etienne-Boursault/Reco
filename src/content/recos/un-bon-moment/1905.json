@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1573.",
+    "reason": "Doublon de ubm-1573 (spectacle de Lucas et Veufla).",
+    "verdict": "discard"
+  },
+  "creator": "Lucas et Veufla",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1905",
+  "links": [],
+  "quote": "j'ai vu le spectacle de deux potes à moi il y a pas longtemps le spectacle de Lucas et Veufla",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:38:32",
+  "title": "Le spectacle de Lucas et Veufla",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

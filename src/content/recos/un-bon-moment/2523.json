@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe : l'artiste est Raymond DEVOS (transcript 'Deveau' = erreur phonetique) ; 'Stephane Degros' = probablement Stephane De Groodt. Verification web impossible (budget epuise). Locuteur = un hote (evoque 'dans chaque un bon moment il y a une imitation de Devos') mais Kyan/Navo non departageable (transcript sans diarisation) -> attribution videe.",
+    "reason": "Discussion substantielle sur la poesie / les jeux de mots de Raymond Devos ('c'est la poesie de Raymond Devos qui est belle') au fil d'une reflexion sur l'ecole comique. Appreciation d'un artiste reel, sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Raymond Deveau",
+  "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2523",
+  "kind": "citation",
+  "links": [],
+  "quote": "L'école Raymond Deveau, Stéphane Degros, j'ai jamais pro adhéré, moi, mais il y a des gens qui s'appelaient. Raymond Deveau, c'est beaucoup de poésies.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:05:02",
+  "title": "Raymond Deveau",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

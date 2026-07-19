@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre + quote absents du transcript -> probable hallucination. A supprimer sauf confirmation.",
+    "reason": "Hallucination d'extraction (gpt-4o-mini): aucune occurrence d'Asterix/Douze Travaux dans tout le transcript, et la quote 'C'est un peu une reference pour les spectacles' est introuvable au timecode 01:14:10 (ou l'on parle du spectacle Pulsions). Titre non trace.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2933",
+  "links": [],
+  "quote": "C'est un peu une référence pour les spectacles.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:10",
+  "title": "Les Douze Travaux d'Asterix",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

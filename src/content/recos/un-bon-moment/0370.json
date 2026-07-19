@@ -1,18 +1,75 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite Pierre Niney absent des metadonnees (guests vides). Canonique; doublon avec ubm-1632 (titre anglais 'Guru').",
+    "reason": "Film 'Gourou' de Pierre Niney (invite, role principal + producteur), coeur de la promo de l'episode, sortie 28 janvier 2026 (Yann Gozlan). Auto-promo assumee = guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Inconnu",
   "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:05:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0370",
+  "kind": "reco",
   "links": [],
-  "quote": "Le 28 janvier, Gourou sort.",
-  "recommendedBy": "Navo",
+  "quote": "C'était l'affiche de Gourou, j'ai eu la chance de le voir en avant-première. C'était vraiment mortel, j'ai kiffé.",
+  "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:31:55",
+  "status": "validated",
+  "timestamp": "00:02:16",
   "title": "Gourou",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "film",
+    "spectacle"
   ],
   "year": 2023
 }

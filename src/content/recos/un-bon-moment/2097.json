@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle « Une Bonne Soirée » co-écrit par Kyan & Navo (hosts), présenté et vendu par eux sur unebonneboutique.com — auto-promo assumée du format.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2097",
+  "kind": "reco",
+  "links": [],
+  "quote": "on a mis le spectacle Une Bonne Soirée qu'on a co-écrit ensemble",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:07",
+  "title": "Une Bonne Soirée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

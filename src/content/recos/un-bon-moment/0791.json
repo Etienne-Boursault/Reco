@@ -1,20 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1086.",
+    "reason": "Doublon de ubm-1086 (même série White Lotus, 00:57:35, quote plus courte). Canonique = ubm-1086 (titre complet 'The White Lotus').",
+    "verdict": "discard"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR",
     "tmdb": "111803",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0791",
   "links": [],
-  "quote": "une série de 'White Lotus'. Je sais pas si vous l'avez vu.",
+  "quote": "une série de White Lotus",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:57:35",
   "title": "White Lotus",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

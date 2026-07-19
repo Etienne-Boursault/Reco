@@ -1,21 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Moyen-métrage d'Éléonore Costes (2021), présenté/recommandé en insert par Alphie (« le film d'Éléonore Coste... Fantasme... gratuitement sur YouTube... je vous le recommande »). Œuvre d'invitée -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Honoré Cos",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
     "tmdb": "780836",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0067",
+  "kind": "reco",
   "links": [],
-  "quote": "le film de l'honor cos qui s'appelle fantasme qui est sorti tout récemment sur sa chaîne youtube",
-  "recommendedBy": "Navo",
+  "quote": "c'est un film vraiment merveilleux",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:27:01",
+  "status": "validated",
+  "timestamp": "01:27:00",
   "title": "Fantasme",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

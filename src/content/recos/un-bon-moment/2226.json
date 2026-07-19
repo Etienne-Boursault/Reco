@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct = Poulpovision (M. Poulpe, Canal+/YouTube, 2019). Recommandation prononcee par Kyan mais oeuvre = Audrey Pirault (deja dans les guests).",
+    "reason": "Poulpovision est le projet d'une invitee de l'episode (Audrey Pirault, membre de la troupe), presente au fil de l'episode puis recommande explicitement ('regardez PoulpeauVision sur Youtube, c'est vachement bien'). Oeuvre d'invitee mise en avant -> guest-work. Canonique (regroupe ubm-2207 et ubm-2210).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2226",
+  "kind": "reco",
+  "links": [],
+  "quote": "Bah PoulpeauVision. Super en fait. Bah ouais regardez PoulpeauVision sur Youtube.",
+  "recommendedBy": "Audrey Pirault",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:23",
+  "title": "PoulpeauVision",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

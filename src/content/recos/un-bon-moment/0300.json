@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "00:33:36 / 00:35:31 : chanson de M évoquée dans un jeu de mots/blague ('je t'en col une, extrait d'une chanson de M') en plein débrief de vanne. Mention instrumentale (support de blague), pas de reco.",
+    "verdict": "discard"
+  },
   "creator": "M.",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3867905081"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:33:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "C'est un extrait d'une chanson de M.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:33:36",
   "title": "M.",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrigé Navo -> Rosa Bursztein (c'est Rosa qui parle depuis « mon podcast »). Série réelle (Michaela Coel, 2020).",
+    "reason": "Rosa : « j'ai adoré récemment la série de Michaela Coel, I May Destroy You... elle est incroyable » (01:10:24). Reco explicite d'une série réelle.",
+    "verdict": "validate"
+  },
+  "creator": "Michaela Coel",
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:27:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2946",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'ai adoré récemment la série de Mikaïla Kohl I May Destroy You que j'ai vu sur Osses",
+  "recommendedBy": "Rosa Bursztein",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:24",
+  "title": "I May Destroy You",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

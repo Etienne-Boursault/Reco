@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Game of Thrones cite par Charlie dans la liste des BO qu'elle ecoute en ecrivant son univers (« beaucoup de musique de film... Game of Thrones et compagnie »). Mention instrumentale, pas de prescription.",
+    "verdict": "discard"
+  },
   "creator": "David Benioff, D.B. Weiss",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
@@ -6,17 +14,56 @@
     "tmdb": "1399",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0430",
   "links": [],
-  "quote": "j'aimerais tellement jouer un personnage dans une intrigue politique comme celle-là.",
-  "recommendedBy": "intervenants",
+  "quote": "Game of Thrones et compagnie",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:58:06",
+  "status": "discarded",
+  "timestamp": "01:02:29",
   "title": "Game of Thrones",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

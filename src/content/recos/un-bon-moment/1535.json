@@ -1,0 +1,40 @@
+{
+  "creator": "James Cameron",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1535",
+  "kind": "citation",
+  "links": [],
+  "quote": "Arnaud Schwarzenegger, dans le premier film Terminator, il a une particularité de dialogue qui est devenue une règle absolue pour son personnage de robot-tueur.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:38",
+  "title": "The Terminator",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

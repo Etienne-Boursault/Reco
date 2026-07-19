@@ -1,20 +1,44 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. 'Souchon' = l'artiste Alain Souchon, aucune oeuvre precise ('je suis tres fan' sans titre). recommendedBy vide. A re-arbitrer si transcript complet.",
+    "reason": "Transcript inexploitable + 'Souchon' = artiste, pas d'oeuvre precise, attribution vide.",
+    "verdict": "discard"
+  },
   "creator": "Alain Souchon",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3132726"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:07:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0599",
   "links": [],
   "quote": "En fait, je suis très fan d'Alain Souchon.",
-  "recommendedBy": "Adrien Méniel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:07:22",
   "title": "Souchon",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

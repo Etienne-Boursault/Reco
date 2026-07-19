@@ -1,17 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop instrumental pour lever une confusion (« t'as confondu avec le spectacle de Baptiste, Origine »), immediatement ecarte (« non non non »). Aucune substance ni prescription ; Baptiste Lecaplain non-invite.",
+    "verdict": "discard"
+  },
   "creator": "Baptiste Lecaplain",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0665",
   "links": [],
-  "quote": "C'est le truc pas cool.",
+  "quote": "C'est le spectacle de Baptiste, Origine.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:16:45",
+  "status": "discarded",
+  "timestamp": "01:16:32",
   "title": "Origine",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

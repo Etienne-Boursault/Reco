@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator correct: Andree Chedid (grand-mere de Matthieu Chedid), poetesse/romanciere ; recueils chez Flammarion. Passer en validate une fois le titre/creator corriges.",
+    "reason": "Canonique de la poesie/romans d'Andree Chedid (grand-mere de l'invite). Invitation explicite au public: 'j'invite vraiment les gens a lire sa poesie et meme ses romans' (00:18) -> verdict vise = validate. MAIS creator 'grand-mere de Mathieu Chedid' a corriger en 'Andree Chedid' avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "grand-mère de Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2544",
+  "links": [],
+  "quote": "D'ailleurs, j'invite vraiment les gens à écouter, à écouter, à lire sa poésie et même ses romans, d'ailleurs, qui sont incroyables.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:18:50",
+  "title": "Recueils de poésie",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

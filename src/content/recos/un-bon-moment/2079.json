@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Podcast 'Les Pieds sur terre' : 'tous les jours deux portraits de 15 minutes c'est exceptionnel' (01:57:04). Reco explicite. 'on a deja parle dans un bon moment' -> locuteur host incertain.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:57:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2079",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est exceptionnel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:57:04",
+  "title": "Les pieds sur terre",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

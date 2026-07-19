@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "L'Alchimiste jamais cite. Aphorisme de jeu.",
+    "reason": "Titre 'L'Alchimiste' ABSENT du transcript (halluciné) : seul un aphorisme est attribue a 'Paulo Coelho' (~01:01:59) dans le 'battle des petites phrases'. Doublon de ubm-2327.",
+    "verdict": "discard"
+  },
+  "creator": "Paulo Coelho",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2318",
+  "links": [],
+  "quote": "ne vous découragez pas c'est souvent la dernière clé du trousseau qui ouvre la porte",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:01:56",
+  "title": "L'Alchimiste",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

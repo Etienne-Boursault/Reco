@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1384.",
+    "reason": "'la video de chaise' = video 624 types de profs de Lucas Pastor (chaine CHAISE), meme reco que ubm-1384.",
+    "verdict": "discard"
+  },
+  "creator": "Lucas Pastore",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:41:41+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1392",
+  "links": [],
+  "quote": "moi j'allais recommander la vidéo de chaise Lucas Pastore",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:25:36",
+  "title": "la vidéo de chaise",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

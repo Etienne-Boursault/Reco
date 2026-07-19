@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-1163 'Yebba'.",
+    "reason": "'Yeba Smith' = doublon de l'artiste YEBBA (ubm-1163), meme mention 01:10:51.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2274",
+  "links": [],
+  "quote": "c'est de la chanson c'est magnifique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:10:51",
+  "title": "Yeba Smith",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

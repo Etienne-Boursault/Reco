@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2553 (live 'Revalite du Live', 01:09).",
+    "verdict": "discard"
+  },
+  "creator": "Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2549",
+  "links": [],
+  "quote": "Il y a aussi l'album Rivalité du Live qui allait streamer ça ou allait offrir ça pour les faits de Noël.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:56",
+  "title": "Rivalité",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

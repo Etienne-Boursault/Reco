@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Trancher : soit retitrer en 'Woodkid - Live a Montreux' (guest-work Woodkid), soit fusionner/discard comme doublon de ubm-2610.",
+    "reason": "Titre artefact : la quote pointe le 'live a Montreux' de Woodkid (concert dispo sur YouTube, 00:32-00:33) mais le titre affiche 'Colors'. Ambigu : reco distincte du live Montreux (guest-work Woodkid) OU doublon de la perf COLORS/Pale Yellow (ubm-2610). Laisse a l'humain.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2611",
+  "links": [],
+  "quote": "Le live à Montreux, par exemple, qu'on peut trouver d'ailleurs sur YouTube",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:33:08",
+  "title": "Colors",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

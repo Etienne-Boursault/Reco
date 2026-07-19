@@ -1,6 +1,38 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.35,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Budget WebSearch epuise : titre non verifiable. Le locuteur lui-meme doute ('Ah c'est vrai?'). Probable misattribution d'une maxime celebre plutot qu'un livre de Bigard. Reste draft, a confirmer par un humain.",
+    "reason": "Attribue a Bigard (01:08:32-01:08:40) mais ressemble fortement a l'aphorisme celebre 'l'humour est la politesse du desespoir' (non-Bigard).",
+    "verdict": "unsure"
+  },
   "creator": "Jean-Marie Bigard",
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -10,9 +42,11 @@
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "01:08:41",
+  "timestamp": "01:08:40",
   "title": "La politesse du désespoir",
+  "transcriptSource": "youtube",
   "types": [
-    "livre"
+    "livre",
+    "autre"
   ]
 }

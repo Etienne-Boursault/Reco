@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Navo confirme etre le recommandeur ('Non par moi', 01:18:59) contre une attribution a Patrick Beau.",
+    "reason": "Recommandation explicite de Navo : chaine Fouloscopie qui analyse le comportement des foules (01:18:47-01:18:56). Createur Mehdi Moussaid correct.",
+    "verdict": "validate"
+  },
   "creator": "Mehdi Moussaïd",
   "customLinks": [
     {
@@ -7,19 +16,51 @@
     }
   ],
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T12:22:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0588",
+  "kind": "reco",
   "links": [],
-  "quote": "Fouloscopie un mec qui analyse les fous c'est très intéressant pourquoi les fous se comportent d'une certaine façon",
+  "quote": "Fouloscopie",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:18:49",
   "title": "Fouloscopie",
+  "transcriptSource": "youtube",
   "types": [
-    "livre"
+    "livre",
+    "video"
   ]
 }

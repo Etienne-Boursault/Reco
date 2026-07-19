@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Emilien present dans guests[] — pas de guest_missing.",
+    "reason": "« La Table des Savoirs » = site de quiz de l'invite Emilien, qu'il presente et que les hosts l'invitent a promouvoir (« c'est la tienne ? c'est la mienne... fais ta promo, on est la pour ca »). Auto-promo d'invite. Site reel (latabledessavoirs.fr, lance 2026).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1439",
+  "kind": "reco",
+  "links": [],
+  "quote": "je fais un site de quiz oui garantie tu as le label Emilia c'est le label c'est moi c'est mes questions",
+  "recommendedBy": "Émilien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:01",
+  "title": "La Table des Savoirs",
+  "transcriptSource": "acast",
+  "types": [
+    "jeu"
+  ]
+}

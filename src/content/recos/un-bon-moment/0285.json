@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Burger Quiz cite dans la liste de credits de Kader Aoun ('createur du Jamel Comedy Club, H, Burger Quiz, Montparnasse Infernal'). Mention instrumentale (credits), pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Kada Raoune",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:03:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Burger Quiz, ouais.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:03:19",
   "title": "Burger Quiz",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

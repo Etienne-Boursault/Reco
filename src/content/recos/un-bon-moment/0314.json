@@ -1,22 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~01:50:08. Relaye des recommandations d'Amandine Gay (Kyan ne l'a pas encore vue). Happy Valley (BBC).",
+    "reason": "Kyan recommande explicitement la serie dans le segment recos ('je suis en train de recommander'), en relayant les conseils d'Amandine Gay.",
+    "verdict": "validate"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/61244-happy-valley/watch?locale=FR",
     "tmdb": "61244",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0314",
+  "kind": "reco",
   "links": [],
   "quote": "il faut que je regarde Happy Valley apparemment",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:50:08",
   "title": "Happy Valley",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

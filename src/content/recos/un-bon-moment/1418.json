@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve : ubm-1583.",
+    "reason": "Doublon de ubm-1583 (Zelda: Breath of the Wild, meme passage 01:13).",
+    "verdict": "discard"
+  },
+  "creator": "Nintendo",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1418",
+  "links": [],
+  "quote": "pareil avec le Zelda monde ouvert, Breath of the Wild",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:39",
+  "title": "Zelda: Breath of the Wild",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

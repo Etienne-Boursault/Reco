@@ -1,0 +1,37 @@
+{
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1549",
+  "links": [],
+  "quote": "Tu n'as jamais écouté les Daft Punk ?",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:58",
+  "title": "Daft Punk",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

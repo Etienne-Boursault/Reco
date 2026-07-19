@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Calembour Toltec/Tolkien ~01:00:42, aucune oeuvre reelle visee.",
+    "reason": "Faux positif : 'Tolkien' est un JEU DE MOTS sur 'Toltec' ('ca c'est Tolkien, non non ca c'est pas Toltec' ~01:00:42), pas une reference a une oeuvre de Tolkien.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2328",
+  "links": [],
+  "quote": "c'est là, non non, ça c'est pas Toltec ça",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:01:42",
+  "title": "Tolkien",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

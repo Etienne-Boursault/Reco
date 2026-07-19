@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1178 « Les Quatre Accords Tolteques » (meme timestamp 01:15:04, meme quote, meme creator Don Miguel Ruiz). ubm-1178 retenu car titre correct + recommendedBy renseigne.",
+    "verdict": "discard"
+  },
+  "creator": "Don Miguel Ruiz",
+  "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2690",
+  "links": [],
+  "quote": "Moi je vis avec les 4 accords Toltec en fait c'est ma vie les 4 accords Toltec",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:04",
+  "title": "Les 4 accords toltèques",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

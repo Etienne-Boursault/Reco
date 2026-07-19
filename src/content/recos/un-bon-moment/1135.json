@@ -1,22 +1,67 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect",
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle: 'Winnterzuko' (rappeur FR hyperpop, Deezer artiste 1160850). Le lien deezer track 15411111 est errone. Attribution: reponse a une question posee aux invites -> probablement Maghla ou Seb, pas Navo. A trancher par l'humain.",
+    "reason": "Vraie reco ('Est-ce que vous avez quelqu'un a recommander?' -> 'Winter Zuko. Tres bonne artiste. Genial.', 01:10:52) MAIS titre a corriger avant publication.",
+    "verdict": "unsure"
+  },
   "creator": "Winter Zuko",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/15411111"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1135",
   "links": [],
-  "quote": "Winter Zuko, très bon artiste.",
+  "quote": "Winter Zuko ? Très bonne artiste.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "draft",
   "timestamp": "01:10:52",
   "title": "Winter Zuko",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

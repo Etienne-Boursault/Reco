@@ -1,20 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Wild Wild West (00:26): discussion carriere de Will Smith ('il a accepte a la place Wild Wild West... on ne s'en rappelle pas'). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "episodeGuid": "697d34fef1dd68ab365aea03",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/8487-wild-wild-west/watch?locale=FR",
     "tmdb": "8487",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0374",
   "links": [],
-  "quote": "Il a jeté à la place Wild, Wild West.",
+  "quote": "Il a avoué qu'il ne comprenait pas où les Wachowski voulait aller.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:28",
+  "status": "discarded",
+  "timestamp": "00:26:30",
   "title": "Wild Wild West",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

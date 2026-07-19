@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco acast orpheline (source acast, timestamps non-mappables sur le transcript YT). A restaurer uniquement si l'audio acast le confirme.",
+    "reason": "Faux positif : 'Whitefire' introuvable dans le transcript YouTube authoritative (recherche exhaustive titre+quote = 0 occurrence). Zone YT correspondante (~01:00) = discussion dev de jeu, aucun film. Extraction acast du 2026-05-28 superseded.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1174",
   "links": [],
   "quote": "Bah en vrai le... Whitefire.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:00:18",
   "title": "Whitefire",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Pas une oeuvre : 'C'est beau ton film, c'est beau, mais c'est crepusculaire' est une replique de Belmondo au sujet d'Adieu les cons, extraite comme titre.",
+    "verdict": "discard"
+  },
   "creator": "Unspecified",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "C'est beau, ton film c'est beau, mais c'est crépusculaire.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:44",
   "title": "C'est beau, votre film",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

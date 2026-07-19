@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Le « Flo » au téléphone est un fan dont la compagne Eugénie a acheté le spectacle, distinct de l'invité Florent Bernard.",
+    "reason": "« Un bruit qui court » est le projet de podcast d'un auditeur au téléphone (« Flo », pas l'invité Florent Bernard), premier enregistrement à venir. Ni œuvre d'invité·e/host ni prescription — n'existe pas encore.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2098",
+  "links": [],
+  "quote": "Et ça s'appelait « Un bruit qui court »",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:48",
+  "title": "Un bruit qui court",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

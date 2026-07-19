@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop instrumental : le jeu NBA 2K20 sert de contexte au fait que Mister V figure dans la bande-son (regle 1), aucune prescription du jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:04",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3171",
+  "links": [],
+  "quote": "tu veux que j'explique pourquoi je suis dans la soundtrack de NBA 2K20 mec",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:04",
+  "title": "NBA 2K20",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

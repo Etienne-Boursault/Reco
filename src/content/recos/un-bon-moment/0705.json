@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2575; 'Reality Bowl'='Relatable', creatrice = Ellen DeGeneres",
+    "reason": "Doublon de ubm-2575 (01:39:5x, spectacle Relatable d'Ellen DeGeneres). 'Reality Bowl' = mauvaise transcription de 'Relatable'. Canonique = ubm-2575.",
+    "verdict": "discard"
+  },
   "creator": "Hélène de Générès",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0705",
   "links": [],
   "quote": "Avec son spectacle 'Reality Bowl', je crois que ça s'appelle.",
-  "recommendedBy": "Intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:39:58",
   "title": "Reality Bowl",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

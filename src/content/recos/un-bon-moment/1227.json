@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Créateur Jean-Pierre Jeunet (OK). Invité Oli à ajouter à episode.guests.",
+    "reason": "Amélie Poulain présenté comme le film préféré d'Oli ('c'est ça ton film préféré'), avec substance ('on a même mis des extraits dans notre album'). Pas de prescription au public.",
+    "verdict": "citation"
+  },
   "creator": "Jean-Pierre Jeunet",
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
@@ -6,17 +18,49 @@
     "tmdb": "194",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1227",
+  "kind": "citation",
   "links": [],
-  "quote": "Tu vas regarder Amélie Poulain.",
-  "recommendedBy": "Big Flow",
+  "quote": "Amélie Poulain, mais c'est ça ton film préféré.",
+  "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:16",
+  "status": "validated",
+  "timestamp": "00:03:19",
   "title": "Amélie Poulain",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

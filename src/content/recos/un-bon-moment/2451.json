@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse du 'jeu de la complicite' ('Les Visiteurs en Amerique', film de Jean Reno) -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Jean-Marie Poiré",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2451",
+  "links": [],
+  "quote": "les visiteurs de les visiteurs en Amérique",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:35",
+  "title": "Les Visiteurs",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support d'un jeu « choc mental » + jeu de mots (« s'les mêmes » = fatigué) — mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Stromae",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1570",
+  "links": [],
+  "quote": "c'est une chanson de Stromae en tout cas",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:43",
+  "title": "Tous les mêmes",
+  "transcriptSource": "acast",
+  "types": [
+    "musique"
+  ]
+}

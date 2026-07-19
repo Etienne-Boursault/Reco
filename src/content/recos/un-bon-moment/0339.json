@@ -1,19 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel complet = 'Bref. De bons amis' (2025). Realisateur Nicolas Beguet (non present, collaborateur de l'emission).",
+    "reason": "Documentaire 'Bref. De bons amis' (Nicolas Beguet, Disney+) qui suit les deux hosts et le making de Bref 2 ; presente et promu explicitement par eux ('allez le voir s'il vous plait', 'regardez De bons amis sur Disney+'). Auto-promo assumee du format.",
+    "verdict": "guest-work"
+  },
   "creator": "Nicolas Beguet",
   "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0339",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est un excellent documentaire qui s'appelle De bons amis de Nicolas Beguet",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "C'est un excellent documentaire qui s'appelle \"De bons amis\" de Nicolas Béguet !",
+  "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:44:45",
   "title": "De bons amis",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "film"
   ]
 }

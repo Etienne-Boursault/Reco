@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Passage dans le segment 'jeu des personnalités' mais c'est une anecdote sur un épisode passé, pas un indice/réponse de jeu — d'où citation (règle 17) plutôt que discard (règle 12). À arbitrer si besoin.",
+    "reason": "'Bref' (série de Kyan) évoquée en anecdote avec substance ('cet épisode qui est génial', musique d'Emilie Simon, 'je connais tout par cœur') mais sans promo d'actualité ni prescription (règle 17).",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:05",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3081",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    }
+  ],
+  "quote": "On avait un épisode de Bref, où elle devait tirer avec un gun sur Alice David",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:05",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

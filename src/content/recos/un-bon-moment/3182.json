@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« je suis tres fan d'Alain Souchon » + recit du concert adore. Prescription d'un artiste reel, pas un invite present.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3182",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.alainsouchon.net/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/alain-souchon/34934"
+    }
+  ],
+  "quote": "En fait, je suis très fan de D'Alain Souchon",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:00",
+  "title": "Alain Souchon",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

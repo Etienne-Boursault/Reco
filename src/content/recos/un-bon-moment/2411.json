@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Spectacle de danse « Murmuration » (chorégraphie collective, « mosaïques de corps » — vraisemblablement Sadeck Waff) [01:03:50] ; conclusion « je recommande ça » [01:04:14]. Recommandateur du segment indéterminé (invité ou host) ; « Navo » d'origine non fiable. Invités absents de guests[].",
+    "reason": "Reco réelle (spectacle de danse Murmuration).",
+    "verdict": "validate"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2411",
+  "kind": "reco",
+  "links": [],
+  "quote": "Il y a le spectacle Murmuration.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:03:50",
+  "title": "Murmuration",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

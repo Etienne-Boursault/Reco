@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« Le 3, la, j'ai adore, c'est les robots... cette scene-la est incroyable » (Navo) : avis positif reel sur Matrix Revolutions, en conversation, sans prescription explicite -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2873",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le 3, là. J'ai adoré, c'est les robots.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:15",
+  "title": "Matrix Revolutions",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

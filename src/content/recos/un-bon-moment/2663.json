@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support de jeu : réponse d'un blind-test (« multi-blind test » lancé à 00:49:47), Eminem/Lose Yourself reconnu comme morceau. Mention de jeu -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Eminem",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2663",
+  "links": [],
+  "quote": "lose yourself",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:34",
+  "title": "Lose Yourself",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

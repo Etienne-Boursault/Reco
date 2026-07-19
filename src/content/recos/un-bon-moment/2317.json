@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre FR usuel : 'Les Quatre Accords Tolteques'. Canonique (doublon discarde : ubm-2326). ~00:59:00.",
+    "reason": "Les Quatre Accords Tolteques (Don Miguel Ruiz) evoques comme parallele aux 4 regles de vie de Kheiron, avec le contenu des accords (ne pas supposer, ne pas prendre personnellement... ~00:59:00-01:01:00). Substance sans prescription. Titre FR usuel a preferer.",
+    "verdict": "citation"
+  },
+  "creator": "Don Miguel Ruiz",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2317",
+  "kind": "citation",
+  "links": [],
+  "quote": "ça c'est Toltec ça",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:06",
+  "title": "The Four Agreements",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

@@ -1,21 +1,72 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Police Flash 80 (2026, real. Jean-Baptiste Saurel) : Thomas Ngijol co-scenariste + acteur (Luc Le Timal), Xavier Lacaille acteur (Roberto). recommendedBy vide car porte par les deux invites. Timestamp/quote de l'extraction cale sur la camera (00:10:36) ; titre du film enonce a 00:10:46.",
+    "reason": "Film promotionnel des deux invites (raison de leur venue), presente/hype tout l'episode.",
+    "verdict": "guest-work"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "tmdb": "1002109",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "10:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0473",
+  "kind": "reco",
   "links": [],
-  "quote": "Oui, je joue dans Police Flash 80.",
-  "recommendedBy": "Navo",
+  "quote": "Aujourd'hui, on reçoit Xavier Lacaille et Thomas N. Gijol. Vous l'avez remarqué depuis le début de l'émission qui a commencé bien avant. Il a capté l'accès à sa petite caméra.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:12:04",
+  "status": "validated",
+  "timestamp": "00:10:30",
   "title": "Police Flash 80",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "autre"
   ]
 }

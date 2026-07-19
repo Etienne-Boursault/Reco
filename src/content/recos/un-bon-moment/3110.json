@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Existence/titre exact non verifiables (WebSearch epuise). Reco genuine mais oeuvre mal identifiee ; reste en draft.",
+    "reason": "Une oeuvre est reellement recommandee (emission-competition de stand-up produite par Kevin Hart, le gagnant remporte un spectacle Netflix ; « les premiers episodes sont vraiment bons... je trouve ca bien »), MAIS le titre du draft « Kevin Hart: Don't F**k This Up » (docuserie 2019 sur K. Hart, pas une competition) ne correspond pas et n'apparait pas dans le transcript (regle 11 ; transcript : titre garble « Feunyeyev »). → unsure pour laisser l'humain identifier la vraie emission.",
+    "verdict": "unsure"
+  },
+  "creator": "Kevin Hart",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:11",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3110",
+  "links": [],
+  "quote": "le genre de casting qu'a fait Kevin Hart",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:01:11",
+  "title": "Kevin Hart: Don't F**k This Up",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invitee absente des metadonnees: Shirley Souagnon. Englobe les cine-rencontres (cf. doublons ubm-0502/ubm-1391).",
+    "reason": "Spectacle 'Etre Humain' de Shirley Souagnon (ci-ne-rencontres), presente par elle des 00:08:28. Auto-promo d'invitee. Reco canonique de ce projet Shirley.",
+    "verdict": "guest-work"
+  },
+  "creator": "Shirley",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "08:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "08:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "08:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:28",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1381",
+  "kind": "reco",
+  "links": [],
+  "quote": "ton spectacle Être humain au cinéma.",
+  "recommendedBy": "Shirley Souagnon",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:08:28",
+  "title": "Être Humain",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle",
+    "video"
+  ],
+  "year": 2024
+}

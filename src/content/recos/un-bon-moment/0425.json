@@ -1,20 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco genuine. Locuteur incertain, probablement Maxime Biaggi (pattern 'decu de tout' puis 'le dernier truc cool'). Attribution laissee vide, a completer.",
+    "reason": "'Le dernier truc cool que j'ai vu, c'est adolescence... Ca c'est top, allez voir' : reco sincere, defendue face aux moqueries des hosts. Adolescence = serie Netflix reelle (2025) tres saluee.",
+    "verdict": "validate"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "tmdb": "434398",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:28:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0425",
+  "kind": "reco",
   "links": [],
   "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:28:29",
   "title": "Adolescence",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

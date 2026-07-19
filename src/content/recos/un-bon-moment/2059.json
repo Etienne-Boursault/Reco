@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Vice-Versa' (01:04:41) = comparaison en passant pour decrire le jeu Mes emotions ('c'est vraiment vice-versa'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2059",
+  "links": [],
+  "quote": "c'est vraiment vice-versa pour l'instant",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:41",
+  "title": "Vice-Versa",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

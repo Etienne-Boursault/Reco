@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop pour situer l'anecdote dans le temps (« avant qu'il tourne Only God Forgives »), pas de discussion du film (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Nicolas Winding Refn",
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:02",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3135",
+  "links": [],
+  "quote": "C'était avant qu'il tourne Only God Forgives avec Ryan Gosting.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:02",
+  "title": "Only God Forgives",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2013
+}

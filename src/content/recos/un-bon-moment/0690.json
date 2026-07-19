@@ -1,17 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Creator 'Chanson non spécifiée' à corriger (Ben Mazué).",
+    "reason": "Ben Mazué présente sa propre chanson « Quarantaine » (album Paradis, 2020, vérifié) : « c'est le début d'une chanson qui s'appelle Quarantaine... sur le prochain album ». Auto-promo invité.",
+    "verdict": "guest-work"
+  },
   "creator": "Chanson non spécifiée",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0690",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est le début d'une chanson qui s'appelle Quarantaine.",
-  "recommendedBy": "Navo",
+  "quote": "c'est le début d'une chanson qui s'appelle Quarantaine où je dis c'est tard ou c'est tôt 7h je sais plus mais c'est tout le temps",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:50",
+  "status": "validated",
+  "timestamp": "01:13:51",
   "title": "Quarantaine",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

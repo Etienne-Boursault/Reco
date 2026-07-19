@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1611 (Adele Fougazi). NB recommendedBy 'Salimard' = artefact pour Salima Passion.",
+    "verdict": "discard"
+  },
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0980",
   "links": [],
   "quote": "J'aime beaucoup Adèle Fougasi... en tant que personne et en tant qu'humoriste... J'allais voir son spectacle, j'ai adoré",
-  "recommendedBy": "Salimard",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:48:04",
   "title": "Adèle Fogasi",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Faites des escape games' (00:47:10) = suggestion d'une activite generique, pas une oeuvre specifique catalogable.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2598",
+  "links": [],
+  "quote": "Faites des escape games, en fait. Vous trouverez des trucs, c'est très cool.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:10",
+  "title": "Escape games",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Scooter vole (Noctard) : doublon de ubm-1430, exemple rhetorique dans l'anecdote playlist de Gilles.",
+    "verdict": "discard"
+  },
+  "creator": "Noctard",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:34:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1927",
+  "links": [],
+  "quote": "le scooteur volée de Noctard",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:56",
+  "title": "Scooter volé",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

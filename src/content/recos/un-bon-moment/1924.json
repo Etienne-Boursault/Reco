@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "50 First Dates : reponse du jeu 'deviner chanter'. Support de jeu + doublon (cf. ubm-1422/0463).",
+    "verdict": "discard"
+  },
+  "creator": "Peter Segal",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1924",
+  "links": [],
+  "quote": "amour et amnésie",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:48",
+  "title": "50 First Dates",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2004
+}

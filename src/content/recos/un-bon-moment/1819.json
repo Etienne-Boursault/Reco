@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote : 'J'ai un pin's Rick et Morty' (01:10:32) — objet, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1819",
+  "links": [],
+  "quote": "J'ai un pin's Rick et Morty",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:08:32",
+  "title": "Rick et Morty",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

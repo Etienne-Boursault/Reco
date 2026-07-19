@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2241 (validate). NB: titre ici 'Hugo Lisoir' = orthographe correcte, mais on garde la version YouTube.",
+    "reason": "Doublon de ubm-2241 (meme reco Hugo Lisoir, ts 01:34:15). Source Acast.",
+    "verdict": "discard"
+  },
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "Moi, il y a une chaîne, c'est Hugo Lisouard, c'est une chaîne d'astronomie sur l'espace et tout.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:34:15",
   "title": "Hugo Lisoir",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

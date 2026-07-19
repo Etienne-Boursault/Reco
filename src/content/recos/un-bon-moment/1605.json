@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Jacques Brel (01:06): exemple dans une anecdote ('t'ecoutes pas de Jacques Brel dans un mariage'). Rhetorique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1605",
+  "links": [],
+  "quote": "Il a dit mec t'écoutes pas de Jacques Brel dans un mariage",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:06:40",
+  "title": "Jacques Brel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact = « GetBackers » (Yuya Aoki & Rando Ayamine). Canonique des 3 doublons 01:12:10.",
+    "reason": "Manga évoqué avec substance (une scène décrite, « c'est kiffant »), nostalgie (« un manga que j'aimais bien ») mais pas de prescription.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1569",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y avait un manga que j'aimais bien qui s'appelait Get Bakers",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:10",
+  "title": "Get Bakkers",
+  "transcriptSource": "acast",
+  "types": [
+    "bd"
+  ]
+}

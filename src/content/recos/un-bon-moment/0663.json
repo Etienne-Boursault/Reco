@@ -1,17 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse de jeu-devinette : « Tom, Jerry et Emmanuel Valls » donnee comme reponse a « qu'est-ce qui tue le plus vite un vieux » (l.1608-1675). Mention instrumentale (support de jeu), pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Hanna-Barbera",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0663",
   "links": [],
-  "quote": "Alors que Tom et Jerry et Manuel Valls.",
-  "recommendedBy": "invité",
+  "quote": "C'est que Tom et Jerry, on a l'habitude de les voir se courir après l'un l'autre.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:55:00",
+  "status": "discarded",
+  "timestamp": "00:55:16",
   "title": "Tom et Jerry",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Extrait a 00:40:39 'quand t'ecrivais Yes Vous Aime' (question du host) mais l'oeuvre est celle de Bertrand, largement presentee dans l'episode. Creator du fichier 'Alain Chabat' errone (a corriger en Bertrand Usclat / collectif Yes Vous Aime).",
+    "reason": "Yes Vous Aime est le collectif/chaine YouTube de Bertrand Usclat (invite), confirme dans le transcript ('01:03:47 on lance la chaine Yes vous aime', et le hit 'yes vous aime' a 00:12). Oeuvre de l'invite, discutee/presentee au fil de l'episode (ecriture, videos parodie) -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Alain Chabat",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-3033",
+  "kind": "reco",
+  "links": [],
+  "quote": "quand t'écrivais Yes Vous Aime",
+  "recommendedBy": "Bertrand Usclat",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:40:39",
+  "title": "Yes Vous Aime",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

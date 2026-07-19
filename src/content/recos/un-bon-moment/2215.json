@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2231.",
+    "reason": "Reponse d'un jeu (Multi BlindTest, 'Paradise'/'Paradis'). Chanson support de jeu -> discard. Doublon de ubm-2231.",
+    "verdict": "discard"
+  },
+  "creator": "Coolio",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2215",
+  "links": [],
+  "quote": "Ah Gangstang's Paradise De Coolio",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:12",
+  "title": "Gangstas Paradise",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

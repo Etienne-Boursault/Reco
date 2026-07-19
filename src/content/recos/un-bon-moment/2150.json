@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale (exemple servant le sketch sur les cliches italiens, l.953-961). Aucun avis prescriptif.",
+    "reason": "'Mario Rabbids' identifie au fil d'une discussion sur les cliches italiens du jeu video (le 'lapin cretin', 'Pepperoni'). Exemple dans un bit, pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2150",
+  "links": [],
+  "quote": "Dans Mario et ses copains, là, qui se font des tactical, j'ai oublié le nom.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:54",
+  "title": "Mario Rabbids",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

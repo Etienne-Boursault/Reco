@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcription Acast erronee : titre 'Florent Peyre se plante des disques' et creator 'Florent Peyre' sont faux ; le transcript YouTube dit 'Florence passe des disques' (Florence Foresti).",
+    "reason": "Spectacle hypothetique inexistant ('Florence passe des disques', 00:49:36) -> n'existe pas. Doublon Acast deforme de ubm-2259.",
+    "verdict": "discard"
+  },
   "creator": "Florent Peyre",
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "d'ailleurs j'ai eu entendu parler un jour d'un spectacle je sais pas si on peut parler mais florent se passe des disques ça m'aurait fait kiffer que ça existe",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:49:36",
   "title": "Florent Peyre se plante des disques",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

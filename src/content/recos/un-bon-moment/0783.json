@@ -1,18 +1,56 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "timestamp_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meilleur passage 00:44:19 (présentation du film par Mouloud) ; 00:02:51 = simple mention de la promo. Compléter guests épisode (Mouloud Achour).",
+    "reason": "Film 'Les Méchants' (2021) coréalisé par l'invité Mouloud Achour, présenté par lui à 00:44:19 ('le film les méchants c'est une mixtape... on l'a fait dans le même esprit... vous prenez vous prenez pas'). Auto-promo assumée du guest = guest-work. Le timecode 00:02:51 pointe une mention instrumentale (fatigue promo), le vrai passage est 00:44:19.",
+    "verdict": "guest-work"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0783",
+  "kind": "reco",
   "links": [],
-  "quote": "le film Les méchants, c'est une mixtape.",
-  "recommendedBy": "Non spécifié",
+  "quote": "on sort de la promo du film Les Méchants",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:44:19",
+  "status": "validated",
+  "timestamp": "00:02:51",
   "title": "Les méchants",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "film"
   ]
 }

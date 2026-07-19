@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Upright Citizens Brigade » (troupe d'impro US, Amy Poehler) citée en EXEMPLE par Kyan dans une discussion sur les styles d'impro [00:10:32], pas une reco. Titre corrompu (« Upgrade Citizen Brigade »). Timestamp « 10:32:00 » = artefact (réel ≈ 00:10:32). Attribution « Laurie Peret » erronée (c'est Kyan qui parle de l'impro américaine).",
+    "reason": "Exemple non prescriptif (impro US) dans une discussion.",
+    "verdict": "discard"
+  },
+  "creator": "Amy Poehler",
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:32:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2403",
+  "links": [],
+  "quote": "Par exemple, tous les gens de chez Upgrade Citizen Brigade, tu sais, il y a Amy Poehler, il y a tous ces gens-là et ils construisent des...",
+  "recommendedBy": "Laurie Peret",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "10:32:00",
+  "title": "Upgrade Citizen Brigade",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

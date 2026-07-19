@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Réel = Bo Burnham (transcript 'Beau Burnham').",
+    "reason": "00:07:30 : comparaison en passant pour décrire le style de Léopold ('un côté Bo Burnham'). Mention instrumentale, pas de reco.",
+    "verdict": "discard"
+  },
+  "creator": "Beau Burnham",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:05:11+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:07:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1720",
+  "links": [],
+  "quote": "il y a un côté un beau burnham",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:07:30",
+  "title": "Beau Burnham",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

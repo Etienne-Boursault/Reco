@@ -1,0 +1,66 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'le podcast de Jason Brokers (avec sa femme)': reco explicite 'c'est un oui, hyper marrant, vraiment cool'. recommendedBy vide (pas sur du locuteur, Kyan/Navo). Entree canonique vs ubm-0293.",
+    "verdict": "validate"
+  },
+  "creator": "Jason Brokers",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:10:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:10:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:10:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:10:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1736",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ah il y a aussi le podcast de Jason Brokers",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:10:03",
+  "title": "Jason Brokers Podcast",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

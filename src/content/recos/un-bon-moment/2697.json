@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Type 'artiste' inexact (sportif).",
+    "reason": "Ronaldinho = footballeur (pas une oeuvre), evoque comme joueur prefere puis anecdote sur son incarceration ('ils ont ose foutre Ronaldinho en prison', 'j'etais devaste'). Personne, pas d'oeuvre recommandable — mention/anecdote.",
+    "verdict": "discard"
+  },
+  "creator": "Ronaldinho",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:21:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2697",
+  "links": [],
+  "quote": "Ronaldinho, j'étais dévasté.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:26:38",
+  "title": "Ronaldinho",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

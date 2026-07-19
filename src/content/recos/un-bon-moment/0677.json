@@ -1,8 +1,31 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp draft 00:00:08 errone : le passage reel est le blindtest a ~01:07:00. 'Kendrick Lamar' est meme un mauvais guess rejete ('Non.').",
+    "reason": "Reponse (fausse) au Multi-Blind Test, pas une reco (regles 1 et 12)",
+    "verdict": "discard"
+  },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/2783963122"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:00:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -10,9 +33,10 @@
   "links": [],
   "quote": "Kendrick Lamar, Kendrick Lamar.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:00:08",
   "title": "Kendrick Lamar",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

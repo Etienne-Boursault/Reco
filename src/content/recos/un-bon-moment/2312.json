@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre -> 'Notes pour trop tard'. ~00:16:45. Attribue a Kheiron (son film Brutus).",
+    "reason": "Chanson 'Notes pour trop tard' (OrelSan, feat. Ibeyi, album La fete est finie) : Kheiron raconte l'avoir ecoutee en boucle sur le tournage de son film Brutus (~00:16:45), 'trop puissant', 'sophistique'. Substance sans prescription. Titre a corriger.",
+    "verdict": "citation"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2312",
+  "kind": "citation",
+  "links": [],
+  "quote": "j'avais 40 minutes de voiture... je mettais en boucle son morceau note pour trop tard",
+  "recommendedBy": "Kheiron",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:48",
+  "title": "Note pour trop tard",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

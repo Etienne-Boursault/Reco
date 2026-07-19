@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ubm-1256 (discard). Non identifiable (budget WebSearch epuise). Reste draft.",
+    "reason": "Nom d'artiste ambigu/garbled (« Barbara Angel... Barbara Annie sur Spotify ») en reponse a « recommander un jeune artiste » ; possiblement un taquinage sur l'invitee Barbara, non tracable.",
+    "verdict": "unsure"
+  },
+  "creator": "Barbara Angel",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2505",
+  "links": [],
+  "quote": "Tu vois, Barbara Angel, moi je...",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:19:20",
+  "title": "Barbara Annie",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

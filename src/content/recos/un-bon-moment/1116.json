@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le transcript YouTube dit « Midnighties de John Ayle » (ASR deforme) au timecode 01:11:39-41 ; la description confirme Mid90s (Jonah Hill, 2018). Version Acast conservee car titre + lien corrects. Invite Pana absent des metadonnees.",
+    "reason": "Film recommande par Pana a son tour (« qui est incroyable », « ca m'a fait du bien », « ca parle de rien et de tout »). Description (jeunes filmes dans les annees 90) = Mid90s de Jonah Hill ; identification correcte avec lien TMDB.",
+    "verdict": "validate"
+  },
   "creator": "Jonah Hill",
   "episodeGuid": "6302667b4913bd00126c374c",
   "externalIds": {
@@ -6,17 +18,30 @@
     "tmdb": "437586",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1116",
+  "kind": "reco",
   "links": [],
   "quote": "en film tu as \"Mid 90's\" de Jonah Hill qui est incroyable",
-  "recommendedBy": "Panat",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:11:41",
   "title": "Mid90s",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

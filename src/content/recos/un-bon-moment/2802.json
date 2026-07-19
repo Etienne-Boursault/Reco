@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2805 - 'Makeba' (chanson de Jain, album Zanaka) citee pour expliquer qui est Jain. Pas une reco distincte.",
+    "reason": "Chanson 'Makeba' citee pour situer l'artiste dans la reco de son album, pas recommandee separement.",
+    "verdict": "discard"
+  },
+  "creator": "Jane",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2802",
+  "links": [],
+  "quote": "Elle a fait un album, elle a fait Makeba. Qui a cartonné dans le monde entier, qui cartonne encore plus sur TikTok en ce moment.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:31",
+  "title": "Makeba",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

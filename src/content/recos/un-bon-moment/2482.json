@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain : le fil (« je suis moins écouté Queen en boucle... Vulfpeck ») peut être Thomas VDB (le fou de musique) autant que Kyan. recommendedBy vidé (règle 3).",
+    "reason": "« j'adore Vulfpeck » (00:52:32), groupe réel, endossement explicite ; « je l'ai pas vu en concert, il paraît que c'est génial ». Reco valide.",
+    "verdict": "validate"
+  },
+  "creator": "Vulfpeck",
+  "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2482",
+  "kind": "reco",
+  "links": [],
+  "quote": "j'adore Vulfpeck",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:52:30",
+  "title": "Vulfpeck",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "musique"
+  ]
+}

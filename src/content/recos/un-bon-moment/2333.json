@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Type réel = série (pas film). creator 'Cédric Clapichon' -> Cédric Klapisch. Reco explicite de Navo reportée du doublon ubm-2347.",
+    "reason": "Série de Klapisch (suite de L'Auberge espagnole) discutée par lui; Navo la recommande explicitement à 01:13:48. Œuvre de l'invité -> guest-work. Canonique (doublon ubm-2347).",
+    "verdict": "guest-work"
+  },
+  "creator": "Cédric Clapichon",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2333",
+  "kind": "reco",
+  "links": [],
+  "quote": "là on arrive à Salade grecque et tu continues",
+  "recommendedBy": "Cédric",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:53",
+  "title": "Salade grecque",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

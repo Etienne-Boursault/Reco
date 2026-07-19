@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco gardee; ubm-1031 (Doc Jero) discard comme doublon",
+    "reason": "Reco par Navo de Game Anatomy de Doc Geraud (analyse de game design), reco de fin ('mon conseil c'est Doc Geraud'). Reco gardee du doublon",
+    "verdict": "validate"
+  },
+  "creator": "Doc Géraud",
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:41",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3070",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — Doc Geraud",
+      "url": "https://www.youtube.com/@DocGeraud"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Tipeee — Game Anatomy",
+      "url": "https://en.tipeee.com/doc-geraud-game-anatomy"
+    }
+  ],
+  "quote": "Doc Géraud, c'est un mec qui fait un truc qui s'appelle Game Anatomy et plein d'autres petits programmes aussi où il parle de jeux vidéo",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:19:41",
+  "title": "Game Anatomy",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

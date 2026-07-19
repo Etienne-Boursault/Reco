@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.97,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Pas une oeuvre : Bigflo parle de ses antidepresseurs ('je conseille, gros banger, je recommande, avec le bon dosage... ceci n'est pas un conseil medical'). 'Grobanger' n'est pas un titre — faux positif.",
+    "verdict": "discard"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "Je recommande.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:32:54",
   "title": "Grobanger",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

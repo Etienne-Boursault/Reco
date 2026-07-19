@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre ASR faux a corriger avant publication (titre reel de la chanson-duo de VD non retrouve). Verdict vise: guest-work. Canonique du couple ; ubm-0850 = doublon.",
+    "reason": "Chanson de VD (invite) nommee pour illustrer 'le moment Vincent Delerm' — guest-work sur le fond, mais titre garble par l'ASR et non confirme par WebSearch (duo, feat. incertain).",
+    "verdict": "unsure"
+  },
+  "creator": "Vincent Delerme, Benjamin Violet",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "15:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2995",
+  "links": [],
+  "quote": "C'est le titre.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:15:36",
+  "title": "Il est trop tard, on frappe à l'amour",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

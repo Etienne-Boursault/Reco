@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Histoire du Mollah Nasreddin (folklore, l'ane et les villageois) racontee comme illustration rhetorique de 'on ne peut pas plaire a tout le monde'. Conte folklorique / exemple rhetorique, pas une oeuvre recommandable identifiable.",
+    "verdict": "discard"
+  },
+  "creator": "inconnu",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:54:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2580",
+  "links": [],
+  "quote": "il y a une belle histoire de Mola Nasreddin",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:46",
+  "title": "Mola Nasreddin",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

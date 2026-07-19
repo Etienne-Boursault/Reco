@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon avec ubm-0051 (« Bond Organisé », source acast).",
+    "reason": "Révélé dans le jeu de la complicité (00:56, « C'était Bande Organisée ! OM ! ») : substance descriptive (« réunion des rappeurs de Marseille, 3M/jour, par Joule ») mais mention instrumentale (jeu), aucune prescription à l'audience.",
+    "verdict": "discard"
+  },
+  "creator": "Joule",
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:15:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2535",
+  "links": [],
+  "quote": "C'est une chanson qui prend 3 millions par jour en ce moment !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:48",
+  "title": "Bande Organisée",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

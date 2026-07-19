@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0943 (canonique). Titre « Zao » incomplet.",
+    "reason": "Doublon de ubm-0943 (canonique). Titre « Zao » incomplet.",
+    "verdict": "discard"
+  },
+  "creator": "Sagazan",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2202",
+  "links": [],
+  "quote": "Et une artiste française qui a sorti un album, je crois, il y a un an, qui s'appelle Zao de Sagazan. C'est fou.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:56",
+  "title": "Zao",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

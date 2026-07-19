@@ -1,9 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1117",
+    "reason": "Doublon Acast de ubm-1117 (album de Kyan, createur transcrit « Ken »).",
+    "verdict": "discard"
+  },
   "creator": "Ken",
   "episodeGuid": "6302667b4913bd00126c374c",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/262200072"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +32,10 @@
   "quote": "moi je recommande l'horizon des événements de Ken qu'aujourd'hui",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:11",
   "title": "Horizon des événements",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

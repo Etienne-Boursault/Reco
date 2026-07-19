@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale dans un bit.",
+    "reason": "Kaamelott name-droppé dans un bit comique (« Valet Payet », « j'ai détesté jouer dans le Kaamelott, livre 6 », 01:10:08). Aucune prescription, mention dans un sketch d'impro.",
+    "verdict": "discard"
+  },
+  "creator": "Alexandre Astier",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2388",
+  "links": [],
+  "quote": "J'ai détesté jouer dans le Kaamelott, livre 6.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:10:08",
+  "title": "Kaamelott",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

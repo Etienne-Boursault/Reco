@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'David Lynch, Mulholland Drive, j'adore Mulholland Drive' + anecdote (rencontre Lynch, Naomi Watts) : admiration personnelle forte, sans prescription explicite. PRIMAIRE (fusionner ubm-1803).",
+    "verdict": "citation"
+  },
   "creator": "David Lynch",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,17 +14,39 @@
     "tmdb": "1018",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:44:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0968",
+  "kind": "citation",
   "links": [],
-  "quote": "J'ai adoré Milo Land Drive.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "j'adore Milo Land Drive",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:44:57",
   "title": "Mulholland Drive",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

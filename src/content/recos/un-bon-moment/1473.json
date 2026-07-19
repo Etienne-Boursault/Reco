@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Shameless (doublons : ubm-0414, ubm-0420, ubm-0994). Locuteur = invite interroge avant Maxime -> Djilsi (guests vide, guest_missing).",
+    "reason": "Reco sincere : 'Je peux recommander une serie que j'ai decouverte, mais qui date. Shameless... j'adore, je suis a la septieme saison... sur Netflix, une tres tres bonne serie'. Shameless = serie reelle. Reco canonique du cluster Shameless.",
+    "verdict": "validate"
+  },
+  "creator": "John Wells",
+  "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T12:56:30+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T12:56:30+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:59:17+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1473",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je peux recommander une série que j'ai découverte, mais qui date. Shameless.",
+  "recommendedBy": "Djilsi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:25:40",
+  "title": "Shameless",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

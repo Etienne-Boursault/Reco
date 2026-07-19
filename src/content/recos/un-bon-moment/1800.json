@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon/faux positif : 'Jean Becker' = nom du realisateur (film = Deux jours a tuer, cf ubm-1789), pas un titre d'oeuvre.",
+    "verdict": "discard"
+  },
+  "creator": "Jean Becker",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:24:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1800",
+  "links": [],
+  "quote": "et puis après il y a eu Jean-Béquer c'est-à-dire redire-redire",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:59",
+  "title": "Jean Becker",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "film"
+  ]
+}

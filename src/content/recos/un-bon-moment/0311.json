@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0312. Timecode reel ~00:00:47 (presentation) et ~01:54:24 (reco Kyan).",
+    "reason": "Doublon de ubm-0312 (meme livre 'La Nuit retrouvee' de Penelope Bagieu). Titre artefacte ('La nuit est retrouvee').",
+    "verdict": "discard"
+  },
   "creator": "Pénélope Bagieu",
   "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Bah oui.",
   "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:02:06",
   "title": "La nuit est retrouvée",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

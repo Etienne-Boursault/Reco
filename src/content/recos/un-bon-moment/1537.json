@@ -1,0 +1,29 @@
+{
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1537",
+  "kind": "reco",
+  "links": [],
+  "quote": "Les Chevaliers du Baphomet, C'est un jeu, ça ! Vous connaissez pas, c'est un jeu sur PlayStation 1 à l'époque ?",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:22:26",
+  "title": "The Broken Sword",
+  "transcriptSource": "acast",
+  "types": [
+    "jeu"
+  ]
+}

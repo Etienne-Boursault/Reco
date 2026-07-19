@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe 'Pierre Illéret' à confirmer (WebSearch épuisé). Ancien monteur de l'émission (6 ans), déjà reçu comme invité par le passé mais PAS invité de cet épisode. Reco émanant de Thomas Deseur (invité absent des métadonnées).",
+    "reason": "Jeune humoriste loué ('il est trop fort', 'un jeune artiste') sans prescription d'une œuvre précise ; admiration entre pairs, approuvée par les hosts.",
+    "verdict": "citation"
+  },
+  "creator": "Pierre Hillairet",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:49",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3119",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Toutes ses dates",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
+  "quote": "Tu vois, dans les jeunes, à Pierre Illéret, moi, je trouve que ça fait... Un jeune artiste, encore.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:38:49",
+  "title": "Jour de pluie",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

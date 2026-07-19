@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0966 (Brazil de Terry Gilliam).",
+    "verdict": "discard"
+  },
+  "creator": "Thierry",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1796",
+  "links": [],
+  "quote": "si t'as pas vu Brasile dans le détail ou le sens de la vie, c'est pour moi c'était fondateur pour moi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:53:30",
+  "title": "Brásile",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

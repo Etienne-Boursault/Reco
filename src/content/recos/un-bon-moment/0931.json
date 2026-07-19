@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Ambigu (pourrait s'entendre comme un goût réel), mais cadré comme exemple du format des bonus.",
+    "reason": "Exemple rhétorique: illustre le format des bonus LaCinetek ('souvent ils font un bonus: moi j'ai adoré Citizen Kane...'), pas une reco réelle de Klapisch.",
+    "verdict": "discard"
+  },
   "creator": "Orson Welles",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,6 +15,17 @@
     "tmdb": "15",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +34,10 @@
   "quote": "moi j'ai adoré Citizen Kane",
   "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:36",
   "title": "Citizen Kane",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

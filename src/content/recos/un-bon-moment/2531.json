@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote (« je vais voir La Reine des Neiges 2 avec ma fille au cinéma… on est invité au Grand Rex », 00:21) racontée comme illustration ; aucun avis sur le film. Mention instrumentale (anecdote sans avis).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2531",
+  "links": [],
+  "quote": "je vais voir La Reine des Neiges 2 avec ma fille au cinéma",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:21",
+  "title": "La Reine des Neiges 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

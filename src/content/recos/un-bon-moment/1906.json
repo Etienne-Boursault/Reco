@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0516.",
+    "reason": "Doublon de ubm-0516 (spectacle d'Alex Lutz au Cirque d'Hiver).",
+    "verdict": "discard"
+  },
+  "creator": "Alex Lutz",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1906",
+  "links": [],
+  "quote": "et je recommande le spectacle d'Alex Lutz qui joue au cirque d'hiver et qui est juste épatant",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:43:01",
+  "title": "Spectacle d'Alex Lutz au cirque d'hiver",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

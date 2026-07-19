@@ -1,15 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript non diarize: l'acheteur du jeu n'est pas identifiable (Kyan ou Maghla) -> attribution videe.",
+    "reason": "Discussion enthousiaste et prescriptive de Zelda: Tears of the Kingdom (25:06 'Il est vraiment vraiment bien'; 29:08 'un des meilleurs jeux de tous les temps'; 'il faut y jouer'). Canonique du fil Zelda.",
+    "verdict": "validate"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "25:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1133",
+  "kind": "reco",
   "links": [],
-  "quote": "Sincèrement c'est pas pour rien que ça a d'un meilleur jeu de tous les temps. Faut y jouer.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Zelda, Zelda à fond, Zelda ? Alors, je l'ai acheté. Zelda, mais je le craque. Ne le fais pas si t'as une vie sociale.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
+  "timestamp": "25:06",
   "title": "The Legend of Zelda: Tears of the Kingdom",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

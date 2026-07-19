@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 00:18:34-38. Exemple/anecdote sur Nolan, pas une reco.",
+    "reason": "Mention instrumentale : Tenet cite comme EXEMPLE de Christopher Nolan qui travaille sous deadline ('il a enfin termine Tenet, dans la precipitation'). Le sujet est la deadline comme moteur de creation, aucune prescription sur le film.",
+    "verdict": "discard"
+  },
+  "creator": "Christopher Nolan",
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2589",
+  "links": [],
+  "quote": "Il a fait Tenet. Il a enfin terminé Tenet.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:36",
+  "title": "Tenet",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

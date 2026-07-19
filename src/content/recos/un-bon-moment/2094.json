@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non identifiable avec certitude (transcript non diarizé). Passage à 00:50:58.",
+    "reason": "Mention avec avis positif (« une émission que j'adore, maintenant en France aussi ») mais dans une discussion sur le roast — citation plutôt que reco prescriptive.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2094",
+  "kind": "citation",
+  "links": [],
+  "quote": "c'est aussi une épreuve récurrente dans Drag Race, une émission que j'adore et tout, qui est en France maintenant également.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:51:00",
+  "title": "Drag Race",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

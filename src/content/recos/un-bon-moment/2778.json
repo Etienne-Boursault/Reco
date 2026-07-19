@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre confirmé « Bagarre Bagarre » (EP, 2020, WebSearch). Canonique ; ubm-0765 est un doublon.",
+    "reason": "Julien Granel (invité) présente son propre EP « Bagarre Bagarre » (2020) : « je viens de sortir un EP qui s'appelle Bagarre, Bagarre ». Auto-promo du format.",
+    "verdict": "guest-work"
+  },
+  "creator": "Julien Granel",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2778",
+  "kind": "reco",
+  "links": [],
+  "quote": "je viens de sortir un EP qui s'appelle Bagarre, Bagarre.",
+  "recommendedBy": "Julien Granel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:04:39",
+  "title": "Bagarre",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "The Office (US) développée par Greg Daniels — créateur du draft correct. Attribution Kyan étayée ('Kyan m'a dit regarde The Office') mais transcript non diarisé pour le 'n'hésitez pas à aller voir'.",
+    "reason": "Œuvre réelle non liée à un invité, prescription explicite : 'Kyan m'a dit regarde The Office avec Steve Carell' puis 'n'hésitez pas à aller voir The Office c'est incroyable' (01:29-01:30). Reco émanant de Kyan.",
+    "verdict": "validate"
+  },
   "creator": "Greg Daniels",
   "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
   "externalIds": {
@@ -6,17 +18,53 @@
     "tmdb": "2316",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:29:17",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0741",
-  "links": [],
-  "quote": "The Office, Steve Carell et tout, n'hésitez pas à aller voir The Office, c'est incroyable.",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70136120"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/the-office-us"
+    }
+  ],
+  "quote": "Kyan m'a dit regarde The Office avec Steve Carell",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:30:20",
+  "status": "validated",
+  "timestamp": "01:29:17",
   "title": "The Office",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

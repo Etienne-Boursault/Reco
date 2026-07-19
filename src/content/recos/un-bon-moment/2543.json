@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "'Ce jour-la' = piste 10 de Revalite (verifie), paroles tirees d'un poeme de sa grand-mere Andree Chedid. Longue discussion sur la genese du morceau (00:17-00:22), vraie substance mais pas de prescription standalone.",
+    "verdict": "citation"
+  },
+  "creator": "Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:17:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2543",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est une chanson écrite par ta grand-mère aussi.",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:50",
+  "title": "Ce jour-là",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

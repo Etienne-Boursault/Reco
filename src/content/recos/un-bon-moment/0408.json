@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1490 (Criminel de Garou) — même moment 01:14:03-04, la version 1490 porte la prescription explicite.",
+    "verdict": "discard"
+  },
   "creator": "Garou",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/871461"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "il parle de criminelle, cette chanson de Garou",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:14:04",
   "title": "Criminelle",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

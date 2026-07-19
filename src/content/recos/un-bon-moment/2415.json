@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre + createur a corriger par un humain (transcript non fiable, verif web impossible). Une fois corrige = validate (reco publique explicite).",
+    "reason": "Vraie reco d'un sketch ('allez le voir sur YouTube, il est genial, incroyable, les timings sont fous'), mais le createur est corrompu dans le transcript ('Edouard Berdiadonne', extracteur a propose 'Edouard Baer') et le titre 'Skatfall 2003/2004' est un artefact non verifiable (web indispo). Sketch decrit: biographe de Michel Leeb, il jette le bouquin. A verifier/corriger avant publication. Canonique du groupe (doublon 2426).",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2415",
+  "links": [],
+  "quote": "Edouard Berdiadonné, allez le voir sur YouTube.",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:02:54",
+  "title": "Édouard Baer",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

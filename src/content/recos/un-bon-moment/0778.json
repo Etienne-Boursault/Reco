@@ -1,4 +1,18 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "link_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2808. Titre et liens externes errones (mauvais film). A discard.",
+    "reason": "Doublon de ubm-2808 : meme discussion sur Titane de Ducournau (timecodes 00:20:48 vs 00:21:10). Cette entree (source acast) a un titre errone 'Titan' et des externalIds/watchProviders pointant vers 'The Titan' (2018, TMDB 476926), un tout autre film.",
+    "verdict": "discard"
+  },
   "creator": "Julia Ducournau",
   "episodeGuid": "61accf4f45d15e00135c6ef2",
   "externalIds": {
@@ -6,6 +20,17 @@
     "tmdb": "476926",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +39,10 @@
   "quote": "Il paraît qu'il n'y a pas beaucoup de dialogue.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:21:10",
   "title": "Titan",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

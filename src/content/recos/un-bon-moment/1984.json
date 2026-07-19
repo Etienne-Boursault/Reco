@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Adele = sujet du jeu 'Anecdote de stars' (arret d'un concert en reconnaissant quelqu'un dans la foule). Mention instrumentale (reponse de jeu).",
+    "verdict": "discard"
+  },
+  "creator": "Adèle",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1984",
+  "links": [],
+  "quote": "Adèle.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:38:54",
+  "title": "Adèle",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

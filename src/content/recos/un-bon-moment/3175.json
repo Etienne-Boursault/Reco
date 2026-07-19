@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Jeu de segment de l'episode ('un jeu qui s'appelle le Sporno, cree par mon pote Gautier, sport ou porno ?') - support de jeu, pas une oeuvre reelle prescriptible (regles 1/7).",
+    "verdict": "discard"
+  },
+  "creator": "Gautier",
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:07",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3175",
+  "links": [],
+  "quote": "J'ai mélangé deux passions, c'est un jeu qui s'appelle le Sporno.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:58:07",
+  "title": "Sporno",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

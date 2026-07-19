@@ -1,21 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Meme passage que 0427 : Kyan vante Showbiz (« rempli d'une rage... exceptionnels »). Album reel (Muse, 1999).",
+    "verdict": "validate"
+  },
   "creator": "Muse",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/339679"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0428",
+  "kind": "reco",
   "links": [],
-  "quote": "origine of symmetry et showbiz les 2 premiers albums qui sont exceptionnels showbiz c'est vraiment des gars de 20 ans dans un garage en Angleterre qui font de la musique",
+  "quote": "Showbiz, c'est vraiment des gars de 20 ans dans un garage en Angleterre qui font de la musique et c'est rempli d'une rage, d'un truc que je trouve qui n'a pas disparu",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:23",
+  "status": "validated",
+  "timestamp": "00:26:20",
   "title": "Showbiz",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ],

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Orthographe titre : 'Michel Leib' (ASR) → 'Michel Leeb'.",
+    "reason": "Mention instrumentale : Michel Leeb cité comme référence d'enfance ('on s'est identifié à lui quand on était petit') dans une discussion critique sur les clichés raciaux dans l'humour. Pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2706",
+  "links": [],
+  "quote": "On a Michel Leib depuis longtemps, nous on s'est identifié à lui quand on était petit.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:07",
+  "title": "Michel Leib",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

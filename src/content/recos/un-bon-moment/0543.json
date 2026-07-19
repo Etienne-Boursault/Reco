@@ -1,18 +1,60 @@
 {
-  "creator": "inconnu",
+  "aliases": [
+    "Listers: a glimpse into extreme birdwatching",
+    "The Big Year"
+  ],
+  "creator": "Owen Reiser",
+  "customLinks": [
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/watch?v=zl-wAqplQAo"
+    }
+  ],
   "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:47+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "anthropic",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:23:35"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "openai",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:23:35"
+    },
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "openai",
+      "llmModel": "gpt-4o-mini",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "01:23:33"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0543",
+  "kind": "reco",
   "links": [],
-  "quote": "faire un pokedex",
-  "recommendedBy": "inconnu",
+  "quote": "C'est un doc sur un mec avec son frère qui prenne un van. C'est indépendant, ils ont mis ça sur YouTube, c'est genre une pure merveille. En gros, il est parti faire un Pokédex, où il s'est intéressé à l'observation des oiseaux, à la base, tu te dis en mode ouais, why not, tu vois. Et en fait, c'est une vraie histoire de deux frères qui font un van et qui font le tour des Etats-Unis et qui remplissent le Pokédex.",
+  "recommendedBy": "Seb",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:23:45",
-  "title": "pokedex",
+  "status": "validated",
+  "timestamp": "01:23:33",
+  "title": "Listers: a glimpse into extreme birdwatching",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "video"
   ]
 }

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:40:37 : 'On est alle voir Madonna ensemble !' -- anecdote sur le fait d'avoir assiste a un concert, aucune prescription ni avis sur l'oeuvre. Pas une reco (type 'artiste' issu d'une simple anecdote).",
+    "reason": "Anecdote (concert Madonna), pas une reco",
+    "verdict": "discard"
+  },
+  "creator": "Madonna",
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:45:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2588",
+  "links": [],
+  "quote": "On est allé voir Madonna ensemble !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:37",
+  "title": "Madonna",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

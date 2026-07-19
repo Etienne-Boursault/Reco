@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE 'Steamy'; doublon discarde: ubm-1162 'Stimie'. Podcast Louis Media diffuse sur l'app Storytel. Endossement collectif ('on adore Louis Media' cote hosts) + presentation detaillee par Marina; attribution a Marina (invitee) car elle porte la reco et 'je vous conseille fortement'.",
+    "reason": "Podcast 'Steamy' (Louis Media) presente et recommande a 00:52:19 ('c'est un podcast de Louis Media... le podcast s'appelle Steamy, c'est super'); Marina y a lu sa propre nouvelle erotique.",
+    "verdict": "validate"
+  },
+  "creator": "Louis Média",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2272",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est un podcast de Louis Média",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:52:19",
+  "title": "Steamy",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

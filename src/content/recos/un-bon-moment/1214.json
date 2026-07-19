@@ -1,16 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Le Point-Virgule est une salle/cafe-theatre (types=lieu), pas une oeuvre ; 'j'adore cette salle' = appreciation du lieu ou joue l'invite, pas une prescription au public.",
+    "verdict": "discard"
+  },
   "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1214",
   "links": [],
-  "quote": "J'adore cette salle.",
+  "quote": "j'adore cette salle",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:20",
   "title": "Point Virgule",
+  "transcriptSource": "youtube",
   "types": [
     "lieu"
   ]

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Chroniqueuse musicale non-invitee.",
+    "reason": "Mona Guba = rappeuse-chroniqueuse non-invitee qui vient 'kicker' (00:37, 'Max de force pour Mona Guba'). Performeuse musicale non-invitee -> pas une reco (regle 6).",
+    "verdict": "discard"
+  },
+  "creator": "Mona Guba",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1770",
+  "links": [],
+  "quote": "Max de force pour Mona Guba.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:40",
+  "title": "Mona Guba",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

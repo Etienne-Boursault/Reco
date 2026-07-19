@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "'le dernier album... Les Failles et c'est sublime' : recommandation explicite de l'album Les Failles (Pomme, 2019/2020), corroboree par toute la table.",
+    "verdict": "validate"
+  },
+  "creator": "Pomme",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2628",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez découvrir Pomme, si vous connaissez pas. Pomme, le dernier album, c'est dans une pochette bleue. Ça s'appelle Les Failles et c'est sublime.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:37:00",
+  "title": "Les Failles",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

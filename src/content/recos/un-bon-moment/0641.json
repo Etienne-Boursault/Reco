@@ -1,19 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe non revalidee en ligne (budget WebSearch epuise) ; attribution non diarizee -> vide.",
+    "reason": "Recommandation d'une chaine reelle (Ebim) dans le jeu des recos : 'la chaine Ebim que j'aime beaucoup, tres haute qualite d'ecriture' (01:14).",
+    "verdict": "validate"
+  },
   "creator": "Ebim",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:20",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0641",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, c'est la chaîne Ebim que j'aime beaucoup. On est sur les deux copains. Voilà. Clairement, c'est de très, très haute qualité.",
-  "recommendedBy": "Invité",
+  "quote": "Moi c'est la chaîne Ebim ! Que j'aime beaucoup !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:14:21",
+  "status": "validated",
+  "timestamp": "01:14:20",
   "title": "Ebim",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

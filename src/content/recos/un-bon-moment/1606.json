@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Wary Nishen (01:06): personne creditee d'une phrase dans une anecdote ('il est tellement fort Wary'); pas d'invite, aucune oeuvre pointee ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Wary Nishen",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1606",
+  "links": [],
+  "quote": "Il a dit mec t'écoutes pas de Jacques Brel dans un mariage",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:06:40",
+  "title": "Wary Nishen",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

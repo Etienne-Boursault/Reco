@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Extrait du segment jeu (YT 01:03:35).",
+    "reason": "Anecdote dans le jeu de devinettes de l'emission : la reponse d'une enigme est « Toy Story » (enfant qui verifie si ses jouets bougent). Mention instrumentale, aucun avis sur le film.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2855",
+  "links": [],
+  "quote": "Ah, bah oui, c'est Toy Story.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:03:35",
+  "title": "Toy Story",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

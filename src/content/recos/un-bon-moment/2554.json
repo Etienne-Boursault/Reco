@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1145. Titre 'Tao Talking' = artefact, creator 'Inconnu'.",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2554",
+  "links": [],
+  "quote": "je vous invite à lire, le Tao Talking, qui est un livre vraiment ancestral.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:37:29",
+  "title": "Tao Talking",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

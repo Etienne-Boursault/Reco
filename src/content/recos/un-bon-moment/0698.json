@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2583; 'D'Arabere' = artefact de 'Edouard Baer'",
+    "reason": "Doublon de ubm-2583 (meme passage 01:05:50). Titre 'D'Arabere' = mauvaise transcription de 'Edouard Baer'. Canonique = ubm-2583.",
+    "verdict": "discard"
+  },
   "creator": "D'Arabère",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "J'allais voir son spectacle, j'ai tellement aimé.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:05:50",
   "title": "Le spectacle de D'Arabère",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

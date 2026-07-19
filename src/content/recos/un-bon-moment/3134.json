@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop de Drive pour identifier le realisateur (Nicolas Winding Refn) dans une anecdote de fantome en Thailande ; pas de discussion du film (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Nicolas Winding Refn",
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:14",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3134",
+  "links": [],
+  "quote": "c'est le réalisateur de Drive, qui a un nom à prononcer, mais qui est trop fort.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:17:14",
+  "title": "Drive",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

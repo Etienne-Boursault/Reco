@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Fore : Comme un hypersensible » = « Fort comme un hypersensible » (ubm-2935). Doublon Acast, titre erroné.",
+    "reason": "Doublon du même livre/spectacle de Maurice déjà capturé par ubm-2935 (canonique). Titre corrompu depuis la source Acast.",
+    "verdict": "discard"
+  },
   "creator": "Maurice Barthélémy",
   "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0828",
   "links": [],
   "quote": "actuellement, on enregistre ce podcast, tu es en train de jouer un spectacle qui est l'adaptation d'un livre que tu as écrit, qui s'appelle \"Fore\" comme un hypersensible.",
-  "recommendedBy": "Maurice Barthélémy",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:03:03",
   "title": "Fore : Comme un hypersensible",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

@@ -1,17 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE (doublon ubm-0528 discarde). Locuteur = un host (Kyan ou Navo) mais non certain ; attribution 'Kyan Khojandi' de l'extracteur non confirmable -> recommendedBy vide.",
+    "reason": "'Fabrizio Buccella' (chaine YouTube / vulgarisateur) : reco explicite 'je veux recommander le professeur Fabrizio Buccella' (01:14:22), presente a Nassim.",
+    "verdict": "validate"
+  },
+  "creator": "Autre",
   "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1014",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi je peux, je vais vous recommander le professeur Fabrizio Buccella. C'est quoi, c'est une chaîne YouTube ? Car il parle aussi de physique quantité.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Je veux recommander le professeur Fabrizio Buccella.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:14:21",
+  "status": "validated",
+  "timestamp": "01:14:22",
   "title": "Fabrizio Buccella",
+  "transcriptSource": "acast",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

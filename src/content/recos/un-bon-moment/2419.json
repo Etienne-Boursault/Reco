@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Les invites disent aussi 'il faut aller voir le spectacle de Kian, il est incroyable' — oeuvre du host.",
+    "reason": "'Pulsions', 1er one-man-show de Kyan (host), promu dans l'episode (mise en ligne YouTube evoquee, engouement, tournee) — auto-promo assumee du format = guest-work. recommendedBy = Kyan (dont c'est l'oeuvre).",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2419",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est à dire les gens accédaient à une sorte de \"ah il fait du spectacle, on va le voir\".",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:28:26",
+  "title": "Pulsions",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle",
+    "autre"
+  ]
+}

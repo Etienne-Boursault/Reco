@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco de Thomas Deseur, pas Kyan. Invité absent des métadonnées.",
+    "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie colère/vengeance, extrait du livre) ; œuvre réelle (Les Nouveaux Sauvages / Relatos salvajes, Damián Szifron, 2014), confirmée dans l'échange ('la version sud-américaine de Szifron').",
+    "verdict": "validate"
+  },
+  "creator": "Damián Szifron",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3124",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/80013561"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/les-nouveaux-sauvages"
+    }
+  ],
+  "quote": "Les Nouveaux Sauvages ? Ah oui. Génial, Les Nouveaux Sauvages.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:02:44",
+  "title": "Les Nouveaux Sauvages",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,15 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Transcript 'Tao Talking' = le Tao Te King (Lao-Tseu). Titre 'Tao Te Ching' = romanisation valide.",
+    "reason": "Livre taoiste que l'invite recommande explicitement au public: 'que je vous invite a lire' (00:37). Prescription claire d'une oeuvre tierce reelle.",
+    "verdict": "validate"
+  },
+  "creator": "Laozi",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1145",
+  "kind": "reco",
   "links": [],
-  "quote": "je vous invite à lire le tao talking qui a un livre vraiment ancestral",
-  "recommendedBy": "Mathieu Chedid",
+  "quote": "le Tao, c'est une philosophie chinoise ancestrale, tu vois. Et c'est donc des petites poésies comme ça, de vie, quoi, que je vous invite à lire, le Tao Talking, qui est un livre vraiment ancestral.",
+  "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
+  "timestamp": "00:37:06",
   "title": "Tao Te Ching",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

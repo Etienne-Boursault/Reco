@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0038 (canonique validee, 'Soupe miso'). Le recommendedBy existant 'Kyan Khojandi' est ERRONE : c'est Laurent Baffie qui recommande son propre spectacle (transcript 00:59:07-01:01, 'j'ai ecrit tout seul', 'le spectacle est drole'). Titre reel = 'Soupe miso'. Reco issue du transcript acast (garbled : 'soup miso de Laurent Baffy').",
+    "reason": "Doublon de ubm-0038 (meme spectacle 'Soupe miso' de Laurent Baffie, meme timecode 00:59:09). ubm-0038 est la reco canonique deja validee. Regle doublons : 1 canonique, les autres discard.",
+    "verdict": "discard"
+  },
   "creator": "Laurent Baffy",
   "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "autre spectacle haute aide de 10h soup miso de Laurent Baffy",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:59:09",
   "title": "Soup Miso",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

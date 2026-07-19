@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ; canonique = ubm-2676 'Yazid Assoumani'. Attribution 'Navo' erronee (reco de Paul).",
+    "reason": "Doublon du cluster Yazid Assoumani.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "et Yazid il y a une construction de spectacles mais à un moment où ça sortira c'est possible",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:05",
   "title": "Œuvre de Yazid Asomani",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

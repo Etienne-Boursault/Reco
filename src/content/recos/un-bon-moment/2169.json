@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "La Frette Studio evoque dans la discussion sur le metier/les studios d'enregistrement (console d'Eddie Barclay, Rolling Stones) — contexte instrumental, pas une prescription au public; studio pro non 'consommable' par l'auditeur.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "07:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2169",
+  "links": [],
+  "quote": "Il y a un studio, tu vois, La Frette. La Frette Studio, je parle de celui-là parce que c'est un grand studio à une heure de Paris.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "07:23",
+  "title": "La Frette Studio",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

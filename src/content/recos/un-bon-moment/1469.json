@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« Pulsion le livre » — riff comique livres d'enfance (« un livre que j'ai déjà lu »). Blague, aucun avis. Aussi doublon de ubm-1948.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:52:47+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1469",
+  "links": [],
+  "quote": "Un livre que j'ai déjà lu !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:41:24",
+  "title": "Pulsion le livre",
+  "transcriptSource": "acast",
+  "types": [
+    "livre"
+  ]
+}

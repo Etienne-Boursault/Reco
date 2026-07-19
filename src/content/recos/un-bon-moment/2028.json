@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chaine = 'G Milgram' (debunkeur pseudosciences, ex. affaire du beton quantique/Pneumatit citee dans l'extrait), PAS 'J. Milgram' — corriger titre + createur. Attribution indeterminee.",
+    "reason": "'Je vais conseiller une chaine YouTube... vous allez aimer la chaine de J. Milgram, il debunk des conneries esoteriques' (02:15:19-55) — prescription claire.",
+    "verdict": "validate"
+  },
+  "creator": "J. Milgram",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:15:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2028",
+  "kind": "reco",
+  "links": [],
+  "quote": "Donc vous allez aimer la chaîne de J. Milgram",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:15:27",
+  "title": "La chaîne de J. Milgram",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

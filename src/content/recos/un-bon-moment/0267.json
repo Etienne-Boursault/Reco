@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du couple (mieux renseigne : tmdb). Doublon = ubm-2013.",
+    "reason": "Reponse du 'jeu des photos' : le chien Hachiko (statue Shibuya) a 01:18-01:19. Le film Hachi n'est qu'une mention incidente ('un film est sorti a son histoire'), aucune prescription. Jeu-devinette -> discard.",
+    "verdict": "discard"
+  },
   "creator": "Lasse Hallström",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "28178",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +37,10 @@
   "quote": "Il a attendu son maître mort pendant 9 ans à la gare de Shibuya.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:19:24",
   "title": "Hachi: A Dog's Tale",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale et confuse dans le jeu-devinette (~00:50:44, « je pensais que tu parlais de Jean Dujardin dans mon livre Pulsions »). Passage brouille, pas une reco; createur « Jean Dujardin » errone.",
+    "verdict": "discard"
+  },
+  "creator": "Jean Dujardin",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:50:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2967",
+  "links": [],
+  "quote": "je pensais que tu parlais de Jean Dujardin dans mon livre Pulsions",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:50:44",
+  "title": "Pulsions",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle",
+    "livre"
+  ]
+}

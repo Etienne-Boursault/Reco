@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "01:32:14 : 'Café des Andes/Andik' = parole de somnambule notée par Léopold (lecture de notes). Pas une œuvre/reco.",
+    "verdict": "discard"
+  },
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0307",
   "links": [],
   "quote": "Elle m'a juste dit Café des Andes",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:32:21",
   "title": "Café des Andes",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

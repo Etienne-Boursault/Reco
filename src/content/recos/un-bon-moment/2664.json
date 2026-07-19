@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur partagé (« nos »).",
+    "reason": "Réalisateur cité (« un de nos réalisateurs préférés ») avec sa chaîne YouTube décrite (méditation, météo quotidienne) comme exemple de créativité protéiforme. Substance réelle, pas de prescription directe.",
+    "verdict": "citation"
+  },
+  "creator": "David Lynch",
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2664",
+  "kind": "citation",
+  "links": [],
+  "quote": "tu regardes la chaîne YouTube de David Lynch",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:04:48",
+  "title": "David Lynch",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

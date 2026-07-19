@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Seinfeld credite en passant pour le format 26 min (00:35:17, « inventE un peu par Seinfeld ») puis dans la liste. Credit bref, pas d'analyse de l'oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2976",
+  "links": [],
+  "quote": "le 26 minutes aux Etats-Unis a été un peu selon beaucoup inventé par Seinfeld",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:35:17",
+  "title": "Seinfeld",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

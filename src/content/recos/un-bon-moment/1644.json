@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur meta 'Tom Baletti' = coquille pour Tom Baldetti.",
+    "reason": "Format pere-fils de confinement cree et presente par l'invite Tom Baldetti ('Ca s'appelait Je peux t'appeler papa', 00:30). Auto-promo assumee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Tom Baletti",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1644",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ça s'appelait... Je peux t'appeler papa ! C'était trop cool ! C'était trop mignon !",
+  "recommendedBy": "Tom Baldetti",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:30:50",
+  "title": "Je peux t'appeler papa !",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

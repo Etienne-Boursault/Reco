@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1112 (extraction acast, 01:31:22).",
+    "reason": "Doublon surendettement",
+    "verdict": "discard"
+  },
   "creator": "E.R.E.K.",
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1202",
   "links": [],
   "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
-  "recommendedBy": "Jeremy Ferrari",
+  "recommendedBy": "Jérémy Ferrari",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:31:22",
   "title": "la vidéo sur le surendettement",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

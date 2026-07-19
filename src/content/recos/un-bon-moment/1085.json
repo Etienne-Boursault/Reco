@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2823.",
+    "reason": "Doublon de ubm-2823 (même mixtape Alpha Wann, ~00:57, extraction Acast). Canonique = ubm-2823.",
+    "verdict": "discard"
+  },
   "creator": "Alpha One",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +32,10 @@
   "quote": "C'est la Danda Da Tape d'Alpha One. C'est pas un album, mais c'est le truc que j'ai trouvé le plus aboutillé, le plus réussi.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:57:00",
   "title": "Donda Da Tape",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

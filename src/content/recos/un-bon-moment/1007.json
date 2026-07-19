@@ -1,16 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1372.",
+    "reason": "Doublon de ubm-1372 ; « Ha Ha Mez » = Ameziane (@hahamez).",
+    "verdict": "discard"
+  },
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1007",
   "links": [],
   "quote": "Hamzian ? Hamzian, je ne sais pas si tu n'en parles pas lui. Ha Ha Mez sur Instagram, c'est un gars qui plie trop marrant.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:38:22",
   "title": "Ha Ha Mez",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

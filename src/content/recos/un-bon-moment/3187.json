@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger : probablement « 2 Heures de Perdues » (WebSearch indispo, budget epuise). Locuteur probablement Florent Bernard (narration de l'origine du live Bataclan), a confirmer.",
+    "reason": "Podcast externe (createur Antoine, non present) prescrit : « un podcast tres connu en France. Tres bon podcast, allez voir. »",
+    "verdict": "validate"
+  },
+  "creator": "Antoine Ramblamjilio",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:25",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3187",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel 2HDP",
+      "url": "https://www.2hdp.fr/home"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/2-heures-de-perdues/id949530802"
+    }
+  ],
+  "quote": "Très bon podcast, allez voir.",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:28:25",
+  "title": "Deux heures de perdu",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

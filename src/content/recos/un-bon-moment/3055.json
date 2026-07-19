@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Passage 00:44:24, jeu Devine la chute.",
+    "reason": "'Blague de Jim Gaffigan' = revelation d'auteur dans le jeu 'Devine la chute' ; 'qu'on adore aussi' est une appreciation en passant, pas une prescription. Materiel de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Jim Gaffigan",
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3055",
+  "links": [],
+  "quote": "Blague de Jim Gaffigan, qu'on adore aussi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:24",
+  "title": "Jim Gaffigan",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

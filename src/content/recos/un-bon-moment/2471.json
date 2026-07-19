@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2477 (meme passage, meme oeuvre). ubm-2477 conserve car mieux renseigne (titre complet + creator Netflix).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2471",
+  "links": [],
+  "quote": "Alors, c'est une série docu de quatre épisodes que j'ai découvert il y a deux semaines, qui est sorti il y a quelques temps maintenant, qui s'appelle \"Don't fuck with cats on internet\".",
+  "recommendedBy": "Dedo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:36:25",
+  "title": "Don't Fuck with Cats: Hunting an Internet Killer",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Comparaison -> discard meme si le film est reel.",
+    "reason": "Comparaison : le personnage « Simple Jack » de Tropic Thunder sert d'analogie au sketch « Joel Leport » de Thomas.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2495",
+  "links": [],
+  "quote": "Tropic Thunder.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:16:16",
+  "title": "Tropic Thunder",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

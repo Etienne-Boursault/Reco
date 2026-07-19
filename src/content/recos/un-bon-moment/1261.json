@@ -1,18 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "'Goodbye Stranger' de Supertramp cite comme source d'une adaptation francaise en cours qu'il recite depuis son telephone (00:26). Mention instrumentale, la chanson n'est pas recommandee.",
+    "verdict": "discard"
+  },
   "creator": "Supertramp",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1261",
   "links": [],
-  "quote": "écoute matieu si tu veux alors là par exemple c'est un essai de d'une version une adaptation française de goodbye stranger",
-  "recommendedBy": "Matthieu",
+  "quote": "Ouais, bah écoute, alors là, par exemple, c'est un essai d'une version, d'une adaptation française de \"Goodbye Stranger\" des Super Tramp",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:00",
+  "status": "discarded",
+  "timestamp": "00:26:01",
   "title": "Goodbye Stranger",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "musique"
   ]
 }

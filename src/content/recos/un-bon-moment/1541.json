@@ -1,0 +1,116 @@
+{
+  "aliases": [
+    "L'amour, c'est sur-côté",
+    "Mourad Winter"
+  ],
+  "creator": "Mourad Winter",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1071064-l-amour-c-est-surcote/watch?locale=FR",
+    "tmdb": "1071064",
+    "tmdbType": "movie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:07:51+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "openai",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:42:34"
+    },
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "llmProvider": "anthropic",
+      "llmModel": "(assumed)",
+      "worker": "(assumed)",
+      "timestamp_at_extraction": "01:42:37"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "anthropic",
+      "llmModel": "claude-haiku-4-5",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "01:42:34"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "llmProvider": "openai",
+      "llmModel": "gpt-4o-mini",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "01:42:34"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1541",
+  "kind": "reco",
+  "links": [],
+  "quote": "On peut parler des livres de Murad Winter. L'amour, c'est sur-côté.",
+  "recommendedBy": "Kyan Khojandi & Doully",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:34",
+  "title": "L'amour, c'est surcoté",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "livre"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=L%27amour%2C%20c%27est%20surcot%C3%A9"
+    }
+  ]
+}

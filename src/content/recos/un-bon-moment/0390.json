@@ -1,18 +1,70 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur REEL = Romain Puertolas (roman 2025), le JSON dit a tort « Mathias Malzieu ». Host non certain.",
+    "reason": "Reco enthousiaste et etayee : « il est trop fort... je vous en dis pas plus, ca se lit tout seul, c'est vraiment incroyable, genial » — intrigue (fausse cuisiniere d'Hitler, Argentine) decrite.",
+    "verdict": "validate"
+  },
   "creator": "Mathias Malzieu",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:13:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:13:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:13:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:02:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:13:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0390",
+  "kind": "reco",
   "links": [],
-  "quote": "ma vie sans moustache à mon appareil aussi incroyable c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier Dupont de Ligonnès",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:13:17",
+  "status": "validated",
+  "timestamp": "02:13:24",
   "title": "Ma vie sans moustache",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

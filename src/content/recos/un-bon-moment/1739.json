@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Coup de foudre a Notting Hill' = reponse au jeu deviner-chanter (01:55). Reponse de jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1739",
+  "links": [],
+  "quote": "Coup de foudre à Notting Hill ! Entre un William et une Ana !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:13",
+  "title": "Coup de foudre à Notting Hill",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

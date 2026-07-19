@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Reco canonique du couple de doublons; ubm-2930 ('Ace Ventura') en est le doublon (discarded).",
+    "reason": "'Ace Ventura: Pet Detective': moment de jeu (la scene 'Oh sole mio/sodomia') juge 'beau', cite comme illustration du genie comique de Jim Carrey. Appreciation d'un moment precis -> citation. Titre canonique conserve.",
+    "verdict": "citation"
+  },
+  "creator": "Jim Carrey",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2929",
+  "kind": "citation",
+  "links": [],
+  "quote": "Le moment de jeu, là, quand il prend ses fesses comme ça et qu'il dit « Oh, sole mio ! Oh, sodomia ! »",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:26:08",
+  "title": "Ace Ventura: Pet Detective",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

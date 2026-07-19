@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Film 2010 (réal. Dominique Farrugia & Arnaud Lemort), Manu Payet joue Vincent. Titre correct.",
+    "reason": "Film de l'invité montré en épisode : « L'Amour, c'est mieux à deux, une comédie avec Manu Payet » + extrait diffusé (00:30:43). Showcase de la filmo de l'invité.",
+    "verdict": "guest-work"
+  },
+  "creator": "Manu Payet",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2386",
+  "kind": "reco",
+  "links": [],
+  "quote": "Cette semaine sort L'Amour, c'est mieux à deux. Une comédie avec Manu Payet.",
+  "recommendedBy": "Manu Payet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:30:43",
+  "title": "L'Amour, c'est mieux à deux",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

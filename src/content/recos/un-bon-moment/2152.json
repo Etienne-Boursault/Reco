@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Theorus = petit streamer/graphiste (aussi cites: Elian, Ben). Locuteur probablement un invite streamer (Maxime/Grim) mais non confirmable; attribution 'Navo' d'origine non confirmee -> videe.",
+    "reason": "Reco explicite d'un petit streamer: 'Moi je connais un petit streamer qui debute. Donnez de la force, c'est Theorus... il faut aller donner de la force.'",
+    "verdict": "validate"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2152",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je connais un petit streamer qui débute. Donnez de la force, c'est Théorus.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:21",
+  "title": "Théorus",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

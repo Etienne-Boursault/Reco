@@ -1,9 +1,33 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2639. externalIds TMDB (movie 1315772 'Minions') errone, a retirer cote humain.",
+    "reason": "Doublon de ubm-2639 : 'Minion' est une mecoute Acast de 'Mignonne' (meme moment 01:16:38, meme 'j'ai ri j'ai pleure'). Le film discute est Mignonnes (Maimouna Doucoure), pas Minions.",
+    "verdict": "discard"
+  },
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
   "externalIds": {
     "tmdb": "1315772",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -12,9 +36,10 @@
   "quote": "J'ai vu Minion [...] C'est trop bien Minion [...] J'ai ri, j'ai pleuré",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:16:38",
   "title": "Minions",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

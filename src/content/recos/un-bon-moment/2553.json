@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel: '-M- en Revalite, le concert au cinema' (sorti le 7 dec 2023, realise par Gabriel Goubet). Regroupe les mentions du live a offrir pour Noel. Invite = Matthieu Chedid (-M-), a completer dans les metadonnees.",
+    "reason": "Film-concert de l'invite (captation de Bercy), presente et plugue (00:27-00:28 : sortie cinema, mixage atmos). Oeuvre de l'invite = guest-work. Couvre aussi l'album/live 'Revalite' a offrir pour Noel (01:09).",
+    "verdict": "guest-work"
+  },
+  "creator": "Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2553",
+  "kind": "reco",
+  "links": [],
+  "quote": "On a filmé Bercy sur les trois soirs.",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:27:36",
+  "title": "Concert de Bercy",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

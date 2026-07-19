@@ -1,17 +1,54 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco a moitie degonflee par vanne ('il a besoin de force donc ecoutez pas', ironique, Squeezie est deja enorme) ; attribution non diarizee -> vide.",
+    "reason": "Recommandation d'une chaine YouTube reelle (Squeezie / Lucas Hauchard) dans le jeu explicite 'recommandez une chaine que vous kiffez' (01:13).",
+    "verdict": "validate"
+  },
   "creator": "Lucas Hauchard",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0639",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Squeezie"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube (Squeezie Gaming)",
+      "url": "https://www.youtube.com/@SqueezieGaming"
+    }
+  ],
   "quote": "Les gars, c'est Squeezie.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:13:37",
   "title": "Squeezie",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

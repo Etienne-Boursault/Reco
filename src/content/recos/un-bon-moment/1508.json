@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = « Can't Get You Out of My Head » (Kylie Minogue), clip realise par Michel Gondry. Host non identifiable.",
+    "reason": "Apres la devinette, un host recommande chaudement le clip : « l'excellent clip de Michel Gondry... t'as jamais vu ce clip ? incroyable » + eloge de la realisation.",
+    "verdict": "validate"
+  },
+  "creator": "Kylie Minogue",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1508",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est le clip de Michel Gondry\nmais sur lequel elle marche dans la rue\nI can't get you off of my head",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:31:29",
+  "title": "I Can't Get You Off of My Head",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ],
+  "year": 2001
+}

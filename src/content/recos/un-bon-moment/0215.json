@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Bloc series 01:07-01:08 attribue a Doria (repond a la question sur les inspirations d'Iris, ref. Constance). Transcript non diarise.",
+    "reason": "Doria (repond sur ses series d'inspiration pour ecrire Iris, cite sa co-autrice Constance) : 'les series que j'aime beaucoup c'est Curb... j'adore l'etat d'esprit' + 'je lui ai fait decouvrir Curb et elle adore'. Endossement enthousiaste. Attribution corrigee (etait Navo).",
+    "verdict": "validate"
+  },
   "creator": "Larry David",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
@@ -6,18 +18,58 @@
     "tmdb": "4546",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0215",
+  "kind": "reco",
   "links": [],
-  "quote": "moi, je lui ai fait découvrir Curb et elle adore",
-  "recommendedBy": "Navo",
+  "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",
+  "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:07:16",
+  "status": "validated",
+  "timestamp": "01:07:54",
   "title": "Curb Your Enthusiasm",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

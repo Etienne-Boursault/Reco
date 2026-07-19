@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve : ubm-0487.",
+    "reason": "Doublon de ubm-0487 (Chien de Navarre, meme passage 01:30:18).",
+    "verdict": "discard"
+  },
+  "creator": "Chien de Navarre",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1421",
+  "links": [],
+  "quote": "la dernière pièce du chien de navarre qui était super, avec Delphine Baril",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:18",
+  "title": "La dernière pièce du Chien de Navarre",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

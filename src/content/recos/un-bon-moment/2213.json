@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timecode reel de la citation ~00:42:51 (et non 00:51:51).",
+    "reason": "Comparaison en passant ('Vous avez vu Ghost quoi') pendant l'anecdote de la seance de spiritisme. Pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2213",
+  "links": [],
+  "quote": "Vous avez vu Ghost quoi",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:51",
+  "title": "Ghost",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

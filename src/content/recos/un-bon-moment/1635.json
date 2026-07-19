@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain (anecdote non diarizee, Kyan ou Navo).",
+    "reason": "Appreciation reelle 'J'adore ce film' (Serie noire, Alain Corneau) autour d'une anecdote sur Patrick Dewaere, mais pas de prescription directe.",
+    "verdict": "citation"
+  },
+  "creator": "Alain Corneau",
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1635",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'adore ce film.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:38:44",
+  "title": "Série noire",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

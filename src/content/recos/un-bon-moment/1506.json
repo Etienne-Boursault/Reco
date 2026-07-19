@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom reel = Albert Moukheiber (neuroscientifique/psychologue), transcript « Moucahibert ». Attribution probable Fabien mais non certaine.",
+    "reason": "Fabien cite les idees d'Albert Moukheiber sur l'economie de l'attention avec substance et affection (« quelqu'un que j'aime beaucoup »), mais sans prescription d'une oeuvre precise.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1506",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'ai eu la chance de... Je dis la chance parce que c'est quelqu'un que j'aime beaucoup aussi que tu m'as fait découvrir. C'est Albert Moucahibert.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:46:55",
+  "title": "Albert Moucahibert",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

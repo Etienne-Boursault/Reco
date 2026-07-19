@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Id gardé : ubm-3161. 00:27:42 : 'un jeu qui a été inventé dans la série Bloquée' — citée pour introduire un jeu.",
+    "reason": "Doublon de la série 'Bloqué' (gardé : ubm-3161) ET mention instrumentale expliquant l'origine du jeu 'Johnny Depp' (règles 12/13).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:27:42",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3166",
+  "links": [],
+  "quote": "Pour ceux qui ne connaissent pas Johnny Depp, c'est un jeu qui a été inventé dans la série Bloquée !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:27:42",
+  "title": "Bloquée",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

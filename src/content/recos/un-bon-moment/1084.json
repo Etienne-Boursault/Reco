@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2824.",
+    "reason": "Doublon de ubm-2824 (même œuvre 'L'Homme-dé', ~00:51, extraction Acast). Canonique = ubm-2824.",
+    "verdict": "discard"
+  },
   "creator": "Luke Rhinehart",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +32,10 @@
   "quote": "Toi, il faut que tu lis l'homme d.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:51:39",
   "title": "L'homme dés",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

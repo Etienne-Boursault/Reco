@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invité = Cédric Klapisch (compléter métadonnées).",
+    "reason": "Film 'Paris' (2008) de Klapisch présenté par lui (histoires de fratries; anecdote projection en Chine). Guest-work; recommendedBy réattribué de Kyan à Cédric (c'est l'invité qui présente son film).",
+    "verdict": "guest-work"
+  },
+  "creator": "Cédric Klapisch",
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2344",
+  "kind": "reco",
+  "links": [],
+  "quote": "le film Paris c'est beaucoup sur des histoires de frères et sœurs",
+  "recommendedBy": "Cédric",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:41:22",
+  "title": "Paris",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

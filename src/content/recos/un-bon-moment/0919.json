@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Livre « Votre cerveau vous joue des tours » d'Albert Moukheiber [01:06:29-01:06:32] — creator à corriger → « Albert Moukheiber ». Œuvre DISTINCTE du podcast ubm-0918 (podcast vs livre) — pas un doublon. Attribution host (Kyan/Navo) indéterminée.",
+    "reason": "Reco réelle du livre (distinct du podcast).",
+    "verdict": "validate"
+  },
   "creator": "Albert Mukébert",
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0919",
+  "kind": "reco",
   "links": [],
   "quote": "Il a fait un bouquin qui s'appelle votre cerveau vous joue des tours",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:06:31",
   "title": "Votre cerveau vous joue des tours",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

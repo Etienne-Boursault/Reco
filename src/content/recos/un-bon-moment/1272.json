@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme mention anecdotique du film vu dans le cine prive; ubm-2276 (Step Brothers) est aussi discarde car mention anecdotique.",
+    "reason": "'Seb Brent' = transcription erronee de 'Step Brothers' (via 'Seb Browser' a 01:13:33, film avec Will Ferrell et John C. Reilly). Doublon de ubm-2276.",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1272",
   "links": [],
   "quote": "Comment Seb Brent ?",
-  "recommendedBy": "Intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:14:40",
   "title": "Seb Brent",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,20 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator 'Greg' est un artefact — doc Netflix 'Quincy' (2018) sur Quincy Jones, réal. Rashida Jones & Alan Hicks.",
+    "reason": "Cyprien (amateur de docus sur réalisateurs/artistes) recommande le documentaire Netflix 'Quincy' (sur Quincy Jones) : 'je l'avais adoré... passionnant'.",
+    "verdict": "validate"
+  },
   "creator": "Greg",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:05:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0405",
+  "kind": "reco",
   "links": [],
-  "quote": "il y en a un sur Netflix je l'avais adoré sur Quincy Jones qui est genre passionnant",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Il y en a un sur Netflix, je l'avais adoré sur, bien sûr, Quincy Jones, pardon.",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:57",
+  "status": "validated",
+  "timestamp": "01:05:01",
   "title": "Quincy",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ],
   "year": 2018
 }

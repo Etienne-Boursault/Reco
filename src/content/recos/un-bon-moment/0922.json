@@ -1,21 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel: 'Dix pour cent' (affiché '10%'). Klapisch réalisateur/co-créateur. Compléter métadonnées invité (Cédric Klapisch).",
+    "reason": "'Dix pour cent' (gros projet France 2) présenté par Klapisch (motivation: révéler une nouvelle génération d'acteurs). Auto-promo -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
     "tmdb": "31109",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:35:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:35:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0922",
+  "kind": "reco",
   "links": [],
   "quote": "je savais que c'était un gros projet pour la télé pour le service public pour France 2",
-  "recommendedBy": "invité",
+  "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:35:21",
+  "status": "validated",
+  "timestamp": "00:35:19",
   "title": "10%",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

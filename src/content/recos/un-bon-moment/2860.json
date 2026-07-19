@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Repond a « Et toi, Vincent, tu as quelqu'un ? » -> probablement Vincent Dedienne, mais contenu atypique et transcript sans labels : recommendedBy laisse vide, a confirmer. guestWork car oeuvre d'une personne du plateau. YT 01:15:11.",
+    "reason": "Auto-promo : le locuteur cree cette chasse au tresor (« je suis en train d'en faire une qui s'appelle le Tresor de l'Ile au Crane ») editee par les Editions du Tresor, et la recommande (« c'est genial a faire »). Oeuvre propre du locuteur.",
+    "verdict": "guest-work"
+  },
+  "creator": "Éditions du Trésor",
+  "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2860",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et je suis en train d'en faire une qui s'appelle le Trésor de l'Île au Crâne.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:13",
+  "title": "Le Trésor de l'Île au Crâne",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

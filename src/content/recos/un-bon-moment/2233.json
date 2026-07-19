@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Adi Balcalide' = mistranscription de 'Adib Alkhalidey' (humoriste montrealais, present sur Netflix). Non verifiable via WebSearch (budget epuise) -> title_suspect, orthographe a confirmer. Attribution Kyan: 'quand j'etais connu a Montreal, je dormais chez Adib'.",
+    "reason": "Reco explicite 'un humoriste que je vous invite a decouvrir sur Netflix... marquez la' a 00:32:38. Humoriste reel.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2233",
+  "kind": "reco",
+  "links": [],
+  "quote": "Il y a un humoriste que je vous invite à découvrir sur Netflix, il est chambé, Adi Balcalide.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:38",
+  "title": "Adi Balcalide",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

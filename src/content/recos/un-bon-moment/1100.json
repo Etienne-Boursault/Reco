@@ -1,17 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Livre de Philippe Delerm recommande explicitement ('lisez-le... avant de vous coucher une page, lisez-la a haute voix, c'est sublime'). Titre officiel complet correct. Pere de VD, non-invite -> validate. Canonique (ubm-3010 = doublon).",
+    "verdict": "validate"
+  },
   "creator": "Philippe Delerm",
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1100",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est un livre hyper agréable à lire, qu'on peut lire d'ailleurs, à n'importe quel moment, on peut prendre une page",
+  "quote": "la première corgée de bière, il parle de la sensation de la première corgée de bière et c'est un peu le gars qui arrive à mettre des mots sur les petits riens, les petites sensations, les petits moments.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:37:44",
+  "status": "validated",
+  "timestamp": "00:37:50",
   "title": "La Première Gorgée de bière et autres plaisirs minuscules",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

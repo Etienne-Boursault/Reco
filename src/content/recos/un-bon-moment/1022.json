@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2267",
+    "reason": "Doublon de ubm-2267 (chaine Vu, ts 01:21:31). Titre 'La chaine Vue' variante.",
+    "verdict": "discard"
+  },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "moi j'ai une recommandation, c'est la chaîne Vue, c'est une émission de télé, il diffuse tous les jours, c'est en fait les gars du zapping",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:31",
   "title": "La chaîne Vue",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant / blague : 'Il regarde ca [Tickled] si tu joues a The Last of Us 2 la nuit' — name-drop du jeu dans une blague sur le glauque, pas une recommandation du jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2631",
+  "links": [],
+  "quote": "Il regarde ça si tu joues à The Last of Us 2 la nuit.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:40:26",
+  "title": "The Last of Us Part II",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

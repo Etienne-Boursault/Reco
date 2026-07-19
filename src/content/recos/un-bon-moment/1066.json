@@ -1,4 +1,15 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Recommandation explicite : 'un film sur Netflix que j'ai envie de recommander... j'ai kiffe... le film est fou... un petit chef-d'oeuvre'. Titre corrige (ASR 'Uncut Jim's' -> 'Uncut Gems', freres Safdie / Adam Sandler). Locuteur non identifiable -> attribution videe.",
+    "verdict": "validate"
+  },
   "creator": "Safdie Brothers",
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "externalIds": {
@@ -6,16 +17,48 @@
     "tmdb": "473033",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1066",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut James. C'est Uncut James avec Adam Sandler et franchement j'ai kiffé.",
+  "quote": "Moi, c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut Jim's.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:28",
+  "status": "validated",
+  "timestamp": "01:15:18",
   "title": "Uncut Gems",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -30,5 +73,6 @@
       "label": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Uncut%20Gems"
     }
-  ]
+  ],
+  "year": 2019
 }

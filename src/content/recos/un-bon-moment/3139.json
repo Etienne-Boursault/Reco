@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Greg Romano » est un segment-jeu recurrent du podcast, pas un prescripteur reel ; recommendedBy draft errone.",
+    "reason": "Enonce/reponse du jeu musical « Greg Romano » (deviner une emission de tele-realite : L'Ile de la Tentation, 2003, TF1) : mention instrumentale de jeu (regles 1, 12).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3139",
+  "links": [],
+  "quote": "l'île de la tentation en 2003 sur la chaîne tf1",
+  "recommendedBy": "Greg Romano",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:39",
+  "title": "L'Île de la Tentation",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2003
+}

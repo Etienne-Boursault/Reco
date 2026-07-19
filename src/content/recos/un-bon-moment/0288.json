@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Pluribus: Navo 'je kiffe' mais retire explicitement la reco ('je recommande jamais un truc pas fini') et donne d'autres recos. Discute+aime mais prescription retenue => citation.",
+    "verdict": "citation"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:06:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0288",
+  "kind": "citation",
   "links": [],
   "quote": "Pluribus. Moi je kiffe.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "02:06:14",
   "title": "Pluribus",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

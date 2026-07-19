@@ -1,17 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'le roman de la vie de Balzac par Stefan Zweig, c'est prodigieux' + segment reco : 'quand tu lis l'histoire de Balzac par Zweig, t'as vraiment envie de lire Balzac' = conseil culturel. PRIMAIRE (fusionner ubm-0249, ubm-0971).",
+    "verdict": "validate"
+  },
   "creator": "Stéphane Swagg",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0251",
+  "kind": "reco",
   "links": [],
-  "quote": "Le roman de la vie de Balzac par Stéphane Swagg, c'est prodigieux.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "le roman de la vie de Balzac par Stéphane Zweig c'est prodigieux",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:09",
+  "status": "validated",
+  "timestamp": "01:13:08",
   "title": "Le roman de la vie de Balzac",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

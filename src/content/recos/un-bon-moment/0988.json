@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Comment j'ai retrouve Xavier Dupont de Ligonnes » cite seulement pour identifier l'auteur (« c'est celui qui a ecrit aussi... »), pas recommande.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:13:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +27,10 @@
   "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:13:22",
   "title": "Comment j'ai retrouvé Xavier Dupont de Ligonnès",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

@@ -1,21 +1,66 @@
 {
+  "aliases": [
+    "Babylon",
+    "Meilleurs amis, mauvais voisins"
+  ],
   "creator": "Damien Chazelle",
   "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "externalIds": {
     "tmdb": "603433",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0567",
+  "kind": "reco",
   "links": [],
-  "quote": "j'ai regardé Babylone j'ai adoré",
-  "recommendedBy": "Léna",
+  "quote": "j'ai regardé Babylone, j'ai adoré là, récemment, j'ai adoré les séries.",
+  "recommendedBy": "Elena Nagapetyan",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:18:20",
+  "status": "validated",
+  "timestamp": "01:19:10",
   "title": "Babylone",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

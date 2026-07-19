@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.55,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Auto-promo du spectacle filme de Kyan vendu sur la boutique ; 'Mon Spectacle' = placeholder, identifier le vrai titre avant publication.",
+    "reason": "Pre-generique : Kyan fait la promo de son propre spectacle filme vendu sur 'la bonne boutique' ('l'emission est sponsorisee par Mon Spectacle... vous pouvez louer pour 4 balles'). Auto-promo d'un host (guest-work) MAIS le titre 'Mon Spectacle' est un placeholder generique, pas le vrai titre.",
+    "verdict": "unsure"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2011",
+  "links": [],
+  "quote": "l'émission, elle, elle est sponsorisée par Mon Spectacle qui est dispo sur une bonne boutique",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:00:27",
+  "title": "Mon Spectacle",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2848. Titre «Les dents qui joutent» = variante-gag.",
+    "reason": "Doublon du podcast «Les gens qui doutent».",
+    "verdict": "discard"
+  },
+  "creator": "Fanny Ruey",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:16:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2844",
+  "links": [],
+  "quote": "Les dents qui joutent ! J'aime les dents qui joutent.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:42",
+  "title": "Les dents qui joutent",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

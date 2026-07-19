@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp draft 00:02:38 errone (blindtest ~01:09:22). 'Descailleres' = mauvaise transcription de 'DKR' (Booba). Reponse de jeu -> discard de toute facon.",
+    "reason": "Reponse au Multi-Blind Test (regle 1)",
+    "verdict": "discard"
+  },
   "creator": "Booba",
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +32,10 @@
   "links": [],
   "quote": "C'est quoi ? Quelle chanson de Booba ? - Des caillères.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:02:38",
   "title": "Descaillères",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

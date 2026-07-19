@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Passage réel à 01:06:55 (reco : 01:05:55, dans la fenêtre).",
+    "reason": "Pete Holmes cité pour introduire et raconter une de ses blagues sur la parentalité (« c'est une très bonne blague de Pete Holmes, il dit... ») — mention instrumentale, pas de prescription de son œuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2095",
+  "links": [],
+  "quote": "C'est une très bonne blague de Pete Holmes.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:55",
+  "title": "Pete Holmes",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

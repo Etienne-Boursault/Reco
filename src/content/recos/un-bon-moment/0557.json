@@ -6,18 +6,58 @@
     "tmdb": "76329",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0557",
+  "kind": "reco",
   "links": [],
-  "quote": "La bonne année de Claude Lelouch. Pas un des plus connus. Chez d'œuvre totale.",
-  "recommendedBy": "Navo",
+  "quote": "La Bonne Année, par exemple. Film de Claude Lelouch. Pas un des plus connus. Chef d'œuvre totale.",
+  "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:57:01",
+  "status": "validated",
+  "timestamp": "00:57:00",
   "title": "La bonne année",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -72,5 +112,6 @@
       "label": "YouTube",
       "url": "https://www.youtube.com/results?search_query=La%20bonne%20ann%C3%A9e"
     }
-  ]
+  ],
+  "year": 1973
 }

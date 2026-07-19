@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Tudum » (son-logo Netflix) dans la blague sur les faux sitcoms romains (00:33:40, « Netflix c'etait deja Tudum a l'epoque »). Pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:33:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2986",
+  "links": [],
+  "quote": "Netflix c'était déjà Tudum à l'époque",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:33:40",
+  "title": "Tudum",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

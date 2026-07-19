@@ -1,21 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle: real. Florent Koziel, avec Faustine Koziel & Zoe Marchal (orthographe createurs a corriger: 'Koziel'/'Marchal'). Attribution: host recurrent ('je le dis tout le temps') = probablement Navo, non confirme.",
+    "reason": "Reco de la mini-serie YouTube 'Close Up' ('c'est vraiment juste... j'adore, moi je la trouve super').",
+    "verdict": "validate"
+  },
+  "creator": "Faustine Coziel, Florent Coziel",
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
   "externalIds": {
     "tmdb": "63498",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:34:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:34:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1045",
+  "kind": "reco",
   "links": [],
-  "quote": "Mais j'adore Zoé Marshall et Faustine Cosiel et Florian Cosiel pour une mini-série qu'ils ont réalisé qui s'appelle \"Close Up\".",
+  "quote": "Close-up, vous t'avez Close-up, c'est vraiment juste enfin j'adore",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:34:47",
+  "status": "validated",
+  "timestamp": "01:34:53",
   "title": "Close Up",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "video"
   ]
 }

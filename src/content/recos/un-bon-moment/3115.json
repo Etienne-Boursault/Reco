@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Camelot' = très probablement Kaamelott (série d'Alexandre Astier) mal transcrit : mention du 'coup de clairon' (générique) et écoute par cœur depuis des années. Attribution Navo (Kyan dit juste avant avoir besoin du silence absolu). Titre à corriger en Kaamelott + creator Alexandre Astier (WebSearch indisponible).",
+    "reason": "Œuvre évoquée avec substance personnelle (écoute récurrente pour s'endormir, 'ça fait des années, je connais par cœur') mais sans prescription explicite à l'audience.",
+    "verdict": "citation"
+  },
+  "creator": "Alexandre Astier",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "24:17",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3115",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.kaamelott.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=334.html"
+    }
+  ],
+  "quote": "Moi, j'écoute Camelot tout le temps pour m'endormir.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "24:17",
+  "title": "Kaamelott",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-0640 mais oeuvre DISTINCTE (serie vs chaine) -> pas un doublon ; attribution non diarizee -> vide.",
+    "reason": "Serie reelle Canal+ des Parasites (L'Effondrement) recommandee dans le jeu des recos : 'ils ont fait une serie sur Canal Plus, c'est du cinema, tres bien fait' (01:13-01:14).",
+    "verdict": "validate"
+  },
+  "creator": "Les Parasites",
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3176",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (playlist Les Parasites)",
+      "url": "https://www.youtube.com/playlist?list=PLo4Qwa4Nhi1m1v4aernDm1agaSqWuoBDS"
+    }
+  ],
+  "quote": "Ils ont d'ailleurs fait une série sur Canal Plus, qui s'appelle L'Effondrement ! Il y en a quelques-uns là qui ont été mis en ligne sur Youtube !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:55",
+  "title": "L'Effondrement",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

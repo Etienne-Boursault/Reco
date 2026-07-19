@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop pour identifier Aziz Ansari ('Master of None, c'est qui? Aziz Ansari'), dans une discussion sur sa technique de spectacle (faire lever la main). Mention instrumentale, pas de reco de la serie.",
+    "verdict": "discard"
+  },
+  "creator": "Aziz Ansari",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:30:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2381",
+  "links": [],
+  "quote": "Master of None, c'est qui ?",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:30:10",
+  "title": "Master of None",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

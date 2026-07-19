@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0265.",
+    "reason": "Doublon de ubm-0265 (meme passage 00:14:40 sur le renouveau de Franck Dubosc). Titre mistranscrit 'An ours dans le Jura', createur 'Franck Dubois'.",
+    "verdict": "discard"
+  },
+  "creator": "Franck Dubois",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:14:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1768",
+  "links": [],
+  "quote": "Il prend tout le monde à contre-pied sur tout.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:14:40",
+  "title": "An ours dans le Jura",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Exemple/anecdote instrumentale.",
+    "reason": "Avatar cite comme exemple d'exageration marketing hollywoodienne sur l'apnee (que Pierre debunke), pas de reco.",
+    "verdict": "discard"
+  },
   "creator": "James Cameron",
   "episodeGuid": "6970a1759448a95f223d530c",
   "externalIds": {
@@ -6,17 +15,48 @@
     "tmdb": "19995",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0365",
   "links": [],
-  "quote": "J'avais lu que pour Avatar.",
+  "quote": "J'avais lu que pour Avatar c'est Kate Winslet. Qui est dans le deuxième Avatar.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:45:59",
+  "status": "discarded",
+  "timestamp": "00:46:02",
   "title": "Avatar",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

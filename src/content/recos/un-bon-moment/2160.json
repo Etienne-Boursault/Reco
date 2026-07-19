@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Emission reelle = 'On ne demande qu'a en rire' (France 2, 2010) ; le 'te' vient de la transcription.",
+    "reason": "Mention instrumentale : Waly evoque 'mes premiers sketchs sur On ne te demande qu'a en rire, je suis en terroriste' [00:24:59] — anecdote de carriere ('par exemple'), aucune prescription ni avis sur l'emission.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2160",
+  "links": [],
+  "quote": "Par exemple, mes premiers sketchs sur On ne te demande qu'à en rire, je suis en terroriste, en dictateur.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:25:02",
+  "title": "On ne te demande qu'à en rire",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ],
+  "year": 2010
+}

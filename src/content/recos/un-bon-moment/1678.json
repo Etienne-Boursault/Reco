@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Faux positif : titre inexistant dans le transcript.",
+    "reason": "Absent du transcript (hallucination). À 00:44 on parle de ping-pong (Forrest Gump, Marty Suprême) ; aucune mention de « Challengers » ni de Guadagnino (grep confirmé).",
+    "verdict": "discard"
+  },
+  "creator": "Luca Guadagnino",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:44:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1678",
+  "links": [],
+  "quote": "Et Timothée Chalamet il sort un film sur un prongiste.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:44:52",
+  "title": "Challengers",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

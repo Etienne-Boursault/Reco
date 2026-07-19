@@ -1,19 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non diarisé (invité ou host — contenu e-sport/YouTube pourrait être Navo/Kyan).",
+    "reason": "Chaîne YouTube réelle (WinterStarcraft, caster SC2 anglais) recommandée dans le tour de reco : « une chaîne que j'aime beaucoup... c'est un jeu que j'aime beaucoup ».",
+    "verdict": "validate"
+  },
   "creator": "Inconnu",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0693",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a une chaîne que j'aime beaucoup sur YouTube qui s'appelle Winter Starcraft. Voilà, c'est des matchs de Starcraft. Le gars est plutôt marrant, c'est un anglais.",
-  "recommendedBy": "Invité",
+  "quote": "il y a une chaîne que j'aime beaucoup sur Youtube qui s'appelle Winter Starcraft",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:35:31",
+  "status": "validated",
+  "timestamp": "01:35:32",
   "title": "Winter Starcraft",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

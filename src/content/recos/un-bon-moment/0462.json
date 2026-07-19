@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Drive : reponse du jeu 'deviner chanter' de Greg Romano (enigme chantee, thriller 2011). Support de jeu -> discard.",
+    "verdict": "discard"
+  },
   "creator": "Nicolas Winding Refn",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
@@ -6,17 +14,47 @@
     "tmdb": "1018",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0462",
   "links": [],
-  "quote": "Drive !",
-  "recommendedBy": "Invité",
+  "quote": "je suis un film super connu le morceau est exceptionnel thriller américain de 2011 je suis adapté d'un roman qui porte le même nom que le film au Québec le titre du film c'est sang froid avec Ryan Gosling il conduit pour des brigands",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:36",
+  "status": "discarded",
+  "timestamp": "00:55:50",
   "title": "Drive",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -116,5 +154,6 @@
       "label": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Drive"
     }
-  ]
+  ],
+  "year": 2011
 }

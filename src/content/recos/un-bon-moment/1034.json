@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme oeuvre que ubm-2319.",
+    "reason": "Doublon de ubm-2319 : McFly et Carlito, meme segment de reco finale YouTube (~01:20:35). On garde ubm-2319 (formulation prescriptive complete).",
+    "verdict": "discard"
+  },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:33",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "j'ai découvert à quelques mois, McFly Carlito, je le trouve trop débarbe.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:20:33",
   "title": "McFly & Carlito",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

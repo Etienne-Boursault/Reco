@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1497 (Bien sûr que les poissons ont froid, Fanny Ruwet) — titre 'Les Poissons Froids' erroné, créateur 'Fanny Ruez' erroné.",
+    "verdict": "discard"
+  },
   "creator": "Fanny Ruez",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Bien sûr que les poissons froid de Fanny Ruez, un roman",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:02",
   "title": "Les Poissons Froids",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'les 25 minutes de Merwan Benazard qui sont excellentes aussi' (01:55:16), specials YouTube. Reco explicite. Locuteur ambigu.",
+    "verdict": "validate"
+  },
+  "creator": "Merwan Benazard",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2072",
+  "kind": "reco",
+  "links": [],
+  "quote": "et il y a les 25 minutes là de Merwan Benazard qui sont excellentes aussi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:55:16",
+  "title": "Merwan Benazard",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

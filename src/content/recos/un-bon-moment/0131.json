@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chaine/prod YouTube 'Sympa Cool' (l.2011-2018, 'les gens qui font Coco Voight, Marius'). Locuteur ('j'apparais dans un') non identifiable au transcript -> vide.",
+    "reason": "Reco explicite d'une chaine YouTube: 'le reseau sympa cool... c'est hyper bien... accroche-toi trois episodes... quand tu avances ca devient tres marrant.'",
+    "verdict": "validate"
+  },
   "creator": "inconnu",
   "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0131",
+  "kind": "reco",
   "links": [],
-  "quote": "Le réseau, c'est super.",
-  "recommendedBy": "inconnu",
+  "quote": "C'est super, ça démarre un peu.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:04",
+  "status": "validated",
+  "timestamp": "01:12:01",
   "title": "Le réseau sympa cool",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

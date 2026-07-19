@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom officiel « Morgane Cadignan » (spectacle « La nuit je mens ») — reco indiquait « Morgan Cadignan ». Locutrice/locuteur non identifiable avec certitude.",
+    "reason": "Mention positive (« super spectacle ») de l'humoriste, citée comme exemple (elle a un bit sur le fait de demander des critiques au public) → citation plutôt que reco prescriptive.",
+    "verdict": "citation"
+  },
+  "creator": "Morgan Cadignan",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2110",
+  "kind": "citation",
+  "links": [],
+  "quote": "Morgan Cadignan, qui est la rente, l'annuigement, super spectacle.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:36:26",
+  "title": "Morgan Cadignan",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

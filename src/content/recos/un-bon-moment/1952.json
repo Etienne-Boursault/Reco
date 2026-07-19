@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1495 (Blur × Françoise Hardy) — même moment 01:25:55.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:25:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1952",
+  "links": [],
+  "quote": "Mais la variété, sache qu'il y a un son incroyable de Blur avec Françoise Hardy.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:25:55",
+  "title": "Blur et Françoise Hardy",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

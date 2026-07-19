@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-3008 ; sujet de chanson, pas une oeuvre recommandee.",
+    "reason": "Doublon de ubm-3008 : Agnes Varda ('Aynes Varda') comme sujet de la chanson Vie Varda, pas une reco. Mention instrumentale.",
+    "verdict": "discard"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "la chanson parle d'Aynés Varda mais au-delà d'Aynés Varda ça parle du fait de tracer sa vie",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:29:32",
   "title": "Aynés Varda",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

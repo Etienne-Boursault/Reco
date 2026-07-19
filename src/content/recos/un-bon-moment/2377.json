@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "TITRE: 'Ayana Kamoura' = Aya Nakamura (ref. son hit 'Comportement', 2017). Anecdote ou Kyan pretend l'avoir poussee a rapper + 'je l'adore'. Verdict vise: citation (limite discard). recommendedBy = Kyan Khojandi.",
+    "reason": "TITRE A CORRIGER + verdict limite (anecdote people avec affection). Reste en draft pour l'humain.",
+    "verdict": "unsure"
+  },
+  "creator": "Ayana Kamoura",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2377",
+  "links": [],
+  "quote": "Je l'adore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:36:02",
+  "title": "Ayana Kamoura",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

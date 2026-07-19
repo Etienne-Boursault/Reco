@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Discussion Stromae ~00:04:54-00:05:08.",
+    "reason": "Album Racine carree (Stromae) discute dans la conversation sur le developpement des concepts d'artistes (~00:04:54). Substance mais pas de prescription. Attribution fluide (3 voix).",
+    "verdict": "citation"
+  },
+  "creator": "Stromae",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:35:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2303",
+  "kind": "citation",
+  "links": [],
+  "quote": "quand il a fait Racine Carré son album qu'a ton car là",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "10:35:00",
+  "title": "Racine Carrée",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

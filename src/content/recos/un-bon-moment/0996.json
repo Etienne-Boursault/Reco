@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« Nouveau Groove » = le morceau cité comme porte d'entrée de l'artiste Inno Casablanca. Même reco que ubm-1460 (facette morceau) → fusionner.",
+    "verdict": "discard"
+  },
   "creator": "Inocasablanca",
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3137818771"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -12,9 +31,10 @@
   "quote": "si on parle dans la musique inocasablanca super artiste c'est un mec qui arrive tout est résumé par un des premiers sons de son ancien album c'est le premier son qui s'appelle nouveau groove",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:38:19",
   "title": "Nouveau Groove",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

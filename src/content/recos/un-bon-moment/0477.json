@@ -1,10 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Discussion des adaptations jeu video->cinema ; avis 'catastrophique', pas une reco.",
+    "verdict": "discard"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/460465-mortal-kombat/watch?locale=FR",
     "tmdb": "460465",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "links": [],
   "quote": "Mortal Kombat est dingue.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:00",
   "title": "Mortal Kombat",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

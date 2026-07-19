@@ -1,23 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel « Strip-tease ». Attribution corrigée (stockée Navo → Clément, qui égrène ses références doc et cite des épisodes précis).",
+    "reason": "Prescription explicite au public : « Bouffez ça sur YouTube, achetez, achetez. Soutenez-les parce que c'est formidable ce qu'ils font. » (série documentaire Strip-tease).",
+    "verdict": "validate"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR",
     "tmdb": "70708",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1101",
+  "kind": "reco",
   "links": [],
-  "quote": "rêve grosse traites aussi c'est vrai parce que non mais c'est vrai mais t'as des plans c'est striptease quand même ouais c'est vrai",
-  "recommendedBy": "Navo",
+  "quote": "Striptease, ouais, parce que non, mais c'est vrai. Non, mais tu as des plans assez striptease quand même.",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:19:51",
+  "status": "validated",
+  "timestamp": "00:19:56",
   "title": "Striptease",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "autre"
   ],
   "watchProviders": [
     {

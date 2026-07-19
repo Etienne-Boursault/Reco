@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Hugo, Les Travailleurs de la mer... bouquin magnifique, je me suis demande si on allait pas faire ce film' : oeuvre louee, envisagee en adaptation, mais 'bouquin magnifique' sans prescription directe. NB metadonnee 'by' etait Navo = FAUX, c'est Dupontel.",
+    "verdict": "citation"
+  },
+  "creator": "Victor Hugo",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2017",
+  "kind": "citation",
+  "links": [],
+  "quote": "les travers de la mer c'est un film souvent je me suis demandé est-ce qu'on allait pas faire ce film bouquin magnifique",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:39",
+  "title": "Les Travailleurs de la mer",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

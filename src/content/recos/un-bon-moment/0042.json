@@ -1,22 +1,68 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe canonique = « L'Horizon des événements » (H majuscule). Champ year=2023 ERRONÉ : album sorti le 26/11/2021 (à corriger à la main, hors périmètre du script).",
+    "reason": "Album « L'Horizon des événements » de Kyan (host), objet central de cet épisode promo. Œuvre du host présentée par lui = host-work / guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/262200072"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:32:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:32:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0042",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est mon premier album.",
+  "quote": "Donc ça s'appelle l'horizon des événements.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:01:05",
+  "status": "validated",
+  "timestamp": "00:12:27",
   "title": "L'horizon des événements",
+  "transcriptSource": "youtube",
   "types": [
-    "album"
+    "album",
+    "autre"
   ],
   "year": 2023
 }

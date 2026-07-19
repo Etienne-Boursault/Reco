@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Robert Schimmel cite comme AUTEUR d'une vanne du jeu 'Devinez la chute'. Indice/reponse de jeu-devinette -> mention instrumentale (discard meme si l'auteur est reel).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2569",
+  "links": [],
+  "quote": "Robert Schimmel qui dit j'ai demandé à ma femme d'essayer le sexe anal",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:13:42",
+  "title": "Robert Schimmel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

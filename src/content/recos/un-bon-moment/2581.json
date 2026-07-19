@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Vanne de la minute 'Soixante' de Paul: 'j'ai achete le maillot d'Olivier Giroud 100 euros pour zero but'. Giroud = sujet de la blague, pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2581",
+  "links": [],
+  "quote": "j'ai acheté le maillot de Olivier Giroud 100 euros pour zéro but",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:24",
+  "title": "Olivier Giroud",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

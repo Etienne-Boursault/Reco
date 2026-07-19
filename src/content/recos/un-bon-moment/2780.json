@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Bleu Klein » = les monochromes International Klein Blue (IKB) d'Yves Klein, pas un tableau unique titré. Locuteur indéterminé. Canonique ; ubm-2768 (« Blue Klein ») est un doublon.",
+    "reason": "Monochrome bleu d'Yves Klein cité comme exemple de l'inexplicable en art, avec une vraie réaction personnelle décrite (« un coup de cœur énorme », « je reste 15 minutes devant ») mais sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Yves Klein",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2780",
+  "kind": "citation",
+  "links": [],
+  "quote": "Moi, j'arrive pas à expliquer pourquoi, par exemple, quand je me retrouve devant le tableau Bleu Klein d'Yves Klein, pourquoi je reste 15 minutes devant.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:44",
+  "title": "Bleu Klein",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

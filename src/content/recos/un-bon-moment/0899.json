@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conserve = ubm-2860 (guest-work). Ici doublon Acast a la transcription degradee.",
+    "reason": "Doublon Acast : « Le tresor de Lillocrane » = mauvaise transcription de « Le Tresor de l'Ile au Crane ». Meme oeuvre que ubm-2860 (titre YT propre).",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0899",
   "links": [],
   "quote": "Ils font des chasses au trésor. Le trésor de Lillocrane.",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:15:14",
   "title": "Le trésor de Lillocrane",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

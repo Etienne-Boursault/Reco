@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : 'Pacalot', vlog d'Avignon de Marine Baousson, sert de decor a l'anecdote du 'meilleur conseil'. Aucune prescription ; titre flou. Le 'sirop Pacalot' est une mention en passant.",
+    "verdict": "discard"
+  },
+  "creator": "Marine Bausson",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1853",
+  "links": [],
+  "quote": "C'était son émission où elle allait à Avignon",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:00:00",
+  "title": "Pacalot",
+  "transcriptSource": "youtube",
+  "types": [
+    "video",
+    "autre"
+  ]
+}

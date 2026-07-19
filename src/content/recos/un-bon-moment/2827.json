@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Chanson reelle de Pierre Perret mais mention blindtest/gag, pas une reco.",
+    "reason": "Identification d'un morceau dans le multi-blindtest a 00:35:41 ('Le zizi de Pierre Perret'), doublee d'un gag ('j'ai pris une photo du zizi de Pierre Perret'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Pierre Perret",
+  "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:02:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2827",
+  "links": [],
+  "quote": "Le zizi de Pierre Perret.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:35:41",
+  "title": "Le Zizi",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

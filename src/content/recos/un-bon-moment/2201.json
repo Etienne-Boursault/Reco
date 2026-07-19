@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0106 (canonique, avec metadonnees TMDB/watchProviders). Createur correct ici (« Justine Triet ») mais moins enrichi.",
+    "reason": "Doublon de ubm-0106 (canonique, plus enrichi).",
+    "verdict": "discard"
+  },
+  "creator": "Justine Triet",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2201",
+  "links": [],
+  "quote": "Anatomie d'une chute de Justine Triet. Magnifique. Fous dingue. Faut vraiment aller voir ce film.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:44",
+  "title": "L'Anatomie d'une chute",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

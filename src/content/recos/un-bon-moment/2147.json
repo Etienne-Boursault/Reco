@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon YouTube de ubm-0123. Comparaison instrumentale (00:07:00, transcript confirme). recommendedBy 'Maxime Biaggi' non pertinent car mention non prescriptive.",
+    "reason": "Meme passage que ubm-0123: 'Et comme dans Rocky 3, il faut montrer que...' -> analogie sur leur trajectoire, pas une recommandation.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:07:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2147",
+  "links": [],
+  "quote": "Et comme dans Rocky 3, il faut montrer que...",
+  "recommendedBy": "Maxime Biaggi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:07:01",
+  "title": "Rocky 3",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

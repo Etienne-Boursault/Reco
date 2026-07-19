@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Zodo' -> 'The Do'. Reco groupee avec l'album ubm-1662.",
+    "reason": "Doublon de ubm-1662 : 'Zodo' (artiste) = mistranscription de 'The Do', meme reco que l'album Shake Shook Shaken (la prescription porte sur l'album). L'album est le canonique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1983",
+  "links": [],
+  "quote": "C'est un groupe de musique, c'est le premier groupe de musique qui m'a fait shooter en fait.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:04:48",
+  "title": "Zodo",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

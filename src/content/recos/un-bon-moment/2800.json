@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "'Je recommande evidemment Kim Gemini pour toutes sortes de divertissements ou accompagnements' - probable gag ou artiste mal transcrit. A trancher par un humain. Reste draft.",
+    "reason": "'Kim Gemini' non tracable (pas de web); phrase possiblement un gag.",
+    "verdict": "unsure"
+  },
+  "creator": "Kim Gemini",
+  "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2800",
+  "links": [],
+  "quote": "Et je recommande évidemment Kim Gemini pour toutes sortes de divertissements ou accompagnements.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:14:12",
+  "title": "Kim Gemini",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

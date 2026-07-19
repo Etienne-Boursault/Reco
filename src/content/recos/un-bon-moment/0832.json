@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Ecriture 2000 » (00:27:47) est le collectif d'ecriture des invites, pas une oeuvre consommable; mention instrumentale sur leur organisation de travail.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "on a constitué un collectif d'écriture, qui s'appelle Écriture 2000 d'ailleurs.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:27:47",
   "title": "Écriture 2000",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

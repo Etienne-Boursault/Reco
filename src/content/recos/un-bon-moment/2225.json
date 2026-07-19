@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "timestamp_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Podcast confirme = 'A bientot de te revoir' de Sophie-Marie Larrouy (creator a corriger). Recommandeur = un host (Kyan ou Navo, 'que j'ai eu la chance de faire'), non diarizable. Timecode reel ~01:16:18 (et non 01:15:15).",
+    "reason": "Recommandation d'un host dans le segment 'recommander des femmes' : 'Sophie Marie Larouille... A bientot de te revoir... Genial. Le podcast A bientot de te revoir.' Prescription.",
+    "verdict": "validate"
+  },
+  "creator": "Sophie Marie Larouille",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2225",
+  "kind": "reco",
+  "links": [],
+  "quote": "Sophie Marie Larouille. Ah bah oui Sophie Marie Larouille. A bientôt de te revoir. Le podcast A bientôt de te revoir.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:15",
+  "title": "À bientôt de te revoir",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

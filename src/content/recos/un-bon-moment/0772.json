@@ -1,19 +1,54 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe à corriger : « Corey Wong » → « Cory Wong » (guitariste de Vulfpeck). Reco au niveau artiste. ubm-2781 (« Wolfpack ») est le name-drop de Vulfpeck qui accompagne cette reco → discard.",
+    "reason": "Clément Viktorovitch recommande explicitement Cory Wong (« j'écoute beaucoup », « assez ahurissant », « il redonne du cool à la guitare funk », « je trouve ça super »).",
+    "verdict": "validate"
+  },
   "creator": "Corey Wong",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0772",
+  "kind": "reco",
   "links": [],
-  "quote": "en ce moment par ailleurs j'écoute beaucoup un type qui s'appelle Corey Wong qui est notamment le guitariste de Wolf Peck",
-  "recommendedBy": "Navo",
+  "quote": "Et en ce moment, par ailleurs, j'écoute beaucoup un type qui s'appelle Corey Wong ! Qui est notamment le guitariste de Wolf Peck !",
+  "recommendedBy": "Clément Viktorovitch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:33:13",
+  "status": "validated",
+  "timestamp": "01:33:11",
   "title": "Corey Wong",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

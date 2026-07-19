@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Recit de la creation de 'Je dis aime' (2e album, 1999) co-ecrit en direct radio avec sa grand-mere Andree Chedid (00:22). Vraie substance, pas de prescription -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Mathieu Chédid",
+  "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2551",
+  "kind": "citation",
+  "links": [],
+  "quote": "On en a parlé déjà, j'adorais qu'on fasse une chanson ensemble, c'est mon rêve et tout.",
+  "recommendedBy": "Matthieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:23",
+  "title": "Je dis aime",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 1999
+}

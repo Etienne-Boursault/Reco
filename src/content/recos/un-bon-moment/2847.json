@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Le vrai guest-work de ce passage est «Drole» (serie Netflix de Fanny Herrero, ecrite entre autres par Morgane Cadignan & Fanny Ruwet, sortie 2022) -> NON extrait, a creer manuellement. «La creatrice de Tinder» = plaisanterie recurrente du passage.",
+    "reason": "Name-drop instrumental: «10%» (Dix pour cent) cite seulement pour identifier Fanny Herrero ('la creatrice de 10%'), dont les invitees ont ecrit la serie «Drole». Pas de prescription de «10%» -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Fanny Herrero",
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:16:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2847",
+  "links": [],
+  "quote": "la créatrice surtout de Tinder et tout ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:57",
+  "title": "10%",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 2022
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote de programmation radio, pas une reco.",
+    "reason": "Anecdote radio : « The Wall, c'est un morceau de rétention... on envoie Pink Floyd et les gens restent » (00:19:25). Mention instrumentale, aucune prescription ni discussion de l'œuvre.",
+    "verdict": "discard"
+  },
+  "creator": "Pink Floyd",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2384",
+  "links": [],
+  "quote": "au moment où il y a les pubs chez les autres, nous, on envoie Pink Floyd et les gens restent.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:25",
+  "title": "The Wall",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

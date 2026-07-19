@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Borderline citation, mais fonction instrumentale (vecteur de la vanne).",
+    "reason": "Film support du bit de Shirley ('on m'a pas arrêté de me demander pourquoi j'étais pas dans le film') + méta-commentaire sur la bien-pensance des critiques. Pas de prescription ni d'avis prescripteur sur le film. recommendedBy 'Navo' erroné (anecdote de Shirley).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2710",
+  "links": [],
+  "quote": "il y avait le film \"Tout Simplement Noir\" qui est sorti, et genre on a pas arrêté de me demander pourquoi j'étais pas dans le film !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:01",
+  "title": "Tout Simplement Noir",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

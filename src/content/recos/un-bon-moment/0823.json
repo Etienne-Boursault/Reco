@@ -1,19 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Rebond d'un autre locuteur dans le tour de table ('moi j'en ai une') : attribution indeterminable -> vide. Orthographe/existence exacte non verifiables (WebSearch epuise), nom generique.",
+    "reason": "Reco explicite d'une chaine YouTube ('moi j'en ai une c'est une chaine YouTube qui s'appelle Awesome Restorations', restauration d'objets/ASMR, 01:10:13).",
+    "verdict": "validate"
+  },
   "creator": "autre",
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0823",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi, j'en ai une, c'est une chaîne YouTube, ça s'appelle Awesome Restorations.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "moi j'en ai une c'est une chaîne YouTube qui s'appelle Awesome Restorations",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:10:10",
+  "status": "validated",
+  "timestamp": "01:10:11",
   "title": "Awesome Restorations",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

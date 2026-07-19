@@ -1,22 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~01:50:18. Murderbot (Apple TV+, d'apres Martha Wells). Relaye d'Amandine Gay.",
+    "reason": "Recommandation explicite dans le segment recos (relais Amandine Gay).",
+    "verdict": "validate"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR",
     "tmdb": "241554",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:50:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0316",
+  "kind": "reco",
   "links": [],
   "quote": "Murderbot",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:50:20",
+  "status": "validated",
+  "timestamp": "01:50:18",
   "title": "Murderbot",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

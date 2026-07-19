@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Enumeration des duos de l'album de Vianney ('le duo avec Zazie'), pas une oeuvre ni une recommandation autonome de Zazie.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0122",
   "links": [],
   "quote": "Il y a le duo avec Zazie.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:47",
   "title": "Zazie",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

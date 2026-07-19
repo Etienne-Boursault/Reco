@@ -1,19 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Sketch reel de Saturday Night Live. Attribution incertaine : introduit apres le running gag de Navo sur la police papyrus, mais le 'allez voir / c'est drole pour les graphistes / moi ca m'a fait rire' colle plutot a une invitee (Anna dessine/storyboarde). recommendedBy 'Navo' non fiable -> vide. Timecode 00:23:25 OK.",
+    "reason": "Recommandation explicite du sketch SNL 'Papyrus' avec Ryan Gosling (reel, 2017) : 'allez voir papyrus avec Ryan Gosling... faites une pause, allez voir'.",
+    "verdict": "validate"
+  },
   "creator": "Reine Ghostling",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:23:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:23:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1182",
+  "kind": "reco",
   "links": [],
-  "quote": "aller voir papyrus avec reine ghostling",
-  "recommendedBy": "Navo",
+  "quote": "T'as vu ce sketch de SNL ? Sur papyrus avec Ryan Gosling. Non, je peux. Non, bah, allez voir. Moi, il m'a fait mourir.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:23:44",
+  "status": "validated",
+  "timestamp": "00:23:25",
   "title": "Papyrus",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

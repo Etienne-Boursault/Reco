@@ -1,17 +1,52 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre tronque 'Les mecs que je veux' -> vrai titre 'Les mecs que je veux niquer' (Rosa Bursztein) ; a corriger manuellement. Marina invitee absente de guests. Distinct de ubm-1082 (Le Coeur sur la table).",
+    "reason": "Podcast de Rosa Bursztein recommande explicitement ('un petit podcast ou elle recoit des hommes et des femmes... on apprend des choses... allez voir ca'). Reco explicite.",
+    "verdict": "validate"
+  },
   "creator": "Rosa Bursztein",
   "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1083",
+  "kind": "reco",
   "links": [],
-  "quote": "Les mecs que je veux qu'en de Rosa Bernstein, qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
+  "quote": "Les mecs que je veux qu'aine de Rosa Bernstein. Bien sûr. Qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:02:21",
+  "status": "validated",
+  "timestamp": "01:02:20",
   "title": "Les mecs que je veux",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

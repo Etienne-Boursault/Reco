@@ -1,16 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:28:24 : Jerome Niel (interroge sur son Instagram a 00:26:57) presente Splice comme son logiciel de montage sur telephone, 'tres simple', 'je ne fais plus que ca' ; un co-host confirme 'il m'a recommande cette application, ca marche super bien'. Attribution corrigee de Kyan -> Jerome Niel (c'est lui qui l'utilise et le recommande).",
+    "reason": "App de montage mobile reelle (Splice), recommandee explicitement par Jerome Niel",
+    "verdict": "validate"
+  },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:28:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0708",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est un logiciel qui s'appelle Splice.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "D'ailleurs, c'est un logiciel qui s'appelle Splice. Splice, et qui est très, très simple.",
+  "recommendedBy": "Jérôme Niel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:28:25",
+  "status": "validated",
+  "timestamp": "00:28:24",
   "title": "Splice",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

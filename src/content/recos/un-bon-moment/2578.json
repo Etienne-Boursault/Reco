@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "titre exact: 'Il faut que je vous parle' de Blanche Gardin (version animee par Fabcaro, myCanal). Canonique du trio 0702/2578/2584",
+    "reason": "Segment recos: 'Le spectacle de Blanche sur myCanal, dessine par Fabcaro. Allez le voir.' Reco explicite d'une oeuvre tierce. Titre officiel: 'Il faut que je vous parle' (Blanche Gardin, version animee par Fabcaro, myCanal 2020).",
+    "verdict": "validate"
+  },
+  "creator": "Blanche Gardin",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2578",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le spectacle de Blanche, sur MyCanal, dessiné par Fab Caro. Allez le voir.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:45:07",
+  "title": "Blanche Gardin - Spectacle MyCanal",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

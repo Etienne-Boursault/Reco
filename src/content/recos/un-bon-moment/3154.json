@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nuance : le locuteur principal admet ne pas l'avoir encore vue (« c'est mon prochain truc ») — endossement partiellement de seconde main. Créateur réel : Nathan Fielder & Benny Safdie (série, Showtime/Paramount+). Attribution incertaine → recommendedBy vide.",
+    "reason": "Œuvre réelle de Nathan Fielder recommandée dans le même élan (« The Curse aussi, c'est incroyable »), non liée à un invité présent.",
+    "verdict": "validate"
+  },
+  "creator": "Nathan Fielder",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3154",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-curse/umc.cmc.1l4v7zuj9ficnay60noerybur"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/the-curse"
+    }
+  ],
+  "quote": "The Curse aussi, c'est incroyable.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:39",
+  "title": "The Curse",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

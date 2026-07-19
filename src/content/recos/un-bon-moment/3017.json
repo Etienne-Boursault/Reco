@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-3025 : « Chambay » est une mé-transcription (probablement « chanmé ») ; Clément corrige aussitôt le nom réel du programme en « C'est Invisible » (même œuvre, même passage).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3017",
+  "links": [],
+  "quote": "Et t'as fait aussi un autre programme qui est Chambay. Et j'espère que les gens vont pouvoir aller le découvrir.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:39:41",
+  "title": "Chambay",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

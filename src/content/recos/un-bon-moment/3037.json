@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1123 (canonique conserve). Cette version a le titre tronque 'La Diagona de la joie'.",
+    "reason": "Doublon de ubm-1123 (meme reco de Bertrand, Corinne Sombrun / La Diagonale de la Joie, 01:16:23-24). On garde ubm-1123 (titre complet correct) comme canonique.",
+    "verdict": "discard"
+  },
+  "creator": "Corinne Sombrun",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3037",
+  "links": [],
+  "quote": "moi j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona de la joie",
+  "recommendedBy": "Martin Darondeau",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:16:24",
+  "title": "La Diagona de la joie",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

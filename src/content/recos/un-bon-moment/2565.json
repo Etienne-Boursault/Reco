@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "nom officiel: 'Soixante' (Kyan Khojandi & Navo)",
+    "reason": "'Soixante' (stylise 60): spectacle/concept de Kyan & Navo (60 artistes, 1 min chacun, 60 min), presente en detail (nouvel episode deja enregistre, passages regardes a l'antenne). Auto-promo du format.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2565",
+  "kind": "reco",
+  "links": [],
+  "quote": "vous avez fait le premier volume, au moment où ils le regardent, les gens je peux te dire qu'ils se sont bidonnés devant ta nouvelle minute",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:03:42",
+  "title": "60",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

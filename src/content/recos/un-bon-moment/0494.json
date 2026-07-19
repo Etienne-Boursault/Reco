@@ -1,20 +1,75 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "guests[] vide alors que Mosimann est invite ; il dit on a fait l'album Mesdames. Distinct de l'anecdote GCM a 00:56 (ubm-1914).",
+    "reason": "Mesdames (Grand Corps Malade) presente par son compositeur Mosimann (00:10:54, making-of : choeurs au dictaphone). Mosimann a compose/coreallise l'album (invite) -> auto-promo assumee = guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Grand Corps Malade",
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/367313217"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "10:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:53:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0494",
+  "kind": "reco",
   "links": [],
-  "quote": "L'album de Grand Corps Malade, qui a quand même très bien marché.",
-  "recommendedBy": "Navo",
+  "quote": "l'album de Grand Corps Malade qui a quand même très bien marché",
+  "recommendedBy": "Mosimann",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:10:54",
+  "status": "validated",
+  "timestamp": "00:11:53",
   "title": "Mesdames",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

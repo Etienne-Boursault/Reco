@@ -1,0 +1,58 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Exemple rhetorique, pas une reco d'artiste autonome.",
+    "reason": "Ricky Gervais (artiste) evoque comme appui rhetorique dans une discussion sur l'honnetete (00:43:58 tres fan... il en parle dans ses spectacles), sans presentation d'oeuvre. L'oeuvre concrete (Mortality) est traitee en validate (ubm-1003).",
+    "verdict": "discard"
+  },
+  "creator": "Ricky Gervais",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:43:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:43:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1401",
+  "links": [],
+  "quote": "moi je suis très très fan de Ricky Gervais",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:58",
+  "title": "Ricky Gervais",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

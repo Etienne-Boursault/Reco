@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Mortal » extrait de « cause de mortalité au Québec » (l.195) — pas une œuvre, faux positif.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
     "tmdb": "90591",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "parce que justement, tu déneiges, c'est un énorme énorme de déneigé.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:00",
   "title": "Mortal",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

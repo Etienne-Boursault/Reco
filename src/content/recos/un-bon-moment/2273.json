@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nouvelle de Marina Rollman, publiee dans le recueil 'Desirer' (ubm-1159) et lue dans le podcast Steamy (ubm-2272). Trois entrees liees a la meme contribution mais titres/supports distincts.",
+    "reason": "'Les Femmes Marrantes' = titre de la nouvelle erotique de Marina (00:54:17 'ca s'appelle les femmes marrantes... comme les femmes savantes, une reference Moliere'). Oeuvre de l'invitee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Marina",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:54:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2273",
+  "kind": "reco",
+  "links": [],
+  "quote": "ça s'appelle les femmes marrantes",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:17",
+  "title": "Les Femmes Marrantes",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre",
+    "autre"
+  ]
+}

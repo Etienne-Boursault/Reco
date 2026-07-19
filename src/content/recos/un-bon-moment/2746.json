@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Anna raconte sa reprise acoustique folk de 'WAP' (Cardi B & Megan Thee Stallion) et son shadowban Instagram. La chanson est l'objet de l'anecdote, pas prescrite. Cluster WAP avec ubm-1283 (aussi discard). Timecode 00:25:25 OK.",
+    "reason": "Mention instrumentale : anecdote de reprise/shadowban, pas une reco de la chanson.",
+    "verdict": "discard"
+  },
+  "creator": "Cardi B, Megan Thee Stallion",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2746",
+  "links": [],
+  "quote": "J'ai fait une reprise de la chanson de Cardi B et de Megan The Salience qui s'appelle Wet Ass Pussy et je l'ai reprise version acoustique, folk, guitare sèche, mignonne",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:25:25",
+  "title": "Wet Ass Pussy",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

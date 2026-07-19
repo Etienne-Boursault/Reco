@@ -1,18 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Web série d'Éléonore Costes (saisons 1-2 dispo YouTube, saison 3 à venir), présentée et discutée (« les gens qui ont vu genre humaine comprennent », « l'épisode du cancer », « va voir genre humaine »). Auto-promo d'œuvre d'invitée.",
+    "verdict": "guest-work"
+  },
   "creator": "Inconnu",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:10:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0058",
+  "kind": "reco",
   "links": [],
-  "quote": "beaucoup de gens ont vu genre humaine, comprennent ce que tu vas faire.",
-  "recommendedBy": "Inconnu",
+  "quote": "quand tu pitches il se passe rien mais il y a tout",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:47:43",
+  "status": "validated",
+  "timestamp": "00:47:40",
   "title": "Genre Humaine",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ]
 }

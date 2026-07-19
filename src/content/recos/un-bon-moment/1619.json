@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Coach Sam (00:59): personne (fondateur du club), element d'anecdote, pas une oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1619",
+  "links": [],
+  "quote": "Il m'a donné des super conseils",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:31",
+  "title": "Coach Sam",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

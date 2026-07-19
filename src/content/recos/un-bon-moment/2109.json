@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2099 (même moment ~01:33:45, « C'est le nom de mon spectacle »). Titre artefact « Mon spectacle » et mauvaise attribution à Kyan — il s'agit du spectacle « 300 000 ans » de Manon Bril. Canonique = ubm-2099.",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2109",
+  "links": [],
+  "quote": "C'est le nom de mon spectacle.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:33:46",
+  "title": "Mon spectacle",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

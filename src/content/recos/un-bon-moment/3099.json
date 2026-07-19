@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel probable « Beyond the Streets » (expo street art), mais la mention n'est pas une reco.",
+    "reason": "Mention instrumentale dans un bit parodique sur LinkedIn : un host demande « dis-moi un truc que t'as fait hier » et Jason repond « hier soir j'ai ete a l'expo beyond the street », aussitot moque facon post LinkedIn. Aucune prescription ni avis sur l'expo (regle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:47",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3099",
+  "links": [],
+  "quote": "hier soir j'ai été à l'expo beyond the street",
+  "recommendedBy": "Jason",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:47",
+  "title": "Beyond the Street",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

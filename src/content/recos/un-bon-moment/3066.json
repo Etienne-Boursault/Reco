@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Georges Brassens et 'La non-demande en mariage' cites en comparaison en passant pendant le brainstorm, aucune prescription (regle 1)",
+    "verdict": "discard"
+  },
+  "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:48:46",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3066",
+  "links": [],
+  "quote": "C'est un peu Georges Brassens. C'est Georges Brassens. Il la fait. La non demande en mariage. En version rigolote.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:48:46",
+  "title": "Georges Brassens",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

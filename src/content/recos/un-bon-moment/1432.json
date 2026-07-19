@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le vrai referent (film des invites) est deja couvert par ubm-1587.",
+    "reason": "Hallucination : 'La Nuit du 12' / Dominik Moll totalement absents du transcript. A 01:10:17 'allez le voir' refere au film des invites (Le Crime du 3e etage).",
+    "verdict": "discard"
+  },
+  "creator": "Dominik Moll",
+  "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1432",
+  "links": [],
+  "quote": "allez le voir",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:10:17",
+  "title": "La Nuit du 12",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

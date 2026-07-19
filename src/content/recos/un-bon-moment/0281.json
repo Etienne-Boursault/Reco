@@ -1,16 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Skyjo cite comme curiosite de marche ('jeu le plus vendu, devant le Uno') dans la discussion sur faire un jeu; locuteur 'j'ai jamais joue'. Non endosse, instrumental. Borderline.",
+    "verdict": "discard"
+  },
+  "creator": "autre",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0281",
   "links": [],
-  "quote": "Ça s'appelle comment ? Skyjo.",
-  "recommendedBy": "intervenant",
+  "quote": "Skyjo par exemple, c'était le jeu le plus vendu dans le monde aujourd'hui",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:40:30",
+  "status": "discarded",
+  "timestamp": "01:40:16",
   "title": "Skyjo",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

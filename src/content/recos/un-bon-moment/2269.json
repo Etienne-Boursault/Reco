@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Episode de Bloques discute dans la retrospective ; non independant (Bloques capte par ubm-2268). ts stocke 00:21:46 vs discussion ~00:20:46, dans la tolerance.",
+    "reason": "'La mariniere' est un episode de Bloques ('un de mes episodes prefere c'est la mariniere', 00:20:46), sous-composant de la serie et non une oeuvre autonome.",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2269",
+  "links": [],
+  "quote": "moi un de mes épisodes préféré c'est la marinière",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:46",
+  "title": "La marinière",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

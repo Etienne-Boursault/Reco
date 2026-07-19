@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct = 'Cash Investigation' (magazine d'investigation France 2, Elise Lucet). 'Cache' = mishearing.",
+    "reason": "Kyan recommande la chaine dans son tour : 'Cache Investigation, que je regarde, dans laquelle je suis abonne, et que j'adore.'",
+    "verdict": "validate"
+  },
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2227",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et la chaîne aussi Cache Investigation. Que je regarde. Dans laquelle je suis abonné. Et que j'adore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:31",
+  "title": "Cache Investigation",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

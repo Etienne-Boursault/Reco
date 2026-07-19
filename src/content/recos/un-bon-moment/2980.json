@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "« Un jour sans fin » (Groundhog Day) cite comme typologie d'histoire dans le jeu-devinette (00:41:41, reponse « marmotte »). Mention instrumentale/indice de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Harold Ramis",
+  "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2980",
+  "links": [],
+  "quote": "un jour sans fin c'était carrément une typologie d'histoire maintenant il y a plein de gens qui utilisent ce concept pour faire d'autres histoires",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:41",
+  "title": "Groundhog Day",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 1993
+}

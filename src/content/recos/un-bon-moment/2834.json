@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre officiel exact (verifie). Canonique; doublon discarde: ubm-0808.",
+    "reason": "Second podcast de Fanny Ruwet (invitee), «Imagine ca parle de ca» (co-ecrit avec Lisa Delmoitiez): concept expose par elle (inventer le sujet d'un livre d'apres son titre). Auto-promo d'oeuvre d'invitee -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2834",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un autre podcast qui s'appelle Imagine ça parle de ça. On invente de quoi parle des romans juste sur base du titre.",
+  "recommendedBy": "Fanny Ruwet",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:51",
+  "title": "Imagine ça parle de ça",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

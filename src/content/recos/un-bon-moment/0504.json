@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1384 ('Shays'/'chaise' = chaine CHAISE).",
+    "reason": "'Shays' = la chaine CHAISE de Lucas Pastor, meme reco que ubm-1384 (video 624 types de profs).",
+    "verdict": "discard"
+  },
   "creator": "Lucas Pasteur",
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:25:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Je vais recommander la vidéo de Shays, Lucas Pasteur",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:25:36",
   "title": "Shays",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

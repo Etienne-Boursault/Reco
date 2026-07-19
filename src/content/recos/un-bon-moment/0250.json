@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Faux positif / mauvais titre : la citation 'Il a ecrit 72 romans en 20 ans' porte sur Balzac (La Comedie humaine), pas sur la Divine Comedie de Dante.",
+    "verdict": "discard"
+  },
   "creator": "Dante Alighieri",
   "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Il a écrit 72 romans 20 ans.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:37",
   "title": "Divine comédie",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

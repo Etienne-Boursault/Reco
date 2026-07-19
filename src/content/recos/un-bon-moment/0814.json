@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "guests[] de l'episode vide : invite reel = Roman Frayssinet (guest_missing). Orthographe artiste non verifiable (transcript « Nassim Vibes » vs reco « Nacim Vibes »), budget web epuise -> title_suspect.",
+    "reason": "L'invite Roman Frayssinet recommande explicitement, sur demande (« un artiste que tu as envie que les gens aillent suivre ») : « je conseille aux gens d'aller ecouter Nymphomaniac. C'est lourd. » Oeuvre tierce (l'artiste n'est pas Roman) -> validate.",
+    "verdict": "validate"
+  },
   "creator": "Nacim Vibes",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:40:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0814",
+  "kind": "reco",
   "links": [],
-  "quote": "il y a un son qui s'appelle Nymphomaniac. Le clip est vraiment cool.",
-  "recommendedBy": "Roman Frécinès",
+  "quote": "je trouve qu'il a un bon univers. Il fait du R&B en français, il s'appelle Nassim Vibes. Ouais, il y a un son qui s'appelle Nymphomaniac.",
+  "recommendedBy": "Roman Frayssinet",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:19",
+  "status": "validated",
+  "timestamp": "01:08:16",
   "title": "Nymphomaniac",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Je recommande GTA V. C'est un super jeu vidéo » [01:04:24] : gag de Navo, précédé de « Protégez-vous » et « le rayon laser dans Zelda », suivi de « je sais pas quoi recommander » puis de sa vraie reco (Dava). Cluster GTA = ubm-2413/2414/0917 (tous discard).",
+    "reason": "Reco comique de remplissage (gag de Navo).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2413",
+  "links": [],
+  "quote": "Je recommande GTA V. C'est un super jeu vidéo.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:24",
+  "title": "Grand Theft Auto V",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Doublon canonique face a ubm-0138.",
+    "reason": "Mention instrumentale : anecdote personnelle de Tahnee ('J'ai fait Planete Rap quand meme'), pas une oeuvre recommandee. Canonique du doublon avec ubm-0138.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2140",
+  "links": [],
+  "quote": "J'ai fait Planète Rap quand même.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:52",
+  "title": "Planète Rap",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

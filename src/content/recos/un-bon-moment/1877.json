@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Titre-gag invente par Morgane ('La nuit je fouette gars', jeu de mots sur 'La nuit je mens'). Oeuvre nommee inexistante. Doublon de ubm-1871.",
+    "verdict": "discard"
+  },
+  "creator": "Navo",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1877",
+  "links": [],
+  "quote": "C'est mon troisième spectacle, je peux pas trop en parler mais la nuit, je fouette, gars.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:01",
+  "title": "La nuit, je fouette, gars",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

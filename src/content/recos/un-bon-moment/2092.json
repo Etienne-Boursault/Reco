@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-06",
+    "humanCorrection": "Artefact « préparation » — rien du tout → discard (retour Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "Livre de Jesse (invite) en preparation, autofiction sur sa mere (evoque 00:35 et 'un bouquin preparation... quand tu le sors' 01:58:52). Editorialement = validate (projet d'invite a venir) MAIS 'preparation' est un artefact ('un bouquin [en] preparation'), aucun titre annonce -> laisse draft pour correction humaine du titre.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:58:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2092",
+  "links": [],
+  "quote": "un bouquin préparation",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:58:52",
+  "title": "préparation",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

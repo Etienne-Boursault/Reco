@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Valerie Lemercier (00:15): Salima dit juste 'je vais aller au spectacle... j'ai pris ma place, j'etais trop contente'. Anecdote (billet acheté), pas d'invitee, hate mais aucune substance sur l'oeuvre ni prescription. Doublon de ubm-1595/1615.",
+    "verdict": "discard"
+  },
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +26,10 @@
   "links": [],
   "quote": "je vais aller au spectacle de Valérie Le Marseille.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:28",
   "title": "Valérie Le Marseille",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

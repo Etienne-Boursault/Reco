@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Cite pour raconter le parcours de l'acteur de Gerald.",
+    "reason": "Contexte biographique : 'Les Pires' est le film ou l'acteur Logan Lefebvre a ete repere en casting sauvage (00:11). Name-drop biographique, pas de prescription.",
+    "verdict": "discard"
+  },
   "creator": "Non précisé",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,17 +15,56 @@
     "tmdb": "962543",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0264",
   "links": [],
-  "quote": "Il décroche un rôle dans le film Les Pires.",
-  "recommendedBy": "Non précisé",
+  "quote": "Il y a un truc à faire avec un film qui s'appelle Les Pires.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:11:59",
+  "status": "discarded",
+  "timestamp": "00:11:46",
   "title": "Les Pires",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

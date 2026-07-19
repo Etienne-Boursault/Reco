@@ -1,21 +1,77 @@
 {
-  "creator": "Al-Tarba",
+  "aliases": [
+    "Album d'Al Tarba"
+  ],
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "externalIds": {
-    "deezer": "https://www.deezer.com/album/505186011"
+    "deezer": "https://www.deezer.com/artist/201875"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:07:50+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0558",
+  "kind": "reco",
+  "linkOverrides": {
+    "Deezer": "https://www.deezer.com/fr/artist/201875"
+  },
   "links": [],
-  "quote": "Al-Tarba qui est un rappeur. Mais il fait plein de styles. On va dire, on va le mettre dans le rap.",
-  "recommendedBy": "David",
+  "quote": "aller écouter le dernier album d'Al Tarba, il fait aussi pas mal de feats avec Sun Bay et tout ça, qui sont des super gars.",
+  "recommendedBy": "Doully",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:40:45",
-  "title": "Al-Tarba",
+  "status": "validated",
+  "timestamp": "01:40:42",
+  "title": "Al'Tarba",
+  "transcriptSource": "youtube",
   "types": [
-    "album"
+    "album",
+    "artiste"
   ]
 }

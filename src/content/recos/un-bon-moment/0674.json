@@ -1,21 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "« Inside Jamel Comedy Club » présentée par les hosts comme « une des meilleures séries françaises » (01:03:31-01:03:53 : « c'est vraiment une des meilleures séries, je regrette qu'elle soit pas en DVD »). Série réelle (Canal+, faux-documentaire). Reco explicite ; l'invité y joue une scène (interview de Dedo) mais la reco vient des hosts → validate, pas guest-work.",
+    "verdict": "validate"
+  },
   "creator": "inconnu",
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "externalIds": {
     "tmdb": "90849",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0674",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est génial ça",
-  "recommendedBy": "inconnu",
+  "quote": "c'est vraiment une des meilleures séries, je regrette qu'elle soit pas en DVD quelque part, quoi.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:03:44",
+  "status": "validated",
+  "timestamp": "01:03:36",
   "title": "Inside Jamel Comedy Club",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

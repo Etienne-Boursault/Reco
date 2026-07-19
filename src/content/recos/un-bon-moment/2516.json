@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non diarisé (probablement Ben Mazué, chaîne d'anecdotes « pareil... »).",
+    "reason": "Diam's name-droppée avec affection (« super fan... elle est dans nos cœurs à jamais ») dans une anecdote de rencontre en mariage. Name-drop d'une artiste réelle avec avis, sans prescription.",
+    "verdict": "citation"
+  },
+  "creator": "Diam's",
+  "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:45:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2516",
+  "kind": "citation",
+  "links": [],
+  "quote": "Elle est dans nos cœurs, à jamais.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:19:34",
+  "title": "Diam's",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

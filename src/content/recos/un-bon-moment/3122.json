@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco de Thomas Deseur (pas Kyan) ; pressenti pour le volume 2 de son livre mais recommandé et résumé longuement. Invité absent des métadonnées.",
+    "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie 'j'en peux plus de mon taf', décrit en détail) ; œuvre réelle (God Bless America, Bobcat Goldthwait, 2011).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:01:43",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3122",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/god-bless-america"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/god-bless-america/umc.cmc.7d7e3nc4f2k933k9dv9o3e55r"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/god-bless-america"
+    }
+  ],
+  "quote": "Ah si, il y en a un qui s'appelle... God Bless America, je crois. Un mec qui est au taf.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:01:43",
+  "title": "God Bless America",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

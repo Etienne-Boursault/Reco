@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Gaëlle » = « Guile » (thème de Street Fighter). Pas une reco.",
+    "reason": "« Le thème de Guile » de Street Fighter, mal transcrit en « Gaëlle/Gail » ; élément de blind-test, pas une œuvre autonome.",
+    "verdict": "discard"
+  },
   "creator": "Noebu Uematsu",
   "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:30",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "le thème de Gaëlle, de Street Fighter, plus Eiffel 65",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:20:30",
   "title": "Gaëlle",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

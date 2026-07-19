@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige: Navo n'est pas createur de Serge le Mytho; Cohen et Galan sont credites. episode.guests vide.",
+    "reason": "Serie signature de l'invite Jonathan Cohen (personnage Serge le Mytho), longuement presentee et discutee (genese, 00:02:44+). Oeuvre d'invite = auto-promo du format.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2288",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est une des séries c'est une des plus gauleries quand même qui existent dans le paysage français",
+  "recommendedBy": "Jonathan Cohen & Jérémie Galan",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:02:44",
+  "title": "Serge le Mytho",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

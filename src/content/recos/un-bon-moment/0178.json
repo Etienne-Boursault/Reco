@@ -1,18 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle 'Jour de pluie' de Pierre Hilairet : 'je recommande le spectacle de Pierre Hilairet... jour de pluie' (01:54:41). Reco relayee par Kyan (confirme : 'dans les stories de Kian').",
+    "verdict": "validate"
+  },
   "creator": "Pierre-Hilaire",
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:28",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:54:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0178",
+  "kind": "reco",
   "links": [],
-  "quote": "je recommande le spectacle de Pierre-Hilaire [...] le spectacle s'appelle jour de pluie",
-  "recommendedBy": "invité",
+  "quote": "le spectacle s'appelle jour de pluie",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:54:28",
+  "status": "validated",
+  "timestamp": "01:54:41",
   "title": "Jour de pluie",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

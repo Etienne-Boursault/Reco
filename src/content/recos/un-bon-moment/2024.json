@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-0233",
+    "reason": "Doublon de ubm-0233 (Curieux musees) — titre errone 'Curious Musee'.",
+    "verdict": "discard"
+  },
+  "creator": "Patrick Bou",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2024",
+  "links": [],
+  "quote": "Mon dernier livre c'est Curieux musée Sur les musées les plus incroyables du monde",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:43:11",
+  "title": "Curious Musée",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

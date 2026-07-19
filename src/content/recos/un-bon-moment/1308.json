@@ -1,0 +1,29 @@
+{
+  "creator": "Mylène Farmer",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T19:15:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1308",
+  "links": [],
+  "quote": "Désenchanté.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:00",
+  "title": "Désenchantée",
+  "transcriptSource": "acast",
+  "types": [
+    "musique"
+  ]
+}

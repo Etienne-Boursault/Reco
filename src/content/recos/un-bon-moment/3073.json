@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Parodie de Game of Thrones ('inspiré de Parks and Recs et The Office') réalisée par Yassine, où joue Baptiste (invité). Existence/orthographe exacte NON vérifiables via web (budget WebSearch épuisé pour la session) — titre cohérent dans le transcript.",
+    "reason": "Rôle/œuvre de l'invité Baptiste Lecaplain, discuté avec substance et loué : 't'as fait le trône des frogs... c'est ton meilleur rôle... c'est toi qui la joue... trop bien joué, tenu de A à Z' (00:34 et 01:29). Auto-promo d'invité malgré la modestie ('c'est Yassine') → guestWork (règle 2/16).",
+    "verdict": "guest-work"
+  },
+  "creator": "Yacine Belhousse",
+  "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:51",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3073",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Dailymotion",
+      "url": "https://www.dailymotion.com/video/x6njqv1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "SensCritique",
+      "url": "https://www.senscritique.com/serie/Le_Trone_des_Frogz/23192422"
+    }
+  ],
+  "quote": "Moi, j'ai fait le Trône des Frogs. C'est incroyable.",
+  "recommendedBy": "Baptiste Lecaplain",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:34:51",
+  "title": "Le Trône des Frogz",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

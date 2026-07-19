@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote de doublage de Laura ('j'ai fait une meuf dans Hawai 5.0'). Pas de reco de la serie.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2366",
+  "links": [],
+  "quote": "Moi, j'ai fait une meuf dans Hawaï 5.0 qui est devenue la meuf de Kazé Affleck.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:34",
+  "title": "Hawaï 5.0",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

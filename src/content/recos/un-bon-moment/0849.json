@@ -1,20 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Album de VD (Les Amants paralleles, 2013) mis en avant comme porte d'entree pour decouvrir Vincent Delerm — oeuvre de l'invite presentee, auto-promo. Titre officiel correct (verifie WebSearch). Canonique (ubm-2994 = doublon).",
+    "verdict": "guest-work"
+  },
   "creator": "Vincent Delherme",
   "episodeGuid": "63357716bc3f1e0012abed65",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/81993722"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0849",
+  "kind": "reco",
   "links": [],
   "quote": "si, genre, tu es là, tu es en train de te dire \"ça fait un moment, je suis avec ma meuf, tu écoutes les amants parallèles\"",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Vincent Delerm",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:13:56",
   "title": "Les Amants parallèles",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

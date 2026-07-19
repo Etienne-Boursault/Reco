@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2508 (Guillaume Grandot / Supakitch).",
+    "reason": "Doublon de ubm-2508 (meme artiste, 01:22:03-06).",
+    "verdict": "discard"
+  },
+  "creator": "Guillaume Grandot",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2502",
+  "links": [],
+  "quote": "C'est le travail de Guillaume Grandot Supakic, qui est un artiste contemporain.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:22:03",
+  "title": "Supakic",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

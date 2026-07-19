@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:41:39-57. Titre correct 'Society' (ubm-1299 'Societies' fusionne ici). Type 'livre' imparfait (magazine/journalisme long-format, dossier Dupont de Ligonnes) mais acceptable. Attribution VIDE : meme hote que Dua Lipa, Kyan vs Navo non trancable -> attribution_suspect.",
+    "reason": "Reco du magazine Society (dossier Xavier Dupont de Ligonnes) : 'j'ecoutais ca en lisant Society... c'est vraiment interessant'. Meme locuteur que la reco Dua Lipa (ubm-1191). Reel (magazine Society, So Press). Canonique pour Society.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:04:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:41:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2595",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai lu les Societies...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:41",
+  "title": "Society",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

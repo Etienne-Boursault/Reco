@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon avec ubm-2874 (Matrix Resurrections). Les deux discarded car film non vu, aucune substance -> pas de canonique a conserver.",
+    "reason": "Matrix Resurrections (4e film) non encore vu au moment de l'enregistrement : « J'ai peur un peu du 4 » = anticipation/apprehension, aucun avis sur l'oeuvre. De plus doublon de ubm-2874 (meme film).",
+    "verdict": "discard"
+  },
   "creator": "Lana Wachowski",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "624860",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +37,10 @@
   "quote": "J'ai peur un peu du 4.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:50",
   "title": "Matrix Resurrections",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

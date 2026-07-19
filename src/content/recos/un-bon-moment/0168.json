@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Jamel Comedy Club' (00:16:56) : simple mention conversationnelle ('tu as deja fait le comedy club... le jamel'). Pas d'avis, pas de reco.",
+    "verdict": "discard"
+  },
   "creator": "Jamel Debbouze",
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Jamel Comedy Club.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:16:56",
   "title": "Jamel Comedy Club",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

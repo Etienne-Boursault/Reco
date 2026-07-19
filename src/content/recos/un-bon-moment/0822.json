@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1093 conserve comme canonique.",
+    "reason": "Doublon de ubm-1093 (meme chaine Hydraulic Press, meme timecode ~01:09:37). Quote erronee ('C'est l'inverse de ca'). On garde ubm-1093 (Hydraulic Press Channel) comme canonique.",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "C'est l'inverse de ça, en fait.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:09:39",
   "title": "Hydraulic Press",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

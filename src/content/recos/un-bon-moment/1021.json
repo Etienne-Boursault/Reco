@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Personne non presente dans l'episode, pas une oeuvre. ts 01:21:11 tombe pendant le jingle 'Aurel in the booth'. A restaurer si Acast confirme.",
+    "reason": "Artefact : 'Benjamin Tranier' n'est pas mentionne dans le transcript (grep negatif) et n'est pas une oeuvre (nom de personne, humoriste, absent de l'episode).",
+    "verdict": "discard"
+  },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "il y a un mec qui s'appelle Benjamin Tranier [...] il a une écriture, il a un site de fou, il fait vraiment bien le bauf, c'est un vrai personnage, et je le trouve vraiment très drôle",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:21:11",
   "title": "Benjamin Tranier",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

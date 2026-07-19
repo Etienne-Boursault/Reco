@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp stocké 02:57:00 hors plage (épisode ~62 min) ; occurrence réelle à 00:02:54-00:02:57.",
+    "reason": "Comparaison lancée dans le jeu ASMR (« Pour moi t'es un Animaniac. Tu connais pas les Animaniacs ? »), aucune prescription. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:57:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2721",
+  "links": [],
+  "quote": "Tu connais pas les Animaniacs ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:57:00",
+  "title": "Animaniacs",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

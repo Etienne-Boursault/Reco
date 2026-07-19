@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop vague dans un échange rapide sur les programmes français (« Est-ce que les 60 jours, 60 nuits... Joystar et Francienne, ouais grave »). Aucune substance ni prescription ; métadonnées incohérentes (creator garbled, type « musique »).",
+    "verdict": "discard"
+  },
+  "creator": "Joystar et Francienne",
+  "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3023",
+  "links": [],
+  "quote": "Ces trucs-là, tu vois ce que je veux dire ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:42",
+  "title": "60 jours, 60 nuits",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

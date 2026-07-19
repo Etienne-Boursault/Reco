@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Charlie Danger absente de guests[] (metadonnees) mais invitee du titre — a ajouter.",
+    "reason": "Chaine YouTube « Les Revues du Monde » de l'invitee Charlie Danger, presentee/vantee par Kyan des l'intro (« que j'adore regarder... kiffant d'apprendre »). Oeuvre d'invitee. Chaine reelle (1M+ abonnes).",
+    "verdict": "guest-work"
+  },
+  "creator": "Charlie Danger",
+  "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1434",
+  "kind": "reco",
+  "links": [],
+  "quote": "Charlie, tu as la chaîne Les Revues du Monde, que j'adore regarder, parce que c'est vraiment kiffant d'apprendre tellement de trucs à chaque fois.",
+  "recommendedBy": "Charlie Danger",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:02:31",
+  "title": "Les Revues du Monde",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

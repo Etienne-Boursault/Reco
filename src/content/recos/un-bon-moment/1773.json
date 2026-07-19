@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre/auteur inexistants ; artefact de transcription.",
+    "reason": "'Le huitieme de Hamid Zola' (01:42) : auteur et titre inexistants (verifie en ligne). Bribe de banter ('Avant que ca se repete, la') avant la vraie reco (Percival Everett). Pas une oeuvre reelle.",
+    "verdict": "discard"
+  },
+  "creator": "Hamid Zola",
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1773",
+  "links": [],
+  "quote": "Un bouquin. Le huitième de Hamid Zola.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:42:00",
+  "title": "Le Huitième",
+  "transcriptSource": "acast",
+  "types": [
+    "livre"
+  ]
+}

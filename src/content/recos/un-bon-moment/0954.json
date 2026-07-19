@@ -1,10 +1,33 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon acast du canonique ubm-0152 (youtube). Meme oeuvre, meme timestamp.",
+    "reason": "Doublon de ubm-0152 (meme documentaire « The Game Changers », meme tmdb 463088, meme moment ~[00:05:05], source acast). Le canonique youtube ubm-0152 est conserve.",
+    "verdict": "discard"
+  },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/463088-the-game-changers/watch?locale=FR",
     "tmdb": "463088",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -13,9 +36,10 @@
   "quote": "je ne l'avais vu sur les Netflix\nGame Changers",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:05",
   "title": "The Game Changers",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

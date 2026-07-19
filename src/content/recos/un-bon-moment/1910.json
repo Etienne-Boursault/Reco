@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "'Narcos' evoque dans une anecdote sur la campagne marketing de l'agence Wallet (billets 5 euros, lampes UV), pas sur la serie elle-meme. Mention instrumentale/exemple.",
+    "verdict": "discard"
+  },
+  "creator": "Netflix",
+  "episodeGuid": "69d112dba691c8ebbb9a19d9",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1910",
+  "links": [],
+  "quote": "regarde ce qu'ils avaient fait\npour la sortie de Narcos",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:34:04",
+  "title": "Narcos",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

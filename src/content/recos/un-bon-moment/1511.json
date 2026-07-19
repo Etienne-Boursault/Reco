@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote : Fabien rapporte une phrase que Bernard Werber lui a dite sur l'echec — name-drop instrumental, pas une reco d'oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1511",
+  "links": [],
+  "quote": "Bernard Werber il m'a dit un truc trop cool un jour",
+  "recommendedBy": "Fabien Olicard",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:48:31",
+  "title": "Bernard Werber",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

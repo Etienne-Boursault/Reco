@@ -1,16 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1826",
+    "reason": "Doublon de ubm-1826 (chaine de Feldup, 02:25:34).",
+    "verdict": "discard"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:25:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0241",
   "links": [],
-  "quote": "j'ai poncé la chaîne de Feldup et c'est une régalade",
+  "quote": "J'ai poncé la chaîne de Feldup",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:25:36",
+  "status": "discarded",
+  "timestamp": "02:25:34",
   "title": "Feldup",
+  "transcriptSource": "acast",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

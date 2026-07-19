@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger titre Chaga→Shaga. Attribution Kyan ou Navo? à confirmer. Timecode YT 01:21:21 OK.",
+    "reason": "'Chaga' = 'Shaga', rappeur electro-pop réel (mixtapes Eros/Rien à Fêter/Paradis 2023). Recommandé comme jeune talent ('moi je recommande Shaga', 'je détecte des jeunes talents', ~01:21:21). Reco publique valable sur le fond mais titre à corriger avant publication.",
+    "verdict": "unsure"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,6 +34,7 @@
   "status": "draft",
   "timestamp": "01:21:22",
   "title": "Chaga",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

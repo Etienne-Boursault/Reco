@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0974. Timecode ~01:54:47.",
+    "reason": "Doublon de ubm-0974 (spectacle precedent en ligne).",
+    "verdict": "discard"
+  },
+  "creator": "Romane Frésiné",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:54:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1707",
+  "links": [],
+  "quote": "je recommande son spectacle précédent qui est en ligne je crois enfin qu'on peut voir donc je recommande Romane Frésiné en général et qui est sur Youtube je crois",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:54:48",
+  "title": "Spectacle de Romane Frésiné (en ligne)",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

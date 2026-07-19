@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger Chagrin d'amis -> Chagrin d'Ami. Creator actuel (Kyan) errone = Kemmler & Mosimann.",
+    "reason": "Chagrin d'Ami presentee par ses auteurs invites (00:06:28, l'invite explique la genese : rupture d'amitie, je la chante plus sur scene). Chanson reelle : Kemmler feat. Mosimann (2022, album &MOI). Oeuvre d'invites -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1912",
+  "kind": "reco",
+  "links": [],
+  "quote": "moi je pense que... on a fait cette chanson",
+  "recommendedBy": "Kemmler & Mosimann",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:06:30",
+  "title": "Chagrin d'amis",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

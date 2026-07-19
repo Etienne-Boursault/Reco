@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "TITRE: 'Jean-Rumaine d'Eleonore Coste' = mishearing de 'Genre Humaine' d'Eleonore COSTES (web-serie, Grand Prix Luchon 2020). Verdict vise: validate ; recommendedBy probable = Navo (host recurrent). Canonique du cluster; doublon = ubm-1046.",
+    "reason": "Reco reelle ('allez voir... ca fait plusieurs fois qu'elle est recommandee') mais TITRE A CORRIGER avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Eléonore Coste",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2372",
+  "links": [],
+  "quote": "Ça fait plusieurs fois Qu'elle est recommandée Donc vraiment Allez voir Jean-Rumaine D'Eleonore Coste",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:35:04",
+  "title": "Jean-Rumaine d'Eléonore Coste",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

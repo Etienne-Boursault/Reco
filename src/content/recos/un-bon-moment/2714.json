@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Reco explicite : 'une série que je recommande qui s'appelle Devs, sur OCS, allez vraiment voir, c'est top' (thriller). Locuteur non identifiable (round non diarizé, Kyan plausible).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:24:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2714",
+  "kind": "reco",
+  "links": [],
+  "quote": "Il y a une série que je recommande qui s'appelle \"Devs\", qui est disponible sur OCS.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:24:18",
+  "title": "Devs",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "~00:10:49.",
+    "reason": "Sia evoquee comme exemple d'artiste maitrisant son image (Taratata, anonymat) + 'que j'adore' (~00:10:49). Substance sans prescription. Attribution fluide.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "10:50:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2304",
+  "kind": "citation",
+  "links": [],
+  "quote": "ou comment ça s'appelle Sia que j'adore",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "10:50:00",
+  "title": "Sia",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

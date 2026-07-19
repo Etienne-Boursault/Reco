@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1646.",
+    "reason": "Doublon de ubm-1646 : meme documentaire Sia par la chaine de Paul (00:47).",
+    "verdict": "discard"
+  },
+  "creator": "Paul (chaîne YouTube)",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:47:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1973",
+  "links": [],
+  "quote": "Il y a un très très beau documentaire sur SIA fait par la chaîne de Paul sur Youtube qui est juste là, le lien est là ! C'est hyper touchant son parcours, ce qu'elle a fait !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:50",
+  "title": "Documentaire sur Sia",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

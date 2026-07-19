@@ -1,0 +1,43 @@
+{
+  "aliases": [
+    "Jim et Andy"
+  ],
+  "creator": "Milos Forman",
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1890",
+  "kind": "citation",
+  "links": [],
+  "quote": "Jim Carrey avec Andy Kaufman, là, dans Jim et Andy, vous l'avez dit, j'ai envie de mettre des pas...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:19:18",
+  "title": "Jim and Andy",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

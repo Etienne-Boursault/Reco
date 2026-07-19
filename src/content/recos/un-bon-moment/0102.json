@@ -1,17 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Chanson de l'invite Eddy de Pretto (titre confirme par lui a 00:04:23), qu'il presente en expliquant son propos (« avoir des petits moments et savoir les kiffer »). Oeuvre d'invite en contexte de promo d'album. Invite absent de guests (a completer : Eddy de Pretto).",
+    "reason": "Chanson de l'invite, titre confirme par lui, qu'il presente en expliquant son propos.",
+    "verdict": "guest-work"
+  },
   "creator": "invité",
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:04:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0102",
+  "kind": "reco",
   "links": [],
   "quote": "T'as une chanson qui s'appelle « Être bien ».",
-  "recommendedBy": "invité",
+  "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:04:22",
   "title": "Être bien",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

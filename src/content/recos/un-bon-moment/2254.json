@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom incertain a la transcription ('Remy Boyz'), MC local non identifiable comme artiste discographique.",
+    "reason": "MC/performeur non-invite loue en passant dans une anecdote sur un open mic ('un mec tres doue', 00:39:50). Regle : performeurs non-invites -> discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2254",
+  "links": [],
+  "quote": "C'était Remy Boyz qui faisait le MC...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:39:50",
+  "title": "Remy Boyz",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

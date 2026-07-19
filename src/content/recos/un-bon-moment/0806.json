@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale.",
+    "reason": "Name-drop en passant d'une salle dans une enumeration (discussion sur l'expansion du stand-up: 'tout ce qu'il y a a l'Europeen'). Pas de prescription -> discard.",
+    "verdict": "discard"
+  },
   "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:17:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0806",
   "links": [],
   "quote": "L'européen est une salle très stand-up.",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:17:59",
   "title": "l'Européen",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

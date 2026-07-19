@@ -1,0 +1,49 @@
+{
+  "aliases": [
+    "Les Inconnus - Presse qui roule, pas vraiment cool"
+  ],
+  "creator": "Les inconnus",
+  "customLinks": [
+    {
+      "label": "Youtube",
+      "url": "https://youtu.be/cCVS-qv5UEo?si=WY0TkXIMQrETJPRm"
+    }
+  ],
+  "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1891",
+  "kind": "citation",
+  "links": [],
+  "quote": "Je recommande, ça doit être sur YouTube. Ils ont tout mis sur YouTube.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:24:59",
+  "title": "Florent Brunel",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

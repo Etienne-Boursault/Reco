@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reference pour expliquer une idee de sketch d'Anis ('c'etait pour un sketch sur Black Mirror... l'episode ou ils se font courser par un robot'). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Charlie Brooker",
+  "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2369",
+  "links": [],
+  "quote": "C'était pour un sketch sur Black Mirror",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:18:15",
+  "title": "Black Mirror",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

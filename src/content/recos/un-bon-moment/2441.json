@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Autrice = Sophie Lambda ; Davy Mourier = directeur de collection (coll. Une Case en Moins). Invites absents des metadonnees episode.",
+    "reason": "BD 'Tant pis pour l'amour' de Sophie Lambda, dont l'invite Davy Mourier est directeur de collection ; il en fait ouvertement la promo ('lisez ca c'est super', 'j'en fais la promo un peu comme dans une emission classique de tele') -> auto-promo assumee de sa collection.",
+    "verdict": "guest-work"
+  },
+  "creator": "Sophie Lambda",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2441",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un super livre.",
+  "recommendedBy": "Davy Mourier",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:40:48",
+  "title": "Tant pis pour l'amour",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

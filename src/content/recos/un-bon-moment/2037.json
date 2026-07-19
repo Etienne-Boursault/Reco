@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0962 (meme livre humblebrag, meme passage 01:49:52 ; titre garble 'Humblebragging').",
+    "verdict": "discard"
+  },
+  "creator": "Harris Wittels",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:49:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2037",
+  "links": [],
+  "quote": "Il y a un livre de Harry Sweetels ce mec du SNL qui est mort aujourd'hui qui a inventé l'expression humblebrag",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:49:52",
+  "title": "Humblebragging",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

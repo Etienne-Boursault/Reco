@@ -1,17 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Ben Mazué (« je m'appelle Benjamin ») évoque le morceau de GCM (couplet de Kery James coupé en plein milieu) dans une anecdote de rencontre : name-drop discuté, sans prescription.",
+    "verdict": "citation"
+  },
   "creator": "Grand Corps Malade",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:45:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0682",
+  "kind": "citation",
   "links": [],
-  "quote": "sur son dernier album, il y a une chanson qui s'appelle 'Le jour où j'ai arrêté le rap'",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "sur son dernier album, il y a une chanson qui s'appelle Le jour où j'ai arrêté le rap, où il y a un couplet de Kerry James",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:20:38",
+  "status": "validated",
+  "timestamp": "00:20:39",
   "title": "Le jour où j'ai arrêté le rap",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

@@ -1,18 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Titre confirme dans le transcript [01:03:43]. Le champ creator 'Wally' est une variante mal transcrite de Waly Dia.",
+    "reason": "Spectacle 2024 de Waly Dia (l'invite), presente/promu par lui en interview : 'vous etes la pour votre spectacle Une heure a tuer'. Oeuvre d'invite -> guest-work, proprietaire = Waly Dia.",
+    "verdict": "guest-work"
+  },
   "creator": "Wally",
   "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1170",
+  "kind": "reco",
   "links": [],
-  "quote": "Wally, vous êtes là pour votre spectacle Une Heure à Tuer",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "vous n'avez pas encore de nom sur le spectacle il va s'appeler Une heure à tuer",
+  "recommendedBy": "Waly Dia",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:03:40",
+  "status": "validated",
+  "timestamp": "01:03:43",
   "title": "Une Heure à Tuer",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

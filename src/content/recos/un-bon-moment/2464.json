@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0660 : la quote et le timecode (00:36) pointent vers Le Trone des Frogz (« allez voir le Trone des Frogs, c'est hilarant », l.1097). Le titre « chaussettes » est une erreur d'extraction ; l'oeuvre chaussettes est traitee en ubm-2472.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2464",
+  "links": [],
+  "quote": "C'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube. Allez voir le Trône des Frogs, c'est hilarant d'ailleurs, des dojos dedans.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:04",
+  "title": "Histoire racontée par les chaussettes",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

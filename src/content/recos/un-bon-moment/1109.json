@@ -1,17 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Duo comique (Sacha + partenaire) actif sur TikTok/YouTube ; Navo : « c'est une bonne reco, Dava c'est super » [01:04:41-01:05:23]. Tour de reco explicitement attribué à Navo par Kyan [01:04:15]. Orthographe « Dava » cohérente dans le transcript (non web-vérifiée).",
+    "reason": "Reco explicite de Navo (duo comique Dava).",
+    "verdict": "validate"
+  },
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1109",
+  "kind": "reco",
   "links": [],
-  "quote": "Dava ils sont super ils sont sur Tiktok",
+  "quote": "Dava, ils sont sur TikTok maintenant. Dava, ils sont super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:36",
+  "status": "validated",
+  "timestamp": "01:04:41",
   "title": "Dava",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

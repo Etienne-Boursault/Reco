@@ -1,18 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Guests VIDE dans les metadonnees => completer Pierre Croce (proprietaire du projet). Titre « Petit Voyou » repete 4x dans le transcript, non equivoque.",
+    "reason": "Auto-promo invite (regle 16) : Pierre Croce presente Petit Voyou, artiste (rap chante) qu'il produit desormais (01:18:04-29 : « on commence a travailler avec un artiste musical... j'ai beaucoup aime quand j'ai ecoute, je l'ai contacte, maintenant on bosse ensemble »). Prompte par « Pierre ? » (01:17:51).",
+    "verdict": "guest-work"
+  },
   "creator": "inconnu",
   "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:48:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0582",
+  "kind": "reco",
   "links": [],
-  "quote": "Non, petit voyou il s'appelle. Petit voyou. Petit chenapon.",
-  "recommendedBy": "Pierre",
+  "quote": "Non, on commence à travailler avec un artiste musical depuis quelques semaines. Petit Voyou, il s'appelle.",
+  "recommendedBy": "Pierre Croce",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:18:09",
+  "status": "validated",
+  "timestamp": "01:18:10",
   "title": "Petit Voyou",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

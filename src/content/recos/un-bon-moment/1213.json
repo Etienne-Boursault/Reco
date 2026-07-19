@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Faux titre humoristique riffant sur le livre de Bertrand ; l'auteur 'Jean-Michel Tatillon' est un gag. Locuteur = Navo (pas Martin comme extrait), mais discard donc attribution sans objet.",
+    "reason": "Pas une oeuvre reelle : blague de Navo. En reponse au livre serieux de Bertrand sur la transe ('La Diagonale de la Joie'), Navo invente un faux contre-livre 'Pourquoi la trans n'existe pas, une demonstration en 16 points pour les gens reellement cartesiens, de Jean-Michel Tatillon' (nom d'auteur invente : tatillon), puis se reprend 'non... si tiens Inside de Bob Burnham' (sa vraie reco).",
+    "verdict": "discard"
+  },
   "creator": "Jean-Michel Tatillon",
   "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1213",
   "links": [],
   "quote": "c'est un livre qui s'appelle Pourquoi la trans n'existe pas",
-  "recommendedBy": "Bertrand",
+  "recommendedBy": "Martin Darondeau",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:03",
   "title": "Pourquoi la trans n'existe pas",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

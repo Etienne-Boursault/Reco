@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Ambigu: pourrait cacher un vrai rôle de Thaïs dans la série, mais le passage se lit comme une blague ('on l'a pas vu', 't'ont pas payé'). À vérifier humainement.",
+    "reason": "'En thérapie' lâchée en vanne (la thérapie de l'invitée comparée à la série : 't'es dans la saison 2, t'ont pas payé') — name-drop humoristique sans présentation ni prescription (règle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3083",
+  "links": [],
+  "quote": "Et ça s'appelait en thérapie.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:37",
+  "title": "En thérapie",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

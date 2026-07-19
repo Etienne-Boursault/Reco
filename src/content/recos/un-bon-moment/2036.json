@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2038 (meme reco de la video McFly & Carlito ; ici titre = seulement le nom des createurs).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2036",
+  "links": [],
+  "quote": "En lien la vidéo de McFly et Carlito\nQui ont fait\nExactement tiens c'est super\nComme ça vous allez apprendre\nIls ont fait un tuto de Mavlich",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:13",
+  "title": "McFly et Carlito",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

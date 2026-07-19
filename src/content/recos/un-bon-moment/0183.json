@@ -1,18 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant : le spectacle de Morgane Cadignan sert d'echelle pour jauger Pierre Hillairet ('sur une echelle de zero a Morgane Cadignan, il est a 8,5'). Pas une presentation de son oeuvre.",
+    "verdict": "discard"
+  },
   "creator": "Morgane Cadignan",
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0183",
   "links": [],
-  "quote": "C'est quasiment aussi bien que le spectacle de Morgane Cadignan.",
-  "recommendedBy": "Invité",
+  "quote": "c'est quasiment aussi bien que le spectacle de Morgane Cadignan.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:10:04",
+  "status": "discarded",
+  "timestamp": "00:10:05",
   "title": "Morgane Cadignan",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

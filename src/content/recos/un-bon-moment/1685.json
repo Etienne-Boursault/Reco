@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Compte TikTok @niemesia (« La meuf là »). Créateur transcrit « Niemesta » → handle @niemesia (WebSearch). Hôte non diarizé (Kyan ou Navo).",
+    "reason": "Reco du compte « La meuf là » : calendrier de l'Avent des femmes oubliées de l'histoire, « Génial ! » (l.4145-4159). Titre = nom du compte, correct.",
+    "verdict": "validate"
+  },
+  "creator": "Niemesta",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1685",
+  "kind": "reco",
+  "links": [],
+  "quote": "La Meuf-là, je crois que son nom c'est Niemesta, et en ce moment...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:43",
+  "title": "La Meuf-là",
+  "transcriptSource": "youtube",
+  "types": [
+    "video",
+    "autre"
+  ]
+}

@@ -1,21 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1612 ('Soussano' = variante de Susano).",
+    "verdict": "discard"
+  },
   "creator": "Soussano",
   "episodeGuid": "697d34fef1dd68ab365aea03",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/910945342"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:50:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0381",
   "links": [],
   "quote": "Un artiste que j'ai découvert récemment, un chanteur qui t'appelle Soussano... Il fait notamment des acoustiques formidables, aller écouter sur les plateformes",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:50:31",
   "title": "Soussano",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

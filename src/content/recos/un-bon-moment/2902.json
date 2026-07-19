@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Un des deux invités (Bigflo ou Oli) — round 'les gars avez-vous un truc à recommander?'. Album de référence: 'Il me ressemble pas non plus'.",
+    "reason": "Recommandation publique explicite d'un invité: 'Moi je recommande vraiment l'artiste Khali... n'hésitez pas... je suis tombé fan' (~01:20:04). Khali = rappeur new-wave réel (album 'Il me ressemble pas non plus').",
+    "verdict": "validate"
+  },
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:20:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2902",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je recommande vraiment l'artiste Khali.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:04",
+  "title": "Khali",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

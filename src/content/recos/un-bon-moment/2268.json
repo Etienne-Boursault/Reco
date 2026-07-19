@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique pour Bloques (ts 00:19:12). Createurs = Orelsan & Gringe (Florent Bernard co-auteur). Le champ creator du fichier ('Kyan Khojandi, Navo') est errone : ce sont les hosts. guests/guestsParsed vides a completer.",
+    "reason": "Serie web animee Bloques, oeuvre des invites Orelsan & Gringe, sujet central de l'episode special discute en profondeur par ses createurs.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2268",
+  "kind": "reco",
+  "links": [],
+  "quote": "bloqué ça les a vraiment marqués",
+  "recommendedBy": "Kyan Khojandi & Navo & Orelsan & Gringe & Florent Bernard & Clément Cotentin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:19:12",
+  "title": "Bloqués",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

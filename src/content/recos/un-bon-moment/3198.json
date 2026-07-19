@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Citation confirmee a 00:39:29-32 ('Quand on avait fait bref... imagine que Kyan est beau'). Episode nov. 2020 -> Bref = oeuvre passee, exemple explicite de citation (regle 17).",
+    "reason": "Oeuvre passee des hosts (Bref, 2011) evoquee en anecdote de tournage sans promo d'actualite (regle 17)",
+    "verdict": "citation"
+  },
+  "creator": "Kyan Khojandi, Alain Chabat",
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:29",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3198",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (intégrale officielle)",
+      "url": "https://www.youtube.com/playlist?list=PLlFikkv2B2ffwYiFQJmcao3RKtw1DFMz5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=10520.html"
+    }
+  ],
+  "quote": "Quand on avait fait bref, je t'avais dit imagine que Kyan est beau.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:29",
+  "title": "Bref",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

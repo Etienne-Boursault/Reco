@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1950 (Beacon Rewind/Beacon Hill) — titre non identifiable, créateur 'David McGowan' douteux, contexte jeu des personnalités SW.",
+    "verdict": "discard"
+  },
+  "creator": "David McGowan",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1953",
+  "links": [],
+  "quote": "Sigourney Weaver, quand tu la vois dans Beacon Rewind.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:49",
+  "title": "Beacon Rewind",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

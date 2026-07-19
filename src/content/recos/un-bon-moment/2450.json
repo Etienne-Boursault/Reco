@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Episode du podcast Emotions (Louie Media) sur la confiance en soi ; Navo y est interviewe.",
+    "reason": "Prescription explicite : 'Je vous invite a ecouter le podcast Emotions... c'est un podcast qui est bien fait'. Podcast tiers (Louie Media) ou Navo est interviewe -- recommande, pas son oeuvre -> validate. Locuteur = Navo (confirme : 'ou je suis interviewe en tant que mec a confiance en lui' ; les autres confirment 'Navo').",
+    "verdict": "validate"
+  },
+  "creator": "Non spécifié",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2450",
+  "kind": "reco",
+  "links": [],
+  "quote": "je vous invite à écouter le podcast Émotions sur la confiance en soi",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:52:16",
+  "title": "Émotions",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

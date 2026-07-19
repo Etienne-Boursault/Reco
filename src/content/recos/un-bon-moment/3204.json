@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = invitee, ambigu Alice/Berengere (meme bloc que Julien Dore, contexte 'Berangere') -> recommendedBy vide (regle 3). Titre confirme a 01:42:58 et 01:45:12.",
+    "reason": "Film reel 'Enola Holmes' (Netflix, 2020) recommande par une invitee, discute avec substance (themes feministes)",
+    "verdict": "validate"
+  },
+  "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3204",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81277950"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=261721.html"
+    }
+  ],
+  "quote": "Le dernier truc que j'ai regardé, ça s'appelle Enola Holmes sur Netflix.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:42:58",
+  "title": "Enola Holmes",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

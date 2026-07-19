@@ -1,0 +1,35 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Exemple rhetorique en passant ('un petit Trois hommes et un couffin qui va par bouche a oreille arriver a quelque chose'), pas une recommandation du film.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2178",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:15",
+  "title": "Trois hommes et un couffin",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

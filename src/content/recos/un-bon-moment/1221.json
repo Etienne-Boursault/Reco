@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-3047 (canonique).",
+    "reason": "Doublon de ubm-3047 (Louis Chappey). Le canonique porte types=artiste et le meme passage.",
+    "verdict": "discard"
+  },
   "creator": "non spécifié",
   "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:10:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Louis Chapez, c'est un jeune comme de beaucoup.",
   "recommendedBy": "non spécifié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:10:54",
   "title": "Louis Chapez",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

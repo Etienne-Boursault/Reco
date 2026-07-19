@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Ace of Base = réponse du multi-blind test (~00:21:39), morceau support de jeu → mention instrumentale. Doublon de ubm-1233.",
+    "verdict": "discard"
+  },
+  "creator": "Ace of Base",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2909",
+  "links": [],
+  "quote": "Aznavour, Ace of Base.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:39",
+  "title": "Ace of Base",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Handle Instagram cité dans l'épisode : @yaba.ilu.",
+    "reason": "Créatrice « Yaba » recommandée par Manon Bril (invitée) — « je l'adore, j'adore ce qu'elle fait... vous pouvez la retrouver ». Customise des pièces de seconde main avec ses dessins.",
+    "verdict": "validate"
+  },
+  "creator": "Yaba",
+  "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2105",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est une créatrice, merci, on peut l'applaudir, qui s'appelle Yaba, qui chine des pièces de seconde main, parce que golo et créatif, et qui les tamponne comme ça avec des dessins qu'elle, elle a fait, yaba.ilu sur Instagram",
+  "recommendedBy": "Manon Bril",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:59",
+  "title": "Yaba",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

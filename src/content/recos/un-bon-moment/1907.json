@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Podcast « Émotions » (Louie Media, présenté par Marie Misset) ; la reco porte sur la série « Des mecs solides » (3 parties sur les masculinités). Canonique des doublons Émotions.",
+    "reason": "Reco explicite (« c'est hyper bien, je vous conseille d'écouter ») dans la continuité du tour de Navo.",
+    "verdict": "validate"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1907",
+  "kind": "reco",
+  "links": [],
+  "quote": "il y a un sujet en trois parties dans le podcast émotions qui s'appelle des mecs solides",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:43:40",
+  "title": "émotions",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

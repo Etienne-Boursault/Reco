@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Vrai passage vers 01:02:55 (le timecode 00:55:56 pointe ailleurs). Reponse de jeu.",
+    "reason": "Reponse du 'jeu de la complicite' (Schwarzenegger devine -> Commando) ; simple name-drop de jeu.",
+    "verdict": "discard"
+  },
+  "creator": "Mark L. Lester",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2446",
+  "links": [],
+  "quote": "commando",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:56",
+  "title": "Commando",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

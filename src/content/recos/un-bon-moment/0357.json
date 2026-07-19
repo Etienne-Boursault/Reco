@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Reco dite par le co-host apres 'T'as une reco toi ?'.",
+    "reason": "Reco explicite en fin d'emission : 'Fargo, toujours aussi bien en termes de series', 'elle est incroyable' (02:06). Serie reelle (Noah Hawley).",
+    "verdict": "validate"
+  },
   "creator": "Noah Hawley",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "externalIds": {
@@ -6,17 +15,58 @@
     "tmdb": "60622",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:06:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:06:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:06:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:06:37",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0357",
+  "kind": "reco",
   "links": [],
-  "quote": "il y a la nouvelle saison de Fargo, il m'en manque trois, mais pour l'instant elle est incroyable.",
+  "quote": "Fargo, toujours aussi bien en termes de séries.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "02:06:35",
+  "status": "validated",
+  "timestamp": "02:06:37",
   "title": "Fargo",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

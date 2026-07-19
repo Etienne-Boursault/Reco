@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-1053 (canonique du sujet Bill Burr).",
+    "reason": "Doublon de ubm-1053 (même reco de Bill Burr, 01:46:10, « anecdote de l'hélicoptère »). Titre « Bilbeur » = artefact.",
+    "verdict": "discard"
+  },
+  "creator": "Bilbeur",
+  "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2402",
+  "links": [],
+  "quote": "Commencez par l'anecdote de l'hélicoptère, si vous voulez aller voir sur YouTube.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:46:10",
+  "title": "Bilbeur",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

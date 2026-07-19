@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact : « Pulsions » (avec s), one-man show de Kyan Khojandi.",
+    "reason": "A 01:45:00, auto-promo : « le spectacle aussi, Pulsion que vous pouvez acquerir ». Spectacle de Kyan Khojandi presente par lui (appel a l'action explicite).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:45:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2687",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le spectacle aussi, Pulsion que vous pouvez acquérir.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:45:00",
+  "title": "Pulsion",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

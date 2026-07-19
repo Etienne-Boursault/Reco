@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0966 (Brazil de Terry Gilliam). Meme film mentionne 3x. Fusionner avec ubm-0966 et ubm-1796.",
+    "verdict": "discard"
+  },
+  "creator": "Terry Gilliam",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2019",
+  "links": [],
+  "quote": "j'étais un grand fan de Terry Gilliam, quand j'ai vu Brasile, c'était un choc",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:16:40",
+  "title": "Brasil",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

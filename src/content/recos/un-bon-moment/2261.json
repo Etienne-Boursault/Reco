@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Navo, en cloture, sur ce qu'il regarde : 'Je tape le best-of des Golden Globes de Ricky Gervais en ce moment' (01:26:08) -> reco d'une video reelle (monologues de Ricky Gervais aux Golden Globes). Canonique du doublon (ubm-2252 discarde).",
+    "verdict": "validate"
+  },
+  "creator": "Ricky Gervais",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2261",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je tape le best-up des Golden Globes de Ricky Germain en ce moment.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:26:08",
+  "title": "Golden Globes de Ricky Gervais",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

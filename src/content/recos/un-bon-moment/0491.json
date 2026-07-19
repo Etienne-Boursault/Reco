@@ -1,16 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine (intervenant en tournage a Strasbourg).",
+    "reason": "Reco explicite d'un lieu : 'je recommande aussi la ville de Strasbourg... c'est genial' (01:36:59) ; 'lieu' est un type valide.",
+    "verdict": "validate"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:36:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0491",
+  "kind": "reco",
   "links": [],
-  "quote": "Et puis je recommande aussi la ville de Strasbourg.",
+  "quote": "Je recommande aussi la ville de Strasbourg. Parce que je ne connaissais pas. C'est génial.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:37:00",
+  "status": "validated",
+  "timestamp": "01:36:59",
   "title": "Strasbourg",
+  "transcriptSource": "youtube",
   "types": [
     "lieu"
   ]

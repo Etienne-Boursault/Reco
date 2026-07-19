@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Benjamin Biolet » -> « Benjamin Biolay ».",
+    "reason": "Support du jeu « tracklisting invente » : on invente de faux titres du prochain album de Biolay (regle 1). « Oh moi j'adore » reste dans le cadre du jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3190",
+  "links": [],
+  "quote": "Oh moi j'adore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:09",
+  "title": "Benjamin Biolet",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Cyrano de Bergerac' (00:28:27) = metaphore du dilemme paillettes/poeme, avec appreciation en passant ('je l'aime trop, c'est libre'). Exemple rhetorique, pas de substance sur l'oeuvre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2051",
+  "links": [],
+  "quote": "c'est de Cyrano Bergerac voilà est-ce que tu préfères faire des rendez-vous être un peu dans les paillettes ou exactement écrire un poème",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:28:27",
+  "title": "Cyrano de Bergerac",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2450.",
+    "reason": "Doublon de ubm-2450 (podcast Emotions, 00:52:16).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "52:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2443",
+  "links": [],
+  "quote": "Je vous invite à écouter le podcast Émotions sur la confiance en soi où je suis interviewé d'ailleurs en tant que mec qui a confiance en lui",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "52:16",
+  "title": "Émotions sur la confiance en soi",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

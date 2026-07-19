@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1447 + mauvaise attribution (Aldebert).",
+    "reason": "Doublon de ubm-1447 (meme moment, « Les Sardines » de Patrick Sebastien utilisee pour ecrire une scene romantique = blague). Draft errone : attribue a Aldebert avec titre « ...voiture » alors que le transcript dit « ...boite » / Patrick Sebastien. Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Aldebert",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0435",
   "links": [],
   "quote": "je mets les sardines de qu'est-ce qu'on est serrés au fond de cette voiture",
-  "recommendedBy": "intervenants",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:04:20",
   "title": "Qu'est-ce qu'on est serrés au fond de cette voiture",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,40 @@
+{
+  "creator": "Francis Ford Coppola",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1534",
+  "kind": "citation",
+  "links": [],
+  "quote": "Et dans le parrain, comment s'appelle ? Vito Corleone.",
+  "recommendedBy": "Redouane Bougheraba",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:46",
+  "title": "The Godfather",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

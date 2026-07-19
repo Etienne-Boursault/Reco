@@ -1,9 +1,32 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp draft 00:01:03 errone : 'Happy' (Pharrell Williams) identifie dans le blindtest a ~01:07:55.",
+    "reason": "Reponse au Multi-Blind Test (regle 1)",
+    "verdict": "discard"
+  },
   "creator": "Pharrell Williams",
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/701326562"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:01:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,9 +34,10 @@
   "links": [],
   "quote": "T'as un Happy ! Parelle Williams. Parelle Williams, ça a Mappy ? Happy ? Parelle Williams ?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:01:03",
   "title": "Happy",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

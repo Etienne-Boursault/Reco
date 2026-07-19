@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Spectacle reel (2006). Cite par les hosts durant un jeu, non promu par Thomas.",
+    "reason": "Name-drop du vrai 1er spectacle de Thomas VDB 'En Rock et En Roll' (2006, confirme), mentionne comme hommage pendant le jeu 'deviner chanter'. Oeuvre reelle citee sans prescription ni presentation par Thomas -> citation (pas guest-work). Locuteur ambigu.",
+    "verdict": "citation"
+  },
+  "creator": "Thomas",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2033",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'était en hommage au premier spectacle de Thomas qui s'appelle En Rock et En Roll",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:42:51",
+  "title": "En Rock et En Roll",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

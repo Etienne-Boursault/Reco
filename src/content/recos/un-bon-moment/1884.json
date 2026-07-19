@@ -1,0 +1,31 @@
+{
+  "creator": "Pixar",
+  "episodeGuid": "6a05e43cc7ea4a3c85664972",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1884",
+  "kind": "citation",
+  "links": [],
+  "quote": "Non, mais dans pas longtemps...",
+  "recommendedBy": "Redouane Bougheraba",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:26",
+  "title": "Toy Story",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

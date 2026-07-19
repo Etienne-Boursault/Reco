@@ -1,21 +1,75 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createurs reels : Lee Eisenberg & Gene Stupnitsky (fiche dit 'Greg Daniels, Mike Judge').",
+    "reason": "'Jury Duty. C'est vraiment, c'est trop bien... par l'equipe de The Office sur Amazon'. Serie Amazon confirmee. Eloge net. Attribution incertaine.",
+    "verdict": "validate"
+  },
+  "creator": "Greg Daniels, Mike Judge",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR",
     "tmdb": "222023",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:58:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:58:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:58:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:58:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0957",
+  "kind": "reco",
   "links": [],
-  "quote": "avec Jury Dutty je sais pas si vous avez vu aussi Dury Dutty mais c'est quasiment de la réalité c'est génial",
-  "recommendedBy": "Navo",
+  "quote": "Jury Duty. C'est vraiment, c'est trop bien.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:57:26",
+  "status": "validated",
+  "timestamp": "01:58:06",
   "title": "Jury Duty",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

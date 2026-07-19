@@ -1,20 +1,67 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "« Totem » de -M- (Matthieu Chedid) : Charlie ecoutait ce morceau et une scene lui est venue — anecdote de processus creatif, pas de prescription.",
+    "verdict": "discard"
+  },
   "creator": "Matthieu Chedid",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3268364961"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:03:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0434",
   "links": [],
   "quote": "j'écoutais une musique de Mathieu Chedid qui s'appelle Totem",
-  "recommendedBy": "intervenants",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:03:53",
+  "status": "discarded",
+  "timestamp": "01:03:52",
   "title": "Totem",
+  "transcriptSource": "youtube",
   "types": [
     "musique"
   ]

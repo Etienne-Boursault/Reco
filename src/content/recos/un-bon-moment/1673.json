@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "'L'entraineur de l'entraineur' = intitule incertain, evoque comme souvenir de jeu.",
+    "reason": "Anecdote nostalgique de Navo sur un vieux jeu de foot (2003-2004) et le joueur cheate Evandro Rocato. Souvenir d'enfance, aucune prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1673",
+  "links": [],
+  "quote": "Un jeu vidéo auquel je jouais quand j'étais jeune qui s'appelle l'entraîneur de l'entraîneur.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:16:47",
+  "title": "L'entraîneur de l'entraîneur",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

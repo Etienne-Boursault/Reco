@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Gossip Girl' (00:54:36) = anecdote ('matrixe par Gossip Girl' -> faire semblant d'etre americain). Aucun avis sur la serie.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2058",
+  "links": [],
+  "quote": "on était complètement matrixé par Gossip Girl",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:36",
+  "title": "Gossip Girl",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

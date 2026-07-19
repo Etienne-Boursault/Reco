@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript inexploitable : invérifiable. 'L'entre-soi' presente comme une chanson de Biolay 'qu'on entend deja' = titre invente (meme bit comique que ubm-0606). Probable non-oeuvre. A confirmer si transcript complet.",
+    "reason": "Titre de chanson probablement invente (meme bit comique) + transcript inexploitable.",
+    "verdict": "discard"
+  },
   "creator": "Benjamin Biolay",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "l'entre-soi c'est sûr j'entends même déjà la chanson l'entre-soi",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:41:11",
   "title": "L'entre-soi",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

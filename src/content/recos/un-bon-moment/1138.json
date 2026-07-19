@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "link_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "externalIds errones: tmdb 150540 = Inside Out. A remplacer par la fiche Vice (2018, Adam McKay). Attribution host cinephile non certaine.",
+    "reason": "Reco explicite dans le duo Christian Bale 'que je te recommande'; 'Christian Bale acteur exceptionnel... des chefs-d'oeuvre' (01:12:18).",
+    "verdict": "validate"
+  },
   "creator": "Adam McKay",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,17 +18,48 @@
     "tmdb": "150540",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1138",
+  "kind": "reco",
   "links": [],
-  "quote": "Et il y en a un deuxième, c'est Vice.",
+  "quote": "C'est Vice, V-I-C-E.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:20",
+  "status": "validated",
+  "timestamp": "01:12:18",
   "title": "Vice",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

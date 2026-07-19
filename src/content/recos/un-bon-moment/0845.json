@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Realisateur a corriger: « Guillaume Brac » (pas « Braque »). Recommande par un invite (Xavier ou Ambroise), non diarize.",
+    "reason": "Recommandation explicite (~01:04:29) : « moi je recommanderais un film qui s'appelle A l'abordage... j'adore, c'est une tres belle chronique d'ete ». Film de Guillaume Brac (2020), verifie.",
+    "verdict": "validate"
+  },
   "creator": "Guillaume Braque",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
@@ -6,18 +19,48 @@
     "tmdb": "665753",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0845",
+  "kind": "reco",
   "links": [],
-  "quote": "Moi je recommanderais un film qui s'appelle \"A l'abordage de Guillaume Braque\". Qui est un metteur en scène que j'adore.",
-  "recommendedBy": "Navo",
+  "quote": "un film qui s'appelle À l'abordage de Guillaume Braque",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:04:27",
+  "status": "validated",
+  "timestamp": "01:04:29",
   "title": "À l'abordage",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

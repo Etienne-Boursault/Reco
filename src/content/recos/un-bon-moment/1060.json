@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur incertain: tour de reco final (invites d'abord), lecteur de mangas — probablement un invite (Odah/Dako) ou Navo. Transcript non diarize.",
+    "reason": "Reco de la chaine YouTube 'Chef Otaku' (reviews de mangas) au tour de reco final ('je regarde beaucoup... il a une vraie analyse, une culture de ouf, apporte un vrai plus'). Reco enthousiaste = validate.",
+    "verdict": "validate"
+  },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1060",
+  "kind": "reco",
   "links": [],
-  "quote": "Je regarde beaucoup la chaîne du chef Otaku qui fait des reviews ou de mangas",
-  "recommendedBy": "Navo",
+  "quote": "Moi je regarde beaucoup la chaîne du chef otaku.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:38",
+  "status": "validated",
+  "timestamp": "01:08:36",
   "title": "Chef Otaku",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote / jeu de mots sur un mondegreen (« reprendre c'est voler » entendu « reprendre ses volets ») d'une chanson de Goldman ; aucun avis, titre artefact inexistant.",
+    "verdict": "discard"
+  },
+  "creator": "Jean-Jacques Goldman",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2763",
+  "links": [],
+  "quote": "C'est dans la chanson de Goldman",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:01:11",
+  "title": "Reprendre ses volets",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

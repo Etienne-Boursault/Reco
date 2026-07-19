@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte: Patrice O'Neal (humoriste americain), pas O'Neill. Locuteur incertain (transcript non diarize).",
+    "reason": "Patrice O'Neal discute avec substance (sa theorie 'rollercoaster' de la carriere, 'exceptionnel', 'tres aime des humoristes') mais pour illustrer leur propre parcours, sans prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3039",
+  "kind": "citation",
+  "links": [],
+  "quote": "Tu connais le truc de Patrice O'Neill, du rollercoaster ? Patrice O'Neill était un humoriste américain. Qu'on aime beaucoup. Ah oui, c'est exceptionnel, oui. Très aimé des humoristes.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:40",
+  "title": "Patrice O'Neill",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

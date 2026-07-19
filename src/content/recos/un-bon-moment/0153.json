@@ -1,21 +1,53 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon du cluster Game Changers (canonique ubm-0152). tmdb 129412 (serie tv) est un faux match : le sujet est bien le documentaire film 463088.",
+    "reason": "Doublon de ubm-0152 : c'est la re-mention du meme reportage Game Changers dans la ronde finale ([01:13:22] « Le reportage qu'il a cite tout a l'heure de Game Changer »). De plus le tmdb 129412/tv pointe une AUTRE oeuvre (mauvais match). Canonique = ubm-0152.",
+    "verdict": "discard"
+  },
   "creator": "Netflix",
   "episodeGuid": "661c1bf83fb7ab00162aa674",
   "externalIds": {
     "tmdb": "129412",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0153",
   "links": [],
-  "quote": "Le reportage qu'il a cité tout à l'heure, de Game Changer sur Netflix, il est super à regarder si vous intéressez à votre corps et à stopper peut-être la viande.",
-  "recommendedBy": "Invité",
+  "quote": "Le reportage qu'il a cité tout à l'heure de Game Changer sur Netflix.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:13:12",
+  "status": "discarded",
+  "timestamp": "01:13:22",
   "title": "Game Changer",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

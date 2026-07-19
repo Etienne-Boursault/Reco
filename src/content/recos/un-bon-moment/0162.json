@@ -1,18 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre « Boycat » et créateur Aurélien Fernandez (éd. Exemplaire/Kopi, sorti fin 2025) confirmés.",
+    "reason": "BD « Boycat » recommandée explicitement par Manon Bril (invitée) — « je vous recommande ça, les petits geekos, vous devriez aimer ; il est très très drôle, Aurélien ».",
+    "verdict": "validate"
+  },
   "creator": "Aurélien Fernandez",
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:56:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0162",
+  "kind": "reco",
   "links": [],
-  "quote": "Ma première petite roco, c'est cette BD boycat de Aurélien Fernandez qui vient de sortir qui est vraiment super mime.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Ma première petite roco, c'est cette BD Boycat de Aurélien Fernandez qui vient de sortir, qui est vraiment super mime, c'est tout.",
+  "recommendedBy": "Manon Bril",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:56:09",
   "title": "Boycat",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

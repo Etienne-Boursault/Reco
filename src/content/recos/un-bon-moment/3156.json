@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = host (recommande le podcast et y invite l'invité, qui décline) ; Navo venait de donner Galen, donc plutôt Kyan, mais non diarizé (confiance ~0.65). Orthographe créateur « Patrick Beau » (peut-être « Patrick Baud ») non revérifiable via WebSearch (budget épuisé).",
+    "reason": "Prescription explicite : « je recommande Continue, tu m'intéresses, de Patrick Beau… un super podcast qui s'écoute super bien ».",
+    "verdict": "validate"
+  },
+  "creator": "Patrick Baud",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:25",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3156",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle (Acast)",
+      "url": "https://shows.acast.com/continue-tu-minteresses"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/continue-tu-mint%C3%A9resses/id1812415752"
+    }
+  ],
+  "quote": "Moi, j'en commande Continu, tu m'intéresses, de Patrick Beau.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:25",
+  "title": "Continue, tu m'intéresses",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

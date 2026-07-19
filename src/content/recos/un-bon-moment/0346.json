@@ -1,15 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Le Merlin' = perso/poisson invente dans l'instant ('ce perso... ca s'appelle la... Le Merlin, j'allais dire la dorade', 00:26:18). Pas une oeuvre reelle.",
+    "verdict": "discard"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:18",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0346",
   "links": [],
-  "quote": "Là, au moins, non, j'ai tellement envie de faire bien que ça me paralyse.",
+  "quote": "Ça s'appelle la... Le Merlin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:19",
+  "status": "discarded",
+  "timestamp": "00:26:18",
   "title": "Le Merlin",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

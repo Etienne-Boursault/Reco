@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Identité vérifiée (web) : « Anna chez Did » = Anna Chedid alias Nach ; album « Peau Neuve » (oct. 2023). Corriger créateur « Anna » → « Nach (Anna Chedid) ». Fusionne ubm-2120, ubm-0148, ubm-0950. Laura remercie Anna (son amie) ; le « allez écoutez »/« j'ai recommandé Nash » n'est pas attribuable de façon sûre → recommendedBy à compléter.",
+    "reason": "Album « Peau Neuve » de Nach (Anna Chedid) recommandé au public (00:53:35 : « elle a sorti un nouvel album Peau Neuve, allez écoutez » ; rappelé 01:08:22 : « on peut écouter le nouvel album de Nash »). Reco légère explicite → validate. Canonique du cluster Anna/Nash.",
+    "verdict": "validate"
+  },
+  "creator": "Anna",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:53:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2129",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'était un mollier. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:53:35",
+  "title": "Peau Neuve",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

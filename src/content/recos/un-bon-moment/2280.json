@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Artefact: fragment de phrase pris pour un titre + auteur fabrique. A ne pas restaurer.",
+    "reason": "Pas une oeuvre: 'je suis condamne par l'espoir' est une phrase de Panayotis decrivant son propre livre a 00:18:30 (ligne transcript 228, 'l'empathie envers ton daron, je suis condamne par l'espoir et celui d'une resolution'). L'auteur 'Sacha Boulanger' n'apparait nulle part dans le transcript (invente; le seul 'Sacha' present est 'Sacha Baron Cohen' cite dans un jeu a 00:51:59).",
+    "verdict": "discard"
+  },
+  "creator": "Sacha Boulanger",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2280",
+  "links": [],
+  "quote": "le postulat du livre c'est mon père qui nous apprend qu'il est malade qui va sûrement bientôt mourir",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:45",
+  "title": "Je suis condamné par l'espoir",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

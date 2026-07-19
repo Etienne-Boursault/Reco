@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Créateur Orelsan correct; 'ce gars' = Orelsan.",
+    "reason": "'Logo dans le ciel' = vraie chanson d'Orelsan (Perdu d'avance, 2009), mais citée comme exemple rhétorique (un morceau qu'un artiste croit être un single de club sans que ça en soit un, ~00:46:19). Mention instrumentale → discard même si l'œuvre est réelle.",
+    "verdict": "discard"
+  },
+  "creator": "Orelsan",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2911",
+  "links": [],
+  "quote": "je parlais de « Logo dans le ciel », mais comme je pensais que tu ne voulais pas que je parle de ce gars…",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:46:22",
+  "title": "Logo dans le ciel",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

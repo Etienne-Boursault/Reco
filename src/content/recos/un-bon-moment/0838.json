@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Fleabag discute longuement (structure du 26 min, saison 2, transitions, ~00:35:36-00:36:59) comme objet d'etude. Prescription seulement conditionnelle « si t'as envie d'ecrire ». Substance reelle -> citation.",
+    "verdict": "citation"
+  },
   "creator": "Phoebe Waller-Bridge",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
@@ -6,18 +14,48 @@
     "tmdb": "67070",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:36:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:35:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:35:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0838",
+  "kind": "citation",
   "links": [],
-  "quote": "c'est un truc que je montre pas mal aux gens qui veulent écrire des séries de maintenant",
-  "recommendedBy": "inconnu",
+  "quote": "il y a même des séries qui ont l'air moins classiques comme Fleabag",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:36:25",
+  "status": "validated",
+  "timestamp": "00:35:36",
   "title": "Fleabag",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

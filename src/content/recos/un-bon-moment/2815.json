@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote sans avis : 'Life is good' (Future feat. Drake) évoqué comme morceau né lors de leur interview de l'artiste ('qui a été extrait de notre interview'). Aucune prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:28:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2815",
+  "links": [],
+  "quote": "dont le fameux « Life is good » qui a été extrait de notre interview",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:28:16",
+  "title": "Life is good",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Morceau (« Ma meilleure amie », Lorie/Laurie) du multi-blind test — element de jeu, pas une recommandation.",
+    "reason": "Morceau du multi-blind test (jeu), pas une recommandation.",
+    "verdict": "discard"
+  },
+  "creator": "Laurie",
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:24:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2200",
+  "links": [],
+  "quote": "Il y a Laurie, ma meilleure amie.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:32",
+  "title": "Ma meilleure amie",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

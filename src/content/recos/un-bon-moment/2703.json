@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Discussion substantielle de l'approche de Dave Chappelle (provocation consciente, 'me font mourir de rire car il sait que c'est une connerie') dans le segment sur l'humour provocateur. Pas de prescription. Locuteur Kyan ou Shirley non identifiable.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2703",
+  "kind": "citation",
+  "links": [],
+  "quote": "Moi, il y a des trucs racistes, homophobes que peuvent dire Dave Chiappel, qui me font mourir de rire parce qu'il part du postulat de départ, que clairement, il est conscient que c'est une connerie ce qu'il va dire.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:10",
+  "title": "Dave Chappelle",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

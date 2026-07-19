@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2788 (recommandation des livres de Mourad Winter par JP Zadi). Titre 'Murad Winter' = nom d'auteur mal parse; refere au 1er livre (adapte au cinema), jamais nomme dans le transcript.",
+    "reason": "Doublon du cluster Mourad Winter; titre = nom d'auteur (artefact), refere au 1er livre non nomme.",
+    "verdict": "discard"
+  },
   "creator": "Murad",
   "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:16:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0901",
   "links": [],
   "quote": "Le bouquin de Murad Winter qui a adapté au cinéma.",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:16:55",
   "title": "Murad Winter",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

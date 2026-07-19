@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Titre complet = 'LOL : Qui rit, sort !' (Amazon Prime).",
+    "reason": "Paul presente sa participation a 'LOL : Qui rit, sort !' ('tu vas faire LOL bientot', 'on a tourne deja', 'ils ont annonce') avec substance (casting : Ferrari, Lecaplain, Ivanov, Mirabel...). Projet a venir de l'invite -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1668",
+  "kind": "reco",
+  "links": [],
+  "quote": "Tu vas faire LOL bientôt.",
+  "recommendedBy": "Paul de Saint Sernin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:43:47",
+  "title": "LOL",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie",
+    "spectacle"
+  ]
+}

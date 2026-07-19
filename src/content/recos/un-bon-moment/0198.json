@@ -1,6 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0959 (meme livre Fiascorama, meme passage 00:10:5x).",
+    "verdict": "discard"
+  },
   "creator": "Thomas VDB",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:10:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +31,10 @@
   "quote": "Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:10:54",
   "title": "Fiasco Raman",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

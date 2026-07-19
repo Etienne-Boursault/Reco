@@ -1,16 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Documentaire Arte 'Faire kiffer les anges' (danse hip-hop, ~1998, J.-P. Thorn) evoque par Kyan comme origine du nom de sa boite FKLG, decrit comme 'une revolution' (1re fois la danse debout dans les medias traditionnels). Substance reelle mais aucune prescription = citation.",
+    "verdict": "citation"
+  },
+  "creator": "Arte",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1055",
+  "kind": "citation",
   "links": [],
-  "quote": "c'est aussi inspiré d'un documentaire sur Arte qui s'appelait Faire kiffer les anges",
+  "quote": "C'était en 98 et tout.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:40:55",
+  "status": "validated",
+  "timestamp": "00:41:06",
   "title": "Faire kiffer les anges",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ],

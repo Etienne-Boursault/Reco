@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-0212",
+    "reason": "Doublon de ubm-0212 (Les Hauts de Hurlevent). Titre 'Un amour paisible' est un artefact (invente depuis la discussion 'amour paisible'), meme oeuvre et meme timecode 00:18:50.",
+    "verdict": "discard"
+  },
   "creator": "Augustin Trapnard",
   "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:18:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Augustin Trapnard, un bouquin sur l'amour.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:18:50",
   "title": "Un amour paisible",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

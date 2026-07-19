@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.78,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp 00:00:00 = placeholder d'extraction ; mention réelle vers 00:04:00. Pas de recommendedBy dans la reco (cohérent : pas une reco).",
+    "reason": "Mention instrumentale : Clément date sa collaboration avec Big Flo & Oli via leur album (« je travaille avec eux depuis l'album La Vraie Vie », ~00:04:00), sans avis sur l'album. Repère biographique = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Big Flo & Oli",
+  "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2783",
+  "links": [],
+  "quote": "je travaille avec eux depuis l'album La Vraie Vie",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:00",
+  "title": "La Vraie Vie",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

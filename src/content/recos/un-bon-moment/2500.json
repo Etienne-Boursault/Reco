@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ubm-2501 (marque WEIM, meme reco) -> discard. Orthographe « Melly Hirtz » non verifiable (budget WebSearch epuise). Locuteur (« amie qui fait mes sacs ») non determinable avec certitude.",
+    "reason": "Reco explicite d'une amie photographe : « Allez voir un peu » (01:21:40) ; elle fait aussi des sacs (marque WEIM).",
+    "verdict": "validate"
+  },
+  "creator": "Melly Hirtz",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2500",
+  "kind": "reco",
+  "links": [],
+  "quote": "Melly Hirtz et elle fait des sacs qui s'appellent la marque Weim.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:36",
+  "title": "Melly Hirtz",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

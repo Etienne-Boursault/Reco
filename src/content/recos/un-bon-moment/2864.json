@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1112 (extraction youtube, 01:31:21).",
+    "reason": "Doublon surendettement",
+    "verdict": "discard"
+  },
+  "creator": "Eureka",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2864",
+  "links": [],
+  "quote": "moi je recommande la vidéo sur le sur-endettement de Eureka",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:31:21",
+  "title": "Vidéo sur le sur-endettement",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

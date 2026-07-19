@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1453 (Moby ambient, 00:52:0x).",
+    "verdict": "discard"
+  },
+  "creator": "Moby",
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:52:47+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:52:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1463",
+  "links": [],
+  "quote": "Moby, le chanteur, il a sorti quelque chose que personne ne connaît, des sons d'ambiance qui durent entre 20 et 40 minutes.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:52:02",
+  "title": "Moby - Sounds for Meditation",
+  "transcriptSource": "acast",
+  "types": [
+    "album"
+  ]
+}

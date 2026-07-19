@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Comparaison en passant (« Dans Bloques, c'etait un peu dans la salle d'attente de la vie ») pour illustrer l'idee de sketch salle d'attente. Pas de prescription ni de substance -> mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2458",
+  "links": [],
+  "quote": "Dans Bloqués, c'était un peu dans la salle d'attente de la vie.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:45",
+  "title": "Bloqués",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

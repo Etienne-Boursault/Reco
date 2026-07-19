@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Faux positif: Alain Chabat/Burger Quiz apparaissent dans le FREESTYLE d'impro (contenu du jeu), pas en reco. La quote attachee ('Entree fracassante de Navo') ne mentionne meme pas Chabat. Personne, pas oeuvre = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Alain Chabat",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2430",
+  "links": [],
+  "quote": "Entrée fracassante de Navo.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:39",
+  "title": "Alain Chavat",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

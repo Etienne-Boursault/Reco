@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.55,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verdict visé = validate (reco musicale de Navo). Titre à identifier — « Losanius Noebos » introuvable, orthographe très incertaine. Doublon 1699 discardé.",
+    "reason": "Reco musicale de Navo : « je t'ai piqué Losanius... Losanius Noebos ! Ça c'est trop bien ! » (l.4128-4131). Titre déformé/non identifié (WebSearch infructueux) → reste draft.",
+    "verdict": "unsure"
+  },
+  "creator": "Losanius",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1994",
+  "links": [],
+  "quote": "Tu peux mettre Losanius... Losanius Noebos ! Ça, c'est trop bien !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:39:06",
+  "title": "Losanius Noebos",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

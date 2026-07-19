@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Louis Siquet » = transcription phonétique erronée de « Louis C.K. ». Discardé (exemple), donc non corrigé.",
+    "reason": "Nommé comme moitié du couple Blanche Gardin/Louis C.K. (exemple), pas de reco d'œuvre. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "creator": "Louis Siquet",
+  "episodeGuid": "6316136e9623160014506e77",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:27:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2942",
+  "links": [],
+  "quote": "Blanche Gardin avec Louis Siquet",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:05",
+  "title": "Louis Siquet",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

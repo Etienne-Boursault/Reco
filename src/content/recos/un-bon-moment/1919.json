@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Sense and Sensibility' = hallucination ; oeuvre reelle 'Le Sens de la fete' (2017). 'Gilles Lellouche' est l'acteur, pas le realisateur.",
+    "reason": "Exemple instrumental d'un procede comique (le chant continu) : 'Est-ce que vous avez vu Gilles Lellouche dans Le Sens de la fete ?' ; pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Gilles Lelouch",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1919",
+  "links": [],
+  "quote": "Est-ce que vous avez vu Gilles Lelouch dans le sens de la fête ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:05:00",
+  "title": "Sense and Sensibility",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

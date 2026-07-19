@@ -6,17 +6,48 @@
     "tmdb": "600",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T09:25:03+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:15:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0009",
   "links": [],
-  "quote": "Je suis tombé sur Full Metal Jacket, qui était le film Trostier.",
+  "quote": "C'est le film trop stylé.",
   "recommendedBy": "Carlito",
   "sourceId": "un-bon-moment",
   "status": "discarded",
-  "timestamp": "00:38:59",
+  "timestamp": "00:38:55",
   "title": "Full Metal Jacket",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

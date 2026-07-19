@@ -1,19 +1,51 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2776 : morceau « Feelin' Good » cité à l'intérieur de la même recommandation (mixtape « Kosmos » de J Lloyd).",
+    "verdict": "discard"
+  },
   "creator": "G-loid",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0774",
   "links": [],
-  "quote": "qui a un projet perso qui s'appelle G-loid et la sortie de mixtape incroyable et notamment un morceau qui s'appelle Feel Good qui est fou",
+  "quote": "Il y a notamment un morceau qui s'appelle Feel Good ! Qui est fou !",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:33:45",
+  "status": "discarded",
+  "timestamp": "01:33:48",
   "title": "Feel Good",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "musique"
   ]
 }

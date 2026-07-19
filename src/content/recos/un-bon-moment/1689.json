@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Borderline citation/discard (mention brève).",
+    "reason": "Kyan : « il était dans Volteface, c'est incroyable... des films de fous » (l.1091-1095). Avis positif bref dans la même digression Nicolas Cage. Substance mince mais réel avis → citation.",
+    "verdict": "citation"
+  },
+  "creator": "John Woo",
+  "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1689",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il a des très bons films.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:21:39",
+  "title": "Volte/Face",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

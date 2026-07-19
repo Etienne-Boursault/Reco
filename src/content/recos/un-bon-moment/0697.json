@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2582",
+    "reason": "Doublon de ubm-2582 (meme passage 01:04:47). 'Livre de Raymond Domenech' = materiel d'une vanne de la minute de Paul (Soixante): la chute est 's'il existait un livre avec tes meilleurs conseils d'entraineur, il fallait le lire' -> mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Raymond Doménec",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Je lis aussi un livre de Raymond Doménec, ancien sélectionneur de l'équipe de France, lequel il donne ses meilleurs conseils d'entraîneur.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:04:47",
   "title": "Le livre de Raymond Doménec",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

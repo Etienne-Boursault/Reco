@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le transcript dit une fois « le jeu de Dedo » (l.1356) mais le jeu est lie au spectacle Killing Joke de Yacine -> attribue a Yacine, a confirmer. Invites a completer dans les metadonnees episode.",
+    "reason": "Jeu de societe, extension transmedia du spectacle Killing Joke de Yacine (« Killing Time Part 2 », l.1785-1787), presente et vendu par lui : « le jeu s'appelle Killing Time... disponible sur le site de Tsume... en grande surface » (l.1802-1803). Oeuvre d'invite -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "creator": "Yacine",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2468",
+  "kind": "reco",
+  "links": [],
+  "quote": "Le jeu s'appelle Killing Time parce que mon spectacle s'appelait Killing Joke.",
+  "recommendedBy": "Yacine Belhousse",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:36",
+  "title": "Killing Time",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

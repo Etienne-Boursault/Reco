@@ -1,20 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Mr. & Mrs. Smith (serie de Donald Glover) discutee avec substance ('exceptionnel', 'prendre un blockbuster, en faire un truc niche realiste'). Admiration sans prescription, pas un invite. Entree canonique du groupe de doublons.",
+    "verdict": "citation"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/118642-mr-mrs-smith/watch?locale=FR",
     "tmdb": "118642",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0972",
+  "kind": "citation",
   "links": [],
-  "quote": "Mais Mr & Mrs. Miss exceptionnel. Il faut prendre ce truc qui est un blockbuster il faut faire un truc niche, réaliste c'est trop fort",
+  "quote": "Et Mister et Mrs. Smith ! Exceptionnel ! Mister et Mrs. Smith ! Il va aller prendre ce truc qui est un blockbuster ! C'est tellement une bonne idée ! Il va faire un truc niché, réaliste !",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:16:08",
+  "status": "validated",
+  "timestamp": "01:16:09",
   "title": "Mr. & Mrs. Smith",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

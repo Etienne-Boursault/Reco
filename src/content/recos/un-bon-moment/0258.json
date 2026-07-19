@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'je vois regulierement 8 et demi de Fellini parce que c'est de la poesie pure... c'est de la magie' : admiration personnelle forte, sans prescription au public. PRIMAIRE (fusionner ubm-1802).",
+    "verdict": "citation"
+  },
   "creator": "Federico Fellini",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,18 +14,49 @@
     "tmdb": "422",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0258",
+  "kind": "citation",
   "links": [],
-  "quote": "Moi, je vois régulièrement 8 et demi de Fellini. Tu vois. Parce que c'est de la poésie pure.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "je vois régulièrement 8 et demi de Fellini parce que c'est de la poésie pure",
+  "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:44:40",
+  "status": "validated",
+  "timestamp": "01:42:42",
   "title": "8½",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

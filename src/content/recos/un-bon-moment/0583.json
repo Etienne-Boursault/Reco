@@ -1,20 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique conservee : ubm-2736 (youtube).",
+    "reason": "Doublon (regle 13) : meme reco que ubm-2736 (« Pab/Pap the Kid », 01:18:42). Extraction acast redondante.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/547692982"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:18:39",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0583",
   "links": [],
   "quote": "Donc je vais mettre en avant \"Pap the Kid\" et \"Ashile\" qui sont deux rappeurs / chanteurs.",
-  "recommendedBy": "Pierre",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:39",
   "title": "Pap the Kid",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

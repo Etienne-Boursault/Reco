@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp draft 00:52:53 mais le passage reel est a 01:09:52 (regle 14). Titre « New York » attribue a Herve Mimran non verifiable (budget WebSearch epuise) ; verdict discard de toute facon.",
+    "reason": "Name-drop du realisateur Herve Mimran dans une anecdote (pret d'appartement a Baptiste), pas de prescription du film (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "Hervé Mimran",
+  "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:53",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3140",
+  "links": [],
+  "quote": "non mais il est très poli très respectueux par exemple Hervé Mimran le réalisateur de New York",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:52:53",
+  "title": "New York",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

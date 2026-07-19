@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : DJ Midi (performeur musical non-invité) cité car Jérémie a utilisé sa musique dans sa vidéo — anecdote de strike YouTube puis déblocage. Pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "DJ Midi",
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:33",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2720",
+  "links": [],
+  "quote": "\"Genre je fais ce truc et j'utilise une musique de DJ Midi !\"",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:02:33",
+  "title": "DJ Midi",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

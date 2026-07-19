@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Name-drop illustratif (alumni Sciences Po), aucun avis. 'Big BD' non identifiable/ASR douteux.",
+    "reason": "Mention instrumentale (exemple) : Bertrand liste ses 'modeles de parcours independamment de ce que je peux penser d'eux, c'est Big BD, c'est Romanov, c'est la chanteuse Camille' comme anciens de Sciences Po (00:47). Disclaimer explicite de non-jugement, pas une reco. 'Big BD' par ailleurs intracable.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3034",
+  "links": [],
+  "quote": "mes modèles à l'époque modèles de parcours indépendamment de ce que je peux penser d'eux c'est Big BD",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:26",
+  "title": "Big BD",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.62,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Borderline citation, mais fonction de comparaison illustrative.",
+    "reason": "Mention instrumentale : la scène d'Afterlife (Ricky Gervais) sert de comparaison à l'anecdote de heckling ('ma femme est morte'), l'interlocuteur ne l'a pas vue. Pas de prescription ni de discussion pour elle-même.",
+    "verdict": "discard"
+  },
+  "creator": "Ricky Gerzais",
+  "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2701",
+  "links": [],
+  "quote": "T'as vu la scène de Afterlife ou pas ? Avec Ricky Gervais ?",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:44",
+  "title": "Afterlife",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

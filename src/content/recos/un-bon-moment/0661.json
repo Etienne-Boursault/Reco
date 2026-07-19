@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2468 : « Killing Box » est une blague (l.1346-1354, la boite pour tuer). Le vrai nom du jeu est Killing Time (l.1785, 1802). Creator « Dedot » errone.",
+    "verdict": "discard"
+  },
   "creator": "Dédot",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0661",
   "links": [],
   "quote": "Il y a un site internet, il y a quoi ? Il y a un Minitel, on dit \"3615\" de Killing Box.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:59:55",
   "title": "Killing Box",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

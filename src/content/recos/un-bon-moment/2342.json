@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Pas une œuvre (Festival Nikon = festival de courts-métrages) et mention instrumentale (exemple de tremplin pour jeunes réalisateurs); pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "652415a1c899650012820b3f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2342",
+  "links": [],
+  "quote": "pour les trucs genre Festival Nikon",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:29:23",
+  "title": "Festival Nikon",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

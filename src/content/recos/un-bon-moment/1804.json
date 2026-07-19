@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'un film d'une serie B americaine qui est vachement bien, avec cet acteur [Odenkirk]... tu vas te marrer, on voit ca ce soir' : reco de Dupontel. Titre REEL = Nobody (2021, Ilya Naishuller/Bob Odenkirk), PAS le Mr. Nobody de Van Dormael. PRIMAIRE (fusionner ubm-0259).",
+    "verdict": "validate"
+  },
+  "creator": "Jacob Van Dormael",
+  "episodeGuid": "69207579d35aa096b5a8ee47",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1804",
+  "kind": "reco",
+  "links": [],
+  "quote": "c'est un film d'une série B américaine qui est vachement bien",
+  "recommendedBy": "Albert Dupontel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:47:10",
+  "title": "Mister Nobody",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

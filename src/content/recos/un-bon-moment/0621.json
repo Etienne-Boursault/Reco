@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "00:51:54 : 'redécouvrir des albums, notamment l'album de Nekfeu, le dernier' = 'Les Étoiles Vagabondes' (Nekfeu, 2019), cité comme contenu de Le Règlement (ubm-0620). Draft 'Necfeu' → Nekfeu. L'humain peut ré-ajouter l'album en citation s'il le souhaite.",
+    "reason": "Titre halluciné/inexistant ('L'Émite des essais') ; il s'agit du dernier album de Nekfeu cité comme exemple analysé par la chaîne Le Règlement — mention instrumentale (règles 1/7/11).",
+    "verdict": "discard"
+  },
   "creator": "Necfeu",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Tant moins l'album de Necfeu, le dernier album.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:51:54",
   "title": "L'Émite des essais",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

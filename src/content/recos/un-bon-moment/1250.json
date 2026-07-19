@@ -1,20 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Morceau du multi-blind test de Navo (jeu, 35:00). Doublon de ubm-2606.",
+    "verdict": "discard"
+  },
   "creator": "Gipsy Kings",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/958716562"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:35:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1250",
   "links": [],
   "quote": "Très très fort.",
-  "recommendedBy": "Julien Doré",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:35:00",
   "title": "Gipsy Kings",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

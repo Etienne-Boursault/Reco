@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Irréalisable' et créateur 'Babor l'éléphant' (auteur Internet) à vérifier (WebSearch indisponible). Sollicité par 'Davo' (probablement Navo, host) pour recommander.",
+    "reason": "Prescription explicite d'un film d'un auteur externe ('Je recommande Irréalisable... excellent film') ; long-métrage autoproduit de Babor l'éléphant.",
+    "verdict": "validate"
+  },
+  "creator": "Babor Lelefan",
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:08",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3129",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.baborentertainment.com/mon-long-m%C3%A9trage"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000042182.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@baborlelefan"
+    }
+  ],
+  "quote": "Je recommande Irréalisable de Babor, L'éléphant que vous connaissez peut-être, Clément.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:35:08",
+  "title": "Irréalisable",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

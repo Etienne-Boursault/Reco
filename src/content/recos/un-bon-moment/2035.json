@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Serie de Kyan (host) mais seulement decor d'anecdote.",
+    "reason": "Mention instrumentale : 'pendant le tournage de Bref 2' sert de decor a une anecdote de fausse route. Aucune presentation ni discussion de la serie -> pas guest-work, pas de substance.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2035",
+  "links": [],
+  "quote": "Pendant le tournage de Bref 2",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:05",
+  "title": "Bref 2",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

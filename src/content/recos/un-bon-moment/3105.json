@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Borderline discard/citation ; retenu citation car avis reel exprime sur l'emission.",
+    "reason": "Emission discutee avec avis : un host demande explicitement « ton avis sur cette emission » ; reponse « des gens ca leur correspond... c'est une preuve d'humilite d'aller faire danse avec les stars c'est bien ». Substance mais pas de prescription de visionnage → citation (regle 4). Le pote qui a gagne (Bambi) n'est pas un invite present.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3105",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube officielle",
+      "url": "https://www.youtube.com/@Danseaveclesstarstf1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram officiel",
+      "url": "https://www.instagram.com/dals_tf1/"
+    }
+  ],
+  "quote": "je trouve qu'il y a une preuve d'humilité d'aller faire danse avec les stars c'est bien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:52",
+  "title": "Danse avec les stars",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

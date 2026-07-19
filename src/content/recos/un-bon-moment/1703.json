@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme passage que ubm-1995 (~01:09:17). Exemple rhetorique, pas une reco.",
+    "reason": "Mention instrumentale: anecdote sur les comedies romantiques et les attentes irrealistes ('je me rappelle quand j'avais vu le Moulin Rouge'). Pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1703",
+  "links": [],
+  "quote": "moi je me rappelle quand j'avais vu le Moulin Rouge leur histoire d'amour et tout",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:09:17",
+  "title": "Le Moulin Rouge",
+  "transcriptSource": "acast",
+  "types": [
+    "film"
+  ]
+}

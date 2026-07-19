@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention en passant lors de la mise en place du blind test (dernière chanson entendue dans le bus), devenue running gag 'Jour meilleur' tout l'episode. Aucune prescription, artiste inconnu.",
+    "verdict": "discard"
+  },
   "creator": "Artiste inconnu",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:38:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0132",
   "links": [],
   "quote": "cette chanson me fait du bien",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:38:19",
   "title": "Un jour meilleur",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

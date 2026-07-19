@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Artiste = Diam's (titre 'Diam' tronque). Exemple rhetorique dans la discussion sur la promo.",
+    "reason": "Mention instrumentale : Diam's citee en exemple d'artiste ayant refuse la promo ('elle a dit : je ne ferai que des concerts... tout est dans mes textes', 00:25:34). Aucune prescription d'ecoute -> pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Diam",
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2645",
+  "links": [],
+  "quote": "Diam avait fait ça ! Elle avait son dernier album, elle a dit : je ne ferai que des concerts !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:25:34",
+  "title": "Diam",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

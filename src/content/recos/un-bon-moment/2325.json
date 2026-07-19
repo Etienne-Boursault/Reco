@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Preciser le vrai nom du spectacle de Kheiron puis passer en guest-work. ~00:24:02.",
+    "reason": "'Cairone' (~00:24:02) = mis-transcription de Kheiron (cf. son site kairon.fr) : il s'agit du spectacle de Kheiron (invite), recommande par les hosts ('super spectacle... deja un super complet'). Oeuvre invite = guest-work une fois le titre corrige, mais artefact -> reste en draft.",
+    "verdict": "unsure"
+  },
+  "creator": "Cairone",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2325",
+  "links": [],
+  "quote": "et un super spectacle de Cairone dit de manière désinvolte",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:24:00",
+  "title": "Cairone",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

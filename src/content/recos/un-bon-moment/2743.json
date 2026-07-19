@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution stockee 'Kyan Khojandi' corrigee -> Anna Apter (creator du fichier = Anna Apter, confirme par le transcript). guests metadonnees vide. Timecode 00:03:41 OK.",
+    "reason": "Emission d'Anna Apter (Cher Journal, Canal+/YouTube, reelle) presentee par elle -> auto-promo invitee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Anna Apter",
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2743",
+  "kind": "reco",
+  "links": [],
+  "quote": "Cher Journal, c'est un peu mon journal intime que je montre à la télé",
+  "recommendedBy": "Anna Apter",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:03:41",
+  "title": "Cher Journal",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

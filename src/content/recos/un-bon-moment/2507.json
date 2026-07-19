@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a corriger : « Vincent Delerm » (chanteur/auteur-compositeur). Doublon ubm-1257 -> discard.",
+    "reason": "Reco explicite : « J'aime beaucoup Vincent de Lerme », « on adore » (01:21:52-01:22:02), en reponse au prompt adresse a Navo.",
+    "verdict": "validate"
+  },
+  "creator": "Vincent de Lerme",
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2507",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'aime bien Vincent de Lerme.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:02",
+  "title": "Vincent de Lerme",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

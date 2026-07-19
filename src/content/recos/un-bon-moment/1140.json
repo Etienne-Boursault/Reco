@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Attribution host cinephile non certaine.",
+    "reason": "Prescription explicite: 'Si vous avez vu Midsommar... je vous le conseille. Midsommar est magnifique' (01:13:29).",
+    "verdict": "validate"
+  },
   "creator": "Ari Aster",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,17 +15,48 @@
     "tmdb": "530385",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1140",
+  "kind": "reco",
   "links": [],
-  "quote": "Midsommar, c'est magnifique.",
+  "quote": "Midsommar est magnifique.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:13:29",
   "title": "Midsommar",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommandé par un invité (Anis ou Pierre), non diarisé. Autrice BD réelle (@louisa.lesage) ; recueil « Journal d'un alien en roue libre » (Éd. Exemplaire, 2026). Canonique des doublons Louisa Lesage.",
+    "reason": "Reco explicite (« moi je recommande le compte Insta de Louisa Lesage... j'aime trop ce qu'elle fait, une artiste hyper intéressante »).",
+    "verdict": "validate"
+  },
+  "creator": "Louisa Lesage",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:13:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:37:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T06:13:25+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:51",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:37:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1371",
+  "kind": "reco",
+  "links": [],
+  "quote": "moi je recommande le compte Insta de Louisa Lesage",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:37:51",
+  "title": "Louisa Lesage",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

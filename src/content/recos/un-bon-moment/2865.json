@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE du cluster Théo Babac (doublons discardés: 1113, 1152). « suivez Théo Babac sur TikTok, il est très drôle » (01:31:52) = reco explicite => validate. Nom depuis le transcript youtube (propre) ; handle TikTok exact non confirmable (WebSearch épuisé) => title_suspect léger. Locuteur = même hôte que la reco surendettement (enchaînement continu), Kyan vs Navo indéterminable => recommendedBy vidé + attribution_suspect.",
+    "reason": "Recommandation explicite fin d'émission; attribution hôte ambiguë",
+    "verdict": "validate"
+  },
+  "creator": "Théo Babac",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2865",
+  "kind": "reco",
+  "links": [],
+  "quote": "suivez Théo Babac sur TikTok, il est très drôle",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:31:52",
+  "title": "Théo Babac",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

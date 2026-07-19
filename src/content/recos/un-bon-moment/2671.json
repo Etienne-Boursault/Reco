@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "'Civilisation' (album OrelSan 2021) sert d'ancrage metaphorique. Appreciation OrelSan captee par ubm-2674.",
+    "reason": "Album d'OrelSan cite comme metaphore (00:18:48, 'a la fin tu deviens president du monde dans Civilisation'). Comparaison instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:02:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2671",
+  "links": [],
+  "quote": "Et à la fin, tu deviens président du monde dans « Civilisation ».",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:18:48",
+  "title": "Civilisation",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

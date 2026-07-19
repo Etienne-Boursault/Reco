@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Bit sur les annonces du barista SNCF : « allez goûter le kombucha du Squeeze, c'est très bon » (l.2784-2789). Produit de boisson, pas une œuvre culturelle.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:02:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +27,10 @@
   "quote": "Allez écouter le kombucha du squeeze, franchement c'est très bon.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:02:44",
   "title": "Kombucha du Squeeze",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

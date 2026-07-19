@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre provisoire selon Bigflo lui-meme ('tout peut changer et tout peut s'annuler'). Emission YouTube a venir. Timestamp reel ~00:11:08 (reco a 00:00:00).",
+    "reason": "Bigflo (invite) annonce en exclu sa propre emission a venir : 'Je lance mon emission bientot... ca s'appelle C'est pas mon metier' (~00:11:08) — auto-promo d'un projet d'invite (emission a venir).",
+    "verdict": "guest-work"
+  },
+  "creator": "Big Flo & Oli",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1807",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je la lance ici en exclu. Ça s'appelle C'est pas mon métier. Mais je trouve que ça fait un peu, on n'est pas couché, tu vois ?",
+  "recommendedBy": "BigFlo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:00",
+  "title": "C'est pas mon métier",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

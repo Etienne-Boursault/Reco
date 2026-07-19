@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Je recommande GTA V » [01:04:24] : gag de Navo dans une liste de fausses recos (« Protégez-vous », « le rayon laser dans Zelda ») avant sa vraie reco (Dava). Doublon Acast de ubm-2413.",
+    "reason": "Reco comique de remplissage + doublon.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65241146d963060012045fb6",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "je recommande GTA 5 ça un super jeu vidéo",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:04:25",
   "title": "GTA 5",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

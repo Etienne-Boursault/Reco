@@ -1,18 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "«Creative Explained» d'Armen Adamjan reel (astuces/jardinage). NB transcript dit «americain» mais Adamjan est canadien (mineur).",
+    "reason": "Navo recommande explicitement ('J'ai un compte TikTok a vous recommander... je vous conseille son compte').",
+    "verdict": "validate"
+  },
   "creator": "Armen Adam-Jan",
   "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:27:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:16:02+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0811",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est un d'un Américain, il explique un peu des petits trucs, si vous faites un peu de jardinage...",
+  "quote": "C'est un compte TikTok à vous recommander. C'est 'Creative Explained' de Armen Adamjan.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:27:17",
+  "status": "validated",
+  "timestamp": "01:27:20",
   "title": "Creative Explained",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

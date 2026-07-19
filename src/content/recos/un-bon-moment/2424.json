@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifier l'orthographe exacte 'Seb Mellia' (verif web indisponible cette session).",
+    "reason": "Navo recommande la chaine YouTube de Seb Mellia (stand-up, 'La chaine de Semelia, il y a du stand-up... c'est super'). Reco explicite. Canonique (doublons 2434, 1062).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2424",
+  "kind": "reco",
+  "links": [],
+  "quote": "La chaîne de Semélia, il y a du stand-up, il y a plein plein de choses. C'est super créé.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:49",
+  "title": "Seb Melia",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

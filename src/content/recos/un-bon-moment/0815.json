@@ -1,19 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Court-metrage anime reel de Kurzgesagt. Attribution Kyan : meme locuteur que le monologue philosophique « l'autre c'est moi » et « j'ai deja fait dans une emission ».",
+    "reason": "Recommandation explicite du host : « Moi, je recommande aux gens... The Egg de Kurzgesagt... C'est incroyable. C'est magnifique. » Titre et createur (Kurzgesagt) confirmes dans le transcript.",
+    "verdict": "validate"
+  },
   "creator": "Kurzgesagt",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:40:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0815",
+  "kind": "reco",
   "links": [],
-  "quote": "Un court-métrage animé sur un texte qui précédait le court-métrage animé, mais le court-métrage est très cool. The Egg de Kurzgesagt.",
-  "recommendedBy": "Roman Frécinès",
+  "quote": "un court-métrage animé sur un texte qui précédait le court-métrage animé. Mais le court-métrage est très cool.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:47",
+  "status": "validated",
+  "timestamp": "01:08:40",
   "title": "The Egg",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre : accent « Fantomas » -> « Fantomas ». Champ creator = « Jean Marais » (acteur) ; realisateur = Andre Hunebelle (film 1964 avec Louis de Funes).",
+    "reason": "Recommandation explicite : « Si vous avez l'occasion de voir Fantomas avec de Funes et Jean Marais, c'est tres marrant » suivi de « tres bon conseil, c'est vraiment bien » (l.2779-2782).",
+    "verdict": "validate"
+  },
   "creator": "Jean Marais",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "externalIds": {
@@ -6,18 +19,49 @@
     "tmdb": "319287",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0666",
+  "kind": "reco",
   "links": [],
-  "quote": "Si vous avez le casse de voir Fantomas avec de funeste et Jean Marais, c'est très marrant.",
+  "quote": "Si vous avez l'occasion de voir Fantômas avec deux Funès et Jean Marais, c'est très marrant.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:31:11",
+  "status": "validated",
+  "timestamp": "01:31:15",
   "title": "Fantomas",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -27,5 +71,6 @@
       "label": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Fantomas"
     }
-  ]
+  ],
+  "year": 1964
 }

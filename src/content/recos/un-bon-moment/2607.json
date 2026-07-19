@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop humoristique/moqueur en reponse a 'le meilleur conseil qu'on vous ait donne' ('L'aigle noir. Tres relou comme tube de l'ete', 01:03:36). Pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Barbara",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2607",
+  "links": [],
+  "quote": "L'aigle noir.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:03:36",
+  "title": "L'aigle noir",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

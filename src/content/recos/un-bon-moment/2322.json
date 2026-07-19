@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "In The Panda = Victor Bonnefoy. ~01:21:41.",
+    "reason": "Reco explicite segment final : 'si je peux recommander, In The Panda ! J'aime bien Victor' (~01:21:41). Chaine reelle (Victor Bonnefoy). Attribution (host ou Kheiron) non certaine.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2322",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ah si je peux recommander, In The Panda ! J'aime bien Victor, j'aime bien ce qu'il fait !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:21:41",
+  "title": "In The Panda",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

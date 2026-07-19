@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Comedienne ex-Comedie-Francaise; eloge par Pierre Niney, pas d'incitation 'allez la voir'.",
+    "reason": "Eloge du talent de la comedienne Leonie Simaga (joue la senatrice dans Gourou), substance reelle mais pas de prescription au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1624",
+  "kind": "citation",
+  "links": [],
+  "quote": "elle s'appelle Leonie Simaga et j'étais avec elle à la comédie française, j'étais, je la regardais jouer, j'étais en coulisses et j'étais vraiment, tu sais, quand t'es foudroyé par le talent des gens et t'es bouche bée.",
+  "recommendedBy": "Pierre Niney",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:08:56",
+  "title": "Léonie Simaga",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Œuvre de François Descraques (confirmé) ; acteur cité « Yacine Bellouz » = Yacine Belhousse.",
+    "reason": "Discussion substantielle et admirative d'une idée scénaristique (l'implant) mais pas de prescription explicite au public.",
+    "verdict": "citation"
+  },
+  "creator": "François Descraques",
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1567",
+  "kind": "citation",
+  "links": [],
+  "quote": "dans le visiteur du futur c'est ça dont tu voulais parler ou pas il y a Raphaël, François Descraques il a écrit un truc assez fou",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:06",
+  "title": "Le Visiteur du futur",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre",
+    "serie"
+  ]
+}

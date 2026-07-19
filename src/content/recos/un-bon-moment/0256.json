@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Breaking Bad tu connais? bien sur, j'ai vu les 5 saisons, c'est un classique' : oeuvre affirmee comme classique par les deux, discutee brievement, sans nouvelle prescription. Locuteur de l'affirmation incertain.",
+    "verdict": "citation"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,17 +14,38 @@
     "tmdb": "1396",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0256",
+  "kind": "citation",
   "links": [],
-  "quote": "Bien sûr, j'ai vu les 5 saisons.",
-  "recommendedBy": "Navo",
+  "quote": "c'est un classique",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:43:21",
   "title": "Breaking Bad",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

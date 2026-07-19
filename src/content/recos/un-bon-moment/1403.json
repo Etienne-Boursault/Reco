@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Basic (Aurel) cite en exemple rhetorique (00:59:35 c'est trop cool que quelqu'un dans sa chambre il refasse Basic) dans une discussion sur le plagiat de concept -- pas de prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T07:45:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1403",
+  "links": [],
+  "quote": "c'est trop cool que quelqu'un dans sa chambre il refasse Basic",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:35",
+  "title": "Basic",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

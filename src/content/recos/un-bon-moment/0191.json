@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Chanson support du jeu musical ('une deuxieme chanson sur un air de Celine Dion'). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "Céline Dion",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3460217671"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0191",
   "links": [],
   "quote": "On écoute une deuxième chanson sur un air de Céline Dion.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:50",
   "title": "Céline Dion",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

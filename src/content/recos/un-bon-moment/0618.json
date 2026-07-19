@@ -1,17 +1,38 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:49:14-00:49:35 : bit comique repris par les hosts ('10 bonnes raisons de se laver les mains'). Elle enchaîne sur ses vraies recos (Evie McKinney, Némir). L'humain peut rouvrir si voulu.",
+    "reason": "Réponse-gag (la chaîne 'Sympa', content farm) que Fadily rétracte aussitôt ('Non, je dirais...') pour donner ses vraies recos : pas une prescription éditoriale (règle 1).",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0618",
   "links": [],
   "quote": "Regardez la chaîne sympa, parce qu'il y a plein de vidéos sur les chats.",
-  "recommendedBy": "Fadili",
+  "recommendedBy": "Fadily Camara",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:49:14",
   "title": "Chaîne sympa",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0945 (canonique, « Balade Mentale »). Attribution « Navo » ici erronee (voir note du canonique).",
+    "reason": "Doublon de ubm-0945 (canonique Balade Mentale).",
+    "verdict": "discard"
+  },
   "creator": "Ballad Mental",
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:58:03",
   "title": "Ballad Mental",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

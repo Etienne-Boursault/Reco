@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Don't F**k with Cats (doublons : ubm-0668, ubm-2471). Titre officiel complet. Invites a completer dans les metadonnees episode.",
+    "reason": "Recommandation explicite de Dedo en reponse a « tu as une recommandation ? » : « une serie docu de quatre episodes... je voulais en parler... c'est disponible sur Netflix » (l.2926-2943).",
+    "verdict": "validate"
+  },
+  "creator": "Netflix",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:36:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2477",
+  "kind": "reco",
+  "links": [],
+  "quote": "Alors, c'est pas très feel good, hein, mais quand même, je voulais en parler, ça s'appelle \"Don't fuck with cats on internet\".",
+  "recommendedBy": "Dedo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:36:25",
+  "title": "Don't F**k with Cats: Hunting an Internet Killer",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

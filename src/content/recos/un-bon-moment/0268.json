@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique. Doublon = ubm-1767 ('Swans' = mistranscription de 'Friends', 'Rose' = 'Ross').",
+    "reason": "Scene de Friends (Ross imaginant le bruit d'un dinosaure) citee comme illustration rhetorique dans une discussion sur l'imagination des sons (01:23). 'La scene geniale' mais fonction purement illustrative, aucune prescription.",
+    "verdict": "discard"
+  },
   "creator": "David Crane, Marta Kauffman",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "1668",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:23:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +37,10 @@
   "quote": "Dans Friends, il y a la scène géniale où il y a Ross qui imagine le bruit d'un dinosaure.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:23:13",
   "title": "Friends",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

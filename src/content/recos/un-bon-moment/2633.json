@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommande par Cyprien (contexte : 'je t'ai connu dans le dessin', il dessine) ; transcript non-diarise, la reco initiale disait Navo. A confirmer.",
+    "reason": "Procreate (app iPad de dessin) : 'quand je me mets sur mon petit Procreate, je vous conseille... c'est une application sur iPad qui est formidable... sublime... genial'. Prescription explicite ('je vous conseille').",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:49:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:49:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2633",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est une application sur iPad qui est formidable.",
+  "recommendedBy": "Cyprien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:49:59",
+  "title": "Procreate",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2001.",
+    "reason": "Doublon de ubm-2001 : 'Bref aux urgences' = l'épisode urgences de la saison 1, même passage. Pas un titre d'œuvre distinct.",
+    "verdict": "discard"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "C'est un truc que ma meuf un jour on est en train de jouer avec des potes à la console",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:35:56",
   "title": "Bref aux urgences",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

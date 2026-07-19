@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine (Kyan/Navo/invite dans un echange rapide 'a refaire') → recommendedBy vide.",
+    "reason": "Reco explicite : 'Ah oui, je le conseille a fond. J'adore.' (00:41:10).",
+    "verdict": "validate"
+  },
   "creator": "Chad Stahelski",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
@@ -6,18 +15,57 @@
     "tmdb": "458156",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0474",
+  "kind": "reco",
   "links": [],
-  "quote": "John Wick, c'est une... Ah oui, je le conseille à fond.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Ah oui, je le conseille à fond.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:40:25",
+  "status": "validated",
+  "timestamp": "00:41:10",
   "title": "John Wick",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

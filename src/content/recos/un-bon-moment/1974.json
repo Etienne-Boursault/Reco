@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Billie Eilish ('Bad guy') = reponse a une manche du jeu 'Devine et chanter' de Greg (01:04). Chanson/reponse support de jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1974",
+  "links": [],
+  "quote": "Ah là y'a moyen ! Y'a plus d'avoir de boîtier machin... C'était relou ! Blylish ! Bad guy ouais !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:00",
+  "title": "Billie Eilish",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.72,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Akira' (Katsuhiro Otomo) présenté par Cyprien comme 'classique de l'animation' et défendu contre le snobisme de Régé — discuté avec substance mais dans une anecdote, sans prescription directe.",
+    "verdict": "citation"
+  },
   "creator": "Katsuhiro Otomo",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
@@ -6,16 +14,49 @@
     "tmdb": "149",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-0993",
+  "kind": "citation",
   "links": [],
-  "quote": "je parle de akira film de autobot classique de l'animation",
+  "quote": "Je parle de Akira, film d'Otobo, classique de l'animation.",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:42:00",
+  "status": "validated",
+  "timestamp": "00:42:04",
   "title": "Akira",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

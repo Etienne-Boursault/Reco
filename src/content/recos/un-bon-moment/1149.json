@@ -1,18 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "« Anesthésie générale » — spectacle en cours de l'invité Jérémy Ferrari, présenté et discuté en profondeur (00:05:19-00:07:48). Œuvre d'invité présentée par lui => guest-work, recommandé par le propriétaire.",
+    "reason": "Spectacle actuel de l'invité, présenté par lui-même",
+    "verdict": "guest-work"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:05:20",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1149",
+  "kind": "reco",
   "links": [],
-  "quote": "Tu fais un spectacle sur le milieu médical, sur ce s'appelle... Anesthésie générale.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "alors, le spectacle, effectivement, il est sur le...",
+  "recommendedBy": "Jérémy Ferrari",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:05:20",
   "title": "Anesthésie générale",
+  "transcriptSource": "youtube",
   "types": [
     "spectacle"
   ]

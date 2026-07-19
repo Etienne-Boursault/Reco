@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~01:09:41. Citation (film discute, plus etoffe que la simple anecdote Moulin Rouge). Locuteur non diarize -> recommendedBy vide. A basculer en discard si juge purement instrumental.",
+    "reason": "Les Poupees russes (Cedric Klapisch) discute avec substance (scene decrite en detail, 'elle est trop bien', Romain Duris) dans une conversation cine, sans prescription explicite au public.",
+    "verdict": "citation"
+  },
+  "creator": "Cédric Klapisch",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1704",
+  "kind": "citation",
+  "links": [],
+  "quote": "les poupées russes il y a une scène dans les poupées russes où il dit qu'il a rencontré une meuf mais il s'engueulait dans leur petit appart et après ils courent tout nu dans la rue dans Paris",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:09:41",
+  "title": "Les Poupées russes",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

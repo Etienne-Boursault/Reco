@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale dans le jeu-devinette : la chaine YouTube de Julien Lepers comme reponse a « qu'est-ce qui tue le plus vite un vieux ». « Je vais m'abonner a la chaine de Julien » est embarque dans le bit comique, pas une reco au public.",
+    "verdict": "discard"
+  },
+  "creator": "Julien Lepers",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2467",
+  "links": [],
+  "quote": "Écoute, je sais pas si c'est ce qui tue le plus vite un vieux, mais je vais m'abonner à la chaîne de Julien.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:30",
+  "title": "Chaîne YouTube de Julien Lepers",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

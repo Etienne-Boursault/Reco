@@ -1,17 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Amour et amnesie : reponse du jeu 'deviner chanter' (film = 50 First Dates). Support de jeu -> discard. Createur 'Pierre de Cabezon' errone.",
+    "verdict": "discard"
+  },
   "creator": "Pierre de Cabezon",
   "episodeGuid": "69b595f063444515f923af4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0463",
   "links": [],
-  "quote": "Amour et amnesie. Super film.",
-  "recommendedBy": "Invité",
+  "quote": "c'est quoi le film ? c'est quoi le film ? amour et amnésie",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:59:49",
   "title": "Amour et Amnésie",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

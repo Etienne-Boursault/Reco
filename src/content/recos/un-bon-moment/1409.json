@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster Agathe Mer (00:16). Selon moi hors perimetre (praticienne) -> tendance discard, mais la reco est explicite et forte : je laisse en draft pour decision humaine sur le perimetre. Attribution = l'intervenant qui fait de l'hypnose (incertain).",
+    "reason": "Reco explicite forte ('je vous la recommande, elle est formidable') MAIS il s'agit d'une hypnotherapeute (praticienne) — ni oeuvre, ni artiste au sens humoriste/musicien/journaliste. Perimetre editorial a trancher par l'humain.",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:47:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1409",
+  "links": [],
+  "quote": "Elle s'appelle Agathe Mer, je vous la recommande, elle est formidable.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:16:07",
+  "title": "Agathe Mer",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "autre"
+  ]
+}

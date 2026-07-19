@@ -1,5 +1,24 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'La Boule Noire' = salle/date du concert de la rappeuse Mona Guba (10 avril 2026), pas une oeuvre. Faux positif (nom de lieu). La vraie promo de Mona est son EP NTP (cf ubm-0275).",
+    "verdict": "discard"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +27,10 @@
   "quote": "il y a une date je crois la boule noire 10 avril de 1926",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:41:40",
   "title": "La Boule Noire",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

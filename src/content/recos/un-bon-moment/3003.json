@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse du jeu multi-blind test ('ERA') — support de jeu, aucune recommandation.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3003",
+  "links": [],
+  "quote": "C'était ERA.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:52:14",
+  "title": "ERA",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

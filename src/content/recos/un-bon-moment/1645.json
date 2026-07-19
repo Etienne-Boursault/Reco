@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe officielle : Mustapha El Atrassi (pas 'Moustapha El Atraci').",
+    "reason": "Mustapha El Atrassi cite comme auteur du meilleur conseil recu par Tom ('t'as le droit d'etre nul') + eloge de son parcours stand-up (00:27). Substance, pas de prescription directe.",
+    "verdict": "citation"
+  },
+  "creator": "Moustapha El Atraci",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:27:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:17",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:27:17",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1645",
+  "kind": "citation",
+  "links": [],
+  "quote": "Moi on m'a donné un conseil et du coup ça commence à débloquer un truc, c'est \"t'as le droit d'être nul\".",
+  "recommendedBy": "Tom Baldetti",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:27:09",
+  "title": "Moustapha El Atraci",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

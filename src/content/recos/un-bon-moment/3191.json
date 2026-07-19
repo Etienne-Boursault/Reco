@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Big Flo et Oli » -> « Bigflo & Oli ».",
+    "reason": "Support du meme jeu de tracklisting invente + anecdote « moi qui les connais dans la vie » (regle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:21",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3191",
+  "links": [],
+  "quote": "Moi qui les connais dans la vie. Ces gars sont super marrants dans la vie.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:46:21",
+  "title": "Big Flo et Oli",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

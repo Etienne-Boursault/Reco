@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre à corriger : le film est « Orgazmo » (1997, écrit/réalisé par Trey Parker, avec Matt Stone) ; « Captain Orgasmo/Orgazmo » est le nom du super-héros dans le film. Non revérifiable via WebSearch (budget session épuisé). Attribution incertaine (Kyan ou l'invité Orelsan interpelle Navo) → recommendedBy vide (règle 3).",
+    "reason": "Film discuté avec substance (2e film des créateurs de South Park, « un classique », surprise que Navo ne l'ait pas vu) mais sans prescription claire et avec ambivalence (« mal vieilli », « passons »). Déclenché par la vanne d'acteur porno mais bascule en vraie discussion (règle 4).",
+    "verdict": "citation"
+  },
+  "creator": "Trey Parker",
+  "episodeGuid": "6a47e41c08da053175fb135e",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:56",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3145",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=20375.html"
+    }
+  ],
+  "quote": "Le premier film des mecs de South Park. Enfin, pas le premier, je crois. C'est le deuxième, Captain Orgasmo.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:18:56",
+  "title": "Orgazmo",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

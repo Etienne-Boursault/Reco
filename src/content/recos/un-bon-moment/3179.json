@@ -1,0 +1,58 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Florent Bernard prescrit la trilogie de Richard Linklater : « une trilogie que je trouve magnifique sur un couple ». Film reel, pas l'oeuvre d'un invite.",
+    "verdict": "validate"
+  },
+  "creator": "Richard Linklater",
+  "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3179",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/before-sunrise"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/before-sunrise/umc.cmc.65m3n3lrca1e6nljfyvhn76u0"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/before-sunrise"
+    }
+  ],
+  "quote": "il a fait une trilogie qui s'appelle Before Sunset, Before Sunrise et Before Midnight, qui est une trilogie que je trouve magnifique sur un couple",
+  "recommendedBy": "Florent Bernard",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:00:00",
+  "title": "Before Sunrise",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

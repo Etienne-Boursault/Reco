@@ -1,18 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timecode ~00:45:16. Les Vieux Fourneaux de Wilfrid Lupano & Paul Cauuet (correct). Attribution incertaine -> recommendedBy vide.",
+    "reason": "Recommandation explicite d'une BD ('je vous recommande une bd qui s'appelle les vieux fourneaux... c'est super je vous recommande'). Locuteur non diarize (anecdote de scene a Poitiers, probablement Nora ou Kyan).",
+    "verdict": "validate"
+  },
   "creator": "Wilfrid Lupano, Paul Cauuet",
   "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0313",
+  "kind": "reco",
   "links": [],
-  "quote": "j'ai une BD qui s'appelle les vieux fourneaux qui est trop bien qui raconte ça qui raconte des histoires d'amour et de passion entre des vieilles personnes et c'est hyper beau et le dessin est magnifique c'est super je vous recommande",
-  "recommendedBy": "Invité",
+  "quote": "je vous recommande une bd qui s'appelle les vieux fourneaux qui est trop bien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:41:21",
+  "status": "validated",
+  "timestamp": "00:45:16",
   "title": "Les Vieux Fourneaux",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

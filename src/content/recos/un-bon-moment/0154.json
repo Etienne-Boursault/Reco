@@ -1,18 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Attribution Jimmy Mohamed deduite du contexte medical (« premiere annee de medecine, en 2006 »).",
+    "reason": "Livre « Oscar et la dame en rose » (Eric-Emmanuel Schmitt), reel. Recommande explicitement dans la ronde finale ([01:14:10-41] « il y a un livre qui m'a marque... un super livre qui se lit tres facilement »). Locuteur = Jimmy Mohamed (« lu quand j'etais en premiere annee de medecine »).",
+    "verdict": "validate"
+  },
   "creator": "Eric-Emmanuel Schmitt",
   "episodeGuid": "661c1bf83fb7ab00162aa674",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0154",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a un livre qui m'a marqué, c'est Oscar et la dame en rose.",
-  "recommendedBy": "Invité",
+  "quote": "C'est un livre que j'ai lu quand j'étais en première année de médecine.",
+  "recommendedBy": "Jimmy Mohamed",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:14:10",
   "title": "Oscar et la dame en rose",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
-  ]
+  ],
+  "year": 2003
 }

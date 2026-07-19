@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Artiste reelle mais mention instrumentale (exemple de parcours), disclaimer 'independamment de ce que je peux penser d'eux' -> pas une reco.",
+    "reason": "Meme passage (00:47) : 'c'est la chanteuse Camille' citee dans la liste de modeles de parcours Sciences Po 'independamment de ce que je peux penser d'eux'. Camille est une artiste reelle mais ici pure mention instrumentale (exemple d'alumni), aucune prescription/avis.",
+    "verdict": "discard"
+  },
+  "creator": "Camille",
+  "episodeGuid": "633b2f213ca1cc001201a69f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3036",
+  "links": [],
+  "quote": "c'est la chanteuse Camille",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:29",
+  "title": "Camille",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

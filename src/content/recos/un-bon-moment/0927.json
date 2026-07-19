@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale (série que l'acteur devait tourner, ressort de l'anecdote de serendipité); pas de reco. Canonique du doublon ubm-2345.",
+    "verdict": "discard"
+  },
   "creator": "Carter Bays, Craig Thomas",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,17 +14,39 @@
     "tmdb": "1100",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:55:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0927",
   "links": [],
-  "quote": "le rapport c'est que dans la saison 2 apparaît le personnage de Saul Goodman",
+  "quote": "Why Met Your Mother qui est une série dans l'américaine",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:55:32",
   "title": "How I Met Your Mother",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

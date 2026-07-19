@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Variante acast, titre 'Insomniacs'. Canonique = ubm-2747 (guest-work Anna). Timecode 00:32:24 OK.",
+    "reason": "Doublon de ubm-2747 'Insomniac' (meme projet d'Anna Apter).",
+    "verdict": "discard"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +30,10 @@
   "links": [],
   "quote": "pour l'instant c'est juste ça s'appelle Insomniac mais si ça s'appelle Insomniac et c'est des dialogues entre mon angoisse, ma créativité, ma libido",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:32:24",
   "title": "Insomniacs",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

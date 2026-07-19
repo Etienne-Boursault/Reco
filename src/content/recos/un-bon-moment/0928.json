@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale/contextuelle: cité pour situer la carrière d'Audrey Tautou (sortie d'Amélie au moment du tournage de L'Auberge espagnole); pas de prescription. Canonique du doublon ubm-2337.",
+    "verdict": "discard"
+  },
   "creator": "Jean-Pierre Jeunet",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,6 +14,17 @@
     "tmdb": "194",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:49",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +33,10 @@
   "quote": "c'était la sortie d'Amélie Poulain",
   "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:01:49",
   "title": "Amélie Poulain",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

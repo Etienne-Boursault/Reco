@@ -1,17 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'La vie devant soi' correct. Creator 'Romain Garry' = coquille pour 'Romain Gary' (non modifiable via le script ; a corriger a la main).",
+    "reason": "Recommandation litteraire explicite d'Haroun : 'T'en as un ou deux a recommander ? Ah ouais ! Romain Gary, La vie devant soi, un classique' (00:46:44), avec eloge developpe du style.",
+    "verdict": "validate"
+  },
   "creator": "Romain Garry",
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:09:00+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:46:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:09:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:44",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0759",
+  "kind": "reco",
   "links": [],
-  "quote": "Romain Garry, \"La vie devant soi\", un classique.",
-  "recommendedBy": "intervenant",
+  "quote": "Romain Garry, La vie devant soi, un classique.",
+  "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:46:42",
+  "status": "validated",
+  "timestamp": "00:46:44",
   "title": "La vie devant soi",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

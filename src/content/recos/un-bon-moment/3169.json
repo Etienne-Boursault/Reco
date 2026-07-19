@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Evie McKinney : chanteuse, gagnante de The Four (US). Sa reprise d''Ain't No Sunshine' est l'objet lié à ubm-0616 (citation).",
+    "reason": "Fadily prescrit explicitement : 'je conseille aux gens d'aller voir les covers et surtout la vidéo d'une fille qui s'appelle Evie McKinney' (00:49:39). Artiste réelle, tierce (pas l'œuvre de l'invitée).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3169",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/c/EvvieMcKinney"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/7G7JWOsGhDMily2HtfzcIZ"
+    }
+  ],
+  "quote": "Je conseille aux gens d'aller voir les covers et surtout la vidéo d'une fille qui s'appelle Evie McKinney.",
+  "recommendedBy": "Fadily Camara",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:49:39",
+  "title": "Evie McKinney",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

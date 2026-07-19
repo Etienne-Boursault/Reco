@@ -1,17 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige (etait Navo). Realisateur confirme = Yacine Belhousse (Kyan figure dans le doc). Invites a completer dans les metadonnees episode.",
+    "reason": "Documentaire realise par Yacine Belhousse (invite), presente par lui (« mon documentaire dans lequel tu es », sa deuxieme reco apres Silicon Valley) avec prescription « allez la voir » (l.3032-3045). Oeuvre d'invite -> guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "Netflix",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0670",
+  "kind": "reco",
   "links": [],
-  "quote": "Est-ce que vous avez remarqué qu'il y avait des petites choses un peu bizarres pendant l'émission ? C'est normal.",
-  "recommendedBy": "Navo",
+  "quote": "Est-ce que je peux faire une deuxième recommandation MyCanal ? Évidemment. Ce qui est mon documentaire dans lequel tu es, qui s'appelle \"Voulez-vous rire avec moi ce soir ?\"",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:40:44",
+  "status": "validated",
+  "timestamp": "01:40:42",
   "title": "Voulez-vous rire avec moi ce soir",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom non revalide (WebSearch epuise) ; DISTINCT de ubm-0643 (comedien/pranks, autre chaine) ; attribution non diarizee -> vide.",
+    "reason": "Recommandation d'une chaine (Fred Absurde, un pere qui fait des videos absurdes avec ses 2 enfants) dans le jeu des recos ; oeuvre tierce (01:15).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3177",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@FREDDABSURDE"
+    }
+  ],
+  "quote": "Moi il y a un mec qui me fait pas mal marrer qui s'appelle Fred Absurde !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:36",
+  "title": "Fred Absurde",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

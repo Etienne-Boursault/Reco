@@ -1,6 +1,26 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Collision source acast — autre épisode.",
+    "reason": "Collision d'épisode : 'vidéo sur le surendettement d'EREK' absente du transcript YouTube (grep 'surendettement'/'EREK' = 0). Contenu épisode Ferrari. Doublon de ubm-1295.",
+    "verdict": "discard"
+  },
   "creator": "EREK",
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +29,10 @@
   "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:31:22",
   "title": "Vidéo sur le surendettement",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

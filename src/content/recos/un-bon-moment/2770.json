@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Réponse de multi-blind test (jeu-devinette) ; chanson support de jeu, pas une reco. NB : créateur erroné — « Roxanne » (indices « un sting », « police police ») est de The Police, pas Arizona Zervas.",
+    "verdict": "discard"
+  },
+  "creator": "Arizona Zervas",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2770",
+  "links": [],
+  "quote": "C'est Roxane.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:51",
+  "title": "Roxane",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

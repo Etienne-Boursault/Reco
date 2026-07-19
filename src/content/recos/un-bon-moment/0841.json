@@ -1,18 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "BREF est l'oeuvre des hosts, citee instrumentalement comme exemple de transformation d'idee (« lui il pense a Bref », 00:25:19). Non recommande au public.",
+    "verdict": "discard"
+  },
   "creator": "Kyan Khojandi, Navo",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0841",
   "links": [],
-  "quote": "On sort le DVD de bref.",
+  "quote": "et lui il pense à Bref tu veux bah putain c'est pas mal",
   "recommendedBy": "Kyan Khojandi, Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:43",
+  "status": "discarded",
+  "timestamp": "00:25:19",
   "title": "BREF",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ]
 }

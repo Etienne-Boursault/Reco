@@ -1,0 +1,58 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Livre reel (Don Miguel Ruiz) mais non presente.",
+    "reason": "les accords toltec name-droppes dans une anecdote personnelle (00:59:27 j'avais pas encore lu les accords toltec a cette epoque) pour expliquer son etat d'esprit passe -- mention instrumentale, sans presentation ni prescription.",
+    "verdict": "discard"
+  },
+  "creator": "Don Miguel Ruiz",
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:27",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:27",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1404",
+  "links": [],
+  "quote": "j'avais pas encore lu les d'accord toltec à cette époque",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:59:27",
+  "title": "Les quatre accords toltèques",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

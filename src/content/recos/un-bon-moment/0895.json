@@ -1,17 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe du createur/interprete « Gaelle Malais » a verifier (transcript YT rend « Gadel Malet »). Tracable dans le transcript YT a 00:41:12 malgre transcriptSource=acast. guests[] a completer.",
+    "reason": "Spectacle « Que la vie normale » mis en scene par Isabelle Nanty (« moi, j'ai mis en scene que la vie normale »), qualifie d'« excellent spectacle ». Oeuvre d'invitee (sa mise en scene), presentee par elle.",
+    "verdict": "guest-work"
+  },
   "creator": "Gaëlle Malais",
   "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0895",
+  "kind": "reco",
   "links": [],
   "quote": "Moi j'ai mis en scène que la vie normale vraiment. Qui a un excellent spectacle de Gaëlle Malais.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Isabelle Nanty",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:41:14",
   "title": "Que la vie normale",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

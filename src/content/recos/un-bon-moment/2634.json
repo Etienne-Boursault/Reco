@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2612.",
+    "reason": "Doublon de ubm-2612 (meme passage 00:43, Switch/Smash Bros. en second, extraction openai) ; mention instrumentale de toute facon.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:43:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2634",
+  "links": [],
+  "quote": "C'est la Switch, les trucs, c'est Smash Bros. en second.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:40",
+  "title": "Smash Bros.",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

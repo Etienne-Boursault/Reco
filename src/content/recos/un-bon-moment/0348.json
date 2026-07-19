@@ -1,20 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1982 (album Rosalia).",
+    "reason": "Doublon de ubm-1982 : quote 'c'est une meuf qui chante' = intro du jeu trivia Rosalia (00:55). La vraie reco = l'album (ubm-1982).",
+    "verdict": "discard"
+  },
   "creator": "Rosalía",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1841999507"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0348",
   "links": [],
   "quote": "Rosalia, c'est une meuf qui chante.",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:55:01",
   "title": "Rosalía",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

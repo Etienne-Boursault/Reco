@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre probablement artefact de transcription ('This Is'/'DC'). Intracable : reste draft, a verifier a la main.",
+    "reason": "'Allez, Melodrama avec Theodora et This Is/DC' jete rapidement quand on demande a Maxime s'il ecoute de la musique ; Maxime repond 'j'ecoute pas de musique'. Oeuvre 'Melodrama' non tracable (Theodora artiste reelle mais ce titre/collab non confirme). WebSearch epuise.",
+    "verdict": "unsure"
+  },
   "creator": "Théodora et DC",
   "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,6 +34,7 @@
   "status": "draft",
   "timestamp": "01:28:03",
   "title": "Mélodrama",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

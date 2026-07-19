@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale pour lever une confusion (« il a un spectacle au Bataclan qui s'appelle Baptiste Lecaplain se tape l'affiche »), immediatement ecartee (« c'est pas du tout ca », l.2308-2309). Aucune substance ni prescription ; Baptiste Lecaplain non-invite.",
+    "verdict": "discard"
+  },
+  "creator": "Baptiste Lecaplain",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2475",
+  "links": [],
+  "quote": "Il a un spectacle qu'il fait au Bataclan qui s'appelle \"Baptiste Lecaplain se tape l'affiche\".",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:16:42",
+  "title": "Baptiste Lecaplain se tape l'affiche",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

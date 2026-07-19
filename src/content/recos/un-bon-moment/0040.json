@@ -1,17 +1,37 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Reco acast (timestamp 00:06:58) ; mention correspondante dans le transcript YT a ~00:05:58 (dans la tolerance +/-90s).",
+    "reason": "'Jamel Comedy Club' / 'le Comedy Club' evoque comme salle difficile ou Hakim a fait ses premieres parties a ses debuts ('c'est dur, personne te connait, les gens sont en train de manger'). Anecdote sur ses debuts, aucune reco.",
+    "verdict": "discard"
+  },
   "creator": "Inconnu",
   "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0040",
   "links": [],
   "quote": "Le Comedy Club, c'est très gros.",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:06:58",
   "title": "Comedy Club",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

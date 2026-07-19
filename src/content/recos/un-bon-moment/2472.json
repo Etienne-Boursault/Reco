@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "A corriger : creator (« Navo » errone -> Yacine Belhousse & Dedo) et titre (« L'Histoire racontee par des chaussettes »). Puis publier en guest-work, recommendedBy « Yacine Belhousse & Dedo ».",
+    "reason": "Verdict cible = guest-work : web-serie « L'Histoire racontee par des chaussettes » (Golden Moustache) de Yacine Belhousse & Dedo, promue explicitement (« refaites des chaussettes », « c'est disponible sur YouTube, allez voir », l.1173-1190). Mais creator stocke = « Navo » (faux) et titre a completer -> a corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Navo",
+  "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2472",
+  "links": [],
+  "quote": "C'est trop bien les chaussettes, refaites des chaussettes.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:40:25",
+  "title": "Les chaussettes",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

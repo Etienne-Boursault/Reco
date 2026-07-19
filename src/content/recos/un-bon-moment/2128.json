@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.96,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Maître Gims = artiste deviné dans le blind test (00:36:49). Mention de jeu → discard.",
+    "verdict": "discard"
+  },
+  "creator": "Maître Gims",
+  "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:36:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2128",
+  "links": [],
+  "quote": "Mylène Farmer et Maître Gims sont sur un bateau !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:36:49",
+  "title": "Maître Gims",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

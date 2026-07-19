@@ -1,18 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.97,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Cyprien (invité) présente et promeut son propre livre BD 'Le pire guide du Japon' (Éditions Link, 22/01/2026) tout au long de l'épisode — auto-promo assumée du format. Canonique du livre.",
+    "verdict": "guest-work"
+  },
   "creator": "Cyprien",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:08:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0396",
+  "kind": "reco",
   "links": [],
-  "quote": "je vais sortir un livre sur le japon dans pas longtemps",
+  "quote": "C'est le pire guide du Japon, comment les bonnes adresses, mais pas que...",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:03:18",
+  "status": "validated",
+  "timestamp": "00:08:10",
   "title": "Le pire guide du Japon",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
-  ]
+  ],
+  "year": 2026
 }

@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invité Oli absent de episode.guests (à compléter). Timecode YT ~00:02:04 OK.",
+    "reason": "Oli cite La Nuit du 12 comme film qu'il a regardé ('j'ai regardé La Nuit du 12, par exemple') dans le passage où il explique s'être mis aux films. Œuvre réelle, mention personnelle sans prescription.",
+    "verdict": "citation"
+  },
   "creator": "Dominik Moll",
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
@@ -6,17 +18,49 @@
     "tmdb": "925102",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:02:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:02:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1226",
+  "kind": "citation",
   "links": [],
-  "quote": "J'ai radé la nuit du douze par exemple.",
-  "recommendedBy": "Big Flow",
+  "quote": "J'ai regardé La Nuit du 12, par exemple.",
+  "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:02:02",
+  "status": "validated",
+  "timestamp": "00:02:04",
   "title": "La Nuit du 12",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

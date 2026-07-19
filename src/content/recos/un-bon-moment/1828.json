@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur = Christophe Pauly (chaine vulgarisation science, video 'Nous vivons dans une simulation ?!' 2025 — reelle). Attribution indeterminee.",
+    "reason": "'Une video de Christophe Pauly qui est pour moi une des videos les plus importantes dans l'education d'un etre humain... est-ce que nous vivons dans une simulation ?' (02:27:10) — prescription forte.",
+    "verdict": "validate"
+  },
+  "creator": "Christophe Pauly",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:27:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:27:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1828",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et il y a une vidéo de aussi Christophe Pauly qui est pour moi une des vidéos les plus importantes dans l'éducation d'un être humain. C'est est-ce que nous vivons dans une simulation ?",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:27:10",
+  "title": "Est-ce que nous vivons dans une simulation ?",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

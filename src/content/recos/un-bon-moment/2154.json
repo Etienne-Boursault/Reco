@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle (Marvel/Disney+). Meme locuteur que The Bear (ubm-0129). Attribution 'Navo' d'origine non confirmable au transcript -> videe.",
+    "reason": "Reco explicite: 'j'ai beaucoup aime la saison 2 de Loki aussi, que j'ai kiffe de ouf.'",
+    "verdict": "validate"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2154",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'ai beaucoup aimé la saison 2 de Loki aussi.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:50",
+  "title": "Loki",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

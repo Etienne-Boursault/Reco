@@ -1,18 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution incertaine : presente par un host au titre de la production FKLG (Navo ou Kyan indetermine) -> recommendedBy vide. creator 'Ana Aptair' -> Anna Apter.",
+    "reason": "Cher Journal d'Anna Apter (emission, production FKLG) presente en fin d'emission avec fort eloge : 'incroyable', 'une artiste avec un univers incroyable' (01:21:36-56). Reco reelle d'une oeuvre reelle.",
+    "verdict": "validate"
+  },
   "creator": "Ana Aptair",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:21:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0739",
+  "kind": "reco",
   "links": [],
-  "quote": "cher journal d'Ana Aptair [...] elle est sur canal maintenant toutes les semaines, tous les dimanches",
-  "recommendedBy": "Navo",
+  "quote": "Donc oui, Cher Journal d'Anna Apter, qui est incroyable.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:21:34",
+  "status": "validated",
+  "timestamp": "01:21:56",
   "title": "Cher Journal",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

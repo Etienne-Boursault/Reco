@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Residu Acast; faux positif.",
+    "reason": "Artefact de transcription: «Parc Yann» = «par Kyan» ('Il faut commencer par Kyan', 00:17:47). Pas une oeuvre/lieu.",
+    "verdict": "discard"
+  },
   "episodeGuid": "61c5abab76bee100120dd720",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:17:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0805",
   "links": [],
   "quote": "Il faut commencer parc Yann.",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:17:47",
   "title": "Parc Yann",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

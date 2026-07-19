@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Bloc de recos hote apres 'Navo t'as quelque chose a recommander ?' (banter 'mais toi vas-y / non toi') ; le meme locuteur enchaine academie->Dans ton corps->Adrien Meniel. Attribue a Navo, mais metadonnees incoherentes (fiche = Kyan) -> flag.",
+    "reason": "Reco explicite au public : 'moi je recommande d'aller vous renseigner sur l'academie d'humour' [01:15:41] ; institution reelle (Theatre de la Loge, Paris, formation d'humoristes), 'gros big up a leur travail'.",
+    "verdict": "validate"
+  },
   "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:41",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1172",
+  "kind": "reco",
   "links": [],
-  "quote": "je recommande d'aller vous renseigner sur l'Académie d'Humour, c'est une académie qu'il y a au Théâtre de la Loge, à Paris",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "je recommande d'aller vous renseigner sur l'académie d'humour",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:43",
+  "status": "validated",
+  "timestamp": "01:15:41",
   "title": "Académie d'Humour",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "lieu"
   ]
 }

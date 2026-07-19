@@ -1,18 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Single « Maison » d'Eddy de Pretto (album Crash Coeur), promu explicitement (« Allez, ecoutez Maison, l'album de Le Preto ») et commente par l'invite (chanson de rupture, 1re ecrite). Oeuvre d'invite. Invite absent de guests (a completer : Eddy de Pretto).",
+    "reason": "Single Maison d'Eddy de Pretto, promu explicitement et commente par l'invite.",
+    "verdict": "guest-work"
+  },
   "creator": "Lille des Pretos",
   "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:32:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0105",
+  "kind": "reco",
   "links": [],
-  "quote": "aller écouter l'album de mon poteau elle écoutait Maison l'album de Lille des Pretos très belle très belle chanson de rupture",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Allez, écoutez Maison, l'album de Le Préto.",
+  "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:32:14",
+  "status": "validated",
+  "timestamp": "00:32:16",
   "title": "Maison",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

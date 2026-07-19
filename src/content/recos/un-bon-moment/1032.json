@@ -1,16 +1,57 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle de Yacine Belhousse (invite) 'Yacine', promo d'actualite active ('allez voir Yacine Bellouz, le 23 mars a l'Europeen') (regle 2/16)",
+    "verdict": "guest-work"
+  },
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1032",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Captations officielles — Yacine Belhousse",
+      "url": "https://yacinebelhousse.com/collections/les-spectacles"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Spectacle « 2024 » en VOD",
+      "url": "https://yacinebelhousse.com/products/video-2024-spectacle-complet"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles — dates en tournée",
+      "url": "https://www.fnacspectacles.com/artist/yacine-belhousse/"
+    }
+  ],
   "quote": "allez voir Yacine Bellous elle son spectacle s'appelle Yacine juste son spectacle",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:21:41",
   "title": "Yacine",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

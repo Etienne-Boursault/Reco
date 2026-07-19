@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention faible/quasi instrumentale ; conservee en citation car oeuvre reelle de l'invitee (co-autrice).",
+    "reason": "Name-drop de la BD 'La Page blanche' (Boulet & Pénélope Bagieu) pour lever un jeu de mots : 'Je suis tres excite par la page blanche' -> 'Du livre La page blanche ou?' -> 'Non pas du tout' (00:28:58-29:01). Oeuvre d'invitee name-droppee -> citation.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2646",
+  "kind": "citation",
+  "links": [],
+  "quote": "Du livre \"La page blanche\" ou ?",
+  "recommendedBy": "Pénélope Bagieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:00",
+  "title": "La page blanche",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

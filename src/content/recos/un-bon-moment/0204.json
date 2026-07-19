@@ -1,20 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nom correct du groupe : Getdown Services (Bristol). Album probable : 'Massive Champion' (2025).",
+    "reason": "Reco explicite de Navo : 'l'album de Get Down Service, duo de Bristol, que je trouve absolument dement, un peu punk, sorti il y a quelques semaines'.",
+    "verdict": "validate"
+  },
+  "creator": "Get Down Service",
   "episodeGuid": "6903fad795ee8b1815229b88",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/956226661"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:40:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0204",
+  "kind": "reco",
   "links": [],
-  "quote": "l'album de Get Down Service Un groupe d'un duo de Bristol Que je trouve absolument dément",
+  "quote": "Et puis l'album de Get Down Service, un duo de Bristol, que je trouve absolument dément",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:40:31",
+  "status": "validated",
+  "timestamp": "01:40:32",
   "title": "Get Down Service",
+  "transcriptSource": "youtube",
   "types": [
     "album"
   ]

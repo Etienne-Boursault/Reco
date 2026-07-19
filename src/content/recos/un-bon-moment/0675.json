@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon d'ubm-2485 (Years and Years). Description « famille américaine / dernier jour de Trump » = variante dégradée ; le titre explicite « Years and Years » est prononcé au même moment.",
+    "reason": "« Yers and Yers » (01:06:06, source Acast) = doublon de « Years and Years » (ubm-2485, YouTube, 01:06:36) : même discussion, titre garbled. Canonique conservé = 2485 (titre correct, creator Russell T Davies, source YouTube par défaut).",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0675",
   "links": [],
   "quote": "c'est une série qui raconte l'histoire d'une famille américaine au quotidien",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:06:06",
   "title": "Yers and Yers",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Grey's Anatomy = indice d'une devinette dont la reponse est Seattle ('la serie Grey's Anatomy est tournee chez moi', 01:14). Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1648",
+  "links": [],
+  "quote": "La série Grey's Anatomy est tournée chez moi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:14:25",
+  "title": "Grey's Anatomy",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

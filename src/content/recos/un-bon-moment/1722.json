@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution à Rosa inférée du contexte (elle est de Caen, y a vu Orelsan) mais transcript non diarizé et 'génie' relayé. Orthographe correcte 'Orelsan' confirmée.",
+    "reason": "00:37:40-56 : Orelsan discuté avec substance/admiration ('c'est un génie', 'incroyable chanson sur la grossesse') dans le débat sur le public de Caen. Pas de prescription explicite → citation. Canonique du cluster (ubm-1996/0302 doublons).",
+    "verdict": "citation"
+  },
+  "creator": "Orelsan",
+  "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:05:11+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:37:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1722",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y a un génie aussi peut-être parce que c'est un génie",
+  "recommendedBy": "Rosa Bursztein",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:37:56",
+  "title": "Orelsan",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

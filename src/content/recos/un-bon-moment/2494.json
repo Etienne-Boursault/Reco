@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Anecdote, pas une reco.",
+    "reason": "Mention instrumentale : anecdote sur le president ayant vu le film « Les Miserables » (Ladj Ly), aucune prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2494",
+  "links": [],
+  "quote": "Il avait quand même fait \"J'ai rien de voir les misérables\", il a fait officiellement... Il a vu le film.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:23",
+  "title": "Les Misérables",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

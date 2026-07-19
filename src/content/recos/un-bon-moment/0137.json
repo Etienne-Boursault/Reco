@@ -1,6 +1,26 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "creator 'Kyan Khojandi' errone : c'est Tahnee qui parle, a propos d'Oxmo Puccino.",
+    "reason": "'Un de ses albums' n'est pas une oeuvre identifiable : reference a un album d'Oxmo Puccino (concours 2014-2015) dans l'anecdote de Tahnee sur sa reprise. Faux positif.",
+    "verdict": "discard"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +29,10 @@
   "quote": "je voulais que ça fasse un son avec des riverbes du carnage",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:44:29",
   "title": "Un de ses albums",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

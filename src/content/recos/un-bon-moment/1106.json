@@ -1,16 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Auto-promo d'un hote. Kyan demande 'tas une actu?', l'autre hote repond 'moi j'ai Cocorico c'est mon sketch show sur Canal' -> plutot Navo (extracteur disait Kyan) -> recommendedBy laisse vide. Titre 'Coco Rico' -> 'Cocorico'.",
+    "reason": "Sketch show 'Cocorico' sur Canal presente en auto-promo par un hote (actu).",
+    "verdict": "guest-work"
+  },
   "episodeGuid": "65240a35cc56a90012ec386b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1106",
+  "kind": "reco",
   "links": [],
   "quote": "moi j'ai Coco Rico, c'est mon sketch show sur Canal.",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:17:12",
   "title": "Coco Rico",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,17 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Livre de Julia de Funes (non-invitee). Introduit par Pierre Niney, salue aussi par un host (transcript non diarize). Canonique; doublon avec ubm-0366.",
+    "reason": "Recommandation enthousiaste et substantielle du livre de Julia de Funes ('hyper bien', denonce les derives du coaching). Enthousiasme prescripteur.",
+    "verdict": "validate"
+  },
   "creator": "Julia de Funès",
   "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0977",
+  "kind": "reco",
   "links": [],
   "quote": "elle a fait ce bouquin qui est bien. Vachement bien et où elle dénonce justement les déribes du coaching",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:54:52",
   "title": "Développement (im)personnel",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

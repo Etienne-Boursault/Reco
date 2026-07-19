@@ -1,6 +1,25 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Trivia de Camille : Walt Disney faisait la voix de Mickey (l.2356-2434). Fun fact sur un personnage, pas une reco d'œuvre.",
+    "verdict": "discard"
+  },
   "creator": "Walt Disney",
   "episodeGuid": "6955067456c11ef4099abd99",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:51:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +28,10 @@
   "quote": "Vous voyez Walt Disney ? Disney, Mickey. C'est écrit par Walt Disney. C'est une personne Walt Disney.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:51:47",
   "title": "Mickey Mouse",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

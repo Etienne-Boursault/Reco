@@ -1,18 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.4,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre non verifiable (budget WebSearch de la session epuise) -> title_suspect. Locuteur indetermine dans le tour de recommandations -> recommendedBy vide.",
+    "reason": "Reco explicite a 01:35:56 : « je recommanderais un documentaire, c'est Une minute pour comprendre, c'est une collection de bouquins sur des trucs en psychologie, en science ». Prescription reelle d'une collection decrite comme reelle.",
+    "verdict": "validate"
+  },
+  "creator": "autre",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:35:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1179",
+  "kind": "reco",
   "links": [],
-  "quote": "\"c'est une collection de bouquins sur des trucs en psychologie, c'est vraiment du nique rugueur parfait.\"",
-  "recommendedBy": "invité",
+  "quote": "C'est une minute pour comprendre.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:35:57",
+  "status": "validated",
+  "timestamp": "01:35:56",
   "title": "Une minute pour comprendre",
+  "transcriptSource": "youtube",
   "types": [
-    "livre"
+    "livre",
+    "autre"
   ]
 }

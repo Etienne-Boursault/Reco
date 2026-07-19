@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2421",
+    "reason": "Doublon de ubm-2421 (meme programme 'Les Fables d'Odah & Dako' @00:45:51). Titre 'Les Faps' = artefact. On garde 2421 comme canonique.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2432",
+  "links": [],
+  "quote": "Ça s'appelle Les Faps de Daedaco.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:51",
+  "title": "Les Faps de Daedaco",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

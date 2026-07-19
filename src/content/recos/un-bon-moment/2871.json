@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Represente le Matrix original/la saga. Avis positif mais conversationnel -> citation.",
+    "reason": "Discussion nostalgique de la saga Matrix declenchee par « sortir les gens de la realite ». Substance et avis reels sur le 1er film (« on a pete un cas » a 16-17 ans, « c'etait la caverne de Platon ») mais conversation entre hosts, pas de prescription explicite au public.",
+    "verdict": "citation"
+  },
+  "creator": "Lana et Lilly Wachowski",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:40:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2871",
+  "kind": "citation",
+  "links": [],
+  "quote": "Ouais, le 4 sort.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:42:49",
+  "title": "Matrix",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

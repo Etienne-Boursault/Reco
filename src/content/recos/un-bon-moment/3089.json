@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Passage réel à 01:16:21, pas 01:21:22.",
+    "reason": "'Les Sims' lâché en vanne (achat avec chèque cadeau FNAC / babysitting) — mention instrumentale (règle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:22",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3089",
+  "links": [],
+  "quote": "Les Sims pour plus être dans la vraie vie ! Faire un babysitting que là quoi !",
+  "recommendedBy": "Thaïs",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:22",
+  "title": "The Sims",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

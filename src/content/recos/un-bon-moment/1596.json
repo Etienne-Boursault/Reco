@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-05",
+    "humanCorrection": "Œuvre fictive imaginée dans l'épisode, n'existe pas → discard (correction Etienne)",
+    "model": "claude-opus-4-8",
+    "reason": "Les aphorismes d'Aroun (00:21/01:15): 'Vraiment n'hesitez pas a acheter' + 'c'est pour ton livre des aphorismes, ils sont super'. Livre (recueil) de l'invite Haroun ('Aroun') -> reco explicite + oeuvre d'invite. Attribution du locuteur incertaine -> vide. Canonique du cluster; creator a corriger (Haroun, pas Navo/Arune).",
+    "verdict": "validate"
+  },
+  "creator": "Arune",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1596",
+  "kind": "reco",
+  "links": [],
+  "quote": "Très fois, c'est de Navo, d'ailleurs. Vraiment, n'hésitez pas à acheter.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:55",
+  "title": "Les aphorismes d'Arune",
+  "transcriptSource": "acast",
+  "types": [
+    "livre"
+  ]
+}

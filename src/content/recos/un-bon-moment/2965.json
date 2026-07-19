@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2960.",
+    "reason": "Doublon de ubm-2960 (Elliot Doyle).",
+    "verdict": "discard"
+  },
+  "creator": "Elliot Doyle",
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2965",
+  "links": [],
+  "quote": "Il y a Elliot Doyle, qui me bute de rire.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:01:51",
+  "title": "TikTok d'Elliot Doyle",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

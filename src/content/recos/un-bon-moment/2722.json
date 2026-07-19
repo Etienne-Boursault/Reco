@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Timestamp stocké 03:05:00 hors plage (épisode ~62 min) ; occurrence réelle à 00:03:05.",
+    "reason": "Anecdote d'enfance (« Moi j'étais Power Rangers, tu vois »), pas un avis ni une reco. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "03:05:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2722",
+  "links": [],
+  "quote": "Moi, j'étais Power Rangers, tu vois.",
+  "recommendedBy": "Alison Wheeler",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "03:05:00",
+  "title": "Power Rangers",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

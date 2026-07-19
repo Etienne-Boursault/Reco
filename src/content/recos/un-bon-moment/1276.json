@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe du nom incertaine : le transcript donne 'Ratheville' [01:14:13] puis 'Ratioville' [01:15:26] ; la fiche 1171 dit 'Ratieville'. WebSearch epuise (200/200 session) -> non verifie. Doublons discardes : ubm-1171 (Acast), ubm-2163 (YT).",
+    "reason": "Reco d'invite explicite : Waly Dia recommande un jeune humoriste 's'il y a des gens que je vous invite a aller voir... des spectacles qui peuvent transformer une petite partie de ta vie' [01:15:10-01:15:26]. Il recommande un TIERS (pas son oeuvre) -> validate, recommendedBy = Waly Dia. Canonique de la reco Quentin (types spectacle+artiste, porte la prescription).",
+    "verdict": "validate"
+  },
   "episodeGuid": "65c7a2673210d00017783f8b",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-1276",
+  "kind": "reco",
   "links": [],
-  "quote": "s'il y a des gens que je vous invite à aller voir et qui... ouais, c'est des spectacles qui peuvent transformer une petite partie de ta vie",
-  "recommendedBy": "Walidia",
+  "quote": "s'il y a des gens que je vous invite à aller voir",
+  "recommendedBy": "Waly Dia",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:15:10",
   "title": "Quentin Ratioville",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

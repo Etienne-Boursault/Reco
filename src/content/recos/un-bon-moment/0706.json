@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2586 : meme mention 'je venais de terminer la saison 2 de Groom' (00:03:45). Ici titre mal orthographie 'Groum' et recommendedBy 'Navo' errone -- c'est Jerome Niel qui parle (createur de Groom). Canonique conserve = ubm-2586 (guest-work, Jerome Niel).",
+    "reason": "Doublon de ubm-2586 (Groom) ; titre mal orthographie et attribution erronee",
+    "verdict": "discard"
+  },
   "creator": "N/A",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:03:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "je venais de terminer la saison 2 de Grum.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:03:45",
   "title": "Groum",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

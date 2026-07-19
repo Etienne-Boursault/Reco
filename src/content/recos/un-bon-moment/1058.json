@@ -1,16 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur a corriger: 'Shirley Souagnon' (au lieu de 'Shirley Soignon'). Locuteur incertain (probablement un invite — Shirley a lance les invites) sur transcript non diarize.",
+    "reason": "Reco de suivre l'Instagram du Barbes Comedie Club de Shirley Souagnon ('je vous suggere de suivre... allez voir... allez-y, allez-y'). Reco publique claire = validate.",
+    "verdict": "validate"
+  },
+  "creator": "Shirley Soignon",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:21",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic"
+    "anthropic",
+    "openai"
   ],
   "id": "ubm-1058",
+  "kind": "reco",
   "links": [],
-  "quote": "Je vous suggère de suivre le compte Instagram du Barbez Comédie Club de ma pote Shirley Soignon.",
-  "recommendedBy": "Navo",
+  "quote": "Je vous suggère de suivre le compte Instagram du Barbès Comédie Club de ma pote Shirley Soignon.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:12:21",
+  "status": "validated",
+  "timestamp": "01:12:24",
   "title": "Barbès Comédie Club",
+  "transcriptSource": "youtube",
   "types": [
     "lieu"
   ]

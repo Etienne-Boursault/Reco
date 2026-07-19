@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Element interne de Bloques (deja capte par ubm-2268). Mention anecdotique sans prescription.",
+    "reason": "'Serge le mytho' est un personnage/running gag de Bloques, evoque via une anecdote de concert (fans qui scandent son nom), pas une oeuvre independante ni une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:19:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2263",
+  "links": [],
+  "quote": "vous connaissez Serge le mytho",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:19:14",
+  "title": "Serge le mytho",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

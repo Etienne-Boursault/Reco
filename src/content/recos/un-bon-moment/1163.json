@@ -1,21 +1,45 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.82,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "CANONIQUE pour l'artiste YEBBA (de son vrai nom Abbey Smith), chanteuse americaine. Doublons discardes: ubm-2274, ubm-2281. Orthographe correcte 'YEBBA' (la reco l'ecrit 'Yebba Smith', confusion nom de scene + patronyme). Attribution corrigee: Panayotis (la reco disait Navo).",
+    "reason": "Artiste musical recommande dans le tour de reco culturelle a 01:10:50 ('c'est de la chanson, c'est magnifique'), par le premier invite interroge (Panayotis), avant que Kyan ne se tourne vers Marina puis Navo.",
+    "verdict": "validate"
+  },
   "creator": "Yebba Smith",
   "episodeGuid": "6584658132930b0016c5272b",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1484144902"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1163",
+  "kind": "reco",
   "links": [],
   "quote": "Yéba Smith.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:10:52",
   "title": "Yebba",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Nardwuar the Human Serviette (intervieweur canadien). Host non identifiable avec certitude.",
+    "reason": "Reco explicite au public : « Si vous aimez les chocs mentaux, allez voir Nardwuar sur Internet » (00:08:47).",
+    "verdict": "validate"
+  },
+  "creator": "Nardwuar the Human Serviette",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:32:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:02:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:08:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1519",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir Nardoir sur Internet.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:08:47",
+  "title": "Nardwuar",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0142.",
+    "reason": "Doublon de ubm-0142 (meme chaine YouTube The Great Review, titre tronque 'The Great').",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:21:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2144",
+  "links": [],
+  "quote": "C'est une chaîne YouTube.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:21:48",
+  "title": "The Great",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

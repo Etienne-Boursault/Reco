@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0267 (meme moment). Reponse de jeu, pas une reco.",
+    "reason": "Reponse du 'jeu des photos' (devinette) : photo d'un chien -> Hachiko, statue a la gare de Shibuya (01:18-01:19). Jeu-devinette -> discard ; le film n'est qu'une mention incidente ('un film est sorti a son histoire').",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6929611768e521ed8d86a91b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2013",
+  "links": [],
+  "quote": "là, un film est sorti à son histoire",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:19:25",
+  "title": "Hachiko",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

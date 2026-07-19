@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale : 'Pour faire comme dans Usual Suspect' = référence rhétorique en passant dans un sketch d'intro, aucune prescription (règle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:57",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3112",
+  "links": [],
+  "quote": "Pour faire comme dans Usual Suspect.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:57",
+  "title": "Usual Suspects",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

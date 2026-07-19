@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Indomptables' au pluriel (Thomas Ngijol, 2025, Quinzaine des cineastes Cannes) — le transcript dit 'Indomptable'. Canonique du cluster (doublon ubm-0488).",
+    "reason": "Oeuvre d'un invite (film de Thomas Ngijol) recommandee par le co-invite Xavier ('je vous recommande Indomptable... qui est sublime'), Ngijol present et discutant son propre film.",
+    "verdict": "guest-work"
+  },
+  "creator": "Thomas N'Gijol",
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:31:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:31:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-1411",
+  "kind": "reco",
+  "links": [],
+  "quote": "Je vous recommande Indomptable, le film de Thomas N. Gijol, qui est sublime.",
+  "recommendedBy": "Xavier Lacaille",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:31:06",
+  "title": "Indomptable",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

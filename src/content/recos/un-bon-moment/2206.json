@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Onze Condamnes » n'est pas une oeuvre : c'est le gag recurrent sur les 11 personnes condamnees pour harcelement (« ca fait onze streams »). Le quote « L'album est beau, ecoutez-le » vise l'album d'Eddy, deja couvert en guest-work par ubm-0105 (Maison). Pas une reco autonome.",
+    "reason": "« Onze Condamnes » n'est pas une oeuvre mais le gag sur les 11 condamnes; album deja couvert par ubm-0105.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6599c1b296596600156961a7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:34:05+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:55:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2206",
+  "links": [],
+  "quote": "L'album est beau. Écoutez-le !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:55:24",
+  "title": "Onze Condamnés",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

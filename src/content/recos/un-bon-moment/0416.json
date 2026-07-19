@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention negative en passant, pas une reco.",
+    "reason": "Maxime : 'J'ai regarde Dragon Ball Super, je suis un poil decu'. Mention comique sans prescription.",
+    "verdict": "discard"
+  },
   "creator": "Akira Toriyama",
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
@@ -6,17 +15,28 @@
     "tmdb": "62715",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0416",
   "links": [],
   "quote": "J'ai regardé Dragon Ball Super.",
-  "recommendedBy": "Navé",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:26:13",
   "title": "Dragon Ball Super",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

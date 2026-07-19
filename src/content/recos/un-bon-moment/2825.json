@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-0787.",
+    "reason": "Doublon de ubm-0787 (même mention 'Tokyo Revenger manga super bien', 00:56:35, titre tronqué). Canonique = ubm-0787.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2825",
+  "links": [],
+  "quote": "Tokyo Revenger manga super bien",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:35",
+  "title": "Tokyo Revenger",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

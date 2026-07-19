@@ -1,0 +1,30 @@
+{
+  "creator": "Rowan Atkinson",
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:43:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1880",
+  "links": [],
+  "quote": "Il faisait rire de ouf quand j'étais le jeune Mr Bean.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:12:40",
+  "title": "Mr Bean",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

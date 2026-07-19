@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le titre 'Vivarda' -> 'Vie Varda' (verifie WebSearch). Verdict vise: guest-work (Vincent Delerm).",
+    "reason": "Chanson de VD presentee en profondeur (genese, sujet Agnes Varda, arrangement) — guest-work, mais titre faux: l'ASR dit 'Vivarda' alors que le titre officiel est 'Vie Varda' (album Panorama, 2019).",
+    "verdict": "unsure"
+  },
+  "creator": "Vincent Delerm",
+  "episodeGuid": "63357716bc3f1e0012abed65",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:29",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2996",
+  "links": [],
+  "quote": "Par exemple, Vivarda, c'est un bon exemple de ça, parce que la chanson parle d'Agnès Varda",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:29:29",
+  "title": "Vivarda",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

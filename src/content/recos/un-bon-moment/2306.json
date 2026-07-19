@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Longue discussion ~00:02:39.",
+    "reason": "PNL discute longuement comme 'genies' (univers, marketing, bosseurs ~00:02:39-00:06:13). Substance forte sans prescription au public. Attribution fluide (non diarize).",
+    "verdict": "citation"
+  },
+  "creator": "PNL",
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:58:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:09:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2306",
+  "kind": "citation",
+  "links": [],
+  "quote": "PNL pourquoi ? pour toutes les mêmes raisons c'est des génies",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:01",
+  "title": "PNL",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

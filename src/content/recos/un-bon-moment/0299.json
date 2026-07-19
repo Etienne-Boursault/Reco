@@ -1,17 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution à Léopold (l'admiration 'j'adore/fait de la scène pour le cinéma comme Dupontel' est la sienne) ; 'génie complet' possiblement relayé par un host. Léopold hors guests[].",
+    "reason": "00:29:56 puis 00:33 : Léopold admire Albert Dupontel ('que j'adore', 'un génie complet') et s'en réclame comme modèle humoriste→cinéma. Substance réelle mais pas de prescription au public.",
+    "verdict": "citation"
+  },
+  "creator": "Albert Dupontel",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:12:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:29:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0299",
+  "kind": "citation",
   "links": [],
-  "quote": "Albert Dupontel, qui est un génie complet",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Albert Dupontel qui est un génie complet",
+  "recommendedBy": "Léopold Lemarchand",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:29:56",
   "title": "Albert Dupontel",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

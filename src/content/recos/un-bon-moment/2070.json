@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Spectacle 'Batard sensible' d'Alexandre Kominek : 'Alexandre Kominek... valeur sure... d'une drolerie folle' (01:53:43). Reco explicite. Locuteur incertain.",
+    "verdict": "validate"
+  },
+  "creator": "Alexandre Kominek",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:53:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:53:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2070",
+  "kind": "reco",
+  "links": [],
+  "quote": "Bâtard sensible, non c'est d'une drôlerie folle",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:53:43",
+  "title": "Bâtard sensible",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

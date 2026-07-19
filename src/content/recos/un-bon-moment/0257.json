@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'l'excellent Better Call Saul... l'acteur est assez exceptionnel' : serie louee par Navo dans le segment Gilligan, discutee (acteur/actrice), mais reco fraiche = Pluribus ; ici citation.",
+    "verdict": "citation"
+  },
   "creator": "Vince Gilligan",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,17 +14,30 @@
     "tmdb": "60059",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:45:45",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0257",
+  "kind": "citation",
   "links": [],
-  "quote": "Effectivement, Vince Gilligan, qui a fait l'excellent Breaking Bad et l'excellent Better Call Saul.",
+  "quote": "l'excellent Better Call Saul",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:45:40",
+  "status": "validated",
+  "timestamp": "01:45:45",
   "title": "Better Call Saul",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

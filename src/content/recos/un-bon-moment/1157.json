@@ -1,17 +1,43 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Invite = Matthieu Chedid (-M-), a completer dans les metadonnees.",
+    "reason": "Kyan pousse fortement a voir l'invite en concert: 'allez voir Mathieu Chedid sur scene au moins une fois dans votre vie parce que ca vaut le detour' (01:09). Oeuvre live de l'invite = guest-work.",
+    "verdict": "guest-work"
+  },
   "creator": "M (Matthieu Chedid)",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1157",
+  "kind": "reco",
   "links": [],
   "quote": "si vous êtes sur cette planète et que vous connaissez matieu schedid ou m allez voir matieu schedid sur scène au moins une fois dans votre vie parce que ça vaut le détour",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:09:15",
   "title": "Matthieu Chedid en concert",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

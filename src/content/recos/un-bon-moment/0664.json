@@ -1,21 +1,56 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "recommendedBy corrige (etait Kyan Khojandi) : c'est le spectacle de Yacine, cite par lui. Invites a completer dans les metadonnees episode.",
+    "reason": "Spectacle de Yacine Belhousse cite par lui pour expliquer le nom du jeu Killing Time (« mon spectacle s'appelait Killing Joke, le deuxieme... Killing Time Part 2 », l.1785-1786). Name-drop au passe, sans prescription -> citation.",
+    "verdict": "citation"
+  },
   "creator": "Killing Joke",
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/2217199357"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:03:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:00:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0664",
+  "kind": "citation",
   "links": [],
-  "quote": "J'avoue que c'est axé. Du killing joke.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "mon spectacle s'appelait Killing Joke, le deuxième.",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:03:11",
+  "status": "validated",
+  "timestamp": "01:00:39",
   "title": "Killing Joke",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "spectacle"
   ]
 }

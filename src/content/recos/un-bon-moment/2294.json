@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Julfou = Julien Josselin (createur d'ASKIP, ubm-0647). Meme locuteur non identifiable que ubm-0647. Frontiere validate/citation (endossement bref).",
+    "reason": "Endossement de la chaine au public ('Julfou que vous connaissez sur Youtube, super chaine', 01:08:58).",
+    "verdict": "validate"
+  },
+  "creator": "Julien Josselin",
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:58",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2294",
+  "kind": "reco",
+  "links": [],
+  "quote": "Julfou que vous connaissez sur Youtube Julfou super chaîne",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:58",
+  "title": "Julfou",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

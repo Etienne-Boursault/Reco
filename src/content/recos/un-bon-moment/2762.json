@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Extraction GPT a ~00:24:36 fusionnant 'allez voir sur paskinad.fr' (site = ubm-2757) et 'soutenez le projet de Charles' (Le Petit Debat = ubm-2756). Les deux sujets sont deja couverts par leurs canoniques.",
+    "reason": "Doublon confus. Titre 'Pasquilane' = mishearing du site Pasquinade (cf. ubm-2757), mais quote 'soutenez le projet de Charles' + creator Charles Nouveau renvoient au projet de Charles Nouveau (cf. ubm-2756). Conflation des deux -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "Charles Nouveau",
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:09:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2762",
+  "links": [],
+  "quote": "Allez voir, soutenez le projet de Charles.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:24:36",
+  "title": "Pasquilane",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

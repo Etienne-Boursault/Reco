@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Reco au niveau artiste (Vegyn, producteur électronique britannique) ; aucun album précis nommé.",
+    "reason": "Julien Granel recommande avec enthousiasme l'artiste Vegyn (« j'ai découvert un mec de fou », « ça m'a renversé d'émotions », « la proposition artistique est folle »).",
+    "verdict": "validate"
+  },
+  "creator": "VEGYN",
+  "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2775",
+  "kind": "reco",
+  "links": [],
+  "quote": "Sinon j'ai découvert un mec de fou qui s'appelle VEGYN ! Qui fait des prods complètement barrés !",
+  "recommendedBy": "Julien Granel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:32:09",
+  "title": "VEGYN",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

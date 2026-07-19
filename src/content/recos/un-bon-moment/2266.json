@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique pour la reco de Clement. Titre 'Lee Willy Boxing' probablement mistranscription de 'Lee Wylie' (analyste boxe YT) ; WebSearch epuise -> title_suspect. Clement = tres probablement Clement Cotentin, frere d'Orelsan et realisateur (boxe avec Aurel/Orelsan, cercle proche) ; a confirmer -> guest_missing.",
+    "reason": "Recommandation explicite de Clem (Clement) : chaine d'un historien/passionne de boxe americain qui analyse les techniques des grands boxeurs (01:16:42-01:18:06).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2266",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi c'est un mec sur YouTube, C'est un américain qui s'appelle Lee Willy, Lee Willy, Qui est un historien et passionné de boxe",
+  "recommendedBy": "Clément Cotentin",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:47",
+  "title": "Lee Willy Boxing",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

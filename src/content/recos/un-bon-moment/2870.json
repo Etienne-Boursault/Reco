@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Podcast/emission cite comme conteneur d'une citation de Jamel Debbouze, pas recommande. Nom garbled (« Dingry Room », « Hamel Shabi ») non verifiable (budget web epuise) mais sans incidence : discard.",
+    "reason": "Mention instrumentale : « Dingry Room de Hamel Shabi » n'est cité que comme source d'une interview de Jamel Debbouze (« Jamel disait dans une interview... j'ai écouté ») pour illustrer un propos sur la contemplation. Aucun avis ni prescription sur le podcast lui-meme.",
+    "verdict": "discard"
+  },
+  "creator": "Hamel Shabi",
+  "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:59",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2870",
+  "links": [],
+  "quote": "Jamel disait dans une interview récemment, j'ai écouté, dans « Dingry Room » de Hamel Shabi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:59",
+  "title": "Dingry Room",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

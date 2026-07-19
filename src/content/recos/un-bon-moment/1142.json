@@ -1,21 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublons fusionnes : ubm-2499 (« James Becker », meme TC 01:19:39) et ubm-2506 (« nouvel album », 01:20:41) -> discard. « James Becker » = mauvaise transcription de James BKS (producteur, fils de Manu Dibango). Attribution incertaine : locuteur « avec qui j'ai travaille et je vais retravailler » non determinable ; metadonnees contradictoires (Navo sur 1142 vs Kyan sur 2499/2506).",
+    "reason": "Reco explicite d'un artiste : « musicien tres talentueux, qui fait des super morceaux », « nouvel album... et il est super ». Canonique du groupe James BKS.",
+    "verdict": "validate"
+  },
+  "creator": "James BKS",
   "episodeGuid": "6550c05703445c0011dd8343",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3665594672"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1142",
+  "kind": "reco",
   "links": [],
-  "quote": "James BKS a un nouvel album et il est super",
-  "recommendedBy": "Navo",
+  "quote": "James Becker, avec qui j'ai travaillé, et qui je vais retravailler, et qui est un musicien très talentueux, qui se développe de plus en plus, qui fait des super morceaux.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:20:42",
+  "status": "validated",
+  "timestamp": "01:19:39",
   "title": "James BKS",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

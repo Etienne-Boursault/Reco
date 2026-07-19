@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2277.",
+    "reason": "'spectacles de Pana' = doublon du spectacle de Panayotis (ubm-2277), meme mention 01:15:48.",
+    "verdict": "discard"
+  },
+  "creator": "Pana",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2282",
+  "links": [],
+  "quote": "allez voir les spectacles de Pana sur Netflix",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:48",
+  "title": "spectacles de Pana",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,5 +1,16 @@
 {
   "episodeGuid": "63614bd05e627e0011144c04",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -11,6 +22,7 @@
   "status": "validated",
   "timestamp": "00:16:23",
   "title": "Les Clés de bagnole",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]

@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Les loups-garous' ici = le jeu de societe dans l'anecdote de Fary/gloire ('on faisait des loups-garous'). Anecdote/mention instrumentale, pas une reco (distinct de l'emission Loup-Garou S2).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2004",
+  "links": [],
+  "quote": "On se faisait des soirées tout le temps... On faisait des loups-garous",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:42:47",
+  "title": "Les Loups-Garous",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

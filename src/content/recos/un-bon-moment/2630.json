@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non certain (Cyprien ou autre, non-diarise) -> recommendedBy vide. Doc reel (2016).",
+    "reason": "Documentaire Tickled (2016) recommande dans le tour de recos : 'Vous avez vu ce documentaire... Tickled ? C'est le truc le plus incroyable... c'est fascinant'.",
+    "verdict": "validate"
+  },
+  "creator": "autre",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:39:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2630",
+  "kind": "reco",
+  "links": [],
+  "quote": "Vous avez vu ce documentaire sur Netflix qui s'appelle Tickled ?",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:05",
+  "title": "Tickled",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "autre"
+  ]
+}

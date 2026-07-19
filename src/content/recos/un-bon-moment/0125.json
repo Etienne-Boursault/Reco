@@ -1,16 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme anecdote que ubm-0124 (Grim raconte ses debuts). recommendedBy 'Navo' d'origine errone. 'c'etait tres bien' porte sur l'experience de stream, pas une prescription de Minecraft (jeu ultra-connu, mention instrumentale).",
+    "reason": "Suite de l'anecdote 1er stream de Grim: 'Apres c'etait Minecraft, beaucoup de Minecraft'. Recit de son parcours de streamer, pas une reco prescriptive.",
+    "verdict": "discard"
+  },
   "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:39:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0125",
   "links": [],
-  "quote": "Après c'était Minecraft, beaucoup de Minecraft.",
+  "quote": "Après, c'était Minecraft, beaucoup de Minecraft. Mais c'était très bien.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:39:36",
+  "status": "discarded",
+  "timestamp": "00:39:31",
   "title": "Minecraft",
+  "transcriptSource": "youtube",
   "types": [
     "jeu"
   ]

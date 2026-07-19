@@ -1,21 +1,50 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Francis Cabrel = titre du multi-blind test (~00:21), morceau support de jeu (devinette) → mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Francis Cabrel",
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/72064755"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:09",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1231",
   "links": [],
-  "quote": "Bah oui, c'est à trouver quelque chose. Cabrel.",
-  "recommendedBy": "Invité",
+  "quote": "Bah oui, si t'as trouvé quelque chose.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:21:09",
+  "status": "discarded",
+  "timestamp": "00:21:08",
   "title": "Francis Cabrel",
+  "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

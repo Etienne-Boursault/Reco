@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Attribution host cinephile (prob. Kyan) non certaine.",
+    "reason": "Endorsement fort et substantiel: 'je me suis pris une claque sur le dernier d'Ari Aster [Beau Is Afraid]... film tres etrange qui bouscule les structures' (01:13:04).",
+    "verdict": "validate"
+  },
   "creator": "Ari Aster",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
@@ -6,16 +15,29 @@
     "tmdb": "798286",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1139",
+  "kind": "reco",
   "links": [],
   "quote": "\"Boy's The Fred\". T'as pas de films préférés de ta vie ?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:12:43",
   "title": "Beau Is Afraid",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

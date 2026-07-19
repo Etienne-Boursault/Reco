@@ -1,0 +1,30 @@
+{
+  "creator": "DJ Snake",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1899",
+  "links": [],
+  "quote": "j'ai chanté sur un morceau de DJ Snake qui s'appelait Takitaki",
+  "recommendedBy": "Seb",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:58:23",
+  "title": "Takitaki",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

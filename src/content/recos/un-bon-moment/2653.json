@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Name-drop d'influence (« influencés comme moi par Sam Raimi »), aucune œuvre discutée, mention en passant.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2653",
+  "links": [],
+  "quote": "je pense qu'ils ont été aussi influencés comme moi par Sam Raimi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:20:25",
+  "title": "Sam Raimi",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

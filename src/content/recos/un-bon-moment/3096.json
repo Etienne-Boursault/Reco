@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Documentaire sur un homme nommé André atteint d'un cancer colorectal. Œuvre du host présentée en promo → guest-work (recommendedBy = Kyan Khojandi).",
+    "reason": "Kyan annonce qu'il va bientôt doubler le documentaire 'André is an Idiot' (sortie rentrée) — promo d'actualité d'une œuvre du host (règle 17).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:41:59",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3096",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/82771834"
+    }
+  ],
+  "quote": "Et je vais bientôt doubler un film qui s'appelle André is an Idiot ! C'est sur ce sujet là ! Et ça sera à mon avis à la rentrée dans les cinémas !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:41:59",
+  "title": "André is an Idiot",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

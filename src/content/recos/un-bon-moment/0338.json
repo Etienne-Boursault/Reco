@@ -1,20 +1,39 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Taylor Swift = sujet du jeu 'Anecdote de stars' (reenregistrement des masters pour recuperer ses droits). Mention instrumentale (reponse de jeu), pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Taylor Swift",
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/3579685431"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0338",
   "links": [],
   "quote": "Elle a tout ré-enregistré de son côté.",
-  "recommendedBy": "Intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:47:37",
   "title": "Taylor Swift",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

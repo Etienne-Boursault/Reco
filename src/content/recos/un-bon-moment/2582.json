@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Vanne de Paul Mirabel dans sa minute 'Soixante' sur le livre de conseils de Domenech (chute comique: 'il fallait le lire'). Mention instrumentale, pas une reco. Canonique de la paire 0697/2582.",
+    "verdict": "discard"
+  },
+  "creator": "Raymond Domenech",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:04:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2582",
+  "links": [],
+  "quote": "je lis aussi un livre de Raymond Domenech ancien sélectionneur de l'équipe de France dans lequel il donne ses meilleurs conseils d'entraîneur",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:04:48",
+  "title": "Les conseils vus par Raymond Domenech",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

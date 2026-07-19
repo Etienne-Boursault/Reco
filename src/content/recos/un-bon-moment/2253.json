@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Eloge collectif des humoristes present.e.s ; locuteur principal non identifiable -> recommendedBy vide.",
+    "reason": "Salle reelle (Barbes Comedie Club, Paris) chaleureusement recommandee ('un Comedie Club incroyable... c'est un bijou... extraordinaire', 00:39:12-00:39:45) -> reco d'un lieu.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2253",
+  "kind": "reco",
+  "links": [],
+  "quote": "Ah non, mais moi... Le but, c'est pour arriver avec un micro casque... Là, je n'y vais jusque...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:39:12",
+  "title": "Barbès Comédie Club",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

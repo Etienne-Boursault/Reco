@@ -1,20 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = 'Aimer jusqu'a l'impossible' (fichier 'Ame...' = artefact). Discard de toute facon.",
+    "reason": "Chanson a deviner dans le multi-blind test de Navo (Tina Arena, 'Aimer jusqu'a l'impossible') : support de jeu-devinette, pas une reco.",
+    "verdict": "discard"
+  },
   "creator": "Tina Arena",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/536176"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0133",
   "links": [],
   "quote": "il y a tina arena, aimé jusqu'à l'impossible",
-  "recommendedBy": "Invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:42:40",
   "title": "Amé jusqu'à l'impossible",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1067.",
+    "reason": "Doublon de ubm-1067 (meme passage 01:17:37-39).",
+    "verdict": "discard"
+  },
+  "creator": "intervenant non précisé",
+  "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:39",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2456",
+  "links": [],
+  "quote": "Don't fuck with cats sur Netflix. Il paraît que c'est très bien.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:39",
+  "title": "Don't Fuck with Cats",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

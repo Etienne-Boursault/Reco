@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution « Navo » douteuse : Navo est sollicité séparément plus loin (00:59:33 -> The Great Review) et Melha/Alison ont leurs propres slots (Miskina/Baby J) ; le locuteur restant est probablement Kyan. recommendedBy vidé pour arbitrage humain.",
+    "reason": "Reco explicite et enthousiaste d'une série réelle : « Ted Lasso exceptionnel », « je suis à fond dedans ». Œuvre tierce (pas un invité) → validate.",
+    "verdict": "validate"
+  },
   "creator": "Bill Lawrence, Jason Sudeikis",
   "episodeGuid": "65240aefc8996500127ede97",
   "externalIds": {
@@ -6,18 +18,48 @@
     "tmdb": "97546",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-1125",
+  "kind": "reco",
   "links": [],
-  "quote": "Ted Lasso est exceptionnel.",
-  "recommendedBy": "Navo",
+  "quote": "Ted Lasso exceptionnel.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:57:32",
+  "status": "validated",
+  "timestamp": "00:57:35",
   "title": "Ted Lasso",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

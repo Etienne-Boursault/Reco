@@ -1,6 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1875 (meme passage 01:59:16-20, 4 passes). Titre-artefact 'Theo Hagai'.",
+    "verdict": "discard"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:59:20",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +31,10 @@
   "quote": "c'est un mec sur TikTok qui trouve des bouts cacés dans la ville",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:59:20",
   "title": "Théo Hagaï",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

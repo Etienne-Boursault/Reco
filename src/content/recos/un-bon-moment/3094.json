@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "TITRE FAUX à corriger: le draft dit 'Carole & Tuesday' mais le transcript décrit clairement 'Carol & The End of the World' (Netflix : héroïne Carol, fin du monde annoncée, 'End of the World' dans le titre). Recommandeur incertain (non diarizé).",
+    "reason": "Série d'animation Netflix prescrite avec enthousiasme ('c'est génial', 'allez voir ça'), pas l'œuvre d'un présent — vraie reco (validate).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:39:22",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3094",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81044590"
+    }
+  ],
+  "quote": "C'est une série d'animation qui est sur Netflix... Et en fait c'est un truc avec End of the World je pense dans le titre...",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:39:22",
+  "title": "Carol & The End of the World",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

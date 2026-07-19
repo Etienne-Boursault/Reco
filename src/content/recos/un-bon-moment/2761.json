@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre fortement deforme : 'Adi Balcalite' (YT) / 'Adib Al-Qaliday' (Acast, ubm-0758). Il s'agit tres probablement de l'humoriste quebecois 'Adib Alkhalidey' (coherent avec 'il n'est pas en France... Les Quebecois'). WebSearch epuise. Canonique ; doublon discarde : ubm-0758.",
+    "reason": "Humoriste presente par Haroun sur Pasquinade : 'c'est comme [Adib Alkhalidey] qu'on peut voir. On l'adore. Et il faudrait que vous l'invitiez' (00:15:48). Recommandation + suggestion d'invitation.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:09:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2761",
+  "kind": "reco",
+  "links": [],
+  "quote": "On l'adore.",
+  "recommendedBy": "Haroun",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:15:48",
+  "title": "Adi Balcalité",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

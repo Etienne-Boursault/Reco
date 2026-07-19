@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution 'Navo' erronee ; reco conservee = ubm-0643.",
+    "reason": "Doublon de ubm-0643 : meme passage 01:17:28-30 (chaine de 'Chaz' recommandee par Mister V) ; 'Chaises' = mauvaise transcription de 'Chaz' (regle 13).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3178",
+  "links": [],
+  "quote": "C'est un mec qui s'appelle Chaises ! Mais c'est un comédien et pareil dans l'absurde et il me bute de rire !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:17:30",
+  "title": "Chaises",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

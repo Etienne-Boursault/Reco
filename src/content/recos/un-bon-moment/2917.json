@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Verification web indisponible (budget epuise) mais la discussion presente clairement un vrai album de Kyan (annonce + concept detaille corrige par Kyan lui-meme). Attribution corrigee Navo -> Kyan (proprietaire).",
+    "reason": "Auto-promo d'un host: Navo annonce que Kyan sort un album intitule 'L'Horizon des evenements' et Kyan en decrit le concept (l'espace/le trou noir comme metaphore pour parler d'amour). OEuvre d'un host presentee par lui -> guest-work, proprietaire Kyan Khojandi.",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:26",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2917",
+  "kind": "reco",
+  "links": [],
+  "quote": "Kian sort un album qui s'appelle L'horizon des événements.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:22:25",
+  "title": "L'Horizon des événements",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

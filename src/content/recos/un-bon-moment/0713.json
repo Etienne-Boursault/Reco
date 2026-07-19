@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-18",
+    "flags": [
+      "timestamp_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Le timestamp 00:46:42 et la citation pointent le 'jeu de la complicite' (instrumental). La vraie reco est a 01:19:12 : 'Game of Thrones... j'ai vu pendant le confinement, c'etait tres agreable' (tour de recommandations). Timestamp + quote a corriger vers 01:19:12. Locuteur (invite) non certain -> recommendedBy vide.",
+    "reason": "Serie reelle, recommandee (mollement) dans le tour de recos a 01:19:12",
+    "verdict": "validate"
+  },
   "creator": "David Benioff, D.B. Weiss",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
@@ -6,17 +19,48 @@
     "tmdb": "1399",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:45:50+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:46:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0713",
+  "kind": "reco",
   "links": [],
-  "quote": "C'est peut-être un humain. Moi, je n'ai jamais voulu...",
-  "recommendedBy": "Invité",
+  "quote": "Parce que ce n'est pas à toi parce qu'il n'y a pas sa mémoire.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:46:29",
+  "status": "validated",
+  "timestamp": "00:46:42",
   "title": "Game of Thrones",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

@@ -1,16 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "guests de l'episode vides : invite Alexandre Kominek a completer dans les metadonnees. Recommandation croisee introduite par Bun Hay Mean.",
+    "reason": "Oeuvre de l'invite Alexandre Kominek (humoriste, spectacle 'Polonais et en colere') : auto-promo. Bun Hay Mean lance 'allez voir Alexandre Cominec' et Kominek enchaine 'allez me voir merci' (01:08:09-21).",
+    "verdict": "guest-work"
+  },
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1092",
+  "kind": "reco",
   "links": [],
   "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Alexandre Kominek",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:08:08",
   "title": "Alexandre Kominek",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

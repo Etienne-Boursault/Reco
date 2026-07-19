@@ -1,17 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Renvoie a la conference/masterclass d'ecriture de Charlie Kaufman (probablement sa BAFTA screenwriters' lecture) - verifier le titre exact. Recommande par un invite (probablement Xavier), non diarize.",
+    "reason": "Recommandation enthousiaste et explicite (~00:38:58-00:39:57) : « moi Charlie Kaufman c'est ce que je recommande a fond », a propos de sa masterclass/conference sur l'ecriture. Canonique du cluster Charlie Kaufman.",
+    "verdict": "validate"
+  },
   "creator": "Charlie Kaufman",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:38:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1095",
+  "kind": "reco",
   "links": [],
   "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:38:58",
   "title": "Masterclass de Charlie Kaufman",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

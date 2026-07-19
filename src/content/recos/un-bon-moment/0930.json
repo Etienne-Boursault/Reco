@@ -1,4 +1,16 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2329.",
+    "reason": "Doublon de ubm-2329 (Le Péril jeune). creator 'Lucas Belvaux' et année 1996 erronés.",
+    "verdict": "discard"
+  },
   "creator": "Lucas Belvaux",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,6 +18,17 @@
     "tmdb": "33095",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -14,9 +37,10 @@
   "quote": "le Péril Jeune ça a 30 ans",
   "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:11:19",
   "title": "Péril Jeune",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

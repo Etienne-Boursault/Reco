@@ -1,0 +1,46 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Les Grosses Tetes evoquee comme comparaison au jeu en cours (00:27:45 c'est tres grosse tete le jeu qu'on fait la) + anecdote invite mystere. Comparaison en passant, pas de prescription.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "27:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "27:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1577",
+  "links": [],
+  "quote": "moi j'adore les grosses têtes",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "27:56",
+  "title": "Les Grosses Têtes",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

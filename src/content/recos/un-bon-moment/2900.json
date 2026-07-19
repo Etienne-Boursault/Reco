@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger créateur Aurel→Orelsan, confirmer titre 'Ah La France'. Attribution invité incertaine.",
+    "reason": "'À la France' = chanson 'Ah La France' d'Orelsan (créateur mal transcrit en 'Aurel'). Appréciée sincèrement ('je le kiffe', 'le couplet est bien', eurodance, comparaison Stromae, ~00:49:09) → citation sur le fond, mais créateur à corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:49:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2900",
+  "links": [],
+  "quote": "Moi, je kiffe à la France !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:49:09",
+  "title": "À la France",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

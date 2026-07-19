@@ -1,0 +1,77 @@
+{
+  "aliases": [
+    "Anness"
+  ],
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/2021576357"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T19:31:48+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:35",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:43:38+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1319",
+  "kind": "reco",
+  "linkOverrides": {
+    "Deezer": "https://www.deezer.com/fr/artist/1402112"
+  },
+  "links": [],
+  "quote": "Moi, on m'a fait découvrir un artiste suédois il n'y a pas longtemps qui s'appelle Anness.",
+  "recommendedBy": "JeanJass",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:33:32",
+  "title": "Hannes",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique",
+    "artiste"
+  ]
+}

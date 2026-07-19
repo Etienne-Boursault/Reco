@@ -1,18 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur reel = Julien Josselin (pas 'Jocelyn') et Valentin Vincent. Locuteur non identifiable (meme personne que ubm-2294 Julfou), host ou invite -> recommendedBy vide.",
+    "reason": "Recommandation explicite ('je voulais recommander une emission qui s'appelle Askip... allez la voir, c'est une emission sympa'). Titre ASKIP confirme (01:08:42).",
+    "verdict": "validate"
+  },
   "creator": "Julien Jocelyn, Valentin Vincent",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0647",
+  "kind": "reco",
   "links": [],
-  "quote": "moi je voulais recommander une émission qui s'appelle ASKIP c'est sur Twitch",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "allez la voir c'est une émission sympa",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:40",
+  "status": "validated",
+  "timestamp": "01:08:42",
   "title": "ASKIP",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video",
+    "podcast"
   ]
 }

@@ -1,17 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Fouloscopie evoquee avec substance par Kyan (video du danseur) pour illustrer l'effet de foule; reco passee ('j'avais recommande'), pas de prescription fraiche (regle 4)",
+    "verdict": "citation"
+  },
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:33",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1027",
-  "links": [],
-  "quote": "Tu vois, j'avais recommandé Fouloscopie, il en parle à un moment sur sa chaîne YouTube",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — Fouloscopie",
+      "url": "https://www.youtube.com/channel/UCLXDNUOO3EQ80VmD9nQBHPg"
+    }
+  ],
+  "quote": "j'avais recommandé Fouloscopie, il en parle à un moment sur sa chaîne YouTube où il montre le... En gros, il montre quelqu'un qui danse tout seul au milieu d'un parc",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:18:31",
+  "status": "validated",
+  "timestamp": "00:18:33",
   "title": "Fouloscopie",
+  "transcriptSource": "youtube",
   "types": [
-    "podcast"
+    "podcast",
+    "video"
   ]
 }

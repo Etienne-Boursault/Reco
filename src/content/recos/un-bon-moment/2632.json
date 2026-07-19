@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Sketch d'episode, pas une oeuvre reelle -> discard (regle verif. 3).",
+    "reason": "Oeuvre inventee en direct : bit comique ou ils font semblant que Kyan sort un album intitule 'L'horizon des evenements' (fausse pochette, photo Laura Gilly, faux featuring, fausse intro d'interview). N'existe pas reellement (annee 2024 aussi hallucinee pour un episode de dec. 2020).",
+    "verdict": "discard"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:01+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:13",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2632",
+  "links": [],
+  "quote": "Ça s'appelle l'horizon des événements.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:44:13",
+  "title": "L'horizon des événements",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2024
+}

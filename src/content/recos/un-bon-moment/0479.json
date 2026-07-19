@@ -1,22 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "creator 'Jim Carrey' vient de la confusion avec le film ; errone.",
+    "reason": "Nostalgie (console Sega + 'je l'avais dans le coffret') puis film Sonic 'pas mal, pas vu' (hearsay) ; pas de reco.",
+    "verdict": "discard"
+  },
+  "creator": "Jim Carrey",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/939243-sonic-the-hedgehog-3/watch?locale=FR",
     "tmdb": "939243",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:56",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:09:56",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0479",
   "links": [],
-  "quote": "Ah, il y a Sonic aussi.",
+  "quote": "Et j'ai jure, j'avais Sonic.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:44",
+  "status": "discarded",
+  "timestamp": "01:09:56",
   "title": "Sonic",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "jeu"
   ],
   "watchProviders": [
     {

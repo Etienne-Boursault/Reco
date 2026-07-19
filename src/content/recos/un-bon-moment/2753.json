@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "= 'The Family Man' (2000, Nicolas Cage), evoque en comparaison pour 'Mourir seul' d'Anna. Doublon avec ubm-1287 et ubm-2750. Attribution 'Navo' peu fiable et non pertinente (comparaison instrumentale de toute facon). Timecode 00:47:51 OK.",
+    "reason": "Mention instrumentale (comparaison) + doublon.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2753",
+  "links": [],
+  "quote": "Family Man, c'est un film avec Nicolas Cage.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:47:51",
+  "title": "Family Man",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

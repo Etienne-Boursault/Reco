@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-14",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Locuteur non identifiable (transcript non-diarise, discussion jeux menee par Navo) -> recommendedBy vide.",
+    "reason": "Undertale (Toby Fox, 2015) endosse avec enthousiasme prescripteur ('Undertale, c'est formidable', 'il parait que c'est sublime') + eloge du propos/musiques/sprites.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2620",
+  "kind": "reco",
+  "links": [],
+  "quote": "Undertale, c'est formidable.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:07:06",
+  "title": "Undertale",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

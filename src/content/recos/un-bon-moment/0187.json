@@ -1,20 +1,73 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-07",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur reel : Doria Tillier (fiche dit 'inconnu').",
+    "reason": "'T'as vu la serie Iris? ... Iris, serie geniale. Elle est pile dans cet endroit de subtilite'. Serie de Doria Tillier (Canal+, 2024) confirmee. Prescription + eloge. Attribution incertaine.",
+    "verdict": "validate"
+  },
+  "creator": "inconnu",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "tmdb": "31505",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:46",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:46",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0187",
+  "kind": "reco",
   "links": [],
-  "quote": "Tu as vu la série Iris? Ça m'a parlé 100% du temps.",
-  "recommendedBy": "Invité",
+  "quote": "Iris, série géniale.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:56:36",
+  "status": "validated",
+  "timestamp": "00:56:46",
   "title": "Iris",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ]

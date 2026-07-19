@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.88,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse de jeu-devinette (deviner une serie a partir d'indices : miroir/fer a repasser) : 'Attends, une serie. Code quantum... c'est Code quantum'. Oeuvre citee dans un jeu -> discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "690f87b14e59613eaf07e566",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1842",
+  "links": [],
+  "quote": "Code quantum. C'est Code quantum.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:23:02",
+  "title": "Code Quantum",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "year": 1989
+}

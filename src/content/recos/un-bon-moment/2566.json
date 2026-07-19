@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.4,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "verifier existence/titre 'Pulsion' (spectacle Paul Mirabel ~2020 sur YT); si confirme -> guest-work recommendedBy Paul Mirabel",
+    "reason": "'Pulsion' presente comme l'ancien spectacle de Paul Mirabel (vu sur YouTube par Kyan). Mais aucun spectacle 'Pulsion' de Paul Mirabel verifiable (1er one-man documente = 'Zebre', 2021). Titre a verifier avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Paul Mirabel",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2566",
+  "links": [],
+  "quote": "tu étais venu voir Pulsion à l'époque",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "01:10:08",
+  "title": "Pulsion",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

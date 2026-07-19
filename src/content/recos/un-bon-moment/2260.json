@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Dit dans une discussion de groupe sur les roasts ; locuteur non identifiable avec certitude -> recommendedBy vide.",
+    "reason": "Thomas Wiesel (humoriste/auteur suisse reel) loue : 'c'est le meilleur... Thomas Wiesel est un auteur extraordinaire' (01:13:44-01:13:54) -> reco d'un artiste.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2260",
+  "kind": "reco",
+  "links": [],
+  "quote": "Thomas Wiesel est un auteur extraordinaire.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:55",
+  "title": "Thomas Wiesel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

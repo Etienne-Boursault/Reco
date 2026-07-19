@@ -1,19 +1,56 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Vraie reco de la chaine YouTube Ici Japon par Kyan dans le segment recos de fin (01:14)",
+    "verdict": "validate"
+  },
   "creator": "Non spécifié",
   "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:19",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:20",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0654",
-  "links": [],
-  "quote": "il y a un type qui s'appelle ici japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo le japon en général",
-  "recommendedBy": "Non spécifié",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube — Tev / Ici Japon",
+      "url": "https://www.youtube.com/channel/UCeGEv5MBdmGMgZFPrAlEmFA"
+    }
+  ],
+  "quote": "il y a un type qui s'appelle Ici Japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo, le Japon, en général et c'est très intéressant",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:14:19",
+  "status": "validated",
+  "timestamp": "01:14:20",
   "title": "Ici Japon",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

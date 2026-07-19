@@ -1,16 +1,35 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Overwatch' absent du transcript — mis-extraction du commentaire sarcastique sur Power Wash Simulator ('c'est pas connu du tout, des millions d'exemplaires vendus', 02:26:57-02:27:02). Faux positif / recouvre ubm-1823.",
+    "verdict": "discard"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:26:58",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0242",
   "links": [],
   "quote": "c'est pas connu du tout des millions d'exemplaires vendus à travers le monde",
-  "recommendedBy": "intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "02:26:58",
   "title": "Overwatch",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

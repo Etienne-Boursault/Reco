@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-2153 (canonique). Trois occurrences au total: ubm-0127, ubm-0948 (acast) + ubm-2153 (YouTube).",
+    "reason": "Deuxieme doublon acast de l'album d'Adele Castillon. Titre corrompu 'Plaisir/ic Dependance'. Canonique = ubm-2153.",
+    "verdict": "discard"
+  },
   "creator": "Adèle Castillon",
   "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:42",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -9,9 +33,10 @@
   "quote": "C'est Adèle Castillon, qui a sorti un album qui s'appelle « Plaisirisc Dépendance » et il est hyper personnel et très beau.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:10:42",
   "title": "Plaisir/ic Dépendance",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

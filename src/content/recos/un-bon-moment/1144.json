@@ -1,17 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2544 (invitation a lire la poesie de la grand-mere, 00:18). Creator 'Claire Chedid' errone (c'est Andree Chedid).",
+    "verdict": "discard"
+  },
   "creator": "Claire Chédid",
   "episodeGuid": "6550c2836b767e0012a65d8d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:48",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1144",
   "links": [],
   "quote": "j'invite vraiment les gens à écouter à lire sa poésie et même ces romans d'ailleurs qui sont incroyables",
-  "recommendedBy": "Matthieu Chédid",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:18:48",
   "title": "Poésie de Claire Chédid",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

@@ -1,20 +1,59 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Anecdote de tournage d'Audrey ('la semaine derniere on a joue pour The Witcher', elle joue une sorciere), pas une prescription de la serie The Witcher.",
+    "verdict": "discard"
+  },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/71912-the-witcher/watch?locale=FR",
     "tmdb": "71912",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:38",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "20:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:36",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0632",
   "links": [],
-  "quote": "on a joué pour The Witcher.",
+  "quote": "On a joué pour The Witcher.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:20:38",
+  "status": "discarded",
+  "timestamp": "00:20:36",
   "title": "The Witcher",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

@@ -1,0 +1,28 @@
+{
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:21:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1897",
+  "links": [],
+  "quote": "Eminem pour travailler sa technique il lisait quelque chose en particulier chaque soir",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:38",
+  "title": "Eminem",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

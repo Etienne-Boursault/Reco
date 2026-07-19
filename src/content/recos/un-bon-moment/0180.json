@@ -1,19 +1,49 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-06",
+    "humanCorrection": "Doublon de ubm-2073 : « l'usine à trombone » est la vidéo phare de la chaîne Ego (même reco)",
+    "model": "claude-opus-4-8",
+    "reason": "Video 'l'usine a trombone / Paperclip Factory' (chaine Ego) : 'la video l'usine a trombone... c'est brillant' (01:55:34). Reco explicite.",
+    "verdict": "validate"
+  },
   "creator": "Ego",
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:34",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0180",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est la chaîne Ego sur Youtube et notamment la vidéo l'usine à trombone paper clip factory",
-  "recommendedBy": "invité",
+  "quote": "c'est la chaîne Ego sur YouTube et notamment la vidéo l'usine à trombone Paperclip Factory",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:55:34",
   "title": "l'usine à trombone",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,15 +1,71 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact = « À moitié plein » (segments « À moitié plein » / « À moitié vide »), co-animé Pierre Hillairet & Elie Tarterat (« Ellie »). Créateur mal extrait (Kyan → Pierre).",
+    "reason": "Podcast co-animé par l'invité Pierre Hillairet, placé en promo (« il fallait juste que je le place »).",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:28:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:24",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:28:24",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0511",
+  "kind": "reco",
   "links": [],
-  "quote": "Tu vois le podcast que j'ai avec Ellie. À moitié vide, à moitié plein.",
+  "quote": "le podcast à moitié plein à moitié vide",
+  "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:28:26",
+  "status": "validated",
+  "timestamp": "01:28:42",
   "title": "À moitié vide, à moitié plein",
+  "transcriptSource": "youtube",
   "types": [
     "podcast"
   ]

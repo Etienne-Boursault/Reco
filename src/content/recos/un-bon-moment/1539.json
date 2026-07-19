@@ -1,0 +1,31 @@
+{
+  "creator": "Psy",
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:59",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1539",
+  "kind": "citation",
+  "links": [],
+  "quote": "Si tu vas voir Psy, qu'il est guitare-voix, qu'il fait son album folk, t'es là « Bon an ! » Écoute, fais-nous 30 fois Gangnam Style.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:33:59",
+  "title": "Gangnam Style",
+  "transcriptSource": "acast",
+  "types": [
+    "musique"
+  ]
+}

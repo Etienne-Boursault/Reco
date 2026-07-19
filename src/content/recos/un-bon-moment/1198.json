@@ -1,16 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Recommandee par un host (Kyan ou Navo). Non diarize. Canonique du groupe Anaide Rozam.",
+    "reason": "Comedienne Anaide Rozam (Instagram) recommandee : « il y a deux meufs que je voulais recommander ». Orthographe 'Anaide Rozam' verifiee (vs 'Rosam'/'Anaid').",
+    "verdict": "validate"
+  },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:22",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1198",
+  "kind": "reco",
   "links": [],
   "quote": "C'est Anaïde Rosam, qui est assez connu, quand même, maintenant.",
-  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:48:22",
   "title": "Anaïde Rozam",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

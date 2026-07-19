@@ -1,0 +1,71 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "creator exact = 'Fanny Ruwet' (et non 'Fanny Ruet') ; ne pas confondre avec l'invitée Fanny La Panny. Locuteur incertain. Doublons 0411 et 0991 discardés.",
+    "reason": "'Bien sûr que les poissons ont froid' de Fanny Ruwet (roman, 2023) recommandé ('un roman... je l'ai écouté en livre audio, c'est super'). Canonique.",
+    "verdict": "validate"
+  },
+  "creator": "Fanny Ruet",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:26:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:26:54",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:27:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1497",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je l'ai écouté aussi en livre audio. Et c'est super.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:27:04",
+  "title": "Bien sûr que les poissons ont froid",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

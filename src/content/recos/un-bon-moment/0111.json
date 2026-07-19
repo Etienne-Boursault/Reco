@@ -1,18 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-13",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution inferee (transcript non diarise) : suite de la liste de points d'ancrage de Zazie.",
+    "reason": "Point d'ancrage (Radiohead, 'c'est exceptionnel') discute avec substance mais sans prescription au public. Meme locuteur que Pink Floyd/The Cure = Zazie.",
+    "verdict": "citation"
+  },
   "creator": "Radiohead",
   "episodeGuid": "6599c3998e40b300163f8618",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:06:09+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:02",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0111",
+  "kind": "citation",
   "links": [],
-  "quote": "Et puis, plus récemment, des groupes comme Radiohead",
-  "recommendedBy": "intervenant",
+  "quote": "Radiohead, c'est exceptionnel.",
+  "recommendedBy": "Zazie",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:22:04",
+  "status": "validated",
+  "timestamp": "00:22:02",
   "title": "Radiohead",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "artiste"
   ]
 }

@@ -1,20 +1,64 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Film reel (Le Nouveau, R. Rosenberg 2015) mais co-ecriture par un host NON verifiable (absent des credits Wikipedia). Locuteur = Kyan ou Navo, non diarizable. Humain a trancher guest-work vs citation + attribution.",
+    "reason": "Un host affirme avoir aide a ecrire le film 'Le Nouveau' (2015, Rudi Rosenberg) et decrit une scene cruelle en anecdote pour illustrer une histoire d'enfance. Substance mais pas de prescription au public -> citation (oeuvre d'un host passee en anecdote).",
+    "verdict": "citation"
+  },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/movie/257211-the-intern/watch?locale=FR",
     "tmdb": "257211",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:14",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "25:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0631",
+  "kind": "citation",
   "links": [],
-  "quote": "j'avais aidé à écrire un film, ça s'appelle Le Nouveau.",
+  "quote": "J'avais aidé à écrire un film qui s'appelle Le Nouveau.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:25:14",
+  "status": "validated",
+  "timestamp": "00:24:14",
   "title": "Le Nouveau",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

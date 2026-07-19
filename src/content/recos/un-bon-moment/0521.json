@@ -1,6 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme oeuvre que la canonique ubm-1365 ('L'histoire de la psychanalyse').",
+    "reason": "Doublon du livre de la mere de Nassim (00:23-00:24). Titre 'La vie de ma mere' = artefact de 'c'est le livre de ma mere'.",
+    "verdict": "discard"
+  },
   "creator": "Nassim",
   "episodeGuid": "69e13325fb440758726a665f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:24:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +32,10 @@
   "quote": "\"C'est un livre magnifique. C'est autobiographique.\"",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:24:41",
   "title": "La vie de ma mère",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ]

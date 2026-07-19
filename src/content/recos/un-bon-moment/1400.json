@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "model": "claude-opus-4-8",
+    "note": "Ruth Rockflower est en guestsExcluded ; sujet de devinette, pas une reco.",
+    "reason": "Reponse du quiz DJ (jeu des personnalites, ~00:30:40) : Ruth Rockflower alias pseudo Mamie Rock, enoncee comme devinette. Performeuse non-invitee (regle 6) + oeuvre citee dans un jeu -> discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69c7de338ac24e236cb65e12",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T07:45:14+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:30:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1400",
+  "links": [],
+  "quote": "son pseudo c'est Mamie Rock",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:30:40",
+  "title": "Mamie Rock",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

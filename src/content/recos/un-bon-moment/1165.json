@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Serie reelle (le psy sequestre par un tueur en serie) mais rejetee a l'antenne par Navo. A ne pas publier comme reco.",
+    "reason": "'The Patient' explicitement NON recommande: Navo l'a regarde apres qu'on le lui ait conseille, puis 'non je n'ai pas kiffe... bon alors je ne le recommande pas' (01:11:52-01:12:03).",
+    "verdict": "discard"
+  },
   "creator": "autre",
   "episodeGuid": "6584658132930b0016c5272b",
   "externalIds": {
@@ -6,18 +15,38 @@
     "tmdb": "135868",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:37",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:38",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-1165",
   "links": [],
-  "quote": "Le Psy qui se fait enlever ? Ouais, qui se fait enlever.",
+  "quote": "le psy qui se fait enlever le mec qui lui dit je suis un tueur en série aidez-moi",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:11:37",
+  "status": "discarded",
+  "timestamp": "01:11:38",
   "title": "The Patient",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

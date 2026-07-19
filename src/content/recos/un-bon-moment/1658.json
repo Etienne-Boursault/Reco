@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon corrompu de ubm-1982.",
+    "reason": "Doublon de ubm-1982 : 'RRosalia' = titre corrompu, meme quote 'elle a fait un album sublime' (00:54).",
+    "verdict": "discard"
+  },
+  "creator": "Rosalia",
+  "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:54:01",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1658",
+  "links": [],
+  "quote": "Elle a fait un album... Qui est juste sublime quoi...",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:01",
+  "title": "RRosalia",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

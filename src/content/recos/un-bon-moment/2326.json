@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Meme oeuvre que ubm-2317.",
+    "reason": "Doublon de ubm-2317 : les accords Tolteques (~01:00:49). 'Toltec' = meme oeuvre que 'The Four Agreements'.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:01:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2326",
+  "links": [],
+  "quote": "non, mais c'est ça",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:01:30",
+  "title": "Toltec",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

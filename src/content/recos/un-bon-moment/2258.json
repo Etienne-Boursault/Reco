@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Jeu-format interne de l'emission (le multi-blind test de Navo, 00:49:25) -> pas une oeuvre externe recommandable.",
+    "verdict": "discard"
+  },
+  "creator": "Navo",
+  "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:49:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2258",
+  "links": [],
+  "quote": "C'est le multi-blind test de Navo.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:49:25",
+  "title": "Multi-blind test",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

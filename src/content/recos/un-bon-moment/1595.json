@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0371 (Valerie Lemercier, anecdote billet, pas de substance/prescription).",
+    "verdict": "discard"
+  },
+  "creator": "Valérie Lemercier",
+  "episodeGuid": "697d34fef1dd68ab365aea03",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1595",
+  "links": [],
+  "quote": "je vais aller au spectacle de Valérie Lemercier",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:15:15",
+  "title": "Spectacle de Valérie Lemercier",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ],
+  "year": 2027
+}

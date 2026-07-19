@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-1409 (laisse en unsure).",
+    "reason": "Doublon du cluster hypnotherapeute (voir ubm-1409) ; titre 'Hypnose' = artefact (la reco visait la praticienne).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:16:07",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1419",
+  "links": [],
+  "quote": "J'ai une excellente hypnothérapeute. Elle s'appelle Agathe Mer, je vous la recommande, elle est formidable.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:16:07",
+  "title": "Hypnose",
+  "transcriptSource": "acast",
+  "types": [
+    "autre"
+  ]
+}

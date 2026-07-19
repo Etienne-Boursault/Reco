@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre correct = 'True Story' (aka 'True Story Avec', Amazon Prime Video 2020, presentatrice Natoo). Ajouter Natoo aux guests episode.",
+    "reason": "Natoo presente son projet recent (elle est intervieweuse de l'emission) : programme Amazon Prime de Jonathan Cohen ou des guests racontent une histoire folle illustree en court-metrage. Auto-promo d'un projet d'invitee -> guest-work. Canonique (regroupe ubm-0628 et ubm-2209).",
+    "verdict": "guest-work"
+  },
+  "creator": "Jonathan Cohen",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:12:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2230",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est un programme pour Amazon Prime qui consiste à inviter des guests de talent et chaque guest va raconter une histoire folle qui lui est arrivée.",
+  "recommendedBy": "Natoo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:12:42",
+  "title": "Me raconte une histoire",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

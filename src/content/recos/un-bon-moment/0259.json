@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1804 : meme film = 'Nobody' (2021, Bob Odenkirk), 'je suis tombe dessus, je me suis bidonne'. NB : titre trompeur, ce n'est PAS le Mr. Nobody de Van Dormael (evoque a part pour dementir).",
+    "verdict": "discard"
+  },
   "creator": "Jaco Van Dormael",
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
@@ -6,17 +14,48 @@
     "tmdb": "31011",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:46:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:46:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:46:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0259",
   "links": [],
-  "quote": "Oui, c'est Mr. Nobody.",
+  "quote": "je suis tombé sur un soir je me suis bidonné",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:47:25",
+  "status": "discarded",
+  "timestamp": "01:46:55",
   "title": "Mr. Nobody",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],
@@ -71,5 +110,6 @@
       "label": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Mr.%20Nobody"
     }
-  ]
+  ],
+  "year": 2009
 }

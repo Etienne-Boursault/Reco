@@ -6,17 +6,49 @@
     "tmdb": "73",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:59:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0547",
+  "kind": "citation",
   "links": [],
-  "quote": "American Historics.",
-  "recommendedBy": "Invité",
+  "quote": "American History X.",
+  "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:59:05",
+  "status": "validated",
+  "timestamp": "00:59:04",
   "title": "American History X",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

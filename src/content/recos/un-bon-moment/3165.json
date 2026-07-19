@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:06:48 : 'cette vidéo je l'ai faite... Covent Garden London... je me promenais à...'. Contexte d'une anecdote Instagram, pas une reco de lieu.",
+    "reason": "Lieu cité en anecdote (vidéo Instagram tournée là-bas), sans avis ni prescription comme destination (règle 1).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:06:48",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3165",
+  "links": [],
+  "quote": "Covent Garden London",
+  "recommendedBy": "Fadili Kamara",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:06:48",
+  "title": "Covent Garden",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

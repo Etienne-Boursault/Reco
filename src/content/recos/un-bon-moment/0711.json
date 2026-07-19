@@ -1,4 +1,13 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:33:14 : bit humoristique 'vous croyez avoir compris Inception mais non... la toupie a 0.46', utilise comme comparaison dans la discussion sur les films 'compliques'. Tout le monde l'a deja vu, aucune prescription.",
+    "reason": "Mention instrumentale (bit comique sur la fin d'Inception), pas une reco",
+    "verdict": "discard"
+  },
   "creator": "Christopher Nolan",
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
@@ -6,17 +15,38 @@
     "tmdb": "27205",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:33:15",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0711",
   "links": [],
-  "quote": "Vous pensez que vous avez compris 'Inception', mais vous n'avez pas compris.",
-  "recommendedBy": "Invité",
+  "quote": "Vous aviez compris Inception, non ?",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:33:15",
+  "status": "discarded",
+  "timestamp": "00:33:14",
   "title": "Inception",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ],

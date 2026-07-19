@@ -1,0 +1,28 @@
+{
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:47+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:00:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1557",
+  "links": [],
+  "quote": "c'est inspiré de Gorillaz mais c'est c'est",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:00:00",
+  "title": "Gorillaz",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

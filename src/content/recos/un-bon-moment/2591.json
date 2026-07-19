@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Verifie transcript 01:42:03-07. Echo du Warzone du confinement (ubm-1296) ; aparte, pas une prescription.",
+    "reason": "Interjection/echo pendant le tour d'Anis ('Warzone... jeux video... je pensais a... Warzone') avant qu'Anis n'enchaine sur sa vraie reco (Gang Stories). Doublon/mention instrumentale, pas une reco propre.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2591",
+  "links": [],
+  "quote": "Warzone... Jeux vidéo...",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:42:03",
+  "title": "Warzone",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

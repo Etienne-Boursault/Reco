@@ -1,18 +1,80 @@
 {
+  "aliases": [
+    "Greer Barnes"
+  ],
   "creator": "Grier Barnes",
+  "customLinks": [
+    {
+      "label": "IMDB",
+      "url": "https://www.imdb.com/fr/name/nm0055616/"
+    }
+  ],
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:10",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:46:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0560",
+  "kind": "reco",
+  "linkOverrides": {
+    "Instagram": "https://www.instagram.com/greerbarnes_/?hl=fr"
+  },
   "links": [],
   "quote": "C'est un stand-upeur américain qui doit avoir 60 ans.",
-  "recommendedBy": "David",
+  "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:42:08",
-  "title": "Grier Barnes",
+  "status": "validated",
+  "timestamp": "01:42:10",
+  "title": "Greer V Barnes",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "artiste"
   ]
 }

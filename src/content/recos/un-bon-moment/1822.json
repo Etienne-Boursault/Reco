@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Continue tu m'interesses' (avec s), anime par Patrick Baud, 1er invite = Navo. Createur = Patrick Baud.",
+    "reason": "Patrick Baud (invite) nomme son propre podcast : 'J'ai ce podcast dans lequel je pose des questions... qui s'appelle Continue tu m'interesse, Navo en est le parrain/premier invite' (01:56:25, 01:59:20) — auto-promo d'un projet d'invite.",
+    "verdict": "guest-work"
+  },
+  "creator": "Patrick",
+  "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:25",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:56:25",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1822",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'avais écrite pour mon podcast\nAlors t'as un podcast aussi\nQui s'appelle\nContinue tu m'intéresse",
+  "recommendedBy": "Patrick Baud",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:56:25",
+  "title": "Continue tu m'intéresse",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

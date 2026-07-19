@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« J'ai revu Bad Boys 2. Super. » — re-visionnage avec avis positif franc, puis anecdote P. Diddy superviseur musique. Vraie œuvre, pas de prescription explicite, pas une œuvre d'invité. Borderline.",
+    "verdict": "citation"
+  },
   "creator": "Michael Bay",
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
@@ -6,17 +14,29 @@
     "tmdb": "8961",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:41",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0439",
+  "kind": "citation",
   "links": [],
   "quote": "j'ai revu Bad Boys 2 super",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:11:41",
   "title": "Bad Boys 2",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

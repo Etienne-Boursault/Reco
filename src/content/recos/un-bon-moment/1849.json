@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre a verifier/corriger avant publication ; possible confusion avec 'En Rock et En Roll' ou 'Comedian Rhapsody'.",
+    "reason": "Name-drop d'un ancien spectacle de Thomas VDB sur son rapport a la musique (sans prescription = citation au mieux). MAIS titre 'Combien de Rhapsodies' non verifiable par recherche : probable artefact de transcription. Son 1er spectacle confirme est 'En Rock et En Roll' (2006), il a aussi un livre 'Comedian Rhapsody' (2021).",
+    "verdict": "unsure"
+  },
+  "creator": "Thomas Vj",
+  "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:19:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1849",
+  "links": [],
+  "quote": "Ça s'appelait Combien de Rhapsodies ?",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:19:47",
+  "title": "Combien de Rhapsodies",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Lié à ubm-2913 (même jeu).",
+    "reason": "'Dans ma bulle' (album de Diams) = réponse/support du Jeu de la Complicité (devinette, ~01:15:35) → mention instrumentale, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Diams",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:35",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2901",
+  "links": [],
+  "quote": "C'était Diams dans ma bulle.",
+  "recommendedBy": "Oli",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:35",
+  "title": "Dans ma bulle",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

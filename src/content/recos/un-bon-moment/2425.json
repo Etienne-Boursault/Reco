@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.65,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Citation rhetorique d'un gag d'Homer (Simpsons) pour la chute de l'emission ('ne jamais essayer', en echo du gag 'restez moyen'). Usage instrumental/exemple rhetorique, pas de discussion substantielle ni prescription = discard.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2425",
+  "links": [],
+  "quote": "Dans les Simpsons qui m'avaient tué, c'est Omer qui dit : Les enfants, vous avez essayé et vous avez échoué. La leçon à en tirer, c'est qu'il ne faut jamais essayer.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:11",
+  "title": "Les Simpsons",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,9 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-2546 (Czesare, meme phrase 'elle vient de sortir un album tres recemment'). Titre 'ses arrets' = artefact de 'recemment', creator 'Sia' = hallucination.",
+    "verdict": "discard"
+  },
   "creator": "Sia",
   "episodeGuid": "6550c2836b767e0012a65d8d",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/196846052"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:07:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -12,9 +31,10 @@
   "quote": "elle vient de sortir un album très récemment ses arrêts",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:07:31",
   "title": "ses arrêts",
+  "transcriptSource": "acast",
   "types": [
     "album"
   ]

@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.55,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre reel = « Fouloscopie » (chaine de Mehdi Moussaid), transcript « Filoscopie ».",
+    "reason": "Chaine YouTube de Mehdi Moussaid evoquee positivement : « a bon niveau la chaine... c'est hyper interessant », mais surtout pour situer l'auteur du livre.",
+    "verdict": "citation"
+  },
+  "creator": "Mehdi",
+  "episodeGuid": "6985f143d4e01f1069c7d5d3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "02:14:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1958",
+  "kind": "citation",
+  "links": [],
+  "quote": "qui a la chaîne Filoscopie c'est un des derniers livres que j'ai lu cette année",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:14:32",
+  "title": "Filoscopie",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

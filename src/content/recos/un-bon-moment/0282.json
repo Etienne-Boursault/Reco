@@ -1,23 +1,66 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-06",
+    "humanCorrection": "Timecode recalé 01:41:20 (le ts pointait le passage Skyjo juste avant) ; Devil's Plan confirmé dans le transcript (« Devile's Plane » 01:41:20, reco finale « Divals Plane » 02:07:25)",
+    "model": "claude-opus-4-8",
+    "reason": "'The Devil's Plan' (emission coreenne, Prime): d'abord discutee (01:40) puis reco finale explicite de Navo (02:07 'je vais dire Divals Plane... vous regardez'). Entree canonique (meilleur titre) du groupe de 4 doublons.",
+    "verdict": "validate"
+  },
+  "creator": "autre",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/214582/watch?locale=FR",
     "tmdb": "214582",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:29",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:21",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0282",
+  "kind": "reco",
   "links": [],
-  "quote": "Divals Plane.",
-  "recommendedBy": "intervenant",
+  "quote": "Est-ce que t'as vu \"Devile's Plane\" L'émission coréenne",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:42:21",
+  "status": "validated",
+  "timestamp": "01:41:20",
   "title": "Devil's Plan",
+  "transcriptSource": "youtube",
   "types": [
-    "serie"
+    "serie",
+    "video"
   ],
   "watchProviders": [
     {

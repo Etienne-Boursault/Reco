@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Anti-hallucination : aucune occurrence d'Amanda dans le transcript.",
+    "reason": "Titre halluciné : 'Amanda Day' n'existe nulle part dans le transcript. La quote 'il a dit que j'ai franchi une ligne' (00:11:14) concerne l'histoire du psy, pas une oeuvre.",
+    "verdict": "discard"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:11:08",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "il a dit que j'ai franchine ligne",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:11:08",
   "title": "Amanda Day",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon ; canonique = ubm-2678 'Splinalende'. creator 'inconnu', titre 'Splinal Nd'.",
+    "reason": "Doublon du cluster Splinalende.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "65240e1c5d8481001225962c",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:13:05",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-1245",
   "links": [],
   "quote": "je recommande Splinal Nd la chaîne Youtube de Splinal Nd qui a fait toute une série sur les sectes",
-  "recommendedBy": "inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:13:05",
   "title": "Splinal Nd",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

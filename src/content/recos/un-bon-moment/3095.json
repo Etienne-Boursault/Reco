@@ -1,0 +1,55 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript 'Pierre Hilleret' (draft 'Pierre Hilbert'), spectacle 'le roi Borgne' — orthographe nom + spectacle à vérifier.",
+    "reason": "Navo (sollicité pour recommander un artiste) prescrit explicitement l'humoriste ('on passe notre temps à recommander', 'super, très drôle'), non présent — vraie reco (validate).",
+    "verdict": "validate"
+  },
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3095",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
+    }
+  ],
+  "quote": "Pierre Hilleret, le roi Borgne si on doit parler d'humoriste !",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:40:52",
+  "title": "Pierre Hillairet",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

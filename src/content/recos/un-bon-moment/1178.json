@@ -1,17 +1,48 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Locuteur = temoignage personnel (« j'ai vecu en souffrance 20 ans... maintenant je vis avec les 4 accords »), attribue a Navo par l'extraction ; plausible mais non certain a 100%.",
+    "reason": "Reco personnelle forte a 01:15:04 : « Moi je vis avec les 4 accords Toltec, c'est ma vie ». Livre reel de Don Miguel Ruiz. Fiche canonique (titre correct + recommendedBy) vs doublon ubm-2690.",
+    "verdict": "validate"
+  },
   "creator": "Don Miguel Ruiz",
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-1178",
+  "kind": "reco",
   "links": [],
-  "quote": "Ah oui, mais moi, je vis avec les quatre accords Toltec. En fait, c'est ma vie, les quatre accords Toltec.",
+  "quote": "Moi je vis avec les 4 accords Toltec en fait c'est ma vie les 4 accords Toltec",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:02",
+  "status": "validated",
+  "timestamp": "01:15:04",
   "title": "Les Quatre Accords Toltèques",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

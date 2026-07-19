@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre confirmee = L'Employe (fiction audio originale Spotify, 2019, V. Bonnefoy). Ajouter Natoo aux guests.",
+    "reason": "Natoo recommande la serie audio : 'beaucoup de series audio que j'adore... j'ai ecoute dernierement l'employe sur Spotify.' Prescription.",
+    "verdict": "validate"
+  },
+  "creator": "Inconnu",
+  "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:14:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2222",
+  "kind": "reco",
+  "links": [],
+  "quote": "l'employé sur Spotify",
+  "recommendedBy": "Natoo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:51",
+  "title": "L'Employé",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

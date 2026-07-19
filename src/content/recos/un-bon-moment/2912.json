@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique (ubm-2899 doublon). Corriger créateur/titre 'Aurel'→Orelsan; identifier l'album. Attribution invité incertaine.",
+    "reason": "'Aurel' = Orelsan (transcription erronée; le 'doc' cité = 'Montre jamais ça à personne', sur ses doutes de création). Discussion appréciative substantielle de l'artiste et de son dernier album (~00:47:40) → citation sur le fond, mais créateur/titre à corriger avant publication.",
+    "verdict": "unsure"
+  },
+  "creator": "Aurel",
+  "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:40",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2912",
+  "links": [],
+  "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "00:47:40",
+  "title": "Aurel",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "album",
+    "autre"
+  ]
+}

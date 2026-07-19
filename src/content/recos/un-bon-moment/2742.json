@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing",
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "ATTRIBUTION inferee : les hotes sollicitent les invites (« Les amis, est-ce que vous avez quelque chose a recommander ? »), Pierre est prompte separement (« Pierre ? » 01:17:51), et Navo decline (« quelque chose a rajouter, Navo ? — Non c'est bon » 01:18:51) => le bloc revient a Amixem. L'extracteur avait mis Kyan/Navo (probablement faux). GUESTS VIDE dans les metadonnees => a completer : Amixem, Pierre Croce. ORTHOGRAPHE probable « Hugo Lisoir » (sans e final) — WebSearch epuise, a verifier.",
+    "reason": "Reco explicite dans le rituel de fin (01:17:00) : « Moi, je vais recommander... Hugo Lisoire » (youtubeur, vulgarisation espace/astronomie). Titre present dans le transcript.",
+    "verdict": "validate"
+  },
+  "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:17:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2742",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, je vais recommander quoi ? Hugo Lisoire ?",
+  "recommendedBy": "Amixem",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:00",
+  "title": "Hugo Lisoire",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

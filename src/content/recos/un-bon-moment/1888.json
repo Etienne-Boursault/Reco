@@ -1,0 +1,30 @@
+{
+  "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:53",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1888",
+  "kind": "citation",
+  "links": [],
+  "quote": "Mais c'est spécifique à la blague, quand même, parce que tu ne rôtes pas Andromaque, quoi.",
+  "recommendedBy": "David Castello-Lopes",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:26:53",
+  "title": "Andromaque",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe confirmee 'Tif'. Locuteur = un host mais Kyan/Navo indetermine (non diarize) -> attribution videe. Canonique; doublon = ubm-1252.",
+    "reason": "Reco explicite d'un host: 'Moi j'ecoute beaucoup un artiste en ce moment qui s'appelle Tif [T-I-F]... un super artiste qui a sorti un projet tres recemment' (01:11:01). Artiste reel (rappeur FR, projet '1.6' 2023).",
+    "verdict": "validate"
+  },
+  "creator": "Tif",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:11:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2601",
+  "kind": "reco",
+  "links": [],
+  "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tif.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:01",
+  "title": "Tif",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

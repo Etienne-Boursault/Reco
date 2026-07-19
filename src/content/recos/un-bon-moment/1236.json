@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-17",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "À trancher par l'humain: guest-work (tournée B&O) vs discard (date événementielle éphémère). Si conservé, retitrer en spectacle/tournée, pas 'Défense Arena' (lieu). Timecode 01:22:03 OK.",
+    "reason": "Auto-promo par B&O de leur concert (Défense Arena, 8 déc 2023, 'venez à la Défense Arena', dernier concert de la tournée). Politique host/guest → potentiellement guest-work (spectacle/tournée), mais capté comme un lieu et date éphémère désormais passée.",
+    "verdict": "unsure"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:22:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -11,6 +35,7 @@
   "status": "draft",
   "timestamp": "01:22:04",
   "title": "Défense Arena",
+  "transcriptSource": "acast",
   "types": [
     "lieu"
   ]

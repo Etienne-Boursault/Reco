@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe Culottees (doublon = ubm-0735, discard). Titre reel 'Culottees'.",
+    "reason": "Name-drop de l'oeuvre phare de l'invitee (Culottees) via la discussion de ses adaptations : 'je crois qu'il y avait des adaptations de culottes? ... Ah, c'etait bien' (00:15:12). Substance sans prescription forte -> citation.",
+    "verdict": "citation"
+  },
+  "creator": "Pénélope Bagieu",
+  "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:15:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2644",
+  "kind": "citation",
+  "links": [],
+  "quote": "il y avait des adaptations, je crois qu'il y avait des adaptations de culottés ?",
+  "recommendedBy": "Pénélope Bagieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:15:12",
+  "title": "Culottés",
+  "transcriptSource": "youtube",
+  "types": [
+    "bd"
+  ]
+}

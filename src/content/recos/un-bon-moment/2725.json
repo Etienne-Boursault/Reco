@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Même énoncé que ubm-2724 (Miskina) rendu « Minx » par un extracteur ; pas de reco indépendante.",
+    "reason": "Aucune occurrence de « Minx » au transcript. Le timestamp 00:57:23 correspond exactement à « Miss Kina saison 1 » (Miskina) : artefact d'extraction / doublon de ubm-2724.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65240aefc8996500127ede97",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2725",
+  "links": [],
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:23",
+  "title": "Minx",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

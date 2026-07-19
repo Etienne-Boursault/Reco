@@ -1,5 +1,29 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.87,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de Shameless (canonique ubm-1473), citation dans le bit sarcastique.",
+    "reason": "'Chamelez' = mauvaise transcription de 'Shameless'. A 01:27:22 un host dit 'je connais la serie Shemless' (citation ironique dans le bit), meme oeuvre que ubm-1473.",
+    "verdict": "discard"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:27:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -7,9 +31,10 @@
   "links": [],
   "quote": "Je connais, série Chamelez.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:27:23",
   "title": "Chamelez",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "« Alpha One, tu connais ? le rappeur » — punchline citée en exemple du thème « retour à la nature » (comparé à Bigflo). Aucune reco/substance.",
+    "verdict": "discard"
+  },
+  "creator": "Alpha One",
+  "episodeGuid": "69a169ac519334f049d06785",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1939",
+  "links": [],
+  "quote": "Alpha One, tu connais Alpha One ?",
+  "recommendedBy": "non spécifié",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:42:09",
+  "title": "Alpha One",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

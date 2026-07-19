@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2421",
+    "reason": "Doublon de ubm-2421 (meme programme 'Les Fables d'Odah & Dako' @00:45:50). Titre 'Les Fabs de Daido et Dako' = artefact. On garde 2421.",
+    "verdict": "discard"
+  },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:50",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "anthropic"
   ],
@@ -8,9 +31,10 @@
   "quote": "si vous voulez les voir c'est de quoi on parle ça s'appelle les facts de Daidako y'a une chaîne carrément youtube ou sur my canal si vous avez canal plus allez voir",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:45:50",
   "title": "Les Fabs de Daïdo et Dako",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ]

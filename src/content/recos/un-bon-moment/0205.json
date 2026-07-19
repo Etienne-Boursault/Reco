@@ -1,18 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-1855 (meme spectacle Madame Fraize, meme passage 01:40:5x).",
+    "verdict": "discard"
+  },
   "creator": "Marc Freize",
   "episodeGuid": "6903fad795ee8b1815229b88",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:40:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0205",
   "links": [],
   "quote": "Marc Freize, Madame Freize Le spectacle Madame Freize Le spectacle de clown Incroyable Il y a quoi Il y a 37 mots En 1h30 Et c'est génial",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:40:53",
   "title": "Madame Freize",
+  "transcriptSource": "acast",
   "types": [
     "spectacle"
   ]

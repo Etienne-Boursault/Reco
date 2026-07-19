@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du doublon (ubm-0622 discard).",
+    "reason": "Anecdote de Kyan sur son declencheur (il a vu le spectacle de Franck Dubosc au Zenith, 'ca m'avait fascine') a 00:04:18 - substance sans prescription au public. Politique: host en anecdote = citation.",
+    "verdict": "citation"
+  },
+  "creator": "Franck Dubosc",
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:18",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2232",
+  "kind": "citation",
+  "links": [],
+  "quote": "J'avais vu le spectacle de Franck Dubosc Je me suis dit Il était au Zénith et tout De Paris",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:04:18",
+  "title": "Spectacle de Franck Dubosc",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

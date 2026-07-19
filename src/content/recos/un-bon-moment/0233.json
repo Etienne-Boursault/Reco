@@ -1,17 +1,62 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.95,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre exact 'Curieux musees' (pluriel), Dunod oct. 2024. Createur = Patrick Baud.",
+    "reason": "Patrick Baud (invite) presente son propre livre : 'Mon dernier livre c'est Curieux musee... si vous avez envie de l'acheter faites-vous plaisir, meilleur cadeau de Noel' — auto-promo assumee.",
+    "verdict": "guest-work"
+  },
+  "creator": "Patrick Bou",
   "episodeGuid": "691488fcc1ed8717c54570d4",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:43:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:43:11",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:44:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0233",
+  "kind": "reco",
   "links": [],
-  "quote": "Dernier livre c'est Curieux Musée sur les musées les plus incroyables du monde",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Ce livre s'appelle Curieux Musée.",
+  "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:43:11",
+  "status": "validated",
+  "timestamp": "01:44:08",
   "title": "Curieux Musée",
+  "transcriptSource": "youtube",
   "types": [
     "livre"
   ]

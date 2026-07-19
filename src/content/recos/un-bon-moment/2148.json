@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention instrumentale: explication de ce qu'est le 'LOL RP' (00:09:04). Aucune prescription.",
+    "reason": "'LOL, c'est League of Legends' sert a expliquer l'acronyme 'LOL RP' (roleplay) dont ils parlent. Explication/exemple, pas une reco du jeu.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "65c7a407bb568b0017862c8f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2148",
+  "links": [],
+  "quote": "LOL, c'est League of Legends. C'est le jeu League of Legends qui est disponible.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:09:04",
+  "title": "League of Legends",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

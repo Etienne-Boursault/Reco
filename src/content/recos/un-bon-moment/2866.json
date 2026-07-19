@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Vrai titre « Vends 2 pièces à Beyrouth » (ASR: « Vente de pièces à Beyrouth »). Spectacle sur le terrorisme de Jérémy Ferrari (débuté 2015), présenté par lui (00:06:14-00:07:23). Champ creator erroné = « Kyan Khojandi » (le script ne modifie pas creator : à corriger à la main => Jérémy Ferrari).",
+    "reason": "Spectacle passé de l'invité, présenté par lui",
+    "verdict": "guest-work"
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "61cb19444f2d030012ddd82a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:06:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2866",
+  "kind": "reco",
+  "links": [],
+  "quote": "un peu comme j'ai fait avec Vente de pièces à Beyrouth ou Alléluia Bordel.",
+  "recommendedBy": "Jérémy Ferrari",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:06:19",
+  "title": "Vente de pièces à Beyrouth",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

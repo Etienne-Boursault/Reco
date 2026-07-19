@@ -1,17 +1,61 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Attribution -> Alexandre Astier (il code en Python, se fabrique un C3PO avec Arduino). guests vide -> ajouter Alexandre Astier.",
+    "reason": "Reco explicite d'Astier dans le segment final: 'Je vais mettre en avant le langage Python... Je conseille aux jeunes auteurs de commencer a se fabriquer des petits robots assistants ecrits en Python.' Recommandation directe d'une chose reelle (langage).",
+    "verdict": "validate"
+  },
+  "creator": "Guido van Rossum",
   "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:03",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:33:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:33:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0826",
+  "kind": "reco",
   "links": [],
-  "quote": "je vais mettre en avant le langage piton et bah alors ça part en sa part en programmation voilà je conseille aux jeunes auteurs de commencer à se fabriquer des petits robots assistants écrits en piton",
-  "recommendedBy": "Alex",
+  "quote": "Je vais mettre en avant le langage Python.",
+  "recommendedBy": "Alexandre Astier",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:33:03",
+  "status": "validated",
+  "timestamp": "01:33:04",
   "title": "Python",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

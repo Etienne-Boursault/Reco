@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "« Sulicephile » : nom de producteur non identifiable / mal transcrit ; mention dans le jeu de la complicité, pas une reco.",
+    "reason": "Deviné dans le jeu de la complicité (01:02) ; « il est bon, super producteur, bon gars » en passant, mais mention en jeu. Nom non identifiable (artefact de transcription probable).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:02:43",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2537",
+  "links": [],
+  "quote": "Mais il est bon Sulicephile ! C'est un super producteur ! Il est bon ! C'est un bon gars en plus ! Gentil !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:02:43",
+  "title": "Sulicephile",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

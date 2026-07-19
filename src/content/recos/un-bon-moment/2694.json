@@ -1,0 +1,54 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "guests[] vide dans les metadonnees episode — a completer avec 'Hakim Jemili'.",
+    "reason": "Valide = serie (Canal+) ou Hakim Jemili est a l'affiche, citee par lui au rituel 'serie recommandee' de fin ('Valide', 'vous l'avez compris') + endossement 'Valide j'ai surkiffe meme en tant que spectateur'. Oeuvre d'invite presentee par lui.",
+    "verdict": "guest-work"
+  },
+  "creator": "Non précisé",
+  "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:21:25+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:58:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:21:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:58:45",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "guestWork": true,
+  "id": "ubm-2694",
+  "kind": "reco",
+  "links": [],
+  "quote": "Validé c'est validé.",
+  "recommendedBy": "Hakim Jemili",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:58:45",
+  "title": "Validé",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "00:03:45 : Jerome Niel evoque 'je venais de terminer la saison 2 de Groom', sa propre serie. Auto-promo invite -> guest-work, recommendedBy Jerome Niel. Doublon ubm-0706 (variante 'Groum', attribue a tort a Navo) discarde.",
+    "reason": "Oeuvre de l'invite Jerome Niel citee par lui-meme (auto-promo)",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:48",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2586",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'était vraiment un moment où je venais de terminer la saison 2 de Groom.",
+  "recommendedBy": "Jérôme Niel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:03:48",
+  "title": "Groom",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

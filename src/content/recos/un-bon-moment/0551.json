@@ -1,21 +1,75 @@
 {
+  "aliases": [
+    "The Chair"
+  ],
+  "creator": "Tim Robinson",
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/271267-the-chair-company/watch?locale=FR",
     "tmdb": "271267",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:08:22+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:47:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:47:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0551",
+  "kind": "reco",
   "links": [],
-  "quote": "Ça s'appelle The Cher Company.",
-  "recommendedBy": "intervenant",
+  "quote": "je suis très attiré par cette série et elle m'intrigue énormément, ça s'appelle The Chair Company.",
+  "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:48:01",
+  "status": "validated",
+  "timestamp": "01:48:05",
   "title": "The Chair Company",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

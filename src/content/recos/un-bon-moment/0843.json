@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Createur a corriger: « Jean Yanne » (pas « Jean-Yann »). Recommande par un invite (probablement Xavier Lacaille, l'admirateur de Jean Yanne), transcript non diarize.",
+    "reason": "Recommandation explicite en fin d'emission (~01:04:13) : « allez voir tout le monde il est beau, tout le monde il est gentil... c'est tres drole ». Film de Jean Yanne (1972), verifie.",
+    "verdict": "validate"
+  },
   "creator": "Jean-Yann",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
@@ -6,18 +19,29 @@
     "tmdb": "27020",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:04:13",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0843",
+  "kind": "reco",
   "links": [],
   "quote": "allez voir, tout le monde il est beau, tout le monde il est gentil. Allez voir ces trucs-là, c'est très drôle.",
-  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:04:13",
   "title": "Tout le monde il est beau, tout le monde il est gentil",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ],

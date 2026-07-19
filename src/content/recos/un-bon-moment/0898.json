@@ -1,17 +1,46 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Redondant / entite editrice plutot qu'oeuvre. YT 01:14:59.",
+    "reason": "« Les Editions du Tresor » est une maison d'edition, pas une oeuvre discrete. La substance (les chasses au tresor recommandees) est deja captee par les recos specifiques ubm-2860 et ubm-2861.",
+    "verdict": "discard"
+  },
   "creator": "inconnu",
   "episodeGuid": "652408a9c8996500127e39e9",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:09",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0898",
   "links": [],
-  "quote": "Il y a une petite maison d'édition qui s'appelle \"Les éditions du trésor\" qui publie des livres qui sont un peu en lien avec l'exploration, l'aventure.",
-  "recommendedBy": "inconnu",
+  "quote": "Moi, il y a une petite maison d'édition qui s'appelle les Éditions du Trésor, qui publie des livres qui sont un peu en lien avec l'exploration, l'aventure.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:15:02",
+  "status": "discarded",
+  "timestamp": "01:15:09",
   "title": "Les éditions du trésor",
+  "transcriptSource": "youtube",
   "types": [
     "autre"
   ]

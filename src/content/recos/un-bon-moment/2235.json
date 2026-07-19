@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Bloc comique sur l'apocalypse (oeufs durs, gourou...).",
+    "reason": "Mention instrumentale dans une vanne improvisee ('Je suis house of cards, aucun talent') a 00:54:22. Pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:22",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2235",
+  "links": [],
+  "quote": "Je suis house of cards",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:54:22",
+  "title": "House of Cards",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

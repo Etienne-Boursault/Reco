@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Projet de Barbara produit avec sa mere -> auto-promo mais intracable/non sorti. Reste draft. Attribution reelle = Barbara Biancardini (metadonnee « Navo » erronee).",
+    "reason": "Projet video de temoignages non encore diffuse (prevu nov. 2023), titre provisoire (« pour l'instant, ca s'appelle La vie sera belle »).",
+    "verdict": "unsure"
+  },
+  "episodeGuid": "6550c05703445c0011dd8343",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "25:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2496",
+  "links": [],
+  "quote": "pour l'instant, ça s'appelle La vie sera belle, pour donner un peu de courage",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "draft",
+  "timestamp": "25:47",
+  "title": "La vie sera belle",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

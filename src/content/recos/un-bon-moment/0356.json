@@ -1,16 +1,36 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Guillermo Guiz (humoriste belge reel) name-droppe parmi les artistes qui l'ont marque a son arrivee a Paris (01:19). Mention admirative sans prescription directe.",
+    "verdict": "citation"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:19:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0356",
+  "kind": "citation",
   "links": [],
   "quote": "Il y a lui, il y a Guillermo Guiz.",
-  "recommendedBy": "invité",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:06",
   "title": "Guillermo Guiz",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ]

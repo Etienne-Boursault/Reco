@@ -1,19 +1,65 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Vidéo Orelsan 2019 ; montage/écriture de Clément Cotentin (tournage Ilia Shemetov). Attribution partagée Orelsan/Clément.",
+    "reason": "« Fucking Fred », vidéo YouTube d'Orelsan (tournée, avec Jonathan Cohen) montée et structurée par l'invité Clément Cotentin, présentée longuement par lui = œuvre du guest (guest-work).",
+    "verdict": "guest-work"
+  },
   "creator": "Orelsan",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:31:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:31:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:39:50",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0868",
+  "kind": "reco",
   "links": [],
-  "quote": "qui est la vidéo la plus marrante de l'année 2019 qui est fucking fred qu'est-ce que c'est que ce truc là",
-  "recommendedBy": "Invité",
+  "quote": "c'est trop marrant.",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:31:44",
+  "status": "validated",
+  "timestamp": "00:39:50",
   "title": "Fucking Fred",
+  "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "video"
   ],
   "year": 2019
 }

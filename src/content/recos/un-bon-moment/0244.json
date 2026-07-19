@@ -1,22 +1,69 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.5,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Il y a des series comme Bojack Horseman, ca remonte carrement jusqu'a la grand-mere' : exemple avec observation substantielle sur la profondeur psychologique, mais pas de prescription. Locuteur incertain (host).",
+    "verdict": "citation"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR",
     "tmdb": "61222",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:13:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:16",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "13:14",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:16",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0244",
+  "kind": "citation",
   "links": [],
-  "quote": "Il y a des séries comme Bojack Horseman, ça remonte carrément jusqu'à la grand-mère",
-  "recommendedBy": "Intervenant",
+  "quote": "Il y a des séries comme Bojack Horseman.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:13:16",
   "title": "Bojack Horseman",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

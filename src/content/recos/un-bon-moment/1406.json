@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Canonique du cluster. 'Au-dela du reel, l'aventure continue' = titre FR de The Outer Limits (revival annees 90).",
+    "reason": "Evoque dans le brainstorm 'a refaire' avec appreciation ('des idees incroyables', compare a Black Mirror) mais sans prescription directe au public.",
+    "verdict": "citation"
+  },
+  "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:47:01+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:42:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1406",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est à refaire les Au-delà du réel. C'est un peu comme Black Mirror, tu vois, parce qu'il y a des idées qui sont incroyables dans Au-delà du réel.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:42:31",
+  "title": "Au-delà du réel, l'aventure continue",
+  "transcriptSource": "acast",
+  "types": [
+    "serie"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2579",
+    "reason": "Doublon de ubm-2579 (meme passage 01:47:11: 'un creatif sur YouTube'). Canonique = ubm-2579 (mieux renseigne, recommendedBy Navo).",
+    "verdict": "discard"
+  },
+  "creator": "inconnu",
+  "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:47:11",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2585",
+  "links": [],
+  "quote": "Tiens, un créatif sur YouTube. Un créatif. J'aime bien ce qu'il fait.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:47:11",
+  "title": "Un créatif sur YouTube",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

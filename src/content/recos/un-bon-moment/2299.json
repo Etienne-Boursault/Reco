@@ -1,0 +1,36 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Reponse de jeu ('contrale mental'): 'Florence Foresti se transforme en monstre, c'est quel monstre? Avatar le film' (00:57:30), jeu de mots sur 'monstre'. Mention instrumentale.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:57:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2299",
+  "links": [],
+  "quote": "Avatar le film qui est un monstre un monstre de film",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:57:30",
+  "title": "Avatar",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,8 +1,27 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Deviné dans le jeu de la complicité (01:06, indice « son dernier album il y a deux ans » → « M » / Mathieu Chédid). Mention instrumentale (jeu), aucun avis ni prescription.",
+    "verdict": "discard"
+  },
   "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/142704126"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:06:26",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -10,9 +29,10 @@
   "links": [],
   "quote": "Son dernier album.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:06:26",
   "title": "Mathieu Chédid",
+  "transcriptSource": "acast",
   "types": [
     "musique"
   ]

@@ -1,21 +1,55 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Consolidé sur l'album ubm-0042 (canonique). Si le morceau-titre « L'Horizon des événements » (piste 1) mérite une fiche distincte, la recréer avec un lien Deezer de PISTE (pas d'album).",
+    "reason": "Doublon de ubm-0042 : même titre et même lien Deezer (album/262200072). La quote (« écoute le premier morceau, l'horizon des événements », 00:45:55) vise le morceau-titre, mais l'externalId pointe l'album → rend une carte identique à ubm-0042.",
+    "verdict": "discard"
+  },
   "creator": "Kyan Khojandi",
   "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/262200072"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:32:48+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:45:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0047",
   "links": [],
-  "quote": "je commence toujours par montrer que c'est cool",
+  "quote": "écoute le premier morceau, l'horizon des événements.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:45:02",
+  "status": "discarded",
+  "timestamp": "00:45:55",
   "title": "Horizon des événements",
+  "transcriptSource": "youtube",
   "types": [
-    "album"
+    "album",
+    "musique"
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-13",
+    "flags": [
+      "timestamp_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Vrai passage ~00:51:43 (timestamp 00:43:43 errone).",
+    "reason": "Parc Asterix mentionne dans un bit parodiant les gens qui 'vendent' des experiences (bain froid, attraction). Mention en passant d'un lieu, pas une reco culturelle.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:43:43",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1638",
+  "links": [],
+  "quote": "T'as pas fait l'attraction ! La nouvelle attraction au Parc Asterix !",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:43:43",
+  "title": "Parc Astérix",
+  "transcriptSource": "acast",
+  "types": [
+    "lieu"
+  ]
+}

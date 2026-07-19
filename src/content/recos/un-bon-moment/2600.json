@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mot a deviner dans 'le jeu de la complicite' (55:07-56:19). Reponse de jeu-devinette -> discard.",
+    "verdict": "discard"
+  },
+  "creator": "James Cameron",
+  "episodeGuid": "65240f8a7a4ced00123481d1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:56:19",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:56:15",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2600",
+  "links": [],
+  "quote": "C'est vraiment un super...",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:56:15",
+  "title": "Titanic",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

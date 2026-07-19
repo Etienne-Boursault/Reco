@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0279 (spectacle de Panayotis 'Entre les deux', 01:22:32 'Panna Yotis en spectacle, 80 000 billets'). A fusionner.",
+    "verdict": "discard"
+  },
+  "creator": "Panna Yotis",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:35:53+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1731",
+  "links": [],
+  "quote": "Spectacle, Panna Yotis en spectacle !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:22:32",
+  "title": "Spectacle de Panna Yotis",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ]
+}

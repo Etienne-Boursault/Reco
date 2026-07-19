@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Mention en passant (« les gens qui ont un reportage dans Stade 2 ») — pas une reco.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:45:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1566",
+  "links": [],
+  "quote": "ça si ça m'arrive c'est les gens qui ont un reportage dans stade 2 dans stade 2",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:45:12",
+  "title": "Stade 2",
+  "transcriptSource": "acast",
+  "types": [
+    "video"
+  ]
+}

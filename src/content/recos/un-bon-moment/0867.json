@@ -1,20 +1,63 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "reason": "The Last Dance discuté avec substance comme doc sportif de référence, puis critiqué (« super déçu de la fin »). Discussion nourrie mais pas de prescription. Creator Jason Hehir correct.",
+    "verdict": "citation"
+  },
   "creator": "Jason Hehir",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:53",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:22:54",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:22:42",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0867",
+  "kind": "citation",
   "links": [],
-  "quote": "ze las danse qui est sorti documentaire sur michael jordan et les boules et enfin un petit parti ou le coach c'était ouf on se dégustait ça avec mon frère justement tous les lundis pendant le confinement",
-  "recommendedBy": "Invité",
+  "quote": "The Last Dance, ouais.",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:22:53",
+  "status": "validated",
+  "timestamp": "00:22:42",
   "title": "The Last Dance",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "serie"
   ],
   "year": 2020
 }

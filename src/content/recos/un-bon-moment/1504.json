@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Noir Désir' cité dans la même anecdote du livre de Thomas VDB ('un disque d'or de Indochine ou de Noir Désir') — name-drop dans un récit, pas une reco.",
+    "verdict": "discard"
+  },
+  "creator": "Noir Désir",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:59:37+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:28:30",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1504",
+  "links": [],
+  "quote": "Un disque d'or de Indochine ou de Noir Désir ? Indochine, je crois.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:28:30",
+  "title": "Noir Désir",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique",
+    "artiste"
+  ]
+}

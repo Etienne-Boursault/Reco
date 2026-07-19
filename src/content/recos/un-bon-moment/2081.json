@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Documentaire 'Bref de bons amis' de Nicolas Beguet (real de l'emission), sur Disney+ (02:00:52). Mention en credits avec cadre positif ('infaillible') mais sans prescription explicite ; Beguet n'est pas invite.",
+    "verdict": "citation"
+  },
+  "creator": "Nicolas Béguet",
+  "episodeGuid": "68ef607e58893bb6e322c623",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:59:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:00:52",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2081",
+  "kind": "citation",
+  "links": [],
+  "quote": "qui s'appelle Bref de bons amis",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "02:00:52",
+  "title": "Bref de bons amis",
+  "transcriptSource": "youtube",
+  "types": [
+    "film",
+    "autre"
+  ],
+  "year": 2024
+}

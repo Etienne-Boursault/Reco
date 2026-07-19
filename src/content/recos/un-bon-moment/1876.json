@@ -1,0 +1,63 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "title_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Orthographe correcte : Pierre Hillairet (humoriste, spectacle 'Jour de Pluie' ; fiche dit 'Pierre Hilleret').",
+    "reason": "Reco explicite : 'Allez voir le spectacle, c'est Pierre Hillairet exceptionnel'. Canonique (vs ubm-0182). Attribution incertaine.",
+    "verdict": "validate"
+  },
+  "creator": "Pierre Hilleret",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:09:52",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "09:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:09:51",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1876",
+  "kind": "reco",
+  "links": [],
+  "quote": "Allez voir le spectacle, c'est Pierre Hilleret exceptionnel.",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:51",
+  "title": "Pierre Hilleret",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste",
+    "spectacle"
+  ]
+}

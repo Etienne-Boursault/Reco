@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "reason": "Mention instrumentale: 'team Vitality' est l'un des 10 mots du jeu d'impro (@00:20:10). Pas une oeuvre recommandee = discard.",
+    "verdict": "discard"
+  },
+  "creator": "Team Vitality",
+  "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:20:10",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2428",
+  "links": [],
+  "quote": "La team Vitality.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:20:10",
+  "title": "la team Vitality",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

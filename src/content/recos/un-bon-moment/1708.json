@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique du groupe Mina Tindle (3 doublons: 0320/1708/1711). Orthographe correcte 'Mina Tindle'. Attribution corrigee: Penelope Bagieu (pas Kyan). Timecode ~01:55:16. Invitee absente de guests[].",
+    "reason": "Penelope recommande le nouveau (4e) album de son amie Mina Tindle (folk, collab. The National).",
+    "verdict": "validate"
+  },
+  "creator": "Mina Tindle",
+  "episodeGuid": "6947cd11f7567117395ad287",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:55:12",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1708",
+  "kind": "reco",
+  "links": [],
+  "quote": "l'album de ma très très bonne amie Mina Tindle qui vient de sortir",
+  "recommendedBy": "Penelope Bagieu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:55:12",
+  "title": "Album de Mina Tindle",
+  "transcriptSource": "acast",
+  "types": [
+    "album"
+  ]
+}

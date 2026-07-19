@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Discussion en passant des miniatures de MrBeast ('ses miniatures sont incroyables') alors qu'on parle de son cote stoique. Pas de prescription de l'oeuvre.",
+    "verdict": "discard"
+  },
+  "creator": "MrBeast",
+  "episodeGuid": "68fa552292f5a6f127100027",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:21:23",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2042",
+  "links": [],
+  "quote": "Après, ses miniatures sont incroyables.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:21:23",
+  "title": "MrBeast",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

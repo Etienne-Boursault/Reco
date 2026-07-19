@@ -1,0 +1,35 @@
+{
+  "creator": "Bigflo & Oli",
+  "episodeGuid": "69eb3617a5ffb248cb456a89",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/933704401"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1895",
+  "kind": "reco",
+  "links": [],
+  "quote": "l'album est sorti depuis un mois",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:13:47",
+  "title": "Karma",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ],
+  "year": 2023
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Mention illustrative (comparaison a un personnage), pas une reco.",
+    "reason": "Comparaison instrumentale : 'tu arrives un peu en mode chaman, un peu Voldo dans Soul Calibur' (00:40:12). Le jeu est cite pour illustrer un style scenique, pas recommande.",
+    "verdict": "discard"
+  },
+  "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:12",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2893",
+  "links": [],
+  "quote": "Tu vois, un peu Voldo dans Soul Calibur.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:12",
+  "title": "Soul Calibur",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

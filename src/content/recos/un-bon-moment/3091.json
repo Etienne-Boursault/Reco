@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Transcript 'Romane Frissinella' (draft 'Romane Frissirella') — orthographe du nom à vérifier. Œuvre citée: le sketch de l'abribus. Attribution du recommandeur incertaine (non diarizé).",
+    "reason": "Prescription explicite des spectacles de Romane ('exceptionnels', 'allez le voir'), artiste non présente et pas une invitée — vraie reco (validate).",
+    "verdict": "validate"
+  },
+  "creator": "Romane Frissirella",
+  "episodeGuid": "6a1e8cf50510101c862a3ef9",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:28:04",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3091",
+  "kind": "reco",
+  "links": [],
+  "quote": "Tu vas voir les spectacles de Romane qui sont exceptionnels ! Et Farie ! Surtout le sketch de la bribus !",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:28:04",
+  "title": "Spectacle de Romane Frissirella",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

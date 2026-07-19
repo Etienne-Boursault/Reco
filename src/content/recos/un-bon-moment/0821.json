@@ -1,19 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Chaine sudoku bien connue (Simon Anthony). Attribution Kyan plausible (reprise 'non non moi je recommande').",
+    "reason": "Reco explicite d'une chaine YouTube reelle ('non non moi je recommande la chaine Cracking the cryptic', sudokus, 01:08:33). Reprise de main d'un host apres l'echange invites.",
+    "verdict": "validate"
+  },
   "creator": "Simon Anthony",
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:36",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:02:37+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:08:32",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0821",
+  "kind": "reco",
   "links": [],
-  "quote": "La chaîne Cracking the Cryptic, peu de gens vont trouver ça marrant ou cool.",
+  "quote": "je recommande la chaîne Cracking the cryptic",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:08:36",
+  "status": "validated",
+  "timestamp": "01:08:32",
   "title": "Cracking the Cryptic",
+  "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "autre",
+    "video"
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:51:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1529",
+  "links": [],
+  "quote": "Une supercherie, t'inquiète, on règle ça le 16 septembre à la maroquinerie.",
+  "recommendedBy": "Mona Guba",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:51:31",
+  "title": "La Maroquinerie",
+  "transcriptSource": "acast",
+  "types": [
+    "lieu"
+  ]
+}

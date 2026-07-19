@@ -1,17 +1,60 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-14",
+    "flags": [
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger le créateur : « Sophie Landa » → « Sophie Lambda » (BD Delcourt 2020, sous-titre « Ou comment j'ai survécu à un manipulateur »). Titre exact conforme au transcript.",
+    "reason": "BD « Tant pis pour l'amour » de Sophie Lambda décrite avec substance pour illustrer le love bombing (00:26:03 : la métaphore de la crevasse que le mec recouvre de cœurs). Œuvre réelle discutée sur le fond mais sans prescription → citation.",
+    "verdict": "citation"
+  },
   "creator": "Sophie Landa",
   "episodeGuid": "65ed94b586967e0017c06729",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:26:07",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:26:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0145",
+  "kind": "citation",
   "links": [],
-  "quote": "Je me rappelle de ce dessin de Sophie Landa dans Tant pis pour l'amour, ça bédé.",
-  "recommendedBy": "inconnu",
+  "quote": "Je me rappelle de ce dessin de Sophie Londa dans \"Tant pis pour l'amour\", sa BD.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:26:06",
+  "status": "validated",
+  "timestamp": "00:26:03",
   "title": "Tant pis pour l'amour",
+  "transcriptSource": "youtube",
   "types": [
     "bd"
   ]

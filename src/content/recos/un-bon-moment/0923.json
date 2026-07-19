@@ -1,4 +1,17 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Ambigu film/spectacle: le film est de Klapisch (guest-work); la pièce recommandée est d'Agnès Jaoui & Jean-Pierre Bacri (créateur du volet 'spectacle'). À scinder éventuellement.",
+    "reason": "Film de Klapisch (1996) présenté par lui -> guest-work. Il recommande AUSSI explicitement la pièce de théâtre source à 00:40 ('que je recommande, achetez la pièce').",
+    "verdict": "guest-work"
+  },
   "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
@@ -6,19 +19,53 @@
     "tmdb": "14646",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:42:32",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:03",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:40:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0923",
+  "kind": "reco",
   "links": [],
-  "quote": "c'est une pièce de théâtre culte d'ailleurs que je recommande",
-  "recommendedBy": "invité",
+  "quote": "Un air de famille pendant longtemps c'était le film que j'ai fait qui a le mieux marché",
+  "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:42:32",
+  "status": "validated",
+  "timestamp": "00:40:04",
   "title": "Un air de famille",
+  "transcriptSource": "youtube",
   "types": [
-    "film"
+    "film",
+    "spectacle"
   ],
   "watchProviders": [
     {

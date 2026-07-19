@@ -1,21 +1,74 @@
 {
+  "agentReview": {
+    "applied": false,
+    "confidence": 0.5,
+    "date": "2026-07-14",
+    "flags": [
+      "timestamp_suspect",
+      "attribution_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Corriger la quote (actuellement celle d'Euphoria). Createur reel = Florence Lompre (creatrice/actrice/realisatrice). Recommandeur probable = Augustin Trapenard (registre culturel, eloge du jeu d'acteur), non certain.",
+    "reason": "Vraie reco = serie 'Empathie' (Florence Lompre, avec Thomas N'Gijol), recommandee explicitement a 01:32:03 : 'je vous conseille un petit Empathie, la serie... j'ai trouve ca bouleversant... une serie qui merite un Emmy'. MAIS la quote stockee capture par erreur la phrase sur Euphoria (01:31:32) -> a corriger avant publication. NON doublon d'Euphoria (oeuvres distinctes).",
+    "verdict": "unsure"
+  },
+  "creator": "Florence Lomp",
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
     "tmdb": "284656",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:02",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:32:08",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:21:20+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:32:01",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "anthropic",
     "openai"
   ],
   "id": "ubm-0219",
   "links": [],
-  "quote": "Moi je vous conseille un petit empathie, la série. En fait j'ai trouvé ça bouleversant.",
+  "quote": "Bah non, bah moi, le dernier truc que j'ai regardé, que j'ai aimé, c'est cette série-là, Euphoria.",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "01:32:02",
+  "timestamp": "01:32:01",
   "title": "Empathie",
+  "transcriptSource": "youtube",
   "types": [
     "serie"
   ],

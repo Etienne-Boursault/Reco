@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Canonique = ubm-2278.",
+    "reason": "'spectacle de Marina' = doublon du spectacle de Marina (ubm-2278), meme mention 01:15:49.",
+    "verdict": "discard"
+  },
+  "creator": "Marina Rollman",
+  "episodeGuid": "6584658132930b0016c5272b",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:23:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:15:49",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2283",
+  "links": [],
+  "quote": "allez voir le spectacle de Marina aussi sur Canal",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:49",
+  "title": "spectacle de Marina",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

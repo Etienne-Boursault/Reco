@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "model": "claude-opus-4-8",
+    "note": "Canonique de la paire Seinfeld. Passage 00:41:00.",
+    "reason": "Blague de Jerry Seinfeld (l'enfant/le mixeur) utilisee comme enigme du jeu 'Devine la chute' ; mention instrumentale meme si l'auteur est reel. Canonique du doublon (avec ubm-3043).",
+    "verdict": "discard"
+  },
+  "creator": "Jerry Seinfeld",
+  "episodeGuid": "633b305f3ca1cc001201a861",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:41:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3054",
+  "links": [],
+  "quote": "Avoir un enfant de deux ans, c'est comme avoir un mixeur.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:41:00",
+  "title": "Jerry Seinfeld",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

@@ -1,4 +1,12 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "'Game of Thrones' (00:44:40) = reference dans le jeu de devinette (le heros ressemble a Scatman John). Mention instrumentale.",
+    "verdict": "discard"
+  },
   "creator": "David Benioff, D.B. Weiss",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "externalIds": {
@@ -6,17 +14,28 @@
     "tmdb": "1399",
     "tmdbType": "tv"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:44:40",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0171",
   "links": [],
   "quote": "c'est dans tes séries préférées",
-  "recommendedBy": "Inconnu",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:44:40",
   "title": "Game of Thrones",
+  "transcriptSource": "acast",
   "types": [
     "serie"
   ],

@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon de ubm-1573.",
+    "reason": "Doublon de ubm-1573 (spectacle de Lucas et Veufla).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:12:42+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:38:31",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1373",
+  "links": [],
+  "quote": "j'ai vu le spectacle de deux potes à moi il y a pas longtemps, le spectacle de Lucas et Veufla, c'est pas vraiment du stand-up, franchement c'est hyper puissant",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:38:31",
+  "title": "Spectacle de Lucas et Veufla",
+  "transcriptSource": "acast",
+  "types": [
+    "spectacle"
+  ]
+}

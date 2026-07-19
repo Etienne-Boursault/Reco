@@ -1,5 +1,28 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.75,
+    "date": "2026-07-18",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon avec ubm-2958. Projet perso d'invite non publie, mention instrumentale.",
+    "reason": "« Trousse Boy » = projet BD non sorti (« BD maudite », « ca va sortir »), evoque comme EXEMPLE dans une discussion sur le process creatif (00:25:23) — pas une reco, oeuvre indisponible.",
+    "verdict": "discard"
+  },
   "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:25:23",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -8,9 +31,10 @@
   "quote": "C'est une BD maudite.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:25:23",
   "title": "Trousboy",
+  "transcriptSource": "acast",
   "types": [
     "bd"
   ]

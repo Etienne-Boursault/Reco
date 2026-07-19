@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-14",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Alice Moitie absente du champ guests (voir anomalie). Podcast confirme (Nouvelles Ecoutes, depuis mai 2025).",
+    "reason": "Podcast 'Alice Underground' d'Alice Moitie (invitee), presente/introduit par Kyan et loue par les hosts ('le formidable podcast d'Alice, qui est super, genial, on adore'). Oeuvre de l'invitee -> guest-work.",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "6960deefb86949aa06496e27",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:04:00",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-1663",
+  "kind": "reco",
+  "links": [],
+  "quote": "Alice Lost du podcast Alice Underground.",
+  "recommendedBy": "Alice Moitie",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:04:00",
+  "title": "Alice Underground",
+  "transcriptSource": "acast",
+  "types": [
+    "podcast"
+  ]
+}

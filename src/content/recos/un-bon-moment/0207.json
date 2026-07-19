@@ -1,22 +1,74 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "note": "Film reel 2026 (P. Brunner/M. Verle) ; Thomas VDB au casting. Le transcript dit 'Alois Sauvage' -> Aloise Sauvage.",
+    "reason": "Projet de l'invite promu en outro : film 'Miss Mermaid' (2026) avec Aloise Sauvage, ou Thomas VDB joue (casting confirme). 'C'est super bien le film'. Auto-promo.",
+    "verdict": "guest-work"
+  },
   "creator": "Aloïs Sauvage",
   "episodeGuid": "6903fad795ee8b1815229b88",
   "externalIds": {
     "tmdb": "1351705",
     "tmdbType": "movie"
   },
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:06",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:48:05",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:48:06",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0207",
+  "kind": "reco",
   "links": [],
-  "quote": "Il y a un film qui s'appelle Miss Mermaid Qui sort mais au mois d'avril",
-  "recommendedBy": "Navo",
+  "quote": "Y'a un film qui s'appelle Miss Mermaid qui sort mais c'est au mois d'avril avec Aloïs Sauvage",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "01:48:05",
+  "status": "validated",
+  "timestamp": "01:48:06",
   "title": "Miss Mermaid",
+  "transcriptSource": "youtube",
   "types": [
     "film"
-  ]
+  ],
+  "year": 2024
 }

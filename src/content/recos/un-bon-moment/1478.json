@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.6,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "'Battle Royale' (Kinji Fukasaku) cité dans le portrait de Takeshi Kitano par Cyprien, avec substance sur le rôle de Kitano ('il est génial dedans, il amène un personnage que tu n'as jamais vu avant') mais sans prescription du film.",
+    "verdict": "citation"
+  },
+  "creator": "Kinji Fukasaku",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:04",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:41:04",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1478",
+  "kind": "citation",
+  "links": [],
+  "quote": "Il est dans Battle Royale, mais il est génial dedans.",
+  "recommendedBy": "Cyprien",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:41:04",
+  "title": "Battle Royale",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ]
+}

@@ -1,18 +1,42 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Doublon : ubm-3012 (titre tronqué, attribution erronée).",
+    "reason": "Dans sa liste de docs de référence : « il y a Defiant Ones... qui était ouf, en 5 parties » + longue description. Substance réelle mais pas de prescription explicite au public. Canonique (creator Allen Hughes, titre complet).",
+    "verdict": "citation"
+  },
   "creator": "Allen Hughes",
   "episodeGuid": "6336c79af131c60012c20984",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:18:44",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
-    "anthropic",
-    "openai"
+    "anthropic"
   ],
   "id": "ubm-0864",
+  "kind": "citation",
   "links": [],
   "quote": "il ya defiant ones donc c'est l'histoire de docteur dr et jimi à yovine qui était sur netflix qui était ouf qu'était en cinq parties",
-  "recommendedBy": "Invité",
+  "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:18:44",
   "title": "The Defiant Ones",
+  "transcriptSource": "acast",
   "types": [
     "autre"
   ],

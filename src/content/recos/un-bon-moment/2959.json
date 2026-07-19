@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre du host citee en anecdote, sans reco active.",
+    "reason": "« Bref » (serie de Kyan, host) evoquee en anecdote historique (« puis il a la sortie de bref » 00:32:55, puis discussion sur leur parodie de Bref) — pas de prescription. Regle « host en anecdote = citation ».",
+    "verdict": "citation"
+  },
+  "episodeGuid": "6322de1f35ce9e001229f98a",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:18+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:55",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2959",
+  "kind": "citation",
+  "links": [],
+  "quote": "Puis il a la sortie de bref, quoi.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:55",
+  "title": "Bref",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

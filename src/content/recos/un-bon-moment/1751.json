@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.7,
+    "date": "2026-07-04",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de ubm-0284 (meme moment 02:00:57): Henri Salvador = createur de la chanson 'Jardin d'hiver' qui est l'objet loue. A fusionner.",
+    "verdict": "discard"
+  },
+  "creator": "Henri Salvador",
+  "episodeGuid": "6932b125aef2c71c1dbba9c7",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "02:00:57",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1751",
+  "links": [],
+  "quote": "Henri Salvador, Jardin d'hiver exceptionnel",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "02:00:57",
+  "title": "Henri Salvador",
+  "transcriptSource": "acast",
+  "types": [
+    "artiste"
+  ]
+}

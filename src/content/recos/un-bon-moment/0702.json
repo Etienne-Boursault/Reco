@@ -1,17 +1,41 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.8,
+    "date": "2026-07-17",
+    "flags": [
+      "duplicate_suspect",
+      "title_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "doublon de ubm-2578; titre artefact",
+    "reason": "Doublon de ubm-2578 (meme spectacle Blanche Gardin anime par Fabcaro sur myCanal, decrit ici a 01:35). Titre 'L'heure de l'ascension' absent du transcript YouTube (qui dit 'elle l'a sorti en bouquin') = artefact. Canonique = ubm-2578.",
+    "verdict": "discard"
+  },
   "creator": "Blanche Gardin",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:35:34",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0702",
   "links": [],
   "quote": "C'est un petit spectacle, elle a fait l'heure de l'ascension en bouquin.",
-  "recommendedBy": "Intervenant",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:35:34",
   "title": "L'heure de l'ascension",
+  "transcriptSource": "acast",
   "types": [
     "livre"
   ],

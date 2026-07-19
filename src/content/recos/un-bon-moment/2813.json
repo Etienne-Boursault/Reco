@@ -1,0 +1,37 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.92,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "note": "Identification dans le blind test, pas une reco.",
+    "reason": "France Gall citee pendant le multi-blind test pour identifier qui chante 'Laisse tomber les filles' / 'Chacun fait ce qui lui plait'. Mention instrumentale (jeu).",
+    "verdict": "discard"
+  },
+  "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:43:03+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:27:00",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2813",
+  "links": [],
+  "quote": "Mais c'est aussi France Gall, ouais.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:27:00",
+  "title": "France Gall",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

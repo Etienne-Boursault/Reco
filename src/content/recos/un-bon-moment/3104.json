@@ -1,0 +1,39 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-18",
+    "model": "claude-opus-4-8",
+    "reason": "Souvenir anecdotique d'une vieille emission TF1 pour appuyer l'histoire de la polydactylie d'AZ (« je regarde une emission qui s'appelait Incroyable... sur TF a l'epoque »). Aucune prescription (regle 1).",
+    "verdict": "discard"
+  },
+  "creator": "TF1",
+  "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:40:42",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3104",
+  "links": [],
+  "quote": "je regarde une émission qui s'appelait Incroyable mais vous vous rappelez ? sur TF à l'époque",
+  "recommendedBy": "Invité (non nommé)",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:40:42",
+  "title": "Incroyable",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ],
+  "year": 1980
+}

@@ -1,0 +1,38 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-07",
+    "model": "claude-opus-4-8",
+    "reason": "Doublon de 1475 (Sylvqin) — 'Sylvain', même créateur, référence à sa vidéo sur le forfait SFR Millennium ('la dernière vidéo... de Sylvain, j'adore').",
+    "verdict": "discard"
+  },
+  "creator": "Sylvain",
+  "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:17:31",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1954",
+  "links": [],
+  "quote": "La dernière vidéo sur le forfait Millennium d'ECFR de Sylvan, j'adore.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:17:31",
+  "title": "Sylvain",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

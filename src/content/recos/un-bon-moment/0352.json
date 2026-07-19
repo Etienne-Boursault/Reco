@@ -1,17 +1,40 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-07",
+    "flags": [
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Jeu d'un chroniqueur ; doublon de ubm-1978.",
+    "reason": "Arkanoide = Madeleine de Proust de GREG (chroniqueur, regle 6). Doublon de ubm-1978.",
+    "verdict": "discard"
+  },
   "creator": "Atari",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:12:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0352",
   "links": [],
   "quote": "Moi, c'était Arkanoïde sur Amstrad CPC-6128.",
-  "recommendedBy": "Greg",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:12:47",
   "title": "Arkanoïde",
+  "transcriptSource": "acast",
   "types": [
     "jeu"
   ]

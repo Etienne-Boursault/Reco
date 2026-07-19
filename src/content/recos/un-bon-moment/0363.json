@@ -1,17 +1,47 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-13",
+    "model": "claude-opus-4-8",
+    "note": "Oeuvre inventee dans un bit comique.",
+    "reason": "Film afghan invente 'Pour quelques pepins de pasteque' dans le meme jeu ('on doit chacun en faire un', 'on va chacun inventer un film'). Realisateur fictif 'Barouche Rolani'.",
+    "verdict": "discard"
+  },
   "creator": "Barouche Rodanie",
   "episodeGuid": "6970a1759448a95f223d530c",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:47",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:59+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:13:47",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
   "extractors": [
     "openai"
   ],
   "id": "ubm-0363",
   "links": [],
-  "quote": "Il y a un film qui est génial. C'est un réalisateur aveuglant qui s'appelle Pour quelques pépins de pastèque.",
+  "quote": "Il y a un film qui est génial, c'est un réalisateur afghan qui s'appelle Pour quelques pépins de pastèque.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
-  "timestamp": "00:13:48",
+  "status": "discarded",
+  "timestamp": "00:13:47",
   "title": "Pour quelques pépins de pastèque",
+  "transcriptSource": "youtube",
   "types": [
     "film"
   ]

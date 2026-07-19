@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.85,
+    "date": "2026-07-17",
+    "flags": [
+      "guest_missing"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "France-Quebec (OCS), co-realisee par Cohen et Galan. episode.guests vide.",
+    "reason": "Serie des invites (co-realisee: 'vous etiez a la realisation ensemble'), presentee par eux avec ou la voir ('on peut l'avoir toujours sur ocs tv go', 00:01:57).",
+    "verdict": "guest-work"
+  },
+  "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:57",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-2286",
+  "kind": "reco",
+  "links": [],
+  "quote": "vous avez fait une émission qui fait une série qui s'appelle france québec sur ocs",
+  "recommendedBy": "Jonathan Cohen & Jérémie Galan",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:01:57",
+  "title": "France-Québec",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

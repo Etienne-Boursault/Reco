@@ -1,6 +1,30 @@
 {
+  "agentReview": {
+    "applied": true,
+    "confidence": 0.9,
+    "date": "2026-07-18",
+    "flags": [
+      "title_suspect",
+      "duplicate_suspect"
+    ],
+    "model": "claude-opus-4-8",
+    "note": "Titre 'Familiar Man' errone = 'The Family Man' (2000, Nicolas Cage). Evoque en comparaison pour illustrer le projet 'Mourir seul' d'Anna, sans prescription. Doublon avec ubm-2750 et ubm-2753. Attribution 'Kyan Khojandi' non pertinente. Source acast.",
+    "reason": "Mention instrumentale (comparaison) + doublon + titre errone.",
+    "verdict": "discard"
+  },
   "creator": "Nicolas Cage",
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "00:47:55",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
   "extractors": [
     "openai"
   ],
@@ -9,9 +33,10 @@
   "quote": "c'est un film avec Nicolas Cage ou en gros il va ou pas rejoindre sa meuf truc de Noël",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:47:55",
   "title": "Familiar Man",
+  "transcriptSource": "acast",
   "types": [
     "film"
   ]
