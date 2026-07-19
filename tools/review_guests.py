@@ -50,23 +50,38 @@ def split_names(s: str) -> list[str]:
 
 def collect_guests(
     ep: dict, recs: list[dict], hosts: list[str],
+    *, parsed: list[str] | None = None,
 ) -> list[str]:
-    """Invités distincts de l'épisode (hors hosts et placeholders).
+    """Invités distincts de l'épisode (hors hosts, placeholders, exclus).
 
-    Union de `ep.guests` (ajouts manuels) et des `recommendedBy` des recos.
-    Préserve l'ordre de première occurrence — important pour que la
-    saisie utilisateur reste prévisible dans le panel.
+    Union de :
+      - `ep.guests` (ajouts manuels positifs)
+      - `ep.guestsParsed` (snapshot du parsing du titre, persisté)
+      - `parsed` (optionnel : parsing à la volée — utilisé en fallback
+        SEULEMENT quand `guestsParsed` est absent/vide, pour ne pas
+        double-alimenter la liste sur les épisodes déjà migrés)
+      - les noms cités dans `recommendedBy` des recos.
+
+    Retrait : `ep.guestsExcluded` (autorité ultime, comparaison casefold).
+    Filtre : hosts, placeholders. Préserve l'ordre de 1ère occurrence.
     """
     host_keys = {h.casefold() for h in hosts}
+    excluded_keys = {n.casefold() for n in (ep.get("guestsExcluded") or [])}
     seen: dict[str, str] = {}
     sources: list[str] = list(ep.get("guests") or [])
+    sources.extend(ep.get("guestsParsed") or [])
+    # `parsed` n'est qu'un fallback : ignoré si le snapshot `guestsParsed` est
+    # présent (sinon les mêmes noms seraient ajoutés deux fois — cf. N2).
+    if parsed and not ep.get("guestsParsed"):
+        sources.extend(parsed)
     for r in recs:
         rb = r.get("recommendedBy", "")
         if rb:
             sources.extend(split_names(rb))
     for n in sources:
         key = n.casefold()
-        if key in host_keys or is_placeholder(n) or key in seen:
+        if (key in host_keys or key in excluded_keys
+                or is_placeholder(n) or key in seen):
             continue
         seen[key] = n
     return list(seen.values())
@@ -74,13 +89,16 @@ def collect_guests(
 
 def render_guests_panel(
     guid: str, ep: dict, recs: list[dict], hosts: list[str],
+    *, parsed: list[str] | None = None,
 ) -> str:
-    """Panneau « Invités de l'épisode » : rename / suppression en masse.
+    """Panneau « Invités de l'épisode » : rename / exclusion persistante.
 
     Chaque ligne pré-remplie avec le nom courant ; soumission met à jour
-    toutes les recos de l'épisode (côté serveur via /rename-guest).
+    toutes les recos de l'épisode (côté serveur via /rename-guest). Le
+    bouton ✕ utilise `action=exclude` → persiste dans `guestsExcluded`
+    pour que le nom ne réapparaisse plus via le parsing du titre.
     """
-    guests = collect_guests(ep, recs, hosts)
+    guests = collect_guests(ep, recs, hosts, parsed=parsed)
     guid_q = html.escape(guid)
     rows = "".join(
         f'<form class="guest-row" method="post" action="/rename-guest">'
@@ -89,8 +107,8 @@ def render_guests_panel(
         f'<input type="text" name="new" value="{html.escape(g)}" '
         f'aria-label="Renommer {html.escape(g)}">'
         f'<button type="submit" title="Renommer dans toutes les recos">✓</button>'
-        f'<button type="submit" name="action" value="delete" class="discard" '
-        f'title="Retirer de toutes les recos">✕</button>'
+        f'<button type="submit" name="action" value="exclude" class="discard" '
+        f'title="Retirer (et ne plus jamais proposer ce nom)">✕</button>'
         f'</form>'
         for g in guests
     )
@@ -110,6 +128,67 @@ def render_guests_panel(
     )
 
 
+def _exclude_add(ep: dict, name: str) -> bool:
+    """Ajoute `name` à `ep.guestsExcluded` (sans doublon casefold).
+
+    Retourne True si la liste a été modifiée. `guestsExcluded` est l'autorité
+    ultime consultée par `collect_guests` : un nom qui y figure ne réapparaît
+    plus, même s'il revient du parsing du titre (guestsParsed).
+    """
+    excluded = list(ep.get("guestsExcluded") or [])
+    if any(x.casefold() == name.casefold() for x in excluded):
+        return False
+    excluded.append(name)
+    ep["guestsExcluded"] = excluded
+    return True
+
+
+def _exclude_remove(ep: dict, name: str) -> bool:
+    """Retire `name` de `ep.guestsExcluded` (comparaison casefold).
+
+    Retourne True si la liste a été modifiée (réhabilitation effective).
+    """
+    excluded = list(ep.get("guestsExcluded") or [])
+    kept = [x for x in excluded if x.casefold() != name.casefold()]
+    if kept == excluded:
+        return False
+    ep["guestsExcluded"] = kept
+    return True
+
+
+def _reconcile_parsed_rename(
+    ep: dict, old: str, replacement: str, new_guests: list[str],
+) -> None:
+    """Réconcilie le renommage/retrait d'un invité issu de `ep.guestsParsed`.
+
+    Quand `old` provient du snapshot du parsing du titre (guestsParsed) et non
+    de `ep.guests`, la mutation de `ep.guests` ne l'atteint pas et
+    `collect_guests` le referait réapparaître via l'union guests+guestsParsed.
+    On corrige `new_guests` (modifié en place) et `ep.guestsExcluded` :
+
+      - renommage réel / retrait (casefold différent) : masque `old` via
+        guestsExcluded (autorité ultime) ;
+      - renommage pur-casse (« Seb » → « SEB », casefold identique) : n'exclut
+        PAS `old` — l'exclusion casefold masquerait aussi la nouvelle casse —
+        et se contente d'insérer la nouvelle casse (elle passe en tête de
+        `collect_guests` et l'emporte sur l'ancienne issue de guestsParsed) ;
+      - noop strict (`old == new` exact) : ne fait rien.
+
+    Le remplacement est ajouté à `new_guests` s'il n'y figure pas (casefold).
+    """
+    if replacement == old:  # noop strict : ✓ sans édition → rien à faire
+        return
+    parsed = ep.get("guestsParsed") or []
+    if not any(p.casefold() == old.casefold() for p in parsed):
+        return
+    if replacement.casefold() != old.casefold():
+        _exclude_add(ep, old)
+    if replacement and not any(
+        replacement.casefold() == g.casefold() for g in new_guests
+    ):
+        new_guests.append(replacement)
+
+
 def apply_guest_action(
     source_id: str,
     ep_path: Path,
@@ -125,9 +204,21 @@ def apply_guest_action(
     """Mute l'épisode + ses recos selon l'action. Retourne (flash, kind).
 
     Actions :
-      - 'add'    : ajoute `new` à `ep.guests` (refusé si placeholder ou hôte)
-      - 'delete' : retire `old` partout (ep.guests + recommendedBy des recos)
-      - autres   : renomme `old` → `new` partout
+      - 'add'     : ajoute `new` à `ep.guests` (refusé si vide, placeholder ou
+                    hôte ; réhabilite un nom précédemment exclu).
+      - 'delete'  : retire `old` partout (ep.guests + recommendedBy des recos).
+                    Si `old` vient de `ep.guestsParsed`, il est aussi masqué via
+                    `ep.guestsExcluded` (sinon il réapparaîtrait au render).
+      - 'exclude' : comme 'delete', mais mémorise TOUJOURS `old` dans
+                    `ep.guestsExcluded` — c'est le ✕ du panneau : « ne plus
+                    jamais proposer ce nom », même s'il revient du parsing du
+                    titre.
+      - autres    : renomme `old` → `new` partout (`new` validé comme pour
+                    'add' : refusé si vide, placeholder ou hôte).
+
+    Garde-fou hôte : `old` ne peut être ni renommé ni retiré s'il matche un
+    hôte du podcast (defense in depth contre un POST forgé — sinon des
+    `recommendedBy` validés seraient silencieusement cassés).
 
     Les callbacks `load_groups` / `reco_path` / `invalidate_cache` sont
     injectés pour éviter une dépendance circulaire avec review_server.
@@ -144,7 +235,13 @@ def apply_guest_action(
                 f"« {new} » est un hôte du podcast, pas un invité.",
                 "warning",
             )
+        # Réhabilitation : si le nom était exclu, on le retire de
+        # `guestsExcluded` avant l'ajout (permet de revenir sur un ✕).
+        rehabilitated = _exclude_remove(ep, new)
         if any(g.casefold() == new.casefold() for g in guests):
+            if rehabilitated:
+                write_json_if_changed(ep_path, ep)
+                return f"« {new} » réhabilité.", "success"
             return f"« {new} » est déjà dans les invités.", "info"
         guests.append(new)
         ep["guests"] = guests
@@ -155,7 +252,37 @@ def apply_guest_action(
     if not old:
         return "Action invalide.", "error"
 
+    # Garde-fou hôte (cf. docstring) : jamais renommer/retirer un hôte.
+    if any(h.casefold() == old.casefold() for h in hosts):
+        return (
+            f"« {old} » est un hôte du podcast : action refusée.",
+            "warning",
+        )
+
+    # ✕ du panneau : mémorise le retrait dans guestsExcluded puis nettoie comme
+    # un delete. Un SEUL write JSON de l'épisode en aval (cf. `ep["guests"] =
+    # …`), plus de double écriture (N1).
+    was_exclude = action == "exclude"
+    if was_exclude:
+        _exclude_add(ep, old)
+        action = "delete"
+
+    # Renommage : valide `new` comme pour 'add' (symétrie). Delete/exclude ont
+    # un `new` vide légitime → validation uniquement hors delete.
+    if action != "delete":
+        if not new or is_placeholder(new):
+            return "Nom vide ou non valide.", "warning"
+        if any(h.casefold() == new.casefold() for h in hosts):
+            return (
+                f"« {new} » est un hôte du podcast, pas un invité.",
+                "warning",
+            )
+
     replacement = "" if action == "delete" else new
+    # Réhabilitation : renommer/éditer vers un nom exclu le retire de
+    # guestsExcluded (sinon il redisparaîtrait au prochain render).
+    if replacement:
+        _exclude_remove(ep, replacement)
     # 1) Mute ep.guests
     new_guests: list[str] = []
     for g in guests:
@@ -166,6 +293,8 @@ def apply_guest_action(
                 new_guests.append(replacement)
         else:
             new_guests.append(g)
+    # `old` issu de guestsParsed (pas de ep.guests) : masque/insère au besoin.
+    _reconcile_parsed_rename(ep, old, replacement, new_guests)
     ep["guests"] = new_guests
     write_json_if_changed(ep_path, ep)
     # 2) Mute les recos
@@ -202,8 +331,12 @@ def apply_guest_action(
     if changed:
         flash = (f"Invité {verb} sur {changed} reco"
                  + ("s" if changed > 1 else "") + ".")
-        return flash, "success"
-    return f"Invité {verb} de l'épisode.", "success"
+    else:
+        flash = f"Invité {verb} de l'épisode."
+    # N3 : le ✕ persiste le retrait → on le dit explicitement dans le flash.
+    if was_exclude:
+        flash += " Il ne sera plus proposé."
+    return flash, "success"
 
 
 def handle_rename_guest(

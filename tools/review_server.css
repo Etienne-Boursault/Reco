@@ -9,10 +9,27 @@ h1{font-size:1.4rem;} .meta{color:#9a99a3;}
 .eph-arrow{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:#1a1a1f;border:1px solid #2a2a30;color:#f6f4ee;text-decoration:none;font-size:1rem;font-weight:700;line-height:2.2rem;flex:0 0 auto;}
 .eph-arrow:hover{border-color:#ffd23f;color:#ffd23f;}
 .eph-arrow.disabled{opacity:.25;cursor:default;}
-.player-wrap{position:fixed;top:.6rem;right:.6rem;width:min(360px,32vw);aspect-ratio:16/9;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.6);border-radius:8px;overflow:visible;}
+.player-wrap{position:fixed;top:.6rem;right:.6rem;width:min(360px,32vw);height:auto;aspect-ratio:16/9;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.6);border-radius:8px;overflow:hidden;resize:both;min-width:240px;min-height:135px;max-width:90vw;max-height:90vh;}
+.player-wrap[style*="width:"], .player-wrap[style*="height:"]{aspect-ratio:auto;}
 .player-wrap.hidden{display:none;}
 .player-wrap .player{position:static;width:100%;height:100%;border:0;border-radius:8px;background:#000;box-shadow:none;}
-.player-close{position:absolute;top:-.4rem;right:-.4rem;width:1.6rem;height:1.6rem;border-radius:50%;background:#1a1a1f;border:1px solid #2a2a30;color:#f6f4ee;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;z-index:101;}
+.player-close{position:absolute;top:.3rem;right:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#f6f4ee;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;z-index:101;}
+.player-drag-handle{position:absolute;top:.3rem;left:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#9a99a3;cursor:grab;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;user-select:none;touch-action:none;z-index:101;}
+/* Empêche le scroll natif tactile pendant le drag (cf. review #24). */
+[data-player-drag]{touch-action:none;}
+.player-drag-handle:active{cursor:grabbing;color:#ffd23f;}
+.merge-select{display:inline-flex;align-items:center;margin-right:.4rem;cursor:pointer;background:transparent;border:0;padding:0;}
+.merge-select input{accent-color:#ffd23f;}
+.merge-bar{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#1a1a1f;border:1px solid #ffd23f;border-radius:999px;padding:.7em 1.3em;box-shadow:0 8px 24px rgba(0,0,0,.7);z-index:200;display:flex;align-items:center;gap:.8rem;}
+.merge-bar[hidden]{display:none !important;}
+.merge-bar form{display:flex;align-items:center;gap:.8rem;margin:0;padding:0;}
+.merge-count{color:#ffd23f;font-weight:600;font-size:.9rem;}
+.merge-bar button.primary{background:#ffd23f;color:#0e0e10;border:0;border-radius:999px;padding:.4em 1.2em;font-weight:700;cursor:pointer;}
+.merge-bar button.primary[disabled]{background:#3a3a40;color:#666;cursor:not-allowed;}
+.merge-bar button:not(.primary){background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.3em 1em;cursor:pointer;font-size:.85rem;}
+.pick-list{list-style:none;padding:0;}
+.pick-list li{background:#0e0e10;border:1px solid #2a2a30;border-radius:8px;padding:.6em .9em;margin:.4rem 0;}
+.pick-list .muted{color:#9a99a3;font-size:.82rem;}
 .player-close:hover{border-color:#ffd23f;color:#ffd23f;}
 .cnt{color:#9a99a3;font-size:.75rem;font-weight:400;}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;max-width:920px;margin:1rem auto 2rem;}
@@ -25,8 +42,27 @@ h1{font-size:1.4rem;} .meta{color:#9a99a3;}
 .tcount{background:rgba(14,14,16,.8);color:#f6f4ee;font-size:.72rem;padding:.2em .55em;text-align:center;}
 ul{list-style:none;padding:0;margin:0;}
 .row{background:#17171c;border:1px solid #2a2a30;border-left:3px solid #ffd23f;border-radius:10px;padding:.7rem 1rem;margin:.5rem 0;}
-.row.done{border-left-color:#3a3a40;opacity:.55;}
+.row.done{border-left-color:#5ab68a;opacity:1;background:#172019;}
+.row.done .st{color:#5ab68a;font-weight:600;}
 .row.discarded{border-left-color:#6b3a3a;opacity:.45;}
+.row.citation{opacity:.6;border-left-color:#6b9bb8;}
+/* Story 2 — citation VALIDÉE : bleu (distinct du vert des recos validées). */
+.row.done.citation{background:#101a24;border-left-color:#4a8edb;opacity:.9;}
+.row.done.citation .st{color:#4a8edb;}
+.citation-btn{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.35em 1em;font-weight:600;cursor:pointer;}
+.citation-btn:hover{color:#6b9bb8;border-color:#6b9bb8;}
+/* Story 4 — œuvre d'invité (draft) : liseré ambre discret. */
+.row.guestwork{border-left-color:#d29a3a;}
+/* Story 4 — œuvre d'invité VALIDÉE : ambre (distinct du vert reco et du bleu citation). */
+.row.done.guestwork{background:#201a10;border-left-color:#d29a3a;opacity:.95;}
+.row.done.guestwork .st{color:#d29a3a;}
+/* M1 CR — l'état DISCARDÉ garde son signal « rejeté » (rouge, atténué) même
+   quand kind=citation ou guestWork est présent (sinon .row.citation /
+   .row.guestwork, plus bas dans la cascade, imposeraient leur liseré). */
+.row.discarded.citation{border-left-color:#6b3a3a;opacity:.45;}
+.row.discarded.guestwork{border-left-color:#6b3a3a;opacity:.45;}
+.guestwork-btn{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.35em 1em;font-weight:600;cursor:pointer;}
+.guestwork-btn:hover{color:#d29a3a;border-color:#d29a3a;}
 .discard{background:transparent;color:#9a99a3;border:1px solid #3a3a40;}
 .discard:hover{border-color:#6b3a3a;color:#d88;}
 .hd{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem;}
@@ -41,6 +77,7 @@ ul{list-style:none;padding:0;margin:0;}
 .ctx-here{color:#ffd23f;font-weight:600;}
 .tc{color:#ffd23f;font-weight:600;text-decoration:none;} .tc.off{color:#9a99a3;}
 .dur{color:#8a8a92;font-size:.78rem;}
+.tmodel{color:#8a8a92;font-size:.78rem;}
 .epnum{color:#ffd23f;background:#0e0e10;border:1px solid #2a2a30;border-radius:6px;padding:.05em .4em;font-size:.78rem;}
 .q{font-style:italic;color:#cfcdc6;font-size:.88rem;margin:.4rem 0;}
 .who{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.4rem;}
@@ -49,6 +86,13 @@ input[type=text]{background:#0e0e10;border:1px solid #2a2a30;color:#f6f4ee;borde
 button{background:#ffd23f;color:#0e0e10;border:0;border-radius:999px;padding:.35em 1em;font-weight:700;cursor:pointer;}
 .btn-edit,.btn-reenrich{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.15em .6em;font-size:.72rem;font-weight:600;text-decoration:none;cursor:pointer;}
 .btn-edit:hover,.btn-reenrich:hover{color:#ffd23f;border-color:#ffd23f;}
+.btn-delete{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.15em .55em;font-size:.85rem;cursor:pointer;}
+.btn-delete:hover{color:#ff9a9a;border-color:#6b3a3a;}
+.delete-form{display:inline;margin:0;padding:0;}
+.add-reco-row{border-left-color:transparent;background:transparent;padding:.4rem;}
+.add-reco-form{margin:0;}
+.btn-add-reco{background:transparent;color:#9a99a3;border:1px dashed #3a3a40;border-radius:8px;padding:.6em 1em;font-size:.85rem;font-weight:600;cursor:pointer;width:100%;}
+.btn-add-reco:hover{color:#ffd23f;border-color:#ffd23f;border-style:solid;}
 .reenrich-form{display:inline;margin:0;padding:0;}
 .row.editing{background:#1a1a22;border-left-color:#ffd23f;padding:1rem;}
 .edit-form{display:flex;flex-direction:column;gap:.6rem;}
@@ -89,3 +133,101 @@ a.ov-label:hover{text-decoration:underline;}
 .toast-warning{border-color:#5a4a14;background:#27220a;color:#ffd23f;}
 .toast-error{border-color:#5c1a1a;background:#2a1010;color:#ff9a9a;}
 .toast-info{border-color:#1f3a5c;background:#0f1825;color:#a2c4ee;}
+/* Cluster card (doublons probables) — cuivre warning distinct du jaune reco. */
+.row.cluster{border-left:3px solid #b87333;background:#1d1813;padding:1rem 1.1rem;}
+.cluster-header{color:#b87333;font-weight:600;margin-bottom:.6rem;display:block;}
+.cluster-options{display:flex;flex-direction:column;gap:.3rem;}
+.cluster-option{display:flex;flex-direction:column;align-items:flex-start;padding:.7em .9em;margin:.4rem 0;background:#0e0c0a;border:1px solid #2a2521;border-radius:8px;line-height:1.4;}
+.cluster-option:hover{border-color:#b87333;}
+.cluster-option input[type=radio]{margin-right:.4rem;accent-color:#b87333;}
+.cluster-option b{margin-right:.4rem;}
+.cluster-meta{color:#9a99a3;font-size:.78rem;margin-top:.2rem;}
+.cluster-quote{color:#cfcdc6;font-style:italic;font-size:.85rem;margin:.3rem 0 0;line-height:1.4;}
+.q, .cluster-quote{white-space:pre-line;}
+.canonical-mark{color:#ffd23f;font-weight:600;margin-left:.3rem;}
+.cluster-actions{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap;}
+.cluster-actions button{padding:.45em 1.1em;}
+.cluster-actions button.primary{background:#b87333;color:#0e0c0a;}
+.cluster-add{margin-top:.7rem;}
+.cluster-add-select{width:100%;padding:.4em .6em;background:#1a1612;color:#ddd;border:1px dashed #555;border-radius:4px;}
+.cluster-added, .cluster-added-row{border-left:2px solid #b87333;padding-left:.5em;}
+.cluster-added-row{margin-top:.5rem;}
+.cluster-added-row > .row, .cluster-added-row > .row.done{border-left:none;}
+.cluster-added-remove{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.15em .6em;font-size:.72rem;font-weight:600;cursor:pointer;margin-left:.5rem;}
+.cluster-added-remove:hover{color:#ff9a9a;border-color:#6b3a3a;}
+/* --- Keyboard navigation: carte active + recherche + overlay aide --------- */
+.row.active{border-left-width:5px;box-shadow:0 0 0 1px #ffd23f;}
+.row.hidden-by-search{display:none !important;}
+#reco-search-bar{position:fixed;top:.6rem;left:50%;transform:translateX(-50%);z-index:300;background:#1a1a22;border:1px solid #ffd23f;border-radius:999px;padding:.4em .8em;box-shadow:0 8px 24px rgba(0,0,0,.6);}
+#reco-search-bar[hidden]{display:none !important;}
+#reco-search-bar input{background:transparent;border:0;color:#f6f4ee;font-size:.95rem;width:min(420px,80vw);outline:none;padding:.2em .3em;border-radius:0;}
+#reco-autoplay-toggle{position:fixed;bottom:1rem;left:1rem;z-index:150;background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.35em .9em;font-size:.82rem;font-weight:600;cursor:pointer;}
+#reco-autoplay-toggle.on{color:#ffd23f;border-color:#ffd23f;background:#1f1c0a;}
+#reco-autoplay-toggle:hover{color:#ffd23f;border-color:#ffd23f;}
+#reco-help-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+#reco-help-overlay[hidden]{display:none !important;}
+#reco-help-overlay .help-box{background:#17171c;border:1px solid #ffd23f;border-radius:14px;padding:1.4rem 1.6rem;max-width:760px;width:100%;max-height:80vh;overflow:auto;box-shadow:0 12px 36px rgba(0,0,0,.7);}
+#reco-help-overlay h2{margin:0 0 1rem;color:#ffd23f;font-size:1.1rem;}
+#reco-help-overlay .help-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem 1.6rem;}
+#reco-help-overlay h3{margin:.4rem 0 .3rem;color:#ffd23f;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;}
+#reco-help-overlay dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.85rem;}
+#reco-help-overlay dt{color:#ffd23f;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:600;background:#0e0e10;border:1px solid #2a2a30;border-radius:6px;padding:.05em .45em;justify-self:start;}
+#reco-help-overlay dd{margin:0;color:#cfcdc6;align-self:center;}
+#reco-help-overlay .help-foot{color:#9a99a3;font-size:.78rem;margin:1rem 0 0;text-align:center;}
+/* --- Page /doutes : file de validation des incertitudes agent ------------- */
+.doubt-section{max-width:820px;margin:1.4rem auto;}
+.doubt-section h2{font-size:1.05rem;border-bottom:1px solid #2a2a30;padding-bottom:.35rem;}
+.doubt-section h2 .cnt{background:#1f1c0a;color:#ffd23f;border:1px solid #ffd23f55;border-radius:999px;padding:.05em .6em;font-size:.75rem;vertical-align:middle;}
+.doubt-section .hint{color:#9a99a3;font-size:.82rem;margin:.2rem 0 .8rem;}
+.doubt-ep{font-size:.85rem;color:#9a99a3;margin:1rem 0 .3rem;}
+.doubt-ep a{color:#cfcdc6;text-decoration:none;}
+.doubt-ep a:hover{color:#ffd23f;}
+/* L1 — wrapper <li> du bloc agent : pas de style de liste propre (le
+   .agent-review porte déjà fond/bordure/marge). */
+.doubt-note{margin:0;padding:0;list-style:none;}
+.agent-review{background:#101720;border:1px solid #1f3a5c;border-left:3px solid #4a8edb;border-radius:8px;padding:.5em .8em;margin:.8rem 0 -0.2rem;font-size:.82rem;color:#a2c4ee;line-height:1.5;}
+.agent-review b{color:#cfe3ff;}
+.doubt-flags{color:#ffd23f;}
+.doubt-human{color:#a9e3b8;}
+.agent-badge{cursor:help;font-size:.8rem;opacity:.75;}
+.doubts-link{color:#a2c4ee;text-decoration:none;font-weight:600;}
+.doubts-link:hover{color:#ffd23f;}
+/* --- Barre d'outils épisode : tri (#2) + repli des traités (#1) ----------- */
+.review-toolbar{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:.5rem 0 .7rem;}
+.review-toolbar .rt-sort{background:transparent;border:0;padding:0;color:#9a99a3;font-size:.82rem;display:inline-flex;align-items:center;gap:.4rem;cursor:default;}
+.review-toolbar select{background:#0e0e10;border:1px solid #2a2a30;color:#f6f4ee;border-radius:8px;padding:.3em .6em;font-size:.82rem;cursor:pointer;}
+.review-toolbar select:hover{border-color:#ffd23f;}
+.review-toolbar [data-collapse-toggle]{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.3em .9em;font-size:.82rem;font-weight:600;cursor:pointer;}
+.review-toolbar [data-collapse-toggle][aria-pressed="true"]{color:#ffd23f;border-color:#ffd23f;background:#1f1c0a;}
+.review-toolbar [data-collapse-toggle]:hover{color:#ffd23f;border-color:#ffd23f;}
+/* Repli : cache tout sauf l'en-tête .hd des cartes traitées (sauf .force-expand). */
+body.collapse-done .row.done:not(.force-expand) > *:not(.hd),
+body.collapse-done .row.citation:not(.force-expand) > *:not(.hd),
+body.collapse-done .row.discarded:not(.force-expand) > *:not(.hd){display:none !important;}
+body.collapse-done .row.done:not(.force-expand),
+body.collapse-done .row.citation:not(.force-expand),
+body.collapse-done .row.discarded:not(.force-expand){padding-top:.35rem;padding-bottom:.35rem;}
+body.collapse-done .row.done:not(.force-expand) .hd,
+body.collapse-done .row.citation:not(.force-expand) .hd,
+body.collapse-done .row.discarded:not(.force-expand) .hd{cursor:pointer;}
+body.collapse-done .row.done:not(.force-expand) .hd::after,
+body.collapse-done .row.citation:not(.force-expand) .hd::after,
+body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';color:#9a99a3;font-size:.8rem;margin-left:.3rem;}
+/* Étiquette du type de doute (grouping par épisode, 2026-07-06). */
+.doubt-kind{border:1px solid #1f3a5c;border-radius:999px;padding:.05em .6em;font-size:.72rem;font-weight:600;color:#a2c4ee;background:#0f1825;}
+.doubt-kind-pending{color:#ffd23f;border-color:#5a4a14;background:#27220a;}
+.doubt-kind-flagged{color:#ffb74d;border-color:#7a4d00;background:#201a10;}
+.doubt-ep-block{margin-bottom:1.6rem;}
+/* /doutes V2 — groupé par type d'info à valider (2026-07-19). */
+.doubt-summary{max-width:820px;margin:.5rem auto 1.6rem;color:#cfcdc6;font-size:.92rem;line-height:1.8;}
+.doubt-summary a{color:#a2c4ee;text-decoration:none;white-space:nowrap;}
+.doubt-summary a:hover{color:#ffd23f;}
+.doubt-type{border-left:3px solid #2a2a30;padding-left:1rem;margin-bottom:2rem;}
+.doubt-type-pending{border-left-color:#ffd23f;}
+.doubt-type-flagged{border-left-color:#ffb74d;}
+.doubt-type-recby{border-left-color:#a2c4ee;}
+.doubt-type-lowconf{border-left-color:#a9e3b8;}
+.doubt-type-desc{color:#9a99a3;font-size:.85rem;margin:.35rem 0 1.1rem;}
+.doubt-ep-tag{display:inline-block;background:#1a1a20;border:1px solid #2a2a30;border-radius:999px;padding:.05em .7em;font-size:.72rem;font-weight:600;color:#cfcdc6;text-decoration:none;margin-right:.4rem;}
+.doubt-ep-tag:hover{color:#ffd23f;border-color:#ffd23f55;}
+.anchor{display:block;position:relative;top:-1rem;visibility:hidden;height:0;}
