@@ -1,5 +1,20 @@
+# B-MED-12 — Python 3.11+ requis pour `tools/stats/aggregator.py`
+# (datetime.fromisoformat avec suffixe `Z`). Cette contrainte est
+# vérifiée à l'exécution par le shebang du venv, et déclarée ici pour
+# qu'un fork qui packagerait le pipeline en wheel l'expose au pip.
+[project]
+name = "reco-tools"
+version = "0.0.0"
+description = "Pipeline interne Reco (privé)."
+requires-python = ">=3.11"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["tools"]
+pythonpath = ["tools", "tests"]
 python_files = ["test_*.py"]
-addopts = "-q --tb=short"
+addopts = "-q --tb=short --import-mode=importlib"
+markers = [
+    "slow: tests lents (intégration Docker, benchmarks)",
+    "perf: tests de performance / scaling (skip défaut)",
+    "network: tests nécessitant accès réseau réel (skip défaut)",
+]

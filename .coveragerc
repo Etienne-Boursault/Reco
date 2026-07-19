@@ -6,9 +6,22 @@ source = tools
 omit =
     tools/compare_models.py
     tools/eval_local_llm.py
+    # Scripts JETABLES (one-off) ajoutés le 2026-07-19 : migrations ponctuelles,
+    # comparaisons LLM et re-runs manuels, jamais maintenus ni testés — ils
+    # tiraient le total à 94 % alors que le code de production est à ~97 %.
+    tools/compare_4_llms.py
+    tools/compare_extract.py
+    tools/migrate_guests_parsed.py
+    tools/migrate_types.py
+    tools/rerun_28_eps_with_history.py
+    tools/rerun_haiku_on_sonnet.py
+    tools/retry_gpt4o.py
+    tools/export_similar_works.py
     tools/.venv/*
 
 [report]
+# Barre projet : ≥95 % sur le code de production (hors scripts jetables).
+fail_under = 95
 # Lignes systématiquement exclues de la couverture (guards triviaux,
 # branches "if __name__" qui sont nettoyées par le test du main()).
 exclude_lines =
