@@ -30,8 +30,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal
 
@@ -39,6 +41,17 @@ Provider = Literal["anthropic", "openai"]
 
 from dotenv import load_dotenv
 
+from review_lock import ServerLockBusy, acquire_pipeline_lock
+
+from extraction_history import (
+    ASSUMED,
+    ExtractionEntry,
+    derive_extractors,
+    from_dict as _entry_from_dict,
+    merge_history,
+    pick_display_state,
+    to_dict as _entry_to_dict,
+)
 from common import (
     TOOLS_DIR,
     find_episode_by_guid,
@@ -55,9 +68,11 @@ from common import (
     write_json_if_changed,
 )
 
-# Modèle d'extraction par défaut : Sonnet (bon rapport qualité/coût pour cette
-# tâche d'extraction structurée ; Opus serait surdimensionné). Surchargé par --model.
-MODEL = "claude-sonnet-4-6"
+# Modèle d'extraction par défaut : Haiku 4.5 (basculé depuis Sonnet 4.6 le
+# 2026-06-04 après étude comparative 4-LLM sur 11 ép). Trouve ~60% des recos
+# de Sonnet pour 1/4 du coût, et catch en plus 40% que Sonnet rate (recall
+# supérieur sur les recos subtiles). Surchargé par --model.
+MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 8000
 # Nombre approximatif de caractères par chunk (~ contexte raisonnable + marge coût).
 CHUNK_CHARS = 24_000
@@ -75,7 +90,11 @@ _RE_NON_ALNUM = re.compile(r"[^a-z0-9 ]+")
 _RE_SPACES = re.compile(r"\s+")
 _RE_FENCE = re.compile(r"^```(?:json)?\s*(.*?)\s*```$", re.DOTALL)
 _RE_JSON_OBJ = re.compile(r"\{.*\}", re.DOTALL)
-_RE_STEM_DIGITS = re.compile(r"(\d+)")
+# L6 (revue 2026-07-19) : ANCRÉE en tête (^) — les fichiers recos sont nommés
+# « {index:04d}.json », le numéro est donc TOUJOURS un préfixe. Sans ancre, un
+# stem non numérique (« manual-note ») ou à chiffres internes (« take-2 »)
+# fausserait le compteur d'index en captant un nombre qui n'est pas l'ID.
+_RE_STEM_DIGITS = re.compile(r"^(\d+)")
 
 VALID_TYPES = {
     "film", "serie", "livre", "bd", "musique", "album",
@@ -393,7 +412,7 @@ def _next_reco_index(source_id: str) -> int:
         return 1
     max_idx = 0
     for path in d.glob("*.json"):
-        m = _RE_STEM_DIGITS.search(path.stem)
+        m = _RE_STEM_DIGITS.match(path.stem)
         if m:
             max_idx = max(max_idx, int(m.group(1)))
     return max_idx + 1
@@ -415,27 +434,122 @@ def _build_existing_index(source_id: str) -> dict[tuple[str, str], Path]:
     return existing_map
 
 
+class _RunIndex:
+    """Index partagé pour un run multi-épisodes (M4, revue 2026-07-19).
+
+    `_build_existing_index` et `_next_reco_index` relisent TOUS les fichiers
+    recos de la source. Les appeler à chaque épisode d'un run ``--all``/``--batch``
+    donne un coût en O(épisodes × recos) (≈ 3000 recos relues par épisode). On
+    construit donc l'index existant et le compteur d'index UNE seule fois par
+    run, puis on met l'état à jour au fil des écritures (`existing_map` reçoit
+    les nouvelles recos, `next_index` avance).
+    """
+
+    __slots__ = ("existing_map", "next_index")
+
+    def __init__(self, existing_map: dict[tuple[str, str], Path],
+                 next_index: int) -> None:
+        self.existing_map = existing_map
+        self.next_index = next_index
+
+    @classmethod
+    def build(cls, source_id: str) -> "_RunIndex":
+        return cls(_build_existing_index(source_id), _next_reco_index(source_id))
+
+
+def new_run_index(source_id: str) -> _RunIndex:
+    """Fabrique un index de run partagé (cf. `_RunIndex`).
+
+    Exposé pour les orchestrateurs (run_pipeline) qui bouclent sur les épisodes
+    et veulent éviter de relire tous les fichiers recos à chaque itération.
+    """
+    return _RunIndex.build(source_id)
+
+
+def _now_iso() -> str:
+    """ISO datetime UTC sans microsecondes (stable pour comparaisons)."""
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def _build_entry(reco: dict[str, Any], provider: str,
+                 transcript_source: str, transcript_model: str | None,
+                 llm_model: str | None, worker: str | None,
+                 at: str | None = None) -> ExtractionEntry:
+    """Construit une `ExtractionEntry` à partir des paramètres d'extraction."""
+    return ExtractionEntry(
+        at=at or _now_iso(),
+        transcriptModel=transcript_model or ASSUMED,
+        transcriptSource=transcript_source if transcript_source in ("acast", "youtube") else "acast",  # type: ignore[arg-type]
+        llmProvider=provider if provider in ("anthropic", "openai") else "anthropic",  # type: ignore[arg-type]
+        llmModel=llm_model or ASSUMED,
+        worker=worker or ASSUMED,
+        timestamp_at_extraction=(reco.get("timestamp") or "00:00:00"),
+    )
+
+
+def _legacy_entry_for(existing: dict[str, Any], file_mtime_iso: str) -> ExtractionEntry:
+    """Forge une entrée d'historique pour une reco antérieure au schéma history."""
+    existing_extractors = existing.get("extractors") or ["anthropic"]
+    legacy_provider = existing_extractors[0] if existing_extractors else "anthropic"
+    return ExtractionEntry(
+        at=file_mtime_iso,
+        transcriptModel=ASSUMED,
+        transcriptSource=existing.get("transcriptSource") or "acast",  # type: ignore[arg-type]
+        llmProvider=legacy_provider,  # type: ignore[arg-type]
+        llmModel=ASSUMED,
+        worker=ASSUMED,
+        timestamp_at_extraction=existing.get("timestamp") or "00:00:00",
+    )
+
+
 def _merge_reco(existing: dict[str, Any], new: dict[str, Any],
-                provider: str) -> dict[str, Any]:
+                provider: str,
+                transcript_source: str = "acast",
+                transcript_model: str | None = None,
+                llm_model: str | None = None,
+                worker: str | None = None,
+                file_mtime_iso: str | None = None) -> dict[str, Any]:
     """Fusionne une nouvelle extraction dans une reco existante.
 
     Règles :
-      - `timestamp` est TOUJOURS mis à jour (recalage YT).
+      - `extractionHistory` est mis à jour (dédup par signature, ordre par `at`).
+      - `timestamp` / `transcriptSource` au top-level = derniers de l'entrée YT
+        (ou de la plus récente si aucune YT).
       - `quote` n'est mis à jour QUE si la reco n'est pas `validated`.
       - `creator`, `year` complétés s'ils étaient vides.
-      - `extractors` reçoit le provider courant (set trié).
+      - `extractors` = dérivé de l'historique.
     """
     merged = dict(existing)
-    if new.get("timestamp"):
-        merged["timestamp"] = new["timestamp"]
-    if existing.get("status") != "validated" and new.get("quote"):
+    existing_history_raw = existing.get("extractionHistory") or []
+    history = [_entry_from_dict(e) for e in existing_history_raw]
+    # Si pas d'historique, on backfille une entrée legacy AVANT le merge,
+    # pour préserver la trace de l'extraction d'origine.
+    if not history:
+        history = [_legacy_entry_for(existing, file_mtime_iso or _now_iso())]
+
+    new_entry = _build_entry(new, provider, transcript_source,
+                             transcript_model, llm_model, worker)
+    history = merge_history(history, new_entry)
+    display = pick_display_state(history)
+
+    merged["extractionHistory"] = [_entry_to_dict(e) for e in history]
+    merged["extractors"] = derive_extractors(history)
+    merged["timestamp"] = display["timestamp"]
+    merged["transcriptSource"] = display["transcriptSource"]
+
+    # On préserve la quote humaine si :
+    #   - l'item a été validé (`status=validated`), OU
+    #   - l'item a été qualifié de citation (`kind=citation`) — la quote a
+    #     alors été choisie par l'humain comme représentative de la mention.
+    is_human_locked = (
+        existing.get("status") == "validated"
+        or existing.get("kind") == "citation"
+    )
+    if not is_human_locked and new.get("quote"):
         merged["quote"] = new["quote"]
     for k in ("creator", "year"):
         if k in new and not existing.get(k):
             merged[k] = new[k]
-    merged["extractors"] = sorted(
-        set((existing.get("extractors") or []) + [provider])
-    )
     # Fusion des types : union dédupliquée, ordre stable (existants en tête).
     existing_types = existing.get("types") or []
     new_types = new.get("types") or []
@@ -451,8 +565,16 @@ def _merge_reco(existing: dict[str, Any], new: dict[str, Any],
 
 
 def _create_reco(source_id: str, guid: str, reco: dict[str, Any],
-                 prefix: str, index: int, provider: str) -> dict[str, Any]:
-    """Construit le dict d'une NOUVELLE reco (draft)."""
+                 prefix: str, index: int, provider: str,
+                 transcript_source: str = "acast",
+                 transcript_model: str | None = None,
+                 llm_model: str | None = None,
+                 worker: str | None = None) -> dict[str, Any]:
+    """Construit le dict d'une NOUVELLE reco (draft) avec historique initial.
+
+    `transcript_source` indique d'où vient le timestamp (acast/youtube) pour
+    permettre au review_server d'appliquer le bon offset YT au moment du clic.
+    """
     full: dict[str, Any] = {
         "id": f"{prefix}-{index:04d}",
         "sourceId": source_id,
@@ -460,21 +582,39 @@ def _create_reco(source_id: str, guid: str, reco: dict[str, Any],
         "title": reco["title"],
         "types": list(reco["types"]),
     }
-    for key_name in ("creator", "year", "recommendedBy", "quote", "timestamp"):
+    for key_name in ("creator", "year", "recommendedBy", "quote"):
         if key_name in reco:
             full[key_name] = reco[key_name]
     full["links"] = []
     full["status"] = "draft"
-    full["extractors"] = [provider]
+
+    entry = _build_entry(reco, provider, transcript_source,
+                         transcript_model, llm_model, worker)
+    history = [entry]
+    full["extractionHistory"] = [_entry_to_dict(e) for e in history]
+    full["extractors"] = derive_extractors(history)
+    display = pick_display_state(history)
+    full["timestamp"] = display["timestamp"]
+    full["transcriptSource"] = display["transcriptSource"]
     return full
 
 
 def _persist_recos(source_id: str, guid: str,
                    raw_recos: list[dict[str, Any]],
-                   provider: str = "anthropic") -> int:
+                   provider: str = "anthropic",
+                   transcript_source: str = "acast",
+                   transcript_model: str | None = None,
+                   llm_model: str | None = None,
+                   worker: str | None = None,
+                   run_index: _RunIndex | None = None) -> int:
     """
     Normalise, déduplique et persiste les recos brutes d'un épisode en mode
     UPSERT (préserve le travail humain).
+
+    `run_index` (M4) : index de run partagé. S'il est fourni, on NE relit PAS
+    tous les fichiers recos (l'appelant l'a construit une fois pour tout le run)
+    et on met son état à jour au fil des écritures. S'il est None, on le
+    construit ici (chemin standalone — appel isolé sur un seul épisode).
 
     Renvoie le nombre de fichiers créés ou modifiés.
     """
@@ -485,27 +625,49 @@ def _persist_recos(source_id: str, guid: str,
     if not normalized:
         return 0
 
-    existing_map = _build_existing_index(source_id)
+    if run_index is None:
+        run_index = _RunIndex.build(source_id)
+    existing_map = run_index.existing_map
     target_dir = recos_dir_for(source_id)
     prefix = reco_prefix(source_id)
-    index = _next_reco_index(source_id)
+    index = run_index.next_index
     new_count = 0
     upd_count = 0
 
     for reco in normalized:
         key = (guid, normalize_text(reco["title"]))
 
+        # Le timestamp et donc la source côté YT/Acast viennent du transcript
+        # courant — on l'injecte dans `reco` pour que merge/create soient
+        # cohérents.
+        reco["transcriptSource"] = transcript_source
+
         if key in existing_map:
             path = existing_map[key]
             existing = read_json(path)
-            merged = _merge_reco(existing, reco, provider)
+            try:
+                file_mtime_iso = datetime.fromtimestamp(
+                    path.stat().st_mtime, tz=timezone.utc
+                ).replace(microsecond=0).isoformat()
+            except OSError:
+                file_mtime_iso = _now_iso()
+            merged = _merge_reco(existing, reco, provider,
+                                 transcript_source=transcript_source,
+                                 transcript_model=transcript_model,
+                                 llm_model=llm_model,
+                                 worker=worker,
+                                 file_mtime_iso=file_mtime_iso)
             if write_json_if_changed(path, merged):
                 upd_count += 1
                 log.info("  ↻ MAJ %s — « %s » (extractors=%s)",
                          path.name, reco["title"], merged["extractors"])
             continue
 
-        full = _create_reco(source_id, guid, reco, prefix, index, provider)
+        full = _create_reco(source_id, guid, reco, prefix, index, provider,
+                            transcript_source=transcript_source,
+                            transcript_model=transcript_model,
+                            llm_model=llm_model,
+                            worker=worker)
         path = target_dir / f"{index:04d}.json"
         if write_json_if_changed(path, full):
             new_count += 1
@@ -514,6 +676,8 @@ def _persist_recos(source_id: str, guid: str,
         existing_map[key] = path
         index += 1
 
+    # Propage le compteur avancé pour le prochain épisode du run (M4).
+    run_index.next_index = index
     log.info("Épisode %s : %d nouvelle(s), %d mise(s) à jour.",
              guid, new_count, upd_count)
     return new_count + upd_count
@@ -522,13 +686,19 @@ def _persist_recos(source_id: str, guid: str,
 def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
                         dry_run: bool, model: str = MODEL,
                         provider: str = "anthropic",
-                        source: dict[str, Any] | None = None) -> int:
+                        source: dict[str, Any] | None = None,
+                        worker: str | None = None,
+                        run_index: _RunIndex | None = None) -> int:
     """
     Extraction SYNCHRONE d'un épisode (1 appel API par chunk, à la suite).
     Si `dry_run`, n'appelle pas l'API et n'écrit rien (affiche seulement le plan).
 
     `source` peut être fourni par l'appelant pour éviter un rechargement à
     chaque épisode lorsqu'on traite une liste (boucle main).
+
+    `run_index` (M4) : index de run partagé, à construire une fois par run
+    multi-épisodes pour éviter de relire tous les fichiers recos à chaque
+    épisode. Transmis tel quel à `_persist_recos`.
     """
     if source is None:
         source = load_source(source_id)
@@ -563,7 +733,14 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
         raw_recos.extend(_call_llm(client, model, podcast_title, hosts, chunk,
                                    provider))  # type: ignore[arg-type]
 
-    return _persist_recos(source_id, guid, raw_recos, provider)
+    return _persist_recos(
+        source_id, guid, raw_recos, provider,
+        transcript_source=episode.get("transcriptSource") or "acast",
+        transcript_model=episode.get("transcriptModel"),
+        llm_model=model,
+        worker=worker or os.environ.get("RECO_WORKER") or "main-cpu",
+        run_index=run_index,
+    )
 
 
 # --- Batch helpers ---------------------------------------------------------
@@ -656,7 +833,8 @@ def _collect_results(client: Any, batch_id: str,
 def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
                       model: str = MODEL,
                       poll_seconds: int = BATCH_POLL_SECONDS,
-                      provider: str = "anthropic") -> int:
+                      provider: str = "anthropic",
+                      worker: str | None = None) -> int:
     """
     Extraction par LOT via la Message Batches API (−50 % de coût, asynchrone).
 
@@ -682,8 +860,33 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     raw_by_guid = _collect_results(client, batch_id, cid_to_guid, guids)
 
     total = 0
+    worker_resolved = worker or os.environ.get("RECO_WORKER") or "main-cpu"
+    # M2 (revue 2026-07-19) : relire les épisodes par guid pour propager le VRAI
+    # transcriptSource / transcriptModel (comme extract_for_episode). Hardcoder
+    # "acast" corrompait les timecodes des épisodes transcrits depuis YouTube :
+    # le review_server applique alors un yt_offset à un timestamp déjà calé sur
+    # la vidéo → le lecteur saute au mauvais endroit.
+    ep_by_guid: dict[str, dict] = {}
+    for path in episode_paths:
+        try:
+            ep = read_json(path)
+        except (OSError, ValueError):
+            continue
+        g = ep.get("guid")
+        if g:
+            ep_by_guid[g] = ep
+    # M4 : index de run construit UNE fois (sinon relecture de tous les fichiers
+    # recos par épisode).
+    run_index = _RunIndex.build(source_id)
     for guid in guids:
-        total += _persist_recos(source_id, guid, raw_by_guid[guid], provider)
+        ep = ep_by_guid.get(guid, {})
+        total += _persist_recos(
+            source_id, guid, raw_by_guid[guid], provider,
+            transcript_source=ep.get("transcriptSource") or "acast",
+            transcript_model=ep.get("transcriptModel"),
+            llm_model=model, worker=worker_resolved,
+            run_index=run_index,
+        )
     log.info("Batch terminé : %d nouvelle(s) reco(s) écrite(s) au total.", total)
     return total
 
@@ -712,43 +915,75 @@ def main() -> None:
                         help="Batch : intervalle de scrutation en secondes (défaut: %(default)s).")
     parser.add_argument("--dry-run", action="store_true",
                         help="N'appelle pas l'API et n'écrit rien (plan seulement).")
+    parser.add_argument("--worker", default=None,
+                        help="Étiquette du worker (ex. main-cpu, portable-gpu). "
+                             "Défaut: $RECO_WORKER ou main-cpu.")
+    parser.add_argument("--force", action="store_true",
+                        help="Ignore le verrou serveur (à tes risques : "
+                             "écritures concurrentes possibles avec review_server).")
     args = parser.parse_args()
 
-    if args.dry_run:
-        client = None
-    elif args.provider == "openai":
-        client = make_openai_client()
-        if args.model == MODEL:  # encore le défaut Anthropic -> on switche
-            args.model = "gpt-4o-mini"
-        if args.batch:
-            log.warning("--batch ignoré avec --provider openai (mode synchrone).")
-            args.batch = False
-    else:
-        client = make_anthropic_client()
+    # Coordination avec review_server : refuse de démarrer si le serveur
+    # tourne (sauf --force). Cf. tools/review_lock.py.
+    try:
+        lock_ctx = acquire_pipeline_lock(force=args.force)
+        lock_ctx.__enter__()
+    except ServerLockBusy as exc:
+        log.error("%s", exc)
+        import sys as _sys  # noqa: PLC0415
+        _sys.exit(1)
 
-    # Liste des épisodes ciblés.
-    if args.guid:
-        paths = [find_episode_by_guid(args.source, args.guid)]
-    else:
-        paths = list_episode_files(args.source)
-        if args.limit is not None:
-            paths = paths[: args.limit]
+    try:
+        if args.dry_run:
+            client = None
+        elif args.provider == "openai":
+            client = make_openai_client()
+            if args.model == MODEL:  # encore le défaut Anthropic -> on switche
+                args.model = "gpt-4o-mini"
+            if args.batch:
+                log.warning("--batch ignoré avec --provider openai (mode synchrone).")
+                args.batch = False
+        else:
+            client = make_anthropic_client()
 
-    # Mode batch (asynchrone) : un seul lot pour tous les épisodes.
-    if args.batch and not args.dry_run:
-        extract_all_batch(args.source, paths, client, args.model,
-                          args.poll_interval, args.provider)
-        return
+        # Liste des épisodes ciblés.
+        if args.guid:
+            paths = [find_episode_by_guid(args.source, args.guid)]
+        else:
+            paths = list_episode_files(args.source)
+            if args.limit is not None:
+                paths = paths[: args.limit]
 
-    # Mode synchrone (ou dry-run) : charge la source UNE fois.
-    source = load_source(args.source) if paths else None
-    log.info("%d épisode(s) à traiter pour extraction.", len(paths))
-    for path in paths:
+        # Mode batch (asynchrone) : un seul lot pour tous les épisodes.
+        if args.batch and not args.dry_run:
+            # L1 (revue 2026-07-19) : parité avec la boucle sync — une erreur
+            # batch est journalisée, pas propagée en traceback brut.
+            try:
+                extract_all_batch(args.source, paths, client, args.model,
+                                  args.poll_interval, args.provider,
+                                  worker=args.worker)
+            except Exception as exc:  # noqa: BLE001
+                log.error("Échec de l'extraction par batch : %s", exc)
+            return
+
+        # Mode synchrone (ou dry-run) : charge la source UNE fois.
+        source = load_source(args.source) if paths else None
+        # M4 : index de run partagé (une seule relecture des recos par run).
+        # Inutile en dry-run (aucune écriture).
+        run_index = new_run_index(args.source) if (paths and not args.dry_run) else None
+        log.info("%d épisode(s) à traiter pour extraction.", len(paths))
+        for path in paths:
+            try:
+                extract_for_episode(args.source, path, client, args.dry_run,
+                                    args.model, args.provider, source=source,
+                                    worker=args.worker, run_index=run_index)
+            except Exception as exc:  # noqa: BLE001 — continue sur l'épisode suivant
+                log.error("Échec extraction sur %s : %s", path.name, exc)
+    finally:
         try:
-            extract_for_episode(args.source, path, client, args.dry_run,
-                                args.model, args.provider, source=source)
-        except Exception as exc:  # noqa: BLE001 — on continue sur l'épisode suivant.
-            log.error("Échec extraction sur %s : %s", path.name, exc)
+            lock_ctx.__exit__(None, None, None)
+        except Exception:  # noqa: BLE001 — best-effort release
+            pass
 
 
 if __name__ == "__main__":

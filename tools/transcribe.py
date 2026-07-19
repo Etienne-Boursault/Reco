@@ -137,29 +137,31 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
 
 
 def _resolve_audio(source_id: str, episode: dict[str, Any],
-                   prefer_youtube: bool = False) -> Path:
+                   prefer_acast: bool = False) -> tuple[Path, str]:
     """
-    Obtient un fichier audio local pour l'épisode (HTTP Acast ou YouTube).
+    Obtient un fichier audio local pour l'épisode + source utilisée.
 
-    Si `prefer_youtube` et qu'une vidéo est liée, on transcrit l'audio de la
-    VIDÉO : les timecodes sont alors alignés sur la vidéo (offset nul). Cache
-    séparé (« <guid>-yt.mp3 ») pour ne pas écraser l'audio Acast.
+    **YouTube par défaut** (timecodes alignés sur la vidéo → offset nul côté
+    review_server). Acast = repli si YT absent ou si `prefer_acast=True`.
+
+    Retourne `(path, "youtube" | "acast")` pour permettre à l'appelant de
+    stocker `transcriptSource` dans l'épisode JSON.
     """
     guid = episode["guid"]
     audio_url = episode.get("audioUrl")
     youtube_url = episode.get("youtubeUrl")
     base = AUDIO_DIR / source_id / slugify(guid)
 
-    if prefer_youtube and youtube_url:
-        return _download_youtube(youtube_url, base.with_name(base.name + "-yt"))
-    if audio_url:
-        # On garde l'extension d'origine si reconnaissable, sinon .mp3.
+    if prefer_acast and audio_url:
         suffix = Path(audio_url.split("?")[0]).suffix or ".mp3"
-        return _download_http(audio_url, base.with_suffix(suffix))
+        return _download_http(audio_url, base.with_suffix(suffix)), "acast"
     if youtube_url:
-        return _download_youtube(youtube_url, base)
+        return _download_youtube(youtube_url, base.with_name(base.name + "-yt")), "youtube"
+    if audio_url:
+        suffix = Path(audio_url.split("?")[0]).suffix or ".mp3"
+        return _download_http(audio_url, base.with_suffix(suffix)), "acast"
     raise ValueError(
-        f"L'épisode {guid} n'a ni audioUrl ni youtubeUrl : impossible de transcrire."
+        f"L'épisode {guid} n'a ni youtubeUrl ni audioUrl : impossible de transcrire."
     )
 
 
@@ -198,7 +200,7 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
                        language: str | None, force: bool,
-                       prefer_youtube: bool = False) -> bool:
+                       prefer_acast: bool = False) -> bool:
     """
     Transcrit un épisode (fichier JSON donné). Renvoie True si une transcription
     a été produite (ou si le statut a été mis à jour), False si rien à faire.
@@ -216,17 +218,21 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
             write_json_if_changed(episode_path, episode)
         return False
 
-    audio_path = _resolve_audio(source_id, episode, prefer_youtube)
+    audio_path, source_used = _resolve_audio(source_id, episode, prefer_acast)
     text = _transcribe_audio(audio_path, model_name, language)
 
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text(text, encoding="utf-8")
-    log.info("Transcription écrite : %s", transcript_path)
+    log.info("Transcription écrite (%s) : %s", source_used, transcript_path)
 
     # Met à jour le statut sans régresser un éventuel « validated ».
+    # On enregistre AUSSI modèle + source utilisés (traçabilité — permet
+    # d'évaluer la qualité a posteriori et de calculer le bon offset YT).
     if episode.get("transcriptStatus") != "validated":
         episode["transcriptStatus"] = "auto"
-        write_json_if_changed(episode_path, episode)
+    episode["transcriptModel"] = model_name
+    episode["transcriptSource"] = source_used
+    write_json_if_changed(episode_path, episode)
     return True
 
 
@@ -250,16 +256,22 @@ def main() -> None:
                         help="Langue (défaut: fr). Vide pour détection auto.")
     parser.add_argument("--force", action="store_true",
                         help="Retranscrit même si le cache existe.")
-    parser.add_argument("--youtube", action="store_true",
-                        help="Transcrit l'audio de la vidéo YouTube (timecodes "
-                             "alignés sur la vidéo, offset nul) quand elle existe.")
+    # H1 (revue 2026-07-19) : ex-`--youtube` qui, passé positionnellement à
+    # `prefer_acast`, faisait l'INVERSE de sa doc (il forçait Acast) — et
+    # YouTube est de toute façon le défaut. Remplacé par `--acast` explicite.
+    parser.add_argument("--acast", action="store_true",
+                        help="Force la transcription depuis l'audio Acast. Par "
+                             "défaut on prend la vidéo YouTube quand elle existe "
+                             "(timecodes alignés, offset nul) ; Acast n'est qu'un "
+                             "repli. Utile pour un épisode sans vidéo ou à recaler.")
     args = parser.parse_args()
 
     language = args.language or None
 
     if args.guid:
         path = find_episode_by_guid(args.source, args.guid)
-        transcribe_episode(args.source, path, args.model, language, args.force, args.youtube)
+        transcribe_episode(args.source, path, args.model, language, args.force,
+                            prefer_acast=args.acast)
         return
 
     # Mode --all ou --guids-file.
@@ -271,11 +283,12 @@ def main() -> None:
         paths = paths[: args.limit]
     total = len(paths)
     log.info("%d épisode(s) à transcrire (modèle %s%s).",
-             total, args.model, ", audio YouTube" if args.youtube else "")
+             total, args.model, ", audio Acast (forcé)" if args.acast else "")
     for i, path in enumerate(paths, 1):
         title = read_json(path).get("title", path.name)
         try:
-            transcribe_episode(args.source, path, args.model, language, args.force, args.youtube)
+            transcribe_episode(args.source, path, args.model, language, args.force,
+                            prefer_acast=args.acast)
             log.info("[%d/%d] ✓ %s", i, total, title)
         except Exception as exc:  # noqa: BLE001 — on continue sur l'épisode suivant.
             log.error("[%d/%d] ✗ %s : %s", i, total, title, exc)

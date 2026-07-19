@@ -64,7 +64,13 @@ def _parse_date(entry: Any) -> str | None:
     )
     if parsed is not None:
         # struct_time -> datetime UTC -> date ISO.
-        dt = datetime(*parsed[:6], tzinfo=timezone.utc)
+        # L3 (revue 2026-07-19) : un struct_time mal formé (mois=0, jour=0…,
+        # vu sur des flux RSS bancals) ferait lever datetime(). On renvoie None
+        # plutôt que de propager l'erreur et casser tout le fetch.
+        try:
+            dt = datetime(*parsed[:6], tzinfo=timezone.utc)
+        except (ValueError, TypeError):
+            return None
         return dt.date().isoformat()
     return None
 
@@ -272,7 +278,11 @@ def fetch_episodes(source_id: str, limit: int | None = None,
     try:
         resp = requests.get(rss_url, timeout=30, headers=_HTTP_HEADERS)
         resp.raise_for_status()
-        feed = feedparser.parse(resp.text)
+        # M2 (revue 2026-07-19) : passer les OCTETS, pas resp.text. Sur un flux
+        # text/xml sans charset, requests décode en ISO-8859-1 (défaut RFC 2616)
+        # → mojibake des accents (« Bérengère » → « BÃ©rengÃ¨re ») AVANT feedparser.
+        # feedparser sniffe l'encodage depuis la déclaration XML sur des bytes.
+        feed = feedparser.parse(resp.content)
     except requests.RequestException as exc:
         raise RuntimeError(f"Téléchargement RSS échoué : {exc}") from exc
     if feed.bozo and not feed.entries:

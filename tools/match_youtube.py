@@ -31,17 +31,38 @@ from common import (
     read_json,
     write_json_if_changed,
 )
+# `from common import …` ci-dessus déclenche le bootstrap C1 (racine du repo
+# sur sys.path), donc cet import package fonctionne aussi en standalone.
+from tools.config.registry import get_source
 
-# Suffixe « (Un Bon Moment, S5-E31) » / « (A Good Time, …) » retiré avant match.
-_SUFFIX_RE = re.compile(r"\((?:un bon moment|a good time)[^)]*\)", re.IGNORECASE)
+# Suffixe (legacy hardcodé) : « (Un Bon Moment, …) » / « (A Good Time, …) ».
+# Conservé pour le fallback quand aucune config n'expose
+# `youtubeTitleSuffixPatterns`. À terme cette constante doit disparaître :
+# chaque source déclare ses patterns dans son JSON.
+_LEGACY_SUFFIX_PATTERNS: tuple[str, ...] = ("un bon moment", "a good time")
 
 
-def _normalize(text: str) -> str:
+def _build_suffix_regex(patterns: tuple[str, ...]) -> re.Pattern[str] | None:
+    """Compile une regex `\\((<p1>|<p2>|…)[^)]*\\)` depuis une liste de
+    fragments. Renvoie ``None`` si la liste est vide (aucun retrait)."""
+    if not patterns:
+        return None
+    alt = "|".join(re.escape(p) for p in patterns)
+    return re.compile(rf"\((?:{alt})[^)]*\)", re.IGNORECASE)
+
+
+def _normalize(text: str, suffix_re: re.Pattern[str] | None = None) -> str:
     """Minuscule, sans accents, sans ponctuation, espaces normalisés.
 
-    Wrapper qui retire d'abord le suffixe podcast puis applique `common.normalize_text`.
-    """
-    return normalize_text(_SUFFIX_RE.sub(" ", text or ""))
+    Si ``suffix_re`` est fourni, retire d'abord le suffixe podcast (ex.
+    `(Un Bon Moment, S5-E31)`) avant la normalisation. Sinon utilise le
+    fallback legacy (UBM/AGT) pour préserver la rétro-compat tests."""
+    if suffix_re is None:
+        suffix_re = _build_suffix_regex(_LEGACY_SUFFIX_PATTERNS)
+    raw = text or ""
+    if suffix_re is not None:
+        raw = suffix_re.sub(" ", raw)
+    return normalize_text(raw)
 
 
 # Mots vides ignorés pour la comparaison « par contenu ».
@@ -103,8 +124,15 @@ def _parse_se(title: str) -> tuple[int | None, int | None]:
     return None, None
 
 
-def _apply_video_meta(episode: dict, video: dict) -> bool:
-    """Recopie titre/durée/saison/numéro depuis la vidéo. Renvoie True si modifié."""
+def _apply_video_meta(episode: dict, video: dict, force: bool = False) -> bool:
+    """Recopie titre/durée/saison/numéro depuis la vidéo. Renvoie True si modifié.
+
+    L2 (revue 2026-07-19) : `season`/`number` déjà présents ne sont PAS écrasés
+    (le titre RSS et le fetch RSS peuvent être plus fiables que le suffixe YT),
+    SAUF sous `force`. On complète seulement si le champ est absent. `youtubeTitle`
+    et `youtubeDuration` restent, eux, toujours synchronisés sur la vidéo (ce
+    sont des métadonnées YT par définition).
+    """
     changed = False
     title = video.get("title")
     if title and episode.get("youtubeTitle") != title:
@@ -120,21 +148,70 @@ def _apply_video_meta(episode: dict, video: dict) -> bool:
             episode["youtubeDuration"] = dur_int
             changed = True
     season, number = _parse_se(title or "")
-    if season and episode.get("season") != season:
+    if season and (force or episode.get("season") is None) \
+            and episode.get("season") != season:
         episode["season"] = season
         changed = True
-    if number and episode.get("number") != number:
+    if number and (force or episode.get("number") is None) \
+            and episode.get("number") != number:
         episode["number"] = number
         changed = True
     return changed
 
 
+def _select_best_video(target: str,
+                       norm_videos: list[tuple[dict, str]],
+                       audio_duration: int | None = None) -> tuple[dict | None, float]:
+    """Choisit la meilleure vidéo pour le titre RSS normalisé `target`.
+
+    M5 (revue 2026-07-19) : le boost d'inclusion (0.90) de `_similarity` sur un
+    titre RSS COURT (« avec Waly ») peut hisser PLUSIEURS vidéos au même score
+    (deux épisodes « … avec Waly … »). L'ancienne sélection « premier score max »
+    en choisissait alors une ARBITRAIREMENT. On départage désormais les ex æquo
+    du sommet par proximité de durée (youtubeDuration ↔ audioDuration). Si on ne
+    peut pas les départager (aucune durée exploitable, ou distances égales), on
+    renvoie ``(None, score)`` : pas d'association plutôt qu'un choix au hasard.
+
+    Renvoie ``(video | None, best_score)``.
+    """
+    scored = [(v, _similarity(target, ntitle)) for v, ntitle in norm_videos]
+    if not scored:
+        return None, 0.0
+    best_score = max(s for _, s in scored)
+    top = [v for v, s in scored if abs(s - best_score) <= 1e-9]
+    if len(top) == 1:
+        return top[0], best_score
+    # Ex æquo au sommet : départage par proximité de durée si possible.
+    if audio_duration:
+        with_dur = sorted(
+            ((v, abs(v["duration"] - audio_duration))
+             for v in top if v.get("duration")),
+            key=lambda vd: vd[1],
+        )
+        # Un plus-proche STRICTEMENT unique lève l'ambiguïté ; une égalité de
+        # distance (ou aucune durée) reste ambiguë → pas de match confiant.
+        if with_dur and (len(with_dur) == 1 or with_dur[0][1] != with_dur[1][1]):
+            return with_dur[0][0], best_score
+    return None, best_score
+
+
 def match_youtube(source_id: str, threshold: float, force: bool, dry_run: bool) -> int:
     """Associe les épisodes à leurs vidéos YouTube. Renvoie le nombre de liens posés."""
-    source = load_source(source_id)
-    channel = source.get("youtubeChannel")
+    # Pilote de migration vers la config typée (issue #1) :
+    # on lit la `SourceConfig` mais on garde le fallback legacy `load_source`
+    # si la config typée échoue (ex. source dont le JSON ne valide pas encore
+    # tous les nouveaux champs requis).
+    try:
+        cfg = get_source(source_id)
+        channel = cfg.youtube_channel_url
+        suffix_patterns = cfg.youtube_title_suffix_patterns or _LEGACY_SUFFIX_PATTERNS
+    except Exception:  # pragma: no cover — fallback legacy
+        source = load_source(source_id)
+        channel = source.get("youtubeChannel")
+        suffix_patterns = _LEGACY_SUFFIX_PATTERNS
     if not channel:
         raise ValueError(f"La source « {source_id} » n'a pas de youtubeChannel.")
+    suffix_re = _build_suffix_regex(suffix_patterns)
 
     videos_all = _fetch_channel_videos(channel)
     if not videos_all:
@@ -150,7 +227,7 @@ def match_youtube(source_id: str, threshold: float, force: bool, dry_run: bool) 
     if n_excluded:
         log.info("Filtré %d extrait(s) < 30 min (gardé %d vidéo(s) candidates).",
                  n_excluded, len(videos))
-    norm_videos = [(v, _normalize(v["title"])) for v in videos]
+    norm_videos = [(v, _normalize(v["title"], suffix_re)) for v in videos]
     # meta_by_id couvre TOUTES les vidéos pour qu'un lien manuel vers un extrait
     # garde quand même les métadonnées (titre/durée), même si on ne les propose plus.
     meta_by_id = {v["id"]: v for v in videos_all}
@@ -165,21 +242,18 @@ def match_youtube(source_id: str, threshold: float, force: bool, dry_run: bool) 
             # Déjà associé : on complète titre/durée/saison/numéro si possible.
             video = meta_by_id.get(extract_youtube_id(existing) or "")
             if video:
-                changed = _apply_video_meta(episode, video)
+                changed = _apply_video_meta(episode, video, force=force)
         else:
-            target = _normalize(episode.get("title", ""))
-            best, best_score = None, 0.0
-            for video, ntitle in norm_videos:
-                score = _similarity(target, ntitle)
-                if score > best_score:
-                    best, best_score = video, score
+            target = _normalize(episode.get("title", ""), suffix_re)
+            best, best_score = _select_best_video(
+                target, norm_videos, episode.get("audioDuration"))
 
             if target and best and best_score >= threshold:
                 log.info("Match (%.2f) : « %s » -> « %s »", best_score,
                          episode.get("title", "?"), best["title"])
                 if not dry_run:
                     episode["youtubeUrl"] = f"https://www.youtube.com/watch?v={best['id']}"
-                    _apply_video_meta(episode, best)
+                    _apply_video_meta(episode, best, force=force)
                     changed = True
             else:
                 log.info("Pas de correspondance fiable (%.2f) pour « %s ».",

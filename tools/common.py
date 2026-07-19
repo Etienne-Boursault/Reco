@@ -17,8 +17,10 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import sys
+import time
 import unicodedata
 from pathlib import Path
 from typing import Any
@@ -27,6 +29,27 @@ from typing import Any
 # common.py vit dans <racine>/tools/ ; la racine du projet est donc le parent.
 TOOLS_DIR: Path = Path(__file__).resolve().parent
 PROJECT_ROOT: Path = TOOLS_DIR.parent
+
+# C1 (revue 2026-07-19) — garantir la RACINE du projet sur sys.path. Un script
+# lancé en standalone (`python tools/x.py`) n'a que `tools/` sur le path ; sans
+# la racine, les imports `from tools.config…` (reco_prefix, et le package
+# `config` lui-même en interne) plantent → /add-reco et l'extraction tombaient
+# en 500 « comme documenté ». common.py étant importé en premier par tous les
+# scripts, ce bootstrap répare toute la chaîne. Idempotent, sans effet en mode
+# package (racine déjà présente via pytest / `python -m`).
+#
+# M3 (revue 2026-07-19) — CONSÉQUENCE CONNUE ET BÉNIGNE : comme `tools/` est
+# aussi sur sys.path (pyproject `pythonpath`) et qu'il n'y a pas de
+# `tools/__init__.py`, common.py est importable sous DEUX noms — `common` (plat)
+# et `tools.common` (paquet, via config.loader) — donc chargé deux fois. Sans
+# effet en prod (mêmes chemins, logger partagé par le registre logging global).
+# Le seul piège est côté tests : monkeypatcher `common.SOURCES_DIR` n'affecte pas
+# le code lisant `tools.common.*` ; les tests concernés patchent donc déjà
+# `config.loader`/`config.registry` directement. Uniformiser les imports (tout
+# `tools.x` ou tout plat) supprimerait la duplication mais imposerait un refactor
+# sur ~180 fichiers pour un défaut sans impact → volontairement NON fait.
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 CONTENT_DIR: Path = PROJECT_ROOT / "src" / "content"
 SOURCES_DIR: Path = CONTENT_DIR / "sources"
@@ -83,19 +106,32 @@ def slugify(value: str) -> str:
 
 
 def reco_prefix(source_id: str) -> str:
-    """
-    Préfixe court pour les ID de recos d'une source.
+    """Préfixe court pour les ID de recos d'une source (SSOT = config JSON).
 
-    Convention observée dans les données d'exemple : « un-bon-moment » -> « ubm ».
-    On prend l'initiale de chaque segment du slug ; si une seule lettre, on
-    complète avec les premières lettres du slug pour rester lisible.
+    La valeur vient EXCLUSIVEMENT de ``src/content/sources/<id>.json``
+    (champ ``recoPrefix``). L'heuristique historique (initiales du slug)
+    a été retirée (issue #14) car elle masquait silencieusement les
+    sources mal configurées et empêchait de vérifier que les IDs de
+    recos sont stables dans le temps.
+
+    Raises:
+        FileNotFoundError: si aucune config n'existe pour ``source_id``.
+            Le message indique le chemin attendu.
     """
-    segments = [s for s in source_id.split("-") if s]
-    initials = "".join(s[0] for s in segments)
-    if len(initials) >= 2:
-        return initials
-    # Repli : 3 premiers caractères alphanumériques.
-    return _RE_SLUG_NONALNUM_STRICT.sub("", source_id)[:3] or "rec"
+    # Import paresseux OBLIGATOIRE : `tools.config.loader.DEFAULT_SOURCES_DIR`
+    # importe `tools.common.PROJECT_ROOT`, donc un import top-level créerait
+    # un cycle d'import.
+    # (Racine du repo garantie sur sys.path par le bootstrap C1 en tête de
+    # module → ces imports package fonctionnent aussi en standalone.)
+    from tools.config.loader import ConfigLoadError  # noqa: PLC0415
+    from tools.config.registry import get_source  # noqa: PLC0415
+    try:
+        return get_source(source_id).reco_prefix
+    except ConfigLoadError as exc:
+        raise FileNotFoundError(
+            f"Pas de config pour la source « {source_id} » — "
+            f"impossible de déterminer le préfixe reco. ({exc})"
+        ) from exc
 
 
 # --- Helpers texte ----------------------------------------------------------
@@ -204,18 +240,69 @@ def _serialize(data: dict[str, Any]) -> str:
     return json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
+def atomic_write_text(path: Path, text: str, *, encoding: str = "utf-8") -> None:
+    """Écrit `text` dans `path` de façon atomique : write tmp → fsync → replace.
+
+    Centralisation de la stratégie originellement vivant dans
+    `reco_dedup_merge._atomic_write_json` — partagée maintenant entre
+    `common.write_json_if_changed` (pipeline + serveur) et le handler
+    `_allocate_new_reco` (review_routes) pour éviter qu'un lecteur tombe
+    sur un fichier tronqué pendant l'écriture.
+
+    Stratégie :
+      - écrit dans `<path>.tmp` dans le même dossier (rename atomique),
+      - flush + fsync pour garantir bytes sur disque AVANT rename,
+      - os.replace (atomique POSIX ; sur Windows, retry 4× si un autre
+        processus tient un handle ouvert sur la cible — cas typique du
+        reviewer qui lit pendant que l'enricher écrit).
+      - cleanup du `.tmp` en cas d'échec.
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    try:
+        with open(tmp, "w", encoding=encoding) as f:
+            f.write(text)
+            f.flush()
+            os.fsync(f.fileno())
+        # Windows : un lecteur tenant un handle ouvert sur `path` pose un
+        # PermissionError sur os.replace. On retente 4× (la dernière laisse
+        # remonter l'exception). 100 ms x 4 = 400 ms max — borné, et le
+        # cas est rare en single-utilisateur.
+        for i in range(4):
+            try:
+                os.replace(tmp, path)
+                return
+            except PermissionError:
+                if i == 3:
+                    raise
+                time.sleep(0.1)
+    finally:
+        if tmp.exists():
+            try:
+                tmp.unlink()
+            except OSError:
+                pass
+
+
 def write_json_if_changed(path: Path, data: dict[str, Any]) -> bool:
     """
     Écrit `data` en JSON dans `path` UNIQUEMENT si le contenu diffère du fichier
     existant. Renvoie True si une écriture a eu lieu, False sinon (idempotence).
+
+    L'écriture est ATOMIQUE (tmp + fsync + os.replace) pour qu'un lecteur
+    concurrent (typiquement review_server) ne tombe jamais sur un fichier
+    tronqué — protection contre `ValueError` au milieu d'une écriture
+    pipeline.
     """
-    path.parent.mkdir(parents=True, exist_ok=True)
     new_text = _serialize(data)
     if path.exists():
-        old_text = path.read_text(encoding="utf-8")
+        try:
+            old_text = path.read_text(encoding="utf-8")
+        except OSError:
+            old_text = None
         if old_text == new_text:
             return False
-    path.write_text(new_text, encoding="utf-8")
+    atomic_write_text(path, new_text)
     return True
 
 

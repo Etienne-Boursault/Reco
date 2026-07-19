@@ -24,6 +24,12 @@ import argparse
 
 from common import list_episode_files, log, read_json
 
+# L4 (revue 2026-07-19) : le défaut d'extraction est la SSOT de extract_recos
+# (claude-haiku-4-5), pas une chaîne dupliquée qui dérive à chaque changement de
+# modèle. extract_recos ne tire aucune dépendance lourde à l'import (les SDK
+# LLM/whisper sont paresseux), donc l'importer ici ne coûte rien.
+from extract_recos import MODEL as DEFAULT_EXTRACT_MODEL
+
 # Étapes valides et ordre canonique.
 ALL_STEPS = ["fetch", "transcribe", "extract"]
 
@@ -85,7 +91,7 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
                  len(episode_paths), extract_model, ", batch" if batch else "")
         from common import make_anthropic_client  # noqa: PLC0415
         from extract_recos import (  # noqa: PLC0415
-            extract_all_batch, extract_for_episode,
+            extract_all_batch, extract_for_episode, new_run_index,
         )
         client = None
         if not dry_run:
@@ -98,21 +104,38 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
                 _log_pipeline_summary(fetch_failed, transcribe_failed, extract_failed)
                 return
 
-        if batch and not dry_run:
-            # Un seul lot pour tous les épisodes (−50 % de coût).
-            try:
-                extract_all_batch(source_id, episode_paths, client, extract_model)
-            except Exception as exc:  # noqa: BLE001
-                extract_failed = True
-                log.error("Extraction par batch échouée : %s", exc)
-        else:
-            for path in episode_paths:
-                guid = read_json(path).get("guid", "?")
-                try:
-                    extract_for_episode(source_id, path, client, dry_run, extract_model)
-                except Exception as exc:  # noqa: BLE001 — on continue.
-                    extract_failed = True
-                    log.error("Extraction échouée sur %s (%s) : %s", path.name, guid, exc)
+        # M1 (revue 2026-07-19) : sérialiser les ÉCRITURES d'extraction sous le
+        # verrou pipeline (comme extract_recos.main). Sans ça, un re-extract
+        # concurrent au review_server peut écraser une validation humaine.
+        import contextlib  # noqa: PLC0415
+        from review_lock import ServerLockBusy, acquire_pipeline_lock  # noqa: PLC0415
+        lock_cm = (contextlib.nullcontext() if dry_run
+                   else acquire_pipeline_lock(force=force))
+        try:
+            with lock_cm:
+                if batch and not dry_run:
+                    # Un seul lot pour tous les épisodes (−50 % de coût).
+                    try:
+                        extract_all_batch(source_id, episode_paths, client, extract_model)
+                    except Exception as exc:  # noqa: BLE001
+                        extract_failed = True
+                        log.error("Extraction par batch échouée : %s", exc)
+                else:
+                    # M4 : index de run partagé (une seule relecture des recos
+                    # pour toute la boucle). Inutile en dry-run (rien n'est écrit).
+                    run_index = None if dry_run else new_run_index(source_id)
+                    for path in episode_paths:
+                        guid = read_json(path).get("guid", "?")
+                        try:
+                            extract_for_episode(source_id, path, client, dry_run,
+                                                extract_model, run_index=run_index)
+                        except Exception as exc:  # noqa: BLE001 — on continue.
+                            extract_failed = True
+                            log.error("Extraction échouée sur %s (%s) : %s", path.name, guid, exc)
+        except ServerLockBusy as exc:
+            extract_failed = True
+            log.error("Extraction abandonnée : le review_server tient le verrou "
+                      "(%s). Relance avec --force pour passer outre.", exc)
 
     _log_pipeline_summary(fetch_failed, transcribe_failed, extract_failed)
     log.info("=== Pipeline terminé. ===")
@@ -143,8 +166,8 @@ def main() -> None:
                              f"(défaut: {','.join(ALL_STEPS)}).")
     parser.add_argument("--whisper-model", default="small",
                         help="Modèle Whisper pour la transcription (défaut: small).")
-    parser.add_argument("--extract-model", default="claude-sonnet-4-6",
-                        help="Modèle LLM pour l'extraction (défaut: claude-sonnet-4-6).")
+    parser.add_argument("--extract-model", default=DEFAULT_EXTRACT_MODEL,
+                        help="Modèle LLM pour l'extraction (défaut: %(default)s).")
     parser.add_argument("--batch", action="store_true",
                         help="Extraction via Message Batches API (-50%% de coût).")
     parser.add_argument("--language", default="fr",
