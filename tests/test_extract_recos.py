@@ -19,17 +19,25 @@ import common
 import extract_recos
 from common import find_episode_by_guid as _find_episode_by_guid  # alias local
 from extract_recos import (
+    _AnthropicExtractor,
+    _OpenAIExtractor,
+    _RunIndex,
+    _call_anthropic,
+    _call_openai,
     _chunk_transcript,
     _dedupe,
     _extract_json_block,
+    _make_extractor,
     _next_reco_index,
     _norm,
     _normalize_reco,
     _parse_recos_from_content,
     _persist_recos,
+    _poll_batch_until_done,
     extract_all_batch,
     extract_for_episode,
     main,
+    new_run_index,
 )
 
 
@@ -138,6 +146,16 @@ def test_dedupe_collapses_and_merges():
 def test_dedupe_keeps_distinct_titles():
     out = _dedupe([{"title": "A"}, {"title": "B"}])
     assert len(out) == 2
+
+
+def test_dedupe_merges_types_union():
+    """Même titre, types différents → union dédupliquée (ordre stable)."""
+    out = _dedupe([
+        {"title": "Dune", "types": ["livre"]},
+        {"title": "DUNE", "types": ["film", "livre"]},
+    ])
+    assert len(out) == 1
+    assert out[0]["types"] == ["livre", "film"]
 
 
 def test_dedupe_preserves_first_when_both_have_field():
@@ -272,6 +290,42 @@ def test_next_reco_index_with_files(tmp_source):
     assert _next_reco_index(tmp_source.source_id) == 4
 
 
+def test_next_reco_index_when_dir_absent(tmp_source, monkeypatch):
+    """Dossier recos absent → prochain index = 1 (pas de crash)."""
+    import common
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_source.recos_dir.parent / "vide")
+    assert _next_reco_index("source-sans-dossier") == 1
+
+
+def test_build_existing_index_skips_corrupted_file(tmp_source):
+    """Un fichier reco corrompu est ignoré silencieusement à l'indexation."""
+    (tmp_source.recos_dir / "0001.json").write_text(
+        json.dumps({"episodeGuid": "G", "title": "Bon"}), encoding="utf-8")
+    (tmp_source.recos_dir / "0002.json").write_text("PAS DU JSON", encoding="utf-8")
+    idx = extract_recos._build_existing_index(tmp_source.source_id)
+    assert ("G", "bon") in idx
+    assert len(idx) == 1  # le corrompu n'est pas indexé
+
+
+def test_build_existing_index_empty_when_dir_absent(tmp_source, monkeypatch):
+    """Dossier recos absent → index vide (pas de crash)."""
+    import common
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_source.recos_dir.parent / "absent")
+    assert extract_recos._build_existing_index("src-x") == {}
+
+
+def test_next_reco_index_anchors_regex_ignores_non_numeric_prefix(tmp_source):
+    """L6 (revue 2026-07-19) — regex ANCRÉE (^\\d+) : un stem à préfixe non
+    numérique (ou à chiffres internes) est ignoré, seul le préfixe chiffré
+    des fichiers « NNNN.json » compte."""
+    (tmp_source.recos_dir / "0005.json").write_text("{}", encoding="utf-8")
+    # Stems piégeurs : sans ancre, la recherche capterait « 42 » / « 99 ».
+    (tmp_source.recos_dir / "note-42.json").write_text("{}", encoding="utf-8")
+    (tmp_source.recos_dir / "manual.json").write_text("{}", encoding="utf-8")
+    (tmp_source.recos_dir / "take-99.json").write_text("{}", encoding="utf-8")
+    assert _next_reco_index(tmp_source.source_id) == 6
+
+
 def test_persist_recos_new(tmp_source):
     # `_persist_recos` consomme du brut LLM (type singulier) ; il normalise.
     raw = [{"title": "Mortel", "type": "serie", "creator": "F. Garcia",
@@ -341,6 +395,30 @@ def test_persist_recos_preserves_validated_quote(tmp_source):
     assert data["timestamp"] == "00:12:00"
 
 
+def test_merge_reco_preserves_quote_when_kind_citation(tmp_source):
+    """Reco kind=citation (validée par humain) : la quote est protégée
+    de la même façon qu'une reco status=validated."""
+    existing = {
+        "id": "ubm-0001", "sourceId": tmp_source.source_id,
+        "episodeGuid": tmp_source.guid,
+        "title": "Titanic", "types": ["film"],
+        "quote": "ils en parlent juste en passant",
+        "links": [], "status": "validated", "kind": "citation",
+        "extractors": ["anthropic"],
+    }
+    (tmp_source.recos_dir / "0001.json").write_text(
+        json.dumps(existing, ensure_ascii=False), encoding="utf-8")
+
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Titanic", "type": "film",
+                     "quote": "une quote auto qui ne doit PAS écraser",
+                     "timestamp": "00:12:00"}],
+                   "anthropic")
+    data = json.loads((tmp_source.recos_dir / "0001.json").read_text(encoding="utf-8"))
+    assert data["quote"] == "ils en parlent juste en passant"
+    assert data["kind"] == "citation"
+
+
 def test_persist_recos_merges_types_across_extractors(tmp_source):
     """Deux LLMs trouvent la même œuvre avec des types différents : fusion."""
     # LLM 1 (anthropic) : type "livre".
@@ -357,6 +435,134 @@ def test_persist_recos_merges_types_across_extractors(tmp_source):
     # Types fusionnés (ordre stable : existant d'abord).
     assert data["types"] == ["livre", "film"]
     assert sorted(data["extractors"]) == ["anthropic", "openai"]
+
+
+# ===== extractionHistory ===================================================
+def test_create_reco_initializes_history_with_one_entry(tmp_source):
+    raw = [{"title": "Dune", "type": "film", "timestamp": "00:42:00"}]
+    _persist_recos(tmp_source.source_id, tmp_source.guid, raw,
+                   provider="anthropic", transcript_source="youtube",
+                   transcript_model="large-v3", llm_model="claude-haiku-4-5",
+                   worker="portable-gpu")
+    data = json.loads(next(tmp_source.recos_dir.glob("*.json"))
+                      .read_text(encoding="utf-8"))
+    assert "extractionHistory" in data
+    assert len(data["extractionHistory"]) == 1
+    h0 = data["extractionHistory"][0]
+    assert h0["transcriptModel"] == "large-v3"
+    assert h0["transcriptSource"] == "youtube"
+    assert h0["llmProvider"] == "anthropic"
+    assert h0["llmModel"] == "claude-haiku-4-5"
+    assert h0["worker"] == "portable-gpu"
+    assert h0["timestamp_at_extraction"] == "00:42:00"
+    assert data["transcriptSource"] == "youtube"
+    assert data["timestamp"] == "00:42:00"
+    assert data["extractors"] == ["anthropic"]
+
+
+def test_merge_reco_appends_new_entry_to_history(tmp_source):
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:10:00"}],
+                   provider="anthropic", transcript_source="acast",
+                   transcript_model="large-v3", llm_model="claude-haiku-4-5",
+                   worker="main-cpu")
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:10:00"}],
+                   provider="openai", transcript_source="acast",
+                   transcript_model="large-v3", llm_model="gpt-4o-mini",
+                   worker="main-cpu")
+    data = json.loads(next(tmp_source.recos_dir.glob("*.json"))
+                      .read_text(encoding="utf-8"))
+    assert len(data["extractionHistory"]) == 2
+    providers = sorted(e["llmProvider"] for e in data["extractionHistory"])
+    assert providers == ["anthropic", "openai"]
+    assert data["extractors"] == ["anthropic", "openai"]
+
+
+def test_merge_reco_dedupes_same_signature_updates_at(tmp_source):
+    # Même tuple (model, source, provider, llmModel) → 1 seule entry.
+    for ts in ("00:10:00", "00:11:00"):
+        _persist_recos(tmp_source.source_id, tmp_source.guid,
+                       [{"title": "Dune", "type": "film", "timestamp": ts}],
+                       provider="anthropic", transcript_source="acast",
+                       transcript_model="large-v3",
+                       llm_model="claude-haiku-4-5", worker="main-cpu")
+    data = json.loads(next(tmp_source.recos_dir.glob("*.json"))
+                      .read_text(encoding="utf-8"))
+    assert len(data["extractionHistory"]) == 1
+    assert data["extractionHistory"][0]["timestamp_at_extraction"] == "00:11:00"
+
+
+def test_merge_reco_with_no_existing_history_creates_legacy_entry(tmp_source):
+    """Reco écrite par l'ancien schéma → backfill auto d'une entry legacy."""
+    legacy = {
+        "id": "ubm-0001", "sourceId": tmp_source.source_id,
+        "episodeGuid": tmp_source.guid,
+        "title": "Dune", "types": ["film"],
+        "timestamp": "00:05:00",
+        "links": [], "status": "draft", "extractors": ["openai"],
+    }
+    (tmp_source.recos_dir / "0001.json").write_text(
+        json.dumps(legacy, ensure_ascii=False), encoding="utf-8")
+
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:42:00"}],
+                   provider="anthropic", transcript_source="youtube",
+                   transcript_model="large-v3",
+                   llm_model="claude-haiku-4-5", worker="main-cpu")
+    data = json.loads((tmp_source.recos_dir / "0001.json")
+                      .read_text(encoding="utf-8"))
+    # 2 entrées : legacy openai (acast) + nouvelle anthropic (youtube).
+    assert len(data["extractionHistory"]) == 2
+    providers = sorted(e["llmProvider"] for e in data["extractionHistory"])
+    assert providers == ["anthropic", "openai"]
+    assert data["extractors"] == ["anthropic", "openai"]
+
+
+def test_merge_reco_picks_yt_timestamp_over_acast(tmp_source):
+    # 1) Anthropic / acast / 00:10:00.
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:10:00"}],
+                   provider="anthropic", transcript_source="acast",
+                   transcript_model="large-v3",
+                   llm_model="claude-haiku-4-5", worker="main-cpu")
+    # 2) OpenAI / youtube / 00:42:42 (timestamp YT, source d'autorité).
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:42:42"}],
+                   provider="openai", transcript_source="youtube",
+                   transcript_model="large-v3",
+                   llm_model="gpt-4o-mini", worker="main-cpu")
+    # 3) Anthropic / acast / 00:11:00 (plus récent mais Acast).
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film", "timestamp": "00:11:00"}],
+                   provider="anthropic", transcript_source="acast",
+                   transcript_model="large-v3",
+                   llm_model="claude-haiku-4-5", worker="main-cpu")
+    data = json.loads(next(tmp_source.recos_dir.glob("*.json"))
+                      .read_text(encoding="utf-8"))
+    # YT fait autorité → top-level garde 00:42:42 / youtube.
+    assert data["timestamp"] == "00:42:42"
+    assert data["transcriptSource"] == "youtube"
+
+
+def test_extractors_field_is_derived_from_history(tmp_source):
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film"}],
+                   provider="anthropic", transcript_source="acast",
+                   transcript_model="m1", llm_model="x", worker="w")
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film"}],
+                   provider="anthropic", transcript_source="acast",
+                   transcript_model="m2", llm_model="x", worker="w")
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Dune", "type": "film"}],
+                   provider="openai", transcript_source="acast",
+                   transcript_model="m1", llm_model="y", worker="w")
+    data = json.loads(next(tmp_source.recos_dir.glob("*.json"))
+                      .read_text(encoding="utf-8"))
+    # 3 signatures distinctes (m1/anth, m2/anth, m1/openai).
+    assert len(data["extractionHistory"]) == 3
+    assert data["extractors"] == ["anthropic", "openai"]
 
 
 def test_persist_recos_skips_corrupted_existing_file(tmp_source):
@@ -465,6 +671,52 @@ def test_extract_all_batch_basic(tmp_source):
     assert n == 1
 
 
+def test_extract_all_batch_counts_failed_requests(tmp_source):
+    """Une requête batch en échec (custom_id mappé) est comptée et journalisée
+    (couvre la branche d'erreurs de _collect_results)."""
+    client = MagicMock(spec=["messages"])
+    client.messages.batches.create.return_value = SimpleNamespace(id="b")
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="ended")
+    client.messages.batches.results.return_value = [
+        SimpleNamespace(custom_id="req-0",
+                        result=SimpleNamespace(type="errored")),
+    ]
+    n = extract_all_batch(tmp_source.source_id, [tmp_source.episode_path],
+                          client=client, poll_seconds=0)
+    assert n == 0
+
+
+def test_extract_all_batch_skips_unreadable_episode_meta(tmp_source, monkeypatch):
+    """La relecture des métadonnées d'épisode (transcriptSource) tolère un
+    fichier devenu illisible entre-temps (race) : l'épisode est ignoré côté
+    méta sans crasher, la reco reste persistée (le guid vient du batch)."""
+    real_read = extract_recos.read_json
+    calls = {"n": 0}
+
+    def flaky_read(path):
+        calls["n"] += 1
+        # 1er read = guid (dans _build_batch_requests) OK ; 2e = relecture méta
+        # (boucle ep_by_guid) → OSError.
+        if calls["n"] >= 2 and path == tmp_source.episode_path:
+            raise OSError("fichier disparu")
+        return real_read(path)
+
+    monkeypatch.setattr(extract_recos, "read_json", flaky_read)
+    client = MagicMock(spec=["messages"])
+    client.messages.batches.create.return_value = SimpleNamespace(id="b")
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="ended")
+    ok = _fake_anthropic_message({"recos": [{"title": "M", "type": "serie"}]})
+    client.messages.batches.results.return_value = [
+        SimpleNamespace(custom_id="req-0", result=SimpleNamespace(
+            type="succeeded", message=SimpleNamespace(content=ok.content))),
+    ]
+    n = extract_all_batch(tmp_source.source_id, [tmp_source.episode_path],
+                          client=client, poll_seconds=0)
+    assert n == 1
+
+
 def test_extract_all_batch_no_transcript(tmp_source):
     tmp_source.transcript_path.unlink()
     client = MagicMock()
@@ -472,6 +724,38 @@ def test_extract_all_batch_no_transcript(tmp_source):
                           client=client, poll_seconds=0)
     assert n == 0
     client.messages.batches.create.assert_not_called()
+
+
+def test_extract_all_batch_propagates_episode_transcript_source(tmp_source):
+    """M2 (revue 2026-07-19) — en batch, le transcriptSource/Model de l'ÉPISODE
+    (ici youtube) doit être propagé aux recos, PAS hardcodé à 'acast'. Sinon le
+    review_server applique un yt_offset à un timecode déjà calé sur la vidéo →
+    lecteur décalé."""
+    ep = json.loads(tmp_source.episode_path.read_text(encoding="utf-8"))
+    ep["transcriptSource"] = "youtube"
+    ep["transcriptModel"] = "large-v3-turbo"
+    tmp_source.episode_path.write_text(json.dumps(ep), encoding="utf-8")
+
+    client = MagicMock(spec=["messages"])
+    client.messages.batches.create.return_value = SimpleNamespace(id="batch_yt")
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="ended")
+    ok_msg = _fake_anthropic_message({"recos": [{"title": "Mortel", "type": "serie"}]})
+    ok_entry = SimpleNamespace(
+        custom_id="req-0",
+        result=SimpleNamespace(type="succeeded",
+                               message=SimpleNamespace(content=ok_msg.content)),
+    )
+    client.messages.batches.results.return_value = [ok_entry]
+    n = extract_all_batch(tmp_source.source_id, [tmp_source.episode_path],
+                          client=client, poll_seconds=0)
+    assert n == 1
+    reco_files = list(tmp_source.recos_dir.glob("*.json"))
+    assert reco_files, "aucune reco écrite"
+    reco = json.loads(reco_files[0].read_text(encoding="utf-8"))
+    assert reco["transcriptSource"] == "youtube"
+    assert reco["extractionHistory"][0]["transcriptSource"] == "youtube"
+    assert reco["extractionHistory"][0]["transcriptModel"] == "large-v3-turbo"
 
 
 # ===== _find_episode_by_guid ===============================================
@@ -632,3 +916,216 @@ def test_make_openai_client_with_key(monkeypatch):
     monkeypatch.setitem(sys.modules, "openai", fake_openai)
     extract_recos.make_openai_client()
     fake_openai.OpenAI.assert_called_once_with(api_key="fake-key")
+
+
+# ===== M4 : index de run partagé (_RunIndex) ================================
+def test_new_run_index_returns_runindex(tmp_source):
+    ri = new_run_index(tmp_source.source_id)
+    assert isinstance(ri, _RunIndex)
+    assert ri.next_index == 1
+    assert ri.existing_map == {}
+
+
+def test_persist_recos_shared_run_index_not_rebuilt(tmp_source, monkeypatch):
+    """M4 — avec un run_index fourni, _persist_recos NE reconstruit PAS l'index
+    (aucune relecture des recos) et le compteur avance d'un épisode à l'autre."""
+    ri = new_run_index(tmp_source.source_id)
+    assert ri.next_index == 1
+
+    build_calls = {"n": 0}
+
+    def _spy_build(sid):
+        build_calls["n"] += 1
+        return {}
+
+    monkeypatch.setattr(extract_recos, "_build_existing_index", _spy_build)
+
+    _persist_recos(tmp_source.source_id, "G1",
+                   [{"title": "A", "type": "film"}], "anthropic", run_index=ri)
+    _persist_recos(tmp_source.source_id, "G2",
+                   [{"title": "B", "type": "film"}], "anthropic", run_index=ri)
+
+    assert build_calls["n"] == 0          # jamais reconstruit
+    assert ri.next_index == 3             # 2 recos créées → 1 → 3
+    files = sorted(p.name for p in tmp_source.recos_dir.glob("*.json"))
+    assert files == ["0001.json", "0002.json"]
+
+
+def test_persist_recos_builds_index_when_none(tmp_source, monkeypatch):
+    """Chemin standalone (run_index=None) : l'index est construit sur place."""
+    build_calls = {"n": 0}
+    real_build = extract_recos._build_existing_index
+
+    def _spy_build(sid):
+        build_calls["n"] += 1
+        return real_build(sid)
+
+    monkeypatch.setattr(extract_recos, "_build_existing_index", _spy_build)
+    _persist_recos(tmp_source.source_id, tmp_source.guid,
+                   [{"title": "Solo", "type": "film"}], "anthropic")
+    assert build_calls["n"] == 1
+
+
+def test_extract_all_batch_builds_index_once(tmp_source, monkeypatch):
+    """M4 — sur un run batch à 2 épisodes, _build_existing_index et
+    _next_reco_index ne sont appelés QU'UNE fois (pas une fois par épisode :
+    sinon O(épisodes × recos))."""
+    # 2e épisode + sa transcription.
+    ep2_guid = "EP002"
+    ep2 = tmp_source.episode_path.parent / "0002.json"
+    ep2.write_text(json.dumps({"guid": ep2_guid, "title": "Deux"}), encoding="utf-8")
+    (tmp_source.transcript_path.parent / f"{ep2_guid}.txt").write_text(
+        "Ligne A.\n", encoding="utf-8")
+
+    calls = {"build": 0, "next": 0}
+    real_build = extract_recos._build_existing_index
+    real_next = extract_recos._next_reco_index
+
+    def _spy_build(sid):
+        calls["build"] += 1
+        return real_build(sid)
+
+    def _spy_next(sid):
+        calls["next"] += 1
+        return real_next(sid)
+
+    monkeypatch.setattr(extract_recos, "_build_existing_index", _spy_build)
+    monkeypatch.setattr(extract_recos, "_next_reco_index", _spy_next)
+
+    client = MagicMock(spec=["messages"])
+    client.messages.batches.create.return_value = SimpleNamespace(id="b")
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="ended")
+    ok = _fake_anthropic_message({"recos": [{"title": "Mortel", "type": "serie"}]})
+    client.messages.batches.results.return_value = [
+        SimpleNamespace(custom_id="req-0", result=SimpleNamespace(
+            type="succeeded", message=SimpleNamespace(content=ok.content))),
+        SimpleNamespace(custom_id="req-1", result=SimpleNamespace(
+            type="succeeded", message=SimpleNamespace(content=ok.content))),
+    ]
+    n = extract_all_batch(tmp_source.source_id,
+                          [tmp_source.episode_path, ep2],
+                          client=client, poll_seconds=0)
+    assert n == 2
+    assert calls["build"] == 1
+    assert calls["next"] == 1
+    # Les 2 recos ont des index distincts (compteur partagé qui avance).
+    files = sorted(p.name for p in tmp_source.recos_dir.glob("*.json"))
+    assert files == ["0001.json", "0002.json"]
+
+
+def test_main_all_sync_builds_index_once(tmp_source, monkeypatch):
+    """M4 — la boucle synchrone de main() construit aussi l'index UNE fois."""
+    ep2 = tmp_source.episode_path.parent / "0002.json"
+    ep2.write_text(json.dumps({"guid": "EP002", "title": "Deux"}), encoding="utf-8")
+    (tmp_source.transcript_path.parent / "EP002.txt").write_text(
+        "Ligne A.\n", encoding="utf-8")
+
+    calls = {"n": 0}
+    real_build = extract_recos._build_existing_index
+
+    def _spy_build(sid):
+        calls["n"] += 1
+        return real_build(sid)
+
+    monkeypatch.setattr(extract_recos, "_build_existing_index", _spy_build)
+    fake_client = MagicMock(spec=["messages"])
+    fake_client.messages.create.return_value = _fake_anthropic_message(
+        {"recos": [{"title": "X", "type": "film"}]})
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
+    _run_main(monkeypatch, [
+        "extract_recos.py", "--source", tmp_source.source_id, "--all",
+    ])
+    assert calls["n"] == 1
+
+
+# ===== L1 : erreur batch dans main() journalisée ===========================
+def test_main_batch_failure_is_logged_not_raised(tmp_source, monkeypatch):
+    """L1 (revue 2026-07-19) — une erreur d'extract_all_batch en mode --batch
+    est journalisée et NON propagée (parité avec la boucle synchrone)."""
+    fake_client = MagicMock(spec=["messages"])
+    monkeypatch.setattr(extract_recos, "make_anthropic_client", lambda: fake_client)
+
+    def boom(*a, **k):
+        raise RuntimeError("batch boom")
+
+    monkeypatch.setattr(extract_recos, "extract_all_batch", boom)
+    # Ne doit PAS lever.
+    _run_main(monkeypatch, [
+        "extract_recos.py", "--source", tmp_source.source_id,
+        "--all", "--batch", "--poll-interval", "0",
+    ])
+
+
+# ===== _make_extractor / aliases (couverture) ==============================
+def test_make_extractor_unknown_provider_raises():
+    with pytest.raises(ValueError, match="Provider LLM inconnu"):
+        _make_extractor(MagicMock(), provider="gemini")  # type: ignore[arg-type]
+
+
+def test_make_extractor_explicit_providers():
+    assert isinstance(_make_extractor(MagicMock(), provider="anthropic"),
+                      _AnthropicExtractor)
+    assert isinstance(_make_extractor(MagicMock(), provider="openai"),
+                      _OpenAIExtractor)
+
+
+def test_make_extractor_fallback_openai_by_chat_attr():
+    # MagicMock sans spec a un attribut .chat → détecté comme OpenAI.
+    assert isinstance(_make_extractor(MagicMock()), _OpenAIExtractor)
+
+
+def test_make_extractor_fallback_anthropic_default():
+    # spec=["messages"] : pas d'attribut .chat, module non-openai → Anthropic.
+    assert isinstance(_make_extractor(MagicMock(spec=["messages"])),
+                      _AnthropicExtractor)
+
+
+def test_call_anthropic_alias(tmp_source):
+    client = MagicMock(spec=["messages"])
+    client.messages.create.return_value = _fake_anthropic_message(
+        {"recos": [{"title": "Z", "type": "film"}]})
+    out = _call_anthropic(client, "m", "P", "hosts", "chunk")
+    assert out == [{"title": "Z", "type": "film"}]
+
+
+def test_call_openai_alias():
+    client = MagicMock()
+    client.chat.completions.create.return_value = _fake_openai_response(
+        {"recos": [{"title": "Y", "type": "film"}]})
+    out = _call_openai(client, "gpt-4o-mini", "P", "hosts", "chunk")
+    assert out == [{"title": "Y", "type": "film"}]
+
+
+# ===== _poll_batch_until_done (couverture timeout / statut non-ended) ======
+def test_poll_batch_until_done_timeout_raises():
+    """timeout dépassé sans état terminal → TimeoutError."""
+    client = MagicMock()
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="in_progress")
+    with pytest.raises(TimeoutError, match="pas terminé"):
+        _poll_batch_until_done(client, "b", poll_seconds=0, timeout_seconds=-1)
+
+
+def test_poll_batch_until_done_non_ended_terminal_warns(caplog):
+    """Statut terminal ≠ ended (errored/expired) → retour sans lever, warning."""
+    client = MagicMock()
+    client.messages.batches.retrieve.return_value = SimpleNamespace(
+        processing_status="errored")
+    _poll_batch_until_done(client, "b", poll_seconds=0)  # ne lève pas
+
+
+# ===== main() : verrou serveur occupé ======================================
+def test_main_server_lock_busy_exits(tmp_source, monkeypatch):
+    """Le review_server tient le verrou → main() log et sort (exit 1)."""
+    import review_lock
+
+    def busy(force=False):
+        raise review_lock.ServerLockBusy("serveur actif")
+
+    monkeypatch.setattr(extract_recos, "acquire_pipeline_lock", busy)
+    with pytest.raises(SystemExit):
+        _run_main(monkeypatch, [
+            "extract_recos.py", "--source", tmp_source.source_id,
+            "--guid", tmp_source.guid, "--dry-run",
+        ])

@@ -152,17 +152,8 @@ def test_download_youtube_raises_when_nothing_produced(tmp_path, monkeypatch):
 
 # ===== _resolve_audio =======================================================
 @responses.activate
-def test_resolve_audio_http(tmp_path, monkeypatch):
-    monkeypatch.setattr(tr, "AUDIO_DIR", tmp_path)
-    url = "https://acast.example.com/ep.mp3?token=abc"
-    responses.add(responses.GET, url, body=b"audio", status=200)
-    ep = {"guid": "G", "audioUrl": url}
-    out = tr._resolve_audio("src", ep)
-    assert out.suffix == ".mp3"
-    assert out.read_bytes() == b"audio"
-
-
-def test_resolve_audio_youtube_when_no_http(tmp_path, monkeypatch):
+def test_resolve_audio_youtube_by_default(tmp_path, monkeypatch):
+    """YouTube par défaut (offset nul côté review_server)."""
     monkeypatch.setattr(tr, "AUDIO_DIR", tmp_path)
     called = {}
 
@@ -175,34 +166,42 @@ def test_resolve_audio_youtube_when_no_http(tmp_path, monkeypatch):
         return path
 
     monkeypatch.setattr(tr, "_download_youtube", fake_download_yt)
-    ep = {"guid": "G", "youtubeUrl": "https://yt/x"}
-    out = tr._resolve_audio("src", ep)
+    ep = {"guid": "G", "audioUrl": "https://acast/x.mp3", "youtubeUrl": "https://yt/x"}
+    out, source = tr._resolve_audio("src", ep)
+    assert source == "youtube"
     assert called["url"] == "https://yt/x"
+    # Le cache YT est suffixé `-yt` pour ne pas se confondre avec un cache Acast.
+    assert called["dest"].name.endswith("-yt")
     assert out.exists()
 
 
-def test_resolve_audio_prefer_youtube(tmp_path, monkeypatch):
+@responses.activate
+def test_resolve_audio_falls_back_to_acast_if_no_youtube(tmp_path, monkeypatch):
+    """Si pas de youtubeUrl, on retombe sur Acast."""
     monkeypatch.setattr(tr, "AUDIO_DIR", tmp_path)
-    called = {}
+    url = "https://acast.example.com/ep.mp3?token=abc"
+    responses.add(responses.GET, url, body=b"audio", status=200)
+    ep = {"guid": "G", "audioUrl": url}
+    out, source = tr._resolve_audio("src", ep)
+    assert source == "acast"
+    assert out.suffix == ".mp3"
+    assert out.read_bytes() == b"audio"
 
-    def fake_download_yt(url, dest_base):
-        called["dest"] = dest_base
-        # Le nom doit comporter "-yt" pour ne pas écraser le cache Acast.
-        assert dest_base.name.endswith("-yt")
-        path = dest_base.with_suffix(".mp3")
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(b"x")
-        return path
 
-    monkeypatch.setattr(tr, "_download_youtube", fake_download_yt)
-    ep = {"guid": "G", "audioUrl": "https://acast/x.mp3", "youtubeUrl": "https://yt/x"}
-    out = tr._resolve_audio("src", ep, prefer_youtube=True)
-    assert called["dest"].name.endswith("-yt")
+@responses.activate
+def test_resolve_audio_prefer_acast_forces_acast(tmp_path, monkeypatch):
+    """prefer_acast=True : on force l'audio Acast même quand YT existe."""
+    monkeypatch.setattr(tr, "AUDIO_DIR", tmp_path)
+    url = "https://acast.example.com/ep.mp3"
+    responses.add(responses.GET, url, body=b"audio", status=200)
+    ep = {"guid": "G", "audioUrl": url, "youtubeUrl": "https://yt/x"}
+    out, source = tr._resolve_audio("src", ep, prefer_acast=True)
+    assert source == "acast"
 
 
 def test_resolve_audio_no_url_raises(tmp_path, monkeypatch):
     monkeypatch.setattr(tr, "AUDIO_DIR", tmp_path)
-    with pytest.raises(ValueError, match="ni audioUrl ni youtubeUrl"):
+    with pytest.raises(ValueError, match="ni youtubeUrl ni audioUrl"):
         tr._resolve_audio("src", {"guid": "G"})
 
 
@@ -317,7 +316,7 @@ def test_transcribe_episode_force_retranscribes(ep_setup, monkeypatch):
     tpath.write_text("vieux", encoding="utf-8")
 
     monkeypatch.setattr(tr, "_resolve_audio",
-                        lambda src, ep, prefer_youtube=False: Path("ignore"))
+                        lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
                         lambda audio, model, lang: "[00:00:00] nouveau\n")
 
@@ -334,7 +333,7 @@ def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
     ep_setup["ep_path"].write_text(json.dumps(data), encoding="utf-8")
 
     monkeypatch.setattr(tr, "_resolve_audio",
-                        lambda src, ep, prefer_youtube=False: Path("ignore"))
+                        lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
                         lambda audio, model, lang: "[00:00:00] x\n")
 
@@ -358,8 +357,9 @@ def test_find_episode_by_guid_missing(ep_setup):
 def test_main_guid_mode(ep_setup, monkeypatch):
     called = {}
 
-    def fake_transcribe(src, path, model, lang, force, yt):
-        called.update(src=src, path=path, model=model, lang=lang, force=force, yt=yt)
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+        called.update(src=src, path=path, model=model, lang=lang,
+                      force=force, prefer_acast=prefer_acast)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
     monkeypatch.setattr(sys, "argv", [
@@ -371,12 +371,30 @@ def test_main_guid_mode(ep_setup, monkeypatch):
     assert called["model"] == "tiny"
     assert called["lang"] == "fr"
     assert called["force"] is False
+    # H1 — sans --acast, on préfère YouTube (prefer_acast=False).
+    assert called["prefer_acast"] is False
+
+
+def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
+    """H1 (revue 2026-07-19) — `--acast` force prefer_acast=True (l'ancien
+    `--youtube`, passé positionnellement, faisait l'INVERSE de sa doc)."""
+    called = {}
+
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+        called["prefer_acast"] = prefer_acast
+
+    monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
+    monkeypatch.setattr(sys, "argv", [
+        "transcribe.py", "--source", ep_setup["src"], "--guid", "ep-1", "--acast",
+    ])
+    tr.main()
+    assert called["prefer_acast"] is True
 
 
 def test_main_all_mode(ep_setup, monkeypatch):
     calls = []
 
-    def fake_transcribe(src, path, model, lang, force, yt):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
         calls.append(path.name)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
@@ -407,7 +425,7 @@ def test_main_all_mode_handles_errors(ep_setup, monkeypatch):
     ep2.write_text(json.dumps({"guid": "ep-2", "title": "T2"}), encoding="utf-8")
     calls = []
 
-    def boom_then_ok(src, path, model, lang, force, yt):
+    def boom_then_ok(src, path, model, lang, force, prefer_acast=False):
         calls.append(path.name)
         if path.name == "ep-1.json":
             raise RuntimeError("boom")

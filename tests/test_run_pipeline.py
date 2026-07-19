@@ -57,6 +57,10 @@ def fake_modules(monkeypatch, tmp_path):
     extract_mod = types.ModuleType("extract_recos")
     extract_mod.extract_all_batch = MagicMock()
     extract_mod.extract_for_episode = MagicMock()
+    # M4 : run_pipeline importe `new_run_index` pour construire l'index de run
+    # partagé une seule fois. Le fake le renvoie None (extract_for_episode est
+    # de toute façon mocké, l'index n'est pas consommé).
+    extract_mod.new_run_index = MagicMock(return_value=None)
     monkeypatch.setitem(sys.modules, "extract_recos", extract_mod)
 
     # `make_anthropic_client` est importé paresseusement dans `rp.run()` —
@@ -82,6 +86,44 @@ def fake_modules(monkeypatch, tmp_path):
 
 
 # ===== run() ================================================================
+def test_run_extract_acquires_pipeline_lock(fake_modules, monkeypatch):
+    """rev-pipeline M1 (revue 2026-07-19) — l'étape extract s'exécute SOUS le
+    verrou pipeline (sinon un re-extract concurrent au review_server peut
+    écraser une validation humaine)."""
+    import contextlib
+
+    import review_lock
+    entered = {"n": 0}
+
+    @contextlib.contextmanager
+    def _spy(force=False):
+        entered["n"] += 1
+        yield
+
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock", _spy)
+    rp.run("src", ["extract"], None, "small", "claude", False, "fr", False, False)
+    assert entered["n"] == 1
+    fake_modules["extract"].extract_for_episode.assert_called()
+
+
+def test_run_extract_server_lock_busy_logged(fake_modules, monkeypatch):
+    """rev-pipeline M1 — si le review_server tient le verrou, l'étape extract
+    est abandonnée proprement (log), sans propager ni écrire."""
+    import contextlib
+
+    import review_lock
+
+    @contextlib.contextmanager
+    def _busy(force=False):
+        raise review_lock.ServerLockBusy("serveur tient le verrou")
+        yield  # pragma: no cover — jamais atteint
+
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock", _busy)
+    # Ne doit PAS lever.
+    rp.run("src", ["extract"], None, "small", "claude", False, "fr", False, False)
+    fake_modules["extract"].extract_for_episode.assert_not_called()
+
+
 def test_run_fetch_only(fake_modules):
     rp.run("src", ["fetch"], None, "small", "claude", False, "fr", False, False)
     fake_modules["fetch"].fetch_episodes.assert_called_once_with("src", limit=None)
@@ -214,3 +256,13 @@ def test_main_language_empty_becomes_none(monkeypatch, fake_modules):
     ])
     rp.main()
     assert captured["language"] is None
+
+
+def test_main_extract_model_default_aligns_with_extract_recos(monkeypatch, fake_modules):
+    """L4 (revue 2026-07-19) — le défaut --extract-model est la SSOT
+    extract_recos.MODEL (claude-haiku-4-5), pas une chaîne Sonnet dupliquée."""
+    captured = {}
+    monkeypatch.setattr(rp, "run", lambda **kw: captured.update(kw))
+    monkeypatch.setattr(sys, "argv", ["run_pipeline.py", "--source", "demo"])
+    rp.main()
+    assert captured["extract_model"] == rp.DEFAULT_EXTRACT_MODEL == "claude-haiku-4-5"

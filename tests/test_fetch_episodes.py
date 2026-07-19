@@ -45,6 +45,21 @@ def test_parse_date_returns_none_when_no_field():
     assert _parse_date(entry) is None
 
 
+def test_parse_date_invalid_struct_time_returns_none():
+    """L3 (revue 2026-07-19) — un struct_time mal formé (mois=0) ne doit pas
+    faire lever datetime() : on renvoie None plutôt que casser le fetch."""
+    entry = SimpleNamespace(
+        published_parsed=time.struct_time((2024, 0, 0, 0, 0, 0, 0, 0, 0)))
+    assert _parse_date(entry) is None
+
+
+def test_parse_date_out_of_range_day_returns_none():
+    """Jour hors bornes (32) → None (robustesse sur flux bancals)."""
+    entry = SimpleNamespace(
+        published_parsed=time.struct_time((2024, 13, 32, 0, 0, 0, 0, 0, 0)))
+    assert _parse_date(entry) is None
+
+
 # ===== _extract_number ====================================================
 @pytest.mark.parametrize("title,expected", [
     ("Caballero (#312)", 312),
@@ -276,7 +291,11 @@ def isolated_dirs(tmp_path, monkeypatch):
     monkeypatch.setattr(common, "SOURCES_DIR", sources)
     monkeypatch.setattr(common, "EPISODES_DIR", episodes)
 
-    fake_resp = SimpleNamespace(text="<rss/>", raise_for_status=lambda: None)
+    # `.content` (bytes) ET `.text` : le pipeline passe désormais les OCTETS à
+    # feedparser (M2 — évite le mojibake ISO-8859-1 sur un text/xml sans charset).
+    fake_resp = SimpleNamespace(
+        text="<rss/>", content=b"<rss/>", raise_for_status=lambda: None,
+    )
     monkeypatch.setattr(fetch_episodes.requests, "get",
                         lambda url, **kw: fake_resp)
     return SimpleNamespace(sources=sources, episodes=episodes, root=tmp_path)
@@ -300,6 +319,22 @@ def test_fetch_episodes_bozo_with_no_entries_raises(isolated_dirs, monkeypatch):
     monkeypatch.setattr(fetch_episodes.feedparser, "parse", lambda url: fake_feed)
     with pytest.raises(RuntimeError, match="parsing RSS"):
         run_fetch("ubm")
+
+
+def test_fetch_episodes_passes_bytes_to_feedparser(isolated_dirs, monkeypatch):
+    """M2 (revue 2026-07-19) — on passe les OCTETS (resp.content) à feedparser,
+    pas resp.text : sinon un flux text/xml sans charset est décodé en
+    ISO-8859-1 (mojibake des accents) AVANT feedparser."""
+    _write_source(isolated_dirs.sources, "ubm", {"id": "ubm", "rssUrl": "https://x/rss"})
+    captured = {}
+
+    def _capture(arg):
+        captured["arg"] = arg
+        return _make_fake_feed([], bozo=False)
+
+    monkeypatch.setattr(fetch_episodes.feedparser, "parse", _capture)
+    run_fetch("ubm")
+    assert isinstance(captured["arg"], bytes)
 
 
 def test_fetch_episodes_writes_new_files(isolated_dirs, monkeypatch):
@@ -358,7 +393,8 @@ def test_fetch_episodes_rss_override_used(isolated_dirs, monkeypatch):
 
     def fake_get(url, **kw):
         received["url"] = url
-        return SimpleNamespace(text="<rss/>", raise_for_status=lambda: None)
+        return SimpleNamespace(text="<rss/>", content=b"<rss/>",
+                               raise_for_status=lambda: None)
 
     monkeypatch.setattr(fetch_episodes.requests, "get", fake_get)
     monkeypatch.setattr(fetch_episodes.feedparser, "parse",
