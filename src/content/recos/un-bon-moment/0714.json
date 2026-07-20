@@ -52,7 +52,14 @@
   ],
   "id": "ubm-0714",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (ou voir la serie)",
+      "url": "https://www.allocine.fr/series/ficheserie-17907/streaming/"
+    }
+  ],
   "quote": "J'ai vu en trois semaines le Bureau des Légendes.",
   "sourceId": "un-bon-moment",
   "status": "validated",

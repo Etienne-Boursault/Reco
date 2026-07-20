@@ -39,7 +39,14 @@
   ],
   "id": "ubm-1126",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/81619082"
+    }
+  ],
   "quote": "C'est un spectacle que j'ai vu sur Netflix qui s'appelle... C'est Baby G.",
   "recommendedBy": "Alison Wheeler",
   "sourceId": "un-bon-moment",

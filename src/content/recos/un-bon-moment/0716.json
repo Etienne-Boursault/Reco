@@ -52,7 +52,14 @@
   ],
   "id": "ubm-0716",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/shows/crashing/3a7e596c-486c-428e-85fd-6497ae100950"
+    }
+  ],
   "quote": "Moi, c'est un truc que je recommande, Crashing.",
   "sourceId": "un-bon-moment",
   "status": "validated",

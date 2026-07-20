@@ -49,7 +49,14 @@
   "guestWork": true,
   "id": "ubm-1258",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Extrait officiel CANAL+ (YouTube)",
+      "url": "https://www.youtube.com/watch?v=3DgB6c639qo"
+    }
+  ],
   "quote": "Moi je recommande 'Selon Thomas' quand même.",
   "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",

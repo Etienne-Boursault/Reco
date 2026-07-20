@@ -49,7 +49,26 @@
   ],
   "id": "ubm-0814",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Clip officiel — YouTube",
+      "url": "https://www.youtube.com/watch?v=nO2Kwvkm4Io"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — nassím",
+      "url": "https://www.deezer.com/en/artist/79899322"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — nassím",
+      "url": "https://open.spotify.com/artist/2Ck4xqhvgQlBJtUxVPGCIn"
+    }
+  ],
   "quote": "je trouve qu'il a un bon univers. Il fait du R&B en français, il s'appelle Nassim Vibes. Ouais, il y a un son qui s'appelle Nymphomaniac.",
   "recommendedBy": "Roman Frayssinet",
   "sourceId": "un-bon-moment",

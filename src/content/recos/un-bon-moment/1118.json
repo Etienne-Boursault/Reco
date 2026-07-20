@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1118",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Outplay Films (DVD/VOD)",
+      "url": "https://www.outplayfilms.com/video/white-fire-vivre-pour-survivre/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "La chronique de Nanarland",
+      "url": "https://www.nanarland.com/chroniques/nanars-d-action/pur-et-dur/white-fire.html"
+    }
+  ],
   "quote": "franchement, vivre pour survivre. Ouais, Whitefire, c'est...",
   "sourceId": "un-bon-moment",
   "status": "validated",

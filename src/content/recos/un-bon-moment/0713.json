@@ -54,7 +54,14 @@
   ],
   "id": "ubm-0713",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/game-of-thrones/4f6b4985-2dc9-4ab6-ac79-d60f0860b0ac"
+    }
+  ],
   "quote": "Parce que ce n'est pas à toi parce qu'il n'y a pas sa mémoire.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2508",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de l'artiste",
+      "url": "https://www.guillaumegrando.com/biography"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @supakitch_",
+      "url": "https://www.instagram.com/supakitch_/?hl=fr"
+    }
+  ],
   "quote": "C'est le travail de Guillaume Grandot Supakic, qui est un artiste contemporain.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

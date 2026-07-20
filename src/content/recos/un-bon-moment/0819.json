@@ -50,7 +50,14 @@
   ],
   "id": "ubm-0819",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/mare-of-easttown/c1517b80-50ab-4733-8208-ae2c2765c0e7"
+    }
+  ],
   "quote": "Mare of Easttown",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

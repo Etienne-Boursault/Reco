@@ -45,7 +45,20 @@
   ],
   "id": "ubm-1167",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/les-pieds-sur-terre/id160879442"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/2VRR0TGLn4ckba3J0UyJjq"
+    }
+  ],
   "quote": "Moi, les pieds sur terre, les pieds sur terre, Sonia Krollland, France Culture, écoutez ça, c'est génial.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

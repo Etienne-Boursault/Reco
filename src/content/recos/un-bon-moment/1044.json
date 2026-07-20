@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1044",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/desobeissance"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=250658.html"
+    }
+  ],
   "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

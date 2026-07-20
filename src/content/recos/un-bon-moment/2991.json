@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2991",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/le-guide-de-la-repartie-de-laurent-baffie_0-9749542_9782253238706.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Decitre",
+      "url": "https://www.decitre.fr/livres/le-guide-de-la-repartie-9782702168479.html"
+    }
+  ],
   "quote": "là il y a un bouquin sur la répartie qui va sortir le guide de la répartie",
   "recommendedBy": "Laurent Baffie",
   "sourceId": "un-bon-moment",

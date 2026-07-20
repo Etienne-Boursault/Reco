@@ -52,7 +52,20 @@
   ],
   "id": "ubm-1119",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "La chronique de Nanarland",
+      "url": "https://www.nanarland.com/chroniques/nanars-monstrueux/animalier/crocodile-fury.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=170618.html"
+    }
+  ],
   "quote": "Crocodile Fury, qui est un gros classique, qui est incroyable.",
   "sourceId": "un-bon-moment",
   "status": "validated",

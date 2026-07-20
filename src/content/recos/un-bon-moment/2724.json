@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2724",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0O2MBC1F89QQJ0WWW0X22KD5IQ"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche saison 1",
+      "url": "https://www.allocine.fr/series/ficheserie-28813/saison-42244/"
+    }
+  ],
   "quote": "Ah oui moi j'adore une série. Miss Kina saison 1.",
   "recommendedBy": "Melha Bedia",
   "sourceId": "un-bon-moment",

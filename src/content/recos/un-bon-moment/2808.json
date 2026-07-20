@@ -36,7 +36,20 @@
   ],
   "id": "ubm-2808",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner (VOD)",
+      "url": "https://www.sooner.fr/films/titane"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Toutes les offres VOD (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-277192/telecharger-vod/"
+    }
+  ],
   "quote": "Vous avez vu le film, Titane ?",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

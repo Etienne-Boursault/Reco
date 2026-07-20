@@ -35,7 +35,20 @@
   ],
   "id": "ubm-0813",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir",
+      "url": "https://www.justwatch.com/fr/film/gad-elmaleh-lautre-cest-moi"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Molotov TV",
+      "url": "https://www.molotov.tv/fr_fr/p/363826/gad-elmaleh--lautre-cest-moi"
+    }
+  ],
   "quote": "Et c'est le nom du spectacle de Gade. Il avait tout vu. L'autre, c'est moi.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

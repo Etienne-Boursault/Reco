@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2692",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Daylio",
+      "url": "https://daylio.net/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "App Store (France)",
+      "url": "https://apps.apple.com/fr/app/daylio-journal-intime-humeur/id1194023242"
+    }
+  ],
   "quote": "J'ai une appli qui s'appelle Dailyo, où tu notes ton humeur.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

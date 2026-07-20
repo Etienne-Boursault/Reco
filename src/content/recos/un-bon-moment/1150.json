@@ -29,7 +29,20 @@
   ],
   "id": "ubm-1150",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles — Le Cas Pucine, Main Mise",
+      "url": "https://www.fnacspectacles.com/artist/le-cas-pucine/le-cas-pucine-main-mise-tournee-3278928/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia — Le Cas Pucine",
+      "url": "https://fr.wikipedia.org/wiki/Le_Cas_Pucine"
+    }
+  ],
   "quote": "je vous invite à aller découvrir le nouveau spectacle c'est parce qu'il en parle beaucoup dans le moment non mais le nouveau spectacle du capucine enfin le premier spectacle capucine la ventriloque",
   "sourceId": "un-bon-moment",
   "status": "validated",

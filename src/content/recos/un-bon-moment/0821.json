@@ -45,7 +45,20 @@
   ],
   "id": "ubm-0821",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube Cracking The Cryptic",
+      "url": "https://www.youtube.com/c/CrackingTheCryptic"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://crackingthecryptic.com/"
+    }
+  ],
   "quote": "je recommande la chaîne Cracking the cryptic",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

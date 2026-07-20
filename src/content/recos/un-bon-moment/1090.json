@@ -53,7 +53,14 @@
   ],
   "id": "ubm-1090",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir",
+      "url": "https://www.justwatch.com/fr/film/im-still-here-the-lost-year-of-joaquin-phoenix"
+    }
+  ],
   "quote": "Il y a ce I'm Still Here de Joachim Phoenix qui est pour moi une des références absolues du faux documentaire.",
   "sourceId": "un-bon-moment",
   "status": "validated",

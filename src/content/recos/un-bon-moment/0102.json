@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-0102",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/song/%C3%AAtre-biennn/1709076471"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://eddydepretto.com/"
+    }
+  ],
   "quote": "T'as une chanson qui s'appelle « Être bien ».",
   "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",

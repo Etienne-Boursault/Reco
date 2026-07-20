@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2696",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Slate.fr — tous les épisodes",
+      "url": "https://www.slate.fr/podcasts/transfert/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/transfert/id1567870398"
+    }
+  ],
   "quote": "J'écoute un petit transfert.",
   "sourceId": "un-bon-moment",
   "status": "validated",

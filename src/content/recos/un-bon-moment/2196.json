@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2196",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer (page artiste)",
+      "url": "https://www.deezer.com/us/artist/112645512"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — La symphonie des éclairs",
+      "url": "https://open.spotify.com/album/1Vg18m8cCSPsTrGSoe0gpH"
+    }
+  ],
   "quote": "C'est Zao de Sagazan.",
   "sourceId": "un-bon-moment",
   "status": "validated",

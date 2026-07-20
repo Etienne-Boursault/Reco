@@ -38,7 +38,14 @@
   ],
   "id": "ubm-2203",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@bolchegeek"
+    }
+  ],
   "quote": "Bolche Geek qui, justement, une de ses vidéos, c'est une analyse de Everting Everywhere All At Once.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

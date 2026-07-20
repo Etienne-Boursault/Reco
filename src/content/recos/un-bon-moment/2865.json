@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2865",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok @theobabac",
+      "url": "https://www.tiktok.com/@theobabac"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube TheoBabac",
+      "url": "https://www.youtube.com/channel/UCGt553K1a2MNHfioKJFPCPA"
+    }
+  ],
   "quote": "suivez Théo Babac sur TikTok, il est très drôle",
   "sourceId": "un-bon-moment",
   "status": "validated",

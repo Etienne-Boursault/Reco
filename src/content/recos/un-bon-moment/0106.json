@@ -44,7 +44,14 @@
   ],
   "id": "ubm-0106",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://sooner.fr/films/anatomie-d-une-chute"
+    }
+  ],
   "quote": "Faut vraiment aller voir ce film.",
   "recommendedBy": "Eddy de Pretto & Kyan Khojandi",
   "sourceId": "un-bon-moment",

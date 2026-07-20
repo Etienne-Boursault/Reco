@@ -40,7 +40,14 @@
   "guestWork": true,
   "id": "ubm-2956",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24133.html"
+    }
+  ],
   "quote": "C'était une vraie réussite personnelle.",
   "recommendedBy": "Valentin Vincent",
   "sourceId": "un-bon-moment",

@@ -46,7 +46,20 @@
   "guestWork": true,
   "id": "ubm-1149",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Dark Smile TV (plateforme de Jérémy Ferrari)",
+      "url": "https://darksmile.tv/produit/jeremy-ferrari-anesthesie-generale/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/jeremy-ferrari--anesthesie-generale/umc.cmc.1xwvtl73tuzgcigd6qx8vfrsr"
+    }
+  ],
   "quote": "alors, le spectacle, effectivement, il est sur le...",
   "recommendedBy": "Jérémy Ferrari",
   "sourceId": "un-bon-moment",

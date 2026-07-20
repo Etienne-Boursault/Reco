@@ -49,7 +49,20 @@
   ],
   "id": "ubm-1121",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre des Béliers Parisiens",
+      "url": "https://www.theatredesbeliersparisiens.com/spectacle/la-course-des-geants-tournee/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre de la Renaissance",
+      "url": "https://www.theatredelarenaissance.com/project/la-course-des-geants/"
+    }
+  ],
   "quote": "moi je vais recommander bah c'est du théâtre et ça joue à Paris mais je recommande pour les parisiens c'est la course des géants avec mon ami Jordi le Bollock",
   "recommendedBy": "Martin Darondeau",
   "sourceId": "un-bon-moment",

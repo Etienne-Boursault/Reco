@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-0105",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — album CRASH CŒUR",
+      "url": "https://open.spotify.com/album/37b90qQXuhhAzmxQlQLWOK"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac — CD",
+      "url": "https://www.fnac.com/a18618724/Eddy-De-Pretto-Crash-coeur-CD-album"
+    }
+  ],
   "quote": "Allez, écoutez Maison, l'album de Le Préto.",
   "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",

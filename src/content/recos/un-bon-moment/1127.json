@@ -48,7 +48,14 @@
   ],
   "id": "ubm-1127",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube TheGreatReview",
+      "url": "https://www.youtube.com/@TheGreatReview"
+    }
+  ],
   "quote": "The Great Review sur YouTube.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

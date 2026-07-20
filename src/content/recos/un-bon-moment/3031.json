@@ -36,7 +36,14 @@
   ],
   "id": "ubm-3031",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/81289483"
+    }
+  ],
   "quote": "Inside de Bob Burnham sur Netflix",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

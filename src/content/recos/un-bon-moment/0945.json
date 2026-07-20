@@ -28,7 +28,14 @@
   ],
   "id": "ubm-0945",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/c/BaladeMentaleChaine/videos"
+    }
+  ],
   "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

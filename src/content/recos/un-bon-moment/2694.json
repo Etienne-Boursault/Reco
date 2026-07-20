@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2694",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix (saisons 1 et 2)",
+      "url": "https://www.netflix.com/gf/title/82157057"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24293.html"
+    }
+  ],
   "quote": "Validé c'est validé.",
   "recommendedBy": "Hakim Jemili",
   "sourceId": "un-bon-moment",

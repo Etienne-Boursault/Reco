@@ -49,7 +49,20 @@
   ],
   "id": "ubm-0626",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "GUS — épisode 1 sur YouTube",
+      "url": "https://www.youtube.com/watch?v=GgcJxj0yugM"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Jérémie Dethelot",
+      "url": "https://www.youtube.com/channel/UCsoF3_IdVLe-cUky4dWw_rQ"
+    }
+  ],
   "quote": "j'adore son programme Gus",
   "sourceId": "un-bon-moment",
   "status": "validated",

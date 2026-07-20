@@ -35,7 +35,20 @@
   ],
   "id": "ubm-1089",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81154670"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche série",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=25512.html"
+    }
+  ],
   "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",
   "sourceId": "un-bon-moment",
   "status": "validated",

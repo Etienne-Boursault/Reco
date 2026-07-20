@@ -37,7 +37,14 @@
   ],
   "id": "ubm-1040",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/7D8i3X112DccxThFMJby6C"
+    }
+  ],
   "quote": "Je suis tombé sur un podcast Qui s'appelle The Underciders",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

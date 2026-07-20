@@ -51,7 +51,20 @@
   ],
   "id": "ubm-0800",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — ILIONA",
+      "url": "https://www.deezer.com/us/artist/91132672"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia — Iliona",
+      "url": "https://fr.wikipedia.org/wiki/Iliona_(chanteuse)"
+    }
+  ],
   "quote": "J'ai une artiste que j'ai rencontrée, que j'aime beaucoup, qui s'appelle Iliona, qui est une chanteuse belge qui fait des chansons assez incroyables.",
   "recommendedBy": "Julien Doré",
   "sourceId": "un-bon-moment",

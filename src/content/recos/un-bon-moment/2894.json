@@ -41,7 +41,20 @@
   ],
   "id": "ubm-2894",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "RTS Play",
+      "url": "https://www.rts.ch/play/tv/detail/bon-ben-voila?id=a4396615-bdb9-4d75-9fa5-adb84c5f6020"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube RTS Couleur 3",
+      "url": "https://www.youtube.com/playlist?list=PLcJupKjrYdb8NGUbfdYJeH_9yhtdETLFD"
+    }
+  ],
   "quote": "c'est toute une bande du Maurice Suisse qui font de la radio et qui font vraiment des sketchs vidéos",
   "sourceId": "un-bon-moment",
   "status": "validated",

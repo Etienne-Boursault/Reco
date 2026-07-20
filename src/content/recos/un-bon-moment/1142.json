@@ -41,7 +41,20 @@
   ],
   "id": "ubm-1142",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp",
+      "url": "https://jamesbks.bandcamp.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/artist/4453602"
+    }
+  ],
   "quote": "James Becker, avec qui j'ai travaillé, et qui je vais retravailler, et qui est un musicien très talentueux, qui se développe de plus en plus, qui fait des super morceaux.",
   "sourceId": "un-bon-moment",
   "status": "validated",

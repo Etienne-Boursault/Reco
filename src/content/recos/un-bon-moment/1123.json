@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1123",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782266324212-la-diagonale-de-la-joie-voyage-au-coeur-de-la-transe-corine-sombrun/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Albin Michel",
+      "url": "https://www.albin-michel.fr/la-diagonale-de-la-joie-9782226396150"
+    }
+  ],
   "quote": "j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona de la joie",
   "recommendedBy": "Bertrand Usclat",
   "sourceId": "un-bon-moment",

@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-2586",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Groom saison 1 (YouTube)",
+      "url": "https://www.youtube.com/playlist?list=PL-CQtpSbsGq105dCFnTB7V0jPhF4HkXaS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (fiche serie)",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24135.html"
+    }
+  ],
   "quote": "C'était vraiment un moment où je venais de terminer la saison 2 de Groom.",
   "recommendedBy": "Jérôme Niel",
   "sourceId": "un-bon-moment",

@@ -30,7 +30,20 @@
   ],
   "id": "ubm-1210",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Nardwuar",
+      "url": "https://www.youtube.com/@nardwuar"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://nardwuar.com/"
+    }
+  ],
   "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -48,7 +48,20 @@
   ],
   "id": "ubm-1120",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/le-mode-d-emploi-de-tout---one-shot---le-mode-d-emploi-de-tout_0-7475670_9782413037330.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Delcourt",
+      "url": "https://www.editions-delcourt.fr/bd/series/serie-le-mode-d-emploi-de-tout/album-le-mode-d-emploi-de-tout"
+    }
+  ],
   "quote": "Moi, je recommande 'Le mode d'emploi de tout' de Yacine Bellouz et Ben Renaud.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

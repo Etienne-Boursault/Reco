@@ -33,7 +33,20 @@
   ],
   "id": "ubm-1122",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/4pIlSs2li5kl1x89fYslAO"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/george-ka/7188280"
+    }
+  ],
   "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
   "recommendedBy": "Pauline Clément",
   "sourceId": "un-bon-moment",

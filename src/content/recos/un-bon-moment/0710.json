@@ -52,7 +52,20 @@
   ],
   "id": "ubm-0710",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "MUBI",
+      "url": "https://mubi.com/fr/films/primer"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (fiche film)",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=58126.html"
+    }
+  ],
   "quote": "Quand tu veux passer un bon moment.",
   "sourceId": "un-bon-moment",
   "status": "validated",

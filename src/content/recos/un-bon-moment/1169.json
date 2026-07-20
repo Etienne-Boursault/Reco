@@ -45,7 +45,20 @@
   ],
   "id": "ubm-1169",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (grand format, Stock)",
+      "url": "https://www.placedeslibraires.fr/livre/9782234092525-la-prochaine-fois-que-tu-mordras-la-poussiere-panayotis-pascot/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (poche)",
+      "url": "https://www.placedeslibraires.fr/livre/9782253907824-la-prochaine-fois-que-tu-mordras-la-poussiere-panayotis-pascot/"
+    }
+  ],
   "quote": "« Mais je lis le livre de Panayotis. »",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

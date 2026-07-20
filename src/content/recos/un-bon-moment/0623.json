@@ -50,7 +50,20 @@
   ],
   "id": "ubm-0623",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/demolition-man/umc.cmc.jsn6se4hotj9e3xc7hpvx0hf"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir le film",
+      "url": "https://www.allocine.fr/film/fichefilm-32599/streaming/"
+    }
+  ],
   "quote": "Regardez Demolition Man voilà",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

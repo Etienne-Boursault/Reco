@@ -40,7 +40,20 @@
     "openai"
   ],
   "id": "ubm-0006",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80241539"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=23566.html"
+    }
+  ],
   "quote": "moi j'ai kiffé Mortel j'ai kiffé Mortel sur Netflix une série française en plus",
   "recommendedBy": "Hakim Jemili",
   "sourceId": "un-bon-moment",

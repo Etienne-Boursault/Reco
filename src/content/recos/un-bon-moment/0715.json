@@ -52,7 +52,14 @@
   ],
   "id": "ubm-0715",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (fiche serie)",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=23539.html"
+    }
+  ],
   "quote": "J'ai vu Run, qui est sur...",
   "sourceId": "un-bon-moment",
   "status": "validated",

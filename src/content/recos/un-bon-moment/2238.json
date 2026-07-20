@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2238",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/philadelphia"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=9432.html"
+    }
+  ],
   "quote": "C'est quand même un classique du cinéma",
   "recommendedBy": "Ahmed Sparrow",
   "sourceId": "un-bon-moment",

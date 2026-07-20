@@ -31,7 +31,20 @@
   ],
   "id": "ubm-0943",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — La symphonie des éclairs",
+      "url": "https://open.spotify.com/intl-fr/album/1Vg18m8cCSPsTrGSoe0gpH"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Boutique officielle",
+      "url": "https://zahodesagazan.store/"
+    }
+  ],
   "quote": "une artiste française qui a sorti un album, je crois, il y a un nom qui s'appelle Zao de Sagazan.",
   "recommendedBy": "Eddy de Pretto & Kyan Khojandi",
   "sourceId": "un-bon-moment",

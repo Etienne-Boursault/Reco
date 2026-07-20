@@ -29,7 +29,20 @@
   "guestWork": true,
   "id": "ubm-1092",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — Bâtard Sensible",
+      "url": "https://alexandrekominek.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-alexandre-kominek.htm"
+    }
+  ],
   "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
   "recommendedBy": "Alexandre Kominek",
   "sourceId": "un-bon-moment",

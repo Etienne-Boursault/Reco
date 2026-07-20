@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2990",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Eyrolles",
+      "url": "https://www.eyrolles.com/Litterature/Livre/500-questions-que-personne-ne-se-pose-9782366581164/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac",
+      "url": "https://www.fnac.com/a7264365/Laurent-Baffie-500-questions-que-personne-ne-se-pose"
+    }
+  ],
   "quote": "J'ai pris des meilleurs passages d'un bouquin. Je suis parti là-dessus. 500 questions que personne ne se pose.",
   "recommendedBy": "Laurent Baffie",
   "sourceId": "un-bon-moment",

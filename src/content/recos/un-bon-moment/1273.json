@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-1273",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0GWDUPX7B47J0BOQQKFB5UZ0ND"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch (où voir)",
+      "url": "https://www.justwatch.com/fr/film/berengere-krief-amour"
+    }
+  ],
   "quote": "Vous pouvez visionner depuis votre canapé.",
   "recommendedBy": "Bérengère Krief",
   "sourceId": "un-bon-moment",
