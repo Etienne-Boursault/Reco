@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0270",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782823622188-james-percival-everett/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librest (librairies indépendantes)",
+      "url": "https://www.librest.com/livres/james-percival-everett_0-12593244_9782823622188.html"
+    }
+  ],
   "quote": "son dernier bouquin est très malin et c'est super drôle à lire.",
   "sourceId": "un-bon-moment",
   "status": "validated",

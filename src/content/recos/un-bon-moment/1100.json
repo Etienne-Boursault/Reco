@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1100",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782070744831-la-premiere-gorgee-de-biere-et-autres-plaisirs-minuscules-philippe-delerm/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Gallimard (éditeur)",
+      "url": "https://www.gallimard.fr/catalogue/la-premiere-gorgee-de-biere-et-autres-plaisirs-minuscules/9782070744831"
+    }
+  ],
   "quote": "la première corgée de bière, il parle de la sensation de la première corgée de bière et c'est un peu le gars qui arrive à mettre des mots sur les petits riens, les petites sensations, les petits moments.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

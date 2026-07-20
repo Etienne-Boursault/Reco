@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0674",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "borrow",
+      "label": "Internet Archive",
+      "url": "https://archive.org/details/inside-jcc"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Inside_Jamel_Comedy_Club"
+    }
+  ],
   "quote": "c'est vraiment une des meilleures séries, je regrette qu'elle soit pas en DVD quelque part, quoi.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

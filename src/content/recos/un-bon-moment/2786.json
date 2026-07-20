@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2786",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/track/4VzEzbUvyEyk1hkHl4iUzb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/song/le-dernier-la-derni%C3%A8re/1588118013"
+    }
+  ],
   "quote": "la Dernière, où on va vraiment la toucher le fond ensemble.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

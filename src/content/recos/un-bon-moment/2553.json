@@ -31,7 +31,14 @@
   "guestWork": true,
   "id": "ubm-2553",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (DVD)",
+      "url": "https://www.placedeslibraires.fr/music/3596973880376-le-super-grand-p-tit-concert-de-m-m/"
+    }
+  ],
   "quote": "On a filmé Bercy sur les trois soirs.",
   "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",

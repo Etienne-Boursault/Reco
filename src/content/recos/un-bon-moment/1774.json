@@ -38,7 +38,20 @@
   ],
   "id": "ubm-1774",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782742758319-effacement-percival-everett/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie de Paris",
+      "url": "https://www.librairie-de-paris.fr/livre/9782742758319-effacement-percival-everett/"
+    }
+  ],
   "quote": "il y a un auteur qui est très sympa qui s'appelle Percival Evret. Si vous n'aimez pas lire, il y a son bouquin Effacement qui avait été adapté.",
   "sourceId": "un-bon-moment",
   "status": "validated",

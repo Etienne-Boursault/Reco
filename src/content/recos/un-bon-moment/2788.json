@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2788",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782493865076-les-meufs-c-est-des-mecs-bien-mourad-winter/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librest (poche)",
+      "url": "https://www.librest.com/livres/les-meufs-c-est-des-mecs-bien-mourad-winter_0-10862485_9782266343008.html"
+    }
+  ],
   "quote": "Très drôle, tu éclates de rire en lisant un bouquin.",
   "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",

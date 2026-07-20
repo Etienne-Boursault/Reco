@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-0370",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://sooner.fr/films/gourou"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=328179.html"
+    }
+  ],
   "quote": "C'était l'affiche de Gourou, j'ai eu la chance de le voir en avant-première. C'était vraiment mortel, j'ai kiffé.",
   "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",

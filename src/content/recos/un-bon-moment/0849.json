@@ -32,7 +32,20 @@
   "guestWork": true,
   "id": "ubm-0849",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1UfQSmht8aSAH9so8AHQ40"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/de-de/album/les-amants-paralleles-vincent-delerm/wwcxxpjs0jxkc"
+    }
+  ],
   "quote": "si, genre, tu es là, tu es en train de te dire \"ça fait un moment, je suis avec ma meuf, tu écoutes les amants parallèles\"",
   "recommendedBy": "Vincent Delerm",
   "sourceId": "un-bon-moment",

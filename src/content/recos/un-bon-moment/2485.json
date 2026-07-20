@@ -35,7 +35,14 @@
   ],
   "id": "ubm-2485",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80219056"
+    }
+  ],
   "quote": "c'est vraiment... mais vraiment scotchante.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

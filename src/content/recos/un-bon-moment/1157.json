@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-1157",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/m-matthieu-chedid/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Infoconcert - toutes les dates",
+      "url": "https://www.infoconcert.com/artiste/-m-matthieu-chedid-6013/concerts"
+    }
+  ],
   "quote": "si vous êtes sur cette planète et que vous connaissez matieu schedid ou m allez voir matieu schedid sur scène au moins une fois dans votre vie parce que ça vaut le détour",
   "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",

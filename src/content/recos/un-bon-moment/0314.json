@@ -39,7 +39,20 @@
   ],
   "id": "ubm-0314",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/happy-valley/umc.cmc.6mcnb3rfbnwxbjp6cfdyxg6v5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-11658/streaming/"
+    }
+  ],
   "quote": "il faut que je regarde Happy Valley apparemment",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

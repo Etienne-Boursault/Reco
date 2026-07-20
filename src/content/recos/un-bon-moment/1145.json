@@ -35,7 +35,20 @@
   ],
   "id": "ubm-1145",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782070465255-tao-to-king-lao-tseu/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (edition PUF)",
+      "url": "https://www.placedeslibraires.fr/livre/9782130878414-tao-te-king-lao-tseu/"
+    }
+  ],
   "quote": "le Tao, c'est une philosophie chinoise ancestrale, tu vois. Et c'est donc des petites poésies comme ça, de vie, quoi, que je vous invite à lire, le Tao Talking, qui est un livre vraiment ancestral.",
   "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",

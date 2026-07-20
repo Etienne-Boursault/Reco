@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2423",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix — Humoristes du monde",
+      "url": "https://www.netflix.com/title/81008236"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Shirley Souagnon",
+      "url": "https://www.shirleysouagnon.com/"
+    }
+  ],
   "quote": "Je vous invite à aller voir le Netflix de Shirley, humoriste du monde.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

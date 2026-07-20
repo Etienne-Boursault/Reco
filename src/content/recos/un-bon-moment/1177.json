@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1177",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81254224"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=280921.html"
+    }
+  ],
   "quote": "sur Netflix il y a \"Social Dilemma\" qui résume un peu tout ça",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

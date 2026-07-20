@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2547",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Coline Rio sur Deezer",
+      "url": "https://www.deezer.com/us/artist/12231880"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page artiste (Caramba)",
+      "url": "https://www.caramba.fr/artistes/coline-rio/"
+    }
+  ],
   "quote": "une autre artiste qui s'appelle Colline Rio, qui aussi a une voix divine.",
   "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",

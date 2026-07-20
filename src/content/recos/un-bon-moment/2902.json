@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2902",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/artist/khali/1495599542"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Soldout Productions (booking officiel)",
+      "url": "https://www.soldoutprod.com/fr/artists/khali"
+    }
+  ],
   "quote": "Moi, je recommande vraiment l'artiste Khali.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -50,7 +50,14 @@
   "linkOverrides": {
     "YouTube": "https://www.youtube.com/irosef"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Iro Sef sur YouTube",
+      "url": "https://www.youtube.com/irosef"
+    }
+  ],
   "quote": "Aïrocef, si vous aimez le Marvel sur YouTube, si vous aimez les gars qui décritent des trucs, Aïrocef, je trouve qu'il poste bien",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

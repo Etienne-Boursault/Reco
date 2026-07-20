@@ -45,7 +45,20 @@
   ],
   "id": "ubm-1146",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaine YouTube Feldup",
+      "url": "https://www.youtube.com/@Feldup"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp",
+      "url": "https://feldup.bandcamp.com/"
+    }
+  ],
   "quote": "Alors, je ne sais même pas si on dit Feldup ou Feldup. Je pense que c'est Feldup.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

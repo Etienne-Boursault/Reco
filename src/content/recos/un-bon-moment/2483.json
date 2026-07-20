@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2483",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Woody's Solo On 1612 (The Late Show with Colbert)",
+      "url": "https://www.youtube.com/watch?v=Hy8BBm_16rU"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "VULFPECK /// 1612",
+      "url": "https://www.youtube.com/watch?v=TiiWR6436Eg"
+    }
+  ],
   "quote": "t'as vu la vidéo de 1612 un morceau qui joue chez Stephen Colbert",
   "sourceId": "un-bon-moment",
   "status": "validated",

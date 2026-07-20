@@ -44,7 +44,26 @@
   ],
   "id": "ubm-0860",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle du podcast (Acast)",
+      "url": "https://shows.acast.com/des-trains-a-travers-la-plaine"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/des-trains-%C3%A0-travers-la-plaine/id1549461850"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/1f4L17wWRLcBnLMA2iKpoI"
+    }
+  ],
   "quote": "C'est un podcast qui s'appelle des trains à travers la plaine.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

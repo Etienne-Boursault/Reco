@@ -49,7 +49,20 @@
   ],
   "id": "ubm-0676",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/The-Office/0JGLV917NB1OAICKEK7JO23KOU"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=564.html"
+    }
+  ],
   "quote": "je trouve ça brillant et tellement bien écrit, tellement drôle, les personnages sont tellement fous.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

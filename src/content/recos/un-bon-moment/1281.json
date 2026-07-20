@@ -54,7 +54,20 @@
   ],
   "id": "ubm-1281",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/columbo/umc.cmc.tlqu4d3qgskmhwd0qw5868tw"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Molotov",
+      "url": "https://www.molotov.tv/fr_fr/p/24978/columbo"
+    }
+  ],
   "quote": "Columbo, on peut regarder Columbo ?",
   "sourceId": "un-bon-moment",
   "status": "validated",

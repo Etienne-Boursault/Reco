@@ -45,7 +45,14 @@
   "guestWork": true,
   "id": "ubm-0847",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Kyan Khojandi",
+      "url": "https://www.kyan.fr/blog/une-bonne-soiree"
+    }
+  ],
   "quote": "Ne ratez pas Une Bonne Soirée, janvier, dans toute la France.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

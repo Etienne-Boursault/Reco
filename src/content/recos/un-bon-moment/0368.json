@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0368",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/l-attachement"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "CinéMutins",
+      "url": "https://www.cinemutins.com/films/1828-l-attachement"
+    }
+  ],
   "quote": "Franchement, j'étais tellement ému à sept minutes.",
   "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",

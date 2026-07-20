@@ -46,7 +46,20 @@
   "guestWork": true,
   "id": "ubm-0734",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Gallimard BD (éditeur) — édition française",
+      "url": "https://www.gallimard-bd.fr/9782075126939/sacrees-sorcieres.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie de la Cité de la BD (Angoulême)",
+      "url": "https://librairie.citebd.org/livre/9782075126939-sacrees-sorcieres-roald-dahl-penelope-bagieu/"
+    }
+  ],
   "quote": "j'ai de la promo anglophone de ma BD qui est sortie cette année.",
   "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",

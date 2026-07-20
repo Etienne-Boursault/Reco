@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2795",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/81191406"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/tout-simplement-noir"
+    }
+  ],
   "quote": "La première fois que j'ai tourné dans un film, c'était dans Tout Simplement Noir frère.",
   "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",

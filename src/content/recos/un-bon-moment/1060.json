@@ -48,7 +48,14 @@
   ],
   "id": "ubm-1060",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/user/LeChefOtaku"
+    }
+  ],
   "quote": "Moi je regarde beaucoup la chaîne du chef otaku.",
   "sourceId": "un-bon-moment",
   "status": "validated",

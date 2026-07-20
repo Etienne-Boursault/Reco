@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2785",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/track/1508040112"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/track/0g15e8wR5QDZnp0muC9hWu"
+    }
+  ],
   "quote": "Une femme parfaite, c'est plutôt simple, c'est plutôt galerie.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

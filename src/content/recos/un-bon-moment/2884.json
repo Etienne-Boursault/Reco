@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2884",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://maudelandry.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@maudelandry-humoriste3484"
+    }
+  ],
   "quote": "Maud Landry aller voir le travail de Maud Landry il est formidable il a une chaîne YouTube en plus elle est trop bien",
   "sourceId": "un-bon-moment",
   "status": "validated",

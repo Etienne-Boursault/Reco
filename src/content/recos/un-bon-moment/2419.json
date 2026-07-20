@@ -37,7 +37,14 @@
   "guestWork": true,
   "id": "ubm-2419",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spectacle intégral (YouTube)",
+      "url": "https://www.youtube.com/watch?v=u41ujNodvnM"
+    }
+  ],
   "quote": "C'est à dire les gens accédaient à une sorte de \"ah il fait du spectacle, on va le voir\".",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

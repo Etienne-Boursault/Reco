@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0313",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie de la Cité BD (Angoulême)",
+      "url": "https://librairie.citebd.org/livre/9782505019930-les-vieux-fourneaux-tome-1-ceux-qui-restent-wilfrid-lupano-paul-cauuet/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Dargaud",
+      "url": "https://www.dargaud.com/bd/les-vieux-fourneaux/les-vieux-fourneaux/les-vieux-fourneaux-tome-1-ceux-qui-restent-bda5102600"
+    }
+  ],
   "quote": "je vous recommande une bd qui s'appelle les vieux fourneaux qui est trop bien",
   "sourceId": "un-bon-moment",
   "status": "validated",

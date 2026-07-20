@@ -48,7 +48,14 @@
   ],
   "id": "ubm-0739",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/cher-journal/umc.cmc.3hsso93go5nt3c48r9n4qlbl0"
+    }
+  ],
   "quote": "Donc oui, Cher Journal d'Anna Apter, qui est incroyable.",
   "sourceId": "un-bon-moment",
   "status": "validated",

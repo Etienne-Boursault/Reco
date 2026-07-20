@@ -49,7 +49,14 @@
   ],
   "id": "ubm-0861",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c"
+    }
+  ],
   "quote": "Je recommande VandaVision.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

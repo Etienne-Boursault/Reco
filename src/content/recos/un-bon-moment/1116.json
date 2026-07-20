@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1116",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/90-s"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=246281.html"
+    }
+  ],
   "quote": "en film tu as \"Mid 90's\" de Jonah Hill qui est incroyable",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

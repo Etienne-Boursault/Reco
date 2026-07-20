@@ -57,7 +57,20 @@
   "guestWork": true,
   "id": "ubm-1705",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions du Seuil",
+      "url": "https://www.seuil.com/ouvrage/couple-splendeurs-et-miseres-de-la-vie-a-deux-nora-hamzawi/9782021563283"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Ombres Blanches (librairie indépendante)",
+      "url": "https://www.ombres-blanches.fr/product/2758272/hamzawi-nora-couple-splendeurs-et-miseres-de-la-vie-a-deux"
+    }
+  ],
   "quote": "et couple ce sont deux super cadeaux Noël",
   "recommendedBy": "Nora Hamzawi",
   "sourceId": "un-bon-moment",

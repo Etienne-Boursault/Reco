@@ -47,7 +47,20 @@
   ],
   "id": "ubm-1352",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-fa6973b9-e7cf-49fb-81a2-d4908e4bf694"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-28035/streaming/"
+    }
+  ],
   "quote": "Ah, Bloui ! Tiens, Bloui, le dessin animé Bloui.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

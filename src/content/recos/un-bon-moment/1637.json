@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-1637",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/le-comte-de-monte-cristo/umc.cmc.3hvmmohg7yq69bumogo0b0em8"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=288404.html"
+    }
+  ],
   "quote": "Pour Monte Cristo. J'ai dû apprendre à faire de l'apnée.",
   "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",

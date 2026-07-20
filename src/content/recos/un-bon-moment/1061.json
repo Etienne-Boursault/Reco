@@ -47,7 +47,20 @@
   ],
   "id": "ubm-1061",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://verino.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@Verinaze"
+    }
+  ],
   "quote": "Moi j'aime beaucoup ce que Verino il fait.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

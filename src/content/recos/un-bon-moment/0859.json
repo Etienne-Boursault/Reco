@@ -47,7 +47,20 @@
   ],
   "id": "ubm-0859",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/us-en/album/happy-end-albin-de-la-simone/vz9berkl1tx2a"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1UmSMHmTCQTr0n9Tv5gznt"
+    }
+  ],
   "quote": "il y a un album instrumental d'Albin de la Simone qui est sorti, qui est très, très bon.",
   "recommendedBy": "Vincent Delerm",
   "sourceId": "un-bon-moment",

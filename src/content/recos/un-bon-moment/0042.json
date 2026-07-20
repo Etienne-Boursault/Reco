@@ -52,7 +52,20 @@
   "guestWork": true,
   "id": "ubm-0042",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/262200072"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/3TlV2mJz0LuEwNlEMTx2vb"
+    }
+  ],
   "quote": "Donc ça s'appelle l'horizon des événements.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

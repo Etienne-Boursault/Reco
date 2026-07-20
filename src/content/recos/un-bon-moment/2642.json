@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2642",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Mollat",
+      "url": "https://www.mollat.com/livres/2445799/gringe-ensemble-on-aboie-en-silence-recit"
+    }
+  ],
   "quote": "Moi, je suis en train de lire \"Ensemble, on aboie en silence\" de Gringe, de Guillaume Tranchant.",
   "sourceId": "un-bon-moment",
   "status": "validated",

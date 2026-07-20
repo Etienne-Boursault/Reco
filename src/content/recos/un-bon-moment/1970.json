@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-1970",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/un-homme-ideal"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=227602.html"
+    }
+  ],
   "quote": "Allez voir Un homme idéal.",
   "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",

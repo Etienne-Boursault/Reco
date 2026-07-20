@@ -51,7 +51,20 @@
   ],
   "id": "ubm-0673",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/artist/412"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/us-en/interpreter/queen/43821"
+    }
+  ],
   "quote": "je suis très fan de Queen",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

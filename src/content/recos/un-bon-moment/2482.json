@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2482",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp",
+      "url": "https://vulfpeck.bandcamp.com/music"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.vulfpeck.com/"
+    }
+  ],
   "quote": "j'adore Vulfpeck",
   "sourceId": "un-bon-moment",
   "status": "validated",

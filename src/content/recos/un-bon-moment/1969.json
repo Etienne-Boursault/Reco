@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-1969",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/boite-noire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=274204.html"
+    }
+  ],
   "quote": "Allez voir Boite Noire.",
   "recommendedBy": "Pierre Niney",
   "sourceId": "un-bon-moment",

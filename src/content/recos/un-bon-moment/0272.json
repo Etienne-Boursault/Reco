@@ -63,7 +63,26 @@
   ],
   "id": "ubm-0272",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/kika-1"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Les Mutins de Pangée (VOD)",
+      "url": "https://www.cinemutins.com/films/1935-kika"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000005699.html"
+    }
+  ],
   "quote": "Il y a un film qui sort là qui s'appelle Kika que j'ai vu en avant-première. C'est hallucinant.",
   "recommendedBy": "Alexandra Roth",
   "sourceId": "un-bon-moment",

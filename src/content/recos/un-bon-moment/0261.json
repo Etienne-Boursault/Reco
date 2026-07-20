@@ -63,7 +63,20 @@
   "guestWork": true,
   "id": "ubm-0261",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/gerald-le-conquerant/umc.cmc.1bjpx1zfbk2ah37jyn7bbca9k"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=319824.html"
+    }
+  ],
   "quote": "Franchement, déjà...",
   "recommendedBy": "Fabrice Éboué & Alexandra Roth",
   "sourceId": "un-bon-moment",

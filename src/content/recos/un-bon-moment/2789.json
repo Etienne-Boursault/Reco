@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2789",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/wf/title/81698304"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=221617.html"
+    }
+  ],
   "quote": "C'est vraiment pas mal.",
   "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",

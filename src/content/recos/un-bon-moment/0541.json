@@ -48,7 +48,20 @@
     "Instagram": "https://www.instagram.com/cur8.fr/",
     "Site officiel": "https://cur8.fr/"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "CUR8 sur Instagram",
+      "url": "https://www.instagram.com/cur8.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Numéro — rencontre avec Arthur Hadade",
+      "url": "https://numero.com/art/art-art/arthur-hadade-application-cur8/"
+    }
+  ],
   "quote": "Là, il y a un mec qui fait pas mal de bruit dans l'art contemporain, qui s'appelle Curate, je crois.",
   "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",

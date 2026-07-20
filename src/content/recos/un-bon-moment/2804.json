@@ -30,7 +30,20 @@
   ],
   "id": "ubm-2804",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/album/437609477"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/3440hCSfwYXxJcbQ0j3jAJ"
+    }
+  ],
   "quote": "Non, l'album de Janelle Monae. Le dernier.",
   "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",

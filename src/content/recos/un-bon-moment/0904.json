@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-0904",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/les-inseparables-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=304507.html"
+    }
+  ],
   "quote": "Il y a un dessin animé avec Eric Judor qui sort en décembre. Il s'appelle Les Inséparables.",
   "recommendedBy": "Jean-Pascal Zadi",
   "sourceId": "un-bon-moment",

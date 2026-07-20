@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0269",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube ScienceEtonnante",
+      "url": "https://www.youtube.com/scienceetonnante"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de David Louapre",
+      "url": "https://scienceetonnante.com/"
+    }
+  ],
   "quote": "je recommande... parce que je crois que je n'ai jamais recommandé Science étonnante sur YouTube de David Loapre qui est hyper bien.",
   "sourceId": "un-bon-moment",
   "status": "validated",

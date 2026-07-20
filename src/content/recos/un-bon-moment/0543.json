@@ -14,30 +14,30 @@
   "extractionHistory": [
     {
       "at": "2026-06-04T15:59:47+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:35",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
-      "llmProvider": "anthropic",
-      "llmModel": "(assumed)",
-      "worker": "(assumed)",
-      "timestamp_at_extraction": "01:23:35"
+      "worker": "(assumed)"
     },
     {
       "at": "2026-06-05T09:36:44+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:23:35",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
-      "llmProvider": "openai",
-      "llmModel": "(assumed)",
-      "worker": "(assumed)",
-      "timestamp_at_extraction": "01:23:35"
+      "worker": "(assumed)"
     },
     {
       "at": "2026-06-05T09:48:42+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:23:33",
       "transcriptModel": "large-v3",
       "transcriptSource": "youtube",
-      "llmProvider": "openai",
-      "llmModel": "gpt-4o-mini",
-      "worker": "main-cpu",
-      "timestamp_at_extraction": "01:23:33"
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -46,7 +46,20 @@
   ],
   "id": "ubm-0543",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Le documentaire en entier sur YouTube",
+      "url": "https://www.youtube.com/watch?v=zl-wAqplQAo"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://en.wikipedia.org/wiki/Listers:_A_Glimpse_Into_Extreme_Birdwatching"
+    }
+  ],
   "quote": "C'est un doc sur un mec avec son frère qui prenne un van. C'est indépendant, ils ont mis ça sur YouTube, c'est genre une pure merveille. En gros, il est parti faire un Pokédex, où il s'est intéressé à l'observation des oiseaux, à la base, tu te dis en mode ouais, why not, tu vois. Et en fait, c'est une vraie histoire de deux frères qui font un van et qui font le tour des Etats-Unis et qui remplissent le Pokédex.",
   "recommendedBy": "Seb",
   "sourceId": "un-bon-moment",

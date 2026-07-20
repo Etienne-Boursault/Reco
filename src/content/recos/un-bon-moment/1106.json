@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-1106",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/kokoriko/umc.cmc.7i87bodrhfhpi7h5idcwzxcw9"
+    }
+  ],
   "quote": "moi j'ai Coco Rico, c'est mon sketch show sur Canal.",
   "sourceId": "un-bon-moment",
   "status": "validated",

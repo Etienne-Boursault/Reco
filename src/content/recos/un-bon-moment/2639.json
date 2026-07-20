@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2639",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/mignonnes"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/mignonnes"
+    }
+  ],
   "quote": "C'est trop bien mignonne.",
   "sourceId": "un-bon-moment",
   "status": "validated",

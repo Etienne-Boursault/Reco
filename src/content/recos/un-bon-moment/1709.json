@@ -57,7 +57,20 @@
   ],
   "id": "ubm-1709",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Boutique Tôt ou Tard",
+      "url": "https://www.totoutard.com/products/waxx-etincelle-2-cd"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/%C3%A9tincelle-2/1846409357"
+    }
+  ],
   "quote": "il sort un album vendredi qui s'appelle Étincelle volume 2",
   "recommendedBy": "Penelope Bagieu",
   "sourceId": "un-bon-moment",
