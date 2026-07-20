@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2424",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaine YouTube de Seb Mellia",
+      "url": "https://www.youtube.com/channel/UCFmN0sav0nBd0gsaPwrCFtA"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.sebmellia.fr/"
+    }
+  ],
   "quote": "La chaîne de Semélia, il y a du stand-up, il y a plein plein de choses. C'est super créé.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

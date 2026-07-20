@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2851",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/le-bison-et-sa-voisine-dorine/umc.cmc.621qcdoc3stgfmkv6gp4o8yu7"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=47870.html"
+    }
+  ],
   "quote": "Le Bison. C'est trop gentil.",
   "recommendedBy": "Isabelle Nanty",
   "sourceId": "un-bon-moment",

@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-1930",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube Les Revues du Monde",
+      "url": "https://www.youtube.com/channel/UCnf0fDz1vTYW-sl36wbVMbg"
+    }
+  ],
   "quote": "J'ai fait une vidéo d'ailleurs là-dessus, qui s'appelle comment est-ce que les archéologues du futur nous comprendront.",
   "recommendedBy": "Charlie Danger",
   "sourceId": "un-bon-moment",

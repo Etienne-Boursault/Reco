@@ -44,7 +44,20 @@
   ],
   "id": "ubm-0117",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Saison 2 sur YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLIVXoUlxxMIvzhOQ_Ka7i-NOr_Z1nAsIV"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Saison 1 — épisode 6",
+      "url": "https://www.youtube.com/watch?v=tYRTts1UmfY"
+    }
+  ],
   "quote": "C'est super. Ce n'est pas très connu. Je vous encourage à aller voir.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

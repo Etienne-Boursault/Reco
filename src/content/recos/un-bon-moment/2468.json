@@ -41,7 +41,20 @@
   "guestWork": true,
   "id": "ubm-2468",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Passion du Jeu (boutique indépendante)",
+      "url": "https://www.passiondujeu.fr/produit/killing-time/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Fiche Tric Trac",
+      "url": "https://trictrac.net/jeu-de-societe/killing-time"
+    }
+  ],
   "quote": "Le jeu s'appelle Killing Time parce que mon spectacle s'appelait Killing Joke.",
   "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",

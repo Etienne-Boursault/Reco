@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2848",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — lvdt.audio",
+      "url": "https://lavoixdanstatete.com/podcast/les-gens-qui-doutent/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/500Fba2xYIZO6W79LZFjDZ"
+    }
+  ],
   "quote": "Est-ce que tu kiffes, parfois ?",
   "recommendedBy": "Fanny Ruwet",
   "sourceId": "un-bon-moment",

@@ -40,7 +40,26 @@
   "guestWork": true,
   "id": "ubm-2565",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "La minute de Paul Mirabel — Soixante 2",
+      "url": "https://www.youtube.com/watch?v=QNWnNTvSi8o"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Bande-annonce Soixante 2",
+      "url": "https://www.youtube.com/watch?v=0kQc3R2nwu4"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Kyan Khojandi",
+      "url": "https://www.kyan.fr/"
+    }
+  ],
   "quote": "vous avez fait le premier volume, au moment où ils le regardent, les gens je peux te dire qu'ils se sont bidonnés devant ta nouvelle minute",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",

@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1372",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle/ameziane-dans-seum-spleen-393302"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/ameziane/"
+    }
+  ],
   "quote": "je recommande peut-être aussi un stand-up... Amzian trop fort",
   "sourceId": "un-bon-moment",
   "status": "validated",

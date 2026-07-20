@@ -38,7 +38,14 @@
   ],
   "id": "ubm-2267",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia — Vu (émission)",
+      "url": "https://fr.wikipedia.org/wiki/Vu_(%C3%A9mission_de_t%C3%A9l%C3%A9vision)"
+    }
+  ],
   "quote": "Ils ont une chaîne qui s'appelle \"Vu\"",
   "sourceId": "un-bon-moment",
   "status": "validated",

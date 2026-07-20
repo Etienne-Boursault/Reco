@@ -30,7 +30,20 @@
   ],
   "id": "ubm-2805",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — The Age of Pleasure",
+      "url": "https://www.qobuz.com/us-en/album/the-age-of-pleasure-janelle-monae/wt27leeji86pa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music — The Age of Pleasure",
+      "url": "https://music.apple.com/us/album/the-age-of-pleasure/1686979040"
+    }
+  ],
   "quote": "Moi, je recommande l'album de Jane.",
   "sourceId": "un-bon-moment",
   "status": "validated",

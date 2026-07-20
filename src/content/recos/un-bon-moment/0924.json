@@ -54,7 +54,20 @@
   ],
   "id": "ubm-0924",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir le film",
+      "url": "https://www.justwatch.com/fr/film/the-grand-dukes"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=14060.html"
+    }
+  ],
   "quote": "les grands ducs qui est incroyable que je recommande",
   "sourceId": "un-bon-moment",
   "status": "validated",

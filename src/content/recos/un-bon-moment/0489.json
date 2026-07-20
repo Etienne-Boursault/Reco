@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0489",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok de Geronimo",
+      "url": "https://www.tiktok.com/@geronimonstre"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaine YouTube de Geronimo",
+      "url": "https://www.youtube.com/@geronimonstre"
+    }
+  ],
   "quote": "Je recommande Géronimo, que vous avez peut-être vu sur TikTok.",
   "sourceId": "un-bon-moment",
   "status": "validated",
