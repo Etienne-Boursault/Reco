@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:31"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2802",
+  "itemId": "1ed0a2cc",
+  "kind": "reco",
+  "quote": "Elle a fait un album, elle a fait Makeba. Qui a cartonné dans le monde entier, qui cartonne encore plus sur TikTok en ce moment.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240a35cc56a90012ec386b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:31",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

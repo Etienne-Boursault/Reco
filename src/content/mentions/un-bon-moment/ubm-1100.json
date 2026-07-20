@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:37:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:37:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1100",
+  "itemId": "68a3a51f",
+  "kind": "reco",
+  "quote": "la première corgée de bière, il parle de la sensation de la première corgée de bière et c'est un peu le gars qui arrive à mettre des mots sur les petits riens, les petites sensations, les petits moments.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:37:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

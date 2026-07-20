@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:42"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2466",
+  "itemId": "97110eaf",
+  "kind": "reco",
+  "quote": "C'est dans Sons of Anarchy ou pas ? Parce que j'ai pas vu la saison 5.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:21"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1627",
+  "itemId": "0730566a",
+  "kind": "reco",
+  "quote": "Tu vois, il y avait ça aussi dans Monte Cristo, il y avait ce côté, genre, je suis...",
+  "recommendedBy": "Pierre Ninet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:12:21",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,15 +1,27 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
-  "title": "avec JEROME NIEL ET AXEL MALIVERNEY",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 23,
-  "date": "2020-12-06",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecjeromenieletaxelmaliverney/media.mp3",
-  "description": "Retour sur le parcours de Jérôme et Axel son homme de l'ombre, de leur début à aujourd'hui. C'était notre dernier enregistrement de la semaine, du coup on était un peu brûlé :) // Super Jeu de la complicité !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=abbPDXtUfik",
   "audioDuration": 5062,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecjeromenieletaxelmaliverney/media.mp3",
+  "date": "2020-12-06",
+  "description": "Retour sur le parcours de Jérôme et Axel son homme de l'ombre, de leur début à aujourd'hui. C'était notre dernier enregistrement de la semaine, du coup on était un peu brûlé :) // Super Jeu de la complicité !",
+  "guests": [
+    "Jérôme Niel"
+  ],
+  "guestsExcluded": [
+    "Invité",
+    "Jerome Niel"
+  ],
+  "guestsParsed": [
+    "Jerome Niel",
+    "Axel Maliverney"
+  ],
+  "guid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+  "number": 24,
+  "sourceId": "un-bon-moment",
+  "title": "avec JEROME NIEL ET AXEL MALIVERNEY",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 5143,
-  "youtubeTitle": "Un Bon Moment avec JEROME NIEL & AXEL MALIVERNEY"
+  "youtubeTitle": "Un Bon Moment avec JEROME NIEL & AXEL MALIVERNEY",
+  "youtubeUrl": "https://www.youtube.com/watch?v=abbPDXtUfik"
 }

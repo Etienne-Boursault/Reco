@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:46"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:46"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1534",
+  "itemId": "700dbcfa",
+  "kind": "citation",
+  "quote": "Et dans le parrain, comment s'appelle ? Vito Corleone.",
+  "recommendedBy": "Redouane Bougheraba",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

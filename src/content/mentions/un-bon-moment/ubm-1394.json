@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "extra": {
+        "timestamp_at_extraction": "39:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "extra": {
+        "timestamp_at_extraction": "39:19"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "39:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:18"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1394",
+  "itemId": "6e824f20",
+  "kind": "reco",
+  "quote": "il y a un album qui s'appelle Mozart l'égyptien",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69c7de338ac24e236cb65e12",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

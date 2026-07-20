@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2329",
+  "itemId": "aed05b4e",
+  "kind": "reco",
+  "quote": "Enfin, j'ai fait Le Péril jeune, qui était déjà un film d'époque. Parce que ça parlait des années 70.",
+  "recommendedBy": "Cédric Lapiche",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:10"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1921",
+  "itemId": "d18f42fc",
+  "kind": "reco",
+  "quote": "C'est un court-métrage que j'ai fait il y a très longtemps.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:12:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

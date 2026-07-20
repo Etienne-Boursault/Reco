@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2379",
+  "itemId": "5a5e9647",
+  "kind": "reco",
+  "quote": "Vu que Kyron, son principe, aller voir son spectacle, il est super.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0481",
+  "itemId": "296ca968",
+  "kind": "reco",
+  "quote": "Je crois que Mario animé, il est bien.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:06",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

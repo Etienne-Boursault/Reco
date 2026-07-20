@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:16"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1839",
+  "itemId": "debd4947",
+  "kind": "reco",
+  "quote": "Celui qui a fait The Good Place ?",
+  "recommendedBy": "Doria",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:16",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

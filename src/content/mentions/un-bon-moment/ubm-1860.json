@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1860",
+  "itemId": "2c6a8b1f",
+  "kind": "reco",
+  "quote": "Blandine, t'es en spectacle en ce moment à l'Européen.",
+  "recommendedBy": "Blandine Lehoux",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

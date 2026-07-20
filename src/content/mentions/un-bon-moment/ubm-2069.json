@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:53:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2069",
+  "itemId": "b205c400",
+  "kind": "reco",
+  "quote": "une amie à moi aussi qui s'appelle Bérangère Krièf qui a son spectacle qui s'appelle Sexe et qui est vraiment que tu as co-écrit oui que j'ai co-écrit",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:53:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

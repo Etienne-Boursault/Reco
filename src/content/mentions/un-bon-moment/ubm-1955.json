@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:20"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1955",
+  "itemId": "04583b90",
+  "kind": "reco",
+  "quote": "Et ma musique préférée sur Planète Terre, c'est la musique de l'été de Kikujiro.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

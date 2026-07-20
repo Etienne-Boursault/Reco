@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:41"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:41"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1759",
+  "itemId": "0a9f6635",
+  "kind": "reco",
+  "quote": "Le mec et la meuf, la roi, c'est X-Files.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

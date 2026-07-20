@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1761",
+  "itemId": "ce8fd5b4",
+  "kind": "reco",
+  "quote": "Et viens boire un petit coup à la maison.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:47",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

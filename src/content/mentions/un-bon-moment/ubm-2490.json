@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:01"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2490",
+  "itemId": "375952aa",
+  "kind": "reco",
+  "quote": "c'était une proposition d'un seul coup",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

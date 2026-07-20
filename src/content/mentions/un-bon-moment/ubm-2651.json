@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2651",
+  "itemId": "293754a0",
+  "kind": "reco",
+  "quote": "c'était nul part ailleurs qu'on regardait qu'on trouvait ça fabuleux",
+  "recommendedBy": "Eléonore",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

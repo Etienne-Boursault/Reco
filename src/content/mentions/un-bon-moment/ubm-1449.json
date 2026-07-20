@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1449",
+  "itemId": "fc8bd564",
+  "kind": "reco",
+  "quote": "Sinon, aussi, avec une banane. Fabien Olicard...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

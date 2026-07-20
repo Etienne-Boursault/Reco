@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:43"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1638",
+  "itemId": "eb2abba2",
+  "kind": "reco",
+  "quote": "T'as pas fait l'attraction ! La nouvelle attraction au Parc Asterix !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:43",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

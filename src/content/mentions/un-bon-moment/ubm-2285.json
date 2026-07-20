@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:01:23"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2285",
+  "itemId": "b5880efb",
+  "kind": "reco",
+  "quote": "c'est une adaptation d'un truc d'un format américain qui s'appelait burning love qui était produit par ben stiller",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:01:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

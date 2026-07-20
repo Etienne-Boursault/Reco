@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:46"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0187",
+  "itemId": "160fd717",
+  "kind": "reco",
+  "quote": "Iris, série géniale.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

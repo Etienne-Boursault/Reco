@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:54"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "24:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:58"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1253",
+  "itemId": "8d47b9dc",
+  "kind": "reco",
+  "quote": "« Elle a d'abord écrit un livre qui s'appelle 125 et des milliers, qui regroupe 125. »",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:24:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:56:59"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:57:04"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2079",
+  "itemId": "34705998",
+  "kind": "reco",
+  "quote": "c'est exceptionnel",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:57:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

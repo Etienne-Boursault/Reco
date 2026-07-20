@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:34"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2645",
+  "itemId": "0682a2d1",
+  "kind": "reco",
+  "quote": "Diam avait fait ça ! Elle avait son dernier album, elle a dit : je ne ferai que des concerts !",
+  "recommendedBy": "Pénélope Bagieu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1091",
+  "itemId": "55422d00",
+  "kind": "reco",
+  "quote": "La chaîne d'Aérosseph, si vous aimez l'univers Marvel.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61ce14aa42581b0012d8ddb0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:18",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

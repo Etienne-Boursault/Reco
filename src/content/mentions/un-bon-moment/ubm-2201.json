@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T18:33:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:44"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2201",
+  "itemId": "cb675603",
+  "kind": "reco",
+  "quote": "Anatomie d'une chute de Justine Triet. Magnifique. Fous dingue. Faut vraiment aller voir ce film.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c1b296596600156961a7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

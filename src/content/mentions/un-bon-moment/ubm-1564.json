@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:21"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1564",
+  "itemId": "9f1cfb29",
+  "kind": "reco",
+  "quote": "breaking bad bad bad man lost non il n'y avait plus diffusé en france en 98 sur la gnt",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

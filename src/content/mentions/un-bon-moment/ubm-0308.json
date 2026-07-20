@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:34:08"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0308",
+  "itemId": "dfa3d76b",
+  "kind": "reco",
+  "quote": "Cementix c'est un jeu où faut trouver un mot",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:34:08",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:17:32"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2542",
+  "itemId": "cdfdc077",
+  "kind": "reco",
+  "quote": "Et quand tu sors des titres rivalités, tu sens que c'est un banger tout de suite, ça part.",
+  "recommendedBy": "Mathieu Chédid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:17:32",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

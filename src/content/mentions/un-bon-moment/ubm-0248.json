@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T10:27:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0248",
+  "itemId": "29ea1b5f",
+  "kind": "reco",
+  "quote": "C'est les Balzac, c'est les cils.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:06",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0978",
+  "itemId": "4a736761",
+  "kind": "reco",
+  "quote": "Dans Ballade Mental qui est géniale d'ailleurs si vous voulez vous endormir dans l'espace profond ça s'appelle les Futurs Lointains il y a le lien qui est là vraiment c'est une super vidéo",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

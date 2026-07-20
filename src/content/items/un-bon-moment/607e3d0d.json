@@ -1,0 +1,24 @@
+{
+  "creator": "Vince Gilligan",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/559969-el-camino-a-breaking-bad-movie/watch?locale=FR",
+    "tmdb": 559969,
+    "tmdbType": "movie"
+  },
+  "id": "607e3d0d",
+  "schemaVersion": 1,
+  "title": "El Camino",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=El%20Camino"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=El%20Camino"
+    }
+  ]
+}

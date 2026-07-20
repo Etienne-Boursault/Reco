@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:15:39"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0392",
+  "itemId": "7211151f",
+  "kind": "reco",
+  "quote": "le dernier livre donc un plus vieux livre mais que j'avais jamais lu jusque là de luke reinhardt même si c'est pas son beau vrai nom c'est un pseudo mais c'est en général il est connu là dessus ça s'appelle l'homme d",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:15:39",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

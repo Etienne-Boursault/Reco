@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2863",
+  "itemId": "2264d488",
+  "kind": "reco",
+  "quote": "et il y a la dernière de Laura l'Olympia",
+  "recommendedBy": "Jérôme",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

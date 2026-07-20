@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:51:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2103",
+  "itemId": "b873ce88",
+  "kind": "reco",
+  "quote": "Mais si vous ne connaissez pas Navao DVD, vous allez le découvrir.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:51:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,28 @@
+{
+  "creator": "Greg Daniels, Michael Schur",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=FR",
+    "tmdb": 8592,
+    "tmdbType": "tv"
+  },
+  "id": "886b19df",
+  "schemaVersion": 1,
+  "title": "Parks and Recreation",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Parks%20and%20Recreation"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parks%20and%20Recreation"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Parks%20and%20Recreation"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:40"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:38"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:58:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:44"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1273",
+  "itemId": "ff1b0c73",
+  "kind": "reco",
+  "quote": "Vous pouvez visionner depuis votre canapé.",
+  "recommendedBy": "Bérangère Creff",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

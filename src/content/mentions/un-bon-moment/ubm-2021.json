@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:28"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2021",
+  "itemId": "c6e91788",
+  "kind": "reco",
+  "quote": "j'aime beaucoup Carnet du Vivier et Renoir, qui sont pour moi les vrais maîtres du cinéma français",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:28",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

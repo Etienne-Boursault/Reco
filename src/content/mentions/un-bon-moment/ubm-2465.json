@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2465",
+  "itemId": "217bce10",
+  "kind": "reco",
+  "quote": "Si vous avez jamais joué au Loup-Tiers-Selin, jouer, c'est très marrant aussi comme jeu de société.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

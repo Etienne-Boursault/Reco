@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0964",
+  "itemId": "69c59b39",
+  "kind": "reco",
+  "quote": "La Pampa de Antoine Chevrolier. Très beau. Super film. Le plus connu des acteurs, c'est Artus.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:18",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

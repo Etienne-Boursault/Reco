@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:11:31"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:11:31"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:11:30"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0263",
+  "itemId": "d5db6380",
+  "kind": "reco",
+  "quote": "I Feel Good avec Jean Dujardin.",
+  "recommendedBy": "Non précisé",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:11:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

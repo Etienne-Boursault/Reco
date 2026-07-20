@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:46:51"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2014",
+  "itemId": "76879da5",
+  "kind": "reco",
+  "quote": "Ah, tiens, le Raid. Qui est un super endroit, vraiment.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:46:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

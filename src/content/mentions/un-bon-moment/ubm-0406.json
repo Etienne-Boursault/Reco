@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0406",
+  "itemId": "22407f06",
+  "kind": "reco",
+  "quote": "et une de mes plus grandes inspirations de dessin graphique",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:47",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

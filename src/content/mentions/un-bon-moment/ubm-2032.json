@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2032",
+  "itemId": "4ae67fa5",
+  "kind": "reco",
+  "quote": "le gars de chez Pixar qui a fait une fausse commande et qui a effacé tout Toy Story 2",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

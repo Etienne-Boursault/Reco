@@ -1,0 +1,40 @@
+{
+  "creator": "Jonathan Nolan, Lisa Joy",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=FR",
+    "tmdb": 63247,
+    "tmdbType": "tv"
+  },
+  "id": "ff452133",
+  "schemaVersion": 1,
+  "title": "Westworld",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Westworld"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Westworld"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Westworld"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Westworld"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Westworld"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Westworld"
+    }
+  ]
+}

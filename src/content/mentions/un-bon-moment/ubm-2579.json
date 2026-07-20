@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:47:11"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2579",
+  "itemId": "cd8ee7ee",
+  "kind": "reco",
+  "quote": "Tiens, un créatif sur YouTube. Un créatif. J'aime bien ce qu'il fait.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:47:11",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

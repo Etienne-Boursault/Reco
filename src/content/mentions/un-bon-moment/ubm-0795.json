@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:38"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0795",
+  "itemId": "340574c7",
+  "kind": "reco",
+  "quote": "moi, je conseille celui de Charlotte Pylowski, qui s'appelle ou peut-être 'Une nuit que vous avez peut-être...'.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:38",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

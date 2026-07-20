@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:12:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:56"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0299",
+  "itemId": "865af2a7",
+  "kind": "reco",
+  "quote": "Albert Dupontel qui est un génie complet",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

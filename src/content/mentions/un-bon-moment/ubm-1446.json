@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:16"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1446",
+  "itemId": "f4f5aece",
+  "kind": "reco",
+  "quote": "allez je vous donne un livre cro blanc",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:16",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

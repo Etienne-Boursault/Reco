@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1284",
+  "itemId": "88a2144f",
+  "kind": "reco",
+  "quote": "pour l'instant c'est juste ça s'appelle Insomniac mais si ça s'appelle Insomniac et c'est des dialogues entre mon angoisse, ma créativité, ma libido",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:24",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:36"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1794",
+  "itemId": "7033f440",
+  "kind": "reco",
+  "quote": "C'était un bébé qui naissait dans le futur, et tout était prévu",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:36",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

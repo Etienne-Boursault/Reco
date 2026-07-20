@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:46:04"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1053",
+  "itemId": "5b2acea6",
+  "kind": "reco",
+  "quote": "Découvert à Bill Beurre, le spectacle sur Netflix lequel ? En noir et blanc ? Bah le mieux pour moi c'est le noir et blanc.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:46:04",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

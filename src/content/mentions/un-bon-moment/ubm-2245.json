@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:20:04"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2245",
+  "itemId": "f2f09c6a",
+  "kind": "reco",
+  "quote": "Quand on a fait Foresty Party, à un moment donné, t'as réécrit tout le sketch de la meuf qui fume comme ça sur son truc.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

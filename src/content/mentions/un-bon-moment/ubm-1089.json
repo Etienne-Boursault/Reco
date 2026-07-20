@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:28"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1089",
+  "itemId": "02aa337f",
+  "kind": "reco",
+  "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:28",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

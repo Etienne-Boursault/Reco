@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:25"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2477",
+  "itemId": "1dd76cb5",
+  "kind": "reco",
+  "quote": "Alors, c'est pas très feel good, hein, mais quand même, je voulais en parler, ça s'appelle \"Don't fuck with cats on internet\".",
+  "recommendedBy": "Dedo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:36:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

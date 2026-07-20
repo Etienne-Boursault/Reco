@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:40:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:40:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:06"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1055",
+  "itemId": "278b0017",
+  "kind": "reco",
+  "quote": "C'était en 98 et tout.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

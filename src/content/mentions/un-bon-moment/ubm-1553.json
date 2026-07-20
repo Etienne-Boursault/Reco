@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:19"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:21"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1553",
+  "itemId": "c061ff15",
+  "kind": "reco",
+  "quote": "T'attends qu'il y a un morceau des Beatles à la radio.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

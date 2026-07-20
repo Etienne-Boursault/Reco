@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:37"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:38"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2639",
+  "itemId": "caf249b2",
+  "kind": "reco",
+  "quote": "C'est trop bien mignonne.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

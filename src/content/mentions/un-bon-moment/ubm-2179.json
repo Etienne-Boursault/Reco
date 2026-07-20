@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2179",
+  "itemId": "469501c3",
+  "kind": "reco",
+  "quote": "Son mari est parti à la guerre, Macarena.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:44:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0273",
+  "itemId": "95e7a44f",
+  "kind": "reco",
+  "quote": "Et après, il y a un deuxième truc que j'aime bien. Il s'appelle I-R-A.",
+  "recommendedBy": "invitée",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:44:07",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

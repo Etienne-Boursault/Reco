@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "61b6528b97cccb0012aec8b5",
-  "title": "avec AUGUSTIN TRAPENARD et MOULOUD ACHOUR",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 37,
-  "date": "2021-12-12",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61b6528b97cccb0012aec8b5/media.mp3",
-  "description": "Augustin Trapenard et Mouloud Achour ont plutôt l'habitude d'être dans le siège de l'intervieweur. Face à Kyan et Navo ils se révèlent aussi passionnants dans le rôle d'interviewés !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=2ro6vay3oQw",
   "audioDuration": 3980,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61b6528b97cccb0012aec8b5/media.mp3",
+  "date": "2021-12-12",
+  "description": "Augustin Trapenard et Mouloud Achour ont plutôt l'habitude d'être dans le siège de l'intervieweur. Face à Kyan et Navo ils se révèlent aussi passionnants dans le rôle d'interviewés !",
+  "guests": [],
+  "guestsExcluded": [
+    "Augustin Trappennier",
+    "invité"
+  ],
+  "guestsParsed": [
+    "Augustin Trapenard",
+    "Mouloud Achour"
+  ],
+  "guid": "61b6528b97cccb0012aec8b5",
+  "number": 37,
+  "sourceId": "un-bon-moment",
+  "title": "avec AUGUSTIN TRAPENARD et MOULOUD ACHOUR",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 3980,
-  "youtubeTitle": "Un Bon Moment avec MOULOUD ACHOUR & AUGUSTIN TRAPENARD"
+  "youtubeTitle": "Un Bon Moment avec MOULOUD ACHOUR & AUGUSTIN TRAPENARD",
+  "youtubeUrl": "https://www.youtube.com/watch?v=2ro6vay3oQw"
 }

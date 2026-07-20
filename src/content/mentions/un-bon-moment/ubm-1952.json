@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1952",
+  "itemId": "0fcea216",
+  "kind": "reco",
+  "quote": "Mais la variété, sache qu'il y a un son incroyable de Blur avec Françoise Hardy.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:25:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

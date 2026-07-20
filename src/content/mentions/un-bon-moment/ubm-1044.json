@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1044",
+  "itemId": "91abd313",
+  "kind": "reco",
+  "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

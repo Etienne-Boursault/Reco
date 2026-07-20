@@ -1,0 +1,24 @@
+{
+  "creator": "Larry David, Jerry Seinfeld",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR",
+    "tmdb": 1400,
+    "tmdbType": "tv"
+  },
+  "id": "841933e0",
+  "schemaVersion": 1,
+  "title": "Seinfeld",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Seinfeld"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Seinfeld"
+    }
+  ]
+}

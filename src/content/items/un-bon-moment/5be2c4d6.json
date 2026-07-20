@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR",
+    "tmdb": 96129,
+    "tmdbType": "tv"
+  },
+  "id": "5be2c4d6",
+  "schemaVersion": 1,
+  "title": "Don't F**k with Cats",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Don%27t%20F%2A%2Ak%20with%20Cats"
+    }
+  ]
+}

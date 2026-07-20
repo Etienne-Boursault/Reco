@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1450",
+  "itemId": "b7cfe146",
+  "kind": "reco",
+  "quote": "Oui, j'ai sorti un doc sur les baleines.",
+  "recommendedBy": "Invitée (prénom non précisé)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

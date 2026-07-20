@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:10"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1426",
+  "itemId": "12ae5534",
+  "kind": "reco",
+  "quote": "et grâce à ça vous aurez toutes les références pour aller voir Un Crime au troisième étage",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

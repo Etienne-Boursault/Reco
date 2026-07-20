@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:38"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1949",
+  "itemId": "cc09928b",
+  "kind": "reco",
+  "quote": "Je l'ai reçu ! Je le recommande aussi je l'ai pas encore lu mais on l'a reçu !",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:41:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

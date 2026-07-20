@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:05"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0134",
+  "itemId": "0c8c749d",
+  "kind": "reco",
+  "quote": "il y a oasis",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:05",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

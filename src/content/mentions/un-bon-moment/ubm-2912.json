@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2912",
+  "itemId": "81fe2d64",
+  "kind": "reco",
+  "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

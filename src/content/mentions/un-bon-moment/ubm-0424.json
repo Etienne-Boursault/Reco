@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:28:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0424",
+  "itemId": "d47c0ad4",
+  "kind": "reco",
+  "quote": "Elle est Mélodrama avec Théodora et DC.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "699968af0e5c959d5971943f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:28:03",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

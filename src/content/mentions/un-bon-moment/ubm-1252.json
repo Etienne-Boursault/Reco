@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1252",
+  "itemId": "c82f1b6b",
+  "kind": "reco",
+  "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tiff.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240f8a7a4ced00123481d1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:49:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:49:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0527",
+  "itemId": "4d200d99",
+  "kind": "reco",
+  "quote": "Moi, je vous recommande de regarder The Voice, parce qu'il y a le petit frère de Nassim, et il y a ma meilleure amie, Tessabé !",
+  "recommendedBy": "Non précisé",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69e13325fb440758726a665f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

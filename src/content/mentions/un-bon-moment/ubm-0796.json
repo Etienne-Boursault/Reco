@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0796",
+  "itemId": "22d9cf17",
+  "kind": "reco",
+  "quote": "dans la nouvelle création de Mylan, Mylan Shapiron, qui s'appelle 'Le Lou'.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:26",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

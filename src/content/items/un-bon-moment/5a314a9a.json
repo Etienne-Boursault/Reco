@@ -1,0 +1,47 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/2316-the-office/watch?locale=FR",
+    "tmdb": 2316,
+    "tmdbType": "tv"
+  },
+  "id": "5a314a9a",
+  "schemaVersion": 1,
+  "title": "The Office",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Office"
+    },
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
+    },
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=The%20Office"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Office"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Office"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Office"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Office"
+    }
+  ]
+}

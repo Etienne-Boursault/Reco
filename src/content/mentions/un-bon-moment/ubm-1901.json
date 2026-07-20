@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:26:46"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1901",
+  "itemId": "43ee1b2f",
+  "kind": "reco",
+  "quote": "il y a un jeu auquel je joue tous les noëls il sait que c'est mario bros 3",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:26:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

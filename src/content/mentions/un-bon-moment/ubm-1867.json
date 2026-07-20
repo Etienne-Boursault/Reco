@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:18:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1867",
+  "itemId": "8deea283",
+  "kind": "reco",
+  "quote": "Il y a les séries genre Damer sur Netflix et tout, tu vois.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:38"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:38"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:38"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1462",
+  "itemId": "1f7c4ded",
+  "kind": "reco",
+  "quote": "Moi je recommande les chiens !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:43:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1289",
+  "itemId": "aa7e8420",
+  "kind": "reco",
+  "quote": "le spectacle, il est sur le, alors il y a deux pans dans le spectacle c'est on va dire le système de santé",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

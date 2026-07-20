@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2007",
+  "itemId": "9a643fd3",
+  "kind": "reco",
+  "quote": "par exemple j'ai vécu ça dernièrement avec Chalice Gambino tu vois, j'aime trop l'idée de...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

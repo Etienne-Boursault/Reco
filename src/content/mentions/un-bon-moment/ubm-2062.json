@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2062",
+  "itemId": "3fc77ea8",
+  "kind": "reco",
+  "quote": "à chaque fois qu'un de mes enfants me dit bonne nuit papa je me dis toujours même pas qu'il y a cet humoriste",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:36:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

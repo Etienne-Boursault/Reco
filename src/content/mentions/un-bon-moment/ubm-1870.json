@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:04"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:04"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:03"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:04"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1870",
+  "itemId": "cf62234a",
+  "kind": "reco",
+  "quote": "Fanny Ruet ! Qui est un spectacle formidable, allez-y, pitié !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

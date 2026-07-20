@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:30:38"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:30:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2316",
+  "itemId": "841933e0",
+  "kind": "reco",
+  "quote": "il a fait la série Seinfeld c'est la méga star de l'humour aux Etats-Unis",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:30:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

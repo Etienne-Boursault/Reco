@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1131",
+  "itemId": "802cc63c",
+  "kind": "reco",
+  "quote": "je recommande Splinal Nd la chaîne Youtube de Splinal Nd qui a fait toute une série sur les sectes et comment ça fonctionne",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240e1c5d8481001225962c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:03",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

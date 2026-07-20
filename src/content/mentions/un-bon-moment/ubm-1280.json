@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1280",
+  "itemId": "001f93f7",
+  "kind": "reco",
+  "quote": "Joe, Nikky, la ripage, sonne, DEP.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:50",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

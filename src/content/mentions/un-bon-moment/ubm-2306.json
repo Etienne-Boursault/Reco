@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "09:58:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:09:01"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2306",
+  "itemId": "696df635",
+  "kind": "reco",
+  "quote": "PNL pourquoi ? pour toutes les mêmes raisons c'est des génies",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:09:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:56"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2346",
+  "itemId": "c0e1e0b5",
+  "kind": "reco",
+  "quote": "la cinétech.com qui est un site pour voir des vieux films",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

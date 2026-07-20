@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:15"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2748",
+  "itemId": "abe68d6f",
+  "kind": "reco",
+  "quote": "Crushless ? Oui, ça veut dire sans crush.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

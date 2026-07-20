@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:06"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1567",
+  "itemId": "de1ed6c0",
+  "kind": "reco",
+  "quote": "dans le visiteur du futur c'est ça dont tu voulais parler ou pas il y a Raphaël, François Descraques il a écrit un truc assez fou",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

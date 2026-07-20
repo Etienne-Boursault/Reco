@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:04:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:27:02"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1965",
+  "itemId": "cd61f938",
+  "kind": "reco",
+  "quote": "Est-ce que vous avez bien aimé le morceau qu'il a fait pour le film.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:27:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

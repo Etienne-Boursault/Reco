@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2370",
+  "itemId": "ab7654a9",
+  "kind": "reco",
+  "quote": "Et un film Avec Rachel Weiss Et Rachel McAdam Qui s'appelait Je ne sais pas Comment qu'ils parlaient D'un amour impossible",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

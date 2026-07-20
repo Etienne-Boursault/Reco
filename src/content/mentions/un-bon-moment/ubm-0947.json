@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:26:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0947",
+  "itemId": "9bdd1131",
+  "kind": "reco",
+  "quote": "Je voulais vous recommander un compte Instagram. Il est aussi sur TikTok, je crois. C'est Mitch. CK officiel.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:26:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

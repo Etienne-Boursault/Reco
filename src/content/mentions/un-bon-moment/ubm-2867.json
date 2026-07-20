@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:30:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:47"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2867",
+  "itemId": "65f54b3f",
+  "kind": "reco",
+  "quote": "je vous invite à aller découvrir le nouveau spectacle de sa mère",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

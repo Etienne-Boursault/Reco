@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:33"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2180",
+  "itemId": "85f2ad3a",
+  "kind": "reco",
+  "quote": "Que veut dire la chanson Poker Face ? De Lady Gaga ?",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:33",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:49"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1886",
+  "itemId": "64b5280a",
+  "kind": "reco",
+  "quote": "Près de la plaine du... La ville où tout le monde se déteste.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

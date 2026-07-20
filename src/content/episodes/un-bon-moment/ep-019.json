@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
-  "title": "avec GRAND CORPS MALADE et BEN MAZUÉ",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 19,
-  "date": "2020-11-08",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecgrandcorpsmaladeetbenmazue/media.mp3",
-  "description": "Grand Corps Malade et Ben Mazué m'ont beaucoup influencé dans mes choix de vie d'auteur. On revient sur leur process créatif et leurs expériences scéniques. Hyper intéressant.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=NGBjiDxAClw",
   "audioDuration": 6134,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecgrandcorpsmaladeetbenmazue/media.mp3",
+  "date": "2020-11-08",
+  "description": "Grand Corps Malade et Ben Mazué m'ont beaucoup influencé dans mes choix de vie d'auteur. On revient sur leur process créatif et leurs expériences scéniques. Hyper intéressant.",
+  "guests": [],
+  "guestsExcluded": [
+    "Ben",
+    "Invité"
+  ],
+  "guestsParsed": [
+    "Grand Corps Malade",
+    "Ben Mazué"
+  ],
+  "guid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "number": 19,
+  "sourceId": "un-bon-moment",
+  "title": "avec GRAND CORPS MALADE et BEN MAZUÉ",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6168,
-  "youtubeTitle": "Un Bon Moment avec GRAND CORPS MALADE et BEN MAZUÉ"
+  "youtubeTitle": "Un Bon Moment avec GRAND CORPS MALADE et BEN MAZUÉ",
+  "youtubeUrl": "https://www.youtube.com/watch?v=NGBjiDxAClw"
 }

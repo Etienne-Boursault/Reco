@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:12"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1104",
+  "itemId": "d064e391",
+  "kind": "reco",
+  "quote": "O.J. Simpson, Made in America. Pas la série, le doc, qui est une série doc. C'est là où c'est un peu piège. Et donc, c'est ESPN qui avait fait ça. Ça avait eu l'Oscar du meilleur documentaire en 2016, je crois.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:12",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

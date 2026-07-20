@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:48"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1294",
+  "itemId": "71c5ddbd",
+  "kind": "reco",
+  "quote": "je vous invite à aller découvrir le nouveau spectacle.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:48",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

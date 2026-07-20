@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2188",
+  "itemId": "b7e8e9f7",
+  "kind": "reco",
+  "quote": "C'est Fight Club, tout le monde pleure !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

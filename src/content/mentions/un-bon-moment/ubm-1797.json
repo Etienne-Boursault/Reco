@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:02:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1797",
+  "itemId": "f104dd96",
+  "kind": "reco",
+  "quote": "c'est ce grand metteur en scène allemand Schlondorf",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:07",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

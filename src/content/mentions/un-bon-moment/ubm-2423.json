@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2423",
+  "itemId": "ddf151ab",
+  "kind": "reco",
+  "quote": "Je vous invite à aller voir le Netflix de Shirley, humoriste du monde.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

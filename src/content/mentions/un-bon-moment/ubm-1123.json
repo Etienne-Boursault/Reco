@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:23"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1123",
+  "itemId": "378aeb7d",
+  "kind": "reco",
+  "quote": "j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona de la joie",
+  "recommendedBy": "Bertrand",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b2f213ca1cc001201a69f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

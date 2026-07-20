@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR",
+    "tmdb": 61222,
+    "tmdbType": "tv"
+  },
+  "id": "c0c2311c",
+  "schemaVersion": 1,
+  "title": "Bojack Horseman",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Bojack%20Horseman"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Bojack%20Horseman"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1396-breaking-bad/watch?locale=FR",
+    "tmdb": 1396,
+    "tmdbType": "tv"
+  },
+  "id": "9f1cfb29",
+  "schemaVersion": 1,
+  "title": "Breaking Bad",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Breaking%20Bad"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Breaking%20Bad"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Breaking%20Bad"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Breaking%20Bad"
+    }
+  ]
+}

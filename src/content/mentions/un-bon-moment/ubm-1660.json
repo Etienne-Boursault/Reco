@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1660",
+  "itemId": "a1d54c33",
+  "kind": "reco",
+  "quote": "Oh on fait un \"Devine et chanter\" de Greg Romano...",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

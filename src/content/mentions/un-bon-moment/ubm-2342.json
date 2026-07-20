@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:05:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:23"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2342",
+  "itemId": "0c2ddc2f",
+  "kind": "reco",
+  "quote": "pour les trucs genre Festival Nikon",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

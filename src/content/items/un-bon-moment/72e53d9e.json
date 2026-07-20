@@ -1,0 +1,51 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR",
+    "tmdb": 111803,
+    "tmdbType": "tv"
+  },
+  "id": "72e53d9e",
+  "schemaVersion": 1,
+  "title": "The White Lotus",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus"
+    },
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20White%20Lotus"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20White%20Lotus"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20White%20Lotus"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=The%20White%20Lotus"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20White%20Lotus"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=The%20White%20Lotus"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=The%20White%20Lotus"
+    }
+  ]
+}

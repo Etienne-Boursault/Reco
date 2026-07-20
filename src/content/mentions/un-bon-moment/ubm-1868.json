@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1868",
+  "itemId": "7068975a",
+  "kind": "reco",
+  "quote": "Qu'est-ce que tu penses du Petit Grégory ? Je pense qu'il va cartonner.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

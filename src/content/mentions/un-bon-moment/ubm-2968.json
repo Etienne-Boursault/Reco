@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2968",
+  "itemId": "a742f6dc",
+  "kind": "reco",
+  "quote": "c'est un peu comme \"Hilarious\" de Louis Sycambe qu'est ce que tu vas dire quand il y aura vraiment quelqu'un qui sera un génie",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

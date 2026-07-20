@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-03T19:15:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1309",
+  "itemId": "711ded61",
+  "kind": "reco",
+  "quote": "Highway to Hell.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:00",
+    "transcriptSource": "acast"
+  },
+  "status": "discarded"
+}

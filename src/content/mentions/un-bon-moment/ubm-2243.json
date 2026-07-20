@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2243",
+  "itemId": "78dc5f4c",
+  "kind": "reco",
+  "quote": "tu me dis \"il faut que tu ailles voir Conjuring\"",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1453",
+  "itemId": "9a821c25",
+  "kind": "reco",
+  "quote": "Moby, le chanteur, il a sorti quelque chose que personne ne connaît, des sons d'ambiance qui durent entre 20 et 40 minutes.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

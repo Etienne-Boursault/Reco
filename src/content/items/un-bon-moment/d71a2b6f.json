@@ -1,0 +1,63 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/103-taxi-driver/watch?locale=FR",
+    "tmdb": 103,
+    "tmdbType": "movie"
+  },
+  "id": "d71a2b6f",
+  "schemaVersion": 1,
+  "title": "Taxi Driver",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Taxi%20Driver"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Taxi%20Driver&c=movies"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Taxi%20Driver"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Taxi%20Driver"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Taxi%20Driver"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Taxi%20Driver"
+    },
+    {
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Taxi%20Driver"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Taxi%20Driver"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Taxi%20Driver"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Taxi%20Driver"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Taxi%20Driver"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Taxi%20Driver"
+    }
+  ]
+}

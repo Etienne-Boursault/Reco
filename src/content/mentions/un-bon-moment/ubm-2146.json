@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:32:19+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:38"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2146",
+  "itemId": "47d67075",
+  "kind": "reco",
+  "quote": "il y a un truc à Pompidou sur la réalisatrice, une réalisatrice martiniquaise qui s'appelle Jeanne Palsy et qui est la deuxième femme à avoir eu un Oscar d'ailleurs, d'honneur",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

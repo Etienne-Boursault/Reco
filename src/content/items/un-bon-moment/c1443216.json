@@ -1,0 +1,48 @@
+{
+  "creator": "David Benioff, D.B. Weiss",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR",
+    "tmdb": 1399,
+    "tmdbType": "tv"
+  },
+  "id": "c1443216",
+  "schemaVersion": 1,
+  "title": "Game of Thrones",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Game%20of%20Thrones"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Game%20of%20Thrones"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Game%20of%20Thrones"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Game%20of%20Thrones"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Game%20of%20Thrones"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Game%20of%20Thrones"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Game%20of%20Thrones"
+    }
+  ]
+}

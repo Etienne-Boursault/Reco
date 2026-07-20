@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1622",
+  "itemId": "f7d575cd",
+  "kind": "reco",
+  "quote": "Oui il y a un film qui s'appelle Les nouveaux monstres",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:59",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

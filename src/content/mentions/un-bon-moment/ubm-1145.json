@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:37:06"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1145",
+  "itemId": "6875bf33",
+  "kind": "reco",
+  "quote": "le Tao, c'est une philosophie chinoise ancestrale, tu vois. Et c'est donc des petites poésies comme ça, de vie, quoi, que je vous invite à lire, le Tao Talking, qui est un livre vraiment ancestral.",
+  "recommendedBy": "Mathieu Chedid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:37:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

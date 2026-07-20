@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2220",
+  "itemId": "bd5ec4c7",
+  "kind": "reco",
+  "quote": "Alors écoutez on a déjà évoqué Amy LTR tout à l'heure. On l'adore. Elle fait les courts-métrages de qualité. C'est une bosseuse.",
+  "recommendedBy": "Natu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

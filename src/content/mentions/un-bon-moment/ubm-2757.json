@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:09:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:23:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2757",
+  "itemId": "e84ff19d",
+  "kind": "reco",
+  "quote": "Allez voir, allez voir sur paskinad.fr, du coup.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:23:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

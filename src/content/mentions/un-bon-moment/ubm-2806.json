@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:11"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2806",
+  "itemId": "bdb200cf",
+  "kind": "reco",
+  "quote": "quand j'étais petite, elle me racontait toujours qu'ils aimaient beaucoup Cole Porter et Artie Shaw avec mon grand-père",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61accf4f45d15e00135c6ef2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:11",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

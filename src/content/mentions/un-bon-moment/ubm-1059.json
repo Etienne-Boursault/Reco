@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:05"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1059",
+  "itemId": "dc36ee05",
+  "kind": "reco",
+  "quote": "Je vous invite à aller voir le Netflix de Charlet dans Humoriste du Monde",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:05",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

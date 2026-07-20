@@ -1,0 +1,56 @@
+{
+  "creator": "Justin Roiland, Dan Harmon",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60625-rick-and-morty/watch?locale=FR",
+    "tmdb": 60625,
+    "tmdbType": "tv"
+  },
+  "id": "b76dad77",
+  "schemaVersion": 1,
+  "title": "Rick and Morty",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Rick%20and%20Morty"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Rick%20and%20Morty"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Rick%20and%20Morty"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Rick%20and%20Morty"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Rick%20and%20Morty"
+    }
+  ]
+}

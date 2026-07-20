@@ -1,0 +1,24 @@
+{
+  "creator": "Steve Carell, Jennifer Aniston",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=FR",
+    "tmdb": 90282,
+    "tmdbType": "tv"
+  },
+  "id": "229cbd75",
+  "schemaVersion": 1,
+  "title": "The Morning Show",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=The%20Morning%20Show"
+    },
+    {
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Morning%20Show"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2884",
+  "itemId": "2d212019",
+  "kind": "reco",
+  "quote": "Maud Landry aller voir le travail de Maud Landry il est formidable il a une chaîne YouTube en plus elle est trop bien",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

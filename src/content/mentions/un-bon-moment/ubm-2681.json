@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:41"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:41"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2681",
+  "itemId": "baad0129",
+  "kind": "reco",
+  "quote": "Moi, j'ai lu tous les livres de Fabien Olicard.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:35:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

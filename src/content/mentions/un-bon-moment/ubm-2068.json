@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2068",
+  "itemId": "310c767c",
+  "kind": "reco",
+  "quote": "René Dangerfield quand j'étais enfant mes parents déménageaient beaucoup mais pas avec moi",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,15 +1,23 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
-  "title": "avec MANU PAYET",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 13,
-  "date": "2020-04-19",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecmanupayet/media.mp3",
-  "description": "On ne présente plus Manu Payet, on a parlé de Radio, du film Radiostars et on a passé un super moment.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=UkytFnKBRJA",
   "audioDuration": 6747,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecmanupayet/media.mp3",
+  "date": "2020-04-19",
+  "description": "On ne présente plus Manu Payet, on a parlé de Radio, du film Radiostars et on a passé un super moment.",
+  "guests": [],
+  "guestsExcluded": [
+    "Manu"
+  ],
+  "guestsParsed": [
+    "Manu Payet"
+  ],
+  "guid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "number": 13,
+  "sourceId": "un-bon-moment",
+  "title": "avec MANU PAYET",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6778,
-  "youtubeTitle": "Un Bon Moment avec MANU PAYET"
+  "youtubeTitle": "Un Bon Moment avec MANU PAYET",
+  "youtubeUrl": "https://www.youtube.com/watch?v=UkytFnKBRJA"
 }

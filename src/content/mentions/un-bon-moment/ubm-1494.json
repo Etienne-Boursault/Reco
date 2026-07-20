@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1494",
+  "itemId": "b8064b12",
+  "kind": "reco",
+  "quote": "Il fait partie du groupe Geese, G-E-E-S-E.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:25:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

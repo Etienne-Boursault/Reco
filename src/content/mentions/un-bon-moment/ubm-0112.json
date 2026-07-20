@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:27"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:06:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:25"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0112",
+  "itemId": "d8375f8b",
+  "kind": "reco",
+  "quote": "Un gars qui s'appelle Damien Rice qui m'a tué quand j'étais ado.",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

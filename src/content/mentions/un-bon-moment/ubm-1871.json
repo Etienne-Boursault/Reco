@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:18:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1871",
+  "itemId": "c71dc15f",
+  "kind": "reco",
+  "quote": "C'est mon troisième spectacle, je peux pas trop en parler mais la nuit, je fouette, gars.",
+  "recommendedBy": "Morgane",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

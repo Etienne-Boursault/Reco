@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:04"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2462",
+  "itemId": "ca3dffa1",
+  "kind": "reco",
+  "quote": "Ok, Malcolm, c'est pas un jeu de mots, Malcolm, si, parce qu'il a Malcolm.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

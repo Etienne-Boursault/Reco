@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:05:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:37"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2174",
+  "itemId": "b9cbc111",
+  "kind": "reco",
+  "quote": "Axel Bauer. Bah oui, c'est logique que Zazie aime Axel Bauer",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:37",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

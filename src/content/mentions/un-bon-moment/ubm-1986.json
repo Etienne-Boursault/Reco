@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:31:45"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1986",
+  "itemId": "911d4f08",
+  "kind": "reco",
+  "quote": "Ma petite sœur est actuellement au Machu Picchu",
+  "recommendedBy": "Greg",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:31:45",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

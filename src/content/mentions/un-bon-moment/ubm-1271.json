@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1271",
+  "itemId": "5eb8eb1a",
+  "kind": "reco",
+  "quote": "Drinking en tout cas, c'est pas mal.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6584658132930b0016c5272b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

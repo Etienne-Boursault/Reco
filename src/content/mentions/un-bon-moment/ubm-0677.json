@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:08"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0677",
+  "itemId": "7b219d67",
+  "kind": "reco",
+  "quote": "Kendrick Lamar, Kendrick Lamar.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:08",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

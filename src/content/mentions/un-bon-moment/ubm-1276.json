@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:10"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:12"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:10"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1276",
+  "itemId": "f8fd57dd",
+  "kind": "reco",
+  "quote": "s'il y a des gens que je vous invite à aller voir",
+  "recommendedBy": "Walidia",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a2673210d00017783f8b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

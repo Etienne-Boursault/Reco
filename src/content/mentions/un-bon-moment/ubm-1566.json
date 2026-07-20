@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1566",
+  "itemId": "8cfcecdc",
+  "kind": "reco",
+  "quote": "ça si ça m'arrive c'est les gens qui ont un reportage dans stade 2 dans stade 2",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

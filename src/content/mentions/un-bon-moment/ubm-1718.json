@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:04:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:29"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1718",
+  "itemId": "b949ff47",
+  "kind": "reco",
+  "quote": "C'était ça, la blague de la futurama.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:41:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

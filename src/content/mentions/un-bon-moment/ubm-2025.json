@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:59:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2025",
+  "itemId": "81bb6cca",
+  "kind": "reco",
+  "quote": "D'ailleurs tu étais le parrain\nDe A bientôt te revoir\nDe A bientôt te revoir",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:59:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

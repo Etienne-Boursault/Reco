@@ -1,0 +1,24 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/62476-le-bureau-des-legendes/watch?locale=FR",
+    "tmdb": 62476,
+    "tmdbType": "tv"
+  },
+  "id": "1bf77f8a",
+  "schemaVersion": 1,
+  "title": "Le Bureau des Légendes",
+  "types": [
+    "serie",
+    "podcast"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
+    },
+    {
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
+    }
+  ]
+}

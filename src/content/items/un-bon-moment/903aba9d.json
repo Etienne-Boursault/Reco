@@ -1,0 +1,24 @@
+{
+  "creator": "Nathan Fielder",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/204284-the-rehearsal/watch?locale=FR",
+    "tmdb": 204284,
+    "tmdbType": "tv"
+  },
+  "id": "903aba9d",
+  "schemaVersion": 1,
+  "title": "The Rehearsal",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Rehearsal"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Rehearsal"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2526",
+  "itemId": "8a24d72b",
+  "kind": "reco",
+  "quote": "dans tout est possible de Kev Adams et Gad Elmaleh il y a une scène où Kev... l'éloge funèbre de Gad par Kev et l'éloge funèbre de Kev par Gad et ils se roastent et c'était un des moments les plus drôles",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,43 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/637-la-vita-e-bella/watch?locale=FR",
+    "tmdb": 637,
+    "tmdbType": "movie"
+  },
+  "id": "a90cb536",
+  "schemaVersion": 1,
+  "title": "La Vie est belle",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=La%20Vie%20est%20belle"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=La%20Vie%20est%20belle"
+    }
+  ]
+}

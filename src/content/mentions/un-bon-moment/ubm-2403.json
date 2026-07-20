@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "10:32:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2403",
+  "itemId": "415fb7f4",
+  "kind": "reco",
+  "quote": "Par exemple, tous les gens de chez Upgrade Citizen Brigade, tu sais, il y a Amy Poehler, il y a tous ces gens-là et ils construisent des...",
+  "recommendedBy": "Laurie Perret",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "10:32:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

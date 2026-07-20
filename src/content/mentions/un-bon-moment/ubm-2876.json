@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:14"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2876",
+  "itemId": "3da1bc21",
+  "kind": "reco",
+  "quote": "déjà il m'a envoyé un discours de Denis Villeneuve qui quand il reçoit un prix dit je conseille à tous les jeunes cinéastes",
+  "recommendedBy": "Adib (via invité Jason)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

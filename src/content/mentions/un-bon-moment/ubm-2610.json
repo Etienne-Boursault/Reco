@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2610",
+  "itemId": "e8c0fea8",
+  "kind": "reco",
+  "quote": "Le colors avec le chien en 3D, sur Iron.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:34:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

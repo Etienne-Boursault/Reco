@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:56"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2314",
+  "itemId": "f5c1e93f",
+  "kind": "reco",
+  "quote": "Sugar Sammy qui faisait ça... un humoriste québécois ouais qui est super fort",
+  "recommendedBy": "Kian Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

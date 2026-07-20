@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2540",
+  "itemId": "d0989451",
+  "kind": "reco",
+  "quote": "Star Wars !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

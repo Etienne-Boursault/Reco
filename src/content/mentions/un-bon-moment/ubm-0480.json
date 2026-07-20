@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:30"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0480",
+  "itemId": "913487d5",
+  "kind": "reco",
+  "quote": "Le jeu est quand même super.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

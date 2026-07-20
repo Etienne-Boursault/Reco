@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:59:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1951",
+  "itemId": "68cf1743",
+  "kind": "reco",
+  "quote": "Tu vas rigoler, ça, c'est très, très drôle.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

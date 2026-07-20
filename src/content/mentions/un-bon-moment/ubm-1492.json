@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1492",
+  "itemId": "8d5614f6",
+  "kind": "reco",
+  "quote": "Je me retrouve un peu comme Bill Murray dans Un jour sans fin.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:07",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

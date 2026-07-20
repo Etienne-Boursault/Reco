@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:39"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2647",
+  "itemId": "ce9b1da6",
+  "kind": "reco",
+  "quote": "C'était mon temps un peu bigard au Jamel Comedy Club",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:34:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

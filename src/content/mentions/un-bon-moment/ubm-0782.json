@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:21"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0782",
+  "itemId": "f32020de",
+  "kind": "reco",
+  "quote": "le châtris arc, les mecs que je veux qu'en de Rosa Bernstein, qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61accf4f45d15e00135c6ef2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:21",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

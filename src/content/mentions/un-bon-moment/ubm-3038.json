@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3038",
+  "itemId": "f69455d1",
+  "kind": "reco",
+  "quote": "C'est un canon, là. C'est un film, t'as ? Le Roi Léon, ouais.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b305f3ca1cc001201a861",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:25"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1037",
+  "itemId": "42f22dcc",
+  "kind": "reco",
+  "quote": "Toute la bande : Pierre Croze, Benjamin Macchia !",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:20:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

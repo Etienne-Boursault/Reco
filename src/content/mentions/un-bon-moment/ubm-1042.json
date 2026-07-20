@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1042",
+  "itemId": "293de00a",
+  "kind": "reco",
+  "quote": "j'aimerais vous recommander une vidéo sur YouTube, qui n'a pas adoré, qui s'appelle \"Fleek & Games\".",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

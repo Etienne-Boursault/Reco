@@ -1,0 +1,24 @@
+{
+  "creator": "inconnu",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/45004-i-nuovi-mostri/watch?locale=FR",
+    "tmdb": 45004,
+    "tmdbType": "movie"
+  },
+  "id": "f44ae224",
+  "schemaVersion": 1,
+  "title": "Les nouveaux monstres",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Les%20nouveaux%20monstres"
+    },
+    {
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Les%20nouveaux%20monstres"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1983",
+  "itemId": "2002706a",
+  "kind": "reco",
+  "quote": "C'est un groupe de musique, c'est le premier groupe de musique qui m'a fait shooter en fait.",
+  "recommendedBy": "Alice Moitier",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

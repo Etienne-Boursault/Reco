@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1209",
+  "itemId": "6f243217",
+  "kind": "reco",
+  "quote": "moi je recommande l'horizon des événements de Ken qu'aujourd'hui",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

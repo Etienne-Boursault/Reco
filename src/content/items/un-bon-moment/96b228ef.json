@@ -1,0 +1,36 @@
+{
+  "creator": "HBO",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60573-silicon-valley/watch?locale=FR",
+    "tmdb": 60573,
+    "tmdbType": "tv"
+  },
+  "id": "96b228ef",
+  "schemaVersion": 1,
+  "title": "Silicon Valley",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Silicon%20Valley"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Silicon%20Valley"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Silicon%20Valley"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Silicon%20Valley"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Silicon%20Valley"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1128",
+  "itemId": "396d46ea",
+  "kind": "reco",
+  "quote": "Nordine Gansu et Yazid Asomani parce qu'ils ont vraiment assuré aussi",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240e1c5d8481001225962c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:03",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

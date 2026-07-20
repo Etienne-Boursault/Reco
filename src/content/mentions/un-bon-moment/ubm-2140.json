@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2140",
+  "itemId": "bee5acdc",
+  "kind": "reco",
+  "quote": "J'ai fait Planète Rap quand même.",
+  "recommendedBy": "Tani",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0295",
+  "itemId": "56571cdc",
+  "kind": "reco",
+  "quote": "Je dis que... je dis la vérité et je t'ai dit que c'était super.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

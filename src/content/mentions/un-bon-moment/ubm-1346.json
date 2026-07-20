@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:09:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1346",
+  "itemId": "9230f188",
+  "kind": "reco",
+  "quote": "C'est une série qui va s'appeler le Charles, bien nommé.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:15",
+    "transcriptSource": "acast"
+  },
+  "status": "discarded"
+}

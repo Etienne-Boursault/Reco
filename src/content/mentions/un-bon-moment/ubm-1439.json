@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1439",
+  "itemId": "72513ef2",
+  "kind": "reco",
+  "quote": "je fais un site de quiz oui garantie tu as le label Emilia c'est le label c'est moi c'est mes questions",
+  "recommendedBy": "Emilien",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

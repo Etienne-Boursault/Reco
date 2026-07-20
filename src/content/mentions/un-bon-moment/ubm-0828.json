@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0828",
+  "itemId": "989c5bd9",
+  "kind": "reco",
+  "quote": "actuellement, on enregistre ce podcast, tu es en train de jouer un spectacle qui est l'adaptation d'un livre que tu as écrit, qui s'appelle \"Fore\" comme un hypersensible.",
+  "recommendedBy": "Maurice Barthélémy",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6316136e9623160014506e77",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:03",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

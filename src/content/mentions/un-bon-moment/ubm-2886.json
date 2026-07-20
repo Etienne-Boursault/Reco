@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:37"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2886",
+  "itemId": "4281d71d",
+  "kind": "reco",
+  "quote": "Virginie Fortin qui est exceptionnelle elle est super",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:37",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

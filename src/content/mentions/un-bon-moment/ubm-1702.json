@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:49"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1702",
+  "itemId": "c7492001",
+  "kind": "reco",
+  "quote": "moi ça m'a fait penser à un sketch des nuls que j'adore",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:06:49",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

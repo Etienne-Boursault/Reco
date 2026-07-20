@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1995",
+  "itemId": "4499c77d",
+  "kind": "reco",
+  "quote": "moi je me rappelle quand j'avais vu le Moulin Rouge leur histoire d'amour et tout je dis genre mais c'est fou l'amour c'est dingue et tout",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

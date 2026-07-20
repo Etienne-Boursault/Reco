@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:24:21"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0238",
+  "itemId": "375667c8",
+  "kind": "reco",
+  "quote": "je recommande la chaîne Ambroise de Ambroise Kerminati",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:24:21",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

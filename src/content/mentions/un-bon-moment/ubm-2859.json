@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:54"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:55"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2859",
+  "itemId": "c6a9b0b2",
+  "kind": "reco",
+  "quote": "C'est une pièce qui est à côté de chez vous. La course des géants.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

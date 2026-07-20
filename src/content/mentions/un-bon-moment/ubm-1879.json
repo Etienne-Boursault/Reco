@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:53:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:23:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:53:18"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1879",
+  "itemId": "63fb39c3",
+  "kind": "reco",
+  "quote": "The Rire Soul que j'aime beaucoup, vous connaissez peut-être Adam, avec Nathan Fielder, c'est génial.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:53:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

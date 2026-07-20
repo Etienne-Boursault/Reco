@@ -1,15 +1,24 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
-  "title": "Spécial \"FLOODCAST\" avec FLORENT BERNARD et ADRIEN MÉNIELLE",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "number": 3,
-  "date": "2020-02-17",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/floodcast-florentbernard-adrienmenielle/media.mp3",
-  "description": "Le Floodcast est un des podcasts préférés de Kyan qui reçoit ses animateurs FLORENT BERNARD et ADRIEN MÉNIELLE. Plein de jeux dans cette émission !\n\nJEUX : Le jeu du Johnny Depp / Quelle est la chute de la blague ? / Le jeu de la complicité / Le jeu de la recette / Le Multi Blindtest",
-  "youtubeUrl": "https://www.youtube.com/watch?v=7r35xI1hOEE",
   "audioDuration": 6906,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/floodcast-florentbernard-adrienmenielle/media.mp3",
+  "date": "2020-02-17",
+  "description": "Le Floodcast est un des podcasts préférés de Kyan qui reçoit ses animateurs FLORENT BERNARD et ADRIEN MÉNIELLE. Plein de jeux dans cette émission !\n\nJEUX : Le jeu du Johnny Depp / Quelle est la chute de la blague ? / Le jeu de la complicité / Le jeu de la recette / Le Multi Blindtest",
+  "guests": [],
+  "guestsExcluded": [
+    "Adrien Méniel"
+  ],
+  "guestsParsed": [
+    "Florent Bernard",
+    "Adrien Ménielle"
+  ],
+  "guid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "number": 3,
+  "sourceId": "un-bon-moment",
+  "title": "Spécial \"FLOODCAST\" avec FLORENT BERNARD et ADRIEN MÉNIELLE",
+  "transcriptModel": "large-v3-turbo",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6962,
-  "youtubeTitle": "UN BON MOMENT avec FLORENT BERNARD et ADRIEN MÉNIELLE du FLOODCAST"
+  "youtubeTitle": "UN BON MOMENT avec FLORENT BERNARD et ADRIEN MÉNIELLE du FLOODCAST",
+  "youtubeUrl": "https://www.youtube.com/watch?v=7r35xI1hOEE"
 }

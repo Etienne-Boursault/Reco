@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1269",
+  "itemId": "464d94c0",
+  "kind": "reco",
+  "quote": "En ce moment, j'écoute vachement un podcast de Esther Pérel qui est une thérapeute de couple...",
+  "recommendedBy": "Invité non identifié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6584658132930b0016c5272b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:58",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

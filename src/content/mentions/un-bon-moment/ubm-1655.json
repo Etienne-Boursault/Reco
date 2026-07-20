@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:11:40"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:18"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1655",
+  "itemId": "0bd80d90",
+  "kind": "reco",
+  "quote": "Allez voir Yassir, trop trop fort !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

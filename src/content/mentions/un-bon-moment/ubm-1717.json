@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:04:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:06"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1717",
+  "itemId": "119994ff",
+  "kind": "reco",
+  "quote": "C'est quoi arrêter de couper c'est quoi ton budget l'émission l'émission que léopold voulait à l'émission où léopold ne voulait qu'elle soit parfaite l'émission que léopold ne veut pas que que vous voyez ça va être un super",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

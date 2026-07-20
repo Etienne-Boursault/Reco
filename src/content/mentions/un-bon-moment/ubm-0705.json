@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0705",
+  "itemId": "5bb08c3a",
+  "kind": "reco",
+  "quote": "Avec son spectacle 'Reality Bowl', je crois que ça s'appelle.",
+  "recommendedBy": "Intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:58",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

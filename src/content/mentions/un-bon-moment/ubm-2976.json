@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2976",
+  "itemId": "c507aa2e",
+  "kind": "reco",
+  "quote": "le 26 minutes aux Etats-Unis a été un peu selon beaucoup inventé par Seinfeld",
+  "recommendedBy": "Xavier Lacay",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

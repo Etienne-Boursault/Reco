@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1432",
+  "itemId": "7f55117a",
+  "kind": "reco",
+  "quote": "allez le voir",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

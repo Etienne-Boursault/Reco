@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2469",
+  "itemId": "bb70e754",
+  "kind": "reco",
+  "quote": "Peut-être que c'est aussi ça, l'art sur scène. C'est que pendant la guerre, par exemple, pendant l'occupation, les gens allaient voir Antigone.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

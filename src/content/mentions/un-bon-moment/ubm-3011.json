@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:53"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3011",
+  "itemId": "71ac3501",
+  "kind": "reco",
+  "quote": "L'italiano.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:51:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

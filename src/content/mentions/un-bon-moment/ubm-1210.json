@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:20:46"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1210",
+  "itemId": "d8c84951",
+  "kind": "reco",
+  "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322de1f35ce9e001229f98a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:46",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

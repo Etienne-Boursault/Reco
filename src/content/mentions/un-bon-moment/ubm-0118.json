@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:27:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0118",
+  "itemId": "d8772ae2",
+  "kind": "reco",
+  "quote": "Je rappelle que Vianet, tu sors un album qui s'appelle A2 à 3.",
+  "recommendedBy": "Inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c3998e40b300163f8618",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:27:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

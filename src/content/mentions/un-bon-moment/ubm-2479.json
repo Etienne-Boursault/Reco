@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:38"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2479",
+  "itemId": "71f8f9e1",
+  "kind": "reco",
+  "quote": "à la maison je me fasse du Guillaume Maurice d'il y a quatre ans ou du Clément Viktorovitch que j'ai déjà vu mais c'est toujours très intéressant de les revoir et ça fait du bien quoi",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

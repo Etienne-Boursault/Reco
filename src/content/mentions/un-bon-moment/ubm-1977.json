@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1977",
+  "itemId": "aa6afab9",
+  "kind": "reco",
+  "quote": "Ma Madeleine de Proust c'est Mario 1 ! Ouais ! Mario 1 c'est Mario Bros !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

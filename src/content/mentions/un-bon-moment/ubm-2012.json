@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:04"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:15:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:04"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2012",
+  "itemId": "9a4d92e4",
+  "kind": "reco",
+  "quote": "Ça s'appelle La petite graine et le papillon.",
+  "recommendedBy": "Mona Guba",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:38:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

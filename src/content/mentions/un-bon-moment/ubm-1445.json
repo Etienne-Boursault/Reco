@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:40:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:09"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1445",
+  "itemId": "2d5f5608",
+  "kind": "reco",
+  "quote": "En fait, c'est vraiment pas giga connu, mais c'est le seul gars où j'écoutais tous ses sons avant et maintenant, j'ai une deuxième écoute.",
+  "recommendedBy": "Emilia",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

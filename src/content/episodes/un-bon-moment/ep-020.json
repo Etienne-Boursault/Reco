@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
-  "title": "avec THOMAS WIESEL",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 20,
-  "date": "2020-11-15",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecthomaswiesel/media.mp3",
-  "description": "Thomas Wiesel est l'humoriste qui fascine les humoristes. Avec Navo on essaie de comprendre comment fonctionne son schéma de pensée qui l'amène à créer des vannes géniales comme retenir tous les joueurs de l'équipe de foot d'Islande en 2018. Jeu : le \"Roast\" de Kyan",
-  "youtubeUrl": "https://www.youtube.com/watch?v=yWwq4QkSLCk",
   "audioDuration": 6087,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecthomaswiesel/media.mp3",
+  "date": "2020-11-15",
+  "description": "Thomas Wiesel est l'humoriste qui fascine les humoristes. Avec Navo on essaie de comprendre comment fonctionne son schéma de pensée qui l'amène à créer des vannes géniales comme retenir tous les joueurs de l'équipe de foot d'Islande en 2018. Jeu : le \"Roast\" de Kyan",
+  "guests": [],
+  "guestsExcluded": [
+    "inconnu",
+    "Tom",
+    "Thomas"
+  ],
+  "guestsParsed": [
+    "Thomas Wiesel"
+  ],
+  "guid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "number": 20,
+  "sourceId": "un-bon-moment",
+  "title": "avec THOMAS WIESEL",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6136,
-  "youtubeTitle": "Un Bon Moment avec THOMAS WIESEL"
+  "youtubeTitle": "Un Bon Moment avec THOMAS WIESEL",
+  "youtubeUrl": "https://www.youtube.com/watch?v=yWwq4QkSLCk"
 }

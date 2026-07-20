@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:50:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:43:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1011",
+  "itemId": "39b94f99",
+  "kind": "reco",
+  "quote": "dans le podcast émotions il y a un sujet en trois parties sur les masculinités qui s'appelle des mecs solides c'est hyper bien",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:43:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

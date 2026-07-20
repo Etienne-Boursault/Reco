@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2524",
+  "itemId": "f6a482c3",
+  "kind": "reco",
+  "quote": "Moi, je suis allé voir François Morel sur scène jouer à Raymond Deveau.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

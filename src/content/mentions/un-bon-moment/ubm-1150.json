@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:31:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1150",
+  "itemId": "8284a1d5",
+  "kind": "reco",
+  "quote": "je vous invite à aller découvrir le nouveau spectacle c'est parce qu'il en parle beaucoup dans le moment non mais le nouveau spectacle du capucine enfin le premier spectacle capucine la ventriloque",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:31:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

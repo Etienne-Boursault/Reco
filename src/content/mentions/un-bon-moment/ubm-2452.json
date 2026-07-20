@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:38"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2452",
+  "itemId": "c3976774",
+  "kind": "reco",
+  "quote": "on connait très bien le générique des Simpsons",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:38",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

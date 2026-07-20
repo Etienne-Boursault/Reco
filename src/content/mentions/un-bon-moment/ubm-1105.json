@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1105",
+  "itemId": "2a0238e6",
+  "kind": "reco",
+  "quote": "Eh ben moi, je recommande l'album de Jane.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240a35cc56a90012ec386b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

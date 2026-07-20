@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:32"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:21:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:14"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2263",
+  "itemId": "c93a318c",
+  "kind": "reco",
+  "quote": "vous connaissez Serge le mytho",
+  "recommendedBy": "Kyan Khojandi, Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

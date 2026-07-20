@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:13:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:09"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:10"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1377",
+  "itemId": "22928598",
+  "kind": "reco",
+  "quote": "il y avait un manga que j'aimais bien qui s'appelait Get Bakers",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

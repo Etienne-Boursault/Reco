@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:04:11+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:02"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1317",
+  "itemId": "a79ae2d1",
+  "kind": "reco",
+  "quote": "j'ai commencé une série qui s'appelle Halfman. C'est le gars qui a fait mon petit cerf.",
+  "recommendedBy": "Caballero",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:02",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

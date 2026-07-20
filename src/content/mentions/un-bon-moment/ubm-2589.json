@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2589",
+  "itemId": "bbfa0f8b",
+  "kind": "reco",
+  "quote": "Il a fait Tenet. Il a enfin terminé Tenet.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:18:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

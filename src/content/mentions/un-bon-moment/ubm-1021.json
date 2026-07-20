@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1021",
+  "itemId": "36bdd071",
+  "kind": "reco",
+  "quote": "il y a un mec qui s'appelle Benjamin Tranier [...] il a une écriture, il a un site de fou, il fait vraiment bien le bauf, c'est un vrai personnage, et je le trouve vraiment très drôle",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

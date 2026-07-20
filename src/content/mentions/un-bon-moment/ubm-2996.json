@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2996",
+  "itemId": "dbe46443",
+  "kind": "reco",
+  "quote": "Par exemple, Vivarda, c'est un bon exemple de ça, parce que la chanson parle d'Agnès Varda",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

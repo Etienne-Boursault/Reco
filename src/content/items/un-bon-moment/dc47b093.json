@@ -1,0 +1,32 @@
+{
+  "creator": "Larry David",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/4546-curb-your-enthusiasm/watch?locale=FR",
+    "tmdb": 4546,
+    "tmdbType": "tv"
+  },
+  "id": "dc47b093",
+  "schemaVersion": 1,
+  "title": "Curb Your Enthusiasm",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Curb%20Your%20Enthusiasm"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Curb%20Your%20Enthusiasm"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Curb%20Your%20Enthusiasm"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Curb%20Your%20Enthusiasm"
+    }
+  ]
+}

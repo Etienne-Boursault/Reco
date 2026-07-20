@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:07:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1668",
+  "itemId": "dd668978",
+  "kind": "reco",
+  "quote": "Tu vas faire LOL bientôt.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

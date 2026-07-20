@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2501",
+  "itemId": "96a0ac5e",
+  "kind": "reco",
+  "quote": "La marque s'appelle comment? Weim. W-A-M-E.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

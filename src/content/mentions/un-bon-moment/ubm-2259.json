@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2259",
+  "itemId": "3b9ad2a3",
+  "kind": "reco",
+  "quote": "D'ailleurs, j'ai entendu parler un jour d'un spectacle, je ne sais pas si on veut parler, « Florence passe des disques. »",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:18:46"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:18:46"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1515",
+  "itemId": "4dbb389a",
+  "kind": "reco",
+  "quote": "je voulais recommander un artiste comique je trouve qu'il est incroyable il s'appelle Johan Mettet",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:18:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:51:05"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0382",
+  "itemId": "1b2e6e4c",
+  "kind": "reco",
+  "quote": "Un autre qui s'est fait l'électro Que s'appelle Fine F H Y N",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:51:05",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

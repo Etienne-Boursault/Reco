@@ -1,15 +1,31 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6584658132930b0016c5272b",
-  "title": "avec Marina et Panayotis",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-01-22",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6584658132930b0016c5272b/media.mp3",
-  "description": "Panayotis Pascot et Marina Rollman sont deux auteur.ices venu.es parler de leurs ouvrages sortis récemment. Au milieu de moments de jeux joyeux, il et elle abordent avec Kyan et Navo leurs rapports à l’autre, tant dans l’expression de leurs émotions que dans leur réception.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=UShP3Gg60e4",
   "audioDuration": 4713,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6584658132930b0016c5272b/media.mp3",
+  "date": "2024-01-22",
+  "description": "Panayotis Pascot et Marina Rollman sont deux auteur.ices venu.es parler de leurs ouvrages sortis récemment. Au milieu de moments de jeux joyeux, il et elle abordent avec Kyan et Navo leurs rapports à l’autre, tant dans l’expression de leurs émotions que dans leur réception.",
+  "guests": [
+    "Panayotis Pascot"
+  ],
+  "guestsExcluded": [
+    "Marina",
+    "Marina Rolman",
+    "Invité non identifié",
+    "Invité",
+    "Intervenant",
+    "Panayotis"
+  ],
+  "guestsParsed": [
+    "Marina",
+    "Panayotis"
+  ],
+  "guid": "6584658132930b0016c5272b",
+  "number": 62,
+  "sourceId": "un-bon-moment",
+  "title": "avec Marina et Panayotis",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4658,
   "youtubeTitle": "A Good Time with MARINA ROLLMAN & PANAYOTIS PASCOT",
-  "number": 62
+  "youtubeUrl": "https://www.youtube.com/watch?v=UShP3Gg60e4"
 }

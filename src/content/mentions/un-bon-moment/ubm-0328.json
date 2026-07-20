@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0328",
+  "itemId": "64f04644",
+  "kind": "reco",
+  "quote": "Allez écouter le kombucha du squeeze, franchement c'est très bon.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:44",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

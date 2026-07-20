@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:15:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2532",
+  "itemId": "5a314a9a",
+  "kind": "reco",
+  "quote": "J'ai fini The Office c'est hier",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

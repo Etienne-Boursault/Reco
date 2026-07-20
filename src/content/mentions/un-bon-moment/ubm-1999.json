@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:12:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1999",
+  "itemId": "607c5df6",
+  "kind": "reco",
+  "quote": "Denis Lamalice et Denis Lamalice sont deux BD à la base. Une anglaise et une américaine qui sont sorties chacune le même jour de la même année dans deux pays différents.",
+  "recommendedBy": "Léopold Marchand",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

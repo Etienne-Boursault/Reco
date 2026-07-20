@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:58:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:42"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2195",
+  "itemId": "cce1e4c1",
+  "kind": "reco",
+  "quote": "Qui existe maintenant à travers les streaming, les sites de streaming.",
+  "recommendedBy": "Bérangère Kreev",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

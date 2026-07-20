@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2983",
+  "itemId": "48d52314",
+  "kind": "reco",
+  "quote": "le spectacle s'appelle Ambroise Xavier on l'a donc créé on a créé ça en mars 2018 au Sonar une salle à Paris",
+  "recommendedBy": "Ambroise, Xavier",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

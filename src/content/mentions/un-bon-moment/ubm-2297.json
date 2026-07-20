@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:19"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2297",
+  "itemId": "a8f760e6",
+  "kind": "reco",
+  "quote": "si vous voulez Jonathan Cohen en spectacle mettez-le dans le commentaire",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

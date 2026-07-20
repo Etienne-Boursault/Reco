@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "09:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2360",
+  "itemId": "d99518cb",
+  "kind": "reco",
+  "quote": "je suis tombée sur une vidéo du Monde à l'envers, qui font plein de vidéos sur YouTube",
+  "recommendedBy": "Laura Felpin",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:09:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

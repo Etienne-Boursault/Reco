@@ -1,0 +1,53 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:23"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T14:32:19+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:22"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0144",
+  "itemId": "d08d5041",
+  "kind": "reco",
+  "quote": "Une artiste qu'on peut retrouver sur Instagram qui s'appelle Tessa B, qui a une voix…",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

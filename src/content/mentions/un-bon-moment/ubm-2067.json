@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:34:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:37"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2067",
+  "itemId": "a3b26401",
+  "kind": "reco",
+  "quote": "Herma Bombeck on dirait un nom d'Harry Potter professeur Bombeck",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:37",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

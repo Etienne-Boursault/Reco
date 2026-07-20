@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:24:19+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:18"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0770",
+  "itemId": "d900182b",
+  "kind": "reco",
+  "quote": "Moi j'ai de la musique si tu veux ! Dernièrement l'album Dichon qui est sorti ! Que je trouve magnifique !",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

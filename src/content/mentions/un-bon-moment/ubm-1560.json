@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:00:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1560",
+  "itemId": "8b112235",
+  "kind": "reco",
+  "quote": "On recommande la chaîne de Christophe Pauly",
+  "recommendedBy": "Kyan",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69e13325fb440758726a665f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:51:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2144",
+  "itemId": "1540228d",
+  "kind": "reco",
+  "quote": "C'est une chaîne YouTube.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

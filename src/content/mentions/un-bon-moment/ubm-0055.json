@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0055",
+  "itemId": "4856e2ad",
+  "kind": "reco",
+  "quote": "Mortal, je ne connaissais pas tout ce truc-là.",
+  "recommendedBy": "Inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

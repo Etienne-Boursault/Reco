@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2782",
+  "itemId": "900e2a31",
+  "kind": "reco",
+  "quote": "dès qu'on racontait des histoires, je mettais un point d'orgue, je mettais un point d'honneur à mettre de la musique, à mettre de l'émotion justement, à mélanger. On peut rigoler pendant une minute. On a déjà eu ça dans Bref, par exemple, une minute trente de gaulerie et les trente dernières secondes, bam, on cueille les gens",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:53"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2234",
+  "itemId": "117d5e3e",
+  "kind": "reco",
+  "quote": "T'as vu Matrix ? J'aime bien les références de films. Pour moi les stand-upers c'est des gens qui sont sortis de la matrice",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

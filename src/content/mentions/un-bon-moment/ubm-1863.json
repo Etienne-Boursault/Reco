@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:18:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1863",
+  "itemId": "dd8a2694",
+  "kind": "reco",
+  "quote": "Quand on était au lycée, quand on fumait de la weed, il y avait la chanson. « Jamine » de Bob Marley, à chaque fois qu'il dit « Jamine », tu dois fumer une taff.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

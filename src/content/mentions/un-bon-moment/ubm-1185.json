@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:48"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1185",
+  "itemId": "4ebc3aa4",
+  "kind": "reco",
+  "quote": "Je vous invite à aller découvrir le nouveau spectacle. Le premier spectacle de Capucine avant Triloc.",
+  "recommendedBy": "Jeremy Ferrari",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:48",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

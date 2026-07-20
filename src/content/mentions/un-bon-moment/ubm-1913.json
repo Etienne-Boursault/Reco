@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:53:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:01"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1913",
+  "itemId": "1d8e59e8",
+  "kind": "reco",
+  "quote": "Tiësto c'était pour moi adolescent une de mes idoles",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69c7de338ac24e236cb65e12",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

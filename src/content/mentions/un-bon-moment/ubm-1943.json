@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:10"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1943",
+  "itemId": "594fd0c1",
+  "kind": "reco",
+  "quote": "Et puis je suis sur elle, puis elle me fait des petites papouilles comme ça sur la tête.",
+  "recommendedBy": "autre personne",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

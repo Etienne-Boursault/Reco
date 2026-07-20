@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "652408a9c8996500127e39e9",
-  "title": "avec Isabelle Nanty et Vincent Dedienne",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 53,
-  "date": "2023-10-22",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/652408a9c8996500127e39e9/media.mp3",
-  "description": "Cette semaine Vincent et Isabelle viennent nous parler de leur nouveau film « Je ne suis pas un Héros ». Entrecoupé de jeux, de discussions sur l’adoption ou la création d'un pays, Vincent et Isabelle passent un bon moment.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=TrqXUSnhIf0",
   "audioDuration": 4627,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/652408a9c8996500127e39e9/media.mp3",
+  "date": "2023-10-22",
+  "description": "Cette semaine Vincent et Isabelle viennent nous parler de leur nouveau film « Je ne suis pas un Héros ». Entrecoupé de jeux, de discussions sur l’adoption ou la création d'un pays, Vincent et Isabelle passent un bon moment.",
+  "guests": [],
+  "guestsExcluded": [
+    "inconnu",
+    "Vincent"
+  ],
+  "guestsParsed": [
+    "Isabelle Nanty",
+    "Vincent Dedienne"
+  ],
+  "guid": "652408a9c8996500127e39e9",
+  "number": 53,
+  "sourceId": "un-bon-moment",
+  "title": "avec Isabelle Nanty et Vincent Dedienne",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4628,
-  "youtubeTitle": "Un Bon Moment avec VINCENT DEDIENNE & ISABELLE NANTY"
+  "youtubeTitle": "Un Bon Moment avec VINCENT DEDIENNE & ISABELLE NANTY",
+  "youtubeUrl": "https://www.youtube.com/watch?v=TrqXUSnhIf0"
 }

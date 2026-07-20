@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2413",
+  "itemId": "bd3a617a",
+  "kind": "reco",
+  "quote": "Je recommande GTA V. C'est un super jeu vidéo.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

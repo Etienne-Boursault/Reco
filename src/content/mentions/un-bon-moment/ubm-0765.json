@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0765",
+  "itemId": "473d9bd7",
+  "kind": "reco",
+  "quote": "D'ailleurs, je vous ai ramené à des petits vinyles. Oh yes, c'est tellement gentil. Des quarante-feintours, c'est des petits vinyles.",
+  "recommendedBy": "Julien Granel",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

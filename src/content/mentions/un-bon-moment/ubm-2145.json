@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:32:19+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:01"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2145",
+  "itemId": "5137bc6b",
+  "kind": "reco",
+  "quote": "Ben, moi, Shirley, alors improbable. Shirley Soignon.",
+  "recommendedBy": "Tani",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0767",
+  "itemId": "4cf71e9b",
+  "kind": "reco",
+  "quote": "il y a un article formidable sur MC Solar quand il a écrit \"Pros Combat\" il a écrit ça en 4 jours",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,15 +1,26 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "652415a1c899650012820b3f",
-  "title": "avec Cédric",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-01-15",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/652415a1c899650012820b3f/media.mp3",
-  "description": "On ne présente plus Cédric Klapisch. Kyan et Navo, grands admirateurs de son travail, épluchent son parcours et la réussite de ses films. La création d'un long métrage en 4 mois, son rapport à la jeunesse et comment il aime la mettre en image, Cédric répond à tout dans cette nouvelle émission.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=cEf8eXth900",
   "audioDuration": 4610,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/652415a1c899650012820b3f/media.mp3",
+  "date": "2024-01-15",
+  "description": "On ne présente plus Cédric Klapisch. Kyan et Navo, grands admirateurs de son travail, épluchent son parcours et la réussite de ses films. La création d'un long métrage en 4 mois, son rapport à la jeunesse et comment il aime la mettre en image, Cédric répond à tout dans cette nouvelle émission.",
+  "guests": [],
+  "guestsExcluded": [
+    "Cédric",
+    "Cédric Lapiche",
+    "Cédric Clapichon",
+    "Invité"
+  ],
+  "guestsParsed": [
+    "Cédric"
+  ],
+  "guid": "652415a1c899650012820b3f",
+  "number": 59,
+  "sourceId": "un-bon-moment",
+  "title": "avec Cédric",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4572,
   "youtubeTitle": "Un Bon Moment Avec CÉDRIC KLAPISCH",
-  "number": 61
+  "youtubeUrl": "https://www.youtube.com/watch?v=cEf8eXth900"
 }

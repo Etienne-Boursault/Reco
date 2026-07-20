@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:14:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2719",
+  "itemId": "372c8ea6",
+  "kind": "reco",
+  "quote": "j'ai pris ce temps-là et j'aime le stand-up. Toutes les étapes intermédiaires qui manquaient, tu les as créées, en fait.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:14:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

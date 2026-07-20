@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0970",
+  "itemId": "e67e10a9",
+  "kind": "reco",
+  "quote": "Il y a un sketch que je vous recommande de Billy Wilder. Il est en train de décacheter son courrier, c'est ce grand metteur renseignement, Shlondorf, il l'interview.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:03",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

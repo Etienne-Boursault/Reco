@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:41"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1207",
+  "itemId": "288c8ce7",
+  "kind": "reco",
+  "quote": "en film tu as 'Mid 90's' de Jonah Hill qui est incroyable",
+  "recommendedBy": "Panat",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:41",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

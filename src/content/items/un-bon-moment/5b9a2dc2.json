@@ -1,0 +1,56 @@
+{
+  "creator": "Don Bluth",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/9444-anastasia/watch?locale=FR",
+    "tmdb": 9444,
+    "tmdbType": "movie"
+  },
+  "id": "5b9a2dc2",
+  "schemaVersion": 1,
+  "title": "Anastasia",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Anastasia"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Anastasia"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Anastasia&c=movies"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Anastasia"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Anastasia"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Anastasia"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Anastasia"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Anastasia"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Anastasia"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Anastasia"
+    }
+  ]
+}

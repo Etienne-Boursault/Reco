@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:02"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1579",
+  "itemId": "771fa464",
+  "kind": "reco",
+  "quote": "Inside, à mon avis, il y avait des vrais fous rires.",
+  "recommendedBy": "Thomas",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

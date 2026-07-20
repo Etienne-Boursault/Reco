@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:54"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2415",
+  "itemId": "9abc8718",
+  "kind": "reco",
+  "quote": "Edouard Berdiadonné, allez le voir sur YouTube.",
+  "recommendedBy": "Oda ou Dako",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

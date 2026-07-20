@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:27:05"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:27:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0995",
+  "itemId": "cf7658eb",
+  "kind": "reco",
+  "quote": "Allez, Laurence d'Arabie, c'est génial. Allez, Laurence d'Arabie, c'est top. Allez voir Laurence d'Arabie, si vous avez 4 heures à tuer.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "699968af0e5c959d5971943f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:27:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

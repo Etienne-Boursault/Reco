@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:47:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:33"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1695",
+  "itemId": "a55894db",
+  "kind": "reco",
+  "quote": "Alors là... Elvis Presley.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:33",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

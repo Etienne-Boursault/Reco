@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:23:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0683",
+  "itemId": "1c7faf76",
+  "kind": "reco",
+  "quote": "Je voulais acheter le t-shirt 'Ça peut chez Marr'.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:23:47",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

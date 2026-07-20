@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2405",
+  "itemId": "dc20a469",
+  "kind": "reco",
+  "quote": "C'est vice versa quoi ? [...] Le Pixar.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:34:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

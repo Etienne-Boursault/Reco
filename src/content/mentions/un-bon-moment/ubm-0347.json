@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0347",
+  "itemId": "95389c6f",
+  "kind": "reco",
+  "quote": "Il y a un très très beau documentaire sur SIA fait par la chaîne de Paul sur Youtube qui est juste là, le lien est là !",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:50",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

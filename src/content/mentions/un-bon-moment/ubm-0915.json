@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:03:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0915",
+  "itemId": "26fa1ad7",
+  "kind": "reco",
+  "quote": "C'est l'horreur d'omange",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:03:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

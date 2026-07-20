@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:51"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2421",
+  "itemId": "01c6941b",
+  "kind": "reco",
+  "quote": "Ça s'appelle Les Fabs de Daedaco. Il y a une chaîne carrément YouTube ou sur My Canal, si vous avez Canal+ allez voir.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

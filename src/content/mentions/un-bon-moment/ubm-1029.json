@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1029",
+  "itemId": "0099e3e6",
+  "kind": "reco",
+  "quote": "Joe Rogan c'est le Dieu du podcast en fait je pense que c'est le premier podcast aux États-Unis",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

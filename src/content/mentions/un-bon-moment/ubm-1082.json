@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:08"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:43:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:08"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1082",
+  "itemId": "e1260978",
+  "kind": "reco",
+  "quote": "C'est beau. Ça te déconstruit plein de choses.",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61accf4f45d15e00135c6ef2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

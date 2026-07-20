@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1682",
+  "itemId": "990aa940",
+  "kind": "reco",
+  "quote": "Je m'endors tous les soirs avec un bout d'un bon moment, et ça me fait beaucoup de bien.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:47",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

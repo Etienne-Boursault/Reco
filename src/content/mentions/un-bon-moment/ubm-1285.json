@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:16"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1285",
+  "itemId": "492c2157",
+  "kind": "reco",
+  "quote": "crush less ça veut dire sans crush ça veut dire c'est une série sur quelqu'un qui n'a jamais plus de crush pour des raisons de santé mentale",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:16",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

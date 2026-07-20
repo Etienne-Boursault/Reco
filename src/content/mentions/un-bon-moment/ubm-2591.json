@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:03"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2591",
+  "itemId": "8aca91d8",
+  "kind": "reco",
+  "quote": "Warzone... Jeux vidéo...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

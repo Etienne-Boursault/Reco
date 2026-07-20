@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:34:43"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0329",
+  "itemId": "e61364d9",
+  "kind": "reco",
+  "quote": "Moi j'ai aimé 2 séries Los Aguios Nuevos",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:34:43",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

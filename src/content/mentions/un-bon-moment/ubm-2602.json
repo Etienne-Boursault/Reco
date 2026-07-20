@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:08"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2602",
+  "itemId": "a51765b5",
+  "kind": "reco",
+  "quote": "Zelda, mais je le craque.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240f8a7a4ced00123481d1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

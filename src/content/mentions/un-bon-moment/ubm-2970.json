@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:09:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2970",
+  "itemId": "905b7d22",
+  "kind": "reco",
+  "quote": "on a fait un long métrage en deux jours on a fait un long métrage c'est sympa démerdeur ça mon pote c'est la bizarre d'entendre non c'est vrai qu'on a mis sur Youtube d'ailleurs oui oui on avait ce désir absolu de créer des choses très vite et donc parfois on a trouvé des solutions la règle du jeu la règle du jeu la règle du jeu",
+  "recommendedBy": "Xavier Lacaille",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:09:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

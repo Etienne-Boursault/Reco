@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3015",
+  "itemId": "190e9a5c",
+  "kind": "reco",
+  "quote": "Donc, il y a Les retours vers le futur, Jurassic Park et tout. C'est ouf. C'est trop bien.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2404",
+  "itemId": "f203a89a",
+  "kind": "reco",
+  "quote": "Le premier épisode de Bref",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

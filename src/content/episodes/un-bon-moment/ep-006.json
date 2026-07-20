@@ -1,15 +1,32 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "0b986de8-231b-4312-b231-75f75b347282",
-  "title": "avec NATOO, Audrey PIRAULT et CATHY",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "number": 6,
-  "date": "2020-02-23",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecnatoo-audreypiraultetcathy/media.mp3",
-  "description": "Kyan et Navo reçoivent deux excellentes Youtubeuses NATOO et son amie Audrey PIRAULT. La conversation a vite viré de manière marrante et touchante au partage des trauma' de jeunesse.\n\nJeux : Multi BlindTest // Jeu de la complicité",
-  "youtubeUrl": "https://www.youtube.com/watch?v=6Rcxk-pf-pM",
   "audioDuration": 4855,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecnatoo-audreypiraultetcathy/media.mp3",
+  "date": "2020-02-23",
+  "description": "Kyan et Navo reçoivent deux excellentes Youtubeuses NATOO et son amie Audrey PIRAULT. La conversation a vite viré de manière marrante et touchante au partage des trauma' de jeunesse.\n\nJeux : Multi BlindTest // Jeu de la complicité",
+  "guests": [
+    "Audrey Pirault"
+  ],
+  "guestsExcluded": [
+    "Audrey Piro",
+    "Audrey Pierrot",
+    "Intervenants (contexte de jeu)",
+    "Invité",
+    "Natu",
+    "Natou"
+  ],
+  "guestsParsed": [
+    "Natoo",
+    "Audrey PIRAULT",
+    "Cathy"
+  ],
+  "guid": "0b986de8-231b-4312-b231-75f75b347282",
+  "number": 6,
+  "sourceId": "un-bon-moment",
+  "title": "avec NATOO, Audrey PIRAULT et CATHY",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4999,
-  "youtubeTitle": "UN (MEGA) BON MOMENT avec  NATOO, AUDREY PIRAULT et CATHY"
+  "youtubeTitle": "UN (MEGA) BON MOMENT avec  NATOO, AUDREY PIRAULT et CATHY",
+  "youtubeUrl": "https://www.youtube.com/watch?v=6Rcxk-pf-pM"
 }

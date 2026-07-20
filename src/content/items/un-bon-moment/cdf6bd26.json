@@ -1,0 +1,27 @@
+{
+  "aliases": [
+    "The Chair"
+  ],
+  "creator": "Tim Robinson",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/271267-the-chair-company/watch?locale=FR",
+    "tmdb": 271267,
+    "tmdbType": "tv"
+  },
+  "id": "cdf6bd26",
+  "schemaVersion": 1,
+  "title": "The Chair Company",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Chair%20Company"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Chair%20Company"
+    }
+  ]
+}

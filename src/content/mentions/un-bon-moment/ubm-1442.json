@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T10:39:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:56:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:03"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:03"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1442",
+  "itemId": "da26f46b",
+  "kind": "reco",
+  "quote": "je vous recommande le contenu de Mimi Litt",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:41:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

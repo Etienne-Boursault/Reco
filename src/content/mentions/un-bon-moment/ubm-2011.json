@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2011",
+  "itemId": "74d9afb1",
+  "kind": "reco",
+  "quote": "l'émission, elle, elle est sponsorisée par Mon Spectacle qui est dispo sur une bonne boutique",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

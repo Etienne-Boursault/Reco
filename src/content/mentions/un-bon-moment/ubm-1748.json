@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:55:54"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1748",
+  "itemId": "9fe15126",
+  "kind": "reco",
+  "quote": "Mais il y a aussi, dans la carrière de Booba, par exemple, je pense que c'est l'un des meilleurs exemples de ça",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:55:54",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:04"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1274",
+  "itemId": "4cb68c89",
+  "kind": "reco",
+  "quote": "je conseille une chaîne d'un mec qui s'appelle 'Sacaru'",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:04",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

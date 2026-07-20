@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:50:31"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0381",
+  "itemId": "cb22f6ee",
+  "kind": "reco",
+  "quote": "Un artiste que j'ai découvert récemment, un chanteur qui t'appelle Soussano... Il fait notamment des acoustiques formidables, aller écouter sur les plateformes",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:50:31",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

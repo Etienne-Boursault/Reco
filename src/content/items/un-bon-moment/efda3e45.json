@@ -1,0 +1,25 @@
+{
+  "creator": "Jeff Orlowski",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/656690-the-social-dilemma/watch?locale=FR",
+    "tmdb": 656690,
+    "tmdbType": "movie"
+  },
+  "id": "efda3e45",
+  "schemaVersion": 1,
+  "title": "The Social Dilemma",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Social%20Dilemma"
+    }
+  ],
+  "year": 2020
+}

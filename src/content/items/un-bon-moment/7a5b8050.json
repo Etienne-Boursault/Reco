@@ -1,0 +1,28 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR",
+    "tmdb": 70708,
+    "tmdbType": "tv"
+  },
+  "id": "7a5b8050",
+  "schemaVersion": 1,
+  "title": "Striptease",
+  "types": [
+    "serie",
+    "autre"
+  ],
+  "watchProviders": [
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Striptease"
+    }
+  ]
+}

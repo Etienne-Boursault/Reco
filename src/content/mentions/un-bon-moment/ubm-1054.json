@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:48:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1054",
+  "itemId": "a578de2d",
+  "kind": "reco",
+  "quote": "Il a un podcast, c'est tous les lundis, il fait un podcast.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:48:06",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:32:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1152",
+  "itemId": "e52210c0",
+  "kind": "reco",
+  "quote": "allez voir suvetez au babac sur tiktok il est très drôle",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:32:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

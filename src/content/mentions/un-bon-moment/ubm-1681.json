@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1681",
+  "itemId": "bd06e985",
+  "kind": "reco",
+  "quote": "Et on fait une pièce… Génial. Qu'on doit travailler encore pendant un an, qui est super.",
+  "recommendedBy": "invité (non nommé)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

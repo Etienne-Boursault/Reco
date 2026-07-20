@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:50:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:26:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1861",
+  "itemId": "5b4fac89",
+  "kind": "reco",
+  "quote": "C'est le mec qui était un auteur du SNL qui est mort aujourd'hui le humble brag",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:26:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:37"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0630",
+  "itemId": "63f0f7b0",
+  "kind": "reco",
+  "quote": "En deuxième invité, nous avions le rappeur Fianso.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:37",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

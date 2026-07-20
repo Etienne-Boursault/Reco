@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "13:53"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1881",
+  "itemId": "8b277226",
+  "kind": "reco",
+  "quote": "Et là, je suis allé le voir au cinéma, et ça m'a fait un petit flashback.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

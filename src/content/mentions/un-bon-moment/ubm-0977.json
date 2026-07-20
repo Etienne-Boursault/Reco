@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:52"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0977",
+  "itemId": "3ebf27c1",
+  "kind": "reco",
+  "quote": "elle a fait ce bouquin qui est bien. Vachement bien et où elle dénonce justement les déribes du coaching",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:52",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

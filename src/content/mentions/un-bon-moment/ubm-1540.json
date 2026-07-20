@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:32"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:32"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1540",
+  "itemId": "63bef323",
+  "kind": "reco",
+  "quote": "Il n'a pas eu besoin de maquillage ou d'effets spéciaux dans Dumb et d'Humber.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:32",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

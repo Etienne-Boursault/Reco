@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:53"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2991",
+  "itemId": "6b85a6fd",
+  "kind": "reco",
+  "quote": "là il y a un bouquin sur la répartie qui va sortir le guide de la répartie",
+  "recommendedBy": "Laurent Gerra",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63614bd05e627e0011144c04",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

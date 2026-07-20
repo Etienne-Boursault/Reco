@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2036",
+  "itemId": "a2e9dcac",
+  "kind": "reco",
+  "quote": "En lien la vidéo de McFly et Carlito\nQui ont fait\nExactement tiens c'est super\nComme ça vous allez apprendre\nIls ont fait un tuto de Mavlich",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

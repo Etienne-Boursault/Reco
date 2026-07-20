@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:06:39"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0358",
+  "itemId": "7f0ac67b",
+  "kind": "reco",
+  "quote": "Lou Garou, c'est bien, j'ai vu l'épisode 4 hier, j'ai adoré.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:06:39",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

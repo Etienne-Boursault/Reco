@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1595",
+  "itemId": "04e27dd4",
+  "kind": "reco",
+  "quote": "je vais aller au spectacle de Valérie Lemercier",
+  "recommendedBy": "Invitée",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

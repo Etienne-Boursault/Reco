@@ -1,15 +1,26 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
-  "title": "avec HAROUN",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 34,
-  "date": "2021-03-14",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecharoun/media.mp3",
-  "description": "Cette semaine, Haroun, Kyan et Navo nous parlent des différentes manières pour créer autrement qu’en télé et sur YouTube, une discussion sur la liberté de création et les problématiques que peuvent avoir les médias traditionnels",
-  "youtubeUrl": "https://www.youtube.com/watch?v=r-g6E3W6WDA",
   "audioDuration": 3780,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecharoun/media.mp3",
+  "date": "2021-03-14",
+  "description": "Cette semaine, Haroun, Kyan et Navo nous parlent des différentes manières pour créer autrement qu’en télé et sur YouTube, une discussion sur la liberté de création et les problématiques que peuvent avoir les médias traditionnels",
+  "guests": [],
+  "guestsExcluded": [
+    "intervenant",
+    "Frédéric",
+    "Inconnu",
+    "Haroon"
+  ],
+  "guestsParsed": [
+    "Haroun"
+  ],
+  "guid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "number": 34,
+  "sourceId": "un-bon-moment",
+  "title": "avec HAROUN",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 3823,
-  "youtubeTitle": "Un bon moment avec HAROUN"
+  "youtubeTitle": "Un bon moment avec HAROUN",
+  "youtubeUrl": "https://www.youtube.com/watch?v=r-g6E3W6WDA"
 }

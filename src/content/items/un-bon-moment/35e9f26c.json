@@ -1,0 +1,24 @@
+{
+  "creator": "Phoebe Waller-Bridge",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR",
+    "tmdb": 67070,
+    "tmdbType": "tv"
+  },
+  "id": "35e9f26c",
+  "schemaVersion": 1,
+  "title": "Fleabag",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
+    }
+  ]
+}

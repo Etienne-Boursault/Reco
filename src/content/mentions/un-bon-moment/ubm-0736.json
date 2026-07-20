@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:14"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0736",
+  "itemId": "fc206a80",
+  "kind": "reco",
+  "quote": "Ah c'était bien.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:14",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

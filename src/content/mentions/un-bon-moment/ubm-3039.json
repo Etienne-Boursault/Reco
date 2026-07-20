@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3039",
+  "itemId": "6f1643f2",
+  "kind": "reco",
+  "quote": "Tu connais le truc de Patrice O'Neill, du rollercoaster ? Patrice O'Neill était un humoriste américain. Qu'on aime beaucoup. Ah oui, c'est exceptionnel, oui. Très aimé des humoristes.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b305f3ca1cc001201a861",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

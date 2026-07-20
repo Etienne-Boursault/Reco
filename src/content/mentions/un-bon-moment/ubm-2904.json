@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:14:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:30"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2904",
+  "itemId": "37a9b783",
+  "kind": "reco",
+  "quote": "Mona Gouba. Jeune rappeuse qui fait des freestyles sur son Instagram.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

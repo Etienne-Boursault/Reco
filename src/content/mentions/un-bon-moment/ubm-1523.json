@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:32:28+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:48:31"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1523",
+  "itemId": "2ee9fb8c",
+  "kind": "reco",
+  "quote": "Bernard Werber il m'a dit un truc trop cool un jour",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:48:31",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

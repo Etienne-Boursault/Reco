@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:08"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1092",
+  "itemId": "51d27730",
+  "kind": "reco",
+  "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "630baf2b552ddd0013718a16",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:08",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

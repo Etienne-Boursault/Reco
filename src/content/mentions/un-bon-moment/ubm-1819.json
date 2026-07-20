@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:32"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1819",
+  "itemId": "d858c4ec",
+  "kind": "reco",
+  "quote": "J'ai un pin's Rick et Morty",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:32",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

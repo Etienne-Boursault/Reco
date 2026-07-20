@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:57"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0789",
+  "itemId": "7f9cd6c0",
+  "kind": "reco",
+  "quote": "je pense que c'est le truc de rap que j'ai le plus écouté cette année. C'est la Danda Da Tape d'Alpha One.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:57",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

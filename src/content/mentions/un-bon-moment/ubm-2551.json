@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:23"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2551",
+  "itemId": "834a8bd1",
+  "kind": "reco",
+  "quote": "On en a parlé déjà, j'adorais qu'on fasse une chanson ensemble, c'est mon rêve et tout.",
+  "recommendedBy": "Mathieu Chédid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:11"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2340",
+  "itemId": "42d3b4fe",
+  "kind": "reco",
+  "quote": "j'ai découvert son nom m'échappe car il est compliqué celui qui joue le héros Aliosha Schneider",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:11",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

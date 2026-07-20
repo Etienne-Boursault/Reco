@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:21:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0987",
+  "itemId": "ff72407f",
+  "kind": "reco",
+  "quote": "ça s'appelle le film mental j'ai sorti ça au mois de septembre et je pars d'une question que je me pose et je déroule le fil",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:21:18",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

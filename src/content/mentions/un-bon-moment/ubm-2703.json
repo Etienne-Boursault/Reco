@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2703",
+  "itemId": "d1c9c990",
+  "kind": "reco",
+  "quote": "Moi, il y a des trucs racistes, homophobes que peuvent dire Dave Chiappel, qui me font mourir de rire parce qu'il part du postulat de départ, que clairement, il est conscient que c'est une connerie ce qu'il va dire.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

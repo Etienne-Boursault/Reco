@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:38:19"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0996",
+  "itemId": "75a8305b",
+  "kind": "reco",
+  "quote": "si on parle dans la musique inocasablanca super artiste c'est un mec qui arrive tout est résumé par un des premiers sons de son ancien album c'est le premier son qui s'appelle nouveau groove",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:38:19",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

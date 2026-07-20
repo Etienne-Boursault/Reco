@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:10"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1589",
+  "itemId": "d0989451",
+  "kind": "reco",
+  "quote": "Star Wars c'est le premier film que j'ai vu au cinéma c'est vrai j'avais 5 ans",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:24:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

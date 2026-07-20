@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0608",
+  "itemId": "9bee3603",
+  "kind": "reco",
+  "quote": "si Adrien Méniel faisait un spectacle ce serait démétrie martine",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

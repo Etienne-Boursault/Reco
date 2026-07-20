@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:35:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:22"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2083",
+  "itemId": "eb279513",
+  "kind": "reco",
+  "quote": "Tom Tom et Nana",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ef607e58893bb6e322c623",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

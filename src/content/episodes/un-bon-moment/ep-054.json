@@ -1,15 +1,30 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "65240a35cc56a90012ec386b",
-  "title": "avec Laura Felpin et JP Zadi",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 54,
-  "date": "2023-10-29",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/65240a35cc56a90012ec386b/media.mp3",
-  "description": "Un nouveau duo est né ! Laura Felpin et Jean-Pascal Zadi se découvrent une formidable complicité et nous racontent, entre autres, leurs expériences de tournage. Multi-blindtest, mensonges et expérience gustative inédite sont au programme.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=egI1Tph6Mgo",
   "audioDuration": 4758,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/65240a35cc56a90012ec386b/media.mp3",
+  "date": "2023-10-29",
+  "description": "Un nouveau duo est né ! Laura Felpin et Jean-Pascal Zadi se découvrent une formidable complicité et nous racontent, entre autres, leurs expériences de tournage. Multi-blindtest, mensonges et expérience gustative inédite sont au programme.",
+  "guests": [
+    "Jean-Pascal Zadi"
+  ],
+  "guestsExcluded": [
+    "inconnu",
+    "Laura",
+    "Jean-Pascal Lacoste",
+    "Invité",
+    "JP Zadi"
+  ],
+  "guestsParsed": [
+    "Laura Felpin",
+    "JP Zadi"
+  ],
+  "guid": "65240a35cc56a90012ec386b",
+  "number": 54,
+  "sourceId": "un-bon-moment",
+  "title": "avec Laura Felpin et JP Zadi",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4759,
-  "youtubeTitle": "Un Bon Moment avec LAURA FELPIN & JEAN-PASCAL ZADI"
+  "youtubeTitle": "Un Bon Moment avec LAURA FELPIN & JEAN-PASCAL ZADI",
+  "youtubeUrl": "https://www.youtube.com/watch?v=egI1Tph6Mgo"
 }

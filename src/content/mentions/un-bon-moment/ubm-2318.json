@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:47:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2318",
+  "itemId": "98d34507",
+  "kind": "reco",
+  "quote": "ne vous découragez pas c'est souvent la dernière clé du trousseau qui ouvre la porte",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

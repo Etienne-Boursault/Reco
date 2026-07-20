@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2918",
+  "itemId": "b949ff47",
+  "kind": "reco",
+  "quote": "Il y a une blague comme ça dans Futurama ? Ah oui ? C'est des extraterrestres qui sont à mille années-lumière de la Terre.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63160ce353f4d80012fcd7d0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

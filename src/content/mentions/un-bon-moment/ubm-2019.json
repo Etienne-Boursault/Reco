@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2019",
+  "itemId": "0c94b0fc",
+  "kind": "reco",
+  "quote": "j'étais un grand fan de Terry Gilliam, quand j'ai vu Brasile, c'était un choc",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

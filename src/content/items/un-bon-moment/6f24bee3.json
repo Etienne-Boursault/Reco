@@ -1,0 +1,52 @@
+{
+  "creator": "Walt Disney",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/756-fantasia/watch?locale=FR",
+    "tmdb": 756,
+    "tmdbType": "movie"
+  },
+  "id": "6f24bee3",
+  "schemaVersion": 1,
+  "title": "Fantasia",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Fantasia"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Fantasia"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Fantasia&c=movies"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Fantasia"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Fantasia"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fantasia"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Fantasia"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Fantasia"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Fantasia"
+    }
+  ]
+}

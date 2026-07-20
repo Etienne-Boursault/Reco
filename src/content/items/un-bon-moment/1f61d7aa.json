@@ -1,0 +1,28 @@
+{
+  "creator": "Apple TV+",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/95396-severance/watch?locale=FR",
+    "tmdb": 95396,
+    "tmdbType": "tv"
+  },
+  "id": "1f61d7aa",
+  "schemaVersion": 1,
+  "title": "Severance",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Severance"
+    },
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Severance"
+    },
+    {
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Severance"
+    }
+  ]
+}

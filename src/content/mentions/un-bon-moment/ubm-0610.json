@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0610",
+  "itemId": "65740450",
+  "kind": "reco",
+  "quote": "Si vous aimez les One Line aussi, il y a Mitch Edberg qui est très très drôle.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

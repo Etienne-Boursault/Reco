@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0040",
+  "itemId": "6945d5a5",
+  "kind": "reco",
+  "quote": "Le Comedy Club, c'est très gros.",
+  "recommendedBy": "Inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:58",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

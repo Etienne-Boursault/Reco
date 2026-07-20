@@ -1,0 +1,24 @@
+{
+  "creator": "Tim Robinson",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/88728-i-think-you-should-leave-with-tim-robinson/watch?locale=FR",
+    "tmdb": 88728,
+    "tmdbType": "tv"
+  },
+  "id": "94d5511c",
+  "schemaVersion": 1,
+  "title": "I Think You Should Leave",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=I%20Think%20You%20Should%20Leave"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1908",
+  "itemId": "e4f763d2",
+  "kind": "reco",
+  "quote": "C'est Lovin' Fun. Nous, à l'époque, on avait ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

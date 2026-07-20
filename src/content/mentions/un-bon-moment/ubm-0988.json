@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:13:22"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0988",
+  "itemId": "04e226a8",
+  "kind": "reco",
+  "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier du pont de l'igonesse",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:13:22",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:10:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0959",
+  "itemId": "ed466320",
+  "kind": "reco",
+  "quote": "j'ai fait mon livre. Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
+  "recommendedBy": "Thomas VDB",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:10:53",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

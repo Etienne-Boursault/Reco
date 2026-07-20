@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:33:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3042",
+  "itemId": "237187fc",
+  "kind": "reco",
+  "quote": "Mec, moi, j'ai eu Sugar Sammy en première partie. Il a retourné le public.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b305f3ca1cc001201a861",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-10T14:00:00Z",
+      "extra": {
+        "k": "v"
+      },
+      "llmModel": "claude-3",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "w1"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "fixturem",
+  "itemId": "fixture0",
+  "kind": "reco",
+  "quote": "Une citation",
+  "recommendedBy": "Tester",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

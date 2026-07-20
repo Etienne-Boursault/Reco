@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1110",
+  "itemId": "d05b0d3f",
+  "kind": "reco",
+  "quote": "elle est Megan Trenor le matin / écoutez du Megan Trenor / ça met en patate",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:06",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

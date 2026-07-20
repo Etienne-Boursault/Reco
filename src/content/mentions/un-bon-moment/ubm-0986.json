@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:19:09"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0986",
+  "itemId": "5916c83c",
+  "kind": "reco",
+  "quote": "ça fait un spectacle qui s'appelle la malédiction du dosar numéro et d'un son numéro et sur la jeanne qu'il a fait il raconte son iron man le spectacle est à péter derrière",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:19:09",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

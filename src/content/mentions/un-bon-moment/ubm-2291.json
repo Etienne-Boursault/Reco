@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2291",
+  "itemId": "1fa95b40",
+  "kind": "reco",
+  "quote": "j'ai décidé d'amener une date voir Armageddon au cinéma",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:48:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

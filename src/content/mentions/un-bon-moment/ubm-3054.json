@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:34:11+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3054",
+  "itemId": "c182fb56",
+  "kind": "reco",
+  "quote": "Avoir un enfant de deux ans, c'est comme avoir un mixeur.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b305f3ca1cc001201a861",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:36:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1989",
+  "itemId": "3b193d2f",
+  "kind": "reco",
+  "quote": "Je l'adore. Super, j'ai pris une cuite avec Emma Stone.",
+  "recommendedBy": "Camille Combal",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:36:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

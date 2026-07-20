@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:12"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1852",
+  "itemId": "91bf950e",
+  "kind": "reco",
+  "quote": "Une des comédiennes de \"Very Bad Blag\"",
+  "recommendedBy": "Blandine",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:12",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

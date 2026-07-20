@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:44"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:36:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:44"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:43"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:19:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:44"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0229",
+  "itemId": "8efcc8bd",
+  "kind": "reco",
+  "quote": "Netflix, ils ont sorti Fire Festival, là.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:33:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

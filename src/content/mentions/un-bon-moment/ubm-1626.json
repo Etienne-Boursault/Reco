@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:11:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1626",
+  "itemId": "02c88688",
+  "kind": "reco",
+  "quote": "le réalisateur, qui est super, lui qui a fait \"Barons Noirs\", \"D'argent et de sang\"",
+  "recommendedBy": "Pierre Ninet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:11:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

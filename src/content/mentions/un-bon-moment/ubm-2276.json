@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:22:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2276",
+  "itemId": "46df1cef",
+  "kind": "reco",
+  "quote": "on a regardé un film de Boulard un énorme Boulard les deux ados là qui ont 40 ans avec Will Ferrell et John C. Reilly",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6584658132930b0016c5272b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=FR",
+    "tmdb": 42009,
+    "tmdbType": "tv"
+  },
+  "id": "2d8126e3",
+  "schemaVersion": 1,
+  "title": "Black Mirror",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Black%20Mirror"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Black%20Mirror"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1287",
+  "itemId": "1a526839",
+  "kind": "reco",
+  "quote": "c'est un film avec Nicolas Cage ou en gros il va ou pas rejoindre sa meuf truc de Noël",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:55",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:06"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1636",
+  "itemId": "99c76ba5",
+  "kind": "reco",
+  "quote": "C'est un thriller. Mais où qu'elle est ? Mais où qu'elle est ? Avec Gotenner.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

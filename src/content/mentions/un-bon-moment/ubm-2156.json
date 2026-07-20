@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:23:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2156",
+  "itemId": "238efe3a",
+  "kind": "reco",
+  "quote": "Frank Sinatra, la musique de Noël, là. Flying to the moon.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:23:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

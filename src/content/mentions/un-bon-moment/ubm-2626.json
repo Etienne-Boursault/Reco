@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2626",
+  "itemId": "835d0f68",
+  "kind": "reco",
+  "quote": "Il y a un documentaire sur Paris Hilton, qui est sur YouTube. Et c'est totalement angoissant, en fait.",
+  "recommendedBy": "Cyprien",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

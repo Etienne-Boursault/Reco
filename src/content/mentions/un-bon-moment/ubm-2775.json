@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:32:09"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2775",
+  "itemId": "8bdb7150",
+  "kind": "reco",
+  "quote": "Sinon j'ai découvert un mec de fou qui s'appelle VEGYN ! Qui fait des prods complètement barrés !",
+  "recommendedBy": "Julien Granel",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:32:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

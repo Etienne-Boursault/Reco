@@ -1,0 +1,28 @@
+{
+  "creator": "Patrice Leconte",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR",
+    "tmdb": 47496,
+    "tmdbType": "movie"
+  },
+  "id": "7f9249b8",
+  "schemaVersion": 1,
+  "title": "Les Grands Ducs",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Les%20Grands%20Ducs"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Grands%20Ducs"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Les%20Grands%20Ducs"
+    }
+  ]
+}

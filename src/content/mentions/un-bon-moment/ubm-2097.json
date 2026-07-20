@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2097",
+  "itemId": "8daa2f0b",
+  "kind": "reco",
+  "quote": "on a mis le spectacle Une Bonne Soirée qu'on a co-écrit ensemble",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

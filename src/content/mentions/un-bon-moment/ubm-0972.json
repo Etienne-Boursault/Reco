@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:36:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:09"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:09"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0972",
+  "itemId": "9a29ce97",
+  "kind": "reco",
+  "quote": "Et Mister et Mrs. Smith ! Exceptionnel ! Mister et Mrs. Smith ! Il va aller prendre ce truc qui est un blockbuster ! C'est tellement une bonne idée ! Il va faire un truc niché, réaliste !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

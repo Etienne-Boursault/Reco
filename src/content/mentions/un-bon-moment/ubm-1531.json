@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:54"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:54"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1531",
+  "itemId": "73833582",
+  "kind": "reco",
+  "quote": "Il y a Christophe Pauly aussi, mais j'en ai déjà pas beaucoup parlé. C'est incroyable.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:35:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

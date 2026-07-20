@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2209",
+  "itemId": "2ad8d823",
+  "kind": "reco",
+  "quote": "En fait c'est un programme Pour Amazon Prime",
+  "recommendedBy": "Natoo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:12:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

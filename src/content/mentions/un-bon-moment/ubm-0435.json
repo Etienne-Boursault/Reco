@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0435",
+  "itemId": "30119f23",
+  "kind": "reco",
+  "quote": "je mets les sardines de qu'est-ce qu'on est serrés au fond de cette voiture",
+  "recommendedBy": "intervenants",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

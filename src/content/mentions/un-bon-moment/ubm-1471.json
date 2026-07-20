@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T12:56:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:54"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:58:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:54"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1471",
+  "itemId": "141bc746",
+  "kind": "reco",
+  "quote": "on accueille toutes les semaines ou très régulièrement une rappeuse qui s'appelle Mona Guba qui vient poser des freestyles",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "699968af0e5c959d5971943f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

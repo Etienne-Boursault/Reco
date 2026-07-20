@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0864",
+  "itemId": "de6eed6c",
+  "kind": "reco",
+  "quote": "il ya defiant ones donc c'est l'histoire de docteur dr et jimi à yovine qui était sur netflix qui était ouf qu'était en cinq parties",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:18:44",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

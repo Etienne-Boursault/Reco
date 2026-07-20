@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0839",
+  "itemId": "c4b64e80",
+  "kind": "reco",
+  "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:58",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

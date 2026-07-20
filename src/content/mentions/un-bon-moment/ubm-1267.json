@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1267",
+  "itemId": "ce8b39ae",
+  "kind": "reco",
+  "quote": "si vous êtes sur cette planète et que vous connaissez matieu schedid ou m allez voir matieu schedid sur scène au moins une fois dans votre vie",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

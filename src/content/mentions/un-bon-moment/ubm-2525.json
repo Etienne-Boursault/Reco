@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2525",
+  "itemId": "83a8d586",
+  "kind": "reco",
+  "quote": "je vous invite que tu es allé le voir sur YouTube avec des commentaires hollandais",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

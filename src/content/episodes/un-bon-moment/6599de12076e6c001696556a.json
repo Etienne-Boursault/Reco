@@ -1,15 +1,31 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6599de12076e6c001696556a",
-  "title": "avec Bérengère et Manu",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-02-12",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599de12076e6c001696556a/media.mp3",
-  "description": "A-t-elle payé l'addition ou non ? Manu Payet voulait avoir la réponse. Cette semaine Bérengère Krief et Manu Payet sont venu.es nous parler d’une soirée au restaurant, de leurs rapports à eux-mêmes mais aussi avec la scène. Le tout accompagné de jeux préparés par Kyan et Navo.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=Lyl9HDY_-dA",
   "audioDuration": 4612,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599de12076e6c001696556a/media.mp3",
+  "date": "2024-02-12",
+  "description": "A-t-elle payé l'addition ou non ? Manu Payet voulait avoir la réponse. Cette semaine Bérengère Krief et Manu Payet sont venu.es nous parler d’une soirée au restaurant, de leurs rapports à eux-mêmes mais aussi avec la scène. Le tout accompagné de jeux préparés par Kyan et Navo.",
+  "guests": [
+    "Bérengère Krief",
+    "Manu Payet"
+  ],
+  "guestsExcluded": [
+    "Bérangère Creff",
+    "Invité",
+    "Bérangère Kreev",
+    "Bérengère",
+    "Manu"
+  ],
+  "guestsParsed": [
+    "Bérengère",
+    "Manu"
+  ],
+  "guid": "6599de12076e6c001696556a",
+  "number": 64,
+  "sourceId": "un-bon-moment",
+  "title": "avec Bérengère et Manu",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4613,
   "youtubeTitle": "Un Bon Moment avec BÉRENGÈRE KRIEF & MANU PAYET",
-  "number": 64
+  "youtubeUrl": "https://www.youtube.com/watch?v=Lyl9HDY_-dA"
 }

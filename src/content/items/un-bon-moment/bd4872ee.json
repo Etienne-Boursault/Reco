@@ -1,0 +1,28 @@
+{
+  "creator": "Ben Sinclair, Katja Blichfeld",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/67243-high-maintenance/watch?locale=FR",
+    "tmdb": 67243,
+    "tmdbType": "tv"
+  },
+  "id": "bd4872ee",
+  "schemaVersion": 1,
+  "title": "High Maintenance",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=High%20Maintenance"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=High%20Maintenance"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=High%20Maintenance"
+    }
+  ]
+}

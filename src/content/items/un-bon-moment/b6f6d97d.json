@@ -1,0 +1,52 @@
+{
+  "creator": "Alex Pouchkine",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR",
+    "tmdb": 8223,
+    "tmdbType": "movie"
+  },
+  "id": "b6f6d97d",
+  "schemaVersion": 1,
+  "title": "Kika",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Kika"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Kika"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Kika"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Kika"
+    },
+    {
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Kika"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Kika"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Kika"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Kika"
+    },
+    {
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Kika"
+    }
+  ]
+}

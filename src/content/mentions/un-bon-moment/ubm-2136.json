@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:09:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2136",
+  "itemId": "176b3194",
+  "kind": "reco",
+  "quote": "Moi, Charlie, je la regardais, c'est montreux, en boucle. Puisque j'apprenais par cœur les sketchs.",
+  "recommendedBy": "Lou Trotignant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:09:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

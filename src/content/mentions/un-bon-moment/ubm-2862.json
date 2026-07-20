@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:28"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2862",
+  "itemId": "bfb5e8a1",
+  "kind": "reco",
+  "quote": "une musique dans mes écouteurs qui se met l'une de mes musiques préférées et à un moment donné, ça ne dure pas longtemps. Les sardines.",
+  "recommendedBy": "Jérémy Ferrari",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:28",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

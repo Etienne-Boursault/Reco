@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1919",
+  "itemId": "a2636428",
+  "kind": "reco",
+  "quote": "Est-ce que vous avez vu Gilles Lelouch dans le sens de la fête ?",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:05:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

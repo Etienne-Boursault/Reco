@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:17:41"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0637",
+  "itemId": "2d8126e3",
+  "kind": "reco",
+  "quote": "Ce que Black Mirror, c'est le futur ou c'est maintenant ?",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:17:41",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:11"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2829",
+  "itemId": "8010902b",
+  "kind": "reco",
+  "quote": "J'ai connu Morgane dans ton podcast « Les gens qui joutent ».",
+  "recommendedBy": "Fanny Ruey",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61c5abab76bee100120dd720",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:11",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

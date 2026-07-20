@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:20:30"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1238",
+  "itemId": "2533d051",
+  "kind": "reco",
+  "quote": "le thème de Gaëlle, de Street Fighter, plus Eiffel 65",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240aefc8996500127ede97",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:30",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:15"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1940",
+  "itemId": "170f114e",
+  "kind": "reco",
+  "quote": "R-I-Z, surtout Mel Gibson dans L'Arme Fatale.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

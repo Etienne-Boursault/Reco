@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:06:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:57"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:44:44+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:24"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1327",
+  "itemId": "7858fe06",
+  "kind": "reco",
+  "quote": "Franchement, c'est un mec qui m'a beaucoup aidé !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

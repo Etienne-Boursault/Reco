@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:57"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:59:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:57"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2999",
+  "itemId": "3694e334",
+  "kind": "reco",
+  "quote": "Il y a le parking des anges de Marc Lavoine.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:48:57",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

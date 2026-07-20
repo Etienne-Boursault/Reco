@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:21:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0236",
+  "itemId": "2a48548b",
+  "kind": "reco",
+  "quote": "j'ai envie d'envoyer de la force aux amis yacine et dédo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:21:59",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

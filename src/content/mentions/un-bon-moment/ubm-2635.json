@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:07"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2635",
+  "itemId": "2a43b7de",
+  "kind": "reco",
+  "quote": "C'est quoi le ring fit ? Ah, le truc de switch.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

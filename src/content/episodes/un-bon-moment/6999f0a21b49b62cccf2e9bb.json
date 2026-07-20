@@ -1,16 +1,32 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6999f0a21b49b62cccf2e9bb",
-  "title": "Emilien et Charlie Danger sont incollables à nos jeux (Un Bon Moment, S5-E21)",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2026-03-09",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6999f0a21b49b62cccf2e9bb/media.mp3",
-  "description": "<hr /><p style=\"color: grey; font-size: 0.75em;\"> Hébergé par Acast. Visitez <a href=\"https://acast.com/privacy\" rel=\"noopener noreferrer\" style=\"color: grey;\" target=\"_blank\">acast.com/privacy</a> pour plus d'informations.</p>",
-  "youtubeUrl": "https://www.youtube.com/watch?v=hCN37960xpQ",
   "audioDuration": 6497,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6999f0a21b49b62cccf2e9bb/media.mp3",
+  "date": "2026-03-09",
+  "description": "<hr /><p style=\"color: grey; font-size: 0.75em;\"> Hébergé par Acast. Visitez <a href=\"https://acast.com/privacy\" rel=\"noopener noreferrer\" style=\"color: grey;\" target=\"_blank\">acast.com/privacy</a> pour plus d'informations.</p>",
+  "guests": [
+    "Émilien"
+  ],
+  "guestsExcluded": [
+    "Emilia",
+    "Greg Romano",
+    "invité",
+    "intervenants",
+    "inconnu",
+    "Emilien"
+  ],
+  "guestsParsed": [
+    "Emilien",
+    "Charlie Danger"
+  ],
+  "guid": "6999f0a21b49b62cccf2e9bb",
+  "number": 21,
+  "season": 5,
+  "sourceId": "un-bon-moment",
+  "title": "Emilien et Charlie Danger sont incollables à nos jeux (Un Bon Moment, S5-E21)",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6498,
   "youtubeTitle": "Émilien et Charlie Danger sont incollables à nos jeux (Un Bon Moment, S5-E21)",
-  "season": 5,
-  "number": 21
+  "youtubeUrl": "https://www.youtube.com/watch?v=hCN37960xpQ"
 }

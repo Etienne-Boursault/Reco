@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2483",
+  "itemId": "a39c6376",
+  "kind": "reco",
+  "quote": "t'as vu la vidéo de 1612 un morceau qui joue chez Stephen Colbert",
+  "recommendedBy": "Romain Segouk",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

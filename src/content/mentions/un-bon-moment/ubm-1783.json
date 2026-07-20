@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:51"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1783",
+  "itemId": "89c59ace",
+  "kind": "reco",
+  "quote": "je peux voir Panique de Duvier je trouve ça super",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:51",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

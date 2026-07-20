@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:24:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0503",
+  "itemId": "af6f490e",
+  "kind": "reco",
+  "quote": "Je pense à Linda Fondel qui est une humoriste qui vient d'arriver de Berlin qui s'est installée à Strasbourg",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:24:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

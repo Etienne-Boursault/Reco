@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:49:48"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0159",
+  "itemId": "20c6eef8",
+  "kind": "reco",
+  "quote": "Et ben c'est trop bien parce que son livre, il t'entend sa voix, et c'est vraiment son style en écriture.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:49:48",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

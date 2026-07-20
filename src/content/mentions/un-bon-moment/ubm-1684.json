@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:06"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:06"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1684",
+  "itemId": "9e6da6fd",
+  "kind": "reco",
+  "quote": "Et un pote à moi, il s'appelle Arthur Haddad ! Et il va dans énormément d'expos, même à l'étranger ! Et il explique d'une façon hyper cool des œuvres !",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:36:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

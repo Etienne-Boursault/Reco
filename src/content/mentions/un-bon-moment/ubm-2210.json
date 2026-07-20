@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:14:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:14:24"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2210",
+  "itemId": "80b54776",
+  "kind": "reco",
+  "quote": "C'est méga bien ce que tu fais dans Poulpe au Vision.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:14:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

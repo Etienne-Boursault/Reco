@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:21"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1083",
+  "itemId": "b064028c",
+  "kind": "reco",
+  "quote": "Les mecs que je veux qu'aine de Rosa Bernstein. Bien sûr. Qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61accf4f45d15e00135c6ef2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

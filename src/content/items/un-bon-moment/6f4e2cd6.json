@@ -1,0 +1,24 @@
+{
+  "creator": "Documentaire",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/77601-wild-wild-country/watch?locale=FR",
+    "tmdb": 77601,
+    "tmdbType": "tv"
+  },
+  "id": "6f4e2cd6",
+  "schemaVersion": 1,
+  "title": "Wild Wild Country",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Wild%20Wild%20Country"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Wild%20Wild%20Country"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "creator": "Netflix",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/157065-the-fall-of-the-house-of-usher/watch?locale=FR",
+    "tmdb": 157065,
+    "tmdbType": "tv"
+  },
+  "id": "70c0f4cc",
+  "schemaVersion": 1,
+  "title": "La Chute de la maison Usher",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=La%20Chute%20de%20la%20maison%20Usher"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=La%20Chute%20de%20la%20maison%20Usher"
+    }
+  ]
+}

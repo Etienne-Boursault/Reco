@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:17:57"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1664",
+  "itemId": "900e2a31",
+  "kind": "reco",
+  "quote": "Depuis que j'ai fait bref. Il y a 15 ans.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:17:57",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

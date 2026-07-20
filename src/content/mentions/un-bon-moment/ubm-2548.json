@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2548",
+  "itemId": "510b30a3",
+  "kind": "reco",
+  "quote": "Et puis, Charles aussi. Il y a Charlène Juarez, qui est la compagne de mon frère Joseph, et qui est une pianiste divine",
+  "recommendedBy": "Mathieu Chédid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2495",
+  "itemId": "9dcbef5e",
+  "kind": "reco",
+  "quote": "Tropic Thunder.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

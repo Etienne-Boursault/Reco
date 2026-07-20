@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:52"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "28:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:22:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:55"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0892",
+  "itemId": "cddd8379",
+  "kind": "reco",
+  "quote": "Vous êtes à l'affiche d'un film qui s'appelle « Je ne suis pas un héros » qui sort le 15 novembre au cinéma.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:28:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

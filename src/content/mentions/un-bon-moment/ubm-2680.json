@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:48"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2680",
+  "itemId": "3e5333dc",
+  "kind": "reco",
+  "quote": "c'était epic quelque chose",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:38:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

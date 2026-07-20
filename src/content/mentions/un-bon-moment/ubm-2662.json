@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:03:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2662",
+  "itemId": "d782809f",
+  "kind": "reco",
+  "quote": "Willem Ting\nqui est un des meilleurs films du monde",
+  "recommendedBy": "François",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:03:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

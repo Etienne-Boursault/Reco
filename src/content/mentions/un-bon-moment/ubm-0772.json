@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:13"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:11"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0772",
+  "itemId": "d5900e48",
+  "kind": "reco",
+  "quote": "Et en ce moment, par ailleurs, j'écoute beaucoup un type qui s'appelle Corey Wong ! Qui est notamment le guitariste de Wolf Peck !",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:11",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

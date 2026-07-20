@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T23:00:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:54:49"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:54:42"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T10:11:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:54:52"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1710",
+  "itemId": "2cca9adf",
+  "kind": "reco",
+  "quote": "je recommande Romane Frésiné en général",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:54:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

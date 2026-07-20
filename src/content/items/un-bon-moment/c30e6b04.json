@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/83631-what-we-do-in-the-shadows/watch?locale=FR",
+    "tmdb": 83631,
+    "tmdbType": "tv"
+  },
+  "id": "c30e6b04",
+  "schemaVersion": 1,
+  "title": "What We Do In The Shadows",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
+    },
+    {
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
+    }
+  ]
+}

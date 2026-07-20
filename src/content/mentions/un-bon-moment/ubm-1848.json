@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:10"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1848",
+  "itemId": "9f6e2d78",
+  "kind": "reco",
+  "quote": "Et moi, j'aime aussi beaucoup Ali McBeal. Il y a son romantisme, j'adore ça.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

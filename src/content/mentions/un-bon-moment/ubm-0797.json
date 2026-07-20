@@ -1,0 +1,53 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:42"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:42"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0797",
+  "itemId": "674ab7b0",
+  "kind": "reco",
+  "quote": "je vous recommande le film Vice",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

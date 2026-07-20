@@ -1,0 +1,63 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8844-jumanji/watch?locale=FR",
+    "tmdb": 8844,
+    "tmdbType": "movie"
+  },
+  "id": "c6e48e87",
+  "schemaVersion": 1,
+  "title": "Jumanji",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Jumanji"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Jumanji"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Jumanji&c=movies"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Jumanji"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Jumanji"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Jumanji"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Jumanji"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Jumanji"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Jumanji"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Jumanji"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Jumanji"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Jumanji"
+    }
+  ]
+}

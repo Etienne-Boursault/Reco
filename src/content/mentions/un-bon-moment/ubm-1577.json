@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:28+00:00",
+      "extra": {
+        "timestamp_at_extraction": "27:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "27:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1577",
+  "itemId": "9319602a",
+  "kind": "reco",
+  "quote": "moi j'adore les grosses têtes",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69c7de338ac24e236cb65e12",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:27:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

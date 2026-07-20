@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2446",
+  "itemId": "ee5a2b4e",
+  "kind": "reco",
+  "quote": "commando",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

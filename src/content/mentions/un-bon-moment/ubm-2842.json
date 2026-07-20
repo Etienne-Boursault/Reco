@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2842",
+  "itemId": "d140d440",
+  "kind": "reco",
+  "quote": "Mais Théo Babac, il est incroyable. Il a... Sa capacité à monter des vidéos drôles, son timing comique est incroyable.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61c5abab76bee100120dd720",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:25:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

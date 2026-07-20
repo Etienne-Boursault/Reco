@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:36:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:06:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:06:53"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1752",
+  "itemId": "1e72d204",
+  "kind": "reco",
+  "quote": "Ça s'appelle Los nuevos annuos",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:06:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

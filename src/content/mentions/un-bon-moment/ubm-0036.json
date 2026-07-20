@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0036",
+  "itemId": "5cd4af83",
+  "kind": "reco",
+  "quote": "l'intro de Les Clés de Bagnoles, c'est une des meilleures intros de films.",
+  "recommendedBy": "Kyan Khojandi & Laurent Baffie",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63614bd05e627e0011144c04",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:23",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

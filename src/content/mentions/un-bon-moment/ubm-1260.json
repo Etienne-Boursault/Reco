@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1260",
+  "itemId": "f4ac56e5",
+  "kind": "reco",
+  "quote": "et même ces romans d'ailleurs qui sont incroyables mais donc il y a des recueils je crois chez Flamarion qui est un espèce de recueil où il y a toute sa poésie",
+  "recommendedBy": "Matthieu Chedid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:18:55",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:26"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2114",
+  "itemId": "3f8a8506",
+  "kind": "reco",
+  "quote": "Camille Fiévez, qui est actrice et autrice aussi, qui fait du stand-up.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "661c1bf83fb7ab00162aa674",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

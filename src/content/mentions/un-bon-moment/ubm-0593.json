@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:36"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0593",
+  "itemId": "b6ef0939",
+  "kind": "reco",
+  "quote": "d'ailleurs j'ai eu entendu parler un jour d'un spectacle je sais pas si on peut parler mais florent se passe des disques ça m'aurait fait kiffer que ça existe",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:36",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

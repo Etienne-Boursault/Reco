@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:32:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2783",
+  "itemId": "30611386",
+  "kind": "reco",
+  "quote": "je travaille avec eux depuis l'album La Vraie Vie",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

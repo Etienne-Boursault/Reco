@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:40:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3028",
+  "itemId": "8a8be6c9",
+  "kind": "reco",
+  "quote": "Alain Chabat il a beaucoup écrit comme ça tu vois les inconnus ils ont beaucoup écrit comme ça",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b2f213ca1cc001201a69f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:40:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

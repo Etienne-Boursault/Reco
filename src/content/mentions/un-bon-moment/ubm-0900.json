@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:16"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0900",
+  "itemId": "49739a9e",
+  "kind": "reco",
+  "quote": "j'avais fait la précédente qui s'appelait \"Lors de cipan\".",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:16",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

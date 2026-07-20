@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1175",
+  "itemId": "d6381175",
+  "kind": "reco",
+  "quote": "En moins cringe il y a Crocodile Fury qui est un gros classique qui est incroyable.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:35",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

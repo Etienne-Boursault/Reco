@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:51"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2213",
+  "itemId": "c5f5e354",
+  "kind": "reco",
+  "quote": "Vous avez vu Ghost quoi",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:51:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

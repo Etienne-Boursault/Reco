@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1968",
+  "itemId": "e2aa653f",
+  "kind": "reco",
+  "quote": "Le Cercle des Poets disparus.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

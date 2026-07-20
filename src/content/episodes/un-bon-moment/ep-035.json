@@ -1,15 +1,27 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
-  "title": "avec JULIEN GRANEL ET CLÉMENT VIKTOROVITCH",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 35,
-  "date": "2021-03-21",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecjuliengraneletclementviktorovitch/media.mp3",
-  "description": "J’adore les deux gars, ils sont smart, cools et bonnes vibes, un super moment où j'ai appris des choses. Multi blindtest et chocs mentaux de folie sont au programme de cette émission.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=y6yC_irb6O8",
   "audioDuration": 5754,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecjuliengraneletclementviktorovitch/media.mp3",
+  "date": "2021-03-21",
+  "description": "J’adore les deux gars, ils sont smart, cools et bonnes vibes, un super moment où j'ai appris des choses. Multi blindtest et chocs mentaux de folie sont au programme de cette émission.",
+  "guests": [],
+  "guestsExcluded": [
+    "intervenant",
+    "Julien",
+    "Clément Victorovic",
+    "Clément Victorovitch"
+  ],
+  "guestsParsed": [
+    "Julien Granel",
+    "Clément Viktorovitch"
+  ],
+  "guid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+  "number": 35,
+  "sourceId": "un-bon-moment",
+  "title": "avec JULIEN GRANEL ET CLÉMENT VIKTOROVITCH",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 5839,
-  "youtubeTitle": "UN BON MOMENT avec JULIEN GRANEL et CLÉMENT VIKTOROVITCH"
+  "youtubeTitle": "UN BON MOMENT avec JULIEN GRANEL et CLÉMENT VIKTOROVITCH",
+  "youtubeUrl": "https://www.youtube.com/watch?v=y6yC_irb6O8"
 }

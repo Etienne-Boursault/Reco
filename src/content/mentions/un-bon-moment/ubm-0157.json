@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0157",
+  "itemId": "7ec719df",
+  "kind": "reco",
+  "quote": "la dernière croisade de Indiana Jones.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

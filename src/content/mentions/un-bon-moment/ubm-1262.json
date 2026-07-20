@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:37:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1262",
+  "itemId": "d96fdcf3",
+  "kind": "reco",
+  "quote": "c'est donc des petites poésies comme ça de vie quoi qui te que je vous invite à lire le tao talking",
+  "recommendedBy": "Matthieu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:37:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

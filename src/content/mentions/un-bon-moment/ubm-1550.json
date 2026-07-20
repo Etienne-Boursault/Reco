@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:57"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1550",
+  "itemId": "5b223c8a",
+  "kind": "reco",
+  "quote": "J'ai vu Monte Cristo deux fois.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:57",
+    "transcriptSource": "acast"
+  },
+  "status": "discarded"
+}

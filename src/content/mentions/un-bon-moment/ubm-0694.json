@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0694",
+  "itemId": "27a75d99",
+  "kind": "reco",
+  "quote": "je vous invite à aller le voir sur youtube avec les commentaires hollandais",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

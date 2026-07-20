@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1934",
+  "itemId": "b2e92f06",
+  "kind": "reco",
+  "quote": "J'ai sorti un doc sur les baleines.",
+  "recommendedBy": "Agathe",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

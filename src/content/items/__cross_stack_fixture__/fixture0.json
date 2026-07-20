@@ -1,0 +1,41 @@
+{
+  "aliases": [
+    "alt1",
+    "alt2"
+  ],
+  "creator": "Fixture Creator",
+  "customLinks": [
+    {
+      "label": "X",
+      "url": "https://x.example.com"
+    }
+  ],
+  "externalIds": {
+    "isbn": "isbn",
+    "justwatch": "jw",
+    "musicbrainz": "mb",
+    "openlibrary": "ol",
+    "spotify": "sp",
+    "tmdb": 42,
+    "tmdbType": "movie"
+  },
+  "id": "fixture0",
+  "linkOverrides": {
+    "JW": "https://jw.example.com"
+  },
+  "recommendedBy": "Tester",
+  "schemaVersion": 1,
+  "title": "Fixture Title",
+  "types": [
+    "film",
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "N",
+      "region": "FR",
+      "url": "https://n.example.com"
+    }
+  ],
+  "year": 2020
+}

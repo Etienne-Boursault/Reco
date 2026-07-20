@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:13"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1171",
+  "itemId": "5e1eeb00",
+  "kind": "reco",
+  "quote": "c'est quelqu'un qui s'appelle Quentin Ratioville, qui est un jeune humoriste atteint de deux maladies auto-immunes",
+  "recommendedBy": "Walidia",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a2673210d00017783f8b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:13",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

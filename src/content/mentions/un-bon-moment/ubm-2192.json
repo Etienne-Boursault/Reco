@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T17:58:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:26"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2192",
+  "itemId": "b22966c1",
+  "kind": "reco",
+  "quote": "« Bah non, je suis dedans. »",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

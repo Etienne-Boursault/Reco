@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0655",
+  "itemId": "3f98a1e4",
+  "kind": "reco",
+  "quote": "je pleure de rire en écoutant shitty flute c'est un une chaîne avec des remixes de choses qu'on connaît jouer très très très très très mal à la flûte",
+  "recommendedBy": "Non spécifié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:44",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

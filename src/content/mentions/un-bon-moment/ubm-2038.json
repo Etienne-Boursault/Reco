@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:22:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:12"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2038",
+  "itemId": "aca50d81",
+  "kind": "reco",
+  "quote": "Prenez alors voilà juste je fais un peu de mais prenez le temps d'aller vous renseigner pour les moins d'un an",
+  "recommendedBy": "Intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:12",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

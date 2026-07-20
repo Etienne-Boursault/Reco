@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:26"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1970",
+  "itemId": "5c028bc7",
+  "kind": "reco",
+  "quote": "Allez voir Un homme idéal.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

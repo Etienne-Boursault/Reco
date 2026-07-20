@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:31"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2003",
+  "itemId": "ebdbf567",
+  "kind": "reco",
+  "quote": "Christopher Titus ! Titus ouais ! Où il parle de... Divence ! Non ! Il parle de sa mère... Ah oui ! De son père alcoolique, de sa mère qui s'est suicidée ! Et il arrive à en faire des blagues !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:31",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

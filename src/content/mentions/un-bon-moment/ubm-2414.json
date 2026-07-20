@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:46:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:24"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2414",
+  "itemId": "5e163717",
+  "kind": "reco",
+  "quote": "Je recommande GTA V.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65241146d963060012045fb6",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

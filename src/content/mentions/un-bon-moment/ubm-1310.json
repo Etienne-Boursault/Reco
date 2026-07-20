@@ -1,0 +1,65 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:49"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:49"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:49"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:43:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:50"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1310",
+  "itemId": "8316e7cb",
+  "kind": "citation",
+  "quote": "C'est le titre de la première chanson de l'album que je considère le plus grand album.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

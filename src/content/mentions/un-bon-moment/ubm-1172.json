@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:43"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:40"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T16:09:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:41"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1172",
+  "itemId": "1d25d9b1",
+  "kind": "reco",
+  "quote": "je recommande d'aller vous renseigner sur l'académie d'humour",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a2673210d00017783f8b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

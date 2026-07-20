@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0762",
+  "itemId": "8fff11bc",
+  "kind": "reco",
+  "quote": "Oui, dans la sociologie, j'ai lu Retour à Rince, qui est dingue aussi...",
+  "recommendedBy": "Inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:44",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

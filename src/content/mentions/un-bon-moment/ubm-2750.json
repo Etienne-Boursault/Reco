@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2750",
+  "itemId": "cbff7268",
+  "kind": "reco",
+  "quote": "Family Man, c'est un film avec Nicolas Cage où en gros, il va ou pas rejoindre sa meuf.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:30"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2467",
+  "itemId": "103cfba7",
+  "kind": "reco",
+  "quote": "Écoute, je sais pas si c'est ce qui tue le plus vite un vieux, mais je vais m'abonner à la chaîne de Julien.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

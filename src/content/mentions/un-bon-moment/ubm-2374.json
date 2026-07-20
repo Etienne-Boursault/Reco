@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:13"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2374",
+  "itemId": "bf3d1693",
+  "kind": "reco",
+  "quote": "J'aimerais vous recommander une vidéo sur Youtube qui s'appelle Flick and Games",
+  "recommendedBy": "Alice",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

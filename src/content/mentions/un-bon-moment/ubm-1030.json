@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:31"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1030",
+  "itemId": "da32b880",
+  "kind": "reco",
+  "quote": "moi je vous conseille vraiment Britney Spears c'est toxique je crois Britney Spears toxique c'est une des choses les plus formidables qui existent",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:31",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

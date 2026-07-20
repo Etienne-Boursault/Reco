@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2435",
+  "itemId": "f203a89a",
+  "kind": "reco",
+  "quote": "c'était tout frais, bref",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

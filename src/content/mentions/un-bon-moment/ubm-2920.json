@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2920",
+  "itemId": "6cf502e3",
+  "kind": "reco",
+  "quote": "Nous, c'est The Village.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63160ce353f4d80012fcd7d0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

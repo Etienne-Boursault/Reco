@@ -1,0 +1,43 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8487-wild-wild-west/watch?locale=FR",
+    "tmdb": 8487,
+    "tmdbType": "movie"
+  },
+  "id": "1f9fad99",
+  "schemaVersion": 1,
+  "title": "Wild Wild West",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Wild%20Wild%20West"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Wild%20Wild%20West"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Wild%20Wild%20West"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Wild%20Wild%20West"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Wild%20Wild%20West"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Wild%20Wild%20West"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Wild%20Wild%20West"
+    }
+  ]
+}

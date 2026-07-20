@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:14:32"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1958",
+  "itemId": "710e267c",
+  "kind": "reco",
+  "quote": "qui a la chaîne Filoscopie c'est un des derniers livres que j'ai lu cette année",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:14:32",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

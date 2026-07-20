@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:30:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1578",
+  "itemId": "6b27ff2f",
+  "kind": "reco",
+  "quote": "même « That's 70 show », je n'ai pas connu les années 70 et je kiffais.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:30:47",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

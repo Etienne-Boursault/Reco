@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:52"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1010",
+  "itemId": "7240e164",
+  "kind": "reco",
+  "quote": "J'aurais dit toujours Adèle Fougasi, mais j'ai l'impression qu'il faut aller voir Adèle Fougasi parce que si on aime les propositions un peu inédites.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:52",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:54"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2134",
+  "itemId": "bfb036c3",
+  "kind": "reco",
+  "quote": "de lire les livres de Delphine Orvilleur.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

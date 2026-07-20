@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:25"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1408",
+  "itemId": "ba733e01",
+  "kind": "reco",
+  "quote": "Il y a une scène dans Family Business où, à un moment donné, ils fument. C'est dans la saison 2, je crois.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

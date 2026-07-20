@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:20"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1118",
+  "itemId": "e6aa6bcd",
+  "kind": "reco",
+  "quote": "franchement, vivre pour survivre. Ouais, Whitefire, c'est...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322de1f35ce9e001229f98a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

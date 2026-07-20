@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:52"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1389",
+  "itemId": "3a054416",
+  "kind": "reco",
+  "quote": "Pana je trouve que c'est un des mecs qui n'a pas le succès enfin l'audience qu'il devrait avoir",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:52",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:02"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1065",
+  "itemId": "db8f8d9f",
+  "kind": "reco",
+  "quote": "Fail Army. Tous les jours il y a des gens qui tombent. C'est génial.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:02",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:48:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:08:05"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2984",
+  "itemId": "8cfb2410",
+  "kind": "reco",
+  "quote": "Xavier tu es un des créateurs de validez la série sur Canal Plus",
+  "recommendedBy": "Xavier Lacaille",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322ecf035ce9e00122a2a9e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:08:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

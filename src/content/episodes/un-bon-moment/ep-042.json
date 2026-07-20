@@ -1,15 +1,24 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "630baf2b552ddd0013718a16",
-  "title": "avec BUN HAY MEAN & ALEXANDRE KOMINEK",
-  "guests": [],
-  "transcriptStatus": "none",
-  "date": "2022-08-29",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/630baf2b552ddd0013718a16/media.mp3",
-  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=hNPQbI8YIA4",
   "audioDuration": 4436,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/630baf2b552ddd0013718a16/media.mp3",
+  "date": "2022-08-29",
+  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
+  "guests": [],
+  "guestsExcluded": [
+    "Invité"
+  ],
+  "guestsParsed": [
+    "Bun Hay Mean",
+    "Alexandre Kominek"
+  ],
+  "guid": "630baf2b552ddd0013718a16",
+  "number": 42,
+  "sourceId": "un-bon-moment",
+  "title": "avec BUN HAY MEAN & ALEXANDRE KOMINEK",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4437,
   "youtubeTitle": "Un Bon Moment avec BUN HAY MEAN & ALEXANDRE KOMINEK",
-  "number": 43
+  "youtubeUrl": "https://www.youtube.com/watch?v=hNPQbI8YIA4"
 }

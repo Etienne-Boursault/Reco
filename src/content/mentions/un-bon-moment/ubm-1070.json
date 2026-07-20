@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1070",
+  "itemId": "c9e0b600",
+  "kind": "reco",
+  "quote": "Ah, il y a demi-tor, D.O.M.I. de T.O.R., je crois. Au moment où je parle, il a dû faire que deux vidéos. [...] Sur le cinéma, les deux étaient assez intéressantes.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:35:42",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

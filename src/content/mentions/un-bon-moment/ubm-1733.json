@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:35:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:38:51"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1733",
+  "itemId": "8b5e0d5e",
+  "kind": "reco",
+  "quote": "Il Lou Garou saison 2",
+  "recommendedBy": "Intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:38:51",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

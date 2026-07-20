@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:51:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1456",
+  "itemId": "6eea3240",
+  "kind": "reco",
+  "quote": "C'est le Brick, c'est le petit bloc là. Colle ton téléphone dessus comme un sans contact et ça te bloque tes applications.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

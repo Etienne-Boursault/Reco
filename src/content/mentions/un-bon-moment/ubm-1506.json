@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1506",
+  "itemId": "5d626b0a",
+  "kind": "reco",
+  "quote": "J'ai eu la chance de... Je dis la chance parce que c'est quelqu'un que j'aime beaucoup aussi que tu m'as fait découvrir. C'est Albert Moucahibert.",
+  "recommendedBy": "Fabien Olicard",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:55",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

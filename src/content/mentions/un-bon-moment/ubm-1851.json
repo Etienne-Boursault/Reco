@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T07:49:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:27"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1851",
+  "itemId": "a693bb62",
+  "kind": "reco",
+  "quote": "Comme dans Drunk, le film de Winterberg, où t'es bourré",
+  "recommendedBy": "Thomas",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:38:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

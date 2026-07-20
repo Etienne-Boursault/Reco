@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:14:27"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1413",
+  "itemId": "e446e776",
+  "kind": "reco",
+  "quote": "History Tour, ouais.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:14:27",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:22"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2108",
+  "itemId": "ee5d8b34",
+  "kind": "reco",
+  "quote": "Mais qui a écrit cette chanson ? Mickey de Mickey 3D.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

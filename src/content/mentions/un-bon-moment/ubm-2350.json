@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:03"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2350",
+  "itemId": "c46b17ad",
+  "kind": "reco",
+  "quote": "on a déjà fait une chanson sublime qui s'appelle Starlops elle est juste sublime cette chanson",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T14:31:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2135",
+  "itemId": "9569c2d9",
+  "kind": "reco",
+  "quote": "On a un point commun, tous les quatre, autour de la table, c'est qu'on aime particulièrement Shirley.",
+  "recommendedBy": "Kyan Khojandi, Navo, Lou Trotignant, Tani",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed91d2d4b6e10017bf9747",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

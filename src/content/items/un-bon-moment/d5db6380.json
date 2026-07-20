@@ -1,0 +1,28 @@
+{
+  "creator": "Jean Dujardin",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/21182-young-at-heart/watch?locale=FR",
+    "tmdb": 21182,
+    "tmdbType": "movie"
+  },
+  "id": "d5db6380",
+  "schemaVersion": 1,
+  "title": "I Feel Good",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=I%20Feel%20Good"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=I%20Feel%20Good"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=I%20Feel%20Good"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:01:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:56:59"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2105",
+  "itemId": "6facc446",
+  "kind": "reco",
+  "quote": "C'est une créatrice, merci, on peut l'applaudir, qui s'appelle Yaba, qui chine des pièces de seconde main, parce que golo et créatif, et qui les tamponne comme ça avec des dessins qu'elle, elle a fait, yaba.ilu sur Instagram",
+  "recommendedBy": "Manon",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:56:59",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2766",
+  "itemId": "67b061ae",
+  "kind": "reco",
+  "quote": "Quand j'avais 15 ans, il y a Edrec volume 1 qui est sorti et je me suis dit mais c'est le son du futur, c'est complètement fou.",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

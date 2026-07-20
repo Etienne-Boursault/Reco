@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:05"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2555",
+  "itemId": "64e29b74",
+  "kind": "reco",
+  "quote": "Je pense à Miles Davis, je pense à des gens qui...",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,24 @@
+{
+  "creator": "Florence Lompré",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
+    "tmdb": 284656,
+    "tmdbType": "tv"
+  },
+  "id": "d5d14f55",
+  "schemaVersion": 1,
+  "title": "Empathie",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
+    },
+    {
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
+    }
+  ]
+}

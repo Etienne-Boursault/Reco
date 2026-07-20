@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR",
+    "tmdb": 241554,
+    "tmdbType": "tv"
+  },
+  "id": "183757f6",
+  "schemaVersion": 1,
+  "title": "Murderbot",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Murderbot"
+    },
+    {
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Murderbot"
+    }
+  ]
+}

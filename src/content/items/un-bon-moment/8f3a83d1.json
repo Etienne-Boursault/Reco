@@ -1,0 +1,28 @@
+{
+  "creator": "autre",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/873-columbo/watch?locale=FR",
+    "tmdb": 873,
+    "tmdbType": "tv"
+  },
+  "id": "8f3a83d1",
+  "schemaVersion": 1,
+  "title": "Columbo",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Columbo"
+    }
+  ]
+}

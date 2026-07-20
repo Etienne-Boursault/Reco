@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1805",
+  "itemId": "e809034c",
+  "kind": "reco",
+  "quote": "Juste avant, il y avait un avant-axolote. Ça me touche, Exocète.",
+  "recommendedBy": "Patrick Beau",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

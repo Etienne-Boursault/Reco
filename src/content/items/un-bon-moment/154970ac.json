@@ -1,0 +1,48 @@
+{
+  "creator": "Sam Levinson",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/85552-euphoria/watch?locale=FR",
+    "tmdb": 85552,
+    "tmdbType": "tv"
+  },
+  "id": "154970ac",
+  "schemaVersion": 1,
+  "title": "Euphoria",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Euphoria"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Euphoria"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Euphoria"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Euphoria"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Euphoria"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Euphoria"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Euphoria"
+    }
+  ]
+}

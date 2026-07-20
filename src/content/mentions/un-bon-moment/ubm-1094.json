@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:25"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1094",
+  "itemId": "7ebd495d",
+  "kind": "reco",
+  "quote": "je vais sur LinkedIn learning je l'indique laurne c'est quoi avant c'était linda",
+  "recommendedBy": "Alexandre",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63160ce353f4d80012fcd7d0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:35:25",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

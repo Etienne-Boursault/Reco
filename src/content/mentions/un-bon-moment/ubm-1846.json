@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1846",
+  "itemId": "423693d5",
+  "kind": "reco",
+  "quote": "Gladiator.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

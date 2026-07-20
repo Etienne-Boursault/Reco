@@ -1,15 +1,24 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "61bf4e1721eb7a00137ec1b4",
-  "title": "avec JULIEN DORÉ",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 38,
-  "date": "2021-12-19",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61bf4e1721eb7a00137ec1b4/media.mp3",
-  "description": "On reçoit Julien Doré ! Super humble et sympa on apprend à le découvrir\n+ un multi BlindTest inside!",
-  "youtubeUrl": "https://www.youtube.com/watch?v=GJUk8IwUgiU",
   "audioDuration": 4199,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61bf4e1721eb7a00137ec1b4/media.mp3",
+  "date": "2021-12-19",
+  "description": "On reçoit Julien Doré ! Super humble et sympa on apprend à le découvrir\n+ un multi BlindTest inside!",
+  "guests": [],
+  "guestsExcluded": [
+    "Soi-même",
+    "Julien"
+  ],
+  "guestsParsed": [
+    "Julien Doré"
+  ],
+  "guid": "61bf4e1721eb7a00137ec1b4",
+  "number": 38,
+  "sourceId": "un-bon-moment",
+  "title": "avec JULIEN DORÉ",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4072,
-  "youtubeTitle": "Un Bon Moment avec JULIEN DORÉ"
+  "youtubeTitle": "Un Bon Moment avec JULIEN DORÉ",
+  "youtubeUrl": "https://www.youtube.com/watch?v=GJUk8IwUgiU"
 }

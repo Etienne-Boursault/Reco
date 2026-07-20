@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:14:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0990",
+  "itemId": "c52d7f13",
+  "kind": "reco",
+  "quote": "un autre livre qui s'appelle qui s'appelle à ton besoin d'un chef qu'un livre sur l'intelligence collective pareil qui est hyper bien vulgarisé par médic à la chaîne foudoscopie",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:14:26",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

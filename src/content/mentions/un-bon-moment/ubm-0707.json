@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:11"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0707",
+  "itemId": "622b33b4",
+  "kind": "reco",
+  "quote": "ça s'appelle Décalage avec le A un peu de travers.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:11",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

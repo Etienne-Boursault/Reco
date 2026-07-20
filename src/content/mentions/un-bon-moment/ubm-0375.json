@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:19"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0375",
+  "itemId": "94036f49",
+  "kind": "reco",
+  "quote": "Il lide les nouvelles, mais la francophone. L'idée elle est folle, donc c'est une demi-heure que tu peux écouter ou lui qui lit cette nouvelle de Marseille Aime.",
+  "recommendedBy": "Monsieur Phi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:19",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:32:40"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0825",
+  "itemId": "15bfda8e",
+  "kind": "reco",
+  "quote": "si tu es envie d'aller le chercher tu cherches un truc un peu que les gens ne connaissent pas quoi ça un truc il ya moyen beaucoup sur youtube tu tournes beaucoup sur youtube",
+  "recommendedBy": "Alex",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63160ce353f4d80012fcd7d0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:32:40",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

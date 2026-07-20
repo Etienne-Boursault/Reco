@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:25:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2027",
+  "itemId": "cf5276ab",
+  "kind": "reco",
+  "quote": "J'ai poncé la chaîne de Feldup. Et c'est une régalade. C'est vraiment",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:25:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

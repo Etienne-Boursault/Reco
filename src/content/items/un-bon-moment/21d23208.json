@@ -1,0 +1,24 @@
+{
+  "creator": "Rémi Besançon",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/25197-ma-vie-en-l-air/watch?locale=FR",
+    "tmdb": 25197,
+    "tmdbType": "movie"
+  },
+  "id": "21d23208",
+  "schemaVersion": 1,
+  "title": "Ma vie en l'air",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Molotov TV",
+      "url": "https://www.molotov.tv/search?q=Ma%20vie%20en%20l%27air"
+    },
+    {
+      "name": "Cine+ OCS Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Ma%20vie%20en%20l%27air"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:28"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0813",
+  "itemId": "3b1a764f",
+  "kind": "reco",
+  "quote": "Et c'est le nom du spectacle de Gade. Il avait tout vu. L'autre, c'est moi.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61ce14aa42581b0012d8ddb0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:28",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

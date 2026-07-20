@@ -1,0 +1,27 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/61986-bloodline/watch?locale=FR",
+    "tmdb": 61986,
+    "tmdbType": "tv"
+  },
+  "id": "a16c0443",
+  "schemaVersion": 1,
+  "title": "Bloodline",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Bloodline"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Bloodline"
+    },
+    {
+      "name": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Bloodline"
+    }
+  ]
+}

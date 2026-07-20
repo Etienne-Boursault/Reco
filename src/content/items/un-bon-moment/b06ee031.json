@@ -1,0 +1,36 @@
+{
+  "creator": "Akira Toriyama",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/62715/watch?locale=FR",
+    "tmdb": 62715,
+    "tmdbType": "tv"
+  },
+  "id": "b06ee031",
+  "schemaVersion": 1,
+  "title": "Dragon Ball Super",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/fr/search?q=Dragon%20Ball%20Super"
+    },
+    {
+      "name": "Animation Digital Network",
+      "url": "https://animationdigitalnetwork.com/search?q=Dragon%20Ball%20Super"
+    },
+    {
+      "name": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Dragon%20Ball%20Super"
+    },
+    {
+      "name": "Anime Digital Network Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super"
+    },
+    {
+      "name": "Crunchyroll Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dragon%20Ball%20Super"
+    }
+  ]
+}

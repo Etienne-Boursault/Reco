@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:06"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2905",
+  "itemId": "fe0d4d09",
+  "kind": "reco",
+  "quote": "J'ai saigné la trilogie de ses auberges espagnoles.",
+  "recommendedBy": "Oli",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

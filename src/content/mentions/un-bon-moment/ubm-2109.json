@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:02:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2109",
+  "itemId": "74d9afb1",
+  "kind": "reco",
+  "quote": "C'est le nom de mon spectacle.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68ea7880de9a2a62c42248f5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

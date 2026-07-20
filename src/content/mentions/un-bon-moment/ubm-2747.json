@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:59:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2747",
+  "itemId": "be577865",
+  "kind": "reco",
+  "quote": "c'est des dialogues entre mon angoisse, ma créativité, ma libido, mon stress, ma peur, mon texte",
+  "recommendedBy": "Invitée (créatrice de contenu)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:28:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

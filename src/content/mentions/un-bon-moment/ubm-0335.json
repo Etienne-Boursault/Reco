@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:09"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0335",
+  "itemId": "6b40451f",
+  "kind": "reco",
+  "quote": "Il était sur le dessin animé asterique.",
+  "recommendedBy": "Paul de Saint-Sernin",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:09",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

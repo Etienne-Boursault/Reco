@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:30"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:30"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2482",
+  "itemId": "caef5497",
+  "kind": "reco",
+  "quote": "j'adore Vulfpeck",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

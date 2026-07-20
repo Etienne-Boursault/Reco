@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:58"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0039",
+  "itemId": "491da3e0",
+  "kind": "reco",
+  "quote": "Au Paname, c'est d'abord qu'on travaille.",
+  "recommendedBy": "Inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:58",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

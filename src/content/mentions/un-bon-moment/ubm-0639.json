@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:37"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0639",
+  "itemId": "e843268d",
+  "kind": "reco",
+  "quote": "Les gars, c'est Squeezie.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:37",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

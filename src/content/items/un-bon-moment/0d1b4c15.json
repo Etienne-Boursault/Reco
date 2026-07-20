@@ -1,0 +1,24 @@
+{
+  "creator": "Bill Dubuque, Mark Williams",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/69740-ozark/watch?locale=FR",
+    "tmdb": 69740,
+    "tmdbType": "tv"
+  },
+  "id": "0d1b4c15",
+  "schemaVersion": 1,
+  "title": "Ozark",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Ozark"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Ozark"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:22:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:36"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2637",
+  "itemId": "9437c870",
+  "kind": "reco",
+  "quote": "Il y a un documentaire sur Paris Hilton, qui est sur YouTube.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

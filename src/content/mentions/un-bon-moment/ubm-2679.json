@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2679",
+  "itemId": "c3e2f5e3",
+  "kind": "reco",
+  "quote": "dans le docu Netflix où il dit mais juste pour vous figurer ce qui se passe imaginez Wikipédia et en fait personne ne voit le même article",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:33:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

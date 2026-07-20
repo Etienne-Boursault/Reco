@@ -1,16 +1,26 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "69c7de338ac24e236cb65e12",
-  "title": "Mosimann et Kemmler imbattables au jeu de la complicité (Un Bon Moment, S5-E24)",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2026-03-30",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/69c7de338ac24e236cb65e12/media.mp3",
-  "description": "Ça ressort des petits doss’ et ça joue très très fort. Chapeau les artistes !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=_DxiSQ67A6E",
   "audioDuration": 6428,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/69c7de338ac24e236cb65e12/media.mp3",
+  "date": "2026-03-30",
+  "description": "Ça ressort des petits doss’ et ça joue très très fort. Chapeau les artistes !",
+  "guests": [],
+  "guestsExcluded": [
+    "intervenant",
+    "Ruth Rockflower"
+  ],
+  "guestsParsed": [
+    "Mosimann",
+    "Kemmler"
+  ],
+  "guid": "69c7de338ac24e236cb65e12",
+  "number": 24,
+  "season": 5,
+  "sourceId": "un-bon-moment",
+  "title": "Mosimann et Kemmler imbattables au jeu de la complicité (Un Bon Moment, S5-E24)",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 6340,
   "youtubeTitle": "Mosimann et Kemmler imbattables au jeu de la complicité (Un Bon Moment, S5-E24)",
-  "season": 5,
-  "number": 24
+  "youtubeUrl": "https://www.youtube.com/watch?v=_DxiSQ67A6E"
 }

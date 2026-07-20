@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:08:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1624",
+  "itemId": "b9fc0b22",
+  "kind": "reco",
+  "quote": "elle s'appelle Leonie Simaga et j'étais avec elle à la comédie française, j'étais, je la regardais jouer, j'étais en coulisses et j'étais vraiment, tu sais, quand t'es foudroyé par le talent des gens et t'es bouche bée.",
+  "recommendedBy": "Pierre Ninet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:08:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

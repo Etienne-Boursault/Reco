@@ -1,0 +1,24 @@
+{
+  "creator": "Bill Lawrence, Jason Sudeikis",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR",
+    "tmdb": 97546,
+    "tmdbType": "tv"
+  },
+  "id": "64ffb7c5",
+  "schemaVersion": 1,
+  "title": "Ted Lasso",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Ted%20Lasso"
+    },
+    {
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Ted%20Lasso"
+    }
+  ]
+}

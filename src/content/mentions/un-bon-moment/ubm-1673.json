@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:47"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1673",
+  "itemId": "bfa44fec",
+  "kind": "reco",
+  "quote": "Un jeu vidéo auquel je jouais quand j'étais jeune qui s'appelle l'entraîneur de l'entraîneur.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

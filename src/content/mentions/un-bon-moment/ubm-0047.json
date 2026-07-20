@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:02"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T01:32:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:55"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0047",
+  "itemId": "f80bd114",
+  "kind": "reco",
+  "quote": "écoute le premier morceau, l'horizon des événements.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

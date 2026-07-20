@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:53:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2599",
+  "itemId": "8e07c1e2",
+  "kind": "reco",
+  "quote": "Et je répète que mon spectacle est totalement disponible sur MyCanel très bientôt ou déjà disponible.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240f8a7a4ced00123481d1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:53:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

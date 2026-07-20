@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:08:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0292",
+  "itemId": "461c59e2",
+  "kind": "reco",
+  "quote": "Moi je recommande le restaurant Namaq. C'est un restaurant ou bon, j'ai l'Iranien, mais c'est l'Iranien Fusion. C'est près de Saint-Lazare.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:08:59",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

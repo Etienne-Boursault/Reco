@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:19:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2362",
+  "itemId": "e604fd99",
+  "kind": "reco",
+  "quote": "il a dit qu'il avait travaillé, je crois, cinq ou six mois pour la scène dans... Once Upon a Time in Hollywood sur le toit.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

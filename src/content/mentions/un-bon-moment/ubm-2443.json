@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:01:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "52:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2443",
+  "itemId": "2c9a938c",
+  "kind": "reco",
+  "quote": "Je vous invite à écouter le podcast Émotions sur la confiance en soi où je suis interviewé d'ailleurs en tant que mec qui a confiance en lui",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

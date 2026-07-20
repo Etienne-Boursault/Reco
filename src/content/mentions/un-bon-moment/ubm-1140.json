@@ -1,0 +1,53 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:29"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:15:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:29"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1140",
+  "itemId": "d48e5478",
+  "kind": "reco",
+  "quote": "Midsommar est magnifique.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240f8a7a4ced00123481d1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

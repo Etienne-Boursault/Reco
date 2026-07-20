@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2385",
+  "itemId": "2e28c093",
+  "kind": "reco",
+  "quote": "c'était dans Les Agités du Bocal, une émission genre en 2006-2007. Tu faisais ton premier spectacle.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

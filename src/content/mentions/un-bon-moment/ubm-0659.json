@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0659",
+  "itemId": "5a331aea",
+  "kind": "reco",
+  "quote": "moi c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander c'est une chaîne qui a déjà plusieurs millions d'abonnés c'est de la SMR mais en cuisine",
+  "recommendedBy": "Non spécifié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:20:24",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

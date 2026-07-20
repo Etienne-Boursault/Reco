@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2576",
+  "itemId": "6e4f3395",
+  "kind": "reco",
+  "quote": "Ah, Neil Brennan. Je lui ai serré la main à Montréal.",
+  "recommendedBy": "Kyan Khojandi (hôte)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

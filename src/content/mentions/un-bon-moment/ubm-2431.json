@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2431",
+  "itemId": "d05d5e21",
+  "kind": "reco",
+  "quote": "Allez découvrir le Paname.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

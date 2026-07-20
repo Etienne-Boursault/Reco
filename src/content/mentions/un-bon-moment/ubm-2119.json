@@ -1,0 +1,29 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:37:26"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2119",
+  "itemId": "8b7e7bd2",
+  "kind": "reco",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:37:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

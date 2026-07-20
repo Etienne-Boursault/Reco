@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1877",
+  "itemId": "86d4c2b4",
+  "kind": "reco",
+  "quote": "C'est mon troisième spectacle, je peux pas trop en parler mais la nuit, je fouette, gars.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

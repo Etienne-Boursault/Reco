@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1230",
+  "itemId": "1b95468e",
+  "kind": "reco",
+  "quote": "Il y a Breaking Bad et Succession aussi.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

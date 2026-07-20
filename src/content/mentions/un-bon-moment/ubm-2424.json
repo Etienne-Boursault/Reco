@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:48:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:49"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2424",
+  "itemId": "8bd6af6a",
+  "kind": "reco",
+  "quote": "La chaîne de Semélia, il y a du stand-up, il y a plein plein de choses. C'est super créé.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

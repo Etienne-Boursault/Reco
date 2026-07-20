@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:41:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:57"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:52:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:57"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1385",
+  "itemId": "04c9f658",
+  "kind": "reco",
+  "quote": "mon prochain spectacle qui va s'appeler Blanc",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:38:57",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

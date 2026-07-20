@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:37"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:02:11+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:37"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1093",
+  "itemId": "8fce6a97",
+  "kind": "reco",
+  "quote": "parce que moi il y a une chaîne que j'aime bien aussi c'est hydraulique presse",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "630baf2b552ddd0013718a16",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:37",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:02:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2451",
+  "itemId": "972b0e14",
+  "kind": "reco",
+  "quote": "les visiteurs de les visiteurs en Amérique",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:05:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

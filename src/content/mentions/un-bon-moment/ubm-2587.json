@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:45:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:31:59"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2587",
+  "itemId": "28e8fa54",
+  "kind": "reco",
+  "quote": "Quoi ? Tenet ? Allez, on parle de Tenet.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:31:59",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

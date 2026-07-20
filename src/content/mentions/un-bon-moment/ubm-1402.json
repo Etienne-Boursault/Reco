@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T07:45:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1402",
+  "itemId": "8c57ea76",
+  "kind": "reco",
+  "quote": "je travaille sur l'album de Grand Corps Malade",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69c7de338ac24e236cb65e12",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:53",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

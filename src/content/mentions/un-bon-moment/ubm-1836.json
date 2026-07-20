@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:39:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:20:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:15"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1836",
+  "itemId": "439eac9a",
+  "kind": "reco",
+  "quote": "Dans Hot Ones tu m'as bouleversé. Dans Hot Ones à un moment donné tu commences à pleurer.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

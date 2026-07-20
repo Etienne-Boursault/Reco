@@ -1,0 +1,27 @@
+{
+  "aliases": [
+    "The Pitt"
+  ],
+  "creator": "R. Scott Gemmill",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/250307-the-pitt/watch?locale=FR",
+    "tmdb": 250307,
+    "tmdbType": "tv"
+  },
+  "id": "64b4d240",
+  "schemaVersion": 1,
+  "title": "The Pitt",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Pitt"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Pitt"
+    }
+  ]
+}

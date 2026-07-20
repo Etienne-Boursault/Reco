@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:42:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:03"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2809",
+  "itemId": "5d2790fb",
+  "kind": "reco",
+  "quote": "Le groupe de Sting.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61accf4f45d15e00135c6ef2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

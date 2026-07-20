@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1049",
+  "itemId": "c2f38d0a",
+  "kind": "reco",
+  "quote": "Tu as vu les fondrements sur canal ou pas ? Non, toujours pas. Regarde ça, c'est incroyable.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

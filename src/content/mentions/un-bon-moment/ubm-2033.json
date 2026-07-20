@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:21:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:51"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2033",
+  "itemId": "7f97d686",
+  "kind": "reco",
+  "quote": "C'était en hommage au premier spectacle de Thomas qui s'appelle En Rock et En Roll",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6903fad795ee8b1815229b88",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

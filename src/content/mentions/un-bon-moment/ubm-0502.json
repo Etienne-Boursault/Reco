@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:24:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0502",
+  "itemId": "66ce9788",
+  "kind": "reco",
+  "quote": "Allez voir ça",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:24:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

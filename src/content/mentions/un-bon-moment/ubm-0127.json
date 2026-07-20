@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:40"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0127",
+  "itemId": "aaadf7d9",
+  "kind": "reco",
+  "quote": "C'est Adèle Castillon, qui a sorti un album qui s'appelle « Plaisirisc Dépendance » et il est hyper personnel et très beau.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:40",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

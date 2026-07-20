@@ -1,0 +1,44 @@
+{
+  "creator": "Ryan Condal, George R.R. Martin",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/94997-house-of-the-dragon/watch?locale=FR",
+    "tmdb": 94997,
+    "tmdbType": "tv"
+  },
+  "id": "13a3598a",
+  "schemaVersion": 1,
+  "title": "House of the Dragon",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=House%20of%20the%20Dragon"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=House%20of%20the%20Dragon"
+    }
+  ]
+}

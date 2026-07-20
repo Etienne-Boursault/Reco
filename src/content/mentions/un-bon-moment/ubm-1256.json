@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:23"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1256",
+  "itemId": "822ae896",
+  "kind": "reco",
+  "quote": "Barbara Angel, moi je... Barbara Annie sur Spotify.",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:23",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:55:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1708",
+  "itemId": "ea826321",
+  "kind": "reco",
+  "quote": "l'album de ma très très bonne amie Mina Tindle qui vient de sortir",
+  "recommendedBy": "Pénélope",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:55:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

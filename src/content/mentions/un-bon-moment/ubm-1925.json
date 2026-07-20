@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1925",
+  "itemId": "31095a82",
+  "kind": "reco",
+  "quote": "moi j'ai écouté le dernier album de Sébastien Tellier que je trouve dément",
+  "recommendedBy": "Laetitia",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:23:55"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2669",
+  "itemId": "7e4b84ed",
+  "kind": "reco",
+  "quote": "amour et autisme sur netflix",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:23:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

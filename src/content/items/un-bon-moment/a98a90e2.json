@@ -1,0 +1,25 @@
+{
+  "creator": "autre",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/214582/watch?locale=FR",
+    "tmdb": 214582,
+    "tmdbType": "tv"
+  },
+  "id": "a98a90e2",
+  "schemaVersion": 1,
+  "title": "Devil's Plan",
+  "types": [
+    "serie",
+    "video"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Devil%27s%20Plan"
+    }
+  ]
+}

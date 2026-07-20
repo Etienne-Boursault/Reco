@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:14:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:01:09"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2010",
+  "itemId": "b40afb85",
+  "kind": "reco",
+  "quote": "D'ailleurs, je fais la promo Dissiz",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:01:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T06:40:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1843",
+  "itemId": "8a527300",
+  "kind": "reco",
+  "quote": "Léo de Hurlevent d'Émilie Brontë. Plus grand livre jamais écrit sur l'amour, 1847.",
+  "recommendedBy": "Augustin Trapenard",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "690f87b14e59613eaf07e566",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:18:50",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

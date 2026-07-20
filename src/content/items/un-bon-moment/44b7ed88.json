@@ -1,0 +1,24 @@
+{
+  "creator": "Greg Daniels, Mike Schur",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/86248-upload/watch?locale=FR",
+    "tmdb": 86248,
+    "tmdbType": "tv"
+  },
+  "id": "44b7ed88",
+  "schemaVersion": 1,
+  "title": "Upload",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Upload"
+    }
+  ]
+}

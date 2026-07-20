@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:58:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:22"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1938",
+  "itemId": "126eeef5",
+  "kind": "reco",
+  "quote": "J'ai acheté un filtre sur Amazon qui filtre, qui filtre.",
+  "recommendedBy": "non spécifié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

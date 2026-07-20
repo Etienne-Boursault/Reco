@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:41:45"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1962",
+  "itemId": "c929671f",
+  "kind": "reco",
+  "quote": "La nouvelle vague c'était on en pense qu'on en veut tu vois mais c'est des gens qui voulaient tourner librement prendre une caméra et tourner",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:41:45",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

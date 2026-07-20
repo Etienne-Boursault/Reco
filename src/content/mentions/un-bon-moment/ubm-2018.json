@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:44:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2018",
+  "itemId": "4ee209ca",
+  "kind": "reco",
+  "quote": "c'est dans la cousine bête de Balzac",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:44:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

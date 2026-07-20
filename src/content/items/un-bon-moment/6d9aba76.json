@@ -1,0 +1,25 @@
+{
+  "creator": "Pete Docter",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/1084577-balls-up/watch?locale=FR",
+    "tmdb": 1084577,
+    "tmdbType": "movie"
+  },
+  "id": "6d9aba76",
+  "schemaVersion": 1,
+  "title": "Up",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Up"
+    }
+  ],
+  "year": 2009
+}

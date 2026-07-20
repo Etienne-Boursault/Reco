@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:43:58+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1882",
+  "itemId": "9db59d38",
+  "kind": "reco",
+  "quote": "c'est un conte russe, hyper connu, mon enfance",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

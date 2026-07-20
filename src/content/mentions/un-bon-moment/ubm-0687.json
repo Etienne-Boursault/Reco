@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0687",
+  "itemId": "d71d0251",
+  "kind": "reco",
+  "quote": "Le temps est assassin et on porte avec lui le rire des enfants.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:34",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

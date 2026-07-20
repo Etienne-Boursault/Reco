@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:49:15"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2257",
+  "itemId": "61e5962c",
+  "kind": "reco",
+  "quote": "Moi, je suis très bananagramme, vous connaissez bananagramme ?",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:49:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

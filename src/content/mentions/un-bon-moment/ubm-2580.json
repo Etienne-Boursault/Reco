@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:46"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2580",
+  "itemId": "b8aa918f",
+  "kind": "reco",
+  "quote": "il y a une belle histoire de Mola Nasreddin",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

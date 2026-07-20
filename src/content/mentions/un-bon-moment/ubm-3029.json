@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:21:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:51"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3029",
+  "itemId": "66d3ea79",
+  "kind": "reco",
+  "quote": "moi je suis fan de C'est arrivé près de chez vous à l'époque",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b2f213ca1cc001201a69f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

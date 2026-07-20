@@ -1,0 +1,55 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR",
+    "tmdb": 597,
+    "tmdbType": "movie"
+  },
+  "id": "4f52ea73",
+  "schemaVersion": 1,
+  "title": "Titanic",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Titanic"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Titanic"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Titanic&c=movies"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Titanic"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Titanic"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Titanic"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Titanic"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Titanic"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Titanic"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Titanic"
+    }
+  ]
+}

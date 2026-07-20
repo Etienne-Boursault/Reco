@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T01:35:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:13:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:26"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1725",
+  "itemId": "421d6395",
+  "kind": "reco",
+  "quote": "C'est quand même une meuf qui couche avec des gens de droite pour les rendre de gauche, c'est ça le nom des gens !",
+  "recommendedBy": "Kyan Khojandi ou Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6932b125aef2c71c1dbba9c7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

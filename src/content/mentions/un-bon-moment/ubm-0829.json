@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0829",
+  "itemId": "0f219ec1",
+  "kind": "reco",
+  "quote": "elle me dit non non c'est une fausse idée que tu as lis tel bouquin je pense trop de christelle petit colin en l'occurrence et là boum une révélation",
+  "recommendedBy": "Maurice Barthélémy",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6316136e9623160014506e77",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

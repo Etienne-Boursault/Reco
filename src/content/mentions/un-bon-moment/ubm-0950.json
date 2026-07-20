@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0950",
+  "itemId": "a9186ced",
+  "kind": "reco",
+  "quote": "on peut écouter le nouvel album de Nash ? Yeah, carrément.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

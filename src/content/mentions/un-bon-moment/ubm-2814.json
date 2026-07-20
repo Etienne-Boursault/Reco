@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:08:41"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2814",
+  "itemId": "44695732",
+  "kind": "reco",
+  "quote": "le réalisateur de Drive, entre autres",
+  "recommendedBy": "Augustin Trappennier",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:08:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:41"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:41"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1704",
+  "itemId": "3b7e01e1",
+  "kind": "reco",
+  "quote": "les poupées russes il y a une scène dans les poupées russes où il dit qu'il a rencontré une meuf mais il s'engueulait dans leur petit appart et après ils courent tout nu dans la rue dans Paris",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

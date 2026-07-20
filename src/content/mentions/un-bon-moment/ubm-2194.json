@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T17:57:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2194",
+  "itemId": "a60e3f84",
+  "kind": "reco",
+  "quote": "Regardez l'émission 69 qui doit être sorti sur MyCanal.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599de12076e6c001696556a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

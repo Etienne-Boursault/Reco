@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:54"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0943",
+  "itemId": "864a1e8a",
+  "kind": "reco",
+  "quote": "une artiste française qui a sorti un album, je crois, il y a un nom qui s'appelle Zao de Sagazan.",
+  "recommendedBy": "Eddie",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6599c1b296596600156961a7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:54",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

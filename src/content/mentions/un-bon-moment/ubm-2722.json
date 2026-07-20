@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:40:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "03:05:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2722",
+  "itemId": "5cd0dfaf",
+  "kind": "reco",
+  "quote": "Moi, j'étais Power Rangers, tu vois.",
+  "recommendedBy": "Alison Wheeler",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240aefc8996500127ede97",
+    "sourceId": "un-bon-moment",
+    "timestamp": "03:05:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

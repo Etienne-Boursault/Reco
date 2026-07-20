@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:49:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:52"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2427",
+  "itemId": "133d4420",
+  "kind": "reco",
+  "quote": "Avec Alpha One sur le dernier album de Nekfeu, il est incroyable.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

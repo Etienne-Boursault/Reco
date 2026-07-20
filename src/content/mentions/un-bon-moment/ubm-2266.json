@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2266",
+  "itemId": "2b98a8bd",
+  "kind": "reco",
+  "quote": "Moi c'est un mec sur YouTube, C'est un américain qui s'appelle Lee Willy, Lee Willy, Qui est un historien et passionné de boxe",
+  "recommendedBy": "Clem",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

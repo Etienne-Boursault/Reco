@@ -1,0 +1,28 @@
+{
+  "creator": "Damon Lindelof, Tom Perrotta",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/54344-the-leftovers/watch?locale=FR",
+    "tmdb": 54344,
+    "tmdbType": "tv"
+  },
+  "id": "13f23220",
+  "schemaVersion": 1,
+  "title": "The Leftovers",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=The%20Leftovers"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Leftovers"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Leftovers"
+    }
+  ]
+}

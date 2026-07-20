@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1620",
+  "itemId": "42702aff",
+  "kind": "reco",
+  "quote": "La nouvelle de Marcel Aimé.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

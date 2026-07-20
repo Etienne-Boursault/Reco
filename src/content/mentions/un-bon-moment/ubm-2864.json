@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:31:21"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2864",
+  "itemId": "5883de03",
+  "kind": "reco",
+  "quote": "moi je recommande la vidéo sur le sur-endettement de Eureka",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61cb19444f2d030012ddd82a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:31:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

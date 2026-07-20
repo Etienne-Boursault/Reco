@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:57:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:53"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1933",
+  "itemId": "335a3928",
+  "kind": "reco",
+  "quote": "Il a un feat avec Big Flo et Oli.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

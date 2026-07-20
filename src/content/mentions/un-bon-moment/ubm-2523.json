@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2523",
+  "itemId": "634eb383",
+  "kind": "reco",
+  "quote": "L'école Raymond Deveau, Stéphane Degros, j'ai jamais pro adhéré, moi, mais il y a des gens qui s'appelaient. Raymond Deveau, c'est beaucoup de poésies.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

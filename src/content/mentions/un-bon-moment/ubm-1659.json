@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:28"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1659",
+  "itemId": "246e2589",
+  "kind": "reco",
+  "quote": "Ouais SIA vous avez écrit Diamond in the sky pour Rihanna vous l'avez écrit en 15 minutes avant de prendre un taxi",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:48:28",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

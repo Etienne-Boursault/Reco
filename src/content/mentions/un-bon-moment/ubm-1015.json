@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:16"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1015",
+  "itemId": "a8295c1f",
+  "kind": "reco",
+  "quote": "regardez le film avec Channing Tatoumou",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69e13325fb440758726a665f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:28:16",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

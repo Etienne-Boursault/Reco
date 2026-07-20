@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:48:08"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1306",
+  "itemId": "38ac7fd3",
+  "kind": "reco",
+  "quote": "Allez, la chaîne de Thomas Visell.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:48:08",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

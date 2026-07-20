@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
-  "title": "avec ODAH & DAKO",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "number": 14,
-  "date": "2020-04-26",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecodah-dako/media.mp3",
-  "description": "Odah et Dako sont deux super artistes de scène, auteurs, improvisateurs et mecs bien. J'ai de la chance de les connaître",
-  "youtubeUrl": "https://www.youtube.com/watch?v=T8Y2Hx6KLu4",
   "audioDuration": 4534,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecodah-dako/media.mp3",
+  "date": "2020-04-26",
+  "description": "Odah et Dako sont deux super artistes de scène, auteurs, improvisateurs et mecs bien. J'ai de la chance de les connaître",
+  "guests": [],
+  "guestsExcluded": [
+    "Oda ou Dako",
+    "Kyan"
+  ],
+  "guestsParsed": [
+    "Odah",
+    "Dako"
+  ],
+  "guid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+  "number": 14,
+  "sourceId": "un-bon-moment",
+  "title": "avec ODAH & DAKO",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4571,
-  "youtubeTitle": "Un Bon Moment avec ODAH & DAKO"
+  "youtubeTitle": "Un Bon Moment avec ODAH & DAKO",
+  "youtubeUrl": "https://www.youtube.com/watch?v=T8Y2Hx6KLu4"
 }

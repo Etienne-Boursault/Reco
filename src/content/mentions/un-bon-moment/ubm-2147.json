@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2147",
+  "itemId": "f83a4080",
+  "kind": "reco",
+  "quote": "Et comme dans Rocky 3, il faut montrer que...",
+  "recommendedBy": "Maxime Biagi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

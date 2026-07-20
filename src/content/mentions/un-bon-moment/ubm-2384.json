@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2384",
+  "itemId": "18d90300",
+  "kind": "reco",
+  "quote": "au moment où il y a les pubs chez les autres, nous, on envoie Pink Floyd et les gens restent.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:30+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:58:25"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:58:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1893",
+  "itemId": "4f64cd2d",
+  "kind": "citation",
+  "quote": "Comment ça, t'as pas lu « Le Typhon de Conrad ? »",
+  "recommendedBy": "Antoine Gouy",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:58:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

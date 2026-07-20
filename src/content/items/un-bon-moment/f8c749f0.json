@@ -1,0 +1,28 @@
+{
+  "creator": "inconnu",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/75191-the-terror/watch?locale=FR",
+    "tmdb": 75191,
+    "tmdbType": "tv"
+  },
+  "id": "f8c749f0",
+  "schemaVersion": 1,
+  "title": "The Terror",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Terror"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=The%20Terror"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Terror"
+    }
+  ]
+}

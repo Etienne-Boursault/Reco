@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:05"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1129",
+  "itemId": "0a6f3ed0",
+  "kind": "reco",
+  "quote": "et Yazid il y a une construction de spectacles mais à un moment où ça sortira c'est possible",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240e1c5d8481001225962c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:05",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

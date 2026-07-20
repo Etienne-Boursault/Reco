@@ -1,0 +1,74 @@
+{
+  "aliases": [
+    "Better What's TV",
+    "Breaking Bad",
+    "Better Call Saul"
+  ],
+  "customLinks": [
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@betterwatchtv"
+    }
+  ],
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1396-breaking-bad/watch?locale=FR",
+    "tmdb": 1396,
+    "tmdbType": "tv"
+  },
+  "id": "93fc7579",
+  "schemaVersion": 1,
+  "title": "Better Watch TV",
+  "types": [
+    "video"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Breaking%20Bad"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Breaking%20Bad"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Breaking%20Bad"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Breaking%20Bad"
+    },
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul"
+    }
+  ]
+}

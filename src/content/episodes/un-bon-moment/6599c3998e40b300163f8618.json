@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6599c3998e40b300163f8618",
-  "title": "avec Zazie et Vianney",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-02-19",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599c3998e40b300163f8618/media.mp3",
-  "description": "Mais que veut dire cette chanson ? Zazie et Vianney sont venu.es parler de leurs expériences en studio, de ce qui les motive à composer et à chanter. Articulée autour de différents jeux, cette émission permet d’en apprendre plus sur ces deux personnalités du monde de la musique.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=DIZdwGy-NLw",
   "audioDuration": 5083,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599c3998e40b300163f8618/media.mp3",
+  "date": "2024-02-19",
+  "description": "Mais que veut dire cette chanson ? Zazie et Vianney sont venu.es parler de leurs expériences en studio, de ce qui les motive à composer et à chanter. Articulée autour de différents jeux, cette émission permet d’en apprendre plus sur ces deux personnalités du monde de la musique.",
+  "guests": [],
+  "guestsExcluded": [
+    "intervenant",
+    "Inconnu"
+  ],
+  "guestsParsed": [
+    "Zazie",
+    "Vianney"
+  ],
+  "guid": "6599c3998e40b300163f8618",
+  "number": 65,
+  "sourceId": "un-bon-moment",
+  "title": "avec Zazie et Vianney",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 5441,
   "youtubeTitle": "Un Bon Moment avec ZAZIE & VIANNEY",
-  "number": 65
+  "youtubeUrl": "https://www.youtube.com/watch?v=DIZdwGy-NLw"
 }

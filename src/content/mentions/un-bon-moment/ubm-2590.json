@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:12"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2590",
+  "itemId": "c5093f14",
+  "kind": "reco",
+  "quote": "le dernier truc qui m'a un peu intéressé... Retour vers le futur...",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:41:12",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:36"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2485",
+  "itemId": "f85d59e0",
+  "kind": "reco",
+  "quote": "c'est vraiment... mais vraiment scotchante.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:06:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

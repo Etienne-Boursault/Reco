@@ -1,15 +1,29 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "661c1bf83fb7ab00162aa674",
-  "title": "avec Seth et Jimmy",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-04-15",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/661c1bf83fb7ab00162aa674/media.mp3",
-  "description": "<hr /><p style=\"color: grey; font-size: 0.75em;\"> Hébergé par Acast. Visitez <a href=\"https://acast.com/privacy\" rel=\"noopener noreferrer\" style=\"color: grey;\" target=\"_blank\">acast.com/privacy</a> pour plus d'informations.</p>",
-  "youtubeUrl": "https://www.youtube.com/watch?v=eiObRDY-xyY",
   "audioDuration": 4682,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/661c1bf83fb7ab00162aa674/media.mp3",
+  "date": "2024-04-15",
+  "description": "<hr /><p style=\"color: grey; font-size: 0.75em;\"> Hébergé par Acast. Visitez <a href=\"https://acast.com/privacy\" rel=\"noopener noreferrer\" style=\"color: grey;\" target=\"_blank\">acast.com/privacy</a> pour plus d'informations.</p>",
+  "guests": [
+    "Seth Gueko",
+    "Jimmy Mohamed"
+  ],
+  "guestsExcluded": [
+    "Invité",
+    "Seth",
+    "Jimmy"
+  ],
+  "guestsParsed": [
+    "Seth",
+    "Jimmy"
+  ],
+  "guid": "661c1bf83fb7ab00162aa674",
+  "number": 70,
+  "sourceId": "un-bon-moment",
+  "title": "avec Seth et Jimmy",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4683,
   "youtubeTitle": "Un Bon Moment avec SETH GUEKO & JIMMY MOHAMED",
-  "number": 70
+  "youtubeUrl": "https://www.youtube.com/watch?v=eiObRDY-xyY"
 }

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1973",
+  "itemId": "1ab27b00",
+  "kind": "reco",
+  "quote": "Il y a un très très beau documentaire sur SIA fait par la chaîne de Paul sur Youtube qui est juste là, le lien est là ! C'est hyper touchant son parcours, ce qu'elle a fait !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6599c1b296596600156961a7",
-  "title": "avec Eddy de Pretto",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2024-01-29",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599c1b296596600156961a7/media.mp3",
-  "description": "Eddy vient cette semaine nous présenter son album Crash Coeur. Il échange avec Kyan et Navo sur la création de sa musique, son rapport au bonheur et l’envie de partager des textes. Frustré de ne pas manger de piment, il va tout faire pour gagner au Multiblindtest de Navo.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=5AzPR1uHpGg",
   "audioDuration": 3605,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6599c1b296596600156961a7/media.mp3",
+  "date": "2024-01-29",
+  "description": "Eddy vient cette semaine nous présenter son album Crash Coeur. Il échange avec Kyan et Navo sur la création de sa musique, son rapport au bonheur et l’envie de partager des textes. Frustré de ne pas manger de piment, il va tout faire pour gagner au Multiblindtest de Navo.",
+  "guests": [],
+  "guestsExcluded": [
+    "invité",
+    "Intervenant",
+    "Eddie"
+  ],
+  "guestsParsed": [
+    "Eddy de Pretto"
+  ],
+  "guid": "6599c1b296596600156961a7",
+  "number": 63,
+  "sourceId": "un-bon-moment",
+  "title": "avec Eddy de Pretto",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 3606,
   "youtubeTitle": "Un Bon Moment avec EDDY DE PRETTO",
-  "number": 63
+  "youtubeUrl": "https://www.youtube.com/watch?v=5AzPR1uHpGg"
 }

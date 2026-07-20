@@ -1,0 +1,24 @@
+{
+  "creator": "Michaela Coel",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/102619-i-may-destroy-you/watch?locale=FR",
+    "tmdb": 102619,
+    "tmdbType": "tv"
+  },
+  "id": "ff82de44",
+  "schemaVersion": 1,
+  "title": "I May Destroy You",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=I%20May%20Destroy%20You"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=I%20May%20Destroy%20You"
+    }
+  ]
+}

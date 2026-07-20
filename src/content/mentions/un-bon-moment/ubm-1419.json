@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T08:48:04+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1419",
+  "itemId": "c801b283",
+  "kind": "reco",
+  "quote": "J'ai une excellente hypnothérapeute. Elle s'appelle Agathe Mer, je vous la recommande, elle est formidable.",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:07",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

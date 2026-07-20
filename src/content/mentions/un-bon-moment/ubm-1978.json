@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1978",
+  "itemId": "f995651f",
+  "kind": "reco",
+  "quote": "Moi c'était Arkanoïde sur Amstrad CPC 6128 !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

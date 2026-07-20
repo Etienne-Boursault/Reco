@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1283",
+  "itemId": "e7ec45d8",
+  "kind": "reco",
+  "quote": "j'ai fait une reprise de la chanson de Cardi B et de Megan Thee Stallions qui s'appelle What As Pussy",
+  "recommendedBy": "Non précisé",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:24",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

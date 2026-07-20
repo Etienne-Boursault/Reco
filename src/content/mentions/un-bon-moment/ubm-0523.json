@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0523",
+  "itemId": "fc051d34",
+  "kind": "reco",
+  "quote": "franchement, j'ai adoré le film Les preuves du feu",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69e13325fb440758726a665f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:15",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

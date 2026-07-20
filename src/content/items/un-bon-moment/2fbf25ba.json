@@ -1,0 +1,49 @@
+{
+  "creator": "Richard Linklater",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/85350-boyhood/watch?locale=FR",
+    "tmdb": 85350,
+    "tmdbType": "movie"
+  },
+  "id": "2fbf25ba",
+  "schemaVersion": 1,
+  "title": "Boyhood",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "MUBI",
+      "url": "https://mubi.com/fr/films?q=Boyhood"
+    },
+    {
+      "name": "MUBI Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Boyhood"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Boyhood"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Boyhood"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Boyhood"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Boyhood"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Boyhood"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Boyhood"
+    }
+  ],
+  "year": 2014
+}

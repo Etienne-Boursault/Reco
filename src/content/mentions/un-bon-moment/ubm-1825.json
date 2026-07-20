@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:21:22"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:18:55+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:24:21"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1825",
+  "itemId": "57ecf1fc",
+  "kind": "reco",
+  "quote": "Je recommande la chaîne Ambroise de Ambroise Carminati. C'est un génie. Moi j'adore ce qu'il fait Ambroise",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:24:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

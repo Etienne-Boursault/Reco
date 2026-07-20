@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:39"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1538",
+  "itemId": "5a314a9a",
+  "kind": "citation",
+  "quote": "ce n'est pas Steve Carey, ce n'est pas dans The Office, c'est un moment où il fait ça, genre.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

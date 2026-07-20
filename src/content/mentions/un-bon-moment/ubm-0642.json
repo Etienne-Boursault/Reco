@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0642",
+  "itemId": "baf0e910",
+  "kind": "reco",
+  "quote": "Incroyable, Freddy Fred. C'est toi qui m'a fait découvrir ça. C'est des scénariés avec son chien.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

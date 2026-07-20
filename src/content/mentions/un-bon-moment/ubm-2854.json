@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:48:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2854",
+  "itemId": "816e5917",
+  "kind": "reco",
+  "quote": "C'est un peu l'histoire aussi de Per Gunt et les plures d'oignons",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:48:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

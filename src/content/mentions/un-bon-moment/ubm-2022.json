@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:18:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:57"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2022",
+  "itemId": "fb34c0e3",
+  "kind": "reco",
+  "quote": "elle a fait aussi la chasse de ben laden",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:06:57",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

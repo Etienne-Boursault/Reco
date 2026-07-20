@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2734",
+  "itemId": "fd02a8e4",
+  "kind": "reco",
+  "quote": "Ça me faisait penser à Vine qui était, je pense que ça a été la plateforme la plus créative.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

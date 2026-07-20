@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:57:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:03:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1936",
+  "itemId": "8ec7edcb",
+  "kind": "reco",
+  "quote": "Zébrelo je l'adore.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:03:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

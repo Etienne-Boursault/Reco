@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2232",
+  "itemId": "e7772693",
+  "kind": "reco",
+  "quote": "J'avais vu le spectacle de Franck Dubosc Je me suis dit Il était au Zénith et tout De Paris",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

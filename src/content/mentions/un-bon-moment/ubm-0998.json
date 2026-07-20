@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0998",
+  "itemId": "21da1b6a",
+  "kind": "reco",
+  "quote": "Moi, j'ai écouté le dernier album de Sébastien Tellier que je souffre des mains.",
+  "recommendedBy": "Laetitia",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:55",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

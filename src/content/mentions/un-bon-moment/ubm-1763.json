@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:07"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1763",
+  "itemId": "80e7b229",
+  "kind": "reco",
+  "quote": "Émile Zola, si tu lis la série des Rogons Magars, qui est son grand succès, c'est le même roman à chaque fois.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

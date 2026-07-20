@@ -1,0 +1,36 @@
+{
+  "creator": "Marc Cherry",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/693-desperate-housewives/watch?locale=FR",
+    "tmdb": 693,
+    "tmdbType": "tv"
+  },
+  "id": "ee8d2d6f",
+  "schemaVersion": 1,
+  "title": "Desperate Housewives",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Desperate%20Housewives"
+    },
+    {
+      "name": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Desperate%20Housewives"
+    },
+    {
+      "name": "M6+",
+      "url": "https://www.6play.fr/recherche?q=Desperate%20Housewives"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Desperate%20Housewives"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Desperate%20Housewives"
+    }
+  ]
+}

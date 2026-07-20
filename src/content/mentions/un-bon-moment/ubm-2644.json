@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:35:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:12"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2644",
+  "itemId": "0c39dac1",
+  "kind": "reco",
+  "quote": "il y avait des adaptations, je crois qu'il y avait des adaptations de culottés ?",
+  "recommendedBy": "Pénélope Bagieu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:12",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

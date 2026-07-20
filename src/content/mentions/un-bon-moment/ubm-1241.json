@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1241",
+  "itemId": "dae0c39a",
+  "kind": "reco",
+  "quote": "Oralson à la Fnac pour 9€ en 2009",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240e1c5d8481001225962c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

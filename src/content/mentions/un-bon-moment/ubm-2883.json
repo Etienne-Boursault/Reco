@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:35:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2883",
+  "itemId": "f5b3e0b1",
+  "kind": "reco",
+  "quote": "son approche de la scène quoi c'est quand même fascinant Fary quand même",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:35:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

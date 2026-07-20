@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:20:33"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2655",
+  "itemId": "a278da36",
+  "kind": "reco",
+  "quote": "dans le sens de la vie il y a des trucs de très grand angle",
+  "recommendedBy": "François (Khojandi)",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:33",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

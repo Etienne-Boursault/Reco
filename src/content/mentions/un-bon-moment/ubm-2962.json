@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:44:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2962",
+  "itemId": "345bbd97",
+  "kind": "reco",
+  "quote": "La Palme d'Or du Festival de Cannes.",
+  "recommendedBy": "Invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322de1f35ce9e001229f98a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:44:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

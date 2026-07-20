@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:51"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T04:10:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1101",
+  "itemId": "7a5b8050",
+  "kind": "reco",
+  "quote": "Striptease, ouais, parce que non, mais c'est vrai. Non, mais tu as des plans assez striptease quand même.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

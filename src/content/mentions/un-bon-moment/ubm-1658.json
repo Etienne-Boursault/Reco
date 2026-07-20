@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:54:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1658",
+  "itemId": "65001491",
+  "kind": "reco",
+  "quote": "Elle a fait un album... Qui est juste sublime quoi...",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:54:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

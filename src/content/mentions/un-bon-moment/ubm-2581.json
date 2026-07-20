@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:32:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:24"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2581",
+  "itemId": "2baf0b30",
+  "kind": "reco",
+  "quote": "j'ai acheté le maillot de Olivier Giroud 100 euros pour zéro but",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

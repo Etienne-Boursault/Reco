@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "65241146d963060012045fb6",
-  "title": "avec Laurie et Pablo",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2023-12-25",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/65241146d963060012045fb6/media.mp3",
-  "description": "Que ce soit en spectacle ou en chroniques télé, Pablo et Laurie excellent par leurs écritures et personnages haut en couleurs. Jeu des photos historiques, Multi-blindtest et discussion sur l’école sont au programme de cette émission.",
-  "youtubeUrl": "https://www.youtube.com/watch?v=X-0RlCBp9cA",
   "audioDuration": 4230,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/65241146d963060012045fb6/media.mp3",
+  "date": "2023-12-25",
+  "description": "Que ce soit en spectacle ou en chroniques télé, Pablo et Laurie excellent par leurs écritures et personnages haut en couleurs. Jeu des photos historiques, Multi-blindtest et discussion sur l’école sont au programme de cette émission.",
+  "guests": [],
+  "guestsExcluded": [
+    "Laurie",
+    "Pablo"
+  ],
+  "guestsParsed": [
+    "Laurie",
+    "Pablo"
+  ],
+  "guid": "65241146d963060012045fb6",
+  "number": 58,
+  "sourceId": "un-bon-moment",
+  "title": "avec Laurie et Pablo",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4163,
   "youtubeTitle": "Un Bon Moment avec Laurie Peret et Pablo Mira",
-  "number": 60
+  "youtubeUrl": "https://www.youtube.com/watch?v=X-0RlCBp9cA"
 }

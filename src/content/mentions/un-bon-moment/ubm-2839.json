@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2839",
+  "itemId": "88ce186d",
+  "kind": "reco",
+  "quote": "Le début de rencontre avec Joe Black, genre.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61c5abab76bee100120dd720",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

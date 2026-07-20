@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:31:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:21:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:20:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1516",
+  "itemId": "aae4d4eb",
+  "kind": "reco",
+  "quote": "ça s'appelle le fil mental j'ai sorti ça au mois de septembre et je pars d'une question que je me pose et je déroule le fil",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:20:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

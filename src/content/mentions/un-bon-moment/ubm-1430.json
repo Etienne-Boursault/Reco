@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:35:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1430",
+  "itemId": "c2aad0c7",
+  "kind": "reco",
+  "quote": "le scooteur volé de Noctard",
+  "recommendedBy": "intervenant",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:34:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

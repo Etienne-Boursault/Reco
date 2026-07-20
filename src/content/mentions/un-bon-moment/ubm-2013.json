@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:15:17+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2013",
+  "itemId": "cded2304",
+  "kind": "reco",
+  "quote": "là, un film est sorti à son histoire",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T20:38:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:27"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1665",
+  "itemId": "f1d88049",
+  "kind": "reco",
+  "quote": "Vous connaissez aussi le jeu du Floodcast que t'as fait. T'as fait le Floodcast avec Bilal Hassani qui était un super épisode vraiment.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6960deefb86949aa06496e27",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:27",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

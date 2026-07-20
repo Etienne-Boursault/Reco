@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1909",
+  "itemId": "0e58d111",
+  "kind": "reco",
+  "quote": "Un stand-upper dont je ne citerai pas le nom mais qui un jour entend mon rodage du dernier spectacle L'être humain.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

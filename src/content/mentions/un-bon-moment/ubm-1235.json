@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:39"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1235",
+  "itemId": "141bc746",
+  "kind": "reco",
+  "quote": "Je ne rappeuse des fristales sur Instagram.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:39",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

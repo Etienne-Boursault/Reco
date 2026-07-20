@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:32"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2130",
+  "itemId": "2cc8c7e9",
+  "kind": "reco",
+  "quote": "Quand j'ai joué la première fois le spectacle à 'La cigale', j'avais dit à ma mère que j'allais en parler.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:32",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

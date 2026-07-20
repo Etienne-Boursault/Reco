@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:52:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2885",
+  "itemId": "6464d576",
+  "kind": "reco",
+  "quote": "c'est dans Hilarious",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6302667b4913bd00126c374c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:05:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

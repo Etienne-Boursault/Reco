@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:11:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2330",
+  "itemId": "6ca8d17b",
+  "kind": "reco",
+  "quote": "Le début d'Encore, par exemple, c'est un film où je m'étais dit, au début du film, je voudrais que ce soit non pas muet, mais en tout cas qu'il n'y ait pas de dialogue, et qu'on soit que sur la musique et la danse.",
+  "recommendedBy": "Cédric Lapiche",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:11:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

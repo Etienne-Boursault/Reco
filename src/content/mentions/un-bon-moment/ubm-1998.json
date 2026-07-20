@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:12:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:44"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1998",
+  "itemId": "81ef0b3a",
+  "kind": "reco",
+  "quote": "à part des faits voyage voyage des herbes voyage voyage de jouer à mes yeux une queen il y avait voyage voyage",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

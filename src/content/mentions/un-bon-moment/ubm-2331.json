@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:04:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:17:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2331",
+  "itemId": "5847b6db",
+  "kind": "reco",
+  "quote": "je me dis que ce serait intéressant de faire un documentaire sur ce personnage-là. Donc, je repars un peu de ce que Woody Allen avait fait avec Zellig.",
+  "recommendedBy": "Cédric Lapiche",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652415a1c899650012820b3f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:17:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:41:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1299",
+  "itemId": "3345607a",
+  "kind": "reco",
+  "quote": "Et j'écoutais ça en lisant les Societies...",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:41:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

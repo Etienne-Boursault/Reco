@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:52:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0984",
+  "itemId": "f21bc685",
+  "kind": "reco",
+  "quote": "J'avais parlé de M. Sophie, je reparle de M. Sophie... ça parle de philosophie, il fait des fausses interviews... c'est marrant et il parle pas mal d'IA",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:52:53",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

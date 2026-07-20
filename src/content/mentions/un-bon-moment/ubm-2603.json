@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:15:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:17"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2603",
+  "itemId": "8e95b977",
+  "kind": "reco",
+  "quote": "Il y a Around the World, de Daft Punk.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240f8a7a4ced00123481d1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1025",
+  "itemId": "87218b14",
+  "kind": "reco",
+  "quote": "C'est Julien Méniel qui nous donne, fait des espèces de petits épisodes sur des trucs de santé. Hyper intéressant.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:51:01",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

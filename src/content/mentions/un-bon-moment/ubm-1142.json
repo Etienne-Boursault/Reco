@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T21:41:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1142",
+  "itemId": "7a638911",
+  "kind": "reco",
+  "quote": "James Becker, avec qui j'ai travaillé, et qui je vais retravailler, et qui est un musicien très talentueux, qui se développe de plus en plus, qui fait des super morceaux.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

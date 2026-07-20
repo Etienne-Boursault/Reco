@@ -1,0 +1,53 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:01:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:36"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:51:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1390",
+  "itemId": "426409af",
+  "kind": "reco",
+  "quote": "comme Thomas VDB c'est pas un gros communicant sur Instagram et pourtant il est plein partout en France",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

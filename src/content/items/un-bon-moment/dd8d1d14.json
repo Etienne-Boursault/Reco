@@ -1,0 +1,44 @@
+{
+  "creator": "David Crane, Marta Kauffman",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR",
+    "tmdb": 1668,
+    "tmdbType": "tv"
+  },
+  "id": "dd8d1d14",
+  "schemaVersion": 1,
+  "title": "Friends",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Friends"
+    },
+    {
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Friends"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Friends"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Friends"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Friends"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:23:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:24:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2772",
+  "itemId": "0992c2d7",
+  "kind": "reco",
+  "quote": "Il y a Rocketman de Elton John et Wasn't Me de Shaggy.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:24:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

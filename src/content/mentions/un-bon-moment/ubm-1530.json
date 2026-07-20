@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:33"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:33"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1530",
+  "itemId": "c4f15b4c",
+  "kind": "citation",
+  "quote": "C'est dans Friends, ça m'intéresse de ouf, moi. Je crois qu'il y a l'épisode entier de Friends, où Phoebe, elle est vénère contre Ross pendant tout l'épisode.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:33",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

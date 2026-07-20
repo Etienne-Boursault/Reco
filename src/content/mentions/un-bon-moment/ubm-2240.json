@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:36"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2240",
+  "itemId": "93221e09",
+  "kind": "reco",
+  "quote": "Allez voir Coco Voit, c'est un bon délire",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

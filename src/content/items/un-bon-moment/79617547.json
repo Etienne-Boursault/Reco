@@ -1,0 +1,43 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR",
+    "tmdb": 60059,
+    "tmdbType": "tv"
+  },
+  "id": "79617547",
+  "schemaVersion": 1,
+  "title": "Better Call Saul",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul"
+    }
+  ]
+}

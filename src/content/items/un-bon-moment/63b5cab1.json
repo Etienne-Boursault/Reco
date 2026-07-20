@@ -1,0 +1,28 @@
+{
+  "creator": "Carter Bays, Craig Thomas",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/1100-how-i-met-your-mother/watch?locale=FR",
+    "tmdb": 1100,
+    "tmdbType": "tv"
+  },
+  "id": "63b5cab1",
+  "schemaVersion": 1,
+  "title": "How I Met Your Mother",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=How%20I%20Met%20Your%20Mother"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=How%20I%20Met%20Your%20Mother"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=How%20I%20Met%20Your%20Mother"
+    }
+  ]
+}

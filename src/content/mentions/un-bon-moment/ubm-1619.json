@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:49:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:31"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1619",
+  "itemId": "bc44d3ff",
+  "kind": "reco",
+  "quote": "Il m'a donné des super conseils",
+  "recommendedBy": "Salima",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:31",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

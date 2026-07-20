@@ -1,0 +1,55 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/257211-the-intern/watch?locale=FR",
+    "tmdb": 257211,
+    "tmdbType": "movie"
+  },
+  "id": "82a3d7ea",
+  "schemaVersion": 1,
+  "title": "Le Nouveau",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Le%20Nouveau"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Le%20Nouveau&c=movies"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Nouveau"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Le%20Nouveau"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Le%20Nouveau"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Le%20Nouveau"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Nouveau"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Le%20Nouveau"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Nouveau"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Le%20Nouveau"
+    }
+  ]
+}

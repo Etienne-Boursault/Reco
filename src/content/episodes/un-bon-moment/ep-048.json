@@ -1,15 +1,26 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "63357716bc3f1e0012abed65",
-  "title": "avec Vincent Delerm",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 48,
-  "date": "2022-10-03",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/63357716bc3f1e0012abed65/media.mp3",
-  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=lK2P2i3ZLxg",
   "audioDuration": 4555,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/63357716bc3f1e0012abed65/media.mp3",
+  "date": "2022-10-03",
+  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
+  "guests": [],
+  "guestsExcluded": [
+    "Vincent Delerme",
+    "Inconnu",
+    "Vincent Delorme",
+    "Vincent"
+  ],
+  "guestsParsed": [
+    "Vincent Delerm"
+  ],
+  "guid": "63357716bc3f1e0012abed65",
+  "number": 48,
+  "sourceId": "un-bon-moment",
+  "title": "avec Vincent Delerm",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4556,
-  "youtubeTitle": "A Good Time with Vincent Delerm"
+  "youtubeTitle": "A Good Time with Vincent Delerm",
+  "youtubeUrl": "https://www.youtube.com/watch?v=lK2P2i3ZLxg"
 }

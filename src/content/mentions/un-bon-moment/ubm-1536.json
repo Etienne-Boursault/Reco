@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:34+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1536",
+  "itemId": "06010cdb",
+  "kind": "citation",
+  "quote": "Avec l'acteur de Mad Men, là",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a05e43cc7ea4a3c85664972",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:23",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

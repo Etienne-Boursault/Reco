@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:17:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:36:04"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2464",
+  "itemId": "0a6ceed1",
+  "kind": "reco",
+  "quote": "C'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube. Allez voir le Trône des Frogs, c'est hilarant d'ailleurs, des dojos dedans.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:36:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0816",
+  "itemId": "2ba4eabd",
+  "kind": "reco",
+  "quote": "c'est assez intéressant.",
+  "recommendedBy": "Roman Frécinès",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61ce14aa42581b0012d8ddb0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:35",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

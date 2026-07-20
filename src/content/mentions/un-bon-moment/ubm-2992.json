@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:52:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:53"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2992",
+  "itemId": "e9689b96",
+  "kind": "reco",
+  "quote": "et là le dernier spectacle je raconte une soirée qui m'est arrivée on est en tournée actuellement tu fais tout le spectacle sur une soirée sur une soirée ouais ça s'appelle une bonne soirée une des meilleures soirées de ma vie",
+  "recommendedBy": "Laurent Gerra",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63614bd05e627e0011144c04",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:53",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

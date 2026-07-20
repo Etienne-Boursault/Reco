@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:48:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2742",
+  "itemId": "b3122d81",
+  "kind": "reco",
+  "quote": "Moi, je vais recommander quoi ? Hugo Lisoire ?",
+  "recommendedBy": "Pierre",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

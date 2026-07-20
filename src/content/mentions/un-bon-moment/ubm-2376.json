@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:20:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:00"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2376",
+  "itemId": "cf48e745",
+  "kind": "reco",
+  "quote": "Dans Grey's Anatomy, t'es morte.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:00",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

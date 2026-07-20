@@ -1,15 +1,26 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
-  "title": "avec MONSIEUR POULPE et DAVY MOURIER",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "number": 15,
-  "date": "2020-05-03",
-  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecmonsieurpoulpeetdavymourier/media.mp3",
-  "description": "À l'origine du monde d'Internet, ils étaient déjà là, très créatifs depuis 15 ans, on est revenus sur leurs parcours et on a parlé d'une super B.D. qui parle des relations amoureuses toxiques : \"Tant pis pour l'amour\"...",
-  "youtubeUrl": "https://www.youtube.com/watch?v=EG6mqJcYUp4",
   "audioDuration": 4875,
+  "audioUrl": "https://sphinx.acast.com/un-bon-moment/avecmonsieurpoulpeetdavymourier/media.mp3",
+  "date": "2020-05-03",
+  "description": "À l'origine du monde d'Internet, ils étaient déjà là, très créatifs depuis 15 ans, on est revenus sur leurs parcours et on a parlé d'une super B.D. qui parle des relations amoureuses toxiques : \"Tant pis pour l'amour\"...",
+  "guests": [],
+  "guestsExcluded": [
+    "Poulpe",
+    "Davy",
+    "intervenant non précisé"
+  ],
+  "guestsParsed": [
+    "Monsieur Poulpe",
+    "Davy Mourier"
+  ],
+  "guid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
+  "number": 15,
+  "sourceId": "un-bon-moment",
+  "title": "avec MONSIEUR POULPE et DAVY MOURIER",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4882,
-  "youtubeTitle": "Un Bon Moment avec MONSIEUR POULPE & DAVY MOURIER"
+  "youtubeTitle": "Un Bon Moment avec MONSIEUR POULPE & DAVY MOURIER",
+  "youtubeUrl": "https://www.youtube.com/watch?v=EG6mqJcYUp4"
 }

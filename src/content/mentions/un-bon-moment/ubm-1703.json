@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:17"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1703",
+  "itemId": "5f8e0ece",
+  "kind": "reco",
+  "quote": "moi je me rappelle quand j'avais vu le Moulin Rouge leur histoire d'amour et tout",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:17",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

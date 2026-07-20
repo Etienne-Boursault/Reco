@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0896",
+  "itemId": "68d25f46",
+  "kind": "reco",
+  "quote": "La grande beauté ? Ça, je pose la grande beauté.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

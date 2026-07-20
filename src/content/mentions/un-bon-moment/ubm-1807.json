@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T05:34:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1807",
+  "itemId": "9d120904",
+  "kind": "reco",
+  "quote": "Je la lance ici en exclu. Ça s'appelle C'est pas mon métier. Mais je trouve que ça fait un peu, on n'est pas couché, tu vois ?",
+  "recommendedBy": "Big Flo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "691488fcc1ed8717c54570d4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:00",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

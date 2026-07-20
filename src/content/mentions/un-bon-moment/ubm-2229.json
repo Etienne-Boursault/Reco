@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:18:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:31"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2229",
+  "itemId": "417f6b08",
+  "kind": "reco",
+  "quote": "J'ai beaucoup entendu parler de ce événement Royaume du web comme quoi ça se passait super bien",
+  "recommendedBy": "Audrey Pierrot",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:31",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

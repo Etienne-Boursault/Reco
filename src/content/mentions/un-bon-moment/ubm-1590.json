@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:26:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1590",
+  "itemId": "01abe930",
+  "kind": "reco",
+  "quote": "Ryan Gosling il a été viré du film La Nostalgie de l'Ange The Lovely Bones par Peter Jackson",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:26:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

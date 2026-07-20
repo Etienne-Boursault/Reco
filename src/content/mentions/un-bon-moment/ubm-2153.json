@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:41"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:41"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2153",
+  "itemId": "d25efdad",
+  "kind": "reco",
+  "quote": "C'est un album que je trouve trop bien.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

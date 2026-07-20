@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:19:26+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "youtube",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1878",
+  "itemId": "4ce5f587",
+  "kind": "reco",
+  "quote": "C'était Francky Vincent, le restaurant.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "68fa552292f5a6f127100027",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

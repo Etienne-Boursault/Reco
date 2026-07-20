@@ -1,15 +1,27 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "61c5abab76bee100120dd720",
-  "title": "avec MORGANE CADIGNAN et FANNY RUWET",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 39,
-  "date": "2021-12-26",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61c5abab76bee100120dd720/media.mp3",
-  "description": "les BFF de France Inter nous défient au jeu de la complicité. Kyan, Navo, Fanny Ruwet et Morgane Cadignan en grand forme ! »",
-  "youtubeUrl": "https://www.youtube.com/watch?v=SBNWK_6oMr0",
   "audioDuration": 5475,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/61c5abab76bee100120dd720/media.mp3",
+  "date": "2021-12-26",
+  "description": "les BFF de France Inter nous défient au jeu de la complicité. Kyan, Navo, Fanny Ruwet et Morgane Cadignan en grand forme ! »",
+  "guests": [],
+  "guestsExcluded": [
+    "Fanny Ruey",
+    "Morgane Canignan",
+    "intervenant",
+    "Morgane"
+  ],
+  "guestsParsed": [
+    "Morgane Cadignan",
+    "Fanny Ruwet"
+  ],
+  "guid": "61c5abab76bee100120dd720",
+  "number": 39,
+  "sourceId": "un-bon-moment",
+  "title": "avec MORGANE CADIGNAN et FANNY RUWET",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 5475,
-  "youtubeTitle": "Un Bon Moment avec FANNY RUWET & MORGANE  CADIGNAN"
+  "youtubeTitle": "Un Bon Moment avec FANNY RUWET & MORGANE  CADIGNAN",
+  "youtubeUrl": "https://www.youtube.com/watch?v=SBNWK_6oMr0"
 }

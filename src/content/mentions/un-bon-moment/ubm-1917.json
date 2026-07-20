@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:36:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1917",
+  "itemId": "2be37b60",
+  "kind": "reco",
+  "quote": "C'est lui qui est un ouf, qui est le tueur.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:36:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

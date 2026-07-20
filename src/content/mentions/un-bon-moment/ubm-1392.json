@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:41:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:36"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1392",
+  "itemId": "d89b3ed2",
+  "kind": "reco",
+  "quote": "moi j'allais recommander la vidéo de chaise Lucas Pastore",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69d112dba691c8ebbb9a19d9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:25:36",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

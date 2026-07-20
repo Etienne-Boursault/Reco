@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T17:50:49+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:48"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:05:16+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1634",
+  "itemId": "8be911eb",
+  "kind": "reco",
+  "quote": "En gros, quand ils ont fait le costume de The Mask, de ce que je comprends de la question, ils se sont inspirés d'un costume que lui-même avait déjà porté.",
+  "recommendedBy": "Kyan Khojandi / Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6970a1759448a95f223d530c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

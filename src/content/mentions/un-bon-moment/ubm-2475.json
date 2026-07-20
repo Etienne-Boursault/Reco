@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:42"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2475",
+  "itemId": "de01fdea",
+  "kind": "reco",
+  "quote": "Il a un spectacle qu'il fait au Bataclan qui s'appelle \"Baptiste Lecaplain se tape l'affiche\".",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

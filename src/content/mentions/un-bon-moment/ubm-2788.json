@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:35:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T01:35:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:58"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2788",
+  "itemId": "ec7f2d3d",
+  "kind": "reco",
+  "quote": "Très drôle, tu éclates de rire en lisant un bouquin.",
+  "recommendedBy": "Laura",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240a35cc56a90012ec386b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T04:10:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:42"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-3023",
+  "itemId": "fa51930e",
+  "kind": "reco",
+  "quote": "Ces trucs-là, tu vois ce que je veux dire ?",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

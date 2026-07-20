@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:13"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:36:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:15"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2709",
+  "itemId": "4db396ea",
+  "kind": "reco",
+  "quote": "\"Saison 3 de Définition, j'ai fait une série Stand Up !\"",
+  "recommendedBy": "Jérémy Demay",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

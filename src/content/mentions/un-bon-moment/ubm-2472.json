@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:18:51+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:40:25"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2472",
+  "itemId": "4cc94edb",
+  "kind": "reco",
+  "quote": "C'est trop bien les chaussettes, refaites des chaussettes.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:40:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

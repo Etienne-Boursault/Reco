@@ -1,0 +1,28 @@
+{
+  "creator": "Dan Harmon",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/18347-community/watch?locale=FR",
+    "tmdb": 18347,
+    "tmdbType": "tv"
+  },
+  "id": "432dff36",
+  "schemaVersion": 1,
+  "title": "Community",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Community"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Community"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Community"
+    }
+  ]
+}

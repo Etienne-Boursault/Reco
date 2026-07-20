@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:59:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:18"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:46:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:18"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1890",
+  "itemId": "409fb74b",
+  "kind": "citation",
+  "quote": "Jim Carrey avec Andy Kaufman, là, dans Jim et Andy, vous l'avez dit, j'ai envie de mettre des pas...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

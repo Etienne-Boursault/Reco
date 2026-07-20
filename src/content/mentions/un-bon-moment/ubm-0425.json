@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:28:29"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0425",
+  "itemId": "ff7a06d8",
+  "kind": "reco",
+  "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "699968af0e5c959d5971943f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:28:29",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

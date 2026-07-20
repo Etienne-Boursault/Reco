@@ -1,0 +1,24 @@
+{
+  "creator": "Vince Gilligan",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/91997-pluto/watch?locale=FR",
+    "tmdb": 91997,
+    "tmdbType": "tv"
+  },
+  "id": "c2e2ff1a",
+  "schemaVersion": 1,
+  "title": "Pluto",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Pluto"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Pluto"
+    }
+  ]
+}

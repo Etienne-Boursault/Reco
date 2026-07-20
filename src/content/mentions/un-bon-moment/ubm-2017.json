@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:16:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2017",
+  "itemId": "9497d98b",
+  "kind": "reco",
+  "quote": "les travers de la mer c'est un film souvent je me suis demandé est-ce qu'on allait pas faire ce film bouquin magnifique",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

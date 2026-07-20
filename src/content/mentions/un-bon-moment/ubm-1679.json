@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T21:46:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:36"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:36"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1679",
+  "itemId": "e5bbc20a",
+  "kind": "reco",
+  "quote": "Tu vois Ricky Morty, South Park. C'est souvent les créateurs qui font les voix principales.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

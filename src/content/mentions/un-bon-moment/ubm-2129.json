@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:42:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:53:35"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2129",
+  "itemId": "390de238",
+  "kind": "reco",
+  "quote": "C'était un mollier. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:53:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

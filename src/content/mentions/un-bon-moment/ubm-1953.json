@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:49"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1953",
+  "itemId": "aaa98da3",
+  "kind": "reco",
+  "quote": "Sigourney Weaver, quand tu la vois dans Beacon Rewind.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,33 @@
+{
+  "creator": "Cédric Klapisch",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/14646-un-air-de-famille/watch?locale=FR",
+    "tmdb": 14646,
+    "tmdbType": "movie"
+  },
+  "id": "65c06e08",
+  "schemaVersion": 1,
+  "title": "Un air de famille",
+  "types": [
+    "film",
+    "spectacle"
+  ],
+  "watchProviders": [
+    {
+      "name": "MUBI",
+      "url": "https://mubi.com/fr/films?q=Un%20air%20de%20famille"
+    },
+    {
+      "name": "MUBI Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20air%20de%20famille"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Un%20air%20de%20famille"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Un%20air%20de%20famille"
+    }
+  ]
+}

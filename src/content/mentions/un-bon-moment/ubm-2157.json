@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:23:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:23:14"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2157",
+  "itemId": "1c842f7c",
+  "kind": "reco",
+  "quote": "L'envie d'aimer de... Claude Nougaro.",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:23:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

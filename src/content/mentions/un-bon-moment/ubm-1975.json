@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1975",
+  "itemId": "5c656481",
+  "kind": "reco",
+  "quote": "Moi c'est Mario 3 ! Je vais finir Mario 3 et Sonic 2 !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

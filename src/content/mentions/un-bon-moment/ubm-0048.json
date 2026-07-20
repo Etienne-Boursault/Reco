@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:40"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0048",
+  "itemId": "7e244ff2",
+  "kind": "reco",
+  "quote": "la batterie j'ai fait jouer un copain qui s'appelle Damien Gouzou",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "1d2594d7-a6c2-4116-8c65-cbe73be5dc0f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:40",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:21:20+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:43"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2616",
+  "itemId": "660a0d14",
+  "kind": "reco",
+  "recommendedBy": "conducteur d'émission",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:43",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:48:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:15"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:15"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1609",
+  "itemId": "6d53e023",
+  "kind": "reco",
+  "quote": "C'est en prenant la pomme ? Mirabel Que t'as vu la métaphore avec ton film ?",
+  "recommendedBy": "Haroun",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

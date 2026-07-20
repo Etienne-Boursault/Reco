@@ -1,0 +1,56 @@
+{
+  "creator": "David Hand",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/3170-bambi/watch?locale=FR",
+    "tmdb": 3170,
+    "tmdbType": "movie"
+  },
+  "id": "2d4062e4",
+  "schemaVersion": 1,
+  "title": "Bambi",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bambi"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Bambi"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Bambi&c=movies"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Bambi"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Bambi"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Bambi"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Bambi"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Bambi"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Bambi"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Bambi"
+    }
+  ]
+}

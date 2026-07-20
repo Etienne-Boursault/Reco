@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:56:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:14"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2648",
+  "itemId": "97aa4894",
+  "kind": "reco",
+  "quote": "Vous avez fait un vrai duo dans Le Visiteur du futur. François, tu réalisais et Eleanor, tu jouais dedans.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

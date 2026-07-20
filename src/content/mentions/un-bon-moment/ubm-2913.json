@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:15:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:36"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2913",
+  "itemId": "2fd81c0f",
+  "kind": "reco",
+  "quote": "C'était Diams dans ma bulle.",
+  "recommendedBy": "Oli",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652406c019376d001282c4d8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:36",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

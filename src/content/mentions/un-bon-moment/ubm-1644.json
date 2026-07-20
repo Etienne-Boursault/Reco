@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:30:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:06:33+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:30:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1644",
+  "itemId": "8176cf98",
+  "kind": "reco",
+  "quote": "Ça s'appelait... Je peux t'appeler papa ! C'était trop cool ! C'était trop mignon !",
+  "recommendedBy": "Tom Baletti",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:30:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

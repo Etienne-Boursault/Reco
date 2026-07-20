@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:45"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-0873",
+  "itemId": "3dab73ec",
+  "kind": "reco",
+  "quote": "moi je recommande exemplaires qui est une boîte d'édition de bouquin une espèce de maison de... éditeur de bouquin mais qui fait de l'auto édition surtout driver par les auteurs avec un financement participatif",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6336c79af131c60012c20984",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:45",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

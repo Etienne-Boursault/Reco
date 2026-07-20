@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T12:53:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:51"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T12:53:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:51"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2115",
+  "itemId": "67ffda4f",
+  "kind": "reco",
+  "quote": "Jimmy Mohamed, tu as sorti un bouquin, 39 astuces pour perdre du poids.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "661c1bf83fb7ab00162aa674",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

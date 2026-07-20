@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:12:15+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:34:57"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2001",
+  "itemId": "900e2a31",
+  "kind": "reco",
+  "quote": "Il y a une phrase. Thierry. Qu'on avait mis dans. La saison 1 de Bref.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:34:57",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

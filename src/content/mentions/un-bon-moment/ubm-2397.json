@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:36:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:46:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2397",
+  "itemId": "284e47b0",
+  "kind": "reco",
+  "quote": "Attends, je voulais dire un autre truc sur Bilbeur. Découvrir Bilbeur.",
+  "recommendedBy": "Manu Payet",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:46:05",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

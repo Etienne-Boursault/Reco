@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:14"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1193",
+  "itemId": "2dd7530c",
+  "kind": "reco",
+  "quote": "On recommande, d'ailleurs.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:28:14",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

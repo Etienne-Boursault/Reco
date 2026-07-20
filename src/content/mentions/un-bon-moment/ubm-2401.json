@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:37:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:28:01"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2401",
+  "itemId": "77db938f",
+  "kind": "reco",
+  "quote": "c'est la bande annonce de Hobbs & Shaw, Fast & Furious 9.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:28:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

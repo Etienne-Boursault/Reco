@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T13:58:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1491",
+  "itemId": "a2baf76e",
+  "kind": "reco",
+  "quote": "Les Beach Boys, par exemple.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:26",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

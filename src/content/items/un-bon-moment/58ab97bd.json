@@ -1,0 +1,32 @@
+{
+  "creator": "Jason Segel, Ellen Wong",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/81241-dispatches-from-elsewhere/watch?locale=FR",
+    "tmdb": 81241,
+    "tmdbType": "tv"
+  },
+  "id": "58ab97bd",
+  "schemaVersion": 1,
+  "title": "Dispatches from Elsewhere",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Dispatches%20from%20Elsewhere"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dispatches%20from%20Elsewhere"
+    }
+  ]
+}

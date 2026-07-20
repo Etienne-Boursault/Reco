@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:55"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0901",
+  "itemId": "5f74d0db",
+  "kind": "reco",
+  "quote": "Le bouquin de Murad Winter qui a adapté au cinéma.",
+  "recommendedBy": "inconnu",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240a35cc56a90012ec386b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:55",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

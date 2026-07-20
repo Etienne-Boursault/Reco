@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:04:05+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:25"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1715",
+  "itemId": "e46311e0",
+  "kind": "reco",
+  "quote": "allez voir le spectacle de Léopold",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:25",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

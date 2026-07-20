@@ -1,0 +1,44 @@
+{
+  "creator": "Marcel Carné",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/48369-hotel-du-nord/watch?locale=FR",
+    "tmdb": 48369,
+    "tmdbType": "movie"
+  },
+  "id": "b7196daa",
+  "schemaVersion": 1,
+  "title": "Hôtel du Nord",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=H%C3%B4tel%20du%20Nord"
+    },
+    {
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=H%C3%B4tel%20du%20Nord"
+    }
+  ]
+}

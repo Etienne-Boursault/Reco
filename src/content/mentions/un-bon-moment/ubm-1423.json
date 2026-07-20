@@ -1,0 +1,64 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-04T16:02:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:16"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:55:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:56:18+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:00:04"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1423",
+  "itemId": "c5fbeb99",
+  "kind": "reco",
+  "quote": "le sens de la fête ça c'est que c'est un truc qui est devenu culte",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:00:04",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

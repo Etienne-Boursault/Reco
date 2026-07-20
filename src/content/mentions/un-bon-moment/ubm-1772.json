@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T02:47:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1772",
+  "itemId": "6cc660a8",
+  "kind": "reco",
+  "quote": "Il y a un film avec Jean-Paul Rouve.",
+  "recommendedBy": "Fabrice Emoué",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6929611768e521ed8d86a91b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

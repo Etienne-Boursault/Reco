@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:25:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0414",
+  "itemId": "d583dab3",
+  "kind": "reco",
+  "quote": "Chabless sur Netflix qui est une très bonne série.",
+  "recommendedBy": "Navé",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "699968af0e5c959d5971943f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:25:42",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

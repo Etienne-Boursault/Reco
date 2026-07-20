@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T22:26:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:02"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2546",
+  "itemId": "dd9f0b76",
+  "kind": "reco",
+  "quote": "je pense à une jeune artiste que j'ai croisée, qui s'appelle Césaré.",
+  "recommendedBy": "Mathieu Chédid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

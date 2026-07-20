@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:48:37+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:42"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2328",
+  "itemId": "07a9c5af",
+  "kind": "reco",
+  "quote": "c'est là, non non, ça c'est pas Toltec ça",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0638",
+  "itemId": "6d6e7bc7",
+  "kind": "reco",
+  "quote": "Dans un morceau de Charlie Jean Gambino, d'ailleurs, comme ça s'appelle This is America...",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

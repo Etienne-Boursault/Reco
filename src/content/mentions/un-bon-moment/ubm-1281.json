@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:22"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T00:11:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:12:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:22"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1281",
+  "itemId": "8f3a83d1",
+  "kind": "reco",
+  "quote": "Columbo, on peut regarder Columbo ?",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:36:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

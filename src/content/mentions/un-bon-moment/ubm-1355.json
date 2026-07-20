@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:10:18+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1355",
+  "itemId": "81b7a09c",
+  "kind": "reco",
+  "quote": "c'est beaucoup plus stylé tu sais Miracle Morning tous ces trucs là",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69eb3617a5ffb248cb456a89",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:24",
+    "transcriptSource": "acast"
+  },
+  "status": "discarded"
+}

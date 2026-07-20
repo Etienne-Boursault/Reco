@@ -1,0 +1,69 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/8009-highlander/watch?locale=FR",
+    "tmdb": 8009,
+    "tmdbType": "movie"
+  },
+  "id": "3be127de",
+  "schemaVersion": 1,
+  "title": "Highlander",
+  "types": [
+    "film",
+    "serie",
+    "autre"
+  ],
+  "watchProviders": [
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander"
+    },
+    {
+      "name": "Cine+ OCS Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Highlander"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Highlander&c=movies"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Highlander"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Highlander"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Highlander"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Highlander"
+    },
+    {
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Highlander"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Highlander"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Highlander"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Highlander"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Highlander"
+    }
+  ]
+}

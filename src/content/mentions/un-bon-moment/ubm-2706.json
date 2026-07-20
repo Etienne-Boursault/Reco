@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:36:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:07"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2706",
+  "itemId": "ba344061",
+  "kind": "reco",
+  "quote": "On a Michel Leib depuis longtemps, nous on s'est identifié à lui quand on était petit.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

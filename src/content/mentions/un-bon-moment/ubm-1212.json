@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:44"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1212",
+  "itemId": "fa521dc1",
+  "kind": "reco",
+  "quote": "Moi j'aime bien recommander du Tiktok parce que je suis premier.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322de1f35ce9e001229f98a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:44",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

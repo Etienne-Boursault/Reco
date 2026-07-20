@@ -1,15 +1,25 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6336c79af131c60012c20984",
-  "title": "avec Clément Cotentin",
-  "guests": [],
-  "transcriptStatus": "none",
-  "number": 49,
-  "date": "2022-10-10",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6336c79af131c60012c20984/media.mp3",
-  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
-  "youtubeUrl": "https://www.youtube.com/watch?v=TMo6P_faia4",
   "audioDuration": 4237,
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6336c79af131c60012c20984/media.mp3",
+  "date": "2022-10-10",
+  "description": "Pour venir nous voir en spectacle : https://www.unebonnesoiree.fr !\nSi vous voulez soutenir UN BON MOMENT, tout en vous faisant plaisir, on a créé :  unebonneboutique.com !\nKiffez bien !",
+  "guests": [],
+  "guestsExcluded": [
+    "Clem",
+    "Invité",
+    "Clément Contentin"
+  ],
+  "guestsParsed": [
+    "Clément Cotentin"
+  ],
+  "guid": "6336c79af131c60012c20984",
+  "number": 49,
+  "sourceId": "un-bon-moment",
+  "title": "avec Clément Cotentin",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 4256,
-  "youtubeTitle": "Un Bon Moment avec CLÉMENT COTENTIN"
+  "youtubeTitle": "Un Bon Moment avec CLÉMENT COTENTIN",
+  "youtubeUrl": "https://www.youtube.com/watch?v=TMo6P_faia4"
 }

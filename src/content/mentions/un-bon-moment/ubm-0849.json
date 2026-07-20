@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:13:56"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0849",
+  "itemId": "968d0915",
+  "kind": "reco",
+  "quote": "si, genre, tu es là, tu es en train de te dire \"ça fait un moment, je suis avec ma meuf, tu écoutes les amants parallèles\"",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:13:56",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

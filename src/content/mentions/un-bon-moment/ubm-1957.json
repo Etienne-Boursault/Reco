@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:52+00:00",
+      "extra": {
+        "timestamp_at_extraction": "02:13:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1957",
+  "itemId": "53e3499f",
+  "kind": "reco",
+  "quote": "et qui avait écrit il y a très longtemps l'extraordinaire voyage du fakir qui s'était fait enfermé dans une armoire",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6985f143d4e01f1069c7d5d3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "02:13:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

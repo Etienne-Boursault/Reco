@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/93219-the-movies-that-made-us/watch?locale=FR",
+    "tmdb": 93219,
+    "tmdbType": "tv"
+  },
+  "id": "b0249da4",
+  "schemaVersion": 1,
+  "title": "The Movies That Made Us",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Movies%20That%20Made%20Us"
+    }
+  ]
+}

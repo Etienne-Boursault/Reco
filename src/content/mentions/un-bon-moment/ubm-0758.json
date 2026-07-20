@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:15:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0758",
+  "itemId": "23452e1d",
+  "kind": "reco",
+  "quote": "On adore. C'est génial.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:15:53",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

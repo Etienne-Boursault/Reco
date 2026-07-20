@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:49"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2237",
+  "itemId": "aeada1e7",
+  "kind": "reco",
+  "quote": "C'était le documentaire sur la dépression et les comiques. Vous l'avez vu ce truc là avec Sarah Silverman, Neil Brennan et tout",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

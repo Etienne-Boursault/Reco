@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:01:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:17:31"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1954",
+  "itemId": "8756d211",
+  "kind": "reco",
+  "quote": "La dernière vidéo sur le forfait Millennium d'ECFR de Sylvan, j'adore.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69872f249a20cfbf330ae7ab",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:17:31",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

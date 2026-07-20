@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:47"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:40:32+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:40:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:40"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0815",
+  "itemId": "e6595fad",
+  "kind": "reco",
+  "quote": "un court-métrage animé sur un texte qui précédait le court-métrage animé. Mais le court-métrage est très cool.",
+  "recommendedBy": "Roman Frécinès",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61ce14aa42581b0012d8ddb0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:40",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

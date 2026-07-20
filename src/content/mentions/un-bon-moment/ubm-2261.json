@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:20:27+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:26:08"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2261",
+  "itemId": "5d8443a6",
+  "kind": "reco",
+  "quote": "Je tape le best-up des Golden Globes de Ricky Germain en ce moment.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:26:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

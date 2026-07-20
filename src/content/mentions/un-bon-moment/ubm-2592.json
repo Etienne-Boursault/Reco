@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T23:03:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T23:04:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:08"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2592",
+  "itemId": "c54832ec",
+  "kind": "reco",
+  "quote": "J'ai écouté Gang Stories...",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

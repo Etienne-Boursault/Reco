@@ -1,0 +1,41 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T15:58:57+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:41"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:45:06+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1542",
+  "itemId": "ec7f2d3d",
+  "kind": "reco",
+  "recommendedBy": "Kyan Khojandi & Doully",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:59:48+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:26"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2530",
+  "itemId": "3067e21f",
+  "kind": "reco",
+  "quote": "très beau but de Denise Bergkamp en 98",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

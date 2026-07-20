@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T00:05:11+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:30"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1719",
+  "itemId": "2b4a26cb",
+  "kind": "reco",
+  "quote": "il y a un côté un beau burnham Dimitri Martin",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "693c1da59bb376c45d3fe84f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:30",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

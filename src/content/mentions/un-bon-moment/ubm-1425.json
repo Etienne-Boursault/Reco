@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T09:34:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:59"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1425",
+  "itemId": "1aa88442",
+  "kind": "reco",
+  "quote": "j'ai été voir une expo au Luxembourg sur les encres de Soulages",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69b595f063444515f923af4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:59",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

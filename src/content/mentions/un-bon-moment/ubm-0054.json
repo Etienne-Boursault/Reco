@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:26"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0054",
+  "itemId": "ea5b0073",
+  "kind": "reco",
+  "quote": "Son dernier album.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4111851d-7b13-47b2-89f0-64e6857e1ed0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:06:26",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

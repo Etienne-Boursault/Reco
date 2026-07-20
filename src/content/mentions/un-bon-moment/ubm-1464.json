@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:52:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:46"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1464",
+  "itemId": "36833a65",
+  "kind": "reco",
+  "quote": "Je joue à un jeu sans fin, un espèce de jeu qui s'appelle June Journey, où tu as une île et tu mènes des enquêtes.",
+  "recommendedBy": "Natoo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:46",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

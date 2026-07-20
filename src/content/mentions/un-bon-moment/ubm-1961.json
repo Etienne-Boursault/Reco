@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:03:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:56"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1961",
+  "itemId": "83c9ac3c",
+  "kind": "reco",
+  "quote": "Vraiment, n'hésitez pas à acheter.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "697d34fef1dd68ab365aea03",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:21:56",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

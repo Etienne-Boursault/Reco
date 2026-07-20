@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:02:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1275",
+  "itemId": "eef310db",
+  "kind": "reco",
+  "quote": "vous savez quoi, aller voir les théâtres près de chez vous, dites, on veut Wallydia dans notre théâtre.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a2673210d00017783f8b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:02:12",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

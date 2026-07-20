@@ -1,0 +1,31 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/90816-valide/watch?locale=FR",
+    "tmdb": 90816,
+    "tmdbType": "tv"
+  },
+  "id": "f5df3924",
+  "schemaVersion": 1,
+  "title": "Validé",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Valid%C3%A9"
+    },
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Valid%C3%A9"
+    },
+    {
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
+    }
+  ]
+}

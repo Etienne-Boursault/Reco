@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:34"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T20:06:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:31"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:28:33"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1301",
+  "itemId": "6c18553e",
+  "kind": "reco",
+  "quote": "c'est une anecdote de mon père",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:28:33",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

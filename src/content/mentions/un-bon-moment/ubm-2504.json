@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:41:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:21"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2504",
+  "itemId": "3c57b5a4",
+  "kind": "reco",
+  "quote": "Section d'Assaut, désolé, et Renan Luce, la laine.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c05703445c0011dd8343",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

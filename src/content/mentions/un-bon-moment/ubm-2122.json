@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T13:41:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:08:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2122",
+  "itemId": "15f5edf7",
+  "kind": "reco",
+  "quote": "Et sinon, en ce moment, un humoriste qui me fait beaucoup, beaucoup rire, c'est Julien Santini.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65ed94b586967e0017c06729",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:08:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

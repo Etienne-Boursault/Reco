@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1124",
+  "itemId": "2a4abf99",
+  "kind": "reco",
+  "quote": "moi je vous recommande Diego Alari sur Tiktok",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b2f213ca1cc001201a69f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:23",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

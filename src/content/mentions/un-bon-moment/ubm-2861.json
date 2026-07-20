@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:22:22+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:15"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2861",
+  "itemId": "9ac34f23",
+  "kind": "reco",
+  "quote": "J'avais fait la précédente qui s'appelait L'Ordre de Sipan.",
+  "recommendedBy": "Vincent",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "652408a9c8996500127e39e9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

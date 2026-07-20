@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T15:22:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "29:09"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2149",
+  "itemId": "07a2d608",
+  "kind": "reco",
+  "quote": "où c'était le préquel de la vérité, si je mens.",
+  "recommendedBy": "Maxime",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a407bb568b0017862c8f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

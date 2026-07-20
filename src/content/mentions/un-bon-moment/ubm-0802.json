@@ -1,0 +1,54 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:28"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-06T02:02:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T02:02:12+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:04:29"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-0802",
+  "itemId": "4c359303",
+  "kind": "reco",
+  "quote": "Je vous recommande la série Master of Universe sur Netflix.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:04:29",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

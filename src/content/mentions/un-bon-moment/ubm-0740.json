@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:24:38"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0740",
+  "itemId": "622d9ef9",
+  "kind": "reco",
+  "quote": "Je vais vous conseiller. \"Broadway\" de Fab Caro.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:24:38",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

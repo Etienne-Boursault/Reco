@@ -1,0 +1,42 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T22:59:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:03"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T10:10:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:16:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1700",
+  "itemId": "60d8bd48",
+  "kind": "reco",
+  "quote": "c'était le moment où tu t'autorises entre guillemets mais en tout cas tu tu te dis je raconte ma live quoi je vais montrer du truc des tu vois c'était c'est vrai peut-être tu as raison",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6947cd11f7567117395ad287",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:16:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

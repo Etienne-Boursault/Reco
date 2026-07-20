@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:17:45+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:21:26"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T03:18:03+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:25"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2917",
+  "itemId": "230b1a82",
+  "kind": "reco",
+  "quote": "Kian sort un album qui s'appelle L'horizon des événements.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63160ce353f4d80012fcd7d0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

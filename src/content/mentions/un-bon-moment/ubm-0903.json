@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:13"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0903",
+  "itemId": "82efc299",
+  "kind": "reco",
+  "quote": "Franchement, moi, je te dis, à partir du moment où j'ai compris comment je fonctionnais par rapport à ça, j'ai toujours cru que j'étais un peu le fou avec ça, et en fait, je me suis rendu compte que c'était plus fort que moi, en fait, parce que vraiment, je me réveille.",
+  "recommendedBy": "Laura Felpin",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240a35cc56a90012ec386b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:13",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

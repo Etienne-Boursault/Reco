@@ -1,15 +1,30 @@
 {
-  "sourceId": "un-bon-moment",
-  "guid": "6550c05703445c0011dd8343",
-  "title": "avec Thomas et Barbara",
-  "guests": [],
-  "transcriptStatus": "auto",
-  "date": "2023-12-11",
-  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6550c05703445c0011dd8343/media.mp3",
-  "description": "Dans cette émission, on reçoit Thomas Ngijol et sa fille Barbara.\nOn y parle de leur nouveau programme court pour Canal +, du spectacle \"L'Oeil du Tigre\" de Thomas, de l'ambiance en tournée et de \"125 et Apres\", l'association qui lutte contre les violences faites aux femmes",
   "audioDuration": 5124,
-  "youtubeUrl": "https://www.youtube.com/watch?v=mF9LCGDI7IA",
-  "youtubeTitle": "Un Bon Moment avec THOMAS NGIJOL & BARBARA BIANCARDINI",
+  "audioUrl": "https://sphinx.acast.com/p/acast/s/un-bon-moment/e/6550c05703445c0011dd8343/media.mp3",
+  "date": "2023-12-11",
+  "description": "Dans cette émission, on reçoit Thomas Ngijol et sa fille Barbara.\nOn y parle de leur nouveau programme court pour Canal +, du spectacle \"L'Oeil du Tigre\" de Thomas, de l'ambiance en tournée et de \"125 et Apres\", l'association qui lutte contre les violences faites aux femmes",
+  "guests": [
+    "Thomas Ngijol",
+    "Barbara Biancardini"
+  ],
+  "guestsExcluded": [
+    "Invité",
+    "intervenant",
+    "Thomas",
+    "Barbara"
+  ],
+  "guestsParsed": [
+    "Thomas",
+    "Barbara"
+  ],
+  "guid": "6550c05703445c0011dd8343",
+  "number": 59,
+  "sourceId": "un-bon-moment",
+  "title": "avec Thomas et Barbara",
+  "transcriptModel": "large-v3",
+  "transcriptSource": "youtube",
+  "transcriptStatus": "auto",
   "youtubeDuration": 5125,
-  "number": 59
+  "youtubeTitle": "Un Bon Moment avec THOMAS NGIJOL & BARBARA BIANCARDINI",
+  "youtubeUrl": "https://www.youtube.com/watch?v=mF9LCGDI7IA"
 }

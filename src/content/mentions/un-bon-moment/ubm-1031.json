@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:42"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1031",
+  "itemId": "186595d4",
+  "kind": "reco",
+  "quote": "mon conseil c'est Doc Jero voilà c'est Doc Jero je vais vous expliquer pourquoi le double saut dans tel jeu est vraiment important qu'est-ce que le level design qu'il explique il décortique les jeux vidéos",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:42",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

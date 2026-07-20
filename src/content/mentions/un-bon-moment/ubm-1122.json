@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1122",
+  "itemId": "79617138",
+  "kind": "reco",
+  "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
+  "recommendedBy": "Pauline",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "633b2f213ca1cc001201a69f",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:35",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

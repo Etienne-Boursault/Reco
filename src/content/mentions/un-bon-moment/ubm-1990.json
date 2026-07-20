@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:09:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:34:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1990",
+  "itemId": "8c30a866",
+  "kind": "reco",
+  "quote": "Moi j'ai aimé deux séries : \"Los años noivos\"",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:34:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

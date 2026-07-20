@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T20:07:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:24"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2358",
+  "itemId": "a51765b5",
+  "kind": "reco",
+  "quote": "je sais que t'es fan de Zelda",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:33:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

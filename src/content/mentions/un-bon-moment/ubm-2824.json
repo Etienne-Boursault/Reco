@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T01:52:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:52:20"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2824",
+  "itemId": "7211151f",
+  "kind": "reco",
+  "quote": "il faut que vous lisez ce truc",
+  "recommendedBy": "invité",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61b6528b97cccb0012aec8b5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:52:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

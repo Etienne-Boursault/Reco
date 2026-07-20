@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T21:29:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:44"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2491",
+  "itemId": "e34f9ae3",
+  "kind": "reco",
+  "quote": "j'ai commencé à écrire un livre de souvenirs par rapport à la musique",
+  "recommendedBy": "Thomas",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:50:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

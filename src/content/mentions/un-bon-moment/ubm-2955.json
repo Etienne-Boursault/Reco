@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:38:18+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2955",
+  "itemId": "a12cce64",
+  "kind": "reco",
+  "quote": "Je joue à Hearthstone.",
+  "recommendedBy": "Valentin Vincent",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6322de1f35ce9e001229f98a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

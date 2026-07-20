@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:41:19+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:08:03"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2729",
+  "itemId": "48b2eddd",
+  "kind": "reco",
+  "quote": "Oui, d'accord, c'est plus du métal.",
+  "recommendedBy": "Alison Wheeler",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65240aefc8996500127ede97",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:08:03",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

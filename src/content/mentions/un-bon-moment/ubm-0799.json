@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:24"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-0799",
+  "itemId": "34f6e470",
+  "kind": "reco",
+  "quote": "T'as écouté mon dernier album ?",
+  "recommendedBy": "Soi-même",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61bf4e1721eb7a00137ec1b4",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:12:24",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

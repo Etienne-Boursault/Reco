@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T19:19:00+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1643",
+  "itemId": "33db0539",
+  "kind": "reco",
+  "quote": "Vous vous rappelez du format minuit de Romane ?",
+  "recommendedBy": "Tom Baletti",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "696cca4c98f7a1123e758f0d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

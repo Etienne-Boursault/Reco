@@ -1,0 +1,23 @@
+{
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/71912-the-witcher/watch?locale=FR",
+    "tmdb": 71912,
+    "tmdbType": "tv"
+  },
+  "id": "3697bdcb",
+  "schemaVersion": 1,
+  "title": "The Witcher",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=The%20Witcher"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=The%20Witcher"
+    }
+  ]
+}

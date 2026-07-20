@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:28:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T19:28:56+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:54"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2290",
+  "itemId": "522cd99d",
+  "kind": "reco",
+  "quote": "allez voir cette série de Ricky Gervais, elle est incroyable",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

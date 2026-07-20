@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:27:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:12:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2936",
+  "itemId": "2c3f6b8b",
+  "kind": "reco",
+  "quote": "la dernière fois que j'engueulais c'était des petites nanas je suis allée voir titane tu restes dans un cinéma du quartier latin",
+  "recommendedBy": "Rosa",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6316136e9623160014506e77",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:12:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

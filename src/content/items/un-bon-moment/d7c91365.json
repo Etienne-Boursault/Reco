@@ -1,0 +1,52 @@
+{
+  "creator": "Noah Hawley",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR",
+    "tmdb": 60622,
+    "tmdbType": "tv"
+  },
+  "id": "d7c91365",
+  "schemaVersion": 1,
+  "title": "Fargo",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Fargo"
+    },
+    {
+      "name": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
+    },
+    {
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
+    },
+    {
+      "name": "MGM Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
+    },
+    {
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Fargo"
+    },
+    {
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
+    },
+    {
+      "name": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
+    },
+    {
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Fargo"
+    }
+  ]
+}

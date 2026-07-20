@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T03:59:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:56:42"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3004",
+  "itemId": "b5fc9b67",
+  "kind": "reco",
+  "quote": "Je suis un grand fan de Truffaut.",
+  "recommendedBy": "Vincent",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "63357716bc3f1e0012abed65",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:56:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

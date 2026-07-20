@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T11:52:47+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:35"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1466",
+  "itemId": "26fca975",
+  "kind": "reco",
+  "quote": "Je me chauffe pas en ce moment, je me renseigne sur la physique quantique et tout.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69a169ac519334f049d06785",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:35",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

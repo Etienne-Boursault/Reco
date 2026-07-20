@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T16:09:02+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:02"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2160",
+  "itemId": "c430feb1",
+  "kind": "reco",
+  "quote": "Par exemple, mes premiers sketchs sur On ne te demande qu'à en rire, je suis en terroriste, en dictateur.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "65c7a2673210d00017783f8b",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,56 @@
+{
+  "creator": "James Cameron",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/19995-avatar/watch?locale=FR",
+    "tmdb": 19995,
+    "tmdbType": "movie"
+  },
+  "id": "45878f2e",
+  "schemaVersion": 1,
+  "title": "Avatar",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Avatar"
+    },
+    {
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Avatar"
+    },
+    {
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Avatar&c=movies"
+    },
+    {
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Avatar"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Avatar"
+    },
+    {
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Avatar"
+    },
+    {
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Avatar"
+    },
+    {
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Avatar"
+    },
+    {
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Avatar"
+    },
+    {
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Avatar"
+    }
+  ]
+}

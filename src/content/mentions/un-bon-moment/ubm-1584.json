@@ -1,0 +1,53 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T16:01:59+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:23"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:54:13+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:15"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:55:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:15"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1584",
+  "itemId": "2c58e42f",
+  "kind": "reco",
+  "quote": "Moi, je me souviens de la première fois où j'ai joué à Fortnite.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:15",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

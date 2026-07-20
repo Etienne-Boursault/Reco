@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T04:00:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:20"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1781",
+  "itemId": "4c64eb0a",
+  "kind": "reco",
+  "quote": "je vous recommande ça, c'est un comportementaliste Laboris, c'est le premier qui a inventé les tranquillisants sur terre",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69207579d35aa096b5a8ee47",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:20",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

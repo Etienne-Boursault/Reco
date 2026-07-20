@@ -1,0 +1,24 @@
+{
+  "creator": "HBO",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/236338/watch?locale=FR",
+    "tmdb": 236338,
+    "tmdbType": "tv"
+  },
+  "id": "57ed6444",
+  "schemaVersion": 1,
+  "title": "Looking",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "name": "Animation Digital Network",
+      "url": "https://animationdigitalnetwork.com/search?q=Looking"
+    },
+    {
+      "name": "Anime Digital Network Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Looking"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:04:11+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:02"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T08:32:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T08:32:14+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:05"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
+      "at": "2026-06-05T09:42:46+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:33:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-05T09:43:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:32:59"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-1324",
+  "itemId": "a5328e7d",
+  "kind": "reco",
+  "quote": "j'ai commencé une série qui s'appelle Halfman. Il y a genre trois épisodes, un truc comme ça, et c'est trop bien.",
+  "recommendedBy": "Caballero",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a10a31516a6aa135ed729e1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:32:59",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

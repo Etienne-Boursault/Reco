@@ -1,0 +1,43 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T00:21:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:43"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    },
+    {
+      "at": "2026-06-06T00:21:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:43"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic",
+    "openai"
+  ],
+  "id": "ubm-2692",
+  "itemId": "0cd44179",
+  "kind": "reco",
+  "quote": "J'ai une appli qui s'appelle Dailyo, où tu notes ton humeur.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:33:43",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

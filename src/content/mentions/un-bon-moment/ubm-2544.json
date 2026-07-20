@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T22:26:09+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2544",
+  "itemId": "b4edcc3e",
+  "kind": "reco",
+  "quote": "D'ailleurs, j'invite vraiment les gens à écouter, à écouter, à lire sa poésie et même ses romans, d'ailleurs, qui sont incroyables.",
+  "recommendedBy": "Mathieu Chédid",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6550c2836b767e0012a65d8d",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:18:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

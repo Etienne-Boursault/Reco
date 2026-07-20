@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:06"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1994",
+  "itemId": "811db8b2",
+  "kind": "reco",
+  "quote": "Tu peux mettre Losanius... Losanius Noebos ! Ça, c'est trop bien !",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-04T06:09:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:29:12"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1347",
+  "itemId": "ede2d60d",
+  "kind": "citation",
+  "quote": "Pour le Rosalie Blum.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:29:12",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

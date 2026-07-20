@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T19:19:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:34"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-2242",
+  "itemId": "4a1a8616",
+  "kind": "reco",
+  "quote": "J'ai un magnifique livre de blagues d'auteur américain, il s'appelle Les 100 meilleures blagues de Carlos.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

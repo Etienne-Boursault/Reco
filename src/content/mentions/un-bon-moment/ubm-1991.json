@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-05T10:10:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:51"
+      },
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "openai"
+  ],
+  "id": "ubm-1991",
+  "itemId": "1e792c43",
+  "kind": "reco",
+  "quote": "rien ne bat un CD de Patrick Bruel.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6955067456c11ef4099abd99",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}

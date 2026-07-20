@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:09"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1002",
+  "itemId": "1b8d548b",
+  "kind": "reco",
+  "quote": "la série que j'ai regardé très récemment pas que ça fasse écho pour moi mais j'ai été aussi assez bouleversé et assez décontenancé c'est purimus",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "69c7de338ac24e236cb65e12",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:09",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

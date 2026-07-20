@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:24+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:50"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-1056",
+  "itemId": "2296e91f",
+  "kind": "reco",
+  "quote": "si vous voulez les voir c'est de quoi on parle ça s'appelle les facts de Daidako y'a une chaîne carrément youtube ou sur my canal si vous avez canal plus allez voir",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:50",
+    "transcriptSource": "acast"
+  },
+  "status": "draft"
+}

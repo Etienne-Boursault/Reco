@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-06-06T02:15:38+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-2841",
+  "itemId": "de81055f",
+  "kind": "reco",
+  "quote": "c'est ce que je dis en substance dans le premier épisode de \"Gens qui foutre\"",
+  "recommendedBy": "Morgane",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "61c5abab76bee100120dd720",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:24",
+    "transcriptSource": "youtube"
+  },
+  "status": "draft"
+}
