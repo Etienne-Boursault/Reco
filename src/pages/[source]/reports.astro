@@ -1,0 +1,167 @@
+---
+/**
+ * /[source]/reports — queue admin des signalements (build-time, noindex).
+ *
+ * Page interne (comme `/verifier`). Liste les reports `pending` pour la
+ * source courante, lus à la build depuis `tools/output/reports/<source>/`.
+ *
+ * Pas de bouton d'action — la résolution se fait via le CLI
+ * `tools/manage_reports.py` (lockfile pipeline, traçabilité).
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { listReports } from '../../lib/reports/storage.js';
+import { t } from '../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+// Reports en queue (lecture build-time). Filtrage status géré côté template.
+const allReports = listReports(source.id);
+const pending = allReports.filter((r) => r.status === 'pending');
+const resolved = allReports.filter((r) => r.status === 'resolved');
+const dismissed = allReports.filter((r) => r.status === 'dismissed');
+
+const CATEGORY_LABELS: Record<string, string> = {
+  error: t('report.admin.cat.error'),
+  'broken-link': t('report.admin.cat.brokenLink'),
+  inappropriate: t('report.admin.cat.inappropriate'),
+  suggestion: t('report.admin.cat.suggestion'),
+};
+
+function fmt(d: string): string {
+  try {
+    return new Date(d).toLocaleString('fr-FR');
+  } catch {
+    return d;
+  }
+}
+---
+
+<Layout title={t('report.admin.metaTitle', { source: data.title })} theme={data.theme} noindex>
+  <header class="head wrap">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> {t('report.admin.back')}
+    </a>
+    <h1>{t('report.admin.title')}</h1>
+    <p class="stats">
+      <strong>{pending.length}</strong> {t('report.admin.stats.pending')} · {resolved.length} {t('report.admin.stats.resolved')} ·
+      {dismissed.length} {t('report.admin.stats.dismissed')}
+    </p>
+    <p class="hint">
+      {t('report.admin.hintPrefix')} <code>python tools/manage_reports.py --resolve &lt;id&gt;</code>.
+    </p>
+  </header>
+
+  <main id="main" class="wrap">
+    {pending.length === 0 ? (
+      <p class="empty">{t('report.admin.empty')}</p>
+    ) : (
+      <ul class="reports">
+        {pending.map((r) => (
+          <li class="report">
+            <header>
+              <span class="cat">{CATEGORY_LABELS[r.category] ?? r.category}</span>
+              <span class="at">{fmt(r.submittedAt)}</span>
+            </header>
+            <p class="meta">
+              <strong>{t('report.admin.recoLabel')}</strong>{' '}
+              <a href={`/${r.sourceId}/report/${r.recoId}`}>
+                {r.recoId}
+              </a>
+            </p>
+            <p class="details">{r.details}</p>
+            {(r.submitter.name || r.submitter.email) && (
+              <p class="submitter">
+                {r.submitter.name && <span>{r.submitter.name}</span>}
+                {r.submitter.email && <span class="email">&lt;{r.submitter.email}&gt;</span>}
+                {r.submitter.wantCredit && <span class="credit">{t('report.admin.wantCredit')}</span>}
+              </p>
+            )}
+            <p class="id"><code>{r.id}</code></p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1.2rem 4rem;
+  }
+  .back {
+    font-size: 0.9rem;
+  }
+  .stats strong {
+    font-size: 1.2em;
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .empty {
+    color: var(--muted);
+    font-style: italic;
+  }
+  ul.reports {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .report {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    border-radius: var(--radius, 8px);
+    padding: 0.9rem 1rem;
+  }
+  .report header {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+  }
+  .cat {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    font-weight: 600;
+  }
+  .at {
+    color: var(--muted);
+  }
+  .details {
+    white-space: pre-wrap;
+    margin: 0.4rem 0;
+  }
+  .submitter {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .credit {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .id {
+    margin: 0.4rem 0 0;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+</style>

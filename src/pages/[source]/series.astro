@@ -1,0 +1,79 @@
+---
+/**
+ * /[source]/series — Galerie de toutes les séries (type: serie).
+ * Cf. ADR 0031.
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { selectByType } from '../../lib/gallery/aggregate';
+import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page';
+import { t } from '../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({ params: { source: source.id }, props: { source } }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+const mentions = (await getCollection('mentions'))
+  .filter((m) => m.data.sourceRef.sourceId === source.id)
+  .map((m) => m.data);
+const mentionedIds = new Set(mentions.map((m) => m.itemId));
+const items = (await getCollection('items'))
+  .map((i) => i.data)
+  .filter((it) => mentionedIds.has(it.id));
+
+const entries = selectByType(items, mentions, ['serie']);
+
+const heading = t('gallery.series.title');
+const countLabel = 'séries recommandées';
+const description = `${entries.length} séries recommandées dans ${data.title}.`;
+
+const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
+const homeUrl = new URL('/', Astro.site).toString();
+const galleryUrl = new URL(`/${source.id}/series`, Astro.site).toString();
+
+const jsonLd = [
+  galleryItemListSchema(entries, { name: heading, description }),
+  galleryBreadcrumb({ homeUrl, sourceName: data.title, sourceUrl, galleryName: heading, galleryUrl }),
+];
+---
+
+<Layout
+  title={`${heading} — ${data.title}`}
+  description={description}
+  theme={data.theme}
+  ogSlug={source.id}
+  jsonLd={jsonLd}
+>
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
+    </a>
+    <h1>{heading}</h1>
+    <p class="tag">Toutes les séries recommandées dans <strong>{data.title}</strong>.</p>
+  </header>
+  <main id="main" class="wrap">
+    <h2 class="visually-hidden">Liste des séries</h2>
+    <GalleryGrid
+      heading={heading}
+      entries={entries}
+      countLabel={countLabel}
+      emptyMessage="Aucune série recommandée pour l'instant."
+      sourceId={source.id}
+    />
+  </main>
+</Layout>
+
+<style>
+  .head { padding: clamp(2rem, 6vw, 4rem) 0 1.5rem; }
+  .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .back:hover { color: var(--accent); }
+  .head h1 { font-size: clamp(2.2rem, 7vw, 5rem); margin: 0.6rem 0 0.3rem; }
+  .tag { color: var(--text); margin: 0 0 0.5rem; }
+  main { padding-bottom: 4rem; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>

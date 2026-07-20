@@ -1,0 +1,149 @@
+---
+/**
+ * GalleryCard.astro — carte minimaliste pour les galeries (films, livres,
+ * musique, séries, invités). Volontairement plus simple que `RecoCard` :
+ *  - pas de bouton dropdown de liens marchands
+ *  - pas de citation
+ *  - juste type + titre + créateur·rice + compteur "N mentions"
+ *
+ * A11y :
+ *  - `<article>` sémantique
+ *  - `<h3>` (la page parent posera h1 + h2)
+ *  - emoji décoratif via `aria-hidden` + libellé textuel en label
+ */
+import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
+import { t } from '../i18n';
+
+export interface Props {
+  /** id de l'item (utilisé pour l'ancre, pas pour le routing). */
+  id: string;
+  title: string;
+  types: readonly string[];
+  creator?: string | null;
+  year?: number | null;
+  mentionCount: number;
+  /**
+   * X2 — Si fourni, la carte devient un `<a>` cliquable vers cette URL
+   * (typiquement `/<source>/oeuvre/<itemId>`). Sinon, rend un `<article>`
+   * non-cliquable (compat ascendante).
+   */
+  href?: string | null;
+}
+
+const { id, title, types, creator, year, mentionCount, href } = Astro.props;
+
+// Type primaire : on prend le premier (cohérent avec les autres surfaces).
+const primary = types[0] ?? 'autre';
+const emoji = TYPE_EMOJIS[primary] ?? TYPE_EMOJIS.autre;
+const typeLabel = TYPE_LABELS[primary] ?? 'Autre';
+const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';
+---
+
+{href ? (
+  <a
+    class="gcard gcard--link"
+    href={href}
+    data-item-id={id}
+    data-types={types.join(',')}
+    aria-label={`${title} — ${t('work.openA11y')}`}
+  >
+    <div class="gcard-icon" aria-hidden="true">{emoji}</div>
+    <div class="gcard-body">
+      <p class="gcard-type" aria-label={`Type : ${typeLabel}`}>{typeLabel}</p>
+      <h3 class="gcard-title">{title}</h3>
+      {creator && <p class="gcard-creator">{creator}{year ? ` · ${year}` : ''}</p>}
+      {!creator && year && <p class="gcard-creator">{year}</p>}
+      <p class="gcard-count">
+        <span class="gcard-count-n">{mentionCount}</span>
+        <span class="gcard-count-l">{mentionLabel}</span>
+      </p>
+    </div>
+  </a>
+) : (
+  <article class="gcard" data-item-id={id} data-types={types.join(',')}>
+    <div class="gcard-icon" aria-hidden="true">{emoji}</div>
+    <div class="gcard-body">
+      <p class="gcard-type" aria-label={`Type : ${typeLabel}`}>{typeLabel}</p>
+      <h3 class="gcard-title">{title}</h3>
+      {creator && <p class="gcard-creator">{creator}{year ? ` · ${year}` : ''}</p>}
+      {!creator && year && <p class="gcard-creator">{year}</p>}
+      <p class="gcard-count">
+        <span class="gcard-count-n">{mentionCount}</span>
+        <span class="gcard-count-l">{mentionLabel}</span>
+      </p>
+    </div>
+  </article>
+)}
+
+<style>
+  .gcard {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+    padding: 1rem;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    transition: border-color 0.16s ease, transform 0.16s ease;
+  }
+  .gcard:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  /* X2 — variante cliquable : on retire la décoration de lien et on hérite
+     la couleur du texte. Le focus-ring global s'applique via :focus-visible
+     (cf. global.css `:where(...):focus-visible`). */
+  a.gcard--link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a.gcard--link:hover .gcard-title {
+    color: var(--accent);
+  }
+  .gcard-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .gcard-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .gcard-type {
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.2rem;
+    font-weight: 600;
+  }
+  .gcard-title {
+    font-family: var(--font-body);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 0 0 0.25rem;
+    /* Évite que des titres très longs cassent la grid */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .gcard-creator {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0 0 0.4rem;
+  }
+  .gcard-count {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .gcard-count-n {
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>

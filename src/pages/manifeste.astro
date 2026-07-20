@@ -1,0 +1,371 @@
+---
+/**
+ * /manifeste — Version site du manifeste éthique (item #22).
+ *
+ * Source canonique : docs/manifeste-ethique.md. La version site reprend les
+ * mêmes positions (anti-Bolloré, librairies indés, RGPD, OSS, a11y, self-host,
+ * transparence) avec des ancres pour partage et un sommaire navigable.
+ *
+ * Cf. ADR 0040.
+ */
+import Layout from '../layouts/Layout.astro';
+import { t } from '../i18n';
+import { siteConfig } from '../config/site';
+
+const homeUrl = new URL('/', Astro.site).toString();
+const manifestoUrl = new URL('/manifeste', Astro.site).toString();
+
+const sections = [
+  { id: 'preambule', title: t('manifesto.preambule.title') },
+  { id: 'anti-bollore', title: t('manifesto.anti-bollore.title') },
+  { id: 'libraries', title: t('manifesto.libraries.title') },
+  { id: 'privacy', title: t('manifesto.privacy.title') },
+  { id: 'opensource', title: t('manifesto.opensource.title') },
+  { id: 'a11y', title: t('manifesto.a11y.title') },
+  { id: 'selfhost', title: t('manifesto.selfhost.title') },
+  { id: 'transparency', title: t('manifesto.transparency.title') },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: t('manifesto.title'),
+    description: t('manifesto.subtitle'),
+    url: manifestoUrl,
+    inLanguage: 'fr',
+    isPartOf: { '@type': 'WebSite', name: siteConfig.siteName, url: homeUrl },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: siteConfig.siteName, item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: t('manifesto.title'), item: manifestoUrl },
+    ],
+  },
+];
+---
+
+<Layout
+  title={t('manifesto.title')}
+  description={t('manifesto.subtitle')}
+  jsonLd={jsonLd}
+>
+  <header class="hero wrap" role="banner">
+    <p class="kicker">{siteConfig.siteName}</p>
+    <h1>{t('manifesto.title')}</h1>
+    <p class="lede">{t('manifesto.subtitle')}</p>
+  </header>
+
+  <main id="main" class="wrap prose">
+    <nav class="toc" aria-label={t('manifesto.toc.label')}>
+      <ol>
+        {sections.map((s, i) => (
+          <li><a href={`#${s.id}`}>{i + 1}. {s.title}</a></li>
+        ))}
+      </ol>
+    </nav>
+
+    <section aria-labelledby="preambule">
+      <h2 id="preambule">1. {t('manifesto.preambule.title')}</h2>
+      <p>
+        Reco est un kit open-source qui rassemble les œuvres
+        recommandées dans des podcasts indépendants : films, séries,
+        livres, BD, musiques, jeux, lieux. Un agrégateur n'est jamais
+        neutre — chaque choix éditorial (sources indexées, marchands
+        liés, fournisseurs intégrés, données collectées) est politique.
+        Ce manifeste explicite nos choix pour que personne ne s'y trompe :
+        ni les visiteurs, ni les contributeurs, ni les forks.
+      </p>
+      <p>
+        Ce document est <strong>public, évolutif via Pull Request, et
+        opposable</strong>. Il engage l'instance par défaut
+        (<code>source-internet.fr</code>) et constitue la posture
+        recommandée pour les forks qui s'en réclament.
+      </p>
+    </section>
+
+    <section aria-labelledby="anti-bollore">
+      <h2 id="anti-bollore">2. {t('manifesto.anti-bollore.title')}</h2>
+      <p>
+        Le groupe Bolloré a, via Vivendi puis Lagardère, agrégé une part
+        majeure du paysage médiatique et éditorial francophone. Cette
+        concentration est documentée par
+        <a href="https://www.acrimed.org/" rel="noopener">Acrimed</a> et par les
+        pages Wikipédia
+        <a href="https://fr.wikipedia.org/wiki/Groupe_Bolloré" rel="noopener">Groupe Bolloré</a>,
+        <a href="https://fr.wikipedia.org/wiki/Vivendi" rel="noopener">Vivendi</a> et
+        <a href="https://fr.wikipedia.org/wiki/Lagardère_SA" rel="noopener">Lagardère SA</a>.
+      </p>
+      <h3>En pratique</h3>
+      <ul>
+        <li>
+          Pas de promotion d'œuvres dont l'éditeur ou le distributeur
+          identifié appartient à un groupe contrôlé par Bolloré
+          (Hachette Livre, Editis, Plon, Place des Éditeurs, Fayard,
+          Grasset, Stock, Robert Laffont, etc.).
+        </li>
+        <li>
+          Les œuvres recommandées par un podcast restent visibles (on
+          ne falsifie pas le discours), mais sont signalées et privées
+          de liens d'achat tant qu'aucun canal indépendant n'est
+          identifié.
+        </li>
+        <li>
+          Signalement par les visiteurs via le formulaire de report
+          intégré (cf. ADR 0034).
+        </li>
+      </ul>
+      <p class="muted">
+        Roadmap : blocage automatique basé sur une liste d'éditeurs
+        maintenue dans <code>src/content/sources/*.json</code>
+        (item #25 de la roadmap publique).
+      </p>
+    </section>
+
+    <section aria-labelledby="libraries">
+      <h2 id="libraries">3. {t('manifesto.libraries.title')}</h2>
+      <p>
+        <strong>Reco ne lie jamais vers Amazon</strong>, Audible, Kindle
+        Store ou tout service du groupe Amazon, quelle que soit la
+        disponibilité ou la commodité.
+      </p>
+      <p>Pour les livres, Reco priorise dans cet ordre :</p>
+      <ol>
+        <li>l'éditeur indépendant directement (boutique propre) ;</li>
+        <li>
+          <a href="https://www.placedeslibraires.fr/" rel="noopener">Place des Libraires</a>
+          (réseau national des librairies indépendantes françaises) ;
+        </li>
+        <li>
+          <a href="https://www.lalibrairie.com/" rel="noopener">Lalibrairie.com</a>
+          (réseau Initiales) ;
+        </li>
+        <li>
+          <a href="https://www.librest.com/" rel="noopener">Librest</a>
+          (réseau parisien) ;
+        </li>
+        <li>autres librairies locales identifiées.</li>
+      </ol>
+      <p>
+        Pour la musique et les films, priorité aux plateformes
+        rémunératrices pour les créateurs et créatrices (Bandcamp, sites
+        éditeurs, services publics) avant les agrégateurs marchands.
+      </p>
+    </section>
+
+    <section aria-labelledby="privacy">
+      <h2 id="privacy">4. {t('manifesto.privacy.title')}</h2>
+      <p>
+        <strong>Aucun tracker tiers. Aucun cookie marketing. Aucun cookie
+        analytique.</strong>
+      </p>
+      <ul>
+        <li>
+          Polices auto-hébergées (Inter via <code>@fontsource</code>) —
+          pas de Google Fonts (cf. ADR 0029).
+        </li>
+        <li>
+          Embeds vidéo via <code>youtube-nocookie.com</code> uniquement
+          (cf. ADR 0036).
+        </li>
+        <li>
+          Signalements visiteurs : IP hashée et saltée avant stockage
+          (cf. ADR 0034 et P2.16) — l'IP brute ne touche jamais le
+          disque.
+        </li>
+        <li>
+          Pas de Plausible, pas de Matomo, pas de Google Analytics. Les
+          seules statistiques publiées sont des stats de catalogue
+          calculées build-time.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="opensource">
+      <h2 id="opensource">5. {t('manifesto.opensource.title')}</h2>
+      <ul>
+        <li>Code sous licence MIT — forker est encouragé.</li>
+        <li>
+          Une attribution visible (lien vers le dépôt amont) est demandée
+          à tout fork public.
+        </li>
+        <li>
+          Dépendances tierces auditées (CI <code>npm audit</code> +
+          <code>pip check</code>), licences compatibles MIT.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="a11y">
+      <h2 id="a11y">6. {t('manifesto.a11y.title')}</h2>
+      <ul>
+        <li>
+          Conformité WCAG 2.1 niveau AA vérifiée build-time
+          (cf. ADR 0022).
+        </li>
+        <li>0 violation tolérée sur le build de production.</li>
+        <li>
+          Contraste validé sur tous les thèmes de source via
+          <code>tests/a11y/check_contrast.mjs</code>.
+        </li>
+        <li>
+          Navigation clavier complète, <code>skip-link</code>,
+          <code>lang</code> correct, hiérarchie de titres unique par
+          page.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="selfhost">
+      <h2 id="selfhost">7. {t('manifesto.selfhost.title')}</h2>
+      <ul>
+        <li>
+          Kit duplicable : un déploiement = un podcast (ou plusieurs si
+          désiré), sans dépendance à un service propriétaire de Reco.
+        </li>
+        <li>
+          Documentation <code>docs/fork-guide.md</code> couvre la
+          personnalisation des thèmes, du branding
+          (<code>src/config/site.ts</code>, cf. ADR 0028), des sources
+          et du manifeste lui-même.
+        </li>
+        <li>
+          Aucune télémétrie, aucun ping vers un serveur centralisé.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="transparency">
+      <h2 id="transparency">8. {t('manifesto.transparency.title')}</h2>
+      <ul>
+        <li>
+          <strong>ADRs publics</strong> (<code>docs/adr/</code>) :
+          chaque décision structurante est documentée, datée, et
+          conserve les alternatives écartées.
+        </li>
+        <li>
+          <strong>Roadmap publique</strong> : ordre de priorité visible,
+          statut par item.
+        </li>
+        <li>
+          <strong>Manifeste évolutif</strong> : modifications via Pull
+          Request publique sur le dépôt amont. Les forks qui s'en
+          écartent doivent publier leur propre version dérivée.
+        </li>
+      </ul>
+    </section>
+
+    <p class="footer-note muted">
+      Dernière révision : 2026-06-11. Source canonique :
+      <code>docs/manifeste-ethique.md</code> dans le dépôt.
+    </p>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(1rem, 3vw, 2rem);
+  }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0 0 0.6rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    margin: 0 0 0.8rem;
+  }
+  .lede {
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .prose {
+    max-width: 72ch;
+    padding-bottom: 4rem;
+  }
+  .toc {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius, 8px);
+    padding: 1rem 1.4rem;
+    margin: 1rem 0 2rem;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    columns: 2;
+    column-gap: 1.5rem;
+  }
+  .toc li {
+    margin: 0.2rem 0;
+    break-inside: avoid;
+  }
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .toc a:hover,
+  .toc a:focus-visible {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .prose section {
+    margin: 2.2rem 0;
+    scroll-margin-top: 1.5rem;
+  }
+  .prose h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin: 0 0 0.6rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    padding-bottom: 0.3rem;
+  }
+  .prose h3 {
+    font-size: 1.05rem;
+    margin: 1.2rem 0 0.4rem;
+    color: var(--accent);
+  }
+  .prose p,
+  .prose li {
+    line-height: 1.6;
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose a:hover,
+  .prose a:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+  .prose code {
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 0.05rem 0.3rem;
+    font-size: 0.9em;
+  }
+  .muted {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    padding-top: 1rem;
+  }
+  @media (max-width: 600px) {
+    .toc ol { columns: 1; }
+  }
+  @media print {
+    .hero { padding: 1rem 0; }
+    .toc { display: none; }
+    .prose section { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: underline; }
+  }
+</style>

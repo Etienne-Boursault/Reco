@@ -1,0 +1,132 @@
+---
+/**
+ * TopList.astro — table sémantique Top N (invités, œuvres…).
+ *
+ * Pourquoi `<table>` ? La donnée est tabulaire (rang/libellé/count) — un
+ * `<ul>` serait moins navigable au lecteur d'écran (pas d'en-tête de
+ * colonne). Cf. ADR 0022 (a11y WCAG AA).
+ */
+import { formatCount } from '../lib/stats/formatter';
+import { t } from '../i18n';
+
+export interface TopRow {
+  /** Libellé principal (ex. « Adrien Méniel », « Parasite »). */
+  label: string;
+  /** Nombre à afficher (mentions / fréquence). */
+  count: number;
+  /** URL optionnelle vers la page liée (page invité, page œuvre). */
+  href?: string;
+  /** Sous-libellé (ex. type d'œuvre). Optionnel. */
+  sub?: string;
+}
+
+interface Props {
+  caption: string;
+  rows: readonly TopRow[];
+  /** Texte du header de la colonne valeur (ex. « mentions »). */
+  countHeader: string;
+  /** Texte de l'état vide (au moins « Aucune donnée. »). */
+  emptyMessage: string;
+  /**
+   * F-M-16 : total réel (quand `rows` est tronqué côté caller, p.ex. Top
+   * 10 sur 50). Si `total > rows.length`, on pose `aria-rowcount={total}`
+   * sur la `<table>` pour informer les ATs que la liste est partielle.
+   */
+  total?: number;
+}
+
+const { caption, rows, countHeader, emptyMessage, total } = Astro.props;
+// F-M-16 : on n'expose aria-rowcount que s'il apporte une info (total
+// strictement supérieur au nombre de lignes rendues).
+const ariaRowCount = total !== undefined && total > rows.length ? total : undefined;
+---
+
+{rows.length === 0 ? (
+  <p class="empty" role="status">{emptyMessage}</p>
+) : (
+  <table class="top-list" aria-rowcount={ariaRowCount}>
+    <caption>{caption}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="rank">#</th>
+        <th scope="col">{t('stats.topList.nameHeader')}</th>
+        <th scope="col" class="count">{countHeader}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row, idx) => (
+        <tr>
+          <td class="rank">{idx + 1}</td>
+          <td>
+            {row.href ? (
+              <a href={row.href}>{row.label}</a>
+            ) : (
+              <span>{row.label}</span>
+            )}
+            {row.sub && <span class="sub"> · {row.sub}</span>}
+          </td>
+          <td class="count">{formatCount(row.count)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+)}
+
+<style>
+  .top-list {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .top-list caption {
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .top-list th,
+  .top-list td {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
+  }
+  .top-list .rank {
+    width: 2rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .top-list .count {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    width: 5rem;
+  }
+  .top-list a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .top-list a:hover,
+  .top-list a:focus-visible {
+    text-decoration: underline;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 0.85em;
+  }
+  .empty {
+    color: var(--muted);
+    margin: 0.5rem 0;
+  }
+  /*
+   * F-M-16 : print — si la page caller ajoute `tr.hidden` pour cacher des
+   * lignes hors top-N à l'écran, on les ré-affiche en impression pour ne
+   * pas tronquer le tableau imprimé. Limite connue : ce reset ne peut
+   * révéler que des lignes effectivement rendues dans le DOM ; si le
+   * caller `.slice(0, N)` côté serveur, les lignes manquent au DOM et
+   * aucun CSS ne peut les rappeler — documenté côté caller.
+   */
+  @media print {
+    tr.hidden {
+      display: table-row;
+    }
+  }
+</style>

@@ -1,0 +1,284 @@
+---
+/**
+ * /recherche — Page publique de recherche full-text.
+ *
+ * Statique : pas de SSR. Toute la logique vit côté client (MiniSearch). La
+ * page lit `?q=` au chargement pour permettre le bookmark des requêtes,
+ * mais la résolution se fait dans le navigateur.
+ *
+ * `noindex` car utilitaire (le contenu canonique est sur les fiches).
+ * Cf. ADR 0035.
+ */
+import Layout from '../layouts/Layout.astro';
+import { t } from '../i18n';
+---
+
+<Layout
+  title={t('search.metaTitle')}
+  description="Cherche une œuvre, un épisode ou un invité dans le catalogue."
+  noindex={true}
+>
+  <header class="head wrap">
+    <h1>{t('search.title')}</h1>
+    <p class="lead">{t('search.placeholder')}</p>
+  </header>
+  <main id="main" class="wrap">
+    <form class="search-form" role="search" data-recherche-form>
+      <label class="visually-hidden" for="recherche-input">{t('search.title')}</label>
+      <input
+        id="recherche-input"
+        name="q"
+        type="search"
+        class="search-input"
+        placeholder={t('search.placeholder')}
+        autocomplete="off"
+        spellcheck="false"
+        data-recherche-input
+      />
+      <button type="submit" class="search-submit">{t('search.title')}</button>
+    </form>
+    <p class="hint" data-recherche-status>{t('search.hint')}</p>
+    <output
+      class="search-results"
+      data-recherche-results
+      aria-live="polite"
+      aria-label={t('search.resultsAria')}
+    ></output>
+  </main>
+
+  {/* P0-1 — la palette globale est désormais montée par Layout.astro ;
+     plus besoin de la dupliquer ici (sinon duplicate-id WCAG). */}
+</Layout>
+
+<script>
+  import { createSearchIndex, searchGrouped, type GroupedHits } from '../lib/search/client';
+  import type { SearchIndexFile, SearchDoc } from '../lib/search/types';
+  import type MiniSearch from 'minisearch';
+
+  const STRINGS = {
+    loading: 'Chargement de l’index…',
+    error: 'Index indisponible — réessaie plus tard.',
+    hint: 'Tape au moins deux caractères pour lancer la recherche.',
+    noResults: 'Aucun résultat pour cette recherche.',
+    groupItems: 'Œuvres',
+    groupEpisodes: 'Épisodes',
+    groupGuests: 'Invités',
+  };
+
+  const input = document.querySelector<HTMLInputElement>('[data-recherche-input]');
+  const form = document.querySelector<HTMLFormElement>('[data-recherche-form]');
+  const results = document.querySelector<HTMLElement>('[data-recherche-results]');
+  const status = document.querySelector<HTMLElement>('[data-recherche-status]');
+
+  let mini: MiniSearch<SearchDoc> | null = null;
+  let loadPromise: Promise<void> | null = null;
+
+  function escapeHTML(s: string): string {
+    return s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function ensureIndex(): Promise<void> {
+    if (mini) return Promise.resolve();
+    if (loadPromise) return loadPromise;
+    if (status) status.textContent = STRINGS.loading;
+    loadPromise = fetch('/search.json')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json() as Promise<SearchIndexFile>;
+      })
+      .then((data) => {
+        mini = createSearchIndex(data.docs);
+        if (status) status.textContent = STRINGS.hint;
+      })
+      .catch(() => {
+        if (status) status.textContent = STRINGS.error;
+      });
+    return loadPromise;
+  }
+
+  function renderGroup(title: string, hits: GroupedHits['items']): string {
+    if (hits.length === 0) return '';
+    const items = hits
+      .map((h) => {
+        const sub = h.subtitle ? `<span class="r-sub">${escapeHTML(h.subtitle)}</span>` : '';
+        return `<li><a href="${escapeHTML(h.url)}">
+            <span class="r-title">${escapeHTML(h.title)}</span>
+            ${sub}
+          </a></li>`;
+      })
+      .join('');
+    return `<section class="r-group" aria-label="${escapeHTML(title)}">
+        <h2>${escapeHTML(title)}</h2>
+        <ul>${items}</ul>
+      </section>`;
+  }
+
+  function render(grouped: GroupedHits) {
+    if (!results) return;
+    if (grouped.total === 0) {
+      results.innerHTML = `<p class="r-empty" role="status">${STRINGS.noResults}</p>`;
+      return;
+    }
+    results.innerHTML =
+      renderGroup(STRINGS.groupItems, grouped.items) +
+      renderGroup(STRINGS.groupEpisodes, grouped.episodes) +
+      renderGroup(STRINGS.groupGuests, grouped.guests);
+  }
+
+  async function runQuery(q: string) {
+    if (!results || !status) return;
+    const trimmed = q.trim();
+    if (trimmed.length < 2) {
+      results.innerHTML = '';
+      status.textContent = STRINGS.hint;
+      return;
+    }
+    await ensureIndex();
+    if (!mini) return; // load failed
+    status.textContent = '';
+    render(searchGrouped(mini, trimmed, { limitPerGroup: 20 }));
+  }
+
+  function debounce<T extends (...args: never[]) => void>(fn: T, ms: number): T {
+    let t: ReturnType<typeof setTimeout> | null = null;
+    return ((...args: Parameters<T>) => {
+      if (t) clearTimeout(t);
+      t = setTimeout(() => fn(...args), ms);
+    }) as T;
+  }
+
+  if (input && form && results && status) {
+    const debounced = debounce((q: string) => runQuery(q), 150);
+
+    // Bootstrap from ?q=
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get('q') ?? '';
+    if (initial) {
+      input.value = initial;
+      runQuery(initial);
+    }
+
+    input.addEventListener('input', () => {
+      const q = input.value;
+      // Mise à jour URL sans recharger (compatible bookmark / partage).
+      const u = new URL(window.location.href);
+      if (q) u.searchParams.set('q', q);
+      else u.searchParams.delete('q');
+      window.history.replaceState({}, '', u);
+      debounced(q);
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      runQuery(input.value);
+    });
+  }
+</script>
+
+<style>
+  .wrap {
+    width: min(900px, 92%);
+    margin: 0 auto;
+  }
+  .head {
+    padding: clamp(2rem, 6vw, 4rem) 0 1rem;
+  }
+  .head h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 0 0 0.4rem;
+  }
+  .lead { color: var(--muted); margin: 0; }
+
+  .search-form {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--muted);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .search-input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .search-submit {
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    border: 0;
+    background: var(--accent);
+    color: var(--accent-text);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+  }
+  .search-results {
+    display: block;
+    padding-bottom: 4rem;
+  }
+  .search-results :global(.r-group) {
+    margin: 1.5rem 0;
+  }
+  .search-results :global(.r-group h2) {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 0.4rem;
+  }
+  .search-results :global(.r-group ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.25rem;
+  }
+  .search-results :global(.r-group a) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.7rem 0.9rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 6px;
+    border: 1px solid var(--muted);
+    background: var(--surface);
+  }
+  .search-results :global(.r-group a:hover),
+  .search-results :global(.r-group a:focus-visible) {
+    border-color: var(--accent);
+    outline: 2px solid transparent;
+  }
+  .search-results :global(.r-title) { font-weight: 600; }
+  .search-results :global(.r-sub) {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .search-results :global(.r-empty) {
+    color: var(--muted);
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

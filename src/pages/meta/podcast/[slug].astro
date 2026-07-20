@@ -1,0 +1,117 @@
+---
+/**
+ * /meta/podcast/[slug] — Détail d'un podcast inclus dans le méta-index.
+ *
+ * Page conditionnelle : `getStaticPaths` ne yielde rien si `META_MODE !== '1'`.
+ * Cf. ADR 0045.
+ */
+import Layout from '../../../layouts/Layout.astro';
+import { t } from '../../../i18n';
+import { loadMetaIndex } from '../../../lib/registry/meta-loader';
+import { findEntry, type RegistryEntry } from '../../../lib/registry/consumer';
+
+export const prerender = true;
+
+interface Props {
+  entry: RegistryEntry;
+}
+
+export async function getStaticPaths() {
+  const meta = loadMetaIndex();
+  if (!meta) return [];
+  return meta.entries.map((e) => ({
+    params: { slug: e.slug },
+    props: { entry: e },
+  }));
+}
+
+const { entry } = Astro.props as Props;
+const { registry } = entry;
+const hosts = registry.podcast.hosts ?? [];
+
+// F-M-8 : formatter date via Intl.DateTimeFormat('fr-FR', {dateStyle:'medium'}).
+const lastUpdatedRaw = registry.stats.lastUpdatedAt;
+const lastUpdatedDate = new Date(lastUpdatedRaw);
+const lastUpdatedFormatted = Number.isNaN(lastUpdatedDate.getTime())
+  ? lastUpdatedRaw
+  : new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(lastUpdatedDate);
+
+// F-M-9 : JSON-LD PodcastSeries schema.org.
+const jsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'PodcastSeries',
+  name: registry.podcast.title,
+  url: registry.siteUrl,
+  ...(registry.podcast.tagline ? { description: registry.podcast.tagline } : {}),
+  ...(registry.podcast.rssUrl ? { webFeed: registry.podcast.rssUrl } : {}),
+  inLanguage: registry.podcast.language,
+  ...(hosts.length > 0
+    ? { author: hosts.map((h) => ({ '@type': 'Person', name: h })) }
+    : {}),
+};
+---
+<Layout
+  title={registry.podcast.title}
+  description={registry.podcast.tagline ?? t('meta.subtitle')}
+  jsonLd={jsonLd}
+>
+  <main id="main" class="meta-detail">
+    <p><a href="/meta/">{t('meta.podcast.back')}</a></p>
+    <header>
+      <h1>{registry.podcast.title}</h1>
+      {registry.podcast.tagline && <p class="lead">{registry.podcast.tagline}</p>}
+    </header>
+
+    <dl>
+      {hosts.length > 0 && (
+        <>
+          <dt>{t('meta.podcast.hosts')}</dt>
+          <dd>{hosts.join(' · ')}</dd>
+        </>
+      )}
+      {registry.podcast.rssUrl && (
+        <>
+          <dt>{t('meta.podcast.rss')}</dt>
+          <dd><a href={registry.podcast.rssUrl} rel="noopener noreferrer external">{registry.podcast.rssUrl}</a></dd>
+        </>
+      )}
+      {registry.meta.manifesto && (
+        <>
+          <dt>{t('meta.podcast.manifesto')}</dt>
+          <dd><a href={registry.meta.manifesto} rel="noopener noreferrer external">{registry.meta.manifesto}</a></dd>
+        </>
+      )}
+      <dt>{t('meta.podcast.lastUpdated')}</dt>
+      <dd><time datetime={lastUpdatedRaw}>{lastUpdatedFormatted}</time></dd>
+    </dl>
+
+    <ul class="stats">
+      <li><strong>{registry.stats.itemsCount}</strong> {t('meta.stats.items')}</li>
+      <li><strong>{registry.stats.mentionsCount}</strong> {t('meta.stats.mentions')}</li>
+      <li><strong>{registry.stats.episodesCount}</strong> {t('meta.stats.episodes')}</li>
+      <li><strong>{registry.stats.guestsCount}</strong> {t('meta.stats.guests')}</li>
+    </ul>
+
+    <p>
+      <a
+        class="cta"
+        href={registry.siteUrl}
+        rel="noopener noreferrer external"
+        target="_blank"
+        aria-label={t('meta.cta.visitA11y', { site: registry.siteUrl })}
+      >
+        {t('meta.cta.visit')} <span aria-hidden="true">↗</span>
+      </a>
+    </p>
+  </main>
+</Layout>
+
+<style>
+  /* F-N-4 : utilise tokens design (--muted, --accent). */
+  .meta-detail { max-width: 56rem; margin: 0 auto; padding: 2rem 1rem; }
+  .lead { color: var(--muted); font-style: italic; }
+  .stats { list-style: none; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .stats strong { font-size: 1.5rem; }
+  .cta { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .cta:hover, .cta:focus-visible { text-decoration: underline; }
+</style>

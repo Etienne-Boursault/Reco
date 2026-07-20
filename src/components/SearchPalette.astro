@@ -1,0 +1,459 @@
+---
+/**
+ * SearchPalette.astro — Palette Cmd+K (recherche globale).
+ *
+ * Modal overlay déclenché par Cmd+K / Ctrl+K / "/". L'index `/_search/index.json`
+ * est chargé en lazy au premier open, puis MiniSearch est instancié côté client.
+ *
+ * A11y : `role="dialog"`, `aria-modal="true"`, focus trap, Escape pour fermer,
+ * `aria-live` sur les résultats, `<output>` annoncé.
+ *
+ * CSP-friendly : le script est externalisé par Astro (pas d'inline).
+ * Cf. ADR 0035.
+ */
+import { t } from '../i18n';
+---
+
+<button
+  type="button"
+  class="palette-trigger"
+  data-search-palette-trigger
+  aria-haspopup="dialog"
+  aria-controls="search-palette-dialog"
+>
+  <span aria-hidden="true">⌕</span>
+  <span class="palette-trigger-label">{t('search.title')}</span>
+  <kbd class="palette-trigger-kbd" aria-hidden="true">⌘ K</kbd>
+  <span class="visually-hidden">{t('search.paletteOpen')}</span>
+</button>
+
+<div
+  id="search-palette-dialog"
+  class="palette-backdrop"
+  data-search-palette
+  role="dialog"
+  aria-modal="true"
+  aria-label={t('search.title')}
+  hidden
+>
+  <div class="palette-shell" data-search-palette-shell>
+    <form class="palette-form" role="search" data-search-palette-form>
+      <label class="visually-hidden" for="search-palette-input">{t('search.title')}</label>
+      <input
+        id="search-palette-input"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        class="palette-input"
+        placeholder={t('search.placeholder')}
+        data-search-palette-input
+        aria-controls="search-palette-results"
+        aria-describedby="search-palette-hint"
+      />
+      <button
+        type="button"
+        class="palette-close"
+        data-search-palette-close
+        aria-label={t('audio.close')}
+      >✕</button>
+    </form>
+    <p id="search-palette-hint" class="palette-hint">{t('search.paletteHint')}</p>
+    <output
+      id="search-palette-results"
+      class="palette-results"
+      data-search-palette-results
+      aria-live="polite"
+      aria-label={t('search.resultsAria')}
+    ></output>
+  </div>
+</div>
+
+<script>
+  import { createSearchIndex, searchGrouped, type GroupedHits, type PaletteHit } from '../lib/search/client';
+  import type { SearchIndexFile } from '../lib/search/types';
+  import type MiniSearch from 'minisearch';
+  import type { SearchDoc } from '../lib/search/types';
+
+  type State = {
+    mini: MiniSearch<SearchDoc> | null;
+    loading: boolean;
+    error: string | null;
+    open: boolean;
+    activeIndex: number;
+    flatHits: PaletteHit[];
+    lastFocus: Element | null;
+  };
+
+  const STRINGS = {
+    loading: 'Chargement de l’index…',
+    error: 'Index indisponible — réessaie plus tard.',
+    hint: 'Tape au moins deux caractères pour lancer la recherche.',
+    noResults: 'Aucun résultat pour cette recherche.',
+    groupItems: 'Œuvres',
+    groupEpisodes: 'Épisodes',
+    groupGuests: 'Invités',
+  };
+
+  const state: State = {
+    mini: null,
+    loading: false,
+    error: null,
+    open: false,
+    activeIndex: -1,
+    flatHits: [],
+    lastFocus: null,
+  };
+
+  const dialog = document.querySelector<HTMLElement>('[data-search-palette]');
+  const trigger = document.querySelector<HTMLElement>('[data-search-palette-trigger]');
+  const input = document.querySelector<HTMLInputElement>('[data-search-palette-input]');
+  const results = document.querySelector<HTMLElement>('[data-search-palette-results]');
+  const closeBtn = document.querySelector<HTMLElement>('[data-search-palette-close]');
+  const shell = document.querySelector<HTMLElement>('[data-search-palette-shell]');
+
+  if (!dialog || !input || !results || !trigger) {
+    // Composant pas monté correctement — on n'attache rien.
+  } else {
+    async function loadIndex() {
+      if (state.mini || state.loading) return;
+      state.loading = true;
+      renderStatus();
+      try {
+        const res = await fetch('/search.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = (await res.json()) as SearchIndexFile;
+        state.mini = createSearchIndex(data.docs);
+        state.error = null;
+      } catch (err) {
+        state.error = STRINGS.error;
+      } finally {
+        state.loading = false;
+        renderStatus();
+        runQuery();
+      }
+    }
+
+    function renderStatus() {
+      if (!results) return;
+      if (state.error) {
+        results.innerHTML = `<p class="palette-empty" role="status">${STRINGS.error}</p>`;
+        return;
+      }
+      if (state.loading) {
+        results.innerHTML = `<p class="palette-empty" role="status">${STRINGS.loading}</p>`;
+        return;
+      }
+    }
+
+    function escapeHTML(s: string): string {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderGroup(title: string, hits: PaletteHit[], startIndex: number): string {
+      if (hits.length === 0) return '';
+      const items = hits
+        .map((h, i) => {
+          const idx = startIndex + i;
+          const sub = h.subtitle ? `<span class="palette-sub">${escapeHTML(h.subtitle)}</span>` : '';
+          return `<li role="option" id="palette-hit-${idx}" data-palette-index="${idx}">
+              <a href="${escapeHTML(h.url)}" tabindex="-1">
+                <span class="palette-title">${escapeHTML(h.title)}</span>
+                ${sub}
+              </a>
+            </li>`;
+        })
+        .join('');
+      return `<section class="palette-group" aria-label="${escapeHTML(title)}">
+          <h2 class="palette-group-title">${escapeHTML(title)}</h2>
+          <ul role="listbox">${items}</ul>
+        </section>`;
+    }
+
+    function renderResults(grouped: GroupedHits) {
+      if (!results) return;
+      const flat: PaletteHit[] = [...grouped.items, ...grouped.episodes, ...grouped.guests];
+      state.flatHits = flat;
+      state.activeIndex = flat.length > 0 ? 0 : -1;
+      if (flat.length === 0) {
+        results.innerHTML = `<p class="palette-empty" role="status">${STRINGS.noResults}</p>`;
+        return;
+      }
+      const html =
+        renderGroup(STRINGS.groupItems, grouped.items, 0) +
+        renderGroup(STRINGS.groupEpisodes, grouped.episodes, grouped.items.length) +
+        renderGroup(
+          STRINGS.groupGuests,
+          grouped.guests,
+          grouped.items.length + grouped.episodes.length,
+        );
+      results.innerHTML = html;
+      highlightActive();
+    }
+
+    function runQuery() {
+      if (!input || !results) return;
+      const q = input.value.trim();
+      if (q.length < 2) {
+        results.innerHTML = `<p class="palette-empty" role="status">${STRINGS.hint}</p>`;
+        state.flatHits = [];
+        state.activeIndex = -1;
+        return;
+      }
+      if (!state.mini) return; // En cours de chargement
+      const grouped = searchGrouped(state.mini, q, { limitPerGroup: 5 });
+      renderResults(grouped);
+    }
+
+    function highlightActive() {
+      if (!results) return;
+      const items = results.querySelectorAll<HTMLElement>('[data-palette-index]');
+      items.forEach((el) => {
+        const idx = Number(el.dataset.paletteIndex);
+        if (idx === state.activeIndex) {
+          el.setAttribute('aria-selected', 'true');
+          el.classList.add('is-active');
+          input?.setAttribute('aria-activedescendant', el.id);
+          el.scrollIntoView({ block: 'nearest' });
+        } else {
+          el.removeAttribute('aria-selected');
+          el.classList.remove('is-active');
+        }
+      });
+      if (state.activeIndex < 0) input?.removeAttribute('aria-activedescendant');
+    }
+
+    function moveActive(delta: number) {
+      if (state.flatHits.length === 0) return;
+      const next = (state.activeIndex + delta + state.flatHits.length) % state.flatHits.length;
+      state.activeIndex = next;
+      highlightActive();
+    }
+
+    function openPalette() {
+      if (state.open || !dialog) return;
+      state.open = true;
+      state.lastFocus = document.activeElement;
+      dialog.hidden = false;
+      document.body.classList.add('palette-open');
+      input?.focus();
+      input?.select();
+      loadIndex();
+      runQuery();
+    }
+
+    function closePalette() {
+      if (!state.open || !dialog) return;
+      state.open = false;
+      dialog.hidden = true;
+      document.body.classList.remove('palette-open');
+      if (state.lastFocus instanceof HTMLElement) state.lastFocus.focus();
+    }
+
+    function debounce<T extends (...args: never[]) => void>(fn: T, delay: number): T {
+      let timer: ReturnType<typeof setTimeout> | null = null;
+      return ((...args: Parameters<T>) => {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      }) as T;
+    }
+
+    const debouncedQuery = debounce(runQuery, 150);
+
+    // --- Events ---------------------------------------------------------
+    input.addEventListener('input', () => debouncedQuery());
+    trigger.addEventListener('click', () => openPalette());
+    closeBtn?.addEventListener('click', () => closePalette());
+
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) closePalette(); // click outside shell
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePalette();
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        moveActive(1);
+        return;
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        moveActive(-1);
+        return;
+      }
+      if (e.key === 'Enter') {
+        const hit = state.flatHits[state.activeIndex];
+        if (hit) {
+          e.preventDefault();
+          window.location.href = hit.url;
+        }
+      }
+    });
+
+    // Global shortcut : Cmd+K / Ctrl+K / "/"
+    document.addEventListener('keydown', (e) => {
+      const target = e.target as HTMLElement | null;
+      const isEditable =
+        target?.tagName === 'INPUT' ||
+        target?.tagName === 'TEXTAREA' ||
+        target?.isContentEditable;
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        state.open ? closePalette() : openPalette();
+        return;
+      }
+      if (e.key === '/' && !isEditable && !state.open) {
+        e.preventDefault();
+        openPalette();
+      }
+    });
+  }
+</script>
+
+<style>
+  .palette-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--surface, #1a1a1f);
+    color: var(--text, #fafafa);
+    border: 1px solid var(--muted, #4a4a52);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .palette-trigger:hover,
+  .palette-trigger:focus-visible {
+    border-color: var(--accent, #fff);
+    outline: 2px solid transparent;
+  }
+  .palette-trigger-kbd {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.75rem;
+    color: var(--muted, #9a9aa2);
+    background: transparent;
+    border: 1px solid var(--muted, #4a4a52);
+    border-radius: 4px;
+    padding: 0.05rem 0.35rem;
+  }
+
+  .palette-backdrop[hidden] { display: none; }
+  .palette-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8vh 1rem 1rem;
+  }
+  .palette-shell {
+    width: min(640px, 100%);
+    background: var(--surface, #15151a);
+    color: var(--text, #fafafa);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: 1px solid var(--muted, #2a2a30);
+  }
+  .palette-form {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--muted, #2a2a30);
+  }
+  .palette-input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    background: transparent;
+    color: inherit;
+    font-size: 1.05rem;
+    border: 0;
+    outline: 0;
+    font-family: inherit;
+  }
+  .palette-close {
+    background: transparent;
+    border: 0;
+    color: var(--muted, #9a9aa2);
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+  .palette-close:hover,
+  .palette-close:focus-visible {
+    color: var(--accent, #fff);
+  }
+  .palette-hint {
+    margin: 0;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.78rem;
+    color: var(--muted, #9a9aa2);
+    border-bottom: 1px solid var(--muted, #2a2a30);
+  }
+  .palette-results {
+    display: block;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+  }
+  .palette-empty {
+    margin: 0;
+    padding: 1rem 1.2rem;
+    color: var(--muted, #9a9aa2);
+    font-size: 0.9rem;
+  }
+  .palette-group { padding: 0.4rem 0; }
+  .palette-group-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted, #9a9aa2);
+    margin: 0;
+    padding: 0.4rem 1.2rem;
+  }
+  .palette-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .palette-group li a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .palette-group li.is-active,
+  .palette-group li.is-active a {
+    background: var(--accent, #2a2a45);
+    color: var(--accent-text, #fff);
+  }
+  .palette-title { font-weight: 600; font-size: 0.95rem; }
+  .palette-sub { font-size: 0.78rem; color: var(--muted, #9a9aa2); }
+  .palette-group li.is-active .palette-sub { color: inherit; opacity: 0.8; }
+
+  :global(body.palette-open) { overflow: hidden; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

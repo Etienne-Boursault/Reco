@@ -1,0 +1,71 @@
+---
+/**
+ * /[source]/report/[recoId] — page formulaire de signalement.
+ *
+ * Statique : `getStaticPaths()` énumère `(source, reco)`. Chaque reco a sa
+ * page dédiée avec contexte pré-rempli. `noindex` car la page n'a pas
+ * vocation à être référencée.
+ *
+ * Cf. ADR 0034 (alternatives, scaling).
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ReportForm from '../../../components/ReportForm.astro';
+import { t } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  const recos = await getCollection('recos');
+  const out: { params: { source: string; recoId: string }; props: { source: typeof sources[number]; reco: typeof recos[number] } }[] = [];
+  for (const reco of recos) {
+    const src = sources.find((s) => s.id === reco.data.sourceId.id);
+    if (!src) continue;
+    if (reco.data.status === 'discarded') continue; // pas signalable
+    out.push({
+      params: { source: src.id, recoId: reco.data.id },
+      props: { source: src, reco },
+    });
+  }
+  return out;
+}
+
+const { source, reco } = Astro.props;
+const data = source.data;
+---
+
+<Layout title={t('report.page.metaTitle', { title: reco.data.title })} theme={data.theme} noindex>
+  <main id="main" class="wrap">
+    <p class="back">
+      <a href={`/${source.id}`}>{t('report.page.back')}</a>
+    </p>
+    <header class="head">
+      <h1>{t('report.page.title')}</h1>
+      <p class="lede">{t('report.page.lede')}</p>
+    </header>
+
+    <ReportForm
+      sourceId={source.id}
+      recoId={reco.data.id}
+      recoTitle={reco.data.title}
+    />
+  </main>
+</Layout>
+
+<style>
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 4rem;
+  }
+  .back {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+  }
+  .head h1 {
+    margin: 0 0 0.4rem;
+  }
+  .head .lede {
+    color: var(--muted);
+    margin: 0 0 1.6rem;
+  }
+</style>

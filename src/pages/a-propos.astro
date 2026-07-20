@@ -1,0 +1,273 @@
+---
+/**
+ * /a-propos — Page statique "À propos" (item #22).
+ *
+ * Public-facing : présentation du projet, vision, pipeline, crédits, liens.
+ * Cohérent avec docs/vision-2026.md (posture éthique) et docs/manifeste-ethique.md
+ * (référentiel détaillé). Cf. ADR 0040.
+ *
+ * Build : statique. Aucune dépendance externe, aucun tracker, aucun iframe.
+ * SEO : ogSlug par défaut ⇒ fallback `/og/default.png` (cf. Layout).
+ * A11y : h1 unique, hiérarchie h2/h3, <main id="main">, lang=fr via Layout.
+ */
+import Layout from '../layouts/Layout.astro';
+import { t } from '../i18n';
+import { siteConfig } from '../config/site';
+import { getCollection } from 'astro:content';
+
+// Stats publiques calculées build-time (cf. index.astro).
+const sources = await getCollection('sources');
+const recos = await getCollection('recos');
+const episodes = await getCollection('episodes');
+const nbSources = sources.length;
+const nbRecos = recos.filter(
+  (r) => r.data.status !== 'discarded' && r.data.kind !== 'citation',
+).length;
+const nbEpisodes = episodes.length;
+function fmt(n: number): string {
+  return n.toLocaleString('fr-FR');
+}
+
+const homeUrl = new URL('/', Astro.site).toString();
+const aboutUrl = new URL('/a-propos', Astro.site).toString();
+const manifestoUrl = new URL('/manifeste', Astro.site).toString();
+
+// JSON-LD : WebPage + BreadcrumbList (Home > À propos). Cf. ADR 0027.
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: t('about.title'),
+    description: t('about.subtitle'),
+    url: aboutUrl,
+    inLanguage: 'fr',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: siteConfig.siteName,
+      url: homeUrl,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: siteConfig.siteName, item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: t('about.title'), item: aboutUrl },
+    ],
+  },
+];
+---
+
+<Layout
+  title={t('about.title')}
+  description={t('about.subtitle')}
+  jsonLd={jsonLd}
+>
+  <header class="hero wrap" role="banner">
+    <p class="kicker">{siteConfig.siteName}</p>
+    <h1>{t('about.title')}</h1>
+    <p class="lede">{t('about.subtitle')}</p>
+  </header>
+
+  <main id="main" class="wrap prose">
+    <section aria-labelledby="who">
+      <h2 id="who">{t('about.section.who')}</h2>
+      <p>
+        <strong>Reco</strong> est un kit open-source self-hostable créé par
+        Etienne Boursault. Le code est publié sous licence MIT et
+        documenté pour être forké : un déploiement correspond
+        typiquement à un podcast (ou à une famille de podcasts
+        sélectionnés par un éditeur).
+      </p>
+      <p>
+        L'instance par défaut est publiée sur
+        <a href="https://source-internet.fr" rel="noopener">source-internet.fr</a>
+        et agrège les recommandations de plusieurs podcasts francophones
+        indépendants.
+      </p>
+    </section>
+
+    <section aria-labelledby="why">
+      <h2 id="why">{t('about.section.why')}</h2>
+      <p>
+        Les podcasts indépendants regorgent de recommandations — œuvres
+        citées, conseillées, défendues — mais ces mentions se perdent dans
+        l'audio. <strong>Reco</strong> les extrait, les contextualise et
+        les rend cherchables, sans tracker, sans publicité, sans pousser
+        l'achat sur Amazon ou chez un distributeur appartenant à un grand
+        groupe.
+      </p>
+      <p>
+        La posture éditoriale est détaillée dans le
+        <a href="/manifeste">{t('manifesto.title')}</a> :
+        anti-Amazon, refus de la concentration Bolloré, priorité aux
+        librairies indépendantes, respect du visiteur.
+      </p>
+    </section>
+
+    <section aria-labelledby="how">
+      <h2 id="how">{t('about.section.how')}</h2>
+      <p>
+        Le pipeline est entièrement local et reproductible — aucun
+        service propriétaire de Reco n'est requis pour faire tourner une
+        instance.
+      </p>
+      <ol>
+        <li>
+          <strong>Récupération RSS</strong> : Reco lit les flux RSS des
+          podcasts configurés et télécharge les épisodes.
+        </li>
+        <li>
+          <strong>Transcription</strong> : audio → texte via Whisper
+          (YouTube par défaut, Acast en repli).
+        </li>
+        <li>
+          <strong>Extraction LLM</strong> : un ou plusieurs modèles
+          extraient les œuvres citées. Une reco confirmée par ≥ 2
+          extracteurs indépendants est marquée ⭐.
+        </li>
+        <li>
+          <strong>Revue humaine</strong> : un outil de review interne
+          (`tools/review`) permet de valider, corriger ou écarter les
+          extractions douteuses.
+        </li>
+        <li>
+          <strong>Build statique Astro</strong> : le site est généré sans
+          base de données runtime, ni SSR, ni JavaScript bloquant.
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="stats">
+      <h2 id="stats">Catalogue à ce jour</h2>
+      <p>
+        Chiffres calculés build-time, sans collecte côté visiteur.
+      </p>
+      <ul class="stats">
+        <li><strong>{fmt(nbSources)}</strong> podcasts indexés</li>
+        <li><strong>{fmt(nbEpisodes)}</strong> épisodes</li>
+        <li><strong>{fmt(nbRecos)}</strong> recommandations</li>
+      </ul>
+      <p class="muted">
+        Phase 4 du projet : méta-agrégateur public (cf.
+        <a href="https://github.com/etiennebsl/Reco" rel="noopener">roadmap</a>).
+      </p>
+    </section>
+
+    <section aria-labelledby="credits">
+      <h2 id="credits">{t('about.section.credits')}</h2>
+      <p>
+        Reco s'appuie sur du code et des contenus open-source :
+      </p>
+      <ul>
+        <li>Astro, MiniSearch, Whisper (OpenAI), Inter (Rasmus Andersson).</li>
+        <li>
+          Les podcasts indexés conservent l'intégralité de leurs droits
+          sur leur contenu — Reco extrait des références publiquement
+          citées à l'antenne.
+        </li>
+        <li>
+          Référentiels : <a href="https://www.acrimed.org/" rel="noopener">Acrimed</a>,
+          <a href="https://fr.wikipedia.org/wiki/Groupe_Bolloré" rel="noopener">Wikipédia</a>,
+          <a href="https://www.placedeslibraires.fr/" rel="noopener">Place des Libraires</a>.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="links">
+      <h2 id="links">{t('about.section.links')}</h2>
+      <ul>
+        <li><a href="/manifeste">{t('manifesto.title')}</a></li>
+        <li>
+          <a href="https://github.com/etiennebsl/Reco" rel="noopener">
+            Dépôt GitHub / roadmap publique
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${siteConfig.contactEmail ?? 'contact@source-internet.fr'}`}>
+            {t('about.cta.contribute')}
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(1rem, 3vw, 2rem);
+  }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0 0 0.6rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    margin: 0 0 0.8rem;
+  }
+  .lede {
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .prose {
+    max-width: 70ch;
+    padding-bottom: 4rem;
+  }
+  .prose section {
+    margin: 2.4rem 0;
+  }
+  .prose h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin: 0 0 0.6rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    padding-bottom: 0.3rem;
+  }
+  .prose p,
+  .prose li {
+    line-height: 1.6;
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose a:hover,
+  .prose a:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+  .stats {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+  .stats li {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius, 8px);
+    padding: 0.8rem 1.1rem;
+    font-size: 0.95rem;
+  }
+  .stats strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--accent);
+  }
+  .muted {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  @media print {
+    .hero { padding: 1rem 0; }
+    .prose section { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: underline; }
+  }
+</style>

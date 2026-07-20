@@ -1,0 +1,37 @@
+---
+/**
+ * TrendingBadge — pastille « tendance » pour les œuvres mentionnées
+ * plusieurs fois récemment. Pure UI ; la logique de calcul vit dans
+ * `src/lib/work/aggregator.ts::isTrending`.
+ */
+import { t } from '../i18n';
+
+interface Props {
+  count: number;
+  windowMonths?: number;
+}
+const { count, windowMonths = 12 } = Astro.props;
+const label = t('work.trending.label', { count, months: windowMonths });
+---
+<span class="trending" role="img" aria-label={label} title={label}>
+  <span aria-hidden="true">🔥</span>
+  <span class="trending-count">{count}×</span>
+</span>
+
+<style>
+  .trending {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-text, #fff);
+    background: var(--accent);
+    border-radius: 999px;
+    padding: 0.25em 0.7em;
+    line-height: 1;
+  }
+  .trending-count {
+    letter-spacing: 0.02em;
+  }
+</style>

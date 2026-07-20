@@ -1,0 +1,83 @@
+---
+/**
+ * WorkCard — vignette compacte pour les œuvres similaires (même créateur).
+ * Renvoie vers la page canonique `/<source>/oeuvre/<itemId>`.
+ */
+import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
+import type { ItemLike } from '../lib/work/aggregator';
+
+interface Props {
+  sourceId: string;
+  item: ItemLike;
+}
+const { sourceId, item } = Astro.props;
+
+const types = item.types ?? [];
+const typeEmojis = types.map((tp) => ({
+  emoji: TYPE_EMOJIS[tp] ?? '✨',
+  label: TYPE_LABELS[tp] ?? tp,
+}));
+const typeTitle = typeEmojis.map((te) => te.label).join(', ');
+---
+
+<a class="wcard" href={`/${sourceId}/oeuvre/${item.id}`}>
+  <span class="wcard-type" aria-label={typeTitle}>
+    {typeEmojis.map((tp) => (
+      <span class="wcard-emoji" role="img" title={tp.label}>
+        <span aria-hidden="true">{tp.emoji}</span>
+        <span class="visually-hidden">{tp.label}</span>
+      </span>
+    ))}
+  </span>
+  <span class="wcard-body">
+    <span class="wcard-title">{item.title}</span>
+    {item.creator && <span class="wcard-creator">{item.creator}</span>}
+  </span>
+  {item.year && <span class="wcard-year">{item.year}</span>}
+</a>
+
+<style>
+  .wcard {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.16s ease, transform 0.16s ease;
+  }
+  .wcard:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .wcard-type {
+    display: inline-flex;
+    gap: 0.2rem;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .wcard-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .wcard-title {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wcard-creator {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .wcard-year {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

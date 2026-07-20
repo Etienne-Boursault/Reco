@@ -1,0 +1,67 @@
+---
+/**
+ * AudioPlayer — wrapper bas niveau pour un flux audio direct (MP3/OGG).
+ *
+ * Utilisé quand on dispose d'une URL audio publique stable (rare aujourd'hui
+ * côté podcasts ; réservé à un futur enrichissement Acast preview MP3). Pour
+ * les extraits YouTube, voir `AudioExcerpt.astro`.
+ *
+ * A11y :
+ *  - `<audio controls>` natif : contrôles accessibles par défaut, AT-friendly.
+ *  - `preload="none"` : aucun appel réseau tant que l'utilisateur ne joue pas.
+ *  - `aria-label` descriptif.
+ *
+ * Le seek initial vers `startSeconds` est appliqué côté client sur l'event
+ * `loadedmetadata` (script externalisé en data-attrs, pas d'inline JS pour
+ * rester CSP-friendly).
+ */
+interface Props {
+  audioUrl: string;
+  startSeconds?: number;
+  title?: string;
+}
+const { audioUrl, startSeconds, title } = Astro.props;
+const ariaLabel = title ?? 'Lecteur audio';
+---
+
+<audio
+  class="audio-player"
+  controls
+  preload="none"
+  src={audioUrl}
+  data-start={startSeconds && startSeconds > 0 ? String(Math.floor(startSeconds)) : ''}
+  aria-label={ariaLabel}
+>
+  Votre navigateur ne supporte pas l’élément <code>audio</code>.
+</audio>
+
+<style>
+  .audio-player {
+    width: 100%;
+    max-width: 480px;
+    display: block;
+  }
+</style>
+
+<script>
+  // Applique le startSeconds une fois les métadonnées chargées.
+  // Délégation : pas d'inline script, on parse les data-attrs au chargement.
+  document.addEventListener(
+    'loadedmetadata',
+    (ev) => {
+      const el = ev.target as HTMLAudioElement | null;
+      if (!el || !(el instanceof HTMLAudioElement)) return;
+      const start = el.dataset.start;
+      if (!start) return;
+      const s = Number(start);
+      if (Number.isFinite(s) && s > 0 && s < (el.duration ?? Infinity)) {
+        try {
+          el.currentTime = s;
+        } catch {
+          /* Certains formats interdisent le seek avant le 1er play : on ignore. */
+        }
+      }
+    },
+    true,
+  );
+</script>

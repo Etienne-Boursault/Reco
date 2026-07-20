@@ -1,0 +1,120 @@
+---
+/**
+ * /[source]/films — Galerie de tous les films recommandés dans une source.
+ * Pages statiques générées au build via `getStaticPaths` (1 page / source).
+ * Cf. ADR 0031.
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { selectByType } from '../../lib/gallery/aggregate';
+import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page';
+import { t } from '../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+const mentions = (await getCollection('mentions'))
+  .filter((m) => m.data.sourceRef.sourceId === source.id)
+  .map((m) => m.data);
+const mentionedIds = new Set(mentions.map((m) => m.itemId));
+// Garde les items effectivement mentionnés dans CETTE source (les items
+// sont organisés par dossier source mais on s'en remet aux mentions
+// pour le filtrage, ce qui marche aussi en cas d'items partagés futurs).
+const items = (await getCollection('items'))
+  .map((i) => i.data)
+  .filter((it) => mentionedIds.has(it.id));
+
+const entries = selectByType(items, mentions, ['film']);
+
+const heading = t('gallery.films.title');
+const countLabel = 'films recommandés';
+const description = `${entries.length} films recommandés dans ${data.title}.`;
+
+const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
+const homeUrl = new URL('/', Astro.site).toString();
+const galleryUrl = new URL(`/${source.id}/films`, Astro.site).toString();
+
+const jsonLd = [
+  galleryItemListSchema(entries, { name: heading, description }),
+  galleryBreadcrumb({
+    homeUrl,
+    sourceName: data.title,
+    sourceUrl,
+    galleryName: heading,
+    galleryUrl,
+  }),
+];
+---
+
+<Layout
+  title={`${heading} — ${data.title}`}
+  description={description}
+  theme={data.theme}
+  ogSlug={source.id}
+  jsonLd={jsonLd}
+>
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
+    </a>
+    <h1>{heading}</h1>
+    <p class="tag">Toutes les œuvres de type film recommandées dans <strong>{data.title}</strong>.</p>
+  </header>
+  <main id="main" class="wrap">
+    <h2 class="visually-hidden">Liste des films</h2>
+    <GalleryGrid
+      heading={heading}
+      entries={entries}
+      countLabel={countLabel}
+      emptyMessage="Aucun film recommandé pour l'instant."
+      emptyHint="Lance le pipeline d'extraction pour peupler la galerie."
+      sourceId={source.id}
+    />
+  </main>
+</Layout>
+
+<style>
+  .head {
+    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .head h1 {
+    font-size: clamp(2.2rem, 7vw, 5rem);
+    margin: 0.6rem 0 0.3rem;
+  }
+  .tag {
+    color: var(--text);
+    margin: 0 0 0.5rem;
+  }
+  main {
+    padding-bottom: 4rem;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

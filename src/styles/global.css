@@ -2,10 +2,24 @@
  * Styles globaux. Les couleurs et polices sont pilotées par des variables CSS
  * injectées par <Layout> à partir du thème de chaque source (multi-podcast).
  *
- * Polices : valeurs libres par défaut (Anton ≈ énergie typo type "Bref",
- * Inter pour le corps). Pour utiliser une vraie police d'une série, déposez le
- * fichier dans public/fonts/ et déclarez-le en @font-face plus bas.
+ * Polices self-hostées (aucune requête vers fonts.googleapis.com,
+ * cf. ADR 0034 + ADR 0029) :
+ * - Inter pour le body (`@fontsource/inter`) — SIL Open Font License 1.1
+ * - Bebas Neue pour le display (`@fontsource/bebas-neue`) — SIL Open Font License 1.1
+ *   (réintroduction 2026-06-12, alternative libre à Anton retirée 2026-06-11)
+ *
+ * Pour utiliser une vraie police propriétaire d'une série, déposez le fichier
+ * dans `public/fonts/` (gitignore si non-redistribuable) et déclarez-le en
+ * @font-face plus bas.
+ *
+ * SSOT palette : `src/styles/tokens.ts` (utilisé par les tests de contraste).
+ * Cf. ADR 0024 — Design tokens & theming multi-source.
+ * Cf. ADR 0029 §Bebas Neue 2026-06-12.
  */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/bebas-neue/400.css';
 
 :root {
   /* Valeurs par défaut, surchargées par le thème de la source. */
@@ -16,12 +30,25 @@
   --accent: #ffd23f;
   --accent-text: #0e0e10;
 
-  --font-display: 'Anton', system-ui, sans-serif;
+  /* Display = Bebas Neue (réintroduction 2026-06-12, alternative libre OFL
+     à Anton retirée 2026-06-11). Fallback Inter → system. */
+  --font-display: 'Bebas Neue', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
   --radius: 14px;
   --maxw: 1200px;
   --gap: clamp(0.8rem, 2vw, 1.4rem);
+
+  /* H1 — Badge « œuvre d'invité » (guestWork). L'ambre brut `#d29a3a` échoue
+     le contraste AA (< 4.5:1) sur les thèmes CLAIRS des forks (mesuré 2.2:1
+     sur une surface claire). On dérive donc la teinte du thème : on tire
+     l'ambre de 55 % vers `--text`, ce qui garantit un contraste ≥ 4.5:1 sur
+     `--surface`/`--bg` quel que soit le thème (sombre : 11.5:1, clair : 6.7:1).
+     SSOT : cette expression vit ICI et est consommée via `var(--guestwork)`
+     partout (RecoCard, MentionsTimeline, page épisode). Fallback : ambre brut
+     pour les rares navigateurs sans `color-mix()`. */
+  --guestwork: #d29a3a;
+  --guestwork: color-mix(in oklab, var(--text) 55%, #d29a3a);
 }
 
 *,
@@ -39,6 +66,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
+  /* Min 15px : WCAG AA reflow 200 % reste lisible (≥ 30px effectif). */
   font-size: clamp(15px, 1vw + 0.6rem, 17px);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -56,6 +84,9 @@ h3 {
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: 0.01em;
+  /* Choix design assumé (titres ALL CAPS). Documenté ADR 0022.
+     N'altère pas la sémantique pour les lecteurs d'écran (le DOM reste
+     en casse mixte ; uppercase est purement présentationnel). */
   text-transform: uppercase;
   margin: 0;
 }
@@ -74,6 +105,9 @@ h3 {
   background: transparent;
   color: var(--text);
   padding: 0.4em 0.85em;
+  /* WCAG 2.5.8 (2.2 AA) : cible tactile ≥24×24 CSS px.
+     0.82rem * (line-height 1.6) ≈ 21 + padding 2×0.4em ≈ 26px height. */
+  min-height: 28px;
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.18s ease;
@@ -101,7 +135,10 @@ h3 {
   list-style: none;
 }
 
-/* Apparition douce au chargement / au filtrage. */
+/* Apparition douce au chargement / au filtrage.
+   `to {}` documenté : on retient les valeurs « idle » par défaut
+   (opacity 1, transform 0) ; pas besoin d'un bloc to{} explicite,
+   l'élément retombe sur ses propres styles. */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -111,6 +148,7 @@ h3 {
       opacity: 0;
       transform: translateY(12px);
     }
+    /* to: hérite des styles par défaut (opacity 1, transform none). */
   }
 }
 
@@ -121,4 +159,110 @@ h3 {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* A11y — Focus visible global (WCAG AA 2.4.7 « Focus Visible »)
+ *
+ * Contrat CSS (P3-1, M1) : ce sélecteur utilise `:where()` pour avoir une
+ * spécificité 0. Toute règle ciblée (`.search:focus-visible`, etc.) doit
+ * ABSOLUMENT réintroduire `outline` + `outline-offset` + `box-shadow` (halo)
+ * pour ne pas casser la visibilité sur fond accent.
+ *
+ * Halo box-shadow : sur fond `--accent` (chip/tab actif), l'outline jaune sur
+ * jaune serait invisible. Le halo en `color-mix(--bg 80%, transparent)` crée
+ * un contraste ≥3:1 avec n'importe quel fond de la palette (mesuré 13.35:1
+ * sur --bg et ≥3.5:1 sur --accent grâce au mix sombre). Cf. H1.
+ */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  /* Offset 3px : tient compte des border-radius rond (chips/buttons). */
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--bg) 80%, transparent);
+}
+
+/* A11y — Skip link (WCAG AA 2.4.1 « Bypass Blocks »).
+ * Invisible jusqu'au focus clavier (Tab depuis le haut de la page).
+ * z-index: 100 → garantit que la skip-link passe au-dessus des toolbars
+ * sticky (z-index ≤ 10) et de toute UI ajoutée par fork. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 0.6em 1.1em;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transform: translateY(-110%);
+  transition: transform 0.18s ease;
+  z-index: 100;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* A11y — Reduced motion (WCAG AA 2.3.3 + critère « animation-from-interactions »).
+ * Désactive toutes les animations/transitions hors essentielles si l'OS
+ * signale `prefers-reduced-motion: reduce`.
+ * Note : on garde la durée idiomatique `0.001ms` (effectivement instantané)
+ * plutôt que `0s` pour préserver les listeners `transitionend`/`animationend`
+ * que certaines libs pourraient écouter. Inoffensif perceptuellement. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A11y — Contraste renforcé (WCAG AAA optionnel).
+ * Si l'utilisateur·rice demande plus de contraste, on bord les surfaces
+ * et on opacifie les textes secondaires. */
+@media (prefers-contrast: more) {
+  :root {
+    --muted: color-mix(in oklab, var(--text) 92%, transparent);
+  }
+  .chip,
+  .tab,
+  .search,
+  .link {
+    border-color: var(--text) !important;
+  }
+}
+
+/* Images : pas de bordure native, comportement responsive par défaut. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* A11y — Safari : styliser le bouton « ✕ » du <input type="search">
+   (L18). Sans ça, focus invisible sur certaines combinaisons fond/accent. */
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--text) 30%, transparent);
+  cursor: pointer;
+}
+input[type='search']::-webkit-search-cancel-button:hover {
+  background: var(--accent);
+}
+
+/* A11y — Message <noscript> visible et discret (L9). */
+.noscript-warning {
+  background: color-mix(in oklab, var(--accent) 20%, transparent);
+  color: var(--text);
+  border-bottom: 1px solid var(--accent);
+  padding: 0.6em 1em;
+  text-align: center;
+  font-size: 0.9rem;
 }

@@ -1,0 +1,297 @@
+---
+/**
+ * AudioExcerpt — bouton "Écouter à T'm'S'" qui révèle inline un iframe
+ * YouTube nocookie centré sur le timecode. Différenciateur Reco (item #12).
+ *
+ * Modes :
+ *  - `youtubeId` + `startSeconds` → bouton reveal + iframe lazy.
+ *  - `acastUrl` seul → lien externe vers la page Acast (pas d'embed
+ *    standardisé côté Acast — cf. ADR 0036).
+ *  - rien d'utilisable → rendu vide.
+ *
+ * A11y (WCAG AA) :
+ *  - `aria-label` descriptif avec timecode lu en clair ("2 minutes 13 secondes").
+ *  - `aria-pressed` / `aria-expanded` sur le bouton.
+ *  - `aria-controls` pointe vers la région révélée.
+ *  - `<iframe title="…">`, `loading="lazy"`, pas d'autoplay.
+ *  - Pas d'animation de reveal sous `prefers-reduced-motion` (global.css).
+ *
+ * CSP : pas d'inline handler. La logique reveal est portée par un script
+ * délégué (event delegation sur `[data-audio-toggle]`).
+ */
+import { t } from '../i18n';
+import {
+  buildYoutubeEmbedUrl,
+  formatTimecode,
+  formatTimecodeA11y,
+} from '../lib/audio/timecode';
+
+interface Props {
+  youtubeId?: string | null;
+  acastUrl?: string | null;
+  startSeconds?: number | null;
+  endSeconds?: number | null;
+  /** Identifiant unique de l'extrait dans la page (a11y aria-controls). */
+  id?: string;
+  /** Étiquette visible additionnelle (ex. "Extrait : Apocalypse Now"). */
+  title?: string;
+}
+
+const {
+  youtubeId,
+  acastUrl,
+  startSeconds,
+  endSeconds,
+  id,
+  title,
+} = Astro.props;
+
+const embedUrl = buildYoutubeEmbedUrl(youtubeId, {
+  startSeconds: startSeconds ?? null,
+  endSeconds: endSeconds ?? null,
+});
+
+const tcShort = formatTimecode(startSeconds ?? 0);
+const tcA11y = formatTimecodeA11y(startSeconds ?? 0);
+
+// Identifiant DOM stable : combine `id` fourni + start pour réduire les
+// collisions quand plusieurs AudioExcerpt cohabitent (mentions multiples).
+const regionId = `audio-excerpt-${id ?? Math.random().toString(36).slice(2, 8)}-${
+  startSeconds ?? 0
+}`;
+
+const buttonLabel = tcShort
+  ? `${t('audio.listenAt')} ${tcShort}`
+  : t('audio.listen');
+
+const buttonAria = tcA11y
+  ? `${t('audio.listen')} à ${tcA11y}${title ? ` — ${title}` : ''}`
+  : `${t('audio.listen')}${title ? ` — ${title}` : ''}`;
+---
+
+{embedUrl ? (
+  <div class="audio-excerpt" data-audio-root>
+    <button
+      type="button"
+      class="audio-trigger"
+      data-audio-toggle={regionId}
+      aria-expanded="false"
+      aria-pressed="false"
+      aria-controls={regionId}
+      aria-label={buttonAria}
+    >
+      <span class="audio-icon" aria-hidden="true">▶</span>
+      <span class="audio-label">{buttonLabel}</span>
+    </button>
+    <div
+      id={regionId}
+      class="audio-frame"
+      hidden
+      role="region"
+      aria-label={title ?? t('audio.iframeTitle')}
+    >
+      <div class="audio-frame-head">
+        <button
+          type="button"
+          class="audio-close"
+          data-audio-close={regionId}
+          aria-label={t('audio.close')}
+          aria-controls={regionId}
+        >
+          <span aria-hidden="true">{t('audio.closeIcon')}</span>
+        </button>
+      </div>
+      <div class="audio-frame-body">
+        {/*
+          `data-src` plutôt que `src` direct : on n'instancie l'iframe (et
+          donc le réseau YouTube) qu'au moment du reveal. Réduit le poids
+          initial de la page de plusieurs centaines de Ko quand de nombreuses
+          mentions sont listées. `loading="lazy"` couvre le cas où le bouton
+          a déjà été activé : nouvelle navigation interne dans la SPA.
+        */}
+        <iframe
+          class="audio-iframe"
+          data-src={embedUrl}
+          title={title ?? t('audio.iframeTitle')}
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+) : acastUrl ? (
+  <a
+    class="audio-trigger audio-external"
+    href={acastUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${t('audio.openOnAcastA11y')} ${t('a11y.externalLinkSuffix')}`}
+  >
+    <span class="audio-icon" aria-hidden="true">▶</span>
+    <span class="audio-label">{t('audio.openOnAcast')}</span>
+  </a>
+) : null}
+
+<style>
+  .audio-excerpt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .audio-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent);
+    background: color-mix(in oklab, var(--accent) 10%, transparent);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-variant-numeric: tabular-nums;
+    transition:
+      background 0.16s ease,
+      border-color 0.16s ease,
+      transform 0.16s ease;
+  }
+  .audio-trigger:hover {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+    border-color: var(--accent);
+  }
+  .audio-trigger[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--surface);
+  }
+  .audio-icon {
+    font-size: 0.78em;
+    line-height: 1;
+  }
+  .audio-external {
+    /* Lien externe : visuellement marqué identique au bouton reveal. */
+    border-style: dashed;
+  }
+  .audio-frame {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  }
+  .audio-frame[hidden] {
+    display: none;
+  }
+  .audio-frame-head {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.25rem 0.35rem 0;
+  }
+  .audio-close {
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.25rem 0.4rem;
+    border-radius: 999px;
+  }
+  .audio-close:hover {
+    color: var(--text);
+    background: color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  .audio-frame-body {
+    position: relative;
+    /* Ratio 16:9 — l'iframe occupe toute la zone. */
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+  .audio-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+</style>
+
+<script>
+  /**
+   * Reveal/hide des extraits AudioExcerpt — délégation globale.
+   *
+   * - Active : copie `data-src` → `src` (1ère ouverture seulement) puis
+   *   retire l'attribut `hidden` de la région contrôlée.
+   * - Ferme : réinitialise `src` pour stopper la lecture côté YouTube et
+   *   rétablit l'état initial.
+   *
+   * Pas d'animation : `global.css` gère déjà `prefers-reduced-motion` côté
+   * tokens, et on n'ajoute pas de transition reveal pour respecter
+   * `prefers-reduced-motion: reduce` sans condition.
+   */
+  function findRoot(el: Element | null): HTMLElement | null {
+    let cur: Element | null = el;
+    while (cur && !(cur instanceof HTMLElement && cur.hasAttribute('data-audio-root'))) {
+      cur = cur.parentElement;
+    }
+    return cur instanceof HTMLElement ? cur : null;
+  }
+
+  document.addEventListener('click', (ev) => {
+    const target = ev.target;
+    if (!(target instanceof Element)) return;
+
+    const toggle = target.closest('[data-audio-toggle]') as HTMLElement | null;
+    if (toggle) {
+      const regionId = toggle.getAttribute('data-audio-toggle');
+      if (!regionId) return;
+      const region = document.getElementById(regionId);
+      if (!region) return;
+      const iframe = region.querySelector<HTMLIFrameElement>('iframe.audio-iframe');
+      const isOpen = !region.hasAttribute('hidden');
+      if (isOpen) {
+        // Fermer
+        region.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-pressed', 'false');
+        if (iframe) {
+          // Couper le son en réinitialisant src.
+          iframe.removeAttribute('src');
+        }
+      } else {
+        // Ouvrir
+        region.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-pressed', 'true');
+        if (iframe && !iframe.getAttribute('src')) {
+          const src = iframe.getAttribute('data-src');
+          if (src) iframe.setAttribute('src', src);
+        }
+      }
+      return;
+    }
+
+    const close = target.closest('[data-audio-close]') as HTMLElement | null;
+    if (close) {
+      const regionId = close.getAttribute('data-audio-close');
+      if (!regionId) return;
+      const region = document.getElementById(regionId);
+      if (!region) return;
+      region.setAttribute('hidden', '');
+      const iframe = region.querySelector<HTMLIFrameElement>('iframe.audio-iframe');
+      if (iframe) iframe.removeAttribute('src');
+      const root = findRoot(region);
+      const trigger = root?.querySelector<HTMLElement>(
+        `[data-audio-toggle="${regionId}"]`,
+      );
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-pressed', 'false');
+        trigger.focus();
+      }
+    }
+  });
+</script>

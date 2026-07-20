@@ -1,0 +1,61 @@
+---
+/**
+ * SiteFooter.astro — pied de page unifié réutilisé par toutes les pages
+ * publiques (P2-6). Évite la duplication et garantit la présence d'un
+ * landmark `<footer role="contentinfo">` accessible.
+ *
+ * Slot optionnel pour insérer du contenu spécifique avant la tagline (rarement
+ * utilisé : on garde un footer minimal pour la cohérence du kit).
+ */
+import { t } from '../i18n';
+
+interface Props {
+  /** Texte d'accroche du pied de page. Par défaut = string i18n. */
+  tagline?: string;
+}
+
+const { tagline = t('footer.tagline') } = Astro.props;
+---
+
+<footer class="wrap site-footer" role="contentinfo">
+  <slot />
+  <nav class="site-footer-nav" aria-label={t('footer.nav.label')}>
+    <a href="/a-propos">{t('footer.about')}</a>
+    <span aria-hidden="true">·</span>
+    <a href="/manifeste">{t('footer.manifesto')}</a>
+  </nav>
+  <p>{tagline}</p>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 2rem 0 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    margin-top: 2rem;
+  }
+  .site-footer p {
+    margin: 0;
+  }
+  .site-footer-nav {
+    margin: 0 0 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .site-footer-nav a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
+  }
+  .site-footer-nav a:hover,
+  .site-footer-nav a:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .site-footer-nav span {
+    opacity: 0.4;
+  }
+</style>

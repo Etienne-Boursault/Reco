@@ -1,0 +1,97 @@
+---
+/**
+ * GalleryGrid.astro — wrapper grid responsive + header (titre + compteur).
+ * Reçoit les entrées déjà triées par `aggregate.ts` ; n'effectue aucune
+ * agrégation supplémentaire.
+ *
+ * A11y : grille = `<ul>` (liste), chaque carte = `<li>` ; quand `sourceId`
+ * est fourni (X2 fix), chaque carte devient un `<a>` cliquable vers
+ * `/<sourceId>/oeuvre/<itemId>`.
+ */
+import GalleryCard from './GalleryCard.astro';
+import EmptyState from './EmptyState.astro';
+import type { GalleryEntry } from '../lib/gallery/aggregate';
+
+export interface Props {
+  /** Titre h1 affiché (la balise est rendue par la page parent — ici on
+   *  rend juste un h2 visuellement caché pour la structure interne). */
+  heading: string;
+  entries: readonly GalleryEntry[];
+  /** Libellé du compteur (ex. "films recommandés"). */
+  countLabel: string;
+  /** Message d'état vide. */
+  emptyMessage?: string;
+  emptyHint?: string;
+  /**
+   * X2 — sourceId pour construire le lien vers la page œuvre. Optionnel pour
+   * compat ascendante (sans sourceId, les cartes restent non-cliquables).
+   */
+  sourceId?: string;
+}
+
+const {
+  heading,
+  entries,
+  countLabel,
+  emptyMessage = 'Aucune recommandation pour cette galerie.',
+  emptyHint,
+  sourceId,
+} = Astro.props;
+
+const n = entries.length;
+---
+
+<section class="gal-section" aria-label={heading}>
+  <p class="gal-count">
+    <span class="gal-count-n">{n}</span> {countLabel}
+  </p>
+
+  {
+    n === 0 ? (
+      <EmptyState message={emptyMessage} hint={emptyHint} />
+    ) : (
+      <ul class="gal-grid" role="list">
+        {entries.map((e) => (
+          <li class="gal-item">
+            <GalleryCard
+              id={e.id}
+              title={e.title}
+              types={e.types}
+              creator={e.creator}
+              year={e.year}
+              mentionCount={e.mentionCount}
+              href={sourceId ? `/${sourceId}/oeuvre/${e.id}` : undefined}
+            />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>
+
+<style>
+  .gal-section {
+    padding-bottom: 3rem;
+  }
+  .gal-count {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0 0 1.4rem;
+  }
+  .gal-count-n {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .gal-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+    gap: var(--gap);
+  }
+  .gal-item {
+    margin: 0;
+  }
+</style>

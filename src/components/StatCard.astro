@@ -1,0 +1,100 @@
+---
+/**
+ * StatCard.astro — carte « gros chiffre + libellé » pour /stats.
+ *
+ * A11y :
+ *  - rôle `group` avec `aria-labelledby` lié au libellé ;
+ *  - le gros chiffre est masqué de la lecture vocale (`aria-hidden=true`)
+ *    et remplacé par un libellé verbalisé (`srLabel`) qui dit la quantité
+ *    avec son unité, ce qui évite les lectures « k » / « M » imprononçables.
+ *  - libellé porté par un `<h3>` (hiérarchie h1→h2→h3 pour navigation
+ *    landmarks — M26-15).
+ *
+ * Issues fixées :
+ *  - H26-4 : id DOM via `hashSlug(label)` au lieu de `Math.random` (build
+ *    deterministe).
+ *  - M26-15 : `<p class="label">` devient `<h3>` (hiérarchie sémantique).
+ *  - F-H-9  : suppression du double announcement SR — le `<h3>` (cible du
+ *    `aria-labelledby`) verbalise le label court, et un unique `.sr-only`
+ *    porte la quantité longue. Le `.value` reste `aria-hidden`. Avant, le
+ *    rôle `group` répétait `label` puis `.sr-only` répétait `value + label`.
+ *    Maintenant, la lecture est : « groupe : <label> » puis (au focus
+ *    interne / via curseur AT) « <quantité formatée> ».
+ *  - F-N-6  : `idPrefix` optionnel permet d'éviter les collisions cross-sections.
+ */
+import { formatCount } from '../lib/stats/formatter';
+import { hashSlug } from '../lib/stats/slug';
+
+interface Props {
+  value: number;
+  label: string;
+  /** Libellé verbalisé pour les lecteurs d'écran (sinon `formatCount(value) + label`). */
+  srLabel?: string;
+  /** Suffixe court (ex. « podcasts »). Optionnel. */
+  unit?: string;
+  /** Préfixe d'id custom (F-N-6) pour éviter les collisions entre sections. */
+  idPrefix?: string;
+}
+
+const { value, label, srLabel, unit, idPrefix = 'stat' } = Astro.props;
+const display = formatCount(value);
+// F-H-9 : `.sr-only` ne doit PAS répéter le label (déjà annoncé via le
+// `<h3>` cible de `aria-labelledby`). On ne porte ici que la quantité
+// formatée longue (ou un override explicite via `srLabel`).
+const verbal = srLabel ?? display;
+const id = `${idPrefix}-${hashSlug(label)}`;
+---
+
+<article class="stat-card" role="group" aria-labelledby={id}>
+  <p class="value" aria-hidden="true">
+    <span class="num">{display}</span>
+    {unit && <span class="unit">{unit}</span>}
+  </p>
+  <h3 class="label" id={id}>{label}</h3>
+  {/* F-H-9 : unique verbalisation longue (« 2 866 recommandations »). Le
+      `<h3>` est déjà annoncé via aria-labelledby ; on évite donc la
+      duplication en gardant un seul `.sr-only` ici. */}
+  <span class="sr-only">{verbal}</span>
+</article>
+
+<style>
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius, 12px);
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .value {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .unit {
+    margin-left: 0.3rem;
+    font-size: 0.55em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .label {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

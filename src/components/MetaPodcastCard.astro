@@ -1,0 +1,136 @@
+---
+/**
+ * MetaPodcastCard — Carte podcast affichée dans la grille `/meta/`.
+ *
+ * A11y :
+ *   - Le titre est un lien (cible le détail interne `/meta/podcast/[slug]`).
+ *   - Le CTA externe a un `aria-label` explicite (« Ouvrir … dans un nouvel onglet »).
+ *   - `focus-visible` géré par les tokens globaux.
+ *
+ * Cf. ADR 0045.
+ */
+import { t } from '../i18n';
+import type { RegistryEntry } from '../lib/registry/consumer';
+
+interface Props {
+  entry: RegistryEntry;
+}
+const { entry } = Astro.props;
+const { registry, slug } = entry;
+const hosts = registry.podcast.hosts ?? [];
+const visitA11y = t('meta.cta.visitA11y', { site: registry.siteUrl });
+---
+
+<article class="meta-card" data-slug={slug}>
+  <header>
+    <h2 class="meta-card__title">
+      <a href={`/meta/podcast/${slug}`}>{registry.podcast.title}</a>
+    </h2>
+    {registry.podcast.tagline && (
+      <p class="meta-card__tagline">{registry.podcast.tagline}</p>
+    )}
+  </header>
+
+  {hosts.length > 0 && (
+    <p class="meta-card__hosts">{hosts.join(' · ')}</p>
+  )}
+
+  <dl class="meta-card__stats">
+    <div>
+      <dt>{t('meta.stats.items')}</dt>
+      <dd>{registry.stats.itemsCount}</dd>
+    </div>
+    <div>
+      <dt>{t('meta.stats.mentions')}</dt>
+      <dd>{registry.stats.mentionsCount}</dd>
+    </div>
+    <div>
+      <dt>{t('meta.stats.episodes')}</dt>
+      <dd>{registry.stats.episodesCount}</dd>
+    </div>
+  </dl>
+
+  <a
+    class="meta-card__cta"
+    href={registry.siteUrl}
+    rel="noopener noreferrer external"
+    target="_blank"
+    aria-label={visitA11y}
+  >
+    {t('meta.cta.visit')} <span class="meta-card__cta-icon" aria-hidden="true">↗</span>
+  </a>
+</article>
+
+<style>
+  /* F-N-2 : tokens design (--surface, --text, --muted, --accent) plutôt
+     que hex inline ad-hoc. F-M-15 : grille auto-fit pour s'adapter aux
+     containers étroits / aux écrans larges. */
+  .meta-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    border-radius: var(--radius, 0.5rem);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .meta-card__title {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+  .meta-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .meta-card__title a:hover,
+  .meta-card__title a:focus-visible {
+    text-decoration: underline;
+  }
+  .meta-card__tagline {
+    margin: 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .meta-card__hosts {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .meta-card__stats {
+    display: grid;
+    /* F-M-15 : auto-fit pour responsive sans casser la lisibilité. */
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+  }
+  .meta-card__stats > div {
+    text-align: center;
+  }
+  .meta-card__stats dt {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .meta-card__stats dd {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .meta-card__cta {
+    align-self: flex-start;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .meta-card__cta:hover,
+  .meta-card__cta:focus-visible {
+    text-decoration: underline;
+  }
+  .meta-card__cta-icon {
+    /* M24-14 — icône "↗" lien externe (a11y : aria-hidden, le label suffit). */
+    margin-left: 0.25rem;
+    font-weight: 400;
+  }
+</style>

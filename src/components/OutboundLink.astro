@@ -1,0 +1,92 @@
+---
+/**
+ * OutboundLink.astro — Wrapper anchor avec tracking clic sortant.
+ *
+ * Émet un `<a>` standard avec attributs `data-track="click"` que le script
+ * global (Layout.astro) intercepte pour envoyer un beacon à `/api/click`.
+ *
+ * Privacy-first (ADR 0046) :
+ *  - aucun handler inline (CSP-friendly),
+ *  - aucun pixel injecté en SSR,
+ *  - le client respecte `navigator.globalPrivacyControl`,
+ *  - dégradation gracieuse : si JS désactivé OU endpoint absent (mode
+ *    static), le lien fonctionne normalement, simplement pas tracké.
+ *
+ * A11y : préserve `aria-label` (slot text passé tel quel), focus-visible
+ * géré par la règle globale `:where(...):focus-visible` de global.css.
+ *
+ * R-P1-16 : `category` est désormais optionnel — si absent, on appelle
+ * `categorizeUrl(href)` (helper centralisé `lib/tracking/settings.ts`).
+ *
+ * M25-22 : `rel` est MERGÉ avec `noopener noreferrer` (pas overridé) pour
+ * garder ces protections même si l'utilisateur passe un `rel` custom.
+ *
+ * M25-23 : `data-reco-id` n'est ajouté QUE si défini (pas `?? undefined` —
+ * Astro gère mieux l'absence d'attribut quand la prop n'est pas passée).
+ */
+import type { ClickCategory } from '../lib/tracking/types';
+import { categorizeUrl } from '../lib/tracking/settings';
+
+interface Props {
+  href: string;
+  /** Si absent, dérivée via `categorizeUrl(href)`. */
+  category?: ClickCategory;
+  sourceId: string;
+  recoId?: string;
+  class?: string;
+  rel?: string;
+  target?: string;
+  title?: string;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  category,
+  sourceId,
+  recoId,
+  class: className,
+  rel,
+  target = '_blank',
+  title,
+  ariaLabel,
+} = Astro.props;
+
+// R-P1-16 : auto-catégorisation si non explicite.
+const resolvedCategory: ClickCategory = category ?? categorizeUrl(href);
+
+// M25-22 : merge rel — on garantit `noopener` et `noreferrer` pour les
+// liens externes ouverts en `_blank` (sinon tabnabbing). `external` reste
+// l'indicateur sémantique standard. On préserve l'ordre user d'abord.
+function mergeRel(userRel: string | undefined, isBlank: boolean): string {
+  const tokens = new Set(
+    (userRel ?? '')
+      .split(/\s+/)
+      .map((t) => t.trim())
+      .filter(Boolean),
+  );
+  if (isBlank) {
+    tokens.add('noopener');
+    tokens.add('noreferrer');
+  }
+  if (tokens.size === 0) tokens.add('external');
+  return Array.from(tokens).join(' ');
+}
+
+const resolvedRel = mergeRel(rel, target === '_blank');
+---
+
+<a
+  href={href}
+  target={target}
+  rel={resolvedRel}
+  class={className}
+  title={title}
+  aria-label={ariaLabel}
+  data-track="click"
+  data-category={resolvedCategory}
+  data-source-id={sourceId}
+  data-reco-id={recoId}
+>
+  <slot />
+</a>

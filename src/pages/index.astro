@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
 
 const sources = await getCollection('sources');
 const recos = await getCollection('recos');
@@ -17,6 +18,10 @@ const stats = new Map<string, SourceStats>();
 const epWithReco = new Map<string, Set<string>>(); // sourceId → guids d'épisodes
 for (const r of recos) {
   if (r.data.status === 'discarded') continue;
+  // Le compteur « N recos » sur la page d'accueil ne décompte QUE les vraies
+  // recommandations (kind=reco). Les citations restent visibles ailleurs mais
+  // ne sont pas annoncées comme « recommandées par le podcast ».
+  if (r.data.kind === 'citation') continue;
   const id = r.data.sourceId.id;
   const s = stats.get(id) ?? { recos: 0, confirmed: 0, episodes: 0 };
   s.recos += 1;
@@ -33,20 +38,36 @@ for (const [id, set] of epWithReco) {
 function fmt(n: number): string {
   return n.toLocaleString('fr-FR');
 }
+
+// JSON-LD : WebSite global (homepage). Cf. ADR 0021 §7.
+const homeUrl = new URL('/', Astro.site).toString();
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.siteName,
+  description: siteConfig.baseline,
+  url: homeUrl,
+};
 ---
 
-<Layout title="Reco — les recommandations des podcasts">
-  <header class="hero wrap">
+<Layout title="Reco — les recommandations des podcasts" jsonLd={websiteSchema}>
+  <header class="hero wrap" role="banner">
     <p class="kicker">Le catalogue des recos</p>
-    <h1>Tout ce que vos podcasts<br />vous ont conseillé.</h1>
+    {/* M18 : remplace <br /> par un <span class="line-break"> piloté en CSS,
+       pour que les lecteurs d'écran lisent une phrase fluide. */}
+    <h1>
+      <span class="line-break">Tout ce que vos podcasts</span>
+      <span class="line-break">vous ont conseillé.</span>
+    </h1>
     <p class="lede">
       Films, séries, livres, musiques… rassemblés, filtrables, avec des liens
       vers des plateformes indépendantes plutôt que les géants.
     </p>
   </header>
 
-  <main class="wrap">
-    <ul class="grid sources">
+  <main id="main" class="wrap">
+    <h2 class="visually-hidden">Podcasts disponibles</h2>
+    <ul class="grid sources" aria-label="Podcasts disponibles">
       {
         sources.map((s) => {
           const st = stats.get(s.id) ?? { recos: 0, confirmed: 0, episodes: 0 };
@@ -54,7 +75,7 @@ function fmt(n: number): string {
             <li class="src reveal">
               <a href={`/${s.id}`}>
                 <span class="src-count">{fmt(st.recos)} recos</span>
-                <h2>{s.data.title}</h2>
+                <h3>{s.data.title}</h3>
                 {s.data.tagline && <p class="src-tag">{s.data.tagline}</p>}
                 {s.data.hosts.length > 0 && (
                   <p class="src-hosts">par {s.data.hosts.join(' & ')}</p>
@@ -63,9 +84,12 @@ function fmt(n: number): string {
                   <span>{fmt(st.episodes)} épisodes</span>
                   {st.confirmed > 0 && (
                     <>
-                      <span class="dot">·</span>
-                      <span class="conf" title="Recommandations confirmées par 2 LLMs indépendants">
-                        ⭐ {fmt(st.confirmed)} confirmées
+                      <span class="dot" aria-hidden="true">·</span>
+                      <span
+                        class="conf"
+                        aria-label={`${fmt(st.confirmed)} recommandations confirmées par 2 LLMs indépendants`}
+                      >
+                        <span aria-hidden="true">⭐</span> {fmt(st.confirmed)} confirmées
                       </span>
                     </>
                   )}
@@ -77,10 +101,6 @@ function fmt(n: number): string {
       }
     </ul>
   </main>
-
-  <footer class="wrap foot">
-    <p>Projet ouvert et duplicable — une source = un podcast.</p>
-  </footer>
 </Layout>
 
 <style>
@@ -130,10 +150,16 @@ function fmt(n: number): string {
     letter-spacing: 0.06em;
     color: var(--accent);
   }
-  .src h2 {
+  .src h3 {
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     margin: 0.4rem 0 0.3rem;
   }
+  /* Force un retour à la ligne sur grand écran, fluide sur mobile.
+     M18 : sémantiquement neutre (le lecteur d'écran ignore le break). */
+  .line-break {
+    display: block;
+  }
+  /* Le pied de page est désormais monté par <Layout> via <SiteFooter>. */
   .src-tag {
     margin: 0;
     color: var(--text);
@@ -160,11 +186,5 @@ function fmt(n: number): string {
   .src-stats .conf {
     color: var(--accent);
     font-weight: 600;
-  }
-  .foot {
-    padding: 2rem 0 3rem;
-    color: var(--muted);
-    font-size: 0.85rem;
-    border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
   }
 </style>

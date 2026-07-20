@@ -1,0 +1,431 @@
+---
+/**
+ * ReportForm.astro — formulaire de signalement visiteur.
+ *
+ * Le challenge captcha est généré server-side au render de la page (token +
+ * question), et inclus en `<input hidden>`. Le visiteur saisit la réponse
+ * dans un champ texte ; le handler `/api/report` vérifie via HMAC.
+ *
+ * A11y :
+ *  - `<fieldset>`/`<legend>` pour le groupe radio catégorie ;
+ *  - `aria-required` + `aria-describedby` pour les contraintes ;
+ *  - `aria-live="polite"` sur la zone de feedback (succès/erreur) ;
+ *  - honeypot `tabindex="-1"`, `aria-hidden="true"`, label visuellement caché.
+ *
+ * Le form POST vers `/api/report` en `application/x-www-form-urlencoded`
+ * (compatible avec `<form>` natif sans JS). Un script de progressive
+ * enhancement intercepte le submit pour afficher le statut sans recharger.
+ */
+import { generateChallenge } from '../lib/reports/captcha.js';
+import { REPORT_LIMITS } from '../lib/reports/types.js';
+import { siteConfig } from '../config/site.js';
+import { t } from '../i18n';
+
+interface Props {
+  sourceId: string;
+  recoId: string;
+  /** Titre de la reco signalée (affiché en contexte). */
+  recoTitle?: string;
+}
+
+const { sourceId, recoId, recoTitle } = Astro.props;
+const challenge = generateChallenge();
+
+// P0-2 — Fallback `mailto:` si `siteConfig.contactEmail` est défini.
+// Permet aux forks en build static (sans adapter SSR) de continuer à
+// recevoir des signalements sans perte de saisie utilisateur.
+const contactEmail = siteConfig.contactEmail;
+const mailtoSubject = encodeURIComponent(
+  `${t('report.form.mailto.subjectPrefix')} ${recoTitle ?? recoId}`,
+);
+const mailtoBody = encodeURIComponent(
+  `${t('report.form.mailto.bodySource')} : ${sourceId}\n${t('report.form.mailto.bodyReco')} : ${recoId}${recoTitle ? ` (${recoTitle})` : ''}\n\n` +
+    `${t('report.form.mailto.bodyCategoryHint')}\n\n` +
+    `${t('report.form.mailto.bodyDetails')}\n`,
+);
+const mailtoHref = contactEmail
+  ? `mailto:${contactEmail}?subject=${mailtoSubject}&body=${mailtoBody}`
+  : null;
+---
+
+<form
+  class="report-form"
+  method="POST"
+  action="/api/report"
+  novalidate
+  data-i18n-sending={t('report.form.status.sending')}
+  data-i18n-success={t('report.form.status.success')}
+  data-i18n-error-prefix={t('report.form.status.errorPrefix')}
+  data-i18n-endpoint-405={t('report.form.status.endpoint405')}
+  data-i18n-network={t('report.form.status.network')}
+  data-i18n-mailto-category={t('report.form.mailto.bodyCategoryLabel')}
+  data-i18n-mailto-details={t('report.form.mailto.bodyDetails')}
+  data-i18n-mailto-from={t('report.form.mailto.bodyFrom')}
+>
+  <input type="hidden" name="sourceId" value={sourceId} />
+  <input type="hidden" name="recoId" value={recoId} />
+  <input type="hidden" name="captchaToken" value={challenge.token} />
+
+  {recoTitle && (
+    <p class="context">
+      {t('report.form.context.prefix')} <strong>{recoTitle}</strong>
+    </p>
+  )}
+
+  <fieldset class="categories">
+    <legend>{t('report.form.category.legend')} <span aria-hidden="true">*</span></legend>
+    <label>
+      <input type="radio" name="category" value="error" required aria-required="true" />
+      <span>{t('report.form.category.error')}</span>
+    </label>
+    <label>
+      <input type="radio" name="category" value="broken-link" />
+      <span>{t('report.form.category.brokenLink')}</span>
+    </label>
+    <label>
+      <input type="radio" name="category" value="inappropriate" />
+      <span>{t('report.form.category.inappropriate')}</span>
+    </label>
+    <label>
+      <input type="radio" name="category" value="suggestion" />
+      <span>{t('report.form.category.suggestion')}</span>
+    </label>
+  </fieldset>
+
+  <div class="field">
+    <label for="report-details">
+      {t('report.form.details.label')} <span aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="report-details"
+      name="details"
+      rows="5"
+      maxlength={REPORT_LIMITS.detailsMax}
+      minlength="5"
+      required
+      aria-required="true"
+      aria-describedby="report-details-hint"
+    ></textarea>
+    <p id="report-details-hint" class="hint">
+      {t('report.form.details.hint', { max: REPORT_LIMITS.detailsMax })}
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="report-name">{t('report.form.name.label')}</label>
+      <input
+        id="report-name"
+        type="text"
+        name="name"
+        maxlength={REPORT_LIMITS.nameMax}
+        autocomplete="name"
+      />
+    </div>
+    <div class="field">
+      <label for="report-email">{t('report.form.email.label')}</label>
+      <input
+        id="report-email"
+        type="email"
+        name="email"
+        maxlength={REPORT_LIMITS.emailMax}
+        autocomplete="email"
+        aria-describedby="report-email-hint"
+      />
+      <p id="report-email-hint" class="hint">
+        {t('report.form.email.hint')}
+      </p>
+    </div>
+  </div>
+
+  <label class="checkbox">
+    <input type="checkbox" name="wantCredit" value="on" />
+    <span>{t('report.form.wantCredit')}</span>
+  </label>
+
+  <div class="field captcha">
+    <label for="report-captcha">
+      {challenge.question} <span aria-hidden="true">*</span>
+    </label>
+    <input
+      id="report-captcha"
+      type="text"
+      inputmode="numeric"
+      pattern="-?[0-9]+"
+      name="captchaAnswer"
+      required
+      aria-required="true"
+      autocomplete="off"
+    />
+  </div>
+
+  {/* Honeypot (H16-1) : visuellement déporté hors écran (PAS display:none, que
+      certains bots détectent et skip). Nom non-générique (`url_unused`) pour
+      éviter l'auto-fill Chrome qui remplirait `website` même sans intention.
+      `autocomplete="false"` (valeur off-spec qui désactive en pratique). */}
+  <div class="honeypot" aria-hidden="true">
+    <label for="report-url-unused">{t('report.form.honeypot')}</label>
+    <input
+      id="report-url-unused"
+      type="text"
+      name="url_unused"
+      tabindex="-1"
+      autocomplete="false"
+    />
+  </div>
+
+  <div class="actions">
+    <button type="submit">{t('report.form.submit')}</button>
+    {mailtoHref && (
+      <a
+        class="mailto-fallback"
+        href={mailtoHref}
+        data-report-mailto
+        hidden
+      >{t('report.form.mailto.label')}</a>
+    )}
+  </div>
+
+  {mailtoHref && (
+    <noscript>
+      <p class="hint">
+        {t('report.form.mailto.noscriptPrefix')}
+        <a href={mailtoHref}>{t('report.form.mailto.noscriptLink')}</a>.
+      </p>
+    </noscript>
+  )}
+
+  <p class="status" aria-live="polite" role="status"></p>
+</form>
+
+<style>
+  .report-form {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 640px;
+  }
+  .context {
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    background: color-mix(in oklab, var(--text) 5%, transparent);
+    border-radius: var(--radius, 8px);
+    font-size: 0.95rem;
+  }
+  fieldset.categories {
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    border-radius: var(--radius, 8px);
+    padding: 0.6rem 0.9rem 0.8rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+  fieldset.categories legend {
+    padding: 0 0.3rem;
+    font-weight: 600;
+  }
+  fieldset.categories label {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  .field {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .field label {
+    font-weight: 600;
+  }
+  .field .hint {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .row {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 540px) {
+    .row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
+    border-radius: var(--radius, 6px);
+    background: var(--surface);
+    color: var(--text);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 6em;
+  }
+  .checkbox {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+  }
+  .captcha label {
+    font-weight: 600;
+  }
+  .captcha input {
+    max-width: 8em;
+  }
+  .honeypot {
+    /* H16-1 : pas display:none (détectable par les bots modernes qui
+       skip les champs cachés). Déport off-screen + opacity 0 + no pointer.
+       Les humains ne le voient pas, les screen readers le sautent
+       (aria-hidden au parent), mais les bots qui parsent et remplissent
+       tous les `<input>` du DOM le touchent quand même. */
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .mailto-fallback {
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: var(--radius, 6px);
+    text-decoration: none;
+  }
+  .mailto-fallback:hover,
+  .mailto-fallback:focus-visible {
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+  button[type='submit'] {
+    font: inherit;
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+    background: var(--accent);
+    color: var(--accent-text, #fff);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius, 6px);
+    cursor: pointer;
+  }
+  button[type='submit']:hover {
+    filter: brightness(1.05);
+  }
+  .status {
+    margin: 0;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+  }
+  .status.is-ok {
+    color: #2a7a2a;
+  }
+  .status.is-error {
+    color: #c84a4a;
+  }
+</style>
+
+<script>
+  /**
+   * Progressive enhancement : intercepte le submit pour afficher un feedback
+   * sans recharger la page. Sans JS, le `<form>` POST natif fonctionne
+   * (l'endpoint renvoie une réponse JSON 200 que le navigateur affiche brute,
+   * mais le report est bien enregistré).
+   */
+  const form = document.querySelector<HTMLFormElement>('.report-form');
+  const status = form?.querySelector<HTMLElement>('.status');
+  const mailtoBtn = form?.querySelector<HTMLAnchorElement>(
+    '[data-report-mailto]',
+  );
+  if (form && status) {
+    const ds = form.dataset;
+    const I18N = {
+      sending: ds.i18nSending ?? 'Envoi en cours…',
+      success: ds.i18nSuccess ?? 'Merci ! Signalement envoyé ({id}).',
+      errorPrefix: ds.i18nErrorPrefix ?? 'Erreur',
+      endpoint405: ds.i18nEndpoint405 ?? '',
+      network: ds.i18nNetwork ?? '',
+      mailtoCategory: ds.i18nMailtoCategory ?? 'Catégorie',
+      mailtoDetails: ds.i18nMailtoDetails ?? 'Détails :',
+      mailtoFrom: ds.i18nMailtoFrom ?? 'De',
+    };
+    /**
+     * P0-2 — Si le POST `/api/report` échoue avec 405 ("method not
+     * allowed" : build static sans adapter SSR) ou un network error,
+     * on révèle le bouton "Envoyer par email" (mailto: pré-rempli)
+     * pour ne pas perdre la saisie de l'utilisateur. Cf. fork-guide
+     * §reports.
+     */
+    const revealMailtoFallback = () => {
+      if (!mailtoBtn) return;
+      // Injecte les valeurs saisies dans le body du mailto pour ne
+      // pas faire perdre la rédaction au visiteur.
+      const fd = new FormData(form);
+      const cat = String(fd.get('category') ?? '');
+      const details = String(fd.get('details') ?? '');
+      const name = String(fd.get('name') ?? '');
+      const email = String(fd.get('email') ?? '');
+      const url = new URL(mailtoBtn.href);
+      const baseBody = url.searchParams.get('body') ?? '';
+      const enrichedBody =
+        baseBody +
+        (cat ? `\n${I18N.mailtoCategory} : ${cat}` : '') +
+        (details ? `\n\n${I18N.mailtoDetails}\n${details}` : '') +
+        (name ? `\n\n${I18N.mailtoFrom} : ${name}` : '') +
+        (email ? ` <${email}>` : '');
+      url.searchParams.set('body', enrichedBody);
+      mailtoBtn.href = url.toString();
+      mailtoBtn.hidden = false;
+    };
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      status.classList.remove('is-ok', 'is-error');
+      status.textContent = I18N.sending;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        // P0-2 : 405 = endpoint non-déployé (static sans adapter).
+        if (res.status === 405) {
+          status.classList.add('is-error');
+          status.textContent = I18N.endpoint405;
+          revealMailtoFallback();
+          return;
+        }
+        const data = (await res.json().catch(() => ({}))) as {
+          success?: boolean;
+          id?: string;
+          error?: string;
+        };
+        if (res.ok && data.success) {
+          status.classList.add('is-ok');
+          status.textContent = I18N.success.replace('{id}', data.id ?? '');
+          form.reset();
+        } else {
+          status.classList.add('is-error');
+          status.textContent = `${I18N.errorPrefix} : ${data.error ?? res.statusText}`;
+        }
+      } catch (err) {
+        // Network error → fallback mailto si dispo.
+        status.classList.add('is-error');
+        status.textContent = I18N.network;
+        revealMailtoFallback();
+        console.error(err);
+      }
+    });
+  }
+</script>

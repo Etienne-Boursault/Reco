@@ -1,0 +1,223 @@
+---
+/**
+ * /[source]/stats — Statistiques publiques par source.
+ *
+ * Cf. ADR 0047. Variante filtrée de `/stats` (R-P3-31 : parité maintenue).
+ *
+ * Issues fixées : voir `/stats.astro` (M26-14, M26-16, M26-18, M26-20,
+ * R-P1-24, R-P2-28). Le sidecar lu est ici scoping source :
+ * `tools/output/stats/<source>/stats.json`.
+ */
+// F-M-17 — `node:fs` synchrone volontaire : exécution **build-time**
+// Astro, lecture sidecar < 1 ms, pas de gain à `fs/promises`. Cohérent
+// avec `/stats.astro`.
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import StatCard from '../../components/StatCard.astro';
+import TopList from '../../components/TopList.astro';
+import StatChart from '../../components/StatChart.astro';
+import { t } from '../../i18n';
+import { loadStatsForPage } from '../../lib/stats/page';
+import { statsSnapshotSchema, type StatsSnapshot } from '../../lib/stats/types';
+import { siteConfig } from '../../config/site';
+// F-M-4 : mapping de type brut → libellé humain.
+import { TYPE_LABELS, TYPE_LABELS_PLURAL } from '../../utils/recoTypes';
+
+// F-CRIT-3 — page statique générée au build.
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+
+function readSidecar(sourceId: string): StatsSnapshot | null {
+  const path = join(process.cwd(), 'tools', 'output', 'stats', sourceId, 'stats.json');
+  try {
+    if (!existsSync(path)) return null;
+    return statsSnapshotSchema.parse(JSON.parse(readFileSync(path, 'utf-8')));
+  } catch {
+    return null;
+  }
+}
+
+const sidecar = readSidecar(source.id);
+// F-M-18 — pas de filtrage en doublon ici : `buildStatsSnapshot({sourceId})`
+// gère le filtrage source de façon SSOT (cohérent global ↔ source).
+const collections = sidecar
+  ? { sources: [], episodes: [], mentions: [], items: [] }
+  : {
+      sources: [{ id: source.id, hosts: data.hosts ?? [] }],
+      episodes: (await getCollection('episodes')).map((e) => ({
+        sourceId: e.data.sourceId.id,
+        date: e.data.date ?? null,
+      })),
+      mentions: (await getCollection('mentions')).map((m) => ({
+        itemId: m.data.itemId,
+        recommendedBy: m.data.recommendedBy ?? null,
+        status: m.data.status,
+        sourceRef: { sourceId: m.data.sourceRef.sourceId },
+      })),
+      items: (await getCollection('items')).map((i) => ({
+        id: i.data.id,
+        title: i.data.title,
+        types: i.data.types,
+      })),
+    };
+
+const {
+  snapshot,
+  generatedLocal,
+  topGuests,
+  topWorks: topWorksRaw,
+  distributionBars: distributionBarsRaw,
+  monthlyBars,
+  jsonLd,
+} = loadStatsForPage({
+  sourceId: source.id,
+  sidecar,
+  collections,
+  pageUrl: new URL(`/${source.id}/stats`, Astro.site).toString(),
+  datasetName: `${t('stats.title')} — ${data.title}`,
+  datasetDescription: t('stats.subtitle.source', { source: data.title }),
+  publisher: { name: siteConfig.siteName },
+});
+
+// F-M-4 : map labels bruts → libellés humains (parité avec /stats).
+const distributionBars = distributionBarsRaw.map((b) => ({
+  ...b,
+  label: TYPE_LABELS_PLURAL[b.label] ?? b.label,
+}));
+const topWorks = topWorksRaw.map((w) => ({
+  ...w,
+  sub: w.sub ? (TYPE_LABELS[w.sub] ?? w.sub) : w.sub,
+}));
+---
+
+<Layout
+  title={`${t('stats.title')} — ${data.title}`}
+  description={t('stats.subtitle.source', { source: data.title })}
+  theme={data.theme}
+  ogSlug={source.id}
+  jsonLd={jsonLd}
+>
+  <header class="hero wrap">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span>
+      <span>{t('stats.back.source')} {data.title}</span>
+    </a>
+    <h1>{t('stats.title')}</h1>
+    <p class="lede">{t('stats.subtitle.source', { source: data.title })}</p>
+    <p class="generated">{t('stats.generatedAt', { date: generatedLocal })}</p>
+  </header>
+
+  <main id="main" class="wrap">
+    <section aria-labelledby="global">
+      <h2 id="global">{t('stats.heading.global')}</h2>
+      <div class="cards">
+        <StatCard value={snapshot.global.episodesCount} label={t('stats.card.episodes')} />
+        <StatCard value={snapshot.global.recommendationsCount} label={t('stats.card.recommendations')} />
+        <StatCard value={snapshot.global.uniqueWorksCount} label={t('stats.card.uniqueWorks')} />
+        <StatCard value={snapshot.global.uniqueGuestsCount} label={t('stats.card.uniqueGuests')} />
+      </div>
+    </section>
+
+    <section aria-labelledby="top-guests">
+      <h2 id="top-guests">{t('stats.heading.topGuests')}</h2>
+      <TopList
+        caption={t('stats.heading.topGuests')}
+        rows={topGuests}
+        countHeader={t('stats.col.mentions')}
+        emptyMessage={t('stats.empty.topGuests')}
+      />
+    </section>
+
+    <section aria-labelledby="top-works">
+      <h2 id="top-works">{t('stats.heading.topWorks')}</h2>
+      <TopList
+        caption={t('stats.heading.topWorks')}
+        rows={topWorks}
+        countHeader={t('stats.col.mentions')}
+        emptyMessage={t('stats.empty.topWorks')}
+      />
+    </section>
+
+    <section aria-labelledby="dist">
+      <h2 id="dist">{t('stats.heading.typeDistribution')}</h2>
+      <StatChart
+        title={t('stats.heading.typeDistribution')}
+        bars={distributionBars}
+        valueHeader={t('stats.col.mentions')}
+        emptyKey="stats.empty.typeDistribution"
+      />
+      <p class="note muted">{t('stats.typeDistribution.note')}</p>
+    </section>
+
+    <section aria-labelledby="monthly">
+      <h2 id="monthly">{t('stats.heading.monthly')}</h2>
+      <StatChart
+        title={t('stats.heading.monthly')}
+        bars={monthlyBars}
+        valueHeader={t('stats.col.episodes')}
+        emptyKey="stats.empty.monthly"
+      />
+    </section>
+
+    <p class="privacy muted">{t('stats.privacyNote')}</p>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover { color: var(--accent); }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 0.5rem 0 0.6rem;
+  }
+  .lede {
+    color: var(--text);
+    max-width: 60ch;
+    margin: 0 0 0.4rem;
+  }
+  .generated {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  main { padding-bottom: 4rem; }
+  main section { margin: 2.2rem 0; }
+  main h2 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin: 0 0 1rem;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .note {
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0;
+  }
+  .privacy {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+  }
+  .muted { color: var(--muted); }
+</style>

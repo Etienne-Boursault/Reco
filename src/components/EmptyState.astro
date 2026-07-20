@@ -1,0 +1,42 @@
+---
+/**
+ * EmptyState.astro — composant générique « état vide ».
+ *
+ * Utilise `role="status"` pour que le contenu soit annoncé par les lecteurs
+ * d'écran lorsqu'il apparaît dynamiquement, et reste visible et accessible
+ * au clavier (pas de focus-trap, pas d'élément interactif par défaut).
+ *
+ * Slot facultatif pour une action (lien/bouton) en complément du message.
+ */
+interface Props {
+  /** Texte principal. Court et explicite (« Aucune recommandation »). */
+  message: string;
+  /** Texte d'aide optionnel sous le message (instruction technique, etc.). */
+  hint?: string;
+}
+
+const { message, hint } = Astro.props;
+---
+
+<p class="empty" role="status">
+  <span class="empty-msg">{message}</span>
+  {hint && <span class="empty-hint">{hint}</span>}
+  <slot />
+</p>
+
+<style>
+  .empty {
+    color: var(--muted);
+    padding: 2rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .empty-msg {
+    font-weight: 500;
+  }
+  .empty-hint {
+    font-size: 0.9em;
+    opacity: 0.85;
+  }
+</style>

@@ -1,0 +1,362 @@
+---
+/**
+ * Page canonique d'une œuvre (item) — mentions cross-épisodes + trending.
+ *
+ * Route : `/<source>/oeuvre/<itemId>` (statique). Cf. roadmap item #11 et
+ * ADR 0032. Une route par item ayant ≥1 mention visible (non-discarded)
+ * dans la source courante. Source des données : collections `items`,
+ * `mentions`, `episodes` (cf. content.config.ts).
+ *
+ * SEO : JSON-LD typé (Movie/Book/MusicAlbum/… via recoToSchema), image OG
+ * fallback `/og/default.png` (le générateur Satori n'est pas étendu ici
+ * pour ne pas empiéter sur la zone du Dev #15/#16).
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import MentionsTimeline from '../../../components/MentionsTimeline.astro';
+import TrendingBadge from '../../../components/TrendingBadge.astro';
+import WorkCard from '../../../components/WorkCard.astro';
+import { TYPE_EMOJIS, TYPE_LABELS } from '../../../utils/recoTypes';
+import { recoToSchema } from '../../../lib/seo/jsonld';
+import {
+  buildWorkIndex,
+  similarByCreator,
+  workExternalLinks,
+  type ItemLike,
+  type MentionLike,
+  type EpisodeLike,
+} from '../../../lib/work/aggregator';
+import { t } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  const items = await getCollection('items');
+  const mentions = await getCollection('mentions');
+  const episodes = await getCollection('episodes');
+
+  const paths: Array<Record<string, unknown>> = [];
+
+  for (const source of sources) {
+    const sId = source.id;
+    // entry.id pour la collection `items` = chemin relatif sans extension
+    // (ex. `un-bon-moment/00080c17`). On filtre sur le préfixe dossier
+    // pour garantir l'isolation par source.
+    const sItems: ItemLike[] = items
+      .filter((it) => it.id.startsWith(`${sId}/`))
+      .map((it) => ({
+        id: it.data.id,
+        title: it.data.title,
+        types: it.data.types,
+        creator: it.data.creator ?? null,
+        year: it.data.year ?? null,
+        externalIds: (it.data.externalIds ?? {}) as Record<string, unknown>,
+        customLinks: it.data.customLinks ?? [],
+        watchProviders: it.data.watchProviders ?? [],
+      }));
+
+    // Dédup par id (au cas où deux sources auraient un même itemId).
+    const dedupItems = new Map<string, ItemLike>();
+    for (const it of sItems) dedupItems.set(it.id, it);
+
+    const sMentions: MentionLike[] = mentions
+      .filter((m) => m.data.sourceRef.sourceId === sId)
+      .map((m) => ({
+        id: m.data.id,
+        itemId: m.data.itemId,
+        sourceRef: {
+          sourceId: m.data.sourceRef.sourceId,
+          episodeGuid: m.data.sourceRef.episodeGuid ?? null,
+          timestamp: m.data.sourceRef.timestamp ?? null,
+          transcriptSource: m.data.sourceRef.transcriptSource ?? null,
+        },
+        recommendedBy: m.data.recommendedBy ?? null,
+        quote: m.data.quote ?? null,
+        kind: m.data.kind,
+        guestWork: m.data.guestWork ?? null,
+        status: m.data.status,
+      }));
+
+    const sEpisodes: EpisodeLike[] = episodes
+      .filter((e) => e.data.sourceId.id === sId)
+      .map((e) => ({
+        guid: e.data.guid,
+        title: e.data.title,
+        youtubeTitle: e.data.youtubeTitle,
+        number: e.data.number,
+        season: e.data.season,
+        date: e.data.date,
+        youtubeUrl: e.data.youtubeUrl,
+      }));
+
+    const index = buildWorkIndex({
+      sourceId: sId,
+      items: Array.from(dedupItems.values()),
+      mentions: sMentions,
+      episodes: sEpisodes,
+    });
+
+    const allItems = Array.from(dedupItems.values());
+    for (const [itemId, work] of index) {
+      const similar = similarByCreator(work.item, allItems, 3);
+      paths.push({
+        params: { source: sId, itemId },
+        props: {
+          source,
+          work,
+          similar,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { source, work, similar } = Astro.props;
+const data = source.data;
+const { item, mentions, mentionCount, recoCount, trending } = work;
+
+// L4 — Le libellé « Recommandée N fois » ne compte QUE les recommandations
+// (recoCount = mentions hors citation, œuvres d'invité·es incluses). Une œuvre
+// seulement évoquée (recoCount === 0) bascule sur « Mentionnée » (total des
+// mentions). La timeline ci-dessous affiche, elle, TOUTES les mentions.
+const statLabel =
+  recoCount > 0
+    ? recoCount > 1
+      ? t('work.stats.reco.many', { count: recoCount })
+      : t('work.stats.reco.one')
+    : mentionCount > 1
+      ? t('work.stats.mention.many', { count: mentionCount })
+      : t('work.stats.mention.one');
+
+const types = item.types ?? [];
+const typeEmojis = types.map((tp: string) => ({
+  emoji: TYPE_EMOJIS[tp] ?? '✨',
+  label: TYPE_LABELS[tp] ?? tp,
+}));
+const typeTitle = typeEmojis.map((te: { label: string }) => te.label).join(', ');
+
+const links = workExternalLinks(item);
+
+// JSON-LD : schema.org typé selon le premier type de l'item. Le mapping
+// recoType→schema.org couvre déjà film/livre/album/etc. Le fallback est
+// CreativeWork pour les types inconnus (ex. `article`).
+const pageUrl = new URL(
+  `/${source.id}/oeuvre/${item.id}`,
+  Astro.site,
+).toString();
+const jsonLd = [
+  recoToSchema({
+    type: types[0] ?? 'autre',
+    title: item.title,
+    author: item.creator ?? undefined,
+    description: item.creator
+      ? `${item.title} — ${item.creator}`
+      : item.title,
+    url: pageUrl,
+  }),
+];
+
+const descriptionBits: string[] = [];
+descriptionBits.push(
+  `${item.title}${item.creator ? ` (${item.creator})` : ''}`,
+);
+descriptionBits.push(
+  recoCount > 0
+    ? recoCount > 1
+      ? t('work.description.reco.many', { count: recoCount, source: data.title })
+      : t('work.description.reco.one', { source: data.title })
+    : mentionCount > 1
+      ? t('work.description.mention.many', { count: mentionCount, source: data.title })
+      : t('work.description.mention.one', { source: data.title }),
+);
+const description = descriptionBits.join(' — ').slice(0, 160);
+const pageTitle = item.creator
+  ? `${item.title} — ${item.creator}`
+  : item.title;
+---
+
+<Layout
+  title={pageTitle}
+  description={description}
+  ogSlug={`${source.id}/oeuvre/${item.id}`}
+  ogType="article"
+  theme={data.theme}
+  jsonLd={jsonLd}
+>
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{data.title}</span>
+    </a>
+
+    <div class="work-hero">
+      <div class="work-types" aria-label={typeTitle}>
+        {typeEmojis.map((tp: { emoji: string; label: string }) => (
+          <span class="work-emoji" role="img" title={tp.label}>
+            <span aria-hidden="true">{tp.emoji}</span>
+            <span class="visually-hidden">{tp.label}</span>
+          </span>
+        ))}
+      </div>
+      <h1>{item.title}</h1>
+      <div class="work-sub">
+        {item.creator && <span class="creator">{item.creator}</span>}
+        {item.year && (
+          <span class="year" aria-label={t('work.year.a11y', { year: item.year })}>· {item.year}</span>
+        )}
+      </div>
+
+      <div class="work-stats">
+        <span class="count">{statLabel}</span>
+        {trending && <TrendingBadge count={mentionCount} />}
+      </div>
+
+      {links.length > 0 && (
+        <ul class="work-links" aria-label={t('work.links.a11y')}>
+          {links.map((l) => (
+            <li>
+              <a
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  'work-link',
+                  { indie: l.ethics === 'indie' },
+                  { avoid: l.ethics === 'avoid' },
+                ]}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section aria-labelledby="mentions-heading">
+      <h2 id="mentions-heading" class="sec-title">
+        {mentionCount > 1
+          ? t('work.heading.mention.many', { count: mentionCount })
+          : t('work.heading.mention.one')}
+      </h2>
+      <MentionsTimeline sourceId={source.id} mentions={mentions} />
+    </section>
+
+    {similar.length > 0 && (
+      <section aria-labelledby="similar-heading" class="similar">
+        <h2 id="similar-heading" class="sec-title">{t('work.heading.similar')}</h2>
+        <ul class="similar-grid">
+          {similar.map((s) => (
+            <li>
+              <WorkCard sourceId={source.id} item={s} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .head {
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0 1.5rem;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .work-hero {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .work-types {
+    display: flex;
+    gap: 0.35rem;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .work-emoji {
+    display: inline-flex;
+  }
+  .work-hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin: 0;
+  }
+  .work-sub {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  .work-sub .creator {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .work-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .work-stats .count {
+    font-weight: 600;
+  }
+  .work-links {
+    list-style: none;
+    padding: 0;
+    margin: 0.6rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35em 0.8em;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .work-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .work-link.indie {
+    border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  }
+  .work-link.avoid {
+    opacity: 0.55;
+  }
+  main {
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .sec-title {
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+    margin: 0 0 1rem;
+  }
+  .similar-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.7rem;
+  }
+</style>

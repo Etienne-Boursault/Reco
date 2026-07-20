@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css';
+import MetaTags from '../components/MetaTags.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SearchPalette from '../components/SearchPalette.astro';
+import { t, defaultLocale, type Locale } from '../i18n';
 
 interface ThemeColors {
   bg: string;
@@ -30,6 +34,19 @@ interface Props {
    *  Utilisé pour les pages internes (ex. `/<source>/verifier`) qu'on ne
    *  veut pas voir indexées par les moteurs de recherche. */
   noindex?: boolean;
+  /** Slug de la carte OG dynamique (sans extension). Si fourni, l'image OG
+   *  pointe vers `/og/<slug>.png` générée build-time par Satori. Ignoré si
+   *  `ogImage` est explicitement fourni (priorité à l'image manuelle, ex.
+   *  thumbnail YouTube d'épisode). Cf. ADR 0021. */
+  ogSlug?: string;
+  /** Bloc JSON-LD (schema.org) à embarquer dans `<head>`. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Code locale (fr par défaut). Une source peut surcharger via
+   *  `source.data.lang`. Cf. i18n/index.ts et ADR 0026. */
+  lang?: Locale;
+  /** Si vrai (défaut), monte le `<SiteFooter>` global. Mettre à `false`
+   *  pour les pages internes qui ont leur propre footer (rare). */
+  showFooter?: boolean;
 }
 
 const {
@@ -39,12 +56,23 @@ const {
   ogType = 'website',
   theme,
   noindex = false,
+  ogSlug,
+  jsonLd,
+  lang = defaultLocale,
+  showFooter = true,
 } = Astro.props;
 
 // URL canonique de la page (utilise `site` de astro.config + le pathname courant).
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-// Image de partage : celle de la page, sinon une image par défaut à la racine.
-const socialImage = new URL(ogImage ?? '/og-default.png', Astro.site).toString();
+// Image de partage : priorité à `ogImage` explicite (ex. thumbnail YT),
+// sinon carte OG générée par Satori sous `/og/<slug>.png`,
+// sinon image de repli statique à la racine. Cf. ADR 0021.
+const ogPath = ogImage
+  ? ogImage
+  : ogSlug
+    ? `/og/${ogSlug}.png`
+    : '/og/default.png';
+const socialImage = new URL(ogPath, Astro.site).toString();
 
 const c = theme?.colors;
 // Variables CSS de thème injectées par source (multi-podcast).
@@ -63,38 +91,130 @@ const themeColor = c?.bg ?? '#0e0e10';
 ---
 
 <!doctype html>
-<html lang="fr" style={styleVars}>
+<html lang={lang} style={styleVars}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content={themeColor} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonicalURL} />
-
-    {/* Open Graph (Facebook, LinkedIn…) */}
-    <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={socialImage} />
-    <meta property="og:locale" content="fr_FR" />
-
-    {/* Twitter Cards */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={socialImage} />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+    <MetaTags
+      title={title}
+      description={description}
+      canonicalUrl={canonicalURL}
+      socialImage={socialImage}
+      ogType={ogType}
+      noindex={noindex}
+      themeColor={themeColor}
+      jsonLd={jsonLd}
     />
+
+    {/* P0-4 (Fixer final Phase 2, 2026-06-11) : Anton retiré. Le chargement
+       Google Fonts (preconnect googleapis + gstatic + CSS Anton) exposait
+       l'IP du visiteur à Google côté CDN, ce qui contredit le positionnement
+       "no tracker tiers" d'ADR 0034. Inter (self-hosté via @fontsource) est
+       conservé pour heading et body. Cf. ADR 0029 (fonts embedded) §Anton
+       retiré 2026-06-11. */}
   </head>
   <body>
+    {/* A11y — skip link WCAG 2.4.1 : permet de passer la nav et d'atterrir
+       directement sur le contenu principal (id="main" sur le <main> des pages). */}
+    <a href="#main" class="skip-link">{t('a11y.skipLink', lang)}</a>
+    {/* A11y — message <noscript> (L9) : informatif, non bloquant. */}
+    <noscript>
+      <p class="noscript-warning">{t('a11y.noscript', lang)}</p>
+    </noscript>
     <slot />
+    {showFooter && <SiteFooter />}
+
+    {/* P0-1 (Fixer final Phase 2, 2026-06-11) : palette globale Cmd+K /
+       Ctrl+K / "/" — monté ici pour être disponible sur TOUTE page (avant,
+       seule `/recherche` la montait). L'index `/search.json` est chargé
+       lazy au premier open. Cf. ADR 0035. */}
+    <SearchPalette />
+
+    {/* A11y — H5 : gestion centralisée du fallback icône logo (img onerror
+       inline serait CSP-unfriendly). Délégation d'événement sur error
+       capture des <img data-fallback> ; cache l'image et révèle le <span>
+       sibling. Cf. RecoCard.astro. */}
+    <script>
+      // Capture phase = `error` ne bulle pas.
+      document.addEventListener(
+        'error',
+        (e) => {
+          const img = e.target;
+          if (!(img instanceof HTMLImageElement)) return;
+          if (!img.dataset.fallback) return;
+          img.style.display = 'none';
+          const sibling = img.nextElementSibling;
+          if (sibling instanceof HTMLElement) sibling.hidden = false;
+        },
+        true,
+      );
+    </script>
+
+    {/* Tracking clics sortants (item #25 / ADR 0046).
+       Délégation `click` sur tout `[data-track="click"]`. Envoie un beacon
+       à `/api/click` (sendBeacon prioritaire, fetch keepalive en fallback).
+       Respecte `navigator.globalPrivacyControl` : silencieux si opt-out.
+       Si l'endpoint n'existe pas (mode static), l'erreur réseau est
+       avalée — le clic suit son cours normalement. */}
+    <script>
+      (() => {
+        const nav = navigator;
+        if (nav.globalPrivacyControl === true) return;
+        // F-H-1 — Skip tracking sur :
+        //   1. les pages du méta-site (`/meta/*`), white-listées explicitement
+        //      (privacy : pas de signal d'audience sur l'annuaire),
+        //   2. les pages `noindex` (regex stricte sur `content="noindex"` ou
+        //      `content="noindex,*` pour éviter qu'un `description="...noindex
+        //      legacy..."` ne déclenche le filtre par accident).
+        // Cf. ADR 0040, ADR 0046, cross-fixer MX-1.
+        if (location.pathname === '/meta' || location.pathname.startsWith('/meta/')) {
+          return;
+        }
+        const robots = document.querySelector('meta[name="robots"]');
+        if (robots) {
+          const content = (robots.getAttribute('content') ?? '').trim().toLowerCase();
+          if (content === 'noindex' || content.startsWith('noindex,') || content.startsWith('noindex ')) {
+            return;
+          }
+        }
+        document.addEventListener(
+          'click',
+          (e) => {
+            const el = e.target;
+            if (!(el instanceof Element)) return;
+            const a = el.closest('a[data-track="click"]');
+            if (!(a instanceof HTMLAnchorElement)) return;
+            const href = a.href;
+            const category = a.dataset.category;
+            const sourceId = a.dataset.sourceId;
+            if (!href || !category || !sourceId) return;
+            const payload = {
+              url: href,
+              category,
+              sourceId,
+              recoId: a.dataset.recoId || null,
+              ref: location.pathname,
+            };
+            try {
+              const body = JSON.stringify(payload);
+              if (nav.sendBeacon) {
+                // Beacon utilise text/plain par défaut — le serveur parse text+JSON.
+                nav.sendBeacon('/api/click', new Blob([body], { type: 'application/json' }));
+                return;
+              }
+              fetch('/api/click', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body,
+                keepalive: true,
+              }).catch(() => {});
+            } catch {
+              /* silencieux — le clic doit aboutir quoi qu'il arrive */
+            }
+          },
+          { capture: true, passive: true },
+        );
+      })();
+    </script>
   </body>
 </html>

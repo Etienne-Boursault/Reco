@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import RecoCard from '../../../components/RecoCard.astro';
 import { episodeLabel } from '../../../utils/recoTypes';
+import { plural } from '../../../utils/plural';
+import { t } from '../../../i18n';
+import { episodeToSchema, recoToSchema } from '../../../lib/seo/jsonld';
+import { splitEpisodeRecos } from '../../../lib/episode/splitRecos';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -54,62 +58,201 @@ const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
 const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
 const epNum = episodeLabel(episode);
 const epTitle = episode.youtubeTitle ?? episode.title;
+
+// Répartition en 3 seaux pour la PRÉSENTATION de la page épisode (helper pur
+// testable). Décision produit (CR Story 4) : les œuvres d'invité·es restent
+// comptées comme des recos partout ailleurs sur le site ; seule cette page les
+// présente à part. `spontaneous` = recos de l'équipe, `guestWorks` = auto-promos
+// d'invité·es, `citations` = œuvres seulement évoquées. Cf. splitEpisodeRecos.
+const { spontaneous: spontaneousRecos, guestWorks, citations } =
+  splitEpisodeRecos(recos);
+// « Recommandations » au sens catalogue = tout ce qui n'est pas une citation
+// (spontanées + œuvres d'invités), cohérent avec les compteurs/stats du site.
+const recommendationCount = spontaneousRecos.length + guestWorks.length;
+
+// L1/N2 — En-tête : on affiche le MÊME total que la carte annuaire
+// (`recoCountByEp` = spontanées + œuvres d'invité·es) et que la meta OG, avec
+// un breakdown « dont Y œuvres d'invité·es » seulement si Y > 0. Le cas « que
+// des œuvres d'invité·es » (spontanées = 0) reste correct : X = Y et le
+// breakdown se lit « X recommandations · dont X œuvres d'invité·es ». Les
+// citations, elles, ne sont pas des recos → comptées séparément.
+const recoCountLabel =
+  recommendationCount > 1
+    ? t('episode.count.recommendations.many', { count: recommendationCount })
+    : t('episode.count.recommendations.one');
+const guestWorkCountLabel =
+  guestWorks.length > 0
+    ? guestWorks.length > 1
+      ? t('episode.count.guestWorks.many', { count: guestWorks.length })
+      : t('episode.count.guestWorks.one')
+    : null;
+const citationCountLabel =
+  citations.length > 0
+    ? citations.length > 1
+      ? t('episode.count.citations.many', { count: citations.length })
+      : t('episode.count.citations.one')
+    : null;
+
+// JSON-LD : PodcastEpisode + toutes les recommandations (spontanées ET œuvres
+// d'invités — elles restent des recos au sens catalogue). Seules les citations
+// sont exclues. Cf. ADR 0021 §7.
+// Si l'épisode n'a PAS de thumbnail YouTube, le Layout dérivera l'image OG
+// depuis `ogSlug` (carte Satori dynamique). Sinon, `ogImage` (thumb) gagne.
+const episodeUrl = new URL(`/${source.id}/episode/${episode.guid}`, Astro.site).toString();
+const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
+const jsonLd: Record<string, unknown>[] = [
+  episodeToSchema({
+    guid: episode.guid,
+    title: epTitle,
+    description: episode.description,
+    publishedAt: episode.date ? episode.date.toISOString() : undefined,
+    url: episodeUrl,
+    podcastName: data.title,
+    podcastUrl: sourceUrl,
+  }),
+  ...[...spontaneousRecos, ...guestWorks].map((r) =>
+    recoToSchema({
+      type: r.types?.[0] ?? 'autre',
+      title: r.title,
+      author: r.creator,
+      description: r.note,
+    }),
+  ),
+];
 ---
 
 <Layout
   title={`${epTitle} — ${data.title}`}
-  description={`${recos.length} recommandations extraites de ${epTitle}, épisode du podcast ${data.title}.`}
+  description={`${recommendationCount} ${plural(recommendationCount, 'recommandation')} ${plural(recommendationCount, 'extraite')} de ${epTitle}, épisode du podcast ${data.title}.`}
   ogImage={thumb ?? undefined}
+  ogSlug={`${source.id}/episode/${episode.guid}`}
   ogType="article"
   theme={data.theme}
+  jsonLd={jsonLd}
 >
-  <header class="head wrap">
-    <a class="back" href={`/${source.id}`}>← {data.title}</a>
-    <div class="ep-nav">
-      {prevGuid ? (
-        <a class="ep-arrow ep-arrow-prev" href={`/${source.id}/episode/${prevGuid}`}
-           title="Épisode précédent" aria-label="Épisode précédent">‹</a>
-      ) : (
-        <span class="ep-arrow disabled" aria-hidden="true">‹</span>
-      )}
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{data.title}</span>
+    </a>
+    {/* M1 : le hero (thumb + h1 + compteur) est SORTI du <nav> (WCAG 1.3.1 —
+       il n'a rien à faire dans un landmark de navigation). Le <nav> ne
+       contient plus QUE les flèches ‹ › prev/next. Le layout est reconstitué
+       via une grille sur `.ep-nav-row` : `display: contents` sur le <nav>
+       promeut les flèches en items de la grille (leur landmark reste exposé),
+       et `grid-template-areas` les replace de part et d'autre du hero quel que
+       soit l'ordre DOM. */}
+    <div class="ep-nav-row">
+      <nav class="ep-nav" aria-label={t('nav.episodeNav')}>
+        {prevGuid ? (
+          <a class="ep-arrow ep-arrow-prev" href={`/${source.id}/episode/${prevGuid}`}
+             aria-label={t('nav.prevEpisode')}>
+            <span aria-hidden="true">‹</span>
+          </a>
+        ) : (
+          <span class="ep-arrow ep-arrow-prev disabled" aria-hidden="true">‹</span>
+        )}
+        {nextGuid ? (
+          <a class="ep-arrow ep-arrow-next" href={`/${source.id}/episode/${nextGuid}`}
+             aria-label={t('nav.nextEpisode')}>
+            <span aria-hidden="true">›</span>
+          </a>
+        ) : (
+          <span class="ep-arrow ep-arrow-next disabled" aria-hidden="true">›</span>
+        )}
+      </nav>
       <div class="ep-hero">
         {
           episode.youtubeUrl ? (
-            <a class="thumb" href={episode.youtubeUrl} target="_blank" rel="noopener noreferrer">
-              {thumb && <img src={thumb} alt={epTitle} loading="lazy" />}
-              <span class="play">▶</span>
+            <a
+              class="thumb"
+              href={episode.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Regarder « ${epTitle} » sur YouTube ${t('a11y.externalLinkSuffix')}`}
+            >
+              {thumb && <img src={thumb} alt="" loading="lazy" decoding="async" />}
+              <span class="play" aria-hidden="true">▶</span>
             </a>
           ) : (
-            thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" />
+            thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" decoding="async" />
           )
         }
         <div class="ep-info">
           {epNum && <span class="epnum">{epNum}</span>}
           <h1>{epTitle}</h1>
-          <p class="count">{recos.length} recommandation{recos.length > 1 ? 's' : ''}</p>
+          <p class="count">
+            {recoCountLabel}
+            {guestWorkCountLabel && (
+              <>
+                {' '}<span aria-hidden="true">·</span> {guestWorkCountLabel}
+              </>
+            )}
+            {citationCountLabel && (
+              <>
+                {' '}<span aria-hidden="true">·</span> {citationCountLabel}
+              </>
+            )}
+          </p>
         </div>
       </div>
-      {nextGuid ? (
-        <a class="ep-arrow ep-arrow-next" href={`/${source.id}/episode/${nextGuid}`}
-           title="Épisode suivant" aria-label="Épisode suivant">›</a>
-      ) : (
-        <span class="ep-arrow disabled" aria-hidden="true">›</span>
-      )}
     </div>
   </header>
 
-  <main class="wrap">
-    <ul class="grid">
-      {
-        recos.map((r) => (
-          <RecoCard
-            reco={r}
-            episodeNumber={episode.number}
-            episodeTitle={epTitle}
-          />
-        ))
-      }
-    </ul>
+  {/* N4 : pas d'EmptyState ici — `getStaticPaths` ne génère QUE les épisodes
+     ayant ≥1 reco non-discarded (cf. `guidsWithRecos`), donc au moins un des
+     trois seaux est toujours non vide. Le composant EmptyState était mort. */}
+  <main id="main" class="wrap">
+    {spontaneousRecos.length > 0 && (
+      <section class="reco-section">
+        <h2 class="sec-title">{t('episode.section.recommendations')} ({spontaneousRecos.length})</h2>
+        <ul class="grid">
+          {spontaneousRecos.map((r) => (
+            <RecoCard
+              reco={r}
+              episodeNumber={episode.number}
+              episodeTitle={epTitle}
+              sourceId={source.id}
+            />
+          ))}
+        </ul>
+      </section>
+    )}
+    {guestWorks.length > 0 && (
+      <section class="reco-section guestwork-section">
+        <h2 class="sec-title">{t('episode.section.guestWorks')} ({guestWorks.length})</h2>
+        <p class="sec-lede">{t('episode.lede.guestWorks')}</p>
+        <ul class="grid">
+          {guestWorks.map((r) => (
+            /* N5 : dans cette sous-section dédiée, on masque le badge « œuvre
+               d'invité » sur chaque carte (le titre de section porte déjà
+               l'info). Le badge reste actif partout ailleurs. */
+            <RecoCard
+              reco={r}
+              episodeNumber={episode.number}
+              episodeTitle={epTitle}
+              sourceId={source.id}
+              showGuestWorkBadge={false}
+            />
+          ))}
+        </ul>
+      </section>
+    )}
+    {citations.length > 0 && (
+      <section class="reco-section citation-section">
+        <h2 class="sec-title">{t('episode.section.citations')} ({citations.length})</h2>
+        <p class="sec-lede">{t('episode.lede.citations')}</p>
+        <ul class="grid">
+          {citations.map((r) => (
+            <RecoCard
+              reco={r}
+              episodeNumber={episode.number}
+              episodeTitle={epTitle}
+              sourceId={source.id}
+            />
+          ))}
+        </ul>
+      </section>
+    )}
   </main>
 </Layout>
 
@@ -126,14 +269,29 @@ const epTitle = episode.youtubeTitle ?? episode.title;
   .back:hover {
     color: var(--accent);
   }
-  .ep-nav {
-    display: flex;
+  /* M1 : rangée hero + flèches. La grille place `prev | hero | next` sans que
+     le hero soit un descendant du <nav>. */
+  .ep-nav-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'prev hero next';
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
   }
+  /* Le <nav> ne sert qu'à porter le landmark : `display: contents` fait
+     participer les flèches directement à la grille `.ep-nav-row`. */
+  .ep-nav {
+    display: contents;
+  }
+  .ep-arrow-prev {
+    grid-area: prev;
+  }
+  .ep-arrow-next {
+    grid-area: next;
+  }
   .ep-hero {
-    flex: 1;
+    grid-area: hero;
     display: flex;
     flex-wrap: wrap;
     gap: 1.2rem;
@@ -212,5 +370,28 @@ const epTitle = episode.youtubeTitle ?? episode.title;
   }
   main {
     padding-bottom: 4rem;
+  }
+  .reco-section + .reco-section {
+    margin-top: 3rem;
+  }
+  .sec-title {
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+    margin: 0 0 0.4rem;
+  }
+  .sec-lede {
+    color: var(--muted);
+    margin: 0 0 1rem;
+    font-size: 0.92rem;
+  }
+  .citation-section .sec-title {
+    color: var(--muted);
+  }
+  .guestwork-section .sec-title {
+    /* H1 : teinte dérivée du thème (cf. global.css) pour le contraste AA. */
+    color: var(--guestwork);
+  }
+  .empty {
+    color: var(--muted);
+    padding: 2rem 0 4rem;
   }
 </style>

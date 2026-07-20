@@ -61,7 +61,9 @@ const draftCount = recos.filter((r) => r.status === 'draft').length;
 -->
 <Layout title={`Vérifier — ${data.title}`} theme={data.theme} noindex>
   <header class="head wrap">
-    <a class="back" href={`/${source.id}`}>← retour au catalogue</a>
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>retour au catalogue</span>
+    </a>
     <h1>Vérifier les recos</h1>
     <p class="stat">
       {recos.length} recos · <strong>{draftCount}</strong> à valider
@@ -73,10 +75,10 @@ const draftCount = recos.filter((r) => r.status === 'draft').length;
     </p>
   </header>
 
-  <main class="wrap">
+  <main id="main" class="wrap">
     {
       recos.length === 0 ? (
-        <p class="empty">Aucune reco pour l'instant.</p>
+        <p class="empty" role="status">Aucune reco pour l'instant.</p>
       ) : (
         <ul class="rows">
           {recos.map((r) => {

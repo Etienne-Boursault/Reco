@@ -1,0 +1,97 @@
+---
+/**
+ * /meta/ — Page d'accueil du méta-site `source-internet.fr`.
+ *
+ * F-CRIT-1 / F-CRIT-2 : route catch-all dynamique. Quand
+ * `META_MODE !== '1'`, `getStaticPaths()` retourne `[]` — Astro
+ * n'émet AUCUN fichier (mieux qu'un `Astro.response.status = 404`
+ * qui écrirait un HTML 404 indexable).
+ *
+ * Pour activer le méta-site :
+ *   META_MODE=1 SITE_URL=https://source-internet.fr npm run build
+ *
+ * Cf. ADR 0045.
+ */
+import Layout from '../../layouts/Layout.astro';
+import MetaPodcastCard from '../../components/MetaPodcastCard.astro';
+import { t } from '../../i18n';
+import { loadMetaIndex } from '../../lib/registry/meta-loader';
+import { sortEntries, type RegistryEntry } from '../../lib/registry/consumer';
+
+export const prerender = true;
+
+interface Props {
+  entries: RegistryEntry[];
+}
+
+export async function getStaticPaths() {
+  const meta = loadMetaIndex();
+  if (!meta) return [];
+  // `all: undefined` → route physique `/meta/` (le catch-all sans segment).
+  return [
+    {
+      params: { all: undefined },
+      props: { entries: sortEntries(meta.entries) },
+    },
+  ];
+}
+
+const { entries } = Astro.props as Props;
+const count = entries.length;
+const countLabel =
+  count === 1
+    ? t('meta.podcastCount.one')
+    : t('meta.podcastCount.many', { count });
+---
+<Layout title={t('meta.metaTitle')} description={t('meta.subtitle')}>
+  <main id="main" class="meta-home">
+    <header class="meta-home__header">
+      <h1>{t('meta.title')}</h1>
+      <p class="meta-home__subtitle">{t('meta.subtitle')}</p>
+      <p class="meta-home__count">{countLabel}</p>
+    </header>
+
+    {entries.length === 0 ? (
+      <p class="meta-home__empty">{t('meta.empty')}</p>
+    ) : (
+      <ul class="meta-home__grid">
+        {entries.map((entry) => (
+          <li><MetaPodcastCard entry={entry} /></li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>
+
+<style>
+  /* F-N-3 : tokens design (--muted) au lieu de hex inline. */
+  .meta-home {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  .meta-home__header {
+    margin-bottom: 2rem;
+  }
+  .meta-home__subtitle {
+    color: var(--muted);
+    max-width: 48rem;
+  }
+  .meta-home__count {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .meta-home__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1.25rem;
+  }
+  .meta-home__empty {
+    color: var(--muted);
+    text-align: center;
+    padding: 3rem 0;
+  }
+</style>

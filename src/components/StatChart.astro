@@ -1,0 +1,229 @@
+---
+/**
+ * StatChart.astro — bar chart SVG minimaliste (zéro JS, zéro lib).
+ *
+ * A11y :
+ *  - `<figure aria-labelledby>` lié à `<figcaption>` — SSOT du libellé ;
+ *  - rôle `img` sans `aria-label` redondant (M26-9) ;
+ *  - tableau caché visuellement mais accessible (linéarisation pour
+ *    lecteurs d'écran et fallback no-JS / print).
+ *  - chaque barre a un `<title>` SVG.
+ *
+ * Cf. ADR 0022. Pas de Chart.js / D3 — kit duplicable, build deterministe.
+ *
+ * Issues fixées :
+ *  - H26-3 : id DOM via `hashSlug(title)` au lieu de `Math.random`.
+ *  - M26-7 : hauteur min 2px par barre quand `value > 0` pour éviter les
+ *    barres invisibles (charts avec 1 valeur très grande masquant les
+ *    petites).
+ *  - M26-8 : `preserveAspectRatio="xMidYMid meet"` (pas de distorsion).
+ *  - M26-9 : suppression du `aria-label` sur SVG (déjà via `figcaption`).
+ *  - M26-10 : `bar-label` 12px min (WCAG 1.4.4 reflow), contraste accru
+ *    via `var(--text)`.
+ *  - M26-11 : cas `bars.length === 0` → message "Pas de données" + table
+ *    vide accessible.
+ *  - M26-13 : header de colonne `category` via i18n.
+ */
+import { formatCount, formatPercent } from '../lib/stats/formatter';
+import { hashSlug } from '../lib/stats/slug';
+import { t } from '../i18n';
+import type { I18nKey } from '../i18n/fr';
+
+export interface Bar {
+  label: string;
+  value: number;
+}
+
+interface Props {
+  title: string;
+  bars: readonly Bar[];
+  /** Libellé global pour le `aria-label` du chart (fallback `title`). */
+  ariaLabel?: string;
+  /** Hauteur max du chart en px (largeur 100%). */
+  height?: number;
+  /** Texte du header colonne valeur dans la table accessible. */
+  valueHeader?: string;
+  /** Texte du header colonne catégorie dans la table accessible. */
+  categoryHeader?: string;
+  /** Message lorsqu'aucune barre n'est fournie. */
+  emptyMessage?: string;
+  /**
+   * F-M-5 : clé i18n alternative pour le message vide (ex. `stats.empty.monthly`).
+   * Si fournie, override `emptyMessage`. Permet aux callers de spécialiser
+   * le message sans passer de string brute.
+   */
+  emptyKey?: I18nKey;
+}
+
+const {
+  title,
+  bars,
+  ariaLabel,
+  height = 220,
+  valueHeader = t('stats.col.mentions'),
+  categoryHeader = t('stats.chart.categoryHeader'),
+  emptyKey,
+  emptyMessage = emptyKey ? t(emptyKey) : t('stats.chart.empty'),
+} = Astro.props;
+
+const isEmpty = bars.length === 0;
+const max = Math.max(1, ...bars.map((b) => b.value));
+const total = bars.reduce((acc, b) => acc + b.value, 0);
+const W = 600; // viewBox width — responsive via 100% width
+const H = height;
+const padX = 8;
+const padTop = 8;
+const padBottom = 28;
+const barAreaH = H - padTop - padBottom;
+const slotW = bars.length > 0 ? (W - padX * 2) / bars.length : 0;
+const barW = Math.max(2, slotW * 0.65);
+/** Hauteur minimale d'une barre visible (M26-7). */
+const MIN_BAR_H = 2;
+
+const captionId = `chart-${hashSlug(title)}`;
+// F-L-5 : `descId` est toujours posé sur `<figure aria-describedby={descId}>` ;
+// quand `undefined`, Astro omet l'attribut — comportement correct, on
+// documente pour éviter la confusion lecteur.
+const descId = isEmpty ? `chart-desc-${hashSlug(title)}` : undefined;
+// Optionnel : message a11y additionnel lorsqu'on est vide. On l'expose via
+// figcaption secondaire (aria-describedby) pour éviter le double labelling.
+const emptyAria = ariaLabel ?? emptyMessage;
+
+/**
+ * F-H-11 : politique d'affichage des libellés sous l'axe X.
+ *  - `bars.length > 12` → on n'affiche qu'un libellé tous les
+ *    `Math.ceil(bars.length / 12)` (anti-overlap, garde la grille lisible).
+ *  - Sinon → tronqué à 8 chars + `…` quand nécessaire (évite l'overlap
+ *    horizontal sur slots étroits).
+ */
+const labelStep = bars.length > 12 ? Math.ceil(bars.length / 12) : 1;
+function displayLabel(label: string, idx: number): string {
+  if (bars.length > 12) return idx % labelStep === 0 ? label : '';
+  return label.length > 8 ? `${label.slice(0, 8)}…` : label;
+}
+
+// F-H-12 : on retire l'attribut `height` du <svg> ; on impose le ratio
+// via `aspect-ratio: W/H` en style inline pour que la largeur 100% pilote
+// la hauteur — évite le décalage layout shift (CLS) lié à une hauteur
+// fixée en px sur un SVG responsive.
+const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
+---
+
+<figure class="chart" aria-labelledby={captionId} aria-describedby={descId}>
+  <figcaption id={captionId}>{title}</figcaption>
+
+  <svg
+    role="img"
+    viewBox={`0 0 ${W} ${H}`}
+    preserveAspectRatio="xMidYMid meet"
+    style={svgStyle}
+  >
+    {/* F-H-10 : <title> enfant DIRECT du <svg> — exigé par WAI-ARIA pour
+        que les ATs (NVDA, VoiceOver) annoncent le graphique nommément. */}
+    <title>{title}</title>
+    {isEmpty ? (
+      <text x={W / 2} y={H / 2} text-anchor="middle" class="empty-text">{emptyMessage}</text>
+    ) : (
+      bars.map((b, i) => {
+        const rawH = max > 0 ? (b.value / max) * barAreaH : 0;
+        const h = b.value > 0 ? Math.max(MIN_BAR_H, rawH) : 0;
+        const x = padX + i * slotW + (slotW - barW) / 2;
+        const y = padTop + (barAreaH - h);
+        const pct = total > 0 ? b.value / total : 0;
+        return (
+          <g class="bar-group">
+            <title>{`${b.label} — ${formatCount(b.value)} (${formatPercent(pct)})`}</title>
+            <rect x={x} y={y} width={barW} height={h} class="bar" rx="2" />
+            <text
+              x={x + barW / 2}
+              y={H - padBottom + 14}
+              text-anchor="middle"
+              class="bar-label"
+            >{displayLabel(b.label, i)}</text>
+          </g>
+        );
+      })
+    )}
+  </svg>
+  {isEmpty && <p id={descId} class="sr-only">{emptyAria}</p>}
+
+  {/* Fallback texte (lecteur d'écran, print, no-JS, no-CSS). */}
+  <table class="sr-table">
+    <caption>{title}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{categoryHeader}</th>
+        <th scope="col">{valueHeader}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {isEmpty ? (
+        <tr><td colspan="2">{emptyMessage}</td></tr>
+      ) : (
+        bars.map((b) => (
+          <tr>
+            <td>{b.label}</td>
+            <td>{formatCount(b.value)}</td>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+</figure>
+
+<style>
+  .chart {
+    margin: 0 0 1rem;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius, 12px);
+    padding: 1rem 1rem 0.6rem;
+  }
+  .chart figcaption {
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .bar {
+    fill: var(--accent);
+  }
+  /* M26-10 : 12px min + contraste WCAG AA (var(--text) — pas var(--muted)
+   * dont le ratio sur var(--surface) peut tomber sous 4.5:1). */
+  .bar-label {
+    font-size: 12px;
+    fill: var(--text);
+  }
+  .empty-text {
+    font-size: 14px;
+    fill: var(--muted);
+  }
+  /* Fallback table visuellement caché mais accessible aux SR / print. */
+  .sr-table,
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  @media print {
+    svg { display: none; }
+    .sr-table {
+      position: static;
+      width: auto;
+      height: auto;
+      clip: auto;
+      white-space: normal;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    .sr-table th, .sr-table td {
+      border: 1px solid #999;
+      padding: 0.2rem 0.4rem;
+    }
+  }
+</style>

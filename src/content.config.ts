@@ -50,7 +50,9 @@ const theme = z.object({
 const sources = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/sources' }),
   schema: z.object({
-    id: z.string(), // slug, ex: "un-bon-moment"
+    // Slug : minuscules + chiffres + tirets internes (cohérent avec
+    // `tools/config/schema.py::_RE_ID`).
+    id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     title: z.string(),
     tagline: z.string().optional(),
     hosts: z.array(z.string()).default([]),
@@ -59,6 +61,22 @@ const sources = defineCollection({
     youtubeChannel: z.string().url().optional(),
     website: z.string().url().optional(),
     theme,
+    // --- Champs lus par le pipeline Python (tools/config) ---
+    // Définis ici pour rester compatibles avec la validation Zod d'Astro
+    // (SSOT unique : `src/content/sources/<id>.json`).
+    // Préfixe reco : alphanumérique minuscule, 2 à 8 chars (cohérent avec
+    // `tools/config/schema.py::_RE_PREFIX`).
+    recoPrefix: z.string().regex(/^[a-z0-9]{2,8}$/).optional(),
+    extractionAnchorPatterns: z.array(z.string()).optional(),
+    // Fragments de suffixe entre parenthèses à retirer avant matching YT.
+    youtubeTitleSuffixPatterns: z.array(z.string()).optional(),
+    // Code hex 6 chars préfixé # (cohérent avec `_RE_HEX_COLOR`).
+    siteColorAccent: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+    spotifyShowId: z.string().optional(),
+    transcriptDefaultSource: z.enum(['youtube', 'acast']).optional(),
+    avoidBrands: z.array(z.string()).optional(),
+    enabled: z.boolean().optional(),
+    schemaVersion: z.number().int().optional(),
   }),
 });
 
@@ -79,9 +97,41 @@ const episodes = defineCollection({
     youtubeDuration: z.number().int().optional(), // durée de la vidéo YT (secondes)
     description: z.string().optional(),
     guests: z.array(z.string()).default([]),
+    // Snapshot du parsing heuristique du titre (`_parse_guests`) — mémoire
+    // pour distinguer « jamais vu » vs « validé silencieusement ». Sert au
+    // review_server à proposer un bouton ✕ sur les faux positifs (ex. titres
+    // à wordplay français qui produisent « Seb de bon matin »).
+    guestsParsed: z.array(z.string()).default([]),
+    // Retraits explicites (autorité ultime sur `guests` et `guestsParsed`).
+    // Casefold pour la comparaison. Vide par défaut.
+    guestsExcluded: z.array(z.string()).default([]),
     // Suivi du pipeline : none = pas de transcription, auto = brute IA,
     // validated = relue par un humain.
     transcriptStatus: z.enum(['none', 'auto', 'validated']).default('none'),
+    // Modèle Whisper utilisé : tiny | base | small | medium | large-v3
+    // ou suffixe « (assumed) » pour les transcripts antérieurs au champ.
+    transcriptModel: z.string().optional(),
+    // Flag posé par `tools/audit_yt_acast.py` : le match YT↔Acast a échoué
+    // à au moins un check (durée, intro). À investiguer manuellement.
+    // Cf. ADR 0013 et ADR 0015 (sidecar pattern).
+    matchSuspect: z.boolean().optional(),
+    // Détail facultatif (forward-compat — CR senior M8). Le détail
+    // canonique vit dans `tools/output/match_audit/<source>/<guid>.json`
+    // (sidecar) ; ces champs ne sont QU'un miroir réduit pour les
+    // consommateurs Astro qui voudraient l'exposer côté UI sans devoir
+    // lire le sidecar. Le pipeline P1.6 NE les peuple PAS par défaut —
+    // ils sont définis ici pour ne pas avoir à bump le schema_version
+    // le jour où un job d'agrégation les peuplera.
+    matchSuspectReasons: z.array(z.object({
+      kind: z.string(),
+      detail: z.string(),
+      // ADR 0019 (option B) : Severity unifié 4 niveaux (info, warning,
+      // error, critical). match_audit n'émet que warning/error en
+      // pratique, mais le schema accepte les 4 pour forward-compat avec
+      // les sidecars enrich_audit/lint qui partagent désormais le même enum.
+      severity: z.enum(['info', 'warning', 'error', 'critical']),
+    })).optional(),
+    matchSuspectAuditedAt: z.string().optional(),
   }),
 });
 
@@ -167,13 +217,161 @@ const recos = defineCollection({
         }),
       )
       .optional(),
+    // Audit trail par champ enrichi : { "externalIds.tmdb": "2026-04-15T10:00:00Z",
+    // "watchProviders": "2026-04-15T10:00:00Z", ... }. Posé par
+    // `tools/refresh_enrichment.py`. Forward-compat — pas de bump schemaVersion.
+    // Cf. ADR 0023.
+    enrichedAt: z.record(z.string(), z.string()).optional(),
     // draft = extrait par IA ; validated = relu/confirmé ; discarded = écarté
     // (faux positif, pas une vraie reco). Le site public masque les discarded.
     status: z.enum(['draft', 'validated', 'discarded']).default('draft'),
+    // Nature de la mention, orthogonale au workflow `status` :
+    //   - `reco`     : œuvre RECOMMANDÉE par un·e intervenant·e.
+    //   - `citation` : œuvre simplement ÉVOQUÉE / mentionnée (ex. « ils
+    //     parlent de Titanic » sans le recommander).
+    // Une citation est toujours un `validated` (humain a tranché) avec
+    // `kind=citation`. Absent → `reco` (backward-compat).
+    kind: z.enum(['reco', 'citation']).default('reco'),
+    // Marqueur « œuvre d'invité » : l'œuvre est présentée par un·e invité·e
+    // (auto-promo : spectacle, album, livre). Reste `kind=reco` mais on la
+    // distingue pour ne pas polluer les vraies recommandations. Orthogonal
+    // au workflow `status`. Absent → œuvre normale (backward-compat).
+    //
+    // L3 — Asymétrie VOULUE avec `mentions.guestWork` (défini plus bas comme
+    // `z.boolean().nullable().optional()`). Ici, côté RECO, le champ est
+    // `optional()` SANS `nullable()` : le writer de recos ne doit JAMAIS
+    // émettre `guestWork: null` (absent = pas une œuvre d'invité, un tri-état
+    // n'apporterait rien et casserait la strictness `=== true` en aval, cf.
+    // splitRecos/RecoCard N6). Côté MENTION, `nullable()` est toléré parce que
+    // les mentions historiques peuvent avoir sérialisé un `null` explicite
+    // (miroir du flag reco, forward-compat) — cf. `mentions.guestWork`.
+    guestWork: z.boolean().optional(),
     // Liste des LLMs qui ont identifié cette reco. Une reco confirmée par
     // plusieurs LLMs (ex. ["openai", "anthropic"]) est un signal de qualité.
+    // Champ DÉRIVÉ depuis `extractionHistory` (sorted unique providers).
     extractors: z.array(z.string()).optional(),
+    // Titres alternatifs (orthographes phonétiques absorbées par dédup).
+    // Peuplé par `reco_dedup.merge_cluster` lors de la fusion d'un cluster
+    // de doublons : chaque membre supprimé voit son titre rejoindre cette
+    // liste pour rester traçable et améliorer les futures recherches.
+    aliases: z.array(z.string()).optional(),
+    // Source du timestamp top-level : "acast" → offset YT au clic ; "youtube"
+    // → pas d'offset (le timestamp est déjà calé sur la vidéo). Drapeau
+    // calculé via `pick_display_state(extractionHistory)`.
+    transcriptSource: z.enum(['acast', 'youtube']).optional(),
+    // Historique complet des extractions (1 entrée par tuple
+    // transcriptModel × transcriptSource × llmProvider × llmModel).
+    // Permet de tracer qui/quand/comment a trouvé cette reco et de
+    // comparer la qualité des extracteurs au fil du temps.
+    extractionHistory: z
+      .array(
+        z.object({
+          at: z.string(),
+          transcriptModel: z.string(),
+          transcriptSource: z.enum(['acast', 'youtube']),
+          llmProvider: z.enum(['anthropic', 'openai']),
+          llmModel: z.string(),
+          worker: z.string(),
+          timestamp_at_extraction: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 
-export const collections = { sources, episodes, recos };
+// --- ITEMS (œuvres référencées, nouvelle couche cf. ADR 0001) -------------
+// Persistés par `tools/repository/item_repo.py::ItemRepoJson`.
+// Convention : clés camelCase, snake_case côté Python (cf. codecs).
+// Voir DATA_SCHEMA.md + ADRs 0001-0004 pour le rationale.
+const itemExternalIds = z.object({
+  tmdb: z.number().int().nullable().optional(),
+  tmdbType: z.enum(['movie', 'tv']).nullable().optional(),
+  spotify: z.string().nullable().optional(),
+  musicbrainz: z.string().nullable().optional(),
+  openlibrary: z.string().nullable().optional(),
+  isbn: z.string().nullable().optional(),
+  justwatch: z.string().nullable().optional(),
+});
+
+const itemType = z.enum([
+  'livre', 'film', 'serie', 'musique', 'album',
+  'artiste', 'podcast', 'jeu', 'bd', 'article',
+  'spectacle', 'lieu', 'video',
+  'autre',
+]);
+
+const items = defineCollection({
+  loader: glob({
+    pattern: ['**/*.json', '!**/__cross_stack_fixture__/**'],
+    base: './src/content/items',
+  }),
+  schema: z.object({
+    id: z.string().regex(/^[a-z0-9-]{1,64}$/),
+    types: z.array(itemType).min(1),
+    title: z.string().min(1),
+    creator: z.string().nullable().optional(),
+    year: z.number().int().min(1800).max(2100).nullable().optional(),
+    aliases: z.array(z.string()).optional(),
+    externalIds: itemExternalIds.optional(),
+    customLinks: z.array(z.object({
+      label: z.string(),
+      url: z.string().url(),
+    })).optional(),
+    watchProviders: z.array(z.object({
+      name: z.string(),
+      url: z.string().url(),
+      region: z.string().nullable().optional(),
+      ethics: z.enum(['indie', 'neutral', 'avoid']).nullable().optional(),
+    })).optional(),
+    linkOverrides: z.record(z.string(), z.string()).optional(),
+    recommendedBy: z.string().nullable().optional(),
+    schemaVersion: z.number().int().min(1).default(1),
+    // Flag posé par `tools/audit_tmdb.py` (sidecar agrégé). Optionnel,
+    // forward-compat — pas de bump schema_version Item. Cf. ADR 0014.
+    enrichmentSuspect: z.boolean().optional(),
+    // Audit trail par champ enrichi (cf. ADR 0023). Forward-compat,
+    // pas de bump schemaVersion. Clé = nom de champ ; valeur = ISO8601.
+    enrichedAt: z.record(z.string(), z.string()).optional(),
+  }),
+});
+
+// --- MENTIONS (occurrences d'items dans des épisodes) ----------------------
+const mentions = defineCollection({
+  loader: glob({
+    pattern: ['**/*.json', '!**/__cross_stack_fixture__/**'],
+    base: './src/content/mentions',
+  }),
+  schema: z.object({
+    id: z.string().regex(/^[a-z0-9-]{1,64}$/),
+    itemId: z.string().regex(/^[a-z0-9-]{1,64}$/),
+    sourceRef: z.object({
+      sourceId: z.string(),
+      episodeGuid: z.string().nullable().optional(),
+      timestamp: z.string().regex(/^\d{2}:\d{2}:\d{2}$/).nullable().optional(),
+      transcriptSource: z.enum(['youtube', 'acast']).nullable().optional(),
+    }),
+    recommendedBy: z.string().nullable().optional(),
+    quote: z.string().nullable().optional(),
+    kind: z.enum(['reco', 'citation']).default('reco'),
+    // Miroir du flag reco `guestWork` (œuvre présentée par un·e invité·e).
+    // Optionnel/forward-compat : les mentions historiques n'en ont pas.
+    guestWork: z.boolean().nullable().optional(),
+    status: z.enum(['draft', 'validated', 'discarded']).default('draft'),
+    extractionHistory: z.array(z.object({
+      transcriptModel: z.string().nullable(),
+      transcriptSource: z.enum(['youtube', 'acast']).nullable(),
+      llmProvider: z.string(),
+      llmModel: z.string(),
+      worker: z.string().nullable(),
+      at: z.string(),
+      extra: z.record(
+        z.string(),
+        z.union([z.string(), z.number(), z.boolean()]),
+      ).optional(),
+    })).optional(),
+    extractors: z.array(z.string()).optional(),
+    schemaVersion: z.number().int().min(1).default(1),
+  }),
+});
+
+export const collections = { sources, episodes, recos, items, mentions };

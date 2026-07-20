@@ -1,0 +1,137 @@
+---
+/**
+ * MetaTags — composant SEO isolé.
+ *
+ * Centralise les balises `<meta>` (description, OG, Twitter Card),
+ * `<link rel="canonical">`, `hreflang` et un éventuel bloc JSON-LD
+ * (schema.org). Pensé pour être inclus dans `<head>` par `Layout.astro`
+ * (ou n'importe quel autre layout) via un simple `<MetaTags ... />`.
+ *
+ * Pourquoi un composant séparé ?
+ *  - Évite que `Layout.astro` ne devienne un mur de balises difficiles à
+ *    tester et à faire évoluer (ADR 0021).
+ *  - Permet de varier les attributs (article vs website, JSON-LD optionnel)
+ *    sans dupliquer le head.
+ *  - Testable indépendamment (snapshot HTML).
+ *
+ * Sécurité :
+ *  - JSON-LD est sérialisé via `safeJsonLd()` qui échappe `</script>`
+ *    pour empêcher une injection HTML quand une donnée contient la
+ *    séquence (cf. CR senior C2).
+ */
+
+import { safeJsonLd, type JsonLd } from '../lib/seo/jsonld.js';
+import { siteConfig } from '../config/site.js';
+
+export type OGType = 'website' | 'article';
+
+export interface AlternateLink {
+  hreflang: string;
+  href: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  /** URL canonique absolue (déjà résolue par l'appelant via `Astro.site`). */
+  canonicalUrl: string | URL;
+  /** Image de partage absolue (1200×630 recommandé). */
+  socialImage: string | URL;
+  ogType?: OGType;
+  /** Locale OG (par défaut `fr_FR`). */
+  ogLocale?: string;
+  /** Nom du site affiché par Facebook/LinkedIn. Par défaut : `siteConfig.siteName`. */
+  siteName?: string;
+  /**
+   * Contrôle l'ajout de `— {siteName}` au `<title>`. Par défaut, on ajoute
+   * sauf si le titre se termine déjà par `— {siteName}`. Mettre `false`
+   * pour des pages racines (homepage) qui sont déjà brandées.
+   */
+  appendSiteName?: boolean;
+  /** Si vrai, ajoute `<meta name="robots" content="noindex, nofollow">`. */
+  noindex?: boolean;
+  /** JSON-LD (schema.org) — objet ou tableau. Échappé contre XSS. */
+  jsonLd?: JsonLd;
+  /** Couleur de thème mobile (status bar). */
+  themeColor?: string;
+  /** Compte Twitter du site (ex. `@source_internet`). */
+  twitterSite?: string;
+  /** Compte Twitter de l'auteur d'une page article. */
+  twitterCreator?: string;
+  /**
+   * Variantes `hreflang` supplémentaires (i18n futur). Le composant émet
+   * déjà `fr` + `x-default` par défaut, on ne ré-emet pas les doublons.
+   */
+  alternates?: AlternateLink[];
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  socialImage,
+  ogType = 'website',
+  ogLocale = 'fr_FR',
+  siteName = siteConfig.siteName,
+  appendSiteName,
+  noindex = false,
+  jsonLd,
+  themeColor,
+  twitterSite,
+  twitterCreator,
+  alternates = [],
+} = Astro.props;
+
+const canonicalStr = canonicalUrl instanceof URL ? canonicalUrl.toString() : canonicalUrl;
+const imageStr = socialImage instanceof URL ? socialImage.toString() : socialImage;
+
+// Heuristique de suffixe : on n'ajoute pas si déjà présent (sentinelle
+// " — {siteName}" plus stricte que `endsWith('Reco')` qui collisionnait
+// avec un titre type "Le Reco"). Override possible via `appendSiteName`.
+const suffix = ` — ${siteName}`;
+const shouldAppend = appendSiteName ?? !title.endsWith(suffix);
+const fullTitle = shouldAppend ? `${title}${suffix}` : title;
+
+// Hreflang : `fr` et `x-default` sont émis par défaut (site monolingue FR).
+// On déduplique les `hreflang` reçus pour éviter d'émettre 2 fois `fr`.
+const seen = new Set(['fr', 'x-default']);
+const extraAlternates = alternates.filter((a) => {
+  if (seen.has(a.hreflang)) return false;
+  seen.add(a.hreflang);
+  return true;
+});
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+{themeColor && <meta name="theme-color" content={themeColor} />}
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<link rel="canonical" href={canonicalStr} />
+{/* Hreflang : site FR-only initial. Self + x-default pointent au même URL. */}
+<link rel="alternate" hreflang="fr" href={canonicalStr} />
+<link rel="alternate" hreflang="x-default" href={canonicalStr} />
+{extraAlternates.map((a) => (
+  <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+))}
+
+{/* Open Graph */}
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalStr} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageStr} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:site_name" content={siteName} />
+
+{/* Twitter Card */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalStr} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageStr} />
+{twitterSite && <meta name="twitter:site" content={twitterSite} />}
+{twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+
+{jsonLd && (
+  <script type="application/ld+json" set:html={safeJsonLd(jsonLd)} />
+)}
