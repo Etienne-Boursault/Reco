@@ -1,0 +1,68 @@
+name: A11y
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/a11y/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/a11y.yml'
+  push:
+    branches: [main]
+
+# Permissions minimales (lecture seule sur le repo). Pas de tokens.
+permissions:
+  contents: read
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build site (SSG)
+        run: npm run build
+
+      - name: A11y static scan (HTML + CSS)
+        run: npm run test:a11y
+
+      - name: Contrast WCAG AA (palette + thèmes per-source)
+        run: npm run test:contrast
+
+  # Job optionnel : audit dynamique via pa11y-ci (axe-core sous le capot).
+  # Documenté dans ADR 0025 — fallback si pa11y indisponible.
+  pa11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true # informatif tant qu'on n'a pas le baseline stable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Install pa11y-ci
+        run: npm install --no-save pa11y-ci@^3 http-server@^14
+      - name: Serve dist/
+        run: npx http-server dist -p 4321 -s &
+      - name: Wait for server
+        run: npx wait-on http://localhost:4321 || sleep 3
+      - name: Run pa11y-ci on key pages
+        run: |
+          npx pa11y-ci \
+            --reporter cli \
+            http://localhost:4321/ \
+            http://localhost:4321/un-bon-moment/ \
+            || echo "pa11y-ci non bloquant pour l'instant (cf. ADR 0025)"

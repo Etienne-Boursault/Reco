@@ -1,0 +1,35 @@
+Reco — Acknowledgments
+
+Reco includes the following third-party components:
+
+Fonts
+-----
+- Inter (https://rsms.me/inter/) — SIL Open Font License 1.1
+  The Inter WOFF/WOFF2 files redistributed under src/fonts/og/ are
+  covered by the OFL 1.1. See src/fonts/og/LICENSE (or
+  https://github.com/rsms/inter/blob/master/LICENSE.txt) for full terms.
+
+JavaScript / Astro dependencies (see package.json for the full list)
+-------------------------------------------------------------------
+- astro, @astrojs/sitemap — MIT
+- minisearch (https://lucaong.github.io/minisearch/) — MIT
+- satori (https://github.com/vercel/satori) — MPL-2.0
+- @resvg/resvg-js — MPL-2.0
+- @fontsource/inter — MIT (font files OFL 1.1)
+- vitest, @vitest/coverage-v8 — MIT
+
+Python dependencies (see tools/requirements.txt for the full list)
+------------------------------------------------------------------
+- feedparser — BSD-2-Clause
+- faster-whisper — MIT
+- yt-dlp — Unlicense
+- requests, requests-cache — Apache-2.0
+- anthropic (SDK) — MIT
+- python-dotenv — BSD-3-Clause
+- filelock — Unlicense
+- Pillow — HPND
+- fastembed (https://github.com/qdrant/fastembed) — Apache-2.0
+
+Each component remains the property of its respective authors and is
+distributed under its own license. This NOTICE file is informational
+and does not modify those licenses.

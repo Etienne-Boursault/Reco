@@ -1,0 +1,26 @@
+name: Documentation
+description: Coquille, manque ou amélioration de la doc.
+title: "[docs] "
+labels: ["documentation", "triage"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page / fichier concerné
+      placeholder: "README.md, docs/fork-guide.md, ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Problème
+      description: Coquille ? Information manquante ? Erreur factuelle ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggestion
+      description: Texte proposé, lien manquant, exemple à ajouter.

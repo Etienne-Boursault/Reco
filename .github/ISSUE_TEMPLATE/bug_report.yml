@@ -1,0 +1,66 @@
+name: Bug report
+description: Signaler un comportement reproductible qui ne correspond pas à la doc.
+title: "[bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci pour le rapport. Pour les failles de sécurité, ne pas
+        ouvrir d'issue publique — voir [SECURITY.md](../SECURITY.md).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Que se passe-t-il ? Que devrait-il se passer ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes pour reproduire
+      placeholder: |
+        1. ...
+        2. ...
+        3. observer ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      description: Tag, branche ou SHA court.
+      placeholder: "v0.1.0 ou abc1234"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environnement
+      options:
+        - Docker compose
+        - Local (Node 20 + Python 3.12)
+        - CI GitHub Actions
+        - Autre
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / sortie d'erreur
+      render: shell
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: J'ai vérifié qu'aucune issue ouverte ne décrit déjà ce bug.
+          required: true
+        - label: Aucun secret (`tools/.env`, clé API) n'est inclus dans les logs.
+          required: true

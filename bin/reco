@@ -1,0 +1,86 @@
+#!/usr/bin/env node
+// reco — thin Node dispatcher vers les CLIs Python du pipeline.
+// Cf. ADR 0038 (roadmap #19 — wizard CLI init).
+//
+// Usage :
+//   npx reco <commande> [options]
+//
+// Commandes supportées :
+//   init      → tools.reco_init          (wizard d'initialisation)
+//   build     → tools.build_cache        (cache SQLite + FTS5)
+//   audit     → tools.audit_yt_acast     (audit match YT/Acast)
+//   lint      → tools.lint_dataset       (audit dataset)
+//   enrich    → tools.refresh_enrichment (TMDB / Music)
+//   embed     → tools.embed_items        (embeddings BGE)
+//   reports   → tools.manage_reports     (signalements visiteurs)
+//
+// Le script favorise le venv local (tools/.venv) puis retombe sur le
+// Python système (RECO_PYTHON ou python3 / python).
+import { spawn } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import process from 'node:process';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, '..');
+
+const venvPython = path.join(
+  root, 'tools', '.venv',
+  process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python',
+);
+const fallback = process.env.RECO_PYTHON
+  || (process.platform === 'win32' ? 'python' : 'python3');
+const python = existsSync(venvPython) ? venvPython : fallback;
+
+const args = process.argv.slice(2);
+const subcommand = args[0];
+const rest = args.slice(1);
+
+const dispatch = {
+  init:    ['-m', 'tools.reco_init'],
+  build:   ['-m', 'tools.build_cache'],
+  audit:   ['-m', 'tools.audit_yt_acast'],
+  lint:    ['-m', 'tools.lint_dataset'],
+  enrich:  ['-m', 'tools.refresh_enrichment'],
+  embed:   ['-m', 'tools.embed_items'],
+  reports: ['-m', 'tools.manage_reports'],
+};
+
+function printHelp() {
+  const cmds = Object.keys(dispatch).join(', ');
+  process.stderr.write(
+    `Usage: reco <command> [options]\n` +
+    `Commands: ${cmds}\n` +
+    `\n` +
+    `Python interpreter: ${python}\n` +
+    `(set RECO_PYTHON to override, or create tools/.venv)\n`,
+  );
+}
+
+if (!subcommand || subcommand === '--help' || subcommand === '-h') {
+  printHelp();
+  process.exit(subcommand ? 0 : 2);
+}
+
+if (!(subcommand in dispatch)) {
+  process.stderr.write(`reco: unknown command '${subcommand}'\n`);
+  printHelp();
+  process.exit(2);
+}
+
+const child = spawn(python, [...dispatch[subcommand], ...rest], {
+  stdio: 'inherit',
+  cwd: root,
+});
+child.on('exit', (code, signal) => {
+  if (signal) {
+    process.exit(1);
+  }
+  process.exit(code ?? 1);
+});
+child.on('error', (err) => {
+  process.stderr.write(`reco: failed to spawn ${python}: ${err.message}\n`);
+  process.exit(127);
+});

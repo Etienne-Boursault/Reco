@@ -1,0 +1,81 @@
+name: RSS poll (weekly)
+
+# Item roadmap #23 / ADR 0042 — poll hebdomadaire des flux RSS configurés,
+# notifie Discord/Slack/email et déclenche le pipeline si nouveau(x)
+# épisode(s). Voir tools/poll_rss.py pour l'implémentation.
+
+on:
+  schedule:
+    # Tous les lundis 06:00 UTC (08:00 Paris en été, 07:00 en hiver) —
+    # créneau calme pour les hébergeurs Acast/Megaphone.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Source ID ou "all"'
+        default: 'all'
+        required: false
+      notify:
+        description: 'Canal de notification'
+        default: 'discord'
+        required: false
+
+# Permissions minimales : `actions: write` est requis seulement pour le
+# repository_dispatch event qui déclenche le pipeline.
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: cron-rss-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    name: Poll RSS feeds
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: tools/requirements.txt
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/requirements.txt
+
+      - name: Restore RSS polling state
+        # L'état hebdo est petit (~10 KB / source) — on le persiste via
+        # cache GitHub Actions pour ne pas re-notifier à chaque run.
+        uses: actions/cache@v4
+        with:
+          path: tools/output/rss
+          key: rss-state-${{ github.run_id }}
+          restore-keys: |
+            rss-state-
+
+      - name: Poll RSS feeds
+        env:
+          RECO_DISCORD_WEBHOOK: ${{ secrets.RECO_DISCORD_WEBHOOK }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python tools/poll_rss.py \
+            --source "${{ inputs.source || 'all' }}" \
+            --notify "${{ inputs.notify || 'discord' }}" \
+            --dispatch-event \
+            --json
+
+      - name: Upload state diff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss-state
+          path: tools/output/rss/
+          retention-days: 30
+          if-no-files-found: ignore

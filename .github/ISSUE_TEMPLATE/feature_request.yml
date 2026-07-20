@@ -1,0 +1,48 @@
+name: Feature request
+description: Proposer une évolution ou une amélioration.
+title: "[feat] "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème / besoin
+      description: Quel cas d'usage couvre cette feature ? Quelle douleur résout-elle ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition
+      description: Comment imaginez-vous la fonctionnalité (UX, API, CLI…) ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées
+      description: Workarounds ou autres approches considérées.
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Périmètre
+      options:
+        - Frontend Astro
+        - Pipeline Python (tools/)
+        - Doc / fork-guide
+        - CI / DevOps
+        - Autre
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: Je suis prêt·e à contribuer (code, doc, review) sur cette feature.
+        - label: Cette feature respecte le manifeste éthique (`docs/manifeste-ethique.md`).
+          required: true

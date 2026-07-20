@@ -1,0 +1,58 @@
+name: Fork help
+description: Vous tentez de héberger Reco pour votre podcast et bloquez quelque part.
+title: "[fork-help] "
+labels: ["fork-help", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bienvenue. Reco est conçu pour être forké et hébergé pour
+        d'autres podcasts. Décrivez où vous bloquez — on aide
+        volontiers.
+
+  - type: input
+    id: podcast
+    attributes:
+      label: Podcast cible
+      description: Nom du podcast que vous voulez cataloguer (et flux RSS si public).
+    validations:
+      required: true
+
+  - type: input
+    id: source-type
+    attributes:
+      label: Type de source
+      placeholder: "RSS Acast, YouTube, mix RSS+YT, autre…"
+
+  - type: textarea
+    id: step
+    attributes:
+      label: Étape de blocage
+      description: |
+        Référez-vous à `docs/fork-guide.md`. Où ça coince ?
+        (`reco_init.py`, configuration `sources.yaml`, pipeline
+        d'enrichissement, build Astro, déploiement…)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / message d'erreur
+      render: shell
+
+  - type: input
+    id: env
+    attributes:
+      label: Environnement
+      placeholder: "OS, Node, Python, Docker ou local"
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: J'ai lu `docs/fork-guide.md`.
+          required: true
+        - label: Aucun secret n'est inclus dans les logs.
+          required: true

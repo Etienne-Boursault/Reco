@@ -1,0 +1,90 @@
+# Reco — orchestration locale.
+# Cf. docs/adr/0037-docker-compose-deployment.md
+#
+# Usage :
+#   docker compose up                     # review_server + site statique
+#   docker compose --profile pipeline run --rm reco-pipeline
+#   docker compose down                   # arrêt propre
+#   docker compose down -v                # + volumes (reset caches)
+
+services:
+  reco-review:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-http://localhost:4321}
+    image: reco:dev
+    container_name: reco-review
+    ports:
+      - "8000:8000"
+    volumes:
+      # Données éditables (recos JSON) — synchro host ↔ conteneur.
+      - ./src/content:/app/src/content
+      # Caches/outputs persistés entre runs (re-générables mais coûteux).
+      - ./tools/output:/app/tools/output
+    environment:
+      RECO_QUIET: ${RECO_QUIET:-}
+      RECO_SOURCE: ${RECO_SOURCE:-un-bon-moment}
+      # Enrichments (P1.7, P2.17) — optionnels.
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID:-}
+      SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET:-}
+      # Reports (P2.16) — optionnels.
+      REPORTS_SECRET: ${REPORTS_SECRET:-}
+      REPORTS_REQUIRE_SECRET: ${REPORTS_REQUIRE_SECRET:-}
+      REPORTS_IP_SALT: ${REPORTS_IP_SALT:-}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-}
+    command: ["review"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(0) if s.connect_ex(('127.0.0.1',8000))==0 else sys.exit(1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  reco-site:
+    image: reco:dev
+    container_name: reco-site
+    depends_on:
+      reco-review:
+        condition: service_started
+    ports:
+      - "4321:4321"
+    volumes:
+      # dist/ embarqué dans l'image. On peut le surcharger via volume si on
+      # vient de rebuild en local (cf. docker/build-static.sh).
+      - ./dist:/app/dist:ro
+    command: ["serve"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(0) if s.connect_ex(('127.0.0.1',4321))==0 else sys.exit(1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+
+  # Pipeline opt-in (profile). `docker compose --profile pipeline run --rm reco-pipeline`
+  reco-pipeline:
+    image: reco:dev
+    container_name: reco-pipeline
+    profiles: ["pipeline"]
+    depends_on:
+      - reco-review
+    volumes:
+      - ./src/content:/app/src/content
+      - ./tools/output:/app/tools/output
+    environment:
+      RECO_SOURCE: ${RECO_SOURCE:-un-bon-moment}
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID:-}
+      SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET:-}
+    command: ["pipeline", "${RECO_SOURCE:-un-bon-moment}"]

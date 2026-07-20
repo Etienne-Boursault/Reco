@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use Reco, please cite it as below."
+title: "Reco — kit open-source pour curation de recommandations issues de podcasts"
+type: software
+authors:
+  - family-names: Boursault
+    given-names: Etienne
+repository-code: "https://github.com/etienneboursault/reco"
+url: "https://source-internet.fr"
+license: MIT
+keywords:
+  - podcast
+  - curation
+  - recommendations
+  - kit
+  - self-hostable
+  - astro
+  - python
+date-released: 2026-06-11

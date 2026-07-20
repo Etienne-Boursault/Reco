@@ -20,7 +20,9 @@ defaut pour ce type de tache.
 L'installation fonctionne.
 
 Le serveur OpenAI-compatible de `llama.cpp` tourne avec le modele
-`Qwen3-4B-Q4_K_M.gguf` quand il est lance manuellement sur `llm.local`.
+`Qwen3-4B-Q4_K_M.gguf`. Depuis le 2026-06-21 il est gere par un service
+`systemd` utilisateur (voir « Demarrage automatique » plus bas) et demarre
+au boot ; avant cela il etait lance manuellement.
 
 Endpoint :
 
@@ -446,10 +448,27 @@ Invoke-WebRequest -UseBasicParsing -Uri http://llm.local:8080/health -TimeoutSec
 
 Si le serveur est bien arrete, la requete doit echouer ou expirer.
 
-## Redemarrer apres reboot
+## Demarrage automatique (service systemd utilisateur)
 
-L'installation actuelle ne cree pas de service `systemd`. Apres reboot de
-`llm.local`, il faut relancer le serveur manuellement :
+Depuis le 2026-06-21, le serveur est gere par un service `systemd` *utilisateur*
+(pas de `sudo` sur la machine, donc pas de service systeme). Il demarre au boot
+et redemarre en cas de crash : plus besoin de le relancer apres un reboot.
+
+- Unite : `~/.config/systemd/user/llama-server.service`
+- Linger active : `loginctl enable-linger llm` (demarrage sans login)
+
+Gestion (en SSH non-interactif, prefixer `XDG_RUNTIME_DIR=/run/user/1000`) :
+
+```bash
+systemctl --user status  llama-server
+systemctl --user restart llama-server   # ex. apres changement de modele
+systemctl --user stop    llama-server
+journalctl --user -u llama-server -f
+```
+
+### Lancement manuel (fallback si le service est desactive)
+
+Si le service est arrete/desactive, relancer le serveur manuellement :
 
 ```bash
 cd ~/llama.cpp

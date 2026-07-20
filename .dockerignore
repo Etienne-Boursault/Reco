@@ -1,0 +1,65 @@
+# Build artefacts re-générables
+node_modules
+dist
+.astro
+
+# Git/CI
+.git
+.github
+.gitignore
+
+# Venvs
+.venv
+tools/.venv
+
+# Secrets — NE JAMAIS embarquer dans l'image
+.env
+.env.*
+!.env.example
+tools/.env
+
+# SQLite caches (volumineux + machine-locale)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+tools/output/cache
+tools/output/embeddings
+tools/output/http_cache.sqlite
+tools/output/tmdb_cache
+
+# Pipeline outputs (re-générables, volumineux)
+tools/output/logs
+tools/output/reports
+tools/output/enrich_audit
+tools/output/match_audit
+tools/dispatch
+
+# Python
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+.coverage.*
+htmlcov
+
+# IDE / OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Mémoires/artefacts ruflo/claude-flow — pas d'intérêt en runtime conteneur
+.claude
+.claude-flow
+.swarm
+agentdb.rvf
+agentdb.rvf.lock
+ruvector.db
+.mcp.json
+
+# Tests inutiles dans image runtime (image dev — on les garde via volume si besoin)
+htmlcov
+*.log
+
+# Docs longues (gardées en repo, pas dans image)
+docs
