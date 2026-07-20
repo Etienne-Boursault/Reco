@@ -58,7 +58,20 @@
   ],
   "id": "ubm-0399",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/effroyables-jardins/umc.cmc.dt13x4d2wgllf5dfz0hv0m6"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "VIVA by Videofutur",
+      "url": "https://vod.viva.videofutur.fr/effroyables-jardins/11080"
+    }
+  ],
   "quote": "Un de mes films préférés, c'est L'Effroyable Jardin.",
   "sourceId": "un-bon-moment",
   "status": "validated",

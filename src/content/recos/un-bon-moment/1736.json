@@ -53,7 +53,20 @@
   ],
   "id": "ubm-1736",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/jason-brokerss-podcast-avec-l%C3%A9pouse/id1780833447"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/6hwhtIB5OfvqnS3L3ybkVd"
+    }
+  ],
   "quote": "Ah il y a aussi le podcast de Jason Brokers",
   "sourceId": "un-bon-moment",
   "status": "validated",

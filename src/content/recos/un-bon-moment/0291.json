@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0291",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "ADN (Animation Digital Network)",
+      "url": "https://animationdigitalnetwork.com/video/1387-the-legend-of-hei"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/fr/series/G4PH0WJ7Z/the-legend-of-hei"
+    }
+  ],
   "quote": "Regardez The Legend of Hei",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -33,7 +33,20 @@
   ],
   "id": "ubm-1725",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/le-nom-des-gens"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "VIVA by Videofutur",
+      "url": "https://vod.viva.videofutur.fr/le-nom-des-gens/10004856"
+    }
+  ],
   "quote": "C'est quand même une meuf qui couche avec des gens de droite pour les rendre de gauche, c'est ça le nom des gens !",
   "sourceId": "un-bon-moment",
   "status": "validated",

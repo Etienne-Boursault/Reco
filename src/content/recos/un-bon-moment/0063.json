@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0063",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/leftovers/ce812085-7871-413f-8ceb-8c423f853427"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (où voir)",
+      "url": "https://www.allocine.fr/series/ficheserie-10423/streaming/"
+    }
+  ],
   "quote": "meilleure série pour moi de tous les temps",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -50,7 +50,14 @@
   ],
   "id": "ubm-0282",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81653386"
+    }
+  ],
   "quote": "Est-ce que t'as vu \"Devile's Plane\" L'émission coréenne",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

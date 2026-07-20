@@ -42,7 +42,26 @@
   ],
   "id": "ubm-0397",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/la-jeune-fille-et-la-mort-roman-polanski-vod"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/la-jeune-fille-et-la-mort"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=96288.html"
+    }
+  ],
   "quote": "Elle a fait un film qui était un peu sous-couté qui s'appelle La jeune fille et la mort.",
   "sourceId": "un-bon-moment",
   "status": "validated",

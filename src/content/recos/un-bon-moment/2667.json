@@ -24,7 +24,20 @@
   ],
   "id": "ubm-2667",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/81265493"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Histoires_d'amour_et_d'autisme"
+    }
+  ],
   "quote": "amour et autisme sur netflix c'est un documentaire",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -57,7 +57,20 @@
   ],
   "id": "ubm-1490",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/track/7lq7LENOIrtJF06QGnmr9R"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/song/criminel/253577454"
+    }
+  ],
   "quote": "Garou, l'incroyable interprète de la chanson Criminel que je recommande.",
   "sourceId": "un-bon-moment",
   "status": "validated",

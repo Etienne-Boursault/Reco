@@ -53,7 +53,20 @@
   ],
   "id": "ubm-1735",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "social",
+      "label": "Instagram du restaurant",
+      "url": "https://www.instagram.com/namak.paris/?hl=fr"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Sortir à Paris — fiche du lieu",
+      "url": "https://www.sortiraparis.com/en/lieux/84063-namak"
+    }
+  ],
   "quote": "Moi je recommande le restaurant Namak",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

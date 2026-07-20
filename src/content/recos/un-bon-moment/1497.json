@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1497",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/bien-sur-que-les-poissons-ont-froid_0-9648245_9782378803490.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Mollat",
+      "url": "https://www.mollat.com/livres/2732218/fanny-ruwet-bien-sur-que-les-poissons-ont-froid"
+    }
+  ],
   "quote": "Moi, je l'ai écouté aussi en livre audio. Et c'est super.",
   "sourceId": "un-bon-moment",
   "status": "validated",

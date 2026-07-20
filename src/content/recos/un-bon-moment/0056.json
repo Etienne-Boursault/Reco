@@ -36,7 +36,20 @@
   "guestWork": true,
   "id": "ubm-0056",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLCXezCpiPku6qZNPZHQvZ8Lt2Fznlj0iw"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Rock_macabre"
+    }
+  ],
   "quote": "on a fait une web série ensemble qui s'appelle Rock Macabre qui est une communauté musicale",
   "recommendedBy": "François Descraques & Éléonore Costes",
   "sourceId": "un-bon-moment",

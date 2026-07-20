@@ -54,7 +54,20 @@
   "guestWork": true,
   "id": "ubm-0396",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Mollat",
+      "url": "https://www.mollat.com/livres/3412249/cyprien-iov-le-pire-guide-du-japon"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel du livre",
+      "url": "https://lepireguide.com/"
+    }
+  ],
   "quote": "C'est le pire guide du Japon, comment les bonnes adresses, mais pas que...",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

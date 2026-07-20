@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0061",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0NQ1QFP6B4R6TM8O2590IV5716"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22769.html"
+    }
+  ],
   "quote": "j'ai fini récemment upload sur Amazon c'est trop bien",
   "sourceId": "un-bon-moment",
   "status": "validated",

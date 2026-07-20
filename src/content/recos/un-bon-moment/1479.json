@@ -24,7 +24,20 @@
   ],
   "id": "ubm-1479",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Ses films sur Sooner",
+      "url": "https://www.sooner.fr/artistes/takeshi-kitano"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — ses films en streaming",
+      "url": "https://www.allocine.fr/personne/fichepersonne-16070/streaming/"
+    }
+  ],
   "quote": "Et c'est du stand-up à deux. C'est comme si là, on faisait du manzaï, on avait chacun un micro.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

@@ -29,7 +29,20 @@
   ],
   "id": "ubm-0992",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/fiascorama_0-12649220_9782283041277.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Buchet-Chastel",
+      "url": "https://www.buchetchastel.fr/catalogue/fiascorama/"
+    }
+  ],
   "quote": "Les livres de Thomas BDB j'adore j'ai rigolé le dernier incroyable Fiasco Rama",
   "sourceId": "un-bon-moment",
   "status": "validated",

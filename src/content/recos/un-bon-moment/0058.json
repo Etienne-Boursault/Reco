@@ -45,7 +45,20 @@
   "guestWork": true,
   "id": "ubm-0058",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube (saison 1)",
+      "url": "https://www.youtube.com/playlist?list=PL_ciRsH7uWQzCi47pckP-fxztT1XH2LNg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube d'Éléonore Costes",
+      "url": "https://www.youtube.com/channel/UClk29ApkMXJEzf1HoknsEjQ"
+    }
+  ],
   "quote": "quand tu pitches il se passe rien mais il y a tout",
   "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",

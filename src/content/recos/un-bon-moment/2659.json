@@ -35,7 +35,20 @@
   "guestWork": true,
   "id": "ubm-2659",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLFfdyCxETSnsDUVBv1v6h3IfgV0YUOyyo"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/L'%C3%89pop%C3%A9e_temporelle"
+    }
+  ],
   "quote": "c'est marrant",
   "recommendedBy": "François Descraques",
   "sourceId": "un-bon-moment",

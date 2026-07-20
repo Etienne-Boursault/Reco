@@ -26,7 +26,14 @@
   "guestWork": true,
   "id": "ubm-2666",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24542.html"
+    }
+  ],
   "quote": "j'ai fait une série qui s'appelle Dark Stories avec Guillaume Lubrano",
   "recommendedBy": "François Descraques",
   "sourceId": "un-bon-moment",

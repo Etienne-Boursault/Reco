@@ -44,7 +44,20 @@
   ],
   "id": "ubm-1737",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253907824-la-prochaine-fois-que-tu-mordras-la-poussiere-panayotis-pascot/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac",
+      "url": "https://www.fnac.com/a20549836/Panayotis-Pascot-La-Prochaine-fois-que-tu-mordras-la-poussiere"
+    }
+  ],
   "quote": "Allez achetez le livre de Panayotis il est super !",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

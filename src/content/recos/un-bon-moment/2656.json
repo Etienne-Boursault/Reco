@@ -36,7 +36,20 @@
   "guestWork": true,
   "id": "ubm-2656",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Épisode 1 sur YouTube",
+      "url": "https://www.youtube.com/watch?v=Jv5X_Ca3UJs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "SensCritique",
+      "url": "https://www.senscritique.com/serie/les_voisins_du_dessus/362491"
+    }
+  ],
   "quote": "on avait fait Les voisins du dessus qui était une web série sur des prophètes qui vivent en colocation",
   "recommendedBy": "François Descraques",
   "sourceId": "un-bon-moment",

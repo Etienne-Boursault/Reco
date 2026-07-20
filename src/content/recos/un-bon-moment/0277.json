@@ -58,7 +58,26 @@
   ],
   "id": "ubm-0277",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70155589"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Community/0RP4D4UQY9C8HSP0409EDW1OAW"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (VOD)",
+      "url": "https://www.allocine.fr/series/ficheserie-5496/vod/"
+    }
+  ],
   "quote": "C'est lui qui a joué parfaitement bien un rôle fantastique dans Community qui est une série culte des années 2010 !",
   "sourceId": "un-bon-moment",
   "status": "validated",

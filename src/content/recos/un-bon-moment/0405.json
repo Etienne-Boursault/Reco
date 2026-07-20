@@ -57,7 +57,14 @@
   ],
   "id": "ubm-0405",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/80102952"
+    }
+  ],
   "quote": "Il y en a un sur Netflix, je l'avais adoré sur, bien sûr, Quincy Jones, pardon.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

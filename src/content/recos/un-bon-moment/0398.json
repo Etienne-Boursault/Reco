@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0398",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/l-ete-de-kikujiro"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-27667/telecharger-vod/"
+    }
+  ],
   "quote": "Moi, je recommande L'été de Kiku Giraud.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

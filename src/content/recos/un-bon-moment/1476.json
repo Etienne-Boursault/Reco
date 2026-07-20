@@ -57,7 +57,20 @@
   ],
   "id": "ubm-1476",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/la-soupe-aux-choux"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/la-soupe-aux-choux/umc.cmc.fo3p9qduetfdz666hy3ag1go"
+    }
+  ],
   "quote": "J'ai revu récemment la soupe aux choux et la première partie où ils pètent dans le...",
   "sourceId": "un-bon-moment",
   "status": "validated",

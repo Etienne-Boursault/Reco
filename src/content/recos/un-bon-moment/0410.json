@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0410",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — Heavy Metal",
+      "url": "https://cameronwinter.bandcamp.com/album/heavy-metal"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://mrcameronwinter.com/"
+    }
+  ],
   "quote": "Et s'il y a un artiste que j'adore, c'est Cameron Winter.",
   "recommendedBy": "Fanny La Panny",
   "sourceId": "un-bon-moment",

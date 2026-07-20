@@ -44,7 +44,20 @@
   ],
   "id": "ubm-0279",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — tournée",
+      "url": "https://www.panayotispascot.fr/tournee"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/panayotis-pascot/panayotis-pascot-entre-les-deux-tournee-3566598/"
+    }
+  ],
   "quote": "Panat, t'es en spectacle, ton spectacle s'appelle ? Entre les deux.",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

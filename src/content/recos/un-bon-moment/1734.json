@@ -53,7 +53,26 @@
   ],
   "id": "ubm-1734",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Rendez-moi ma soirée (stand-up, YouTube)",
+      "url": "https://www.youtube.com/watch?v=_mOHD_-5f6M"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-paul-dechavanne.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/pauldechavanne/?hl=fr"
+    }
+  ],
   "quote": "Je parlerais forcément de Paul de Chavanne",
   "recommendedBy": "Fary",
   "sourceId": "un-bon-moment",
