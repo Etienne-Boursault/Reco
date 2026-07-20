@@ -34,6 +34,7 @@ import requests
 from dotenv import load_dotenv
 
 from common import TOOLS_DIR, log, read_json, recos_dir_for, write_json_if_changed
+from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 DEEZER_BASE = "https://api.deezer.com"
 SPOTIFY_BASE = "https://api.spotify.com/v1"
@@ -196,8 +197,30 @@ def main():
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--force", action="store_true",
                         help="Re-traiter les recos déjà enrichies.")
+    parser.add_argument("--ignore-server-lock", action="store_true",
+                        help="Ignore le verrou review_server (à tes risques : "
+                             "écritures concurrentes possibles).")
     args = parser.parse_args()
 
+    # Coordination avec review_server (cf. tools/review_lock.py).
+    import sys as _sys  # noqa: PLC0415
+    try:
+        lock_ctx = acquire_pipeline_lock(force=args.ignore_server_lock)
+        lock_ctx.__enter__()
+    except ServerLockBusy as exc:
+        log.error("%s", exc)
+        _sys.exit(1)
+
+    try:
+        _main_body(args)
+    finally:
+        try:
+            lock_ctx.__exit__(None, None, None)
+        except Exception:  # noqa: BLE001 — best-effort release
+            pass
+
+
+def _main_body(args):
     load_dotenv(TOOLS_DIR / ".env")
     spotify_id = os.getenv("SPOTIFY_CLIENT_ID")
     spotify_secret = os.getenv("SPOTIFY_CLIENT_SECRET")

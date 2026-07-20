@@ -33,6 +33,8 @@ from urllib.parse import quote
 import requests
 from dotenv import load_dotenv
 
+from review_lock import ServerLockBusy, acquire_pipeline_lock
+
 from common import (
     TOOLS_DIR,
     log,
@@ -344,15 +346,37 @@ def main():
                         help="Limiter le nombre de recos traitées (utile pour tester).")
     parser.add_argument("--force", action="store_true",
                         help="Re-traiter même les recos qui ont déjà un externalIds.tmdb.")
+    parser.add_argument("--ignore-server-lock", action="store_true",
+                        help="Ignore le verrou review_server (à tes risques : "
+                             "écritures concurrentes possibles).")
     args = parser.parse_args()
 
-    load_dotenv(TOOLS_DIR / ".env")
-    api_key = os.getenv("TMDB_API_KEY")
-    if not api_key:
-        log.error("TMDB_API_KEY absent de tools/.env. "
-                  "Crée un compte sur https://www.themoviedb.org/ → Settings → API.")
+    # Coordination avec review_server (cf. tools/review_lock.py).
+    try:
+        lock_ctx = acquire_pipeline_lock(force=args.ignore_server_lock)
+        lock_ctx.__enter__()
+    except ServerLockBusy as exc:
+        log.error("%s", exc)
         sys.exit(1)
 
+    try:
+        load_dotenv(TOOLS_DIR / ".env")
+        api_key = os.getenv("TMDB_API_KEY")
+        if not api_key:
+            log.error("TMDB_API_KEY absent de tools/.env. "
+                      "Crée un compte sur https://www.themoviedb.org/ → Settings → API.")
+            sys.exit(1)
+
+        _run_enrichment(args, api_key)
+    finally:
+        try:
+            lock_ctx.__exit__(None, None, None)
+        except Exception:  # noqa: BLE001 — best-effort release
+            pass
+
+
+def _run_enrichment(args, api_key):
+    """Corps métier de enrich_tmdb — extrait pour wrapper avec le lock context."""
     recos_dir = recos_dir_for(args.source)
     targets = []
     for p in sorted(recos_dir.glob("*.json")):

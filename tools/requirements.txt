@@ -25,3 +25,19 @@ requests>=2.31,<3          # téléchargement des enclosures audio HTTP
 # Étape 3 — extraction des recos via LLM
 anthropic>=0.40            # SDK API Anthropic (modèle claude-opus-4-7)
 python-dotenv>=1.0,<2      # chargement de tools/.env (ANTHROPIC_API_KEY)
+
+# Coordination cross-process (review_server ↔ scripts pipeline)
+filelock>=3.13,<4          # verrou inter-processus (cf. tools/review_lock.py)
+
+# Tests — parsing HTML structurel (review_server)
+beautifulsoup4>=4.12,<5    # assertions DOM robustes aux changements de markup
+
+# Cache HTTP SQLite pour `refresh_enrichment.py` (ADR 0023).
+requests-cache>=1.2,<2     # économise quota TMDB/MusicBrainz entre runs
+
+# Embeddings sémantiques (ADR 0033 — roadmap item #15).
+# Optionnel : seul `tools/embed_items.py` en a besoin (import paresseux,
+# jamais touché par les tests via DI). fastembed embarque onnxruntime CPU
+# (~80 MB modèle + ~50 MB runtime) — préféré à sentence-transformers qui
+# trainerait torch (~500 MB).
+fastembed>=0.3,<1

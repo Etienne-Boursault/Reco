@@ -1,0 +1,31 @@
+{
+  "_comment": "Golden cross-stack fixture (R-P1-23). Consommée par TS et Py : buildStatsSnapshot ≡ build_snapshot.",
+  "generatedAt": "2026-06-12T00:00:00Z",
+  "sources": [
+    { "id": "ubm", "hosts": ["Kyan"] },
+    { "id": "autre", "hosts": [] }
+  ],
+  "episodes": [
+    { "sourceId": "ubm", "date": "2024-01-15T00:00:00Z" },
+    { "sourceId": "ubm", "date": "2024-01-25T00:00:00Z" },
+    { "sourceId": "ubm", "date": "2024-03-10T00:00:00Z" },
+    { "sourceId": "autre", "date": "2024-02-20T00:00:00Z" },
+    { "sourceId": "ubm", "date": null }
+  ],
+  "items": [
+    { "id": "parasite", "title": "Parasite", "types": ["film"] },
+    { "id": "oeuvre", "title": "Œuvre", "types": ["livre"] },
+    { "id": "oeuvre-bis", "title": "OEuvre", "types": ["livre"] },
+    { "id": "sapiens", "title": "Sapiens", "types": ["livre"] },
+    { "id": "orphan", "title": "Orphan", "types": ["film"] }
+  ],
+  "mentions": [
+    { "itemId": "parasite", "recommendedBy": "Léa Martin", "status": "validated", "sourceRef": { "sourceId": "ubm" } },
+    { "itemId": "parasite", "recommendedBy": "Lea-Martin", "status": "validated", "sourceRef": { "sourceId": "ubm" } },
+    { "itemId": "oeuvre", "recommendedBy": "Bob", "status": "validated", "sourceRef": { "sourceId": "ubm" } },
+    { "itemId": "oeuvre-bis", "recommendedBy": "Bob", "status": "validated", "sourceRef": { "sourceId": "ubm" } },
+    { "itemId": "sapiens", "recommendedBy": "Kyan", "status": "validated", "sourceRef": { "sourceId": "ubm" } },
+    { "itemId": "sapiens", "recommendedBy": "Bob", "status": "validated", "sourceRef": { "sourceId": "autre" } },
+    { "itemId": "parasite", "recommendedBy": "Bob", "status": "discarded", "sourceRef": { "sourceId": "ubm" } }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "ubm-c01",
+  "sourceId": "un-bon-moment",
+  "title": "Mortel",
+  "creator": "Inconnu",
+  "types": ["serie"],
+  "episodeGuid": "guid-ep-001",
+  "timestamp": "00:13:21",
+  "transcriptSource": "youtube",
+  "status": "validated",
+  "kind": "reco",
+  "recommendedBy": "Hakim Jemili",
+  "quote": "j'ai kiffé Mortel",
+  "externalIds": {
+    "tmdb": "94801",
+    "tmdbType": "tv",
+    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-05-28T07:58:23+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu",
+      "timestamp_at_extraction": "00:58:17"
+    }
+  ],
+  "extractors": ["anthropic", "openai"],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Mortel",
+      "ethics": "neutral"
+    }
+  ],
+  "aliases": ["Mortel (FR)"]
+}

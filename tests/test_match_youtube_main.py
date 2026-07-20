@@ -58,20 +58,44 @@ def test_apply_video_meta_invalid_duration_ignored():
 # ===== Fixtures pour match_youtube() complet ==============================
 @pytest.fixture
 def isolated_dirs(tmp_path, monkeypatch):
-    """Isole SOURCES_DIR / EPISODES_DIR dans un tmp_path."""
+    """Isole SOURCES_DIR / EPISODES_DIR dans un tmp_path.
+
+    Patche aussi `tools.config.loader.DEFAULT_SOURCES_DIR` et réinitialise
+    le registry par défaut (issue #1) pour que `get_source()` lise depuis
+    le dossier temporaire — sinon match_youtube tape la vraie SSOT.
+    """
     import common
+    from tools.config import loader as cfg_loader
+    from tools.config import registry as cfg_registry
     sources = tmp_path / "sources"
     episodes = tmp_path / "episodes"
     sources.mkdir()
     episodes.mkdir()
     monkeypatch.setattr(common, "SOURCES_DIR", sources)
     monkeypatch.setattr(common, "EPISODES_DIR", episodes)
+    monkeypatch.setattr(cfg_loader, "DEFAULT_SOURCES_DIR", sources)
+    # Reset le singleton : la fixture autouse l'a injecté avec auto-viv,
+    # on veut ici un registry "réel" sur le tmp_path.
+    fresh = cfg_registry.SourceRegistry(sources_dir=sources)
+    monkeypatch.setattr(cfg_registry, "_default_registry", fresh)
     return SimpleNamespace(sources=sources, episodes=episodes, root=tmp_path)
 
 
 def _write_source(sources_dir: Path, source_id: str, data: dict) -> None:
+    """Écrit une config source valide.
+
+    Injecte les champs minimaux requis par `SourceConfig` (title /
+    recoPrefix / hosts) — les tests passent juste les overrides
+    spécifiques (youtubeChannel, etc.) et on complète."""
+    payload = {
+        "id": source_id,
+        "title": source_id.upper(),
+        "recoPrefix": source_id[:3] or "src",
+        "hosts": ["Host"],
+    }
+    payload.update(data)
     (sources_dir / f"{source_id}.json").write_text(
-        json.dumps(data, ensure_ascii=False), encoding="utf-8"
+        json.dumps(payload, ensure_ascii=False), encoding="utf-8"
     )
 
 

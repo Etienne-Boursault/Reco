@@ -1,0 +1,16 @@
+{
+  "episode_guid": "ep002",
+  "source_id": "un-bon-moment",
+  "annotator": "synthetic",
+  "annotated_at": "2026-06-10T00:00:00Z",
+  "expected_recos": [
+    {"title": "Blade Runner 2049", "creator": "Denis Villeneuve", "types": ["film"], "timestamp": "00:08:00", "must_have": true},
+    {"title": "Dune", "creator": "Denis Villeneuve", "types": ["film"], "timestamp": "00:14:30", "must_have": true},
+    {"title": "Arrival", "creator": "Denis Villeneuve", "types": ["film"], "timestamp": "00:20:00", "must_have": true},
+    {"title": "Severance", "creator": "Dan Erickson", "types": ["serie"], "timestamp": "00:30:00", "must_have": true},
+    {"title": "Mr. Robot", "creator": "Sam Esmail", "types": ["serie"], "timestamp": "00:38:00", "must_have": true},
+    {"title": "Fondation", "creator": "Isaac Asimov", "types": ["livre"], "timestamp": "00:45:00", "must_have": true},
+    {"title": "Hyperion", "creator": "Dan Simmons", "types": ["livre"], "must_have": true},
+    {"title": "Random Access Memories", "creator": "Daft Punk", "types": ["album"], "must_have": false}
+  ]
+}

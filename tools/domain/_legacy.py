@@ -1,26 +1,20 @@
 """
-domain.py — Entités du domaine et ports (Clean Architecture).
+_legacy.py — Anciennes entités/ports du domaine (DÉPRÉCIÉS).
 
-Ce module est le **cœur métier indépendant** du pipeline Reco. Il sert
-aujourd'hui de **référence type / documentation vivante** des objets
-métier (Source, Episode, Reco, TranscriptSegment) et des interfaces
-attendues (les `Protocol` sont des **ports** au sens hexagonal — ils
-balisent l'évolution future vers des use cases et adaptateurs séparés).
+⚠️ **DÉPRÉCIÉ** — utiliser à la place :
+    - `tools.domain.item.Item` (au lieu de `Reco`)
+    - `tools.domain.mention.Mention` (au lieu de `Reco` côté occurrence)
+    - `tools.domain.ports.ItemRepository` / `MentionRepository`
+      (au lieu de `RecoRepository` / `EpisodeRepository`)
 
-Le pipeline actuel manipule directement des `dict` JSON (cf. `common.py`)
-et n'instancie pas (encore) ces dataclasses : elles servent de contrat
-documenté, et les `RecoType` / `RecoStatus` sont l'unique source de
-vérité côté Python pour les valeurs admises (à garder synchronisée avec
-`src/content.config.ts`).
+Ce module préserve les symboles historiques (`Source`, `Episode`, `Reco`,
+`TranscriptSegment` et les `Protocol`) pour ne pas casser les imports
+existants. Aucune logique nouvelle ne doit être ajoutée ici.
 
-Principes appliqués :
-  - **Single Responsibility** : chaque dataclass = une entité, chaque
-    Protocol = un port (une intention claire).
-  - **Open/Closed** : on ajoute un podcast en créant une `Source` +
-    un adaptateur pour son flux — pas en modifiant le coeur.
-  - **Dependency Inversion** : les futurs use cases dépendront de ces
-    Protocols, pas d'implémentations concrètes (Anthropic, OpenAI,
-    yt-dlp, requests…).
+Plan de suppression : cf. `docs/roadmap-2026.md` (Phase 3 / item P1.2.D —
+migrer callsites legacy `Reco/Episode` → `Item/Mention` puis supprimer
+ce module). Pas de `warnings.warn()` à l'import (sinon spam de toute la
+suite de tests). Le marquage textuel + entrée roadmap fait foi.
 """
 from __future__ import annotations
 
@@ -32,6 +26,10 @@ from typing import Iterable, Literal, Protocol
 # ===== Entités ==============================================================
 # Synchronisé avec `src/content.config.ts` (z.enum `recoType`).
 RecoStatus = Literal["draft", "validated", "discarded"]
+# `kind` orthogonal au `status` : distingue une œuvre RECOMMANDÉE (`reco`)
+# d'une œuvre simplement ÉVOQUÉE (`citation`, ex. « ils parlent de Titanic »
+# sans le recommander). Backward-compat : absent → "reco" par défaut.
+RecoKind = Literal["reco", "citation"]
 RecoType = Literal[
     "film", "serie", "livre", "bd",
     "musique", "album", "podcast", "jeu",
@@ -80,6 +78,7 @@ class Reco:
     quote: str | None = None
     recommended_by: str | None = None          # nom (cf. `recommendedBy` côté JSON)
     status: RecoStatus = "draft"
+    kind: RecoKind = "reco"                    # reco recommandée / citation évoquée
     extractors: list[str] = field(default_factory=list)  # LLMs qui l'ont trouvée
 
 
@@ -146,7 +145,7 @@ class VisionOCR(Protocol):
 
 __all__ = [
     "Source", "Episode", "Reco", "TranscriptSegment",
-    "RecoStatus", "RecoType",
+    "RecoStatus", "RecoKind", "RecoType",
     "EpisodeRepository", "RecoRepository", "TranscriptStore",
     "RSSClient", "YouTubeClient", "TranscriberEngine", "LLMExtractor", "VisionOCR",
 ]

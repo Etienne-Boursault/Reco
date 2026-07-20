@@ -1,0 +1,46 @@
+{
+  "episode_guid": "ep001",
+  "source_id": "un-bon-moment",
+  "annotator": "synthetic",
+  "annotated_at": "2026-06-10T00:00:00Z",
+  "expected_recos": [
+    {
+      "title": "Drive",
+      "creator": "Nicolas Winding Refn",
+      "types": ["film"],
+      "timestamp": "00:12:00",
+      "timestamp_tolerance_sec": 30,
+      "recommended_by": "Navo",
+      "kind": "reco",
+      "must_have": true,
+      "notes": "Séquence films noirs"
+    },
+    {
+      "title": "Inception",
+      "creator": "Christopher Nolan",
+      "types": ["film"],
+      "timestamp": "00:25:30",
+      "recommended_by": "Yvick",
+      "must_have": true
+    },
+    {
+      "title": "Le Bureau des Légendes",
+      "creator": "Éric Rochant",
+      "types": ["serie"],
+      "timestamp": "00:42:10",
+      "must_have": true
+    },
+    {
+      "title": "1984",
+      "creator": "George Orwell",
+      "types": ["livre"],
+      "must_have": true
+    },
+    {
+      "title": "Discovery",
+      "creator": "Daft Punk",
+      "types": ["album"],
+      "must_have": false
+    }
+  ]
+}

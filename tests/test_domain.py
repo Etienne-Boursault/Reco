@@ -86,6 +86,20 @@ def test_reco_with_extractors():
     assert len(r.extractors) == 2
 
 
+def test_reco_kind_defaults_to_reco():
+    """Nouvelle reco par défaut : kind = 'reco' (œuvre recommandée)."""
+    r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
+             title="Mortel", types=["serie"])
+    assert r.kind == "reco"
+
+
+def test_reco_kind_can_be_citation():
+    """Une reco peut être marquée 'citation' (œuvre évoquée mais pas recommandée)."""
+    r = Reco(id="ubm-001", source_id="ubm", episode_guid="abc",
+             title="Titanic", types=["film"], kind="citation")
+    assert r.kind == "citation"
+
+
 def test_transcript_segment_immutable():
     """TranscriptSegment est frozen (immuable) — important pour les caches."""
     seg = TranscriptSegment(start_seconds=42, text="bonjour")

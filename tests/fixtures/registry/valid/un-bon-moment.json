@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "siteUrl": "https://un-bon-moment.example.com",
+  "podcast": {
+    "title": "Un Bon Moment",
+    "tagline": "Les recos de Kyan & Navo",
+    "rssUrl": "https://feeds.acast.com/public/shows/xyz",
+    "hosts": ["Kyan Khojandi", "Navo"],
+    "since": "2018-09-01",
+    "language": "fr"
+  },
+  "stats": {
+    "itemsCount": 2651,
+    "mentionsCount": 2866,
+    "episodesCount": 104,
+    "guestsCount": 224,
+    "lastUpdatedAt": "2026-06-12T00:00:00Z"
+  },
+  "meta": {
+    "generator": "Reco/0.1.0",
+    "generatedAt": "2026-06-12T07:45:00Z",
+    "manifesto": "https://un-bon-moment.example.com/manifeste"
+  },
+  "endpoints": {
+    "ogImage": "/og/default.png",
+    "sitemap": "/sitemap-index.xml",
+    "search": "/search.json"
+  }
+}

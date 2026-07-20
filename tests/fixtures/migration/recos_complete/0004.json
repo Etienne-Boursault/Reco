@@ -1,0 +1,17 @@
+{
+  "id": "ubm-c04",
+  "sourceId": "un-bon-moment",
+  "title": "Une chanson",
+  "creator": "Un artiste",
+  "types": ["musique"],
+  "externalIds": {
+    "spotify": "spotify:track:abc",
+    "musicbrainz": "mb-uuid-123"
+  },
+  "customLinks": [
+    {"label": "Bandcamp", "url": "https://example.bandcamp.com/track/foo"}
+  ],
+  "linkOverrides": {
+    "spotify": "https://open.spotify.com/track/customized"
+  }
+}

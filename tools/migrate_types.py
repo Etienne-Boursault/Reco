@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from common import RECOS_DIR, log, read_json, write_json_if_changed
+from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 
 def migrate_reco(data: dict[str, Any]) -> dict[str, Any] | None:
@@ -84,11 +85,27 @@ def main() -> None:
     )
     parser.add_argument("--source", default=None,
                         help="ID de source à migrer (sinon : toutes).")
+    parser.add_argument("--ignore-server-lock", action="store_true",
+                        help="Ignore le verrou review_server.")
     args = parser.parse_args()
-    if args.source:
-        migrate_source(args.source)
-    else:
-        migrate_all()
+
+    import sys as _sys  # noqa: PLC0415
+    try:
+        lock_ctx = acquire_pipeline_lock(force=args.ignore_server_lock)
+        lock_ctx.__enter__()
+    except ServerLockBusy as exc:
+        log.error("%s", exc)
+        _sys.exit(1)
+    try:
+        if args.source:
+            migrate_source(args.source)
+        else:
+            migrate_all()
+    finally:
+        try:
+            lock_ctx.__exit__(None, None, None)
+        except Exception:  # noqa: BLE001
+            pass
 
 
 if __name__ == "__main__":

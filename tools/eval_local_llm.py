@@ -255,7 +255,9 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
 
         results.append({
             "guid": guid,
-            "title": ep.get("youtubeTitle") or ep.get("title"),
+            # Aligné sur la politique « titre RSS prime » (Story 3) : la
+            # chaîne YT publie parfois sous des titres de format anglais.
+            "title": ep.get("title") or ep.get("youtubeTitle"),
             "date": ep.get("date"),
             "seconds": round(time.perf_counter() - ep_start, 2),
             "chunk_count": len(chunks),

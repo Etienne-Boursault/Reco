@@ -1,0 +1,20 @@
+{
+  "episode_guid": "ep003",
+  "source_id": "un-bon-moment",
+  "annotator": "synthetic",
+  "annotated_at": "2026-06-10T00:00:00Z",
+  "expected_recos": [
+    {"title": "The Wire", "creator": "David Simon", "types": ["serie"], "timestamp": "00:05:00", "must_have": true},
+    {"title": "The Sopranos", "creator": "David Chase", "types": ["serie"], "timestamp": "00:09:00", "must_have": true},
+    {"title": "Breaking Bad", "creator": "Vince Gilligan", "types": ["serie"], "timestamp": "00:13:00", "must_have": true},
+    {"title": "Better Call Saul", "creator": "Vince Gilligan", "types": ["serie"], "timestamp": "00:17:00", "must_have": true},
+    {"title": "Mad Men", "creator": "Matthew Weiner", "types": ["serie"], "timestamp": "00:21:00", "must_have": true},
+    {"title": "The Crown", "creator": "Peter Morgan", "types": ["serie"], "timestamp": "00:25:00", "must_have": true},
+    {"title": "Chernobyl", "creator": "Craig Mazin", "types": ["serie"], "timestamp": "00:29:00", "must_have": true},
+    {"title": "The Last of Us", "creator": "Craig Mazin", "types": ["serie"], "timestamp": "00:33:00", "must_have": true},
+    {"title": "Succession", "creator": "Jesse Armstrong", "types": ["serie"], "timestamp": "00:37:00", "must_have": true},
+    {"title": "Fleabag", "creator": "Phoebe Waller-Bridge", "types": ["serie"], "timestamp": "00:41:00", "must_have": true},
+    {"title": "Atlanta", "creator": "Donald Glover", "types": ["serie"], "timestamp": "00:45:00", "must_have": true},
+    {"title": "Barry", "creator": "Bill Hader", "types": ["serie"], "timestamp": "00:49:00", "must_have": false}
+  ]
+}

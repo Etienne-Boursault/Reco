@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-12T00:00:00Z",
+  "global": {
+    "podcastsCount": 2,
+    "episodesCount": 5,
+    "recommendationsCount": 6,
+    "uniqueWorksCount": 4,
+    "uniqueGuestsCount": 3
+  },
+  "perSource": {
+    "ubm": {
+      "podcastsCount": 1,
+      "episodesCount": 4,
+      "recommendationsCount": 5,
+      "uniqueWorksCount": 4,
+      "uniqueGuestsCount": 3
+    },
+    "autre": {
+      "podcastsCount": 1,
+      "episodesCount": 1,
+      "recommendationsCount": 1,
+      "uniqueWorksCount": 1,
+      "uniqueGuestsCount": 1
+    }
+  },
+  "topGuests": [
+    { "name": "Bob", "slug": "bob", "count": 3 },
+    { "name": "Léa Martin", "slug": "lea-martin", "count": 1 },
+    { "name": "Lea-Martin", "slug": "lea-martin-2", "count": 1 }
+  ],
+  "topWorks": [
+    { "id": "parasite", "title": "Parasite", "type": "film", "mentionsCount": 2 },
+    { "id": "sapiens", "title": "Sapiens", "type": "livre", "mentionsCount": 2 },
+    { "id": "oeuvre-bis", "title": "OEuvre", "type": "livre", "mentionsCount": 1 },
+    { "id": "oeuvre", "title": "Œuvre", "type": "livre", "mentionsCount": 1 }
+  ],
+  "typeDistribution": { "livre": 3, "film": 1 },
+  "monthlyEpisodes": [
+    { "month": "2024-01", "count": 2 },
+    { "month": "2024-02", "count": 1 },
+    { "month": "2024-03", "count": 1 }
+  ]
+}
