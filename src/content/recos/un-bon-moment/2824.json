@@ -31,7 +31,14 @@
   ],
   "id": "ubm-2824",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/l-homme-de_0-6052836_9782373050639.html"
+    }
+  ],
   "quote": "il faut que vous lisez ce truc",
   "sourceId": "un-bon-moment",
   "status": "validated",

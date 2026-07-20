@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-0158",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — spectacle intégral",
+      "url": "https://www.youtube.com/watch?v=u41ujNodvnM"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Kyan Khojandi",
+      "url": "https://www.kyan.fr/blog/pulsions-sur-youtube"
+    }
+  ],
   "quote": "j'ai adoré Pulsion, j'ai adoré ce spectacle dans lequel tu parles de deuil, de rupture, de la mort de ton père, du rapport à l'autre.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

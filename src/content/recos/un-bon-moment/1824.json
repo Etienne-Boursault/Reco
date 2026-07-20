@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1824",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Page officielle du podcast (Acast)",
+      "url": "https://shows.acast.com/le-potes-cast-de-yacine-et-dedo"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/le-potes-cast-de-yacine-et-dedo/id1828188707"
+    }
+  ],
   "quote": "C'est très marrant",
   "sourceId": "un-bon-moment",
   "status": "validated",

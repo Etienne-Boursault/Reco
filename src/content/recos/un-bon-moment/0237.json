@@ -56,7 +56,14 @@
   ],
   "id": "ubm-0237",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/3180070/No_Im_not_a_Human/"
+    }
+  ],
   "quote": "Le jeu se passe dans une maison tu ne sors jamais de la maison",
   "sourceId": "un-bon-moment",
   "status": "validated",

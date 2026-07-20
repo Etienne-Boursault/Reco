@@ -50,7 +50,20 @@
   ],
   "id": "ubm-0794",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Page officielle du podcast",
+      "url": "https://shows.acast.com/des-trains-a-travers-la-plaine"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/des-trains-%C3%A0-travers-la-plaine/id1549461850"
+    }
+  ],
   "quote": "je recommande maintenant le podcast des trains à travers la plaine",
   "sourceId": "un-bon-moment",
   "status": "validated",

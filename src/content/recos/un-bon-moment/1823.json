@@ -56,7 +56,14 @@
   ],
   "id": "ubm-1823",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/1290000/PowerWash_Simulator/"
+    }
+  ],
   "quote": "Je dirais le jeu vidéo Power Wash Simulator",
   "sourceId": "un-bon-moment",
   "status": "validated",

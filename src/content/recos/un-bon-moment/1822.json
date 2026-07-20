@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-1822",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Page officielle du podcast (Acast)",
+      "url": "https://shows.acast.com/continue-tu-minteresses"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/continue-tu-mint%C3%A9resses/id1812415752"
+    }
+  ],
   "quote": "J'avais écrite pour mon podcast\nAlors t'as un podcast aussi\nQui s'appelle\nContinue tu m'intéresse",
   "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",

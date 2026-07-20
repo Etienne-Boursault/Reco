@@ -29,7 +29,20 @@
   ],
   "id": "ubm-1826",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube de Feldup",
+      "url": "https://www.youtube.com/channel/UCQVaKQcp4OxSg1eC6SF3NTw"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "FeldupTV (site officiel)",
+      "url": "https://www.felduptv.com/"
+    }
+  ],
   "quote": "J'ai poncé La chaîne de Feldup Et c'est une régalade",
   "sourceId": "un-bon-moment",
   "status": "validated",

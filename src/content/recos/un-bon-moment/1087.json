@@ -50,7 +50,20 @@
   ],
   "id": "ubm-1087",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Louie Media",
+      "url": "https://louiemedia.com/injustices-2/ou-peut-etre-une-nuit"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/ou-peut-%C3%AAtre-une-nuit/id1651878404"
+    }
+  ],
   "quote": "moi je conseille celui de Charlotte Pudlowski qui s'appelle Une nuit",
   "sourceId": "un-bon-moment",
   "status": "validated",

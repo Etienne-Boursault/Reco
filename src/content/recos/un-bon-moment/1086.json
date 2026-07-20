@@ -43,7 +43,14 @@
   ],
   "id": "ubm-1086",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/white-lotus/14f9834d-bc23-41a8-ab61-5c8abdbea505"
+    }
+  ],
   "quote": "une série de White Lotus je sais pas si vous l'avez vu c'est une magnifique série américaine",
   "sourceId": "un-bon-moment",
   "status": "validated",

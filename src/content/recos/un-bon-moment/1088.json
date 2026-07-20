@@ -50,7 +50,20 @@
   ],
   "id": "ubm-1088",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel du projet",
+      "url": "https://www.leloup.org/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/le-loup_0-7490697_9782732499628.html"
+    }
+  ],
   "quote": "c'est incroyable ça s'appelle Le Loup de Maïlan Chapiron",
   "sourceId": "un-bon-moment",
   "status": "validated",

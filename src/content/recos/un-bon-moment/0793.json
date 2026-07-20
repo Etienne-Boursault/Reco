@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0793",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/what-we-do-in-the-shadows/umc.cmc.2bss05wnkfezkywhivjc7ikml"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir la série",
+      "url": "https://www.allocine.fr/series/ficheserie-23200/streaming/"
+    }
+  ],
   "quote": "c'est une série que je trouve ultra drôle c'est What We Do In The Shadow",
   "sourceId": "un-bon-moment",
   "status": "validated",

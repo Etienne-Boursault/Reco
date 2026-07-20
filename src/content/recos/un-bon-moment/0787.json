@@ -38,7 +38,20 @@
   ],
   "id": "ubm-0787",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Glénat — la série",
+      "url": "https://www.glenat.com/manga/series/tokyo-revengers"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Éditions Glénat — tome 1",
+      "url": "https://www.glenat.com/shonen/tokyo-revengers-tome-01-9782344035290"
+    }
+  ],
   "quote": "Tokyo Revenger manga super bien",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -52,7 +52,14 @@
   ],
   "id": "ubm-0792",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Joni Mitchell",
+      "url": "https://jonimitchell.com/music/album.cfm?id=5"
+    }
+  ],
   "quote": "un album de Johnny Mitchell qui s'appelle Blue",
   "sourceId": "un-bon-moment",
   "status": "validated",

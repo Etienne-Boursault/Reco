@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2103",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles — dates de Thomas VDB",
+      "url": "https://www.fnacspectacles.com/artist/thomas-vdb/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Thomas_VDB"
+    }
+  ],
   "quote": "Mais si vous ne connaissez pas Navao DVD, vous allez le découvrir.",
   "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",

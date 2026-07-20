@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-0227",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Voir le documentaire (YouTube)",
+      "url": "https://www.youtube.com/watch?v=yVtax4z4BEI"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne Axolot (production)",
+      "url": "https://www.youtube.com/channel/UC2_OG1L8DLTzQ7UrZVOk7OA"
+    }
+  ],
   "quote": "c'était peut-être la sortie de Chasseur de Monde qui était un gros documentaire avec Alexandre Astier.",
   "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",

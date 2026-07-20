@@ -41,7 +41,20 @@
   ],
   "id": "ubm-2823",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/don-dada-mixtape-vol-1/1734675788"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/0Wd9loAJUFFGJ6mGyTL00I"
+    }
+  ],
   "quote": "Dondada type d'Alpha One",
   "sourceId": "un-bon-moment",
   "status": "validated",

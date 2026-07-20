@@ -38,7 +38,20 @@
   ],
   "id": "ubm-0228",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/yoroi/umc.cmc.hrulny7tq05gcapdi75jdnfj"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Offres VOD (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-1000014949/telecharger-vod/"
+    }
+  ],
   "quote": "Allez voir Yoroi.",
   "sourceId": "un-bon-moment",
   "status": "validated",

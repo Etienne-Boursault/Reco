@@ -49,7 +49,14 @@
   "guestWork": true,
   "id": "ubm-0233",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782100863792-curieux-musees-collections-insolites-du-monde-entier-patrick-baud/"
+    }
+  ],
   "quote": "Ce livre s'appelle Curieux Musée.",
   "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",

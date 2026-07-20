@@ -41,7 +41,20 @@
   "guestWork": true,
   "id": "ubm-0783",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/les-mechants"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Le Pacte (distributeur)",
+      "url": "https://le-pacte.com/france/film/les-mechants"
+    }
+  ],
   "quote": "on sort de la promo du film Les Méchants",
   "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",

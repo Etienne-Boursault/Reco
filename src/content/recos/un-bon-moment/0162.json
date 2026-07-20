@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0162",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Exemplaire (collection Kopī)",
+      "url": "https://www.exemplaire-editions.fr/kopi/librairie/livre/boycat"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Decitre",
+      "url": "https://www.decitre.fr/livres/boycat-9782492926815.html"
+    }
+  ],
   "quote": "Ma première petite roco, c'est cette BD Boycat de Aurélien Fernandez qui vient de sortir, qui est vraiment super mime, c'est tout.",
   "recommendedBy": "Manon Bril",
   "sourceId": "un-bon-moment",

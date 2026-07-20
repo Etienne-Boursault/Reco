@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2104",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/jacky_0-12543809_9782246843573.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Paris Librairies",
+      "url": "https://www.parislibrairies.fr/livre/9782246843573-jacky-anthony-passeron/"
+    }
+  ],
   "quote": "Ça s'appelle Jackie d'Anthony Passeron.",
   "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",

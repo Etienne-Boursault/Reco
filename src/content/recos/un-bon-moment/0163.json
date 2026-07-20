@@ -50,7 +50,20 @@
   ],
   "id": "ubm-0163",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où regarder",
+      "url": "https://www.justwatch.com/fr/serie/empathie"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche série",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000611.html"
+    }
+  ],
   "quote": "Empathie sur Canal+, avec Tom and Jijol. C'est incroyable.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

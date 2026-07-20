@@ -49,7 +49,14 @@
   ],
   "id": "ubm-0790",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/le-fils-de-l-homme_0-9627529_9782073002563.html"
+    }
+  ],
   "quote": "Le Fils de l'Homme de Jean-Baptiste Delamaux",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -30,7 +30,14 @@
   ],
   "id": "ubm-2028",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube G Milgram",
+      "url": "https://www.youtube.com/@ggmilgram"
+    }
+  ],
   "quote": "Donc vous allez aimer la chaîne de J. Milgram",
   "sourceId": "un-bon-moment",
   "status": "validated",
