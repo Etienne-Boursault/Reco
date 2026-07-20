@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1801",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/bernie-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-15895/telecharger-vod/"
+    }
+  ],
   "quote": "la fin de Bernie on l'a reproché aussi à la fin il tue tout le monde",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

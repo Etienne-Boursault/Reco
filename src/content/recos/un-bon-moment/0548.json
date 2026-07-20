@@ -40,7 +40,26 @@
   ],
   "id": "ubm-0548",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/barry-lyndon-stanley-kubrick-vod"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/barry-lyndon/umc.cmc.267xk0jhlh5873gftic8q10qg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=135.html"
+    }
+  ],
   "quote": "Barry Lyndon, j'ai mis 10 ans à le voir.",
   "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",

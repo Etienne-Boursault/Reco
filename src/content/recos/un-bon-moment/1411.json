@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-1411",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch — où voir Indomptables",
+      "url": "https://www.justwatch.com/fr/film/indomptables"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022327.html"
+    }
+  ],
   "quote": "Je vous recommande Indomptable, le film de Thomas N. Gijol, qui est sublime.",
   "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",

@@ -62,7 +62,20 @@
   ],
   "id": "ubm-1341",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/pitt-2024/e6e7bad9-d48d-4434-b334-7c651ffc4bdf"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36395.html"
+    }
+  ],
   "quote": "c'est une série que j'aime trop, j'en parle tout le temps, ça s'appelle The Pit.",
   "recommendedBy": "Shirine Boutella",
   "sourceId": "un-bon-moment",

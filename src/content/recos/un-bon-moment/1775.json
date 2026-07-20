@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1775",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Une Bonne Boutique (officiel)",
+      "url": "https://unebonneboutique.com/products/achat-une-bonne-soiree-bonus"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Dates de tournée",
+      "url": "https://www.agendaculturel.fr/kyan-khojandi"
+    }
+  ],
   "quote": "cette émission est sponsorisée par mon spectacle Une Bonne Soirée qui est disponible sur une bonne boutique",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

@@ -44,7 +44,20 @@
     "openai"
   ],
   "id": "ubm-0243",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782070322831-eloge-de-la-fuite-henri-laborit/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Sciences Po",
+      "url": "https://www.librairie-sciencespo.fr/livre/9782070322831-eloge-de-la-fuite-henri-laborit/"
+    }
+  ],
   "quote": "Il y a un bouquin que j'aime beaucoup, c'est l'éloge de la fuite de la bourrie",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

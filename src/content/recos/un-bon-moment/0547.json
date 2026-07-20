@@ -41,7 +41,26 @@
   ],
   "id": "ubm-0547",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/american-history-x"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/american-history-x/umc.cmc.5hy97p3z19vf7iafmc3ug4jep"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=12475.html"
+    }
+  ],
   "quote": "American History X.",
   "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",

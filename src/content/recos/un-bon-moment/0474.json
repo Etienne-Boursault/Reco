@@ -59,7 +59,20 @@
   ],
   "id": "ubm-0474",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80013762"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Molotov TV",
+      "url": "https://www.molotov.tv/fr_fr/p/22468/john-wick"
+    }
+  ],
   "quote": "Ah oui, je le conseille à fond.",
   "sourceId": "un-bon-moment",
   "status": "validated",

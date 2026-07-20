@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0551",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/chair-company/eada90f0-b5b6-4fc4-aeeb-a350a9ceb46c"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36420.html"
+    }
+  ],
   "quote": "je suis très attiré par cette série et elle m'intrigue énormément, ça s'appelle The Chair Company.",
   "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",

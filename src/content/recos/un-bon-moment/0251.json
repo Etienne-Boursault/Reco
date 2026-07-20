@@ -34,7 +34,20 @@
   ],
   "id": "ubm-0251",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253139256-balzac-le-roman-de-sa-vie-stefan-zweig/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Albin Michel",
+      "url": "https://www.albin-michel.fr/balzac-le-roman-de-sa-vie-9782226020949"
+    }
+  ],
   "quote": "le roman de la vie de Balzac par Stéphane Zweig c'est prodigieux",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

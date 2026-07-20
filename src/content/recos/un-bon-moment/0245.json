@@ -58,7 +58,20 @@
   ],
   "id": "ubm-0245",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/mon-oncle-d-amerique"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/mon-oncle-d-amerique"
+    }
+  ],
   "quote": "il a écrit plein de bouquins et dont Alain René avait fait un film qui était mon oncle d'Amérique",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

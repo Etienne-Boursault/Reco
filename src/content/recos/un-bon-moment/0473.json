@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-0473",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0NGB2VPWHPA2B1VSFDQK2E610L"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022941.html"
+    }
+  ],
   "quote": "Aujourd'hui, on reçoit Xavier Lacaille et Thomas N. Gijol. Vous l'avez remarqué depuis le début de l'émission qui a commencé bien avant. Il a capté l'accès à sa petite caméra.",
   "sourceId": "un-bon-moment",
   "status": "validated",

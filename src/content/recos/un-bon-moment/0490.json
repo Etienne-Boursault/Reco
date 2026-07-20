@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0490",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre Actuel La Bruyère",
+      "url": "https://www.theatrelabruyere.com/spectacle/oublie-moi/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/oublie-moi/"
+    }
+  ],
   "quote": "Je recommande la pièce Oublie-moi qui est juste exceptionnelle avec Marie-Julie Baup et Thierry Lopez.",
   "sourceId": "un-bon-moment",
   "status": "validated",

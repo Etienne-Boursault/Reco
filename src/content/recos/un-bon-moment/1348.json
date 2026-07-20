@@ -70,7 +70,26 @@
   ],
   "id": "ubm-1348",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (audio officiel)",
+      "url": "https://www.youtube.com/watch?v=loI9aR3lVQs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/track/3qsMWrhTbsiTQVykS3AeO5"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "SoundCloud officiel",
+      "url": "https://soundcloud.com/timdupofficial/cours-cours-et-cours-encore"
+    }
+  ],
   "quote": "Cour, court et court encore de Tim Dup. Voilà, une chanson que j'ai écouté.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

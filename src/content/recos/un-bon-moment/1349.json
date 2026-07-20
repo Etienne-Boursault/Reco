@@ -26,7 +26,20 @@
   ],
   "id": "ubm-1349",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — bande originale",
+      "url": "https://open.spotify.com/album/3bkLUP1pIDXKtQs1fqbZ5Q"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — le film",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=275503.html"
+    }
+  ],
   "quote": "Je recommande Vincent Delerme, la BO du film qu'il a fait.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

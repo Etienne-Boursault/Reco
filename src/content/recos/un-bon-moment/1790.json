@@ -44,7 +44,20 @@
   ],
   "id": "ubm-1790",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Rakuten TV",
+      "url": "https://www.rakuten.tv/fr/movies/un-long-dimanche-de-fiancailles"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-48349/telecharger-vod/"
+    }
+  ],
   "quote": "j'ai fait un long dimanche de fiança il y a un petit rôle avec Jean-Pierre",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

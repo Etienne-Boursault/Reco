@@ -1,4 +1,7 @@
 {
+  "aliases": [
+    "Revolutionary Road"
+  ],
   "creator": "Sam Mendes",
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
@@ -9,21 +12,21 @@
   "extractionHistory": [
     {
       "at": "2026-06-04T15:59:29+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:47",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
-      "llmProvider": "anthropic",
-      "llmModel": "(assumed)",
-      "worker": "(assumed)",
-      "timestamp_at_extraction": "00:52:47"
+      "worker": "(assumed)"
     },
     {
       "at": "2026-06-05T09:46:52+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:52:48",
       "transcriptModel": "large-v3",
       "transcriptSource": "youtube",
-      "llmProvider": "anthropic",
-      "llmModel": "claude-haiku-4-5",
-      "worker": "main-cpu",
-      "timestamp_at_extraction": "00:52:48"
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -31,7 +34,20 @@
   ],
   "id": "ubm-0545",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/les-noces-rebelles"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir le film",
+      "url": "https://www.allocine.fr/film/fichefilm-127486/streaming/"
+    }
+  ],
   "quote": "Ouais, c'est un super film.",
   "recommendedBy": "Antoine Gouy",
   "sourceId": "un-bon-moment",
@@ -104,8 +120,5 @@
       "url": "https://www.premieremax.com/search?q=Les%20Noces%20Rebelles"
     }
   ],
-  "year": 2008,
-  "aliases": [
-    "Revolutionary Road"
-  ]
+  "year": 2008
 }

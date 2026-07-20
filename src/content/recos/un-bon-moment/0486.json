@@ -47,7 +47,20 @@
   ],
   "id": "ubm-0486",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — DEADLINE (EP, 2026)",
+      "url": "https://open.spotify.com/album/2SrWldMz9dfCB7kAGQNbcC"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac — CD DEADLINE",
+      "url": "https://www.fnac.com/a22551449/Blackpink-BLACKPINK-3rd-MINI-ALBUM-DEADLINE-PINK-Version-CD-album"
+    }
+  ],
   "quote": "En ce moment-là, j'écoute... Le dernier album de Blackpink, du coup.",
   "sourceId": "un-bon-moment",
   "status": "validated",

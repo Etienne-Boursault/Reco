@@ -35,7 +35,20 @@
   ],
   "id": "ubm-1780",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "madelen (INA)",
+      "url": "https://madelen.ina.fr/content/gisele-kerozene-78854?locale=en"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=V0XuE9DtBzM"
+    }
+  ],
   "quote": "Allez voir sur YouTube.",
   "sourceId": "un-bon-moment",
   "status": "validated",

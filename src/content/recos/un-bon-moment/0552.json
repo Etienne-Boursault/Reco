@@ -50,7 +50,14 @@
   ],
   "id": "ubm-0552",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/80986854"
+    }
+  ],
   "quote": "I think you should leave, qui est sur Netflix.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

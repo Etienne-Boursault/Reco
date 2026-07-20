@@ -48,7 +48,26 @@
   ],
   "id": "ubm-0555",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Boutique officielle Bigflo & Oli",
+      "url": "https://bigfloetoli.com/products/cd-karma"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/933704401"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/karma/1879794796"
+    }
+  ],
   "quote": "Ouais, je recommande Karma.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

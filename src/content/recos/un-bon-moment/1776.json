@@ -44,7 +44,20 @@
   ],
   "id": "ubm-1776",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/au-revoir-la-haut/umc.cmc.6rzkbefvn2u712913azp039m5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-230699/telecharger-vod/"
+    }
+  ],
   "quote": "je fais ce film, déjà qui est un film exceptionnel",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",

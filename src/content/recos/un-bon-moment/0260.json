@@ -58,7 +58,20 @@
   ],
   "id": "ubm-0260",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/white-fire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/white-fire"
+    }
+  ],
   "quote": "je vous recommande White Fire",
   "sourceId": "un-bon-moment",
   "status": "validated",

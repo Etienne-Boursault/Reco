@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1804",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/mr-nobody"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/mr-nobody-jaco-van-dormael-vod"
+    }
+  ],
   "quote": "c'est un film d'une série B américaine qui est vachement bien",
   "recommendedBy": "Albert Dupontel",
   "sourceId": "un-bon-moment",
