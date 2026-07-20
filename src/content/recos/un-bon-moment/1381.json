@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-1381",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle/shirley-397324"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Cinémas Pathé — ciné-rencontre",
+      "url": "https://www.pathe.fr/evenements/cine-rencontre-etre-humain-de-shirley-souagnon-43238"
+    }
+  ],
   "quote": "ton spectacle Être humain au cinéma.",
   "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",

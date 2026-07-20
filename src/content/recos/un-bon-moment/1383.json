@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1383",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/sarah-lele/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-sarah-lele.htm"
+    }
+  ],
   "quote": "allez voir Sarah Lele de fou",
   "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",

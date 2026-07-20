@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2268",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube officielle Bloqués",
+      "url": "https://www.youtube.com/channel/UCd0V9SfenWqlPsTt5-AyN8A"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Bloqu%C3%A9s"
+    }
+  ],
   "quote": "bloqué ça les a vraiment marqués",
   "recommendedBy": "Kyan Khojandi & Navo & Orelsan & Gringe & Florent Bernard & Clément Cotentin",
   "sourceId": "un-bon-moment",

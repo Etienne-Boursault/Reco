@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-1712",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/leopoldlemarchand/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Dates de tournée (JDS)",
+      "url": "https://www.jds.fr/artistes/leopold-lemarchand-12287_N"
+    }
+  ],
   "quote": "tu es avec nous tu es dans ton spectacle qui s'appelle premier spectacle éponyme",
   "recommendedBy": "Léopold Lemarchand",
   "sourceId": "un-bon-moment",

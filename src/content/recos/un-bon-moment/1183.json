@@ -53,7 +53,14 @@
   ],
   "id": "ubm-1183",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/i-may-destroy-you/a15b4064-4899-4381-bdf1-676986137ee1"
+    }
+  ],
   "quote": "Mais ça s'appelle \"I May Destroy You\".",
   "recommendedBy": "Marion Séclin",
   "sourceId": "un-bon-moment",

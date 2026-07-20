@@ -52,7 +52,14 @@
   ],
   "id": "ubm-0696",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80091742"
+    }
+  ],
   "quote": "il y en a un que je viens de terminer c'est Last Chance U ça parle du football universitaire américain",
   "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",

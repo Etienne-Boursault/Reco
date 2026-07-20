@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2123",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires — tous ses livres",
+      "url": "https://www.placedeslibraires.fr/listeliv.php?form_recherche_avancee=ok&auteurs=Delphine+Horvilleur"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires — Vivre avec nos morts",
+      "url": "https://www.placedeslibraires.fr/livre/9782253104827-vivre-avec-nos-morts-delphine-horvilleur/"
+    }
+  ],
   "quote": "Moi, je vous recommanderais, si vous ne la connaissez pas déjà, de lire les livres de Delphine Orvilleur.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -38,7 +38,14 @@
   ],
   "id": "ubm-1182",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Regarder sur YouTube (SNL)",
+      "url": "https://www.youtube.com/watch?v=jVhlJNJopOQ"
+    }
+  ],
   "quote": "T'as vu ce sketch de SNL ? Sur papyrus avec Ryan Gosling. Non, je peux. Non, bah, allez voir. Moi, il m'a fait mourir.",
   "sourceId": "un-bon-moment",
   "status": "validated",

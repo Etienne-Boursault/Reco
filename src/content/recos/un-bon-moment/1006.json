@@ -60,7 +60,20 @@
   ],
   "id": "ubm-1006",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/marty-supreme/umc.cmc.2dzsje8605ufrvacjnxcr0gak"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-1000007317/telecharger-vod/"
+    }
+  ],
   "quote": "le film Marty Suprême",
   "sourceId": "un-bon-moment",
   "status": "validated",

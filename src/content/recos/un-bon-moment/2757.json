@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-2757",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Pasquinade (site d'Haroun)",
+      "url": "https://www.pasquinade.fr/"
+    }
+  ],
   "quote": "Allez voir, allez voir sur paskinad.fr, du coup.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

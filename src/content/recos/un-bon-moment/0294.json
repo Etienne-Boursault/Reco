@@ -45,7 +45,14 @@
   ],
   "id": "ubm-0294",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81417684"
+    }
+  ],
   "quote": "ça me fait penser à la nouvelle saison de l'agence sur tf1 il ya des moi j'adore j'adore l'agence je les adore tous ces agents immobiliers",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

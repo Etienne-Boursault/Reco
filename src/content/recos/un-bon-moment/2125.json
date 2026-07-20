@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2125",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok @swann.perisse",
+      "url": "https://www.tiktok.com/@swann.perisse"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@SwannPerisse"
+    }
+  ],
   "quote": "je vais recommander le TikTok de Swan Périsset.",
   "sourceId": "un-bon-moment",
   "status": "validated",

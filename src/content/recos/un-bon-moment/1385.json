@@ -38,7 +38,20 @@
   "guestWork": true,
   "id": "ubm-1385",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/nordine-ganso/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-nordine-ganso.htm"
+    }
+  ],
   "quote": "mon prochain spectacle qui va s'appeler Blanc",
   "recommendedBy": "Nordine Ganso",
   "sourceId": "un-bon-moment",

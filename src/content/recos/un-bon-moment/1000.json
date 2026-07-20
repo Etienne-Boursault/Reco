@@ -61,7 +61,20 @@
   ],
   "id": "ubm-1000",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/to-be-or-not-to-be-ernst-lubitsch-vod"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/to-be-or-not-to-be/umc.cmc.32wvlw96e2hdglvjltx84pvqu"
+    }
+  ],
   "quote": "aller voir aussi To Be No To Be de Lubitsch qui est un classique de la comédie très drôle",
   "sourceId": "un-bon-moment",
   "status": "validated",

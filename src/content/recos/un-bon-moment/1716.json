@@ -34,7 +34,20 @@
   "guestWork": true,
   "id": "ubm-1716",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle du podcast (Acast)",
+      "url": "https://shows.acast.com/les-mecs-que-je-veux-ken"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/les-mecs-que-je-veux-ken/id1474961176"
+    }
+  ],
   "quote": "Déjà t'as ton podcast \"Les gens que je veux ken\" et je rappelle que tu ken avec chaque personne que tu reçois à l'émission.",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",

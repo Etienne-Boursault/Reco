@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-1587",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Sooner",
+      "url": "https://sooner.fr/films/le-crime-du-3e-etage"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (offres VOD)",
+      "url": "https://www.allocine.fr/film/fichefilm-1000020100/telecharger-vod/"
+    }
+  ],
   "quote": "on vous reçoit pour le crime du troisième étage de remue besançon",
   "recommendedBy": "Laetitia Casta & Gilles Lellouche",
   "sourceId": "un-bon-moment",

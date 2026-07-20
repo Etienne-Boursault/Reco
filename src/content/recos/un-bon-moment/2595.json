@@ -29,7 +29,14 @@
   ],
   "id": "ubm-2595",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "La boutique SO (So Press)",
+      "url": "https://boutique.so/en-en/collections/magazines-society"
+    }
+  ],
   "quote": "J'ai lu les Societies...",
   "sourceId": "un-bon-moment",
   "status": "validated",

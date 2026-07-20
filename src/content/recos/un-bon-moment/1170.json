@@ -46,7 +46,20 @@
   "guestWork": true,
   "id": "ubm-1170",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Waly Dia",
+      "url": "https://www.walydia.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Bande-annonce (VOD sur Mediapart)",
+      "url": "https://www.youtube.com/watch?v=FIxOma7SLcw"
+    }
+  ],
   "quote": "vous n'avez pas encore de nom sur le spectacle il va s'appeler Une heure à tuer",
   "recommendedBy": "Waly Dia",
   "sourceId": "un-bon-moment",

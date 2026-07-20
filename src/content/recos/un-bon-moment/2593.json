@@ -31,7 +31,14 @@
   "guestWork": true,
   "id": "ubm-2593",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Anna_Apter"
+    }
+  ],
   "quote": "« Anna est génial... »",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

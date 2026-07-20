@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2527",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81003033"
+    }
+  ],
   "quote": "il y a QB1 ou Sunderland Till I Die",
   "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",

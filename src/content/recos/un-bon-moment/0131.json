@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0131",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Sympa Cool — Le Réseau",
+      "url": "https://sympacool.com/projet/reseau/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube « Le Réseau »",
+      "url": "https://www.youtube.com/playlist?list=PLrhrE5w2Qj3Brtw97tcTQFpqvniMDDwgA"
+    }
+  ],
   "quote": "C'est super, ça démarre un peu.",
   "sourceId": "un-bon-moment",
   "status": "validated",

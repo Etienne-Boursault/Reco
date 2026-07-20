@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2528",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80207046"
+    }
+  ],
   "quote": "ou Sunderland Till I Die ça c'est en foot européen",
   "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",

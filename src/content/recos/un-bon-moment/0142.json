@@ -45,7 +45,20 @@
   ],
   "id": "ubm-0142",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube TheGreatReview",
+      "url": "https://www.youtube.com/@TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/TheGreatReview"
+    }
+  ],
   "quote": "Donc, je reconseille à nouveau The Great Review qui fait des Great Reviews.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

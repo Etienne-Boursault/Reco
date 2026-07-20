@@ -50,7 +50,14 @@
   ],
   "id": "ubm-1190",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/en/shows/high-maintenance/6b2c6f64-13ff-43a5-a9eb-8b87fdf62599"
+    }
+  ],
   "quote": "Et l'autre aussi, série HBO... High Maintenance...",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -58,7 +58,14 @@
   "guestWork": true,
   "id": "ubm-0501",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/detail/Nordine-Ganso---Dr-Love/0SQROWUE1SI2XJRBF5RWRHSZ1F"
+    }
+  ],
   "quote": "C'est un spectacle qu'on peut voir sur Prime.",
   "recommendedBy": "Nordine Ganso",
   "sourceId": "un-bon-moment",

@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2761",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix — HUMORISTES du monde",
+      "url": "https://www.netflix.com/fr/title/81008236"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel d'Adib Alkhalidey",
+      "url": "https://adibalkhalidey.com/"
+    }
+  ],
   "quote": "On l'adore.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

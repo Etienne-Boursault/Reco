@@ -49,7 +49,14 @@
   "guestWork": true,
   "id": "ubm-0582",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify (page artiste)",
+      "url": "https://open.spotify.com/artist/5Yiut7B5Ec52AjszgCO3jY"
+    }
+  ],
   "quote": "Non, on commence à travailler avec un artiste musical depuis quelques semaines. Petit Voyou, il s'appelle.",
   "recommendedBy": "Pierre Croce",
   "sourceId": "un-bon-moment",

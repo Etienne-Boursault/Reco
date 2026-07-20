@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-2244",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/florence-foresti--epilogue/umc.cmc.1i1tcxh7zfpgv8n6scf62cgwp"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/florence-foresti-epilogue"
+    }
+  ],
   "quote": "Là, Epilogue, le dernier spectacle, je l'ai joué très peu.",
   "recommendedBy": "Florence Foresti",
   "sourceId": "un-bon-moment",

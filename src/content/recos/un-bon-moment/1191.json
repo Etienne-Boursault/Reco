@@ -42,7 +42,20 @@
   ],
   "id": "ubm-1191",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/7fJJK56U9fHixgO0HQkhtI"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac — vinyle",
+      "url": "https://www.fnac.com/a14158877/Dua-Lipa-Future-Nostalgia-Vinyle-album"
+    }
+  ],
   "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa... De ? De Dua Lipa... Quoi ? Let's get physical...",
   "sourceId": "un-bon-moment",
   "status": "validated",

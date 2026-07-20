@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2124",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.blandinelehout.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/blandine-lehout/"
+    }
+  ],
   "quote": "Eh ben, je vais recommander une humoriste, Blandine Lehoux.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -37,7 +37,20 @@
   ],
   "id": "ubm-1197",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube Thomas Wiesel",
+      "url": "https://www.youtube.com/channel/UC_ADNHNPnvlQNUZlB3bGCTw"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — tournée « Société Écrans »",
+      "url": "https://www.thomaswiesel.com/tournee/"
+    }
+  ],
   "quote": "Allez la chaîne de Thomas Wiesel. Il fait des tourner dans la France entière.",
   "sourceId": "un-bon-moment",
   "status": "validated",

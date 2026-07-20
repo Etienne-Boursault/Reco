@@ -53,7 +53,14 @@
   ],
   "id": "ubm-1184",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m"
+    }
+  ],
   "quote": "Une série qui s'appelle The Morning Show.",
   "recommendedBy": "Anna Apter",
   "sourceId": "un-bon-moment",

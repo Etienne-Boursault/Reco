@@ -54,7 +54,20 @@
   ],
   "id": "ubm-0581",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-terror/umc.cmc.66dju6lnem7xauim1ru8ad8ow"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/detail/The-Terror/0R5LQART2MFFBK75MSR4T8HIPV?_encoding=UTF8&language=fr_FR"
+    }
+  ],
   "quote": "Et en série, The Terror sur Prime Vidéo.",
   "recommendedBy": "Amixem",
   "sourceId": "un-bon-moment",

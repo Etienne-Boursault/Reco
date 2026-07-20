@@ -31,7 +31,20 @@
   ],
   "id": "ubm-2129",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — PEAU NEUVE",
+      "url": "https://www.deezer.com/us/album/467243155"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel d'Anna Chedid",
+      "url": "https://www.annachedid.fr/albums"
+    }
+  ],
   "quote": "C'était un mollier. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",
   "sourceId": "un-bon-moment",
   "status": "validated",

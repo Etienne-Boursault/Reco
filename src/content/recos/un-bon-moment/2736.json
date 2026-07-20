@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2736",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify (page artiste)",
+      "url": "https://open.spotify.com/artist/6gDLh4x68ES5L5b0vFvtee"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer (page artiste)",
+      "url": "https://www.deezer.com/us/artist/63886482"
+    }
+  ],
   "quote": "Donc voilà. Allez, écoutez. Du coup, je me sens super mal parce que j'ai mis en avant des trucs déjà très connus avec des moyens de ouf avec Pab the Kid.",
   "recommendedBy": "Amixem",
   "sourceId": "un-bon-moment",

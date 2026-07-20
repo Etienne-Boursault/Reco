@@ -57,7 +57,14 @@
   ],
   "id": "ubm-1473",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70184207"
+    }
+  ],
   "quote": "Je peux recommander une série que j'ai découverte, mais qui date. Shameless.",
   "recommendedBy": "Djilsi",
   "sourceId": "un-bon-moment",

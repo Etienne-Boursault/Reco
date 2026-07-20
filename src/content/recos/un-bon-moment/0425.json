@@ -33,7 +33,14 @@
   ],
   "id": "ubm-0425",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81756069"
+    }
+  ],
   "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
   "sourceId": "un-bon-moment",
   "status": "validated",

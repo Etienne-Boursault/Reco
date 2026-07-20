@@ -43,7 +43,14 @@
   ],
   "id": "ubm-0143",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/753640/Outer_Wilds/"
+    }
+  ],
   "quote": "Et par exemple, il y a un jeu que j'adore qui s'appelle Outer Wilds, qui pour moi est le meilleur jeu du monde.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

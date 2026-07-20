@@ -35,7 +35,20 @@
     "openai"
   ],
   "id": "ubm-0587",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/invisible/umc.cmc.69qq448caxln83g9jadkqsaus"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLFdFhj6CALXGt6vxPw9jt49WES1Q2Xu0-"
+    }
+  ],
   "quote": "je recommande à tout le monde que ça s'appelle invisible [...] c'est sur canal ils sont quasiment tout en replay",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

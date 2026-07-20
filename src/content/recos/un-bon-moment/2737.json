@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2737",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify (page artiste)",
+      "url": "https://open.spotify.com/intl-fr/artist/21KPPMcnfzFYt3yseua9Nl"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer (page artiste)",
+      "url": "https://www.deezer.com/us/artist/13505871"
+    }
+  ],
   "quote": "Je vais mettre en avant Pab the Kid et Achille qui sont deux rappeurs slash chanteurs.",
   "recommendedBy": "Amixem",
   "sourceId": "un-bon-moment",

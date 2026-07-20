@@ -61,7 +61,20 @@
   ],
   "id": "ubm-0426",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner — VOD",
+      "url": "https://www.sooner.fr/films/le-reve-americain"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche du film",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000012480.html"
+    }
+  ],
   "quote": "Moi, je recommande le rêve américain d'Anthony Marciano, le film... Ah ouais, il est super, bah oui.",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",

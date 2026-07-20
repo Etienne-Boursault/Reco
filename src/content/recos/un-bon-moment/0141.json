@@ -47,7 +47,20 @@
   ],
   "id": "ubm-0141",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @cabaretsaccage",
+      "url": "https://www.instagram.com/cabaretsaccage/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Maison Furieuse (production)",
+      "url": "https://maisonfurieuse.net/"
+    }
+  ],
   "quote": "Mais, puisqu'on est dans la culture queer, ailleurs, je suis allée voir un cabaret qui s'appelle le Cabaret Saccage.",
   "recommendedBy": "Lou Trotignon",
   "sourceId": "un-bon-moment",

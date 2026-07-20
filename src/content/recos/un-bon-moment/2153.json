@@ -41,7 +41,14 @@
   ],
   "id": "ubm-2153",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/6Xadqm9viEhsKgp0zRp8Gc"
+    }
+  ],
   "quote": "C'est un album que je trouve trop bien.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2122",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "NG Productions (spectacle officiel)",
+      "url": "https://ngproductions.fr/spectacle/julien-santini/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/julien-santini/"
+    }
+  ],
   "quote": "Et sinon, en ce moment, un humoriste qui me fait beaucoup, beaucoup rire, c'est Julien Santini.",
   "sourceId": "un-bon-moment",
   "status": "validated",
