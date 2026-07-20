@@ -52,7 +52,14 @@
   ],
   "id": "ubm-1066",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80990663"
+    }
+  ],
   "quote": "Moi, c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut Jim's.",
   "sourceId": "un-bon-moment",
   "status": "validated",

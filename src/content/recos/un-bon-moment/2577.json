@@ -37,7 +37,20 @@
   "guestWork": true,
   "id": "ubm-2577",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner (VOD)",
+      "url": "https://www.sooner.fr/films/le-discours"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Où voir le film (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-277534/streaming/"
+    }
+  ],
   "quote": "J'ai tourné dans le discours, tourné par... réalisé par Laurent Tirard.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

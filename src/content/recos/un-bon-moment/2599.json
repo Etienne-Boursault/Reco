@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-2599",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Une Bonne Boutique (boutique officielle de Kyan Khojandi)",
+      "url": "https://unebonneboutique.com/products/achat-une-bonne-soiree-bonus"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/kyan-khojandi--une-bonne-soiree/umc.cmc.370y5xqesvht7gcjqhfrliky8"
+    }
+  ],
   "quote": "Et je répète que mon spectacle est totalement disponible sur MyCanel très bientôt ou déjà disponible.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

@@ -57,7 +57,26 @@
   ],
   "id": "ubm-0427",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Muse — site officiel",
+      "url": "https://www.muse.mu/symmetry"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/album/1248725"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1AP6uGYHdakRgwuWQsP5pK"
+    }
+  ],
   "quote": "Origin of Symmetry et Showbiz, les deux premiers albums qui sont exceptionnels.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

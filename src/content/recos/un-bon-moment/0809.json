@@ -52,7 +52,20 @@
   ],
   "id": "ubm-0809",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/us-en/album/cur-clara-luciani/m5g70toczqr2b"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/690kSW79qcdrg4cN03cBbC"
+    }
+  ],
   "quote": "J'ai écouté l'album de Clara Luciani, je pense, tout l'été.",
   "sourceId": "un-bon-moment",
   "status": "validated",

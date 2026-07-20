@@ -60,7 +60,26 @@
   ],
   "id": "ubm-0334",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Écouter / acheter (lien officiel)",
+      "url": "https://orelsan.lnk.to/civilisation"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/1M9gSrMf9GN0XPC3PJIby7"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/270762122"
+    }
+  ],
   "quote": "Et tu as photographié aussi les albums d'Aurel-san qu'on connaît, La Civilisation.",
   "sourceId": "un-bon-moment",
   "status": "validated",

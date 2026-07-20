@@ -29,7 +29,20 @@
   "guestWork": true,
   "id": "ubm-2932",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spectacle intégral sur YouTube (gratuit, mis en ligne par Kyan Khojandi)",
+      "url": "https://www.youtube.com/watch?v=u41ujNodvnM"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Annonce officielle sur kyan.fr",
+      "url": "https://www.kyan.fr/blog/pulsions-sur-youtube"
+    }
+  ],
   "quote": "À un moment donné, je ne pouvais plus le jouer.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

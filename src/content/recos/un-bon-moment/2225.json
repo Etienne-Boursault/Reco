@@ -31,7 +31,26 @@
   ],
   "id": "ubm-2225",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Page officielle du podcast",
+      "url": "https://shows.acast.com/a-bientot-de-te-revoir"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/%C3%A0-bient%C3%B4t-de-te-revoir/id1283205074"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/52EqJyUcpduoCE6Cm8blBw"
+    }
+  ],
   "quote": "Sophie Marie Larouille. Ah bah oui Sophie Marie Larouille. A bientôt de te revoir. Le podcast A bientôt de te revoir.",
   "sourceId": "un-bon-moment",
   "status": "validated",

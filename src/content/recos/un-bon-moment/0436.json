@@ -54,7 +54,20 @@
   ],
   "id": "ubm-0436",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Ombres Blanches (librairie indépendante, Toulouse)",
+      "url": "https://www.ombres-blanches.fr/product/1693/madeline-miller-circe"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Furet du Nord",
+      "url": "https://www.furet.com/livres/circe-madeline-miller-9782266278638.html"
+    }
+  ],
   "quote": "il s'appelle Circé de Madeleine Miller",
   "recommendedBy": "Charlie Danger",
   "sourceId": "un-bon-moment",

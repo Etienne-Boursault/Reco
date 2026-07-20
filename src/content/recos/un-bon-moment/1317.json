@@ -20,7 +20,14 @@
   "linkOverrides": {
     "JustWatch": "https://www.justwatch.com/fr/serie/mon-petit-renne"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81219887"
+    }
+  ],
   "quote": "j'ai commencé une série qui s'appelle Halfman. C'est le gars qui a fait mon petit cerf.",
   "recommendedBy": "Caballero",
   "sourceId": "un-bon-moment",

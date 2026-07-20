@@ -55,7 +55,20 @@
   "guestWork": true,
   "id": "ubm-0923",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/un-air-de-famille-cedric-klapisch-vod"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/un-air-de-famille"
+    }
+  ],
   "quote": "Un air de famille pendant longtemps c'était le film que j'ai fait qui a le mieux marché",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

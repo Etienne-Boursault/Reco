@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2223",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Saison 2, épisode 1 sur YouTube",
+      "url": "https://www.youtube.com/watch?v=l-zaNNw7LdE"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist saison 1 sur YouTube",
+      "url": "https://www.youtube.com/playlist?list=PL_ciRsH7uWQzCi47pckP-fxztT1XH2LNg"
+    }
+  ],
   "quote": "Un truc qui s'appelle Genre Humaine là c'est la saison 2",
   "recommendedBy": "Audrey Pirault",
   "sourceId": "un-bon-moment",

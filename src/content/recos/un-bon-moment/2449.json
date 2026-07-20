@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2449",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@HelioxLab"
+    }
+  ],
   "quote": "une chaîne YouTube que vous kiffez ou pas, le labo d'Héliox.",
   "sourceId": "un-bon-moment",
   "status": "validated",

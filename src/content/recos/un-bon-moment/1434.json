@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-1434",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Les Revues du Monde sur YouTube",
+      "url": "https://www.youtube.com/@LesRevuesduMonde"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Fiche Wikipédia de Charlie Danger",
+      "url": "https://fr.wikipedia.org/wiki/Charlie_Danger"
+    }
+  ],
   "quote": "Charlie, tu as la chaîne Les Revues du Monde, que j'adore regarder, parce que c'est vraiment kiffant d'apprendre tellement de trucs à chaque fois.",
   "recommendedBy": "Charlie Danger",
   "sourceId": "un-bon-moment",

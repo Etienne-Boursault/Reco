@@ -31,7 +31,20 @@
   ],
   "id": "ubm-1141",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Cinéma à la demande",
+      "url": "https://www.cinemasalademande.com/fr/tous-les-films/7460-heredite.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Où voir le film (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-261860/telecharger-vod/"
+    }
+  ],
   "quote": "Si vous avez vu \"Midsommar\", \"Hérédité\", du même réel, il est très bon.",
   "sourceId": "un-bon-moment",
   "status": "validated",

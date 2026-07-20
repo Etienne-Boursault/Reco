@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0826",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Python.org (site officiel)",
+      "url": "https://www.python.org/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Le tutoriel Python (documentation en français)",
+      "url": "https://docs.python.org/fr/3/tutorial/"
+    }
+  ],
   "quote": "Je vais mettre en avant le langage Python.",
   "recommendedBy": "Alexandre Astier",
   "sourceId": "un-bon-moment",

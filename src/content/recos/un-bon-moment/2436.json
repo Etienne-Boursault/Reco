@@ -38,7 +38,20 @@
   ],
   "id": "ubm-2436",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/le-bureau-des-legendes/umc.cmc.555hh09oanw2628yjvgomoivi"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir la série",
+      "url": "https://www.allocine.fr/series/ficheserie-17907/streaming/"
+    }
+  ],
   "quote": "le Bureau des légendes, les gars, c'est la meilleure série française au monde.",
   "sourceId": "un-bon-moment",
   "status": "validated",

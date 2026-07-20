@@ -45,7 +45,20 @@
   ],
   "id": "ubm-0811",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok @creative_explained",
+      "url": "https://www.tiktok.com/@creative_explained"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel Creative Explained",
+      "url": "https://www.creativeexplained.com/"
+    }
+  ],
   "quote": "C'est un compte TikTok à vous recommander. C'est 'Creative Explained' de Armen Adamjan.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

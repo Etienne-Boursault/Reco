@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0454",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253123729-le-papillon-des-etoiles-bernard-werber/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Bernard Werber",
+      "url": "https://bernardwerber.com/livres/papillondesetoiles.php"
+    }
+  ],
   "quote": "C'est un très bon livre !",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -29,7 +29,26 @@
   "guestWork": true,
   "id": "ubm-1663",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/alice-underground/id1811608020"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/77YDTwkv6jCgP12DgNXXT9"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@AliceUndergroundPodcast/videos"
+    }
+  ],
   "quote": "Alice Lost du podcast Alice Underground.",
   "recommendedBy": "Alice Moitie",
   "sourceId": "un-bon-moment",

@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2859",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre des Béliers Parisiens",
+      "url": "https://www.theatredesbeliersparisiens.com/spectacle/la-course-des-geants-tournee/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre de la Renaissance",
+      "url": "https://www.theatredelarenaissance.com/project/la-course-des-geants/"
+    }
+  ],
   "quote": "C'est une pièce qui est à côté de chez vous. La course des géants.",
   "sourceId": "un-bon-moment",
   "status": "validated",

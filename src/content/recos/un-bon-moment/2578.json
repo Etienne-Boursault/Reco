@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2578",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "VOD officielle de Blanche Gardin",
+      "url": "https://vod.blanchegardin.com/spectacle/3/il-faut-que-je-vous-parle"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle du spectacle",
+      "url": "https://www.blanchegardin.com/spectacle/il-faut-que-je-vous-parle/"
+    }
+  ],
   "quote": "Le spectacle de Blanche, sur MyCanal, dessiné par Fab Caro. Allez le voir.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

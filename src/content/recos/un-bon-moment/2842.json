@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2842",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube TheoBabac",
+      "url": "https://www.youtube.com/c/theobabac"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @theobabac",
+      "url": "https://www.instagram.com/theobabac/"
+    }
+  ],
   "quote": "Mais Théo Babac, il est incroyable. Il a... Sa capacité à monter des vidéos drôles, son timing comique est incroyable.",
   "sourceId": "un-bon-moment",
   "status": "validated",

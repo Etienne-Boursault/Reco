@@ -62,7 +62,20 @@
   ],
   "id": "ubm-1324",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/shows/half-man/35000130-8f39-4171-aacf-90b41a95faa3"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36110.html"
+    }
+  ],
   "quote": "j'ai commencé une série qui s'appelle Halfman. Il y a genre trois épisodes, un truc comme ça, et c'est trop bien.",
   "recommendedBy": "Caballero",
   "sourceId": "un-bon-moment",

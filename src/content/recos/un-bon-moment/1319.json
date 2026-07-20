@@ -62,7 +62,14 @@
   "linkOverrides": {
     "Deezer": "https://www.deezer.com/fr/artist/1402112"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — When the City Sleeps",
+      "url": "https://open.spotify.com/album/7LlmJ1aH2FGj9nEh0xPIF2"
+    }
+  ],
   "quote": "Moi, on m'a fait découvrir un artiste suédois il n'y a pas longtemps qui s'appelle Anness.",
   "recommendedBy": "JeanJass",
   "sourceId": "un-bon-moment",

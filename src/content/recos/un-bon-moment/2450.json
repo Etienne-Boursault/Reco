@@ -26,7 +26,20 @@
   ],
   "id": "ubm-2450",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Louie Media — page officielle",
+      "url": "https://louiemedia.com/emotions"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/%C3%A9motions/id1447653027"
+    }
+  ],
   "quote": "je vous invite à écouter le podcast Émotions sur la confiance en soi",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

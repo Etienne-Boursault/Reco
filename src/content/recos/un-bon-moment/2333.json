@@ -31,7 +31,14 @@
   "guestWork": true,
   "id": "ubm-2333",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0KYIYB9BUWE3PRZUNLS5FZS4BZ"
+    }
+  ],
   "quote": "là on arrive à Salade grecque et tu continues",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

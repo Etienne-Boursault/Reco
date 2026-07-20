@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2339",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/LaCinetek"
+    }
+  ],
   "quote": "moi je suis aussi cofondateur de la cinétech la cinétech.com qui est un site pour voir des vieux films",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

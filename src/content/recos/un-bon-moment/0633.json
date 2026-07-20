@@ -49,7 +49,20 @@
   ],
   "id": "ubm-0633",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Le court métrage sur YouTube",
+      "url": "https://www.youtube.com/watch?v=nvcKYVtfOQI"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site de Swann Périssé",
+      "url": "https://swannperisse.com/chambre-froide/"
+    }
+  ],
   "quote": "Donc allez voir ce film il est cool",
   "recommendedBy": "Natoo",
   "sourceId": "un-bon-moment",

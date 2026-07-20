@@ -44,7 +44,20 @@
   ],
   "id": "ubm-0453",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782290391174-la-femme-de-menage-freida-mcfadden/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions J'ai Lu",
+      "url": "https://www.jailu.com/la-femme-de-menage/9782290391174"
+    }
+  ],
   "quote": "J'ai chopé chez mon amie Clara ! La femme de ménage ! Parce que j'avais pas lu depuis longtemps ! C'est bien ça ! En vrai c'est un peu comme un harlequin",
   "recommendedBy": "Natoo",
   "sourceId": "un-bon-moment",

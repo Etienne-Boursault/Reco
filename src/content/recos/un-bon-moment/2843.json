@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2843",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @violente.viande",
+      "url": "https://www.instagram.com/violente.viande/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @florian.nardone",
+      "url": "https://www.instagram.com/florian.nardone/"
+    }
+  ],
   "quote": "Qui est le prénom de la personne qui a le conte qui s'appelle Violente Viande.",
   "sourceId": "un-bon-moment",
   "status": "validated",

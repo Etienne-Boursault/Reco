@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2860",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions du Trésor",
+      "url": "https://www.editionsdutresor.com/catalogue/le-tresor-de-lile-au-crane"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Cultura",
+      "url": "https://www.cultura.com/p-le-tresor-de-l-ile-au-crane-9791091534802.html"
+    }
+  ],
   "quote": "Et je suis en train d'en faire une qui s'appelle le Trésor de l'Île au Crâne.",
   "sourceId": "un-bon-moment",
   "status": "validated",

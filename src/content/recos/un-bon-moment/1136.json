@@ -30,7 +30,20 @@
   ],
   "id": "ubm-1136",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81569721"
+    },
+    {
+      "ethics": "indie",
+      "kind": "borrow",
+      "label": "Médiathèque Numérique",
+      "url": "https://vod.mediatheque-numerique.com/films/everything-everywhere-all-at-once"
+    }
+  ],
   "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",
   "sourceId": "un-bon-moment",
   "status": "validated",

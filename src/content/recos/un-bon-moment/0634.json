@@ -49,7 +49,26 @@
   ],
   "id": "ubm-0634",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Aurevoir Charlie (page officielle)",
+      "url": "https://www.aurevoircharlie.com/podcasts/queens-of-snakes-podcast-fiction/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/queens-of-snakes/id1445202396"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/show/68302"
+    }
+  ],
   "quote": "Ainsi que Queen of Snakes avec Juliette Delacroix",
   "recommendedBy": "Natoo",
   "sourceId": "un-bon-moment",

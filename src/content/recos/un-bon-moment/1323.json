@@ -34,7 +34,20 @@
     "Deezer": "https://www.deezer.com/fr/album/925462881",
     "Spotify": "https://open.spotify.com/intl-fr/album/0n8Md2IjX4WwEaK7NExCYu"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Ground Zero (vinyle)",
+      "url": "https://groundzero.fr/produit/jeanjass-les-champs-de-sacs-plastique-lp/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/album/925462881"
+    }
+  ],
   "quote": "L'album s'appelle... Les chants de sacs plastiques.",
   "recommendedBy": "JeanJass",
   "sourceId": "un-bon-moment",

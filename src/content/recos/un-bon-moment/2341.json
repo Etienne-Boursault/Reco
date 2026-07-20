@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2341",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "CNC",
+      "url": "https://www.cnc.fr/cinema/actualites/decouvrez-ce-qui-me-meut-le-court-metrage-de-cedric-klapisch_1339438"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=4705.html"
+    }
+  ],
   "quote": "Donc, en fait, c'est devenu l'invention des Frères-Lumières.",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

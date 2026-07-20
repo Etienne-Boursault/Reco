@@ -52,7 +52,20 @@
   ],
   "id": "ubm-1460",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — page artiste",
+      "url": "https://www.deezer.com/us/artist/181895087"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — page artiste",
+      "url": "https://open.spotify.com/artist/5blvB6N3OACeH0gJL9BRqf"
+    }
+  ],
   "quote": "Inno Casablanca ! C'est de la musique !",
   "sourceId": "un-bon-moment",
   "status": "validated",

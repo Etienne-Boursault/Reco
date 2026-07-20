@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2574",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Orelsan sur Deezer",
+      "url": "https://www.deezer.com/us/artist/259467"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Album Civilisation (lien officiel de l'artiste)",
+      "url": "https://orelsan.lnk.to/civilisation"
+    }
+  ],
   "quote": "Moi, c'est beaucoup des rappeurs. Ouais, je te jure. Même, tu vois là, par exemple, si on prend Aurel San, que vous connaissez, et que j'aime beaucoup",
   "recommendedBy": "Paul Mirabel",
   "sourceId": "un-bon-moment",

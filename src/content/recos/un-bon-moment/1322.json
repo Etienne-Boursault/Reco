@@ -42,7 +42,20 @@
   "linkOverrides": {
     "YouTube": "https://www.youtube.com/@TheGreatReview"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube TheGreatReview",
+      "url": "https://www.youtube.com/@TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Bloqués 5 heures sur Age of Empires",
+      "url": "https://www.youtube.com/watch?v=tqlO9KrD8vc"
+    }
+  ],
   "quote": "Et il y a The Great Review qui a fait une vidéo sur un match sur Edge of Empires.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

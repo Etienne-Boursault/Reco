@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2329",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/le-peril-jeune"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=9204.html"
+    }
+  ],
   "quote": "Enfin, j'ai fait Le Péril jeune, qui était déjà un film d'époque. Parce que ça parlait des années 70.",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

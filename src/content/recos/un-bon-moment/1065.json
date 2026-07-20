@@ -28,7 +28,14 @@
   ],
   "id": "ubm-1065",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/FailArmy"
+    }
+  ],
   "quote": "Fail Army. Tous les jours il y a des gens qui tombent. C'est génial.",
   "sourceId": "un-bon-moment",
   "status": "validated",

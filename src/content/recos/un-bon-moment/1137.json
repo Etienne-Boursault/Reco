@@ -50,7 +50,20 @@
   ],
   "id": "ubm-1137",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Où voir le film (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-126386/telecharger-vod/"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Fighter/0GHXJWMM6CTFUU14SZ6RHZC7IM"
+    }
+  ],
   "quote": "Il y a The Fighter.",
   "sourceId": "un-bon-moment",
   "status": "validated",

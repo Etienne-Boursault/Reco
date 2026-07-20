@@ -26,7 +26,14 @@
   "guestWork": true,
   "id": "ubm-1439",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "La Table des Savoirs (site officiel)",
+      "url": "https://latabledessavoirs.fr/"
+    }
+  ],
   "quote": "je fais un site de quiz oui garantie tu as le label Emilia c'est le label c'est moi c'est mes questions",
   "recommendedBy": "Émilien",
   "sourceId": "un-bon-moment",

@@ -38,7 +38,20 @@
   ],
   "id": "ubm-0700",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Vérino",
+      "url": "https://verino.fr/bio/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Vérino",
+      "url": "https://www.youtube.com/c/verinaze"
+    }
+  ],
   "quote": "Bah, il y a quand même pas mal Verino. Verino, moi, déjà, quand je suis arrivée à Paris, j'étais fan de ce qu'il faisait.",
   "recommendedBy": "Tania Dutel",
   "sourceId": "un-bon-moment",

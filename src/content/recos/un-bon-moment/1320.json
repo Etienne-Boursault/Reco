@@ -59,7 +59,14 @@
   "linkOverrides": {
     "YouTube": "https://www.youtube.com/@Sylvqin"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube Sylvqin",
+      "url": "https://www.youtube.com/channel/UCseGV3amBLISlIOMQodPfVQ"
+    }
+  ],
   "quote": "Je recommande Sylvquin, tu vois, parce que je l'ai croisé.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

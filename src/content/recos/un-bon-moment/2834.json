@@ -29,7 +29,20 @@
   "guestWork": true,
   "id": "ubm-2834",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/imagine-%C3%A7a-parle-de-%C3%A7a/id1565366066"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Acast",
+      "url": "https://play.acast.com/s/imagine-ca-parle-de-ca"
+    }
+  ],
   "quote": "C'est un autre podcast qui s'appelle Imagine ça parle de ça. On invente de quoi parle des romans juste sur base du titre.",
   "recommendedBy": "Fanny Ruwet",
   "sourceId": "un-bon-moment",

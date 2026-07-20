@@ -50,7 +50,20 @@
   ],
   "id": "ubm-1140",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner (VOD)",
+      "url": "https://www.sooner.fr/films/midsommar"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle A24",
+      "url": "https://a24films.com/films/midsommar"
+    }
+  ],
   "quote": "Midsommar est magnifique.",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2340",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Audiogram",
+      "url": "https://www.audiogram.com/artistes/aliocha-schneider/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/artist/186IEnMYqWBPOAFn78wTPB"
+    }
+  ],
   "quote": "j'ai découvert son nom m'échappe car il est compliqué celui qui joue le héros Aliosha Schneider",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

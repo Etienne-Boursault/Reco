@@ -35,7 +35,20 @@
   ],
   "id": "ubm-1461",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Site officiel du livre",
+      "url": "https://lepireguide.com/pages/livre"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Mollat",
+      "url": "https://www.mollat.com/livres/3412249/cyprien-iov-le-pire-guide-du-japon"
+    }
+  ],
   "quote": "J'ai reçu le pire guide de Cyprien ! Je l'ai pas encore lu je l'ai reçu alors du coup je le recommande ! Il est incroyable !",
   "sourceId": "un-bon-moment",
   "status": "validated",

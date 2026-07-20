@@ -54,7 +54,14 @@
   "guestWork": true,
   "id": "ubm-0922",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80133335"
+    }
+  ],
   "quote": "je savais que c'était un gros projet pour la télé pour le service public pour France 2",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2437",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Gallimard (Paris)",
+      "url": "https://www.librairie-gallimard.com/livre/9782413022770-alain-au-pays-des-merveilles-davy-mourier-monsieur-poulpe-ariel-bitum/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Delcourt",
+      "url": "https://www.editions-delcourt.fr/bd/series/serie-alain-au-pays-des-merveilles/album-alain-au-pays-des-merveilles"
+    }
+  ],
   "quote": "Alain au pays des merveilles.",
   "recommendedBy": "Monsieur Poulpe & Davy Mourier",
   "sourceId": "un-bon-moment",

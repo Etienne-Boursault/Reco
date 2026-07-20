@@ -54,7 +54,20 @@
   "guestWork": true,
   "id": "ubm-0892",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/je-ne-suis-pas-un-heros"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=307280.html"
+    }
+  ],
   "quote": "Vous êtes à l'affiche d'un film qui s'appelle « Je ne suis pas un héros » qui sort le 15 novembre au cinéma.",
   "recommendedBy": "Isabelle Nanty & Vincent Dedienne",
   "sourceId": "un-bon-moment",

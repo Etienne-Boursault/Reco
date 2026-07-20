@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2583",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-edouard-baer.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "L'Officiel des spectacles",
+      "url": "https://www.offi.fr/artiste/edouard-baer-100179.html"
+    }
+  ],
   "quote": "parce que j'ai tellement aimé le spectacle d'Edouard Baer incroyable",
   "recommendedBy": "Tania Dutel",
   "sourceId": "un-bon-moment",

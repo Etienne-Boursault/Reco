@@ -28,7 +28,20 @@
   "linkOverrides": {
     "YouTube": "https://www.youtube.com/@Christophe_Pauly"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Christophe Pauly",
+      "url": "https://christophepauly.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Le Coq aux Champs",
+      "url": "https://www.lecoqauxchamps.be/"
+    }
+  ],
   "quote": "Il y a Christophe Pauly aussi, mais j'en ai déjà pas beaucoup parlé. C'est incroyable.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

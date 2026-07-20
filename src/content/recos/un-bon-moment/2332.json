@@ -41,7 +41,20 @@
   "guestWork": true,
   "id": "ubm-2332",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "La Cinémathèque française",
+      "url": "https://www.cinematheque.fr/film/65548.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Brefcinema",
+      "url": "https://www.brefcinema.com/actualites/cahier-critique/in-transit-de-cedric-klapisch"
+    }
+  ],
   "quote": "j'avais fait un court-métrage In Transit.",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

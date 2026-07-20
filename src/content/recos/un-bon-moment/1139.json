@@ -31,7 +31,14 @@
   ],
   "id": "ubm-1139",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner (VOD)",
+      "url": "https://www.sooner.fr/films/beau-is-afraid"
+    }
+  ],
   "quote": "\"Boy's The Fred\". T'as pas de films préférés de ta vie ?",
   "sourceId": "un-bon-moment",
   "status": "validated",

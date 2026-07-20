@@ -28,7 +28,20 @@
   ],
   "id": "ubm-1110",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.meghan-trainor.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/6JL8zeS1NmiOftqZTRgdTz"
+    }
+  ],
   "quote": "elle est Megan Trenor le matin / écoutez du Megan Trenor / ça met en patate",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

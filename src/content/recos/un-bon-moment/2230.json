@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-2230",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/True-Story-Avec/0KRHQEWXLSX0MOC617EX19IUJA"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=26714.html"
+    }
+  ],
   "quote": "C'est un programme pour Amazon Prime qui consiste à inviter des guests de talent et chaque guest va raconter une histoire folle qui lui est arrivée.",
   "recommendedBy": "Natoo",
   "sourceId": "un-bon-moment",

@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-0895",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac (DVD du spectacle)",
+      "url": "https://www.fnac.com/a2736389/Gad-Elmaleh-La-Vie-normale-DVD-Zone-2"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Fiche du spectacle",
+      "url": "https://humorix.fr/spectacle/gad-elmaleh-la-vie-normale/"
+    }
+  ],
   "quote": "Moi j'ai mis en scène que la vie normale vraiment. Qui a un excellent spectacle de Gaëlle Malais.",
   "recommendedBy": "Isabelle Nanty",
   "sourceId": "un-bon-moment",

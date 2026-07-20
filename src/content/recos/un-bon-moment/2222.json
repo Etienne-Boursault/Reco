@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2222",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/4eG0p1ECR2jxiMAg9YGJaE"
+    }
+  ],
   "quote": "l'employé sur Spotify",
   "recommendedBy": "Natoo",
   "sourceId": "un-bon-moment",

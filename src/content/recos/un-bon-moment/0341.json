@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0341",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/enzo-ricci/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc — Quetzal",
+      "url": "https://www.billetreduc.com/spectacle/enzo-ricci-383373"
+    }
+  ],
   "quote": "Un jeune stand-upper qui s'appelle Enzo Ricci...",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

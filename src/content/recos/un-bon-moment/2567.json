@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-2567",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Paul Mirabel",
+      "url": "https://www.youtube.com/channel/UCi1tByn-qeNhHF0q5SJCl2Q"
+    }
+  ],
   "quote": "allez voir la chaîne de Paul Mirabel",
   "recommendedBy": "Paul Mirabel",
   "sourceId": "un-bon-moment",

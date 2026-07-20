@@ -35,7 +35,14 @@
   "guestWork": true,
   "id": "ubm-1668",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video (saison 6)",
+      "url": "https://www.primevideo.com/-/fr/detail/0MYWE54LWA5FGGD71GE967W1YK"
+    }
+  ],
   "quote": "Tu vas faire LOL bientôt.",
   "recommendedBy": "Paul de Saint Sernin",
   "sourceId": "un-bon-moment",
