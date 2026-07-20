@@ -62,7 +62,14 @@
   ],
   "id": "ubm-0215",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/en/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    }
+  ],
   "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",
   "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",

@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2511",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — Mesdames",
+      "url": "https://www.qobuz.com/fr-fr/album/mesdames-grand-corps-malade/rx5clteq718xb"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Grand Corps Malade",
+      "url": "https://www.grandcorpsmalade.fr/"
+    }
+  ],
   "quote": "Pour la petite histoire, sur l'album Mesdames, c'est la première fois où j'écris vraiment sur la musique.",
   "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",

@@ -13,39 +13,39 @@
   "extractionHistory": [
     {
       "at": "2026-06-04T06:07:51+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:34",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
-      "llmProvider": "openai",
-      "llmModel": "(assumed)",
-      "worker": "(assumed)",
-      "timestamp_at_extraction": "01:42:34"
+      "worker": "(assumed)"
     },
     {
       "at": "2026-06-04T15:58:57+00:00",
+      "llmModel": "(assumed)",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:37",
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
-      "llmProvider": "anthropic",
-      "llmModel": "(assumed)",
-      "worker": "(assumed)",
-      "timestamp_at_extraction": "01:42:37"
+      "worker": "(assumed)"
     },
     {
       "at": "2026-06-05T09:45:06+00:00",
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:42:34",
       "transcriptModel": "large-v3",
       "transcriptSource": "youtube",
-      "llmProvider": "anthropic",
-      "llmModel": "claude-haiku-4-5",
-      "worker": "main-cpu",
-      "timestamp_at_extraction": "01:42:34"
+      "worker": "main-cpu"
     },
     {
       "at": "2026-06-05T09:46:18+00:00",
+      "llmModel": "gpt-4o-mini",
+      "llmProvider": "openai",
+      "timestamp_at_extraction": "01:42:34",
       "transcriptModel": "large-v3",
       "transcriptSource": "youtube",
-      "llmProvider": "openai",
-      "llmModel": "gpt-4o-mini",
-      "worker": "main-cpu",
-      "timestamp_at_extraction": "01:42:34"
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -54,7 +54,20 @@
   ],
   "id": "ubm-1541",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Libraires Ensemble",
+      "url": "https://www.libraires-ensemble.com/livre/24153743-l-amour-c-est-surcote-mourad-winter-pocket"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie Mollat",
+      "url": "https://www.mollat.com/livres/2526402/mourad-winter-l-amour-c-est-surcote"
+    }
+  ],
   "quote": "On peut parler des livres de Murad Winter. L'amour, c'est sur-côté.",
   "recommendedBy": "Kyan Khojandi & Doully",
   "sourceId": "un-bon-moment",

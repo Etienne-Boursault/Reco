@@ -50,7 +50,20 @@
   ],
   "id": "ubm-0559",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube officielle",
+      "url": "https://www.youtube.com/channel/UCghR6gNuBneEKkDuKtXQM4w"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://chrisflemingfleming.com/"
+    }
+  ],
   "quote": "C'est lui.",
   "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",

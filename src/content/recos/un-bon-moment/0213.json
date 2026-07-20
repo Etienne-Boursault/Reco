@@ -58,7 +58,20 @@
   ],
   "id": "ubm-0213",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/euphoria/4ffd33c9-e0d6-4cd6-bd13-34c266c79be0"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-22215/streaming/"
+    }
+  ],
   "quote": "Moi, j'ai découvert la série Euphoria. Je n'avais pas vu, je viens de la regarder.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

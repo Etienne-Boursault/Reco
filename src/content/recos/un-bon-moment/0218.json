@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0218",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/parks-and-recreation/umc.cmc.4rhzbt3nmsycvgt4nilhbuyae"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir",
+      "url": "https://www.justwatch.com/fr/serie/parks-and-recreation/saison-3"
+    }
+  ],
   "quote": "Parks and Recreations, je trouve que c'est sous-coté en France.",
   "sourceId": "un-bon-moment",
   "status": "validated",

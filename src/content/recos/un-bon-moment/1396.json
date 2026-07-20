@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-1396",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/6KClydoXrGntT4Ma0B1Sv9"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (playlist officielle)",
+      "url": "https://www.youtube.com/playlist?list=PL0ju6mnnYrk_rBITKKXMgvzGtF0gtu641"
+    }
+  ],
   "quote": "je démarre un podcast qui s'appelle famille plus un sur toutes les plateformes de podcast",
   "recommendedBy": "Kemmler",
   "sourceId": "un-bon-moment",

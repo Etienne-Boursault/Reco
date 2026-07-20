@@ -63,7 +63,14 @@
   "guestWork": true,
   "id": "ubm-0210",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=35910.html"
+    }
+  ],
   "quote": "Franchement, moi, à chaque fois, c'est pour ça qu'on a adoré Iris, parce que vraiment, j'ai vraiment...",
   "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",

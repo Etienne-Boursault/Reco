@@ -48,7 +48,20 @@
   ],
   "id": "ubm-1331",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "RUQ Spectacles (production)",
+      "url": "https://www.ruqspectacles.fr/artistes/thomas-vdb/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles — tournée",
+      "url": "https://www.fnacspectacles.com/artist/thomas-vdb/thomas-vdb-tournee-4065756/"
+    }
+  ],
   "quote": "Tout ce que j'ai noté, c'est pour le prochain spectacle de Thomas VDB, qui est actuellement en rodage, donc allez le voir.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

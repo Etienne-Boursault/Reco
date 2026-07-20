@@ -62,7 +62,14 @@
   ],
   "id": "ubm-0963",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr-en/TITLE/70153373"
+    }
+  ],
   "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",
   "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",

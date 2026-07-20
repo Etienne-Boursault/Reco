@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2778",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/us/album/bagarre-bagarre-ep/1515242462"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/02knHTGcZdUnk9LHw6UjXO"
+    }
+  ],
   "quote": "je viens de sortir un EP qui s'appelle Bagarre, Bagarre.",
   "recommendedBy": "Julien Granel",
   "sourceId": "un-bon-moment",

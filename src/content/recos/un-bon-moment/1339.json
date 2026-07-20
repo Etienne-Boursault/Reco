@@ -63,7 +63,20 @@
   ],
   "id": "ubm-1339",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0K6E1GIZJ5WOL7UK5CY80801E5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022315.html"
+    }
+  ],
   "quote": "Et là, il en a sorti un autre. Et là, il sort un film qui s'appelle « Familles de merde ».",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

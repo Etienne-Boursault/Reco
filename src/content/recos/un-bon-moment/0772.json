@@ -39,7 +39,20 @@
   ],
   "id": "ubm-0772",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp",
+      "url": "https://corywong.bandcamp.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.corywongmusic.com/"
+    }
+  ],
   "quote": "Et en ce moment, par ailleurs, j'écoute beaucoup un type qui s'appelle Corey Wong ! Qui est notamment le guitariste de Wolf Peck !",
   "recommendedBy": "Clément Viktorovitch",
   "sourceId": "un-bon-moment",

@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0217",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/fleabag/umc.cmc.3q807jzamz6a79sq9c1nco48o"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0OB9NDUVQKFRSYRSCHT2A784TI"
+    }
+  ],
   "quote": "Constance, c'est elle qui m'a fait découvrir \"Fleabag\". Moi, je ne connaissais pas et j'adore.",
   "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",

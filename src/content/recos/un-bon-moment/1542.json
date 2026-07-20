@@ -26,7 +26,20 @@
   ],
   "id": "ubm-1542",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librest (libraires indépendants)",
+      "url": "https://www.librest.com/livres/les-meufs-c-est-des-mecs-bien-mourad-winter_0-10862485_9782266343008.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Decitre",
+      "url": "https://www.decitre.fr/livres/les-meufs-c-est-des-mecs-bien-9782493865076.html"
+    }
+  ],
   "recommendedBy": "Kyan Khojandi & Doully",
   "sourceId": "un-bon-moment",
   "status": "validated",

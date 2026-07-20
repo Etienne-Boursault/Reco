@@ -62,7 +62,14 @@
   ],
   "id": "ubm-0496",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70143836"
+    }
+  ],
   "quote": "ma série préférée c'est Breaking Bad",
   "sourceId": "un-bon-moment",
   "status": "validated",

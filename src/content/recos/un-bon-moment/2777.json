@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-2777",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Playlist Clique (YouTube)",
+      "url": "https://www.youtube.com/playlist?list=PLAo5WPr3qmhSnx14or7XAYxsWU9yGBxw7"
+    }
+  ],
   "quote": "Moi je recommande les chroniques de Clément Victorovitch sur my canal ! Oh ! Allez les voir !",
   "recommendedBy": "Clément Viktorovitch",
   "sourceId": "un-bon-moment",

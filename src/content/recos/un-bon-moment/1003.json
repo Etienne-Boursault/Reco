@@ -30,7 +30,14 @@
   ],
   "id": "ubm-1003",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/82051730"
+    }
+  ],
   "quote": "on rajoute le dernier spectacle de Ricky Gervais mortality on l'a vu ensemble",
   "sourceId": "un-bon-moment",
   "status": "validated",

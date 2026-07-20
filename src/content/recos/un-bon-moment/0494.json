@@ -62,7 +62,20 @@
   "guestWork": true,
   "id": "ubm-0494",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/mesdames-grand-corps-malade/rx5clteq718xb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac (CD)",
+      "url": "https://www.fnac.com/a14869623/Grand-Corps-Malade-Mesdames-CD-album"
+    }
+  ],
   "quote": "l'album de Grand Corps Malade qui a quand même très bien marché",
   "recommendedBy": "Mosimann",
   "sourceId": "un-bon-moment",

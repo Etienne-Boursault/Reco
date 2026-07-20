@@ -50,7 +50,26 @@
   ],
   "id": "ubm-0557",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/la-bonne-annee"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/film/la-bonne-annee-claude-lelouch-vod"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.filmotv.fr/film/la-bonne-annee/2990.html"
+    }
+  ],
   "quote": "La Bonne Année, par exemple. Film de Claude Lelouch. Pas un des plus connus. Chef d'œuvre totale.",
   "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",

@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-0690",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — Paradis (album contenant Quarantaine)",
+      "url": "https://www.qobuz.com/fr-fr/album/paradis-ben-mazue/ba9qtjkx7uiuc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — Quarantaine",
+      "url": "https://www.deezer.com/us/track/1113719992"
+    }
+  ],
   "quote": "c'est le début d'une chanson qui s'appelle Quarantaine où je dis c'est tard ou c'est tôt 7h je sais plus mais c'est tout le temps",
   "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",

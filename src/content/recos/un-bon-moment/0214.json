@@ -57,7 +57,14 @@
   ],
   "id": "ubm-0214",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782869434103-art-yasmina-reza/"
+    }
+  ],
   "quote": "C'est une pièce exceptionnelle qu'on peut voir d'ailleurs.",
   "sourceId": "un-bon-moment",
   "status": "validated",

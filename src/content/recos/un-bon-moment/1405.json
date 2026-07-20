@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-1405",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/track/3mw4us5zgVVjW6yGU6dBzs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube (lyrics video)",
+      "url": "https://www.youtube.com/watch?v=Lt-FD49BoIE"
+    }
+  ],
   "quote": "le morceau s'appelle Si c'est toi",
   "recommendedBy": "Kemmler",
   "sourceId": "un-bon-moment",

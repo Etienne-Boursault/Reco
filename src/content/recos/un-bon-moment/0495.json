@@ -63,7 +63,20 @@
   ],
   "id": "ubm-0495",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/l-ame-ideale"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-300387/telecharger-vod/"
+    }
+  ],
   "quote": "moi j'ai vu le plus beau film de l'année 2025 L'âme idéale",
   "sourceId": "un-bon-moment",
   "status": "validated",

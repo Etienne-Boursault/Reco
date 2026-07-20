@@ -62,7 +62,14 @@
   ],
   "id": "ubm-0497",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80021955"
+    }
+  ],
   "quote": "et Better Call Saul un peu les deux",
   "sourceId": "un-bon-moment",
   "status": "validated",

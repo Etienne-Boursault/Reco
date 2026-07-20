@@ -49,7 +49,26 @@
   "guestWork": true,
   "id": "ubm-0689",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Ben Mazué — Quand je marche",
+      "url": "https://www.benmazue.fr/2020/09/22/quand-je-marche-nouveau-clip/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — Paradis (album contenant le titre)",
+      "url": "https://www.qobuz.com/fr-fr/album/paradis-ben-mazue/ba9qtjkx7uiuc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — clip officiel",
+      "url": "https://www.youtube.com/watch?v=29gOHmidswU"
+    }
+  ],
   "quote": "c'est dans Quand je marche",
   "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",

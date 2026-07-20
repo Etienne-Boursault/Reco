@@ -49,7 +49,14 @@
   ],
   "id": "ubm-0212",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782404081328-les-hauts-de-hurlevent-emily-bronte/"
+    }
+  ],
   "quote": "Léo de Hurlevent d'Émilie Brontë. Plus grand livre jamais écrit sur l'amour, 1847.",
   "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",

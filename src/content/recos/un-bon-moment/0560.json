@@ -66,7 +66,20 @@
   "linkOverrides": {
     "Instagram": "https://www.instagram.com/greerbarnes_/?hl=fr"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — spectacle intégral",
+      "url": "https://www.youtube.com/watch?v=xNuQzXU2D_A"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — See What I'm Saying",
+      "url": "https://open.spotify.com/album/6bxw0EahBKuZYpGgpLE3pt"
+    }
+  ],
   "quote": "C'est un stand-upeur américain qui doit avoir 60 ans.",
   "recommendedBy": "David Castello-Lopes",
   "sourceId": "un-bon-moment",

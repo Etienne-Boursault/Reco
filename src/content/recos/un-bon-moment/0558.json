@@ -62,7 +62,20 @@
   "linkOverrides": {
     "Deezer": "https://www.deezer.com/fr/artist/201875"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — Al'Tarba",
+      "url": "https://altarba.bandcamp.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — Irwin's Lands",
+      "url": "https://altarba.bandcamp.com/album/irwins-lands"
+    }
+  ],
   "quote": "aller écouter le dernier album d'Al Tarba, il fait aussi pas mal de feats avec Sun Bay et tout ça, qui sont des super gars.",
   "recommendedBy": "Doully",
   "sourceId": "un-bon-moment",

@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-2510",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz — Il nous restera ça",
+      "url": "https://www.qobuz.com/fr-fr/album/il-nous-restera-ca-reedition-grand-corps-malade/qecrv2w63b2ia"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac — Il nous restera ça (CD)",
+      "url": "https://www.fnac.com/a9056990/Grand-Corps-Malade-Il-Nous-Restera-ca-CD-album"
+    }
+  ],
   "quote": "Et puis en 2015, j'avais un album, je prépare un album qui s'appelle Il nous restera ça.",
   "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",

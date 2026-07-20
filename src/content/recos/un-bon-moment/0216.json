@@ -44,7 +44,14 @@
   ],
   "id": "ubm-0216",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/series/ally-mcbeal/1lzRe9Hnjr7M"
+    }
+  ],
   "quote": "Et moi, j'aime aussi beaucoup Ali McBeal. Il y a son romantisme, j'adore ça.",
   "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",

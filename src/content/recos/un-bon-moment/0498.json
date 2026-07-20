@@ -62,7 +62,14 @@
   ],
   "id": "ubm-0498",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80010655"
+    }
+  ],
   "quote": "je te conseille Bloodline",
   "sourceId": "un-bon-moment",
   "status": "validated",

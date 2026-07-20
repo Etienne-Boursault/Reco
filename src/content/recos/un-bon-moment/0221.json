@@ -56,7 +56,14 @@
   ],
   "id": "ubm-0221",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@OldThingsNeverDie-"
+    }
+  ],
   "quote": "Je recommande la chaîne \"Old Things Never Die\".",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-1912",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/chagrin-dami-feat-mosimann-single/1631805107"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1eBzxaxoS7abQlIM6Vz7mS"
+    }
+  ],
   "quote": "moi je pense que... on a fait cette chanson",
   "recommendedBy": "Kemmler & Mosimann",
   "sourceId": "un-bon-moment",

@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0220",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/la-pampa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=291594.html"
+    }
+  ],
   "quote": "Super film. Hyper bien réalisé.",
   "sourceId": "un-bon-moment",
   "status": "validated",
