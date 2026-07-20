@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2344",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/paris-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=114860.html"
+    }
+  ],
   "quote": "le film Paris c'est beaucoup sur des histoires de frères et sœurs",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

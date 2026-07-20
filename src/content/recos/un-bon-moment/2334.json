@@ -41,7 +41,14 @@
   "guestWork": true,
   "id": "ubm-2334",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=14363.html"
+    }
+  ],
   "quote": "Chacun cherche son chat c'est un peu la même histoire",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",

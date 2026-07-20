@@ -54,7 +54,14 @@
   "guestWork": true,
   "id": "ubm-0921",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=33468.html"
+    }
+  ],
   "quote": "c'est L'Auberge Espagnole je pense que c'est son deuxième long métrage",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",
