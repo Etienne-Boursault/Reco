@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-2970",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — le long métrage complet",
+      "url": "https://www.youtube.com/watch?v=o4oJi1ebp3U"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Sympa Cool — fiche du film",
+      "url": "https://sympacool.com/projet/la-regle-du-jeu/"
+    }
+  ],
   "quote": "on a fait un long métrage en deux jours on a fait un long métrage c'est sympa démerdeur ça mon pote c'est la bizarre d'entendre non c'est vrai qu'on a mis sur Youtube d'ailleurs oui oui on avait ce désir absolu de créer des choses très vite et donc parfois on a trouvé des solutions la règle du jeu la règle du jeu la règle du jeu",
   "recommendedBy": "Ambroise Carminati",
   "sourceId": "un-bon-moment",

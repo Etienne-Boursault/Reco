@@ -30,7 +30,20 @@
   ],
   "id": "ubm-1095",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — BAFTA Screenwriters' Lecture",
+      "url": "https://www.youtube.com/watch?v=eRfXcWT_oFs"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "BAFTA — page officielle (vidéo + transcription)",
+      "url": "https://www.bafta.org/stories/charlie-kaufman-screenwriters-lecture/"
+    }
+  ],
   "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
   "sourceId": "un-bon-moment",
   "status": "validated",

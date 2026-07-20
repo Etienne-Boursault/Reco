@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1365",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/malika-histoire-d-une-psychanalyse_0-14898749_9791034609765.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Champ social éditions",
+      "url": "https://champsocial.com/book-malika_l_histoire_d_une_psychanalyse,1686.html"
+    }
+  ],
   "quote": "Blague à part, c'est sur sa vie, c'est autobiographique.",
   "recommendedBy": "Nassim Lyes",
   "sourceId": "un-bon-moment",

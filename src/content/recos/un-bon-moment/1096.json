@@ -26,7 +26,20 @@
   ],
   "id": "ubm-1096",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253151456-ecriture-stephen-king/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Albin Michel",
+      "url": "https://www.albin-michel.fr/ecriture-memoires-dun-metier-9782226126702"
+    }
+  ],
   "quote": "Donc, tu peux lire l'écriture de Stephen King.",
   "sourceId": "un-bon-moment",
   "status": "validated",

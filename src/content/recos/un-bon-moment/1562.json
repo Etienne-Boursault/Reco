@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1562",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/re-commencement/1877696548"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify (profil artiste)",
+      "url": "https://open.spotify.com/artist/2zHuN04qyNnz890Y2R0Nkr"
+    }
+  ],
   "quote": "Et l'album de Tessabé aussi, qui est sorti il y a pas longtemps, donc je vous le recommande",
   "recommendedBy": "Anaïde Rozam",
   "sourceId": "un-bon-moment",

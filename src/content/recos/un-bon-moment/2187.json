@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2187",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/a-2-a-3-vianney/cyylvc3wxlraa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac — CD album",
+      "url": "https://www.fnac.com/a18565296/Vianney-a-2-a-3-CD-album"
+    }
+  ],
   "quote": "L'album est sorti, alors Vianney, on peut se le procurer chez tous les bons disquaires.",
   "recommendedBy": "Vianney",
   "sourceId": "un-bon-moment",

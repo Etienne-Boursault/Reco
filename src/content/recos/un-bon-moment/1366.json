@@ -72,7 +72,20 @@
   ],
   "id": "ubm-1366",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER",
+      "url": "https://www.sooner.fr/films/la-zone-d-interet"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=266159.html"
+    }
+  ],
   "quote": "Dernier coup de cœur, la zone d'intérêt.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

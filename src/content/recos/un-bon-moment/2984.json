@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2984",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/82157057"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche série",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24293.html"
+    }
+  ],
   "quote": "Xavier tu es un des créateurs de validez la série sur Canal Plus",
   "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",

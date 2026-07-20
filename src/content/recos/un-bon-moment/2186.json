@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2186",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/la-symphonie-des-eclairs-zaho-de-sagazan/ylfwj9nml7h8a"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/album/421296587"
+    }
+  ],
   "quote": "C'est une jeune artiste, auteur-compositeur, interprèteuse et avec une belle personnalité, beau texte, un univers musical un peu défini.",
   "sourceId": "un-bon-moment",
   "status": "validated",

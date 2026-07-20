@@ -37,7 +37,20 @@
   "guestWork": true,
   "id": "ubm-2966",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Encore Un Tour — production officielle",
+      "url": "https://encoreuntour.com/spectacle/kyan-khojandi/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Infoconcert — dates de tournée",
+      "url": "https://www.infoconcert.com/artiste/kyan-khojandi-63919/concerts.html"
+    }
+  ],
   "quote": "c'est mon spectacle donc venez avec grand plaisir aussi",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1014",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Inter Wine & Dine (son école d'œnologie)",
+      "url": "https://interwd.thinkific.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Ses livres (Éditions Flammarion)",
+      "url": "https://editions.flammarion.com/Auteurs/bucella-fabrizio"
+    }
+  ],
   "quote": "Je veux recommander le professeur Fabrizio Buccella.",
   "sourceId": "un-bon-moment",
   "status": "validated",

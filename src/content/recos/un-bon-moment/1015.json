@@ -29,7 +29,20 @@
   ],
   "id": "ubm-1015",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Un-voleur-sur-le-toit/0NDJSV959OKYIJQY1M017XV62U"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=326303.html"
+    }
+  ],
   "quote": "regardez le film avec Channing Tatoumou",
   "recommendedBy": "Nassim Lyes",
   "sourceId": "un-bon-moment",

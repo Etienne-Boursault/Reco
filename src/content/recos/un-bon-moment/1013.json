@@ -37,7 +37,20 @@
   ],
   "id": "ubm-1013",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Billetterie officielle (Théâtre Mogador)",
+      "url": "https://www.stage-entertainment.fr/billetterie-officielle-le-roi-lion"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/event/le-roi-lion-saison-6-theatre-mogador-paris-theatre-mogador-21844113/"
+    }
+  ],
   "quote": "Yannis qui est au Roi Lion ! Je te recommande ! Qui joue au Roi Lion ! Oui, oui, bien sûr ! Qui est le rôle principal au Roi Lion, qui joue le rôle de Simba !",
   "sourceId": "un-bon-moment",
   "status": "validated",

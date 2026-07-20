@@ -60,7 +60,26 @@
   ],
   "id": "ubm-0524",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/1cOIpFhvmwtWvG2tuC47Ha"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/933704401"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Boutique officielle Bigflo & Oli",
+      "url": "https://bigfloetoli.com/"
+    }
+  ],
   "quote": "C'est pas mon album préféré de Big Flo Oli, c'est dans mes albums préférés, tout court.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

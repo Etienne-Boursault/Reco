@@ -61,7 +61,20 @@
   ],
   "id": "ubm-0526",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/linnocent/umc.cmc.4u7fvnvcwr8mm019h2v3qolli"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=284675.html"
+    }
+  ],
   "quote": "Vas-y, l'innocent avec Louis Garel.",
   "sourceId": "un-bon-moment",
   "status": "validated",

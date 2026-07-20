@@ -27,7 +27,20 @@
   "guestWork": true,
   "id": "ubm-2983",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Sympa Cool — Ambroise et Xavier",
+      "url": "https://sympacool.com/projet/aetx-videos/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram du duo",
+      "url": "https://www.instagram.com/ambroiseetxavier/"
+    }
+  ],
   "quote": "le spectacle s'appelle Ambroise Xavier on l'a donc créé on a créé ça en mars 2018 au Sonar une salle à Paris",
   "recommendedBy": "Xavier Lacaille, Ambroise Carminati",
   "sourceId": "un-bon-moment",

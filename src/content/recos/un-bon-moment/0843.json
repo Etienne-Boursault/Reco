@@ -35,7 +35,20 @@
   ],
   "id": "ubm-0843",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "VIVA by Videofutur (VOD)",
+      "url": "https://vod.viva.videofutur.fr/tout-le-monde-il-est-beau-tout-le-monde-il-est-gentil/112706"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — toutes les offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-3155/telecharger-vod/"
+    }
+  ],
   "quote": "allez voir, tout le monde il est beau, tout le monde il est gentil. Allez voir ces trucs-là, c'est très drôle.",
   "sourceId": "un-bon-moment",
   "status": "validated",

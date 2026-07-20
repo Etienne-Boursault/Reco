@@ -62,7 +62,20 @@
   ],
   "id": "ubm-1363",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000006828.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Séances UGC",
+      "url": "https://www.ugc.fr/film.html?id=17005"
+    }
+  ],
   "quote": "Je vous recommande d'aller voir Bagar le 15 avril.",
   "recommendedBy": "Kyan Khojandi & Anaïde Rozam & Nassim Lyes",
   "sourceId": "un-bon-moment",

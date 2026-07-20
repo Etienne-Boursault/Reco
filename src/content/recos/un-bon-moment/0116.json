@@ -51,7 +51,20 @@
   ],
   "id": "ubm-0116",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — album « Le goût du bonheur »",
+      "url": "https://www.deezer.com/fr/album/245456522"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — l'album",
+      "url": "https://www.gerard-lenorman.com/discographie/le-gout-du-bonheur"
+    }
+  ],
   "quote": "Allez écouter ce truc.",
   "sourceId": "un-bon-moment",
   "status": "validated",
