@@ -35,7 +35,14 @@
   ],
   "id": "ubm-2622",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/210970/The_Witness/"
+    }
+  ],
   "quote": "Mon jeu préféré, c'est The Witness.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

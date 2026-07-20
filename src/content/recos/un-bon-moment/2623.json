@@ -38,7 +38,26 @@
   ],
   "id": "ubm-2623",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "itch.io (Hempuli)",
+      "url": "https://hempuli.itch.io/baba"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/736260/Baba_Is_You/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://hempuli.com/baba/"
+    }
+  ],
   "quote": "Baba Is You, ça rend fou.",
   "sourceId": "un-bon-moment",
   "status": "validated",

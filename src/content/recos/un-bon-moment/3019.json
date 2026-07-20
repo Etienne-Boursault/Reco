@@ -38,7 +38,20 @@
   ],
   "id": "ubm-3019",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.exemplaire-editions.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Les projets en cours",
+      "url": "https://www.exemplaire-editions.fr/projects"
+    }
+  ],
   "quote": "Moi, je recommande \"Exemplaire\" qui est une boîte d'édition de bouquins.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

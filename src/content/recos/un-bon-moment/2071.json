@@ -35,7 +35,20 @@
   ],
   "id": "ubm-2071",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spectacle entier sur YouTube",
+      "url": "https://www.youtube.com/watch?v=UdfNbsnyduQ"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-remi-boyes.htm"
+    }
+  ],
   "quote": "les 50 minutes de Rémi Boy qui sont incroyables",
   "sourceId": "un-bon-moment",
   "status": "validated",

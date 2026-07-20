@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0869",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782844811929-les-regles-elementaires-pour-l-ecriture-d-un-scenario-blake-snyder/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Éditions Dixit",
+      "url": "https://www.dixit.fr/boutique-detail-livre-les-regles-elementaires-pour-l-ecriture-d-un-scenario-par-blake-snyder-270-0-1.html"
+    }
+  ],
   "quote": "c'est un bon bouquin contrairement aux autres, je trouve.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

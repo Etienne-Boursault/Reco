@@ -35,7 +35,20 @@
   ],
   "id": "ubm-2070",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel d'Alexandre Kominek",
+      "url": "https://alexandrekominek.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/alexandre-kominek/alexandre-kominek-batard-sensible-tournee-3279973/"
+    }
+  ],
   "quote": "Bâtard sensible, non c'est d'une drôlerie folle",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -39,7 +39,26 @@
   ],
   "id": "ubm-2630",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80097474"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/tickled/umc.cmc.4mwldk5y56nhyfq7yhpsegwqd"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=243856.html"
+    }
+  ],
   "quote": "Vous avez vu ce documentaire sur Netflix qui s'appelle Tickled ?",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -34,7 +34,14 @@
   ],
   "id": "ubm-2080",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/affaires-sensibles/id912451024"
+    }
+  ],
   "quote": "ouais ouais ouais c'est génial",
   "sourceId": "un-bon-moment",
   "status": "validated",

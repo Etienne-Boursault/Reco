@@ -29,7 +29,14 @@
   "guestWork": true,
   "id": "ubm-3025",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Invisible (playlist YouTube)",
+      "url": "https://www.youtube.com/playlist?list=PLFdFhj6CALXGt6vxPw9jt49WES1Q2Xu0-"
+    }
+  ],
   "quote": "j'espère que les gens vont pouvoir aller le découvrir.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

@@ -43,7 +43,20 @@
   ],
   "id": "ubm-1101",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "RTBF Auvio",
+      "url": "https://auvio.rtbf.be/emission/strip-tease-16566"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Strip-Tease intégral (Auvio)",
+      "url": "https://auvio.rtbf.be/emission/strip-tease-integral-31313"
+    }
+  ],
   "quote": "Striptease, ouais, parce que non, mais c'est vrai. Non, mais tu as des plans assez striptease quand même.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

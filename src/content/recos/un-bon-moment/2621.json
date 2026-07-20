@@ -34,7 +34,20 @@
   ],
   "id": "ubm-2621",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "itch.io (Polytron)",
+      "url": "https://polytron.itch.io/fez"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/224760/FEZ/"
+    }
+  ],
   "quote": "Vous vous rappelez de Fez ?",
   "sourceId": "un-bon-moment",
   "status": "validated",

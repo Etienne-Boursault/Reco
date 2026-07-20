@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0872",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Exit-Through-the-Gift-Shop/0U472M2TQKK2SKDFJINEHUSFUR"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia — Faites le mur !",
+      "url": "https://fr.wikipedia.org/wiki/Faites_le_mur_!"
+    }
+  ],
   "quote": "C'est un doc assez connu, mais qui s'appelle \"Exit through the gift shop\".",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

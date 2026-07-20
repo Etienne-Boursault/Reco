@@ -40,7 +40,14 @@
   "guestWork": true,
   "id": "ubm-2618",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "App Store",
+      "url": "https://apps.apple.com/fr/app/make-more-views/id1438348967"
+    }
+  ],
   "quote": "C'est un cliqueur, tu vois.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

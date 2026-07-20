@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-0862",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/orelsan--montre-jamais-ca-a-personne/umc.cmc.6lz59xxj0wu5y1g5a18phnwrx"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/ORELSAN-Montre-jamais-%C3%A7a-%C3%A0-personne/0U99HUI0NF8Q1RLQB4YGN0J2RG"
+    }
+  ],
   "quote": "C'est une vraie réussite ce documentaire pour moi c'est ton premier vrai gros documentaire.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

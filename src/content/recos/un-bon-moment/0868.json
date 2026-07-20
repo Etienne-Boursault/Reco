@@ -49,7 +49,14 @@
   "guestWork": true,
   "id": "ubm-0868",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — La naissance de Fuckin Fred",
+      "url": "https://www.youtube.com/watch?v=QwlJEhh5I0U"
+    }
+  ],
   "quote": "c'est trop marrant.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

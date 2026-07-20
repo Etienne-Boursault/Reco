@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2626",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Documentaire complet (YouTube)",
+      "url": "https://www.youtube.com/watch?v=wOg0TY1jG3w"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Page officielle du documentaire",
+      "url": "https://parishilton.com/this-is-paris-documentary/"
+    }
+  ],
   "quote": "Il y a un documentaire sur Paris Hilton, qui est sur YouTube. Et c'est totalement angoissant, en fait.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

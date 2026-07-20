@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2625",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — album Dunya",
+      "url": "https://mustafathepoet.bandcamp.com/album/dunya"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.mustafathepoet.com/"
+    }
+  ],
   "quote": "En ce moment, j'écoute beaucoup Mustapha The Poet.",
   "recommendedBy": "Woodkid",
   "sourceId": "un-bon-moment",

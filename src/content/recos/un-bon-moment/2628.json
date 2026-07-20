@@ -35,7 +35,26 @@
   ],
   "id": "ubm-2628",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/les-failles-pomme/agjlo3azzdoob"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/us/album/111106342"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/3Iq43NGfIN8tc8AVJ9Konz"
+    }
+  ],
   "quote": "Allez découvrir Pomme, si vous connaissez pas. Pomme, le dernier album, c'est dans une pochette bleue. Ça s'appelle Les Failles et c'est sublime.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

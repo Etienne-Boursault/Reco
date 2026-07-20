@@ -37,7 +37,14 @@
   ],
   "id": "ubm-3018",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80197526"
+    }
+  ],
   "quote": "Je regarde Sex Education et je trouve ça cool justement.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",

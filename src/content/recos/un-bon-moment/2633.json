@@ -38,7 +38,20 @@
   ],
   "id": "ubm-2633",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://procreate.com/procreate"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "App Store",
+      "url": "https://apps.apple.com/fr/app/procreate/id425073498"
+    }
+  ],
   "quote": "C'est une application sur iPad qui est formidable.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",

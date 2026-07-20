@@ -38,7 +38,20 @@
   ],
   "id": "ubm-2624",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/874390/The_Battle_of_Polytopia/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel (Midjiwan)",
+      "url": "https://polytopia.io/"
+    }
+  ],
   "quote": "Moi, j'ai un jeu sur le téléphone qui s'appelle \"Battle of Polytopia\".",
   "sourceId": "un-bon-moment",
   "status": "validated",

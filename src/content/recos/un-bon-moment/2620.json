@@ -38,7 +38,20 @@
   ],
   "id": "ubm-2620",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/391540/Undertale/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://undertale.com/"
+    }
+  ],
   "quote": "Undertale, c'est formidable.",
   "sourceId": "un-bon-moment",
   "status": "validated",

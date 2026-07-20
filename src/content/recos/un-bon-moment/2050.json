@@ -35,7 +35,20 @@
   ],
   "id": "ubm-2050",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Marine Leonardi",
+      "url": "https://marineleonardi.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/marine-leonardi/marine-leonardi-mauvaise-graine-tournee-3413205/"
+    }
+  ],
   "quote": "allez voir marie leonardi sur scène",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -24,7 +24,20 @@
   ],
   "id": "ubm-2077",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/show/1002058731"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Podcast Addict",
+      "url": "https://podcastaddict.com/podcast/canicule-sentimentale/5977186"
+    }
+  ],
   "quote": "Canicule Sentimentale\nCanicule Sentimentale\ndéjà pour commencer",
   "recommendedBy": "Marine Leonardi",
   "sourceId": "un-bon-moment",

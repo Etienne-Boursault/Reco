@@ -44,7 +44,20 @@
   ],
   "id": "ubm-0178",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre du Marais",
+      "url": "https://theatredumarais.fr/spectacle/pierre-hillairet/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    }
+  ],
   "quote": "le spectacle s'appelle jour de pluie",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

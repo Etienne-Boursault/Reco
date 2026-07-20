@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-2610",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — album S16",
+      "url": "https://www.deezer.com/en/album/178479362"
+    }
+  ],
   "quote": "Le colors avec le chien en 3D, sur Iron.",
   "recommendedBy": "Woodkid",
   "sourceId": "un-bon-moment",

@@ -30,7 +30,26 @@
   "guestWork": true,
   "id": "ubm-2608",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Clip officiel (YouTube)",
+      "url": "https://www.youtube.com/watch?v=vSkb0kDacjs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/en/track/64979184"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — album The Golden Age",
+      "url": "https://www.deezer.com/en/album/6364781"
+    }
+  ],
   "quote": "En fait ce qui s'est passé c'est que moi quand j'ai sorti Iron, mon premier single.",
   "recommendedBy": "Woodkid",
   "sourceId": "un-bon-moment",

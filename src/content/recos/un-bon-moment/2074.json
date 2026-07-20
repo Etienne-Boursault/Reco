@@ -24,7 +24,14 @@
   ],
   "id": "ubm-2074",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube TheGreatReview",
+      "url": "https://www.youtube.com/@TheGreatReview"
+    }
+  ],
   "quote": "après il y a d'autres gars dans le même truc il y a Great Review il y a The Great Review",
   "sourceId": "un-bon-moment",
   "status": "validated",
