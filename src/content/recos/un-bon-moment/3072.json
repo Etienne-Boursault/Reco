@@ -29,9 +29,15 @@
   "kind": "reco",
   "links": [
     {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/series/la-flamme/h/14787365_50001"
+    },
+    {
       "ethics": "neutral",
       "kind": "info",
-      "label": "JustWatch",
+      "label": "JustWatch (où voir)",
       "url": "https://www.justwatch.com/fr/serie/la-flamme"
     },
     {
