@@ -41,7 +41,20 @@
   ],
   "id": "ubm-3048",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram de Julie-Albertine",
+      "url": "https://www.instagram.com/juliealbertine/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Fiche artiste We Love Comedy",
+      "url": "https://www.welovecomedy.fr/artistes/julie-albertine"
+    }
+  ],
   "quote": "Julien Bertine ouais.",
   "sourceId": "un-bon-moment",
   "status": "validated",

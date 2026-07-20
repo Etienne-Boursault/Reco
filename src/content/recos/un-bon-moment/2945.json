@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2945",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/ornellafleury/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Ornella_Fleury"
+    }
+  ],
   "quote": "moi je voudrais parler d'Ornella Fleury",
   "recommendedBy": "Maurice Barthélemy",
   "sourceId": "un-bon-moment",

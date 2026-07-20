@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2756",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Le Spot du Rire — tous les épisodes",
+      "url": "https://www.lespotdurire.fr/charles-nouveau/petit-debat-episodes/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube Le Petit Débat",
+      "url": "https://www.youtube.com/channel/UC8ySt4LkDubz_DgpJSYru8Q"
+    }
+  ],
   "quote": "Comment ça s'appelle ? Le Petit Débat, je crois.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

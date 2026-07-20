@@ -32,7 +32,26 @@
   ],
   "id": "ubm-1163",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz — album Dawn",
+      "url": "https://www.qobuz.com/us-en/album/dawn-yebba/jyd3uzbtpy0nb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer — page artiste",
+      "url": "https://www.deezer.com/us/artist/2830461"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify — album Dawn",
+      "url": "https://open.spotify.com/album/3CogjJSvRqbIQuNJVR2JcP"
+    }
+  ],
   "quote": "Yéba Smith.",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

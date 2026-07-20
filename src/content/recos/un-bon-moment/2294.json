@@ -29,7 +29,14 @@
   ],
   "id": "ubm-2294",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Julfou (chaîne YouTube de Julien Josselin)",
+      "url": "https://www.youtube.com/user/JulienJosselin"
+    }
+  ],
   "quote": "Julfou que vous connaissez sur Youtube Julfou super chaîne",
   "sourceId": "un-bon-moment",
   "status": "validated",

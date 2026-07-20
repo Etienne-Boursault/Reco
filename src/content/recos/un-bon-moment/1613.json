@@ -24,7 +24,20 @@
   ],
   "id": "ubm-1613",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp",
+      "url": "https://fhin.bandcamp.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/artist/5bvwbAyrx6Yk8oLHqOnJ9p"
+    }
+  ],
   "quote": "Et un autre qui fait l'électro. Qui s'appelle Fin. F-H-I-N",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

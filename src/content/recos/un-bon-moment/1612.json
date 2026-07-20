@@ -57,7 +57,20 @@
   ],
   "id": "ubm-1612",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music — En Premier l'Amour",
+      "url": "https://music.apple.com/fr/album/en-premier-lamour/1868411248"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/3IPF34odrFxmKBZUciuUyE"
+    }
+  ],
   "quote": "Un artiste que j'ai découvert récemment un chanteur qui s'appelle Susano...",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

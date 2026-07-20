@@ -53,7 +53,14 @@
   ],
   "id": "ubm-0764",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/westworld/umc.cmc.305ub24u3ci7x1lu4xyoynbar"
+    }
+  ],
   "quote": "J'ai adoré la série Westworld.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

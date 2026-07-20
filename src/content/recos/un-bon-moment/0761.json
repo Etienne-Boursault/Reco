@@ -45,7 +45,14 @@
   ],
   "id": "ubm-0761",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782226257017-sapiens-une-breve-histoire-de-l-humanite-yuval-noah-harari/"
+    }
+  ],
   "quote": "J'ai lu Sapiens. J'ai adoré, par exemple.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

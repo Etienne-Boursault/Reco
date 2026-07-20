@@ -50,7 +50,20 @@
   "guestWork": true,
   "id": "ubm-0670",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel du documentaire",
+      "url": "https://www.empreintedigitale.net/rire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=287744.html"
+    }
+  ],
   "quote": "Est-ce que je peux faire une deuxième recommandation MyCanal ? Évidemment. Ce qui est mon documentaire dans lequel tu es, qui s'appelle \"Voulez-vous rire avec moi ce soir ?\"",
   "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",

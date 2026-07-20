@@ -30,7 +30,20 @@
   ],
   "id": "ubm-0916",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV — « Laura Felpin : Ça passe »",
+      "url": "https://tv.apple.com/fr/movie/laura-felpin--ca-passe/umc.cmc.w2agpvya0uyq2qu2bdgiznbg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Molotov (replay CSTAR)",
+      "url": "https://www.molotov.tv/fr_fr/p/6555531-38/laura-felpin--ca-passe"
+    }
+  ],
   "quote": "l'horreur fêle peint j'ai adoré les deux",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -29,7 +29,20 @@
   "guestWork": true,
   "id": "ubm-2288",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-6be09c8b-f84f-441c-b685-4927486d9dfa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/serge-le-mytho/umc.cmc.qw1k8ygyjvxx7407ja2zymtl"
+    }
+  ],
   "quote": "c'est une des séries c'est une des plus gauleries quand même qui existent dans le paysage français",
   "recommendedBy": "Jonathan Cohen & Jérémie Galan",
   "sourceId": "un-bon-moment",

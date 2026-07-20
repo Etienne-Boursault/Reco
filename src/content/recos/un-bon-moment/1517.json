@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1517",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/pluribus/umc.cmc.37axgovs2yozlyh3c2cmwzlza"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie-32585/streaming/"
+    }
+  ],
   "quote": "tu regardes Pluribus ? t'as regardé Pluribus ?",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

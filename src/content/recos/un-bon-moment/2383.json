@@ -41,7 +41,20 @@
   "guestWork": true,
   "id": "ubm-2383",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/radiostars"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=196255.html"
+    }
+  ],
   "quote": "Découvrez Radio Star, si vous n'avez pas vu, super film de bandes.",
   "recommendedBy": "Manu Payet",
   "sourceId": "un-bon-moment",

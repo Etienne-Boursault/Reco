@@ -37,7 +37,20 @@
   "guestWork": true,
   "id": "ubm-2115",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/zero-contrainte-pour-maigrir--surtout-ne-faites-pas-de-regime----39-astuces-pour-perdre-du-poids_0-9123065_9782080411501.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Flammarion",
+      "url": "https://editions.flammarion.com/zero-contrainte-pour-maigrir/9782080411501"
+    }
+  ],
   "quote": "Jimmy Mohamed, tu as sorti un bouquin, 39 astuces pour perdre du poids.",
   "recommendedBy": "Jimmy Mohamed",
   "sourceId": "un-bon-moment",

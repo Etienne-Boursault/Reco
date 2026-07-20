@@ -51,7 +51,20 @@
   ],
   "id": "ubm-1164",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — Loving In Stereo",
+      "url": "https://jungle.bandcamp.com/album/loving-in-stereo"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Jungle",
+      "url": "https://www.junglejunglejungle.com/"
+    }
+  ],
   "quote": "c'est un groupe qui s'appelle Jungle, c'est des anglais et qui font des trucs un peu funk, disco",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",

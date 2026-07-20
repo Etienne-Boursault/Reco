@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2940",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix — Have It All",
+      "url": "https://www.netflix.com/title/81685073"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/channel/UCYIEv9W7RmdpvFkHX7IEmyg"
+    }
+  ],
   "quote": "j'adore Taylor Tomlinson",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",

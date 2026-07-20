@@ -53,7 +53,14 @@
   ],
   "id": "ubm-0669",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/en/shows/silicon-valley/b4583939-e39f-4b5c-822d-5b6cc186172d"
+    }
+  ],
   "quote": "Moi, je recommande Silicon Valley, qui est une série super bien et qui a vraiment beaucoup...",
   "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",

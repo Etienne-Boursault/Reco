@@ -62,7 +62,26 @@
   ],
   "id": "ubm-0330",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/series/empathie/h/29563513_50001"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné - fiche série",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000611.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch - où regarder",
+      "url": "https://www.justwatch.com/fr/serie/empathie"
+    }
+  ],
   "quote": "Empathie ! C'est incroyable ! J'aime Florence Lomprey de tout mon être !",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -29,7 +29,20 @@
   ],
   "id": "ubm-1683",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/los-anos-nuevos/umc.cmc.13a366sewyfzb2a1wx17uhwr9"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné - où voir la série (Arte, gratuit)",
+      "url": "https://www.allocine.fr/series/ficheserie-35517/streaming/"
+    }
+  ],
   "quote": "Moi j'ai aimé deux séries : \"Los años noivos\"",
   "sourceId": "un-bon-moment",
   "status": "validated",

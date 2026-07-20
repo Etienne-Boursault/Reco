@@ -44,7 +44,20 @@
   ],
   "id": "ubm-0956",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-rehearsal/umc.cmc.2ptdqoypnddlvxg6a42mmd2o"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-29580/streaming/"
+    }
+  ],
   "quote": "The Rire Soul que j'aime beaucoup, vous connaissez peut-être Adam, avec Nathan Fielder, c'est génial",
   "sourceId": "un-bon-moment",
   "status": "validated",

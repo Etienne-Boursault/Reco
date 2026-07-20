@@ -50,7 +50,14 @@
   ],
   "id": "ubm-1166",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx"
+    }
+  ],
   "quote": "Severance sur Apple Plus, disponible sur my canal.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

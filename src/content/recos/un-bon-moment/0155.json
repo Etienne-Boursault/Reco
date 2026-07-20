@@ -49,7 +49,20 @@
   ],
   "id": "ubm-0155",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-e93d439a-4868-4222-a03a-f3f7e2652a9d"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=28990.html"
+    }
+  ],
   "quote": "C'est une série sur Disney+.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

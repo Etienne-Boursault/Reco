@@ -30,7 +30,20 @@
   ],
   "id": "ubm-3049",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Shirley Souagnon",
+      "url": "https://www.shirleysouagnon.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Shirley Souagnon",
+      "url": "https://www.youtube.com/c/shirleysouagnon"
+    }
+  ],
   "quote": "Charlie Soignon.",
   "sourceId": "un-bon-moment",
   "status": "validated",

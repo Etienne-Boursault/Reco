@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-0185",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "L'Officiel des spectacles",
+      "url": "https://www.offi.fr/artiste/morgane-cadignan-224732.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "JDS — L'Européen 2026",
+      "url": "https://www.jds.fr/paris/spectacles/humour/morgane-cadignan-la-nuit-je-mens-l-europeen-paris-1456987_A"
+    }
+  ],
   "quote": "Ça s'appelle « La Nuit, je mens ».",
   "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",

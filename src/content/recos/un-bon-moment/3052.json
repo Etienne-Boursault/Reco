@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-3052",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/kyan-khojandi--une-bonne-soiree/umc.cmc.370y5xqesvht7gcjqhfrliky8"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir la captation",
+      "url": "https://www.justwatch.com/fr/film/kyan-khojandi-une-bonne-soiree"
+    }
+  ],
   "quote": "ne ratez pas une bonne soirée, janvier dans toute la France",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

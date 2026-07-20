@@ -34,7 +34,20 @@
   ],
   "id": "ubm-1109",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube DAVA",
+      "url": "https://www.youtube.com/channel/UCOmeswqJka_59KSaClvhW4A"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok @dava.officiel",
+      "url": "https://www.tiktok.com/@dava.officiel"
+    }
+  ],
   "quote": "Dava, ils sont sur TikTok maintenant. Dava, ils sont super.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

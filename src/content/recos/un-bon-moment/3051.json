@@ -40,7 +40,26 @@
   ],
   "id": "ubm-3051",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Détective Froussin & Cie — page officielle du podcast",
+      "url": "https://shows.acast.com/detective-froussin"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Bandcamp — L'invention de la saucisse",
+      "url": "https://josephroussin.bandcamp.com/album/linvention-de-la-saucisse"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/joseph-roussin-d%C3%A9tective-froussin-cie/id1638383319"
+    }
+  ],
   "quote": "Joseph Roussin, détective Roussin, Joseph.",
   "sourceId": "un-bon-moment",
   "status": "validated",

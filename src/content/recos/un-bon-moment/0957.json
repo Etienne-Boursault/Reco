@@ -63,7 +63,20 @@
   ],
   "id": "ubm-0957",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/detail/0I5RLBQ10XWTWFX2KSX9M5HBC4/ref=atv_nb_lcl_fr_FR?ie=UTF8&language=fr_FR"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=26203.html"
+    }
+  ],
   "quote": "Jury Duty. C'est vraiment, c'est trop bien.",
   "sourceId": "un-bon-moment",
   "status": "validated",

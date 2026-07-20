@@ -29,7 +29,20 @@
   "guestWork": true,
   "id": "ubm-2286",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/France-Kbek/0MC94J7CUHHSZU2X640ZCH4M9F"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir",
+      "url": "https://www.justwatch.com/fr/serie/france-kbek"
+    }
+  ],
   "quote": "vous avez fait une émission qui fait une série qui s'appelle france québec sur ocs",
   "recommendedBy": "Jonathan Cohen & Jérémie Galan",
   "sourceId": "un-bon-moment",

@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2935",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782266322188-fort-comme-un-hypersensible-maurice-barthelemy-charlotte-wils/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairies Indépendantes",
+      "url": "https://www.librairiesindependantes.com/product/9782749945545/"
+    }
+  ],
   "quote": "c'est l'adaptation d'un livre que tu as écrit qui s'appelle fort comme un hypersensible",
   "recommendedBy": "Maurice Barthélemy",
   "sourceId": "un-bon-moment",

@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0332",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Julien Santini",
+      "url": "https://santinicomedy.com/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Théâtre de la Gaîté Montparnasse",
+      "url": "https://gaite.com/spectacles/julien-santini/"
+    }
+  ],
   "quote": "Et sur scène, j'ai vu Julien Santini, là, il y a 10 jours !",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0760",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (Folio)",
+      "url": "https://www.placedeslibraires.fr/livre/9782070360284-voyage-au-bout-de-la-nuit-louis-ferdinand-celine/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (Denoël, grand format)",
+      "url": "https://www.placedeslibraires.fr/livre/9782207161562-voyage-au-bout-de-la-nuit-louis-ferdinand-celine/"
+    }
+  ],
   "quote": "Voyage au bout de la nuit de Céline, tu as des trucs comme ça aussi.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

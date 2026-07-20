@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0759",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782070373628-la-vie-devant-soi-romain-gary/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Gallimard (éditeur)",
+      "url": "https://www.gallimard.fr/catalogue/la-vie-devant-soi/9782070373628"
+    }
+  ],
   "quote": "Romain Garry, La vie devant soi, un classique.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

@@ -55,7 +55,20 @@
   ],
   "id": "ubm-1329",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0N1OJMWCMCIPNRCKSIPBLPSOAM"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000036006.html"
+    }
+  ],
   "quote": "Marav, c'est l'histoire avec Ramzy Bédia.",
   "recommendedBy": "Redouane Bougheraba",
   "sourceId": "un-bon-moment",

@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2396",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "La série en intégralité sur YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLo4Qwa4Nhi1m1v4aernDm1agaSqWuoBDS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube des Parasites",
+      "url": "https://www.youtube.com/channel/UCqS1gDNHEX3FgJ8dPfSuRoQ"
+    }
+  ],
   "quote": "Regarde ça. Ouais, je sais. C'est incroyable.",
   "sourceId": "un-bon-moment",
   "status": "validated",

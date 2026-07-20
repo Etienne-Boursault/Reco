@@ -36,7 +36,20 @@
   ],
   "id": "ubm-2937",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify (album Dish of the Day)",
+      "url": "https://open.spotify.com/album/3epesmrZX0KYpeImQtcVUa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer (album Dish of the Day)",
+      "url": "https://www.deezer.com/en/album/562735"
+    }
+  ],
   "quote": "c'est une chanson qu'on met tout le temps en début de spectacle",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

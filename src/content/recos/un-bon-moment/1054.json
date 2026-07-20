@@ -29,7 +29,26 @@
   ],
   "id": "ubm-1054",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Bill Burr",
+      "url": "https://billburr.com/podcast/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/us/podcast/monday-morning-podcast/id480486345"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/5SFiQlOQ3EKmwp0chE1QzY"
+    }
+  ],
   "quote": "Il a un podcast, c'est tous les lundis, il fait un podcast.",
   "sourceId": "un-bon-moment",
   "status": "validated",

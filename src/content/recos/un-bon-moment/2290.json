@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2290",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=8550.html"
+    }
+  ],
   "quote": "allez voir cette série de Ricky Gervais, elle est incroyable",
   "sourceId": "un-bon-moment",
   "status": "validated",

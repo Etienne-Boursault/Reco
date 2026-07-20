@@ -40,7 +40,14 @@
   "guestWork": true,
   "id": "ubm-2284",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-25777/streaming/"
+    }
+  ],
   "quote": "j'espère que les gens pourront la découvrir bientôt sur canal plus",
   "recommendedBy": "Jonathan Cohen & Jérémie Galan",
   "sourceId": "un-bon-moment",

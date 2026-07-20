@@ -48,7 +48,14 @@
   ],
   "id": "ubm-1050",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube Hygiène Mentale",
+      "url": "https://www.youtube.com/channel/UCMFcMhePnH4onVHt2-ItPZw"
+    }
+  ],
   "quote": "Je conseille hygiène mentale.",
   "sourceId": "un-bon-moment",
   "status": "validated",

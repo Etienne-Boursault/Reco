@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-1158",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782234092525-la-prochaine-fois-que-tu-mordras-la-poussiere-panayotis-pascot/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (poche)",
+      "url": "https://www.placedeslibraires.fr/livre/9782253907824-la-prochaine-fois-que-tu-mordras-la-poussiere-panayotis-pascot/"
+    }
+  ],
   "quote": "il vient de sortir son premier roman qui s'appelle la prochaine fois que tu mordras la poussière",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

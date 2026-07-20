@@ -40,7 +40,20 @@
   ],
   "id": "ubm-2411",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — dates du spectacle",
+      "url": "https://murmuration-lespectacle.com/en/show-dates/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Le spectacle",
+      "url": "https://murmuration-lespectacle.com/en/murmuration-the-show/"
+    }
+  ],
   "quote": "Il y a le spectacle Murmuration.",
   "sourceId": "un-bon-moment",
   "status": "validated",

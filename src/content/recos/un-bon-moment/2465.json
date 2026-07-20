@@ -28,7 +28,20 @@
   ],
   "id": "ubm-2465",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Asmodee - page officielle du jeu",
+      "url": "https://www.asmodee.fr/gamme/les-loups-garous-de-thiercelieux/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Le Passe Temps (boutique indépendante)",
+      "url": "https://www.le-passe-temps.com/fourberies-roles-secrets-bluff/22005-loups-garous-de-thiercellieux.html"
+    }
+  ],
   "quote": "Si vous avez jamais joué au Loup-Tiers-Selin, jouer, c'est très marrant aussi comme jeu de société.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

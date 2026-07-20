@@ -35,7 +35,20 @@
   ],
   "id": "ubm-1675",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/the-truman-show/umc.cmc.3thpf98o5diknnctdycef69fu"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné - où voir le film",
+      "url": "https://www.allocine.fr/film/fichefilm-18671/streaming/"
+    }
+  ],
   "quote": "Mais vraiment, regarde-le, c'est un film exceptionnel.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

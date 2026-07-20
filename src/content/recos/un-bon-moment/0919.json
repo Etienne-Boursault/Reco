@@ -29,7 +29,20 @@
   ],
   "id": "ubm-0919",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782290218181-votre-cerveau-vous-joue-des-tours-albert-moukheiber/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Allary Éditions (éditeur)",
+      "url": "https://allary-editions.fr/products/albert-moukheiber-votre-cerveau-vous-joue-des-tours"
+    }
+  ],
   "quote": "Il a fait un bouquin qui s'appelle votre cerveau vous joue des tours",
   "sourceId": "un-bon-moment",
   "status": "validated",

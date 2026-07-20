@@ -37,7 +37,20 @@
   "guestWork": true,
   "id": "ubm-3046",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné (VOD)",
+      "url": "https://www.universcine.com/films/sugarland"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/sugarland/umc.cmc.10l8r7fcznj5qbpm9ecn339xg"
+    }
+  ],
   "quote": "Sugarland putain.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

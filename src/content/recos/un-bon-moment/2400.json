@@ -29,7 +29,14 @@
   ],
   "id": "ubm-2400",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel VRAC",
+      "url": "https://vrac-asso.org/"
+    }
+  ],
   "quote": "l'association VRAC.",
   "recommendedBy": "Manu Payet",
   "sourceId": "un-bon-moment",

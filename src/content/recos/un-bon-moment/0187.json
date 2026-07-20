@@ -61,7 +61,14 @@
   ],
   "id": "ubm-0187",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=35910.html"
+    }
+  ],
   "quote": "Iris, série géniale.",
   "sourceId": "un-bon-moment",
   "status": "validated",

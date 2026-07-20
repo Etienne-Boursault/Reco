@@ -48,7 +48,20 @@
   ],
   "id": "ubm-1051",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube Peaceful Cuisine",
+      "url": "https://www.youtube.com/channel/UCQBG3PzyQKY8ieMG2gDAyOQ"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.peacefulcuisine.com/"
+    }
+  ],
   "quote": "C'est de l'ASMR de cuisine, en fait.",
   "sourceId": "un-bon-moment",
   "status": "validated",

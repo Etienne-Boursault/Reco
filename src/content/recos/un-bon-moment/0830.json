@@ -50,7 +50,26 @@
   "guestWork": true,
   "id": "ubm-0830",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Acast (page officielle)",
+      "url": "https://shows.acast.com/les-mecs-que-je-veux-ken"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/les-mecs-que-je-veux-ken/id1474961176"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/1scsm9ATiJ3ZHR4k3L6hyR"
+    }
+  ],
   "quote": "c'est un podcast qui s'appelle les mecs que je veux ken",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",

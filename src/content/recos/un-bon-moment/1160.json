@@ -38,7 +38,26 @@
   ],
   "id": "ubm-1160",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel d'Esther Perel",
+      "url": "https://www.estherperel.com/podcast"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/us/podcast/where-should-we-begin-with-esther-perel/id1237931798"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/3fKOTwtnX5oZLaiNntKWAV"
+    }
+  ],
   "quote": "en ce moment j'écoute vachement un podcast de Esther Perel qui est une thérapeute de couple et qui fait un podcast où chaque épisode elle traite un couple",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",

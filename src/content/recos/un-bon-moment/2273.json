@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2273",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Louie Media",
+      "url": "https://louiemedia.com/desirer/les-femmes-marrantes"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts — Désirer",
+      "url": "https://podcasts.apple.com/fr/podcast/d%C3%A9sirer/id1827483433"
+    }
+  ],
   "quote": "ça s'appelle les femmes marrantes",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",

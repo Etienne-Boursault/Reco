@@ -29,7 +29,14 @@
   ],
   "id": "ubm-2477",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81031373"
+    }
+  ],
   "quote": "Alors, c'est pas très feel good, hein, mais quand même, je voulais en parler, ça s'appelle \"Don't fuck with cats on internet\".",
   "recommendedBy": "Dedo",
   "sourceId": "un-bon-moment",

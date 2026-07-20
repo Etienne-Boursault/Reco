@@ -58,7 +58,20 @@
   ],
   "id": "ubm-0390",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782226502797-ma-vie-sans-moustache-romain-puertolas/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Albin Michel",
+      "url": "https://www.albin-michel.fr/ma-vie-sans-moustache-9782226502797"
+    }
+  ],
   "quote": "c'est celui qui a écrit aussi comment j'ai retrouvé Xavier Dupont de Ligonnès",
   "sourceId": "un-bon-moment",
   "status": "validated",

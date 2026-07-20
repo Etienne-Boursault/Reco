@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0645",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/parasite"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81221938"
+    }
+  ],
   "quote": "je viens de l'acheter j'en suis à la moitié j'adore",
   "sourceId": "un-bon-moment",
   "status": "validated",

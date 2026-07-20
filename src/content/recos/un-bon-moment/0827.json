@@ -52,7 +52,20 @@
   ],
   "id": "ubm-0827",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Orange VOD",
+      "url": "https://video-a-la-demande.orange.fr/film/PAPAXXXXXXXW0005939/papa"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=56995.html"
+    }
+  ],
   "quote": "c'est le réalisateur d'un des plus grands film de ma vie le film papa avec alain chabat",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

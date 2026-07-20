@@ -62,7 +62,20 @@
   ],
   "id": "ubm-0184",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80145240"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/wild-wild-country"
+    }
+  ],
   "quote": "C'est incroyable. Un peu long, mais c'est fou.",
   "sourceId": "un-bon-moment",
   "status": "validated",

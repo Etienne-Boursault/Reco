@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0567",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/babylon"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/movie/babylon/umc.cmc.7kk8f30mb8n6pilf1evoeys7g"
+    }
+  ],
   "quote": "j'ai regardé Babylone, j'ai adoré là, récemment, j'ai adoré les séries.",
   "recommendedBy": "Elena Nagapetyan",
   "sourceId": "un-bon-moment",

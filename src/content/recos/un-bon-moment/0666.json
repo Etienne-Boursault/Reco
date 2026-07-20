@@ -54,7 +54,20 @@
   ],
   "id": "ubm-0666",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr/title/81719021"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=17667.html"
+    }
+  ],
   "quote": "Si vous avez l'occasion de voir Fantômas avec deux Funès et Jean Marais, c'est très marrant.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

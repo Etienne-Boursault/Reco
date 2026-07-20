@@ -45,7 +45,20 @@
   ],
   "id": "ubm-0154",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782226135025-oscar-et-la-dame-rose-eric-emmanuel-schmitt/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel d'Éric-Emmanuel Schmitt",
+      "url": "https://www.eric-emmanuel-schmitt.com/Litterature-recits-oscar-et-la-dame-rose.html"
+    }
+  ],
   "quote": "C'est un livre que j'ai lu quand j'étais en première année de médecine.",
   "recommendedBy": "Jimmy Mohamed",
   "sourceId": "un-bon-moment",

@@ -53,7 +53,20 @@
   ],
   "id": "ubm-0985",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.le-precepteur.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Écouter le podcast (Audiomeans)",
+      "url": "https://podcasts.audiomeans.fr/le-precepteur-144bb12e80d6"
+    }
+  ],
   "quote": "Tu connais le Précepteur ?",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

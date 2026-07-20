@@ -30,7 +30,14 @@
   "guestWork": true,
   "id": "ubm-2296",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81010818"
+    }
+  ],
   "quote": "family business qui reprend je suis en plein tournage",
   "recommendedBy": "Jonathan Cohen",
   "sourceId": "un-bon-moment",

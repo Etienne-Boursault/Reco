@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-1159",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Leslibraires.fr",
+      "url": "https://www.leslibraires.fr/livre/22541073-desirer-laurine-thizy-marina-rollman-emmanuelle-richa--l-iconoclaste"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairie des femmes",
+      "url": "https://www.librairie-des-femmes.fr/livre/9782378803766-desirer-collectif/"
+    }
+  ],
   "quote": "marina se vient de publier un texte dans un recueil de textes sur le désir qui s'appelle désirer",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",

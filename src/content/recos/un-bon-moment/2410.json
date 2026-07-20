@@ -41,7 +41,20 @@
   ],
   "id": "ubm-2410",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Laura Domenge",
+      "url": "https://www.lauradomenge.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/laura-domenge/"
+    }
+  ],
   "quote": "Le dernier que j'ai vu, c'est Laura Dommange.",
   "sourceId": "un-bon-moment",
   "status": "validated",

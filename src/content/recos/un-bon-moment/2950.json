@@ -29,7 +29,20 @@
   ],
   "id": "ubm-2950",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.lauradomenge.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/c/LauraDomenge"
+    }
+  ],
   "quote": "mon amie aussi Laura Demange que je trouve génial il y a plein de il y a tellement de jeunes humoristes de stand-up qui m'inspirent que je trouve hyper fortes",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",

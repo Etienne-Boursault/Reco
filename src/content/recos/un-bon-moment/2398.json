@@ -30,7 +30,20 @@
   "guestWork": true,
   "id": "ubm-2398",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/le-discours"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Le Pacte (distributeur)",
+      "url": "https://le-pacte.com/france/film/le-discours"
+    }
+  ],
   "quote": "c'est un film de Fab Caro.",
   "recommendedBy": "Manu Payet",
   "sourceId": "un-bon-moment",

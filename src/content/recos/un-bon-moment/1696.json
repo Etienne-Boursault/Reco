@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-1696",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel du spectacle",
+      "url": "https://www.lalettre-spectacle.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Casino de Paris - billetterie",
+      "url": "https://www.casinodeparis.fr/fr/La-Lettre-8-D%C3%A9cembre-Au-13-D%C3%A9cembre-2026-Billetterie-Paris"
+    }
+  ],
   "quote": "C'est la pièce de théâtre avec Charlotte Gabry, Jean-François Quéré et Maxime Gasteuil.",
   "recommendedBy": "Camille Combal",
   "sourceId": "un-bon-moment",

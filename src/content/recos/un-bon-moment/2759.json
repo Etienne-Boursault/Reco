@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2759",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Paris Librairies",
+      "url": "https://www.parislibrairies.fr/livre/9782081396005-retour-a-reims-didier-eribon/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Flammarion",
+      "url": "https://editions.flammarion.com/retour-a-reims/9782080484772"
+    }
+  ],
   "quote": "C'est un livre de sociologie qui est très bien écrit.",
   "sourceId": "un-bon-moment",
   "status": "validated",

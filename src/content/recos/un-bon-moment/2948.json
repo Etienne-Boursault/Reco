@@ -39,7 +39,20 @@
   ],
   "id": "ubm-2948",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782290028599-les-particules-elementaires-michel-houellebecq/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires (édition Flammarion)",
+      "url": "https://www.placedeslibraires.fr/livre/9782080674722-les-particules-elementaires-michel-houellebecq/"
+    }
+  ],
   "quote": "j'adore Houellebecq et j'ai relu récemment une recommandation ça suffit",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",

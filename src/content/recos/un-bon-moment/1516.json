@@ -36,7 +36,26 @@
   "guestWork": true,
   "id": "ubm-1516",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Fabien Olicard",
+      "url": "https://www.fabienolicard.fr/les-podcasts/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/le-fil-mental-fabien-olicard/id1815037355"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/55fsRyUMXQPOKyTQtG2CNx"
+    }
+  ],
   "quote": "ça s'appelle le fil mental j'ai sorti ça au mois de septembre et je pars d'une question que je me pose et je déroule le fil",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

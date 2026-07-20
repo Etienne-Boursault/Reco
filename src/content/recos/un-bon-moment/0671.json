@@ -49,7 +49,20 @@
   "guestWork": true,
   "id": "ubm-0671",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Delcourt",
+      "url": "https://www.editions-delcourt.fr/bd/series/serie-white-spirit/album-white-spirit"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Librairies indépendantes (ALIP)",
+      "url": "https://www.librairies-alip.fr/livre/9782413013174-white-spirit-dedo-weldohnson/"
+    }
+  ],
   "quote": "Une BD qui s'appelle \"White Spirit\" qui est mon humble hommage à ce qui s'appelait…",
   "recommendedBy": "Dedo",
   "sourceId": "un-bon-moment",

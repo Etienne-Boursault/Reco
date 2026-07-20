@@ -57,7 +57,20 @@
   ],
   "id": "ubm-1512",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Allary Éditions",
+      "url": "https://allary-editions.fr/products/mehdi-moussaid-a-t-on-besoin-dun-chef"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie.com",
+      "url": "https://www.lalibrairie.com/livres/a-t-on-besoin-d-un-chef--_0-12786144_9782370735768.html"
+    }
+  ],
   "quote": "c'est peut-être le meilleur de cette année transcendant pour moi",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

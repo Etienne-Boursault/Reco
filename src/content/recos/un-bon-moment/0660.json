@@ -50,7 +50,20 @@
   "guestWork": true,
   "id": "ubm-0660",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube - playlist Saisons 1 & 2",
+      "url": "https://www.youtube.com/playlist?list=PLlVA7AZDgPeTu_ylEYpvbJBTnLLRHNb9N"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Golden Moustache - l'intégrale de la série",
+      "url": "https://www.goldens.fr/goldenmoustache/decouvrez-lintegrale-de-la-serie-le-trone-des-frogz/"
+    }
+  ],
   "quote": "Allez voir, c'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube.",
   "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",

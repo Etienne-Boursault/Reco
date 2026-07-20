@@ -54,7 +54,20 @@
   ],
   "id": "ubm-0152",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81157840"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel du film",
+      "url": "https://gamechangersmovie.com/"
+    }
+  ],
   "quote": "J'avais vu ce reportage, je ne l'ai vu sur Netflix. Game Changers.",
   "sourceId": "un-bon-moment",
   "status": "validated",

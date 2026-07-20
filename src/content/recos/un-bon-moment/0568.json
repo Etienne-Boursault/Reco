@@ -52,7 +52,14 @@
   "linkOverrides": {
     "Steam": "https://store.steampowered.com/app/3361990/Les_Chevaliers_de_Baphomet__LOmbre_des_Templiers_1996/"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/2544110/Broken_Sword__Shadow_of_the_Templars_Reforged/?l=french"
+    }
+  ],
   "quote": "Eh bien, tiens, dans les jeux, Les Chevaliers du Baphomet, qui est sur... C'est un jeu, ça ! Vous connaissez pas, c'est un jeu sur PlayStation 1 à l'époque ? Ouais, ouais, et c'est sur Steam, je crois.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

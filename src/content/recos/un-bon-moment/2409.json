@@ -40,7 +40,14 @@
   "guestWork": true,
   "id": "ubm-2409",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel Le Gorafi",
+      "url": "https://www.legorafi.fr/"
+    }
+  ],
   "quote": "Le Gorafi, c'est vraiment 80% de l'ADN de The Onion.",
   "recommendedBy": "Pablo Mira",
   "sourceId": "un-bon-moment",

@@ -57,7 +57,14 @@
   ],
   "id": "ubm-0983",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=31399.html"
+    }
+  ],
   "quote": "J'ai vu un film qui s'appelle L'entourloupe.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",

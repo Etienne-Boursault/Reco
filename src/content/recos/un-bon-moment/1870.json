@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1870",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle-fanny-ruwet.htm"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "L'Officiel des spectacles",
+      "url": "https://www.offi.fr/artiste/fanny-ruwet-242047.html"
+    }
+  ],
   "quote": "Fanny Ruet ! Qui est un spectacle formidable, allez-y, pitié !",
   "sourceId": "un-bon-moment",
   "status": "validated",

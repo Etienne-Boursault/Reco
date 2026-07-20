@@ -48,7 +48,20 @@
   ],
   "id": "ubm-1161",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782818051382-yoga-emmanuel-carrere/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions P.O.L",
+      "url": "https://www.pol-editeur.com/index.php?spec=livre&ISBN=978-2-8180-5138-2"
+    }
+  ],
   "quote": "c'est celui d'Emmanuel Carrère dans yoga",
   "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",

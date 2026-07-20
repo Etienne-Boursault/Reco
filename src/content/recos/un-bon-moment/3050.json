@@ -41,7 +41,20 @@
   ],
   "id": "ubm-3050",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc — Fred Cham",
+      "url": "https://www.billetreduc.com/spectacle-fred-cham.htm"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Facebook de Fred Cham",
+      "url": "https://fr-fr.facebook.com/fredchameau/"
+    }
+  ],
   "quote": "Fredcham aussi.",
   "sourceId": "un-bon-moment",
   "status": "validated",

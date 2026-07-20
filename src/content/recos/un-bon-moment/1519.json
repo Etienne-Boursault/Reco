@@ -38,7 +38,20 @@
   ],
   "id": "ubm-1519",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@nardwuar"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://nardwuar.com/"
+    }
+  ],
   "quote": "Allez voir Nardoir sur Internet.",
   "sourceId": "un-bon-moment",
   "status": "validated",
