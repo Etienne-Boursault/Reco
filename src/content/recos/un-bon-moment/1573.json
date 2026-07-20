@@ -39,7 +39,20 @@
   ],
   "id": "ubm-1573",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-lucas-garat-veufla.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre du Marais",
+      "url": "https://theatredumarais.fr/spectacle/lucas-veufla/"
+    }
+  ],
   "quote": "j'ai vu le spectacle de deux potes à moi le spectacle de Lucas et Veufla",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -49,7 +49,14 @@
   "guestWork": true,
   "id": "ubm-0208",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Extrait officiel CANAL+ (YouTube)",
+      "url": "https://www.youtube.com/watch?v=Qp9-lyNRAeM"
+    }
+  ],
   "quote": "Thomas BDB S'acclimate c'est sur My Canal",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1374",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-adel-fugazi.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.adelfugazi.fr/"
+    }
+  ],
   "quote": "il faut aller voir Adèle Fugazi",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

@@ -59,7 +59,20 @@
   ],
   "id": "ubm-0357",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70285785"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir en France",
+      "url": "https://www.justwatch.com/fr/serie/fargo/saison-1"
+    }
+  ],
   "quote": "Fargo, toujours aussi bien en termes de séries.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -49,7 +49,14 @@
   ],
   "id": "ubm-0203",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel Cabosse (Mulhouse)",
+      "url": "https://www.patisserie-cabosse.fr/"
+    }
+  ],
   "quote": "meilleure chocolaterie de France pour moi c'est assez pub gratos pour eux Cabos à Mulhouse",
   "sourceId": "un-bon-moment",
   "status": "validated",

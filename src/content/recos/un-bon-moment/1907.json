@@ -26,7 +26,26 @@
   ],
   "id": "ubm-1907",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Louie Media (site officiel)",
+      "url": "https://louiemedia.com/emotions"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Acast (série « Des mecs solides »)",
+      "url": "https://shows.acast.com/emotions/episodes/des-mecs-solides-bande-annonce"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/%C3%A9motions/id1447653027"
+    }
+  ],
   "quote": "il y a un sujet en trois parties dans le podcast émotions qui s'appelle des mecs solides",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -58,7 +58,20 @@
   "guestWork": true,
   "id": "ubm-0511",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/%C3%A0-moiti%C3%A9-plein/id1800014832"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/3yMAEnY00tHHX2NSem0zPo"
+    }
+  ],
   "quote": "le podcast à moitié plein à moitié vide",
   "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",

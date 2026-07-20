@@ -47,7 +47,20 @@
   ],
   "id": "ubm-0960",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Idiotopia Ép. 1 (YouTube)",
+      "url": "https://www.youtube.com/watch?v=2z9Jai9fVvk"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube de Mehdi Gatao",
+      "url": "https://www.youtube.com/@mehdigatao"
+    }
+  ],
   "quote": "Idiotopia que tu connais",
   "sourceId": "un-bon-moment",
   "status": "validated",

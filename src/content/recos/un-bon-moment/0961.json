@@ -39,7 +39,20 @@
   "guestWork": true,
   "id": "ubm-0961",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Blandine Lehout",
+      "url": "https://www.blandinelehout.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles (tournée)",
+      "url": "https://www.fnacspectacles.com/artist/blandine-lehout/blandine-lehout-dans-la-vie-de-ta-mere-tournee-3393415/"
+    }
+  ],
   "quote": "Blandine Lehoux La vie de ta mère A l'européen",
   "recommendedBy": "Blandine Lehout",
   "sourceId": "un-bon-moment",

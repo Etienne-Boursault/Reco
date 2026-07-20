@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1653",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-henry-fexa.htm"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Spectable — présentation & agenda",
+      "url": "https://www.spectable.com/artiste/henry-fexa"
+    }
+  ],
   "quote": "Henri Fexa, c'est un artiste…",
   "sourceId": "un-bon-moment",
   "status": "validated",

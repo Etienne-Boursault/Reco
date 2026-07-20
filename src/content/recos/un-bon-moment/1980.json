@@ -27,7 +27,20 @@
   "guestWork": true,
   "id": "ubm-1980",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc — Yassir dans « Faire mieux »",
+      "url": "https://www.billetreduc.com/spectacle/yassir-dans-rencontrons-nous-290173"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "La Petite Loge — billetterie",
+      "url": "https://www.lapetiteloge.fr/"
+    }
+  ],
   "quote": "Yassir à la Petite Loge. Qui est le plus petit théâtre de Paris.",
   "recommendedBy": "Yassir",
   "sourceId": "un-bon-moment",

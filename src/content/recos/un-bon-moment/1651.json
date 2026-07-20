@@ -54,7 +54,14 @@
   "guestWork": true,
   "id": "ubm-1651",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Billetterie officielle du Plaisir Tour",
+      "url": "https://www.billetweb.fr/plaisir-tour"
+    }
+  ],
   "quote": "Allez voir le spectacle de Léandre, Anthony Giuliani, Rodrigue, Basile.",
   "recommendedBy": "Tom Baldetti & Yassir",
   "sourceId": "un-bon-moment",

@@ -37,7 +37,14 @@
   ],
   "id": "ubm-2712",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81002370"
+    }
+  ],
   "quote": "Moi, je suis une petite série, en ce moment, nostalgie... Qui me donne une petite pointe de nostalgie : Cobra Kai !",
   "sourceId": "un-bon-moment",
   "status": "validated",

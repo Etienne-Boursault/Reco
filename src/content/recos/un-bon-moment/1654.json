@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1654",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-marion-haile.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Paname Art Café",
+      "url": "https://www.panameartcafe.com/artiste/marion-haile"
+    }
+  ],
   "quote": "Marion Hailey aussi, super humoriste et scénariste.",
   "sourceId": "un-bon-moment",
   "status": "validated",

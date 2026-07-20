@@ -55,7 +55,14 @@
   "guestWork": true,
   "id": "ubm-1858",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "SOONER (VOD)",
+      "url": "https://www.sooner.fr/films/kaamelott"
+    }
+  ],
   "quote": "Bah voilà il est dans Kaamelott",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

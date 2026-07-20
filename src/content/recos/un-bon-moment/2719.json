@@ -26,7 +26,20 @@
   "guestWork": true,
   "id": "ubm-2719",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "La Scene Barbes (ex-Barbes Comedy Club)",
+      "url": "https://lascenebarbes.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Barbes Comedy Club",
+      "url": "https://barbescomedyclub.com/"
+    }
+  ],
   "quote": "j'ai pris ce temps-là et j'aime le stand-up. Toutes les étapes intermédiaires qui manquaient, tu les as créées, en fait.",
   "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",

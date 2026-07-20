@@ -54,7 +54,20 @@
   ],
   "id": "ubm-1859",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Agenda officiel d'Audrey Vernon",
+      "url": "https://audreyvernon.com/agenda"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/audrey-vernon/"
+    }
+  ],
   "quote": "Qui fait le deuxième tome de 'Comment épouser un milliardaire'",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

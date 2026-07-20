@@ -58,7 +58,20 @@
   ],
   "id": "ubm-1855",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/madame-fraize/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-marc-fraize.htm"
+    }
+  ],
   "quote": "Le spectacle Madame Fraise aussi",
   "sourceId": "un-bon-moment",
   "status": "validated",

@@ -55,7 +55,20 @@
   "guestWork": true,
   "id": "ubm-0506",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre du Marais",
+      "url": "https://theatredumarais.fr/spectacle/pierre-hillairet/"
+    }
+  ],
   "quote": "tu as été le spectacle le plus recommandé d'un bon moment dans cette saison",
   "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",

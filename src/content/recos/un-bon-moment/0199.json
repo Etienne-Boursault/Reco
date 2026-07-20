@@ -57,7 +57,20 @@
   ],
   "id": "ubm-0199",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de Sofia Belabbes",
+      "url": "https://sofiabelabbes.fr/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/sofia-belabbes/"
+    }
+  ],
   "quote": "C'est Sophia Bellabès",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

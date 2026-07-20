@@ -36,7 +36,14 @@
   "guestWork": true,
   "id": "ubm-1370",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Shotgun (billetterie)",
+      "url": "https://shotgun.live/en/events/rnb-comedy-club"
+    }
+  ],
   "quote": "à paris qui s'appelle le r'n'b comedy club",
   "recommendedBy": "Anis Rhali",
   "sourceId": "un-bon-moment",

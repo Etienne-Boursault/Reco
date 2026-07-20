@@ -59,7 +59,20 @@
   "guestWork": true,
   "id": "ubm-0207",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Séances et réservation",
+      "url": "https://www.ticketingcine.com/film/VF4Q8.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000010002.html"
+    }
+  ],
   "quote": "Y'a un film qui s'appelle Miss Mermaid qui sort mais c'est au mois d'avril avec Aloïs Sauvage",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

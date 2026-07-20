@@ -31,7 +31,20 @@
   "guestWork": true,
   "id": "ubm-0959",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Lalibrairie (libraires indépendants)",
+      "url": "https://www.lalibrairie.com/livres/fiascorama_0-12649220_9782283041277.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Éditions Buchet-Chastel",
+      "url": "https://www.buchetchastel.fr/catalogue/fiascorama/"
+    }
+  ],
   "quote": "j'ai fait mon livre. Ça s'appelle Fiasco Raman. Voilà, qui est sorti.",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",

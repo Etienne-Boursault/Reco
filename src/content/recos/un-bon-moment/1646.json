@@ -36,7 +36,20 @@
   ],
   "id": "ubm-1646",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Le documentaire (YouTube)",
+      "url": "https://www.youtube.com/watch?v=Eh_t4lK1y2k"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "La chaîne de P.A.U.L",
+      "url": "https://www.youtube.com/channel/UCS-NkJiYhYku2YtKi2W4p3w"
+    }
+  ],
   "quote": "Il y a un très très beau documentaire sur SIA fait par la chaîne de Paul sur Youtube",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

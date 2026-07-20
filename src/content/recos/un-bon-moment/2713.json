@@ -38,7 +38,20 @@
   ],
   "id": "ubm-2713",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/i-may-destroy-you/a15b4064-4899-4381-bdf1-676986137ee1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — ou regarder",
+      "url": "https://www.justwatch.com/fr/serie/i-may-destroy-you/saison-1"
+    }
+  ],
   "quote": "C'est vraiment chouette, vraiment, vraiment cool.",
   "sourceId": "un-bon-moment",
   "status": "validated",

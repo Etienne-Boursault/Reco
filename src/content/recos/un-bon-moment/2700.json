@@ -39,7 +39,14 @@
   ],
   "id": "ubm-2700",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Page artiste de Dan Gagnon",
+      "url": "https://www.welovecomedy.fr/artistes/dan-gagnon"
+    }
+  ],
   "quote": "Franchement, change de truc, plante-toi, tente un truc.",
   "sourceId": "un-bon-moment",
   "status": "validated",

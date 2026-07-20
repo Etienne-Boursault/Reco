@@ -62,7 +62,26 @@
   ],
   "id": "ubm-0514",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Potemkine (Blu-ray de la trilogie)",
+      "url": "https://store.potemkine.fr/dvd/3545020097380-la-trilogie-d-oslo-reves-amour-desir-dag-johan-haugerud/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner (volet « Désir »)",
+      "url": "https://www.sooner.fr/films/la-trilogie-d-oslo-desir"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (volet « Rêves »)",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=308471.html"
+    }
+  ],
   "quote": "il y a une trilogie qui s'appelle la trilogie d'Oslo qui est sur my canal",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

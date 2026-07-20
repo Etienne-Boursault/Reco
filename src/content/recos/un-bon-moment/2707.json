@@ -40,7 +40,20 @@
   "guestWork": true,
   "id": "ubm-2707",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — GUS, episode 1",
+      "url": "https://www.youtube.com/watch?v=GgcJxj0yugM"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaine YouTube de Jeremie Dethelot",
+      "url": "https://www.youtube.com/channel/UCsoF3_IdVLe-cUky4dWw_rQ"
+    }
+  ],
   "quote": "\"Je suis arrivé sur une série qui s'appelle Gus !\"",
   "recommendedBy": "Jérémie Dethelot",
   "sourceId": "un-bon-moment",

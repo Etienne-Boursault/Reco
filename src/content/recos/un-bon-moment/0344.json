@@ -48,7 +48,20 @@
   ],
   "id": "ubm-0344",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Fnac Spectacles",
+      "url": "https://www.fnacspectacles.com/artist/rodrigue/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-rodrigue.htm"
+    }
+  ],
   "quote": "Allez voir Rodrigue, trop trop fort !",
   "sourceId": "un-bon-moment",
   "status": "validated",
