@@ -50,6 +50,27 @@
     }
   }
 
+  // Retire la carte d'une reco traitée (fondu) et déplace le focus sur la reco
+  // suivante — sur /doutes, un doute validé/écarté disparaît de la file sans
+  // rechargement de page (refonte 2026-07-21).
+  function removeCard(reco_id) {
+    const current = document.querySelector('input[name="id"][value="' + CSS.escape(reco_id) + '"]');
+    const li = current && current.closest('li.row');
+    if (!li) return;
+    const rows = Array.from(document.querySelectorAll('li.row[data-reco-id]'));
+    const idx = rows.indexOf(li);
+    const next = rows[idx + 1] || rows[idx - 1] || null;
+    li.style.transition = 'opacity .18s ease, transform .18s ease';
+    li.style.opacity = '0';
+    li.style.transform = 'translateX(1.5rem)';
+    setTimeout(() => {
+      li.remove();
+      if (next && window.__reco.setActiveRow) {
+        window.__reco.setActiveRow(next, { noAutoplay: true });
+      }
+    }, 180);
+  }
+
   // Retire le paramètre ?edit= de l'URL sans recharger (history.replaceState).
   // #4 : après une édition AJAX réussie, l'URL gardait `&edit=ubm-xxxx`, si
   // bien qu'un refresh rouvrait le formulaire et que la carte fraîchement
@@ -70,7 +91,15 @@
         body: new URLSearchParams(formData),
       });
       const data = await r.json();
-      if (data.card_html) replaceCard(reco_id, data.card_html);
+      // Sur /doutes : une action /save (validate/citation/discard/leur œuvre)
+      // traite le doute → la carte DISPARAÎT de la file (au lieu d'être
+      // remplacée par sa version « done »), et le focus passe à la suivante.
+      const onDoutes = window.location.pathname === '/doutes';
+      if (action === '/save' && onDoutes && data.kind !== 'error') {
+        removeCard(reco_id);
+      } else if (data.card_html) {
+        replaceCard(reco_id, data.card_html);
+      }
       if (data.message) toast(data.message, data.kind || 'info');
       // #4 — édition réussie : nettoie ?edit= et re-marque la carte active
       // pour que la validation clavier (V/C/D) agisse tout de suite dessus.
@@ -231,9 +260,15 @@
     const form = e.target;
     if (!(form instanceof HTMLFormElement)) return;
     const action = form.getAttribute('action') || '';
-    if (action !== '/edit' && action !== '/reenrich') return;
+    // /save inclus (refonte 2026-07-21) : Valider/Citation/Leur œuvre/Pas une
+    // reco se faisaient en POST natif → rechargement + retour en haut de page.
+    if (action !== '/edit' && action !== '/reenrich' && action !== '/save') return;
     e.preventDefault();
     const fd = new FormData(form);
+    // FormData n'inclut PAS le bouton submit cliqué (name="action"
+    // value=validate/citation/discard/guest-work) — on l'ajoute via e.submitter,
+    // sinon le backend ne saurait pas quelle action appliquer.
+    if (e.submitter && e.submitter.name) fd.set(e.submitter.name, e.submitter.value);
     const reco_id = fd.get('id');
     if (!reco_id) return;
     ajaxPost(action, fd, reco_id);
