@@ -15,7 +15,7 @@
 #    permissif pour le développement.
 
 # Étape 1 — lecture du flux RSS Acast
-feedparser>=6.0,<7
+feedparser>=6.0.12,<7
 
 # Étape 2 — téléchargement + transcription locale
 faster-whisper>=1.0,<2     # transcription Whisper en local (CTranslate2, CPU/GPU)
