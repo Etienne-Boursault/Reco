@@ -7,9 +7,9 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Orthographe probable 'Pulsions' (le transcript dit 'Pulsion' à 00:00:30 et 'les pulsions' plus loin). Borderline citation/guest-work : classé guest-work car promo active 'allez le voir'.",
+    "note": "Orthographe probable 'Pulsions' (le transcript dit 'Pulsion' à 00:00:30 et 'les pulsions' plus loin). Borderline citation/guest-work : classé guest-work car promo active 'allez le voir'. | DISCARD 2026-07-21 : quote « co-auteur de mon spectacle Pulsion » extraite de l intro ou Kyan presente Navo (mention de CV, pas une reco). Bruit d extraction.",
     "reason": "Spectacle du host Kyan, présenté/promu : 'j'ai mis mon spectacle gratuitement sur YouTube... vous pouvez aller le voir' (~00:04:11), règle 17 → guest-work.",
-    "verdict": "guest-work"
+    "verdict": "discard"
   },
   "creator": "Kyan Khojandi, Bruno Muschio (Navo)",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
@@ -45,9 +45,9 @@
     }
   ],
   "quote": "co-auteur de mon spectacle Pulsion",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:30",
   "title": "Pulsion",
   "transcriptSource": "youtube",

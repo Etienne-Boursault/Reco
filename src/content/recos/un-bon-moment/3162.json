@@ -7,9 +7,9 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Orthographe 'Serge Lemito' → 'Serge le Mytho' (web-série Golden Moustache de Kyan/Navo). Type draft 'spectacle' inexact (web-série).",
+    "note": "Orthographe 'Serge Lemito' → 'Serge le Mytho' (web-série Golden Moustache de Kyan/Navo). Type draft 'spectacle' inexact (web-série). | DISCARD 2026-07-21 : quote « co-auteur de Serge Lemito » extraite de l intro ou Kyan presente Navo (mention de CV, pas une reco). Bruit d extraction.",
     "reason": "Crédit d'intro, web-série passée des hosts, name-drop sans présentation → citation (règles 15/17).",
-    "verdict": "citation"
+    "verdict": "discard"
   },
   "creator": "Kyan Khojandi, Bruno Muschio (Navo)",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
@@ -50,8 +50,9 @@
     }
   ],
   "quote": "co-auteur de Serge Lemito",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:30",
   "title": "Serge le Mytho",
   "transcriptSource": "youtube",

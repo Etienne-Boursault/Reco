@@ -4,9 +4,9 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
-    "note": "00:00:30 crédit d'intro ; réapparaît en anecdote (le mec de bref) et dans le jeu. Aucune promo actuelle.",
+    "note": "00:00:30 crédit d'intro ; réapparaît en anecdote (le mec de bref) et dans le jeu. Aucune promo actuelle. | DISCARD 2026-07-21 : quote « co-auteur de Bref » extraite de l intro ou Kyan presente Navo (mention de CV, pas une reco). Bruit d extraction.",
     "reason": "Œuvre passée des hosts (co-écrite), simple crédit d'intro + évocations en anecdote, sans promo d'actualité → citation (règles 15/17, exemple explicite du brief).",
-    "verdict": "citation"
+    "verdict": "discard"
   },
   "creator": "Kyan Khojandi, Bruno Muschio (Navo)",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
@@ -35,8 +35,9 @@
     }
   ],
   "quote": "co-auteur de Bref",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:30",
   "title": "Bref",
   "transcriptSource": "youtube",
