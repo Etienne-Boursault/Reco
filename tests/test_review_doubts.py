@@ -148,7 +148,7 @@ def test_render_grouped_by_type(monkeypatch):
         _reco("r2", status="validated", kind="reco",
               agent={"verdict": "validate", "confidence": 0.9, "reason": "ok"}),
     ])
-    out = render_doubts("src")
+    out = render_doubts("src", ep="g1")
     # Sections par type via leurs ancres (markup, pas le CSS inliné) : pending
     # (r1) et recby (r2, validée sans prescripteur).
     assert 'id="sec-pending"' in out
@@ -166,32 +166,50 @@ def test_render_grouped_by_type(monkeypatch):
     assert 'class="doubt-summary"' in out
 
 
-def test_render_types_ordered_and_episodes_sorted_inside(monkeypatch):
-    """Sections dans l'ordre de priorité (_SECTIONS : pending avant lowconf) ;
-    à l'intérieur d'un type, recos triées par épisode (saison/numéro)."""
+def test_render_types_ordered_within_episode(monkeypatch):
+    """Refonte 2026-07-21 — dans la vue d'UN épisode, les sections restent dans
+    l'ordre de priorité de _SECTIONS (pending avant lowconf)."""
     source = {"title": "Src", "hosts": []}
     episodes = {
-        "g2": {"guid": "g2", "title": "Épisode Deux", "season": 5, "number": 2},
         "g1": {"guid": "g1", "title": "Épisode Un", "season": 5, "number": 1},
     }
     r_low = _reco("rlow", status="discarded",
                   agent={"verdict": "discard", "confidence": 0.5, "reason": "l"})
     r_pending = _reco("rpend", status="draft",
                       agent={"verdict": "unsure", "confidence": 0.4, "reason": "p"})
-    r_g2 = _reco("rg2", status="draft",
-                 agent={"verdict": "unsure", "confidence": 0.4, "reason": "x"})
-    r_g2["episodeGuid"] = "g2"
-    groups = {"g1": [r_low, r_pending], "g2": [r_g2]}
     monkeypatch.setattr(
         review_doubts, "_load_groups",
-        lambda source_id: (source, episodes, groups),
+        lambda source_id: (source, episodes, {"g1": [r_low, r_pending]}),
+    )
+    out = render_doubts("src", ep="g1")
+    assert out.index('id="sec-pending"') < out.index('id="sec-lowconf"')
+    assert 'data-reco-id="rpend"' in out and 'data-reco-id="rlow"' in out
+
+
+def test_render_index_lists_episodes_recent_first(monkeypatch):
+    """Refonte 2026-07-21 — /doutes (sans ep) rend un index LÉGER : la liste des
+    épisodes à revoir, du plus récent au plus ancien, sans carte ni lecteur."""
+    source = {"title": "Src", "hosts": []}
+    episodes = {
+        "old": {"guid": "old", "title": "Vieux", "date": "2020-01-01"},
+        "new": {"guid": "new", "title": "Récent", "date": "2026-01-01"},
+    }
+    mk = lambda rid: _reco(rid, status="draft",
+                           agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"})
+    r_old, r_new = mk("ro"), mk("rn")
+    r_old["episodeGuid"], r_new["episodeGuid"] = "old", "new"
+    monkeypatch.setattr(
+        review_doubts, "_load_groups",
+        lambda source_id: (source, episodes, {"old": [r_old], "new": [r_new]}),
     )
     out = render_doubts("src")
-    # Ordre des sections via les ancres markup : pending avant lowconf.
-    assert out.index('id="sec-pending"') < out.index('id="sec-lowconf"')
-    # Dans pending : g1 (S5E1) avant g2 (S5E2).
-    assert out.index('data-reco-id="rpend"') < out.index('data-reco-id="rg2"')
-    assert "Épisode Un" in out and "Épisode Deux" in out
+    # Index : liens vers chaque épisode, aucune carte, récent avant vieux.
+    assert 'href="/doutes?ep=new"' in out and 'href="/doutes?ep=old"' in out
+    assert out.index("Récent") < out.index("Vieux")
+    # Aucune CARTE sur l'index (les data-reco-id des recos ne sont pas rendus ;
+    # la chaîne générique existe dans le bundle JS, on cible donc les vrais id).
+    assert 'data-reco-id="ro"' not in out and 'data-reco-id="rn"' not in out
+    assert 'class="doubt-ep-list"' in out
 
 
 def test_render_edit_button_targets_doutes(monkeypatch):
@@ -201,8 +219,8 @@ def test_render_edit_button_targets_doutes(monkeypatch):
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
     ])
-    out = render_doubts("src")
-    assert 'btn-edit" href="/doutes?edit=r1"' in out
+    out = render_doubts("src", ep="g1")
+    assert 'btn-edit" href="/doutes?ep=g1&edit=r1"' in out
     assert 'btn-edit" href="/ep' not in out
 
 
@@ -213,8 +231,8 @@ def test_render_edit_id_renders_inline_form(monkeypatch):
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
     ])
-    assert 'action="/edit"' not in render_doubts("src")
-    assert 'action="/edit"' in render_doubts("src", edit_id="r1")
+    assert 'action="/edit"' not in render_doubts("src", ep="g1")
+    assert 'action="/edit"' in render_doubts("src", ep="g1", edit_id="r1")
 
 
 def test_render_empty_state(monkeypatch):
@@ -230,7 +248,7 @@ def test_render_section_agent_block_inside_li(monkeypatch):
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
     ])
-    out = render_doubts("src")
+    out = render_doubts("src", ep="g1")
     soup = parse(out)
     blocks = soup.select(".agent-review")
     assert blocks  # au moins un bloc rendu
@@ -270,7 +288,7 @@ def test_render_string_confidence_does_not_crash(monkeypatch):
         _reco("r1", status="validated", kind="reco", recommended_by="Kyan",
               agent={"verdict": "validate", "confidence": "0.4", "reason": "?"}),
     ])
-    out = render_doubts("src")  # ne doit pas lever
+    out = render_doubts("src", ep="g1")  # ne doit pas lever
     assert 'data-reco-id="r1"' in out
 
 
@@ -294,8 +312,8 @@ def test_render_doubts_cancel_returns_to_doutes(monkeypatch):
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
     ])
-    out = render_doubts("src", edit_id="r1")
-    assert 'href="/doutes">Annuler</a>' in out
+    out = render_doubts("src", ep="g1", edit_id="r1")
+    assert 'href="/doutes?ep=g1">Annuler</a>' in out
     assert 'href="/ep?guid=g1">Annuler' not in out
 
 
@@ -314,7 +332,7 @@ def test_render_shows_confidence_and_reason(monkeypatch):
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.42, "reason": "cas limite"}),
     ])
-    out = render_doubts("src")
+    out = render_doubts("src", ep="g1")
     assert "cas limite" in out
     assert "0.42" in out or "42" in out
 
@@ -331,7 +349,7 @@ def test_render_episode_link_carries_youtube_title_tooltip(monkeypatch):
         review_doubts, "_load_groups",
         lambda source_id: (source, episodes, {"g1": recos}),
     )
-    out = render_doubts("src")
+    out = render_doubts("src", ep="g1")
     assert 'title="YouTube : English Format Title"' in out
 
 
@@ -391,7 +409,7 @@ def test_agent_block_renders_flags_note_and_human_correction(monkeypatch):
             "humanCorrection": "corrigé par Kyan",
         }),
     ])
-    out = render_doubts("src")
+    out = render_doubts("src", ep="g1")
     assert "titre suspect" in out
     assert "lien à vérifier" in out
     assert "note interne agent" in out

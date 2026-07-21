@@ -3147,13 +3147,15 @@ def test_save_all_whitelisted_actions_accepted(fake_source, action):
 def test_save_json_from_doutes_card_has_doutes_edit_origin(fake_source):
     """rev-render m4 (revue 2026-07-19) — carte JSON renvoyée pour un fetch
     initié depuis /doutes : son bouton Éditer pointe vers /doutes (inline),
-    pas vers /ep."""
+    pas vers /ep. Refonte 2026-07-21 : l'URL porte désormais `ep=<guid>` pour
+    rester dans la vue épisode."""
     body = b"id=ubm-002&action=validate&who=Alice"
     h = _FakeHandler(fake_source, "/save", body, accept="application/json")
     h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
     h.do_POST()
     payload = json.loads(h.wfile.getvalue().decode("utf-8"))
-    assert "/doutes?edit=ubm-002" in payload["card_html"]
+    assert 'href="/doutes?ep=' in payload["card_html"]
+    assert "&edit=ubm-002" in payload["card_html"]
 
 
 def test_save_json_from_episode_card_has_ep_edit_origin(fake_source):

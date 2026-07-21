@@ -144,7 +144,10 @@ def _reco_action_buttons(r: dict, edit_origin: str = "/ep") -> str:
     guid_q = urllib.parse.quote(r.get("episodeGuid", ""))
     edit_id_q = urllib.parse.quote(r.get("id", ""))
     if edit_origin == "/doutes":
-        edit_href = f"/doutes?edit={edit_id_q}"
+        # Refonte perf 2026-07-21 : l'édition se fait dans la vue épisode
+        # (/doutes?ep=<guid>) — sans le guid on retomberait sur l'index léger,
+        # qui ignore `edit`.
+        edit_href = f"/doutes?ep={guid_q}&edit={edit_id_q}"
     else:
         edit_href = f"/ep?guid={guid_q}&edit={edit_id_q}"
     edit_btn = f'<a class="btn-edit" href="{edit_href}">✎ Éditer</a>'

@@ -231,3 +231,17 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-ep-tag{display:inline-block;background:#1a1a20;border:1px solid #2a2a30;border-radius:999px;padding:.05em .7em;font-size:.72rem;font-weight:600;color:#cfcdc6;text-decoration:none;margin-right:.4rem;}
 .doubt-ep-tag:hover{color:#ffd23f;border-color:#ffd23f55;}
 .anchor{display:block;position:relative;top:-1rem;visibility:hidden;height:0;}
+/* Refonte /doutes 2026-07-21 : index par episode (leger, sans cartes). */
+.doubt-ep-list{list-style:none;padding:0;max-width:820px;margin:1rem auto;}
+.doubt-ep-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.55rem .3rem;border-bottom:1px solid #23232a;}
+.doubt-ep-link{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#e6e4dd;flex:1 1 22rem;min-width:0;}
+.doubt-ep-link:hover .doubt-ep-name{color:#ffd23f;}
+.doubt-ep-total{flex:0 0 auto;min-width:2.2em;text-align:center;background:#27220a;color:#ffd23f;border:1px solid #ffd23f55;border-radius:999px;padding:.1em .5em;font-size:.8rem;font-weight:700;}
+.doubt-ep-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.doubt-mini-wrap{display:flex;gap:.35rem;flex-wrap:wrap;}
+.doubt-mini{font-size:.68rem;color:#9a99a3;border:1px solid #2a2a30;border-radius:999px;padding:.02em .55em;white-space:nowrap;}
+.doubt-mini-pending{color:#ffd23f;border-color:#5a4a14;}
+.doubt-mini-flagged{color:#ffb74d;border-color:#7a4d00;}
+.doubt-mini-recby{color:#a2c4ee;border-color:#1f3a5c;}
+.doubt-mini-lowconf{color:#a9e3b8;border-color:#2c5a38;}
+.doubt-ep-title{max-width:820px;margin:.6rem auto .2rem;font-size:1.2rem;}

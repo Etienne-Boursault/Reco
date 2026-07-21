@@ -370,7 +370,7 @@ def render_edit_form(
     details_block = ov_block + cl_block + details_block
     # M2 (revue 2026-07-19) : rester dans la file quand on édite depuis /doutes
     # (le save y retourne déjà via #M3 ; sans ça l'Annuler éjecte vers /ep).
-    cancel = ("/doutes" if edit_origin == "/doutes"
+    cancel = (f'/doutes?ep={urllib.parse.quote(guid)}' if edit_origin == "/doutes"
               else f'/ep?guid={urllib.parse.quote(guid)}')
     # Mode « artiste seul » : on remplace l'étiquette « Titre » par « Nom »
     # et on masque le champ Créateur — pour un artiste, le nom EST le titre.

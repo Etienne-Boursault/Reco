@@ -105,6 +105,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             from review_doubts import render_doubts  # noqa: PLC0415
             qs = urllib.parse.parse_qs(parsed.query)
             edit_id = qs.get("edit", [None])[0]
+            # Refonte perf 2026-07-21 : `?ep=<guid>` → un seul épisode ; sans
+            # ce param → l'index léger des épisodes à revoir.
+            ep_guid = qs.get("ep", [None])[0]
             # rev-render m3 — propager flash/kind (POST /save depuis /doutes
             # redirige avec ces params ; sans JS, la bannière est le seul retour).
             flash = qs.get("flash", [""])[0] or None
@@ -112,7 +115,8 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             if kind not in ("success", "warning", "error", "info"):
                 kind = "info"
             self._send(200, render_doubts(
-                self.source_id, edit_id, flash=flash, flash_kind=kind))
+                self.source_id, ep=ep_guid, edit_id=edit_id,
+                flash=flash, flash_kind=kind))
             return
         if parsed.path == "/ep":
             self._handle_get_episode(parsed.query)
@@ -287,9 +291,13 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             self._send_json_post(guid, kind or "info", message, reco_id)
             return
         if guid and self._referer_path() == "/doutes":
+            # Refonte perf 2026-07-21 : on retourne à l'ÉPISODE en cours
+            # (/doutes?ep=<guid>), pas à l'index global — on enchaîne les
+            # doutes d'un même épisode sans recharger toute la file.
             doubt_flash = flash or "Traité — reco suivante."
             doubt_kind = kind or "success"
-            loc = (f"/doutes?flash={urllib.parse.quote(doubt_flash)}"
+            loc = (f"/doutes?ep={urllib.parse.quote(guid)}"
+                   f"&flash={urllib.parse.quote(doubt_flash)}"
                    f"&kind={urllib.parse.quote(doubt_kind)}")
             self._send_redirect(loc)
             return

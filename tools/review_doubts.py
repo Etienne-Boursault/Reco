@@ -185,53 +185,126 @@ def _render_type_section(
     return "".join(out)
 
 
-def render_doubts(source_id: str, edit_id: str | None = None,
-                  flash: str | None = None, flash_kind: str = "info") -> str:
-    """Page /doutes complète — groupée PAR TYPE d'info à valider (verdict en
-    attente, signalements, « Reco de » à compléter, faible confiance), chaque
-    reco étiquetée avec son épisode. `edit_id` (facultatif) : rend le
-    formulaire d'édition inline pour cette reco — le save y ramène (#M3).
+def collect_doubts_by_episode(
+    source_id: str,
+) -> tuple[dict, dict, dict, dict[str, dict]]:
+    """Doutes regroupés PAR ÉPISODE (refonte perf 2026-07-21).
 
-    rev-render m3 (revue 2026-07-19) : `flash`/`flash_kind` rendent une bannière
-    en tête de page. Sans ça, un POST /save initié depuis /doutes redirige vers
-    `/doutes?flash=…` (#M3) mais le message était PERDU pour un client sans JS
-    (le toast est injecté côté JS uniquement)."""
+    Renvoie (source, episodes, groups, per_ep) où per_ep =
+    {guid: {"ep": episode, "sections": {clé: [reco,…]}, "total": n}} pour les
+    seuls épisodes ayant au moins un doute. La page /doutes chargeait TOUTES
+    les cartes d'un coup (~6 Mo, navigateur à genoux) ; on sert désormais un
+    index léger puis un épisode à la fois."""
     source, episodes, groups = _load_groups(source_id)
-    hosts = source.get("hosts", [])
-    sections = collect_doubts(source_id)
-    total = sum(len(v) for v in sections.values())
+    per_ep: dict[str, dict] = {}
+    for guid, recos in groups.items():
+        ep = episodes.get(guid, {"guid": guid, "title": guid})
+        secs: dict[str, list[dict]] = {}
+        for r in recos:
+            key = _section_for(r)
+            if key is not None:
+                secs.setdefault(key, []).append(r)
+        if secs:
+            per_ep[guid] = {"ep": ep, "sections": secs,
+                            "total": sum(len(v) for v in secs.values())}
+    return source, episodes, groups, per_ep
 
+
+def _ep_sort_key(ep: dict):
+    """Tri des épisodes du plus RÉCENT au plus ancien (date desc), comme la
+    chaîne YouTube. Repli sur (saison, numéro) si une date manque."""
+    return (str(ep.get("date") or ""),
+            ep.get("season") or 0, ep.get("number") or 0)
+
+
+def _render_index(source: dict, per_ep: dict[str, dict], source_id: str,
+                  flash: str | None, flash_kind: str) -> str:
+    """Index léger : la liste des épisodes à revoir (aucune carte ni lecteur)."""
     banner = _flash_banner(flash, flash_kind)
     back = '<a class="back" href="/">← tous les épisodes</a>'
+    total = sum(d["total"] for d in per_ep.values())
     if total == 0:
         inner = f"{banner}{back}<p>Aucun doute en attente — tout est validé. 🎉</p>"
         return _shell(source.get("title", source_id),
                       "File de validation des doutes agent.", inner)
 
-    # Sommaire cliquable : total + compte par type (ancre vers chaque section).
+    rows = sorted(per_ep.values(), key=lambda d: _ep_sort_key(d["ep"]),
+                  reverse=True)
+    lis = []
+    for d in rows:
+        ep = d["ep"]
+        href = f"/doutes?ep={urllib.parse.quote(ep.get('guid', ''))}"
+        badges = " ".join(
+            f'<span class="doubt-mini doubt-mini-{html.escape(k)}">'
+            f'{html.escape(_SECTION_LABELS[k])} {len(d["sections"][k])}</span>'
+            for k, _l, _dd in _SECTIONS if d["sections"].get(k)
+        )
+        lis.append(
+            f'<li class="doubt-ep-row"><a class="doubt-ep-link" href="{href}">'
+            f'<span class="doubt-ep-total">{d["total"]}</span> '
+            f'<span class="doubt-ep-name">{html.escape(_ep_label(ep))}</span>'
+            f'</a> <span class="doubt-mini-wrap">{badges}</span></li>'
+        )
+    inner = (
+        f'{banner}{back}'
+        f'<p class="doubt-summary"><b>{total}</b> reco(s) à revoir sur '
+        f'<b>{len(per_ep)}</b> épisode(s) — choisis un épisode.</p>'
+        f'<ul class="doubt-ep-list">{"".join(lis)}</ul>'
+    )
+    return _shell(source.get("title", source_id),
+                  f"{total} reco(s) à revoir, {len(per_ep)} épisode(s).", inner)
+
+
+def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
+                    hosts: list[str], source_id: str,
+                    groups: dict[str, list[dict]], edit_id: str | None,
+                    flash: str | None, flash_kind: str) -> str:
+    """Vue d'UN épisode : ses doutes groupés par type, avec cartes + lecteur."""
+    banner = _flash_banner(flash, flash_kind)
+    back = '<a class="back" href="/doutes">← liste des épisodes à revoir</a>'
+    d = per_ep.get(guid)
+    if d is None:
+        inner = (f"{banner}{back}<p>Aucun doute sur cet épisode — "
+                 "tout est traité. 🎉</p>")
+        return _shell(source.get("title", source_id),
+                      "File de validation des doutes agent.", inner)
+    ep = d["ep"]
     nav = " · ".join(
         f'<a href="#sec-{html.escape(key)}">'
-        f'{html.escape(_SECTION_LABELS[key])} ({len(sections[key])})</a>'
-        for key, _t, _d in _SECTIONS if sections[key]
+        f'{html.escape(_SECTION_LABELS[key])} ({len(d["sections"][key])})</a>'
+        for key, _t, _dd in _SECTIONS if d["sections"].get(key)
     )
-    # M2 — wrap player inline : les cartes réutilisent `_reco_card`, dont les
-    # liens timecode ciblent `target="ytplayer"`. Sans cet iframe nommé dans
-    # la page, le navigateur ouvrirait un onglet à chaque clic.
+    # M2 — wrap player inline (liens timecode ciblent target="ytplayer").
     body = [
-        banner,
-        back,
-        f'<p class="doubt-summary"><b>{total}</b> reco(s) à revoir — {nav}</p>',
+        banner, back,
+        f'<h1 class="doubt-ep-title">{html.escape(_ep_label(ep))}</h1>',
+        f'<p class="doubt-summary"><b>{d["total"]}</b> reco(s) à revoir — {nav}</p>',
         _PLAYER_WRAP_HTML,
     ]
-    # Une section par TYPE, dans l'ordre de priorité de _SECTIONS.
     for key, label, desc in _SECTIONS:
-        items = sections.get(key) or []
+        items = d["sections"].get(key)
         if not items:
             continue
         body.append(
             f'<a id="sec-{html.escape(key)}" class="anchor"></a>'
-            + _render_type_section(key, label, desc, items, hosts,
-                                   source_id, groups, edit_id)
+            + _render_type_section(key, label, desc, [(ep, r) for r in items],
+                                   hosts, source_id, groups, edit_id)
         )
-    subtitle = f"{total} reco(s) à revoir, groupées par type d'action."
-    return _shell(source.get("title", source_id), subtitle, "".join(body))
+    return _shell(source.get("title", source_id),
+                  f'{d["total"]} reco(s) — {_ep_label(ep)}', "".join(body))
+
+
+def render_doubts(source_id: str, ep: str | None = None,
+                  edit_id: str | None = None,
+                  flash: str | None = None, flash_kind: str = "info") -> str:
+    """Page /doutes. Sans `ep` → index des épisodes à revoir (léger). Avec
+    `ep=<guid>` → les doutes de ce seul épisode (cartes + lecteur).
+
+    Refonte perf 2026-07-21 : l'ancienne page unique rendait toutes les cartes
+    d'un coup (~6 Mo). `edit_id`/`flash`/`flash_kind` : cf. #M3 (retour inline
+    après save + bannière sans-JS)."""
+    source, _episodes, groups, per_ep = collect_doubts_by_episode(source_id)
+    if ep:
+        return _render_episode(source, ep, per_ep, source.get("hosts", []),
+                               source_id, groups, edit_id, flash, flash_kind)
+    return _render_index(source, per_ep, source_id, flash, flash_kind)
