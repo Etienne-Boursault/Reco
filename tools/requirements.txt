@@ -18,7 +18,7 @@
 feedparser>=6.0,<7
 
 # Étape 2 — téléchargement + transcription locale
-faster-whisper>=1.0,<2     # transcription Whisper en local (CTranslate2, CPU/GPU)
+faster-whisper>=1.2.1,<2     # transcription Whisper en local (CTranslate2, CPU/GPU)
 yt-dlp>=2024.0             # téléchargement audio YouTube (si pas d'audioUrl)
 requests>=2.31,<3          # téléchargement des enclosures audio HTTP
 
