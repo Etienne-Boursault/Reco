@@ -4,8 +4,9 @@
     "confidence": 0.85,
     "date": "2026-07-14",
     "model": "claude-opus-4-8",
+    "note": "DISCARD 2026-07-21 (valide Etienne) : encart sponsor/intro du spectacle des animateurs (00:00:xx), repete d'un episode a l'autre, pas une recommandation. Vraie reco Une Bonne Soiree = ubm-2992.",
     "reason": "Spectacle/tournee des HOSTS ('Ne ratez pas Une Bonne Soiree, janvier, dans toute la France') presente par Kyan — auto-promo du format, traite comme guest-work (politique 2026-07-07).",
-    "verdict": "guest-work"
+    "verdict": "discard"
   },
   "creator": "Kyan Khojandi",
   "episodeGuid": "63357716bc3f1e0012abed65",
@@ -54,9 +55,9 @@
     }
   ],
   "quote": "Ne ratez pas Une Bonne Soirée, janvier, dans toute la France.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:13",
   "title": "Une Bonne Soirée",
   "transcriptSource": "youtube",

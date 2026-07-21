@@ -4,9 +4,9 @@
     "confidence": 0.95,
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
-    "note": "Le champ quote actuel (« merci 10 millions de fois a vous ») est mal decoupe ; le vrai contexte est la ligne [00:00:17].",
+    "note": "Le champ quote actuel (« merci 10 millions de fois a vous ») est mal decoupe ; le vrai contexte est la ligne [00:00:17]. | DISCARD 2026-07-21 (valide Etienne) : encart sponsor/intro du spectacle des animateurs (00:00:xx), repete d'un episode a l'autre, pas une recommandation. Vraie reco Une Bonne Soiree = ubm-2992.",
     "reason": "Spectacle de Kyan (host) qu'il fait lui-meme la promo dans le monologue d'intro ([00:00:17] « mon spectacle Pulsion qui est disponible sur cette chaine YouTube »). Auto-promo d'un host = guest-work. Oeuvre reelle.",
-    "verdict": "guest-work"
+    "verdict": "discard"
   },
   "creator": "Kyan Khojandi",
   "episodeGuid": "661c1bf83fb7ab00162aa674",
@@ -55,9 +55,9 @@
     }
   ],
   "quote": "merci 10 millions de fois à vous.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:17",
   "title": "Pulsion",
   "transcriptSource": "youtube",

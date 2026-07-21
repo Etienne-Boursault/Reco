@@ -4,9 +4,9 @@
     "confidence": 0.95,
     "date": "2026-07-17",
     "model": "claude-opus-4-8",
-    "note": "Spectacle live de Kyan (Navo en 1re partie). Passage 00:00:12.",
+    "note": "Spectacle live de Kyan (Navo en 1re partie). Passage 00:00:12. | DISCARD 2026-07-21 (valide Etienne) : encart sponsor/intro du spectacle des animateurs (00:00:xx), repete d'un episode a l'autre, pas une recommandation. Vraie reco Une Bonne Soiree = ubm-2992.",
     "reason": "Kyan promeut son propre spectacle en tournee 'Une Bonne Soiree' ('ne ratez pas une bonne soiree, janvier dans toute la France', 'les dernieres') ; auto-promo du host.",
-    "verdict": "guest-work"
+    "verdict": "discard"
   },
   "episodeGuid": "633b305f3ca1cc001201a861",
   "extractionHistory": [
@@ -41,9 +41,9 @@
     }
   ],
   "quote": "ne ratez pas une bonne soirée, janvier dans toute la France",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:00:12",
   "title": "Une Bonne Soirée",
   "transcriptSource": "youtube",
