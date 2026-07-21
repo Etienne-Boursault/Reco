@@ -305,6 +305,18 @@ def test_section_for_non_string_recommendedby_no_crash():
     assert _section_for({**base, "recommendedBy": []}) == "recby"
 
 
+def test_section_for_human_reviewed_leaves_queue():
+    """Refonte 2026-07-21 — une reco marquée reviewedByHuman (décision /save
+    prise) sort de TOUTES les sections, même si des flags ou une faible
+    confiance persistent. Sans le marqueur, elle resterait un doute."""
+    from review_doubts import _section_for
+    ar = {"verdict": "unsure", "confidence": 0.3, "flags": ["title_suspect"]}
+    base = {"status": "validated", "kind": "reco", "recommendedBy": "Kyan"}
+    assert _section_for({**base, "agentReview": {**ar, "reviewedByHuman": True}}) is None
+    # Sans le marqueur : c'est bien un doute (pending, prioritaire).
+    assert _section_for({**base, "agentReview": ar}) == "pending"
+
+
 def test_render_doubts_cancel_returns_to_doutes(monkeypatch):
     """M2 (rev-render) — le lien Annuler de l'édition inline sur /doutes revient
     à /doutes (pas /ep) : le save y retournait déjà, l'Annuler suit."""

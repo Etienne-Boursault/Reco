@@ -389,6 +389,12 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
 
         Extrait de `_save_status` pour clarté (chaque branche = une action).
         """
+        # Une décision humaine (quelle qu'elle soit) sort la reco de la file des
+        # doutes : `_section_for` ignore désormais les recos `reviewedByHuman`.
+        # Sans ça, une reco validée mais encore porteuse de flags (ou de faible
+        # confiance) réapparaissait dans /doutes au rechargement (retour
+        # utilisateur 2026-07-21).
+        reco.setdefault("agentReview", {})["reviewedByHuman"] = True
         if action == "discard":
             reco["status"] = "discarded"
             # On préserve `kind` ET `guestWork` à dessein : un humain a

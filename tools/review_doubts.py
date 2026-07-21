@@ -55,6 +55,11 @@ def _section_for(reco: dict) -> str | None:
     ar = reco.get("agentReview")
     if not ar:
         return None
+    # Décision humaine déjà prise via /save → la reco quitte la file, quels que
+    # soient les flags / la confiance restants. Sinon une reco validée mais
+    # encore flaggée réapparaît dans /doutes (retour utilisateur 2026-07-21).
+    if ar.get("reviewedByHuman"):
+        return None
     if ar.get("verdict") == "unsure":
         return "pending"
     if ar.get("flags"):
