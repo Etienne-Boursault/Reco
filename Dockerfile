@@ -11,7 +11,7 @@
 # -----------------------------------------------------------------------------
 # Stage 1 — Astro build (Node 20)
 # -----------------------------------------------------------------------------
-FROM node:20-slim AS node-builder
+FROM node:26-slim AS node-builder
 WORKDIR /app
 
 # Install deps en couche dédiée (cache friendly)
