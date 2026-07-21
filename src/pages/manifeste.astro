@@ -61,8 +61,8 @@ const jsonLd = [
   <main id="main" class="wrap prose">
     <nav class="toc" aria-label={t('manifesto.toc.label')}>
       <ol>
-        {sections.map((s, i) => (
-          <li><a href={`#${s.id}`}>{i + 1}. {s.title}</a></li>
+        {sections.map((s) => (
+          <li><a href={`#${s.id}`}>{s.title}</a></li>
         ))}
       </ol>
     </nav>
@@ -108,9 +108,12 @@ const jsonLd = [
         </li>
         <li>
           Les œuvres recommandées par un podcast restent visibles (on
-          ne falsifie pas le discours), mais sont signalées et privées
-          de liens d'achat tant qu'aucun canal indépendant n'est
-          identifié.
+          ne falsifie pas le discours). Les liens privilégient toujours
+          un canal indépendant ; à défaut, un lien vers une plateforme du
+          groupe n'est proposé qu'en <strong>dernier recours</strong>,
+          faute d'alternative, et <strong>clairement signalé</strong>
+          (badge « plateforme moins recommandée ») — le minimum utile
+          plutôt que de laisser le lecteur sans accès.
         </li>
         <li>
           Signalement par les visiteurs via le formulaire de report
@@ -127,9 +130,13 @@ const jsonLd = [
     <section aria-labelledby="libraries">
       <h2 id="libraries">3. {t('manifesto.libraries.title')}</h2>
       <p>
-        <strong>Reco ne lie jamais vers Amazon</strong>, Audible, Kindle
-        Store ou tout service du groupe Amazon, quelle que soit la
-        disponibilité ou la commodité.
+        <strong>Reco évite Amazon</strong> (et Audible, Kindle Store, tout
+        service du groupe) : jamais par simple commodité, jamais quand une
+        alternative existe. Un lien Amazon n'apparaît qu'en
+        <strong>dernier recours</strong>, lorsqu'aucune autre plateforme ne
+        propose l'œuvre, et il est alors <strong>signalé</strong> (badge
+        « plateforme moins recommandée ») plutôt que de laisser le lecteur
+        sans accès.
       </p>
       <p>Pour les livres, Reco priorise dans cet ordre :</p>
       <ol>

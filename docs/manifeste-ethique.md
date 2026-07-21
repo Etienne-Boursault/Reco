@@ -33,8 +33,10 @@ Wikipédia [Groupe Bolloré](https://fr.wikipedia.org/wiki/Groupe_Bolloré),
   éditeurs reste **visible** dans le catalogue (on ne falsifie pas le
   discours du podcast), mais :
   - elle est **signalée** comme telle (badge, mention dans la fiche) ;
-  - aucun lien d'achat n'est généré vers une plateforme tierce pour ces
-    œuvres tant qu'un canal indépendant n'a pas été identifié.
+  - les liens privilégient toujours un canal indépendant ; à défaut, un
+    lien vers une plateforme du groupe n'est proposé qu'en **dernier
+    recours**, faute d'alternative, et **clairement signalé** — le minimum
+    utile plutôt que de laisser le lecteur sans accès.
 - Les contributeurs peuvent signaler une œuvre via le formulaire
   `/api/report` (cf. ADR 0034) si l'appartenance Bolloré est détectée
   manuellement.
@@ -44,13 +46,16 @@ d'éditeurs maintenue dans `src/content/sources/*.json` est prévu (cf.
 roadmap item #25). Tant qu'il n'est pas livré, la modération se fait par
 revue humaine et par signalement.
 
-## 3. Librairies indépendantes (jamais Amazon)
+## 3. Librairies indépendantes
 
 **Principes :**
 
-- Reco ne lie **jamais** vers Amazon, Audible, Kindle Store ou tout
-  service du groupe Amazon, quelle que soit la disponibilité ou la
-  commodité.
+- Reco **évite** Amazon (Audible, Kindle Store, tout service du groupe) :
+  jamais par simple commodité, jamais quand une alternative existe. Un
+  lien Amazon n'apparaît qu'en **dernier recours**, lorsqu'aucune autre
+  plateforme ne propose l'œuvre, et il est alors **signalé** (badge
+  « plateforme moins recommandée ») plutôt que de laisser le lecteur sans
+  accès.
 - Pour les livres, Reco priorise dans cet ordre :
   1. l'éditeur indépendant directement (boutique propre) ;
   2. [Place des Libraires](https://www.placedeslibraires.fr/) (réseau
