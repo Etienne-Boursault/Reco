@@ -30,7 +30,7 @@ python-dotenv>=1.0,<2      # chargement de tools/.env (ANTHROPIC_API_KEY)
 filelock>=3.13,<4          # verrou inter-processus (cf. tools/review_lock.py)
 
 # Tests — parsing HTML structurel (review_server)
-beautifulsoup4>=4.12,<5    # assertions DOM robustes aux changements de markup
+beautifulsoup4>=4.15.0,<5    # assertions DOM robustes aux changements de markup
 
 # Cache HTTP SQLite pour `refresh_enrichment.py` (ADR 0023).
 requests-cache>=1.2,<2     # économise quota TMDB/MusicBrainz entre runs
