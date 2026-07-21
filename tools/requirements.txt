@@ -33,7 +33,7 @@ filelock>=3.13,<4          # verrou inter-processus (cf. tools/review_lock.py)
 beautifulsoup4>=4.12,<5    # assertions DOM robustes aux changements de markup
 
 # Cache HTTP SQLite pour `refresh_enrichment.py` (ADR 0023).
-requests-cache>=1.2,<2     # économise quota TMDB/MusicBrainz entre runs
+requests-cache>=1.3.3,<2     # économise quota TMDB/MusicBrainz entre runs
 
 # Embeddings sémantiques (ADR 0033 — roadmap item #15).
 # Optionnel : seul `tools/embed_items.py` en a besoin (import paresseux,
