@@ -52,7 +52,7 @@ jobs:
       - name: Restore RSS polling state
         # L'état hebdo est petit (~10 KB / source) — on le persiste via
         # cache GitHub Actions pour ne pas re-notifier à chaque run.
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: tools/output/rss
           key: rss-state-${{ github.run_id }}
