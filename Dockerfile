@@ -30,7 +30,7 @@ RUN npm run build
 # -----------------------------------------------------------------------------
 # Stage 2 — Python venv (build-essential nécessaire pour faster-whisper/onnx)
 # -----------------------------------------------------------------------------
-FROM python:3.12-slim AS python-builder
+FROM python:3.14-slim AS python-builder
 WORKDIR /app
 
 ENV PIP_NO_CACHE_DIR=1 \
@@ -53,7 +53,7 @@ RUN python -m venv /app/.venv \
 # -----------------------------------------------------------------------------
 # Stage 3 — Runtime slim
 # -----------------------------------------------------------------------------
-FROM python:3.12-slim AS runtime
+FROM python:3.14-slim AS runtime
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
