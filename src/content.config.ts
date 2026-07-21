@@ -93,6 +93,9 @@ const episodes = defineCollection({
     date: z.coerce.date().optional(),
     audioUrl: z.string().url().optional(),
     youtubeUrl: z.string().url().optional(),
+    // Artwork de l'épisode issu du flux RSS Acast (itunes:image). Sert de
+    // miniature de repli quand l'épisode n'a pas de vignette YouTube.
+    imageUrl: z.string().url().optional(),
     audioDuration: z.number().int().optional(), // durée de l'audio (secondes)
     youtubeDuration: z.number().int().optional(), // durée de la vidéo YT (secondes)
     description: z.string().optional(),

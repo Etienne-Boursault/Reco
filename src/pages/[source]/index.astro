@@ -48,9 +48,11 @@ const types = [...counts.entries()].sort((a, b) => b[1] - a[1]);
 const recoCountByEp = new Map<string, number>();
 for (const r of trueRecos)
   recoCountByEp.set(r.episodeGuid, (recoCountByEp.get(r.episodeGuid) ?? 0) + 1);
+// Tous les épisodes (même sans reco validée), du plus RÉCENT au plus ancien —
+// comme la chaîne YouTube. Retour utilisateur 2026-07-21 : afficher aussi les
+// épisodes sans reco (ex. #21 McFly & Carlito).
 const episodesWithRecos = episodes
   .map((e) => e.data)
-  .filter((e) => recoCountByEp.has(e.guid))
   .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
 
 const ytThumb = (url?: string) => {
@@ -214,15 +216,20 @@ const jsonLd = [podcastSchema, breadcrumb];
       <div class="wrap">
         {/* C6 : heading explicite pour respecter la hiérarchie h1→h2. */}
         <h2 class="visually-hidden">{t('heading.episodesWithRecos')}</h2>
-        <ul class="ep-grid" id="ep-grid" aria-label="Épisodes avec recommandations">
+        <ul class="ep-grid" id="ep-grid" aria-label="Épisodes du podcast">
           {
             episodesWithRecos.map((e) => {
-              const thumb = ytThumb(e.youtubeUrl);
-              const epTitle = e.youtubeTitle ?? e.title;
+              // Miniature : vignette YouTube si dispo, sinon artwork Acast
+              // (imageUrl) — évite les cartes sans image (ex. Alice David #18).
+              const thumb = ytThumb(e.youtubeUrl) ?? e.imageUrl ?? null;
+              // Titre FRANÇAIS du flux (e.title) plutôt que le titre YouTube,
+              // parfois en anglais (ex. « A Good Time with BROUTE »).
+              const epTitle = e.title;
               const epLabelStr = epLabel(e);
               // Normalisation SSR (sans accents + lowercase) pour la recherche
-              // tolérante côté client. Cf. helper fuzzyMatch() dans le <script>.
-              const searchKey = `${epTitle} ${epLabelStr} ${e.title}`
+              // tolérante côté client. On garde le titre YouTube dans la clé
+              // pour rester trouvable par l'un ou l'autre libellé.
+              const searchKey = `${e.title} ${e.youtubeTitle ?? ''} ${epLabelStr}`
                 .normalize('NFD')
                 .replace(/[̀-ͯ]/g, '')
                 .toLowerCase();
@@ -251,7 +258,7 @@ const jsonLd = [podcastSchema, breadcrumb];
                     </div>
                     <div class="ep-meta">
                       <h3 class="ep-ttl">{epTitle}</h3>
-                      <span class="ep-cnt">{recoCountByEp.get(e.guid)} recos</span>
+                      <span class="ep-cnt">{recoCountByEp.get(e.guid) ?? 0} recos</span>
                     </div>
                   </a>
                 </li>

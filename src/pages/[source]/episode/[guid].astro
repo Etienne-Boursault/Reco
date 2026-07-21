@@ -18,12 +18,11 @@ export async function getStaticPaths() {
     const sRecos = recos.filter(
       (r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded',
     );
-    const guidsWithRecos = new Set(sRecos.map((r) => r.data.episodeGuid));
-    // Épisodes triés (saison, numéro) pour calculer prev/next stables.
+    // Retour utilisateur 2026-07-21 : on génère TOUS les épisodes de la source,
+    // même ceux sans reco validée (ex. #21 McFly & Carlito) — le catalogue y
+    // renvoie. La page gère le cas « aucune reco » (message dédié).
     const sEpisodes = episodes
-      .filter(
-        (e) => e.data.sourceId.id === source.id && guidsWithRecos.has(e.data.guid),
-      )
+      .filter((e) => e.data.sourceId.id === source.id)
       .sort((a, b) => {
         const sa = a.data.season ?? 0;
         const sb = b.data.season ?? 0;
@@ -55,9 +54,11 @@ const { source, episode, recos, prevGuid, nextGuid } = Astro.props;
 const data = source.data;
 
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
-const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+// Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl).
+const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : (episode.imageUrl ?? null);
 const epNum = episodeLabel(episode);
-const epTitle = episode.youtubeTitle ?? episode.title;
+// Titre français du flux plutôt que le titre YouTube (parfois en anglais).
+const epTitle = episode.title;
 
 // Répartition en 3 seaux pour la PRÉSENTATION de la page épisode (helper pur
 // testable). Décision produit (CR Story 4) : les œuvres d'invité·es restent
@@ -198,10 +199,14 @@ const jsonLd: Record<string, unknown>[] = [
     </div>
   </header>
 
-  {/* N4 : pas d'EmptyState ici — `getStaticPaths` ne génère QUE les épisodes
-     ayant ≥1 reco non-discarded (cf. `guidsWithRecos`), donc au moins un des
-     trois seaux est toujours non vide. Le composant EmptyState était mort. */}
   <main id="main" class="wrap">
+    {/* Retour utilisateur 2026-07-21 : on génère désormais TOUS les épisodes,
+       même sans reco → message dédié quand les trois seaux sont vides. */}
+    {recos.length === 0 && (
+      <p class="ep-empty">
+        Aucune recommandation extraite de cet épisode pour le moment.
+      </p>
+    )}
     {spontaneousRecos.length > 0 && (
       <section class="reco-section">
         <h2 class="sec-title">{t('episode.section.recommendations')} ({spontaneousRecos.length})</h2>
