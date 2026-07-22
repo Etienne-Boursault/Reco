@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre : le transcript rend « The Rear Soul », phonétique de « The Rehearsal » (Nathan Fielder, 2 saisons HBO Max) — correction confiante. Créateur à corriger : « Nathan Fielder » (pas « Nathan Fielding »). Recommandé par un host ou par l'invité Orelsan (« c'est Thomas Bangalter qui me l'a montré ») → attribution incertaine, recommendedBy vide (règle 3).",
     "reason": "Vraie prescription forte d'une œuvre réelle qui n'est PAS celle d'un invité : « il faut que vous regardez… je vous le conseille… il faudrait que tout le monde essaye » (série de Nathan Fielder, HBO Max).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Nathan Fielder",
