@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution manifeste ERRONÉE : c'est l'invité Orelsan qui répond (« t'as un dernier bouquin que t'as kiffé ? — En ce moment je suis dans Ken Follett, sa trilogie sur les cathédrales »), pas Kyan. Orelsan absent des métadonnées guests → recommendedBy vide (règle 3). Titre représentatif « The Pillars of the Earth » / « Les Piliers de la Terre » (1er tome de la trilogie de Kingsbridge) — OK.",
     "reason": "Œuvre réelle recommandée (« C'est vraiment pas mal », « c'est chanmé ») qui n'est PAS l'œuvre du locuteur → validate ; livre en cours de lecture.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ken Follett",

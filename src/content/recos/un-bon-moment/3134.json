@@ -5,6 +5,7 @@
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
     "reason": "Name-drop de Drive pour identifier le realisateur (Nicolas Winding Refn) dans une anecdote de fantome en Thailande ; pas de discussion du film (regle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "creator": "Nicolas Winding Refn",
@@ -24,11 +25,12 @@
     "anthropic"
   ],
   "id": "ubm-3134",
+  "kind": "citation",
   "links": [],
   "quote": "c'est le réalisateur de Drive, qui a un nom à prononcer, mais qui est trop fort.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:17:14",
   "title": "Drive",
   "transcriptSource": "youtube",

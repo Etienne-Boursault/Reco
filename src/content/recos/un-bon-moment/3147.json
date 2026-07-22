@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "« Authentique » (produit par Alain Chabat, « réalisé par Gat Buzzy » = nom manifestement mal transcrit) non vérifiable via WebSearch (budget épuisé) ; existence/orthographe à confirmer par l'humain.",
     "reason": "Mention instrumentale : anecdote illustrant le propos « essoufflé sur scène » (Joey Starr disant « j'ai plus de jambes »), discussion limitée à qui l'a réalisé/produit, aucune prescription ni avis sur l'œuvre (règle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
-  "creator": "Gat Buzzy",
+  "creator": "Get Busy",
   "episodeGuid": "6a47e41c08da053175fb135e",
   "extractionHistory": [
     {
@@ -28,15 +29,16 @@
     "anthropic"
   ],
   "id": "ubm-3147",
+  "kind": "citation",
   "links": [],
   "quote": "C'est réalisé par Alain Chabat, d'ailleurs, non ? Non, c'est produit par Alain Chabat, c'est réalisé par Gat Buzzy, je crois.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:26:33",
-  "title": "Authentique",
+  "title": "NTM Authentiques : Un an avec le suprême",
   "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "film"
   ]
 }

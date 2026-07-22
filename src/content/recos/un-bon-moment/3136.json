@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Metadonnees guests=[] alors que l'episode a 2 invites (Baptiste Lecaplain, Camille Lavabre). Serie presentee par un·e invite·e mais lequel/laquelle non tranchable (transcript non diarise) -> recommendedBy vide. Existence/auteur de « Peach » non verifiables (budget WebSearch epuise).",
     "reason": "Auto-promo par un·e invite·e de sa propre serie « Peach » (« j'ai une serie qui s'appelle Peach », « c'est une serie de mon genre », description de l'intrigue) (regles 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Parce que j'ai une série qui s'appelle Peach.",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:40:04",

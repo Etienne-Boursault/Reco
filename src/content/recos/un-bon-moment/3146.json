@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orelsan (Aurel) est clairement l'invité de l'épisode alors que les métadonnées listent guests:[] — à corriger côté épisode. « Comment c'est loin » est son film ; discuté ici en anecdote (le trou dans le canapé, l'ice tea au micro-ondes).",
     "reason": "Œuvre PASSÉE de l'invité (film d'Orelsan, 2015) évoquée en anecdote par un host qui apprécie une vanne précise, sans promo d'actualité → citation (règle 17).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6a47e41c08da053175fb135e",
@@ -43,7 +44,7 @@
     }
   ],
   "quote": "Il y avait une vanne dans le film Comment c'est loin que j'avais kiffé.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:23:40",
