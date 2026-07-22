@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Blackpink. La reco = 'le dernier album de Blackpink' (album precis non nomme) ; titre reduit au groupe. Attribution incertaine (personne allee au concert avec sa fille).",
     "reason": "Reponse a 'quelque chose a recommander ?' + endossement ('ils le font vraiment bien, c'est bien', vu en concert).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "Blackpink",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractionHistory": [
     {
@@ -62,10 +64,11 @@
     }
   ],
   "quote": "En ce moment-là, j'écoute... Le dernier album de Blackpink, du coup.",
+  "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:29:02",
-  "title": "Blackpink",
+  "title": "Deadline",
   "transcriptSource": "youtube",
   "types": [
     "autre",

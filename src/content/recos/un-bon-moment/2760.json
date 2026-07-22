@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe du nom incertaine : 'Izzet' (YT) vs 'Izut' (Acast). WebSearch epuise. Le doublon Acast discarde ubm-0763 portait un lien Deezer (track/3856161211) utile pour identifier l'artiste.",
     "reason": "Recommandation explicite d'Haroun en fin d'episode ('Tu recommandes ce que tu veux') : 'J'ai decouvert la chanteuse Izzet, que j'adore... Donc je la recommande' (00:59:09), entre chanson et rap, chanson 'Encore'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
@@ -45,7 +46,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:13",
-  "title": "Izzet",
+  "title": "Yseult",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

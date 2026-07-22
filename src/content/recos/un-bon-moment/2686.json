@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre « Un jour je suis ne depuis j'improvise » non verifiable (budget WebSearch epuise) ; presence dans le transcript confirmee mais nature d'oeuvre distincte incertaine.",
     "reason": "A 01:44:58, name-drop dans la liste merch de l'outro, presente comme un projet des hosts (aux cotes de Bref/Serge/Bloque).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
@@ -32,7 +33,7 @@
   "quote": "et plein d'autres choses autour de Bref, Serge, Bloqué, Un jour je suis né depuis j'improvise.",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:44:58",
   "title": "Un jour je suis né depuis j'improvise",
   "transcriptSource": "youtube",

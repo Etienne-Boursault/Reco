@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE du cluster Théo Babac (doublons discardés: 1113, 1152). « suivez Théo Babac sur TikTok, il est très drôle » (01:31:52) = reco explicite => validate. Nom depuis le transcript youtube (propre) ; handle TikTok exact non confirmable (WebSearch épuisé) => title_suspect léger. Locuteur = même hôte que la reco surendettement (enchaînement continu), Kyan vs Navo indéterminable => recommendedBy vidé + attribution_suspect.",
     "reason": "Recommandation explicite fin d'émission; attribution hôte ambiguë",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Théo Babac",
@@ -55,6 +56,7 @@
     }
   ],
   "quote": "suivez Théo Babac sur TikTok, il est très drôle",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:31:52",

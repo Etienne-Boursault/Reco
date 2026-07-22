@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Budget WebSearch epuise (200/200) : impossible de confirmer que 'Rire pour ne pas pleurer' est un livre reel de J.-M. Bigard. Echange philosophique semi-serieux ; risque d'artefact (reprise de la phrase 'rire pour ne pas pleurer' du dialogue). Reste draft, a confirmer par un humain avec acces web ; si reel, plutot une citation.",
     "reason": "Attribue a Bigard ('c'est le livre de Bigard, hein? Je te signale', 01:08:12-01:08:28) mais titre non verifiable.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Jean-Marie Bigard",
@@ -47,13 +48,14 @@
     "openai"
   ],
   "id": "ubm-0594",
+  "kind": "citation",
   "links": [],
   "quote": "C'était le livre de Bigard.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:08:22",
-  "title": "Rire pour ne pas pleurer",
+  "title": "Rire pour ne pas mourir",
   "transcriptSource": "youtube",
   "types": [
     "livre"

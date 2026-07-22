@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour la reco de Florent Bernard. Titre incertain (transcript hesite 'Mea'/'Mia'/'Mister Mea') ; WebSearch epuise -> title_suspect, verifier orthographe (probablement 'Mr Mea'). Invite non liste dans guests.",
     "reason": "Recommandation explicite de Flaubert (Florent Bernard) dans le segment 'recommandez une chaine YouTube que vous kiffez' : chaine d'analyses de films et d'histoires de production (01:15:55-01:16:38).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "MrMeea",
@@ -46,6 +47,12 @@
       "kind": "official",
       "label": "Chaîne YouTube Meeea",
       "url": "https://www.youtube.com/channel/UCEEi1rclmzywXicV7JfPjWw"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Meeea"
     }
   ],
   "quote": "Moi c'est un gars qui s'appelle Mea",

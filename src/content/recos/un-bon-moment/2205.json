@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre = artefact de nom de fichier lu par Eddy (« ca s'appelle Odevi Vdef Max Mix », vdef = version definitive). Piste feat. Odevi de l'album prototype d'Eddy (00:01:01). Titre reel intracable => reste draft. Oeuvre d'invite (Eddy de Pretto) si un vrai titre est confirme.",
     "reason": "Titre = artefact de nom de fichier lu par Eddy; titre reel intracable.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Odevi",
+  "creator": "Eddy de Pretto",
   "episodeGuid": "6599c1b296596600156961a7",
   "extractionHistory": [
     {
@@ -28,13 +29,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2205",
+  "kind": "reco",
   "links": [],
   "quote": "ça s'appelle Odevi Vdef Max Mix.",
+  "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:01:01",
-  "title": "Odevi Vdef Max Mix",
+  "title": "Eau de vie",
   "transcriptSource": "youtube",
   "types": [
     "musique"

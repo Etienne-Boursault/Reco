@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "creator 'Cédric Clapichon' = artefact ASR -> Cédric Klapisch. Court-métrage étudiant (peu/pas de fiche externe).",
     "reason": "Court-métrage de Klapisch (réalisé à New York, montré en festivals, primé), présenté par lui -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Cédric Clapichon",
+  "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "extractionHistory": [
     {
@@ -40,7 +41,7 @@
   ],
   "guestWork": true,
   "id": "ubm-2332",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -56,7 +57,7 @@
     }
   ],
   "quote": "j'avais fait un court-métrage In Transit.",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:13",

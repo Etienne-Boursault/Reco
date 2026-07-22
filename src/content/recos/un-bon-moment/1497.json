@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "creator exact = 'Fanny Ruwet' (et non 'Fanny Ruet') ; ne pas confondre avec l'invitée Fanny La Panny. Locuteur incertain. Doublons 0411 et 0991 discardés.",
     "reason": "'Bien sûr que les poissons ont froid' de Fanny Ruwet (roman, 2023) recommandé ('un roman... je l'ai écouté en livre audio, c'est super'). Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Fanny Ruet",
+  "creator": "Fanny Ruwet",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -73,6 +74,7 @@
     }
   ],
   "quote": "Moi, je l'ai écouté aussi en livre audio. Et c'est super.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:27:04",

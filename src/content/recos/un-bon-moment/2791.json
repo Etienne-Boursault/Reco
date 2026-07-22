@@ -10,8 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "'Cher Journal' - programme que Laura a produit, ou Cedric a joue. Titre non verifiable (pas de web). Laura Felpin manque dans episode.guests.",
     "reason": "Oeuvre produite par Laura Felpin citee en anecdote a propos de Cedric, avec avis leger ('tres bon programme').",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
+  "creator": "Anna Apter",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -38,7 +40,7 @@
     }
   ],
   "quote": "il a joué dans le Cher Journal",
-  "recommendedBy": "Laura Felpin",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:05",

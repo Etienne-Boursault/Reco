@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre + createur a corriger par un humain (transcript non fiable, verif web impossible). Une fois corrige = validate (reco publique explicite).",
     "reason": "Vraie reco d'un sketch ('allez le voir sur YouTube, il est genial, incroyable, les timings sont fous'), mais le createur est corrompu dans le transcript ('Edouard Berdiadonne', extracteur a propose 'Edouard Baer') et le titre 'Skatfall 2003/2004' est un artefact non verifiable (web indispo). Sketch decrit: biographe de Michel Leeb, il jette le bouquin. A verifier/corriger avant publication. Canonique du groupe (doublon 2426).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Édouard Baer & Dieudonné",
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
   "extractionHistory": [
     {
@@ -29,10 +31,11 @@
   "id": "ubm-2415",
   "links": [],
   "quote": "Edouard Berdiadonné, allez le voir sur YouTube.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:02:54",
-  "title": "Édouard Baer",
+  "title": "Le grand débat",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

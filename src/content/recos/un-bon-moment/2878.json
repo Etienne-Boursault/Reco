@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe incertaine (« Louis Chappey » probable). Premiere partie de Jason. Canonique (doublon Acast ubm-1115 discarde). Invite Jason absent des metadonnees.",
     "reason": "Humoriste cite par Jason parmi ses premieres parties (« tu as des artistes que tu recommandes ») ; name-drop sans presentation developpee.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Louis Chappé",
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -59,7 +59,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:30:51",
-  "title": "Louis Chappé",
+  "title": "Louis Chappey",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

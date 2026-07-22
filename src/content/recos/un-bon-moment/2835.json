@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger: «Lisa Delmoitiez» (comedienne belge, co-autrice du podcast «Imagine» avec Fanny Ruwet). «Elisadelle/Isadele Moitie» = artefact phonetique. Une fois corrige: verdict validate, recommendedBy Fanny Ruwet (qui bosse avec elle).",
     "reason": "Recommandation reelle et prescriptrice d'une artiste ('cette meuf c'est le futur', 'petit genie', 'des vannes que j'aurais aime ecrire'), mais titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "61c5abab76bee100120dd720",
@@ -28,11 +29,12 @@
     "anthropic"
   ],
   "id": "ubm-2835",
+  "kind": "citation",
   "links": [],
   "quote": "Isadèle Moitié, je ne connais pas vraiment. Je ne connais pas encore. Elle n'a pas encore joué en France. Là, elle prépare son une heure en Belgique. Mais cette meuf, c'est le futur quoi.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:29:43",
   "title": "Elisadelle Moitié",
   "transcriptSource": "youtube",

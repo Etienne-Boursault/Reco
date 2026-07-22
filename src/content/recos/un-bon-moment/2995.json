@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre ASR faux a corriger avant publication (titre reel de la chanson-duo de VD non retrouve). Verdict vise: guest-work. Canonique du couple ; ubm-0850 = doublon.",
     "reason": "Chanson de VD (invite) nommee pour illustrer 'le moment Vincent Delerm' — guest-work sur le fond, mais titre garble par l'ASR et non confirme par WebSearch (duo, feat. incertain).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Vincent Delerme, Benjamin Violet",
@@ -42,7 +43,7 @@
   "links": [],
   "quote": "C'est le titre.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:15:36",
   "title": "Il est trop tard, on frappe à l'amour",
   "transcriptSource": "youtube",

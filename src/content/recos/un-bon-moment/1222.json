@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe incertaine ('Tani' ; possiblement Tahnee ?) a verifier. Laura Domenge absente du champ guests de l'episode.",
     "reason": "Section explicite 'recommandez un jeune humoriste qu'on booste' ; Laura repond directement 'Ouais j'aime bien. Tani.' = recommandation prescriptive d'une humoriste.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "633b305f3ca1cc001201a861",
@@ -67,7 +68,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:00",
-  "title": "Tani",
+  "title": "Tahnee",
   "transcriptSource": "youtube",
   "types": [
     "autre",

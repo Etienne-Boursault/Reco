@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "guests[] de l'episode vide : invite reel = Roman Frayssinet (guest_missing). Orthographe artiste non verifiable (transcript « Nassim Vibes » vs reco « Nacim Vibes »), budget web epuise -> title_suspect.",
     "reason": "L'invite Roman Frayssinet recommande explicitement, sur demande (« un artiste que tu as envie que les gens aillent suivre ») : « je conseille aux gens d'aller ecouter Nymphomaniac. C'est lourd. » Oeuvre tierce (l'artiste n'est pas Roman) -> validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Nacim Vibes",
+  "creator": "Nassím",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "extractionHistory": [
     {

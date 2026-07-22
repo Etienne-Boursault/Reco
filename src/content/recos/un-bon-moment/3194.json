@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe « Alphie » a confirmer. Recommande par un hote du Floodcast (« je l'ai deja conseille dans un floodcast ») puis apprecie par Navo -> locuteur exact incertain. Doublon ubm-0612 discarde.",
     "reason": "Segment final « recommandation de chaine YouTube » : reco sincere d'un createur externe (monteur/analyste) - « je vous conseille », « j'aime beaucoup ce qu'il fait, n'hesitez pas a vous abonner ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
@@ -38,6 +39,7 @@
     }
   ],
   "quote": "Alphi moi je trouve que c'est un gars en fait qui fait des... Je crois que c'est un monteur à la base.",
+  "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:44:26",

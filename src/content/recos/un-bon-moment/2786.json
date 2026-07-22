@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco = « La Dernière » ; le transcript dit « Le dernier, la dernière » (00:33:54, 00:46:04). Orthographe/forme canonique non vérifiable (WebSearch épuisé).",
     "reason": "Morceau de l'album (« Le dernier, la dernière, où on va vraiment toucher le fond ensemble », 00:46:04). Titre d'invité/host = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",
@@ -47,7 +48,7 @@
   "quote": "la Dernière, où on va vraiment la toucher le fond ensemble.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:46:08",
   "title": "La Dernière",
   "transcriptSource": "youtube",

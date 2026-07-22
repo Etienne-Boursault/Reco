@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre probablement artefact de transcription ('This Is'/'DC'). Intracable : reste draft, a verifier a la main.",
     "reason": "'Allez, Melodrama avec Theodora et This Is/DC' jete rapidement quand on demande a Maxime s'il ecoute de la musique ; Maxime repond 'j'ecoute pas de musique'. Oeuvre 'Melodrama' non tracable (Theodora artiste reelle mais ce titre/collab non confirme). WebSearch epuise.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Théodora et DC",
+  "creator": "Théodora et Disiz",
   "episodeGuid": "699968af0e5c959d5971943f",
   "extractionHistory": [
     {
@@ -31,9 +32,9 @@
   "links": [],
   "quote": "Elle est Mélodrama avec Théodora et DC.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:28:03",
-  "title": "Mélodrama",
+  "title": "Melodrama",
   "transcriptSource": "acast",
   "types": [
     "musique"

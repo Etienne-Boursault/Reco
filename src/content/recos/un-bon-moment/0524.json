@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Existence de l'album 'Karma' non confirmable dans ma base (sortie possiblement posterieure a janv. 2026 ; WebSearch epuise) -> title_suspect. Attribution Bigflo & Oli explicite dans le transcript.",
     "reason": "Album 'Karma' de Bigflo & Oli, coup de coeur explicite de Kyan : 'c'est pas mon album prefere de Bigflo & Oli, c'est dans mes albums preferes tout court' (00:30:56).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bigflo & Oli",
@@ -81,7 +82,7 @@
     }
   ],
   "quote": "C'est pas mon album préféré de Big Flo Oli, c'est dans mes albums préférés, tout court.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:30:56",

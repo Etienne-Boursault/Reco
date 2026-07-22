@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Le spectacle recommandé est explicitement « en noir et blanc sur Netflix » (01:46:10) = Bill Burr « I'm Sorry You Feel That Way » (2014, N&B), et NON « Walk Your Way Out » (2017, en couleur). Corriger le titre puis valider. Attribution incertaine (Kyan ou Manu). Canonique du sujet Bill Burr ; doublons discardés : 2397, 2402.",
     "reason": "Bill Burr fortement recommandé (« découvrir Bilbeur », « meilleur comique du monde », 01:46-01:48) — reco au fond valide, MAIS titre à corriger avant publication (artefact/erreur).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Bill Burr",
@@ -33,9 +34,9 @@
   "quote": "Découvert à Bill Beurre, le spectacle sur Netflix lequel ? En noir et blanc ? Bah le mieux pour moi c'est le noir et blanc.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:46:04",
-  "title": "Bill Burr: Walk Your Way Out",
+  "title": "I'm Sorry You Feel That Way",
   "transcriptSource": "acast",
   "types": [
     "spectacle"

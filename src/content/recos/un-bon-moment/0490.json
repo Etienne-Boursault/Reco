@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Spectacle, avec Marie-Julie Baup et Thierry Lopez (creator du fichier 'Marie-Julie Bope' a corriger en 'Baup'). Attribution incertaine (meme intervenant qui tourne 'Claude' a Strasbourg).",
     "reason": "Reco explicite : 'je recommande la piece Oublie-moi qui est juste exceptionnelle' (01:36:47).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Marie-Julie Bope, Thierry Lopez",
+  "creator": "Matthew Seager",
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractionHistory": [
     {
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "Je recommande la pièce Oublie-moi qui est juste exceptionnelle avec Marie-Julie Baup et Thierry Lopez.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:36:49",

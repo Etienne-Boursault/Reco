@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe non confirmee par recherche web. Passage 01:11:55.",
     "reason": "Section 'recommandez un jeune humoriste' ; 'Charlie Soignon, ah qui est pas mal'. Recommandeur invite non identifie.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "633b305f3ca1cc001201a861",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:55",
-  "title": "Charlie Soignon",
+  "title": "Shirley Souagnon",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

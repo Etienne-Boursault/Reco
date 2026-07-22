@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre incertain : 'Le Petit Debat, je crois' (00:22:42) — le locuteur lui-meme doute. Creator Charles Nouveau (tiers, pas l'invite -> validate et non guest-work). WebSearch epuise pour verifier le titre exact.",
     "reason": "Programme pilote de Charles Nouveau (trois enfants qui reagissent sur des sujets de societe), refuse par la TV. Endosse par les hotes ('super bonne idee') et Kyan invite a le soutenir ('soutenez le projet de Charles', 00:24:36).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Charles Nouveau",
@@ -38,7 +39,7 @@
     "openai"
   ],
   "id": "ubm-2756",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -54,7 +55,7 @@
     }
   ],
   "quote": "Comment ça s'appelle ? Le Petit Débat, je crois.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:22:42",

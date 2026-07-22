@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "À corriger : titre « Le Fil » / creator « Camille ». Cible : citation, recommendedBy Grand Corps Malade.",
     "reason": "Artefact titre : « Camille Lefil » = fusion de l'artiste « Camille » et de son album « Le Fil » (2005, vérifié) construit sur une seule note (bourdon) — colle exactement à la discussion 'mélodie à une note'. GCM le cite comme album « génial » inspirant sa méthode (chantonner).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Camille Lefil",
+  "creator": "Camille",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "extractionHistory": [
     {
@@ -28,13 +29,14 @@
     "openai"
   ],
   "id": "ubm-2514",
+  "kind": "citation",
   "links": [],
   "quote": "Je l'ai sur Spotify, j'ai même pas trouvé. C'est cet album où vraiment, on a l'impression qu'elle avait des mélodies en sortant de sa douche.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:13:28",
-  "title": "Camille Lefil",
+  "title": "Le Fil",
   "transcriptSource": "youtube",
   "types": [
     "autre"

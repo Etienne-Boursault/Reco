@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre 'S'amuser en dessinant' non verifiable (budget WebSearch epuise) ; les auteurs sont hesitants dans le transcript ('deux mecs'). A confirmer cote humain.",
     "reason": "Pénélope decrit et recommande un livre de dessin offert par Anna Apter ('il est super bien', 00:18:44), sur le dessin expressif (donner des humeurs/visages plutot que bien dessiner). Reco substantielle d'un livre tiers (pas son oeuvre).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
@@ -32,7 +33,7 @@
   "quote": "Anna Apter, que je salue, m'avait offert à l'époque parce qu'elle dessine du feu de Dieu... elle m'avait offert un livre de deux mecs que tu dois connaître, moi je suis assez nulle, j'ai pas trop de rêve, qui était \"S'amuser en dessinant\"",
   "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:18:38",
   "title": "S'amuser en dessinant",
   "transcriptSource": "youtube",

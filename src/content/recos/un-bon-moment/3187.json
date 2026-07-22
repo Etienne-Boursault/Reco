@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : probablement « 2 Heures de Perdues » (WebSearch indispo, budget epuise). Locuteur probablement Florent Bernard (narration de l'origine du live Bataclan), a confirmer.",
     "reason": "Podcast externe (createur Antoine, non present) prescrit : « un podcast tres connu en France. Tres bon podcast, allez voir. »",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Antoine Ramblamjilio",
@@ -45,11 +46,11 @@
     }
   ],
   "quote": "Très bon podcast, allez voir.",
-  "recommendedBy": "Florent Bernard",
+  "recommendedBy": "Florent Bernard & Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:28:25",
-  "title": "Deux heures de perdu",
+  "title": "2 heures de perdues",
   "transcriptSource": "youtube",
   "types": [
     "podcast"

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reste draft: titre-artefact intracable, non verifiable (budget WebSearch epuise). Dit par Kyan. Canonique du doublon (ubm-2239 discard).",
     "reason": "Reco explicite d'un livre ('je vais vous proposer les gars... magnifique livre... Les 100 meilleures blagues de Carlos') a 01:18:34, mais ouvrage non identifiable (transcript garbled 'c'est pas la coinite zaurus'; recueil de blagues d'humoristes americains: Chris Rock, Alan Carr...).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Carlos",
@@ -32,7 +33,7 @@
   "quote": "J'ai un magnifique livre de blagues d'auteur américain, il s'appelle Les 100 meilleures blagues de Carlos.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:18:34",
   "title": "Les 100 meilleures blagues de Carlos",
   "transcriptSource": "youtube",

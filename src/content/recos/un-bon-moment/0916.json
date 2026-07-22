@@ -11,8 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre réel : « Laura Felpin » (humoriste ; transcript [01:03:28] « Et Laura Felpin, elle est encore en tournée… l'Olympia en janvier »). Non extraite du YouTube ; seul ce garble Acast (« l'horreur fêle peint ») l'a captée. Même recommandateur invité que ubm-2410 (« j'ai adoré les deux »), indéterminé. Invités absents de guests[].",
     "reason": "Reco réelle (Laura Felpin), 2e des deux Lauras adorées.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "Laura Felpin",
   "episodeGuid": "65241146d963060012045fb6",
   "extractionHistory": [
     {
@@ -45,10 +47,11 @@
     }
   ],
   "quote": "l'horreur fêle peint j'ai adoré les deux",
+  "recommendedBy": "Laurie Peret",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:13",
-  "title": "L'Horreur fêle peint",
+  "title": "Ça passe",
   "transcriptSource": "acast",
   "types": [
     "spectacle"

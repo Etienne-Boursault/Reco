@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par l'invite ayant fait de la radio sketchs sur Couleur 3 avec 'Marina et Thomas' (Rollman/Wiesel) : probablement Alexandre Kominek, non verifiable (budget WebSearch epuise) -> recommendedBy vide. Orthographe exacte du titre non verifiable (WebSearch epuise). guests episode vides.",
     "reason": "Canonique de l'emission de sketchs Couleur 3 recommandee explicitement par un invite ('que je vous invite a regarder', 00:57:54). Ce n'est PAS l'oeuvre de l'invite (faite par d'anciens collegues suisses), donc validate et non guest-work.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Couleur 3",
@@ -56,10 +57,11 @@
     }
   ],
   "quote": "c'est toute une bande du Maurice Suisse qui font de la radio et qui font vraiment des sketchs vidéos",
+  "recommendedBy": "Alexandre Kominek",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:54",
-  "title": "Bon Bain Voilà",
+  "title": "Bon bah Voilà",
   "transcriptSource": "youtube",
   "types": [
     "video",

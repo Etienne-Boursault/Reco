@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Auto-promo du spectacle filme de Kyan vendu sur la boutique ; 'Mon Spectacle' = placeholder, identifier le vrai titre avant publication.",
     "reason": "Pre-generique : Kyan fait la promo de son propre spectacle filme vendu sur 'la bonne boutique' ('l'emission est sponsorisee par Mon Spectacle... vous pouvez louer pour 4 balles'). Auto-promo d'un host (guest-work) MAIS le titre 'Mon Spectacle' est un placeholder generique, pas le vrai titre.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Kyan Khojandi",
@@ -32,9 +33,9 @@
   "quote": "l'émission, elle, elle est sponsorisée par Mon Spectacle qui est dispo sur une bonne boutique",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:00:27",
-  "title": "Mon Spectacle",
+  "title": "Une bonne soirée",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

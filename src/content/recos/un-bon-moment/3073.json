@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Parodie de Game of Thrones ('inspiré de Parks and Recs et The Office') réalisée par Yassine, où joue Baptiste (invité). Existence/orthographe exacte NON vérifiables via web (budget WebSearch épuisé pour la session) — titre cohérent dans le transcript.",
     "reason": "Rôle/œuvre de l'invité Baptiste Lecaplain, discuté avec substance et loué : 't'as fait le trône des frogs... c'est ton meilleur rôle... c'est toi qui la joue... trop bien joué, tenu de A à Z' (00:34 et 01:29). Auto-promo d'invité malgré la modestie ('c'est Yassine') → guestWork (règle 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Yacine Belhousse",
@@ -42,6 +43,12 @@
       "kind": "info",
       "label": "SensCritique",
       "url": "https://www.senscritique.com/serie/Le_Trone_des_Frogz/23192422"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLlVA7AZDgPeTu_ylEYpvbJBTnLLRHNb9N"
     }
   ],
   "quote": "Moi, j'ai fait le Trône des Frogs. C'est incroyable.",

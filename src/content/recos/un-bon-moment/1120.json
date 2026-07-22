@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe auteurs et existence de la BD non verifiables (budget WebSearch epuise 200/200). Auteurs cites a l'oral : « Yacine Bellouz et Ben Renaud ».",
     "reason": "Reco explicite : « je recommande 'Le mode d'emploi de tout' de Yacine Bellouz et Ben Renaud. C'est une BD tres marrante » (01:02:34).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Yassine Bellous, Ben Renault",
+  "creator": "Yacine Belhousse & Ben Renaut",
   "episodeGuid": "6322de1f35ce9e001229f98a",
   "extractionHistory": [
     {
@@ -63,7 +64,7 @@
     }
   ],
   "quote": "Moi, je recommande 'Le mode d'emploi de tout' de Yacine Bellouz et Ben Renaud.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:34",

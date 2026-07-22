@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Jain (0903, 1105, 2801, 2802 = doublons). Artiste = Jain (Jeanne Galice); album probable Zanaka (contient Makeba) ou The Fool (2023). Titre 'Jane' -> 'Jain'. Recommandeur = un hote ou Laura, incertain -> recommendedBy vide.",
     "reason": "Recommandation explicite 'Moi je recommande l'album de Jane [Jain]' (01:15:12).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Jane",
+  "creator": "Jain",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -45,10 +46,11 @@
     }
   ],
   "quote": "Moi, je recommande l'album de Jane.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:15",
-  "title": "album de Jane",
+  "title": "The Fool",
   "transcriptSource": "youtube",
   "types": [
     "album"

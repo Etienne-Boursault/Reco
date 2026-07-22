@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre obscure/entre-soi (realisee par Alfie, monteur de l'emission). Realite/findabilite non verifiable (budget WebSearch epuise). Reco neanmoins explicite dans le segment recommandations.",
     "reason": "Reco explicite de Navo a 01:04:16 en reponse a 'T'as quelque chose a recommander Navo?' : 'Ouais, Pensez futile'. Oeuvre realisee par Alfie, le monteur de l'emission.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Navo",
+  "creator": "Lou Howard",
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "extractionHistory": [
     {
@@ -48,13 +49,20 @@
   ],
   "id": "ubm-0801",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=xkID7m4Kzf8"
+    }
+  ],
   "quote": "Pensez futile.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:16",
-  "title": "Pensez Futile",
+  "title": "Pensées futiles",
   "transcriptSource": "youtube",
   "types": [
     "autre"

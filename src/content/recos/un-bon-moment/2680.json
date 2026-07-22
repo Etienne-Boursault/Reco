@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Appli type EpicWin, identite incertaine. Reste draft pour arbitrage humain.",
     "reason": "A 00:38:48, Navo evoque une appli to-do gamifiee (heros en pixels qui gagne des boucliers) qu'il utilisait puis a abandonnee (« maintenant je le fais juste sur note »). Nom non tranche a l'antenne : « c'etait epic... epic to do... epic quelque chose ». Avis positif mais anecdotique/instrumental a la discussion sur les to-do lists.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
@@ -41,7 +42,7 @@
   "quote": "c'était epic quelque chose",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:38:48",
   "title": "Epic To Do",
   "transcriptSource": "youtube",

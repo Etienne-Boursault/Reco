@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE du cluster Capucine (doublons discardés: 1111, 1151, 1153, 1201, 2867). Recommandation du premier spectacle de « Capucine la ventriloque » (artiste DarkSmile / darksmile.fr, prod. de Jérémy Ferrari), ~01:30:52. Titre exact du spectacle non vérifiable (WebSearch épuisé) => title_suspect. Locuteur = un hôte (vanne « le spectacle de sa mère » au 3e pers. sur Jérémy) mais Kyan vs Navo indéterminable (pas de diarisation) => recommendedBy vidé + attribution_suspect.",
     "reason": "Recommandation fin d'émission d'une artiste DarkSmile; attribution hôte ambiguë",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61cb19444f2d030012ddd82a",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:31:11",
-  "title": "Spectacle de Capucine la ventriloque",
+  "title": "Le cas Pucine",
   "transcriptSource": "acast",
   "types": [
     "spectacle"

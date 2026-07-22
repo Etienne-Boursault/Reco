@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco = « Solaï Nuit » ; le transcript écrit « Soleil Nuit ». Orthographe canonique non vérifiable (budget WebSearch épuisé).",
     "reason": "Morceau de l'album (Mathilda au chant, Damien Gouzou à la batterie, 00:56:19→00:56:45). Titre d'invité/host = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",
@@ -50,7 +51,7 @@
   "quote": "la batterie j'ai fait jouer un copain qui s'appelle Damien Gouzou",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:56:40",
   "title": "Solaï Nuit",
   "transcriptSource": "acast",

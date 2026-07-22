@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript garble le titre en 'The Rire Soul' ; reconstruit 'The Rehearsal' via Nathan Fielder + concept. A verifier.",
     "reason": "Show de Nathan Fielder 'que j'aime beaucoup... c'est genial, j'adorerais qu'en France on puisse faire ce genre de truc'. Concept = 'The Rehearsal' (HBO). Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Nathan Fielder",
@@ -59,6 +60,7 @@
     }
   ],
   "quote": "The Rire Soul que j'aime beaucoup, vous connaissez peut-être Adam, avec Nathan Fielder, c'est génial",
+  "recommendedBy": "Freddy Gladieux",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:53:18",

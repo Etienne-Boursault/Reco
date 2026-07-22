@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Cite par Jason parmi ses premieres parties (00:30:55). A identifier avant publication.",
     "reason": "Nom « John Souleau » transcrit de facon deformee et non identifiable par recherche : impossible de confirmer l'artiste reel avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "John Souleau",
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -40,11 +40,11 @@
   "id": "ubm-2879",
   "links": [],
   "quote": "beaucoup John Souleau",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:30:55",
-  "title": "John Souleau",
+  "title": "John Sulo",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre réel = 'Ni pour ni contre (bien au contraire)' (2003, Klapisch). Quote actuelle ('c'était naze mais ça apprend') = artefact (concerne l'atelier d'acteurs). Vrai passage ~00:50:00 et ~01:09:53. À publier en guest-work une fois corrigé.",
     "reason": "Guest-work de Klapisch mais titre méconnaissable et quote hors-sujet: à corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Cédric Klapisch",
@@ -30,13 +31,14 @@
     "openai"
   ],
   "id": "ubm-0925",
+  "kind": "citation",
   "links": [],
   "quote": "en fait c'était naze mais ça apprend",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:53:00",
-  "title": "Nippon et Compte",
+  "title": "Ni pour ni contre (bien au contraire)",
   "transcriptSource": "acast",
   "types": [
     "film"

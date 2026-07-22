@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Doublon ubm-2501 (marque WEIM, meme reco) -> discard. Orthographe « Melly Hirtz » non verifiable (budget WebSearch epuise). Locuteur (« amie qui fait mes sacs ») non determinable avec certitude.",
     "reason": "Reco explicite d'une amie photographe : « Allez voir un peu » (01:21:40) ; elle fait aussi des sacs (marque WEIM).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Melly Hirtz",
@@ -42,10 +43,11 @@
   "kind": "reco",
   "links": [],
   "quote": "Melly Hirtz et elle fait des sacs qui s'appellent la marque Weim.",
+  "recommendedBy": "Barbara Biancardini",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:36",
-  "title": "Melly Hirtz",
+  "title": "Melie Hirtz",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

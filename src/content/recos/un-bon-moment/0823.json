@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Rebond d'un autre locuteur dans le tour de table ('moi j'en ai une') : attribution indeterminable -> vide. Orthographe/existence exacte non verifiables (WebSearch epuise), nom generique.",
     "reason": "Reco explicite d'une chaine YouTube ('moi j'en ai une c'est une chaine YouTube qui s'appelle Awesome Restorations', restauration d'objets/ASMR, 01:10:13).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "autre",
@@ -45,9 +46,16 @@
       "kind": "streaming",
       "label": "Chaîne YouTube Awesome Restorations",
       "url": "https://www.youtube.com/channel/UCsCCifMby57qV_UmrYGladQ"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@AwesomeRestorations"
     }
   ],
   "quote": "moi j'en ai une c'est une chaîne YouTube qui s'appelle Awesome Restorations",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:10:11",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe « Camille Fievez » non verifiable (budget WebSearch epuise). Reco explicite par Kyan confirmee dans le transcript.",
     "reason": "Artiste (actrice/autrice/stand-up) recommandee par Kyan dans la meme phrase de cloture que Babor ([01:16:20] « Ainsi que Camille Fievez, qui est actrice et autrice aussi, qui fait du stand-up » ; [01:16:28] « allez suivre ca »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
@@ -57,7 +58,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:16:26",
-  "title": "Camille Fiévez",
+  "title": "Camille Fievez",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

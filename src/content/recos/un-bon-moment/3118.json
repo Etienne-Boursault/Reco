@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom 'Adèle Fougazi' non vérifiable (WebSearch épuisé) — orthographe et identité à confirmer (genre incertain : 'il est tellement bon'). Reco émanant de Thomas Deseur (invité absent des métadonnées).",
     "reason": "Artiste (humoriste) évoqué avec admiration ('il est tellement bon, j'oublie que je suis humoriste') mais sans prescription d'une œuvre précise ; segment d'admiration entre pairs.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Adel Fugazi",
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "Et il n'y a pas longtemps, j'ai vu Adèle Fougazi. Et j'ai eu ce truc de... il est tellement bon que...",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:38:34",

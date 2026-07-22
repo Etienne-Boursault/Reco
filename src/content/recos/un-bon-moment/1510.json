@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "« La Magnifique Legende » introuvable en ligne ; verifier s'il s'agit d'un vrai ouvrage/format d'Olicard avant publication. Si reel -> guest-work (recommendedBy Fabien Olicard).",
     "reason": "Un host dit « je l'adore... la magnifique legende de Fabien Olicard » (oeuvre de l'invite -> guest-work potentiel), mais aucun livre de ce titre dans la bibliographie de Fabien Olicard. Titre a verifier.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Fabien Olicard",
@@ -41,7 +42,7 @@
   "quote": "je l'adore en plus la magnifique légende de Fabien Olicard",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:47:18",
   "title": "La Magnifique Légende de Fabien Olicard",
   "transcriptSource": "youtube",

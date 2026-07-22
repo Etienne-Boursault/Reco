@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Attribution : le tour de Navo porte sur 'Le Coeur sur la table' et celui de Marina sur Delphine de Vigan ; par elimination l'artiste = tour d'Alex Ramires (invitee absente de guests), mais non certain -> attribution_suspect. Orthographe artiste probablement 'Kwamie Liv' (non verifiable, WebSearch epuise) -> title_suspect.",
     "reason": "Segment recos explicite ('Un artiste a recommander') : 'Kwami Liv, une chanteuse... son nouveau single Take Me Back... je suis en obsession sur ce clip et cette chanson'. Reco explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Kwami Liv",
+  "creator": "Kwamie Liv",
   "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractionHistory": [
     {
@@ -69,7 +70,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:01:21",
-  "title": "Take Me Back",
+  "title": "Take It Back",
   "transcriptSource": "youtube",
   "types": [
     "musique"

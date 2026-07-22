@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe du nom incertaine : le transcript donne 'Ratheville' [01:14:13] puis 'Ratioville' [01:15:26] ; la fiche 1171 dit 'Ratieville'. WebSearch epuise (200/200 session) -> non verifie. Doublons discardes : ubm-1171 (Acast), ubm-2163 (YT).",
     "reason": "Reco d'invite explicite : Waly Dia recommande un jeune humoriste 's'il y a des gens que je vous invite a aller voir... des spectacles qui peuvent transformer une petite partie de ta vie' [01:15:10-01:15:26]. Il recommande un TIERS (pas son oeuvre) -> validate, recommendedBy = Waly Dia. Canonique de la reco Quentin (types spectacle+artiste, porte la prescription).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "65c7a2673210d00017783f8b",
@@ -60,7 +61,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:10",
-  "title": "Quentin Ratioville",
+  "title": "Quentin Ratieuville",
   "transcriptSource": "youtube",
   "types": [
     "spectacle",

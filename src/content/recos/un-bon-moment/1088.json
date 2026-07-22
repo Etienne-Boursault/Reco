@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Créateur à corriger 'Milan Shapiro' -> 'Mai Lan Chapiron'. Le recommandeur dit 'il paraît que c'est dingue' mais prescrit quand même. Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation explicite : 'allez juste jeter votre dévolu là-dessus parce que c'est même un outil de compréhension et de transmission' (01:00:36). Œuvre réelle vérifiée : 'Le Loup' de Mai Lan Chapiron (album/chanson/livre jeunesse de prévention de l'inceste, La Martinière, 2021). Canonique du doublon avec ubm-0796. Attribution 'Navo' erronée.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Milan Shapiro",
+  "creator": "Mai Lan Chapiron",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractionHistory": [
     {
@@ -65,6 +66,7 @@
     }
   ],
   "quote": "c'est incroyable ça s'appelle Le Loup de Maïlan Chapiron",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:36",

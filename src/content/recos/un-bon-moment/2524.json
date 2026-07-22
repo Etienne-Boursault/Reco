@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre = description d'une performance plutot qu'un titre d'oeuvre net ; 'Deveau'->'Devos'. Spectacle precis de Francois Morel jouant Devos non verifiable (budget web epuise). Locuteur hote (Kyan/Navo) non departageable -> attribution videe.",
     "reason": "Temoignage substantiel ('je suis alle voir Francois Morel sur scene jouer a Raymond Devos') au sein de l'eloge de la poesie de Devos. Reference culturelle reelle, sans prescription explicite -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "François Morel",
@@ -40,7 +41,7 @@
   ],
   "quote": "Moi, je suis allé voir François Morel sur scène jouer à Raymond Deveau.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:05:07",
   "title": "François Morel jouant Raymond Deveau",
   "transcriptSource": "youtube",

@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du doublon Diego (l'autre = ubm-1124, discard). Orthographe probable du vrai createur : 'Diego Alary' (un seul L) ; transcript/fichier disent 'Diego Allary'. Non verifiable (WebSearch epuise).",
     "reason": "Reco explicite de Kyan dans le tour final (01:18:23) : 'moi je vous recommande Diego Allary sur TikTok, j'adore ce gars... si vous voulez apprendre dans la cuisine... j'ai appris plein de trucs'. Createur de cuisine TikTok reel. Canonique du doublon (source YouTube par defaut).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Diego Allary",
   "episodeGuid": "633b2f213ca1cc001201a69f",
   "extractionHistory": [
     {
@@ -53,7 +53,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:18:24",
-  "title": "Diego Allary",
+  "title": "Diego Alary",
   "transcriptSource": "youtube",
   "types": [
     "artiste",

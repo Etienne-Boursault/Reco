@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE du cluster surendettement (doublons discardés: 1202, 2864, 2869). « moi je recommande la vidéo sur le sur-endettement de [créateur] » (01:31:21-36) = reco explicite => validate. Nom du créateur incertain : le transcript épelle un nom compliqué (« E-H...Reka »), rendu tantôt « EREK »/« E.R.E.K. », tantôt « Eureka » (WebSearch épuisé) => title_suspect sur l'identité du créateur. Locuteur = un hôte (après « merci Jérémy ») mais Kyan vs Navo indéterminable => recommendedBy vidé + attribution_suspect.",
     "reason": "Recommandation explicite fin d'émission; attribution hôte ambiguë",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "EREK",
+  "creator": "Heureka",
   "episodeGuid": "61cb19444f2d030012ddd82a",
   "extractionHistory": [
     {
@@ -39,10 +40,11 @@
     }
   ],
   "quote": "Moi, je recommande la vidéo sur le surendettement de E.R.E.K.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:31:22",
-  "title": "Vidéo sur le surendettement",
+  "title": "Comprendre et se sortir du surendettement",
   "transcriptSource": "acast",
   "types": [
     "autre"

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Existence/orthographe de « Willy l'ancien » (rappeur IA sur Skyrock) NON verifiable : budget WebSearch de la session epuise (200/200). Presente comme un phenomene reel externe (pas invente en episode), d'ou validate + flag. Metadonnees invites VIDES alors que Jason Brokers et AZ sont presents (titre + transcript).",
     "reason": "Jason (invite) recommande avec substance un rappeur IA tiers qui le fascine (« ca fait une semaine que je suis fascine », « je trouve ca genial franchement », « hyper interessant »). Oeuvre tierce, pas auto-promo → validate (pas guest-work).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
@@ -28,7 +29,7 @@
     "anthropic"
   ],
   "id": "ubm-3098",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -47,14 +48,20 @@
       "kind": "streaming",
       "label": "YouTube Music",
       "url": "https://music.youtube.com/channel/UC9v2_lYf6QKSD3FnSWxa11A"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Willylancien"
     }
   ],
   "quote": "ça fait une semaine que je suis fasciné par ça",
-  "recommendedBy": "Jason Brokers",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:10:26",
-  "title": "Willy l'ancien",
+  "title": "Willylancien",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

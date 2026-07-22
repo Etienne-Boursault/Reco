@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du doublon George K (l'autre = ubm-3030, discard). Pauline elle-meme hesite sur l'orthographe ('j'espere que je n'ai pas ecorche son nom, je crois que c'est Georges K') ; transcript dit 'Georges K', fichier dit 'George K' (avec lien Deezer). Non verifiable (WebSearch epuise).",
     "reason": "Reco explicite de Pauline (host demande '01:15:31 Pauline tu as une chanson') : 'j'ai decouvert une artiste que j'aime beaucoup qui s'appelle Georges K... elle a fait une chanson sur Saigon qui est super belle'. Conserve comme canonique du doublon George K car porte un externalIds.deezer resolu.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "George K",
   "episodeGuid": "633b2f213ca1cc001201a69f",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1769065537"
@@ -48,11 +48,11 @@
     }
   ],
   "quote": "j'ai découvert une artiste que j'aime beaucoup qui s'appelle George K",
-  "recommendedBy": "Pauline Clément",
+  "recommendedBy": "Pauline",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:35",
-  "title": "George K",
+  "title": "George Ka",
   "transcriptSource": "acast",
   "types": [
     "musique"

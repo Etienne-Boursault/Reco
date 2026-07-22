@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre non verifiable (budget WebSearch de la session epuise) -> title_suspect. Locuteur indetermine dans le tour de recommandations -> recommendedBy vide.",
     "reason": "Reco explicite a 01:35:56 : « je recommanderais un documentaire, c'est Une minute pour comprendre, c'est une collection de bouquins sur des trucs en psychologie, en science ». Prescription reelle d'une collection decrite comme reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "autre",
@@ -51,10 +52,11 @@
   "kind": "reco",
   "links": [],
   "quote": "C'est une minute pour comprendre.",
+  "recommendedBy": "Fabien Olicard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:35:56",
-  "title": "Une minute pour comprendre",
+  "title": "3 minutes pour comprendre",
   "transcriptSource": "youtube",
   "types": [
     "livre",

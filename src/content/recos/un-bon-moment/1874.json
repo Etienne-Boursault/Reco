@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Trouver le vrai handle Twitch de 'Roro'/Romain (transcript garble : '3e2u1h', 'chaine Twitch de E').",
     "reason": "Vraie reco ('Moi je recommande la chaine Twitch de...') d'un streamer surnomme Roro/Romain, MAIS le handle exact est inconnu (le recommandeur lui-meme : 'Comment? Ah je connais pas'). Titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Romain (Roro)",
@@ -37,13 +38,20 @@
     "anthropic"
   ],
   "id": "ubm-1874",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "Twitch",
+      "url": "https://www.twitch.tv/euuhhh__/videos"
+    }
+  ],
   "quote": "Moi, je recommande la chaîne Twitch de E. […] Et sa chaîne YouTube de replay.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:47:54",
-  "title": "Chaîne Twitch de Roro",
+  "title": "euuhhh__",
   "transcriptSource": "youtube",
   "types": [
     "video"

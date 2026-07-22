@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger Puribus -> Pluribus. Attribution non diarizee (bloc final). Doublon: ubm-1002.",
     "reason": "Recommandation (01:39:09) : la serie que j'ai regarde tres recemment... je suis en plein dedans, je suis tres fan. Serie reelle = Pluribus (Apple TV, Vince Gilligan). Canonique (source YouTube, titre le plus proche).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
@@ -67,6 +68,7 @@
     }
   ],
   "quote": "la série que j'ai regardé très récemment c'est Puribus",
+  "recommendedBy": "Kemmler",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:10",

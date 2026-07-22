@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Nom chaine/createur garbled par le transcript ('Yvuk absurde' / 'Chaz' / 'Chaises'), non revalides (WebSearch epuise). Reco conservee du doublon ubm-3178 (discard).",
     "reason": "Recommandation par l'invite Mister V d'une chaine d'un comedien absurde (pranks telephoniques, personnage absurde) dans le jeu des recos ; oeuvre TIERCE (pas l'oeuvre de l'invite) donc validate (01:17).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Chaz",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "extractionHistory": [
     {
@@ -29,13 +29,20 @@
   ],
   "id": "ubm-0643",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@CHAISEORG"
+    }
+  ],
   "quote": "Moi, c'est une chaîne qui s'appelle... Yvook Absurde. C'est un mec qui s'appelle Chaz. Mais c'est un comédien. Et il paraît dans l'absurde et il me bute de rire.",
-  "recommendedBy": "Mister V",
+  "recommendedBy": "Yvick",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:17:28",
-  "title": "Yvook Absurde",
+  "title": "Chaise",
   "transcriptSource": "acast",
   "types": [
     "autre"

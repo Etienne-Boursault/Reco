@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'Effroyables jardins' (Jean Becker, 2003) — pas 'L'effroyable jardin'. Attribution incertaine (Cyprien à 24:38 / top de Fanny à 42:44).",
     "reason": "Film adoré ('un de mes films préférés, absolument magnifique, Villeret exceptionnel dedans', 00:24:38) et cité comme top 1 (00:42:44). Prescription par enthousiasme. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jean Becker",
@@ -73,10 +74,11 @@
     }
   ],
   "quote": "Un de mes films préférés, c'est L'Effroyable Jardin.",
+  "recommendedBy": "Fanny",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:38",
-  "title": "L'effroyable jardin",
+  "title": "Effroyables Jardins",
   "transcriptSource": "youtube",
   "types": [
     "film"

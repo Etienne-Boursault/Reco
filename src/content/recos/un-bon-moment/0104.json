@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Kyan evoque « Love et tendresse » comme l'un des deux morceaux qu'il a entendus (qualite metamoderne, « hyper important »). Titre non confirme par l'invite et inverifiable (budget WebSearch epuise) ; lecture possible = paraphrase du theme recurrent « l'amour et la tendresse ». Reste en draft : oeuvre d'invite (Eddy de Pretto) a valider si le titre est reel.",
     "reason": "Titre non confirme par l'invite et inverifiable; possible paraphrase du theme.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "invité",
+  "creator": "Eddy de Pretto",
   "episodeGuid": "6599c1b296596600156961a7",
   "extractionHistory": [
     {
@@ -32,9 +33,9 @@
   "links": [],
   "quote": "Surtout Love & Tendress, il y a un peu ce côté là.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:10:56",
-  "title": "Love & Tendress",
+  "title": "Love'n'Tenderness",
   "transcriptSource": "acast",
   "types": [
     "autre"

@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "À corriger : titre « Patients », creator « Grand Corps Malade & Mehdi Idir ». Cible : guest-work (auto-promo invité), recommendedBy Grand Corps Malade.",
     "reason": "Artefact titre : « patient » = film « Patients » (2016, Grand Corps Malade & Mehdi Idir, vérifié) que GCM présente lui-même (semaine de sortie, box-office « un million trois », making-of).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Grand Corps Malade & Mehdi Idir",
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "extractionHistory": [
     {
@@ -26,14 +28,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2518",
+  "kind": "reco",
   "links": [],
   "quote": "pour le film patient",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:27:14",
-  "title": "patient",
+  "title": "Patients",
   "transcriptSource": "youtube",
   "types": [
     "film"

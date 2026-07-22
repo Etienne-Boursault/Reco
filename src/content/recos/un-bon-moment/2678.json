@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Splinalende parmi 1131/1245/2678 (source YT, meilleur titre). Orthographe de la chaine ('Splinalende'/'Splinal Nd'/'Spinal ND') non verifiable (budget WebSearch epuise). Attribution Navo vs Kyan incertaine (transcript sans diarisation) mais 2 extractions concordent sur Navo.",
     "reason": "Un host recommande explicitement la chaine YouTube Splinalende, serie sur les sectes et l'embrigadement (01:13:04, 'Je recommande Splinalende... c'est hyper bien fait'). Reco substantielle et prescriptive.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Splinalendé",
@@ -46,7 +47,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:04",
-  "title": "Splinalendé",
+  "title": "Spline LND",
   "transcriptSource": "youtube",
   "types": [
     "video"

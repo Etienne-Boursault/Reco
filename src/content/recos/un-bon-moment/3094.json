@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "TITRE FAUX à corriger: le draft dit 'Carole & Tuesday' mais le transcript décrit clairement 'Carol & The End of the World' (Netflix : héroïne Carol, fin du monde annoncée, 'End of the World' dans le titre). Recommandeur incertain (non diarizé).",
     "reason": "Série d'animation Netflix prescrite avec enthousiasme ('c'est génial', 'allez voir ça'), pas l'œuvre d'un présent — vraie reco (validate).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
@@ -38,6 +39,7 @@
     }
   ],
   "quote": "C'est une série d'animation qui est sur Netflix... Et en fait c'est un truc avec End of the World je pense dans le titre...",
+  "recommendedBy": "Thaïs Vauquières",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:22",

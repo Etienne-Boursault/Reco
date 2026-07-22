@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "À corriger : titre « DOMITOR ». Cible : citation/validate faible, recommendedBy Navo (attribution incertaine).",
     "reason": "Artefact titre : « Demi-tor » = chaîne YouTube « DOMITOR » (épelée D-O-M-I-T-O-R, 'DemiThor' au son) sur le cinéma, 2 vidéos. Reco légère (« les deux étaient assez intéressantes »). Chaîne très obscure, difficile à vérifier/linker.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
@@ -27,13 +28,14 @@
     "anthropic"
   ],
   "id": "ubm-1070",
+  "kind": "citation",
   "links": [],
   "quote": "Ah, il y a demi-tor, D.O.M.I. de T.O.R., je crois. Au moment où je parle, il a dû faire que deux vidéos. [...] Sur le cinéma, les deux étaient assez intéressantes.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:35:42",
-  "title": "Demi-tor",
+  "title": "Domittor",
   "transcriptSource": "acast",
   "types": [
     "autre"

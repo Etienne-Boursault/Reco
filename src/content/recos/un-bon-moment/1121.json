@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution corrigee Navo->Martin (indice 'mon ami Jordi le Bollock' + mapping 1 reco/personne) ; a confirmer. Titre non verifiable (budget WebSearch epuise) : piece jouee au Theatre des Beliers a Paris.",
     "reason": "Reco explicite dans le tour de recos final (01:15) : 'je recommande pour les parisiens c'est la course des géants... non vraiment la pièce est super cool'. Le locuteur dit 'avec mon ami Jordi le Bollock' : Jordi Le Bolloc a joué dans la piece de Martin 'Pour ceux qui restent' (00:27), et le tour attribue 1 reco/personne (Pauline=Georges K, Bertrand=Diagonale, Kyan=Diego, Navo=Inside), donc par elimination + indice Jordi c'est Martin, pas Navo comme extrait.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jordi Lebole",

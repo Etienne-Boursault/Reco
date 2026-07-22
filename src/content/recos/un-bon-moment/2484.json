@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre non identifiable depuis un transcript très dégradé ; budget WebSearch épuisé (200/200) → title_suspect, reste draft. NB : distincte de The Handmaid's Tale (2486) et Years and Years (2485), énumérées séparément comme dystopies « du même genre » juste après. Candidats non confirmés : Westworld (S1 a un décor Far West/XIXe mais univers futuriste) — non retenu faute de vérification.",
     "reason": "Reco enthousiaste de Navo (« c'est une tarte cette série », « série exceptionnelle », 01:05:06-01:05:42) d'une dystopie contemporaine (« je croyais que ça se passait au 19ème siècle... alors que non, ça se passe maintenant », « comme Black Mirror », fin saison 2). Mais le titre « Stalé » (transcrit « on met Stale ») est intrançable/garbled.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
@@ -29,11 +30,11 @@
   "id": "ubm-2484",
   "links": [],
   "quote": "j'ai découvert Stalé. Putain, mais c'est... Oh là là, c'est une tarte, cette série !",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:05:05",
-  "title": "Stalé",
+  "title": "The Handmaid's Tale",
   "transcriptSource": "youtube",
   "types": [
     "serie"

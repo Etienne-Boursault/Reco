@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe incertaine (« Paul Dechavanne » probable). Invite Jason absent des metadonnees.",
     "reason": "Humoriste cite par Jason parmi ses premieres parties ; name-drop.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Paul Deschavannes",
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -59,7 +59,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:31:04",
-  "title": "Paul Deschavannes",
+  "title": "Paul Dechavanne",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

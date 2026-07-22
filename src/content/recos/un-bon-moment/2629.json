@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : 'Soixante' (le transcript dit '60'). Borderline : mention liee au sponsor MyCanal + venue de Pomme ; a arbitrer par l'humain (guest-work vs citation).",
     "reason": "'60' = 'Soixante', l'emission Canal+ de Kyan Khojandi (60 artistes, 2019) ou Pomme a joue, pluggue comme dispo sur MyCanal ('Pour regarder 60 avec Pomme'). Oeuvre d'un host presentee par lui = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -28,7 +29,7 @@
   ],
   "guestWork": true,
   "id": "ubm-2629",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -42,7 +43,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:37:21",
-  "title": "60",
+  "title": "Soixante 2",
   "transcriptSource": "youtube",
   "types": [
     "video"

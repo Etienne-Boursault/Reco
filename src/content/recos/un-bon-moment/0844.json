@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Createur a corriger: « Jean Yanne » (pas « Jean-Yann »). Recommande par un invite (probablement Xavier Lacaille), non diarize.",
     "reason": "Recommandation explicite (~01:04:20) : « ecoutez sa chanson Si tu t'en irais... c'est super drole ». Chanson de Jean Yanne, verifiee.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Jean-Yann",
+  "creator": "Jean Yanne",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractionHistory": [
     {
@@ -64,6 +65,7 @@
     }
   ],
   "quote": "écoutez sa chanson Si tu t'en irais qui est une chanson d'amour humoristique",
+  "recommendedBy": "Ambroise Carminati",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:21",

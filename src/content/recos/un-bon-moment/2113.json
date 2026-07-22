@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe « Babor l'elephant » non verifiable (budget WebSearch epuise). Reco explicite par Kyan confirmee dans le transcript.",
     "reason": "Artiste (YouTubeur passant au stand-up) recommande explicitement par Kyan en cloture ([01:16:13] « Alors de mon cote, moi, je vous recommande Babor l'elephant, qui est tres connu sur YouTube, mais qui se met au stand-up »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
@@ -51,7 +52,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:16:20",
-  "title": "Babor l'éléphant",
+  "title": "Baborlelefan",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

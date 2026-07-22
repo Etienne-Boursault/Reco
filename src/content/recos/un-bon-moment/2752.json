@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "'Benile' = artefact de transcription de 'Benny Hill' (The Benny Hill Show) : description sans ambiguite ('le fameux climax accelere... toutes les filles nues qui courent tres vite'). Recommandation sur le ton humoristique en cloture ('Moi je recommande Benile'). Le script d'apply ne modifie pas le titre -> reste draft : corriger le titre en 'Benny Hill' puis validate possible (attribution probable Navo). Timecode 01:08:40 OK.",
     "reason": "Titre artefact ASR : 'Benile' = 'Benny Hill'. Reste draft pour correction humaine du titre.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "inconnu",
@@ -41,7 +42,7 @@
   "links": [],
   "quote": "Moi, je recommande Bénile.",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:08:40",
   "title": "Bénile",
   "transcriptSource": "youtube",

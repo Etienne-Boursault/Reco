@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE du livre de la mere de Nassim. Doublons discardes : ubm-1359 ('Blague a part' = expression idiomatique mal parsee) et ubm-0521 ('La vie de ma mere' = artefact de 'le livre de ma mere'). Attribution corrigee de 'Navo' vers 'Nassim Lyes'. Titre 'L'histoire de la psychanalyse' possiblement descriptif/mal transcrit, non re-verifiable (WebSearch epuise) -> title_suspect. Invite a completer : Nassim Lyes.",
     "reason": "Livre de la mere de Nassim (Malika), presente par Nassim (invite) : reco explicite ('je vous invite a le lire', 'regardez-le', 'lis-le et tu me diras ce que t'en penses'). Autobiographique, psychanalyse lacanienne, editions Champ Social. Pas guest-work (oeuvre de la mere, non-invitee).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Malika",

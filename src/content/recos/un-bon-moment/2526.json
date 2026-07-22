@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = un hote (signale la similarite au concept de Thomas), Kyan/Navo indetermine -> attribution videe. 'Tout est possible' de Kev Adams & Gad Elmaleh est plutot un spectacle commun (type actuel 'film' douteux) ; titre non verifiable, budget web epuise.",
     "reason": "Un hote cite une scene precise ('l'eloge funebre de Gad par Kev... ils se roastent... un des moments les plus droles') pour la comparer au concept de roast de Thomas. Substance/appreciation mais usage illustratif, pas de prescription explicite -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Kev Adams, Gad Elmaleh",
@@ -39,6 +40,7 @@
     }
   ],
   "quote": "dans tout est possible de Kev Adams et Gad Elmaleh il y a une scène où Kev... l'éloge funèbre de Gad par Kev et l'éloge funèbre de Kev par Gad et ils se roastent et c'était un des moments les plus drôles",
+  "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:08",

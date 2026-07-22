@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique (doublon Acast ubm-1204 discarde). A identifier avant publication. recommendedBy probable = Jason Brokerss.",
     "reason": "Mention enthousiaste (« tres tres drole », « il est super ») par Jason parmi ses premieres parties, MAIS le nom « Omar Des bebes »/« Omar Dbb » est deforme et non identifiable : titre a corriger.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Omar Des bébés",
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -40,11 +40,11 @@
   "id": "ubm-2880",
   "links": [],
   "quote": "Omar Des bébés très très drôle",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:30:58",
-  "title": "Omar Des bébés",
+  "title": "Omar_DBB",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

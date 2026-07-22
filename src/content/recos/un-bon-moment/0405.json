@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "creator 'Greg' est un artefact — doc Netflix 'Quincy' (2018) sur Quincy Jones, réal. Rashida Jones & Alan Hicks.",
     "reason": "Cyprien (amateur de docus sur réalisateurs/artistes) recommande le documentaire Netflix 'Quincy' (sur Quincy Jones) : 'je l'avais adoré... passionnant'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Greg",
+  "creator": "Rashida Jones & Alan Hicks",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {

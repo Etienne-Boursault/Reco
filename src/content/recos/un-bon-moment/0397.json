@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "creator 'Nouveau' est un artefact — réalisateur = Roman Polanski.",
     "reason": "'La jeune fille et la mort' (Death and the Maiden, Roman Polanski, 1994) — vrai film cité avec un avis réel ('un film exceptionnel, un peu sous-coté') pendant le jeu des personnalités sur Sigourney Weaver, mais sans prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Nouveau",
+  "creator": "Roman Polanski",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "tmdb": "818681",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Elle a fait un film qui était un peu sous-couté qui s'appelle La jeune fille et la mort.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:19:52",

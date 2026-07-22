@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "« Une femme parfaite » listé parmi les morceaux (je te déteste / une femme parfaite / l'horizon / Agendas / Soleil Nuit / le dernier la dernière / la sortie des classes / OK). Existence/orthographe non vérifiables (WebSearch épuisé).",
     "reason": "Morceau de l'album cité par Kyan comme porte d'entrée « simple, galerie » dans sa liste d'écoute (00:45:47→00:45:51). Titre d'invité/host = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",
@@ -47,7 +48,7 @@
   "quote": "Une femme parfaite, c'est plutôt simple, c'est plutôt galerie.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:45:50",
   "title": "Une femme parfaite",
   "transcriptSource": "youtube",

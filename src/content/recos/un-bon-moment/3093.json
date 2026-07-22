@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Créateurs transcrits: Félix Lefebvre, Anja Verde Rosa, Suzanne Jouannet — orthographes à vérifier. Recommandeur incertain (non diarizé).",
     "reason": "Film 'L'épreuve du feu' prescrit avec substance et enthousiasme ('super film très émouvant', 'trop bien joué'), pas l'œuvre d'un présent — vraie reco (validate).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Félix Lefebvre, Anja Verda Rosa, Suzanne Joannet",
+  "creator": "Aurélien Peyre",
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
   "extractionHistory": [
     {
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "L'oeuvre que j'ai beaucoup aimé moi c'est L'épreuve du feu ! C'est un film avec Félix Lefebvre et Anja...",
+  "recommendedBy": "Alex Ramires",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:21",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Chaine 'Tistria' non verifiable (aucun resultat). Si reelle -> guest-work (auto-promo Kyan) ; si bit -> discard. A verifier avant publication.",
     "reason": "Kyan affirme avoir 'une vraie chaine qui relie le paranormal... qui s'appelle Tistria', mais dans un contexte comique ('bah avec cette emission en fait') et aucune trace web de 'Tistria'. Impossible de trancher oeuvre reelle vs bit invente.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
@@ -29,11 +30,11 @@
   "id": "ubm-2228",
   "links": [],
   "quote": "J'ai une vraie chaîne. Qui relie le paranormal avec. Qui relie le paranormal. Qui s'appelle Tistria.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Audrey Pirault",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:17:48",
-  "title": "Tistria",
+  "title": "Tistrya",
   "transcriptSource": "youtube",
   "types": [
     "video"

@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster chaine Marvel (doublons ubm-0816, ubm-1091). Orthographe incertaine : le transcript epelle « Herosef » mais les hosts hesitent (« il dit aerocef », « moi je dis aero »), non verifiable (web epuise) -> title_suspect.",
     "reason": "Reco canonique de la chaine YouTube sur les theories de l'univers Marvel : « si vous adorez l'univers Marvel, si vous avez kiffe les theories sur les univers Marvel, je trouve qu'il est assez interessant. »",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Herosef",
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "extractionHistory": [
     {
@@ -39,13 +39,20 @@
   ],
   "id": "ubm-2875",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@IroSef"
+    }
+  ],
   "quote": "la chaîne d'Aerosef, si vous aimez l'univers Marvel.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:09:22",
-  "title": "Herosef",
+  "title": "Iro Sef",
   "transcriptSource": "youtube",
   "types": [
     "video"

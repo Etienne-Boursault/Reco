@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Canonique (ubm-2899 doublon). Corriger créateur/titre 'Aurel'→Orelsan; identifier l'album. Attribution invité incertaine.",
     "reason": "'Aurel' = Orelsan (transcription erronée; le 'doc' cité = 'Montre jamais ça à personne', sur ses doutes de création). Discussion appréciative substantielle de l'artiste et de son dernier album (~00:47:40) → citation sur le fond, mais créateur/titre à corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Aurel",
+  "creator": "Orelsan",
   "episodeGuid": "652406c019376d001282c4d8",
   "extractionHistory": [
     {
@@ -30,11 +31,11 @@
   "id": "ubm-2912",
   "links": [],
   "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:47:40",
-  "title": "Aurel",
+  "title": "Civilisation",
   "transcriptSource": "youtube",
   "types": [
     "artiste",

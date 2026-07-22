@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre « La musique que j'ai écrite » = artefact issu de la phrase « une somme de souvenirs sur la musique que j'ai écrit » ; pas un vrai titre, ouvrage non paru en 2020 → unsure, reste draft. À reprendre si un titre publié est identifié.",
     "reason": "Thomas VDB parle d'un livre de souvenirs sur la musique qu'il a écrit (00:50:14-00:51:28), envoyé à des éditeurs, non publié à l'enregistrement (2020) : « ça va peut-être sortir dans deux ans ». Œuvre d'invité réelle mais en cours.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Thomas",
+  "creator": "Thomas VDB",
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "extractionHistory": [
     {
@@ -28,13 +29,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2491",
+  "kind": "reco",
   "links": [],
   "quote": "j'ai commencé à écrire un livre de souvenirs par rapport à la musique",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:50:44",
-  "title": "La musique que j'ai écrite",
+  "title": "Comedian Rhapsodie",
   "transcriptSource": "youtube",
   "types": [
     "livre"

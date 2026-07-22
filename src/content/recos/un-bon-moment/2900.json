@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Corriger créateur Aurel→Orelsan, confirmer titre 'Ah La France'. Attribution invité incertaine.",
     "reason": "'À la France' = chanson 'Ah La France' d'Orelsan (créateur mal transcrit en 'Aurel'). Appréciée sincèrement ('je le kiffe', 'le couplet est bien', eurodance, comparaison Stromae, ~00:49:09) → citation sur le fond, mais créateur à corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Aurel",
+  "creator": "Orelsan",
   "episodeGuid": "652406c019376d001282c4d8",
   "extractionHistory": [
     {
@@ -28,13 +29,14 @@
     "anthropic"
   ],
   "id": "ubm-2900",
+  "kind": "citation",
   "links": [],
   "quote": "Moi, je kiffe à la France !",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:49:09",
-  "title": "À la France",
+  "title": "Ah La France",
   "transcriptSource": "youtube",
   "types": [
     "musique"

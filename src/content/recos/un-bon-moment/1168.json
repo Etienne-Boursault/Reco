@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique retenu parmi 4 doublons (ubm-2191/2197/1274 discardés) car titre « Sakharu » = orthographe épelée par le locuteur. Existence exacte de la chaîne non confirmée (WebSearch épuisé).",
     "reason": "CANONIQUE du cluster Sakharu. Chaîne YouTube sur l'histoire du jeu vidéo recommandée par Kyan : « je conseille une chaîne d'un mec qui s'appelle Sakharu... c'est une chaîne secondaire à moi... j'adore » (01:12:02-01:12:40). Orthographe épelée S-A-K-H-A-R-U dans le transcript.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6599de12076e6c001696556a",
@@ -43,6 +44,12 @@
       "kind": "official",
       "label": "Chaîne YouTube Sakharu",
       "url": "https://www.youtube.com/c/SakharuJV"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "video",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@sakharujv"
     }
   ],
   "quote": "Bon, en attendant, je conseille une chaîne d'un mec qui s'appelle Sakaru ou Sakaru.",

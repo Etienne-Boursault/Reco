@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Créateur à corriger 'Ambroise Kerminati' -> 'Ambroise Carminati'. Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation explicite : 'je suis sûr que vous allez kiffer tous les deux le podcast des trains à travers la plaine... un excellent podcast' (00:59:22). Œuvre réelle : podcast animé par Ambroise Carminati, Baptiste Pignon, Nicolas Roux.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Ambroise Kerminati, Baptiste Pignon, Nicolas Roux",
+  "creator": "Ambroise Carminati, Baptiste Pignon, Nicolas Roux",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractionHistory": [
     {
@@ -65,6 +66,7 @@
     }
   ],
   "quote": "je recommande maintenant le podcast des trains à travers la plaine",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:22",

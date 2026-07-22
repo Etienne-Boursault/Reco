@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript garble le titre en 'Leo de Hurlevent' ; oeuvre = Wuthering Heights, Emily Bronte, 1847 (identifie sans ambiguite : 'Emilie Bronte', '1847', 'unique roman'). Doublons: 0211, 2030, 1843.",
     "reason": "Augustin (invite, 'un bouquin sur l'amour ?') recommande Les Hauts de Hurlevent d'Emily Bronte : 'Plus grand livre jamais ecrit sur l'amour', 'jamais on a pu ecrire un roman d'amour aussi beau'. Prescription forte. Canonique (titre + createur + annee corrects). Attribution corrigee (etait Kyan).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Emily Brontë",

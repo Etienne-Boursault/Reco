@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre réel = 'En corps' (2022, Klapisch), pas 'Encore' (artefact ASR). creator 'Cédric Lapiche' -> Cédric Klapisch. À publier en guest-work après correction.",
     "reason": "Guest-work de Klapisch (présente le début de son film sans dialogue, sur musique/danse) mais titre à corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Cédric Lapiche",
+  "creator": "Cédric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "extractionHistory": [
     {
@@ -29,12 +30,14 @@
     "anthropic"
   ],
   "id": "ubm-2330",
+  "kind": "citation",
   "links": [],
   "quote": "Le début d'Encore, par exemple, c'est un film où je m'étais dit, au début du film, je voudrais que ce soit non pas muet, mais en tout cas qu'il n'y ait pas de dialogue, et qu'on soit que sur la musique et la danse.",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:11:27",
-  "title": "Encore",
+  "title": "En corps",
   "transcriptSource": "youtube",
   "types": [
     "film"

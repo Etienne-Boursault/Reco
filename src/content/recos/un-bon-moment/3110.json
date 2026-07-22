@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Existence/titre exact non verifiables (WebSearch epuise). Reco genuine mais oeuvre mal identifiee ; reste en draft.",
     "reason": "Une oeuvre est reellement recommandee (emission-competition de stand-up produite par Kevin Hart, le gagnant remporte un spectacle Netflix ; « les premiers episodes sont vraiment bons... je trouve ca bien »), MAIS le titre du draft « Kevin Hart: Don't F**k This Up » (docuserie 2019 sur K. Hart, pas une competition) ne correspond pas et n'apparait pas dans le transcript (regle 11 ; transcript : titre garble « Feunyeyev »). → unsure pour laisser l'humain identifier la vraie emission.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Kevin Hart",
@@ -30,11 +31,11 @@
   "id": "ubm-3110",
   "links": [],
   "quote": "le genre de casting qu'a fait Kevin Hart",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:01:11",
-  "title": "Kevin Hart: Don't F**k This Up",
+  "title": "Funny AF with Kevin Hart",
   "transcriptSource": "youtube",
   "types": [
     "serie"

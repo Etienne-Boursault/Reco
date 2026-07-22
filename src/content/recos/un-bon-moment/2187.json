@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : 'A2, A3' -> 'A 2 a 3' (album de Vianney, duo avec Zazie 'Comment on fait').",
     "reason": "Album de l'invite Vianney promu par l'animateur ('L'album est sorti, on peut se le procurer chez tous les bons disquaires') — auto-promo du format = guest-work. Album 'A 2 a 3' (10 nov. 2023) confirme.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Vianney",
@@ -49,7 +50,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:27:14",
-  "title": "A2, A3",
+  "title": "À 2 à 3",
   "transcriptSource": "youtube",
   "types": [
     "album"

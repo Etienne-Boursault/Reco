@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre tronque 'Les mecs que je veux' -> vrai titre 'Les mecs que je veux niquer' (Rosa Bursztein) ; a corriger manuellement. Marina invitee absente de guests. Distinct de ubm-1082 (Le Coeur sur la table).",
     "reason": "Podcast de Rosa Bursztein recommande explicitement ('un petit podcast ou elle recoit des hommes et des femmes... on apprend des choses... allez voir ca'). Reco explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Rosa Bursztein",
@@ -54,7 +55,7 @@
     }
   ],
   "quote": "Les mecs que je veux qu'aine de Rosa Bernstein. Bien sûr. Qui est un petit podcast où elle reçoit des hommes et des femmes maintenant.",
-  "recommendedBy": "Marina Rollman",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:20",

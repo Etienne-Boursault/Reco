@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre à corriger 'Une nuit' -> 'Ou peut-être une nuit' ; créateur 'Charlotte Pylowski' -> 'Charlotte Pudlowski'. Registre suggère Augustin (incertain). Compléter guests.",
     "reason": "Recommandation forte : 'moi je conseille celui de Charlotte Pudlowski... c'est une merveille... c'est extraordinaire... je conseille' (00:59:38). Œuvre réelle : podcast 'Ou peut-être une nuit' de Charlotte Pudlowski (Louie Media, 2021). Canonique du doublon avec ubm-0795. Attribution 'Navo' erronée.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Charlotte Pylowski",
+  "creator": "Charlotte Pudlowski",
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "extractionHistory": [
     {
@@ -65,10 +66,11 @@
     }
   ],
   "quote": "moi je conseille celui de Charlotte Pudlowski qui s'appelle Une nuit",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:38",
-  "title": "Une nuit",
+  "title": "Ou peut-être une nuit",
   "transcriptSource": "youtube",
   "types": [
     "podcast"
