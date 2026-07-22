@@ -25,6 +25,9 @@ tools/dispatch/
 # Inventaires générés
 docs/inventaire-*.md
 
+# Audits & listes de relecture (artefacts de travail, gardés en local)
+audit/
+
 # Secrets & API keys (NE JAMAIS COMMITTER)
 .env
 .env.*
