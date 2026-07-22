@@ -1002,6 +1002,31 @@ def test_post_edit_updates_title_creator_types(fake_source):
     assert reco["types"] == ["film", "serie"]
 
 
+def test_post_edit_from_doutes_marks_reviewed(fake_source):
+    """« Corriger » sur /doutes est TERMINAL : après l'édition, la reco est
+    marquée reviewedByHuman → elle quitte la file des doutes (refonte 07-21).
+    Une édition depuis /ep ne la marque PAS."""
+    from common import read_json, recos_dir_for
+    # Depuis /doutes → marquée reviewedByHuman.
+    h = _FakeHandler(fake_source, "/edit", b"id=ubm-001&title=Mortel&types=film")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["agentReview"]["reviewedByHuman"] is True
+
+    # Depuis /ep → NON marquée (édition ordinaire, pas une résolution de doute).
+    p = recos_dir_for(fake_source) / "ubm-005.json"
+    p.write_text(json.dumps({
+        "id": "ubm-005", "episodeGuid": "ep-001", "types": ["film"],
+        "title": "Y", "status": "draft",
+    }), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    h2 = _FakeHandler(fake_source, "/edit", b"id=ubm-005&title=Y&types=film")
+    h2.headers["Referer"] = "http://127.0.0.1:8000/ep?guid=ep-001"
+    h2.do_POST()
+    assert "reviewedByHuman" not in read_json(p).get("agentReview", {})
+
+
 def test_post_edit_no_types_rejected(fake_source):
     """Types vides → redirige vers la page épisode + flash d'erreur (H6)."""
     body = b"id=ubm-001&title=X"

@@ -245,3 +245,44 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-mini-recby{color:#a2c4ee;border-color:#1f3a5c;}
 .doubt-mini-lowconf{color:#a9e3b8;border-color:#2c5a38;}
 .doubt-ep-title{max-width:820px;margin:.6rem auto .2rem;font-size:1.2rem;}
+/* Refonte /doutes 2026-07-21 : bloc « signalement en avant » par doute.
+   Met explicitement en avant CE QUI DOIT ÊTRE CORRIGÉ (en-tête = type de
+   problème, reco actuelle, correction suggérée) puis 3 actions claires. */
+.sig{margin:.6rem 0;}
+.sig-pending{border-left-color:#ffd23f;}
+.sig-flagged{border-left-color:#ffb74d;}
+.sig-recby{border-left-color:#a2c4ee;}
+.sig-lowconf{border-left-color:#a9e3b8;}
+.sig-head{font-size:1rem;font-weight:700;color:#f6f4ee;display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:.5rem;margin-bottom:.5rem;}
+.sig-pending .sig-head{color:#ffe07a;}
+.sig-flagged .sig-head{color:#ffc57a;}
+.sig-recby .sig-head{color:#bcd6f5;}
+.sig-lowconf .sig-head{color:#bfe9c9;}
+.sig-meta{font-size:.72rem;font-weight:400;color:#8a8992;}
+.sig-current{font-size:.95rem;color:#e6e4dd;margin:.2rem 0 .55rem;line-height:1.5;}
+.sig-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;
+  color:#8a8992;margin-right:.35rem;}
+.sig-current b{color:#fff;}
+.sig-recby{}
+.sig-current .sig-recby{font-size:.75rem;color:#a2c4ee;background:#101720;
+  border:1px solid #1f3a5c;border-radius:999px;padding:.05em .55em;}
+.sig-fix{background:#101720;border:1px solid #1f3a5c;border-left:3px solid #4a8edb;
+  border-radius:8px;padding:.55em .8em;margin:.2rem 0 .65rem;font-size:.9rem;
+  color:#cfe3ff;line-height:1.5;}
+.sig-fix-label{font-weight:700;color:#7fb0e8;margin-right:.35rem;}
+.sig-fix-txt{color:#e9f1ff;}
+.sig-recby .sig-fix{border-left-color:#a2c4ee;}
+.sig-human{color:#a9e3b8;}
+.sig-who-toggle{margin:.2rem 0 .5rem;}
+.sig-who-toggle>summary{cursor:pointer;color:#9a99a3;font-size:.8rem;
+  list-style:none;user-select:none;}
+.sig-who-toggle>summary:hover{color:#ffd23f;}
+.sig-who-toggle[open]>summary{margin-bottom:.4rem;}
+.sig-who{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
+.sig-who-recby{padding:.55em;background:#0f151d;border:1px dashed #1f3a5c;
+  border-radius:8px;margin:.2rem 0 .55rem;}
+.sig-btns{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.3rem;}
+.sig-ok{background:#5ab68a;color:#08130d;}
+.sig-ok:hover{background:#6bc79b;}
+.sig-ecarter{font-size:.9rem;}

@@ -24,8 +24,15 @@ from __future__ import annotations
 import html
 import urllib.parse
 
-from review_render import _PLAYER_WRAP_HTML, _load_groups, _reco_card
-from review_render_common import _flash_banner, _shell
+from review_edit import render_edit_form
+from review_render import (
+    _PLAYER_WRAP_HTML,
+    _load_groups,
+    _reco_candidates,
+    _reco_checkboxes,
+    _reco_quote_block,
+)
+from review_render_common import _flash_banner, _shell, _yt_timecode_link_parts
 
 # Sous ce seuil, un verdict appliqué est considéré « à vérifier ».
 LOW_CONFIDENCE = 0.7
@@ -125,26 +132,165 @@ def _ep_label(ep: dict) -> str:
     return f'{badge}{ep.get("title", ep.get("guid", "?"))}'
 
 
-def _agent_block(reco: dict) -> str:
-    """Bloc contexte agent (verdict, confiance, raison, flags, correction)."""
-    ar = reco.get("agentReview") or {}
-    conf = ar.get("confidence")
-    conf_html = f" (conf {html.escape(str(conf))})" if conf is not None else ""
-    parts = [
-        f'<b>🤖 {html.escape(str(ar.get("verdict", "?")))}</b>{conf_html}',
-    ]
-    if ar.get("reason"):
-        parts.append(html.escape(str(ar["reason"])))
-    if ar.get("flags"):
-        flags = ", ".join(html.escape(str(f)) for f in ar["flags"])
-        parts.append(f'<span class="doubt-flags">🚩 {flags}</span>')
+# Libellés HUMAINS des flags agent : l'en-tête « ce qui doit être corrigé »
+# doit être explicite, pas un slug (retour utilisateur 2026-07-21).
+_FLAG_LABELS: dict[str, str] = {
+    "title_suspect": "Titre à vérifier",
+    "attribution_suspect": "Attribution à vérifier",
+    "duplicate_suspect": "Doublon probable",
+    "guest_missing": "Invité manquant",
+    "link_suspect": "Lien à vérifier",
+    "timestamp_suspect": "Timecode à vérifier",
+}
+# En-tête de repli quand la reco n'a AUCUN flag (sections pending/recby/lowconf).
+_SECTION_HEADINGS: dict[str, str] = {
+    "pending": "À trancher (l'agent n'a pas su décider)",
+    "recby": "Qui recommande ?",
+    "lowconf": "Confiance faible — à contrôler",
+}
+
+
+def _deslug_flag(flag: str) -> str:
+    """Rend lisible un flag hors mapping ('foo_suspect' → 'Foo à vérifier').
+    Défensif : un agent LLM peut inventer un flag inconnu."""
+    s = str(flag).replace("_suspect", "").replace("_", " ").strip()
+    if not s:
+        return "À vérifier"
+    return f"{s[:1].upper()}{s[1:]} à vérifier"
+
+
+def _issue_heading(key: str, reco: dict) -> str:
+    """En-tête explicite du doute : les libellés de flags s'il y en a (plus
+    précis que la section), sinon le libellé de la section."""
+    flags = (reco.get("agentReview") or {}).get("flags") or []
+    if flags:
+        labels = dict.fromkeys(_FLAG_LABELS.get(f, _deslug_flag(f)) for f in flags)
+        return " · ".join(labels)
+    return _SECTION_HEADINGS.get(key, "À vérifier")
+
+
+def _sig_meta(ar: dict) -> str:
+    """Ligne méta discrète : 🤖 verdict · conf (+ raison si une note occupe
+    déjà la ligne « correction »). Préserve verdict/confiance à l'écran."""
+    bits: list[str] = []
+    if ar.get("verdict"):
+        bits.append(f'🤖 {html.escape(str(ar["verdict"]))}')
+    if ar.get("confidence") is not None:
+        bits.append(f'conf {html.escape(str(ar["confidence"]))}')
+    reason, note = ar.get("reason"), ar.get("note")
+    if note and reason and reason != note:
+        bits.append(html.escape(str(reason)))
+    return " · ".join(bits)
+
+
+def _sig_fix(key: str, ar: dict) -> tuple[str, str]:
+    """(label, texte HTML échappé) du bloc « ce qui doit être corrigé ».
+
+    Priorité : la note de l'agent (souvent la correction concrète) > la raison >
+    une invite propre à la section. Pour recby, la correction EST le choix du
+    prescripteur (cases à cocher juste en dessous)."""
+    if key == "recby":
+        return ("Qui recommande cette œuvre ?",
+                "Coche le host ou l'invité qui la recommande, puis valide.")
     if ar.get("note"):
-        parts.append(html.escape(str(ar["note"])))
-    if ar.get("humanCorrection"):
-        parts.append(
-            f'<span class="doubt-human">✔ {html.escape(str(ar["humanCorrection"]))}</span>'
+        return ("Correction suggérée (agent)", html.escape(str(ar["note"])))
+    if ar.get("reason"):
+        return ("À vérifier", html.escape(str(ar["reason"])))
+    hint = {
+        "pending": "Valide, mets en citation, marque « leur œuvre » ou écarte.",
+        "lowconf": "Contrôle rapide, puis valide ou corrige.",
+        "flagged": "Vérifie le signalement, puis corrige ou valide.",
+    }.get(key, "À vérifier.")
+    return ("À vérifier", hint)
+
+
+def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
+                      source_id: str, siblings: list[dict],
+                      edit_id: str | None) -> str:
+    """Bloc « signalement en avant » d'UN doute (refonte 2026-07-21).
+
+    Encadré compact qui met CE QUI DOIT ÊTRE CORRIGÉ en avant : en-tête explicite
+    (type de problème), reco actuelle, correction suggérée par l'agent, puis les
+    actions (✎ Corriger / ✓ OK tel quel / ✕ Écarter). Remplace l'ancienne carte
+    complète (lecteur + contexte) jugée trop lourde à scanner.
+
+    Reste un `<li class="row" data-reco-id>` porteur du form /save : l'AJAX
+    (removeCard) et l'édition inline continuent de fonctionner tels quels.
+    `edit_id == id` → on rend le formulaire d'édition inline à la place.
+    """
+    rid = r.get("id", "")
+    if edit_id and rid == edit_id:
+        return render_edit_form(r, ep, siblings, hosts, "/doutes")
+
+    ar = r.get("agentReview") or {}
+    rid_esc = html.escape(rid)
+    edit_href = (f'/doutes?ep={urllib.parse.quote(ep.get("guid", ""))}'
+                 f'&edit={urllib.parse.quote(rid)}')
+    heading = html.escape(_issue_heading(key, r))
+    meta = _sig_meta(ar)
+    fix_label, fix_txt = _sig_fix(key, ar)
+
+    # Reco actuelle : titre + créateur + « Reco de » + lien timecode + citation.
+    tcl = _yt_timecode_link_parts(r, ep)
+    creator = (f' <i>· {html.escape(str(r["creator"]))}</i>'
+               if r.get("creator") else "")
+    recby = str(r.get("recommendedBy") or "").strip()
+    recby_html = (f' <span class="sig-recby">Reco de {html.escape(recby)}</span>'
+                  if recby else "")
+
+    # Cases « qui recommande » PRÉ-COCHÉES avec le recommendedBy courant : sans
+    # elles, « OK tel quel » (validate) écraserait l'attribution existante (le
+    # save reconstruit recommendedBy à partir des cases `who` soumises).
+    boxes = _reco_checkboxes(
+        _reco_candidates(r, ep, hosts, siblings), r.get("recommendedBy", ""),
+    )
+    other_input = '<input type="text" name="other" placeholder="autre nom…" value="">'
+    if key == "recby":
+        # Le choix du prescripteur EST la correction → cases ouvertes, en avant.
+        who_html = f'<div class="sig-who sig-who-recby">{boxes}{other_input}</div>'
+    else:
+        # Repliées : présentes dans le DOM (valider préserve le recommendedBy
+        # déjà coché) mais discrètes — fidèle à l'aperçu « 3 boutons ».
+        who_html = (
+            '<details class="sig-who-toggle"><summary>👤 Qui recommande ? '
+            f'(facultatif)</summary><div class="sig-who">{boxes}{other_input}'
+            '</div></details>'
         )
-    return f'<div class="agent-review">{" · ".join(parts)}</div>'
+    ok_label = "✓ Valider" if key == "recby" else "✓ OK tel quel"
+    # L'agent était incertain (pending) → on garde les qualifications Citation /
+    # Leur œuvre. Les autres sections restent au trio Corriger / OK / Écarter.
+    extra = (
+        '<button type="submit" name="action" value="citation" class="citation-btn"'
+        ' title="Œuvre évoquée mais pas recommandée">📝 Citation</button>'
+        '<button type="submit" name="action" value="guest-work" class="guestwork-btn"'
+        ' title="Auto-promo d\'un·e invité·e ou d\'un host">⭐ Leur œuvre</button>'
+    ) if key == "pending" else ""
+    human = ar.get("humanCorrection")
+    human_html = (f' <span class="sig-human">✔ {html.escape(str(human))}</span>'
+                  if human else "")
+    meta_html = f'<span class="sig-meta">{meta}</span>' if meta else ""
+
+    return f"""
+    <li class="row sig sig-{html.escape(key)}" data-reco-id="{rid_esc}">
+      <div class="sig-head">🚩 {heading}{meta_html}</div>
+      <div class="sig-current"><span class="sig-label">Reco actuelle :</span>
+        <b>{html.escape(str(r.get("title", "") or "(sans titre)"))}</b>{creator}{recby_html} {tcl.html}
+        {_reco_quote_block(r)}
+      </div>
+      <div class="sig-fix"><span class="sig-fix-label">💡 {html.escape(fix_label)} :</span>
+        <span class="sig-fix-txt">{fix_txt}</span>{human_html}
+      </div>
+      <form method="post" action="/save" class="sig-actions">
+        <input type="hidden" name="id" value="{rid_esc}">
+        {who_html}
+        <div class="sig-btns">
+          <a class="btn-edit" href="{edit_href}">✎ Corriger</a>
+          <button type="submit" name="action" value="validate" class="sig-ok">{ok_label}</button>
+          {extra}
+          <button type="submit" name="action" value="discard" class="discard sig-ecarter">✕ Écarter</button>
+        </div>
+      </form>
+    </li>"""
 
 
 def _render_type_section(
@@ -153,38 +299,21 @@ def _render_type_section(
     source_id: str, groups: dict[str, list[dict]],
     edit_id: str | None,
 ) -> str:
-    """Bloc d'UN type de doute : en-tête explicite (libellé + action + compte)
-    puis toutes ses recos, CHACUNE étiquetée avec son épisode. `items` =
-    [(episode, reco), …]. Les recos sont triées par épisode (saison/numéro)."""
-    items_sorted = sorted(
-        items,
-        key=lambda er: (er[0].get("season") or 0, er[0].get("number") or 9999),
-    )
+    """Bloc d'UN type de doute : en-tête (libellé + compte + description) puis un
+    « signalement en avant » compact par reco. `items` = [(episode, reco), …]
+    (tous du même épisode dans la vue épisode ; déjà triés chronologiquement par
+    `_load_groups`). Refonte 2026-07-21 : encadré signalement au lieu de la carte
+    complète."""
     out = [
         f'<section class="doubt-section doubt-type doubt-type-{html.escape(key)}">'
         f'<h2 class="doubt-type-h">{html.escape(label)} '
         f'<span class="cnt">{len(items)}</span></h2>'
         f'<p class="doubt-type-desc">{html.escape(desc)}</p><ul>'
     ]
-    for ep, r in items_sorted:
-        guid = ep.get("guid", "")
-        ep_href = f"/ep?guid={urllib.parse.quote(guid)}"
-        # Symétrie avec _ep_header : le titre YouTube (souvent un format
-        # anglais) reste consultable en tooltip quand il diffère du RSS.
-        rss_t, yt_t = ep.get("title") or "", ep.get("youtubeTitle") or ""
-        tip = (f' title="YouTube : {html.escape(yt_t)}"'
-               if rss_t and yt_t and yt_t != rss_t else "")
-        # L1 — le bloc agent doit être un <li> (pas un <div> enfant direct de
-        # <ul>) : <li class="doubt-note"> avec l'étiquette épisode + le contexte
-        # agent, juste avant la carte (elle-même un <li>), frères dans le <ul>.
-        out.append(
-            f'<li class="doubt-note">'
-            f'<a class="doubt-ep-tag" href="{ep_href}"{tip}>'
-            f'{html.escape(_ep_label(ep))}</a> {_agent_block(r)}</li>'
-        )
-        out.append(_reco_card(
-            r, ep, hosts, source_id, edit_id=edit_id,
-            siblings=groups.get(guid, []), edit_origin="/doutes",
+    for ep, r in items:
+        out.append(_signalement_card(
+            key, ep, r, hosts, source_id,
+            groups.get(ep.get("guid", ""), []), edit_id,
         ))
     out.append("</ul></section>")
     return "".join(out)
@@ -279,10 +408,15 @@ def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
         f'{html.escape(_SECTION_LABELS[key])} ({len(d["sections"][key])})</a>'
         for key, _t, _dd in _SECTIONS if d["sections"].get(key)
     )
+    # Le titre YouTube (souvent un format anglais) reste consultable en tooltip
+    # quand il diffère du RSS — le per-item ep-tag ayant disparu (refonte 07-21).
+    rss_t, yt_t = ep.get("title") or "", ep.get("youtubeTitle") or ""
+    tip = (f' title="YouTube : {html.escape(yt_t)}"'
+           if rss_t and yt_t and yt_t != rss_t else "")
     # M2 — wrap player inline (liens timecode ciblent target="ytplayer").
     body = [
         banner, back,
-        f'<h1 class="doubt-ep-title">{html.escape(_ep_label(ep))}</h1>',
+        f'<h1 class="doubt-ep-title"{tip}>{html.escape(_ep_label(ep))}</h1>',
         f'<p class="doubt-summary"><b>{d["total"]}</b> reco(s) à revoir — {nav}</p>',
         _PLAYER_WRAP_HTML,
     ]

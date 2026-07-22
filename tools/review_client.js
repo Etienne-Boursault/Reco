@@ -95,7 +95,11 @@
       // traite le doute → la carte DISPARAÎT de la file (au lieu d'être
       // remplacée par sa version « done »), et le focus passe à la suivante.
       const onDoutes = window.location.pathname === '/doutes';
-      if (action === '/save' && onDoutes && data.kind !== 'error') {
+      // Sur /doutes, /save ET /edit sont des décisions TERMINALES : le doute
+      // traité (validé/écarté) ou corrigé DISPARAÎT de la file — le backend a
+      // posé reviewedByHuman — au lieu d'être remplacé par sa carte « done ».
+      // Le focus passe à la reco suivante (removeCard).
+      if ((action === '/save' || action === '/edit') && onDoutes && data.kind !== 'error') {
         removeCard(reco_id);
       } else if (data.card_html) {
         replaceCard(reco_id, data.card_html);
@@ -107,11 +111,15 @@
       // ouvert pour correction).
       if (action === '/edit' && data.kind !== 'error') {
         clearEditParamFromUrl();
-        const fresh = document.querySelector(
-          'li.row[data-reco-id="' + CSS.escape(reco_id) + '"]'
-        );
-        if (fresh && window.__reco.setActiveRow) {
-          window.__reco.setActiveRow(fresh, { noScroll: true, noAutoplay: true });
+        // Sur /doutes la carte vient d'être retirée (édition terminale) → pas de
+        // ré-activation. Ailleurs (/ep), on re-marque la carte fraîche active.
+        if (!onDoutes) {
+          const fresh = document.querySelector(
+            'li.row[data-reco-id="' + CSS.escape(reco_id) + '"]'
+          );
+          if (fresh && window.__reco.setActiveRow) {
+            window.__reco.setActiveRow(fresh, { noScroll: true, noAutoplay: true });
+          }
         }
       }
     } catch (err) {

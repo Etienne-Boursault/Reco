@@ -140,8 +140,8 @@ def test_collect_no_duplicate_between_sections(monkeypatch):
 
 # ---- render_doubts (V2 — groupé PAR TYPE, 2026-07-19) -----------------------
 def test_render_grouped_by_type(monkeypatch):
-    """La page est organisée PAR TYPE d'info à valider (une section par type),
-    chaque reco portant une puce épisode — plus un bloc par épisode."""
+    """La vue épisode est organisée PAR TYPE (une section par type), chaque doute
+    rendu en « signalement en avant » (bloc compact, pas la carte complète)."""
     _patch_groups(monkeypatch, [
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "titre artefact"}),
@@ -149,18 +149,19 @@ def test_render_grouped_by_type(monkeypatch):
               agent={"verdict": "validate", "confidence": 0.9, "reason": "ok"}),
     ])
     out = render_doubts("src", ep="g1")
-    # Sections par type via leurs ancres (markup, pas le CSS inliné) : pending
-    # (r1) et recby (r2, validée sans prescripteur).
+    # Sections par type via leurs ancres : pending (r1) et recby (r2, validée
+    # sans prescripteur).
     assert 'id="sec-pending"' in out
     assert 'id="sec-recby"' in out
-    # L'épisode est visible via une puce sur CHAQUE item → apparaît plusieurs
-    # fois (une par section concernée), et pointe vers la page épisode.
-    assert 'class="doubt-ep-tag"' in out
-    assert out.count("Épisode Un") >= 2
-    assert "/ep?guid=g1" in out
+    # Chaque doute est un bloc « signalement » (li.row.sig).
+    assert 'class="row sig' in out
     assert 'data-reco-id="r1"' in out
     assert 'data-reco-id="r2"' in out
-    # En-têtes de type (nouveaux libellés) + sommaire cliquable.
+    # Reco actuelle + correction + les 3 actions explicites sont mises en avant.
+    assert "Reco actuelle" in out
+    assert "✎ Corriger" in out
+    assert "Écarter" in out
+    # En-têtes de type (libellés) + sommaire cliquable.
     assert "À trancher" in out
     assert "Qui recommande" in out
     assert 'class="doubt-summary"' in out
@@ -241,20 +242,22 @@ def test_render_empty_state(monkeypatch):
     assert "Aucun doute" in out
 
 
-def test_render_section_agent_block_inside_li(monkeypatch):
-    """L1 — chaque bloc agent (.agent-review) est enveloppé dans un <li>,
-    jamais enfant direct d'un <ul> (HTML invalide sinon)."""
+def test_render_signalement_blocks_are_list_items(monkeypatch):
+    """Refonte 2026-07-21 — chaque doute est un <li class="row sig"> enfant direct
+    d'un <ul>, avec un en-tête explicite (.sig-head) et le form /save. HTML
+    valide + AJAX (removeCard cible li.row[data-reco-id])."""
     _patch_groups(monkeypatch, [
         _reco("r1", status="draft",
               agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
     ])
     out = render_doubts("src", ep="g1")
     soup = parse(out)
-    blocks = soup.select(".agent-review")
-    assert blocks  # au moins un bloc rendu
-    for block in blocks:
-        assert block.parent.name != "ul"
-        assert block.find_parent("li") is not None
+    rows = soup.select("li.row.sig")
+    assert rows  # au moins un signalement rendu
+    for li in rows:
+        assert li.parent.name == "ul"
+        assert li.select_one(".sig-head") is not None
+        assert li.select_one('form[action="/save"]') is not None
 
 
 def test_render_includes_player_wrap(monkeypatch):
@@ -409,20 +412,32 @@ def test_render_doubts_flash_kind_sanitized(monkeypatch):
     assert "flash-evil" not in out
 
 
-def test_agent_block_renders_flags_note_and_human_correction(monkeypatch):
-    """Couvre les branches flags / note / humanCorrection de `_agent_block`
-    (le paramètre `section_key` mort a été retiré — rev-render m6)."""
+def test_signalement_shows_flag_label_note_and_human_correction(monkeypatch):
+    """Le bloc signalement met en avant le libellé HUMAIN du flag (pas le slug),
+    la note de l'agent (correction suggérée) et une éventuelle humanCorrection."""
     _patch_groups(monkeypatch, [
-        _reco("r1", status="draft", agent={
-            "verdict": "unsure", "confidence": 0.4,
+        _reco("r1", status="validated", kind="reco", recommended_by="Navo", agent={
+            "verdict": "validate", "confidence": 0.9,
             "reason": "titre douteux",
-            "flags": ["titre suspect", "lien à vérifier"],
+            "flags": ["title_suspect", "link_suspect"],
             "note": "note interne agent",
             "humanCorrection": "corrigé par Kyan",
         }),
     ])
     out = render_doubts("src", ep="g1")
-    assert "titre suspect" in out
-    assert "lien à vérifier" in out
-    assert "note interne agent" in out
-    assert "corrigé par Kyan" in out
+    assert "Titre à vérifier" in out    # libellé humain du flag…
+    assert "Lien à vérifier" in out
+    assert "title_suspect" not in out   # …le slug brut ne fuit pas
+    assert "note interne agent" in out  # correction suggérée
+    assert "corrigé par Kyan" in out    # humanCorrection
+
+
+def test_issue_heading_maps_flags_and_falls_back():
+    """_issue_heading rend un libellé humain par flag (mapping connu) et déslugue
+    proprement un flag inconnu ; sans flag, il retombe sur le libellé de section."""
+    from review_doubts import _issue_heading
+    r = {"agentReview": {"flags": ["title_suspect", "unknown_flag"]}}
+    h = _issue_heading("flagged", r)
+    assert "Titre à vérifier" in h
+    assert "Unknown flag à vérifier" in h  # _deslug_flag
+    assert _issue_heading("recby", {"agentReview": {}}) == "Qui recommande ?"

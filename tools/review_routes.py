@@ -258,6 +258,20 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                          "inconnu (sélectionne au moins un type).")
             return guid, flash, "error"
         _invalidate_reco_path_cache(self.source_id)
+        # Sur /doutes, « Corriger » est une décision humaine TERMINALE : la reco
+        # corrigée doit QUITTER la file (comme Valider/Écarter). On pose le
+        # marqueur reviewedByHuman (cf. review_doubts._section_for) — sinon elle
+        # réapparaîtrait au rechargement malgré la correction (retour
+        # utilisateur 2026-07-21). Ne touche pas l'édition depuis /ep.
+        if self._referer_path() == "/doutes":
+            try:
+                reco = read_json(path)
+                reco.setdefault("agentReview", {})["reviewedByHuman"] = True
+                write_json_if_changed(path, reco)
+                from review_render import _GROUPS_CACHE  # noqa: PLC0415
+                _GROUPS_CACHE.pop(self.source_id, None)
+            except (OSError, ValueError) as exc:
+                log.warning("reviewedByHuman post-édition %s : %s", reco_id, exc)
         log.info("Édité : %s", reco_id)
         return guid, "Modifications enregistrées.", "success"
 
