@@ -4,8 +4,7 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
-      "timestamp_suspect"
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Timestamp '13:09:00' malforme (13h > duree episode ~1h) ; timecode reel ~00:13:07 dans le transcript YT (a corriger a la main). Attribution floue (qui y etait hier ? guest ou host) → recommendedBy vide.",
@@ -50,7 +49,7 @@
   "quote": "J'y étais hier, les mecs. Alors ? Très, très bien. Franchement, mortel. La scène est bonne, la carte est délicieuse, la carte est chanmère.",
   "sourceId": "un-bon-moment",
   "status": "validated",
-  "timestamp": "13:09:00",
+  "timestamp": "00:13:07",
   "title": "Le Fridge",
   "transcriptSource": "youtube",
   "types": [

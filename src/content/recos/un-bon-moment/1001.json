@@ -4,8 +4,7 @@
     "confidence": 0.5,
     "date": "2026-07-14",
     "flags": [
-      "title_suspect",
-      "timestamp_suspect"
+      "title_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Corriger timecode -> 01:37:07 / 01:38:44 et titre (Bref -> Bref 2 ?), trancher l'attribution (invite bouleverse). Reste draft pour l'humain.",
@@ -58,7 +57,7 @@
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "00:49:35",
+  "timestamp": "01:37:07",
   "title": "Bref",
   "transcriptSource": "youtube",
   "types": [

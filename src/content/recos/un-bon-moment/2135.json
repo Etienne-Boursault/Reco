@@ -4,8 +4,7 @@
     "confidence": 0.6,
     "date": "2026-07-17",
     "flags": [
-      "title_suspect",
-      "timestamp_suspect"
+      "title_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Verdict cible = citation. Corriger titre 'Shirley Soignon' -> 'Shirley Souagnon' (humoriste). Timecode reel ~00:05:41 (le 00:41:00 est faux). Appreciation collective des quatre ; recommendedBy peut rester vide.",
@@ -28,13 +27,14 @@
     "anthropic"
   ],
   "id": "ubm-2135",
+  "kind": "citation",
   "links": [],
   "quote": "On a un point commun, tous les quatre, autour de la table, c'est qu'on aime particulièrement Shirley.",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
   "status": "draft",
-  "timestamp": "00:41:00",
-  "title": "Shirley Soignon",
+  "timestamp": "00:05:41",
+  "title": "Shirley Souagnon",
   "transcriptSource": "youtube",
   "types": [
     "artiste"
