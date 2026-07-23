@@ -11,8 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Trancher : soit retitrer en 'Woodkid - Live a Montreux' (guest-work Woodkid), soit fusionner/discard comme doublon de ubm-2610.",
     "reason": "Titre artefact : la quote pointe le 'live a Montreux' de Woodkid (concert dispo sur YouTube, 00:32-00:33) mais le titre affiche 'Colors'. Ambigu : reco distincte du live Montreux (guest-work Woodkid) OU doublon de la perf COLORS/Pale Yellow (ubm-2610). Laisse a l'humain.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Woodkid",
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
   "extractionHistory": [
     {
@@ -29,13 +31,20 @@
     "anthropic"
   ],
   "id": "ubm-2611",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=EPKkjUpwwGY"
+    }
+  ],
   "quote": "Le live à Montreux, par exemple, qu'on peut trouver d'ailleurs sur YouTube",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:33:08",
-  "title": "Colors",
+  "title": "Run Boy Run",
   "transcriptSource": "youtube",
   "types": [
     "video"

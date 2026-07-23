@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "À retitrer (Joe Hisaishi / BO de L'été de Kikujiro) ou fusionner avec ubm-0398, puis retrancher (validate probable).",
     "reason": "'Planète Terre' n'est pas une œuvre — misparse de 'ma musique préférée sur [la] planète Terre'. Le vrai sujet est la musique de Joe Hisaishi (crédité 'Joey Saishi') pour L'été de Kikujiro, encensée par Cyprien. Titre à corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Joey Saishi",
+  "creator": "Joe Hisaishi",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -28,13 +29,14 @@
     "openai"
   ],
   "id": "ubm-1955",
+  "kind": "citation",
   "links": [],
   "quote": "Et ma musique préférée sur Planète Terre, c'est la musique de l'été de Kikujiro.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:41:20",
-  "title": "Planète Terre",
+  "title": "Summer",
   "transcriptSource": "youtube",
   "types": [
     "musique"

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Preciser le vrai nom du spectacle de Kheiron puis passer en guest-work. ~00:24:02.",
     "reason": "'Cairone' (~00:24:02) = mis-transcription de Kheiron (cf. son site kairon.fr) : il s'agit du spectacle de Kheiron (invite), recommande par les hosts ('super spectacle... deja un super complet'). Oeuvre invite = guest-work une fois le titre corrige, mais artefact -> reste en draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Cairone",
@@ -29,13 +30,14 @@
     "openai"
   ],
   "id": "ubm-2325",
+  "kind": "citation",
   "links": [],
   "quote": "et un super spectacle de Cairone dit de manière désinvolte",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:24:00",
-  "title": "Cairone",
+  "title": "Kheiron",
   "transcriptSource": "youtube",
   "types": [
     "artiste"
