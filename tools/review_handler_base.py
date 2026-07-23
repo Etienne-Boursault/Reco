@@ -7,6 +7,7 @@ métier (cf. review_routes.py pour les handlers GET/POST).
 
 from __future__ import annotations
 
+import ipaddress
 import re
 import urllib.parse
 from functools import wraps
@@ -28,6 +29,22 @@ __all__ = [
     "_reco_path",
     "_parse_post_data",
 ]
+
+# Mode LAN (opt-in explicite via `review_server.py --host 0.0.0.0`). Par défaut
+# False : le serveur reste strictement local (127.0.0.1). Quand True, on accepte
+# les clients du RÉSEAU PRIVÉ (réseau maison de confiance) et l'anti-CSRF vérifie
+# Origin == Host de la requête (au lieu d'un « localhost » codé en dur). Ne PAS
+# activer sur un réseau non fiable : le serveur n'a AUCUNE authentification.
+ALLOW_LAN = False
+
+
+def _is_private_ip(ip: str) -> bool:
+    """True si `ip` est dans une plage privée (10/8, 172.16/12, 192.168/16, ::1…)."""
+    try:
+        return ipaddress.ip_address(ip).is_private
+    except ValueError:
+        return False
+
 
 # Limite max sur les requêtes POST (en octets) — anti-DoS.
 _MAX_POST_BYTES = 1 << 20  # 1 MiB
@@ -216,9 +233,11 @@ class BaseHandler(BaseHTTPRequestHandler):
           client est local ET envoie un header custom `X-Reco-CSRF: 1`
           (compatible curl/tests qui ne posent pas d'origine).
         """
-        # #C — DNS rebinding guard : tout client non-local est refusé,
-        # même si Origin pointe localhost.
-        if self.client_address[0] not in ("127.0.0.1", "::1"):
+        # #C — DNS rebinding guard : client non-local refusé. En mode LAN (opt-in
+        # explicite via --host), on accepte AUSSI les clients du réseau privé.
+        client = self.client_address[0]
+        if client not in ("127.0.0.1", "::1") and not (
+                ALLOW_LAN and _is_private_ip(client)):
             return False
 
         origin = self.headers.get("Origin") or self.headers.get("Referer")
@@ -232,7 +251,13 @@ class BaseHandler(BaseHTTPRequestHandler):
         if parsed.scheme not in ("http", "https"):
             return False
         host = (parsed.hostname or "").lower()
-        if host not in ("127.0.0.1", "localhost"):
+        if ALLOW_LAN:
+            # Anti-CSRF réel : l'Origin doit matcher le Host de la requête (même
+            # origine) — en LAN le navigateur utilise l'IP, pas « localhost ».
+            req_host = (self.headers.get("Host") or "").split(":")[0].lower()
+            if not req_host or host != req_host:
+                return False
+        elif host not in ("127.0.0.1", "localhost"):
             return False
         # #5 sécu — vérifier le port aussi : un attaquant qui contrôle un
         # autre service local (ex. dev server sur :3000) ne doit pas pouvoir

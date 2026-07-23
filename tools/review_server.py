@@ -79,7 +79,22 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Outil de relecture local des recos.")
     parser.add_argument("--source", default="un-bon-moment")
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument(
+        "--host", default="127.0.0.1",
+        help="Adresse d'écoute. 127.0.0.1 (défaut) = strictement local. "
+             "0.0.0.0 = accessible sur le réseau LOCAL (active le mode LAN : "
+             "accepte les clients du réseau privé, anti-CSRF conservé). "
+             "N'utiliser 0.0.0.0 que sur un réseau de confiance (aucune auth).")
     args = parser.parse_args()
+
+    # Mode LAN explicite : binder ailleurs que sur localhost accepte les clients
+    # du réseau privé (cf. review_handler_base.ALLOW_LAN). Réseau maison seulement.
+    if args.host not in ("127.0.0.1", "localhost"):
+        import review_handler_base  # noqa: PLC0415
+        review_handler_base.ALLOW_LAN = True
+        log.warning("Mode LAN activé (--host %s) : accessible sur le réseau "
+                    "privé, SANS authentification. À n'utiliser que sur un "
+                    "réseau de confiance.", args.host)
 
     # Charge tools/.env pour que TMDB_API_KEY / SPOTIFY_* soient disponibles
     # dans os.environ — le bouton « Ré-enrichir » en a besoin.
@@ -101,7 +116,7 @@ def main() -> None:
 
     try:
         handler = partial(Handler, source_id=args.source)
-        server = HTTPServer(("127.0.0.1", args.port), handler)
+        server = HTTPServer((args.host, args.port), handler)
         # #23 sécu — le code suppose single-threaded (cf. docs/yagni.md, pas
         # de lock applicatif). Si quelqu'un swap pour `ThreadingHTTPServer`,
         # on veut casser explicitement plutôt qu'introduire des races
@@ -110,8 +125,9 @@ def main() -> None:
         assert not isinstance(server, ThreadingHTTPServer), (
             "review_server est single-threaded by design (pas de lock)"
         )
-        log.info("Relecture sur http://localhost:%d  (Ctrl+C pour arrêter)",
-                 args.port)
+        shown = "localhost" if args.host in ("127.0.0.1", "localhost") else args.host
+        log.info("Relecture sur http://%s:%d  (Ctrl+C pour arrêter)",
+                 shown, args.port)
         try:
             server.serve_forever()
         except KeyboardInterrupt:

@@ -2694,6 +2694,42 @@ def test_csrf_post_with_localhost_origin_accepted(fake_source):
     assert h._status != 403
 
 
+def test_lan_mode_accepts_private_client_matching_origin(fake_source, monkeypatch):
+    """Mode LAN (2026-07-23) — client du réseau privé + Origin == Host → accepté
+    (déport du serveur sur le portable, accès direct par IP LAN)."""
+    import review_handler_base
+    monkeypatch.setattr(review_handler_base, "ALLOW_LAN", True)
+    h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
+    h.client_address = ("192.168.1.50", 12345)
+    h.headers["Host"] = "192.168.1.234:8000"
+    h.headers["Origin"] = "http://192.168.1.234:8000"
+    h.do_POST()
+    assert h._status != 403
+
+
+def test_lan_mode_still_rejects_cross_origin(fake_source, monkeypatch):
+    """Mode LAN — l'anti-CSRF reste actif : Origin != Host de la requête → 403."""
+    import review_handler_base
+    monkeypatch.setattr(review_handler_base, "ALLOW_LAN", True)
+    h = _FakeHandler(fake_source, "/delete-reco", b"id=ubm-001")
+    h.client_address = ("192.168.1.50", 12345)
+    h.headers["Host"] = "192.168.1.234:8000"
+    h.headers["Origin"] = "http://evil.com"
+    h.do_POST()
+    assert h._status == 403
+
+
+def test_lan_mode_off_still_rejects_private_client(fake_source, monkeypatch):
+    """Sécurité par défaut : sans mode LAN, un client privé reste refusé."""
+    import review_handler_base
+    monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)
+    h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
+    h.client_address = ("192.168.1.50", 12345)
+    h.headers["Origin"] = "http://192.168.1.234:8000"
+    h.do_POST()
+    assert h._status == 403
+
+
 def test_csrf_post_with_127_origin_accepted(fake_source):
     """#6 — Origin: http://127.0.0.1:8000 → accepté."""
     body = b"id=ubm-001&action=validate"
