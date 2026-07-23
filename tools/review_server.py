@@ -19,7 +19,11 @@ import sys
 from functools import partial
 from http.server import HTTPServer
 
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:  # dotenv = commodité de dev ; la visionneuse /doutes tourne
+    def load_dotenv(*_args, **_kwargs):  # sans (ex. portable LLM sans pip)
+        return False
 
 from common import TOOLS_DIR, log, read_json  # noqa: F401 — read_json rétro-compat tests
 from review_lock import PipelineLockBusy, ServerLockBusy, acquire_server_lock
