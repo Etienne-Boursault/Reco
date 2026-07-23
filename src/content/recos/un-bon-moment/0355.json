@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Pulsions = spectacle de Kyan Khojandi (host, oeuvre en passant -> discard). A trancher par l'humain : soit retitrer en citation du spectacle de Verino (creator=Verino), soit discard.",
     "reason": "Reco corrompue conflant deux choses (01:17-19) : le TITRE 'Pulsions' = spectacle de KYAN KHOJANDI (host, co-ecrit avec Navo/Bruno Muschio), cite en passant par un invite ('j'etais venu voir Pulsions') donc non prescriptif ; le CREATEUR extrait 'Verino' est errone. Le spectacle reellement encense ('le plus choque, maitrise totale') est celui de VERINO, cite comme influence formatrice (niveau citation).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Verrino",
+  "creator": "Kyan Khojandi",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractionHistory": [
     {
@@ -29,12 +30,14 @@
     "openai"
   ],
   "id": "ubm-0355",
+  "kind": "citation",
   "links": [],
   "quote": "Déjà, j'étais venu voir Pulsion.",
+  "recommendedBy": "Yassir",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:17:50",
-  "title": "Pulsion",
+  "title": "Pulsions",
   "transcriptSource": "acast",
   "types": [
     "spectacle"

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger timecode -> 01:37:07 / 01:38:44 et titre (Bref -> Bref 2 ?), trancher l'attribution (invite bouleverse). Reste draft pour l'humain.",
     "reason": "La quote extraite (00:49:35 gros et chauve comme le mec de Bref) est une punchline de freestyle de Kemmler visant Kyan -> mention instrumentale, PAS une reco. Mais Bref 2 est reellement encense ailleurs (01:37:07 et 01:38:44 j'ai pleure beaucoup). Artefact a corriger avant publication -> reste en draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Kyan Khojandi",
@@ -52,13 +53,14 @@
     "openai"
   ],
   "id": "ubm-1001",
+  "kind": "citation",
   "links": [],
   "quote": "j'ai pas envie de devenir gros et chauve comme le mec de Bref",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:37:07",
-  "title": "Bref",
+  "title": "Bref 2",
   "transcriptSource": "youtube",
   "types": [
     "serie"

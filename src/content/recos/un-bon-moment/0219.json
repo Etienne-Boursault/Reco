@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger la quote (actuellement celle d'Euphoria). Createur reel = Florence Lompre (creatrice/actrice/realisatrice). Recommandeur probable = Augustin Trapenard (registre culturel, eloge du jeu d'acteur), non certain.",
     "reason": "Vraie reco = serie 'Empathie' (Florence Lompre, avec Thomas N'Gijol), recommandee explicitement a 01:32:03 : 'je vous conseille un petit Empathie, la serie... j'ai trouve ca bouleversant... une serie qui merite un Emmy'. MAIS la quote stockee capture par erreur la phrase sur Euphoria (01:31:32) -> a corriger avant publication. NON doublon d'Euphoria (oeuvres distinctes).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Florence Lomp",
@@ -64,8 +65,9 @@
   "id": "ubm-0219",
   "links": [],
   "quote": "Bah non, bah moi, le dernier truc que j'ai regardé, que j'ai aimé, c'est cette série-là, Euphoria.",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:32:01",
   "title": "Empathie",
   "transcriptSource": "youtube",

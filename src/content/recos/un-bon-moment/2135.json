@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Verdict cible = citation. Corriger titre 'Shirley Soignon' -> 'Shirley Souagnon' (humoriste). Timecode reel ~00:05:41 (le 00:41:00 est faux). Appreciation collective des quatre ; recommendedBy peut rester vide.",
     "reason": "Citation voulue : discussion nourrie et admirative de Shirley Souagnon (mentor de Tahnee), avec substance mais sans prescription explicite au public. Bloquee car titre a corriger.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
@@ -32,7 +33,7 @@
   "quote": "On a un point commun, tous les quatre, autour de la table, c'est qu'on aime particulièrement Shirley.",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:05:41",
   "title": "Shirley Souagnon",
   "transcriptSource": "youtube",

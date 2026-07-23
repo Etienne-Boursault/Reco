@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Corriger createur 'Zodo' -> 'The Do'. Prescriptrice = Alice Moitie (invitee absente du champ guests). Verdict de fond = validate une fois le createur corrige. Canonique du triplet Shake Shook Shaken (0333, 1983 = doublons).",
     "reason": "Reco explicite d'Alice Moitie ('je te conseille d'ecouter l'album qui est excellent, Shake Shook Shaken') = un validate sur le fond. MAIS le createur 'Zodo' est une mistranscription de 'The Do' (duo franco-finlandais ; album 2014, Victoire de la musique 2015). Metadonnee a corriger avant publication -> reste en draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Zodo",
+  "creator": "The Dø",
   "episodeGuid": "6960deefb86949aa06496e27",
   "extractionHistory": [
     {
@@ -59,8 +60,9 @@
   "id": "ubm-1662",
   "links": [],
   "quote": "Et je te conseille d'écouter l'album qui est excellent, Shake Shook Shaken.",
+  "recommendedBy": "Alice Moitié",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:05:05",
   "title": "Shake Shook Shaken",
   "transcriptSource": "youtube",

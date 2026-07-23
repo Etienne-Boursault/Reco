@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "TITRE: 'Flick and Games' = 'Flics & Games' (alias '2 Girls 1 Cop'), Anna Apter & Laura Felpin, real. Aurelien Preveaux (2018). Verdict vise: guest-work (oeuvre de l'invitee Laura Felpin, presentee/recommandee par Kyan 'que j'ai adore'). Canonique; doublon = ubm-1042. guests episode a completer.",
     "reason": "Reco reelle d'une video YouTube avec l'invitee Laura Felpin, mais TITRE A CORRIGER avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Laura Felpin",
@@ -39,12 +40,19 @@
     "openai"
   ],
   "id": "ubm-2374",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=8Od7xRpnPOU"
+    }
+  ],
   "quote": "J'aimerais vous recommander une vidéo sur Youtube qui s'appelle Flick and Games",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:39:13",
-  "title": "Flick and Games",
+  "title": "Flics & Game",
   "transcriptSource": "youtube",
   "types": [
     "video"

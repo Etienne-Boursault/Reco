@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "REEL = « La Tragedie du dossard 512 » de Yohann Metay (transcript « Johan Mettet »/« malediction du dossard »). Corriger nom+titre puis valider (recommendedBy Navo).",
     "reason": "Reco FORTE de Navo (« le spectacle est a peter de rire... je big up... essayez de suivre ce qu'il fait ») mais nom ET titre mal transcrits.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Johan Mettet",
+  "creator": "Yohann Métay",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractionHistory": [
     {
@@ -39,11 +40,11 @@
   "id": "ubm-1514",
   "links": [],
   "quote": "ça s'appelle la malédiction du dossard numéro il raconte son Iron Man le spectacle est à péter de rire",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "02:19:10",
-  "title": "La malédiction du dossard",
+  "title": "La tragédie du dossard 512",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

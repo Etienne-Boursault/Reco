@@ -10,8 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Verdict cible = validate, recommendedBy = Lou Trotignon. Corriger 'Noam Cinso' -> 'Noam Sinseau' (poete/performeur, collectif Comedie Love) ; spectacle = 'Makoume Superstar'. Canonique du doublon avec ubm-0140 et ubm-2138. Invite(e) absent(e) de guests[].",
     "reason": "Recommandation explicite (validate voulu) de Lou Trotignon dans le segment recos : 'va sortir son spectacle. Superstar, incroyable. Ca va etre fou.' Bloquee car titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Noam Sinseau",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
   "extractionHistory": [
     {
@@ -38,13 +40,20 @@
     "openai"
   ],
   "id": "ubm-2142",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=DawFkzempUM"
+    }
+  ],
   "quote": "Bah, c'est ce que j'allais dire : Noam Cinso va sortir son spectacle. Superstar, incroyable.",
   "recommendedBy": "Lou Trotignon",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:02",
-  "title": "Noam Cinso",
+  "title": "Iman",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

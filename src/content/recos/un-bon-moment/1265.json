@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct: 'Mister Mystere' (2009). Name-drop marginal ; le relecteur peut aussi discard.",
     "reason": "Name-drop de son propre album 'Mister Mystere' (2009) dans le recit de carriere (01:01, 'j'ai un peu tout casse en noir et blanc'). Verdict vise = citation (name-drop sans presentation), MAIS titre 'Mister' incomplet a corriger.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Matthieu Chedid",
@@ -27,12 +28,14 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1265",
+  "kind": "reco",
   "links": [],
   "quote": "j'ai fait Mister, Mister et j'ai un peu tout cassé en noir et blanc",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Matthieu Chédid",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:01:26",
   "title": "Mister Mystère",
   "transcriptSource": "acast",

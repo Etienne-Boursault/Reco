@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Si conservé : recommendedBy = Rosa Bursztein ; creator « Michaela Coel » probablement erroné (attribution par adjacence à I May Destroy You). Reste draft pour vérification humaine.",
     "reason": "Rosa : « en livre j'avais adoré Trigger Warning, ça parle du viol » (01:10:30). Reco genuine mais œuvre/titre non vérifiables (budget web épuisé) et creator « Michaela Coel » douteux (elle n'a pas écrit ce livre).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Michaela Coel",
@@ -42,9 +43,9 @@
   "quote": "en livre j'avais adoré Trigger Warning ça parle du viol",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:10:30",
-  "title": "Trigger Warning",
+  "title": "I May Destroy You",
   "transcriptSource": "youtube",
   "types": [
     "livre"

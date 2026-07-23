@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Verdict cible = citation. Corriger 'Jeanne Paques' -> 'Euzhan Palcy' ; 'un truc a Pompidou' = retrospective 'Itineraire d'une pionniere'. recommendedBy 'Navo' errone : locutrice feminine evoquant les femmes noires, probablement Tahnee (non certain). Canonique du doublon avec ubm-2146.",
     "reason": "Citation voulue : evocation nourrie et admirative d'Euzhan Palcy (realisatrice martiniquaise, Oscar d'honneur, retrospective au Centre Pompidou) comme exemple de representation ; substance mais prescription faible. Bloquee car titre a corriger.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
@@ -28,13 +29,14 @@
     "anthropic"
   ],
   "id": "ubm-2141",
+  "kind": "citation",
   "links": [],
   "quote": "il y a un truc à Pompidou sur la réalisatrice, une réalisatrice martiniquaise qui s'appelle Jeanne Palsy et qui est la deuxième femme à avoir eu un Oscar d'ailleurs, d'honneur",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Tahnee",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:55:34",
-  "title": "Jeanne Pâques",
+  "title": "Euzhan Palcy",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

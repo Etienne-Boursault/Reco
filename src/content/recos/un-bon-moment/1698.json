@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Verdict visé = validate. Corriger le titre → « Curate » (compte Insta d'Arthur Haddad, reels de décryptage d'œuvres ; cf aussi @hadd_art). « Syndiquez-moi »/« Angelo » = vannes. Reco d'un invité non diarizé (probablement Camille). Doublon 1684 discardé.",
     "reason": "Vraie reco (compte de décryptage d'œuvres d'art d'Arthur Haddad : « contenu extraordinaire », « allez follow », l.4043-4072). MAIS titre « Syndiquez-moi » = vanne (renvoi à Angelo le syndic) ; le script ne corrige pas les titres → reste draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Arthur Haddad",
@@ -42,7 +43,7 @@
   "quote": "Ça s'appelle Syndiquez-moi !",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:35:55",
   "title": "Syndiquez-moi",
   "transcriptSource": "youtube",

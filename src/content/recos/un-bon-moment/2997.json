@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger 'Peter Von Paul' -> 'Peter von Poehl'. Verdict vise: validate (recommandation d'artiste par Vincent Delerm).",
     "reason": "VD recommande chaudement un artiste ('je suis super fan depuis longtemps') — recommandation reelle, mais nom faux: 'Peter Von Paul' -> 'Peter von Poehl' (musicien suedois, arrangeur de VD, verifie WebSearch).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Peter Von Paul",
@@ -42,7 +43,7 @@
   "quote": "un mec qui s'appelle Peter Von Paul",
   "recommendedBy": "Vincent Delerm",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:29:43",
   "title": "Peter Von Paul",
   "transcriptSource": "youtube",

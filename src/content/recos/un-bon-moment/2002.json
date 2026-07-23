@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Œuvre réelle = spectacle 'Dédoublée' de Rosa Bursztein au Paradis Latin le 20/01/2026 (confirmé WebSearch + transcript 'Dédoublé/J'ai doublé'). Renommer 'Paradis Latin' → 'Dédoublée' puis passer en guest-work (recommendedBy Rosa Bursztein).",
     "reason": "01:41:47 : auto-promo du spectacle de Rosa ('je rappelle vos promos le 20 janvier, Paradis Latin, et en tournée'). C'est un guest-work (Rosa Bursztein), MAIS le titre capté 'Paradis Latin' est le LIEU, pas l'œuvre. Titre à corriger avant publication → reste draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Rosa Bursztein",
   "episodeGuid": "693c1da59bb376c45d3fe84f",
   "extractionHistory": [
     {
@@ -26,14 +28,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2002",
+  "kind": "reco",
   "links": [],
   "quote": "Paradis Latin.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:41:47",
-  "title": "Paradis Latin",
+  "title": "Dédoublée",
   "transcriptSource": "youtube",
   "types": [
     "lieu"

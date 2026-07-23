@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre reel = 'Charlie Brown and Franz Stigler incident' ('Stiegler' -> 'Stigler'). Prescripteur probable = Navo. Canonique du doublon (l'autre = ubm-0342).",
     "reason": "Reco explicite ('je vous recommande de vous renseigner sur le Stiegler Brown Incident', 'il faut que tu regardes') d'un fait historique reel = 'Charlie Brown and Franz Stigler incident' (2nde GM, decembre 1943). Mais pas une oeuvre unique/lien canonique (histoire racontee par Patrick Baud, 'plein de YouTubers'), et titre a corriger. Laisse en draft pour l'humain.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "6960deefb86949aa06496e27",
@@ -46,11 +47,18 @@
     "openai"
   ],
   "id": "ubm-1671",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=TSluTZGxdY0"
+    }
+  ],
   "quote": "Renseignez-vous sur ce personnage... Stiegler Brown Incident...",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:52:20",
   "title": "Stiegler Brown Incident",
   "transcriptSource": "youtube",

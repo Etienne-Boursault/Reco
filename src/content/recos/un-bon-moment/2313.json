@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster spectacle-Kyan (doublons discardes : ubm-1033, ubm-2324). Preciser le vrai nom du spectacle puis passer en guest-work.",
     "reason": "Spectacle de Kyan Khojandi (host) recommande par Kheiron (~00:23:57), Navo en 1ere partie. Oeuvre host = guest-work UNE FOIS le titre corrige, mais 'Spectacle Kian' est un artefact -> reste en draft pour titrage humain.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Kian Khojandi",
+  "creator": "Kyan Khojandi",
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
   "extractionHistory": [
     {
@@ -30,11 +31,11 @@
   "id": "ubm-2313",
   "links": [],
   "quote": "d'ailleurs je le recommande Navo, 1ère partie, Kian, regarde la caméra super spectacle",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kheiron",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:23:57",
-  "title": "Spectacle Kian",
+  "title": "Pulsions",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

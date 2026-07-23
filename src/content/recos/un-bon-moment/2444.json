@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger le titre en 'La Boite de petits pois' (GiedRe & Holly R, coll. Une Case en Moins / Delcourt). Verdict cible : guest-work (auto-promo Davy Mourier). Invites absents des metadonnees episode.",
     "reason": "Titre errone : 'Une case en moins' est le nom de la COLLECTION de Davy Mourier, pas le livre. Oeuvre reelle = 'La Boite de petits pois' de GiedRe (ASR 'Guedre'), publiee dans cette collection ; promue par l'invite Davy ('le livre de Guedre que t'as sorti qui est super') -> nature guest-work / auto-promo, mais titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Guédré",
@@ -43,7 +44,7 @@
   "quote": "il y a le livre de Guédré aussi que t'as sorti qui est super",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:55:56",
   "title": "Une case en moins",
   "transcriptSource": "youtube",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Doublon ubm-1256 (discard). Non identifiable (budget WebSearch epuise). Reste draft.",
     "reason": "Nom d'artiste ambigu/garbled (« Barbara Angel... Barbara Annie sur Spotify ») en reponse a « recommander un jeune artiste » ; possiblement un taquinage sur l'invitee Barbara, non tracable.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Barbara Angel",
@@ -33,7 +34,7 @@
   "quote": "Tu vois, Barbara Angel, moi je...",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:19:20",
   "title": "Barbara Annie",
   "transcriptSource": "youtube",

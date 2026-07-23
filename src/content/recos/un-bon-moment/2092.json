@@ -6,6 +6,7 @@
     "humanCorrection": "Artefact « préparation » — rien du tout → discard (retour Etienne)",
     "model": "claude-opus-4-8",
     "reason": "Livre de Jesse (invite) en preparation, autofiction sur sa mere (evoque 00:35 et 'un bouquin preparation... quand tu le sors' 01:58:52). Editorialement = validate (projet d'invite a venir) MAIS 'preparation' est un artefact ('un bouquin [en] preparation'), aucun titre annonce -> laisse draft pour correction humaine du titre.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "68ef607e58893bb6e322c623",
@@ -23,14 +24,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2092",
+  "kind": "reco",
   "links": [],
   "quote": "un bouquin préparation",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "01:58:52",
-  "title": "préparation",
+  "title": "Message Personnel",
   "transcriptSource": "youtube",
   "types": [
     "autre"

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Guest-work reel de Laura Domenge mais spectacle explicitement sans titre a la date de l'episode ('pour l'instant ca n'a pas de nom'). Titre inexploitable en l'etat.",
     "reason": "Le titre 'le titre du nouveau spectacle de Laura Dommage' est un artefact/blague du jeu LOL (le placard vide = son spectacle sans nom). Il pointe vers un vrai guest-work (le nouveau spectacle de Laura, theme insomnie, presente longuement) mais SANS titre publiable. A trancher par l'humain.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "633b305f3ca1cc001201a861",
@@ -32,7 +33,7 @@
   "quote": "C'est le titre du nouveau spectacle de Laura Dommage.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:59:10",
   "title": "le titre du nouveau spectacle de Laura Dommage",
   "transcriptSource": "youtube",

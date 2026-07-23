@@ -10,8 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Corriger le titre en 'Putain de serie' avant publication. Une fois corrige -> guest-work de Jonathan Cohen (sa serie web qu'il recommande). Reste en draft pour decision humaine sur le titre.",
     "reason": "Titre 'serie de merde' est un artefact: c'est une vanne recurrente corrigee en direct dans l'episode ('non c'est putain de serie'). Le vrai titre = 'Putain de serie', serie web de Jonathan Cohen recommandee ('allez la voir, elle est sur youtube, inspiree de The Office').",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Jonathan Cohen",
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "extractionHistory": [
     {
@@ -27,14 +29,23 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0651",
-  "links": [],
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@PutainDeSerie"
+    }
+  ],
   "quote": "il y a série de merde",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Jonathan Cohen",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:05:27",
-  "title": "série de merde",
+  "title": "Putain de série",
   "transcriptSource": "acast",
   "types": [
     "serie"

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : « Kaamelott » (Alexandre Astier). Une fois corrige, publier en citation, recommendedBy Kyan Khojandi.",
     "reason": "Verdict cible = citation : Kaamelott citee comme jalon du programme court (arrivee du multicam, « c'etait interessant », l.847-850), substance sans prescription. Mais titre stocke « Camelot » est un artefact (Camelot est une autre oeuvre) -> a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Alexandre Astier",
@@ -28,11 +29,12 @@
     "anthropic"
   ],
   "id": "ubm-2463",
+  "kind": "citation",
   "links": [],
   "quote": "Camelot, déjà ils sont arrivés avec un multicam et c'était intéressant.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:28:54",
   "title": "Kaamelott",
   "transcriptSource": "youtube",

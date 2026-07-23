@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger le titre en 'Man on the Moon' (Jim Carrey, 1999), creator Jim Carrey, puis citation attribuee a Kyan Khojandi. 'La Dame de Monsoreau' est erronee.",
     "reason": "MAUVAIS TITRE. Le transcript dit 'Madame de Moon' = 'Man on the Moon' (Milos Forman, 1999) ou Jim Carrey joue Andy Kaufman ('il est sublime, il joue'). Le titre enregistre 'La Dame de Monsoreau' est une oeuvre TOTALEMENT differente. Correction du titre impossible via le script -> reste draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Jim Carrey",
@@ -32,9 +33,9 @@
   "quote": "Madame de Moon, il est sublime.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:25:56",
-  "title": "La Dame de Monsoreau",
+  "title": "Man on the Moon",
   "transcriptSource": "youtube",
   "types": [
     "film"

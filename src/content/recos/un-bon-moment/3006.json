@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger 'Poire et Serreau' -> 'Poiret et Serrault'. Verdict vise: validate (recommandation de Vincent Delerm).",
     "reason": "VD recommande un duo comique pour aller mieux ('voir Poiret et Serrault' / Kyan: 'c'est genial') — recommandation reelle, mais nom faux 'Poire et Serreau' -> 'Poiret et Serrault' (Jean Poiret / Michel Serrault, verifie WebSearch).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "63357716bc3f1e0012abed65",
@@ -40,7 +41,7 @@
   "links": [],
   "quote": "Voir Poire et Serreau",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:10:01",
   "title": "Poire et Serreau",
   "transcriptSource": "youtube",

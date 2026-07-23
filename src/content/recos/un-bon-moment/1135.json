@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle: 'Winnterzuko' (rappeur FR hyperpop, Deezer artiste 1160850). Le lien deezer track 15411111 est errone. Attribution: reponse a une question posee aux invites -> probablement Maghla ou Seb, pas Navo. A trancher par l'humain.",
     "reason": "Vraie reco ('Est-ce que vous avez quelqu'un a recommander?' -> 'Winter Zuko. Tres bonne artiste. Genial.', 01:10:52) MAIS titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Winter Zuko",
@@ -54,11 +55,11 @@
   "id": "ubm-1135",
   "links": [],
   "quote": "Winter Zuko ? Très bonne artiste.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Maghla",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:10:52",
-  "title": "Winter Zuko",
+  "title": "Winnterzujo",
   "transcriptSource": "youtube",
   "types": [
     "musique",

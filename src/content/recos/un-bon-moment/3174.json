@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Probablement guest-work (oeuvre de l'invite) si le titre est confirme ; laisse en draft pour identification humaine.",
     "reason": "Le passage renvoie clairement a une oeuvre musicale/comique reelle de Mister V devenue 'un vrai son' avec des streams (00:48-00:49), mais le transcript garble le titre ('Mirador' / 'Solidise' / 'Solidaise') ; identification/validation impossible (WebSearch epuise).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
+  "creator": "Kezah & Freddy",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "extractionHistory": [
     {
@@ -27,13 +29,20 @@
     "anthropic"
   ],
   "id": "ubm-3174",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=UZLNgz1AqCE"
+    }
+  ],
   "quote": "Mais alors, tu étais vachement dans l'eau, mais là, on t'a vu dans Mirador, c'est quand même un truc de ouf.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:48:51",
-  "title": "Solidaise",
+  "title": "Mirador",
   "transcriptSource": "youtube",
   "types": [
     "autre"

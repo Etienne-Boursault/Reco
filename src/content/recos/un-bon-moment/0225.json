@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Type 'autre'. Endossement leger mais explicite d'une association caritative.",
     "reason": "'Bibliotheque sans frontieres' citee positivement en fin d'episode (01:38:58) comme association a soutenir ('faites des dons... une asso qui fait des trucs cool', 'ca c'est bon, ca me plait'). Endossement reel d'une cause, MAIS ce n'est pas une oeuvre -> arbitrage humain: une asso/cause est-elle une reco publiable ?",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "690f87b14e59613eaf07e566",
@@ -33,10 +34,19 @@
     "openai"
   ],
   "id": "ubm-0225",
-  "links": [],
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Site",
+      "url": "https://www.bibliosansfrontieres.org/"
+    }
+  ],
   "quote": "Bibliothèque sans frontières.",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:38:58",
   "title": "Bibliothèque sans frontières",
   "transcriptSource": "youtube",

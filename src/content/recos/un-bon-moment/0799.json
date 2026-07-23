@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Refere a l'album 'Aimee' (2020), dernier album de Julien Dore a l'enregistrement (oct. 2021). Oeuvre d'invite en substance : corriger le titre en 'Aimee' puis re-qualifier guest-work. Invite Julien Dore absent des metadonnees (guests vide).",
     "reason": "Titre-artefact generique ('Dernier album'). Discussion substantielle de l'album de l'invite Julien Dore (themes: deception, romantisme, misanthropie) mais le titre n'est pas exploitable en l'etat.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Julien Doré",
@@ -28,13 +29,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0799",
+  "kind": "reco",
   "links": [],
   "quote": "T'as écouté mon dernier album ?",
+  "recommendedBy": "Julien Doré",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:12:24",
-  "title": "Dernier album",
+  "title": "Aimée",
   "transcriptSource": "acast",
   "types": [
     "album"

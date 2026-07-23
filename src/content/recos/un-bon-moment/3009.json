@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Corriger le titre -> 'Na na na'. Verdict vise: guest-work (Vincent Delerm).",
     "reason": "Chanson de VD (duo avec Mathieu Boogaerts) que Kyan met en avant ('meconnu mais genial') — guest-work sur le fond, mais titre faux: 'Nya, nya, nya, nya.' -> 'Na na na' (Delerm & Boogaerts, verifie WebSearch).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Mathieu Bogert",
+  "creator": "Mathieu Boogaerts & Vincent Delerm",
   "episodeGuid": "63357716bc3f1e0012abed65",
   "extractionHistory": [
     {
@@ -33,9 +34,9 @@
   "quote": "il y a un morceau que tu fais avec Mathieu Bogert qui est un peu méconnu, je trouve, mais qui est génial.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:32:56",
-  "title": "Nya, nya, nya, nya.",
+  "title": "Na Na Na",
   "transcriptSource": "youtube",
   "types": [
     "musique"

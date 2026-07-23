@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique; ubm-1235 est le doublon Acast. Corriger Mona Gouba→Mona Guba. À l'épisode (oct 2023) présentée comme jeune artiste rencontrée à leurs concerts; l'humain doit trancher reco vs chroniqueuse. Attribution Kyan/Navo?",
     "reason": "Mona Guba = jeune rappeuse réelle (freestyles Instagram), recommandée publiquement ('allez voir', ~01:21:30). Titre à corriger (Gouba→Guba) et statut à clarifier: elle est aujourd'hui chroniqueuse d'Un bon moment (tension avec la règle 6).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "652406c019376d001282c4d8",
@@ -42,9 +43,9 @@
   "quote": "Mona Gouba. Jeune rappeuse qui fait des freestyles sur son Instagram.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:21:30",
-  "title": "Mona Gouba",
+  "title": "Mona Guba",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

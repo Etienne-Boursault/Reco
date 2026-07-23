@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct: 'Revalite' (2022). Invite = Matthieu Chedid (-M-), a completer dans guests/guestsParsed. Passer en guest-work une fois le titre corrige.",
     "reason": "Canonique de l'album studio 'Rêvalite' (-M-/Matthieu Chedid, 2022), presente par l'invite et salue comme son meilleur album par Kyan (00:14). Verdict vise = guest-work (auto-promo de l'invite), MAIS le titre 'Realite' est un artefact a corriger en 'Revalite' avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Matthieu Chédid",
@@ -31,12 +32,14 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1143",
+  "kind": "reco",
   "links": [],
   "quote": "je crois que c'est ton meilleur album et je trouve ça fou qu'après 30 ans de carrière on arrive encore à sortir son meilleur album",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Matthieu Chédid",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "00:14:14",
   "title": "Rêvalité",
   "transcriptSource": "acast",

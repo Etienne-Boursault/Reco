@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur = Adib Alkhalidey (humoriste montrealais) ; « Humoriste du Monde » = plateforme ou sa demi-heure de stand-up est dispo. recommendedBy probable = Panayotis Pascot (ami d'Adib). Timecode 01:10:19 OK.",
     "reason": "Vraie recommandation du stand-up d'Adib Alkhalidey, mais le titre « Humoriste du Monde » est la plateforme de diffusion, pas l'oeuvre, et le createur « Dib » est errone : titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Dib",
@@ -27,13 +28,16 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1205",
+  "kind": "reco",
   "links": [],
   "quote": "moi je dirais Dib il a une demi-heure de stand-up disponible sur Humoriste du Monde dans Québec francophone",
+  "recommendedBy": "Adib Alkhalidey",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:10:19",
-  "title": "Humoriste du Monde",
+  "title": "Comedians of the World",
   "transcriptSource": "acast",
   "types": [
     "autre"

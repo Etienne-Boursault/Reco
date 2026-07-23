@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Artiste tres probablement DISIZ (transcription « This Is » / « D6 » = « Disiz »), dernier album « On s'en rappellera pas » (nov. 2025). A confirmer a l'oreille ; si oui -> validate. Canonique ; doublon = ubm-0438.",
     "reason": "Reco enthousiaste d'un album (« je recommande... super album... le dernier album... j'adore le morceau 45 »). Mais l'artiste est transcrit « This Is » (et « D6 » dans le doublon) — nom a confirmer avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "This Is",
+  "creator": "Disiz",
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "extractionHistory": [
     {
@@ -39,11 +40,11 @@
   "id": "ubm-1448",
   "links": [],
   "quote": "je recommande l'album de This Is",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:46:40",
-  "title": "This Is",
+  "title": "On s'en rappellera pas",
   "transcriptSource": "youtube",
   "types": [
     "album"

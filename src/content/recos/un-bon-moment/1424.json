@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a fixer -> 'Kiss the Beast'. recommendedBy probable : Laetitia Casta (reco musique+art donnee avant l'auto-promo Insta de Gilles). Canonique du cluster Tellier (doublons: 0467,0998,1925,1928).",
     "reason": "Vraie reco ('le dernier album de Sebastien Tellier que je trouve dement') mais titre a corriger avant publication : le 'dernier album' = 'Kiss the Beast' (8e album, sorti 30/01/2026). Reste en draft.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Sébastien Tellier",
@@ -41,11 +42,11 @@
   "id": "ubm-1424",
   "links": [],
   "quote": "moi j'ai écouté le dernier album de Sébastien Tellier que je trouve dément",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Gilles Lellouche",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:56",
-  "title": "Dernier album de Sébastien Tellier",
+  "title": "Kiss the Beast",
   "transcriptSource": "acast",
   "types": [
     "album"

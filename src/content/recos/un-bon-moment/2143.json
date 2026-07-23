@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Verdict cible = validate, recommendedBy = Lou Trotignon. Corriger 'Mao Drama' -> 'Mahaut Drama' (membre du collectif Comedie Love avec Lou, Tahnee, Noam Sinseau). Invite(e) absent(e) de guests[].",
     "reason": "Recommandation (validate voulu) de Lou Trotignon dans le segment recos : 'Et puis, Mao Drama aussi.' Bloquee car titre a corriger avant publication.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
@@ -42,9 +43,9 @@
   "quote": "Et puis, Mao Drama aussi.",
   "recommendedBy": "Lou Trotignon",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "01:19:43",
-  "title": "Mao Drama",
+  "title": "Mahaut Di Sciullo",
   "transcriptSource": "youtube",
   "types": [
     "autre"

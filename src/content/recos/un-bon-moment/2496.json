@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Projet de Barbara produit avec sa mere -> auto-promo mais intracable/non sorti. Reste draft. Attribution reelle = Barbara Biancardini (metadonnee « Navo » erronee).",
     "reason": "Projet video de temoignages non encore diffuse (prevu nov. 2023), titre provisoire (« pour l'instant, ca s'appelle La vie sera belle »).",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "6550c05703445c0011dd8343",
@@ -28,11 +29,18 @@
     "anthropic"
   ],
   "id": "ubm-2496",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@125etapres_org"
+    }
+  ],
   "quote": "pour l'instant, ça s'appelle La vie sera belle, pour donner un peu de courage",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "validated",
   "timestamp": "25:47",
   "title": "La vie sera belle",
   "transcriptSource": "youtube",

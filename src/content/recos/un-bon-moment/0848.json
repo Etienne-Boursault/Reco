@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger 'Delherme' -> 'Delerm' dans le titre. Verdict vise: guest-work (spectacle live de Vincent Delerm).",
     "reason": "Spectacle live de VD chaudement recommande par Kyan ('faut vraiment aller voir Vincent Delerm sur scene... ultra marrant') — guest-work (oeuvre de l'invite mise en avant), mais nom mal orthographie dans le titre ('Delherme').",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "creator": "Vincent Delherme",
@@ -33,7 +34,7 @@
   "quote": "Faut vraiment aller voir Vincent Delherme sur scène",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "00:06:36",
   "title": "Vincent Delherme sur scène",
   "transcriptSource": "acast",

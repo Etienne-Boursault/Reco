@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Agathe Mer (00:16). Selon moi hors perimetre (praticienne) -> tendance discard, mais la reco est explicite et forte : je laisse en draft pour decision humaine sur le perimetre. Attribution = l'intervenant qui fait de l'hypnose (incertain).",
     "reason": "Reco explicite forte ('je vous la recommande, elle est formidable') MAIS il s'agit d'une hypnotherapeute (praticienne) — ni oeuvre, ni artiste au sens humoriste/musicien/journaliste. Perimetre editorial a trancher par l'humain.",
+    "reviewedByHuman": true,
     "verdict": "unsure"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -50,7 +51,7 @@
   "quote": "Elle s'appelle Agathe Mer, je vous la recommande, elle est formidable.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "draft",
+  "status": "discarded",
   "timestamp": "01:16:07",
   "title": "Agathe Mer",
   "transcriptSource": "youtube",
