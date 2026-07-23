@@ -395,6 +395,36 @@ def _render_index(source: dict, per_ep: dict[str, dict], source_id: str,
                   f"{total} reco(s) à revoir, {len(per_ep)} épisode(s).", inner)
 
 
+def _ep_nav(per_ep: dict[str, dict], guid: str) -> str:
+    """Flèches ← épisode précédent / suivant → (même ordre que l'index : date
+    décroissante) + position « i / n ». Retour utilisateur 2026-07-23 : naviguer
+    d'un épisode à l'autre sans repasser par la liste."""
+    ordered = sorted(per_ep.items(), key=lambda kv: _ep_sort_key(kv[1]["ep"]),
+                     reverse=True)
+    guids = [g for g, _ in ordered]
+    try:
+        i = guids.index(guid)
+    except ValueError:
+        return ""
+    n = len(guids)
+    prev_g = guids[i - 1] if i > 0 else None
+    next_g = guids[i + 1] if i < n - 1 else None
+
+    def link(g: str | None, label: str, cls: str) -> str:
+        if g is None:
+            return f'<span class="doubt-nav-x {cls} disabled">{label}</span>'
+        return (f'<a class="doubt-nav-x {cls}" '
+                f'href="/doutes?ep={urllib.parse.quote(g)}">{label}</a>')
+
+    return (
+        '<nav class="doubt-nav">'
+        f'{link(prev_g, "← Épisode précédent", "prev")}'
+        f'<span class="doubt-nav-pos">{i + 1} / {n}</span>'
+        f'{link(next_g, "Épisode suivant →", "next")}'
+        '</nav>'
+    )
+
+
 def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
                     hosts: list[str], source_id: str,
                     groups: dict[str, list[dict]], edit_id: str | None,
@@ -419,9 +449,10 @@ def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
     rss_t, yt_t = ep.get("title") or "", ep.get("youtubeTitle") or ""
     tip = (f' title="YouTube : {html.escape(yt_t)}"'
            if rss_t and yt_t and yt_t != rss_t else "")
+    epnav = _ep_nav(per_ep, guid)
     # M2 — wrap player inline (liens timecode ciblent target="ytplayer").
     body = [
-        banner, back,
+        banner, back, epnav,
         f'<h1 class="doubt-ep-title"{tip}>{html.escape(_ep_label(ep))}</h1>',
         f'<p class="doubt-summary"><b>{d["total"]}</b> reco(s) à revoir — {nav}</p>',
         _PLAYER_WRAP_HTML,
@@ -435,6 +466,7 @@ def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
             + _render_type_section(key, label, desc, [(ep, r) for r in items],
                                    hosts, source_id, groups, edit_id)
         )
+    body.append(epnav)  # flèches aussi en bas (après avoir traité les doutes)
     return _shell(source.get("title", source_id),
                   f'{d["total"]} reco(s) — {_ep_label(ep)}', "".join(body))
 

@@ -245,6 +245,15 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-mini-recby{color:#a2c4ee;border-color:#1f3a5c;}
 .doubt-mini-lowconf{color:#a9e3b8;border-color:#2c5a38;}
 .doubt-ep-title{max-width:820px;margin:.6rem auto .2rem;font-size:1.2rem;}
+/* Navigation entre épisodes (flèches préc./suiv.) — refonte 2026-07-23. */
+.doubt-nav{max-width:820px;margin:.6rem auto;display:flex;align-items:center;
+  justify-content:space-between;gap:.6rem;}
+.doubt-nav-x{background:#17171c;border:1px solid #2a2a30;border-radius:8px;
+  padding:.4em .9em;font-size:.85rem;font-weight:600;color:#e6e4dd;
+  text-decoration:none;white-space:nowrap;}
+.doubt-nav-x:hover{border-color:#ffd23f;color:#ffd23f;}
+.doubt-nav-x.disabled{opacity:.35;pointer-events:none;}
+.doubt-nav-pos{color:#9a99a3;font-size:.8rem;white-space:nowrap;}
 /* Refonte /doutes 2026-07-21 : bloc « signalement en avant » par doute.
    Met explicitement en avant CE QUI DOIT ÊTRE CORRIGÉ (en-tête = type de
    problème, reco actuelle, correction suggérée) puis 3 actions claires. */

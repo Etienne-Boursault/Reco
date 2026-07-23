@@ -213,6 +213,35 @@ def test_render_index_lists_episodes_recent_first(monkeypatch):
     assert 'class="doubt-ep-list"' in out
 
 
+def test_render_episode_has_prev_next_nav(monkeypatch):
+    """2026-07-23 — la vue épisode a des flèches préc./suiv. (ordre date desc,
+    comme l'index) + la position « i / n »."""
+    source = {"title": "Src", "hosts": []}
+    episodes = {
+        "old": {"guid": "old", "title": "Vieux", "date": "2020-01-01"},
+        "mid": {"guid": "mid", "title": "Milieu", "date": "2023-01-01"},
+        "new": {"guid": "new", "title": "Récent", "date": "2026-01-01"},
+    }
+    groups = {}
+    for g in ("old", "mid", "new"):
+        r = _reco("r" + g, status="draft",
+                  agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"})
+        r["episodeGuid"] = g
+        groups[g] = [r]
+    monkeypatch.setattr(review_doubts, "_load_groups",
+                        lambda source_id: (source, episodes, groups))
+    out = render_doubts("src", ep="mid")
+    # Ordre date desc : new, mid, old → mid est 2/3, préc.=new, suiv.=old.
+    assert 'class="doubt-nav"' in out
+    assert 'href="/doutes?ep=new"' in out
+    assert 'href="/doutes?ep=old"' in out
+    assert "2 / 3" in out
+    # Aux extrémités : la flèche manquante est désactivée (pas de lien).
+    out_new = render_doubts("src", ep="new")
+    assert "1 / 3" in out_new
+    assert 'doubt-nav-x prev disabled' in out_new
+
+
 def test_render_edit_button_targets_doutes(monkeypatch):
     """Sur /doutes, le bouton Éditer reste dans la file (/doutes?edit=) pour
     revenir à /doutes après save (#M3) — jamais vers /ep."""
