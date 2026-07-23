@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite Pierre Niney absent des metadonnees (guests vides). Canonique; doublon avec ubm-1632 (titre anglais 'Guru').",
     "reason": "Film 'Gourou' de Pierre Niney (invite, role principal + producteur), coeur de la promo de l'episode, sortie 28 janvier 2026 (Yann Gozlan). Auto-promo assumee = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Yann Gozlan",
@@ -73,7 +74,7 @@
     }
   ],
   "quote": "C'était l'affiche de Gourou, j'ai eu la chance de le voir en avant-première. C'était vraiment mortel, j'ai kiffé.",
-  "recommendedBy": "Pierre Niney",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:02:16",
