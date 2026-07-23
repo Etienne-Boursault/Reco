@@ -118,6 +118,17 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 self.source_id, ep=ep_guid, edit_id=edit_id,
                 flash=flash, flash_kind=kind))
             return
+        if parsed.path == "/doublons":
+            # Page de consolidation MANUELLE des doublons (cf. review_dedup_page).
+            from review_dedup_page import render_dedup_page  # noqa: PLC0415
+            qs = urllib.parse.parse_qs(parsed.query)
+            flash = qs.get("flash", [""])[0] or None
+            kind = qs.get("kind", [""])[0]
+            if kind not in ("success", "warning", "error", "info"):
+                kind = "info"
+            self._send(200, render_dedup_page(self.source_id, flash=flash,
+                                              flash_kind=kind))
+            return
         if parsed.path == "/ep":
             self._handle_get_episode(parsed.query)
             return
@@ -227,6 +238,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             return
         if route == "/undo-merge":
             self._handle_undo_merge(data)
+            return
+        if route == "/consolidate":
+            self._handle_consolidate(data)
             return
         # M1 (revue 2026-07-19) : router les routes « reco » EXPLICITEMENT. Sans
         # ça, TOUTE route POST inconnue (même `POST /`) tombait dans le
@@ -465,6 +479,41 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         reco["kind"] = "reco"
         reco.pop("guestWork", None)
         log.info("Validé : %s -> %s", reco_id, recommended or "(personne)")
+
+    def _handle_consolidate(self, data: dict) -> None:
+        """POST /consolidate (page /doublons) : garde les recos COCHÉES du cluster
+        (avec leur type + titre corrigé), écarte les autres. reviewedByHuman posé
+        partout (décision humaine). Le recommendedBy existant est préservé."""
+        members = data.get("member", [])
+        keep = set(data.get("keep", []))
+        n_keep = n_disc = 0
+        for rid in members:
+            if not _RE_RECO_ID.match(rid):
+                continue
+            path = _reco_path(self.source_id, rid)
+            if path is None:
+                continue
+            reco = read_json(path)
+            if rid in keep:
+                new_title = (data.get(f"title_{rid}") or [""])[0].strip()
+                if new_title:
+                    reco["title"] = new_title
+                action = (data.get(f"type_{rid}") or ["validate"])[0]
+                if action not in _SAVE_ACTIONS or action == "discard":
+                    action = "validate"
+                existing = str(reco.get("recommendedBy") or "").strip()
+                self._apply_save_action(reco, action, existing, rid)
+                n_keep += 1
+            else:
+                self._apply_save_action(reco, "discard", "", rid)
+                n_disc += 1
+            write_json_if_changed(path, reco)
+        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        _GROUPS_CACHE.pop(self.source_id, None)
+        log.info("Consolidé : %d gardée(s), %d écartée(s)", n_keep, n_disc)
+        flash = f"Consolidé : {n_keep} gardée(s), {n_disc} écartée(s)."
+        self._send_redirect(
+            f"/doublons?flash={urllib.parse.quote(flash)}&kind=success")
 
     def _handle_rename_guest(self, data: dict) -> None:
         """POST /rename-guest : délègue à review_guests.handle_rename_guest.

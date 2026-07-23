@@ -375,7 +375,8 @@ def _render_index(source: dict, per_ep: dict[str, dict], source_id: str,
                   flash: str | None, flash_kind: str) -> str:
     """Index léger : la liste des épisodes à revoir (aucune carte ni lecteur)."""
     banner = _flash_banner(flash, flash_kind)
-    back = '<a class="back" href="/">← tous les épisodes</a>'
+    back = ('<a class="back" href="/">← tous les épisodes</a> · '
+            '<a class="back" href="/doublons">🔗 Doublons à consolider</a>')
     total = sum(d["total"] for d in per_ep.values())
     if total == 0:
         inner = f"{banner}{back}<p>Aucun doute en attente — tout est validé. 🎉</p>"

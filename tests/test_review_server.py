@@ -2730,6 +2730,31 @@ def test_lan_mode_off_still_rejects_private_client(fake_source, monkeypatch):
     assert h._status == 403
 
 
+def test_consolidate_keeps_and_discards(fake_source):
+    """POST /consolidate (page /doublons, 2026-07-23) — les recos COCHÉES (keep)
+    sont validées avec leur type + titre corrigé, les autres du cluster écartées ;
+    reviewedByHuman posé partout."""
+    from common import read_json, recos_dir_for
+    d = recos_dir_for(fake_source)
+    for i in ("1", "2"):
+        (d / f"ubm-cons{i}.json").write_text(json.dumps({
+            "id": f"ubm-cons{i}", "episodeGuid": "ep-001", "types": ["film"],
+            "title": f"T{i}", "status": "draft"}), encoding="utf-8")
+    rs._invalidate_reco_path_cache(fake_source)
+    body = (b"member=ubm-cons1&member=ubm-cons2&keep=ubm-cons1"
+            b"&type_ubm-cons1=citation&title_ubm-cons1=Titre+corrige")
+    h = _FakeHandler(fake_source, "/consolidate", body)
+    h.do_POST()
+    assert h._status == 303
+    a = read_json(d / "ubm-cons1.json")
+    b = read_json(d / "ubm-cons2.json")
+    assert a["status"] == "validated" and a["kind"] == "citation"
+    assert a["title"] == "Titre corrige"
+    assert a["agentReview"]["reviewedByHuman"] is True
+    assert b["status"] == "discarded"
+    assert b["agentReview"]["reviewedByHuman"] is True
+
+
 def test_csrf_post_with_127_origin_accepted(fake_source):
     """#6 — Origin: http://127.0.0.1:8000 → accepté."""
     body = b"id=ubm-001&action=validate"

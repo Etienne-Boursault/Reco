@@ -307,3 +307,27 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .sig-radio:hover{border-color:#3a3a40;}
 .sig-radio:has(input:checked){border-color:#ffd23f;color:#ffd23f;background:#1f1c0a;}
 .sig-radio-discard:has(input:checked){border-color:#6b3a3a;color:#d88;background:#1a1010;}
+/* Page /doublons — consolidation manuelle (2026-07-23). */
+.dup-cluster{background:#141418;border:1px solid #2a2a30;border-radius:12px;
+  padding:1rem 1.2rem;margin:1rem auto;max-width:860px;}
+.dup-h{font-size:1rem;border-bottom:1px solid #2a2a30;padding-bottom:.3rem;}
+.dup-h .cnt{background:#1f1c0a;color:#ffd23f;border:1px solid #ffd23f55;
+  border-radius:999px;padding:.05em .6em;font-size:.75rem;vertical-align:middle;}
+.dup-hint{color:#9a99a3;font-size:.82rem;margin:.3rem 0 .8rem;}
+.dup-members{list-style:none;padding:0;margin:0;}
+.dup-member{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem;
+  border:1px solid #23232a;border-radius:8px;margin:.4rem 0;background:#17171c;}
+.dup-member.dup-survivor{border-left:3px solid #5ab68a;}
+.dup-keep{background:#0e0e10;border:1px solid #2a2a30;border-radius:8px;
+  padding:.4em .7em;font-size:.8rem;font-weight:600;white-space:nowrap;
+  cursor:pointer;display:flex;align-items:center;gap:.35em;}
+.dup-keep:has(input:checked){border-color:#5ab68a;color:#7fd0aa;}
+.dup-body{flex:1;min-width:0;}
+.dup-title{width:100%;background:#0e0e10;border:1px solid #2a2a30;color:#f6f4ee;
+  border-radius:6px;padding:.35em .6em;font-size:.95rem;font-weight:700;}
+.dup-suggest{color:#5ab68a;font-size:.7rem;font-weight:600;margin-left:.3rem;}
+.dup-meta{color:#8a8992;font-size:.75rem;display:block;margin:.3rem 0;}
+.dup-meta code{color:#9a99a3;}
+.dup-type{margin-top:.3rem;}
+.dup-member:not(:has(.dup-keep input:checked)){opacity:.5;}
+.dup-member:not(:has(.dup-keep input:checked)) .dup-title{text-decoration:line-through;}
