@@ -85,11 +85,27 @@ def collect_dup_clusters(source_id: str):
         groups_by_root.setdefault(find(i), []).append(i)
     clusters = []
     for members in groups_by_root.values():
-        active = [byid[i] for i in members if byid[i].get("status") != "discarded"]
-        if len(active) >= 2:
-            active.sort(key=lambda r: (-len(r.get("links") or []),
-                                       -len(r.get("extractors") or []), r["id"]))
-            clusters.append(active)
+        # « À trancher » = pas encore décidé par un humain (reviewedByHuman).
+        # Critère volontairement basé là-dessus (et NON sur le statut) : (1) les
+        # jumelles écartées par l'AGENT — pas par l'humain — restent à revoir (ex.
+        # cluster Valérie Lemercier tout discardé par l'agent, l'humain veut en
+        # garder une en citation) ; (2) après « Consolider », tout devient
+        # reviewedByHuman → le cluster disparaît (même si on garde plusieurs recos
+        # actives au même titre). Retour utilisateur 2026-07-23.
+        # Membres ACTIFS non encore tranchés par un humain. Critère reviewedByHuman
+        # (et non le simple statut) → APRÈS « Consolider », tout devient
+        # reviewedByHuman et le cluster DISPARAÎT, même si on a gardé plusieurs
+        # recos actives au même titre (bug signalé 2026-07-23). On ne montre QUE
+        # les clusters à ≥2 actives : les cas « tout écarté par l'agent » (ex.
+        # Valérie Lemercier) se restaurent dans /doutes (section « Confiance
+        # faible ») — les inclure ici noierait la page (~69 clusters d'agent-discard).
+        active_p = [byid[i] for i in members
+                    if byid[i].get("status") != "discarded"
+                    and not (byid[i].get("agentReview") or {}).get("reviewedByHuman")]
+        if len(active_p) >= 2:
+            active_p.sort(key=lambda r: (-len(r.get("links") or []),
+                                         -len(r.get("extractors") or []), r["id"]))
+            clusters.append(active_p)
     clusters.sort(key=lambda c: (c[0].get("episodeGuid", ""),
                                  _ts_seconds(c[0].get("timestamp")) or 0))
     return source, episodes, clusters
@@ -113,12 +129,16 @@ def _member_row(r: dict, ep: dict, is_survivor: bool) -> str:
         f'{lbl}</label>' for v, lbl in _TYPES)
     quote_html = f'<p class="q">« {html.escape(quote)} »</p>' if quote else ""
     badge = ' <span class="dup-suggest">★ suggérée</span>' if is_survivor else ""
-    # SÉCURITÉ : tout coché par défaut. On DÉCOCHE les doublons à écarter — jamais
-    # de perte accidentelle si un cluster est un faux positif (œuvres co-citées).
+    is_disc = r.get("status") == "discarded"
+    # Case cochée par défaut si la reco est ACTIVE (on la garde). Une reco déjà
+    # écartée (par l'agent) est décochée → la cocher la RESTAURE. Sécurité : rien
+    # ne se perd/change sans (dé)cochage explicite puis Consolider.
+    checked = "" if is_disc else " checked"
+    keep_label = "Restaurer" if is_disc else "Garder"
     return (
         f'<li class="dup-member{" dup-survivor" if is_survivor else ""}">'
-        f'<label class="dup-keep"><input type="checkbox" name="keep" value="{rid}" '
-        f'checked> Garder</label>'
+        f'<label class="dup-keep"><input type="checkbox" name="keep" value="{rid}"'
+        f'{checked}> {keep_label}</label>'
         f'<div class="dup-body">'
         f'<input class="dup-title" type="text" name="title_{rid}" '
         f'value="{html.escape(r.get("title") or "")}" aria-label="titre">{badge}'
