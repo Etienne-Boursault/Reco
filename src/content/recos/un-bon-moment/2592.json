@@ -5,8 +5,7 @@
     "date": "2026-07-18",
     "flags": [
       "guest_missing",
-      "title_suspect",
-      "duplicate_suspect"
+      "title_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Verifie transcript 01:41:58-01:42:20. Attribution Anis : la question '[a] Anis, t'as une recommandation ?' (retranscrit 'A Nice') precede sa reponse ; Anis absent de guests -> guest_missing. Titre probable reel = 'Gangsters' (Deezer Originals, narre par JoeyStarr) ; WebSearch impossible (budget epuise) -> title_suspect. Canonique ; ubm-1192 fusionne ici.",
