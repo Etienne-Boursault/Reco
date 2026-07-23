@@ -157,14 +157,39 @@ def test_render_grouped_by_type(monkeypatch):
     assert 'class="row sig' in out
     assert 'data-reco-id="r1"' in out
     assert 'data-reco-id="r2"' in out
-    # Reco actuelle + correction + les 3 actions explicites sont mises en avant.
+    # Reco actuelle + correction + choix du type (radios) + actions.
     assert "Reco actuelle" in out
     assert "✎ Corriger" in out
-    assert "Écarter" in out
+    assert "Pas une reco" in out  # radio « discard »
     # En-têtes de type (libellés) + sommaire cliquable.
     assert "À trancher" in out
     assert "Qui recommande" in out
     assert 'class="doubt-summary"' in out
+
+
+def test_signalement_type_radios(monkeypatch):
+    """2026-07-23 — chaque signalement propose le TYPE par radios (Reco /
+    Citation / Leur œuvre / Pas une reco, name=action) ; le défaut coché = le
+    type actuel de la reco."""
+    _patch_groups(monkeypatch, [
+        _reco("r1", status="draft",
+              agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
+        _reco("rc", status="validated", kind="citation",
+              agent={"verdict": "citation", "confidence": 0.9, "reason": "ok",
+                     "flags": ["title_suspect"]}),
+    ])
+    out = render_doubts("src", ep="g1")
+    for val in ("validate", "citation", "guest-work", "discard"):
+        assert f'name="action" value="{val}"' in out
+    assert "⭐ Reco" in out and "📝 Citation" in out and "🎭 Leur œuvre" in out
+    soup = parse(out)
+
+    def checked(rid):
+        li = soup.select_one(f'li[data-reco-id="{rid}"]')
+        r = li.select_one('input[name="action"]:checked')
+        return r["value"] if r else None
+    assert checked("r1") == "validate"   # draft → Reco par défaut
+    assert checked("rc") == "citation"   # kind=citation → Citation par défaut
 
 
 def test_render_types_ordered_within_episode(monkeypatch):

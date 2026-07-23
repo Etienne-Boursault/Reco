@@ -295,3 +295,15 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .sig-ok{background:#5ab68a;color:#08130d;}
 .sig-ok:hover{background:#6bc79b;}
 .sig-ecarter{font-size:.9rem;}
+/* Choix du type par radio (Reco / Citation / Leur œuvre / Pas une reco) — 2026-07-23 */
+.sig-type{border:1px solid #2a2a30;border-radius:8px;padding:.35em .6em;margin:.3rem 0 .5rem;
+  display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;}
+.sig-type legend{float:none;width:auto;color:#8a8992;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.05em;padding:0 .35em 0 0;}
+.sig-radio{display:inline-flex;align-items:center;gap:.35em;background:#0e0e10;
+  border:1px solid #2a2a30;border-radius:999px;padding:.25em .75em;font-size:.85rem;
+  font-weight:600;color:#cfcdc6;cursor:pointer;}
+.sig-radio input{margin:0;accent-color:#ffd23f;}
+.sig-radio:hover{border-color:#3a3a40;}
+.sig-radio:has(input:checked){border-color:#ffd23f;color:#ffd23f;background:#1f1c0a;}
+.sig-radio-discard:has(input:checked){border-color:#6b3a3a;color:#d88;background:#1a1010;}

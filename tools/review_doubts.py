@@ -56,6 +56,15 @@ _SECTIONS: tuple[tuple[str, str, str], ...] = (
 )
 _SECTION_LABELS = {key: label for key, label, _d in _SECTIONS}
 
+# Type de la reco, choisi par bouton radio dans chaque signalement (retour
+# utilisateur 2026-07-23). (valeur d'action /save, libellé, infobulle).
+_TYPE_RADIOS: tuple[tuple[str, str, str], ...] = (
+    ("validate", "⭐ Reco", "Vraie recommandation"),
+    ("citation", "📝 Citation", "Œuvre évoquée mais pas recommandée"),
+    ("guest-work", "🎭 Leur œuvre", "Auto-promo d'un·e invité·e ou d'un host"),
+    ("discard", "✕ Pas une reco", "À écarter"),
+)
+
 
 def _section_for(reco: dict) -> str | None:
     """Section (unique) où ranger une reco — None si rien à revoir."""
@@ -262,15 +271,21 @@ def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
             f'(facultatif)</summary><div class="sig-who">{boxes}{other_input}'
             '</div></details>'
         )
-    ok_label = "✓ Valider" if key == "recby" else "✓ OK tel quel"
-    # L'agent était incertain (pending) → on garde les qualifications Citation /
-    # Leur œuvre. Les autres sections restent au trio Corriger / OK / Écarter.
-    extra = (
-        '<button type="submit" name="action" value="citation" class="citation-btn"'
-        ' title="Œuvre évoquée mais pas recommandée">📝 Citation</button>'
-        '<button type="submit" name="action" value="guest-work" class="guestwork-btn"'
-        ' title="Auto-promo d\'un·e invité·e ou d\'un host">⭐ Leur œuvre</button>'
-    ) if key == "pending" else ""
+    # Type choisi par radio, disponible PARTOUT (avant, Citation/Leur œuvre
+    # n'étaient que dans la section pending). Défaut = type actuel de la reco
+    # (l'agent l'a peut-être déjà qualifiée).
+    if r.get("guestWork"):
+        default_action = "guest-work"
+    elif r.get("kind") == "citation":
+        default_action = "citation"
+    else:
+        default_action = "validate"
+    radios = "".join(
+        f'<label class="sig-radio sig-radio-{val}" title="{html.escape(tip)}">'
+        f'<input type="radio" name="action" value="{val}"'
+        f'{" checked" if val == default_action else ""}> {lbl}</label>'
+        for val, lbl, tip in _TYPE_RADIOS
+    )
     human = ar.get("humanCorrection")
     human_html = (f' <span class="sig-human">✔ {html.escape(str(human))}</span>'
                   if human else "")
@@ -289,11 +304,10 @@ def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
       <form method="post" action="/save" class="sig-actions">
         <input type="hidden" name="id" value="{rid_esc}">
         {who_html}
+        <fieldset class="sig-type"><legend>Type :</legend>{radios}</fieldset>
         <div class="sig-btns">
           <a class="btn-edit" href="{edit_href}">✎ Corriger</a>
-          <button type="submit" name="action" value="validate" class="sig-ok">{ok_label}</button>
-          {extra}
-          <button type="submit" name="action" value="discard" class="discard sig-ecarter">✕ Écarter</button>
+          <button type="submit" class="sig-ok">✓ Enregistrer</button>
         </div>
       </form>
     </li>"""
