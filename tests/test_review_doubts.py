@@ -320,6 +320,25 @@ def test_section_for_human_reviewed_leaves_queue():
     assert _section_for({**base, "agentReview": ar}) == "pending"
 
 
+def test_section_for_discarded_flagged_leaves_queue():
+    """2026-07-23 — une reco DISCARDED avec flags n'est plus un « signalement »
+    (la décision d'écarter est prise) SAUF si faible confiance → lowconf (on
+    re-contrôle un discard limite). Sinon les jumelles discardées des clusters
+    de doublons encombraient /doutes."""
+    from review_doubts import _section_for
+    ar = {"verdict": "discard", "flags": ["duplicate_suspect"]}
+    # discarded + flags + confiance haute → quitte la file
+    assert _section_for({"status": "discarded",
+                         "agentReview": {**ar, "confidence": 0.9}}) is None
+    # discarded + flags + confiance faible → lowconf (re-contrôle)
+    assert _section_for({"status": "discarded",
+                         "agentReview": {**ar, "confidence": 0.4}}) == "lowconf"
+    # actif (non discarded) + flags → toujours flagged
+    assert _section_for({"status": "validated", "kind": "reco", "recommendedBy": "X",
+                         "agentReview": {"verdict": "validate", "confidence": 0.9,
+                                         "flags": ["title_suspect"]}}) == "flagged"
+
+
 def test_render_doubts_cancel_returns_to_doutes(monkeypatch):
     """M2 (rev-render) — le lien Annuler de l'édition inline sur /doutes revient
     à /doutes (pas /ep) : le save y retournait déjà, l'Annuler suit."""

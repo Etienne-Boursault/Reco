@@ -69,7 +69,13 @@ def _section_for(reco: dict) -> str | None:
         return None
     if ar.get("verdict") == "unsure":
         return "pending"
-    if ar.get("flags"):
+    # Une reco DISCARDED n'est pas un doute ouvert : sa décision (écarter) est
+    # prise. Ses flags deviennent sans objet — on ne la met donc PAS en
+    # « signalement ». Exception : si sa confiance est faible, elle retombe en
+    # `lowconf` ci-dessous (re-contrôle d'un discard limite). Sans ça, les
+    # jumelles discardées des clusters de doublons encombraient /doutes (571 sur
+    # un-bon-moment au 2026-07-23).
+    if ar.get("flags") and reco.get("status") != "discarded":
         return "flagged"
     # « Reco de » à compléter : recos validées sans prescripteur. Une œuvre
     # d'invité (guestWork) est aussi une reco (kind=reco) → même traitement.
