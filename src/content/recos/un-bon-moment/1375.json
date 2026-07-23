@@ -10,8 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre définitif « Cette éducation me déteste » (ex-provisoire « L'école c'est de la merde »). Créateur probable = Pierre Hillairet (monteur/réalisateur vidéo, court-métrage en 4e) mais non diarisé — à confirmer. Œuvre non trouvée en ligne (récente / titre provisoire).",
     "reason": "Documentaire sur l'école réalisé par une personne présente et présenté par elle (« t'as fait un podcast sur l'école ? ouais... que j'ai envoyé à Arte »).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
+  "creator": "Anis Rhali",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "extractionHistory": [
     {
@@ -36,7 +38,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:44:37",
-  "title": "Cette éducation me déteste",
+  "title": "L'école c'est de la merde",
   "transcriptSource": "acast",
   "types": [
     "podcast"

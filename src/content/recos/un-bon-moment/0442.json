@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« le film dans lequel t'avais joué. Ah, pour Aka ? » — film joué par une invitée (échange Navo↔Natoo). Œuvre d'invité = validate même modeste. À VÉRIFIER (mention ténue, attribution incertaine).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69a169ac519334f049d06785",
@@ -28,9 +29,10 @@
     "openai"
   ],
   "id": "ubm-0442",
-  "kind": "reco",
+  "kind": "citation",
   "links": [],
   "quote": "ah pour Aka",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:33",

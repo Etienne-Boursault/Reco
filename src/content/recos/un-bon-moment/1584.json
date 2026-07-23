@@ -5,6 +5,7 @@
     "date": "2026-07-07",
     "model": "claude-opus-4-8",
     "reason": "Fortnite : appreciation experientielle forte ('j'ai pete un cable', 'on n'a jamais vecu ca dans un jeu video') mais recit personnel, pas de prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -52,6 +53,7 @@
     }
   ],
   "quote": "Moi, je me souviens de la première fois où j'ai joué à Fortnite.",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:15",

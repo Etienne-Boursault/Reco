@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe à confirmer — probablement 'Gurky' (YouTubeur FR, contenus food/bizarres) ; le transcript hésite sur la prononciation.",
     "reason": "Fanny recommande avec enthousiasme le créateur ('en ce moment je m'enfile tous les Gorky... c'est super, il est génial, good vibe').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
@@ -56,11 +57,11 @@
     }
   ],
   "quote": "Du coup, en ce moment, je m'enfile tous les Gorky.",
-  "recommendedBy": "Fanny La Panny",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:27",
-  "title": "Gorky",
+  "title": "Gurky",
   "transcriptSource": "youtube",
   "types": [
     "video"

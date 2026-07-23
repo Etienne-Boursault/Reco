@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Le draft attribuait a tort « Kyan Khojandi » : c'est AZ (aux hosts on demande separement « vous jouez cet ete les gars ? »). Metadonnees invites VIDES.",
     "reason": "Auto-promo du spectacle de l'invite AZ : « je viens de finir a l'europeen, je reprends Palais des Glaces en octobre » (00:17:18). Confirme en cloture (« AZ au Grand Palais des Glaces fin 2026 »). Regles 2/16/17 → guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
@@ -47,7 +48,7 @@
   "quote": "je reprends Palais des Glaces en octobre",
   "recommendedBy": "AZ",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:18:19",
   "title": "Palais des Glaces",
   "transcriptSource": "youtube",

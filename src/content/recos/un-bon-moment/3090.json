@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Ambigu: programme des invités ou programme tiers où Thaïs apparaît ? Invités absents des métadonnées. À arbitrer humainement (guest-work vs validate).",
     "reason": "'Encore vous' (programme court sur les clichés du cinéma, YouTube/Gulli/MyCanal) promu avec insistance ('allez voir ça'), épisode avec l'invitée Thaïs — auto-promo liée aux invités (règles 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
@@ -26,7 +27,6 @@
   "extractors": [
     "anthropic"
   ],
-  "guestWork": true,
   "id": "ubm-3090",
   "kind": "reco",
   "links": [
@@ -44,6 +44,7 @@
     }
   ],
   "quote": "Encore vous disponible sur la chaîne YouTube et Gull ! Si vous aimez... Sur My Canal ! Les tropes ! Les petits clichés du cinéma !",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:25:31",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invitee absente des metadonnees: Shirley Souagnon. Englobe les cine-rencontres (cf. doublons ubm-0502/ubm-1391).",
     "reason": "Spectacle 'Etre Humain' de Shirley Souagnon (ci-ne-rencontres), presente par elle des 00:08:28. Auto-promo d'invitee. Reco canonique de ce projet Shirley.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Shirley",
@@ -55,7 +56,6 @@
     "anthropic",
     "openai"
   ],
-  "guestWork": true,
   "id": "ubm-1381",
   "kind": "reco",
   "links": [

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco émanant de Thomas Deseur (invité), pas d'un host. Les métadonnées 'guests' de l'épisode sont vides alors que l'épisode a deux invités (Thomas Deseur, Charles Brunet) — à compléter, d'où recommendedBy laissé vide.",
     "reason": "Prescription réelle d'un film par l'invité Thomas Deseur (extrait de son livre, catégorie 'engueulé avec un parent') ; œuvre externe réelle (The Descendants, Alexander Payne, 2011).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Alexander Payne",
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "J'ai mis si tu viens de t'engueuler avec ton père, mais ça marche avec ta mère. J'ai mis The Descendant de Alexander Payne.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "09:48",

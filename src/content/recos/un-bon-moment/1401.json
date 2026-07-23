@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Exemple rhetorique, pas une reco d'artiste autonome.",
     "reason": "Ricky Gervais (artiste) evoque comme appui rhetorique dans une discussion sur l'honnetete (00:43:58 tres fan... il en parle dans ses spectacles), sans presentation d'oeuvre. L'oeuvre concrete (Mortality) est traitee en validate (ubm-1003).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "creator": "Ricky Gervais",
@@ -44,11 +45,12 @@
     "openai"
   ],
   "id": "ubm-1401",
+  "kind": "citation",
   "links": [],
   "quote": "moi je suis très très fan de Ricky Gervais",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Mosimann",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:43:58",
   "title": "Ricky Gervais",
   "transcriptSource": "youtube",

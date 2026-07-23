@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Anecdote de production, pas une prescription.",
     "reason": "That's My People (NTM) discute avec substance (making-of : instru de Sully, prise unique conservee par accident technique, 00:12:28) mais sans prescription. Oeuvre reelle -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "NTM",
@@ -69,6 +70,7 @@
     }
   ],
   "quote": "That's My People de NTM avec le sang de Chopin",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:12:28",

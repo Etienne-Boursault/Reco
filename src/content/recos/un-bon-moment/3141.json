@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locutrice au feminin (« je suis allee voir ») = Camille Lavabre, mais metadonnees guests=[] a completer.",
     "reason": "Dans le tour de recos, Camille (invitee) recommande avec substance et enthousiasme le dernier spectacle des Chiens de Navarre (« ils sont tres tres forts », « c'est la claque ») ; oeuvre d'un tiers (troupe de Jean-Christophe Meurisse), pas de l'invitee -> validate (regle 15).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",

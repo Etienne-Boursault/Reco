@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE. Doublon discarde : ubm-0523 ('Les Preuves du Feu' = mauvaise transcription). Titre/casting non re-verifiables (WebSearch epuise) -> title_suspect. Invite a completer : Nassim Lyes.",
     "reason": "Film francais 'L'epreuve du feu' recommande par Nassim : 'Franchement, je vous conseille de le regarder', 'c'est trop bien joue'. Locuteur = Nassim (ligne 1040 'Nassim est comme ca dans la vraie vie' commente son enthousiasme). Premier film, selection Cesar, avec Suzanne Jouannet et Felix Lefebvre.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Anja Verderosa",
@@ -73,7 +74,7 @@
     }
   ],
   "quote": "Franchement, j'ai adoré le film L'épreuve du feu.",
-  "recommendedBy": "Nassim Lyes",
+  "recommendedBy": "Anaïde Rozam",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:29:16",

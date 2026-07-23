@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« Zébrelo je l'adore... il est génial, exceptionnel, je me suis abonné » — YouTuber de vulgarisation scientifique loué. NOM GARBLÉ (Zébrelo/Zébrollo/Zébra élo) à vérifier. Endossement sans prescription explicite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69a169ac519334f049d06785",
@@ -43,8 +44,12 @@
   ],
   "id": "ubm-1458",
   "kind": "citation",
+  "linkOverrides": {
+    "YouTube": "https://www.youtube.com/@zebroloss"
+  },
   "links": [],
   "quote": "Zébrelo je l'adore.",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:20",

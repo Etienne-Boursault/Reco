@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'Flight' (le transcript dit aussi 'The Flight'). Reco de Thomas Deseur, pas Kyan. Invité absent des métadonnées.",
     "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie peur de l'avion, extrait du livre) ; œuvre réelle avec Denzel Washington (Flight, Robert Zemeckis, 2012).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Robert Zemeckis",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Le film avec Denzel. Flight. The Flight. Où l'avion se retourne carrément.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:35",

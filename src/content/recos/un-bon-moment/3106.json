@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Host (Kyan ou Navo), non diarizable → recommendedBy vide (regle 3).",
     "reason": "Reco d'un host a AZ : « je sais pas si tu regardes Curb Your Enthusiasm de Larry David... tout le monde adore regarder ce gars », avec description du ressort comique. Oeuvre tierce (Larry David), pas d'un invite → validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Larry David",
@@ -25,7 +26,7 @@
     "anthropic"
   ],
   "id": "ubm-3106",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "tu vois Larry David je sais pas si tu regardes Curb Your Enthusiasm de Larry David",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:35",

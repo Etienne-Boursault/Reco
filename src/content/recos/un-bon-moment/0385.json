@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Kyan est celui qui s'etait trompe (« Merci d'avoir corrige, Navo »).",
     "reason": "Fargo evoque en debut d'emission : Kyan corrige une reco passee (mauvaise saison) et raconte une scene qu'il a trouvee interessante — substance mais pas de prescription nette dans ce passage.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Noah Hawley",
@@ -58,7 +59,7 @@
     "openai"
   ],
   "id": "ubm-0385",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -74,7 +75,7 @@
     }
   ],
   "quote": "En fait, j'avais pas vu la saison 4.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:05:37",

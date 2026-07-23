@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'Pulsions' (pluriel), spectacle intégral gratuit sur YouTube.",
     "reason": "Kyan promeut son propre spectacle et invite à le voir ('il y a mon spectacle qui est gratuit sur YouTube, ça s'appelle Pulsions').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Kyan Khojandi",
@@ -63,7 +64,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:34:09",
-  "title": "Pulsion",
+  "title": "Pulsions",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

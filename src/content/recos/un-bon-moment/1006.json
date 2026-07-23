@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution Kyan/Navo indeterminee (non diarize).",
     "reason": "Recommandation explicite: 'moi je recommande le film Marty Supreme... allez le voir' (01:26:22). Film reel (drame ping-pong). Reco canonique du cluster Marty Supreme.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
@@ -75,6 +76,7 @@
     }
   ],
   "quote": "le film Marty Suprême",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:22",

@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine (intervenant en tournage a Strasbourg).",
     "reason": "Reco explicite d'un lieu : 'je recommande aussi la ville de Strasbourg... c'est genial' (01:36:59) ; 'lieu' est un type valide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Je recommande aussi la ville de Strasbourg. Parce que je ne connaissais pas. C'est génial.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:36:59",

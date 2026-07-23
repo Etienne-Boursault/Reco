@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom reel: Panayotis Pascot (transcription 'Pana'/'Pana Otis'/'Naotis'). Attribution Kyan/Navo indeterminee.",
     "reason": "Panayotis Pascot: admiration reelle avec substance ('j'ai vu son spectacle, il m'inspire, ce qu'il fait c'est incroyable, tournee de zenith') MAIS cadre = discussion sur la com/reseaux ('c'est un bon exemple'), pas de prescription explicite au public. Citation. Canonique du cluster Panayotis.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Pana",
@@ -43,7 +44,7 @@
   "links": [],
   "quote": "Pana je trouve que c'est un des mecs qui n'a pas le succès",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:42:52",
   "title": "Pana",
   "transcriptSource": "youtube",

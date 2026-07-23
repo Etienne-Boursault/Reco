@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Charlie Danger absente de guests[] (metadonnees) mais invitee du titre — a ajouter.",
     "reason": "Chaine YouTube « Les Revues du Monde » de l'invitee Charlie Danger, presentee/vantee par Kyan des l'intro (« que j'adore regarder... kiffant d'apprendre »). Oeuvre d'invitee. Chaine reelle (1M+ abonnes).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Charlie Danger",
@@ -73,7 +74,7 @@
     }
   ],
   "quote": "Charlie, tu as la chaîne Les Revues du Monde, que j'adore regarder, parce que c'est vraiment kiffant d'apprendre tellement de trucs à chaque fois.",
-  "recommendedBy": "Charlie Danger",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:02:31",

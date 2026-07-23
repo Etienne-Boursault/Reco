@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite absent des metadonnees: Nordine Ganso.",
     "reason": "'Blanc', prochain spectacle de Nordine Ganso (suite de 'Violet', serie de couleurs confirmee web), presente et developpe par lui (idees, com, Groenland) a 00:38:57. Projet a venir d'un invite = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
@@ -35,7 +36,6 @@
   "extractors": [
     "openai"
   ],
-  "guestWork": true,
   "id": "ubm-1385",
   "kind": "reco",
   "links": [

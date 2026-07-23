@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Source probablement invitee (bloc final, hosts declinent) -- non diarizee.",
     "reason": "Recommandation enthousiaste (01:36:49) : le plus beau film de l'annee 2025, L'ame ideale... ca m'a retourne le bide... le meilleur truc qui existe. Film reel (Alice Vial, 2025, avec Jonathan Cohen).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jonathan Cohen",
@@ -78,6 +79,7 @@
     }
   ],
   "quote": "moi j'ai vu le plus beau film de l'année 2025 L'âme idéale",
+  "recommendedBy": "Mosimann",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:36:49",

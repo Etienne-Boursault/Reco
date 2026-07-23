@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Borderline citation/discard: tranche discard (mention instrumentale d'un principe).",
     "reason": "Principe des Accords tolteques ('ne pas faire de suppositions') cite comme maxime pour appuyer un propos sur l'empathie ('j'ai juste envie de citer'). Usage instrumental, l'ouvrage n'est pas discute ni prescrit.",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "creator": "Don Miguel Ruiz",
@@ -34,11 +35,12 @@
     "anthropic"
   ],
   "id": "ubm-1574",
+  "kind": "reco",
   "links": [],
   "quote": "après j'ai juste envie de citer avec un Toltec ne pas faire de suppositions",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "53:03",
   "title": "Les Quatre Accords toltèques",
   "transcriptSource": "youtube",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur reel: Lucas Pastor (chaine YouTube CHAISE - d'ou 'la video de chaise'/'Shays'); corriger 'Pastore'->'Pastor'. Attribution Kyan/Navo indeterminee (non diarize).",
     "reason": "Recommandation explicite: 'moi j'allais recommander la video... je vous conseille de la regarder en entier' (01:25:36). Video reelle 'Les 624 types de profs' de Lucas Pastor. Reco canonique du cluster 624.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Lucas Pastore",
@@ -58,6 +59,7 @@
     }
   ],
   "quote": "la vidéo de chaise Lucas Pastore qui a un peu buzzé les 624 types de profs",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:25:36",

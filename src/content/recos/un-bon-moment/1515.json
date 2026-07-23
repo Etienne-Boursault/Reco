@@ -5,6 +5,7 @@
     "date": "2026-07-07",
     "model": "claude-opus-4-8",
     "reason": "Doublon de ubm-1514 : « recommander un artiste comique... Johan Mettet » = meme reco que son spectacle (oeuvre concrete conservee en canonique).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
@@ -34,11 +35,11 @@
   "id": "ubm-1515",
   "links": [],
   "quote": "je voulais recommander un artiste comique je trouve qu'il est incroyable il s'appelle Johan Mettet",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "discarded",
   "timestamp": "02:18:46",
-  "title": "Johan Mettet",
+  "title": "Yohann Métay",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

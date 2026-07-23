@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Host (Kyan ou Navo) non diarizable → recommendedBy vide (regle 3).",
     "reason": "Un host affirme Magnolia comme film n°1 et le defend (« en un c'est Magnolia... et apres pour moi tous les autres films ils se tapent ») → prescription reelle. Film tiers (Paul Thomas Anderson), pas l'oeuvre d'un invite → validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Paul Thomas Anderson",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "en un c'est Magnolia",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:44",

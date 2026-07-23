@@ -6,6 +6,7 @@
     "humanCorrection": "Titre corrigé (« Le Pire Guide de Cyprien » → « Le pire guide du Japon ») ; œuvre réelle, validate maintenu",
     "model": "claude-opus-4-8",
     "reason": "« Le Pire Guide de Cyprien... je le recommande... il est incroyable » — reco explicite (x2), livre réel de Cyprien. Note : ironique (« je l'ai pas encore lu, on l'a reçu »), un co-host conteste. Locuteur non tranchable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Cyprien",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "J'ai reçu le pire guide de Cyprien ! Je l'ai pas encore lu je l'ai reçu alors du coup je le recommande ! Il est incroyable !",
+  "recommendedBy": "Kyan Khojandi & Navo & Natoo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:36",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Correction titre : « sauce park » (transcript) -> « South Park » (regle 8).",
     "reason": "Kian recommande explicitement un episode de South Park a propos de sa fille (« je vous recommande »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",
@@ -43,7 +44,7 @@
     }
   ],
   "quote": "je lui ai mis un épisode de sauce park avec beaucoup de gros mots dedans et je vous recommande",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:25:13",

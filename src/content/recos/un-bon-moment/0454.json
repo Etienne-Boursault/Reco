@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« Un super livre qui s'appelle Le Papillon des étoiles... de Bernard Werber... C'est un très bon livre, c'est très très bon » — reco explicite avec résumé. Locuteur Kyan/Navo non tranchable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bernard Werber",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "C'est un très bon livre !",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:34",

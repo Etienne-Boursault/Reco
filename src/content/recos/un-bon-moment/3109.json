@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Host (Kyan ou Navo) non diarizable → recommendedBy vide (regle 3).",
     "reason": "Un host place La Chevre (Francis Veber) dans son top 3, assume (« bah moi je crois que la chevre il est dans mon top 3 », « j'ai deja dit la chevre pour mes films preferes ») → prescription reelle. Comedie tierce, pas l'oeuvre d'un invite → validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Francis Veber",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "bah moi je crois que la chèvre il est dans mon top 3",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:05:55",

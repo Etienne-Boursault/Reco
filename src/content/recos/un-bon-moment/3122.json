@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco de Thomas Deseur (pas Kyan) ; pressenti pour le volume 2 de son livre mais recommandé et résumé longuement. Invité absent des métadonnées.",
     "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie 'j'en peux plus de mon taf', décrit en détail) ; œuvre réelle (God Bless America, Bobcat Goldthwait, 2011).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Ah si, il y en a un qui s'appelle... God Bless America, je crois. Un mec qui est au taf.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:01:43",

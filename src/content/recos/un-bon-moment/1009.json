@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Nom exact = « Histoires Crépues » ; créateur = Seumboy Vrainom (transcrit « Sunboy »). Recommandé par un invité/host, non diarisé.",
     "reason": "Reco explicite (« moi je recommande la chaîne YouTube Histoire Crépu... c'est hyper intéressant, ça fait du bien »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Sunboy",
+  "creator": "Seumboy",
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "extractionHistory": [
     {
@@ -67,13 +68,14 @@
     }
   ],
   "quote": "la chaîne YouTube Histoire Crépu c'est une chaîne qui parle de décolonisation de racisme",
+  "recommendedBy": "Anis Rhali",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:25",
-  "title": "Histoire Crépu",
+  "title": "Histoires Crépues",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom exact = Ameziane (Instagram @hahamez, Jamel Comedy Club, spectacle « Seum & Spleen ») ; « Amzian » et « Hachamez » = même personne. Recommandé par un invité, non diarisé.",
     "reason": "Reco explicite (« Amzian trop fort... il plie des salles, il a du propos, j'ai beaucoup d'admiration pour lui »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Amzian",
@@ -73,10 +74,11 @@
     }
   ],
   "quote": "je recommande peut-être aussi un stand-up... Amzian trop fort",
+  "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:19",
-  "title": "Amzian",
+  "title": "Ameziane",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Last of Us (doublon ubm-0480).",
     "reason": "The Last of Us : 'le jeu est quand meme super' — appreciation dans la discussion jeu/serie, sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -43,6 +44,7 @@
     }
   ],
   "quote": "De Last of Us, c'est bien, mais c'est une... le jeu est quand même super.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:20",

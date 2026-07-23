@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre paraphrase par les intervenants ; probablement Giulia Enders 'Le Charme discret de l'intestin' (Darm mit Charme) — titre/auteur exacts a confirmer a l'enrichissement.",
     "reason": "Best-seller d'une medecin allemande sur l'intestin ('le troisieme cerveau'), evoque avec substance a l'appui de la discussion intestin/humeur ; pas de prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "médecin allemande",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "On sous-estime, c'est un bouquin allemand, le troisième cerveau qui a l'estomac, quoi.",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:17:23",

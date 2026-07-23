@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Le titre est un descriptif ; morceau réel probable = 'To the End (La Comédie)' de Blur avec Françoise Hardy.",
     "reason": "Collaboration Blur × Françoise Hardy évoquée comme 'un son incroyable... vraiment inédit' — partage d'un morceau réel avec appréciation légère, sans prescription. Canonique (1952 doublon).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
+  "creator": "Blur & Françoise Hardy",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -43,10 +45,11 @@
     }
   ],
   "quote": "Il y a un son incroyable de Blur avec Françoise Hardy.",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:25:55",
-  "title": "Blur & Françoise Hardy",
+  "title": "To the end",
   "transcriptSource": "acast",
   "types": [
     "musique"

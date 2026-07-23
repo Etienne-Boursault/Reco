@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandé par un invité (Anis ou Pierre), non diarisé. Duo réel Lucas Garat & Veufla, spectacle « En carence de fer » au Théâtre du Contrescarpe (Paris). Canonique des doublons Veufla.",
     "reason": "Reco explicite d'un invité (« j'ai vu le spectacle de deux potes à moi, Lucas et Veufla... c'est hyper puissant »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Lucas et Veufla",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "j'ai vu le spectacle de deux potes à moi le spectacle de Lucas et Veufla",
+  "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:33",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Enchaine sur le tour de Navo mais l'echange est a plusieurs voix ; attribution host a confirmer.",
     "reason": "Recommande dans le tour de recos (« Rick et Morty saison 9 », « genial », « l'episode du cornichon »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",
@@ -43,7 +44,7 @@
     }
   ],
   "quote": "Rick et Morty saison 9",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:49",

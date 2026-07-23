@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe 'Pierre Illéret' à confirmer (WebSearch épuisé). Ancien monteur de l'émission (6 ans), déjà reçu comme invité par le passé mais PAS invité de cet épisode. Reco émanant de Thomas Deseur (invité absent des métadonnées).",
     "reason": "Jeune humoriste loué ('il est trop fort', 'un jeune artiste') sans prescription d'une œuvre précise ; admiration entre pairs, approuvée par les hosts.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Pierre Hillairet",
@@ -29,7 +30,7 @@
     "anthropic"
   ],
   "id": "ubm-3119",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "Tu vois, dans les jeunes, à Pierre Illéret, moi, je trouve que ça fait... Un jeune artiste, encore.",
+  "recommendedBy": "Navo & Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:38:49",

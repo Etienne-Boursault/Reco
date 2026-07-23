@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« c'est pour ça qu'on l'a pas mis dans Bref 2 » — œuvre du HOST (Kyan), citée en aparté sur le process créatif, sans reco. Note : série attendue, mais mention instrumentale.",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "69a169ac519334f049d06785",
@@ -22,12 +23,14 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1937",
+  "kind": "reco",
   "links": [],
   "quote": "Je pense même que c'est pour ça qu'on l'a pas mis dans \"Bref 2\".",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "01:11:21",
   "title": "Bref 2",
   "transcriptSource": "youtube",

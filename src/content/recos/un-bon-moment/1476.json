@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (Kyan ou Cyprien) — l'a revu le matin même.",
     "reason": "Défense passionnée et prescriptive de 'La Soupe aux choux' (1981) pour sa seconde partie dramatique ('il faut qu'on le re-regarde... une scène qui te prend au cœur, à pleurer').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louis de Funès",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "J'ai revu récemment la soupe aux choux et la première partie où ils pètent dans le...",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:22:49",

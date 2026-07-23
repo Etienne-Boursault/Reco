@@ -5,6 +5,7 @@
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
     "reason": "Name-drop anecdotique du prof de stand-up dans le recit des debuts d'un invite (« j'ai ecrit stand-up a Paris sur Google, j'ai vu cours de stand-up Alex Nguyen, on a fait un ou deux cours »). Pas de prescription de l'oeuvre (regle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
@@ -23,11 +24,12 @@
     "anthropic"
   ],
   "id": "ubm-3103",
+  "kind": "citation",
   "links": [],
   "quote": "j'ai vu cours de stand-up à Paris Alex Nguyen",
-  "recommendedBy": "Invité (non nommé)",
+  "recommendedBy": "AZ",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:27:55",
   "title": "Alex Nguyen",
   "transcriptSource": "youtube",

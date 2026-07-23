@@ -5,9 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Balade Mentale - video 'Les Futurs Lointains' (01:21): 'une video dans Balade Mentale qui est geniale... il y a le lien, c'est une super video'. Reco explicite d'une video precise. Locuteur incertain -> vide. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Ballade Mental",
+  "creator": "Balade Mentale",
   "episodeGuid": "697d34fef1dd68ab365aea03",
   "extractionHistory": [
     {
@@ -68,13 +69,13 @@
     }
   ],
   "quote": "Il y a une vidéo dans Balade Mentale qui est géniale d'ailleurs...",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:24",
-  "title": "Les Futurs Lointains",
+  "title": "Les Futurs Lointains, un voyage en direction de l'éternité",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "video"
   ]
 }

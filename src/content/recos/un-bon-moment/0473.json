@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Police Flash 80 (2026, real. Jean-Baptiste Saurel) : Thomas Ngijol co-scenariste + acteur (Luc Le Timal), Xavier Lacaille acteur (Roberto). recommendedBy vide car porte par les deux invites. Timestamp/quote de l'extraction cale sur la camera (00:10:36) ; titre du film enonce a 00:10:46.",
     "reason": "Film promotionnel des deux invites (raison de leur venue), presente/hype tout l'episode.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -73,6 +74,7 @@
     }
   ],
   "quote": "Aujourd'hui, on reçoit Xavier Lacaille et Thomas N. Gijol. Vous l'avez remarqué depuis le début de l'émission qui a commencé bien avant. Il a capté l'accès à sa petite caméra.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:10:30",

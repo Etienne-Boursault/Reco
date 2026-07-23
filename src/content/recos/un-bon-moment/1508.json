@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre reel = « Can't Get You Out of My Head » (Kylie Minogue), clip realise par Michel Gondry. Host non identifiable.",
     "reason": "Apres la devinette, un host recommande chaudement le clip : « l'excellent clip de Michel Gondry... t'as jamais vu ce clip ? incroyable » + eloge de la realisation.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Kylie Minogue",
@@ -49,7 +50,7 @@
   ],
   "quote": "c'est le clip de Michel Gondry\nmais sur lequel elle marche dans la rue\nI can't get you off of my head",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:31:29",
   "title": "I Can't Get You Off of My Head",
   "transcriptSource": "youtube",

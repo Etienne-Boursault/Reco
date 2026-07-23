@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« Inno Casablanca... super artiste, c'est de la bonne musique, c'est génial » — reco musicale explicite avec substance. Locuteur Kyan/Navo non tranchable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69a169ac519334f049d06785",
@@ -67,6 +68,7 @@
     }
   ],
   "quote": "Inno Casablanca ! C'est de la musique !",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:15",

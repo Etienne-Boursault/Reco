@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco de Thomas Deseur, pas Kyan. Invité absent des métadonnées.",
     "reason": "Prescription d'un film par l'invité Thomas Deseur (catégorie colère/vengeance, extrait du livre) ; œuvre réelle (Les Nouveaux Sauvages / Relatos salvajes, Damián Szifron, 2014), confirmée dans l'échange ('la version sud-américaine de Szifron').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Damián Szifron",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Les Nouveaux Sauvages ? Ah oui. Génial, Les Nouveaux Sauvages.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:44",

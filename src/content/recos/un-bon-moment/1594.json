@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco generale (pas un film precis). Locuteur probable : Gilles Lellouche. Canonique (doublon: ubm-1926).",
     "reason": "Les grands classiques d'Hitchcock : reco explicite ('moi je vous recommande d'aller voir les grands classiques d'Hitchcock'). Prescription generale au public.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Alfred Hitchcock",
@@ -41,6 +42,7 @@
   "kind": "reco",
   "links": [],
   "quote": "aller voir les grands classiques d'Hitchcock",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:46",

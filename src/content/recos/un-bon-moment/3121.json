@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "C'est Thomas Deseur qui prescrit ('J'ai mis Crazy Stupid Love', extrait de son livre), pas Kyan comme au brouillon. Invité absent des métadonnées.",
     "reason": "Prescription réelle d'un film par l'invité Thomas Deseur (extrait de son livre, catégorie chagrin d'amour) ; œuvre externe réelle (Crazy, Stupid, Love, 2011).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Glenn Ficarra, John Requa",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "J'ai mis Crazy Stupid Love, qui est pour le coup une comédie romantique qui a des petits défauts, mais qui est... Bah, je trouve, elle a des bons persos.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:01:05",

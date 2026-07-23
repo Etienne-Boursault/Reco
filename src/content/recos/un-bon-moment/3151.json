@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (Kyan ou l'invité Orelsan, tous deux musiciens, dans une discussion technique sur la prod) → recommendedBy vide (règle 3).",
     "reason": "Artiste discuté avec substance et admiration sincère (« j'adore ses prods », « instinct de pur génie », « ça me touche en plein cœur ») mais dans une comparaison sur les philosophies de production, sans prescription claire (règle 4).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6a47e41c08da053175fb135e",
@@ -27,7 +28,7 @@
     "anthropic"
   ],
   "id": "ubm-3151",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",

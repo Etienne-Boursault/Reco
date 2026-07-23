@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Attribution Mosimann (detail je l'avais amene au conservatoire) -- non diarize, a confirmer. Creator orchestre... a preciser.",
     "reason": "Vraie reco au public (00:39:19) : il y a un album qui s'appelle Mozart l'egyptien, je sais pas si vous connaissez... c'est extremement genial. Album reel (H. de Courson, 1997). Recommande par le musicien passe au conservatoire = Mosimann.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "orchestre (instruments orientaux)",
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "extractionHistory": [
     {
@@ -73,7 +73,7 @@
     }
   ],
   "quote": "il y a un album qui s'appelle Mozart l'égyptien",
-  "recommendedBy": "Mosimann",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:39:18",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite absent des metadonnees: Nordine Ganso.",
     "reason": "Docteur Love, format d'impro/spectacle de Nordine Ganso (confirme web), presente en detail par lui a 00:12:38 puis re-recommande par un host en fin d'emission. Auto-promo d'invite.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Nordine Ganso",
@@ -55,7 +56,6 @@
     "anthropic",
     "openai"
   ],
-  "guestWork": true,
   "id": "ubm-0501",
   "kind": "reco",
   "links": [
@@ -67,7 +67,7 @@
     }
   ],
   "quote": "C'est un spectacle qu'on peut voir sur Prime.",
-  "recommendedBy": "Nordine Ganso",
+  "recommendedBy": "Kyan Khojandi & Nordine Ganso",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:12:38",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Correction nom auteur : « Moukehibert » (transcript) -> « Moukheiber » (regle 8).",
     "reason": "Dans le tour de recos, Navo (« Nabot t'as quelque chose a recommander ? ») recommande le premier livre d'Albert Moukheiber, « Votre cerveau vous joue des tours » (« c'est super, cette fois c'est illustre »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Albert Moukheiber",

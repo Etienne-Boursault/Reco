@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« je vais vous donner un petit truc : Moby... des sons d'ambiance... c'est exceptionnel » — tip adressé au public (reco explicite) sur les ambient soundscapes de Moby. Locuteur Kyan/Navo non tranchable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Moby",
@@ -24,7 +25,7 @@
     "anthropic"
   ],
   "id": "ubm-1453",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -40,6 +41,7 @@
     }
   ],
   "quote": "Moby, le chanteur, il a sorti quelque chose que personne ne connaît, des sons d'ambiance qui durent entre 20 et 40 minutes.",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:52:12",

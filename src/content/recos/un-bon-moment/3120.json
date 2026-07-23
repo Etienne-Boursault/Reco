@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Verino = humoriste réel (vrai nom Olivier Balestriero) ; le champ creator 'Olivier Balestrier' est incomplet. Reco émanant de Thomas Deseur (invité absent des métadonnées).",
     "reason": "Verino cité comme auteur du 'meilleur conseil reçu' avec forte admiration ('on l'adore') mais le contexte est une anecdote sur un conseil de carrière, pas une prescription directe de son œuvre.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Olivier Balestrier",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Moi, c'est Verino. [...] On l'adore, c'est très simple. On l'adore.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:45:16",

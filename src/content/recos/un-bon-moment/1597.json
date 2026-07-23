@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Le Flodcast (00:24): 'Allez ecouter le Flodcast. C'est toujours bien meme de reecouter vu que c'est termine'. Prescription explicite au public. Locuteur (host) incertain -> vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "697d34fef1dd68ab365aea03",
@@ -32,7 +33,7 @@
     "anthropic"
   ],
   "id": "ubm-1597",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "Allez écouter le Flodcast. C'est toujours bien même de réécouter vu que c'est terminé mais n'hésitez pas à aller réécouter.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:54",

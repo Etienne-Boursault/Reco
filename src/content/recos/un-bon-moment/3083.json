@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Ambigu: pourrait cacher un vrai rôle de Thaïs dans la série, mais le passage se lit comme une blague ('on l'a pas vu', 't'ont pas payé'). À vérifier humainement.",
     "reason": "'En thérapie' lâchée en vanne (la thérapie de l'invitée comparée à la série : 't'es dans la saison 2, t'ont pas payé') — name-drop humoristique sans présentation ni prescription (règle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",

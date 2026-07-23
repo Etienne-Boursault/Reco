@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript 'Pierre Hilleret' (draft 'Pierre Hilbert'), spectacle 'le roi Borgne' — orthographe nom + spectacle à vérifier.",
     "reason": "Navo (sollicité pour recommander un artiste) prescrit explicitement l'humoriste ('on passe notre temps à recommander', 'super, très drôle'), non présent — vraie reco (validate).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
@@ -43,7 +44,7 @@
     }
   ],
   "quote": "Pierre Hilleret, le roi Borgne si on doit parler d'humoriste !",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:52",

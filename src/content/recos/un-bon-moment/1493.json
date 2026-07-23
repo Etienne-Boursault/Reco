@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "creator exact = 'Vald' (et non 'Valde'). Doublon 0409 discardé.",
     "reason": "Long 'billet' passionné de Cyprien sur l'album 'Magnificat' de Vald (2025) : 'j'écoute en boucle... vraie démarche d'artiste... cet album m'a vraiment touché'. Explicitement 'la chronique de Cyprien'. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Valde",
+  "creator": "Vald",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -79,6 +80,7 @@
   "title": "Magnificat",
   "transcriptSource": "youtube",
   "types": [
+    "musique",
     "album"
   ]
 }

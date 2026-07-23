@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Livre reel (Don Miguel Ruiz) mais non presente.",
     "reason": "les accords toltec name-droppes dans une anecdote personnelle (00:59:27 j'avais pas encore lu les accords toltec a cette epoque) pour expliquer son etat d'esprit passe -- mention instrumentale, sans presentation ni prescription.",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "creator": "Don Miguel Ruiz",
@@ -44,11 +45,12 @@
     "openai"
   ],
   "id": "ubm-1404",
+  "kind": "citation",
   "links": [],
   "quote": "j'avais pas encore lu les d'accord toltec à cette époque",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Navo & Mosimann",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:59:27",
   "title": "Les quatre accords toltèques",
   "transcriptSource": "youtube",

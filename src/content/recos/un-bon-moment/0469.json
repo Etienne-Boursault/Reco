@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript non diarize. Locuteur probable : Gilles Lellouche (meme sequence que Hitchcock/Lubitsch, 'm'a forme dans ma comedie'). A confirmer.",
     "reason": "Bright Star (Jane Campion) : donne comme reco culturelle en fin d'emission ('j'ai regarde pas mal de vieux films... Bright Star'). Prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jane Campion",
@@ -71,6 +72,7 @@
     }
   ],
   "quote": "Bright Star de Jane Campion moi je vous recommande d'aller voir",
+  "recommendedBy": "Laetitia Casta",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:43",

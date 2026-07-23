@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre de l'invite mais non presentee en auto-promo (revelation comique) -> citation, pas guest-work.",
     "reason": "Court-metrage ancien de Thomas Ngijol, revele en 'gotcha' par les hosts et decrit avec substance (San Francisco, lance des quarters) ; 'introuvable', aucune prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -28,7 +29,7 @@
   "links": [],
   "quote": "C'est un court-métrage que j'ai fait il y a très longtemps.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:12:10",
   "title": "Quaterman",
   "transcriptSource": "youtube",

@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Ils discutent surtout de la serie Highlander ; creator 'Russell Mulcahy' (real. du film 1986) — mineur.",
     "reason": "Highlander evoque 'a refaire' avec appreciation ('le principe est dingue', 'c'est incroyable', discussion du lore) ; pas de prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Russell Mulcahy",
@@ -69,6 +70,7 @@
     }
   ],
   "quote": "Ouais, Highlander, c'est incroyable.",
+  "recommendedBy": "Navo & Thomas Ngijol",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:47:29",

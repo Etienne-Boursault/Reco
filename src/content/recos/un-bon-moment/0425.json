@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco genuine. Locuteur incertain, probablement Maxime Biaggi (pattern 'decu de tout' puis 'le dernier truc cool'). Attribution laissee vide, a completer.",
     "reason": "'Le dernier truc cool que j'ai vu, c'est adolescence... Ca c'est top, allez voir' : reco sincere, defendue face aux moqueries des hosts. Adolescence = serie Netflix reelle (2025) tres saluee.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "699968af0e5c959d5971943f",
@@ -42,6 +43,7 @@
     }
   ],
   "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",
+  "recommendedBy": "Maxime Biaggi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:28:29",

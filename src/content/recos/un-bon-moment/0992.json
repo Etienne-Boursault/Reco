@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (a lu le livre en Corée) — probablement Cyprien ou un host.",
     "reason": "'Fiascorama' de Thomas VDB (Buchet-Chastel, 2025) recommandé avec enthousiasme ('les livres de Thomas VDB j'adore, le dernier incroyable Fiascorama, je rigolais comme un fou') + long récit d'un chapitre. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Thomas VDB",
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "Les livres de Thomas BDB j'adore j'ai rigolé le dernier incroyable Fiasco Rama",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:27:32",

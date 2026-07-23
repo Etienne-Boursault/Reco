@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Passage dans le segment 'jeu des personnalités' mais c'est une anecdote sur un épisode passé, pas un indice/réponse de jeu — d'où citation (règle 17) plutôt que discard (règle 12). À arbitrer si besoin.",
     "reason": "'Bref' (série de Kyan) évoquée en anecdote avec substance ('cet épisode qui est génial', musique d'Emilie Simon, 'je connais tout par cœur') mais sans promo d'actualité ni prescription (règle 17).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
@@ -35,7 +36,7 @@
   ],
   "quote": "On avait un épisode de Bref, où elle devait tirer avec un gun sur Alice David",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:29:05",
   "title": "Bref",
   "transcriptSource": "youtube",

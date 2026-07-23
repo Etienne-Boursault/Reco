@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine (Kyan/Navo/invite dans un echange rapide 'a refaire') → recommendedBy vide.",
     "reason": "Reco explicite : 'Ah oui, je le conseille a fond. J'adore.' (00:41:10).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Chad Stahelski",
@@ -74,6 +75,7 @@
     }
   ],
   "quote": "Ah oui, je le conseille à fond.",
+  "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:41:10",

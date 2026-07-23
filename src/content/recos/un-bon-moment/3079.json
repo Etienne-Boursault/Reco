@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invités absents des métadonnées (guests:[]) alors que l'épisode reçoit Alex Ramirès et Thaïs Vauquières. Œuvre d'Alex Ramirès, réalisée par Léa Rouault. recommendedBy à compléter (Alex Ramirès).",
     "reason": "Vidéos low cost d'Alex Ramirès (invité présent), promues par un host ('allez voir ça, c'est très fort') — auto-promo d'invité (règles 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Léa Rouaud",
@@ -27,7 +28,6 @@
   "extractors": [
     "anthropic"
   ],
-  "guestWork": true,
   "id": "ubm-3079",
   "kind": "reco",
   "links": [
@@ -51,6 +51,7 @@
     }
   ],
   "quote": "Allez voir ça. Il y en a 50 réalisés par Léa Rouault. C'est très fort.",
+  "recommendedBy": "Alex Ramirès",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:02:01",

@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "« Mon préféré, c'est Interstellar » — film favori (McConaughey) énoncé pendant le jeu. Avis positif mais sans substance ni prescription. Borderline.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Christopher Nolan",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "Mon préféré, c'est Interstellar, c'est pour ça.",
+  "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:49:18",

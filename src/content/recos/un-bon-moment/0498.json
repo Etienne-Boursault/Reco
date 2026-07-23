@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Bloc final ou Kyan/Navo declinent -> source probablement invitee, non diarizee.",
     "reason": "Prescription explicite (01:39:50) : t'as deja vu Bloodline ? non -> je te conseille Bloodline. Serie reelle (Netflix).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
@@ -71,6 +72,7 @@
     }
   ],
   "quote": "je te conseille Bloodline",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:50",

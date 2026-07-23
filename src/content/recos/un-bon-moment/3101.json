@@ -7,6 +7,7 @@
     "model": "claude-opus-4-8",
     "note": "Quote/timestamp du draft (jeu, 00:24:36) a corriger vers l'echange genuine ~01:05:04. Attribution host (Kyan ou Navo) non diarizable → recommendedBy vide.",
     "reason": "Au timestamp (00:24:36) c'est un intitule de jeu sur Steve Carell → discardable (regle 12). MAIS The Office est reellement salue plus tard (~01:05 : « The Office c'est genial », citee comme serie comedie preferee). Conserve en citation par un host (regle 13 : une seule reco par oeuvre).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
@@ -35,6 +36,7 @@
     }
   ],
   "quote": "Steve Carell fan de The Office",
+  "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:05:04",

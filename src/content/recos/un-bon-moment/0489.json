@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Humoriste/parodiste TikTok + chaine YouTube 'Geronimo' (perso de cite parlant comme un DRH) — type artiste/video. PAS Geronimo Stilton ni le chef apache. Attribution = un host (parle du 'perso dans Police Flash 80' a un invite), mais Kyan vs Navo incertain.",
     "reason": "Reco explicite repetee : 'Je recommande Geronimo... c'est genial' (01:35 et 01:36).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "Je recommande Géronimo, que vous avez peut-être vu sur TikTok.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:35:20",

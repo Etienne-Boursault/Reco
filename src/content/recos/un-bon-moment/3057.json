@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Greg Romano est la personne centrale de ce hors-serie (il ecrit les jeux du podcast) mais n'apparait pas dans guests[] des metadonnees. Le spectacle 'Leve-toi et tombe' est reel mais defunct et sans aucune trace accessible (jamais capte, plus joue, 'pas de traces pour les gens' l.79). Verdict discard car non recommandable (rien a experimenter). Si Etienne veut crediter Greg comme invite, l'alternative serait citation (oeuvre passee evoquee en anecdote, regle 17) voire guest-work ; laisse a l'arbitrage humain via ce flag.",
     "reason": "Spectacle passe et defunct de Greg Romano (sujet du hors-serie, absent de guests[]), evoque en anecdote biographique et non prescrit. Le transcript precise explicitement (l.74-79) qu'il ne le joue plus, qu'il n'a jamais ete capte et qu'il n'y a 'pas de traces de ce spectacle qui existe pour les gens' : oeuvre inaccessible au public, ni promo d'actualite (pas guest-work) ni citation utile (rien a lier). Titre et timestamp exacts (l.1186-1189, 00:31:16).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "6a195ea4834d46c80cf58967",
@@ -27,11 +28,12 @@
     "anthropic"
   ],
   "id": "ubm-3057",
+  "kind": "reco",
   "links": [],
   "quote": "Le spectacle, ça plaît, ça s'appelle toujours, mais ça plaît puisque tu ne le joues plus « Lève-toi et tombe ».",
   "recommendedBy": "Greg Romano",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "00:31:16",
   "title": "Lève-toi et tombe",
   "transcriptSource": "youtube",

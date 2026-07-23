@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "À double-vérifier vs règle 12 (origine dans le jeu) : j'ai tranché validate car la recommandation directe 'allez le voir' dépasse la simple réponse de jeu. Attribution host (Kyan ou Navo) indéterminée.",
     "reason": "Nom surgi dans le jeu d'anecdotes mais suivi d'une prescription explicite et assumée à l'audience ('Maniscalco, si vous ne connaissez pas, allez le voir sur son Insta, il est vraiment très drôle') ; humoriste réel (Sebastian Maniscalco).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
@@ -50,7 +51,7 @@
   ],
   "quote": "Maniscalco, si vous ne connaissez pas, allez le voir sur son Insta. Il a plein de trucs, il fait des expressions.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:17:39",
   "title": "Sebastian Maniscalco",
   "transcriptSource": "youtube",

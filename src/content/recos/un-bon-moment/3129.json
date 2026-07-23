@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre 'Irréalisable' et créateur 'Babor l'éléphant' (auteur Internet) à vérifier (WebSearch indisponible). Sollicité par 'Davo' (probablement Navo, host) pour recommander.",
     "reason": "Prescription explicite d'un film d'un auteur externe ('Je recommande Irréalisable... excellent film') ; long-métrage autoproduit de Babor l'éléphant.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Babor Lelefan",
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "Je recommande Irréalisable de Babor, L'éléphant que vous connaissez peut-être, Clément.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:35:08",

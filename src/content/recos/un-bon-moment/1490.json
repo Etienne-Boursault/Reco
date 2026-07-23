@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (Kyan ou Navo). Doublon 0408 discardé.",
     "reason": "'Criminel' de Garou (album Seul, 2000) explicitement recommandé ('l'incroyable interprète de la chanson Criminel que je recommande'), hors jeu. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Garou",
@@ -73,7 +74,7 @@
   ],
   "quote": "Garou, l'incroyable interprète de la chanson Criminel que je recommande.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:14:03",
   "title": "Criminel",
   "transcriptSource": "youtube",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco gardée du doublon (cf. ubm-3080 discardé). Titre 'Jim Quinn'/'Jim Queen' et studio 'Bobby Pills' (transcript 'Bobby Peels') à vérifier. Invités absents des métadonnées → recommendedBy à compléter (Alex Ramirès).",
     "reason": "Film d'animation 'Jim Quinn' d'Alex Ramirès (invité, il fait la voix du personnage principal), studios Bobby Pills, présenté à Cannes — auto-promo d'invité présentée en détail (règles 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Bobbypills",
@@ -28,7 +29,6 @@
   "extractors": [
     "anthropic"
   ],
-  "guestWork": true,
   "id": "ubm-3092",
   "kind": "reco",
   "links": [
@@ -52,6 +52,7 @@
     }
   ],
   "quote": "Et le film d'animation Jim Quinn au cinéma le 17 juin présenté à Cannes, séance de minuit, film d'animation où tu fais la voix du personnage principal ! Je fais le Jim parfait dans Jim Quinn ! C'est un film d'animation des studios Bobby Peels donc c'est absolument dingue ! C'est vraiment un Disney mais pour adulte dans le sens où c'est trash et marrant !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:37:40",

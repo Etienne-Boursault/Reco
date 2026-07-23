@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur probable : Gilles Lellouche ('un film qui m'a forme dans ma comedie'). A confirmer (transcript non diarize).",
     "reason": "To Be or Not to Be (Ernst Lubitsch) : reco explicite en fin d'emission ('aller voir aussi To Be or Not to Be de Lubitsch, un classique de la comedie tres drole'). Prescription. Titre et createur corrects.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ernst Lubitsch",
@@ -76,6 +77,7 @@
     }
   ],
   "quote": "aller voir aussi To Be No To Be de Lubitsch qui est un classique de la comédie très drôle",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:48",

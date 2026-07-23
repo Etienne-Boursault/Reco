@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur a completer : Seinfeld = Larry David ET Jerry Seinfeld (le draft ne cite que Larry David). Host non diarizable → recommendedBy vide.",
     "reason": "Renvoi en passant dans le meme elan que Curb (« ou Costanza dans Seinfeld je sais pas si t'as vu, en general les gens ont moins vu »), sans developpement ni eloge propre → citation plutot que validate (regle 15).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Larry David",
@@ -35,6 +36,7 @@
     }
   ],
   "quote": "ou Costanza dans Seinfeld je sais pas si t'as vu",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:43",

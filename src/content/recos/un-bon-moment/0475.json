@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "creator 'Andre Franquin' correct.",
     "reason": "Gaston Lagaffe evoque dans le brainstorm 'a refaire' avec substance (premisse du 1er album) mais sans prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "André Franquin",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "J'aimerais refaire un Gaston Lagaffe.",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:41:34",

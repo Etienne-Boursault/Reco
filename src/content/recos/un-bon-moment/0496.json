@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Bloc final ; attribution invite non diarizee.",
     "reason": "ma serie preferee c'est Breaking Bad (01:39:41), avis prescripteur enchaine sur Better Call Saul. Serie reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
@@ -71,6 +72,7 @@
     }
   ],
   "quote": "ma série préférée c'est Breaking Bad",
+  "recommendedBy": "Kemmler",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:41",

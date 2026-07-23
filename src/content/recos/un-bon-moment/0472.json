@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Confusion film/serie dans le transcript ; probablement le film 'Un prophete' de Jacques Audiard (2009) ou une serie homonyme — nature a clarifier.",
     "reason": "Oeuvre visionnee et appreciee ('j'aime beaucoup') mais echange confus film/serie, aucune prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -57,78 +58,65 @@
     }
   ],
   "quote": "En ce moment, je suis sur un prophète.",
+  "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:11:33",
   "title": "Un Prophète",
   "transcriptSource": "youtube",
   "types": [
-    "film",
     "serie"
   ],
   "watchProviders": [
     {
-      "ethics": "avoid",
       "label": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Molotov TV",
       "url": "https://www.molotov.tv/search?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "avoid",
       "label": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "avoid",
       "label": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "indie",
       "label": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "neutral",
       "label": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Un%20Proph%C3%A8te"
     },
     {
-      "ethics": "indie",
       "label": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Un%20Proph%C3%A8te"
     }

@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "creator 'GIZ' erroné — Cameron Winter est le chanteur du groupe Geese (US, indie rock). Doublon 1494 (Geese) discardé.",
     "reason": "Fanny recommande explicitement l'artiste Cameron Winter ('s'il y a un artiste que j'adore, c'est Cameron Winter... je vous le conseille... il a une voix incroyable'). Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "GIZ",
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -70,7 +70,6 @@
   "title": "Cameron Winter",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "artiste"
   ]
 }

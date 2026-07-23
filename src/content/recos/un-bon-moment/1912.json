@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger Chagrin d'amis -> Chagrin d'Ami. Creator actuel (Kyan) errone = Kemmler & Mosimann.",
     "reason": "Chagrin d'Ami presentee par ses auteurs invites (00:06:28, l'invite explique la genese : rupture d'amitie, je la chante plus sur scene). Chanson reelle : Kemmler feat. Mosimann (2022, album &MOI). Oeuvre d'invites -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Kemmler & Mosimann",
@@ -28,7 +29,6 @@
   "extractors": [
     "openai"
   ],
-  "guestWork": true,
   "id": "ubm-1912",
   "kind": "reco",
   "links": [
@@ -46,7 +46,7 @@
     }
   ],
   "quote": "moi je pense que... on a fait cette chanson",
-  "recommendedBy": "Kemmler & Mosimann",
+  "recommendedBy": "Mosimann & Kemmler",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:06:30",

@@ -5,6 +5,7 @@
     "date": "2026-07-07",
     "model": "claude-opus-4-8",
     "reason": "'Battle Royale' (Kinji Fukasaku) cité dans le portrait de Takeshi Kitano par Cyprien, avec substance sur le rôle de Kitano ('il est génial dedans, il amène un personnage que tu n'as jamais vu avant') mais sans prescription du film.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Kinji Fukasaku",
@@ -49,7 +50,7 @@
     }
   ],
   "quote": "Il est dans Battle Royale, mais il est génial dedans.",
-  "recommendedBy": "Cyprien",
+  "recommendedBy": "Navo & Cyprien",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:41:04",

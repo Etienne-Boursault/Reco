@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE (doublon ubm-0528 discarde). Locuteur = un host (Kyan ou Navo) mais non certain ; attribution 'Kyan Khojandi' de l'extracteur non confirmable -> recommendedBy vide.",
     "reason": "'Fabrizio Buccella' (chaine YouTube / vulgarisateur) : reco explicite 'je veux recommander le professeur Fabrizio Buccella' (01:14:22), presente a Nassim.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Autre",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "Je veux recommander le professeur Fabrizio Buccella.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:22",

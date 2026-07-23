@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact du spectacle 'I Will Survive' à confirmer (WebSearch indisponible) ; décrit comme la dernière pièce des Chiens de Navarre, primée d'un Molière, avec Delphine Baril, sur les violences conjugales. Locuteur cinéphile non identifié (Thomas Deseur invité, ou un host).",
     "reason": "Prescription explicite d'un spectacle réel des Chiens de Navarre ('Allez voir ça, c'est incroyable', dernière pièce, Molière) ; œuvre externe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Les Chiens de Navarre",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Allez voir ça, I Will Survive, Des Chiens de Navarre, c'est incroyable.",
+  "recommendedBy": "Thomas Deseur",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:35:02",

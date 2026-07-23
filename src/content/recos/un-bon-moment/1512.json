@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Createur = Mehdi Moussaid (Fouloscopie) ; titre complet « A-t-on besoin d'un chef ? Petit traite d'intelligence collective » (Allary, 2025).",
     "reason": "Eloge tres fort de Kyan : « transcendant pour moi, vraiment incroyable... meilleur livre dans le fond et dans la forme sur l'intelligence collective, personne ne pouvait faire mieux ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Mehdi",
+  "creator": "Mehdi Moussaid",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractionHistory": [
     {
@@ -72,11 +73,11 @@
     }
   ],
   "quote": "c'est peut-être le meilleur de cette année transcendant pour moi",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Fabien Olicard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:14:24",
-  "title": "A-t-on besoin d'un chef",
+  "title": "A-t-on besoin d'un chef ?",
   "transcriptSource": "youtube",
   "types": [
     "livre"

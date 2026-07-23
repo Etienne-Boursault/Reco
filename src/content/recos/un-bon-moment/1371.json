@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandé par un invité (Anis ou Pierre), non diarisé. Autrice BD réelle (@louisa.lesage) ; recueil « Journal d'un alien en roue libre » (Éd. Exemplaire, 2026). Canonique des doublons Louisa Lesage.",
     "reason": "Reco explicite (« moi je recommande le compte Insta de Louisa Lesage... j'aime trop ce qu'elle fait, une artiste hyper intéressante »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louisa Lesage",
@@ -57,6 +58,7 @@
     }
   ],
   "quote": "moi je recommande le compte Insta de Louisa Lesage",
+  "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:37:51",

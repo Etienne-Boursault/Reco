@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine : intervient juste après le Old Boy de Navo avec un 'moi' contrastif, vraisemblablement l'autre host (Kyan). creator = Darren Aronofsky.",
     "reason": "Prescription explicite dans la rubrique reco ('le meilleur film de tous les temps') ; œuvre réelle (Black Swan, Darren Aronofsky, 2010).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
@@ -43,6 +44,7 @@
     }
   ],
   "quote": "Je trouve que c'est Black Swan, moi. Le meilleur film de tous les temps.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:33:01",

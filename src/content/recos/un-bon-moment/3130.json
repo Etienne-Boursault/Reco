@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution host probable (amateur de rétro-gaming, comparé à Another World / Abe's Oddysee) mais Kyan/Navo indéterminé.",
     "reason": "Prescription explicite d'un jeu vidéo rétro ('je recommande Flashback') ; jeu réel (Flashback, Delphine Software, 1992).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
@@ -43,6 +44,7 @@
     }
   ],
   "quote": "Moi, je recommande, j'ai fait un peu de rétro gaming récemment et je recommande Flashback.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:36:17",

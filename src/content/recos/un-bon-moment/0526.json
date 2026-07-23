@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Plusieurs voix affirment 'reco' (probablement un host) ; locuteur non identifiable avec certitude -> recommendedBy vide.",
     "reason": "Film 'L'Innocent' (Louis Garrel, 2022) : reco explicite emise dans le jeu des celebrites puis affirmee ('L'innocent de Louis Garel qui est d'ailleurs reco', 'reco, comedie de fou', 'je l'ai vu trois fois moi, j'adore', 00:59:09-15).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louis Garrel",
@@ -77,7 +78,7 @@
   ],
   "quote": "Vas-y, l'innocent avec Louis Garel.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:59:09",
   "title": "L'Innocent",
   "transcriptSource": "youtube",

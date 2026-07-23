@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "guests[] vide alors que Mosimann est invite ; il dit on a fait l'album Mesdames. Distinct de l'anecdote GCM a 00:56 (ubm-1914).",
     "reason": "Mesdames (Grand Corps Malade) presente par son compositeur Mosimann (00:10:54, making-of : choeurs au dictaphone). Mosimann a compose/coreallise l'album (invite) -> auto-promo assumee = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Grand Corps Malade",
@@ -79,7 +80,7 @@
   "quote": "l'album de Grand Corps Malade qui a quand même très bien marché",
   "recommendedBy": "Mosimann",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:11:53",
   "title": "Mesdames",
   "transcriptSource": "youtube",
