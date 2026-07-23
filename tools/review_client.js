@@ -282,6 +282,48 @@
     ajaxPost(action, fd, reco_id);
   });
 
+  // --- ÉDITION INLINE AJAX SUR /doutes (préserve le lecteur en pause) ---
+  // « Corriger » (a.btn-edit) et « Annuler » (.edit-form a.back) étaient des
+  // liens → rechargement de page → le lecteur vidéo mis en pause exprès (pour
+  // lire l'orthographe à l'écran) se réinitialisait. On swappe le bloc en place
+  // via /doubt-frag, sans toucher au reste de la page (retour utilisateur
+  // 2026-07-23). Fallback sans JS : le lien navigue normalement.
+  async function loadDoubtFrag(reco_id, edit) {
+    try {
+      const r = await fetch('/doubt-frag?id=' + encodeURIComponent(reco_id)
+        + '&edit=' + (edit ? '1' : '0'), { headers: { 'Accept': 'text/html' } });
+      if (!r.ok) return;
+      const html = await r.text();
+      if (!html.trim()) { removeCard(reco_id); return; }  // plus un doute
+      replaceCard(reco_id, html);
+      if (edit) {  // autofocus ne se déclenche pas sur un insert AJAX
+        const idInput = document.querySelector(
+          'input[name="id"][value="' + CSS.escape(reco_id) + '"]');
+        const form = idInput && idInput.closest('form');
+        const title = form && form.querySelector('input[name="title"]');
+        if (title) { title.focus(); title.select(); }
+      }
+    } catch (err) {
+      toast('Erreur réseau : ' + err.message, 'error');
+    }
+  }
+  document.addEventListener('click', (e) => {
+    if (window.location.pathname !== '/doutes') return;
+    const editLink = e.target.closest('a.btn-edit');
+    if (editLink) {
+      const idInput = editLink.closest('li.row')
+        && editLink.closest('li.row').querySelector('input[name="id"]');
+      if (idInput) { e.preventDefault(); loadDoubtFrag(idInput.value, true); }
+      return;
+    }
+    const cancel = e.target.closest('.edit-form a.back');
+    if (cancel) {
+      const idInput = cancel.closest('li.row')
+        && cancel.closest('li.row').querySelector('input[name="id"]');
+      if (idInput) { e.preventDefault(); loadDoubtFrag(idInput.value, false); }
+    }
+  });
+
   // --- NAMESPACE PARTAGÉ (M4 découpe en 3 fichiers) ---
   // Les helpers consommés par review_client_keyboard.js / _toolbar.js sont
   // publiés ici ; l'ordre de concaténation (core → keyboard → toolbar) est

@@ -499,3 +499,25 @@ def render_doubts(source_id: str, ep: str | None = None,
         return _render_episode(source, ep, per_ep, source.get("hosts", []),
                                source_id, groups, edit_id, flash, flash_kind)
     return _render_index(source, per_ep, source_id, flash, flash_kind)
+
+
+def render_doubt_fragment(source_id: str, reco_id: str,
+                          edit: bool = False) -> str:
+    """Fragment `<li>` d'UNE reco pour swap AJAX in-place (retour utilisateur
+    2026-07-23 : « Corriger » rechargeait la page et réinitialisait le lecteur
+    vidéo mis en pause exprès). `edit=True` → formulaire d'édition ; sinon → le
+    bloc « signalement » (recalcule sa section). Chaîne vide si reco introuvable
+    ou plus un doute."""
+    source, episodes, groups = _load_groups(source_id)
+    for guid, recos in groups.items():
+        for r in recos:
+            if r.get("id") == reco_id:
+                ep = episodes.get(guid, {"guid": guid, "title": guid})
+                hosts = source.get("hosts", [])
+                if edit:
+                    return render_edit_form(r, ep, recos, hosts, "/doutes")
+                key = _section_for(r)
+                if key is None:
+                    return ""
+                return _signalement_card(key, ep, r, hosts, source_id, recos, None)
+    return ""

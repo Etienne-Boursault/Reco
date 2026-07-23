@@ -128,6 +128,19 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             reco_id = qs.get("id", [""])[0]
             self._send_card_fragment(reco_id)
             return
+        if parsed.path == "/doubt-frag":
+            # Fragment /doutes d'UNE reco (signalement OU formulaire d'édition)
+            # pour swap AJAX in-place — « Corriger » sans recharger la page (le
+            # lecteur vidéo garde sa pause). Retour utilisateur 2026-07-23.
+            qs = urllib.parse.parse_qs(parsed.query)
+            reco_id = qs.get("id", [""])[0]
+            if not _RE_RECO_ID.match(reco_id):
+                self._send_404()
+                return
+            edit = qs.get("edit", ["0"])[0] == "1"
+            from review_doubts import render_doubt_fragment  # noqa: PLC0415
+            self._send(200, render_doubt_fragment(self.source_id, reco_id, edit))
+            return
         self._send_404()
 
     def _handle_get_episode(self, query: str) -> None:

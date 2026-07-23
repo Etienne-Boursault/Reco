@@ -279,6 +279,22 @@ def test_render_edit_button_targets_doutes(monkeypatch):
     assert 'btn-edit" href="/ep' not in out
 
 
+def test_render_doubt_fragment(monkeypatch):
+    """2026-07-23 — render_doubt_fragment renvoie le bloc signalement (edit=False)
+    ou le formulaire d'édition (edit=True) d'UNE reco, pour swap AJAX in-place
+    (« Corriger » sans recharger → préserve le lecteur en pause)."""
+    from review_doubts import render_doubt_fragment
+    _patch_groups(monkeypatch, [
+        _reco("r1", status="draft",
+              agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"}),
+    ])
+    sig = render_doubt_fragment("src", "r1", edit=False)
+    assert 'class="row sig' in sig and 'action="/save"' in sig
+    form = render_doubt_fragment("src", "r1", edit=True)
+    assert 'action="/edit"' in form and 'name="title"' in form
+    assert render_doubt_fragment("src", "inconnue") == ""  # reco absente
+
+
 def test_render_edit_id_renders_inline_form(monkeypatch):
     """render_doubts(edit_id=...) rend le formulaire d'édition inline (action
     /edit) au lieu de la carte normale ; sans edit_id, aucun formulaire /edit."""
