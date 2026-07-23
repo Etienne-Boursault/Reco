@@ -5,6 +5,7 @@
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
     "reason": "The Handmaid's Tale : Navo « passe beaucoup de mon temps le soir à regarder ça et j'hallucine » (01:06:51-01:06:57), déjà cité à 01:06:01 (« Handmaid Stein me met dans le même état »). Série réelle, endossement explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bruce Miller",
@@ -44,7 +45,7 @@
     }
   ],
   "quote": "mais vraiment scotchante.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:06:56",
