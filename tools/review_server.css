@@ -2,7 +2,7 @@ body{font-family:system-ui,sans-serif;background:#0e0e10;color:#f6f4ee;margin:0;
 h1{font-size:1.4rem;} .meta{color:#9a99a3;}
 .back{color:#9a99a3;text-decoration:none;font-weight:600;font-size:.9rem;}
 .back:hover{color:#ffd23f;}
-.ep{max-width:820px;margin:1.2rem auto;}
+.ep{max-width:min(1120px,100%);margin:1.2rem auto;}
 .eph{font-size:1rem;border-bottom:1px solid #2a2a30;padding-bottom:.4rem;margin:0 0 .4rem;flex:1;min-width:0;}
 .eph a{color:#f6f4ee;text-decoration:none;} .eph a:hover{color:#ffd23f;}
 .eph-row{display:flex;align-items:center;gap:.6rem;}
@@ -175,7 +175,7 @@ a.ov-label:hover{text-decoration:underline;}
 #reco-help-overlay dd{margin:0;color:#cfcdc6;align-self:center;}
 #reco-help-overlay .help-foot{color:#9a99a3;font-size:.78rem;margin:1rem 0 0;text-align:center;}
 /* --- Page /doutes : file de validation des incertitudes agent ------------- */
-.doubt-section{max-width:820px;margin:1.4rem auto;}
+.doubt-section{max-width:min(1120px,100%);margin:1.4rem auto;}
 .doubt-section h2{font-size:1.05rem;border-bottom:1px solid #2a2a30;padding-bottom:.35rem;}
 .doubt-section h2 .cnt{background:#1f1c0a;color:#ffd23f;border:1px solid #ffd23f55;border-radius:999px;padding:.05em .6em;font-size:.75rem;vertical-align:middle;}
 .doubt-section .hint{color:#9a99a3;font-size:.82rem;margin:.2rem 0 .8rem;}
@@ -219,7 +219,7 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-kind-flagged{color:#ffb74d;border-color:#7a4d00;background:#201a10;}
 .doubt-ep-block{margin-bottom:1.6rem;}
 /* /doutes V2 — groupé par type d'info à valider (2026-07-19). */
-.doubt-summary{max-width:820px;margin:.5rem auto 1.6rem;color:#cfcdc6;font-size:.92rem;line-height:1.8;}
+.doubt-summary{max-width:min(1120px,100%);margin:.5rem auto 1.6rem;color:#cfcdc6;font-size:.92rem;line-height:1.8;}
 .doubt-summary a{color:#a2c4ee;text-decoration:none;white-space:nowrap;}
 .doubt-summary a:hover{color:#ffd23f;}
 .doubt-type{border-left:3px solid #2a2a30;padding-left:1rem;margin-bottom:2rem;}
@@ -232,7 +232,7 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-ep-tag:hover{color:#ffd23f;border-color:#ffd23f55;}
 .anchor{display:block;position:relative;top:-1rem;visibility:hidden;height:0;}
 /* Refonte /doutes 2026-07-21 : index par episode (leger, sans cartes). */
-.doubt-ep-list{list-style:none;padding:0;max-width:820px;margin:1rem auto;}
+.doubt-ep-list{list-style:none;padding:0;max-width:min(1120px,100%);margin:1rem auto;}
 .doubt-ep-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.55rem .3rem;border-bottom:1px solid #23232a;}
 .doubt-ep-link{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#e6e4dd;flex:1 1 22rem;min-width:0;}
 .doubt-ep-link:hover .doubt-ep-name{color:#ffd23f;}
@@ -244,9 +244,9 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .doubt-mini-flagged{color:#ffb74d;border-color:#7a4d00;}
 .doubt-mini-recby{color:#a2c4ee;border-color:#1f3a5c;}
 .doubt-mini-lowconf{color:#a9e3b8;border-color:#2c5a38;}
-.doubt-ep-title{max-width:820px;margin:.6rem auto .2rem;font-size:1.2rem;}
+.doubt-ep-title{max-width:min(1120px,100%);margin:.6rem auto .2rem;font-size:1.2rem;}
 /* Navigation entre épisodes (flèches préc./suiv.) — refonte 2026-07-23. */
-.doubt-nav{max-width:820px;margin:.6rem auto;display:flex;align-items:center;
+.doubt-nav{max-width:min(1120px,100%);margin:.6rem auto;display:flex;align-items:center;
   justify-content:space-between;gap:.6rem;}
 .doubt-nav-x{background:#17171c;border:1px solid #2a2a30;border-radius:8px;
   padding:.4em .9em;font-size:.85rem;font-weight:600;color:#e6e4dd;
@@ -309,7 +309,7 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .sig-radio-discard:has(input:checked){border-color:#6b3a3a;color:#d88;background:#1a1010;}
 /* Page /doublons — consolidation manuelle (2026-07-23). */
 .dup-cluster{background:#141418;border:1px solid #2a2a30;border-radius:12px;
-  padding:1rem 1.2rem;margin:1rem auto;max-width:860px;}
+  padding:1rem 1.2rem;margin:1rem auto;max-width:min(1120px,100%);}
 .dup-h{font-size:1rem;border-bottom:1px solid #2a2a30;padding-bottom:.3rem;}
 .dup-h .cnt{background:#1f1c0a;color:#ffd23f;border:1px solid #ffd23f55;
   border-radius:999px;padding:.05em .6em;font-size:.75rem;vertical-align:middle;}
@@ -331,3 +331,11 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .dup-type{margin-top:.3rem;}
 .dup-member:not(:has(.dup-keep input:checked)){opacity:.5;}
 .dup-member:not(:has(.dup-keep input:checked)) .dup-title{text-decoration:line-through;}
+/* Responsive (2026-07-24) : petits écrans — moins de padding, lecteur discret. */
+@media (max-width:760px){
+  body{padding:.7rem;}
+  .doubt-section,.dup-cluster{padding-left:.7rem;padding-right:.7rem;}
+  .player-wrap{width:min(300px,60vw);}
+  .doubt-nav{flex-wrap:wrap;gap:.4rem;}
+  .sig-btns,.sig-type{flex-wrap:wrap;}
+}
