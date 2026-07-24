@@ -67,9 +67,11 @@ def test_collect_validate_with_recby_not_in_recby(monkeypatch):
 
 
 def test_collect_low_confidence_applied(monkeypatch):
+    # lowconf = verdict appliqué à faible confiance sur une reco ACTIVE (un
+    # discarded, lui, ne s'affiche plus du tout — cf. test dédié).
     _patch_groups(monkeypatch, [
-        _reco("r4", status="discarded",
-              agent={"verdict": "discard", "confidence": 0.5, "reason": "borderline"}),
+        _reco("r4", status="validated", kind="reco", recommended_by="X",
+              agent={"verdict": "validate", "confidence": 0.5, "reason": "borderline"}),
     ])
     s = collect_doubts("src")
     assert [r["id"] for _, r in s["lowconf"]] == ["r4"]
@@ -199,8 +201,8 @@ def test_render_types_ordered_within_episode(monkeypatch):
     episodes = {
         "g1": {"guid": "g1", "title": "Épisode Un", "season": 5, "number": 1},
     }
-    r_low = _reco("rlow", status="discarded",
-                  agent={"verdict": "discard", "confidence": 0.5, "reason": "l"})
+    r_low = _reco("rlow", status="validated", kind="reco", recommended_by="X",
+                  agent={"verdict": "validate", "confidence": 0.5, "reason": "l"})
     r_pending = _reco("rpend", status="draft",
                       agent={"verdict": "unsure", "confidence": 0.4, "reason": "p"})
     monkeypatch.setattr(
@@ -390,19 +392,16 @@ def test_section_for_human_reviewed_leaves_queue():
     assert _section_for({**base, "agentReview": ar}) == "pending"
 
 
-def test_section_for_discarded_flagged_leaves_queue():
-    """2026-07-23 — une reco DISCARDED avec flags n'est plus un « signalement »
-    (la décision d'écarter est prise) SAUF si faible confiance → lowconf (on
-    re-contrôle un discard limite). Sinon les jumelles discardées des clusters
-    de doublons encombraient /doutes."""
+def test_section_for_discarded_never_shown():
+    """2026-07-24 — une reco DISCARDED n'apparaît dans AUCUNE section de /doutes
+    (décision prise), quels que soient flags et confiance (retour utilisateur :
+    masquer tous les écarts de la file)."""
     from review_doubts import _section_for
     ar = {"verdict": "discard", "flags": ["duplicate_suspect"]}
-    # discarded + flags + confiance haute → quitte la file
     assert _section_for({"status": "discarded",
                          "agentReview": {**ar, "confidence": 0.9}}) is None
-    # discarded + flags + confiance faible → lowconf (re-contrôle)
     assert _section_for({"status": "discarded",
-                         "agentReview": {**ar, "confidence": 0.4}}) == "lowconf"
+                         "agentReview": {**ar, "confidence": 0.4}}) is None
     # actif (non discarded) + flags → toujours flagged
     assert _section_for({"status": "validated", "kind": "reco", "recommendedBy": "X",
                          "agentReview": {"verdict": "validate", "confidence": 0.9,

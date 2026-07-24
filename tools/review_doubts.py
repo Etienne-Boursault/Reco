@@ -76,15 +76,16 @@ def _section_for(reco: dict) -> str | None:
     # encore flaggée réapparaît dans /doutes (retour utilisateur 2026-07-21).
     if ar.get("reviewedByHuman"):
         return None
+    # Une reco DISCARDED n'est PAS un doute : la décision (écarter) est prise —
+    # on ne l'affiche dans AUCUNE section, quels que soient flags/confiance
+    # (retour utilisateur 2026-07-24 : avant, les écarts à faible confiance
+    # restaient en « Confiance faible »). Pour restaurer un écart mal jeté, passer
+    # par une action explicite (pas via la file des doutes).
+    if reco.get("status") == "discarded":
+        return None
     if ar.get("verdict") == "unsure":
         return "pending"
-    # Une reco DISCARDED n'est pas un doute ouvert : sa décision (écarter) est
-    # prise. Ses flags deviennent sans objet — on ne la met donc PAS en
-    # « signalement ». Exception : si sa confiance est faible, elle retombe en
-    # `lowconf` ci-dessous (re-contrôle d'un discard limite). Sans ça, les
-    # jumelles discardées des clusters de doublons encombraient /doutes (571 sur
-    # un-bon-moment au 2026-07-23).
-    if ar.get("flags") and reco.get("status") != "discarded":
+    if ar.get("flags"):
         return "flagged"
     # « Reco de » à compléter : recos validées sans prescripteur. Une œuvre
     # d'invité (guestWork) est aussi une reco (kind=reco) → même traitement.
