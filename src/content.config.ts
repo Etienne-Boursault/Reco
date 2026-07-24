@@ -93,6 +93,10 @@ const episodes = defineCollection({
     date: z.coerce.date().optional(),
     audioUrl: z.string().url().optional(),
     youtubeUrl: z.string().url().optional(),
+    // Vidéo YT existante mais NON intégrable (embed désactivé par la chaîne, ou
+    // restriction régionale) : l'outil de relecture bascule alors sur le lecteur
+    // audio Acast. Posé à la main (retour utilisateur 2026-07-24, ép. 25).
+    youtubeUnavailable: z.boolean().optional(),
     // Artwork de l'épisode issu du flux RSS Acast (itunes:image). Sert de
     // miniature de repli quand l'épisode n'a pas de vignette YouTube.
     imageUrl: z.string().url().optional(),

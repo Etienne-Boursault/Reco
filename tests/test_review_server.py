@@ -2566,6 +2566,39 @@ def test_yt_timecode_link_prefers_youtube_over_audio():
     assert 'target="ytplayer"' in out
 
 
+def test_yt_timecode_unavailable_falls_back_to_audio_with_offset():
+    """Vidéo YT marquée NON intégrable (youtubeUnavailable) + transcript YouTube →
+    repli sur l'audio Acast, en retirant l'intro (offset) pour viser la bonne
+    position AUDIO (retour user 2026-07-24, ép. 25 Woodkid/Cyprien)."""
+    r = {"timestamp": "00:10:00", "transcriptSource": "youtube"}  # 600 s pos YT
+    ep = {"youtubeUrl": "https://www.youtube.com/watch?v=ABCDEFGHIJK",
+          "youtubeUnavailable": True,
+          "audioUrl": "https://sphinx.acast.com/x/media.mp3",
+          "youtubeDuration": 7097, "audioDuration": 7021}  # intro 76 s
+    out = rr._yt_timecode_link(r, ep)
+    soup = parse(out)
+    a = soup.find("a")
+    assert a is not None
+    assert has_class(a, "tc", "tc-audio")
+    assert a.get("data-audio-secs") == "524"       # 600 − 76 (intro retirée)
+    assert "00:10:00" in text_of(a)                # label = référence d'origine
+    assert 'target="ytplayer"' not in out           # plus de lien vidéo
+
+
+def test_yt_timecode_unavailable_acast_source_no_offset():
+    """Vidéo non intégrable mais transcript ACAST → le timestamp est déjà une
+    position audio → repli audio SANS offset."""
+    r = {"timestamp": "00:10:00", "transcriptSource": "acast"}
+    ep = {"youtubeUrl": "https://www.youtube.com/watch?v=ABCDEFGHIJK",
+          "youtubeUnavailable": True,
+          "audioUrl": "https://sphinx.acast.com/x/media.mp3",
+          "youtubeDuration": 7097, "audioDuration": 7021}
+    out = rr._yt_timecode_link(r, ep)
+    soup = parse(out)
+    a = soup.find("a")
+    assert a.get("data-audio-secs") == "600"       # pas d'offset (déjà audio)
+
+
 def test_yt_timecode_link_applies_acast_offset():
     """transcriptSource=acast → offset YT appliqué (audio vs video diff)."""
     r = {"timestamp": "00:05:00", "transcriptSource": "acast"}

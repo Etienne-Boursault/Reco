@@ -123,29 +123,33 @@ def _yt_timecode_link_parts(r: dict, ep: dict) -> TimecodeLink:
     yt_raw = ep.get("youtubeUrl")
     yt = _safe_url(yt_raw)  # #5 : XSS guard
     reco_src = r.get("transcriptSource") or "acast"
-    if reco_src == "acast":
-        # #39 — _safe_int : un youtubeDuration mal formé ne doit pas planter.
-        yd = _safe_int(ep.get("youtubeDuration"))
-        ad = _safe_int(ep.get("audioDuration"))
-        yt_offset = max(0, yd - ad)
-    else:
-        yt_offset = 0
-    if yt and secs is not None:
-        tv = max(0, secs + yt_offset)
+    # Décalage « intro » : la vidéo YT est souvent plus longue que l'audio podcast
+    # (intro absente du podcast). #39 _safe_int : une durée mal formée ne plante pas.
+    intro = max(0, _safe_int(ep.get("youtubeDuration"))
+                - _safe_int(ep.get("audioDuration")))
+    # Vidéo YT jouable ? Certaines existent mais leur EMBED est bloqué par la
+    # chaîne (ou restriction régionale) → marquées `youtubeUnavailable` à la main
+    # sur l'épisode ; on bascule alors sur l'audio Acast (retour utilisateur
+    # 2026-07-24, ép. 25 Woodkid/Cyprien).
+    yt_ok = bool(yt) and not ep.get("youtubeUnavailable")
+    if yt_ok and secs is not None:
+        # timestamp acast → position YT = acast + intro ; timestamp YT → tel quel.
+        tv = max(0, secs + (intro if reco_src == "acast" else 0))
         html_out = (f'<a class="tc" target="ytplayer" '
                     f'href="{html.escape(_embed_url(yt, tv))}">'
                     f'▶ {_fmt(secs)}</a>')
         return TimecodeLink(secs=secs, html=html_out)
     audio = _safe_url(ep.get("audioUrl"))
     if audio and secs is not None:
-        # Épisode audio-only (pas de vidéo YouTube) : timecode CLIQUABLE qui
-        # pilote le lecteur <audio> Acast (review_client.js lit data-audio-*).
-        # Ici le transcript vient forcément d'Acast → le timestamp EST la
-        # position dans l'audio, sans offset. Retour utilisateur 2026-07-24
-        # (épisode 18, audio-only).
+        # Repli AUDIO : épisode audio-only, OU vidéo YT non intégrable. Timecode
+        # cliquable pilotant le lecteur <audio> Acast (review_client.js lit
+        # data-audio-*). Si le transcript vient de YouTube, le timestamp est une
+        # position VIDÉO → on retire l'intro pour viser la bonne position AUDIO ;
+        # s'il vient d'Acast, c'est déjà la position audio (pas d'offset).
+        audio_secs = max(0, secs - intro) if reco_src == "youtube" else secs
         html_out = (f'<a class="tc tc-audio" href="#" '
                     f'data-audio-src="{html.escape(audio)}" '
-                    f'data-audio-secs="{secs}">▶ {_fmt(secs)}</a>')
+                    f'data-audio-secs="{audio_secs}">▶ {_fmt(secs)}</a>')
         return TimecodeLink(secs=secs, html=html_out)
     if r.get("timestamp"):
         return TimecodeLink(
