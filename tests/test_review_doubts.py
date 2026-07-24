@@ -194,6 +194,24 @@ def test_signalement_type_radios(monkeypatch):
     assert checked("rc") == "citation"   # kind=citation → Citation par défaut
 
 
+def test_signalement_transcript_collapse(monkeypatch):
+    """2026-07-24 — chaque doute a un collapse <details> avec ±10 lignes de
+    transcript autour du timecode, la ligne cible surlignée (tr-here)."""
+    import review_doubts as rd
+    monkeypatch.setattr(rd, "_load_transcript",
+                        lambda src, guid: tuple((s, f"ligne {s}")
+                                                for s in range(0, 300, 10)))
+    r = _reco("r1", status="draft",
+              agent={"verdict": "unsure", "confidence": 0.4, "reason": "?"})
+    r["timestamp"] = "00:01:40"  # 100 s → ligne cible
+    _patch_groups(monkeypatch, [r])
+    out = render_doubts("src", ep="g1")
+    assert 'class="sig-transcript"' in out
+    assert "Transcript" in out
+    assert 'class="tr-here"' in out          # ligne du timecode surlignée
+    assert "ligne 100" in out                # contenu du transcript présent
+
+
 def test_render_types_ordered_within_episode(monkeypatch):
     """Refonte 2026-07-21 — dans la vue d'UN épisode, les sections restent dans
     l'ordre de priorité de _SECTIONS (pending avant lowconf)."""

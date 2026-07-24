@@ -295,6 +295,19 @@ body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';co
 .sig-ok{background:#5ab68a;color:#08130d;}
 .sig-ok:hover{background:#6bc79b;}
 .sig-ecarter{font-size:.9rem;}
+/* Collapse transcript ±10 lignes sous chaque doute (2026-07-24). */
+.sig-transcript{margin:.2rem 0 .6rem;}
+.sig-transcript>summary{cursor:pointer;color:#9a99a3;font-size:.8rem;list-style:none;
+  user-select:none;}
+.sig-transcript>summary:hover{color:#ffd23f;}
+.sig-transcript[open]>summary{margin-bottom:.4rem;}
+.tr-body{background:#0e0e10;border:1px dashed #2a2a30;border-radius:8px;
+  padding:.5em .8em;max-height:16rem;overflow:auto;font-size:.82rem;line-height:1.55;}
+.tr-line{color:#bfbcb3;}
+.tr-line code,.tr-here code{color:#7a7a82;font-size:.72rem;margin-right:.4em;}
+.tr-here{color:#ffe07a;font-weight:600;background:#1f1c0a;border-radius:4px;
+  padding:.1em .3em;margin:.1em 0;display:block;}
+.tr-here code{color:#ffd23f;}
 /* Choix du type par radio (Reco / Citation / Leur œuvre / Pas une reco) — 2026-07-23 */
 .sig-type{border:1px solid #2a2a30;border-radius:8px;padding:.35em .6em;margin:.3rem 0 .5rem;
   display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;}

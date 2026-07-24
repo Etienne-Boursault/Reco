@@ -32,7 +32,13 @@ from review_render import (
     _reco_checkboxes,
     _reco_quote_block,
 )
-from review_render_common import _flash_banner, _shell, _yt_timecode_link_parts
+from review_render_common import (
+    _context_around,
+    _flash_banner,
+    _load_transcript,
+    _shell,
+    _yt_timecode_link_parts,
+)
 
 # Sous ce seuil, un verdict appliqué est considéré « à vérifier ».
 LOW_CONFIDENCE = 0.7
@@ -220,6 +226,26 @@ def _sig_fix(key: str, ar: dict) -> tuple[str, str]:
     return ("À vérifier", hint)
 
 
+def _transcript_collapse(source_id: str, guid: str, secs: int | None) -> str:
+    """Collapse <details> du transcript ±10 lignes autour du timecode de la reco
+    (ligne cible surlignée). Retour utilisateur 2026-07-24. `_load_transcript`
+    est caché (lru_cache) → pas de relecture disque par carte d'un même épisode."""
+    if secs is None:
+        return ""
+    ctx = _context_around(_load_transcript(source_id, guid), secs,
+                          n_before=10, n_after=10)
+    if not ctx:
+        return ""
+    lines = []
+    for sec, txt in ctx:
+        cls = "tr-here" if abs(sec - secs) < 4 else "tr-line"
+        hms = f"{sec // 3600:02d}:{(sec % 3600) // 60:02d}:{sec % 60:02d}"
+        lines.append(f'<div class="{cls}"><code>{hms}</code> {html.escape(txt)}</div>')
+    return ('<details class="sig-transcript"><summary>📄 Transcript '
+            f'(±10 lignes)</summary><div class="tr-body">{"".join(lines)}</div>'
+            '</details>')
+
+
 def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
                       source_id: str, siblings: list[dict],
                       edit_id: str | None) -> str:
@@ -291,6 +317,7 @@ def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
     human_html = (f' <span class="sig-human">✔ {html.escape(str(human))}</span>'
                   if human else "")
     meta_html = f'<span class="sig-meta">{meta}</span>' if meta else ""
+    transcript = _transcript_collapse(source_id, ep.get("guid", ""), tcl.secs)
 
     return f"""
     <li class="row sig sig-{html.escape(key)}" data-reco-id="{rid_esc}">
@@ -302,6 +329,7 @@ def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
       <div class="sig-fix"><span class="sig-fix-label">💡 {html.escape(fix_label)} :</span>
         <span class="sig-fix-txt">{fix_txt}</span>{human_html}
       </div>
+      {transcript}
       <form method="post" action="/save" class="sig-actions">
         <input type="hidden" name="id" value="{rid_esc}">
         {who_html}
