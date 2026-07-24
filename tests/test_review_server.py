@@ -133,6 +133,12 @@ def fake_source(tmp_path, monkeypatch):
     (transcripts_dir / src_id).mkdir(parents=True, exist_ok=True)
     (transcripts_dir / src_id / "ep-001.txt").write_text(transcript, encoding="utf-8")
 
+    # Isole la pile d'annulation (review_undo) dans le tmp du test : les /save
+    # empilent désormais un instantané → sans ça, ils écriraient dans le vrai
+    # tools/output/review-undo.
+    import review_undo
+    monkeypatch.setattr(review_undo, "_UNDO_ROOT", tmp_path / "review-undo")
+
     # Vider le cache LRU pour ne pas garder des transcripts d'autres tests
     rs._load_transcript.cache_clear()
     return src_id
@@ -1057,6 +1063,69 @@ def test_post_edit_from_doutes_action_discard_sets_status(fake_source):
     assert reco["title"] == "Corrige"
     assert reco["status"] == "discarded"
     assert reco["agentReview"]["reviewedByHuman"] is True
+
+
+def test_save_pushes_undo_and_undo_save_restores(fake_source):
+    """Valider une reco depuis /doutes empile un instantané ; POST /undo-save la
+    restaure à son état d'avant (elle réapparaît dans la file). User 2026-07-24."""
+    from common import read_json, recos_dir_for
+    import review_undo
+    p = recos_dir_for(fake_source) / "ubm-001.json"
+    assert read_json(p)["status"] == "draft"
+    h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    assert read_json(p)["status"] == "validated"
+    assert review_undo.has_undo(fake_source)
+    h2 = _FakeHandler(fake_source, "/undo-save", b"", accept="application/json")
+    h2.do_POST()
+    body = json.loads(h2.wfile.getvalue().decode("utf-8"))
+    assert body["restored"] is True
+    assert body["reco_id"] == "ubm-001"
+    assert read_json(p)["status"] == "draft"        # rétabli
+    assert not review_undo.has_undo(fake_source)    # pile vidée
+
+
+def test_undo_save_when_empty_reports_nothing(fake_source):
+    """POST /undo-save sans rien à annuler → restored=False."""
+    h = _FakeHandler(fake_source, "/undo-save", b"", accept="application/json")
+    h.do_POST()
+    body = json.loads(h.wfile.getvalue().decode("utf-8"))
+    assert body["restored"] is False
+
+
+def test_undo_save_restores_full_reco_state(fake_source):
+    """L'annulation restaure l'ÉTAT COMPLET (kind/guestWork/recommendedBy…), pas
+    juste le statut : une reco reclassée en citation revient exactement à avant."""
+    from common import read_json, recos_dir_for
+    p = recos_dir_for(fake_source) / "ubm-001.json"
+    before = read_json(p)
+    assert "kind" not in before
+    h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=citation&who=Alice")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    assert read_json(p)["kind"] == "citation"
+    h2 = _FakeHandler(fake_source, "/undo-save", b"", accept="application/json")
+    h2.do_POST()
+    after = read_json(p)
+    assert "kind" not in after                       # citation retirée
+    assert after.get("status") == before.get("status")
+
+
+def test_edit_from_doutes_pushes_undo(fake_source):
+    """« Corriger » depuis /doutes est aussi annulable : l'édition empile un
+    instantané pré-édition, /undo-save restaure le titre d'origine."""
+    from common import read_json, recos_dir_for
+    p = recos_dir_for(fake_source) / "ubm-001.json"
+    assert read_json(p)["title"] == "Mortel"
+    h = _FakeHandler(fake_source, "/edit",
+                     b"id=ubm-001&title=Corrige&types=film&action=validate")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    assert read_json(p)["title"] == "Corrige"
+    h2 = _FakeHandler(fake_source, "/undo-save", b"", accept="application/json")
+    h2.do_POST()
+    assert read_json(p)["title"] == "Mortel"        # titre d'origine rétabli
 
 
 def test_post_edit_no_types_rejected(fake_source):
@@ -2453,6 +2522,34 @@ def test_yt_timecode_link_no_timestamp_returns_empty():
     """Pas de timestamp → chaîne vide."""
     assert rr._yt_timecode_link({}, {"youtubeUrl": "x"}) == ""
     assert rr._yt_timecode_link({"timestamp": ""}, {"youtubeUrl": "x"}) == ""
+
+
+def test_yt_timecode_link_audio_only_episode_is_clickable():
+    """Épisode SANS vidéo YouTube mais AVEC audio Acast → timecode cliquable
+    `a.tc-audio` (pilote le lecteur <audio>), pas un span statique. Le seek vise
+    la position brute (transcript Acast → pas d'offset). Retour user 2026-07-24."""
+    r = {"timestamp": "00:05:00", "transcriptSource": "acast"}
+    ep = {"youtubeUrl": None,
+          "audioUrl": "https://sphinx.acast.com/x/media.mp3"}
+    out = rr._yt_timecode_link(r, ep)
+    soup = parse(out)
+    a = soup.find("a")
+    assert a is not None
+    assert has_class(a, "tc", "tc-audio")
+    assert a.get("data-audio-src") == "https://sphinx.acast.com/x/media.mp3"
+    assert a.get("data-audio-secs") == "300"  # 5 min, pas d'offset
+    assert soup.find("span") is None
+
+
+def test_yt_timecode_link_prefers_youtube_over_audio():
+    """Si l'épisode a une vidéo YT ET un audio, on garde le lecteur vidéo
+    (branche YT) — pas de timecode audio."""
+    r = {"timestamp": "00:05:00", "transcriptSource": "youtube"}
+    ep = {"youtubeUrl": "https://www.youtube.com/watch?v=ABCDEFGHIJK",
+          "audioUrl": "https://sphinx.acast.com/x/media.mp3"}
+    out = rr._yt_timecode_link(r, ep)
+    assert "tc-audio" not in out
+    assert 'target="ytplayer"' in out
 
 
 def test_yt_timecode_link_applies_acast_offset():

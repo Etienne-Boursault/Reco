@@ -6,9 +6,11 @@ La plomberie HTTP (sécurité, réponses, cache) vit dans review_handler_base.
 
 from __future__ import annotations
 
+import copy
 import urllib.parse
 from pathlib import Path
 
+import review_undo as _undo
 from common import (
     log,
     read_json,
@@ -239,6 +241,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         if route == "/undo-merge":
             self._handle_undo_merge(data)
             return
+        if route == "/undo-save":
+            self._handle_undo_save(data)
+            return
         if route == "/consolidate":
             self._handle_consolidate(data)
             return
@@ -270,6 +275,16 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
     def _dispatch_edit(self, path: Path, reco_id: str,
                        data: dict) -> tuple[str, str, str]:
         """Branche /edit : applique + log + flash succès/erreur."""
+        # Instantané PRÉ-édition (avant qu'apply_edit ne réécrive le fichier) —
+        # empilé seulement si l'édition RÉUSSIT, pour que « ↩ Annuler » restaure
+        # l'état d'avant « Corriger » (retour utilisateur 2026-07-24).
+        from_doutes = self._referer_path() == "/doutes"
+        pre_edit = None
+        if from_doutes:
+            try:
+                pre_edit = copy.deepcopy(read_json(path))
+            except (OSError, ValueError):
+                pre_edit = None
         ok, guid = apply_edit(path, data)
         if not ok:
             try:
@@ -285,6 +300,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                          "inconnu (sélectionne au moins un type).")
             return guid, flash, "error"
         _invalidate_reco_path_cache(self.source_id)
+        if from_doutes and pre_edit is not None:
+            _undo.push_snapshot(self.source_id, reco_id, str(path),
+                                pre_edit, label="edit")
         # Sur /doutes, « Corriger » est une décision humaine TERMINALE : la reco
         # corrigée doit QUITTER la file (comme Valider/Écarter). Le formulaire
         # d'édition depuis /doutes porte des radios de TYPE (name="action") :
@@ -294,7 +312,6 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         # marqueur reviewedByHuman quand on venait de /doutes (sinon la reco
         # réapparaîtrait au rechargement malgré la correction, retour 2026-07-21).
         action = (data.get("action") or [None])[0]
-        from_doutes = self._referer_path() == "/doutes"
         if action in _SAVE_ACTIONS or from_doutes:
             try:
                 reco = read_json(path)
@@ -310,6 +327,41 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 log.warning("post-édition %s : %s", reco_id, exc)
         log.info("Édité : %s", reco_id)
         return guid, "Modifications enregistrées.", "success"
+
+    def _handle_undo_save(self, data: dict) -> None:
+        """POST /undo-save : dépile la dernière décision de relecture (Valider /
+        Citation / Leur œuvre / Pas une reco, ou « Corriger ») et restaure la
+        reco à son état d'avant. Elle réapparaît alors dans la file des doutes.
+
+        Retour utilisateur 2026-07-24 : « un bouton retour pour annuler une
+        validation faite par erreur ». Réponse JSON pour le client AJAX (qui
+        recharge la page pour ré-afficher la reco), sinon 303 PRG.
+        """
+        result = _undo.pop_and_restore(self.source_id)
+        _invalidate_reco_path_cache(self.source_id)
+        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        _GROUPS_CACHE.pop(self.source_id, None)
+        restored = bool(result.get("restored"))
+        reco_id = result.get("reco_id", "")
+        guid = result.get("guid", "")
+        if restored:
+            msg, kind = f"Annulé : {reco_id} rétablie.", "success"
+        else:
+            msg, kind = "Rien à annuler.", "warning"
+        if self._wants_json():
+            import json as _json  # noqa: PLC0415
+            self._send_json(_json.dumps({
+                "kind": kind, "message": msg,
+                "restored": restored, "reco_id": reco_id,
+            }, ensure_ascii=False))
+            return
+        loc = "/doutes"
+        if guid:
+            loc = f"/doutes?ep={urllib.parse.quote(guid)}"
+        sep = "&" if "?" in loc else "?"
+        loc += (f"{sep}flash={urllib.parse.quote(msg)}"
+                f"&kind={urllib.parse.quote(kind)}")
+        self._send_redirect(loc)
 
     def _referer_path(self) -> str:
         """Path du header Referer (ou "" si absent/illisible).
@@ -419,6 +471,10 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         if action not in _SAVE_ACTIONS:
             log.warning("POST /save refusé : action inconnue « %s »", action)
             return guid, "Action de sauvegarde inconnue.", "error"
+        # Instantané AVANT mutation → « ↩ Annuler » (POST /undo-save) restaure
+        # l'état exact d'avant la décision (retour utilisateur 2026-07-24).
+        _undo.push_snapshot(self.source_id, reco_id, str(path),
+                            copy.deepcopy(reco), label=action)
         self._apply_save_action(reco, action, recommended, reco_id)
         write_json_if_changed(path, reco)
         # Note : pas d'invalidation du cache reco_id→Path — voir docstring

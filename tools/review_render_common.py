@@ -136,6 +136,17 @@ def _yt_timecode_link_parts(r: dict, ep: dict) -> TimecodeLink:
                     f'href="{html.escape(_embed_url(yt, tv))}">'
                     f'▶ {_fmt(secs)}</a>')
         return TimecodeLink(secs=secs, html=html_out)
+    audio = _safe_url(ep.get("audioUrl"))
+    if audio and secs is not None:
+        # Épisode audio-only (pas de vidéo YouTube) : timecode CLIQUABLE qui
+        # pilote le lecteur <audio> Acast (review_client.js lit data-audio-*).
+        # Ici le transcript vient forcément d'Acast → le timestamp EST la
+        # position dans l'audio, sans offset. Retour utilisateur 2026-07-24
+        # (épisode 18, audio-only).
+        html_out = (f'<a class="tc tc-audio" href="#" '
+                    f'data-audio-src="{html.escape(audio)}" '
+                    f'data-audio-secs="{secs}">▶ {_fmt(secs)}</a>')
+        return TimecodeLink(secs=secs, html=html_out)
     if r.get("timestamp"):
         return TimecodeLink(
             secs=secs,

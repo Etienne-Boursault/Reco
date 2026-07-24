@@ -28,6 +28,49 @@
     }, 4000);
   }
 
+  // Toast d'annulation : confirme une décision de /doutes ET propose « ↩ Annuler »
+  // (POST /undo-save → restaure la reco côté serveur, puis reload pour la ré-
+  // afficher). Reste 9 s à l'écran (le temps de réagir à une erreur de clic).
+  // Retour utilisateur 2026-07-24.
+  function undoToast(message) {
+    const zone = document.getElementById('toast-zone');
+    if (!zone) return;
+    const el = document.createElement('div');
+    el.className = 'toast toast-success toast-undo';
+    const span = document.createElement('span');
+    span.textContent = message;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'toast-undo-btn';
+    btn.textContent = '↩ Annuler';
+    let done = false;
+    btn.addEventListener('click', async () => {
+      if (done) return;
+      done = true;
+      btn.disabled = true;
+      try {
+        const r = await fetch('/undo-save', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new URLSearchParams({}),
+        });
+        const data = await r.json();
+        if (!data.restored) { toast(data.message || 'Rien à annuler.', 'warning'); return; }
+        window.location.reload();  // la reco rétablie réapparaît dans la file
+      } catch (err) {
+        toast('Erreur réseau : ' + err.message, 'error');
+      }
+    });
+    el.appendChild(span);
+    el.appendChild(btn);
+    zone.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 9000);
+  }
+
   // --- REPLACE CARD / AJAX ---
   // Remplace la carte (li.row) qui contient la reco_id par le HTML reçu.
   // La carte DOIT n'utiliser QUE des listeners délégués sur document — un
@@ -99,12 +142,20 @@
       // traité (validé/écarté) ou corrigé DISPARAÎT de la file — le backend a
       // posé reviewedByHuman — au lieu d'être remplacé par sa carte « done ».
       // Le focus passe à la reco suivante (removeCard).
-      if ((action === '/save' || action === '/edit') && onDoutes && data.kind !== 'error') {
+      const terminalDoutes = (action === '/save' || action === '/edit')
+        && onDoutes && data.kind !== 'error';
+      if (terminalDoutes) {
         removeCard(reco_id);
       } else if (data.card_html) {
         replaceCard(reco_id, data.card_html);
       }
-      if (data.message) toast(data.message, data.kind || 'info');
+      // Décision terminale sur /doutes → toast AVEC bouton « ↩ Annuler » (le
+      // backend a empilé un instantané) au lieu du toast simple.
+      if (terminalDoutes) {
+        undoToast(data.message || 'Traité — reco suivante.');
+      } else if (data.message) {
+        toast(data.message, data.kind || 'info');
+      }
       // #4 — édition réussie : nettoie ?edit= et re-marque la carte active
       // pour que la validation clavier (V/C/D) agisse tout de suite dessus.
       // On NE nettoie PAS sur erreur de validation (le formulaire reste
@@ -242,22 +293,55 @@
   }
   initOnReady(setupPlayerDrag);
 
-  // --- PLAYER TOGGLE ---
-  // ✕ vide l'iframe (about:blank pour stopper la lecture) et masque le bloc.
-  // Tout clic sur un timecode (a[target="ytplayer"]) ré-affiche le bloc.
+  // --- PLAYER TOGGLE (vidéo YouTube + audio Acast) ---
+  // ✕ coupe le lecteur (iframe → about:blank, audio en pause) et masque le bloc.
+  // Un timecode vidéo (a[target="ytplayer"]) affiche l'iframe ; un timecode
+  // audio (a.tc-audio, épisode sans vidéo YT) bascule le bloc en mode audio et
+  // fait sauter le lecteur <audio> Acast à la bonne seconde (retour utilisateur
+  // 2026-07-24, épisode 18 audio-only). Chaque lien audio porte sa propre source
+  // (data-audio-src) → fonctionne même sur une page multi-épisodes.
   function setupPlayerToggle() {
     const wrap = document.querySelector('[data-player-wrap]');
     if (!wrap) return;
     const iframe = wrap.querySelector('iframe.player');
+    const audio = wrap.querySelector('[data-audio-player]');
+    function seekAudio(src, secs) {
+      if (!audio) return;
+      if (iframe) iframe.src = 'about:blank';   // coupe l'éventuel son YouTube
+      wrap.classList.add('audio-mode');
+      if (audio.getAttribute('src') !== src) {
+        audio.setAttribute('src', src);
+        audio.load();
+      }
+      const go = () => {
+        try { audio.currentTime = secs; } catch (_) { /* pas encore seekable */ }
+        audio.play().catch(() => { /* autoplay bloqué : contrôles dispo */ });
+      };
+      if (audio.readyState >= 1) go();
+      else audio.addEventListener('loadedmetadata', go, { once: true });
+    }
     document.addEventListener('click', (e) => {
       const closeBtn = e.target.closest('[data-player-close]');
       if (closeBtn) {
         if (iframe) iframe.src = 'about:blank';
+        if (audio) audio.pause();
         wrap.classList.add('hidden');
         return;
       }
+      const au = e.target.closest('a.tc-audio');
+      if (au) {
+        e.preventDefault();
+        wrap.classList.remove('hidden');
+        seekAudio(au.getAttribute('data-audio-src'),
+                  parseInt(au.getAttribute('data-audio-secs'), 10) || 0);
+        return;
+      }
       const tc = e.target.closest('a[target="ytplayer"]');
-      if (tc) wrap.classList.remove('hidden');
+      if (tc) {
+        if (audio) audio.pause();
+        wrap.classList.remove('audio-mode');
+        wrap.classList.remove('hidden');
+      }
     });
   }
   initOnReady(setupPlayerToggle);

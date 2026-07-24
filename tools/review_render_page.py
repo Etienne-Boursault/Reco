@@ -233,6 +233,11 @@ _PLAYER_WRAP_HTML = (
     'title="Fermer le lecteur" aria-label="Fermer le lecteur">✕</button>'
     '<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
     'allowfullscreen></iframe>'
+    # Lecteur audio Acast pour les épisodes SANS vidéo YouTube (ex. épisode 18).
+    # Masqué tant qu'on n'est pas en `audio-mode` ; piloté par review_client.js
+    # (setupPlayerToggle) via les timecodes `a.tc-audio` (data-audio-*).
+    '<audio class="player-audio" data-audio-player controls '
+    'preload="none"></audio>'
     '</div>'
 )
 

@@ -13,6 +13,13 @@ h1{font-size:1.4rem;} .meta{color:#9a99a3;}
 .player-wrap[style*="width:"], .player-wrap[style*="height:"]{aspect-ratio:auto;}
 .player-wrap.hidden{display:none;}
 .player-wrap .player{position:static;width:100%;height:100%;border:0;border-radius:8px;background:#000;box-shadow:none;}
+/* Mode audio (épisode sans vidéo YouTube) : on remplace l'iframe 16/9 par le
+   lecteur <audio>, bloc compact ; padding-haut pour dégager ✕ et ⠿. */
+.player-wrap .player-audio{display:none;width:100%;}
+.player-wrap.audio-mode{aspect-ratio:auto;height:auto;min-height:0;background:#15151b;padding:2.4rem .6rem .7rem;resize:horizontal;}
+.player-wrap.audio-mode .player{display:none;}
+.player-wrap.audio-mode .player-audio{display:block;}
+.tc-audio{cursor:pointer;}
 .player-close{position:absolute;top:.3rem;right:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#f6f4ee;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;z-index:101;}
 .player-drag-handle{position:absolute;top:.3rem;left:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#9a99a3;cursor:grab;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;user-select:none;touch-action:none;z-index:101;}
 /* Empêche le scroll natif tactile pendant le drag (cf. review #24). */
@@ -133,6 +140,10 @@ a.ov-label:hover{text-decoration:underline;}
 .toast-warning{border-color:#5a4a14;background:#27220a;color:#ffd23f;}
 .toast-error{border-color:#5c1a1a;background:#2a1010;color:#ff9a9a;}
 .toast-info{border-color:#1f3a5c;background:#0f1825;color:#a2c4ee;}
+.toast-undo{display:flex;align-items:center;gap:.7rem;}
+.toast-undo-btn{flex:none;cursor:pointer;border:1px solid #a9e3b8;background:transparent;color:#a9e3b8;font-weight:700;font-size:.82rem;padding:.25em .7em;border-radius:7px;}
+.toast-undo-btn:hover{background:#a9e3b8;color:#0f2417;}
+.toast-undo-btn:disabled{opacity:.5;cursor:default;}
 /* Cluster card (doublons probables) — cuivre warning distinct du jaune reco. */
 .row.cluster{border-left:3px solid #b87333;background:#1d1813;padding:1rem 1.1rem;}
 .cluster-header{color:#b87333;font-weight:600;margin-bottom:.6rem;display:block;}
