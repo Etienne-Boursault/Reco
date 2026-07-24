@@ -64,6 +64,19 @@ def test_csp_allows_youtube_thumbnails():
     assert "i.ytimg.com" in csp
 
 
+def test_csp_allows_podcast_audio():
+    """media-src doit autoriser l'audio https (MP3 Acast) — sinon le lecteur
+    audio des épisodes audio-only est bloqué par le CSP (retour user 07-24)."""
+    csp = rhb._SECURITY_HEADERS["Content-Security-Policy"]
+    assert "media-src https:" in csp
+
+
+def test_csp_allows_youtube_player_api_script():
+    """L'IFrame Player API YouTube (pilotage clavier) doit pouvoir se charger."""
+    csp = rhb._SECURITY_HEADERS["Content-Security-Policy"]
+    assert "script-src" in csp and "https://www.youtube.com" in csp
+
+
 # ===== Parse POST ============================================================
 def test_parse_post_data_simple():
     body = b"id=ubm-001&action=validate"

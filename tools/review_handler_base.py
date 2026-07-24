@@ -70,12 +70,19 @@ _SECURITY_HEADERS: dict[str, str] = {
     "Content-Security-Policy": (
         "default-src 'self'; "
         "img-src 'self' data: https://i.ytimg.com; "
+        # media-src : lecteur <audio> des épisodes audio-only (MP3 Acast, et tout
+        # autre CDN podcast https si l'outil est dupliqué pour une autre source).
+        # L'audio ne peut pas exécuter de code → autoriser https: est sans risque
+        # d'XSS. Sans ça, le MP3 retombait sur default-src 'self' et était bloqué.
+        "media-src https:; "
         "style-src 'unsafe-inline'; "
         "frame-src https://www.youtube.com https://www.youtube-nocookie.com; "
         # 'unsafe-inline' nécessaire pour le petit JS embarqué (toast + AJAX
         # partiel). Le serveur est strictement local (127.0.0.1) donc le risque
         # XSS est confiné — toutes les entrées sont déjà html.escape côté Py.
-        "script-src 'unsafe-inline'; base-uri 'none'; form-action 'self'"
+        # www.youtube.com : l'IFrame Player API (iframe_api) pilotée au clavier.
+        "script-src 'unsafe-inline' https://www.youtube.com; "
+        "base-uri 'none'; form-action 'self'"
     ),
 }
 
