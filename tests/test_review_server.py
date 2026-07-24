@@ -1027,6 +1027,38 @@ def test_post_edit_from_doutes_marks_reviewed(fake_source):
     assert "reviewedByHuman" not in read_json(p).get("agentReview", {})
 
 
+def test_post_edit_from_doutes_applies_type_action(fake_source):
+    """« Corriger » depuis /doutes porte des radios de TYPE (name=action) :
+    « Sauvegarder » applique le kind choisi EN PLUS de la correction du titre
+    (retour utilisateur 07-24). Ici : reclassement en citation."""
+    from common import read_json, recos_dir_for
+    h = _FakeHandler(
+        fake_source, "/edit",
+        b"id=ubm-001&title=Une%20phrase&types=film&action=citation")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Une phrase"
+    assert reco["kind"] == "citation"
+    assert reco["status"] == "validated"
+    assert reco["agentReview"]["reviewedByHuman"] is True
+
+
+def test_post_edit_from_doutes_action_discard_sets_status(fake_source):
+    """Radio « Pas une reco » (action=discard) depuis /doutes → status discarded,
+    tout en gardant la correction de titre appliquée."""
+    from common import read_json, recos_dir_for
+    h = _FakeHandler(
+        fake_source, "/edit",
+        b"id=ubm-001&title=Corrige&types=film&action=discard")
+    h.headers["Referer"] = "http://127.0.0.1:8000/doutes"
+    h.do_POST()
+    reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
+    assert reco["title"] == "Corrige"
+    assert reco["status"] == "discarded"
+    assert reco["agentReview"]["reviewedByHuman"] is True
+
+
 def test_post_edit_no_types_rejected(fake_source):
     """Types vides → redirige vers la page épisode + flash d'erreur (H6)."""
     body = b"id=ubm-001&title=X"

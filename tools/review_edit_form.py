@@ -379,6 +379,23 @@ def render_edit_form(
     )
     title_label = "Nom" if is_artist_only else "Titre"
     creator_hidden = ' style="display:none"' if is_artist_only else ''
+    # Type (Reco/Citation/Leur œuvre/Pas une reco) — UNIQUEMENT en édition depuis
+    # /doutes : « Sauvegarder » applique alors le type choisi (la route /edit lit
+    # `action`). Sans ça, corriger un titre ne permettait pas de classer la reco
+    # en même temps (retour utilisateur 2026-07-24). Défaut = type actuel.
+    type_radio_block = ""
+    if edit_origin == "/doutes":
+        cur_kind = "guest-work" if r.get("guestWork") else r.get("kind", "reco")
+        default_action = (cur_kind if cur_kind in ("citation", "guest-work")
+                          else "validate")
+        _opts = (("validate", "⭐ Reco"), ("citation", "📝 Citation"),
+                 ("guest-work", "🎭 Leur œuvre"), ("discard", "✕ Pas une reco"))
+        _radios = "".join(
+            f'<label class="sig-radio sig-radio-{v}"><input type="radio" '
+            f'name="action" value="{v}"{" checked" if v == default_action else ""}> '
+            f'{lbl}</label>' for v, lbl in _opts)
+        type_radio_block = ('<fieldset class="sig-type"><legend>Type :</legend>'
+                            f'{_radios}</fieldset>')
     return f"""
     <li class="row editing">
       {recap_block}
@@ -394,6 +411,7 @@ def render_edit_form(
         {recby_block}
         <div class="types-box">{type_boxes}</div>
         {details_block}
+        {type_radio_block}
         <div class="edit-actions">
           <a class="back" href="{html.escape(cancel)}">Annuler</a>
           <button type="submit">Sauvegarder</button>

@@ -286,19 +286,28 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             return guid, flash, "error"
         _invalidate_reco_path_cache(self.source_id)
         # Sur /doutes, « Corriger » est une décision humaine TERMINALE : la reco
-        # corrigée doit QUITTER la file (comme Valider/Écarter). On pose le
-        # marqueur reviewedByHuman (cf. review_doubts._section_for) — sinon elle
-        # réapparaîtrait au rechargement malgré la correction (retour
-        # utilisateur 2026-07-21). Ne touche pas l'édition depuis /ep.
-        if self._referer_path() == "/doutes":
+        # corrigée doit QUITTER la file (comme Valider/Écarter). Le formulaire
+        # d'édition depuis /doutes porte des radios de TYPE (name="action") :
+        # « Sauvegarder » applique alors ce type (Reco/Citation/Leur œuvre/Pas une
+        # reco) EN PLUS de la correction — retour utilisateur 2026-07-24. À défaut
+        # de radio (édition depuis /ep, ou ancien client), on pose juste le
+        # marqueur reviewedByHuman quand on venait de /doutes (sinon la reco
+        # réapparaîtrait au rechargement malgré la correction, retour 2026-07-21).
+        action = (data.get("action") or [None])[0]
+        from_doutes = self._referer_path() == "/doutes"
+        if action in _SAVE_ACTIONS or from_doutes:
             try:
                 reco = read_json(path)
-                reco.setdefault("agentReview", {})["reviewedByHuman"] = True
+                if action in _SAVE_ACTIONS:
+                    recby = str(reco.get("recommendedBy") or "").strip()
+                    self._apply_save_action(reco, action, recby, reco_id)
+                else:
+                    reco.setdefault("agentReview", {})["reviewedByHuman"] = True
                 write_json_if_changed(path, reco)
                 from review_render import _GROUPS_CACHE  # noqa: PLC0415
                 _GROUPS_CACHE.pop(self.source_id, None)
             except (OSError, ValueError) as exc:
-                log.warning("reviewedByHuman post-édition %s : %s", reco_id, exc)
+                log.warning("post-édition %s : %s", reco_id, exc)
         log.info("Édité : %s", reco_id)
         return guid, "Modifications enregistrées.", "success"
 
