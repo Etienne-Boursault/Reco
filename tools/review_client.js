@@ -293,22 +293,24 @@
   }
   initOnReady(setupPlayerDrag);
 
-  // --- PLAYER TOGGLE (vidéo YouTube + audio Acast) ---
-  // ✕ coupe le lecteur (iframe → about:blank, audio en pause) et masque le bloc.
-  // Un timecode vidéo (a[target="ytplayer"]) affiche l'iframe ; un timecode
-  // audio (a.tc-audio, épisode sans vidéo YT) bascule le bloc en mode audio et
-  // fait sauter le lecteur <audio> Acast à la bonne seconde (retour utilisateur
-  // 2026-07-24, épisode 18 audio-only). Chaque lien audio porte sa propre source
-  // (data-audio-src) → fonctionne même sur une page multi-épisodes.
+  // --- PLAYER TOGGLE (vidéo YouTube flottante + audio Acast en barre du bas) ---
+  // Deux lecteurs distincts, mutuellement exclusifs :
+  //  - VIDÉO : encart flottant top-right (a[target="ytplayer"] charge l'iframe).
+  //  - AUDIO : barre fixe en bas de page (a.tc-audio, épisode sans vidéo YT),
+  //    avec boutons −10 s / +10 s pour naviguer finement (retour utilisateur
+  //    2026-07-24). Chaque lien audio porte sa source (data-audio-src) → OK même
+  //    sur une page multi-épisodes.
   function setupPlayerToggle() {
     const wrap = document.querySelector('[data-player-wrap]');
-    if (!wrap) return;
-    const iframe = wrap.querySelector('iframe.player');
-    const audio = wrap.querySelector('[data-audio-player]');
+    const iframe = wrap && wrap.querySelector('iframe.player');
+    const bar = document.querySelector('[data-audio-bar]');
+    const audio = bar && bar.querySelector('[data-audio-player]');
+    if (!wrap && !bar) return;
     function seekAudio(src, secs) {
-      if (!audio) return;
-      if (iframe) iframe.src = 'about:blank';   // coupe l'éventuel son YouTube
-      wrap.classList.add('audio-mode');
+      if (!audio || !bar) return;
+      if (iframe) iframe.src = 'about:blank';   // coupe l'éventuelle vidéo
+      if (wrap) wrap.classList.add('hidden');
+      bar.classList.remove('hidden');
       if (audio.getAttribute('src') !== src) {
         audio.setAttribute('src', src);
         audio.load();
@@ -321,26 +323,40 @@
       else audio.addEventListener('loadedmetadata', go, { once: true });
     }
     document.addEventListener('click', (e) => {
-      const closeBtn = e.target.closest('[data-player-close]');
-      if (closeBtn) {
+      const vClose = e.target.closest('[data-player-close]');
+      if (vClose) {
         if (iframe) iframe.src = 'about:blank';
+        if (wrap) wrap.classList.add('hidden');
+        return;
+      }
+      const aClose = e.target.closest('[data-audio-close]');
+      if (aClose) {
         if (audio) audio.pause();
-        wrap.classList.add('hidden');
+        if (bar) bar.classList.add('hidden');
+        return;
+      }
+      const skip = e.target.closest('[data-audio-skip]');
+      if (skip && audio) {
+        const delta = parseInt(skip.getAttribute('data-audio-skip'), 10) || 0;
+        let t = (audio.currentTime || 0) + delta;
+        if (t < 0) t = 0;
+        if (!isNaN(audio.duration) && t > audio.duration) t = audio.duration;
+        audio.currentTime = t;
+        audio.play().catch(() => { /* autoplay bloqué */ });
         return;
       }
       const au = e.target.closest('a.tc-audio');
       if (au) {
         e.preventDefault();
-        wrap.classList.remove('hidden');
         seekAudio(au.getAttribute('data-audio-src'),
                   parseInt(au.getAttribute('data-audio-secs'), 10) || 0);
         return;
       }
       const tc = e.target.closest('a[target="ytplayer"]');
-      if (tc) {
+      if (tc) {  // ouvrir la vidéo ferme l'audio (mutuellement exclusifs)
         if (audio) audio.pause();
-        wrap.classList.remove('audio-mode');
-        wrap.classList.remove('hidden');
+        if (bar) bar.classList.add('hidden');
+        if (wrap) wrap.classList.remove('hidden');
       }
     });
   }

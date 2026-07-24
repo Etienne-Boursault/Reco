@@ -339,6 +339,20 @@ def test_player_wrap_hidden_until_timecode_click(fake_source):
     assert has_class(wrap, "hidden")
 
 
+def test_audio_bar_present_with_skip_buttons(fake_source):
+    """La barre audio (bas de page) est rendue, masquée, avec −10s/+10s et un
+    lecteur <audio> — pour les épisodes audio-only (retour user 2026-07-24)."""
+    out = rr._render_episode(fake_source, "ep-001")
+    soup = parse(out)
+    bar = soup.find(attrs={"data-audio-bar": True})
+    assert bar is not None
+    assert has_class(bar, "hidden")
+    assert bar.find("audio", attrs={"data-audio-player": True}) is not None
+    skips = sorted(s.get("data-audio-skip") for s in
+                   bar.find_all(attrs={"data-audio-skip": True}))
+    assert skips == ["-10", "10"]
+
+
 def test_load_transcript_missing(fake_source, monkeypatch):
     rs._load_transcript.cache_clear()
     items = rs._load_transcript(fake_source, "guid-inconnu")

@@ -226,6 +226,7 @@ def _has_undoable_merge_cached(source_id: str, _mtime_ns: int,
 # `hidden` au chargement : pas d'iframe vide flottante à l'arrivée — le JS
 # (setupPlayerToggle) retire la classe au premier clic sur un timecode.
 _PLAYER_WRAP_HTML = (
+    # Lecteur VIDÉO YouTube — encart flottant déplaçable (épisodes avec vidéo).
     '<div class="player-wrap hidden" data-player-wrap>'
     '<div class="player-drag-handle" data-player-drag '
     'title="Glisser pour déplacer">⠿</div>'
@@ -233,11 +234,19 @@ _PLAYER_WRAP_HTML = (
     'title="Fermer le lecteur" aria-label="Fermer le lecteur">✕</button>'
     '<iframe name="ytplayer" class="player" title="Lecteur YouTube" '
     'allowfullscreen></iframe>'
-    # Lecteur audio Acast pour les épisodes SANS vidéo YouTube (ex. épisode 18).
-    # Masqué tant qu'on n'est pas en `audio-mode` ; piloté par review_client.js
-    # (setupPlayerToggle) via les timecodes `a.tc-audio` (data-audio-*).
-    '<audio class="player-audio" data-audio-player controls '
-    'preload="none"></audio>'
+    '</div>'
+    # Lecteur AUDIO Acast — barre fixe en bas de page (épisodes audio-only, ex.
+    # ép. 18). Boutons −10 s / +10 s pour naviguer finement. Piloté par
+    # review_client.js (setupPlayerToggle) via les timecodes `a.tc-audio`.
+    '<div class="audio-bar hidden" data-audio-bar>'
+    '<button type="button" class="audio-skip" data-audio-skip="-10" '
+    'title="Reculer de 10 s" aria-label="Reculer de 10 secondes">−10s</button>'
+    '<audio class="audio-el" data-audio-player controls preload="none"></audio>'
+    '<button type="button" class="audio-skip" data-audio-skip="10" '
+    'title="Avancer de 10 s" aria-label="Avancer de 10 secondes">+10s</button>'
+    '<button type="button" class="audio-bar-close" data-audio-close '
+    'title="Fermer le lecteur audio" aria-label="Fermer le lecteur audio">'
+    '✕</button>'
     '</div>'
 )
 
