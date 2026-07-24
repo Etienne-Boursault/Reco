@@ -24,6 +24,7 @@ from __future__ import annotations
 import html
 import urllib.parse
 
+from creator_flags import flag_badge_html
 from review_edit import render_edit_form
 from review_render import (
     _PLAYER_WRAP_HTML,
@@ -275,6 +276,7 @@ def _signalement_card(key: str, ep: dict, r: dict, hosts: list[str],
     # Reco actuelle : titre + créateur + « Reco de » + lien timecode + citation.
     tcl = _yt_timecode_link_parts(r, ep)
     creator = (f' <i>· {html.escape(str(r["creator"]))}</i>'
+               f'{flag_badge_html(r.get("creator"))}'
                if r.get("creator") else "")
     recby = str(r.get("recommendedBy") or "").strip()
     recby_html = (f' <span class="sig-recby">Reco de {html.escape(recby)}</span>'

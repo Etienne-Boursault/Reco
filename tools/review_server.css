@@ -83,6 +83,17 @@ ul{list-style:none;padding:0;margin:0;}
 .ctx{opacity:.65;}
 .ctx-here{color:#ffd23f;font-weight:600;}
 .tc{color:#ffd23f;font-weight:600;text-decoration:none;} .tc.off{color:#9a99a3;}
+/* Signalement « situation de l'artiste » (creator_flags.py). <details> pour que
+   la source reste cliquable. */
+.cflag{display:inline-block;position:relative;vertical-align:baseline;margin-left:.3em;}
+.cflag>summary{display:inline-flex;align-items:center;cursor:pointer;font-size:.85em;line-height:1;list-style:none;border-radius:4px;padding:0 .15em;}
+.cflag>summary::-webkit-details-marker{display:none;}
+.cflag>summary:focus-visible{outline:2px solid #ffd23f;outline-offset:2px;}
+.cflag-panel{position:absolute;z-index:120;top:calc(100% + .35rem);left:0;width:max-content;max-width:min(22rem,80vw);padding:.6rem .75rem;background:#1a1a22;color:#f6f4ee;border:1px solid #3a3a40;border-left:3px solid #e0913a;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:.82rem;line-height:1.35;font-weight:400;font-style:normal;white-space:normal;text-align:left;}
+.cflag[data-severity="condamnation"] .cflag-panel{border-left-color:#d0524e;}
+.cflag-sit{margin:0 0 .4rem;}
+.cflag-src{font-size:.78rem;font-weight:600;color:#ffd23f;text-decoration:none;}
+.cflag-src:hover{text-decoration:underline;}
 .dur{color:#8a8a92;font-size:.78rem;}
 .tmodel{color:#8a8a92;font-size:.78rem;}
 .epnum{color:#ffd23f;background:#0e0e10;border:1px solid #2a2a30;border-radius:6px;padding:.05em .4em;font-size:.78rem;}

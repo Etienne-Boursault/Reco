@@ -16,6 +16,7 @@ import Layout from '../../../layouts/Layout.astro';
 import MentionsTimeline from '../../../components/MentionsTimeline.astro';
 import TrendingBadge from '../../../components/TrendingBadge.astro';
 import WorkCard from '../../../components/WorkCard.astro';
+import CreatorFlag from '../../../components/CreatorFlag.astro';
 import { TYPE_EMOJIS, TYPE_LABELS } from '../../../utils/recoTypes';
 import { recoToSchema } from '../../../lib/seo/jsonld';
 import {
@@ -201,6 +202,7 @@ const pageTitle = item.creator
       <h1>{item.title}</h1>
       <div class="work-sub">
         {item.creator && <span class="creator">{item.creator}</span>}
+        <CreatorFlag name={item.creator} />
         {item.year && (
           <span class="year" aria-label={t('work.year.a11y', { year: item.year })}>· {item.year}</span>
         )}

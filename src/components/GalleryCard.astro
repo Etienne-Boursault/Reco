@@ -13,6 +13,7 @@
  */
 import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
 import { t } from '../i18n';
+import CreatorFlag from './CreatorFlag.astro';
 
 export interface Props {
   /** id de l'item (utilisé pour l'ancre, pas pour le routing). */
@@ -51,7 +52,13 @@ const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';
     <div class="gcard-body">
       <p class="gcard-type" aria-label={`Type : ${typeLabel}`}>{typeLabel}</p>
       <h3 class="gcard-title">{title}</h3>
-      {creator && <p class="gcard-creator">{creator}{year ? ` · ${year}` : ''}</p>}
+      {creator && (
+        <p class="gcard-creator">
+          {creator}
+          <CreatorFlag name={creator} interactive={false} />
+          {year ? ` · ${year}` : ''}
+        </p>
+      )}
       {!creator && year && <p class="gcard-creator">{year}</p>}
       <p class="gcard-count">
         <span class="gcard-count-n">{mentionCount}</span>
@@ -65,7 +72,13 @@ const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';
     <div class="gcard-body">
       <p class="gcard-type" aria-label={`Type : ${typeLabel}`}>{typeLabel}</p>
       <h3 class="gcard-title">{title}</h3>
-      {creator && <p class="gcard-creator">{creator}{year ? ` · ${year}` : ''}</p>}
+      {creator && (
+        <p class="gcard-creator">
+          {creator}
+          <CreatorFlag name={creator} interactive={false} />
+          {year ? ` · ${year}` : ''}
+        </p>
+      )}
       {!creator && year && <p class="gcard-creator">{year}</p>}
       <p class="gcard-count">
         <span class="gcard-count-n">{mentionCount}</span>

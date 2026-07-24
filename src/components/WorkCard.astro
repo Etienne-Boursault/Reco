@@ -5,6 +5,7 @@
  */
 import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
 import type { ItemLike } from '../lib/work/aggregator';
+import CreatorFlag from './CreatorFlag.astro';
 
 interface Props {
   sourceId: string;
@@ -31,7 +32,12 @@ const typeTitle = typeEmojis.map((te) => te.label).join(', ');
   </span>
   <span class="wcard-body">
     <span class="wcard-title">{item.title}</span>
-    {item.creator && <span class="wcard-creator">{item.creator}</span>}
+    {item.creator && (
+      <span class="wcard-creator">
+        {item.creator}
+        <CreatorFlag name={item.creator} interactive={false} />
+      </span>
+    )}
   </span>
   {item.year && <span class="wcard-year">{item.year}</span>}
 </a>

@@ -8,6 +8,7 @@ import { TYPE_LABELS, TYPE_EMOJIS } from '../utils/recoTypes';
 import { t } from '../i18n';
 import AudioExcerpt from './AudioExcerpt.astro';
 import OutboundLink from './OutboundLink.astro';
+import CreatorFlag from './CreatorFlag.astro';
 
 interface Props {
   reco: {
@@ -269,7 +270,9 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   </div>
 
   <h3 class="title">{reco.title}</h3>
-  {reco.creator && <p class="creator">{reco.creator}</p>}
+  {reco.creator && (
+    <p class="creator">{reco.creator}<CreatorFlag name={reco.creator} /></p>
+  )}
 
   <div class="meta">
     {reco.recommendedBy && <span class="by">Reco de {reco.recommendedBy}</span>}

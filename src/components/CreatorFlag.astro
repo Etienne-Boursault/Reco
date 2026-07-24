@@ -1,0 +1,130 @@
+---
+/**
+ * CreatorFlag — badge ⚠️ + info-bulle sur la situation d'un créateur signalé
+ * (accusation / condamnation). N'affiche RIEN si le créateur n'est pas dans
+ * `src/data/creator-flags.json`. Contenu 100 % piloté par ce fichier curé —
+ * le composant n'invente rien.
+ *
+ * Deux rendus :
+ *  - `interactive` (défaut) : <details> avec la source cliquable. À utiliser
+ *    hors d'un lien (page œuvre, RecoCard…).
+ *  - `interactive={false}` : simple <span title> non-interactif, valide à
+ *    l'intérieur d'une carte-lien (<a>) où un <details>/<a> serait illégal
+ *    (WorkCard, GalleryCard). La source se consulte en ouvrant la page œuvre.
+ */
+import { creatorFlag } from '../data/creatorFlags';
+
+interface Props {
+  name?: string | null;
+  interactive?: boolean;
+}
+const { name, interactive = true } = Astro.props;
+const flag = name ? creatorFlag(name) : null;
+const severity = flag?.severity ?? 'accusation';
+const label =
+  severity === 'condamnation'
+    ? 'Créateur condamné — voir la situation'
+    : 'Créateur mis en cause — voir la situation';
+---
+
+{
+  flag && interactive && (
+    <details class="creator-flag" data-severity={severity}>
+      <summary aria-label={label} title={label}>
+        <span aria-hidden="true">⚠️</span>
+      </summary>
+      <div class="creator-flag-panel" role="note">
+        <p class="creator-flag-sit">{flag.situation}</p>
+        {flag.source && (
+          <a
+            class="creator-flag-src"
+            href={flag.source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Source ↗
+          </a>
+        )}
+      </div>
+    </details>
+  )
+}
+{
+  flag && !interactive && (
+    <span
+      class="creator-flag-dot"
+      data-severity={severity}
+      role="img"
+      aria-label={`${label} : ${flag.situation}`}
+      title={`${label} : ${flag.situation}`}
+    >
+      ⚠️
+    </span>
+  )
+}
+
+<style>
+  .creator-flag {
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+    margin-left: 0.25em;
+  }
+  .creator-flag > summary {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.85em;
+    line-height: 1;
+    list-style: none;
+    border-radius: 4px;
+    padding: 0 0.15em;
+  }
+  .creator-flag > summary::-webkit-details-marker {
+    display: none;
+  }
+  .creator-flag > summary:focus-visible {
+    outline: 2px solid var(--accent, #ffd23f);
+    outline-offset: 2px;
+  }
+  .creator-flag-panel {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    width: max-content;
+    max-width: min(20rem, 80vw);
+    padding: 0.6rem 0.75rem;
+    background: var(--surface, #1a1a22);
+    color: var(--text, #f6f4ee);
+    border: 1px solid color-mix(in oklab, var(--text, #f6f4ee) 18%, transparent);
+    border-left: 3px solid #e0913a;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    font-weight: 400;
+    white-space: normal;
+    text-align: left;
+  }
+  .creator-flag[data-severity='condamnation'] .creator-flag-panel {
+    border-left-color: #d0524e;
+  }
+  .creator-flag-sit {
+    margin: 0 0 0.4rem;
+  }
+  .creator-flag-src {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent, #ffd23f);
+    text-decoration: none;
+  }
+  .creator-flag-src:hover {
+    text-decoration: underline;
+  }
+  .creator-flag-dot {
+    margin-left: 0.25em;
+    font-size: 0.85em;
+    cursor: help;
+  }
+</style>

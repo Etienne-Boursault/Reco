@@ -12,6 +12,7 @@ from __future__ import annotations
 import html
 import urllib.parse
 
+from creator_flags import flag_badge_html
 from common import (
     list_episode_files,
     load_source,
@@ -201,6 +202,7 @@ def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
     actions = _reco_action_buttons(r_with_guid, edit_origin)
     conf_badge = _extractors_badge(r.get("extractors") or [])
     creator_html = (f"<i>· {html.escape(r['creator'])}</i>"
+                    f"{flag_badge_html(r.get('creator'))}"
                     if r.get("creator") else "")
     return (
         f'<div class="hd"><label class="merge-select" title="Sélectionner pour fusion manuelle">'
