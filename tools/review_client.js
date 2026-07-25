@@ -357,6 +357,15 @@
         if (audio) audio.pause();
         if (bar) bar.classList.add('hidden');
         if (wrap) wrap.classList.remove('hidden');
+        // Focus l'iframe → les flèches ←/→ pilotent directement le lecteur
+        // YouTube (seek ±5 s) sans avoir à cliquer dedans (retour user 07-25).
+        // setTimeout : l'encart vient de passer de display:none à visible ;
+        // on laisse un tick au navigateur avant de focus (sinon no-op).
+        if (iframe) {
+          setTimeout(() => {
+            try { iframe.focus({ preventScroll: true }); } catch (_) { /* no-op */ }
+          }, 80);
+        }
       }
     });
   }
