@@ -155,12 +155,38 @@
   }
 
   // Click le timecode de la carte active : recharge le player à ce timestamp.
+  // Vidéo (a.tc[target=ytplayer]) OU audio (a.tc-audio, épisodes audio-only ou
+  // vidéo YT non intégrable) — le premier présent sur la carte.
   function clickActiveTimecode(li) {
     const target = li || getActiveRow();
     if (!target) return false;
-    const a = target.querySelector('a.tc[target="ytplayer"]');
+    const a = target.querySelector('a.tc[target="ytplayer"], a.tc-audio');
     if (!a) return false;
     a.click();
+    return true;
+  }
+
+  // --- Lecteur AUDIO (barre du bas) : contrôle clavier ---
+  function getAudioEl() { return document.querySelector('[data-audio-player]'); }
+  function audioBarVisible() {
+    const bar = document.querySelector('[data-audio-bar]');
+    return !!(bar && !bar.classList.contains('hidden'));
+  }
+  function audioToggle() {
+    const a = getAudioEl();
+    if (!a) return false;
+    if (a.paused) a.play().catch(() => { /* autoplay bloqué */ });
+    else a.pause();
+    return true;
+  }
+  function audioSeek(delta) {
+    const a = getAudioEl();
+    if (!a) return false;
+    let t = (a.currentTime || 0) + delta;
+    if (t < 0) t = 0;
+    if (!isNaN(a.duration) && t > a.duration) t = a.duration;
+    a.currentTime = t;
+    a.play().catch(() => { /* autoplay bloqué */ });
     return true;
   }
 
@@ -284,7 +310,8 @@
         </section>
         <section><h3>Lecteur</h3>
           <dl>
-            <dt>Espace</dt><dd>Play / Pause YouTube</dd>
+            <dt>Espace</dt><dd>Play / Pause (vidéo ou audio)</dd>
+            <dt>← / →</dt><dd>Audio : −10 s / +10 s</dd>
             <dt>T</dt><dd>Recharger au timecode actif</dd>
             <dt>🔁</dt><dd>Auto-play au changement de carte</dd>
           </dl>
@@ -439,11 +466,23 @@
     if (k === 'e' || k === 'E') { toggleEditActive(); e.preventDefault(); return; }
     // R — re-enrich
     if (k === 'r' || k === 'R') { reenrichActive(); e.preventDefault(); return; }
-    // Espace — play/pause YT
-    if (k === ' ' || k === 'Spacebar') { ytToggle(); e.preventDefault(); return; }
-    // T — recharge timecode
+    // Espace — play/pause : audio si la barre du bas est ouverte, sinon YouTube.
+    if (k === ' ' || k === 'Spacebar') {
+      if (audioBarVisible()) audioToggle(); else ytToggle();
+      e.preventDefault(); return;
+    }
+    // ← / → — audio : reculer / avancer de 10 s (uniquement si la barre est ouverte).
+    if (k === 'ArrowLeft') {
+      if (audioBarVisible()) { audioSeek(-10); e.preventDefault(); }
+      return;
+    }
+    if (k === 'ArrowRight') {
+      if (audioBarVisible()) { audioSeek(10); e.preventDefault(); }
+      return;
+    }
+    // T — recharge le timecode actif (vidéo ou audio)
     if (k === 't' || k === 'T') {
-      if (!clickActiveTimecode()) toast('Pas de timecode YouTube sur la carte active', 'info');
+      if (!clickActiveTimecode()) toast('Pas de timecode sur la carte active', 'info');
       e.preventDefault(); return;
     }
     // [ — épisode précédent

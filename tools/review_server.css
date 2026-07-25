@@ -24,6 +24,12 @@ h1{font-size:1.4rem;} .meta{color:#9a99a3;}
 .audio-bar-close{flex:none;cursor:pointer;border:1px solid #2a2a30;background:transparent;color:#9a99a3;font-weight:700;width:2rem;height:2rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0;}
 .audio-bar-close:hover{border-color:#ffd23f;color:#ffd23f;}
 @media (max-width:520px){.audio-skip{padding:.45em .5em;font-size:.8rem;}}
+/* La barre audio (fixée en bas) ne doit être masquée par AUCUN élément flottant
+   du bas — sinon le toggle « 🔁 Auto-play » (bottom-left) recouvre play/pause
+   (retour utilisateur 2026-07-25). On remonte ces éléments quand elle est
+   visible. :has() est supporté par tous les navigateurs récents. */
+body:has(.audio-bar:not(.hidden)) #reco-autoplay-toggle{bottom:4.6rem;}
+body:has(.audio-bar:not(.hidden)) #toast-zone{bottom:4.6rem;}
 .player-close{position:absolute;top:.3rem;right:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#f6f4ee;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;z-index:101;}
 .player-drag-handle{position:absolute;top:.3rem;left:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#9a99a3;cursor:grab;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;user-select:none;touch-action:none;z-index:101;}
 /* Empêche le scroll natif tactile pendant le drag (cf. review #24). */
