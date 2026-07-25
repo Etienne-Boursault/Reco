@@ -39,6 +39,7 @@ from review_render_common import (
     _load_transcript,
     _shell,
     _yt_timecode_link_parts,
+    _yt_watch_link,
 )
 
 # Sous ce seuil, un verdict appliqué est considéré « à vérifier ».
@@ -496,11 +497,16 @@ def _render_episode(source: dict, guid: str, per_ep: dict[str, dict],
     tip = (f' title="YouTube : {html.escape(yt_t)}"'
            if rss_t and yt_t and yt_t != rss_t else "")
     epnav = _ep_nav(per_ep, guid)
+    # Vidéo YT non intégrable → bouton « ↗ Regarder sur YouTube » (lecteur en
+    # page = audio Acast). Chaîne vide sinon. Retour utilisateur 2026-07-25.
+    watch = _yt_watch_link(ep)
+    watch_html = (f'<p class="doubt-watch">{watch}</p>' if watch else "")
     # M2 — wrap player inline (liens timecode ciblent target="ytplayer").
     body = [
         banner, back, epnav,
         f'<h1 class="doubt-ep-title"{tip}>{html.escape(_ep_label(ep))}</h1>',
         f'<p class="doubt-summary"><b>{d["total"]}</b> reco(s) à revoir — {nav}</p>',
+        watch_html,
         _PLAYER_WRAP_HTML,
     ]
     for key, label, desc in _SECTIONS:

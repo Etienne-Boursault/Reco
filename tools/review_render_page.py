@@ -80,10 +80,15 @@ def _ep_header(
                if tm else "")
     prev_a = _ep_nav_link("prev", prev_guid)
     next_a = _ep_nav_link("next", next_guid)
+    # Vidéo YT existante mais non intégrable → bouton « ↗ Regarder sur YouTube »
+    # (le lecteur en page est l'audio Acast). Retour utilisateur 2026-07-25.
+    from review_render_common import _yt_watch_link  # noqa: PLC0415
+    watch = _yt_watch_link(ep)
+    watch_html = f" {watch}" if watch else ""
     return (f'<div class="eph-row">{prev_a}'
             f'<h2 class="eph">{badge}{title_html} '
             f'<span class="cnt">{len(recs)} recos · {n_draft} à valider</span> '
-            f'{dur}{tm_html}</h2>'
+            f'{dur}{tm_html}{watch_html}</h2>'
             f'{next_a}</div>')
 
 

@@ -164,6 +164,21 @@ def _yt_timecode_link(r: dict, ep: dict) -> str:
     return _yt_timecode_link_parts(r, ep).html
 
 
+def _yt_watch_link(ep: dict) -> str:
+    """Lien « ↗ Regarder sur YouTube » pour un épisode dont la vidéo EXISTE mais
+    n'est pas intégrable en iframe (`youtubeUnavailable`) : elle se lit sur
+    youtube.com, on l'ouvre dans un nouvel onglet. L'audio reste le lecteur en
+    page. Chaîne vide sinon. Retour utilisateur 2026-07-25 (ép. Woodkid/Cyprien)."""
+    if not ep.get("youtubeUnavailable"):
+        return ""
+    url = _safe_url(ep.get("youtubeUrl"))
+    if not url:
+        return ""
+    return (f'<a class="yt-watch" href="{html.escape(url)}" target="_blank" '
+            f'rel="noopener noreferrer" title="La vidéo n\'est pas intégrable '
+            f'ici — elle s\'ouvre sur YouTube">↗ Regarder sur YouTube</a>')
+
+
 # ---- Extractors badge (#3 : duplication entre _reco_card et _dedup_cluster_card)
 def _extractors_badge(extractors_list: list[str]) -> str:
     """Badge ⭐ N LLMs / solo / vide selon la liste d'extractors."""
@@ -350,4 +365,5 @@ __all__ = [
     "_yt_id",
     "_yt_timecode_link",
     "_yt_timecode_link_parts",
+    "_yt_watch_link",
 ]

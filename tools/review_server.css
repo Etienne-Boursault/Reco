@@ -30,6 +30,11 @@ h1{font-size:1.4rem;} .meta{color:#9a99a3;}
    visible. :has() est supporté par tous les navigateurs récents. */
 body:has(.audio-bar:not(.hidden)) #reco-autoplay-toggle{bottom:4.6rem;}
 body:has(.audio-bar:not(.hidden)) #toast-zone{bottom:4.6rem;}
+/* Bouton « Regarder sur YouTube » : vidéo existante mais non intégrable en
+   iframe → s'ouvre sur youtube.com (retour utilisateur 2026-07-25). */
+.yt-watch{display:inline-flex;align-items:center;gap:.3em;color:#ff9a9a;border:1px solid #5c3a3a;background:#241414;border-radius:8px;padding:.2em .6em;font-size:.82rem;font-weight:600;text-decoration:none;white-space:nowrap;vertical-align:middle;}
+.yt-watch:hover{border-color:#ff9a9a;color:#ffb3b3;}
+.doubt-watch{margin:.1rem 0 1.1rem;}
 .player-close{position:absolute;top:.3rem;right:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#f6f4ee;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;z-index:101;}
 .player-drag-handle{position:absolute;top:.3rem;left:.3rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(26,26,31,.85);border:1px solid #2a2a30;color:#9a99a3;cursor:grab;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;user-select:none;touch-action:none;z-index:101;}
 /* Empêche le scroll natif tactile pendant le drag (cf. review #24). */

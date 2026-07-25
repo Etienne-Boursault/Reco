@@ -2599,6 +2599,28 @@ def test_yt_timecode_unavailable_acast_source_no_offset():
     assert a.get("data-audio-secs") == "600"       # pas d'offset (déjà audio)
 
 
+def test_yt_watch_link_only_when_unavailable():
+    """« ↗ Regarder sur YouTube » n'apparaît QUE pour une vidéo existante mais NON
+    intégrable (youtubeUnavailable) — ouvre la vidéo dans un nouvel onglet.
+    Retour user 2026-07-25."""
+    ep_ok = {"youtubeUrl": "https://www.youtube.com/watch?v=ABCDEFGHIJK"}
+    assert rr._yt_watch_link(ep_ok) == ""           # vidéo intégrable → rien
+    ep_bad = {"youtubeUrl": "https://www.youtube.com/watch?v=ABCDEFGHIJK",
+              "youtubeUnavailable": True}
+    out = rr._yt_watch_link(ep_bad)
+    soup = parse(out)
+    a = soup.find("a")
+    assert a is not None
+    assert has_class(a, "yt-watch")
+    assert a.get("target") == "_blank"
+    assert "ABCDEFGHIJK" in a.get("href")
+
+
+def test_yt_watch_link_needs_url():
+    """Flag posé mais pas d'URL YouTube → pas de bouton."""
+    assert rr._yt_watch_link({"youtubeUnavailable": True}) == ""
+
+
 def test_yt_timecode_link_applies_acast_offset():
     """transcriptSource=acast → offset YT appliqué (audio vs video diff)."""
     r = {"timestamp": "00:05:00", "transcriptSource": "acast"}

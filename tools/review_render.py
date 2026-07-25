@@ -58,6 +58,7 @@ from review_render_common import (
     _yt_id,
     _yt_timecode_link,
     _yt_timecode_link_parts,
+    _yt_watch_link,
 )
 
 # Tri chronologique des cartes (ordre d'apparition dans l'épisode) — facilite
