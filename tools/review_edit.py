@@ -54,7 +54,7 @@ def render_type_badges(types: list[str]) -> str:
 # Champs `externalIds` exposés dans le formulaire d'édition inline.
 EXT_FIELDS: tuple[str, ...] = (
     "tmdb", "imdb", "isbn", "musicbrainz",
-    "youtube", "instagram", "website",
+    "youtube", "instagram", "tiktok", "website",
     "justwatch", "deezer", "spotify",
 )
 

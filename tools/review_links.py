@@ -36,12 +36,13 @@ AUTO_PLATFORMS_BY_TYPE: dict[str, tuple[str, ...]] = {
     "bd":        ("Place des Libraires", "Lalibrairie.com"),
     "musique":   ("Bandcamp", "Deezer", "Spotify", "Qobuz", "Apple Music", "YT Music", "Tidal"),
     "album":     ("Bandcamp", "Deezer", "Spotify", "Qobuz", "Apple Music", "YT Music", "Tidal"),
-    "artiste":   ("Instagram", "Site officiel", "Fnac Spectacles"),
+    "artiste":   ("Instagram", "TikTok", "Site officiel", "Fnac Spectacles"),
     "podcast":   ("Apple Podcasts", "Spotify", "Deezer"),
     "jeu":       ("Steam", "Itch.io"),
     "spectacle": ("Fnac Spectacles", "BilletReduc"),
     "lieu":      ("Google Maps", "Recherche"),
     "video":     ("YouTube",),
+    "chaine":    ("Instagram", "TikTok"),
     "autre":     ("Recherche",),
 }
 
@@ -98,6 +99,14 @@ def _instagram(reco: dict, in_type: str | None = None) -> str:
     return f"https://www.google.com/search?q=site%3Ainstagram.com+{_query(reco)}"
 
 
+def _tiktok(reco: dict, in_type: str | None = None) -> str | None:
+    # Contrairement à Instagram, PAS de repli recherche : on n'affiche la puce
+    # TikTok que si un handle vérifié est stocké (évite un chip inutile sur
+    # chaque artiste). Handle sans @.
+    handle = ((reco.get("externalIds") or {}).get("tiktok") or "").lstrip("@")
+    return f"https://www.tiktok.com/@{handle}" if handle else None
+
+
 def _site_officiel(reco: dict, in_type: str | None = None) -> str | None:
     ext = reco.get("externalIds") or {}
     return ext.get("website") or None
@@ -138,6 +147,7 @@ _URL_BUILDERS: dict[str, Callable[[dict, str | None], str | None]] = {
     "Google Maps":         _search_url("https://www.google.com/maps/search/{q}"),
     "Recherche":           _search_url("https://duckduckgo.com/?q={q}"),
     "Instagram":           _instagram,
+    "TikTok":              _tiktok,
     "Site officiel":       _site_officiel,
     "YouTube":             _youtube,
 }
