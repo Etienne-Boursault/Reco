@@ -113,7 +113,7 @@ def test_apply_edit_dedups_types(reco_path):
 
 def test_apply_edit_recommendedBy_persisted(reco_path):
     apply_edit(reco_path, {
-        "title": ["X"], "types": ["film"], "recommendedBy": ["Kyan"],
+        "title": ["X"], "types": ["film"], "who": ["Kyan"],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
     assert reco["recommendedBy"] == "Kyan"
@@ -122,10 +122,10 @@ def test_apply_edit_recommendedBy_persisted(reco_path):
 def test_apply_edit_empty_recommendedBy_removes_key(reco_path):
     # Pre-set
     apply_edit(reco_path, {
-        "title": ["X"], "types": ["film"], "recommendedBy": ["Kyan"],
+        "title": ["X"], "types": ["film"], "who": ["Kyan"],
     })
     apply_edit(reco_path, {
-        "title": ["X"], "types": ["film"], "recommendedBy": [""],
+        "title": ["X"], "types": ["film"], "who": [],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
     assert "recommendedBy" not in reco
@@ -499,43 +499,42 @@ def test_render_overrides_section_for_film_includes_justwatch():
     assert 'name="lo_JustWatch"' in out
 
 
-# ===== F2 — Dropdown invités pour recommendedBy =============================
-def test_edit_form_shows_recommendedby_select_with_hosts_and_guests():
+# ===== F2 — Cases à cocher invités pour recommendedBy ======================
+# (le dropdown mono-choix a été remplacé par des cases à cocher — retour
+#  utilisateur 2026-07-26 : on peut désormais cocher PLUSIEURS prescripteurs,
+#  comme sur la carte de signalement. Convention name="who" + name="other".)
+def test_edit_form_shows_recommendedby_checkboxes_with_hosts_and_guests():
     r = {"id": "r1", "title": "T", "types": ["film"]}
     ep = {"guid": "g", "title": "Ep", "guests": ["Charlie"]}
     out = render_edit_form(r, ep, siblings=[], hosts=["Kyan", "Navo"])
-    assert '<select name="recommendedBy">' in out
-    # Hosts puis invité ; chaque candidat est un <option>.
-    assert '<option value="Kyan"' in out
-    assert '<option value="Navo"' in out
-    assert '<option value="Charlie"' in out
-    # Option neutre vide en tête.
-    assert '<option value="">' in out
+    assert '<select name="recommendedBy">' not in out    # plus de dropdown
+    # Hosts puis invité ; chaque candidat est une case à cocher name="who".
+    assert 'name="who" value="Kyan"' in out
+    assert 'name="who" value="Navo"' in out
+    assert 'name="who" value="Charlie"' in out
     # Hosts AVANT invités dans l'ordre du HTML.
     assert out.find('value="Kyan"') < out.find('value="Charlie"')
 
 
-def test_edit_form_recby_select_includes_guests_parsed():
-    """#3 — les invités du snapshot `guestsParsed` (épisode migré, sans
-    `guests` manuel) doivent apparaître dans le dropdown « Reco de »."""
+def test_edit_form_recby_checkboxes_includes_guests_parsed():
+    """#3 — les invités du snapshot `guestsParsed` (épisode migré) apparaissent
+    en case à cocher « Reco de »."""
     r = {"id": "r1", "title": "T", "types": ["film"]}
     ep = {"guid": "g", "title": "Ep", "guestsParsed": ["Djamila"]}
     out = render_edit_form(r, ep, siblings=[], hosts=["Kyan"])
-    assert '<option value="Djamila"' in out
+    assert 'name="who" value="Djamila"' in out
 
 
-def test_edit_form_recby_select_falls_back_to_title_parse():
-    """#3 — épisode legacy (ni `guests` ni `guestsParsed`) : on parse le
-    titre à la volée pour proposer l'invité, comme les checkboxes de carte."""
+def test_edit_form_recby_checkboxes_falls_back_to_title_parse():
+    """#3 — épisode legacy (ni `guests` ni `guestsParsed`) : parsing du titre."""
     r = {"id": "r1", "title": "T", "types": ["film"]}
     ep = {"guid": "g", "title": "Un bon moment avec Fary"}
     out = render_edit_form(r, ep, siblings=[], hosts=["Kyan", "Navo"])
-    assert '<option value="Fary"' in out
+    assert 'name="who" value="Fary"' in out
 
 
-def test_edit_form_recby_select_excludes_guests_excluded():
-    """#3 — un invité présent dans `guestsExcluded` ne doit PAS être proposé
-    (cohérence avec collect_guests, autorité ultime)."""
+def test_edit_form_recby_checkboxes_excludes_guests_excluded():
+    """#3 — un invité dans `guestsExcluded` n'est PAS proposé."""
     r = {"id": "r1", "title": "T", "types": ["film"]}
     ep = {
         "guid": "g", "title": "Ep",
@@ -543,68 +542,70 @@ def test_edit_form_recby_select_excludes_guests_excluded():
         "guestsExcluded": ["Fary"],
     }
     out = render_edit_form(r, ep, siblings=[], hosts=["Kyan"])
-    assert '<option value="Djamila"' in out
-    assert '<option value="Fary"' not in out
+    assert 'name="who" value="Djamila"' in out
+    assert 'value="Fary"' not in out
 
 
 def test_edit_form_shows_freeform_other_input():
     r = {"id": "r1", "title": "T", "types": ["film"]}
     out = render_edit_form(r, {"guid": "g"}, siblings=[], hosts=["Kyan"])
-    assert 'name="recommendedByOther"' in out
-    # Le champ libre est un input texte vide (placeholder, pas value).
-    assert 'name="recommendedByOther" value=""' in out
+    assert 'name="other"' in out
+    assert 'name="other" value=""' in out
 
 
-def test_edit_form_select_preselects_existing_recommendedBy():
-    """Si la reco a déjà un recommendedBy, l'option correspondante est selected."""
+def test_edit_form_checkboxes_precheck_existing_recommendedBy():
+    """Si la reco a déjà un recommendedBy, la case correspondante est cochée."""
     r = {"id": "r1", "title": "T", "types": ["film"], "recommendedBy": "Kyan"}
     out = render_edit_form(r, {"guid": "g"}, siblings=[], hosts=["Kyan", "Navo"])
-    assert 'value="Kyan" selected' in out
+    assert 'value="Kyan" checked' in out
+    assert 'value="Navo" checked' not in out
 
 
-def test_edit_form_select_keeps_unknown_recommendedBy_as_option():
-    """Si recommendedBy n'est pas dans les candidats, l'ajouter en option
-    sélectionnée pour ne pas perdre silencieusement la valeur."""
+def test_edit_form_checkboxes_precheck_multiple_recommendedBy():
+    """NOUVEAU : recommendedBy multi (« Kyan & Navo ») → les DEUX cases cochées."""
+    r = {"id": "r1", "title": "T", "types": ["film"],
+         "recommendedBy": "Kyan & Navo"}
+    out = render_edit_form(r, {"guid": "g"}, siblings=[], hosts=["Kyan", "Navo"])
+    assert 'value="Kyan" checked' in out
+    assert 'value="Navo" checked' in out
+
+
+def test_edit_form_keeps_unknown_recommendedBy_as_checked():
+    """Un recommendedBy hors candidats est ajouté en case COCHÉE (pas perdu)."""
     r = {"id": "r1", "title": "T", "types": ["film"], "recommendedBy": "Inconnu"}
     out = render_edit_form(r, {"guid": "g"}, siblings=[], hosts=["Kyan"])
-    assert 'value="Inconnu" selected' in out
+    assert 'name="who" value="Inconnu" checked' in out
 
 
-def test_apply_edit_uses_freeform_other_when_provided(reco_path):
-    """`recommendedByOther` non vide → l'emporte sur `recommendedBy`."""
+def test_apply_edit_recby_from_multiple_who_checkboxes(reco_path):
+    """Plusieurs cases `who` cochées → recommendedBy joint par « & »."""
     ok, _ = apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "recommendedBy": ["Kyan"],
-        "recommendedByOther": ["Nouvelle Invitée"],
+        "who": ["Kyan", "Navo"],
     })
     assert ok
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
-    assert reco["recommendedBy"] == "Nouvelle Invitée"
+    assert reco["recommendedBy"] == "Kyan & Navo"
 
 
-def test_apply_edit_uses_select_when_other_empty(reco_path):
-    """`recommendedByOther` vide → on garde la valeur du select."""
+def test_apply_edit_recby_who_plus_freeform_other(reco_path):
+    """Cases `who` + champ libre `other` → tous joints, dédupés."""
     ok, _ = apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "recommendedBy": ["Kyan"],
-        "recommendedByOther": [""],
+        "who": ["Kyan"], "other": ["Nouvelle Invitée"],
     })
     assert ok
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
-    assert reco["recommendedBy"] == "Kyan"
+    assert reco["recommendedBy"] == "Kyan & Nouvelle Invitée"
 
 
-def test_apply_edit_both_empty_removes_recommendedBy(reco_path):
-    """Les deux vides → la clé disparait (comportement précédent préservé)."""
-    # Pré-set
+def test_apply_edit_recby_empty_removes_recommendedBy(reco_path):
+    """Aucune case ni champ libre → la clé disparait."""
     apply_edit(reco_path, {
-        "title": ["X"], "types": ["film"],
-        "recommendedByOther": ["First"],
+        "title": ["X"], "types": ["film"], "other": ["First"],
     })
     apply_edit(reco_path, {
-        "title": ["X"], "types": ["film"],
-        "recommendedBy": [""],
-        "recommendedByOther": [""],
+        "title": ["X"], "types": ["film"], "who": [], "other": [""],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
     assert "recommendedBy" not in reco

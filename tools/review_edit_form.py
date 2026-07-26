@@ -293,39 +293,37 @@ def _render_recap(r: dict, ep: dict) -> str:
     return f'<div class="edit-recap">{head}{quote_html}</div>'
 
 
-def _render_recby_select(
+def _render_recby_checkboxes(
     candidates: list[str], current: str, reco_id: str,
 ) -> str:
-    """Dropdown `<select name=recommendedBy>` + champ libre.
+    """Cases à cocher « Reco de » (PLUSIEURS personnes possibles) + champ libre.
 
-    Si la valeur courante n'est pas dans la liste (ou contient des
-    séparateurs « & », « , »), on l'ajoute en tête pour ne PAS la perdre
-    silencieusement en pré-cochant l'option neutre.
+    Aligné sur les cases de la carte de signalement : `name="who"` (multiple)
+    + `name="other"` (texte libre), joints par « & » côté serveur
+    (`apply_edit`). Le dropdown ne permettait qu'un seul prescripteur — retour
+    utilisateur 2026-07-26. Les noms courants ABSENTS de la liste des candidats
+    sont ajoutés (cochés) pour ne PAS les perdre silencieusement.
     """
-    options: list[str] = [f'<option value="">(personne)</option>']
-    current_clean = (current or "").strip()
-    # Si la valeur courante n'est dans aucun candidat, on l'ajoute en tête
-    # pour qu'elle reste sélectionnée (sinon disparait en silence).
+    from review_guests import split_names  # noqa: PLC0415
+    current_names = split_names(current)
     pool: list[str] = list(candidates)
-    if current_clean and not any(
-        current_clean.casefold() == c.casefold() for c in candidates
-    ):
-        pool.insert(0, current_clean)
-    for c in pool:
-        sel = " selected" if c.casefold() == current_clean.casefold() else ""
-        options.append(
-            f'<option value="{html.escape(c)}"{sel}>{html.escape(c)}</option>'
-        )
-    select_html = (
-        f'<label class="ext"><span>Reco de</span>'
-        f'<select name="recommendedBy">{"".join(options)}</select></label>'
+    seen = {c.casefold() for c in pool}
+    for n in current_names:  # préserve les noms hors liste (déjà attribués)
+        if n.casefold() not in seen:
+            pool.append(n)
+            seen.add(n.casefold())
+    checks = "".join(
+        f'<label><input type="checkbox" name="who" value="{html.escape(c)}"'
+        f'{" checked" if c in current_names else ""}> {html.escape(c)}</label>'
+        for c in pool
     )
-    other_html = (
+    return (
+        f'<label class="ext"><span>Reco de <em>(plusieurs possibles)</em></span></label>'
+        f'<div class="types-box recby-box">{checks}</div>'
         f'<label class="ext"><span>… ou autre (hors liste)</span>'
-        f'<input type="text" name="recommendedByOther" value="" '
+        f'<input type="text" name="other" value="" '
         f'placeholder="nom de l\'invité·e ou autre"></label>'
     )
-    return select_html + other_html
 
 
 def render_edit_form(
@@ -353,7 +351,7 @@ def render_edit_form(
 
     creators, creators_id, creators_dl = _render_creators_datalist(siblings, reco_id)
     recby_candidates = _collect_recby_candidates(siblings, ep, hosts)
-    recby_block = _render_recby_select(recby_candidates, recommended_by_raw, reco_id)
+    recby_block = _render_recby_checkboxes(recby_candidates, recommended_by_raw, reco_id)
     recap_block = _render_recap(r, ep)
     type_boxes = _render_type_boxes(current_types)
     ext_inputs = _render_ext_inputs(r.get("externalIds") or {})

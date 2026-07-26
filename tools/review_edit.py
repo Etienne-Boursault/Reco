@@ -100,12 +100,13 @@ def apply_edit(path: Path, data: dict) -> tuple[bool, str]:
     """
     title = (data.get("title") or [""])[0].strip()
     creator = (data.get("creator") or [""])[0].strip()
-    # F2 : si le champ libre `recommendedByOther` est rempli, il prime sur
-    # la valeur sélectionnée dans le dropdown. Permet de saisir un nom hors
-    # liste sans repasser par la datalist (qui n'acceptait pas l'arbitraire).
-    recommended_by_other = (data.get("recommendedByOther") or [""])[0].strip()
-    recommended_by_select = (data.get("recommendedBy") or [""])[0].strip()
-    recommended_by = recommended_by_other or recommended_by_select
+    # « Reco de » = cases à cocher `who` (plusieurs) + champ libre `other`,
+    # jointes par « & » — MÊME convention que la carte de signalement
+    # (_save_status). Le dropdown mono-choix a été remplacé par des cases à
+    # cocher (retour utilisateur 2026-07-26).
+    recby_names = [n.strip() for n in (data.get("who", []) + data.get("other", []))
+                   if n.strip()]
+    recommended_by = " & ".join(dict.fromkeys(recby_names))
     types_raw = data.get("types") or []
     types = list(dict.fromkeys(t for t in types_raw if t in RECO_TYPES))
     if not title:
@@ -329,7 +330,7 @@ _FORM_EXPORTS = frozenset({
     "_dedup_ci", "_render_creators_datalist", "_render_recommenders_datalist",
     "_render_type_boxes", "_render_ext_inputs", "_render_wp_inputs",
     "_render_custom_links_section", "_render_overrides_section",
-    "_collect_recby_candidates", "_render_recap", "_render_recby_select",
+    "_collect_recby_candidates", "_render_recap", "_render_recby_checkboxes",
     "render_edit_form",
 })
 
