@@ -33,7 +33,7 @@ RecoKind = Literal["reco", "citation"]
 RecoType = Literal[
     "film", "serie", "livre", "bd",
     "musique", "album", "podcast", "jeu",
-    "spectacle", "lieu", "artiste", "video", "autre",
+    "spectacle", "lieu", "artiste", "video", "chaine", "autre",
 ]
 
 

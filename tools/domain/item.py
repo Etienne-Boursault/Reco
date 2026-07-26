@@ -38,7 +38,8 @@ class ItemType(StrEnum):
     ARTICLE = "article"
     SHOW = "spectacle"      # spectacle vivant (stand-up, théâtre…)
     PLACE = "lieu"          # restaurant, ville, lieu géographique
-    VIDEO = "video"         # vidéo YouTube spécifique
+    VIDEO = "video"         # vidéo YouTube spécifique (une vidéo)
+    CHANNEL = "chaine"      # chaîne YouTube (créateur·rice récurrent·e)
     OTHER = "autre"
 
 
