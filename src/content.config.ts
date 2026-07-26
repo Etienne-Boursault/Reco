@@ -300,6 +300,8 @@ const itemExternalIds = z.object({
   openlibrary: z.string().nullable().optional(),
   isbn: z.string().nullable().optional(),
   justwatch: z.string().nullable().optional(),
+  instagram: z.string().nullable().optional(),  // handle Instagram (sans @)
+  tiktok: z.string().nullable().optional(),      // handle TikTok (sans @)
 });
 
 const itemType = z.enum([

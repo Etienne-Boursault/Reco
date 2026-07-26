@@ -139,6 +139,13 @@ const typeTitle = typeEmojis.map((te: { label: string }) => te.label).join(', ')
 
 const links = workExternalLinks(item);
 
+// Comptes sociaux de l'artiste/créateur (handles vérifiés, cf. Phase B liens
+// sociaux). item.externalIds est typé Record<string, unknown> → garde de type.
+const igHandle =
+  typeof item.externalIds?.instagram === 'string' ? item.externalIds.instagram : null;
+const tkHandle =
+  typeof item.externalIds?.tiktok === 'string' ? item.externalIds.tiktok : null;
+
 // JSON-LD : schema.org typé selon le premier type de l'item. Le mapping
 // recoType→schema.org couvre déjà film/livre/album/etc. Le fallback est
 // CreativeWork pour les types inconnus (ex. `article`).
@@ -207,6 +214,31 @@ const pageTitle = item.creator
           <span class="year" aria-label={t('work.year.a11y', { year: item.year })}>· {item.year}</span>
         )}
       </div>
+
+      {(igHandle || tkHandle) && (
+        <div class="work-social">
+          {igHandle && (
+            <a
+              class="social-link"
+              href={`https://www.instagram.com/${igHandle}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          )}
+          {tkHandle && (
+            <a
+              class="social-link"
+              href={`https://www.tiktok.com/@${tkHandle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TikTok
+            </a>
+          )}
+        </div>
+      )}
 
       <div class="work-stats">
         <span class="count">{statLabel}</span>
@@ -300,6 +332,28 @@ const pageTitle = item.creator
   .work-sub .creator {
     font-weight: 600;
     color: var(--text);
+  }
+  .work-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.25em 0.7em;
+    border: 1px solid color-mix(in oklab, var(--text) 15%, transparent);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .work-stats {
     display: flex;

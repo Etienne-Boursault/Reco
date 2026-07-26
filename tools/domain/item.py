@@ -62,6 +62,8 @@ class ExternalIds:
     openlibrary: str | None = None
     isbn: str | None = None
     justwatch: str | None = None
+    instagram: str | None = None  # handle Instagram (sans @)
+    tiktok: str | None = None     # handle TikTok (sans @)
 
     def __post_init__(self) -> None:
         if self.tmdb_type not in _TMDB_TYPES:
