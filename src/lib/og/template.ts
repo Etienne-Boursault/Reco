@@ -58,6 +58,7 @@ export const TYPE_EMOJI = {
   lieu: '📍',
   artiste: '🎨',
   video: '▶️',
+  chaine: '🎥',
   autre: '✨',
 } as const satisfies Readonly<Record<string, string>>;
 

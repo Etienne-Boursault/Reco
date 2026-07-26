@@ -27,7 +27,8 @@ const recoType = z.enum([
   'spectacle',
   'lieu',
   'artiste',  // personne (humoriste, musicien, journaliste, etc.) → Insta + site
-  'video',    // vidéo YT spécifique (chaîne, vidéo virale) → lien YT direct
+  'video',    // vidéo YT spécifique (une vidéo virale) → lien YT direct
+  'chaine',   // chaîne YouTube (créateur·rice récurrent·e) → lien chaîne
   'autre',
 ]);
 
@@ -303,7 +304,7 @@ const itemExternalIds = z.object({
 const itemType = z.enum([
   'livre', 'film', 'serie', 'musique', 'album',
   'artiste', 'podcast', 'jeu', 'bd', 'article',
-  'spectacle', 'lieu', 'video',
+  'spectacle', 'lieu', 'video', 'chaine',
   'autre',
 ]);
 

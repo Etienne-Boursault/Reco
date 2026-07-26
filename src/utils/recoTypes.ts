@@ -21,6 +21,7 @@ export const TYPE_LABELS: Record<string, string> = {
   lieu: 'Lieu',
   artiste: 'Artiste',
   video: 'Vidéo',
+  chaine: 'Chaîne YouTube',
   autre: 'Autre',
 };
 
@@ -39,6 +40,7 @@ export const TYPE_EMOJIS: Record<string, string> = {
   lieu: '📍',
   artiste: '🎤',
   video: '📹',
+  chaine: '▶️',
   autre: '✨',
 };
 
@@ -56,6 +58,7 @@ export const TYPE_LABELS_PLURAL: Record<string, string> = {
   lieu: 'Lieux',
   artiste: 'Artistes',
   video: 'Vidéos',
+  chaine: 'Chaînes YouTube',
   autre: 'Autres',
 };
 

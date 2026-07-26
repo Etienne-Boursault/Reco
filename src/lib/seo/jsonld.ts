@@ -36,6 +36,7 @@ export const RECO_TYPE_TO_SCHEMA: Readonly<Record<string, string>> = {
   lieu: 'Place',
   artiste: 'Person',
   video: 'VideoObject',
+  chaine: 'CreativeWorkSeries',
   autre: 'CreativeWork',
 } as const;
 

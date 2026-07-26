@@ -18,7 +18,7 @@ from review_links import AUTO_PLATFORMS_BY_TYPE
 RECO_TYPES: tuple[str, ...] = (
     "film", "serie", "livre", "bd",
     "musique", "album", "podcast", "jeu",
-    "spectacle", "lieu", "artiste", "video", "autre",
+    "spectacle", "lieu", "artiste", "video", "chaine", "autre",
 )
 
 
@@ -27,7 +27,7 @@ TYPE_EMOJIS: dict[str, str] = {
     "film": "🎬", "serie": "📺", "livre": "📖", "bd": "💭",
     "musique": "🎵", "album": "💿", "podcast": "🎙️", "jeu": "🎮",
     "spectacle": "🎭", "lieu": "📍", "artiste": "🎤",
-    "video": "📹", "autre": "✨",
+    "video": "📹", "chaine": "▶️", "autre": "✨",
 }
 
 # Libellés humains par type, miroir de src/utils/recoTypes.ts (TYPE_LABELS).
@@ -35,7 +35,7 @@ TYPE_LABELS: dict[str, str] = {
     "film": "Film", "serie": "Série", "livre": "Livre", "bd": "BD",
     "musique": "Musique", "album": "Album", "podcast": "Podcast", "jeu": "Jeu",
     "spectacle": "Spectacle", "lieu": "Lieu", "artiste": "Artiste",
-    "video": "Vidéo", "autre": "Autre",
+    "video": "Vidéo", "chaine": "Chaîne YouTube", "autre": "Autre",
 }
 
 
