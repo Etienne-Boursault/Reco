@@ -50,6 +50,12 @@
       "kind": "official",
       "label": "Site officiel — tournée « Société Écrans »",
       "url": "https://www.thomaswiesel.com/tournee/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Wieseltom"
     }
   ],
   "quote": "Allez la chaîne de Thomas Wiesel. Il fait des tourner dans la France entière.",
@@ -60,7 +66,6 @@
   "title": "Thomas Wiesel",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "artiste"
+    "chaine"
   ]
 }

@@ -51,6 +51,12 @@
       "kind": "official",
       "label": "Chaîne YouTube de Vérino",
       "url": "https://www.youtube.com/c/verinaze"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Verinaze"
     }
   ],
   "quote": "Bah, il y a quand même pas mal Verino. Verino, moi, déjà, quand je suis arrivée à Paris, j'étais fan de ce qu'il faisait.",
@@ -61,7 +67,6 @@
   "title": "Vérino",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "artiste"
+    "chaine"
   ]
 }

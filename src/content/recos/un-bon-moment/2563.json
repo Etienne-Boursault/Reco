@@ -35,6 +35,12 @@
       "kind": "official",
       "label": "Chaîne YouTube de Fabien Olicard",
       "url": "https://www.youtube.com/user/FabienOlicard"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@FabienOlicard"
     }
   ],
   "quote": "il y a une vidéo que Fabien Olicard avait faite qui est très bien où il parle justement",
@@ -45,6 +51,6 @@
   "title": "Fabien Olicard",
   "transcriptSource": "youtube",
   "types": [
-    "artiste"
+    "chaine"
   ]
 }

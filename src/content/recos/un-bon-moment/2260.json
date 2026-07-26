@@ -35,6 +35,12 @@
       "kind": "streaming",
       "label": "Chaîne YouTube",
       "url": "https://www.youtube.com/channel/UC_ADNHNPnvlQNUZlB3bGCTw"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Wieseltom"
     }
   ],
   "quote": "Thomas Wiesel est un auteur extraordinaire.",
@@ -45,6 +51,6 @@
   "title": "Thomas Wiesel",
   "transcriptSource": "youtube",
   "types": [
-    "artiste"
+    "chaine"
   ]
 }

@@ -51,6 +51,12 @@
       "kind": "official",
       "label": "Mimslit sur YouTube",
       "url": "https://www.youtube.com/c/Mimslit"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@MimiLit-t9b"
     }
   ],
   "quote": "je vous recommande le contenu de Mimi Litt",
@@ -61,7 +67,6 @@
   "title": "Mimi Litt",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "autre"
+    "chaine"
   ]
 }
