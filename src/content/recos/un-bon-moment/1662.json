@@ -13,7 +13,7 @@
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "The Dø",
+  "creator": "The DÃ¸",
   "episodeGuid": "6960deefb86949aa06496e27",
   "extractionHistory": [
     {
@@ -58,9 +58,16 @@
     "openai"
   ],
   "id": "ubm-1662",
-  "links": [],
-  "quote": "Et je te conseille d'écouter l'album qui est excellent, Shake Shook Shaken.",
-  "recommendedBy": "Alice Moitié",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/8729983"
+    }
+  ],
+  "quote": "Et je te conseille d'Ã©couter l'album qui est excellent, Shake Shook Shaken.",
+  "recommendedBy": "Alice MoitiÃ©",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:05:05",

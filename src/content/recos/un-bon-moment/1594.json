@@ -40,7 +40,14 @@
   ],
   "id": "ubm-1594",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Alfred_Hitchcock"
+    }
+  ],
   "quote": "aller voir les grands classiques d'Hitchcock",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

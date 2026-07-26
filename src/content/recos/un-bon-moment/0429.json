@@ -8,8 +8,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Corriger le titre en « Spider ZED ». Recommande par un invite/Navo, PAS Kyan (Kyan dit ne pas connaitre l'artiste). Canonique ; doublon = ubm-1445.",
-    "reason": "Artiste REEL (Spider ZED, rappeur masque FR, feat « C'est pas bien » avec Bigflo & Oli) partage chaleureusement comme decouverte perso (« c'est une vraie decouverte », « on va aller voir »). Mais titre a corriger et attribution douteuse.",
+    "note": "Corriger le titre en Â« Spider ZED Â». Recommande par un invite/Navo, PAS Kyan (Kyan dit ne pas connaitre l'artiste). Canonique ; doublon = ubm-1445.",
+    "reason": "Artiste REEL (Spider ZED, rappeur masque FR, feat Â« C'est pas bien Â» avec Bigflo & Oli) partage chaleureusement comme decouverte perso (Â« c'est une vraie decouverte Â», Â« on va aller voir Â»). Mais titre a corriger et attribution douteuse.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -30,9 +30,16 @@
     "anthropic"
   ],
   "id": "ubm-0429",
-  "links": [],
-  "quote": "c'est SpiderZ qui est un rappeur pas très connu français et c'est le gars que je suis et que j'écoute depuis dix ans",
-  "recommendedBy": "Émilien",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/10471481"
+    }
+  ],
+  "quote": "c'est SpiderZ qui est un rappeur pas trÃ¨s connu franÃ§ais et c'est le gars que je suis et que j'Ã©coute depuis dix ans",
+  "recommendedBy": "Ã‰milien",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:28:57",

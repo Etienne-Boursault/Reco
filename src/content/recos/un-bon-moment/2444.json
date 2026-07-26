@@ -13,7 +13,7 @@
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Guédré",
+  "creator": "GuÃ©drÃ©",
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "extractionHistory": [
     {
@@ -40,8 +40,15 @@
     "openai"
   ],
   "id": "ubm-2444",
-  "links": [],
-  "quote": "il y a le livre de Guédré aussi que t'as sorti qui est super",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782756099200-la-boite-de-petits-pois-holly-giedre/"
+    }
+  ],
+  "quote": "il y a le livre de GuÃ©drÃ© aussi que t'as sorti qui est super",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

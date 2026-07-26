@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "À corriger : titre « Patients », creator « Grand Corps Malade & Mehdi Idir ». Cible : guest-work (auto-promo invité), recommendedBy Grand Corps Malade.",
-    "reason": "Artefact titre : « patient » = film « Patients » (2016, Grand Corps Malade & Mehdi Idir, vérifié) que GCM présente lui-même (semaine de sortie, box-office « un million trois », making-of).",
+    "note": "Ã€ corriger : titre Â« Patients Â», creator Â« Grand Corps Malade & Mehdi Idir Â». Cible : guest-work (auto-promo invitÃ©), recommendedBy Grand Corps Malade.",
+    "reason": "Artefact titre : Â« patient Â» = film Â« Patients Â» (2016, Grand Corps Malade & Mehdi Idir, vÃ©rifiÃ©) que GCM prÃ©sente lui-mÃªme (semaine de sortie, box-office Â« un million trois Â», making-of).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -31,7 +31,14 @@
   "guestWork": true,
   "id": "ubm-2518",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/patients"
+    }
+  ],
   "quote": "pour le film patient",
   "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",

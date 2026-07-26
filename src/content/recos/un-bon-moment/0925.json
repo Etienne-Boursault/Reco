@@ -9,12 +9,12 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Titre réel = 'Ni pour ni contre (bien au contraire)' (2003, Klapisch). Quote actuelle ('c'était naze mais ça apprend') = artefact (concerne l'atelier d'acteurs). Vrai passage ~00:50:00 et ~01:09:53. À publier en guest-work une fois corrigé.",
-    "reason": "Guest-work de Klapisch mais titre méconnaissable et quote hors-sujet: à corriger avant publication.",
+    "note": "Titre rÃ©el = 'Ni pour ni contre (bien au contraire)' (2003, Klapisch). Quote actuelle ('c'Ã©tait naze mais Ã§a apprend') = artefact (concerne l'atelier d'acteurs). Vrai passage ~00:50:00 et ~01:09:53. Ã€ publier en guest-work une fois corrigÃ©.",
+    "reason": "Guest-work de Klapisch mais titre mÃ©connaissable et quote hors-sujet: Ã  corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Cédric Klapisch",
+  "creator": "CÃ©dric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
     "instagram": "cedklap"
@@ -35,9 +35,16 @@
   ],
   "id": "ubm-0925",
   "kind": "citation",
-  "links": [],
-  "quote": "en fait c'était naze mais ça apprend",
-  "recommendedBy": "Cédric Klapisch",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/ni-pour-ni-contre-bien-au-contraire"
+    }
+  ],
+  "quote": "en fait c'Ã©tait naze mais Ã§a apprend",
+  "recommendedBy": "CÃ©dric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:53:00",

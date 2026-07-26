@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Si conservé : recommendedBy = Rosa Bursztein. Nom probablement corrompu -> vérification humaine. Reste draft.",
-    "reason": "Rosa cite « Julia Albertine Simonnet » parmi de jeunes humoristes qu'elle admire (01:10:05), mais le passage audio est dégradé (« venue dans 60 à Tani au Dalis ») et le nom n'est pas vérifiable (budget web épuisé).",
+    "note": "Si conservÃ© : recommendedBy = Rosa Bursztein. Nom probablement corrompu -> vÃ©rification humaine. Reste draft.",
+    "reason": "Rosa cite Â« Julia Albertine Simonnet Â» parmi de jeunes humoristes qu'elle admire (01:10:05), mais le passage audio est dÃ©gradÃ© (Â« venue dans 60 Ã  Tani au Dalis Â») et le nom n'est pas vÃ©rifiable (budget web Ã©puisÃ©).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -28,8 +28,15 @@
     "anthropic"
   ],
   "id": "ubm-2949",
-  "links": [],
-  "quote": "je pense à Julia Albertine Simonnet qui est aussi venue dans 60 à Tani au Dalis que j'ai mon amie aussi Laura Demange que je trouve génial",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCEkdzRfnnHrGWp3lRQpB55w"
+    }
+  ],
+  "quote": "je pense Ã  Julia Albertine Simonnet qui est aussi venue dans 60 Ã  Tani au Dalis que j'ai mon amie aussi Laura Demange que je trouve gÃ©nial",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",

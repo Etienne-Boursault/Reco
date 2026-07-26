@@ -8,7 +8,7 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Titre a corriger: «Lisa Delmoitiez» (comedienne belge, co-autrice du podcast «Imagine» avec Fanny Ruwet). «Elisadelle/Isadele Moitie» = artefact phonetique. Une fois corrige: verdict validate, recommendedBy Fanny Ruwet (qui bosse avec elle).",
+    "note": "Titre a corriger: Â«Lisa DelmoitiezÂ» (comedienne belge, co-autrice du podcast Â«ImagineÂ» avec Fanny Ruwet). Â«Elisadelle/Isadele MoitieÂ» = artefact phonetique. Une fois corrige: verdict validate, recommendedBy Fanny Ruwet (qui bosse avec elle).",
     "reason": "Recommandation reelle et prescriptrice d'une artiste ('cette meuf c'est le futur', 'petit genie', 'des vannes que j'aurais aime ecrire'), mais titre a corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
@@ -30,13 +30,20 @@
   ],
   "id": "ubm-2835",
   "kind": "citation",
-  "links": [],
-  "quote": "Isadèle Moitié, je ne connais pas vraiment. Je ne connais pas encore. Elle n'a pas encore joué en France. Là, elle prépare son une heure en Belgique. Mais cette meuf, c'est le futur quoi.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=ALClJNQ9PFA"
+    }
+  ],
+  "quote": "IsadÃ¨le MoitiÃ©, je ne connais pas vraiment. Je ne connais pas encore. Elle n'a pas encore jouÃ© en France. LÃ , elle prÃ©pare son une heure en Belgique. Mais cette meuf, c'est le futur quoi.",
   "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:29:43",
-  "title": "Elisadelle Moitié",
+  "title": "Elisadelle MoitiÃ©",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

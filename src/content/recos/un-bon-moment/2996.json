@@ -9,7 +9,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Corriger le titre 'Vivarda' -> 'Vie Varda' (verifie WebSearch). Verdict vise: guest-work (Vincent Delerm).",
-    "reason": "Chanson de VD presentee en profondeur (genese, sujet Agnes Varda, arrangement) — guest-work, mais titre faux: l'ASR dit 'Vivarda' alors que le titre officiel est 'Vie Varda' (album Panorama, 2019).",
+    "reason": "Chanson de VD presentee en profondeur (genese, sujet Agnes Varda, arrangement) â€” guest-work, mais titre faux: l'ASR dit 'Vivarda' alors que le titre officiel est 'Vie Varda' (album Panorama, 2019).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -33,8 +33,15 @@
     "anthropic"
   ],
   "id": "ubm-2996",
-  "links": [],
-  "quote": "Par exemple, Vivarda, c'est un bon exemple de ça, parce que la chanson parle d'Agnès Varda",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/715682922"
+    }
+  ],
+  "quote": "Par exemple, Vivarda, c'est un bon exemple de Ã§a, parce que la chanson parle d'AgnÃ¨s Varda",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

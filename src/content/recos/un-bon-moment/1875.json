@@ -58,13 +58,20 @@
   ],
   "id": "ubm-1875",
   "kind": "reco",
-  "links": [],
-  "quote": "J'ai une recommandation, c'est Théo Agaille.",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://theohaggai.com/"
+    }
+  ],
+  "quote": "J'ai une recommandation, c'est ThÃ©o Agaille.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:59:16",
-  "title": "Théo Haggaï",
+  "title": "ThÃ©o HaggaÃ¯",
   "transcriptSource": "youtube",
   "types": [
     "artiste",

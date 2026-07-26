@@ -8,8 +8,8 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Canonique; ubm-1235 est le doublon Acast. Corriger Mona Gouba→Mona Guba. À l'épisode (oct 2023) présentée comme jeune artiste rencontrée à leurs concerts; l'humain doit trancher reco vs chroniqueuse. Attribution Kyan/Navo?",
-    "reason": "Mona Guba = jeune rappeuse réelle (freestyles Instagram), recommandée publiquement ('allez voir', ~01:21:30). Titre à corriger (Gouba→Guba) et statut à clarifier: elle est aujourd'hui chroniqueuse d'Un bon moment (tension avec la règle 6).",
+    "note": "Canonique; ubm-1235 est le doublon Acast. Corriger Mona Goubaâ†’Mona Guba. Ã€ l'Ã©pisode (oct 2023) prÃ©sentÃ©e comme jeune artiste rencontrÃ©e Ã  leurs concerts; l'humain doit trancher reco vs chroniqueuse. Attribution Kyan/Navo?",
+    "reason": "Mona Guba = jeune rappeuse rÃ©elle (freestyles Instagram), recommandÃ©e publiquement ('allez voir', ~01:21:30). Titre Ã  corriger (Goubaâ†’Guba) et statut Ã  clarifier: elle est aujourd'hui chroniqueuse d'Un bon moment (tension avec la rÃ¨gle 6).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -39,7 +39,14 @@
     "openai"
   ],
   "id": "ubm-2904",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/151333242"
+    }
+  ],
   "quote": "Mona Gouba. Jeune rappeuse qui fait des freestyles sur son Instagram.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

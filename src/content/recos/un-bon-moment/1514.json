@@ -7,12 +7,12 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "REEL = « La Tragedie du dossard 512 » de Yohann Metay (transcript « Johan Mettet »/« malediction du dossard »). Corriger nom+titre puis valider (recommendedBy Navo).",
-    "reason": "Reco FORTE de Navo (« le spectacle est a peter de rire... je big up... essayez de suivre ce qu'il fait ») mais nom ET titre mal transcrits.",
+    "note": "REEL = Â« La Tragedie du dossard 512 Â» de Yohann Metay (transcript Â« Johan Mettet Â»/Â« malediction du dossard Â»). Corriger nom+titre puis valider (recommendedBy Navo).",
+    "reason": "Reco FORTE de Navo (Â« le spectacle est a peter de rire... je big up... essayez de suivre ce qu'il fait Â») mais nom ET titre mal transcrits.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Yohann Métay",
+  "creator": "Yohann MÃ©tay",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "externalIds": {
     "instagram": "yohann_metay"
@@ -41,13 +41,20 @@
     "anthropic"
   ],
   "id": "ubm-1514",
-  "links": [],
-  "quote": "ça s'appelle la malédiction du dossard numéro il raconte son Iron Man le spectacle est à péter de rire",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.yohannmetay.com/"
+    }
+  ],
+  "quote": "Ã§a s'appelle la malÃ©diction du dossard numÃ©ro il raconte son Iron Man le spectacle est Ã  pÃ©ter de rire",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:19:10",
-  "title": "La tragédie du dossard 512",
+  "title": "La tragÃ©die du dossard 512",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

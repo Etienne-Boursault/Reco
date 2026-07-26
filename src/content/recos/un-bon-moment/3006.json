@@ -8,7 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Corriger 'Poire et Serreau' -> 'Poiret et Serrault'. Verdict vise: validate (recommandation de Vincent Delerm).",
-    "reason": "VD recommande un duo comique pour aller mieux ('voir Poiret et Serrault' / Kyan: 'c'est genial') — recommandation reelle, mais nom faux 'Poire et Serreau' -> 'Poiret et Serrault' (Jean Poiret / Michel Serrault, verifie WebSearch).",
+    "reason": "VD recommande un duo comique pour aller mieux ('voir Poiret et Serrault' / Kyan: 'c'est genial') â€” recommandation reelle, mais nom faux 'Poire et Serreau' -> 'Poiret et Serrault' (Jean Poiret / Michel Serrault, verifie WebSearch).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -38,7 +38,20 @@
     "openai"
   ],
   "id": "ubm-3006",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia — Jean Poiret",
+      "url": "https://fr.wikipedia.org/wiki/Jean_Poiret"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia — Michel Serrault",
+      "url": "https://fr.wikipedia.org/wiki/Michel_Serrault"
+    }
+  ],
   "quote": "Voir Poire et Serreau",
   "sourceId": "un-bon-moment",
   "status": "validated",

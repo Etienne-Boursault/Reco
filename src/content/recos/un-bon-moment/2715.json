@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Corriger titre 'Aquaba'→'Akwaba' et creator 'Catégorique'→'KT Gorique' ; recommendedBy = Shirley Souagnon.",
-    "reason": "Titre et créateur = artefacts ASR à corriger : 'Aquaba' → album 'AKWABA' de la rappeuse KT Gorique (transcript 'catégorique' = 'KT Gorique'). Shirley Souagnon en a fait les interludes et le recommande chaleureusement ('je le kiffe, big up'). Reste en draft pour correction humaine (verdict cible validate).",
+    "note": "Corriger titre 'Aquaba'â†’'Akwaba' et creator 'CatÃ©gorique'â†’'KT Gorique' ; recommendedBy = Shirley Souagnon.",
+    "reason": "Titre et crÃ©ateur = artefacts ASR Ã  corriger : 'Aquaba' â†’ album 'AKWABA' de la rappeuse KT Gorique (transcript 'catÃ©gorique' = 'KT Gorique'). Shirley Souagnon en a fait les interludes et le recommande chaleureusement ('je le kiffe, big up'). Reste en draft pour correction humaine (verdict cible validate).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -39,7 +39,14 @@
     "openai"
   ],
   "id": "ubm-2715",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/614025672"
+    }
+  ],
   "quote": "Elle a un nouvel album qui s'appelle \"Aquaba\" dans lequel j'ai fait les interludes.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -8,8 +8,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Le spectacle recommandé est explicitement « en noir et blanc sur Netflix » (01:46:10) = Bill Burr « I'm Sorry You Feel That Way » (2014, N&B), et NON « Walk Your Way Out » (2017, en couleur). Corriger le titre puis valider. Attribution incertaine (Kyan ou Manu). Canonique du sujet Bill Burr ; doublons discardés : 2397, 2402.",
-    "reason": "Bill Burr fortement recommandé (« découvrir Bilbeur », « meilleur comique du monde », 01:46-01:48) — reco au fond valide, MAIS titre à corriger avant publication (artefact/erreur).",
+    "note": "Le spectacle recommandÃ© est explicitement Â« en noir et blanc sur Netflix Â» (01:46:10) = Bill Burr Â« I'm Sorry You Feel That Way Â» (2014, N&B), et NON Â« Walk Your Way Out Â» (2017, en couleur). Corriger le titre puis valider. Attribution incertaine (Kyan ou Manu). Canonique du sujet Bill Burr ; doublons discardÃ©s : 2397, 2402.",
+    "reason": "Bill Burr fortement recommandÃ© (Â« dÃ©couvrir Bilbeur Â», Â« meilleur comique du monde Â», 01:46-01:48) â€” reco au fond valide, MAIS titre Ã  corriger avant publication (artefact/erreur).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -33,8 +33,15 @@
     "anthropic"
   ],
   "id": "ubm-1053",
-  "links": [],
-  "quote": "Découvert à Bill Beurre, le spectacle sur Netflix lequel ? En noir et blanc ? Bah le mieux pour moi c'est le noir et blanc.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/bill-burr-im-sorry-you-feel-that-way"
+    }
+  ],
+  "quote": "DÃ©couvert Ã  Bill Beurre, le spectacle sur Netflix lequel ? En noir et blanc ? Bah le mieux pour moi c'est le noir et blanc.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

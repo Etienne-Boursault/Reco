@@ -8,7 +8,7 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Kyan evoque « Love et tendresse » comme l'un des deux morceaux qu'il a entendus (qualite metamoderne, « hyper important »). Titre non confirme par l'invite et inverifiable (budget WebSearch epuise) ; lecture possible = paraphrase du theme recurrent « l'amour et la tendresse ». Reste en draft : oeuvre d'invite (Eddy de Pretto) a valider si le titre est reel.",
+    "note": "Kyan evoque Â« Love et tendresse Â» comme l'un des deux morceaux qu'il a entendus (qualite metamoderne, Â« hyper important Â»). Titre non confirme par l'invite et inverifiable (budget WebSearch epuise) ; lecture possible = paraphrase du theme recurrent Â« l'amour et la tendresse Â». Reste en draft : oeuvre d'invite (Eddy de Pretto) a valider si le titre est reel.",
     "reason": "Titre non confirme par l'invite et inverifiable; possible paraphrase du theme.",
     "reviewedByHuman": true,
     "verdict": "unsure"
@@ -33,8 +33,15 @@
     "openai"
   ],
   "id": "ubm-0104",
-  "links": [],
-  "quote": "Surtout Love & Tendress, il y a un peu ce côté là.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/2433524015"
+    }
+  ],
+  "quote": "Surtout Love & Tendress, il y a un peu ce cÃ´tÃ© lÃ .",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:10:56",

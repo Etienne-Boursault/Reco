@@ -8,8 +8,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "À corriger avant publication : titre « Ma tête, mon cœur et mes couilles » (slam GCM). Cible : citation, recommendedBy Kyan Khojandi (« vraiment un nouvel artiste qu'on a envie de suivre »). Passage présent à 00:28:43-00:29:01.",
-    "reason": "Titre 'Slam' générique/erroné : il s'agit du slam « Ma tête, mon cœur et mes couilles » de Grand Corps Malade (creator 'Kery James' erroné), discuté avec enthousiasme par Kyan.",
+    "note": "Ã€ corriger avant publication : titre Â« Ma tÃªte, mon cÅ“ur et mes couilles Â» (slam GCM). Cible : citation, recommendedBy Kyan Khojandi (Â« vraiment un nouvel artiste qu'on a envie de suivre Â»). Passage prÃ©sent Ã  00:28:43-00:29:01.",
+    "reason": "Titre 'Slam' gÃ©nÃ©rique/erronÃ© : il s'agit du slam Â« Ma tÃªte, mon cÅ“ur et mes couilles Â» de Grand Corps Malade (creator 'Kery James' erronÃ©), discutÃ© avec enthousiasme par Kyan.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -34,13 +34,20 @@
   ],
   "id": "ubm-0684",
   "kind": "citation",
-  "links": [],
-  "quote": "il y avait un truc un peu sérieux. Il y avait une vidéo de ma tête, mon cœur et mes couilles.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/142750186"
+    }
+  ],
+  "quote": "il y avait un truc un peu sÃ©rieux. Il y avait une vidÃ©o de ma tÃªte, mon cÅ“ur et mes couilles.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:28:43",
-  "title": "Ma tête, mon cœur et mes couilles",
+  "title": "Ma tÃªte, mon cÅ“ur et mes couilles",
   "transcriptSource": "acast",
   "types": [
     "autre"

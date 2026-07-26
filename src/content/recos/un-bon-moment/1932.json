@@ -8,8 +8,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Retrouver le vrai titre du spectacle + confirmer « Manon Lepelle » (le web ne renvoie que Manon Lepomme, autre humoriste). Manon n'est PAS invitee de cet episode. Canonique ; doublon = ubm-1441.",
-    "reason": "Le spectacle de Manon (Lepelle) est discute avec substance (blague sur l'« invention » du mot homosexualite en 1868, les Grecs, etymologie hetero/homo) et un extrait est diffuse — niveau citation. Mais titre = artefact (« Spectacle de Manon ») et identite « Manon Lepelle » non confirmee en ligne.",
+    "note": "Retrouver le vrai titre du spectacle + confirmer Â« Manon Lepelle Â» (le web ne renvoie que Manon Lepomme, autre humoriste). Manon n'est PAS invitee de cet episode. Canonique ; doublon = ubm-1441.",
+    "reason": "Le spectacle de Manon (Lepelle) est discute avec substance (blague sur l'Â« invention Â» du mot homosexualite en 1868, les Grecs, etymologie hetero/homo) et un extrait est diffuse â€” niveau citation. Mais titre = artefact (Â« Spectacle de Manon Â») et identite Â« Manon Lepelle Â» non confirmee en ligne.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -34,7 +34,14 @@
   ],
   "id": "ubm-1932",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Manon_Bril"
+    }
+  ],
   "quote": "c'est le truc du spectacle de Manon",
   "recommendedBy": "Charlie Danger",
   "sourceId": "un-bon-moment",

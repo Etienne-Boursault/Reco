@@ -8,7 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Cite par Jason parmi ses premieres parties (00:30:55). A identifier avant publication.",
-    "reason": "Nom « John Souleau » transcrit de facon deformee et non identifiable par recherche : impossible de confirmer l'artiste reel avant publication.",
+    "reason": "Nom Â« John Souleau Â» transcrit de facon deformee et non identifiable par recherche : impossible de confirmer l'artiste reel avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -38,7 +38,14 @@
     "openai"
   ],
   "id": "ubm-2879",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=Us5v3H3eYkQ"
+    }
+  ],
   "quote": "beaucoup John Souleau",
   "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",

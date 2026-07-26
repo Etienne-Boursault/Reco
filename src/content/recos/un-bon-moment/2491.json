@@ -8,8 +8,8 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Titre « La musique que j'ai écrite » = artefact issu de la phrase « une somme de souvenirs sur la musique que j'ai écrit » ; pas un vrai titre, ouvrage non paru en 2020 → unsure, reste draft. À reprendre si un titre publié est identifié.",
-    "reason": "Thomas VDB parle d'un livre de souvenirs sur la musique qu'il a écrit (00:50:14-00:51:28), envoyé à des éditeurs, non publié à l'enregistrement (2020) : « ça va peut-être sortir dans deux ans ». Œuvre d'invité réelle mais en cours.",
+    "note": "Titre Â« La musique que j'ai Ã©crite Â» = artefact issu de la phrase Â« une somme de souvenirs sur la musique que j'ai Ã©crit Â» ; pas un vrai titre, ouvrage non paru en 2020 â†’ unsure, reste draft. Ã€ reprendre si un titre publiÃ© est identifiÃ©.",
+    "reason": "Thomas VDB parle d'un livre de souvenirs sur la musique qu'il a Ã©crit (00:50:14-00:51:28), envoyÃ© Ã  des Ã©diteurs, non publiÃ© Ã  l'enregistrement (2020) : Â« Ã§a va peut-Ãªtre sortir dans deux ans Â». Å’uvre d'invitÃ© rÃ©elle mais en cours.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -35,8 +35,15 @@
   "guestWork": true,
   "id": "ubm-2491",
   "kind": "reco",
-  "links": [],
-  "quote": "j'ai commencé à écrire un livre de souvenirs par rapport à la musique",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782757896808-comedian-rhapsodie-thomas-vdb/"
+    }
+  ],
+  "quote": "j'ai commencÃ© Ã  Ã©crire un livre de souvenirs par rapport Ã  la musique",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",

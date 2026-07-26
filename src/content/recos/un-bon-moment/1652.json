@@ -57,7 +57,14 @@
   ],
   "id": "ubm-1652",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/loups-garous"
+    }
+  ],
   "quote": "Loup-Garou ? C'est bien.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

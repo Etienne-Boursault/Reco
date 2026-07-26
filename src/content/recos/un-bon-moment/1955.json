@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "À retitrer (Joe Hisaishi / BO de L'été de Kikujiro) ou fusionner avec ubm-0398, puis retrancher (validate probable).",
-    "reason": "'Planète Terre' n'est pas une œuvre — misparse de 'ma musique préférée sur [la] planète Terre'. Le vrai sujet est la musique de Joe Hisaishi (crédité 'Joey Saishi') pour L'été de Kikujiro, encensée par Cyprien. Titre à corriger avant publication.",
+    "note": "Ã€ retitrer (Joe Hisaishi / BO de L'Ã©tÃ© de Kikujiro) ou fusionner avec ubm-0398, puis retrancher (validate probable).",
+    "reason": "'PlanÃ¨te Terre' n'est pas une Å“uvre â€” misparse de 'ma musique prÃ©fÃ©rÃ©e sur [la] planÃ¨te Terre'. Le vrai sujet est la musique de Joe Hisaishi (crÃ©ditÃ© 'Joey Saishi') pour L'Ã©tÃ© de Kikujiro, encensÃ©e par Cyprien. Titre Ã  corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -30,8 +30,15 @@
   ],
   "id": "ubm-1955",
   "kind": "citation",
-  "links": [],
-  "quote": "Et ma musique préférée sur Planète Terre, c'est la musique de l'été de Kikujiro.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/879779942"
+    }
+  ],
+  "quote": "Et ma musique prÃ©fÃ©rÃ©e sur PlanÃ¨te Terre, c'est la musique de l'Ã©tÃ© de Kikujiro.",
   "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
   "status": "validated",

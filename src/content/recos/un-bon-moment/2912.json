@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Canonique (ubm-2899 doublon). Corriger créateur/titre 'Aurel'→Orelsan; identifier l'album. Attribution invité incertaine.",
-    "reason": "'Aurel' = Orelsan (transcription erronée; le 'doc' cité = 'Montre jamais ça à personne', sur ses doutes de création). Discussion appréciative substantielle de l'artiste et de son dernier album (~00:47:40) → citation sur le fond, mais créateur/titre à corriger avant publication.",
+    "note": "Canonique (ubm-2899 doublon). Corriger crÃ©ateur/titre 'Aurel'â†’Orelsan; identifier l'album. Attribution invitÃ© incertaine.",
+    "reason": "'Aurel' = Orelsan (transcription erronÃ©e; le 'doc' citÃ© = 'Montre jamais Ã§a Ã  personne', sur ses doutes de crÃ©ation). Discussion apprÃ©ciative substantielle de l'artiste et de son dernier album (~00:47:40) â†’ citation sur le fond, mais crÃ©ateur/titre Ã  corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -32,7 +32,14 @@
     "openai"
   ],
   "id": "ubm-2912",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/270762122"
+    }
+  ],
   "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

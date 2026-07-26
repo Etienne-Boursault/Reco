@@ -7,8 +7,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Champ creator JSON = 'Jérémy Demay' erroné → à corriger en 'Shirley Souagnon'.",
-    "reason": "'Définition' = série YouTube de Shirley Souagnon (elle définit un mot par semaine : 'je reprends sur ma chaîne Youtube, Définition, le mot gel et masque'). Confirmé par WebSearch. Auto-promo invitée.",
+    "note": "Champ creator JSON = 'JÃ©rÃ©my Demay' erronÃ© â†’ Ã  corriger en 'Shirley Souagnon'.",
+    "reason": "'DÃ©finition' = sÃ©rie YouTube de Shirley Souagnon (elle dÃ©finit un mot par semaine : 'je reprends sur ma chaÃ®ne Youtube, DÃ©finition, le mot gel et masque'). ConfirmÃ© par WebSearch. Auto-promo invitÃ©e.",
     "reviewedByHuman": true,
     "verdict": "guest-work"
   },
@@ -44,13 +44,20 @@
   "guestWork": true,
   "id": "ubm-2709",
   "kind": "reco",
-  "links": [],
-  "quote": "\"Saison 3 de Définition, j'ai fait une série Stand Up !\"",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCe177C9cg9XWUwNgz_Vnc_w"
+    }
+  ],
+  "quote": "\"Saison 3 de DÃ©finition, j'ai fait une sÃ©rie Stand Up !\"",
   "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:15",
-  "title": "Définition",
+  "title": "DÃ©finition",
   "transcriptSource": "youtube",
   "types": [
     "video",

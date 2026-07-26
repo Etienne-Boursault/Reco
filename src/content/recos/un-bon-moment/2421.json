@@ -9,7 +9,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Corriger le titre en 'Les Fables d'Odah & Dako' puis classer guest-work (recommendedBy 'Odah & Dako'). guests de l'episode a completer.",
-    "reason": "GUEST-WORK reel — programme court des invites Odah & Dako sur Canal+ (produit par Kyan/FKLG), reco 'si vous voulez les voir... allez voir'. MAIS titre actuel 'Les Fabs de Daedaco' est un artefact. Titre correct verifie: 'Les Fables d'Odah & Dako' (SensCritique/Canal+ 2020). Impossible de corriger le titre via le script → unsure. Canonique (doublons 2432, 1056).",
+    "reason": "GUEST-WORK reel â€” programme court des invites Odah & Dako sur Canal+ (produit par Kyan/FKLG), reco 'si vous voulez les voir... allez voir'. MAIS titre actuel 'Les Fabs de Daedaco' est un artefact. Titre correct verifie: 'Les Fables d'Odah & Dako' (SensCritique/Canal+ 2020). Impossible de corriger le titre via le script â†’ unsure. Canonique (doublons 2432, 1056).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -30,8 +30,15 @@
     "anthropic"
   ],
   "id": "ubm-2421",
-  "links": [],
-  "quote": "Ça s'appelle Les Fabs de Daedaco. Il y a une chaîne carrément YouTube ou sur My Canal, si vous avez Canal+ allez voir.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCvcK8hiJRHRkOSOpSVMxZ4g"
+    }
+  ],
+  "quote": "Ã‡a s'appelle Les Fabs de Daedaco. Il y a une chaÃ®ne carrÃ©ment YouTube ou sur My Canal, si vous avez Canal+ allez voir.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

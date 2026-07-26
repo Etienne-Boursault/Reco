@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Artiste tres probablement DISIZ (transcription « This Is » / « D6 » = « Disiz »), dernier album « On s'en rappellera pas » (nov. 2025). A confirmer a l'oreille ; si oui -> validate. Canonique ; doublon = ubm-0438.",
-    "reason": "Reco enthousiaste d'un album (« je recommande... super album... le dernier album... j'adore le morceau 45 »). Mais l'artiste est transcrit « This Is » (et « D6 » dans le doublon) — nom a confirmer avant publication.",
+    "note": "Artiste tres probablement DISIZ (transcription Â« This Is Â» / Â« D6 Â» = Â« Disiz Â»), dernier album Â« On s'en rappellera pas Â» (nov. 2025). A confirmer a l'oreille ; si oui -> validate. Canonique ; doublon = ubm-0438.",
+    "reason": "Reco enthousiaste d'un album (Â« je recommande... super album... le dernier album... j'adore le morceau 45 Â»). Mais l'artiste est transcrit Â« This Is Â» (et Â« D6 Â» dans le doublon) â€” nom a confirmer avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -38,7 +38,14 @@
     "openai"
   ],
   "id": "ubm-1448",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/858182392"
+    }
+  ],
   "quote": "je recommande l'album de This Is",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

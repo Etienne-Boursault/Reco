@@ -10,7 +10,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Titre reel = LauCarre (rappeur signe sur le label Bonne etoile de Bigflo & Oli) ; 'L.O. Carre'/'Hello Carey' sont des artefacts. Recommande/produit par les invites. Canonique ; doublons Acast = ubm-1196, ubm-1305.",
-    "reason": "Vraie reco : « Allez voir L.O. Carre... un petit jeune, 19 ans, il est super fort », rappeur produit par les invites. Reste en draft car titre a corriger avant publication (artefact).",
+    "reason": "Vraie reco : Â« Allez voir L.O. Carre... un petit jeune, 19 ans, il est super fort Â», rappeur produit par les invites. Reste en draft car titre a corriger avant publication (artefact).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -40,13 +40,20 @@
     "openai"
   ],
   "id": "ubm-2354",
-  "links": [],
-  "quote": "C'est L.O. Carré.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/70133692"
+    }
+  ],
+  "quote": "C'est L.O. CarrÃ©.",
   "recommendedBy": "Bigflo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:47:08",
-  "title": "LauCarré",
+  "title": "LauCarrÃ©",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

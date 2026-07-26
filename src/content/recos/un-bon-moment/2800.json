@@ -28,8 +28,15 @@
     "anthropic"
   ],
   "id": "ubm-2800",
-  "links": [],
-  "quote": "Et je recommande évidemment Kim Gemini pour toutes sortes de divertissements ou accompagnements.",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Hakim_Jemili"
+    }
+  ],
+  "quote": "Et je recommande Ã©videmment Kim Gemini pour toutes sortes de divertissements ou accompagnements.",
   "recommendedBy": "Laura Felpin",
   "sourceId": "un-bon-moment",
   "status": "validated",

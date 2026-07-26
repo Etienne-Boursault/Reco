@@ -40,8 +40,21 @@
   ],
   "id": "ubm-2760",
   "kind": "reco",
-  "links": [],
-  "quote": "J'ai découvert la chanteuse Izzet. Que j'adore.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/5883018"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Yseult_(chanteuse)"
+    }
+  ],
+  "quote": "J'ai dÃ©couvert la chanteuse Izzet. Que j'adore.",
   "recommendedBy": "Haroun",
   "sourceId": "un-bon-moment",
   "status": "validated",

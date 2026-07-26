@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Œuvre réelle = spectacle 'Dédoublée' de Rosa Bursztein au Paradis Latin le 20/01/2026 (confirmé WebSearch + transcript 'Dédoublé/J'ai doublé'). Renommer 'Paradis Latin' → 'Dédoublée' puis passer en guest-work (recommendedBy Rosa Bursztein).",
-    "reason": "01:41:47 : auto-promo du spectacle de Rosa ('je rappelle vos promos le 20 janvier, Paradis Latin, et en tournée'). C'est un guest-work (Rosa Bursztein), MAIS le titre capté 'Paradis Latin' est le LIEU, pas l'œuvre. Titre à corriger avant publication → reste draft.",
+    "note": "Å’uvre rÃ©elle = spectacle 'DÃ©doublÃ©e' de Rosa Bursztein au Paradis Latin le 20/01/2026 (confirmÃ© WebSearch + transcript 'DÃ©doublÃ©/J'ai doublÃ©'). Renommer 'Paradis Latin' â†’ 'DÃ©doublÃ©e' puis passer en guest-work (recommendedBy Rosa Bursztein).",
+    "reason": "01:41:47 : auto-promo du spectacle de Rosa ('je rappelle vos promos le 20 janvier, Paradis Latin, et en tournÃ©e'). C'est un guest-work (Rosa Bursztein), MAIS le titre captÃ© 'Paradis Latin' est le LIEU, pas l'Å“uvre. Titre Ã  corriger avant publication â†’ reste draft.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -34,13 +34,20 @@
   "guestWork": true,
   "id": "ubm-2002",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Rosa_Bursztein"
+    }
+  ],
   "quote": "Paradis Latin.",
   "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:47",
-  "title": "Dédoublée",
+  "title": "DÃ©doublÃ©e",
   "transcriptSource": "youtube",
   "types": [
     "lieu"

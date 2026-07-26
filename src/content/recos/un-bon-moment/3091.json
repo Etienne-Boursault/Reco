@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Transcript 'Romane Frissinella' (draft 'Romane Frissirella') — orthographe du nom à vérifier. Œuvre citée: le sketch de l'abribus. Attribution du recommandeur incertaine (non diarizé).",
-    "reason": "Prescription explicite des spectacles de Romane ('exceptionnels', 'allez le voir'), artiste non présente et pas une invitée — vraie reco (validate).",
+    "note": "Transcript 'Romane Frissinella' (draft 'Romane Frissirella') â€” orthographe du nom Ã  vÃ©rifier. Å’uvre citÃ©e: le sketch de l'abribus. Attribution du recommandeur incertaine (non diarizÃ©).",
+    "reason": "Prescription explicite des spectacles de Romane ('exceptionnels', 'allez le voir'), artiste non prÃ©sente et pas une invitÃ©e â€” vraie reco (validate).",
     "reviewedByHuman": true,
     "verdict": "validate"
   },
@@ -29,7 +29,14 @@
   ],
   "id": "ubm-3091",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Roman_Frayssinet"
+    }
+  ],
   "quote": "Tu vas voir les spectacles de Romane qui sont exceptionnels ! Et Farie ! Surtout le sketch de la bribus !",
   "recommendedBy": "Kyan Khojandi & Navo",
   "sourceId": "un-bon-moment",

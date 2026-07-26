@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Titre a corriger : « Kaamelott » (Alexandre Astier). Une fois corrige, publier en citation, recommendedBy Kyan Khojandi.",
-    "reason": "Verdict cible = citation : Kaamelott citee comme jalon du programme court (arrivee du multicam, « c'etait interessant », l.847-850), substance sans prescription. Mais titre stocke « Camelot » est un artefact (Camelot est une autre oeuvre) -> a corriger avant publication.",
+    "note": "Titre a corriger : Â« Kaamelott Â» (Alexandre Astier). Une fois corrige, publier en citation, recommendedBy Kyan Khojandi.",
+    "reason": "Verdict cible = citation : Kaamelott citee comme jalon du programme court (arrivee du multicam, Â« c'etait interessant Â», l.847-850), substance sans prescription. Mais titre stocke Â« Camelot Â» est un artefact (Camelot est une autre oeuvre) -> a corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -33,8 +33,15 @@
   ],
   "id": "ubm-2463",
   "kind": "citation",
-  "links": [],
-  "quote": "Camelot, déjà ils sont arrivés avec un multicam et c'était intéressant.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/kaamelott"
+    }
+  ],
+  "quote": "Camelot, dÃ©jÃ  ils sont arrivÃ©s avec un multicam et c'Ã©tait intÃ©ressant.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

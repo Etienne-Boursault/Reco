@@ -4,7 +4,7 @@
     "confidence": 0.55,
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
-    "reason": "Apple Fitness+ partagé positivement (« tu as des cours de méditation, de gainage »). Service/produit de bien-être, pas une œuvre culturelle → hors périmètre. À ARBITRER par l'humain.",
+    "reason": "Apple Fitness+ partagÃ© positivement (Â« tu as des cours de mÃ©ditation, de gainage Â»). Service/produit de bien-Ãªtre, pas une Å“uvre culturelle â†’ hors pÃ©rimÃ¨tre. Ã€ ARBITRER par l'humain.",
     "reviewedByHuman": true,
     "verdict": "discard"
   },
@@ -26,8 +26,15 @@
   ],
   "id": "ubm-1454",
   "kind": "citation",
-  "links": [],
-  "quote": "Je me suis abonné à Fitness Plus sur Apple.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.apple.com/fr/apple-fitness-plus/"
+    }
+  ],
+  "quote": "Je me suis abonnÃ© Ã  Fitness Plus sur Apple.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

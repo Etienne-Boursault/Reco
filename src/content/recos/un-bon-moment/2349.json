@@ -9,7 +9,7 @@
     ],
     "model": "claude-opus-4-8",
     "note": "Titre reel = FloodCast (anime par Florent Bernard alias 'Flaubert'/FloBer et Adrien Menielle) ; 'Le Flou/Flot de Cast' est un artefact de transcription. Recommande par un host. Canonique ; doublon Acast = ubm-1193.",
-    "reason": "Vraie reco de podcast : « ils ont un podcast qui s'appelle [...] qu'on recommande d'ailleurs, allez decouvrir ». Reste en draft car titre a corriger avant publication (artefact).",
+    "reason": "Vraie reco de podcast : Â« ils ont un podcast qui s'appelle [...] qu'on recommande d'ailleurs, allez decouvrir Â». Reste en draft car titre a corriger avant publication (artefact).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -40,8 +40,15 @@
     "openai"
   ],
   "id": "ubm-2349",
-  "links": [],
-  "quote": "allez découvrir",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/floodcast/id1019768302"
+    }
+  ],
+  "quote": "allez dÃ©couvrir",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

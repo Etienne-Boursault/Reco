@@ -8,8 +8,8 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "CANONIQUE du cluster Laura (doublon discardé: 2863). « et il y a la dernière de Laura, l'Olympia... c'est dommage pour ceux qui l'ont pas vue, ça vaut le coup » (01:30:56) = reco positive => validate. Artiste « Laura » non identifiée et titre = « la dernière de Laura à l'Olympia » (l'Olympia = la salle, pas le titre) ; WebSearch épuisé => title_suspect fort. Même locuteur hôte ambigu que Capucine => recommendedBy vidé + attribution_suspect.",
-    "reason": "Recommandation fin d'émission (artiste DarkSmile); entité peu identifiable, attribution ambiguë",
+    "note": "CANONIQUE du cluster Laura (doublon discardÃ©: 2863). Â« et il y a la derniÃ¨re de Laura, l'Olympia... c'est dommage pour ceux qui l'ont pas vue, Ã§a vaut le coup Â» (01:30:56) = reco positive => validate. Artiste Â« Laura Â» non identifiÃ©e et titre = Â« la derniÃ¨re de Laura Ã  l'Olympia Â» (l'Olympia = la salle, pas le titre) ; WebSearch Ã©puisÃ© => title_suspect fort. MÃªme locuteur hÃ´te ambigu que Capucine => recommendedBy vidÃ© + attribution_suspect.",
+    "reason": "Recommandation fin d'Ã©mission (artiste DarkSmile); entitÃ© peu identifiable, attribution ambiguÃ«",
     "reviewedByHuman": true,
     "verdict": "validate"
   },
@@ -30,9 +30,16 @@
   ],
   "id": "ubm-2868",
   "kind": "citation",
-  "links": [],
-  "quote": "c'est vrai que ça vaut le coup",
-  "recommendedBy": "Jérémy Ferrari",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Laura_Laune"
+    }
+  ],
+  "quote": "c'est vrai que Ã§a vaut le coup",
+  "recommendedBy": "JÃ©rÃ©my Ferrari",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:30:56",

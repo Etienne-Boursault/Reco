@@ -12,7 +12,7 @@
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Théodora et Disiz",
+  "creator": "ThÃ©odora et Disiz",
   "episodeGuid": "699968af0e5c959d5971943f",
   "extractionHistory": [
     {
@@ -29,8 +29,15 @@
     "openai"
   ],
   "id": "ubm-0424",
-  "links": [],
-  "quote": "Elle est Mélodrama avec Théodora et DC.",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/3558373981"
+    }
+  ],
+  "quote": "Elle est MÃ©lodrama avec ThÃ©odora et DC.",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:28:03",

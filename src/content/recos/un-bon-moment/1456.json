@@ -4,7 +4,7 @@
     "confidence": 0.55,
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
-    "reason": "« Brick » — gadget NFC anti-addiction téléphone, décrit avec substance mais c'est un produit, pas une œuvre culturelle → hors périmètre. À ARBITRER par l'humain.",
+    "reason": "Â« Brick Â» â€” gadget NFC anti-addiction tÃ©lÃ©phone, dÃ©crit avec substance mais c'est un produit, pas une Å“uvre culturelle â†’ hors pÃ©rimÃ¨tre. Ã€ ARBITRER par l'humain.",
     "reviewedByHuman": true,
     "verdict": "discard"
   },
@@ -34,9 +34,16 @@
   ],
   "id": "ubm-1456",
   "kind": "citation",
-  "links": [],
-  "quote": "C'est le Brick, c'est le petit bloc là. Colle ton téléphone dessus comme un sans contact et ça te bloque tes applications.",
-  "recommendedBy": "Jérémy Nadeau",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://getbrick.com/"
+    }
+  ],
+  "quote": "C'est le Brick, c'est le petit bloc lÃ . Colle ton tÃ©lÃ©phone dessus comme un sans contact et Ã§a te bloque tes applications.",
+  "recommendedBy": "JÃ©rÃ©my Nadeau",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:55:17",

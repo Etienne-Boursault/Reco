@@ -9,8 +9,8 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "A corriger : creator (« Navo » errone -> Yacine Belhousse & Dedo) et titre (« L'Histoire racontee par des chaussettes »). Puis publier en guest-work, recommendedBy « Yacine Belhousse & Dedo ».",
-    "reason": "Verdict cible = guest-work : web-serie « L'Histoire racontee par des chaussettes » (Golden Moustache) de Yacine Belhousse & Dedo, promue explicitement (« refaites des chaussettes », « c'est disponible sur YouTube, allez voir », l.1173-1190). Mais creator stocke = « Navo » (faux) et titre a completer -> a corriger avant publication.",
+    "note": "A corriger : creator (Â« Navo Â» errone -> Yacine Belhousse & Dedo) et titre (Â« L'Histoire racontee par des chaussettes Â»). Puis publier en guest-work, recommendedBy Â« Yacine Belhousse & Dedo Â».",
+    "reason": "Verdict cible = guest-work : web-serie Â« L'Histoire racontee par des chaussettes Â» (Golden Moustache) de Yacine Belhousse & Dedo, promue explicitement (Â« refaites des chaussettes Â», Â« c'est disponible sur YouTube, allez voir Â», l.1173-1190). Mais creator stocke = Â« Navo Â» (faux) et titre a completer -> a corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -36,13 +36,20 @@
   "guestWork": true,
   "id": "ubm-2472",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCrp9ngtJ52JQ3XM1RF9rNIg"
+    }
+  ],
   "quote": "C'est trop bien les chaussettes, refaites des chaussettes.",
   "recommendedBy": "Yacine Belhousse & Dedo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:40:25",
-  "title": "L'Histoire racontée par des chaussettes",
+  "title": "L'Histoire racontÃ©e par des chaussettes",
   "transcriptSource": "youtube",
   "types": [
     "autre"

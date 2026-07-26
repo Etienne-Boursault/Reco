@@ -8,12 +8,12 @@
       "guest_missing"
     ],
     "model": "claude-opus-4-8",
-    "note": "Titre réel = 'En corps' (2022, Klapisch), pas 'Encore' (artefact ASR). creator 'Cédric Lapiche' -> Cédric Klapisch. À publier en guest-work après correction.",
-    "reason": "Guest-work de Klapisch (présente le début de son film sans dialogue, sur musique/danse) mais titre à corriger avant publication.",
+    "note": "Titre rÃ©el = 'En corps' (2022, Klapisch), pas 'Encore' (artefact ASR). creator 'CÃ©dric Lapiche' -> CÃ©dric Klapisch. Ã€ publier en guest-work aprÃ¨s correction.",
+    "reason": "Guest-work de Klapisch (prÃ©sente le dÃ©but de son film sans dialogue, sur musique/danse) mais titre Ã  corriger avant publication.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Cédric Klapisch",
+  "creator": "CÃ©dric Klapisch",
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
     "instagram": "cedklap"
@@ -34,9 +34,16 @@
   ],
   "id": "ubm-2330",
   "kind": "citation",
-  "links": [],
-  "quote": "Le début d'Encore, par exemple, c'est un film où je m'étais dit, au début du film, je voudrais que ce soit non pas muet, mais en tout cas qu'il n'y ait pas de dialogue, et qu'on soit que sur la musique et la danse.",
-  "recommendedBy": "Cédric Klapisch",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/en-corps"
+    }
+  ],
+  "quote": "Le dÃ©but d'Encore, par exemple, c'est un film oÃ¹ je m'Ã©tais dit, au dÃ©but du film, je voudrais que ce soit non pas muet, mais en tout cas qu'il n'y ait pas de dialogue, et qu'on soit que sur la musique et la danse.",
+  "recommendedBy": "CÃ©dric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:11:27",

@@ -7,8 +7,8 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "À corriger : titre « Le Fil » / creator « Camille ». Cible : citation, recommendedBy Grand Corps Malade.",
-    "reason": "Artefact titre : « Camille Lefil » = fusion de l'artiste « Camille » et de son album « Le Fil » (2005, vérifié) construit sur une seule note (bourdon) — colle exactement à la discussion 'mélodie à une note'. GCM le cite comme album « génial » inspirant sa méthode (chantonner).",
+    "note": "Ã€ corriger : titre Â« Le Fil Â» / creator Â« Camille Â». Cible : citation, recommendedBy Grand Corps Malade.",
+    "reason": "Artefact titre : Â« Camille Lefil Â» = fusion de l'artiste Â« Camille Â» et de son album Â« Le Fil Â» (2005, vÃ©rifiÃ©) construit sur une seule note (bourdon) â€” colle exactement Ã  la discussion 'mÃ©lodie Ã  une note'. GCM le cite comme album Â« gÃ©nial Â» inspirant sa mÃ©thode (chantonner).",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
@@ -30,9 +30,16 @@
   ],
   "id": "ubm-2514",
   "kind": "citation",
-  "links": [],
-  "quote": "Je l'ai sur Spotify, j'ai même pas trouvé. C'est cet album où vraiment, on a l'impression qu'elle avait des mélodies en sortant de sa douche.",
-  "recommendedBy": "Ben Mazué",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/40789961"
+    }
+  ],
+  "quote": "Je l'ai sur Spotify, j'ai mÃªme pas trouvÃ©. C'est cet album oÃ¹ vraiment, on a l'impression qu'elle avait des mÃ©lodies en sortant de sa douche.",
+  "recommendedBy": "Ben MazuÃ©",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:13:28",

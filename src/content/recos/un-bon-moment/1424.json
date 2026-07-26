@@ -13,7 +13,7 @@
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Sébastien Tellier",
+  "creator": "SÃ©bastien Tellier",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
     "instagram": "sebastientellier"
@@ -43,8 +43,15 @@
     "openai"
   ],
   "id": "ubm-1424",
-  "links": [],
-  "quote": "moi j'ai écouté le dernier album de Sébastien Tellier que je trouve dément",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/824175871"
+    }
+  ],
+  "quote": "moi j'ai Ã©coutÃ© le dernier album de SÃ©bastien Tellier que je trouve dÃ©ment",
   "recommendedBy": "Gilles Lellouche",
   "sourceId": "un-bon-moment",
   "status": "validated",

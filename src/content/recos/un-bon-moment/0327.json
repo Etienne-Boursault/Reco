@@ -7,12 +7,12 @@
       "title_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Verdict visé = guest-work (Bérengère Krief). Titre réel = « Sexe » (dit l.2561 ; tournée « Sexe », Olympia 1-3 oct. 2026). Corriger le titre puis publier en guest-work. Doublon 1992 discardé.",
-    "reason": "Vraie reco de type guest-work (spectacle de l'invitée Bérengère Krief, encensé par les hosts : « le meilleur spectacle », « ce sketch est extraordinaire », 70 dates, l.2559-2638). MAIS titre = artefact ; le script ne corrige pas les titres → reste draft.",
+    "note": "Verdict visÃ© = guest-work (BÃ©rengÃ¨re Krief). Titre rÃ©el = Â« Sexe Â» (dit l.2561 ; tournÃ©e Â« Sexe Â», Olympia 1-3 oct. 2026). Corriger le titre puis publier en guest-work. Doublon 1992 discardÃ©.",
+    "reason": "Vraie reco de type guest-work (spectacle de l'invitÃ©e BÃ©rengÃ¨re Krief, encensÃ© par les hosts : Â« le meilleur spectacle Â», Â« ce sketch est extraordinaire Â», 70 dates, l.2559-2638). MAIS titre = artefact ; le script ne corrige pas les titres â†’ reste draft.",
     "reviewedByHuman": true,
     "verdict": "unsure"
   },
-  "creator": "Bérengère Krief",
+  "creator": "BÃ©rengÃ¨re Krief",
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
     "instagram": "berengerekrief"
@@ -34,9 +34,16 @@
   "guestWork": true,
   "id": "ubm-0327",
   "kind": "reco",
-  "links": [],
-  "quote": "C'est le meilleur spectacle de Bérengère.",
-  "recommendedBy": "Bérengère Krief",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/B%C3%A9reng%C3%A8re_Krief"
+    }
+  ],
+  "quote": "C'est le meilleur spectacle de BÃ©rengÃ¨re.",
+  "recommendedBy": "BÃ©rengÃ¨re Krief",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:47",

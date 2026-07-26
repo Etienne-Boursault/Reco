@@ -25,8 +25,15 @@
   ],
   "id": "ubm-2075",
   "kind": "reco",
-  "links": [],
-  "quote": "il y a Try\nqui est très bon aussi",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCdV6JBe40vqPQOsG4boS5zQ"
+    }
+  ],
+  "quote": "il y a Try\nqui est trÃ¨s bon aussi",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",

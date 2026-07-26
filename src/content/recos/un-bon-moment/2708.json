@@ -7,12 +7,12 @@
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
-    "note": "Champ creator JSON = 'Navo' erroné → à corriger en 'Jérémie Dethelot'.",
-    "reason": "'Les frères maléfiques' = vidéo/sketch de Jérémie Dethelot sur le voguing (avec Jenn Daddy, deux frères qui voguent en cachette) qu'il présente. Auto-promo invité.",
+    "note": "Champ creator JSON = 'Navo' erronÃ© â†’ Ã  corriger en 'JÃ©rÃ©mie Dethelot'.",
+    "reason": "'Les frÃ¨res malÃ©fiques' = vidÃ©o/sketch de JÃ©rÃ©mie Dethelot sur le voguing (avec Jenn Daddy, deux frÃ¨res qui voguent en cachette) qu'il prÃ©sente. Auto-promo invitÃ©.",
     "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Jérémie Dethelot",
+  "creator": "JÃ©rÃ©mie Dethelot",
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
   "extractionHistory": [
     {
@@ -41,13 +41,20 @@
   "guestWork": true,
   "id": "ubm-2708",
   "kind": "reco",
-  "links": [],
-  "quote": "\"Ah les frères maléfiques !\"",
-  "recommendedBy": "Jérémie Dethelot & Shirley Souagnon",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=Mz0IcVs9_y0"
+    }
+  ],
+  "quote": "\"Ah les frÃ¨res malÃ©fiques !\"",
+  "recommendedBy": "JÃ©rÃ©mie Dethelot & Shirley Souagnon",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:15",
-  "title": "Les frères maléfiques",
+  "title": "Les frÃ¨res malÃ©fiques",
   "transcriptSource": "youtube",
   "types": [
     "video",
