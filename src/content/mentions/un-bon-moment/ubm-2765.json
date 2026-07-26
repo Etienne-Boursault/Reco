@@ -31,7 +31,6 @@
   "itemId": "cb8f5a00",
   "kind": "reco",
   "quote": "Bref, un jour on a regardé Cauchemar en cuisine.",
-  "recommendedBy": "intervenant",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
@@ -39,5 +38,5 @@
     "timestamp": "00:48:02",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

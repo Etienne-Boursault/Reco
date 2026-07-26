@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3203",
+  "itemId": "9319d968",
+  "kind": "reco",
+  "quote": "En musique, moi, en ce moment, j'écoute l'album de Julien Doré. Ouais. Aimer, ouais. J'aime beaucoup.",
+  "recommendedBy": "Bérengère Krief",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:48",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

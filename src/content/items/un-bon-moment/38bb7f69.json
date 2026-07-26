@@ -13,58 +13,72 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Everything%20Everywhere%20All%20At%20Once&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Everything%20Everywhere%20All%20At%20Once"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Everything%20Everywhere%20All%20At%20Once"
     }

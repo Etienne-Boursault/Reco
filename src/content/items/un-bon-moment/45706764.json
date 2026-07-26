@@ -13,14 +13,17 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Plex",
       "url": "https://watch.plex.tv/search?q=White%20Fire"
     },
     {
+      "ethics": "neutral",
       "name": "Plex Channel",
       "url": "https://watch.plex.tv/search?q=White%20Fire"
     },
     {
+      "ethics": "indie",
       "name": "Filmzie",
       "url": "https://www.filmzie.com/search?q=White%20Fire"
     }

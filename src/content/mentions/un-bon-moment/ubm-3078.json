@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3078",
+  "itemId": "2372b227",
+  "kind": "reco",
+  "quote": "et moi je recommande The Last of Us 2",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

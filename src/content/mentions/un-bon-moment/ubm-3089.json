@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3089",
+  "itemId": "ef1aedba",
+  "kind": "reco",
+  "quote": "Les Sims pour plus être dans la vraie vie ! Faire un babysitting que là quoi !",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

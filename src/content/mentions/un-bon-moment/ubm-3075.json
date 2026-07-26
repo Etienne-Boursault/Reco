@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:43:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3075",
+  "itemId": "e040193f",
+  "kind": "reco",
+  "quote": "on finit d'écrire la saison 2 de Peach et je trouvais ça hyper mignon.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:43:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

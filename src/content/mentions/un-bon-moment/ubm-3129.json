@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:35:08"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3129",
+  "itemId": "4ec266c2",
+  "kind": "reco",
+  "quote": "Je recommande Irréalisable de Babor, L'éléphant que vous connaissez peut-être, Clément.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:35:08",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

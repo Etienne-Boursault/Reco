@@ -13,14 +13,17 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=The%20Leftovers"
     },
     {
+      "ethics": "avoid",
       "name": "HBO Max Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Leftovers"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=The%20Leftovers"
     }

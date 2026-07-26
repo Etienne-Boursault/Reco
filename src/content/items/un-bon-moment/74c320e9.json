@@ -13,58 +13,72 @@
   ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "name": "MUBI",
       "url": "https://mubi.com/fr/films?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Molotov TV",
       "url": "https://www.molotov.tv/search?q=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "name": "MUBI Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "SFR Play",
       "url": "https://www.sfrplay.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Bright%20Star"
     },
     {
+      "ethics": "indie",
       "name": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Bright%20Star"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Bright%20Star"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Bright%20Star"
     }

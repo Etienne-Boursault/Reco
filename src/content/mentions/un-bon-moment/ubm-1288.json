@@ -19,7 +19,6 @@
   "itemId": "db4dd4cb",
   "kind": "reco",
   "quote": "on recommande Clem",
-  "recommendedBy": "intervenant",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
@@ -27,5 +26,5 @@
     "timestamp": "01:05:12",
     "transcriptSource": "acast"
   },
-  "status": "draft"
+  "status": "discarded"
 }

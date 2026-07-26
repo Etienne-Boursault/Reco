@@ -39,9 +39,10 @@
     "openai"
   ],
   "id": "ubm-1496",
-  "itemId": "88fbe80d",
+  "itemId": "dc15b532",
   "kind": "reco",
   "quote": "Du coup, en ce moment, je m'enfile tous les Gorky.",
+  "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "69872f249a20cfbf330ae7ab",
@@ -49,5 +50,5 @@
     "timestamp": "01:26:27",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

@@ -13,38 +13,47 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "MGM Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Fargo"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fargo"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Fargo"
     }

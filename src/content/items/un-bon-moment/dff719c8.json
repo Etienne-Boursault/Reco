@@ -13,66 +13,82 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=Inception"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "avoid",
       "name": "HBO Max Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Inception&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Inception"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Inception"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Inception"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Inception"
     }

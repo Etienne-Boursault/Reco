@@ -50,9 +50,10 @@
     "openai"
   ],
   "id": "ubm-0511",
-  "itemId": "3b9836f1",
+  "itemId": "08885b3b",
   "kind": "reco",
   "quote": "le podcast à moitié plein à moitié vide",
+  "recommendedBy": "Pierre Hillairet",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
@@ -60,5 +61,5 @@
     "timestamp": "01:28:42",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3095",
+  "itemId": "c077f030",
+  "kind": "reco",
+  "quote": "Pierre Hilleret, le roi Borgne si on doit parler d'humoriste !",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

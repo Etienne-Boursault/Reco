@@ -42,6 +42,7 @@
   "itemId": "674ab7b0",
   "kind": "reco",
   "quote": "je vous recommande le film Vice",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -49,5 +50,5 @@
     "timestamp": "01:02:42",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

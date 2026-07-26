@@ -13,14 +13,17 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Striptease"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Striptease"
     }

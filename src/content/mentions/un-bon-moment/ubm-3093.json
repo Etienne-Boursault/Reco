@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:38:21"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3093",
+  "itemId": "27b7d50a",
+  "kind": "reco",
+  "quote": "L'oeuvre que j'ai beaucoup aimé moi c'est L'épreuve du feu ! C'est un film avec Félix Lefebvre et Anja...",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:38:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

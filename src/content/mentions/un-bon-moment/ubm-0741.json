@@ -10,22 +10,34 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:29:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0741",
   "itemId": "2533e7c7",
   "kind": "reco",
-  "quote": "The Office, Steve Carell et tout, n'hésitez pas à aller voir The Office, c'est incroyable.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Kyan m'a dit regarde The Office avec Steve Carell",
+  "recommendedBy": "Baptiste Lecaplain",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:30:20",
-    "transcriptSource": "acast"
+    "timestamp": "01:29:17",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

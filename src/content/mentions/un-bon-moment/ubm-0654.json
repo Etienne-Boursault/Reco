@@ -10,22 +10,33 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0654",
-  "itemId": "549c0c29",
+  "itemId": "c3a443a7",
   "kind": "reco",
-  "quote": "il y a un type qui s'appelle ici japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo le japon en général",
-  "recommendedBy": "Non spécifié",
+  "quote": "il y a un type qui s'appelle Ici Japon qui est formidable et qui fait des vidéos qui te font découvrir Tokyo, le Japon, en général et c'est très intéressant",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:14:19",
-    "transcriptSource": "acast"
+    "timestamp": "01:14:20",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

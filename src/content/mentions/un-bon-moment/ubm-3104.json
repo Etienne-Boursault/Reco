@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:40:42"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3104",
+  "itemId": "ce092f1e",
+  "kind": "reco",
+  "quote": "je regarde une émission qui s'appelait Incroyable mais vous vous rappelez ? sur TF à l'époque",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a2d9864a717b492a5132dfe",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:40:42",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

@@ -13,58 +13,72 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Parasite&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Parasite"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Parasite"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Parasite"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Parasite"
     }

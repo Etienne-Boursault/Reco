@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:47:35"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3085",
+  "itemId": "728c4989",
+  "kind": "reco",
+  "quote": "Toujours ma prod, toujours la marocinerie le 16 septembre.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:47:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

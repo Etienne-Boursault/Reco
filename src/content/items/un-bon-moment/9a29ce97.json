@@ -12,10 +12,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20%26%20Mrs.%20Smith"
     }

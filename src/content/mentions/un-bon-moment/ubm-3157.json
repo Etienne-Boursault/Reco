@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:30"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3157",
+  "itemId": "643c2494",
+  "kind": "reco",
+  "quote": "Et il y a Happy End de Blandine Lehoux aussi, qui a sorti ça. C'est des portraits de gens, et ça se termine plutôt bien.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -13,34 +13,42 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=Mare%20of%20Easttown"
     },
     {
+      "ethics": "avoid",
       "name": "HBO Max Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Mare%20of%20Easttown"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Mare%20of%20Easttown"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mare%20of%20Easttown"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Mare%20of%20Easttown"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Mare%20of%20Easttown"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Mare%20of%20Easttown"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Mare%20of%20Easttown"
     }

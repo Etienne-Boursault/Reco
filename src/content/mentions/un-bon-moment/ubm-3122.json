@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:01:43"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3122",
+  "itemId": "74c76e93",
+  "kind": "reco",
+  "quote": "Ah si, il y en a un qui s'appelle... God Bless America, je crois. Un mec qui est au taf.",
+  "recommendedBy": "Thomas Deseur",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:01:43",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

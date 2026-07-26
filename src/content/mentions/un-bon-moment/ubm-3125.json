@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:17:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3125",
+  "itemId": "d4b0dffa",
+  "kind": "reco",
+  "quote": "Maniscalco, si vous ne connaissez pas, allez le voir sur son Insta. Il a plein de trucs, il fait des expressions.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:17:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

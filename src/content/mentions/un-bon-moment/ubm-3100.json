@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:22:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3100",
+  "itemId": "73c9dbd0",
+  "kind": "reco",
+  "quote": "la scène la plus iconique dans Indiana Jones",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a2d9864a717b492a5132dfe",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:22:52",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

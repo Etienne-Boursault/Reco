@@ -42,7 +42,6 @@
   "itemId": "3ca3cf8d",
   "kind": "reco",
   "quote": "vous avez dû montrer un épisode de bref",
-  "recommendedBy": "Inconnu",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
@@ -50,5 +49,5 @@
     "timestamp": "00:48:16",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

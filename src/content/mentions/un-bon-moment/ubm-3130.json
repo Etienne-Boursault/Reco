@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:36:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3130",
+  "itemId": "b3b5e2ed",
+  "kind": "reco",
+  "quote": "Moi, je recommande, j'ai fait un peu de rétro gaming récemment et je recommande Flashback.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:36:17",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

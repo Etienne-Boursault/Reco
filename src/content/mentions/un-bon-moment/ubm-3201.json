@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:40:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3201",
+  "itemId": "56dd956e",
+  "kind": "reco",
+  "quote": "Moi, j'ai écouté un truc ce matin, le premier truc d'un artiste que j'aime beaucoup qui s'appelle Joji qui a sorti un album.",
+  "recommendedBy": "Alice David",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:40:16",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

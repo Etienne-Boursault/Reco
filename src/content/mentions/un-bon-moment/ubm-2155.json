@@ -28,9 +28,10 @@
     "openai"
   ],
   "id": "ubm-2155",
-  "itemId": "04624a39",
+  "itemId": "12bc399a",
   "kind": "reco",
   "quote": "La musique de fin a été faite par Tortosa. Donc, allez écouter.",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "65c7a407bb568b0017862c8f",
@@ -38,5 +39,5 @@
     "timestamp": "01:13:26",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

@@ -10,22 +10,33 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0644",
-  "itemId": "67380587",
+  "itemId": "7cf44751",
   "kind": "reco",
-  "quote": "C'est Hard Disk qui s'appelle... Oui, je connais ça Hard Disk. Voilà. Je le trouve vraiment bon. Et il mérite encore plus d'abonnés.",
-  "recommendedBy": "Yvick",
+  "quote": "Et il y a une autre chaîne mais qui a rien à voir avec de l'humour qui est plus dans l'analyse de vidéos et de clips... C'est Hard Disk il s'appelle ! Je le trouve vraiment bon et il mérite encore plus d'abonnés !",
+  "recommendedBy": "Mister V",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:18:05",
-    "transcriptSource": "acast"
+    "timestamp": "01:18:01",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

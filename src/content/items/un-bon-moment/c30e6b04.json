@@ -12,10 +12,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=What%20We%20Do%20In%20The%20Shadows"
     }

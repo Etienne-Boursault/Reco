@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:21"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3191",
+  "itemId": "addc19d5",
+  "kind": "reco",
+  "quote": "Moi qui les connais dans la vie. Ces gars sont super marrants dans la vie.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

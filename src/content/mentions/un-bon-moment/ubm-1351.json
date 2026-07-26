@@ -1,6 +1,17 @@
 {
   "extractionHistory": [
     {
+      "at": "2026-05-28T07:58:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:21:53"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
       "at": "2026-06-04T06:10:18+00:00",
       "extra": {
         "timestamp_at_extraction": "01:21:57"
@@ -50,5 +61,5 @@
     "timestamp": "01:21:57",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

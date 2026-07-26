@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3185",
+  "itemId": "10b00151",
+  "kind": "reco",
+  "quote": "Le concepteur d'une seconde par jour. Ouais, enfin, pas le concepteur, mais en vrai, moi, c'est vrai.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:24:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

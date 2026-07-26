@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Apple TV",
       "url": "https://tv.apple.com/fr/search?term=Ted%20Lasso"
     },
     {
+      "ethics": "avoid",
       "name": "Apple TV Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Ted%20Lasso"
     }

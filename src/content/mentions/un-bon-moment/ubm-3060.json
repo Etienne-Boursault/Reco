@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:33:10"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3060",
+  "itemId": "756041e3",
+  "kind": "reco",
+  "quote": "C'est une vanne de Catherine Franco.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:33:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

@@ -13,46 +13,57 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Annette&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Annette"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Annette"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Annette"
     }

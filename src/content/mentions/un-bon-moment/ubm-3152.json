@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:48"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3152",
+  "itemId": "903aba9d",
+  "kind": "reco",
+  "quote": "Déjà, aller voir le Cypher. The Rear Soul.",
+  "recommendedBy": "Orelsan",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:13:48",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

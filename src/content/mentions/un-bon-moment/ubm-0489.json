@@ -53,6 +53,7 @@
   "itemId": "66751388",
   "kind": "reco",
   "quote": "Je recommande Géronimo, que vous avez peut-être vu sur TikTok.",
+  "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
@@ -60,5 +61,5 @@
     "timestamp": "01:35:20",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

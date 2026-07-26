@@ -13,30 +13,37 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Better%20Call%20Saul"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Better%20Call%20Saul"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Better%20Call%20Saul"
     }

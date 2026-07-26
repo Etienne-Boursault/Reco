@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
     }

@@ -13,78 +13,97 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "avoid",
       "name": "HBO Max Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Charlie&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Charlie"
     },
     {
+      "ethics": "indie",
       "name": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Charlie"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Charlie"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Charlie"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Charlie"
     }

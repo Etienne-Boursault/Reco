@@ -13,14 +13,17 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Apple TV",
       "url": "https://tv.apple.com/fr/search?term=Severance"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Severance"
     },
     {
+      "ethics": "avoid",
       "name": "Apple TV Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Severance"
     }

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:57:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3139",
+  "itemId": "44eec55c",
+  "kind": "reco",
+  "quote": "l'île de la tentation en 2003 sur la chaîne tf1",
+  "recommendedBy": "Greg Romano",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:57:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

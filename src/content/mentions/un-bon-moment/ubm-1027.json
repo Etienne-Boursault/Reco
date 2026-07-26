@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:18:33"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -17,15 +28,15 @@
   ],
   "id": "ubm-1027",
   "itemId": "50b3cd38",
-  "kind": "reco",
-  "quote": "Tu vois, j'avais recommandé Fouloscopie, il en parle à un moment sur sa chaîne YouTube",
+  "kind": "citation",
+  "quote": "j'avais recommandé Fouloscopie, il en parle à un moment sur sa chaîne YouTube où il montre le... En gros, il montre quelqu'un qui danse tout seul au milieu d'un parc",
   "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:18:31",
-    "transcriptSource": "acast"
+    "timestamp": "00:18:33",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

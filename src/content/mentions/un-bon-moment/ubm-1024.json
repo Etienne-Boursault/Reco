@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:09"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -18,14 +29,14 @@
   "id": "ubm-1024",
   "itemId": "cf84fd33",
   "kind": "reco",
-  "quote": "tu peux en parler un peu de démétrie martine",
+  "quote": "Là c'est des vannes de deux gars que j'adore qui s'appellent Demetri Martin",
   "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:57:31",
-    "transcriptSource": "acast"
+    "timestamp": "00:51:09",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:10:26"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3098",
+  "itemId": "fc4007e8",
+  "kind": "citation",
+  "quote": "ça fait une semaine que je suis fasciné par ça",
+  "recommendedBy": "Jason Brokerss",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a2d9864a717b492a5132dfe",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:10:26",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

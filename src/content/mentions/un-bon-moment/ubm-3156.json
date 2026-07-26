@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:25"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3156",
+  "itemId": "f2b90f79",
+  "kind": "reco",
+  "quote": "Moi, j'en commande Continu, tu m'intéresses, de Patrick Beau.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:25",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

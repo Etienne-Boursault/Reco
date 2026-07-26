@@ -13,22 +13,27 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Disney Plus",
       "url": "https://www.disneyplus.com/fr-fr/search?q=Desperate%20Housewives"
     },
     {
+      "ethics": "neutral",
       "name": "SFR Play",
       "url": "https://www.sfrplay.fr/recherche?q=Desperate%20Housewives"
     },
     {
+      "ethics": "neutral",
       "name": "M6+",
       "url": "https://www.6play.fr/recherche?q=Desperate%20Housewives"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Desperate%20Housewives"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Desperate%20Housewives"
     }

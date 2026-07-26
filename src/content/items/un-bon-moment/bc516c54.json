@@ -1,0 +1,26 @@
+{
+  "creator": "Frédéric Garcia",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR",
+    "tmdb": 94801,
+    "tmdbType": "tv"
+  },
+  "id": "bc516c54",
+  "schemaVersion": 1,
+  "title": "Mortel",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Mortel"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Mortel"
+    }
+  ]
+}

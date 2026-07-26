@@ -13,38 +13,47 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "indie",
       "name": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/?text=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Am%C3%A9lie%20Poulain"
     },
     {
+      "ethics": "indie",
       "name": "ARTE Boutique",
       "url": "https://boutique.arte.tv/search?q=Am%C3%A9lie%20Poulain"
     }

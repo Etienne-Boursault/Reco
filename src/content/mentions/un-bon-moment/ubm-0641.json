@@ -10,22 +10,33 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:20"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0641",
-  "itemId": "3b819f65",
+  "itemId": "8e7e0d02",
   "kind": "reco",
-  "quote": "Moi, c'est la chaîne Ebim que j'aime beaucoup. On est sur les deux copains. Voilà. Clairement, c'est de très, très haute qualité.",
-  "recommendedBy": "Invité",
+  "quote": "Moi c'est la chaîne Ebim ! Que j'aime beaucoup !",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:14:21",
-    "transcriptSource": "acast"
+    "timestamp": "01:14:20",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

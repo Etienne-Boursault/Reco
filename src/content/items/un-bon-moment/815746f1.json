@@ -1,9 +1,85 @@
 {
+  "aliases": [
+    "The Zone of Interest",
+    "La Zone d'Intérêt"
+  ],
   "creator": "Jonathan Glazer",
+  "externalIds": {
+    "justwatch": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR",
+    "tmdb": 467244,
+    "tmdbType": "movie"
+  },
   "id": "815746f1",
   "schemaVersion": 1,
   "title": "Zone of Interest",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt&c=movies"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Cinemas a la Demande",
+      "url": "https://www.cinemasalademande.com/?s=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=La%20Zone%20d%27Int%C3%A9r%C3%AAt"
+    }
   ]
 }

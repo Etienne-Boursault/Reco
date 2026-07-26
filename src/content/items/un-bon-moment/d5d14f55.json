@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }

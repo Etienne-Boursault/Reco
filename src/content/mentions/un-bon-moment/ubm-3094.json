@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:39:22"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3094",
+  "itemId": "2f321242",
+  "kind": "reco",
+  "quote": "C'est une série d'animation qui est sur Netflix... Et en fait c'est un truc avec End of the World je pense dans le titre...",
+  "recommendedBy": "Thaïs Vauquières",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:39:22",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

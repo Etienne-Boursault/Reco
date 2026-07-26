@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:30"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3074",
+  "itemId": "d4ff134b",
+  "kind": "citation",
+  "quote": "L'album d'Amy Winehouse, c'est moins de 40 minutes. C'est un des albums les plus cultes que j'ai entendus.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

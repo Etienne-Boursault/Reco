@@ -19,7 +19,6 @@
   "itemId": "dff719c8",
   "kind": "reco",
   "quote": "Mon film préféré.",
-  "recommendedBy": "Intervenant",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
@@ -27,5 +26,5 @@
     "timestamp": "01:05:52",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

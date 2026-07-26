@@ -28,10 +28,9 @@
     "openai"
   ],
   "id": "ubm-2374",
-  "itemId": "bf3d1693",
+  "itemId": "5f73a955",
   "kind": "reco",
   "quote": "J'aimerais vous recommander une vidéo sur Youtube qui s'appelle Flick and Games",
-  "recommendedBy": "Alice",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
@@ -39,5 +38,5 @@
     "timestamp": "01:39:13",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

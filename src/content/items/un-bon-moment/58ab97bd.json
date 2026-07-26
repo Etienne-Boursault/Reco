@@ -13,18 +13,22 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Dispatches%20from%20Elsewhere"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Dispatches%20from%20Elsewhere"
     }

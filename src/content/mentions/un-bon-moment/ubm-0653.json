@@ -10,22 +10,34 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:05:05"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0653",
   "itemId": "29890e6e",
   "kind": "reco",
-  "quote": "le documentaire fait par Yassine Bellous. Sur le stand-up qui s'appelle.",
-  "recommendedBy": "Kyan Khojandi",
+  "quote": "Le documentaire fait par Yacine Bellouz sur le stand-up qui s'appelle Voulez-vous rire avec moi ce soir ?",
+  "recommendedBy": "Yacine Belhousse",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:05:06",
-    "transcriptSource": "acast"
+    "timestamp": "00:05:05",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

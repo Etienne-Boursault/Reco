@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:29:54+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:29"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "acast",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3198",
+  "itemId": "03e48335",
+  "kind": "citation",
+  "quote": "Quand on avait fait bref, je t'avais dit imagine que Kyan est beau.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:29",
+    "transcriptSource": "acast"
+  },
+  "status": "validated"
+}

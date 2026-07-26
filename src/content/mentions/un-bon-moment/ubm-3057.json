@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:16:10+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:31:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3057",
+  "itemId": "c8c7aa04",
+  "kind": "reco",
+  "quote": "Le spectacle, ça plaît, ça s'appelle toujours, mais ça plaît puisque tu ne le joues plus « Lève-toi et tombe ».",
+  "recommendedBy": "Greg Romano",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a195ea4834d46c80cf58967",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:31:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

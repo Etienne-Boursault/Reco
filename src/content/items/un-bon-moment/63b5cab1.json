@@ -13,14 +13,17 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Disney Plus",
       "url": "https://www.disneyplus.com/fr-fr/search?q=How%20I%20Met%20Your%20Mother"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=How%20I%20Met%20Your%20Mother"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=How%20I%20Met%20Your%20Mother"
     }

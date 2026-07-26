@@ -13,34 +13,42 @@
   ],
   "watchProviders": [
     {
+      "ethics": "indie",
       "name": "MUBI",
       "url": "https://mubi.com/fr/films?q=Boyhood"
     },
     {
+      "ethics": "avoid",
       "name": "MUBI Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Boyhood"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Boyhood"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Boyhood"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Boyhood"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Boyhood"
     },
     {
+      "ethics": "neutral",
       "name": "VIVA by videofutur",
       "url": "https://www.videofutur.fr/recherche?q=Boyhood"
     },
     {
+      "ethics": "neutral",
       "name": "Premiere Max",
       "url": "https://www.premieremax.com/search?q=Boyhood"
     }

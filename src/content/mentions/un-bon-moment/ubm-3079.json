@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:50+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:01"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3079",
+  "itemId": "5813e7ce",
+  "kind": "reco",
+  "quote": "Allez voir ça. Il y en a 50 réalisés par Léa Rouault. C'est très fort.",
+  "recommendedBy": "Alex Ramirès",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a1e8cf50510101c862a3ef9",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:02:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

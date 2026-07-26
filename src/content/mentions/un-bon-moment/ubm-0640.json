@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:13:52"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -18,14 +29,14 @@
   "id": "ubm-0640",
   "itemId": "cd4ef186",
   "kind": "reco",
-  "quote": "Allez, Les Parasites. Les Parasites. La chaîne Les Parasites. Ils ont d'ailleurs fait une série sur Canal Plus.",
-  "recommendedBy": "Invité",
+  "quote": "Allez les Parasites ! La chaîne Les Parasites ! Ils ont d'ailleurs fait une série sur Canal Plus, qui s'appelle L'Effondrement ! Il y en a quelques-uns là qui ont été mis en ligne sur Youtube ! Allez voir ! Allez voir les Parasites ! Allez voir ! C'est très très très très bien fait !",
+  "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:13:53",
-    "transcriptSource": "acast"
+    "timestamp": "01:13:52",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

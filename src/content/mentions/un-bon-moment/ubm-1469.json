@@ -19,7 +19,6 @@
   "itemId": "6327e85d",
   "kind": "reco",
   "quote": "Un livre que j'ai déjà lu !",
-  "recommendedBy": "intervenant",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "69a169ac519334f049d06785",
@@ -27,5 +26,5 @@
     "timestamp": "01:41:24",
     "transcriptSource": "acast"
   },
-  "status": "draft"
+  "status": "discarded"
 }

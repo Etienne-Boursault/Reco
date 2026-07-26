@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "HBO Max",
       "url": "https://play.max.com/search?q=I%20May%20Destroy%20You"
     },
     {
+      "ethics": "avoid",
       "name": "HBO Max Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=I%20May%20Destroy%20You"
     }

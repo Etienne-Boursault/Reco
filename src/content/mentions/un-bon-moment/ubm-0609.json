@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:39"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -18,14 +29,14 @@
   "id": "ubm-0609",
   "itemId": "54d1e469",
   "kind": "reco",
-  "quote": "C'est ce qui est cool avec Steven Wright, c'est que tu peux vraiment l'écouter en audio et tu perds pas grand-chose quoi.",
+  "quote": "C'est vrai ça, c'est vrai. Non mais c'est parce que c'est le gars qu'on conseille jamais des Netflix.",
   "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
     "sourceId": "un-bon-moment",
-    "timestamp": "01:07:03",
-    "transcriptSource": "acast"
+    "timestamp": "01:06:39",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

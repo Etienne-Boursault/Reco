@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:49"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3067",
+  "itemId": "3a076a77",
+  "kind": "reco",
+  "quote": "je pleure de rire en écoutant Chitty Flute. C'est une chaîne avec des remixes de choses qu'on connaît jouées très, très, très, très mal à la flûte",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:49",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

@@ -39,9 +39,10 @@
     "openai"
   ],
   "id": "ubm-0918",
-  "itemId": "ab4589ab",
+  "itemId": "2baa7727",
   "kind": "reco",
   "quote": "Je recommande Votre Cerveau, le podcast d'Albert Moukéibert que tu m'as recommandé.",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "65241146d963060012045fb6",
@@ -49,5 +50,5 @@
     "timestamp": "01:06:11",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

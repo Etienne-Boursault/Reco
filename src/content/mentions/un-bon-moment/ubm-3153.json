@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3153",
+  "itemId": "68976d83",
+  "kind": "reco",
+  "quote": "Pour commencer, The Rear Soul, il y a Nathan For You. Oui, Nathan. Et ça, c'est vraiment hilarant aussi.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

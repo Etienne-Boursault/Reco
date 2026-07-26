@@ -39,10 +39,10 @@
     "openai"
   ],
   "id": "ubm-1258",
-  "itemId": "bf156ee9",
+  "itemId": "1a6e3813",
   "kind": "reco",
   "quote": "Moi je recommande 'Selon Thomas' quand même.",
-  "recommendedBy": "intervenant",
+  "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "6550c05703445c0011dd8343",
@@ -50,5 +50,5 @@
     "timestamp": "01:22:31",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

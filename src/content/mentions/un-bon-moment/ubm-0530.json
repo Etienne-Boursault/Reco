@@ -1,6 +1,17 @@
 {
   "extractionHistory": [
     {
+      "at": "2026-06-04T06:10:18+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:14:01"
+      },
+      "llmModel": "(assumed)",
+      "llmProvider": "openai",
+      "transcriptModel": "(assumed)",
+      "transcriptSource": "acast",
+      "worker": "(assumed)"
+    },
+    {
       "at": "2026-06-05T09:36:44+00:00",
       "extra": {
         "timestamp_at_extraction": "00:15:12"
@@ -52,7 +63,7 @@
   "id": "ubm-0530",
   "itemId": "ed26b7bb",
   "kind": "reco",
-  "quote": "il y a un café visionnaire à Toulouse",
+  "quote": "vous faites du merch des fois un peu avec ton frère",
   "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
@@ -61,5 +72,5 @@
     "timestamp": "00:15:12",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

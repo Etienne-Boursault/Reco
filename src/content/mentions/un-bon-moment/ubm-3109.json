@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:08+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:05:55"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3109",
+  "itemId": "32517227",
+  "kind": "reco",
+  "quote": "bah moi je crois que la chèvre il est dans mon top 3",
+  "recommendedBy": "Jason Brokerss",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a2d9864a717b492a5132dfe",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:05:55",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

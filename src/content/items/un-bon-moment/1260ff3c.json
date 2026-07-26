@@ -13,38 +13,47 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "name": "MGM Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=The%20Handmaid%27s%20Tale"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Handmaid%27s%20Tale"
     }

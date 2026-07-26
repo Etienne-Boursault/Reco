@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:43+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:42:50"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3131",
+  "itemId": "9cf55f25",
+  "kind": "reco",
+  "quote": "Si j'ai une active, je serai dans le film Je suis la voix de André dans André is an Idiot.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:42:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

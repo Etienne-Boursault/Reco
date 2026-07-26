@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:17"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -18,14 +29,14 @@
   "id": "ubm-0642",
   "itemId": "baf0e910",
   "kind": "reco",
-  "quote": "Incroyable, Freddy Fred. C'est toi qui m'a fait découvrir ça. C'est des scénariés avec son chien.",
-  "recommendedBy": "Invité",
+  "quote": "Freddy Fred ! C'est des scénariés avec son chien ! Tu vas voir la croyance ! Tu vas voir c'est génial !",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
     "sourceId": "un-bon-moment",
     "timestamp": "01:16:17",
-    "transcriptSource": "acast"
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

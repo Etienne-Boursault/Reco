@@ -53,6 +53,7 @@
   "itemId": "ae5c0a19",
   "kind": "reco",
   "quote": "Je recommande la chaîne \"Old Things Never Die\".",
+  "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "690f87b14e59613eaf07e566",
@@ -60,5 +61,5 @@
     "timestamp": "01:30:40",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

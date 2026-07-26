@@ -10,22 +10,33 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:19:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:24"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0659",
-  "itemId": "5a331aea",
+  "itemId": "0f654f1d",
   "kind": "reco",
-  "quote": "moi c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander c'est une chaîne qui a déjà plusieurs millions d'abonnés c'est de la SMR mais en cuisine",
-  "recommendedBy": "Non spécifié",
+  "quote": "c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander. C'est une chaîne qui a à peu près déjà plusieurs millions d'abonnés. Peaceful Cuisine, c'est de la SMR mais en cuisine",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "38807338-8f13-4364-ba7b-f8af0d7e67c5",
     "sourceId": "un-bon-moment",
     "timestamp": "01:20:24",
-    "transcriptSource": "acast"
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

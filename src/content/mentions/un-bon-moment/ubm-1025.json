@@ -10,6 +10,17 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:50:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
@@ -18,14 +29,14 @@
   "id": "ubm-1025",
   "itemId": "87218b14",
   "kind": "reco",
-  "quote": "C'est Julien Méniel qui nous donne, fait des espèces de petits épisodes sur des trucs de santé. Hyper intéressant.",
+  "quote": "Allez, DTC. DTC, dans la chaîne Dans Ton Corps.",
   "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:51:01",
-    "transcriptSource": "acast"
+    "timestamp": "00:50:58",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

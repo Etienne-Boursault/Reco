@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:27"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3168",
+  "itemId": "c20de366",
+  "kind": "reco",
+  "quote": "On a fait un spectacle à Dubaï pour le Montreux Comédie Dubaï ! On avait bien kiffé !",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

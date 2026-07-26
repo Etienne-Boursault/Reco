@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:30"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3160",
+  "itemId": "d394a3a1",
+  "kind": "citation",
+  "quote": "co-auteur de Bref",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:00:30",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

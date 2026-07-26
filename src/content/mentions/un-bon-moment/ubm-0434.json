@@ -53,7 +53,6 @@
   "itemId": "dc34fa0a",
   "kind": "reco",
   "quote": "j'écoutais une musique de Mathieu Chedid qui s'appelle Totem",
-  "recommendedBy": "intervenants",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "6999f0a21b49b62cccf2e9bb",
@@ -61,5 +60,5 @@
     "timestamp": "01:03:52",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

@@ -42,6 +42,7 @@
   "itemId": "1a2edc5a",
   "kind": "reco",
   "quote": "Moi, c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut Jim's.",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
@@ -49,5 +50,5 @@
     "timestamp": "01:15:18",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

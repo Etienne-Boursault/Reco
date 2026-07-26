@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:44:14"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3173",
+  "itemId": "49456a1e",
+  "kind": "citation",
+  "quote": "T'as une vanne dans Réa Préalité qui me fait marrer c'est du 42 quand t'as un anisot qui dit je vais te goumer je vais te goumer",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:44:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

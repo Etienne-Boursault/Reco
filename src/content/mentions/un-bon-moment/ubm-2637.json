@@ -19,7 +19,6 @@
   "itemId": "9437c870",
   "kind": "reco",
   "quote": "Il y a un documentaire sur Paris Hilton, qui est sur YouTube.",
-  "recommendedBy": "inconnu",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -27,5 +26,5 @@
     "timestamp": "01:21:36",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

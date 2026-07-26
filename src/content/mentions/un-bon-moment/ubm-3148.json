@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:39:59"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3148",
+  "itemId": "626d2a4f",
+  "kind": "reco",
+  "quote": "T'as vu Un jour sans fin ?",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:39:59",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

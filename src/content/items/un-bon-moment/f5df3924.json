@@ -12,18 +12,22 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Netflix",
       "url": "https://www.netflix.com/search?q=Valid%C3%A9"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
     },
     {
+      "ethics": "neutral",
       "name": "Netflix Standard with Ads",
       "url": "https://www.netflix.com/search?q=Valid%C3%A9"
     },
     {
+      "ethics": "avoid",
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Valid%C3%A9"
     }

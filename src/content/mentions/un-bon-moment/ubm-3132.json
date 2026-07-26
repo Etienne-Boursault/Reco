@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:01+00:00",
+      "extra": {
+        "timestamp_at_extraction": "05:19"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3132",
+  "itemId": "f1724c37",
+  "kind": "reco",
+  "quote": "À un moment donné, quand la Nintendo Switch est sortie, il y a eu le nouveau Zelda qui est arrivé.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:05:19",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

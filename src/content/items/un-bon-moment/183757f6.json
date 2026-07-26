@@ -12,10 +12,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Apple TV",
       "url": "https://tv.apple.com/fr/search?term=Murderbot"
     },
     {
+      "ethics": "avoid",
       "name": "Apple TV Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Murderbot"
     }

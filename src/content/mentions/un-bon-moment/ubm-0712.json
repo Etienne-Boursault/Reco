@@ -42,7 +42,6 @@
   "itemId": "ec1796b1",
   "kind": "reco",
   "quote": "C'est le film de Spielberg avec les dinosaures.",
-  "recommendedBy": "Invité",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
@@ -50,5 +49,5 @@
     "timestamp": "00:43:12",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

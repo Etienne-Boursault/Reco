@@ -16,9 +16,10 @@
     "anthropic"
   ],
   "id": "ubm-2791",
-  "itemId": "42a624ab",
-  "kind": "reco",
+  "itemId": "af8608f9",
+  "kind": "citation",
   "quote": "il a joué dans le Cher Journal",
+  "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "65240a35cc56a90012ec386b",
@@ -26,5 +27,5 @@
     "timestamp": "00:24:05",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

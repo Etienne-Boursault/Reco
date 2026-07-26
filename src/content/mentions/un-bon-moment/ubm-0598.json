@@ -10,22 +10,34 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:22:35+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:00:00"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
+    "anthropic",
     "openai"
   ],
   "id": "ubm-0598",
   "itemId": "971a20be",
   "kind": "reco",
-  "quote": "il a fait des films le plus connu, je pense, School of Rock avec Black Black.",
+  "quote": "il a fait des films, le plus connu, je pense, c'est School of Rock avec Jack Black, qui est vraiment le truc le plus populaire",
   "recommendedBy": "Navo",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:03:28",
-    "transcriptSource": "acast"
+    "timestamp": "00:00:00",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "discarded"
 }

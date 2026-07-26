@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:45:16"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3120",
+  "itemId": "4a82f64f",
+  "kind": "citation",
+  "quote": "Moi, c'est Verino. [...] On l'adore, c'est très simple. On l'adore.",
+  "recommendedBy": "Thomas Deseur",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:45:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

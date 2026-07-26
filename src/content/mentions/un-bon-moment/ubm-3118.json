@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:42+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:38:34"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3118",
+  "itemId": "8a228b96",
+  "kind": "citation",
+  "quote": "Et il n'y a pas longtemps, j'ai vu Adèle Fougazi. Et j'ai eu ce truc de... il est tellement bon que...",
+  "recommendedBy": "Thomas Deseur",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:38:34",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

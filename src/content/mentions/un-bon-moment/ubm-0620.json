@@ -10,22 +10,33 @@
       "transcriptModel": "(assumed)",
       "transcriptSource": "acast",
       "worker": "(assumed)"
+    },
+    {
+      "at": "2026-07-18T17:21:41+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:51:44"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
     }
   ],
   "extractors": [
     "anthropic"
   ],
   "id": "ubm-0620",
-  "itemId": "9cb30a12",
+  "itemId": "f2f7fb20",
   "kind": "reco",
-  "quote": "Moi, j'ai une chaîne que j'adore, c'est le Règlement. J'adore cette chaîne. C'est une chaîne qui parle de rap.",
+  "quote": "Moi, j'ai une chaîne que j'adore, c'est le règlement. J'adore cette chaîne.",
   "recommendedBy": "Kyan Khojandi",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
     "sourceId": "un-bon-moment",
-    "timestamp": "00:51:43",
-    "transcriptSource": "acast"
+    "timestamp": "00:51:44",
+    "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

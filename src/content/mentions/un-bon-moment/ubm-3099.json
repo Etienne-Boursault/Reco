@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:20:07+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:19:47"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3099",
+  "itemId": "4b481a75",
+  "kind": "reco",
+  "quote": "hier soir j'ai été à l'expo beyond the street",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a2d9864a717b492a5132dfe",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:19:47",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

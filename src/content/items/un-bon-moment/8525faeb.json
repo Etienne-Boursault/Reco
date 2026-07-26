@@ -12,22 +12,27 @@
   ],
   "watchProviders": [
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     },
     {
+      "ethics": "neutral",
       "name": "Sooner",
       "url": "https://www.sooner.fr/recherche?q=Charlie%20%28All%20Dogs%20Go%20to%20Heaven%29"
     }

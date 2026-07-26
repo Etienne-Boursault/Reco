@@ -13,50 +13,62 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Molotov TV",
       "url": "https://www.molotov.tv/search?q=Rocky%20III"
     },
     {
+      "ethics": "avoid",
       "name": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Rocky%20III"
     },
     {
+      "ethics": "avoid",
       "name": "MGM Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "SFR Play",
       "url": "https://www.sfrplay.fr/recherche?q=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "Google Play Movies",
       "url": "https://play.google.com/store/search?q=Rocky%20III&c=movies"
     },
     {
+      "ethics": "avoid",
       "name": "Canal VOD",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "Orange VOD",
       "url": "https://video.orange.fr/search?q=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "YouTube",
       "url": "https://www.youtube.com/results?search_query=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "Rakuten TV",
       "url": "https://rakuten.tv/fr/search?q=Rocky%20III"
     },
     {
+      "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Rocky%20III"
     },
     {
+      "ethics": "neutral",
       "name": "Pathé Home",
       "url": "https://www.pathehome.com/recherche?text=Rocky%20III"
     }

@@ -64,6 +64,7 @@ export const fr = {
   'gallery.series.title': 'Toutes les séries',
   'gallery.livres.title': 'Tous les livres',
   'gallery.musique.title': 'Toute la musique',
+  'gallery.chaines.title': 'Toutes les chaînes YouTube',
   'gallery.guest.titlePrefix': 'Recommandations de',
   'gallery.empty': 'Aucune recommandation pour cette galerie.',
   'gallery.mentionsSuffix': 'mentions',

@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Apple TV",
       "url": "https://tv.apple.com/fr/search?term=The%20Morning%20Show"
     },
     {
+      "ethics": "avoid",
       "name": "Apple TV Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Morning%20Show"
     }

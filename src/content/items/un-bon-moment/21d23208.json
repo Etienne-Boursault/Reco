@@ -13,10 +13,12 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "name": "Molotov TV",
       "url": "https://www.molotov.tv/search?q=Ma%20vie%20en%20l%27air"
     },
     {
+      "ethics": "avoid",
       "name": "Cine+ OCS Amazon Channel",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Ma%20vie%20en%20l%27air"
     }

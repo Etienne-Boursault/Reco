@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:21:23+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:46"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3158",
+  "itemId": "83e19f4a",
+  "kind": "reco",
+  "quote": "En ce moment, je suis dans Ken Follett, sa trilogie sur les cathédrales.",
+  "recommendedBy": "Orelsan",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "6a47e41c08da053175fb135e",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:20:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

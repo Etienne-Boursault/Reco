@@ -40,8 +40,9 @@
   ],
   "id": "ubm-1263",
   "itemId": "14fb20a2",
-  "kind": "reco",
+  "kind": "citation",
   "quote": "C'est cool, quoi.",
+  "recommendedBy": "Matthieu Chedid",
   "schemaVersion": 1,
   "sourceRef": {
     "episodeGuid": "6550c2836b767e0012a65d8d",
@@ -49,5 +50,5 @@
     "timestamp": "00:54:15",
     "transcriptSource": "youtube"
   },
-  "status": "draft"
+  "status": "validated"
 }

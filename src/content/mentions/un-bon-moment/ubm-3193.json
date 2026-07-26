@@ -1,0 +1,30 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-07-18T17:22:36+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:29:58"
+      },
+      "llmModel": "claude-haiku-4-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3193",
+  "itemId": "09fb75b7",
+  "kind": "reco",
+  "quote": "Il a un œil de verre, Colombo ? Peter Folk, ouais, il a un œil de verre.",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:29:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}
