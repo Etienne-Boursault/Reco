@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Serie reelle (Apple TV+, Bill Lawrence/Jason Segel, Harrison Ford). Echange confus entre 'The Patient' (rejete) et 'Shrinking'; attribution a Navo probable mais non certaine (Kyan intervient aussi). creator='Apple TV+' = diffuseur.",
     "reason": "'Shrinking' recommande a 01:12:14 ('Shrinking en tout cas c'est pas mal... serie sur Apple TV+, avec Harrison Ford, c'est super') apres que Navo ait ete invite a recommander.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Apple TV+",
@@ -48,7 +49,7 @@
     }
   ],
   "quote": "c'est une série sur Apple TV sur Apple Plus.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:19",

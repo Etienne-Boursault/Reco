@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du groupe Gringe (doublons ubm-0737, ubm-1077 -> discard). Recommande par une invitee (Laura ou Penelope, 'assez surprise' au feminin ; Navo, interroge juste apres, n'a pas d'idee), PAS un host -> recommendedBy vide. Les doublons l'attribuaient a tort a Navo/Kyan.",
     "reason": "Reco substantielle du livre 'Ensemble, on aboie en silence' de Gringe (Guillaume Tranchant) lu par une invitee : 'je pense qu'il est assez bon auteur', 'c'est assez incroyable', empathie pour les personnages (01:20:09-23).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Gringe (Guillaume Tranchant)",
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "Moi, je suis en train de lire \"Ensemble, on aboie en silence\" de Gringe, de Guillaume Tranchant.",
+  "recommendedBy": "Laura Felpin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:09",

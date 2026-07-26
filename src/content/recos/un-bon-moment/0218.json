@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "'Et moi je regarde The Office... Parks and Recreations' : locuteur different de Doria, mais Navo vs Kyan indetermine.",
     "reason": "Prescription explicite : 'Parks and Recreations, je trouve que c'est sous-cote en France... si vous aimez The Office et que vous en avez marre de le regarder en boucle, vous regardez Parks and Recreations'. Locuteur (Navo ou Kyan) incertain -> recommendedBy vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Greg Daniels, Michael Schur",
@@ -61,7 +62,7 @@
     "openai"
   ],
   "id": "ubm-0218",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Œuvre distincte du spectacle (pas un doublon). Titre « Monday Morning Podcast » identifié d'après « podcast tous les lundis » (nom réel du podcast hebdo de Bill Burr). Locuteur non déterminable.",
     "reason": "« Il a un podcast, tous les lundis... c'est rigolo, quand tu fais du sport tu écoutes ça » (01:48:02) : mention positive mais légère du podcast de Bill Burr, sans prescription forte.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Bill Burr",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Il a un podcast, c'est tous les lundis, il fait un podcast.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:48:06",

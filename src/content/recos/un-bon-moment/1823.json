@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution indeterminee (locuteur du tour de recos, meme personne que ubm-2028).",
     "reason": "'Je dirais le jeu video Power Wash Simulator, si vous etes un anxieux comme moi... tres tres satisfaisant, ca cartonne' (02:15:57) — recommandation enthousiaste.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "691488fcc1ed8717c54570d4",
@@ -65,6 +66,7 @@
     }
   ],
   "quote": "Je dirais le jeu vidéo Power Wash Simulator",
+  "recommendedBy": "BigFlo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:15:57",

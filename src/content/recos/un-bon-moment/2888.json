@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non identifiable (non diarize).",
     "reason": "Euphoria discutee avec substance (structure en portraits, personnage de Nate) mais comme exemple illustratif du theme des « variables cachees » des personnages, sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Sam Levinson",
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "Euphoria ils ont fait ça pour tous les personnes un peu méchants",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:37",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle « Maude Landry » (humoriste quebecoise, chaine YouTube confirmee). Locuteur non identifiable (transcript non diarize).",
     "reason": "Recommandation claire (« aller voir le travail de Maud Landry, il est formidable... elle est trop bien, chaine YouTube »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6302667b4913bd00126c374c",
@@ -44,10 +45,11 @@
     }
   ],
   "quote": "Maud Landry aller voir le travail de Maud Landry il est formidable il a une chaîne YouTube en plus elle est trop bien",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:36",
-  "title": "Maud Landry",
+  "title": "Maude Landry",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

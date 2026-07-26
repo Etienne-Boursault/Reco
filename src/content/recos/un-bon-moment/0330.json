@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Créateurs réels = Florence Longpré (créatrice/comédienne) & Thomas Ngijol (transcrit « Florence Lompret et Thomas Giorne ») — série québécoise Crave/Canal+. Reco du même invité non diarizé que Los años nuevos.",
     "reason": "Segment reco artistique : « l'autre c'est Empathie ! C'est incroyable ! Elle est super cette série ! » (l.3997-4017). Titre correct.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Florence Lompret et Thomas Giorne",
+  "creator": "Florence Longpré",
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
@@ -94,12 +95,10 @@
   ],
   "watchProviders": [
     {
-      "ethics": "avoid",
       "label": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
-      "ethics": "avoid",
       "label": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }

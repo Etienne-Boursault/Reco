@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution corrigee Martin->Bertrand : c'est Bertrand qui est nomme juste avant (01:16:20). Canonique du doublon Diagonale (l'autre = ubm-3037, titre tronque 'La Diagona de la joie', discard). Titre phonetiquement confirme par le transcript mais non verifie web (budget epuise).",
     "reason": "Reco explicite et substantielle : le host demande '01:16:20 Bertrand ?' puis 'j'ai lu le livre de Corinne Sombrun qui s'appelle La Diagona[le] de la joie... c'est bouleversant... une ecriture entre la poesie et la revue scientifique'. Canonique du doublon (orthographe complete du titre).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Corinne Sombrun",

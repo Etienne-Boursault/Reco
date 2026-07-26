@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom complet : 'Stardust - La Chaine Air & Espace'. Reco ~01:21:14.",
     "reason": "Reco explicite segment final : 'j'ai une chaine a recommander, c'est Stardust... allez la voir !' (~01:21:14). Chaine reelle (Stardust - La Chaine Air & Espace). Attribution host indistincte.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -49,6 +50,7 @@
   "kind": "reco",
   "links": [],
   "quote": "Stardust, allez la voir !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:15",

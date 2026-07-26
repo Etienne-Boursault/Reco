@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Createur reel = ROMAN FRAYSSINET (avec Oussama Fares & Anas Hassouna), pas 'Romane'. 'le format minuit de Roman' -> Minuit, web-serie Instagram de confinement.",
     "reason": "'Minuit' cite comme source d'inspiration du format pere-fils de Tom (00:29). Oeuvre reelle discutee avec substance, sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Romane",
+  "creator": "Roman Frayssinet",
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractionHistory": [
     {
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Vous vous rappelez du format minuit de Romane ?",
+  "recommendedBy": "Tom Baldetti",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:29:20",

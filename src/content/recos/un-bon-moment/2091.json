@@ -5,8 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Spectacle de Jesse (invite) : 'JC en spectacle' dans l'outro de promo des invites (01:58:50). Oeuvre d'invite. NB titre = artefact (JC = Jesse).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "Jessé",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "extractionHistory": [
     {
@@ -22,6 +24,7 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2091",
   "kind": "reco",
   "links": [
@@ -33,10 +36,11 @@
     }
   ],
   "quote": "oui",
+  "recommendedBy": "Jessé",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:58:50",
-  "title": "JC en spectacle",
+  "title": "Message Personnel",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

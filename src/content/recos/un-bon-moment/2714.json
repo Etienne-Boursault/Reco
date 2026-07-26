@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Reco explicite : 'une série que je recommande qui s'appelle Devs, sur OCS, allez vraiment voir, c'est top' (thriller). Locuteur non identifiable (round non diarizé, Kyan plausible).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Il y a une série que je recommande qui s'appelle \"Devs\", qui est disponible sur OCS.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:24:18",

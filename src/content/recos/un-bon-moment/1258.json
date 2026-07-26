@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre de l'invite Thomas Ngijol (le programme court Canal+ evoque en intro). guestWork=True.",
     "reason": "Auto-promo : Thomas Ngijol recommande son propre sketch show « Selon Thomas » (Canal+/MyCanal), « l'annee prochaine, l'epilogue ».",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Thomas",
+  "creator": "Thomas Ngijol",
   "episodeGuid": "6550c05703445c0011dd8343",
   "extractionHistory": [
     {
@@ -58,14 +59,14 @@
     }
   ],
   "quote": "Moi je recommande 'Selon Thomas' quand même.",
-  "recommendedBy": "Thomas Ngijol",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:22:31",
   "title": "Selon Thomas",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
+    "serie",
     "spectacle"
   ]
 }

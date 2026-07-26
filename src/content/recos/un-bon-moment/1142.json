@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Doublons fusionnes : ubm-2499 (« James Becker », meme TC 01:19:39) et ubm-2506 (« nouvel album », 01:20:41) -> discard. « James Becker » = mauvaise transcription de James BKS (producteur, fils de Manu Dibango). Attribution incertaine : locuteur « avec qui j'ai travaille et je vais retravailler » non determinable ; metadonnees contradictoires (Navo sur 1142 vs Kyan sur 2499/2506).",
     "reason": "Reco explicite d'un artiste : « musicien tres talentueux, qui fait des super morceaux », « nouvel album... et il est super ». Canonique du groupe James BKS.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "James BKS",
@@ -56,6 +57,7 @@
     }
   ],
   "quote": "James Becker, avec qui j'ai travaillé, et qui je vais retravailler, et qui est un musicien très talentueux, qui se développe de plus en plus, qui fait des super morceaux.",
+  "recommendedBy": "Thomas Ngijol",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:39",

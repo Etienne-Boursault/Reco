@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par un invite (Odah ou Dako — parle de 'Kian' a la 3e personne), lequel incertain sur transcript non diarize.",
     "reason": "Reco du club Paname Art Cafe a Paris ('Allez decouvrir le Paname, super salle a Paris', + eloge de sa programmation). Reco publique = validate. Canonique du groupe Paname (doublons 2420, 2431).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
@@ -28,7 +29,7 @@
     "anthropic"
   ],
   "id": "ubm-1057",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -38,6 +39,7 @@
     }
   ],
   "quote": "allez découvrir le Paname, super sale à Paris",
+  "recommendedBy": "Kyan Khojandi & Odah & Dako",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:43:01",

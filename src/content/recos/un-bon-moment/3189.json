@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Existence/orthographe de « Le 20eme siecle bete et mechant » non verifiees (budget WebSearch epuise).",
     "reason": "Livre evoque de facon instrumentale pour expliquer la source d'un jeu (« Titeuf dit des trucs horribles ») ; aucune prescription au public (regle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
+  "creator": "Jérôme Duhamel",
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractionHistory": [
     {
@@ -29,7 +31,7 @@
   "id": "ubm-3189",
   "links": [],
   "quote": "J'ai un livre qui s'appelle le 20ème siècle bête et méchant qui sont les phrases les plus horribles dits par des gens connus.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Adrien Ménielle",
   "sourceId": "un-bon-moment",
   "status": "discarded",
   "timestamp": "00:39:33",

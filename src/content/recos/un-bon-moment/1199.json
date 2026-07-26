@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandee par un host (Kyan ou Navo). Non diarize.",
     "reason": "Humoriste Laura Felpin recommandee dans le meme souffle qu'Anaide Rozam : « deux meufs que je voulais recommander... qu'on a recu dans un bon moment ». Titre verifie.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Et Laura Felpin qu'on a reçu hier. Qu'on a reçu dans un bon moment.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:48:25",

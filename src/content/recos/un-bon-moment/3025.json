@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom « Invisible » confirmé (Canal+, présentée par Clément Cotentin). Doublon : ubm-3017 (« Chambay »).",
     "reason": "« Invisible », émission créée et présentée par l'invité Clément Cotentin à Canal+ (décorticage de gestes sportifs en ultra-ralenti), qu'il invite à découvrir : « j'espère que les gens vont pouvoir aller le découvrir... maintenant c'est sur YouTube ». Œuvre du guest = guest-work. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6336c79af131c60012c20984",
@@ -38,7 +39,7 @@
     }
   ],
   "quote": "j'espère que les gens vont pouvoir aller le découvrir.",
-  "recommendedBy": "Clément Cotentin",
+  "recommendedBy": "Kyan Khojandi & Clément Cotentin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:39:43",

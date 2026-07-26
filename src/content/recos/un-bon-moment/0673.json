@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco d'artiste attribuée au guest (Thomas VDB), pas une auto-promo.",
     "reason": "Thomas VDB « fou de Queen » (00:51:44), a rencontré Brian May après un concert (00:51:48) ; fandom explicite et répété (« je suis très fan de Queen », 00:52:14). Queen n'est pas son œuvre → reco d'artiste par l'invité, validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Queen",
@@ -50,7 +51,7 @@
     "openai"
   ],
   "id": "ubm-0673",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -66,7 +67,7 @@
     }
   ],
   "quote": "je suis très fan de Queen",
-  "recommendedBy": "Thomas VDB",
+  "recommendedBy": "Kyan Khojandi & Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:52:14",

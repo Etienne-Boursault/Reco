@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "01:19:25 : 'J'ai vu en trois semaines le Bureau des Legendes... une serie assez geniale, je dois dire.' Reco explicite dans le tour de recos. Locuteur non identifiable avec certitude -> recommendedBy vide.",
     "reason": "Serie reelle fortement recommandee ('assez geniale')",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "J'ai vu en trois semaines le Bureau des Légendes.",
+  "recommendedBy": "Jérôme Niel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:28",

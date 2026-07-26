@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution « Navo » douteuse : Navo est sollicité séparément plus loin (00:59:33 -> The Great Review) et Melha/Alison ont leurs propres slots (Miskina/Baby J) ; le locuteur restant est probablement Kyan. recommendedBy vidé pour arbitrage humain.",
     "reason": "Reco explicite et enthousiaste d'une série réelle : « Ted Lasso exceptionnel », « je suis à fond dedans ». Œuvre tierce (pas un invité) → validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bill Lawrence, Jason Sudeikis",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Ted Lasso exceptionnel.",
+  "recommendedBy": "Melha Bedia",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:35",

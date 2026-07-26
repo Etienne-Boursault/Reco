@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Invité Oli à ajouter à episode.guests.",
     "reason": "Jay Shetty (podcasteur développement personnel réel) cité par Oli comme podcast qu'il écoute ('j'écoute ça de temps en temps, big up à lui, c'est une énorme star'), avec substance (qui il est). Endorsement léger, pas de prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "inconnu",
   "episodeGuid": "652406c019376d001282c4d8",
   "extractionHistory": [
     {
@@ -67,7 +67,7 @@
   "title": "Jay Shetty",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "podcast"
+    "podcast",
+    "artiste"
   ]
 }

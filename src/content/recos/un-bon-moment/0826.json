@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution -> Alexandre Astier (il code en Python, se fabrique un C3PO avec Arduino). guests vide -> ajouter Alexandre Astier.",
     "reason": "Reco explicite d'Astier dans le segment final: 'Je vais mettre en avant le langage Python... Je conseille aux jeunes auteurs de commencer a se fabriquer des petits robots assistants ecrits en Python.' Recommandation directe d'une chose reelle (langage).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Guido van Rossum",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandation dans le segment « Les Roku d'Eddie » : Eddy la cite (« il parait que c'est formidable », il ne l'a pas vue) et Kyan co-signe fortement (« magnifique, fous dingue, faut vraiment aller voir »). Canonique du doublon avec ubm-2201 (metadonnees TMDB/watchProviders presentes ici). Createur stocke « Justine Trier » a corriger en « Justine Triet ». Invite recommandeur absent de guests.",
     "reason": "Reco du segment Les Roku d'Eddie (Eddy la cite) co-signee fortement par Kyan.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Justine Trier",
@@ -53,7 +54,7 @@
     }
   ],
   "quote": "Faut vraiment aller voir ce film.",
-  "recommendedBy": "Eddy de Pretto & Kyan Khojandi",
+  "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:44",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre -> 'OrelSan'. Discussion Kheiron ~00:16:12 ; reco finale hosts ~01:20:45. Doublons discardes : ubm-1035, ubm-2320.",
     "reason": "OrelSan recommande explicitement dans le segment final 'chaine YouTube' ('Relsan, a fond !' ~01:20:45) + longuement admire par Kheiron (~00:16-00:18). Canonique OrelSan (rule 5 : meme artiste a 2 moments = 1 reco). Titre a corriger 'Aurel' -> 'OrelSan'. Attribution multiple.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Orel San",
@@ -39,7 +40,7 @@
     "openai"
   ],
   "id": "ubm-2311",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "j'adore Aurel",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:16:30",

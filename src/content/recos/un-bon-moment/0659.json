@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandeur incertain (transcript non diarise): Virginie ecartee ('on t'aime pas ca Virginie?'); probablement Kyan ou Yacine. recommendedBy laisse vide (regle 3)",
     "reason": "Vraie reco de la chaine ASMR cuisine Peaceful Cuisine dans le segment de fin",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ryoya Takashima",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "c'est la chaîne Peaceful Cuisine que j'aimerais vous recommander. C'est une chaîne qui a à peu près déjà plusieurs millions d'abonnés. Peaceful Cuisine, c'est de la SMR mais en cuisine",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:24",

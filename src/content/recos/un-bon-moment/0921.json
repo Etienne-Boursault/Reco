@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invité = Cédric Klapisch (compléter métadonnées).",
     "reason": "Film emblématique de Klapisch, discuté tout au long de l'épisode (tournage en 4 mois, casting Cécile de France). Guest-work; recommendedBy réattribué de Navo à Cédric.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -63,7 +64,7 @@
     }
   ],
   "quote": "c'est L'Auberge Espagnole je pense que c'est son deuxième long métrage",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:50:40",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Léopold Lemarchand absent de guests[] mais nommé dans le titre — traité comme invité. creator 'Léopold Marchand' mal orthographié → corriger en 'Léopold Lemarchand'.",
     "reason": "Spectacle de l'invité Léopold Lemarchand présenté par lui (00:06:18 'ton spectacle qui s'appelle premier spectacle', à l'Européen) + auto-promo/reco explicite en fin d'épisode ('allez voir, les spectacles sont super'). Canonique du cluster 'spectacle de Léopold' (ubm-0310/0296/1715 en doublon). Titre 'Premier Spectacle' confirmé par WebSearch.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Léopold Lemarchand",
@@ -64,7 +65,7 @@
     }
   ],
   "quote": "tu es avec nous tu es dans ton spectacle qui s'appelle premier spectacle éponyme",
-  "recommendedBy": "Léopold Lemarchand",
+  "recommendedBy": "Kyan Khojandi & Léopold Lemarchand",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:06:18",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par un invite (Bigflo ou Oli) — « c'est grace a toi [Kyan] que je l'ai decouvert ». Non diarize. Canonique du groupe Paul Mirabel.",
     "reason": "Humoriste Paul Mirabel recommande par un invite : « je peux recommander quelque chose... il va peser lourd dans le game ». Titre verifie.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
@@ -57,6 +58,7 @@
     }
   ],
   "quote": "C'est Paul Mirabel.",
+  "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:46:35",

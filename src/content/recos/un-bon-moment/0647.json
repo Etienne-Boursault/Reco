@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur reel = Julien Josselin (pas 'Jocelyn') et Valentin Vincent. Locuteur non identifiable (meme personne que ubm-2294 Julfou), host ou invite -> recommendedBy vide.",
     "reason": "Recommandation explicite ('je voulais recommander une emission qui s'appelle Askip... allez la voir, c'est une emission sympa'). Titre ASKIP confirme (01:08:42).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Julien Jocelyn, Valentin Vincent",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "allez la voir c'est une émission sympa",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:42",

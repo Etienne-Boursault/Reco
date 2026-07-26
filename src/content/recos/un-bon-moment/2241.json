@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique des doublons (0627, 1026). Titre 'Hugo Lisoire' -> orthographe correcte 'Hugo Lisoir' (cf. ubm-1026). Attribution incertaine: 'Moi il y a une chaine...' juste apres la reco de Navo -> Kyan ou 2e invite; extractions en desaccord (Navo/Kyan) -> vide.",
     "reason": "Reco explicite 'je vous la recommande a fond' - chaine d'astronomie Hugo Lisoir a 01:34:16. Chaine reelle (freres Lisoir).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
@@ -49,10 +50,11 @@
     }
   ],
   "quote": "C'est une chaîne d'astronomie sur l'espace et tout",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:34:16",
-  "title": "Hugo Lisoire",
+  "title": "Hugo Lisoir",
   "transcriptSource": "youtube",
   "types": [
     "video"

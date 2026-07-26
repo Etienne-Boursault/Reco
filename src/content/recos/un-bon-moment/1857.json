@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Handle exact 'Slay' a verifier. Locuteur du bloc non identifiable (probablement Navo).",
     "reason": "Reco : 'il y a Slay, Slay aussi super'. Compte/serie de fiction verticale TikTok (comme Idiotopia).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6903fad795ee8b1815229b88",
@@ -40,6 +41,7 @@
   "kind": "reco",
   "links": [],
   "quote": "Slay aussi super",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:22",

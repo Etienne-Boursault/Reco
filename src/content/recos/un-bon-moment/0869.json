@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel « Save the Cat! ».",
     "reason": "Prescription au public d'aspirants scénaristes : « si les gens veulent se lancer... c'est un bon bouquin contrairement aux autres... plein de vrais trucs concrets ». Creator Blake Snyder, année 2005 corrects.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Blake Snyder",
@@ -47,7 +48,7 @@
     "openai"
   ],
   "id": "ubm-0869",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -67,7 +68,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:36:48",
-  "title": "Save the Cat!",
+  "title": "Save the Cat! Goes to the Movies: The Screenwriter’s Guide to Every Story Ever Told",
   "transcriptSource": "youtube",
   "types": [
     "livre"

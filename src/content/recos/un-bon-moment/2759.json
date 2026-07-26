@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine : locuteur = Haroun (grand lecteur qui developpe l'analyse) OU Kyan (originaire de Reims, resonance personnelle 'ne frequente pas ces gens, pas de ton rang') ; Navo exclu (il dit lire tres peu). recommendedBy vide -> a completer par l'humain.",
     "reason": "Recommandation de lecture sociologique : 'j'ai lu Retour a Reims, qui est dingue aussi... un livre de sociologie tres bien ecrit' (00:50:46-00:51:20), avec description substantielle. Titre 'Retour a Reims' et auteur Didier Eribon corrects.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Didier Eribon",

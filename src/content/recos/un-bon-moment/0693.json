@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non diarisé (invité ou host — contenu e-sport/YouTube pourrait être Navo/Kyan).",
     "reason": "Chaîne YouTube réelle (WinterStarcraft, caster SC2 anglais) recommandée dans le tour de reco : « une chaîne que j'aime beaucoup... c'est un jeu que j'aime beaucoup ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Winter (Evan Ballnik)",
@@ -57,13 +58,14 @@
     }
   ],
   "quote": "il y a une chaîne que j'aime beaucoup sur Youtube qui s'appelle Winter Starcraft",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:35:32",
-  "title": "Winter Starcraft",
+  "title": "Winterstarcraft",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Sofia Belabbes.",
     "reason": "Reco explicite de Navo : 'deux artistes dont je suis fan... j'invite tous les gens qui ne les connaissent pas a les suivre'. Humoriste stand-up reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Sophia Bellabès",
@@ -72,14 +73,14 @@
     }
   ],
   "quote": "C'est Sophia Bellabès",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Blandine Lehout",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:26",
-  "title": "Sophia Bellabès",
+  "title": "Sophia Belabbès",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "artiste"
+    "artiste",
+    "autre"
   ]
 }

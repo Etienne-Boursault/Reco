@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "PAS Kyan (extraction erronee): c'est un INVITE qui repond a la question du host ('il etait la a ma 1re ou 2e scene'). Probablement Ahmed Sparrow (scene francaise, Detlo francais), non certain -> recommendedBy vide. Completer guests (Roman Frayssinet + Ahmed Sparrow).",
     "reason": "Reco explicite d'un invite: 'j'adore son programme Gus... Gus de Jeremy Detlo sur YouTube' a 01:32:49. Oeuvre tierce reelle (Jeremy Detlo).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jérémy Detlo",
@@ -64,6 +65,7 @@
     }
   ],
   "quote": "j'adore son programme Gus",
+  "recommendedBy": "Ahmed Sparrow",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:32:49",

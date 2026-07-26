@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Champ creator existant 'Laurent Gerra' est ERRONE (confusion connue signalee dans le brief : Gerra est un autre imitateur, PAS l'invite). Le veritable auteur/invite est Laurent Baffie. creator non modifiable par apply_verdicts — a corriger a la main. Timecode 00:46:53 exact.",
     "reason": "Livre a paraitre de l'invite Laurent Baffie ('Le Guide de la repartie'), presente et decrit en detail par lui (concept feux vert/orange/rouge, milliers de phrases). Titre verbatim transcript a 00:46:56. Auto-promo invite = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Laurent Gerra",
+  "creator": "Laurent Baffie",
   "episodeGuid": "63614bd05e627e0011144c04",
   "extractionHistory": [
     {

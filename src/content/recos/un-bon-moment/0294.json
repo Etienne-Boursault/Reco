@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Borderline validate/citation : enthousiasme réel mais cadre partiellement ironique (critique Bouygues).",
     "reason": "00:09:37 : Navo exprime un enthousiasme prescripteur et décrit l'attrait de l'émission ('moi j'adore l'agence... ce qui est super c'est que tu rentres dans des maisons... ça te fait relativiser le luxe'). Œuvre réelle (télé-réalité TF1).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "TF1",
@@ -44,7 +45,7 @@
     "openai"
   ],
   "id": "ubm-0294",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -54,7 +55,7 @@
     }
   ],
   "quote": "ça me fait penser à la nouvelle saison de l'agence sur tf1 il ya des moi j'adore j'adore l'agence je les adore tous ces agents immobiliers",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:09:37",

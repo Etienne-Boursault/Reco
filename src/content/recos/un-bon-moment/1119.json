@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par un INVITE (comme Whitefire), pas Navo (sollicite seulement apres, 01:01:22). Impossible de trancher Julien Josselin vs Valentin Vincent.",
     "reason": "Film reel (tmdb 194209), reco explicite et detaillee dans le segment nanars : « Crocodile Fury, un gros classique, incroyable... tres grand film » (01:00:35).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6322de1f35ce9e001229f98a",
@@ -67,6 +68,7 @@
     }
   ],
   "quote": "Crocodile Fury, qui est un gros classique, qui est incroyable.",
+  "recommendedBy": "Julien Josselin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:35",

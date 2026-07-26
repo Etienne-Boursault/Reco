@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "« Bleu Klein » = les monochromes International Klein Blue (IKB) d'Yves Klein, pas un tableau unique titré. Locuteur indéterminé. Canonique ; ubm-2768 (« Blue Klein ») est un doublon.",
     "reason": "Monochrome bleu d'Yves Klein cité comme exemple de l'inexplicable en art, avec une vraie réaction personnelle décrite (« un coup de cœur énorme », « je reste 15 minutes devant ») mais sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Yves Klein",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Moi, j'arrive pas à expliquer pourquoi, par exemple, quand je me retrouve devant le tableau Bleu Klein d'Yves Klein, pourquoi je reste 15 minutes devant.",
+  "recommendedBy": "Julien Granel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:44",

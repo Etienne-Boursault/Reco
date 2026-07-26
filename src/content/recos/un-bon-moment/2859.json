@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "creator « Sadek » probablement ERRONE : Sadek est un choregraphe cite juste avant (connu via Instagram) ; la piece est associee a Melody Mouray (« Melody Mouray, la, non ? »). A verifier/corriger en metadonnee. Locuteur du conseil incertain -> recommendedBy vide. YT 01:14:55.",
     "reason": "Reco explicite du tour final de recommandations : pièce « La course des geants », reprise au theatre de la Renaissance, qualifiee « tres inventif ». Oeuvre reelle, avis positif clair.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Sadek",
+  "creator": "Melody Mourey",
   "episodeGuid": "652408a9c8996500127e39e9",
   "extractionHistory": [
     {
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "C'est une pièce qui est à côté de chez vous. La course des géants.",
+  "recommendedBy": "Isabelle Nanty",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:55",

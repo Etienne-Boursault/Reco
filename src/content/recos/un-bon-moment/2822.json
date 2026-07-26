@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = invité, non l'host Kyan. Compléter guests épisode.",
     "reason": "One Piece (créateur Eiichiro Oda ✓) longuement valorisé ('oeuvre littéraire ultra importante, équivalent de Jules Verne') mais dans le cadre d'un argument sur le statut du manga, sans prescription directe au public. Borderline validate/citation, retenu citation (plus prudent). Attribution 'Kyan Khojandi' erronée.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Eiichiro Oda",
@@ -46,7 +47,7 @@
   ],
   "quote": "One Piece c'est une oeuvre littéraire ultra importante",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:56:14",
   "title": "One Piece",
   "transcriptSource": "youtube",

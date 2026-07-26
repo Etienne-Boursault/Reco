@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Humoriste belge reel = «Inno JP» (orthographe officielle avec espace). Attribution incertaine: Fanny Ruwet presente ses compatriotes belges / les hosts renchérissent -> recommendedBy vide.",
     "reason": "Eloge prescripteur d'un humoriste ('formidable', 'incroyable', 'un mec super', 'extremement drole'), scene belge.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "InnoJP",
@@ -39,7 +40,7 @@
     "openai"
   ],
   "id": "ubm-2833",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "InnoJP, on n'a pas encore découvert trop en France. C'est un mec super.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:29:35",

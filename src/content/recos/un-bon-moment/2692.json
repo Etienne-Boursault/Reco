@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Daylio (epele D-A-Y-L-I-O dans le transcript a 00:33:47) — le titre actuel 'Dailyo' est errone, a corriger a la main. Attribution Navo coherente entre extracteurs mais non certaine (bit sur le confinement).",
     "reason": "Appli de suivi d'humeur presentee avec avis positif ('ca te fait des graphes de ta vie', 'ce que tous les artistes devraient faire d'ailleurs', reponse 'c'est mortel ca'). Vraie appli, reco explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Dailyo",
@@ -38,7 +39,7 @@
     "openai"
   ],
   "id": "ubm-2692",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",

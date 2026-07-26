@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation explicite dans le tour final : 'le film que j'ai regardé hier soir que j'aime bien revoir super souvent c'est Les Nouveaux Sauvages... que j'adore' (00:56:24). Œuvre réelle : 'Les Nouveaux Sauvages' (Relatos salvajes, 2014, Damián Szifron).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "c'est Les Nouveaux Sauvages",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:24",

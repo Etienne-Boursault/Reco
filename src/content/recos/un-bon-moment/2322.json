@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "In The Panda = Victor Bonnefoy. ~01:21:41.",
     "reason": "Reco explicite segment final : 'si je peux recommander, In The Panda ! J'aime bien Victor' (~01:21:41). Chaine reelle (Victor Bonnefoy). Attribution (host ou Kheiron) non certaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "Ah si je peux recommander, In The Panda ! J'aime bien Victor, j'aime bien ce qu'il fait !",
+  "recommendedBy": "Kheiron",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:41",

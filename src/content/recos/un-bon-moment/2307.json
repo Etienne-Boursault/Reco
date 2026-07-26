@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "~00:02:33-00:06:06.",
     "reason": "Stromae (artiste) discute comme 'genie' (fond/forme/clip/com ~00:02:33). Substance sans prescription. Distinct de l'album (ubm-2303) et de la chanson (ubm-2308). Attribution fluide.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -44,7 +45,7 @@
   ],
   "quote": "si si Stromae PNL génie",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "09:58:00",
   "title": "Stromae",
   "transcriptSource": "youtube",

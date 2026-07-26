@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Chaine YouTube The Great Review : 'il y a The Great Review... des essayistes tres tres droles... vraiment formidable' (01:56:12). Reco explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68ef607e58893bb6e322c623",
@@ -33,6 +34,7 @@
     }
   ],
   "quote": "après il y a d'autres gars dans le même truc il y a Great Review il y a The Great Review",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:56:12",

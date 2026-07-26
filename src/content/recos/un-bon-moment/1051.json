@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur (Kyan ou Navo) non déterminable au transcript non diarizé.",
     "reason": "« il y a une chaîne que je voulais vous recommander, c'est Peaceful Cuisine, que j'adore » (01:44:11). Recommandation explicite d'une chaîne d'ASMR cuisine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Peaceful Cuisine",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "C'est de l'ASMR de cuisine, en fait.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:44:11",

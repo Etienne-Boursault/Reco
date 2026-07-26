@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Prescripteur incertain (host Kyan/Navo ou invite) sur transcript non diarize.",
     "reason": "Recommandation explicite 'Allez voir Rodrigue, trop trop fort !' (00:15:18). Rodrigue = humoriste réel (partenaire du format riche-pauvre de Yassir).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Rodrigue",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Allez voir Rodrigue, trop trop fort !",
+  "recommendedBy": "Tom Baldetti",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:15:18",

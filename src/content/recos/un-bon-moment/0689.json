@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Creator 'Ben Mazuet' et types ['autre','livre'] à corriger (Ben Mazué / musique).",
     "reason": "« Quand je marche » est une chanson de Ben Mazué (single de l'album Paradis, 2020, vérifié) ; le thème (« à quoi ça sert d'être excellent... ») est présenté et Ben élabore dessus. Auto-promo invité.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Ben Mazué",
@@ -70,7 +71,7 @@
     }
   ],
   "quote": "c'est dans Quand je marche",
-  "recommendedBy": "Ben Mazué",
+  "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:06",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom correct = Emy LTR (Emy Letertre), videaste/realisatrice. Ajouter Natoo aux guests.",
     "reason": "Recommandation d'une creatrice dans le tour de recos : 'on a deja evoque Amy LTR... On l'adore. Elle fait les courts-metrages de qualite. C'est une bosseuse.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:18",
-  "title": "Amy LTR",
+  "title": "Emy LTR",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

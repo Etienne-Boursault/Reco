@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "France-Quebec (OCS), co-realisee par Cohen et Galan. episode.guests vide.",
     "reason": "Serie des invites (co-realisee: 'vous etiez a la realisation ensemble'), presentee par eux avec ou la voir ('on peut l'avoir toujours sur ocs tv go', 00:01:57).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:01:57",
-  "title": "France-Québec",
+  "title": "FranceKebek",
   "transcriptSource": "youtube",
   "types": [
     "serie"

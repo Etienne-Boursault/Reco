@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Meme locuteur que ubm-2860 (probablement Vincent Dedienne, a confirmer) ; recommendedBy vide. YT 01:15:15.",
     "reason": "Auto-promo : chasse au tresor precedente du meme locuteur (« j'avais fait la precedente qui s'appelait L'Ordre de Sipan »), Editions du Tresor. Oeuvre propre.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Éditions du Trésor",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "J'avais fait la précédente qui s'appelait L'Ordre de Sipan.",
+  "recommendedBy": "Vincent Dedienne",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:15",

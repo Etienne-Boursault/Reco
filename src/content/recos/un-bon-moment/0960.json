@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Idiotopia = serie de Mehdi Gatao (ubm-1856). Locuteur non identifiable. Doublon : ubm-2040.",
     "reason": "Serie de fiction verticale 'Idiotopia' (reelle, 70+ episodes, de Mehdi Gatao) recommandee dans le meme elan ('il fait Idiotopia'). Canonique. ",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6903fad795ee8b1815229b88",
@@ -63,7 +64,7 @@
   ],
   "quote": "Idiotopia que tu connais",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:41:19",
   "title": "Idiotopia",
   "transcriptSource": "youtube",

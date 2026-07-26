@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur a corriger: 'Shirley Souagnon' (au lieu de 'Shirley Soignon'). Locuteur incertain (probablement un invite — Shirley a lance les invites) sur transcript non diarize.",
     "reason": "Reco de suivre l'Instagram du Barbes Comedie Club de Shirley Souagnon ('je vous suggere de suivre... allez voir... allez-y, allez-y'). Reco publique claire = validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Shirley Soignon",
@@ -64,6 +65,7 @@
     }
   ],
   "quote": "Je vous suggère de suivre le compte Instagram du Barbès Comédie Club de ma pote Shirley Soignon.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:24",

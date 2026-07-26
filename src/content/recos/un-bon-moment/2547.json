@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte: 'Coline Rio' (un seul L), autrice-compositrice, album 'Ce qu'il restera de nous' (2023).",
     "reason": "Matthieu recommande explicitement une autre artiste, 'voix divine', qu'il invitera a son concert feminin (01:08). Prescription claire.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Colline Rio",
@@ -58,7 +59,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:00",
-  "title": "Colline Rio",
+  "title": "Coline Rio",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

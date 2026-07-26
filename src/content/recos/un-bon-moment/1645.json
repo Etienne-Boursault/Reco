@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : Mustapha El Atrassi (pas 'Moustapha El Atraci').",
     "reason": "Mustapha El Atrassi cite comme auteur du meilleur conseil recu par Tom ('t'as le droit d'etre nul') + eloge de son parcours stand-up (00:27). Substance, pas de prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Moustapha El Atraci",
@@ -74,7 +75,7 @@
   "quote": "Moi on m'a donné un conseil et du coup ça commence à débloquer un truc, c'est \"t'as le droit d'être nul\".",
   "recommendedBy": "Tom Baldetti",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:27:09",
   "title": "Moustapha El Atraci",
   "transcriptSource": "youtube",

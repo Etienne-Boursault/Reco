@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Créateur Jean-Pierre Jeunet (OK). Invité Oli à ajouter à episode.guests.",
     "reason": "Amélie Poulain présenté comme le film préféré d'Oli ('c'est ça ton film préféré'), avec substance ('on a même mis des extraits dans notre album'). Pas de prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Jean-Pierre Jeunet",
@@ -62,7 +63,7 @@
     }
   ],
   "quote": "Amélie Poulain, mais c'est ça ton film préféré.",
-  "recommendedBy": "Oli",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:03:19",

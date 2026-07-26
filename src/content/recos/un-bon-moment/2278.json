@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE spectacle Marina; doublon discarde: ubm-2283. Spectacle de stand-up de Marina Rollman diffuse sur myCanal (titre probable 'Un spectacle drole', a confirmer). La reco porte un titre generique.",
     "reason": "Spectacle de Marina recommande en cloture a 01:15:49 ('allez voir le spectacle de Marina aussi sur Canal... des must-see'). Oeuvre de l'invitee.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Marina Rollman",
@@ -44,7 +45,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:49",
-  "title": "Spectacle de Marina Rollman",
+  "title": "Un spectacle Drôle",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

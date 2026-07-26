@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Même bloc qu'Upload/Leftovers ; locuteur Kyan ou Éléonore, pas Navo.",
     "reason": "Recommandation explicite : « c'est le film Paterson avec Adam Driver... et j'adore... c'est mon film apaisement, la troisième fois que je le vois ». Même locuteur qu'Upload.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jim Jarmusch",
@@ -74,6 +75,7 @@
     }
   ],
   "quote": "c'est le film Paterson avec Adam Driver voilà il se passe rien et j'adore",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:37",

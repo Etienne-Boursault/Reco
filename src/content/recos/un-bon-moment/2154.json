@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Serie reelle (Marvel/Disney+). Meme locuteur que The Bear (ubm-0129). Attribution 'Navo' d'origine non confirmable au transcript -> videe.",
     "reason": "Reco explicite: 'j'ai beaucoup aime la saison 2 de Loki aussi, que j'ai kiffe de ouf.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "65c7a407bb568b0017862c8f",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "J'ai beaucoup aimé la saison 2 de Loki aussi.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:50",

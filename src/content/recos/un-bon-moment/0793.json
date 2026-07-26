@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation forte : 'une série que je trouve ultra drôle c'est What We Do In The Shadows... le truc le plus marrant que j'ai vu depuis longtemps' (00:58:16). Œuvre réelle : 'What We Do in the Shadows' (série).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "c'est une série que je trouve ultra drôle c'est What We Do In The Shadow",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:58:16",

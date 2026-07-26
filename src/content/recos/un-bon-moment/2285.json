@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Burning Love (2012, web-serie US produite par Ben Stiller). Frontiere citation/discard (mention comme source).",
     "reason": "Oeuvre reelle nommee comme format source de La Flamme, avec contexte ('adaptation d'un format americain qui s'appelait burning love produit par ben stiller', 00:01:23), sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Ben Stiller",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "c'est une adaptation d'un truc d'un format américain qui s'appelait burning love qui était produit par ben stiller",
+  "recommendedBy": "Jonathan Cohen",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:01:23",

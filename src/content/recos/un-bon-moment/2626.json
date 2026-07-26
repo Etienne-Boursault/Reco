@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : 'This Is Paris' (doc YouTube 2020). Canonique du couple avec ubm-2637 (doublon openai). guests VIDE mais Cyprien invite.",
     "reason": "Cyprien recommande explicitement le documentaire 'This Is Paris' (YouTube Originals, 2020) : 'un documentaire sur Paris Hilton, sur YouTube... totalement angoissant... assez choquant', developpe longuement.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct = Poulpovision (M. Poulpe, Canal+/YouTube, 2019). Recommandation prononcee par Kyan mais oeuvre = Audrey Pirault (deja dans les guests).",
     "reason": "Poulpovision est le projet d'une invitee de l'episode (Audrey Pirault, membre de la troupe), presente au fil de l'episode puis recommande explicitement ('regardez PoulpeauVision sur Youtube, c'est vachement bien'). Oeuvre d'invitee mise en avant -> guest-work. Canonique (regroupe ubm-2207 et ubm-2210).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
@@ -26,7 +27,6 @@
   "extractors": [
     "anthropic"
   ],
-  "guestWork": true,
   "id": "ubm-2226",
   "kind": "reco",
   "links": [

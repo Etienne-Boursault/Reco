@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "titre exact: 'Il faut que je vous parle' de Blanche Gardin (version animee par Fabcaro, myCanal). Canonique du trio 0702/2578/2584",
     "reason": "Segment recos: 'Le spectacle de Blanche sur myCanal, dessine par Fabcaro. Allez le voir.' Reco explicite d'une oeuvre tierce. Titre officiel: 'Il faut que je vous parle' (Blanche Gardin, version animee par Fabcaro, myCanal 2020).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Blanche Gardin",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:45:07",
-  "title": "Blanche Gardin - Spectacle MyCanal",
+  "title": "Il faut que je vous parle",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

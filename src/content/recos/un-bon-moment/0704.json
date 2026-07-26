@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "corriger titre + creator: Daymolition (pas Demolition); ajouter Paul Mirabel aux invites",
     "reason": "Segment recommandations: Paul recommande explicitement la chaine ('si tu veux decouvrir des jeunes rappeurs, [Day]molition'). Nom exact = Daymolition (chaine rap YouTube qui a fait percer Ninho), pas 'Demolition'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Demolition",
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
   "extractionHistory": [
     {
@@ -62,10 +62,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:26",
-  "title": "Demolition",
+  "title": "Daymolition",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

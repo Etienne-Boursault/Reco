@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre « 69 » invérifiable (budget WebSearch épuisé), émission MyCanal à confirmer. Attribuée à Navo car introduite comme son actu, mais collaboration Kyan/Navo possible.",
     "reason": "Émission des hosts promue dans le tour d'actus de Navo : « regardez l'émission 69 qui doit être sorti sur MyCanal » (01:15:01), suivi de « Tu étais génial dedans ». Œuvre de host présentée par lui.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
+  "creator": "Kyan Khojandi & Brunio Muschio",
   "episodeGuid": "6599de12076e6c001696556a",
   "extractionHistory": [
     {
@@ -42,7 +44,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:05",
-  "title": "69",
+  "title": "Soixamte 9",
   "transcriptSource": "youtube",
   "types": [
     "video"

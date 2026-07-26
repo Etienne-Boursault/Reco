@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Registre littéraire, probablement Augustin Trapenard (incertain, transcript non diarizé). Compléter guests.",
     "reason": "Recommandation forte : 'un livre Le Fils de l'Homme de Jean-Baptiste Del Amo... très très beau livre sur la violence patriarcale... un des plus grands auteurs vivants français' (00:57:17). Œuvre réelle : 'Le Fils de l'homme' de Jean-Baptiste Del Amo (Prix du roman Fnac 2021). Créateur ✓.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jean-Baptiste Del Amo",
@@ -58,6 +59,7 @@
     }
   ],
   "quote": "Le Fils de l'Homme de Jean-Baptiste Delamaux",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:17",

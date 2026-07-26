@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Chaine/prod YouTube 'Sympa Cool' (l.2011-2018, 'les gens qui font Coco Voight, Marius'). Locuteur ('j'apparais dans un') non identifiable au transcript -> vide.",
     "reason": "Reco explicite d'une chaine YouTube: 'le reseau sympa cool... c'est hyper bien... accroche-toi trois episodes... quand tu avances ca devient tres marrant.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "sympa cool",
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "extractionHistory": [
     {
@@ -62,13 +64,14 @@
     }
   ],
   "quote": "C'est super, ça démarre un peu.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:01",
-  "title": "Le réseau sympa cool",
+  "title": "Le réseau",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

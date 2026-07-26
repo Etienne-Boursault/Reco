@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE pour le podcast d'Esther Perel; doublons discardes: ubm-1269, ubm-2279. recommendedBy=Marina (invitee, 35 ans, elle l'ecoute). Titre correct de la serie de seances de couple: 'Where Should We Begin? with Esther Perel'.",
     "reason": "Podcast d'Esther Perel recommande avec enthousiasme par Marina a 00:15:58 ('en ce moment j'ecoute vachement un podcast de Esther Perel... c'est incroyable'). Description = seances de couple, correspond a 'Where Should We Begin?'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Esther Perel",
@@ -63,7 +64,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:15:58",
-  "title": "Where Should We Begin? with Esther Perel",
+  "title": "Where Should We Begin?",
   "transcriptSource": "youtube",
   "types": [
     "podcast"

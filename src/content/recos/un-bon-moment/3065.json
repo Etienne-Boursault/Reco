@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Mentionne dans un brainstorm/scenario d'ecriture; projet reel de Yacine mais presentation breve, confiance moderee",
     "reason": "'Premiere fois', scene/plateau de test anime par Yacine Belhousse (invite), presente positivement ('super scene') (regle 2/16)",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Yacine",
@@ -47,7 +48,7 @@
   "quote": "Yacine fait une super scène qui s'appelle Première fois.",
   "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:44:55",
   "title": "Première fois",
   "transcriptSource": "youtube",

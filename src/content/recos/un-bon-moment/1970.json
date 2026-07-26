@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite Pierre Niney absent des metadonnees. Canonique; doublon avec ubm-1631 (titre anglais 'An Ideal Man').",
     "reason": "Film de Pierre Niney (invite) avec Yann Gozlan, mentionne dans sa filmographie avec 'allez voir'.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Yann Gozlan",
@@ -45,7 +46,7 @@
     }
   ],
   "quote": "Allez voir Un homme idéal.",
-  "recommendedBy": "Pierre Niney",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:22:26",

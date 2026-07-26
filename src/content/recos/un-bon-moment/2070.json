@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Spectacle 'Batard sensible' d'Alexandre Kominek : 'Alexandre Kominek... valeur sure... d'une drolerie folle' (01:53:43). Reco explicite. Locuteur incertain.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Alexandre Kominek",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Bâtard sensible, non c'est d'une drôlerie folle",
+  "recommendedBy": "Marine Leonardi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:53:43",

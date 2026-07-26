@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Renvoie a la conference/masterclass d'ecriture de Charlie Kaufman (probablement sa BAFTA screenwriters' lecture) - verifier le titre exact. Recommande par un invite (probablement Xavier), non diarize.",
     "reason": "Recommandation enthousiaste et explicite (~00:38:58-00:39:57) : « moi Charlie Kaufman c'est ce que je recommande a fond », a propos de sa masterclass/conference sur l'ecriture. Canonique du cluster Charlie Kaufman.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Charlie Kaufman",
@@ -45,12 +46,14 @@
     }
   ],
   "quote": "Moi, Charlie Kaufmann, c'est ce que je recommande à fond.",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:38:58",
-  "title": "Masterclass de Charlie Kaufman",
+  "title": "Charlie Kaufman | BAFTA Screenwriters’ Lecture Series",
   "transcriptSource": "acast",
   "types": [
+    "video",
     "autre"
   ]
 }

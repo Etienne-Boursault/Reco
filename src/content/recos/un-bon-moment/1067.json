@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "'Don't F**k with Cats: Hunting an Internet Killer' (docu Netflix sur Luka Magnotta).",
     "reason": "Docu Netflix cite dans le tour de recos mais sans prescription ferme : 'il parait que c'est tres bien' (oui-dire, le locuteur ne l'a pas vu) -> substance mais pas de prescription = citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
@@ -38,7 +39,7 @@
     "anthropic"
   ],
   "id": "ubm-1067",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "Don't fuck with cats sur Netflix",
+  "recommendedBy": "Davy Mourier",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:17:37",

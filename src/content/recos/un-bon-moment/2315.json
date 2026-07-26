@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre -> 'Comedian' (doc 2002, real. Christian Charles). ~00:30:30.",
     "reason": "Documentaire 'Comedian' (2002, Jerry Seinfeld reconstruit son set) decrit avec substance (~00:30:30 : il remonte sur scene, bide, heckler). Fonction illustrative, pas prescription. Titre a corriger : 'The Comedian' -> 'Comedian' (2002). Attribution fluide.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Jerry Seinfeld",
@@ -49,10 +50,11 @@
     }
   ],
   "quote": "tu vois ginsbourg qui apprend à jouer du piano tu vois dans \"The Comedian\" le film de Jerry Seinfeld qui est disponible sur Netflix d'ailleurs je crois",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:30:30",
-  "title": "The Comedian",
+  "title": "Comedian",
   "transcriptSource": "youtube",
   "types": [
     "film"

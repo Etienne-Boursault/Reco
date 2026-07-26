@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Dernier album de Dissiz: reco explicite 'd'ailleurs je fais la promo, c'est une bonne recommandation Dissiz' (02:01). recommendedBy vide: pas sur du locuteur (Fary/Kyan/Navo presents).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Dissiz",
@@ -40,6 +41,7 @@
     }
   ],
   "quote": "D'ailleurs, je fais la promo Dissiz",
+  "recommendedBy": "Fary",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:01:09",

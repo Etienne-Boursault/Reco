@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur = Ambroise Carminati (orthographe confirmee, pas 'Kerminati'). Attribution indeterminee.",
     "reason": "'Je recommande la chaine Ambroise de Ambroise Carminati... c'est un genie, moi j'adore ce qu'il fait' (02:24:21-32) — prescription claire de sa chaine YouTube.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ambroise Carminati",
@@ -47,10 +48,11 @@
     }
   ],
   "quote": "Je recommande la chaîne Ambroise de Ambroise Carminati. C'est un génie. Moi j'adore ce qu'il fait Ambroise",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:24:21",
-  "title": "Chaîne Ambroise",
+  "title": "Ambroise",
   "transcriptSource": "youtube",
   "types": [
     "video"

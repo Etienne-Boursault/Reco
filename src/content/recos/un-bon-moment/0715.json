@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "01:19:54 : 'J'ai vu Run, sur OCS, de la co-autrice de Phoebe Waller-Bridge... c'est une recommandation bizarre mais j'aime bien la construction.' Reco assumee. Locuteur non certain -> recommendedBy vide. NB : creator 'Wallerbridge' imprecis (Run creee par Vicky Jones, produite par Phoebe Waller-Bridge).",
     "reason": "Serie reelle (Run, HBO) presentee comme reco (ambivalente mais assumee)",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Wallerbridge",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "J'ai vu Run, qui est sur...",
+  "recommendedBy": "Axel Maliverney",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:54",

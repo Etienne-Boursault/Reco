@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "The Office (US) développée par Greg Daniels — créateur du draft correct. Attribution Kyan étayée ('Kyan m'a dit regarde The Office') mais transcript non diarisé pour le 'n'hésitez pas à aller voir'.",
     "reason": "Œuvre réelle non liée à un invité, prescription explicite : 'Kyan m'a dit regarde The Office avec Steve Carell' puis 'n'hésitez pas à aller voir The Office c'est incroyable' (01:29-01:30). Reco émanant de Kyan.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Greg Daniels",
@@ -59,7 +60,7 @@
     }
   ],
   "quote": "Kyan m'a dit regarde The Office avec Steve Carell",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:29:17",

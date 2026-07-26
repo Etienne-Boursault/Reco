@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = invitee, ambigu Alice/Berengere (meme bloc que Julien Dore, contexte 'Berangere') -> recommendedBy vide (regle 3). Titre confirme a 01:42:58 et 01:45:12.",
     "reason": "Film reel 'Enola Holmes' (Netflix, 2020) recommande par une invitee, discute avec substance (themes feministes)",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
@@ -43,6 +44,7 @@
     }
   ],
   "quote": "Le dernier truc que j'ai regardé, ça s'appelle Enola Holmes sur Netflix.",
+  "recommendedBy": "Bérengère Krief",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:42:58",

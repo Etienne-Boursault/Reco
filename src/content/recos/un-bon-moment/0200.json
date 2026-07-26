@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Emy BNG (@emy_bng).",
     "reason": "Reco explicite de Navo (meme phrase que ubm-0199 : 'abonnez-vous, allez les suivre'). Humoriste stand-up reelle (Paname Art Cafe).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Amy BNG",
+  "creator": "Emy BNG",
   "episodeGuid": "6903fad795ee8b1815229b88",
   "extractionHistory": [
     {
@@ -66,14 +67,14 @@
     }
   ],
   "quote": "Et Amy BNG",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Blandine Lehout",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:28",
-  "title": "Amy BNG",
+  "title": "Emy BNG",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "artiste"
+    "artiste",
+    "autre"
   ]
 }

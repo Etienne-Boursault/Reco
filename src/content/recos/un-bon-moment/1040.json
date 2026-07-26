@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution Kyan (host qui 'dit toujours des podcasts', avant le tour de Navo) plausible mais non confirmee (transcript non diarize). Doublon: ubm-2382.",
     "reason": "Podcast Sybel (8 barons de la drogue devenus figures du hip-hop), recommande avec enthousiasme ('c'est super interessant, je kiffe, ca marche trop sur moi'). Titre correct = canonique du cluster; ubm-2382 = doublon avec titre errone 'Underciders'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
@@ -46,7 +47,7 @@
     }
   ],
   "quote": "Je suis tombé sur un podcast Qui s'appelle The Underciders",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Anis Rhali",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:37:02",

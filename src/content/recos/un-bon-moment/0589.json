@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Le champ creator du fichier ('Aurel') est errone : c'est le recommandeur (Orelsan), pas le createur de l'emission (serie UK de freestyle). Invite non liste dans guests -> guest_missing.",
     "reason": "Recommandation explicite d'Aurel (Orelsan) : 'J'aimerais recommander Fire in the Booth', chaine de freestyle anglais (01:19:20-01:19:38).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Charlie Sloth",

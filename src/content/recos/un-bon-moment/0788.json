@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation dans le tour final : 'des exorcistes, une école d'exorcistes, incroyable, trop bien' (00:56:43). Œuvre réelle : 'Jujutsu Kaisen' de Gege Akutami. Titre déjà correct malgré l'artefact 'Tsukaisen' dans la quote.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "je joue Tsukaisen mais ça c'est déjà hyper connu c'est un truc avec des exorcistes une école d'exorcistes incroyable",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:43",

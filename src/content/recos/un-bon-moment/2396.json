@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique (titre correct) ; doublon = ubm-1049 (« Les Fondements », artefact acast). Locuteur (Navo ?) non déterminable au transcript non diarizé.",
     "reason": "Recommandation forte de la série « L'Effondrement » (Canal) : « il faut absolument que je regarde l'effondrement... hyper bien mené, écrit, réalisé, joué » (01:40:38-01:41:14).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Canal",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
   "extractionHistory": [
     {
@@ -54,6 +54,7 @@
     }
   ],
   "quote": "Regarde ça. Ouais, je sais. C'est incroyable.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:40",

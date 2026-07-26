@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre 'La vie devant soi' correct. Creator 'Romain Garry' = coquille pour 'Romain Gary' (non modifiable via le script ; a corriger a la main).",
     "reason": "Recommandation litteraire explicite d'Haroun : 'T'en as un ou deux a recommander ? Ah ouais ! Romain Gary, La vie devant soi, un classique' (00:46:44), avec eloge developpe du style.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Romain Garry",
+  "creator": "Romain Gary",
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
   "extractionHistory": [
     {

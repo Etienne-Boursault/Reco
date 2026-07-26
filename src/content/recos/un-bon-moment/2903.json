@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique (artiste + morceau); ubm-2914 est le doublon focalisé sur 'Génération'. Un des deux invités.",
     "reason": "Recommandation publique d'un invité: 'Est-ce que vous connaissez The Doug? J'écoute grave The Doug, le morceau s'appelle Génération, c'est un artiste de fou, future star du rap' (~01:20:19). The Doug (Jules Garnier) = artiste réel, 'Génération' sur l'EP Mauvais Joueur.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "652406c019376d001282c4d8",
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "Est-ce que vous connaissez The Doug ? J'écoute grave The Doug. Le morceau s'appelle Génération. C'est un artiste de fou.",
+  "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:19",

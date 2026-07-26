@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Meme locuteur que Britney (ubm-1030), attribution Kyan probable mais non diarise",
     "reason": "Take on Me (a-ha) evoque et loue ('c'est formidable') mais subordonne a Britney ('mais Britney Spears c'est la mieux'); mention/comparaison sans prescription principale (regle 4/15)",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "a-ha",
@@ -44,7 +45,7 @@
     }
   ],
   "quote": "Take on me, c'est formidable, mais Britney Spears, c'est la mieux",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:17:54",

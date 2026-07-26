@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour Zaho de Sagazan (orthographe correcte, lien Deezer album). Recommandee par Eddy dans « Les Roku d'Eddie » (« une artiste francaise... Zao de Sagazan »), co-signee par Kyan (« c'est beau, bien ecrit, ca remanie la chanson francaise » ; artiste « la plus recommandee » du podcast). Doublons discardes : ubm-0107, ubm-2202. Invite recommandeur absent de guests.",
     "reason": "Canonique Zaho de Sagazan; recommandee par Eddy, co-signee par Kyan.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6599c1b296596600156961a7",
@@ -46,7 +47,7 @@
     }
   ],
   "quote": "une artiste française qui a sorti un album, je crois, il y a un nom qui s'appelle Zao de Sagazan.",
-  "recommendedBy": "Eddy de Pretto & Kyan Khojandi",
+  "recommendedBy": "Eddy de Pretto",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:54",

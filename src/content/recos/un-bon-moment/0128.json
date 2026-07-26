@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Film reel (Leos Carax, 2021). Locuteur = le meme intervenant 'gourmand' que la reco album (l.1957 'je peux recommander autre chose?'), non identifiable au transcript sans labels.",
     "reason": "Reco explicite: 'Annette de Leos Carax avec Adam Driver, son meilleur role. C'est un film magnifique... il faut le voir.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Leos Carax",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "C'est un film magnifique.",
+  "recommendedBy": "Grim",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:14",

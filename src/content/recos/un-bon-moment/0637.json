@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Discussion collective non diarizee (~00:17-00:19) ; 'reco de' laisse vide.",
     "reason": "Oeuvre reelle discutee avec substance (episode type 'Nosedive' / notation sociale en Chine decrit longuement, 'le futur ou maintenant ?') mais sans prescription, et pas l'oeuvre d'un invite (regle 4).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
@@ -52,6 +53,7 @@
     }
   ],
   "quote": "est-ce que Black Mirror c'est le futur ou c'est maintenant ?",
+  "recommendedBy": "Mister V",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:17:41",

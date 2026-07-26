@@ -5,6 +5,7 @@
     "date": "2026-07-07",
     "model": "claude-opus-4-8",
     "reason": "Fleabag discute longuement (structure du 26 min, saison 2, transitions, ~00:35:36-00:36:59) comme objet d'etude. Prescription seulement conditionnelle « si t'as envie d'ecrire ». Substance reelle -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Phoebe Waller-Bridge",
@@ -64,6 +65,7 @@
     }
   ],
   "quote": "il y a même des séries qui ont l'air moins classiques comme Fleabag",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:35:36",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Discussion de groupe non diarisee, locuteur non identifiable.",
     "reason": "Jeu reel discute avec substance et enthousiasme ('GeoGuessr c'est dingue, ils sont trop fins'; 'Fais GeoGuessr', 00:42:51-46:58), mais dans une digression sur la geolocalisation d'obsessionnels -> prescription instrumentale, citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "65240f8a7a4ced00123481d1",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "GeoGuessr, c'est dingue.",
+  "recommendedBy": "Maghla",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:42:51",

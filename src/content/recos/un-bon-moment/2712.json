@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Reco explicite dans le round de recommandations : 'Cobra Kai, je kiffe, c'est vraiment bon délire' (nostalgie Karate Kid). Locuteur non identifiable (round non diarizé).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Moi, je suis une petite série, en ce moment, nostalgie... Qui me donne une petite pointe de nostalgie : Cobra Kai !",
+  "recommendedBy": "Jérémie Dethelot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:23:16",

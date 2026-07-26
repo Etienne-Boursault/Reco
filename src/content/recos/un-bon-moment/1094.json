@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Confirme dans le transcript YouTube a 01:35:24 (meme timecode que l'extraction acast, pas d'offset). Attribution -> Alexandre Astier. guests vide -> ajouter Alexandre Astier.",
     "reason": "Astier decrit, en anecdote sur ce qu'il fait pour aller bien, qu'il va sur LinkedIn Learning suivre des cours (il en explique la nature: ex-Lynda.com). Mention substantielle mais anecdotique d'une ressource qu'il utilise, sans 'je conseille' explicite -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
@@ -27,7 +28,7 @@
     "anthropic"
   ],
   "id": "ubm-1094",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",

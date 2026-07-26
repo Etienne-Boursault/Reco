@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel: 'Dix pour cent' (affiché '10%'). Klapisch réalisateur/co-créateur. Compléter métadonnées invité (Cédric Klapisch).",
     "reason": "'Dix pour cent' (gros projet France 2) présenté par Klapisch (motivation: révéler une nouvelle génération d'acteurs). Auto-promo -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -63,7 +64,7 @@
     }
   ],
   "quote": "je savais que c'était un gros projet pour la télé pour le service public pour France 2",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:35:19",

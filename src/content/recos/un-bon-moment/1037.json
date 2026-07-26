@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : 'Pierre Croce'. Reco par Kheiron ~01:20:25.",
     "reason": "Kheiron recommande explicitement 'toute la bande' dans le segment final (~01:20:25). Reel humoriste/YouTubeur. Orthographe officielle : Pierre Croce (pas 'Croze').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -37,7 +38,7 @@
     "anthropic"
   ],
   "id": "ubm-1037",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

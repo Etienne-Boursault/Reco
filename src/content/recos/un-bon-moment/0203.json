@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Nom correct : Cabosse (patisserie-chocolaterie, Mulhouse/Rixheim). Locuteur non identifiable. A trancher : un commerce est-il dans le perimetre du site ?",
     "reason": "Reco enthousiaste sincere : 'meilleure chocolaterie de France pour moi c'est Cabosse a Mulhouse... un niveau au-dessus'. Lieu/commerce reel et ouvert (le 'ca a ferme' etait une blague, cf. gag 'fais croire'). Type=lieu.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Cabos",
   "episodeGuid": "6903fad795ee8b1815229b88",
   "extractionHistory": [
     {
@@ -58,13 +58,14 @@
     }
   ],
   "quote": "meilleure chocolaterie de France pour moi c'est assez pub gratos pour eux Cabos à Mulhouse",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:30",
-  "title": "Cabos",
+  "title": "Cabosse",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "lieu"
+    "lieu",
+    "autre"
   ]
 }

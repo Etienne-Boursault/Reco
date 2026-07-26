@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Serie reelle. Meme locuteur que Loki (ubm-2154). Non identifiable au transcript -> recommendedBy vide.",
     "reason": "Reco explicite: 'The Bear... saison 2 exceptionnelle... c'est exceptionnel a voir.' Series sur Disney+.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Christopher Storer",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Saison 2 exceptionnelle.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:46",

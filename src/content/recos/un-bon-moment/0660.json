@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel « Le Trone des Frogz » (avec Z, Golden Moustache). Auteur = Yacine Belhousse. Invites a completer dans les metadonnees episode.",
     "reason": "Web-serie Golden Moustache ecrite/co-realisee par Yacine Belhousse (invite), Dedo au casting. Promo explicite « Allez voir, c'est disponible sur la chaine Golden Moustache... c'est hilarant » (l.1095-1097). Oeuvre d'invite -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Golden Moustache",
@@ -65,7 +66,7 @@
     }
   ],
   "quote": "Allez voir, c'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube.",
-  "recommendedBy": "Yacine Belhousse",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:36:06",

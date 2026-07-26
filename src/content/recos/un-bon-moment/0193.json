@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Createur : Florence Longpre (fiche dit 'Florence Lompre').",
     "reason": "'La serie Empathie... Exceptionnel. Tout est bien a tous les niveaux, tout le temps'. Serie quebecoise de Florence Longpre (Crave/Canal+) confirmee. Eloge fort. Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Florence Lompré",
+  "creator": "Florence Longpré",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "La série Empathie, ça.",
+  "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:50:51",
@@ -82,12 +84,10 @@
   ],
   "watchProviders": [
     {
-      "ethics": "avoid",
       "label": "Canal+",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     },
     {
-      "ethics": "avoid",
       "label": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Empathie"
     }

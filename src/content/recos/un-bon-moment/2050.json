@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Spectacle de Marine Leonardi (invitee) : 'allez voir marie leonardi sur scene' (00:12:40) + Jesse 'aller voir son spectacle' (01:53). Reco explicite + oeuvre d'invitee. Qui parle (Kyan/Navo) incertain -> recommendedBy vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Marine Léonardi",
@@ -33,6 +34,7 @@
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2050",
   "kind": "reco",
   "links": [
@@ -50,6 +52,7 @@
     }
   ],
   "quote": "allez voir marie leonardi sur scène",
+  "recommendedBy": "Kyan Khojandi & Marine Leonardi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:12:41",

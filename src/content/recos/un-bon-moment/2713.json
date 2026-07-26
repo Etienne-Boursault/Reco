@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Reco enthousiaste : 'un truc que j'ai kiffé, I May Destroy You... vraiment vraiment cool' (série de Michaela Coel, créatrice de Chewing Gum — creator correct). Locuteur probablement Shirley (angle stand-up/justesse) mais round non diarizé.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Michaela Coel",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "C'est vraiment chouette, vraiment, vraiment cool.",
+  "recommendedBy": "Shirley Souagnon",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:23:17",

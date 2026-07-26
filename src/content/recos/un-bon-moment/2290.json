@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur host non identifiable (probablement Kyan, qui anime le jeu d'impro) -> recommendedBy vide. ubm-2289 (Extras) = meme moment, discarde.",
     "reason": "Recommandation explicite d'une serie de Ricky Gervais ('allez voir cette serie de Ricky Gervais, elle est incroyable', 00:39). L'oeuvre contenant la scene Liam Neeson est bien Life's Too Short (correction faite dans l'episode).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ricky Gervais",
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "allez voir cette série de Ricky Gervais, elle est incroyable",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:39:54",

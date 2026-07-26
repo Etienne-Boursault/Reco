@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non identifiable avec certitude (transcript non diarizé). Passage à 00:50:58.",
     "reason": "Mention avec avis positif (« une émission que j'adore, maintenant en France aussi ») mais dans une discussion sur le roast — citation plutôt que reco prescriptive.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
@@ -37,7 +38,7 @@
     "openai"
   ],
   "id": "ubm-2094",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "c'est aussi une épreuve récurrente dans Drag Race, une émission que j'adore et tout, qui est en France maintenant également.",
+  "recommendedBy": "Manon Bril",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:51:00",

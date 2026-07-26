@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript non diarize: l'acheteur du jeu n'est pas identifiable (Kyan ou Maghla) -> attribution videe.",
     "reason": "Discussion enthousiaste et prescriptive de Zelda: Tears of the Kingdom (25:06 'Il est vraiment vraiment bien'; 29:08 'un des meilleurs jeux de tous les temps'; 'il faut y jouer'). Canonique du fil Zelda.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "65240f8a7a4ced00123481d1",
@@ -36,7 +37,7 @@
     "anthropic"
   ],
   "id": "ubm-1133",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Zelda, Zelda à fond, Zelda ? Alors, je l'ai acheté. Zelda, mais je le craque. Ne le fais pas si t'as une vie sociale.",
+  "recommendedBy": "Seb la Frite",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "25:06",

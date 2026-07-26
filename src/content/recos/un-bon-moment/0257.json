@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'l'excellent Better Call Saul... l'acteur est assez exceptionnel' : serie louee par Navo dans le segment Gilligan, discutee (acteur/actrice), mais reco fraiche = Pluribus ; ici citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Vince Gilligan",
@@ -45,7 +46,7 @@
     }
   ],
   "quote": "l'excellent Better Call Saul",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Navo & Albert Dupontel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:45:45",

@@ -5,6 +5,7 @@
     "date": "2026-07-18",
     "model": "claude-opus-4-8",
     "reason": "Émission réelle (Hot Ones) évoquée en anecdote par les hosts (« on a fait Hot Ones avec Melha, quel souvenir impérissable ») au sein du placement My Canal ; « Abonnez-vous à la chaîne Hot Ones » plus loin (00:45). Substance sans prescription nette au 00:21 → citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "First We Feast",
@@ -52,7 +53,7 @@
   "quote": "Il y a Hot Ones.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:21:23",
   "title": "Hot Ones",
   "transcriptSource": "youtube",

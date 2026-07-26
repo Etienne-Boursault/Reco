@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre confirmé : dernier morceau de « La fête est finie » d'Orelsan (2017). Locuteur = Kyan Khojandi (qui dit « j'imite beaucoup Aurel » juste avant).",
     "reason": "« Notes pour trop tard » longuement apprécié pour sa justesse (« ce morceau a beaucoup touché beaucoup de gens »), mais cadré comme illustration (la simplicité qui touche plus que la virtuosité) ; pas de « allez l'écouter » explicite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Orelsan",
@@ -47,7 +48,7 @@
     "openai"
   ],
   "id": "ubm-0768",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -57,7 +58,7 @@
     }
   ],
   "quote": "Techniquement, il est très simple en termes d'écriture.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Clément Viktorovitch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:42",

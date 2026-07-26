@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Métadonnée disait Navo mais à 01:23:52 « navo » est appelé séparément pour Amour&Autisme ; ce bloc Upload/Paterson/Leftovers est Kyan ou Éléonore, non tranchable.",
     "reason": "Recommandation explicite dans la ronde « une œuvre à recommander » : « j'ai fini récemment upload sur Amazon c'est trop bien... très très bien... très bien écrit ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Greg Daniels, Mike Schur",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "j'ai fini récemment upload sur Amazon c'est trop bien",
+  "recommendedBy": "Éléonore Costes & François Descraques",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:56",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur probable Doria Tillier ('moi j'ai tourne avec lui [Artus] cet ete', 'j'ai eu une partition') mais non certain. Doublon: ubm-0964.",
     "reason": "La Pampa (Antoine Chevrolier) recommandee fort a 01:33:18 : 'super film, hyper bien realise, j'ai adore la real et les acteurs, pose de vraies questions sur l'homosexualite dans la ruralite'. Canonique. Doublon: 0964.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Antoine Chevrolier",
@@ -77,6 +78,7 @@
     }
   ],
   "quote": "Super film. Hyper bien réalisé.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:33:21",

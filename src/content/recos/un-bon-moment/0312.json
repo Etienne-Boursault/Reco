@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du livre de Penelope. Titre a capitaliser 'La Nuit retrouvee' (non modifiable via script). WebSearch epuise: non verifie en ligne, mais transcript coherent (l.19, 01:54:24, 02:02:36). Timecodes ~00:00:47 et ~01:54:24. Invitee absente de guests[].",
     "reason": "Roman graphique de l'invitee Penelope Bagieu, presente par elle en ouverture (auto-promo) et recommande par Kyan en cadeau Noel.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Pénélope Bagieu",
@@ -74,6 +75,7 @@
     }
   ],
   "quote": "la nuit retrouvée c'est là le roman graphique de de de pénélope bagieu",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:37:19",

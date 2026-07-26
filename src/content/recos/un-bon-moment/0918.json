@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Podcast « Votre Cerveau » d'Albert Moukheiber [01:06:11] — creator à corriger : « Albert Mukébert » → « Albert Moukheiber ». Recommandé par un host (Kyan ou Navo, « que tu m'as recommandé ») — indéterminable. Œuvre DISTINCTE du livre ubm-0919 (pas un doublon).",
     "reason": "Reco réelle du podcast « Votre Cerveau ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Albert Moukheiber",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Je recommande Votre Cerveau, le podcast d'Albert Moukéibert que tu m'as recommandé.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:06:11",

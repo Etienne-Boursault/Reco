@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Spectacle de danse « Murmuration » (chorégraphie collective, « mosaïques de corps » — vraisemblablement Sadeck Waff) [01:03:50] ; conclusion « je recommande ça » [01:04:14]. Recommandateur du segment indéterminé (invité ou host) ; « Navo » d'origine non fiable. Invités absents de guests[].",
     "reason": "Reco réelle (spectacle de danse Murmuration).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Sadeck Berrabah",
@@ -55,6 +56,7 @@
     }
   ],
   "quote": "Il y a le spectacle Murmuration.",
+  "recommendedBy": "Pablo Mira",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:50",

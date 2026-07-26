@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Creator correct = Swann Perisse (orthographe). Oeuvre confirmee (court-metrage YouTube 2019). Ajouter Natoo aux guests episode.",
     "reason": "Natoo recommande explicitement le court-metrage de Swann Perisse : 'Chambre froide de Swan Perisset. Donc allez voir ce film il est cool.' Prescription claire.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Swann Périsset",
+  "creator": "Swann Perisse",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractionHistory": [
     {
@@ -71,8 +72,8 @@
   "title": "Chambre froide",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
+    "film",
     "video",
-    "film"
+    "autre"
   ]
 }

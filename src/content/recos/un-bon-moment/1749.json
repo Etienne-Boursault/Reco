@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Johnny Hallyday discute comme exemple de longevite/phases (Berger, Goldman, detection de David Hallyday). Substance moderee, pas de prescription, pas un invite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Johnny Hallyday",
@@ -40,6 +41,7 @@
     }
   ],
   "quote": "Mais Johnny Hallyday, c'est un bon exemple, je crois",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:56:20",

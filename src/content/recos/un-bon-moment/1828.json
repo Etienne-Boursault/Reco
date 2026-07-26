@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur = Christophe Pauly (chaine vulgarisation science, video 'Nous vivons dans une simulation ?!' 2025 — reelle). Attribution indeterminee.",
     "reason": "'Une video de Christophe Pauly qui est pour moi une des videos les plus importantes dans l'education d'un etre humain... est-ce que nous vivons dans une simulation ?' (02:27:10) — prescription forte.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Christophe Pauly",
@@ -47,10 +48,11 @@
     }
   ],
   "quote": "Et il y a une vidéo de aussi Christophe Pauly qui est pour moi une des vidéos les plus importantes dans l'éducation d'un être humain. C'est est-ce que nous vivons dans une simulation ?",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:27:10",
-  "title": "Est-ce que nous vivons dans une simulation ?",
+  "title": "La PREUVE Incontestable que nous vivons dans une SIMULATION",
   "transcriptSource": "youtube",
   "types": [
     "video"

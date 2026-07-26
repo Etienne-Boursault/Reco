@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Completer le titre en 'Shirley Souagnon'. Reco de son passage stand-up sur Netflix (programme 'Humoristes du Monde').",
     "reason": "Kyan invite explicitement le public a voir le Netflix de Shirley ('Je vous invite a aller voir... Regardez-le maintenant'), avec substance (passage Haiti/homosexualite). Reco publique claire = validate. Canonique (doublons 2433, 1059).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
@@ -43,11 +44,11 @@
     }
   ],
   "quote": "Je vous invite à aller voir le Netflix de Shirley, humoriste du monde.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:59:07",
-  "title": "Shirley",
+  "title": "Shirley Souagnon",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

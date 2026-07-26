@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE (doublon ubm-0130 discarde). Tortosa = artiste de la musique de fin du podcast. Reco d'un host (juste apres 'mon spectacle sur Canal', probablement Kyan) mais lequel non confirmable -> vide.",
     "reason": "Reco explicite: 'La musique de fin a ete faite par Tortosa. Donc allez ecouter... n'hesitez pas a l'ecouter.' Projet sorti en vinyle/album/Spotify.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Tortosa",
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "extractionHistory": [
     {
@@ -41,13 +41,13 @@
   "kind": "reco",
   "links": [],
   "quote": "La musique de fin a été faite par Tortosa. Donc, allez écouter.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:26",
-  "title": "Tortosa",
+  "title": "Tortoza",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "album"
+    "artiste"
   ]
 }

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Eloge collectif des humoristes present.e.s ; locuteur principal non identifiable -> recommendedBy vide.",
     "reason": "Salle reelle (Barbes Comedie Club, Paris) chaleureusement recommandee ('un Comedie Club incroyable... c'est un bijou... extraordinaire', 00:39:12-00:39:45) -> reco d'un lieu.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
@@ -27,7 +28,7 @@
     "openai"
   ],
   "id": "ubm-2253",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -37,6 +38,7 @@
     }
   ],
   "quote": "Ah non, mais moi... Le but, c'est pour arriver avec un micro casque... Là, je n'y vais jusque...",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:39:12",

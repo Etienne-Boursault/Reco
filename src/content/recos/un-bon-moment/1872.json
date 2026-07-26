@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Film cite en anecdote reconfortante ('je n'allais pas bien, je regardais Benjamin Button... ca me redonne un peps'), avec substance mais sans prescription au public. Canonique (vs ubm-0189).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "David Fincher",
@@ -52,6 +53,7 @@
     }
   ],
   "quote": "Par exemple, l'autre fois, je n'allais pas bien, je regardais Benjamin Button.",
+  "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:02",

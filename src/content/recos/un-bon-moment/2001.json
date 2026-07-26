@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Réf. explicite à la saison 1 (2011), pas à Bref 2 : anecdote, pas promo → citation plutôt que guest-work.",
     "reason": "01:34:57 : Kyan raconte l'origine d'une réplique ('j'ai un bébé mort dans le ventre', perso Thierry) de la saison 1 de Bref, à partir d'une anecdote de somnambulisme. Making-of de sa propre série avec substance, pas d'auto-promo/prescription → citation. Canonique (ubm-0309 doublon).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Kyan Khojandi",
@@ -24,8 +25,9 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-2001",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -41,7 +43,7 @@
     }
   ],
   "quote": "Il y a une phrase. Thierry. Qu'on avait mis dans. La saison 1 de Bref.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:34:57",

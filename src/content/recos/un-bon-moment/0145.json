@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Corriger le créateur : « Sophie Landa » → « Sophie Lambda » (BD Delcourt 2020, sous-titre « Ou comment j'ai survécu à un manipulateur »). Titre exact conforme au transcript.",
     "reason": "BD « Tant pis pour l'amour » de Sophie Lambda décrite avec substance pour illustrer le love bombing (00:26:03 : la métaphore de la crevasse que le mec recouvre de cœurs). Œuvre réelle discutée sur le fond mais sans prescription → citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Sophie Landa",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Je me rappelle de ce dessin de Sophie Londa dans \"Tant pis pour l'amour\", sa BD.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:26:03",

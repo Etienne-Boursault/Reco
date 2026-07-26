@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre 'Le Podcast de Yacine et Dedo' (orthographe Dedo a confirmer). Attribution indeterminee.",
     "reason": "'J'ai envie d'envoyer de la force aux amis Yacine et Dedo... c'est tres marrant... et c'est genial' (02:21:59-02:22:35) — reco explicite du podcast.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Yacine et Dédot",
+  "creator": "Yacine et Dedo",
   "episodeGuid": "691488fcc1ed8717c54570d4",
   "extractionHistory": [
     {
@@ -73,10 +74,11 @@
     }
   ],
   "quote": "C'est très marrant",
+  "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:22:03",
-  "title": "Le podcast de Yacine et Dédot",
+  "title": "Le potes cast de Yacine et Dedo",
   "transcriptSource": "youtube",
   "types": [
     "podcast"

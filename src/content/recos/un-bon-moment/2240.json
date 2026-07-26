@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique des doublons (0625/2240). Attribution Navo confirmee: 'il faut que j'en fasse a chaque emission' = co-host recurrent. Titre exact = 'Cocovoit' (epele C-O-C-O-V-O-I-T a 01:33:57), pas 'Coco Voit' avec espace.",
     "reason": "Reco explicite 'Allez voir Coco Voit, c'est un bon delire' a 01:33:35. Web-serie YouTube reelle (covoiturage).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
@@ -57,7 +58,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:33:36",
-  "title": "Coco Voit",
+  "title": "Cocovoit",
   "transcriptSource": "youtube",
   "types": [
     "video"

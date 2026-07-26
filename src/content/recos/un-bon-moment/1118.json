@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par un INVITE (Julien Josselin ou Valentin Vincent), PAS Navo : Navo n'est sollicite qu'ensuite (« Navo, tu veux recommander ? » 01:01:22). Impossible de trancher entre les deux invites. Titre = film « White Fire »/« Vivre pour survivre ».",
     "reason": "Nanar reel « White Fire » (1984, VF « Vivre pour survivre »), recommande dans le segment nanars : « le dernier qu'on a regarde... faut aimer le cringe » (01:00:20).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6322de1f35ce9e001229f98a",
@@ -54,10 +55,11 @@
     }
   ],
   "quote": "franchement, vivre pour survivre. Ouais, Whitefire, c'est...",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:20",
-  "title": "Whitefire",
+  "title": "White fire",
   "transcriptSource": "youtube",
   "types": [
     "film"

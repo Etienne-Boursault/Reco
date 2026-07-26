@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Correction titre : 'Aimer' -> 'Aimee' (album 2020 de Julien Dore, sorti oct. 2020 ; episode nov. 2020 ; auto-transcript). Verif WebSearch bloquee (budget epuise). Locuteur = invitee (contexte 'Berangere' juste avant suggere Berengere ; manifest disait Alice) -> attribution vide (regle 3).",
     "reason": "Album reel de Julien Dore recommande par une invitee ('j'aime beaucoup') - pas l'oeuvre d'un invite present",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Julien Doré",
@@ -51,6 +52,7 @@
     }
   ],
   "quote": "En musique, moi, en ce moment, j'écoute l'album de Julien Doré. Ouais. Aimer, ouais. J'aime beaucoup.",
+  "recommendedBy": "Bérengère Krief",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:42:48",

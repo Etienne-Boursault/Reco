@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Debat collectif -> recommendedBy vide.",
     "reason": "Debat comique multi-voix sur le scenario d'Interstellar (moqueries 'pas de scenar' + defense 'c'est ca qui est beau', blagues spoiler). Discussion substantielle mais aucune prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Christopher Nolan",
@@ -52,7 +53,7 @@
   ],
   "quote": "Pas de scénar, Interstellar ?",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:06:30",
   "title": "Interstellar",
   "transcriptSource": "youtube",

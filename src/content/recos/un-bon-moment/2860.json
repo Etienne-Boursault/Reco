@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Repond a « Et toi, Vincent, tu as quelqu'un ? » -> probablement Vincent Dedienne, mais contenu atypique et transcript sans labels : recommendedBy laisse vide, a confirmer. guestWork car oeuvre d'une personne du plateau. YT 01:15:11.",
     "reason": "Auto-promo : le locuteur cree cette chasse au tresor (« je suis en train d'en faire une qui s'appelle le Tresor de l'Ile au Crane ») editee par les Editions du Tresor, et la recommande (« c'est genial a faire »). Oeuvre propre du locuteur.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Éditions du Trésor",
@@ -46,6 +47,7 @@
     }
   ],
   "quote": "Et je suis en train d'en faire une qui s'appelle le Trésor de l'Île au Crâne.",
+  "recommendedBy": "Vincent Dedienne",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:13",

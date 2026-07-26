@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution hote incertaine (Kyan ou Navo) -> recommendedBy vide.",
     "reason": "Reco explicite dans le segment recos (01:44) : 'Moi je recommande la serie X-Men 97... un remastering... c'est hyper beau, c'est hyper style. C'est sur Disney+.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Autre",
@@ -70,6 +71,7 @@
     }
   ],
   "quote": "je recommande la série X-Men 97. C'est un remastering de la série des dessins animés X-Men qu'on avait quand on était gamin.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:44:50",

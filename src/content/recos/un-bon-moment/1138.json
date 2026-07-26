@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "externalIds errones: tmdb 150540 = Inside Out. A remplacer par la fiche Vice (2018, Adam McKay). Attribution host cinephile non certaine.",
     "reason": "Reco explicite dans le duo Christian Bale 'que je te recommande'; 'Christian Bale acteur exceptionnel... des chefs-d'oeuvre' (01:12:18).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Adam McKay",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "C'est Vice, V-I-C-E.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:18",

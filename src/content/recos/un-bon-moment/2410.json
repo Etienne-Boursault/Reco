@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre réel : « Laura Domenge » (humoriste ; transcript rend « Laura Dommange » [01:03:09], spectacle capté à la Scala). Recommandé par un invité (Laurie Peret OU Pablo Mira, « j'ai adoré les deux » avec Laura Felpin) — impossible de trancher ; attribution d'origine « Navo » erronée (le tour de Navo vient plus tard, [01:04:15]). Orthographe non web-vérifiée (budget épuisé). Invités absents de guests[].",
     "reason": "Reco spectacle réelle (Laura Domenge) par un invité.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Laura Dommange",
+  "creator": "Laura Domenge",
   "episodeGuid": "65241146d963060012045fb6",
   "extractionHistory": [
     {
@@ -56,12 +57,14 @@
     }
   ],
   "quote": "Le dernier que j'ai vu, c'est Laura Dommange.",
+  "recommendedBy": "Laurie Peret",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:08",
-  "title": "Laura Domenge",
+  "title": "Une nuit avec Laura Domenge",
   "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

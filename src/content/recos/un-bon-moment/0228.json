@@ -10,8 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'Yoroi' (film d'Orelsan/David Tomaszewski, sorti 29/10/2025), type = film (pas 'autre'). Attribution host indeterminee (Kyan ou Navo).",
     "reason": "'Allez voir Yoroi' + 'c'est comme aller au Japon' — prescription claire (00:31:28-31).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "David Tomaszewski",
   "episodeGuid": "691488fcc1ed8717c54570d4",
   "extractionHistory": [
     {
@@ -37,7 +39,7 @@
     "openai"
   ],
   "id": "ubm-0228",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -53,12 +55,14 @@
     }
   ],
   "quote": "Allez voir Yoroi.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:31:30",
-  "title": "Yoroi",
+  "title": "Yoroï",
   "transcriptSource": "youtube",
   "types": [
+    "film",
     "autre"
   ]
 }

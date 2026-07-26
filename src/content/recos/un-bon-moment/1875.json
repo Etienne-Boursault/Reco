@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Theo Haggai (street-artiste 'flacking'/kintsugi urbain ; fiche dit 'Theo Agaille').",
     "reason": "Reco explicite : 'J'ai une recommandation, c'est Theo Haggai' + description detaillee (repare des bouts de trottoir casses et les transforme en oeuvre d'art). Artiste confirme. Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68fa552292f5a6f127100027",
@@ -59,13 +60,15 @@
   "kind": "reco",
   "links": [],
   "quote": "J'ai une recommandation, c'est Théo Agaille.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:59:16",
-  "title": "Théo Agaille",
+  "title": "Théo Haggaï",
   "transcriptSource": "youtube",
   "types": [
     "artiste",
+    "video",
     "autre"
   ]
 }

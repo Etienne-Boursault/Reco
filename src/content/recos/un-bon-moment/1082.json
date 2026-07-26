@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "creator errone 'Rosa Bernstein' -> le vrai createur de 'Le Coeur sur la table' est Victoire Tuaillon (Binge Audio) ; a corriger manuellement (le script ne touche pas creator). Attribution corrigee Marina -> Navo (tour 'Davo ?'), mais cross-talk 'tu m'en as parle' -> attribution_suspect. Distinct de ubm-1083.",
     "reason": "Podcast 'Le Coeur sur la table' recommande dans le segment recos ('C'est beau... ca te deconstruit plein de choses... tout le monde en parle'). Oeuvre reelle distincte du podcast de Rosa Bursztein.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Victoire Tuaillon",

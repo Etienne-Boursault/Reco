@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine : extraction YT -> Navo, extraction Acast -> Kyan. Continuite thematique (eloge du montage/bande-annonce, comme pour 'Pensez Futile' de Navo) penche pour Navo, mais peut etre Kyan (3e recommandeur apres Julien et Navo). recommendedBy vide. Doublon ubm-0802 discarde.",
     "reason": "Reco explicite d'une serie reelle (Masters of the Universe: Revelation, Kevin Smith, Netflix 2021) a 01:04:28 dans le segment recommandations. Canonique du doublon avec ubm-0802.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Kevin Smith",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:28",

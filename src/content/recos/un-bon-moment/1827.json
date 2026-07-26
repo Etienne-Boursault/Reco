@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Chaine 'Les Revues du Monde' de Charlie Danger. Attribution indeterminee.",
     "reason": "'C'est la chaine de Charlie Danger... que j'adore... ca s'appelle les revues du monde, des formats longs sur l'histoire quand tu veux te reposer' (02:26:33-45) — reco claire.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Charlie Danger",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "Mais c'est la chaîne de Charlie Danger. Ça s'appelle les revues du monde. C'est des trucs quand tu veux vraiment te reposer",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:26:33",

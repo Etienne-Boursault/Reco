@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine (Kyan ou Navo, transcript non diarizé). L'humain peut requalifier en discard si trop anecdotique.",
     "reason": "Squid Game lancé par les hosts en vanne (« tu vas kiffer Squid Game », « surtout la fin ») comme le hit évident que Clément a raté « dans sa grotte », immédiatement esquivé. Œuvre réelle nommée avec avis léger mais sans substance ni prescription — citation prudente, borderline discard.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6336c79af131c60012c20984",
@@ -62,7 +63,7 @@
   ],
   "quote": "Tu vas kiffé Squid Game.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:05:49",
   "title": "Squid Game",
   "transcriptSource": "youtube",

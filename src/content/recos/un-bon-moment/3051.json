@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Joseph Roussin verifie (album avec Remi Boyes). Recommandeur probable Remi mais non certain. Passage 01:12:31.",
     "reason": "Section 'recommandez un jeune humoriste' ; Joseph Roussin (reel, resident Barbes, album avec l'invite Remi Boyes) recommande. Attribution incertaine ('Que Remi ne dise pas Fredcham et Joseph').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Joseph Roussin",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "Joseph Roussin, détective Roussin, Joseph.",
+  "recommendedBy": "Urbain Courty & Rémi Boyes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:31",

@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Nom correct du groupe : Getdown Services (Bristol). Album probable : 'Massive Champion' (2025).",
     "reason": "Reco explicite de Navo : 'l'album de Get Down Service, duo de Bristol, que je trouve absolument dement, un peu punk, sorti il y a quelques semaines'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Get Down Service",
+  "creator": "Getdown Service",
   "episodeGuid": "6903fad795ee8b1815229b88",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/956226661"
@@ -69,11 +70,11 @@
     }
   ],
   "quote": "Et puis l'album de Get Down Service, un duo de Bristol, que je trouve absolument dément",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:32",
-  "title": "Get Down Service",
+  "title": "Getdown Service",
   "transcriptSource": "youtube",
   "types": [
     "album"

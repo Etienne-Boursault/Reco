@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur indetermine (discussion de groupe) -> recommendedBy vide. watchProviders = Amazon Prime (ethics avoid) -> link_suspect, lien alternatif a privilegier.",
     "reason": "Reco explicite a 01:36:22 dans le tour de recommandations : « Columbo, on peut regarder Columbo ? ... il est passionnant pour une deconstruction mentaliste... c'est genial en vrai ». Serie reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "autre",
@@ -69,6 +70,7 @@
     }
   ],
   "quote": "Columbo, on peut regarder Columbo ?",
+  "recommendedBy": "Fabien Olicard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:36:22",

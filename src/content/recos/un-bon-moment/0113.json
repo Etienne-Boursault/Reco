@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution inferee (transcript non diarise).",
     "reason": "Point d'ancrage 'chanson francaise pure' (Maxime Le Forestier) — cite comme influence, sans prescription. Meme locuteur B = Navo.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Maxime Le Forestier",
@@ -63,7 +64,7 @@
     }
   ],
   "quote": "Maxime Le Forestier. Tous les premiers guitares voix des années 60-70.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Vianney",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:23:09",

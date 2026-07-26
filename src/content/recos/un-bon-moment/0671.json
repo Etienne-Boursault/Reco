@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy corrige (etait Navo, qui ne fait qu'introduire ; l'oeuvre est de Dedo, presentee par Dedo). Invites a completer dans les metadonnees episode.",
     "reason": "BD de Dedo presentee par lui : « j'ai fait une BD... White Spirit... c'est chez Delcourt, dans la collection de Davy Mourier » (l.3048-3095). Auto-promo d'invite -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Dedo",

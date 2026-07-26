@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Le transcript dit 'Bill Weaver' (00:49:53) mais c'est bien Bill Withers, 'Ain't No Sunshine' (draft déjà correct). C'est la reprise par Evie McKinney qui est prescrite (ubm-3169) ; l'original n'est que mentionné. L'humain peut fusionner/passer en validate s'il veut la reco musicale.",
     "reason": "Chanson réelle citée comme objet de la reprise recommandée d'Evie McKinney (ubm-3169), sans prescription propre de l'original (règle 4).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Bill Withers",
+  "creator": "Bill Evvie McKinney",
   "episodeGuid": "8099be2e-5c6d-4351-b52e-3b241b3dc229",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/2312047"

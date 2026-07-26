@@ -5,6 +5,7 @@
     "date": "2026-07-14",
     "model": "claude-opus-4-8",
     "reason": "'Montagne' de Jean-Louis Murat, chanson que VD ecoute pour aller mieux — partagee avec substance personnelle mais prescription explicitement nuancee ('je sais pas si ca marchera sur les autres, mais ca marche sur moi'). Titre confirme (WebSearch).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Jean-Louis Murat",
@@ -46,7 +47,7 @@
     "openai"
   ],
   "id": "ubm-0858",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",

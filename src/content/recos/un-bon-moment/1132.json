@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre et creator (Sonia Kronlund) corrects. Attribution Navo vs Kyan incertaine (transcript sans diarisation, meme locuteur que Splinalende).",
     "reason": "Un host recommande explicitement le podcast France Culture 'Les Pieds sur terre' de Sonia Kronlund (01:13:39, 'C'est mega interessant... hyper original'). Reco substantielle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Sonia Kronlund",
@@ -57,7 +58,7 @@
     }
   ],
   "quote": "C'est un podcast France Culture quotidien.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:39",

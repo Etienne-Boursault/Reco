@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non diarisé (Ben Mazué ou GCM, anecdote « écrire pour Bruel »). recommendedBy 'Kyan Khojandi' d'origine probablement erroné (c'est un invité qui raconte).",
     "reason": "Anecdote d'un invité évoquant l'album de Patrick Bruel : name-drop discuté (idée de remake « Place des Grands Hommes 20 ans plus tard ») sans prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Patrick Bruel",
@@ -60,6 +61,7 @@
     }
   ],
   "quote": "putain, ce serait vraiment cool de faire Place des Grands Hommes 20 ans plus tard.",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:17:58",

@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Emission 'Loup-Garou' saison 2 (sortie 5 decembre), projet des invites Fary+Panayotis; plug explicite en outro. Oeuvre d'invites = validate. recommendedBy vide (deux co-auteurs invites, non attribuable). Entree canonique du groupe de doublons.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Fary et Panayotis",
@@ -33,6 +34,7 @@
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2008",
   "kind": "reco",
   "links": [
@@ -44,6 +46,7 @@
     }
   ],
   "quote": "Il Lou Garou saison 2",
+  "recommendedBy": "Kyan Khojandi & Fary & Panayotis Pascot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:51",

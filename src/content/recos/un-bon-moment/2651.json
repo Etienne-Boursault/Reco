@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : « Nulle Part Ailleurs ». Locuteur partagé (« on regardait ») -> attribution vide.",
     "reason": "Émission citée comme influence d'enfance (« c'était nul part ailleurs qu'on regardait qu'on trouvait ça fabuleux »). Substance légère, pas de prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
@@ -43,10 +44,11 @@
     }
   ],
   "quote": "c'était nul part ailleurs qu'on regardait qu'on trouvait ça fabuleux",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:21:47",
-  "title": "Nul part ailleurs",
+  "title": "Nulle Part Ailleurs",
   "transcriptSource": "youtube",
   "types": [
     "serie"

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe 'Hard Disk' non revalidee (WebSearch epuise).",
     "reason": "Recommandation par l'invite Mister V d'une chaine reelle d'analyse de clips/videos (Hard Disk) : 'je le trouve vraiment bon, il merite plus d'abonnes' ; oeuvre tierce (01:18).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
@@ -50,10 +51,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:18:01",
-  "title": "Hard Disk",
+  "title": "Hardisk",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

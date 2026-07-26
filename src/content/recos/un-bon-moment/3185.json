@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Renvoie a l'app « 1 Second Everyday » mais ni titre ni prescription clairs ; concept/habitude plutot qu'oeuvre.",
     "reason": "Concept « une seconde par jour » evoque de facon instrumentale ; attribution confuse (Pierre Lapin « pas le concepteur mais l'a popularise »). Pas de prescription d'une oeuvre precise (regle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",

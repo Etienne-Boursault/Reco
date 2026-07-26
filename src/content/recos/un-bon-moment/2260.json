@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Dit dans une discussion de groupe sur les roasts ; locuteur non identifiable avec certitude -> recommendedBy vide.",
     "reason": "Thomas Wiesel (humoriste/auteur suisse reel) loue : 'c'est le meilleur... Thomas Wiesel est un auteur extraordinaire' (01:13:44-01:13:54) -> reco d'un artiste.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
@@ -27,7 +28,7 @@
     "openai"
   ],
   "id": "ubm-2260",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -37,6 +38,7 @@
     }
   ],
   "quote": "Thomas Wiesel est un auteur extraordinaire.",
+  "recommendedBy": "Baptiste Lecaplain",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:55",

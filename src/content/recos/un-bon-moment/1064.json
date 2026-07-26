@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Duo YouTube parodique (Valentin Jean & Jenny Letellier) -- pas la chaine politique homonyme.",
     "reason": "Recommandation enthousiaste d'une chaine YouTube : 'le dernier truc que je regarde avec plaisir... c'est vraiment tres drole... je trouve ca vraiment genial, c'est super'. Locuteur = un invite, non identifiable -> attribution videe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "intervenant non précisé",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "c'est le dernier truc que je regarde avec plaisir sur YouTube, c'est le monde à l'envers.",
+  "recommendedBy": "Monsieur Poulpe",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:39",

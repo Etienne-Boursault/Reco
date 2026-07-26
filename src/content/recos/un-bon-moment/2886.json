@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe verifiee (humoriste quebecoise). Locuteur non identifiable (non diarize).",
     "reason": "« Virginie Fortin qui est exceptionnelle, elle est super » dans le tour de recommandations : prescription claire.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6302667b4913bd00126c374c",
@@ -37,6 +38,7 @@
     }
   ],
   "quote": "Virginie Fortin qui est exceptionnelle elle est super",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:10:37",

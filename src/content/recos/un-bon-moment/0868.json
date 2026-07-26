@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Vidéo Orelsan 2019 ; montage/écriture de Clément Cotentin (tournage Ilia Shemetov). Attribution partagée Orelsan/Clément.",
     "reason": "« Fucking Fred », vidéo YouTube d'Orelsan (tournée, avec Jonathan Cohen) montée et structurée par l'invité Clément Cotentin, présentée longuement par lui = œuvre du guest (guest-work).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Orelsan",
@@ -60,7 +61,7 @@
   "quote": "c'est trop marrant.",
   "recommendedBy": "Clément Cotentin",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:39:50",
   "title": "Fucking Fred",
   "transcriptSource": "youtube",

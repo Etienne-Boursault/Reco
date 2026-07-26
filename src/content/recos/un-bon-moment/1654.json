@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle probable : 'Marion Haile' (humoriste/scenariste). Recommandee par un des invites, a preciser.",
     "reason": "Reco en fin d'emission : 'Marion Hailey aussi, super humoriste et scenariste, j'aime beaucoup' (02:07).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Marion Hailey",
@@ -73,10 +74,11 @@
     }
   ],
   "quote": "Marion Hailey aussi, super humoriste et scénariste.",
+  "recommendedBy": "Tom Baldetti",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:07:58",
-  "title": "Marion Hailey",
+  "title": "Marion Haïlé",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

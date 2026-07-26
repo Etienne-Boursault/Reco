@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (anecdote non diarizee, Kyan ou Navo).",
     "reason": "Appreciation reelle 'J'adore ce film' (Serie noire, Alain Corneau) autour d'une anecdote sur Patrick Dewaere, mais pas de prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Alain Corneau",
@@ -54,7 +55,7 @@
   ],
   "quote": "J'adore ce film.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:38:44",
   "title": "Série noire",
   "transcriptSource": "youtube",

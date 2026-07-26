@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribue a Doria (ref. Constance sa co-autrice). Transcript non diarise.",
     "reason": "'Constance c'est elle qui m'a fait decouvrir Fleabag, moi je ne connaissais pas et j'adore, evidemment'. Endossement enthousiaste. Attribution corrigee (etait Navo, mais Constance est la co-autrice de Doria).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Phoebe Waller-Bridge",
@@ -61,7 +62,7 @@
     "openai"
   ],
   "id": "ubm-0217",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

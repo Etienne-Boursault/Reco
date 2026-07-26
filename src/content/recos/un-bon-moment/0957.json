@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Createurs reels : Lee Eisenberg & Gene Stupnitsky (fiche dit 'Greg Daniels, Mike Judge').",
     "reason": "'Jury Duty. C'est vraiment, c'est trop bien... par l'equipe de The Office sur Amazon'. Serie Amazon confirmee. Eloge net. Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Greg Daniels, Mike Judge",
+  "creator": "Lee Eisenberg & Gene Stupnitsky",
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "justwatch": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR",
@@ -78,6 +79,7 @@
     }
   ],
   "quote": "Jury Duty. C'est vraiment, c'est trop bien.",
+  "recommendedBy": "Navo & Freddy Gladieux",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:58:06",
@@ -88,12 +90,10 @@
   ],
   "watchProviders": [
     {
-      "ethics": "avoid",
       "label": "Amazon Prime Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty"
     },
     {
-      "ethics": "avoid",
       "label": "Amazon Prime Video with Ads",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Jury%20Duty"
     }

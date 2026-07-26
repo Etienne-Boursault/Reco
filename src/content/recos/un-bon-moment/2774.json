@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Album confirmé : Ichon « Pour de vrai » (2020, produit par PH Trigano et Crayon). Canonique ; ubm-0770 (titre « Dichon », attribué à Navo) et ubm-1080 sont des doublons.",
     "reason": "Segment recommandations : Julien Granel recommande explicitement l'album « Pour de vrai » d'Ichon (« très bel album, magnifique album », « l'album il est incroyable »).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ichon",
@@ -38,7 +39,7 @@
     "openai"
   ],
   "id": "ubm-2774",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Reference vague (discours de remise de prix non identifie precisement). Canonique du cluster Villeneuve (ubm-1203, ubm-2889 discardes). Invite Pana absent des metadonnees.",
     "reason": "Discours de Denis Villeneuve (remise de prix, recommande la psychanalyse) relaye par Pana avec substance et adhesion (« ca m'a fait kiffer »), mais instrumental a son propos sur la therapie, sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Denis Villeneuve",

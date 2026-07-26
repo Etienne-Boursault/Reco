@@ -5,6 +5,7 @@
     "date": "2026-07-14",
     "model": "claude-opus-4-8",
     "reason": "'Ridicule' cite a cote de 'Les Grands Ducs' comme films de Leconte ayant relance Rochefort ; le 'allez voir' explicite ne porte que sur Les Grands Ducs. Ridicule = evoque avec contexte, sans prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Patrice Leconte",
@@ -24,7 +25,7 @@
     "anthropic"
   ],
   "id": "ubm-3005",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",

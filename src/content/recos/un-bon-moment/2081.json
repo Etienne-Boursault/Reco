@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Documentaire 'Bref de bons amis' de Nicolas Beguet (real de l'emission), sur Disney+ (02:00:52). Mention en credits avec cadre positif ('infaillible') mais sans prescription explicite ; Beguet n'est pas invite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Nicolas Béguet",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "qui s'appelle Bref de bons amis",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:00:52",

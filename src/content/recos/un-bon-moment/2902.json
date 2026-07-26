@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Un des deux invités (Bigflo ou Oli) — round 'les gars avez-vous un truc à recommander?'. Album de référence: 'Il me ressemble pas non plus'.",
     "reason": "Recommandation publique explicite d'un invité: 'Moi je recommande vraiment l'artiste Khali... n'hésitez pas... je suis tombé fan' (~01:20:04). Khali = rappeur new-wave réel (album 'Il me ressemble pas non plus').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "652406c019376d001282c4d8",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "Moi, je recommande vraiment l'artiste Khali.",
+  "recommendedBy": "Oli",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:04",

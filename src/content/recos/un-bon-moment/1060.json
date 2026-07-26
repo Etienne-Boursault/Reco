@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain: tour de reco final (invites d'abord), lecteur de mangas — probablement un invite (Odah/Dako) ou Navo. Transcript non diarize.",
     "reason": "Reco de la chaine YouTube 'Chef Otaku' (reviews de mangas) au tour de reco final ('je regarde beaucoup... il a une vraie analyse, une culture de ouf, apporte un vrai plus'). Reco enthousiaste = validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
@@ -57,6 +58,7 @@
     }
   ],
   "quote": "Moi je regarde beaucoup la chaîne du chef otaku.",
+  "recommendedBy": "Odah",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:36",

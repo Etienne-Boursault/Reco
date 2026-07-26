@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Film reel (Le Nouveau, R. Rosenberg 2015) mais co-ecriture par un host NON verifiable (absent des credits Wikipedia). Locuteur = Kyan ou Navo, non diarizable. Humain a trancher guest-work vs citation + attribution.",
     "reason": "Un host affirme avoir aide a ecrire le film 'Le Nouveau' (2015, Rudi Rosenberg) et decrit une scene cruelle en anecdote pour illustrer une histoire d'enfance. Substance mais pas de prescription au public -> citation (oeuvre d'un host passee en anecdote).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
@@ -68,7 +69,7 @@
   ],
   "quote": "J'avais aidé à écrire un film qui s'appelle Le Nouveau.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:24:14",
   "title": "Le Nouveau",
   "transcriptSource": "youtube",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel = 'Civilisation' (Orelsan, 2021), pas 'La Civilisation'.",
     "reason": "Album d'Orelsan evoque pour sa pochette iconique (shootee par Alice Moitie) : 'cette pochette tout le monde la connait, c'est exceptionnel'. Substance reelle mais aucune prescription d'ecoute.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Orelsan",
@@ -81,6 +82,7 @@
     }
   ],
   "quote": "Et tu as photographié aussi les albums d'Aurel-san qu'on connaît, La Civilisation.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:05:56",

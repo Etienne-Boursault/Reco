@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique ; doublons ubm-2530 et ubm-0694 (meme moment 00:50:26-00:50:35) -> discard. Locuteur hote non departageable Kyan/Navo (echange a plusieurs voix) -> attribution videe. Titre en anglais et 'Denis'->'Dennis Bergkamp'.",
     "reason": "Reco explicite : 'je vous invite a aller le voir sur YouTube avec des commentaires hollandais' -> le but iconique de Dennis Bergkamp (quart de finale CM 1998). Canonique retenu parmi 3 doublons Bergkamp (type 'video' le plus juste).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Denis Bergkamp",
   "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
   "extractionHistory": [
     {
@@ -30,6 +30,9 @@
   ],
   "id": "ubm-2525",
   "kind": "reco",
+  "linkOverrides": {
+    "YouTube": "https://www.youtube.com/watch?v=XsZkCFoqSBs"
+  },
   "links": [
     {
       "ethics": "neutral",
@@ -39,10 +42,11 @@
     }
   ],
   "quote": "je vous invite que tu es allé le voir sur YouTube avec des commentaires hollandais",
+  "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:50:34",
-  "title": "Denis Bergkamp's goal in 1998 World Cup quarterfinal",
+  "title": "Netherlands - Argentina: Bergkamp Goal 1998",
   "transcriptSource": "youtube",
   "types": [
     "video"

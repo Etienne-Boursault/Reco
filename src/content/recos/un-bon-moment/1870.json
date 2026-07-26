@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Fanny Ruwet (humoriste belge, spectacle 'On disait qu'on faisait la fete', Olympia 02/01/2026).",
     "reason": "Reco explicite : 'Fanny Ruet! Qui est un spectacle formidable, allez-y, pitie!' (Olympia 2 janvier). Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Fanny Ruet",
+  "creator": "Fanny Ruwet",
   "episodeGuid": "68fa552292f5a6f127100027",
   "extractionHistory": [
     {
@@ -73,10 +74,11 @@
     }
   ],
   "quote": "Fanny Ruet ! Qui est un spectacle formidable, allez-y, pitié !",
+  "recommendedBy": "Kyan Khojandi & Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:55:04",
-  "title": "Fanny Ruet",
+  "title": "On disait qu'on faisait la fête",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

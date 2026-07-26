@@ -5,6 +5,7 @@
     "date": "2026-07-17",
     "model": "claude-opus-4-8",
     "reason": "Discussion cinephile substantielle mais divisee: un host 'un des meilleurs films que j'ai vu / completement fou', l'autre 'j'ai pas kiffe / c'est nul' (01:11:28-01:13:20). Pas de prescription unifiee -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Daniel Kwan, Daniel Scheinert",
@@ -29,7 +30,7 @@
     "anthropic"
   ],
   "id": "ubm-1136",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:28",

@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Discussion mutuelle Kyan/Navo, pas de recommandeur clair.",
     "reason": "The Rehearsal (Nathan Fielder) discutee avec substance (comparaison a la logique de Navo, 'tu vas etre d'accord avec Nathan Fielder') mais reaction mitigee/negative ('trop bizarroide', 'pas vu en entier') et aucune prescription -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Nathan Fielder",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "T'as vu du « Rehearsal » ?",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:15:51",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du doublon Charlie (l'autre = ubm-0340). tmdb 11497 correct.",
     "reason": "Reco explicite d'un film pour pleurer ('il faut regarder', 'si vous voulez pleurer jusqu'a epuisement'). All Dogs Go to Heaven (1989), titre FR 'Charlie'. Transcript non diarize : prescripteur non sur (extraction disait Navo, non confirmable) -> recommendedBy vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6960deefb86949aa06496e27",
@@ -42,6 +43,7 @@
     }
   ],
   "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » Et le nom en français c'est Charlie",
+  "recommendedBy": "Alice Moitié",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:47:38",

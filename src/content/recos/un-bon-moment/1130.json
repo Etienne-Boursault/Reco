@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy corrige de 'Navo' vers 'Paul Mirabel' (invite reel). Canonique Diams (1130 vs 1242). Orthographe correcte = 'Diam's' (avec apostrophe, Melanie Georgiades) -> titre a corriger en 'Discographie de Diam's'.",
     "reason": "Paul recommande explicitement toute l'oeuvre integrale de Diam's (01:12:44, 'je vous recommande toute l'oeuvre integrale de Diams parce qu'il y a tout dedans'). Canonique du cluster Diams (capte 'discographie' mieux que le titre unique).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Diams",
@@ -43,7 +44,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:43",
-  "title": "Discographie de Diam's",
+  "title": "Diam's",
   "transcriptSource": "acast",
   "types": [
     "album"

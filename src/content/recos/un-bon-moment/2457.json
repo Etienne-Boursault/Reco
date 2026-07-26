@@ -5,6 +5,7 @@
     "date": "2026-07-17",
     "model": "claude-opus-4-8",
     "reason": "Episode de Joe Rogan Experience cite comme source de l'anecdote sur David Choe (le peintre milliardaire de Facebook). Enthousiasme reel (« super episode ») mais mention embarquee dans le recit, prescription douce (« vous pouvez voir toutes ses aventures ») -> citation plutot que validate.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
@@ -39,7 +40,7 @@
     }
   ],
   "quote": "Il y a un super épisode de Joe Rogan Experience où il y a David Shaw où vous pouvez voir toutes ses aventures et tout.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:05:17",

@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "«Je veux de la lumiere» de Philemon Cimon (Quebecois); corriger le champ creator: «Philemon Cimon» (transcript «Fineon» = artefact de «Philemon»). Attribution host/invite incertaine -> recommendedBy vide.",
     "reason": "Recommandation explicite d'une chanson ('cette chanson est fabuleuse', 'elle est incroyable, douce, belle', 'j'ai beaucoup ecoute'). Segment de recos.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Finéon",
+  "creator": "Philémon Cimon",
   "episodeGuid": "61c5abab76bee100120dd720",
   "extractionHistory": [
     {
@@ -57,12 +58,14 @@
     }
   ],
   "quote": "Ça s'appelle 'Je veux de la lumière' de Finéon.",
+  "recommendedBy": "Fanny Ruwet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:39",
   "title": "Je veux de la lumière",
   "transcriptSource": "youtube",
   "types": [
-    "musique"
+    "musique",
+    "artiste"
   ]
 }

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Host non identifiable (Kyan ou Navo, transcript non diarisé) -> recommendedBy vide. Réalisateur = Patrice Leconte (le champ creator liste les acteurs Rochefort/Noiret/Marielle).",
     "reason": "Recommandation publique explicite par un host ('ce film des grands ducs qui est incroyable que je recommande', 'allez voir les grands ducs', 'grand grand film d'acteurs').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jean Rochefort, Philippe Noiré, Jean-Pierre Marielle",
@@ -69,7 +70,7 @@
     }
   ],
   "quote": "les grands ducs qui est incroyable que je recommande",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:48:27",

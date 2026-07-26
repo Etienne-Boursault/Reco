@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Creator a corriger : 'Zao de Sagazan' -> 'Zaho de Sagazan'. Qui recommande = ambigu (drafts divergent Navo/Zazie), laisse vide.",
     "reason": "Recommandation culturelle dans le rituel de fin : Zaho de Sagazan presentee ('jeune artiste, beau texte'), album 'La Symphonie des eclairs' cite avec enthousiasme ('Tristesse, vous allez kiffer'). Album 2023 confirme reel.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Zao de Sagazan",
+  "creator": "Zaho de Sagazan",
   "episodeGuid": "6599c3998e40b300163f8618",
   "extractionHistory": [
     {
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "C'est une jeune artiste, auteur-compositeur, interprèteuse et avec une belle personnalité, beau texte, un univers musical un peu défini.",
+  "recommendedBy": "Zazie",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:23:07",

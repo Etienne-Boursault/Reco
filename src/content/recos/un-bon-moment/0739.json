@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine : presente par un host au titre de la production FKLG (Navo ou Kyan indetermine) -> recommendedBy vide. creator 'Ana Aptair' -> Anna Apter.",
     "reason": "Cher Journal d'Anna Apter (emission, production FKLG) presente en fin d'emission avec fort eloge : 'incroyable', 'une artiste avec un univers incroyable' (01:21:36-56). Reco reelle d'une oeuvre reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ana Aptair",
@@ -57,6 +58,7 @@
     }
   ],
   "quote": "Donc oui, Cher Journal d'Anna Apter, qui est incroyable.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:56",

@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte: Louis Chappey (pas 'Chappe'). Recommandeur non-Navo (invite non identifie).",
     "reason": "Section 'recommandez un jeune humoriste qu'on booste' ; Louis Chappey (reel, resident Barbes Comedy Club) recommande. Recommandeur = un invite (Navo dit ne pas le connaitre), non identifiable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louis Chappé",
@@ -50,10 +51,11 @@
     }
   ],
   "quote": "Louis Chappé c'est un jeune.",
+  "recommendedBy": "Rémi Boyes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:05",
-  "title": "Louis Chappé",
+  "title": "Louis Chappey",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandé par l'autre invité (probablement Ben Mazué), non diarisé.",
     "reason": "Recommandation explicite dans le même tour de reco : « j'ai adoré... très bien écrit, très efficace ». Série Netflix, pas une œuvre d'invité.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bill Dubuque, Mark Williams",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "j'ai vu Ozark là vous avez dû le voir, ça Ozark sur Netflix",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:34:51",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du groupe Etincelle (doublon ubm-0321). Oeuvre du mari de l'invitee (Wax), non guest-work (Wax non invite). Attribution corrigee: Penelope Bagieu. Timecode ~01:56:06. Invitee absente de guests[].",
     "reason": "Penelope recommande 'Etincelle volume 2' de son mari Wax (sortie vendredi, duos avec MC Solaar/Ebony; elle a dessine la pochette).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Wax",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "il sort un album vendredi qui s'appelle Étincelle volume 2",
+  "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:56:06",

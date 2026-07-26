@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Verifie transcript 01:41:18. Doublon collapse : ubm-2594 (meme instant, 'Dua Lipa' artiste) est discard. Attribution VIDE car les extractions se contredisent (Kyan vs Navo) ; c'est un hote, probablement Kyan (l'autre hote que celui de Dave/High Maintenance), mais non trancable.",
     "reason": "Reco explicite de l'album 'Future Nostalgia' de Dua Lipa : 'j'ai beaucoup aime l'album de Dua Lipa... en realisation c'est genial'. Album reel (2020). Canonique pour Dua Lipa.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Dua Lipa",
@@ -56,6 +57,7 @@
     }
   ],
   "quote": "Moi, j'ai beaucoup aimé l'album de Dua Lipa... De ? De Dua Lipa... Quoi ? Let's get physical...",
+  "recommendedBy": "Freddy Gladieux",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:18",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour la chaine YouTube recommandee par Navo (analyse d'EEAAO). Orthographe reelle = « Bolchegeek » (titre stocke « Bolche Geek »). Doublon discarde : ubm-0944.",
     "reason": "Canonique; chaine YouTube recommandee par Navo (analyse EEAAO). Orthographe reelle Bolchegeek.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6599c1b296596600156961a7",
@@ -51,7 +52,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:39",
-  "title": "Bolche Geek",
+  "title": "Bolchegeek",
   "transcriptSource": "youtube",
   "types": [
     "video"

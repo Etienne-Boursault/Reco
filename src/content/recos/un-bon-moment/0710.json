@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "00:32:18 : Primer presente comme 'le meilleur film de paradoxes temporels', 'ca va te plaire c'est sur'. Reco reelle (repris a 01:16:58). Locuteur non identifiable avec certitude (echange a plusieurs) -> recommendedBy vide.",
     "reason": "Film reel (Primer) recommande avec enthousiasme aux amateurs de paradoxes temporels",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Shane Carruth",
@@ -67,6 +68,7 @@
     }
   ],
   "quote": "Quand tu veux passer un bon moment.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:32:28",

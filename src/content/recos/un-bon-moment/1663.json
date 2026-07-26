@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Alice Moitie absente du champ guests (voir anomalie). Podcast confirme (Nouvelles Ecoutes, depuis mai 2025).",
     "reason": "Podcast 'Alice Underground' d'Alice Moitie (invitee), presente/introduit par Kyan et loue par les hosts ('le formidable podcast d'Alice, qui est super, genial, on adore'). Oeuvre de l'invitee -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "6960deefb86949aa06496e27",
@@ -50,7 +51,7 @@
     }
   ],
   "quote": "Alice Lost du podcast Alice Underground.",
-  "recommendedBy": "Alice Moitie",
+  "recommendedBy": "Alice Moitié & Alice Moitie",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:04:00",

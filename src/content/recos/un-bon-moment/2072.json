@@ -5,9 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'les 25 minutes de Merwan Benazard qui sont excellentes aussi' (01:55:16), specials YouTube. Reco explicite. Locuteur ambigu.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Merwan Benazard",
+  "creator": "Merwane Benlazar",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "extractionHistory": [
     {
@@ -40,10 +41,11 @@
     }
   ],
   "quote": "et il y a les 25 minutes là de Merwan Benazard qui sont excellentes aussi",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:55:16",
-  "title": "Merwan Benazard",
+  "title": "EXTRAIT INÉDIT DE MON PREMIER SPECTACLE",
   "transcriptSource": "youtube",
   "types": [
     "video"

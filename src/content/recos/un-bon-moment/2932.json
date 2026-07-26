@@ -9,8 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'Pulsions' (avec s). Captation vendue sur la boutique (mentionnee en fin d'episode).",
     "reason": "Auto-promo host: 'Pulsions', ancien spectacle de Kyan (200+ dates, traitant du deuil, interrompu par la pandemie), dont il pointe la captation disponible ('les gens qui veulent le voir, hop'). OEuvre d'un host presentee/pointee par lui -> guest-work, proprietaire Kyan Khojandi.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
+  "creator": "Kyan Khojandi & Bruno Muschio",
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
     {
@@ -48,9 +50,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:06",
-  "title": "Pulsion",
+  "title": "Pulsions",
   "transcriptSource": "youtube",
   "types": [
-    "spectacle"
+    "spectacle",
+    "video"
   ]
 }

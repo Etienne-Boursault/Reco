@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom/plateforme non revalides (WebSearch epuise) ; attribution non diarizee -> vide.",
     "reason": "Recommandation d'un compte reel (Freddy Fred, scenarios avec son chien) dans le jeu des recos : 'c'est genial, tu vas voir' (01:16).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Freddy Fred",
@@ -41,6 +42,7 @@
   "kind": "reco",
   "links": [],
   "quote": "Freddy Fred ! C'est des scénariés avec son chien ! Tu vas voir la croyance ! Tu vas voir c'est génial !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:16:17",

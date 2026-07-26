@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Champ 'creator' errone (fiche dit 'Kyan Khojandi') : c'est le spectacle de Morgane Cadignan.",
     "reason": "Spectacle 'La Nuit je mens' de Morgane Cadignan (invitee), presente en auto-promo avec dates/tournee (Nouvelle-Eve, France/Canada/Suisse/Belgique, jan-avril 2026). Confirme web.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Kyan Khojandi",
+  "creator": "Morgane Cadignan",
   "episodeGuid": "68fa552292f5a6f127100027",
   "extractionHistory": [
     {

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Artiste Instagram @pataques ; affichage exact 'Pataques' (accent). Doublon: ubm-2373.",
     "reason": "Navo recommande explicitement ('Navo t'as une reco? ... je vais recommander un compte Instagram Patakes ... un street artiste, c'est tres style ce qu'il fait'). Titre proche du handle = canonique; ubm-2373 = doublon avec titre errone 'Patakes'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",

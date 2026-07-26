@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Un des deux invités (Bigflo ou Oli), transcript non diarizé — attribution laissée vide.",
     "reason": "Breaking Bad nommé comme grande série aux côtés de Succession ('il y a Breaking Bad et Succession aussi', 'une des meilleures séries'). Mention brève mais positive, pas de prescription développée.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Vince Gilligan",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Il y a Breaking Bad et Succession aussi.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:21:01",

@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte: Fred Cham (titre actuel 'Fredcham'). Passage 01:12:21.",
     "reason": "Section 'recommandez un jeune humoriste' ; Fred Cham (reel, stand-up parisien) recommande. Attribution entre invites incertaine (cercle de Remi).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Fredcham",
@@ -56,10 +57,11 @@
     }
   ],
   "quote": "Fredcham aussi.",
+  "recommendedBy": "Rémi Boyes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:21",
-  "title": "Fredcham",
+  "title": "Fred Cham",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

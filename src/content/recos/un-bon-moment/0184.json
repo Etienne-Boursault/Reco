@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Doc Netflix 'Wild Wild Country' (transcript: 'Wall Wall Country').",
     "reason": "Reco enthousiaste avec pitch : 'C'est incroyable... c'est fou', puis resume (secte en Inde qui demenage aux USA = doc Netflix Rajneesh). Attribution incertaine (non diarize).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Documentaire",
@@ -77,6 +78,7 @@
     }
   ],
   "quote": "C'est incroyable. Un peu long, mais c'est fou.",
+  "recommendedBy": "Freddy Gladieux",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:28:49",

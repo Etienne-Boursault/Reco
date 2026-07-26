@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Ambigu film/spectacle: le film est de Klapisch (guest-work); la pièce recommandée est d'Agnès Jaoui & Jean-Pierre Bacri (créateur du volet 'spectacle'). À scinder éventuellement.",
     "reason": "Film de Klapisch (1996) présenté par lui -> guest-work. Il recommande AUSSI explicitement la pièce de théâtre source à 00:40 ('que je recommande, achetez la pièce').",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -70,7 +71,7 @@
     }
   ],
   "quote": "Un air de famille pendant longtemps c'était le film que j'ai fait qui a le mieux marché",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:40:04",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Le timestamp 00:46:42 et la citation pointent le 'jeu de la complicite' (instrumental). La vraie reco est a 01:19:12 : 'Game of Thrones... j'ai vu pendant le confinement, c'etait tres agreable' (tour de recommandations). Timestamp + quote a corriger vers 01:19:12. Locuteur (invite) non certain -> recommendedBy vide.",
     "reason": "Serie reelle, recommandee (mollement) dans le tour de recos a 01:19:12",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "David Benioff, D.B. Weiss",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Parce que ce n'est pas à toi parce qu'il n'y a pas sa mémoire.",
+  "recommendedBy": "Jérôme Niel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:12",

@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du doublon Nardwuar/Nardouer (ubm-2957 discard). Attribution incertaine entre les deux hosts (extractions divergentes : Navo vs Kyan).",
     "reason": "Nardwuar (intervieweur canadien, « chocs mentaux »), reco reelle : « n'hesitez pas a voir l'homme... sur YouTube. Il est tres drole » (00:20:45).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Nardwuar",
   "episodeGuid": "6322de1f35ce9e001229f98a",
   "extractionHistory": [
     {
@@ -44,12 +44,14 @@
     }
   ],
   "quote": "Si vous aimez les chocs mentaux, n'hésitez pas à voir l'homme qui a carrément vraiment fait ça, à un niveau incroyable avec des rappeurs qui s'appellent Nardware sur Youtube.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:20:46",
-  "title": "Nardwuar",
+  "title": "Nardwuarserviette",
   "transcriptSource": "acast",
   "types": [
+    "artiste",
     "autre"
   ]
 }

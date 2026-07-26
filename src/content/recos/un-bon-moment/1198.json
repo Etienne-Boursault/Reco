@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandee par un host (Kyan ou Navo). Non diarize. Canonique du groupe Anaide Rozam.",
     "reason": "Comedienne Anaide Rozam (Instagram) recommandee : « il y a deux meufs que je voulais recommander ». Orthographe 'Anaide Rozam' verifiee (vs 'Rosam'/'Anaid').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
@@ -37,6 +38,7 @@
     }
   ],
   "quote": "C'est Anaïde Rosam, qui est assez connu, quand même, maintenant.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:48:22",

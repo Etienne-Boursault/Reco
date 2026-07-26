@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite reel = Laurent Baffie (guests metadata VIDE, a completer). Champ creator existant 'Laurent Baffy' est une faute d'orthographe pour 'Laurent Baffie' (non modifiable par le script apply_verdicts). Timecode 00:09:16 exact (transcript 00:09:16-00:09:23).",
     "reason": "Livre de l'invite Laurent Baffie presente par lui-meme et decrit substantiellement ('c'est un succes', il en a tire les meilleurs passages pour construire son one-man). Titre verbatim transcript a 00:09:20 et 00:48:19. Auto-promo invite = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Laurent Baffy",

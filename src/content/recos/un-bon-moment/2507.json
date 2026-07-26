@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre a corriger : « Vincent Delerm » (chanteur/auteur-compositeur). Doublon ubm-1257 -> discard.",
     "reason": "Reco explicite : « J'aime beaucoup Vincent de Lerme », « on adore » (01:21:52-01:22:02), en reponse au prompt adresse a Navo.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Vincent de Lerme",

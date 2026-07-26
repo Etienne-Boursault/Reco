@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution Kyan indicative (discussion collective, transcript non diarize).",
     "reason": "Parti d'un jeu de mots (Camera cachee / Camera Cafe) mais developpe en vraie discussion du concept (camera cachee = espionnage de salaries, requalification CDI, DVD encore en vente, Bruno Solo). Substance sans prescription -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
@@ -36,7 +37,7 @@
   "quote": "Caméra Café. Elle était cachée dans la machine à café.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:22:41",
   "title": "Caméra Café",
   "transcriptSource": "youtube",

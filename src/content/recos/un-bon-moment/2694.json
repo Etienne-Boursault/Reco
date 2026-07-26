@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "guests[] vide dans les metadonnees episode — a completer avec 'Hakim Jemili'.",
     "reason": "Valide = serie (Canal+) ou Hakim Jemili est a l'affiche, citee par lui au rituel 'serie recommandee' de fin ('Valide', 'vous l'avez compris') + endossement 'Valide j'ai surkiffe meme en tant que spectateur'. Oeuvre d'invite presentee par lui.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Franck Gastambide",

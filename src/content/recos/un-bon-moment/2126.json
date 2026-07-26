@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Handle volontairement obscur (jeu sur « Molotov » orthographié « Mulotov »/« Mulhoff », cf. 01:10:59-01:11:24) — vérifier le handle Instagram exact avant publication. Non diarizé : recommandeur à compléter.",
     "reason": "Recommandation explicite (01:10:47-01:11:30 : « j'ai découvert quelqu'un de super... SS Mulotov sur Instagram... très intelligent, très drôle, très perché, j'adore »). Compte Instagram réel recommandé → validate. Canonique du cluster.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "SS Mulotov",
   "episodeGuid": "65ed94b586967e0017c06729",
   "extractionHistory": [
     {
@@ -40,6 +40,9 @@
   ],
   "id": "ubm-2126",
   "kind": "reco",
+  "linkOverrides": {
+    "Instagram": "https://www.instagram.com/ssmulotov/?hl=fr"
+  },
   "links": [
     {
       "ethics": "neutral",
@@ -49,13 +52,13 @@
     }
   ],
   "quote": "Bah, comment elle s'appelle ?",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:28",
-  "title": "SS Mulotov",
+  "title": "Mulov",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "autre"
+    "artiste"
   ]
 }

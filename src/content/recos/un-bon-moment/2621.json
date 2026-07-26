@@ -5,6 +5,7 @@
     "date": "2026-07-14",
     "model": "claude-opus-4-8",
     "reason": "Fez (Polytron, 2012) evoque de facon nostalgique/analytique ('Vous vous rappelez de Fez ?', description du twist 2D->3D et de la fin) plus que prescriptive.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "Vous vous rappelez de Fez ?",
+  "recommendedBy": "Woodkid",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:07:32",

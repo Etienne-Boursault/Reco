@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : 'Mustafa the Poet'. Attribue a Woodkid (question 'Johan, t'as un truc a recommander ?' posee juste avant) mais non-diarise, a confirmer. guests VIDE mais Woodkid invite.",
     "reason": "Dans le tour de recos : 'En ce moment j'ecoute beaucoup Mustapha The Poet, je trouve ca tres beau' (jeune artiste a booster). Artiste reel (Toronto, gros momentum en 2020).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommande par un host : le locuteur dit 'Fais-en un' a Julien puis 'qui fait partie des choses que je reverais de faire un jour' -> donc pas Julien lui-meme. Distinction Kyan/Navo impossible. recommendedBy vide.",
     "reason": "Film reel (I'm Still Here, Joaquin Phoenix, 2010) cite comme 'une des references absolues du faux documentaire' a 01:05:05, avec admiration, dans le segment recommandations. Endossement positif explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Joaquin Phoenix",
@@ -52,7 +53,7 @@
     "openai"
   ],
   "id": "ubm-1090",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Il y a ce I'm Still Here de Joachim Phoenix qui est pour moi une des références absolues du faux documentaire.",
+  "recommendedBy": "Julien Doré",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:05:05",

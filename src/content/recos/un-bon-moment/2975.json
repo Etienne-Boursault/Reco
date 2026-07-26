@@ -5,6 +5,7 @@
     "date": "2026-07-07",
     "model": "claude-opus-4-8",
     "reason": "South Park analyse avec substance (00:34:48, « j'ai decortique South Park... mecaniques, sequences de 30s/1min/1min30, message nickel, 26 minutes ») comme objet d'etude. Substance reelle, prescription conditionnelle -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
@@ -50,7 +51,7 @@
   ],
   "quote": "j'ai décortiqué South Park avec un copain",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:34:48",
   "title": "South Park",
   "transcriptSource": "youtube",

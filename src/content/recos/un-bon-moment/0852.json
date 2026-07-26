@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Capitaliser le titre 'panorama' -> 'Panorama'.",
     "reason": "Album Panorama (2019) de VD evoque en discutant sa methode (arrangement avant paroles) — substance sur la genese mais pas de prescription ; name-drop de l'album -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Vincent Delerm",
@@ -70,7 +71,7 @@
     }
   ],
   "quote": "Pour Panorama ?",
-  "recommendedBy": "Vincent Delerm",
+  "recommendedBy": "Navo & Vincent Delerm",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:29:27",

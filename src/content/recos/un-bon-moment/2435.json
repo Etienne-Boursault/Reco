@@ -5,6 +5,7 @@
     "date": "2026-07-17",
     "model": "claude-opus-4-8",
     "reason": "Œuvre du host Kyan Khojandi citée en anecdote / repère temporel ('c'était tout frais, bref' ; distribution de Bref sur YouTube), sans presentation ni prescription -> citation (regle host-anecdote).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
@@ -40,7 +41,7 @@
   ],
   "quote": "c'était tout frais, bref",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:03:56",
   "title": "Bref",
   "transcriptSource": "youtube",

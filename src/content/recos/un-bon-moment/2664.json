@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur partagé (« nos »).",
     "reason": "Réalisateur cité (« un de nos réalisateurs préférés ») avec sa chaîne YouTube décrite (méditation, météo quotidienne) comme exemple de créativité protéiforme. Substance réelle, pas de prescription directe.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "David Lynch",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "tu regardes la chaîne YouTube de David Lynch",
+  "recommendedBy": "François Descraques",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:48",

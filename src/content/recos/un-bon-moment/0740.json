@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution Navo probable (host récurrent qui recommande 'comme d'hab', s'adresse à Kyan) mais transcript non diarisé. Broadway (2020) est bien le 2e roman de Fab Caro, dans le ton du Discours — conforme au transcript.",
     "reason": "Segment recos de fin (01:24) : prescription claire d'un roman réel non lié à un invité — 'je vais vous conseiller Broadway de Fab Caro' + 'si vous avez aimé le discours je pense vraiment que vous kifferez Broadway'. Locuteur non-Kyan (il s'adresse à Kyan à la 3e pers.) qui cite 'comme d'hab' → host Navo.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Fab Caro",
@@ -54,7 +55,7 @@
     }
   ],
   "quote": "je vais vous conseiller Broadway de Fab Caro",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:24:38",

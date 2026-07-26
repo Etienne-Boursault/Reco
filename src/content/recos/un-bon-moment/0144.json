@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy = Tahnee par ordre de parole (Kyan demande 'et toi ?' apres Lou puis Navo ; restait Tahnee). Invitee absente de guests[].",
     "reason": "Recommandation explicite dans le segment recos ('un profil a suivre ... une voix exceptionnelle ... a tomber'). Tessa B (Marine Basset), chanteuse/covers Instagram, confirmee reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Tessa B",
@@ -66,7 +67,7 @@
     }
   ],
   "quote": "Une artiste qu'on peut retrouver sur Instagram qui s'appelle Tessa B, qui a une voix…",
-  "recommendedBy": "Tahnee",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:22:22",

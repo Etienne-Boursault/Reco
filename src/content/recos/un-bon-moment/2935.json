@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour ce livre/spectacle (doublon ubm-0828 discardé). Maurice invité absent de guests.",
     "reason": "Livre/spectacle « Fort comme un hypersensible » de Maurice, socle de l'épisode, présenté par lui (00:03:10). Œuvre d'invité => guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Maurice Barthélémy",
@@ -55,7 +56,7 @@
     }
   ],
   "quote": "c'est l'adaptation d'un livre que tu as écrit qui s'appelle fort comme un hypersensible",
-  "recommendedBy": "Maurice Barthélemy",
+  "recommendedBy": "Kyan Khojandi & Maurice Barthélemy",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:03:10",

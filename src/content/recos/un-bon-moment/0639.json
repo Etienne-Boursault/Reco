@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco a moitie degonflee par vanne ('il a besoin de force donc ecoutez pas', ironique, Squeezie est deja enorme) ; attribution non diarizee -> vide.",
     "reason": "Recommandation d'une chaine YouTube reelle (Squeezie / Lucas Hauchard) dans le jeu explicite 'recommandez une chaine que vous kiffez' (01:13).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Lucas Hauchard",
@@ -45,7 +46,7 @@
   ],
   "quote": "Les gars, c'est Squeezie.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:13:37",
   "title": "Squeezie",
   "transcriptSource": "acast",

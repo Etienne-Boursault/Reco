@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Endossement explicite porte sur Parks and Recreation, pas directement sur The Office.",
     "reason": "The Office cite/discute ('je regarde The Office, tous les trucs VIP' ; sert de reference 'si vous aimez The Office') mais sans prescription enthousiaste directe -> citation. Locuteur incertain.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Greg Daniels, Ricky Gervais",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "Je regarde \"The Office\", enfin, tous les trucs VIP, Parks and Recreations, tout ça, quoi.",
+  "recommendedBy": "Doria Tillier",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:30",

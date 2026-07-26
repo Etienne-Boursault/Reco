@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Laurie Peret évoque son passé de comédienne dans « Mozart l'Opéra Rock » [00:52:58] comme cadre d'une anecdote (le conseil « garde ton insolence ») — pas de prescription sur le spectacle. Attribution « Navo » d'origine erronée (c'est Laurie, « je fais Mozart l'Opéra Rock »). Laurie absente de guests[].",
     "reason": "Œuvre passée de l'invitée, cadre d'une anecdote.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Éric Rouquette, Olivier Schultheis, et autres",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "Je fais Mozart l'Opéra Rock.",
+  "recommendedBy": "Laurie Peret",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:52:58",

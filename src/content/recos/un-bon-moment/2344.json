@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invité = Cédric Klapisch (compléter métadonnées).",
     "reason": "Film 'Paris' (2008) de Klapisch présenté par lui (histoires de fratries; anecdote projection en Chine). Guest-work; recommendedBy réattribué de Kyan à Cédric (c'est l'invité qui présente son film).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -45,7 +46,7 @@
     }
   ],
   "quote": "le film Paris c'est beaucoup sur des histoires de frères et sœurs",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:41:22",

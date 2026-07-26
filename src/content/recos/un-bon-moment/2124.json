@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : « Blandine Lehout » (site blandinelehout.com ; épelée « L-E-H-O-U-T » à l'antenne) — corriger « Lehoux ». Non diarizé : recommandeur à compléter.",
     "reason": "Recommandation explicite (01:09:08 : « je vais recommander une humoriste, Blandine Lehout... son spectacle est très drôle »). Humoriste réelle. Canonique du cluster.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Blandine Lehoux",
@@ -55,10 +56,11 @@
     }
   ],
   "quote": "Eh ben, je vais recommander une humoriste, Blandine Lehoux.",
+  "recommendedBy": "Tristan Lopin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:09:12",
-  "title": "Blandine Lehoux",
+  "title": "Blandine Lehout",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

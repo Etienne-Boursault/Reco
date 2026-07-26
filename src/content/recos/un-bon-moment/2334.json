@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "creator 'Cédric Clapichon' -> Cédric Klapisch. Titre correct ici (doublons à titre corrompu discardés).",
     "reason": "Film de Klapisch (1996) présenté par lui (genèse depuis un court-métrage, succès international). Guest-work. Canonique (doublons ubm-2343, ubm-2338).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -50,7 +51,7 @@
     }
   ],
   "quote": "Chacun cherche son chat c'est un peu la même histoire",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:28",

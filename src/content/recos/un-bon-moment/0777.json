@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution corrigee Kyan -> Marina Rollman (c'est Marina qui raconte). Marina est invitee absente du champ guests.",
     "reason": "Marina decrit le court-metrage des freres Duplass 'Hello, This is John' ('hyper chouette', plan-sequence d'un gars qui sombre dans la folie en 8 min). Substance + appreciation positive, mais evoque en appui de son anecdote sur le livre des freres Duplass (pas de prescription directe).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Frères Duplace",
@@ -61,10 +62,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:18:30",
-  "title": "Hello, this is John",
+  "title": "This is John",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

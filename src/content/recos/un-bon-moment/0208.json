@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct : Thomas VDB s'acclimate (transcript coupe le 'VDB').",
     "reason": "Emission de l'invite promue en outro : 'Thomas VDB s'acclimate, c'est sur MyCanal, ecrit par Navo aussi et Audrey'. Auto-promo assumee.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Navo et Audrey",
@@ -58,7 +59,7 @@
     }
   ],
   "quote": "Thomas BDB S'acclimate c'est sur My Canal",
-  "recommendedBy": "Thomas VDB",
+  "recommendedBy": "Kyan Khojandi & Thomas VDB",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:48:47",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco attribuée au guest (Thomas VDB). Guests épisode = « Thomas VDB » (déjà correct).",
     "reason": "« Bon Chien Chien », dernier spectacle de l'invité Thomas VDB (00:03:57 : « mon dernier spectacle qui s'appelait Bon Chien Chien »), présenté par lui dans un contexte de promo. Œuvre d'invité → guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Thomas VDB",
@@ -41,7 +42,7 @@
   "quote": "j'avais bien l'idée de pas disparaître complètement quoi de rester un peu présent quoi",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:04:35",
   "title": "Bon Chien Chien",
   "transcriptSource": "youtube",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Realisateur a corriger: « Guillaume Brac » (pas « Braque »). Recommande par un invite (Xavier ou Ambroise), non diarize.",
     "reason": "Recommandation explicite (~01:04:29) : « moi je recommanderais un film qui s'appelle A l'abordage... j'adore, c'est une tres belle chronique d'ete ». Film de Guillaume Brac (2020), verifie.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Guillaume Brac",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "un film qui s'appelle À l'abordage de Guillaume Braque",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:29",

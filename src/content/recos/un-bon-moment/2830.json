@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Borderline citation/discard; garde en citation pour la substance descriptive. recommendedBy vide (Fanny + precision d'un host).",
     "reason": "Kings of Comedy Club, club de stand-up reel a Bruxelles decrit avec substance ('un des principaux, tres chouette, ou tout le monde a commence, appartenait a Alex Vizorek'), mais mention contextuelle (Fanny y teste ses vannes), sans prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Kings of Comedy Club",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "Kings of Comedy Club qui est à Bruxelles, qui est un des comédic clubs principaux de Bruxelles.",
+  "recommendedBy": "Kyan Khojandi & Fanny Ruwet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:15:18",

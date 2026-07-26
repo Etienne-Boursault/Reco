@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript non diarizé, locuteur invité incertain. Compléter guests épisode.",
     "reason": "'Final Fantasy X' (2001) évoqué en réponse à 'que faites-vous pour aller mieux' : 'là je me refais Final Fantasy X... j'aime bien le jeu'. Engagement personnel positif mais pas de prescription = citation. Attribution 'Non spécifié' -> vidée.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Non spécifié",
@@ -58,6 +59,7 @@
     }
   ],
   "quote": "là je me refais Final Fantasy X en ce moment",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:49:56",

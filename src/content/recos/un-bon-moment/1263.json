@@ -5,6 +5,7 @@
     "date": "2026-07-13",
     "model": "claude-opus-4-8",
     "reason": "'Amelie Poulain' (film de Jean-Pierre Jeunet) evoque via la genese de sa BO signee Yann Tiersen (morceaux pre-existants choisis pour le film) (00:54). Substance sur la musique du film, sans prescription du film lui-meme.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Jean-Pierre Jeunet",
@@ -58,7 +59,7 @@
     }
   ],
   "quote": "C'est cool, quoi.",
-  "recommendedBy": "Matthieu",
+  "recommendedBy": "Matthieu Chedid",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:54:15",

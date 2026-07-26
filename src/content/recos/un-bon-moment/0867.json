@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "The Last Dance discuté avec substance comme doc sportif de référence, puis critiqué (« super déçu de la fin »). Discussion nourrie mais pas de prescription. Creator Jason Hehir correct.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Jason Hehir",
@@ -56,7 +57,7 @@
     }
   ],
   "quote": "The Last Dance, ouais.",
-  "recommendedBy": "Clément Cotentin",
+  "recommendedBy": "Kyan Khojandi & Clément Cotentin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:22:42",

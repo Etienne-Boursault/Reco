@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "~01:20:38. Reco par Kheiron.",
     "reason": "Segment final 'chaine YouTube' : Kheiron a decouvert McFly et Carlito et recommande explicitement ('On vous recommande McFly et Carlito ! Allez voir leur chaine !' ~01:20:38). Canonique (doublon discarde : ubm-1034).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -47,7 +48,7 @@
     }
   ],
   "quote": "On vous recommande McFly et Carlito ! Allez-y, allez voir leur chaîne !",
-  "recommendedBy": "Kheiron",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:39",

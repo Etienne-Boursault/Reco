@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Film de l'invité Maurice Barthélemy (redétaillé par lui à 00:44). Vérifier externalIds.tmdb/year : Papa (Maurice Barthélemy, avec Alain Chabat) est de 2005, pas 2023 comme indiqué dans le JSON.",
     "reason": "Kyan présente le film Papa de Maurice comme « un des plus grands films de ma vie » (00:02:55). Reco d'hôte authentique du film de l'invité (pas auto-promo, c'est Kyan qui parle).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Maurice Barthélémy",
@@ -50,6 +51,7 @@
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0827",
   "kind": "reco",
   "links": [

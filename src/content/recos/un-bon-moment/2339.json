@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel: 'LaCinetek' (lacinetek.com), pas 'La Cinétech' (Klapisch épèle I-N-E-T-E-K à 01:12). creator 'Cédric Klapisch' correct.",
     "reason": "LaCinetek, site de VOD dont Klapisch est cofondateur, présenté et promu par lui ('allez sur lacinetek.com'). Auto-promo -> guest-work. Canonique (doublons ubm-2346, ubm-0929).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -46,7 +47,7 @@
     }
   ],
   "quote": "moi je suis aussi cofondateur de la cinétech la cinétech.com qui est un site pour voir des vieux films",
-  "recommendedBy": "Cédric",
+  "recommendedBy": "Cédric Klapisch",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:10:56",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : 'Henry Fexa' (avec Y), magicien/humoriste. Recommande par un des invites (Tom/Yassir), a preciser.",
     "reason": "Reco en fin d'emission : 'on a failli oublier un copain... Henri Fexa, c'est un artiste, on va le suivre', magicien de formation qui fait de tout (02:07). Prescription a decouvrir/suivre.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Henri Fexa",
@@ -73,6 +74,7 @@
     }
   ],
   "quote": "Henri Fexa, c'est un artiste…",
+  "recommendedBy": "Yassir",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:07:10",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine : dit dans le gag Mbappe-qui-marche, et les hotes se tournent VERS Navo juste apres (donc probablement pas Navo comme extrait a 00:19:07). recommendedBy vide.",
     "reason": "Podcast Transfert (Slate) evoque avec enthousiasme reel : 'j'ecoute un petit transfert... c'est ouf le mec, il va regler des banques'. Vrai podcast, sentiment positif — reco (soft mais explicite) sur un site de reco de podcasts.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Slate",
@@ -28,7 +29,7 @@
     "openai"
   ],
   "id": "ubm-2696",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "J'écoute un petit transfert.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:19:01",

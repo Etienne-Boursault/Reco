@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Spectacle de Christopher Titus discute avec substance (pere alcoolique, mere suicidee, en fait des blagues) dans le debat humour/suicide. Pas de prescription, pas un invite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
@@ -39,6 +40,7 @@
     }
   ],
   "quote": "Christopher Titus ! Titus ouais ! Où il parle de... Divence ! Non ! Il parle de sa mère... Ah oui ! De son père alcoolique, de sa mère qui s'est suicidée ! Et il arrive à en faire des blagues !",
+  "recommendedBy": "Fary",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:19:31",

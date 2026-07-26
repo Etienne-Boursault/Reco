@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Meme locuteur non identifiable que ubm-0645 (probablement Jonathan Cohen).",
     "reason": "Recommandation avec substance et conseil de visionnage ('sur OCS c'est HBO... c'est du Shakespeare... il faut s'accrocher sur les 4 premiers'). Meme locuteur que Parasite. Titre confirme (01:03:41).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jesse Armstrong",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "c'est la série sur OCS c'est HBO",
+  "recommendedBy": "Jérémie Galan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:41",

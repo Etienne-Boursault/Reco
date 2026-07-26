@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom reel : Arezki Chougar (@arezkisugar), humoriste toulousain avec podcast. 'Arisky Sugar' = transcription approximative.",
     "reason": "Podcast d'Arezki Chougar mentionne positivement ('qui a un podcast d'ailleurs, qui est tres sympa', 01:20). Mention legere mais reelle.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
@@ -31,7 +32,7 @@
   "links": [],
   "quote": "Arisky Sugar oui qui a un podcast d'ailleurs ! Qui est très sympa !",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:15:15",
   "title": "Arisky Sugar",
   "transcriptSource": "youtube",

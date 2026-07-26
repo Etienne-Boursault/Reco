@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre reel 'Rap vs Realite' (transcript 'Rea Prealite') ; oeuvre de l'invite, vanne saluee par un host -> 'reco de' laisse vide.",
     "reason": "Serie web etablie de l'invite Mister V, evoquee/louee (la vanne du 42) mais SANS promo d'actualite - la promo de l'episode est l'album -> citation (regle 17).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "T'as une vanne dans Réa Préalité qui me fait marrer c'est du 42 quand t'as un anisot qui dit je vais te goumer je vais te goumer",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:44:14",

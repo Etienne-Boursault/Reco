@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe confirmee 'Tif'. Locuteur = un host mais Kyan/Navo indetermine (non diarize) -> attribution videe. Canonique; doublon = ubm-1252.",
     "reason": "Reco explicite d'un host: 'Moi j'ecoute beaucoup un artiste en ce moment qui s'appelle Tif [T-I-F]... un super artiste qui a sorti un projet tres recemment' (01:11:01). Artiste reel (rappeur FR, projet '1.6' 2023).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Tif",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "Moi, j'écoute beaucoup un artiste en ce moment qui s'appelle Tif.",
+  "recommendedBy": "Seb la Frite",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:01",

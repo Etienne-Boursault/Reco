@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Surgit dans un jeu de mots grooming -> Groom, mais la saison 2 est reellement evoquee comme a venir.",
     "reason": "Groom = serie du host Kyan Khojandi (« tu sais que j'ai joue dans la saison 1 ? »), saison 2 teasee. Promo d'actualite d'une oeuvre de host (regle 17).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
@@ -41,7 +42,7 @@
     }
   ],
   "quote": "Sinon, ça vous dit, on regarde une série ? Groom. Groom saison 2. Tu sais que j'ai joué dans la saison 1 ?",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Florent Bernard & Adrien Ménielle",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:16:23",

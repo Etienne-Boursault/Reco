@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Nom/handle officiel « Galansire » (Instagram @galansire) — reco indiquait « Galancir ».",
     "reason": "Humoriste Instagram « Galansire » recommandé par Navo — « un gars que j'aime beaucoup sur Insta, il est vraiment très drôle, il a plein de personnages ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
@@ -53,13 +54,14 @@
     }
   ],
   "quote": "Il a un personnage d'ouvrier mesquin et il est vraiment très drôle.",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:00:18",
-  "title": "Galancir",
+  "title": "Galansire",
   "transcriptSource": "youtube",
   "types": [
-    "artiste"
+    "artiste",
+    "autre"
   ]
 }

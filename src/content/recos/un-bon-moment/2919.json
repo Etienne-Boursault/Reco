@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution corrigee Kyan -> Alexandre Astier (c'est lui qui parle, oeuvre a lui). guests vide -> ajouter Alexandre Astier. Le/la relecteur-rice peut promouvoir en guest-work si preference.",
     "reason": "Astier name-droppe sa propre serie comme exemple ('la fiction video type Kaamelott') pour opposer fiction filmee et scene. Name-drop simple de son oeuvre (pas une presentation/promo) -> citation, cite par Astier lui-meme.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Alexandre Astier",
@@ -37,8 +38,9 @@
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2919",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -54,7 +56,7 @@
     }
   ],
   "quote": "Je ne trouve pas qu'il y a une différence entre la fiction vidéo type Kaamelott et la scène",
-  "recommendedBy": "Alexandre Astier",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:17",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco gardee; ubm-0658 discard comme doublon. Attribution Kyan probable (style 'formidable/paradis de la joie') mais non diarise",
     "reason": "Prescription enthousiaste de Toxic (Britney Spears) dans le segment de fin. Reco gardee du doublon",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Britney Spears",
@@ -40,7 +41,7 @@
     "anthropic"
   ],
   "id": "ubm-1030",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -56,7 +57,7 @@
     }
   ],
   "quote": "Britney Spears Toxic, c'est une des choses les plus formidables qui existent",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Yacine Belhousse",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:17:34",

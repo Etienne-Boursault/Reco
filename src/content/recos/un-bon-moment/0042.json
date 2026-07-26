@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe canonique = « L'Horizon des événements » (H majuscule). Champ year=2023 ERRONÉ : album sorti le 26/11/2021 (à corriger à la main, hors périmètre du script).",
     "reason": "Album « L'Horizon des événements » de Kyan (host), objet central de cet épisode promo. Œuvre du host présentée par lui = host-work / guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",

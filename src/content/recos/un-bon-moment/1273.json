@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Champ creator du JSON « Bérangère Creff » mal orthographié — vrai propriétaire = Bérengère Krief (invitée). Œuvre réelle (spectacle « Amour »). Timecode 00:07:44 conforme. title_suspect posé pour signaler le creator à corriger.",
     "reason": "Spectacle de l'invitée Bérengère Krief présenté : « ton spectacle qui s'appelle Amour... sur Canal+ que vous pouvez visionner » (00:07:34-44), rappelé à 01:14:27 « On retrouve ton spectacle Amour sur MyCanal ». Auto-promo invitée.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Bérengère Krief",

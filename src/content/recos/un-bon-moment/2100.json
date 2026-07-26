@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre officiel « Une famille en or » (TF1, Camille Combal) — reco indiquait « La Famille en Or ». Monologue d'un host non identifiable avec certitude (Navo ou Kyan).",
     "reason": "Enthousiasme réel pour l'émission (« je trouve ça génial, Combal est trop marrant, il invite des gens trop cool ») mais présenté comme anecdote de goût personnel (« est-ce que c'est vieillir ? ») sans prescription directe au public → citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Camille Combal",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "J'adore Camille Combal à la télé.",
+  "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:56",

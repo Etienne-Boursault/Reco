@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Le contexte (Occupation, resistance) designe l'Antigone de Jean Anouilh (1944), pas Sophocle -> corriger le createur.",
     "reason": "Reference culturelle developpee (Antigone jouee sous l'Occupation, applaudissements de resistance a chaque « non ») pour illustrer « le contexte donne l'oeuvre » (l.2439-2450). Substance reelle sans prescription -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Sophocle",
@@ -40,7 +41,7 @@
   "quote": "Peut-être que c'est aussi ça, l'art sur scène. C'est que pendant la guerre, par exemple, pendant l'occupation, les gens allaient voir Antigone.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:21:20",
   "title": "Antigone",
   "transcriptSource": "youtube",

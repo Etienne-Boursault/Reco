@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Doublon : ubm-3012 (titre tronqué, attribution erronée).",
     "reason": "Dans sa liste de docs de référence : « il y a Defiant Ones... qui était ouf, en 5 parties » + longue description. Substance réelle mais pas de prescription explicite au public. Canonique (creator Allen Hughes, titre complet).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Allen Hughes",

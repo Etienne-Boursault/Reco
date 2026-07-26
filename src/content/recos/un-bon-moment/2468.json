@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Le transcript dit une fois « le jeu de Dedo » (l.1356) mais le jeu est lie au spectacle Killing Joke de Yacine -> attribue a Yacine, a confirmer. Invites a completer dans les metadonnees episode.",
     "reason": "Jeu de societe, extension transmedia du spectacle Killing Joke de Yacine (« Killing Time Part 2 », l.1785-1787), presente et vendu par lui : « le jeu s'appelle Killing Time... disponible sur le site de Tsume... en grande surface » (l.1802-1803). Oeuvre d'invite -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Yacine",
@@ -56,7 +57,7 @@
     }
   ],
   "quote": "Le jeu s'appelle Killing Time parce que mon spectacle s'appelait Killing Joke.",
-  "recommendedBy": "Yacine Belhousse",
+  "recommendedBy": "Yacine Belhousse & Dedo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:00:36",

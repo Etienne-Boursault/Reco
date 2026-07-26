@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Doublon: ubm-2302 ('Inside Jamel', 01:12:04) discarde. Contenu present dans le transcript YouTube malgre source acast.",
     "reason": "Nommee dans la meme enumeration d'excellentes series francaises (01:12:03-04). Canonique de la paire de doublons (mieux renseignee: titre complet + externalIds tmdb).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
@@ -38,6 +39,7 @@
     }
   ],
   "quote": "il y a Inside Jamel, Comedy Club",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:04",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Meilleur passage 00:44:19 (présentation du film par Mouloud) ; 00:02:51 = simple mention de la promo. Compléter guests épisode (Mouloud Achour).",
     "reason": "Film 'Les Méchants' (2021) coréalisé par l'invité Mouloud Achour, présenté par lui à 00:44:19 ('le film les méchants c'est une mixtape... on l'a fait dans le même esprit... vous prenez vous prenez pas'). Auto-promo assumée du guest = guest-work. Le timecode 00:02:51 pointe une mention instrumentale (fatigue promo), le vrai passage est 00:44:19.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Mouloud Achour",

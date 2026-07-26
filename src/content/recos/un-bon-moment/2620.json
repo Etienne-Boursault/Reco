@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non identifiable (transcript non-diarise, discussion jeux menee par Navo) -> recommendedBy vide.",
     "reason": "Undertale (Toby Fox, 2015) endosse avec enthousiasme prescripteur ('Undertale, c'est formidable', 'il parait que c'est sublime') + eloge du propos/musiques/sprites.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "Undertale, c'est formidable.",
+  "recommendedBy": "Cyprien",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:07:06",

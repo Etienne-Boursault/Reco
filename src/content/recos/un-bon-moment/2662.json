@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non identifiable.",
     "reason": "Cité (transcrit « Willem Ting » = Will Hunting) comme « un des meilleurs films du monde », exemple de jeunes auteurs (Damon/Affleck). Appréciation substantielle sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Gus Van Sant",
@@ -41,6 +42,7 @@
     }
   ],
   "quote": "Willem Ting\nqui est un des meilleurs films du monde",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:05",

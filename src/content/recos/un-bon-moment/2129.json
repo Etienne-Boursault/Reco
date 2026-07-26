@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Identité vérifiée (web) : « Anna chez Did » = Anna Chedid alias Nach ; album « Peau Neuve » (oct. 2023). Corriger créateur « Anna » → « Nach (Anna Chedid) ». Fusionne ubm-2120, ubm-0148, ubm-0950. Laura remercie Anna (son amie) ; le « allez écoutez »/« j'ai recommandé Nash » n'est pas attribuable de façon sûre → recommendedBy à compléter.",
     "reason": "Album « Peau Neuve » de Nach (Anna Chedid) recommandé au public (00:53:35 : « elle a sorti un nouvel album Peau Neuve, allez écoutez » ; rappelé 01:08:22 : « on peut écouter le nouvel album de Nash »). Reco légère explicite → validate. Canonique du cluster Anna/Nash.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Anna",
+  "creator": "Nach",
   "episodeGuid": "65ed94b586967e0017c06729",
   "extractionHistory": [
     {
@@ -45,12 +46,14 @@
     }
   ],
   "quote": "C'était un mollier. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",
+  "recommendedBy": "Kyan Khojandi & Laura Domenge",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:53:35",
   "title": "Peau Neuve",
   "transcriptSource": "youtube",
   "types": [
-    "album"
+    "album",
+    "artiste"
   ]
 }

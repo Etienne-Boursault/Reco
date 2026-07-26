@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre confirmee = chaine YouTube MYST (mysteres inexpliques, theorie scientifique vs surnaturelle). Locuteur Kyan ou Navo non diarizable.",
     "reason": "Recommandation explicite 'Je conseille Myst' + description du format (histoire commentee cote scientifique / cote conteur) qui correspond exactement a la chaine MYST.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
@@ -56,13 +57,14 @@
     }
   ],
   "quote": "Je conseille Myst",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:19:21",
-  "title": "Myst",
+  "title": "Mist",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "podcast"
+    "podcast",
+    "autre"
   ]
 }

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribue a Doria (inspirations d'Iris). Doublon: ubm-1848 (orthographe 'Ali McBeal').",
     "reason": "'j'aime aussi beaucoup Ally McBeal, il y a son romantisme, j'adore ca'. Endossement enthousiaste. Canonique (orthographe correcte 'Ally McBeal', tmdb + provider). Attribution corrigee (etait Navo). Doublon: 1848.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "David E. Kelley",
@@ -43,7 +44,7 @@
     "openai"
   ],
   "id": "ubm-0216",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Année erronée: 'Ce qui me meut' = 1989, pas 2023. Invité = Cédric Klapisch (compléter métadonnées).",
     "reason": "Moyen-métrage de Klapisch sur Étienne-Jules Marey (l'invention du cinéma), longuement présenté par lui. Auto-promo -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
@@ -48,7 +49,7 @@
   "quote": "Donc, en fait, c'est devenu l'invention des Frères-Lumières.",
   "recommendedBy": "Cédric",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:17:15",
   "title": "Ce qui me meut",
   "transcriptSource": "youtube",

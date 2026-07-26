@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non identifiable avec certitude (transcript non diarise) malgre connaissance intime de la genese; laisse vide. NB Vianney a retravaille cette chanson avec Lenorman & Lama.",
     "reason": "Recommandation explicite dans le rituel de fin : 'Allez ecouter ce truc', 'Chanson sublime', 'j'ai pleure toutes les larmes de mon corps'. Chanson 'Maman' de Gerard Lenorman (ecrite avec Serge Lama) confirmee reelle.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Gérard Lenorman",
@@ -66,6 +67,7 @@
     }
   ],
   "quote": "Allez écouter ce truc.",
+  "recommendedBy": "Vianney",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:23:55",

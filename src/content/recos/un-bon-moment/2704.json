@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Bill Burr évoqué avec avis ('me fait peur des fois, dis-le que tu rigoles') dans le même segment que Chappelle. Substance brève, pas de prescription. Locuteur non identifiable.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
@@ -43,7 +44,7 @@
   ],
   "quote": "Et Bill Burr me fait peur des fois, je suis là : \"Dis-le que tu rigoles.\"",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:43:22",
   "title": "Bill Burr",
   "transcriptSource": "youtube",

@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour la reco de Clement. Titre 'Lee Willy Boxing' probablement mistranscription de 'Lee Wylie' (analyste boxe YT) ; WebSearch epuise -> title_suspect. Clement = tres probablement Clement Cotentin, frere d'Orelsan et realisateur (boxe avec Aurel/Orelsan, cercle proche) ; a confirmer -> guest_missing.",
     "reason": "Recommandation explicite de Clem (Clement) : chaine d'un historien/passionne de boxe americain qui analyse les techniques des grands boxeurs (01:16:42-01:18:06).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
@@ -42,7 +43,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:16:47",
-  "title": "Lee Willy Boxing",
+  "title": "Lee Wylie Boxing",
   "transcriptSource": "youtube",
   "types": [
     "video"

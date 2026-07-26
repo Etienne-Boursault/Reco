@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (Kyan producteur artistique ou un invite) — transcript non diarize.",
     "reason": "'Whiplash' (Damien Chazelle) cite en comparaison pour le batteur Odilon des Fables ('un cote Whiplash, j'adore le film', ref faite dans leurs episodes). Avis positif + lien creatif = citation (pas de prescription au public).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Damien Chazelle",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "J'adore le film weplash.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:48:00",

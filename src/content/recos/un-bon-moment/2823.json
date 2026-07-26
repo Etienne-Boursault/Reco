@@ -11,6 +11,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre à corriger 'Dondada' -> 'Don Dada Mixtape Vol. 1' ; créateur 'Alpha One' -> 'Alpha Wann'. Locuteur = invité, non Navo. Compléter guests.",
     "reason": "Recommandation explicite d'un invité : 'le truc de rap que j'ai le plus écouté cette année... le plus abouti, le plus réussi' (00:56:57). Œuvre réelle vérifiée : 'Don Dada Mixtape Vol. 1' d'Alpha Wann (2020, certifiée or 2021). Canonique parmi 3 doublons (2823/1085/0789). Attribution 'Navo' erronée (invité qui parle).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Alpha Wann",
@@ -56,6 +57,7 @@
     }
   ],
   "quote": "Dondada type d'Alpha One",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:58",

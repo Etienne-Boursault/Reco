@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Podcast 'Affaires sensibles' (France Inter) : 'meme affaires sensibles... c'est genial' (01:57:05), meme tour de recos podcasts. Reco explicite.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68ef607e58893bb6e322c623",
@@ -43,6 +44,7 @@
     }
   ],
   "quote": "ouais ouais ouais c'est génial",
+  "recommendedBy": "Jessé",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:57:05",

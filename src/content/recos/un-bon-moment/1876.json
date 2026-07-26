@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte : Pierre Hillairet (humoriste, spectacle 'Jour de Pluie' ; fiche dit 'Pierre Hilleret').",
     "reason": "Reco explicite : 'Allez voir le spectacle, c'est Pierre Hillairet exceptionnel'. Canonique (vs ubm-0182). Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Pierre Hilleret",
+  "creator": "Pierre Hillairet",
   "episodeGuid": "68fa552292f5a6f127100027",
   "extractionHistory": [
     {
@@ -64,13 +65,14 @@
     }
   ],
   "quote": "Allez voir le spectacle, c'est Pierre Hilleret exceptionnel.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:09:51",
-  "title": "Pierre Hilleret",
+  "title": "Jour de pluie",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "spectacle"
+    "spectacle",
+    "artiste"
   ]
 }

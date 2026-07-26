@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'je vous recommande White Fire' : recommandation explicite (nanar culte projete lors du spectacle Kyan/Navo). Locuteur Kyan ou Navo non certain (transcript non diarise) -> recommendedBy vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "A. V. R. Roth",
@@ -73,6 +74,7 @@
     }
   ],
   "quote": "je vous recommande White Fire",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:47:44",

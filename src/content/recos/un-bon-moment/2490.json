@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco attribuée au guest (Thomas VDB).",
     "reason": "« Thomas VDB chante Daft Punk », spectacle de l'invité longuement présenté par lui (00:08:47-00:13:01, toute l'histoire du spectacle et de la typo Daft Punk). Titre confirmé au transcript (« j'avais marqué Thomas VDB chante Daft Punk »). Œuvre d'invité → guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Thomas VDB",
@@ -41,7 +42,7 @@
   "quote": "c'était une proposition d'un seul coup",
   "recommendedBy": "Thomas VDB",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:13:01",
   "title": "Thomas VDB chante Daft Punk",
   "transcriptSource": "youtube",

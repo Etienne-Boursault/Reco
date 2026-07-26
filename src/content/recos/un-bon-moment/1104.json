@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Creator Ezra Edelman (ESPN, Oscar 2016) à renseigner. Doublons : ubm-0866, ubm-3021. Attribution corrigée (stockée Navo → Clément).",
     "reason": "Éloge superlatif dirigé vers le public : « les docs de sport, à ne pas oublier. O.J. Simpson Made in America... c'est une fresque. Je crois que c'est le meilleur truc que j'ai jamais vu. » Canonique (titre officiel + watchProviders).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6336c79af131c60012c20984",
@@ -41,7 +42,7 @@
     "anthropic"
   ],
   "id": "ubm-1104",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

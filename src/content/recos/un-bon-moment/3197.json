@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Eloge incident (« des trucs chambes ») ; verdict citation defendable, mais la mention sert la promo de La Flamme.",
     "reason": "Mention instrumentale : « c'est adapte de Burning Love » cite pour expliquer l'origine de leur serie La Flamme (oeuvre d'invites). Comparaison/source en passant, pas de prescription (regle 1).",
+    "reviewedByHuman": true,
     "verdict": "discard"
   },
   "creator": "Ben Stiller",
@@ -25,11 +26,12 @@
     "anthropic"
   ],
   "id": "ubm-3197",
+  "kind": "citation",
   "links": [],
   "quote": "C'est adapté de Burning Love, une série produite par Ben Stiller.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "01:52:44",
   "title": "Burning Love",
   "transcriptSource": "youtube",

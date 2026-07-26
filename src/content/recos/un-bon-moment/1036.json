@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Reco ~01:21:00. Attribution Kyan/Navo indistincte (non diarize).",
     "reason": "Recommandation explicite dans le segment final 'chaine YouTube' : 'Verino, a fond !' (~01:21:00). Verino = humoriste FR, chaine reelle. Attribution host (Kyan/Navo) non certaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "Verino, Relsan, à fond !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:03",

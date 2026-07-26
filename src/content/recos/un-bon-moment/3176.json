@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Meme passage que ubm-0640 mais oeuvre DISTINCTE (serie vs chaine) -> pas un doublon ; attribution non diarizee -> vide.",
     "reason": "Serie reelle Canal+ des Parasites (L'Effondrement) recommandee dans le jeu des recos : 'ils ont fait une serie sur Canal Plus, c'est du cinema, tres bien fait' (01:13-01:14).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Les Parasites",
@@ -38,6 +39,7 @@
     }
   ],
   "quote": "Ils ont d'ailleurs fait une série sur Canal Plus, qui s'appelle L'Effondrement ! Il y en a quelques-uns là qui ont été mis en ligne sur Youtube !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:55",

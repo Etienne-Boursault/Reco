@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "creator « Rudi Milstein » ERRONE : Le Bison (et sa voisine Dorothee, 2003) est realise par Isabelle Nanty elle-meme. A corriger en metadonnee. guests[] a completer. Timecode YT 00:34:12 confirme.",
     "reason": "« Le Bison » est le film realise par Isabelle Nanty (« toi tu as realise un film... Le Bison »), loue par un host (« qu'est-ce que j'ai aime ce film ») ; elle repond modestement « c'est trop gentil ». Oeuvre d'invitee.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Isabelle Nanty",
@@ -55,7 +56,7 @@
     }
   ],
   "quote": "Le Bison. C'est trop gentil.",
-  "recommendedBy": "Isabelle Nanty",
+  "recommendedBy": "Isabelle Nanty & Vincent Dedienne",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:34:12",

@@ -5,8 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "Spectacle 'Mauvaise Graine' cite 'mon spectacle Mauvaise Graine' dans l'outro de promo des invites (01:59:19). Vraisemblablement spectacle d'invitee (Marine ; Jesse = 'Message personnel'). Oeuvre d'invite -> validate. Attribution incertaine.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "creator": "Marine Léonardi",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "extractionHistory": [
     {
@@ -22,6 +24,7 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-2093",
   "kind": "reco",
   "links": [
@@ -39,6 +42,7 @@
     }
   ],
   "quote": "avec mon spectacle Mauvaise Graine",
+  "recommendedBy": "Marine Leonardi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:59:19",

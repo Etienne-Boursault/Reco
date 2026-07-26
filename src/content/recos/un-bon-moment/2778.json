@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre confirmé « Bagarre Bagarre » (EP, 2020, WebSearch). Canonique ; ubm-0765 est un doublon.",
     "reason": "Julien Granel (invité) présente son propre EP « Bagarre Bagarre » (2020) : « je viens de sortir un EP qui s'appelle Bagarre, Bagarre ». Auto-promo du format.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Julien Granel",
@@ -49,7 +50,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:04:39",
-  "title": "Bagarre",
+  "title": "Bagarre, Bagarre",
   "transcriptSource": "youtube",
   "types": [
     "album"

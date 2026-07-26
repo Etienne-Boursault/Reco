@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Tour distinct après Navo (Amour&Autisme) ; locuteur Kyan ou Éléonore, pas Navo.",
     "reason": "Recommandation explicite : « moi j'ai une série que j'aimerais vous recommander c'est euphoria... tout est incroyable... top top top ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Sam Levinson",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "il y a un avant un après quoi on réalisera plus jamais",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:14",

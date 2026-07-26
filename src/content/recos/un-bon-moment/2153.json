@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE (fusionne ubm-0127 + ubm-0948 discardes). Titre transcript: 'Plaisir, Risques, Depdendance' (l.1953). Locuteur non identifiable au transcript (pas de labels): 'une pote a sorti' -> pourrait etre un invite ou Navo; attribution 'Navo' d'origine non confirmable -> videe.",
     "reason": "Reco explicite de l'album d'Adele Castillon: 'une pote qui a sorti un album que je trouve trop bien... hyper personnel et tres beau'. Canonique des 3 doublons.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Adèle Castillon",
@@ -49,10 +50,11 @@
     }
   ],
   "quote": "C'est un album que je trouve trop bien.",
+  "recommendedBy": "Maxime Biaggi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:10:41",
-  "title": "Plaisir, Risques, Dépendance",
+  "title": "Plaisir Risque Dépendance",
   "transcriptSource": "youtube",
   "types": [
     "album"

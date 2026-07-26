@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Livre de l'invite Panayotis Pascot, rappele aussi en cloture (01:15:58 'le livre de Pana est toujours disponible'). Metadonnee guests a completer: Panayotis Pascot + Marina Rollman (la vraie invitee, actuellement en guestsExcluded a tort).",
     "reason": "Premier roman de Panayotis Pascot, presente au debut par Kyan (00:01:01) puis discute longuement par l'auteur. Oeuvre de l'invite.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Panayotis Pascot",
@@ -64,7 +65,7 @@
     }
   ],
   "quote": "il vient de sortir son premier roman qui s'appelle la prochaine fois que tu mordras la poussière",
-  "recommendedBy": "Panayotis Pascot",
+  "recommendedBy": "Kyan Khojandi & Panayotis Pascot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:01:00",

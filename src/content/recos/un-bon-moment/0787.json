@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation dans le tour final : 'Tokyo Revenger manga super bien' (00:56:35). Œuvre réelle : 'Tokyo Revengers' de Ken Wakui. Canonique du doublon avec ubm-2825 (titre correct).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "Tokyo Revenger manga super bien",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:35",

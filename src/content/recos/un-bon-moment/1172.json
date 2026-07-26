@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Bloc de recos hote apres 'Navo t'as quelque chose a recommander ?' (banter 'mais toi vas-y / non toi') ; le meme locuteur enchaine academie->Dans ton corps->Adrien Meniel. Attribue a Navo, mais metadonnees incoherentes (fiche = Kyan) -> flag.",
     "reason": "Reco explicite au public : 'moi je recommande d'aller vous renseigner sur l'academie d'humour' [01:15:41] ; institution reelle (Theatre de la Loge, Paris, formation d'humoristes), 'gros big up a leur travail'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "65c7a2673210d00017783f8b",
@@ -56,7 +57,7 @@
     }
   ],
   "quote": "je recommande d'aller vous renseigner sur l'académie d'humour",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:41",

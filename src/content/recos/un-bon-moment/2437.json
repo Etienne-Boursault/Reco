@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invites reels (Monsieur Poulpe, Davy Mourier) absents des metadonnees episode (guests vide).",
     "reason": "BD co-scenarisee par les invites Monsieur Poulpe & Davy Mourier (Delcourt 2019, coll. Une Case en Moins, dessin Ariel Bittum), presentee par eux (creation discutee, offerte en lot en fin d'emission) -> auto-promo invites.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Davy Poulpe",
@@ -55,7 +56,7 @@
     }
   ],
   "quote": "Alain au pays des merveilles.",
-  "recommendedBy": "Monsieur Poulpe & Davy Mourier",
+  "recommendedBy": "Kyan Khojandi & Monsieur Poulpe & Davy Mourier",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:25:01",

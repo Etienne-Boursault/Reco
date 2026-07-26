@@ -6,6 +6,7 @@
     "humanCorrection": "Reco canonique chaîne Ego (+ vidéo l'usine à trombone / Paperclip Factory)",
     "model": "claude-opus-4-8",
     "reason": "Chaine YouTube Ego : 'je vous le recommande... c'est la chaine Ego sur YouTube' (01:55:34). Reco explicite. Lie a ubm-0180 (video phare de la chaine).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68ef607e58893bb6e322c623",
@@ -34,6 +35,7 @@
     }
   ],
   "quote": "c'est la chaîne Ego sur YouTube",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:55:34",

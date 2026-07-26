@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non certain (Cyprien ou autre, non-diarise) -> recommendedBy vide. Doc reel (2016).",
     "reason": "Documentaire Tickled (2016) recommande dans le tour de recos : 'Vous avez vu ce documentaire... Tickled ? C'est le truc le plus incroyable... c'est fascinant'.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "autre",
@@ -61,7 +62,7 @@
   ],
   "quote": "Vous avez vu ce documentaire sur Netflix qui s'appelle Tickled ?",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:39:05",
   "title": "Tickled",
   "transcriptSource": "youtube",

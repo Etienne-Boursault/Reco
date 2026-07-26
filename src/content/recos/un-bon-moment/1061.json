@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle: 'Verino' -> 'Verino' (accent aigu). Web-serie 'Dis donc internet !'.",
     "reason": "Kyan recommande Verino ('J'adore Verino, tres tres fort...', 'qu'on va recevoir dans cette emission' = le host qui invite) et sa web-serie stand-up ('capsule toutes les semaines avec le public'). Reco explicite = validate.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
@@ -62,7 +63,7 @@
     }
   ],
   "quote": "Moi j'aime beaucoup ce que Verino il fait.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Dako",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:09:19",

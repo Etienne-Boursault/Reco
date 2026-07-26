@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre à corriger « Miss Kina » -> « Miskina, la pauvre ». Invitée absente du champ guests ; recommendedBy = propriétaire Melha Bedia.",
     "reason": "Série « Miskina, la pauvre » créée par et avec l'invitée Melha Bedia (Prime Video) ; confirmée dans le transcript par « on fait la saison 2 » et « j'ai voulu me la raconter ». Auto-promo d'œuvre d'invitée.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "65240aefc8996500127ede97",
@@ -55,11 +56,11 @@
     }
   ],
   "quote": "Ah oui moi j'adore une série. Miss Kina saison 1.",
-  "recommendedBy": "Melha Bedia",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:21",
-  "title": "Miskina, la pauvre",
+  "title": "Miskina",
   "transcriptSource": "youtube",
   "types": [
     "serie"

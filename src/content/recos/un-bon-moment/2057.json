@@ -5,9 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'The Rehearsal' de Nathan Fielder discute avec substance (le concept : mensonge puis repetitions pour avouer, 00:56:20-00:56:52). Pas de prescription claire, pas oeuvre d'invite.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Nathan Fielding",
+  "creator": "Nathan Fielder",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "extractionHistory": [
     {
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "j'aimerais leur dire",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:56:20",

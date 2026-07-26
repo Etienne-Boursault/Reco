@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "Graphie officielle: « Iron & Wine » (projet folk de Sam Beam). Recommande par un invite, non diarize. Doublon regroupe: ubm-1099 discarde.",
     "reason": "Recommandation explicite (~01:04:48) : « un musicien que j'adore qui vient de sortir un nouvel album que j'adore qui s'appelle Iron and Wine ». Artiste reel.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Iron and Wine",
+  "creator": "Sam Bean",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1137144582"
@@ -67,13 +68,15 @@
     }
   ],
   "quote": "c'est un musicien que j'adore qui vient de sortir un nouvel album que j'adore qui s'appelle Iron and Wine",
+  "recommendedBy": "Xavier Lacaille",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:04:48",
-  "title": "Iron and Wine",
+  "title": "Iron & Wine",
   "transcriptSource": "youtube",
   "types": [
     "musique",
+    "album",
     "artiste"
   ]
 }

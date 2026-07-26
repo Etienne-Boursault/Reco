@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non diarize, probablement un invite (Jonathan Cohen, qui dit 'je viens de l'acheter') mais pas certain -> recommendedBy vide.",
     "reason": "Recommandation culturelle explicite ('t'as une recommandation culturelle a soumettre? Parasite') + enthousiasme prescripteur ('j'adore, c'est magnifique, gros kiff'). Titre confirme dans le transcript (01:03:12).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Bong Joon-ho",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "je viens de l'acheter j'en suis à la moitié j'adore",
+  "recommendedBy": "Jonathan Cohen",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:03:12",

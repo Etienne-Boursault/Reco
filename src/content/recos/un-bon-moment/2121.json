@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : « François Daigle-Bérubé », Instagram @fdb_ceo (personnage d'Anthony Vendrame). Non diarizé : recommandeur non identifiable de façon sûre (hôte ou invité) → recommendedBy à compléter.",
     "reason": "Recommandation explicite au public dans le tour de recos (01:07:23 : « je vous recommande quelqu'un... je vous conseille son compte »). Humoriste québécois (personnage d'entrepreneur parodique). Canonique du cluster FDB.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "François D'Aigle Bérubé",
@@ -49,10 +50,11 @@
     }
   ],
   "quote": "C'est un humoriste québécois qui a un personnage d'entrepreneur vraiment con.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:07:30",
-  "title": "François D'Aigle Bérubé",
+  "title": "François Daigle-Bérubé",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

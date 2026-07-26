@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Contexte: apres le jeu 'devinette en chanson' de Greg Romano ; on evoque Francois Morel qui joue 'Art' au theatre.",
     "reason": "Piece 'Art' de Yasmina Reza recommandee a 00:33:53 : 'une piece exceptionnelle qu'on peut voir d'ailleurs, on peut la trouver sur YouTube... version avec Luchini et Arditi, c'est exceptionnel'. Prescription reelle. Locuteur incertain -> recommendedBy vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Yasmina Reza",
@@ -66,6 +67,7 @@
     }
   ],
   "quote": "C'est une pièce exceptionnelle qu'on peut voir d'ailleurs.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:33:53",

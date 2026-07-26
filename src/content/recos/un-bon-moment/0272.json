@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Film = Kika (2025) d'Alexe Poukine (fiche indique 'Alex Pouchkine'). ATTENTION: tmdb 8223 / watchProviders pointent le 'Kika' d'Almodovar (1993) — mauvais film, corriger le lien. Alexandra Roth = invitee -> guest_missing.",
     "reason": "Reco explicite d'Alexandra (01:43-01:44) : 'un film qui sort la qui s'appelle Kika que j'ai vu en avant-premiere. C'est hallucinant... je l'ai vu et j'ai trouve ca genial.' Sortie 3 dec.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Alex Pouchkine",

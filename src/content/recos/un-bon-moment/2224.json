@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct = 'J'irai fumer chez vous', web-serie de Noman Hosni (le 'No Manosni' est phonetique).",
     "reason": "Navo recommande dans son tour : 'No Manosni... Allez c'est incroyable... On ira fumer du cote de chez vous... Qu'est-ce que c'est drole.' Prescription.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "No Manosni",
+  "creator": "Noman Hosni",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractionHistory": [
     {

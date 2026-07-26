@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy = invite Ahmed Sparrow. Completer guests (Roman Frayssinet + Ahmed Sparrow). Realisateur Jonathan Demme correct.",
     "reason": "Film reel loue sincerement: Ahmed 'c'est quand meme un classique du cinema', puis hosts 'Philadelphia est un film magnifique / un super film' a 01:05:33. Introduit par Ahmed dans le jeu anti-derapage puis endosse.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jonathan Demme",
@@ -56,7 +57,7 @@
   "quote": "C'est quand même un classique du cinéma",
   "recommendedBy": "Ahmed Sparrow",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:05:33",
   "title": "Philadelphia",
   "transcriptSource": "youtube",

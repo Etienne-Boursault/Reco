@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Canonique pour Vu (emission France 5). Recommandeur ambigu : le locuteur s'adresse a Flaubert ('peut-etre Flaubert tu connais') donc ce n'est pas lui ; probablement Kyan ou Navo (voire Gringe qui n'a pas recommande) -> attribution vide + attribution_suspect.",
     "reason": "Recommandation explicite de la chaine/emission 'Vu' (decryptage de l'actu par le montage) : 'si vous etes un jeune monteur, allez voir ca' (01:21:45-01:22:01).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
@@ -47,6 +48,7 @@
     }
   ],
   "quote": "Ils ont une chaîne qui s'appelle \"Vu\"",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:45",

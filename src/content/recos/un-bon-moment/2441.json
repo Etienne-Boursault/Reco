@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Autrice = Sophie Lambda ; Davy Mourier = directeur de collection (coll. Une Case en Moins). Invites absents des metadonnees episode.",
     "reason": "BD 'Tant pis pour l'amour' de Sophie Lambda, dont l'invite Davy Mourier est directeur de collection ; il en fait ouvertement la promo ('lisez ca c'est super', 'j'en fais la promo un peu comme dans une emission classique de tele') -> auto-promo assumee de sa collection.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Sophie Lambda",
@@ -37,7 +38,6 @@
     "anthropic",
     "openai"
   ],
-  "guestWork": true,
   "id": "ubm-2441",
   "kind": "reco",
   "links": [
@@ -55,7 +55,7 @@
     }
   ],
   "quote": "C'est un super livre.",
-  "recommendedBy": "Davy Mourier",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:40:48",

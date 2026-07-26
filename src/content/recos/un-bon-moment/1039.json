@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre : 'Tales From The Click'. Reco ~01:21:28.",
     "reason": "Reco explicite segment final : 'moi je vais recommander Tales From The Click' (~01:21:28). Chaine cinema reelle (J.-B. Toussaint). Attribution host indistincte.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
@@ -57,6 +58,7 @@
     }
   ],
   "quote": "Allez, moi je vais recommander Tales From The Click !",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:30",

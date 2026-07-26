@@ -9,9 +9,9 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe non revalidee en ligne (budget WebSearch epuise) ; attribution non diarizee -> vide.",
     "reason": "Recommandation d'une chaine reelle (Ebim) dans le jeu des recos : 'la chaine Ebim que j'aime beaucoup, tres haute qualite d'ecriture' (01:14).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Ebim",
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "extractionHistory": [
     {
@@ -40,13 +40,14 @@
   "kind": "reco",
   "links": [],
   "quote": "Moi c'est la chaîne Ebim ! Que j'aime beaucoup !",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:14:20",
-  "title": "Ebim",
+  "title": "Et Bim",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Borderline (Dava sert aussi de comparaison/cas d'ecole), mais l'avis explicite d'Haroun tranche vers validate. Membres cites : Sacha Beard et al. Attribution a Haroun (avis 'me font beaucoup rire') ; la citation horodatee 00:24:44 est prononcee par Kyan.",
     "reason": "Groupe d'humour Dava, presente par Haroun comme 'des amis qui me font beaucoup rire' (~00:24:22) avec fanbase engagee. Avis positif reel = recommandation, meme si le groupe sert aussi de cas d'ecole dans la discussion sur Pasquinade.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
@@ -37,7 +38,7 @@
     "openai"
   ],
   "id": "ubm-2755",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",

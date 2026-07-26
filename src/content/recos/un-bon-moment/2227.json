@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct = 'Cash Investigation' (magazine d'investigation France 2, Elise Lucet). 'Cache' = mishearing.",
     "reason": "Kyan recommande la chaine dans son tour : 'Cache Investigation, que je regarde, dans laquelle je suis abonne, et que j'adore.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",

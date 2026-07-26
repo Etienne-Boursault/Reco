@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'le podcast de Jason Brokers (avec sa femme)': reco explicite 'c'est un oui, hyper marrant, vraiment cool'. recommendedBy vide (pas sur du locuteur, Kyan/Navo). Entree canonique vs ubm-0293.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jason Brokers",
@@ -68,10 +69,11 @@
     }
   ],
   "quote": "Ah il y a aussi le podcast de Jason Brokers",
+  "recommendedBy": "Fary",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:10:03",
-  "title": "Jason Brokers Podcast",
+  "title": "Podcast avec l'épouse",
   "transcriptSource": "youtube",
   "types": [
     "podcast"

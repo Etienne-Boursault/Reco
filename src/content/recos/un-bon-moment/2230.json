@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct = 'True Story' (aka 'True Story Avec', Amazon Prime Video 2020, presentatrice Natoo). Ajouter Natoo aux guests episode.",
     "reason": "Natoo presente son projet recent (elle est intervieweuse de l'emission) : programme Amazon Prime de Jonathan Cohen ou des guests racontent une histoire folle illustree en court-metrage. Auto-promo d'un projet d'invitee -> guest-work. Canonique (regroupe ubm-0628 et ubm-2209).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Jonathan Cohen",
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
   "extractionHistory": [
     {

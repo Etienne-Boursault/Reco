@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre réel du spectacle = « Pulsions » (pluriel), pas « Pulsion ». Source transcript acast ; timecode 00:24:56 aligné sur le transcript YouTube (00:24:53).",
     "reason": "Spectacle de Kyan (host) cité en anecdote (conseil de sa femme sur « Pulsion(s) », 00:24:53), pas promu ici. host-work en anecdote = citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Kyan Khojandi",
@@ -27,8 +28,9 @@
   "extractors": [
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-0046",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -48,9 +50,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:24:56",
-  "title": "Pulsion",
+  "title": "Pulsions",
   "transcriptSource": "acast",
   "types": [
-    "spectacle"
+    "spectacle",
+    "video"
   ]
 }

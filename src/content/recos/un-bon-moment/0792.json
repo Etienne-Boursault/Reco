@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Registre suggère Augustin Trapenard (incertain). Compléter guests.",
     "reason": "Recommandation explicite : 'un album de Joni Mitchell qui s'appelle Blue et je conseille à tout le monde de l'écouter tout le temps' (00:58:09). Œuvre réelle : 'Blue' de Joni Mitchell (1971). Créateur ✓ (artefact 'Johnny Mitchell' seulement dans la quote).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Joni Mitchell",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "un album de Johnny Mitchell qui s'appelle Blue",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:58:09",

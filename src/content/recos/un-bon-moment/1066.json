@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Recommandation explicite : 'un film sur Netflix que j'ai envie de recommander... j'ai kiffe... le film est fou... un petit chef-d'oeuvre'. Titre corrige (ASR 'Uncut Jim's' -> 'Uncut Gems', freres Safdie / Adam Sandler). Locuteur non identifiable -> attribution videe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Safdie Brothers",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "Moi, c'est plus un film sur Netflix que j'ai envie de recommander. C'est Uncut Jim's.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:18",

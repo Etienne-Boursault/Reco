@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "«Violente Viande» = compte Instagram reel de Florian Nardone (createur/scenariste). Corriger le champ creator: «Florian Nardone» (transcript dit «Florent»). Attribution incertaine -> recommendedBy vide.",
     "reason": "Recommandation d'un compte Insta ('il detourne des tableaux classiques... toujours hyper drole... ca me donne envie d'aller au musee'), segment de recos de fin.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Florent Nardone",
@@ -55,6 +56,7 @@
     }
   ],
   "quote": "Qui est le prénom de la personne qui a le conte qui s'appelle Violente Viande.",
+  "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:25:39",

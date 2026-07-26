@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Chaine reelle : 'Le Labo d'Heliox' (Axelle/Heliox), DIY / impression 3D.",
     "reason": "Recommandation d'une chaine YouTube en reponse a la tradition 'quelle chaine recommander' : 'si tu veux apprendre l'impression 3D, l'electronique... t'apprends plein de trucs'. Locuteur = un invite (Poulpe ou Davy), non identifiable -> attribution videe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "intervenant non précisé",
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "une chaîne YouTube que vous kiffez ou pas, le labo d'Héliox.",
+  "recommendedBy": "Davy Mourier",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:15",

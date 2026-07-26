@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locutrice = une invitee (Morgane ou Fanny, incertain), en contexte 'je veux ecrire une fiction'. recommendedBy vide.",
     "reason": "Une invitee se dit 'grande fan' de Phoebe Waller-Bridge, son modele pour ecrire une fiction. Admiration/inspiration exprimee mais sans prescription au public -> citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "61c5abab76bee100120dd720",
@@ -30,6 +31,7 @@
   "kind": "citation",
   "links": [],
   "quote": "Grande fan de... Phoebe Waller-Bridge !",
+  "recommendedBy": "Fanny Ruwet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:46:21",

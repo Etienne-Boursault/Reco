@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur Kyan ou Éléonore, pas Navo (« on l'a tous les deux »).",
     "reason": "Recommandation explicite : « et Leftovers, meilleure série pour moi de tous les temps ». Même locuteur qu'Upload/Paterson.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Damon Lindelof, Tom Perrotta",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "meilleure série pour moi de tous les temps",
+  "recommendedBy": "Éléonore Costes",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:56",

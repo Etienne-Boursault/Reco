@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Serie reelle : 'The Secret World of Alex Mack' (Nickelodeon, USA, 1994-98), titre FR 'Les Pouvoirs extraordinaires d'Alex Mack'. La locutrice la dit 'australienne' (erreur, c'est americaine). Evocation nostalgique -> citation plutot que validate.",
     "reason": "Serie d'enfance evoquee avec substance en souvenir nostalgique ('ma reference, le seul truc que j'adorais'), sans prescription actuelle claire ; tangente declenchee par Enola Holmes (regle 4)",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
@@ -43,10 +44,11 @@
     }
   ],
   "quote": "Le seul truc que j'adorais, c'était, ça s'appelait Les Pouvoirs Extraordinaires d'Alex Mack.",
+  "recommendedBy": "Bérengère Krief",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:44:46",
-  "title": "Les Incroyables Pouvoirs d'Alex",
+  "title": "Les Pouvoirs extraordinaires d'Alex Mack",
   "transcriptSource": "acast",
   "types": [
     "serie"

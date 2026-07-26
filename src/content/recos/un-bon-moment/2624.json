@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur probablement Navo mais non certain (non-diarise) -> recommendedBy vide.",
     "reason": "Battle of Polytopia (Midjiwan, 2016) : favori personnel ('j'ai un jeu... Battle of Polytopia... ca fait cinq ans que je joue... j'adore'). Endossement.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "Moi, j'ai un jeu sur le téléphone qui s'appelle \"Battle of Polytopia\".",
+  "recommendedBy": "Woodkid",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:44",

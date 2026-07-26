@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Non produit / indisponible (en cours d'ecriture). recommendedBy deja correct (Anna Apter). guests metadonnees vide. Timecode 00:11:36 OK.",
     "reason": "Projet en ecriture d'Anna Apter ('les annees 20', titre provisoire, portraits en 2080 revenant sur 2020) presente sur le plateau -> auto-promo invitee.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Anna Apter",
@@ -36,7 +37,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:11:36",
-  "title": "Les années 20",
+  "title": "Ça sera (peut-être) mieux après",
   "transcriptSource": "youtube",
   "types": [
     "serie"

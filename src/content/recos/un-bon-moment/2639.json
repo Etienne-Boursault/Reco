@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Titre reel 'Mignonnes' (stocke 'Mignonne') ; creator 'Monia Chokri' errone -> Maimouna Doucoure. Locuteur indetermine (host ou invitee, tour de recos ouvert). Doublon Acast = ubm-1076 (discard).",
     "reason": "Reco explicite du film 'Mignonnes' (Maimouna Doucoure, 2020) en reponse a la question reco : 'c'est vraiment trop bien', 'j'ai ri, j'ai pleure, je me suis souvenu de mes 11 ans' (01:16:37).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Monia Chokri",
+  "creator": "Maïmouna Doucouré",
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
   "extractionHistory": [
     {
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "C'est trop bien mignonne.",
+  "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:16:38",

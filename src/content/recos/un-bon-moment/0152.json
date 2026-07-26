@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE du cluster « Game Changers » (fusionne ubm-0954 et ubm-0153, tous deux discard). Attribution incertaine : au [00:05] le locuteur est ambigu (extracteurs en desaccord : Navo vs Kyan) ; au [01:13:22] le recommandeur cite le locuteur precedent a la 3e personne (« qu'il a cite tout a l'heure ») — pourrait etre Seth Gueko (invite), premier a repondre avant Jimmy. recommendedBy laisse vide faute de certitude.",
     "reason": "Documentaire « The Game Changers » (2019, tmdb 463088), reel. Cite d'abord dans le debat nutrition ([00:05:04-06]) puis RECOMMANDE explicitement dans la ronde finale ([01:13:22] « Le reportage... de Game Changer sur Netflix. Il est super a regarder si vous vous interessez a votre corps »). Reco culturelle claire. Canonique du cluster Game Changers.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louie Psihoyos",
@@ -68,10 +69,11 @@
     }
   ],
   "quote": "J'avais vu ce reportage, je ne l'ai vu sur Netflix. Game Changers.",
+  "recommendedBy": "Jimmy Mohamed",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:05:06",
-  "title": "Game Changers",
+  "title": "The Game Changers",
   "transcriptSource": "youtube",
   "types": [
     "film",
@@ -79,7 +81,6 @@
   ],
   "watchProviders": [
     {
-      "ethics": "neutral",
       "label": "Apple TV Store",
       "url": "https://tv.apple.com/fr/search?term=Game%20Changers"
     }

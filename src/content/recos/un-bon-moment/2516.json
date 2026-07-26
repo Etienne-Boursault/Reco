@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur non diarisé (probablement Ben Mazué, chaîne d'anecdotes « pareil... »).",
     "reason": "Diam's name-droppée avec affection (« super fan... elle est dans nos cœurs à jamais ») dans une anecdote de rencontre en mariage. Name-drop d'une artiste réelle avec avis, sans prescription.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Diam's",
@@ -44,6 +45,7 @@
     }
   ],
   "quote": "Elle est dans nos cœurs, à jamais.",
+  "recommendedBy": "Ben Mazué",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:19:34",

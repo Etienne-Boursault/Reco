@@ -5,9 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'Garde Cotiere', son d'Adib Alcalite, loue 'exceptionnel' (mais 'j'ai pas ecoute' dit l'autre) dans la discussion sur Adib qui reinvente sa musique. Oeuvre nommee+louee, pas un invite, pas de prescription. Borderline.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
-  "creator": "Adib Alcalité",
+  "creator": "Adib Alkhalidey",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractionHistory": [
     {
@@ -55,13 +56,14 @@
     }
   ],
   "quote": "Il a fait un son qui est exceptionnel !",
+  "recommendedBy": "Panayotis Pascot",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:20:40",
-  "title": "Garde Cotière",
+  "title": "Garde Côtière",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "musique"
+    "musique",
+    "autre"
   ]
 }

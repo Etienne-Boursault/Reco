@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre distincte de ubm-0270 (James). Attribution hote incertaine (Kyan ou Navo).",
     "reason": "Reco de Percival Everett dans le segment recos (01:42) : 'un auteur qui est tres sympa... son bouquin Effacement qui avait ete adapte... c'est assez drole.' Effacement = Erasure (adapte en American Fiction).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Percival Everett",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "il y a un auteur qui est très sympa qui s'appelle Percival Evret. Si vous n'aimez pas lire, il y a son bouquin Effacement qui avait été adapté.",
+  "recommendedBy": "Fabrice Éboué",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:42:04",

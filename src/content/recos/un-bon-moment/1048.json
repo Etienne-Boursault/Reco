@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Transcript non diarizé : locuteur (Kyan ou Navo) non déterminable. Chanson « L'Anxiété » de Pomme confirmée au transcript.",
     "reason": "« j'adore la chanson L'Anxiété qui est rentrée dans ma playlist de 2020 » (01:39:43), dans le prolongement direct de la reco Pomme (« écoutez son album »). Endossement enthousiaste d'un titre précis.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Pomme",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Moi, j'adore la chanson L'Anxiété qui est rentrée dans ma playlist de 2020.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:43",

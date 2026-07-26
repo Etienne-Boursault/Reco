@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'Los nuevos anos': Navo mi-recommande ('regardez les 4-5 premiers, attachez-vous pas a la suite') puis se retracte ('c'est un peu con de dire ca... je vais dire Devil's Plan'). Reco partielle/retiree => citation. Borderline validate.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
@@ -42,7 +43,7 @@
     "openai"
   ],
   "id": "ubm-0289",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",
@@ -62,10 +63,10 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:06:53",
-  "title": "Los Nuevos años",
+  "title": "Los Años Nuevos",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "serie"
+    "serie",
+    "autre"
   ]
 }

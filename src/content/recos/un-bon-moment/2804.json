@@ -10,9 +10,9 @@
     "model": "claude-opus-4-8",
     "note": "Canonique du cluster Janelle Monae (ubm-2797 doublon). Titre a preciser: The Age of Pleasure (2023). Laura Felpin manque dans episode.guests.",
     "reason": "JP Zadi recommande explicitement 'le dernier' album de Janelle Monae ('je le saigne', 'j'ecoute que ca').",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Janelle Monae",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -49,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:12:44",
-  "title": "album de Janelle Monae",
+  "title": "Janelle Monáe",
   "transcriptSource": "youtube",
   "types": [
     "album"

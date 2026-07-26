@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Oeuvre reelle de l'invitee, citee biographiquement. Timecode ~00:16:20. Invitee absente de guests[].",
     "reason": "'Ma vie est tout a fait fascinante' est le nom du blog BD de Penelope Bagieu, cite dans son recit d'origine (passage a l'autobio) sans prescription au public.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Pénélope Bagieu",
@@ -36,8 +37,9 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1700",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",
@@ -53,6 +55,7 @@
     }
   ],
   "quote": "c'était le moment où tu t'autorises entre guillemets mais en tout cas tu tu te dis je raconte ma live quoi je vais montrer du truc des tu vois c'était c'est vrai peut-être tu as raison",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:16:22",

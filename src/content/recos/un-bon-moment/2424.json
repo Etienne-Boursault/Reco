@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Verifier l'orthographe exacte 'Seb Mellia' (verif web indisponible cette session).",
     "reason": "Navo recommande la chaine YouTube de Seb Mellia (stand-up, 'La chaine de Semelia, il y a du stand-up... c'est super'). Reco explicite. Canonique (doublons 2434, 1062).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "799190f5-929c-41c5-b40a-ebd0910d3d4a",
@@ -47,7 +48,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:10:49",
-  "title": "Seb Melia",
+  "title": "Seb Méllia",
   "transcriptSource": "youtube",
   "types": [
     "video"

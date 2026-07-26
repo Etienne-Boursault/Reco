@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = invité amateur de mangas (probablement Mouloud Achour), non l'host. Compléter guests épisode.",
     "reason": "'Les Chevaliers du Zodiaque' cité comme exemple du premier rapport à la lecture d'un invité (anecdote autobiographique sur les mangas, librairie Tonkam). Name-drop réel sans prescription = citation. Attribution existante 'Kyan Khojandi' erronée (c'est un invité qui parle).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -54,6 +55,7 @@
     }
   ],
   "quote": "moi les mangas ça a été mon premier rapport à la lecture",
+  "recommendedBy": "Mouloud Achour",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:54:17",

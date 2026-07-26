@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre correct : Madame Fraize (createur Marc Fraize). Locuteur : passe apres Navo a 'toi' (Kyan/Thomas ?), non identifiable. Doublon : ubm-0205.",
     "reason": "Reco explicite : 'le spectacle Madame Fraize... spectacle de clown incroyable... c'est genial'. Oeuvre reelle de Marc Fraize. Canonique.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Marc Fraise",
@@ -73,6 +74,7 @@
     }
   ],
   "quote": "Le spectacle Madame Fraise aussi",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:52",

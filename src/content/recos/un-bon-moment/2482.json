@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain : le fil (« je suis moins écouté Queen en boucle... Vulfpeck ») peut être Thomas VDB (le fou de musique) autant que Kyan. recommendedBy vidé (règle 3).",
     "reason": "« j'adore Vulfpeck » (00:52:32), groupe réel, endossement explicite ; « je l'ai pas vu en concert, il paraît que c'est génial ». Reco valide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Vulfpeck",
@@ -38,7 +39,7 @@
     "openai"
   ],
   "id": "ubm-2482",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",

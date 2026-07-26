@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Album = 'LUX' (Rosalia, 2025), orchestral, largement cite 'album de l'annee'. Preciser le titre.",
     "reason": "Reco explicite de Kyan : 'elle a fait un album qui est juste sublime... je pense que ca va te plaire... de la trempe d'un Woodkid, OVNI' (00:54-55).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Rosalía",
@@ -48,7 +49,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:54:56",
-  "title": "Rosalía - Album",
+  "title": "Lux",
   "transcriptSource": "youtube",
   "types": [
     "album"

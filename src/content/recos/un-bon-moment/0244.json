@@ -5,6 +5,7 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'Il y a des series comme Bojack Horseman, ca remonte carrement jusqu'a la grand-mere' : exemple avec observation substantielle sur la profondeur psychologique, mais pas de prescription. Locuteur incertain (host).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "69207579d35aa096b5a8ee47",
@@ -66,6 +67,7 @@
     }
   ],
   "quote": "Il y a des séries comme Bojack Horseman.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:13:16",

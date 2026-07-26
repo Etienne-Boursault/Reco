@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Recommandé par un invité, probablement GCM (réalisateur — d'où « claque cinématographique ») mais transcript non diarisé.",
     "reason": "Recommandation explicite dans le tour de reco (« vous avez une série à recommander ? ») avec enthousiasme prescripteur : « la claque cinématographique de l'année dernière... extraordinaire, très très fort ». Série de Ava DuVernay, pas une œuvre d'invité.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Ava DuVernay",
@@ -62,6 +63,7 @@
     }
   ],
   "quote": "alors moi j'ai une série qui est sortie genre il y a au moins un an, donc peut-être, vas-y vas-y, tout le monde a vu, c'est When They See Us",
+  "recommendedBy": "Grand Corps Malade",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:34:01",

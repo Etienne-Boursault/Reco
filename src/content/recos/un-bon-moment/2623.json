@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Plusieurs locuteurs expliquent le jeu (non-diarise) -> recommendedBy vide.",
     "reason": "Baba Is You (Hempuli, 2019) : 'ca rend fou' (mind-blowing) + longue explication enthousiaste des mecaniques d'alignement de mots. Endossement.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
@@ -59,6 +60,7 @@
     }
   ],
   "quote": "Baba Is You, ça rend fou.",
+  "recommendedBy": "Navo & Woodkid",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:09:57",

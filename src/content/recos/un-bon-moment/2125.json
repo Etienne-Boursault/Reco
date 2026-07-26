@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : « Swann Périssé » (TikTok @swann.perisse) — corriger « Swan Périsset ». Non diarizé : recommandeur à compléter.",
     "reason": "Recommandation explicite (01:09:37 : « je vais recommander le TikTok de Swann Périssé... ils sont trop marrants »). Humoriste réelle. Canonique du cluster.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Swan Périsset",
@@ -55,10 +56,11 @@
     }
   ],
   "quote": "je vais recommander le TikTok de Swan Périsset.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:09:39",
-  "title": "Swan Périsset",
+  "title": "Swanm Perissé",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

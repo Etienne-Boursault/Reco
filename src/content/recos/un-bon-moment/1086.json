@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = invité, non Navo. Compléter guests.",
     "reason": "Recommandation forte : 'une magnifique série américaine... magnifique travail sur la lutte des classes... j'ai rarement vu quelque chose de si fort récemment... une série folle' (00:57:35). Œuvre réelle : 'The White Lotus' (HBO, 2021). Canonique du doublon avec ubm-0791. Attribution 'Navo' erronée (invité).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -52,6 +53,7 @@
     }
   ],
   "quote": "une série de White Lotus je sais pas si vous l'avez vu c'est une magnifique série américaine",
+  "recommendedBy": "Augustin Trapenard",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:57:35",

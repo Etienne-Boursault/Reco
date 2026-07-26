@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "ATTENTION collision de nom : le spectacle live des hosts s'appelle aussi 'Une bonne soiree' (unebonnesoiree.fr dans la description). Mais le transcript (00:50:51-00:51:19) attribue SANS AMBIGUITE ce spectacle a Laurent Baffie ('le dernier spectacle... on est en tournee actuellement... ca s'appelle une bonne soiree'). Pas de champ creator (a completer : Laurent Baffie). Timecode 00:50:53 exact.",
     "reason": "One-man show actuel de l'invite Laurent Baffie ('Une bonne soiree'), en tournee, presente par lui (structure : une soiree racontee avec flashbacks/digressions). Titre verbatim transcript a 00:50:59. Auto-promo invite = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "63614bd05e627e0011144c04",
@@ -50,7 +51,7 @@
     }
   ],
   "quote": "et là le dernier spectacle je raconte une soirée qui m'est arrivée on est en tournée actuellement tu fais tout le spectacle sur une soirée sur une soirée ouais ça s'appelle une bonne soirée une des meilleures soirées de ma vie",
-  "recommendedBy": "Laurent Baffie",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:50:53",

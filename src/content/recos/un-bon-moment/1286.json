@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Proprietaire incertain (Anna ou Marion) -> recommendedBy vide. Attribution stockee 'Kyan Khojandi' erronee. externalIds tmdb 1581971 = probable faux match (projet non produit). guests metadonnees vide. Timecode 00:47:18 OK.",
     "reason": "Projet/serie en developpement d'une des invitees (pilote 'Mourir seul', titre depose, non produit) presente sur le plateau -> oeuvre d'invitee.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
@@ -56,7 +57,7 @@
   "links": [],
   "quote": "Eh ben, fais-le. Vite fait des petits tas de ci, de là.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:47:18",
   "title": "Mourir seul",
   "transcriptSource": "youtube",

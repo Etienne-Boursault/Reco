@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur invité incertain. Compléter guests.",
     "reason": "Recommandation explicite : 'moi je vous recommande le film Vice sur Dick Cheney... une comédie magnifique, noire, dure... vraiment marrant' (01:02:42). Œuvre réelle : 'Vice' (2018, Adam McKay).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
@@ -68,6 +69,7 @@
     }
   ],
   "quote": "je vous recommande le film Vice",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:02:42",

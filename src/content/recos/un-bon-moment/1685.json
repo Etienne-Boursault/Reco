@@ -9,9 +9,16 @@
     "model": "claude-opus-4-8",
     "note": "Compte TikTok @niemesia (« La meuf là »). Créateur transcrit « Niemesta » → handle @niemesia (WebSearch). Hôte non diarizé (Kyan ou Navo).",
     "reason": "Reco du compte « La meuf là » : calendrier de l'Avent des femmes oubliées de l'histoire, « Génial ! » (l.4145-4159). Titre = nom du compte, correct.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Niemesta",
+  "customLinks": [
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@niemesia"
+    }
+  ],
   "episodeGuid": "6955067456c11ef4099abd99",
   "extractionHistory": [
     {
@@ -72,10 +79,11 @@
     }
   ],
   "quote": "La Meuf-là, je crois que son nom c'est Niemesta, et en ce moment...",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:39:43",
-  "title": "La Meuf-là",
+  "title": "La Meuf là",
   "transcriptSource": "youtube",
   "types": [
     "video",

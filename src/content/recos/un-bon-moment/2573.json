@@ -6,6 +6,7 @@
     "model": "claude-opus-4-8",
     "note": "Bref = serie de Kyan Khojandi, mention en passant par Paul; substance faible, l'humain peut requalifier en discard",
     "reason": "'Bref' (serie de Kyan) evoquee en passant par Paul comme exemple de fiction des hosts ('comme vous avez fait avec Bref'). Oeuvre d'un host passee en anecdote = citation ; substance faible.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
@@ -35,7 +36,7 @@
   ],
   "quote": "Enfin, comme vous avez fait avec \"Bref\" ou même tu vois des longs métrages et tout",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:30:27",
   "title": "Bref",
   "transcriptSource": "youtube",

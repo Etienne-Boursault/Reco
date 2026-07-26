@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre : accent « Fantomas » -> « Fantomas ». Champ creator = « Jean Marais » (acteur) ; realisateur = Andre Hunebelle (film 1964 avec Louis de Funes).",
     "reason": "Recommandation explicite : « Si vous avez l'occasion de voir Fantomas avec de Funes et Jean Marais, c'est tres marrant » suivi de « tres bon conseil, c'est vraiment bien » (l.2779-2782).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Jean Marais",
@@ -69,7 +70,7 @@
     }
   ],
   "quote": "Si vous avez l'occasion de voir Fantômas avec deux Funès et Jean Marais, c'est très marrant.",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Dedo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:31:15",

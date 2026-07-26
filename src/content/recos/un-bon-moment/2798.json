@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "'Ils abusent graves' (dessins de Fred Cham + une autrice), reel, recommande dans le segment reco. Recommandeur incertain (hote - Kyan ou Navo; extracteur disait Kyan) -> recommendedBy vide.",
     "reason": "Livre + compte Instagram 'Ils abusent graves' recommandes explicitement au segment reco.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Fred Cham",
+  "creator": "Erell Hannah  & Fred Cham",
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -48,6 +49,7 @@
     }
   ],
   "quote": "Je recommande le compte Instagram et le bouquin qui est sorti, qui s'appelle \"Ils abusent graves\".",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:13:32",

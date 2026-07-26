@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Discussion Stromae ~00:04:54-00:05:08.",
     "reason": "Album Racine carree (Stromae) discute dans la conversation sur le developpement des concepts d'artistes (~00:04:54). Substance mais pas de prescription. Attribution fluide (3 voix).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Stromae",
@@ -45,7 +46,7 @@
   ],
   "quote": "quand il a fait Racine Carré son album qu'a ton car là",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "10:35:00",
   "title": "Racine Carrée",
   "transcriptSource": "youtube",

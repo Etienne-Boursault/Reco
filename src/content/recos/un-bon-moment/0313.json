@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Timecode ~00:45:16. Les Vieux Fourneaux de Wilfrid Lupano & Paul Cauuet (correct). Attribution incertaine -> recommendedBy vide.",
     "reason": "Recommandation explicite d'une BD ('je vous recommande une bd qui s'appelle les vieux fourneaux... c'est super je vous recommande'). Locuteur non diarize (anecdote de scene a Poitiers, probablement Nora ou Kyan).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Wilfrid Lupano, Paul Cauuet",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "je vous recommande une bd qui s'appelle les vieux fourneaux qui est trop bien",
+  "recommendedBy": "Pénélope Bagieu",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:45:16",

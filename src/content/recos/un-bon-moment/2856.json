@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur = membre du jury As d'Or, host non identifiable avec certitude (Kyan ou Navo) sur transcript sans labels ; recommendedBy vide. Laureat As d'Or Enfant 2023 (YT 00:58:19).",
     "reason": "« Flashback Zombie Kids » nomme comme laureat As d'Or (categorie enfant) par un membre du jury du prix. Jeu reel, substance (palmares) mais sans prescription explicite « allez y jouer ».",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "652408a9c8996500127e39e9",
@@ -54,7 +55,7 @@
   ],
   "quote": "pour les enfants, c'était comment ? Flashback Zombie Kids.",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:58:21",
   "title": "Flashback Zombie Kids",
   "transcriptSource": "youtube",

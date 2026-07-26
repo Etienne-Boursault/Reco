@@ -8,6 +8,7 @@
     ],
     "model": "claude-opus-4-8",
     "reason": "Prescription enthousiaste explicite : 'le Bureau des legendes, c'est la meilleure serie francaise au monde'. Locuteur host non identifiable (adresse a 'les gars') -> attribution videe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Éric Rochant",
@@ -37,7 +38,7 @@
     "openai"
   ],
   "id": "ubm-2436",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "neutral",
@@ -53,6 +54,7 @@
     }
   ],
   "quote": "le Bureau des légendes, les gars, c'est la meilleure série française au monde.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:13:28",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "FailArmy (compte de compilations de chutes/fails).",
     "reason": "Recommandation d'un compte : 'je peux recommander un compte Insta... FailArmy... c'est trop bien, c'est genial'. Locuteur = un invite, non identifiable -> attribution videe.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
@@ -37,12 +38,13 @@
     }
   ],
   "quote": "Fail Army. Tous les jours il y a des gens qui tombent. C'est génial.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:02",
-  "title": "Fail Army",
+  "title": "Failarmy",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "video"
   ]
 }

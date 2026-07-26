@@ -10,9 +10,10 @@
     "model": "claude-opus-4-8",
     "note": "CANONIQUE spectacle Panayotis; doublon discarde: ubm-2282. Titre reel du one-man-show sur Netflix: 'Presque'. La reco porte un titre generique 'Spectacle de Panayotis'.",
     "reason": "Spectacle de Panayotis recommande en cloture a 01:15:47 ('allez voir les spectacles de Pana sur Netflix... c'est vraiment des must-see'). Oeuvre de l'invite.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Panaïotis",
+  "creator": "Panayotis Pascot",
   "episodeGuid": "6584658132930b0016c5272b",
   "extractionHistory": [
     {
@@ -44,7 +45,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:15:48",
-  "title": "Spectacle de Panaïotis",
+  "title": "Presque",
   "transcriptSource": "youtube",
   "types": [
     "spectacle"

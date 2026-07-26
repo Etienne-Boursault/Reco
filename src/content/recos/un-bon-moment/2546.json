@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Orthographe scene: 'Czesare' (de son vrai nom Emma Cesari), guitariste/chanteuse, a fait la premiere partie de -M-. 'Cesare' dans le transcript = transcription phonetique.",
     "reason": "Matthieu recommande explicitement une jeune artiste qu'il a invitee en premiere partie: 'douceur incroyable', 'un vrai phrase', album recent (01:07). Prescription claire.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Césaré",
@@ -52,7 +53,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:07:02",
-  "title": "Césaré",
+  "title": "Czesare",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

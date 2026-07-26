@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy vidé : locuteur host non identifiable (Kyan/Jérémie).",
     "reason": "Prescription explicite : 'Pour les gens que ça intéresse, je conseille Dan Gagnon' + description détaillée du podcast d'auto-analyse 'Making le troisième spectacle'. Locuteur = un host s'adressant à Shirley ('toi'), donc Kyan ou Jérémie (lien Québec/Montréal) — non identifiable de façon fiable.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Dan Gagnon",
@@ -48,10 +49,11 @@
     }
   ],
   "quote": "Franchement, change de truc, plante-toi, tente un truc.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:19:02",
-  "title": "Making le troisième spectacle",
+  "title": "Making a 3e spectacle",
   "transcriptSource": "youtube",
   "types": [
     "podcast"

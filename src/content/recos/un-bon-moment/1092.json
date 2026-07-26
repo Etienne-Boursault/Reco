@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "guests de l'episode vides : invite Alexandre Kominek a completer dans les metadonnees. Recommandation croisee introduite par Bun Hay Mean.",
     "reason": "Oeuvre de l'invite Alexandre Kominek (humoriste, spectacle 'Polonais et en colere') : auto-promo. Bun Hay Mean lance 'allez voir Alexandre Cominec' et Kominek enchaine 'allez me voir merci' (01:08:09-21).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "episodeGuid": "630baf2b552ddd0013718a16",
@@ -44,7 +45,7 @@
     }
   ],
   "quote": "Allez voir Alexandre Cominec, il fait oui, c'est vrai.",
-  "recommendedBy": "Alexandre Kominek",
+  "recommendedBy": "Bun Hay Mean & Alexandre Kominek",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:08",

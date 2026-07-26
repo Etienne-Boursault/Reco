@@ -11,9 +11,10 @@
     "model": "claude-opus-4-8",
     "note": "Corrections : artiste « G Lloyd »/« G-loid » → « J Lloyd » (Josh Lloyd-Watson, moitié de Jungle) ; œuvre = mixtape « Kosmos » (2020), morceau « Feelin' Good ». Locuteur probable Clément (continuité « gars dans un groupe qui fait un projet ») mais transcript non diarisé. Canonique ; ubm-0773 (« G-loid ») et ubm-0774 (« Feel Good ») sont des doublons.",
     "reason": "Recommandation enthousiaste du projet solo du membre de Jungle (« un projet perso », « mixtape incroyable », morceau « qui est fou »), dans l'enchaînement des recos de Clément (après Cory Wong).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "G Lloyd",
+  "creator": "J LLoyd",
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractionHistory": [
     {
@@ -50,13 +51,14 @@
     }
   ],
   "quote": "Il y a aussi le... Un des deux chanteurs de Jungle ! Enfin, un chanteur producteur du groupe Jungle ! Qui a un projet perso qui s'appelle G Lloyd !",
-  "recommendedBy": "Clément Viktorovitch",
+  "recommendedBy": "Julien Granel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:33:41",
-  "title": "G Lloyd",
+  "title": "Feel Good",
   "transcriptSource": "youtube",
   "types": [
+    "musique",
     "artiste",
     "autre"
   ]

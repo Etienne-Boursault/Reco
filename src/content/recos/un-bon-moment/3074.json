@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre 'Back to Black' INFÉRÉ : le transcript dit seulement 'l'album d'Amy Winehouse'. Cohérent (Back to Black ~35 min < 40, culte). Locuteur ambigu (non diarisé). Limite discard (comparaison en passant, règle 1) — à trancher par l'humain.",
     "reason": "Album réel non lié à un invité, jugement de valeur substantiel mais sans prescription : 'l'album d'Amy Winehouse, c'est moins de 40 minutes. C'est un des albums les plus cultes que j'ai entendus' (00:45:30). Mention en partie instrumentale (comparaison de durée avec un spectacle) mais endossement fort → citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Amy Winehouse",
@@ -45,6 +46,7 @@
     }
   ],
   "quote": "L'album d'Amy Winehouse, c'est moins de 40 minutes. C'est un des albums les plus cultes que j'ai entendus.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:45:30",

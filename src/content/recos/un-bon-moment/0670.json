@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "recommendedBy corrige (etait Navo). Realisateur confirme = Yacine Belhousse (Kyan figure dans le doc). Invites a completer dans les metadonnees episode.",
     "reason": "Documentaire realise par Yacine Belhousse (invite), presente par lui (« mon documentaire dans lequel tu es », sa deuxieme reco apres Silicon Valley) avec prescription « allez la voir » (l.3032-3045). Oeuvre d'invite -> guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Netflix",

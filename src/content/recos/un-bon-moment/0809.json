@@ -10,6 +10,7 @@
     "model": "claude-opus-4-8",
     "note": "Album «Coeur» de Clara Luciani (2021) reel. Locutrice feminine ('je suis restee') -> une INVITEE (Morgane/Fanny): le champ recommendedBy pre-rempli «Kyan Khojandi» est FAUX. Invitee non distinguable -> recommendedBy vide.",
     "reason": "Endossement fort d'un album ('j'ai ecoute l'album de Clara Luciani tout l'ete, j'ai fait que ca'), l'autre repond 'je vais decouvrir ca'. Segment de recos.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Clara Luciani",
@@ -67,6 +68,7 @@
     }
   ],
   "quote": "J'ai écouté l'album de Clara Luciani, je pense, tout l'été.",
+  "recommendedBy": "Morgane Cadignan",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:26:26",

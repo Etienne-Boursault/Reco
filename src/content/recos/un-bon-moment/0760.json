@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre et auteur (Louis-Ferdinand Celine) corrects. La discussion 'faut-il separer l'homme de l'oeuvre' ne retire pas le caractere de recommandation litteraire.",
     "reason": "Recommandation d'Haroun : 'Voyage au bout de la nuit de Celine, tu as des trucs comme ca aussi... des phrases qui m'ont perce le cerveau' (00:48:05). Avis fort sur l'oeuvre.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Louis-Ferdinand Céline",
@@ -47,7 +48,7 @@
     "openai"
   ],
   "id": "ubm-0760",
-  "kind": "reco",
+  "kind": "citation",
   "links": [
     {
       "ethics": "indie",

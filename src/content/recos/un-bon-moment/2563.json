@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "video non nommee (sujet: sexisme dans les commentaires YouTube); titre stocke = nom du createur seulement",
     "reason": "Kyan renvoie a une video de Fabien Olicard 'tres bien' sur le sexisme des commentaires (hommes juges sur le fond, femmes sur le physique). Discutee avec substance mais sans prescription au public. Video precise non nommee.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
@@ -37,7 +38,7 @@
     }
   ],
   "quote": "il y a une vidéo que Fabien Olicard avait faite qui est très bien où il parle justement",
-  "recommendedBy": "Kyan Khojandi",
+  "recommendedBy": "Tania Dutel",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:32:38",

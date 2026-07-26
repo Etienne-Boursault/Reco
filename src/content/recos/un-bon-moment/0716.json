@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "01:21:28 : 'un truc que je recommande, Crashing, avec Pete Holmes, serie sur le stand-up, sur OCS, top top top.' Reco explicite. Locuteur non certain -> recommendedBy vide.",
     "reason": "Serie reelle (Crashing, Pete Holmes) explicitement recommandee",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Pete Holmes",
@@ -61,6 +62,7 @@
     }
   ],
   "quote": "Moi, c'est un truc que je recommande, Crashing.",
+  "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:21:28",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur du concert (« cadeau d'anniversaire ») non identifiable et « on vous conseille » collectif : recommendedBy vidé.",
     "reason": "Recommandation explicite de Pomme : « on vous conseille d'aller voir, écoutez son album » (01:39:40). Artiste/spectacle recommandé au public.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Pomme",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "Moi, je vais aller voir le concert de Pomme à la cigale.",
+  "recommendedBy": "Manu Payet",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:01",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Non diarizé : recommandeur non identifiable de façon sûre → recommendedBy à compléter.",
     "reason": "Recommandation explicite (01:08:52 : « je vous recommanderais... de lire les livres de Delphine Orvilleur... quelqu'un d'extraordinaire »). Autrice/rabbin réelle. Canonique du cluster Delphine Orvilleur (timestamp exact).",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "65ed94b586967e0017c06729",
@@ -43,10 +44,11 @@
     }
   ],
   "quote": "Moi, je vous recommanderais, si vous ne la connaissez pas déjà, de lire les livres de Delphine Orvilleur.",
+  "recommendedBy": "Laura Domenge",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:08:53",
-  "title": "Delphine Orvilleur",
+  "title": "Delphine Horvilleur",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

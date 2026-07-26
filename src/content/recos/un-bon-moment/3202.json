@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Createur confirme : Pauline Grisonni (~01:41:45). Attribution du locuteur ambigue ('je recommande' + dispute 'C'est moi qui l'ai dit', taquineries envers Alice) -> recommendedBy vide (regle 3). Manifest suggerait Navo.",
     "reason": "Podcast reel 'La Lecon' (Pauline Grisonni) recommande ; ce n'est pas l'oeuvre d'un invite present (Alice y etait juste invitee)",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Pauline Grisonni",
@@ -50,6 +51,7 @@
     }
   ],
   "quote": "Moi, du coup, je recommande le podcast La Leçon.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:07",

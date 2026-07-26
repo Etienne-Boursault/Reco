@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Percival Everett, 'James' (2024, reecriture de Huckleberry Finn du point de vue de Jim). Attribution hote incertaine (Kyan ou Navo).",
     "reason": "Reco explicite dans le segment recos (01:43) : 'son dernier bouquin est tres malin et c'est super drole a lire... Ca s'appelle James de Percival Everett.' Titre confirme au transcript.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Percival Everett",
@@ -72,6 +73,7 @@
     }
   ],
   "quote": "son dernier bouquin est très malin et c'est super drôle à lire.",
+  "recommendedBy": "Fabrice Éboué",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:43:15",

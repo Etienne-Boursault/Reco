@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Invite = Matthieu Chedid (-M-), a completer dans les metadonnees.",
     "reason": "Kyan pousse fortement a voir l'invite en concert: 'allez voir Mathieu Chedid sur scene au moins une fois dans votre vie parce que ca vaut le detour' (01:09). Oeuvre live de l'invite = guest-work.",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "M (Matthieu Chedid)",
@@ -47,7 +48,7 @@
   "quote": "si vous êtes sur cette planète et que vous connaissez matieu schedid ou m allez voir matieu schedid sur scène au moins une fois dans votre vie parce que ça vaut le détour",
   "recommendedBy": "Matthieu",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:09:15",
   "title": "Matthieu Chedid en concert",
   "transcriptSource": "acast",

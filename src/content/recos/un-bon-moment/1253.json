@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Presente par Barbara (« je produis avec ma mere... realisee par ma mere »). Oeuvre tierce (Sarah Baruch), donc pas guest-work. Verifier attribution guest.",
     "reason": "Livre de Sarah Baruch presente substantiellement dans le cadre de l'association « 125 et apres » (violences conjugales), sans prescription explicite (« allez le lire »).",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Sarah Baruch",
@@ -47,7 +48,7 @@
     "openai"
   ],
   "id": "ubm-1253",
-  "kind": "citation",
+  "kind": "reco",
   "links": [
     {
       "ethics": "indie",

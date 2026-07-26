@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Locuteur host non identifiable (Kyan ou Navo), transcript non diarize -> recommendedBy vide (regle 3). Manifest suggerait Kyan. Reco a 01:40:16.",
     "reason": "Host recommande l'artiste Joji ('j'adore', 'je preconise') - oeuvre reelle, pas celle d'un invite present",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
@@ -49,6 +50,7 @@
     }
   ],
   "quote": "Moi, j'ai écouté un truc ce matin, le premier truc d'un artiste que j'aime beaucoup qui s'appelle Joji qui a sorti un album.",
+  "recommendedBy": "Alice David",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:40:16",

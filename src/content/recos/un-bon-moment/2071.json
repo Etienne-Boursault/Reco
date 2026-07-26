@@ -5,9 +5,10 @@
     "date": "2026-07-04",
     "model": "claude-opus-4-8",
     "reason": "'sur YouTube il y a les 50 minutes de Remi Boy qui sont incroyables' (01:55:13). Reco explicite. Locuteur du tour de recos ambigu -> vide.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Rémi Boy",
+  "creator": "Rémi Boyes",
   "episodeGuid": "68ef607e58893bb6e322c623",
   "extractionHistory": [
     {
@@ -50,10 +51,11 @@
     }
   ],
   "quote": "les 50 minutes de Rémi Boy qui sont incroyables",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:55:13",
-  "title": "Rémi Boy",
+  "title": "J'ai tout écrit hier",
   "transcriptSource": "youtube",
   "types": [
     "video"

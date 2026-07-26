@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Le transcript orthographie mal « Navao DVD » = Thomas VDB (confirmé par le contexte — son livre et son spectacle).",
     "reason": "Florent Bernard recommande l'artiste Thomas VDB et son spectacle — « le spectacle est dingue, disponible partout, super cadeau à offrir, très drôle... si vous ne connaissez pas Thomas VDB, vous allez le découvrir ».",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
@@ -45,7 +46,7 @@
   "quote": "Mais si vous ne connaissez pas Navao DVD, vous allez le découvrir.",
   "recommendedBy": "Florent Bernard",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "01:51:34",
   "title": "Thomas VDB",
   "transcriptSource": "youtube",

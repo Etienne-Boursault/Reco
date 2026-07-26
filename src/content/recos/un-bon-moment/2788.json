@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "'Les meufs c'est des mecs bien' de Mourad Winter (chez Click Edition), loue ('tres tres chauds', 'il est trop fort Mourad') et recommande au segment reco. ubm-0901 et ubm-2799 = doublons. Laura Felpin manque dans episode.guests.",
     "reason": "Livre de Mourad Winter (romancier) recommande et loue par JP Zadi; canonique du cluster Mourad Winter.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "creator": "Mourad Winter",
@@ -54,7 +55,7 @@
     }
   ],
   "quote": "Très drôle, tu éclates de rire en lisant un bouquin.",
-  "recommendedBy": "Jean-Pascal Zadi",
+  "recommendedBy": "Laura Felpin",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "00:16:58",

@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Enonce par Navo (host), titre collectif (« les livres de Fabien Olicard »). guests[] vide dans l'episode -> a completer avec Fabien Olicard.",
     "reason": "A 01:35:40 (tour de recommandations) : « j'ai lu tous les livres de Fabien Olicard ». Oeuvre de l'invite Olicard mise en avant dans son episode -> guestWork. recommendedBy = proprietaire (convention guest-work).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Fabien Olicard",

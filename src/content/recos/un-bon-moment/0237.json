@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Titre exact 'No, I'm not a Human' (jeu indie horreur, Trioskaz/Critical Reflex, sept. 2025). Attribution indeterminee (locuteur du tour de recos).",
     "reason": "'C'est un des jeux les plus bizarres que j'ai fait depuis longtemps, donc je vous le conseille... je recommande' (02:22:46-02:24:19) — prescription claire, longue presentation du gameplay.",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
   "episodeGuid": "691488fcc1ed8717c54570d4",
@@ -65,10 +66,11 @@
     }
   ],
   "quote": "Le jeu se passe dans une maison tu ne sors jamais de la maison",
+  "recommendedBy": "Patrick Baud",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "02:22:46",
-  "title": "No I'm Not a Human",
+  "title": "No, I'm Not a Human",
   "transcriptSource": "youtube",
   "types": [
     "jeu"

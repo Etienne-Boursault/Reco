@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Attribution incertaine (thread collectif Kyan/Navo/Léopold, non diarizé) → recommendedBy vide, humain complète.",
     "reason": "01:41:16 : après un running gag (trop de livres), disclaimer d'admiration 'ce n'est pas une critique, j'adore ce que fait Fabien Olicard, génie'. Éloge sincère d'un artiste sans prescription/œuvre précise → citation.",
+    "reviewedByHuman": true,
     "verdict": "citation"
   },
   "creator": "Fabien Olicard",
@@ -63,6 +64,7 @@
     }
   ],
   "quote": "J'adore ce que fait Fabien Olicard.",
+  "recommendedBy": "Rosa Bursztein",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:16",

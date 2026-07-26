@@ -9,9 +9,10 @@
     "model": "claude-opus-4-8",
     "note": "Createur reel = David Louapre (fiche indique 'David Wapre'). Attribution hote incertaine (Kyan ou Navo) -> recommendedBy vide.",
     "reason": "Recommandation explicite dans le segment recos (01:41) : 'moi je recommande... Science etonnante sur YouTube... hyper bien... explique des trucs compliques de facon tres pedagogue. Il est tres fort.'",
+    "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "David Wapre",
+  "creator": "David Louapre",
   "episodeGuid": "6929611768e521ed8d86a91b",
   "extractionHistory": [
     {
@@ -72,13 +73,14 @@
     }
   ],
   "quote": "je recommande... parce que je crois que je n'ai jamais recommandé Science étonnante sur YouTube de David Loapre qui est hyper bien.",
+  "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:41:33",
   "title": "Science étonnante",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "video",
+    "autre"
   ]
 }

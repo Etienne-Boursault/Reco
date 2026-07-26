@@ -9,6 +9,7 @@
     "model": "claude-opus-4-8",
     "note": "Feat / orthographe 'Rojay' non revalides (WebSearch epuise).",
     "reason": "Morceau de l'invite Mister V (Saint Laurent, dispo, place dans la BO de NBA 2K20) presente par lui-meme = auto-promo d'une oeuvre de l'invite (regles 2/16).",
+    "reviewedByHuman": true,
     "verdict": "guest-work"
   },
   "creator": "Rojay",
@@ -41,7 +42,7 @@
   "quote": "on avait déjà sorti le son et en fait ils ont kiffé et ils l'ont mis dans le jeu",
   "recommendedBy": "Mister V",
   "sourceId": "un-bon-moment",
-  "status": "validated",
+  "status": "discarded",
   "timestamp": "00:33:31",
   "title": "Saint Laurent",
   "transcriptSource": "youtube",
