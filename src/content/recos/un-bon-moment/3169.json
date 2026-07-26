@@ -37,6 +37,12 @@
       "kind": "streaming",
       "label": "Spotify",
       "url": "https://open.spotify.com/artist/7G7JWOsGhDMily2HtfzcIZ"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@EvvieMcKinney"
     }
   ],
   "quote": "Je conseille aux gens d'aller voir les covers et surtout la vidéo d'une fille qui s'appelle Evie McKinney.",
@@ -47,6 +53,6 @@
   "title": "Evie McKinney",
   "transcriptSource": "youtube",
   "types": [
-    "artiste"
+    "chaine"
   ]
 }

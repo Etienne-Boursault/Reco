@@ -46,6 +46,12 @@
       "kind": "social",
       "label": "TikTok @dava.officiel",
       "url": "https://www.tiktok.com/@dava.officiel"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@DAVAofficiel"
     }
   ],
   "quote": "Dava, ils sont sur TikTok maintenant. Dava, ils sont super.",
@@ -56,7 +62,6 @@
   "title": "Dava",
   "transcriptSource": "youtube",
   "types": [
-    "spectacle",
-    "artiste"
+    "chaine"
   ]
 }

@@ -38,6 +38,12 @@
       "kind": "streaming",
       "label": "Chaîne YouTube Music",
       "url": "https://music.youtube.com/channel/UCylVomQnFRQl_gOlXFNPf8g"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@disizfr"
     }
   ],
   "quote": "D'ailleurs, je fais la promo Dissiz",
@@ -48,6 +54,6 @@
   "title": "Dissiz",
   "transcriptSource": "youtube",
   "types": [
-    "artiste"
+    "chaine"
   ]
 }
