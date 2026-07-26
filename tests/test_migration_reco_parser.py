@@ -288,6 +288,18 @@ def test_external_ids_tmdb_int_preserved():
     assert i.external_ids.tmdb == 42
 
 
+def test_external_ids_social_handles_propagated():
+    """instagram/tiktok des recos DOIVENT arriver jusqu'à l'item (bug 2026-07-26 :
+    oubliés dans _parse_external_ids → perdus à la régénération des items)."""
+    reco = {
+        "id": "x-1", "sourceId": "x", "title": "Orelsan", "types": ["artiste"],
+        "externalIds": {"instagram": "orelsan", "tiktok": "orelsantk"},
+    }
+    i, _m = reco_dict_to_item_mention(reco, item_id_resolver=_fixed_resolver())
+    assert i.external_ids.instagram == "orelsan"
+    assert i.external_ids.tiktok == "orelsantk"
+
+
 def test_external_ids_tmdb_bool_rejected():
     reco = {
         "id": "x-1", "sourceId": "x", "title": "T", "types": ["film"],
