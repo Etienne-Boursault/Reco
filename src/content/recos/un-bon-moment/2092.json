@@ -27,7 +27,14 @@
   "guestWork": true,
   "id": "ubm-2092",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://icijesse.com/"
+    }
+  ],
   "quote": "un bouquin préparation",
   "recommendedBy": "Kyan Khojandi & Jessé",
   "sourceId": "un-bon-moment",

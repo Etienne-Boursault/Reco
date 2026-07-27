@@ -29,7 +29,14 @@
     "anthropic"
   ],
   "id": "ubm-3110",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/nl-en/title/82054722"
+    }
+  ],
   "quote": "le genre de casting qu'a fait Kevin Hart",
   "recommendedBy": "Jason Brokerss",
   "sourceId": "un-bon-moment",

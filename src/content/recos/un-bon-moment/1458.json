@@ -47,7 +47,14 @@
   "linkOverrides": {
     "YouTube": "https://www.youtube.com/@zebroloss"
   },
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@zebroloss"
+    }
+  ],
   "quote": "Zébrelo je l'adore.",
   "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",

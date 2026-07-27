@@ -28,7 +28,14 @@
     "openai"
   ],
   "id": "ubm-1234",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCPnxhyAxViN6eEXglzsEiww"
+    }
+  ],
   "quote": "Moi je recommande Chaga.",
   "recommendedBy": "Navo",
   "sourceId": "un-bon-moment",

@@ -34,7 +34,14 @@
   "guestWork": true,
   "id": "ubm-2745",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/playlist?list=PLn2I00gPSd-pdpjgzToa-c2LiLoLye5bt"
+    }
+  ],
   "quote": "Titre provisoire, les années 20",
   "recommendedBy": "Anna Apter",
   "sourceId": "un-bon-moment",

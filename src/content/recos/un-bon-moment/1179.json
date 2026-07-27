@@ -50,7 +50,14 @@
   ],
   "id": "ubm-1179",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/listeliv.php?base=paper&mots_recherche=3+minutes+pour+comprendre"
+    }
+  ],
   "quote": "C'est une minute pour comprendre.",
   "recommendedBy": "Fabien Olicard",
   "sourceId": "un-bon-moment",

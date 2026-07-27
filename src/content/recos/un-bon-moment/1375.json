@@ -32,7 +32,14 @@
   "guestWork": true,
   "id": "ubm-1375",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Arte Radio",
+      "url": "https://www.arteradio.com/serie/l_ecole_c_est_de_la_merde"
+    }
+  ],
   "quote": "il a fait un podcast là-dessus qui est trop bien",
   "recommendedBy": "Pierre Hillairet",
   "sourceId": "un-bon-moment",
