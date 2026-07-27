@@ -64,6 +64,14 @@ jobs:
 
       - name: Run pytest
         run: pytest tests/ -q --tb=short
+        env:
+          # `tools/` doit être sur sys.path DÈS le démarrage de l'interpréteur.
+          # Sinon `cache` peut être résolu comme namespace package `tests/cache`
+          # (sans __init__.py) et figé dans sys.modules avant que le
+          # `pythonpath` de pyproject n'ajoute tools/ → ModuleNotFoundError:
+          # cache.builder. Un conftest racine arrive trop tard (module déjà
+          # caché) ; PYTHONPATH règle le problème à la racine.
+          PYTHONPATH: tools
 
   lint-js:
     name: Lint JS / Astro
@@ -100,6 +108,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Plusieurs tests SEO/OG sont des gardes post-build : ils échouent
+      # volontairement (expect.fail) si dist/ n'existe pas. On build donc
+      # avant (SITE_URL vient de l'env du job).
+      - name: Build (SSG)
+        run: npm run build
 
       - name: Run vitest
         run: npm run test:seo
