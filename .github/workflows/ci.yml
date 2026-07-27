@@ -64,14 +64,6 @@ jobs:
 
       - name: Run pytest
         run: pytest tests/ -q --tb=short
-        env:
-          # `tools/` doit être sur sys.path DÈS le démarrage de l'interpréteur.
-          # Sinon `cache` peut être résolu comme namespace package `tests/cache`
-          # (sans __init__.py) et figé dans sys.modules avant que le
-          # `pythonpath` de pyproject n'ajoute tools/ → ModuleNotFoundError:
-          # cache.builder. Un conftest racine arrive trop tard (module déjà
-          # caché) ; PYTHONPATH règle le problème à la racine.
-          PYTHONPATH: tools
 
   lint-js:
     name: Lint JS / Astro

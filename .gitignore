@@ -10,7 +10,6 @@ node_modules/
 tools/.venv/
 __pycache__/
 *.pyc
-tools/cache/
 
 # Sortie du pipeline (re-générable, gros)
 tools/output/
