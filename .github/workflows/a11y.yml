@@ -19,6 +19,8 @@ jobs:
   a11y:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      SITE_URL: https://example.com   # npm run build exige SITE_URL (garde prod)
     steps:
       - uses: actions/checkout@v4
 
@@ -45,6 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     continue-on-error: true # informatif tant qu'on n'a pas le baseline stable
+    env:
+      SITE_URL: https://example.com
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
