@@ -54,11 +54,11 @@ d('Galleries — fichiers générés au build', () => {
   });
 
   it('/[source]/invite/<slug> existe au moins pour un invité connu', () => {
-    // Adrien Méniel est un invité récurrent du podcast Un Bon Moment.
-    // Le slug vient de slugify('Adrien Méniel') = 'adrien-meniel'.
-    const html = loadIfBuilt(`${SOURCE}/invite/adrien-meniel/index.html`);
+    // Adrien Ménielle est un invité récurrent du podcast Un Bon Moment.
+    // Le slug vient de slugify('Adrien Ménielle') = 'adrien-menielle'.
+    const html = loadIfBuilt(`${SOURCE}/invite/adrien-menielle/index.html`);
     expect(html).not.toBeNull();
-    expect(html).toMatch(/<h1[^>]*>Recommandations de Adrien Méniel<\/h1>/);
+    expect(html).toMatch(/<h1[^>]*>Recommandations de Adrien Ménielle<\/h1>/);
     expect(html).toContain('"@type":"BreadcrumbList"');
   });
 

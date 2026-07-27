@@ -88,6 +88,9 @@ jobs:
     name: Test Vitest (SEO + OG)
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      # vitest.config.ts charge astro.config.mjs, qui exige SITE_URL en prod.
+      SITE_URL: https://example.com
     steps:
       - uses: actions/checkout@v4
 
