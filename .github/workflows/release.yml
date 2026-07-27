@@ -61,12 +61,31 @@ jobs:
       - run: pytest tests/ -q
       - run: SITE_URL=https://example.com npm run build
 
+  # hashFiles() est interdit dans un `if:` de job (évalué avant le checkout) —
+  # ça rendait tout le workflow invalide (startup_failure à chaque push). On
+  # détecte le Dockerfile dans un job dédié et on expose un output booléen.
+  check-dockerfile:
+    name: Détecter un Dockerfile
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      exists: ${{ steps.detect.outputs.exists }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: detect
+        run: |
+          if [ -f Dockerfile ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build-docker:
     name: Build & push image Docker
-    needs: [changelog-check, build-and-test]
+    needs: [changelog-check, build-and-test, check-dockerfile]
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: ${{ hashFiles('Dockerfile') != '' }}
+    if: ${{ needs.check-dockerfile.outputs.exists == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
