@@ -974,7 +974,7 @@ def test_extract_all_batch_builds_index_once(tmp_source, monkeypatch):
     ep2_guid = "EP002"
     ep2 = tmp_source.episode_path.parent / "0002.json"
     ep2.write_text(json.dumps({"guid": ep2_guid, "title": "Deux"}), encoding="utf-8")
-    (tmp_source.transcript_path.parent / f"{ep2_guid}.txt").write_text(
+    (tmp_source.transcript_path.parent / f"{common.slugify(ep2_guid)}.txt").write_text(
         "Ligne A.\n", encoding="utf-8")
 
     calls = {"build": 0, "next": 0}
@@ -1018,7 +1018,7 @@ def test_main_all_sync_builds_index_once(tmp_source, monkeypatch):
     """M4 — la boucle synchrone de main() construit aussi l'index UNE fois."""
     ep2 = tmp_source.episode_path.parent / "0002.json"
     ep2.write_text(json.dumps({"guid": "EP002", "title": "Deux"}), encoding="utf-8")
-    (tmp_source.transcript_path.parent / "EP002.txt").write_text(
+    (tmp_source.transcript_path.parent / f"{common.slugify('EP002')}.txt").write_text(
         "Ligne A.\n", encoding="utf-8")
 
     calls = {"n": 0}
