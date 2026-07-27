@@ -84,7 +84,7 @@ def tmp_source(tmp_path: Path, monkeypatch):
     trans_dir = transcripts_dir / source_id
     trans_dir.mkdir(parents=True, exist_ok=True)
     transcript_text = "Ligne 1.\nLigne 2.\nLigne 3.\n"
-    trans_path = trans_dir / f"{guid}.txt"
+    trans_path = trans_dir / f"{common.slugify(guid)}.txt"
     trans_path.write_text(transcript_text, encoding="utf-8")
 
     # Recos cible.

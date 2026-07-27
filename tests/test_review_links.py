@@ -23,8 +23,8 @@ def test_auto_url_for_each_label_returns_https_url(label):
     """Chaque label connu doit générer une URL https valide pour un reco minimal."""
     reco = {"title": "Test", "creator": "X", "types": [_LABEL_TO_TYPE[label]]}
     url = auto_url(label, reco)
-    if label == "Site officiel":
-        # Sans externalIds.website → None par contrat.
+    if label in ("Site officiel", "TikTok"):
+        # Sans externalIds.website / handle TikTok → None par contrat.
         assert url is None
         return
     assert url is not None
