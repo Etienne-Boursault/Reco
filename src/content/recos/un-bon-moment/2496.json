@@ -35,6 +35,12 @@
       "kind": "streaming",
       "label": "YouTube",
       "url": "https://www.youtube.com/@125etapres_org"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9791033927037-125-et-des-milliers-125-personnalites-racontent-125-victimes-de-feminicides-sarah-barukh-collectif/"
     }
   ],
   "quote": "pour l'instant, ça s'appelle La vie sera belle, pour donner un peu de courage",
@@ -45,6 +51,6 @@
   "title": "La vie sera belle",
   "transcriptSource": "youtube",
   "types": [
-    "chaine"
+    "livre"
   ]
 }
