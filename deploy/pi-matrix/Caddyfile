@@ -1,0 +1,15 @@
+# Caddy : HTTPS automatique (Let's Encrypt) + reverse-proxy vers Conduit.
+# Prérequis : {$MATRIX_DOMAIN} pointe (A/AAAA) vers l'IP publique du Pi et les
+# ports 80/443 sont joignables depuis Internet (cf. README §0).
+
+{$MATRIX_DOMAIN} {
+	# Auto-découverte client : Element trouve le homeserver tout seul.
+	handle /.well-known/matrix/client {
+		header Content-Type application/json
+		header Access-Control-Allow-Origin *
+		respond `{"m.homeserver":{"base_url":"https://{$MATRIX_DOMAIN}"}}`
+	}
+
+	# Tout le reste (l'API Matrix) → Conduit.
+	reverse_proxy conduit:6167
+}

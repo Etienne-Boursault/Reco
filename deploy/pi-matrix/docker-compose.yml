@@ -1,0 +1,50 @@
+# Homeserver Matrix léger (Conduit) + reverse-proxy HTTPS (Caddy) pour le Pi.
+# Usage : cp .env.example .env  &&  éditer .env  &&  docker compose up -d
+# Voir README.md pour la procédure complète (bot, salon, token, secrets).
+
+services:
+  conduit:
+    image: matrixconduit/matrix-conduit:latest
+    restart: unless-stopped
+    # Exposé UNIQUEMENT sur localhost pour les scripts (register/create-room)
+    # avant que le TLS ne soit prêt. Le trafic public passe par Caddy.
+    ports:
+      - "127.0.0.1:6167:6167"
+    volumes:
+      - conduit_data:/var/lib/matrix-conduit/
+    environment:
+      CONDUIT_SERVER_NAME: ${MATRIX_DOMAIN}
+      CONDUIT_DATABASE_BACKEND: rocksdb
+      CONDUIT_DATABASE_PATH: /var/lib/matrix-conduit/
+      CONDUIT_PORT: 6167
+      CONDUIT_ADDRESS: 0.0.0.0
+      CONDUIT_MAX_REQUEST_SIZE: "20000000"   # 20 Mo
+      # Registration protégée par token (le temps de créer toi + le bot),
+      # à repasser à "false" ensuite (cf. README §5).
+      CONDUIT_ALLOW_REGISTRATION: "true"
+      CONDUIT_REGISTRATION_TOKEN: ${MATRIX_REGISTRATION_TOKEN}
+      # Serveur perso mono-utilisateur : pas besoin de fédération (plus léger,
+      # plus privé). Toi (Element) + le bot vivent sur CE homeserver.
+      CONDUIT_ALLOW_FEDERATION: "false"
+      CONDUIT_ALLOW_CHECK_FOR_UPDATES: "false"
+      CONDUIT_TRUSTED_SERVERS: "[]"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      MATRIX_DOMAIN: ${MATRIX_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - conduit
+
+volumes:
+  conduit_data:
+  caddy_data:
+  caddy_config:

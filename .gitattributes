@@ -1,0 +1,5 @@
+# Les scripts shell et le pack de déploiement tournent sur Linux (Pi) :
+# ils DOIVENT être stockés et extraits en LF (un CRLF casse le shebang
+# `#!/usr/bin/env bash^M`).
+*.sh text eol=lf
+deploy/** text eol=lf

@@ -54,3 +54,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# Secrets du homeserver Matrix (Pi)
+deploy/pi-matrix/.env
