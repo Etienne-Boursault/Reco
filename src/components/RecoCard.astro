@@ -157,6 +157,25 @@ const WHITELISTED_ICON_HOSTS = new Set<string>([
   'www.afca.asso.fr',
   'www.cnc.fr',
   'fr.wikipedia.org',
+  // Vague 3 (2026-07-28) : plateformes streaming/VOD les plus fréquentes,
+  // qui retombaient sur le placeholder link.svg (favicons manquantes).
+  'www.primevideo.com',
+  'www.themoviedb.org',
+  'www.canalplus.com',
+  'video.orange.fr',
+  'video-a-la-demande.orange.fr',
+  'www.pathehome.com',
+  'rakuten.tv',
+  'play.google.com',
+  'boutique.arte.tv',
+  'play.max.com',
+  'www.molotov.tv',
+  'www.fnac.com',
+  'www.tiktok.com',
+  'mubi.com',
+  'www.sfrplay.fr',
+  'www.premieremax.com',
+  'www.videofutur.fr',
 ]);
 function iconForHost(host: string): string {
   if (!host) return '';
