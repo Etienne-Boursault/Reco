@@ -145,7 +145,7 @@ const mailtoHref = contactEmail
 
   <div class="field captcha">
     <label for="report-captcha">
-      {challenge.question} <span aria-hidden="true">*</span>
+      <span data-captcha-question>{challenge.question}</span> <span aria-hidden="true">*</span>
     </label>
     <input
       id="report-captcha"
@@ -349,6 +349,29 @@ const mailtoHref = contactEmail
   const mailtoBtn = form?.querySelector<HTMLAnchorElement>(
     '[data-report-mailto]',
   );
+
+  // Progressive enhancement — captcha frais : la page report est statique, son
+  // token est donc figé au build (secret de repli, TTL 4h, jti à usage unique).
+  // On récupère ici un défi FRAIS depuis l'endpoint on-demand `/api/captcha`
+  // (signé avec le REPORTS_SECRET runtime), et on remplace token + question.
+  // En cas d'échec réseau : silencieux, on conserve le token pré-rendu.
+  if (form) {
+    const tokenInput = form.querySelector<HTMLInputElement>(
+      'input[name="captchaToken"]',
+    );
+    const questionEl = form.querySelector<HTMLElement>('[data-captcha-question]');
+    fetch('/api/captcha', { headers: { accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: { token?: string; question?: string } | null) => {
+        if (!data) return;
+        if (tokenInput && data.token) tokenInput.value = data.token;
+        if (questionEl && data.question) questionEl.textContent = data.question;
+      })
+      .catch(() => {
+        /* réseau KO → on garde le token pré-rendu (repli) */
+      });
+  }
+
   if (form && status) {
     const ds = form.dataset;
     const I18N = {

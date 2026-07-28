@@ -24,16 +24,43 @@ if (isProd && !siteUrl) {
   );
 }
 
+/**
+ * Force certaines routes en on-demand (`prerender=false`) quand RECO_SSR=1.
+ *
+ * Astro n'honore PAS un `export const prerender` *calculé* (il lui faut un
+ * littéral) : les endpoints restaient donc pré-rendus, et leur fichier statique
+ * (`dist/client/api/report` = le 405 figé) court-circuitait le handler
+ * dynamique — le POST ne l'atteignait jamais. Ce hook fixe `route.prerender`
+ * de façon fiable au build. Sans RECO_SSR=1 (CI / build statique du kit),
+ * c'est un no-op → tout reste pré-rendu, aucun adaptateur requis.
+ */
+function ssrOnDemandRoutes() {
+  const ONDEMAND = ['api/report', 'api/click', 'api/captcha'];
+  return {
+    name: 'reco-ssr-ondemand-routes',
+    hooks: {
+      'astro:route:setup': ({ route }) => {
+        if (process.env.RECO_SSR !== '1') return;
+        const comp = route.component ?? '';
+        if (ONDEMAND.some((p) => comp.includes(p))) {
+          route.prerender = false;
+        }
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: siteUrl || 'https://reco.example',
-  // Avec RECO_SSR=1 : adaptateur Node → les routes `prerender=false`
-  // (ex. /api/report) deviennent dynamiques. Sinon aucun adaptateur.
+  // Avec RECO_SSR=1 : adaptateur Node → les routes forcées en `prerender=false`
+  // (cf. ssrOnDemandRoutes) deviennent dynamiques. Sinon aucun adaptateur.
   ...(wantSSR ? { adapter: node({ mode: 'standalone' }) } : {}),
   trailingSlash: 'ignore',
   // Précharge la page cible au survol d'un lien — UX plus vive pour la
   // navigation catalogue → fiche épisode (réseau peu coûteux).
   prefetch: { defaultStrategy: 'hover' },
   integrations: [
+    ssrOnDemandRoutes(),
     sitemap({
       // Exclut les pages de relecture interne (non destinées au public).
       // Filtre robuste : tolère trailing slash, évite les faux positifs
