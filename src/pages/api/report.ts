@@ -16,8 +16,11 @@
  */
 
 import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
 import { handleReport } from '../../lib/reports/handler.js';
-import { notifyReportMatrix } from '../../lib/reports/notify.js';
+import { notifyReportMatrix, type ReportNotifyContext } from '../../lib/reports/notify.js';
+import type { Report } from '../../lib/reports/types.js';
+import { episodeLabel, TYPE_LABELS } from '../../utils/recoTypes.js';
 
 // SSR opt-in (cf. astro.config.mjs) : avec RECO_SSR=1, l'adaptateur Node est
 // présent et cet endpoint devient dynamique (POST fonctionnel). Sans le flag
@@ -70,6 +73,42 @@ export const prerender = process.env.RECO_SSR !== '1';
  *    ou `output: 'hybrid'` + `export const prerender = false;` ICI.
  */
 
+/**
+ * Résout le contexte lisible d'un signalement (titre de l'œuvre, épisode,
+ * lien direct) depuis les collections de contenu. Best-effort : renvoie `{}`
+ * si la reco est introuvable ou en cas d'erreur — la notif retombe alors sur
+ * l'identifiant brut. Appelé seulement sur signalement accepté (rare), donc
+ * le coût du `getCollection` par requête est négligeable.
+ */
+async function buildReportContext(
+  report: Report,
+  selfOrigin: string,
+): Promise<ReportNotifyContext> {
+  try {
+    const recos = await getCollection('recos');
+    const reco = recos.find(
+      (r) => r.data.id === report.recoId && r.data.sourceId.id === report.sourceId,
+    );
+    if (!reco) return {};
+    const episodes = await getCollection('episodes');
+    const ep = episodes.find(
+      (e) => e.data.guid === reco.data.episodeGuid && e.data.sourceId.id === report.sourceId,
+    );
+    const types = (reco.data.types ?? []).map((typ) => TYPE_LABELS[typ] ?? typ).join(', ');
+    return {
+      recoTitle: reco.data.title,
+      recoTypes: types || undefined,
+      recommendedBy: reco.data.recommendedBy || undefined,
+      timestamp: reco.data.timestamp || undefined,
+      episodeLabel: ep ? episodeLabel(ep.data) : undefined,
+      episodeTitle: ep?.data.title,
+      url: `${selfOrigin}/${report.sourceId}/episode/${reco.data.episodeGuid}`,
+    };
+  } catch {
+    return {};
+  }
+}
+
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   // FormData → plain object. On garde uniquement les champs scalaires
   // (le honeypot et le captcha sont des `<input>` simples).
@@ -118,8 +157,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   // Ping Matrix best-effort sur signalement accepté. N'échoue jamais (no-op si
   // RECO_MATRIX_* absent) et ne bloque pas la réponse en cas de souci réseau.
+  // On enrichit d'abord le message (titre de l'œuvre, épisode, lien direct)
+  // pour que le signalement soit exploitable sans avoir à chercher l'id.
   if (result.status === 200 && result.report) {
-    await notifyReportMatrix(result.report);
+    const context = await buildReportContext(result.report, selfOrigin);
+    await notifyReportMatrix(result.report, { context });
   }
 
   return new Response(JSON.stringify(result.body), {
