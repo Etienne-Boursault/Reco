@@ -1,9 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import SourceCatalog from '../components/SourceCatalog.astro';
 import { siteConfig } from '../config/site';
 
 const sources = await getCollection('sources');
+// Mode mono-source : si le déploiement n'a qu'un seul podcast (ex.
+// unebonnere.co = Un Bon Moment uniquement), la page d'accueil affiche
+// directement son catalogue au lieu de lister les sources. Le kit reste
+// multi-source : dès qu'il y a ≥2 sources, on retombe sur la liste ci-dessous.
+const homeSource = sources.length === 1 ? sources[0] : null;
+
 const recos = await getCollection('recos');
 const episodes = await getCollection('episodes');
 
@@ -50,6 +57,9 @@ const websiteSchema = {
 };
 ---
 
+{homeSource ? (
+  <SourceCatalog source={homeSource} isHome />
+) : (
 <Layout title="Reco — les recommandations des podcasts" jsonLd={websiteSchema}>
   <header class="hero wrap" role="banner">
     <p class="kicker">Le catalogue des recos</p>
@@ -102,6 +112,7 @@ const websiteSchema = {
     </ul>
   </main>
 </Layout>
+)}
 
 <style>
   .hero {
