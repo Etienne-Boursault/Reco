@@ -98,8 +98,6 @@ const jsonLd = [podcastSchema, breadcrumb];
     {data.tagline && <p class="tag">{data.tagline}</p>}
     <p class="stat">
       {trueRecos.length} {plural(trueRecos.length, 'recommandation')}
-      <span aria-hidden="true">·</span>
-      <a class="review-link" href={`/${source.id}/verifier`}>vérifier</a>
     </p>
   </header>
 
@@ -420,13 +418,6 @@ const jsonLd = [podcastSchema, breadcrumb];
     color: var(--muted);
     margin: 0.3rem 0 0;
     font-size: 0.85rem;
-  }
-  .review-link {
-    color: var(--muted);
-    text-decoration: none;
-  }
-  .review-link:hover {
-    color: var(--accent);
   }
   /* Onglets de vue */
   .tabs {
