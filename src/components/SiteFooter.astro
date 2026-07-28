@@ -7,7 +7,9 @@
  * Slot optionnel pour insérer du contenu spécifique avant la tagline (rarement
  * utilisé : on garde un footer minimal pour la cohérence du kit).
  */
+import { getCollection } from 'astro:content';
 import { t } from '../i18n';
+import SupportLinks from './SupportLinks.astro';
 
 interface Props {
   /** Texte d'accroche du pied de page. Par défaut = string i18n. */
@@ -15,10 +17,17 @@ interface Props {
 }
 
 const { tagline = t('footer.tagline') } = Astro.props;
+
+// Liens « Soutenir » : lus depuis la source primaire (le kit est mono-source
+// par déploiement). getCollection est mis en cache par Astro → coût nul.
+const sources = await getCollection('sources');
+const primary = sources.find((s) => s.data.enabled !== false) ?? sources[0];
+const support = primary?.data.support ?? [];
 ---
 
 <footer class="wrap site-footer" role="contentinfo">
   <slot />
+  <SupportLinks links={support} />
   <nav class="site-footer-nav" aria-label={t('footer.nav.label')}>
     <a href="/a-propos">{t('footer.about')}</a>
     <span aria-hidden="true">·</span>

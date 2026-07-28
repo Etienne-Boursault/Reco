@@ -33,6 +33,7 @@ export const fr = {
   'footer.about': 'À propos',
   'footer.manifesto': 'Manifeste éthique',
   'footer.nav.label': 'Liens secondaires',
+  'footer.support': 'Soutenir le projet',
 
   // À propos (item #22)
   'about.title': 'À propos de Reco',

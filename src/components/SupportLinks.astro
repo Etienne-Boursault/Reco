@@ -1,0 +1,93 @@
+---
+/**
+ * SupportLinks.astro — liens « Soutenir le projet » (dons).
+ *
+ * Rendu dans le footer à partir du champ `support` de la source (kit
+ * duplicable : chaque site met ses propres plateformes). N'affiche rien si
+ * aucun lien valide. Liens sortants : `rel="noopener nofollow"`, target blank.
+ */
+import { t } from '../i18n';
+
+export interface SupportLink {
+  platform: string;
+  url: string;
+  label?: string;
+}
+interface Props {
+  links?: SupportLink[];
+}
+
+const { links = [] } = Astro.props;
+
+// Libellé + emoji par plateforme connue (fallback `other`).
+const META: Record<string, { label: string; emoji: string }> = {
+  utip: { label: 'uTip', emoji: '💛' },
+  kofi: { label: 'Ko-fi', emoji: '☕' },
+  liberapay: { label: 'Liberapay', emoji: '💝' },
+  tipeee: { label: 'Tipeee', emoji: '🎁' },
+  buymeacoffee: { label: 'Buy Me a Coffee', emoji: '☕' },
+  paypal: { label: 'PayPal', emoji: '💳' },
+  github: { label: 'GitHub Sponsors', emoji: '💖' },
+  other: { label: 'Soutenir', emoji: '❤️' },
+};
+
+const valid = links.filter((l) => typeof l?.url === 'string' && l.url.trim().length > 0);
+---
+
+{valid.length > 0 && (
+  <div class="support">
+    <span class="support-label">{t('footer.support')}</span>
+    <ul class="support-list">
+      {valid.map((l) => {
+        const m = META[l.platform] ?? META.other;
+        return (
+          <li>
+            <a class="support-link" href={l.url} target="_blank" rel="noopener noreferrer nofollow">
+              <span aria-hidden="true">{m.emoji}</span>
+              <span>{l.label ?? m.label}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+)}
+
+<style>
+  .support {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin: 0 0 0.9rem;
+  }
+  .support-label {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .support-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .support-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid color-mix(in oklab, var(--text) 20%, transparent);
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .support-link:hover,
+  .support-link:focus-visible {
+    color: var(--accentText, var(--bg));
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

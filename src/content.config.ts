@@ -77,6 +77,16 @@ const sources = defineCollection({
     transcriptDefaultSource: z.enum(['youtube', 'acast']).optional(),
     avoidBrands: z.array(z.string()).optional(),
     enabled: z.boolean().optional(),
+    // Liens « Soutenir » (dons), rendus dans le footer. Par source (kit
+    // duplicable) : chaque site duplicable met ses propres plateformes.
+    // Optionnel — footer sans bouton si absent/vide.
+    support: z.array(z.object({
+      platform: z.enum([
+        'utip', 'kofi', 'liberapay', 'tipeee', 'buymeacoffee', 'paypal', 'github', 'other',
+      ]),
+      url: z.string().url(),
+      label: z.string().optional(),
+    })).optional(),
     schemaVersion: z.number().int().optional(),
   }),
 });
