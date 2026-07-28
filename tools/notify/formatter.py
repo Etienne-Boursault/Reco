@@ -113,6 +113,30 @@ def build_slack_blocks(msg: NewEpisodeMessage) -> dict:
     }
 
 
+def build_matrix_message(msg: NewEpisodeMessage) -> dict:
+    """Construit le contenu d'un `m.room.message` Matrix (msgtype `m.notice`).
+
+    `body` = texte pur (clients sans HTML) ; `formatted_body` = HTML (Element).
+    On échappe le HTML des champs pour qu'un titre exotique ne casse pas le
+    rendu (ni n'injecte de balise).
+    """
+    import html as _html  # noqa: PLC0415 — import paresseux, usage local.
+
+    title = _html.escape(f"Nouvel épisode — {msg.feed_title}")
+    parts = [f"🎙️ <strong>{title}</strong>", _html.escape(msg.episode_title)]
+    if msg.episode_url:
+        href = _html.escape(msg.episode_url, quote=True)
+        parts.append(f'<a href="{href}">Écouter l\'épisode</a>')
+    if msg.published_at:
+        parts.append(f"<em>Publié : {_html.escape(msg.published_at)}</em>")
+    return {
+        "msgtype": "m.notice",
+        "body": build_plain_text(msg),
+        "format": "org.matrix.custom.html",
+        "formatted_body": "<br>".join(parts),
+    }
+
+
 def build_plain_text(msg: NewEpisodeMessage) -> str:
     """Construit un message texte pur (email, log, fallback)."""
     lines = [

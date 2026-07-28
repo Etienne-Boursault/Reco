@@ -16,8 +16,8 @@ on:
         default: 'all'
         required: false
       notify:
-        description: 'Canal de notification'
-        default: 'discord'
+        description: 'Canal de notification (matrix|discord|slack|email|none)'
+        default: 'matrix'
         required: false
 
 # Permissions minimales : `actions: write` est requis seulement pour le
@@ -61,13 +61,18 @@ jobs:
 
       - name: Poll RSS feeds
         env:
+          # Matrix (canal par défaut) — bot qui poste dans le salon de notif.
+          RECO_MATRIX_HOMESERVER: ${{ secrets.RECO_MATRIX_HOMESERVER }}
+          RECO_MATRIX_TOKEN: ${{ secrets.RECO_MATRIX_TOKEN }}
+          RECO_MATRIX_ROOM: ${{ secrets.RECO_MATRIX_ROOM }}
+          # Discord conservé en repli optionnel (--notify discord).
           RECO_DISCORD_WEBHOOK: ${{ secrets.RECO_DISCORD_WEBHOOK }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           python tools/poll_rss.py \
             --source "${{ inputs.source || 'all' }}" \
-            --notify "${{ inputs.notify || 'discord' }}" \
+            --notify "${{ inputs.notify || 'matrix' }}" \
             --dispatch-event \
             --json
 

@@ -216,6 +216,10 @@ def _notify_one(
                 "body": build_plain_text(msg),
             },
         )
+    if sender.name == "matrix":
+        from notify.formatter import build_matrix_message  # noqa: PLC0415
+
+        return sender.send(build_matrix_message(msg))
     # Canal inconnu : on log mais on ne crashe pas.
     log.warning("Canal de notification inconnu : %s", sender.name)
     return False
@@ -386,6 +390,21 @@ def _build_sender(channel: str) -> NotificationSender | None:
         if not config.host:
             raise ValueError("SMTP_HOST manquant pour le canal email.")
         return SmtpSender(config)
+    if channel == "matrix":
+        from notify.matrix import MatrixSender  # noqa: PLC0415
+
+        hs = os.environ.get("RECO_MATRIX_HOMESERVER", "")
+        token = os.environ.get("RECO_MATRIX_TOKEN", "")
+        room = os.environ.get("RECO_MATRIX_ROOM", "")
+        if not (hs and token and room):
+            # Gracieux : cron non encore configuré → on skippe la notif sans
+            # crasher le workflow (contrairement à email qui lève).
+            log.warning(
+                "--notify matrix mais RECO_MATRIX_HOMESERVER/TOKEN/ROOM "
+                "manquant ; notification désactivée.",
+            )
+            return None
+        return MatrixSender(hs, token, room)
     raise ValueError(f"Canal de notification inconnu : {channel}")
 
 
@@ -418,7 +437,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Dossier des sidecars d'état. Défaut: tools/output/rss/.",
     )
     p.add_argument(
-        "--notify", choices=["discord", "slack", "email", "none"],
+        "--notify", choices=["discord", "slack", "email", "matrix", "none"],
         default="none",
         help="Canal de notification. Défaut: none (parse + diff seulement).",
     )
