@@ -19,6 +19,12 @@ import type { APIRoute } from 'astro';
 import { handleReport } from '../../lib/reports/handler.js';
 import { notifyReportMatrix } from '../../lib/reports/notify.js';
 
+// SSR opt-in (cf. astro.config.mjs) : avec RECO_SSR=1, l'adaptateur Node est
+// présent et cet endpoint devient dynamique (POST fonctionnel). Sans le flag
+// (build statique par défaut, CI/tests), prerender=true → l'endpoint est
+// pré-rendu (GET 405, POST inerte) et AUCUN adaptateur n'est requis.
+export const prerender = process.env.RECO_SSR !== '1';
+
 // P0-2 (Fixer final Phase 2, 2026-06-11) — SSR opt-in :
 //
 // En `output: 'static'` (config par défaut du kit), Astro 5 REFUSE de

@@ -21,6 +21,7 @@
     "test:og": "vitest run tests/og"
   },
   "dependencies": {
+    "@astrojs/node": "^9.0.3",
     "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "5.0.0",

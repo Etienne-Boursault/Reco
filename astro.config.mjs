@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 /**
  * Site multi-source de recommandations de podcasts.
@@ -12,6 +13,9 @@ import sitemap from '@astrojs/sitemap';
  */
 const isProd = process.env.NODE_ENV === 'production' || process.env.CI === 'true';
 const siteUrl = process.env.SITE_URL;
+// SSR opt-in : RECO_SSR=1 active l'adaptateur Node (déploiement). Sans le flag
+// (CI, tests, build statique par défaut) : aucun adaptateur, tout est pré-rendu.
+const wantSSR = process.env.RECO_SSR === '1';
 if (isProd && !siteUrl) {
   throw new Error(
     "[astro.config] SITE_URL est requis en production (build CI/CD). " +
@@ -22,6 +26,9 @@ if (isProd && !siteUrl) {
 
 export default defineConfig({
   site: siteUrl || 'https://reco.example',
+  // Avec RECO_SSR=1 : adaptateur Node → les routes `prerender=false`
+  // (ex. /api/report) deviennent dynamiques. Sinon aucun adaptateur.
+  ...(wantSSR ? { adapter: node({ mode: 'standalone' }) } : {}),
   trailingSlash: 'ignore',
   // Précharge la page cible au survol d'un lien — UX plus vive pour la
   // navigation catalogue → fiche épisode (réseau peu coûteux).
