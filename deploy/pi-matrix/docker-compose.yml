@@ -13,6 +13,9 @@ services:
     volumes:
       - conduit_data:/var/lib/matrix-conduit/
     environment:
+      # Image matrixconduit : sans CONDUIT_CONFIG défini (même vide), elle
+      # panique au démarrage. Vide = config 100% par variables d'env.
+      CONDUIT_CONFIG: ""
       CONDUIT_SERVER_NAME: ${MATRIX_DOMAIN}
       CONDUIT_DATABASE_BACKEND: rocksdb
       CONDUIT_DATABASE_PATH: /var/lib/matrix-conduit/
