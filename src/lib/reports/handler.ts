@@ -44,6 +44,8 @@ export interface HandleReportOptions {
 export interface HandleReportResult {
   status: number;
   body: { success: boolean; id?: string; error?: string };
+  /** Report construit (présent seulement sur 200) — pour la notif hors handler. */
+  report?: Report;
 }
 
 const ALLOWED_ORIGIN_REGEX = /^https?:\/\/[^\s]+$/;
@@ -139,5 +141,5 @@ export function handleReport(opts: HandleReportOptions): HandleReportResult {
     };
   }
 
-  return { status: 200, body: { success: true, id: report.id } };
+  return { status: 200, body: { success: true, id: report.id }, report };
 }

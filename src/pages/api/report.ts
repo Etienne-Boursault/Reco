@@ -17,6 +17,7 @@
 
 import type { APIRoute } from 'astro';
 import { handleReport } from '../../lib/reports/handler.js';
+import { notifyReportMatrix } from '../../lib/reports/notify.js';
 
 // P0-2 (Fixer final Phase 2, 2026-06-11) — SSR opt-in :
 //
@@ -108,6 +109,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   const result = handleReport({ formData, origin, selfOrigin, ip });
+
+  // Ping Matrix best-effort sur signalement accepté. N'échoue jamais (no-op si
+  // RECO_MATRIX_* absent) et ne bloque pas la réponse en cas de souci réseau.
+  if (result.status === 200 && result.report) {
+    await notifyReportMatrix(result.report);
+  }
 
   return new Response(JSON.stringify(result.body), {
     status: result.status,
