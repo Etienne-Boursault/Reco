@@ -38,6 +38,9 @@ ASTRO_ONLY_FIELDS: frozenset[str] = frozenset(
     {
         "theme",
         "tagline",
+        # Liens « Soutenir » (dons) — purement site public (footer), le
+        # pipeline Python ne s'en sert pas. Cf. src/components/SupportLinks.astro.
+        "support",
         # Anticipation : champs envisagés dans la roadmap (variants visuels).
         # Les lister ici évite un warning à chaque load tant que le schéma
         # Python ne les expose pas explicitement.
