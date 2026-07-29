@@ -219,3 +219,54 @@ describe('handleReport', () => {
     expect(reports[0].submitter).toEqual({ wantCredit: false });
   });
 });
+
+describe('handleReport — ordre rate-limit / anti-rejeu', () => {
+  /**
+   * Le jeton captcha ne doit PAS être consommé quand la requête va de toute
+   * façon être refusée par le rate-limit.
+   *
+   * Scénario réel (revue de sécurité, 2026-07-29) : Alice envoie un
+   * signalement, se trompe, renvoie 30 s plus tard. Avec l'ancien ordre, le
+   * second POST passait le captcha, CONSOMMAIT son jti, puis prenait un 429.
+   * Elle attendait 5 minutes, recliquait « Envoyer » sans recharger la page —
+   * et recevait `400 captcha: replay`, un message qui l'accuse à tort de
+   * rejeu, avec un formulaire bloqué jusqu'à rechargement complet.
+   */
+  it('un 429 ne brûle pas le jeton : il reste utilisable après la fenêtre', () => {
+    const limiter = createRateLimiter(60_000);
+    const commun = { origin: SELF, selfOrigin: SELF, ip: '203.0.113.42', cwd: CWD };
+
+    // 1er envoi : accepté, consomme son propre jeton.
+    expect(handleReport({ ...commun, formData: validForm(), rateLimiter: limiter, now: 1_000_000 }).status)
+      .toBe(200);
+
+    // 2e envoi 30 s plus tard, jeton NEUF : refusé par le rate-limit.
+    const fdRetry = validForm();
+    expect(handleReport({ ...commun, formData: fdRetry, rateLimiter: limiter, now: 1_030_000 }).status)
+      .toBe(429);
+
+    // Après la fenêtre, LE MÊME jeton doit encore fonctionner : s'il avait été
+    // consommé au passage, on recevrait `400 captcha: replay`.
+    const res = handleReport({ ...commun, formData: fdRetry, rateLimiter: limiter, now: 1_120_000 });
+    expect(res.status).toBe(200);
+    expect(res.body.error).toBeUndefined();
+  });
+
+  it('un captcha FAUX ne brûle pas non plus le jeton (garde d’origine)', () => {
+    const commun = { origin: SELF, selfOrigin: SELF, ip: '203.0.113.43', cwd: CWD };
+    const fd = validForm();
+
+    const faux = handleReport({
+      ...commun,
+      formData: { ...fd, captchaAnswer: '999' },
+      rateLimiter: createRateLimiter(60_000),
+      now: 1_000_000,
+    });
+    expect(faux.status).toBe(400);
+
+    // Le jeton reste valide : une mauvaise réponse ne doit pas permettre de
+    // griller les jetons d'autrui.
+    expect(handleReport({ ...commun, formData: fd, rateLimiter: createRateLimiter(60_000), now: 1_000_100 }).status)
+      .toBe(200);
+  });
+});

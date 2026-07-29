@@ -480,20 +480,28 @@ describe('handleReport — échec d écriture disque', () => {
     });
   }
 
-  it('`Error` levée → 500 avec le message d origine', async () => {
-    const res = await postWithFailingWrite(new Error('ENOSPC: disque plein'), '203.0.113.17');
-    expect(res).toEqual({
-      status: 500,
-      body: { success: false, error: 'IO: ENOSPC: disque plein' },
-    });
+  // B-CRIT-1 — le message d'erreur SYSTÈME ne doit jamais atteindre le client.
+  // Ces deux tests asservissaient l'inverse : ils exigeaient que le message
+  // d'origine soit renvoyé. Or une erreur d'écriture porte l'arborescence
+  // absolue du serveur — `ENOSPC … open '/srv/reco/tools/output/reports/…'` —
+  // livrée telle quelle à un visiteur anonyme. Le module jumeau
+  // `tracking/handler.ts` renvoie `{ error: 'io' }` et journalise, avec la
+  // justification écrite ; elle n'avait jamais été reportée ici.
+  it('`Error` levée → 500 générique, le message système NE FUIT PAS', async () => {
+    const res = await postWithFailingWrite(
+      new Error("ENOSPC: no space left on device, open '/srv/reco/tools/output/reports/x.tmp'"),
+      '203.0.113.17',
+    );
+    expect(res).toEqual({ status: 500, body: { success: false, error: 'io' } });
+    // Ni le chemin, ni le code système, ni le mot-clé ne doivent transparaître.
+    const serialise = JSON.stringify(res);
+    expect(serialise).not.toContain('/srv/reco');
+    expect(serialise).not.toContain('ENOSPC');
   });
 
-  it("valeur non-`Error` levée → 500 avec le message générique 'unknown'", async () => {
+  it('valeur non-`Error` levée → même réponse générique', async () => {
     const res = await postWithFailingWrite('disque plein', '203.0.113.14');
-    expect(res).toEqual({
-      status: 500,
-      body: { success: false, error: 'IO: unknown' },
-    });
+    expect(res).toEqual({ status: 500, body: { success: false, error: 'io' } });
   });
 });
 

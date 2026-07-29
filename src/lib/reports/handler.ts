@@ -96,21 +96,37 @@ export function handleReport(opts: HandleReportOptions): HandleReportResult {
   }
   const data = parsed.data;
 
-  // 4. Captcha — vérif signature + réponse, puis anti-rejeu via jti (C16-3).
+  // 4. Captcha — vérif signature + réponse. On NE CONSOMME PAS encore le jti :
+  // le consommer avant la validation permettrait à un attaquant qui tape
+  // `wrong` de griller des jetons légitimes.
   const captchaResult = verifyChallenge(data.captchaToken, data.captchaAnswer, now);
   if (captchaResult !== 'ok') {
     return { status: 400, body: { success: false, error: `captcha: ${captchaResult}` } };
   }
-  // Anti-rejeu : on consomme le jti UNIQUEMENT après que le captcha soit OK
-  // (sinon un attaquant qui tape `wrong` pourrait griller des jti légitimes).
+
+  // 5. Rate-limit AVANT de consommer le jti.
+  //
+  // L'ordre inverse brûlait le jeton d'un visiteur qui allait de toute façon
+  // recevoir un 429 : Alice envoie un signalement, se trompe, renvoie 30 s
+  // plus tard → le second POST passe le captcha, CONSOMME son jti, puis prend
+  // un 429. Elle attend 5 minutes, reclique « Envoyer » sans recharger la
+  // page — le jeton du champ caché est déjà consommé, elle reçoit
+  // `400 captcha: replay`, un message qui l'accuse à tort de rejeu, et son
+  // formulaire est bloqué jusqu'à rechargement complet.
+  //
+  // Accessoirement, cet ordre permettait de vider le cache anti-rejeu depuis
+  // une IP pourtant limitée : 10 001 POST consommaient 10 001 jti et
+  // évinçaient les plus anciens de la LRU (`JTI_CACHE_MAX`), rouvrant le rejeu
+  // pour tout jeton encore dans sa fenêtre.
+  if (!limiter.check(opts.ip, now)) {
+    return { status: 429, body: { success: false, error: 'rate-limit (1 report / 5 min)' } };
+  }
+
+  // 6. Anti-rejeu (C16-3) — le jeton n'est consommé que lorsque le signalement
+  // va réellement être écrit.
   const jti = extractJti(data.captchaToken);
   if (!consumeJti(jti)) {
     return { status: 400, body: { success: false, error: 'captcha: replay' } };
-  }
-
-  // 5. Rate-limit.
-  if (!limiter.check(opts.ip, now)) {
-    return { status: 429, body: { success: false, error: 'rate-limit (1 report / 5 min)' } };
   }
 
   // 6. Construction + écriture.
@@ -135,10 +151,18 @@ export function handleReport(opts: HandleReportOptions): HandleReportResult {
   try {
     writeReport(report, opts.cwd);
   } catch (err) {
-    return {
-      status: 500,
-      body: { success: false, error: `IO: ${err instanceof Error ? err.message : 'unknown'}` },
-    };
+    // B-CRIT-1 : NE PAS renvoyer `err.message` au client. Une erreur d'écriture
+    // porte l'arborescence ABSOLUE du serveur — un disque plein produisait
+    // `IO: ENOSPC: no space left on device, open
+    // '/srv/reco/tools/output/reports/<source>/rep-….json.tmp'`, livré tel quel
+    // à un visiteur anonyme : chemin d'installation et emplacement exact du
+    // stockage. On journalise côté serveur, on renvoie un code générique.
+    //
+    // Le module jumeau `src/lib/tracking/handler.ts` porte ce correctif et sa
+    // justification depuis le départ ; il n'avait jamais été reporté ici.
+    // eslint-disable-next-line no-console
+    console.error('[reports/handler] writeReport failed', err);
+    return { status: 500, body: { success: false, error: 'io' } };
   }
 
   return { status: 200, body: { success: true, id: report.id }, report };

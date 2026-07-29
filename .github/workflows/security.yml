@@ -60,6 +60,19 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 3
+    # `comment-summary-in-pr` exige `pull-requests: write`, que la racine du
+    # workflow n'accorde pas (`contents: read`). Sans cette permission,
+    # l'action échoue au moment d'écrire son commentaire — quel que soit le
+    # verdict sur les dépendances. C'est la cause du job rouge sur TOUTES les
+    # PR dependabot depuis la mise en place du workflow.
+    #
+    # La permission est déclarée AU NIVEAU DU JOB et surtout pas à la racine :
+    # `npm-audit` et `pip-audit` n'ont aucune raison de pouvoir écrire sur les
+    # PR, et un workflow qui manipule des dépendances est précisément celui
+    # dont il faut serrer les droits.
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v7
       - uses: actions/dependency-review-action@v4
