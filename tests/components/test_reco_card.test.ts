@@ -201,6 +201,52 @@ describe('RecoCard — icônes de plateforme', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Normalisation des hosts (variantes → favicon whitelistée partagée)
+// ---------------------------------------------------------------------------
+describe('RecoCard — normalisation des hosts', () => {
+  const iconFor = (url: string, kind = 'info') =>
+    renderProps({
+      reco: { ...baseReco, types: ['autre'], links: [{ label: 'X', url, kind }] },
+    });
+
+  it('sous-domaine d’artiste Bandcamp → favicon bandcamp.com', async () => {
+    expect(await iconFor('https://gorillaz.bandcamp.com/album/x')).toContain(
+      '/icons/platforms/bandcamp.com.svg',
+    );
+  });
+
+  it('sous-domaine itch.io → favicon itch.io', async () => {
+    expect(await iconFor('https://polytron.itch.io/fez')).toContain(
+      '/icons/platforms/itch.io.svg',
+    );
+  });
+
+  it('YouTube mobile (m.youtube.com) → favicon www.youtube.com', async () => {
+    expect(await iconFor('https://m.youtube.com/watch?v=x')).toContain(
+      '/icons/platforms/www.youtube.com.svg',
+    );
+  });
+
+  it('en.wikipedia.org → favicon fr.wikipedia.org (même logo)', async () => {
+    expect(await iconFor('https://en.wikipedia.org/wiki/Fez')).toContain(
+      '/icons/platforms/fr.wikipedia.org.svg',
+    );
+  });
+
+  it('www.rakuten.tv → favicon rakuten.tv', async () => {
+    expect(await iconFor('https://www.rakuten.tv/fr/movie/x')).toContain(
+      '/icons/platforms/rakuten.tv.svg',
+    );
+  });
+
+  it('un host sans alias ni marque-racine reste sans favicon (symbole)', async () => {
+    const html = await iconFor('https://not-a-bandcamp.example.com/x');
+    expect(html).not.toContain('.svg');
+    expect(html).toContain('link-symbol');
+  });
+});
+
+// ---------------------------------------------------------------------------
 // Dédup par label + cap à 6
 // ---------------------------------------------------------------------------
 describe('RecoCard — dédup & cap des liens', () => {
