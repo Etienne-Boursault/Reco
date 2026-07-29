@@ -284,7 +284,7 @@ def test_fetch_via_urllib_lit_jusqua_la_fin_dun_corps_sans_titre(monkeypatch):
 
 def test_fetch_via_urllib_charset_absent_retombe_sur_utf8(monkeypatch):
     _patch_urlopen(monkeypatch,
-                   lambda req: _FakeResponse(200, "<title>Œuvre</title>".encode("utf-8"), None))
+                   lambda req: _FakeResponse(200, "<title>Œuvre</title>".encode(), None))
     assert "Œuvre" in fetch_via_urllib("https://ex.fr/a", 5.0).body
 
 

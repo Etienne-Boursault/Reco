@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.match_audit.intro_text_similarity import (
     IntroTextSimilarityCheck,
     check_intro_similarity,
@@ -169,6 +168,8 @@ def test_legacy_intro_embedding_check_module_reexports():
     from tools.match_audit import intro_embedding_check as legacy
     from tools.match_audit.intro_text_similarity import (
         IntroTextSimilarityCheck as Canon,
+    )
+    from tools.match_audit.intro_text_similarity import (
         check_intro_similarity as canon_fn,
     )
     assert legacy.IntroTextSimilarityCheck is Canon

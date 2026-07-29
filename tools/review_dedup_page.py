@@ -16,7 +16,6 @@ from __future__ import annotations
 import html
 import re
 import unicodedata
-import urllib.parse
 
 from review_render import _PLAYER_WRAP_HTML, _load_groups
 from review_render_common import (
@@ -171,7 +170,7 @@ def _render_cluster(members: list[dict], ep: dict) -> str:
 
 def render_dedup_page(source_id: str, flash: str | None = None,
                       flash_kind: str = "info") -> str:
-    from review_render_common import _flash_banner  # noqa: PLC0415
+    from review_render_common import _flash_banner
     source, episodes, clusters = collect_dup_clusters(source_id)
     banner = _flash_banner(flash, flash_kind)
     back = '<a class="back" href="/doutes">← doutes</a>'
@@ -179,8 +178,8 @@ def render_dedup_page(source_id: str, flash: str | None = None,
         inner = (f"{banner}{back}<p>Aucun doublon intra-épisode à consolider. 🎉</p>")
         return _shell(source.get("title", source_id), "Doublons à consolider.", inner)
     body = [banner, back,
-            f'<h1 class="doubt-ep-title">Doublons à consolider '
-            f'<span class="cnt">{len(clusters)}</span></h1>',
+            (f'<h1 class="doubt-ep-title">Doublons à consolider '
+            f'<span class="cnt">{len(clusters)}</span></h1>'),
             _PLAYER_WRAP_HTML]
     for members in clusters:
         ep = episodes.get(members[0].get("episodeGuid", ""),

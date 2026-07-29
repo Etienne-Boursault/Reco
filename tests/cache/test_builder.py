@@ -482,6 +482,22 @@ class TestWarn:
 
         assert "Skip x.json" in capsys.readouterr().out
 
+    def test_stays_silent_when_even_stderr_is_unavailable(
+        self, tmp_path: Path, monkeypatch
+    ) -> None:
+        """Dernier recours : si le repli d'affichage échoue lui aussi (flux
+        fermé, encodage impossible), `_warn` se tait au lieu de faire échouer
+        le build pour un simple message d'avertissement."""
+        import builtins
+
+        def _no_print(*a, **k):
+            raise OSError("flux de sortie fermé")
+
+        monkeypatch.setattr(builtins, "print", _no_print)
+        b = self._builder(tmp_path)
+
+        b._warn("Skip %s", "x.json")  # ne doit pas lever
+
 
 # ---------- JSON invalide : le build continue et rapporte -------------------
 

@@ -33,10 +33,16 @@ jobs:
       - name: Install ruff
         run: pip install ruff
 
+      # BLOQUANT depuis le 2026-07-29. Auparavant `|| true` « tant que
+      # pyproject.toml n'a pas de config ruff » : il n'y en a jamais eu, donc
+      # personne n'a lu la sortie — 959 erreurs s'y étaient accumulées, dont un
+      # `assert False` effacé par `python -O`, une closure sur variable de
+      # boucle et 12 `subprocess.run` sans `check`. Le jeu de règles est
+      # désormais FIGÉ dans `[tool.ruff]` (pyproject.toml) : la CI installe
+      # ruff sans épingle, et les défauts de ruff changent d'une version à
+      # l'autre.
       - name: Run ruff
-        run: ruff check tools/ tests/ || true
-        # `|| true` tant que pyproject.toml n'a pas de config ruff stable.
-        # À retirer dès que la config est en place (cf. ADR 0039).
+        run: ruff check tools/ tests/ scripts/
 
   test-python:
     name: Test Python (pytest)

@@ -8,9 +8,7 @@ from __future__ import annotations
 import dataclasses
 
 import pytest
-
 from tools.config.schema import SourceConfig
-
 
 # ---------------------------------------------------------------------------
 # Construction minimale & défauts
@@ -71,18 +69,18 @@ def test_frozen_immutable():
 
 def test_hosts_tuple_not_list():
     """`hosts` doit être un tuple (immutable) — refuse les listes."""
-    with pytest.raises(TypeError, match="hosts.*tuple"):
+    with pytest.raises(TypeError, match=r"hosts.*tuple"):
         SourceConfig(**_minimal_kwargs(hosts=["Kyan", "Navo"]))  # type: ignore[arg-type]
 
 
 def test_avoid_brands_tuple_not_list():
     """Idem pour `avoid_brands`."""
-    with pytest.raises(TypeError, match="avoid_brands.*tuple"):
+    with pytest.raises(TypeError, match=r"avoid_brands.*tuple"):
         SourceConfig(**_minimal_kwargs(avoid_brands=["X"]))  # type: ignore[arg-type]
 
 
 def test_extraction_anchor_patterns_tuple_not_list():
-    with pytest.raises(TypeError, match="extraction_anchor_patterns.*tuple"):
+    with pytest.raises(TypeError, match=r"extraction_anchor_patterns.*tuple"):
         SourceConfig(
             **_minimal_kwargs(extraction_anchor_patterns=["pattern"])  # type: ignore[arg-type]
         )
@@ -166,7 +164,7 @@ def test_from_dict_roundtrip():
 
 
 def test_from_dict_missing_required_raises():
-    with pytest.raises(ValueError, match="requis|manquants"):
+    with pytest.raises(ValueError, match=r"requis|manquants"):
         SourceConfig.from_dict({"id": "x"})  # title manquant
 
 
@@ -284,7 +282,7 @@ def test_from_dict_field_present_but_null_treated_as_missing(missing_field):
         "id": "x", "title": "X", "reco_prefix": "xx", "hosts": ["A"],
     }
     payload[missing_field] = None
-    with pytest.raises(ValueError, match="requis|manquants"):
+    with pytest.raises(ValueError, match=r"requis|manquants"):
         SourceConfig.from_dict(payload)
 
 

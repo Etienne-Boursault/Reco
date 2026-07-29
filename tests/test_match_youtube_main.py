@@ -5,13 +5,14 @@ import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, ClassVar
 
 import pytest
 
-import match_youtube
 from match_youtube import (
     _apply_video_meta,
+)
+from match_youtube import (
     match_youtube as run_match,
 )
 
@@ -64,9 +65,10 @@ def isolated_dirs(tmp_path, monkeypatch):
     le registry par défaut (issue #1) pour que `get_source()` lise depuis
     le dossier temporaire — sinon match_youtube tape la vraie SSOT.
     """
-    import common
     from tools.config import loader as cfg_loader
     from tools.config import registry as cfg_registry
+
+    import common
     sources = tmp_path / "sources"
     episodes = tmp_path / "episodes"
     sources.mkdir()
@@ -110,7 +112,7 @@ def _write_episode(episodes_dir: Path, source_id: str, name: str, data: dict) ->
 class _FakeYDL:
     """Faux yt_dlp.YoutubeDL : retourne le `info` qui lui est passé."""
 
-    _info: dict[str, Any] = {}
+    _info: ClassVar[dict[str, Any]] = {}
 
     def __init__(self, opts):
         self.opts = opts

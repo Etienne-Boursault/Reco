@@ -20,7 +20,7 @@ def test_cli_module_writes_file(tmp_path: Path) -> None:
             f"--output-dir={tmp_path}",
         ],
         cwd=ROOT,
-        capture_output=True, text=True, timeout=20,
+        capture_output=True, text=True, timeout=20, check=False,
     )
     assert res.returncode == 0, (res.stdout, res.stderr)
     path = tmp_path / "smoke.json"
@@ -34,7 +34,7 @@ def test_cli_module_version_flag() -> None:
     res = subprocess.run(
         [sys.executable, "-m", "tools.reco_init", "--version"],
         cwd=ROOT,
-        capture_output=True, text=True, timeout=10,
+        capture_output=True, text=True, timeout=10, check=False,
     )
     assert res.returncode == 0
     assert "reco init" in (res.stdout + res.stderr).lower()

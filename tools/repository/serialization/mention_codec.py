@@ -162,10 +162,10 @@ def mention_from_dict(data: dict[str, Any]) -> Mention:
 
 
 __all__ = [
-    "source_ref_to_dict",
-    "source_ref_from_dict",
-    "extraction_history_entry_to_dict",
     "extraction_history_entry_from_dict",
-    "mention_to_dict",
+    "extraction_history_entry_to_dict",
     "mention_from_dict",
+    "mention_to_dict",
+    "source_ref_from_dict",
+    "source_ref_to_dict",
 ]

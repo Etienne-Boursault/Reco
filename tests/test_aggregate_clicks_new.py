@@ -23,7 +23,7 @@ TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-import aggregate_clicks  # noqa: E402
+import aggregate_clicks
 
 
 @pytest.fixture(autouse=True)
@@ -193,8 +193,8 @@ def test_main_drops_under_threshold_ok(tmp_path: Path) -> None:
 
 def test_aggregate_by_source_skips_empty_bucket() -> None:
     """B-LOW-14 — un event sans sourceId ne crée pas un bucket ''."""
-    events = [_ev(), {"category": "x"}]  # 2e event invalide, mais aggregate()
-    # ne valide pas — on simule un event sans sourceId.
+    # `aggregate()` ne valide pas ses entrées : on lui donne volontairement un
+    # event sans `sourceId` pour vérifier qu'il ne crée pas de bucket "".
     bad = {"ts": "x", "category": "x"}
     out = aggregate_clicks.aggregate(iter([_ev(), bad]), by="source")
     keys = [c["key"] for c in out["counts"]]

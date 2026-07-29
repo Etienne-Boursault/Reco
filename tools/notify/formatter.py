@@ -120,7 +120,7 @@ def build_matrix_message(msg: NewEpisodeMessage) -> dict:
     On échappe le HTML des champs pour qu'un titre exotique ne casse pas le
     rendu (ni n'injecte de balise).
     """
-    import html as _html  # noqa: PLC0415 — import paresseux, usage local.
+    import html as _html
 
     title = _html.escape(f"Nouvel épisode — {msg.feed_title}")
     parts = [f"🎙️ <strong>{title}</strong>", _html.escape(msg.episode_title)]

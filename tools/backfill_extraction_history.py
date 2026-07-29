@@ -32,14 +32,14 @@ import json
 import os
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 _TOOLS = Path(__file__).resolve().parent
 if str(_TOOLS) not in sys.path:
     sys.path.insert(0, str(_TOOLS))
 
-from extraction_history import (  # noqa: E402
+from extraction_history import (
     ASSUMED,
     ExtractionEntry,
     derive_extractors,
@@ -48,7 +48,7 @@ from extraction_history import (  # noqa: E402
     to_dict,
 )
 
-_HAIKU_CUTOVER = datetime(2026, 6, 4, tzinfo=timezone.utc)
+_HAIKU_CUTOVER = datetime(2026, 6, 4, tzinfo=UTC)
 
 
 def _iso(dt: datetime) -> str:
@@ -56,7 +56,7 @@ def _iso(dt: datetime) -> str:
 
 
 def _mtime_dt(path: Path) -> datetime:
-    return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+    return datetime.fromtimestamp(path.stat().st_mtime, tz=UTC)
 
 
 def _anthropic_model_for(mtime: datetime) -> str:

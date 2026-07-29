@@ -17,17 +17,17 @@ from pathlib import Path
 from common import log, read_json, recos_dir_for
 
 __all__ = [
-    "BaseHandler",
     "_MAX_POST_BYTES",
-    "_RE_RECO_ID",
-    "_RE_GUID",
-    "_SECURITY_HEADERS",
     "_RECO_PATH_CACHE",
-    "_rebuild_reco_path_cache",
+    "_RE_GUID",
+    "_RE_RECO_ID",
+    "_SECURITY_HEADERS",
+    "BaseHandler",
     "_invalidate_reco_path_cache",
     "_invalidates_reco_cache",
-    "_reco_path",
     "_parse_post_data",
+    "_rebuild_reco_path_cache",
+    "_reco_path",
 ]
 
 # Mode LAN (opt-in explicite via `review_server.py --host 0.0.0.0`). Par défaut
@@ -120,7 +120,7 @@ def _invalidate_reco_path_cache(source_id: str) -> None:
     """
     _RECO_PATH_CACHE.pop(source_id, None)
     try:
-        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        from review_render import _GROUPS_CACHE
         _GROUPS_CACHE.pop(source_id, None)
     except ImportError:
         # En early bootstrap (import circulaire) — pas grave : à ce moment

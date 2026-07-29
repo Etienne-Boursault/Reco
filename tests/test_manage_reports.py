@@ -56,7 +56,7 @@ def reports_tmp(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     import contextlib
 
     @contextlib.contextmanager
-    def fake_lock(force: bool = False):  # noqa: ARG001
+    def fake_lock(force: bool = False):
         yield
 
     monkeypatch.setattr(manage_reports, "acquire_pipeline_lock", fake_lock)

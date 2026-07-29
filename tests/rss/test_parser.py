@@ -33,7 +33,7 @@ RSS_FIXTURE = """<?xml version="1.0" encoding="UTF-8"?>
     </item>
   </channel>
 </rss>
-""".encode("utf-8")
+""".encode()
 
 
 def test_parse_feed_extracts_title_and_episodes():

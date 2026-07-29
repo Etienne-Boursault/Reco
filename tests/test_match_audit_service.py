@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.match_audit.service import (
     MatchAuditResult,
     MatchAuditService,
@@ -50,7 +49,7 @@ def test_service_empty_checks_raises():
 
 
 def test_service_exposes_immutable_checks_tuple():
-    f = lambda ep: None  # noqa: E731
+    f = lambda ep: None
     svc = MatchAuditService(checks=[f])
     assert svc.checks == (f,)
     assert isinstance(svc.checks, tuple)
@@ -230,6 +229,7 @@ def test_audit_episode_class_check_with_dict_payload():
 def test_audit_episode_invokes_class_check_with_view():
     """Une check classe (Protocol MatchCheck) reçoit une EpisodeView."""
     from dataclasses import dataclass
+
     from tools.match_audit.protocols import EpisodeView
     seen: dict = {}
 
@@ -241,7 +241,6 @@ def test_audit_episode_invokes_class_check_with_view():
 
         def check(self, ep: EpisodeView):
             seen["view"] = ep
-            return None
 
     svc = MatchAuditService(checks=[FakeCheck()])
     svc.audit_episode({"guid": "g1"})

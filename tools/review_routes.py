@@ -21,19 +21,20 @@ from reco_dedup_merge import BACKUP_DIR
 from review_edit import apply_edit, apply_reenrich
 from review_guests import handle_rename_guest as _handle_rename_guest_fn
 from review_handler_base import (
-    BaseHandler,
     _MAX_POST_BYTES,
     _RE_GUID,
     _RE_RECO_ID,
+    BaseHandler,
     _invalidate_reco_path_cache,
     _parse_post_data,
     _reco_path,
 )
 from review_render import _load_groups, _reco_card, _render_episode, _render_index
 from review_routes_merge import MergeRoutesMixin
+
 # _allocate_new_reco ré-exporté pour la compat (review_server + tests l'importent
 # depuis review_routes) ; RecoCrudRoutesMixin fournit /add-reco et /delete-reco.
-from review_routes_reco import (  # noqa: F401
+from review_routes_reco import (
     RecoCrudRoutesMixin,
     _allocate_new_reco,
 )
@@ -94,7 +95,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
     Ces mixins ont été extraits pour tenir chaque fichier sous 500 lignes (M4).
     """
 
-    def do_GET(self) -> None:  # noqa: N802
+    def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
         if parsed.path == "/":
             self._send(200, _render_index(self.source_id))
@@ -104,7 +105,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             # `?edit=<id>` rend le formulaire d'édition inline dans la file
             # (retour à /doutes après save via #M3). L'id n'est utilisé qu'en
             # comparaison d'égalité (jamais réinjecté brut) → pas de risque XSS.
-            from review_doubts import render_doubts  # noqa: PLC0415
+            from review_doubts import render_doubts
             qs = urllib.parse.parse_qs(parsed.query)
             edit_id = qs.get("edit", [None])[0]
             # Refonte perf 2026-07-21 : `?ep=<guid>` → un seul épisode ; sans
@@ -122,7 +123,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             return
         if parsed.path == "/doublons":
             # Page de consolidation MANUELLE des doublons (cf. review_dedup_page).
-            from review_dedup_page import render_dedup_page  # noqa: PLC0415
+            from review_dedup_page import render_dedup_page
             qs = urllib.parse.parse_qs(parsed.query)
             flash = qs.get("flash", [""])[0] or None
             kind = qs.get("kind", [""])[0]
@@ -151,7 +152,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 self._send_404()
                 return
             edit = qs.get("edit", ["0"])[0] == "1"
-            from review_doubts import render_doubt_fragment  # noqa: PLC0415
+            from review_doubts import render_doubt_fragment
             self._send(200, render_doubt_fragment(self.source_id, reco_id, edit))
             return
         self._send_404()
@@ -204,7 +205,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             reco, ep, hosts, self.source_id, siblings=siblings,
         ))
 
-    def do_POST(self) -> None:  # noqa: N802
+    def do_POST(self) -> None:
         if not self._is_same_origin():
             log.warning("POST refusé : Origin/Referer cross-site (%s)",
                         self.headers.get("Origin") or self.headers.get("Referer"))
@@ -321,7 +322,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 else:
                     reco.setdefault("agentReview", {})["reviewedByHuman"] = True
                 write_json_if_changed(path, reco)
-                from review_render import _GROUPS_CACHE  # noqa: PLC0415
+                from review_render import _GROUPS_CACHE
                 _GROUPS_CACHE.pop(self.source_id, None)
             except (OSError, ValueError) as exc:
                 log.warning("post-édition %s : %s", reco_id, exc)
@@ -339,7 +340,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         """
         result = _undo.pop_and_restore(self.source_id)
         _invalidate_reco_path_cache(self.source_id)
-        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        from review_render import _GROUPS_CACHE
         _GROUPS_CACHE.pop(self.source_id, None)
         restored = bool(result.get("restored"))
         reco_id = result.get("reco_id", "")
@@ -349,7 +350,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         else:
             msg, kind = "Rien à annuler.", "warning"
         if self._wants_json():
-            import json as _json  # noqa: PLC0415
+            import json as _json
             self._send_json(_json.dumps({
                 "kind": kind, "message": msg,
                 "restored": restored, "reco_id": reco_id,
@@ -416,7 +417,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                         reco_id: str) -> None:
         """Réponse JSON pour fetch côté client. Inclut le HTML de la carte
         fraîche pour permettre l'update partiel sans rechargement."""
-        import json as _json  # noqa: PLC0415
+        import json as _json
         card_html = ""
         # rev-render m4 (revue 2026-07-19) : dériver l'edit_origin du Referer.
         # Sans ça, la carte fraîche renvoyée à un fetch initié depuis /doutes
@@ -481,7 +482,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
         # (#2 review : le path n'a pas changé). On invalide quand même le
         # cache groups (contenu muté → un nouveau render doit voir le statut
         # mis à jour, indépendamment de la granularité mtime du FS).
-        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        from review_render import _GROUPS_CACHE
         _GROUPS_CACHE.pop(self.source_id, None)
         # m3 (revue 2026-07-19) : synthétiser un flash succès — sinon le POST
         # /save en JSON (fetch) ne renvoyait aucun toast, et la redirection
@@ -573,7 +574,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 self._apply_save_action(reco, "discard", "", rid)
                 n_disc += 1
             write_json_if_changed(path, reco)
-        from review_render import _GROUPS_CACHE  # noqa: PLC0415
+        from review_render import _GROUPS_CACHE
         _GROUPS_CACHE.pop(self.source_id, None)
         log.info("Consolidé : %d gardée(s), %d écartée(s)", n_keep, n_disc)
         flash = f"Consolidé : {n_keep} gardée(s), {n_disc} écartée(s)."

@@ -74,7 +74,7 @@ class StatsSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "StatsSettings":
+    ) -> StatsSettings:
         """Construit depuis ``SourceConfig.extra["stats"]``."""
         return _from_source_extra(
             extra,

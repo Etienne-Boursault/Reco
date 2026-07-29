@@ -96,6 +96,28 @@ class TestCli:
         assert rc == 1
         assert not cli_env.exists()
 
+    def test_unexpected_error_is_logged_and_returns_1(
+        self,
+        cli_env: Path,
+        monkeypatch: pytest.MonkeyPatch,
+        caplog: pytest.LogCaptureFixture,
+    ) -> None:
+        """Garde-fou de dernier recours du CLI : une erreur imprévue ressort en
+        code 1 AVEC sa stacktrace, au lieu d'un traceback brut sur la sortie."""
+        def _boom(*a, **k):
+            raise RuntimeError("SQLite indisponible")
+
+        monkeypatch.setattr(build_cache, "run_build_cache", _boom)
+
+        with caplog.at_level("ERROR"):
+            rc = build_cache.main(["--source", "all", *_common_args(cli_env)])
+
+        assert rc == 1
+        assert "SQLite indisponible" in caplog.text
+        # `log.exception` joint la stacktrace — c'est ce qui rend le catch-all
+        # acceptable plutôt que masquant.
+        assert "Traceback" in caplog.text
+
     def test_default_db_path_used_when_omitted(
         self, cli_env: Path
     ) -> None:

@@ -11,7 +11,7 @@ TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-import aggregate_clicks  # noqa: E402
+import aggregate_clicks
 
 
 @pytest.fixture(autouse=True)

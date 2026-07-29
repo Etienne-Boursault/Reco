@@ -12,8 +12,9 @@ from __future__ import annotations
 
 import logging
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass, field, fields
-from typing import Any, Mapping
+from typing import Any
 
 from tools.config.astro_adapter import normalize_payload
 
@@ -231,7 +232,7 @@ class SourceConfig:
         payload: Mapping[str, Any],
         *,
         expected_id: str | None = None,
-    ) -> "SourceConfig":
+    ) -> SourceConfig:
         """Construit une `SourceConfig` à partir d'un payload JSON.
 
         Args:

@@ -7,10 +7,8 @@ from domain.item import ExternalIds, Item, ItemType
 from enrich_audit.service import (
     AuditResult,
     EnrichAuditService,
-    SourceAuditReport,
 )
 from enrich_audit.types import Severity, Suspicion
-
 
 # ===== Suspicion (VO) ======================================================
 

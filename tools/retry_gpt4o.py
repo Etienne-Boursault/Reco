@@ -13,11 +13,17 @@ ROOT = Path(__file__).parent.parent
 TOOLS = ROOT / "tools"
 sys.path.insert(0, str(TOOLS))
 
-from common import (  # noqa: E402
-    log, load_source, make_openai_client, transcript_path_for,
+from common import (
+    load_source,
+    log,
+    make_openai_client,
+    transcript_path_for,
 )
-from extract_recos import (  # noqa: E402
-    _call_llm, _chunk_transcript, _normalize_reco, _dedupe,
+from extract_recos import (
+    _call_llm,
+    _chunk_transcript,
+    _dedupe,
+    _normalize_reco,
 )
 
 SOURCE_ID = "un-bon-moment"

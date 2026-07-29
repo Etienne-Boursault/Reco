@@ -19,11 +19,15 @@ from pathlib import Path
 # Local imports (script lancé depuis la racine du projet)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common import (  # noqa: E402
-    EPISODES_DIR, load_source, log, read_json, write_json_if_changed,
+from common import (
+    EPISODES_DIR,
+    load_source,
+    log,
+    read_json,
+    write_json_if_changed,
 )
-from review_lock import ServerLockBusy, acquire_pipeline_lock  # noqa: E402
-from review_render_common import _parse_guests  # noqa: E402
+from review_lock import ServerLockBusy, acquire_pipeline_lock
+from review_render_common import _parse_guests
 
 
 def iter_episode_paths() -> list[tuple[str, Path]]:
@@ -101,8 +105,8 @@ def main() -> int:
     finally:
         try:
             lock_ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception:  # noqa: BLE001, S110 — release best-effort :
+            pass  # le verrou est déjà relâché ou le process meurt de toute façon.
 
 
 if __name__ == "__main__":

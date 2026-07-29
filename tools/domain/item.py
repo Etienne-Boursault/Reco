@@ -84,7 +84,7 @@ class ExternalIds:
     # B11 — factory tolérante pour input legacy / enricher
     # ------------------------------------------------------------------
     @classmethod
-    def from_partial(cls, **kwargs: object) -> "ExternalIds":
+    def from_partial(cls, **kwargs: object) -> ExternalIds:
         """Construit un `ExternalIds` à partir d'un dict potentiellement
         partiel et hétérogène.
 
@@ -332,9 +332,9 @@ class Item:
 
 
 __all__ = [
-    "ItemType",
-    "ExternalIds",
-    "WatchProvider",
     "CustomLink",
+    "ExternalIds",
     "Item",
+    "ItemType",
+    "WatchProvider",
 ]

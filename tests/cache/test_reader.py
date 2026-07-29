@@ -153,7 +153,7 @@ class TestOpenValidations:
         fake = tmp_path / "reco.sqlite"
         fake.write_bytes(b"<!doctype html><html>404</html>")
 
-        with pytest.raises(CacheCorruptedError, match="build_cache.py"):
+        with pytest.raises(CacheCorruptedError, match=r"build_cache\.py"):
             CacheReader(fake)
 
     def test_missing_schema_version_is_stale(self, tmp_path: Path,

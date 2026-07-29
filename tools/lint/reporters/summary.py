@@ -26,7 +26,7 @@ class LintSummary:
     """Top règles violées, triées par count desc puis nom asc."""
 
 
-def build_summary(report: "LintReport", *, top_n: int = 5) -> LintSummary:
+def build_summary(report: LintReport, *, top_n: int = 5) -> LintSummary:
     """Construit un `LintSummary` depuis un `LintReport`.
 
     Top-N : tri stable (count desc puis nom asc — déterministe pour CI).

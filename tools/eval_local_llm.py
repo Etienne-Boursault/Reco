@@ -21,9 +21,9 @@ from typing import Any
 import requests
 
 from common import (
-    log,
     list_episode_files,
     load_source,
+    log,
     normalize_text,
     read_json,
     recos_dir_for,

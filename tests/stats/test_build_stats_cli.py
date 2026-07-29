@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import csv
 import json
-from pathlib import Path
 
 import pytest
 
@@ -136,10 +135,11 @@ def test_main_cli_parses_args(fake_content, tmp_path, monkeypatch):
 def test_main_propagates_server_lock_busy(fake_content, tmp_path, monkeypatch):
     """Si le verrou pipeline est déjà tenu, `main()` retourne 1 proprement."""
     from contextlib import contextmanager
+
     from review_lock import ServerLockBusy
 
     @contextmanager
-    def _busy(*, force=False):  # noqa: ARG001
+    def _busy(*, force=False):
         raise ServerLockBusy("Verrou déjà tenu")
         yield  # pragma: no cover
 

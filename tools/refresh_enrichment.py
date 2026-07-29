@@ -25,7 +25,7 @@ import os
 import sys
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Literal
 
@@ -416,7 +416,7 @@ def run(
     `provider_factory(name)` : LEGACY (rétro-compat tests existants). À
                   préférer : passer `providers=[...]` directement.
     """
-    now = now or datetime.now(timezone.utc)
+    now = now or datetime.now(UTC)
     stats = RefreshStats()
     session = build_cached_session(cache_path, backend="sqlite" if apply else "memory")
 

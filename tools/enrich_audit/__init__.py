@@ -16,6 +16,7 @@ API publique :
 """
 from __future__ import annotations
 
+from .flag_writer import read_sidecar, sidecar_path, write_sidecar
 from .runtime_coherence_check import check_runtime_coherence
 from .service import (
     AuditResult,
@@ -26,7 +27,6 @@ from .service import (
 )
 from .title_similarity_check import check_title_similarity
 from .year_mismatch_check import check_year_mismatch
-from .flag_writer import read_sidecar, sidecar_path, write_sidecar
 
 __all__ = [
     "AuditResult",
@@ -34,9 +34,9 @@ __all__ = [
     "EnrichAuditService",
     "SourceAuditReport",
     "Suspicion",
+    "check_runtime_coherence",
     "check_title_similarity",
     "check_year_mismatch",
-    "check_runtime_coherence",
     "read_sidecar",
     "sidecar_path",
     "write_sidecar",

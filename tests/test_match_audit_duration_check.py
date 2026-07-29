@@ -1,8 +1,9 @@
 """Tests : tools.match_audit.duration_check."""
 from __future__ import annotations
 
-import pytest
+import dataclasses
 
+import pytest
 from tools.match_audit.duration_check import DurationCheck, check_duration
 from tools.match_audit.protocols import EpisodeView
 from tools.match_audit.types import MatchSuspicion, Severity
@@ -100,5 +101,5 @@ def test_duration_check_class_custom_tolerance():
 def test_duration_check_is_immutable():
     """frozen dataclass."""
     c = DurationCheck()
-    with pytest.raises(Exception):
+    with pytest.raises(dataclasses.FrozenInstanceError):
         c.tolerance = 0.99  # type: ignore[misc]

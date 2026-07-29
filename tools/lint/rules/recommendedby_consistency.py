@@ -26,7 +26,6 @@ from typing import Any
 
 from .base import LintContext, LintIssue, LintRule, Severity
 
-
 # Sentinels normalisés (NFKC + casefold) à whitelister.
 _SENTINELS_RAW = (
     "Inconnu", "Invité", "Invitée", "Intervenant", "Intervenante",

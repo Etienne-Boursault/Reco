@@ -5,7 +5,6 @@ import json
 from types import MappingProxyType
 
 import pytest
-
 from tools.eval.types import (
     DEFAULT_FUZZY_THRESHOLD,
     EvalConfig,

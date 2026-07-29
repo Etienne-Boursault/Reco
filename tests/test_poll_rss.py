@@ -367,7 +367,7 @@ class _DispSess:
         self.exc = exc
         self.calls = []
 
-    def post(self, url, headers, json, timeout):  # noqa: A002
+    def post(self, url, headers, json, timeout):
         self.calls.append({"url": url, "json": json})
         if self.exc:
             raise self.exc

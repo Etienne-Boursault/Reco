@@ -87,7 +87,7 @@ def _select_mode(args: argparse.Namespace) -> str:
 
 def _log_header(mode: str, source: str, recos_dir: Path) -> None:
     """D8 : log structuré sur stderr (ne casse pas le parsing stdout JSON)."""
-    ts = _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds")
+    ts = _dt.datetime.now(_dt.UTC).isoformat(timespec="seconds")
     print(
         f"[migrate_reco_to_item_mention] mode={mode} source={source} "
         f"recos_dir={recos_dir} timestamp={ts}",

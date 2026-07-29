@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-from _embed_fakes import FakeEncoder  # noqa: F401 — réexport pour les tests
+from _embed_fakes import FakeEncoder
 from embeddings.ports import Encoder
 from embeddings.store import EmbeddingStore
 

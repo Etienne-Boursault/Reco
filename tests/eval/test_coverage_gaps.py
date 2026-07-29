@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.eval.adapters.legacy_reco_adapter import LegacyRecoExtractionSource
 from tools.eval.golden_set import GoldenEpisode, GoldenSet, load_golden_set
 from tools.eval.harness import (

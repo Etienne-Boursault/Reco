@@ -9,11 +9,14 @@ from __future__ import annotations
 import html
 import re
 import urllib.parse
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 from common import (
-    find_episode_by_guid, log, read_json, write_json_if_changed,
+    find_episode_by_guid,
+    log,
+    read_json,
+    write_json_if_changed,
 )
 
 # Placeholders à ne jamais proposer comme invité (et à nettoyer du JSON

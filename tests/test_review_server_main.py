@@ -15,6 +15,7 @@ import builtins
 import contextlib
 import importlib
 import sys
+from typing import ClassVar
 
 import pytest
 
@@ -26,7 +27,7 @@ from review_lock import PipelineLockBusy, ServerLockBusy
 class _FakeServer:
     """Serveur factice : mémorise l'adresse, puis simule un Ctrl+C."""
 
-    instances: list["_FakeServer"] = []
+    instances: ClassVar[list[_FakeServer]] = []
 
     def __init__(self, addr, handler):
         self.addr = addr
@@ -65,7 +66,7 @@ def test_localhost_does_not_enable_lan_mode(stub_server, monkeypatch):
     assert stub_server.instances[0].addr == ("127.0.0.1", 8000)
 
 
-@pytest.mark.parametrize("host", ["0.0.0.0", "192.168.1.10"])
+@pytest.mark.parametrize("host", ["0.0.0.0", "192.168.1.10"])  # noqa: S104 — cas de test du mode LAN
 def test_non_local_host_enables_lan_mode(stub_server, monkeypatch, host):
     """Binder ailleurs que sur localhost active explicitement le mode LAN."""
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)

@@ -5,12 +5,6 @@ sauf le test de SQLite end-to-end (tmp_path).
 """
 from __future__ import annotations
 
-from pathlib import Path
-from unittest.mock import patch
-
-import pytest
-import requests
-
 from enrichment.http_cache import (
     DEFAULT_URL_TTL,
     CachedSession,

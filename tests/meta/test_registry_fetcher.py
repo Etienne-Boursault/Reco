@@ -14,7 +14,6 @@ from meta.fetcher import (
     load_registries_file,
 )
 
-
 VALID = {
     "schemaVersion": 1,
     "siteUrl": "https://x.example",
@@ -217,7 +216,7 @@ def test_load_registries_file_blank_item(tmp_path: Path) -> None:
 
 
 def test_load_registries_file_yaml(tmp_path: Path) -> None:
-    yaml = pytest.importorskip("yaml")
+    pytest.importorskip("yaml")  # l'appel fait le skip ; la valeur est inutile
     p = tmp_path / "r.yaml"
     p.write_text("- https://a\n- https://b\n", encoding="utf-8")
     assert load_registries_file(p) == ["https://a", "https://b"]

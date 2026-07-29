@@ -9,9 +9,9 @@ On garde ``is_suspect`` comme alias rétrocompat.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from types import MappingProxyType
-from typing import Any, Callable, Iterable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
+from dataclasses import dataclass
+from typing import Any
 
 from tools.match_audit.protocols import EpisodeView, MatchCheck
 from tools.match_audit.types import MatchSuspicion, Severity

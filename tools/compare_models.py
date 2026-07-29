@@ -40,7 +40,7 @@ def _clip_audio(audio: Path, start: str, duration: int, dest: Path) -> Path:
 
 def _transcribe_clip(clip: Path, model_name: str, language: str | None) -> tuple[str, float]:
     """Transcrit l'extrait avec un modèle donné. Renvoie (texte, durée_secondes)."""
-    from faster_whisper import WhisperModel  # noqa: PLC0415 — import paresseux.
+    from faster_whisper import WhisperModel
 
     t0 = time.time()
     log.info("[%s] chargement du modèle…", model_name)

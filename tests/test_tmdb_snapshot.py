@@ -8,7 +8,6 @@ from __future__ import annotations
 import datetime as _dt
 import json
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -70,7 +69,7 @@ def test_is_fresh_true_within_window():
 
 def test_is_fresh_handles_aware_now():
     """Le helper coerce now() aware en naive UTC pour comparer sans erreur."""
-    aware = lambda: _dt.datetime(2026, 6, 10, tzinfo=_dt.timezone.utc)
+    aware = lambda: _dt.datetime(2026, 6, 10, tzinfo=_dt.UTC)
     payload = {"_cacheVersion": 1, "fetchedAt": "2026-06-01T00:00:00Z"}
     assert ts._is_fresh(payload, now=aware) is True
 
@@ -150,7 +149,7 @@ def test_make_http_fetcher_makes_a_request(monkeypatch):
         def read(self):
             return self._body
 
-    def _fake_urlopen(req, timeout=30):  # noqa: ARG001
+    def _fake_urlopen(req, timeout=30):
         captured["url"] = req.full_url
         return _Resp(b'{"id": 99}')
 
@@ -425,7 +424,7 @@ def test_main_returns_error_on_lock_busy(monkeypatch, tmp_path):
     from contextlib import contextmanager
 
     @contextmanager
-    def _busy(*, force):  # noqa: ARG001
+    def _busy(*, force):
         raise ts.ServerLockBusy("lock busy")
         yield  # pragma: no cover
 

@@ -18,11 +18,12 @@ Toutes les invariants sont documentés en docstring de chaque dataclass.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from enum import StrEnum
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, Final, Iterable, Mapping, Protocol, runtime_checkable
+from typing import Any, Final, Protocol, runtime_checkable
 
 __all__ = [
     "DEFAULT_FUZZY_THRESHOLD",
@@ -75,7 +76,7 @@ class ExtractedReco:
     extra: Mapping[str, Any] = field(default_factory=lambda: MappingProxyType({}))
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "ExtractedReco":
+    def from_dict(cls, data: Mapping[str, Any]) -> ExtractedReco:
         """Construit un ``ExtractedReco`` depuis un dict tolérant."""
         title = str(data.get("title", "")).strip()
         if not title:
@@ -114,7 +115,7 @@ class EvalConfig:
             raise ValueError("timestamp_tolerance_sec ≥ 0.")
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "EvalConfig":
+    def from_dict(cls, data: Mapping[str, Any]) -> EvalConfig:
         """Construit une ``EvalConfig`` depuis un dict (futur YAML/JSON)."""
         known = {
             "fuzzy_threshold", "timestamp_tolerance_sec",
@@ -171,7 +172,7 @@ class EvalMetrics:
     recall: float
     f1: float
     details: tuple[EvalDetail, ...] = ()
-    per_episode: Mapping[str, "EvalMetrics"] = field(
+    per_episode: Mapping[str, EvalMetrics] = field(
         default_factory=lambda: MappingProxyType({}),
     )
 
@@ -232,7 +233,7 @@ class RunManifest:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "RunManifest":
+    def from_dict(cls, data: Mapping[str, Any]) -> RunManifest:
         return cls(
             run_id=str(data["run_id"]),
             timestamp=str(data["timestamp"]),
@@ -269,13 +270,13 @@ class ExtractionSource(Protocol):
 class EvalReporter(Protocol):
     """Reporter d'un ``EvalMetrics`` vers un format texte cible."""
 
-    def render(self, metrics: "EvalMetrics", *, title: str = ...) -> str:
+    def render(self, metrics: EvalMetrics, *, title: str = ...) -> str:
         """Sérialise ``metrics`` en string."""
         ...
 
     def write(
         self,
-        metrics: "EvalMetrics",
+        metrics: EvalMetrics,
         path: str | Path,
         *,
         title: str = ...,

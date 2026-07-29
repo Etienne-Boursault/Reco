@@ -21,7 +21,7 @@ from .reco_parser import reco_dict_to_item_mention
 from .reco_to_item_mention import MigrationService, MigrationStats
 
 __all__ = [
-    "reco_dict_to_item_mention",
     "MigrationService",
     "MigrationStats",
+    "reco_dict_to_item_mention",
 ]

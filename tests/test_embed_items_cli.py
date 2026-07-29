@@ -7,13 +7,13 @@ from __future__ import annotations
 
 import contextlib
 import json
-import sys
 from pathlib import Path
 
 import numpy as np
 import pytest
 
 import embed_items
+from _embed_fakes import FakeEncoder
 from embed_items import (
     EmbedRunOptions,
     _build_parser,
@@ -23,9 +23,7 @@ from embed_items import (
     main,
     run_embed,
 )
-from _embed_fakes import FakeEncoder
 from embeddings.store import EmbeddingStore
-
 
 # ---------- helpers ----------------------------------------------------------
 
@@ -345,7 +343,7 @@ def test_parser_defaults() -> None:
 
 
 @contextlib.contextmanager
-def _noop_lock(force: bool = False):  # noqa: ARG001
+def _noop_lock(force: bool = False):
     yield
 
 
@@ -410,7 +408,7 @@ def test_main_server_lock_busy(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) 
     import review_lock
 
     @contextlib.contextmanager
-    def _busy(force: bool = False):  # noqa: ARG001
+    def _busy(force: bool = False):
         raise review_lock.ServerLockBusy("server tourne")
         yield  # pragma: no cover
 

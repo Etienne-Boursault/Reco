@@ -99,10 +99,10 @@ class LintContext:
 
     source_id: str
     recos: tuple[dict[str, Any], ...] = ()
-    items: tuple["Item", ...] = ()
-    mentions: tuple["Mention", ...] = ()
+    items: tuple[Item, ...] = ()
+    mentions: tuple[Mention, ...] = ()
     episodes: tuple[dict[str, Any], ...] = ()
-    source_config: "SourceConfig | None" = None
+    source_config: SourceConfig | None = None
     overrides: tuple[dict[str, Any], ...] = ()
     """Overrides chargés depuis le dataset (CR senior H4) — la règle
     ``recommendedby_consistency`` ou ``suspicious_titles`` les consulte
@@ -181,8 +181,8 @@ class LintRule(Protocol):
 
 
 __all__ = [
-    "Severity",
-    "LintIssue",
     "LintContext",
+    "LintIssue",
     "LintRule",
+    "Severity",
 ]

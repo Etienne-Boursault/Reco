@@ -20,7 +20,7 @@ class _FakeSession:
         self.exc = exc
         self.calls = []
 
-    def post(self, url, json, timeout):  # noqa: A002 (json mimics requests API)
+    def post(self, url, json, timeout):
         self.calls.append({"url": url, "json": json, "timeout": timeout})
         if self.exc is not None:
             raise self.exc
@@ -69,11 +69,10 @@ def test_uses_requests_when_no_session_injected(monkeypatch):
     """Sans session injectée, l'envoi importe `requests` à la volée. On
     remplace le module dans `sys.modules` : aucune requête ne part."""
     import sys
-    from types import SimpleNamespace
 
     captured = {}
 
-    def _post(url, json=None, headers=None, timeout=None):  # noqa: A002
+    def _post(url, json=None, headers=None, timeout=None):
         captured["url"] = url
         captured["json"] = json
         captured["timeout"] = timeout

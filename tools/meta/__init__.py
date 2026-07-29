@@ -11,17 +11,17 @@ Cf. ADR 0045.
 """
 from __future__ import annotations
 
-from .validator import RegistryValidationError, validate_registry
 from .aggregator import aggregate_entries, dedupe_by_slug, slug_from_site_url
-from .fetcher import RegistryFetchError, RegistryFetcher, load_registries_file
+from .fetcher import RegistryFetcher, RegistryFetchError, load_registries_file
+from .validator import RegistryValidationError, validate_registry
 
 __all__ = [
-    "RegistryValidationError",
-    "validate_registry",
-    "aggregate_entries",
-    "dedupe_by_slug",
-    "slug_from_site_url",
     "RegistryFetchError",
     "RegistryFetcher",
+    "RegistryValidationError",
+    "aggregate_entries",
+    "dedupe_by_slug",
     "load_registries_file",
+    "slug_from_site_url",
+    "validate_registry",
 ]

@@ -16,11 +16,8 @@ from __future__ import annotations
 
 import argparse
 import base64
-import json
 import re
 from difflib import SequenceMatcher
-
-import requests
 
 from common import (
     download_youtube_thumbnail,

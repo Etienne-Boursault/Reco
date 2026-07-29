@@ -18,8 +18,8 @@ import unicodedata
 from collections.abc import Iterator
 from typing import Any
 
-from .base import LintContext, LintIssue, LintRule, Severity
 from ..settings import LintSettings
+from .base import LintContext, LintIssue, LintRule, Severity
 
 _BRACKET_CHARS = frozenset("[]<>")
 

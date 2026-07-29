@@ -176,7 +176,7 @@ def test_entrypoint_has_shebang_and_strict():
 def test_review_launcher_patches_httpserver():
     content = _read("docker/review_launcher.py")
     assert "HTTPServer.__init__" in content
-    assert "0.0.0.0" in content
+    assert "0.0.0.0" in content  # noqa: S104 — on VÉRIFIE la valeur, on ne binde pas
     # Import doit venir APRES le patch.
     patch_idx = content.find("HTTPServer.__init__ = ")
     import_idx = content.find("import review_server")

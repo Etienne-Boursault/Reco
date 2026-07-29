@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.eval.golden_set import ExpectedReco, GoldenEpisode, GoldenSet
 from tools.eval.harness import EvalHarness, _parse_timestamp_to_seconds
 from tools.eval.metrics import MatchVerdict

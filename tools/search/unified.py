@@ -79,7 +79,7 @@ class UnifiedHit:
 class _LexicalBackend(Protocol):
     """Sous-protocole consommé par la façade (DIP — facilite les mocks)."""
 
-    def search(self, query: SearchQuery): ...  # noqa: D401
+    def search(self, query: SearchQuery): ...
 
 
 class _SemanticBackend(Protocol):

@@ -35,7 +35,7 @@ from __future__ import annotations
 
 import ipaddress
 import socket
-from typing import Callable, Iterable
+from collections.abc import Callable, Iterable
 from urllib.parse import urlparse
 
 #: Schémas autorisés. ``https`` uniquement — `http` est explicitement

@@ -2,17 +2,22 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import pytest
 
 from review_edit import (
-    EXT_FIELDS, RECO_TYPES, _kind_for,
-    _render_creators_datalist, _render_custom_links_section,
-    _render_ext_inputs, _render_overrides_section,
-    _render_recommenders_datalist, _render_type_boxes, _render_wp_inputs,
-    apply_edit, is_reenrichable,
-    render_edit_form, render_type_badges,
+    _kind_for,
+    _render_creators_datalist,
+    _render_custom_links_section,
+    _render_ext_inputs,
+    _render_overrides_section,
+    _render_recommenders_datalist,
+    _render_type_boxes,
+    _render_wp_inputs,
+    apply_edit,
+    is_reenrichable,
+    render_edit_form,
+    render_type_badges,
 )
 
 
@@ -709,7 +714,8 @@ def test_apply_reenrich_no_targetable_types_returns_info(tmp_path, monkeypatch):
         "id": "r", "episodeGuid": "ep-x", "title": "Livre", "types": ["livre"],
     }), encoding="utf-8")
     # Mock pour s'assurer que les enrichers ne sont pas appelés.
-    import enrich_tmdb, enrich_music  # noqa: E401
+    import enrich_music
+    import enrich_tmdb
     called = []
     monkeypatch.setattr(enrich_tmdb, "enrich_one",
                         lambda *a, **k: called.append("tmdb"))
@@ -725,7 +731,7 @@ def test_apply_reenrich_no_targetable_types_returns_info(tmp_path, monkeypatch):
 
 
 # ===== m8/m9 : gardes d'URL convergentes (revue 2026-07-19) =================
-from review_edit import _ext_value_ok, _is_https_url  # noqa: E402
+from review_edit import _ext_value_ok, _is_https_url
 
 
 @pytest.mark.parametrize("url,expected", [

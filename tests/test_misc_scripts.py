@@ -16,7 +16,8 @@ import pytest
 def test_refresh_watch_provider_urls_updates_urls(monkeypatch, tmp_path: Path):
     """Re-map de [{label: 'Apple TV Store', url: 'old-google-search'}]
     vers [{label: 'Apple TV Store', url: 'tv.apple.com/...'}]."""
-    import common, refresh_watch_provider_urls as refresh
+    import common
+    import refresh_watch_provider_urls as refresh
     recos_dir = tmp_path / "recos" / "ubm"
     recos_dir.mkdir(parents=True)
     monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
@@ -40,7 +41,8 @@ def test_refresh_watch_provider_urls_updates_urls(monkeypatch, tmp_path: Path):
 
 def test_refresh_skips_recos_without_providers(monkeypatch, tmp_path: Path):
     """Les recos sans watchProviders sont ignorées (livres, musique, etc.)."""
-    import common, refresh_watch_provider_urls as refresh
+    import common
+    import refresh_watch_provider_urls as refresh
     recos_dir = tmp_path / "recos" / "ubm"
     recos_dir.mkdir(parents=True)
     monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")

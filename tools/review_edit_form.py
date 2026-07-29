@@ -13,7 +13,7 @@ from __future__ import annotations
 import html
 import urllib.parse
 
-from review_edit import EXT_FIELDS, RECO_TYPES, TYPE_EMOJIS, TYPE_LABELS  # noqa: F401
+from review_edit import EXT_FIELDS, RECO_TYPES, TYPE_EMOJIS, TYPE_LABELS
 from review_links import AUTO_PLATFORMS_BY_TYPE, auto_url, auto_urls_for
 
 
@@ -161,7 +161,7 @@ def _render_overrides_section(r: dict) -> str:
     # spotify/justwatch), potentiellement hostile (javascript:) → passer par
     # _safe_url avant le href. html.escape n'échappe PAS le schéma. Import local
     # pour éviter un cycle avec review_render_common (cf. _parse_guests plus bas).
-    from review_render_common import _safe_url  # noqa: PLC0415
+    from review_render_common import _safe_url
 
     def _row(p: str) -> str:
         auto = _safe_url(auto_urls.get(p) or auto_url(p, r))
@@ -204,8 +204,8 @@ def _collect_recby_candidates(
     cette délégation, un épisode migré (invités seulement dans
     `guestsParsed`) n'exposait aucun invité dans le dropdown « Reco de ».
     """
-    from review_guests import collect_guests, is_placeholder  # noqa: PLC0415
-    from review_render_common import _parse_guests  # noqa: PLC0415
+    from review_guests import collect_guests, is_placeholder
+    from review_render_common import _parse_guests
 
     # Fallback parsing du titre pour les épisodes pas encore migrés (aligné
     # sur `_reco_candidates`).
@@ -244,8 +244,8 @@ def _render_recap(r: dict, ep: dict) -> str:
     YouTube absente du flux Acast.
     """
     # Import différé pour éviter une dépendance circulaire avec review_render.
-    from review_render import _embed_url, _fmt, _ts_seconds  # noqa: PLC0415
-    from review_render_common import _safe_url  # noqa: PLC0415
+    from review_render import _embed_url, _fmt, _ts_seconds
+    from review_render_common import _safe_url
 
     parts: list[str] = []
     secs = _ts_seconds(r.get("timestamp"))
@@ -259,7 +259,7 @@ def _render_recap(r: dict, ep: dict) -> str:
         # M1 (revue 2026-07-19) : _safe_int comme _reco_card — youtubeDuration
         # peut arriver en chaîne ("3700") ; sinon "3700" - 3600 lève TypeError et
         # rend le formulaire (GET /ep?edit ou /doutes?edit) inaccessible (500).
-        from review_render_common import _safe_int  # noqa: PLC0415
+        from review_render_common import _safe_int
         yt_offset = max(
             0, _safe_int(ep.get("youtubeDuration")) - _safe_int(ep.get("audioDuration"))
         )
@@ -304,7 +304,7 @@ def _render_recby_checkboxes(
     utilisateur 2026-07-26. Les noms courants ABSENTS de la liste des candidats
     sont ajoutés (cochés) pour ne PAS les perdre silencieusement.
     """
-    from review_guests import split_names  # noqa: PLC0415
+    from review_guests import split_names
     current_names = split_names(current)
     pool: list[str] = list(candidates)
     seen = {c.casefold() for c in pool}

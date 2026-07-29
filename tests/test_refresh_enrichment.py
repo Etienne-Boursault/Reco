@@ -5,9 +5,8 @@ Aucun appel réseau : providers fakes injectés via `provider_factory`.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -15,8 +14,7 @@ import common
 import refresh_enrichment as ren
 from enrichment.tracker import now_iso
 
-
-NOW = datetime(2026, 6, 10, 12, 0, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 6, 10, 12, 0, 0, tzinfo=UTC)
 
 
 def _write_reco(dir_: Path, reco_id: str, **overrides) -> Path:
@@ -672,7 +670,7 @@ def test_C4_no_spotify_audit_when_no_creds(sandbox, monkeypatch):
     import enrich_music as em
     monkeypatch.setattr(em, "enrich_one", fake_music_enrich)
 
-    stats = ren.run(
+    ren.run(
         source_arg="demo-src",
         older_than=timedelta(days=90),
         provider_filter="music",

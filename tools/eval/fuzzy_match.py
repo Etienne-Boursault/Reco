@@ -52,7 +52,7 @@ def normalize_text(text: str | None) -> str:
         cat = unicodedata.category(ch)
         if cat.startswith("M"):           # marques de combinaison (diacritiques)
             continue
-        if cat.startswith("P") or cat.startswith("S"):  # ponctuation / symboles
+        if cat.startswith(("P", "S")):  # ponctuation / symboles
             out_chars.append(" ")
             continue
         out_chars.append(ch)

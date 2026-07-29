@@ -7,9 +7,11 @@ from pathlib import Path
 import pytest
 
 from review_links import (
-    AUTO_PLATFORMS_BY_TYPE, _URL_BUILDERS, auto_url, auto_urls_for,
+    _URL_BUILDERS,
+    AUTO_PLATFORMS_BY_TYPE,
+    auto_url,
+    auto_urls_for,
 )
-
 
 # Mapping label → type qui « héberge » ce label (pour le test paramétré).
 _LABEL_TO_TYPE: dict[str, str] = {}

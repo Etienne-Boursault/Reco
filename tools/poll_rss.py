@@ -27,11 +27,12 @@ import argparse
 import json
 import os
 import sys
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
 from urllib.parse import urlparse
 
+from audit_core.cli_runner import utcnow_iso
 from common import OUTPUT_DIR, load_source, log
 from notify.discord import DiscordWebhookSender
 from notify.formatter import NewEpisodeMessage, build_discord_embed, build_slack_blocks
@@ -42,7 +43,6 @@ from rss.detector import detect_new_episodes
 from rss.parser import ParsedEpisode, ParsedFeed, parse_feed_bytes
 from rss.ports import FeedFetcher, FetchResult
 from rss.state import load_state, save_state
-from audit_core.cli_runner import utcnow_iso
 
 DEFAULT_STATE_DIR: Path = OUTPUT_DIR / "rss"
 DEFAULT_LIMIT_NEW = 5
@@ -73,7 +73,7 @@ class RequestsFeedFetcher:
         etag: str | None = None,
         last_modified: str | None = None,
     ) -> FetchResult:
-        import requests  # noqa: PLC0415
+        import requests
 
         headers: dict[str, str] = {"User-Agent": "reco-poll-rss/1.0"}
         if etag:
@@ -139,7 +139,7 @@ class GitHubDispatcher:
                     url, headers=headers, json=body, timeout=self._timeout,
                 )
             else:
-                import requests  # noqa: PLC0415
+                import requests
 
                 resp = requests.post(
                     url, headers=headers, json=body, timeout=self._timeout,
@@ -180,7 +180,7 @@ class SourcePollResult:
 
 def _resolve_sources(arg: str) -> list[str]:
     """Renvoie la liste des source ids à poller. `all` → liste depuis SOURCES_DIR."""
-    from common import SOURCES_DIR  # noqa: PLC0415
+    from common import SOURCES_DIR
 
     if arg == "all":
         if not SOURCES_DIR.exists():
@@ -208,7 +208,7 @@ def _notify_one(
     if sender.name == "slack":
         return sender.send(build_slack_blocks(msg))
     if sender.name == "email":
-        from notify.formatter import build_plain_text  # noqa: PLC0415
+        from notify.formatter import build_plain_text
 
         return sender.send(
             {
@@ -217,7 +217,7 @@ def _notify_one(
             },
         )
     if sender.name == "matrix":
-        from notify.formatter import build_matrix_message  # noqa: PLC0415
+        from notify.formatter import build_matrix_message
 
         return sender.send(build_matrix_message(msg))
     # Canal inconnu : on log mais on ne crashe pas.
@@ -376,7 +376,7 @@ def _build_sender(channel: str) -> NotificationSender | None:
         url = os.environ.get("RECO_SLACK_WEBHOOK", "")
         return SlackWebhookSender(url)
     if channel == "email":
-        from notify.email import SmtpConfig, SmtpSender  # noqa: PLC0415
+        from notify.email import SmtpConfig, SmtpSender
 
         config = SmtpConfig(
             host=os.environ.get("SMTP_HOST", ""),
@@ -391,7 +391,7 @@ def _build_sender(channel: str) -> NotificationSender | None:
             raise ValueError("SMTP_HOST manquant pour le canal email.")
         return SmtpSender(config)
     if channel == "matrix":
-        from notify.matrix import MatrixSender  # noqa: PLC0415
+        from notify.matrix import MatrixSender
 
         hs = os.environ.get("RECO_MATRIX_HOMESERVER", "")
         token = os.environ.get("RECO_MATRIX_TOKEN", "")

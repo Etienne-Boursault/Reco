@@ -5,11 +5,11 @@ Le CLI consomme ``REPORTERS`` sans connaître les implémentations.
 """
 from __future__ import annotations
 
-from typing import Mapping
+from collections.abc import Mapping
 
 from tools.eval.types import EvalReporter
 
-__all__ = ["EvalReporter", "REPORTERS", "register_reporter"]
+__all__ = ["REPORTERS", "EvalReporter", "register_reporter"]
 
 
 REPORTERS: dict[str, type] = {}

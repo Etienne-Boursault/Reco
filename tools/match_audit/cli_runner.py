@@ -6,38 +6,39 @@ autour de ces fonctions (CR archi #15).
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable, Literal, Mapping
-
-import common  # type: ignore[attr-defined]
+from typing import Any, Literal
 
 from tools.match_audit.audit_trail import (
     JsonlAuditTrail,
     NoopAuditTrail,
 )
-from tools.match_audit.protocols import AuditTrail  # Protocol
 from tools.match_audit.duration_check import DurationCheck
 from tools.match_audit.flag_writer import (
     clear_match_suspect_flag,
     set_match_suspect_flag,
 )
 from tools.match_audit.intro_text_similarity import IntroTextSimilarityCheck
-from tools.match_audit.protocols import TranscriptKind, TranscriptRepo
+from tools.match_audit.protocols import (
+    AuditTrail,  # Protocol
+    TranscriptKind,
+    TranscriptRepo,
+)
 from tools.match_audit.service import (
     MatchAuditService,
     SourceAuditReport,
 )
 from tools.match_audit.settings import MatchAuditSettings
 from tools.match_audit.sidecar import (
-    delete_sidecar,
-    list_sidecars,
-    sidecar_path,
     write_sidecar,
 )
 from tools.match_audit.title_similarity import TitleSimilarityCheck
 from tools.match_audit.types import severity_value
+
+import common  # type: ignore[attr-defined]
 
 LOG_FORMATS = ("text", "json")
 OUTPUT_FORMATS = ("json", "markdown", "human")
@@ -315,7 +316,7 @@ def emit_jsonl_events(report: SourceAuditReport, *, sink: Any) -> None:
 
 
 def _utcnow_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace(
         "+00:00", "Z",
     )
 
@@ -509,10 +510,10 @@ def undo_last_apply(
 
 
 __all__ = [
-    "FileTranscriptRepo",
     "LOG_FORMATS",
     "MODES",
     "OUTPUT_FORMATS",
+    "FileTranscriptRepo",
     "RunOptions",
     "RunResult",
     "default_service",

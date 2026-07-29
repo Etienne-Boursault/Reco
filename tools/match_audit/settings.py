@@ -8,8 +8,9 @@ bloquer l'agent P1.1).
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Mapping
+from typing import Any
 
 from audit_core.settings import from_source_extra as _from_source_extra
 
@@ -51,7 +52,7 @@ class MatchAuditSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "MatchAuditSettings":
+    ) -> MatchAuditSettings:
         """Construit un settings depuis ``SourceConfig.extra["match_audit"]``.
 
         Délègue à ``audit_core.settings.from_source_extra`` (SSOT — ADR 0019).

@@ -25,16 +25,23 @@ import logging
 import re
 import sys
 from collections import Counter
+from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import date as date_cls, datetime
+from datetime import date as date_cls
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from audit_core.cli_runner import utcnow_iso  # noqa: E402,F401 — utilisé pour cohérence ; importé via audit_core
-from common import OUTPUT_DIR, atomic_write_text  # noqa: E402
-from review_lock import ServerLockBusy, acquire_pipeline_lock  # type: ignore  # noqa: E402
+from audit_core.cli_runner import (
+    utcnow_iso,  # noqa: F401 — utilisé pour cohérence ; importé via audit_core
+)
+from common import OUTPUT_DIR, atomic_write_text
+from review_lock import (  # type: ignore
+    ServerLockBusy,
+    acquire_pipeline_lock,
+)
 
 CLICKS_DIR: Path = OUTPUT_DIR / "clicks"
 

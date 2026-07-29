@@ -25,10 +25,11 @@ import os
 import sqlite3
 import subprocess
 import time
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Final, Iterable
+from typing import Any, Final
 
 from cache.schema import (
     CACHE_SCHEMA_VERSION,
@@ -152,6 +153,7 @@ def _try_git_sha() -> str | None:
             text=True,
             timeout=2,
             cwd=Path(__file__).resolve().parent,
+            check=False,
         )
     except (OSError, subprocess.SubprocessError):
         return None
@@ -203,13 +205,13 @@ class CacheBuilder:
             try:
                 self._log(msg, *args)
                 return
-            except Exception:  # pragma: no cover - safety
-                pass
+            except Exception:  # noqa: BLE001, S110 — un logger défaillant
+                pass  # ne doit pas faire échouer un build ; on retombe sur stderr.
         # Fallback discret : stderr.
         try:
             print(msg % args if args else msg)
-        except Exception:  # pragma: no cover
-            pass
+        except Exception:  # noqa: BLE001, S110 — dernier recours : si même
+            pass  # stderr est indisponible, il n'y a plus rien à tenter.
 
     # ----- Connexion utilitaire (FK + pragmas perf) -----
 
@@ -592,7 +594,7 @@ class CacheBuilder:
     def _write_meta(
         self, conn: sqlite3.Connection, *, source_id: str | None
     ) -> None:
-        now_iso = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        now_iso = datetime.now(UTC).isoformat(timespec="seconds")
         built_for = (
             json.dumps(["*"]) if source_id is None else json.dumps([source_id])
         )

@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.config.loader import ConfigLoadError
 from tools.config.registry import (
     SourceRegistry,
@@ -195,7 +194,8 @@ def test_concurrent_get_source_no_race(reg: SourceRegistry):
     def worker():
         try:
             results.append(reg.get_source("alpha"))
-        except Exception as exc:  # pragma: no cover — pas attendu
+        except Exception as exc:  # noqa: BLE001 — collecté pour l'assertion
+            # « aucune erreur » ci-dessous ; un type précis masquerait le reste.
             errors.append(exc)
 
     threads = [threading.Thread(target=worker) for _ in range(50)]

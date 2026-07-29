@@ -11,9 +11,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable, Mapping
 
 __all__ = [
     "ExpectedReco",
@@ -50,7 +50,7 @@ class ExpectedReco:
     @classmethod
     def from_dict(
         cls, data: Mapping[str, object], *, context: str = "",
-    ) -> "ExpectedReco":
+    ) -> ExpectedReco:
         """Construit un ``ExpectedReco`` depuis un mapping JSON.
 
         ``context`` est ajouté aux messages d'erreur (ex : ``"ep001.json [3]"``).
@@ -95,7 +95,7 @@ class GoldenEpisode:
     @classmethod
     def from_dict(
         cls, data: Mapping[str, object], *, context: str = "",
-    ) -> "GoldenEpisode":
+    ) -> GoldenEpisode:
         prefix = f"{context}: " if context else ""
         guid = data.get("episode_guid")
         sid = data.get("source_id")
@@ -139,7 +139,7 @@ class GoldenSet:
                 return ep
         return None
 
-    def by_source(self, source_id: str) -> "GoldenSet":
+    def by_source(self, source_id: str) -> GoldenSet:
         """Filtre les épisodes par ``source_id``."""
         return GoldenSet(episodes=tuple(
             e for e in self.episodes if e.source_id == source_id

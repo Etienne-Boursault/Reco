@@ -17,7 +17,9 @@ import logging
 import threading
 from pathlib import Path
 
-from tools.config import loader as _loader  # accès aux attrs (DEFAULT_SOURCES_DIR re-lu à chaque init)
+from tools.config import (
+    loader as _loader,  # accès aux attrs (DEFAULT_SOURCES_DIR re-lu à chaque init)
+)
 from tools.config.loader import (
     ConfigLoadError,
     load_source_config,
@@ -125,7 +127,7 @@ def get_registry(sources_dir: Path | None = None) -> SourceRegistry:
     """
     if sources_dir is not None:
         return SourceRegistry(sources_dir=sources_dir)
-    global _default_registry
+    global _default_registry  # noqa: PLW0603 — singleton de process, remplacé en test
     if _default_registry is None:
         with _default_lock:
             if _default_registry is None:  # double-checked locking
@@ -165,6 +167,6 @@ def clear_default_registry_cache() -> None:
     ``DEFAULT_SOURCES_DIR`` soit ré-évalué — utile dans les tests qui
     monkeypatchent le chemin par défaut entre deux assertions.
     """
-    global _default_registry
+    global _default_registry  # noqa: PLW0603 — singleton de process, remplacé en test
     with _default_lock:
         _default_registry = None

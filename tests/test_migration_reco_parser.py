@@ -15,7 +15,6 @@ from domain.mention import (
 from domain.services.identity import canonical_key
 from repository.migration.reco_parser import reco_dict_to_item_mention
 
-
 # ---------------------------------------------------------------------------
 # Resolvers de test
 # ---------------------------------------------------------------------------

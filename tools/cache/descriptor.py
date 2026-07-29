@@ -12,9 +12,10 @@ Voir ADR 0026 pour la roadmap : adoption incrémentale entité par entité.
 """
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from sqlite3 import Row
-from typing import Any, Callable
+from typing import Any
 
 
 @dataclass(frozen=True, slots=True)

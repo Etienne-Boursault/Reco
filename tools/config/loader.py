@@ -16,7 +16,7 @@ from pathlib import Path
 
 from tools.config.schema import SourceConfig
 
-__all__ = ["ConfigLoadError", "DEFAULT_SOURCES_DIR", "load_source_config"]
+__all__ = ["DEFAULT_SOURCES_DIR", "ConfigLoadError", "load_source_config"]
 
 # Dossier par défaut — SSOT partagée avec Astro (collection `sources`).
 # On résout depuis ``common.PROJECT_ROOT`` pour ne pas dupliquer la traversée
@@ -25,7 +25,7 @@ def _default_sources_dir() -> Path:
     # Import paresseux : ``common`` importe potentiellement d'autres modules
     # (logging setup). On le tape uniquement au premier accès.
     try:
-        from tools.common import PROJECT_ROOT  # noqa: PLC0415
+        from tools.common import PROJECT_ROOT
     except ImportError:  # pragma: no cover — fallback si common indisponible
         return Path(__file__).resolve().parent.parent.parent / "src" / "content" / "sources"
     return PROJECT_ROOT / "src" / "content" / "sources"

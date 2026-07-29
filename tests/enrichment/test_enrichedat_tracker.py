@@ -1,14 +1,11 @@
 """Tests de `enrichment.tracker`."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
-
-import pytest
+from datetime import UTC, datetime, timedelta
 
 from enrichment.tracker import EnrichedAtTracker, now_iso, stale_fields
 
-
-NOW = datetime(2026, 6, 10, 12, 0, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 6, 10, 12, 0, 0, tzinfo=UTC)
 
 
 def make(item_enrichedat: dict | None) -> dict:

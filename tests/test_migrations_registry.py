@@ -22,7 +22,6 @@ from migrations.registry import (
     list_known_entities,
 )
 
-
 # ---------------------------------------------------------------------------
 # Listing
 # ---------------------------------------------------------------------------
@@ -109,15 +108,15 @@ def fake_entity_pkg(tmp_path, monkeypatch):
     Refactor du pattern manuel précédent (try/finally implicite via yield).
     Vide aussi le cache LRU du registry pour éviter la pollution croisée.
     """
+    import importlib
     import sys
     import types
-    import importlib
 
     from migrations import registry as reg_mod
 
     created: list[str] = []
 
-    def _make(entity: str) -> tuple[types.ModuleType, "object"]:
+    def _make(entity: str) -> tuple[types.ModuleType, object]:
         # Vide le cache pour la nouvelle entité — sinon l'auto-discovery
         # renverrait un résultat caché d'un test précédent.
         reg_mod._discover_all_migrations.cache_clear()

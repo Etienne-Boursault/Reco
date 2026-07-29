@@ -92,7 +92,7 @@ class EmbeddingsSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "EmbeddingsSettings":
+    ) -> EmbeddingsSettings:
         """Construit depuis ``SourceConfig.extra["embeddings"]``.
 
         Délègue à ``audit_core.settings.from_source_extra`` (SSOT — ADR 0019).

@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.init.slugify import SLUG_MAX_LEN, is_valid_slug, slugify
 
 

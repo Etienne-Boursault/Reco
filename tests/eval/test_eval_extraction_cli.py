@@ -5,9 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools import eval_extraction
-
 
 FIXTURES = Path(__file__).parent / "golden_set"
 

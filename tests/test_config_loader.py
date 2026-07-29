@@ -6,14 +6,12 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.config.loader import (
-    ConfigLoadError,
     DEFAULT_SOURCES_DIR,
+    ConfigLoadError,
     load_source_config,
 )
 from tools.config.schema import SourceConfig
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -95,7 +93,7 @@ def test_load_invalid_json_raises_clear_error(sources_dir: Path):
 def test_load_missing_required_field_raises(sources_dir: Path):
     """Schéma incomplet → erreur explicite."""
     _write(sources_dir / "demo.json", {"id": "demo"})  # title manquant
-    with pytest.raises(ConfigLoadError, match="title|reco_prefix|hosts"):
+    with pytest.raises(ConfigLoadError, match=r"title|reco_prefix|hosts"):
         load_source_config("demo", sources_dir=sources_dir)
 
 
@@ -140,7 +138,7 @@ def test_path_resolution_via_sources_dir(sources_dir: Path):
 def test_id_mismatch_between_filename_and_payload(sources_dir: Path):
     """Mismatch filename/id payload → erreur claire."""
     _write(sources_dir / "demo.json", _valid_payload(id="other"))
-    with pytest.raises(ConfigLoadError, match="mismatch|id"):
+    with pytest.raises(ConfigLoadError, match=r"mismatch|id"):
         load_source_config("demo", sources_dir=sources_dir)
 
 

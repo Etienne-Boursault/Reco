@@ -19,8 +19,8 @@ from embeddings.recommend import Recommendation, SimilarityRecommender
 
 # Re-exports pour les consommateurs (un seul import depuis search).
 __all__ = [
-    "DEFAULT_TOP_K",
     "DEFAULT_DEDUP_THRESHOLD",
+    "DEFAULT_TOP_K",
     "DedupPair",
     "Recommendation",
     "SemanticHit",

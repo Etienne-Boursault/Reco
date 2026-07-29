@@ -34,11 +34,10 @@ from __future__ import annotations
 import json
 import logging
 import shutil
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from audit_core.sidecar import _safe_segment  # SSOT — cf. ADR 0019
-
 from common import OUTPUT_DIR, atomic_write_text  # type: ignore[attr-defined]
 
 from .service import AuditResult
@@ -78,7 +77,7 @@ def archive_dir(
 ) -> Path:
     """Calcule le dossier d'archive d'une source pour un timestamp donné."""
     _safe_segment("source_id", source_id)
-    ts = timestamp or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    ts = timestamp or datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     root = base_dir if base_dir is not None else ENRICH_AUDIT_DIR
     return root / ARCHIVE_DIR_NAME / source_id / ts
 
@@ -139,7 +138,7 @@ def write_sidecar(
     """
     path = sidecar_path(source_id, result.item_id, base_dir=base_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
-    ts = audited_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ts = audited_at or datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     payload: dict = {
         "schemaVersion": SIDECAR_SCHEMA_VERSION,
         "auditorVersion": AUDITOR_VERSION,
@@ -175,7 +174,7 @@ def read_sidecar(
         return None
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as exc:  # noqa: BLE001
+    except (OSError, ValueError) as exc:
         _log.warning("Sidecar illisible %s : %s", path, exc)
         return None
     if not isinstance(raw, dict):
@@ -254,7 +253,7 @@ def clear_source(
             try:
                 shutil.move(str(p), str(archive_root / p.name))
                 count += 1
-            except OSError as exc:  # noqa: BLE001  # pragma: no cover
+            except OSError as exc:  # pragma: no cover
                 _log.warning("Archive échouée %s → %s : %s", p, archive_root, exc)
         return count
 
@@ -317,7 +316,7 @@ def restore_archive(
         try:
             shutil.move(str(p), str(target_root / p.name))
             count += 1
-        except OSError as exc:  # noqa: BLE001  # pragma: no cover
+        except OSError as exc:  # pragma: no cover
             _log.warning("Restore archive échouée %s : %s", p, exc)
     # Si le dossier d'archive est vide, on peut le supprimer.
     try:

@@ -40,7 +40,6 @@ from domain.mention import (
 )
 from domain.services.identity import canonical_key
 
-
 # ---------------------------------------------------------------------------
 # Mapping des types legacy
 # ---------------------------------------------------------------------------
@@ -87,6 +86,7 @@ def _parse_types(raw: object) -> tuple[ItemType, ...]:
 # ---------------------------------------------------------------------------
 
 import re as _re_ts  # local alias pour ne pas masquer l'import top
+
 _MMSS_PATTERN = _re_ts.compile(r"^\d{1,2}:\d{2}$")
 _HHMMSS_PATTERN = _re_ts.compile(r"^\d{2}:\d{2}:\d{2}$")
 
@@ -505,4 +505,4 @@ def reco_dict_to_item_mention(
     return item, mention
 
 
-__all__ = ["reco_dict_to_item_mention", "ItemIdResolver"]
+__all__ = ["ItemIdResolver", "reco_dict_to_item_mention"]

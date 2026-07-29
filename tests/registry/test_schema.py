@@ -14,7 +14,6 @@ from meta.validator import (
     validate_registry,
 )
 
-
 VALID_DOC: dict = {
     "schemaVersion": 1,
     "siteUrl": "https://un-bon-moment.example.com",

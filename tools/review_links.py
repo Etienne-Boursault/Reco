@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import re
 import urllib.parse
-from typing import Callable
+from collections.abc import Callable
 from urllib.parse import urlparse
 
 # Plateformes auto-générées par type — miroir de `linksFor*` de merchants.ts.

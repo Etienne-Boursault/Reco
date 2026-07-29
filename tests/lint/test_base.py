@@ -1,10 +1,11 @@
 """Tests des types de base du linter (Severity, LintIssue, LintContext)."""
 from __future__ import annotations
 
+import dataclasses
+
 import pytest
 
 from lint.rules.base import LintContext, LintIssue, LintRule, Severity
-
 
 # ---------------------------------------------------------------------------
 # Severity
@@ -57,7 +58,7 @@ def test_lint_issue_is_frozen():
         rule="r", severity=Severity.INFO, entity_type="reco",
         entity_id="x", field=None, message="m",
     )
-    with pytest.raises(Exception):
+    with pytest.raises(dataclasses.FrozenInstanceError):
         issue.message = "other"  # type: ignore[misc]
 
 

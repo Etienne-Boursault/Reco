@@ -120,7 +120,7 @@ def _ts_to_seconds(ts: str | None) -> int | None:
     #22 — Réexport pour rétro-compat ; implémentation unique dans
     `review_render_common._ts_seconds`.
     """
-    from review_render_common import _ts_seconds as _impl  # noqa: PLC0415
+    from review_render_common import _ts_seconds as _impl
     return _impl(ts)
 
 

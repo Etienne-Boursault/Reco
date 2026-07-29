@@ -22,16 +22,17 @@ import argparse
 import getpass
 import json
 import sys
-from datetime import datetime, timezone
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 # Le script vit dans tools/ ; les imports `common` / `review_lock` reposent
 # sur le sys.path tools/ (cf. autres scripts du dossier).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common import OUTPUT_DIR, atomic_write_text, log  # noqa: E402
-from review_lock import acquire_pipeline_lock  # noqa: E402
+from common import OUTPUT_DIR, atomic_write_text, log
+from review_lock import acquire_pipeline_lock
 
 REPORTS_DIR: Path = OUTPUT_DIR / "reports"
 
@@ -130,7 +131,7 @@ def _mutate(
         log.info("Report %s déjà %s, rien à faire.", report_id, new_status)
         return 0
     report["status"] = new_status
-    report["resolvedAt"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    report["resolvedAt"] = datetime.now(UTC).isoformat(timespec="seconds")
     try:
         report["resolvedBy"] = getpass.getuser()
     except OSError:  # pragma: no cover — Windows edge case rare
@@ -148,7 +149,7 @@ def _export(source_id: str | None, output: Path) -> int:
         (p, _read_report(p)) for p in _iter_report_paths(source_id)
     ) if r]
     payload = {
-        "exportedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "exportedAt": datetime.now(UTC).isoformat(timespec="seconds"),
         "sourceFilter": source_id or "all",
         "count": len(reports),
         "reports": reports,

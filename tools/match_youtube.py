@@ -22,6 +22,20 @@ import argparse
 import re
 from difflib import SequenceMatcher
 
+# isort: off
+#
+# L'ORDRE DE CES DEUX IMPORTS EST PORTEUR — ne pas les laisser trier.
+#
+# `from common import …` doit venir EN PREMIER : son import déclenche le
+# bootstrap C1 (ajout de la racine du dépôt à `sys.path`), sans lequel le
+# paquet `tools.` n'est pas résolvable quand le script est lancé en standalone
+# (`python tools/match_youtube.py`). Le `# isort: off` est indispensable :
+# l'ordre alphabétique place `tools` avant `common`, et ruff a effectivement
+# fait la permutation le 2026-07-29 — le script ne démarrait plus
+# (`ModuleNotFoundError: No module named 'tools'`), ce qu'a attrapé
+# `tests/test_script_invocation.py`. Le commentaire d'origine disait
+# « ci-dessus » et s'est retrouvé déplacé avec l'import : il décrivait alors
+# l'inverse de ce que faisait le code.
 from common import (
     extract_youtube_id,
     list_episode_files,
@@ -31,9 +45,8 @@ from common import (
     read_json,
     write_json_if_changed,
 )
-# `from common import …` ci-dessus déclenche le bootstrap C1 (racine du repo
-# sur sys.path), donc cet import package fonctionne aussi en standalone.
 from tools.config.registry import get_source
+# isort: on
 
 # Suffixe (legacy hardcodé) : « (Un Bon Moment, …) » / « (A Good Time, …) ».
 # Conservé pour le fallback quand aucune config n'expose
@@ -95,7 +108,7 @@ def _similarity(a: str, b: str) -> float:
 
 def _fetch_channel_videos(channel_url: str) -> list[dict[str, str]]:
     """Liste (id, title) des vidéos de la chaîne via yt-dlp (flat, sans DL)."""
-    import yt_dlp  # noqa: PLC0415 — import paresseux.
+    import yt_dlp
 
     videos_url = channel_url.rstrip("/")
     if not videos_url.endswith("/videos"):
@@ -205,7 +218,7 @@ def match_youtube(source_id: str, threshold: float, force: bool, dry_run: bool) 
         cfg = get_source(source_id)
         channel = cfg.youtube_channel_url
         suffix_patterns = cfg.youtube_title_suffix_patterns or _LEGACY_SUFFIX_PATTERNS
-    except Exception:  # pragma: no cover — fallback legacy
+    except Exception:  # noqa: BLE001 — repli legacy volontaire (cf. ci-dessus)
         source = load_source(source_id)
         channel = source.get("youtubeChannel")
         suffix_patterns = _LEGACY_SUFFIX_PATTERNS

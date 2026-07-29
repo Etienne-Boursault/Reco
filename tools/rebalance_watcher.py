@@ -65,7 +65,8 @@ def transcripts_dir_for(source_id: str) -> Path:
 def laptop_transcripts() -> set[str] | None:
     """Liste les .txt servis par le portable (None si injoignable)."""
     try:
-        with urllib.request.urlopen(LAPTOP_URL + "/", timeout=10) as r:
+        # S310 : `LAPTOP_URL` est une constante http:// du réseau local.
+        with urllib.request.urlopen(LAPTOP_URL + "/", timeout=10) as r:  # noqa: S310
             html = r.read().decode("utf-8", errors="ignore")
         return set(re.findall(r'href="([^"]+\.txt)"', html))
     except urllib.error.URLError:
@@ -81,7 +82,8 @@ def pull_missing(remote_files: set[str], transcripts_dir: Path) -> int:
         if target.exists():
             continue
         try:
-            with urllib.request.urlopen(LAPTOP_URL + "/" + fname, timeout=30) as r:
+            with urllib.request.urlopen(  # noqa: S310 — même constante locale
+                    LAPTOP_URL + "/" + fname, timeout=30) as r:
                 target.write_bytes(r.read())
             new += 1
         except urllib.error.URLError as e:
@@ -103,7 +105,7 @@ def _ssh(cmd: str, timeout: int = 30) -> subprocess.CompletedProcess:
     """Exécute une commande sur le portable via SSH."""
     return subprocess.run(
         ["ssh", *SSH_OPTS, SSH_HOST, cmd],
-        capture_output=True, text=True, timeout=timeout,
+        capture_output=True, text=True, timeout=timeout, check=False,
     )
 
 
@@ -131,7 +133,7 @@ def rebalance(source_id: str) -> int:
     pending = main_remaining_guids(source_id)
     if not pending:
         return 0
-    n = max(1, int(round(len(pending) * HANDOVER_RATIO)))
+    n = max(1, round(len(pending) * HANDOVER_RATIO))
     handover = pending[-n:]  # la fin = ce que main n'a pas encore commencé
     (DISPATCH / "laptop_guids.txt").write_text(
         "\n".join(handover) + "\n", encoding="utf-8", newline="\n",

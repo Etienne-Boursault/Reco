@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from domain.item import ExternalIds, Item, ItemType
-
 from lint.rules.base import LintContext, Severity
 from lint.rules.suspicious_titles import SuspiciousTitlesRule
 from lint.settings import LintSettings

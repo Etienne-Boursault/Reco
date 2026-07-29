@@ -11,8 +11,7 @@ pour être abstraite ici) mais peuvent hériter par composition.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
-from pathlib import Path
+from datetime import UTC, datetime
 from typing import Generic, Literal, TypeVar
 
 Ctx = TypeVar("Ctx")
@@ -28,7 +27,7 @@ def utcnow_iso() -> str:
     Helper centralisé pour ne plus dupliquer ``datetime.now(timezone.utc)``
     dans chaque cli_runner.
     """
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace(
         "+00:00", "Z",
     )
 

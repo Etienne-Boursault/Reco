@@ -16,9 +16,10 @@ Toutes les valeurs ont un défaut raisonnable : un fork minimal n'a rien
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import date
-from typing import Any, Mapping
+from typing import Any
 
 from audit_core.settings import from_source_extra as _from_source_extra
 
@@ -92,7 +93,7 @@ class LintSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "LintSettings":
+    ) -> LintSettings:
         """Construit depuis ``SourceConfig.extra["lint"]``.
 
         Délègue à ``audit_core.settings.from_source_extra`` (SSOT — ADR 0019).
@@ -120,11 +121,11 @@ class LintSettings:
 
 
 __all__ = [
-    "DEFAULT_YEAR_MIN",
-    "DEFAULT_YEAR_MAX",
-    "DEFAULT_TITLE_MIN_LEN",
-    "DEFAULT_TITLE_MAX_LEN",
     "DEFAULT_TITLE_CAPS_THRESHOLD",
+    "DEFAULT_TITLE_MAX_LEN",
+    "DEFAULT_TITLE_MIN_LEN",
     "DEFAULT_TITLE_SUSPICIOUS_PATTERNS",
+    "DEFAULT_YEAR_MAX",
+    "DEFAULT_YEAR_MIN",
     "LintSettings",
 ]

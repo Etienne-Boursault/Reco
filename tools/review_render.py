@@ -12,24 +12,27 @@ from __future__ import annotations
 import html
 import urllib.parse
 
-from creator_flags import flag_badge_html
 from common import (
     list_episode_files,
     load_source,
     read_json,
     recos_dir_for,
 )
+from creator_flags import flag_badge_html
 from review_edit import is_reenrichable, render_edit_form, render_type_badges
-from review_guests import (
-    collect_guests as _collect_guests,
-    is_placeholder as _is_placeholder,
-    render_guests_panel as _render_guests_panel,
-    split_names as _split_names,
-)
+
+# Ré-exports pour la rétro-compat des tests : le `noqa` est posé LIGNE PAR
+# LIGNE, pas sur le bloc — isort regroupe/sépare ces imports, et un `noqa` de
+# bloc se retrouve alors orphelin, laissant `ruff --fix` supprimer les noms
+# (constaté le 2026-07-29 : import de `review_server` cassé).
+from review_guests import collect_guests as _collect_guests
+from review_guests import is_placeholder as _is_placeholder  # noqa: F401
+from review_guests import render_guests_panel as _render_guests_panel  # noqa: F401
+from review_guests import split_names as _split_names
 
 # #11/#12 review — `_other_episode_recos_for_cluster` était importé dans
 # `_render_with_clusters` au runtime (hot path) ; on remonte l'import.
-from review_render_cluster import (
+from review_render_cluster import (  # noqa: F401 — ré-exports (cf. ci-dessous)
     _dedup_cluster_card,
     _other_episode_recos_for_cluster,
     render_merge_preview,
@@ -39,7 +42,12 @@ from review_render_cluster import (
 # #H — `_style` / `_shell` viennent de review_render_common (une seule source
 # de vérité). Les tests qui patchaient `review_render._CSS_PATH` doivent
 # patcher `review_render_common._CSS_PATH` (cf. note dans test_review_server).
-from review_render_common import (
+#
+# Les noms non utilisés ICI sont des RÉ-EXPORTS : `review_server` les réimporte
+# depuis ce module (`from review_render import _CLIENT_JS, ...`) pour la
+# rétro-compat des tests. Sans le `noqa`, `ruff --fix` les supprime et casse
+# l'import de `review_server` — c'est arrivé le 2026-07-29.
+from review_render_common import (  # noqa: F401 — ré-exports rétro-compat
     _CLIENT_JS,
     _CSS_PATH,
     _STOP,
@@ -326,8 +334,7 @@ def _dir_signature(directory) -> tuple[int, int]:
             st = p.stat()
         except OSError:
             continue
-        if st.st_mtime_ns > max_mtime:
-            max_mtime = st.st_mtime_ns
+        max_mtime = max(max_mtime, st.st_mtime_ns)
         count += 1
     return (max_mtime, count)
 
@@ -341,8 +348,8 @@ def _load_groups(source_id: str):
     handler_base (un fichier reco créé en arrière-plan par le pipeline
     pourrait sinon rester invisible).
     """
-    from common import episodes_dir_for  # noqa: PLC0415 — éviter cycles
-    from review_handler_base import _invalidate_reco_path_cache  # noqa: PLC0415
+    from common import episodes_dir_for
+    from review_handler_base import _invalidate_reco_path_cache
 
     recos_dir = recos_dir_for(source_id)
     episodes_dir = episodes_dir_for(source_id)
@@ -404,6 +411,6 @@ _PAGE_EXPORTS = frozenset({
 
 def __getattr__(name: str):
     if name in _PAGE_EXPORTS:
-        import review_render_page as _page  # noqa: PLC0415 — lazy, anti-cycle
+        import review_render_page as _page
         return getattr(_page, name)
     raise AttributeError(f"module 'review_render' has no attribute {name!r}")

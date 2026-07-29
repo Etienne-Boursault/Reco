@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import json
 import sys
-from collections.abc import Iterable
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
@@ -123,7 +122,11 @@ class JsonDatasetLoader:
         mentions = tuple(mentions_repo.iter_all())
         try:
             cfg = self._registry_get(source_id)
-        except Exception:
+        except Exception:  # noqa: BLE001 — voir note ci-dessous
+            # Le lint doit tourner même sans config source valide. `get_source`
+            # ne lève que `ConfigLoadError` : resserrer dessus laisserait
+            # remonter une erreur de programmation au lieu de la masquer, mais
+            # ce serait un changement de comportement — à trancher séparément.
             cfg = None
         ctx = LintContext(
             source_id=source_id,

@@ -6,7 +6,6 @@ import io
 from pathlib import Path
 
 import pytest
-
 from tools.eval.metrics import EvalResult, MatchVerdict
 from tools.eval.reporters.csv_reporter import render_csv, write_csv
 from tools.eval.reporters.markdown_reporter import render_markdown, write_markdown

@@ -25,7 +25,7 @@ class AuditTrail(Protocol):
 class NoopAuditTrail:
     """Implémentation no-op — utile pour les modes ``--check`` (dry-run)."""
 
-    def record(self, event: Mapping[str, Any]) -> None:  # noqa: D401, ARG002
+    def record(self, event: Mapping[str, Any]) -> None:
         return None
 
 

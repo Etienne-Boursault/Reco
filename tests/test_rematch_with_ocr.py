@@ -6,9 +6,7 @@ courte (<30 min).
 """
 from __future__ import annotations
 
-import pytest
-
-from rematch_with_ocr import _episode_is_extract, MIN_FULL_EPISODE_SECONDS
+from rematch_with_ocr import MIN_FULL_EPISODE_SECONDS, _episode_is_extract
 
 
 def test_extract_when_yt_short_audio_long():

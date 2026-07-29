@@ -8,9 +8,10 @@ import json
 import sys
 import types
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
+import requests
 import responses
 
 import transcribe as tr
@@ -48,11 +49,11 @@ def test_download_http_writes_file(tmp_path):
 @responses.activate
 def test_download_http_skip_if_cached(tmp_path):
     dest = tmp_path / "cached.mp3"
-    dest.write_bytes("déjà là".encode("utf-8"))
+    dest.write_bytes("déjà là".encode())
     # Pas de mock responses ajouté : si requests.get était appelé, ça lèverait.
     result = tr._download_http("https://example.com/x.mp3", dest)
     assert result == dest
-    assert dest.read_bytes() == "déjà là".encode("utf-8")
+    assert dest.read_bytes() == "déjà là".encode()
 
 
 @responses.activate
@@ -69,7 +70,7 @@ def test_download_http_redownloads_if_empty(tmp_path):
 def test_download_http_raises_on_http_error(tmp_path):
     url = "https://example.com/missing.mp3"
     responses.add(responses.GET, url, status=404)
-    with pytest.raises(Exception):
+    with pytest.raises(requests.HTTPError):
         tr._download_http(url, tmp_path / "x.mp3")
 
 

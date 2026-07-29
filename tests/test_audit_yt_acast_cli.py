@@ -42,6 +42,7 @@ def _epdir(tmp_path, monkeypatch):
     (tmp_path / "tools_output").mkdir(exist_ok=True)
     # Réimporte le module sidecar pour qu'il prenne en compte OUTPUT_DIR
     from importlib import reload
+
     from tools.match_audit import sidecar as sc_mod
     reload(sc_mod)
     yield base / "demo-source"
@@ -161,6 +162,7 @@ def test_cli_undo_last_after_apply(tmp_path, monkeypatch):
     monkeypatch.setattr(common, "OUTPUT_DIR", tmp_path / "out")
     # Reload sidecar pour prendre OUTPUT_DIR
     from importlib import reload
+
     from tools.match_audit import sidecar as sc_mod
     reload(sc_mod)
     from tools.match_audit import cli_runner as cli_mod

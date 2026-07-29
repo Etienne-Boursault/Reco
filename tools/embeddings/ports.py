@@ -7,7 +7,8 @@ sentence-transformers / fastembed.
 """
 from __future__ import annotations
 
-from typing import Iterator, Protocol, Sequence, runtime_checkable
+from collections.abc import Iterator, Sequence
+from typing import Protocol, runtime_checkable
 
 import numpy as np
 
@@ -54,13 +55,13 @@ class EmbeddingStorePort(Protocol):
         embedded_at: str,
     ) -> None: ...
 
-    def get(self, source_id: str, item_id: str) -> "StoredEmbedding | None": ...
+    def get(self, source_id: str, item_id: str) -> StoredEmbedding | None: ...
 
     def get_source_hash(self, source_id: str, item_id: str) -> str | None: ...
 
     def iter_source(
         self, source_id: str, *, model: str | None = None
-    ) -> Iterator["StoredEmbedding"]: ...
+    ) -> Iterator[StoredEmbedding]: ...
 
     def count(self, source_id: str | None = None) -> int: ...
 

@@ -25,19 +25,25 @@ from typing import Any
 
 # Imports relatifs au répertoire tools/.
 sys.path.insert(0, str(Path(__file__).parent))
-from common import (  # noqa: E402
-    log, load_source, read_json, transcript_path_for, make_anthropic_client,
+from common import (
+    load_source,
+    log,
+    make_anthropic_client,
     make_openai_client,
+    transcript_path_for,
 )
-from extract_recos import (  # noqa: E402
+from extract_recos import (
     MODEL as DEFAULT_ANTHROPIC_MODEL,
+)
+from extract_recos import (
     OPENAI_MODEL as DEFAULT_OPENAI_MODEL,
+)
+from extract_recos import (
     _call_llm,
     _chunk_transcript,
-    _normalize_reco,
     _dedupe,
+    _normalize_reco,
 )
-
 
 SOURCE_DIR = Path(__file__).parent
 CMP_DIR = SOURCE_DIR / "output" / "whisper-cmp"

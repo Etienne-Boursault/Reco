@@ -9,9 +9,17 @@ import pytest
 
 import reco_dedup as rd
 from reco_dedup import (
-    Cluster, cluster_recos, merge_cluster, pick_canonical, restore_last_backup,
-    _can_match, _is_active, _kind_of, _title_similarity, _ts_to_seconds,
+    Cluster,
+    _can_match,
+    _is_active,
+    _kind_of,
+    _title_similarity,
+    _ts_to_seconds,
     _union_list_of_dicts_by_key,
+    cluster_recos,
+    merge_cluster,
+    pick_canonical,
+    restore_last_backup,
 )
 
 

@@ -65,7 +65,7 @@ def _ep_header(
     # #23 + #39 : `youtubeDuration` peut être string → cast via _safe_int.
     # 0 (sentinel default) traité comme None : "?" affiché plutôt qu'un 0:00:00
     # trompeur quand le champ est absent.
-    from review_render_common import _safe_int  # noqa: PLC0415
+    from review_render_common import _safe_int
     ad_i: int | None = _safe_int(ep.get("audioDuration"), 0) or None
     vd_i: int | None = _safe_int(ep.get("youtubeDuration"), 0) or None
     dur = ""
@@ -82,7 +82,7 @@ def _ep_header(
     next_a = _ep_nav_link("next", next_guid)
     # Vidéo YT existante mais non intégrable → bouton « ↗ Regarder sur YouTube »
     # (le lecteur en page est l'audio Acast). Retour utilisateur 2026-07-25.
-    from review_render_common import _yt_watch_link  # noqa: PLC0415
+    from review_render_common import _yt_watch_link
     watch = _yt_watch_link(ep)
     watch_html = f" {watch}" if watch else ""
     return (f'<div class="eph-row">{prev_a}'
@@ -134,7 +134,7 @@ def _render_index(source_id: str) -> str:
     # chargée ci-dessus). Fusionner le comptage dans la boucle des miniatures
     # coûterait un couplage avec la logique de sectionnement de review_doubts
     # (importée en différé pour l'anti-cycle) : non rentable ici.
-    from review_doubts import count_doubts  # noqa: PLC0415
+    from review_doubts import count_doubts
     n_doubts = count_doubts(source_id)
     doubts_link = (f' · <a class="doubts-link" href="/doutes">🤖 Doutes '
                    f'agent : <b>{n_doubts}</b></a>' if n_doubts else "")
@@ -152,7 +152,7 @@ def _render_with_clusters(
     L3 — `parsed` (invités parsés du titre, calculé une fois par
     `_render_episode`) est propagé à chaque `_reco_card`.
     """
-    from reco_dedup import cluster_recos  # noqa: PLC0415
+    from reco_dedup import cluster_recos
     if edit_id:
         return "".join(
             _rr._reco_card(r, ep, hosts, source_id, edit_id, siblings=recs,
@@ -198,7 +198,7 @@ def _has_undoable_merge(source_id: str) -> bool:
     ajoute `st_size` (nombre d'entrées * taille) pour réduire encore
     les faux positifs sur les FS à granularité mtime grossière.
     """
-    from reco_dedup import BACKUP_DIR  # noqa: PLC0415
+    from reco_dedup import BACKUP_DIR
     if not BACKUP_DIR.exists():
         return False
     st = BACKUP_DIR.stat()
@@ -209,8 +209,9 @@ def _has_undoable_merge(source_id: str) -> bool:
 def _has_undoable_merge_cached(source_id: str, _mtime_ns: int,
                                _size: int) -> bool:
     """Lookup réel — clé inclut (mtime_ns, size) pour auto-invalidation."""
-    from reco_dedup import BACKUP_DIR  # noqa: PLC0415
-    import json as _json  # noqa: PLC0415
+    import json as _json
+
+    from reco_dedup import BACKUP_DIR
     for d in BACKUP_DIR.iterdir():
         if not d.is_dir():
             continue

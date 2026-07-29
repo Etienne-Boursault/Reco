@@ -43,7 +43,7 @@ def _format_issue(issue: LintIssue) -> str:
     )
 
 
-def render(report: "LintReport") -> str:
+def render(report: LintReport) -> str:
     """Rend un rapport en Markdown.
 
     Sections : Summary → par sévérité (Error, Warning, Info) →
@@ -97,8 +97,8 @@ class MarkdownReporter:
 
     format_id = "markdown"
 
-    def render(self, report: "LintReport") -> str:
+    def render(self, report: LintReport) -> str:
         return render(report)
 
 
-__all__ = ["render", "MarkdownReporter"]
+__all__ = ["MarkdownReporter", "render"]

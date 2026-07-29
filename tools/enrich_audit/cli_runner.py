@@ -14,9 +14,8 @@ ne pas casser les imports historiques.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
 
 from domain.item import Item
 
@@ -26,23 +25,14 @@ from .providers import make_cache_provider
 from .reporters import format_json, format_markdown, write_jsonl_log
 from .runtime_coherence_check import check_runtime_coherence
 from .service import (
-    AuditResult,
-    Check,
-    CheckFunction,
     EnrichAuditService,
     SourceAuditReport,
     TmdbDataProvider,
 )
 from .settings import EnrichAuditSettings
-from .thresholds import (
-    DEFAULT_FILM_MIN_RUNTIME,
-    DEFAULT_TITLE_THRESHOLD,
-    DEFAULT_YEAR_TOLERANCE,
-)
 from .title_similarity_check import check_title_similarity
 from .tmdb_type_mismatch_check import check_tmdb_type_mismatch
 from .year_mismatch_check import check_year_mismatch
-
 
 # ---------------------------------------------------------------------------
 # Default service factory — composition de tous les checks livrés.

@@ -138,8 +138,12 @@ def test_list_episode_files_returns_sorted(monkeypatch, tmp_path: Path):
 # ===== Chemins helpers ====================================================
 def test_path_helpers_compose_correctly():
     from common import (
-        episodes_dir_for, recos_dir_for, transcript_path_for,
-        EPISODES_DIR, RECOS_DIR, TRANSCRIPTS_DIR,
+        EPISODES_DIR,
+        RECOS_DIR,
+        TRANSCRIPTS_DIR,
+        episodes_dir_for,
+        recos_dir_for,
+        transcript_path_for,
     )
     assert episodes_dir_for("ubm") == EPISODES_DIR / "ubm"
     assert recos_dir_for("ubm") == RECOS_DIR / "ubm"
@@ -158,7 +162,9 @@ def test_transcript_path_slugifies_guid():
 
 # ===== get_logger =========================================================
 def test_get_logger_returns_same_logger_idempotent():
-    import common, logging
+    import logging
+
+    import common
     l1 = common.get_logger("reco-test-x")
     l2 = common.get_logger("reco-test-x")
     assert l1 is l2  # même instance, par nom
@@ -231,6 +237,7 @@ def test_episode_label(season, number, expected):
 # ===== download_youtube_thumbnail =========================================
 def test_download_youtube_thumbnail_maxres(monkeypatch):
     import requests
+
     from common import download_youtube_thumbnail
     calls = []
 
@@ -247,6 +254,7 @@ def test_download_youtube_thumbnail_maxres(monkeypatch):
 def test_download_youtube_thumbnail_falls_back_to_hq(monkeypatch):
     """maxres renvoie un placeholder (< 2000 o) → on tente hqdefault."""
     import requests
+
     from common import download_youtube_thumbnail
 
     def fake_get(url, timeout=None):
@@ -261,6 +269,7 @@ def test_download_youtube_thumbnail_falls_back_to_hq(monkeypatch):
 def test_download_youtube_thumbnail_returns_none_on_errors(monkeypatch):
     """Toutes les requêtes lèvent → None (pas de miniature)."""
     import requests
+
     from common import download_youtube_thumbnail
 
     def boom(url, timeout=None):

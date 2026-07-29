@@ -168,6 +168,7 @@ def test_load_groups_invalidates_reco_path_cache_on_new_file(
     """Bonus : un nouveau fichier reco créé par le pipeline doit être
     découvert par `_reco_path` après le prochain `_load_groups`."""
     import os
+
     import review_handler_base as rhb
     src_id = _make_minimal_source(tmp_path, monkeypatch)
     review_render._clear_groups_cache()

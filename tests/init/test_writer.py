@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.init.writer import (
     DEFAULT_THEME_COLORS,
     ValidationError,
@@ -133,4 +132,4 @@ def test_zod_required_theme_colors_present() -> None:
     ans = _ok_answers()
     colors = build_source_config(ans)["theme"]["colors"]
     for key in ("bg", "surface", "text", "muted", "accent"):
-        assert key in colors and colors[key], f"theme.colors.{key} manquant ou vide"
+        assert colors.get(key), f"theme.colors.{key} manquant ou vide"

@@ -14,9 +14,10 @@
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Literal, Mapping, Protocol, runtime_checkable
+from typing import Any, Literal, Protocol, runtime_checkable
 
 from tools.match_audit.types import MatchSuspicion, Severity
 
@@ -47,7 +48,7 @@ class EpisodeView:
             raise ValueError("EpisodeView.guid doit être une str non vide")
 
     @classmethod
-    def from_dict(cls, ep: Mapping[str, Any]) -> "EpisodeView | None":
+    def from_dict(cls, ep: Mapping[str, Any]) -> EpisodeView | None:
         """Construit une vue depuis un dict JSON brut. ``None`` si guid absent."""
         guid = ep.get("guid")
         if not isinstance(guid, str) or not guid:

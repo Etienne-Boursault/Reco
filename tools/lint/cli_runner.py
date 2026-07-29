@@ -10,12 +10,11 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 from .loaders import DatasetLoader
 from .reporters import Reporter, get_reporter
 from .rules import default_rules
-from .rules.base import LintIssue, Severity
+from .rules.base import Severity
 from .service import LintReport, LintService
 from .settings import LintSettings
 
@@ -92,6 +91,6 @@ def run_lint(opts: LintRunOptions) -> LintRunResult:
 __all__ = [
     "LintRunOptions",
     "LintRunResult",
-    "run_lint",
     "_compute_exit_code",
+    "run_lint",
 ]

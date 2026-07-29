@@ -25,7 +25,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
-from typing import Sequence
+from collections.abc import Sequence
 
 # Bootstrap minimal pour l'exécution standalone (`python tools/audit_yt_acast.py`).
 # Pour pytest, `pyproject.toml` configure déjà `pythonpath = ["tools"]` ; le code
@@ -34,10 +34,7 @@ _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _PROJECT_ROOT not in sys.path:  # pragma: no cover — chemin script direct
     sys.path.insert(0, _PROJECT_ROOT)
 
-import common  # type: ignore[attr-defined]  # noqa: E402
-from review_lock import acquire_pipeline_lock  # type: ignore  # noqa: E402
-
-from tools.match_audit.cli_runner import (  # noqa: E402
+from tools.match_audit.cli_runner import (
     LOG_FORMATS,
     OUTPUT_FORMATS,
     RunOptions,
@@ -45,7 +42,10 @@ from tools.match_audit.cli_runner import (  # noqa: E402
     run_audit,
     undo_last_apply,
 )
-from tools.match_audit.settings import MatchAuditSettings  # noqa: E402
+from tools.match_audit.settings import MatchAuditSettings
+
+import common  # type: ignore[attr-defined]
+from review_lock import acquire_pipeline_lock  # type: ignore
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -116,7 +116,7 @@ def _settings_from_args(args: argparse.Namespace) -> MatchAuditSettings:
     # Best-effort : lit SourceConfig.extra["match_audit"] si dispo.
     extra: dict = {}
     try:
-        from tools.config.registry import get_source  # noqa: PLC0415
+        from tools.config.registry import get_source
         cfg = get_source(args.source)
         if cfg.extra:
             extra = dict(cfg.extra)

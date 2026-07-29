@@ -23,16 +23,19 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 # Le script vit dans tools/ ; on garantit l'import de `common`/`meta`.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common import OUTPUT_DIR, atomic_write_text, log  # noqa: E402
-from meta.aggregator import aggregate_entries  # noqa: E402
-from meta.fetcher import RegistryFetcher, load_registries_file  # noqa: E402
-from review_lock import ServerLockBusy, acquire_pipeline_lock  # type: ignore  # noqa: E402
+from common import OUTPUT_DIR, atomic_write_text, log
+from meta.aggregator import aggregate_entries
+from meta.fetcher import RegistryFetcher, load_registries_file
+from review_lock import (  # type: ignore
+    ServerLockBusy,
+    acquire_pipeline_lock,
+)
 
 DEFAULT_OUTPUT_DIR: Path = OUTPUT_DIR / "meta"
 DEFAULT_CACHE: Path = OUTPUT_DIR / "http_cache_meta.sqlite"
@@ -60,7 +63,7 @@ def _default_get():  # pragma: no cover — wraps optional deps
     cette factory est libre de retourner les bytes tels que reçus.
     """
     try:
-        from enrichment.http_cache import build_cached_session  # noqa: PLC0415
+        from enrichment.http_cache import build_cached_session
     # B-NIT-5 — ImportError est plus précis que RuntimeError pour signaler
     # un module manquant, et préserve le `from exc` pour le traceback.
     except ImportError as exc:
@@ -75,7 +78,7 @@ def _default_get():  # pragma: no cover — wraps optional deps
         # l'exception : `RegistryFetcher` la classe en `network:`.
         try:
             r = session.get(url, timeout=_HTTP_TIMEOUT)
-        except Exception:  # noqa: BLE001 — propagation contrôlée
+        except Exception:
             raise
         # B-MED-22 — si l'endpoint annonce un Content-Length > DEFAULT_MAX_BYTES,
         # on bail immédiatement sans matérialiser `r.text`.
@@ -171,7 +174,7 @@ def run(
             errors.append((r.source_url, r.error or "?"))
 
     index = aggregate_entries(items)
-    index["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    index["generatedAt"] = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     index["errors"] = [{"sourceUrl": u, "error": e} for u, e in errors]
 
     log.info(

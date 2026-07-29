@@ -61,7 +61,7 @@ def make_dispatch(source_id: str) -> tuple[int, int, int]:
     pending.sort(key=lambda e: e["date"] or "", reverse=True)
 
     total = len(pending)
-    laptop_n = int(round(total * LAPTOP_SHARE))
+    laptop_n = round(total * LAPTOP_SHARE)
     main_n = total - laptop_n
 
     # Pour équilibrer le ressenti, la main fait des épisodes RÉCENTS (que tu

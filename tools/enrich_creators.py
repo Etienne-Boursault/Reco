@@ -75,10 +75,11 @@ import re
 import sys
 import time
 from collections import Counter, defaultdict
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from pathlib import Path
-from typing import Any, Iterable, Sequence
+from typing import Any
 
 import requests
 from dotenv import load_dotenv
@@ -827,9 +828,9 @@ def format_report(report: Report) -> str:
                      f"{counts['empty']:6}  {top_txt}")
     lines += [
         "-" * 72,
-        f"Recos vues : {report.seen} · déjà pourvues : "
+        (f"Recos vues : {report.seen} · déjà pourvues : "
         f"{report.skipped[REASON_ALREADY_SET]} · nouvelles : {len(report.filled)} "
-        f"· écrites : {report.written}",
+        f"· écrites : {report.written}"),
         f"Taux de complétion du champ creator : {_completion_rate(report):.1f} %",
         f"À revoir à la main : {len(report.review)}",
     ]
@@ -1031,7 +1032,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     log.info("%s", format_report(report))
     if args.json_path:
-        import json as _json  # noqa: PLC0415 — sérialisation ponctuelle.
+        import json as _json
         atomic_write_text(Path(args.json_path),
                           _json.dumps(report_payload(report),
                                       ensure_ascii=False, indent=2) + "\n")

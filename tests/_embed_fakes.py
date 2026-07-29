@@ -6,7 +6,7 @@ shadowerait ``tools/embeddings/`` dans ``sys.path``.
 from __future__ import annotations
 
 import hashlib
-from typing import Sequence
+from collections.abc import Sequence
 
 import numpy as np
 

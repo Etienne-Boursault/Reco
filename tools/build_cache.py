@@ -15,8 +15,9 @@ from __future__ import annotations
 
 import argparse
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Final, Sequence
+from typing import Final
 
 # Le pyproject ajoute tools/ au pythonpath. Imports plats.
 from cache.cli_runner import BuildCacheRunOptions, run_build_cache
@@ -98,7 +99,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     except ServerLockBusy as e:
         log.error("review_server tient le verrou : %s", e)
         return 1
-    except Exception as e:  # pragma: no cover (catch-all CLI)
+    except Exception as e:  # noqa: BLE001 — catch-all CLI : tracé par
+        # `log.exception` ci-dessous, converti en code de sortie.
         log.exception("Build cache a échoué : %s", e)
         return 1
     return rc

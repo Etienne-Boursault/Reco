@@ -72,7 +72,7 @@ def flag_for(creator: str | None) -> dict | None:
 
 
 def _safe_http(url: str) -> bool:
-    return url.startswith("https://") or url.startswith("http://")
+    return url.startswith(("https://", "http://"))
 
 
 def flag_badge_html(creator: str | None) -> str:

@@ -123,8 +123,8 @@ def reco_prefix(source_id: str) -> str:
     # un cycle d'import.
     # (Racine du repo garantie sur sys.path par le bootstrap C1 en tête de
     # module → ces imports package fonctionnent aussi en standalone.)
-    from tools.config.loader import ConfigLoadError  # noqa: PLC0415
-    from tools.config.registry import get_source  # noqa: PLC0415
+    from tools.config.loader import ConfigLoadError
+    from tools.config.registry import get_source
     try:
         return get_source(source_id).reco_prefix
     except ConfigLoadError as exc:
@@ -167,7 +167,7 @@ def download_youtube_thumbnail(video_id: str) -> bytes | None:
     transparent renvoyé par YouTube). Timeout 30 s, gère les RequestException.
     """
     try:
-        import requests  # noqa: PLC0415 — import paresseux.
+        import requests
     except ImportError:  # pragma: no cover
         return None
     for quality in ("maxresdefault", "hqdefault"):
@@ -182,7 +182,7 @@ def download_youtube_thumbnail(video_id: str) -> bytes | None:
 
 
 # --- Helpers timestamps -----------------------------------------------------
-def format_timestamp(seconds: float | int) -> str:
+def format_timestamp(seconds: float) -> str:
     """Formate un nombre de secondes en « HH:MM:SS »."""
     seconds = int(seconds)
     h, rem = divmod(seconds, 3600)
@@ -354,13 +354,14 @@ def make_anthropic_client():
     qui n'en ont pas besoin (ex. fetch_episodes).
     """
     try:
-        import anthropic  # noqa: PLC0415 — import paresseux.
+        import anthropic
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
             "Le SDK anthropic n'est pas installé (pip install -r requirements.txt)."
         ) from exc
-    from dotenv import load_dotenv  # noqa: PLC0415 — import paresseux.
-    import os  # noqa: PLC0415
+    import os
+
+    from dotenv import load_dotenv
     load_dotenv(TOOLS_DIR / ".env")
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -375,13 +376,14 @@ def make_anthropic_client():
 def make_openai_client():
     """Initialise un client OpenAI. Cf. `make_anthropic_client` pour le pattern."""
     try:
-        import openai  # noqa: PLC0415 — import paresseux.
+        import openai
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
             "Le SDK openai n'est pas installé (pip install openai)."
         ) from exc
-    from dotenv import load_dotenv  # noqa: PLC0415 — import paresseux.
-    import os  # noqa: PLC0415
+    import os
+
+    from dotenv import load_dotenv
     load_dotenv(TOOLS_DIR / ".env")
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:

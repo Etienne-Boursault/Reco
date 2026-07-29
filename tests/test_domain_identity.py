@@ -8,7 +8,6 @@ import pytest
 from domain.item import ItemType
 from domain.services.identity import ItemIdentityService, canonical_key
 
-
 # ---------------------------------------------------------------------------
 # canonical_key
 # ---------------------------------------------------------------------------

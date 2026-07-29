@@ -33,8 +33,6 @@ from urllib.parse import quote
 import requests
 from dotenv import load_dotenv
 
-from review_lock import ServerLockBusy, acquire_pipeline_lock
-
 from common import (
     TOOLS_DIR,
     log,
@@ -42,6 +40,7 @@ from common import (
     recos_dir_for,
     write_json_if_changed,
 )
+from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 TMDB_BASE = "https://api.themoviedb.org/3"
 RATE_LIMIT_SLEEP = 0.1  # 10 req/sec, bien sous la limite TMDB (50 req/sec).
@@ -371,7 +370,7 @@ def main():
     finally:
         try:
             lock_ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001 — best-effort release
+        except Exception:  # noqa: BLE001, S110 — release best-effort
             pass
 
 

@@ -6,7 +6,6 @@ import json
 import logging
 
 import pytest
-
 from tools.eval.golden_set import ExpectedReco, GoldenEpisode, GoldenSet
 from tools.eval.harness import DictExtractionSource, EvalHarness
 from tools.eval.types import EvalConfig, EvalMetrics, ExtractedReco
@@ -118,7 +117,7 @@ class TestDictExtractionSource:
         src = DictExtractionSource.from_legacy_dict(
             [{"title": "A"}], default_guid="ep1",
         )
-        assert tuple(src.for_episode("ep1"))[0].title == "A"
+        assert next(iter(src.for_episode("ep1"))).title == "A"
 
     def test_blank_title_skipped(self) -> None:
         with pytest.raises(ValueError):

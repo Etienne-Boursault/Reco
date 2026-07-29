@@ -272,9 +272,9 @@ class ItemIdentityService:
 
 
 __all__ = [
-    "canonical_key",
-    "generate_item_id",
-    "find_matching_item",
     "IdentityRegistry",
     "ItemIdentityService",
+    "canonical_key",
+    "find_matching_item",
+    "generate_item_id",
 ]

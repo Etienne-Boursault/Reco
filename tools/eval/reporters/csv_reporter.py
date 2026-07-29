@@ -8,8 +8,9 @@ from __future__ import annotations
 
 import csv
 import io
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 from tools.eval.metrics import EvalResult
 from tools.eval.reporters.base import register_reporter

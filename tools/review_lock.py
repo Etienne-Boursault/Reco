@@ -44,8 +44,8 @@ from __future__ import annotations
 
 import contextlib
 import os
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Iterator
 
 from common import OUTPUT_DIR, log
 
@@ -87,7 +87,7 @@ def _import_filelock():
     au verrou (tests unitaires de modules purs).
     """
     try:
-        import filelock  # noqa: PLC0415
+        import filelock
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
             "Le module `filelock` est requis pour la coordination "
@@ -163,7 +163,7 @@ def acquire_server_lock() -> Iterator[None]:
     finally:
         try:
             lock.release()
-        except Exception:  # noqa: BLE001 — on libère best-effort
+        except Exception:  # noqa: BLE001, S110 — on libère best-effort
             pass
         try:
             _SERVER_PID_PATH.unlink(missing_ok=True)
@@ -212,7 +212,7 @@ def acquire_pipeline_lock(*, force: bool = False) -> Iterator[None]:
         if lock is not None:
             try:
                 lock.release()
-            except Exception:  # noqa: BLE001
+            except Exception:  # noqa: BLE001, S110 — on libère best-effort
                 pass
             try:
                 _PIPELINE_PID_PATH.unlink(missing_ok=True)

@@ -100,9 +100,8 @@ def test_release_after_use_allows_new_acquire():
 
 def test_release_even_on_exception():
     """Le contexte libère le verrou même si le bloc lève."""
-    with pytest.raises(ValueError):
-        with review_lock.acquire_pipeline_lock():
-            raise ValueError("boom")
+    with pytest.raises(ValueError), review_lock.acquire_pipeline_lock():
+        raise ValueError("boom")
     # Vérifie : on peut re-prendre.
     with review_lock.acquire_pipeline_lock():
         pass

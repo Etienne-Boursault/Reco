@@ -604,7 +604,7 @@ def test_verify_deep_reparse_failure_emits_warning(tmp_path):
     svc.migrate(dry_run=False)
     # Corrompt une reco source (mais valid JSON, juste champ types vide).
     reco_dir = tmp_path / "recos" / SOURCE
-    target = sorted(reco_dir.glob("*.json"))[0]
+    target = min(reco_dir.glob("*.json"))
     data = json.loads(target.read_text("utf-8"))
     data["types"] = []  # types vide → reco_parser raise ValueError
     target.write_text(json.dumps(data), encoding="utf-8")

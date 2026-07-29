@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 
 import pytest
-
 from tools.match_audit.service import MatchAuditResult
 from tools.match_audit.sidecar import (
     delete_sidecar,

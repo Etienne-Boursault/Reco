@@ -75,4 +75,4 @@ def can_attach_mention(mention: Mention, item: Item) -> bool:
     return mention.item_id == item.id
 
 
-__all__ = ["can_merge_items", "can_attach_mention"]
+__all__ = ["can_attach_mention", "can_merge_items"]

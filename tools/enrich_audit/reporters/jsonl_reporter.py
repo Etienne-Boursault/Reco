@@ -10,7 +10,7 @@ Utile pour :
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from ..service import SourceAuditReport
@@ -28,7 +28,7 @@ def write_jsonl_log(
     pas au niveau "produit la même sortie" — c'est un log temporel.
     """
     log_path.parent.mkdir(parents=True, exist_ok=True)
-    ts = timestamp or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ts = timestamp or datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     written = 0
     lines = []
     for r in sorted(report.results, key=lambda r: r.item_id):

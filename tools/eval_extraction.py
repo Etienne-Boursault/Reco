@@ -41,7 +41,7 @@ import hashlib
 import json
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -61,7 +61,6 @@ from tools.eval.reporters import REPORTERS
 from tools.eval.reporters.csv_reporter import render_csv, write_csv
 from tools.eval.reporters.markdown_reporter import render_markdown, write_markdown
 from tools.eval.types import EvalConfig, ReportFormat, RunManifest
-
 
 EXIT_OK = 0
 EXIT_USAGE = 1
@@ -341,7 +340,7 @@ def main(argv: list[str] | None = None) -> int:
             sys.stdout.write(json.dumps(d, ensure_ascii=False) + "\n")
 
     if args.save_manifest:
-        timestamp = args.timestamp or datetime.now(timezone.utc).isoformat()
+        timestamp = args.timestamp or datetime.now(UTC).isoformat()
         run_id = args.run_id or timestamp.replace(":", "-")
         scores = {
             "precision": result.precision,

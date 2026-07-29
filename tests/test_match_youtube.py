@@ -104,7 +104,7 @@ def test_video_id_returns_none_for_non_url():
 
 
 # ===== _build_suffix_regex / _normalize avec suffixes configurables ========
-from match_youtube import _build_suffix_regex  # noqa: E402
+from match_youtube import _build_suffix_regex
 
 
 def test_build_suffix_regex_empty_returns_none():
@@ -378,6 +378,7 @@ def test_fetch_channel_videos_parses_entries(monkeypatch):
     ignore les entrées nulles ou sans id."""
     import sys
     import types
+
     from match_youtube import _fetch_channel_videos
 
     seen = {}
@@ -414,6 +415,7 @@ def test_fetch_channel_videos_keeps_existing_videos_suffix(monkeypatch):
     """Si l'URL se termine déjà par /videos, on ne le duplique pas."""
     import sys
     import types
+
     from match_youtube import _fetch_channel_videos
 
     seen = {}

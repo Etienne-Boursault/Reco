@@ -19,13 +19,14 @@ Architecture (cf. ADR 0011) :
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
-from typing import Any, Iterable, Mapping
+from typing import Any
 
 from tools.common import log
 from tools.eval.assignment import linear_sum_assignment
 from tools.eval.fuzzy_match import fuzzy_match_score
-from tools.eval.golden_set import ExpectedReco, GoldenEpisode, GoldenSet
+from tools.eval.golden_set import ExpectedReco, GoldenSet
 from tools.eval.metrics import EvalResult, MatchVerdict, f1, precision, recall
 from tools.eval.types import (
     EvalConfig,
@@ -35,7 +36,7 @@ from tools.eval.types import (
     ExtractionSource,
 )
 
-__all__ = ["EvalHarness", "DictExtractionSource"]
+__all__ = ["DictExtractionSource", "EvalHarness"]
 
 
 def _parse_timestamp_to_seconds(ts: str | None) -> int | None:
@@ -73,7 +74,7 @@ class DictExtractionSource:
     def from_legacy_dict(
         cls, raw: Mapping[str, Any] | list[Any],
         *, default_guid: str | None = None,
-    ) -> "DictExtractionSource":
+    ) -> DictExtractionSource:
         by_guid: dict[str, tuple[ExtractedReco, ...]] = {}
         if isinstance(raw, list):
             recos = tuple(_to_extracted(r) for r in raw)

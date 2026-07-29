@@ -16,7 +16,8 @@ import pytest
 @pytest.fixture
 def isolated_dirs(monkeypatch, tmp_path: Path):
     """Redirige tous les chemins du pipeline vers tmp_path/."""
-    import common, make_dispatch
+    import common
+    import make_dispatch
     eps_dir = tmp_path / "src" / "content" / "episodes"
     trans_dir = tmp_path / "tools" / "output" / "transcripts"
     dispatch_dir = tmp_path / "tools" / "dispatch"

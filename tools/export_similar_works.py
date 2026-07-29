@@ -23,10 +23,10 @@ import argparse
 import json
 import logging
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Callable
 
 from common import OUTPUT_DIR, atomic_write_text, log
 from embeddings.recommend import SimilarityRecommender
@@ -73,7 +73,7 @@ def export_similar_works(
     """
     lg = logger or log
     factory = store_factory or (lambda p: EmbeddingStore(p))
-    iso = now_iso or (lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    iso = now_iso or (lambda: datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"))
 
     if not opts.db_path.exists():
         lg.error("DB embeddings absente: %s", opts.db_path)

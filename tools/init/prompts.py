@@ -7,7 +7,8 @@ faciliter les tests (mock stdin/stdout via ``io.StringIO``).
 from __future__ import annotations
 
 import sys
-from typing import Callable, TextIO
+from collections.abc import Callable
+from typing import TextIO
 
 from . import validators
 from .slugify import is_valid_slug, slugify

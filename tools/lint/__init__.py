@@ -21,9 +21,9 @@ from .settings import LintSettings
 __all__ = [
     "LintContext",
     "LintIssue",
-    "LintRule",
-    "Severity",
-    "LintService",
     "LintReport",
+    "LintRule",
+    "LintService",
     "LintSettings",
+    "Severity",
 ]

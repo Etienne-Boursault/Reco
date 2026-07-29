@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 import sys
-from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
@@ -129,14 +128,12 @@ def test_run_writes_number(ep_env, monkeypatch):
 def test_run_skip_if_number_already_set(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E", "number": 5,
                             "youtubeUrl": "https://www.youtube.com/watch?v=abc"})
-    import extract_recos
     monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
 
 def test_run_skip_if_no_youtube_url(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E"})
-    import extract_recos
     monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
@@ -144,7 +141,6 @@ def test_run_skip_if_no_youtube_url(ep_env, monkeypatch):
 def test_run_skip_if_video_id_unparsable(ep_env, monkeypatch):
     _ep(ep_env, "a.json", {"guid": "g", "title": "E",
                             "youtubeUrl": "https://youtu.be/xyz"})
-    import extract_recos
     monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
@@ -158,7 +154,6 @@ def test_run_thumb_missing_warns_continues(ep_env, monkeypatch):
             responses.GET, f"https://i.ytimg.com/vi/abc/{q}.jpg",
             status=404,
         )
-    import extract_recos
     monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", lambda: MagicMock())
     assert ocr_thumbnails.run("src", dry_run=False) == 0
 
@@ -173,7 +168,6 @@ def test_run_dry_run_does_not_call_client(ep_env, monkeypatch):
         body=big, status=200,
     )
     # _make_client ne doit PAS être appelé en dry-run.
-    import extract_recos
     sentinel = MagicMock(side_effect=AssertionError("ne doit pas être appelé"))
     monkeypatch.setattr(ocr_thumbnails, "make_anthropic_client", sentinel)
     assert ocr_thumbnails.run("src", dry_run=True) == 0

@@ -26,18 +26,19 @@ from pathlib import Path
 # Permettre l'exécution directe `python tools/lint_dataset.py`.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import review_lock  # noqa: E402
-from lint import LintReport, Severity  # noqa: E402
-from lint.cli_runner import LintRunOptions, run_lint  # noqa: E402
-from lint.loaders import JsonDatasetLoader, _load_jsons_with_errors  # noqa: E402
-from lint.reporters import REPORTERS, get_reporter  # noqa: E402
-from lint.rules.base import LintContext  # noqa: E402
-from lint.settings import LintSettings  # noqa: E402
-from repository._base import _SOURCE_ID_PATTERN as _RE_SOURCE_ID  # noqa: E402
-from repository.item_repo import ItemRepoJson  # noqa: E402
-from repository.mention_repo import MentionRepoJson  # noqa: E402
-from tools.config.registry import get_source as _get_source  # noqa: E402
-from tools.config.registry import list_sources as _list_sources  # noqa: E402
+from tools.config.registry import get_source as _get_source
+from tools.config.registry import list_sources as _list_sources
+
+import review_lock
+from lint import LintReport, Severity
+from lint.cli_runner import LintRunOptions, run_lint
+from lint.loaders import JsonDatasetLoader, _load_jsons_with_errors
+from lint.reporters import REPORTERS, get_reporter
+from lint.rules.base import LintContext
+from lint.settings import LintSettings
+from repository._base import _SOURCE_ID_PATTERN as _RE_SOURCE_ID
+from repository.item_repo import ItemRepoJson
+from repository.mention_repo import MentionRepoJson
 
 # Alias `date` pour permettre aux tests de monkeypatcher
 # `lint_dataset.date` (M9).
@@ -211,7 +212,9 @@ def _settings_for_source(source_id: str) -> LintSettings:
     """Charge `SourceConfig.extra["lint"]` si disponible."""
     try:
         cfg = _get_source(source_id)
-    except Exception:
+    except Exception:  # noqa: BLE001 — même cas que `lint/loaders.py` : on
+        # retombe sur les réglages par défaut plutôt que d'interrompre le lint.
+        # Resserrer sur `ConfigLoadError` changerait le comportement.
         return LintSettings()
     return LintSettings.from_source_extra(cfg.extra)
 

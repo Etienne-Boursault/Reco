@@ -28,7 +28,6 @@ import argparse
 import base64
 import os
 import time
-from urllib.parse import quote
 
 import requests
 from dotenv import load_dotenv
@@ -38,7 +37,7 @@ from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 DEEZER_BASE = "https://api.deezer.com"
 SPOTIFY_BASE = "https://api.spotify.com/v1"
-SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token"
+SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token"  # noqa: S105 — URL publique
 RATE_LIMIT_SLEEP = 0.1
 
 
@@ -203,7 +202,7 @@ def main():
     args = parser.parse_args()
 
     # Coordination avec review_server (cf. tools/review_lock.py).
-    import sys as _sys  # noqa: PLC0415
+    import sys as _sys
     try:
         lock_ctx = acquire_pipeline_lock(force=args.ignore_server_lock)
         lock_ctx.__enter__()
@@ -216,7 +215,7 @@ def main():
     finally:
         try:
             lock_ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001 — best-effort release
+        except Exception:  # noqa: BLE001, S110 — release best-effort
             pass
 
 

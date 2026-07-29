@@ -13,9 +13,10 @@ par l'argparse).
 """
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Final
+from typing import Final
 
 from cache.builder import BuildStats, CacheBuilder
 from cache.schema import FTS5NotAvailableError
@@ -129,9 +130,9 @@ def run_build_cache(
 
 
 __all__ = [
-    "BuildCacheRunOptions",
     "EXIT_ERROR",
     "EXIT_LOCK_BUSY",
     "EXIT_OK",
+    "BuildCacheRunOptions",
     "run_build_cache",
 ]

@@ -18,7 +18,6 @@ import pytest
 
 from migrations.runner import MigrationRunner, MigrationStats
 
-
 # ---------------------------------------------------------------------------
 # Fixtures locales
 # ---------------------------------------------------------------------------

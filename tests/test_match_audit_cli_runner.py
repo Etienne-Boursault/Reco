@@ -3,12 +3,8 @@ from __future__ import annotations
 
 import io
 import json
-import sys
 from pathlib import Path
 
-import pytest
-
-import common
 from tools.match_audit.cli_runner import (
     FileTranscriptRepo,
     RunOptions,
@@ -27,6 +23,7 @@ from tools.match_audit.cli_runner import (
 from tools.match_audit.service import MatchAuditService
 from tools.match_audit.settings import MatchAuditSettings
 
+import common
 
 # ---------------------------------------------------------------------------
 # FileTranscriptRepo  (CR senior C3/C4, CR archi #10)
@@ -150,7 +147,7 @@ def test_default_service_uses_settings_threshold(tmp_path):
     s = MatchAuditSettings(duration_tolerance=0.99)
     svc = default_service("src", settings=s, base_transcripts_dir=tmp_path)
     durs = [c for c in svc.checks if getattr(c, "kind", None) == "duration_mismatch"]
-    assert durs and getattr(durs[0], "tolerance") == 0.99
+    assert durs and durs[0].tolerance == 0.99
 
 
 # ---------------------------------------------------------------------------

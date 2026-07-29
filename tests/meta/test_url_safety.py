@@ -1,8 +1,6 @@
 """Tests garde SSRF (B-CRIT-2)."""
 from __future__ import annotations
 
-import pytest
-
 from meta.url_safety import is_safe_external_url
 
 

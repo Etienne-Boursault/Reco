@@ -52,7 +52,8 @@ def run_extraction(guid: str, source: str, provider: str) -> None:
     cmd = [sys.executable, str(Path(__file__).parent / "extract_recos.py"),
            "--source", source, "--guid", guid, "--provider", provider]
     log.info("  → %s", shlex.join(cmd))
-    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
+    result = subprocess.run(cmd, capture_output=True, text=True,
+                            encoding="utf-8", check=False)
     if result.returncode != 0:
         log.error("    échec : %s", result.stderr.strip()[-300:])
     else:
@@ -99,7 +100,7 @@ def main():
                     txt.rename(acast_backup)
                 if yt_tmp.exists():
                     yt_tmp.rename(txt)
-            except OSError as exc:  # noqa: BLE001 — on log et on continue.
+            except OSError as exc:
                 log.warning("Restauration de l'état initial pour %s échouée : %s",
                             guid, exc)
 

@@ -1,8 +1,8 @@
 """Tests cache.ports — runtime_checkable Protocols."""
 from __future__ import annotations
 
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from cache.builder import CacheBuilder, _FsJsonLoader
 from cache.ports import CacheBackend, JsonLoader

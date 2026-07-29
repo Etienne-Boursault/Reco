@@ -1,8 +1,6 @@
 """Tests TDD pour `tools.lint.cli_runner` (CR archi #9)."""
 from __future__ import annotations
 
-from pathlib import Path
-
 import pytest
 
 from lint.cli_runner import LintRunOptions, _compute_exit_code, run_lint

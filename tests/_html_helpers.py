@@ -7,7 +7,7 @@ indentation des f-strings, ajout de data-attributes.
 Convention : tout NOUVEAU test qui vérifie du HTML rendu DOIT utiliser ces
 helpers plutôt que des `assert 'foo' in html`.
 """
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
 
 def parse(html: str) -> BeautifulSoup:

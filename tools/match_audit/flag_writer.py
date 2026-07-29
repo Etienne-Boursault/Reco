@@ -12,8 +12,9 @@ n'écrit que si le contenu logique a changé.
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import common  # type: ignore[attr-defined]
 

@@ -18,12 +18,18 @@ import re
 import ssl
 import urllib.error
 import urllib.request
-from typing import Callable, NamedTuple
+from collections.abc import Callable
+from typing import NamedTuple
 from urllib.parse import urlparse
 
 __all__ = [
-    "ProbeResult", "FetchOutcome", "verify_url", "classify",
-    "page_title", "fetch_via_urllib", "host_in",
+    "FetchOutcome",
+    "ProbeResult",
+    "classify",
+    "fetch_via_urllib",
+    "host_in",
+    "page_title",
+    "verify_url",
 ]
 
 # Codes qui prouvent l'ABSENCE de la ressource. Eux seuls font rejeter.
@@ -64,9 +70,9 @@ BROWSER_HEADERS = {
     "Cookie": "SOCS=CAI",
 }
 
-_TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.S | re.I)
+_TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.DOTALL | re.IGNORECASE)
 _BRAND_SUFFIX_RE = re.compile(
-    r"\s*[-|–]\s*(YouTube|AlloCiné|Canal\+|Netflix|Disney\+)\s*$", re.I)
+    r"\s*[-|–]\s*(YouTube|AlloCiné|Canal\+|Netflix|Disney\+)\s*$", re.IGNORECASE)
 
 
 def _make_ssl_context() -> ssl.SSLContext:
@@ -133,9 +139,17 @@ Fetcher = Callable[[str, float], FetchOutcome]
 
 def fetch_via_urllib(url: str, timeout: float) -> FetchOutcome:
     """Transport réel. GET et non HEAD : le corps est nécessaire au titre."""
-    req = urllib.request.Request(url, method="GET", headers=dict(BROWSER_HEADERS))
+    # POINT OUVERT (S310, 2026-07-29) — `url` vient des DONNÉES du site
+    # (`customLinks`, `watchProviders`), pas d'une constante : un lien
+    # `file://` ou `ftp://` serait ouvert tel quel. Le risque est faible (les
+    # liens sont curés à la main et le script tourne en local) mais réel.
+    # Filtrer sur http/https AVANT l'ouverture changerait le comportement —
+    # certaines URLs seraient désormais refusées — donc c'est une décision à
+    # prendre pour elle-même, pas un effet de bord d'un passage de lint.
+    req = urllib.request.Request(url, method="GET",  # noqa: S310
+                                 headers=dict(BROWSER_HEADERS))
     try:
-        with urllib.request.urlopen(req, timeout=timeout,
+        with urllib.request.urlopen(req, timeout=timeout,  # noqa: S310
                                     context=_make_ssl_context()) as resp:
             charset = resp.headers.get_content_charset() or "utf-8"
             # Lecture incrémentale : on s'arrête dès </title> pour ne pas

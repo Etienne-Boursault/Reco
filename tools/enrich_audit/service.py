@@ -16,7 +16,7 @@ Compat rétro :
 from __future__ import annotations
 
 import logging
-from collections.abc import Callable, Iterable, Mapping
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 
 from domain.item import Item

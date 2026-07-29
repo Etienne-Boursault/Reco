@@ -7,6 +7,7 @@ sécu, parse POST, gestion du cache reco_id → Path. Aucun handler métier ici
 from __future__ import annotations
 
 import json
+
 import pytest
 
 import review_handler_base as rhb

@@ -52,7 +52,7 @@ ACAST_BACKUP_GUIDS = {
 FULL_EPISODE_SECONDS = 1800  # 30 min
 
 
-def fmt_dur(secs: int | float | None) -> str:
+def fmt_dur(secs: float | None) -> str:
     """Formate une durée en secondes vers « MmnSS ». 0/None → « — »."""
     if not secs:
         return "—"
@@ -147,30 +147,30 @@ def generate(source_id: str) -> Path:
         "",
         "## Source des transcripts",
         "",
-        "Trois cas selon l'origine de l'audio transcrit (les timecodes du transcript "
+        ("Trois cas selon l'origine de l'audio transcrit (les timecodes du transcript "
         "s'alignent sur cet audio, ce qui détermine l'exactitude du lien « ▶ vérifier "
-        "à HH:MM:SS ») :",
+        "à HH:MM:SS ») :"),
         "",
-        "- ✅ **YT** : audio téléchargé depuis la vidéo YouTube via yt-dlp. Timecodes "
-        "  alignés sur la vidéo, lien de relecture exact. État cible.",
-        f"- 🔄 **Acast → YT en cours** : {n_yt_retranscribe} épisodes étaient transcrits "
+        ("- ✅ **YT** : audio téléchargé depuis la vidéo YouTube via yt-dlp. Timecodes "
+        "  alignés sur la vidéo, lien de relecture exact. État cible."),
+        (f"- 🔄 **Acast → YT en cours** : {n_yt_retranscribe} épisodes étaient transcrits "
         "  depuis l'audio Acast (timecodes décalés par rapport à la vidéo YT à cause "
         "  du montage). Le worker portable refait la transcription depuis l'audio YT. "
         f"  {n_acast_backup} d'entre eux ont une **sauvegarde** `{{guid}}.acast.txt` "
-        "  pour cross-valider les nouvelles recos contre les anciennes.",
-        "- 🎧 **Acast (volontaire)** : pour les épisodes dont aucune vidéo YT complète "
+        "  pour cross-valider les nouvelles recos contre les anciennes."),
+        ("- 🎧 **Acast (volontaire)** : pour les épisodes dont aucune vidéo YT complète "
         "  n'existe sur la chaîne (ex. #18 « Alice DAVID et BÉRENGÈRE KRIEF »). Seul "
-        "  l'audio Acast est disponible.",
+        "  l'audio Acast est disponible."),
         "",
         "## Plan de cross-validation des recos (post re-transcription YT)",
         "",
-        "1. Re-extraction LLM (Anthropic + OpenAI) sur le nouveau transcript YT → "
-        "   nouvelles recos avec timestamps alignés vidéo.",
-        "2. Pour les épisodes avec backup Acast : comparer les nouvelles recos YT aux "
+        ("1. Re-extraction LLM (Anthropic + OpenAI) sur le nouveau transcript YT → "
+        "   nouvelles recos avec timestamps alignés vidéo."),
+        ("2. Pour les épisodes avec backup Acast : comparer les nouvelles recos YT aux "
         "   recos Acast existantes. Le champ `extractors` s'enrichit alors avec des "
-        "   marqueurs additionnels (`anthropic-yt`, `anthropic-acast`, etc.).",
-        "3. Une reco présente dans les **deux sources** (Acast et YT) ET extraite par "
-        "   les **deux LLMs** est un signal de robustesse maximal (⭐⭐).",
+        "   marqueurs additionnels (`anthropic-yt`, `anthropic-acast`, etc.)."),
+        ("3. Une reco présente dans les **deux sources** (Acast et YT) ET extraite par "
+        "   les **deux LLMs** est un signal de robustesse maximal (⭐⭐)."),
         "",
         "## Tableau",
         "",

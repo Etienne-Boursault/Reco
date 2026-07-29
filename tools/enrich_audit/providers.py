@@ -20,7 +20,6 @@ import json
 import logging
 from functools import lru_cache
 from pathlib import Path
-from typing import Callable
 
 from .service import TmdbDataProvider
 from .types import TMDB_CACHE_VERSION

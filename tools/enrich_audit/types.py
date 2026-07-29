@@ -135,11 +135,11 @@ class Check(Protocol):
 
 __all__ = [
     "AUDITOR_VERSION",
+    "SIDECAR_SCHEMA_VERSION",
+    "TMDB_CACHE_VERSION",
     "Check",
     "Severity",
-    "SIDECAR_SCHEMA_VERSION",
     "Suspicion",
-    "TMDB_CACHE_VERSION",
     "TmdbKind",
     "TmdbPayload",
 ]

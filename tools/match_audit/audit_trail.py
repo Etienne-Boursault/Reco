@@ -8,15 +8,15 @@ Permet :
 from __future__ import annotations
 
 import json
-from collections.abc import Iterator
+from collections.abc import Iterator, Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 
 class NoopAuditTrail:
     """Implémentation no-op — utile pour les modes ``--check`` (dry-run)."""
 
-    def record(self, event: Mapping[str, Any]) -> None:  # noqa: D401
+    def record(self, event: Mapping[str, Any]) -> None:
         return None
 
 

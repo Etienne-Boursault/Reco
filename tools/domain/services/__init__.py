@@ -14,11 +14,11 @@ from .identity import (
 )
 
 __all__ = [
-    "canonical_key",
-    "generate_item_id",
-    "find_matching_item",
     "IdentityRegistry",
     "ItemIdentityService",
-    "can_merge_items",
     "can_attach_mention",
+    "can_merge_items",
+    "canonical_key",
+    "find_matching_item",
+    "generate_item_id",
 ]

@@ -13,7 +13,6 @@ from domain.item import Item, ItemType
 from domain.services.identity import canonical_key
 from repository.item_repo import ItemRepoJson
 
-
 SOURCE = "un-bon-moment"
 
 

@@ -65,7 +65,7 @@ def _dedup_cluster_card(cluster, ep: dict, source_id: str,
     members = cluster.members
     guid = ep.get("guid", "")
     cluster_ids = ",".join(m.get("id", "") for m in members)
-    sim_pct = int(round(cluster.similarity * 100))
+    sim_pct = round(cluster.similarity * 100)
     n = len(members)
     options_html: list[str] = []
     for m in members:
@@ -148,12 +148,12 @@ def render_pick_canonical(members: list[dict], guid: str) -> str:
 
     Extrait de `Handler._render_pick_canonical` (SRP : transport HTTP ↔ rendu).
     """
-    from reco_dedup import pick_canonical  # noqa: PLC0415
+    from reco_dedup import pick_canonical
     default_id = pick_canonical(members)
     rows = [
         f'<h2>Fusionner {len(members)} recos — choisis la version à garder</h2>',
-        '<p>La sélection par défaut privilégie : validated &gt; YouTube &gt; '
-        'plus de LLMs &gt; quote plus longue.</p>',
+        ('<p>La sélection par défaut privilégie : validated &gt; YouTube &gt; '
+        'plus de LLMs &gt; quote plus longue.</p>'),
     ]
     cluster_ids_csv = ",".join(m.get("id", "") for m in members)
     rows.append(

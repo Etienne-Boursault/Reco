@@ -89,7 +89,7 @@ def main() -> None:
                         help="Ignore le verrou review_server.")
     args = parser.parse_args()
 
-    import sys as _sys  # noqa: PLC0415
+    import sys as _sys
     try:
         lock_ctx = acquire_pipeline_lock(force=args.ignore_server_lock)
         lock_ctx.__enter__()
@@ -104,8 +104,8 @@ def main() -> None:
     finally:
         try:
             lock_ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception:  # noqa: BLE001, S110 — release best-effort :
+            pass  # le verrou est déjà relâché ou le process meurt de toute façon.
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ from __future__ import annotations
 import re
 import unicodedata
 from collections.abc import Iterable, Mapping
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from .models import (
@@ -74,14 +74,14 @@ def _month_key(value: Any) -> str | None:
     elif isinstance(value, str):
         try:
             # `fromisoformat` accepte les ISO simples ; on retire un suffixe Z.
-            dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            dt = datetime.fromisoformat(value)
         except ValueError:
             return None
     if dt is None:
         return None
     if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
-    dt = dt.astimezone(timezone.utc)
+        dt = dt.replace(tzinfo=UTC)
+    dt = dt.astimezone(UTC)
     return f"{dt.year:04d}-{dt.month:02d}"
 
 
@@ -329,7 +329,7 @@ def build_snapshot(
         items = [i for i in items if str(i["id"]) in kept_ids]
 
     if generated_at is None:
-        generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     return StatsSnapshot(
         generatedAt=generated_at,

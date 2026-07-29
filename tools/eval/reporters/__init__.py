@@ -20,10 +20,10 @@ from tools.eval.reporters.markdown_reporter import (
 )
 
 __all__ = [
+    "REPORTERS",
     "CsvReporter",
     "EvalReporter",
     "MarkdownReporter",
-    "REPORTERS",
     "register_reporter",
     "render_csv",
     "render_markdown",

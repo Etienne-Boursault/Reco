@@ -18,10 +18,10 @@ suite de tests). Le marquage textuel + entrée roadmap fait foi.
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable, Literal, Protocol
-
+from typing import Literal, Protocol
 
 # ===== Entités ==============================================================
 # Synchronisé avec `src/content.config.ts` (z.enum `recoType`).
@@ -144,8 +144,19 @@ class VisionOCR(Protocol):
 
 
 __all__ = [
-    "Source", "Episode", "Reco", "TranscriptSegment",
-    "RecoStatus", "RecoKind", "RecoType",
-    "EpisodeRepository", "RecoRepository", "TranscriptStore",
-    "RSSClient", "YouTubeClient", "TranscriberEngine", "LLMExtractor", "VisionOCR",
+    "Episode",
+    "EpisodeRepository",
+    "LLMExtractor",
+    "RSSClient",
+    "Reco",
+    "RecoKind",
+    "RecoRepository",
+    "RecoStatus",
+    "RecoType",
+    "Source",
+    "TranscriberEngine",
+    "TranscriptSegment",
+    "TranscriptStore",
+    "VisionOCR",
+    "YouTubeClient",
 ]

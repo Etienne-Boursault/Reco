@@ -7,7 +7,7 @@ import importlib.util
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -16,7 +16,7 @@ _TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(_TOOLS) not in sys.path:
     sys.path.insert(0, str(_TOOLS))
 
-import backfill_extraction_history as bf  # noqa: E402
+import backfill_extraction_history as bf
 
 
 def _write_reco(tmp: Path, name: str, data: dict, mtime: datetime | None = None) -> Path:
@@ -32,7 +32,7 @@ def test_backfill_adds_entry_to_reco_without_history(tmp_path):
     p = _write_reco(tmp_path, "0001.json", {
         "id": "ubm-0001", "title": "Dune", "types": ["film"],
         "extractors": ["anthropic"], "timestamp": "00:12:34",
-    }, mtime=datetime(2026, 5, 1, tzinfo=timezone.utc))
+    }, mtime=datetime(2026, 5, 1, tzinfo=UTC))
     assert bf.backfill_file(p) is True
     data = json.loads(p.read_text(encoding="utf-8"))
     assert len(data["extractionHistory"]) == 1
@@ -67,7 +67,7 @@ def test_backfill_dual_provider_late_mtime_generates_two_entries(tmp_path):
         "id": "ubm-0001", "title": "Dune", "types": ["film"],
         "extractors": ["anthropic", "openai"],
         "timestamp": "00:05:00", "transcriptSource": "youtube",
-    }, mtime=datetime(2026, 6, 5, tzinfo=timezone.utc))
+    }, mtime=datetime(2026, 6, 5, tzinfo=UTC))
     assert bf.backfill_file(p) is True
     data = json.loads(p.read_text(encoding="utf-8"))
     assert len(data["extractionHistory"]) == 2
@@ -83,7 +83,7 @@ def test_backfill_dual_provider_early_mtime_uses_sonnet(tmp_path):
     p = _write_reco(tmp_path, "0001.json", {
         "id": "ubm-0001", "title": "Dune", "types": ["film"],
         "extractors": ["anthropic", "openai"],
-    }, mtime=datetime(2026, 5, 1, tzinfo=timezone.utc))
+    }, mtime=datetime(2026, 5, 1, tzinfo=UTC))
     assert bf.backfill_file(p) is True
     data = json.loads(p.read_text(encoding="utf-8"))
     # mtime AVANT le cutover → on génère 1 seule entrée (heuristique exige date tardive).

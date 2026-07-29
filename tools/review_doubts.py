@@ -51,14 +51,14 @@ LOW_CONFIDENCE = 0.7
 # (chaque reco reste étiquetée avec son épisode).
 _SECTIONS: tuple[tuple[str, str, str], ...] = (
     ("pending", "À trancher (verdict en attente)",
-     "L'agent n'a pas su décider — à toi de Valider, mettre en Citation, "
-     "marquer « Leur œuvre » ou écarter."),
+     ("L'agent n'a pas su décider — à toi de Valider, mettre en Citation, "
+     "marquer « Leur œuvre » ou écarter.")),
     ("flagged", "Signalements à vérifier",
-     "Titre suspect, lien incertain, invité manquant, doublon, timecode… "
-     "— vérifie puis corrige/valide."),
+     ("Titre suspect, lien incertain, invité manquant, doublon, timecode… "
+     "— vérifie puis corrige/valide.")),
     ("recby", "Qui recommande ? (« Reco de » à compléter)",
-     "Reco validée mais sans prescripteur (transcript non diarizé) — "
-     "coche le host ou l'invité qui la recommande, puis Valider."),
+     ("Reco validée mais sans prescripteur (transcript non diarizé) — "
+     "coche le host ou l'invité qui la recommande, puis Valider.")),
     ("lowconf", "Faible confiance",
      f"Verdict appliqué avec confiance < {LOW_CONFIDENCE} — contrôle rapide."),
 )
@@ -357,10 +357,10 @@ def _render_type_section(
     `_load_groups`). Refonte 2026-07-21 : encadré signalement au lieu de la carte
     complète."""
     out = [
-        f'<section class="doubt-section doubt-type doubt-type-{html.escape(key)}">'
+        (f'<section class="doubt-section doubt-type doubt-type-{html.escape(key)}">'
         f'<h2 class="doubt-type-h">{html.escape(label)} '
         f'<span class="cnt">{len(items)}</span></h2>'
-        f'<p class="doubt-type-desc">{html.escape(desc)}</p><ul>'
+        f'<p class="doubt-type-desc">{html.escape(desc)}</p><ul>')
     ]
     for ep, r in items:
         out.append(_signalement_card(

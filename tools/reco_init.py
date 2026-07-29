@@ -18,8 +18,9 @@ from __future__ import annotations
 
 import argparse
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence, TextIO
+from typing import TextIO
 
 from tools.init import WIZARD_VERSION
 from tools.init.prompts import (

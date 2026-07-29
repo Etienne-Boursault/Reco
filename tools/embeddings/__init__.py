@@ -18,13 +18,13 @@ from embeddings.encoder import (
     build_input_text,
     source_hash,
 )
-from embeddings.ports import Encoder, EmbeddingStorePort
+from embeddings.ports import EmbeddingStorePort, Encoder
 
 __all__ = [
     "DEFAULT_MODEL",
     "EmbeddingInput",
-    "Encoder",
     "EmbeddingStorePort",
+    "Encoder",
     "build_input_text",
     "source_hash",
 ]

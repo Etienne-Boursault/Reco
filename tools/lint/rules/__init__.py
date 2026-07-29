@@ -16,6 +16,7 @@ dans le composer racine.
 """
 from __future__ import annotations
 
+from ..settings import LintSettings
 from .aberrant_values import AberrantValuesRule
 from .base import LintContext, LintIssue, LintRule, Severity
 from .duplicate_canonical import (
@@ -27,7 +28,6 @@ from .orphan_mention import OrphanMentionRule
 from .recommendedby_consistency import RecommendedByConsistencyRule
 from .required_fields import RequiredFieldsRule
 from .suspicious_titles import SuspiciousTitlesRule
-from ..settings import LintSettings
 
 
 def default_rules(settings: LintSettings | None = None) -> tuple[LintRule, ...]:
@@ -54,18 +54,18 @@ def default_rules(settings: LintSettings | None = None) -> tuple[LintRule, ...]:
 
 
 __all__ = [
+    "AberrantValuesRule",
+    "DuplicateCanonicalKeyRule",
+    "DuplicateCanonicalRule",
+    "DuplicateExternalIdRule",
     "LintContext",
     "LintIssue",
     "LintRule",
-    "Severity",
     "LintSettings",
-    "RequiredFieldsRule",
-    "AberrantValuesRule",
-    "RecommendedByConsistencyRule",
-    "SuspiciousTitlesRule",
-    "DuplicateCanonicalRule",
-    "DuplicateCanonicalKeyRule",
-    "DuplicateExternalIdRule",
     "OrphanMentionRule",
+    "RecommendedByConsistencyRule",
+    "RequiredFieldsRule",
+    "Severity",
+    "SuspiciousTitlesRule",
     "default_rules",
 ]

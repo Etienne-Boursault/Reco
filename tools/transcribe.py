@@ -104,7 +104,7 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     Renvoie le chemin du fichier audio extrait (m4a/mp3).
     """
     try:
-        import yt_dlp  # type: ignore  # noqa: PLC0415 — import paresseux volontaire.
+        import yt_dlp  # type: ignore
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
             "yt-dlp n'est pas installé. Ajoute-le (pip install yt-dlp) pour "
@@ -171,7 +171,7 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
     timestamps, un segment par ligne : « [HH:MM:SS] texte ».
     """
     try:
-        from faster_whisper import WhisperModel  # type: ignore  # noqa: PLC0415
+        from faster_whisper import WhisperModel  # type: ignore
     except ImportError as exc:  # pragma: no cover
         raise RuntimeError(
             "faster-whisper n'est pas installé. Installe les dépendances "

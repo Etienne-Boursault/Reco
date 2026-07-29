@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from domain.item import ExternalIds, Item, ItemType
 from domain.mention import Mention, SourceRef
-
 from lint.rules.base import LintContext, Severity
 from lint.rules.orphan_mention import OrphanMentionRule
 

@@ -16,8 +16,9 @@ Stratégie (cf. ADR 0033) :
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from typing import Final, Sequence
+from typing import Final
 
 import numpy as np
 
@@ -115,7 +116,7 @@ class FastEmbedEncoder:
     @staticmethod
     def _load(model_name: str):  # pragma: no cover - dépend de fastembed
         try:
-            from fastembed import TextEmbedding  # noqa: PLC0415
+            from fastembed import TextEmbedding
         except ImportError as exc:
             raise RuntimeError(
                 "Le module `fastembed` est requis pour l'encodage. "

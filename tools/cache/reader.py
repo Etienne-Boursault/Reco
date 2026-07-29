@@ -14,10 +14,11 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, Final, Iterator, Mapping
+from typing import Any, Final
 
 from cache.fts import fts_query
 from cache.schema import (
@@ -211,10 +212,10 @@ class CacheReader:
         except sqlite3.ProgrammingError:
             pass
 
-    def __enter__(self) -> "CacheReader":
+    def __enter__(self) -> CacheReader:
         return self
 
-    def __exit__(self, *exc: Any) -> None:
+    def __exit__(self, *exc: object) -> None:
         self.close()
 
     # ----- Items -----
@@ -263,7 +264,10 @@ class CacheReader:
                 "AND g.value = ?)"
             )
             params.append(guest)
-        sql = f"SELECT i.* FROM items i WHERE {' AND '.join(clauses)} ORDER BY i.id"
+        # S608 écarté : `clauses` ne contient que des littéraux définis dans
+        # cette fonction ; TOUTES les valeurs passent par `params` et les
+        # placeholders `?`. Aucune donnée externe n'entre dans le SQL.
+        sql = f"SELECT i.* FROM items i WHERE {' AND '.join(clauses)} ORDER BY i.id"  # noqa: S608
         cur = self._conn.execute(sql, params)
         for row in cur:
             yield _row_to_item(row)

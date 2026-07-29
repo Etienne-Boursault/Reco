@@ -1,22 +1,20 @@
 """Tests Phase-4 fixer pour `tools/stats/*` + `tools/build_stats.py`."""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
 
 from stats.aggregator import (
+    _fr_sort_key,
+    _slugify,
     _unique_slug_impl,
     compute_global_counts,
     compute_top_guests,
     unique_slug,
-    _fr_sort_key,
-    _slugify,
 )
 from stats.models import GlobalCounts
 from stats.settings import StatsSettings
-
 
 # --- B-MED-14 — recommendedBy guard ----------------------------------------
 

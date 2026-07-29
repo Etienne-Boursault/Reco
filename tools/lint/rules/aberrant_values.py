@@ -22,8 +22,8 @@ import re
 from collections.abc import Iterator
 from typing import Any
 
-from .base import LintContext, LintIssue, LintRule, Severity
 from ..settings import LintSettings
+from .base import LintContext, LintIssue, LintRule, Severity
 
 _TS_HHMMSS = re.compile(r"^(\d{2}):(\d{2}):(\d{2})$")
 _TS_MMSS = re.compile(r"^(\d{1,2}):(\d{2})$")

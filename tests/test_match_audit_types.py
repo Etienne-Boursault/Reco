@@ -1,8 +1,9 @@
 """Tests : tools.match_audit.types — MatchSuspicion + Severity."""
 from __future__ import annotations
 
-import pytest
+import dataclasses
 
+import pytest
 from tools.match_audit.types import (
     KNOWN_KINDS,
     MatchSuspicion,
@@ -69,5 +70,5 @@ def test_known_kinds_documents_three():
 
 def test_match_suspicion_is_frozen():
     s = MatchSuspicion(kind="k", detail="d", severity=Severity.ERROR)
-    with pytest.raises(Exception):
+    with pytest.raises(dataclasses.FrozenInstanceError):
         s.detail = "x"  # type: ignore[misc]

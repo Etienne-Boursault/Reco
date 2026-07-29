@@ -4,8 +4,8 @@ from __future__ import annotations
 import pytest
 
 import review_doubts
-from review_doubts import LOW_CONFIDENCE, collect_doubts, render_doubts
 from _html_helpers import parse
+from review_doubts import collect_doubts, render_doubts
 
 
 # ---- Fixtures ---------------------------------------------------------------

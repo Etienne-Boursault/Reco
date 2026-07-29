@@ -6,7 +6,7 @@ le snapshot Python doit reproduire les mêmes counts, tris, et clés.
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pytest
 
@@ -21,7 +21,6 @@ from stats.aggregator import (
     compute_type_distribution,
     public_mentions,
 )
-
 
 # --- Fixtures ---------------------------------------------------------------
 
@@ -90,7 +89,7 @@ def test_slugify_handles_diacritics_and_empty():
 
 def test_month_key_variants():
     assert _month_key("2024-01-15T00:00:00Z") == "2024-01"
-    assert _month_key(datetime(2024, 3, 1, tzinfo=timezone.utc)) == "2024-03"
+    assert _month_key(datetime(2024, 3, 1, tzinfo=UTC)) == "2024-03"
     assert _month_key(None) is None
     assert _month_key("pas une date") is None
     # Type inattendu → None (couvre la branche `dt is None`).
@@ -196,7 +195,7 @@ def test_month_key_handles_naive_datetime_via_utc():
     assert _month_key(naive) == "2024-05"
     # tz non-UTC → converti en UTC, mois peut shifter mais ici 12:00 PT reste
     # le même jour en UTC.
-    aware = datetime(2024, 5, 12, 12, 0, tzinfo=timezone.utc)
+    aware = datetime(2024, 5, 12, 12, 0, tzinfo=UTC)
     assert _month_key(aware) == "2024-05"
 
 

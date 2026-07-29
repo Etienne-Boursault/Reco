@@ -28,8 +28,9 @@ from __future__ import annotations
 
 import sqlite3
 import threading
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Final, Iterator
+from typing import Final
 
 import numpy as np
 
@@ -250,7 +251,7 @@ class EmbeddingStore:
         except sqlite3.ProgrammingError:  # pragma: no cover - idempotence
             pass
 
-    def __enter__(self) -> "EmbeddingStore":
+    def __enter__(self) -> EmbeddingStore:
         return self
 
     def __exit__(self, *exc: object) -> None:

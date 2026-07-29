@@ -440,7 +440,7 @@ def test_main_polls_again_after_a_failed_download(paths, monkeypatch):
 def test_main_stops_immediately_when_nothing_expected(paths, monkeypatch):
     paths.guids.parent.mkdir(parents=True)
     paths.guids.write_text("", encoding="utf-8")
-    monkeypatch.setattr(acl, "_list_remote_transcripts", lambda: {})
+    monkeypatch.setattr(acl, "_list_remote_transcripts", dict)
     monkeypatch.setattr(acl.time, "sleep",
                         lambda s: pytest.fail("ne doit pas dormir"))
 

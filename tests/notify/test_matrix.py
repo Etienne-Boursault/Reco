@@ -19,7 +19,7 @@ class _FakeSession:
         self.exc = exc
         self.calls = []
 
-    def put(self, url, json, headers, timeout):  # noqa: A002 (mimics requests API)
+    def put(self, url, json, headers, timeout):
         self.calls.append({"url": url, "json": json, "headers": headers, "timeout": timeout})
         if self.exc is not None:
             raise self.exc
@@ -97,7 +97,7 @@ def test_uses_requests_when_no_session_injected(monkeypatch):
 
     captured = {}
 
-    def _put(url, json=None, headers=None, timeout=None):  # noqa: A002
+    def _put(url, json=None, headers=None, timeout=None):
         captured["url"] = url
         captured["json"] = json
         captured["timeout"] = timeout

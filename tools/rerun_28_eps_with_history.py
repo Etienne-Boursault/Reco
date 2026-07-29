@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent.parent
 TOOLS = ROOT / "tools"
 sys.path.insert(0, str(TOOLS))
 
-from common import log  # noqa: E402
+from common import log
 
 PROGRESS = TOOLS / "output" / "whisper-cmp" / "auto_progress.json"
 PYTHON = sys.executable
@@ -40,7 +40,8 @@ def main() -> None:
                    "--source", "un-bon-moment",
                    "--provider", provider, "--guid", guid]
             r = subprocess.run(cmd, capture_output=True, text=True,
-                               encoding="utf-8", errors="replace")
+                               encoding="utf-8", errors="replace",
+                               check=False)
             if r.returncode != 0:
                 log.warning("KO : %s", r.stderr[-300:])
     log.info("Terminé.")

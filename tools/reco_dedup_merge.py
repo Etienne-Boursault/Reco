@@ -17,13 +17,20 @@ import os
 import shutil
 import time
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from common import TOOLS_DIR, log, normalize_text, read_json, reco_prefix
 from extraction_history import (
-    derive_extractors, from_dict as _entry_from_dict, merge_history,
-    pick_display_state, to_dict as _entry_to_dict,
+    derive_extractors,
+    merge_history,
+    pick_display_state,
+)
+from extraction_history import (
+    from_dict as _entry_from_dict,
+)
+from extraction_history import (
+    to_dict as _entry_to_dict,
 )
 
 BACKUP_DIR: Path = TOOLS_DIR / "output" / "dedup-backup"
@@ -31,13 +38,13 @@ BACKUP_DIR: Path = TOOLS_DIR / "output" / "dedup-backup"
 
 # --- Helpers I/O ----------------------------------------------------------
 def _now_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    return datetime.now(UTC).replace(microsecond=0).isoformat()
 
 
 def _path_for_reco(source_id: str, reco_id: str,
                    recos_root: Path | None = None) -> Path | None:
     """Localise le fichier JSON d'une reco (scan dossier — non cached)."""
-    from common import recos_dir_for  # noqa: PLC0415
+    from common import recos_dir_for
     d = recos_root or recos_dir_for(source_id)
     if not d.exists():
         return None
@@ -228,7 +235,7 @@ def _write_backup(
     """Crée le dossier daté du backup (kept + losers + manifest)."""
     if not (losers_to_delete or keep_path.exists()):
         return None
-    timestamp = datetime.now(timezone.utc).isoformat(
+    timestamp = datetime.now(UTC).isoformat(
         timespec="microseconds",
     ).replace(":", "-")
     merge_id = uuid.uuid4().hex[:8]
@@ -313,7 +320,7 @@ def merge_cluster(
     autres fichiers n'existent déjà plus.
     """
     # Import tardif pour éviter le cycle reco_dedup ↔ reco_dedup_merge.
-    from reco_dedup import is_cluster_compatible  # noqa: PLC0415
+    from reco_dedup import is_cluster_compatible
 
     members = list(cluster.members)
     keep = next((m for m in members if m.get("id") == keep_id), None)
@@ -428,7 +435,7 @@ def restore_last_backup(source_id: str, backup_root: Path | None = None) -> dict
 
     Retourne `{n_restored, timestamp_restored, merge_id}`.
     """
-    from common import recos_dir_for  # noqa: PLC0415
+    from common import recos_dir_for
     root = backup_root or BACKUP_DIR
     if not root.exists():
         return {

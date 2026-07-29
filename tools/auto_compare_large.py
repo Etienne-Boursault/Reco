@@ -30,9 +30,13 @@ import requests
 ROOT = Path(__file__).parent.parent
 TOOLS = ROOT / "tools"
 sys.path.insert(0, str(TOOLS))
-from common import (  # noqa: E402
-    log, transcript_path_for, find_episode_by_guid,
-    read_json, write_json_if_changed, recos_dir_for,
+from common import (
+    find_episode_by_guid,
+    log,
+    read_json,
+    recos_dir_for,
+    transcript_path_for,
+    write_json_if_changed,
 )
 
 # Sources de transcripts : portable (LAPTOP) + Mac. L'orchestrateur polle les
@@ -139,7 +143,7 @@ def _run_extract(provider: str, guid: str) -> int:
            "--source", SOURCE_ID, "--provider", provider, "--guid", guid]
     log.info("extract_recos %s %s …", provider, guid)
     r = subprocess.run(cmd, capture_output=True, text=True,
-                       encoding="utf-8", errors="replace")
+                       encoding="utf-8", errors="replace", check=False)
     if r.returncode != 0:
         log.warning("extract %s %s exit=%d\nSTDERR:\n%s", provider, guid,
                     r.returncode, r.stderr[-500:])

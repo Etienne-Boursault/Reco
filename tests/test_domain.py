@@ -6,6 +6,8 @@ classes qui dépendront de ces dataclasses).
 """
 from __future__ import annotations
 
+import pytest
+
 from domain import Episode, Reco, Source, TranscriptSegment
 
 
@@ -106,8 +108,5 @@ def test_transcript_segment_immutable():
     assert seg.start_seconds == 42
     # frozen=True interdit l'assignation après création
     import dataclasses
-    try:
+    with pytest.raises(dataclasses.FrozenInstanceError):
         seg.start_seconds = 99  # type: ignore[misc]
-        assert False, "TranscriptSegment devrait être frozen"
-    except dataclasses.FrozenInstanceError:
-        pass  # comportement attendu

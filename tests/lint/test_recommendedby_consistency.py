@@ -1,10 +1,10 @@
 """Tests TDD pour `RecommendedByConsistencyRule` (C3/H4/H8/L11)."""
 from __future__ import annotations
 
-from lint.rules.base import LintContext, Severity
-from lint.rules.recommendedby_consistency import RecommendedByConsistencyRule
 from tools.config.schema import SourceConfig
 
+from lint.rules.base import LintContext, Severity
+from lint.rules.recommendedby_consistency import RecommendedByConsistencyRule
 
 _HOST_CFG = SourceConfig(
     id="ubm", title="UBM", reco_prefix="ubm", hosts=("Alice",),

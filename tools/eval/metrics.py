@@ -40,8 +40,8 @@ from typing import Final
 from tools.eval.types import EvalDetail, EvalMetrics
 
 __all__ = [
-    "EvalResult",
     "EvalMetrics",
+    "EvalResult",
     "MatchVerdict",
     "f1",
     "f1_inclusive_ts",

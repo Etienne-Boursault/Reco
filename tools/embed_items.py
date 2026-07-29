@@ -27,10 +27,10 @@ import json
 import logging
 import sys
 import time
+from collections.abc import Callable, Iterator, Sequence
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Callable, Iterator, Sequence
 
 import numpy as np
 
@@ -188,11 +188,11 @@ def run_embed(
     stats = EmbedRunStats()
     t0 = time.perf_counter()
     store_open = store_factory or (lambda p: EmbeddingStore(p))
-    now = now_iso or (lambda: datetime.now(timezone.utc).isoformat(timespec="seconds"))
+    now = now_iso or (lambda: datetime.now(UTC).isoformat(timespec="seconds"))
 
     if opts.dry_run:
         for source_id in opts.sources:
-            for item in _iter_items_for_source(source_id, items_root=opts.items_root):
+            for _item in _iter_items_for_source(source_id, items_root=opts.items_root):
                 stats.n_seen += 1
         stats.duration_s = time.perf_counter() - t0
         out_log.info(
@@ -417,12 +417,12 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     # Import paresseux de fastembed via factory — JAMAIS en tests.
     def _default_encoder_factory(model_name: str) -> Encoder:
-        from embeddings.encoder import FastEmbedEncoder  # noqa: PLC0415
+        from embeddings.encoder import FastEmbedEncoder
 
         return FastEmbedEncoder(model_name=model_name)
 
     # Lock pipeline (refuse si review_server tourne).
-    from review_lock import (  # noqa: PLC0415
+    from review_lock import (
         ServerLockBusy,
         acquire_pipeline_lock,
     )

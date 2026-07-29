@@ -76,13 +76,13 @@ DEFAULT_CHECK_FUNCTIONS: tuple = (
 )  # intro_similarity exige un transcript_repo, voir default_service.
 
 __all__ = [
-    "CommonEpisodeRepo",
     "DEFAULT_CHECK_FUNCTIONS",
+    "KNOWN_KINDS",
+    "CommonEpisodeRepo",
     "DurationCheck",
     "FileTranscriptRepo",
     "IntroTextSimilarityCheck",
     "JsonlAuditTrail",
-    "KNOWN_KINDS",
     "MatchAuditResult",
     "MatchAuditService",
     "MatchAuditSettings",

@@ -62,7 +62,7 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
     # --- Étape 1 : fetch ---------------------------------------------------
     if "fetch" in steps:
         log.info("--- [1/?] FETCH ---")
-        from fetch_episodes import fetch_episodes  # noqa: PLC0415
+        from fetch_episodes import fetch_episodes
         try:
             fetch_episodes(source_id, limit=limit)
         except Exception as exc:  # noqa: BLE001
@@ -77,7 +77,7 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
     # --- Étape 2 : transcribe ---------------------------------------------
     if "transcribe" in steps:
         log.info("--- [2/?] TRANSCRIBE (%d épisode[s]) ---", len(episode_paths))
-        from transcribe import transcribe_episode  # noqa: PLC0415
+        from transcribe import transcribe_episode
         for path in episode_paths:
             try:
                 transcribe_episode(source_id, path, whisper_model, language, force)
@@ -89,9 +89,11 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
     if "extract" in steps:
         log.info("--- [3/?] EXTRACT (%d épisode[s], modèle %s%s) ---",
                  len(episode_paths), extract_model, ", batch" if batch else "")
-        from common import make_anthropic_client  # noqa: PLC0415
-        from extract_recos import (  # noqa: PLC0415
-            extract_all_batch, extract_for_episode, new_run_index,
+        from common import make_anthropic_client
+        from extract_recos import (
+            extract_all_batch,
+            extract_for_episode,
+            new_run_index,
         )
         client = None
         if not dry_run:
@@ -107,8 +109,9 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
         # M1 (revue 2026-07-19) : sérialiser les ÉCRITURES d'extraction sous le
         # verrou pipeline (comme extract_recos.main). Sans ça, un re-extract
         # concurrent au review_server peut écraser une validation humaine.
-        import contextlib  # noqa: PLC0415
-        from review_lock import ServerLockBusy, acquire_pipeline_lock  # noqa: PLC0415
+        import contextlib
+
+        from review_lock import ServerLockBusy, acquire_pipeline_lock
         lock_cm = (contextlib.nullcontext() if dry_run
                    else acquire_pipeline_lock(force=force))
         try:

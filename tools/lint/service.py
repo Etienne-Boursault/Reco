@@ -66,7 +66,7 @@ class LintReport:
         *,
         severity: Severity | None = None,
         rule: str | None = None,
-    ) -> "LintReport":
+    ) -> LintReport:
         """Renvoie un sous-rapport restreint aux issues correspondants.
 
         Pure (ne mute pas `self`). Recompte les agrégats sur le sous-set
@@ -93,7 +93,7 @@ class LintReport:
         *,
         n_errors_unfiltered: int | None = None,
         n_warnings_unfiltered: int | None = None,
-    ) -> "LintReport":
+    ) -> LintReport:
         issues_t = tuple(issues)
         sev_counts: Counter[Severity] = Counter()
         for i in issues_t:
@@ -159,4 +159,4 @@ class LintService:
         return LintReport.from_issues(collected)
 
 
-__all__ = ["LintService", "LintReport"]
+__all__ = ["LintReport", "LintService"]

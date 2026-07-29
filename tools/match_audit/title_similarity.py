@@ -15,15 +15,16 @@ expose seulement ``_similarity`` privé — refacto vers une API publique
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from difflib import SequenceMatcher
-from typing import Any, Mapping
-
-from common import normalize_text  # type: ignore[attr-defined]
+from typing import Any
 
 from tools.match_audit.protocols import EpisodeView
 from tools.match_audit.settings import DEFAULT_TITLE_THRESHOLD
 from tools.match_audit.types import MatchSuspicion, Severity
+
+from common import normalize_text  # type: ignore[attr-defined]
 
 
 def _coerce(ep: EpisodeView | Mapping[str, Any]) -> EpisodeView | None:

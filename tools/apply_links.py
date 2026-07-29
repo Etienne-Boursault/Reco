@@ -38,8 +38,8 @@ from urllib.parse import urlparse
 # Permettre l'exécution directe `python tools/apply_links.py`.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from common import read_json, recos_dir_for, write_json_if_changed  # noqa: E402
-from link_check import ProbeResult, verify_url  # noqa: E402
+from common import read_json, recos_dir_for, write_json_if_changed
+from link_check import ProbeResult, verify_url
 
 DEFAULT_SOURCE = "un-bon-moment"
 

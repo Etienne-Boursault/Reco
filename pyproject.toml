@@ -76,3 +76,108 @@ exclude_lines = [
 
 [tool.coverage.html]
 directory = "htmlcov"
+
+# ---------------------------------------------------------------------------
+# Lint Python (ruff) — jeu de règles CHOISI, pas hérité.
+#
+# Pourquoi un `select` explicite plutôt que les défauts : le jeu par défaut de
+# ruff CHANGE d'une version à l'autre (0.16 active I, S, BLE, DTZ, TRY… que les
+# versions antérieures n'avaient pas). La CI installe `ruff` sans épingle : sans
+# `select`, une mise à jour de ruff peut rendre le lint rouge du jour au
+# lendemain sur des règles que personne n'a choisies. On fige donc le contrat.
+#
+# Le lint est BLOQUANT en CI depuis le 2026-07-29 (`|| true` retiré). Toute
+# règle désactivée ci-dessous l'est avec sa raison : une exclusion sans
+# justification finit par masquer autre chose.
+# ---------------------------------------------------------------------------
+[tool.ruff]
+target-version = "py311"   # aligné sur `requires-python = ">=3.11"` ci-dessus
+line-length = 100          # 90 lignes sur 87 000 dépassent : repère, pas dogme
+src = ["tools", "tests"]   # rend `common`, `cache`… first-party pour l'isort
+extend-exclude = ["tools/.venv", "tools/output"]
+
+[tool.ruff.lint]
+select = [
+    "F",                    # pyflakes — imports morts, variables non utilisées
+    "E4", "E7", "E9",       # pycodestyle : imports, statements, erreurs de syntaxe
+    "W",                    # espaces en fin de ligne / fichier
+    "I",                    # isort — ordre des imports
+    "UP",                   # pyupgrade — syntaxe obsolète vs py311
+    "B",                    # bugbear — pièges réels (mutable default, closures…)
+    "S",                    # bandit — subprocess, HTTP, sérialisation
+    "BLE",                  # except nu qui avale les erreurs
+    "ISC",                  # concaténation implicite = virgule oubliée
+    "PIE",                  # simplifications sans ambiguïté
+    "RUF",                  # règles propres à ruff
+    "PLE", "PLW",           # pylint : erreurs et avertissements (pas le style)
+    "FURB",                 # modernisations sûres
+    "T20",                  # print() hors CLI
+]
+ignore = [
+    # --- Changeraient le COMPORTEMENT : hors périmètre d'un passage de lint ---
+    # `TRY004` veut `TypeError` là où le domaine lève `ValueError` (64 cas).
+    # `tools/` contient 46 `except ValueError` qui capturent précisément ces
+    # validations — notamment `repository/migration/reco_parser.py`, qui les
+    # convertit en erreurs de migration lisibles. Basculer en `TypeError` les
+    # ferait remonter brutes. C'est un refactor de la hiérarchie d'exceptions,
+    # à décider pour lui-même.
+    "TRY004",
+    # `DTZ` exige des datetimes conscients du fuseau. Les 7 cas restants sont
+    # volontairement locaux : horodatage de NOMS DE FICHIERS et parsing de
+    # dates déjà normalisées en amont. Les passer en UTC changerait les valeurs
+    # produites, donc des noms de fichiers et des comparaisons.
+    "DTZ",
+
+    # --- Style : le code est cohérent, la règle ne l'est pas avec lui ---------
+    # `dict(a=1)` est utilisé délibérément pour les tables de paramètres
+    # (lisible, diffs propres) ; `{...}` n'apporte rien ici.
+    "C408",
+    # `contextlib.suppress` masque l'intention là où ce dépôt écrit des
+    # `try/except: pass` explicitement commentés (relâchement best-effort de
+    # verrou). Les cas concernés portent déjà `# noqa: S110` avec leur raison.
+    "SIM105",
+    # Déballages partiels (`a, _ = f()`) très fréquents dans les tests ; exiger
+    # le préfixe `_` sur chaque membre non utilisé n'apporte pas de sécurité.
+    "RUF059",
+    # Messages d'exception assignés à une variable avant `raise` : convention
+    # inverse de celle du dépôt, qui inline des f-strings explicites.
+    "TRY003", "EM101", "EM102",
+    # Typographie FRANÇAISE : « », apostrophes ’, espaces insécables, tirets
+    # cadratins. `RUF001/002/003` les signalent comme « caractères ambigus » —
+    # c'est du texte destiné à être lu, pas de l'homoglyphe accidentel.
+    "RUF001", "RUF002", "RUF003",
+    # Les scripts CLI de `tools/` insèrent leur dossier dans `sys.path` AVANT
+    # d'importer leurs voisins, pour rester lançables par `python tools/x.py`.
+    # L'import ne peut donc pas être en tête de fichier — c'est structurel.
+    "E402",
+    # `subprocess` avec `git`, `ssh`, `node`, `python` : commandes construites
+    # en dur dans le code, jamais à partir d'entrée utilisateur, et sans shell.
+    # Exiger le chemin absolu casserait la portabilité (PATH du runner CI).
+    "S603", "S607",
+    # `assert` de CONTRAT INTERNE (invariants documentés, ex. « le serveur est
+    # mono-thread par conception »). La validation des entrées, elle, lève des
+    # exceptions explicites — ce n'est pas ce que ces asserts font.
+    "S101",
+    # Style de ligne compacte assumé (`if not x: continue`, lambdas nommées
+    # courtes, `l` comme variable locale de boucle) : cohérent dans tout le
+    # dépôt, sans ambiguïté de lecture.
+    "E701", "E702", "E731", "E741",
+    # Micro-optimisations de style sans effet sur la correction :
+    # lambda-wrapper, concaténation de littéraux, réassignation de variable de
+    # boucle. Les corriger produirait un diff large pour un gain nul.
+    "PLW0108", "RUF005", "PLW2901",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Les tests importent des fixtures pytest d'un module de test à l'autre
+# (`from test_review_server import fake_source`). Chaque usage en paramètre est
+# vu par ruff comme une redéfinition du nom importé. F811 reste ACTIF partout
+# ailleurs : c'est lui qui attrape un test qui en masque silencieusement un
+# autre — le dépôt a déjà perdu 45 tests de cette façon côté frontend.
+"tests/test_review_routes_edge.py" = ["F811"]
+# Les scripts CLI communiquent par `print` : c'est leur sortie, pas du debug.
+"tools/*.py" = ["T20"]
+"scripts/*.py" = ["T20"]
+# `assert` est le vocabulaire de pytest ; les données de test en dur ne sont
+# pas des secrets.
+"tests/**" = ["S101", "S105", "S106", "S108", "S311"]

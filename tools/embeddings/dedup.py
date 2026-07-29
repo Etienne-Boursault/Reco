@@ -113,7 +113,7 @@ class CrossEpisodeDedup:
         sel_s = scores[mask]
 
         pairs: list[DedupPair] = []
-        for i, j, s in zip(sel_i, sel_j, sel_s):
+        for i, j, s in zip(sel_i, sel_j, sel_s, strict=False):
             a, b = ids[i], ids[j]
             if a == b:  # pragma: no cover - jamais avec triu strict
                 continue

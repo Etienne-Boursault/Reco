@@ -19,7 +19,6 @@ from typing import Any, TypeVar
 
 from common import atomic_write_text
 
-
 # Slug court d'identité d'entité (item_id, mention_id). Aligné sur
 # `Item.id` côté domaine.
 _ID_PATTERN = re.compile(r"^[a-z0-9-]{1,64}$")
@@ -111,8 +110,8 @@ def write_json_idempotent(
 
 
 __all__ = [
+    "load_json_safely",
     "validate_id",
     "validate_source_id",
-    "load_json_safely",
     "write_json_idempotent",
 ]

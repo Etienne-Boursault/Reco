@@ -25,7 +25,6 @@ from enrich_audit.types import (
     Suspicion,
 )
 
-
 # ===== sidecar_path ========================================================
 
 

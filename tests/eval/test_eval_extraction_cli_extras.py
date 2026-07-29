@@ -7,7 +7,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools import eval_extraction
 from tools.eval.types import RunManifest
 

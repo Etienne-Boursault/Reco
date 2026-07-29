@@ -22,7 +22,7 @@ def _have_node() -> bool:
 def test_bin_reco_help_lists_commands() -> None:
     res = subprocess.run(
         ["node", str(BIN), "--help"],
-        capture_output=True, text=True, timeout=10,
+        capture_output=True, text=True, timeout=10, check=False,
     )
     # --help → exit 0 ; affichage sur stderr (cf. printHelp()).
     assert res.returncode == 0
@@ -35,7 +35,7 @@ def test_bin_reco_help_lists_commands() -> None:
 def test_bin_reco_unknown_command_exits_2() -> None:
     res = subprocess.run(
         ["node", str(BIN), "nope-not-a-command"],
-        capture_output=True, text=True, timeout=10,
+        capture_output=True, text=True, timeout=10, check=False,
     )
     assert res.returncode == 2
     assert "unknown command" in res.stderr.lower()
@@ -45,6 +45,6 @@ def test_bin_reco_unknown_command_exits_2() -> None:
 def test_bin_reco_no_args_exits_2() -> None:
     res = subprocess.run(
         ["node", str(BIN)],
-        capture_output=True, text=True, timeout=10,
+        capture_output=True, text=True, timeout=10, check=False,
     )
     assert res.returncode == 2

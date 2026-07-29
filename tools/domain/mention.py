@@ -261,10 +261,10 @@ class Mention:
 
 
 __all__ = [
-    "MentionKind",
-    "MentionStatus",
-    "TranscriptSource",
-    "SourceRef",
     "ExtractionHistoryEntry",
     "Mention",
+    "MentionKind",
+    "MentionStatus",
+    "SourceRef",
+    "TranscriptSource",
 ]

@@ -8,7 +8,6 @@ from __future__ import annotations
 import html
 import os
 import re
-import urllib.parse
 from pathlib import Path
 
 from common import log, read_json, write_json_if_changed
@@ -259,10 +258,11 @@ def apply_reenrich(path: Path, reco_id: str) -> tuple[str, str, str]:
     # Imports paresseux groupés : évite de charger requests/tmdb au démarrage
     # du serveur (gain de ~150ms à l'import). On les fait tous au même endroit
     # pour la lisibilité, plus de re-import dans la closure _error_message.
-    import requests  # noqa: PLC0415
-    import enrich_music  # noqa: PLC0415
-    import enrich_tmdb  # noqa: PLC0415
-    from enrich_tmdb import TMDBAPIError  # noqa: PLC0415
+    import requests
+
+    import enrich_music
+    import enrich_tmdb
+    from enrich_tmdb import TMDBAPIError
 
     title = reco.get("title", "?")
     statuses: list[str] = []
@@ -337,6 +337,6 @@ _FORM_EXPORTS = frozenset({
 
 def __getattr__(name: str):
     if name in _FORM_EXPORTS:
-        import review_edit_form as _form  # noqa: PLC0415 — lazy, anti-cycle
+        import review_edit_form as _form
         return getattr(_form, name)
     raise AttributeError(f"module 'review_edit' has no attribute {name!r}")

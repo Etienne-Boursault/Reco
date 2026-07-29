@@ -16,7 +16,6 @@ import logging
 from pathlib import Path
 
 import pytest
-
 from tools.config.loader import DEFAULT_SOURCES_DIR
 from tools.config.schema import SourceConfig
 

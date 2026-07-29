@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.match_audit.flag_writer import (
     CommonEpisodeRepo,
     clear_match_suspect_flag,

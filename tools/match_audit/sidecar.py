@@ -15,15 +15,14 @@ from __future__ import annotations
 import json
 import logging
 from collections.abc import Iterator
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-
-from audit_core.sidecar import _safe_segment
-
-from common import OUTPUT_DIR, atomic_write_text, slugify  # type: ignore[attr-defined]
 
 from tools.match_audit.service import MatchAuditResult
 from tools.match_audit.types import severity_value
+
+from audit_core.sidecar import _safe_segment
+from common import OUTPUT_DIR, atomic_write_text, slugify  # type: ignore[attr-defined]
 
 #: Version courante du schéma sidecar match_audit. R-01 (ADR 0019) :
 #: tous les sidecars écrits depuis Sprint 2 portent ``schemaVersion: 1``.
@@ -68,7 +67,7 @@ def sidecar_dir_for(
 
 
 def _utcnow_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace(
         "+00:00", "Z",
     )
 

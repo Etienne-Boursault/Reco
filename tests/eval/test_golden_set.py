@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.eval.golden_set import (
     ExpectedReco,
     GoldenEpisode,
@@ -13,7 +12,6 @@ from tools.eval.golden_set import (
     GoldenSetError,
     load_golden_set,
 )
-
 
 GOLDEN_FIXTURES = Path(__file__).parent / "golden_set"
 

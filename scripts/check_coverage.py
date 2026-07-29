@@ -29,8 +29,8 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 #: Métriques vérifiées : clé dans `totals`, libellé, et de quoi chiffrer le
 #: manque (total, couvert) pour que le message d'échec soit actionnable.

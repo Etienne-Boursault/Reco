@@ -34,7 +34,7 @@ import logging
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Protocol, runtime_checkable
+from typing import Any, ClassVar, Protocol, runtime_checkable
 
 from common import atomic_write_text
 
@@ -123,7 +123,7 @@ class MigrationRunner:
         mentions_base_dir: Path,
         sources_base_dir: Path,
         *,
-        chain_provider: Callable[[str, int], list["Migration"]] | None = None,
+        chain_provider: Callable[[str, int], list[Migration]] | None = None,
     ) -> None:
         """Construit le runner.
 
@@ -143,11 +143,11 @@ class MigrationRunner:
         # `_resolve_chain_provider()`. Permet aux tests historiques de
         # monkeypatcher `migrations.runner.discover_migration_chain` sans
         # casser la résolution.
-        self._chain_provider: Callable[[str, int], list["Migration"]] | None = (
+        self._chain_provider: Callable[[str, int], list[Migration]] | None = (
             chain_provider
         )
 
-    def _resolve_chain_provider(self) -> Callable[[str, int], list["Migration"]]:
+    def _resolve_chain_provider(self) -> Callable[[str, int], list[Migration]]:
         """Renvoie le provider effectif (injecté ou défaut module-level)."""
         if self._chain_provider is not None:
             return self._chain_provider
@@ -186,7 +186,7 @@ class MigrationRunner:
         return sorted(d.glob("*.json")) if d.is_dir() else []
 
     # Table déclarative entity -> strategy (SSOT du layout disque).
-    _PATH_STRATEGIES: dict[str, Callable[["MigrationRunner", str], list[Path]]] = {
+    _PATH_STRATEGIES: ClassVar[dict[str, Callable[[MigrationRunner, str], list[Path]]]] = {
         "item": _iter_per_source_dir_items,
         "mention": _iter_per_source_dir_mentions,
         "source": _iter_flat,

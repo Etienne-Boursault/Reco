@@ -16,7 +16,6 @@ import shutil
 from pathlib import Path
 
 import pytest
-
 from tools.config.loader import ConfigLoadError
 from tools.config.registry import (
     SourceRegistry,
@@ -64,7 +63,7 @@ def test_pipeline_reco_prefix_reads_from_config_not_heuristic(tmp_path):
     assert cfg.reco_prefix == "xyz"
     # Sanity : l'heuristique sur ce slug serait "abg", pas "xyz".
     from tools.common import _RE_SLUG_NONALNUM_STRICT  # noqa: F401
-    segments = [s for s in "alpha-beta-gamma".split("-") if s]
+    segments = [s for s in ["alpha", "beta", "gamma"] if s]
     heuristic_initials = "".join(s[0] for s in segments)
     assert heuristic_initials == "abg" != cfg.reco_prefix
 

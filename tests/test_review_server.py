@@ -10,7 +10,6 @@ import io
 import json
 import urllib.parse
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -19,7 +18,6 @@ import review_server as rs
 from _html_helpers import (
     find_form,
     find_input,
-    find_link,
     find_radio,
     find_rows,
     has_class,
@@ -821,7 +819,7 @@ def test_handler_post_validate(fake_source):
     # Doit rediriger vers la page de l'épisode
     assert h._sent_headers["Location"].startswith("/ep?guid=ep-001")
     # Vérifie l'écriture
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
     assert reco["status"] == "validated"
     assert reco["recommendedBy"] == "Alice & Bob & Charlie"
@@ -832,7 +830,7 @@ def test_handler_post_validate_no_names_removes_field(fake_source):
     body = b"id=ubm-002&action=validate"
     h = _FakeHandler(fake_source, "/save", body)
     h.do_POST()
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-002.json")
     assert reco["status"] == "validated"
     assert "recommendedBy" not in reco
@@ -842,7 +840,7 @@ def test_handler_post_discard(fake_source):
     body = b"id=ubm-001&action=discard"
     h = _FakeHandler(fake_source, "/save", body)
     h.do_POST()
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
     assert reco["status"] == "discarded"
 
@@ -1082,8 +1080,8 @@ def test_post_edit_from_doutes_action_discard_sets_status(fake_source):
 def test_save_pushes_undo_and_undo_save_restores(fake_source):
     """Valider une reco depuis /doutes empile un instantané ; POST /undo-save la
     restaure à son état d'avant (elle réapparaît dans la file). User 2026-07-24."""
-    from common import read_json, recos_dir_for
     import review_undo
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-001.json"
     assert read_json(p)["status"] == "draft"
     h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
@@ -1183,7 +1181,7 @@ def test_post_edit_empty_creator_drops_key(fake_source):
 
 
 def test_post_edit_updates_ext_tmdb(fake_source, tmp_path):
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-004.json"
     p.write_text(json.dumps({
         "id": "ubm-004", "episodeGuid": "ep-001", "types": ["film"],
@@ -1199,7 +1197,7 @@ def test_post_edit_updates_ext_tmdb(fake_source, tmp_path):
 
 
 def test_post_edit_clearing_ext_removes_key(fake_source):
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-005.json"
     p.write_text(json.dumps({
         "id": "ubm-005", "episodeGuid": "ep-001", "types": ["film"],
@@ -1216,7 +1214,7 @@ def test_post_edit_clearing_ext_removes_key(fake_source):
 
 
 def test_post_edit_watch_providers_preserve_and_drop(fake_source):
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-006.json"
     p.write_text(json.dumps({
         "id": "ubm-006", "episodeGuid": "ep-001", "types": ["film"],
@@ -1241,7 +1239,7 @@ def test_post_edit_watch_providers_preserve_and_drop(fake_source):
 
 def test_post_edit_clearing_all_ext_drops_externalIds_key(fake_source):
     """Vider le SEUL champ ext présent → la clé externalIds disparait."""
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-007.json"
     p.write_text(json.dumps({
         "id": "ubm-007", "episodeGuid": "ep-001", "types": ["film"],
@@ -1258,7 +1256,7 @@ def test_post_edit_clearing_all_ext_drops_externalIds_key(fake_source):
 
 def test_post_edit_no_providers_drops_watchProviders_key(fake_source):
     """Ne soumettre aucun wp_label_<i> → watchProviders est supprimé."""
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-008.json"
     p.write_text(json.dumps({
         "id": "ubm-008", "episodeGuid": "ep-001", "types": ["film"],
@@ -1275,7 +1273,7 @@ def test_post_edit_no_providers_drops_watchProviders_key(fake_source):
 
 def test_post_reenrich_music_exception_graceful(fake_source, monkeypatch):
     """L'enricher Music lève → warning, JSON non corrompu, 303 OK."""
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-009.json"
     p.write_text(json.dumps({
         "id": "ubm-009", "episodeGuid": "ep-001", "types": ["musique"],
@@ -1550,7 +1548,7 @@ def test_get_ep_flash_kind_invalid_falls_back_to_info(fake_source):
 
 
 def test_post_reenrich_music_calls_enricher(fake_source, monkeypatch):
-    from common import recos_dir_for, read_json
+    from common import read_json, recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-mus.json"
     p.write_text(json.dumps({
         "id": "ubm-mus", "episodeGuid": "ep-001", "types": ["musique"],
@@ -1576,7 +1574,7 @@ def test_post_reenrich_music_calls_enricher(fake_source, monkeypatch):
 
 
 def test_post_reenrich_multi_type_calls_both(fake_source, monkeypatch):
-    from common import recos_dir_for, read_json
+    from common import recos_dir_for
     p = recos_dir_for(fake_source) / "ubm-fa.json"
     p.write_text(json.dumps({
         "id": "ubm-fa", "episodeGuid": "ep-001", "types": ["film", "album"],
@@ -1596,7 +1594,8 @@ def test_post_reenrich_multi_type_calls_both(fake_source, monkeypatch):
         reco["_enrich_status"] = "ok"
         return reco
 
-    import enrich_tmdb, enrich_music  # noqa: E401
+    import enrich_music
+    import enrich_tmdb
     monkeypatch.setattr(enrich_tmdb, "enrich_one", fake_tmdb)
     monkeypatch.setattr(enrich_music, "enrich_one", fake_music)
     body = b"id=ubm-fa"
@@ -1615,7 +1614,8 @@ def test_post_reenrich_non_targetable_is_noop(fake_source, monkeypatch):
         calls.append(1)
         raise AssertionError("ne devrait pas être appelé")
 
-    import enrich_tmdb, enrich_music  # noqa: E401
+    import enrich_music
+    import enrich_tmdb
     monkeypatch.setattr(enrich_tmdb, "enrich_one", boom)
     monkeypatch.setattr(enrich_music, "enrich_one", boom)
     body = b"id=ubm-002"  # type=livre
@@ -1958,7 +1958,6 @@ def test_reco_card_collects_sibling_recommenders(fake_source):
 
 def test_post_edit_invalid_payload_with_unreadable_reco(fake_source, monkeypatch):
     """Couvre `except (OSError, ValueError)` autour de read_json sur reject."""
-    from common import recos_dir_for
     # On rejette via title vide ET on fait planter read_json après coup.
     import review_routes
     real_read = review_routes.read_json
@@ -2317,12 +2316,12 @@ def test_post_merge_recos_unknown_members_404(fake_source):
 def test_post_undo_merge_restores_files(fake_source, tmp_path, monkeypatch):
     """Après un merge, /undo-merge restaure les fichiers supprimés."""
     _add_dup_recos(fake_source, None)
-    from common import recos_dir_for
     # Reroute BACKUP_DIR vers tmp_path pour ne pas polluer.
     # #G — la constante vit maintenant dans reco_dedup_merge, on patche les
     # deux modules (reco_dedup la ré-exporte mais le code utilise reco_dedup_merge).
     import reco_dedup
     import reco_dedup_merge
+    from common import recos_dir_for
     monkeypatch.setattr(reco_dedup, "BACKUP_DIR", tmp_path / "dedup-backup")
     monkeypatch.setattr(reco_dedup_merge, "BACKUP_DIR", tmp_path / "dedup-backup")
     # Exécute la fusion.
@@ -4003,9 +4002,10 @@ def test_post_content_length_negative_400(fake_source):
 
 def test_cleanup_orphan_tmp_oserror_logged(fake_source, monkeypatch, tmp_path, caplog):
     """Un unlink qui échoue est loggé en warning sans faire crasher le cleanup."""
+    from pathlib import Path
+
     import review_routes
     from common import recos_dir_for
-    from pathlib import Path
     (recos_dir_for(fake_source) / "stuck.tmp").write_text("x", encoding="utf-8")
     monkeypatch.setattr(review_routes, "BACKUP_DIR", tmp_path / "empty-backup")
     real_unlink = Path.unlink

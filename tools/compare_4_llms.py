@@ -24,12 +24,18 @@ ROOT = Path(__file__).parent.parent
 TOOLS = ROOT / "tools"
 sys.path.insert(0, str(TOOLS))
 
-from common import (  # noqa: E402
-    log, load_source, make_anthropic_client, make_openai_client,
+from common import (
+    load_source,
+    log,
+    make_anthropic_client,
+    make_openai_client,
     transcript_path_for,
 )
-from extract_recos import (  # noqa: E402
-    _call_llm, _chunk_transcript, _normalize_reco, _dedupe,
+from extract_recos import (
+    _call_llm,
+    _chunk_transcript,
+    _dedupe,
+    _normalize_reco,
 )
 
 SOURCE_ID = "un-bon-moment"
@@ -125,7 +131,7 @@ def main() -> None:
                 per_model[label][guid] = set()
 
     # Récupère Sonnet 4.6 + gpt-4o-mini depuis src/content/recos (par extractor).
-    from common import recos_dir_for  # noqa: PLC0415
+    from common import recos_dir_for
     recos_dir = recos_dir_for(SOURCE_ID)
     for label, ex in [("anthropic_sonnet-4-6", "anthropic"),
                       ("openai_gpt-4o-mini",    "openai")]:
@@ -161,7 +167,7 @@ def main() -> None:
             print(f"{pair:<55} {inter:>10} {pct_min:>7.1f}% {pct_max:>7.1f}%")
 
     # Per-episode breakdown
-    print(f"\nDétail par épisode :")
+    print("\nDétail par épisode :")
     cols = "  ".join(f"{l[10:25]:>16}" for l in labels)
     print(f"{'guid':<40} {cols}")
     print("-" * (40 + len(cols)))

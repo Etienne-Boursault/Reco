@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import os
 from pathlib import Path
 
 from domain.item import ExternalIds, Item, ItemType
@@ -13,7 +12,6 @@ from enrich_audit.cli_runner import (
 )
 from enrich_audit.flag_writer import list_archives, list_sidecars, read_sidecar
 from enrich_audit.service import AuditResult, EnrichAuditService
-from enrich_audit.types import Severity, Suspicion
 
 
 def _enriched_item(

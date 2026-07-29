@@ -14,8 +14,9 @@ côté TS — et être tracée dans ADR 0045.
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable
 from datetime import datetime
-from typing import Any, Iterable
+from typing import Any
 
 REGISTRY_SCHEMA_VERSION: int = 1
 
@@ -125,7 +126,7 @@ def _check_url(
 ) -> None:
     _check_str(value, path, bag, max_len=max_len)
     if isinstance(value, str) and not (
-        value.startswith("http://") or value.startswith("https://")
+        value.startswith(("http://", "https://"))
     ):
         bag.append(f"{path}: URL attendue")
 
@@ -140,7 +141,7 @@ def _check_iso_dt(value: Any, path: str, bag: list[str]) -> None:
         return
     try:
         # fromisoformat accepte un `Z` final depuis Python 3.11.
-        datetime.fromisoformat(value.replace("Z", "+00:00"))
+        datetime.fromisoformat(value)
     except ValueError:
         bag.append(f"{path}: ISO 8601 date-time attendu (date invalide)")
 

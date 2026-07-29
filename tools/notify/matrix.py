@@ -59,7 +59,7 @@ class MatrixSender:
         headers = {"Authorization": f"Bearer {self._token}"}
         if self._session is not None:
             return self._session.put(url, json=content, headers=headers, timeout=self._timeout)
-        import requests  # noqa: PLC0415 — import paresseux.
+        import requests
 
         return requests.put(url, json=content, headers=headers, timeout=self._timeout)
 

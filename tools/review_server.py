@@ -25,12 +25,10 @@ except ImportError:  # dotenv = commodité de dev ; la visionneuse /doutes tourn
     def load_dotenv(*_args, **_kwargs):  # sans (ex. portable LLM sans pip)
         return False
 
-from common import TOOLS_DIR, log, read_json  # noqa: F401 — read_json rétro-compat tests
-from review_lock import PipelineLockBusy, ServerLockBusy, acquire_server_lock
-from review_routes import (
-    Handler,
-    _allocate_new_reco,  # noqa: F401 — rétro-compat tests
-    _cleanup_orphan_tmp_files,
+from common import (  # noqa: F401 — read_json rétro-compat tests
+    TOOLS_DIR,
+    log,
+    read_json,
 )
 
 # --- Ré-exports de compatibilité (tests historiques) -------------------------
@@ -47,6 +45,7 @@ from review_handler_base import (  # noqa: F401 — rétro-compat tests
     _rebuild_reco_path_cache,
     _reco_path,
 )
+from review_lock import PipelineLockBusy, ServerLockBusy, acquire_server_lock
 from review_render import (  # noqa: F401 — rétro-compat tests
     _CLIENT_JS,
     _CSS_PATH,
@@ -71,6 +70,11 @@ from review_render_cluster import (  # noqa: F401 — rétro-compat tests
     render_merge_preview,
     render_pick_canonical,
 )
+from review_routes import (
+    Handler,
+    _allocate_new_reco,  # noqa: F401 — rétro-compat tests
+    _cleanup_orphan_tmp_files,
+)
 
 __all__ = ["Handler", "main"]
 
@@ -90,7 +94,7 @@ def main() -> None:
     # Mode LAN explicite : binder ailleurs que sur localhost accepte les clients
     # du réseau privé (cf. review_handler_base.ALLOW_LAN). Réseau maison seulement.
     if args.host not in ("127.0.0.1", "localhost"):
-        import review_handler_base  # noqa: PLC0415
+        import review_handler_base
         review_handler_base.ALLOW_LAN = True
         log.warning("Mode LAN activé (--host %s) : accessible sur le réseau "
                     "privé, SANS authentification. À n'utiliser que sur un "
@@ -121,7 +125,7 @@ def main() -> None:
         # de lock applicatif). Si quelqu'un swap pour `ThreadingHTTPServer`,
         # on veut casser explicitement plutôt qu'introduire des races
         # silencieuses (le filelock cross-process n'aide pas en intra-process).
-        from http.server import ThreadingHTTPServer  # noqa: PLC0415
+        from http.server import ThreadingHTTPServer
         assert not isinstance(server, ThreadingHTTPServer), (
             "review_server est single-threaded by design (pas de lock)"
         )
@@ -135,7 +139,7 @@ def main() -> None:
     finally:
         try:
             ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001 — best-effort release
+        except Exception:  # noqa: BLE001, S110 — release best-effort
             pass
 
 

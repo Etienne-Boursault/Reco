@@ -7,6 +7,7 @@ les consommateurs reçoivent des `ParsedFeed`/`ParsedEpisode` immutables.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import UTC
 
 
 @dataclass(frozen=True, slots=True)
@@ -55,14 +56,14 @@ def _pick_published(entry: object) -> str:
     feedparser remplit `published_parsed` (time.struct_time) quand il a su
     parser la date. On préfère l'ISO-8601 reconstitué pour homogénéité.
     """
-    from datetime import datetime, timezone  # noqa: PLC0415 — import paresseux
+    from datetime import datetime
 
     parsed = getattr(entry, "published_parsed", None)
     if parsed is None and isinstance(entry, dict):
         parsed = entry.get("published_parsed")
     if parsed is not None:
         try:
-            dt = datetime(*parsed[:6], tzinfo=timezone.utc)
+            dt = datetime(*parsed[:6], tzinfo=UTC)
             return dt.replace(microsecond=0).isoformat().replace("+00:00", "Z")
         except (TypeError, ValueError):
             pass
@@ -78,7 +79,7 @@ def parse_feed_bytes(body: bytes, *, fallback_url: str = "") -> ParsedFeed:
     `fallback_url` est utilisé si le flux ne déclare pas son URL self.
     Les épisodes sans GUID utilisable sont filtrés.
     """
-    import feedparser  # noqa: PLC0415 — import paresseux pour tests purs.
+    import feedparser
 
     fp = feedparser.parse(body)
     feed_meta = getattr(fp, "feed", {}) or {}

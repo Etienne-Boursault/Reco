@@ -10,7 +10,6 @@ from unittest.mock import MagicMock
 
 import pytest
 
-
 # ---------------------------------------------------------------------------
 # Sources synthétiques injectées dans le registry pour les tests qui
 # utilisent des ids fictifs (ex. "demo-source") via `reco_prefix(...)` ou

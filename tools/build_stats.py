@@ -21,8 +21,9 @@ import csv
 import io
 import json
 import sys
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Any, Final, Sequence
+from typing import Any, Final
 
 from common import CONTENT_DIR, OUTPUT_DIR, atomic_write_text, log
 from review_lock import ServerLockBusy, acquire_pipeline_lock
@@ -320,7 +321,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     except ServerLockBusy as exc:
         log.error("review_server tient le verrou : %s", exc)
         return 1
-    except Exception as exc:  # pragma: no cover (catch-all CLI)
+    except Exception as exc:  # noqa: BLE001 — catch-all CLI : tracé par
+        # `log.exception` ci-dessous, converti en code de sortie.
         # M26-22 : exit 2 pour exception non rattrapée (vs 1 = fonctionnel).
         log.exception("build_stats a échoué : %s", exc)
         return 2

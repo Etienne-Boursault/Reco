@@ -5,14 +5,12 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import pytest
-
 # Permet d'importer le module depuis tools/ comme le font les autres tests.
 _TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(_TOOLS) not in sys.path:
     sys.path.insert(0, str(_TOOLS))
 
-from extraction_history import (  # noqa: E402
+from extraction_history import (
     ASSUMED,
     ExtractionEntry,
     derive_extractors,

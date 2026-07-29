@@ -11,7 +11,8 @@ massacrer un dict).
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 __all__ = ["ALIASES", "ASTRO_ONLY_FIELDS", "normalize_payload"]
 

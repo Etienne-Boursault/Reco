@@ -185,7 +185,7 @@ def load_registries_file(path: Path) -> list[str]:
     raw: Any
     if path.suffix.lower() in (".yaml", ".yml"):
         try:
-            import yaml  # noqa: PLC0415
+            import yaml
 
             raw = yaml.safe_load(text)
         except ImportError as exc:  # pragma: no cover

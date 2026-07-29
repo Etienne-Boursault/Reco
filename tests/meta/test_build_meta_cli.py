@@ -9,7 +9,6 @@ import pytest
 import build_meta
 from build_meta import run
 
-
 VALID = {
     "schemaVersion": 1,
     "siteUrl": "https://x.example",

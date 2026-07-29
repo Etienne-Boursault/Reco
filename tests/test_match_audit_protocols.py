@@ -1,8 +1,9 @@
 """Tests : tools.match_audit.protocols."""
 from __future__ import annotations
 
-import pytest
+import dataclasses
 
+import pytest
 from tools.match_audit.protocols import EpisodeView
 
 
@@ -44,7 +45,7 @@ def test_view_from_dict_no_guid_returns_none():
 def test_view_is_frozen():
     v = EpisodeView.from_dict({"guid": "abc"})
     assert v is not None
-    with pytest.raises(Exception):
+    with pytest.raises(dataclasses.FrozenInstanceError):
         v.title = "x"  # type: ignore[misc]
 
 

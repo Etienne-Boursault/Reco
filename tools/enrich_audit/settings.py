@@ -93,7 +93,7 @@ class EnrichAuditSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "EnrichAuditSettings":
+    ) -> EnrichAuditSettings:
         """Construit depuis ``SourceConfig.extra["enrich_audit"]``.
 
         Délègue à ``audit_core.settings.from_source_extra`` (SSOT — ADR 0019).

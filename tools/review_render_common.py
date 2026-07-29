@@ -12,7 +12,6 @@ from __future__ import annotations
 import bisect
 import html
 import re
-import urllib.parse
 from functools import lru_cache
 from pathlib import Path
 from typing import NamedTuple
@@ -260,7 +259,7 @@ def _parse_guests(title: str, hosts: list[str]) -> list[str]:
 @lru_cache(maxsize=128)
 def _load_transcript(source_id: str, guid: str) -> tuple[tuple[int, str], ...]:
     """Renvoie la transcription parsée : tuple de (seconde_de_début, texte)."""
-    from common import transcript_path_for  # noqa: PLC0415
+    from common import transcript_path_for
     path = transcript_path_for(source_id, guid)
     if not path.exists():
         return ()
@@ -345,10 +344,10 @@ def _flash_banner(flash: str | None, kind: str) -> str:
 
 # Compat namespace pour les modules qui importent depuis common
 __all__ = [
-    "TimecodeLink",
     "_CLIENT_JS",
     "_CSS_PATH",
     "_STOP",
+    "TimecodeLink",
     "_context_around",
     "_embed_url",
     "_extractors_badge",

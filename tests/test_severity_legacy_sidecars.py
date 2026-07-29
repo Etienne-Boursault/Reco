@@ -12,10 +12,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
-
 from audit_core.types import Severity, coerce_severity
-
 
 # ---------------------------------------------------------------------------
 # match_audit — sidecar v0 (legacy, sans schemaVersion) → lecture rétro-compat
@@ -121,6 +118,7 @@ def test_severity_enrich_audit_legacy_i_w_c_still_coerce() -> None:
 def test_severity_enrich_audit_module_severity_is_audit_core() -> None:
     """Les modules réexportent bien la même classe (object identity)."""
     import tools.match_audit.types as mt
+
     import enrich_audit.types as et
     from audit_core.types import Severity as core_severity
 

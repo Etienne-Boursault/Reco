@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import functools
 import importlib
+import itertools
 import pkgutil
 import re
 from typing import TYPE_CHECKING
@@ -70,8 +71,8 @@ def _ensure_known_entity(entity: str) -> None:
         )
 
 
-@functools.lru_cache(maxsize=None)
-def _discover_all_migrations(entity: str) -> tuple["Migration", ...]:
+@functools.cache
+def _discover_all_migrations(entity: str) -> tuple[Migration, ...]:
     """Importe tous les modules `v{X}_to_v{X+1}.py` du sous-package entité.
 
     Renvoie un tuple immuable d'instances de migrations triées par
@@ -118,7 +119,7 @@ def _discover_all_migrations(entity: str) -> tuple["Migration", ...]:
     return tuple(discovered)
 
 
-def _validate_chain(entity: str, chain: list["Migration"]) -> None:
+def _validate_chain(entity: str, chain: list[Migration]) -> None:
     """Vérifie que la chaîne triée est sans trou ni saut.
 
     - Chaque migration doit faire +1 (`TARGET_VERSION == SOURCE_VERSION + 1`).
@@ -132,7 +133,7 @@ def _validate_chain(entity: str, chain: list["Migration"]) -> None:
                 f"saut v{mig.SOURCE_VERSION}->v{mig.TARGET_VERSION} "
                 f"(attendu +1)."
             )
-    for prev, cur in zip(chain, chain[1:]):
+    for prev, cur in itertools.pairwise(chain):
         if cur.SOURCE_VERSION != prev.TARGET_VERSION:
             raise InvalidMigrationChainError(
                 f"Chaîne {entity!r} discontinue: "
@@ -143,7 +144,7 @@ def _validate_chain(entity: str, chain: list["Migration"]) -> None:
 
 def discover_migration_chain(
     entity: str, target_version: int,
-) -> list["Migration"]:
+) -> list[Migration]:
     """Renvoie la chaîne ordonnée de migrations pour aller v1 → target.
 
     Raises:
@@ -178,8 +179,8 @@ def discover_migration_chain(
 
 __all__ = [
     "CURRENT_VERSION",
-    "InvalidMigrationChainError",
     "KNOWN_ENTITIES",
+    "InvalidMigrationChainError",
     "UnknownEntityError",
     "UnsupportedTargetVersionError",
     "discover_migration_chain",

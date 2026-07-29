@@ -20,15 +20,13 @@ les deux transcripts ne semblent pas relater le même contenu.
 """
 from __future__ import annotations
 
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass
-from typing import Any, Callable, Mapping
-
-from common import normalize_text  # type: ignore[attr-defined]
+from typing import Any
 
 from tools.match_audit.protocols import (
     EpisodeView,
     IntroSimilarityStrategy,
-    TranscriptKind,
     TranscriptRepo,
 )
 from tools.match_audit.settings import (
@@ -37,6 +35,8 @@ from tools.match_audit.settings import (
 )
 from tools.match_audit.strategies import SequenceMatcherStrategy
 from tools.match_audit.types import MatchSuspicion, Severity
+
+from common import normalize_text  # type: ignore[attr-defined]
 
 # Fenêtre milieu (5000-5500) pour mitiger le faux-négatif jingle générique
 # (CR senior H8). Au-delà de ~5000 chars, on est sortis du pré-générique.

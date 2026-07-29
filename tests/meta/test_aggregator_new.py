@@ -5,13 +5,13 @@ import logging
 
 import pytest
 
+from meta import aggregator as _agg
 from meta.aggregator import (
     _sort_key_title,
     aggregate_entries,
     dedupe_by_slug,
     slug_from_site_url,
 )
-from meta import aggregator as _agg
 
 
 def test_slug_triple_dash_input() -> None:

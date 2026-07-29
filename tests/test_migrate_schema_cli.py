@@ -12,7 +12,6 @@ import pytest
 
 import migrate_schema
 
-
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
@@ -24,7 +23,7 @@ def synthetic_dataset(tmp_path: Path, monkeypatch) -> Path:
     les constantes de path du CLI."""
     items = tmp_path / "items" / "un-bon-moment"
     items.mkdir(parents=True)
-    for i, name in enumerate(("a", "b", "c")):
+    for name in ("a", "b", "c"):
         (items / f"{name}.json").write_text(
             json.dumps({"id": name, "schemaVersion": 1, "title": name, "types": ["film"]}),
             encoding="utf-8",

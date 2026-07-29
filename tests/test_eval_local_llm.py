@@ -174,7 +174,7 @@ def test_select_episodes_tolerates_missing_date(env):
 def test_chat_completion_posts_expected_payload(monkeypatch):
     seen = {}
 
-    def _post(url, json=None, timeout=None):  # noqa: A002
+    def _post(url, json=None, timeout=None):
         seen["url"] = url
         seen["payload"] = json
         seen["timeout"] = timeout
@@ -199,7 +199,7 @@ def test_chat_completion_retries_without_json_mode_on_400(monkeypatch):
     plutôt que d'abandonner l'évaluation."""
     calls = []
 
-    def _post(url, json=None, timeout=None):  # noqa: A002
+    def _post(url, json=None, timeout=None):
         # Copie : le module retente avec le MÊME dict, dont il a retiré
         # `response_format` — sans photo, on relirait l'objet déjà muté.
         calls.append(dict(json))

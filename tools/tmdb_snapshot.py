@@ -33,7 +33,6 @@ import argparse
 import datetime as _dt
 import json
 import os
-import sys
 import time
 import urllib.error
 import urllib.parse
@@ -64,7 +63,7 @@ _TMDB_BASE = "https://api.themoviedb.org/3"
 
 def _utc_now() -> _dt.datetime:
     """Renvoie ``now()`` UTC naive (compat tests existants)."""
-    return _dt.datetime.now(_dt.timezone.utc).replace(tzinfo=None)
+    return _dt.datetime.now(_dt.UTC).replace(tzinfo=None)
 
 
 # ---------------------------------------------------------------------------
@@ -84,7 +83,7 @@ def _parse_iso(value: str) -> _dt.datetime | None:
     if not isinstance(value, str):
         return None
     try:
-        return _dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return _dt.datetime.fromisoformat(value)
     except ValueError:
         return None
 
@@ -107,9 +106,9 @@ def _is_fresh(
     current = (now or _utc_now)()
     # Coerce les deux côtés en naive UTC pour une comparaison sûre.
     if fetched.tzinfo is not None:
-        fetched = fetched.astimezone(_dt.timezone.utc).replace(tzinfo=None)
+        fetched = fetched.astimezone(_dt.UTC).replace(tzinfo=None)
     if current.tzinfo is not None:
-        current = current.astimezone(_dt.timezone.utc).replace(tzinfo=None)
+        current = current.astimezone(_dt.UTC).replace(tzinfo=None)
     return (current - fetched) < _dt.timedelta(days=max_age_days)
 
 
@@ -154,7 +153,10 @@ def _make_http_fetcher(api_key: str, *, language: str = "fr-FR") -> TmdbFetcher:
             {"api_key": api_key, "language": language},
         )
         url = f"{_TMDB_BASE}/{kind}/{tmdb_id}?{params}"
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        req = urllib.request.Request(  # noqa: S310 — cf. commentaire ci-dessous
+            url, headers={"Accept": "application/json"})
+        # S310 : URL construite ici même à partir de `_TMDB_BASE` (https) et
+        # d'un `kind` validé ci-dessus — le schéma ne peut pas varier.
         with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
             data = resp.read().decode("utf-8")
         return json.loads(data)

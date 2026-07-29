@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -84,7 +84,7 @@ def validate_answers(ans: WizardAnswers) -> None:
 
 
 def _utcnow_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace(
         "+00:00", "Z",
     )
 
@@ -159,7 +159,7 @@ def write_source(
     if dry_run:
         return path, text
     # Import paresseux : ``tools.common`` charge logging/etc.
-    from tools.common import atomic_write_text  # noqa: PLC0415
+    from tools.common import atomic_write_text
 
     atomic_write_text(path, text)
     return path, text
@@ -189,8 +189,8 @@ WIZARD_TAG = f"reco init wizard v{WIZARD_VERSION}"
 
 __all__ = [
     "DEFAULT_THEME_COLORS",
-    "ValidationError",
     "WIZARD_TAG",
+    "ValidationError",
     "WizardAnswers",
     "answers_summary",
     "build_source_config",

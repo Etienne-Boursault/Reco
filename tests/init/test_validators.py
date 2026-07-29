@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.init.validators import (
     is_valid_email,
     is_valid_hex_color,

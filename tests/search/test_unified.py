@@ -1,6 +1,8 @@
 """Tests search.unified — UnifiedSearchService + RRF fusion (ADR 0043)."""
 from __future__ import annotations
 
+import dataclasses
+
 import pytest
 
 from cache.reader import SearchHit
@@ -16,7 +18,6 @@ from search.unified import (
     _fuse_ranks,
     _rrf_score,
 )
-
 
 # ---------- Mocks --------------------------------------------------------
 
@@ -86,7 +87,7 @@ class TestUnifiedQuery:
 
     def test_frozen(self) -> None:
         q = UnifiedQuery(text="x")
-        with pytest.raises(Exception):
+        with pytest.raises(dataclasses.FrozenInstanceError):
             q.text = "y"  # type: ignore[misc]
 
 
@@ -307,5 +308,5 @@ class TestUnifiedHitShape:
             semantic_rank=None,
             combined_score=0.5,
         )
-        with pytest.raises(Exception):
+        with pytest.raises(dataclasses.FrozenInstanceError):
             h.id = "y"  # type: ignore[misc]

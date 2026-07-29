@@ -13,8 +13,9 @@ Le check est exposé sous DEUX formes complémentaires :
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Mapping
+from typing import Any
 
 from tools.match_audit.protocols import EpisodeView
 from tools.match_audit.settings import DEFAULT_DURATION_TOLERANCE

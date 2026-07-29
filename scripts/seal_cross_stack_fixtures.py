@@ -35,7 +35,6 @@ from domain.mention import (
 from repository.serialization.item_codec import item_to_dict
 from repository.serialization.mention_codec import mention_to_dict
 
-
 _ITEMS_DIR = _ROOT / "src" / "content" / "items" / "__cross_stack_fixture__"
 _MENTIONS_DIR = _ROOT / "src" / "content" / "mentions" / "__cross_stack_fixture__"
 

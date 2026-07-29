@@ -33,7 +33,7 @@ import json
 import os
 import re
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Literal
 
@@ -41,17 +41,6 @@ Provider = Literal["anthropic", "openai"]
 
 from dotenv import load_dotenv
 
-from review_lock import ServerLockBusy, acquire_pipeline_lock
-
-from extraction_history import (
-    ASSUMED,
-    ExtractionEntry,
-    derive_extractors,
-    from_dict as _entry_from_dict,
-    merge_history,
-    pick_display_state,
-    to_dict as _entry_to_dict,
-)
 from common import (
     TOOLS_DIR,
     find_episode_by_guid,
@@ -67,6 +56,20 @@ from common import (
     transcript_path_for,
     write_json_if_changed,
 )
+from extraction_history import (
+    ASSUMED,
+    ExtractionEntry,
+    derive_extractors,
+    merge_history,
+    pick_display_state,
+)
+from extraction_history import (
+    from_dict as _entry_from_dict,
+)
+from extraction_history import (
+    to_dict as _entry_to_dict,
+)
+from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 # Modèle d'extraction par défaut : Haiku 4.5 (basculé depuis Sonnet 4.6 le
 # 2026-06-04 après étude comparative 4-LLM sur 11 ép). Trouve ~60% des recos
@@ -453,7 +456,7 @@ class _RunIndex:
         self.next_index = next_index
 
     @classmethod
-    def build(cls, source_id: str) -> "_RunIndex":
+    def build(cls, source_id: str) -> _RunIndex:
         return cls(_build_existing_index(source_id), _next_reco_index(source_id))
 
 
@@ -468,7 +471,7 @@ def new_run_index(source_id: str) -> _RunIndex:
 
 def _now_iso() -> str:
     """ISO datetime UTC sans microsecondes (stable pour comparaisons)."""
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    return datetime.now(UTC).replace(microsecond=0).isoformat()
 
 
 def _build_entry(reco: dict[str, Any], provider: str,
@@ -647,7 +650,7 @@ def _persist_recos(source_id: str, guid: str,
             existing = read_json(path)
             try:
                 file_mtime_iso = datetime.fromtimestamp(
-                    path.stat().st_mtime, tz=timezone.utc
+                    path.stat().st_mtime, tz=UTC
                 ).replace(microsecond=0).isoformat()
             except OSError:
                 file_mtime_iso = _now_iso()
@@ -930,7 +933,7 @@ def main() -> None:
         lock_ctx.__enter__()
     except ServerLockBusy as exc:
         log.error("%s", exc)
-        import sys as _sys  # noqa: PLC0415
+        import sys as _sys
         _sys.exit(1)
 
     try:
@@ -982,7 +985,7 @@ def main() -> None:
     finally:
         try:
             lock_ctx.__exit__(None, None, None)
-        except Exception:  # noqa: BLE001 — best-effort release
+        except Exception:  # noqa: BLE001, S110 — release best-effort
             pass
 
 

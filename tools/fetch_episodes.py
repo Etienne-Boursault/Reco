@@ -30,7 +30,7 @@ from __future__ import annotations
 import argparse
 import html
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -68,7 +68,7 @@ def _parse_date(entry: Any) -> str | None:
         # vu sur des flux RSS bancals) ferait lever datetime(). On renvoie None
         # plutôt que de propager l'erreur et casser tout le fetch.
         try:
-            dt = datetime(*parsed[:6], tzinfo=timezone.utc)
+            dt = datetime(*parsed[:6], tzinfo=UTC)
         except (ValueError, TypeError):
             return None
         return dt.date().isoformat()

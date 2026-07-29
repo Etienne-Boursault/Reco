@@ -8,13 +8,9 @@ import pytest
 
 from domain.mention import (
     Mention,
-    MentionKind,
-    MentionStatus,
     SourceRef,
-    TranscriptSource,
 )
 from repository.mention_repo import MentionRepoJson
-
 
 SOURCE = "un-bon-moment"
 

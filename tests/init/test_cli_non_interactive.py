@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from tools.reco_init import run
 
 

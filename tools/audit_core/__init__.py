@@ -39,6 +39,7 @@ from audit_core.types import (
 )
 
 __all__ = [
+    "REPORTERS",
     "AuditTrail",
     "Check",
     "CheckCallable",
@@ -46,7 +47,6 @@ __all__ = [
     "Mode",
     "NoopAuditTrail",
     "OutputFormat",
-    "REPORTERS",
     "Reporter",
     "RunOptionsBase",
     "Severity",

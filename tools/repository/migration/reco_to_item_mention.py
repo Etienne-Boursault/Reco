@@ -37,7 +37,6 @@ from domain.services.identity import (
 
 from .reco_parser import reco_dict_to_item_mention
 
-
 # ---------------------------------------------------------------------------
 # Stats
 # ---------------------------------------------------------------------------
@@ -321,7 +320,10 @@ class MigrationService:
                 try:
                     parsed_item, _ = reco_dict_to_item_mention(
                         data,
-                        item_id_resolver=lambda c, _cr, _ty: m.item_id,
+                        # `_m=m` lie la valeur de l'itération courante : la lambda est
+                        # consommée ici même, mais la liaison explicite
+                        # supprime tout risque de capture tardive.
+                        item_id_resolver=lambda c, _cr, _ty, _m=m: _m.item_id,
                     )
                 except (ValueError, KeyError, TypeError) as e:
                     parse_failures.add(reco_id)

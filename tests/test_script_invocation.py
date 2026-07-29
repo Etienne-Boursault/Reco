@@ -48,7 +48,7 @@ def test_cli_script_runs_standalone(script: str) -> None:
     proc = subprocess.run(
         [sys.executable, str(path), "--help"],
         capture_output=True, text=True, timeout=90,
-        cwd=str(REPO_ROOT), env=env,
+        cwd=str(REPO_ROOT), env=env, check=False,
     )
     combined = proc.stdout + proc.stderr
     for symptom in _C1_SYMPTOMS:

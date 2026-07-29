@@ -29,7 +29,7 @@ def _issue_to_dict(issue: LintIssue) -> dict[str, Any]:
     }
 
 
-def render(report: "LintReport") -> str:
+def render(report: LintReport) -> str:
     """JSONL : 1 ligne meta + 1 ligne par issue, terminé par \\n."""
     lines: list[str] = []
     meta = {
@@ -57,8 +57,8 @@ class JsonReporter:
 
     format_id = "json"
 
-    def render(self, report: "LintReport") -> str:
+    def render(self, report: LintReport) -> str:
         return render(report)
 
 
-__all__ = ["render", "JsonReporter"]
+__all__ = ["JsonReporter", "render"]

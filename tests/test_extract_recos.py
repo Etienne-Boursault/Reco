@@ -20,8 +20,6 @@ import extract_recos
 from common import find_episode_by_guid as _find_episode_by_guid  # alias local
 from extract_recos import (
     _AnthropicExtractor,
-    _OpenAIExtractor,
-    _RunIndex,
     _call_anthropic,
     _call_openai,
     _chunk_transcript,
@@ -31,9 +29,11 @@ from extract_recos import (
     _next_reco_index,
     _norm,
     _normalize_reco,
+    _OpenAIExtractor,
     _parse_recos_from_content,
     _persist_recos,
     _poll_batch_until_done,
+    _RunIndex,
     extract_all_batch,
     extract_for_episode,
     main,

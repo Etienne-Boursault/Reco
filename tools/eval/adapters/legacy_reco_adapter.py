@@ -6,8 +6,8 @@ Protocol ``ExtractionSource``.
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
-from typing import Iterable, Sequence
 
 from tools.eval.types import ExtractedReco, ExtractionSource
 
@@ -48,7 +48,7 @@ class LegacyRecoExtractionSource:
     @classmethod
     def from_legacy(
         cls, recos: Sequence[object],
-    ) -> "LegacyRecoExtractionSource":
+    ) -> LegacyRecoExtractionSource:
         grouped: dict[str, list[ExtractedReco]] = defaultdict(list)
         for r in recos:
             guid = getattr(r, "episode_guid", None)

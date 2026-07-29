@@ -38,7 +38,7 @@ class DiscordWebhookSender:
     def _post(self, payload: dict):
         if self._session is not None:
             return self._session.post(self._url, json=payload, timeout=self._timeout)
-        import requests  # noqa: PLC0415 — import paresseux.
+        import requests
 
         return requests.post(self._url, json=payload, timeout=self._timeout)
 

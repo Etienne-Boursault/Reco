@@ -28,6 +28,7 @@ from migrations import (
     UnsupportedTargetVersionError,
 )
 from migrations.registry import get_known_entities
+
 # SSOT du regex source_id : on importe depuis le repository plutôt que de
 # dupliquer ici (`repository._base._SOURCE_ID_PATTERN`). Toute évolution du
 # format slug est ainsi automatiquement propagée au CLI.

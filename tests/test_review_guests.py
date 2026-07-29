@@ -6,10 +6,13 @@ from pathlib import Path
 
 import pytest
 
-import review_guests as rg
 from review_guests import (
-    apply_guest_action, collect_guests, handle_rename_guest,
-    is_placeholder, render_guests_panel, split_names,
+    apply_guest_action,
+    collect_guests,
+    handle_rename_guest,
+    is_placeholder,
+    render_guests_panel,
+    split_names,
 )
 
 

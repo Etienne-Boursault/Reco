@@ -9,7 +9,6 @@ from types import SimpleNamespace
 from typing import Any
 
 import pytest
-import responses
 
 import fetch_episodes
 from fetch_episodes import (
@@ -21,6 +20,8 @@ from fetch_episodes import (
     _parse_date,
     _parse_duration,
     _stable_guid,
+)
+from fetch_episodes import (
     fetch_episodes as run_fetch,
 )
 

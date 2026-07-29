@@ -40,7 +40,6 @@ from domain.mention import (
 from repository.serialization.item_codec import item_to_dict
 from repository.serialization.mention_codec import mention_to_dict
 
-
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
 _ITEMS_DIR = _PROJECT_ROOT / "src" / "content" / "items"
 _MENTIONS_DIR = _PROJECT_ROOT / "src" / "content" / "mentions"

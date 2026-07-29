@@ -5,13 +5,10 @@ Couvre les fixes Phase A/B/C/D du plan d'exécution.
 """
 from __future__ import annotations
 
-import dataclasses
-import pickle
-
 import pytest
 
 import domain
-from domain.item import CustomLink, ExternalIds, Item, ItemType, WatchProvider
+from domain.item import ExternalIds, Item, ItemType
 from domain.mention import (
     ExtractionHistoryEntry,
     Mention,
@@ -25,7 +22,6 @@ from domain.services.identity import (
     find_matching_item,
     generate_item_id,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures factorisées (L7)

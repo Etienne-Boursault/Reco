@@ -18,7 +18,7 @@ class _Sess:
         self.exc = exc
         self.calls = []
 
-    def post(self, url, json, timeout):  # noqa: A002
+    def post(self, url, json, timeout):
         self.calls.append((url, json, timeout))
         if self.exc:
             raise self.exc
@@ -56,7 +56,7 @@ def test_uses_requests_when_no_session_injected(monkeypatch):
 
     captured = {}
 
-    def _post(url, json=None, headers=None, timeout=None):  # noqa: A002
+    def _post(url, json=None, headers=None, timeout=None):
         captured["url"] = url
         captured["json"] = json
         captured["timeout"] = timeout

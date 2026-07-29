@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from tools.eval.metrics import EvalResult, MatchVerdict, f1, precision, recall
 
 

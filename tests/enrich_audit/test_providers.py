@@ -7,7 +7,6 @@ from pathlib import Path
 from enrich_audit.providers import _coerce_cache_payload, make_cache_provider
 from enrich_audit.types import TMDB_CACHE_VERSION
 
-
 # ===== _coerce_cache_payload ===============================================
 
 

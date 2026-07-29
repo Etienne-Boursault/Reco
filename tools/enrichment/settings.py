@@ -47,7 +47,7 @@ def _coerce_older_than(v: Any) -> timedelta:
         return v
     if isinstance(v, str):
         # Import paresseux pour éviter cycle (duration → settings non utilisé).
-        from enrichment.duration import parse_duration  # noqa: PLC0415
+        from enrichment.duration import parse_duration
 
         return parse_duration(v)
     raise ValueError(f"older_than doit être timedelta ou str, reçu {type(v).__name__}")
@@ -119,7 +119,7 @@ class RefreshEnrichmentSettings:
         extra: Mapping[str, Any] | None,
         *,
         overrides: Mapping[str, Any] | None = None,
-    ) -> "RefreshEnrichmentSettings":
+    ) -> RefreshEnrichmentSettings:
         """Construit depuis ``SourceConfig.extra["refresh_enrichment"]``.
 
         Délègue à ``audit_core.settings.from_source_extra`` (SSOT — ADR 0019).

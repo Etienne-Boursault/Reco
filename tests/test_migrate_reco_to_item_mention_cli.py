@@ -15,7 +15,6 @@ import pytest
 import migrate_reco_to_item_mention as cli
 import review_lock
 
-
 SOURCE = "un-bon-moment"
 
 

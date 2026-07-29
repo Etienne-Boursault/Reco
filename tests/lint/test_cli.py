@@ -10,7 +10,6 @@ import pytest
 import lint_dataset
 from lint import Severity
 
-
 # ---------------------------------------------------------------------------
 # build_context (backward-compat helper)
 # ---------------------------------------------------------------------------
@@ -373,8 +372,8 @@ def test_avoid_overwrite_returns_same_path_if_missing(tmp_path):
 
 
 def test_compute_exit_code_warnings_only():
-    from lint.service import LintReport
     from lint.rules.base import LintIssue, Severity
+    from lint.service import LintReport
 
     issues = (LintIssue(
         rule="r", severity=Severity.WARNING, entity_type="reco",
@@ -385,8 +384,8 @@ def test_compute_exit_code_warnings_only():
 
 def test_compute_exit_code_errors_present():
     """192 : path explicite errors > 0 → exit 1."""
-    from lint.service import LintReport
     from lint.rules.base import LintIssue, Severity
+    from lint.service import LintReport
 
     issues = (LintIssue(
         rule="r", severity=Severity.ERROR, entity_type="reco",
@@ -408,7 +407,7 @@ def test_settings_for_source_handles_registry_exception(monkeypatch):
 
 def test_main_with_empty_all_returns_zero(monkeypatch):
     """Cas limite 249 : `--source all` sans aucune source enregistrée."""
-    monkeypatch.setattr(lint_dataset, "_list_sources", lambda: [])
+    monkeypatch.setattr(lint_dataset, "_list_sources", list)
 
     class _Pass:
         def __enter__(self):
