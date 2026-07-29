@@ -1,0 +1,35 @@
+# Recos dont le `creator` est laissé VIDE malgré une réponse d'API cohérente.
+#
+# Passé à `enrich_creators.py --exclude-ids @creators_exclusions.txt`.
+# Chaque ligne = une décision HUMAINE prise après vérification manuelle du
+# dry-run du 2026-07-29 : l'API répond, le titre correspond, mais l'œuvre
+# désignée par `externalIds.tmdb` n'est vraisemblablement PAS celle dont
+# parle l'épisode. Règle du projet : au moindre doute, on laisse vide.
+#
+# Corollaire : ces `externalIds.tmdb` sont eux-mêmes suspects et mériteraient
+# une correction séparée (hors périmètre de l'enrichissement `creator`).
+
+# « Adolescence », ép. 2026-02-23, « le dernier truc que j'ai vu ». L'id pointe
+# vers le film homonyme de 2018 (Ashley Avis) ; le contexte désigne bien plus
+# probablement la mini-série Netflix de 2025 (Jack Thorne / Stephen Graham).
+ubm-0425
+
+# « Mortal Kombat », ép. 2026-03-23. Titre TMDB exact, mais deux films portent
+# ce nom (1995, Paul W. S. Anderson / 2021, Simon McQuoid) et la conversation
+# porte aussi sur le jeu vidéo. Rien ne permet de trancher.
+ubm-0477
+
+# « Resident Evil » : l'id TMDB est celui de « Resident Evil : Apocalypse »
+# (2004, Alexander Witt), pas du premier film (2002, Paul W. S. Anderson).
+# Mauvais opus de la franchise.
+ubm-0478
+
+# « Le Nouveau » : l'id TMDB est celui de « Le nouveau stagiaire » (The Intern,
+# 2015, Nancy Meyers). La citation (« un film que j'avais aidé à écrire »)
+# désigne le film français de Rudi Rosenberg (2015).
+ubm-0631
+
+# « La Vie est belle » : titre français partagé par « La vita è bella » (1997,
+# Benigni) et « It's a Wonderful Life » (1946, Capra). Le contexte
+# (« quoi de très triste ») ne départage pas.
+ubm-1217
