@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import RecoCard from '../../../components/RecoCard.astro';
 import { episodeLabel } from '../../../utils/recoTypes';
+import { sortRecosByTimestamp } from '../../../utils/recoOrder';
 import { plural } from '../../../utils/plural';
 import { t } from '../../../i18n';
 import { episodeToSchema, recoToSchema } from '../../../lib/seo/jsonld';
@@ -40,9 +41,15 @@ export async function getStaticPaths() {
           episode: episode.data,
           prevGuid: prev?.data.guid ?? null,
           nextGuid: next?.data.guid ?? null,
-          recos: sRecos
-            .filter((r) => r.data.episodeGuid === episode.data.guid)
-            .map((r) => r.data),
+          // Tri CHRONOLOGIQUE explicite — l'ordre dans lequel les recos ont
+          // été prononcées dans l'épisode. Sans lui, on héritait de l'ordre
+          // d'énumération du chargeur de fichiers d'Astro, que la migration
+          // 5 → 7 a effectivement changé. Cf. `src/utils/recoOrder.ts`.
+          recos: sortRecosByTimestamp(
+            sRecos
+              .filter((r) => r.data.episodeGuid === episode.data.guid)
+              .map((r) => r.data),
+          ),
         },
       });
     }

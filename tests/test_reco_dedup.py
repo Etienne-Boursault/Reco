@@ -1162,17 +1162,32 @@ def test_write_backup_returns_none_when_there_is_nothing_to_save(tmp_path):
 
 
 # ===== merge_cluster : replis quand l'état disque est douteux ==============
-def test_merge_falls_back_to_memory_when_loser_file_is_unreadable(
-    patched_recos_dir,
+def test_merge_falls_back_to_memory_when_loser_becomes_unreadable(
+    patched_recos_dir, monkeypatch,
 ):
-    """Loser illisible sur disque : on repart de la version mémoire plutôt que
-    de perdre ses champs."""
+    """Loser devenu illisible ENTRE la localisation du fichier et sa relecture
+    (écriture concurrente) : on repart de la version mémoire plutôt que de
+    perdre ses champs.
+
+    Corrompre le fichier d'avance ne testerait pas ce chemin : `_path_for_reco`
+    saute les JSON illisibles, et la fusion tomberait sur la garde « fichier
+    introuvable » en amont. On simule donc la course réelle."""
+    import reco_dedup_merge as rdm
+
     tmp = patched_recos_dir
     r1 = _r("ubm-1", "X")
     r2 = _r("ubm-2", "X", customLinks=[{"url": "depuis-la-memoire.example"}])
-    _write_recos("src", [r1, r2], tmp)
-    (tmp / "recos" / "src" / "ubm-2.json").write_text("{ tronqué",
-                                                      encoding="utf-8")
+    paths_map = _write_recos("src", [r1, r2], tmp)
+    monkeypatch.setattr(rdm, "_path_for_reco",
+                        lambda sid, rid, recos_root=None: paths_map.get(rid))
+    real_read = rdm.read_json
+
+    def _read(path):
+        if Path(path).name == "ubm-2.json":
+            raise ValueError("JSON tronqué par une écriture concurrente")
+        return real_read(path)
+
+    monkeypatch.setattr(rdm, "read_json", _read)
 
     merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),
                   keep_id="ubm-1", source_id="src", backup=False)
@@ -1183,17 +1198,27 @@ def test_merge_falls_back_to_memory_when_loser_file_is_unreadable(
     assert "depuis-la-memoire.example" in urls
 
 
-def test_merge_falls_back_to_memory_on_id_mismatch(patched_recos_dir, caplog):
-    """Le fichier du loser porte un autre id (renommage manuel, collision) :
-    on ne fusionne PAS ce contenu étranger."""
+def test_merge_falls_back_to_memory_on_id_mismatch(patched_recos_dir,
+                                                   monkeypatch, caplog):
+    """Le slot du loser a été réutilisé par une AUTRE reco entre la détection et
+    la fusion : son contenu étranger ne doit pas entrer dans le kept."""
+    import reco_dedup_merge as rdm
+
     tmp = patched_recos_dir
     r1 = _r("ubm-1", "X")
     r2 = _r("ubm-2", "X", customLinks=[{"url": "depuis-la-memoire.example"}])
-    _write_recos("src", [r1, r2], tmp)
-    intrus = {"id": "ubm-999", "title": "Autre œuvre",
-              "customLinks": [{"url": "intrus.example"}]}
-    (tmp / "recos" / "src" / "ubm-2.json").write_text(
-        json.dumps(intrus), encoding="utf-8")
+    paths_map = _write_recos("src", [r1, r2], tmp)
+    monkeypatch.setattr(rdm, "_path_for_reco",
+                        lambda sid, rid, recos_root=None: paths_map.get(rid))
+    real_read = rdm.read_json
+
+    def _read(path):
+        if Path(path).name == "ubm-2.json":
+            return {"id": "ubm-999", "title": "Autre œuvre",
+                    "customLinks": [{"url": "intrus.example"}]}
+        return real_read(path)
+
+    monkeypatch.setattr(rdm, "read_json", _read)
 
     with caplog.at_level("WARNING", logger="reco"):
         merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),

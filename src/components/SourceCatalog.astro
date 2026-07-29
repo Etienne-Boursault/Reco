@@ -17,6 +17,7 @@ import Layout from '../layouts/Layout.astro';
 import RecoCard from './RecoCard.astro';
 import EmptyState from './EmptyState.astro';
 import { TYPE_LABELS_PLURAL, episodeLabel } from '../utils/recoTypes';
+import { sortRecosByTimestamp } from '../utils/recoOrder';
 import { plural } from '../utils/plural';
 import { t } from '../i18n';
 import { sourceToPodcastSchema } from '../lib/seo/jsonld';
@@ -36,9 +37,14 @@ const data = source.data;
 // DÉCISION PRODUIT (CR Story 4) : les œuvres d'invité·es (`guestWork`) restent
 // kind=reco et sont donc INCLUSES ici dans `trueRecos` et tous les compteurs —
 // seule la page épisode les présente dans une sous-section séparée.
-const recos = (await getCollection('recos'))
-  .filter((r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded')
-  .map((r) => r.data);
+// Tri CHRONOLOGIQUE explicite : sans lui, l'ordre affiché serait celui
+// d'énumération du chargeur de fichiers d'Astro — un détail d'implémentation
+// que la migration 5 → 7 a effectivement changé. Cf. `src/utils/recoOrder.ts`.
+const recos = sortRecosByTimestamp(
+  (await getCollection('recos'))
+    .filter((r) => r.data.sourceId.id === source.id && r.data.status !== 'discarded')
+    .map((r) => r.data),
+);
 const trueRecos = recos.filter((r) => r.kind !== 'citation');
 
 // Épisodes indexés par guid pour afficher le numéro/titre sur les cartes.
