@@ -34,6 +34,22 @@ markers = [
 branch = true
 source = ["tools"]
 omit = [
+    # ⚠ CETTE LISTE N'EST PAS CE QUI FAIT PASSER LA BARRE. Mesuré le
+    # 2026-07-29, SANS aucun omit : statements 95,80 % · branches 95,08 % —
+    # les deux au-dessus de 95 %. L'exclusion ci-dessous change le confort
+    # (99,62 / 98,29), pas le verdict.
+    #
+    # C'est volontaire et c'est la condition pour qu'elle reste saine : une
+    # exclusion qui porte le chiffre finit par masquer autre chose. Ce dépôt
+    # en a fait les frais — `tools/.coveragerc`, supprimé le même jour,
+    # excluait `tools/cache/*` et `tools/dispatch/*`, du code de PRODUCTION
+    # testé. Si un jour la mesure sans omit repasse sous 95 %, la réponse est
+    # d'écrire des tests, pas d'allonger cette liste.
+    #
+    # Chaque entrée a été vérifiée le 2026-07-29 : aucune n'est appelée par
+    # `run_pipeline.py`, `run_all.ps1`, un workflow `.github/`, le `Makefile`
+    # ou le `Dockerfile`, ni importée par un module de `tools/`.
+    #
     # --- Scripts JETABLES : gardés hors mesure -----------------------------
     # Études ponctuelles et re-runs manuels, écrits pour un lot figé
     # d'épisodes (« les 28 ép », « les 11 épisodes »), jamais rejoués depuis.
@@ -46,14 +62,22 @@ omit = [
     "tools/compare_models.py",             # diagnostic Whisper tiny/small/medium
     "tools/compare_4_llms.py",             # étude comparative 4 LLM (one-shot)
     "tools/compare_extract.py",            # extraction comparative figée
-    "tools/eval_local_llm.py",             # éval d'un llama-server local
+    # Cité dans `tools/review_render_page.py:309`, mais dans un COMMENTAIRE
+    # historique (« avant exécution de… »), pas un appel : déjà appliquée.
     "tools/migrate_guests_parsed.py",      # migration ponctuelle, déjà appliquée
     "tools/rerun_28_eps_with_history.py",  # re-run manuel d'un lot figé
     "tools/rerun_haiku_on_sonnet.py",      # re-run manuel d'un lot figé
     "tools/retry_gpt4o.py",                # reprise après rate limit OpenAI
-    # `tools/migrate_types.py` et `tools/export_similar_works.py` étaient
-    # listés ici à tort : tous deux ont une suite de tests dédiée. Réintégrés
-    # à la mesure le 2026-07-29.
+    # SORTIS de cette liste après vérification, tous trois désormais à 100 % :
+    #   - `tools/eval_local_llm.py` (2026-07-29) : le critère n'est pas « ça
+    #     appelle un LLM » mais « est-ce rejoué ? ». Celui-ci a 40 lignes de
+    #     procédure documentée dans `docs/llm-local.md`, commandes à copier :
+    #     c'est un outil d'évaluation maintenu, pas un one-shot. Les 7 autres
+    #     n'ont que leur propre docstring.
+    #   - `tools/migrate_types.py` et `tools/export_similar_works.py` : ils
+    #     avaient chacun une suite de tests dédiée, l'exclusion empêchait
+    #     purement et simplement de la mesurer (`coverage` répondait « No data
+    #     was collected »).
     "tools/.venv/*",
 ]
 
