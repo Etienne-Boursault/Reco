@@ -21,6 +21,16 @@ import { handleReport } from '../../lib/reports/handler.js';
 import { notifyReportMatrix, type ReportNotifyContext } from '../../lib/reports/notify.js';
 import type { Report } from '../../lib/reports/types.js';
 import { tryClientAddress } from '../../lib/http/clientAddress.js';
+import { resolveClientIp } from '../../lib/http/resolveClientIp.js';
+
+// Parsé UNE fois au chargement du module, comme dans `/api/click` (M25-17) —
+// et non à chaque requête, ce que faisait la version précédente.
+const TRUSTED_PROXIES: ReadonlySet<string> = new Set(
+  (process.env.TRUSTED_PROXIES ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
 import { episodeLabel, TYPE_LABELS } from '../../utils/recoTypes.js';
 
 // SSR opt-in (cf. astro.config.mjs) : avec RECO_SSR=1, l'adaptateur Node est
@@ -128,29 +138,20 @@ export const POST: APIRoute = async (ctx) => {
   const origin = request.headers.get('origin') ?? request.headers.get('referer');
 
   // H16-6 — On NE FAIT confiance à `x-forwarded-for` que si l'IP directe
-  // (`clientAddress`) figure dans la liste `TRUSTED_PROXIES` (CSV d'IPs).
-  // Sans cette garde, n'importe qui peut forger un header pour contourner
-  // le rate-limit.
-  let ip = '0.0.0.0';
-  const directIp = tryClientAddress(ctx);
-  const trustedRaw = process.env.TRUSTED_PROXIES ?? '';
-  const trustedProxies = new Set(
-    trustedRaw
-      .split(',')
-      .map((s) => s.trim())
-      .filter(Boolean),
-  );
-  const xff = request.headers.get('x-forwarded-for');
-  if (directIp && trustedProxies.has(directIp) && xff) {
-    // Confiance accordée — on lit l'IP réelle depuis le header.
-    ip = xff.split(',')[0].trim() || directIp;
-  } else if (directIp) {
-    ip = directIp;
-  } else {
-    // En static build, pas d'IP disponible. Fallback non-trustable mais
-    // mieux que rien — le rate-limit deviendra inopérant sur cette voie.
-    ip = '0.0.0.0';
-  }
+  // (`clientAddress`) figure dans `TRUSTED_PROXIES`. La règle complète — et
+  // notamment POURQUOI on lit le DERNIER saut et non le premier — vit dans
+  // `src/lib/http/resolveClientIp.ts`, partagé avec `/api/click`. Elle était
+  // recopiée ici, et les deux copies lisaient le premier élément : celui que
+  // le client écrit lui-même, donc forgeable à volonté.
+  //
+  // `0.0.0.0` en repli quand aucune IP n'est disponible (build statique) : le
+  // rate-limit devient inopérant sur cette voie, mais l'endpoint n'est de
+  // toute façon pas servi dans ce mode.
+  const ip = resolveClientIp({
+    clientAddress: tryClientAddress(ctx),
+    forwardedFor: request.headers.get('x-forwarded-for'),
+    trustedProxies: TRUSTED_PROXIES,
+  }) ?? '0.0.0.0';
 
   const result = handleReport({ formData, origin, selfOrigin, ip });
 

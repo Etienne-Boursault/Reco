@@ -237,21 +237,35 @@ describe('POST /api/report — résolution de l’IP (H16-6)', () => {
     expect(res3.status).toBe(429);
   });
 
-  it('retombe sur clientAddress si X-Forwarded-For est vide après trim', async () => {
+  it('un PREMIER élément forgé ne change pas le bucket de rate-limit', async () => {
+    // LE contournement corrigé le 2026-07-29. `X-Forwarded-For` s'écrit
+    // `<client>, <proxy>` : le premier élément est ce que le CLIENT déclare,
+    // le dernier ce que NOTRE proxy constate. L'ancien code lisait le premier.
+    // Un attaquant le faisait varier à chaque requête et tombait dans un
+    // bucket neuf à chaque fois — la limite ne se déclenchait jamais, alors
+    // que chaque requête acceptée écrit un fichier sur le disque.
     process.env.TRUSTED_PROXIES = '10.0.0.1';
     const route = await loadRoute();
-    const req = formRequest(validFields(route.makeChallenge()), {
-      origin: SELF,
-      'x-forwarded-for': ' , 198.51.100.9',
-    });
-    expect(((await route.POST(ctxFor(req, '10.0.0.1'))) as Response).status).toBe(200);
+    const mk = (xff: string) =>
+      formRequest(validFields(route.makeChallenge()), { origin: SELF, 'x-forwarded-for': xff });
 
-    // Le bucket de rate-limit est celui de `10.0.0.1` (fallback), pas du XFF.
-    const req2 = formRequest(validFields(route.makeChallenge()), {
-      origin: SELF,
-      'x-forwarded-for': ' , 203.0.113.5',
-    });
-    expect(((await route.POST(ctxFor(req2, '10.0.0.1'))) as Response).status).toBe(429);
+    // Même client réel (dernier saut), premier élément forgé différent.
+    expect(((await route.POST(ctxFor(mk('1.2.3.4, 198.51.100.9'), '10.0.0.1'))) as Response).status)
+      .toBe(200);
+    const res2 = (await route.POST(ctxFor(mk('9.9.9.9, 198.51.100.9'), '10.0.0.1'))) as Response;
+    expect(res2.status).toBe(429);
+  });
+
+  it('retombe sur clientAddress quand X-Forwarded-For n’a aucune entrée exploitable', async () => {
+    process.env.TRUSTED_PROXIES = '10.0.0.1';
+    const route = await loadRoute();
+    const mk = (xff: string) =>
+      formRequest(validFields(route.makeChallenge()), { origin: SELF, 'x-forwarded-for': xff });
+
+    // Que des séparateurs et des espaces : le proxy reste la meilleure clé
+    // disponible (M25-18), et le rate-limit doit donc bien mordre.
+    expect(((await route.POST(ctxFor(mk(' , '), '10.0.0.1'))) as Response).status).toBe(200);
+    expect(((await route.POST(ctxFor(mk('   '), '10.0.0.1'))) as Response).status).toBe(429);
   });
 
   it('tolère un clientAddress qui lève (route pré-rendue)', async () => {

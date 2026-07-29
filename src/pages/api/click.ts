@@ -29,6 +29,7 @@
 import type { APIRoute } from 'astro';
 import { handleClick } from '../../lib/tracking/handler.js';
 import { tryClientAddress } from '../../lib/http/clientAddress.js';
+import { resolveClientIp } from '../../lib/http/resolveClientIp.js';
 import { recordClickStatus } from '../../lib/tracking/metrics.js';
 import { CLICK_LIMITS } from '../../lib/tracking/types.js';
 
@@ -71,26 +72,23 @@ const TRUSTED_PROXIES: ReadonlySet<string> = new Set(
 
 /**
  * Extrait l'IP cliente en respectant la chaîne de proxies.
- * Retourne `null` si l'IP réelle est indéterminable — le caller doit
- * alors short-circuit (204 silencieux) au lieu de hasher `0.0.0.0`,
- * qui collapserait tous les clients no-IP sur le même bucket de
- * rate-limit et créerait un DoS auto-infligé (CR senior C25-2).
  *
- * M25-18 : si `clientAddress ∈ trustedProxies` mais que `x-forwarded-for`
- * est vide → fallback `clientAddress` (au lieu de null), car le proxy est
- * trusted et c'est probablement l'IP directe utile (cas health-check
- * interne ou tests). Documenté ADR.
+ * Délègue à `src/lib/http/resolveClientIp.ts`, partagé avec `/api/report` :
+ * cette règle était recopiée dans les deux endpoints, et tous deux lisaient
+ * le PREMIER élément de `X-Forwarded-For` — celui que le client écrit, donc
+ * forgeable — au lieu du dernier, posé par notre propre proxy.
+ *
+ * Retourne `null` si l'IP réelle est indéterminable : le caller doit alors
+ * court-circuiter (204 silencieux) au lieu de hasher `0.0.0.0`, qui
+ * collapserait tous les clients no-IP sur le même bucket de rate-limit et
+ * créerait un DoS auto-infligé (CR senior C25-2).
  */
 function extractIp(request: Request, clientAddress: string | null): string | null {
-  const xff = request.headers.get('x-forwarded-for');
-  if (clientAddress && TRUSTED_PROXIES.has(clientAddress)) {
-    if (xff) {
-      const first = xff.split(',')[0].trim();
-      return first || clientAddress;
-    }
-    return clientAddress;
-  }
-  return clientAddress ?? null;
+  return resolveClientIp({
+    clientAddress,
+    forwardedFor: request.headers.get('x-forwarded-for'),
+    trustedProxies: TRUSTED_PROXIES,
+  });
 }
 
 function selfOriginOf(request: Request): string {
