@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v5
         with:
@@ -48,7 +48,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         python-version: ['3.12']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v5
         with:
@@ -60,17 +60,28 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
-          pip install pytest
+          pip install pytest pytest-cov
 
-      - name: Run pytest
-        run: pytest tests/ -q --tb=short
+      # La couverture est MESURÉE en CI, pas seulement configurée : jusqu'au
+      # 2026-07-29 ce job lançait `pytest -q` sans `--cov`, donc le
+      # `fail_under = 95` du projet n'a jamais été évalué une seule fois. Les
+      # branches, elles, n'étaient pas mesurées du tout — et étaient sous la
+      # barre (94,8 %) sans que rien ne le signale.
+      - name: Run pytest (avec couverture branches)
+        run: pytest tests/ -q --tb=short --cov=tools --cov-branch --cov-report=json --cov-report=term-missing
+
+      # `--cov-fail-under` porte sur un TOTAL COMBINÉ lignes+branches : un run
+      # à 99 % de lignes et 91 % de branches le passerait. L'exigence étant
+      # ≥ 95 % sur CHAQUE métrique, on vérifie les deux séparément.
+      - name: Vérifier le seuil par métrique
+        run: python scripts/check_coverage.py --min 95
 
   lint-js:
     name: Lint JS / Astro
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
@@ -82,7 +93,9 @@ jobs:
 
       - name: Astro check (types)
         run: npx astro check || true
-        # Non bloquant tant que tous les types Astro 5 ne sont pas stabilisés.
+        # Non bloquant tant que tous les types Astro ne sont pas stabilisés.
+        # `astro:content` n'existe qu'après `astro sync`/`astro build`, d'où
+        # 24 erreurs `Cannot find module` qui cascadent sans être des défauts.
 
   test-vitest:
     name: Test Vitest (SEO + OG)
@@ -92,7 +105,7 @@ jobs:
       # vitest.config.ts charge astro.config.mjs, qui exige SITE_URL en prod.
       SITE_URL: https://example.com
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
@@ -107,8 +120,13 @@ jobs:
       - name: Build (SSG)
         run: npm run build
 
-      - name: Run vitest
-        run: npm run test:seo
+      # Idem côté frontend : `npm run test:seo` lançait `vitest run` SANS
+      # `--coverage`, donc les seuils de `vitest.config.ts` n'étaient jamais
+      # évalués. C'est ainsi que le dépôt a pu dériver à 67 % de lignes et
+      # 61 % de branches, avec 41 fichiers sur 97 jamais exécutés.
+      # Les seuils de vitest s'appliquent bien métrique par métrique.
+      - name: Run vitest (avec couverture)
+        run: npm run test:coverage
 
   build:
     name: Build SSG
@@ -117,7 +135,7 @@ jobs:
     env:
       SITE_URL: https://example.com
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
@@ -130,7 +148,7 @@ jobs:
         run: npm run build
 
       - name: Upload dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist-${{ github.sha }}
           path: dist/

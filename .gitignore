@@ -47,6 +47,8 @@ ruvector.db
 .coverage
 .coverage.*
 htmlcov/
+# Rapport JSON lu par scripts/check_coverage.py (regénéré à chaque run CI).
+coverage.json
 
 # OS / éditeurs
 .DS_Store
