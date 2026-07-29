@@ -137,16 +137,32 @@ class ProbeResult(NamedTuple):
 Fetcher = Callable[[str, float], FetchOutcome]
 
 
+#: Seuls schémas ouverts. `urllib` gère aussi `file:`, `ftp:` et `data:`.
+_SCHEMES_AUTORISES = frozenset({"http", "https"})
+
+
 def fetch_via_urllib(url: str, timeout: float) -> FetchOutcome:
-    """Transport réel. GET et non HEAD : le corps est nécessaire au titre."""
-    # POINT OUVERT (S310, 2026-07-29) — `url` vient des DONNÉES du site
-    # (`customLinks`, `watchProviders`), pas d'une constante : un lien
-    # `file://` ou `ftp://` serait ouvert tel quel. Le risque est faible (les
-    # liens sont curés à la main et le script tourne en local) mais réel.
-    # Filtrer sur http/https AVANT l'ouverture changerait le comportement —
-    # certaines URLs seraient désormais refusées — donc c'est une décision à
-    # prendre pour elle-même, pas un effet de bord d'un passage de lint.
-    req = urllib.request.Request(url, method="GET",  # noqa: S310
+    """Transport réel. GET et non HEAD : le corps est nécessaire au titre.
+
+    Refuse tout schéma autre que http(s) AVANT d'ouvrir quoi que ce soit.
+    `url` vient des DONNÉES du site (`customLinks`, `watchProviders`), pas
+    d'une constante : sans ce filtre, un `file:///etc/passwd` glissé dans une
+    reco serait lu par `urlopen` et son contenu remonterait dans le rapport.
+
+    Ce n'est pas qu'une garde de sécurité, c'est une mise en COHÉRENCE : la
+    carte du site n'affiche déjà que des liens http(s) (`isSafeUrl`, cf.
+    `src/data/merchants.ts`). Un vérificateur qui ouvre ce que la page refuse
+    d'afficher vérifie autre chose que ce qui est publié.
+
+    Le refus est signalé comme une VÉRIFICATION IMPOSSIBLE (`status=None`) et
+    non comme un lien mort : le schéma est fautif, ça ne prouve pas que la
+    ressource n'existe pas. L'interprétation retombe donc sur « unknown ».
+    """
+    scheme = urlparse(url).scheme.lower()
+    if scheme not in _SCHEMES_AUTORISES:
+        return FetchOutcome(None, error=f"schéma non autorisé : {scheme or '(aucun)'}")
+
+    req = urllib.request.Request(url, method="GET",  # noqa: S310 — schéma filtré ci-dessus
                                  headers=dict(BROWSER_HEADERS))
     try:
         with urllib.request.urlopen(req, timeout=timeout,  # noqa: S310
