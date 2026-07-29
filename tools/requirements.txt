@@ -23,7 +23,7 @@ yt-dlp>=2024.0             # téléchargement audio YouTube (si pas d'audioUrl)
 requests>=2.31,<3          # téléchargement des enclosures audio HTTP
 
 # Étape 3 — extraction des recos via LLM
-anthropic>=0.40            # SDK API Anthropic (modèle claude-opus-4-7)
+anthropic>=0.120.2            # SDK API Anthropic (modèle claude-opus-4-7)
 openai>=1.0                # SDK OpenAI (provider LLM alternatif — testé dans test_extract_recos)
 python-dotenv>=1.2.2,<2    # chargement de tools/.env (ANTHROPIC_API_KEY)
 
