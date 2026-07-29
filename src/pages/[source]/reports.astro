@@ -2,8 +2,29 @@
 /**
  * /[source]/reports — queue admin des signalements (build-time, noindex).
  *
- * Page interne (comme `/verifier`). Liste les reports `pending` pour la
- * source courante, lus à la build depuis `tools/output/reports/<source>/`.
+ * ⚠ NON CONSTRUITE PAR DÉFAUT — il faut `RECO_ADMIN=1`.
+ *
+ * Cette page rend le nom, l'ADRESSE E-MAIL et le texte libre des personnes
+ * qui signalent une erreur. Elle était pré-rendue sans condition, donc écrite
+ * dans `dist/` et **déployée avec le site public** : au premier signalement
+ * reçu, l'adresse d'un visiteur devenait lisible par quiconque, sans
+ * authentification (revue de sécurité du 2026-07-29).
+ *
+ * `noindex`, `Disallow: /*​/reports` dans robots.txt et le filtre sitemap ne
+ * sont que des mesures de DÉCOUVRABILITÉ, jamais d'ACCÈS — et `robots.txt`
+ * publie justement le motif d'URL, tandis que les `sourceId` sont sur la page
+ * d'accueil. Le texte de la page dit lui-même « Queue interne — non destinée
+ * au public ».
+ *
+ * D'où le garde : sans `RECO_ADMIN=1`, `getStaticPaths` ne renvoie AUCUNE
+ * route et rien n'atterrit dans `dist/`. Pour consulter la queue en local :
+ *     RECO_ADMIN=1 npm run build
+ * ou, sans build du tout (recommandé) :
+ *     python tools/manage_reports.py --list
+ *
+ * Même arbitrage que pour `/verifier`, retirée du build public en 408c827a.
+ * Même mécanisme que `RECO_SSR=1` : un flag d'environnement explicite, absent
+ * par défaut, plutôt qu'une page publique qu'on espère non trouvée.
  *
  * Pas de bouton d'action — la résolution se fait via le CLI
  * `tools/manage_reports.py` (lockfile pipeline, traçabilité).
@@ -13,7 +34,12 @@ import Layout from '../../layouts/Layout.astro';
 import { listReports } from '../../lib/reports/storage.js';
 import { t } from '../../i18n';
 
+/** `true` seulement si l'opérateur a explicitement demandé la queue admin. */
+export const ADMIN_BUILD = process.env.RECO_ADMIN === '1';
+
 export async function getStaticPaths() {
+  // Aucune route sans le flag : la page n'existe pas dans un build public.
+  if (!ADMIN_BUILD) return [];
   const sources = await getCollection('sources');
   return sources.map((source) => ({
     params: { source: source.id },

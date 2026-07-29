@@ -22,7 +22,7 @@ vi.mock('../../src/lib/reports/storage.js', () => ({
   listReports: (sourceId: string) => listReports(sourceId),
 }));
 
-import ReportsQueue, { getStaticPaths as queuePaths } from '../../src/pages/[source]/reports.astro';
+import ReportsQueue from '../../src/pages/[source]/reports.astro';
 import ReportForm, { getStaticPaths as formPaths } from '../../src/pages/[source]/report/[recoId].astro';
 
 interface Entry {
@@ -77,12 +77,11 @@ describe('/[source]/reports — queue admin', () => {
       path: '/ubm/reports',
     });
 
-  it('getStaticPaths émet une page par source', async () => {
-    seed({ sources: [SOURCE, { id: 'autre', data: { id: 'autre', title: 'Autre' } } as never] });
-    const paths = (await queuePaths()) as Array<{ params: { source: string } }>;
-
-    expect(paths.map((p) => p.params.source)).toEqual(['ubm', 'autre']);
-  });
+  // `getStaticPaths` dépend désormais de `RECO_ADMIN` : ses deux cas vivent
+  // dans `test_reports_admin_flag.test.ts`, qui contrôle l'environnement et
+  // recharge le module. Les tenir ici rendrait CE fichier dépendant d'une
+  // variable d'environnement — et les 16 tests ci-dessous rendent la page
+  // directement, sans passer par le routage.
 
   it('interroge `listReports` avec l’id de la source', async () => {
     await render();
