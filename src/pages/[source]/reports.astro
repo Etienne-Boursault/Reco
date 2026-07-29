@@ -37,12 +37,18 @@ const CATEGORY_LABELS: Record<string, string> = {
   suggestion: t('report.admin.cat.suggestion'),
 };
 
+/**
+ * Horodatage lisible, ou la valeur BRUTE si elle n'est pas une date.
+ *
+ * Le `try/catch` d'origine ne pouvait rien attraper : `toLocaleString()` ne
+ * lève pas sur une date invalide, il renvoie la chaîne « Invalid Date ». Le
+ * repli était donc du code mort, et la page affichait « Invalid Date » — sans
+ * valeur pour qui administre la file : on veut voir ce qui est réellement
+ * stocké pour comprendre d'où vient la corruption.
+ */
 function fmt(d: string): string {
-  try {
-    return new Date(d).toLocaleString('fr-FR');
-  } catch {
-    return d;
-  }
+  const parsed = new Date(d);
+  return Number.isNaN(parsed.getTime()) ? d : parsed.toLocaleString('fr-FR');
 }
 ---
 

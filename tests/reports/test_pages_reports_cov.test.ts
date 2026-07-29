@@ -181,10 +181,15 @@ describe('/[source]/reports — queue admin', () => {
   });
 
   it('une date illisible est affichée telle quelle plutôt que « Invalid Date »', async () => {
+    // Page d'administration : face à un horodatage corrompu, la valeur BRUTE
+    // est exploitable (on voit ce qui est stocké), « Invalid Date » ne l'est
+    // pas. L'ancien `try/catch` ne pouvait pas jouer ce rôle : `toLocaleString`
+    // ne lève jamais sur une date invalide, il renvoie « Invalid Date ».
     listReports.mockReturnValue([report({ submittedAt: 'pas-une-date' })]);
     const text = visibleText(await render());
 
-    expect(text).toContain('Invalid Date');
+    expect(text).toContain('pas-une-date');
+    expect(text).not.toContain('Invalid Date');
     expect(text).not.toContain('undefined');
   });
 

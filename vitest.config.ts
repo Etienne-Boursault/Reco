@@ -10,8 +10,9 @@ import { getViteConfig } from 'astro/config';
  * Vite Astro — indispensable pour tester `MetaTags.astro` via l'Astro
  * Container API (cf. `test_meta_tags_unit.test.ts`).
  *
- * Couverture : seuil lines ≥ 80 % sur `src/lib/og/`, `src/lib/seo/`,
- * `src/components/MetaTags.astro` et `src/pages/robots.txt.ts`.
+ * Couverture : ≥ 95 % sur les quatre métriques (lignes, instructions,
+ * fonctions, branches), mesurées sur TOUT `src/` — cf. le bloc `coverage`
+ * plus bas pour l'historique de ce choix.
  */
 export default getViteConfig({
   test: {
@@ -42,27 +43,32 @@ export default getViteConfig({
     testTimeout: 30_000,
     coverage: {
       provider: 'v8',
-      include: [
-        'src/lib/og/**/*.ts',
-        'src/lib/seo/**/*.ts',
-        'src/lib/registry/**/*.ts',
-        // L5 : helpers purs de la page épisode et de la page œuvre, désormais
-        // couverts par tests/episode/** et tests/work/**.
-        'src/lib/episode/**/*.ts',
-        'src/lib/work/**/*.ts',
-        'src/pages/robots.txt.ts',
-        'src/config/site.ts',
-        // CG1/CG2 (2026-07-19) : résolveur de liens éthiques et carte reco.
-        // NB : on N'ajoute PAS le glob large `src/components/**/*.astro` — il
-        // ferait chuter le seuil global (13+ composants non testés → 0 %). On
-        // cible RecoCard.astro et merchants.ts, qui ont désormais leurs tests.
-        'src/data/**/*.ts',
-        'src/components/RecoCard.astro',
-      ],
+      // TOUT `src/`, sans liste blanche.
+      //
+      // Historique : ce champ était une liste blanche curée, agrandie fichier
+      // par fichier. Elle produisait un chiffre flatteur — 80 % sur le
+      // périmètre choisi — pendant que le dépôt RÉEL était à 67 % de lignes et
+      // 61 % de branches, avec 41 fichiers sur 97 jamais exécutés, dont 32
+      // `.astro`. Un seuil qui ne s'applique qu'à ce qu'on a bien voulu y
+      // mettre ne mesure rien : il enregistre une intention.
+      //
+      // Le glob large avait été explicitement écarté au motif qu'il « ferait
+      // chuter le seuil global ». C'est exact, et c'était précisément
+      // l'information à ne pas masquer.
+      include: ['src/**/*.ts', 'src/**/*.astro'],
+      // NB : v8 n'instrumente pas les `<script>` client des `.astro` — ils ne
+      // comptent ni au numérateur ni au dénominateur. La logique client qui
+      // mérite d'être testée doit donc être extraite dans un module `.ts`
+      // (cf. `src/utils/gridFilter.ts`, `src/utils/search.ts`), sans quoi elle
+      // échappe à la mesure sans que le chiffre bronche.
       thresholds: {
-        lines: 80,
-        functions: 80,
-        statements: 80,
+        // Exigence produit : ≥ 95 % sur les QUATRE métriques. Les seuils de
+        // vitest s'appliquent bien métrique par métrique (contrairement au
+        // `fail_under` de coverage.py, qui porte sur un total combiné).
+        lines: 95,
+        functions: 95,
+        statements: 95,
+        branches: 95,
         // merchants.ts est couvert exhaustivement (11 résolveurs + gardes) :
         // on verrouille 100 % pour détecter toute régression de couverture.
         'src/data/merchants.ts': {
