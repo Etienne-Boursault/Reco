@@ -109,7 +109,14 @@ async function buildReportContext(
   }
 }
 
-export const POST: APIRoute = async ({ request, clientAddress }) => {
+export const POST: APIRoute = async (ctx) => {
+  // NB : on prend le contexte ENTIER et on ne déstructure PAS `clientAddress`
+  // ici. Astro 5 lève (`ClientAddressNotAvailable`) à la *lecture* de la
+  // propriété sur une route pré-rendue : une déstructuration dans la
+  // signature évaluerait le getter avant le try/catch plus bas, rendant
+  // celui-ci inopérant. Même parade que `src/pages/api/click.ts`.
+  const { request } = ctx;
+
   // FormData → plain object. On garde uniquement les champs scalaires
   // (le honeypot et le captcha sont des `<input>` simples).
   const fd = await request.formData();
@@ -130,7 +137,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   let ip = '0.0.0.0';
   let directIp: string | null = null;
   try {
-    directIp = clientAddress;
+    directIp = ctx.clientAddress ?? null;
   } catch {
     directIp = null;
   }
@@ -162,6 +169,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (result.status === 200 && result.report) {
     const context = await buildReportContext(result.report, selfOrigin);
     await notifyReportMatrix(result.report, { context });
+  }
+
+  // 204 = honeypot rempli (H16-1) : le constructeur `Response` REFUSE un body
+  // sur un 204 (spec Fetch → TypeError). Sans ce court-circuit, le bot
+  // recevait un 500 — exactement le signal exploitable que le 204 silencieux
+  // cherche à lui refuser. Même traitement que `src/pages/api/click.ts`.
+  if (result.status === 204) {
+    return new Response(null, { status: 204 });
   }
 
   return new Response(JSON.stringify(result.body), {
