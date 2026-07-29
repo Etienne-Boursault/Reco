@@ -84,21 +84,27 @@ const recommendationCount = spontaneousRecos.length + guestWorks.length;
 // des œuvres d'invité·es » (spontanées = 0) reste correct : X = Y et le
 // breakdown se lit « X recommandations · dont X œuvres d'invité·es ». Les
 // citations, elles, ne sont pas des recos → comptées séparément.
+// Seuil `>= 2` et non `> 1` : c'est la règle du projet (`src/utils/plural.ts`),
+// donc 0 ET 1 prennent le singulier. Les deux formes sont équivalentes sur des
+// entiers — ce qui compte est que la clé singulier reçoive `count`, sinon elle
+// affiche le nombre qu'elle code en dur. Un épisode sans reco titrait
+// « 1 recommandation » pendant que son corps disait « Aucune recommandation
+// extraite de cet épisode » (constaté sur le site construit, 2026-07-29).
 const recoCountLabel =
-  recommendationCount > 1
+  recommendationCount >= 2
     ? t('episode.count.recommendations.many', { count: recommendationCount })
-    : t('episode.count.recommendations.one');
+    : t('episode.count.recommendations.one', { count: recommendationCount });
 const guestWorkCountLabel =
   guestWorks.length > 0
-    ? guestWorks.length > 1
+    ? guestWorks.length >= 2
       ? t('episode.count.guestWorks.many', { count: guestWorks.length })
-      : t('episode.count.guestWorks.one')
+      : t('episode.count.guestWorks.one', { count: guestWorks.length })
     : null;
 const citationCountLabel =
   citations.length > 0
-    ? citations.length > 1
+    ? citations.length >= 2
       ? t('episode.count.citations.many', { count: citations.length })
-      : t('episode.count.citations.one')
+      : t('episode.count.citations.one', { count: citations.length })
     : null;
 
 // JSON-LD : PodcastEpisode + toutes les recommandations (spontanées ET œuvres

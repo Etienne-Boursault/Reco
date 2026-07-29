@@ -181,16 +181,36 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      # TOUS les jobs de `needs` doivent figurer dans la condition d'échec.
+      #
+      # `lint-python` et `lint-js` étaient déclarés en `needs`, affichés par
+      # les `echo`, et absents de la condition d'échec. Tant
+      # qu'ils tournaient en `|| true` c'était sans effet. Depuis qu'ils sont
+      # bloquants (ruff 959 -> 0, astro check 158 -> 0), c'était la SEULE
+      # chose qui séparait « bloquant » de « décoratif » : les deux jobs
+      # pouvaient virer au rouge pendant que `ci-summary` — le check
+      # vraisemblablement requis par la protection de branche — passait au
+      # vert. Trouvé en revue d'architecture le 2026-07-29.
+      #
+      # Si un job est ajouté à `needs`, il doit être ajouté ici. La boucle
+      # ci-dessous évite d'avoir à y penser : elle itère sur les résultats
+      # plutôt que de les énumérer une seconde fois.
       - name: Aggregate result
+        env:
+          RESULTS: |
+            lint-python=${{ needs.lint-python.result }}
+            test-python=${{ needs.test-python.result }}
+            lint-js=${{ needs.lint-js.result }}
+            test-vitest=${{ needs.test-vitest.result }}
+            build=${{ needs.build.result }}
         run: |
-          echo "lint-python: ${{ needs.lint-python.result }}"
-          echo "test-python: ${{ needs.test-python.result }}"
-          echo "lint-js:     ${{ needs.lint-js.result }}"
-          echo "test-vitest: ${{ needs.test-vitest.result }}"
-          echo "build:       ${{ needs.build.result }}"
-          if [[ "${{ needs.test-python.result }}" != "success" ]] \
-             || [[ "${{ needs.test-vitest.result }}" != "success" ]] \
-             || [[ "${{ needs.build.result }}" != "success" ]]; then
-            echo "::error::Un job bloquant a échoué."
-            exit 1
-          fi
+          echec=0
+          while IFS='=' read -r job resultat; do
+            [ -z "$job" ] && continue
+            printf '  %-12s %s\n' "$job" "$resultat"
+            if [ "$resultat" != "success" ]; then
+              echo "::error::Job bloquant en échec : $job ($resultat)"
+              echec=1
+            fi
+          done <<< "$RESULTS"
+          exit "$echec"

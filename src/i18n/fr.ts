@@ -140,11 +140,11 @@ export const fr = {
   // Compteur d'en-tête (L1/N2). `{count}` = spontanées + « leurs œuvres »
   // (cohérent avec la carte annuaire et la meta OG). Breakdown facultatif
   // « dont … » quand il y a des œuvres présentées, sinon rien.
-  'episode.count.recommendations.one': '1 recommandation',
+  'episode.count.recommendations.one': '{count} recommandation',
   'episode.count.recommendations.many': '{count} recommandations',
   'episode.count.guestWorks.one': 'dont 1 œuvre présentée dans l’épisode',
   'episode.count.guestWorks.many': 'dont {count} œuvres présentées dans l’épisode',
-  'episode.count.citations.one': '1 mention',
+  'episode.count.citations.one': '{count} mention',
   'episode.count.citations.many': '{count} mentions',
 
   // Œuvre (item #11, X2)
@@ -279,7 +279,7 @@ export const fr = {
   'meta.subtitle':
     'Les podcasts qui partagent leurs recommandations en JSON ouvert, sans tracker, sans Amazon.',
   'meta.metaTitle': 'Source internet — annuaire des podcasts Reco',
-  'meta.podcastCount.one': '1 podcast indexé',
+  'meta.podcastCount.one': '{count} podcast indexé',
   'meta.podcastCount.many': '{count} podcasts indexés',
   'meta.stats.items': 'œuvres référencées',
   'meta.stats.mentions': 'mentions',

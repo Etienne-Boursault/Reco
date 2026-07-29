@@ -38,10 +38,13 @@ export async function getStaticPaths() {
 
 const { entries } = Astro.props as Props;
 const count = entries.length;
+// `count === 1` était la SEULE des quatre orthographes du seuil dans le dépôt
+// à violer la règle « pluriel dès n >= 2 » : à 0 elle basculait sur `.many` et
+// rendait « 0 podcasts indexés » au pluriel.
 const countLabel =
-  count === 1
-    ? t('meta.podcastCount.one')
-    : t('meta.podcastCount.many', { count });
+  count >= 2
+    ? t('meta.podcastCount.many', { count })
+    : t('meta.podcastCount.one', { count });
 ---
 <Layout title={t('meta.metaTitle')} description={t('meta.subtitle')}>
   <main id="main" class="meta-home">

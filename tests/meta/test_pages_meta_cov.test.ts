@@ -135,7 +135,13 @@ describe('/meta/ — annuaire', () => {
 
     expect(html).toContain('meta-home__empty');
     expect(html).not.toContain('meta-home__grid');
-    expect(visibleText(html)).toContain('0 podcasts indexés');
+    // Règle du projet (`src/utils/plural.ts`) : pluriel dès n >= 2, donc 0 et
+    // 1 prennent le SINGULIER. Cette assertion exigeait « 0 podcasts indexés »
+    // — elle gravait la seule violation du seuil dans tout le dépôt, et
+    // contredisait frontalement `tests/about/…` qui assertait l'inverse sur
+    // la même phrase.
+    expect(visibleText(html)).toContain('0 podcast indexé');
+    expect(visibleText(html)).not.toContain('0 podcasts indexés');
   });
 });
 
