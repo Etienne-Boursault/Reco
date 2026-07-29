@@ -59,6 +59,36 @@ class TestFtsQuery:
         q = fts_query("l'horizon")
         assert q == '"l\'horizon"*'
 
+    def test_lone_apostrophe_is_dropped(self) -> None:
+        # Une apostrophe isolée ne produit pas un token `"'"*` (requête absurde).
+        assert fts_query("foo ' bar") == '"foo"* "bar"*'
+
+    def test_column_prefixes_every_token(self) -> None:
+        # Syntaxe colonne FTS5 : `col:"tok"*`, appliquée à CHAQUE token.
+        assert fts_query("bong joon", column="recommended_by") == (
+            'recommended_by:"bong"* recommended_by:"joon"*'
+        )
+
+    def test_column_combines_with_no_prefix(self) -> None:
+        assert fts_query("bong", column="title", prefix=False) == 'title:"bong"'
+
+    def test_column_ignored_when_no_token_survives(self) -> None:
+        # Saisie vide + colonne → sentinel nu (pas de `col:` collé dessus,
+        # ce qui produirait une requête FTS5 invalide).
+        assert fts_query("!!", column="title") == '"\x01\x01NOMATCH\x01\x01"'
+
+    def test_if_empty_raise(self) -> None:
+        import pytest
+
+        with pytest.raises(ValueError, match="aucun token utile"):
+            fts_query("   ", if_empty="raise")
+
+    def test_if_empty_custom_fallback(self) -> None:
+        assert fts_query("***", if_empty='"tout"*') == '"tout"*'
+
+    def test_if_empty_ignored_when_tokens_exist(self) -> None:
+        assert fts_query("bong", if_empty="raise") == '"bong"*'
+
 
 class TestSearchItems:
     def test_finds_by_title(self, built_cache: tuple[Path, CacheBuilder]) -> None:

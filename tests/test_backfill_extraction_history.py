@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import importlib
+import importlib.util
 import json
 import os
 import sys
@@ -154,3 +156,126 @@ def test_backfill_normalizes_unknown_transcript_source(tmp_path):
     assert bf.backfill_file(p) is True
     data = json.loads(p.read_text(encoding="utf-8"))
     assert data["extractionHistory"][0]["transcriptSource"] == "acast"
+
+
+# ===== dry-run =============================================================
+def test_dry_run_reports_change_without_touching_the_file(tmp_path):
+    """`--dry-run` doit annoncer la modification SANS écrire : c'est ce qui
+    permet d'auditer le backfill avant de l'appliquer aux vraies recos."""
+    p = _write_reco(tmp_path, "0001.json", {
+        "id": "ubm-0001", "title": "Dune", "types": ["film"],
+        "extractors": ["anthropic"],
+    })
+    original = p.read_text(encoding="utf-8")
+
+    assert bf.backfill_file(p, dry_run=True) is True
+    assert p.read_text(encoding="utf-8") == original
+    assert "extractionHistory" not in json.loads(original)
+
+
+def test_backfill_dir_dry_run_leaves_every_file_untouched(tmp_path):
+    for i in range(3):
+        _write_reco(tmp_path, f"000{i}.json", {
+            "id": f"ubm-000{i}", "title": "A", "types": ["film"],
+            "extractors": ["anthropic"],
+        })
+    before = {p.name: p.read_text(encoding="utf-8") for p in tmp_path.iterdir()}
+
+    touched, total = bf.backfill_dir(tmp_path, dry_run=True)
+
+    assert (touched, total) == (3, 3)
+    assert {p.name: p.read_text(encoding="utf-8") for p in tmp_path.iterdir()} == before
+
+
+def test_backfill_dir_prints_progress_every_200_files(tmp_path, capsys):
+    """Le compteur de progression s'affiche tous les 200 fichiers (le vrai
+    dossier en compte ~2000 : sans repère, le run paraît figé)."""
+    for i in range(200):
+        _write_reco(tmp_path, f"{i:04d}.json", {
+            "id": f"ubm-{i:04d}", "title": "A", "types": ["film"],
+            "extractors": ["anthropic"],
+        })
+
+    touched, total = bf.backfill_dir(tmp_path, dry_run=True)
+
+    assert (touched, total) == (200, 200)
+    assert "… 200/200 (touched=200)" in capsys.readouterr().out
+
+
+# ===== atomicité : nettoyage du tempfile ===================================
+def test_atomic_write_reraises_even_if_tempfile_cleanup_fails(
+    tmp_path, monkeypatch,
+):
+    """Si le ménage du `.tmp_` échoue aussi, c'est bien l'erreur d'écriture
+    d'origine qui remonte (pas celle du `unlink`)."""
+    p = _write_reco(tmp_path, "0001.json", {
+        "id": "ubm-0001", "title": "Dune", "types": ["film"],
+        "extractors": ["anthropic"],
+    })
+    original = p.read_text(encoding="utf-8")
+
+    def _no_replace(src, dst):
+        raise OSError("disk full")
+
+    def _no_unlink(target):
+        raise OSError("fichier verrouillé")
+
+    monkeypatch.setattr(bf.os, "replace", _no_replace)
+    monkeypatch.setattr(bf.os, "unlink", _no_unlink)
+
+    with pytest.raises(OSError, match="disk full"):
+        bf.backfill_file(p)
+
+    assert p.read_text(encoding="utf-8") == original
+
+
+# ===== bootstrap sys.path ==================================================
+def test_module_prepends_tools_dir_to_syspath_when_absent(monkeypatch):
+    """Le script doit rester lançable directement (`python tools/backfill_…py`),
+    c.-à-d. SANS `tools/` sur le PYTHONPATH : il l'ajoute lui-même pour trouver
+    `extraction_history`. On rejoue donc son chargement depuis le fichier, avec
+    un sys.path amputé — le `reload` classique ne conviendrait pas puisqu'il
+    a justement besoin de ce chemin pour résoudre le module."""
+    tools_dir = str(Path(bf.__file__).resolve().parent)
+    monkeypatch.setattr(sys, "path", [p for p in sys.path if p != tools_dir])
+    assert tools_dir not in sys.path
+
+    spec = importlib.util.spec_from_file_location("_bf_direct_run", bf.__file__)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    assert sys.path[0] == tools_dir
+    assert module.ASSUMED == bf.ASSUMED  # `extraction_history` bien importé
+
+
+# ===== main ================================================================
+def test_main_exits_when_source_dir_missing(monkeypatch, capsys):
+    monkeypatch.setattr(sys, "argv",
+                        ["backfill", "--source", "source-qui-nexiste-pas"])
+
+    with pytest.raises(SystemExit) as err:
+        bf.main()
+
+    assert err.value.code == 1
+    assert "Répertoire introuvable" in capsys.readouterr().err
+
+
+def test_main_delegates_to_backfill_dir_with_dry_run(monkeypatch, capsys):
+    """`main()` résout `src/content/recos/<source>` et propage `--dry-run`.
+    `backfill_dir` est doublé : aucun fichier réel n'est lu ni écrit."""
+    seen = {}
+
+    def fake_dir(root, dry_run=False):
+        seen["root"] = root
+        seen["dry_run"] = dry_run
+        return 7, 12
+
+    monkeypatch.setattr(bf, "backfill_dir", fake_dir)
+    monkeypatch.setattr(sys, "argv",
+                        ["backfill", "--source", "un-bon-moment", "--dry-run"])
+
+    bf.main()
+
+    assert seen["dry_run"] is True
+    assert seen["root"].parts[-3:] == ("content", "recos", "un-bon-moment")
+    assert "Terminé : 7/12 reco(s) modifiée(s)." in capsys.readouterr().out

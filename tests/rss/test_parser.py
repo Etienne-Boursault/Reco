@@ -1,7 +1,15 @@
 """Tests rss.parser : parse RSS, normalisation des champs."""
 from __future__ import annotations
 
-from rss.parser import ParsedEpisode, ParsedFeed, parse_feed_bytes
+from types import SimpleNamespace
+
+from rss.parser import (
+    ParsedEpisode,
+    ParsedFeed,
+    _pick_guid,
+    _pick_published,
+    parse_feed_bytes,
+)
 
 # Fixture RSS 2.0 minimale avec 2 épisodes — accents + Acast-like.
 RSS_FIXTURE = """<?xml version="1.0" encoding="UTF-8"?>
@@ -80,3 +88,103 @@ def test_parse_feed_bad_pubdate_keeps_raw_string():
     # feedparser ne reconnait pas → published_parsed=None → on garde la
     # string brute (qui peut être "not-a-date" ou "" si feedparser drop).
     assert feed.episodes[0].guid == "g"
+
+
+# ===== entries fournies sous forme de dict nu ==============================
+# feedparser renvoie des `FeedParserDict` (attributs ET clés). Le parser gère
+# aussi le cas d'un dict pur — c'est ce qui protège des versions de feedparser
+# où l'accès par attribut disparaît (cf. docstring du module).
+class _FakeFeedparser:
+    """Doublure de `feedparser.parse` renvoyant des structures contrôlées."""
+
+    def __init__(self, feed, entries):
+        self._result = SimpleNamespace(feed=feed, entries=entries)
+
+    def parse(self, _body):
+        return self._result
+
+
+def _patch_feedparser(monkeypatch, feed, entries):
+    import sys
+
+    monkeypatch.setitem(sys.modules, "feedparser", _FakeFeedparser(feed, entries))
+
+
+def test_parse_feed_reads_plain_dict_entries(monkeypatch):
+    """Entries en dict nu : titre, lien et résumé passent par `.get()`."""
+    _patch_feedparser(monkeypatch, {"title": "Flux"}, [
+        {"id": "g1", "title": "Épisode 1", "link": "https://x/1",
+         "summary": "Résumé"},
+    ])
+
+    feed = parse_feed_bytes(b"<ignored/>")
+
+    assert feed.title == "Flux"
+    assert feed.episodes == (
+        ParsedEpisode(guid="g1", title="Épisode 1", link="https://x/1",
+                      published="", summary="Résumé"),
+    )
+
+
+def test_parse_feed_dict_entry_with_missing_fields(monkeypatch):
+    """Un dict n'ayant que son id : les champs absents deviennent des chaînes
+    vides, pas des `None` (les dataclasses sont typées `str`)."""
+    _patch_feedparser(monkeypatch, {"title": "Flux"}, [{"id": "g1"}])
+
+    (episode,) = parse_feed_bytes(b"<ignored/>").episodes
+
+    assert (episode.title, episode.link, episode.summary, episode.published) == (
+        "", "", "", "",
+    )
+
+
+def test_parse_feed_reads_title_from_object_style_feed(monkeypatch):
+    """Métadonnées exposées en attributs plutôt qu'en dict."""
+    _patch_feedparser(monkeypatch, SimpleNamespace(title="Flux objet"), [])
+
+    assert parse_feed_bytes(b"<ignored/>").title == "Flux objet"
+
+
+def test_parse_feed_untitled_feed_yields_empty_title(monkeypatch):
+    _patch_feedparser(monkeypatch, SimpleNamespace(), [])
+
+    assert parse_feed_bytes(b"<ignored/>").title == ""
+
+
+# ===== helpers de sélection ================================================
+def test_pick_guid_prefers_id_then_guid_then_link():
+    assert _pick_guid({"id": "A", "guid": "B", "link": "C"}) == "A"
+    assert _pick_guid({"guid": "B", "link": "C"}) == "B"
+    assert _pick_guid({"link": "C"}) == "C"
+    assert _pick_guid({}) == ""
+
+
+def test_pick_guid_skips_empty_values():
+    """Un `id` vide ne doit pas court-circuiter le repli sur `link`."""
+    assert _pick_guid({"id": "", "link": "https://x/1"}) == "https://x/1"
+
+
+def test_pick_published_falls_back_on_raw_when_struct_is_invalid():
+    """`published_parsed` incohérent (mois 13) → on retombe sur la chaîne
+    brute du flux au lieu de lever."""
+    entry = {"published_parsed": (2026, 13, 45, 99, 0, 0, 0, 0, 0),
+             "published": "Wed, 11 Jun 2026 12:00:00 +0000"}
+
+    assert _pick_published(entry) == "Wed, 11 Jun 2026 12:00:00 +0000"
+
+
+def test_pick_published_falls_back_on_raw_when_struct_is_not_a_sequence():
+    entry = SimpleNamespace(published_parsed=42, published="brut")
+
+    assert _pick_published(entry) == "brut"
+
+
+def test_pick_published_empty_when_nothing_usable():
+    assert _pick_published({}) == ""
+    assert _pick_published(SimpleNamespace()) == ""
+
+
+def test_pick_published_normalizes_struct_time():
+    entry = {"published_parsed": (2026, 6, 11, 12, 0, 0, 0, 0, 0)}
+
+    assert _pick_published(entry) == "2026-06-11T12:00:00Z"

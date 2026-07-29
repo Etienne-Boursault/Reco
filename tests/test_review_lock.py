@@ -19,7 +19,8 @@ import review_lock
 
 @pytest.fixture(autouse=True)
 def _redirect_lock_paths(tmp_path, monkeypatch):
-    """Isole chaque test sur ses propres fichiers verrou."""
+    """Isole chaque test sur ses propres fichiers verrou (verrous ET `.pid`
+    siblings — sinon les tests écriraient dans le vrai `tools/output/`)."""
     monkeypatch.setattr(
         review_lock, "_LOCK_DIR", tmp_path,
     )
@@ -29,6 +30,24 @@ def _redirect_lock_paths(tmp_path, monkeypatch):
     monkeypatch.setattr(
         review_lock, "_PIPELINE_LOCK_PATH", tmp_path / ".review_pipeline.lock",
     )
+    monkeypatch.setattr(
+        review_lock, "_SERVER_PID_PATH", tmp_path / ".review_server.pid",
+    )
+    monkeypatch.setattr(
+        review_lock, "_PIPELINE_PID_PATH", tmp_path / ".review_pipeline.pid",
+    )
+
+
+class _FlakyLock:
+    """Verrou factice dont `release()` échoue — simule un filelock déjà
+    invalidé (fichier supprimé sous nos pieds, FS réseau…)."""
+
+    def __init__(self):
+        self.released = False
+
+    def release(self):
+        self.released = True
+        raise RuntimeError("filelock déjà relâché")
 
 
 def test_pipeline_lock_acquires_when_server_down():
@@ -125,3 +144,133 @@ def test_lock_busy_hierarchy():
     assert issubclass(review_lock.ServerLockBusy, review_lock.LockBusy)
     assert issubclass(review_lock.PipelineLockBusy, review_lock.LockBusy)
     assert issubclass(review_lock.LockBusy, RuntimeError)
+
+
+# ===== _peek_locked =========================================================
+def test_peek_reports_free_when_no_lockfile():
+    assert review_lock._peek_locked(review_lock._PIPELINE_LOCK_PATH) is False
+
+
+def test_peek_reports_free_when_lockfile_is_a_leftover():
+    """Un lockfile résiduel (process tué sans release propre) ne doit PAS être
+    pris pour un verrou actif : sinon plus rien ne redémarrerait sans ménage
+    manuel dans `tools/output/`."""
+    leftover = review_lock._PIPELINE_LOCK_PATH
+    leftover.parent.mkdir(parents=True, exist_ok=True)
+    leftover.touch()
+
+    assert review_lock._peek_locked(leftover) is False
+    # Et le pipeline redémarre bien malgré le résidu.
+    with review_lock.acquire_pipeline_lock():
+        pass
+
+
+def test_peek_reports_taken_while_held():
+    with review_lock.acquire_pipeline_lock():
+        assert review_lock._peek_locked(review_lock._PIPELINE_LOCK_PATH) is True
+
+
+# ===== message UX : indice de PID ==========================================
+def test_server_busy_message_includes_pid_when_available():
+    with review_lock.acquire_server_lock():
+        import os
+        with pytest.raises(review_lock.ServerLockBusy) as err:
+            with review_lock.acquire_pipeline_lock():
+                pass
+    assert f"(PID {os.getpid()})" in str(err.value)
+
+
+def test_server_busy_message_omits_pid_when_file_missing():
+    """Sans fichier `.pid` lisible, le message reste utilisable (pas de crash,
+    juste pas d'indice de PID)."""
+    with review_lock.acquire_server_lock():
+        review_lock._SERVER_PID_PATH.unlink()
+        with pytest.raises(review_lock.ServerLockBusy) as err:
+            with review_lock.acquire_pipeline_lock():
+                pass
+    assert "PID" not in str(err.value)
+    assert "--force" in str(err.value)
+
+
+def test_server_busy_message_omits_pid_when_file_empty():
+    with review_lock.acquire_server_lock():
+        review_lock._SERVER_PID_PATH.write_text("  \n", encoding="utf-8")
+        with pytest.raises(review_lock.ServerLockBusy) as err:
+            with review_lock.acquire_pipeline_lock():
+                pass
+    assert "PID" not in str(err.value)
+
+
+# ===== robustesse : le diagnostic ne casse jamais le run ====================
+def test_server_starts_even_if_pid_file_cannot_be_written(monkeypatch, tmp_path):
+    """Le `.pid` est purement diagnostique : un disque en lecture seule ne doit
+    pas empêcher le serveur de démarrer."""
+    unwritable = tmp_path / "sous-dossier-absent" / ".review_server.pid"
+    monkeypatch.setattr(review_lock, "_SERVER_PID_PATH", unwritable)
+
+    with review_lock.acquire_server_lock():
+        assert not unwritable.exists()
+
+
+def test_pipeline_starts_even_if_pid_file_cannot_be_written(monkeypatch, tmp_path):
+    unwritable = tmp_path / "sous-dossier-absent" / ".review_pipeline.pid"
+    monkeypatch.setattr(review_lock, "_PIPELINE_PID_PATH", unwritable)
+
+    with review_lock.acquire_pipeline_lock():
+        assert not unwritable.exists()
+
+
+@pytest.mark.parametrize("acquire, pid_attr", [
+    (review_lock.acquire_server_lock, "_SERVER_PID_PATH"),
+    (review_lock.acquire_pipeline_lock, "_PIPELINE_PID_PATH"),
+])
+def test_release_failure_is_swallowed(monkeypatch, acquire, pid_attr):
+    """Un `release()` qui échoue ne doit pas faire remonter d'exception depuis
+    le `finally` (best-effort documenté)."""
+    flaky = _FlakyLock()
+    monkeypatch.setattr(review_lock, "_try_acquire",
+                        lambda path, *, role: flaky)
+    monkeypatch.setattr(review_lock, "_peek_locked", lambda path: False)
+
+    with acquire():
+        pass
+
+    assert flaky.released is True
+    assert not getattr(review_lock, pid_attr).exists()
+
+
+@pytest.mark.parametrize("acquire, pid_attr", [
+    (review_lock.acquire_server_lock, "_SERVER_PID_PATH"),
+    (review_lock.acquire_pipeline_lock, "_PIPELINE_PID_PATH"),
+])
+def test_pid_cleanup_failure_is_swallowed(monkeypatch, acquire, pid_attr):
+    """Idem pour la suppression du `.pid` en sortie."""
+    from pathlib import Path
+
+    real_unlink = Path.unlink
+
+    def _boom(self, missing_ok=False):
+        if self.name.endswith(".pid"):
+            raise OSError("fichier verrouillé")
+        return real_unlink(self, missing_ok=missing_ok)
+
+    monkeypatch.setattr(Path, "unlink", _boom)
+
+    with acquire():
+        pass
+
+    # Le `.pid` n'a pas pu être nettoyé, mais aucune exception n'a fui.
+    assert getattr(review_lock, pid_attr).exists()
+
+
+def test_forced_pipeline_runs_without_lock_and_releases_nothing():
+    """`force=True` alors qu'un autre pipeline tient déjà le verrou : le bloc
+    s'exécute SANS verrou (`lock is None`) — ni écriture de `.pid`, ni release
+    au finally."""
+    with review_lock.acquire_pipeline_lock():
+        review_lock._PIPELINE_PID_PATH.unlink()
+        with review_lock.acquire_pipeline_lock(force=True):
+            assert not review_lock._PIPELINE_PID_PATH.exists()
+    # Le verrou du premier contexte est bien libéré à sa propre sortie.
+    with review_lock.acquire_pipeline_lock():
+        pass

@@ -159,3 +159,83 @@ def test_main_with_source_argument(recos_root, monkeypatch):
     assert "type" in json.loads(
         (recos_root / "autre" / "0001.json").read_text("utf-8")
     )
+
+
+def test_main_exits_when_review_server_holds_the_lock(recos_root, monkeypatch,
+                                                      caplog):
+    """Le serveur de relecture tourne : la migration REFUSE de démarrer plutôt
+    que d'écraser des validations manuelles."""
+    def _busy(*, force=False):
+        raise migrate_types.ServerLockBusy("Le review_server tourne actuellement")
+
+    monkeypatch.setattr(migrate_types, "acquire_pipeline_lock", _busy)
+    monkeypatch.setattr(sys, "argv", ["migrate_types.py"])
+    _write(recos_root / "ubm" / "0001.json", {"type": "film", "title": "A"})
+
+    with pytest.raises(SystemExit) as err:
+        main()
+
+    assert err.value.code == 1
+    # Aucun fichier n'a été touché.
+    assert "type" in json.loads(
+        (recos_root / "ubm" / "0001.json").read_text("utf-8")
+    )
+
+
+def test_main_ignore_server_lock_forces_the_migration(recos_root, monkeypatch):
+    """`--ignore-server-lock` propage bien `force=True` au verrou."""
+    seen = {}
+
+    class _Ctx:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    def _acquire(*, force=False):
+        seen["force"] = force
+        return _Ctx()
+
+    monkeypatch.setattr(migrate_types, "acquire_pipeline_lock", _acquire)
+    monkeypatch.setattr(sys, "argv",
+                        ["migrate_types.py", "--ignore-server-lock"])
+    _write(recos_root / "ubm" / "0001.json", {"type": "film", "title": "A"})
+
+    main()
+
+    assert seen["force"] is True
+    assert json.loads(
+        (recos_root / "ubm" / "0001.json").read_text("utf-8")
+    )["types"] == ["film"]
+
+
+def test_main_survives_a_failing_lock_release(recos_root, monkeypatch):
+    """Le relâchement du verrou est best-effort : une erreur au `__exit__` ne
+    doit pas masquer une migration réussie."""
+    class _Ctx:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            raise RuntimeError("filelock déjà libéré")
+
+    monkeypatch.setattr(migrate_types, "acquire_pipeline_lock",
+                        lambda *, force=False: _Ctx())
+    monkeypatch.setattr(sys, "argv", ["migrate_types.py"])
+    _write(recos_root / "ubm" / "0001.json", {"type": "film", "title": "A"})
+
+    main()
+
+    assert json.loads(
+        (recos_root / "ubm" / "0001.json").read_text("utf-8")
+    )["types"] == ["film"]
+
+
+def test_migrate_all_ignores_stray_files_at_the_recos_root(recos_root):
+    """Un fichier posé à la racine de `recos/` (README, .DS_Store…) n'est pas
+    une source : il doit être ignoré sans erreur."""
+    _write(recos_root / "ubm" / "0001.json", {"type": "film", "title": "A"})
+    (recos_root / "README.md").write_text("pas une source", encoding="utf-8")
+
+    assert migrate_all() == 1

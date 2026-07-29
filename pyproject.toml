@@ -18,3 +18,58 @@ markers = [
     "perf: tests de performance / scaling (skip défaut)",
     "network: tests nécessitant accès réseau réel (skip défaut)",
 ]
+
+# ---------------------------------------------------------------------------
+# Couverture — source de vérité UNIQUE (les anciens `.coveragerc` racine et
+# `tools/.coveragerc` ont été supprimés le 2026-07-29 : coverage.py donne la
+# priorité à `.coveragerc`, donc leur simple présence rendait cette section
+# inopérante, et l'un des deux mesurait sans `branch`).
+#
+#     pytest tests/ --cov=tools --cov-report=term-missing
+#
+# `branch = true` est REQUIS : sans lui, la couverture de branches n'est pas
+# mesurée et l'exigence « ≥95 % sur toutes les métriques » n'est pas prouvée.
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+branch = true
+source = ["tools"]
+omit = [
+    # --- Scripts JETABLES : gardés hors mesure -----------------------------
+    # Études ponctuelles et re-runs manuels, écrits pour un lot figé
+    # d'épisodes (« les 28 ép », « les 11 épisodes »), jamais rejoués depuis.
+    # Ils pilotent des LLM payants ou des workers GPU du réseau local et
+    # n'écrivent pas dans `src/content/` : aucune valeur de non-régression à
+    # les tester, et les mesurer ferait passer le pipeline de production pour
+    # moins couvert qu'il ne l'est.
+    # Règle : si l'un d'eux est relancé ou modifié, il sort de cette liste et
+    # devient testable comme le reste.
+    "tools/compare_models.py",             # diagnostic Whisper tiny/small/medium
+    "tools/compare_4_llms.py",             # étude comparative 4 LLM (one-shot)
+    "tools/compare_extract.py",            # extraction comparative figée
+    "tools/eval_local_llm.py",             # éval d'un llama-server local
+    "tools/migrate_guests_parsed.py",      # migration ponctuelle, déjà appliquée
+    "tools/rerun_28_eps_with_history.py",  # re-run manuel d'un lot figé
+    "tools/rerun_haiku_on_sonnet.py",      # re-run manuel d'un lot figé
+    "tools/retry_gpt4o.py",                # reprise après rate limit OpenAI
+    # `tools/migrate_types.py` et `tools/export_similar_works.py` étaient
+    # listés ici à tort : tous deux ont une suite de tests dédiée. Réintégrés
+    # à la mesure le 2026-07-29.
+    "tools/.venv/*",
+]
+
+[tool.coverage.report]
+# Garde-fou global. La vérification par métrique (statements ET branches)
+# se lit dans le rapport : colonnes `Miss` et `BrPart`/`Branch`.
+fail_under = 95
+show_missing = true
+precision = 1
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"

@@ -9,10 +9,16 @@ import pytest
 
 from embeddings.store import EmbeddingStore
 from export_similar_works import (
+    DEFAULT_DB_PATH,
     DEFAULT_K,
+    DEFAULT_OUTPUT_DIR,
+    EXIT_ERROR,
+    EXIT_OK,
     SCHEMA_VERSION,
     ExportOptions,
+    _parse_args,
     export_similar_works,
+    main,
 )
 
 
@@ -120,3 +126,127 @@ class TestExportSimilarWorks:
 
     def test_default_k(self) -> None:
         assert DEFAULT_K >= 1
+
+    def test_item_without_neighbours_is_skipped(self, tmp_path: Path) -> None:
+        """Un item seul dans sa source n'a aucun voisin : il est absent du
+        mapping (plutôt que présent avec une liste vide, qui alourdirait le
+        JSON consommé au build Astro)."""
+        import numpy as np
+
+        db = tmp_path / "lonely.sqlite"
+        store = EmbeddingStore(db)
+        try:
+            store.upsert(
+                source_id="s", id="seul",
+                vector=np.array([1.0, 0.0], dtype=np.float32),
+                model="m", dim=2, source_hash="h", embedded_at="t",
+            )
+        finally:
+            store.close()
+        opts = ExportOptions(
+            source_id="s", db_path=db, output_dir=tmp_path / "out",
+            k=3, dry_run=False,
+        )
+
+        n, mapping = export_similar_works(opts, now_iso=lambda: "2026-06-12T10:00:00Z")
+
+        assert (n, mapping) == (0, {})
+        payload = json.loads((tmp_path / "out" / "s.json").read_text(encoding="utf-8"))
+        assert payload["items"] == {}
+        assert payload["model"] == "m"  # le modèle reste renseigné
+
+
+class TestParseArgs:
+    def test_defaults(self) -> None:
+        opts = _parse_args(["--source", "un-bon-moment"])
+        assert opts.source_id == "un-bon-moment"
+        assert opts.k == DEFAULT_K
+        assert opts.dry_run is False
+        assert opts.db_path == DEFAULT_DB_PATH
+        assert opts.output_dir == DEFAULT_OUTPUT_DIR
+
+    def test_all_flags(self, tmp_path: Path) -> None:
+        opts = _parse_args([
+            "--source", "s", "--db", str(tmp_path / "e.sqlite"),
+            "--output-dir", str(tmp_path / "out"), "--k", "8", "--dry-run",
+        ])
+        assert opts.db_path == tmp_path / "e.sqlite"
+        assert opts.output_dir == tmp_path / "out"
+        assert (opts.k, opts.dry_run) == (8, True)
+
+    def test_source_is_required(self) -> None:
+        with pytest.raises(SystemExit):
+            _parse_args([])
+
+    def test_invalid_k_raises_value_error(self) -> None:
+        with pytest.raises(ValueError, match="--k doit être >= 1"):
+            _parse_args(["--source", "s", "--k", "0"])
+
+
+class TestMain:
+    def test_returns_ok_and_holds_the_pipeline_lock(
+        self, monkeypatch, seeded_db: Path, tmp_path: Path
+    ) -> None:
+        """L'export tourne SOUS le verrou pipeline (un `embed_items` concurrent
+        réécrirait la base sous nos pieds)."""
+        import contextlib
+
+        import export_similar_works as esw
+
+        events: list[str] = []
+
+        @contextlib.contextmanager
+        def _lock():
+            events.append("lock")
+            yield
+            events.append("unlock")
+
+        monkeypatch.setattr(esw, "acquire_pipeline_lock", _lock)
+        real_export = esw.export_similar_works
+        monkeypatch.setattr(
+            esw, "export_similar_works",
+            lambda opts: events.append("export") or real_export(opts),
+        )
+
+        code = main(["--source", "s", "--db", str(seeded_db),
+                     "--output-dir", str(tmp_path / "out")])
+
+        assert code == EXIT_OK
+        assert events == ["lock", "export", "unlock"]
+        assert (tmp_path / "out" / "s.json").exists()
+
+    def test_returns_error_on_invalid_option(self) -> None:
+        assert main(["--source", "s", "--k", "-1"]) == EXIT_ERROR
+
+    def test_propagates_argparse_exit(self) -> None:
+        """`--help` / argument manquant : on laisse argparse sortir avec son
+        propre code plutôt que de le convertir en EXIT_ERROR silencieux."""
+        with pytest.raises(SystemExit):
+            main([])
+
+    def test_returns_error_when_export_raises(self, monkeypatch, seeded_db: Path,
+                                              tmp_path: Path) -> None:
+        import contextlib
+
+        import export_similar_works as esw
+
+        monkeypatch.setattr(esw, "acquire_pipeline_lock", contextlib.nullcontext)
+
+        def _boom(opts):
+            raise RuntimeError("base corrompue")
+
+        monkeypatch.setattr(esw, "export_similar_works", _boom)
+
+        assert main(["--source", "s", "--db", str(seeded_db)]) == EXIT_ERROR
+
+    def test_returns_error_when_lock_is_busy(self, monkeypatch,
+                                             seeded_db: Path) -> None:
+        import export_similar_works as esw
+        from review_lock import ServerLockBusy
+
+        def _busy():
+            raise ServerLockBusy("le review_server tourne")
+
+        monkeypatch.setattr(esw, "acquire_pipeline_lock", _busy)
+
+        assert main(["--source", "s", "--db", str(seeded_db)]) == EXIT_ERROR

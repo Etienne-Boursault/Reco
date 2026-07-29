@@ -6,6 +6,7 @@
  * l'affichage des DEUX badges (NIT-9).
  */
 import { describe, it, expect } from 'vitest';
+import { readFile } from 'node:fs/promises';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import RecoCard from '../../src/components/RecoCard.astro';
 
@@ -244,6 +245,65 @@ describe('RecoCard — normalisation des hosts', () => {
     expect(html).not.toContain('.svg');
     expect(html).toContain('link-symbol');
   });
+
+  it('www.paramountplus.com → favicon www.intl.paramountplus.com (même service)', async () => {
+    expect(await iconFor('https://www.paramountplus.com/fr/shows/x/')).toContain(
+      '/icons/platforms/www.intl.paramountplus.com.svg',
+    );
+  });
+
+  it('www.gallimard-bd.fr → favicon www.gallimard.fr (label du même éditeur)', async () => {
+    expect(await iconFor('https://www.gallimard-bd.fr/livre/x')).toContain(
+      '/icons/platforms/www.gallimard.fr.svg',
+    );
+  });
+
+  it('www.librairie-gallimard.com n’est PAS aliasé (librairie ≠ maison d’édition)', async () => {
+    const html = await iconFor('https://www.librairie-gallimard.com/livre/x');
+    expect(html).not.toContain('/icons/platforms/www.gallimard.fr.svg');
+    expect(html).toContain('link-symbol');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Vague 4 (2026-07-29) — lot borné d'icônes de marques identifiables.
+// Chaque host whitelisté DOIT avoir son SVG sur disque : whitelister sans
+// déployer le fichier afficherait une image cassée (cf. commentaire du Set
+// dans RecoCard.astro). On verrouille les deux bouts.
+// ---------------------------------------------------------------------------
+describe('RecoCard — icônes vague 4', () => {
+  const iconFor = (url: string, kind = 'streaming') =>
+    renderProps({
+      reco: { ...baseReco, types: ['autre'], links: [{ label: 'X', url, kind }] },
+    });
+
+  const CASES: Array<[host: string, url: string]> = [
+    ['www.twitch.tv', 'https://www.twitch.tv/someone'],
+    ['watch.plex.tv', 'https://watch.plex.tv/movie/x'],
+    ['www.tf1.fr', 'https://www.tf1.fr/tf1/emission/x'],
+  ];
+
+  for (const [host, url] of CASES) {
+    it(`${host} → /icons/platforms/${host}.svg (et pas un symbole)`, async () => {
+      const html = await iconFor(url);
+      expect(html).toContain(`/icons/platforms/${host}.svg`);
+      expect(html).not.toContain('link-symbol');
+    });
+
+    it(`${host} : le SVG existe et est un XML <svg> 24×24`, async () => {
+      const svg = await readFile(
+        new URL(`../../public/icons/platforms/${host}.svg`, import.meta.url),
+        'utf8',
+      );
+      expect(svg.trimEnd()).toMatch(/^<svg[^>]*>[\s\S]*<\/svg>$/);
+      expect(svg).toContain('viewBox="0 0 24 24"');
+      expect(svg).toContain('width="24"');
+      expect(svg).toContain('height="24"');
+      expect(svg).toContain('role="img"');
+      // Icônes décoratives : le nom accessible vient de l'aria-label du lien.
+      expect(svg).not.toContain('<title');
+    });
+  }
 });
 
 // ---------------------------------------------------------------------------

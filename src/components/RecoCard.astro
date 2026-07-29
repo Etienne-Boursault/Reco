@@ -178,6 +178,13 @@ const WHITELISTED_ICON_HOSTS = new Set<string>([
   'www.sfrplay.fr',
   'www.premieremax.com',
   'www.videofutur.fr',
+  // Vague 4 (2026-07-29) : lot BORNÉ de marques dont le logo est simple et
+  // non ambigu. Les autres hosts de la traîne (librairies indépendantes, sites
+  // perso d'artistes, éditeurs) restent VOLONTAIREMENT au symbole de repli :
+  // un logo inventé « plausible » serait pire qu'un symbole honnête.
+  'www.twitch.tv',
+  'watch.plex.tv',
+  'www.tf1.fr',
 ]);
 // Normalisation host → host whitelisté canonique. Couvre les VARIANTES d'un
 // même host (sous-domaines d'artistes Bandcamp/itch.io, YouTube mobile, alias
@@ -193,6 +200,14 @@ const HOST_ALIASES: Record<string, string> = {
   'en.wikipedia.org': 'fr.wikipedia.org',
   'play.acast.com': 'shows.acast.com',
   'www.arte.tv': 'boutique.arte.tv',
+  // Domaine principal de Paramount+ ; `www.intl.paramountplus.com` est la
+  // déclinaison internationale du MÊME service (logo identique).
+  'www.paramountplus.com': 'www.intl.paramountplus.com',
+  // Gallimard BD est un label des Éditions Gallimard (même maison, même
+  // marque ombrelle) : réutiliser la tuile Gallimard n'affirme rien de faux.
+  // NB : `www.librairie-gallimard.com` (librairie) n'est PAS aliasé — c'est
+  // un commerce distinct de la maison d'édition.
+  'www.gallimard-bd.fr': 'www.gallimard.fr',
 };
 // Marques multi-sous-domaines : tout sous-domaine → domaine racine whitelisté.
 const ROOT_DOMAIN_BRANDS = ['bandcamp.com', 'itch.io'];
