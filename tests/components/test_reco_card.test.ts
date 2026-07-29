@@ -131,16 +131,34 @@ describe('RecoCard — icônes de plateforme', () => {
     expect(html).toContain('/icons/platforms/www.justwatch.com.svg');
   });
 
-  it('host non whitelisté → placeholder link.svg', async () => {
+  it('host non whitelisté → symbole selon le type (plus de globe link.svg)', async () => {
     const html = await renderProps({
       reco: {
         ...baseReco,
         types: ['autre'],
-        links: [{ label: 'Example', url: 'https://example.com/x' }],
+        links: [{ label: 'Example', url: 'https://example.com/x', kind: 'streaming' }],
       },
     });
-    expect(html).toContain('/icons/platforms/link.svg');
+    // On ne rend plus le globe « link.svg » (lu comme une image cassée)…
+    expect(html).not.toContain('link.svg');
     expect(html).not.toContain('example.com.svg');
+    // …mais un symbole selon la nature du lien (streaming → ▶️).
+    expect(html).toContain('link-symbol');
+    expect(html).toContain('▶️');
+  });
+
+  it('symbole de repli varie selon le kind (buy → 🛒, borrow → 📚, info → ℹ️)', async () => {
+    const mk = (kind: string) =>
+      renderProps({
+        reco: {
+          ...baseReco,
+          types: ['autre'],
+          links: [{ label: 'X', url: 'https://example.com/x', kind }],
+        },
+      });
+    expect(await mk('buy')).toContain('🛒');
+    expect(await mk('borrow')).toContain('📚');
+    expect(await mk('info')).toContain('ℹ️');
   });
 
   it('logoUrl custom sur host whitelisté : utilisé comme <img src>', async () => {
@@ -160,7 +178,7 @@ describe('RecoCard — icônes de plateforme', () => {
     expect(html).toContain('https://bandcamp.com/logo.png');
   });
 
-  it('logoUrl custom sur host NON whitelisté : ignoré (no-tracker), fallback link.svg', async () => {
+  it('logoUrl custom sur host NON whitelisté : ignoré (no-tracker), repli symbole', async () => {
     const html = await renderProps({
       reco: {
         ...baseReco,
@@ -175,7 +193,10 @@ describe('RecoCard — icônes de plateforme', () => {
       },
     });
     expect(html).not.toContain('tracker.evil');
-    expect(html).toContain('/icons/platforms/link.svg');
+    expect(html).not.toContain('link.svg');
+    // customLink sans `kind` → symbole générique (maillon 🔗).
+    expect(html).toContain('link-symbol');
+    expect(html).toContain('🔗');
   });
 });
 
@@ -247,12 +268,14 @@ describe('RecoCard — multi-types', () => {
 // Métadonnées (année, « Reco de … », label épisode)
 // ---------------------------------------------------------------------------
 describe('RecoCard — métadonnées', () => {
-  it('rend l’année, « Reco de … » et le label épisode', async () => {
+  it('n’affiche PAS l’année sur la carte (retirée), mais rend « Reco de … » et le label épisode', async () => {
     const html = await renderProps({
       reco: { ...baseReco, year: 2021, recommendedBy: 'Kyan' },
       episodeNumber: 42,
     });
-    expect(html).toContain('2021');
+    // L'année (date de création de l'œuvre) n'est plus rendue sur la carte
+    // (hors contexte → parasite). Cf. RecoCard.astro + retour 2026-07-29.
+    expect(html).not.toContain('2021');
     expect(html).toContain('Reco de Kyan');
     expect(html).toContain('#42');
   });
@@ -280,6 +303,17 @@ describe('RecoCard — lien Signaler', () => {
   it('absent sans sourceId', async () => {
     const html = await render(baseReco);
     expect(html).not.toContain('report-link');
+  });
+
+  it('est rendu APRÈS la rangée d’icônes (placement sous les liens)', async () => {
+    const html = await renderProps({
+      reco: { ...baseReco, types: ['film'] },
+      sourceId: 'ubm',
+    });
+    const linksIdx = html.indexOf('class="links"');
+    const reportIdx = html.indexOf('report-link-wrap');
+    expect(linksIdx).toBeGreaterThan(-1);
+    expect(reportIdx).toBeGreaterThan(linksIdx);
   });
 });
 

@@ -21,7 +21,6 @@ const { links = [] } = Astro.props;
 
 // Libellé + emoji par plateforme connue (fallback `other`).
 const META: Record<string, { label: string; emoji: string }> = {
-  utip: { label: 'uTip', emoji: '💛' },
   kofi: { label: 'Ko-fi', emoji: '☕' },
   liberapay: { label: 'Liberapay', emoji: '💝' },
   tipeee: { label: 'Tipeee', emoji: '🎁' },
@@ -33,7 +32,7 @@ const META: Record<string, { label: string; emoji: string }> = {
 
 // Skip les liens vides ET les placeholders non configurés (`a-remplacer`),
 // pour ne pas afficher de bouton « Soutenir » cassé tant que les vrais
-// pseudos (uTip/Ko-fi…) ne sont pas renseignés dans la source.
+// pseudos (Ko-fi…) ne sont pas renseignés dans la source.
 const valid = links.filter(
   (l) => typeof l?.url === 'string' && l.url.trim().length > 0 && !/a-remplacer/i.test(l.url),
 );

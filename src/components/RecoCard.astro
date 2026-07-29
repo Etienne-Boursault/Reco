@@ -104,7 +104,6 @@ const customLinks = (reco.customLinks ?? []).map((l) => ({
 // portant le même nom qu'un lien auto, on garde le SIEN (customLinks d'abord
 // dans la concat → première occurrence gagne).
 const PLATFORM_ICON_BASE = '/icons/platforms/';
-const PLATFORM_ICON_PLACEHOLDER = `${PLATFORM_ICON_BASE}link.svg`;
 const WHITELISTED_ICON_HOSTS = new Set<string>([
   // Logos par plateforme déployés sous `public/icons/platforms/<host>.svg`
   // (2026-07-19). Le host est le hostname COMPLET (cf. `iconForHost`). Ajouter
@@ -180,8 +179,25 @@ const WHITELISTED_ICON_HOSTS = new Set<string>([
 function iconForHost(host: string): string {
   if (!host) return '';
   if (WHITELISTED_ICON_HOSTS.has(host)) return `${PLATFORM_ICON_BASE}${host}.svg`;
-  return PLATFORM_ICON_PLACEHOLDER;
+  // Pas de favicon self-hosted pour ce host → on NE rend PAS le globe
+  // `link.svg` (lu comme une image cassée / une erreur). La carte affiche à la
+  // place un symbole selon la NATURE du lien (cf. KIND_SYMBOL + template).
+  return '';
 }
+
+// Symbole de repli quand aucune favicon n'existe : pictogramme selon la nature
+// du lien (streaming, achat, emprunt, info, officiel, social). Purement
+// décoratif (aria-hidden) — le nom accessible reste porté par l'aria-label de
+// l'<a> (OutboundLink). Défaut : maillon générique 🔗.
+const KIND_SYMBOL: Record<string, string> = {
+  streaming: '▶️',
+  buy: '🛒',
+  borrow: '📚',
+  info: 'ℹ️',
+  official: '🏠',
+  social: '👤',
+};
+const DEFAULT_LINK_SYMBOL = '🔗';
 // Sécurité + éthique (revue 2026-07-19) :
 //  - S2 : ne rendre que des URLs http(s) via `isSafeUrl` (SSOT merchants). Un
 //    customLink hostile (javascript:, data:…) écrit hors formulaire — p. ex.
@@ -226,7 +242,11 @@ const links = Array.from(linkSeen.values()).slice(0, 6).map((l) => {
     overrideHost && WHITELISTED_ICON_HOSTS.has(overrideHost)
       ? overrideLogo
       : iconForHost(host);
-  return { ...l, host, icon };
+  // Symbole de repli (utilisé seulement quand `icon` est vide) selon la
+  // nature du lien. `kind` peut être absent (customLinks, liens sans kind)
+  // → maillon générique.
+  const symbol = KIND_SYMBOL[(l as { kind?: string }).kind ?? ''] ?? DEFAULT_LINK_SYMBOL;
+  return { ...l, host, icon, symbol };
 });
 
 // Multi-types : on affiche un emoji par type (les libellés textuels sont
@@ -285,7 +305,9 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
         <span aria-hidden="true">⭐</span> {t('reco.guestWork.badge')}
       </span>
     )}
-    {reco.year && <span class="year">{reco.year}</span>}
+    {/* Année (date de création de l'œuvre) retirée de la carte : hors contexte,
+       elle était lue comme une donnée parasite (retour utilisateur 2026-07-29).
+       Le champ `reco.year` reste utilisé ailleurs (page œuvre, audits). */}
   </div>
 
   <h3 class="title">{reco.title}</h3>
@@ -309,20 +331,6 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
           title={reco.title}
         />
       </div>
-    )
-  }
-  {
-    sourceId && (
-      <p class="report-link-wrap">
-        <a
-          class="report-link"
-          href={`/${sourceId}/report/${reco.id}`}
-          rel="nofollow"
-          aria-label={t('report.linkA11y')}
-        >
-          <span aria-hidden="true">⚠</span> {t('report.link')}
-        </a>
-      </p>
     )
   }
   {
@@ -361,8 +369,8 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
                   <img
                     src={l.icon}
                     alt=""
-                    width="20"
-                    height="20"
+                    width="28"
+                    height="28"
                     loading="lazy"
                     decoding="async"
                     data-fallback={l.label}
@@ -370,12 +378,28 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
                   <span class="link-text" hidden>{l.label}</span>
                 </>
               ) : (
-                <span class="link-text">{l.label}</span>
+                <span class="link-symbol" aria-hidden="true">{l.symbol}</span>
               )}
             </OutboundLink>
           );
         })}
       </div>
+    )
+  }
+  {/* X3 — « Signaler » sous la rangée d'icônes (cohérence visuelle : au même
+     niveau que les liens plutôt qu'isolé au-dessus). Reste discret. */}
+  {
+    sourceId && (
+      <p class="report-link-wrap">
+        <a
+          class="report-link"
+          href={`/${sourceId}/report/${reco.id}`}
+          rel="nofollow"
+          aria-label={t('report.linkA11y')}
+        >
+          <span aria-hidden="true">⚠</span> {t('report.link')}
+        </a>
+      </p>
     )
   }
 </li>
@@ -447,10 +471,6 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     display: inline-flex;
     align-items: center;
   }
-  .year {
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
   .title {
     font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   }
@@ -478,14 +498,16 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     gap: 0.5rem;
     margin-top: 0.4rem;
   }
-  /* Bouton-icône rond : on affiche le logo de la plateforme. */
+  /* Bouton-icône rond : on affiche le logo de la plateforme. Surface doublée
+     (36→48px) pour plus de présence et de constance visuelle (retour
+     utilisateur 2026-07-29). */
   .link {
     position: relative; /* pour le badge ::after sur .avoid */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     text-decoration: none;
     background: color-mix(in oklab, var(--text) 6%, transparent);
@@ -534,17 +556,31 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     filter: none;
   }
   .link img {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     border-radius: 4px;
     display: block;
   }
-  /* Repli si pas d'icône : on garde le nom lisible. */
-  .link:has(.link-text) {
+  /* Symbole de repli (aucune favicon) : pictogramme selon la nature du lien,
+     centré dans le même rond que les favicons pour garder une rangée
+     homogène. */
+  .link-symbol {
+    font-size: 1.5rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Repli TEXTE : n'apparaît QUE si une favicon a échoué au chargement (le
+     span `.link-text` caché est révélé par la délégation `error` de
+     Layout.astro). Dans ce cas seulement, le bouton s'étire en pilule pour
+     laisser lire le nom. Le `:not([hidden])` évite d'étirer tous les boutons
+     à cause du span caché toujours présent à côté de l'`<img>`. */
+  .link:has(.link-text:not([hidden])) {
     width: auto;
     height: auto;
     border-radius: 999px;
-    padding: 0.32em 0.7em;
+    padding: 0.4em 0.8em;
   }
   .link-text {
     font-size: 0.8rem;

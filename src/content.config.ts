@@ -82,7 +82,8 @@ const sources = defineCollection({
     // Optionnel — footer sans bouton si absent/vide.
     support: z.array(z.object({
       platform: z.enum([
-        'utip', 'kofi', 'liberapay', 'tipeee', 'buymeacoffee', 'paypal', 'github', 'other',
+        // uTip retiré (service fermé, 2026-07). Ko-fi + alternatives libres.
+        'kofi', 'liberapay', 'tipeee', 'buymeacoffee', 'paypal', 'github', 'other',
       ]),
       url: z.string().url(),
       label: z.string().optional(),

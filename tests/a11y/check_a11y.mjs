@@ -58,6 +58,12 @@ function hasAttr(tag, name) {
 function checkHtml(file) {
   const html = readFileSync(file, 'utf8');
 
+  // 0. Pages de REDIRECTION (meta refresh) : stubs générés par Astro (ex.
+  // mode mono-source `/un-bon-moment` → `/`). Ce ne sont pas des pages
+  // réelles — pas de <html>/skip-link/#main attendus — et elles portent déjà
+  // rel=canonical + noindex. On les saute (cf. redirection SourceCatalog).
+  if (/<meta\b[^>]*http-equiv=("|')?refresh\1/i.test(html)) return;
+
   // 1. <html lang="..">
   const htmlTag = html.match(/<html\b[^>]*>/i)?.[0];
   if (!htmlTag) fail(file, 'html-lang', 'pas de balise <html>');
