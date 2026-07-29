@@ -21,10 +21,10 @@
     "test:og": "vitest run tests/og"
   },
   "dependencies": {
-    "@astrojs/node": "^9.0.3",
+    "@astrojs/node": "^11.0.3",
     "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^5.18.2",
+    "astro": "^7.1.5",
     "minisearch": "^7.2.0",
     "satori": "^0.26.0"
   },
