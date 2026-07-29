@@ -24,7 +24,7 @@
     "@astrojs/node": "^9.0.3",
     "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "5.0.0",
+    "astro": "^5.18.2",
     "minisearch": "^7.2.0",
     "satori": "^0.26.0"
   },
@@ -33,5 +33,11 @@
     "@fontsource/inter": "^5.2.8",
     "@vitest/coverage-v8": "^4.1.8",
     "vitest": "^4.1.8"
+  },
+  "overrides": {
+    "astro": {
+      "sharp": "^0.35.3",
+      "esbuild": "^0.28.1"
+    }
   }
 }
