@@ -336,3 +336,43 @@ describe('applyGridFilter — parité avec la grille d’épisodes', () => {
     expect(status.textContent).toBe('Aucun épisode trouvé.');
   });
 });
+
+describe('applyGridFilter — formatCounter', () => {
+  const monter = (n: number) => ({
+    grid: mountGrid(Array.from({ length: n }, () => ({}))),
+    counter: mountEl('span'),
+  });
+
+  it('écrit le nombre seul par défaut', () => {
+    const { grid, counter } = monter(3);
+    applyGridFilter({ grid, counter, matches: () => true, emptyMessage: '' });
+    expect(counter.textContent).toBe('3');
+  });
+
+  it('laisse le libellé suivre le nombre', () => {
+    // Sans ce point d'extension, le libellé restait figé dans le template et
+    // un filtre ramenant le compte à 1 affichait « 1 épisodes ».
+    const fmt = (n: number) => `${n} ${n >= 2 ? 'épisodes' : 'épisode'}`;
+    const { grid, counter } = monter(3);
+
+    applyGridFilter({ grid, counter, formatCounter: fmt, matches: () => true, emptyMessage: '' });
+    expect(counter.textContent).toBe('3 épisodes');
+
+    let vus = 0;
+    applyGridFilter({
+      grid, counter, formatCounter: fmt, emptyMessage: '',
+      matches: () => vus++ === 0,
+    });
+    expect(counter.textContent).toBe('1 épisode');
+  });
+
+  it('accorde aussi zéro au singulier', () => {
+    const { grid, counter } = monter(2);
+    applyGridFilter({
+      grid, counter, emptyMessage: '',
+      formatCounter: (n) => `${n} ${n >= 2 ? 'épisodes' : 'épisode'}`,
+      matches: () => false,
+    });
+    expect(counter.textContent).toBe('0 épisode');
+  });
+});

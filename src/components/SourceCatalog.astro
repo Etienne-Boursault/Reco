@@ -104,7 +104,7 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
 
 <Layout
   title={`${data.title} — recommandations`}
-  description={data.description ?? `${trueRecos.length} ${plural(trueRecos.length, 'recommandation')} ${plural(trueRecos.length, 'extraite')} des ${episodesWithRecos.length} ${plural(episodesWithRecos.length, 'épisode')} du podcast ${data.title}.`}
+  description={data.description ?? `${trueRecos.length} ${plural(trueRecos.length, 'recommandation')} ${plural(trueRecos.length, 'extraite')} de ${episodesWithRecos.length} ${plural(episodesWithRecos.length, 'épisode')} du podcast ${data.title}.`}
   theme={data.theme}
   ogSlug={source.id}
   jsonLd={jsonLd}
@@ -229,8 +229,11 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
           autocomplete="off"
           aria-label="Rechercher un épisode"
         />
+        {/* Le libellé est DANS le compteur : le filtre client le réécrit avec
+            le nombre, sinon un « épisodes » figé resterait au pluriel quand la
+            recherche ramène le compte à 1. */}
         <span class="ep-count">
-          <span id="ep-visible">{episodesWithRecos.length}</span> épisodes
+          <span id="ep-visible">{`${episodesWithRecos.length} ${plural(episodesWithRecos.length, 'épisode')}`}</span>
         </span>
       </div>
 
@@ -279,7 +282,7 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
                     </div>
                     <div class="ep-meta">
                       <h3 class="ep-ttl">{epTitle}</h3>
-                      <span class="ep-cnt">{recoCountByEp.get(e.guid) ?? 0} recos</span>
+                      <span class="ep-cnt">{`${recoCountByEp.get(e.guid) ?? 0} ${plural(recoCountByEp.get(e.guid) ?? 0, 'reco')}`}</span>
                     </div>
                   </a>
                 </li>
@@ -405,6 +408,9 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     applyGridFilter({
       grid: epGrid,
       counter: epVisible,
+      // Le libellé suit le nombre : sans ça, filtrer jusqu'à un seul résultat
+      // affichait « 1 épisodes ».
+      formatCounter: (n) => `${n} ${n >= 2 ? 'épisodes' : 'épisode'}`,
       status: epNoresult,
       emptyMessage: 'Aucun épisode trouvé.',
       matches: (card) => !q.trim() || fuzzyMatch(q, card.dataset.search ?? ''),

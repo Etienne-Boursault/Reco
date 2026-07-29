@@ -34,7 +34,10 @@ const lastUpdatedRaw = registry.stats.lastUpdatedAt;
 const lastUpdatedDate = new Date(lastUpdatedRaw);
 const lastUpdatedFormatted = Number.isNaN(lastUpdatedDate.getTime())
   ? lastUpdatedRaw
-  : new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium' }).format(lastUpdatedDate);
+  // `timeZone: 'UTC'` explicite, comme `src/lib/stats/page.ts:234` : sans lui,
+  // la date rendue dépend du fuseau de la machine de build.
+  : new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeZone: 'UTC' })
+      .format(lastUpdatedDate);
 
 // F-M-9 : JSON-LD PodcastSeries schema.org.
 const jsonLd: Record<string, unknown> = {

@@ -139,7 +139,7 @@ describe('SourceCatalog — description SEO de repli', () => {
     const html = await renderWithSite(SourceCatalog, {
       props: { source: { ...SOURCE, data: { ...SOURCE.data, description: undefined } } },
     });
-    expect(html).toContain('2 recommandations extraites des 2 épisodes du podcast Un Bon Moment.');
+    expect(html).toContain('2 recommandations extraites de 2 épisodes du podcast Un Bon Moment.');
   });
 
   it('singulier quand une seule reco et un seul épisode', async () => {
@@ -147,7 +147,7 @@ describe('SourceCatalog — description SEO de repli', () => {
     const html = await renderWithSite(SourceCatalog, {
       props: { source: { ...SOURCE, data: { ...SOURCE.data, description: undefined } } },
     });
-    expect(html).toContain('1 recommandation extraite des 1 épisode du podcast Un Bon Moment.');
+    expect(html).toContain('1 recommandation extraite de 1 épisode du podcast Un Bon Moment.');
   });
 });
 
@@ -232,7 +232,7 @@ describe('SourceCatalog — vue « Par épisode »', () => {
     // nu, qui serait une faille d'injection) et le titre est présent en entier.
     expect(html).toMatch(/McFly &(?:#38|amp); Carlito/);
     expect(html).not.toContain('McFly & Carlito');
-    expect(html).toContain('>2</span> épisodes');
+    expect(html).toContain('2 épisodes');
   });
 
   it('trie du plus récent au plus ancien, les épisodes sans date en dernier', async () => {
@@ -252,8 +252,8 @@ describe('SourceCatalog — vue « Par épisode »', () => {
   it('compte les recos par épisode (0 quand aucune)', async () => {
     collections([reco()], [episode(), episode({ guid: 'ep-2', number: 13 })]);
     const html = await render();
-    expect(html).toContain('1 recos');
-    expect(html).toContain('0 recos');
+    expect(html).toContain('1 reco');
+    expect(html).toContain('0 reco');
   });
 
   it('affiche le titre FR du flux, pas le titre YouTube', async () => {

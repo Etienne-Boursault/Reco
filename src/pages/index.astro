@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import SourceCatalog from '../components/SourceCatalog.astro';
 import { siteConfig } from '../config/site';
+import { plural } from '../utils/plural';
 
 const sources = await getCollection('sources');
 // Mode mono-source : si le déploiement n'a qu'un seul podcast (ex.
@@ -84,22 +85,22 @@ const websiteSchema = {
           return (
             <li class="src reveal">
               <a href={`/${s.id}`}>
-                <span class="src-count">{fmt(st.recos)} recos</span>
+                <span class="src-count">{fmt(st.recos)} {plural(st.recos, 'reco')}</span>
                 <h3>{s.data.title}</h3>
                 {s.data.tagline && <p class="src-tag">{s.data.tagline}</p>}
                 {s.data.hosts.length > 0 && (
                   <p class="src-hosts">par {s.data.hosts.join(' & ')}</p>
                 )}
                 <p class="src-stats">
-                  <span>{fmt(st.episodes)} épisodes</span>
+                  <span>{fmt(st.episodes)} {plural(st.episodes, 'épisode')}</span>
                   {st.confirmed > 0 && (
                     <>
                       <span class="dot" aria-hidden="true">·</span>
                       <span
                         class="conf"
-                        aria-label={`${fmt(st.confirmed)} recommandations confirmées par 2 LLMs indépendants`}
+                        aria-label={`${fmt(st.confirmed)} ${plural(st.confirmed, 'recommandation')} ${plural(st.confirmed, 'confirmée')} par 2 LLMs indépendants`}
                       >
-                        <span aria-hidden="true">⭐</span> {fmt(st.confirmed)} confirmées
+                        <span aria-hidden="true">⭐</span> {fmt(st.confirmed)} {plural(st.confirmed, 'confirmée')}
                       </span>
                     </>
                   )}

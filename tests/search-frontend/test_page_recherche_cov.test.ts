@@ -62,10 +62,18 @@ describe('/recherche', () => {
   });
 
   it('ne monte pas de seconde palette (P0-1 : elle vient du Layout)', async () => {
+    // Ce test était INFALSIFIABLE : il cherchait `id="search-palette"` exact,
+    // qui n'existe nulle part — `SearchPalette.astro` n'expose que
+    // `-dialog`, `-input`, `-hint`, `-results`. Le match valait toujours
+    // `null`, donc l'assertion se réduisait à `expect(0) <= 1`. Monter trois
+    // palettes dans cette page l'aurait laissé vert : exactement ce qu'il
+    // prétend interdire.
     const html = await render();
-    const palettes = html.match(/id="search-palette"/g) ?? [];
+    const palettes = html.match(/id="search-palette-dialog"/g) ?? [];
 
-    expect(palettes.length).toBeLessThanOrEqual(1);
+    // `=== 1` et non `<= 1` : zéro palette est aussi un défaut (la recherche
+    // ne s'ouvrirait plus), et c'est la seconde moitié de l'invariant.
+    expect(palettes).toHaveLength(1);
   });
 
   it('affiche le titre et l’indication de recherche', async () => {

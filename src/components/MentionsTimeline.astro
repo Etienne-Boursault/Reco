@@ -28,10 +28,16 @@ const { sourceId, mentions } = Astro.props;
 
 function fmtDate(d?: Date): string {
   if (!d || !(d instanceof Date) || Number.isNaN(d.getTime())) return '';
+  // `timeZone: 'UTC'` explicite, comme `src/lib/stats/page.ts:234`. Sans lui,
+  // la date affichée dépend du fuseau de la MACHINE DE BUILD : une date
+  // stockée `2026-03-04T00:00:00Z` sort « 3 mars » depuis un fuseau négatif et
+  // « 4 mars » depuis l'Europe. Le site serait donc daté différemment selon
+  // l'endroit d'où on le construit.
   return d.toLocaleDateString('fr-FR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 }
 ---

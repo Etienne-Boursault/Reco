@@ -31,6 +31,14 @@ export interface GridFilterOptions {
   emptyMessage: string;
   /** Élément affichant le nombre d'éléments visibles. Optionnel. */
   counter?: Element | null;
+  /**
+   * Mise en forme du compteur. Par défaut le nombre seul.
+   *
+   * Sert à faire suivre un libellé accordé : un compteur qui n'écrit que le
+   * nombre laisse un « épisodes » figé dans le template, et le filtre client
+   * peut le ramener à 1 — d'où « 1 épisodes ».
+   */
+  formatCounter?: (visible: number) => string;
 }
 
 /**
@@ -41,7 +49,7 @@ export interface GridFilterOptions {
  * (une carte peut être en `flex`, `grid`…).
  */
 export function applyGridFilter(options: GridFilterOptions): number {
-  const { grid, matches, status, emptyMessage, counter } = options;
+  const { grid, matches, status, emptyMessage, counter, formatCounter } = options;
   if (!grid) return 0;
 
   let visible = 0;
@@ -51,7 +59,7 @@ export function applyGridFilter(options: GridFilterOptions): number {
     if (show) visible++;
   }
 
-  if (counter) counter.textContent = String(visible);
+  if (counter) counter.textContent = (formatCounter ?? String)(visible);
   if (status) status.textContent = visible === 0 ? emptyMessage : '';
   return visible;
 }

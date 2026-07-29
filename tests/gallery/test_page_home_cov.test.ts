@@ -139,7 +139,7 @@ describe('/ — annuaire multi-source', () => {
     const text = visibleText(await renderHome());
 
     expect(text).toContain('2 recos');
-    expect(text).toContain('1 épisodes');
+    expect(text).toContain('1 épisode');
   });
 
   it('badge ⭐ « confirmées » à partir de 2 extracteurs, pas avant', async () => {
@@ -154,9 +154,12 @@ describe('/ — annuaire multi-source', () => {
     });
     const html = await renderHome();
 
-    expect(visibleText(html)).toContain('1 confirmées');
+    expect(visibleText(html)).toContain('1 confirmée');
     // Le détail « 2 LLMs » vit dans un aria-label (invisible au détagage).
-    expect(html).toContain('recommandations confirmées par 2 LLMs indépendants');
+    // Il est accordé lui aussi : le nom accessible ne doit pas dire
+    // « 1 recommandations » à un lecteur d'écran.
+    expect(html).toContain('1 recommandation confirmée par 2 LLMs indépendants');
+    expect(html).not.toContain('1 recommandations');
   });
 
   it('aucune ⭐ affichée quand aucune reco n’atteint 2 extracteurs', async () => {
@@ -178,8 +181,8 @@ describe('/ — annuaire multi-source', () => {
     });
     const text = visibleText(await renderHome());
 
-    expect(text).toContain('0 recos');
-    expect(text).toContain('0 épisodes');
+    expect(text).toContain('0 reco');
+    expect(text).toContain('0 épisode');
   });
 
   it('source sans tagline ni animateur : les blocs optionnels disparaissent', async () => {
