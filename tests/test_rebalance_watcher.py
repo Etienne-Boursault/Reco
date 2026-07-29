@@ -274,3 +274,147 @@ def test_watch_loop_retries_when_laptop_unreachable(monkeypatch, tmp_path):
     monkeypatch.setattr(rw.time, "sleep", lambda *_: None)
     rw.watch_loop("src")
     assert calls["n"] == 2
+
+
+# ===== _ssh : construction de la commande ==================================
+def test_ssh_builds_the_command_without_running_it(monkeypatch):
+    """`_ssh` ne doit rien inventer autour de la commande : options SSH, hôte,
+    puis la commande telle quelle. Aucun SSH réel n'est lancé."""
+    seen = {}
+
+    def _fake_run(argv, **kwargs):
+        seen["argv"] = argv
+        seen["kwargs"] = kwargs
+        return SimpleNamespace(stdout="", stderr="", returncode=0)
+
+    monkeypatch.setattr(rw.subprocess, "run", _fake_run)
+
+    rw._ssh("echo ok", timeout=7)
+
+    assert seen["argv"][0] == "ssh"
+    assert seen["argv"][-2:] == [rw.SSH_HOST, "echo ok"]
+    assert seen["argv"][1:-2] == rw.SSH_OPTS
+    assert seen["kwargs"]["timeout"] == 7
+    assert seen["kwargs"]["capture_output"] is True
+
+
+# ===== watch_loop : relance du worker portable =============================
+def _watch_env(monkeypatch, tmp_path, remotes, missings, *, worker_running):
+    """Câble watch_loop sur des séquences contrôlées (aucun réseau, aucun SSH)."""
+    monkeypatch.setattr(rw, "transcripts_dir_for", lambda s: tmp_path)
+    monkeypatch.setattr(rw, "laptop_transcripts", lambda: next(remotes))
+    monkeypatch.setattr(rw, "pull_missing", lambda r, d: 0)
+    monkeypatch.setattr(rw, "global_missing", lambda s: next(missings))
+    monkeypatch.setattr(rw, "rebalance", lambda s: None)
+    monkeypatch.setattr(rw.time, "sleep", lambda *_: None)
+    monkeypatch.setattr(rw, "PORTABLE_INITIAL", 2)
+    monkeypatch.setattr(rw, "laptop_worker_running",
+                        lambda: next(worker_running))
+
+
+def test_watch_loop_relaunches_a_dead_worker_after_rebalance(monkeypatch,
+                                                             tmp_path):
+    """Liste initiale servie, rebalance faite, mais le worker portable est
+    mort : le tour suivant le relance."""
+    relaunches = []
+    monkeypatch.setattr(rw, "relaunch_worker_on_laptop",
+                        lambda: relaunches.append(1) or True)
+    _watch_env(
+        monkeypatch, tmp_path,
+        remotes=iter([{"a", "b"}, {"a", "b"}, {"a", "b"}]),
+        missings=iter([3, 3, 0]),
+        # 1er appel (fin du rebalance) : mort ; 2e (tour suivant) : toujours mort.
+        worker_running=iter([False, False]),
+    )
+
+    rw.watch_loop("src")
+
+    assert relaunches == [1]
+
+
+def test_watch_loop_does_not_relaunch_a_live_worker(monkeypatch, tmp_path):
+    """Worker retrouvé vivant aux tours suivants : pas de relance en double.
+
+    Note : `worker_kicked` ne passe à True que via une relance RÉUSSIE — un
+    worker simplement vivant est donc re-testé à chaque tour, d'où l'état
+    « vivant » répété ici plutôt qu'une valeur unique."""
+    import itertools
+
+    monkeypatch.setattr(
+        rw, "relaunch_worker_on_laptop",
+        lambda: pytest.fail("le worker tourne, aucune relance ne doit partir"))
+    _watch_env(
+        monkeypatch, tmp_path,
+        remotes=iter([{"a", "b"}, {"a", "b"}, {"a", "b"}]),
+        missings=iter([3, 3, 0]),
+        worker_running=itertools.chain([False], itertools.repeat(True)),
+    )
+
+    rw.watch_loop("src")
+
+
+def test_watch_loop_skips_the_check_once_the_worker_is_kicked(monkeypatch,
+                                                              tmp_path):
+    """`worker_kicked` déjà vrai : on ne re-teste même plus l'état du worker."""
+    calls = {"n": 0}
+
+    def _running():
+        calls["n"] += 1
+        return True  # vivant dès la fin du rebalance → worker_kicked = True
+
+    monkeypatch.setattr(rw, "transcripts_dir_for", lambda s: tmp_path)
+    monkeypatch.setattr(rw, "laptop_transcripts",
+                        lambda: next(iter_remotes))
+    monkeypatch.setattr(rw, "pull_missing", lambda r, d: 0)
+    monkeypatch.setattr(rw, "global_missing", lambda s: next(iter_missing))
+    monkeypatch.setattr(rw, "rebalance", lambda s: None)
+    monkeypatch.setattr(rw.time, "sleep", lambda *_: None)
+    monkeypatch.setattr(rw, "PORTABLE_INITIAL", 2)
+    monkeypatch.setattr(rw, "laptop_worker_running", _running)
+    monkeypatch.setattr(
+        rw, "relaunch_worker_on_laptop",
+        lambda: pytest.fail("aucune relance attendue"))
+    iter_remotes = iter([{"a", "b"}, {"a", "b"}, {"a", "b"}])
+    iter_missing = iter([3, 3, 0])
+
+    rw.watch_loop("src")
+
+    assert calls["n"] == 1  # testé une seule fois, au rebalance
+
+
+def test_watch_loop_no_hang_while_the_count_is_stable_and_recent(monkeypatch,
+                                                                 tmp_path):
+    """Compteur stable mais seuil de hang non atteint : aucun kill SSH."""
+    monkeypatch.setattr(
+        rw, "_ssh", lambda cmd, timeout=30: pytest.fail("aucun SSH attendu"))
+    _watch_env(
+        monkeypatch, tmp_path,
+        remotes=iter([{"a"}, {"a"}]),
+        missings=iter([3, 0]),
+        worker_running=iter([False]),
+    )
+    monkeypatch.setattr(rw, "HANG_THRESHOLD", 10_000)
+
+    rw.watch_loop("src")
+
+
+def test_watch_loop_hang_with_failed_relaunch_keeps_the_window_open(
+    monkeypatch, tmp_path, caplog,
+):
+    """HANG détecté mais la relance échoue : on n'ouvre PAS de nouvelle fenêtre
+    (sinon on masquerait un portable définitivement HS)."""
+    monkeypatch.setattr(rw, "_ssh", lambda cmd, timeout=30: SimpleNamespace(
+        stdout="", stderr="", returncode=0))
+    monkeypatch.setattr(rw, "relaunch_worker_on_laptop", lambda: False)
+    _watch_env(
+        monkeypatch, tmp_path,
+        remotes=iter([{"a"}, {"a"}]),
+        missings=iter([3, 3, 0]),
+        worker_running=iter([False]),
+    )
+    monkeypatch.setattr(rw, "HANG_THRESHOLD", -1)
+
+    with caplog.at_level("WARNING", logger="reco"):
+        rw.watch_loop("src")
+
+    assert "HANG détecté" in caplog.text

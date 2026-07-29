@@ -43,7 +43,7 @@ body:
       label: Environnement
       options:
         - Docker compose
-        - Local (Node 20 + Python 3.12)
+        - Local (Node 24 + Python 3.12)
         - CI GitHub Actions
         - Autre
     validations:

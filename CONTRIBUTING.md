@@ -30,7 +30,7 @@ docker compose up
 # site dispo sur http://localhost:4321
 ```
 
-### Option locale (Node 20 + Python 3.12)
+### Option locale (Node 24 + Python 3.12)
 
 ```bash
 # Frontend

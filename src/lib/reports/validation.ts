@@ -26,14 +26,22 @@ const _SLUG_RE = /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/i;
 
 // HTML checkbox sérialise à `'on'` quand cochée, absent sinon. On normalise.
 //
-// NB : PAS de `.optional()` sur ce schéma. `z.undefined()` fait déjà partie de
-// l'union, donc une clé absente est acceptée ET traverse le `transform` → on
-// obtient `false`. Ajouter `.optional()` par-dessus ferait court-circuiter le
-// `transform` par Zod et rendrait `wantCredit` `undefined` alors que le type
-// `ReportPayload` annonce un booléen.
+// La clé absente DOIT produire `false`, pas `undefined` : le type
+// `ReportPayload` annonce un booléen, et `ReportSubmitter.wantCredit` aussi.
+//
+// Ni `.optional()` ni l'union seule ne conviennent, et les deux échouent pour
+// des raisons DIFFÉRENTES selon la version de Zod :
+//   - `.optional()` court-circuite le `transform` → `undefined` (Zod 3 et 4) ;
+//   - l'union seule, avec `z.undefined()` dedans, suffisait en Zod 3 (astro 5)
+//     à rendre la clé facultative au niveau de l'objet. **Zod 4 (astro 7) ne
+//     le fait plus** : la clé devient obligatoire et une soumission normale —
+//     case décochée, donc champ absent du FormData — est rejetée en 400.
+// `.default(false)` est la seule forme correcte dans les deux : la clé est
+// facultative en entrée, et son absence produit bien `false` en sortie.
 const checkbox = z
   .union([z.literal('on'), z.literal('true'), z.literal(true), z.literal(false), z.undefined(), z.literal('')])
-  .transform((v) => v === 'on' || v === 'true' || v === true);
+  .transform((v) => v === 'on' || v === 'true' || v === true)
+  .default(false);
 
 export const reportPayloadSchema = z
   .object({

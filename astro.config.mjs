@@ -56,6 +56,16 @@ export default defineConfig({
   // (cf. ssrOnDemandRoutes) deviennent dynamiques. Sinon aucun adaptateur.
   ...(wantSSR ? { adapter: node({ mode: 'standalone' }) } : {}),
   trailingSlash: 'ignore',
+  // Astro 7 bascule `compressHTML` sur `'jsx'` par défaut : la compression
+  // devient JSX-aware et SUPPRIME les blancs entre un texte et une balise
+  // inline quand ils ne tiennent qu'à un retour à la ligne du template.
+  // Mesuré sur ce site : ça collait le texte sur 1 123 pages sur 2 661
+  // (« publiée sur<a>source-internet.fr</a>et agrège » → « publiée
+  // sursource-internet.fret agrège », « dans leManifeste éthique »). Ni le
+  // build, ni vitest, ni l'a11y, ni le contraste ne voient les espaces : le
+  // défaut se serait déployé sans qu'aucune porte ne sonne. On garde donc le
+  // comportement HTML-aware d'Astro 5, qui préserve ces espaces.
+  compressHTML: true,
   // Précharge la page cible au survol d'un lien — UX plus vive pour la
   // navigation catalogue → fiche épisode (réseau peu coûteux).
   prefetch: { defaultStrategy: 'hover' },

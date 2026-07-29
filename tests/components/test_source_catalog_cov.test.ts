@@ -226,7 +226,12 @@ describe('SourceCatalog — vue « Par épisode »', () => {
   it('liste tous les épisodes, même sans reco validée', async () => {
     collections([], [episode(), episode({ guid: 'ep-2', number: 21, title: 'McFly & Carlito' })]);
     const html = await render();
-    expect(html).toContain('McFly &#38; Carlito');
+    // Le titre est bien échappé — mais la FORME de l'échappement dépend de la
+    // version d'Astro (`&#38;` en 5, `&amp;` en 7), pour un HTML sémantiquement
+    // identique. Ce qui compte ici : l'esperluette est échappée (pas de `&`
+    // nu, qui serait une faille d'injection) et le titre est présent en entier.
+    expect(html).toMatch(/McFly &(?:#38|amp); Carlito/);
+    expect(html).not.toContain('McFly & Carlito');
     expect(html).toContain('>2</span> épisodes');
   });
 

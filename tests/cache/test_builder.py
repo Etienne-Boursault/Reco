@@ -515,8 +515,8 @@ class TestInvalidJsonIsSkipped:
 
         stats, builder = self._build(tmp_path)
 
-        assert stats.items == 1  # le fichier sain est bien indexé
-        assert any("casse.json" in e for e in builder._errors)
+        assert stats.n_items == 1  # le fichier sain est bien indexé
+        assert any("casse.json" in e for e in builder.last_errors)
 
     def test_broken_episode_is_skipped_and_reported(self, tmp_path: Path) -> None:
         _, _, episodes = self._dirs(tmp_path)
@@ -528,8 +528,8 @@ class TestInvalidJsonIsSkipped:
 
         stats, builder = self._build(tmp_path)
 
-        assert stats.episodes == 1
-        assert any("episodes:" in e and "casse.json" in e for e in builder._errors)
+        assert stats.n_episodes == 1
+        assert any("episodes:" in e and "casse.json" in e for e in builder.last_errors)
 
     def test_broken_mention_is_skipped_and_reported(self, tmp_path: Path) -> None:
         items, mentions, episodes = self._dirs(tmp_path)
@@ -550,5 +550,48 @@ class TestInvalidJsonIsSkipped:
 
         stats, builder = self._build(tmp_path)
 
-        assert stats.mentions == 1
-        assert any("mentions:" in e and "casse.json" in e for e in builder._errors)
+        assert stats.n_mentions == 1
+        assert any("mentions:" in e and "casse.json" in e for e in builder.last_errors)
+
+
+    def test_last_errors_is_a_copy(self, tmp_path: Path) -> None:
+        """`last_errors` expose une COPIE : un appelant qui la vide ne doit pas
+        effacer le rapport interne du builder."""
+        items, _, _ = self._dirs(tmp_path)
+        (items / "casse.json").write_text("{ pas du JSON", encoding="utf-8")
+        _, builder = self._build(tmp_path)
+
+        errors = builder.last_errors
+        assert errors
+        errors.clear()
+
+        assert builder.last_errors  # inchangé
+
+    def test_build_with_optimize_still_indexes(self, tmp_path: Path) -> None:
+        """`optimize=True` déclenche la compaction FTS5 : le contenu doit
+        rester interrogeable après."""
+        items, _, _ = self._dirs(tmp_path)
+        (items / "i1.json").write_text(
+            '{"id": "i1", "schemaVersion": 1, "title": "Parasite", "types": ["film"]}',
+            encoding="utf-8",
+        )
+        builder = CacheBuilder(
+            db_path=tmp_path / "c.sqlite",
+            items_dir=tmp_path / "items",
+            mentions_dir=tmp_path / "mentions",
+            episodes_dir=tmp_path / "episodes",
+            logger=lambda *a: None,
+        )
+
+        stats = builder.build(optimize=True)
+
+        assert stats.n_items == 1
+        conn = _connect_ro(tmp_path / "c.sqlite")
+        try:
+            rows = conn.execute(
+                "SELECT id FROM items_fts WHERE items_fts MATCH ?",
+                ('"Parasite"*',),
+            ).fetchall()
+            assert [r["id"] for r in rows] == ["i1"]
+        finally:
+            conn.close()

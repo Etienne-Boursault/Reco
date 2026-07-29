@@ -547,3 +547,197 @@ def test_issue_heading_maps_flags_and_falls_back():
     assert "Titre à vérifier" in h
     assert "Unknown flag à vérifier" in h  # _deslug_flag
     assert _issue_heading("recby", {"agentReview": {}}) == "Qui recommande ?"
+
+
+# ---- Libellés défensifs (flags inventés par un agent) -----------------------
+def test_deslug_flag_falls_back_when_nothing_remains():
+    """`_suspect` seul ne laisse aucun mot : libellé générique plutôt qu'un
+    titre vide dans l'en-tête du doute."""
+    assert review_doubts._deslug_flag("_suspect") == "À vérifier"
+
+
+def test_deslug_flag_humanizes_an_unknown_flag():
+    assert review_doubts._deslug_flag("titre_bizarre_suspect") == (
+        "Titre bizarre à vérifier"
+    )
+
+
+def test_issue_heading_falls_back_to_section_without_flags():
+    heading = review_doubts._issue_heading("pending", {"agentReview": {}})
+    assert heading == review_doubts._SECTION_HEADINGS["pending"]
+
+
+# ---- _sig_meta : chaque bit est optionnel -----------------------------------
+def test_sig_meta_without_verdict_keeps_confidence():
+    assert review_doubts._sig_meta({"confidence": 0.4}) == "conf 0.4"
+
+
+def test_sig_meta_without_confidence_keeps_verdict():
+    assert review_doubts._sig_meta({"verdict": "unsure"}) == "🤖 unsure"
+
+
+def test_sig_meta_empty_when_agent_said_nothing():
+    assert review_doubts._sig_meta({}) == ""
+
+
+def test_sig_meta_appends_reason_only_when_note_occupies_the_fix_line():
+    """La raison ne s'affiche en méta que si la note lui a pris sa place."""
+    with_note = review_doubts._sig_meta(
+        {"verdict": "unsure", "note": "corriger le titre", "reason": "titre douteux"})
+    assert "titre douteux" in with_note
+
+    without_note = review_doubts._sig_meta(
+        {"verdict": "unsure", "reason": "titre douteux"})
+    assert "titre douteux" not in without_note
+
+
+# ---- _sig_fix : repli par section -------------------------------------------
+@pytest.mark.parametrize("key, expected", [
+    ("pending", "Valide, mets en citation, marque « leur œuvre » ou écarte."),
+    ("lowconf", "Contrôle rapide, puis valide ou corrige."),
+    ("flagged", "Vérifie le signalement, puis corrige ou valide."),
+    ("section-inconnue", "À vérifier."),
+])
+def test_sig_fix_uses_a_section_hint_when_agent_is_silent(key, expected):
+    """Sans note ni raison de l'agent, on affiche une consigne d'action plutôt
+    qu'un bloc vide."""
+    label, text = review_doubts._sig_fix(key, {})
+
+    assert label == "À vérifier"
+    assert text == expected
+
+
+def test_sig_fix_prefers_the_agent_note_then_the_reason():
+    assert review_doubts._sig_fix("pending", {"note": "n", "reason": "r"}) == (
+        "Correction suggérée (agent)", "n")
+    assert review_doubts._sig_fix("pending", {"reason": "r"}) == (
+        "À vérifier", "r")
+
+
+def test_sig_fix_escapes_agent_text():
+    """Le texte vient d'un LLM : il doit être échappé avant injection HTML."""
+    _, text = review_doubts._sig_fix("pending", {"note": '<script>x</script>'})
+
+    assert "<script>" not in text
+    assert "&lt;script&gt;" in text
+
+
+# ---- _transcript_collapse ---------------------------------------------------
+def test_transcript_collapse_empty_without_timestamp():
+    assert review_doubts._transcript_collapse("src", "g1", None) == ""
+
+
+def test_transcript_collapse_empty_when_no_context_found(monkeypatch):
+    """Transcript présent mais aucune ligne autour du timecode (hors bornes) :
+    pas de bloc `<details>` vide."""
+    monkeypatch.setattr(review_doubts, "_load_transcript", lambda s, g: "")
+    monkeypatch.setattr(review_doubts, "_context_around",
+                        lambda *a, **k: [])
+
+    assert review_doubts._transcript_collapse("src", "g1", 42) == ""
+
+
+# ---- Type par défaut de la radio --------------------------------------------
+def test_default_action_is_guest_work_for_a_guest_work(monkeypatch):
+    """Une reco déjà marquée « leur œuvre » doit rouvrir sur ce type, pas sur
+    « Reco » — sinon un clic distrait la requalifierait."""
+    r = _reco("r1", agent={"verdict": "unsure", "confidence": 0.2})
+    r["guestWork"] = True
+    _patch_groups(monkeypatch, [r])
+
+    html_out = render_doubts("src", ep="g1")
+    soup = parse(html_out)
+    checked = [i for i in soup.find_all("input")
+               if i.get("name") == "action" and i.has_attr("checked")]
+
+    assert [i["value"] for i in checked] == ["guest-work"]
+
+
+def test_default_action_is_citation_for_a_citation(monkeypatch):
+    r = _reco("r1", kind="citation", recommended_by="Kyan Khojandi",
+              agent={"verdict": "unsure", "confidence": 0.2})
+    _patch_groups(monkeypatch, [r])
+
+    soup = parse(render_doubts("src", ep="g1"))
+    checked = [i for i in soup.find_all("input")
+               if i.get("name") == "action" and i.has_attr("checked")]
+
+    assert [i["value"] for i in checked] == ["citation"]
+
+
+# ---- Navigation entre épisodes ----------------------------------------------
+def test_episode_nav_is_empty_for_an_unknown_guid():
+    """Guid absent de la file : pas de barre de navigation (au lieu d'un
+    IndexError sur la position)."""
+    per_ep = {"g1": {"ep": {"guid": "g1", "title": "Un"}, "sections": {}}}
+
+    assert review_doubts._ep_nav(per_ep, "g-inconnu") == ""
+
+
+def test_episode_nav_shows_position_and_both_arrows():
+    per_ep = {
+        f"g{i}": {"ep": {"guid": f"g{i}", "title": f"Ep {i}",
+                         "season": 1, "number": i}, "sections": {}}
+        for i in (1, 2, 3)
+    }
+
+    nav = review_doubts._ep_nav(per_ep, "g2")
+
+    assert "2 / 3" in nav
+    assert nav.count("doubt-nav-x") == 2
+    assert "disabled" not in nav
+
+
+def test_count_doubts_totals_every_episode(monkeypatch):
+    """`count_doubts` alimente le compteur de l'index : il doit compter les
+    recos à revoir de TOUTES les sections, sans doublon."""
+    _patch_groups(monkeypatch, [
+        # unsure → section « pending »
+        _reco("r1", agent={"verdict": "unsure", "confidence": 0.2}),
+        # validée sans prescripteur → section « recby »
+        _reco("r2", status="validated", kind="reco",
+              agent={"verdict": "validate", "confidence": 0.9}),
+        # traitée : ne compte pas
+        _reco("r3", status="validated", recommended_by="Kyan Khojandi",
+              agent={"verdict": "validate", "reviewedByHuman": True}),
+        # écartée : ne compte pas non plus
+        _reco("r4", status="discarded",
+              agent={"verdict": "unsure", "confidence": 0.1}),
+    ])
+
+    assert review_doubts.count_doubts("src") == 2
+
+
+def test_render_episode_reports_a_clean_episode(monkeypatch):
+    """Épisode sans doute restant : message de fin, pas de page vide."""
+    _patch_groups(monkeypatch, [_reco("r1", status="validated",
+                                      recommended_by="Kyan Khojandi")])
+
+    out = render_doubts("src", ep="g1")
+
+    assert "tout est traité" in out.lower()
+
+
+# ---- render_doubt_fragment --------------------------------------------------
+def test_doubt_fragment_is_empty_when_reco_left_the_queue(monkeypatch):
+    """La reco n'est plus un doute : fragment vide → son `<li>` disparaît du
+    DOM après le swap AJAX."""
+    _patch_groups(monkeypatch, [_reco("r1", status="validated",
+                                      recommended_by="Kyan Khojandi")])
+
+    assert review_doubts.render_doubt_fragment("src", "r1") == ""
+
+
+def test_doubt_fragment_is_empty_for_an_unknown_reco(monkeypatch):
+    _patch_groups(monkeypatch, [_reco("r1", agent={"verdict": "unsure"})])
+
+    assert review_doubts.render_doubt_fragment("src", "r-inconnue") == ""
+
+
+def test_doubt_fragment_returns_the_card_for_a_real_doubt(monkeypatch):
+    r = _reco("r1", agent={"verdict": "unsure", "confidence": 0.2})
+    _patch_groups(monkeypatch, [r])
+
+    frag = review_doubts.render_doubt_fragment("src", "r1")
+
+    assert "Œuvre r1" in frag

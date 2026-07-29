@@ -4,14 +4,18 @@
 # Cf. docs/adr/0037-docker-compose-deployment.md
 #
 # Stages :
-#   1. node-builder   : Astro 5 → dist/ statique
+#   1. node-builder   : Astro 7 → dist/ statique
 #   2. python-builder : venv 3.12 + dépendances pipeline (tools/requirements.txt)
 #   3. runtime        : slim final (venv + dist + code Python)
 
 # -----------------------------------------------------------------------------
-# Stage 1 — Astro build (Node 20)
+# Stage 1 — Astro build (Node 24)
+#
+# astro@7 exige `node >= 22.12` et vite@8 `^20.19 || >=22.12`. On épingle 24,
+# et non le minimum 22 : c'est la version servie en production (Infomaniak),
+# et une image de build doit refléter le runtime réel.
 # -----------------------------------------------------------------------------
-FROM node:20-slim AS node-builder
+FROM node:24-slim AS node-builder
 WORKDIR /app
 
 # Install deps en couche dédiée (cache friendly)

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -1080,3 +1081,290 @@ def test_atomic_write_json_cleans_tmp_on_disk_full(tmp_path, monkeypatch):
         reco_dedup_merge._atomic_write_json(target, {"a": 1})
     tmp = target.with_suffix(target.suffix + ".tmp")
     assert not tmp.exists(), "le tmp doit être nettoyé même en cas d'échec"
+
+
+# ===== _atomic_write_json : rejeu sur PermissionError (Windows) =============
+def test_atomic_write_retries_on_transient_permission_error(tmp_path, monkeypatch):
+    """Sur Windows, un antivirus peut tenir le fichier une fraction de seconde :
+    `os.replace` est retenté avant d'abandonner."""
+    import reco_dedup_merge as rdm
+
+    target = tmp_path / "out.json"
+    real_replace = os.replace
+    attempts = {"n": 0}
+
+    def _flaky(src, dst):
+        attempts["n"] += 1
+        if attempts["n"] < 3:
+            raise PermissionError("fichier tenu par un autre process")
+        return real_replace(src, dst)
+
+    monkeypatch.setattr(rdm.os, "replace", _flaky)
+    monkeypatch.setattr(rdm.time, "sleep", lambda *_: None)
+
+    rdm._atomic_write_json(target, {"a": 1})
+
+    assert attempts["n"] == 3
+    assert json.loads(target.read_text(encoding="utf-8")) == {"a": 1}
+    assert not target.with_suffix(target.suffix + ".tmp").exists()
+
+
+def test_atomic_write_gives_up_after_the_last_retry(tmp_path, monkeypatch):
+    """Verrou persistant : on remonte l'erreur au lieu de boucler sans fin."""
+    import reco_dedup_merge as rdm
+
+    target = tmp_path / "out.json"
+
+    def _always_locked(src, dst):
+        raise PermissionError("verrou permanent")
+
+    monkeypatch.setattr(rdm.os, "replace", _always_locked)
+    monkeypatch.setattr(rdm.time, "sleep", lambda *_: None)
+
+    with pytest.raises(PermissionError):
+        rdm._atomic_write_json(target, {"a": 1})
+
+    assert not target.with_suffix(target.suffix + ".tmp").exists()
+
+
+def test_atomic_write_tolerates_an_undeletable_tmp(tmp_path, monkeypatch):
+    """Le nettoyage du `.tmp` est best-effort : son échec ne doit pas masquer
+    l'erreur d'écriture d'origine."""
+    import reco_dedup_merge as rdm
+
+    target = tmp_path / "out.json"
+    real_unlink = Path.unlink
+
+    def _no_unlink(self, missing_ok=False):
+        if self.suffix == ".tmp":
+            raise OSError("tmp verrouillé")
+        return real_unlink(self, missing_ok=missing_ok)
+
+    monkeypatch.setattr(rdm.os, "replace",
+                        lambda s, d: (_ for _ in ()).throw(OSError("disk full")))
+    monkeypatch.setattr(Path, "unlink", _no_unlink)
+
+    with pytest.raises(OSError, match="disk full"):
+        rdm._atomic_write_json(target, {"a": 1})
+
+
+# ===== _write_backup : rien à sauvegarder ==================================
+def test_write_backup_returns_none_when_there_is_nothing_to_save(tmp_path):
+    """Ni loser à supprimer, ni fichier kept sur disque : pas de dossier de
+    backup vide créé."""
+    import reco_dedup_merge as rdm
+
+    out = rdm._write_backup(
+        "ubm-1", tmp_path / "absent.json", [], "src", tmp_path / "backup")
+
+    assert out is None
+    assert not (tmp_path / "backup").exists()
+
+
+# ===== merge_cluster : replis quand l'état disque est douteux ==============
+def test_merge_falls_back_to_memory_when_loser_file_is_unreadable(
+    patched_recos_dir,
+):
+    """Loser illisible sur disque : on repart de la version mémoire plutôt que
+    de perdre ses champs."""
+    tmp = patched_recos_dir
+    r1 = _r("ubm-1", "X")
+    r2 = _r("ubm-2", "X", customLinks=[{"url": "depuis-la-memoire.example"}])
+    _write_recos("src", [r1, r2], tmp)
+    (tmp / "recos" / "src" / "ubm-2.json").write_text("{ tronqué",
+                                                      encoding="utf-8")
+
+    merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),
+                  keep_id="ubm-1", source_id="src", backup=False)
+
+    kept = json.loads(
+        (tmp / "recos" / "src" / "ubm-1.json").read_text(encoding="utf-8"))
+    urls = [c.get("url") for c in (kept.get("customLinks") or [])]
+    assert "depuis-la-memoire.example" in urls
+
+
+def test_merge_falls_back_to_memory_on_id_mismatch(patched_recos_dir, caplog):
+    """Le fichier du loser porte un autre id (renommage manuel, collision) :
+    on ne fusionne PAS ce contenu étranger."""
+    tmp = patched_recos_dir
+    r1 = _r("ubm-1", "X")
+    r2 = _r("ubm-2", "X", customLinks=[{"url": "depuis-la-memoire.example"}])
+    _write_recos("src", [r1, r2], tmp)
+    intrus = {"id": "ubm-999", "title": "Autre œuvre",
+              "customLinks": [{"url": "intrus.example"}]}
+    (tmp / "recos" / "src" / "ubm-2.json").write_text(
+        json.dumps(intrus), encoding="utf-8")
+
+    with caplog.at_level("WARNING", logger="reco"):
+        merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),
+                      keep_id="ubm-1", source_id="src", backup=False)
+
+    kept = json.loads(
+        (tmp / "recos" / "src" / "ubm-1.json").read_text(encoding="utf-8"))
+    urls = [c.get("url") for c in (kept.get("customLinks") or [])]
+    assert "depuis-la-memoire.example" in urls
+    assert "intrus.example" not in urls
+    assert "id mismatch" in caplog.text
+
+
+def test_merge_falls_back_to_memory_when_fresh_loser_became_incompatible(
+    patched_recos_dir, caplog,
+):
+    """Le loser a changé d'épisode entre la détection et la fusion : son état
+    disque n'appartient plus au cluster, on garde la version mémoire."""
+    tmp = patched_recos_dir
+    r1 = _r("ubm-1", "X")
+    r2 = _r("ubm-2", "X", customLinks=[{"url": "depuis-la-memoire.example"}])
+    _write_recos("src", [r1, r2], tmp)
+    moved = json.loads(
+        (tmp / "recos" / "src" / "ubm-2.json").read_text(encoding="utf-8"))
+    moved["episodeGuid"] = "un-autre-episode"
+    moved["customLinks"] = [{"url": "depuis-un-autre-episode.example"}]
+    (tmp / "recos" / "src" / "ubm-2.json").write_text(
+        json.dumps(moved), encoding="utf-8")
+
+    with caplog.at_level("WARNING", logger="reco"):
+        merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),
+                      keep_id="ubm-1", source_id="src", backup=False)
+
+    kept = json.loads(
+        (tmp / "recos" / "src" / "ubm-1.json").read_text(encoding="utf-8"))
+    urls = [c.get("url") for c in (kept.get("customLinks") or [])]
+    assert "depuis-un-autre-episode.example" not in urls
+    assert "incompatible" in caplog.text
+
+
+def test_merge_tolerates_a_loser_deleted_meanwhile(patched_recos_dir,
+                                                   monkeypatch):
+    """Loser supprimé entre la collecte et l'unlink (autre process, antivirus) :
+    pas de FileNotFoundError remontée, la fusion se termine."""
+    import reco_dedup_merge as rdm
+
+    tmp = patched_recos_dir
+    r1 = _r("ubm-1", "X")
+    r2 = _r("ubm-2", "X")
+    _write_recos("src", [r1, r2], tmp)
+    real_collect = rdm._collect_losers_to_delete
+
+    def _collect_then_delete(members, keep_id, paths):
+        out = real_collect(members, keep_id, paths)
+        for _rid, p in out:
+            p.unlink()  # disparaît juste avant l'unlink du merge
+        return out
+
+    monkeypatch.setattr(rdm, "_collect_losers_to_delete", _collect_then_delete)
+
+    merge_cluster(Cluster(canonical_id="ubm-1", members=[r1, r2]),
+                  keep_id="ubm-1", source_id="src", backup=False)
+
+    assert (tmp / "recos" / "src" / "ubm-1.json").exists()
+
+
+# ===== restore_last_backup : backups douteux ===============================
+def _make_backup(root: Path, name: str, source_id: str, files: dict[str, str],
+                 manifest: dict | None = None) -> Path:
+    d = root / name
+    (d / source_id).mkdir(parents=True, exist_ok=True)
+    for fname, content in files.items():
+        (d / source_id / fname).write_text(content, encoding="utf-8")
+    payload = {"source_id": source_id, "merge_id": "abc123"}
+    payload.update(manifest or {})
+    (d / "manifest.json").write_text(json.dumps(payload), encoding="utf-8")
+    return d
+
+
+def test_restore_skips_a_backup_containing_invalid_json(tmp_path, monkeypatch,
+                                                        caplog):
+    """Un backup corrompu est ignoré au profit du précédent — on ne restaure
+    jamais un JSON invalide par-dessus les vraies recos."""
+    import common
+    import reco_dedup_merge as rdm
+
+    recos = tmp_path / "recos"
+    monkeypatch.setattr(common, "RECOS_DIR", recos)
+    root = tmp_path / "backup"
+    _make_backup(root, "2026-07-28", "src",
+                 {"ubm-1.json": json.dumps({"id": "ubm-1", "title": "Sain"})})
+    _make_backup(root, "2026-07-29", "src", {"ubm-2.json": "{ cassé"})
+
+    with caplog.at_level("WARNING", logger="reco"):
+        out = rdm.restore_last_backup("src", backup_root=root)
+
+    assert out["n_restored"] == 1
+    assert out["timestamp_restored"] == "2026-07-28"
+    assert "JSON invalide" in caplog.text
+
+
+def test_restore_copies_in_place_when_rename_is_refused(tmp_path, monkeypatch,
+                                                        caplog):
+    """Sur Windows le rename en `.consumed` peut échouer : on retombe sur une
+    copie directe plutôt que d'abandonner la restauration."""
+    import common
+    import reco_dedup_merge as rdm
+
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+    root = tmp_path / "backup"
+    _make_backup(root, "2026-07-29", "src",
+                 {"ubm-1.json": json.dumps({"id": "ubm-1", "title": "Sain"})})
+
+    def _no_rename(self, target):
+        raise OSError("dossier tenu par un autre process")
+
+    monkeypatch.setattr(Path, "rename", _no_rename)
+
+    with caplog.at_level("WARNING", logger="reco"):
+        out = rdm.restore_last_backup("src", backup_root=root)
+
+    assert out["n_restored"] == 1
+    assert "copy in-place" in caplog.text
+
+
+def test_restore_reports_failed_copies(tmp_path, monkeypatch, caplog):
+    """Une copie qui échoue est comptée dans `n_failed`, sans interrompre les
+    autres."""
+    import common
+    import reco_dedup_merge as rdm
+
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+    root = tmp_path / "backup"
+    _make_backup(root, "2026-07-29", "src", {
+        "ubm-1.json": json.dumps({"id": "ubm-1", "title": "A"}),
+        "ubm-2.json": json.dumps({"id": "ubm-2", "title": "B"}),
+    })
+
+    real_copy = rdm.shutil.copy2
+
+    def _fail_on_second(src, dst):
+        if Path(src).name.endswith("2.json"):
+            raise OSError("cible en lecture seule")
+        return real_copy(src, dst)
+
+    monkeypatch.setattr(rdm.shutil, "copy2", _fail_on_second)
+
+    with caplog.at_level("WARNING", logger="reco"):
+        out = rdm.restore_last_backup("src", backup_root=root)
+
+    assert (out["n_restored"], out["n_failed"]) == (1, 1)
+    assert "Restore copy" in caplog.text
+
+
+def test_restore_reports_cleanup_failure_without_failing(tmp_path, monkeypatch,
+                                                         caplog):
+    import common
+    import reco_dedup_merge as rdm
+
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+    root = tmp_path / "backup"
+    _make_backup(root, "2026-07-29", "src",
+                 {"ubm-1.json": json.dumps({"id": "ubm-1", "title": "A"})})
+
+    def _no_rmtree(path):
+        raise OSError("dossier occupé")
+
+    monkeypatch.setattr(rdm.shutil, "rmtree", _no_rmtree)
+
+    with caplog.at_level("WARNING", logger="reco"):
+        out = rdm.restore_last_backup("src", backup_root=root)
+
+    assert out["n_restored"] == 1
+    assert "Cleanup" in caplog.text

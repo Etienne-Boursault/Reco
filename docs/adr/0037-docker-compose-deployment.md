@@ -11,7 +11,8 @@ Reco est un kit duplicable (Astro 5 + Python 3.12) destiné à être self-hosté
 par des forks (autres podcasts). Le mode d'emploi actuel impose à un nouvel
 adoptant de :
 
-1. Installer Node 20 + npm,
+1. Installer Node 24 + npm (astro@7 exige `node >= 22.12` ; 24 est la version
+   servie en production),
 2. Installer Python 3.12 + créer un venv,
 3. `pip install -r tools/requirements.txt` (incl. `fastembed`, `faster-whisper` —
    nécessitent `build-essential`),
@@ -78,7 +79,7 @@ Une seule commande pour démarrer : `docker compose up`.
   (sauf `.env.example` whitelisté).
 - **Profiles** : `reco-pipeline` est opt-in (`--profile pipeline`) — c'est
   un job ponctuel, pas un long-running service.
-- **Multi-arch** : `python:3.12-slim` et `node:20-slim` publient amd64+arm64.
+- **Multi-arch** : `python:3.12-slim` et `node:24-slim` publient amd64+arm64.
   Build local utilisable tel quel ; pour publier multi-arch :
   `docker buildx build --platform linux/amd64,linux/arm64 …`. Pas exécuté
   Phase 3 (publication d'image hors scope).

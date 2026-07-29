@@ -25,7 +25,11 @@ const { experimental_AstroContainer: AstroContainer } = await import('astro/cont
 
 /** Extrait un paramètre du `mailto:` rendu (les `&` sont échappés en HTML). */
 function mailtoParam(html: string, key: string): string {
-  const href = (html.match(/href="(mailto:[^"]+)"/)?.[1] ?? '').replace(/&#38;/g, '&');
+  // L'esperluette séparant les paramètres est échappée dans l'attribut, mais
+  // sa FORME dépend de la version d'Astro : `&#38;` en 5, `&amp;` en 7. Les
+  // deux sont sémantiquement identiques ; on les accepte toutes les deux
+  // plutôt que d'épingler celle du jour.
+  const href = (html.match(/href="(mailto:[^"]+)"/)?.[1] ?? '').replace(/&(?:#38|amp);/g, '&');
   return new URL(href.replace('mailto:', 'mailto://')).searchParams.get(key) ?? '';
 }
 const ReportForm = (await import('../../src/components/ReportForm.astro')).default;
