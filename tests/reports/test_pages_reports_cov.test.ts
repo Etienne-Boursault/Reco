@@ -100,7 +100,7 @@ describe('/[source]/reports — queue admin', () => {
     expect(await render()).not.toContain('class="reports"');
   });
 
-  it('ventile les compteurs par statut', async () => {
+  it('ventile les compteurs par statut, accordés au singulier', async () => {
     listReports.mockReturnValue([
       report({ id: 'a', status: 'pending' }),
       report({ id: 'b', status: 'pending' }),
@@ -109,9 +109,35 @@ describe('/[source]/reports — queue admin', () => {
     ]);
     const text = visibleText(await render());
 
+    // « en attente » est invariable ; « résolu » et « écarté » s'accordent.
     expect(text).toContain('2 en attente');
-    expect(text).toContain('1 résolus');
-    expect(text).toContain('1 écartés');
+    expect(text).toContain('1 résolu');
+    expect(text).not.toContain('1 résolus');
+    expect(text).toContain('1 écarté');
+    expect(text).not.toContain('1 écartés');
+  });
+
+  it('accorde les compteurs au pluriel dès deux éléments', async () => {
+    listReports.mockReturnValue([
+      report({ id: 'a', status: 'resolved' }),
+      report({ id: 'b', status: 'resolved' }),
+      report({ id: 'c', status: 'dismissed' }),
+      report({ id: 'd', status: 'dismissed' }),
+    ]);
+    const text = visibleText(await render());
+
+    expect(text).toContain('2 résolus');
+    expect(text).toContain('2 écartés');
+  });
+
+  it('une queue vide accorde aussi au singulier (0 → singulier)', async () => {
+    const text = visibleText(await render());
+
+    expect(text).toContain('0 en attente');
+    expect(text).toContain('0 résolu');
+    expect(text).not.toContain('0 résolus');
+    expect(text).toContain('0 écarté');
+    expect(text).not.toContain('0 écartés');
   });
 
   it('n’affiche que les signalements `pending` dans la liste', async () => {

@@ -31,8 +31,17 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import SiteProbe from './_site_probe.astro';
 
-/** Origine utilisée comme `Astro.site` dans les tests. */
-export const TEST_SITE = 'https://reco.test';
+/**
+ * Origine utilisée comme `Astro.site` dans les tests — pour les composants
+ * comme pour les pages (`tests/gallery/_render_page.ts` s'appuie sur ce
+ * module depuis la fusion des deux harnais).
+ *
+ * `reco.example` et non `reco.test` : c'est la valeur de repli réelle
+ * d'`astro.config.mjs` (`site: siteUrl || 'https://reco.example'`), donc les
+ * tests exercent l'origine de production. C'est aussi la convention déjà
+ * suivie ailleurs dans la suite (`tests/api/`, `tests/registry/`).
+ */
+export const TEST_SITE = 'https://reco.example';
 
 /** Voie retenue pour injecter `site`. */
 export type VoieSite = 'publique' | 'patch-interne';

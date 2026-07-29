@@ -87,3 +87,25 @@ def test_build_matrix_message_shape_and_escaping():
     assert "&lt;Moment&gt;" in fb
     assert "S5·E21 &amp; co" in fb
     assert '<a href="https://exemple.fr/ep?a=1&amp;b=2">' in fb
+
+
+def test_uses_requests_when_no_session_injected(monkeypatch):
+    """Sans session injectée, l'envoi importe `requests` à la volée. On
+    remplace le module dans `sys.modules` : aucune requête ne part."""
+    import sys
+    from types import SimpleNamespace
+
+    captured = {}
+
+    def _put(url, json=None, headers=None, timeout=None):  # noqa: A002
+        captured["url"] = url
+        captured["json"] = json
+        captured["timeout"] = timeout
+        return SimpleNamespace(ok=True, status_code=204, text="")
+
+    monkeypatch.setitem(sys.modules, "requests",
+                        SimpleNamespace(put=_put))
+    sender = MatrixSender("https://matrix.exemple.fr", "tok", "!salon:exemple.fr")
+
+    assert sender.send({"body": "coucou", "msgtype": "m.text"}) is True
+    assert captured["url"].startswith("https://matrix.exemple.fr/")

@@ -30,8 +30,13 @@ const items = (await getCollection('items'))
 const entries = selectByType(items, mentions, ['musique', 'album', 'artiste']);
 
 const heading = t('gallery.musique.title');
-const countLabel = 'œuvres musicales recommandées';
-const description = `${entries.length} œuvres musicales (morceaux, albums, artistes) recommandées dans ${data.title}.`;
+// Accord au nombre : 0 et 1 prennent le singulier (règle du projet,
+// cf. `src/utils/plural.ts`). Le libellé sert au compteur visible ET
+// à la meta description, d'où la variable partagée.
+const countLabel = t(
+  entries.length >= 2 ? 'gallery.musique.count.many' : 'gallery.musique.count.one',
+);
+const description = `${entries.length} ${countLabel} (morceaux, albums, artistes) dans ${data.title}.`;
 
 const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
 const homeUrl = new URL('/', Astro.site).toString();

@@ -172,3 +172,130 @@ def test_list_empty_dir_returns_0(
 def test_argparse_requires_action() -> None:
     with pytest.raises(SystemExit):
         manage_reports.main(["--source", "all"])
+
+
+# ===== Énumération des sources et filtrage des fichiers ====================
+def test_list_source_ids_empty_when_dir_absent(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Aucun signalement encore reçu : dossier absent → liste vide, pas
+    d'exception au démarrage du CLI."""
+    monkeypatch.setattr(manage_reports, "REPORTS_DIR", tmp_path / "jamais-cree")
+
+    assert manage_reports._list_source_ids() == []
+
+
+def test_list_source_ids_ignores_stray_files(
+    reports_tmp: Path
+) -> None:
+    """Seuls les SOUS-DOSSIERS sont des sources (un fichier égaré à la racine
+    n'en est pas une)."""
+    _mk_report(reports_tmp, "rep-aaa", source_id="podcast-b")
+    (reports_tmp / "README.md").write_text("pas une source", encoding="utf-8")
+
+    assert manage_reports._list_source_ids() == ["podcast-b"]
+
+
+def test_atomic_write_leftovers_are_ignored(
+    reports_tmp: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Un `.json.tmp` laissé par une écriture atomique interrompue ne doit pas
+    être lu comme un signalement.
+
+    Note : c'est le `glob("*.json")` qui l'exclut, pas la garde
+    `endswith(".tmp")` de `_iter_report_paths` — celle-ci est inatteignable
+    par construction. Le test vérifie donc le COMPORTEMENT attendu, pas cette
+    ligne-là."""
+    _mk_report(reports_tmp, "rep-aaa")
+    (reports_tmp / "un-bon-moment" / "rep-zzz.json.tmp").write_text(
+        '{"id": "rep-zzz"}', encoding="utf-8")
+
+    rc = manage_reports.main(["--source", "un-bon-moment", "--list"])
+
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert "rep-aaa" in out
+    assert "rep-zzz" not in out
+
+
+def test_unreadable_report_is_skipped_in_list(
+    reports_tmp: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Un JSON corrompu est ignoré (avec un warning) : la liste reste
+    utilisable au lieu de planter."""
+    _mk_report(reports_tmp, "rep-aaa")
+    (reports_tmp / "un-bon-moment" / "rep-casse.json").write_text(
+        "{ tronqué", encoding="utf-8")
+
+    rc = manage_reports.main(["--source", "un-bon-moment", "--list"])
+
+    assert rc == 0
+    assert "rep-aaa" in capsys.readouterr().out
+
+
+def test_read_report_returns_none_on_invalid_json(reports_tmp: Path) -> None:
+    p = reports_tmp / "un-bon-moment"
+    p.mkdir(parents=True, exist_ok=True)
+    broken = p / "rep-casse.json"
+    broken.write_text("{{{", encoding="utf-8")
+
+    assert manage_reports._read_report(broken) is None
+
+
+def test_read_report_returns_none_when_file_is_missing(
+    reports_tmp: Path
+) -> None:
+    assert manage_reports._read_report(reports_tmp / "absent.json") is None
+
+
+def test_find_report_scans_past_non_matching_ids(reports_tmp: Path) -> None:
+    """La recherche par id doit parcourir tous les fichiers, pas s'arrêter au
+    premier qui ne correspond pas."""
+    _mk_report(reports_tmp, "rep-aaa")
+    _mk_report(reports_tmp, "rep-bbb")
+    _mk_report(reports_tmp, "rep-ccc")
+
+    found = manage_reports._find_report("rep-ccc", "un-bon-moment")
+
+    assert found is not None
+    path, report = found
+    assert report["id"] == "rep-ccc"
+    assert path.name == "rep-ccc.json"
+
+
+def test_find_report_returns_none_when_absent(reports_tmp: Path) -> None:
+    _mk_report(reports_tmp, "rep-aaa")
+
+    assert manage_reports._find_report("rep-zzz", "un-bon-moment") is None
+
+
+# ===== Idempotence des mutations ===========================================
+def test_resolving_an_already_resolved_report_is_a_noop(
+    reports_tmp: Path
+) -> None:
+    """Re-résoudre sans note ne réécrit pas le fichier — on ne veut pas écraser
+    `resolvedAt`/`resolvedBy` d'origine par un second passage."""
+    path = _mk_report(reports_tmp, "rep-aaa", status="resolved")
+    before = path.read_text(encoding="utf-8")
+
+    rc = manage_reports.main(
+        ["--source", "un-bon-moment", "--resolve", "rep-aaa"])
+
+    assert rc == 0
+    assert path.read_text(encoding="utf-8") == before
+
+
+def test_resolving_again_with_a_note_does_write(reports_tmp: Path) -> None:
+    """Avec une note, en revanche, la mutation s'applique : c'est le seul moyen
+    d'annoter un signalement déjà traité."""
+    path = _mk_report(reports_tmp, "rep-aaa", status="resolved")
+
+    rc = manage_reports.main([
+        "--source", "un-bon-moment", "--resolve", "rep-aaa",
+        "--note", "corrigé dans la foulée",
+    ])
+
+    assert rc == 0
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    assert payload["notes"] == "corrigé dans la foulée"
+    assert payload["resolvedAt"] is not None

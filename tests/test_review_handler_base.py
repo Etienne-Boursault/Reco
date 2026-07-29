@@ -203,3 +203,68 @@ def test_base_handler_requires_source_id():
     tout accès socket : la garde est en tête de __init__)."""
     with pytest.raises(ValueError, match="source_id"):
         rhb.BaseHandler(source_id="")
+
+
+# ===== _is_private_ip =======================================================
+@pytest.mark.parametrize("ip, expected", [
+    ("192.168.1.10", True),
+    ("10.0.0.1", True),
+    ("172.16.5.4", True),
+    ("127.0.0.1", True),
+    ("::1", True),
+    ("8.8.8.8", False),
+    ("2001:4860:4860::8888", False),
+])
+def test_is_private_ip(ip, expected):
+    assert rhb._is_private_ip(ip) is expected
+
+
+@pytest.mark.parametrize("garbage", ["", "pas-une-ip", "999.999.999.999",
+                                     "192.168.1", "<script>"])
+def test_is_private_ip_rejects_garbage(garbage):
+    """L'adresse vient de `client_address` / d'un header : une valeur illisible
+    doit être traitée comme NON privée (refus), jamais lever."""
+    assert rhb._is_private_ip(garbage) is False
+
+
+# ===== _rebuild_reco_path_cache : entrées sans id ===========================
+def test_rebuild_skips_reco_without_id(tmp_path, monkeypatch):
+    """Un JSON valide mais sans `id` (brouillon, fichier annexe) n'entre pas au
+    cache — sinon on indexerait `None`."""
+    import common
+    rhb._RECO_PATH_CACHE.clear()
+    src_id = "demo-rhb-noid"
+    recos_dir = tmp_path / "recos" / src_id
+    recos_dir.mkdir(parents=True)
+    (recos_dir / "sans-id.json").write_text(
+        json.dumps({"title": "Sans identifiant"}), encoding="utf-8")
+    (recos_dir / "ubm-001.json").write_text(
+        json.dumps({"id": "ubm-001", "title": "X"}), encoding="utf-8")
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+
+    rhb._rebuild_reco_path_cache(src_id)
+
+    assert set(rhb._RECO_PATH_CACHE[src_id]) == {"ubm-001"}
+    rhb._RECO_PATH_CACHE.clear()
+
+
+# ===== _invalidate_reco_path_cache : repli bootstrap ========================
+def test_invalidate_survives_missing_review_render(monkeypatch):
+    """Pendant un bootstrap circulaire, `review_render` peut ne pas être
+    importable : l'invalidation ne doit pas remonter d'ImportError."""
+    import builtins
+
+    rhb._RECO_PATH_CACHE["src-x"] = {}
+    real_import = builtins.__import__
+
+    def _no_review_render(name, *args, **kwargs):
+        if name == "review_render":
+            raise ImportError("cycle en cours de résolution")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", _no_review_render)
+
+    rhb._invalidate_reco_path_cache("src-x")
+
+    assert "src-x" not in rhb._RECO_PATH_CACHE
+

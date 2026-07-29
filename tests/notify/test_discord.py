@@ -63,3 +63,25 @@ def test_send_does_not_log_full_url(caplog):
     full_log = " ".join(r.getMessage() for r in caplog.records)
     assert "SECRET" not in full_log
     assert "TOKEN" not in full_log
+
+
+def test_uses_requests_when_no_session_injected(monkeypatch):
+    """Sans session injectée, l'envoi importe `requests` à la volée. On
+    remplace le module dans `sys.modules` : aucune requête ne part."""
+    import sys
+    from types import SimpleNamespace
+
+    captured = {}
+
+    def _post(url, json=None, headers=None, timeout=None):  # noqa: A002
+        captured["url"] = url
+        captured["json"] = json
+        captured["timeout"] = timeout
+        return SimpleNamespace(ok=True, status_code=204, text="")
+
+    monkeypatch.setitem(sys.modules, "requests",
+                        SimpleNamespace(post=_post))
+    sender = DiscordWebhookSender("https://discord.com/api/webhooks/1/abc")
+
+    assert sender.send({"content": "coucou"}) is True
+    assert captured["url"].startswith("https://discord.com/")

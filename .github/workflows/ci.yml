@@ -67,12 +67,17 @@ jobs:
       # `fail_under = 95` du projet n'a jamais été évalué une seule fois. Les
       # branches, elles, n'étaient pas mesurées du tout — et étaient sous la
       # barre (94,8 %) sans que rien ne le signale.
+      # `--cov-fail-under=0` NEUTRALISE volontairement le `fail_under = 95` de
+      # `pyproject.toml` : il porte sur un total COMBINÉ lignes+branches, donc
+      # il échouerait avant l'étape suivante, avec un message moins clair et
+      # sur le mauvais critère. Un seul garde-fou fait autorité, celui d'après.
       - name: Run pytest (avec couverture branches)
-        run: pytest tests/ -q --tb=short --cov=tools --cov-branch --cov-report=json --cov-report=term-missing
+        run: pytest tests/ -q --tb=short --cov=tools --cov-branch --cov-report=json --cov-report=term-missing --cov-fail-under=0
 
       # `--cov-fail-under` porte sur un TOTAL COMBINÉ lignes+branches : un run
-      # à 99 % de lignes et 91 % de branches le passerait. L'exigence étant
-      # ≥ 95 % sur CHAQUE métrique, on vérifie les deux séparément.
+      # à 99 % de lignes et 91 % de branches affiche 96,7 % en combiné et
+      # passerait. L'exigence étant ≥ 95 % sur CHAQUE métrique, on les vérifie
+      # séparément — c'est CE garde-fou qui fait foi.
       - name: Vérifier le seuil par métrique
         run: python scripts/check_coverage.py --min 95
 

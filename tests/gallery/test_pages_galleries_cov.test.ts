@@ -39,8 +39,10 @@ interface GallerySpec {
   mod: { getStaticPaths: () => Promise<unknown[]> };
   /** `<h1>` attendu (i18n `gallery.<x>.title`). */
   heading: string;
-  /** Libellé du compteur rendu par `GalleryGrid`. */
-  countLabel: string;
+  /** Libellé du compteur rendu par `GalleryGrid`, au singulier (0 et 1). */
+  countLabelOne: string;
+  /** Le même, au pluriel (n >= 2). */
+  countLabelMany: string;
   /** Un type d'item qui DOIT être retenu par cette galerie. */
   keptType: string;
   /** Un type d'item qui NE doit PAS l'être. */
@@ -55,7 +57,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Chaines,
     mod: chainesMod as never,
     heading: 'Toutes les chaînes YouTube',
-    countLabel: 'chaînes YouTube recommandées',
+    countLabelOne: 'chaîne YouTube recommandée',
+    countLabelMany: 'chaînes YouTube recommandées',
     keptType: 'chaine',
     rejectedType: 'film',
     emptyMessage: "Aucune chaîne YouTube recommandée pour l'instant.",
@@ -65,7 +68,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Films,
     mod: filmsMod as never,
     heading: 'Tous les films',
-    countLabel: 'films recommandés',
+    countLabelOne: 'film recommandé',
+    countLabelMany: 'films recommandés',
     keptType: 'film',
     rejectedType: 'livre',
     emptyMessage: "Aucun film recommandé pour l'instant.",
@@ -75,7 +79,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Livres,
     mod: livresMod as never,
     heading: 'Tous les livres',
-    countLabel: 'livres et BD recommandés',
+    countLabelOne: 'livre ou BD recommandé',
+    countLabelMany: 'livres et BD recommandés',
     keptType: 'livre',
     rejectedType: 'film',
     emptyMessage: "Aucun livre recommandé pour l'instant.",
@@ -85,7 +90,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Musique,
     mod: musiqueMod as never,
     heading: 'Toute la musique',
-    countLabel: 'œuvres musicales recommandées',
+    countLabelOne: 'œuvre musicale recommandée',
+    countLabelMany: 'œuvres musicales recommandées',
     keptType: 'album',
     rejectedType: 'film',
     emptyMessage: "Aucune œuvre musicale recommandée pour l'instant.",
@@ -95,7 +101,8 @@ const GALLERIES: GallerySpec[] = [
     Page: Series,
     mod: seriesMod as never,
     heading: 'Toutes les séries',
-    countLabel: 'séries recommandées',
+    countLabelOne: 'série recommandée',
+    countLabelMany: 'séries recommandées',
     keptType: 'serie',
     rejectedType: 'film',
     emptyMessage: "Aucune série recommandée pour l'instant.",
@@ -155,7 +162,10 @@ beforeEach(() => {
 
 describe.each(GALLERIES)(
   'Page galerie /[source]/$slug',
-  ({ slug, Page, mod, heading, countLabel, keptType, rejectedType, emptyMessage }) => {
+  ({
+    slug, Page, mod, heading, countLabelOne, countLabelMany,
+    keptType, rejectedType, emptyMessage,
+  }) => {
     async function render(entries: ReturnType<typeof pair>[]): Promise<string> {
       seed({
         sources: [SOURCE],
@@ -206,7 +216,17 @@ describe.each(GALLERIES)(
 
       expect(html).toContain('Gardée');
       expect(html).not.toContain('Écartée');
-      expect(visibleText(html)).toContain(`1 ${countLabel}`);
+      // Une seule entrée → libellé au SINGULIER.
+      expect(visibleText(html)).toContain(`1 ${countLabelOne}`);
+    });
+
+    it('accorde le compteur au pluriel dès deux entrées', async () => {
+      const html = await render([
+        pair('w1', 'Première', [keptType]),
+        pair('w2', 'Seconde', [keptType]),
+      ]);
+
+      expect(visibleText(html)).toContain(`2 ${countLabelMany}`);
     });
 
     it('ignore les mentions rattachées à une AUTRE source', async () => {
@@ -246,7 +266,9 @@ describe.each(GALLERIES)(
     it('affiche l’état vide (0 entrée) avec le message dédié', async () => {
       const text = visibleText(await render([]));
 
-      expect(text).toContain(`0 ${countLabel}`);
+      // En français, 0 prend le SINGULIER (cf. src/utils/plural.ts).
+      expect(text).toContain(`0 ${countLabelOne}`);
+      expect(text).not.toContain(`0 ${countLabelMany}`);
       expect(text).toContain(emptyMessage);
     });
 

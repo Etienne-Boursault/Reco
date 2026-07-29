@@ -12,6 +12,7 @@
  */
 import Layout from '../layouts/Layout.astro';
 import { t } from '../i18n';
+import { plural } from '../utils/plural';
 import { siteConfig } from '../config/site';
 import { getCollection } from 'astro:content';
 
@@ -144,9 +145,14 @@ const jsonLd = [
         Chiffres calculés build-time, sans collecte côté visiteur.
       </p>
       <ul class="stats">
-        <li><strong>{fmt(nbSources)}</strong> podcasts indexés</li>
-        <li><strong>{fmt(nbEpisodes)}</strong> épisodes</li>
-        <li><strong>{fmt(nbRecos)}</strong> recommandations</li>
+        {/* Accord au nombre : un déploiement mono-source affiche « 1 podcast
+            indexé », pas « 1 podcasts indexés ». Cf. `src/utils/plural.ts`. */}
+        <li>
+          <strong>{fmt(nbSources)}</strong> {plural(nbSources, 'podcast')}{' '}
+          {plural(nbSources, 'indexé')}
+        </li>
+        <li><strong>{fmt(nbEpisodes)}</strong> {plural(nbEpisodes, 'épisode')}</li>
+        <li><strong>{fmt(nbRecos)}</strong> {plural(nbRecos, 'recommandation')}</li>
       </ul>
       <p class="muted">
         Phase 4 du projet : méta-agrégateur public (cf.

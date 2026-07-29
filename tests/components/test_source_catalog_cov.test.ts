@@ -117,14 +117,14 @@ describe('SourceCatalog — lien retour & mode mono-source (isHome)', () => {
     const html = await render();
     expect(html).toContain('"@type":"PodcastSeries"');
     expect(html).toContain('"@type":"BreadcrumbList"');
-    expect(html).toContain('https://reco.test/ubm');
+    expect(html).toContain('https://reco.example/ubm');
   });
 
   it('isHome=true → JSON-LD réduit au PodcastSeries, URL canonique sur /', async () => {
     const html = await render({ isHome: true });
     expect(html).toContain('"@type":"PodcastSeries"');
     expect(html).not.toContain('BreadcrumbList');
-    expect(html).toContain('"url":"https://reco.test/"');
+    expect(html).toContain('"url":"https://reco.example/"');
   });
 });
 

@@ -30,6 +30,15 @@ const pending = allReports.filter((r) => r.status === 'pending');
 const resolved = allReports.filter((r) => r.status === 'resolved');
 const dismissed = allReports.filter((r) => r.status === 'dismissed');
 
+// Accord au nombre des deux compteurs variables (« en attente » est
+// invariable). Règle du projet : pluriel dès `n >= 2`, cf. `src/utils/plural.ts`.
+const resolvedLabel = t(
+  resolved.length >= 2 ? 'report.admin.stats.resolved.many' : 'report.admin.stats.resolved.one',
+);
+const dismissedLabel = t(
+  dismissed.length >= 2 ? 'report.admin.stats.dismissed.many' : 'report.admin.stats.dismissed.one',
+);
+
 const CATEGORY_LABELS: Record<string, string> = {
   error: t('report.admin.cat.error'),
   'broken-link': t('report.admin.cat.brokenLink'),
@@ -59,8 +68,8 @@ function fmt(d: string): string {
     </a>
     <h1>{t('report.admin.title')}</h1>
     <p class="stats">
-      <strong>{pending.length}</strong> {t('report.admin.stats.pending')} · {resolved.length} {t('report.admin.stats.resolved')} ·
-      {dismissed.length} {t('report.admin.stats.dismissed')}
+      <strong>{pending.length}</strong> {t('report.admin.stats.pending')} · {resolved.length} {resolvedLabel} ·
+      {dismissed.length} {dismissedLabel}
     </p>
     <p class="hint">
       {t('report.admin.hintPrefix')} <code>python tools/manage_reports.py --resolve &lt;id&gt;</code>.

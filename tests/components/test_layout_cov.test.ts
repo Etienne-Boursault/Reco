@@ -83,12 +83,12 @@ describe('Layout — description', () => {
 describe('Layout — image de partage (ADR 0021)', () => {
   it('sans ogImage ni ogSlug → repli statique /og/default.png', async () => {
     const html = await render({ title: 'Ma page' });
-    expect(html).toContain('content="https://reco.test/og/default.png"');
+    expect(html).toContain('content="https://reco.example/og/default.png"');
   });
 
   it('ogSlug → carte Satori /og/<slug>.png', async () => {
     const html = await render({ title: 'Ma page', ogSlug: 'ubm' });
-    expect(html).toContain('content="https://reco.test/og/ubm.png"');
+    expect(html).toContain('content="https://reco.example/og/ubm.png"');
   });
 
   it('ogImage explicite prime sur ogSlug', async () => {
@@ -105,7 +105,7 @@ describe('Layout — image de partage (ADR 0021)', () => {
 describe('Layout — canonical & ogType', () => {
   it("l'URL canonique combine Astro.site et le pathname courant", async () => {
     const html = await render({ title: 'Ma page' });
-    expect(html).toMatch(/<link rel="canonical" href="https:\/\/reco\.test\//);
+    expect(html).toMatch(/<link rel="canonical" href="https:\/\/reco\.example\//);
   });
 
   it('ogType vaut website par défaut', async () => {

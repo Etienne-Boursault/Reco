@@ -72,6 +72,25 @@ export const fr = {
   'gallery.mentionSuffix': 'mention',
   'gallery.backToSource': 'retour au podcast',
 
+  // Libellés de compteur des galeries, accordés au nombre. Le chiffre est
+  // rendu à part par `GalleryGrid` : ces clés ne portent que le groupe
+  // nominal. Règle d'accord du projet (cf. `src/utils/plural.ts`) : le
+  // pluriel s'applique dès `n >= 2`, donc 0 et 1 prennent le singulier.
+  // La galerie « livres » couvrant deux types, son singulier dit « ou »
+  // (une entrée est un livre OU une BD) et son pluriel « et ».
+  'gallery.films.count.one': 'film recommandé',
+  'gallery.films.count.many': 'films recommandés',
+  'gallery.series.count.one': 'série recommandée',
+  'gallery.series.count.many': 'séries recommandées',
+  'gallery.livres.count.one': 'livre ou BD recommandé',
+  'gallery.livres.count.many': 'livres et BD recommandés',
+  'gallery.musique.count.one': 'œuvre musicale recommandée',
+  'gallery.musique.count.many': 'œuvres musicales recommandées',
+  'gallery.chaines.count.one': 'chaîne YouTube recommandée',
+  'gallery.chaines.count.many': 'chaînes YouTube recommandées',
+  'gallery.guest.count.one': 'recommandation',
+  'gallery.guest.count.many': 'recommandations',
+
   // Extrait audio (item #12)
   'audio.listenAt': 'Écouter à',
   'audio.listen': 'Écouter cet extrait',
@@ -207,9 +226,13 @@ export const fr = {
   'report.admin.metaTitle': 'Signalements — {source}',
   'report.admin.back': 'retour au catalogue',
   'report.admin.title': 'Signalements visiteurs',
+  // `en attente` est invariable ; `résolu` / `écarté` s'accordent (0 et 1 →
+  // singulier, même règle que `src/utils/plural.ts`).
   'report.admin.stats.pending': 'en attente',
-  'report.admin.stats.resolved': 'résolus',
-  'report.admin.stats.dismissed': 'écartés',
+  'report.admin.stats.resolved.one': 'résolu',
+  'report.admin.stats.resolved.many': 'résolus',
+  'report.admin.stats.dismissed.one': 'écarté',
+  'report.admin.stats.dismissed.many': 'écartés',
   'report.admin.hintPrefix': 'Queue interne — non destinée au public. Pour résoudre/écarter un report, utilise',
   'report.admin.empty': 'Aucun signalement en attente. 🎉',
   'report.admin.recoLabel': 'Reco :',

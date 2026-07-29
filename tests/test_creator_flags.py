@@ -89,3 +89,64 @@ def test_reloads_on_file_change(tmp_path, monkeypatch):
     ]}), encoding="utf-8")
     os.utime(p, (1_000_000, 2_000_000))
     assert cf.flag_for("Nouveau")
+
+
+def test_missing_flags_file_yields_no_signalement(tmp_path, monkeypatch):
+    """Le fichier est curé à la main et livré VIDE : son absence doit être un
+    cas normal, jamais une erreur au build."""
+    monkeypatch.setattr(cf, "_FLAGS_PATH", tmp_path / "jamais-cree.json")
+    monkeypatch.setattr(cf, "_cache", {"mtime": None, "index": {}})
+
+    assert cf.flag_for("Quelqu'un") is None
+    assert cf.flag_badge_html("Quelqu'un") == ""
+
+
+def test_unreadable_flags_file_is_ignored(tmp_path, monkeypatch, caplog):
+    """JSON corrompu : on log et on ignore les signalements plutôt que de
+    casser la génération du site."""
+    p = tmp_path / "creator-flags.json"
+    p.write_text("{ tronqué", encoding="utf-8")
+    monkeypatch.setattr(cf, "_FLAGS_PATH", p)
+    monkeypatch.setattr(cf, "_cache", {"mtime": None, "index": {}})
+
+    with caplog.at_level("WARNING", logger="reco"):
+        assert cf.flag_for("Quelqu'un") is None
+
+    assert "illisible" in caplog.text
+
+
+def test_flag_for_empty_creator_returns_none(tmp_path, monkeypatch):
+    """Une œuvre sans créateur renseigné ne doit pas déclencher de lookup."""
+    _use(tmp_path, monkeypatch, [
+        {"names": ["Quelqu'un"], "label": "situation", "source": "https://x"},
+    ])
+
+    assert cf.flag_for(None) is None
+    assert cf.flag_for("") is None
+
+
+def test_build_index_survives_a_file_deleted_mid_read(tmp_path, monkeypatch):
+    """`_build_index` est protégé contre la disparition du fichier entre le
+    `stat()` de `_index()` et sa propre lecture (édition manuelle en cours).
+    On l'appelle directement : par le flux normal, `_index()` intercepte déjà
+    l'absence en amont."""
+    monkeypatch.setattr(cf, "_FLAGS_PATH", tmp_path / "supprime-entre-temps.json")
+
+    assert cf._build_index() == {}
+
+
+def test_first_declaration_wins_for_duplicate_names(tmp_path, monkeypatch):
+    """Deux entrées visant le même créateur : la première déclarée l'emporte
+    (le fichier est curé à la main, l'ordre y fait foi)."""
+    _use(tmp_path, monkeypatch, [
+        {"names": ["Roman Polanski"], "situation": "première",
+         "source": "https://exemple.fr/1"},
+        {"names": ["roman  polanski", ""], "situation": "seconde",
+         "source": "https://exemple.fr/2"},
+    ])
+
+    flag = cf.flag_for("Roman Polanski")
+
+    assert flag is not None
+    assert flag["situation"] == "première"
+

@@ -9,6 +9,7 @@ import pytest
 
 from cache.builder import CacheBuilder
 from cache.reader import CacheReader, EpisodeRow, ItemRow, MentionRow
+from cache.schema import CacheCorruptedError, StaleCacheError
 
 
 class _BrokenConn:
@@ -142,3 +143,130 @@ class TestMeta:
         with CacheReader(db_path) as r:
             assert r.get_meta("cache_schema_version") == "2"
             assert r.get_meta("inexistant") is None
+
+
+# ===== Validations d'ouverture : messages actionnables =====================
+class TestOpenValidations:
+    def test_non_sqlite_file_is_reported_as_corrupted(self, tmp_path: Path) -> None:
+        """Fichier existant mais qui n'est pas une base SQLite (téléchargement
+        tronqué, artefact HTML) : erreur explicite + consigne de rebuild."""
+        fake = tmp_path / "reco.sqlite"
+        fake.write_bytes(b"<!doctype html><html>404</html>")
+
+        with pytest.raises(CacheCorruptedError, match="build_cache.py"):
+            CacheReader(fake)
+
+    def test_missing_schema_version_is_stale(self, tmp_path: Path,
+                                             built_cache) -> None:
+        """Base SQLite valide mais sans `cache_schema_version` : cache d'une
+        version antérieure au versionnage → stale, pas corrompu."""
+        db_path, _ = built_cache
+        conn = sqlite3.connect(db_path)
+        try:
+            conn.execute(
+                "DELETE FROM cache_meta WHERE key = 'cache_schema_version'")
+            conn.commit()
+        finally:
+            conn.close()
+
+        with pytest.raises(StaleCacheError, match="absent"):
+            CacheReader(db_path)
+
+    def test_unreadable_schema_version_is_corrupted(self, built_cache) -> None:
+        db_path, _ = built_cache
+        conn = sqlite3.connect(db_path)
+        try:
+            conn.execute(
+                "UPDATE cache_meta SET value = 'trois' "
+                "WHERE key = 'cache_schema_version'")
+            conn.commit()
+        finally:
+            conn.close()
+
+        with pytest.raises(CacheCorruptedError, match="illisible"):
+            CacheReader(db_path)
+
+    def test_outdated_schema_version_is_stale(self, built_cache) -> None:
+        """Schéma d'une version précédente : on refuse de lire plutôt que de
+        renvoyer des colonnes qui ont changé de sens."""
+        db_path, _ = built_cache
+        conn = sqlite3.connect(db_path)
+        try:
+            conn.execute(
+                "UPDATE cache_meta SET value = '0' "
+                "WHERE key = 'cache_schema_version'")
+            conn.commit()
+        finally:
+            conn.close()
+
+        with pytest.raises(StaleCacheError, match="Rebuild"):
+            CacheReader(db_path)
+
+    def test_missing_cache_meta_table_is_corrupted(self, built_cache) -> None:
+        db_path, _ = built_cache
+        conn = sqlite3.connect(db_path)
+        try:
+            conn.execute("DROP TABLE cache_meta")
+            conn.commit()
+        finally:
+            conn.close()
+
+        with pytest.raises(CacheCorruptedError, match="cache_meta"):
+            CacheReader(db_path)
+
+
+# ===== iter_items : filtres optionnels =====================================
+class TestIterItemsFilters:
+    def test_filter_by_type(self, built_cache) -> None:
+        """Le filtre porte sur le tableau JSON `types` (json_each), pas sur une
+        colonne scalaire."""
+        db_path, _ = built_cache
+        with CacheReader(db_path) as r:
+            films = [i.id for i in r.iter_items("podcast-a", item_type="film")]
+            series = [i.id for i in r.iter_items("podcast-a", item_type="serie")]
+            inconnus = list(r.iter_items("podcast-a", item_type="podcast"))
+
+        assert films == ["item-001"]
+        assert series == ["item-002"]
+        assert inconnus == []
+
+    def test_filter_by_guest(self, built_cache) -> None:
+        """Un item est retenu si au moins une de ses mentions pointe un épisode
+        où la personne figure dans `guestsParsed` — les deux items de podcast-a
+        sont mentionnés dans l'épisode de Bong Joon-ho."""
+        db_path, _ = built_cache
+        with CacheReader(db_path) as r:
+            hits = [i.id for i in r.iter_items("podcast-a", guest="Bong Joon-ho")]
+            miss = list(r.iter_items("podcast-a", guest="Personne Inconnue"))
+
+        assert hits == ["item-001", "item-002"]
+        assert miss == []
+
+    def test_guest_filter_matches_guests_not_hosts(self, built_cache) -> None:
+        """« Kyan Khojandi » est HOST de l'épisode, pas invité : le filtre
+        `guest` ne doit pas le confondre avec `guestsParsed`."""
+        db_path, _ = built_cache
+        with CacheReader(db_path) as r:
+            assert list(r.iter_items("podcast-a", guest="Kyan Khojandi")) == []
+
+    def test_filters_combine(self, built_cache) -> None:
+        db_path, _ = built_cache
+        with CacheReader(db_path) as r:
+            both = [i.id for i in r.iter_items(
+                "podcast-a", item_type="film", guest="Bong Joon-ho")]
+            contradictory = list(r.iter_items(
+                "podcast-a", item_type="film", guest="Personne Inconnue"))
+
+        assert both == ["item-001"]
+        assert contradictory == []
+
+    def test_type_filter_combines_with_only_suspect(self, built_cache) -> None:
+        db_path, _ = built_cache
+        with CacheReader(db_path) as r:
+            suspects = [i.id for i in r.iter_items(
+                "podcast-a", item_type="serie", only_suspect=True)]
+            none_suspect = list(r.iter_items(
+                "podcast-a", item_type="film", only_suspect=True))
+
+        assert suspects == ["item-002"]
+        assert none_suspect == []

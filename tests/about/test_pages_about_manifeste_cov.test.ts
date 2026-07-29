@@ -89,12 +89,30 @@ describe('/a-propos', () => {
     expect(text).toContain('2 recommandations');
   });
 
+  it('accorde les compteurs au singulier sur un déploiement mono-source', async () => {
+    seed({
+      sources: [{ data: { id: 'ubm' } }],
+      episodes: [{ data: { guid: 'g1' } }],
+      recos: [reco('a')],
+    });
+    const text = visibleText(await render());
+
+    expect(text).toContain('1 podcast indexé');
+    expect(text).not.toContain('1 podcasts indexés');
+    expect(text).toContain('1 épisode');
+    expect(text).not.toContain('1 épisodes');
+    expect(text).toContain('1 recommandation');
+    expect(text).not.toContain('1 recommandations');
+  });
+
   it('un catalogue vide affiche des zéros, pas des trous', async () => {
     const text = visibleText(await render());
 
-    expect(text).toContain('0 podcasts indexés');
-    expect(text).toContain('0 épisodes');
-    expect(text).toContain('0 recommandations');
+    // En français, 0 prend le SINGULIER (cf. src/utils/plural.ts).
+    expect(text).toContain('0 podcast indexé');
+    expect(text).toContain('0 épisode');
+    expect(text).toContain('0 recommandation');
+    expect(text).not.toContain('0 podcasts indexés');
   });
 
   it('formate les grands nombres en locale FR', async () => {

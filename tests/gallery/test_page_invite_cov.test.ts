@@ -193,7 +193,18 @@ describe('/[source]/invite/[name] — rendu', () => {
 
     expect(html).toContain('Parasite');
     expect(html).not.toContain('Portrait de la jeune fille');
-    expect(visibleText(html)).toContain('1 recommandations');
+    // Une seule reco → compteur au SINGULIER.
+    expect(visibleText(html)).toContain('1 recommandation');
+    expect(visibleText(html)).not.toContain('1 recommandations');
+  });
+
+  it('accorde le compteur au pluriel dès deux recos', async () => {
+    const html = await render('Bruno', 'bruno', {
+      items: [item('w1', 'Parasite'), item('w2', 'Memories of Murder')],
+      mentions: [mention('w1', 'Bruno'), mention('w2', 'Bruno')],
+    });
+
+    expect(visibleText(html)).toContain('2 recommandations');
   });
 
   it('la comparaison de nom est insensible à la casse et aux espaces', async () => {
@@ -213,7 +224,9 @@ describe('/[source]/invite/[name] — rendu', () => {
       }),
     );
 
-    expect(text).toContain('0 recommandations');
+    // En français, 0 prend le SINGULIER (cf. src/utils/plural.ts).
+    expect(text).toContain('0 recommandation');
+    expect(text).not.toContain('0 recommandations');
     expect(text).toContain('Pas encore de recommandation pour cet invité.');
   });
 
@@ -246,14 +259,23 @@ describe('/[source]/invite/[name] — rendu', () => {
     expect(list!.name).toBe('Recommandations de Bruno');
   });
 
-  it('la meta description reprend le compte, le nom et la source', async () => {
-    const html = await render('Bruno', 'bruno', {
+  it('la meta description accorde le libellé, au singulier comme au pluriel', async () => {
+    // Cette chaîne s'affiche en résultat de recherche : c'est là que
+    // « 1 recommandations » était le plus visible.
+    const une = await render('Bruno', 'bruno', {
       items: [item('w1', 'A')],
       mentions: [mention('w1', 'Bruno')],
     });
+    expect(une).toContain(
+      '<meta name="description" content="1 recommandation de Bruno dans Un Bon Moment.">',
+    );
 
-    expect(html).toContain(
-      '<meta name="description" content="1 recommandations de Bruno dans Un Bon Moment.">',
+    const deux = await render('Bruno', 'bruno', {
+      items: [item('w1', 'A'), item('w2', 'B')],
+      mentions: [mention('w1', 'Bruno'), mention('w2', 'Bruno')],
+    });
+    expect(deux).toContain(
+      '<meta name="description" content="2 recommandations de Bruno dans Un Bon Moment.">',
     );
   });
 });

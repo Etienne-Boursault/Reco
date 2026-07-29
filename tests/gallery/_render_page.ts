@@ -3,60 +3,27 @@
  * Container API (cf. `tests/components/test_reco_card.test.ts` pour le
  * patron « composant »).
  *
- * Pourquoi un harnais et pas `AstroContainer.create()` nu ?
- * ---------------------------------------------------------
- * Presque toutes les pages calculent des URLs absolues avec
- * `new URL(path, Astro.site)` (canonical, JSON-LD, breadcrumb…). Or le
- * container **ne propage pas** `site` : `createManifest()`
- * (`astro/dist/container/index.js`) reconstruit un manifeste littéral où la
- * clé `site` n'existe pas, et `Pipeline` lit `manifest.site` → `undefined`.
- * Résultat : `new URL('/x', undefined)` lève `TypeError: Invalid URL` avant
- * même que la page ne rende quoi que ce soit.
+ * Ce fichier ne contient plus AUCUN accès aux internes d'Astro. L'injection
+ * de `Astro.site` — le seul point qui en réclamait un — vit désormais dans
+ * `tests/components/_container.ts`, unique implémentation du dépôt. Avant
+ * cette fusion, deux harnais patchaient `ContainerPipeline.create` chacun de
+ * son côté, avec deux origines différentes : une montée de version d'Astro
+ * les aurait fait tomber ensemble, et celui-ci sans message exploitable.
+ * `_container.ts` essaie la voie publique d'abord, ne patche l'interne qu'en
+ * repli, et lève une erreur explicite si les deux échouent.
  *
- * On injecte donc `site` sur le pipeline juste après sa création, via un
- * patch ponctuel de `ContainerPipeline.create`. L'import passe par le chemin
- * de fichier (l'`exports` map d'astro n'expose pas `./dist/container/*`),
- * ce qui résout vers le **même** module que celui utilisé par
- * `astro/container` — donc la même classe.
+ * Il ne reste ici que ce qui est propre aux PAGES :
+ *  - `partial: false` (rendu page complet : doctype + `<html>`, sinon le
+ *    container traite le composant comme un fragment) ;
+ *  - `params` de route et `path` → `Astro.url` ;
+ *  - `visibleText()`, pour écrire des assertions lisibles.
  *
- * Ce fichier n'est pas une suite de tests (pas de `*.test.ts`) : il est
+ * Ce n'est pas une suite de tests (pas de suffixe `.test.ts`) : il est
  * importé par les tests de pages des différents dossiers.
  */
-// @ts-expect-error — chemin interne d'astro, non typé par l'exports map.
-import { ContainerPipeline } from '../../node_modules/astro/dist/container/pipeline.js';
-import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { createSiteContainer, TEST_SITE } from '../components/_container';
 
-/** Origine utilisée par `astro.config.mjs` quand `SITE_URL` est absent. */
-export const TEST_SITE = 'https://reco.example';
-
-/**
- * Crée un container dont le pipeline porte `site`.
- *
- * Le patch est posé JUSTE avant `AstroContainer.create()` et retiré dans le
- * `finally` : `ContainerPipeline` est un module partagé par tout le worker
- * vitest, donc un patch permanent contaminerait les suites des autres
- * dossiers de tests. Ici, la fenêtre d'effet se limite à l'appel.
- *
- * L'affectation est **inconditionnelle** et non pas « seulement si `site` est
- * absent » : `tests/components/_container.ts` installe, lui, un patch
- * permanent qui pose une autre origine (`https://reco.test`). Si ce module
- * est chargé avant celui-ci dans le même worker, un `if (!pipeline.site)`
- * laisserait passer son origine et casserait toutes les assertions d'URL
- * absolue de ce dossier.
- */
-async function createContainer(): Promise<InstanceType<typeof AstroContainer>> {
-  const original = ContainerPipeline.create;
-  ContainerPipeline.create = (options: Record<string, unknown>) => {
-    const pipeline = original.call(ContainerPipeline, options);
-    pipeline.site = new URL(TEST_SITE);
-    return pipeline;
-  };
-  try {
-    return await AstroContainer.create();
-  } finally {
-    ContainerPipeline.create = original;
-  }
-}
+export { TEST_SITE };
 
 export interface RenderPageOptions {
   params?: Record<string, string | undefined>;
@@ -65,24 +32,37 @@ export interface RenderPageOptions {
   path?: string;
 }
 
-/**
- * Rend une page Astro complète et renvoie le HTML.
- *
- * `partial: false` force le rendu « page » (doctype + `<html>`), sans quoi
- * le container traite le composant comme un fragment.
- */
-export async function renderPage(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Page: any,
-  { params, props, path = '/' }: RenderPageOptions = {},
-): Promise<string> {
-  const container = await createContainer();
-  return container.renderToString(Page, {
+/** Options de rendu communes aux deux fonctions ci-dessous. */
+function renderOptions({ params, props, path = '/' }: RenderPageOptions) {
+  return {
     params,
     props,
     partial: false,
     request: new Request(new URL(path, TEST_SITE)),
-  });
+  };
+}
+
+/** Rend une page Astro complète et renvoie le HTML. */
+export async function renderPage(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Page: any,
+  options: RenderPageOptions = {},
+): Promise<string> {
+  const container = await createSiteContainer();
+  return container.renderToString(Page, renderOptions(options) as never);
+}
+
+/**
+ * Comme `renderPage`, mais renvoie la `Response` — nécessaire pour les pages
+ * qui peuvent répondre par une redirection (`Astro.redirect`).
+ */
+export async function renderPageResponse(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Page: any,
+  options: RenderPageOptions = {},
+): Promise<Response> {
+  const container = await createSiteContainer();
+  return container.renderToResponse(Page, renderOptions(options) as never);
 }
 
 /**
@@ -93,6 +73,9 @@ export async function renderPage(
  * `data-astro-source-file` sur les éléments stylés, et échappe les
  * apostrophes (`l&#39;instant`) — deux détails qui rendraient tout
  * `toContain('<h1>…')` ou `toContain("l'instant")` illisible et fragile.
+ *
+ * Attention : les attributs disparaissent aussi — un `aria-label` ne sera PAS
+ * dans le texte extrait, il faut l'asserter sur le HTML brut.
  */
 export function visibleText(html: string): string {
   return html
@@ -106,22 +89,4 @@ export function visibleText(html: string): string {
     .replace(/&amp;/g, '&')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-/**
- * Comme `renderPage`, mais renvoie la `Response` — nécessaire pour les pages
- * qui peuvent répondre par une redirection (`Astro.redirect`).
- */
-export async function renderPageResponse(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Page: any,
-  { params, props, path = '/' }: RenderPageOptions = {},
-): Promise<Response> {
-  const container = await createContainer();
-  return container.renderToResponse(Page, {
-    params,
-    props,
-    partial: false,
-    request: new Request(new URL(path, TEST_SITE)),
-  });
 }

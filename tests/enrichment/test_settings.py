@@ -10,6 +10,7 @@ from enrichment.settings import (
     DEFAULT_OLDER_THAN,
     DEFAULT_PROVIDER_FILTER,
     RefreshEnrichmentSettings,
+    _coerce_older_than,
 )
 
 
@@ -116,3 +117,40 @@ class TestFrozen:
         s = RefreshEnrichmentSettings()
         with pytest.raises((AttributeError, TypeError)):
             s.provider_filter = "tmdb"  # type: ignore[misc]
+
+
+class TestOlderThanCoercion:
+    def test_timedelta_passes_through(self) -> None:
+        """Une durée déjà typée n'est pas re-parsée."""
+        s = RefreshEnrichmentSettings(older_than=timedelta(days=3))
+        assert s.older_than == timedelta(days=3)
+
+    def test_coerce_is_idempotent_on_timedelta(self) -> None:
+        """`_coerce_older_than` est appelé par d'autres points d'entrée que le
+        constructeur (qui, lui, court-circuite déjà ce cas) : il doit rester
+        idempotent sur une `timedelta`."""
+        d = timedelta(days=3)
+        assert _coerce_older_than(d) is d
+
+    def test_string_is_parsed(self) -> None:
+        s = RefreshEnrichmentSettings(older_than="12w")
+        assert s.older_than == timedelta(weeks=12)
+
+    @pytest.mark.parametrize("bad", [30, 30.5, None, ["30d"]])
+    def test_unsupported_type_is_rejected(self, bad) -> None:
+        """`older_than` vient de la CLI ou d'une config JSON : un type inattendu
+        doit échouer au constructeur, pas plus tard dans le pipeline."""
+        with pytest.raises(ValueError, match="timedelta ou str"):
+            RefreshEnrichmentSettings(older_than=bad)
+
+
+class TestTtlPerProviderValidation:
+    def test_non_string_key_is_rejected(self) -> None:
+        with pytest.raises(ValueError, match="clé doit être str"):
+            RefreshEnrichmentSettings(ttl_per_provider={1: 3600})
+
+    def test_valid_mapping_is_frozen(self) -> None:
+        s = RefreshEnrichmentSettings(ttl_per_provider={"tmdb": 3600})
+        assert isinstance(s.ttl_per_provider, MappingProxyType)
+        assert s.ttl_per_provider["tmdb"] == 3600
+

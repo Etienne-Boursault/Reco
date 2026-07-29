@@ -5,6 +5,7 @@ from notify.formatter import (
     DISCORD_EMBED_TITLE_LIMIT,
     NewEpisodeMessage,
     build_discord_embed,
+    build_matrix_message,
     build_plain_text,
     build_slack_blocks,
     escape_discord_markdown,
@@ -115,3 +116,41 @@ def test_build_plain_text_without_optional_fields():
     text = build_plain_text(_msg(episode_url="", published_at=""))
     assert "Lien" not in text
     assert "Publié" not in text
+
+
+# ===== build_matrix_message =================================================
+def test_build_matrix_message_has_both_plain_and_html_bodies():
+    """Matrix veut les deux : `body` pour les clients sans HTML,
+    `formatted_body` pour les autres."""
+    out = build_matrix_message(_msg())
+
+    assert out["msgtype"] == "m.notice"
+    assert out["format"] == "org.matrix.custom.html"
+    assert "Episode 42" in out["body"]
+    assert "<strong>" in out["formatted_body"]
+    assert 'href="https://exemple.fr/42"' in out["formatted_body"]
+    assert "Publié : 2026-06-11" in out["formatted_body"]
+
+
+def test_build_matrix_message_omits_optional_blocks():
+    """Sans URL ni date : ni lien vide, ni ligne « Publié : » orpheline."""
+    out = build_matrix_message(_msg(episode_url="", published_at=""))
+
+    assert "<a href" not in out["formatted_body"]
+    assert "Publié" not in out["formatted_body"]
+    assert "Episode 42" in out["formatted_body"]
+
+
+def test_build_matrix_message_escapes_hostile_fields():
+    """Un titre de flux exotique ne doit ni casser le rendu ni injecter de
+    balise chez les abonnés du salon."""
+    out = build_matrix_message(_msg(
+        feed_title='<img src=x onerror="alert(1)">',
+        episode_title="Titre & <script>",
+        episode_url='https://exemple.fr/"><script>alert(1)</script>',
+    ))
+
+    assert "<img" not in out["formatted_body"]
+    assert "<script>" not in out["formatted_body"]
+    assert "&lt;script&gt;" in out["formatted_body"]
+    assert "&amp;" in out["formatted_body"]
