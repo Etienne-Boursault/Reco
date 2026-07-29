@@ -20,6 +20,7 @@ import { getCollection } from 'astro:content';
 import { handleReport } from '../../lib/reports/handler.js';
 import { notifyReportMatrix, type ReportNotifyContext } from '../../lib/reports/notify.js';
 import type { Report } from '../../lib/reports/types.js';
+import { tryClientAddress } from '../../lib/http/clientAddress.js';
 import { episodeLabel, TYPE_LABELS } from '../../utils/recoTypes.js';
 
 // SSR opt-in (cf. astro.config.mjs) : avec RECO_SSR=1, l'adaptateur Node est
@@ -111,10 +112,7 @@ async function buildReportContext(
 
 export const POST: APIRoute = async (ctx) => {
   // NB : on prend le contexte ENTIER et on ne déstructure PAS `clientAddress`
-  // ici. Astro 5 lève (`ClientAddressNotAvailable`) à la *lecture* de la
-  // propriété sur une route pré-rendue : une déstructuration dans la
-  // signature évaluerait le getter avant le try/catch plus bas, rendant
-  // celui-ci inopérant. Même parade que `src/pages/api/click.ts`.
+  // ici — cf. `src/lib/http/clientAddress.ts` pour le pourquoi.
   const { request } = ctx;
 
   // FormData → plain object. On garde uniquement les champs scalaires
@@ -129,18 +127,12 @@ export const POST: APIRoute = async (ctx) => {
   const selfOrigin = `${url.protocol}//${url.host}`;
   const origin = request.headers.get('origin') ?? request.headers.get('referer');
 
-  // `clientAddress` jette en static build ; on protège pour le dev.
   // H16-6 — On NE FAIT confiance à `x-forwarded-for` que si l'IP directe
   // (`clientAddress`) figure dans la liste `TRUSTED_PROXIES` (CSV d'IPs).
   // Sans cette garde, n'importe qui peut forger un header pour contourner
   // le rate-limit.
   let ip = '0.0.0.0';
-  let directIp: string | null = null;
-  try {
-    directIp = ctx.clientAddress ?? null;
-  } catch {
-    directIp = null;
-  }
+  const directIp = tryClientAddress(ctx);
   const trustedRaw = process.env.TRUSTED_PROXIES ?? '';
   const trustedProxies = new Set(
     trustedRaw

@@ -28,6 +28,7 @@
 
 import type { APIRoute } from 'astro';
 import { handleClick } from '../../lib/tracking/handler.js';
+import { tryClientAddress } from '../../lib/http/clientAddress.js';
 import { recordClickStatus } from '../../lib/tracking/metrics.js';
 import { CLICK_LIMITS } from '../../lib/tracking/types.js';
 
@@ -67,17 +68,6 @@ const TRUSTED_PROXIES: ReadonlySet<string> = new Set(
     .map((s) => s.trim())
     .filter(Boolean),
 );
-
-function tryClientAddress(ctx: { clientAddress?: string }): string | null {
-  // Astro 5 throws if `clientAddress` is accessed in a prerendered route.
-  // Access via property read inside try/catch to dodge eager evaluation.
-  try {
-    const ip = ctx.clientAddress;
-    return ip ?? null;
-  } catch {
-    return null;
-  }
-}
 
 /**
  * Extrait l'IP cliente en respectant la chaîne de proxies.
