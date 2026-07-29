@@ -158,7 +158,10 @@ const themeColor = c?.bg ?? '#0e0e10';
        avalée — le clic suit son cours normalement. */}
     <script>
       (() => {
-        const nav = navigator;
+        // `globalPrivacyControl` (spec GPC) n'est pas encore dans lib.dom :
+        // on l'annote plutot que de caster en `any`, pour garder la garde
+        // de confidentialite verifiee par le compilateur.
+        const nav: Navigator & { globalPrivacyControl?: boolean } = navigator;
         if (nav.globalPrivacyControl === true) return;
         // F-H-1 — Skip tracking sur :
         //   1. les pages du méta-site (`/meta/*`), white-listées explicitement

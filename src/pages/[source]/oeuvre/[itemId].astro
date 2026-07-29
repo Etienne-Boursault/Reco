@@ -11,7 +11,7 @@
  * fallback `/og/default.png` (le générateur Satori n'est pas étendu ici
  * pour ne pas empiéter sur la zone du Dev #15/#16).
  */
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import MentionsTimeline from '../../../components/MentionsTimeline.astro';
 import TrendingBadge from '../../../components/TrendingBadge.astro';
@@ -26,6 +26,7 @@ import {
   type ItemLike,
   type MentionLike,
   type EpisodeLike,
+  type WorkAggregate,
 } from '../../../lib/work/aggregator';
 import { t } from '../../../i18n';
 
@@ -112,6 +113,16 @@ export async function getStaticPaths() {
 
   return paths;
 }
+
+// `getStaticPaths` accumule ses routes en `Record<string, unknown>` (les
+// props sont heterogenes le temps de la boucle) : Astro ne peut donc rien
+// inferer pour `Astro.props`. On declare le contrat ici — c'est la meme forme
+// que celle poussee dans `paths`.
+type Props = {
+  source: CollectionEntry<'sources'>;
+  work: WorkAggregate;
+  similar: ItemLike[];
+};
 
 const { source, work, similar } = Astro.props;
 const data = source.data;

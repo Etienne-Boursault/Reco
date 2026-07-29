@@ -96,11 +96,17 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      # BLOQUANT depuis le 2026-07-29. Auparavant `|| true`, et surtout
+      # `@astrojs/check` n'était même pas installé : la commande demandait une
+      # confirmation interactive, échouait, et le `|| true` l'avalait — le
+      # typage n'a jamais été vérifié une seule fois. Même motif que la
+      # couverture, qui n'était mesurée par aucun job.
+      # `SITE_URL` est requis : vitest.config.ts charge astro.config.mjs, qui
+      # exige la variable hors dev.
       - name: Astro check (types)
-        run: npx astro check || true
-        # Non bloquant tant que tous les types Astro ne sont pas stabilisés.
-        # `astro:content` n'existe qu'après `astro sync`/`astro build`, d'où
-        # 24 erreurs `Cannot find module` qui cascadent sans être des défauts.
+        env:
+          SITE_URL: https://example.com
+        run: npx astro check
 
   test-vitest:
     name: Test Vitest (SEO + OG)

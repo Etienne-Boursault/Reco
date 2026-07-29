@@ -20,7 +20,10 @@ import { getCollection } from 'astro:content';
 import { renderOG } from '../../lib/og/renderer.js';
 import { TYPE_EMOJI } from '../../lib/og/template.js';
 
-interface PageProps {
+// Alias de type et NON `interface` : `GetStaticPaths` attend des props
+// assignables a `Record<string, any>`, ce qu'une interface ne satisfait pas
+// (pas d'index signature implicite). Les champs sont inchanges.
+type PageProps = {
   title: string;
   subtitle?: string;
   emoji?: string;
@@ -28,7 +31,7 @@ interface PageProps {
   sourceLabel?: string;
   accent?: string;
   bg?: string;
-}
+};
 
 /**
  * Slug-safe : garde uniquement [a-z0-9-_/] pour rester valable côté URL.
@@ -122,7 +125,10 @@ export const GET: APIRoute = async ({ props }) => {
   const png = await renderOG(props as PageProps);
   // Note : on retourne un Buffer/Uint8Array — Astro l'écrit tel quel dans dist/.
   // Pas de Cache-Control ici : le mensonge au build statique (cf. H4).
-  return new Response(png, {
+  // TS 5.7 a rendu `Uint8Array` generique sur son buffer ; `BodyInit`
+  // n'accepte que la variante `ArrayBuffer`. Le PNG rendu par resvg en est
+  // bien une — l'ecart est purement nominal, aucun changement d'execution.
+  return new Response(png as Uint8Array<ArrayBuffer>, {
     headers: { 'Content-Type': 'image/png' },
   });
 };

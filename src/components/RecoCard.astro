@@ -3,7 +3,13 @@
 // merchants (`isSafeUrl`) au lieu d'un doublon local, et `isAvoidedUrl` pour
 // appliquer la politique éthique (anti-Amazon/Bolloré) AUSSI aux liens
 // explicites (C2). SSOT : merchants.ts.
-import { resolveLinks, isSafeUrl, isAvoidedUrl } from '../data/merchants';
+import {
+  resolveLinks,
+  isSafeUrl,
+  isAvoidedUrl,
+  type RecoLinkKind,
+  type Ethics,
+} from '../data/merchants';
 import { TYPE_LABELS, TYPE_EMOJIS } from '../utils/recoTypes';
 import { t } from '../i18n';
 import AudioExcerpt from './AudioExcerpt.astro';
@@ -23,7 +29,9 @@ interface Props {
     // épisode / l'enrichissement). Retirés de l'interface pour refléter ce que
     // RecoCard consomme réellement — les champs supplémentaires passés par les
     // appelants restent tolérés (typage structurel).
-    links?: { label: string; url: string; kind?: string; ethics?: string }[];
+    // Types repris de `merchants.ts` (et du z.enum de `content.config.ts`) :
+    // l'ancienne declaration en `string` etait plus large que la donnee reelle.
+    links?: { label: string; url: string; kind?: RecoLinkKind; ethics?: Ethics }[];
     externalIds?: Record<string, string | undefined>;
     customLinks?: { label: string; url: string; logoUrl?: string }[];
     linkOverrides?: Record<string, string>;
