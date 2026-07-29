@@ -15,7 +15,7 @@
 # et non le minimum 22 : c'est la version servie en production (Infomaniak),
 # et une image de build doit refléter le runtime réel.
 # -----------------------------------------------------------------------------
-FROM node:24-slim AS node-builder
+FROM node:26-slim AS node-builder
 WORKDIR /app
 
 # Install deps en couche dédiée (cache friendly)
