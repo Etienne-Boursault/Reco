@@ -30,10 +30,12 @@
     "satori": "^0.29.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@fontsource/bebas-neue": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@vitest/coverage-v8": "^4.1.10",
     "happy-dom": "^20.11.1",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   }
 }
