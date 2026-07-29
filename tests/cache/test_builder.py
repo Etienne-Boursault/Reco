@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import sqlite3
+import subprocess
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -10,7 +12,10 @@ from cache.builder import (
     BuildStats,
     CacheBuilder,
     _FsJsonLoader,
+    _normalize_recommended_by,
     _parse_timestamp_to_seconds,
+    _safe_str_list,
+    _try_git_sha,
 )
 
 
@@ -354,3 +359,196 @@ class TestRefreshItemFile:
             assert fts_row["title"] == "Parasite (revu)"
         finally:
             conn.close()
+
+
+# ---------- helpers purs : cas limites -------------------------------------
+
+
+class TestParseTimestampEdgeCases:
+    def test_bool_is_not_a_timestamp(self) -> None:
+        """`True` est un `int` en Python : sans garde explicite, il vaudrait
+        1 seconde. On le rejette."""
+        assert _parse_timestamp_to_seconds(True) is None
+        assert _parse_timestamp_to_seconds(False) is None
+
+    def test_too_many_parts_is_rejected(self) -> None:
+        assert _parse_timestamp_to_seconds("1:2:3:4") is None
+
+    def test_empty_string_is_rejected(self) -> None:
+        assert _parse_timestamp_to_seconds("") is None
+
+    def test_unsupported_type_is_rejected(self) -> None:
+        assert _parse_timestamp_to_seconds({"h": 1}) is None
+        assert _parse_timestamp_to_seconds(["00:01:00"]) is None
+
+
+class TestNormalizeRecommendedBy:
+    def test_collapses_whitespace_and_lowercases(self) -> None:
+        assert _normalize_recommended_by("  Bong   Joon-ho \n") == "bong joon-ho"
+
+    def test_none_and_blank_become_none(self) -> None:
+        assert _normalize_recommended_by(None) is None
+        assert _normalize_recommended_by("   ") is None
+
+    def test_non_string_becomes_none(self) -> None:
+        """Le champ vient de JSON libre : un nombre ou une liste ne doit pas
+        faire planter la dédup."""
+        assert _normalize_recommended_by(42) is None
+        assert _normalize_recommended_by(["Bong"]) is None
+
+
+class TestSafeStrList:
+    def test_non_list_becomes_empty(self) -> None:
+        assert _safe_str_list("Kyan") == []
+        assert _safe_str_list(None) == []
+
+    def test_strips_and_drops_empty_entries(self) -> None:
+        assert _safe_str_list([" Kyan ", "", None, "  ", "Navo"]) == [
+            "Kyan", "Navo",
+        ]
+
+    def test_coerces_non_string_entries(self) -> None:
+        assert _safe_str_list([1, 2.5]) == ["1", "2.5"]
+
+
+class TestTryGitSha:
+    def test_returns_none_when_git_is_absent(self, monkeypatch) -> None:
+        def _no_git(*a, **k):
+            raise FileNotFoundError("git introuvable")
+
+        monkeypatch.setattr(subprocess, "run", _no_git)
+        assert _try_git_sha() is None
+
+    def test_returns_none_on_non_zero_exit(self, monkeypatch) -> None:
+        """Hors dépôt Git (ex. tarball de release) : `rev-parse` sort en 128."""
+        monkeypatch.setattr(
+            subprocess, "run",
+            lambda *a, **k: SimpleNamespace(returncode=128, stdout=""),
+        )
+        assert _try_git_sha() is None
+
+    def test_returns_none_on_empty_output(self, monkeypatch) -> None:
+        monkeypatch.setattr(
+            subprocess, "run",
+            lambda *a, **k: SimpleNamespace(returncode=0, stdout="  \n"),
+        )
+        assert _try_git_sha() is None
+
+    def test_returns_the_sha(self, monkeypatch) -> None:
+        monkeypatch.setattr(
+            subprocess, "run",
+            lambda *a, **k: SimpleNamespace(returncode=0, stdout="abc123\n"),
+        )
+        assert _try_git_sha() == "abc123"
+
+
+# ---------- _warn : logger injecté vs repli stderr --------------------------
+
+
+class TestWarn:
+    def _builder(self, tmp_path: Path, logger=None) -> CacheBuilder:
+        return CacheBuilder(
+            db_path=tmp_path / "c.sqlite",
+            items_dir=tmp_path / "items",
+            mentions_dir=tmp_path / "mentions",
+            episodes_dir=tmp_path / "episodes",
+            logger=logger,
+        )
+
+    def test_uses_the_injected_logger(self, tmp_path: Path) -> None:
+        seen = []
+        b = self._builder(tmp_path, logger=lambda msg, *a: seen.append((msg, a)))
+        b._warn("Skip %s: %s", "x.json", "boom")
+
+        assert seen == [("Skip %s: %s", ("x.json", "boom"))]
+
+    def test_falls_back_to_stdout_without_logger(
+        self, tmp_path: Path, capsys
+    ) -> None:
+        b = self._builder(tmp_path)
+        b._warn("Skip %s: %s", "x.json", "boom")
+
+        assert "Skip x.json: boom" in capsys.readouterr().out
+
+    def test_falls_back_when_the_logger_raises(
+        self, tmp_path: Path, capsys
+    ) -> None:
+        """Un logger défaillant ne doit pas faire échouer un build."""
+        def _boom(msg, *a):
+            raise RuntimeError("handler cassé")
+
+        b = self._builder(tmp_path, logger=_boom)
+        b._warn("Skip %s", "x.json")
+
+        assert "Skip x.json" in capsys.readouterr().out
+
+
+# ---------- JSON invalide : le build continue et rapporte -------------------
+
+
+class TestInvalidJsonIsSkipped:
+    def _dirs(self, tmp_path: Path) -> tuple[Path, Path, Path]:
+        items = tmp_path / "items" / "src-a"
+        mentions = tmp_path / "mentions" / "src-a"
+        episodes = tmp_path / "episodes" / "src-a"
+        for d in (items, mentions, episodes):
+            d.mkdir(parents=True)
+        return items, mentions, episodes
+
+    def _build(self, tmp_path: Path) -> tuple[BuildStats, CacheBuilder]:
+        builder = CacheBuilder(
+            db_path=tmp_path / "c.sqlite",
+            items_dir=tmp_path / "items",
+            mentions_dir=tmp_path / "mentions",
+            episodes_dir=tmp_path / "episodes",
+            logger=lambda *a: None,
+        )
+        return builder.build(), builder
+
+    def test_broken_item_is_skipped_and_reported(self, tmp_path: Path) -> None:
+        items, _, _ = self._dirs(tmp_path)
+        (items / "ok.json").write_text(
+            '{"id": "i1", "schemaVersion": 1, "title": "OK", "types": ["film"]}',
+            encoding="utf-8",
+        )
+        (items / "casse.json").write_text("{ pas du JSON", encoding="utf-8")
+
+        stats, builder = self._build(tmp_path)
+
+        assert stats.items == 1  # le fichier sain est bien indexé
+        assert any("casse.json" in e for e in builder._errors)
+
+    def test_broken_episode_is_skipped_and_reported(self, tmp_path: Path) -> None:
+        _, _, episodes = self._dirs(tmp_path)
+        (episodes / "ok.json").write_text(
+            '{"guid": "e1", "schemaVersion": 1, "title": "OK"}',
+            encoding="utf-8",
+        )
+        (episodes / "casse.json").write_text("[", encoding="utf-8")
+
+        stats, builder = self._build(tmp_path)
+
+        assert stats.episodes == 1
+        assert any("episodes:" in e and "casse.json" in e for e in builder._errors)
+
+    def test_broken_mention_is_skipped_and_reported(self, tmp_path: Path) -> None:
+        items, mentions, episodes = self._dirs(tmp_path)
+        (items / "i1.json").write_text(
+            '{"id": "i1", "schemaVersion": 1, "title": "OK", "types": ["film"]}',
+            encoding="utf-8",
+        )
+        (episodes / "e1.json").write_text(
+            '{"guid": "e1", "schemaVersion": 1, "title": "OK"}',
+            encoding="utf-8",
+        )
+        (mentions / "ok.json").write_text(
+            '{"id": "m1", "schemaVersion": 1, "itemId": "i1", "kind": "reco",'
+            ' "sourceRef": {"episodeGuid": "e1", "sourceId": "src-a"}}',
+            encoding="utf-8",
+        )
+        (mentions / "casse.json").write_text("{{{", encoding="utf-8")
+
+        stats, builder = self._build(tmp_path)
+
+        assert stats.mentions == 1
+        assert any("mentions:" in e and "casse.json" in e for e in builder._errors)

@@ -887,3 +887,305 @@ def test_L1_provider_fields_is_tuple():
     assert isinstance(ren.TmdbProvider.fields, tuple)
     assert isinstance(ren.MusicProvider.fields, tuple)
     assert isinstance(ren.Provider.fields, tuple)
+
+
+# ============================================================================
+# Pass B — gardes et branches résiduelles
+# ============================================================================
+
+
+def _cached_session_double():
+    """`CachedSession` enveloppant une session inerte (aucune requête)."""
+    from enrichment.http_cache import CachedSession
+
+    class FakeSess:
+        def close(self):
+            pass
+
+    return CachedSession(session=FakeSess())  # type: ignore[arg-type]
+
+
+def test_tmdb_field_gets_its_first_timestamp_even_when_value_unchanged(
+    monkeypatch,
+):
+    """Valeur TMDB identique mais jamais tracée : on pose quand même le
+    timestamp, sinon `--refresh-older-than` la re-vérifierait indéfiniment."""
+    import enrich_tmdb as et
+    monkeypatch.setattr(et, "enrich_one",
+                        lambda reco, *, session, api_key, force: reco)
+
+    reco = {
+        "id": "x", "title": "Dune", "types": ["film"],
+        "externalIds": {"tmdb": 438631},
+        # `enrichedAt` ne mentionne PAS externalIds.tmdb.
+        "enrichedAt": {"externalIds.justwatch": now_iso()},
+    }
+
+    n, status = ren.TmdbProvider().refresh(
+        reco, ["externalIds.tmdb"], _cached_session_double())
+
+    assert n == 1
+    assert status == "ok"
+    assert "externalIds.tmdb" in reco["enrichedAt"]
+
+
+def test_tmdb_field_is_noop_when_value_and_timestamp_already_present(
+    monkeypatch,
+):
+    """Idempotence : valeur ET timestamp présents → aucun champ compté (git
+    diff propre d'un run à l'autre)."""
+    import enrich_tmdb as et
+    monkeypatch.setattr(et, "enrich_one",
+                        lambda reco, *, session, api_key, force: reco)
+
+    stamp = now_iso()
+    reco = {
+        "id": "x", "title": "Dune", "types": ["film"],
+        "externalIds": {"tmdb": 438631},
+        "enrichedAt": {"externalIds.tmdb": stamp},
+    }
+
+    n, _ = ren.TmdbProvider().refresh(
+        reco, ["externalIds.tmdb"], _cached_session_double())
+
+    assert n == 0
+    assert reco["enrichedAt"]["externalIds.tmdb"] == stamp
+
+
+def test_tmdb_refresh_continues_after_watch_providers_field(monkeypatch):
+    """`watchProviders` n'est pas forcément le dernier champ demandé : la
+    boucle doit traiter ce qui suit, et ignorer un champ inconnu sans
+    s'interrompre."""
+    def fake_enrich_one(reco, *, session, api_key, force):
+        reco.setdefault("externalIds", {})["tmdb"] = 999
+        return reco
+
+    import enrich_tmdb as et
+    monkeypatch.setattr(et, "enrich_one", fake_enrich_one)
+
+    reco = {"id": "x", "title": "Dune", "types": ["film"]}
+
+    n, _ = ren.TmdbProvider().refresh(
+        reco,
+        ["watchProviders", "externalIds.inconnu", "externalIds.tmdb"],
+        _cached_session_double(),
+    )
+
+    assert reco["externalIds"]["tmdb"] == 999
+    assert n >= 1
+    # Le champ inconnu n'a rien créé.
+    assert "inconnu" not in reco["externalIds"]
+
+
+# --- _resolve_spotify_token ------------------------------------------------
+
+
+def test_resolve_spotify_token_returns_none_when_request_fails(monkeypatch):
+    """Spotify injoignable : on désactive Spotify sans casser le run (Deezer
+    continue de fonctionner)."""
+    monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
+    monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "secret")
+    import enrich_music as em
+
+    def _boom(session, cid, secret):
+        raise RuntimeError("401 Unauthorized")
+
+    monkeypatch.setattr(em, "spotify_token", _boom)
+
+    token = ren._resolve_spotify_token(
+        apply=True, provider_filter="music", session=_cached_session_double())
+
+    assert token is None
+
+
+def test_resolve_spotify_token_warns_on_empty_token(monkeypatch, caplog):
+    monkeypatch.setenv("SPOTIFY_CLIENT_ID", "id")
+    monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "secret")
+    import enrich_music as em
+    monkeypatch.setattr(em, "spotify_token", lambda session, cid, secret: "")
+
+    with caplog.at_level("WARNING", logger="reco"):
+        token = ren._resolve_spotify_token(
+            apply=True, provider_filter="all",
+            session=_cached_session_double())
+
+    assert not token
+    assert "token vide" in caplog.text
+
+
+# --- run() : injections et branches de comptage ----------------------------
+
+
+class _StubProvider(ren.Provider):
+    """Provider contrôlable, pour piloter `run()` sans réseau."""
+
+    fields = ("externalIds.tmdb",)
+
+    def __init__(self, name="tmdb", result=(1, "ok")):
+        self.name = name
+        self._result = result
+        self.calls = 0
+
+    def applies_to(self, reco):
+        return True
+
+    def refresh(self, reco, fields, session):
+        self.calls += 1
+        return self._result
+
+
+def test_run_uses_injected_providers_and_token(sandbox, monkeypatch):
+    """`providers` et `spotify_token` fournis : `run()` ne reconstruit rien
+    (pas d'appel Spotify au démarrage)."""
+    def _no_token(**kwargs):
+        raise AssertionError("le token ne doit pas etre re-resolu")
+
+    def _no_providers(**kwargs):
+        raise AssertionError("les providers ne doivent pas etre reconstruits")
+
+    monkeypatch.setattr(ren, "_resolve_spotify_token", _no_token)
+    monkeypatch.setattr(ren, "_build_default_providers", _no_providers)
+    src_dir, output_dir = sandbox
+    _write_reco(src_dir, "0001")
+
+    stats = ren.run(
+        source_arg="demo-src", older_than=timedelta(0), apply=False,
+        provider_filter="tmdb", field_filter=None, limit=None,
+        cache_path=output_dir / "http.sqlite", api_key_tmdb=None,
+        providers=[_StubProvider()], spotify_token="tok-fourni", now=NOW,
+    )
+
+    assert stats.items_scanned >= 1
+
+
+def test_run_keeps_provider_when_factory_returns_none(sandbox):
+    """`provider_factory` qui renvoie None = pas de substitution : on garde
+    l'instance d'origine."""
+    src_dir, output_dir = sandbox
+    _write_reco(src_dir, "0001")
+    provider = _StubProvider(result=(2, "ok"))
+
+    stats = ren.run(
+        source_arg="demo-src", older_than=timedelta(0), apply=True,
+        provider_filter="tmdb", field_filter=None, limit=None,
+        cache_path=output_dir / "http.sqlite", api_key_tmdb=None,
+        providers=[provider], spotify_token=None, now=NOW,
+        provider_factory=lambda name: None,
+    )
+
+    assert provider.calls == 1
+    assert stats.fields_refreshed == 2
+
+
+def test_run_not_found_from_other_provider_only_bumps_global_counter(
+    sandbox, monkeypatch,
+):
+    """`not_found` d'un provider tiers incrémente le compteur global sans
+    toucher aux compteurs dédiés tmdb/music."""
+    src_dir, output_dir = sandbox
+    _write_reco(src_dir, "0001")
+    other = _StubProvider(name="autre", result=(0, "not_found"))
+    stats = ren.run(
+        source_arg="demo-src", older_than=timedelta(0), apply=True,
+        provider_filter="all", field_filter=None, limit=None,
+        cache_path=output_dir / "http.sqlite", api_key_tmdb=None,
+        providers=[other], spotify_token=None, now=NOW,
+    )
+
+    assert stats.not_found == 1
+    assert stats.not_found_tmdb == 0
+    assert stats.not_found_music == 0
+
+
+def test_run_does_not_write_when_no_field_changed(sandbox):
+    """`n == 0` sans `not_found` : rien n'est écrit sur disque."""
+    src_dir, output_dir = sandbox
+    path = _write_reco(src_dir, "0001")
+    before = path.read_text(encoding="utf-8")
+
+    stats = ren.run(
+        source_arg="demo-src", older_than=timedelta(0), apply=True,
+        provider_filter="tmdb", field_filter=None, limit=None,
+        cache_path=output_dir / "http.sqlite", api_key_tmdb=None,
+        providers=[_StubProvider(result=(0, "ok"))], spotify_token=None,
+        now=NOW,
+    )
+
+    assert path.read_text(encoding="utf-8") == before
+    assert stats.items_refreshed == 0
+
+
+def test_run_closes_a_session_without_stats(sandbox, monkeypatch):
+    """Session sans compteurs : pas de log de cache, et `close()` est appelé
+    quand même (le `finally` ne doit pas lever sur l'absence de `stats`)."""
+    closed = []
+
+    class _BareSession:
+        def close(self):
+            closed.append(True)
+
+    monkeypatch.setattr(ren, "build_cached_session",
+                        lambda path, backend="memory": _BareSession())
+    src_dir, output_dir = sandbox
+    _write_reco(src_dir, "0001")
+
+    ren.run(
+        source_arg="demo-src", older_than=timedelta(0), apply=False,
+        provider_filter="tmdb", field_filter=None, limit=None,
+        cache_path=output_dir / "http.sqlite", api_key_tmdb=None,
+        providers=[_StubProvider()], spotify_token=None, now=NOW,
+    )
+
+    assert closed == [True]
+
+
+# --- main() : gardes de configuration --------------------------------------
+
+
+def test_main_returns_2_on_invalid_settings(sandbox, monkeypatch):
+    """Settings invalides → code 2 (erreur de configuration), sans run."""
+    from enrichment.settings import RefreshEnrichmentSettings
+
+    def _boom(*a, **k):
+        raise ValueError("older_than negatif")
+
+    monkeypatch.setattr(RefreshEnrichmentSettings, "from_source_extra", _boom)
+    monkeypatch.setattr(
+        ren, "run", lambda **k: pytest.fail("run ne doit pas demarrer"))
+
+    assert ren.main(["--source", "demo-src", "--dry-run"]) == 2
+
+
+def test_main_apply_music_loads_dotenv_without_requiring_tmdb_key(
+    sandbox, monkeypatch,
+):
+    """`--apply --provider music` charge le .env pour Spotify mais n'exige PAS
+    TMDB_API_KEY (contrairement à `--provider tmdb`)."""
+    loaded = []
+    monkeypatch.setattr(ren, "load_dotenv", lambda p: loaded.append(p))
+    monkeypatch.delenv("TMDB_API_KEY", raising=False)
+    seen = {}
+
+    def _fake_run(**kwargs):
+        seen.update(kwargs)
+        return ren.RefreshStats()
+
+    monkeypatch.setattr(ren, "run", _fake_run)
+
+    rc = ren.main(["--source", "demo-src", "--apply", "--provider", "music"])
+
+    assert rc == 0
+    assert len(loaded) == 1
+    assert seen["apply"] is True
+
+
+def test_main_apply_tmdb_requires_api_key(sandbox, monkeypatch):
+    """Symétrique : sans clé TMDB, `--apply --provider tmdb` refuse de partir
+    (il produirait des `not_found` en masse)."""
+    monkeypatch.setattr(ren, "load_dotenv", lambda p: None)
+    monkeypatch.delenv("TMDB_API_KEY", raising=False)
+    monkeypatch.setattr(
+        ren, "run", lambda **k: pytest.fail("run ne doit pas demarrer"))
+
+    assert ren.main(
+        ["--source", "demo-src", "--apply", "--provider", "tmdb"]) == 2
