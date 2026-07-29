@@ -49,3 +49,17 @@ updates:
     labels:
       - dependencies
       - docker
+    # Les MAJEURES des images de base sont refusées volontairement : le
+    # Dockerfile doit refléter ce qui tourne réellement, pas la dernière
+    # version disponible. Les mineures et correctifs restent proposés.
+    ignore:
+      # Node 24 = version servie en production (Infomaniak). Une image de
+      # build qui avance seule créerait un écart avec le runtime réel.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+      # Python 3.12 = version testée par la matrice CI. Passer l'image à 3.14
+      # sans bouger la matrice ferait diverger ce qui est construit de ce qui
+      # est testé, et `fastembed`/`faster-whisper` n'y sont pas validés. À
+      # traiter comme une migration à part entière, matrice CI comprise.
+      - dependency-name: "python"
+        update-types: ["version-update:semver-major"]
