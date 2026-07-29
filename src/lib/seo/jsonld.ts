@@ -73,7 +73,7 @@ export interface RecoLike {
 function creatorPropertyFor(schemaType: string): {
   prop: string;
   node: (name: string) => Record<string, unknown>;
-} {
+} | null {
   switch (schemaType) {
     case 'Movie':
     case 'TVSeries':
@@ -87,8 +87,11 @@ function creatorPropertyFor(schemaType: string): {
     case 'VideoGame':
       return { prop: 'publisher', node: (name) => ({ '@type': 'Organization', name }) };
     case 'Person':
-      // L'œuvre EST une personne ⇒ pas de créateur tiers.
-      return { prop: '', node: () => ({}) };
+      // L'œuvre EST une personne ⇒ pas de créateur tiers. On renvoie `null`
+      // plutôt qu'un `{ prop: '', node: () => ({}) }` : le sentinel vide
+      // obligeait l'appelant à tester `prop` et laissait un `node` que rien ne
+      // pouvait jamais appeler (code mort).
+      return null;
     default:
       // CreativeWork générique : `creator` est la propriété abstraite valide.
       return { prop: 'creator', node: (name) => ({ '@type': 'Person', name }) };
@@ -104,8 +107,8 @@ export function recoToSchema(reco: RecoLike): Record<string, unknown> {
     name: reco.title,
   };
   if (reco.author) {
-    const { prop, node: makeNode } = creatorPropertyFor(schemaType);
-    if (prop) node[prop] = makeNode(reco.author);
+    const creator = creatorPropertyFor(schemaType);
+    if (creator) node[creator.prop] = creator.node(reco.author);
   }
   if (reco.url) node.url = reco.url;
   if (reco.description) node.description = reco.description;

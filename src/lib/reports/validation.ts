@@ -5,9 +5,12 @@
  * réutilisation côté form-builder) importe `reportPayloadSchema` ici.
  *
  * Règles :
- *  - `sourceId`/`recoId` : slugs (kebab-case alphanumérique). Pas de validation
- *    contre `getCollection()` ici (on évite la dépendance ; le handler peut
- *    vérifier l'existence si besoin).
+ *  - `sourceId`/`recoId` : slugs (kebab-case alphanumérique), ≤
+ *    `REPORT_LIMITS.slugMax`. Pas de validation contre `getCollection()` ici
+ *    (on évite la dépendance ; le handler peut vérifier l'existence si besoin).
+ *    La borne de longueur est la MÊME que celle de `storage.assertSlug` : sans
+ *    elle, un slug trop long passait Zod, brûlait le jti du captcha, puis
+ *    échouait à l'écriture en 500 au lieu d'un 400.
  *  - `details` : trim, ≤ 1000 chars, ≥ 5 chars (anti-blank).
  *  - `submitter.email` : regex basique `^[^@\s]+@[^@\s]+\.[^@\s]+$`. Pas de
  *    full RFC ⇒ accepte les cas raisonnables sans bloquer les visiteurs.
@@ -22,14 +25,26 @@ const _EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const _SLUG_RE = /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/i;
 
 // HTML checkbox sérialise à `'on'` quand cochée, absent sinon. On normalise.
+//
+// NB : PAS de `.optional()` sur ce schéma. `z.undefined()` fait déjà partie de
+// l'union, donc une clé absente est acceptée ET traverse le `transform` → on
+// obtient `false`. Ajouter `.optional()` par-dessus ferait court-circuiter le
+// `transform` par Zod et rendrait `wantCredit` `undefined` alors que le type
+// `ReportPayload` annonce un booléen.
 const checkbox = z
   .union([z.literal('on'), z.literal('true'), z.literal(true), z.literal(false), z.undefined(), z.literal('')])
   .transform((v) => v === 'on' || v === 'true' || v === true);
 
 export const reportPayloadSchema = z
   .object({
-    sourceId: z.string().regex(_SLUG_RE, 'sourceId invalide'),
-    recoId: z.string().regex(_SLUG_RE, 'recoId invalide'),
+    sourceId: z
+      .string()
+      .max(REPORT_LIMITS.slugMax, 'sourceId trop long')
+      .regex(_SLUG_RE, 'sourceId invalide'),
+    recoId: z
+      .string()
+      .max(REPORT_LIMITS.slugMax, 'recoId trop long')
+      .regex(_SLUG_RE, 'recoId invalide'),
     category: z.enum(REPORT_CATEGORIES),
     details: z
       .string()
@@ -53,7 +68,7 @@ export const reportPayloadSchema = z
       .refine((s) => s === '' || _EMAIL_RE.test(s), 'email invalide')
       .optional()
       .or(z.literal('')),
-    wantCredit: checkbox.optional(),
+    wantCredit: checkbox,
     // Honeypot (H16-1) : doit être vide. Si rempli, le handler court-circuite
     // (court-circuit AVANT Zod, donc cette règle attrape juste les valeurs vides
     // attendues sur le happy path). Renommé `url_unused` pour éviter l'auto-fill

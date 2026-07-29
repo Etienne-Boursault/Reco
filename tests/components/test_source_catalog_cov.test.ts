@@ -340,10 +340,29 @@ describe('SourceCatalog — structure a11y (onglets, live regions)', () => {
     expect(html).toMatch(/id="view-all"[^>]*hidden/);
   });
 
-  it('les deux zones « aucun résultat » sont présentes et aria-live', async () => {
+  // Ces deux régions sont un markup dupliqué mot pour mot (seul l'`id`
+  // change). Faute de les factoriser — cf. le rapport : les sortir dans un
+  // composant enfant leur ferait perdre le style scopé de cette page —, on
+  // verrouille ici le trio ARIA sur CHACUNE, pour qu'une dérive de l'une
+  // par rapport à l'autre casse un test.
+  it.each(['noresult', 'ep-noresult'])(
+    'la zone « aucun résultat » #%s porte le trio ARIA complet',
+    async (id) => {
+      const html = await render();
+      const balise = html.match(new RegExp(`<p[^>]*id="${id}"[^>]*>`))?.[0] ?? '';
+      expect(balise).toContain('role="status"');
+      expect(balise).toContain('aria-live="polite"');
+      expect(balise).toContain('aria-atomic="true"');
+      // C7 : jamais masquée ni clippée, sinon aria-live reste muet.
+      expect(balise).not.toContain('hidden');
+      expect(balise).not.toContain('visually-hidden');
+    },
+  );
+
+  it('les deux zones sont rendues vides (le message est posé côté client)', async () => {
     const html = await render();
-    expect(html).toMatch(/id="noresult"[^>]*aria-live="polite"/);
-    expect(html).toMatch(/id="ep-noresult"[^>]*aria-live="polite"/);
+    expect(html).toMatch(/<p[^>]*id="noresult"[^>]*>\s*<\/p>/);
+    expect(html).toMatch(/<p[^>]*id="ep-noresult"[^>]*>\s*<\/p>/);
   });
 
   it('les cartes reco reçoivent le numéro d’épisode résolu par guid', async () => {

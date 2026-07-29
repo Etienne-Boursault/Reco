@@ -52,4 +52,13 @@ export const REPORT_LIMITS = {
   nameMax: 80,
   emailMax: 254,
   notesMax: 500,
+  /**
+   * Longueur max des slugs (`sourceId`, `recoId`). SSOT : consommée à la fois
+   * par `validation.reportPayloadSchema` (rejet en 400) et par
+   * `storage.assertSlug` (garde path traversal, cf. H16-4). Les deux DOIVENT
+   * rester alignées : sans borne côté Zod, un slug de 200 caractères passait
+   * la validation, brûlait le jti du captcha, puis faisait échouer l'écriture
+   * en 500 au lieu d'un 400 franc. Aligné sur `CLICK_LIMITS.slugMax`.
+   */
+  slugMax: 128,
 } as const;

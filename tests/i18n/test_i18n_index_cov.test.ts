@@ -4,9 +4,18 @@
  * Couvre les quatre signatures documentées de `t()` (clé seule, clé + locale,
  * clé + params, clé + params + locale), le repli sur la locale par défaut,
  * le comportement de l'interpolation `{var}` (variable inconnue conservée
- * telle quelle) et `langToOgLocale()`.
+ * telle quelle), le repli sur clé absente (jamais d'exception en plein rendu)
+ * et `langToOgLocale()`.
  */
-import { describe, it, expect } from 'vitest';
+import {
+  describe,
+  it,
+  expect,
+  vi,
+  beforeEach,
+  afterEach,
+  type MockInstance,
+} from 'vitest';
 import { t, langToOgLocale, defaultLocale, type Locale } from '../../src/i18n';
 import { fr, type I18nKey } from '../../src/i18n/fr';
 
@@ -139,16 +148,80 @@ describe('t(key, params, locale)', () => {
 // Robustesse
 // ---------------------------------------------------------------------------
 describe('t() — clé absente du catalogue', () => {
-  it('renvoie undefined sans params (aucun repli, invariant à connaître)', () => {
-    const missing = 'cle.qui.nexiste.pas' as I18nKey;
-    expect(t(missing)).toBeUndefined();
+  /** Chaque cas utilise une clé DISTINCTE : l'avertissement est dédupliqué
+   *  au niveau du module et ne se rejoue pas pour une clé déjà signalée. */
+  let warn: MockInstance<typeof console.warn>;
+
+  beforeEach(() => {
+    warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  it('lève si on demande une interpolation sur une clé absente', () => {
-    // `raw.replace` sur `undefined` → TypeError. Le typage `I18nKey` rend le
-    // cas impossible à l'usage normal ; on documente le comportement runtime.
-    const missing = 'cle.qui.nexiste.pas' as I18nKey;
-    expect(() => t(missing, { count: 1 })).toThrow(TypeError);
+  afterEach(() => {
+    warn.mockRestore();
+  });
+
+  it('renvoie la clé elle-même, sans params', () => {
+    const missing = 'absente.sans.params' as I18nKey;
+    expect(t(missing)).toBe('absente.sans.params');
+  });
+
+  it('renvoie la clé elle-même AVEC params (comportement uniforme)', () => {
+    const missing = 'absente.avec.params' as I18nKey;
+    expect(t(missing, { count: 1 })).toBe('absente.avec.params');
+  });
+
+  it('renvoie la même valeur avec et sans params', () => {
+    const missing = 'absente.uniforme' as I18nKey;
+    expect(t(missing, { count: 1 })).toBe(t(missing));
+  });
+
+  it('ne lève jamais, quelle que soit la forme de l’appel', () => {
+    const missing = 'absente.jamais.leve' as I18nKey;
+    expect(() => t(missing)).not.toThrow();
+    expect(() => t(missing, { count: 1 })).not.toThrow();
+    expect(() => t(missing, 'fr')).not.toThrow();
+    expect(() => t(missing, { count: 1 }, 'fr')).not.toThrow();
+    expect(() => t(missing, undefined)).not.toThrow();
+  });
+
+  it('ne lève pas non plus sur une clé vide', () => {
+    const empty = '' as I18nKey;
+    expect(() => t(empty)).not.toThrow();
+    expect(() => t(empty, { count: 1 })).not.toThrow();
+    expect(t(empty)).toBe('');
+  });
+
+  it('ne lève pas sur une clé héritée d’Object.prototype', () => {
+    // `locales.fr['toString']` renvoie une FONCTION, pas `undefined` : une
+    // garde `=== undefined` ne suffirait pas et `raw.replace` casserait.
+    const proto = 'toString' as I18nKey;
+    expect(() => t(proto, { count: 1 })).not.toThrow();
+    expect(t(proto)).toBe('toString');
+  });
+
+  it('ne lève pas non plus sur une locale inconnue + clé absente', () => {
+    const missing = 'absente.locale.inconnue' as I18nKey;
+    expect(t(missing, 'en' as Locale)).toBe('absente.locale.inconnue');
+  });
+
+  it('avertit en console pour une clé absente', () => {
+    t('absente.avertit' as I18nKey);
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(String(warn.mock.calls[0][0])).toContain('absente.avertit');
+  });
+
+  it('n’avertit qu’UNE fois par clé, même sur plusieurs rendus', () => {
+    const missing = 'absente.une.seule.fois' as I18nKey;
+    t(missing);
+    t(missing);
+    t(missing, { count: 1 });
+    expect(warn).toHaveBeenCalledTimes(1);
+  });
+
+  it('n’avertit pas pour une clé présente', () => {
+    t(KEY_PLAIN);
+    t(KEY_WITH_COUNT, { count: 1 });
+    expect(warn).not.toHaveBeenCalled();
   });
 });
 

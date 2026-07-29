@@ -6,7 +6,8 @@
  *
  * Convention : la locale par défaut est `fr`. Une source peut surcharger via
  * `source.data.lang` (champ optionnel, non strict dans le schema). Si la
- * locale demandée n'existe pas, on retombe sur `fr`.
+ * locale demandée n'existe pas, on retombe sur `fr`. Si la CLÉ n'existe pas,
+ * `t()` renvoie la clé elle-même et n'échoue jamais (cf. `missingKey`).
  */
 import { fr, type I18nKey } from './fr';
 
@@ -15,6 +16,29 @@ export type Locale = keyof typeof locales;
 
 /** Locale active par défaut (overridable via Layout `lang` prop). */
 export const defaultLocale: Locale = 'fr';
+
+/** Clés déjà signalées — un avertissement par clé, pas un par appel. Une page
+ *  peut appeler la même clé des dizaines de fois au rendu. */
+const warnedKeys = new Set<string>();
+
+/**
+ * Repli pour une clé absente du catalogue.
+ *
+ * `t()` est appelé en plein rendu de page (Layout, cartes, meta) : une clé
+ * manquante ne doit JAMAIS faire tomber le build ou la page. On renvoie donc
+ * la clé elle-même — visible en revue et dans le HTML rendu, inoffensif en
+ * production — et on avertit une fois côté console.
+ *
+ * Le typage `I18nKey` couvre l'usage normal ; ce repli protège les appels
+ * non typés (JS, cast, clé construite dynamiquement).
+ */
+function missingKey(key: string): string {
+  if (!warnedKeys.has(key)) {
+    warnedKeys.add(key);
+    console.warn(`[i18n] clé de traduction absente : « ${key} »`);
+  }
+  return key;
+}
 
 /**
  * Récupère une chaîne traduite, avec interpolation `{var}` style mustache léger.
@@ -38,9 +62,13 @@ export function t(
     params = paramsOrLocale;
   }
   const raw = (locales[loc] ?? locales[defaultLocale])[key];
+  // `typeof` et non `=== undefined` : une clé héritée d'Object.prototype
+  // (`toString`, `valueOf`…) renvoie une fonction, sur laquelle `.replace`
+  // casserait tout aussi sûrement.
+  if (typeof raw !== 'string') return missingKey(key);
   if (!params) return raw;
   return raw.replace(/\{(\w+)\}/g, (_, k) =>
-    params && k in params ? String(params[k]) : `{${k}}`,
+    k in params ? String(params[k]) : `{${k}}`,
   );
 }
 

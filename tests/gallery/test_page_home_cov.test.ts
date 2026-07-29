@@ -221,7 +221,8 @@ describe('/ — annuaire multi-source', () => {
 
     expect(schema['@type']).toBe('WebSite');
     expect(schema.url).toBe(`${TEST_SITE}/`);
-    expect(schema.name).toBeTruthy();
+    expect(schema.name).toBe('Reco');
+    expect(schema.description).toBe('Catalogue de recommandations de podcasts');
   });
 });
 

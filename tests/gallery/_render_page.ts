@@ -29,17 +29,33 @@ import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 /** Origine utilisée par `astro.config.mjs` quand `SITE_URL` est absent. */
 export const TEST_SITE = 'https://reco.example';
 
-let patched = false;
-
-function patchSite(): void {
-  if (patched) return;
-  patched = true;
-  const create = ContainerPipeline.create.bind(ContainerPipeline);
+/**
+ * Crée un container dont le pipeline porte `site`.
+ *
+ * Le patch est posé JUSTE avant `AstroContainer.create()` et retiré dans le
+ * `finally` : `ContainerPipeline` est un module partagé par tout le worker
+ * vitest, donc un patch permanent contaminerait les suites des autres
+ * dossiers de tests. Ici, la fenêtre d'effet se limite à l'appel.
+ *
+ * L'affectation est **inconditionnelle** et non pas « seulement si `site` est
+ * absent » : `tests/components/_container.ts` installe, lui, un patch
+ * permanent qui pose une autre origine (`https://reco.test`). Si ce module
+ * est chargé avant celui-ci dans le même worker, un `if (!pipeline.site)`
+ * laisserait passer son origine et casserait toutes les assertions d'URL
+ * absolue de ce dossier.
+ */
+async function createContainer(): Promise<InstanceType<typeof AstroContainer>> {
+  const original = ContainerPipeline.create;
   ContainerPipeline.create = (options: Record<string, unknown>) => {
-    const pipeline = create(options);
-    if (!pipeline.site) pipeline.site = new URL(TEST_SITE);
+    const pipeline = original.call(ContainerPipeline, options);
+    pipeline.site = new URL(TEST_SITE);
     return pipeline;
   };
+  try {
+    return await AstroContainer.create();
+  } finally {
+    ContainerPipeline.create = original;
+  }
 }
 
 export interface RenderPageOptions {
@@ -60,8 +76,7 @@ export async function renderPage(
   Page: any,
   { params, props, path = '/' }: RenderPageOptions = {},
 ): Promise<string> {
-  patchSite();
-  const container = await AstroContainer.create();
+  const container = await createContainer();
   return container.renderToString(Page, {
     params,
     props,
@@ -102,8 +117,7 @@ export async function renderPageResponse(
   Page: any,
   { params, props, path = '/' }: RenderPageOptions = {},
 ): Promise<Response> {
-  patchSite();
-  const container = await AstroContainer.create();
+  const container = await createContainer();
   return container.renderToResponse(Page, {
     params,
     props,

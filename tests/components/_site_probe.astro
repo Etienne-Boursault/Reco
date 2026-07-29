@@ -1,0 +1,14 @@
+---
+/**
+ * Sonde minimale utilisée par `_container.ts` : rend `Astro.site` en clair.
+ *
+ * Elle sert à répondre à UNE question, à l'exécution plutôt qu'en pariant sur
+ * une version d'Astro : est-ce que le conteneur de test a bien reçu `site`
+ * par une voie publique ? Si oui, aucun patch d'API interne n'est nécessaire.
+ *
+ * Ce n'est pas un fichier de test (pas de suffixe `.test.ts`) : vitest ne le
+ * collecte pas.
+ */
+const site = Astro.site ? Astro.site.toString() : '';
+---
+<span data-site={site}>{site}</span>

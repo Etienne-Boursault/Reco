@@ -14,6 +14,7 @@ import { join } from 'node:path';
 
 import { notifyReportMatrix } from '../../src/lib/reports/notify.ts';
 import { reportPayloadSchema, isEmailValid } from '../../src/lib/reports/validation.ts';
+import { REPORT_LIMITS } from '../../src/lib/reports/types.ts';
 import { handleReport } from '../../src/lib/reports/handler.ts';
 import { generateChallenge } from '../../src/lib/reports/captcha.ts';
 import { createRateLimiter } from '../../src/lib/reports/rateLimit.ts';
@@ -202,11 +203,55 @@ describe('reportPayloadSchema — normalisation de la checkbox wantCredit', () =
     expect(parsed.success && parsed.data.wantCredit).toBe(expected);
   });
 
-  it('wantCredit absent → `undefined` (`.optional()` court-circuite le transform)', () => {
+  it('wantCredit absent → `false` (et non `undefined` : le type annonce un booléen)', () => {
     const parsed = reportPayloadSchema.safeParse(base);
     expect(parsed.success).toBe(true);
-    // Le handler compare avec `=== true`, donc l'absence vaut « pas de crédit ».
-    expect(parsed.success && parsed.data.wantCredit).toBeUndefined();
+    expect(parsed.success && parsed.data.wantCredit).toBe(false);
+  });
+});
+
+describe('reportPayloadSchema — bornes de longueur des slugs', () => {
+  const base = {
+    recoId: 'ubm-0001',
+    category: 'error',
+    details: 'Une faute de frappe dans le titre.',
+    captchaToken: 't',
+    captchaAnswer: '4',
+  };
+
+  it('sourceId de exactement slugMax caractères → accepté', () => {
+    const parsed = reportPayloadSchema.safeParse({
+      ...base,
+      sourceId: 'a'.repeat(REPORT_LIMITS.slugMax),
+    });
+    expect(parsed.success).toBe(true);
+  });
+
+  it('sourceId de slugMax+1 caractères → rejeté', () => {
+    const parsed = reportPayloadSchema.safeParse({
+      ...base,
+      sourceId: 'a'.repeat(REPORT_LIMITS.slugMax + 1),
+    });
+    expect(parsed.success).toBe(false);
+    expect(parsed.success === false && parsed.error.issues[0].path).toEqual(['sourceId']);
+  });
+
+  it('recoId de slugMax+1 caractères → rejeté', () => {
+    const parsed = reportPayloadSchema.safeParse({
+      ...base,
+      sourceId: 'un-bon-moment',
+      recoId: 'b'.repeat(REPORT_LIMITS.slugMax + 1),
+    });
+    expect(parsed.success).toBe(false);
+    expect(parsed.success === false && parsed.error.issues[0].path).toEqual(['recoId']);
+  });
+
+  it('la borne Zod est bien celle qu applique `storage.assertSlug`', () => {
+    // Anti-divergence : si quelqu'un change l'une des deux, ce test tombe.
+    expect(() => reportPath('a'.repeat(REPORT_LIMITS.slugMax), 'rep-1')).not.toThrow();
+    expect(() => reportPath('a'.repeat(REPORT_LIMITS.slugMax + 1), 'rep-1')).toThrow(
+      /sourceId invalide/,
+    );
   });
 
   it("valeur hors liste ('yes') → rejetée", () => {
@@ -350,11 +395,9 @@ describe('handleReport — branches restantes', () => {
     expect(again.status).toBe(429);
   });
 
-  it('échec d écriture (slug trop long pour le storage) → 500 avec le message', () => {
-    // `reportPayloadSchema` n'impose pas de longueur max au sourceId, mais
-    // `storage.assertSlug` refuse au-delà de 128 caractères ⇒ erreur I/O.
+  it('sourceId trop long → 400 (validation), pas 500 (I/O)', () => {
     const res = handleReport({
-      formData: validForm({ sourceId: 'a'.repeat(200) }),
+      formData: validForm({ sourceId: 'a'.repeat(REPORT_LIMITS.slugMax + 1) }),
       origin: SELF,
       selfOrigin: SELF,
       ip: '203.0.113.13',
@@ -362,25 +405,55 @@ describe('handleReport — branches restantes', () => {
       cwd: CWD,
       now: 1_000_000,
     });
-    expect(res.status).toBe(500);
-    expect(res.body.error).toMatch(/^IO: \[reports\/storage\] sourceId invalide/);
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/^sourceId: /);
+    expect(listReports('un-bon-moment', { cwd: CWD })).toHaveLength(0);
+  });
+
+  it('un rejet de validation ne consomme PAS le jti du captcha', () => {
+    // Zod (étape 3) court-circuite avant `consumeJti` (étape 4) : le visiteur
+    // corrige sa saisie sans avoir à recharger le captcha.
+    const fd = validForm({ sourceId: 'a'.repeat(REPORT_LIMITS.slugMax + 1) });
+    const rejected = handleReport({
+      formData: fd,
+      origin: SELF,
+      selfOrigin: SELF,
+      ip: '203.0.113.15',
+      rateLimiter: createRateLimiter(),
+      cwd: CWD,
+      now: 1_000_000,
+    });
+    expect(rejected.status).toBe(400);
+
+    // Même token, saisie corrigée → doit passer (donc le jti était encore frais).
+    const retried = handleReport({
+      formData: { ...fd, sourceId: 'un-bon-moment' },
+      origin: SELF,
+      selfOrigin: SELF,
+      ip: '203.0.113.16',
+      rateLimiter: createRateLimiter(),
+      cwd: CWD,
+      now: 1_000_000,
+    });
+    expect(retried.status).toBe(200);
   });
 });
 
-describe('handleReport — écriture qui lève une valeur non-`Error`', () => {
+describe('handleReport — échec d écriture disque', () => {
   afterEach(() => {
     vi.doUnmock('../../src/lib/reports/storage.ts');
     vi.resetModules();
   });
 
-  it("→ 500 avec le message générique 'unknown'", async () => {
+  /** Monte un handler dont `writeReport` lève `thrown`, et poste un form valide. */
+  async function postWithFailingWrite(thrown: unknown, ip: string) {
     vi.resetModules();
     vi.doMock('../../src/lib/reports/storage.ts', async (importOriginal) => {
       const actual = await importOriginal<typeof import('../../src/lib/reports/storage.ts')>();
       return {
         ...actual,
         writeReport: () => {
-          throw 'disque plein';
+          throw thrown;
         },
       };
     });
@@ -390,7 +463,7 @@ describe('handleReport — écriture qui lève une valeur non-`Error`', () => {
 
     const c = gen(1_000_000);
     const m = c.question.match(/(\d) \+ (\d)/)!;
-    const res = handler({
+    return handler({
       formData: {
         sourceId: 'un-bon-moment',
         recoId: 'ubm-0001',
@@ -401,10 +474,22 @@ describe('handleReport — écriture qui lève une valeur non-`Error`', () => {
       },
       origin: 'https://reco.example',
       selfOrigin: 'https://reco.example',
-      ip: '203.0.113.14',
+      ip,
       rateLimiter: mkRl(),
       now: 1_000_000,
     });
+  }
+
+  it('`Error` levée → 500 avec le message d origine', async () => {
+    const res = await postWithFailingWrite(new Error('ENOSPC: disque plein'), '203.0.113.17');
+    expect(res).toEqual({
+      status: 500,
+      body: { success: false, error: 'IO: ENOSPC: disque plein' },
+    });
+  });
+
+  it("valeur non-`Error` levée → 500 avec le message générique 'unknown'", async () => {
+    const res = await postWithFailingWrite('disque plein', '203.0.113.14');
     expect(res).toEqual({
       status: 500,
       body: { success: false, error: 'IO: unknown' },

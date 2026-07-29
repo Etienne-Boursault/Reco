@@ -511,3 +511,192 @@ def test_notify_one_unknown_channel_returns_false():
     )
     ok = poll_rss._notify_one(sender, feed, feed.episodes[0], "src")
     assert ok is False
+
+
+def test_notify_one_routes_matrix():
+    sender = _RecordingSender()
+    sender.name = "matrix"
+    from rss.parser import ParsedEpisode, ParsedFeed
+
+    feed = ParsedFeed(
+        title="F", feed_url="",
+        episodes=(
+            ParsedEpisode(guid="g", title="T", link="https://x", published=""),
+        ),
+    )
+    ok = poll_rss._notify_one(sender, feed, feed.episodes[0], "src")
+    assert ok is True
+    # Le format Matrix porte son corps en HTML (formatted_body).
+    assert "formatted_body" in sender.sent[0]
+
+
+# --- _resolve_sources ------------------------------------------------------
+
+
+def test_resolve_sources_all_returns_empty_when_dir_missing(monkeypatch, tmp_path):
+    """`--source all` sur une installation neuve (pas encore de config) :
+    liste vide plutôt qu'une exception — `main` la traduit en EXIT_BAD_ARGS."""
+    import common
+
+    monkeypatch.setattr(common, "SOURCES_DIR", tmp_path / "jamais-cree")
+    assert poll_rss._resolve_sources("all") == []
+
+
+# --- _poll_one_source : gardes ---------------------------------------------
+
+
+def test_source_without_rss_url_is_skipped(tmp_path, monkeypatch):
+    """Une source déclarée sans `rssUrl` est sautée sans toucher au réseau."""
+    monkeypatch.setattr(poll_rss, "load_source", lambda sid: {"title": "X"})
+    fetcher = _FakeFetcher()
+
+    results = run_poll(
+        _options(tmp_path), fetcher=fetcher, sender=_RecordingSender(),
+        use_lock=False,
+    )
+
+    assert results[0].feed_episode_count == 0
+    assert results[0].new_episodes == ()
+    assert fetcher.calls == []  # aucun fetch tenté
+
+
+def test_not_modified_in_dry_run_leaves_state_untouched(tmp_path):
+    """304 + `--dry-run` : on ne rafraîchit même pas `lastCheckedAt`."""
+    fetcher = _FakeFetcher(not_modified=True)
+    options = _options(tmp_path, dry_run=True)
+
+    results = run_poll(options, fetcher=fetcher, sender=None, use_lock=False)
+
+    assert results[0].not_modified is True
+    assert not (tmp_path / "rss").exists()
+
+
+def test_failed_notification_is_not_counted(tmp_path):
+    """Un envoi qui échoue ne doit pas gonfler le compteur `notified` — sinon
+    le log annoncerait des notifications jamais parties."""
+    sender = _RecordingSender(ok=False)
+
+    results = run_poll(
+        _options(tmp_path), fetcher=_FakeFetcher(), sender=sender,
+        use_lock=False,
+    )
+
+    assert len(results[0].new_episodes) == 2
+    assert len(sender.sent) == 2  # les deux tentatives ont bien eu lieu
+    assert results[0].notified == 0
+
+
+def test_run_poll_takes_the_pipeline_lock(tmp_path, monkeypatch):
+    """`use_lock=True` hors dry-run : le poll tourne SOUS le verrou pipeline
+    (il écrit l'état RSS pendant qu'un extract pourrait tourner)."""
+    import contextlib
+
+    events = []
+
+    @contextlib.contextmanager
+    def _lock():
+        events.append("lock")
+        yield
+        events.append("unlock")
+
+    monkeypatch.setattr(poll_rss, "acquire_pipeline_lock", _lock)
+    fetcher = _FakeFetcher()
+
+    run_poll(_options(tmp_path), fetcher=fetcher, sender=None, use_lock=True)
+
+    assert events == ["lock", "unlock"]
+    assert len(fetcher.calls) == 1
+
+
+def test_run_poll_skips_the_lock_in_dry_run(tmp_path, monkeypatch):
+    def _boom():
+        raise AssertionError("aucun verrou ne doit être pris en dry-run")
+
+    monkeypatch.setattr(poll_rss, "acquire_pipeline_lock", _boom)
+
+    run_poll(
+        _options(tmp_path, dry_run=True), fetcher=_FakeFetcher(),
+        sender=None, use_lock=True,
+    )
+
+
+# --- _build_sender matrix --------------------------------------------------
+
+
+def test_build_sender_matrix(monkeypatch):
+    monkeypatch.setenv("RECO_MATRIX_HOMESERVER", "https://matrix.exemple.fr")
+    monkeypatch.setenv("RECO_MATRIX_TOKEN", "tok")
+    monkeypatch.setenv("RECO_MATRIX_ROOM", "!salon:exemple.fr")
+
+    sender = poll_rss._build_sender("matrix")
+
+    assert sender is not None
+    assert sender.name == "matrix"
+
+
+@pytest.mark.parametrize("missing", [
+    "RECO_MATRIX_HOMESERVER", "RECO_MATRIX_TOKEN", "RECO_MATRIX_ROOM",
+])
+def test_build_sender_matrix_incomplete_config_is_graceful(monkeypatch, missing):
+    """Matrix pas encore configuré : on désactive la notification au lieu de
+    lever — contrairement à email, le cron ne doit pas échouer pour ça."""
+    for var in ("RECO_MATRIX_HOMESERVER", "RECO_MATRIX_TOKEN",
+                "RECO_MATRIX_ROOM"):
+        monkeypatch.setenv(var, "valeur")
+    monkeypatch.setenv(missing, "")
+
+    assert poll_rss._build_sender("matrix") is None
+
+
+# --- GitHubDispatcher sans session injectée --------------------------------
+
+
+def test_dispatcher_uses_requests_when_no_session(monkeypatch):
+    """Sans session injectée, le dispatcher importe `requests` à la volée.
+    On remplace le module dans `sys.modules` : aucune requête ne part."""
+    import sys
+    from types import SimpleNamespace
+
+    captured = {}
+
+    def _post(url, headers=None, json=None, timeout=None):
+        captured["url"] = url
+        captured["json"] = json
+        captured["timeout"] = timeout
+        return SimpleNamespace(ok=True, status_code=204, text="")
+
+    monkeypatch.setitem(sys.modules, "requests", SimpleNamespace(post=_post))
+    disp = poll_rss.GitHubDispatcher(token="tok", repository="o/r")
+
+    assert disp.dispatch({"source_id": "s"}) is True
+    assert captured["url"].endswith("/repos/o/r/dispatches")
+    assert captured["json"]["client_payload"] == {"source_id": "s"}
+
+
+# --- main : sortie non-JSON et erreur inattendue ---------------------------
+
+
+def test_main_without_json_flag_prints_nothing(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(poll_rss, "run_poll", lambda *a, **k: [])
+    code = poll_rss.main([
+        "--source", "un-bon-moment", "--dry-run",
+        "--state-dir", str(tmp_path / "rss"),
+    ])
+
+    assert code == poll_rss.EXIT_OK
+    assert capsys.readouterr().out == ""
+
+
+def test_main_returns_error_when_poll_raises(tmp_path, monkeypatch):
+    """Une erreur inattendue du poll est convertie en code de sortie, pas en
+    traceback : le cron GitHub Actions doit rester lisible."""
+    def _boom(*a, **k):
+        raise RuntimeError("base d'état corrompue")
+
+    monkeypatch.setattr(poll_rss, "run_poll", _boom)
+
+    code = poll_rss.main([
+        "--source", "un-bon-moment", "--state-dir", str(tmp_path / "rss"),
+    ])
+
+    assert code == poll_rss.EXIT_ERROR

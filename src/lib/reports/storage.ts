@@ -12,16 +12,22 @@
 
 import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, statSync, writeSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { REPORT_LIMITS } from './types.js';
 import type { Report, ReportStatus } from './types.js';
 
 /**
  * H16-4 — Guard contre path traversal. `sourceId` et `reportId` doivent être
- * des slugs stricts : `[a-z0-9_-]{1,128}`. Pas de `..`, pas de `/`, pas de `\`.
- * On lève si non-conforme — appelé en début de chaque fonction publique qui
- * compose un path. Préfère échouer fort plutôt que de désinfecter (l'appelant
- * doit toujours fournir des slugs propres ; un slug invalide signale un bug).
+ * des slugs stricts : `[a-z0-9_-]{1,slugMax}`. Pas de `..`, pas de `/`, pas de
+ * `\`. On lève si non-conforme — appelé en début de chaque fonction publique
+ * qui compose un path. Préfère échouer fort plutôt que de désinfecter
+ * (l'appelant doit toujours fournir des slugs propres ; un slug invalide
+ * signale un bug).
+ *
+ * La borne vient de `REPORT_LIMITS.slugMax` (SSOT) : `validation.ts` applique
+ * la même, pour que ce garde-fou ne soit plus jamais la première ligne de
+ * défense atteinte sur une simple saisie trop longue.
  */
-const _SLUG_GUARD_RE = /^[a-z0-9_-]{1,128}$/i;
+const _SLUG_GUARD_RE = new RegExp(`^[a-z0-9_-]{1,${REPORT_LIMITS.slugMax}}$`, 'i');
 function assertSlug(value: string, name: string): void {
   if (typeof value !== 'string' || !_SLUG_GUARD_RE.test(value)) {
     throw new Error(`[reports/storage] ${name} invalide (slug attendu) : ${JSON.stringify(value)}`);
