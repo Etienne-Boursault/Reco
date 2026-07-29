@@ -42,7 +42,8 @@ def root(tmp_path: Path) -> Path:
 
 def _fake_resolver(mapping: dict[str, ec.Resolution]):
     """Remplace `resolve_creator` : renvoie la résolution mappée par id."""
-    def _resolve(reco, *, session, api_key, episode_year=None):
+    def _resolve(reco, *, session, api_key, episode_year=None,
+                 allow_search=False):
         return mapping.get(reco["id"],
                            ec.Resolution(None, ec.REASON_TYPE_UNSUPPORTED, None))
     return _resolve
@@ -177,7 +178,8 @@ def test_load_episode_years(tmp_path):
 def test_run_passes_episode_year_to_resolver(root, monkeypatch):
     seen: dict[str, int | None] = {}
 
-    def _resolve(reco, *, session, api_key, episode_year=None):
+    def _resolve(reco, *, session, api_key, episode_year=None,
+                 allow_search=False):
         seen[reco["id"]] = episode_year
         return ec.Resolution(None, ec.REASON_NO_DIRECTOR, None)
 

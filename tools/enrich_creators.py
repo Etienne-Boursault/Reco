@@ -5,13 +5,30 @@ d'elles.
 
 RÈGLE FONDATRICE — ZÉRO INVENTION
 ---------------------------------
-Un `creator` n'est écrit que s'il provient d'une API interrogée via un
-IDENTIFIANT EXTERNE déjà présent dans la reco (`externalIds`). On ne cherche
-JAMAIS par titre : les homonymes produisent de vraies fausses données (cf.
-`reco-audit-coherence-liens`). Au moindre doute → champ laissé vide, avec une
-raison traçable dans le rapport.
+Un `creator` n'est écrit que s'il provient d'une API, jamais d'une déduction.
+Au moindre doute → champ laissé vide, avec une raison traçable dans le rapport.
+
+Par défaut, l'API n'est interrogée que via un IDENTIFIANT EXTERNE déjà présent
+dans la reco (`externalIds`) : c'est le mode sûr, celui qui a produit les 53
+premiers créateurs.
+
+`--search` ajoute un repli par RECHERCHE DE TITRE, strictement encadré, pour
+les films et séries qui n'ont aucun id TMDB (91 recos actives). La recherche
+libre est structurellement plus risquée — les homonymes produisent de vraies
+fausses données (cf. `reco-audit-coherence-liens`) — donc son contrat est plus
+sévère que celui des stratégies par id :
+  - correspondance de titre STRICTE (`titles_match_strict` : égalité après
+    normalisation, sans inclusion de mots ni similarité) ;
+  - candidats filtrés sur l'année et l'antériorité à l'épisode AVANT tout
+    téléchargement ;
+  - **unicité exigée** : deux œuvres au même titre ⇒ `search-ambiguous`, champ
+    laissé vide pour arbitrage humain ;
+  - la fiche complète est re-téléchargée et repasse par tous les garde-fous.
 
 Stratégies (choisies par `plan()`, dans cet ordre) :
+  - `tmdb-search`: film/série SANS id TMDB, uniquement si `--search` → GET
+    `/search/{movie,tv}` → un seul candidat au titre strictement égal → fiche
+    complète par id → même traitement que ci-dessous.
   - `tmdb-movie` : `externalIds.tmdbType == "movie"` → GET
     `/movie/{id}?append_to_response=credits` → crew, `job == "Director"`.
   - `tmdb-tv`    : `externalIds.tmdbType == "tv"` → GET `/tv/{id}` →
@@ -91,9 +108,15 @@ RATE_LIMIT_SLEEP = 0.1  # 10 req/s — très en dessous des limites TMDB/Deezer.
 TITLE_MATCH_THRESHOLD = 0.82
 YEAR_TOLERANCE = 1
 
+# Garde-fous de la recherche libre — cf. `obscurity_verdict` pour la mesure
+# qui a servi à les calibrer.
+MIN_CANDIDATE_POPULARITY = 1.0
+MAX_ECLIPSE_RATIO = 8.0
+
 # --- Stratégies -------------------------------------------------------------
 STRATEGY_TMDB_MOVIE = "tmdb-movie"
 STRATEGY_TMDB_TV = "tmdb-tv"
+STRATEGY_TMDB_SEARCH = "tmdb-search"
 STRATEGY_DEEZER = "deezer"
 STRATEGY_OPENLIBRARY = "openlibrary"
 
@@ -122,6 +145,10 @@ REASON_RELEASED_AFTER_EPISODE = "released-after-episode"
 REASON_CREATOR_EQUALS_TITLE = "creator-equals-title"
 REASON_DEEZER_ARTIST_URL = "deezer-artist-url"
 REASON_DEEZER_BAD_URL = "deezer-unparsable-url"
+REASON_SEARCH_NO_MATCH = "search-no-match"
+REASON_SEARCH_AMBIGUOUS = "search-ambiguous"
+REASON_SEARCH_TOO_OBSCURE = "search-too-obscure"
+REASON_SEARCH_ECLIPSED = "search-eclipsed"
 
 #: Raisons qui traduisent un DOUTE (donnée distante contradictoire) et non une
 #: simple absence de donnée : ces cas méritent un œil humain.
@@ -132,6 +159,11 @@ AMBIGUOUS_REASONS = frozenset({
     REASON_CREATOR_EQUALS_TITLE,
     REASON_NO_TMDB_TYPE,
     REASON_DEEZER_BAD_URL,
+    # Plusieurs œuvres portent exactement le même titre : c'est un arbitrage
+    # humain, pas une absence de donnée.
+    REASON_SEARCH_AMBIGUOUS,
+    REASON_SEARCH_TOO_OBSCURE,
+    REASON_SEARCH_ECLIPSED,
 })
 
 _RE_DEEZER = re.compile(
@@ -193,6 +225,95 @@ def any_title_matches(reco_title: str | None,
                       candidates: Iterable[str | None]) -> bool:
     """True si au moins un titre distant correspond (titre VF *ou* original)."""
     return any(titles_match(reco_title, c) for c in candidates)
+
+
+def titles_match_strict(a: str | None, b: str | None) -> bool:
+    """Égalité de titres APRÈS normalisation seulement — rien d'autre.
+
+    Réservé à la stratégie `tmdb-search`. `titles_match` s'appuie sur un
+    identifiant externe déjà posé : sa permissivité (inclusion de mots,
+    similarité 0,86) n'est acceptable que parce qu'un id ancre déjà le
+    résultat. En recherche libre il n'y a AUCUNE ancre : « Mortal » ramènerait
+    « Mortal Kombat », « Vice » ramènerait « Vice-versa ». On exige donc
+    l'égalité stricte (la normalisation absorbe casse, accents, ponctuation).
+    """
+    na, nb = normalize_text(a), normalize_text(b)
+    return bool(na) and na == nb
+
+
+def search_kind(reco: dict[str, Any]) -> str | None:
+    """Endpoint TMDB de recherche adapté au type de la reco (`movie` / `tv`).
+
+    Suit l'ordre déclaré dans `types` : une reco listée `["serie", "film"]` est
+    d'abord une série.
+    """
+    for t in reco.get("types") or []:
+        if t == "film":
+            return "movie"
+        if t == "serie":
+            return "tv"
+    return None
+
+
+def popularity(entry: dict[str, Any]) -> float:
+    """Score de popularité TMDB d'un résultat (0.0 s'il est absent)."""
+    try:
+        return float(entry.get("popularity") or 0.0)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def obscurity_verdict(candidate: dict[str, Any],
+                      results: Iterable[dict[str, Any]]) -> str | None:
+    """None si le candidat est plausible, sinon la raison de le refuser.
+
+    Le titre strictement égal ne suffit pas : une œuvre obscure peut porter
+    exactement le titre d'une œuvre célèbre dont le titre OFFICIEL, lui, est
+    plus long. Cas réels rencontrés le 2026-07-29 :
+
+      | reco                      | retenu à tort               | pop. | éclipsé par                            | ratio |
+      |---------------------------|-----------------------------|------|----------------------------------------|-------|
+      | « Amélie »                | homonyme de 2021            | 0,14 | Le Fabuleux Destin d'Amélie Poulain    | ×96,9 |
+      | « Le Moulin Rouge »       | homonyme                    | 0,71 | Le Fantôme du Moulin-Rouge             | ×2,1  |
+      | « White fire »            | homonyme                    | 0,44 | —                                      |       |
+      | « Le Seigneur des Anneaux »| dessin animé de 1978       | 4,44 | …Le Retour du roi                      | ×11,7 |
+
+    En regard, les bons matchs mesurés le même jour : South Park 83,5 ·
+    Loki 63,0 · Fight Club 47,5 · Star Wars 40,5 · Kaamelott 26,8 ·
+    Jurassic Park 13,3 · Bref 11,6 · Groom 2,6.
+
+    D'où deux seuils, calibrés sur ces mesures :
+      - `MIN_CANDIDATE_POPULARITY` = 1,0 — une œuvre citée dans un podcast est
+        notable par construction ; en dessous, c'est un homonyme obscur.
+      - `MAX_ECLIPSE_RATIO` = 8,0 — au-delà, un autre résultat écrase tellement
+        le candidat qu'il désigne probablement l'œuvre visée. Le seuil laisse
+        passer « Star Wars » (devancé ×4,3 par un spin-off récent) tout en
+        rejetant « Le Seigneur des Anneaux » (×11,7).
+
+    Ces deux garde-fous ne peuvent que REFUSER : ils ne fabriquent jamais de
+    donnée. La popularité TMDB variant dans le temps, un refus n'est pas
+    définitif — l'outil étant idempotent, une passe ultérieure peut remplir ce
+    qu'il a laissé vide.
+    """
+    own = popularity(candidate)
+    if own < MIN_CANDIDATE_POPULARITY:
+        return REASON_SEARCH_TOO_OBSCURE
+    others = [popularity(r) for r in results if r.get("id") != candidate.get("id")]
+    if others and max(others) > MAX_ECLIPSE_RATIO * own:
+        return REASON_SEARCH_ECLIPSED
+    return None
+
+
+def exact_title_candidates(reco_title: str | None,
+                           results: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Résultats de recherche dont un titre est STRICTEMENT égal à celui de la reco.
+
+    Les entrées sans `id` sont écartées : sans identifiant, impossible d'aller
+    chercher la fiche complète, donc impossible de re-vérifier quoi que ce soit.
+    """
+    return [r for r in results
+            if r.get("id") is not None
+            and any(titles_match_strict(reco_title, t) for t in remote_titles(r))]
 
 
 def remote_titles(payload: dict[str, Any]) -> list[str]:
@@ -286,8 +407,13 @@ class Plan:
     reason: str = ""
 
 
-def plan(reco: dict[str, Any]) -> Plan:
-    """Choisit la stratégie d'enrichissement, ou explique pourquoi il n'y en a pas."""
+def plan(reco: dict[str, Any], *, allow_search: bool = False) -> Plan:
+    """Choisit la stratégie d'enrichissement, ou explique pourquoi il n'y en a pas.
+
+    `allow_search` active le repli par recherche de titre (`--search`) pour les
+    films et séries dépourvus d'id TMDB. Il reste opt-in : par défaut l'outil
+    n'écrit que ce qu'un identifiant externe ancre déjà.
+    """
     if (reco.get("creator") or "").strip():
         return Plan(None, REASON_ALREADY_SET)
 
@@ -296,6 +422,8 @@ def plan(reco: dict[str, Any]) -> Plan:
 
     if any(t in _VIDEO_TYPES for t in types):
         if not ext.get("tmdb"):
+            if allow_search:
+                return Plan(STRATEGY_TMDB_SEARCH)
             return Plan(None, REASON_NO_EXTERNAL_ID)
         kind = ext.get("tmdbType")
         if kind == "movie":
@@ -381,6 +509,22 @@ def fetch_tmdb_tv(session: requests.Session, tmdb_id: str,
                     {"api_key": api_key, "language": "fr-FR"})
 
 
+def fetch_tmdb_search(session: requests.Session, kind: str, query: str,
+                      *, api_key: str, year: int | None = None
+                      ) -> dict[str, Any] | None:
+    """Recherche TMDB par titre (`kind` = `movie` ou `tv`).
+
+    L'année, quand la reco en porte une, est passée à l'API : elle réduit le
+    bruit à la source. Le paramètre diffère selon l'endpoint (`year` pour les
+    films, `first_air_date_year` pour les séries).
+    """
+    params: dict[str, Any] = {"api_key": api_key, "language": "fr-FR",
+                              "query": query, "include_adult": "false"}
+    if year:
+        params["year" if kind == "movie" else "first_air_date_year"] = year
+    return get_json(session, f"{TMDB_BASE}/search/{kind}", params)
+
+
 def fetch_deezer(session: requests.Session, kind: str,
                  deezer_id: str) -> dict[str, Any] | None:
     """Fiche Deezer (track/album). None si l'API signale une erreur.
@@ -458,6 +602,68 @@ def _resolve_deezer(reco: dict[str, Any], session: requests.Session) -> Resoluti
     return Resolution(creator, REASON_FILLED, source)
 
 
+def _resolve_tmdb_search(reco: dict[str, Any], session: requests.Session,
+                         *, api_key: str,
+                         episode_year: int | None = None) -> Resolution:
+    """Recherche TMDB par titre, puis TOUS les garde-fous des stratégies par id.
+
+    Trois filtres successifs, du plus sélectif au plus coûteux :
+      1. titre STRICTEMENT égal (`exact_title_candidates`) ;
+      2. année compatible + œuvre antérieure à l'épisode — un homonyme récent
+         est éliminé ici, avant tout téléchargement ;
+      3. **unicité** : deux œuvres survivantes ⇒ on ne tranche pas.
+    Seulement alors la fiche complète est téléchargée et repasse par
+    `_tmdb_resolution` (qui revérifie titre et années sur la donnée faisant
+    foi), plus le garde-fou « créateur == titre ».
+    """
+    kind = search_kind(reco)
+    source = f"tmdb-search:{kind}"
+    payload = fetch_tmdb_search(session, kind, reco.get("title") or "",
+                                api_key=api_key, year=reco.get("year"))
+    if payload is None:
+        return Resolution(None, REASON_HTTP_ERROR, source)
+
+    candidates = [
+        c for c in exact_title_candidates(reco.get("title"),
+                                          payload.get("results") or [])
+        if year_matches(reco.get("year"), remote_year(c))
+        and release_is_plausible(episode_year, remote_year(c))
+    ]
+    if not candidates:
+        return Resolution(None, REASON_SEARCH_NO_MATCH, source)
+
+    ids = sorted({str(c["id"]) for c in candidates})
+    if len(ids) > 1:
+        return Resolution(None, REASON_SEARCH_AMBIGUOUS, source,
+                          detail=f"{len(ids)} œuvres au même titre : "
+                                 f"{', '.join(ids[:5])}")
+
+    refus = obscurity_verdict(candidates[0], payload.get("results") or [])
+    if refus:
+        return Resolution(None, refus, source,
+                          detail=f"popularité {popularity(candidates[0]):.2f}")
+
+    tmdb_id = ids[0]
+    if kind == "movie":
+        resolution = _tmdb_resolution(
+            reco, fetch_tmdb_movie(session, tmdb_id, api_key=api_key),
+            source=f"tmdb:movie/{tmdb_id}", extractor=director_from_movie,
+            empty_reason=REASON_NO_DIRECTOR, episode_year=episode_year)
+    else:
+        resolution = _tmdb_resolution(
+            reco, fetch_tmdb_tv(session, tmdb_id, api_key=api_key),
+            source=f"tmdb:tv/{tmdb_id}", extractor=creators_from_tv,
+            empty_reason=REASON_NO_CREATED_BY, episode_year=episode_year)
+
+    # Sans ancre d'identifiant, un « créateur » qui répète le titre trahit
+    # presque toujours un mauvais match (fiche d'artiste prise pour une œuvre).
+    if resolution.creator and titles_match(resolution.creator, reco.get("title")):
+        return Resolution(None, REASON_CREATOR_EQUALS_TITLE, resolution.source,
+                          detail=f"créateur « {resolution.creator} » = titre "
+                                 f"de la reco")
+    return resolution
+
+
 def _resolve_openlibrary(reco: dict[str, Any],
                          session: requests.Session) -> Resolution:
     isbn = (reco.get("externalIds") or {})["isbn"]
@@ -482,17 +688,25 @@ def _resolve_openlibrary(reco: dict[str, Any],
 
 def resolve_creator(reco: dict[str, Any], *, session: requests.Session,
                     api_key: str | None,
-                    episode_year: int | None = None) -> Resolution:
+                    episode_year: int | None = None,
+                    allow_search: bool = False) -> Resolution:
     """Tente de déterminer le `creator` d'une reco. Ne modifie RIEN.
 
     `episode_year` (année de l'épisode où la reco a été prononcée) alimente le
     garde-fou d'anachronisme — cf. `release_is_plausible`.
+    `allow_search` autorise le repli par recherche de titre — cf. `plan`.
     """
-    chosen = plan(reco)
+    chosen = plan(reco, allow_search=allow_search)
     if chosen.strategy is None:
         return Resolution(None, chosen.reason, None)
 
     tmdb_id = (reco.get("externalIds") or {}).get("tmdb")
+
+    if chosen.strategy == STRATEGY_TMDB_SEARCH:
+        if not api_key:
+            return Resolution(None, REASON_NO_API_KEY, None)
+        return _resolve_tmdb_search(reco, session, api_key=api_key,
+                                    episode_year=episode_year)
 
     if chosen.strategy == STRATEGY_TMDB_MOVIE:
         if not api_key:
@@ -676,6 +890,7 @@ def run(*, root: Path, session: requests.Session | None, api_key: str | None,
         limit: int | None = None, apply: bool = False,
         exclude_ids: Iterable[str] = (),
         episode_years: dict[str, int] | None = None,
+        allow_search: bool = False,
         sleep: float = RATE_LIMIT_SLEEP) -> Report:
     """Passe complète : sélectionne, résout, journalise, écrit si `apply`."""
     excluded = set(exclude_ids)
@@ -710,7 +925,8 @@ def run(*, root: Path, session: requests.Session | None, api_key: str | None,
 
         resolution = resolve_creator(
             reco, session=session, api_key=api_key,
-            episode_year=(episode_years or {}).get(reco.get("episodeGuid")))
+            episode_year=(episode_years or {}).get(reco.get("episodeGuid")),
+            allow_search=allow_search)
         resolved += 1
         _log_resolution(reco_id, reco, resolution)
         report.record(reco, resolution, path)
@@ -768,6 +984,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Nombre maximum de recos réellement interrogées.")
     p.add_argument("--apply", action="store_true",
                    help="Écrire les creators trouvés (défaut : dry-run).")
+    p.add_argument("--search", action="store_true",
+                   help="Repli par recherche de titre TMDB pour les films et "
+                        "séries sans id externe (titre strictement égal, "
+                        "candidat unique exigé). Opt-in : off par défaut.")
     p.add_argument("--exclude-ids", default=None,
                    help="Ids à ne PAS enrichir : « a,b,c » ou « @fichier ».")
     p.add_argument("--json", dest="json_path", default=None,
@@ -793,6 +1013,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         source=args.source, types=types, limit=args.limit, apply=args.apply,
         exclude_ids=parse_exclude_ids(args.exclude_ids),
         episode_years=load_episode_years(EPISODES_DIR, args.source),
+        allow_search=args.search,
     )
 
     if args.apply:
