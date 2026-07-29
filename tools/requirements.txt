@@ -15,7 +15,7 @@
 #    permissif pour le développement.
 
 # Étape 1 — lecture du flux RSS Acast
-feedparser>=6.0,<7
+feedparser>=6.0.12,<7
 
 # Étape 2 — téléchargement + transcription locale
 faster-whisper>=1.0,<2     # transcription Whisper en local (CTranslate2, CPU/GPU)
@@ -25,17 +25,17 @@ requests>=2.31,<3          # téléchargement des enclosures audio HTTP
 # Étape 3 — extraction des recos via LLM
 anthropic>=0.40            # SDK API Anthropic (modèle claude-opus-4-7)
 openai>=1.0                # SDK OpenAI (provider LLM alternatif — testé dans test_extract_recos)
-python-dotenv>=1.0,<2      # chargement de tools/.env (ANTHROPIC_API_KEY)
+python-dotenv>=1.2.2,<2    # chargement de tools/.env (ANTHROPIC_API_KEY)
 
 # Coordination cross-process (review_server ↔ scripts pipeline)
 filelock>=3.13,<4          # verrou inter-processus (cf. tools/review_lock.py)
 
 # Tests — parsing HTML structurel (review_server)
-beautifulsoup4>=4.12,<5    # assertions DOM robustes aux changements de markup
+beautifulsoup4>=4.15.0,<5  # assertions DOM robustes aux changements de markup
 responses>=0.25,<1         # mock des appels HTTP `requests` (enrich, fetch, ocr, transcribe)
 
 # Cache HTTP SQLite pour `refresh_enrichment.py` (ADR 0023).
-requests-cache>=1.2,<2     # économise quota TMDB/MusicBrainz entre runs
+requests-cache>=1.3.3,<2   # économise quota TMDB/MusicBrainz entre runs
 
 # Embeddings sémantiques (ADR 0033 — roadmap item #15).
 # Optionnel : seul `tools/embed_items.py` en a besoin (import paresseux,
