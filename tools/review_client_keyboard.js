@@ -98,6 +98,10 @@
 
   // --- YouTube IFrame API ---
   let __ytPlayer = null;
+  //: `true` seulement une fois qu'un timecode a chargé dans le cadre une URL
+  //: portant `enablejsapi=1`. Avant ça, instancier `YT.Player` fait jeter la
+  //: bibliothèque à répétition (cf. `tryInstantiateYTPlayer`).
+  let __ytApiUrlReady = false;
   let __ytReadyResolve = null;
   const __ytReady = new Promise((resolve) => { __ytReadyResolve = resolve; });
 
@@ -146,16 +150,37 @@
     return out;
   }
 
+  /**
+   * Réécrit le `href` d'un timecode pour que le cadre charge une URL pilotable.
+   *
+   * L'iframe est alimentée par `target="ytplayer"` : le navigateur navigue le
+   * cadre SANS jamais poser d'attribut `src`. Corriger `src` après coup est
+   * donc inopérant — c'est le LIEN qu'il faut préparer, avant la navigation.
+   * Modifier `href` pendant le clic, sans `preventDefault`, est pris en compte.
+   */
+  function prepareTimecodeHref(a, origin) {
+    if (!a) return '';
+    const href = a.getAttribute('href') || '';
+    const patched = withJsApi(href, origin);
+    if (patched && patched !== href) a.setAttribute('href', patched);
+    return patched;
+  }
+
   function tryInstantiateYTPlayer() {
+    // Ne PAS instancier tant que le cadre ne porte pas une URL pilotable.
+    //
+    // C'est la cause réelle du `DOMException` : au chargement de la page,
+    // `onYouTubeIframeAPIReady` appelait `new YT.Player()` sur une iframe
+    // ENCORE VIDE. La bibliothèque tentait alors de dialoguer avec un cadre
+    // qui ne pointe sur rien, et jetait à chaque tentative — d'où la console
+    // inondée avant même toute interaction.
+    if (!__ytApiUrlReady) return;
     const wrap = document.querySelector('[data-player-wrap]');
     if (!wrap) return;
     const iframe = wrap.querySelector('iframe.player');
     if (!iframe || !window.YT || !window.YT.Player) return;
     // S'assurer que l'iframe a un id (requis par YT.Player).
     if (!iframe.id) iframe.id = 'reco-yt-player';
-    const src = iframe.getAttribute('src') || '';
-    const patched = withJsApi(src, (window.location && window.location.origin) || '');
-    if (patched !== src) iframe.setAttribute('src', patched);
     try {
       __ytPlayer = new YT.Player(iframe.id, {
         events: {
@@ -540,7 +565,14 @@
   document.addEventListener('click', (e) => {
     const tc = e.target.closest('a[target="ytplayer"]');
     if (!tc) return;
-    // Reset & re-bind après que le nav ait chargé le nouveau src.
+    // Préparer l'URL AVANT que le navigateur ne suive le lien : c'est la seule
+    // fenêtre où l'on peut agir, la navigation par `target` ne passant jamais
+    // par l'attribut `src` de l'iframe.
+    const patched = prepareTimecodeHref(
+      tc, (window.location && window.location.origin) || '',
+    );
+    __ytApiUrlReady = /[?&]enablejsapi=1/.test(patched);
+    // Reset & re-bind après que le nav ait chargé la nouvelle URL.
     __ytPlayer = null;
     setTimeout(tryInstantiateYTPlayer, 600);
   });
@@ -553,6 +585,7 @@
       applySearchFilter: applySearchFilter,
       getRows: getRows,
       withJsApi: withJsApi,
+      prepareTimecodeHref: prepareTimecodeHref,
     });
   }
 })();

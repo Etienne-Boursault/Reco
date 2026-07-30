@@ -32,16 +32,17 @@ function loadScript(name: string): void {
 }
 
 let withJsApi: (src: string, origin: string) => string;
+let prepareTimecodeHref: (a: Element | null, origin: string) => string;
 
 beforeAll(() => {
   (window as never as Record<string, unknown>).__recoTestHooks = {};
   loadScript('review_client.js');
   loadScript('review_client_cluster.js');
   loadScript('review_client_keyboard.js');
-  withJsApi = (
-    (window as never as Record<string, Record<string, unknown>>).__recoTestHooks
-      .withJsApi
-  ) as typeof withJsApi;
+  const hooks = (window as never as Record<string, Record<string, unknown>>)
+    .__recoTestHooks;
+  withJsApi = hooks.withJsApi as typeof withJsApi;
+  prepareTimecodeHref = hooks.prepareTimecodeHref as typeof prepareTimecodeHref;
 });
 
 const ORIGIN = 'http://127.0.0.1:8001';
@@ -95,5 +96,66 @@ describe('withJsApi — cas où il ne faut RIEN faire', () => {
   it('est idempotent — deux applications ne changent rien de plus', () => {
     const une = withJsApi(EMBED, ORIGIN);
     expect(withJsApi(une, ORIGIN)).toBe(une);
+  });
+});
+
+describe('prepareTimecodeHref — le lien, pas l’iframe', () => {
+  /**
+   * L'iframe est alimentée par `target="ytplayer"` : le navigateur navigue le
+   * cadre SANS jamais poser d'attribut `src`. Vérifié en navigateur — la
+   * requête réseau partait vers
+   * `…/embed/0YhusuE6sII?start=1876&autoplay=1&rel=0&playsinline=1`, sans
+   * `enablejsapi` ni `origin`, alors que `getAttribute('src')` valait `null`.
+   * Corriger `src` après coup ne pouvait donc rien changer : c'est le LIEN
+   * qu'il faut préparer, avant que la navigation ne parte.
+   */
+  const lien = (href: string): HTMLAnchorElement => {
+    const a = document.createElement('a');
+    a.setAttribute('target', 'ytplayer');
+    a.setAttribute('href', href);
+    return a;
+  };
+
+  const REEL =
+    'https://www.youtube-nocookie.com/embed/0YhusuE6sII?start=1876&autoplay=1&rel=0&playsinline=1';
+
+  it('réécrit le href du lien avec enablejsapi et origin', () => {
+    const a = lien(REEL);
+    prepareTimecodeHref(a, ORIGIN);
+    const u = new URL(a.getAttribute('href') as string);
+    expect(u.searchParams.get('enablejsapi')).toBe('1');
+    expect(u.searchParams.get('origin')).toBe(ORIGIN);
+  });
+
+  it('préserve le timecode et les options de lecture', () => {
+    const a = lien(REEL);
+    prepareTimecodeHref(a, ORIGIN);
+    const u = new URL(a.getAttribute('href') as string);
+    expect(u.searchParams.get('start')).toBe('1876');
+    expect(u.searchParams.get('autoplay')).toBe('1');
+    expect(u.searchParams.get('playsinline')).toBe('1');
+  });
+
+  it('renvoie l’URL préparée, pour que l’appelant sache si l’API est pilotable', () => {
+    expect(prepareTimecodeHref(lien(REEL), ORIGIN)).toMatch(/[?&]enablejsapi=1/);
+  });
+
+  it('ne touche à rien sans origine exploitable', () => {
+    const a = lien(REEL);
+    prepareTimecodeHref(a, '');
+    expect(a.getAttribute('href')).toBe(REEL);
+  });
+
+  it('tolère un lien absent', () => {
+    expect(prepareTimecodeHref(null, ORIGIN)).toBe('');
+  });
+
+  it('est idempotent — deux clics ne dupliquent pas les paramètres', () => {
+    const a = lien(REEL);
+    prepareTimecodeHref(a, ORIGIN);
+    const apresUn = a.getAttribute('href');
+    prepareTimecodeHref(a, ORIGIN);
+    expect(a.getAttribute('href')).toBe(apresUn);
+    expect(apresUn!.match(/origin=/g)).toHaveLength(1);
   });
 });
