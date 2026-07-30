@@ -113,6 +113,39 @@
     tryInstantiateYTPlayer();
   };
 
+  /**
+   * Ajoute `enablejsapi=1` ET `origin` à l'URL du lecteur.
+   *
+   * `origin` n'est PAS optionnel : sans lui, l'IFrame Player API émet ses
+   * `postMessage` vers une cible qu'elle ne sait pas déterminer et le
+   * navigateur jette `DOMException: An invalid or illegal string was
+   * specified` à CHAQUE commande — la console de /doutes s'en remplissait au
+   * point de noyer les vraies erreurs.
+   *
+   * L'origine est calculée côté client parce que le serveur ne la connaît pas
+   * au rendu : elle dépend du host et du port par lesquels on accède à l'outil
+   * (127.0.0.1:8000, localhost:8001, l'IP du portable sur le réseau local…).
+   *
+   * Une origine inexploitable (`''`, `'null'` sur page opaque) fait renoncer
+   * à l'ajout : `origin=null` serait REJETÉ par YouTube, alors que l'absence
+   * le laisse retomber sur son comportement par défaut.
+   */
+  function withJsApi(src, origin) {
+    if (!src || src === 'about:blank') return src;
+    // Sans origine exploitable, on N'ACTIVE PAS l'API : `enablejsapi=1` seul
+    // est exactement ce qui produisait le `DOMException`. Le pilotage clavier
+    // retombe alors sur `postMessage('*')`, qui fonctionne et ne jette rien.
+    if (!origin || origin === 'null' || origin === 'undefined') return src;
+    let out = src;
+    if (!/[?&]enablejsapi=/.test(out)) {
+      out += (out.includes('?') ? '&' : '?') + 'enablejsapi=1';
+    }
+    if (!/[?&]origin=/.test(out)) {
+      out += '&origin=' + encodeURIComponent(origin);
+    }
+    return out;
+  }
+
   function tryInstantiateYTPlayer() {
     const wrap = document.querySelector('[data-player-wrap]');
     if (!wrap) return;
@@ -120,12 +153,9 @@
     if (!iframe || !window.YT || !window.YT.Player) return;
     // S'assurer que l'iframe a un id (requis par YT.Player).
     if (!iframe.id) iframe.id = 'reco-yt-player';
-    // Force enablejsapi sur l'URL si chargée.
     const src = iframe.getAttribute('src') || '';
-    if (src && src !== 'about:blank' && !src.includes('enablejsapi=1')) {
-      const sep = src.includes('?') ? '&' : '?';
-      iframe.setAttribute('src', src + sep + 'enablejsapi=1');
-    }
+    const patched = withJsApi(src, (window.location && window.location.origin) || '');
+    if (patched !== src) iframe.setAttribute('src', patched);
     try {
       __ytPlayer = new YT.Player(iframe.id, {
         events: {
@@ -522,6 +552,7 @@
     Object.assign(window.__recoTestHooks, {
       applySearchFilter: applySearchFilter,
       getRows: getRows,
+      withJsApi: withJsApi,
     });
   }
 })();
