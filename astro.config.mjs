@@ -54,7 +54,15 @@ export default defineConfig({
   site: siteUrl || 'https://reco.example',
   // Avec RECO_SSR=1 : adaptateur Node → les routes forcées en `prerender=false`
   // (cf. ssrOnDemandRoutes) deviennent dynamiques. Sinon aucun adaptateur.
-  ...(wantSSR ? { adapter: node({ mode: 'standalone' }) } : {}),
+  //
+  // Mode `middleware` et NON `standalone` : en standalone, Astro démarre son
+  // propre serveur HTTP et rien ne peut s'insérer devant. Or `@astrojs/node`
+  // ne compresse pas, et l'hébergement n'offre aucun réglage pour le faire —
+  // le site partait donc à 2599 Ko au lieu de 199 (mesuré le 2026-08-16).
+  // En `middleware`, l'entrée exporte un gestionnaire que `server.mjs` monte
+  // derrière sa propre couche de compression. C'est `server.mjs` que lance
+  // `npm start`, et donc l'hébergeur.
+  ...(wantSSR ? { adapter: node({ mode: 'middleware' }) } : {}),
   trailingSlash: 'ignore',
   // Astro 7 bascule `compressHTML` sur `'jsx'` par défaut : la compression
   // devient JSX-aware et SUPPRIME les blancs entre un texte et une balise
