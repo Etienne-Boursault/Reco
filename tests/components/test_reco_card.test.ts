@@ -1,27 +1,19 @@
 /**
- * Tests RecoCard — Story 4 (marqueur « œuvre d'invité ») + badges de nature.
+ * Tests RecoCard — badges, sécurité des liens, métadonnées, accessibilité.
  *
- * On vérifie le badge distinct affiché quand `reco.guestWork === true`, et
- * l'absence de badge sinon. Le combo legacy citation + guestWork verrouille
- * l'affichage des DEUX badges (NIT-9).
+ * La résolution des icônes de plateforme vit dans
+ * `test_reco_card_icons.test.ts` : c'est le seul bloc qui lit le disque, et
+ * réunir les deux faisait dépasser 500 lignes à ce fichier.
  */
 import { describe, it, expect } from 'vitest';
 import { readFile } from 'node:fs/promises';
+// Deux tests instancient le conteneur EUX-MÊMES, pour passer des props que
+// les utilitaires partagés ne prévoient pas.
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+
 import RecoCard from '../../src/components/RecoCard.astro';
 
-async function render(reco: Record<string, unknown>): Promise<string> {
-  const container = await AstroContainer.create();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return container.renderToString(RecoCard as any, { props: { reco } });
-}
-
-const baseReco = {
-  id: 'ubm-0001',
-  title: 'Mon spectacle',
-  creator: 'Untel',
-  types: ['spectacle'],
-};
+import { baseReco, parse, render, renderProps } from './_reco_card';
 
 describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
   it('affiche le badge ⭐ « Leur œuvre » quand guestWork=true', async () => {
@@ -75,12 +67,97 @@ describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
   });
 });
 
-/** Rendu avec props complètes (sourceId, audio, etc.). */
-async function renderProps(props: Record<string, unknown>): Promise<string> {
-  const container = await AstroContainer.create();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return container.renderToString(RecoCard as any, { props });
-}
+// ---------------------------------------------------------------------------
+// Agencement de la carte (2026-07-30)
+//   1. le titre partage la rangée des icônes de type au lieu d'être dessous ;
+//   2. le badge « Leur œuvre » descend sur la ligne du créateur.
+// ---------------------------------------------------------------------------
+describe('RecoCard — titre sur la rangée des types', () => {
+  it('le titre est un enfant DIRECT de la rangée card-top', async () => {
+    const doc = parse(await render({ ...baseReco, types: ['film'] }));
+    const title = doc.querySelector('.card-top > h3.title');
+    expect(title).not.toBeNull();
+    expect(title!.textContent).toBe('Mon spectacle');
+  });
+
+  it('les icônes de type précèdent le titre dans la rangée', async () => {
+    const doc = parse(await render({ ...baseReco, types: ['film'] }));
+    const enfants = Array.from(doc.querySelector('.card-top')!.children);
+    expect(enfants[0]!.getAttribute('role')).toBe('img');
+    expect(enfants[1]!.tagName.toLowerCase()).toBe('h3');
+  });
+
+  it('le titre reste HORS du conteneur role="img" (sinon annoncé comme partie de l’image)', async () => {
+    const doc = parse(await render({ ...baseReco, types: ['film', 'livre'] }));
+    expect(doc.querySelector('[role="img"] h3')).toBeNull();
+    expect(doc.querySelector('[role="img"] .title')).toBeNull();
+    // Le conteneur d'emojis ne contient QUE des emojis décoratifs.
+    const type = doc.querySelector('.type[role="img"]')!;
+    expect(type.textContent!.trim()).toBe('🎬📖');
+  });
+
+  it('un seul <h3> par carte (le titre n’est pas dupliqué par le déplacement)', async () => {
+    const doc = parse(await render(baseReco));
+    expect(doc.querySelectorAll('h3')).toHaveLength(1);
+  });
+
+  it('le titre n’est plus un frère de la ligne créateur', async () => {
+    const doc = parse(await render(baseReco));
+    expect(doc.querySelector('.card > h3.title')).toBeNull();
+  });
+});
+
+describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
+  it('le badge descend sur la ligne créateur et quitte la rangée du haut', async () => {
+    const doc = parse(await render({ ...baseReco, guestWork: true }));
+    expect(doc.querySelector('.creator .guestwork-badge')).not.toBeNull();
+    expect(doc.querySelector('.card-top .guestwork-badge')).toBeNull();
+  });
+
+  it('le nom du créateur précède le badge sur la ligne', async () => {
+    const doc = parse(await render({ ...baseReco, guestWork: true }));
+    const ligne = doc.querySelector('.creator')!;
+    const enfants = Array.from(ligne.children);
+    expect(enfants[0]!.className).toContain('creator-name');
+    expect(enfants[0]!.textContent).toContain('Untel');
+    expect(enfants[enfants.length - 1]!.className).toContain('guestwork-badge');
+  });
+
+  it('guestWork SANS créateur : le badge ne disparaît pas, la ligne est rendue pour lui seul', async () => {
+    const doc = parse(await render({ ...baseReco, creator: undefined, guestWork: true }));
+    const ligne = doc.querySelector('.creator');
+    expect(ligne).not.toBeNull();
+    expect(ligne!.querySelector('.guestwork-badge')).not.toBeNull();
+    // Repli honnête : pas de nom fabriqué ni d'espace réservé vide.
+    expect(ligne!.querySelector('.creator-name')).toBeNull();
+    expect(ligne!.textContent).toContain('Leur œuvre');
+    expect(ligne!.textContent).not.toContain('Untel');
+  });
+
+  it('le badge citation reste en haut : il qualifie la reco, pas la personne', async () => {
+    const doc = parse(await render({ ...baseReco, kind: 'citation' }));
+    expect(doc.querySelector('.card-top .kind-badge')!.textContent).toContain('Mentionné');
+    expect(doc.querySelector('.creator .kind-badge')).toBeNull();
+  });
+
+  it('combo citation + guestWork : un badge dans chaque zone', async () => {
+    const doc = parse(await render({ ...baseReco, kind: 'citation', guestWork: true }));
+    expect(doc.querySelector('.card-top .kind-badge')!.textContent).toContain('Mentionné');
+    expect(doc.querySelector('.creator .guestwork-badge')!.textContent).toContain('Leur œuvre');
+    expect(doc.querySelector('.card-top .guestwork-badge')).toBeNull();
+  });
+
+  it('showGuestWorkBadge=false sans créateur → aucune ligne créateur du tout', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(RecoCard as never, {
+      props: {
+        reco: { ...baseReco, creator: undefined, guestWork: true },
+        showGuestWorkBadge: false,
+      },
+    });
+    expect(parse(html).querySelector('.creator')).toBeNull();
+  });
+});
 
 // ---------------------------------------------------------------------------
 // Sécurité des href (S2 — validateur unifié `isSafeUrl` de merchants)
@@ -120,190 +197,6 @@ describe('RecoCard — sécurité des liens (S2)', () => {
     expect(html).toContain('moins recommandée');
     expect(html).toContain('justwatch.com');
   });
-});
-
-// ---------------------------------------------------------------------------
-// Résolution d'icône (favicon self-hosted, whitelist host)
-// ---------------------------------------------------------------------------
-describe('RecoCard — icônes de plateforme', () => {
-  it('host whitelisté → /icons/platforms/<host>.svg', async () => {
-    const html = await render({ ...baseReco, types: ['film'] });
-    // film → JustWatch (www.justwatch.com est whitelisté).
-    expect(html).toContain('/icons/platforms/www.justwatch.com.svg');
-  });
-
-  it('host non whitelisté → symbole selon le type (plus de globe link.svg)', async () => {
-    const html = await renderProps({
-      reco: {
-        ...baseReco,
-        types: ['autre'],
-        links: [{ label: 'Example', url: 'https://example.com/x', kind: 'streaming' }],
-      },
-    });
-    // On ne rend plus le globe « link.svg » (lu comme une image cassée)…
-    expect(html).not.toContain('link.svg');
-    expect(html).not.toContain('example.com.svg');
-    // …mais un symbole selon la nature du lien (streaming → ▶️).
-    expect(html).toContain('link-symbol');
-    expect(html).toContain('▶️');
-  });
-
-  it('symbole de repli varie selon le kind (buy → 🛒, borrow → 📚, info → ℹ️)', async () => {
-    const mk = (kind: string) =>
-      renderProps({
-        reco: {
-          ...baseReco,
-          types: ['autre'],
-          links: [{ label: 'X', url: 'https://example.com/x', kind }],
-        },
-      });
-    expect(await mk('buy')).toContain('🛒');
-    expect(await mk('borrow')).toContain('📚');
-    expect(await mk('info')).toContain('ℹ️');
-  });
-
-  it('logoUrl custom sur host whitelisté : utilisé comme <img src>', async () => {
-    const html = await renderProps({
-      reco: {
-        ...baseReco,
-        types: ['autre'],
-        customLinks: [
-          {
-            label: 'MonLien',
-            url: 'https://example.com/x',
-            logoUrl: 'https://bandcamp.com/logo.png',
-          },
-        ],
-      },
-    });
-    expect(html).toContain('https://bandcamp.com/logo.png');
-  });
-
-  it('logoUrl custom sur host NON whitelisté : ignoré (no-tracker), repli symbole', async () => {
-    const html = await renderProps({
-      reco: {
-        ...baseReco,
-        types: ['autre'],
-        customLinks: [
-          {
-            label: 'MonLien',
-            url: 'https://example.com/x',
-            logoUrl: 'https://tracker.evil/logo.png',
-          },
-        ],
-      },
-    });
-    expect(html).not.toContain('tracker.evil');
-    expect(html).not.toContain('link.svg');
-    // customLink sans `kind` → symbole générique (maillon 🔗).
-    expect(html).toContain('link-symbol');
-    expect(html).toContain('🔗');
-  });
-});
-
-// ---------------------------------------------------------------------------
-// Normalisation des hosts (variantes → favicon whitelistée partagée)
-// ---------------------------------------------------------------------------
-describe('RecoCard — normalisation des hosts', () => {
-  const iconFor = (url: string, kind = 'info') =>
-    renderProps({
-      reco: { ...baseReco, types: ['autre'], links: [{ label: 'X', url, kind }] },
-    });
-
-  it('sous-domaine d’artiste Bandcamp → favicon bandcamp.com', async () => {
-    expect(await iconFor('https://gorillaz.bandcamp.com/album/x')).toContain(
-      '/icons/platforms/bandcamp.com.svg',
-    );
-  });
-
-  it('sous-domaine itch.io → favicon itch.io', async () => {
-    expect(await iconFor('https://polytron.itch.io/fez')).toContain(
-      '/icons/platforms/itch.io.svg',
-    );
-  });
-
-  it('YouTube mobile (m.youtube.com) → favicon www.youtube.com', async () => {
-    expect(await iconFor('https://m.youtube.com/watch?v=x')).toContain(
-      '/icons/platforms/www.youtube.com.svg',
-    );
-  });
-
-  it('en.wikipedia.org → favicon fr.wikipedia.org (même logo)', async () => {
-    expect(await iconFor('https://en.wikipedia.org/wiki/Fez')).toContain(
-      '/icons/platforms/fr.wikipedia.org.svg',
-    );
-  });
-
-  it('www.rakuten.tv → favicon rakuten.tv', async () => {
-    expect(await iconFor('https://www.rakuten.tv/fr/movie/x')).toContain(
-      '/icons/platforms/rakuten.tv.svg',
-    );
-  });
-
-  it('un host sans alias ni marque-racine reste sans favicon (symbole)', async () => {
-    const html = await iconFor('https://not-a-bandcamp.example.com/x');
-    expect(html).not.toContain('.svg');
-    expect(html).toContain('link-symbol');
-  });
-
-  it('www.paramountplus.com → favicon www.intl.paramountplus.com (même service)', async () => {
-    expect(await iconFor('https://www.paramountplus.com/fr/shows/x/')).toContain(
-      '/icons/platforms/www.intl.paramountplus.com.svg',
-    );
-  });
-
-  it('www.gallimard-bd.fr → favicon www.gallimard.fr (label du même éditeur)', async () => {
-    expect(await iconFor('https://www.gallimard-bd.fr/livre/x')).toContain(
-      '/icons/platforms/www.gallimard.fr.svg',
-    );
-  });
-
-  it('www.librairie-gallimard.com n’est PAS aliasé (librairie ≠ maison d’édition)', async () => {
-    const html = await iconFor('https://www.librairie-gallimard.com/livre/x');
-    expect(html).not.toContain('/icons/platforms/www.gallimard.fr.svg');
-    expect(html).toContain('link-symbol');
-  });
-});
-
-// ---------------------------------------------------------------------------
-// Vague 4 (2026-07-29) — lot borné d'icônes de marques identifiables.
-// Chaque host whitelisté DOIT avoir son SVG sur disque : whitelister sans
-// déployer le fichier afficherait une image cassée (cf. commentaire du Set
-// dans RecoCard.astro). On verrouille les deux bouts.
-// ---------------------------------------------------------------------------
-describe('RecoCard — icônes vague 4', () => {
-  const iconFor = (url: string, kind = 'streaming') =>
-    renderProps({
-      reco: { ...baseReco, types: ['autre'], links: [{ label: 'X', url, kind }] },
-    });
-
-  const CASES: Array<[host: string, url: string]> = [
-    ['www.twitch.tv', 'https://www.twitch.tv/someone'],
-    ['watch.plex.tv', 'https://watch.plex.tv/movie/x'],
-    ['www.tf1.fr', 'https://www.tf1.fr/tf1/emission/x'],
-  ];
-
-  for (const [host, url] of CASES) {
-    it(`${host} → /icons/platforms/${host}.svg (et pas un symbole)`, async () => {
-      const html = await iconFor(url);
-      expect(html).toContain(`/icons/platforms/${host}.svg`);
-      expect(html).not.toContain('link-symbol');
-    });
-
-    it(`${host} : le SVG existe et est un XML <svg> 24×24`, async () => {
-      const svg = await readFile(
-        new URL(`../../public/icons/platforms/${host}.svg`, import.meta.url),
-        'utf8',
-      );
-      expect(svg.trimEnd()).toMatch(/^<svg[^>]*>[\s\S]*<\/svg>$/);
-      expect(svg).toContain('viewBox="0 0 24 24"');
-      expect(svg).toContain('width="24"');
-      expect(svg).toContain('height="24"');
-      expect(svg).toContain('role="img"');
-      // Icônes décoratives : le nom accessible vient de l'aria-label du lien.
-      expect(svg).not.toContain('<title');
-    });
-  }
 });
 
 // ---------------------------------------------------------------------------

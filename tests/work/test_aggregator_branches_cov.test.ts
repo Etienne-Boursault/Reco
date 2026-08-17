@@ -1,7 +1,7 @@
 /**
  * tests/work/test_aggregator_branches_cov.test.ts — Branches restantes de
  * `src/lib/work/aggregator.ts` : join d'épisode manquant, tri sans date,
- * garde XSS des URLs, externalIds (spotify / openlibrary / justwatch / tv)
+ * garde XSS des URLs, externalIds (spotify / openlibrary / watchPage / tv)
  * et deep-link YouTube dégradé.
  */
 import { describe, it, expect } from 'vitest';
@@ -145,17 +145,17 @@ describe('workExternalLinks — externalIds', () => {
     expect(workExternalLinks(item('i1', { externalIds: { openlibrary: '' } }))).toEqual([]);
   });
 
-  it('justwatch : url http(s) acceptée, url non-http rejetée', () => {
+  it('watchPage : url http(s) acceptée, url non-http rejetée', () => {
     expect(
-      workExternalLinks(item('i1', { externalIds: { justwatch: 'https://justwatch.com/fr/x' } })),
-    ).toEqual([{ label: 'JustWatch', url: 'https://justwatch.com/fr/x' }]);
+      workExternalLinks(item('i1', { externalIds: { watchPage: 'https://themoviedb.org/x/watch' } })),
+    ).toEqual([{ label: 'Où regarder', url: 'https://themoviedb.org/x/watch' }]);
     expect(
-      workExternalLinks(item('i1', { externalIds: { justwatch: 'ftp://justwatch.com/x' } })),
+      workExternalLinks(item('i1', { externalIds: { watchPage: 'ftp://themoviedb.org/x' } })),
     ).toEqual([]);
   });
 
-  it('justwatch non-string → ignoré', () => {
-    expect(workExternalLinks(item('i1', { externalIds: { justwatch: 12 } }))).toEqual([]);
+  it('watchPage non-string → ignoré', () => {
+    expect(workExternalLinks(item('i1', { externalIds: { watchPage: 12 } }))).toEqual([]);
   });
 
   it('dédup par label insensible à la casse — customLinks prioritaires', () => {

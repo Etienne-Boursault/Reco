@@ -47,15 +47,25 @@ const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';
 // balise racine dynamiquement plutôt que de dupliquer le gabarit : deux
 // copies à maintenir en parallèle finissent toujours par diverger.
 const Root = href ? 'a' : 'article';
-const rootAttrs = href
-  ? { class: 'gcard gcard--link', href, 'aria-label': `${title} — ${t('work.openA11y')}` }
-  : { class: 'gcard' };
+// PAS d'`aria-label` sur le lien. Il en portait un — « <titre> — Voir la page
+// complète de l'œuvre » — qui REMPLAÇAIT le contenu de la carte au lieu de le
+// compléter : le type, le créateur et le nombre de mentions disparaissaient
+// pour les lecteurs d'écran, et une commande vocale prononçant le texte visible
+// ne trouvait plus le lien (WCAG 2.5.3 « Label in Name » ; Lighthouse en
+// comptait 203 sur une seule galerie, audit du 2026-08-16).
+// Le nom accessible est donc calculé depuis le CONTENU, auquel on ajoute
+// l'intention de l'action dans un `.visually-hidden` — visible des seuls
+// lecteurs d'écran, et inclus dans le nom puisqu'il fait partie du contenu.
+const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard' };
 ---
 
 <Root {...rootAttrs} data-item-id={id} data-types={types.join(',')}>
   <div class="gcard-icon" aria-hidden="true">{emoji}</div>
   <div class="gcard-body">
-    <p class="gcard-type" aria-label={`Type : ${typeLabel}`}>{typeLabel}</p>
+    {/* `aria-label` sur un `<p>` est SANS EFFET : ARIA ne l'autorise que sur
+       les éléments porteurs d'un rôle. Le préfixe passe donc par du texte
+       réellement présent, réservé aux lecteurs d'écran. */}
+    <p class="gcard-type"><span class="visually-hidden">Type : </span>{typeLabel}</p>
     <h3 class="gcard-title">{title}</h3>
     {creator && (
       <p class="gcard-creator">
@@ -68,6 +78,7 @@ const rootAttrs = href
       <span class="gcard-count-l">{mentionLabel}</span>
     </p>
   </div>
+  {href && <span class="visually-hidden">— {t('work.openA11y')}</span>}
 </Root>
 
 <style>

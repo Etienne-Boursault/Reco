@@ -14,8 +14,13 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { distRoot } from '../helpers/distRoot';
 
-const DIST = join(process.cwd(), 'dist');
+// Racine résolue selon le MODE de build : `dist/` en statique,
+// `dist/client/` en SSR (mode `middleware`, celui de la production
+// depuis le 2026-08-16). Coder `dist/` en dur faisait échouer ces
+// tests après un build SSR au lieu de les sauter.
+const DIST = distRoot() ?? join(process.cwd(), 'dist');
 const indexPath = join(DIST, 'index.html');
 const hasBuild = existsSync(indexPath);
 

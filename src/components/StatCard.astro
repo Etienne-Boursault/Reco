@@ -45,7 +45,11 @@ const verbal = srLabel ?? display;
 const id = `${idPrefix}-${hashSlug(label)}`;
 ---
 
-<article class="stat-card" role="group" aria-labelledby={id}>
+{/* Pas de `role="group"` : ARIA ne l'autorise pas sur `<article>`, qui porte
+   déjà le rôle implicite `article` (Lighthouse, audit du 2026-08-16 —
+   « Uses ARIA roles on incompatible elements », 4 cartes concernées).
+   `aria-labelledby` suffit à nommer la carte, et fonctionne sur `<article>`. */}
+<article class="stat-card" aria-labelledby={id}>
   <p class="value" aria-hidden="true">
     <span class="num">{display}</span>
     {unit && <span class="unit">{unit}</span>}

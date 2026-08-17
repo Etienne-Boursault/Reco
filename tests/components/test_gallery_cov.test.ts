@@ -52,11 +52,17 @@ describe('GalleryCard — variante non cliquable (<article>)', () => {
 });
 
 describe('GalleryCard — variante cliquable (<a>, X2)', () => {
-  it('rend un <a> vers la page œuvre avec un nom accessible explicite', async () => {
+  it('rend un <a> vers la page œuvre, nommé par son CONTENU', async () => {
     const html = await render(GalleryCard, { ...BASE, href: '/ubm/oeuvre/itm-1' });
     expect(html).toContain('gcard--link');
     expect(html).toContain('href="/ubm/oeuvre/itm-1"');
-    expect(html).toContain('aria-label="Parasite — Voir la page complète de l’œuvre"');
+    // Un `aria-label` REMPLACERAIT le contenu : type, créateur et décompte de
+    // mentions cesseraient d'être annoncés, et une commande vocale sur le
+    // texte visible ne trouverait plus le lien (WCAG 2.5.3).
+    expect(html.match(/<a [^>]*>/)?.[0]).not.toContain('aria-label');
+    expect(html).toContain('Parasite');
+    // L'intention de l'action est ajoutée AU contenu, pas à sa place.
+    expect(html).toContain('Voir la page complète de l’œuvre');
   });
 });
 
@@ -79,10 +85,14 @@ describe('GalleryCard — type primaire', () => {
     expect(html).toContain('>Autre</p>');
   });
 
-  it('l’emoji est décoratif, le type reste annoncé par aria-label', async () => {
+  it('l’emoji est décoratif, le type est préfixé par du texte réel', async () => {
     const html = await render(GalleryCard, BASE);
     expect(html).toMatch(/<div class="gcard-icon" aria-hidden="true"[^>]*>🎬<\/div>/);
-    expect(html).toContain('aria-label="Type : Film"');
+    // `aria-label` sur un `<p>` est SANS EFFET : ARIA ne l'autorise que sur les
+    // éléments porteurs d'un rôle. Le préfixe doit donc exister dans le DOM.
+    expect(html).not.toContain('aria-label="Type : Film"');
+    expect(html).toMatch(/<span class="visually-hidden"[^>]*>Type\s*:\s*<\/span>/);
+    expect(html).toContain('Film');
   });
 });
 

@@ -63,6 +63,13 @@ const data = source.data;
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
 // Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl).
 const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : (episode.imageUrl ?? null);
+// Dimensions posées UNIQUEMENT pour la vignette YouTube : `hqdefault.jpg` fait
+// toujours 480×360. Sans elles, le navigateur réserve zéro place puis décale
+// la page quand l'image arrive — c'est du CLS, et c'était la SEULE image du
+// site à en produire (audit du 2026-08-16). L'artwork Acast, lui, n'a pas de
+// dimension connue à l'avance : on n'invente rien, la règle CSS `aspect-ratio`
+// ci-dessous lui réserve la place.
+const thumbSize = ytId ? { width: 480, height: 360 } : {};
 const epNum = episodeLabel(episode);
 // Titre français du flux plutôt que le titre YouTube (parfois en anglais).
 const epTitle = episode.title;
@@ -184,11 +191,11 @@ const jsonLd: Record<string, unknown>[] = [
               rel="noopener noreferrer"
               aria-label={`Regarder « ${epTitle} » sur YouTube ${t('a11y.externalLinkSuffix')}`}
             >
-              {thumb && <img src={thumb} alt="" loading="lazy" decoding="async" />}
+              {thumb && <img src={thumb} alt="" loading="lazy" decoding="async" {...thumbSize} />}
               <span class="play" aria-hidden="true">▶</span>
             </a>
           ) : (
-            thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" decoding="async" />
+            thumb && <img class="thumb" src={thumb} alt={epTitle} loading="lazy" decoding="async" {...thumbSize} />
           )
         }
         <div class="ep-info">

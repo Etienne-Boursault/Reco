@@ -236,8 +236,8 @@ export function workExternalLinks(item: ItemLike): WorkExternalLink[] {
       ethics: 'indie',
     });
   }
-  if (typeof ext.justwatch === 'string' && isSafeHttpUrl(ext.justwatch)) {
-    out.push({ label: 'JustWatch', url: ext.justwatch });
+  if (typeof ext.watchPage === 'string' && isSafeHttpUrl(ext.watchPage)) {
+    out.push({ label: 'Où regarder', url: ext.watchPage });
   }
   // Dédup par label (case-insensitive) — customLinks gardent priorité.
   const seen = new Map<string, WorkExternalLink>();

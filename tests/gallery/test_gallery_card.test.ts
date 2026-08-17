@@ -85,7 +85,28 @@ describe('GalleryCard — cliquable ou non, un seul gabarit', () => {
   it('produit un corps identique dans les deux formes', async () => {
     const lien = await render({ ...BASE, creator: 'Dan Harmon', href: '/x' });
     const inerte = await render({ ...BASE, creator: 'Dan Harmon' });
-    expect(body(lien)).toBe(body(inerte));
+    // La forme CLIQUABLE ajoute, en fin de carte, l'intention de l'action pour
+    // les lecteurs d'écran. C'est la seule différence admise : elle n'a aucun
+    // sens sur une carte inerte, qui ne mène nulle part. On la retire avant de
+    // comparer — le reste du gabarit doit rester strictement identique, sinon
+    // les deux formes divergeraient à la première évolution.
+    const sansIndice = (h: string) =>
+      body(h).replace(/<span class="visually-hidden"[^>]*>[^<]*<\/span>\s*$/, '').trim();
+    expect(sansIndice(lien)).toBe(sansIndice(inerte));
+  });
+
+  it('la forme cliquable annonce l’action, sans aria-label qui masque le contenu', async () => {
+    // L'`aria-label` d'origine (« <titre> — Voir la page complète… ») REMPLAÇAIT
+    // le contenu : type, créateur et décompte de mentions n'étaient plus
+    // annoncés, et une commande vocale sur le texte visible échouait
+    // (WCAG 2.5.3 ; 203 occurrences par galerie, audit du 2026-08-16).
+    const lien = await render({ ...BASE, creator: 'Dan Harmon', href: '/x' });
+    const racine = lien.match(/<a [^>]*class="gcard gcard--link"[^>]*>/)?.[0] ?? '';
+    expect(racine).toBeTruthy();
+    expect(racine).not.toContain('aria-label');
+    expect(lien).toContain('visually-hidden');
+    // Le contenu visible reste dans le nom accessible.
+    expect(lien).toContain('Dan Harmon');
   });
 });
 

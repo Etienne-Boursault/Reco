@@ -344,17 +344,13 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
         <span class="type-emoji" title={tp.label} aria-hidden="true">{tp.emoji}</span>
       ))}
     </span>
+    {/* Titre SUR LA MÊME RANGÉE que les icônes de type (retour utilisateur
+       2026-07-30). Il reste un FRÈRE du conteneur `role="img"` : l'y imbriquer
+       le ferait annoncer comme une partie de l'image (cf. A1 ci-dessus). */}
+    <h3 class="title">{reco.title}</h3>
     {isCitation && (
       <span class="kind-badge" aria-label={t('reco.citation.badgeA11y')}>
         <span aria-hidden="true">📝</span> {t('reco.citation.badge')}
-      </span>
-    )}
-    {isGuestWork && (
-      <span class="kind-badge guestwork-badge" aria-label={t('reco.guestWork.badgeA11y')}>
-        {/* M3 : glyphe ⭐ — le 🎤 entrait en collision avec TYPE_EMOJIS['artiste']
-           (même emoji pour « badge œuvre d'invité » et « type artiste »). ⭐
-           n'est utilisé par aucun type. */}
-        <span aria-hidden="true">⭐</span> {t('reco.guestWork.badge')}
       </span>
     )}
     {/* Année (date de création de l'œuvre) retirée de la carte : hors contexte,
@@ -362,9 +358,25 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
        Le champ `reco.year` reste utilisé ailleurs (page œuvre, audits). */}
   </div>
 
-  <h3 class="title">{reco.title}</h3>
-  {reco.creator && (
-    <p class="creator">{reco.creator}<CreatorFlag name={reco.creator} /></p>
+  {/* Le badge « Leur œuvre » qualifie la PERSONNE (« c'est SON œuvre ») : sa
+     place est la ligne du créateur, pas la rangée des types — contrairement au
+     badge « citation », qui qualifie la reco et reste en haut.
+     REPLI (2026-07-30) : sans créateur connu, la ligne est rendue POUR LE SEUL
+     badge. Le rattacher au titre reviendrait à dire que l'œuvre est de
+     l'émission ; le remonter en haut le ferait sauter d'une carte à l'autre.
+     Un badge orphelin lisible vaut mieux qu'un badge escamoté. */}
+  {(reco.creator || isGuestWork) && (
+    <p class="creator">
+      {reco.creator && (<span class="creator-name">{reco.creator}<CreatorFlag name={reco.creator} /></span>)}
+      {isGuestWork && (
+        <span class="kind-badge guestwork-badge" aria-label={t('reco.guestWork.badgeA11y')}>
+          {/* M3 : glyphe ⭐ — le 🎤 entrait en collision avec TYPE_EMOJIS['artiste']
+             (même emoji pour « badge œuvre d'invité » et « type artiste »). ⭐
+             n'est utilisé par aucun type. */}
+          <span aria-hidden="true">⭐</span> {t('reco.guestWork.badge')}
+        </span>
+      )}
+    </p>
   )}
 
   <div class="meta">
@@ -465,6 +477,13 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
+    /* Mise en page différée pour les cartes hors écran : le catalogue en
+       affiche plus de 1200 d'un coup, et une page d'épisode plusieurs dizaines.
+       `contain-intrinsic-size` réserve la place — sans elle la page se
+       replierait et le CLS partirait. `auto` fait mémoriser au navigateur la
+       hauteur réelle après le premier rendu. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 260px;
     transition:
       transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
       border-color 0.2s ease;
@@ -473,13 +492,20 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     transform: translateY(-4px);
     border-color: var(--accent);
   }
-  /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret. */
+  /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret.
+     PAS d'`opacity` sur la carte : elle valait 0.7 et atténuait TOUT son texte,
+     ramenant le créateur, le badge et le lien de signalement à 3,4–3,7:1 —
+     sous le minimum WCAG AA de 4,5:1. Un seul réglage mettait ainsi 53
+     éléments en échec sur une page d'épisode (Lighthouse, 2026-08-16).
+     La distinction passe par la BORDURE en tirets, déjà présente et déjà
+     suffisante, plus un fond légèrement en retrait : le contraste du texte
+     reste entier, la hiérarchie visuelle aussi. */
   .card.is-citation {
-    opacity: 0.7;
     border-style: dashed;
+    background: color-mix(in oklab, var(--surface) 92%, var(--bg));
   }
   .card.is-citation:hover {
-    opacity: 1;
+    background: var(--surface);
   }
   .kind-badge {
     display: inline-flex;
@@ -492,7 +518,9 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
     border-radius: 999px;
     padding: 0.15em 0.55em;
-    margin-left: 0.4rem;
+    /* Pas de `margin-left` : l'espacement vient du `gap` du conteneur (rangée
+       du haut ou ligne créateur). Une marge fixe décalerait aussi le badge
+       « Leur œuvre » quand il est SEUL sur sa ligne (guestWork sans créateur). */
   }
   /* Story 4 — badge « œuvre d'invité » : accent ambre pour se distinguer du
      badge citation (neutre) sans dépendre de l'accent variable de la source.
@@ -505,16 +533,22 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   }
   .card-top {
     display: flex;
-    align-items: center;
-    /* N3 : autorise le retour à la ligne (2 badges + année < 320px). */
+    /* Titre et emojis partagent la rangée : alignement sur la LIGNE DE BASE
+       (le titre est bien plus haut que les emojis, et quand il se replie sur
+       deux lignes on veut les emojis calés sur la PREMIÈRE — `center` les
+       ferait flotter au milieu du bloc). */
+    align-items: baseline;
+    /* N3 : autorise le retour à la ligne (badge + titre long < 320px). */
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 0.15rem 0.5rem;
   }
   .type {
     display: inline-flex;
     gap: 0.25rem;
     font-size: 1.15rem;
     line-height: 1;
+    /* Les emojis ne se compriment jamais : c'est le titre qui se replie. */
+    flex: 0 0 auto;
   }
   .type-emoji {
     /* H6 : `cursor: help` indique qu'un tooltip (title) est dispo au hover.
@@ -525,11 +559,31 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   }
   .title {
     font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    /* Pas de `flex-grow` : le titre prend sa largeur naturelle pour que le
+       badge citation reste collé à sa suite. `flex-shrink` + `min-width: 0`
+       le laissent se replier sur plusieurs lignes (mobile, titres longs)
+       sans jamais pousser les emojis hors de la rangée. */
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   .creator {
     margin: 0;
     color: var(--muted);
     font-weight: 500;
+    /* Le badge « Leur œuvre » partage cette ligne (cf. template). `baseline`
+       pour que la pastille suive la ligne d'écriture du nom. */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.4rem;
+  }
+  /* Le nom et sa pastille de signalement restent SOLIDAIRES : les regrouper
+     dans un span en fait UN SEUL item flex, donc le ⚠️ colle au nom au lieu
+     d'être écarté par le `gap` de la ligne. */
+  .creator-name {
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   .meta {
     display: flex;
@@ -580,11 +634,16 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   .link.indie {
     border-color: color-mix(in oklab, var(--accent) 55%, transparent);
   }
-  /* Plateforme à éviter (Amazon/Bolloré) : opacité réduite + croix subtile
-     en survol pour signaler que ce n'est pas notre premier choix. */
+  /* Plateforme à éviter (Amazon/Bolloré) : désaturée et marquée d'un « ! »
+     pour signaler que ce n'est pas notre premier choix.
+     PAS d'`opacity` : elle valait 0.5 et rabattait le texte du lien sous le
+     seuil de contraste WCAG AA — même défaut que celui corrigé sur les cartes
+     de citation (audit du 2026-08-16). Le signal reste porté par la
+     DÉSATURATION et par la pastille rouge, qui ne touchent ni l'une ni l'autre
+     à la lisibilité du texte. Marquer un lien comme déconseillé ne doit pas le
+     rendre illisible : le visiteur doit pouvoir le lire pour en décider. */
   .link.avoid {
-    opacity: 0.5;
-    filter: grayscale(0.7);
+    filter: grayscale(0.85);
   }
   .link.avoid::after {
     content: '!';
@@ -604,7 +663,6 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
     line-height: 1;
   }
   .link.avoid:hover {
-    opacity: 0.85;
     filter: none;
   }
   .link img {
@@ -647,7 +705,11 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   .report-link {
     color: var(--muted);
     text-decoration: none;
-    opacity: 0.7;
+    /* PAS d'`opacity` ici. Elle valait 0.7 et ramenait le contraste à 3,76:1,
+       sous le minimum de 4,5:1 exigé par WCAG AA pour du texte de cette taille
+       (Lighthouse, audit du 2026-08-16 : 61 occurrences sur une seule page
+       d'épisode). Discrétion et lisibilité se règlent par la COULEUR, pas par
+       la transparence — `--muted` est déjà en retrait de la couleur du texte. */
   }
   .report-link:hover,
   .report-link:focus-visible {
