@@ -409,3 +409,47 @@ def test_la_casse_du_chemin_n_est_pas_signifiante():
 def test_le_dernier_segment_de_langue_fait_foi():
     assert fdl._preference({"url": "https://x.fr/fr/en/a/12345678"})[1] == 1
     assert fdl._preference({"url": "https://x.fr/fr/fr/a/12345678"})[1] == 0
+
+
+# ---------------------------------------------------------------------------
+# RÈGLE `boutique` — le rayon quand l'article est là
+# ---------------------------------------------------------------------------
+def _boutique(urls):
+    doc = _doc(urls)
+    changes = fdl.transform_factory(["boutique"])(doc)
+    return _urls(doc), changes
+
+
+def test_la_collection_disparait_quand_le_produit_est_la():
+    produit = "https://unebonneboutique.com/products/achat-une-bonne-soiree"
+    collection = "https://unebonneboutique.com/collections/une-bonne-soiree"
+    restants, ch = _boutique([produit, collection])
+    assert restants == [produit]
+    assert len(ch) == 1
+
+
+def test_la_collection_SEULE_est_conservee():
+    """Sans article, le rayon reste le meilleur lien disponible."""
+    urls = ["https://unebonneboutique.com/collections/une-bonne-soiree"]
+    restants, ch = _boutique(urls)
+    assert restants == urls and ch == []
+
+
+def test_la_collection_d_une_AUTRE_boutique_est_conservee():
+    urls = ["https://boutique-a.com/collections/tout",
+            "https://boutique-b.com/products/un-article"]
+    restants, ch = _boutique(urls)
+    assert restants == urls and ch == []
+
+
+def test_boutique_tolere_une_url_illisible():
+    urls = ["https://[::1/collections/x", "https://b.com/products/y"]
+    restants, ch = _boutique(urls)
+    assert restants == urls and ch == []
+
+
+def test_les_deux_editions_ajoutees_sont_dans_la_table():
+    """Vérifiées chez le libraire le 2026-08-17 : dans les deux cas l'ISBN
+    retenu est le POCHE, l'autre étant un grand format."""
+    assert fdl.EDITIONS["ubm-1737"] == "9782253907824"
+    assert fdl.EDITIONS["ubm-2824"] == "9791041425723"

@@ -707,6 +707,7 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     "ubm-0487": {
         "attendu": {"types": ["spectacle"], "title": "Les Chiens de Navarre"},
         "titre": "I Will Survive",
+        "retirer_liens": ["chiensdenavarre.com/spectacles"],
         "pourquoi": "La citation parle de « la dernière PIÈCE des Chiens de "
                     "Navarre », et le lien officiel pointe `/i-will-survive`. "
                     "Le titre nommait la troupe, pas le spectacle — le "
@@ -737,6 +738,38 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "nom) : `artiste` est le type prévu pour cela, et la "
                     "répétition titre/créateur y devient normale. `autre` "
                     "était le type de repli faute de mieux.",
+    },
+    # --- Pages de listing et alias d'URL, vérifiés un par un --------------
+    # Aucune règle générique ne les couvre : ce sont des sites d'artistes aux
+    # chemins propres, et « /spectacles » n'est reconnaissable comme un listing
+    # que si on connaît le site.
+    "ubm-2154": {
+        "attendu": {"types": ["serie"]},
+        "retirer_liens": ["browse/entity-8f8c5cbb"],
+        "pourquoi": "Même cas que ubm-0820 : les deux liens Disney+ servent la "
+                    "MÊME page (« Regarder Loki | Épisodes complets », même "
+                    "description), vérifié en la chargeant. `/browse/entity-…` "
+                    "est une forme interne ; `/series/loki/` est lisible.",
+    },
+    "ubm-2861": {
+        "attendu": {"types": ["livre"]},
+        "retirer_liens": ["editionsdutresor.com/lor-de-sipan"],
+        "pourquoi": "L'éditeur sert le même ouvrage sous deux adresses — "
+                    "`/catalogue/lor-de-sipan` et `/lor-de-sipan` répondent "
+                    "toutes deux 200 avec le même titre. On garde la forme "
+                    "`/catalogue/`, qui dit ce qu'elle est.",
+    },
+    "ubm-3128": {
+        "attendu": {"types": ["spectacle"]},
+        "retirer_liens": ["chiensdenavarre.com/saison-25-26"],
+        "pourquoi": "`/saison-25-26` est le programme d'une saison, pas "
+                    "l'œuvre. Il vieillira, `/i-will-survive` non.",
+    },
+    "ubm-3141": {
+        "attendu": {"types": ["spectacle"]},
+        "retirer_liens": ["chiensdenavarre.com/spectacles"],
+        "pourquoi": "Même cas que ubm-0487 : la liste des spectacles doublait "
+                    "le lien vers celui dont parle la reco.",
     },
 }
 

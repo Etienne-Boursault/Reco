@@ -77,6 +77,10 @@ EDITIONS: dict[str, str] = {
     "ubm-0760": "9782070360284",   # Voyage au bout de la nuit — Folio, 11,20 €
     "ubm-1158": "9782253907824",   # La Prochaine fois… — Livre de Poche, 8,40 €
     "ubm-1169": "9782253907824",   # idem, seconde reco du même livre
+    "ubm-1737": "9782253907824",   # idem, troisième reco (l'autre est Stock,
+                                   # « Grand format » — vérifié le 2026-08-17)
+    "ubm-2824": "9791041425723",   # L'homme-dé — Points « Poche » (l'autre est
+                                   # Aux Forges de Vulcain, « Grand format »)
     "ubm-2741": "9782811218393",   # Blood Song — Bragelonne poche, 7,90 €
     "ubm-2850": "9782253162889",   # Mouchette — Livre de Poche, 9,70 €
     "ubm-2948": "9782290028599",   # Les Particules élémentaires — J'ai lu, 8,70 €
@@ -86,7 +90,7 @@ EDITIONS: dict[str, str] = {
 
 _RE_PDL_ISBN = re.compile(r"placedeslibraires\.fr/livre/(\d{13})", re.IGNORECASE)
 
-RULES = ("allocine", "editions", "variantes", "racine")
+RULES = ("allocine", "editions", "variantes", "racine", "boutique")
 
 
 def allocine_key(url: str) -> tuple[str, str] | None:
@@ -316,8 +320,41 @@ def _rule_racine(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], li
     return garder, changes
 
 
+# ---------------------------------------------------------------------------
+# RÈGLE `boutique` — la collection quand le produit est là
+#
+#     unebonneboutique.com/collections/une-bonne-soiree   ← un rayon
+#     unebonneboutique.com/products/achat-une-bonne-…     ← l'article
+#
+# `/collections/` et `/products/` sont les chemins de Shopify, employé par la
+# plupart des boutiques d'artistes du corpus. Le rayon ne mène à l'article
+# qu'au prix d'une recherche ; l'inverse est immédiat.
+#
+# On ne retire la collection QUE si un produit du même hôte est présent :
+# seule, elle reste le meilleur lien disponible.
+# ---------------------------------------------------------------------------
+def _rule_boutique(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], list[Change]]:
+    def _hote(url: str) -> str:
+        try:
+            return (urlparse(url).hostname or "").lower()
+        except ValueError:
+            return ""
+
+    avec_produit = {_hote(link["url"]) for link in liens
+                    if link.get("url") and "/products/" in link["url"]}
+    garder, changes = [], []
+    for link in liens:
+        url = link.get("url") or ""
+        if "/collections/" in url and _hote(url) in avec_produit:
+            changes.append(Change(field="links[].url", before=url, after=None))
+            continue
+        garder.append(link)
+    return garder, changes
+
+
 _IMPLS = {"allocine": _rule_allocine, "editions": _rule_editions,
-          "variantes": _rule_variantes, "racine": _rule_racine}
+          "variantes": _rule_variantes, "racine": _rule_racine,
+          "boutique": _rule_boutique}
 
 
 def transform_factory(rules: Sequence[str]):
