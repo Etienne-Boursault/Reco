@@ -171,56 +171,50 @@ describe('SourceCatalog — filtrage des recos', () => {
     expect(html).not.toContain('Faux positif');
   });
 
-  it('les citations restent affichées mais hors du compteur principal', async () => {
+  it('les citations sont exclues du compteur principal', async () => {
+    // L'AFFICHAGE des recos a migré vers `AllRecosView` (cf. son fichier de
+    // tests) ; le COMPTEUR reste ici, et c'est lui qui distingue une
+    // recommandation d'une simple citation.
     collections(
       [reco(), reco({ id: 'ubm-2', title: 'Simple citation', kind: 'citation' })],
       [episode()],
     );
-    const html = await render();
-    expect(html).toContain('Simple citation');
-    expect(html).toMatch(/1 recommandation\s*<\/p>/);
+    expect(await render()).toMatch(/1 recommandation\s*<\/p>/);
   });
+});
 
-  it('aucune reco → état vide au lieu de la grille', async () => {
-    collections([], [episode()]);
+describe('SourceCatalog — vue « toutes les recos », chargée à la demande', () => {
+  // Cette vue pesait 96 % du document alors qu'elle est masquée au chargement
+  // (2681 Ko sur 2783). Elle est désormais récupérée au premier clic sur
+  // l'onglet, et la section ne contient plus qu'un lien de repli.
+  it('la section ne contient PAS la grille au rendu initial', async () => {
     const html = await render();
-    expect(html).toContain('Pas encore de recommandation.');
-    expect(html).toContain('tools/README.md');
     expect(html).not.toContain('id="reco-grid"');
+    expect(html).not.toContain('data-filter="film"');
+  });
+
+  it('la section porte l’URL du fragment à charger', async () => {
+    expect(await render()).toMatch(
+      /<section[^>]*id="view-all"[^>]*data-fragment="\/ubm\/recos-fragment"/);
+  });
+
+  it('SANS JavaScript, un lien mène à la page complète', async () => {
+    // Ce lien EST le contenu de la section tant qu'aucun script ne l'a
+    // remplacé : ce n'est pas un message d'erreur, c'est un chemin qui marche.
+    const html = await render();
+    expect(html).toMatch(/<a href="\/ubm\/recos"[^>]*>[^<]*recommandations/);
+  });
+
+  it('le lien de repli annonce le nombre de recos', async () => {
+    collections([reco(), reco({ id: 'ubm-2', title: 'Drive' })], [episode()]);
+    expect(await render()).toMatch(/Voir les 2 recommandations/);
   });
 });
 
-describe('SourceCatalog — chips de filtres par type', () => {
-  it('trie les types par fréquence décroissante et affiche le compte', async () => {
-    collections(
-      [
-        reco({ id: 'a', types: ['livre'] }),
-        reco({ id: 'b', types: ['film'] }),
-        reco({ id: 'c', types: ['film'] }),
-      ],
-      [episode()],
-    );
-    const html = await render();
-    const filmIdx = html.indexOf('data-filter="film"');
-    const livreIdx = html.indexOf('data-filter="livre"');
-    expect(filmIdx).toBeGreaterThan(-1);
-    expect(livreIdx).toBeGreaterThan(filmIdx);
-    expect(html).toMatch(/Films <span class="n"[^>]*>2<\/span>/);
-  });
-
-  it('une reco multi-types compte dans chaque type (filtre inclusif)', async () => {
-    collections([reco({ types: ['film', 'livre'] })], [episode()]);
-    const html = await render();
-    expect(html).toContain('data-filter="film"');
-    expect(html).toContain('data-filter="livre"');
-  });
-
-  it('un type inconnu retombe sur sa clé brute comme libellé', async () => {
-    collections([reco({ types: ['zarbi'] })], [episode()]);
-    const html = await render();
-    expect(html).toMatch(/data-filter="zarbi"[^>]*>\s*zarbi/);
-  });
-});
+// Les chips de filtres sont rendues par `AllRecosView` depuis le 2026-08-16 :
+// leurs tests vivent dans `tests/components/test_all_recos_view.test.ts`.
+// Le calcul de leur ORDRE (fréquence décroissante) est testé, lui, dans
+// `tests/utils/` avec `loadCatalogData`.
 
 describe('SourceCatalog — vue « Par épisode »', () => {
   it('liste tous les épisodes, même sans reco validée', async () => {
@@ -306,33 +300,64 @@ describe('SourceCatalog — miniatures d’épisode', () => {
     expect(html).not.toContain('<img');
   });
 
-  it('les miniatures sont en lazy loading avec alt vide (décoratif)', async () => {
+  it('les miniatures ont un alt vide (décoratif)', async () => {
     collections([], [episode({ imageUrl: 'https://acast.example/art.jpg' })]);
     const html = await render();
-    expect(html).toMatch(/<img[^>]*alt=""[^>]*loading="lazy"/);
+    expect(html).toMatch(/<img[^>]*alt=""/);
+  });
+
+  it('les 3 PREMIÈRES miniatures sont chargées en priorité, les suivantes en lazy', async () => {
+    // Une image `lazy` au-dessus de la ligne de flottaison est un contresens :
+    // elle attend que le navigateur ait fini sa mise en page pour décider
+    // qu'elle est visible. Or c'est elle qui détermine le LCP — Lighthouse la
+    // désignait comme élément LCP à 3,1 s (audit du 2026-08-16).
+    const eps = Array.from({ length: 5 }, (_, i) =>
+      episode({ guid: `g${i}`, number: i + 1, imageUrl: `https://x/${i}.jpg` }));
+    collections([], eps);
+    const html = await render();
+    const imgs = html.match(/<img[^>]*>/g) ?? [];
+    expect(imgs.length).toBeGreaterThanOrEqual(5);
+    const eager = imgs.filter((i) => i.includes('loading="eager"'));
+    expect(eager).toHaveLength(3);
+    for (const i of eager) expect(i).toContain('fetchpriority="high"');
+    expect(imgs.filter((i) => i.includes('loading="lazy"')).length)
+      .toBe(imgs.length - 3);
   });
 });
 
 describe('SourceCatalog — libellé d’épisode (badge + nom accessible)', () => {
-  it('numéro seul → badge #12 et aria-label préfixé', async () => {
+  it('numéro seul → badge #12, annoncé par le contenu et non par un aria-label', async () => {
     collections([], [episode({ number: 12, title: 'Douze' })]);
     const html = await render();
     expect(html).toContain('>#12</span>');
-    expect(html).toContain('aria-label="#12 — Douze"');
+    expect(html).toContain('Douze');
   });
 
-  it('saison + numéro → badge S1·E12', async () => {
+  it('saison + numéro → badge S1·E12, LISIBLE par les lecteurs d’écran', async () => {
     collections([], [episode({ season: 1, number: 12, title: 'Douze' })]);
     const html = await render();
     expect(html).toContain('>S1·E12</span>');
-    expect(html).toContain('aria-label="S1·E12 — Douze"');
+    // Le badge portait `aria-hidden` et le numéro était répété dans un
+    // `aria-label` sur le lien. Cet `aria-label` REMPLAÇAIT tout le contenu :
+    // le nombre de recos, pourtant visible, n'était pas annoncé, et une
+    // commande vocale sur le texte affiché ne trouvait plus la carte
+    // (WCAG 2.5.3 ; 110 occurrences relevées par Lighthouse le 2026-08-16).
+    expect(html).not.toContain('<span class="ep-badge" aria-hidden');
   });
 
-  it('sans numéro : pas de badge, aria-label réduit au titre', async () => {
+  it('le lien d’épisode tire son nom de son CONTENU, sans aria-label', async () => {
+    collections([], [episode({ season: 1, number: 12, title: 'Douze' })]);
+    const html = await render();
+    const lien = html.match(/<a href="\/[^"]*\/episode\/[^"]*"[^>]*>/)?.[0] ?? '';
+    expect(lien).toBeTruthy();
+    expect(lien).not.toContain('aria-label');
+  });
+
+  it('sans numéro : pas de badge', async () => {
     collections([], [episode({ number: undefined, title: 'Hors série' })]);
     const html = await render();
     expect(html).not.toContain('ep-badge');
-    expect(html).toContain('aria-label="Hors série"');
+    expect(html).toContain('Hors série');
   });
 });
 
@@ -345,12 +370,12 @@ describe('SourceCatalog — structure a11y (onglets, live regions)', () => {
     expect(html).toMatch(/id="view-all"[^>]*hidden/);
   });
 
-  // Ces deux régions sont un markup dupliqué mot pour mot (seul l'`id`
-  // change). Faute de les factoriser — cf. le rapport : les sortir dans un
-  // composant enfant leur ferait perdre le style scopé de cette page —, on
-  // verrouille ici le trio ARIA sur CHACUNE, pour qu'une dérive de l'une
-  // par rapport à l'autre casse un test.
-  it.each(['noresult', 'ep-noresult'])(
+  // Cette région était DUPLIQUÉE mot pour mot avec `#noresult` (seul l'`id`
+  // changeait), et le test les verrouillait toutes les deux pour qu'une dérive
+  // de l'une casse. La duplication a disparu d'elle-même le 2026-08-16 :
+  // `#noresult` a suivi la vue des recos dans `AllRecosView`, où son propre
+  // test reprend les mêmes exigences. Il ne reste donc qu'une région ici.
+  it.each(['ep-noresult'])(
     'la zone « aucun résultat » #%s porte le trio ARIA complet',
     async (id) => {
       const html = await render();
@@ -364,10 +389,9 @@ describe('SourceCatalog — structure a11y (onglets, live regions)', () => {
     },
   );
 
-  it('les deux zones sont rendues vides (le message est posé côté client)', async () => {
-    const html = await render();
-    expect(html).toMatch(/<p[^>]*id="noresult"[^>]*>\s*<\/p>/);
-    expect(html).toMatch(/<p[^>]*id="ep-noresult"[^>]*>\s*<\/p>/);
+  it('la zone d’annonce des épisodes est rendue vide', async () => {
+    // `#noresult` (celle des recos) a migré avec la vue vers `AllRecosView`.
+    expect(await render()).toMatch(/<p[^>]*id="ep-noresult"[^>]*>\s*<\/p>/);
   });
 
   it('les cartes reco reçoivent le numéro d’épisode résolu par guid', async () => {
@@ -377,9 +401,11 @@ describe('SourceCatalog — structure a11y (onglets, live regions)', () => {
   });
 
   it('une reco orpheline (guid inconnu) ne casse pas le rendu', async () => {
+    // Elle n'est plus AFFICHÉE ici (la grille a migré), mais elle compte
+    // toujours, et aucun `undefined` ne doit fuiter dans la page.
     collections([reco({ episodeGuid: 'inconnu' })], [episode()]);
     const html = await render();
-    expect(html).toContain('Parasite');
     expect(html).not.toContain('undefined');
+    expect(html).toMatch(/1 recommandation/);
   });
 });

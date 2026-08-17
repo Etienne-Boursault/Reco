@@ -159,62 +159,36 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
       </div>
     </nav>
 
-    {/* Vue 1 : toutes les recos (recherche + filtres) */}
-    <section id="view-all" role="tabpanel" aria-labelledby="tab-all" hidden>
-      <div class="toolbar wrap">
-        <input
-          id="search"
-          class="search"
-          type="search"
-          placeholder="Rechercher un titre, un auteur…"
-          autocomplete="off"
-          aria-label="Rechercher une recommandation"
-        />
-        <div class="filters" role="group" aria-label="Filtrer par type">
-          <button class="chip is-active" data-filter="all" aria-pressed="true">
-            Tout
-          </button>
-          {
-            types.map(([typ, n]) => (
-              <button class="chip" data-filter={typ} aria-pressed="false">
-                {TYPE_LABELS_PLURAL[typ] ?? typ} <span class="n">{n}</span>
-              </button>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="wrap">
-        <h2 class="visually-hidden">Toutes les recommandations</h2>
-        {
-          recos.length === 0 ? (
-            <EmptyState
-              message="Pas encore de recommandation."
-              hint="Lance le pipeline (voir tools/README.md) pour les importer."
-            />
-          ) : (
-            <ul class="grid" id="reco-grid" aria-label="Recommandations">
-              {recos.map((r) => (
-                <RecoCard
-                  reco={r}
-                  episodeNumber={epByGuid.get(r.episodeGuid)?.number}
-                  episodeTitle={epByGuid.get(r.episodeGuid)?.title}
-                  sourceId={source.id}
-                />
-              ))}
-            </ul>
-          )
-        }
-        {/* C7 : élément TOUJOURS présent et accessible (pas clippé). On
-           toggle le `.textContent` plutôt que la visibilité, garantissant
-           que `aria-live="polite"` annoncera le changement. */}
-        <p
-          class="noresult"
-          id="noresult"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        ></p>
+    {/* Vue 1 : toutes les recos — CHARGÉE À LA DEMANDE.
+       Elle pesait 2681 Ko et 24 887 balises, soit 96 % du document, alors
+       qu'elle est masquée au chargement : le navigateur analysait 2,7 Mo pour
+       afficher les 79 Ko de la vue « par épisode » (audit du 2026-08-16).
+       Le contenu arrive maintenant au premier clic sur l'onglet, depuis
+       `/[source]/recos-fragment`.
+       SANS JAVASCRIPT, rien de tout cela ne se produit — d'où le lien vers la
+       page complète, qui est le contenu réel de la section tant qu'aucun
+       script ne l'a remplacé. Ce n'est pas un message d'erreur : c'est un
+       chemin qui marche. */}
+    <section
+      id="view-all"
+      role="tabpanel"
+      aria-labelledby="tab-all"
+      data-fragment={`/${source.id}/recos-fragment`}
+      aria-busy="false"
+      hidden
+    >
+      {/* Zone d'annonce, DÉLIBÉRÉMENT hors du conteneur remplacé.
+         Une région `aria-live` doit être présente dans le DOM AVANT que son
+         contenu change : créée en même temps que son message, elle n'annonce
+         rien. C'est la même contrainte que pour `#noresult`, et la raison pour
+         laquelle le fragment est injecté dans un enfant plutôt que dans la
+         section entière. */}
+      <p id="recos-statut" class="visually-hidden" role="status"
+         aria-live="polite" aria-atomic="true"></p>
+      <div data-recos-cible>
+        <p class="wrap repli-recos">
+          <a href={`/${source.id}/recos`}>Voir les {recos.length} recommandations →</a>
+        </p>
       </div>
     </section>
 
@@ -242,7 +216,15 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
         <h2 class="visually-hidden">{t('heading.episodesWithRecos')}</h2>
         <ul class="ep-grid" id="ep-grid" aria-label="Épisodes du podcast">
           {
-            episodesWithRecos.map((e) => {
+            episodesWithRecos.map((e, i) => {
+              // Les PREMIÈRES vignettes sont au-dessus de la ligne de
+              // flottaison : les charger en `lazy` était un contresens. Une
+              // image lazy attend que le navigateur ait fini sa mise en page
+              // pour décider qu'elle est visible — or c'est précisément
+              // celle-ci qui détermine le LCP. Lighthouse la désignait comme
+              // élément LCP à 3,1 s (audit du 2026-08-16).
+              // 3 cartes : ce que couvre un écran mobile de 412 px de large.
+              const auDessusDeLaLigne = i < 3;
               // Miniature : vignette YouTube si dispo, sinon artwork Acast
               // (imageUrl) — évite les cartes sans image (ex. Alice David #18).
               const thumb = ytThumb(e.youtubeUrl) ?? e.imageUrl ?? null;
@@ -257,27 +239,30 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
                 .normalize('NFD')
                 .replace(/[̀-ͯ]/g, '')
                 .toLowerCase();
-              // H13 : l'étiquette accessible du lien inclut le numéro
-              // (info visuelle « S1·E12 » désormais portée par aria-label).
-              const accLabel = epLabelStr
-                ? `${epLabelStr} — ${epTitle}`
-                : epTitle;
+              // PAS d'`aria-label` sur le lien. Il valait « S1·E12 — <titre> »
+              // et REMPLAÇAIT le contenu : le nombre de recos, pourtant
+              // visible, disparaissait pour les lecteurs d'écran, et une
+              // commande vocale prononçant le texte affiché ne trouvait plus
+              // la carte (WCAG 2.5.3 ; 110 occurrences sur l'accueil, audit du
+              // 2026-08-16). Le numéro d'épisode reste annoncé : c'est le
+              // BADGE qui le porte, désormais lisible plutôt qu'`aria-hidden`.
               return (
                 <li class="ep-card" data-search={searchKey}>
-                  <a href={`/${source.id}/episode/${e.guid}`} aria-label={accLabel}>
+                  <a href={`/${source.id}/episode/${e.guid}`}>
                     <div class="ep-thumb">
                       {thumb && (
                         <img
                           src={thumb}
                           alt=""
-                          loading="lazy"
-                          decoding="async"
+                          loading={auDessusDeLaLigne ? 'eager' : 'lazy'}
+                          fetchpriority={auDessusDeLaLigne ? 'high' : undefined}
+                          decoding={auDessusDeLaLigne ? 'sync' : 'async'}
                           width="320"
                           height="180"
                         />
                       )}
                       {epLabelStr && (
-                        <span class="ep-badge" aria-hidden="true">{epLabelStr}</span>
+                        <span class="ep-badge">{epLabelStr}</span>
                       )}
                     </div>
                     <div class="ep-meta">
@@ -312,47 +297,55 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   // C7 : elle ne touche QUE le `textContent` de la région d'annonce, qui
   // reste dans le DOM — sinon son `aria-live="polite"` serait muet.
   import { applyGridFilter } from '../utils/gridFilter';
+  import { chargerFragment } from '../utils/chargerFragment';
 
   // --- Filtrage 100 % client : par type (chips) et par texte (fuzzy) -------
-  const grid = document.getElementById('reco-grid');
-  const search = document.getElementById('search') as HTMLInputElement | null;
-  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
-  const noresult = document.getElementById('noresult');
-
+  // Câblé DANS UNE FONCTION, et non au chargement : la grille des recos
+  // n'existe plus dans le HTML initial (cf. la section « view-all »), elle
+  // arrive au premier clic sur l'onglet. Chercher ses éléments trop tôt ne
+  // trouverait rien, et le filtre serait mort.
   let activeType = 'all';
   let term = '';
 
-  function apply() {
-    applyGridFilter({
-      grid,
-      status: noresult,
-      emptyMessage: 'Aucun résultat.',
-      matches: (card) => {
-        const okType =
-          activeType === 'all' ||
-          (card.dataset.types?.split(',').includes(activeType) ?? false);
-        const okText = !term || fuzzyMatch(term, card.dataset.search ?? '');
-        return okType && okText;
-      },
-    });
-  }
+  function cablerFiltreRecos() {
+    const grid = document.getElementById('reco-grid');
+    if (!grid) return;
+    const search = document.getElementById('search') as HTMLInputElement | null;
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
+    const noresult = document.getElementById('noresult');
 
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      activeType = chip.dataset.filter ?? 'all';
-      chips.forEach((c) => {
-        const on = c === chip;
-        c.classList.toggle('is-active', on);
-        c.setAttribute('aria-pressed', String(on));
+    function apply() {
+      applyGridFilter({
+        grid,
+        status: noresult,
+        emptyMessage: 'Aucun résultat.',
+        matches: (card) => {
+          const okType =
+            activeType === 'all' ||
+            (card.dataset.types?.split(',').includes(activeType) ?? false);
+          const okText = !term || fuzzyMatch(term, card.dataset.search ?? '');
+          return okType && okText;
+        },
       });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        activeType = chip.dataset.filter ?? 'all';
+        chips.forEach((c) => {
+          const on = c === chip;
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-pressed', String(on));
+        });
+        apply();
+      });
+    });
+
+    search?.addEventListener('input', () => {
+      term = search.value;
       apply();
     });
-  });
-
-  search?.addEventListener('input', () => {
-    term = search.value;
-    apply();
-  });
+  }
 
   // Bascule entre « Toutes les recos » et « Par épisode ».
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));
@@ -360,8 +353,33 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     all: document.getElementById('view-all'),
     episodes: document.getElementById('view-episodes'),
   };
+  /**
+   * Charge la vue « toutes les recos » au premier affichage, puis jamais plus.
+   *
+   * `chargement` retient la promesse en cours : deux clics rapides ne doivent
+   * pas déclencher deux requêtes ni injecter le contenu deux fois.
+   * En cas d'échec réseau, on laisse le lien de repli en place — il mène à la
+   * page complète, donc l'utilisateur n'est jamais bloqué.
+   *
+   * L'injection elle-même, et les annonces qui l'accompagnent, vivent dans
+   * `chargerFragment` : v8 n'instrumente pas les scripts client des `.astro`,
+   * et cette logique y échapperait à toute mesure de couverture.
+   */
+  let chargement: Promise<unknown> | null = null;
+  function chargerRecos(section: HTMLElement): Promise<unknown> {
+    if (chargement) return chargement;
+    chargement = chargerFragment(section, cablerFiltreRecos)
+      // Un échec ne doit pas figer la vue : on relâche la promesse retenue
+      // pour qu'un second clic puisse retenter.
+      .then((issue) => {
+        if (issue === 'echec') chargement = null;
+      });
+    return chargement;
+  }
+
   function activateTab(tab: HTMLButtonElement) {
     const view = tab.dataset.view ?? 'all';
+    if (view === 'all' && views.all) void chargerRecos(views.all);
     tabs.forEach((t) => {
       const on = t === tab;
       t.classList.toggle('is-active', on);
@@ -486,6 +504,16 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     font-size: 0.85rem;
     white-space: nowrap;
   }
+  /* Repli sans JavaScript de l'onglet « Toutes les recos » : remplacé par le
+     contenu réel dès que le fragment est chargé. */
+  .repli-recos {
+    margin: 2rem auto;
+    text-align: center;
+  }
+  .repli-recos a {
+    color: var(--accent);
+    font-weight: 600;
+  }
   /* Grille « par épisode » */
   .ep-grid {
     list-style: none;
@@ -494,6 +522,22 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
     gap: var(--gap);
+  }
+  /* Le navigateur SAUTE la mise en page des cartes hors écran, et ne la fait
+     qu'au moment où elles approchent. Sur cette page, la mise en page occupait
+     798 ms du fil principal pour 25 829 éléments (audit du 2026-08-16) — c'est
+     ce qui plombait le Total Blocking Time, la métrique la plus lourdement
+     pondérée par Lighthouse.
+
+     `contain-intrinsic-size` est INDISPENSABLE : sans elle, une carte non
+     rendue compte pour une hauteur nulle, la page se replie, la barre de
+     défilement saute et le CLS — aujourd'hui à 0 — s'effondrerait. La valeur
+     est la hauteur observée d'une carte : vignette 16/9 sur 240 px de large,
+     plus deux lignes de méta. `auto` demande au navigateur de MÉMORISER la
+     vraie hauteur après un premier rendu, et de s'en servir ensuite. */
+  .ep-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 220px;
   }
   .ep-card a {
     display: block;

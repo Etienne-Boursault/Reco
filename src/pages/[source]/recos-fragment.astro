@@ -1,0 +1,39 @@
+---
+/**
+ * `/[source]/recos-fragment` — la vue « toutes les recos », SANS gabarit.
+ *
+ * `partial = true` : Astro émet ce fichier sans `<html>`, sans `<head>`, sans
+ * scripts — juste le balisage. C'est ce que l'onglet de l'accueil récupère au
+ * premier clic, pour l'injecter dans la page déjà chargée. Réutiliser
+ * `/[source]/recos` aurait fonctionné, mais aurait transféré un document
+ * complet dont on jette 90 % — styles et scripts sont déjà là.
+ *
+ * Les styles des cartes voyagent avec elles : Astro les met dans la feuille
+ * commune du site, pas en ligne dans le fragment. Le contenu injecté est donc
+ * mis en forme sans rien charger de plus.
+ */
+export const partial = true;
+
+import { getCollection } from 'astro:content';
+
+import AllRecosView from '../../components/AllRecosView.astro';
+import { loadCatalogData } from '../../utils/sourceCatalogData';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const { recos, epByGuid, types } = await loadCatalogData(source.id);
+---
+
+<AllRecosView
+  sourceId={source.id}
+  recos={recos}
+  epByGuid={epByGuid}
+  types={types}
+/>

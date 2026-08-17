@@ -1,0 +1,63 @@
+---
+/**
+ * `/[source]/recos` — toutes les recommandations, page autonome.
+ *
+ * DEUX RAISONS D'EXISTER, et la seconde compte autant que la première :
+ *
+ *  1. **Le repli sans JavaScript.** Depuis le 2026-08-16, l'onglet « Toutes
+ *     les recos » de l'accueil charge son contenu à la demande. Sans script,
+ *     ce chargement n'a pas lieu — l'onglet est donc un LIEN vers cette page,
+ *     qui fonctionne partout.
+ *  2. **Le référencement.** Sortir 1209 cartes de l'accueil les aurait
+ *     retirées du HTML servi aux robots. Elles sont ici, sur une page
+ *     crawlable et présente dans le sitemap.
+ *
+ * Pourquoi les sortir de l'accueil : cette vue y pesait 2681 Ko et 24 887
+ * balises, soit 96 % du document — alors qu'elle est masquée au chargement.
+ */
+import { getCollection } from 'astro:content';
+
+import AllRecosView from '../../components/AllRecosView.astro';
+import Layout from '../../layouts/Layout.astro';
+import { loadCatalogData } from '../../utils/sourceCatalogData';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { source: source.id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const { recos, epByGuid, types } = await loadCatalogData(source.id);
+const titre = `Toutes les recommandations — ${source.data.title}`;
+---
+
+<Layout
+  title={titre}
+  description={`Les ${recos.length} œuvres recommandées dans le podcast ${source.data.title}.`}
+  theme={source.data.theme}
+>
+  <a class="retour wrap" href="/">← retour au catalogue</a>
+  <AllRecosView
+    sourceId={source.id}
+    recos={recos}
+    epByGuid={epByGuid}
+    types={types}
+    titreVisible
+  />
+</Layout>
+
+<style>
+  .retour {
+    display: block;
+    margin: 1rem auto 0;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .retour:hover {
+    color: var(--accent);
+  }
+</style>

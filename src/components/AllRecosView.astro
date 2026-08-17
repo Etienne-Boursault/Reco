@@ -1,0 +1,93 @@
+---
+/**
+ * Vue « Toutes les recommandations » — barre d'outils + grille.
+ *
+ * EXTRAITE DE `SourceCatalog` LE 2026-08-16, et pour une raison mesurée : dans
+ * la page d'accueil, cette vue pesait **2681 Ko et 24 887 balises, soit 96 %
+ * du document** — alors qu'elle est MASQUÉE au chargement. Le navigateur
+ * analysait 2,7 Mo pour afficher les 79 Ko de la vue « par épisode », ce qui
+ * coûtait 829 ms d'analyse et 798 ms de mise en page, et bloquait le LCP à
+ * 3,2 s. Ni `loading="eager"` ni `content-visibility` n'y changeaient rien :
+ * ils optimisent le RENDU, pas l'analyse du document.
+ *
+ * Le même balisage sert donc trois usages, sans duplication :
+ *   - `/[source]/recos`          — page complète (repli sans JavaScript, SEO) ;
+ *   - `/[source]/recos-fragment` — partiel, chargé au clic sur l'onglet ;
+ *   - (plus dans l'accueil, où il ne rendait service à personne au chargement).
+ */
+import EmptyState from './EmptyState.astro';
+import RecoCard from './RecoCard.astro';
+import { TYPE_LABELS_PLURAL } from '../utils/recoTypes';
+
+interface Props {
+  sourceId: string;
+  recos: any[];
+  epByGuid: Map<string, any>;
+  /** `[type, nombre]`, déjà trié par l'appelant. */
+  types: [string, number][];
+  /** `true` dans la page autonome : le titre y devient visible et principal. */
+  titreVisible?: boolean;
+}
+
+const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
+---
+
+<div class="toolbar wrap">
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Rechercher un titre, un auteur…"
+    autocomplete="off"
+    aria-label="Rechercher une recommandation"
+  />
+  <div class="filters" role="group" aria-label="Filtrer par type">
+    <button class="chip is-active" data-filter="all" aria-pressed="true">
+      Tout
+    </button>
+    {
+      types.map(([typ, n]) => (
+        <button class="chip" data-filter={typ} aria-pressed="false">
+          {TYPE_LABELS_PLURAL[typ] ?? typ} <span class="n">{n}</span>
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<div class="wrap">
+  {
+    titreVisible
+      ? <h1 class="titre-recos">Toutes les recommandations</h1>
+      : <h2 class="visually-hidden">Toutes les recommandations</h2>
+  }
+  {
+    recos.length === 0 ? (
+      <EmptyState
+        message="Pas encore de recommandation."
+        hint="Lance le pipeline (voir tools/README.md) pour les importer."
+      />
+    ) : (
+      <ul class="grid" id="reco-grid" aria-label="Recommandations">
+        {recos.map((r) => (
+          <RecoCard
+            reco={r}
+            episodeNumber={epByGuid.get(r.episodeGuid)?.number}
+            episodeTitle={epByGuid.get(r.episodeGuid)?.title}
+            sourceId={sourceId}
+          />
+        ))}
+      </ul>
+    )
+  }
+  {/* C7 : élément TOUJOURS présent et accessible (pas clippé). On toggle le
+     `.textContent` plutôt que la visibilité, garantissant que
+     `aria-live="polite"` annoncera le changement. */}
+  <p
+    class="noresult"
+    id="noresult"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></p>
+</div>
