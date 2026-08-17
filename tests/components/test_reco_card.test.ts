@@ -324,15 +324,20 @@ describe('RecoCard — lien Signaler', () => {
     expect(html).not.toContain('report-link');
   });
 
-  it('est rendu APRÈS la rangée d’icônes (placement sous les liens)', async () => {
-    const html = await renderProps({
+  it('est le DERNIER élément de la rangée d’icônes', async () => {
+    // Il vivait dans un bloc à part, ce qui lui donnait une ligne pour lui
+    // seul sous les liens. Il est maintenant un item de la MÊME rangée,
+    // calé à droite (retour utilisateur 2026-08-17).
+    const doc = parse(await renderProps({
       reco: { ...baseReco, types: ['film'] },
       sourceId: 'ubm',
-    });
-    const linksIdx = html.indexOf('class="links"');
-    const reportIdx = html.indexOf('report-link-wrap');
-    expect(linksIdx).toBeGreaterThan(-1);
-    expect(reportIdx).toBeGreaterThan(linksIdx);
+    }));
+    const rangee = doc.querySelector('.links')!;
+    const items = Array.from(rangee.children);
+    expect(items.length).toBeGreaterThan(1);
+    expect(items[items.length - 1]!.className).toContain('report-link');
+    // Et il n'existe plus de conteneur séparé.
+    expect(doc.querySelector('.report-link-wrap')).toBeNull();
   });
 });
 

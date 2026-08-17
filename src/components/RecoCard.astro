@@ -411,7 +411,7 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
       )}
       {/* Espaces INSÉCABLES (U+00A0) : ils écartent le numéro du nom tout en
          interdisant la coupure entre les deux. Un échappement CSS
-         (`content: ' a0'`) s'affichait littéralement. */}
+         (un echappement CSS) s'affichait littéralement. */}
       {epLabel && <span class="ep">{'  '}{epLabel}</span>}
     </p>
   )}
@@ -479,19 +479,12 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
             </OutboundLink>
           );
         })}
-      </div>
-    )
-  }
-  {/* X3 — « Signaler » sous la rangée d'icônes (cohérence visuelle : au même
-     niveau que les liens plutôt qu'isolé au-dessus). Reste discret. */}
-  {
-    sourceId && (
-      <p class="report-link-wrap">
-        {/* PICTOGRAMME SEUL (retour utilisateur 2026-08-17) : le mot
-           « Signaler » sur chaque carte tirait l'œil vers une action rare.
-           Le nom accessible reste complet — un lecteur d'écran annonce la
-           phrase entière, jamais le seul glyphe — et `title` donne
-           l'info-bulle au survol. */}
+        {sourceId && (
+        <>
+        {/* Le pictogramme est le DERNIER item de la rangée d'icônes, et non
+           un bloc à part : `margin-left: auto` le cale à droite de la
+           dernière ligne de liens au lieu de lui donner une ligne à lui
+           (retour utilisateur 2026-08-17, second passage). */}
         <a
           class="report-link"
           href={`/${sourceId}/report/${reco.id}`}
@@ -501,7 +494,28 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
         >
           <span aria-hidden="true">⚠</span>
         </a>
-      </p>
+        </>
+        )}
+      </div>
     )
   }
+  {/* Sans aucun lien, le pictogramme garde tout de même sa rangée : sinon il
+     remonterait se coller à la ligne méta. */}
+  {sourceId && links.length === 0 && (
+    <div class="links">
+      {/* Le pictogramme est le DERNIER item de la rangée d'icônes, et non
+         un bloc à part : `margin-left: auto` le cale à droite de la
+         dernière ligne de liens au lieu de lui donner une ligne à lui
+         (retour utilisateur 2026-08-17, second passage). */}
+      <a
+        class="report-link"
+        href={`/${sourceId}/report/${reco.id}`}
+        rel="nofollow"
+        title={t('report.linkA11y')}
+        aria-label={t('report.linkA11y')}
+      >
+        <span aria-hidden="true">⚠</span>
+      </a>
+    </div>
+  )}
 </li>

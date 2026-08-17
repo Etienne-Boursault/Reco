@@ -69,3 +69,17 @@
     min-height: 1.5em;
     margin: 0;
   }
+
+/* TOUTES les cartes à la même hauteur (demande utilisateur 2026-08-17).
+
+   Par défaut, une grille égalise les hauteurs À L'INTÉRIEUR d'une rangée, mais
+   pas d'une rangée à l'autre : deux cartes voisines verticalement pouvaient
+   avoir des tailles très différentes. `grid-auto-rows: 1fr` aligne toutes les
+   rangées sur la plus haute.
+
+   `align-items: stretch` (valeur par défaut, rappelée ici) garantit que la
+   carte OCCUPE la hauteur de sa rangée au lieu de flotter en haut. */
+#reco-grid {
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
