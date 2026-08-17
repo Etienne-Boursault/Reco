@@ -89,6 +89,13 @@ export default defineConfig({
         if (page.endsWith('/verifier') || page.endsWith('/verifier/')) return false;
         if (page.endsWith('/reports') || page.endsWith('/reports/')) return false;
         if (page.includes('/report/')) return false;
+        // Fragments chargés à la demande : ce sont des MORCEAUX de page, sans
+        // `<html>`, `<head>` ni titre. Indexés, ils entreraient en concurrence
+        // avec la page complète qu'ils dupliquent, et offriraient au visiteur
+        // arrivant du moteur un document sans mise en forme ni navigation.
+        // La page complète (`/recos`) reste au sitemap : c'est elle la version
+        // publique de cette vue.
+        if (page.endsWith('/recos-fragment') || page.endsWith('/recos-fragment/')) return false;
         // Recherche : page utilitaire (noindex) + endpoint d'index.
         if (page.endsWith('/recherche') || page.endsWith('/recherche/')) return false;
         if (page.endsWith('/search.json')) return false;

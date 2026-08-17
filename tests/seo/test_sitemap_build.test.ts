@@ -55,6 +55,17 @@ describe.skipIf(!hasBuild)('sitemap-0.xml', () => {
     expect(xml).not.toMatch(/\/og\/[^<]*\.png/);
   });
 
+  it('exclut le FRAGMENT des recos, mais garde la page complète', () => {
+    // Le fragment est un morceau de page : ni `<html>`, ni `<head>`, ni titre.
+    // Indexé — et il l'était — il concurrence la page complète qu'il duplique,
+    // et sert au visiteur venu du moteur un document sans mise en forme ni
+    // navigation. Relevé au test manuel du 2026-08-17.
+    expect(xml).not.toMatch(/recos-fragment/);
+    // La page publique de cette vue, elle, DOIT y être : l'exclure au passage
+    // ferait disparaître 1209 recos des moteurs.
+    expect(xml).toMatch(/<loc>[^<]*\/recos\/?<\/loc>/);
+  });
+
   it('contient lastmod (CR senior H5)', () => {
     expect(xml).toMatch(/<lastmod>/);
   });
