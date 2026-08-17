@@ -258,7 +258,8 @@ def test_resolve_from_search_ambiguous_two_works_same_title(session):
 
 @responses.activate
 def test_resolve_from_search_too_obscure(session):
-    _search("movie", [{"id": 3, "title": "Amélie", "popularity": 0.14}])
+    _search("movie", [{"id": 3, "title": "Amélie", "release_date": "2001-04-25",
+                       "popularity": 0.14}])
     res = evl.resolve_video_links({"title": "Amélie", "types": ["film"]},
                                   session=session, api_key="k", allow_search=True)
     assert res.reason == evl.REASON_SEARCH_TOO_OBSCURE
@@ -268,9 +269,10 @@ def test_resolve_from_search_too_obscure(session):
 @responses.activate
 def test_resolve_from_search_eclipsed_by_a_far_more_popular_work(session):
     _search("movie", [
-        {"id": 4, "title": "Le Seigneur des Anneaux", "popularity": 4.44},
+        {"id": 4, "title": "Le Seigneur des Anneaux",
+         "release_date": "1978-11-15", "popularity": 4.44},
         {"id": 5, "title": "Le Seigneur des Anneaux : Le Retour du roi",
-         "popularity": 52.0},
+         "release_date": "2003-12-01", "popularity": 52.0},
     ])
     res = evl.resolve_video_links({"title": "Le Seigneur des Anneaux", "types": ["film"]},
                                   session=session, api_key="k", allow_search=True)
@@ -299,7 +301,8 @@ def test_resolve_from_search_anachronism_filter_removes_candidate(session):
 @responses.activate
 def test_resolve_from_search_rechecks_full_record(session):
     """La fiche complète repasse par les garde-fous : un titre contradictoire tue."""
-    _search("movie", [{"id": 597, "title": "Titanic", "popularity": 40.0}])
+    _search("movie", [{"id": 597, "title": "Titanic", "release_date": "1997-12-19",
+                       "popularity": 40.0}])
     responses.add(responses.GET, f"{TMDB}/movie/597",
                   json=_movie(title="Autre chose entièrement"), status=200)
     res = evl.resolve_video_links({"title": "Titanic", "types": ["film"]},
@@ -315,3 +318,39 @@ def test_resolve_from_search_passes_year_to_the_api(session):
     evl.resolve_video_links({"title": "Titanic", "year": 1997, "types": ["film"]},
                             session=session, api_key="k", allow_search=True)
     assert responses.calls[0].request.params["year"] == "1997"
+
+
+# ===== Une fiche SANS date ne prouve l'identité de rien ======================
+@responses.activate
+def test_resolve_from_search_refuse_une_fiche_sans_date(session):
+    """Le cas réel qui a motivé cette garde. TMDB héberge « Definition », jeu
+    télévisé canadien diffusé sur CTV de 1974 à 1989, sans date renseignée. Une
+    reco de « Définition », série stand-up française, l'a matché au titre près.
+
+    Les deux gardes d'année laissent passer : `year_matches` et
+    `release_is_plausible` renvoient l'une et l'autre `True` quand la date
+    distante manque. L'identité ne tenait donc qu'au titre — et un titre ne
+    suffit pas."""
+    _search("tv", [{"id": 10102, "name": "Definition", "popularity": 1.17}])
+    reco = {"title": "Definition", "types": ["serie"]}
+    res = evl.resolve_video_links(reco, session=session, api_key="k",
+                                  allow_search=True, episode_year=2024)
+    assert res.reason == evl.REASON_SEARCH_UNDATED
+    assert res.links == ()
+
+
+@responses.activate
+def test_une_fiche_sans_date_n_est_pas_refusee_quand_elle_a_une_date(session):
+    """Contrôle négatif : la garde ne doit pas mordre sur le cas normal."""
+    _search("tv", [{"id": 1396, "name": "Breaking Bad",
+                    "first_air_date": "2008-01-20", "popularity": 60.0}])
+    responses.add(responses.GET, f"{TMDB}/tv/1396", json=_tv(), status=200)
+    res = evl.resolve_video_links({"title": "Breaking Bad", "types": ["serie"]},
+                                  session=session, api_key="k", allow_search=True)
+    assert res.reason == evl.REASON_FILLED
+
+
+def test_une_fiche_sans_date_merite_un_oeil_humain():
+    """Le refus traduit un DOUTE, pas une absence : la reco doit ressortir dans
+    « à revoir à la main » plutôt que disparaître du rapport."""
+    assert evl.REASON_SEARCH_UNDATED in evl.AMBIGUOUS_REASONS

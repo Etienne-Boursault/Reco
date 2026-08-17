@@ -57,6 +57,7 @@ from video_links_matching import (
     REASON_RELEASED_AFTER_EPISODE,
     REASON_SEARCH_AMBIGUOUS,
     REASON_SEARCH_NO_MATCH,
+    REASON_SEARCH_UNDATED,
     REASON_TITLE_MISMATCH,
     REASON_UNREADABLE,
     REASON_YEAR_MISMATCH,
@@ -155,6 +156,14 @@ def _resolve_from_search(reco: dict[str, Any], session: requests.Session, *,
         return Resolution((), REASON_SEARCH_AMBIGUOUS, source, POPULATION_SEARCH,
                           detail=f"{len(ids)} œuvres au même titre : "
                                  f"{', '.join(ids[:5])}")
+
+    # Une fiche SANS date n'a franchi aucune des deux gardes d'année : toutes
+    # deux passent quand la date manque. L'identité ne tiendrait alors qu'au
+    # titre — et un titre suffit rarement (« Definition », jeu télévisé
+    # canadien de 1974, contre « Définition », série stand-up française).
+    if remote_year(candidates[0]) is None:
+        return Resolution((), REASON_SEARCH_UNDATED, source, POPULATION_SEARCH,
+                          detail="fiche TMDB sans date de sortie")
 
     refus = obscurity_verdict(candidates[0], results)
     if refus:

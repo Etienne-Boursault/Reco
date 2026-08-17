@@ -78,6 +78,12 @@ REASON_SEARCH_NO_MATCH = "search-no-match"
 REASON_SEARCH_AMBIGUOUS = "search-ambiguous"
 REASON_SEARCH_TOO_OBSCURE = "search-too-obscure"
 REASON_SEARCH_ECLIPSED = "search-eclipsed"
+#: Fiche TMDB SANS date de sortie. Une recherche par titre ne peut alors
+#: rien prouver : `year_matches` et `release_is_plausible` renvoient tous
+#: deux `True` quand la date manque, si bien que l'identité repose sur le
+#: seul titre. C'est ainsi qu'un jeu télévisé canadien de 1974 (« Definition »,
+#: tv/10102) a failli être posé sur une reco de série stand-up française.
+REASON_SEARCH_UNDATED = "search-undated"
 
 #: Raisons qui traduisent un DOUTE (donnée distante contradictoire) et non une
 #: simple absence : ces cas méritent un œil humain.
@@ -89,6 +95,7 @@ AMBIGUOUS_REASONS = frozenset({
     REASON_SEARCH_AMBIGUOUS,
     REASON_SEARCH_TOO_OBSCURE,
     REASON_SEARCH_ECLIPSED,
+    REASON_SEARCH_UNDATED,
 })
 
 #: Un identifiant de TITRE IMDb. `nm…` (personne) et `co…` (société) existent
