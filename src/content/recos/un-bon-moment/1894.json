@@ -4,6 +4,9 @@
     "The Intouchables"
   ],
   "creator": "Olivier Nakache, Éric Toledano",
+  "enrichedAt": {
+    "links": "2026-08-17T15:39:31Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
     {
@@ -46,6 +49,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=182745.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0065895/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/45138"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/45138-gli-intoccabili/watch?locale=FR"
     }
   ],
   "quote": "Les intouchables, les incorruptibles, les incorruptibles.",

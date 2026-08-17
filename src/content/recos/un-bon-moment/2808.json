@@ -10,7 +10,7 @@
   },
   "creator": "Julia Ducournau",
   "enrichedAt": {
-    "links": "2026-07-31T20:23:48Z"
+    "links": "2026-08-17T15:39:43Z"
   },
   "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractionHistory": [
@@ -63,6 +63,12 @@
       "kind": "info",
       "label": "TMDB",
       "url": "https://www.themoviedb.org/movie/630240"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/630240-titane/watch?locale=FR"
     }
   ],
   "quote": "Vous avez vu le film, Titane ?",

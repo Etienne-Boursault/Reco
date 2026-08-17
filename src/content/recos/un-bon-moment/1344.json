@@ -1,7 +1,7 @@
 {
   "creator": "George Kay",
   "enrichedAt": {
-    "links": "2026-07-31T20:23:10Z"
+    "links": "2026-08-17T15:39:21Z"
   },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
@@ -72,6 +72,12 @@
       "kind": "info",
       "label": "TMDB",
       "url": "https://www.themoviedb.org/tv/96677"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/96677-lupin/watch?locale=FR"
     }
   ],
   "quote": "Oui, il y a un lupin.",

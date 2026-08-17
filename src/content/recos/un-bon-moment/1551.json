@@ -2,7 +2,7 @@
   "creator": "George Lucas",
   "enrichedAt": {
     "creator": "2026-07-29T10:06:22Z",
-    "links": "2026-07-31T20:23:16Z"
+    "links": "2026-08-17T15:39:25Z"
   },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
@@ -48,6 +48,12 @@
       "kind": "info",
       "label": "TMDB",
       "url": "https://www.themoviedb.org/movie/11"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/11-star-wars/watch?locale=FR"
     }
   ],
   "quote": "Je n'ai jamais vu Star Wars.",

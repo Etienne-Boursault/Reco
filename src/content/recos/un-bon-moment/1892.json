@@ -1,7 +1,7 @@
 {
   "creator": "Francis Ford Coppola",
   "enrichedAt": {
-    "links": "2026-07-31T20:23:26Z"
+    "links": "2026-08-17T15:39:31Z"
   },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
@@ -38,6 +38,12 @@
       "kind": "info",
       "label": "TMDB",
       "url": "https://www.themoviedb.org/movie/242"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/242-the-godfather-part-iii/watch?locale=FR"
     }
   ],
   "quote": "C'est un film cultissime.",
