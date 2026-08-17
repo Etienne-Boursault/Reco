@@ -312,3 +312,30 @@ def test_une_chaine_reste_couverte_par_sa_playlist():
     liens = [_lien("https://www.youtube.com/@UneChaine"),
              _lien("https://www.youtube.com/playlist?list=PL1")]
     assert lf.familles_manquantes(["chaine"], liens) == set()
+
+
+# ---------------------------------------------------------------------------
+# Un jeu mobile s'obtient sur un store
+# ---------------------------------------------------------------------------
+def test_une_fiche_App_Store_repond_a_ou_avoir_le_JEU():
+    """« Make More Views » porte sa fiche App Store : c'est exactement où
+    l'obtenir, et la reco était pourtant signalée « sans lien de jeu »."""
+    liens = [_lien("https://apps.apple.com/fr/app/make-more-views/id1438348967")]
+    assert lf.familles_manquantes(["jeu"], liens) == set()
+
+
+def test_l_inverse_n_est_PAS_vrai():
+    """Une application n'est pas un jeu : l'alternative ne vaut que dans un
+    sens, sinon une boutique de jeux éteindrait le manque d'une application."""
+    liens = [_lien("https://store.steampowered.com/app/1")]
+    assert lf.familles_manquantes(["application"], liens) == {"application"}
+
+
+@pytest.mark.parametrize(("url", "attendu"), [
+    ("https://archive.org/details/humblebragartoff0000witt", "libraire"),
+    ("https://boutique.so/en-en/collections/magazines-society", "libraire"),
+])
+def test_les_deux_libraires_qui_manquaient(url, attendu):
+    """`archive.org` prête l'ouvrage — souvent le seul recours pour un livre
+    épuisé ; `boutique.so` est la boutique de So Press, qui édite Society."""
+    assert lf.famille(url) == attendu

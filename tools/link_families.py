@@ -106,6 +106,11 @@ HOTES: dict[str, str] = {
     "editionsdutresor.com": "libraire",
     "citebd.org": "libraire",
     "babelio.com": "libraire",
+    # Prêt numérique : on y emprunte l'ouvrage, ce qui répond bien à « où
+    # le lire » — souvent le seul recours pour un livre épuisé.
+    "archive.org": "libraire",
+    # Boutique de So Press, qui édite et vend le magazine Society.
+    "boutique.so": "libraire",
     # --- Billetterie et salles ---------------------------------------------
     # Liste des dates de tournée et renvoie vers la vente : une
     # billetterie, non un service d'écoute.
@@ -302,7 +307,11 @@ FAMILLES_ATTENDUES: dict[str, tuple[tuple[str, ...], ...]] = {
     "spectacle": (("billetterie", "visionnage"),),
     "podcast": (("podcast",),),
     "chaine": (("video",),),
-    "jeu": (("jeu",),),
+    # Un jeu MOBILE s'obtient sur un store d'applications : « Make More
+    # Views » porte sa fiche App Store, qui est exactement « où l'avoir ».
+    # L'inverse n'est PAS vrai — une application n'est pas un jeu — d'où
+    # une alternative dans ce sens seulement.
+    "jeu": (("jeu", "application"),),
     "application": (("application",),),
 }
 

@@ -620,6 +620,20 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    "ubm-0985": {
+        "attendu": {"title": "Le Précepteur"},
+        "ajouter_liens": [{"label": "YouTube", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.youtube.com/@Le_Precepteur"}],
+        "pourquoi": "La reco est typée `chaine` sans aucun lien de vidéo. "
+                    "L'adresse ne vient pas d'une recherche mais du site "
+                    "officiel `le-precepteur.fr`, qui l'annonce lui-même ; les "
+                    "trois formes qu'il donne (@Le_Precepteur, deux variantes "
+                    "en /c/) convergent vers la même chaîne "
+                    "UCvRgiAmogg7a_BgQ_Ftm6fA, intitulée « Le Précepteur ». "
+                    "Un code HTTP 200 ne prouve rien chez YouTube : c'est "
+                    "cette convergence qui vaut vérification.",
+    },
     # --- Billetteries relevées sur BilletRéduc le 2026-08-17 ---------------
     # Deux seulement, et c'est le résultat honnête : sur vingt spectacles
     # cherchés, le reste ne s'y trouve pas. BilletRéduc couvre surtout le
