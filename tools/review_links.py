@@ -30,10 +30,12 @@ from urllib.parse import urlparse
 # Sert au formulaire d'override : pour chaque type de la reco, on propose
 # un champ par plateforme pour remplacer son URL par un lien direct.
 AUTO_PLATFORMS_BY_TYPE: dict[str, tuple[str, ...]] = {
-    "film":      ("JustWatch",),
-    "serie":     ("JustWatch",),
-    "livre":     ("Place des Libraires", "Lalibrairie.com"),
-    "bd":        ("Place des Libraires", "Lalibrairie.com"),
+    "film":      ("Où regarder",),
+    "serie":     ("Où regarder",),
+    # Lalibrairie.com retiré du site le 2026-07-31 (URL en 404, pas de forme
+    # GET) — le miroir suit, sinon il cesse d'être un miroir.
+    "livre":     ("Place des Libraires",),
+    "bd":        ("Place des Libraires",),
     "musique":   ("Bandcamp", "Deezer", "Spotify", "Qobuz", "Apple Music", "YT Music", "Tidal"),
     "album":     ("Bandcamp", "Deezer", "Spotify", "Qobuz", "Apple Music", "YT Music", "Tidal"),
     "artiste":   ("Instagram", "TikTok", "Site officiel", "Fnac Spectacles"),
@@ -86,9 +88,15 @@ def _spotify(reco: dict, in_type: str | None = None) -> str:
     return ext.get("spotify") or f"https://open.spotify.com/search/{_query(reco)}"
 
 
-def _justwatch(reco: dict, in_type: str | None = None) -> str:
+def _watch_page(reco: dict, in_type: str | None = None) -> str:
+    """Page « où regarder ». Miroir de `linksForFilmOrSeries` de merchants.ts.
+
+    Le libellé ne dit pas « JustWatch » parce que `externalIds.watchPage`
+    pointe sur themoviedb.org : afficher « JustWatch » sur ce lien serait
+    faux. La recherche de repli, elle, va bien chez JustWatch.
+    """
     ext = reco.get("externalIds") or {}
-    return ext.get("justwatch") or f"https://www.justwatch.com/fr/recherche?q={_query(reco)}"
+    return ext.get("watchPage") or f"https://www.justwatch.com/fr/recherche?q={_query(reco)}"
 
 
 def _instagram(reco: dict, in_type: str | None = None) -> str:
@@ -130,7 +138,6 @@ def _youtube(reco: dict, in_type: str | None = None) -> str:
 # Dispatch label → builder. Tout label absent → auto_url retourne None.
 _URL_BUILDERS: dict[str, Callable[[dict, str | None], str | None]] = {
     "Place des Libraires": _places_des_libraires,
-    "Lalibrairie.com":     _search_url("https://www.lalibrairie.com/livres/recherche.html?q={q}"),
     "Bandcamp":            _search_url("https://bandcamp.com/search?q={q}"),
     "Deezer":              _deezer,
     "Spotify":             _spotify,
@@ -138,12 +145,12 @@ _URL_BUILDERS: dict[str, Callable[[dict, str | None], str | None]] = {
     "Apple Music":         _search_url("https://music.apple.com/fr/search?term={q}"),
     "YT Music":            _search_url("https://music.youtube.com/search?q={q}"),
     "Tidal":               _search_url("https://tidal.com/search?q={q}"),
-    "JustWatch":           _justwatch,
+    "Où regarder":         _watch_page,
     "Apple Podcasts":      _search_url("https://podcasts.apple.com/fr/search?term={q}"),
     "Steam":               _search_url("https://store.steampowered.com/search/?term={q}"),
     "Itch.io":             _search_url("https://itch.io/search?q={q}"),
-    "Fnac Spectacles":     _search_url("https://www.fnacspectacles.com/recherche/?searchTerm={q}"),
-    "BilletReduc":         _search_url("https://www.billetreduc.com/recherche/index.htm?txt={q}"),
+    "Fnac Spectacles":     _search_url("https://www.fnacspectacles.com/search/?searchterm={q}"),
+    "BilletReduc":         _search_url("https://www.billetreduc.com/search.htm?se={q}"),
     "Google Maps":         _search_url("https://www.google.com/maps/search/{q}"),
     "Recherche":           _search_url("https://duckduckgo.com/?q={q}"),
     "Instagram":           _instagram,

@@ -138,8 +138,11 @@ def _render_index(source_id: str) -> str:
     n_doubts = count_doubts(source_id)
     doubts_link = (f' · <a class="doubts-link" href="/doutes">🤖 Doutes '
                    f'agent : <b>{n_doubts}</b></a>' if n_doubts else "")
+    # Le tableau de pilotage est l'autre porte d'entrée de la relecture (vue
+    # transversale, triable) : sans lien ici, il faudrait connaître l'URL.
+    table_link = ' · <a class="doubts-link" href="/tableau">📊 Tableau de pilotage</a>'
     subtitle = (f"<b>{todo}</b> recos à valider · {len(episodes)} épisodes ({n_with} avec recos). "
-                f"Clique une miniature.{doubts_link}")
+                f"Clique une miniature.{doubts_link}{table_link}")
     return _rr._shell(source.get("title", source_id), subtitle, inner)
 
 

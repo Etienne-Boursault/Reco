@@ -54,7 +54,7 @@ def render_type_badges(types: list[str]) -> str:
 EXT_FIELDS: tuple[str, ...] = (
     "tmdb", "imdb", "isbn", "musicbrainz",
     "youtube", "instagram", "tiktok", "website",
-    "justwatch", "deezer", "spotify",
+    "watchPage", "deezer", "spotify",
 )
 
 

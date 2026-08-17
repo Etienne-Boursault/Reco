@@ -222,7 +222,7 @@ def test_apply_edit_link_overrides_rejects_non_https(reco_path):
     """m1 — un override à scheme non-https est refusé."""
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "lo_JustWatch": ["javascript:alert(1)"],
+        "lo_Où regarder": ["javascript:alert(1)"],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
     assert "linkOverrides" not in reco
@@ -231,22 +231,22 @@ def test_apply_edit_link_overrides_rejects_non_https(reco_path):
 def test_apply_edit_writes_link_overrides(reco_path):
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "lo_JustWatch": ["https://justwatch.com/exact"],
+        "lo_Où regarder": ["https://justwatch.com/exact"],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
-    assert reco["linkOverrides"] == {"JustWatch": "https://justwatch.com/exact"}
+    assert reco["linkOverrides"] == {"Où regarder": "https://justwatch.com/exact"}
 
 
 def test_apply_edit_link_overrides_empty_url_deletes_entry(reco_path):
     # On pose un override existant.
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "lo_JustWatch": ["https://justwatch.com/x"],
+        "lo_Où regarder": ["https://justwatch.com/x"],
     })
     # Puis on l'efface (URL vide).
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "lo_JustWatch": [""],
+        "lo_Où regarder": [""],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
     assert "linkOverrides" not in reco
@@ -257,10 +257,10 @@ def test_apply_edit_link_overrides_rejects_unknown_label(reco_path):
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
         "lo_EvilCorp": ["https://evil.com"],
-        "lo_JustWatch": ["https://jw.com/x"],
+        "lo_Où regarder": ["https://jw.com/x"],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
-    assert reco["linkOverrides"] == {"JustWatch": "https://jw.com/x"}
+    assert reco["linkOverrides"] == {"Où regarder": "https://jw.com/x"}
     assert "EvilCorp" not in reco["linkOverrides"]
 
 
@@ -339,10 +339,10 @@ def test_render_edit_form_includes_recommenders_datalist_with_hosts_first():
 
 
 def test_render_edit_form_includes_clickable_platform_labels():
-    """Pour les types film, JustWatch apparaît avec un lien `<a>`."""
+    """Pour les types film, « Où regarder » apparaît avec un lien `<a>`."""
     r = {"id": "r1", "title": "T", "types": ["film"]}
     out = render_edit_form(r, _ep(), siblings=[], hosts=[])
-    assert "JustWatch" in out
+    assert "Où regarder" in out
     assert "<a class=\"ov-label\"" in out
 
 
@@ -351,10 +351,10 @@ def test_render_edit_form_includes_existing_overrides_even_if_type_unsupported()
     reste éditable (cas d'un type changé après coup)."""
     r = {
         "id": "r1", "title": "T", "types": [],
-        "linkOverrides": {"JustWatch": "https://jw.com/x"},
+        "linkOverrides": {"Où regarder": "https://jw.com/x"},
     }
     out = render_edit_form(r, _ep(), siblings=[], hosts=[])
-    assert "JustWatch" in out
+    assert "Où regarder" in out
     assert "https://jw.com/x" in out
 
 
@@ -498,10 +498,10 @@ def test_render_recap_string_duration_no_crash():
     assert 'class="tc"' in out  # timecode cliquable rendu (offset appliqué)
 
 
-def test_render_overrides_section_for_film_includes_justwatch():
+def test_render_overrides_section_for_film_includes_watch_page():
     out = _render_overrides_section({"types": ["film"], "title": "X"})
-    assert "JustWatch" in out
-    assert 'name="lo_JustWatch"' in out
+    assert "Où regarder" in out
+    assert 'name="lo_Où regarder"' in out
 
 
 # ===== F2 — Cases à cocher invités pour recommendedBy ======================
@@ -804,10 +804,10 @@ def test_apply_edit_link_override_accepts_uppercase_https(reco_path):
     """m8/m9 — parité linkOverrides : `HTTPS://…` accepté."""
     apply_edit(reco_path, {
         "title": ["X"], "types": ["film"],
-        "lo_JustWatch": ["HTTPS://justwatch.com/exact"],
+        "lo_Où regarder": ["HTTPS://justwatch.com/exact"],
     })
     reco = json.loads(reco_path.read_text(encoding="utf-8"))
-    assert reco["linkOverrides"] == {"JustWatch": "HTTPS://justwatch.com/exact"}
+    assert reco["linkOverrides"] == {"Où regarder": "HTTPS://justwatch.com/exact"}
 
 
 def test_apply_edit_external_id_rejects_dangerous_url(reco_path):

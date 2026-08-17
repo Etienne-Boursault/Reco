@@ -38,6 +38,7 @@ from review_routes_reco import (
     RecoCrudRoutesMixin,
     _allocate_new_reco,
 )
+from review_routes_table import TableRoutesMixin
 
 __all__ = [
     "Handler",
@@ -84,12 +85,15 @@ def _cleanup_orphan_tmp_files(source_id: str) -> int:
     return n
 
 
-class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
+class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
+              BaseHandler):
     """Handler HTTP métier — assemble GET/POST sur les routes du review_server.
 
     Hérite de :
     - `MergeRoutesMixin` (routes /merge-recos et /undo-merge — review_routes_merge) ;
     - `RecoCrudRoutesMixin` (routes /add-reco et /delete-reco — review_routes_reco) ;
+    - `TableRoutesMixin` (routes /tableau, /curation, /accept-type —
+      review_routes_table) ;
     - `BaseHandler` (plomberie : sécurité, réponses, cache).
 
     Ces mixins ont été extraits pour tenir chaque fichier sous 500 lignes (M4).
@@ -131,6 +135,12 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
                 kind = "info"
             self._send(200, render_dedup_page(self.source_id, flash=flash,
                                               flash_kind=kind))
+            return
+        if parsed.path == "/tableau":
+            # Tableau de pilotage des recos actives (cf. review_table) : une
+            # ligne par reco, tri côté client, commentaire + coche persistés
+            # dans le sidecar tools/output/curation/.
+            self._handle_get_table(parsed.query)
             return
         if parsed.path == "/ep":
             self._handle_get_episode(parsed.query)
@@ -247,6 +257,12 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, BaseHandler):
             return
         if route == "/consolidate":
             self._handle_consolidate(data)
+            return
+        if route == "/curation":
+            self._handle_curation(data)
+            return
+        if route == "/accept-type":
+            self._handle_accept_type(data)
             return
         # M1 (revue 2026-07-19) : router les routes « reco » EXPLICITEMENT. Sans
         # ça, TOUTE route POST inconnue (même `POST /`) tombait dans le

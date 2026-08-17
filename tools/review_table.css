@@ -1,0 +1,151 @@
+/* Feuille de style du TABLEAU DE PILOTAGE (/tableau).
+
+   Extraite de review_server.css, qui dépassait 500 lignes une fois cette page
+   ajoutée. Même règle que pour le JS client (cf. `review_render_common`) : des
+   fichiers de 500 lignes au plus, concaténés à la lecture. L'ordre compte —
+   ces règles s'appuient sur les variables et la base posées par
+   review_server.css, et ne tiennent pas seules. */
+/* ---- Tableau de pilotage (/tableau) ---------------------------------------
+   Une passe de curation se fait au clavier et à la souris sur 1200 lignes :
+   en-têtes collants (on garde le nom des colonnes en scrollant), lignes
+   compactes, et défilement HORIZONTAL confiné au tableau (le body ne doit
+   jamais scroller latéralement). */
+/* Barre de filtre, au-dessus du tableau. Elle reste HORS de la zone de
+   défilement : elle doit rester visible et atteignable quel que soit le
+   défilement horizontal des colonnes. */
+.tbl-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;
+  margin-top:.9rem;}
+.tbl-bar-lbl{color:#9a99a3;font-weight:700;font-size:.82rem;}
+.tbl-filter{background:#17171c;color:#f6f4ee;border:1px solid #2a2a30;
+  border-radius:.35rem;padding:.35em .6em;font:inherit;font-size:.82rem;
+  max-width:min(28rem,70vw);}
+.tbl-filter:focus-visible{outline:2px solid #ffd23f;outline-offset:1px;}
+.tbl-bar-btn{background:transparent;color:#9a99a3;border:1px solid #2a2a30;
+  border-radius:.35rem;padding:.35em .6em;font:inherit;font-size:.78rem;
+  cursor:pointer;}
+.tbl-bar-btn:hover{color:#ffd23f;border-color:#ffd23f;}
+.tbl-bar-count{color:#6f6e78;font-size:.78rem;}
+
+/* Le défilement appartient au CONTENEUR, pas à la table.
+   La table le portait elle-même via `display:block; overflow-x:auto`. Deux
+   effets de bord, tous deux invisibles jusqu'à ce qu'on les cherche :
+     - `table-layout` ne s'applique qu'à un `display:table`. Sur un bloc, les
+       rangées sont enveloppées dans une table anonyme que la propriété
+       n'atteint pas : les largeurs de colonnes ne sont alors que des
+       SUGGESTIONS, que le navigateur reste libre d'ignorer.
+     - `position:sticky` se cale sur le plus proche ancêtre défilant. C'était
+       la table elle-même, dont la hauteur épouse le contenu et ne défile donc
+       jamais : l'en-tête « collant » annoncé plus haut ne collait à rien.
+   D'où la séparation, et la HAUTEUR BORNÉE ci-dessous : le conteneur devient
+   une vraie zone de défilement verticale, et le nom des colonnes reste visible
+   tout au long des 1200 lignes. */
+.reco-table-scroll{overflow:auto;margin-top:.8rem;
+  max-height:calc(100vh - 13rem);}
+.reco-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+.reco-table thead th{position:sticky;top:0;z-index:2;background:#17171c;
+  border-bottom:1px solid #2a2a30;padding:0;text-align:left;white-space:nowrap;}
+/* Marge à DROITE plus large que les autres : la poignée de redimensionnement
+   occupe 9px de ce bord, et le libellé ne doit pas passer dessous. */
+.reco-table .tbl-sort{width:100%;background:transparent;border:0;color:#9a99a3;
+  font:inherit;font-weight:700;padding:.5em .9em .5em .6em;text-align:left;
+  cursor:pointer;overflow:hidden;text-overflow:ellipsis;}
+.reco-table .tbl-sort:hover{color:#ffd23f;}
+/* Poignée de redimensionnement, sur le bord droit de chaque en-tête.
+   `position:absolute` sans `position:relative` sur le th : `sticky` EST une
+   position, le th sert donc déjà de bloc conteneur — le passer en `relative`
+   casserait l'en-tête collant.
+   Zone de préhension de 9px (le trait visible n'en fait qu'un) : viser une
+   ligne d'un pixel à la souris est pénible. */
+.reco-table .tbl-resize{position:absolute;top:0;right:0;width:9px;height:100%;
+  cursor:col-resize;touch-action:none;user-select:none;}
+.reco-table .tbl-resize::after{content:"";position:absolute;top:15%;right:4px;
+  width:1px;height:70%;background:#2a2a30;transition:background .12s;}
+.reco-table .tbl-resize:hover::after,
+.reco-table .tbl-resize:focus-visible::after,
+.reco-table .tbl-resize.tbl-resizing::after{background:#ffd23f;width:2px;}
+.reco-table .tbl-resize:focus-visible{outline:none;}
+/* Pendant le glissement : plus aucune sélection de texte parasite, et le
+   curseur reste « col-resize » même hors de la poignée. */
+body.tbl-resizing-body{cursor:col-resize;user-select:none;}
+/* Une fois les largeurs figées (table-layout:fixed), les `min-width` posées
+   par colonne empêcheraient de rétrécir en dessous — c'est l'utilisateur qui
+   décide. Le contenu se replie au lieu de déborder. */
+.reco-table[data-widths-frozen="1"] td{min-width:0;overflow-wrap:anywhere;}
+.reco-table th.tbl-sorted .tbl-sort{color:#ffd23f;}
+.reco-table th.tbl-sorted .tbl-arrow::after{content:" ▲";font-size:.7em;}
+.reco-table th.tbl-sorted-desc .tbl-arrow::after{content:" ▼";}
+.reco-table tbody tr{border-bottom:1px solid #1c1c22;vertical-align:top;}
+.reco-table tbody tr:hover{background:#141419;}
+.reco-table td{padding:.4em .6em;}
+/* Colonne de coche — DERNIÈRE depuis le 2026-08-15. La case est plus grande
+   que le défaut : c'est la seule cible cliquable de la ligne à côté des liens,
+   et on la vise 1200 fois. `vertical-align:middle` la cale sur la première
+   ligne du texte plutôt qu'en haut de la cellule. */
+.tbl-c-check{width:2.6rem;text-align:center;vertical-align:middle;}
+.tbl-c-check .tbl-check{width:1.05rem;height:1.05rem;cursor:pointer;
+  accent-color:#5ab68a;}
+.tbl-c-title{min-width:12rem;font-weight:600;}
+.tbl-c-title a{color:#f6f4ee;text-decoration:none;}
+.tbl-c-title a:hover{color:#ffd23f;text-decoration:underline;}
+.tbl-c-artist,.tbl-c-by{min-width:8rem;color:#c9c7d0;}
+.tbl-c-episode{min-width:11rem;color:#9a99a3;}
+.tbl-c-episode a{color:#9a99a3;text-decoration:none;}
+.tbl-c-episode a:hover{color:#ffd23f;}
+/* Colonne de réécoute. Le lien lui-même hérite de `.tc` (jaune, gras), défini
+   pour toutes les pages du serveur : c'est le même geste qu'ailleurs, il doit
+   avoir la même apparence. On n'ajoute ici que la mise en boîte. */
+.tbl-c-timecode{width:5.5rem;white-space:nowrap;text-align:center;
+  vertical-align:middle;}
+.tbl-c-timecode .tc{display:inline-block;padding:.15em .4em;border-radius:.3rem;
+  font-size:.8rem;}
+.tbl-c-timecode .tc:hover{background:rgba(255,210,63,.14);}
+/* Reco sans timecode : la cellule reste vide plutôt que d'afficher un tiret
+   ou un bouton mort — 1200 lignes de tirets ne renseignent personne. */
+.tbl-c-timecode .tc.off{display:none;}
+.tbl-c-types{min-width:8rem;}
+.tbl-type{display:inline-block;margin-right:.4em;white-space:nowrap;}
+.tbl-prop{display:block;margin-top:.25rem;color:#5ab68a;font-size:.75rem;
+  font-weight:600;cursor:pointer;}
+/* La proposition REMPLACE les types : ce qu'elle retire est dit en clair. */
+.tbl-prop-drop{color:#8a8992;font-weight:400;}
+/* Confiance « inference » : à lire avant de cocher. */
+.tbl-prop-weak{color:#ffd23f;}
+/* Cas marqués « arbitrage » par la passe : choix éditorial, pas mécanique. */
+.tbl-prop-arb{color:#ff9a9a;}
+.tbl-c-links{min-width:10rem;}
+.tbl-link{display:inline-block;margin:0 .35em .2em 0;padding:.1em .5em;
+  border:1px solid #2a2a30;border-radius:999px;color:#a2c4ee;
+  text-decoration:none;font-size:.72rem;white-space:nowrap;}
+.tbl-link:hover{border-color:#ffd23f;color:#ffd23f;}
+/* L'éthique du lien reste lisible d'un coup d'œil : les marchands « avoid »
+   (Amazon, Bolloré…) sont conservés à dessein, mais signalés. */
+.tbl-link-indie{border-color:#2f5c42;color:#7fd0aa;}
+.tbl-link-avoid{border-color:#5c1a1a;color:#ff9a9a;}
+/* Recherches PRÉ-REMPLIES (cf. review_search_links) : un lien posé désigne
+   l'œuvre, celles-ci désignent une recherche qui reste à faire. Le trait
+   pointillé et la teinte sourde disent cette différence sans lire l'URL —
+   c'est ce qui empêche de recopier une URL de recherche comme si c'était la
+   fiche. Repliées par défaut : ~4100 puces sur 1200 lignes noieraient les
+   vrais liens. */
+.tbl-search{display:block;margin-top:.15rem;}
+.tbl-search-open{cursor:pointer;color:#6f6e78;font-size:.72rem;
+  list-style:none;width:max-content;padding:.05em .3em;border-radius:4px;}
+.tbl-search-open::-webkit-details-marker{display:none;}
+.tbl-search-open:hover,.tbl-search[open] .tbl-search-open{color:#ffd23f;}
+.tbl-search-list{display:block;margin-top:.2rem;}
+.tbl-search-link{display:inline-block;margin:0 .35em .2em 0;padding:.1em .5em;
+  border:1px dashed #3a3944;border-radius:999px;color:#8a8992;
+  text-decoration:none;font-size:.7rem;white-space:nowrap;}
+.tbl-search-link:hover{border-color:#ffd23f;color:#ffd23f;}
+.tbl-c-comment{min-width:14rem;}
+.tbl-comment{width:100%;min-height:2.4em;resize:vertical;background:#0e0e10;
+  border:1px solid #2a2a30;border-radius:6px;color:#f6f4ee;font:inherit;
+  padding:.3em .5em;}
+.tbl-comment:focus{outline:none;border-color:#ffd23f;}
+/* Retour d'enregistrement discret : pas de toast à chaque frappe. */
+.tbl-saved .tbl-comment,.tbl-saved{border-color:#2f5c42;}
+.tbl-save-error .tbl-comment{border-color:#5c1a1a;}
+@media (max-width:760px){
+  .reco-table{font-size:.78rem;}
+  .tbl-c-title,.tbl-c-comment{min-width:9rem;}
+}

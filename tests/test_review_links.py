@@ -39,7 +39,7 @@ def test_auto_url_uses_external_id_when_present():
         "externalIds": {
             "spotify": "https://open.spotify.com/track/42",
             "deezer": "https://deezer.com/track/9",
-            "justwatch": "https://www.justwatch.com/fr/film/x",
+            "watchPage": "https://www.themoviedb.org/movie/1-x/watch?locale=FR",
             "website": "https://example.com",
             "youtube": "ABCDEFGHIJK",
             "instagram": "@alice",
@@ -47,7 +47,7 @@ def test_auto_url_uses_external_id_when_present():
     }
     assert auto_url("Spotify", reco) == "https://open.spotify.com/track/42"
     assert auto_url("Deezer", reco) == "https://deezer.com/track/9"
-    assert auto_url("JustWatch", reco) == "https://www.justwatch.com/fr/film/x"
+    assert auto_url("Où regarder", reco) == "https://www.themoviedb.org/movie/1-x/watch?locale=FR"
     assert auto_url("Site officiel", reco) == "https://example.com"
     assert auto_url("YouTube", reco) == "https://www.youtube.com/watch?v=ABCDEFGHIJK"
     assert auto_url("Instagram", reco) == "https://www.instagram.com/alice/"
@@ -57,7 +57,7 @@ def test_auto_url_falls_back_to_search():
     reco = {"title": "X", "creator": "Y", "types": ["album"]}
     assert "search/" in auto_url("Spotify", reco)
     assert "search/" in auto_url("Deezer", reco)
-    assert "recherche" in auto_url("JustWatch", reco)
+    assert "recherche" in auto_url("Où regarder", reco)
     # Instagram tombe sur duckduckgo/google search
     assert "site%3Ainstagram.com" in auto_url("Instagram", reco)
 
@@ -162,7 +162,7 @@ def test_auto_url_explicit_in_type_overrides_reco_types():
 def test_auto_urls_for_returns_dict_for_multi_type():
     reco = {"title": "Mix", "types": ["film", "album"]}
     out = auto_urls_for(reco)
-    assert "JustWatch" in out
+    assert "Où regarder" in out
     assert "Spotify" in out
     assert "Bandcamp" in out
 

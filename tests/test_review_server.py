@@ -1777,11 +1777,11 @@ def test_post_rename_guest_missing_guid_redirects_to_root(fake_source):
 
 # ===== /ep avec overrides + customLinks dans le formulaire ==================
 def test_get_ep_with_edit_includes_overrides_section(fake_source):
-    """Le formulaire d'édition (sur une reco film) inclut le block override JustWatch."""
+    """Le formulaire d'édition (sur une reco film) inclut le block override « Où regarder »."""
     h = _FakeHandler(fake_source, "/ep?guid=ep-001&edit=ubm-001")
     h.do_GET()
     body = h.wfile.getvalue().decode("utf-8")
-    assert "JustWatch" in body
+    assert "Où regarder" in body
     assert "Modifier un lien automatique" in body
 
 
@@ -1799,12 +1799,12 @@ def test_post_edit_writes_custom_links_via_form(fake_source):
 
 def test_post_edit_writes_link_overrides_via_form(fake_source):
     body = (b"id=ubm-001&title=Mortel&types=film"
-            b"&lo_JustWatch=https%3A%2F%2Fjustwatch.com%2Fexact")
+            b"&lo_O%C3%B9%20regarder=https%3A%2F%2Fjustwatch.com%2Fexact")
     h = _FakeHandler(fake_source, "/edit", body)
     h.do_POST()
     from common import read_json, recos_dir_for
     reco = read_json(recos_dir_for(fake_source) / "ubm-001.json")
-    assert reco["linkOverrides"] == {"JustWatch": "https://justwatch.com/exact"}
+    assert reco["linkOverrides"] == {"Où regarder": "https://justwatch.com/exact"}
 
 
 def test_post_edit_with_empty_title_responds_with_error_flash(fake_source):
@@ -1929,8 +1929,13 @@ def test_rebuild_cache_clears_existing_entries(fake_source, tmp_path):
     assert "ubm-001" in rs._RECO_PATH_CACHE[fake_source]
 
 
-def test_style_oserror_returns_empty_string(monkeypatch, tmp_path):
-    """Couvre `except OSError → return ""` dans _style.
+def test_style_ignore_une_feuille_illisible(monkeypatch, tmp_path):
+    """Une feuille absente est SAUTÉE, jamais fatale.
+
+    Une exception ici priverait de toute la relecture ; une page sans style
+    reste utilisable. Depuis que la feuille du tableau est un fichier séparé
+    (les deux dépassaient 500 lignes réunies), il faut aussi vérifier que la
+    perte de l'une n'emporte PAS l'autre.
 
     #H — `_style` vit dans `review_render_common` (source unique de vérité).
     Le patch doit cibler ce module ; `review_render._CSS_PATH` est seulement
@@ -1942,7 +1947,39 @@ def test_style_oserror_returns_empty_string(monkeypatch, tmp_path):
         review_render_common, "_CSS_PATH",
         tmp_path / "does-not-exist.css",
     )
+    sortie = review_render_common._style()
+    assert "does-not-exist" not in sortie
+    # La feuille du tableau, elle, est toujours là.
+    assert ".reco-table" in sortie
+    review_render_common._style.cache_clear()
+
+
+def test_style_vide_si_TOUTES_les_feuilles_manquent(monkeypatch, tmp_path):
+    """Aucune feuille lisible → chaîne vide, et surtout aucune exception."""
+    import review_render_common
+    review_render_common._style.cache_clear()
+    monkeypatch.setattr(review_render_common, "_CSS_PATH",
+                        tmp_path / "absente.css")
+    monkeypatch.setattr(review_render_common, "_CSS_EXTRA_PATHS",
+                        (tmp_path / "absente-aussi.css",))
     assert review_render_common._style() == ""
+    review_render_common._style.cache_clear()
+
+
+def test_style_concatene_les_feuilles_dans_l_ordre(monkeypatch, tmp_path):
+    """L'ORDRE n'est pas indifférent : la feuille du tableau s'appuie sur les
+    variables déclarées par la base, et passerait avant elles sans effet."""
+    import review_render_common
+    review_render_common._style.cache_clear()
+    base = tmp_path / "base.css"
+    base.write_text(":root{--x:1px}", encoding="utf-8")
+    extra = tmp_path / "extra.css"
+    extra.write_text(".t{width:var(--x)}", encoding="utf-8")
+    monkeypatch.setattr(review_render_common, "_CSS_PATH", base)
+    monkeypatch.setattr(review_render_common, "_CSS_EXTRA_PATHS", (extra,))
+
+    sortie = review_render_common._style()
+    assert sortie.index(":root") < sortie.index(".t")
     review_render_common._style.cache_clear()
 
 

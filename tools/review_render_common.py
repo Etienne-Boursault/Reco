@@ -29,6 +29,11 @@ _STOP = re.compile(
 )
 
 _CSS_PATH = _TOOLS_DIR / "review_server.css"
+#: Feuilles ADDITIONNELLES, concaténées après la base et DANS CET ORDRE.
+#: Même règle que pour le JS client plus bas : des fichiers de 500 lignes au
+#: plus. Ces règles s'appuient sur les variables et la base de `_CSS_PATH` et
+#: ne tiennent pas seules — l'ordre n'est donc pas indifférent.
+_CSS_EXTRA_PATHS = (_TOOLS_DIR / "review_table.css",)
 
 
 # ---- Schémas URL sûrs (#5 — XSS via youtubeUrl:javascript:…) -----------------
@@ -293,21 +298,37 @@ def _context_around(items: tuple[tuple[int, str], ...], target_sec: int,
 # ---- HTML shell --------------------------------------------------------------
 @lru_cache(maxsize=1)
 def _style() -> str:
-    """Feuille de style (cachée pour éviter l'I/O répété)."""
-    try:
-        return _CSS_PATH.read_text(encoding="utf-8")
-    except OSError:
-        return ""
+    """Feuilles de style concaténées (cachées pour éviter l'I/O répété).
+
+    Une feuille manquante est ignorée plutôt que fatale : une page sans style
+    reste utilisable, alors qu'une exception ici priverait de TOUTE la
+    relecture. Le cache est posé au niveau de la fonction : après modification
+    d'un `.css`, il faut redémarrer le serveur — comme pour le JS client.
+    """
+    morceaux = []
+    for chemin in (_CSS_PATH, *_CSS_EXTRA_PATHS):
+        try:
+            morceaux.append(chemin.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+    return "\n".join(morceaux)
 
 
-# M4 découpe — le JS client vit en 4 fichiers ≤ 500 lignes, concaténés dans
-# CET ORDRE : le core publie window.__reco.{initOnReady,toast} que les trois
-# suivants consomment (chaque fichier est une IIFE avec son gate propre).
+# M4 découpe — le JS client vit en fichiers ≤ 500 lignes, concaténés dans CET
+# ORDRE : le core publie window.__reco.{initOnReady,toast} que les suivants
+# consomment (chaque fichier est une IIFE avec son gate propre).
+#
+# ATTENTION : ces fichiers sont lus UNE FOIS, à l'import du module (donc au
+# démarrage du serveur). Après toute modification d'un review_client*.js, il
+# FAUT redémarrer review_server.py — sinon il ressert l'ancienne version.
 _CLIENT_JS_FILES = (
     "review_client.js",           # core : toast, AJAX, flash, merge bar, player
     "review_client_cluster.js",   # ajout/retrait manuel de cluster
     "review_client_keyboard.js",  # nav clavier, carte active, YT, recherche
     "review_client_toolbar.js",   # tri + repli des traités
+    "review_client_table.js",     # /tableau : tri des colonnes + autosave
+    "review_client_resize.js",    # /tableau : largeur des colonnes ajustable
+    "review_client_filter.js",    # /tableau : filtre par épisode
 )
 try:
     _CLIENT_JS = "\n".join(
