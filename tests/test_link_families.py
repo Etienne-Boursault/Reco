@@ -186,3 +186,46 @@ def test_tous_les_hotes_a_chemin_sont_dans_la_table_principale():
     famille par défaut — son cas hors-chemin tomberait silencieusement."""
     for cle in lf._CHEMINS:
         assert cle in lf.HOTES, cle
+
+
+# ---------------------------------------------------------------------------
+# Spotify et Deezer diffusent DEUX choses
+# ---------------------------------------------------------------------------
+@pytest.mark.parametrize(("url", "attendu"), [
+    ("https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk", "podcast"),
+    ("https://open.spotify.com/episode/abc", "podcast"),
+    ("https://open.spotify.com/album/123", "ecoute"),
+    ("https://open.spotify.com/artist/123", "ecoute"),
+    ("https://www.deezer.com/show/1002058731", "podcast"),
+    ("https://www.deezer.com/album/70", "ecoute"),
+])
+def test_le_chemin_separe_le_podcast_de_la_musique(url, attendu):
+    """Ranger ces hôtes entièrement du côté « écoute » signalait comme
+    dépourvues de podcast trente-quatre recos qui en portaient un : le lien
+    était là, l'audit ne savait pas le lire."""
+    assert lf.famille(url) == attendu
+
+
+def test_la_locale_intercalee_par_spotify_ne_masque_pas_le_chemin():
+    """Spotify insère parfois `/intl-fr/` : exiger le fragment en tête du
+    chemin aurait raté vingt-sept liens du corpus."""
+    assert lf.famille("https://open.spotify.com/intl-fr/show/abc") == "podcast"
+    assert lf.famille("https://open.spotify.com/intl-fr/album/abc") == "ecoute"
+
+
+@pytest.mark.parametrize("url", [
+    "https://www.arteradio.com/serie/l_ecole_c_est_de_la_merde",
+    "https://www.binge.audio/podcast/x",
+    "https://podcasts.audiomeans.fr/le-precepteur-144bb12e80d6",
+    "https://podcastaddict.com/podcast/x/5977186",
+    "https://lavoixdanstatete.com/podcast/les-gens-qui-doutent/",
+])
+def test_les_plateformes_de_podcast_du_corpus_sont_reconnues(url):
+    assert lf.famille(url) == "podcast"
+
+
+def test_un_site_PERSONNEL_ne_couvre_pas_la_famille_podcast():
+    """`joerogan.com` dit où trouver la personne, pas où écouter l'émission.
+    L'y ranger ferait disparaître un manque réel du décompte."""
+    assert lf.famille("https://www.joerogan.com/") is None
+    assert lf.famille("https://billburr.com/") is None

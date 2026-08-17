@@ -128,6 +128,16 @@ HOTES: dict[str, str] = {
     "acast.com": "podcast",
     "podcasts.apple.com": "podcast",
     "louiemedia.com": "podcast",
+    # Plateformes et studios relevés sur les recos typées `podcast` du corpus.
+    # Un site PERSONNEL d'auteur (joerogan.com, billburr.com…) reste hors table :
+    # il dit où trouver la personne, pas où écouter l'émission.
+    "arteradio.com": "podcast",
+    "binge.audio": "podcast",
+    "audiomeans.fr": "podcast",
+    "podcastaddict.com": "podcast",
+    "lavoixdanstatete.com": "podcast",
+    "orsomedia.io": "podcast",
+    "2hdp.fr": "podcast",
     # --- Jeux --------------------------------------------------------------
     "store.steampowered.com": "jeu",
     "itch.io": "jeu",
@@ -147,6 +157,115 @@ HOTES: dict[str, str] = {
     # --- Encyclopédie ------------------------------------------------------
     "wikipedia.org": "encyclopedie",
     "wikidata.org": "encyclopedie",
+
+    # =====================================================================
+    # SECOND RELEVÉ — 257 hôtes du corpus n'étaient pas classés, pour
+    # 359 liens. La majorité sont des sites PERSONNELS d'artistes, qu'aucune
+    # table ne peut énumérer et qui n'appartiennent à aucune famille. Ce qui
+    # suit ne retient que les plateformes MULTI-ŒUVRES : celles où l'on peut
+    # chercher une autre œuvre que celle qui les a fait entrer ici.
+    #
+    # ABSENT À DESSEIN — `amazon.fr` est bien un libraire, mais le compter
+    # comme tel éteindrait le signalement sur les recos qui n'ont QUE ce
+    # lien : or ce sont précisément celles où chercher un indépendant.
+    # ABSENT À DESSEIN — `apple.com`, `linkedin.com` servent tout et
+    # n'importe quoi : les classer rendrait la table menteuse.
+    # =====================================================================
+    # --- Libraires et éditeurs (2e relevé, 2026-08-17) -------------------
+    "leslibraires.fr": "libraire",
+    "librairie-de-paris.fr": "libraire",
+    "librairie-des-femmes.fr": "libraire",
+    "librairie-gallimard.com": "libraire",
+    "librairie-sciencespo.fr": "libraire",
+    "librairies-alip.fr": "libraire",
+    "librairiesindependantes.com": "libraire",
+    "libraires-ensemble.com": "libraire",
+    "ombres-blanches.fr": "libraire",
+    "furet.com": "libraire",
+    "halldulivre.com": "libraire",
+    "lesmots-leschoses.fr": "libraire",
+    "buchetchastel.fr": "libraire",
+    "pol-editeur.com": "libraire",
+    "seuil.com": "libraire",
+    "harpercollins.fr": "libraire",
+    "jailu.com": "libraire",
+    "la-pleiade.fr": "libraire",
+    "folio-lesite.fr": "libraire",
+    "editions-tredaniel.com": "libraire",
+    "exemplaire-editions.fr": "libraire",
+    "champsocial.com": "libraire",
+    "lesimpressionsnouvelles.com": "libraire",
+    "eyrolles.com": "libraire",
+    "dupuis.com": "libraire",
+    "dargaud.com": "libraire",
+    "ki-oon.com": "libraire",
+    "bdfugue.com": "libraire",
+    "leloup.org": "libraire",
+    # --- Fiches : presse spécialisée, bases, distributeurs ----------------
+    # Un DISTRIBUTEUR (Le Pacte, A24, StudioCanal) présente l'œuvre sans la
+    # diffuser : c'est une fiche, pas un moyen de la voir.
+    "jeuxvideo.com": "fiche",
+    "trictrac.net": "fiche",
+    "ludovox.fr": "fiche",
+    "manga-news.com": "fiche",
+    "nanarland.com": "fiche",
+    "lostmediawiki.com": "fiche",
+    "musicbrainz.org": "fiche",
+    "le-pacte.com": "fiche",
+    "a24films.com": "fiche",
+    "outplayfilms.com": "fiche",
+    "studiocanal.fr": "fiche",
+    "kinolorber.com": "fiche",
+    "detourfilm.com": "fiche",
+    "baborentertainment.com": "fiche",
+    "cinematheque.fr": "fiche",
+    "brefcinema.com": "fiche",
+    # --- Jeux : boutiques et sites officiels ------------------------------
+    "philibertnet.com": "jeu",
+    "passiondujeu.fr": "jeu",
+    "epicgames.com": "jeu",
+    "geoguessr.com": "jeu",
+    "cemantix.certitudes.org": "jeu",
+    "undertale.com": "jeu",
+    "polytopia.io": "jeu",
+    "hempuli.com": "jeu",
+    "latabledessavoirs.fr": "jeu",
+    "wooga.com": "jeu",
+    # --- Où voir (2e relevé) ---------------------------------------------
+    "crunchyroll.com": "visionnage",
+    "animationdigitalnetwork.com": "visionnage",
+    "hbo.com": "visionnage",
+    "pluto.tv": "visionnage",
+    "madelen.ina.fr": "visionnage",
+    "vod.mediatheque-numerique.com": "visionnage",
+    "cinemasalademande.com": "visionnage",
+    "store.potemkine.fr": "visionnage",
+    "cinemutins.com": "visionnage",
+    "intl.paramountplus.com": "visionnage",
+    "francetelevisions.fr": "visionnage",
+    # --- Billetterie et salles (2e relevé) --------------------------------
+    "spectable.com": "billetterie",
+    "shotgun.live": "billetterie",
+    "casinodeparis.fr": "billetterie",
+    "comedie-francaise.fr": "billetterie",
+    "theatredesbeliersparisiens.com": "billetterie",
+    "theatredelarenaissance.com": "billetterie",
+    "theatrelabruyere.com": "billetterie",
+    "lapetiteloge.fr": "billetterie",
+    "lepointvirgule.com": "billetterie",
+    "gaite.com": "billetterie",
+    "panameartcafe.com": "billetterie",
+    "lefridgecomedy.com": "billetterie",
+    "academiedhumour.com": "billetterie",
+    "stage-entertainment.fr": "billetterie",
+    "lalettre-spectacle.fr": "billetterie",
+    "ruqspectacles.fr": "billetterie",
+    "20h40.fr": "billetterie",
+    "lekings.be": "billetterie",
+    "infinitix.be": "billetterie",
+    "pathe.fr": "billetterie",
+    "ugc.fr": "billetterie",
+    "ticketingcine.com": "billetterie",
 }
 
 #: Type de reco → familles ATTENDUES. Une famille absente de cette table n'est
@@ -181,14 +300,24 @@ def hote_de(url: object) -> str:
         return ""
 
 
-#: Hôtes qui servent DEUX familles selon le chemin. La table `HOTES` associe un
-#: hôte à une famille et une seule ; ces hôtes-là lui échappent, et l'ignorer
-#: rendait l'audit aveugle à ce qu'il venait lui-même de poser.
-_CHEMINS: dict[str, tuple[str, str]] = {
+#: Hôtes qui servent PLUSIEURS familles selon le chemin. La table `HOTES`
+#: associe un hôte à une famille et une seule ; ces hôtes-là lui échappent, et
+#: les y forcer produit des comptes faux dans les deux sens.
+#:
+#: Le fragment est cherché DANS le chemin, jamais à sa fin seule : Spotify
+#: intercale parfois une locale (`/intl-fr/show/…`).
+_CHEMINS: dict[str, tuple[tuple[str, str], ...]] = {
     # TMDB sert la FICHE d'une œuvre et sa page « où regarder ». Sans cette
     # distinction, un lien de visionnage TMDB comptait pour une fiche — et
     # 125 recos fraîchement pourvues restaient signalées « sans visionnage ».
-    "themoviedb.org": ("/watch", "visionnage"),
+    "themoviedb.org": (("/watch", "visionnage"),),
+    # Spotify et Deezer diffusent de la MUSIQUE et des PODCASTS. Les ranger
+    # entièrement du côté « écoute » signalait comme dépourvues de podcast
+    # trente-quatre recos qui en portaient un — le lien était là, l'audit ne
+    # savait pas le lire.
+    "open.spotify.com": (("/show/", "podcast"), ("/episode/", "podcast")),
+    "spotify.com": (("/show/", "podcast"), ("/episode/", "podcast")),
+    "deezer.com": (("/show/", "podcast"), ("/episode/", "podcast")),
 }
 
 
@@ -211,9 +340,15 @@ def famille(url: object) -> str | None:
     h = hote_de(url)
     if not h:
         return None
-    for cle, (fragment, fam) in _CHEMINS.items():
-        if (h == cle or h.endswith("." + cle)) and                 str(url).split("?", 1)[0].rstrip("/").endswith(fragment):
-            return fam
+    chemin = str(url).split("?", 1)[0]
+    for cle, regles in _CHEMINS.items():
+        if h != cle and not h.endswith("." + cle):
+            continue
+        for fragment, fam in regles:
+            # `/watch` termine le chemin, `/show/` s'y trouve au milieu : on
+            # accepte les deux formes plutôt que d'imposer une position.
+            if fragment in chemin or chemin.rstrip("/").endswith(fragment.rstrip("/")):
+                return fam
     # Le suffixe le plus LONG gagne : « music.apple.com » (écoute) doit primer
     # sur un éventuel « apple.com » générique.
     correspondances = [(cle, fam) for cle, fam in HOTES.items()
