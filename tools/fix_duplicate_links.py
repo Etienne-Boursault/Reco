@@ -64,7 +64,9 @@ _RE_FICHE = re.compile(
     re.IGNORECASE)
 #: Onglet d'une fiche : `…/fichefilm-<id>/<section>/`. Redondant avec la fiche.
 _RE_ONGLET = re.compile(
-    r"allocine\.fr/(?:film|series)/fiche(?:film|serie)-(\d+)/[a-z-]+/?$",
+    # `[a-z0-9-]` et non `[a-z-]` : une section peut porter un numéro
+    # (« /saison-37011/ »), et l'exclure laissait passer ces onglets-là.
+    r"allocine\.fr/(?:film|series)/fiche(?:film|serie)-(\d+)/[a-z0-9-]+/?$",
     re.IGNORECASE)
 
 #: ISBN à CONSERVER, par reco. Vérifié un par un chez Place des Libraires le
@@ -171,6 +173,11 @@ _PARAMS_SUIVI = frozenset({
 #: Identifiant reconnaissable en fin d'URL, par site. Sert à rapprocher deux
 #: adresses dont seuls les segments décoratifs diffèrent.
 _RE_ID_FINAL = re.compile(r"[A-Za-z0-9]{8,}$")
+#: Un UUID EST un identifiant, malgré ses tirets — HBO Max et Disney+ en
+#: emploient. Motif exact plutôt qu'un `[A-Za-z0-9-]{8,}` relâché, qui aurait
+#: pris « curb-your-enthusiasm » pour un identifiant.
+_RE_UUID = re.compile(
+    r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE)
 
 
 def empreinte_variante(url: str) -> str | None:
@@ -194,14 +201,17 @@ def empreinte_variante(url: str) -> str | None:
         return None
     # L'identifiant est le dernier segment qui en a l'allure ; ce qui le
     # précède (libellé, titre commercial) est décoratif.
-    identifiant = next((s for s in reversed(segments) if _RE_ID_FINAL.match(s)), None)
+    identifiant = next((s for s in reversed(segments)
+                        if _RE_ID_FINAL.match(s) or _RE_UUID.match(s)), None)
     if identifiant is None:
         return None
     params = sorted(f"{k}={v[0]}" for k, v in parse_qs(p.query).items()
                     if k not in _PARAMS_SUIVI)
     # Le type de page (`title`, `album`, `shows`…) reste dans l'empreinte :
     # un album et un morceau de même identifiant ne sont pas la même page.
-    genre = next((s for s in segments if s != identifiant), "")
+    # Casse repliée sur le GENRE : Netflix sert « /TITLE/ » et « /title/ »
+    # indifféremment, et les distinguer laissait passer le doublon.
+    genre = next((s for s in segments if s != identifiant), "").lower()
     return "|".join([hote, genre, identifiant, *params])
 
 
@@ -228,8 +238,11 @@ def _preference(link: dict) -> tuple[int, int, int]:
     except ValueError:
         segments = []
     langues = [s for s in segments if _RE_LANGUE.match(s)]
+    # Le DERNIER segment de langue fait foi. HBO Max sert « /fr/en/ » —
+    # pays France, langue anglaise : chercher « un segment fr quelque part »
+    # y répondait oui, et gardait la version anglaise.
     return (1 if langues else 0,
-            0 if any(_LANGUE_FR.match(s) for s in langues) else 1,
+            0 if langues and _LANGUE_FR.match(langues[-1]) else 1,
             len(url))
 
 

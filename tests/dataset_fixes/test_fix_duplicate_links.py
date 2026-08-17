@@ -364,3 +364,48 @@ def test_preference_tolere_une_url_illisible():
     faire tomber le départage — elle est simplement traitée comme sans langue."""
     assert fdl._preference({"url": "https://[::1"})[0] == 0
     assert fdl._preference({})[0] == 0
+
+
+# ---------------------------------------------------------------------------
+# Formes d'adresse qui échappaient aux premières versions des règles
+# ---------------------------------------------------------------------------
+def test_un_onglet_numerote_est_reconnu():
+    """« /saison-37011/ » est un onglet comme un autre. Le motif n'acceptait
+    que des lettres, et laissait donc passer les sections numérotées."""
+    fiche = "https://www.allocine.fr/series/ficheserie_gen_cserie=24135.html"
+    saison = "https://www.allocine.fr/series/ficheserie-24135/saison-37011/"
+    doc = _doc([fiche, saison])
+    fdl.transform_factory(["allocine"])(doc)
+    assert _urls(doc) == [fiche]
+
+
+def test_un_UUID_est_un_identifiant():
+    """HBO Max et Disney+ identifient par UUID. Un motif « que des
+    alphanumériques » les rejetait, et les doublons passaient."""
+    en = "https://www.hbomax.com/fr/en/shows/curb/18a0993f-209a-4653-8f94-f3fb8422e678"
+    fr = "https://www.hbomax.com/fr/fr/shows/curb/18a0993f-209a-4653-8f94-f3fb8422e678"
+    restants, ch = _variantes([en, fr])
+    # La langue est le DERNIER segment : « /fr/en/ » est le pays France en
+    # ANGLAIS, c'est donc lui qui part.
+    assert restants == [fr]
+    assert len(ch) == 1
+
+
+def test_un_slug_decoratif_n_est_PAS_pris_pour_un_UUID():
+    """Le motif d'UUID est exact, et non un « alphanumérique avec tirets » —
+    qui aurait pris « curb-your-enthusiasm » pour un identifiant."""
+    assert fdl._RE_UUID.match("curb-your-enthusiasm") is None
+    assert fdl._RE_UUID.match("18a0993f-209a-4653-8f94-f3fb8422e678") is not None
+
+
+def test_la_casse_du_chemin_n_est_pas_signifiante():
+    """Netflix sert « /TITLE/ » et « /title/ » indifféremment."""
+    haut = "https://www.netflix.com/fr-en/TITLE/70153373"
+    bas = "https://www.netflix.com/title/70153373"
+    restants, _ = _variantes([haut, bas])
+    assert restants == [bas]
+
+
+def test_le_dernier_segment_de_langue_fait_foi():
+    assert fdl._preference({"url": "https://x.fr/fr/en/a/12345678"})[1] == 1
+    assert fdl._preference({"url": "https://x.fr/fr/fr/a/12345678"})[1] == 0

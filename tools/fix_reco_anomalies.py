@@ -665,6 +665,32 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "positif d'une passe automatique, qu'une prochaine aurait "
                     "promu en lien d'écoute vers un homonyme. Retiré.",
     },
+    # --- Derniers liens redondants, vérifiés page par page ----------------
+    # Ces trois-là échappaient aux règles automatiques : les identifiants
+    # diffèrent, seule la page servie est la même. Il fallait la charger pour
+    # le savoir.
+    "ubm-0820": {
+        "attendu": {"types": ["serie"]},
+        "retirer_liens": ["browse/entity-8f8c5cbb"],
+        "pourquoi": "Deux liens Disney+ aux identifiants différents servent la "
+                    "MÊME page : « Regarder Loki | Épisodes complets », même "
+                    "description. `/browse/entity-…` est une forme interne "
+                    "redondante ; on garde `/series/loki/`, lisible et stable.",
+    },
+    "ubm-2285": {
+        "attendu": {"types": ["serie"]},
+        "retirer_liens": ["/-/nl/detail/0KVMM"],
+        "pourquoi": "Le second lien Prime Video est une entrée du catalogue "
+                    "NÉERLANDAIS (`/-/nl/`), avec un autre identifiant : rien "
+                    "ne garantit sa disponibilité depuis la France. Le lien "
+                    "français reste.",
+    },
+    "ubm-3197": {
+        "attendu": {"types": ["serie"]},
+        "retirer_liens": ["/-/nl/detail/0KVMM"],
+        "pourquoi": "Même cas que ubm-2285 — catalogue néerlandais, "
+                    "identifiant distinct, disponibilité non garantie ici.",
+    },
 }
 
 
