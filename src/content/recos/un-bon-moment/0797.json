@@ -13,9 +13,12 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:09Z"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "externalIds": {
-    "tmdb": "150540",
+    "tmdb": "429197",
     "tmdbType": "movie",
     "watchPage": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR"
   },
@@ -72,6 +75,24 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/vice/umc.cmc.6o8hv9nd2k4luccp8qqk5niju"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6266538/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/429197"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/429197-vice/watch?locale=FR"
     }
   ],
   "quote": "je vous recommande le film Vice",

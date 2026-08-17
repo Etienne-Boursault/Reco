@@ -10,6 +10,10 @@
   },
   "creator": "Bo Burnham",
   "episodeGuid": "633b2f213ca1cc001201a69f",
+  "externalIds": {
+    "tmdb": "823754",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T04:21:06+00:00",
@@ -42,6 +46,12 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/81289483"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/823754"
     }
   ],
   "quote": "Inside de Bob Burnham sur Netflix",

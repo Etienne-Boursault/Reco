@@ -14,6 +14,10 @@
   },
   "creator": "Get Busy",
   "episodeGuid": "6a47e41c08da053175fb135e",
+  "externalIds": {
+    "tmdb": "95309",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:21:23+00:00",
@@ -30,7 +34,14 @@
   ],
   "id": "ubm-3147",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/95309"
+    }
+  ],
   "quote": "C'est réalisé par Alain Chabat, d'ailleurs, non ? Non, c'est produit par Alain Chabat, c'est réalisé par Gat Buzzy, je crois.",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",

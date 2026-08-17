@@ -4,6 +4,10 @@
   ],
   "creator": "Milos Forman",
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
+  "externalIds": {
+    "tmdb": "469019",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-04T15:59:29+00:00",
@@ -35,6 +39,12 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80209608"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/469019"
     }
   ],
   "quote": "Jim Carrey avec Andy Kaufman, là, dans Jim et Andy, vous l'avez dit, j'ai envie de mettre des pas...",

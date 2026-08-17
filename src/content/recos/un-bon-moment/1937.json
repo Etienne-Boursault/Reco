@@ -10,6 +10,10 @@
   },
   "creator": "Kyan Khojandi & Navo",
   "episodeGuid": "69a169ac519334f049d06785",
+  "externalIds": {
+    "tmdb": "60715",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T09:57:48+00:00",
@@ -33,6 +37,12 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/bref"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
     }
   ],
   "quote": "Je pense même que c'est pour ça qu'on l'a pas mis dans \"Bref 2\".",

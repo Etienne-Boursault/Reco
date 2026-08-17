@@ -13,7 +13,14 @@
     "verdict": "guest-work"
   },
   "creator": "Jonathan Cohen & Jérémie Galan",
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:33Z"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
+  "externalIds": {
+    "tmdb": "88192",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T19:28:23+00:00",
@@ -43,6 +50,18 @@
       "kind": "info",
       "label": "JustWatch — où voir",
       "url": "https://www.justwatch.com/fr/serie/france-kbek"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3495056/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/88192"
     }
   ],
   "quote": "vous avez fait une émission qui fait une série qui s'appelle france québec sur ocs",

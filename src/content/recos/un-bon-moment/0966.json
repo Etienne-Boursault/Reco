@@ -9,9 +9,12 @@
     "verdict": "validate"
   },
   "creator": "Terry Gilliam",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:12Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "tmdb": "386948",
+    "tmdb": "68",
     "tmdbType": "movie"
   },
   "extractionHistory": [
@@ -61,6 +64,24 @@
       "kind": "info",
       "label": "AlloCiné — où voir",
       "url": "https://www.allocine.fr/film/fichefilm-142/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0088846/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/68"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/68-brazil/watch?locale=FR"
     }
   ],
   "quote": "c'est fondateur pour moi",

@@ -11,7 +11,9 @@
   "creator": "Fary et Panayotis",
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
-    "instagram": "panayotispascot"
+    "instagram": "panayotispascot",
+    "tmdb": "270963",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -46,6 +48,12 @@
       "kind": "info",
       "label": "JustWatch — Loups-Garous saison 2",
       "url": "https://www.justwatch.com/fr/serie/loups-garous/saison-2"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/270963"
     }
   ],
   "quote": "Il Lou Garou saison 2",

@@ -631,6 +631,114 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    # --- Fiches posées directement (2026-08-17) ---------------------------
+    # La passe d'enrichissement refuse ces cas sur sa garde de titre, et
+    # elle a raison : le titre de la reco est celui prononcé à l'antenne,
+    # pas celui de la fiche. Chaque identifiant ci-dessous a néanmoins été
+    # re-interrogé auprès de l'API TMDB avant d'être écrit.
+
+    "ubm-1001": {
+        "attendu": {"title": 'Bref 2'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/60715"}],
+        "pourquoi": 'TMDB ne fait pas de fiche distincte pour « Bref 2 » : la saison 2 (diffusée en 2025) vit dans la fiche de « Bref ». Le lien est posé ici plutôt que par la passe, dont la garde de titre refusait — à raison, puisque les deux titres diffèrent.',
+    },
+    "ubm-1937": {
+        "attendu": {"title": 'Bref 2'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/60715"}],
+        "pourquoi": "Même œuvre que ubm-1001 : TMDB ne fait pas de fiche distincte pour "
+                    "la saison 2 de « Bref », qui vit dans la fiche de la série.",
+    },
+    "ubm-1668": {
+        "attendu": {"title": 'LOL'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/122228"}],
+        "pourquoi": "« LOL : Qui rit, sort ! », que désigne le lien Prime Video de la reco. La reco porte le titre court employé à l'antenne.",
+    },
+    "ubm-1890": {
+        "attendu": {"title": 'Jim and Andy'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/movie/469019"}],
+        "pourquoi": '« Jim & Andy: The Great Beyond », titré « Jim et Andy » en français.',
+    },
+    "ubm-2008": {
+        "attendu": {"title": 'Loup-Garou Saison 2'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/270963"}],
+        "pourquoi": '« Loups Garous », série Canal+ de 2024 dont la saison 2 existe bien.',
+    },
+    "ubm-2527": {
+        "attendu": {"title": 'QB1'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/70274"}],
+        "pourquoi": "« QB1: Beyond the Lights », titré « Apprentis quarterbacks » en français — d'où le refus de la garde de titre. L'identifiant Netflix 81003033 de la reco tranche.",
+    },
+    "ubm-3031": {
+        "attendu": {"title": 'Inside'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/movie/823754"}],
+        "pourquoi": "« Bo Burnham: Inside », que désigne l'identifiant Netflix 81289483 de la reco.",
+    },
+    "ubm-3147": {
+        "attendu": {"title": 'NTM Authentiques : Un an avec le suprême'},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/movie/95309"}],
+        "pourquoi": '« Authentiques » (2000), documentaire suivant Suprême NTM pendant un an — ce que le titre de la reco décrit mot pour mot.',
+    },
+    # --- Fiches hors TMDB, page atteinte et titre relevé ------------------
+    "ubm-0587": {
+        "attendu": {"title": 'Invisible'},
+        "ajouter_liens": [{"label": 'TheTVDB', "kind": "info",
+                           "ethics": "neutral",
+                           "url": 'https://www.thetvdb.com/series/invisible1'}],
+        "pourquoi": "Absente de TMDB : vérifié sur la filmographie complète de Clément Cotentin. La page TheTVDB atteinte s'intitule bien « Invisible ».",
+    },
+    "ubm-0633": {
+        "attendu": {"title": 'Chambre froide'},
+        "ajouter_liens": [{"label": 'AlloCiné', "kind": "info",
+                           "ethics": "neutral",
+                           "url": 'https://www.allocine.fr/film/fichefilm_gen_cfilm=277971.html'}],
+        "pourquoi": 'Page AlloCiné atteinte : « Chambre Froide - Court Métrage », de Swann Périssé et Nadja Anane.',
+    },
+    "ubm-1643": {
+        "attendu": {"title": 'Minuit'},
+        "ajouter_liens": [{"label": 'SensCritique', "kind": "info",
+                           "ethics": "neutral",
+                           "url": 'https://www.senscritique.com/serie/minuit/41777566'}],
+        "pourquoi": 'Websérie de 2020 de Roman Frayssinet, absente de TMDB. Page atteinte : « Minuit - Websérie (2020) ».',
+    },
+    "ubm-2707": {
+        "attendu": {"title": 'Gus'},
+        "ajouter_liens": [{"label": 'SensCritique', "kind": "info",
+                           "ethics": "neutral",
+                           "url": 'https://www.senscritique.com/serie/GUS/38953092'}],
+        "pourquoi": 'Websérie française, absente de TMDB, où « Gus » ne renvoie que des homonymes. Page atteinte : « GUS - Websérie ».',
+    },
+    "ubm-2898": {
+        "attendu": {"title": 'Trilogie des Auberges espagnoles'},
+        "ajouter_liens": [{"label": 'TMDB', "kind": "info",
+                           "ethics": "neutral",
+                           "url": 'https://www.themoviedb.org/collection/239766'}],
+        "pourquoi": "Une COLLECTION TMDB, pas une fiche d'œuvre : le schéma n'accepte que `movie` ou `tv` en `tmdbType`, d'où un lien direct. Elle contient exactement les trois films des liens Sooner déjà posés.",
+    },
+    "ubm-1045": {
+        "attendu": {"title": "Close Up"},
+        "retirer_liens": ["themoviedb.org/tv/63498",
+                          "imdb.com/title/tt4931888"],
+        "retirer_external_ids": ["imdb"],
+        "pourquoi": "Le pire cas de l'audit des identifiants TMDB du "
+                    "2026-08-17. La reco parle de « Close-up », websérie "
+                    "française — ses deux autres liens sont la chaîne YouTube "
+                    "@closeuplaserie7920 et la citation dit « Close-up, c'est "
+                    "vraiment, j'adore ». Or l'identifiant TMDB (tv/63498) ET "
+                    "l'identifiant IMDb (tt4931888) désignent tous deux "
+                    "« Close Up with The Hollywood Reporter », une émission "
+                    "américaine sans rapport — l'un renvoyant à l'autre, ils "
+                    "se confirmaient mutuellement. Le lien TMDB était DÉJÀ "
+                    "VISIBLE sur le site : c'est le seul de l'audit à avoir "
+                    "franchi le stade de l'identifiant invisible.",
+    },
     "ubm-0588": {
         "attendu": {"types": ["livre", "video"], "title": "Fouloscopie"},
         "ajouter_liens": [{"label": "Place des Libraires", "kind": "buy",
@@ -694,8 +802,16 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "une fiche série AlloCiné.",
     },
     "ubm-2892": {
-        "attendu": {"types": ["jeu"], "title": "LOL"},
+        "attendu": {"types": ["serie"], "title": "LOL"},
+        # Le type est DÉJÀ corrigé — la ligne ci-dessous ne fait plus rien,
+        # mais elle documente l'arbitrage et redeviendrait active si le type
+        # régressait. La garde, elle, porte sur l'état COURANT : la laisser
+        # sur `["jeu"]` aurait rendu l'entrée muette, et le lien ci-dessous
+        # ne serait jamais posé.
         "types": ["serie"],
+        "ajouter_liens": [{"label": "TMDB", "kind": "info",
+                           "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/122228"}],
         "pourquoi": "Le locuteur dit « un jeu », mais il parle de l'émission "
                     "« LOL : Qui rit, sort ! » qu'il a CONÇUE pour Prime "
                     "Video — on la regarde, on n'y joue pas.",
@@ -863,13 +979,18 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "a un éditeur, pas un créateur homonyme.",
     },
     "ubm-0487": {
-        "attendu": {"types": ["spectacle"], "title": "Les Chiens de Navarre"},
+        "attendu": {"types": ["spectacle"], "title": "I Will Survive"},
         "titre": "I Will Survive",
         "retirer_liens": ["chiensdenavarre.com/spectacles"],
         "pourquoi": "La citation parle de « la dernière PIÈCE des Chiens de "
                     "Navarre », et le lien officiel pointe `/i-will-survive`. "
                     "Le titre nommait la troupe, pas le spectacle — le "
-                    "créateur, lui, était déjà juste.",
+                    "créateur, lui, était déjà juste. "
+                    "LE TITRE UNE FOIS CORRIGÉ, la garde a cessé de mordre et "
+                    "le retrait de lien n'a jamais tourné : la page générique "
+                    "`/spectacles` doublonnait toujours celle du spectacle. "
+                    "La garde porte désormais sur l'état d'ARRIVÉE, de sorte "
+                    "que les deux effets restent solidaires.",
     },
     "ubm-2719": {
         "attendu": {"types": ["lieu"], "creator": "Barbès Comedy Club"},

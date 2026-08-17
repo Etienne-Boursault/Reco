@@ -13,9 +13,12 @@
     "verdict": "citation"
   },
   "creator": "Roman Polanski",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:00Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
-    "tmdb": "818681",
+    "tmdb": "10531",
     "tmdbType": "movie"
   },
   "extractionHistory": [
@@ -61,6 +64,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=96288.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0109579/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/10531"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/10531-death-and-the-maiden/watch?locale=FR"
     }
   ],
   "quote": "Elle a fait un film qui était un peu sous-couté qui s'appelle La jeune fille et la mort.",

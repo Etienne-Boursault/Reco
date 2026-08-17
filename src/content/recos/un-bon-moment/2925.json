@@ -8,7 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Louis de Funès",
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:41Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "externalIds": {
+    "tmdb": "9317",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T03:17:45+00:00",
@@ -31,6 +38,24 @@
       "kind": "buy",
       "label": "Orange VOD",
       "url": "https://video-a-la-demande.orange.fr/film/LASOUPEAUXCW0083928/la-soupe-aux-choux"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0083109/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/9317"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/9317-la-soupe-aux-choux/watch?locale=FR"
     }
   ],
   "quote": "Dans La Soupe au chou, hormis l'épais, quand la Francine revient et qu'elle repart, là, il est méga, méga touchant.",

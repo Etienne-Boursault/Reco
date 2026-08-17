@@ -9,9 +9,12 @@
     "verdict": "validate"
   },
   "creator": "Julien Duvivier",
+  "enrichedAt": {
+    "links": "2026-08-17T19:40:56Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "tmdb": "96903",
+    "tmdb": "43462",
     "tmdbType": "movie"
   },
   "extractionHistory": [
@@ -70,6 +73,24 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://www.sooner.fr/films/panique"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0038824/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/43462"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/43462-panique/watch?locale=FR"
     }
   ],
   "quote": "je peux voir Panique de Duvier je trouve ça super",

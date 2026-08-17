@@ -13,9 +13,12 @@
     "verdict": "validate"
   },
   "creator": "Adam McKay",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:16Z"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "tmdb": "150540",
+    "tmdb": "429197",
     "tmdbType": "movie",
     "watchPage": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR"
   },
@@ -72,6 +75,24 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/vice/umc.cmc.6o8hv9nd2k4luccp8qqk5niju"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6266538/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/429197"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/429197-vice/watch?locale=FR"
     }
   ],
   "quote": "C'est Vice, V-I-C-E.",

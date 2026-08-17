@@ -9,6 +9,7 @@ ci-dessous vérifient les conditions dans lesquelles le module REFUSE d'écrire.
 from __future__ import annotations
 
 import json
+import pathlib
 from pathlib import Path
 
 import pytest
@@ -174,3 +175,84 @@ def test_main_apply_ecrit_l_identifiant(recos_root: Path):
     assert fti.main(["--apply"]) == 0
     doc = json.loads(path.read_text(encoding="utf-8"))
     assert doc["externalIds"] == {"tmdb": "1668", "tmdbType": "tv"}
+
+
+# ===== Identifiants FAUX deja en place =====================================
+#
+# `_identifier` refuse d'ecraser un identifiant en place — bonne regle, il peut
+# venir d'une relecture humaine. Elle laissait donc intacts les identifiants
+# FAUX. Un audit des 221 recos qui en portent un en a trouve quatorze, dont
+# « Titanic » pointant sur un documentaire de 2012 et « Vice » sur le
+# « Vice-versa » de Pixar. Ces identifiants ne s'affichent nulle part : seules
+# les gardes de `enrich_video_links` les avaient contenus, en silence.
+def test_un_identifiant_faux_est_remplace():
+    reco = {"id": "ubm-0546", "title": "Titanic",
+            "externalIds": {"tmdb": "102041", "tmdbType": "movie"}}
+    changes = fti.transform(reco)
+    assert reco["externalIds"]["tmdb"] == "597"
+    assert changes[0].before == "102041"
+
+
+def test_le_remplacement_peut_changer_le_TYPE():
+    """« The Legend of Hei » était rangé en série ; c'est un film."""
+    reco = {"id": "ubm-0291", "title": "The Legend of Hei",
+            "externalIds": {"tmdb": "16339", "tmdbType": "tv"}}
+    fti.transform(reco)
+    assert reco["externalIds"] == {"tmdb": "620249", "tmdbType": "movie"}
+
+
+def test_un_identifiant_sans_remplacant_est_RETIRE():
+    """Un identifiant faux vaut moins que pas d'identifiant du tout : il peut
+    être promu en lien visible des mois plus tard."""
+    reco = {"id": "ubm-0715", "title": "Run",
+            "externalIds": {"tmdb": "11912", "tmdbType": "tv"}}
+    fti.transform(reco)
+    assert "externalIds" not in reco
+
+
+def test_un_retrait_conserve_les_AUTRES_identifiants():
+    reco = {"id": "ubm-0715", "title": "Run",
+            "externalIds": {"tmdb": "11912", "tmdbType": "tv", "imdb": "tt1"}}
+    fti.transform(reco)
+    assert reco["externalIds"] == {"imdb": "tt1"}
+
+
+def test_le_remplacement_ne_touche_rien_si_l_identifiant_a_CHANGE():
+    """La garde : si quelqu'un a corrigé entre-temps, sa décision prime."""
+    reco = {"id": "ubm-0546", "title": "Titanic",
+            "externalIds": {"tmdb": "597", "tmdbType": "movie"}}
+    assert fti.transform(reco) == []
+    assert reco["externalIds"]["tmdb"] == "597"
+
+
+def test_le_remplacement_ne_touche_rien_sans_externalIds():
+    assert fti.transform({"id": "ubm-0546", "title": "Titanic"}) == []
+
+
+def test_un_externalIds_non_dict_ne_fait_pas_lever_le_remplacement():
+    reco = {"id": "ubm-0546", "title": "Titanic", "externalIds": "hérité"}
+    assert fti.transform(reco) == []
+
+
+def test_le_remplacement_tourne_AVANT_la_pose():
+    """Un retrait suivi d'une pose doit pouvoir s'enchaîner : sinon la reco
+    resterait sans identifiant alors que `IDENTIFIANTS` en prévoit un."""
+    source = pathlib.Path(fti.__file__).read_text(encoding="utf-8")
+    corps = source[source.index("def transform("):]
+    assert corps.index("_remplacer(reco)") < corps.index("_identifier(reco)")
+
+
+def test_aucun_remplacement_ne_pointe_sur_l_identifiant_qu_il_remplace():
+    """Une entrée qui remplacerait un identifiant par lui-même tournerait en
+    boucle sans jamais rien changer, et masquerait une vraie erreur."""
+    for rid, (actuel, nouveau, _) in fti.REMPLACEMENTS.items():
+        assert actuel != nouveau, rid
+
+
+def test_les_remplacements_visent_un_type_TMDB_valide():
+    for rid, (_, nouveau, genre) in fti.REMPLACEMENTS.items():
+        if nouveau is None:
+            assert genre is None, rid
+        else:
+            assert genre in {"movie", "tv"}, rid
+            assert nouveau.isdigit(), rid

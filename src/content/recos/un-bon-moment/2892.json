@@ -10,6 +10,10 @@
   },
   "creator": "Amazon Prime",
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "externalIds": {
+    "tmdb": "122228",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T03:02:11+00:00",
@@ -32,6 +36,12 @@
       "kind": "streaming",
       "label": "Prime Video",
       "url": "https://www.primevideo.com/-/fr/detail/LOL-Qui-rit-sort/0OBE60IZD9EZIEWDFWNOGK90MD"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/122228"
     }
   ],
   "quote": "J'ai fait un jeu qui s'appelle LOL sur Amazon Prime. J'ai adoré faire ce jeu. C'était trop kiffant.",

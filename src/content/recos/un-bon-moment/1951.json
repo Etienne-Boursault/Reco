@@ -9,7 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Takeshi Kitano",
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:31Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
+  "externalIds": {
+    "tmdb": "106964",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T09:59:43+00:00",
@@ -38,6 +45,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/takeshi--a-lassaut-du-chateau/umc.cmc.54m3s5cxd4xvlixec0nc50cab"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0375466/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/106964"
     }
   ],
   "quote": "Tu vas rigoler, ça, c'est très, très drôle.",

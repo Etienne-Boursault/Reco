@@ -13,9 +13,12 @@
     "verdict": "validate"
   },
   "creator": "Ernst Lubitsch",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:13Z"
+  },
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
-    "tmdb": "22998",
+    "tmdb": "198",
     "tmdbType": "movie"
   },
   "extractionHistory": [
@@ -74,6 +77,24 @@
       "kind": "buy",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/to-be-or-not-to-be/umc.cmc.32wvlw96e2hdglvjltx84pvqu"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0035446/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/198"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/198-to-be-or-not-to-be/watch?locale=FR"
     }
   ],
   "quote": "aller voir aussi To Be No To Be de Lubitsch qui est un classique de la comédie très drôle",

@@ -10,6 +10,10 @@
   },
   "creator": "Paul de Saint Sernin",
   "episodeGuid": "6960deefb86949aa06496e27",
+  "externalIds": {
+    "tmdb": "122228",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-04T20:38:32+00:00",
@@ -42,6 +46,12 @@
       "kind": "streaming",
       "label": "Prime Video (saison 6)",
       "url": "https://www.primevideo.com/-/fr/detail/0MYWE54LWA5FGGD71GE967W1YK"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/122228"
     }
   ],
   "quote": "Tu vas faire LOL bientôt.",

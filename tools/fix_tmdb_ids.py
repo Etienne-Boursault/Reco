@@ -97,6 +97,42 @@ IDENTIFIANTS: dict[str, tuple[str, str, str]] = {
     "ubm-3134": ("Drive", "movie", "64690"),
     "ubm-3179": ("Before Sunrise", "movie", "76"),
     "ubm-3180": ("Before Midnight", "movie", "132344"),
+
+    # =======================================================================
+    # Télé-réalité coréenne de Netflix, titrée « À l'épreuve du diable » en
+    # français : la recherche par titre exact ne pouvait pas la trouver.
+    "ubm-0282": ("Devil's Plan", "tv", "214582"),
+    # PAS « The Adjustment Bureau », dont « L'Agence » est le titre français —
+    # c'est le piège de ce cas. L'identifiant Netflix 81417684 de la reco mène
+    # à la télé-réalité sur la famille Kretz, que TMDB titre « The Parisian
+    # Agency ».
+    "ubm-0294": ("L'agence", "tv", "112747"),
+    # TMDB ne fait pas de fiche distincte pour « Bref 2 » : la saison 2 vit
+    # dans la fiche de « Bref ». C'est donc bien elle qu'on désigne.
+    "ubm-1001": ("Bref 2", "tv", "60715"),
+    # « Kôkôrikô ! » de Jean-Pascal Zadi : le titre de la reco est une
+    # transcription phonétique.
+    "ubm-1106": ("Coco Rico", "tv", "227640"),
+    "ubm-1668": ("LOL", "tv", "122228"),
+    "ubm-1890": ("Jim and Andy", "movie", "469019"),
+    "ubm-1937": ("Bref 2", "tv", "60715"),
+    # L'ORIGINAL japonais de 1986, pas la reprise de 2002 : tranché par le
+    # transcript, où l'animateur parle de Takeshi Kitano lui-même.
+    "ubm-1951": ("Takeshi Castle", "tv", "106964"),
+    "ubm-2008": ("Loup-Garou Saison 2", "tv", "270963"),
+    # La citation tranche : « une émission que j'adore, QUI EST EN FRANCE
+    # MAINTENANT ÉGALEMENT ». C'est l'originale américaine qui est
+    # recommandée, la déclinaison française n'étant mentionnée qu'en surcroît.
+    "ubm-2094": ("Drag Race", "tv", "8514"),
+    "ubm-2286": ("FranceKebek", "tv", "88192"),
+    "ubm-2528": ("Sunderland Till I Die", "tv", "84777"),
+    "ubm-2745": ("Ça sera (peut-être) mieux après", "tv", "137117"),
+    "ubm-2892": ("LOL", "tv", "122228"),
+    "ubm-2925": ("La Soupe au Chou", "movie", "9317"),
+    # De Funès, 1980 — l'année qu'aucune recherche par titre ne remontait.
+    "ubm-2926": ("L'Avare", "movie", "11680"),
+    "ubm-3031": ("Inside", "movie", "823754"),
+    "ubm-3147": ("NTM Authentiques : Un an avec le suprême", "movie", "95309"),
 }
 
 
@@ -119,6 +155,61 @@ RECTIFICATIONS: dict[str, tuple[str, Any, Any]] = {
 }
 
 
+#: Identifiants FAUX déjà présents dans le corpus — `id` → (identifiant
+#: ACTUEL attendu, nouvel identifiant ou `None` pour retirer, nouveau type).
+#:
+#: POURQUOI CETTE TABLE EXISTE
+#: `_identifier` refuse d'écraser un identifiant en place, et c'est la bonne
+#: règle : il peut venir d'une relecture humaine. Mais elle laissait donc
+#: intacts des identifiants FAUX, et un audit des 221 recos qui en portent un
+#: en a trouvé quatorze : « Titanic » désignait un documentaire de 2012,
+#: « Brazil » un film brésilien de 1952, « Vice » le « Vice-versa » de Pixar,
+#: « To Be or Not to Be » le remake de 1983 au lieu du Lubitsch de 1942.
+#:
+#: Ces identifiants ne s'affichent NULLE PART, et c'est ce qui les rend
+#: dangereux : une passe d'enrichissement peut les promouvoir en lien visible
+#: des mois plus tard. Seules les gardes de titre et d'année de
+#: `enrich_video_links` les avaient contenus jusqu'ici — silencieusement.
+#:
+#: L'identifiant actuel sert de garde : si quelqu'un a corrigé entre-temps,
+#: on ne touche à rien.
+REMPLACEMENTS: dict[str, tuple[str, str | None, str | None]] = {
+    # Le lien LaCinetek de la reco nomme le réalisateur et tranche à lui seul.
+    "ubm-0255": ("96903", "43462", "movie"),      # « Panique! » 2009 -> Duvivier 1947
+    "ubm-0397": ("818681", "10531", "movie"),     # homonyme 1990 -> Polanski 1994
+    "ubm-0966": ("386948", "68", "movie"),        # « Beautiful Brazil » -> Gilliam 1985
+    # La citation nomme « deux Funès et Jean Marais » : c'est le film de 1964,
+    # pas le muet de 1913.
+    "ubm-0666": ("319287", "1871", "movie"),
+    # La citation dit « de Lubitsch » : 1942, pas le remake de 1983.
+    "ubm-1000": ("22998", "198", "movie"),
+    # Un documentaire de 2012 SUR le Titanic, au lieu du film de Cameron.
+    "ubm-0546": ("102041", "597", "movie"),
+    # « Vice-versa » de Pixar au lieu du « Vice » d'Adam McKay (2018), que
+    # désignent pourtant les liens Sooner et AlloCiné de la reco.
+    "ubm-0797": ("150540", "429197", "movie"),
+    "ubm-1138": ("150540", "429197", "movie"),
+    # « Papa » avec Alain Chabat est de 2005, pas l'homonyme de 2018.
+    "ubm-0827": ("523926", "59163", "movie"),
+    # « Looking up to Magical Girls » (2024) au lieu de la série HBO de 2014,
+    # que le lien HBO Max de la reco désigne pourtant.
+    "ubm-1043": ("236338", "57774", "tv"),
+    # « The Legend of Brown Sugar Chivalries » au lieu du film de 2019 :
+    # l'API d'ADN, dont la reco porte le lien, le donne comme un FILM.
+    "ubm-0291": ("16339", "620249", "movie"),
+    # --- Retraits sans remplacement ----------------------------------------
+    # Aucun candidat ne s'impose, et un identifiant faux vaut moins que pas
+    # d'identifiant du tout.
+    "ubm-0715": ("11912", None, None),            # « Sauve qui peut » 1965
+    "ubm-1363": ("49064", None, None),            # « Une grande bagarre » 1933
+    # Le pire cas de l'audit : l'identifiant TMDB **et** l'identifiant IMDb
+    # désignent « Close Up with The Hollywood Reporter », alors que la reco
+    # parle d'une websérie française — et le lien TMDB était DÉJÀ VISIBLE sur
+    # le site. Le lien et l'identifiant IMDb partent via `fix_reco_anomalies`.
+    "ubm-1045": ("63498", None, None),
+}
+
+
 def transform(reco: dict[str, Any]) -> list[Change]:
     """Pose `externalIds.tmdb` et `tmdbType`. Mute `reco` en place.
 
@@ -129,12 +220,41 @@ def transform(reco: dict[str, Any]) -> list[Change]:
     - elle porte DÉJÀ un identifiant TMDB, qu'on n'écrase jamais — il peut
       venir d'une relecture humaine, mieux informée que cette table.
     """
-    changes = _identifier(reco)
+    changes = _remplacer(reco)
+    changes += _identifier(reco)
     # L'ORDRE COMPTE. `RECTIFICATIONS` corrige le titre de « Mister Nobody » en
     # « Mr. Nobody », alors que la garde d'`IDENTIFIANTS` attend l'ancien : les
     # inverser empêcherait la pose de l'identifiant sur un corpus neuf, et le
     # module ne ferait plus la moitié de son travail sans rien signaler.
     return changes + _rectifier(reco)
+
+
+def _remplacer(reco: dict[str, Any]) -> list[Change]:
+    """Corrige ou retire un identifiant TMDB faux. Mute `reco` en place.
+
+    Tourne AVANT `_identifier`, pour que la reco se retrouve sans identifiant
+    et puisse en recevoir un par la voie normale si `IDENTIFIANTS` en prévoit
+    un — sinon un retrait ici serait aussitôt inutile.
+    """
+    entree = REMPLACEMENTS.get(reco.get("id") or "")
+    if entree is None:
+        return []
+    actuel, nouveau, genre = entree
+    ids = reco.get("externalIds")
+    if not isinstance(ids, dict) or str(ids.get("tmdb") or "") != actuel:
+        return []
+
+    if nouveau is None:
+        ids.pop("tmdb", None)
+        ids.pop("tmdbType", None)
+        if not ids:
+            reco.pop("externalIds", None)
+        return [Change(field="externalIds.tmdb", before=actuel, after=None)]
+
+    ids["tmdb"] = nouveau
+    ids["tmdbType"] = genre
+    return [Change(field="externalIds.tmdb", before=actuel,
+                   after=f"{genre}/{nouveau}")]
 
 
 def _identifier(reco: dict[str, Any]) -> list[Change]:

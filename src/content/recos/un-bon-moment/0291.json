@@ -8,10 +8,13 @@
     "verdict": "validate"
   },
   "creator": "pseudonyme inconnu",
+  "enrichedAt": {
+    "links": "2026-08-17T19:40:58Z"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
-    "tmdb": "16339",
-    "tmdbType": "tv"
+    "tmdb": "620249",
+    "tmdbType": "movie"
   },
   "extractionHistory": [
     {
@@ -69,6 +72,24 @@
       "kind": "streaming",
       "label": "Crunchyroll",
       "url": "https://www.crunchyroll.com/fr/series/G4PH0WJ7Z/the-legend-of-hei"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10734928/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/620249"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/620249/watch?locale=FR"
     }
   ],
   "quote": "Regardez The Legend of Hei",

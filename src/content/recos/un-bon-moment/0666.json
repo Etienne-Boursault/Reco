@@ -14,9 +14,12 @@
     "verdict": "validate"
   },
   "creator": "Jean Marais",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:06Z"
+  },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "externalIds": {
-    "tmdb": "319287",
+    "tmdb": "1871",
     "tmdbType": "movie",
     "watchPage": "https://www.themoviedb.org/movie/319287-fantomas/watch?locale=FR"
   },
@@ -67,6 +70,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=17667.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0058089/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1871"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/1871-fantomas/watch?locale=FR"
     }
   ],
   "quote": "Si vous avez l'occasion de voir Fantômas avec deux Funès et Jean Marais, c'est très marrant.",

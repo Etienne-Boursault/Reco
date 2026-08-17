@@ -13,9 +13,14 @@
     "verdict": "guest-work"
   },
   "creator": "Anna Apter",
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:39Z"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
-    "instagram": "annaapter"
+    "instagram": "annaapter",
+    "tmdb": "137117",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -40,6 +45,18 @@
       "kind": "official",
       "label": "YouTube",
       "url": "https://www.youtube.com/playlist?list=PLn2I00gPSd-pdpjgzToa-c2LiLoLye5bt"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/137117"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/137117-ce-sera-peut-etre-mieux-apres/watch?locale=FR"
     }
   ],
   "quote": "Titre provisoire, les années 20",

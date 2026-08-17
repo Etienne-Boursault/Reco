@@ -1,8 +1,11 @@
 {
   "creator": "James Cameron",
+  "enrichedAt": {
+    "links": "2026-08-17T19:41:03Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
-    "tmdb": "102041",
+    "tmdb": "597",
     "tmdbType": "movie"
   },
   "extractionHistory": [
@@ -52,6 +55,24 @@
       "kind": "info",
       "label": "AlloCiné — où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-5818/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0120338/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/597"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR"
     }
   ],
   "quote": "C'est un des grands films du 20e siècle.",

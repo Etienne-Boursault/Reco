@@ -13,7 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Netflix",
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:36Z"
+  },
   "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
+  "externalIds": {
+    "tmdb": "84777",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T21:59:20+00:00",
@@ -46,6 +53,24 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80207046"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8914684/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/84777"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/84777-sunderland-til-i-die/watch?locale=FR"
     }
   ],
   "quote": "ou Sunderland Till I Die ça c'est en foot européen",

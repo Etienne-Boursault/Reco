@@ -12,7 +12,14 @@
     "reviewedByHuman": true,
     "verdict": "citation"
   },
+  "enrichedAt": {
+    "links": "2026-08-17T19:33:32Z"
+  },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "externalIds": {
+    "tmdb": "8514",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T12:01:49+00:00",
@@ -45,6 +52,24 @@
       "kind": "info",
       "label": "France Télévisions — Drag Race France",
       "url": "https://www.francetelevisions.fr/et-vous/notre-tele/les-programmes-a-ne-pas-rater/drag-race-france-saison-4-57571"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1353056/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/8514"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/8514-rupaul-s-drag-race/watch?locale=FR"
     }
   ],
   "quote": "c'est aussi une épreuve récurrente dans Drag Race, une émission que j'adore et tout, qui est en France maintenant également.",
