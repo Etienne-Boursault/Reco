@@ -13,7 +13,7 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Sam Bean",
+  "creator": "Sam Beam",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
     "deezer": "https://www.deezer.com/track/1137144582"
@@ -65,6 +65,12 @@
       "kind": "official",
       "label": "Site officiel",
       "url": "https://ironandwine.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/1653"
     }
   ],
   "quote": "c'est un musicien que j'adore qui vient de sortir un nouvel album que j'adore qui s'appelle Iron and Wine",

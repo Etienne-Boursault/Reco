@@ -2,6 +2,7 @@
   "aliases": [
     "Album d'Al Tarba"
   ],
+  "creator": "Al'Tarba",
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "externalIds": {
     "deezer": "https://www.deezer.com/artist/201875"
@@ -74,6 +75,12 @@
       "kind": "buy",
       "label": "Bandcamp — Irwin's Lands",
       "url": "https://altarba.bandcamp.com/album/irwins-lands"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/201875"
     }
   ],
   "quote": "aller écouter le dernier album d'Al Tarba, il fait aussi pas mal de feats avec Sun Bay et tout ça, qui sont des super gars.",

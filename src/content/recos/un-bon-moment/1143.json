@@ -36,7 +36,14 @@
   "guestWork": true,
   "id": "ubm-1143",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/303859177"
+    }
+  ],
   "quote": "je crois que c'est ton meilleur album et je trouve ça fou qu'après 30 ans de carrière on arrive encore à sortir son meilleur album",
   "recommendedBy": "Matthieu Chédid",
   "sourceId": "un-bon-moment",

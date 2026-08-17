@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 from collections.abc import Sequence
 from typing import Any
+from urllib.parse import urlparse
 
 import dataset_fixes
 from dataset_fixes import Change, add_common_args, run
@@ -468,7 +469,163 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Wikipédia s'intitule « Matthieu Chedid », sans accent "
                     "(patronyme libanais).",
     },
+    # ==================================================================
+    # LIENS D'ÉCOUTE — 13 recos musicales qui n'en avaient aucun.
+    #
+    # L'outil automatique les avait toutes REFUSÉES, chacune pour une raison
+    # juste : identifiant stocké d'un autre genre que la reco, titre qui
+    # désigne l'artiste et non l'album, ou nom de scène que la comparaison ne
+    # pouvait pas relier (« -M- » pour Matthieu Chedid). Résolues une par une
+    # contre l'API Deezer.
+    #
+    # RÈGLE SUIVIE : quand l'œuvre précise n'est pas identifiable avec
+    # certitude, on lie la PAGE ARTISTE — toujours juste, jamais trompeuse.
+    # L'album n'est lié que lorsqu'il est nommé et confirmé. Poser un album au
+    # jugé serait recommencer l'erreur des liens auto-générés par titre.
+    # ==================================================================
+    "ubm-0204": {
+        "attendu": {"types": ["album"], "creator": "Getdown Service"},
+        "creator": "Getdown Services",
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/118628202"}],
+        "pourquoi": "Le duo de Bristol s'appelle « Getdown ServiceS » au "
+                    "pluriel (Deezer, artist/118628202) — le « s » manquant "
+                    "faisait échouer l'appariement. L'identifiant stocké "
+                    "pointait un single (« I Can't Die Like That »), pas "
+                    "l'album : on lie la page artiste, la citation ne nommant "
+                    "aucun titre précis.",
+    },
+    "ubm-0283": {
+        "attendu": {"types": ["musique", "artiste"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/670"}],
+        "pourquoi": "La citation (« j'ai le vinyle, je suis un grand fan de "
+                    "Francis Cabrel ») porte sur l'ARTISTE, pas sur un titre. "
+                    "L'identifiant stocké désignait un morceau isolé.",
+    },
+    "ubm-0558": {
+        "attendu": {"types": ["album", "artiste"]},
+        "creator": "Al'Tarba",
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/201875"}],
+        "pourquoi": "Créateur absent, alors que le titre le donne. "
+                    "L'identifiant déjà stocké résout bien vers « Al'Tarba » "
+                    "(artist/201875). La citation dit « le dernier album » sans "
+                    "le nommer : page artiste.",
+    },
+    "ubm-0846": {
+        "attendu": {"types": ["musique", "album", "artiste"],
+                    "creator": "Sam Bean"},
+        "creator": "Sam Beam",
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/1653"}],
+        "pourquoi": "Iron & Wine est le projet de Sam BEAM — « Sam Bean » est "
+                    "une restitution phonétique. La citation confond le nom du "
+                    "projet avec celui d'un album (« un nouvel album qui "
+                    "s'appelle Iron and Wine ») : on lie la page artiste.",
+    },
+    "ubm-1081": {
+        "attendu": {"types": ["album"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/album/12191970"}],
+        "pourquoi": "L'album éponyme « Clou » de Clou existe bien "
+                    "(album/12191970). L'identifiant stocké pointait la page "
+                    "artiste, d'où le refus « stored-kind-mismatch ».",
+    },
+    "ubm-1135": {
+        "attendu": {"types": ["musique", "artiste"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/88895962"}],
+        "pourquoi": "« Winter Zuko ? Très bonne artiste. » — la reco porte sur "
+                    "l'artiste. L'identifiant stocké était déjà le bon, il "
+                    "n'était simplement pas exposé en lien visible.",
+    },
+    "ubm-1143": {
+        "attendu": {"types": ["album"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/album/303859177"}],
+        "pourquoi": "L'album « Rêvalité » est bien celui-là (album/303859177). "
+                    "Le refus venait du NOM DE SCÈNE : Deezer crédite « -M- », "
+                    "que la comparaison ne pouvait pas relier à « Matthieu "
+                    "Chedid ».",
+    },
+    "ubm-1164": {
+        "attendu": {"types": ["musique", "artiste"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/436163"}],
+        "pourquoi": "« c'est un groupe qui s'appelle Jungle, c'est des anglais » "
+                    "— la reco porte sur le groupe. L'identifiant stocké "
+                    "désignait un morceau (« Back On 74 »).",
+    },
+    "ubm-1265": {
+        "attendu": {"types": ["album"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/album/711471"}],
+        "pourquoi": "« Mister Mystère » est un album de -M- (album/711471). "
+                    "Aucun identifiant n'était stocké, et le nom de scène "
+                    "empêchait l'appariement automatique.",
+    },
+    "ubm-1487": {
+        "attendu": {"types": ["artiste", "musique"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/14"}],
+        "pourquoi": "La citation se réduit à « qui est Gorillaz » : c'est le "
+                    "groupe qui est recommandé, pas un album. Page artiste "
+                    "canonique (artist/14, 94 albums).",
+    },
+    "ubm-1708": {
+        "attendu": {"types": ["album"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/259450"}],
+        "pourquoi": "Le titre « Album de Mina Tindle » est une description, pas "
+                    "un nom d'album, et la citation ne le nomme pas non plus "
+                    "(« l'album qui vient de sortir »). Trois albums récents "
+                    "existent : choisir au jugé serait inventer. Page artiste.",
+    },
+    "ubm-2482": {
+        "attendu": {"types": ["artiste", "musique"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/4441488"}],
+        "pourquoi": "« j'adore Vulfpeck » — le groupe, sans album désigné. "
+                    "L'API Apple renvoyait un morceau isolé (« Dean Town »), "
+                    "d'où le refus.",
+    },
+    "ubm-2776": {
+        "attendu": {"types": ["musique", "artiste"]},
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/10388918"}],
+        "pourquoi": "J Lloyd est le projet solo de Josh Lloyd-Watson, "
+                    "co-chanteur de Jungle — ce que dit la citation. Deezer "
+                    "propose « Feelin' Good » là où la reco écrit « Feel "
+                    "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
+                    "s'agit du même morceau, on lie donc l'artiste.",
+    },
 }
+
+
+def _hote(url: Any) -> str:
+    """Hôte d'une URL, sans `www.` ni casse. Vide si l'URL est illisible.
+
+    Sert à ne pas ajouter deux fois la même plateforme : c'est l'hôte, et non
+    l'URL entière, qui dit « Deezer est déjà là ».
+    """
+    try:
+        return (urlparse(str(url)).hostname or "").lower().removeprefix("www.")
+    except ValueError:
+        return ""
 
 
 def _replier(valeur: Any) -> str:
@@ -520,6 +677,25 @@ def transform(doc: dict[str, Any]) -> list[Change]:
         if avant != apres:
             changes.append(Change(field="links", before=avant, after=apres))
             doc["links"] = [dict(link) for link in fix["liens"]]
+    # AJOUT de liens, sans toucher aux existants. Distinct de `liens`, qui
+    # REDÉFINIT toute la liste : ici on complète une reco à qui il manque une
+    # plateforme, sans risquer d'effacer un lien posé à la main.
+    # Un lien dont l'hôte est DÉJÀ présent n'est jamais ajouté — sinon une
+    # seconde exécution empilerait les doublons.
+    if "ajouter_liens" in fix:
+        existants = list(doc.get("links") or [])
+        hotes = {_hote(link.get("url") or "") for link in existants
+                 if isinstance(link, dict)}
+        ajouts = [dict(link) for link in fix["ajouter_liens"]
+                  if _hote(link["url"]) not in hotes]
+        if ajouts:
+            avant_urls = [link.get("url") for link in existants
+                          if isinstance(link, dict)]
+            doc["links"] = existants + ajouts
+            changes.append(Change(
+                field="links", before=avant_urls,
+                after=[link.get("url") for link in doc["links"]
+                       if isinstance(link, dict)]))
     # RETRAIT ciblé, par fragment d'URL. Distinct de `liens`, qui redéfinit
     # toute la liste : quand un seul lien est fautif parmi sept, redéfinir les
     # sept obligerait à tous les recopier dans la table — verbeux, et surtout

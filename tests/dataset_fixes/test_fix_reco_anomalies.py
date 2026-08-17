@@ -29,7 +29,7 @@ def test_chaque_correction_porte_sa_justification():
         assert fix.get("attendu"), f"{rid} : sans `attendu`, aucun garde-fou"
         assert any(k in fix for k in
                    ("types", "liens", "creator", "recommande_par",
-                    "retirer_liens", "retirer_alias")), rid
+                    "ajouter_liens", "retirer_liens", "retirer_alias")), rid
 
 
 def test_aucune_correction_ne_produit_un_type_vide():
@@ -266,3 +266,60 @@ def test_une_correction_sans_changement_de_type_ne_touche_pas_aux_types(monkeypa
 
 def test_build_parser_dry_run_par_defaut():
     assert fra.build_parser().parse_args([]).apply is False
+
+
+# ---------------------------------------------------------------------------
+# Ajout de liens
+#
+# Distinct de `liens`, qui REDÉFINIT la liste. Beaucoup de recos musicales
+# n'ont aucune plateforme d'écoute mais portent d'autres liens (site officiel,
+# billetterie) : les écraser pour poser un Deezer serait un mauvais échange.
+# ---------------------------------------------------------------------------
+def test_ajoute_un_lien_sans_toucher_aux_existants(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["album"]},
+                  "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                                     "ethics": "neutral",
+                                     "url": "https://www.deezer.com/artist/14"}],
+                  "pourquoi": "cas synthétique de vérification"},
+    })
+    doc = _doc("ubm-1", types=["album"],
+               links=[{"url": "https://exemple.fr/officiel", "label": "Site"}])
+    ch = fra.transform(doc)
+    assert [link["url"] for link in doc["links"]] == [
+        "https://exemple.fr/officiel", "https://www.deezer.com/artist/14"]
+    assert len(ch) == 1 and ch[0].field == "links"
+
+
+def test_ajout_ignore_une_plateforme_DEJA_presente(monkeypatch):
+    """Sans cette garde, une seconde exécution empilerait les doublons."""
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["album"]},
+                  "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                                     "ethics": "neutral",
+                                     "url": "https://www.deezer.com/artist/14"}],
+                  "pourquoi": "cas synthétique de vérification"},
+    })
+    doc = _doc("ubm-1", types=["album"],
+               links=[{"url": "https://deezer.com/album/999", "label": "Deezer"}])
+    assert fra.transform(doc) == []
+    assert len(doc["links"]) == 1
+
+
+def test_ajout_sur_une_reco_sans_aucun_lien(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["album"]},
+                  "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                                     "ethics": "neutral",
+                                     "url": "https://www.deezer.com/artist/14"}],
+                  "pourquoi": "cas synthétique de vérification"},
+    })
+    doc = _doc("ubm-1", types=["album"])
+    fra.transform(doc)
+    assert len(doc["links"]) == 1
+
+
+def test_hote_tolere_une_url_illisible():
+    assert fra._hote("https://[::1") == ""
+    assert fra._hote(None) == ""
+    assert fra._hote("https://WWW.Deezer.com/artist/1") == "deezer.com"
