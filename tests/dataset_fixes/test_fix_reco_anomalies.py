@@ -28,7 +28,7 @@ def test_chaque_correction_porte_sa_justification():
         assert len(fix["pourquoi"]) > 40, rid
         assert fix.get("attendu"), f"{rid} : sans `attendu`, aucun garde-fou"
         assert any(k in fix for k in
-                   ("types", "liens", "creator", "recommande_par",
+                   ("types", "liens", "creator", "titre", "recommande_par",
                     "ajouter_liens", "retirer_liens", "retirer_alias")), rid
 
 
@@ -323,3 +323,26 @@ def test_hote_tolere_une_url_illisible():
     assert fra._hote("https://[::1") == ""
     assert fra._hote(None) == ""
     assert fra._hote("https://WWW.Deezer.com/artist/1") == "deezer.com"
+
+
+def test_corrige_un_titre_descriptif(monkeypatch):
+    """Un titre qui DÉCRIT l'œuvre au lieu de la nommer la rend introuvable :
+    personne ne cherche « Documentaire sur Orelsan »."""
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["serie"]},
+                  "titre": "Montre jamais ça à personne",
+                  "pourquoi": "cas synthétique de vérification du titre"},
+    })
+    doc = _doc("ubm-1", types=["serie"], title="Documentaire sur Orelsan")
+    ch = fra.transform(doc)
+    assert doc["title"] == "Montre jamais ça à personne"
+    assert len(ch) == 1 and ch[0].field == "title"
+
+
+def test_un_titre_deja_bon_ne_declenche_rien(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["serie"]}, "titre": "Déjà juste",
+                  "pourquoi": "cas synthétique de vérification du titre"},
+    })
+    doc = _doc("ubm-1", types=["serie"], title="Déjà juste")
+    assert fra.transform(doc) == []

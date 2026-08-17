@@ -282,9 +282,16 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     "ubm-0520": {
         "attendu": {"types": ["podcast", "autre", "video"]},
         "creator": "First We Feast",
+        "retirer_liens": ["89Ri8OIjgxI"],
         "pourquoi": (
             "« Hot Ones » est produit par First We Feast, ce que confirment "
-            "les deux liens de la reco. Le champ valait « N/A »."
+            "les deux premiers liens. Le champ valait « N/A ». "
+            "DEUX ÉMISSIONS ÉTAIENT MÉLANGÉES : le troisième lien menait à "
+            "« HOT ONES : Miki, ça pik pik fort » de Studio Bagel, l'adaptation "
+            "FRANÇAISE animée par Kyan Khojandi — « basé sur le programme Hot "
+            "Ones », donc une autre œuvre. La citation (« je suis un énorme fan "
+            "de Hot Ones ») désigne l'originale : Kyan ne se dirait pas fan de "
+            "sa propre émission."
         ),
     },
     "ubm-2791": {
@@ -613,6 +620,27 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    "ubm-0862": {
+        "attendu": {"types": ["serie"], "title": "Documentaire sur Orelsan"},
+        "titre": "Montre jamais ça à personne",
+        "pourquoi": "Le titre était une DESCRIPTION, pas un nom d'œuvre. Les "
+                    "deux liens de la reco le donnent eux-mêmes : l'URL Apple "
+                    "TV contient « orelsan--montre-jamais-ca-a-personne », "
+                    "celle de Prime Video « ORELSAN-Montre-jamais-ça-à-"
+                    "personne ». Réalisé par Clément Cotentin, son frère, "
+                    "déjà porté par le champ créateur.",
+    },
+    "ubm-1027": {
+        "attendu": {"types": ["podcast", "video"]},
+        "types": ["chaine", "video"],
+        "creator": "Mehdi Moussaïd",
+        "pourquoi": "Fouloscopie n'est PAS un podcast mais une chaîne YouTube "
+                    "(et un livre) de Mehdi Moussaïd — c'est d'ailleurs le seul "
+                    "lien de la reco, et la citation dit « sur sa chaîne "
+                    "YouTube ». Les deux autres recos du même sujet "
+                    "(ubm-0588, ubm-1958) portent déjà la bonne graphie, "
+                    "confirmée par le lien Wikipédia de ubm-1958.",
+    },
 }
 
 
@@ -658,6 +686,12 @@ def transform(doc: dict[str, Any]) -> list[Change]:
         changes.append(Change(field="types", before=doc.get("types"),
                               after=fix["types"]))
         doc["types"] = list(fix["types"])
+    # Le TITRE est parfois une description (« Documentaire sur Orelsan ») là
+    # où l'œuvre porte un nom. Le corriger change ce que le visiteur cherche.
+    if "titre" in fix and doc.get("title") != fix["titre"]:
+        changes.append(Change(field="title", before=doc.get("title"),
+                              after=fix["titre"]))
+        doc["title"] = fix["titre"]
     if "creator" in fix and doc.get("creator") != fix["creator"]:
         changes.append(Change(field="creator", before=doc.get("creator"),
                               after=fix["creator"]))
