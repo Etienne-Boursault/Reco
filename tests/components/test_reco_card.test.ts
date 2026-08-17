@@ -18,11 +18,16 @@ import { baseReco, parse, render, renderProps } from './_reco_card';
 describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
   it('affiche le badge ⭐ « Leur œuvre » quand guestWork=true', async () => {
     const html = await render({ ...baseReco, guestWork: true });
-    expect(html).toContain('guestwork-badge');
+    // ÉTOILE SEULE depuis le 2026-08-17 : la pastille libellée doublait la
+    // largeur de la ligne créateur. Le sens passe par l'info-bulle et le nom
+    // accessible — jamais par la seule forme.
+    expect(html).toContain('guestwork-star');
     // M3 : ⭐ (le 🎤 entrait en collision avec TYPE_EMOJIS['artiste']).
     expect(html).toContain('⭐');
-    // Libellé 2026-07-07 : guestWork couvre invité·es ET hosts.
-    expect(html).toContain('Leur œuvre');
+    // Le libellé N'EST PLUS affiché, mais reste atteignable : c'est ce qui
+    // distingue « épuré » de « information perdue ».
+    expect(html).toMatch(/title="[^"]*Leur œuvre/);
+    expect(html).toMatch(/aria-label="[^"]*(œuvre|oeuvre)/i);
   });
 
   it('n\'utilise plus 🎤 pour le badge guestWork (collision type artiste, M3)', async () => {
@@ -32,7 +37,7 @@ describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
 
   it('n\'affiche aucun badge guestWork quand le flag est absent', async () => {
     const html = await render(baseReco);
-    expect(html).not.toContain('guestwork-badge');
+    expect(html).not.toContain('guestwork-star');
     expect(html).not.toContain('⭐');
   });
 
@@ -54,16 +59,24 @@ describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
   });
 
   it('badge citation passe par i18n (NIT-8)', async () => {
-    const html = await render({ ...baseReco, kind: 'citation' });
-    expect(html).toContain('📝');
-    expect(html).toContain('Mentionné');
+    // La pastille « 📝 Mentionné » a été retirée : elle flottait seule
+    // au-dessus de « Reco de … » et disait deux fois la même chose.
+    // L'information est portée par le VERBE de la ligne méta.
+    const html = await render({ ...baseReco, kind: 'citation', recommendedBy: 'Navo' });
+    expect(html).toContain('Mention de');
+    expect(html).not.toContain('Reco de');
+    expect(html).not.toContain('kind-badge');
   });
 
   it('combo legacy citation + guestWork → les DEUX badges (NIT-9)', async () => {
-    const html = await render({ ...baseReco, kind: 'citation', guestWork: true });
-    expect(html).toContain('Mentionné'); // badge citation
-    expect(html).toContain('⭐'); // badge œuvre d'invité (M3)
-    expect(html).toContain('guestwork-badge');
+    const html = await render({
+      ...baseReco, kind: 'citation', guestWork: true, recommendedBy: 'Navo',
+    });
+    // Les deux informations coexistent sans se disputer la place : le verbe
+    // pour la mention, l'étoile pour l'œuvre de la personne.
+    expect(html).toContain('Mention de');
+    expect(html).toContain('⭐');
+    expect(html).toContain('guestwork-star');
   });
 });
 
@@ -110,8 +123,8 @@ describe('RecoCard — titre sur la rangée des types', () => {
 describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
   it('le badge descend sur la ligne créateur et quitte la rangée du haut', async () => {
     const doc = parse(await render({ ...baseReco, guestWork: true }));
-    expect(doc.querySelector('.creator .guestwork-badge')).not.toBeNull();
-    expect(doc.querySelector('.card-top .guestwork-badge')).toBeNull();
+    expect(doc.querySelector('.creator .guestwork-star')).not.toBeNull();
+    expect(doc.querySelector('.card-top .guestwork-star')).toBeNull();
   });
 
   it('le nom du créateur précède le badge sur la ligne', async () => {
@@ -120,31 +133,38 @@ describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
     const enfants = Array.from(ligne.children);
     expect(enfants[0]!.className).toContain('creator-name');
     expect(enfants[0]!.textContent).toContain('Untel');
-    expect(enfants[enfants.length - 1]!.className).toContain('guestwork-badge');
+    expect(enfants[enfants.length - 1]!.className).toContain('guestwork-star');
   });
 
   it('guestWork SANS créateur : le badge ne disparaît pas, la ligne est rendue pour lui seul', async () => {
     const doc = parse(await render({ ...baseReco, creator: undefined, guestWork: true }));
     const ligne = doc.querySelector('.creator');
     expect(ligne).not.toBeNull();
-    expect(ligne!.querySelector('.guestwork-badge')).not.toBeNull();
+    expect(ligne!.querySelector('.guestwork-star')).not.toBeNull();
     // Repli honnête : pas de nom fabriqué ni d'espace réservé vide.
     expect(ligne!.querySelector('.creator-name')).toBeNull();
-    expect(ligne!.textContent).toContain('Leur œuvre');
+    // Le libellé n'est plus visible : c'est l'info-bulle qui le porte.
+    expect(ligne!.querySelector('.guestwork-star')!.getAttribute('title'))
+      .toContain('Leur œuvre');
     expect(ligne!.textContent).not.toContain('Untel');
   });
 
-  it('le badge citation reste en haut : il qualifie la reco, pas la personne', async () => {
-    const doc = parse(await render({ ...baseReco, kind: 'citation' }));
-    expect(doc.querySelector('.card-top .kind-badge')!.textContent).toContain('Mentionné');
-    expect(doc.querySelector('.creator .kind-badge')).toBeNull();
+  it('la mention se lit dans la ligne méta, plus dans une pastille', async () => {
+    // Le badge « Mentionné » occupait une ligne pour un mot, juste au-dessus
+    // de « Reco de … ». Le verbe porte la même information sans rien coûter.
+    const doc = parse(await render({ ...baseReco, kind: 'citation', recommendedBy: 'Navo' }));
+    expect(doc.querySelector('.card-top .kind-badge')).toBeNull();
+    expect(doc.querySelector('.meta')!.textContent).toContain('Mention de Navo');
   });
 
-  it('combo citation + guestWork : un badge dans chaque zone', async () => {
-    const doc = parse(await render({ ...baseReco, kind: 'citation', guestWork: true }));
-    expect(doc.querySelector('.card-top .kind-badge')!.textContent).toContain('Mentionné');
-    expect(doc.querySelector('.creator .guestwork-badge')!.textContent).toContain('Leur œuvre');
-    expect(doc.querySelector('.card-top .guestwork-badge')).toBeNull();
+  it('combo citation + guestWork : chaque information à sa place', async () => {
+    const doc = parse(await render({
+      ...baseReco, kind: 'citation', guestWork: true, recommendedBy: 'Navo',
+    }));
+    // L'étoile qualifie la PERSONNE : ligne créateur.
+    expect(doc.querySelector('.creator .guestwork-star')).not.toBeNull();
+    // La mention qualifie la RECO : ligne méta.
+    expect(doc.querySelector('.meta')!.textContent).toContain('Mention de');
   });
 
   it('showGuestWorkBadge=false sans créateur → aucune ligne créateur du tout', async () => {

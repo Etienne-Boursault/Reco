@@ -236,7 +236,8 @@ describe('RecoCard — badge guestWork et lien Signaler', () => {
       reco: { ...baseReco, guestWork: true },
       showGuestWorkBadge: true,
     });
-    expect(html).toContain('guestwork-badge');
+    // Pastille remplacée par l'étoile seule le 2026-08-17.
+    expect(html).toContain('guestwork-star');
   });
 
   it('le lien Signaler pointe vers la source ET l’identifiant de la reco', async () => {

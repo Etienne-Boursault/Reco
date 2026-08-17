@@ -6,6 +6,8 @@
    bundlé ces règles nulle part où elles servent.
 */
   .creator-flag {
+    /* `<details>` est un élément de BLOC : sans `inline-block`, le
+       pictogramme ⚠️ tomberait sous le nom du créateur au lieu de le suivre. */
     display: inline-block;
     position: relative;
     vertical-align: baseline;

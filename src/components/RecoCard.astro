@@ -355,11 +355,10 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
        2026-07-30). Il reste un FRÈRE du conteneur `role="img"` : l'y imbriquer
        le ferait annoncer comme une partie de l'image (cf. A1 ci-dessus). */}
     <h3 class="title">{reco.title}</h3>
-    {isCitation && (
-      <span class="kind-badge" aria-label={t('reco.citation.badgeA11y')}>
-        <span aria-hidden="true">📝</span> {t('reco.citation.badge')}
-      </span>
-    )}
+    {/* Le badge « Mentionné » a été RETIRÉ (retour utilisateur 2026-08-17) : il
+       flottait seul au-dessus de « Reco de … » et disait deux fois la même
+       chose. L'information passe désormais par le verbe de la ligne méta —
+       « Mention de » au lieu de « Reco de » —, où elle se lit d'un trait. */}
     {/* Année (date de création de l'œuvre) retirée de la carte : hors contexte,
        elle était lue comme une donnée parasite (retour utilisateur 2026-07-29).
        Le champ `reco.year` reste utilisé ailleurs (page œuvre, audits). */}
@@ -372,24 +371,50 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
      badge. Le rattacher au titre reviendrait à dire que l'œuvre est de
      l'émission ; le remonter en haut le ferait sauter d'une carte à l'autre.
      Un badge orphelin lisible vaut mieux qu'un badge escamoté. */}
+  {/* `<div>` et NON `<p>` : le pictogramme de signalement est un
+     `<details>`, que l'analyseur HTML considère comme du contenu de bloc —
+     il FERME le paragraphe en cours. Le ⚠️ se retrouvait donc enfant direct
+     de `.card`, un conteneur flex qui « blockifie » son `inline-block`, et
+     tombait seul sous le nom du créateur (retour utilisateur 2026-08-17).
+     Balisage invalide, pas défaut de style. */}
   {(reco.creator || isGuestWork) && (
-    <p class="creator">
+    <div class="creator">
       {reco.creator && (<span class="creator-name">{reco.creator}<CreatorFlag name={reco.creator} /></span>)}
       {isGuestWork && (
-        <span class="kind-badge guestwork-badge" aria-label={t('reco.guestWork.badgeA11y')}>
-          {/* M3 : glyphe ⭐ — le 🎤 entrait en collision avec TYPE_EMOJIS['artiste']
-             (même emoji pour « badge œuvre d'invité » et « type artiste »). ⭐
-             n'est utilisé par aucun type. */}
-          <span aria-hidden="true">⭐</span> {t('reco.guestWork.badge')}
-        </span>
+        /* ÉTOILE SEULE, sans son libellé (retour utilisateur 2026-08-17) : la
+           pastille « Leur œuvre » doublait la largeur de la ligne créateur et
+           la faisait souvent passer à la ligne. Le sens est porté par
+           l'info-bulle au survol et par le nom accessible — jamais par la
+           seule couleur ou la seule forme.
+           M3 : glyphe ⭐ — 🎤 entrait en collision avec TYPE_EMOJIS['artiste']. */
+        <span
+          class="guestwork-star"
+          role="img"
+          title={t('reco.guestWork.badge')}
+          aria-label={t('reco.guestWork.badgeA11y')}
+        >⭐</span>
       )}
-    </p>
+    </div>
   )}
 
-  <div class="meta">
-    {reco.recommendedBy && <span class="by">Reco de {reco.recommendedBy}</span>}
-    {epLabel && <span class="ep">{epLabel}</span>}
-  </div>
+  {/* Une SEULE ligne de texte, plus deux éléments côte à côte : en flex, le
+     numéro d'épisode se retrouvait seul sur sa ligne dès que le nom du
+     recommandeur était long (« Reco de Fabrice Éboué & Alexandra Roth » puis
+     « #8 » orphelin). Le repli se fait maintenant au fil du texte, et
+     l'espace insécable garde le numéro attaché au dernier mot.
+     « Mention de » quand la reco est une citation : le verbe porte
+     l'information que le badge disait, sans occuper de ligne. */}
+  {(reco.recommendedBy || epLabel) && (
+    <p class="meta">
+      {reco.recommendedBy && (
+        <span class="by">{isCitation ? 'Mention de' : 'Reco de'} {reco.recommendedBy}</span>
+      )}
+      {/* Espaces INSÉCABLES (U+00A0) : ils écartent le numéro du nom tout en
+         interdisant la coupure entre les deux. Un échappement CSS
+         (`content: ' a0'`) s'affichait littéralement. */}
+      {epLabel && <span class="ep">{'  '}{epLabel}</span>}
+    </p>
+  )}
 
   {
     audio && (audio.youtubeId || audio.acastUrl) && (
@@ -462,13 +487,19 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   {
     sourceId && (
       <p class="report-link-wrap">
+        {/* PICTOGRAMME SEUL (retour utilisateur 2026-08-17) : le mot
+           « Signaler » sur chaque carte tirait l'œil vers une action rare.
+           Le nom accessible reste complet — un lecteur d'écran annonce la
+           phrase entière, jamais le seul glyphe — et `title` donne
+           l'info-bulle au survol. */}
         <a
           class="report-link"
           href={`/${sourceId}/report/${reco.id}`}
           rel="nofollow"
+          title={t('report.linkA11y')}
           aria-label={t('report.linkA11y')}
         >
-          <span aria-hidden="true">⚠</span> {t('report.link')}
+          <span aria-hidden="true">⚠</span>
         </a>
       </p>
     )
