@@ -24,10 +24,16 @@
 import { describe, it, expect } from 'vitest';
 
 describe('environnement de test', () => {
+  // Délai élargi À DESSEIN. Ce test ne mesure PAS une vitesse : il vérifie
+  // qu'un module se résout. Lancé seul il prend deux secondes, mais dans la
+  // suite complète le premier chargement de `happy-dom` se fait pendant que
+  // vitest transpile une centaine d'autres fichiers, et il a déjà dépassé les
+  // 30 secondes par défaut. L'échec était alors indiscernable de celui qu'on
+  // cherche vraiment à détecter — un `happy-dom` absent.
   it('happy-dom est résolvable — sinon les tests DOM seraient omis en silence', async () => {
     const mod = await import('happy-dom');
     expect(typeof mod.Window).toBe('function');
-  });
+  }, 120_000);
 
   it('happy-dom est une dépendance déclarée, pas une transitive de passage', async () => {
     const pkg = await import('../../package.json', { with: { type: 'json' } });

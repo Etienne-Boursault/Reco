@@ -36,6 +36,7 @@ export default getViteConfig({
       'tests/episode/**/*.test.ts',
       'tests/utils/**/*.test.ts',
       'tests/js/**/*.test.ts',
+      'tests/server/**/*.test.ts',
     ],
     environment: 'node',
     globals: false,
@@ -55,7 +56,11 @@ export default getViteConfig({
       // Le glob large avait été explicitement écarté au motif qu'il « ferait
       // chuter le seuil global ». C'est exact, et c'était précisément
       // l'information à ne pas masquer.
-      include: ['src/**/*.ts', 'src/**/*.astro'],
+      // `src/server/*.mjs` : le serveur de PRODUCTION. Il est arrivé dans le
+      // dépôt sans un seul test parce que ce glob ne le voyait pas — un
+      // fichier qui sert chaque visiteur, hors de toute mesure. Ajouté ici
+      // pour que l'oubli ne puisse pas se reproduire en silence.
+      include: ['src/**/*.ts', 'src/**/*.astro', 'src/server/**/*.mjs'],
       // NB : v8 n'instrumente pas les `<script>` client des `.astro` — ils ne
       // comptent ni au numérateur ni au dénominateur. La logique client qui
       // mérite d'être testée doit donc être extraite dans un module `.ts`
@@ -72,6 +77,17 @@ export default getViteConfig({
         // merchants.ts est couvert exhaustivement (11 résolveurs + gardes) :
         // on verrouille 100 % pour détecter toute régression de couverture.
         'src/data/merchants.ts': {
+          lines: 100,
+          functions: 100,
+          statements: 100,
+          branches: 100,
+        },
+        // Le serveur de production : chaque visiteur passe par ces trois
+        // fichiers. Verrouillé à 100 % parce que les chemins qui comptent le
+        // plus y sont les moins visibles — la garde contre la traversée de
+        // répertoire, et les écouteurs d'erreur sans lesquels une lecture en
+        // échec arrête le processus.
+        'src/server/**/*.mjs': {
           lines: 100,
           functions: 100,
           statements: 100,
