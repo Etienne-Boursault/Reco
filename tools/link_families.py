@@ -181,6 +181,17 @@ def hote_de(url: object) -> str:
         return ""
 
 
+#: Hôtes qui servent DEUX familles selon le chemin. La table `HOTES` associe un
+#: hôte à une famille et une seule ; ces hôtes-là lui échappent, et l'ignorer
+#: rendait l'audit aveugle à ce qu'il venait lui-même de poser.
+_CHEMINS: dict[str, tuple[str, str]] = {
+    # TMDB sert la FICHE d'une œuvre et sa page « où regarder ». Sans cette
+    # distinction, un lien de visionnage TMDB comptait pour une fiche — et
+    # 125 recos fraîchement pourvues restaient signalées « sans visionnage ».
+    "themoviedb.org": ("/watch", "visionnage"),
+}
+
+
 def famille(url: object) -> str | None:
     """Famille d'un lien, ou None si l'hôte n'est pas répertorié.
 
@@ -188,14 +199,21 @@ def famille(url: object) -> str | None:
     Bandcamp, `fr.wikipedia.org` une Wikipédia. Une égalité stricte manquait
     les deux.
 
+    Le CHEMIN tranche quand l'hôte ne suffit pas : voir `_CHEMINS`.
+
     >>> famille("https://cameronwinter.bandcamp.com/album/heavy-metal")
     'ecoute'
+    >>> famille("https://www.themoviedb.org/movie/1-x/watch?locale=FR")
+    'visionnage'
     >>> famille("https://exemple-inconnu.fr/page") is None
     True
     """
     h = hote_de(url)
     if not h:
         return None
+    for cle, (fragment, fam) in _CHEMINS.items():
+        if (h == cle or h.endswith("." + cle)) and                 str(url).split("?", 1)[0].rstrip("/").endswith(fragment):
+            return fam
     # Le suffixe le plus LONG gagne : « music.apple.com » (écoute) doit primer
     # sur un éventuel « apple.com » générique.
     correspondances = [(cle, fam) for cle, fam in HOTES.items()

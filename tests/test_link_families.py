@@ -157,3 +157,32 @@ def test_aucun_hote_ne_porte_le_prefixe_www():
     inatteignable."""
     for cle in lf.HOTES:
         assert not cle.startswith("www."), cle
+
+
+# ---------------------------------------------------------------------------
+# Quand l'hôte ne suffit pas : le chemin tranche
+# ---------------------------------------------------------------------------
+def test_la_page_de_visionnage_TMDB_n_est_pas_une_fiche():
+    """`themoviedb.org` sert les deux. Les confondre rendait l'audit aveugle à
+    ce que la passe de visionnage venait elle-même de poser : 125 recos
+    pourvues restaient comptées « sans visionnage »."""
+    assert lf.famille("https://www.themoviedb.org/movie/424277-annette/watch?locale=FR") == "visionnage"
+    assert lf.famille("https://www.themoviedb.org/movie/424277") == "fiche"
+
+
+def test_un_film_avec_fiche_ET_page_de_visionnage_TMDB_ne_manque_de_rien():
+    liens = [_lien("https://www.themoviedb.org/movie/1"),
+             _lien("https://www.themoviedb.org/movie/1-x/watch?locale=FR")]
+    assert lf.familles_manquantes(["film"], liens) == set()
+
+
+def test_le_chemin_ne_s_applique_qu_a_son_hote():
+    """Un `/watch` ailleurs ne doit pas devenir un visionnage par accident."""
+    assert lf.famille("https://www.youtube.com/watch?v=abc") == "video"
+
+
+def test_tous_les_hotes_a_chemin_sont_dans_la_table_principale():
+    """Un hôte listé dans `_CHEMINS` mais absent de `HOTES` n'aurait aucune
+    famille par défaut — son cas hors-chemin tomberait silencieusement."""
+    for cle in lf._CHEMINS:
+        assert cle in lf.HOTES, cle
