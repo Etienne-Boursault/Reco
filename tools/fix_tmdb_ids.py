@@ -68,6 +68,14 @@ IDENTIFIANTS: dict[str, tuple[str, str, str]] = {
     "ubm-3154": ("The Curse", "tv", "114655"),
     # --- Films ------------------------------------------------------------
     # Duvivier, 1947 — confirmé par le lien LaCinetek déjà posé.
+    # Identifies par l'agent visionnage, et non par l'agent fiches : c'est la
+    # recherche d'un moyen de VOIR l'œuvre qui a fini par l'identifier.
+    # Le precedent identifiant de « Run » etait faux et a ete retire ; celui-ci
+    # est la serie HBO de 2020, diffusee en France par Lionsgate+.
+    "ubm-0715": ("Run", "tv", "87393"),
+    # Court-metrage de Cedric Klapisch (1986), disponible chez LaCinetek et
+    # Sooner — ce que la reco ne disait pas, ses deux liens etant des fiches.
+    "ubm-2332": ("In Transit", "movie", "352038"),
     "ubm-0255": ("Panique", "movie", "43462"),
     "ubm-0291": ("The Legend of Hei", "movie", "620249"),
     "ubm-0339": ("Bref. De bons amis", "movie", "1437733"),

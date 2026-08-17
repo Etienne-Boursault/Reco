@@ -203,18 +203,32 @@ def test_le_remplacement_peut_changer_le_TYPE():
 
 def test_un_identifiant_sans_remplacant_est_RETIRE():
     """Un identifiant faux vaut moins que pas d'identifiant du tout : il peut
-    être promu en lien visible des mois plus tard."""
-    reco = {"id": "ubm-0715", "title": "Run",
-            "externalIds": {"tmdb": "11912", "tmdbType": "tv"}}
+    être promu en lien visible des mois plus tard.
+
+    `ubm-1363` sert d'exemple parce qu'aucun candidat ne s'impose pour lui —
+    contrairement à `ubm-0715`, dont le cas est traité juste en dessous."""
+    reco = {"id": "ubm-1363", "title": "Bagarre",
+            "externalIds": {"tmdb": "49064", "tmdbType": "movie"}}
     fti.transform(reco)
     assert "externalIds" not in reco
 
 
 def test_un_retrait_conserve_les_AUTRES_identifiants():
-    reco = {"id": "ubm-0715", "title": "Run",
-            "externalIds": {"tmdb": "11912", "tmdbType": "tv", "imdb": "tt1"}}
+    reco = {"id": "ubm-1363", "title": "Bagarre",
+            "externalIds": {"tmdb": "49064", "tmdbType": "movie", "imdb": "tt1"}}
     fti.transform(reco)
     assert reco["externalIds"] == {"imdb": "tt1"}
+
+
+def test_un_retrait_peut_etre_SUIVI_d_une_pose_correcte():
+    """C'est la raison d'être de l'ordre `_remplacer` puis `_identifier`.
+    L'identifiant de « Run » désignait « Sauve qui peut » (1965) ; il est
+    retiré, puis la série HBO de 2020 est posée dans la foulée. Sans cet
+    enchaînement, la reco resterait sans identifiant."""
+    reco = {"id": "ubm-0715", "title": "Run",
+            "externalIds": {"tmdb": "11912", "tmdbType": "tv"}}
+    fti.transform(reco)
+    assert reco["externalIds"] == {"tmdb": "87393", "tmdbType": "tv"}
 
 
 def test_le_remplacement_ne_touche_rien_si_l_identifiant_a_CHANGE():

@@ -631,6 +631,48 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    # --- Fiches et types : solde des manques (2026-08-18) ------------------
+    "ubm-0282": {
+        "attendu": {"title": "Devil's Plan"},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info",
+                           "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/214582"}],
+        "pourquoi": ("Télé-réalité coréenne de Netflix, que TMDB titre "
+                     "« The Devil's Plan » — d'où le refus de la garde de "
+                     "titre de la passe. L'identifiant Netflix 81653386 de la "
+                     "reco tranche."),
+    },
+    "ubm-1106": {
+        "attendu": {"title": "Coco Rico"},
+        "ajouter_liens": [{"label": "TMDB", "kind": "info",
+                           "ethics": "neutral",
+                           "url": "https://www.themoviedb.org/tv/227640"}],
+        "pourquoi": ("« Kôkôrikô ! » de Jean-Pascal Zadi, Canal+ 2023 : le "
+                     "titre de la reco en est la transcription phonétique, et "
+                     "le lien Apple TV déjà posé contient le slug "
+                     "« kokoriko »."),
+    },
+    "ubm-0565": {
+        "attendu": {"types": ["musique", "spectacle", "autre", "film",
+                              "artiste"],
+                    "title": "Michael Jackson"},
+        "types": ["musique", "spectacle", "autre", "artiste"],
+        "pourquoi": ("La reco porte sur la PERSONNE, pas sur une œuvre : "
+                     "« je vous conseille Michael Jackson ». Le type `film` "
+                     "réclamait une fiche d'œuvre et un moyen de la voir, "
+                     "qu'aucun catalogue ne peut fournir pour un artiste. Les "
+                     "types restants disent ce qu'il est."),
+    },
+    "ubm-1594": {
+        "attendu": {"types": ["film"],
+                    "title": "Les grands classiques d'Hitchcock"},
+        "types": ["autre"],
+        "pourquoi": ("« aller voir les grands classiques d'Hitchcock » "
+                     "désigne un CORPUS, pas une œuvre : il n'existe ni fiche "
+                     "ni page de visionnage pour une filmographie. Le seul "
+                     "lien de la reco est d'ailleurs l'article Wikipédia du "
+                     "réalisateur."),
+    },
     # --- Fiches posées directement (2026-08-17) ---------------------------
     # La passe d'enrichissement refuse ces cas sur sa garde de titre, et
     # elle a raison : le titre de la reco est celui prononcé à l'antenne,

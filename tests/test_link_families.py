@@ -364,3 +364,52 @@ def test_les_deux_libraires_qui_manquaient(url, attendu):
     """`archive.org` prête l'ouvrage — souvent le seul recours pour un livre
     épuisé ; `boutique.so` est la boutique de So Press, qui édite Society."""
     assert lf.famille(url) == attendu
+
+
+# ---------------------------------------------------------------------------
+# Le `kind` dit ce que l'hôte ne peut pas savoir
+# ---------------------------------------------------------------------------
+def _lien_kind(url, kind):
+    return {"url": url, "label": "L", "kind": kind}
+
+
+def test_une_video_marquee_streaming_EST_un_moyen_de_voir():
+    """Le corpus distingue déjà, à la main, le lien qui mène à l'ŒUVRE de
+    celui qui mène à son auteur : « Film complet », « Minuit 01 à 07 » portent
+    `streaming`, une simple chaîne porte `official`."""
+    liens = [_lien_kind("https://www.youtube.com/watch?v=abc", "streaming")]
+    assert lf.familles_presentes(liens) == {"video", "visionnage"}
+
+
+def test_une_video_marquee_official_reste_une_simple_video():
+    """C'est la moitié qui protège : sans marqueur, une vidéo isolée peut être
+    une bande-annonce, et la compter comme un visionnage éteindrait un vrai
+    manque."""
+    liens = [_lien_kind("https://www.youtube.com/watch?v=abc", "official")]
+    assert lf.familles_presentes(liens) == {"video"}
+
+
+def test_la_promotion_n_ENLEVE_pas_la_famille_d_origine():
+    """Une reco `chaine` attend `video` : si la promotion remplaçait au lieu
+    d'ajouter, le même lien la laisserait découverte."""
+    liens = [_lien_kind("https://www.youtube.com/watch?v=abc", "streaming")]
+    assert lf.familles_manquantes(["chaine"], liens) == set()
+    assert lf.familles_manquantes(["film"], liens) == {"fiche"}
+
+
+def test_le_kind_ne_promeut_pas_n_importe_quelle_famille():
+    """`streaming` sur un libraire ne fait pas de lui un moyen de voir."""
+    liens = [_lien_kind("https://www.mollat.com/livres/x", "streaming")]
+    assert lf.familles_presentes(liens) == {"libraire"}
+
+
+def test_un_lien_sans_kind_ne_leve_pas():
+    assert lf.familles_presentes([{"url": "https://www.youtube.com/watch?v=a",
+                                   "label": "L"}]) == {"video"}
+
+
+def test_les_promotions_visent_des_familles_connues():
+    fournies = set(lf.HOTES.values())
+    for (depart, _), arrivee in lf._PROMOTIONS.items():
+        assert depart in fournies, depart
+        assert arrivee in fournies, arrivee

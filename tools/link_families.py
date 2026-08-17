@@ -408,13 +408,38 @@ def famille(url: object) -> str | None:
     return max(correspondances, key=lambda kv: len(kv[0]))[1]
 
 
+#: Familles qu'un `kind` PROMEUT, en plus de celle de l'hôte.
+#:
+#: Le corpus distingue déjà, à la main, le lien qui MÈNE à l'œuvre de celui qui
+#: mène à son auteur : « Film complet », « Minuit 01 à 07 », « Épisode 1 sur… »
+#: portent `kind: "streaming"`, une simple chaîne porte `official`. Vingt-et-un
+#: liens YouTube de recos `film`/`serie` sont ainsi marqués, contre seize.
+#:
+#: L'hôte seul ne pouvait pas le savoir : c'est pourquoi une vidéo isolée reste
+#: `video` par défaut — elle peut être une bande-annonce. Le marqueur éditorial,
+#: lui, dit qu'on regarde l'œuvre là. On AJOUTE donc `visionnage` sans retirer
+#: `video`, de sorte qu'une reco `chaine` reste couverte par le même lien.
+_PROMOTIONS: dict[tuple[str, str], str] = {
+    ("video", "streaming"): "visionnage",
+}
+
+
 def familles_presentes(liens) -> set[str]:
-    """Familles couvertes par les liens d'une reco."""
+    """Familles couvertes par les liens d'une reco.
+
+    Un lien peut en couvrir DEUX quand son `kind` le précise : voir
+    `_PROMOTIONS`.
+    """
     out = set()
     for lien in (liens or []):
         url = lien.get("url") if isinstance(lien, dict) else lien
-        if (f := famille(url)):
-            out.add(f)
+        f = famille(url)
+        if not f:
+            continue
+        out.add(f)
+        kind = lien.get("kind") if isinstance(lien, dict) else None
+        if (promue := _PROMOTIONS.get((f, kind or ""))):
+            out.add(promue)
     return out
 
 
