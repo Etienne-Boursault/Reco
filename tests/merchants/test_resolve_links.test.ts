@@ -150,14 +150,26 @@ describe('query() (via linksForOther)', () => {
 // linksForBookOrComic (livre / bd)
 // ---------------------------------------------------------------------------
 describe('livre / bd', () => {
-  it('sans ISBN : Place des Libraires + Lalibrairie en recherche', () => {
+  it('sans ISBN : Place des Libraires en recherche', () => {
     const links = resolveLinks(reco('livre', { title: 'Dune' }));
     const pdl = byLabel(links, 'Place des Libraires');
-    const lal = byLabel(links, 'Lalibrairie.com');
     expect(pdl?.url).toContain('mots_recherche=Dune');
     expect(pdl?.ethics).toBe('indie');
-    expect(lal?.url).toContain('recherche.html?q=Dune');
-    expect(lal?.ethics).toBe('indie');
+  });
+
+  it('ne propose plus Lalibrairie.com — son URL répondait 404', () => {
+    // Retiré le 2026-07-31. La recherche de lalibrairie.com est un POST avec
+    // jeton CSRF : `/livres/recherche.html?q=…` répondait 404 sur les 92 livres
+    // du catalogue. Six variantes de forme GET ont été testées, toutes en 404.
+    // Ce test verrouille le retrait : le remettre exige de prouver une URL qui
+    // répond, pas de recopier l'ancienne.
+    for (const type of ['livre', 'bd'] as const) {
+      const links = resolveLinks(reco(type, { title: 'Dune' }));
+      expect(byLabel(links, 'Lalibrairie.com')).toBeUndefined();
+      expect(links.some((l) => l.url.includes('lalibrairie.com'))).toBe(false);
+      // Le lien indépendant reste assuré par Place des Libraires.
+      expect(byLabel(links, 'Place des Libraires')?.ethics).toBe('indie');
+    }
   });
 
   it('avec ISBN : Place des Libraires cible l’ISBN exact', () => {
@@ -204,22 +216,23 @@ describe('musique / album', () => {
 // linksForFilmOrSeries (film / serie)
 // ---------------------------------------------------------------------------
 describe('film / serie', () => {
-  it('sans JustWatch exact : recherche JustWatch', () => {
+  it('sans watchPage : recherche JustWatch, libellée « Où regarder »', () => {
     const links = resolveLinks(reco('film', { title: 'Dune' }));
     expect(links).toHaveLength(1);
-    expect(links[0].label).toBe('JustWatch');
+    expect(links[0].label).toBe('Où regarder');
     expect(links[0].url).toContain('justwatch.com/fr/recherche?q=Dune');
   });
 
-  it('avec JustWatch exact : lien direct vers la fiche', () => {
+  it('avec watchPage : lien direct vers la page « où regarder » (TMDB)', () => {
     const links = resolveLinks(
       reco('serie', {
         title: 'Dune',
-        externalIds: { justwatch: 'https://www.justwatch.com/fr/film/dune' },
+        externalIds: { watchPage: 'https://www.themoviedb.org/movie/438631-dune/watch?locale=FR' },
       }),
     );
     expect(links).toHaveLength(1);
-    expect(links[0].url).toBe('https://www.justwatch.com/fr/film/dune');
+    expect(links[0].label).toBe('Où regarder');
+    expect(links[0].url).toBe('https://www.themoviedb.org/movie/438631-dune/watch?locale=FR');
   });
 });
 
@@ -375,7 +388,7 @@ describe('resolveLinks (agrégation)', () => {
     const links = resolveLinks(reco('film', { title: 'Dune', types: ['film', 'serie'] } as never));
     // film et serie produisent la même recherche JustWatch → 1 seul lien.
     expect(links).toHaveLength(1);
-    expect(links[0].label).toBe('JustWatch');
+    expect(links[0].label).toBe('Où regarder');
   });
 
   it('ordre : les liens suivent l’ordre de reco.types', () => {

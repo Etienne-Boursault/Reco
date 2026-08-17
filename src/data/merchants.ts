@@ -115,9 +115,10 @@ interface RecoLike {
     youtube?: string;
     instagram?: string;
     website?: string;
-    /** URL JustWatch EXACTE du film/série (renvoyée par TMDB).
-     *  Page qui a les vrais deeplinks « Watch on Netflix » etc. */
-    justwatch?: string;
+    /** Page « où regarder » du film/série, renvoyée par TMDB
+     *  (`watch/providers` → `results.FR.link`). C'est une URL themoviedb.org,
+     *  PAS une URL JustWatch — d'où le nom fonctionnel. */
+    watchPage?: string;
     /** URL Deezer / Spotify EXACTES (track / album / artist) — peuplées par
      *  tools/enrich_music.py. Préférées à une recherche quand disponibles. */
     deezer?: string;
@@ -158,11 +159,12 @@ function linksForBookOrComic(reco: RecoLike): ResolvedLink[] {
       kind: 'buy', ethics: 'indie',
     });
   }
-  out.push({
-    label: 'Lalibrairie.com',
-    url: `https://www.lalibrairie.com/livres/recherche.html?q=${q}`,
-    kind: 'buy', ethics: 'indie',
-  });
+  // Lalibrairie.com RETIRÉ le 2026-07-31 : l'URL publiée ici répondait 404 sur
+  // CHACUN des 92 livres du catalogue. Leur recherche est un POST avec jeton
+  // CSRF — aucune forme GET n'existe (six variantes testées, toutes en 404).
+  // Place des Libraires ci-dessus fédère les librairies indépendantes de toute
+  // la France et fonctionne par titre comme par ISBN : le lien indépendant est
+  // donc préservé. Un lien mort coûte plus en confiance qu'il ne rapporte.
   return out;
 }
 
@@ -187,17 +189,20 @@ function linksForMusic(reco: RecoLike): ResolvedLink[] {
 }
 
 function linksForFilmOrSeries(reco: RecoLike): ResolvedLink[] {
-  // 1) URL JustWatch EXACTE de la fiche (donnée par TMDB) — c'est là qu'il y
-  //    a les vrais boutons « Watch on Netflix », « Watch on Apple TV », etc.
-  if (reco.externalIds?.justwatch) {
+  // Libellé « Où regarder » et non « JustWatch » : les deux branches ci-dessous
+  // ne mènent pas au même site (TMDB pour la première, JustWatch pour la
+  // seconde). Nommer la fonction plutôt que le fournisseur évite d'afficher
+  // « JustWatch » sur un lien qui part chez TMDB.
+  // 1) Page « où regarder » de la fiche, donnée par TMDB.
+  if (reco.externalIds?.watchPage) {
     return [
-      { label: 'JustWatch', url: reco.externalIds.justwatch, kind: 'streaming', ethics: 'neutral' },
+      { label: 'Où regarder', url: reco.externalIds.watchPage, kind: 'streaming', ethics: 'neutral' },
     ];
   }
   // 2) Sinon : recherche JustWatch (pour les films non enrichis TMDB).
   const q = enc(query(reco.title, reco.creator));
   return [
-    { label: 'JustWatch', url: `https://www.justwatch.com/fr/recherche?q=${q}`, kind: 'streaming', ethics: 'neutral' },
+    { label: 'Où regarder', url: `https://www.justwatch.com/fr/recherche?q=${q}`, kind: 'streaming', ethics: 'neutral' },
   ];
 }
 
@@ -221,8 +226,18 @@ function linksForGame(reco: RecoLike): ResolvedLink[] {
 function linksForLiveShow(reco: RecoLike): ResolvedLink[] {
   const q = enc(query(reco.title, reco.creator));
   return [
-    { label: 'Fnac Spectacles', url: `https://www.fnacspectacles.com/recherche/?searchTerm=${q}`, kind: 'buy', ethics: 'neutral' },
-    { label: 'BilletReduc',     url: `https://www.billetreduc.com/recherche/index.htm?txt=${q}`,  kind: 'buy', ethics: 'neutral' },
+    // `/recherche/?searchTerm=` était CASSÉ : la page répondait, mais affichait
+    // « La page que vous recherchez est introuvable. Nous vous avons redirigé
+    // sur notre page d'accueil. » L'hôte refusant toute connexion HTTP directe,
+    // le défaut n'a été constaté qu'en navigateur (2026-08-16) ; la bonne forme
+    // a été lue dans le formulaire de recherche du site — chemin ET casse
+    // diffèrent (`/search/`, `searchterm` en minuscules).
+    { label: 'Fnac Spectacles', url: `https://www.fnacspectacles.com/search/?searchterm=${q}`, kind: 'buy', ethics: 'neutral' },
+    // `/recherche/index.htm?txt=` était un soft-404 : réponse 200, mais la même
+    // page pour une requête réelle et une route bidon, et JAMAIS le terme
+    // cherché dedans. `/search.htm?se=` cherche vraiment (vérifié le
+    // 2026-07-31 : 200 + terme présent dans le corps).
+    { label: 'BilletReduc',     url: `https://www.billetreduc.com/search.htm?se=${q}`,            kind: 'buy', ethics: 'neutral' },
   ];
 }
 
@@ -252,7 +267,7 @@ function linksForArtist(reco: RecoLike): ResolvedLink[] {
   if (isSafeUrl(reco.externalIds?.website)) {
     out.push({ label: 'Site officiel', url: reco.externalIds!.website!, kind: 'official', ethics: 'indie' });
   }
-  out.push({ label: 'Fnac Spectacles', url: `https://www.fnacspectacles.com/recherche/?searchTerm=${q}`, kind: 'buy', ethics: 'neutral' });
+  out.push({ label: 'Fnac Spectacles', url: `https://www.fnacspectacles.com/search/?searchterm=${q}`, kind: 'buy', ethics: 'neutral' });
   return out;
 }
 
