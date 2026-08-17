@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Yann Gozlan",
+  "enrichedAt": {
+    "links": "2026-08-17T14:40:11Z"
+  },
   "episodeGuid": "6970a1759448a95f223d530c",
   "extractionHistory": [
     {
@@ -43,6 +46,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=274204.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10341034/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/663260"
     }
   ],
   "quote": "Allez voir Boite Noire.",

@@ -1,5 +1,8 @@
 {
   "creator": "Julien Rambaldi",
+  "enrichedAt": {
+    "links": "2026-08-17T14:40:00Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
     {
@@ -23,6 +26,18 @@
       "kind": "streaming",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/rosalie-blum"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt4447076/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/381353"
     }
   ],
   "quote": "Pour le Rosalie Blum.",

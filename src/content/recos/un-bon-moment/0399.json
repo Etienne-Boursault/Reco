@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "Jean Becker",
+  "enrichedAt": {
+    "links": "2026-08-17T14:39:42Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -71,6 +74,18 @@
       "kind": "streaming",
       "label": "VIVA by Videofutur",
       "url": "https://vod.viva.videofutur.fr/effroyables-jardins/11080"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0285052/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/51163"
     }
   ],
   "quote": "Un de mes films préférés, c'est L'Effroyable Jardin.",

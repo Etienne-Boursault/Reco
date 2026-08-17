@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "Alexander Payne",
+  "enrichedAt": {
+    "links": "2026-08-17T14:40:27Z"
+  },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
   "extractionHistory": [
     {
@@ -49,6 +52,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=171157.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1033575/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/65057"
     }
   ],
   "quote": "J'ai mis si tu viens de t'engueuler avec ton père, mais ça marche avec ta mère. J'ai mis The Descendant de Alexander Payne.",

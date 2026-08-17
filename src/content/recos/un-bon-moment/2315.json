@@ -14,6 +14,9 @@
     "verdict": "citation"
   },
   "creator": "Jerry Seinfeld",
+  "enrichedAt": {
+    "links": "2026-08-17T14:40:14Z"
+  },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/60024976"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0328962/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/19973"
     }
   ],
   "quote": "tu vois ginsbourg qui apprend à jouer du piano tu vois dans \"The Comedian\" le film de Jerry Seinfeld qui est disponible sur Netflix d'ailleurs je crois",

@@ -7,6 +7,9 @@
     "reason": "'Le Nom des gens' discute avec substance (intrigue, 'un de mes films preferes') mais ton ambivalent, aucune prescription. Pas l'oeuvre d'un invite.",
     "verdict": "citation"
   },
+  "enrichedAt": {
+    "links": "2026-08-17T14:40:07Z"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractionHistory": [
     {
@@ -45,6 +48,18 @@
       "kind": "buy",
       "label": "VIVA by Videofutur",
       "url": "https://vod.viva.videofutur.fr/le-nom-des-gens/10004856"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1646974/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/50848"
     }
   ],
   "quote": "C'est quand même une meuf qui couche avec des gens de droite pour les rendre de gauche, c'est ça le nom des gens !",
