@@ -14,7 +14,13 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import RecoCard from './RecoCard.astro';
+// Styles des cartes, importés BIEN QUE cette page n'en rende aucune : elle en
+// INJECTE au clic sur l'onglet « toutes les recos ». Astro ne bundle que les
+// styles des composants réellement rendus, et un composant importé sans être
+// rendu est élagué — c'est ce qui a livré un fragment sans le moindre style,
+// cartes sans fond ni bordure (signalé le 2026-08-17). Un import CSS, lui, est
+// un effet de bord que le bundler ne peut pas supprimer.
+import '../styles/fragment-recos.css';
 import EmptyState from './EmptyState.astro';
 import { TYPE_LABELS_PLURAL, episodeLabel } from '../utils/recoTypes';
 import { sortRecosByTimestamp } from '../utils/recoOrder';
@@ -599,57 +605,6 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   .ep-cnt {
     color: var(--muted);
     font-size: 0.8rem;
-  }
-  .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    align-items: center;
-    padding: 0.9rem 0;
-    margin-bottom: 1.4rem;
-    background: color-mix(in oklab, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
-  }
-  /* P2-3 : on supprime les `.search:focus-visible` / `.link:focus-visible`
-     redondants — la règle globale `:where(...):focus-visible` (CSS contract)
-     prend en charge avec halo + outline-offset. */
-  .search {
-    flex: 1 1 240px;
-    min-width: 200px;
-    background: var(--surface);
-    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
-    color: var(--text);
-    border-radius: 999px;
-    padding: 0.6em 1em;
-    font: inherit;
-  }
-  /* M9 : placeholder color : on garantit le contraste minimal (3:1)
-     même sur fond --surface (les browsers appliquent souvent 50% opacity). */
-  .search::placeholder {
-    color: color-mix(in oklab, var(--text) 62%, transparent);
-    opacity: 1;
-  }
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-  }
-  .n {
-    opacity: 0.6;
-    font-size: 0.78em;
-  }
-  /* C7 : `.noresult` n'est PLUS clippé (`visually-hidden`) — il est vide
-     par défaut et reçoit du texte uniquement quand 0 résultat, ce qui
-     déclenche l'annonce `aria-live="polite"`. */
-  .noresult {
-    color: var(--muted);
-    padding: 2rem 0 4rem;
-    min-height: 1.5em;
-    margin: 0;
   }
   main {
     padding-bottom: 4rem;

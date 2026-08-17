@@ -1,0 +1,17 @@
+/* CONTRAT DE STYLE DU FRAGMENT « toutes les recommandations ».
+
+   Ce fichier existe pour une raison précise : la page d'accueil INJECTE au
+   clic un balisage qu'elle ne rend jamais elle-même. Astro ne peut donc pas
+   deviner de quels styles elle a besoin — il ne bundle que ceux des composants
+   effectivement rendus, et il scope le reste par composant.
+
+   Toute règle nécessaire au fragment doit donc être listée ICI, et ce fichier
+   importé par la page hôte. Le test `tests/build/test_styles_fragment.test.ts`
+   vérifie le contrat : il compare, classe par classe, ce que la page autonome
+   `/recos` style et ce que la page hôte porte réellement.
+
+   En ajoutant un composant à `AllRecosView`, ajoute sa feuille ci-dessous.
+*/
+@import './reco-card.css';
+@import './reco-filters.css';
+@import './creator-flag.css';

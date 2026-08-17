@@ -1,0 +1,268 @@
+/* Styles de la carte de recommandation (`RecoCard.astro`).
+
+   POURQUOI CES RÈGLES VIVENT DANS UN FICHIER, ET NON DANS LE COMPOSANT
+   --------------------------------------------------------------------
+   Astro ne met dans le bundle d'une page que les styles des composants qu'elle
+   REND. Depuis que la vue « toutes les recos » est chargée à la demande, le
+   catalogue ne rend plus aucune `RecoCard` : le bundler a donc élagué l'import
+   devenu inutile, et ces 248 lignes avec lui. Le fragment injecté au clic
+   arrivait alors SANS AUCUN STYLE — cartes sans fond, sans bordure, sans
+   grille (signalé le 2026-08-17).
+
+   Un import de fichier CSS est un EFFET DE BORD : Vite ne l'élague jamais,
+   contrairement à un composant importé mais non rendu. C'est ce qui rend la
+   présence de ces règles indépendante de ce que la page rend réellement.
+
+   Deux fichiers l'importent, et les deux sont nécessaires :
+     - `RecoCard.astro`      pour toute page qui rend des cartes ;
+     - `SourceCatalog.astro` pour la page qui en INJECTE au clic sans en
+                             rendre une seule au chargement.
+*/
+  .card {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.15rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    /* Mise en page différée pour les cartes hors écran : le catalogue en
+       affiche plus de 1200 d'un coup, et une page d'épisode plusieurs dizaines.
+       `contain-intrinsic-size` réserve la place — sans elle la page se
+       replierait et le CLS partirait. `auto` fait mémoriser au navigateur la
+       hauteur réelle après le premier rendu. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 260px;
+    transition:
+      transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret.
+     PAS d'`opacity` sur la carte : elle valait 0.7 et atténuait TOUT son texte,
+     ramenant le créateur, le badge et le lien de signalement à 3,4–3,7:1 —
+     sous le minimum WCAG AA de 4,5:1. Un seul réglage mettait ainsi 53
+     éléments en échec sur une page d'épisode (Lighthouse, 2026-08-16).
+     La distinction passe par la BORDURE en tirets, déjà présente et déjà
+     suffisante, plus un fond légèrement en retrait : le contraste du texte
+     reste entier, la hiérarchie visuelle aussi. */
+  .card.is-citation {
+    border-style: dashed;
+    background: color-mix(in oklab, var(--surface) 92%, var(--bg));
+  }
+  .card.is-citation:hover {
+    background: var(--surface);
+  }
+  .kind-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    border-radius: 999px;
+    padding: 0.15em 0.55em;
+    /* Pas de `margin-left` : l'espacement vient du `gap` du conteneur (rangée
+       du haut ou ligne créateur). Une marge fixe décalerait aussi le badge
+       « Leur œuvre » quand il est SEUL sur sa ligne (guestWork sans créateur). */
+  }
+  /* Story 4 — badge « œuvre d'invité » : accent ambre pour se distinguer du
+     badge citation (neutre) sans dépendre de l'accent variable de la source.
+     H1 : la teinte vient de `--guestwork` (dérivée du thème, cf. global.css)
+     pour tenir le contraste AA sur les thèmes clairs comme sombres. */
+  .guestwork-badge {
+    color: var(--guestwork);
+    border-color: color-mix(in oklab, var(--guestwork) 45%, transparent);
+    background: color-mix(in oklab, var(--guestwork) 12%, transparent);
+  }
+  .card-top {
+    display: flex;
+    /* Titre et emojis partagent la rangée : alignement sur la LIGNE DE BASE
+       (le titre est bien plus haut que les emojis, et quand il se replie sur
+       deux lignes on veut les emojis calés sur la PREMIÈRE — `center` les
+       ferait flotter au milieu du bloc). */
+    align-items: baseline;
+    /* N3 : autorise le retour à la ligne (badge + titre long < 320px). */
+    flex-wrap: wrap;
+    gap: 0.15rem 0.5rem;
+  }
+  .type {
+    display: inline-flex;
+    gap: 0.25rem;
+    font-size: 1.15rem;
+    line-height: 1;
+    /* Les emojis ne se compriment jamais : c'est le titre qui se replie. */
+    flex: 0 0 auto;
+  }
+  .type-emoji {
+    /* H6 : `cursor: help` indique qu'un tooltip (title) est dispo au hover.
+       L'info textuelle est aussi présente dans .visually-hidden pour AT. */
+    cursor: help;
+    display: inline-flex;
+    align-items: center;
+  }
+  .title {
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    /* Pas de `flex-grow` : le titre prend sa largeur naturelle pour que le
+       badge citation reste collé à sa suite. `flex-shrink` + `min-width: 0`
+       le laissent se replier sur plusieurs lignes (mobile, titres longs)
+       sans jamais pousser les emojis hors de la rangée. */
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .creator {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 500;
+    /* Le badge « Leur œuvre » partage cette ligne (cf. template). `baseline`
+       pour que la pastille suive la ligne d'écriture du nom. */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.4rem;
+  }
+  /* Le nom et sa pastille de signalement restent SOLIDAIRES : les regrouper
+     dans un span en fait UN SEUL item flex, donc le ⚠️ colle au nom au lieu
+     d'être écarté par le `gap` de la ligne. */
+  .creator-name {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .card-audio {
+    margin-top: 0.4rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  /* Bouton-icône rond : on affiche le logo de la plateforme. Surface doublée
+     (36→48px) pour plus de présence et de constance visuelle (retour
+     utilisateur 2026-07-29). */
+  .link {
+    position: relative; /* pour le badge ::after sur .avoid */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    text-decoration: none;
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    transition:
+      transform 0.16s ease,
+      border-color 0.16s ease,
+      background 0.16s ease;
+  }
+  .link:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+  }
+  /* P2-3 : `.link:focus-visible` retiré, la règle globale dans global.css
+     (`:where(...):focus-visible`) gère désormais halo + outline-offset. */
+  /* Liseré doré pour les plateformes indépendantes. */
+  .link.indie {
+    border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  }
+  /* Plateforme à éviter (Amazon/Bolloré) : désaturée et marquée d'un « ! »
+     pour signaler que ce n'est pas notre premier choix.
+     PAS d'`opacity` : elle valait 0.5 et rabattait le texte du lien sous le
+     seuil de contraste WCAG AA — même défaut que celui corrigé sur les cartes
+     de citation (audit du 2026-08-16). Le signal reste porté par la
+     DÉSATURATION et par la pastille rouge, qui ne touchent ni l'une ni l'autre
+     à la lisibilité du texte. Marquer un lien comme déconseillé ne doit pas le
+     rendre illisible : le visiteur doit pouvoir le lire pour en décider. */
+  .link.avoid {
+    filter: grayscale(0.85);
+  }
+  .link.avoid::after {
+    content: '!';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #c84a4a;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .link.avoid:hover {
+    filter: none;
+  }
+  .link img {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: block;
+  }
+  /* Symbole de repli (aucune favicon) : pictogramme selon la nature du lien,
+     centré dans le même rond que les favicons pour garder une rangée
+     homogène. */
+  .link-symbol {
+    font-size: 1.5rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Repli TEXTE : n'apparaît QUE si une favicon a échoué au chargement (le
+     span `.link-text` caché est révélé par la délégation `error` de
+     Layout.astro). Dans ce cas seulement, le bouton s'étire en pilule pour
+     laisser lire le nom. Le `:not([hidden])` évite d'étirer tous les boutons
+     à cause du span caché toujours présent à côté de l'`<img>`. */
+  .link:has(.link-text:not([hidden])) {
+    width: auto;
+    height: auto;
+    border-radius: 999px;
+    padding: 0.4em 0.8em;
+  }
+  .link-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  /* X3 — lien Signaler : très discret, en bas de card. */
+  .report-link-wrap {
+    margin: 0.3rem 0 0;
+    font-size: 0.72rem;
+    text-align: right;
+  }
+  .report-link {
+    color: var(--muted);
+    text-decoration: none;
+    /* PAS d'`opacity` ici. Elle valait 0.7 et ramenait le contraste à 3,76:1,
+       sous le minimum de 4,5:1 exigé par WCAG AA pour du texte de cette taille
+       (Lighthouse, audit du 2026-08-16 : 61 occurrences sur une seule page
+       d'épisode). Discrétion et lisibilité se règlent par la COULEUR, pas par
+       la transparence — `--muted` est déjà en retrait de la couleur du texte. */
+  }
+  .report-link:hover,
+  .report-link:focus-visible {
+    color: var(--accent);
+    opacity: 1;
+    text-decoration: underline;
+  }

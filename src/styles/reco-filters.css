@@ -1,0 +1,71 @@
+/* Barre d'outils et filtres de la vue « toutes les recommandations ».
+
+   POURQUOI CES RÈGLES SONT ICI, ET NON DANS UN BLOC `<style>`
+   -----------------------------------------------------------
+   Astro SCOPE les styles d'un composant (`data-astro-cid-…`) : ils ne
+   s'appliquent qu'aux éléments écrits DANS ce composant. Or ce balisage a été
+   déplacé de `SourceCatalog` vers `AllRecosView` quand la vue est passée en
+   chargement à la demande — les styles, eux, étaient restés derrière. Les
+   règles scopées de `SourceCatalog` ne matchaient donc plus rien, et le
+   fragment injecté arrivait avec un champ de recherche au style natif du
+   navigateur, fond blanc compris (signalé le 2026-08-17).
+
+   Le scoping est structurellement incompatible avec du balisage injecté :
+   la page hôte doit porter des règles NON scopées pour du contenu qu'elle
+   n'a pas rendu elle-même. D'où ce fichier, importé des deux côtés.
+
+   Ces règles servent aussi la vue « par épisode », qui emploie la même barre
+   d'outils. Un composant qui voudrait s'en écarter le peut : une règle scopée
+   (`.search[data-astro-cid-…]`) l'emporte sur celles-ci par spécificité.
+*/
+.toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.9rem 0;
+    margin-bottom: 1.4rem;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  /* P2-3 : on supprime les `.search:focus-visible` / `.link:focus-visible`
+     redondants — la règle globale `:where(...):focus-visible` (CSS contract)
+     prend en charge avec halo + outline-offset. */
+  .search {
+    flex: 1 1 240px;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.6em 1em;
+    font: inherit;
+  }
+  /* M9 : placeholder color : on garantit le contraste minimal (3:1)
+     même sur fond --surface (les browsers appliquent souvent 50% opacity). */
+  .search::placeholder {
+    color: color-mix(in oklab, var(--text) 62%, transparent);
+    opacity: 1;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .n {
+    opacity: 0.6;
+    font-size: 0.78em;
+  }
+  /* C7 : `.noresult` n'est PLUS clippé (`visually-hidden`) — il est vide
+     par défaut et reçoit du texte uniquement quand 0 résultat, ce qui
+     déclenche l'annonce `aria-live="polite"`. */
+  .noresult {
+    color: var(--muted);
+    padding: 2rem 0 4rem;
+    min-height: 1.5em;
+    margin: 0;
+  }

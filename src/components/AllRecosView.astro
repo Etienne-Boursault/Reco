@@ -15,6 +15,10 @@
  *   - `/[source]/recos-fragment` — partiel, chargé au clic sur l'onglet ;
  *   - (plus dans l'accueil, où il ne rendait service à personne au chargement).
  */
+// Styles NON scopés : ce composant est aussi servi comme FRAGMENT, injecté
+// dans une page qui ne le rend pas. Un style scopé par Astro ne suivrait
+// pas le balisage. Cf. l'en-tête de `reco-filters.css`.
+import '../styles/fragment-recos.css';
 import EmptyState from './EmptyState.astro';
 import RecoCard from './RecoCard.astro';
 import { TYPE_LABELS_PLURAL } from '../utils/recoTypes';
