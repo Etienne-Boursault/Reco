@@ -39,7 +39,7 @@ def test_round_trip_full_item():
         aliases=("LOTR", "Lord of the Rings"),
         external_ids=ExternalIds(
             tmdb=120, tmdb_type="movie", spotify="abc", musicbrainz="xx",
-            openlibrary="OL1", isbn="978", justwatch="jw1",
+            openlibrary="OL1", isbn="978", watch_page="jw1",
         ),
         custom_links=(CustomLink(label="Wiki", url="https://wiki.example.com"),),
         watch_providers=(
@@ -272,7 +272,7 @@ def test_from_dict_invalid_type_raises():
 def test_from_dict_external_ids_round_trip():
     ext = ExternalIds(
         tmdb=42, tmdb_type="tv", spotify="s", musicbrainz="mb",
-        openlibrary="ol", isbn="i", justwatch="jw",
+        openlibrary="ol", isbn="i", watch_page="jw",
     )
     item = Item(
         id="abc12345", types=(ItemType.FILM,), title="T", external_ids=ext,

@@ -242,17 +242,18 @@ def tmdb_watch_providers(
     session: requests.Session, tmdb_id: str, kind: str, title: str,
     api_key: str | None = None, strict: bool = False,
 ) -> tuple[str | None, list[dict]]:
-    """Récupère le `link` JustWatch du film + les watch providers FR.
+    """Récupère la page « où regarder » du film + les watch providers FR.
 
-    Retourne (justwatch_url, providers). Le justwatch_url est l'URL EXACTE de la
-    page JustWatch du film (renvoyée par TMDB) — c'est là qu'on trouve les vrais
-    deeplinks « Watch on Netflix » etc. C'est notre lien streaming principal.
+    Retourne (watch_page_url, providers). ATTENTION : `results.FR.link` ne
+    renvoie PLUS une URL JustWatch mais une URL themoviedb.org (l'API TMDB a
+    changé) — d'où le nom `watchPage`, qui décrit la fonction et non le
+    fournisseur. C'est notre lien streaming principal.
     Les providers sont conservés à titre informatif (debug / évolutions futures).
     """
     data = _tmdb_get(session, f"/{kind}/{tmdb_id}/watch/providers",
                      api_key=api_key, strict=strict)
     fr = ((data or {}).get("results") or {}).get("FR") or {}
-    justwatch_url = fr.get("link") or None
+    watch_page_url = fr.get("link") or None
     seen: set[str] = set()
     providers: list[dict] = []
     for slot in ("flatrate", "free", "ads", "rent", "buy"):
@@ -262,7 +263,7 @@ def tmdb_watch_providers(
                 continue
             seen.add(name)
             providers.append(_provider_link(name, title))
-    return justwatch_url, providers
+    return watch_page_url, providers
 
 
 def is_targetable(reco: dict) -> bool:
@@ -288,7 +289,7 @@ def enrich_one(
       Dans ce mode, propage les erreurs HTTP/réseau comme `TMDBAPIError` —
       l'UI distingue ainsi « titre vraiment introuvable » de « API down ».
     - Récupère `watch_providers` et met à jour la reco IN-PLACE :
-      `externalIds.tmdb`, `externalIds.tmdbType`, `externalIds.justwatch`,
+      `externalIds.tmdb`, `externalIds.tmdbType`, `externalIds.watchPage`,
       `watchProviders` (les deux derniers sont supprimés si l'API ne renvoie rien).
     - Si TMDB ne trouve rien, ne touche pas aux champs existants et ajoute un
       champ NON PERSISTÉ `_enrich_status='not_found'` au dict retourné — utile
@@ -318,15 +319,15 @@ def enrich_one(
             return reco
         tmdb_id, kind = found
 
-    justwatch_url, providers = tmdb_watch_providers(
+    watch_page_url, providers = tmdb_watch_providers(
         session, tmdb_id, kind, title, api_key=api_key, strict=force,
     )
     ext["tmdb"] = tmdb_id
     ext["tmdbType"] = kind
-    if justwatch_url:
-        ext["justwatch"] = justwatch_url
-    elif "justwatch" in ext:
-        del ext["justwatch"]
+    if watch_page_url:
+        ext["watchPage"] = watch_page_url
+    elif "watchPage" in ext:
+        del ext["watchPage"]
     reco["externalIds"] = ext
     if providers:
         reco["watchProviders"] = providers
@@ -383,7 +384,7 @@ def _run_enrichment(args, api_key):
         if not is_targetable(d):
             continue
         ext = d.get("externalIds") or {}
-        if not args.force and ext.get("tmdb") and ext.get("justwatch"):
+        if not args.force and ext.get("tmdb") and ext.get("watchPage"):
             # Déjà enrichi complètement.
             continue
         targets.append((p, d))
@@ -423,12 +424,12 @@ def _run_enrichment(args, api_key):
             continue
         tmdb_id = d["externalIds"]["tmdb"]
         kind = d["externalIds"]["tmdbType"]
-        justwatch_url = d["externalIds"].get("justwatch")
+        watch_page_url = d["externalIds"].get("watchPage")
         providers = d.get("watchProviders") or []
         if write_json_if_changed(p, d):
             enriched += 1
-        log.info("  → tmdb_id=%s (%s) · JustWatch=%s · %d providers info",
-                 tmdb_id, kind, "OK" if justwatch_url else "—", len(providers))
+        log.info("  → tmdb_id=%s (%s) · page « où regarder »=%s · %d providers info",
+                 tmdb_id, kind, "OK" if watch_page_url else "—", len(providers))
         time.sleep(RATE_LIMIT_SLEEP)
 
     log.info("Terminé : %d enrichis · %d non trouvés · %d inchangés.",

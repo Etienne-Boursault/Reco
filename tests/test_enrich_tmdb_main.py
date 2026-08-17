@@ -218,7 +218,7 @@ def test_main_enriches_one_reco(reco_env, monkeypatch):
     out = json.loads((reco_env / "a.json").read_text(encoding="utf-8"))
     assert out["externalIds"]["tmdb"] == "42"
     assert out["externalIds"]["tmdbType"] == "movie"
-    assert out["externalIds"]["justwatch"].endswith("/film/mortel")
+    assert out["externalIds"]["watchPage"].endswith("/film/mortel")
     assert out["watchProviders"][0]["label"] == "Netflix"
 
 
@@ -254,7 +254,7 @@ def test_main_skips_already_enriched_without_force(reco_env, monkeypatch):
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     _write_reco(reco_env, "a.json", {
         "id": "a", "types": ["film"], "title": "M",
-        "externalIds": {"tmdb": "1", "tmdbType": "movie", "justwatch": "u"},
+        "externalIds": {"tmdb": "1", "tmdbType": "movie", "watchPage": "u"},
     })
     monkeypatch.setattr(sys, "argv", ["enrich_tmdb.py", "--source", "src"])
     # Aucune route enregistrée : si on appelle l'API, responses lèvera.
@@ -278,8 +278,8 @@ def test_main_force_reuses_known_id(reco_env, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["enrich_tmdb.py", "--source", "src", "--force"])
     enrich_tmdb.main()
     out = json.loads((reco_env / "a.json").read_text("utf-8"))
-    # Pas de providers et pas de justwatch → on n'écrit rien de plus.
-    assert "justwatch" not in out["externalIds"]
+    # Pas de providers et pas de watchPage → on n'écrit rien de plus.
+    assert "watchPage" not in out["externalIds"]
     assert "watchProviders" not in out
 
 
@@ -348,7 +348,7 @@ def test_enrich_one_found(monkeypatch):
     assert out is reco
     assert out["externalIds"]["tmdb"] == "42"
     assert out["externalIds"]["tmdbType"] == "movie"
-    assert out["externalIds"]["justwatch"].endswith("/film/x")
+    assert out["externalIds"]["watchPage"].endswith("/film/x")
     assert out["watchProviders"][0]["label"] == "Netflix"
     assert out["_enrich_status"] == "ok"
 
@@ -406,7 +406,7 @@ def test_enrich_one_reuses_known_id_skips_search(monkeypatch):
             "externalIds": {"tmdb": "10", "tmdbType": "tv"}}
     out = enrich_tmdb.enrich_one(reco, session=requests.Session(), api_key="fake")
     assert out["externalIds"]["tmdb"] == "10"
-    assert out["externalIds"]["justwatch"] == "https://jw/x"
+    assert out["externalIds"]["watchPage"] == "https://jw/x"
     assert out["_enrich_status"] == "ok"
     # Une seule requête HTTP enregistrée par responses → pas de /search appelé.
     assert len(responses.calls) == 1
@@ -478,17 +478,17 @@ def test_enrich_one_force_ignores_known_id_and_re_searches(monkeypatch):
         reco, session=requests.Session(), api_key="fake", force=True,
     )
     assert out["externalIds"]["tmdb"] == "99"      # remplacé
-    assert out["externalIds"]["justwatch"] == "https://jw/99"
+    assert out["externalIds"]["watchPage"] == "https://jw/99"
     assert out["_enrich_status"] == "ok"
 
 
 @responses.activate
-def test_main_force_re_searches_and_removes_stale_justwatch(reco_env, monkeypatch):
-    """--force : reco déjà enrichie, mais on re-cherche et le justwatch disparaît."""
+def test_main_force_re_searches_and_removes_stale_watch_page(reco_env, monkeypatch):
+    """--force : reco déjà enrichie, mais on re-cherche et la page « où regarder » disparaît."""
     monkeypatch.setenv("TMDB_API_KEY", "fake")
     _write_reco(reco_env, "a.json", {
         "id": "a", "types": ["film"], "title": "M",
-        "externalIds": {"tmdb": "1", "tmdbType": "movie", "justwatch": "stale"},
+        "externalIds": {"tmdb": "1", "tmdbType": "movie", "watchPage": "stale"},
         "watchProviders": [{"label": "old"}],
     })
     responses.add(
@@ -500,5 +500,5 @@ def test_main_force_re_searches_and_removes_stale_justwatch(reco_env, monkeypatc
     monkeypatch.setattr(sys, "argv", ["enrich_tmdb.py", "--source", "src", "--force"])
     enrich_tmdb.main()
     out = json.loads((reco_env / "a.json").read_text("utf-8"))
-    assert "justwatch" not in out["externalIds"]
+    assert "watchPage" not in out["externalIds"]
     assert "watchProviders" not in out

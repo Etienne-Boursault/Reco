@@ -29,6 +29,11 @@ const recoType = z.enum([
   'artiste',  // personne (humoriste, musicien, journaliste, etc.) → Insta + site
   'video',    // vidéo YT spécifique (une vidéo virale) → lien YT direct
   'chaine',   // chaîne YouTube (créateur·rice récurrent·e) → lien chaîne
+  // Logiciel ou service utilisé au quotidien (Procreate, Daylio, Geev…).
+  // Créé le 2026-07-31 : 8 recos étaient rangées en `autre` faute de catégorie,
+  // ce qui les rendait introuvables. Pas de galerie dédiée — 5 types seulement
+  // en ont une, et le volume ne la justifie pas encore.
+  'application',
   'autre',
 ]);
 
@@ -201,10 +206,20 @@ const recos = defineCollection({
         isbn: z.string().optional(),
         musicbrainz: z.string().optional(),
         youtube: z.string().optional(),     // vidéo YT précise (id ou URL)
+        // Identifiant PERMANENT d'une chaîne YouTube (`UC…`, 24 caractères).
+        // Les liens visibles sont normalisés au format `/@pseudo`, plus lisible
+        // — mais un pseudo se renomme et casse alors le lien, là où cet
+        // identifiant ne bouge jamais. On le garde donc de côté pour pouvoir
+        // reconstruire le lien. Jamais affiché.
+        youtubeChannelId: z.string().regex(/^UC[\w-]{22}$/).optional(),
         instagram: z.string().optional(),   // handle Instagram (sans @)
         tiktok: z.string().optional(),       // handle TikTok (sans @)
         website: z.string().url().optional(),
-        justwatch: z.string().url().optional(), // URL JustWatch EXACTE (via TMDB)
+        // Page « où regarder » de l'œuvre. Peuplée par enrich_tmdb.py depuis
+        // `watch/providers` → `results.FR.link` : cette clé renvoie AUJOURD'HUI
+        // une URL themoviedb.org, plus une URL JustWatch (l'API a changé).
+        // D'où le nom fonctionnel : il reste vrai si la source change encore.
+        watchPage: z.string().url().optional(),
         deezer: z.string().url().optional(),    // URL Deezer EXACTE (track/album/artist)
         spotify: z.string().url().optional(),   // URL Spotify EXACTE (track/album/artist)
       })
@@ -310,7 +325,10 @@ const itemExternalIds = z.object({
   musicbrainz: z.string().nullable().optional(),
   openlibrary: z.string().nullable().optional(),
   isbn: z.string().nullable().optional(),
-  justwatch: z.string().nullable().optional(),
+  watchPage: z.string().nullable().optional(), // page « où regarder » (cf. recos)
+  // Identifiant permanent d'une chaîne YouTube (cf. recos) — le lien visible
+  // est au format `/@pseudo`, qui lui peut être renommé.
+  youtubeChannelId: z.string().nullable().optional(),
   instagram: z.string().nullable().optional(),  // handle Instagram (sans @)
   tiktok: z.string().nullable().optional(),      // handle TikTok (sans @)
 });
@@ -318,7 +336,7 @@ const itemExternalIds = z.object({
 const itemType = z.enum([
   'livre', 'film', 'serie', 'musique', 'album',
   'artiste', 'podcast', 'jeu', 'bd', 'article',
-  'spectacle', 'lieu', 'video', 'chaine',
+  'spectacle', 'lieu', 'video', 'chaine', 'application',
   'autre',
 ]);
 

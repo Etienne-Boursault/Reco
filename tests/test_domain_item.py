@@ -50,7 +50,7 @@ def test_external_ids_default_empty():
     assert e.musicbrainz is None
     assert e.openlibrary is None
     assert e.isbn is None
-    assert e.justwatch is None
+    assert e.watch_page is None
 
 
 def test_external_ids_equality():

@@ -40,6 +40,7 @@ class ItemType(StrEnum):
     PLACE = "lieu"          # restaurant, ville, lieu géographique
     VIDEO = "video"         # vidéo YouTube spécifique (une vidéo)
     CHANNEL = "chaine"      # chaîne YouTube (créateur·rice récurrent·e)
+    APPLICATION = "application"  # logiciel ou service (Procreate, Daylio…)
     OTHER = "autre"
 
 
@@ -61,7 +62,11 @@ class ExternalIds:
     musicbrainz: str | None = None
     openlibrary: str | None = None
     isbn: str | None = None
-    justwatch: str | None = None
+    watch_page: str | None = None  # page « où regarder » (TMDB aujourd'hui)
+    # Identifiant PERMANENT d'une chaîne YouTube (`UC…`). Le lien visible est
+    # normalisé en `/@pseudo`, plus lisible mais renommable : cet identifiant
+    # permet de le reconstruire. Jamais affiché.
+    youtube_channel_id: str | None = None
     instagram: str | None = None  # handle Instagram (sans @)
     tiktok: str | None = None     # handle TikTok (sans @)
 

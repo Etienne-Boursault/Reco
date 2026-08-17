@@ -374,9 +374,14 @@ describe('schéma recos', () => {
     expect(d.types).toEqual(['film', 'livre']);
   });
 
-  it('couvre les 14 types déclarés', () => {
+  // Le compte est épinglé À DESSEIN : ajouter un type oblige à passer ici, donc
+  // à se souvenir des quatre tables qui doivent suivre (libellés singulier et
+  // pluriel + emoji dans `utils/recoTypes.ts`, emoji OG dans `lib/og/template.ts`,
+  // type schema.org dans `lib/seo/jsonld.ts`, enum Python `ItemType`).
+  // 15 depuis le 2026-07-31 (ajout d'`application`).
+  it('couvre les 15 types déclarés', () => {
     const options: string[] = recos.shape.types.element.options;
-    expect(options).toHaveLength(14);
+    expect(options).toHaveLength(15);
     for (const type of options) {
       accepts(recos, { ...RECO_MIN, types: [type] });
     }
@@ -456,11 +461,11 @@ describe('schéma recos', () => {
     rejects(recos, { ...RECO_MIN, externalIds: { tmdbType: 'anime' } });
   });
 
-  it('valide les URLs exactes (justwatch, deezer, spotify, website)', () => {
+  it('valide les URLs exactes (watchPage, deezer, spotify, website)', () => {
     accepts(recos, {
       ...RECO_MIN,
       externalIds: {
-        justwatch: 'https://www.justwatch.com/fr/film/interstellar',
+        watchPage: 'https://www.themoviedb.org/movie/157336-interstellar/watch?locale=FR',
         deezer: 'https://www.deezer.com/album/1',
         spotify: 'https://open.spotify.com/album/1',
         website: 'https://example.org',
@@ -485,7 +490,7 @@ describe('schéma recos', () => {
     });
     rejects(recos, {
       ...RECO_MIN,
-      linkOverrides: { JustWatch: 'pas-une-url' },
+      linkOverrides: { 'Où regarder': 'pas-une-url' },
     });
   });
 
@@ -691,7 +696,7 @@ describe('schéma items', () => {
         musicbrainz: null,
         openlibrary: null,
         isbn: null,
-        justwatch: null,
+        watchPage: null,
         instagram: null,
         tiktok: null,
       },

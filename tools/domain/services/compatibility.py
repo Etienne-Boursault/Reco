@@ -19,7 +19,11 @@ from .identity import canonical_key
 
 def _external_ids_compatible(a: ExternalIds, b: ExternalIds) -> bool:
     """True si aucun champ identifiant n'est en conflit (les None ne comptent pas)."""
-    fields = ("tmdb", "tmdb_type", "spotify", "musicbrainz", "openlibrary", "isbn", "justwatch")
+    # `youtube_channel_id` compte parmi les identifiants : deux chaînes d'`UC…`
+    # différents SONT deux chaînes différentes, même si leurs titres coïncident
+    # (les homonymes sont fréquents sur YouTube).
+    fields = ("tmdb", "tmdb_type", "spotify", "musicbrainz", "openlibrary", "isbn",
+              "watch_page", "youtube_channel_id")
     for f in fields:
         va = getattr(a, f)
         vb = getattr(b, f)

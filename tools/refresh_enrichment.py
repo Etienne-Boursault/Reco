@@ -51,7 +51,7 @@ from review_lock import ServerLockBusy, acquire_pipeline_lock
 # Champs candidats au refresh, par provider.
 TMDB_FIELDS = [
     "externalIds.tmdb",
-    "externalIds.justwatch",
+    "externalIds.watchPage",
     "watchProviders",
 ]
 MUSIC_FIELDS = [
@@ -193,16 +193,16 @@ class TmdbProvider(Provider):
                 else:
                     # Idempotence H6 : valeur ET timestamp déjà présents → noop.
                     pass
-            elif f == "externalIds.justwatch":
-                new_v = ext.get("justwatch")
-                old_v = before_ext.get("justwatch")
+            elif f == "externalIds.watchPage":
+                new_v = ext.get("watchPage")
+                old_v = before_ext.get("watchPage")
                 if new_v != old_v:
-                    update_nested(reco, "externalIds.justwatch", new_v, timestamp=ts)
+                    update_nested(reco, "externalIds.watchPage", new_v, timestamp=ts)
                     n += 1
                 else:
                     # Trace audit même si inchangé (vérifié à T).
                     ea = reco.get("enrichedAt") if isinstance(reco.get("enrichedAt"), dict) else {}
-                    ea["externalIds.justwatch"] = ts
+                    ea["externalIds.watchPage"] = ts
                     reco["enrichedAt"] = ea
                     n += 1
             elif f == "watchProviders":

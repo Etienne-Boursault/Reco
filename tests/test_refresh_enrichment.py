@@ -155,7 +155,7 @@ class FakeTmdbProvider(ren.Provider):
         ts = now_iso()
         from enrichment.field_refresher import partial_update, update_nested
         update_nested(reco, "externalIds.tmdb", "999", timestamp=ts)
-        update_nested(reco, "externalIds.justwatch",
+        update_nested(reco, "externalIds.watchPage",
                       "https://justwatch.fr/x", timestamp=ts)
         partial_update(reco, "watchProviders",
                        [{"label": "Netflix",
@@ -397,7 +397,7 @@ def test_tmdb_provider_refreshes_via_enrich_one(monkeypatch):
     def fake_enrich_one(reco, *, session, api_key, force):
         captured["called"] = True
         reco["externalIds"] = {"tmdb": "12345", "tmdbType": "movie",
-                               "justwatch": "https://justwatch.fr/p"}
+                               "watchPage": "https://justwatch.fr/p"}
         reco["watchProviders"] = [
             {"label": "Mubi", "url": "https://mubi.com/x", "ethics": "indie"},
         ]
@@ -428,13 +428,13 @@ def test_tmdb_provider_refreshes_via_enrich_one(monkeypatch):
         assert f in reco["enrichedAt"]
 
 
-def test_tmdb_provider_traces_unchanged_justwatch(monkeypatch):
-    """Si justwatch est inchangé, on trace l'audit `enrichedAt` quand même."""
+def test_tmdb_provider_traces_unchanged_watch_page(monkeypatch):
+    """Si watchPage est inchangé, on trace l'audit `enrichedAt` quand même."""
     def fake_enrich_one(reco, *, session, api_key, force):
-        # Met les mêmes valeurs : justwatch identique au before.
+        # Met les mêmes valeurs : watchPage identique au before.
         reco.setdefault("externalIds", {})
         reco["externalIds"]["tmdb"] = "1"
-        reco["externalIds"]["justwatch"] = "https://jw/p"
+        reco["externalIds"]["watchPage"] = "https://jw/p"
         reco["watchProviders"] = []
         reco["_enrich_status"] = "ok"
         return reco
@@ -452,11 +452,11 @@ def test_tmdb_provider_traces_unchanged_justwatch(monkeypatch):
     p = ren.TmdbProvider()
     reco = {
         "id": "x", "title": "Same", "types": ["film"],
-        "externalIds": {"tmdb": "1", "justwatch": "https://jw/p"},
+        "externalIds": {"tmdb": "1", "watchPage": "https://jw/p"},
     }
-    n, status = p.refresh(reco, ["externalIds.justwatch", "watchProviders"], cs)
+    n, status = p.refresh(reco, ["externalIds.watchPage", "watchProviders"], cs)
     assert status == "ok"
-    assert reco["enrichedAt"]["externalIds.justwatch"].endswith("Z")
+    assert reco["enrichedAt"]["externalIds.watchPage"].endswith("Z")
 
 
 def test_music_provider_applies_and_refreshes(monkeypatch):
@@ -695,7 +695,7 @@ def test_C5_unified_audit_semantics_tmdb(monkeypatch):
     def fake_enrich_one(reco, *, session, api_key, force):
         reco.setdefault("externalIds", {})
         reco["externalIds"]["tmdb"] = "1"
-        reco["externalIds"]["justwatch"] = "https://jw/p"
+        reco["externalIds"]["watchPage"] = "https://jw/p"
         reco["watchProviders"] = []
         reco["_enrich_status"] = "ok"
         return reco
@@ -714,19 +714,19 @@ def test_C5_unified_audit_semantics_tmdb(monkeypatch):
     # Reco déjà enrichie avec valeurs identiques → audit doit tracer quand même.
     reco = {
         "id": "x", "title": "Same", "types": ["film"],
-        "externalIds": {"tmdb": "1", "justwatch": "https://jw/p"},
+        "externalIds": {"tmdb": "1", "watchPage": "https://jw/p"},
         "watchProviders": [],
         "enrichedAt": {
             "externalIds.tmdb": "2020-01-01T00:00:00Z",
-            "externalIds.justwatch": "2020-01-01T00:00:00Z",
+            "externalIds.watchPage": "2020-01-01T00:00:00Z",
             "watchProviders": "2020-01-01T00:00:00Z",
         },
     }
     n, status = p.refresh(reco, list(ren.TMDB_FIELDS), cs)
     assert status == "ok"
     # Les 3 champs doivent avoir une trace d'audit récente (sauf tmdb idempotent
-    # si valeur ET timestamp inchangés, justwatch/watchProviders toujours tracés).
-    assert reco["enrichedAt"]["externalIds.justwatch"] != "2020-01-01T00:00:00Z"
+    # si valeur ET timestamp inchangés, watchPage/watchProviders toujours tracés).
+    assert reco["enrichedAt"]["externalIds.watchPage"] != "2020-01-01T00:00:00Z"
     assert reco["enrichedAt"]["watchProviders"] != "2020-01-01T00:00:00Z"
 
 
@@ -916,7 +916,7 @@ def test_tmdb_field_gets_its_first_timestamp_even_when_value_unchanged(
         "id": "x", "title": "Dune", "types": ["film"],
         "externalIds": {"tmdb": 438631},
         # `enrichedAt` ne mentionne PAS externalIds.tmdb.
-        "enrichedAt": {"externalIds.justwatch": now_iso()},
+        "enrichedAt": {"externalIds.watchPage": now_iso()},
     }
 
     n, status = ren.TmdbProvider().refresh(

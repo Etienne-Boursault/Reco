@@ -63,8 +63,10 @@ def _external_ids_to_dict(ext: ExternalIds) -> dict[str, Any]:
         out["openlibrary"] = ext.openlibrary
     if ext.isbn is not None:
         out["isbn"] = ext.isbn
-    if ext.justwatch is not None:
-        out["justwatch"] = ext.justwatch
+    if ext.watch_page is not None:
+        out["watchPage"] = ext.watch_page
+    if ext.youtube_channel_id is not None:
+        out["youtubeChannelId"] = ext.youtube_channel_id
     if ext.instagram is not None:
         out["instagram"] = ext.instagram
     if ext.tiktok is not None:
@@ -80,7 +82,8 @@ def _external_ids_from_dict(data: dict[str, Any]) -> ExternalIds:
         musicbrainz=data.get("musicbrainz"),
         openlibrary=data.get("openlibrary"),
         isbn=data.get("isbn"),
-        justwatch=data.get("justwatch"),
+        watch_page=data.get("watchPage"),
+        youtube_channel_id=data.get("youtubeChannelId"),
         instagram=data.get("instagram"),
         tiktok=data.get("tiktok"),
     )

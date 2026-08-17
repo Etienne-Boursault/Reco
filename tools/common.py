@@ -55,6 +55,10 @@ CONTENT_DIR: Path = PROJECT_ROOT / "src" / "content"
 SOURCES_DIR: Path = CONTENT_DIR / "sources"
 EPISODES_DIR: Path = CONTENT_DIR / "episodes"
 RECOS_DIR: Path = CONTENT_DIR / "recos"
+# `items` manquait ici, si bien que chaque correctif de données le redéfinissait
+# — ou l'oubliait. Plusieurs champs (`creator`, `externalIds`) vivent dans les
+# DEUX collections : n'en corriger qu'une désynchronise le corpus.
+ITEMS_DIR: Path = CONTENT_DIR / "items"
 
 # Sorties propres au pipeline (transcriptions, audio temporaire) — hors src/.
 OUTPUT_DIR: Path = TOOLS_DIR / "output"

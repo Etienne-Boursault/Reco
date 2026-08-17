@@ -61,7 +61,7 @@ def _ref_item() -> Item:
         aliases=("alt1", "alt2"),
         external_ids=ExternalIds(
             tmdb=42, tmdb_type="movie", spotify="sp",
-            musicbrainz="mb", openlibrary="ol", isbn="isbn", justwatch="jw",
+            musicbrainz="mb", openlibrary="ol", isbn="isbn", watch_page="jw",
         ),
         custom_links=(CustomLink(label="X", url="https://x.example.com"),),
         watch_providers=(

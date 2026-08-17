@@ -168,7 +168,7 @@ def _parse_external_ids(raw: object) -> ExternalIds:
         musicbrainz=raw.get("musicbrainz"),
         openlibrary=raw.get("openlibrary"),
         isbn=raw.get("isbn"),
-        justwatch=raw.get("justwatch"),
+        watch_page=raw.get("watchPage"),
         instagram=raw.get("instagram"),
         tiktok=raw.get("tiktok"),
     )

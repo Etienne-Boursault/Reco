@@ -22,6 +22,7 @@ export const TYPE_LABELS: Record<string, string> = {
   artiste: 'Artiste',
   video: 'Vidéo',
   chaine: 'Chaîne YouTube',
+  application: 'Application',
   autre: 'Autre',
 };
 
@@ -41,6 +42,7 @@ export const TYPE_EMOJIS: Record<string, string> = {
   artiste: '🎤',
   video: '📹',
   chaine: '▶️',
+  application: '📱',
   autre: '✨',
 };
 
@@ -59,6 +61,7 @@ export const TYPE_LABELS_PLURAL: Record<string, string> = {
   artiste: 'Artistes',
   video: 'Vidéos',
   chaine: 'Chaînes YouTube',
+  application: 'Applications',
   autre: 'Autres',
 };
 
