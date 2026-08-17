@@ -296,6 +296,178 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
             "à diverger."
         ),
     },
+    # ==================================================================
+    # GRAPHIES DE NOMS PROPRES — vérifiées une par une, source citée.
+    #
+    # Toutes viennent de la même cause : `creator` est extrait de la
+    # TRANSCRIPTION de l'épisode, donc de la parole. « Baffy » pour Baffie,
+    # « Rallye » pour Rhali, « Honoré Cos » pour Éléonore Costes : ce sont des
+    # restitutions phonétiques, pas des variantes d'écriture.
+    #
+    # La garde `attendu` porte ici sur `creator` lui-même : si quelqu'un a
+    # déjà corrigé à la main, l'outil se tait.
+    # ==================================================================
+    "ubm-1544": {
+        "attendu": {"creator": "Antoine Gouille"},
+        "creator": "Antoine Gouy",
+        "pourquoi": "Article Wikipédia « Antoine Gouy ». « Gouille » est la "
+                    "restitution phonétique de la transcription.",
+    },
+    "ubm-2777": {
+        "attendu": {"creator": "Clément Victorovitch"},
+        "creator": "Clément Viktorovitch",
+        "pourquoi": "Article Wikipédia « Clément Viktorovitch » — avec un k. "
+                    "La transcription a francisé la graphie.",
+    },
+    "ubm-0067": {
+        "attendu": {"creator": "Honoré Cos"},
+        "creator": "Éléonore Costes",
+        "pourquoi": "« Honoré Cos » est ce que l'oreille retient d'« Éléonore "
+                    "Costes » dite vite. Article Wikipédia à ce nom.",
+    },
+    "ubm-0038": {
+        "attendu": {"creator": "Laurent Baffy"},
+        "creator": "Laurent Baffie",
+        "pourquoi": "Article Wikipédia « Laurent Baffie ». « Baffy » n'existe pas.",
+    },
+    "ubm-2990": {
+        "attendu": {"creator": "Laurent Baffy"},
+        "creator": "Laurent Baffie",
+        "pourquoi": "Même faute que ubm-0038 (article Wikipédia « Laurent Baffie »).",
+    },
+    "ubm-0279": {
+        "attendu": {"creator": "Panagiota Yotis-Pascault"},
+        "creator": "Panayotis Pascot",
+        "pourquoi": "Article Wikipédia « Panayotis Pascot ». La transcription a "
+                    "coupé le prénom en deux et inventé un patronyme.",
+    },
+    "ubm-0734": {
+        "attendu": {"creator": "Penelope Bajeux"},
+        "creator": "Pénélope Bagieu",
+        "pourquoi": "Article Wikipédia « Pénélope Bagieu » — accents compris.",
+    },
+    "ubm-0653": {
+        "attendu": {"creator": "Yacine Bellous"},
+        "creator": "Yacine Belhousse",
+        "pourquoi": "Article Wikipédia « Yacine Belhousse ». « Bellous » est "
+                    "la restitution phonétique de la transcription.",
+    },
+    "ubm-1323": {
+        "attendu": {"creator": "Jean Jass"},
+        "creator": "JeanJass",
+        "pourquoi": "Les deux graphies mènent au MÊME article Wikipédia, "
+                    "intitulé « JeanJass » : le nom de scène s'écrit en un mot.",
+    },
+    "ubm-2099": {
+        "attendu": {"creator": "Manon"},
+        "creator": "Manon Bril",
+        "pourquoi": "Prénom seul complété : article Wikipédia « Manon Bril », "
+                    "vulgarisatrice. « Manon » seul mène à la page du prénom.",
+    },
+    # --- Absentes de Wikipédia : vérifiées ailleurs, source citée ---------
+    "ubm-1370": {
+        "attendu": {"creator": "Anis Rallye"},
+        "creator": "Anis Rhali",
+        "pourquoi": "Aucun article Wikipédia. Vérifié sur BilletRéduc "
+                    "(spectacle-anis-rhali), le Warehouse de Nantes et ses "
+                    "comptes TikTok/Instagram @anisrhali. « Rallye » est la "
+                    "restitution phonétique.",
+    },
+    "ubm-0506": {
+        "attendu": {"creator": "Pierre Illéré"},
+        "creator": "Pierre Hillairet",
+        "pourquoi": "Aucun article Wikipédia. « Jour de pluie » est son "
+                    "seul-en-scène : fiches BilletRéduc, Humorix et Théâtre du "
+                    "Marais à ce nom. « Illéré » est la restitution phonétique.",
+    },
+    "ubm-0961": {
+        "attendu": {"creator": "Blandine Lehoux"},
+        "creator": "Blandine Lehout",
+        "pourquoi": "Aucun article Wikipédia. Site officiel blandinelehout.com, "
+                    "fiches Humorix et La Scène Barbès à ce nom.",
+    },
+    "ubm-1644": {
+        "attendu": {"creator": "Tom Baletti"},
+        "creator": "Tom Baldetti",
+        "pourquoi": "Aucun article Wikipédia. Graphie « Baldetti » partout : "
+                    "presse (moka-mag, gambin), Instagram, et la fiche IMDb "
+                    "« Tom Baldetti et Yassir ».",
+    },
+    # ==================================================================
+    # CRÉATEURS des œuvres à DEUX invités, que `fill_guest_creators` a
+    # refusé de deviner. Chacune tranchée par une source, jamais par
+    # déduction — c'est tout l'objet de son refus.
+    # ==================================================================
+    "ubm-1092": {
+        "attendu": {"types": ["spectacle"]},
+        "creator": "Alexandre Kominek",
+        "pourquoi": "Le titre EST le nom de l'artiste, et le lien officiel "
+                    "alexandrekominek.fr porte son spectacle « Bâtard "
+                    "Sensible ». Bun Hay Mean, l'autre invité, le recommande.",
+    },
+    "ubm-1649": {
+        "attendu": {"types": ["video"]},
+        "creator": "Tom Baldetti & Yassir",
+        "pourquoi": "Le compte @_colocs est tenu par les deux colocataires. La "
+                    "citation le confirme (« vous avez fait rose-bleu, le même "
+                    "code ») : le code couleur T/Y décrit par We Love Comedy.",
+    },
+    "ubm-1651": {
+        "attendu": {"types": ["spectacle"]},
+        "creator": "Tom Baldetti & Yassir",
+        "pourquoi": "Le Plaisir Tour est un COLLECTIF dont le plateau réunit "
+                    "Tom Baldetti et Yassir BNF (avec Léandre, Antony "
+                    "Giuliani, Basile…). Les deux invités en font partie, d'où "
+                    "`guestWork` ; le plateau varie selon les dates.",
+    },
+    "ubm-1663": {
+        "attendu": {"types": ["podcast"]},
+        "creator": "Alice Moitié",
+        "recommande_par": "Alice Moitié",
+        "pourquoi": "Apple Podcasts décrit « le Trippy-Talk-Show d'Alice "
+                    "Moitié » : l'accent est le bon. `recommendedBy` portait "
+                    "DEUX FOIS la même personne (« Alice Moitié & Alice "
+                    "Moitie »), ce qui la faisait passer pour deux invitées.",
+    },
+    "ubm-2286": {
+        "attendu": {"types": ["serie"]},
+        "creator": "Jonathan Cohen & Jérémie Galan",
+        "pourquoi": "« France Kbek » (OCS, 2014) est créée par Jonathan Cohen "
+                    "et Jérémie Galan — article Wikipédia et presse. La "
+                    "citation le dit aussi : « vous avez fait une série ».",
+    },
+    "ubm-3188": {
+        "attendu": {"types": ["podcast"]},
+        "creator": "Florent Bernard, Adrien Ménielle",
+        "pourquoi": "Acast annonce « FloodCast — Animé par Florent Bernard, "
+                    "Adrien Ménielle ». Les deux invités en sont les auteurs.",
+    },
+    # --- « Chedid » : trois recos, et AUCUNE faute de créateur ------------
+    # Le détecteur les signalait parce qu'il compare `creator` à
+    # `recommendedBy`. Ici c'est le RECOMMANDEUR qui est mal saisi.
+    "ubm-2543": {
+        "attendu": {"creator": "Matthieu Chedid", "recommendedBy": "Matthieu"},
+        "recommande_par": "Matthieu Chedid",
+        "pourquoi": "Le créateur est juste ; c'est le recommandeur qui était "
+                    "réduit au prénom. Article Wikipédia « Matthieu Chedid ».",
+    },
+    "ubm-2551": {
+        "attendu": {"creator": "Matthieu Chedid", "recommendedBy": "Matthieu"},
+        "recommande_par": "Matthieu Chedid",
+        "pourquoi": "Même cas que ubm-2543 : prénom seul complété, le créateur "
+                    "n'est pas touché.",
+    },
+    "ubm-2544": {
+        "attendu": {"creator": "Andrée Chedid",
+                    "recommendedBy": "Matthieu Chédid"},
+        "recommande_par": "Matthieu Chedid",
+        "pourquoi": "DEUX PERSONNES DISTINCTES, et non deux graphies : Andrée "
+                    "Chedid est la poétesse, Matthieu Chedid son petit-fils "
+                    "qui la recommande. Le créateur reste inchangé ; seul "
+                    "l'accent fautif du recommandeur est retiré — l'article "
+                    "Wikipédia s'intitule « Matthieu Chedid », sans accent "
+                    "(patronyme libanais).",
+    },
 }
 
 
@@ -311,9 +483,18 @@ def transform(doc: dict[str, Any]) -> list[Change]:
     if not fix:
         return []
     # Garde : la donnée a-t-elle bougé depuis la vérification manuelle ?
+    #
+    # Les listes sont comparées SANS ordre (`types` n'a pas d'ordre porteur de
+    # sens), les autres valeurs telles quelles. Trier une chaîne comparerait
+    # ses caractères : « Anis Rallye » et « Riens Allaye » passeraient pour
+    # identiques, et la garde laisserait écrire sur une donnée qui a changé.
     attendu = fix.get("attendu") or {}
     for champ, valeur in attendu.items():
-        if sorted(doc.get(champ) or []) != sorted(valeur):
+        actuel = doc.get(champ)
+        if isinstance(valeur, list):
+            if sorted(actuel or []) != sorted(valeur):
+                return []
+        elif actuel != valeur:
             return []
     changes: list[Change] = []
     if "types" in fix and sorted(doc.get("types") or []) != sorted(fix["types"]):
@@ -324,6 +505,14 @@ def transform(doc: dict[str, Any]) -> list[Change]:
         changes.append(Change(field="creator", before=doc.get("creator"),
                               after=fix["creator"]))
         doc["creator"] = fix["creator"]
+    # `recommendedBy` porte les mêmes fautes que `creator` — il vient parfois
+    # de la même transcription. Le corriger ici plutôt que dans un outil à part
+    # évite qu'une reco reste incohérente entre ses deux champs de personnes.
+    if "recommande_par" in fix and doc.get("recommendedBy") != fix["recommande_par"]:
+        changes.append(Change(field="recommendedBy",
+                              before=doc.get("recommendedBy"),
+                              after=fix["recommande_par"]))
+        doc["recommendedBy"] = fix["recommande_par"]
     if "liens" in fix:
         avant = [link.get("url") for link in (doc.get("links") or [])
                  if isinstance(link, dict)]

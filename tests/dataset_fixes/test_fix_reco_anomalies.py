@@ -28,8 +28,8 @@ def test_chaque_correction_porte_sa_justification():
         assert len(fix["pourquoi"]) > 40, rid
         assert fix.get("attendu"), f"{rid} : sans `attendu`, aucun garde-fou"
         assert any(k in fix for k in
-                   ("types", "liens", "creator", "retirer_liens",
-                    "retirer_alias")), rid
+                   ("types", "liens", "creator", "recommande_par",
+                    "retirer_liens", "retirer_alias")), rid
 
 
 def test_aucune_correction_ne_produit_un_type_vide():
@@ -221,9 +221,18 @@ def test_chaque_correction_sapplique_sur_son_etat_attendu(rid):
     """Chaque ligne doit être ACTIVE : une correction qui ne s'applique jamais
     est une ligne morte qui laisse croire que le problème est réglé."""
     fix = fra.CORRECTIONS[rid]
-    doc = _doc(rid, **{k: list(v) for k, v in fix["attendu"].items()})
-    if "creator" in fix:
+    # Les valeurs de `attendu` sont recopiées TELLES QUELLES : `list(v)` sur
+    # une chaîne la découperait en caractères, et le document construit ne
+    # correspondrait plus à l'état que la garde attend.
+    doc = _doc(rid, **{k: (list(v) if isinstance(v, list) else v)
+                       for k, v in fix["attendu"].items()})
+    # On force une différence pour que la correction ait quelque chose à faire
+    # — SAUF si `attendu` épingle déjà ce champ, auquel cas l'écraser ferait
+    # échouer la garde et le test mesurerait le contraire de son intention.
+    if "creator" in fix and "creator" not in fix["attendu"]:
         doc["creator"] = "autre chose"
+    if "recommande_par" in fix and "recommendedBy" not in fix["attendu"]:
+        doc["recommendedBy"] = "autre personne"
     if "liens" in fix:
         doc["links"] = [{"url": "https://exemple.invalide/", "label": "X"}]
     if "retirer_liens" in fix:
