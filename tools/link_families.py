@@ -159,6 +159,12 @@ HOTES: dict[str, str] = {
     # --- Applications ------------------------------------------------------
     "apps.apple.com": "application",
     "play.google.com": "application",
+    # Sites d'ÉDITEUR. Pour un logiciel, la page de l'éditeur est la référence
+    # — souvent meilleure qu'une fiche de boutique, qui ne couvre qu'une
+    # plateforme. Ces trois-là n'existent que sous cette forme dans le corpus.
+    "splice.com": "application",
+    "getbrick.com": "application",
+    "geev.com": "application",
     # --- Réseaux sociaux ---------------------------------------------------
     "instagram.com": "reseau",
     "tiktok.com": "reseau",
@@ -307,11 +313,13 @@ FAMILLES_ATTENDUES: dict[str, tuple[tuple[str, ...], ...]] = {
     "spectacle": (("billetterie", "visionnage"),),
     "podcast": (("podcast",),),
     "chaine": (("video",),),
-    # Un jeu MOBILE s'obtient sur un store d'applications : « Make More
-    # Views » porte sa fiche App Store, qui est exactement « où l'avoir ».
-    # L'inverse n'est PAS vrai — une application n'est pas un jeu — d'où
-    # une alternative dans ce sens seulement.
-    "jeu": (("jeu", "application"),),
+    # Un jeu s'obtient là où on l'achète, et cela dépend de sa forme : store
+    # d'applications pour un jeu mobile (« Make More Views » porte sa fiche
+    # App Store), libraire ou éditeur pour un jeu de plateau ou une chasse au
+    # trésor (les Éditions du Trésor vendent les leurs à leur catalogue).
+    # L'inverse n'est PAS vrai — ni une application ni un livre ne sont un
+    # jeu — d'où des alternatives dans ce sens seulement.
+    "jeu": (("jeu", "application", "libraire"),),
     "application": (("application",),),
 }
 
@@ -354,6 +362,12 @@ _CHEMINS: dict[str, tuple[tuple[str, str], ...]] = {
     # La distinction avec `/watch` est délibérée : une vidéo isolée peut être
     # une bande-annonce ou un extrait, une playlist ne l'est jamais.
     "youtube.com": (("/playlist", "visionnage"),),
+    # `apple.com` et `linkedin.com` servent trop de choses pour qu'une famille
+    # unique ne mente pas : ils restent HORS de `HOTES`, et seul le chemin
+    # exact d'un produit les qualifie. Hors de ce chemin, ils n'ont aucune
+    # famille — ce qui est le comportement voulu.
+    "apple.com": (("/apple-fitness-plus", "application"),),
+    "linkedin.com": (("/learning", "application"),),
 }
 
 

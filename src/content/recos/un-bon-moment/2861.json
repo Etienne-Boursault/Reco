@@ -38,12 +38,6 @@
       "kind": "official",
       "label": "Éditions du Trésor",
       "url": "https://www.editionsdutresor.com/catalogue/lor-de-sipan"
-    },
-    {
-      "ethics": "indie",
-      "kind": "info",
-      "label": "Page de la chasse au trésor",
-      "url": "https://www.editionsdutresor.com/lor-de-sipan"
     }
   ],
   "quote": "J'avais fait la précédente qui s'appelait L'Ordre de Sipan.",
@@ -54,6 +48,7 @@
   "title": "L'Ordre de Sipan",
   "transcriptSource": "youtube",
   "types": [
-    "jeu"
+    "jeu",
+    "livre"
   ]
 }

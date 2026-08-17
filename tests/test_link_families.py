@@ -183,11 +183,25 @@ def test_le_chemin_ne_s_applique_qu_a_son_hote():
     assert lf.famille("https://www.youtube.com/watch?v=abc") == "video"
 
 
-def test_tous_les_hotes_a_chemin_sont_dans_la_table_principale():
-    """Un hôte listé dans `_CHEMINS` mais absent de `HOTES` n'aurait aucune
-    famille par défaut — son cas hors-chemin tomberait silencieusement."""
-    for cle in lf._CHEMINS:
-        assert cle in lf.HOTES, cle
+def test_les_familles_de_CHEMINS_existent_dans_la_table():
+    """Un hôte peut n'exister QUE dans `_CHEMINS` — `apple.com` sert trop de
+    choses pour qu'une famille unique ne mente pas, et seul le chemin d'un
+    produit le qualifie. En revanche la famille nommée doit exister, sans quoi
+    on créerait un manque que rien ne peut combler."""
+    fournies = set(lf.HOTES.values())
+    for cle, regles in lf._CHEMINS.items():
+        assert regles, cle
+        for _, fam in regles:
+            assert fam in fournies, f"{cle} produit « {fam} », inconnue ailleurs"
+
+
+def test_un_hote_generique_hors_de_SON_chemin_n_a_aucune_famille():
+    """C'est la contrepartie : `apple.com` ne doit rien qualifier en dehors de
+    la page produit qui l'a fait entrer."""
+    assert lf.famille("https://www.apple.com/fr/apple-fitness-plus/") == "application"
+    assert lf.famille("https://www.apple.com/fr/iphone/") is None
+    assert lf.famille("https://www.linkedin.com/learning/courses") == "application"
+    assert lf.famille("https://www.linkedin.com/in/quelquun/") is None
 
 
 # ---------------------------------------------------------------------------
@@ -324,11 +338,22 @@ def test_une_fiche_App_Store_repond_a_ou_avoir_le_JEU():
     assert lf.familles_manquantes(["jeu"], liens) == set()
 
 
-def test_l_inverse_n_est_PAS_vrai():
-    """Une application n'est pas un jeu : l'alternative ne vaut que dans un
-    sens, sinon une boutique de jeux éteindrait le manque d'une application."""
-    liens = [_lien("https://store.steampowered.com/app/1")]
-    assert lf.familles_manquantes(["application"], liens) == {"application"}
+def test_un_jeu_PHYSIQUE_s_achete_chez_son_editeur():
+    """Les Éditions du Trésor vendent leurs chasses au trésor à leur
+    catalogue : c'est bien « où l'avoir »."""
+    liens = [_lien("https://www.editionsdutresor.com/catalogue/lor-de-sipan")]
+    assert lf.familles_manquantes(["jeu"], liens) == set()
+
+
+@pytest.mark.parametrize(("types", "liens_url", "attendu"), [
+    (["application"], "https://store.steampowered.com/app/1", {"application"}),
+    (["livre"], "https://store.steampowered.com/app/1", {"libraire"}),
+])
+def test_les_alternatives_ne_valent_que_dans_UN_sens(types, liens_url, attendu):
+    """Ni une application ni un livre ne sont un jeu. Rendre l'alternative
+    symétrique ferait qu'une boutique de jeux éteindrait le manque d'une
+    application — et un manque éteint ne se rallume jamais."""
+    assert lf.familles_manquantes(types, [_lien(liens_url)]) == attendu
 
 
 @pytest.mark.parametrize(("url", "attendu"), [

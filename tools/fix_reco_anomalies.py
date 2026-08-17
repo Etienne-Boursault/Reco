@@ -281,6 +281,9 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     # « First We Feast ». Autant renseigner que vider.
     "ubm-0520": {
         "attendu": {"types": ["podcast", "autre", "video"]},
+        # « Hot Ones » est diffusée sur YouTube et sur son propre site : aucun
+        # flux podcast, malgré le type. Arbitrage du 2026-08-17.
+        "types": ["autre", "video"],
         "creator": "First We Feast",
         "retirer_liens": ["89Ri8OIjgxI"],
         "pourquoi": (
@@ -344,10 +347,18 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": "Même faute que ubm-0038 (article Wikipédia « Laurent Baffie »).",
     },
     "ubm-0279": {
-        "attendu": {"creator": "Panagiota Yotis-Pascault"},
+        "attendu": {"types": ["spectacle", "livre"], "title": "Entre les deux"},
         "creator": "Panayotis Pascot",
+        # « ton spectacle s'appelle ? Entre les deux » : c'est le SPECTACLE.
+        # Son livre, « La prochaine fois que tu mordras la poussière », fait
+        # l'objet d'une reco distincte (ubm-1737). Arbitrage du 2026-08-17.
+        "types": ["spectacle"],
         "pourquoi": "Article Wikipédia « Panayotis Pascot ». La transcription a "
-                    "coupé le prénom en deux et inventé un patronyme.",
+                    "coupé le prénom en deux et inventé un patronyme. La garde "
+                    "portait sur ce `creator` déjà corrigé : l'entrée était "
+                    "devenue inerte, et le retrait du type `livre` n'aurait "
+                    "jamais pu s'y greffer. Elle porte désormais sur l'état "
+                    "courant.",
     },
     "ubm-0734": {
         "attendu": {"creator": "Penelope Bajeux"},
@@ -620,6 +631,108 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    "ubm-0588": {
+        "attendu": {"types": ["livre", "video"], "title": "Fouloscopie"},
+        "ajouter_liens": [{"label": "Place des Libraires", "kind": "buy",
+                           "ethics": "indie",
+                           "url": "https://www.placedeslibraires.fr/livre/"
+                                  "9782290236161-fouloscopie-ce-que-la-foule-"
+                                  "dit-de-nous-mehdi-moussaid/"}],
+        "pourquoi": "La reco est typée `livre` sans aucun libraire : son seul "
+                    "lien était la chaîne YouTube. « Fouloscopie — ce que la "
+                    "foule dit de nous », de Mehdi Moussaïd, existe en deux "
+                    "éditions ; on retient le poche J'ai Lu (9782290236161) "
+                    "plutôt que l'originale HumenSciences, cohérent avec les "
+                    "choix de la table `EDITIONS`, qui privilégie le format "
+                    "abordable.",
+    },
+    # =======================================================================
+    # TYPES CORRIGÉS — arbitrage du 2026-08-17
+    #
+    # Ces recos réclamaient un lien que leur type appelait mais que leur nature
+    # rend introuvable : une chaîne YouTube n'a pas de flux podcast, une
+    # émission de Prime Video ne se joue pas. Dans chaque cas la CITATION dit
+    # de quoi il s'agit, et les liens déjà posés le confirment.
+    # =======================================================================
+    # --- Chaînes et émissions vidéo étiquetées `podcast` --------------------
+    "ubm-0984": {
+        "attendu": {"types": ["podcast"], "title": "M. Phi"},
+        "types": ["chaine", "video"],
+        "pourquoi": "« il fait des fausses interviews », et le seul lien est "
+                    "la chaîne YouTube @MonsieurPhi. Aucun flux podcast.",
+    },
+    "ubm-0667": {
+        "attendu": {"types": ["podcast", "video"], "title": "Gaming Historian"},
+        "types": ["chaine", "video"],
+        "pourquoi": "« c'est un gars qui fait l'histoire des jeux vidéo », "
+                    "seul lien @GamingHistorian.",
+    },
+    "ubm-0647": {
+        "attendu": {"types": ["autre", "video", "podcast"], "title": "ASKIP"},
+        "types": ["autre", "video"],
+        "pourquoi": "« c'est une émission sympa » : YouTube et Twitch, pas de "
+                    "flux podcast.",
+    },
+    "ubm-2894": {
+        "attendu": {"types": ["video", "podcast"], "title": "Bon bah Voilà"},
+        "types": ["video"],
+        "pourquoi": "« ils font vraiment des sketchs vidéos » — RTS Play et "
+                    "une playlist YouTube.",
+    },
+    "ubm-2659": {
+        "attendu": {"types": ["podcast", "video"], "title": "L'Épopée temporelle"},
+        "types": ["video"],
+        "pourquoi": "Série web de François Descraques, publiée en playlist "
+                    "YouTube.",
+    },
+    # --- Émissions de plateforme étiquetées autrement -----------------------
+    "ubm-2230": {
+        "attendu": {"types": ["podcast"], "title": "True Story"},
+        "types": ["serie"],
+        "pourquoi": "« C'est un programme pour Amazon Prime qui consiste à "
+                    "inviter des guests » : ses deux liens sont Prime Video et "
+                    "une fiche série AlloCiné.",
+    },
+    "ubm-2892": {
+        "attendu": {"types": ["jeu"], "title": "LOL"},
+        "types": ["serie"],
+        "pourquoi": "Le locuteur dit « un jeu », mais il parle de l'émission "
+                    "« LOL : Qui rit, sort ! » qu'il a CONÇUE pour Prime "
+                    "Video — on la regarde, on n'y joue pas.",
+    },
+    # --- `livre` en trop ----------------------------------------------------
+    "ubm-0255": {
+        "attendu": {"types": ["film", "livre"], "title": "Panique"},
+        "types": ["film"],
+        "pourquoi": "« je peux voir Panique de Duvivier » : la citation ne "
+                    "parle que du film. Le roman de Simenon dont il est tiré "
+                    "porte un autre titre et n'est pas recommandé ici.",
+    },
+    "ubm-2273": {
+        "attendu": {"types": ["livre"], "title": "Les Femmes Marrantes"},
+        "types": ["podcast"],
+        "pourquoi": "Épisode du podcast « Désirer » de Louie Media : les deux "
+                    "liens de la reco sont la page Louie Media et le podcast "
+                    "sur Apple Podcasts.",
+    },
+    # --- Livres-jeux --------------------------------------------------------
+    # Les Éditions du Trésor publient des chasses au trésor : ce sont des
+    # livres autant que des jeux, et c'est chez l'éditeur qu'on les achète.
+    "ubm-2860": {
+        "attendu": {"types": ["jeu"], "title": "Le Trésor de l'Île au Crâne"},
+        "types": ["jeu", "livre"],
+        "pourquoi": "Chasse au trésor des Éditions du Trésor, vendue en "
+                    "librairie (le lien Cultura de la reco le montre).",
+    },
+    # --- Un langage n'est pas une application -------------------------------
+    "ubm-0826": {
+        "attendu": {"types": ["application"], "title": "Python"},
+        "types": ["autre"],
+        "pourquoi": "« Je vais mettre en avant le langage Python » : un "
+                    "langage de programmation ne s'installe pas depuis une "
+                    "boutique d'applications, et `python.org` en est la "
+                    "référence.",
+    },
     "ubm-0985": {
         "attendu": {"title": "Le Précepteur"},
         "ajouter_liens": [{"label": "YouTube", "kind": "streaming",
@@ -797,12 +910,19 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "est une forme interne ; `/series/loki/` est lisible.",
     },
     "ubm-2861": {
-        "attendu": {"types": ["livre"]},
+        "attendu": {"types": ["jeu"], "title": "L'Ordre de Sipan"},
+        "types": ["jeu", "livre"],
         "retirer_liens": ["editionsdutresor.com/lor-de-sipan"],
         "pourquoi": "L'éditeur sert le même ouvrage sous deux adresses — "
                     "`/catalogue/lor-de-sipan` et `/lor-de-sipan` répondent "
                     "toutes deux 200 avec le même titre. On garde la forme "
-                    "`/catalogue/`, qui dit ce qu'elle est.",
+                    "`/catalogue/`, qui dit ce qu'elle est. "
+                    "LA GARDE ÉTAIT FAUSSE : elle attendait `types: [livre]` "
+                    "quand la reco porte `jeu`, si bien que l'entrée n'a "
+                    "jamais tourné et que les deux adresses sont toujours là. "
+                    "Le type est corrigé dans le même mouvement — une chasse "
+                    "au trésor des Éditions du Trésor est un livre autant "
+                    "qu'un jeu (arbitrage du 2026-08-17).",
     },
     "ubm-3128": {
         "attendu": {"types": ["spectacle"]},
