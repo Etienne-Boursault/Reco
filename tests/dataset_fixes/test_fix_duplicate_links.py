@@ -453,3 +453,55 @@ def test_les_deux_editions_ajoutees_sont_dans_la_table():
     retenu est le POCHE, l'autre étant un grand format."""
     assert fdl.EDITIONS["ubm-1737"] == "9782253907824"
     assert fdl.EDITIONS["ubm-2824"] == "9791041425723"
+
+
+# ---------------------------------------------------------------------------
+# RÈGLE `visionnage`
+# ---------------------------------------------------------------------------
+_JW = "https://www.justwatch.com/fr/serie/fargo"
+_TMDB_WATCH = "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR"
+
+
+def test_visionnage_retire_le_second_ou_regarder():
+    """Deux hôtes, une seule question. Une déduplication par hôte ne pouvait
+    pas les voir — d'où dix-sept recos affichant deux « où regarder »."""
+    doc = _doc([_JW, _TMDB_WATCH])
+    changes = fdl.transform_factory(["visionnage"])(doc)
+    assert _urls(doc) == [_JW]
+    assert [c.before for c in changes] == [_TMDB_WATCH]
+
+
+def test_visionnage_garde_le_PREMIER_donc_celui_qui_etait_deja_la():
+    """L'ordre porte l'information : le lien en place a été relu, l'ajouté non.
+    Il rend aussi la règle idempotente."""
+    doc = _doc([_TMDB_WATCH, _JW])
+    fdl.transform_factory(["visionnage"])(doc)
+    assert _urls(doc) == [_TMDB_WATCH]
+
+
+def test_visionnage_est_idempotente():
+    doc = _doc([_JW, _TMDB_WATCH])
+    fdl.transform_factory(["visionnage"])(doc)
+    assert fdl.transform_factory(["visionnage"])(doc) == []
+
+
+def test_visionnage_ne_touche_pas_une_FICHE_TMDB():
+    """La fiche et la page de visionnage partagent un hôte sans partager leur
+    fonction : confondre les deux effacerait la fiche."""
+    fiche = "https://www.themoviedb.org/tv/60622"
+    doc = _doc([fiche, _TMDB_WATCH])
+    assert fdl.transform_factory(["visionnage"])(doc) == []
+    assert _urls(doc) == [fiche, _TMDB_WATCH]
+
+
+def test_visionnage_laisse_les_plateformes_tranquilles():
+    """Netflix et Prime disent où voir, mais chacun ne parle que de soi : ce ne
+    sont pas des doublons d'un agrégateur."""
+    doc = _doc(["https://www.netflix.com/fr/title/1",
+                "https://www.primevideo.com/detail/2", _JW])
+    assert fdl.transform_factory(["visionnage"])(doc) == []
+
+
+def test_visionnage_ignore_un_lien_sans_url():
+    doc = {"id": "ubm-1", "links": [{"label": "L"}, {"url": _JW, "label": "L"}]}
+    assert fdl.transform_factory(["visionnage"])(doc) == []

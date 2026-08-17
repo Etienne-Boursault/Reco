@@ -154,7 +154,7 @@ def test_build_link_imdb():
 def test_build_link_justwatch_is_streaming():
     link = evl.build_link(evl.SITE_JUSTWATCH, "https://www.justwatch.com/fr/film/titanic")
     assert link["kind"] == "streaming"
-    assert link["label"] == "JustWatch"
+    assert link["label"] == "Où regarder"
 
 
 def test_build_link_rejects_non_https():
@@ -178,7 +178,7 @@ def test_tmdb_url_tv():
 def test_candidate_links_all_three_in_order():
     links = evl.candidate_links(MOVIE_PAYLOAD, kind="movie", tmdb_id="597",
                                 sites=evl.ALL_SITES)
-    assert [link["label"] for link in links] == ["IMDb", "TMDB", "JustWatch"]
+    assert [link["label"] for link in links] == ["IMDb", "TMDB", "Où regarder"]
 
 
 def test_candidate_links_honours_site_selection():
@@ -190,7 +190,7 @@ def test_candidate_links_honours_site_selection():
 def test_candidate_links_without_imdb_id():
     payload = {**MOVIE_PAYLOAD, "external_ids": {}}
     links = evl.candidate_links(payload, kind="movie", tmdb_id="597", sites=evl.ALL_SITES)
-    assert [link["label"] for link in links] == ["TMDB", "JustWatch"]
+    assert [link["label"] for link in links] == ["TMDB", "Où regarder"]
 
 
 def test_candidate_links_without_justwatch():
@@ -223,7 +223,7 @@ def test_missing_links_drops_already_covered_host():
     candidates = evl.candidate_links(MOVIE_PAYLOAD, kind="movie", tmdb_id="597",
                                      sites=evl.ALL_SITES)
     reco = {"links": [{"label": "IMDb", "url": "https://www.imdb.com/title/tt9/"}]}
-    assert [link["label"] for link in evl.missing_links(reco, candidates)] == ["TMDB", "JustWatch"]
+    assert [link["label"] for link in evl.missing_links(reco, candidates)] == ["TMDB", "Où regarder"]
 
 
 def test_missing_links_host_comparison_ignores_www():
@@ -369,3 +369,92 @@ def test_parse_sites_ignores_blanks():
 def test_parse_sites_rejects_unknown():
     with pytest.raises(ValueError, match="site inconnu"):
         evl.parse_sites("allocine")
+
+
+# ===== La page « où regarder » a changé d'hôte ==============================
+#
+# TMDB servait autrefois une URL justwatch.com. Il renvoie désormais sa PROPRE
+# page de visionnage. Le contrôle d'hôte n'avait pas suivi : il rejetait donc
+# exactement ce que l'API donne, et la passe ne posait plus aucun lien de
+# visionnage — en silence, puisqu'« aucun candidat » ressemble à « rien à
+# faire ». Ces tests sont ceux qui manquaient pour que la panne se voie.
+_WATCH_TMDB = "https://www.themoviedb.org/movie/424277-annette/watch?locale=FR"
+
+
+def test_la_page_de_visionnage_TMDB_est_acceptee():
+    payload = {"watch/providers": {"results": {"FR": {"link": _WATCH_TMDB}}}}
+    assert evl.justwatch_url_from(payload) == _WATCH_TMDB
+
+
+def test_justwatch_reste_accepte():
+    """Les liens déjà posés dans le corpus restent valides, et rien n'oblige
+    TMDB à ne pas y revenir."""
+    assert evl.justwatch_url_from(MOVIE_PAYLOAD) is not None
+
+
+def test_un_hote_tiers_reste_refuse():
+    """Le champ vient d'une API tierce : accepter n'importe quel hôte
+    reviendrait à laisser une API décider de ce qu'on publie."""
+    payload = {"watch/providers": {"results": {"FR": {"link": "https://pub.example/x"}}}}
+    assert evl.justwatch_url_from(payload) is None
+
+
+# ===== Fiche et page de visionnage partagent un hôte ========================
+def test_la_page_de_visionnage_ne_couvre_pas_la_fiche():
+    """Le cœur du correctif. Les deux vivent sur themoviedb.org tout en étant
+    deux ressources différentes ; dédoublonner sur l'hôte seul rendait la
+    seconde impossible à poser dès que la première existait — c'est-à-dire
+    toujours, puisque la fiche est ce que la passe pose en premier."""
+    assert evl.cle_couverture(_WATCH_TMDB) == evl.CLE_VISIONNAGE
+    assert evl.cle_couverture("https://www.themoviedb.org/movie/424277") == "themoviedb.org"
+
+
+def test_cle_couverture_tolere_la_barre_finale():
+    assert evl.cle_couverture("https://www.themoviedb.org/tv/1/watch/") == evl.CLE_VISIONNAGE
+
+
+def test_cle_couverture_d_une_url_illisible_est_vide():
+    assert evl.cle_couverture("pas une url") == ""
+
+
+def test_une_reco_avec_SA_FICHE_TMDB_manque_encore_le_visionnage():
+    reco = {"links": [{"url": "https://www.themoviedb.org/movie/424277"}]}
+    manquants = evl.missing_links(reco, [{"url": _WATCH_TMDB, "label": "Où regarder"}])
+    assert [l["url"] for l in manquants] == [_WATCH_TMDB]
+
+
+def test_le_lien_de_visionnage_ne_se_pose_pas_deux_fois():
+    """L'idempotence ne doit pas dépendre du bon vouloir de l'appelant."""
+    reco = {"links": [{"url": _WATCH_TMDB, "label": "Où regarder"}]}
+    assert evl.merge_links(reco, [{"url": _WATCH_TMDB, "label": "Où regarder"}]) == reco["links"]
+
+
+def test_deux_ressources_du_meme_hote_s_ajoutent_toutes_les_deux():
+    reco = {"links": [{"url": "https://www.themoviedb.org/movie/424277", "label": "TMDB"}]}
+    fusion = evl.merge_links(reco, [{"url": _WATCH_TMDB, "label": "Où regarder"}])
+    assert len(fusion) == 2
+
+
+def test_le_libelle_ne_nomme_pas_une_marque_qui_peut_changer():
+    """La destination est passée de JustWatch à TMDB. Un libellé de marque
+    deviendrait faux au premier changement d'API ; l'usage, lui, reste vrai."""
+    assert evl.SITE_LABELS[evl.SITE_JUSTWATCH] == "Où regarder"
+
+
+def test_justwatch_et_la_page_TMDB_sont_LE_MEME_service():
+    """Le piège symétrique du précédent. Une clé fondée sur le chemin les
+    séparait — et posait deux liens « où regarder » sur la même reco. C'est
+    exactement ce qui est arrivé à 8 recos (Fargo, The Office, The Rehearsal…)
+    avant que ce test n'existe."""
+    assert (evl.cle_couverture("https://www.justwatch.com/fr/serie/fargo")
+            == evl.cle_couverture("https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR"))
+
+
+def test_une_reco_DEJA_sur_justwatch_ne_recoit_pas_la_page_TMDB():
+    reco = {"links": [{"url": "https://www.justwatch.com/fr/serie/fargo", "label": "JustWatch"}]}
+    assert evl.missing_links(reco, [{"url": _WATCH_TMDB, "label": "Où regarder"}]) == []
+    assert evl.merge_links(reco, [{"url": _WATCH_TMDB, "label": "Où regarder"}]) == reco["links"]
+
+
+def test_un_hote_hors_visionnage_garde_son_hote():
+    assert evl.cle_couverture("https://www.netflix.com/fr/title/1") == "netflix.com"

@@ -36,7 +36,13 @@ ALL_SITES = (SITE_IMDB, SITE_TMDB, SITE_JUSTWATCH)
 
 SITE_HOSTS = {SITE_IMDB: "imdb.com", SITE_TMDB: "themoviedb.org",
               SITE_JUSTWATCH: "justwatch.com"}
-SITE_LABELS = {SITE_IMDB: "IMDb", SITE_TMDB: "TMDB", SITE_JUSTWATCH: "JustWatch"}
+#: Libellé AFFICHÉ. Celui de la page de visionnage ne nomme pas une marque
+#: mais un usage : la destination a changé (JustWatch → TMDB) et pourrait
+#: changer encore, tandis que « où regarder » reste vrai dans tous les cas.
+#: Écrire « JustWatch » au-dessus d'un lien themoviedb.org serait un
+#: mensonge visible pour le lecteur.
+SITE_LABELS = {SITE_IMDB: "IMDb", SITE_TMDB: "TMDB",
+               SITE_JUSTWATCH: "Où regarder"}
 #: IMDb et TMDB sont des fiches (`info`) ; JustWatch agrège des offres de
 #: visionnage (`streaming`), comme le fait déjà `merchants.ts`.
 SITE_KINDS = {SITE_IMDB: "info", SITE_TMDB: "info", SITE_JUSTWATCH: "streaming"}
@@ -102,18 +108,57 @@ def link_host(url: str) -> str:
     return host.removeprefix("www.")
 
 
-def covered_hosts(reco: dict[str, Any]) -> set[str]:
-    """Hosts déjà présents dans la reco (`links` + `customLinks`).
+#: Hôtes admis pour une page « où regarder ». `themoviedb.org` y figure parce
+#: que TMDB sert désormais la sienne ; `justwatch.com` reste accepté pour les
+#: liens déjà posés dans le corpus.
+HOTES_VISIONNAGE = frozenset({"justwatch.com", "themoviedb.org"})
 
-    Sert à ne jamais poser un second lien vers un site déjà couvert — y
-    compris quand il a été ajouté à la main par le serveur de relecture.
+
+#: Clé unique de la page « où regarder ». Ce n'est PAS un hôte : c'est une
+#: FONCTION. JustWatch et la page de visionnage de TMDB rendent le même
+#: service, donc en poser une quand l'autre existe fait un doublon visible.
+CLE_VISIONNAGE = "où-regarder"
+
+
+def cle_couverture(url: str) -> str:
+    """Ce qu'un lien COUVRE — sa FONCTION, qui n'est ni son hôte ni son chemin.
+
+    Deux pièges opposés se referment ici, et une clé purement fondée sur
+    l'hôte n'en évite qu'un :
+
+    - la fiche TMDB et sa page de visionnage vivent sur le MÊME hôte tout en
+      rendant deux services différents ; l'hôte seul rendait la seconde
+      impossible à poser dès que la première existait, c'est-à-dire toujours ;
+    - JustWatch et la page de visionnage TMDB vivent sur des hôtes DIFFÉRENTS
+      tout en rendant le MÊME service ; distinguer par le chemin faisait alors
+      apparaître deux liens « où regarder » sur la même reco.
+
+    D'où une clé qui suit l'usage : toute page de visionnage, quel qu'en soit
+    l'hôte, se réduit à `CLE_VISIONNAGE` ; le reste garde son hôte.
+    """
+    host = link_host(url)
+    if not host:
+        return ""
+    if host not in HOTES_VISIONNAGE:
+        return host
+    chemin = url.split("?", 1)[0].rstrip("/")
+    # `themoviedb.org` héberge les DEUX : seule la fiche garde son hôte.
+    if host == "themoviedb.org" and not chemin.endswith("/watch"):
+        return host
+    return CLE_VISIONNAGE
+
+
+def covered_hosts(reco: dict[str, Any]) -> set[str]:
+    """Ce que la reco couvre déjà (`links` + `customLinks`).
+
+    Sert à ne jamais poser un second lien vers une ressource déjà couverte — y
+    compris quand elle a été ajoutée à la main par le serveur de relecture.
     """
     hosts: set[str] = set()
     for key in ("links", "customLinks"):
         for entry in reco.get(key) or []:
-            host = link_host(entry.get("url") or "")
-            if host:
-                hosts.add(host)
+            if (cle := cle_couverture(entry.get("url") or "")):
+                hosts.add(cle)
     return hosts
 
 
@@ -127,13 +172,23 @@ def imdb_id_from(payload: dict[str, Any]) -> str | None:
 
 
 def justwatch_url_from(payload: dict[str, Any]) -> str | None:
-    """URL JustWatch FR renvoyée par TMDB (`watch/providers` → `results.FR.link`).
+    """URL « où regarder » renvoyée par TMDB (`watch/providers` → `results.FR.link`).
+
+    ELLE NE POINTE PLUS VERS JUSTWATCH. TMDB servait autrefois une URL
+    justwatch.com ; il renvoie désormais sa PROPRE page de visionnage
+    (`themoviedb.org/movie/<id>-<slug>/watch?locale=FR`). Le contrôle d'hôte
+    n'avait pas suivi, et rejetait donc systématiquement ce que l'API donne :
+    la passe ne posait plus un seul lien de visionnage, sans que rien ne le
+    signale. Le schéma, lui, avait été renommé (`justwatch` → `watchPage`) —
+    cette validation était restée en arrière.
+
+    Les deux hôtes sont acceptés : les liens JustWatch déjà posés dans le
+    corpus restent valides, et rien n'oblige TMDB à ne pas y revenir.
 
     Rien n'est construit : l'URL est reprise telle quelle. Seul contrôle fait
-    ICI, parce qu'il est métier : l'URL doit bien pointer sur justwatch.com —
-    un champ libre d'une API tierce n'est pas une garantie. La conformité du
-    lien (https, host non vide) reste du ressort de `build_link`, qui applique
-    la doctrine commune du dépôt : une seule autorité, pas deux.
+    ICI, parce qu'il est métier — un champ libre d'une API tierce n'est pas une
+    garantie. La conformité du lien (https, host non vide) reste du ressort de
+    `build_link`, qui applique la doctrine commune du dépôt.
     """
     block = payload.get("watch/providers")
     if not isinstance(block, dict):
@@ -145,7 +200,7 @@ def justwatch_url_from(payload: dict[str, Any]) -> str | None:
     if not isinstance(fr, dict):
         return None
     url = str(fr.get("link") or "").strip()
-    return url if link_host(url) == SITE_HOSTS[SITE_JUSTWATCH] else None
+    return url if link_host(url) in HOTES_VISIONNAGE else None
 
 
 def imdb_url(imdb_id: str) -> str:
@@ -203,7 +258,7 @@ def missing_links(reco: dict[str, Any],
                   candidates: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     """Candidats dont le host n'est pas déjà couvert par la reco."""
     hosts = covered_hosts(reco)
-    return [link for link in candidates if link_host(link["url"]) not in hosts]
+    return [link for link in candidates if cle_couverture(link["url"]) not in hosts]
 
 
 def merge_links(reco: dict[str, Any],
@@ -218,10 +273,10 @@ def merge_links(reco: dict[str, Any],
     out = list(reco.get("links") or [])
     hosts = covered_hosts(reco)
     for link in additions:
-        host = link_host(link["url"])
-        if host in hosts:
+        cle = cle_couverture(link["url"])
+        if cle in hosts:
             continue
-        hosts.add(host)
+        hosts.add(cle)
         out.append(link)
     return out
 

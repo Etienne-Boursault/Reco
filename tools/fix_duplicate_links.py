@@ -90,7 +90,13 @@ EDITIONS: dict[str, str] = {
 
 _RE_PDL_ISBN = re.compile(r"placedeslibraires\.fr/livre/(\d{13})", re.IGNORECASE)
 
-RULES = ("allocine", "editions", "variantes", "racine", "boutique")
+#: La fonction d'un lien se décide à UN SEUL endroit. Redéfinir ici ce
+#: qu'est une page « où regarder » ferait diverger la déduplication de
+#: l'enrichissement — l'un poserait ce que l'autre retire.
+from video_links_matching import CLE_VISIONNAGE, cle_couverture
+
+RULES = ("allocine", "editions", "variantes", "racine", "boutique",
+         "visionnage")
 
 
 def allocine_key(url: str) -> tuple[str, str] | None:
@@ -352,9 +358,36 @@ def _rule_boutique(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], 
     return garder, changes
 
 
+# ---------------------------------------------------------------------------
+# RÈGLE `visionnage` — un seul « où regarder » par reco
+#
+#     justwatch.com/fr/serie/fargo                     ← un agrégateur
+#     themoviedb.org/tv/60622-fargo/watch?locale=FR    ← l'autre
+#
+# Ces deux pages répondent à la MÊME question, sur des hôtes différents. Une
+# déduplication par hôte ne pouvait pas les voir : c'est ainsi que huit recos
+# (Fargo, The Office, The Rehearsal…) se sont retrouvées avec deux liens
+# « où regarder » côte à côte quand TMDB a cessé de servir des URL JustWatch.
+#
+# On garde le PREMIER dans l'ordre des liens : c'est le lien déjà en place,
+# donc celui qui a été relu, et cet ordre rend la règle idempotente.
+# ---------------------------------------------------------------------------
+def _rule_visionnage(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], list[Change]]:
+    garder, changes, vu = [], [], False
+    for link in liens:
+        url = link.get("url") or ""
+        if url and cle_couverture(url) == CLE_VISIONNAGE:
+            if vu:
+                changes.append(Change(field="links[].url", before=url, after=None))
+                continue
+            vu = True
+        garder.append(link)
+    return garder, changes
+
+
 _IMPLS = {"allocine": _rule_allocine, "editions": _rule_editions,
           "variantes": _rule_variantes, "racine": _rule_racine,
-          "boutique": _rule_boutique}
+          "boutique": _rule_boutique, "visionnage": _rule_visionnage}
 
 
 def transform_factory(rules: Sequence[str]):

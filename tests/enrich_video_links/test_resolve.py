@@ -172,7 +172,7 @@ def test_resolve_from_id_partial_when_one_host_covered(session):
             "externalIds": {"tmdb": "597", "tmdbType": "movie"},
             "links": [{"label": "IMDb", "url": "https://www.imdb.com/title/tt0120338/"}]}
     res = evl.resolve_video_links(reco, session=session, api_key="k")
-    assert [link["label"] for link in res.links] == ["TMDB", "JustWatch"]
+    assert [link["label"] for link in res.links] == ["TMDB", "Où regarder"]
 
 
 @responses.activate
