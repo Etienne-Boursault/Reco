@@ -691,6 +691,53 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": "Même cas que ubm-2285 — catalogue néerlandais, "
                     "identifiant distinct, disponibilité non garantie ici.",
     },
+    # --- « créateur = titre » : quatre vrais défauts, un cas légitime ------
+    # `ubm-1081` (« Clou ») N'EST PAS dans cette liste : l'album éponyme d'une
+    # artiste nommée Clou existe bel et bien, et la répétition y est juste.
+    "ubm-2692": {
+        "attendu": {"types": ["application"], "title": "Dailyo"},
+        "titre": "Daylio",
+        "creator": None,
+        "pourquoi": "L'application s'appelle DAYLIO — ses deux liens le disent "
+                    "(daylio.net, et l'App Store « daylio-journal-intime-"
+                    "humeur »). « Dailyo » est la restitution phonétique de la "
+                    "citation. Le créateur répétait le titre : une application "
+                    "a un éditeur, pas un créateur homonyme.",
+    },
+    "ubm-0487": {
+        "attendu": {"types": ["spectacle"], "title": "Les Chiens de Navarre"},
+        "titre": "I Will Survive",
+        "pourquoi": "La citation parle de « la dernière PIÈCE des Chiens de "
+                    "Navarre », et le lien officiel pointe `/i-will-survive`. "
+                    "Le titre nommait la troupe, pas le spectacle — le "
+                    "créateur, lui, était déjà juste.",
+    },
+    "ubm-2719": {
+        "attendu": {"types": ["lieu"], "creator": "Barbès Comedy Club"},
+        "creator": None,
+        "pourquoi": "Un LIEU n'a pas de créateur homonyme. La carte affichait "
+                    "« Barbès Comedy Club » deux fois, en titre et en dessous.",
+    },
+    "ubm-2830": {
+        "attendu": {"types": ["lieu"], "creator": "Kings of Comedy Club"},
+        "creator": None,
+        "pourquoi": "Même cas que ubm-2719 : le nom du club se répétait en "
+                    "guise de créateur.",
+    },
+    "ubm-2409": {
+        "attendu": {"types": ["autre"], "creator": "Le Gorafi"},
+        "creator": None,
+        "pourquoi": "Un journal satirique n'est pas son propre auteur. Le nom "
+                    "se répétait sous le titre sans rien apprendre.",
+    },
+    "ubm-2593": {
+        "attendu": {"types": ["autre"], "creator": "Anna Apter"},
+        "types": ["artiste"],
+        "pourquoi": "La reco porte sur une PERSONNE (lien Wikipédia à son "
+                    "nom) : `artiste` est le type prévu pour cela, et la "
+                    "répétition titre/créateur y devient normale. `autre` "
+                    "était le type de repli faute de mieux.",
+    },
 }
 
 
@@ -745,7 +792,13 @@ def transform(doc: dict[str, Any]) -> list[Change]:
     if "creator" in fix and doc.get("creator") != fix["creator"]:
         changes.append(Change(field="creator", before=doc.get("creator"),
                               after=fix["creator"]))
-        doc["creator"] = fix["creator"]
+        if fix["creator"] is None:
+            # RETIRER la clé, ne pas écrire `null` : la collection `recos`
+            # déclare `creator: z.string().optional()` SANS `nullable`, et un
+            # `null` y arrête le build. Cf. `fill_guest_creators`.
+            doc.pop("creator", None)
+        else:
+            doc["creator"] = fix["creator"]
     # `recommendedBy` porte les mêmes fautes que `creator` — il vient parfois
     # de la même transcription. Le corriger ici plutôt que dans un outil à part
     # évite qu'une reco reste incohérente entre ses deux champs de personnes.

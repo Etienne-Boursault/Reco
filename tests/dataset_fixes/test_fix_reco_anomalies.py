@@ -404,3 +404,54 @@ def test_retrait_sur_une_reco_sans_externalIds(monkeypatch):
     })
     doc = _doc("ubm-1", types=["artiste"])
     assert fra.transform(doc) == []
+
+
+def test_un_createur_a_None_RETIRE_la_cle(monkeypatch):
+    """Ecrire `null` arreterait le build : la collection `recos` declare
+    `creator: z.string().optional()` SANS `nullable`. Seule l'absence de cle
+    exprime valablement l'absence de createur."""
+    monkeypatch.setattr(fra, 'CORRECTIONS', {
+        'ubm-1': {'attendu': {'types': ['lieu']}, 'creator': None,
+                  'pourquoi': 'cas synthetique de vidage du createur'},
+    })
+    doc = _doc('ubm-1', types=['lieu'], creator='Un Lieu')
+    ch = fra.transform(doc)
+    assert 'creator' not in doc
+    assert len(ch) == 1 and ch[0].after is None
+
+
+def test_vider_un_createur_deja_absent_ne_change_rien(monkeypatch):
+    monkeypatch.setattr(fra, 'CORRECTIONS', {
+        'ubm-1': {'attendu': {'types': ['lieu']}, 'creator': None,
+                  'pourquoi': 'cas synthetique de vidage du createur'},
+    })
+    doc = _doc('ubm-1', types=['lieu'])
+    assert fra.transform(doc) == []
+
+
+def test_la_garde_refuse_si_une_valeur_SCALAIRE_a_change(monkeypatch):
+    """Le pendant du garde-fou sur les types, pour les champs texte.
+
+    Une premiere version triait les CARACTERES d'une chaine : « Anis Rallye »
+    et « Riens Allaye » y passaient pour identiques, et la garde laissait
+    ecrire sur une donnee qui avait change depuis la verification.
+    """
+    monkeypatch.setattr(fra, 'CORRECTIONS', {
+        'ubm-1': {'attendu': {'creator': 'Graphie attendue'},
+                  'creator': 'Graphie corrigee',
+                  'pourquoi': 'cas synthetique de garde sur un scalaire'},
+    })
+    doc = _doc('ubm-1', creator='Quelquun est passe apres')
+    assert fra.transform(doc) == []
+    assert doc['creator'] == 'Quelquun est passe apres'
+
+
+def test_la_garde_scalaire_LAISSE_passer_l_etat_attendu(monkeypatch):
+    monkeypatch.setattr(fra, 'CORRECTIONS', {
+        'ubm-1': {'attendu': {'creator': 'Graphie attendue'},
+                  'creator': 'Graphie corrigee',
+                  'pourquoi': 'cas synthetique de garde sur un scalaire'},
+    })
+    doc = _doc('ubm-1', creator='Graphie attendue')
+    assert len(fra.transform(doc)) == 1
+    assert doc['creator'] == 'Graphie corrigee'
