@@ -9,7 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Louis de Funès",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:19Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "externalIds": {
+    "tmdb": "19548",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T03:17:45+00:00",
@@ -38,6 +45,24 @@
       "kind": "buy",
       "label": "Orange VOD",
       "url": "https://video-a-la-demande.orange.fr/film/LEGRANDRESTW0011192/le-grand-restaurant"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0061728/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/19548"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/19548-le-grand-restaurant/watch?locale=FR"
     }
   ],
   "quote": "Le grand restaurant qui est un demi-heure incroyable, la première demi-heure est folle",

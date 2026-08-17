@@ -13,7 +13,14 @@
     "verdict": "unsure"
   },
   "creator": "Jim Carrey",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:19Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
+  "externalIds": {
+    "tmdb": "1850",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T03:17:45+00:00",
@@ -35,6 +42,18 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/man-on-the-moon"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0125664/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1850"
     }
   ],
   "quote": "Madame de Moon, il est sublime.",

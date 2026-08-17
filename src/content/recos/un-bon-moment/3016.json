@@ -13,7 +13,14 @@
     "verdict": "citation"
   },
   "creator": "ESPN",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:20Z"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
+  "externalIds": {
+    "tmdb": "18820",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T04:10:17+00:00",
@@ -46,6 +53,12 @@
       "kind": "streaming",
       "label": "Sport Science (playlist ESPN, YouTube)",
       "url": "https://www.youtube.com/playlist?list=PLn3nHXu50t5xqHW67LKFhUB_C2Y9C0IwC"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/18820"
     }
   ],
   "quote": "j'étais fan d'un programme sur ESPN, une chaîne américaine de sport qui s'appelait Sport Science",

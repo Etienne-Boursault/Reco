@@ -14,9 +14,14 @@
     "verdict": "guest-work"
   },
   "creator": "Cédric Clapichon",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:12Z"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
-    "instagram": "cedklap"
+    "instagram": "cedklap",
+    "tmdb": "121459",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -41,6 +46,24 @@
       "kind": "streaming",
       "label": "Prime Video",
       "url": "https://www.primevideo.com/-/fr/detail/0KYIYB9BUWE3PRZUNLS5FZS4BZ"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt27165867/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/121459"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/121459-salade-grecque/watch?locale=FR"
     }
   ],
   "quote": "là on arrive à Salade grecque et tu continues",

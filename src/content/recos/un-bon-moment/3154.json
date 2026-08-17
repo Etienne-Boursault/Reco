@@ -13,9 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Nathan Fielder & Benny Safdie",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:24Z"
+  },
   "episodeGuid": "6a47e41c08da053175fb135e",
   "externalIds": {
-    "instagram": "nathanfielder"
+    "instagram": "nathanfielder",
+    "tmdb": "114655",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -45,6 +50,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/the-curse"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt13623608/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/114655"
     }
   ],
   "quote": "The Curse aussi, c'est incroyable.",

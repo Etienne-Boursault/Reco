@@ -9,7 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Richard Linklater",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:24Z"
+  },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
+  "externalIds": {
+    "tmdb": "76",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:22:35+00:00",
@@ -44,6 +51,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/before-sunrise"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0112471/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/76"
     }
   ],
   "quote": "il a fait une trilogie qui s'appelle Before Sunset, Before Sunrise et Before Midnight, qui est une trilogie que je trouve magnifique sur un couple",

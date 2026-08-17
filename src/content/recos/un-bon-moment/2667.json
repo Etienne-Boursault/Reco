@@ -7,7 +7,14 @@
     "reason": "Documentaire Netflix recommandé par Navo (son tour dans la ronde, appelé « navo ») : longue présentation enthousiaste (« c'est super touchant », « hyper intéressant », « ça vaut le coup »). Titre officiel = canonique.",
     "verdict": "validate"
   },
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:15Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "tmdb": "200731",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T23:56:22+00:00",
@@ -36,6 +43,24 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/Histoires_d'amour_et_d'autisme"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt19037550/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/200731"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/200731-love-on-the-spectrum/watch?locale=FR"
     }
   ],
   "quote": "amour et autisme sur netflix c'est un documentaire",

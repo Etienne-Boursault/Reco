@@ -13,9 +13,14 @@
     "verdict": "guest-work"
   },
   "creator": "Thomas Ngijol",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:01Z"
+  },
   "episodeGuid": "6550c05703445c0011dd8343",
   "externalIds": {
-    "instagram": "thomas_ngijol"
+    "instagram": "thomas_ngijol",
+    "tmdb": "99978",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -59,6 +64,12 @@
       "kind": "official",
       "label": "Extrait officiel CANAL+ (YouTube)",
       "url": "https://www.youtube.com/watch?v=3DgB6c639qo"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/99978"
     }
   ],
   "quote": "Moi je recommande 'Selon Thomas' quand même.",

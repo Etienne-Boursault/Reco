@@ -10,7 +10,14 @@
     "verdict": "validate"
   },
   "creator": "Francis Veber",
+  "enrichedAt": {
+    "links": "2026-08-17T16:19:45Z"
+  },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
+  "externalIds": {
+    "tmdb": "19123",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:20:08+00:00",
@@ -39,6 +46,24 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/la-chevre/umc.cmc.16zidkgxtiw2xer4ywgev9wrc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0082183/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/19123"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/19123-la-chevre/watch?locale=FR"
     }
   ],
   "quote": "bah moi je crois que la chèvre il est dans mon top 3",
@@ -51,5 +76,5 @@
   "types": [
     "film"
   ],
-  "year": 1985
+  "year": 1981
 }

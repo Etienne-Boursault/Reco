@@ -8,9 +8,14 @@
     "verdict": "guest-work"
   },
   "creator": "Éléonore Costes",
+  "enrichedAt": {
+    "links": "2026-08-17T16:16:37Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
     "instagram": "eleonorecostes",
+    "tmdb": "96581",
+    "tmdbType": "tv",
     "youtubeChannelId": "UClk29ApkMXJEzf1HoknsEjQ"
   },
   "extractionHistory": [
@@ -73,6 +78,12 @@
       "kind": "official",
       "label": "YouTube",
       "url": "https://www.youtube.com/watch?v=l-zaNNw7LdE&list=PL_ciRsH7uWQz_Dtc_5eextk9OTlBpdz5Y"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/96581"
     }
   ],
   "quote": "quand tu pitches il se passe rien mais il y a tout",

@@ -14,9 +14,14 @@
     "verdict": "guest-work"
   },
   "creator": "Clément Cotentin",
+  "enrichedAt": {
+    "links": "2026-08-17T16:16:53Z"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
-    "instagram": "clementcotentin"
+    "instagram": "clementcotentin",
+    "tmdb": "135184",
+    "tmdbType": "tv"
   },
   "extractionHistory": [
     {
@@ -47,6 +52,24 @@
       "kind": "streaming",
       "label": "Prime Video",
       "url": "https://www.primevideo.com/-/fr/detail/ORELSAN-Montre-jamais-%C3%A7a-%C3%A0-personne/0U99HUI0NF8Q1RLQB4YGN0J2RG"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt15469946/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/135184"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/135184-orelsan-montre-jamais-ca-a-personne/watch?locale=FR"
     }
   ],
   "quote": "C'est une vraie réussite ce documentaire pour moi c'est ton premier vrai gros documentaire.",

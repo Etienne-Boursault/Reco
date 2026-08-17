@@ -13,7 +13,14 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:22Z"
+  },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "externalIds": {
+    "tmdb": "74306",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:20:42+00:00",
@@ -48,6 +55,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/god-bless-america"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1912398/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/74306"
     }
   ],
   "quote": "Ah si, il y en a un qui s'appelle... God Bless America, je crois. Un mec qui est au taf.",

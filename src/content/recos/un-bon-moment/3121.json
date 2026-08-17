@@ -14,7 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Glenn Ficarra, John Requa",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:22Z"
+  },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
+  "externalIds": {
+    "tmdb": "50646",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:20:42+00:00",
@@ -43,6 +50,24 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/crazy-stupid-love/umc.cmc.3vej6ly9q94lncie8z6saklrp"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1570728/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/50646"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/50646-crazy-stupid-love/watch?locale=FR"
     }
   ],
   "quote": "J'ai mis Crazy Stupid Love, qui est pour le coup une comédie romantique qui a des petits défauts, mais qui est... Bah, je trouve, elle a des bons persos.",

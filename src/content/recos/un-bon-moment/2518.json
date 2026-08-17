@@ -13,7 +13,14 @@
     "verdict": "unsure"
   },
   "creator": "Grand Corps Malade & Mehdi Idir",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:14Z"
+  },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
+  "externalIds": {
+    "tmdb": "434616",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T21:45:59+00:00",
@@ -37,6 +44,18 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/patients"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5598100/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/434616"
     }
   ],
   "quote": "pour le film patient",

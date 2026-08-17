@@ -9,7 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Nicolas Béguet",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:10Z"
+  },
   "episodeGuid": "68ef607e58893bb6e322c623",
+  "externalIds": {
+    "tmdb": "1437733",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T10:34:16+00:00",
@@ -48,6 +55,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/bref-de-bons-amis"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt35886394/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1437733"
     }
   ],
   "quote": "qui s'appelle Bref de bons amis",

@@ -9,7 +9,14 @@
     "verdict": "discard"
   },
   "creator": "Nicolas Winding Refn",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:23Z"
+  },
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",
+  "externalIds": {
+    "tmdb": "64690",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-07-18T17:21:01+00:00",
@@ -32,6 +39,18 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/film/drive"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0780504/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/64690"
     }
   ],
   "quote": "c'est le réalisateur de Drive, qui a un nom à prononcer, mais qui est trop fort.",

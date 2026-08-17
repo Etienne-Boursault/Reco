@@ -1,5 +1,12 @@
 {
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:04Z"
+  },
   "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "externalIds": {
+    "tmdb": "1668",
+    "tmdbType": "tv"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-04T15:58:12+00:00",
@@ -31,6 +38,24 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/70153404"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0108778/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1668"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR"
     }
   ],
   "quote": "C'est dans Friends, ça m'intéresse de ouf, moi. Je crois qu'il y a l'épisode entier de Friends, où Phoebe, elle est vénère contre Ross pendant tout l'épisode.",

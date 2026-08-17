@@ -13,7 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Maïmouna Doucouré",
+  "enrichedAt": {
+    "links": "2026-08-17T16:17:15Z"
+  },
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
+  "externalIds": {
+    "tmdb": "582885",
+    "tmdbType": "movie"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T23:35:21+00:00",
@@ -52,6 +59,24 @@
       "kind": "streaming",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/mignonnes"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt9196192/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/582885"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/582885-mignonnes/watch?locale=FR"
     }
   ],
   "quote": "C'est trop bien mignonne.",
