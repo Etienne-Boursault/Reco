@@ -136,17 +136,26 @@ describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
     expect(enfants[enfants.length - 1]!.className).toContain('guestwork-star');
   });
 
-  it('guestWork SANS créateur : le badge ne disparaît pas, la ligne est rendue pour lui seul', async () => {
+  it('guestWork SANS créateur : PAS d’étoile orpheline', async () => {
+    // DÉCISION RENVERSÉE le 2026-08-17. La règle précédente rendait la ligne
+    // pour le seul badge, au motif qu'« un badge orphelin lisible vaut mieux
+    // qu'un badge escamoté ». Elle tenait tant que la pastille disait « Leur
+    // œuvre » en toutes lettres. Réduite à une étoile nue, elle ne qualifie
+    // plus rien : elle pose une question sans donner de quoi y répondre.
     const doc = parse(await render({ ...baseReco, creator: undefined, guestWork: true }));
-    const ligne = doc.querySelector('.creator');
-    expect(ligne).not.toBeNull();
-    expect(ligne!.querySelector('.guestwork-star')).not.toBeNull();
-    // Repli honnête : pas de nom fabriqué ni d'espace réservé vide.
-    expect(ligne!.querySelector('.creator-name')).toBeNull();
-    // Le libellé n'est plus visible : c'est l'info-bulle qui le porte.
-    expect(ligne!.querySelector('.guestwork-star')!.getAttribute('title'))
-      .toContain('Leur œuvre');
-    expect(ligne!.textContent).not.toContain('Untel');
+    expect(doc.querySelector('.guestwork-star')).toBeNull();
+    expect(doc.querySelector('.creator')).toBeNull();
+    // La carte reste parfaitement lisible sans elle.
+    expect(doc.querySelector('.title')!.textContent).toContain('Mon spectacle');
+  });
+
+  it('guestWork AVEC créateur : l’étoile suit le nom', async () => {
+    // Le pendant du test précédent : c'est la présence du nom qui donne son
+    // sens à l'étoile, donc c'est elle qui conditionne son affichage.
+    const doc = parse(await render({ ...baseReco, guestWork: true }));
+    const ligne = doc.querySelector('.creator')!;
+    expect(ligne.querySelector('.creator-name')!.textContent).toContain('Untel');
+    expect(ligne.querySelector('.guestwork-star')).not.toBeNull();
   });
 
   it('la mention se lit dans la ligne méta, plus dans une pastille', async () => {

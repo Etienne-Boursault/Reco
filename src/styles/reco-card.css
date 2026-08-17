@@ -158,9 +158,11 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
-    /* `auto` en haut : la rangée descend au bas de la carte, ce qui aligne
-       les pictogrammes de toutes les cartes d'une même rangée. */
-    margin: auto 0 0;
+    /* PAS de `margin-top: auto` ici : c'est `.meta` qui le porte. Avec les
+       deux, l'espace libre se partageait entre eux et la ligne « Reco de … »
+       flottait au milieu de la carte au lieu de coiffer les icônes
+       (retour utilisateur 2026-08-17). */
+    margin: 0;
     padding-top: 0.4rem;
   }
   /* Bouton-icône rond : on affiche le logo de la plateforme. Surface doublée

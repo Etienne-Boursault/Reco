@@ -367,17 +367,19 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   {/* Le badge « Leur œuvre » qualifie la PERSONNE (« c'est SON œuvre ») : sa
      place est la ligne du créateur, pas la rangée des types — contrairement au
      badge « citation », qui qualifie la reco et reste en haut.
-     REPLI (2026-07-30) : sans créateur connu, la ligne est rendue POUR LE SEUL
-     badge. Le rattacher au titre reviendrait à dire que l'œuvre est de
-     l'émission ; le remonter en haut le ferait sauter d'une carte à l'autre.
-     Un badge orphelin lisible vaut mieux qu'un badge escamoté. */}
+     DÉCISION RENVERSÉE (2026-08-17). La règle précédente rendait la ligne
+     POUR LE SEUL badge quand le créateur était inconnu, au motif qu'« un badge
+     orphelin lisible vaut mieux qu'un badge escamoté ». C'était vrai tant que
+     la pastille disait « Leur œuvre » en toutes lettres : elle se suffisait.
+     Réduite à une étoile nue, elle ne qualifie plus rien — elle pose une
+     question sans donner de quoi y répondre. Sans créateur, plus d'étoile. */}
   {/* `<div>` et NON `<p>` : le pictogramme de signalement est un
      `<details>`, que l'analyseur HTML considère comme du contenu de bloc —
      il FERME le paragraphe en cours. Le ⚠️ se retrouvait donc enfant direct
      de `.card`, un conteneur flex qui « blockifie » son `inline-block`, et
      tombait seul sous le nom du créateur (retour utilisateur 2026-08-17).
      Balisage invalide, pas défaut de style. */}
-  {(reco.creator || isGuestWork) && (
+  {reco.creator && (
     <div class="creator">
       {reco.creator && (<span class="creator-name">{reco.creator}<CreatorFlag name={reco.creator} /></span>)}
       {isGuestWork && (
