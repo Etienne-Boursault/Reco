@@ -43,6 +43,13 @@ CHAMPS_TEXTE_OPTIONNELS = (
     "note",
 )
 
+#: Valeurs admises par `link.kind` et `link.ethics` (`src/content.config.ts`).
+#: Explicites pour la même raison que ci-dessus : les déduire du TypeScript par
+#: expression régulière donnerait une garde qui se croit à jour.
+KINDS_ADMIS = frozenset({"buy", "borrow", "streaming", "info", "official",
+                         "social"})
+ETHICS_ADMIS = frozenset({"indie", "neutral", "avoid"})
+
 #: Sous-champs d'`externalIds`, mêmes règles.
 CHAMPS_EXTERNAL_IDS = (
     "tmdb", "tmdbType", "imdb", "isbn", "musicbrainz", "youtube",
@@ -95,3 +102,44 @@ def test_aucune_chaine_vide_non_plus_sur_creator():
                if isinstance(json.loads(c.read_text(encoding="utf-8")).get("creator"), str)
                and not json.loads(c.read_text(encoding="utf-8"))["creator"].strip()]
     assert not fautifs, f"`creator` vide sur : {fautifs[:5]}"
+
+
+# ---------------------------------------------------------------------------
+# `kind` et `ethics` — le MÊME incident, six mois plus tard
+#
+# Un correctif curé a posé `kind: "ticket"` sur deux liens de billetterie. Le
+# mot est juste en français et absent du schéma ; la suite est restée verte,
+# et c'est `astro build` qui a arrêté le déploiement :
+#
+#     links.1.kind: Invalid option: expected one of "buy"|"borrow"|…
+#
+# Exactement le défaut que ce fichier existe pour attraper, sur un autre champ.
+# ---------------------------------------------------------------------------
+def _liens_du_corpus():
+    """(nom de fichier, lien) pour `links` ET `customLinks`."""
+    for chemin in _recos():
+        doc = json.loads(chemin.read_text(encoding="utf-8"))
+        for cle in ("links", "customLinks"):
+            for lien in (doc.get(cle) or []):
+                if isinstance(lien, dict):
+                    yield chemin.name, cle, lien
+
+
+@pytest.mark.parametrize(("champ", "admis"),
+                         [("kind", KINDS_ADMIS), ("ethics", ETHICS_ADMIS)])
+def test_aucun_lien_ne_porte_une_valeur_hors_enumeration(champ, admis):
+    fautifs = [f"{nom}:{cle}.{champ}={lien[champ]!r}"
+               for nom, cle, lien in _liens_du_corpus()
+               if champ in lien and lien[champ] not in admis]
+    assert not fautifs, (
+        f"`{champ}` hors énumération sur {len(fautifs)} lien(s). "
+        f"Exemples : {fautifs[:5]}"
+    )
+
+
+def test_aucun_lien_sans_url():
+    """`url` est requis par le schéma. Un lien sans URL casse le build, et un
+    lien d'URL vide s'affiche comme un bouton mort."""
+    fautifs = [f"{nom}:{cle}" for nom, cle, lien in _liens_du_corpus()
+               if not (lien.get("url") or "").strip()]
+    assert not fautifs, f"lien sans URL : {fautifs[:5]}"

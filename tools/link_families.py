@@ -51,7 +51,6 @@ HOTES: dict[str, str] = {
     "soundcloud.com": "ecoute",
     "discogs.com": "ecoute",
     "genius.com": "ecoute",
-    "infoconcert.com": "ecoute",
     "printemps-bourges.com": "ecoute",
     "lnk.to": "ecoute",
     # --- Fiche d'œuvre à l'écran -------------------------------------------
@@ -83,6 +82,11 @@ HOTES: dict[str, str] = {
     "pathehome.com": "visionnage",
     "m6.fr": "visionnage",
     "6play.fr": "visionnage",
+    # Boutiques de CAPTATION : on y achète le spectacle filmé, pas une
+    # place. Elles répondent donc à « où le voir », pas à « où le voir
+    # sur scène ».
+    "darksmile.tv": "visionnage",
+    "vod.blanchegardin.com": "visionnage",
     # --- Libraires et éditeurs ---------------------------------------------
     "placedeslibraires.fr": "libraire",
     "parislibrairies.fr": "libraire",
@@ -103,6 +107,9 @@ HOTES: dict[str, str] = {
     "citebd.org": "libraire",
     "babelio.com": "libraire",
     # --- Billetterie et salles ---------------------------------------------
+    # Liste des dates de tournée et renvoie vers la vente : une
+    # billetterie, non un service d'écoute.
+    "infoconcert.com": "billetterie",
     "billetreduc.com": "billetterie",
     "fnacspectacles.com": "billetterie",
     "theatreonline.com": "billetterie",
@@ -268,23 +275,35 @@ HOTES: dict[str, str] = {
     "ticketingcine.com": "billetterie",
 }
 
-#: Type de reco → familles ATTENDUES. Une famille absente de cette table n'est
-#: jamais réclamée : on ne signale un manque que là où il est vraiment un
-#: manque. `artiste` n'attend rien — le type couvre aussi bien un musicien
-#: qu'un humoriste, et réclamer un lien d'écoute pour tous produirait des
-#: homonymes (cf. `enrich_music_links`, « POURQUOI `artiste` EST OPT-IN »).
-FAMILLES_ATTENDUES: dict[str, tuple[str, ...]] = {
-    "film": ("fiche", "visionnage"),
-    "serie": ("fiche", "visionnage"),
-    "musique": ("ecoute",),
-    "album": ("ecoute",),
-    "livre": ("libraire",),
-    "bd": ("libraire",),
-    "spectacle": ("billetterie",),
-    "podcast": ("podcast",),
-    "chaine": ("video",),
-    "jeu": ("jeu",),
-    "application": ("application",),
+#: Type de reco → attentes. Chaque attente est un groupe d'ALTERNATIVES :
+#: elle est satisfaite dès qu'une seule des familles du groupe est présente,
+#: et son premier élément est le nom sous lequel le manque est signalé.
+#:
+#: Une famille absente de cette table n'est jamais réclamée : on ne signale un
+#: manque que là où il est vraiment un manque. `artiste` n'attend rien — le
+#: type couvre aussi bien un musicien qu'un humoriste, et réclamer un lien
+#: d'écoute pour tous produirait des homonymes (cf. `enrich_music_links`,
+#: « POURQUOI `artiste` EST OPT-IN »).
+#:
+#: POURQUOI UN SPECTACLE ACCEPTE UNE CAPTATION
+#: Réclamer une billetterie pour « Baby J », « Foresti Party » ou « L'autre,
+#: c'est moi » n'a pas de sens : ces spectacles sont finis, il n'y a aucune
+#: place à vendre, et ce qu'on peut en proposer au lecteur EST la captation.
+#: Dix-sept recos étaient ainsi signalées pour un manque que rien ne pouvait
+#: combler. Un spectacle attend donc « un moyen d'y accéder », billet quand il
+#: tourne encore, captation sinon.
+FAMILLES_ATTENDUES: dict[str, tuple[tuple[str, ...], ...]] = {
+    "film": (("fiche",), ("visionnage",)),
+    "serie": (("fiche",), ("visionnage",)),
+    "musique": (("ecoute",),),
+    "album": (("ecoute",),),
+    "livre": (("libraire",),),
+    "bd": (("libraire",),),
+    "spectacle": (("billetterie", "visionnage"),),
+    "podcast": (("podcast",),),
+    "chaine": (("video",),),
+    "jeu": (("jeu",),),
+    "application": (("application",),),
 }
 
 
@@ -318,6 +337,14 @@ _CHEMINS: dict[str, tuple[tuple[str, str], ...]] = {
     "open.spotify.com": (("/show/", "podcast"), ("/episode/", "podcast")),
     "spotify.com": (("/show/", "podcast"), ("/episode/", "podcast")),
     "deezer.com": (("/show/", "podcast"), ("/episode/", "podcast")),
+    # Une PLAYLIST YouTube n'est pas une vidéo parmi d'autres : c'est une
+    # œuvre entière, rangée dans l'ordre. Onze séries web du corpus — Groom,
+    # Pitch, Serge, Le Trône des Frogz… — se regardent là et nulle part
+    # ailleurs, et étaient signalées « sans moyen de voir ».
+    #
+    # La distinction avec `/watch` est délibérée : une vidéo isolée peut être
+    # une bande-annonce ou un extrait, une playlist ne l'est jamais.
+    "youtube.com": (("/playlist", "visionnage"),),
 }
 
 
@@ -375,7 +402,12 @@ def familles_manquantes(types, liens) -> set[str]:
     réclamer que réclamer à tort, puisque c'est sur cette liste qu'on ira
     chercher — et chercher au mauvais endroit produit des faux liens.
     """
-    attendues: set[str] = set()
+    presentes = familles_presentes(liens)
+    manquantes: set[str] = set()
     for t in (types or []):
-        attendues.update(FAMILLES_ATTENDUES.get(t, ()))
-    return attendues - familles_presentes(liens)
+        for alternatives in FAMILLES_ATTENDUES.get(t, ()):
+            if not presentes.intersection(alternatives):
+                # Le PREMIER de la liste nomme le manque : c'est celui qu'on
+                # ira chercher en priorité.
+                manquantes.add(alternatives[0])
+    return manquantes

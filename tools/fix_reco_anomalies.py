@@ -237,20 +237,20 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     # Seule la fiche AlloCiné était fausse ; l'alias qui l'a causée part avec.
     "ubm-1547": {
         "attendu": {"types": ["serie"]},
-        "liens": [
-            {"label": "Disney+", "kind": "streaming", "ethics": "avoid",
-             "url": "https://www.disneyplus.com/fr-fr/browse/"
-                    "entity-b329134e-b113-49d6-827e-dd4e0616457f"},
-            {"label": "AlloCiné", "kind": "info", "ethics": "neutral",
-             "url": "https://www.allocine.fr/series/"
-                    "ficheserie_gen_cserie=10520.html"},
-        ],
+        "retirer_liens": ["cserie=1000000468"],
         "retirer_alias": ["bref 2"],
         "pourquoi": (
             "Le transcript (00:42:17) dit « la partie 1 de Bref » et « série à "
             "succès de Canal+ » : c'est « Bref » (2011). Or la reco portait la "
             "fiche AlloCiné 1000000468, qui est « Bref.2 » (2025), et l'alias "
-            "« bref 2 » qui a produit cette confusion."
+            "« bref 2 » qui a produit cette confusion. "
+            "L'entrée REDÉFINISSAIT la liste de liens ; elle retire désormais "
+            "la seule fiche fautive. Le module met en garde contre la "
+            "redéfinition (« la moindre évolution des autres invaliderait "
+            "l'entrée ») et c'est exactement ce qui est arrivé : la fiche "
+            "fautive étant partie, la redéfinition ne faisait plus qu'effacer "
+            "IMDb tt2044128, TMDB 60715 et la page de visionnage — trois liens "
+            "qui désignent le BON « Bref », celui de 2011."
         ),
     },
     # « The Office » : la MÊME régression que Bref, sur cinq recos.
@@ -619,6 +619,37 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "propose « Feelin' Good » là où la reco écrit « Feel "
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
+    },
+    # --- Billetteries relevées sur BilletRéduc le 2026-08-17 ---------------
+    # Deux seulement, et c'est le résultat honnête : sur vingt spectacles
+    # cherchés, le reste ne s'y trouve pas. BilletRéduc couvre surtout le
+    # théâtre parisien à tarif réduit ; les humoristes en tournée vendent
+    # ailleurs. Les faux positifs écartés méritent d'être nommés, parce qu'ils
+    # auraient tous passé une vérification par le seul titre : « Tribute Céline
+    # Dion » (un hommage, pas la chanteuse), « Art Fresca Concert spectacle »
+    # (pas la pièce de Yasmina Reza), deux Barthélémy sans rapport avec
+    # Maurice.
+    "ubm-1514": {
+        "attendu": {"title": "La tragédie du dossard 512"},
+        "ajouter_liens": [{"label": "BilletRéduc", "kind": "buy",
+                           "ethics": "neutral",
+                           "url": "https://www.billetreduc.com/spectacle/"
+                                  "la-tragedie-du-dossard-512-408258"}],
+        "pourquoi": "Le spectacle tourne toujours : BilletRéduc l'affiche sous "
+                    "« Yohann Métay dans La tragédie du dossard 512 », qui "
+                    "nomme l'interprète porté par le champ créateur. La reco "
+                    "n'avait que le site personnel de l'artiste.",
+    },
+    "ubm-2411": {
+        "attendu": {"title": "Murmuration"},
+        "ajouter_liens": [{"label": "BilletRéduc", "kind": "buy",
+                           "ethics": "neutral",
+                           "url": "https://www.billetreduc.com/spectacle/"
+                                  "murmuration-404221"}],
+        "pourquoi": "« Murmuration Level 2 », mis en scène par Sadeck "
+                    "Berrabah — le metteur en scène est nommé sur la page de "
+                    "BilletRéduc et c'est le créateur de la reco. Dates au "
+                    "Dôme de Paris en décembre 2026.",
     },
     "ubm-0862": {
         "attendu": {"types": ["serie"], "title": "Documentaire sur Orelsan"},

@@ -147,9 +147,11 @@ def test_toutes_les_familles_attendues_existent_dans_la_table():
     """Réclamer une famille qu'aucun hôte ne peut fournir rendrait le manque
     inextinguible : la reco resterait signalée à jamais."""
     fournies = set(lf.HOTES.values())
-    for typ, attendues in lf.FAMILLES_ATTENDUES.items():
-        for f in attendues:
-            assert f in fournies, f"{typ} attend « {f} », qu'aucun hôte ne fournit"
+    for typ, attentes in lf.FAMILLES_ATTENDUES.items():
+        for alternatives in attentes:
+            assert alternatives, f"{typ} porte une attente vide"
+            for f in alternatives:
+                assert f in fournies, f"{typ} attend « {f} », qu'aucun hôte ne fournit"
 
 
 def test_aucun_hote_ne_porte_le_prefixe_www():
@@ -229,3 +231,84 @@ def test_un_site_PERSONNEL_ne_couvre_pas_la_famille_podcast():
     L'y ranger ferait disparaître un manque réel du décompte."""
     assert lf.famille("https://www.joerogan.com/") is None
     assert lf.famille("https://billburr.com/") is None
+
+
+# ---------------------------------------------------------------------------
+# Un spectacle attend « un moyen d'y accéder », pas forcément un billet
+# ---------------------------------------------------------------------------
+def test_un_spectacle_FILME_ne_manque_pas_de_billetterie():
+    """« Baby J », « Foresti Party », « L'autre c'est moi » sont finis : il n'y
+    a aucune place à vendre, et ce qu'on peut en proposer au lecteur EST la
+    captation. Dix-sept recos étaient signalées pour un manque que rien ne
+    pouvait combler."""
+    liens = [_lien("https://www.netflix.com/fr/title/81619082")]
+    assert lf.familles_manquantes(["spectacle"], liens) == set()
+
+
+def test_un_spectacle_qui_TOURNE_est_couvert_par_sa_billetterie():
+    liens = [_lien("https://www.billetreduc.com/x/evt.htm")]
+    assert lf.familles_manquantes(["spectacle"], liens) == set()
+
+
+def test_un_spectacle_SANS_billet_NI_captation_reste_signale():
+    """Et le manque est nommé « billetterie » : c'est ce qu'on ira chercher en
+    premier pour un spectacle."""
+    liens = [_lien("https://www.instagram.com/cabaretsaccage/")]
+    assert lf.familles_manquantes(["spectacle"], liens) == {"billetterie"}
+
+
+def test_un_album_du_spectacle_ne_remplace_PAS_le_spectacle():
+    """Un disque n'est pas une captation, et une page d'artiste encore moins :
+    accepter l'écoute éteindrait le signalement sur des recos qui méritent un
+    vrai lien."""
+    liens = [_lien("https://www.deezer.com/album/90157712")]
+    assert lf.familles_manquantes(["spectacle"], liens) == {"billetterie"}
+
+
+def test_infoconcert_est_une_billetterie_pas_un_service_d_ecoute():
+    """Le site liste les dates de tournée et renvoie vers la vente."""
+    assert lf.famille("https://www.infoconcert.com/artiste/pomme-139757/concerts") == "billetterie"
+
+
+@pytest.mark.parametrize("url", [
+    "https://darksmile.tv/produit/vends-2-pieces-a-beyrouth/",
+    "https://vod.blanchegardin.com/spectacle/3/il-faut-que-je",
+])
+def test_les_boutiques_de_captation_repondent_a_ou_le_voir(url):
+    assert lf.famille(url) == "visionnage"
+
+
+def test_un_film_veut_toujours_SES_DEUX_attentes():
+    """Le passage aux alternatives ne doit pas relâcher les autres types : un
+    film sans fiche manque toujours d'une fiche, même s'il est visionnable."""
+    liens = [_lien("https://www.netflix.com/fr/title/1")]
+    assert lf.familles_manquantes(["film"], liens) == {"fiche"}
+
+
+# ---------------------------------------------------------------------------
+# Une playlist YouTube EST l'œuvre
+# ---------------------------------------------------------------------------
+def test_une_playlist_youtube_est_un_moyen_de_voir():
+    """Onze séries web du corpus — Groom, Pitch, Serge, Le Trône des Frogz —
+    se regardent là et nulle part ailleurs, et étaient signalées « sans moyen
+    de voir »."""
+    url = "https://www.youtube.com/playlist?list=PL-CQtpSbsGq"
+    assert lf.famille(url) == "visionnage"
+    assert lf.familles_manquantes(["serie"], [_lien(url),
+                                              _lien("https://www.imdb.com/title/tt1/")]) == set()
+
+
+def test_une_video_ISOLEE_reste_de_la_video():
+    """La distinction est délibérée : une vidéo seule peut être une
+    bande-annonce ou un extrait, une playlist ne l'est jamais. Confondre les
+    deux ferait passer un teaser pour l'œuvre."""
+    assert lf.famille("https://www.youtube.com/watch?v=abc") == "video"
+
+
+def test_une_chaine_reste_couverte_par_sa_playlist():
+    """La règle ne doit pas déshabiller `chaine`, qui attend `video` : une
+    chaîne dont le seul lien serait une playlist ne doit pas devenir
+    découverte."""
+    liens = [_lien("https://www.youtube.com/@UneChaine"),
+             _lien("https://www.youtube.com/playlist?list=PL1")]
+    assert lf.familles_manquantes(["chaine"], liens) == set()
