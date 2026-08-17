@@ -29,7 +29,8 @@ def test_chaque_correction_porte_sa_justification():
         assert fix.get("attendu"), f"{rid} : sans `attendu`, aucun garde-fou"
         assert any(k in fix for k in
                    ("types", "liens", "creator", "titre", "recommande_par",
-                    "ajouter_liens", "retirer_liens", "retirer_alias")), rid
+                    "ajouter_liens", "retirer_liens", "retirer_alias",
+                    "retirer_external_ids")), rid
 
 
 def test_aucune_correction_ne_produit_un_type_vide():
@@ -345,4 +346,61 @@ def test_un_titre_deja_bon_ne_declenche_rien(monkeypatch):
                   "pourquoi": "cas synthétique de vérification du titre"},
     })
     doc = _doc("ubm-1", types=["serie"], title="Déjà juste")
+    assert fra.transform(doc) == []
+
+
+# ---------------------------------------------------------------------------
+# Retrait d'identifiants externes
+#
+# Ces champs ne s'affichent NULLE PART, et c'est ce qui les rend dangereux :
+# une passe d'enrichissement peut promouvoir des mois plus tard un
+# `externalIds.deezer` pose sur un photographe, en lien d'écoute vers un
+# homonyme. Cas réel : ubm-1896, « Odieux Boby ».
+# ---------------------------------------------------------------------------
+def test_retire_un_identifiant_externe_faux(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["artiste"]},
+                  "retirer_external_ids": ["deezer"],
+                  "pourquoi": "cas synthétique de retrait d'identifiant"},
+    })
+    doc = _doc("ubm-1", types=["artiste"],
+               externalIds={"deezer": "https://www.deezer.com/artist/1",
+                            "instagram": "quelquun"})
+    ch = fra.transform(doc)
+    assert doc["externalIds"] == {"instagram": "quelquun"}
+    assert len(ch) == 1 and ch[0].field == "externalIds"
+
+
+def test_le_dernier_identifiant_retire_supprime_la_cle(monkeypatch):
+    """Un `externalIds: {}` laisserait croire à une vérification faite."""
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["artiste"]},
+                  "retirer_external_ids": ["deezer"],
+                  "pourquoi": "cas synthétique de retrait d'identifiant"},
+    })
+    doc = _doc("ubm-1", types=["artiste"],
+               externalIds={"deezer": "https://www.deezer.com/artist/1"})
+    fra.transform(doc)
+    assert "externalIds" not in doc
+
+
+def test_retirer_un_identifiant_absent_ne_change_rien(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["artiste"]},
+                  "retirer_external_ids": ["spotify"],
+                  "pourquoi": "cas synthétique de retrait d'identifiant"},
+    })
+    doc = _doc("ubm-1", types=["artiste"],
+               externalIds={"deezer": "https://www.deezer.com/artist/1"})
+    assert fra.transform(doc) == []
+    assert doc["externalIds"] == {"deezer": "https://www.deezer.com/artist/1"}
+
+
+def test_retrait_sur_une_reco_sans_externalIds(monkeypatch):
+    monkeypatch.setattr(fra, "CORRECTIONS", {
+        "ubm-1": {"attendu": {"types": ["artiste"]},
+                  "retirer_external_ids": ["deezer"],
+                  "pourquoi": "cas synthétique de retrait d'identifiant"},
+    })
+    doc = _doc("ubm-1", types=["artiste"])
     assert fra.transform(doc) == []

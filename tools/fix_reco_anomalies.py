@@ -641,6 +641,30 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "(ubm-0588, ubm-1958) portent déjà la bonne graphie, "
                     "confirmée par le lien Wikipédia de ubm-1958.",
     },
+    "ubm-0772": {
+        "attendu": {"types": ["artiste"], "creator": "Corey Wong"},
+        "creator": "Cory Wong",
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/8607980"}],
+        "pourquoi": "Le TITRE portait déjà la bonne graphie, « Cory Wong » — "
+                    "c'est le créateur qui suivait la transcription "
+                    "(« Corey »). Guitariste de Vulfpeck, comme le dit la "
+                    "citation ; Deezer artist/8607980, 76 albums.",
+    },
+    "ubm-1896": {
+        "attendu": {"types": ["artiste", "autre"], "title": "Bobby"},
+        "titre": "Odieux Boby",
+        "creator": "Odieux Boby",
+        "retirer_external_ids": ["deezer"],
+        "pourquoi": "PAS UN MUSICIEN. La citation dit « une expo de Bobby le "
+                    "PHOTOGRAPHE », et les deux liens de la reco pointent le "
+                    "Musée National du Sport et la page Wikipédia « Odieux "
+                    "Boby » — Boris Allin, photographe et photojournaliste. Un "
+                    "`externalIds.deezer` avait pourtant été stocké : un faux "
+                    "positif d'une passe automatique, qu'une prochaine aurait "
+                    "promu en lien d'écoute vers un homonyme. Retiré.",
+    },
 }
 
 
@@ -730,6 +754,21 @@ def transform(doc: dict[str, Any]) -> list[Change]:
                 field="links", before=avant_urls,
                 after=[link.get("url") for link in doc["links"]
                        if isinstance(link, dict)]))
+    # RETRAIT d'identifiants externes FAUX. Ils ne s'affichent nulle part —
+    # et c'est précisément le danger : une passe d'enrichissement peut les
+    # promouvoir en lien visible des mois plus tard. Un `externalIds.deezer`
+    # posé sur un photographe finirait en lien d'écoute vers un homonyme.
+    if "retirer_external_ids" in fix:
+        ids = doc.get("externalIds")
+        if isinstance(ids, dict):
+            retires = {c: ids[c] for c in fix["retirer_external_ids"] if c in ids}
+            if retires:
+                for cle in retires:
+                    del ids[cle]
+                changes.append(Change(field="externalIds",
+                                      before=retires, after=None))
+                if not ids:
+                    doc.pop("externalIds", None)
     # RETRAIT ciblé, par fragment d'URL. Distinct de `liens`, qui redéfinit
     # toute la liste : quand un seul lien est fautif parmi sept, redéfinir les
     # sept obligerait à tous les recopier dans la table — verbeux, et surtout
