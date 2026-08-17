@@ -196,3 +196,171 @@ def test_build_parser_defaut_dry_run_et_toutes_les_regles():
     assert args.apply is False
     assert args.rule is None          # None → toutes les règles, cf. main
     assert fdl.build_parser().parse_args(["--rule", "allocine"]).rule == ["allocine"]
+
+
+# ===========================================================================
+# RÈGLE `variantes` — la même page sous deux adresses
+# ===========================================================================
+def _variantes(urls):
+    doc = _doc(urls)
+    changes = fdl.transform_factory(["variantes"])(doc)
+    return _urls(doc), changes
+
+
+def test_le_segment_de_langue_est_retire_au_profit_de_l_adresse_neutre():
+    """Sans segment de langue, la plateforme redirige selon le VISITEUR.
+
+    C'est la décision déjà prise pour Deezer (cf. `fix_deezer_locale`), et pour
+    la même raison : ce site est duplicable, un fork peut être anglophone, et
+    câbler le français en dur lui imposerait un choix franco-centré.
+    """
+    restants, ch = _variantes(["https://www.netflix.com/title/70143836",
+                               "https://www.netflix.com/fr-en/title/70143836"])
+    assert restants == ["https://www.netflix.com/title/70143836"]
+    assert len(ch) == 1
+
+
+def test_fr_en_n_est_PAS_du_francais():
+    """« fr-en » est la convention pays-langue de Netflix : France, en ANGLAIS.
+    Le prendre pour du français ferait garder la version anglaise."""
+    restants, _ = _variantes(["https://www.netflix.com/fr-en/title/70143836",
+                              "https://www.netflix.com/fr/title/70143836"])
+    assert restants == ["https://www.netflix.com/fr/title/70143836"]
+
+
+def test_entre_deux_langues_le_francais_l_emporte():
+    restants, _ = _variantes(["https://www.netflix.com/gf/title/82157057",
+                              "https://www.netflix.com/fr/title/82157057"])
+    assert restants == ["https://www.netflix.com/fr/title/82157057"]
+
+
+def test_spotify_intl_fr_est_une_variante():
+    restants, _ = _variantes([
+        "https://open.spotify.com/intl-fr/album/1cOIpFhvmwtWvG2tuC47Ha",
+        "https://open.spotify.com/album/1cOIpFhvmwtWvG2tuC47Ha"])
+    assert restants == ["https://open.spotify.com/album/1cOIpFhvmwtWvG2tuC47Ha"]
+
+
+def test_le_libelle_du_chemin_est_decoratif():
+    """Prime Video sert le même identifiant avec ou sans titre commercial.
+    Le titre bouge (traduction, renommage), l'identifiant non."""
+    court = "https://www.primevideo.com/-/fr/detail/0OB9NDUVQKFRSYRSCHT2A784TI"
+    long = "https://www.primevideo.com/-/fr/detail/Fleabag/0OB9NDUVQKFRSYRSCHT2A784TI"
+    restants, ch = _variantes([court, long])
+    assert restants == [court]
+    assert len(ch) == 1
+
+
+def test_un_parametre_de_suivi_ne_change_pas_la_cible():
+    nu = "https://music.apple.com/fr/album/lhorizon/1588117066"
+    suivi = "https://music.apple.com/fr/album/lhorizon/1588117066?uo=4"
+    restants, _ = _variantes([nu, suivi])
+    assert restants == [nu]
+
+
+def test_l_ordre_d_origine_est_preserve():
+    """La carte affiche les liens dans l'ordre du fichier : dédupliquer ne doit
+    pas les réordonner, sous peine de changer l'apparence sans raison."""
+    autre = "https://www.imdb.com/title/tt0386676/"
+    restants, _ = _variantes([autre,
+                              "https://www.netflix.com/fr-en/title/70143836",
+                              "https://www.netflix.com/title/70143836"])
+    assert restants == [autre, "https://www.netflix.com/title/70143836"]
+
+
+# --- Ce que la règle ne DOIT PAS toucher -----------------------------------
+def test_page_artiste_et_album_sont_COMPLEMENTAIRES():
+    """Deux niveaux d'une même œuvre : les fusionner appauvrirait la carte."""
+    urls = ["https://www.deezer.com/artist/7733482",
+            "https://www.deezer.com/album/287075802"]
+    restants, ch = _variantes(urls)
+    assert restants == urls and ch == []
+
+
+def test_morceau_et_album_sont_COMPLEMENTAIRES():
+    urls = ["https://open.spotify.com/track/6d0FumooL1BqVsyOSbUszw",
+            "https://open.spotify.com/album/0a5L9WyCuCKqevPJOiYCeL"]
+    restants, ch = _variantes(urls)
+    assert restants == urls and ch == []
+
+
+def test_deux_playlists_YouTube_distinctes_restent():
+    """`list` est l'IDENTIFIANT d'une playlist, pas un paramètre de suivi.
+    Le traiter comme du bruit confondrait deux playlists différentes."""
+    urls = ["https://www.youtube.com/playlist?list=PL-CQtpSbsGq105dCFnTB7V0jPhF4HkXaS",
+            "https://www.youtube.com/playlist?list=PL-CQtpSbsGq1-0x7i1IKUGrow0w79R2Fs"]
+    restants, ch = _variantes(urls)
+    assert restants == urls and ch == []
+
+
+def test_serie_et_tome_restent():
+    """Glénat publie une page série et une page tome : deux objets distincts."""
+    urls = ["https://www.glenat.com/manga/series/tokyo-revengers",
+            "https://www.glenat.com/shonen/tokyo-revengers-tome-01-9782344035290"]
+    restants, ch = _variantes(urls)
+    assert restants == urls and ch == []
+
+
+def test_une_url_sans_identifiant_n_est_jamais_rapprochee():
+    """Sans identifiant exploitable, deux adresses ne peuvent pas être
+    déclarées équivalentes — on garde les deux plutôt que de trancher au jugé."""
+    urls = ["https://exemple.fr/a/b", "https://exemple.fr/c/d"]
+    restants, ch = _variantes(urls)
+    assert restants == urls and ch == []
+
+
+def test_empreinte_refuse_une_url_illisible():
+    assert fdl.empreinte_variante("https://[::1") is None
+    assert fdl.empreinte_variante("pas une url") is None
+    assert fdl.empreinte_variante("https://exemple.fr/") is None
+
+
+# ===========================================================================
+# RÈGLE `racine` — l'accueil quand une page précise existe
+# ===========================================================================
+def _racine(urls):
+    doc = _doc(urls)
+    changes = fdl.transform_factory(["racine"])(doc)
+    return _urls(doc), changes
+
+
+def test_la_racine_disparait_si_une_page_precise_existe():
+    profond = "https://bigfloetoli.com/products/cd-karma"
+    restants, ch = _racine(["https://bigfloetoli.com/", profond])
+    assert restants == [profond]
+    assert len(ch) == 1
+
+
+def test_la_racine_SEULE_est_conservee():
+    """Sans page précise, l'accueil reste le meilleur lien disponible —
+    le retirer laisserait la reco sans aucun lien."""
+    urls = ["https://bigfloetoli.com/"]
+    restants, ch = _racine(urls)
+    assert restants == urls and ch == []
+
+
+def test_la_racine_d_un_AUTRE_hote_est_conservee():
+    """Une page profonde ne rend redondante que la racine de SON site."""
+    urls = ["https://exemple.fr/", "https://autresite.fr/une/page/precise"]
+    restants, ch = _racine(urls)
+    assert restants == urls and ch == []
+
+
+def test_une_racine_avec_parametres_n_en_est_pas_une():
+    """`site.fr/?p=12` désigne une page, pas l'accueil."""
+    urls = ["https://exemple.fr/?p=12", "https://exemple.fr/une/page"]
+    restants, ch = _racine(urls)
+    assert restants == urls and ch == []
+
+
+def test_racine_tolere_une_url_illisible():
+    urls = ["https://[::1", "https://exemple.fr/une/page"]
+    restants, ch = _racine(urls)
+    assert restants == urls and ch == []
+
+
+def test_preference_tolere_une_url_illisible():
+    """`urlparse` lève sur un IPv6 malformé. Une URL de travers ne doit pas
+    faire tomber le départage — elle est simplement traitée comme sans langue."""
+    assert fdl._preference({"url": "https://[::1"})[0] == 0
+    assert fdl._preference({})[0] == 0

@@ -51,6 +51,7 @@ import argparse
 import re
 from collections.abc import Sequence
 from typing import Any
+from urllib.parse import parse_qs, urlparse
 
 import dataset_fixes
 from dataset_fixes import Change, add_common_args, run
@@ -83,7 +84,7 @@ EDITIONS: dict[str, str] = {
 
 _RE_PDL_ISBN = re.compile(r"placedeslibraires\.fr/livre/(\d{13})", re.IGNORECASE)
 
-RULES = ("allocine", "editions")
+RULES = ("allocine", "editions", "variantes", "racine")
 
 
 def allocine_key(url: str) -> tuple[str, str] | None:
@@ -134,7 +135,176 @@ def _rule_editions(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], 
     return garder, changes
 
 
-_IMPLS = {"allocine": _rule_allocine, "editions": _rule_editions}
+
+
+# ---------------------------------------------------------------------------
+# RÈGLE `variantes` — la même page sous deux adresses
+#
+# Trois formes relevées sur le corpus, toutes menant au MÊME contenu :
+#
+#     segment de langue   netflix.com/title/70143836
+#                         netflix.com/fr-en/title/70143836
+#                         open.spotify.com/album/X · /intl-fr/album/X
+#                         hbomax.com/fr/en/shows/…/ID · /fr/fr/shows/…/ID
+#     libellé facultatif  primevideo.com/-/fr/detail/ID
+#                         primevideo.com/-/fr/detail/Fleabag/ID
+#     paramètre de suivi  music.apple.com/…/1588117066?uo=4
+#
+# On garde la forme la PLUS COURTE : elle est stable, tandis qu'un segment de
+# langue fige la langue du visiteur et qu'un libellé bouge avec le titre
+# commercial. Le rapprochement se fait sur l'EMPREINTE — hôte plus identifiant
+# —, jamais sur le titre du lien.
+# ---------------------------------------------------------------------------
+
+#: Segments à ignorer dans un chemin : langues (`fr`, `fr-en`, `intl-fr`) et
+#: séparateurs de Prime Video.
+_RE_LANGUE = re.compile(r"^(?:intl-)?[a-z]{2}(?:-[a-z]{2})?$", re.IGNORECASE)
+
+#: Paramètres qui ne changent pas la cible. `list` en est ABSENT : sur
+#: `/playlist?list=…` il EST l'identifiant, et l'ignorer confondrait deux
+#: playlists distinctes.
+_PARAMS_SUIVI = frozenset({
+    "uo", "at", "app", "ls", "i", "si", "index", "t", "pp", "feature",
+    "utm_source", "utm_medium", "utm_campaign", "utm_content",
+})
+
+#: Identifiant reconnaissable en fin d'URL, par site. Sert à rapprocher deux
+#: adresses dont seuls les segments décoratifs diffèrent.
+_RE_ID_FINAL = re.compile(r"[A-Za-z0-9]{8,}$")
+
+
+def empreinte_variante(url: str) -> str | None:
+    """Empreinte d'une URL, débarrassée de ce qui ne change pas sa cible.
+
+    Renvoie None si l'URL n'expose aucun identifiant exploitable : sans lui,
+    deux adresses ne peuvent pas être déclarées équivalentes, et on préfère
+    garder les deux liens plutôt que d'en supprimer un au jugé.
+    """
+    try:
+        p = urlparse(url)
+    except ValueError:
+        return None
+    hote = (p.hostname or "").lower().removeprefix("www.")
+    if not hote:
+        return None
+    segments = [s for s in p.path.split("/") if s and s != "-"]
+    # Les segments de langue disparaissent, où qu'ils soient dans le chemin.
+    segments = [s for s in segments if not _RE_LANGUE.match(s)]
+    if not segments:
+        return None
+    # L'identifiant est le dernier segment qui en a l'allure ; ce qui le
+    # précède (libellé, titre commercial) est décoratif.
+    identifiant = next((s for s in reversed(segments) if _RE_ID_FINAL.match(s)), None)
+    if identifiant is None:
+        return None
+    params = sorted(f"{k}={v[0]}" for k, v in parse_qs(p.query).items()
+                    if k not in _PARAMS_SUIVI)
+    # Le type de page (`title`, `album`, `shows`…) reste dans l'empreinte :
+    # un album et un morceau de même identifiant ne sont pas la même page.
+    genre = next((s for s in segments if s != identifiant), "")
+    return "|".join([hote, genre, identifiant, *params])
+
+
+#: Segment désignant explicitement le français. « fr-en » n'en est PAS un :
+#: c'est la convention pays-langue de Netflix, « France, en anglais ».
+_LANGUE_FR = re.compile(r"^(?:intl-)?fr(?:-fr)?$", re.IGNORECASE)
+
+
+def _preference(link: dict) -> tuple[int, int, int]:
+    """Ordre de préférence entre deux adresses équivalentes.
+
+    L'ABSENCE de segment de langue l'emporte, et ce n'est pas un détail : sans
+    lui, la plateforme redirige selon le visiteur. C'est la décision déjà prise
+    pour les URL Deezer (cf. `fix_deezer_locale`), et pour la même raison — ce
+    site est DUPLICABLE, un fork peut être anglophone, et câbler le français en
+    dur lui imposerait un choix franco-centré.
+
+    Entre deux adresses qui portent toutes deux une langue, on préfère le
+    français au reste (« /fr/ » plutôt que « /gf/ »), puis la plus courte.
+    """
+    url = link.get("url") or ""
+    try:
+        segments = [s for s in urlparse(url).path.split("/") if s]
+    except ValueError:
+        segments = []
+    langues = [s for s in segments if _RE_LANGUE.match(s)]
+    return (1 if langues else 0,
+            0 if any(_LANGUE_FR.match(s) for s in langues) else 1,
+            len(url))
+
+
+def _rule_variantes(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], list[Change]]:
+    """Ne garde qu'une adresse par empreinte : la plus courte."""
+    par_empreinte: dict[str, list[dict]] = {}
+    sans_empreinte = []
+    for link in liens:
+        emp = empreinte_variante(link.get("url") or "")
+        if emp is None:
+            sans_empreinte.append(link)
+        else:
+            par_empreinte.setdefault(emp, []).append(link)
+
+    garder, changes = list(sans_empreinte), []
+    for groupe in par_empreinte.values():
+        if len(groupe) == 1:
+            garder.append(groupe[0])
+            continue
+        gagnant = min(groupe, key=_preference)
+        garder.append(gagnant)
+        for link in groupe:
+            if link is not gagnant:
+                changes.append(Change(field="links[].url",
+                                      before=link.get("url"), after=None))
+    # L'ordre d'origine est préservé : la carte affiche les liens dans l'ordre
+    # du fichier, et le bousculer changerait l'apparence sans raison.
+    ordre = {id(link): i for i, link in enumerate(liens)}
+    garder.sort(key=lambda link: ordre.get(id(link), 0))
+    return garder, changes
+
+
+# ---------------------------------------------------------------------------
+# RÈGLE `racine` — l'accueil d'un site quand une page précise existe
+#
+#     bigfloetoli.com/                  ← n'apprend rien de plus
+#     bigfloetoli.com/products/cd-karma ← l'œuvre recommandée
+#
+# La page d'accueil ne mène à l'œuvre qu'au prix d'une recherche ; l'inverse
+# n'est pas vrai. On ne la retire QUE si une page profonde du même hôte est
+# présente — seule, elle reste le meilleur lien disponible.
+# ---------------------------------------------------------------------------
+def _est_racine(url: str) -> bool:
+    try:
+        p = urlparse(url)
+    except ValueError:
+        return False
+    return not [s for s in p.path.split("/") if s] and not p.query
+
+
+def _rule_racine(doc: dict[str, Any], liens: list[dict]) -> tuple[list[dict], list[Change]]:
+    def _hote(url: str) -> str:
+        """`urlparse` LÈVE sur un IPv6 malformé (« https://[::1 ») : une seule
+        URL saisie de travers ferait tomber la passe entière."""
+        try:
+            return (urlparse(url).hostname or "").lower()
+        except ValueError:
+            return ""
+
+    profonds = {h for link in liens
+                if link.get("url") and not _est_racine(link["url"])
+                and (h := _hote(link["url"]))}
+    garder, changes = [], []
+    for link in liens:
+        url = link.get("url") or ""
+        hote = _hote(url)
+        if url and _est_racine(url) and hote in profonds:
+            changes.append(Change(field="links[].url", before=url, after=None))
+            continue
+        garder.append(link)
+    return garder, changes
+
+
+_IMPLS = {"allocine": _rule_allocine, "editions": _rule_editions,
+          "variantes": _rule_variantes, "racine": _rule_racine}
 
 
 def transform_factory(rules: Sequence[str]):
