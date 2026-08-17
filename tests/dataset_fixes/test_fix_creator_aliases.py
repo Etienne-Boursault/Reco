@@ -72,16 +72,28 @@ def test_transform_ignores_unknown_creator():
 
 
 def test_transform_never_fills_an_absent_or_empty_creator():
-    """Garantie centrale : jamais d'écriture sur un `creator` vide.
+    """Garantie centrale : ce correctif ne met JAMAIS un nom là où il n'y en
+    avait pas.
 
-    C'est ce qui rend le correctif incapable de violer
+    C'est ce qui le rend structurellement incapable de violer
     `tools/creators_exclusions.txt` (« ce creator doit rester VIDE »).
+
+    Formulée sur ce que la garantie protège — l'absence de NOM — et non sur
+    « ne rien toucher ». Le correctif normalise en effet les absences mal
+    écrites (`null`, `""`) vers la seule forme que le schéma accepte : la clé
+    retirée. C'est une réparation, pas un remplissage, et la première version
+    de ce test confondait les deux.
     """
     for reco in ({"id": "ubm-1"}, {"id": "ubm-2", "creator": ""},
                  {"id": "ubm-3", "creator": None}, {"id": "ubm-4", "creator": 42}):
-        before = dict(reco)
-        assert fca.transform(reco) == []
-        assert reco == before
+        fca.transform(reco)
+        assert not isinstance(reco.get("creator"), str) or not reco["creator"].strip()
+
+    # Un type inattendu est laissé tel quel : le corriger demanderait de
+    # DEVINER ce qu'il voulait dire.
+    inattendu = {"id": "ubm-4", "creator": 42}
+    assert fca.transform(inattendu) == []
+    assert inattendu["creator"] == 42
 
 
 def test_all_alias_targets_differ_from_their_source():
@@ -273,8 +285,34 @@ def test_transform_vide_un_createur_placeholder():
     for brut in ("N/A", "n/a", "  N/A  ", "Inconnu", "?"):
         reco = {"id": "ubm-1", "creator": brut}
         changes = fca.transform(reco)
-        assert reco["creator"] is None, brut
+        assert "creator" not in reco, brut
         assert len(changes) == 1 and changes[0].after is None, brut
+
+
+def test_vider_RETIRE_la_cle_au_lieu_decrire_null():
+    """La collection `recos` déclare `creator: z.string().optional()` — SANS
+    `nullable`. Un `creator: null` y est donc invalide, et fait échouer le
+    build Astro entier : « Expected type string, received object » (Zod
+    rapporte `null` comme un objet).
+
+    C'est arrivé sur 113 recos. Les 902 recos sans créateur connu n'ont, elles,
+    tout simplement PAS la clé — c'est la seule représentation valable de
+    l'absence, et celle que ce correctif doit produire.
+    """
+    reco = {"id": "ubm-1", "creator": "N/A", "title": "T"}
+    fca.transform(reco)
+    assert "creator" not in reco
+    # Le reste de la reco est intact : on retire une clé, on ne réécrit pas.
+    assert reco == {"id": "ubm-1", "title": "T"}
+
+
+def test_un_createur_deja_null_est_NETTOYE(monkeypatch):
+    """Les 113 recos abîmées portent déjà `null` : le correctif doit savoir les
+    réparer, sinon il faudrait une passe à part pour son propre dégât."""
+    reco = {"id": "ubm-1", "creator": None}
+    changes = fca.transform(reco)
+    assert "creator" not in reco
+    assert len(changes) == 1
 
 
 def test_transform_ne_touche_pas_un_vrai_nom():
@@ -283,12 +321,21 @@ def test_transform_ne_touche_pas_un_vrai_nom():
     assert reco["creator"] == "Anna Apter"
 
 
-def test_transform_laisse_un_createur_deja_vide():
+def test_transform_laisse_un_createur_deja_absent():
     """Ne JAMAIS remplir un champ vide : c'est ce qui rend ce correctif
     structurellement incapable de violer `creators_exclusions.txt`."""
-    for vide in (None, "", "   "):
+    reco = {"id": "ubm-1"}
+    assert fca.transform(reco) == []
+    assert "creator" not in reco
+
+
+def test_une_chaine_vide_est_retiree_elle_aussi():
+    """`""` n'est pas plus valable que `null` : le schéma attend une chaîne,
+    mais une chaîne VIDE affiche une ligne créateur sans nom."""
+    for vide in ("", "   "):
         reco = {"id": "ubm-1", "creator": vide}
-        assert fca.transform(reco) == []
+        fca.transform(reco)
+        assert "creator" not in reco, repr(vide)
 
 
 def test_un_alias_prime_sur_le_placeholder():

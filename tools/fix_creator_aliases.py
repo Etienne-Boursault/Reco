@@ -216,7 +216,17 @@ def transform(reco: dict[str, Any]) -> list[Change]:
     « ce creator doit rester VIDE ».
     """
     current = reco.get("creator")
-    if not isinstance(current, str) or not current.strip():
+    # `null` ou chaîne vide : ce n'est pas une absence, c'est une absence MAL
+    # ÉCRITE. La collection `recos` déclare `creator: z.string().optional()`,
+    # sans `nullable` : un `creator: null` y fait échouer le build Astro entier
+    # (« Expected type string, received object », Zod rapportant `null` comme
+    # un objet). La seule représentation valable est l'ABSENCE DE CLÉ — c'est
+    # celle des 902 recos sans créateur connu.
+    if "creator" in reco and (current is None
+                              or (isinstance(current, str) and not current.strip())):
+        del reco["creator"]
+        return [Change(field="creator", before=current, after=None)]
+    if not isinstance(current, str):
         return []
     if current in ALIASES:
         canonical = ALIASES[current]
@@ -230,7 +240,8 @@ def transform(reco: dict[str, Any]) -> list[Change]:
     # La table `ALIASES` est consultée AVANT : une valeur explicitement curée
     # l'emporte sur la règle générique.
     if fold(current) in PLACEHOLDERS:
-        reco["creator"] = None
+        # RETIRÉ, pas mis à `null` : cf. la note en tête de fonction.
+        del reco["creator"]
         return [Change(field="creator", before=current, after=None)]
     return []
 
