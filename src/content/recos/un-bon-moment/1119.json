@@ -15,7 +15,8 @@
   },
   "creator": "Tomas Tang",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:41Z"
+    "creator": "2026-07-29T08:41:41Z",
+    "links": "2026-07-31T20:23:03Z"
   },
   "episodeGuid": "6322de1f35ce9e001229f98a",
   "externalIds": {
@@ -69,6 +70,18 @@
       "kind": "info",
       "label": "Fiche AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=170618.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5823524/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/194209"
     }
   ],
   "quote": "Crocodile Fury, qui est un gros classique, qui est incroyable.",

@@ -14,6 +14,9 @@
     "verdict": "unsure"
   },
   "creator": "The Dø",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:09Z"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
   "extractionHistory": [
     {
@@ -64,6 +67,12 @@
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/8729983"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/shake-shook-shaken/896186560?uo=4"
     }
   ],
   "quote": "Et je te conseille d'écouter l'album qui est excellent, Shake Shook Shaken.",

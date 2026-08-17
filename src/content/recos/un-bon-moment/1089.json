@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Kevin Smith",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:01Z"
+  },
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/96658-masters-of-the-universe-revelation/watch?locale=FR",
     "tmdb": "96658",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/96658-masters-of-the-universe-revelation/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "AlloCiné — fiche série",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=25512.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10826054/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/96658"
     }
   ],
   "quote": "Je vous recommande la série Master of the Universe sur Netflix. C'est Musclore.",

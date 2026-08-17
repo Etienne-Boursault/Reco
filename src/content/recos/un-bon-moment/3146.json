@@ -31,10 +31,28 @@
   "kind": "citation",
   "links": [
     {
-      "ethics": "indie",
+      "ethics": "neutral",
       "kind": "streaming",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/comment-c-est-loin"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm-236147/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt4576612/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/366564"
     },
     {
       "ethics": "neutral",

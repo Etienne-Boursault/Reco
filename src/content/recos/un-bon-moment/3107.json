@@ -10,6 +10,9 @@
     "verdict": "citation"
   },
   "creator": "Larry David",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:59Z"
+  },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
   "extractionHistory": [
     {
@@ -28,6 +31,24 @@
   "id": "ubm-3107",
   "kind": "citation",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/fr-en/TITLE/70153373"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0098904/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1400"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

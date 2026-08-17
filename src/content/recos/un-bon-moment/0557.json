@@ -1,10 +1,13 @@
 {
   "creator": "Claude Lelouch",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:40Z"
+  },
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/76329-la-bonne-annee/watch?locale=FR",
     "tmdb": "76329",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/76329-la-bonne-annee/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,6 +65,18 @@
       "kind": "streaming",
       "label": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/film/la-bonne-annee-claude-lelouch-vod"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0069815/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/76329"
     }
   ],
   "quote": "La Bonne Année, par exemple. Film de Claude Lelouch. Pas un des plus connus. Chef d'œuvre totale.",

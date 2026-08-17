@@ -14,12 +14,15 @@
     "verdict": "validate"
   },
   "creator": "Jonathan Cohen",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:36Z"
+  },
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
     "instagram": "jonathancohens",
-    "justwatch": "https://www.themoviedb.org/movie/1166170-l-ame-ideale/watch?locale=FR",
     "tmdb": "1166170",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1166170-l-ame-ideale/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -77,6 +80,18 @@
       "kind": "info",
       "label": "AlloCiné — offres VOD",
       "url": "https://www.allocine.fr/film/fichefilm-300387/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt35526093/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1166170"
     }
   ],
   "quote": "moi j'ai vu le plus beau film de l'année 2025 L'âme idéale",

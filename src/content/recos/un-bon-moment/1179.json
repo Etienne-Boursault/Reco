@@ -13,7 +13,7 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "autre",
+  "creator": null,
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
   "extractionHistory": [
     {
@@ -66,7 +66,6 @@
   "title": "3 minutes pour comprendre",
   "transcriptSource": "youtube",
   "types": [
-    "livre",
-    "autre"
+    "livre"
   ]
 }

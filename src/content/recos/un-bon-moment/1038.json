@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "externalIds": {
+    "youtubeChannelId": "UCdL3UpiseRlvxXuORJjmqZw"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -53,7 +56,7 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "YouTube",
-      "url": "https://www.youtube.com/channel/UCdL3UpiseRlvxXuORJjmqZw"
+      "url": "https://www.youtube.com/@StardustYT"
     }
   ],
   "quote": "Stardust, allez la voir !",
@@ -64,7 +67,6 @@
   "title": "Stardust",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "chaine"
   ]
 }

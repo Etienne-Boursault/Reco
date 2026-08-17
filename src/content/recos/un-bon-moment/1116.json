@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Jonah Hill",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:03Z"
+  },
   "episodeGuid": "6302667b4913bd00126c374c",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/437586-mid90s/watch?locale=FR",
     "tmdb": "437586",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/437586-mid90s/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=246281.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5613484/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/437586"
     }
   ],
   "quote": "en film tu as \"Mid 90's\" de Jonah Hill qui est incroyable",

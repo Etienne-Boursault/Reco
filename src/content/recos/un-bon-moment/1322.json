@@ -4,6 +4,9 @@
     "Ego"
   ],
   "episodeGuid": "6a10a31516a6aa135ed729e1",
+  "externalIds": {
+    "youtubeChannelId": "UC2ruguOcwnVR2_4DtiGnmLg"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-03T19:15:33+00:00",
@@ -45,9 +48,15 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
+      "kind": "official",
       "label": "Chaîne YouTube TheGreatReview",
       "url": "https://www.youtube.com/@TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/TheGreatReview"
     },
     {
       "ethics": "neutral",

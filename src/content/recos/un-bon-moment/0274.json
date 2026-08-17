@@ -12,7 +12,10 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Autre",
+  "creator": null,
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:29Z"
+  },
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "tmdb": "138502",
@@ -68,6 +71,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/series/x-men-97/vc1XIz90ZNH5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt16026746/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/138502"
     }
   ],
   "quote": "je recommande la série X-Men 97. C'est un remastering de la série des dessins animés X-Men qu'on avait quand on était gamin.",

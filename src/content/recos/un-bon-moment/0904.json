@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Éric Judor",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:54Z"
+  },
   "episodeGuid": "65240a35cc56a90012ec386b",
   "externalIds": {
     "instagram": "ericpointjudor"
@@ -65,6 +68,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=304507.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt20221460/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1059264"
     }
   ],
   "quote": "Il y a un dessin animé avec Eric Judor qui sort en décembre. Il s'appelle Les Inséparables.",
@@ -75,7 +90,6 @@
   "title": "Les Inséparables",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "film"
   ],
   "year": 2024

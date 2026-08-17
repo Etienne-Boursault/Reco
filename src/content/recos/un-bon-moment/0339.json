@@ -8,7 +8,7 @@
     "reason": "Documentaire 'Bref. De bons amis' (Nicolas Beguet, Disney+) qui suit les deux hosts et le making de Bref 2 ; presente et promu explicitement par eux ('allez le voir s'il vous plait', 'regardez De bons amis sur Disney+'). Auto-promo assumee du format.",
     "verdict": "guest-work"
   },
-  "creator": "Nicolas Beguet",
+  "creator": "Nicolas Béguet",
   "episodeGuid": "6960deefb86949aa06496e27",
   "extractionHistory": [
     {
@@ -61,6 +61,12 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/browse/entity-52205147-9545-48ab-99aa-a7cc5aaf117f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/bref-de-bons-amis"
     }
   ],
   "quote": "C'est un excellent documentaire qui s'appelle \"De bons amis\" de Nicolas Béguet !",
@@ -71,7 +77,6 @@
   "title": "Bref. De bons amis",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "film"
   ]
 }

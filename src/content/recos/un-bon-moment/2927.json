@@ -8,6 +8,9 @@
     "verdict": "citation"
   },
   "creator": "Jim Carrey",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:52Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "Où le voir en streaming (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-40191/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0338013/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/38"
     }
   ],
   "quote": "Eternal Sunshine est un de ses meilleurs rôles.",

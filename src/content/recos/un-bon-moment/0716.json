@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Pete Holmes",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:47Z"
+  },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "65251",
@@ -59,6 +62,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/shows/crashing/3a7e596c-486c-428e-85fd-6497ae100950"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5295524/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/65251"
     }
   ],
   "quote": "Moi, c'est un truc que je recommande, Crashing.",

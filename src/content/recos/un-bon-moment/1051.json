@@ -12,8 +12,11 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Peaceful Cuisine",
+  "creator": "Ryoya Takashima",
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "externalIds": {
+    "youtubeChannelId": "UCQBG3PzyQKY8ieMG2gDAyOQ"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -52,9 +55,15 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Chaîne YouTube Peaceful Cuisine",
-      "url": "https://www.youtube.com/channel/UCQBG3PzyQKY8ieMG2gDAyOQ"
+      "kind": "official",
+      "label": "YouTube — Peaceful Cuisine",
+      "url": "https://www.youtube.com/@peacefulcuisine"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — Ryoya Takashima",
+      "url": "https://www.ryoyatakashima.com/"
     },
     {
       "ethics": "indie",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "externalIds": {
+    "youtubeChannelId": "UCceAtrRuCUdsRSBU07GVaIA"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -50,12 +53,6 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube de Vérino",
-      "url": "https://www.youtube.com/c/verinaze"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
       "url": "https://www.youtube.com/@Verinaze"
     }
   ],

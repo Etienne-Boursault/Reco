@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Julien Rizot, Raphaël",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:54Z"
+  },
   "episodeGuid": "6322de1f35ce9e001229f98a",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "Fiche AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24133.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt9039148/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/82503"
     }
   ],
   "quote": "C'était une vraie réussite personnelle.",

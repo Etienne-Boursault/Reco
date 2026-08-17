@@ -9,6 +9,9 @@
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:18Z"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "instagram": "kyankhojandi"
@@ -36,6 +39,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2044128/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
     }
   ],
   "quote": "Depuis que j'ai fait bref. Il y a 15 ans.",

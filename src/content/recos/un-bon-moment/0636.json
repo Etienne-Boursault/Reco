@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "0b986de8-231b-4312-b231-75f75b347282",
+  "externalIds": {
+    "youtubeChannelId": "UCCsUi3rmwPk8W-aKqmRZo9Q"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -53,7 +56,7 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube MYST",
-      "url": "https://www.youtube.com/channel/UCCsUi3rmwPk8W-aKqmRZo9Q"
+      "url": "https://www.youtube.com/@heymyst"
     }
   ],
   "quote": "Je conseille Myst",
@@ -64,7 +67,6 @@
   "title": "Mist",
   "transcriptSource": "youtube",
   "types": [
-    "podcast",
-    "autre"
+    "chaine"
   ]
 }

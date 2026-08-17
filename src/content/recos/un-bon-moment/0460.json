@@ -9,12 +9,15 @@
     "verdict": "citation"
   },
   "creator": "Kyan Khojandi",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:35Z"
+  },
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
     "instagram": "kyankhojandi",
-    "justwatch": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
     "tmdb": "60715",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -63,6 +66,18 @@
       "kind": "info",
       "label": "AlloCine (fiche serie)",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=10520.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2044128/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
     }
   ],
   "quote": "il ya un épisode de ma vie qui m'a vraiment fait connaître du grand public c'est la série bref",

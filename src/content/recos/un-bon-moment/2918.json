@@ -9,7 +9,8 @@
   },
   "creator": "Matt Groening",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:46Z"
+    "creator": "2026-07-29T10:06:46Z",
+    "links": "2026-07-31T20:23:50Z"
   },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
@@ -40,6 +41,18 @@
       "kind": "info",
       "label": "Fiche série AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=685.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0149460/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/615"
     }
   ],
   "quote": "Il y a une blague comme ça dans Futurama ? Ah oui ? C'est des extraterrestres qui sont à mille années-lumière de la Terre.",

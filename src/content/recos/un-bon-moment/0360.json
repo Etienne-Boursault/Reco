@@ -8,12 +8,12 @@
     "reason": "Faux positif : 'mortel' est ici l'argot pour 'genial' decrivant le film Gourou, pas la serie 'Mortel'.",
     "verdict": "discard"
   },
-  "creator": "Autre",
+  "creator": null,
   "episodeGuid": "6970a1759448a95f223d530c",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR",
     "tmdb": "94801",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR"
   },
   "extractionHistory": [
     {

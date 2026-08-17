@@ -13,12 +13,15 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "autre",
+  "creator": null,
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:08Z"
+  },
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/873-columbo/watch?locale=FR",
     "tmdb": "873",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/873-columbo/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,6 +70,18 @@
       "kind": "streaming",
       "label": "Molotov",
       "url": "https://www.molotov.tv/fr_fr/p/24978/columbo"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1466074/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/873"
     }
   ],
   "quote": "Columbo, on peut regarder Columbo ?",

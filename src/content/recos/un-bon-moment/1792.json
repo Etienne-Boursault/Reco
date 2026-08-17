@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Jean Renoir",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:23Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "streaming",
       "label": "LaCinetek",
       "url": "https://www.lacinetek.com/fr/film/boudu-sauve-des-eaux-jean-renoir-vod"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0022718/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/48365"
     }
   ],
   "quote": "je sais pas dans Boudou Sauvé des eaux il est extraordinaire",

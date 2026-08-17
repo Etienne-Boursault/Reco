@@ -10,11 +10,14 @@
     "verdict": "validate"
   },
   "creator": "Ari Aster",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:05Z"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/493922-hereditary/watch?locale=FR",
     "tmdb": "493922",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/493922-hereditary/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -44,6 +47,18 @@
       "kind": "info",
       "label": "Où voir le film (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-261860/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7784604/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/493922"
     }
   ],
   "quote": "Si vous avez vu \"Midsommar\", \"Hérédité\", du même réel, il est très bon.",

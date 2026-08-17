@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Sam Levinson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:21Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/85552-euphoria/watch?locale=FR",
     "tmdb": "85552",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/85552-euphoria/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22215.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8772296/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/85552"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-22215/streaming/"
     }
   ],
   "quote": "il y a un avant un après quoi on réalisera plus jamais",

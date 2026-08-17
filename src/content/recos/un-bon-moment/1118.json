@@ -43,6 +43,24 @@
   "links": [
     {
       "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/white-fire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "UniversCiné",
+      "url": "https://www.universcine.com/films/white-fire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/858718"
+    },
+    {
+      "ethics": "indie",
       "kind": "buy",
       "label": "Outplay Films (DVD/VOD)",
       "url": "https://www.outplayfilms.com/video/white-fire-vivre-pour-survivre/"

@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Joaquin Phoenix",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:01Z"
+  },
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/43939-i-m-still-here/watch?locale=FR",
     "tmdb": "43939",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/43939-i-m-still-here/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "info",
       "label": "JustWatch — où voir",
       "url": "https://www.justwatch.com/fr/film/im-still-here-the-lost-year-of-joaquin-phoenix"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1356864/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/43939"
     }
   ],
   "quote": "Il y a ce I'm Still Here de Joachim Phoenix qui est pour moi une des références absolues du faux documentaire.",

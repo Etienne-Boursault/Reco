@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Lana et Lilly Wachowski",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:37Z"
+  },
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/603-the-matrix/watch?locale=FR",
     "tmdb": "603",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/603-the-matrix/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -77,6 +80,18 @@
       "kind": "info",
       "label": "AlloCiné (où voir)",
       "url": "https://www.allocine.fr/film/fichefilm-19776/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0133093/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/603"
     }
   ],
   "quote": "moi quand j'ai vu Matrix ah c'est ça que je voulais prendre",

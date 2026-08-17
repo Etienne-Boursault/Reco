@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Disney+",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:22Z"
+  },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/47907-extraordinary/watch?locale=FR",
     "tmdb": "47907",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/47907-extraordinary/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=28990.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt14531842/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/47907"
     }
   ],
   "quote": "C'est une série sur Disney+.",

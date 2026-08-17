@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Christopher Nolan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:12Z"
+  },
   "episodeGuid": "69a169ac519334f049d06785",
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/70305903"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0816692/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/157336"
     }
   ],
   "quote": "Mon préféré, c'est Interstellar, c'est pour ça.",

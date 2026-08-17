@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Antoine Chevrolier",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:25Z"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/1001006-la-pampa/watch?locale=FR",
     "tmdb": "1001006",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1001006-la-pampa/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -75,6 +78,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=291594.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32119317/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1001006"
     }
   ],
   "quote": "Super film. Hyper bien réalisé.",

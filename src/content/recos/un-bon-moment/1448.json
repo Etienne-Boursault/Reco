@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "creator": "Disiz",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:05Z"
+  },
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "extractionHistory": [
     {
@@ -44,6 +47,12 @@
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/858182392"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/on-sen-rappellera-pas/1846293544?uo=4"
     }
   ],
   "quote": "je recommande l'album de This Is",

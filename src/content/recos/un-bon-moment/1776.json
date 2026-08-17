@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Albert Dupontel",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:21Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "instagram": "albertdupontel"
@@ -59,6 +62,18 @@
       "kind": "info",
       "label": "AlloCiné — offres VOD",
       "url": "https://www.allocine.fr/film/fichefilm-230699/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5258850/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/430424"
     }
   ],
   "quote": "je fais ce film, déjà qui est un film exceptionnel",

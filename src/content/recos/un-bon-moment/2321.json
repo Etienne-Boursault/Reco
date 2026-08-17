@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "f7469167-f614-476c-922b-c328f47414b4",
+  "externalIds": {
+    "youtubeChannelId": "UCuKa7_pustUzOj3IBcgYNPg"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T19:47:34+00:00",
@@ -35,12 +38,6 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube",
-      "url": "https://www.youtube.com/channel/UCuKa7_pustUzOj3IBcgYNPg"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
       "url": "https://www.youtube.com/@BenjaminVerrecchia"
     }
   ],

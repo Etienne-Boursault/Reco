@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Michaela Coel",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:05Z"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/102619-i-may-destroy-you/watch?locale=FR",
     "tmdb": "102619",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/102619-i-may-destroy-you/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,30 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/i-may-destroy-you/a15b4064-4899-4381-bdf1-676986137ee1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11204260/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/102619"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — ou regarder",
+      "url": "https://www.justwatch.com/fr/serie/i-may-destroy-you/saison-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=25797.html"
     }
   ],
   "quote": "Mais ça s'appelle \"I May Destroy You\".",

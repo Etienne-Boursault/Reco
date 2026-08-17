@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Pio Marmaï, Vima Laponce",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:32Z"
+  },
   "episodeGuid": "6970a1759448a95f223d530c",
   "extractionHistory": [
     {
@@ -70,6 +73,18 @@
       "kind": "streaming",
       "label": "CinéMutins",
       "url": "https://www.cinemutins.com/films/1828-l-attachement"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt33030403/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1096642"
     }
   ],
   "quote": "Franchement, j'étais tellement ému à sept minutes.",
@@ -80,7 +95,6 @@
   "title": "L'attachement",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "film"
   ]
 }

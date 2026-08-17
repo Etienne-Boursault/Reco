@@ -13,12 +13,15 @@
     "verdict": "validate"
   },
   "creator": "Florence Longpré",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:31Z"
+  },
   "episodeGuid": "6955067456c11ef4099abd99",
   "externalIds": {
     "instagram": "florencelongpre",
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
     "tmdb": "284656",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,22 +69,34 @@
   "kind": "reco",
   "links": [
     {
-      "ethics": "avoid",
-      "kind": "streaming",
-      "label": "Canal+",
-      "url": "https://www.canalplus.com/series/empathie/h/29563513_50001"
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où regarder",
+      "url": "https://www.justwatch.com/fr/serie/empathie"
     },
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné - fiche série",
+      "label": "AlloCiné — fiche série",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000611.html"
     },
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "JustWatch - où regarder",
-      "url": "https://www.justwatch.com/fr/serie/empathie"
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32827662/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/284656"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/series/empathie/h/29563513_50001"
     }
   ],
   "quote": "Empathie ! C'est incroyable ! J'aime Florence Lomprey de tout mon être !",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Shane Carruth",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:46Z"
+  },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "14337",
@@ -65,6 +68,18 @@
       "kind": "info",
       "label": "AlloCine (fiche film)",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=58126.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0390384/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/14337"
     }
   ],
   "quote": "Quand tu veux passer un bon moment.",

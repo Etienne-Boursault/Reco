@@ -3,11 +3,14 @@
     "The Pitt"
   ],
   "creator": "R. Scott Gemmill",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:09Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/250307-the-pitt/watch?locale=FR",
     "tmdb": "250307",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/250307-the-pitt/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -74,6 +77,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36395.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt31938062/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/250307"
     }
   ],
   "quote": "c'est une série que j'aime trop, j'en parle tout le temps, ça s'appelle The Pit.",

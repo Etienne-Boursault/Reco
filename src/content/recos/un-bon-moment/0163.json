@@ -8,12 +8,15 @@
     "reason": "Série « Empathie » (Canal+) recommandée par Navo à la question « qu'est-ce que tu recommandes ? » — « C'est incroyable, c'est génial, faut que je mate ».",
     "verdict": "validate"
   },
-  "creator": "Florence Lompré",
+  "creator": "Florence Longpré",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:23Z"
+  },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
     "tmdb": "284656",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,6 +65,24 @@
       "kind": "info",
       "label": "AlloCiné — fiche série",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000611.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32827662/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/284656"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/series/empathie/h/29563513_50001"
     }
   ],
   "quote": "Empathie sur Canal+, avec Tom and Jijol. C'est incroyable.",

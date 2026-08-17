@@ -9,6 +9,9 @@
     "verdict": "validate"
   },
   "creator": "Peter Weir",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:19Z"
+  },
   "episodeGuid": "6955067456c11ef4099abd99",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "AlloCiné - où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-18671/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0120382/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/37165"
     }
   ],
   "quote": "Mais vraiment, regarde-le, c'est un film exceptionnel.",

@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Bong Joon-ho",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:42Z"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/496243/watch?locale=FR",
     "tmdb": "496243",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/496243/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81221938"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6751668/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/496243"
     }
   ],
   "quote": "je viens de l'acheter j'en suis à la moitié j'adore",

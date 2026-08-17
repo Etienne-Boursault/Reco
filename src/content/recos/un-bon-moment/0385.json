@@ -12,9 +12,9 @@
   "creator": "Noah Hawley",
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR",
     "tmdb": "60622",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +61,30 @@
   "id": "ubm-0385",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70285785"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir en France",
+      "url": "https://www.justwatch.com/fr/serie/fargo/saison-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2802850/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60622"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Louis de Funès",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:13Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -70,6 +73,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/la-soupe-aux-choux/umc.cmc.fo3p9qduetfdz666hy3ag1go"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0083109/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/9317"
     }
   ],
   "quote": "J'ai revu récemment la soupe aux choux et la première partie où ils pètent dans le...",

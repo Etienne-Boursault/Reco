@@ -15,6 +15,9 @@
   },
   "creator": "Théo Babac",
   "episodeGuid": "61cb19444f2d030012ddd82a",
+  "externalIds": {
+    "youtubeChannelId": "UCGt553K1a2MNHfioKJFPCPA"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T02:29:53+00:00",
@@ -44,21 +47,21 @@
   "links": [
     {
       "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube TheoBabac",
+      "url": "https://www.youtube.com/@TheoBabac"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram @theobabac",
+      "url": "https://www.instagram.com/theobabac/"
+    },
+    {
+      "ethics": "neutral",
       "kind": "social",
       "label": "TikTok @theobabac",
       "url": "https://www.tiktok.com/@theobabac"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "Chaîne YouTube TheoBabac",
-      "url": "https://www.youtube.com/channel/UCGt553K1a2MNHfioKJFPCPA"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@TheoBabac"
     }
   ],
   "quote": "suivez Théo Babac sur TikTok, il est très drôle",

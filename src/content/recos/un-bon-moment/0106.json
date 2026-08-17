@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Justine Trier",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:22Z"
+  },
   "episodeGuid": "6599c1b296596600156961a7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/915935-anatomie-d-une-chute/watch?locale=FR",
     "tmdb": "915935",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/915935-anatomie-d-une-chute/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://sooner.fr/films/anatomie-d-une-chute"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt17009710/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/915935"
     }
   ],
   "quote": "Faut vraiment aller voir ce film.",

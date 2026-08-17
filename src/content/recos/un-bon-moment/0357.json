@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Noah Hawley",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:32Z"
+  },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR",
     "tmdb": "60622",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60622-fargo/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -71,6 +74,30 @@
       "kind": "info",
       "label": "JustWatch — où voir en France",
       "url": "https://www.justwatch.com/fr/serie/fargo/saison-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2802850/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60622"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/fargo/umc.cmc.2zs573npbhr5fessb48q5zjfe"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=11042.html"
     }
   ],
   "quote": "Fargo, toujours aussi bien en termes de séries.",

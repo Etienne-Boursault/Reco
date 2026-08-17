@@ -9,6 +9,9 @@
     "verdict": "guest-work"
   },
   "creator": "Damon Gameau",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:56Z"
+  },
   "episodeGuid": "633b305f3ca1cc001201a861",
   "extractionHistory": [
     {
@@ -49,6 +52,18 @@
       "kind": "buy",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/sugarland/umc.cmc.10l8r7fcznj5qbpm9ecn339xg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3892434/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/305091"
     }
   ],
   "quote": "Sugarland putain.",
@@ -59,7 +74,6 @@
   "title": "Sugarland",
   "transcriptSource": "youtube",
   "types": [
-    "film",
-    "autre"
+    "film"
   ]
 }

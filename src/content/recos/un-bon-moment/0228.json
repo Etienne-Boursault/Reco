@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "David Tomaszewski",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:25Z"
+  },
   "episodeGuid": "691488fcc1ed8717c54570d4",
   "extractionHistory": [
     {
@@ -52,6 +55,18 @@
       "kind": "info",
       "label": "Offres VOD (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-1000014949/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt33402929/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1358491"
     }
   ],
   "quote": "Allez voir Yoroi.",
@@ -62,7 +77,6 @@
   "title": "Yoroï",
   "transcriptSource": "youtube",
   "types": [
-    "film",
-    "autre"
+    "film"
   ]
 }

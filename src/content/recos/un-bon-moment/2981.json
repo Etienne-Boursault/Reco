@@ -8,7 +8,7 @@
     "reason": "Podcast d'Ambroise presente par lui en fin d'emission (~01:03:23, « c'est un podcast que je fais avec deux copains... je l'ai deja recommande dans cette emission »). Oeuvre d'invite = guest-work. Canonique (regroupe 0842).",
     "verdict": "guest-work"
   },
-  "creator": "Ambroise, Baptiste, Nicolas",
+  "creator": "Ambroise Carminati, Baptiste Pignon, Nicolas Roux",
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "extractionHistory": [
     {
@@ -39,9 +39,9 @@
   "kind": "reco",
   "links": [
     {
-      "ethics": "indie",
+      "ethics": "neutral",
       "kind": "official",
-      "label": "Page officielle du podcast (Acast)",
+      "label": "Page officielle du podcast",
       "url": "https://shows.acast.com/des-trains-a-travers-la-plaine"
     },
     {
@@ -49,6 +49,12 @@
       "kind": "streaming",
       "label": "Apple Podcasts",
       "url": "https://podcasts.apple.com/fr/podcast/des-trains-%C3%A0-travers-la-plaine/id1549461850"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/1f4L17wWRLcBnLMA2iKpoI"
     }
   ],
   "quote": "c'est un podcast que je fais avec deux copains qui s'appellent Baptiste et Nicolas",

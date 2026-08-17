@@ -10,7 +10,8 @@
   },
   "creator": "Kyan Khojandi, Bruno Muschio",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:42Z"
+    "creator": "2026-07-29T10:06:42Z",
+    "links": "2026-07-31T20:23:43Z"
   },
   "episodeGuid": "65240e1c5d8481001225962c",
   "extractionHistory": [
@@ -35,6 +36,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2044128/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
     }
   ],
   "quote": "Quand Bref est arrivé, j'ai eu un gros coup de boost de notoriété, d'amour.",

@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "creator": "Dib",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:06Z"
+  },
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -37,6 +40,18 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/comedians-of-the-world"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8685446/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/85418"
     }
   ],
   "quote": "moi je dirais Dib il a une demi-heure de stand-up disponible sur Humoriste du Monde dans Québec francophone",
@@ -47,6 +62,6 @@
   "title": "Comedians of the World",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "serie"
   ]
 }

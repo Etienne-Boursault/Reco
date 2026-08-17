@@ -1,5 +1,8 @@
 {
   "creator": "Francis Ford Coppola",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:26Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
     {
@@ -21,14 +24,20 @@
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné — offres VOD",
-      "url": "https://www.allocine.fr/film/fichefilm-6608/telecharger-vod/"
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=6608.html"
     },
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné",
-      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=6608.html"
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0099674/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/242"
     }
   ],
   "quote": "C'est un film cultissime.",

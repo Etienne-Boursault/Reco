@@ -10,7 +10,8 @@
   },
   "creator": "Francis Veber",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:32Z"
+    "creator": "2026-07-29T10:06:32Z",
+    "links": "2026-07-31T20:23:30Z"
   },
   "episodeGuid": "6599de12076e6c001696556a",
   "extractionHistory": [
@@ -45,6 +46,18 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://www.sooner.fr/films/le-diner-de-cons"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0119038/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/9421"
     }
   ],
   "quote": "« Bah non, je suis dedans. »",

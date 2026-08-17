@@ -10,11 +10,14 @@
     "verdict": "validate"
   },
   "creator": "Ari Aster",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:04Z"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/530385-midsommar/watch?locale=FR",
     "tmdb": "530385",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/530385-midsommar/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -63,6 +66,18 @@
       "kind": "official",
       "label": "Page officielle A24",
       "url": "https://a24films.com/films/midsommar"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8772262/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/530385"
     }
   ],
   "quote": "Midsommar est magnifique.",

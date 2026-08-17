@@ -1,7 +1,8 @@
 {
   "creator": "Matthew Weiner",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:21Z"
+    "creator": "2026-07-29T10:06:21Z",
+    "links": "2026-07-31T20:23:15Z"
   },
   "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "extractionHistory": [
@@ -32,6 +33,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir",
       "url": "https://www.allocine.fr/series/ficheserie-3400/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0804503/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1104"
     }
   ],
   "quote": "Avec l'acteur de Mad Men, là",

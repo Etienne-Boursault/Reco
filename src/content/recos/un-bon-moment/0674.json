@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Jamel Debbouze",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:44Z"
+  },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "externalIds": {
     "instagram": "jameldebbouze",
@@ -50,6 +53,24 @@
   "id": "ubm-0674",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=7978.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1868652/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/90849"
+    },
     {
       "ethics": "indie",
       "kind": "borrow",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "e4618866-c2ff-42b6-917e-c5d13b9e0943",
+  "externalIds": {
+    "youtubeChannelId": "UC_ADNHNPnvlQNUZlB3bGCTw"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T19:20:27+00:00",
@@ -32,15 +35,15 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Chaîne YouTube",
-      "url": "https://www.youtube.com/channel/UC_ADNHNPnvlQNUZlB3bGCTw"
+      "kind": "official",
+      "label": "Chaîne YouTube Thomas Wiesel",
+      "url": "https://www.youtube.com/@Wieseltom"
     },
     {
-      "ethics": "neutral",
+      "ethics": "indie",
       "kind": "official",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@Wieseltom"
+      "label": "Site officiel — tournée « Société Écrans »",
+      "url": "https://www.thomaswiesel.com/tournee/"
     }
   ],
   "quote": "Thomas Wiesel est un auteur extraordinaire.",

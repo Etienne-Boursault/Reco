@@ -9,7 +9,8 @@
   },
   "creator": "Lana Wachowski, Lilly Wachowski",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:45Z"
+    "creator": "2026-07-29T10:06:45Z",
+    "links": "2026-07-31T20:23:49Z"
   },
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
   "extractionHistory": [
@@ -34,6 +35,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/60031303"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0242653/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/605"
     }
   ],
   "quote": "Le 3, là. J'ai adoré, c'est les robots.",

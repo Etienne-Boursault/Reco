@@ -16,7 +16,8 @@
   },
   "creator": "Vince Gilligan",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:19Z"
+    "creator": "2026-07-29T10:06:19Z",
+    "links": "2026-07-31T20:23:11Z"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "extractionHistory": [
@@ -67,8 +68,32 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Apple TV+",
+      "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/pluribus/umc.cmc.37axgovs2yozlyh3c2cmwzlza"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=32585.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt22202452/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/225171"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie-32585/streaming/"
     }
   ],
   "quote": "la série que j'ai regardé très récemment c'est Puribus",

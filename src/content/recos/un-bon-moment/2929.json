@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Jim Carrey",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:53Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
     {
@@ -44,6 +47,18 @@
       "kind": "info",
       "label": "Où le voir en streaming (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-11944/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0109040/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/3049"
     }
   ],
   "quote": "Le moment de jeu, là, quand il prend ses fesses comme ça et qu'il dit « Oh, sole mio ! Oh, sodomia ! »",

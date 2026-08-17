@@ -11,6 +11,9 @@
   },
   "creator": "David Lynch",
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
+  "externalIds": {
+    "youtubeChannelId": "UCDLD_zxiuyh1IMasq9nbjrA"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T23:56:22+00:00",
@@ -42,7 +45,7 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube DAVID LYNCH THEATER",
-      "url": "https://www.youtube.com/channel/UCDLD_zxiuyh1IMasq9nbjrA"
+      "url": "https://www.youtube.com/@DAVIDLYNCHTHEATER"
     }
   ],
   "quote": "tu regardes la chaîne YouTube de David Lynch",
@@ -53,7 +56,6 @@
   "title": "David Lynch",
   "transcriptSource": "youtube",
   "types": [
-    "artiste",
-    "autre"
+    "artiste"
   ]
 }

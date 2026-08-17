@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Apple TV+",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:05Z"
+  },
   "episodeGuid": "6584658132930b0016c5272b",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/95396-severance/watch?locale=FR",
     "tmdb": "95396",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/95396-severance/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11280740/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/95396"
     }
   ],
   "quote": "Severance sur Apple Plus, disponible sur my canal.",

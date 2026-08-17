@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Nathan Fielder",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:04Z"
+  },
   "episodeGuid": "6a47e41c08da053175fb135e",
   "externalIds": {
     "instagram": "nathanfielder"
@@ -45,6 +48,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/nathan-for-you"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2297757/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/58957"
     }
   ],
   "quote": "Pour commencer, The Rear Soul, il y a Nathan For You. Oui, Nathan. Et ça, c'est vraiment hilarant aussi.",

@@ -4,11 +4,14 @@
     "La Zone d'Intérêt"
   ],
   "creator": "Jonathan Glazer",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:11Z"
+  },
   "episodeGuid": "69e13325fb440758726a665f",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR",
     "tmdb": "467244",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/467244-the-zone-of-interest/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -84,6 +87,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=266159.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7160372/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/467244"
     }
   ],
   "quote": "Dernier coup de cœur, la zone d'intérêt.",

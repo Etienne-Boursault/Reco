@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Damon Lindelof, Tom Perrotta",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:21Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/54344-the-leftovers/watch?locale=FR",
     "tmdb": "54344",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/54344-the-leftovers/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "info",
       "label": "AlloCiné (où voir)",
       "url": "https://www.allocine.fr/series/ficheserie-10423/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2699128/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/54344"
     }
   ],
   "quote": "meilleure série pour moi de tous les temps",

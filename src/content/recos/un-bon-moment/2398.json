@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Laurent Tirard",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:36Z"
+  },
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
   "extractionHistory": [
     {
@@ -43,6 +46,24 @@
       "kind": "official",
       "label": "Le Pacte (distributeur)",
       "url": "https://le-pacte.com/france/film/le-discours"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt12105554/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/712150"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Où voir le film (AlloCiné)",
+      "url": "https://www.allocine.fr/film/fichefilm-277534/streaming/"
     }
   ],
   "quote": "c'est un film de Fab Caro.",

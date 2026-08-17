@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Vince Gilligan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:24Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "extractionHistory": [
     {
@@ -57,8 +60,32 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Apple TV+",
+      "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/pluribus/umc.cmc.37axgovs2yozlyh3c2cmwzlza"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=32585.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt22202452/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/225171"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie-32585/streaming/"
     }
   ],
   "quote": "Pluribus bien entendu",

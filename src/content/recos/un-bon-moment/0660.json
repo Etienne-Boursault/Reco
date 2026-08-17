@@ -13,7 +13,10 @@
     "reviewedByHuman": true,
     "verdict": "guest-work"
   },
-  "creator": "Golden Moustache",
+  "creator": "Yacine Belhousse",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:43Z"
+  },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "extractionHistory": [
     {
@@ -63,6 +66,30 @@
       "kind": "official",
       "label": "Golden Moustache - l'intégrale de la série",
       "url": "https://www.goldens.fr/goldenmoustache/decouvrez-lintegrale-de-la-serie-le-trone-des-frogz/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5485592/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81160"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Dailymotion",
+      "url": "https://www.dailymotion.com/video/x6njqv1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "SensCritique",
+      "url": "https://www.senscritique.com/serie/Le_Trone_des_Frogz/23192422"
     }
   ],
   "quote": "Allez voir, c'est disponible intégralement sur la chaîne de Golden Moustache sur YouTube.",
@@ -73,8 +100,6 @@
   "title": "Le Trône des Frogz",
   "transcriptSource": "youtube",
   "types": [
-    "serie",
-    "autre",
-    "video"
+    "serie"
   ]
 }

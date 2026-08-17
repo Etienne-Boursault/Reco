@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "e875de28-3ef9-4c20-b519-2a1b39df9a89",
+  "externalIds": {
+    "youtubeChannelId": "UCzA-R_yAItrql_KZQjHGrHw"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -54,7 +57,7 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Daymolition sur YouTube",
-      "url": "https://www.youtube.com/c/daymolition/videos"
+      "url": "https://www.youtube.com/@daymolition"
     }
   ],
   "quote": "Donc tous les gens qui aiment le rap et qui veulent découvrir des nouveaux gars qui vont sûrement éclore dans quelques années, Demolition.",
@@ -65,7 +68,6 @@
   "title": "Daymolition",
   "transcriptSource": "youtube",
   "types": [
-    "video",
-    "autre"
+    "chaine"
   ]
 }

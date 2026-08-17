@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "David E. Kelley",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:24Z"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/1480-ally-mcbeal/watch?locale=FR",
     "tmdb": "1480",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1480-ally-mcbeal/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/series/ally-mcbeal/1lzRe9Hnjr7M"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0118254/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1480"
     }
   ],
   "quote": "Et moi, j'aime aussi beaucoup Ali McBeal. Il y a son romantisme, j'adore ça.",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "65240aefc8996500127ede97",
+  "externalIds": {
+    "youtubeChannelId": "UC2ruguOcwnVR2_4DtiGnmLg"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -51,9 +54,21 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
+      "kind": "official",
       "label": "Chaîne YouTube TheGreatReview",
       "url": "https://www.youtube.com/@TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Bloqués 5 heures sur Age of Empires",
+      "url": "https://www.youtube.com/watch?v=tqlO9KrD8vc"
     }
   ],
   "quote": "The Great Review sur YouTube.",

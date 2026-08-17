@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "HBO",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:44Z"
+  },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/60573-silicon-valley/watch?locale=FR",
     "tmdb": "60573",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60573-silicon-valley/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/en/shows/silicon-valley/b4583939-e39f-4b5c-822d-5b6cc186172d"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2575988/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60573"
     }
   ],
   "quote": "Moi, je recommande Silicon Valley, qui est une série super bien et qui a vraiment beaucoup...",

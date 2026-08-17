@@ -1,5 +1,8 @@
 {
   "creator": "Stanley Kubrick",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:39Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
     "tmdb": "1038549",
@@ -58,6 +61,12 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=135.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1038549"
     }
   ],
   "quote": "Barry Lyndon, j'ai mis 10 ans à le voir.",

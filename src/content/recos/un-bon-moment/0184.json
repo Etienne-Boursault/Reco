@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Documentaire",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:23Z"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/77601-wild-wild-country/watch?locale=FR",
     "tmdb": "77601",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/77601-wild-wild-country/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -75,6 +78,18 @@
       "kind": "info",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/wild-wild-country"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7768848/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/77601"
     }
   ],
   "quote": "C'est incroyable. Un peu long, mais c'est fou.",

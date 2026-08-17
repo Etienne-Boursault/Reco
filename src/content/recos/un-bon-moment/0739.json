@@ -12,7 +12,10 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Ana Aptair",
+  "creator": "Anna Apter",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:48Z"
+  },
   "episodeGuid": "8df304fa-1a6a-41e5-964b-0a8a513dd1f3",
   "externalIds": {
     "instagram": "annaapter"
@@ -58,6 +61,30 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/cher-journal/umc.cmc.3hsso93go5nt3c48r9n4qlbl0"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt13072048/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/118949"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=30349.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/cher-journal"
     }
   ],
   "quote": "Donc oui, Cher Journal d'Anna Apter, qui est incroyable.",
@@ -68,6 +95,6 @@
   "title": "Cher Journal",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "serie"
   ]
 }

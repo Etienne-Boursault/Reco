@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "A. V. R. Roth",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:28Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/858718-white-fire/watch?locale=FR",
     "tmdb": "858718",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/858718-white-fire/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -71,6 +74,24 @@
       "kind": "streaming",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/white-fire"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/858718"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Outplay Films (DVD/VOD)",
+      "url": "https://www.outplayfilms.com/video/white-fire-vivre-pour-survivre/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "La chronique de Nanarland",
+      "url": "https://www.nanarland.com/chroniques/nanars-d-action/pur-et-dur/white-fire.html"
     }
   ],
   "quote": "je vous recommande White Fire",

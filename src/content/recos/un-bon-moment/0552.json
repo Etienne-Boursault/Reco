@@ -1,10 +1,13 @@
 {
   "creator": "Tim Robinson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:39Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/88728-i-think-you-should-leave-with-tim-robinson/watch?locale=FR",
     "tmdb": "88728",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/88728-i-think-you-should-leave-with-tim-robinson/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/80986854"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10050772/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/88728"
     }
   ],
   "quote": "I think you should leave, qui est sur Netflix.",

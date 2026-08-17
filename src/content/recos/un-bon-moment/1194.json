@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "cbfadce5-1677-43ec-8665-8b47daeda6b7",
+  "externalIds": {
+    "youtubeChannelId": "UCnOuKKfBkvt2VsXcYSr8W2Q"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -35,7 +38,7 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube Trxns",
-      "url": "https://www.youtube.com/channel/UCnOuKKfBkvt2VsXcYSr8W2Q/featured"
+      "url": "https://www.youtube.com/@trxns_fr"
     }
   ],
   "quote": "C'est une chaîne qui s'appelle Trans. Mais à la place du A, c'est un X. Donc, impossible à prononcer. Et en fait, c'est une chaîne. C'est des gars qui font des vidéos sur Pokémon.",
@@ -46,6 +49,6 @@
   "title": "Trxns",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "chaine"
   ]
 }

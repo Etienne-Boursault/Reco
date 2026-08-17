@@ -1,5 +1,8 @@
 {
   "creator": "Richard Gadd",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:09Z"
+  },
   "episodeGuid": "6a10a31516a6aa135ed729e1",
   "extractionHistory": [
     {
@@ -18,7 +21,7 @@
   "id": "ubm-1317",
   "kind": "reco",
   "linkOverrides": {
-    "JustWatch": "https://www.justwatch.com/fr/serie/mon-petit-renne"
+    "Où regarder": "https://www.justwatch.com/fr/serie/mon-petit-renne"
   },
   "links": [
     {
@@ -26,6 +29,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81219887"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt13649112/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/241259"
     }
   ],
   "quote": "j'ai commencé une série qui s'appelle Halfman. C'est le gars qui a fait mon petit cerf.",

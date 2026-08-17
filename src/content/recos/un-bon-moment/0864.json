@@ -13,6 +13,9 @@
     "verdict": "citation"
   },
   "creator": "Allen Hughes",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:52Z"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "extractionHistory": [
     {
@@ -36,6 +39,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/80214552"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6958022/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/72141"
     }
   ],
   "quote": "il ya defiant ones donc c'est l'histoire de docteur dr et jimi à yovine qui était sur netflix qui était ouf qu'était en cinq parties",
@@ -46,7 +61,7 @@
   "title": "The Defiant Ones",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "serie"
   ],
   "year": 2017
 }

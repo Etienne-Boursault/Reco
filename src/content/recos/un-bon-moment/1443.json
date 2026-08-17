@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Justin Roiland, Mike McMahan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:12Z"
+  },
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "extractionHistory": [
     {
@@ -65,6 +68,18 @@
       "kind": "info",
       "label": "Fiche série AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24092.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8910922/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/97645"
     }
   ],
   "quote": "les gens qui font Rick et Morty font un autre dessin animé qui est incroyable qui s'appelle Solar Opposites",

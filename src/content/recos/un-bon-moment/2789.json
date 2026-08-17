@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Gilles Lellouche",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:47Z"
+  },
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -53,6 +56,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=221617.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt27490099/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/959604"
     }
   ],
   "quote": "C'est vraiment pas mal.",
@@ -63,7 +78,6 @@
   "title": "L'Amour ouf",
   "transcriptSource": "youtube",
   "types": [
-    "film",
-    "autre"
+    "film"
   ]
 }

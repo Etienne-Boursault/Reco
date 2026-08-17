@@ -9,6 +9,9 @@
     "verdict": "validate"
   },
   "creator": "Bruce Miller",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:38Z"
+  },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "extractionHistory": [
     {
@@ -37,6 +40,24 @@
   "id": "ubm-2486",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/80190982"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5834204/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/69478"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

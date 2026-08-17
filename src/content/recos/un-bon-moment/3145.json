@@ -14,6 +14,9 @@
     "verdict": "citation"
   },
   "creator": "Trey Parker",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:03Z"
+  },
   "episodeGuid": "6a47e41c08da053175fb135e",
   "extractionHistory": [
     {
@@ -37,6 +40,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=20375.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0124819/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/8675"
     }
   ],
   "quote": "Le premier film des mecs de South Park. Enfin, pas le premier, je crois. C'est le deuxième, Captain Orgasmo.",

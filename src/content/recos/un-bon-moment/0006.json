@@ -1,10 +1,13 @@
 {
   "creator": "Frédéric Garcia",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:20Z"
+  },
   "episodeGuid": "108b16ed-a8ec-47ea-afa2-4e8d4e8d09ad",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR",
     "tmdb": "94801",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/94801-mortel/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -52,6 +55,18 @@
       "kind": "info",
       "label": "Fiche AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=23566.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8403570/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/94801"
     }
   ],
   "quote": "moi j'ai kiffé Mortel j'ai kiffé Mortel sur Netflix une série française en plus",

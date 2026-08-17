@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Vulfpeck",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:19Z"
+  },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "extractionHistory": [
     {
@@ -42,6 +45,12 @@
       "kind": "streaming",
       "label": "VULFPECK /// 1612",
       "url": "https://www.youtube.com/watch?v=TiiWR6436Eg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/3844012301"
     }
   ],
   "quote": "t'as vu la vidéo de 1612 un morceau qui joue chez Stephen Colbert",

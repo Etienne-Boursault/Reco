@@ -12,8 +12,11 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Autres",
+  "creator": null,
   "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "youtubeChannelId": "UCQRELbX0H5FCokIFxOAsHFA"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T09:36:44+00:00",
@@ -74,7 +77,6 @@
   "title": "The Voice",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "serie"
+    "video"
   ]
 }

@@ -14,6 +14,9 @@
     "verdict": "citation"
   },
   "creator": "Vincent Delerm",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:55Z"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
   "externalIds": {
     "instagram": "vincentdelerm"
@@ -58,7 +61,7 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
-      "url": "https://www.deezer.com/en/album/104319882"
+      "url": "https://www.deezer.com/album/104319882"
     },
     {
       "ethics": "neutral",
@@ -71,6 +74,12 @@
       "kind": "buy",
       "label": "Fnac (CD)",
       "url": "https://www.fnac.com/a13765982/Vincent-Delerm-Panorama-CD-album"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/panorama/1473601306?uo=4"
     }
   ],
   "quote": "Pour Panorama ?",

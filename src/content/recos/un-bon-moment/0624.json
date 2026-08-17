@@ -9,6 +9,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
+  "externalIds": {
+    "youtubeChannelId": "UCAdyNOE80FsFPYlFliyXfwQ"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -49,7 +52,7 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "YouTube",
-      "url": "https://www.youtube.com/channel/UCAdyNOE80FsFPYlFliyXfwQ"
+      "url": "https://www.youtube.com/@francetvnature"
     }
   ],
   "quote": "Moi je passe ma life en ce moment sur YouTube, Zapping sauvage.",
@@ -60,7 +63,6 @@
   "title": "Zapping Sauvage",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video"
+    "chaine"
   ]
 }

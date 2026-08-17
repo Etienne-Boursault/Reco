@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Adib Alkhalidey",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:10Z"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractionHistory": [
     {
@@ -53,6 +56,12 @@
       "kind": "streaming",
       "label": "Apple Music — Plexus lunaire",
       "url": "https://music.apple.com/ca/album/plexus-lunaire/1849778224?l=fr-CA"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/3507189021"
     }
   ],
   "quote": "Il a fait un son qui est exceptionnel !",
@@ -63,7 +72,6 @@
   "title": "Garde Côtière",
   "transcriptSource": "youtube",
   "types": [
-    "musique",
-    "autre"
+    "musique"
   ]
 }

@@ -6,6 +6,9 @@
     }
   ],
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
+  "externalIds": {
+    "youtubeChannelId": "UCghR6gNuBneEKkDuKtXQM4w"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T09:36:44+00:00",
@@ -55,19 +58,13 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Chaîne YouTube officielle",
-      "url": "https://www.youtube.com/channel/UCghR6gNuBneEKkDuKtXQM4w"
+      "url": "https://www.youtube.com/@Chuntzit"
     },
     {
       "ethics": "indie",
       "kind": "official",
       "label": "Site officiel",
       "url": "https://chrisflemingfleming.com/"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@Chuntzit"
     }
   ],
   "quote": "C'est lui.",

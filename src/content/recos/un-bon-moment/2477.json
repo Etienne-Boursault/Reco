@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Netflix",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:37Z"
+  },
   "episodeGuid": "ddb7b8bb-f34b-4c82-be28-f2ddb1388636",
   "extractionHistory": [
     {
@@ -36,6 +39,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81031373"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11318602/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/96129"
     }
   ],
   "quote": "Alors, c'est pas très feel good, hein, mais quand même, je voulais en parler, ça s'appelle \"Don't fuck with cats on internet\".",

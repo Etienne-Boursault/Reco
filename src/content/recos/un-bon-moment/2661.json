@@ -10,6 +10,9 @@
     "verdict": "citation"
   },
   "creator": "Paul Thomas Anderson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:42Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "extractionHistory": [
     {
@@ -49,6 +52,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=22858.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0175880/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/334"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (où voir)",
+      "url": "https://www.allocine.fr/film/fichefilm-22858/telecharger-vod/"
     }
   ],
   "quote": "je crois que c'était un truc pour bref mais qu'on l'avait jamais mis",

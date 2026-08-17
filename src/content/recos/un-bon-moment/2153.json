@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "Adèle Castillon",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:14Z"
+  },
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "externalIds": {
     "instagram": "adelecastillon"
@@ -50,6 +53,12 @@
       "kind": "streaming",
       "label": "Spotify",
       "url": "https://open.spotify.com/intl-fr/album/6Xadqm9viEhsKgp0zRp8Gc"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/499165321"
     }
   ],
   "quote": "C'est un album que je trouve trop bien.",

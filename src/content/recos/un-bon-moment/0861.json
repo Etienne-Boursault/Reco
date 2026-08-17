@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Marvel",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:52Z"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=FR",
     "tmdb": "85271",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -55,6 +58,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt9140560/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/85271"
     }
   ],
   "quote": "Je recommande VandaVision.",

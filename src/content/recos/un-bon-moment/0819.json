@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Brad Ingelsby",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:50Z"
+  },
   "episodeGuid": "630baf2b552ddd0013718a16",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/115004-mare-of-easttown/watch?locale=FR",
     "tmdb": "115004",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/115004-mare-of-easttown/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/mare-of-easttown/c1517b80-50ab-4733-8208-ae2c2765c0e7"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10155688/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/115004"
     }
   ],
   "quote": "Mare of Easttown",

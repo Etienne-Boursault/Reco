@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Netflix",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:23Z"
+  },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/157065-the-fall-of-the-house-of-usher/watch?locale=FR",
     "tmdb": "157065",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/157065-the-fall-of-the-house-of-usher/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=30301.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt15567174/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/157065"
     }
   ],
   "quote": "La chute de la maison Usher sur Netflix de Edgar Allan Poe, c'est très, très ouf.",

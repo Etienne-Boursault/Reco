@@ -9,9 +9,13 @@
     "verdict": "citation"
   },
   "creator": "François Descraques",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:16Z"
+  },
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "externalIds": {
-    "instagram": "f_descraques"
+    "instagram": "f_descraques",
+    "youtubeChannelId": "UCDiYyE0L05ce_TxDvsUz1rg"
   },
   "extractionHistory": [
     {
@@ -49,7 +53,7 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Chaîne YouTube (web-série)",
-      "url": "https://www.youtube.com/channel/UCDiYyE0L05ce_TxDvsUz1rg"
+      "url": "https://www.youtube.com/@watchthevisitor"
     },
     {
       "ethics": "indie",
@@ -59,9 +63,15 @@
     },
     {
       "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@watchthevisitor"
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2473544/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60013"
     }
   ],
   "quote": "dans le visiteur du futur c'est ça dont tu voulais parler ou pas il y a Raphaël, François Descraques il a écrit un truc assez fou",
@@ -71,7 +81,6 @@
   "title": "Le Visiteur du futur",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "serie"
   ]
 }

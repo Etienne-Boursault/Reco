@@ -14,13 +14,14 @@
   },
   "creator": "Don Bluth",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:33Z"
+    "creator": "2026-07-29T08:41:33Z",
+    "links": "2026-07-31T20:22:57Z"
   },
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/11497-all-dogs-go-to-heaven/watch?locale=FR",
     "tmdb": "11497",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/11497-all-dogs-go-to-heaven/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -44,6 +45,18 @@
       "kind": "streaming",
       "label": "Molotov",
       "url": "https://www.molotov.tv/fr_fr/p/2615-58/charlie-tous-les-chiens-vont-au-paradis"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0096787/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/11497"
     }
   ],
   "quote": "Le nom en anglais c'est « Old Dogs Goes to Heaven » Et le nom en français c'est Charlie",

@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Kinji Fukasaku",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:13Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-28615/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0266308/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/3176"
     }
   ],
   "quote": "Il est dans Battle Royale, mais il est génial dedans.",

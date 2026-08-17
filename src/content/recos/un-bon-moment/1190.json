@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Ben Sinclair, Katja Blichfeld",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:06Z"
+  },
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/67243-high-maintenance/watch?locale=FR",
     "tmdb": "67243",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/67243-high-maintenance/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/en/shows/high-maintenance/6b2c6f64-13ff-43a5-a9eb-8b87fdf62599"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6078096/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/67243"
     }
   ],
   "quote": "Et l'autre aussi, série HBO... High Maintenance...",

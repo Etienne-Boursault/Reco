@@ -13,7 +13,8 @@
   },
   "creator": "Alex Garland",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:43Z"
+    "creator": "2026-07-29T10:06:43Z",
+    "links": "2026-07-31T20:23:46Z"
   },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
   "extractionHistory": [
@@ -48,6 +49,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/browse/entity-fd2f6cc3-dafc-4741-ae2e-d86494f3ca51"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8134186/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81349"
     }
   ],
   "quote": "Il y a une série que je recommande qui s'appelle \"Devs\", qui est disponible sur OCS.",

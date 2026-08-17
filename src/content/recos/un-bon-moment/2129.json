@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "Nach",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:13Z"
+  },
   "episodeGuid": "65ed94b586967e0017c06729",
   "externalIds": {
     "instagram": "nachmusicofficiel"
@@ -39,13 +42,19 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer — PEAU NEUVE",
-      "url": "https://www.deezer.com/us/album/927357171"
+      "url": "https://www.deezer.com/album/927357171"
     },
     {
       "ethics": "indie",
       "kind": "official",
       "label": "Site officiel d'Anna Chedid",
       "url": "https://www.annachedid.fr/albums"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/peau-neuve/1880142288?uo=4"
     }
   ],
   "quote": "C'était un mollier. Elle a sorti un nouvel album peau neuf. Allez, écoutez.",

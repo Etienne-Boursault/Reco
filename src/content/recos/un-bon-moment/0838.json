@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Phoebe Waller-Bridge",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:50Z"
+  },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR",
     "tmdb": "67070",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,30 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/fleabag/umc.cmc.3q807jzamz6a79sq9c1nco48o"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0OB9NDUVQKFRSYRSCHT2A784TI"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5687612/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/67070"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=20611.html"
     },
     {
       "ethics": "avoid",

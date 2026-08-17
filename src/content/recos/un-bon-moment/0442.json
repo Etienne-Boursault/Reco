@@ -10,13 +10,14 @@
   },
   "creator": "Morgan S. Dalibert",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:21Z"
+    "creator": "2026-07-29T08:41:21Z",
+    "links": "2026-07-31T20:22:34Z"
   },
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/1102776-aka/watch?locale=FR",
     "tmdb": "1102776",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1102776-aka/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -34,7 +35,20 @@
   ],
   "id": "ubm-0442",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt27197387/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1102776"
+    }
+  ],
   "quote": "ah pour Aka",
   "recommendedBy": "Jérémy Nadeau",
   "sourceId": "un-bon-moment",

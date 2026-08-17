@@ -14,6 +14,9 @@
     "verdict": "validate"
   },
   "creator": "Damián Szifron",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:01Z"
+  },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
   "extractionHistory": [
     {
@@ -33,16 +36,34 @@
   "kind": "reco",
   "links": [
     {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/les-nouveaux-sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — offres VOD",
+      "url": "https://www.allocine.fr/film/fichefilm-221270/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3011894/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/265195"
+    },
+    {
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr/title/80013561"
-    },
-    {
-      "ethics": "indie",
-      "kind": "streaming",
-      "label": "SOONER",
-      "url": "https://www.sooner.fr/films/les-nouveaux-sauvages"
     }
   ],
   "quote": "Les Nouveaux Sauvages ? Ah oui. Génial, Les Nouveaux Sauvages.",

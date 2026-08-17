@@ -13,7 +13,8 @@
   },
   "creator": "Josh Heald, Hayden Schlossberg, Jon Hurwitz",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:42Z"
+    "creator": "2026-07-29T10:06:42Z",
+    "links": "2026-07-31T20:23:45Z"
   },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
   "extractionHistory": [
@@ -48,6 +49,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81002370"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7221388/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/77169"
     }
   ],
   "quote": "Moi, je suis une petite série, en ce moment, nostalgie... Qui me donne une petite pointe de nostalgie : Cobra Kai !",

@@ -13,8 +13,11 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "autre",
+  "creator": null,
   "episodeGuid": "630baf2b552ddd0013718a16",
+  "externalIds": {
+    "youtubeChannelId": "UCsCCifMby57qV_UmrYGladQ"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -45,12 +48,6 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Chaîne YouTube Awesome Restorations",
-      "url": "https://www.youtube.com/channel/UCsCCifMby57qV_UmrYGladQ"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "streaming",
-      "label": "YouTube",
       "url": "https://www.youtube.com/@AwesomeRestorations"
     }
   ],

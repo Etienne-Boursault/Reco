@@ -12,6 +12,9 @@
     "verdict": "citation"
   },
   "creator": "Jason Hehir",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:53Z"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "extractionHistory": [
     {
@@ -54,6 +57,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80203144"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8420184/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/79525"
     }
   ],
   "quote": "The Last Dance, ouais.",
@@ -64,7 +79,6 @@
   "title": "The Last Dance",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "serie"
   ],
   "year": 2020

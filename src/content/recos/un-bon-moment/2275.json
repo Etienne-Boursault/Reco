@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Apple TV+",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:31Z"
+  },
   "episodeGuid": "6584658132930b0016c5272b",
   "extractionHistory": [
     {
@@ -46,6 +49,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/shrinking/umc.cmc.apzybj6eqf6pzccd97kev7bs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt15677150/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/136311"
     }
   ],
   "quote": "c'est une série sur Apple TV sur Apple Plus.",

@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Greg Garcia",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:50Z"
+  },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/2317-my-name-is-earl/watch?locale=FR",
     "tmdb": "2317",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/2317-my-name-is-earl/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/my-name-is-earl/umc.cmc.5ffxjsu93kw8uv9xbdklythac"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0460091/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/2317"
     }
   ],
   "quote": "c'était My Name is Earl",

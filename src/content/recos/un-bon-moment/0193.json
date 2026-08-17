@@ -14,12 +14,15 @@
     "verdict": "validate"
   },
   "creator": "Florence Longpré",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:23Z"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "instagram": "florencelongpre",
-    "justwatch": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR",
     "tmdb": "284656",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/284656-empathie/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -69,8 +72,32 @@
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné",
+      "label": "JustWatch — où regarder",
+      "url": "https://www.justwatch.com/fr/serie/empathie"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — fiche série",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000611.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32827662/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/284656"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/series/empathie/h/29563513_50001"
     }
   ],
   "quote": "La série Empathie, ça.",

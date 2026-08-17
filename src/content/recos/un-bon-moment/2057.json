@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Nathan Fielder",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:29Z"
+  },
   "episodeGuid": "68ef607e58893bb6e322c623",
   "externalIds": {
     "instagram": "nathanfielder"
@@ -43,6 +46,30 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/the-rehearsal/umc.cmc.2ptdqoypnddlvxg6a42mmd2o"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-29580/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10802170/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/204284"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/rehearsal/609d8b4c-f0a6-4a5d-b9d3-bb0f2e207efb"
     },
@@ -51,6 +78,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=29580.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/shows/rehearsal/609d8b4c-f0a6-4a5d-b9d3-bb0f2e207efb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/the-rehearsal"
     }
   ],
   "quote": "j'aimerais leur dire",

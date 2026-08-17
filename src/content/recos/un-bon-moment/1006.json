@@ -14,7 +14,8 @@
   },
   "creator": "Josh Safdie",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:34Z"
+    "creator": "2026-07-29T08:41:34Z",
+    "links": "2026-07-31T20:22:59Z"
   },
   "episodeGuid": "69d112dba691c8ebbb9a19d9",
   "externalIds": {
@@ -77,6 +78,18 @@
       "kind": "info",
       "label": "AlloCiné — offres VOD",
       "url": "https://www.allocine.fr/film/fichefilm-1000007317/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32916440/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1317288"
     }
   ],
   "quote": "le film Marty Suprême",

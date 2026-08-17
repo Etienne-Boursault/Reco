@@ -14,6 +14,9 @@
     "verdict": "guest-work"
   },
   "creator": "Cédric Klapisch",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:55Z"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
     "instagram": "cedklap",
@@ -62,6 +65,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80133335"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt4277922/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/64165"
     }
   ],
   "quote": "je savais que c'était un gros projet pour la télé pour le service public pour France 2",

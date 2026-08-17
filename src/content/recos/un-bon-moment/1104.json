@@ -14,13 +14,14 @@
   },
   "creator": "Ezra Edelman",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:40Z"
+    "creator": "2026-07-29T08:41:40Z",
+    "links": "2026-07-31T20:23:02Z"
   },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/66738-o-j-made-in-america/watch?locale=FR",
     "tmdb": "66738",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/66738-o-j-made-in-america/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -53,6 +54,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/oj-made-in-america/umc.cmc.45qq1f626v4p5xhbt2v1dnzvq"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5275892/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/66738"
     }
   ],
   "quote": "O.J. Simpson, Made in America. Pas la série, le doc, qui est une série doc. C'est là où c'est un peu piège. Et donc, c'est ESPN qui avait fait ça. Ça avait eu l'Oscar du meilleur documentaire en 2016, je crois.",

@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Vince Gilligan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:27Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR",
     "tmdb": "60059",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -43,6 +46,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir",
       "url": "https://www.allocine.fr/series/ficheserie-16950/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3032476/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60059"
     }
   ],
   "quote": "l'excellent Better Call Saul",

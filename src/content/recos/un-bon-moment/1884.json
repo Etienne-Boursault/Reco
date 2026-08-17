@@ -1,5 +1,8 @@
 {
   "creator": "Pixar",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:26Z"
+  },
   "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "extractionHistory": [
     {
@@ -29,6 +32,18 @@
       "kind": "official",
       "label": "Site officiel",
       "url": "https://toystory.disney.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0114709/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/862"
     }
   ],
   "quote": "Non, mais dans pas longtemps...",

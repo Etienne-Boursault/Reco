@@ -12,12 +12,12 @@
     "reason": "Doublon de ubm-0975 (meme reco du film @01:47:39). De plus metadonnees erronees : tmdb=118 pointe sur 'Charlie et la chocolaterie' au lieu de 'All Dogs Go to Heaven'.",
     "verdict": "discard"
   },
-  "creator": "autre",
+  "creator": null,
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/118-charlie-and-the-chocolate-factory/watch?locale=FR",
     "tmdb": "118",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/118-charlie-and-the-chocolate-factory/watch?locale=FR"
   },
   "extractionHistory": [
     {

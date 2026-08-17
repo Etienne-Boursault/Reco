@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Ava DuVernay",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:45Z"
+  },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/81355-when-they-see-us/watch?locale=FR",
     "tmdb": "81355",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/81355-when-they-see-us/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Netflix — When They See Us (Dans leur regard)",
       "url": "https://www.netflix.com/title/80200549"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7137906/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81355"
     }
   ],
   "quote": "alors moi j'ai une série qui est sortie genre il y a au moins un an, donc peut-être, vas-y vas-y, tout le monde a vu, c'est When They See Us",

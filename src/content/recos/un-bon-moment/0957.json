@@ -14,11 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Lee Eisenberg & Gene Stupnitsky",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:56Z"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR",
     "tmdb": "222023",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -76,6 +79,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=26203.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt22074164/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/222023"
     }
   ],
   "quote": "Jury Duty. C'est vraiment, c'est trop bien.",

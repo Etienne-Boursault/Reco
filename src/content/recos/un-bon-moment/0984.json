@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "697d34fef1dd68ab365aea03",
+  "externalIds": {
+    "youtubeChannelId": "UCqA8H22FwgBVcF3GJpp0MQw"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -29,12 +32,6 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne Monsieur Phi",
-      "url": "https://www.youtube.com/channel/UCqA8H22FwgBVcF3GJpp0MQw"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
       "url": "https://www.youtube.com/@MonsieurPhi"
     }
   ],

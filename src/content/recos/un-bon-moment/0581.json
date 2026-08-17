@@ -14,11 +14,14 @@
     "verdict": "validate"
   },
   "creator": "David Kajganich",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:41Z"
+  },
   "episodeGuid": "a7ff74e4-ca21-48cc-baee-6baedad1c64d",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/75191-the-terror/watch?locale=FR",
     "tmdb": "75191",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/75191-the-terror/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,6 +70,18 @@
       "kind": "streaming",
       "label": "Prime Video",
       "url": "https://www.primevideo.com/detail/The-Terror/0R5LQART2MFFBK75MSR4T8HIPV?_encoding=UTF8&language=fr_FR"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2708480/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/75191"
     }
   ],
   "quote": "Et en série, The Terror sur Prime Vidéo.",

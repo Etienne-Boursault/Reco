@@ -13,6 +13,9 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:34Z"
+  },
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "tmdb": "434398",
@@ -40,6 +43,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81756069"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3220900/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/434398"
     }
   ],
   "quote": "Le dernier truc que j'ai vu, c'est Adolescence. C'est un super adolescence.",

@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "externalIds": {
+    "youtubeChannelId": "UCOmeswqJka_59KSaClvhW4A"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T01:08:59+00:00",
@@ -45,6 +48,12 @@
       "kind": "streaming",
       "label": "Chaîne YouTube DAVA",
       "url": "https://www.youtube.com/@DAVAofficiel"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "TikTok @dava.officiel",
+      "url": "https://www.tiktok.com/@dava.officiel"
     }
   ],
   "quote": "Dava, je trouve que c'est une autre place.",

@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Louis de Funès",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:51Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
     {
@@ -38,6 +41,18 @@
       "kind": "info",
       "label": "Toutes les offres VOD (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-6958/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0062120/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/46655"
     }
   ],
   "quote": "Le petit baigneur, par exemple, il y a des choses qui sont folles dans le petit baigneur.",

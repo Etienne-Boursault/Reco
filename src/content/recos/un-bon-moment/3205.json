@@ -14,7 +14,8 @@
   },
   "creator": "Sam Levinson",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:52Z"
+    "creator": "2026-07-29T10:06:52Z",
+    "links": "2026-07-31T20:24:07Z"
   },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
   "extractionHistory": [
@@ -45,6 +46,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22215.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8772296/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/85552"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-22215/streaming/"
     }
   ],
   "quote": "Moi, je recommande une série qui s'appelle Euphoria.",

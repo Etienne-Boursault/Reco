@@ -15,7 +15,8 @@
   },
   "creator": "Dan Guterman",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:50Z"
+    "creator": "2026-07-29T10:06:50Z",
+    "links": "2026-07-31T20:23:58Z"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
   "extractionHistory": [
@@ -40,6 +41,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81044590"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt29629770/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/238151"
     }
   ],
   "quote": "C'est une série d'animation qui est sur Netflix... Et en fait c'est un truc avec End of the World je pense dans le titre...",

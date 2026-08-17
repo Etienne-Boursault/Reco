@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Greg Daniels, Michael Schur",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:25Z"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=FR",
     "tmdb": "8592",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -75,6 +78,18 @@
       "kind": "info",
       "label": "JustWatch — où voir",
       "url": "https://www.justwatch.com/fr/serie/parks-and-recreation/saison-3"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1266020/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/8592"
     }
   ],
   "quote": "Parks and Recreations, je trouve que c'est sous-coté en France.",

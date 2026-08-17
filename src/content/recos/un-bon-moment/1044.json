@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Sebastian Lelio",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:59Z"
+  },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/419743-disobedience/watch?locale=FR",
     "tmdb": "419743",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/419743-disobedience/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=250658.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6108178/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/419743"
     }
   ],
   "quote": "Et un film, si, avec Rachel Weiss et Rachel McAdams, qui s'appelaient... Je ne sais pas comment ils parlaient d'un amour impossible, parce qu'elles étaient très juifs traditionnels et tout. Elles ont des scènes de sexe ensemble, qui sont incroyables, vraiment. Allez le voir tout de suite, tout à l'heure, c'est super.",

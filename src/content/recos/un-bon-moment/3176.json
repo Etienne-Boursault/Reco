@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Les Parasites",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:05Z"
+  },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "externalIds": {
     "instagram": "lesparasites"
@@ -37,8 +40,32 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "YouTube (playlist Les Parasites)",
+      "label": "La série en intégralité sur YouTube",
       "url": "https://www.youtube.com/playlist?list=PLo4Qwa4Nhi1m1v4aernDm1agaSqWuoBDS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube des Parasites",
+      "url": "https://www.youtube.com/@LesParasitesFilms"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=VHCeqvQBNIM&list=PLo4Qwa4Nhi1m1v4aernDm1agaSqWuoBDS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11248266/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/95324"
     }
   ],
   "quote": "Ils ont d'ailleurs fait une série sur Canal Plus, qui s'appelle L'Effondrement ! Il y en a quelques-uns là qui ont été mis en ligne sur Youtube !",

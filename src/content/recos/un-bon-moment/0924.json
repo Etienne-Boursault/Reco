@@ -13,12 +13,15 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Jean Rochefort, Philippe Noiré, Jean-Pierre Marielle",
+  "creator": "Patrice Leconte",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:56Z"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR",
     "tmdb": "47496",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -58,15 +61,33 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "info",
-      "label": "JustWatch — où voir le film",
-      "url": "https://www.justwatch.com/fr/film/the-grand-dukes"
+      "kind": "streaming",
+      "label": "VIVA by Videofutur",
+      "url": "https://vod.viva.videofutur.fr/les-grands-ducs/107442"
     },
     {
       "ethics": "neutral",
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=14060.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0116445/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/47496"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir le film",
+      "url": "https://www.justwatch.com/fr/film/the-grand-dukes"
     }
   ],
   "quote": "les grands ducs qui est incroyable que je recommande",

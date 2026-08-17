@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Ben Mazué",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:50Z"
+  },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "externalIds": {
     "instagram": "benmazue"
@@ -71,6 +74,12 @@
       "kind": "streaming",
       "label": "Spotify — album Paradis",
       "url": "https://open.spotify.com/album/3TlmlAsJZhteMKH47jkDiL"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/1113719942"
     }
   ],
   "quote": "c'est dans Quand je marche",
@@ -81,7 +90,6 @@
   "title": "Quand je marche",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "livre"
+    "musique"
   ]
 }

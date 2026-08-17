@@ -12,6 +12,9 @@
     "verdict": "citation"
   },
   "creator": "David Fincher",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:25Z"
+  },
   "episodeGuid": "68fa552292f5a6f127100027",
   "extractionHistory": [
     {
@@ -50,6 +53,18 @@
       "kind": "buy",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/letrange-histoire-de-benjamin-button/umc.cmc.4jcjrdz0t7b6fqwp8qhkb2i9l"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0421715/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/4922"
     }
   ],
   "quote": "Par exemple, l'autre fois, je n'allais pas bien, je regardais Benjamin Button.",

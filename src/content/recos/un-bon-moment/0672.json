@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Darren Aronofsky",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:44Z"
+  },
   "episodeGuid": "4cc3d222-aced-4c20-8732-ac3aba627225",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/641-requiem-for-a-dream/watch?locale=FR",
     "tmdb": "641",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/641-requiem-for-a-dream/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "streaming",
       "label": "Apple Music",
       "url": "https://music.apple.com/fr/album/requiem-for-a-dream-soundtrack-from-the-motion-picture/41228773"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0180093/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/641"
     }
   ],
   "quote": "cette semaine j'avais envie de parler avec vous de la musique du film Requiem for a Dream",

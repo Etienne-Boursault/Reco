@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "David Lynch",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:57Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=FR",
     "tmdb": "1018",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://www.sooner.fr/films/mulholland-drive"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0166924/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1018"
     }
   ],
   "quote": "j'adore Milo Land Drive",

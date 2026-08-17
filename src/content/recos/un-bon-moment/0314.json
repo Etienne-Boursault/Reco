@@ -10,13 +10,14 @@
   },
   "creator": "Sally Wainwright",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:16Z"
+    "creator": "2026-07-29T08:41:16Z",
+    "links": "2026-07-31T20:22:31Z"
   },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/61244-happy-valley/watch?locale=FR",
     "tmdb": "61244",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/61244-happy-valley/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -55,6 +56,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir",
       "url": "https://www.allocine.fr/series/ficheserie-11658/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3428912/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/61244"
     }
   ],
   "quote": "il faut que je regarde Happy Valley apparemment",

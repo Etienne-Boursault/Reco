@@ -1,7 +1,8 @@
 {
   "creator": "George Lucas",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:22Z"
+    "creator": "2026-07-29T10:06:22Z",
+    "links": "2026-07-31T20:23:16Z"
   },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
@@ -35,6 +36,18 @@
       "kind": "streaming",
       "label": "Disney+ — collection Star Wars",
       "url": "https://www.disneyplus.com/fr-fr/browse/page-b4e74f38-aa35-4b12-965c-93f4a931f78a"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0076759/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/11"
     }
   ],
   "quote": "Je n'ai jamais vu Star Wars.",

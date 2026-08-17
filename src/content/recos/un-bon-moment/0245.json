@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Alain Resnais",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:26Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=FR",
     "tmdb": "39543",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/39543-mon-oncle-d-amerique/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -70,6 +73,18 @@
       "kind": "streaming",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/mon-oncle-d-amerique"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0081176/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/39543"
     }
   ],
   "quote": "il a écrit plein de bouquins et dont Alain René avait fait un film qui était mon oncle d'Amérique",

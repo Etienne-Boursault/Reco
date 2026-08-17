@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Jason Segel, Ellen Wong",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:21Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/81241-dispatches-from-elsewhere/watch?locale=FR",
     "tmdb": "81241",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/81241-dispatches-from-elsewhere/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -52,6 +55,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=23928.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8965666/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81241"
     }
   ],
   "quote": "Dispatch from Elsewhere qui est la série de Jason Seagal",

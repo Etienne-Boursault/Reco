@@ -9,6 +9,9 @@
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi, Navo",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:35Z"
+  },
   "episodeGuid": "4e90b94f-ead1-47f0-ab06-6224bacaad69",
   "externalIds": {
     "instagram": "kyankhojandi"
@@ -46,6 +49,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/series/bref/2rCjFRmIlL2f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2044128/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60715"
     }
   ],
   "quote": "Moi, je suis vraiment un fan de bref.",

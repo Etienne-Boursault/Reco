@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Patrice Leconte",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:51Z"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR",
     "tmdb": "47496",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/47496-les-grands-ducs/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=14060.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0116445/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/47496"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch — où voir le film",
+      "url": "https://www.justwatch.com/fr/film/the-grand-dukes"
     }
   ],
   "quote": "Allez voir Les Grands Ducs. C'est un très, très bon film.",

@@ -10,6 +10,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
+  "externalIds": {
+    "youtubeChannelId": "UC53wqApvOoK2VqgYrXdBo2A"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T09:36:43+00:00",
@@ -65,12 +68,6 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Chaine YouTube de Geronimo",
-      "url": "https://www.youtube.com/@geronimonstre"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
       "url": "https://www.youtube.com/@Geronimonstre"
     }
   ],
@@ -82,8 +79,6 @@
   "title": "Géronimo",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video",
     "artiste"
   ]
 }

@@ -14,7 +14,8 @@
   },
   "creator": "Fary Lopes, Panayotis Pascot",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:24Z"
+    "creator": "2026-07-29T10:06:24Z",
+    "links": "2026-07-31T20:23:18Z"
   },
   "episodeGuid": "696cca4c98f7a1123e758f0d",
   "extractionHistory": [
@@ -67,6 +68,18 @@
       "kind": "streaming",
       "label": "JustWatch",
       "url": "https://www.justwatch.com/fr/serie/loups-garous"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt34186841/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/270963"
     }
   ],
   "quote": "Loup-Garou ? C'est bien.",

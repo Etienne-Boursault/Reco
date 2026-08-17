@@ -10,6 +10,9 @@
     "verdict": "citation"
   },
   "creator": "Gus Van Sant",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:42Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "extractionHistory": [
     {
@@ -39,6 +42,18 @@
       "kind": "buy",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/will-hunting"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0119217/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/489"
     }
   ],
   "quote": "Willem Ting\nqui est un des meilleurs films du monde",

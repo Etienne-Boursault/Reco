@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Larry David, Jerry Seinfeld",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:56Z"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR",
     "tmdb": "1400",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1400-seinfeld/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -69,6 +72,24 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/fr-en/TITLE/70153373"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0098904/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1400"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/70153373"
     }
   ],
   "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",

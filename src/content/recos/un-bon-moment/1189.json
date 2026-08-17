@@ -9,6 +9,9 @@
     "verdict": "validate"
   },
   "creator": "Dave Burd & Jeff Schaffer",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:06Z"
+  },
   "episodeGuid": "bf76185c-2ca0-4324-9adf-a7977d745a2d",
   "externalIds": {
     "tmdb": "97084",
@@ -55,6 +58,18 @@
       "kind": "info",
       "label": "JustWatch (indisponible en France à ce jour)",
       "url": "https://www.justwatch.com/fr/serie/dave"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8531222/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/97084"
     }
   ],
   "quote": "Dave sur Canal... Enfin, c'est à la base d'une série...",

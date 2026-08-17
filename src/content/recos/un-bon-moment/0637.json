@@ -14,13 +14,14 @@
   },
   "creator": "Charlie Brooker",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:26Z"
+    "creator": "2026-07-29T08:41:26Z",
+    "links": "2026-07-31T20:22:42Z"
   },
   "episodeGuid": "a7c99d90-cee1-4576-b1e1-53322b191bb3",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=FR",
     "tmdb": "42009",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -54,6 +55,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/70264888"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2085059/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/42009"
     }
   ],
   "quote": "est-ce que Black Mirror c'est le futur ou c'est maintenant ?",

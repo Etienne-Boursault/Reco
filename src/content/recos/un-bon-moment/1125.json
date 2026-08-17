@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Bill Lawrence, Jason Sudeikis",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:03Z"
+  },
   "episodeGuid": "65240aefc8996500127ede97",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR",
     "tmdb": "97546",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Apple TV+",
       "url": "https://tv.apple.com/fr/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10986410/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/97546"
     }
   ],
   "quote": "Ted Lasso exceptionnel.",

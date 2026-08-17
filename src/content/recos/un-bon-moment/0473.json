@@ -11,7 +11,8 @@
   },
   "creator": "Jean-Baptiste Saurel",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:22Z"
+    "creator": "2026-07-29T08:41:22Z",
+    "links": "2026-07-31T20:22:36Z"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
@@ -75,6 +76,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022941.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt37319567/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1002109"
     }
   ],
   "quote": "Aujourd'hui, on reçoit Xavier Lacaille et Thomas N. Gijol. Vous l'avez remarqué depuis le début de l'émission qui a commencé bien avant. Il a capté l'accès à sa petite caméra.",
@@ -85,7 +98,6 @@
   "title": "Police Flash 80",
   "transcriptSource": "youtube",
   "types": [
-    "film",
-    "autre"
+    "film"
   ]
 }

@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Pascal Ferrand",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:51Z"
+  },
   "episodeGuid": "63357716bc3f1e0012abed65",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/433725-l-age-des-possibles/watch?locale=FR",
     "tmdb": "433725",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/433725-l-age-des-possibles/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,6 +65,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=12960.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0118233/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/433725"
     }
   ],
   "quote": "Je me souviens d'un... je me souviens avoir été voir un film qui s'appelait « L'âge des possibles ».",

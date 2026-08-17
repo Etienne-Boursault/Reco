@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "61ce14aa42581b0012d8ddb0",
+  "externalIds": {
+    "youtubeChannelId": "UCLz6B7LxOdwgHbcgFi_hpQQ"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T02:40:32+00:00",
@@ -40,6 +43,12 @@
   "id": "ubm-2875",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Iro Sef sur YouTube",
+      "url": "https://www.youtube.com/irosef"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

@@ -10,7 +10,8 @@
   },
   "creator": "Vince Gilligan",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:21Z"
+    "creator": "2026-07-29T10:06:21Z",
+    "links": "2026-07-31T20:23:13Z"
   },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "extractionHistory": [
@@ -44,6 +45,24 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/pluribus/umc.cmc.37axgovs2yozlyh3c2cmwzlza"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=32585.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt22202452/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/225171"
     },
     {
       "ethics": "neutral",

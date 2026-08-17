@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Dag Johan Haugerud",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:37Z"
+  },
   "episodeGuid": "69daa64fe9ccbf4a6f5a36d5",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/1228681-sex/watch?locale=FR",
     "tmdb": "1228681",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1228681-sex/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -81,6 +84,18 @@
       "kind": "info",
       "label": "AlloCiné (volet « Rêves »)",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=308471.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt26270862/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1228681"
     }
   ],
   "quote": "il y a une trilogie qui s'appelle la trilogie d'Oslo qui est sur my canal",

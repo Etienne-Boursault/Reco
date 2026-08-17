@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Steve Carell, Jennifer Aniston",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:05Z"
+  },
   "episodeGuid": "7870d7fa-cb20-4051-8458-27dbf903dbe8",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=FR",
     "tmdb": "90282",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7203552/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/90282"
     }
   ],
   "quote": "Une série qui s'appelle The Morning Show.",

@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Julien Granel",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:25Z"
+  },
   "episodeGuid": "dde15b25-f780-473d-81fd-832cbb5e2c3c",
   "extractionHistory": [
     {
@@ -43,6 +46,12 @@
       "kind": "streaming",
       "label": "Spotify",
       "url": "https://open.spotify.com/album/02knHTGcZdUnk9LHw6UjXO"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/150616822"
     }
   ],
   "quote": "je viens de sortir un EP qui s'appelle Bagarre, Bagarre.",

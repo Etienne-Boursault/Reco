@@ -9,6 +9,9 @@
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:57Z"
+  },
   "episodeGuid": "6302667b4913bd00126c374c",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/262200072",
@@ -55,7 +58,19 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
-      "url": "https://www.deezer.com/us/album/262200072"
+      "url": "https://www.deezer.com/album/262200072"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/3TlV2mJz0LuEwNlEMTx2vb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/lhorizon-des-%C3%A9v%C3%A8nements/1588117066?uo=4"
     },
     {
       "ethics": "neutral",
@@ -68,6 +83,12 @@
       "kind": "official",
       "label": "Site officiel de Kyan Khojandi",
       "url": "https://www.kyan.fr/blog/un-nouveau-projet-lhorizon-des-evenements"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/lhorizon-des-%C3%A9v%C3%A8nements/1588117066"
     }
   ],
   "quote": "moi je recommande l'horizon des événements de Ken Kojandi",

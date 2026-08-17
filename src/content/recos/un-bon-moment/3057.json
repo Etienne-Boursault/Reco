@@ -29,7 +29,26 @@
   ],
   "id": "ubm-3057",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/184729/evt.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://gregromano.fr/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Theatreonline",
+      "url": "https://www.theatreonline.com/Spectacle/Greg-Romano-Leve-toi-et-tombe/63816"
+    }
+  ],
   "quote": "Le spectacle, ça plaît, ça s'appelle toujours, mais ça plaît puisque tu ne le joues plus « Lève-toi et tombe ».",
   "recommendedBy": "Greg Romano",
   "sourceId": "un-bon-moment",

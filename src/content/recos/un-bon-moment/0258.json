@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Federico Fellini",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:28Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/422-8/watch?locale=FR",
     "tmdb": "422",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/422-8/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://www.sooner.fr/films/huit-et-demi"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0056801/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/422"
     }
   ],
   "quote": "je vois régulièrement 8 et demi de Fellini parce que c'est de la poésie pure",

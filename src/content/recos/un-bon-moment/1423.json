@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Éric Toledano, Olivier Nakache",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:12Z"
+  },
   "episodeGuid": "69b595f063444515f923af4a",
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/nc/title/80208466"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5699154/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/432068"
     }
   ],
   "quote": "le sens de la fête ça c'est que c'est un truc qui est devenu culte",

@@ -14,6 +14,9 @@
     "verdict": "citation"
   },
   "creator": "Yann",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:17Z"
+  },
   "episodeGuid": "6970a1759448a95f223d530c",
   "extractionHistory": [
     {
@@ -41,8 +44,14 @@
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné — où voir la série",
-      "url": "https://www.allocine.fr/series/ficheserie-19344/streaming/"
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt4835480/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/65430"
     }
   ],
   "quote": "le réalisateur, qui est super, lui qui a fait \"Barons Noirs\", \"D'argent et de sang\"",

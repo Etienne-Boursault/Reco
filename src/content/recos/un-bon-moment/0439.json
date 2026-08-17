@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Michael Bay",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:34Z"
+  },
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/8961-bad-boys-ii/watch?locale=FR",
     "tmdb": "8961",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/8961-bad-boys-ii/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -43,6 +46,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-47111/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0172156/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/8961"
     }
   ],
   "quote": "j'ai revu Bad Boys 2 super",

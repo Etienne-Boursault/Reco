@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Katsuhiro Otomo",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:58Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/149-akira/watch?locale=FR",
     "tmdb": "149",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/149-akira/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,6 +70,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=6429.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0094625/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/149"
     }
   ],
   "quote": "Je parle de Akira, film d'Otobo, classique de l'animation.",

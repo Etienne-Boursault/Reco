@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Louie Psihoyos",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:22Z"
+  },
   "episodeGuid": "661c1bf83fb7ab00162aa674",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/463088-the-game-changers/watch?locale=FR",
     "tmdb": "463088",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/463088-the-game-changers/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "official",
       "label": "Site officiel du film",
       "url": "https://gamechangersmovie.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7455754/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/463088"
     }
   ],
   "quote": "J'avais vu ce reportage, je ne l'ai vu sur Netflix. Game Changers.",

@@ -14,7 +14,8 @@
   },
   "creator": "Alain de Greef",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:42Z"
+    "creator": "2026-07-29T10:06:42Z",
+    "links": "2026-07-31T20:23:42Z"
   },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "extractionHistory": [
@@ -45,6 +46,18 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/Nulle_part_ailleurs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0196277/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/132149"
     }
   ],
   "quote": "c'était nul part ailleurs qu'on regardait qu'on trouvait ça fabuleux",

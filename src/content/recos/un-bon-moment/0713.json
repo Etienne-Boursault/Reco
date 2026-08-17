@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "David Benioff, D.B. Weiss",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:47Z"
+  },
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR",
     "tmdb": "1399",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/game-of-thrones/4f6b4985-2dc9-4ab6-ac79-d60f0860b0ac"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0944947/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/1399"
     }
   ],
   "quote": "Parce que ce n'est pas à toi parce qu'il n'y a pas sa mémoire.",

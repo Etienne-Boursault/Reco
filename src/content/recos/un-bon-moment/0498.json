@@ -15,13 +15,14 @@
   },
   "creator": "Glenn Kessler, Daniel Zelman, Todd A. Kessler",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:23Z"
+    "creator": "2026-07-29T08:41:23Z",
+    "links": "2026-07-31T20:22:37Z"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/61986-bloodline/watch?locale=FR",
     "tmdb": "61986",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/61986-bloodline/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -73,6 +74,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80010655"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3520702/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/61986"
     }
   ],
   "quote": "je te conseille Bloodline",

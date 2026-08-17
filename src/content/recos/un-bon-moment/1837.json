@@ -60,10 +60,34 @@
   "kind": "citation",
   "links": [
     {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/The-Office/0JGLV917NB1OAICKEK7JO23KOU"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0386676/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/2316"
+    },
+    {
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/70136120"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/the-office-us"
     },
     {
       "ethics": "neutral",

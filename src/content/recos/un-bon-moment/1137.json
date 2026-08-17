@@ -10,11 +10,14 @@
     "verdict": "validate"
   },
   "creator": "David O. Russell",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:04Z"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/45317-the-fighter/watch?locale=FR",
     "tmdb": "45317",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/45317-the-fighter/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -63,6 +66,18 @@
       "kind": "streaming",
       "label": "Prime Video",
       "url": "https://www.primevideo.com/-/fr/detail/Fighter/0GHXJWMM6CTFUU14SZ6RHZC7IM"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0964517/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/45317"
     }
   ],
   "quote": "Il y a The Fighter.",

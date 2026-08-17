@@ -13,12 +13,15 @@
     "verdict": "guest-work"
   },
   "creator": "Fabrice Éboué",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:28Z"
+  },
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "instagram": "ebouefabrice",
-    "justwatch": "https://www.themoviedb.org/movie/1174382-gerald-le-conquerant/watch?locale=FR",
     "tmdb": "1174382",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1174382-gerald-le-conquerant/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -77,6 +80,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=319824.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt29312656/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1174382"
     }
   ],
   "quote": "Franchement, déjà...",

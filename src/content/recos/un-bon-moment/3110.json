@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "creator": "Kevin Hart",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:00Z"
+  },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
   "extractionHistory": [
     {
@@ -35,6 +38,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/nl-en/title/82054722"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt39385315/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/311991"
     }
   ],
   "quote": "le genre de casting qu'a fait Kevin Hart",

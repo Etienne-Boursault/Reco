@@ -10,6 +10,9 @@
     "verdict": "validate"
   },
   "creator": "Larry David",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:59Z"
+  },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
   "extractionHistory": [
     {
@@ -32,7 +35,31 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/en/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0264235/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/4546"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (Larry et son nombril)",
+      "url": "https://www.allocine.fr/series/ficheserie-77/streaming/"
     },
     {
       "ethics": "neutral",

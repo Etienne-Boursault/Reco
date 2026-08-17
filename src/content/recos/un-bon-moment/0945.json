@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "episodeGuid": "6599c1b296596600156961a7",
+  "externalIds": {
+    "youtubeChannelId": "UCS_7tplUgzJG4DhA16re5Yg"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:24+00:00",
@@ -34,7 +37,7 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Chaîne YouTube",
-      "url": "https://www.youtube.com/c/BaladeMentaleChaine/videos"
+      "url": "https://www.youtube.com/@BaladeMentale"
     }
   ],
   "quote": "Je recommande la chaîne Ballad Mental sur YouTube.",
@@ -45,6 +48,6 @@
   "title": "Balade Mentale",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "chaine"
   ]
 }

@@ -13,6 +13,9 @@
     "verdict": "citation"
   },
   "creator": "Orelsan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:44Z"
+  },
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/270762122",
@@ -79,7 +82,13 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
-      "url": "https://www.deezer.com/us/album/270762122"
+      "url": "https://www.deezer.com/album/270762122"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/civilisation/1788304818?uo=4"
     }
   ],
   "quote": "Et tu as photographié aussi les albums d'Aurel-san qu'on connaît, La Civilisation.",

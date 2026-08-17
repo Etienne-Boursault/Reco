@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Woody Allen",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:34Z"
+  },
   "episodeGuid": "652415a1c899650012820b3f",
   "extractionHistory": [
     {
@@ -38,6 +41,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1618.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0086637/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/11030"
     }
   ],
   "quote": "je me dis que ce serait intéressant de faire un documentaire sur ce personnage-là. Donc, je repars un peu de ce que Woody Allen avait fait avec Zellig.",

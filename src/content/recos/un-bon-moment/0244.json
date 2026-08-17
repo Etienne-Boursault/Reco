@@ -10,13 +10,14 @@
   },
   "creator": "Raphael Bob-Waksberg",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:15Z"
+    "creator": "2026-07-29T08:41:15Z",
+    "links": "2026-07-31T20:22:26Z"
   },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR",
     "tmdb": "61222",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/61222-bojack-horseman/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -68,6 +69,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/70300800"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3398228/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/61222"
     }
   ],
   "quote": "Il y a des séries comme Bojack Horseman.",

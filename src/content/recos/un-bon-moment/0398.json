@@ -10,11 +10,14 @@
     "verdict": "validate"
   },
   "creator": "Takeshi Kitano",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:33Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/4291/watch?locale=FR",
     "tmdb": "4291",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/4291/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -72,6 +75,18 @@
       "kind": "info",
       "label": "AlloCiné — offres VOD",
       "url": "https://www.allocine.fr/film/fichefilm-27667/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0199683/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/4291"
     }
   ],
   "quote": "Moi, je recommande L'été de Kiku Giraud.",

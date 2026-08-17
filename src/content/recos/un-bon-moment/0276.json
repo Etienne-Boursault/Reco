@@ -8,11 +8,14 @@
     "verdict": "citation"
   },
   "creator": "Phoebe Waller-Bridge",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:29Z"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR",
     "tmdb": "67070",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,7 +64,7 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "buy",
+      "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/fleabag/umc.cmc.3q807jzamz6a79sq9c1nco48o"
     },
@@ -74,8 +77,26 @@
     {
       "ethics": "neutral",
       "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5687612/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/67070"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=20611.html"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Fleabag/0OB9NDUVQKFRSYRSCHT2A784TI"
     }
   ],
   "quote": "Fleabag c'est fou ouais ! Fleabag la saison 2 est mieux que la une !",

@@ -11,7 +11,8 @@
   },
   "creator": "Leslie Stevens",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:20Z"
+    "creator": "2026-07-29T10:06:20Z",
+    "links": "2026-07-31T20:23:11Z"
   },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "extractionHistory": [
@@ -42,6 +43,18 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/Au-del%C3%A0_du_r%C3%A9el_:_L'aventure_continue"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0112111/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/21561"
     }
   ],
   "quote": "C'est à refaire les Au-delà du réel. C'est un peu comme Black Mirror, tu vois, parce qu'il y a des idées qui sont incroyables dans Au-delà du réel.",

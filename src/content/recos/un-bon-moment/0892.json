@@ -13,12 +13,15 @@
     "verdict": "guest-work"
   },
   "creator": "Rudy Milstein",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:53Z"
+  },
   "episodeGuid": "652408a9c8996500127e39e9",
   "externalIds": {
     "instagram": "rudymil",
-    "justwatch": "https://www.themoviedb.org/movie/1004255-je-ne-suis-pas-un-heros/watch?locale=FR",
     "tmdb": "1004255",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1004255-je-ne-suis-pas-un-heros/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -68,6 +71,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=307280.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt29198884/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1004255"
     }
   ],
   "quote": "Vous êtes à l'affiche d'un film qui s'appelle « Je ne suis pas un héros » qui sort le 15 novembre au cinéma.",

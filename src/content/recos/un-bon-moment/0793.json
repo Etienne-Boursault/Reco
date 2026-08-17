@@ -15,13 +15,14 @@
   },
   "creator": "Jemaine Clement",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:29Z"
+    "creator": "2026-07-29T08:41:29Z",
+    "links": "2026-07-31T20:22:49Z"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/83631-what-we-do-in-the-shadows/watch?locale=FR",
     "tmdb": "83631",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/83631-what-we-do-in-the-shadows/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -70,6 +71,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir la série",
       "url": "https://www.allocine.fr/series/ficheserie-23200/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7908628/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/83631"
     }
   ],
   "quote": "c'est une série que je trouve ultra drôle c'est What We Do In The Shadow",

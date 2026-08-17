@@ -12,6 +12,9 @@
     "verdict": "validate"
   },
   "creator": "Éric Rochant",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:36Z"
+  },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir la série",
       "url": "https://www.allocine.fr/series/ficheserie-17907/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt4063800/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/62476"
     }
   ],
   "quote": "le Bureau des légendes, les gars, c'est la meilleure série française au monde.",

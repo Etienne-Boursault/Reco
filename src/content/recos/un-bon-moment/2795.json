@@ -14,6 +14,9 @@
     "verdict": "guest-work"
   },
   "creator": "John Wax, Kamel Gemra, Johnny du Triple X",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:48Z"
+  },
   "episodeGuid": "65240a35cc56a90012ec386b",
   "extractionHistory": [
     {
@@ -44,6 +47,18 @@
       "kind": "streaming",
       "label": "Sooner",
       "url": "https://www.sooner.fr/films/tout-simplement-noir"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10426916/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/679989"
     }
   ],
   "quote": "La première fois que j'ai tourné dans un film, c'était dans Tout Simplement Noir frère.",

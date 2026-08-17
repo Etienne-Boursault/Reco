@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Greg Daniels, Mike Schur",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:21Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/86248-upload/watch?locale=FR",
     "tmdb": "86248",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/86248-upload/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22769.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7826376/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/86248"
     }
   ],
   "quote": "j'ai fini récemment upload sur Amazon c'est trop bien",

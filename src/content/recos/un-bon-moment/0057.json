@@ -7,12 +7,15 @@
     "reason": "Film cité par Éléonore comme référence de style pour son projet de chronique familiale (« un de mes films [préférés] », « je rêve de dépeindre une chronique comme ça »). Appréciation substantielle mais pas de prescription au public.",
     "verdict": "citation"
   },
-  "creator": "Inconnu",
+  "creator": null,
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:20Z"
+  },
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/12169-le-premier-jour-du-reste-de-ta-vie/watch?locale=FR",
     "tmdb": "12169",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/12169-le-premier-jour-du-reste-de-ta-vie/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "buy",
       "label": "UniversCiné",
       "url": "https://www.universcine.com/films/le-premier-jour-du-reste-de-ta-vie"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0926759/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/12169"
     }
   ],
   "quote": "je rêve de dépeindre une chronique comme ça",

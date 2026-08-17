@@ -1,4 +1,5 @@
 {
+  "creator": "Christophe Pauly",
   "episodeGuid": "6a10a31516a6aa135ed729e1",
   "extractionHistory": [
     {
@@ -30,16 +31,10 @@
   },
   "links": [
     {
-      "ethics": "indie",
+      "ethics": "neutral",
       "kind": "official",
-      "label": "Site officiel de Christophe Pauly",
-      "url": "https://christophepauly.com/"
-    },
-    {
-      "ethics": "indie",
-      "kind": "official",
-      "label": "Le Coq aux Champs",
-      "url": "https://www.lecoqauxchamps.be/"
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@Christophe_Pauly"
     }
   ],
   "quote": "Il y a Christophe Pauly aussi, mais j'en ai déjà pas beaucoup parlé. C'est incroyable.",
@@ -50,6 +45,6 @@
   "title": "Christophe Pauly",
   "transcriptSource": "youtube",
   "types": [
-    "video"
+    "chaine"
   ]
 }

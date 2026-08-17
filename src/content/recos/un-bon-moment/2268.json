@@ -13,9 +13,13 @@
     "verdict": "guest-work"
   },
   "creator": "Kyan Khojandi, Navo",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:30Z"
+  },
   "episodeGuid": "a80c7606-16d6-444e-8083-3bfa5067aabb",
   "externalIds": {
-    "instagram": "kyankhojandi"
+    "instagram": "kyankhojandi",
+    "youtubeChannelId": "UCd0V9SfenWqlPsTt5-AyN8A"
   },
   "extractionHistory": [
     {
@@ -39,7 +43,7 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube officielle Bloqués",
-      "url": "https://www.youtube.com/channel/UCd0V9SfenWqlPsTt5-AyN8A"
+      "url": "https://www.youtube.com/@Bloques"
     },
     {
       "ethics": "neutral",
@@ -49,9 +53,15 @@
     },
     {
       "ethics": "neutral",
-      "kind": "official",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@Bloques"
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5296536/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/63871"
     }
   ],
   "quote": "bloqué ça les a vraiment marqués",

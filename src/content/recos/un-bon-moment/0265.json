@@ -10,11 +10,14 @@
     "verdict": "citation"
   },
   "creator": "Non précisé",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:28Z"
+  },
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/1210732-un-ours-dans-le-jura/watch?locale=FR",
     "tmdb": "1210732",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1210732-un-ours-dans-le-jura/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -72,6 +75,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=323570.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt33984333/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1210732"
     }
   ],
   "quote": "Il prend tout le monde à contre-pied sur tout.",

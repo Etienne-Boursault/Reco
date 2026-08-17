@@ -10,6 +10,9 @@
     "verdict": "validate"
   },
   "creator": "Paul Thomas Anderson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:59Z"
+  },
   "episodeGuid": "6a2d9864a717b492a5132dfe",
   "extractionHistory": [
     {
@@ -30,9 +33,27 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
+      "kind": "buy",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/magnolia/umc.cmc.mbdys1lghcq89larr77nlxnb"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=22858.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0175880/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/334"
     },
     {
       "ethics": "neutral",

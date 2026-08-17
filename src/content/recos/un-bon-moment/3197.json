@@ -10,6 +10,9 @@
     "verdict": "discard"
   },
   "creator": "Ben Stiller",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:05Z"
+  },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractionHistory": [
     {
@@ -28,6 +31,30 @@
   "id": "ubm-3197",
   "kind": "citation",
   "links": [
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/Burning-Love/0NQ1IGKFSI5S5DC81A3LGK7P7L"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=11960.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2292621/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/44189"
+    },
     {
       "ethics": "avoid",
       "kind": "streaming",

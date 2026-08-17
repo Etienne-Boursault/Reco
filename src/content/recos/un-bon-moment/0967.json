@@ -10,11 +10,14 @@
     "verdict": "citation"
   },
   "creator": "Marcel Carné",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:57Z"
+  },
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/48369-hotel-du-nord/watch?locale=FR",
     "tmdb": "48369",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/48369-hotel-du-nord/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -63,6 +66,18 @@
       "kind": "buy",
       "label": "Potemkine Films (Blu-ray)",
       "url": "https://store.potemkine.fr/dvd/3545020083109-hotel-du-nord-marcel-carne/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0030252/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/48369"
     }
   ],
   "quote": "je peux voir Hôtel du Nord plein de fois je trouve ça super",

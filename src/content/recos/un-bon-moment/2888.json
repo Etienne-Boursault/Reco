@@ -13,6 +13,9 @@
     "verdict": "citation"
   },
   "creator": "Sam Levinson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:49Z"
+  },
   "episodeGuid": "6302667b4913bd00126c374c",
   "extractionHistory": [
     {
@@ -46,6 +49,30 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/euphoria/4ffd33c9-e0d6-4cd6-bd13-34c266c79be0"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22215.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt8772296/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/85552"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-22215/streaming/"
     }
   ],
   "quote": "Euphoria ils ont fait ça pour tous les personnes un peu méchants",

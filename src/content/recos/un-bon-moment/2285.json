@@ -10,6 +10,9 @@
     "verdict": "citation"
   },
   "creator": "Ben Stiller",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:31Z"
+  },
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "extractionHistory": [
     {
@@ -39,6 +42,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=11960.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2292621/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/44189"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/nl/detail/0KVMM0JEIEEVI0B24GTJUUW9YB"
     }
   ],
   "quote": "c'est une adaptation d'un truc d'un format américain qui s'appelait burning love qui était produit par ben stiller",

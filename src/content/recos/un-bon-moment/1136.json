@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Daniel Kwan, Daniel Scheinert",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:03Z"
+  },
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/545611-everything-everywhere-all-at-once/watch?locale=FR",
     "tmdb": "545611",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/545611-everything-everywhere-all-at-once/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -43,6 +46,18 @@
       "kind": "borrow",
       "label": "Médiathèque Numérique",
       "url": "https://vod.mediatheque-numerique.com/films/everything-everywhere-all-at-once"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6710474/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/545611"
     }
   ],
   "quote": "Il y a un truc qui s'appelle 'Everything', 'Everywhere'.",

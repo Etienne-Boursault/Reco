@@ -11,13 +11,14 @@
   },
   "creator": "Mark Lewis",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:38Z"
+    "creator": "2026-07-29T08:41:38Z",
+    "links": "2026-07-31T20:23:01Z"
   },
   "episodeGuid": "c7bf13b0-3656-4996-98d4-cfe92fc328bb",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR",
     "tmdb": "96129",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/96129-don-t-f-k-with-cats-hunting-an-internet-killer/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -50,6 +51,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81031373"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11318602/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/96129"
     }
   ],
   "quote": "Don't fuck with cats sur Netflix",

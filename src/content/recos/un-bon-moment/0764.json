@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Jonathan Nolan, Lisa Joy",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:48Z"
+  },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=FR",
     "tmdb": "63247",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/show/westworld/umc.cmc.305ub24u3ci7x1lu4xyoynbar"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0475784/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/63247"
     }
   ],
   "quote": "J'ai adoré la série Westworld.",

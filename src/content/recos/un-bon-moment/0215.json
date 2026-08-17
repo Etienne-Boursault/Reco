@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Larry David",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:24Z"
+  },
   "episodeGuid": "690f87b14e59613eaf07e566",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/4546-curb-your-enthusiasm/watch?locale=FR",
     "tmdb": "4546",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/4546-curb-your-enthusiasm/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -69,6 +72,36 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/en/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0264235/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/4546"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "HBO Max",
+      "url": "https://www.hbomax.com/fr/fr/shows/curb-your-enthusiasm/18a0993f-209a-4653-8f94-f3fb8422e678"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné (Larry et son nombril)",
+      "url": "https://www.allocine.fr/series/ficheserie-77/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/curb-your-enthusiasm/umc.cmc.4koxxcdkbia1pne6zkt72mhva"
     }
   ],
   "quote": "Les séries que j'aime beaucoup, c'est \"Curb Your Enthusiasm\", \"Larry David\", \"Seinfeld\".",

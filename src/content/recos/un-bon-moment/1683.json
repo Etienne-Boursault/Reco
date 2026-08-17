@@ -12,7 +12,10 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Netflix (série espagnole)",
+  "creator": "Rodrigo Sorogoyen, Sara Cano, Paula Fabra",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:19Z"
+  },
   "episodeGuid": "6955067456c11ef4099abd99",
   "extractionHistory": [
     {
@@ -31,6 +34,30 @@
   "id": "ubm-1683",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "ARTE.tv",
+      "url": "https://www.arte.tv/fr/videos/RC-027095/los-anos-nuevos/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=35517.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt29615330/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/238106"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

@@ -15,13 +15,14 @@
   },
   "creator": "Mike White",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:38Z"
+    "creator": "2026-07-29T08:41:38Z",
+    "links": "2026-07-31T20:23:01Z"
   },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR",
     "tmdb": "111803",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -54,6 +55,18 @@
       "kind": "streaming",
       "label": "HBO Max",
       "url": "https://www.hbomax.com/fr/fr/shows/white-lotus/14f9834d-bc23-41a8-ab61-5c8abdbea505"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt13406094/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/111803"
     }
   ],
   "quote": "une série de White Lotus je sais pas si vous l'avez vu c'est une magnifique série américaine",

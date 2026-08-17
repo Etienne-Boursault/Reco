@@ -8,11 +8,14 @@
     "verdict": "validate"
   },
   "creator": "Jeff Orlowski",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:05Z"
+  },
   "episodeGuid": "712ea7fc-593d-472e-99ae-9ca35fcd2a05",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/656690-the-social-dilemma/watch?locale=FR",
     "tmdb": "656690",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/656690-the-social-dilemma/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -51,6 +54,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=280921.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11464826/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/656690"
     }
   ],
   "quote": "sur Netflix il y a \"Social Dilemma\" qui résume un peu tout ça",

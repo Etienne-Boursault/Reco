@@ -3,11 +3,14 @@
     "Half Men"
   ],
   "creator": "Richard Gadd",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:09Z"
+  },
   "episodeGuid": "6a10a31516a6aa135ed729e1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/257994-half-man/watch?locale=FR",
     "tmdb": "257994",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/257994-half-man/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -74,6 +77,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36110.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt32767294/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/257994"
     }
   ],
   "quote": "j'ai commencé une série qui s'appelle Halfman. Il y a genre trois épisodes, un truc comme ça, et c'est trop bien.",

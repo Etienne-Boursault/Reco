@@ -9,11 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Marco Brambilla",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:41Z"
+  },
   "episodeGuid": "3caaacee-8be2-4cf4-adde-7d6c87ef8d66",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/9739-demolition-man/watch?locale=FR",
     "tmdb": "9739",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/9739-demolition-man/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -62,6 +65,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-32599/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0106697/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/9739"
     }
   ],
   "quote": "Regardez Demolition Man voilà",

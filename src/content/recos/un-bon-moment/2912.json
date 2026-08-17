@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "creator": "Orelsan",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:28Z"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
     "instagram": "orelsan"
@@ -34,10 +37,28 @@
   "id": "ubm-2912",
   "links": [
     {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Écouter / acheter (lien officiel)",
+      "url": "https://orelsan.lnk.to/civilisation"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/1M9gSrMf9GN0XPC3PJIby7"
+    },
+    {
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/270762122"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/civilisation/1788304818?uo=4"
     }
   ],
   "quote": "Pour parler d'Aurel, parce que je trouve qu'il a un truc vraiment incroyable.",
@@ -49,7 +70,6 @@
   "transcriptSource": "youtube",
   "types": [
     "artiste",
-    "album",
-    "autre"
+    "album"
   ]
 }

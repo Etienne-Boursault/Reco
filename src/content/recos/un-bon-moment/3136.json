@@ -17,7 +17,8 @@
   "creator": "Baptiste Lecaplain",
   "episodeGuid": "6a40008ff1a89630e1b1ddbd",
   "externalIds": {
-    "instagram": "baptistelecaplain"
+    "instagram": "baptistelecaplain",
+    "youtubeChannelId": "UCBTDgthuMxXF0HoBJypd1hA"
   },
   "extractionHistory": [
     {
@@ -40,7 +41,13 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "YouTube — chaîne officielle",
+      "label": "YouTube — tous les épisodes (chaîne officielle)",
+      "url": "https://www.youtube.com/playlist?list=PL_34KZvppjDi7Pkxvbq77Ufo9qdm6GKNG"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne officielle PITCH",
       "url": "https://www.youtube.com/@pitch5351"
     },
     {

@@ -10,6 +10,9 @@
   },
   "creator": "YouTube",
   "episodeGuid": "65ed91d2d4b6e10017bf9747",
+  "externalIds": {
+    "youtubeChannelId": "UC2ruguOcwnVR2_4DtiGnmLg"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -57,6 +60,12 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/TheGreatReview"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Bloqués 5 heures sur Age of Empires",
+      "url": "https://www.youtube.com/watch?v=tqlO9KrD8vc"
     }
   ],
   "quote": "Donc, je reconseille à nouveau The Great Review qui fait des Great Reviews.",
@@ -67,8 +76,6 @@
   "title": "The Great Review",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
-    "video",
-    "podcast"
+    "chaine"
   ]
 }

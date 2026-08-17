@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Jane Campion",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:35Z"
+  },
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/29963-bright-star/watch?locale=FR",
     "tmdb": "29963",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/29963-bright-star/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -69,6 +72,18 @@
       "kind": "buy",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/bright-star/umc.cmc.5zlxsl7hhdq9wouti7z2wk41q"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0810784/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/29963"
     }
   ],
   "quote": "Bright Star de Jane Campion moi je vous recommande d'aller voir",

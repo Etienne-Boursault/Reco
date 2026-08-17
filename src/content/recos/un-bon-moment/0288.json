@@ -8,6 +8,9 @@
     "reviewedByHuman": true,
     "verdict": "citation"
   },
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:30Z"
+  },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "extractionHistory": [
     {
@@ -37,6 +40,24 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=32585.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt22202452/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/225171"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie-32585/streaming/"
     }
   ],
   "quote": "Pluribus. Moi je kiffe.",
@@ -47,6 +68,6 @@
   "title": "Pluribus",
   "transcriptSource": "acast",
   "types": [
-    "autre"
+    "serie"
   ]
 }

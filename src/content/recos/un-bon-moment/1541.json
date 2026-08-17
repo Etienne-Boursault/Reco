@@ -4,12 +4,15 @@
     "Mourad Winter"
   ],
   "creator": "Mourad Winter",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:15Z"
+  },
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "externalIds": {
     "instagram": "mouradwinter",
-    "justwatch": "https://www.themoviedb.org/movie/1071064-l-amour-c-est-surcote/watch?locale=FR",
     "tmdb": "1071064",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1071064-l-amour-c-est-surcote/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,6 +70,24 @@
       "kind": "buy",
       "label": "Librairie Mollat",
       "url": "https://www.mollat.com/livres/2526402/mourad-winter-l-amour-c-est-surcote"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt35420252/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1071064"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782266351010-l-amour-c-est-surcote-mourad-winter/"
     }
   ],
   "quote": "On peut parler des livres de Murad Winter. L'amour, c'est sur-côté.",

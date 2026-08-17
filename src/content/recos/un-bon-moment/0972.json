@@ -9,13 +9,14 @@
   },
   "creator": "Donald Glover, Francesca Sloane",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:32Z"
+    "creator": "2026-07-29T08:41:32Z",
+    "links": "2026-07-31T20:22:57Z"
   },
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/118642-mr-mrs-smith/watch?locale=FR",
     "tmdb": "118642",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/118642-mr-mrs-smith/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -54,6 +55,18 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/Mr._et_Mrs._Smith_(s%C3%A9rie_t%C3%A9l%C3%A9vis%C3%A9e,_2024)"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt14044212/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/118642"
     }
   ],
   "quote": "Et Mister et Mrs. Smith ! Exceptionnel ! Mister et Mrs. Smith ! Il va aller prendre ce truc qui est un blockbuster ! C'est tellement une bonne idée ! Il va faire un truc niché, réaliste !",

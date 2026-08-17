@@ -1,5 +1,8 @@
 {
   "creator": "George Kay",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:10Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "extractionHistory": [
     {
@@ -57,6 +60,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=22302.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2531336/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/96677"
     }
   ],
   "quote": "Oui, il y a un lupin.",

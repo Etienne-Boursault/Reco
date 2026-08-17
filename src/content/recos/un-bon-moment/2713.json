@@ -12,6 +12,9 @@
     "verdict": "validate"
   },
   "creator": "Michaela Coel",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:46Z"
+  },
   "episodeGuid": "9536da14-4023-4a5b-b6e3-d6a73a405eb1",
   "extractionHistory": [
     {
@@ -49,8 +52,26 @@
     {
       "ethics": "neutral",
       "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11204260/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/102619"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
       "label": "JustWatch — ou regarder",
       "url": "https://www.justwatch.com/fr/serie/i-may-destroy-you/saison-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=25797.html"
     }
   ],
   "quote": "C'est vraiment chouette, vraiment, vraiment cool.",

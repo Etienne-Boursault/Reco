@@ -12,11 +12,15 @@
     "reviewedByHuman": true,
     "verdict": "validate"
   },
-  "creator": "Guillaume Desjardins, Jérémy Bernard, Bastien Ughetto",
+  "creator": "Les Parasites",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:36Z"
+    "creator": "2026-07-29T10:06:36Z",
+    "links": "2026-07-31T20:23:35Z"
   },
   "episodeGuid": "a0511f3a-8088-4b81-a252-6bc963df7c8c",
+  "externalIds": {
+    "youtubeChannelId": "UCqS1gDNHEX3FgJ8dPfSuRoQ"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T20:36:57+00:00",
@@ -54,13 +58,25 @@
       "ethics": "neutral",
       "kind": "official",
       "label": "Chaîne YouTube des Parasites",
-      "url": "https://www.youtube.com/channel/UCqS1gDNHEX3FgJ8dPfSuRoQ"
+      "url": "https://www.youtube.com/@LesParasitesFilms"
     },
     {
       "ethics": "neutral",
       "kind": "official",
       "label": "YouTube",
       "url": "https://www.youtube.com/watch?v=VHCeqvQBNIM&list=PLo4Qwa4Nhi1m1v4aernDm1agaSqWuoBDS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt11248266/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/95324"
     }
   ],
   "quote": "Regarde ça. Ouais, je sais. C'est incroyable.",

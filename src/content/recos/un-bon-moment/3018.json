@@ -13,7 +13,8 @@
   },
   "creator": "Laurie Nunn",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:48Z"
+    "creator": "2026-07-29T10:06:48Z",
+    "links": "2026-07-31T20:23:56Z"
   },
   "episodeGuid": "6336c79af131c60012c20984",
   "extractionHistory": [
@@ -48,6 +49,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80197526"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7767422/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81356"
     }
   ],
   "quote": "Je regarde Sex Education et je trouve ça cool justement.",

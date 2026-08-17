@@ -13,11 +13,14 @@
     "verdict": "citation"
   },
   "creator": "Gilles Lellouche",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:54Z"
+  },
   "episodeGuid": "65240a35cc56a90012ec386b",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/484482-le-grand-bain/watch?locale=FR",
     "tmdb": "484482",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/484482-le-grand-bain/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=235582.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7476116/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/484482"
     }
   ],
   "quote": "C'est génial.",

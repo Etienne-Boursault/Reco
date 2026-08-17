@@ -13,11 +13,14 @@
     "verdict": "citation"
   },
   "creator": "Pete Docter",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:58Z"
+  },
   "episodeGuid": "6970a1759448a95f223d530c",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/14160/watch?locale=FR",
     "tmdb": "14160",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/14160/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -47,6 +50,18 @@
       "kind": "official",
       "label": "Site Disney·Pixar",
       "url": "https://www.disneypixar.fr/films/128-la-haut"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1049413/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/14160"
     }
   ],
   "quote": "La dernière fois que ça m'a fait ça, c'était dans Up, voilà, exactement.",

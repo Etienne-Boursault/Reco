@@ -13,6 +13,9 @@
     "verdict": "guest-work"
   },
   "creator": "Yacine Belhousse",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:57Z"
+  },
   "episodeGuid": "637d3b6c-1105-4f24-b1df-7e90d159e89c",
   "externalIds": {
     "instagram": "yacinebelhousse"
@@ -38,6 +41,30 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
+      "label": "YouTube - playlist Saisons 1 & 2",
+      "url": "https://www.youtube.com/playlist?list=PLlVA7AZDgPeTu_ylEYpvbJBTnLLRHNb9N"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Golden Moustache - l'intégrale de la série",
+      "url": "https://www.goldens.fr/goldenmoustache/decouvrez-lintegrale-de-la-serie-le-trone-des-frogz/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5485592/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/81160"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
       "label": "Dailymotion",
       "url": "https://www.dailymotion.com/video/x6njqv1"
     },
@@ -46,12 +73,6 @@
       "kind": "info",
       "label": "SensCritique",
       "url": "https://www.senscritique.com/serie/Le_Trone_des_Frogz/23192422"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "streaming",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/playlist?list=PLlVA7AZDgPeTu_ylEYpvbJBTnLLRHNb9N"
     }
   ],
   "quote": "Moi, j'ai fait le Trône des Frogs. C'est incroyable.",
@@ -62,6 +83,6 @@
   "title": "Le Trône des Frogz",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "serie"
   ]
 }

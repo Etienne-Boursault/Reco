@@ -13,11 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Christopher Storer",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:22Z"
+  },
   "episodeGuid": "65c7a407bb568b0017862c8f",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=FR",
     "tmdb": "136315",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/136315-the-bear/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "streaming",
       "label": "Disney+",
       "url": "https://www.disneyplus.com/fr-fr/browse/entity-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt14452776/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/136315"
     }
   ],
   "quote": "Saison 2 exceptionnelle.",

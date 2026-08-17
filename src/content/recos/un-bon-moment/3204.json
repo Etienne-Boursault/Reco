@@ -14,7 +14,8 @@
   },
   "creator": "Harry Bradbeer",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:52Z"
+    "creator": "2026-07-29T10:06:52Z",
+    "links": "2026-07-31T20:24:06Z"
   },
   "episodeGuid": "8fea089a-4ebc-4aff-a90a-9ed6a94a30be",
   "extractionHistory": [
@@ -45,6 +46,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=261721.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt7846844/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/497582"
     }
   ],
   "quote": "Le dernier truc que j'ai regardé, ça s'appelle Enola Holmes sur Netflix.",

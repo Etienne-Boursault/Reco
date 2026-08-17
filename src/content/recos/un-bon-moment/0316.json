@@ -10,13 +10,14 @@
   },
   "creator": "Chris Weitz, Paul Weitz",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:16Z"
+    "creator": "2026-07-29T08:41:16Z",
+    "links": "2026-07-31T20:22:31Z"
   },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR",
     "tmdb": "241554",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/241554-murderbot/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -59,6 +60,18 @@
       "kind": "streaming",
       "label": "Apple TV+",
       "url": "https://tv.apple.com/fr/show/murderbot--journal-dun-assasynth/umc.cmc.5owrzntj9v1gpg31wshflud03"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt30444310/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/241554"
     }
   ],
   "quote": "Murderbot",

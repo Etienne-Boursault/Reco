@@ -3,11 +3,14 @@
     "The Chair"
   ],
   "creator": "Tim Robinson",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:39Z"
+  },
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/271267-the-chair-company/watch?locale=FR",
     "tmdb": "271267",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/271267-the-chair-company/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -74,6 +77,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=36420.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt31987295/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/271267"
     }
   ],
   "quote": "je suis très attiré par cette série et elle m'intrigue énormément, ça s'appelle The Chair Company.",

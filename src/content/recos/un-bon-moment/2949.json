@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "episodeGuid": "6316136e9623160014506e77",
+  "externalIds": {
+    "youtubeChannelId": "UCEkdzRfnnHrGWp3lRQpB55w"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T03:27:31+00:00",
@@ -32,12 +35,6 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/channel/UCEkdzRfnnHrGWp3lRQpB55w"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "official",
       "label": "YouTube",
       "url": "https://www.youtube.com/@julie-albertine5096"
     }

@@ -11,7 +11,8 @@
   },
   "creator": "Adrien Ménielle, Robinson Latour, Florent Bernard",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:52Z"
+    "creator": "2026-07-29T10:06:52Z",
+    "links": "2026-07-31T20:24:05Z"
   },
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "extractionHistory": [
@@ -32,6 +33,30 @@
   "id": "ubm-3184",
   "kind": "reco",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Groom saison 1 (YouTube)",
+      "url": "https://www.youtube.com/playlist?list=PL-CQtpSbsGq105dCFnTB7V0jPhF4HkXaS"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCine (fiche serie)",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=24135.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt9046512/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/82504"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

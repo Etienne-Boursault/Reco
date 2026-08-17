@@ -9,6 +9,9 @@
       "url": "https://www.allocine.fr/video/player_gen_cmedia=20638936&cfilm=1000022315.html"
     }
   ],
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:09Z"
+  },
   "episodeGuid": "69fddb2c98a3edf3e9edb7db",
   "externalIds": {
     "instagram": "mouradwinter"
@@ -78,6 +81,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022315.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt36963493/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1501018"
     }
   ],
   "quote": "Et là, il en a sorti un autre. Et là, il sort un film qui s'appelle « Familles de merde ».",

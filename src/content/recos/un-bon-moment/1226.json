@@ -13,11 +13,14 @@
     "verdict": "citation"
   },
   "creator": "Dominik Moll",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:07Z"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/925102-la-nuit-du-12/watch?locale=FR",
     "tmdb": "925102",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/925102-la-nuit-du-12/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,6 +69,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=295635.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt16953666/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/925102"
     }
   ],
   "quote": "J'ai regardé La Nuit du 12, par exemple.",

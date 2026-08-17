@@ -15,9 +15,9 @@
   "creator": "Adam McKay",
   "episodeGuid": "65240f8a7a4ced00123481d1",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR",
     "tmdb": "150540",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/150540-inside-out/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -58,8 +58,14 @@
     {
       "ethics": "indie",
       "kind": "streaming",
-      "label": "Sooner (VOD)",
+      "label": "Sooner",
       "url": "https://www.sooner.fr/films/vice-1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=251903.html"
     },
     {
       "ethics": "neutral",

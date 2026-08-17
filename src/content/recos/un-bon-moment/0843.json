@@ -14,11 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Jean Yanne",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:51Z"
+  },
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/27020-tout-le-monde-il-est-beau-tout-le-monde-il-est-gentil/watch?locale=FR",
     "tmdb": "27020",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/27020-tout-le-monde-il-est-beau-tout-le-monde-il-est-gentil/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -48,6 +51,18 @@
       "kind": "info",
       "label": "AlloCiné — toutes les offres VOD",
       "url": "https://www.allocine.fr/film/fichefilm-3155/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0069397/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/27020"
     }
   ],
   "quote": "allez voir, tout le monde il est beau, tout le monde il est gentil. Allez voir ces trucs-là, c'est très drôle.",

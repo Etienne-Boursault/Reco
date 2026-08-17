@@ -15,7 +15,8 @@
   "creator": "Charlie Danger",
   "episodeGuid": "691488fcc1ed8717c54570d4",
   "externalIds": {
-    "instagram": "charlie__danger"
+    "instagram": "charlie__danger",
+    "youtubeChannelId": "UCnf0fDz1vTYW-sl36wbVMbg"
   },
   "extractionHistory": [
     {
@@ -45,9 +46,15 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Chaîne YouTube Les Revues du Monde",
-      "url": "https://www.youtube.com/channel/UCnf0fDz1vTYW-sl36wbVMbg"
+      "kind": "official",
+      "label": "Les Revues du Monde sur YouTube",
+      "url": "https://www.youtube.com/@LesRevuesduMonde"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Fiche Wikipédia de Charlie Danger",
+      "url": "https://fr.wikipedia.org/wiki/Charlie_Danger"
     }
   ],
   "quote": "Mais c'est la chaîne de Charlie Danger. Ça s'appelle les revues du monde. C'est des trucs quand tu veux vraiment te reposer",

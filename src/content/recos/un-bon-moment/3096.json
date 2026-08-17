@@ -10,7 +10,8 @@
   },
   "creator": "Tony Benna",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:50Z"
+    "creator": "2026-07-29T10:06:50Z",
+    "links": "2026-07-31T20:23:58Z"
   },
   "episodeGuid": "6a1e8cf50510101c862a3ef9",
   "extractionHistory": [
@@ -36,6 +37,24 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/82771834"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt34963034/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1400731"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000017497.html"
     }
   ],
   "quote": "Et je vais bientôt doubler un film qui s'appelle André is an Idiot ! C'est sur ce sujet là ! Et ça sera à mon avis à la rentrée dans les cinémas !",

@@ -15,13 +15,14 @@
   },
   "creator": "Vince Gilligan, Peter Gould",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:23Z"
+    "creator": "2026-07-29T08:41:23Z",
+    "links": "2026-07-31T20:22:36Z"
   },
   "episodeGuid": "69c7de338ac24e236cb65e12",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR",
     "tmdb": "60059",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -73,6 +74,24 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/80021955"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné — où voir",
+      "url": "https://www.allocine.fr/series/ficheserie-16950/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt3032476/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/60059"
     }
   ],
   "quote": "et Better Call Saul un peu les deux",

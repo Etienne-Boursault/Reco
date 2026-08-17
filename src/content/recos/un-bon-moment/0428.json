@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Muse",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:45Z"
+  },
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/339679"
@@ -61,13 +64,19 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
-      "url": "https://www.deezer.com/us/album/339679"
+      "url": "https://www.deezer.com/album/339679"
     },
     {
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Spotify",
       "url": "https://open.spotify.com/album/6AyUVv7MnxxTuijp4WmrhO"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/showbiz/991516209?uo=4"
     }
   ],
   "quote": "Showbiz, c'est vraiment des gars de 20 ans dans un garage en Angleterre qui font de la musique et c'est rempli d'une rage, d'un truc que je trouve qui n'a pas disparu",

@@ -13,6 +13,9 @@
     "verdict": "citation"
   },
   "creator": "Alexandre Astier",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:00Z"
+  },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
   "externalIds": {
     "instagram": "aastieroff"
@@ -36,15 +39,45 @@
   "links": [
     {
       "ethics": "indie",
-      "kind": "official",
-      "label": "Site officiel",
-      "url": "https://www.kaamelott.com/"
+      "kind": "streaming",
+      "label": "SOONER (VOD)",
+      "url": "https://www.sooner.fr/films/kaamelott"
     },
     {
       "ethics": "neutral",
       "kind": "info",
-      "label": "AlloCiné",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0441059/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/11466"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/kaamelott"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "M6+ (livres I à V, gratuit)",
+      "url": "https://www.m6.fr/m6plus/kaamelott-m6-11-f_5510"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "Fiche série AlloCiné",
       "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=334.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.kaamelott.com/"
     }
   ],
   "quote": "Moi, j'écoute Camelot tout le temps pour m'endormir.",
@@ -55,6 +88,6 @@
   "title": "Kaamelott",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "serie"
   ]
 }

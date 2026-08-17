@@ -9,6 +9,9 @@
     "verdict": "citation"
   },
   "creator": "Julia Ducournau",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:48Z"
+  },
   "episodeGuid": "61accf4f45d15e00135c6ef2",
   "extractionHistory": [
     {
@@ -48,6 +51,18 @@
       "kind": "info",
       "label": "Toutes les offres VOD (AlloCiné)",
       "url": "https://www.allocine.fr/film/fichefilm-277192/telecharger-vod/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt10944760/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/630240"
     }
   ],
   "quote": "Vous avez vu le film, Titane ?",

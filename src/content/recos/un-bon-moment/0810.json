@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Philémon Cimon",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:53Z"
+  },
   "episodeGuid": "61c5abab76bee100120dd720",
   "extractionHistory": [
     {
@@ -55,6 +58,18 @@
       "kind": "streaming",
       "label": "Bandcamp — Philémon Cimon",
       "url": "https://philemoncimon.bandcamp.com/track/je-veux-de-la-lumi-re"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/128234745"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/je-veux-de-la-lumi%C3%A8re/1551607208?i=1551607664&uo=4"
     }
   ],
   "quote": "Ça s'appelle 'Je veux de la lumière' de Finéon.",

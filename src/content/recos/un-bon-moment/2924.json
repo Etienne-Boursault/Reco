@@ -8,6 +8,9 @@
     "verdict": "citation"
   },
   "creator": "Louis de Funès",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:51Z"
+  },
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "extractionHistory": [
     {
@@ -37,6 +40,18 @@
       "kind": "streaming",
       "label": "Apple TV",
       "url": "https://tv.apple.com/fr/movie/la-folie-des-grandeurs/umc.cmc.5fugajl06lso6bz18ad0wxgc1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0067108/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/14257"
     }
   ],
   "quote": "comme la folie des grandeurs, des choses comme ça",

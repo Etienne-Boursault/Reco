@@ -10,7 +10,8 @@
   },
   "creator": "Tony Benna",
   "enrichedAt": {
-    "creator": "2026-07-29T10:06:51Z"
+    "creator": "2026-07-29T10:06:51Z",
+    "links": "2026-07-31T20:24:02Z"
   },
   "episodeGuid": "6a3630990c24b9d2e1bbd8a1",
   "extractionHistory": [
@@ -36,6 +37,18 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/82771834"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt34963034/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1400731"
     },
     {
       "ethics": "neutral",

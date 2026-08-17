@@ -8,6 +8,9 @@
     "verdict": "validate"
   },
   "creator": "Pomme",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:23Z"
+  },
   "episodeGuid": "6c166c4a-6617-4176-a9ad-5bcf874c9b6b",
   "externalIds": {
     "instagram": "pommeofficial"
@@ -43,13 +46,19 @@
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Deezer",
-      "url": "https://www.deezer.com/us/album/111106342"
+      "url": "https://www.deezer.com/album/111106342"
     },
     {
       "ethics": "neutral",
       "kind": "streaming",
       "label": "Spotify",
       "url": "https://open.spotify.com/intl-fr/album/3Iq43NGfIN8tc8AVJ9Konz"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/les-failles/1480055045?uo=4"
     }
   ],
   "quote": "Allez découvrir Pomme, si vous connaissez pas. Pomme, le dernier album, c'est dans une pochette bleue. Ça s'appelle Les Failles et c'est sublime.",

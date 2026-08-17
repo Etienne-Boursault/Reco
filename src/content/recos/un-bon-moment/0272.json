@@ -14,11 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Alex Pouchkine",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:29Z"
+  },
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR",
     "tmdb": "8223",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/8223-kika/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -82,6 +85,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000005699.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0107315/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/8223"
     }
   ],
   "quote": "Il y a un film qui sort là qui s'appelle Kika que j'ai vu en avant-première. C'est hallucinant.",

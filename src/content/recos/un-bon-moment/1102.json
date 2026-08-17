@@ -14,13 +14,14 @@
   },
   "creator": "Malik Bendjelloul",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:39Z"
+    "creator": "2026-07-29T08:41:39Z",
+    "links": "2026-07-31T20:23:02Z"
   },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/84334-searching-for-sugar-man/watch?locale=FR",
     "tmdb": "84334",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/84334-searching-for-sugar-man/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -50,6 +51,18 @@
       "kind": "info",
       "label": "AlloCiné",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=200631.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt2125608/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/84334"
     }
   ],
   "quote": "looking for sugar men ouais qui était ouf sur un chanteur de folk qui est une méga star en afrique du sud",

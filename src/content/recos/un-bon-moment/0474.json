@@ -10,11 +10,14 @@
     "verdict": "validate"
   },
   "creator": "Chad Stahelski",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:36Z"
+  },
   "episodeGuid": "69be52f90aef9ad4ac0b0dd7",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/458156-john-wick-chapter-3-parabellum/watch?locale=FR",
     "tmdb": "458156",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/458156-john-wick-chapter-3-parabellum/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -72,6 +75,30 @@
       "kind": "streaming",
       "label": "Molotov TV",
       "url": "https://www.molotov.tv/fr_fr/p/22468/john-wick"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt6146586/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/458156"
+    },
+    {
+      "ethics": "avoid",
+      "kind": "streaming",
+      "label": "Prime Video",
+      "url": "https://www.primevideo.com/-/fr/detail/0LTVC3IVCLW19Y51M3N6J31UX5"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=221387.html"
     }
   ],
   "quote": "Ah oui, je le conseille à fond.",

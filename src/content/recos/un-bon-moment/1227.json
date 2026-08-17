@@ -13,11 +13,14 @@
     "verdict": "citation"
   },
   "creator": "Jean-Pierre Jeunet",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:07Z"
+  },
   "episodeGuid": "652406c019376d001282c4d8",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR",
     "tmdb": "194",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +63,18 @@
       "kind": "info",
       "label": "AlloCiné — où voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-27063/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0211915/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/194"
     }
   ],
   "quote": "Amélie Poulain, mais c'est ça ton film préféré.",

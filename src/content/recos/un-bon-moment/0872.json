@@ -13,6 +13,9 @@
     "verdict": "validate"
   },
   "creator": "Banksy",
+  "enrichedAt": {
+    "links": "2026-07-31T20:22:53Z"
+  },
   "episodeGuid": "6336c79af131c60012c20984",
   "extractionHistory": [
     {
@@ -61,6 +64,18 @@
       "kind": "info",
       "label": "Wikipédia — Faites le mur !",
       "url": "https://fr.wikipedia.org/wiki/Faites_le_mur_!"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt1587707/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/39452"
     }
   ],
   "quote": "C'est un doc assez connu, mais qui s'appelle \"Exit through the gift shop\".",
@@ -71,7 +86,6 @@
   "title": "Exit Through the Gift Shop",
   "transcriptSource": "youtube",
   "types": [
-    "autre",
     "film"
   ],
   "year": 2010

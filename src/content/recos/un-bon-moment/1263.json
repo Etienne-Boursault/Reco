@@ -9,11 +9,14 @@
     "verdict": "citation"
   },
   "creator": "Jean-Pierre Jeunet",
+  "enrichedAt": {
+    "links": "2026-07-31T20:23:08Z"
+  },
   "episodeGuid": "6550c2836b767e0012a65d8d",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR",
     "tmdb": "194",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,6 +59,18 @@
       "kind": "info",
       "label": "AlloCine - ou voir le film",
       "url": "https://www.allocine.fr/film/fichefilm-27063/streaming/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0211915/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/194"
     }
   ],
   "quote": "C'est cool, quoi.",

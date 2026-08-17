@@ -15,13 +15,14 @@
   },
   "creator": "Marco Lamensch, Jean Libon",
   "enrichedAt": {
-    "creator": "2026-07-29T08:41:39Z"
+    "creator": "2026-07-29T08:41:39Z",
+    "links": "2026-07-31T20:23:02Z"
   },
   "episodeGuid": "6336c79af131c60012c20984",
   "externalIds": {
-    "justwatch": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR",
     "tmdb": "70708",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/70708-strip-tease/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,6 +61,18 @@
       "kind": "streaming",
       "label": "Strip-Tease intégral (Auvio)",
       "url": "https://auvio.rtbf.be/emission/strip-tease-integral-31313"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0356301/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/70708"
     }
   ],
   "quote": "Striptease, ouais, parce que non, mais c'est vrai. Non, mais tu as des plans assez striptease quand même.",
@@ -70,8 +83,7 @@
   "title": "Striptease",
   "transcriptSource": "youtube",
   "types": [
-    "serie",
-    "autre"
+    "serie"
   ],
   "watchProviders": [
     {

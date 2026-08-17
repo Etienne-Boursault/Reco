@@ -13,6 +13,9 @@
     "verdict": "unsure"
   },
   "creator": "Camille",
+  "enrichedAt": {
+    "links": "2026-07-31T20:25:21Z"
+  },
   "episodeGuid": "092d5a8f-864f-4d10-a029-92d64eddf4d2",
   "extractionHistory": [
     {
@@ -36,6 +39,12 @@
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/40789961"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/le-fil/1231213484?uo=4"
     }
   ],
   "quote": "Je l'ai sur Spotify, j'ai même pas trouvé. C'est cet album où vraiment, on a l'impression qu'elle avait des mélodies en sortant de sa douche.",
@@ -46,6 +55,6 @@
   "title": "Le Fil",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "album"
   ]
 }

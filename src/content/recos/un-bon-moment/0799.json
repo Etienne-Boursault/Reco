@@ -14,6 +14,9 @@
     "verdict": "unsure"
   },
   "creator": "Julien Doré",
+  "enrichedAt": {
+    "links": "2026-07-31T20:24:52Z"
+  },
   "episodeGuid": "61bf4e1721eb7a00137ec1b4",
   "externalIds": {
     "instagram": "juliendore",
@@ -42,6 +45,12 @@
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/268316612"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/aim%C3%A9e/1589842054?uo=4"
     }
   ],
   "quote": "T'as écouté mon dernier album ?",
