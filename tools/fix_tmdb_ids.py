@@ -160,6 +160,11 @@ RECTIFICATIONS: dict[str, tuple[str, Any, Any]] = {
     # troisième film du duo Richard/Depardieu, « Les Compères » étant de 1983 :
     # une date glissée, pas une autre œuvre.
     "ubm-3109": ("year", 1985, 1981),
+    # « 30 » n'est pas une année : c'est l'ÂGE de l'artiste, capté dans la
+    # citation — « il vient d'avoir 30 ans, il a sorti son premier album le
+    # jour de ses 30 ans ». L'album « Pour de vrai » d'Ichon est sorti le
+    # 11 septembre 2020 (API Deezer, album 153347042).
+    "ubm-2774": ("year", 30, 2020),
 }
 
 

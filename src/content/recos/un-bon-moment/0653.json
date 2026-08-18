@@ -48,6 +48,12 @@
       "kind": "streaming",
       "label": "Netflix",
       "url": "https://www.netflix.com/title/81213757"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=287744.html"
     }
   ],
   "quote": "Le documentaire fait par Yacine Bellouz sur le stand-up qui s'appelle Voulez-vous rire avec moi ce soir ?",
@@ -58,6 +64,6 @@
   "title": "Voulez-vous rire avec moi ce soir",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "film"
   ]
 }

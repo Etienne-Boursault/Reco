@@ -278,6 +278,26 @@ for (const l of mergedLinks) {
   const k = l.label.toLowerCase();
   if (!linkSeen.has(k)) linkSeen.set(k, l);
 }
+/* Le créateur n'est affiché que s'il APPORTE quelque chose au titre.
+ *
+ * Quatre-vingt-cinq recos portent un créateur identique à leur titre — c'est
+ * le cas normal du type `artiste`, où le titre EST la personne : « Radiohead »
+ * de Radiohead, « Barbara » de Barbara. Le champ est juste ; c'est de
+ * l'afficher qui ne l'est pas, la carte répétant alors le même nom deux fois,
+ * une fois en titre et une fois dessous (relevé le 2026-08-18).
+ *
+ * Le dépôt avait déjà tranché ce point pour les LIEUX, mais en retirant la
+ * donnée (cf. `fix_reco_anomalies`, ubm-2719). Ici la donnée est exacte : la
+ * régler à l'affichage la préserve, et couvre d'avance les recos à venir.
+ *
+ * La comparaison ignore la casse et les espaces de bordure, sans quoi
+ * « Barbara » et « barbara » se répéteraient encore.
+ */
+const memeQueLeTitre =
+  (reco.creator ?? '').trim().toLocaleLowerCase('fr') ===
+  (reco.title ?? '').trim().toLocaleLowerCase('fr');
+const montrerCreateur = Boolean(reco.creator) && !memeQueLeTitre;
+
 const links = Array.from(linkSeen.values()).slice(0, 6).map((l) => {
   let host = '';
   try {
@@ -379,7 +399,7 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
      de `.card`, un conteneur flex qui « blockifie » son `inline-block`, et
      tombait seul sous le nom du créateur (retour utilisateur 2026-08-17).
      Balisage invalide, pas défaut de style. */}
-  {reco.creator && (
+  {montrerCreateur && (
     <div class="creator">
       {reco.creator && (<span class="creator-name">{reco.creator}<CreatorFlag name={reco.creator} /></span>)}
       {isGuestWork && (

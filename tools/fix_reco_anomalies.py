@@ -366,10 +366,19 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": "Article Wikipédia « Pénélope Bagieu » — accents compris.",
     },
     "ubm-0653": {
-        "attendu": {"creator": "Yacine Bellous"},
+        "attendu": {"creator": "Yacine Belhousse", "types": ["autre"]},
         "creator": "Yacine Belhousse",
+        # Même œuvre que ubm-0670 — les deux recos pointent la même page de
+        # production, `empreintedigitale.net/rire` — et AlloCiné lui consacre
+        # une fiche FILM. Le type divergent empêchait
+        # `align_same_work_links` de les rapprocher : ubm-0670 restait sans le
+        # lien Netflix que celle-ci portait déjà.
+        "types": ["film"],
         "pourquoi": "Article Wikipédia « Yacine Belhousse ». « Bellous » est "
-                    "la restitution phonétique de la transcription.",
+                    "la restitution phonétique de la transcription. La garde "
+                    "portait sur ce `creator` DÉJÀ corrigé : l'entrée était "
+                    "devenue muette, et le type n'aurait jamais pu s'y "
+                    "greffer.",
     },
     "ubm-1323": {
         "attendu": {"creator": "Jean Jass"},
@@ -631,6 +640,96 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "Good » : l'écart de titre ne permet pas d'affirmer qu'il "
                     "s'agit du même morceau, on lie donc l'artiste.",
     },
+    # Trois cas que la premiere liste de plateformes ratait — trouves par le
+    # garde-fou `tests/test_corpus_createurs.py` des sa premiere execution.
+    "ubm-1166": {
+        "attendu": {"creator": "Apple TV+"},
+        "creator": "Dan Erickson",
+        "pourquoi": ("Cree par Dan Erickson (TMDB tv/95396, champ "
+                     "`created_by`). « Apple TV+ » est le diffuseur."),
+    },
+    "ubm-2275": {
+        "attendu": {"creator": "Apple TV+"},
+        "creator": "Brett Goldstein, Jason Segel, Bill Lawrence",
+        "pourquoi": ("Les trois createurs credites par TMDB tv/136311, dont "
+                     "Apple TV n'est que le diffuseur."),
+    },
+    "ubm-0294": {
+        "attendu": {"creator": "TF1"},
+        "creator": None,
+        "pourquoi": ("« TF1 » est doublement faux : ce n'est pas un createur, "
+                     "et ce n'est meme pas le diffuseur — la reco pointe "
+                     "Netflix. TMDB ne credite personne pour cette "
+                     "tele-realite, on retire donc sans remplacer."),
+    },
+    # --- Une PLATEFORME n'est pas un createur (2026-08-18) ------------------
+    # Quinze recos creditaient leur diffuseur : « Netflix » pour « La Chute
+    # de la maison Usher » (Mike Flanagan), « HBO » pour « Silicon Valley ».
+    # C'est faux, c'est VISIBLE sur les cartes, et cela empechait au moins un
+    # rapprochement d'œuvres identiques (cf. ubm-0670).
+    # Les trois derniers cas sont RETIRES plutot que corriges : aucune source
+    # consultee ne nomme l'auteur, et un faux createur vaut moins que rien.
+
+    "ubm-0142": {
+        "attendu": {"creator": 'YouTube'},
+        "creator": 'Augustin Heliot',
+        "pourquoi": "TheGreatReview est le pseudonyme d'Augustin Heliot — sa fiche Wikipedia, DEJA liee par la reco, le dit des sa premiere phrase.",
+    },
+    "ubm-0155": {
+        "attendu": {"creator": 'Disney+'},
+        "creator": 'Emma Moran',
+        "pourquoi": 'Creee par Emma Moran (TMDB tv/47907, champ `created_by`).',
+    },
+    "ubm-0156": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": 'Mike Flanagan',
+        "pourquoi": 'Creee par Mike Flanagan (TMDB tv/157065, champ `created_by`).',
+    },
+    "ubm-0669": {
+        "attendu": {"creator": 'HBO'},
+        "creator": 'Mike Judge, John Altschuler, Dave Krinsky',
+        "pourquoi": 'Les trois createurs credites par TMDB tv/60573 (`created_by`).',
+    },
+    "ubm-0670": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": 'Yacine Belhousse',
+        "pourquoi": "La reco JUMELLE ubm-0653 porte la meme œuvre — meme page de production `empreintedigitale.net/rire` — et le bon createur. C'est d'ailleurs ce `creator` fautif qui empechait `align_same_work_links` de rapprocher les deux, faute de createurs compatibles.",
+    },
+    "ubm-0696": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": 'Greg Whiteley',
+        "pourquoi": 'Realisee par Greg Whiteley (Wikidata Q25842244, propriete P57).',
+    },
+    "ubm-1043": {
+        "attendu": {"creator": 'HBO'},
+        "creator": 'Michael Lannan',
+        "pourquoi": 'Creee par Michael Lannan (TMDB tv/57774, champ `created_by`).',
+    },
+    "ubm-1055": {
+        "attendu": {"creator": 'Arte'},
+        "creator": 'Jean-Pierre Thorn',
+        "pourquoi": 'Documentaire de Jean-Pierre Thorn (Wikidata Q109024390, propriete P57).',
+    },
+    "ubm-2477": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": 'Mark Lewis',
+        "pourquoi": 'Ecrit et realise par Mark Lewis, sorti sur Netflix en decembre 2019 (article Wikipedia de la serie).',
+    },
+    "ubm-2529": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": 'Smriti Mundhra',
+        "pourquoi": 'Creee par Smriti Mundhra, presentee comme telle par Variety.',
+    },
+    "ubm-2528": {
+        "attendu": {"creator": 'Netflix'},
+        "creator": None,
+        "pourquoi": "Ni TMDB ni Wikidata ne creditent de realisateur pour cette serie. Mieux vaut PAS de createur qu'un faux : « Netflix » est la plateforme de diffusion, et le corpus compte deja 902 recos sans createur connu.",
+    },
+    "ubm-2592": {
+        "attendu": {"creator": 'Deezer'},
+        "creator": None,
+        "pourquoi": "« Deezer » est la plateforme d'ecoute, pas l'auteur du podcast, et aucune source consultee ne le nomme.",
+    },
     # --- Fiches et types : solde des manques (2026-08-18) ------------------
     "ubm-0282": {
         "attendu": {"title": "Devil's Plan"},
@@ -711,7 +810,9 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": '« Loups Garous », série Canal+ de 2024 dont la saison 2 existe bien.',
     },
     "ubm-2527": {
-        "attendu": {"title": 'QB1'},
+        "attendu": {"title": "QB1", "creator": "Netflix"},
+        # « Netflix » est le diffuseur ; TMDB tv/70274 credite Peter Berg.
+        "creator": "Peter Berg",
         "ajouter_liens": [{"label": "TMDB", "kind": "info", "ethics": "neutral",
                            "url": "https://www.themoviedb.org/tv/70274"}],
         "pourquoi": "« QB1: Beyond the Lights », titré « Apprentis quarterbacks » en français — d'où le refus de la garde de titre. L'identifiant Netflix 81003033 de la reco tranche.",
@@ -812,8 +913,12 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "la chaîne YouTube @MonsieurPhi. Aucun flux podcast.",
     },
     "ubm-0667": {
-        "attendu": {"types": ["podcast", "video"], "title": "Gaming Historian"},
+        "attendu": {"types": ["chaine", "video"], "title": "Gaming Historian",
+                    "creator": "YouTube"},
         "types": ["chaine", "video"],
+        # « YouTube » est la plateforme : la chaine est celle de Norman
+        # Caruso, qui la tient depuis 2008 (article Wikipedia).
+        "creator": "Norman Caruso",
         "pourquoi": "« c'est un gars qui fait l'histoire des jeux vidéo », "
                     "seul lien @GamingHistorian.",
     },
@@ -844,7 +949,12 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "une fiche série AlloCiné.",
     },
     "ubm-2892": {
-        "attendu": {"types": ["serie"], "title": "LOL"},
+        "attendu": {"types": ["serie"], "title": "LOL",
+                    "creator": "Amazon Prime"},
+        # Kyan Khojandi dit « j'ai fait un jeu qui s'appelle LOL », mais il y
+        # a PARTICIPE comme candidat : « faire » ne dit pas s'il l'a cree. On
+        # retire la plateforme sans lui substituer une attribution douteuse.
+        "creator": None,
         # Le type est DÉJÀ corrigé — la ligne ci-dessous ne fait plus rien,
         # mais elle documente l'arbitrage et redeviendrait active si le type
         # régressait. La garde, elle, porte sur l'état COURANT : la laisser
