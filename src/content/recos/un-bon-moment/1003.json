@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-14",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "on l'a vu ensemble : recommande par un/des invite(s) (Kyan dit n'avoir rien a recommander) -> attribution non diarizee, videe. Doublon: ubm-0499.",

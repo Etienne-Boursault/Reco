@@ -4,8 +4,10 @@
     "confidence": 0.7,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain: tour de reco final (invites d'abord), lecteur de mangas — probablement un invite (Odah/Dako) ou Navo. Transcript non diarize.",

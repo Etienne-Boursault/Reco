@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre reel = LauCarre (rappeur signe sur le label Bonne etoile de Bigflo & Oli) ; 'L.O. Carre'/'Hello Carey' sont des artefacts. Recommande/produit par les invites. Canonique ; doublons Acast = ubm-1196, ubm-1305.",

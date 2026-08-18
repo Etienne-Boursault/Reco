@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "link_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle: 'Winnterzuko' (rappeur FR hyperpop, Deezer artiste 1160850). Le lien deezer track 15411111 est errone. Attribution: reponse a une question posee aux invites -> probablement Maghla ou Seb, pas Navo. A trancher par l'humain.",

@@ -5,8 +5,10 @@
     "date": "2026-07-14",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Orthographe officielle : 'Mustafa the Poet'. Attribue a Woodkid (question 'Johan, t'as un truc a recommander ?' posee juste avant) mais non-diarise, a confirmer. guests VIDE mais Woodkid invite.",

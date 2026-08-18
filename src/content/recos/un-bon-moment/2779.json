@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre à corriger : « Edrec volume 1 » → « Ed Rec Vol. 1 » (Ed Banger Records, 2006). Locuteur = Julien Granel (autobiographie « j'ai grandi en écoutant les CD Ed Banger... né en 95 ») ; champ reco indiquait Kyan. Canonique ; ubm-2766 (« Édène Volume 1 ») est un doublon.",

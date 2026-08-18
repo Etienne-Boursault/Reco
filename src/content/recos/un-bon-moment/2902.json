@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Un des deux invités (Bigflo ou Oli) — round 'les gars avez-vous un truc à recommander?'. Album de référence: 'Il me ressemble pas non plus'.",

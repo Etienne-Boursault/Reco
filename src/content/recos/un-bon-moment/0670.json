@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "recommendedBy corrige (etait Navo). Realisateur confirme = Yacine Belhousse (Kyan figure dans le doc). Invites a completer dans les metadonnees episode.",

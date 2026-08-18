@@ -4,8 +4,10 @@
     "confidence": 0.9,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Registre littéraire, probablement Augustin Trapenard (incertain, transcript non diarizé). Compléter guests.",

@@ -4,8 +4,10 @@
     "confidence": 0.6,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Locuteur = un hote (signale la similarite au concept de Thomas), Kyan/Navo indetermine -> attribution videe. 'Tout est possible' de Kev Adams & Gad Elmaleh est plutot un spectacle commun (type actuel 'film' douteux) ; titre non verifiable, budget web epuise.",

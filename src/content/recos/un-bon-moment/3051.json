@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Joseph Roussin verifie (album avec Remi Boyes). Recommandeur probable Remi mais non certain. Passage 01:12:31.",

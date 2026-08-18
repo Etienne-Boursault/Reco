@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre : 'Tales From The Click'. Reco ~01:21:28.",

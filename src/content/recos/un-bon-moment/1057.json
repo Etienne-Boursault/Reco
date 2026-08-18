@@ -4,8 +4,10 @@
     "confidence": 0.7,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Recommande par un invite (Odah ou Dako — parle de 'Kian' a la 3e personne), lequel incertain sur transcript non diarize.",

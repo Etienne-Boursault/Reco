@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-14",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Source probablement invitee (bloc final, hosts declinent) -- non diarizee.",

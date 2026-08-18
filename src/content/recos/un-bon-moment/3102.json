@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Le draft attribuait a tort « Kyan Khojandi » : c'est AZ (aux hosts on demande separement « vous jouez cet ete les gars ? »). Metadonnees invites VIDES.",

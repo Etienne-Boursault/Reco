@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Canonique ; doublons ubm-2530 et ubm-0694 (meme moment 00:50:26-00:50:35) -> discard. Locuteur hote non departageable Kyan/Navo (echange a plusieurs voix) -> attribution videe. Titre en anglais et 'Denis'->'Dennis Bergkamp'.",

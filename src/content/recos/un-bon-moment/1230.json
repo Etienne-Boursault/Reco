@@ -4,8 +4,10 @@
     "confidence": 0.5,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Un des deux invités (Bigflo ou Oli), transcript non diarizé — attribution laissée vide.",

@@ -5,8 +5,10 @@
     "date": "2026-07-18",
     "flags": [
       "guest_missing",
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Attribution : le tour de Navo porte sur 'Le Coeur sur la table' et celui de Marina sur Delphine de Vigan ; par elimination l'artiste = tour d'Alex Ramires (invitee absente de guests), mais non certain -> attribution_suspect. Orthographe artiste probablement 'Kwamie Liv' (non verifiable, WebSearch epuise) -> title_suspect.",

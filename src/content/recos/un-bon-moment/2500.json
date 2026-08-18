@@ -4,8 +4,10 @@
     "confidence": 0.65,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Doublon ubm-2501 (marque WEIM, meme reco) -> discard. Orthographe « Melly Hirtz » non verifiable (budget WebSearch epuise). Locuteur (« amie qui fait mes sacs ») non determinable avec certitude.",

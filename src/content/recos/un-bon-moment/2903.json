@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Canonique (artiste + morceau); ubm-2914 est le doublon focalisé sur 'Génération'. Un des deux invités.",

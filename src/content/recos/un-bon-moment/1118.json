@@ -4,8 +4,10 @@
     "confidence": 0.7,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Recommande par un INVITE (Julien Josselin ou Valentin Vincent), PAS Navo : Navo n'est sollicite qu'ensuite (« Navo, tu veux recommander ? » 01:01:22). Impossible de trancher entre les deux invites. Titre = film « White Fire »/« Vivre pour survivre ».",

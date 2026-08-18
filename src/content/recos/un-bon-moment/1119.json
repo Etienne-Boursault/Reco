@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Recommande par un INVITE (comme Whitefire), pas Navo (sollicite seulement apres, 01:01:22). Impossible de trancher Julien Josselin vs Valentin Vincent.",

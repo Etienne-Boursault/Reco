@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Orthographe correcte: Louis Chappey (pas 'Chappe'). Recommandeur non-Navo (invite non identifie).",

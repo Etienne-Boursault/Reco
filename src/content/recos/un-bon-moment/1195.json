@@ -4,8 +4,10 @@
     "confidence": 0.85,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Recommande par un invite (Bigflo ou Oli) — « c'est grace a toi [Kyan] que je l'ai decouvert ». Non diarize. Canonique du groupe Paul Mirabel.",

@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Theorus = petit streamer/graphiste (aussi cites: Elian, Ben). Locuteur probablement un invite streamer (Maxime/Grim) mais non confirmable; attribution 'Navo' d'origine non confirmee -> videe.",

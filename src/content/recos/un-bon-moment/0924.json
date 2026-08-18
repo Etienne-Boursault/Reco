@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-14",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Host non identifiable (Kyan ou Navo, transcript non diarisé) -> recommendedBy vide. Réalisateur = Patrice Leconte (le champ creator liste les acteurs Rochefort/Noiret/Marielle).",

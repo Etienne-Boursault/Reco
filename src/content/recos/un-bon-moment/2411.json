@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Spectacle de danse « Murmuration » (chorégraphie collective, « mosaïques de corps » — vraisemblablement Sadeck Waff) [01:03:50] ; conclusion « je recommande ça » [01:04:14]. Recommandateur du segment indéterminé (invité ou host) ; « Navo » d'origine non fiable. Invités absents de guests[].",

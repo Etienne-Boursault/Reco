@@ -4,9 +4,11 @@
     "confidence": 0.8,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "timestamp_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Podcast confirme = 'A bientot de te revoir' de Sophie-Marie Larrouy (creator a corriger). Recommandeur = un host (Kyan ou Navo, 'que j'ai eu la chance de faire'), non diarizable. Timecode reel ~01:16:18 (et non 01:15:15).",

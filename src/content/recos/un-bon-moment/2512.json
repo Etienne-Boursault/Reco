@@ -4,8 +4,10 @@
     "confidence": 0.6,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Locuteur = un invité décrivant son propre spectacle (GCM ou Ben, non diarisé). Titre 'Céline' à préciser (Céline Dion, spectacle).",

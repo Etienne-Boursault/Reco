@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Corrections : artiste « G Lloyd »/« G-loid » → « J Lloyd » (Josh Lloyd-Watson, moitié de Jungle) ; œuvre = mixtape « Kosmos » (2020), morceau « Feelin' Good ». Locuteur probable Clément (continuité « gars dans un groupe qui fait un projet ») mais transcript non diarisé. Canonique ; ubm-0773 (« G-loid ») et ubm-0774 (« Feel Good ») sont des doublons.",

@@ -5,8 +5,10 @@
     "date": "2026-07-18",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre réel : « Laura Felpin » (humoriste ; transcript [01:03:28] « Et Laura Felpin, elle est encore en tournée… l'Olympia en janvier »). Non extraite du YouTube ; seul ce garble Acast (« l'horreur fêle peint ») l'a captée. Même recommandateur invité que ubm-2410 (« j'ai adoré les deux »), indéterminé. Invités absents de guests[].",

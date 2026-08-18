@@ -4,9 +4,11 @@
     "confidence": 0.7,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "title_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "A corriger : creator (Â« Navo Â» errone -> Yacine Belhousse & Dedo) et titre (Â« L'Histoire racontee par des chaussettes Â»). Puis publier en guest-work, recommendedBy Â« Yacine Belhousse & Dedo Â».",

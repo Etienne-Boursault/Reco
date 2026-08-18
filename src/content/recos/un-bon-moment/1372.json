@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-07",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Nom exact = Ameziane (Instagram @hahamez, Jamel Comedy Club, spectacle « Seum & Spleen ») ; « Amzian » et « Hachamez » = même personne. Recommandé par un invité, non diarisé.",

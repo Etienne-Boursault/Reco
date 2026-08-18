@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Meme locuteur que ubm-2860 (probablement Vincent Dedienne, a confirmer) ; recommendedBy vide. YT 01:15:15.",

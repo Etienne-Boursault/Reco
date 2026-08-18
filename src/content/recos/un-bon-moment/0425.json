@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Reco genuine. Locuteur incertain, probablement Maxime Biaggi (pattern 'decu de tout' puis 'le dernier truc cool'). Attribution laissee vide, a completer.",

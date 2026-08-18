@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Créateur à corriger 'Milan Shapiro' -> 'Mai Lan Chapiron'. Le recommandeur dit 'il paraît que c'est dingue' mais prescrit quand même. Locuteur invité incertain. Compléter guests.",

@@ -5,8 +5,10 @@
     "date": "2026-07-14",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre a corriger Puribus -> Pluribus. Attribution non diarizee (bloc final). Doublon: ubm-1002.",

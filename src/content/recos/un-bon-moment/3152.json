@@ -4,7 +4,9 @@
     "confidence": 0.85,
     "date": "2026-07-18",
     "flags": [
-      "title_suspect",
+      "title_suspect"
+    ],
+    "flagsResolved": [
       "attribution_suspect"
     ],
     "model": "claude-opus-4-8",

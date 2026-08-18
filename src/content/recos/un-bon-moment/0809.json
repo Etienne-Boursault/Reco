@@ -4,8 +4,10 @@
     "confidence": 0.8,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Album «Coeur» de Clara Luciani (2021) reel. Locutrice feminine ('je suis restee') -> une INVITEE (Morgane/Fanny): le champ recommendedBy pre-rempli «Kyan Khojandi» est FAUX. Invitee non distinguable -> recommendedBy vide.",

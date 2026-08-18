@@ -4,8 +4,10 @@
     "confidence": 0.7,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Le transcript dit une fois « le jeu de Dedo » (l.1356) mais le jeu est lie au spectacle Killing Joke de Yacine -> attribue a Yacine, a confirmer. Invites a completer dans les metadonnees episode.",

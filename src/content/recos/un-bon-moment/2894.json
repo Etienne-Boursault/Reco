@@ -4,9 +4,11 @@
     "confidence": 0.7,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "title_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Recommande par l'invite ayant fait de la radio sketchs sur Couleur 3 avec 'Marina et Thomas' (Rollman/Wiesel) : probablement Alexandre Kominek, non verifiable (budget WebSearch epuise) -> recommendedBy vide. Orthographe exacte du titre non verifiable (WebSearch epuise). guests episode vides.",

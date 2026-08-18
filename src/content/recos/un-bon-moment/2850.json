@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Locuteur incertain (erudition litteraire -> probablement un invite, pas Kyan comme extrait) : recommendedBy vide. L'oeuvre exacte est « Sous le soleil de Satan » de Bernanos (Mouchette en est le personnage) ; le titre « Mouchette » est imprecis. YT 00:20:58.",

@@ -4,8 +4,10 @@
     "confidence": 0.6,
     "date": "2026-07-17",
     "flags": [
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Titre « Life in Cartoon Motion » (Mika, 2007) confirmé. Locuteur = Julien Granel (suite de son autobiographie musicale) ; champ reco indiquait Navo, non diarisé.",

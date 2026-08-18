@@ -4,8 +4,10 @@
     "confidence": 0.75,
     "date": "2026-07-18",
     "flags": [
-      "attribution_suspect",
       "link_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Locuteur indetermine (discussion de groupe) -> recommendedBy vide. watchProviders = Amazon Prime (ethics avoid) -> link_suspect, lien alternatif a privilegier.",

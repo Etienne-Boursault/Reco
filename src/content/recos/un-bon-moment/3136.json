@@ -5,8 +5,10 @@
     "date": "2026-07-18",
     "flags": [
       "guest_missing",
-      "attribution_suspect",
       "title_suspect"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Metadonnees guests=[] alors que l'episode a 2 invites (Baptiste Lecaplain, Camille Lavabre). Serie presentee par un·e invite·e mais lequel/laquelle non tranchable (transcript non diarise) -> recommendedBy vide. Existence/auteur de « Peach » non verifiables (budget WebSearch epuise).",

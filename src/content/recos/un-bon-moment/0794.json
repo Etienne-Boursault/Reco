@@ -5,8 +5,10 @@
     "date": "2026-07-17",
     "flags": [
       "title_suspect",
-      "attribution_suspect",
       "guest_missing"
+    ],
+    "flagsResolved": [
+      "attribution_suspect"
     ],
     "model": "claude-opus-4-8",
     "note": "Créateur à corriger 'Ambroise Kerminati' -> 'Ambroise Carminati'. Locuteur invité incertain. Compléter guests.",
