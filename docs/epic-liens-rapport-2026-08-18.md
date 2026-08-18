@@ -269,7 +269,7 @@ autres restent à trier, dont : `fix_reco_anomalies.py` dépasse 900 lignes,
 
 ## État du dépôt
 
-- Suites vertes : **5 558 tests Python**, **2 147 tests Vitest**.
+- Suites vertes : **5 899 tests Python**, **2 147 tests Vitest**.
 - Build SSR complet, **2 662 pages**.
 - Couverture 100 % sur les modules créés pendant l'EPIC :
   `link_families`, `fix_tmdb_ids`, `fix_liens_verifies`, `fix_ordre_liens`,
