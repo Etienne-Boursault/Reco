@@ -86,6 +86,29 @@ LIENS: dict[str, tuple[str, str, str, str, str]] = {
                  "https://www.youtube.com/watch?v=soUa9p6u9o0",
                  ("87 min sur « Wu Tang Collection », chaîne de distribution "
                  "du catalogue ; la durée concorde avec la fiche TMDB.")),
+    # --- Arbitrage de l'editeur du 2026-08-18 -------------------------------
+    # Ces liens etaient en attente dans `docs/liens-en-attente-arbitrage.md`.
+    # L'editeur a tranche : on garde, sauf les deux longs metrages.
+    "ubm-0649": ("Inside Jamel Comedy Club", "YouTube", "streaming",
+                 ("https://www.youtube.com/watch?v=aXnBtx6Is6U&list="
+                  "PL0QGoDYHJUS7J3zr4SaJetw_A95AHRSAS"),
+                 ("Playlist « INSIDE JAMEL COMEDY CLUB », huit episodes de "
+                  "24 a 27 min, indiquee par l'editeur du site. Remplace le "
+                  "depot archive.org qui etait propose.")),
+    "ubm-0674": ("Inside Jamel Comedy Club", "YouTube", "streaming",
+                 ("https://www.youtube.com/watch?v=aXnBtx6Is6U&list="
+                  "PL0QGoDYHJUS7J3zr4SaJetw_A95AHRSAS"),
+                 "Meme emission que ubm-0649, meme playlist verifiee."),
+    "ubm-0777": ("This is John", "YouTube", "streaming",
+                 "https://www.youtube.com/watch?v=4I1Ylynes8A",
+                 ("Court-metrage de Jay et Mark Duplass (2003), 7 min 29 s — "
+                  "la duree correspond a l'integralite. Depot d'un tiers, "
+                  "conserve sur decision de l'editeur.")),
+    "ubm-1794": ("Désiré", "YouTube", "streaming",
+                 "https://www.youtube.com/watch?v=jLuM_rqT4Po",
+                 ("Court-metrage d'Albert Dupontel (1993), 15 min 49 s ; TMDB "
+                  "en annonce 16. Depot d'un tiers, conserve sur decision de "
+                  "l'editeur.")),
     # --- Visionnage : plateformes ------------------------------------------
     "ubm-0187": ("Iris", "Canal+", "streaming",
                  ("https://www.canalplus.com/series/iris-saison-1-episode-1/h/"

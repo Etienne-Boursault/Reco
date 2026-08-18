@@ -1,6 +1,28 @@
-# Liens trouvés mais NON posés — en attente d'arbitrage éditorial
+# Liens trouvés mais NON posés — arbitrage rendu
 
-*Relevé du 2026-08-17. À décider par l'éditeur du site.*
+*Relevé du 2026-08-17, arbitré le 2026-08-18 par l'éditeur du site.*
+
+## Décision
+
+**Tout est conservé, sauf les deux longs métrages**, qui restent de côté.
+Pour « Inside Jamel Comedy Club », l'éditeur a fourni une playlist YouTube
+(huit épisodes, vérifiée) qui remplace le dépôt archive.org proposé.
+
+Posés depuis : la playlist Jamel Comedy Club (`ubm-0649`, `ubm-0674`),
+« This is John » (`ubm-0777`) et « Désiré » (`ubm-1794`), tous deux des
+courts métrages.
+
+**Restent de côté, sans lien de visionnage :**
+
+| reco | œuvre | durée | pourquoi |
+|---|---|---|---|
+| `ubm-0036` | Les Clés de bagnole (Laurent Baffie, 2003) | 86 min | long métrage |
+| `ubm-3147` | NTM Authentiques (1998) | 83 min | long métrage documentaire |
+
+Le reste de ce document conserve le relevé d'origine, pour mémoire.
+
+---
+
 
 ## De quoi il s'agit
 

@@ -237,6 +237,10 @@ HOTES: dict[str, str] = {
     "detourfilm.com": "fiche",
     "baborentertainment.com": "fiche",
     "cinematheque.fr": "fiche",
+    # Presse spécialisée : un article consacré à une émission la DÉCRIT,
+    # ce qui est exactement la fonction d'une fiche. C'est le seul document
+    # existant sur « Exocet », émission web du milieu des années 2000.
+    "podcastmagazine.fr": "fiche",
     "brefcinema.com": "fiche",
     # --- Jeux : boutiques et sites officiels ------------------------------
     "philibertnet.com": "jeu",

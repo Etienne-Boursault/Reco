@@ -413,3 +413,10 @@ def test_les_promotions_visent_des_familles_connues():
     for (depart, _), arrivee in lf._PROMOTIONS.items():
         assert depart in fournies, depart
         assert arrivee in fournies, arrivee
+
+
+def test_un_article_de_presse_specialisee_est_une_fiche():
+    """Un article consacré à une émission la DÉCRIT — c'est la fonction d'une
+    fiche. Pour « Exocet », émission web du milieu des années 2000, c'est le
+    seul document existant."""
+    assert lf.famille("https://podcastmagazine.fr/patrick-baud-exocet/") == "fiche"
