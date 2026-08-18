@@ -35,12 +35,26 @@
   "extractors": [
     "anthropic"
   ],
+  "guestWork": true,
   "id": "ubm-1023",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/112390"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/112390-derby-girl/watch?locale=FR"
+    }
+  ],
   "quote": "Moi, j'ai la série Derby Girl dans laquelle j'ai joué",
-  "recommendedBy": "Navo",
+  "recommendedBy": "Adrien Ménielle",
   "sourceId": "un-bon-moment",
-  "status": "discarded",
+  "status": "validated",
   "timestamp": "01:50:39",
   "title": "Derby Girl",
   "transcriptSource": "acast",
