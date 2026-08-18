@@ -299,6 +299,7 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   import { applyGridFilter } from '../utils/gridFilter';
   import { chargerFragment } from '../utils/chargerFragment';
   import { cablerFiltreRecos } from '../utils/filtreRecos';
+  import { cablerBarreFiltres } from '../utils/barreFiltres';
 
   // --- Filtrage 100 % client : par type (chips) et par texte (fuzzy) -------
   // Câblé DANS UNE FONCTION, et non au chargement : la grille des recos
@@ -310,6 +311,11 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   // même interface sans monter ce composant, et Astro n'embarque que les
   // scripts des composants rendus. Sur `/[source]/recos`, le champ et les
   // puces existaient donc sans écouteur.
+
+  // La barre de filtres est dans le HTML initial — elle enveloppe les deux
+  // onglets — contrairement a la grille, qui arrive par fragment. Un appel
+  // direct suffit donc, sans attendre le premier clic.
+  cablerBarreFiltres();
 
   // Bascule entre « Toutes les recos » et « Par épisode ».
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));

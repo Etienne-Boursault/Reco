@@ -32,6 +32,36 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
   }
+  /* La barre s'efface quand on parcourt les recos — cf. `barreFiltres.ts`.
+
+     Sur un large ecran elle prend une bande fine et rester colle est
+     confortable. Sur mobile, le champ et les seize puces s'empilent sur
+     quatre lignes et mangent pres de la moitie de la hauteur : il ne reste
+     presque rien pour lire. Signale a la relecture du 2026-08-18.
+
+     La regle est donc bornee au meme seuil que la grille a une colonne :
+     au-dessus, rien ne change. */
+  @media (max-width: 560px) {
+    .toolbar {
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      will-change: transform;
+    }
+    .toolbar--masquee {
+      transform: translateY(-100%);
+      opacity: 0;
+      /* Escamotee, elle ne doit plus intercepter ni le doigt ni le clavier. */
+      pointer-events: none;
+    }
+  }
+
+  /* Une animation qui glisse hors champ peut gener : on respecte le reglage
+     systeme, la barre disparait alors sans transition. */
+  @media (prefers-reduced-motion: reduce) {
+    .toolbar {
+      transition: none;
+    }
+  }
+
   /* P2-3 : on supprime les `.search:focus-visible` / `.link:focus-visible`
      redondants — la règle globale `:where(...):focus-visible` (CSS contract)
      prend en charge avec halo + outline-offset. */
@@ -82,4 +112,25 @@
 #reco-grid {
   grid-auto-rows: 1fr;
   align-items: stretch;
+}
+
+/* ... SAUF sur une seule colonne, ou l'egalisation n'a plus d'objet.
+
+   Signale a la relecture du 2026-08-18 : « les cartes contiennent beaucoup
+   trop de vide » sur mobile. Cause exacte : `grid-auto-rows: 1fr` aligne
+   toutes les rangees sur la plus haute. A plusieurs colonnes c'est l'effet
+   demande — deux cartes cote a cote se repondent. A UNE colonne, chaque
+   rangee ne contient qu'une carte : elles se retrouvent toutes a la hauteur
+   du plus long titre du corpus. Une carte de 111 px de contenu en occupait
+   322, dont 158 px de vide pousse par le `margin-top: auto` du pied.
+
+   Le seuil est MESURE, pas devine : la grille bascule a une colonne vers
+   550 px de conteneur. En dessous de 560 px de viewport, le conteneur ne peut
+   pas etre plus large, donc on est forcement a une colonne. Au-dessus, on ne
+   touche a rien — l'egalisation reste celle qui a ete demandee le
+   2026-08-17. */
+@media (max-width: 560px) {
+  #reco-grid {
+    grid-auto-rows: auto;
+  }
 }

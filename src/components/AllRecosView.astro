@@ -112,6 +112,9 @@ const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
   // La grille est ici présente dès le HTML initial — contrairement à la page
   // d'accueil, où elle arrive par fragment — donc un simple appel suffit.
   import { cablerFiltreRecos } from '../utils/filtreRecos';
+  import { cablerBarreFiltres } from '../utils/barreFiltres';
 
   cablerFiltreRecos();
+  // La barre, elle, est TOUJOURS dans le HTML initial : un appel suffit.
+  cablerBarreFiltres();
 </script>
