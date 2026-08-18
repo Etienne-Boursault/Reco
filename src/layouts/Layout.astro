@@ -135,6 +135,17 @@ const themeColor = c?.bg ?? '#0e0e10';
        capture des <img data-fallback> ; cache l'image et révèle le <span>
        sibling. Cf. RecoCard.astro. */}
     <script>
+      // Le lien « aller au contenu » laissait `#main` dans l'URL : elle
+      // restait affichee, entrait dans l'historique, et se retrouvait
+      // copiee-collee. Le module la retire APRES le saut, sans toucher au
+      // focus. Il vit dans `utils/` pour etre testable — un `<script>`
+      // d'`.astro` ne l'est pas.
+      import { cablerLienEvitement } from '../utils/lienEvitement';
+
+      cablerLienEvitement();
+    </script>
+
+    <script>
       // Capture phase = `error` ne bulle pas.
       document.addEventListener(
         'error',
