@@ -33,11 +33,17 @@
        relecture du 2026-08-18, « les vignettes passent legerement en dessous
        de la toolbar ».
 
-       Le flou reste pour les navigateurs qui l'appliquent avant la couleur,
-       mais il ne porte plus l'effet : c'est l'opacite qui separe la barre du
-       contenu qui defile dessous. */
+       PAS DE `backdrop-filter` : il est devenu inutile ET nuisible.
+
+       Inutile, parce qu'un flou derriere un fond OPAQUE ne peut rien produire
+       de visible — je l'avais garde par prudence en rendant le fond opaque,
+       c'etait une propriete morte.
+
+       Nuisible, parce qu'il cree une racine de composition : la carte
+       survolee, pourtant en `z-index: 6` contre 5 pour la barre, restait
+       peinte DESSOUS. Signale a la relecture du 2026-08-19, qui pointait
+       exactement cette div. */
     background: var(--bg);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
   }
 
