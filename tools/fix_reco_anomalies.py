@@ -662,6 +662,44 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                      "Netflix. TMDB ne credite personne pour cette "
                      "tele-realite, on retire donc sans remplacer."),
     },
+    "ubm-0766": {
+        "attendu": {"title": "Life in Cartoon Motion", "creator": "Mika"},
+        "retirer_liens": ["deezer.com/album/320863417"],
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/album/123558"}],
+        "pourquoi": (
+            "La citation parle du « premier album de Mika, Life in Cartoon "
+            "Motion », mais le lien Deezer pointait l'album 320863417, qui "
+            "s'intitule « Relax, Take It Easy » — un SINGLE tire de cet album, "
+            "pas l'album. L'album complet est le 123558 (dix pistes, 2007). "
+            "Trouve en confrontant le titre de chaque reco musicale a celui du "
+            "disque qu'elle lie. "
+            "REMPLACER un lien demande DEUX passes : `ajouter_liens` refuse un "
+            "hote deja present, et l'ancien lien Deezer l'etait encore quand "
+            "l'ajout s'est joue — `retirer_liens` ne passant qu'apres."
+        ),
+    },
+    "ubm-0043": {
+        "attendu": {"title": "Agendas", "creator": "Kyan Khojandi"},
+        "titre": "Haagen-Dazs",
+        "pourquoi": (
+            "« Agendas » n'existe pas : l'album « L'horizon des evenements » "
+            "compte dix morceaux, et ni Deezer ni iTunes n'en connaissent un "
+            "de ce nom. C'est une transcription phonetique de « Haagen-Dazs », "
+            "qui se prononce « a-guen-dass ». "
+            "TROIS elements concordent. Le lien Deezer DEJA pose par la reco "
+            "(track/1508040042) est celui de « Haagen-Dazs ». Le transcript "
+            "(00:06:53) decrit « un mec qui s'auto-quitte devant une meuf, "
+            "parce que la meuf ne lui donne pas d'argument » — c'est le sujet "
+            "exact de la chanson, dont le narrateur finit par partir faute que "
+            "l'autre ose. Et aucun autre titre de l'album n'approche "
+            "phonetiquement « Agendas ». "
+            "Le transcript dit « le premier morceau de l'album » alors que "
+            "« Haagen-Dazs » est la piste 2 : imprecision du locuteur, qui "
+            "parle de la maquette qu'il venait d'enregistrer."
+        ),
+    },
     # --- Solde de la revue utilisateur (2026-08-18) ------------------------
     "ubm-0265": {
         "attendu": {"creator": "Non précisé", "title": "Un ours dans le Jura"},
