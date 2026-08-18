@@ -14,7 +14,7 @@
  * `.astro`. Extraire la logique dans un module la rend enfin vérifiable —
  * c'est la moitié de la correction.
  */
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { cablerFiltreRecos } from '../../src/utils/filtreRecos';
 
 function monterGrille() {
@@ -35,7 +35,12 @@ const visibles = () =>
     .filter((c) => c.style.display !== 'none').length;
 
 describe('cablerFiltreRecos', () => {
-  beforeEach(monterGrille);
+  beforeEach(() => {
+    // La saisie est temporisee depuis le 2026-08-18 : sans faux timers, ces
+    // tests mesureraient l'etat AVANT filtrage.
+    vi.useFakeTimers();
+    monterGrille();
+  });
 
   it('câble le filtre quand la grille est présente', () => {
     expect(cablerFiltreRecos()).toBe(true);
@@ -51,6 +56,9 @@ describe('cablerFiltreRecos', () => {
     const search = document.getElementById('search') as HTMLInputElement;
     search.value = 'pulsions';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     expect(visibles()).toBe(1);
   });
 
@@ -59,6 +67,9 @@ describe('cablerFiltreRecos', () => {
     const search = document.getElementById('search') as HTMLInputElement;
     search.value = 'titanik';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     expect(visibles()).toBe(1);
   });
 
@@ -76,6 +87,9 @@ describe('cablerFiltreRecos', () => {
     const search = document.getElementById('search') as HTMLInputElement;
     search.value = 'titanic';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     expect(visibles()).toBe(1);
   });
 
@@ -84,8 +98,14 @@ describe('cablerFiltreRecos', () => {
     const search = document.getElementById('search') as HTMLInputElement;
     search.value = 'pulsions';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     search.value = '';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     expect(visibles()).toBe(3);
   });
 
@@ -94,6 +114,9 @@ describe('cablerFiltreRecos', () => {
     const search = document.getElementById('search') as HTMLInputElement;
     search.value = 'zzzzzzzz';
     search.dispatchEvent(new Event('input', { bubbles: true }));
+    // La saisie est temporisee (cf. `filtreRecos`) : on laisse courir
+    // le delai avant de constater le resultat.
+    vi.advanceTimersByTime(200);
     expect(visibles()).toBe(0);
     expect(document.getElementById('noresult')!.textContent).toContain('Aucun résultat');
   });
@@ -102,5 +125,62 @@ describe('cablerFiltreRecos', () => {
     document.body.innerHTML = `
       <ul id="reco-grid"><li class="card" data-types="film" data-search="x"></li></ul>`;
     expect(cablerFiltreRecos()).toBe(true);
+  });
+});
+
+// ===== Temporisation de la saisie (2026-08-18) =============================
+describe('temporisation de la saisie', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    monterGrille();
+  });
+
+  it('ne filtre pas a chaque caractere', () => {
+    // Sur le corpus reel, `apply()` parcourt 1 213 cartes et change leur
+    // `display` : mesure a 125-327 ms par frappe dans Chrome. Filtrer a
+    // chaque touche rend la saisie poussive.
+    cablerFiltreRecos();
+    const champ = document.getElementById('search') as HTMLInputElement;
+    const cartes = document.querySelectorAll<HTMLElement>('#reco-grid li');
+    champ.value = 'titanic';
+    champ.dispatchEvent(new Event('input'));
+    // Rien n'a encore bouge : la temporisation court.
+    expect(cartes[0].style.display).toBe('');
+  });
+
+  it('filtre une fois la frappe retombee', () => {
+    cablerFiltreRecos();
+    const champ = document.getElementById('search') as HTMLInputElement;
+    const cartes = document.querySelectorAll<HTMLElement>('#reco-grid li');
+    champ.value = 'titanic';
+    champ.dispatchEvent(new Event('input'));
+    vi.advanceTimersByTime(200);
+    expect(cartes[0].style.display).toBe('none');
+    expect(cartes[2].style.display).toBe('');
+  });
+
+  it('une frappe rapide ne declenche qu un seul filtrage', () => {
+    cablerFiltreRecos();
+    const champ = document.getElementById('search') as HTMLInputElement;
+    const cartes = document.querySelectorAll<HTMLElement>('#reco-grid li');
+    for (const texte of ['t', 'ti', 'tit', 'tita', 'titanic']) {
+      champ.value = texte;
+      champ.dispatchEvent(new Event('input'));
+      vi.advanceTimersByTime(30);   // plus court que la temporisation
+    }
+    expect(cartes[0].style.display).toBe('');   // rien encore
+    vi.advanceTimersByTime(200);
+    expect(cartes[2].style.display).toBe('');   // « titanic » retenu
+    expect(cartes[0].style.display).toBe('none');
+  });
+
+  it('les puces de type reagissent IMMEDIATEMENT', () => {
+    // Un clic est un geste deliberé : le temporiser donnerait l'impression
+    // que le bouton n'a pas repondu.
+    cablerFiltreRecos();
+    const puce = document.querySelector<HTMLButtonElement>('[data-filter="film"]')!;
+    const cartes = document.querySelectorAll<HTMLElement>('#reco-grid li');
+    puce.click();
+    expect(cartes[1].style.display).toBe('none');   // la serie, sans attendre
   });
 });

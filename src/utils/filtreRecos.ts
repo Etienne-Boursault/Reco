@@ -70,9 +70,23 @@ export function cablerFiltreRecos(): boolean {
     });
   });
 
+  // La saisie est TEMPORISEE, le clic ne l'est pas.
+  //
+  // `apply()` parcourt toutes les cartes et change leur `display` : sur le
+  // corpus reel — 1 213 cartes — chaque frappe coutait 125 a 327 ms, mesure
+  // dans Chrome. Filtrer a chaque touche rendait la saisie poussive.
+  //
+  // 120 ms est en dessous du seuil ou une interface parait ne pas repondre,
+  // et au-dessus de l'intervalle entre deux touches d'une frappe courante :
+  // on ne filtre donc qu'une fois la frappe retombee.
+  //
+  // Un clic sur une puce, lui, est un geste delibere : le temporiser donnerait
+  // l'impression que le bouton n'a pas repondu.
+  let attente: ReturnType<typeof setTimeout> | undefined;
   search?.addEventListener('input', () => {
     term = search.value;
-    apply();
+    clearTimeout(attente);
+    attente = setTimeout(apply, 120);
   });
 
   return true;
