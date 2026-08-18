@@ -90,17 +90,19 @@ def test_ces_titres_ne_sont_PAS_le_meme(a, b):
 
 
 # ===== La garde centrale ===================================================
-def test_un_groupe_aux_titres_divergents_est_REFUSE():
+def test_des_titres_divergents_tombent_dans_DEUX_partitions():
+    """Chacune n'ayant qu'un membre, rien ne fusionne — et surtout rien ne se
+    confond. C'est le cas « Drive » / « Mulholland Drive »."""
     groupe = [{"id": "x", "title": "Drive"},
               {"id": "y", "title": "Mulholland Drive"}]
-    assert fid.fusionnable(("movie", "1018"), groupe) is False
+    assert len(fid.partitionner(("movie", "1018"), groupe)) == 2
 
 
-def test_une_variante_explicitement_admise_passe():
+def test_une_variante_explicitement_admise_reunit_tout_le_groupe():
     groupe = [{"id": "x", "title": "Marty Suprem"},
               {"id": "y", "title": "Marty Supreme"}]
     assert ("movie", "1317288") in fid.VARIANTES_ADMISES
-    assert fid.fusionnable(("movie", "1317288"), groupe) is True
+    assert len(fid.partitionner(("movie", "1317288"), groupe)) == 1
 
 
 def test_chaque_variante_admise_porte_sa_justification():
@@ -109,9 +111,9 @@ def test_chaque_variante_admise_porte_sa_justification():
         assert len(motif) > 30, cle
 
 
-def test_des_titres_identiques_passent_sans_declaration():
+def test_des_titres_identiques_forment_UNE_partition_sans_declaration():
     groupe = [{"id": "x", "title": "Vice"}, {"id": "y", "title": "Vice"}]
-    assert fid.fusionnable(("movie", "150540"), groupe) is True
+    assert fid.partitionner(("movie", "150540"), groupe) == [groupe]
 
 
 # ===== Choix du survivant ==================================================
@@ -356,3 +358,42 @@ def test_un_item_sans_titre_ne_gagne_pas_d_alias_vide():
     assert fid._imposer_titre(("movie", "1317288"), item) is True
     assert item["title"] == "Marty Supreme"
     assert not item.get("aliases")
+
+
+# ===== Partition par titre (2026-08-18) ====================================
+def test_un_groupe_mixte_fusionne_ce_qui_CONCORDE_et_laisse_le_reste(tmp_path: Path):
+    """Le refus etait GLOBAL au groupe : un seul intrus bloquait tout.
+
+    Sur tv/60715, deux items « Bref » legitimement fusionnables restaient
+    separes parce qu'un troisieme, « Bref 2 », faisait diverger le groupe.
+    Partitionner par titre traite chaque sous-ensemble pour ce qu'il est, sans
+    jamais fusionner par-dessus une divergence.
+    """
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    for iid, titre in (("a", "Bref"), ("b", "Bref"), ("c", "Bref 2")):
+        (items / f"{iid}.json").write_text(json.dumps(
+            {"id": iid, "title": titre, "types": ["serie"],
+             "externalIds": {"tmdb": 60715, "tmdbType": "tv"}}),
+            encoding="utf-8")
+    rapport = fid.executer(items, mentions, apply=True)
+    restants = sorted(json.loads(p.read_text(encoding="utf-8"))["title"]
+                      for p in items.glob("*.json"))
+    assert restants == ["Bref", "Bref 2"], "« Bref » fusionne, « Bref 2 » intact"
+    assert rapport["fusions"] == 1
+
+
+def test_deux_titres_differents_sans_doublon_ne_fusionnent_RIEN(tmp_path: Path):
+    """Le cas « Drive » / « Mulholland Drive » : deux partitions d'un seul
+    membre chacune. Rien a fusionner, et surtout rien a confondre."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    for iid, titre in (("a", "Drive"), ("b", "Mulholland Drive")):
+        (items / f"{iid}.json").write_text(json.dumps(
+            {"id": iid, "title": titre, "types": ["film"],
+             "externalIds": {"tmdb": 1018, "tmdbType": "movie"}}),
+            encoding="utf-8")
+    rapport = fid.executer(items, mentions, apply=True)
+    assert rapport["fusions"] == 0
+    assert len(list(items.glob("*.json"))) == 2
+    assert len(rapport["refuses"]) == 1, "la divergence reste signalee"

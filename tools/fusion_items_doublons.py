@@ -134,10 +134,27 @@ def normaliser(titre: str) -> str:
     t = "".join(c if c.isalnum() or c.isspace() else " " for c in t)
     return " ".join(t.split())
 
-def fusionnable(cle: tuple[str, str], groupe: Sequence[dict[str, Any]]) -> bool:
-    """Le groupe peut-il etre fusionne sans arbitrage humain ?"""
-    titres = {normaliser(d.get("title") or "") for d in groupe}
-    return len(titres) == 1 or cle in VARIANTES_ADMISES
+def partitionner(cle: tuple[str, str],
+                 groupe: Sequence[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    """Decoupe un groupe en sous-ensembles de MEME titre.
+
+    Le refus etait auparavant GLOBAL : un seul intrus bloquait tout le groupe.
+    Sur tv/60715, deux items « Bref » parfaitement fusionnables restaient
+    separes parce qu'un troisieme, « Bref 2 », faisait diverger l'ensemble.
+
+    Partitionner traite chaque sous-ensemble pour ce qu'il est, sans jamais
+    fusionner par-dessus une divergence : « Drive » et « Mulholland Drive »
+    tombent dans deux partitions d'un membre chacune, donc rien ne bouge.
+
+    Une variante declaree reunit volontairement tout le groupe : c'est la que
+    « Rick and Morty » rejoint « Rick et Morty ».
+    """
+    if cle in VARIANTES_ADMISES:
+        return [list(groupe)]
+    parts: dict[str, list[dict[str, Any]]] = {}
+    for doc in groupe:
+        parts.setdefault(normaliser(doc.get("title") or ""), []).append(doc)
+    return list(parts.values())
 
 
 def choisir_survivant(groupe: Sequence[dict[str, Any]],
@@ -252,38 +269,64 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool) -> dict[str, A
                     json.dumps(groupe[0], ensure_ascii=False, indent=2) + "\n",
                     encoding="utf-8")
             continue
-        if not fusionnable(cle, groupe):
+        parts = partitionner(cle, groupe)
+        if len(parts) > 1:
+            # La divergence reste SIGNALEE meme quand on fusionne a
+            # l'interieur : elle revele souvent un identifiant fautif — c'est
+            # ainsi que « Drive » a ete pris avec celui de Mulholland Drive.
             titres = sorted({d.get("title") or "" for d in groupe})
             refuses.append(f"{cle[0]}/{cle[1]} : titres divergents {titres}")
-            continue
-        survivant = choisir_survivant(groupe, compte)
-        perdants = [d for d in groupe if d is not survivant]
-        fusionner(survivant, perdants)
-        _imposer_titre(cle, survivant)
-        fusions += 1
-        ids_perdants = {d.get("id") for d in perdants}
-        for chemin, mention in mentions.values():
-            if mention.get("itemId") in ids_perdants:
-                mention["itemId"] = survivant["id"]
-                reportees += 1
-                if apply:
-                    chemin.write_text(
-                        json.dumps(mention, ensure_ascii=False, indent=2) + "\n",
-                        encoding="utf-8")
-        if apply:
-            items[survivant["id"]][0].write_text(
-                json.dumps(survivant, ensure_ascii=False, indent=2) + "\n",
-                encoding="utf-8")
-            for d in perdants:
-                items[d["id"]][0].unlink()
-        supprimes += len(perdants)
-        log.info("fusion %s/%s -> %s (%d perdant·s)", cle[0], cle[1],
-                 survivant["id"], len(perdants))
+        for part in parts:
+            if len(part) < 2:
+                continue
+            _fusionner_partition(cle, part, compte, items, mentions, apply)
+            fusions += 1
+            supprimes += len(part) - 1
+            reportees += _reporter_mentions(part, compte, mentions, apply)
+        continue
 
     for motif in refuses:
         log.warning("REFUS %s", motif)
     return {"fusions": fusions, "items_supprimes": supprimes,
             "mentions_reportees": reportees, "refuses": refuses}
+
+
+def _fusionner_partition(cle, part, compte, items, mentions, apply):
+    """Fusionne une partition et ecrit le survivant. Renvoie son identifiant."""
+    survivant = choisir_survivant(part, compte)
+    perdants = [d for d in part if d is not survivant]
+    fusionner(survivant, perdants)
+    _imposer_titre(cle, survivant)
+    if apply:
+        items[survivant["id"]][0].write_text(
+            json.dumps(survivant, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
+        for d in perdants:
+            items[d["id"]][0].unlink()
+    log.info("fusion %s/%s -> %s (%d perdant·s)", cle[0], cle[1],
+             survivant["id"], len(perdants))
+    return survivant
+
+
+def _reporter_mentions(part, compte, mentions, apply):
+    """Repointe vers le survivant les mentions des perdants.
+
+    Sans ce report, la suppression d'un item laisserait des mentions
+    ORPHELINES : elles designeraient une oeuvre qui n'existe plus.
+    """
+    survivant = choisir_survivant(part, compte)
+    ids_perdants = {d.get("id") for d in part if d is not survivant}
+    n = 0
+    for chemin, mention in mentions.values():
+        if mention.get("itemId") in ids_perdants:
+            mention["itemId"] = survivant["id"]
+            n += 1
+            if apply:
+                chemin.write_text(
+                    json.dumps(mention, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8")
+    return n
+
 
 
 def build_parser() -> argparse.ArgumentParser:
