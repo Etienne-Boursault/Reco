@@ -4,7 +4,11 @@
   "schemaVersion": 1,
   "title": "Diams",
   "types": [
-    "musique",
-    "artiste"
+    "album",
+    "artiste",
+    "musique"
+  ],
+  "aliases": [
+    "Diam's"
   ]
 }

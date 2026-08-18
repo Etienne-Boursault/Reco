@@ -397,3 +397,83 @@ def test_deux_titres_differents_sans_doublon_ne_fusionnent_RIEN(tmp_path: Path):
     assert rapport["fusions"] == 0
     assert len(list(items.glob("*.json"))) == 2
     assert len(rapport["refuses"]) == 1, "la divergence reste signalee"
+
+
+# ===== Palier 2 : meme titre ET meme createur ==============================
+def _ecrire(d: Path, iid: str, **champs) -> None:
+    doc = {"id": iid, "types": ["film"]}
+    doc.update(champs)
+    (d / f"{iid}.json").write_text(json.dumps(doc, ensure_ascii=False),
+                                   encoding="utf-8")
+
+
+def test_palier2_fusionne_meme_titre_ET_meme_createur(tmp_path: Path):
+    """Sans identifiant TMDB, le titre seul ne prouve rien — deux oeuvres
+    peuvent le partager. Le CREATEUR ajoute la contrainte qui manque."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Pulsions", creator="Kyan Khojandi")
+    _ecrire(items, "b", title="pulsions", creator="kyan khojandi")
+    rapport = fid.executer(items, mentions, apply=True, palier2=True)
+    assert rapport["fusions"] == 1
+    assert len(list(items.glob("*.json"))) == 1
+
+
+def test_palier2_est_DESACTIVE_par_defaut(tmp_path: Path):
+    """Le palier 1 seul est ce que l'editeur a autorise en premier : l'ouvrir
+    silencieusement changerait la portee d'une passe deja validee."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Pulsions", creator="Kyan Khojandi")
+    _ecrire(items, "b", title="Pulsions", creator="Kyan Khojandi")
+    assert fid.executer(items, mentions, apply=True)["fusions"] == 0
+
+
+def test_palier2_exige_un_createur_DES_DEUX_cotes(tmp_path: Path):
+    """Un createur absent n'est pas un createur identique."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Pulsions", creator="Kyan Khojandi")
+    _ecrire(items, "b", title="Pulsions")
+    assert fid.executer(items, mentions, apply=True, palier2=True)["fusions"] == 0
+
+
+def test_palier2_refuse_si_les_identifiants_TMDB_divergent(tmp_path: Path):
+    """Meme titre, meme createur, mais deux fiches TMDB differentes : ce sont
+    deux oeuvres distinctes (une serie et son film, par exemple)."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Untel",
+            externalIds={"tmdb": 111, "tmdbType": "movie"})
+    _ecrire(items, "b", title="X", creator="Untel",
+            externalIds={"tmdb": 222, "tmdbType": "movie"})
+    rapport = fid.executer(items, mentions, apply=True, palier2=True)
+    assert rapport["fusions"] == 0
+    assert len(rapport["refuses"]) == 1
+
+
+def test_palier2_tolere_un_seul_identifiant_present(tmp_path: Path):
+    """Un item enrichi et un autre pas : rien ne les oppose, et le survivant
+    herite de l'identifiant."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Untel",
+            externalIds={"tmdb": 111, "tmdbType": "movie"})
+    _ecrire(items, "b", title="X", creator="Untel")
+    assert fid.executer(items, mentions, apply=True, palier2=True)["fusions"] == 1
+    doc = json.loads(next(items.glob("*.json")).read_text(encoding="utf-8"))
+    assert doc["externalIds"]["tmdb"] == 111
+
+
+def test_palier2_ne_refait_pas_le_travail_du_palier1(tmp_path: Path):
+    """Les deux paliers tournent dans la meme passe : le second ne doit pas
+    retomber sur des items que le premier vient de supprimer."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Untel",
+            externalIds={"tmdb": 111, "tmdbType": "movie"})
+    _ecrire(items, "b", title="X", creator="Untel",
+            externalIds={"tmdb": 111, "tmdbType": "movie"})
+    rapport = fid.executer(items, mentions, apply=True, palier2=True)
+    assert rapport["fusions"] == 1, "une seule fusion, pas deux"
+    assert len(list(items.glob("*.json"))) == 1

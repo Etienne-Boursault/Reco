@@ -231,7 +231,8 @@ def _imposer_titre(cle: tuple[str, str], item: dict[str, Any]) -> bool:
     return True
 
 
-def executer(items_dir: Path, mentions_dir: Path, *, apply: bool) -> dict[str, Any]:
+def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
+             palier2: bool = False) -> dict[str, Any]:
     """Fusionne les groupes prouves. Renvoie un rapport chiffre."""
     items: dict[str, tuple[Path, dict]] = {}
     for chemin in sorted(items_dir.rglob("*.json")):
@@ -285,6 +286,38 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool) -> dict[str, A
             reportees += _reporter_mentions(part, compte, mentions, apply)
         continue
 
+    if palier2:
+        # Sans identifiant TMDB, le titre seul ne prouve rien : deux oeuvres
+        # peuvent le partager. Le CREATEUR ajoute la contrainte qui manque.
+        # On repart des items ENCORE PRESENTS, pour ne pas retomber sur ceux
+        # que le premier palier vient de supprimer.
+        vivants = [d for i, (chemin, d) in items.items() if chemin.exists()]
+        par_couple: dict[tuple[str, str], list[dict]] = defaultdict(list)
+        for doc in vivants:
+            titre = normaliser(doc.get("title") or "")
+            createur = normaliser(doc.get("creator") or "")
+            # Les DEUX doivent etre presents : un createur absent n'est pas un
+            # createur identique.
+            if titre and createur:
+                par_couple[(titre, createur)].append(doc)
+        for _couple, part in sorted(par_couple.items()):
+            if len(part) < 2:
+                continue
+            ids = {str((d.get("externalIds") or {}).get("tmdb")) for d in part
+                   if (d.get("externalIds") or {}).get("tmdb")}
+            if len(ids) > 1:
+                # Meme titre, meme createur, mais deux fiches distinctes : ce
+                # sont deux oeuvres (une serie et son adaptation, par exemple).
+                refuses.append(
+                    f"« {part[0].get('title')} » / {part[0].get('creator')} : "
+                    f"identifiants TMDB divergents {sorted(ids)}")
+                continue
+            _fusionner_partition(("titre", "createur"), part, compte, items,
+                                 mentions, apply)
+            fusions += 1
+            supprimes += len(part) - 1
+            reportees += _reporter_mentions(part, compte, mentions, apply)
+
     for motif in refuses:
         log.warning("REFUS %s", motif)
     return {"fusions": fusions, "items_supprimes": supprimes,
@@ -335,6 +368,9 @@ def build_parser() -> argparse.ArgumentParser:
                     "Refuse tout groupe aux titres divergents non justifies.")
     parser.add_argument("--apply", action="store_true",
                         help="ecrit reellement (defaut : simulation)")
+    parser.add_argument("--palier2", action="store_true",
+                        help="fusionne aussi les items de meme titre ET "
+                             "meme createur, sans identifiant TMDB")
     return parser
 
 
@@ -343,7 +379,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     # Chemins resolus A L'APPEL : les figer a l'import ferait ecrire les tests
     # dans le vrai corpus (cf. le meme piege dans match_audit/sidecar).
-    rapport = executer(common.ITEMS_DIR, common.MENTIONS_DIR, apply=args.apply)
+    rapport = executer(common.ITEMS_DIR, common.MENTIONS_DIR,
+                       apply=args.apply, palier2=args.palier2)
     log.info("%d fusion(s), %d item(s) supprime(s), %d mention(s) reportee(s), "
              "%d refus", rapport["fusions"], rapport["items_supprimes"],
              rapport["mentions_reportees"], len(rapport["refuses"]))
