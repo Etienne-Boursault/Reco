@@ -28,7 +28,15 @@
     align-items: center;
     padding: 0.9rem 0;
     margin-bottom: 1.4rem;
-    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    /* Fond OPAQUE. Il etait a 88 % : les vignettes d'episode, tres
+       contrastees, transparaissaient au travers en defilant — signale a la
+       relecture du 2026-08-18, « les vignettes passent legerement en dessous
+       de la toolbar ».
+
+       Le flou reste pour les navigateurs qui l'appliquent avant la couleur,
+       mais il ne porte plus l'effet : c'est l'opacite qui separe la barre du
+       contenu qui defile dessous. */
+    background: var(--bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
   }
