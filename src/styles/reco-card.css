@@ -44,6 +44,15 @@
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--accent);
+    /* Au-dessus de la barre de filtres (z-index: 5) pendant le survol.
+
+       Meme cause que sur les vignettes d'episode : le soulevement de 4 px
+       fait disparaitre un peu plus la carte sous la barre collante. Le
+       z-index porte sur `.card` elle-meme, qui a `content-visibility: auto`
+       et forme donc un contexte d'empilement — le poser sur un enfant
+       resterait sans effet. */
+    position: relative;
+    z-index: 6;
   }
   /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret.
      PAS d'`opacity` sur la carte : elle valait 0.7 et atténuait TOUT son texte,

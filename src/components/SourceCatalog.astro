@@ -535,6 +535,25 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     transform: translateY(-4px);
     border-color: var(--accent);
   }
+
+  /* La vignette survolee passe AU-DESSUS de la barre de filtres.
+
+     Le survol la souleve de 4 px, et quand elle se trouve sous la barre
+     collante, ces 4 px la font disparaitre un peu plus : on survole une
+     vignette dont le haut est mange. Signale a la relecture du 2026-08-18.
+
+     Le `z-index` porte sur `.ep-card` et non sur `.ep-thumb` : la carte a
+     `content-visibility: auto`, qui en fait un CONTEXTE D'EMPILEMENT — un
+     z-index pose sur la vignette y resterait enferme et ne depasserait jamais
+     la barre. Verifie dans Chrome avec `elementFromPoint`.
+
+     6, soit un de plus que la barre (z-index: 5). Le recouvrement ne dure que
+     le survol, et ne porte que sur la largeur d'une vignette : on voit
+     entierement ce qu'on s'apprete a cliquer. */
+  .ep-card:hover {
+    position: relative;
+    z-index: 6;
+  }
   .ep-badge {
     position: absolute;
     top: 0;
