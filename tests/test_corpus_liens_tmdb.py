@@ -113,3 +113,59 @@ def test_les_tests_ci_dessus_portent_bien_sur_quelque_chose(corpus):
     assert paires >= 200, (
         f"seulement {paires} paires TMDB trouvees (269 au 2026-08-18) : le "
         f"filtre des tests de paire ne mord plus, ils passent a vide.")
+
+
+# ===== watchPage derive de l'identifiant (2026-08-18) ======================
+def _docs() -> list[dict]:
+    """Recos ET items : le champ `watchPage` vit dans les deux collections."""
+    out = []
+    for collection in ("recos", "items"):
+        for chemin in (CONTENT_DIR / collection).rglob("*.json"):
+            try:
+                out.append(json.loads(chemin.read_text(encoding="utf-8")))
+            except (OSError, json.JSONDecodeError):
+                continue
+    return out
+
+
+@pytest.fixture(scope="module")
+def avec_watchpage() -> list[dict]:
+    docs = [d for d in _docs()
+            if isinstance((d.get("externalIds") or {}).get("watchPage"), str)]
+    # Garde anti-test-vide : si le champ disparaissait du corpus, les deux
+    # tests ci-dessous passeraient sans rien verifier.
+    assert len(docs) > 100, f"seulement {len(docs)} documents portent watchPage"
+    return docs
+
+
+def test_watchPage_designe_la_MEME_oeuvre_que_l_identifiant(avec_watchpage):
+    """`watchPage` se DEDUIT de `externalIds.tmdb` : c'est un derive, pas une
+    donnee independante.
+
+    Cinq recos violaient cet invariant le 2026-08-18, et chacune envoyait le
+    visiteur ailleurs : « Vice » d'Adam McKay menait a « Vice-versa » de Pixar
+    (le slug disait `150540-inside-out`), « Fantomas » de 1964 au muet de
+    1913, « Looking » a « Looking up to Magical Girls ». Le bouton disait
+    « Où regarder » et tenait une autre promesse.
+    """
+    fautifs = []
+    for d in avec_watchpage:
+        ext = d["externalIds"]
+        m = _ID.search(ext["watchPage"])
+        if m is None:
+            continue  # adresse hors TMDB, hors juridiction
+        if (m.group(1), m.group(2)) != (str(ext.get("tmdbType")),
+                                        str(ext.get("tmdb"))):
+            fautifs.append((d.get("id"), d.get("title"), ext["watchPage"][:60]))
+    assert not fautifs, f"watchPage designe une autre oeuvre : {fautifs[:5]}"
+
+
+def test_aucun_watchPage_ne_survit_a_son_identifiant(avec_watchpage):
+    """Sans `tmdb`, l'adresse ne derive plus de rien — elle fige un identifiant
+    qu'on a justement juge faux. La reco « Bagarre » en portait un vers
+    « Picture Snatcher » (1933) apres le retrait de son identifiant."""
+    orphelins = [(d.get("id"), d.get("title"))
+                 for d in avec_watchpage
+                 if _ID.search(d["externalIds"]["watchPage"])
+                 and d["externalIds"].get("tmdb") is None]
+    assert not orphelins, f"watchPage sans identifiant : {orphelins[:5]}"
