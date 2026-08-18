@@ -71,9 +71,29 @@ def _urls(doc: dict) -> list[str]:
             if isinstance(lien, dict)]
 
 
+def test_toutes_les_cles_d_effet_sont_inspectees():
+    """Ce fichier n'attrape que les effets qu'il SAIT lire.
+
+    Une opération ajoutée à `fix_reco_anomalies` sans être inspectée ici
+    passerait pour « réalisée » quoi qu'il arrive, et une entrée muette la
+    portant resterait invisible. C'est arrivé avec `citation`, ajoutée le
+    2026-08-18. La liste vit désormais dans le module ; ce test vérifie qu'on
+    ne l'a pas laissée nous distancer.
+    """
+    inspectees = {"types", "titre", "creator", "citation", "recommande_par",
+                  "liens", "retirer_liens", "ajouter_liens",
+                  "retirer_external_ids", "retirer_alias"}
+    oubliees = sorted(set(fra.CLES_EFFET) - inspectees)
+    assert not oubliees, (
+        f"`_effets_non_realises` n'inspecte pas {oubliees} : une entrée "
+        f"n'ayant que cette opération passerait pour realisee.")
+
+
 def _effets_non_realises(doc: dict, fix: dict) -> list[str]:
     """Ce que l'entrée voulait faire et qui n'est toujours pas fait."""
     restants = []
+    if "citation" in fix and doc.get("quote") != fix["citation"]:
+        restants.append("citation non corrigée")
     if "types" in fix and sorted(doc.get("types") or []) != sorted(fix["types"]):
         restants.append(f"types encore {doc.get('types')}")
     if "titre" in fix and doc.get("title") != fix["titre"]:

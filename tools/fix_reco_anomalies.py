@@ -38,6 +38,15 @@ __all__ = ["CORRECTIONS", "transform"]
 #:   `creator`  — nouveau créateur (facultatif).
 #:   `pourquoi` — la citation ou le fait qui tranche. Ce champ n'est pas
 #:                décoratif : sans lui, personne ne peut rejuger la décision.
+#: Les clés qui produisent un EFFET sur une reco. Déclarées ICI, et non
+#: recopiées dans chaque test : deux listes finissent toujours par diverger, et
+#: la divergence est silencieuse. Elle l'a été — l'opération `citation`,
+#: ajoutée le 2026-08-18, manquait aux deux garde-fous qui énuméraient ces clés
+#: à la main, si bien qu'une correction n'en portant qu'une passait pour vide.
+CLES_EFFET = ("types", "liens", "creator", "titre", "citation",
+              "recommande_par", "ajouter_liens", "retirer_liens",
+              "retirer_alias", "retirer_external_ids")
+
 CORRECTIONS: dict[str, dict[str, Any]] = {
     "ubm-0214": {
         "attendu": {"types": ["spectacle", "video"]},
@@ -751,6 +760,39 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "pourquoi": ("Aliocha avec un C : Apple Music, Qobuz et YouTube Music "
                      "s'accordent. « Aliosha » est une restitution phonetique."),
     },
+    # --- Audit par echantillon du 2026-08-18 : defauts graves --------------
+    "ubm-0219": {
+        "attendu": {"title": "Empathie",
+                    "quote": "Bah non, bah moi, le dernier truc que j'ai "
+                             "regardé, que j'ai aimé, c'est cette série-là, "
+                             "Euphoria."},
+        "citation": "Moi, je vous conseille un petit Empathie, la série, "
+                    "parce qu'en fait, j'ai trouvé ça bouleversant.",
+        "pourquoi": (
+            "La carte affichait une phrase sur EUPHORIA au-dessus d'une fiche "
+            "« Empathie » : l'extraction avait capture la replique de 01:31:32 "
+            "au lieu de la recommandation de 01:32:03. "
+            "Le plus notable est que la revue le SAVAIT : sa note dit "
+            "« Corriger la quote (actuellement celle d'Euphoria) » et son "
+            "champ `applied` vaut `false` — la fiche a ete publiee malgre "
+            "cela. La phrase retenue ici est relevee au transcript, pas dans "
+            "la note, qui la paraphrasait avec des points de suspension."
+        ),
+    },
+    "ubm-1365": {
+        "attendu": {"title": "L'histoire de la psychanalyse",
+                    "creator": "Malika"},
+        "titre": "Malika, l'histoire d'une psychanalyse",
+        "creator": "Malika Gherdis",
+        "pourquoi": (
+            "Le titre etait une description et le createur un prenom seul. "
+            "La reponse etait DANS LA FICHE : ses deux liens portent le vrai "
+            "titre, et la page de Champ social editions credite « GHERDIS "
+            "Malika ». La note de revue disait pourtant « possiblement "
+            "descriptif/mal transcrit, non re-verifiable, WebSearch epuise » — "
+            "elle a cherche dehors ce que le dossier contenait."
+        ),
+    },
     # --- Solde de la revue utilisateur (2026-08-18) ------------------------
     "ubm-0265": {
         "attendu": {"creator": "Non précisé", "title": "Un ours dans le Jura"},
@@ -1366,6 +1408,15 @@ def transform(doc: dict[str, Any]) -> list[Change]:
         changes.append(Change(field="title", before=doc.get("title"),
                               after=fix["titre"]))
         doc["title"] = fix["titre"]
+    # La CITATION est ce qui justifie la reco aux yeux du lecteur. Quand
+    # l'extraction capture la mauvaise phrase, la carte devient
+    # incompréhensible : ubm-0219 affichait une phrase sur « Euphoria » au-
+    # dessus d'une fiche « Empathie ». On ne la corrige QUE d'après le
+    # transcript, jamais de mémoire.
+    if "citation" in fix and doc.get("quote") != fix["citation"]:
+        changes.append(Change(field="quote", before=doc.get("quote"),
+                              after=fix["citation"]))
+        doc["quote"] = fix["citation"]
     if "creator" in fix and doc.get("creator") != fix["creator"]:
         changes.append(Change(field="creator", before=doc.get("creator"),
                               after=fix["creator"]))

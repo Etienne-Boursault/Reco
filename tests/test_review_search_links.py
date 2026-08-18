@@ -388,10 +388,21 @@ def test_declared_drift_is_still_real():
     """Une divergence déclarée qui a disparu doit sortir de la liste, sinon
     la liste devient un cimetière qu'on cesse de lire.
 
-    La liste est vide aujourd'hui ; le test reste, et redeviendra actif le jour
-    où une divergence sera déclarée. C'est le paramétrage qui porte la charge :
-    il ne produit aucun cas tant que `_EXPECTED_DRIFT` est vide.
+    CE TEST N'AVAIT AUCUN CORPS jusqu'au 2026-08-18 : rien qu'une docstring,
+    donc vert par construction et incapable de rougir. Il gonflait le compte
+    et laissait croire qu'une propriété était vérifiée. La charge était
+    déléguée au test paramétré ci-dessous, lui-même sans aucun cas tant que
+    `_EXPECTED_DRIFT` est vide — personne ne vérifiait donc rien.
+
+    L'assertion porte désormais sur ce que la liste PRÉTEND : chaque
+    divergence déclarée doit désigner un libellé qui existe encore. Elle
+    échoue le jour où l'un disparaît, et c'est exactement l'oubli qu'on
+    craint.
     """
+    inconnus = sorted(set(_EXPECTED_DRIFT) - set(_SHARED))
+    assert not inconnus, (
+        f"Divergence(s) déclarée(s) pour un libellé qui n'existe plus : "
+        f"{inconnus}. Retire-les de `_EXPECTED_DRIFT`.")
 
 
 @pytest.mark.parametrize("label", sorted(_EXPECTED_DRIFT))

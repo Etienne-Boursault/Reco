@@ -27,10 +27,9 @@ def test_chaque_correction_porte_sa_justification():
         assert fix.get("pourquoi"), rid
         assert len(fix["pourquoi"]) > 40, rid
         assert fix.get("attendu"), f"{rid} : sans `attendu`, aucun garde-fou"
-        assert any(k in fix for k in
-                   ("types", "liens", "creator", "titre", "recommande_par",
-                    "ajouter_liens", "retirer_liens", "retirer_alias",
-                    "retirer_external_ids")), rid
+        # La liste vient du MODULE : la recopier ici la ferait diverger, et
+        # une correction portant une opération récente passerait pour vide.
+        assert any(k in fix for k in fra.CLES_EFFET), rid
 
 
 def test_aucune_correction_ne_produit_un_type_vide():

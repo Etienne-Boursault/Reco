@@ -366,3 +366,53 @@ describe('servirFichier — méthodes et types', () => {
     },
   );
 });
+
+/**
+ * La fenêtre du REDÉPLOIEMENT.
+ *
+ * `fichierPour` fait son propre `stat`, puis `servirFichier` en fait un
+ * second. Entre les deux, l'hébergeur peut avoir remplacé `dist/`. Un
+ * `statSync` nu y levait `ENOENT` — et une exception levée dans l'écouteur de
+ * `http.createServer` devient un `uncaughtException` que `server.mjs`
+ * n'intercepte pas : le processus s'arrête, donc le site entier tombe.
+ *
+ * Les protections du module ne couvraient que le FLUX de lecture, jamais le
+ * `stat` qui le précède (relevé par la revue de code du 2026-08-18).
+ */
+describe('servirFichier — le fichier disparaît entre les deux stats', () => {
+  function fauxResSimple() {
+    const res = new PassThrough() as PassThrough & {
+      writeHead: () => void; getHeader: () => undefined;
+    };
+    res.writeHead = () => {};
+    res.getHeader = () => undefined;
+    res.resume();
+    return res;
+  }
+
+  it('ne LÈVE pas — sinon le processus entier s’arrête', () => {
+    const res = fauxResSimple();
+    expect(() => servirFichier(
+      { method: 'GET', headers: {} } as never, res as never,
+      path.join(racine, 'disparu-entre-temps.html'),
+    )).not.toThrow();
+  });
+
+  it('rend `false`, pour que l’appelant retombe sur le gestionnaire', () => {
+    const res = fauxResSimple();
+    const servi = servirFichier(
+      { method: 'GET', headers: {} } as never, res as never,
+      path.join(racine, 'disparu-entre-temps.html'),
+    );
+    expect(servi).toBe(false);
+  });
+
+  it('rend `true` quand le fichier est bien là — sans quoi la garde ci-dessus dirait toujours vrai', () => {
+    const res = fauxResSimple();
+    const servi = servirFichier(
+      { method: 'HEAD', headers: {} } as never, res as never,
+      path.join(racine, 'index.html'),
+    );
+    expect(servi).toBe(true);
+  });
+});

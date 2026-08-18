@@ -13,6 +13,7 @@ import urllib.error
 import pytest
 
 from link_check import (
+    PAGE_VIDE_ATTENDUE,
     FetchOutcome,
     ProbeResult,
     _make_ssl_context,
@@ -327,3 +328,49 @@ def test_fetch_via_urllib_tronque_le_message_derreur(monkeypatch):
 # ---------------------------------------------------------------------------
 def test_make_ssl_context_utilise_certifi():
     assert isinstance(_make_ssl_context(), ssl.SSLContext)
+
+
+# ---------------------------------------------------------------------------
+# Les hôtes qui servent une page VIDE à un client automatisé
+#
+# Le verdict « page sans titre » est juste dans le cas général — il démasque
+# les identifiants inventés — mais il se retourne contre nous chez les hôtes
+# qui refusent tout simplement de servir un robot. Une passe sur les 3241 URL
+# du corpus, le 2026-08-18, a déclaré 282 liens morts, dont 280 IMDb tous
+# valides. Un rapport où 99 % des morts sont faux ne se lit plus, et les deux
+# vrais s'y perdent.
+# ---------------------------------------------------------------------------
+def test_imdb_page_vide_nest_pas_declare_mort():
+    """IMDb répond 202 avec un corps vide à tout client non navigateur."""
+    r = classify("https://www.imdb.com/title/tt0110922/",
+                    FetchOutcome(202, "<html><body></body></html>"))
+    assert r.verdict == "unknown"
+
+
+def test_pluto_page_vide_nest_pas_declare_mort():
+    """Rendu entièrement côté client : le titre n'est jamais dans le HTML."""
+    r = classify("https://pluto.tv/fr/on-demand/series/600e8089",
+                    FetchOutcome(200, "<html><body></body></html>"))
+    assert r.verdict == "unknown"
+
+
+def test_un_hote_ORDINAIRE_sans_titre_reste_mort():
+    """C'est la moitié qui protège : sans elle, on aurait remplacé un faux
+    positif par un faux négatif, et les identifiants inventés passeraient."""
+    r = classify("https://exemple-quelconque.fr/page",
+                    FetchOutcome(200, "<html><body></body></html>"))
+    assert r.verdict == "dead"
+
+
+def test_un_hote_a_page_vide_AVEC_titre_reste_vivant():
+    """L'exception ne doit pas aveugler : quand le titre est là, on le lit."""
+    r = classify("https://www.imdb.com/title/tt0110922/",
+                    FetchOutcome(200, "<html><title>Léon</title></html>"))
+    assert r.verdict == "alive" and r.title == "Léon"
+
+
+def test_les_hotes_a_page_vide_sont_ecrits_sans_www():
+    """`host_in` compare le host nu : un « www. » ici rendrait l'entrée
+    inatteignable, et la garde muette."""
+    for h in PAGE_VIDE_ATTENDUE:
+        assert not h.startswith("www."), h

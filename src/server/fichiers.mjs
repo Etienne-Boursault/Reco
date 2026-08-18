@@ -116,13 +116,29 @@ export function politiqueCache(chemin) {
  * processus, et une protection jamais exercée n'est pas une protection. Les
  * provoquer autrement demanderait de faire disparaître un fichier au milieu de
  * sa propre lecture.
+ *
+ * Cette protection ne couvrait QUE le flux de lecture, pas le `stat` qui le
+ * précède — alors que la fenêtre de disparition s'ouvre dès `fichierPour`,
+ * qui fait son propre `stat`. Un `statSync` nu y levait `ENOENT`, et une
+ * exception levée dans le écouteur de `http.createServer` devient un
+ * `uncaughtException` que `server.mjs` n'intercepte pas : le processus
+ * s'arrête, donc le site entier tombe. C'est précisément ce qui se passe
+ * pendant un redéploiement, quand l'hébergeur remplace `dist/`.
+ *
+ * @returns `false` si le fichier a disparu entre-temps — à l'appelant de
+ *          retomber sur le gestionnaire Astro, qui répondra 404 proprement.
+ *          `true` quand la réponse a été servie.
  */
 export function servirFichier(req, res, chemin, {
   creerFlux = createReadStream,
   creerCompresseur = () => createGzip({ level: 6 }),
 } = {}) {
   const type = TYPES.get(extname(chemin).toLowerCase()) || 'application/octet-stream';
-  const stat = statSync(chemin);
+  // `throwIfNoEntry: false` plutôt qu'un try/catch : la disparition du fichier
+  // n'est pas une erreur, c'est un changement d'état légitime. On le traite
+  // comme tel — ce n'est plus un fichier statique, le gestionnaire décidera.
+  const stat = statSync(chemin, { throwIfNoEntry: false });
+  if (!stat) return false;
   const etag = empreinte(stat);
   const compressible = COMPRESSIBLE.test(type);
 
@@ -146,7 +162,8 @@ export function servirFichier(req, res, chemin, {
       'Cache-Control': entetes['Cache-Control'],
       ...(compressible ? { Vary: 'Accept-Encoding' } : {}),
     });
-    return res.end();
+    res.end();
+    return true;
   }
 
   const compresser = accepteGzip(req) && compressible && stat.size >= TAILLE_MINI;
@@ -157,7 +174,10 @@ export function servirFichier(req, res, chemin, {
   else entetes['Content-Encoding'] = 'gzip';
 
   res.writeHead(200, entetes);
-  if (req.method === 'HEAD') return res.end();
+  if (req.method === 'HEAD') {
+    res.end();
+    return true;
+  }
 
   const flux = creerFlux(chemin);
   // SANS cet écouteur, une erreur de lecture (fichier supprimé pendant un
@@ -166,8 +186,12 @@ export function servirFichier(req, res, chemin, {
   // propage pas les erreurs : il faut les prendre ici.
   flux.on('error', () => res.destroy());
 
-  if (!compresser) return flux.pipe(res);
+  if (!compresser) {
+    flux.pipe(res);
+    return true;
+  }
   const gz = creerCompresseur();
   gz.on('error', () => res.destroy());
-  return flux.pipe(gz).pipe(res);
+  flux.pipe(gz).pipe(res);
+  return true;
 }

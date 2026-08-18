@@ -55,6 +55,23 @@ OPAQUE_404_HOSTS = frozenset({
     "hbomax.com", "paramountplus.com", "primevideo.com",
 })
 
+#: Hôtes qui servent une page VIDE à un client automatisé — mur anti-robot,
+#: rendu entièrement côté JavaScript, ou les deux. L'absence de titre n'y
+#: signifie donc pas que la ressource est absente : elle signifie qu'on n'a
+#: pas le droit de la lire.
+#:
+#: Sans cette liste, le verdict « page sans titre » se retourne contre nous.
+#: Une passe sur les 3241 URL du corpus, le 2026-08-18, a déclaré 282 liens
+#: morts — dont 280 IMDb, tous parfaitement valides. Un rapport où 99 % des
+#: morts sont faux ne se lit plus, et les deux vrais s'y perdent.
+#:
+#: Ces liens restent VÉRIFIABLES, mais autrement : l'identifiant IMDb se
+#: contrôle via `external_ids.imdb_id` de TMDB, sans jamais toucher le site.
+PAGE_VIDE_ATTENDUE = frozenset({
+    "imdb.com",      # 202 + corps vide pour tout client non navigateur
+    "pluto.tv",      # rendu client intégral
+})
+
 # YouTube place son <title> à ~700 Ko, derrière son bundle JS. Un plafond plus
 # bas ferait passer une page valide pour une coquille vide.
 MAX_BODY_BYTES = 2_500_000
@@ -203,6 +220,9 @@ def classify(url: str, outcome: FetchOutcome) -> ProbeResult:
         return ProbeResult("unknown", f"HTTP {outcome.status}")
     title = page_title(outcome.body)
     if not title:
+        if host_in(url, PAGE_VIDE_ATTENDUE):
+            return ProbeResult("unknown",
+                               f"HTTP {outcome.status} (host qui sert une page vide)")
         # Page servie mais sans titre : coquille vide (playlist supprimée,
         # fiche inexistante). C'est LA signature des identifiants inventés —
         # YouTube répond 200 à n'importe quel ID de playlist bien formé, y

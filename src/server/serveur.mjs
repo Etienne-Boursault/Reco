@@ -25,7 +25,11 @@ export function traiter(handler, racine, req, res) {
   const chemin = METHODES_STATIQUES.has(req.method)
     ? fichierPour(racine, req.url || '/')
     : null;
-  if (chemin) return servirFichier(req, res, chemin);
+  // `servirFichier` rend `false` quand le fichier a disparu entre la
+  // résolution du chemin et sa lecture — la fenêtre qu'ouvre un redéploiement.
+  // On retombe alors sur le gestionnaire, qui répondra 404 ; laisser remonter
+  // l'exception arrêterait le processus, donc tout le site.
+  if (chemin && servirFichier(req, res, chemin)) return undefined;
 
   return handler(req, envelopper(req, res), () => {
     const corps = 'Page introuvable';
