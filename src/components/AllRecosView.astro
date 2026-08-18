@@ -62,7 +62,13 @@ const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
 <div class="wrap">
   {
     titreVisible
-      ? <h1 class="titre-recos">Toutes les recommandations</h1>
+      ? <>
+          <h1 class="titre-recos">Toutes les recommandations</h1>
+          {/* Les cartes sont des <h3>. Sans ce niveau intermediaire, la page
+              saute de h1 a h3 (WCAG 1.3.1) et un lecteur d'ecran annonce une
+              sous-section manquante. Meme motif que /films et /series. */}
+          <h2 class="visually-hidden">Liste des recommandations</h2>
+        </>
       : <h2 class="visually-hidden">Toutes les recommandations</h2>
   }
   {

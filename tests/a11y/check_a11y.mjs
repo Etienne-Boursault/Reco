@@ -42,6 +42,52 @@ function walk(dir, out = []) {
   return out;
 }
 
+/**
+ * Routes declarees `export const partial = true` dans `src/pages`.
+ *
+ * Un partial Astro est emis SANS <html>, <head> ni skip-link : c'est un
+ * fragment injecte dans une page deja chargee, pas un document. Le scanner le
+ * voyait comme une page nue et remontait quatre violations qui n'en sont pas
+ * (releve du 2026-08-18 sur `/[source]/recos-fragment`).
+ *
+ * On les reconnait a leur DECLARATION, jamais a leur nom de fichier : un
+ * nouveau partial est ainsi couvert d'office, tandis qu'une vraie page qui
+ * perdrait son <html> par accident reste attrapee.
+ */
+function routesPartielles() {
+  const racine = join(ROOT, 'src', 'pages');
+  if (!existsSync(racine)) return [];
+  const motifs = [];
+  const parcourir = (dir) => {
+    for (const name of readdirSync(dir)) {
+      const chemin = join(dir, name);
+      if (statSync(chemin).isDirectory()) { parcourir(chemin); continue; }
+      if (!name.endsWith('.astro')) continue;
+      const src = readFileSync(chemin, 'utf8');
+      if (!/^\s*export\s+const\s+partial\s*=\s*true/m.test(src)) continue;
+      // On derive la ROUTE COMPLETE, pas le nom de fichier : un partial nomme
+      // `index.astro` donnerait sinon le motif `/index(/index.html)?$`, qui
+      // exclurait le site entier en silence.
+      const route = relative(racine, chemin)
+        .replace(/\\/g, '/')
+        .replace(/\.astro$/, '')
+        .replace(/\/index$/, '');
+      // Les segments dynamiques (`[source]`, `[...rest]`) valent n'importe
+      // quel segment une fois la route rendue.
+      const motif = route
+        .split('/')
+        .map((seg) => (/^\[.+\]$/.test(seg)
+          ? '[^/]+'
+          : seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+        .join('/');
+      motifs.push(new RegExp(`/${motif}(/index\\.html|\\.html)?$`));
+    }
+  };
+  parcourir(racine);
+  return motifs;
+}
+
+
 /** Extrait toutes les balises img sous forme {raw, attrs}. */
 function extractTags(html, tag) {
   const re = new RegExp(`<${tag}\\b[^>]*>`, 'gi');
@@ -207,9 +253,16 @@ function main() {
     // Ignorer les pages /verifier (internes, noindex — pas du périmètre public).
     // M19 : regex robuste — match `verifier` en fin de path (avec /index.html
     // ou en tant que fichier .html), insensible aux séparateurs Windows.
+    const partiels = routesPartielles();
     const pub = files.filter((f) => {
       const p = f.replace(/\\/g, '/');
-      return !/\/verifier(\/index\.html|\.html)?$/.test(p);
+      if (/\/verifier(\/index\.html|\.html)?$/.test(p)) return false;
+      // Meme forme que l'exclusion ci-dessus, mais pour chaque route
+      // declaree partielle (cf. `routesPartielles`).
+      for (const motif of partiels) {
+        if (motif.test(p)) return false;
+      }
+      return true;
     });
     for (const f of pub) checkHtml(f);
     console.log(`[a11y] ${pub.length} pages HTML scannées.`);
