@@ -662,6 +662,23 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                      "Netflix. TMDB ne credite personne pour cette "
                      "tele-realite, on retire donc sans remplacer."),
     },
+    # --- Solde de la revue utilisateur (2026-08-18) ------------------------
+    "ubm-0265": {
+        "attendu": {"creator": "Non précisé", "title": "Un ours dans le Jura"},
+        "creator": "Franck Dubosc",
+        "pourquoi": ("« Non precise » n'est pas une donnee, c'est un aveu "
+                     "d'echec de l'extraction — et il s'AFFICHE sur la carte. "
+                     "TMDB movie/1210732, deja reference par la reco, credite "
+                     "Franck Dubosc a la realisation."),
+    },
+    "ubm-1611": {
+        "attendu": {"title": "Adèle Fugazi", "creator": "Adel Fugazi"},
+        "titre": "Adel Fugazi",
+        "pourquoi": ("Le titre gardait la graphie fautive apres correction du "
+                     "createur, si bien que la meme reco portait les deux. "
+                     "L'humoriste ecrit son nom « Adel Fugazi » — son site "
+                     "`adelfugazi.fr` et sa page BilletReduc le disent."),
+    },
     # --- Une PLATEFORME n'est pas un createur (2026-08-18) ------------------
     # Quinze recos creditaient leur diffuseur : « Netflix » pour « La Chute
     # de la maison Usher » (Mike Flanagan), « HBO » pour « Silicon Valley ».

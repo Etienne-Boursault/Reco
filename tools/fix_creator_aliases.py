@@ -77,6 +77,34 @@ def alias_roots() -> tuple[Path, ...]:
 
 #: Corrections appliquées. Clé = valeur fautive EXACTE, valeur = forme canonique.
 ALIASES: dict[str, str] = {
+    # --- Relevé du 2026-08-18 : graphies divergentes d'un même nom ---------
+    # Toutes tranchées par une AUTORITÉ, jamais par la majorité : le plus
+    # souvent le lien que la reco porte déjà.
+    #   adelfugazi.fr et billetreduc.com/spectacle-adel-fugazi
+    "Adèle Fugazi": "Adel Fugazi",
+    #   theatredumarais.fr/spectacle/pierre-hillairet — même spectacle
+    #   (« Jour de pluie »), mêmes deux liens que ubm-0506.
+    "Pierre-Hilaire": "Pierre Hillairet",
+    #   blandinelehout.com et fnacspectacles.com/artist/blandine-lehout
+    "Blandine Lehoux": "Blandine Lehout",
+    #   Les deux recos pointent le MÊME ISBN, dont le slug dit « sophie-lambda ».
+    "Sophie Landa": "Sophie Lambda",
+    #   API Deezer, artiste 292 : « disiz ».
+    "Dissiz": "Disiz",
+    #   Article Wikipédia « Rémi Bezançon ».
+    "Rémi Besançon": "Rémi Bezançon",
+    #   Article Wikipédia « Louie Media » — le studio est anglophone.
+    "Louis Média": "Louie Media",
+    #   Roman, pas Romain : l'humoriste s'appelle Roman Frayssinet.
+    "Romain Frayssinet": "Roman Frayssinet",
+    "Thomas N'Gijol": "Thomas Ngijol",
+    "Shirley Soignon": "Shirley Souagnon",
+    #   L'apostrophe fait partie du nom de scène.
+    "Diams": "Diam's",
+    #   Michael Schur, que TMDB et Wikipédia créditent sous son nom complet.
+    "Greg Daniels, Mike Schur": "Greg Daniels, Michael Schur",
+    #   Séparateur : le corpus emploie la virgule six fois contre une.
+    "Kyan Khojandi & Navo": "Kyan Khojandi, Navo",
     "Eleonore Costes": "Éléonore Costes",
     "Nicolas Beguet": "Nicolas Béguet",
     "Swann Perisse": "Swann Périssé",

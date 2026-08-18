@@ -317,8 +317,31 @@ const links = Array.from(linkSeen.values()).slice(0, 6).map((l) => {
       /* URL invalide : pas de logo custom. */
     }
   }
-  const icon =
-    overrideHost && WHITELISTED_ICON_HOSTS.has(overrideHost)
+  /* La page « où regarder » de TMDB vit sur le MÊME hôte que la fiche : les
+   * deux liens recevaient donc le même logo, et 269 cartes affichaient deux
+   * pictogrammes TMDB identiques côte à côte — lus comme un doublon
+   * (retour utilisateur, image #22).
+   *
+   * On lui refuse le logo d'hôte : la carte retombe alors sur le symbole de
+   * NATURE déjà prévu (▶️ pour `streaming`), qui dit ce que le lien fait.
+   *
+   * Le test porte sur l'hôte ET le chemin, sans quoi `youtube.com/watch`
+   * perdrait son logo sur chaque vidéo du corpus.
+   */
+  const estVisionnageTmdb =
+    // `normalizeHost` CONSERVE le `www.` (les icônes sont nommées d'après
+    // l'hôte complet) : on le retire ici pour comparer la marque.
+    normalizeHost(host).replace(/^www\./, '') === 'themoviedb.org' &&
+    (() => {
+      try {
+        return new URL(l.url).pathname.replace(/\/$/, '').endsWith('/watch');
+      } catch {
+        return false;
+      }
+    })();
+  const icon = estVisionnageTmdb
+    ? ''
+    : overrideHost && WHITELISTED_ICON_HOSTS.has(overrideHost)
       ? overrideLogo
       : iconForHost(host);
   // Symbole de repli (utilisé seulement quand `icon` est vide) selon la
