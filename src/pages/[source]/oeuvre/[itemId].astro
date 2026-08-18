@@ -264,13 +264,23 @@ const pageTitle = item.creator
                 href={l.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                title={l.recherche
+                  ? t('work.links.search', { provider: l.label, title: item.title })
+                  : undefined}
+                aria-label={l.recherche
+                  ? t('work.links.search', { provider: l.label, title: item.title })
+                  : undefined}
                 class:list={[
                   'work-link',
                   { indie: l.ethics === 'indie' },
                   { avoid: l.ethics === 'avoid' },
+                  { recherche: l.recherche },
                 ]}
               >
                 {l.label}
+                {l.recherche && (
+                  <span class="work-link-loupe" aria-hidden="true">🔎</span>
+                )}
               </a>
             </li>
           ))}
@@ -386,7 +396,17 @@ const pageTitle = item.creator
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  .work-link {
+  /* Un lien qui mène à une RECHERCHE chez le diffuseur, non à l'œuvre : la
+   loupe et le pointillé le disent avant le clic. Cf. `estRecherche`. */
+.work-link.recherche {
+  border-style: dashed;
+}
+.work-link-loupe {
+  margin-inline-start: 0.35em;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+.work-link {
     display: inline-flex;
     align-items: center;
     padding: 0.35em 0.8em;

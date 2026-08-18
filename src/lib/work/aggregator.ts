@@ -181,7 +181,47 @@ export interface WorkExternalLink {
   label: string;
   url: string;
   ethics?: 'indie' | 'neutral' | 'avoid';
+  /** Le lien mène à une RECHERCHE, pas à l'œuvre — cf. `estRecherche`. */
+  recherche?: boolean;
 }
+
+/**
+ * L'URL mène-t-elle à une recherche plutôt qu'à l'œuvre elle-même ?
+ *
+ * POURQUOI CETTE DISTINCTION EXISTE
+ * TMDB donne le NOM des diffuseurs d'une œuvre, jamais leur lien direct.
+ * `enrich_tmdb.py` construit donc une URL de recherche par diffuseur — un
+ * repli légitime, et souvent le seul possible. Mais la page d'œuvre affichait
+ * ces liens sous le seul nom du diffuseur : le visiteur lisait « Molotov TV »,
+ * cliquait, et tombait sur un formulaire de résultats. Douze fois sur la même
+ * page (relevé le 2026-08-18 : 1601 liens sur 1632, soit 98 %).
+ *
+ * Le défaut n'est pas la recherche — elle rend service — mais l'écart entre ce
+ * que le libellé PROMET et ce que le lien donne. On marque donc, et la page le
+ * dit.
+ */
+export function estRecherche(url: string): boolean {
+  let u: URL;
+  try {
+    u = new URL(url);
+  } catch {
+    return false;
+  }
+  // Un SEGMENT de chemin qui commence par « search » ou « recherche ». Les
+  // treize chemins du corpus tiennent dans cette règle, y compris le
+  // `/cmd/searchOnsite` de Canal+ — d'où l'absence de fin de mot.
+  if (u.pathname.split('/').some((seg) => /^(search|recherche)/i.test(seg))) {
+    return true;
+  }
+  // Sinon, un paramètre qui porte la REQUÊTE. La liste est relevée, pas
+  // devinée : YouTube passe par `/results?search_query=`, sans « search » dans
+  // le chemin. `c` en est volontairement absent — chez Google Play il porte la
+  // catégorie (`?c=movies`), pas la recherche.
+  return ['q', 'query', 'phrase', 'term', 'text', 'search_query', 's'].some(
+    (cle) => u.searchParams.has(cle),
+  );
+}
+
 
 /**
  * H11-1 — Guard contre XSS DOM via les URLs fournies par le pipeline
@@ -215,6 +255,7 @@ export function workExternalLinks(item: ItemLike): WorkExternalLink[] {
       url: w.url,
       ethics:
         w.ethics === 'indie' || w.ethics === 'avoid' ? w.ethics : 'neutral',
+      recherche: estRecherche(w.url),
     });
   }
   const ext = item.externalIds ?? {};

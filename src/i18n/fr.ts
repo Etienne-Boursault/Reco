@@ -164,6 +164,11 @@ export const fr = {
   'work.description.mention.one': 'Mentionnée dans le podcast {source}.',
   'work.description.mention.many': 'Mentionnée {count} fois dans le podcast {source}.',
   'work.links.a11y': 'Liens externes',
+  // Ces liens ouvrent une RECHERCHE chez le diffuseur : TMDB donne son nom,
+  // jamais l'adresse directe de l'œuvre. Le dire évite de promettre au
+  // visiteur une destination que le lien ne tient pas.
+  'work.links.search': 'Chercher « {title} » sur {provider}',
+  'work.links.searchMark': 'recherche',
   'work.heading.mention.one': 'Mention dans le podcast',
   'work.heading.mention.many': '{count} mentions dans le podcast',
   'work.heading.similar': 'Du même créateur',
