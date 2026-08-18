@@ -65,6 +65,24 @@
       "kind": "streaming",
       "label": "Spotify — page artiste",
       "url": "https://open.spotify.com/artist/5blvB6N3OACeH0gJL9BRqf"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/artist/ino-casablanca/1642969481"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/ino-casablanca/15442198"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/channel/UCCVs1sXg_qlDwYhub1-J_5Q"
     }
   ],
   "quote": "Inno Casablanca ! C'est de la musique !",
@@ -72,7 +90,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:38:15",
-  "title": "Inno Casablanca",
+  "title": "Ino Casablanca",
   "transcriptSource": "youtube",
   "types": [
     "artiste",

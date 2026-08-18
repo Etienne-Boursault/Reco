@@ -41,6 +41,30 @@
       "kind": "info",
       "label": "AlloCiné — le film",
       "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=275503.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/122899792"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/je-ne-sais-pas-si-cest-tout-le-monde-bande-originale-du-film/1491462931"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/je-ne-sais-pas-si-cest-tout-le-monde-vincent-delerm/kz8pqmjfvrn8a"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/playlist?list=OLAK5uy_kEpSOahXs_vWTJDbobXsQ2Jo2IAUXSAbY"
     }
   ],
   "quote": "Je recommande Vincent Delerme, la BO du film qu'il a fait.",
@@ -48,7 +72,7 @@
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:54:19",
-  "title": "Vincent Delerme",
+  "title": "Vincent Delerm",
   "transcriptSource": "youtube",
   "types": [
     "album"

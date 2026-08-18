@@ -50,9 +50,17 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         ),
     },
     "ubm-1349": {
-        "attendu": {"types": ["autre", "musique"]},
+        # La garde décrit l'état D'ORIGINE, pas celui d'arrivée : une entrée
+        # accrochée à son propre résultat ne pourrait plus jamais agir, et ne
+        # documenterait plus rien de reproductible.
+        "attendu": {"types": ["autre", "musique"], "title": "Vincent Delerme"},
         "types": ["album"],
         "creator": "Vincent Delerm",
+        # Le CREATEUR portait deja la bonne graphie — l'alias « Vincent
+        # Delherme » etait corrige de longue date — mais le TITRE gardait
+        # « Delerme ». La meme carte affichait donc les deux orthographes.
+        # Releve pendant la passe musicale du 2026-08-18.
+        "titre": "Vincent Delerm",
         "pourquoi": (
             "« Je recommande Vincent Delerm, la BO du film qu'il a fait » — "
             "c'est une bande originale, donc un album (le lien Spotify pointe "
@@ -699,6 +707,49 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
             "« Haagen-Dazs » est la piste 2 : imprecision du locuteur, qui "
             "parle de la maquette qu'il venait d'enregistrer."
         ),
+    },
+    "ubm-1122": {
+        "attendu": {"title": "George Ka"},
+        "retirer_external_ids": ["deezer"],
+        "ajouter_liens": [{"label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral",
+                           "url": "https://www.deezer.com/artist/76517302"}],
+        "pourquoi": (
+            "`externalIds.deezer` valait `track/1769065537`, qui est « I Went "
+            "Hunting » de George EZRA — pas George Ka. Un identifiant faux ne "
+            "s'affiche nulle part, et c'est ce qui le rend dangereux : une "
+            "passe d'enrichissement peut le promouvoir en lien visible des "
+            "mois plus tard. Trouve par l'agent du lot 4, puis confirme par un "
+            "audit des 47 identifiants Deezer et Spotify du corpus — c'etait "
+            "le seul faux. "
+            "Le bon artiste est `artist/76517302` (5231 auditeurs), que "
+            "corroborent le Spotify et le Qobuz deja poses sur la reco."
+        ),
+    },
+    # --- Titres revele fautifs par le CONSENSUS des plateformes ------------
+    # Trouves pendant la passe musicale du 2026-08-18 : quand Deezer, Spotify,
+    # Apple Music, Qobuz et YouTube Music renvoient tous la MEME graphie et
+    # qu'elle differe du titre de la reco, c'est le titre qui a tort. Aucune de
+    # ces corrections ne repose sur une seule source.
+    "ubm-0429": {
+        "attendu": {"title": "SpiderZ", "creator": "SpiderZ"},
+        "titre": "Spider ZED",
+        "creator": "Spider ZED",
+        "pourquoi": ("Apple Music, Qobuz et YouTube Music ecrivent tous "
+                     "« Spider ZED ». Le titre ET le createur portaient la "
+                     "meme graphie fautive."),
+    },
+    "ubm-1460": {
+        "attendu": {"title": "Inno Casablanca"},
+        "titre": "Ino Casablanca",
+        "pourquoi": ("Un seul N : Deezer, Spotify, Apple Music, Qobuz et "
+                     "YouTube Music ecrivent « Ino Casablanca »."),
+    },
+    "ubm-2340": {
+        "attendu": {"title": "Aliosha Schneider"},
+        "titre": "Aliocha Schneider",
+        "pourquoi": ("Aliocha avec un C : Apple Music, Qobuz et YouTube Music "
+                     "s'accordent. « Aliosha » est une restitution phonetique."),
     },
     # --- Solde de la revue utilisateur (2026-08-18) ------------------------
     "ubm-0265": {

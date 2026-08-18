@@ -52,10 +52,18 @@ def test_corrige_le_type_dune_piece_de_theatre():
 
 
 def test_corrige_type_ET_orthographe_du_createur():
-    doc = _doc("ubm-1349", types=["autre", "musique"], creator="Vincent Delerme")
+    """Trois champs d'un coup, et la garde porte sur les trois.
+
+    Le TITRE fait partie de l'état attendu depuis le 2026-08-18 : il portait
+    lui aussi « Delerme » alors que le créateur était déjà corrigé, si bien que
+    la même carte affichait les deux orthographes.
+    """
+    doc = _doc("ubm-1349", types=["autre", "musique"],
+               creator="Vincent Delerme", title="Vincent Delerme")
     fra.transform(doc)
     assert doc["types"] == ["album"]
     assert doc["creator"] == "Vincent Delerm"
+    assert doc["title"] == "Vincent Delerm"
 
 
 def test_remplace_les_liens_dun_homonyme():
