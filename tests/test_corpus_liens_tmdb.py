@@ -169,3 +169,45 @@ def test_aucun_watchPage_ne_survit_a_son_identifiant(avec_watchpage):
                  if _ID.search(d["externalIds"]["watchPage"])
                  and d["externalIds"].get("tmdb") is None]
     assert not orphelins, f"watchPage sans identifiant : {orphelins[:5]}"
+
+
+# ===== Recos et items ne doivent pas se contredire (2026-08-18) ============
+def test_reco_et_item_de_meme_titre_designent_la_MEME_fiche():
+    """Les deux collections decrivent la meme oeuvre : elles ne peuvent pas
+    pointer deux fiches TMDB differentes.
+
+    Onze titres se contredisaient le 2026-08-18. Les items sont apparies par
+    TITRE et avaient attrape des homonymes — parfois vieux d'un demi-siecle :
+    l'item « Fantomas » pointait le muet de 1913 tout en creditant Jean
+    Marais, l'item « Vice » pointait « Vice-versa » en creditant Adam McKay.
+    Les recos, corrigees a la main au fil du temps, portaient le bon.
+
+    Cette garde ne presume PAS qui a raison — elle exige seulement l'accord,
+    et laisse un humain trancher le desaccord.
+    """
+    import collections
+
+    def par_titre(collection: str) -> dict[str, set[tuple[str, str]]]:
+        out: dict[str, set[tuple[str, str]]] = collections.defaultdict(set)
+        for chemin in (CONTENT_DIR / collection).rglob("*.json"):
+            try:
+                doc = json.loads(chemin.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if collection == "recos" and doc.get("status") == "discarded":
+                continue
+            ext = doc.get("externalIds") or {}
+            titre = (doc.get("title") or "").strip().lower()
+            if titre and ext.get("tmdb"):
+                out[titre].add((str(ext.get("tmdbType")), str(ext["tmdb"])))
+        return out
+
+    recos, items = par_titre("recos"), par_titre("items")
+    communs = set(recos) & set(items)
+    # Garde anti-test-vide : sans titres communs, le test ne verifie rien.
+    assert len(communs) > 100, f"seulement {len(communs)} titres communs"
+
+    desaccords = [(t, sorted(recos[t]), sorted(items[t]))
+                  for t in communs if recos[t] != items[t]]
+    assert not desaccords, (
+        f"reco et item designent des fiches differentes : {desaccords[:5]}")
