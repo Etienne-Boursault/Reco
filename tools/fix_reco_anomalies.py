@@ -54,6 +54,71 @@ def _replier(valeur: Any) -> str:
     return " ".join(str(valeur).split()).casefold()
 
 
+def _appliquer_liens(doc: dict[str, Any], fix: dict[str, Any],
+                     changes: list[Change]) -> None:
+    """Applique les trois operations sur `links`. Mute `doc` en place.
+
+    L'ORDRE EST LE FOND DU SUJET, et il a longtemps ete faux.
+
+    `ajouter_liens` refuse un lien dont l'hote est deja present — garde
+    saine, sans quoi chaque execution empilerait des doublons. Mais tant
+    que l'ajout passait AVANT le retrait, une entree qui REMPLACE un lien
+    par un autre du meme hote se sabotait : l'ajout etait ignore parce que
+    l'hote fautif etait encore la, puis le retrait emportait l'ancien. La
+    reco perdait un lien au lieu d'en changer, en silence.
+
+    Le cas dort dans la table depuis le 2026-08-18 : `ubm-0766` remplace
+    l'album Deezer 320863417 (« Relax, Take It Easy », un single) par le
+    123558 (« Life in Cartoon Motion », l'album dont parle la citation).
+
+    D'ou l'ordre : redefinition complete, puis RETRAIT, puis AJOUT.
+    """
+    if "liens" in fix:
+        avant = [link.get("url") for link in (doc.get("links") or [])
+                 if isinstance(link, dict)]
+        apres = [link["url"] for link in fix["liens"]]
+        if avant != apres:
+            changes.append(Change(field="links", before=avant, after=apres))
+            doc["links"] = [dict(link) for link in fix["liens"]]
+    # RETRAIT ciblé, par fragment d'URL. Distinct de `liens`, qui redéfinit
+    # toute la liste : quand un seul lien est fautif parmi sept, redéfinir les
+    # sept obligerait à tous les recopier dans la table — verbeux, et surtout
+    # fragile, puisque la moindre évolution des six autres invaliderait
+    # l'entrée sans qu'on s'en aperçoive.
+    if "retirer_liens" in fix:
+        garder = [link for link in (doc.get("links") or [])
+                  if not (isinstance(link, dict)
+                          and any(frag in (link.get("url") or "")
+                                  for frag in fix["retirer_liens"]))]
+        if len(garder) != len(doc.get("links") or []):
+            avant = [link.get("url") for link in (doc.get("links") or [])
+                     if isinstance(link, dict)]
+            doc["links"] = garder
+            changes.append(Change(
+                field="links", before=avant,
+                after=[link.get("url") for link in garder
+                       if isinstance(link, dict)]))
+    # AJOUT de liens, sans toucher aux existants. Distinct de `liens`, qui
+    # REDÉFINIT toute la liste : ici on complète une reco à qui il manque une
+    # plateforme, sans risquer d'effacer un lien posé à la main.
+    # Un lien dont l'hôte est DÉJÀ présent n'est jamais ajouté — sinon une
+    # seconde exécution empilerait les doublons.
+    if "ajouter_liens" in fix:
+        existants = list(doc.get("links") or [])
+        hotes = {_hote(link.get("url") or "") for link in existants
+                 if isinstance(link, dict)}
+        ajouts = [dict(link) for link in fix["ajouter_liens"]
+                  if _hote(link["url"]) not in hotes]
+        if ajouts:
+            avant_urls = [link.get("url") for link in existants
+                          if isinstance(link, dict)]
+            doc["links"] = existants + ajouts
+            changes.append(Change(
+                field="links", before=avant_urls,
+                after=[link.get("url") for link in doc["links"]
+                       if isinstance(link, dict)]))
+
+
 def transform(doc: dict[str, Any]) -> list[Change]:
     """Applique la correction curée de cette reco, si l'état d'avant correspond."""
     fix = CORRECTIONS.get(doc.get("id") or "")
@@ -111,32 +176,9 @@ def transform(doc: dict[str, Any]) -> list[Change]:
                               before=doc.get("recommendedBy"),
                               after=fix["recommande_par"]))
         doc["recommendedBy"] = fix["recommande_par"]
-    if "liens" in fix:
-        avant = [link.get("url") for link in (doc.get("links") or [])
-                 if isinstance(link, dict)]
-        apres = [link["url"] for link in fix["liens"]]
-        if avant != apres:
-            changes.append(Change(field="links", before=avant, after=apres))
-            doc["links"] = [dict(link) for link in fix["liens"]]
-    # AJOUT de liens, sans toucher aux existants. Distinct de `liens`, qui
-    # REDÉFINIT toute la liste : ici on complète une reco à qui il manque une
-    # plateforme, sans risquer d'effacer un lien posé à la main.
-    # Un lien dont l'hôte est DÉJÀ présent n'est jamais ajouté — sinon une
-    # seconde exécution empilerait les doublons.
-    if "ajouter_liens" in fix:
-        existants = list(doc.get("links") or [])
-        hotes = {_hote(link.get("url") or "") for link in existants
-                 if isinstance(link, dict)}
-        ajouts = [dict(link) for link in fix["ajouter_liens"]
-                  if _hote(link["url"]) not in hotes]
-        if ajouts:
-            avant_urls = [link.get("url") for link in existants
-                          if isinstance(link, dict)]
-            doc["links"] = existants + ajouts
-            changes.append(Change(
-                field="links", before=avant_urls,
-                after=[link.get("url") for link in doc["links"]
-                       if isinstance(link, dict)]))
+    # Les operations sur `links` sont regroupees : leur ORDRE porte une
+    # subtilite qui merite d'etre lisible d'un coup (cf. `_appliquer_liens`).
+    _appliquer_liens(doc, fix, changes)
     # RETRAIT d'identifiants externes FAUX. Ils ne s'affichent nulle part —
     # et c'est précisément le danger : une passe d'enrichissement peut les
     # promouvoir en lien visible des mois plus tard. Un `externalIds.deezer`
@@ -152,24 +194,6 @@ def transform(doc: dict[str, Any]) -> list[Change]:
                                       before=retires, after=None))
                 if not ids:
                     doc.pop("externalIds", None)
-    # RETRAIT ciblé, par fragment d'URL. Distinct de `liens`, qui redéfinit
-    # toute la liste : quand un seul lien est fautif parmi sept, redéfinir les
-    # sept obligerait à tous les recopier dans la table — verbeux, et surtout
-    # fragile, puisque la moindre évolution des six autres invaliderait
-    # l'entrée sans qu'on s'en aperçoive.
-    if "retirer_liens" in fix:
-        garder = [link for link in (doc.get("links") or [])
-                  if not (isinstance(link, dict)
-                          and any(frag in (link.get("url") or "")
-                                  for frag in fix["retirer_liens"]))]
-        if len(garder) != len(doc.get("links") or []):
-            avant = [link.get("url") for link in (doc.get("links") or [])
-                     if isinstance(link, dict)]
-            doc["links"] = garder
-            changes.append(Change(
-                field="links", before=avant,
-                after=[link.get("url") for link in garder
-                       if isinstance(link, dict)]))
     # RETRAIT d'alias. Un alias FAUX est plus nuisible qu'un alias manquant :
     # c'est lui que lisent les outils d'appariement, et il fait revenir l'erreur
     # à chaque passe. Sur ubm-1547, « bref 2 » a suffi pour attribuer la fiche

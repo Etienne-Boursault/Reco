@@ -462,3 +462,44 @@ def test_la_garde_scalaire_LAISSE_passer_l_etat_attendu(monkeypatch):
     doc = _doc('ubm-1', creator='Graphie attendue')
     assert len(fra.transform(doc)) == 1
     assert doc['creator'] == 'Graphie corrigee'
+
+
+# ===== Ordre des operations sur les liens (2026-08-18) =====================
+def test_remplacer_un_lien_sur_le_MEME_hote_fonctionne_en_une_passe():
+    """`ajouter_liens` refuse un lien dont l'hote est deja present — garde
+    saine, qui empeche d'empiler des doublons a chaque execution.
+
+    Mais tant que l'ajout s'executait AVANT le retrait, une entree qui
+    REMPLACE un lien par un autre du meme hote se sabotait : l'ajout etait
+    ignore (l'hote fautif etait encore la), puis le retrait emportait
+    l'ancien. Resultat net : plus aucun lien de cet hote, et le remplacant
+    jamais pose. La reco perdait un lien au lieu d'en changer.
+
+    Le cas existe dans la table : `ubm-0766` remplace l'album Deezer 320863417
+    (« Relax, Take It Easy », un single) par le 123558 (« Life in Cartoon
+    Motion », l'album dont parle la citation).
+    """
+    doc = {
+        "id": "ubm-0766",
+        "links": [{"url": "https://www.deezer.com/album/320863417", "label": "Deezer"}],
+    }
+    fix = {
+        "retirer_liens": ["deezer.com/album/320863417"],
+        "ajouter_liens": [{"url": "https://www.deezer.com/album/123558",
+                           "label": "Deezer", "kind": "streaming",
+                           "ethics": "neutral"}],
+    }
+    fra._appliquer_liens(doc, fix, [])
+    urls = [lien["url"] for lien in doc["links"]]
+    assert urls == ["https://www.deezer.com/album/123558"], (
+        "le remplacant doit etre pose ET l'ancien retire, en une seule passe")
+
+
+def test_la_garde_anti_doublon_mord_toujours():
+    """Le correctif ci-dessus ne doit pas rouvrir la porte aux doublons : un
+    ajout dont l'hote survit au retrait reste refuse."""
+    doc = {"id": "x", "links": [{"url": "https://www.deezer.com/album/111"}]}
+    fix = {"ajouter_liens": [{"url": "https://www.deezer.com/album/222"}]}
+    fra._appliquer_liens(doc, fix, [])
+    assert [lien["url"] for lien in doc["links"]] == [
+        "https://www.deezer.com/album/111"], "l'hote etait deja present"
