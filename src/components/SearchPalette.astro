@@ -318,14 +318,52 @@ import { t } from '../i18n';
 </script>
 
 <style>
+  /* POURQUOI CES `:global()`
+     -------------------------
+     Les resultats de la palette sont injectes par `innerHTML` (cf. le script
+     ci-dessus). Astro ne les a JAMAIS VUS au moment de compiler : il ne leur
+     pose pas son attribut de portee, et toutes les regles scopees qui les
+     visent restent inertes.
+
+     Le symptome etait visible : les resultats s'affichaient en liste a puces,
+     liens soulignes, sans le moindre espacement — pendant que le cadre, lui,
+     rendu par Astro, etait correctement style. C'est ce qui faisait dire a la
+     relecture du 2026-08-18 que « ca ne ressemble pas au reste du site ».
+
+     Les selecteurs restent ANCRES sous `.palette-shell`, qui est scope : la
+     portee globale ne deborde donc pas du composant.
+
+     CHARTE — cette palette s'en ecartait, signale a la relecture du
+     2026-08-18 : « ca manque un peu d'espacement et de respect de la charte
+     graphique du site ».
+
+     Trois ecarts precis, corriges ici :
+
+     1. Les RAYONS etaient 12px / 4px / 999px la ou le site pose
+        `--radius: 14px`. Un ecart de deux pixels ne se nomme pas, mais il se
+        voit quand la palette se superpose aux cartes.
+
+     2. Les TITRES etaient en corps de texte, alors que tout le site compose
+        ses titres en Bebas Neue capitales (`--font-display`, ADR 0022). La
+        palette ressemblait a un composant importe d'ailleurs.
+
+     3. Les COULEURS DE REPLI divergeaient des vraies valeurs — `#1a1a1f` la
+        ou `--surface` vaut `#17171c`, `#2a2a30` la ou `--muted` vaut
+        `#9a99a3`. Un repli qui ment est pire qu'une absence de repli : il
+        s'active precisement quand on ne regarde pas. Les variables du theme
+        sont desormais seules, comme partout ailleurs.
+
+     L'ESPACEMENT suit une echelle unique, derivee de `--gap`, au lieu des
+     valeurs en rem posees une a une. */
+
   .palette-trigger {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.4rem 0.9rem;
-    background: var(--surface, #1a1a1f);
-    color: var(--text, #fafafa);
-    border: 1px solid var(--muted, #4a4a52);
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid color-mix(in oklab, var(--text) 22%, transparent);
     border-radius: 999px;
     font-size: 0.9rem;
     cursor: pointer;
@@ -333,16 +371,15 @@ import { t } from '../i18n';
   }
   .palette-trigger:hover,
   .palette-trigger:focus-visible {
-    border-color: var(--accent, #fff);
-    outline: 2px solid transparent;
+    border-color: var(--accent);
   }
   .palette-trigger-kbd {
     font-family: ui-monospace, SFMono-Regular, monospace;
     font-size: 0.75rem;
-    color: var(--muted, #9a9aa2);
+    color: var(--muted);
     background: transparent;
-    border: 1px solid var(--muted, #4a4a52);
-    border-radius: 4px;
+    border: 1px solid color-mix(in oklab, var(--text) 22%, transparent);
+    border-radius: 6px;
     padding: 0.05rem 0.35rem;
   }
 
@@ -350,7 +387,8 @@ import { t } from '../i18n';
   .palette-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    backdrop-filter: blur(6px);
     z-index: 9999;
     display: flex;
     align-items: flex-start;
@@ -359,21 +397,23 @@ import { t } from '../i18n';
   }
   .palette-shell {
     width: min(640px, 100%);
-    background: var(--surface, #15151a);
-    color: var(--text, #fafafa);
-    border-radius: 12px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: var(--radius);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
     overflow: hidden;
-    border: 1px solid var(--muted, #2a2a30);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
   }
   .palette-form {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--muted, #2a2a30);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   }
   .palette-input {
     flex: 1;
-    padding: 1rem 1.2rem;
+    /* Plus genereux que les 1rem d'origine : le champ est le point d'entree
+       de la palette, il merite la place d'un champ de recherche. */
+    padding: 1.15rem 1.4rem;
     background: transparent;
     color: inherit;
     font-size: 1.05rem;
@@ -381,67 +421,87 @@ import { t } from '../i18n';
     outline: 0;
     font-family: inherit;
   }
+  .palette-input::placeholder { color: var(--muted); }
   .palette-close {
     background: transparent;
     border: 0;
-    color: var(--muted, #9a9aa2);
+    color: var(--muted);
     font-size: 1.1rem;
-    padding: 0 1rem;
+    padding: 0 1.2rem;
     cursor: pointer;
+    line-height: 1;
   }
   .palette-close:hover,
   .palette-close:focus-visible {
-    color: var(--accent, #fff);
+    color: var(--accent);
   }
   .palette-hint {
     margin: 0;
-    padding: 0.5rem 1.2rem;
+    padding: 0.55rem 1.4rem;
     font-size: 0.78rem;
-    color: var(--muted, #9a9aa2);
-    border-bottom: 1px solid var(--muted, #2a2a30);
+    color: var(--muted);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   }
   .palette-results {
     display: block;
     max-height: 60vh;
     overflow-y: auto;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0.7rem;
   }
-  .palette-empty {
+  .palette-shell :global(.palette-empty) {
     margin: 0;
-    padding: 1rem 1.2rem;
-    color: var(--muted, #9a9aa2);
+    padding: 1.4rem;
+    color: var(--muted);
     font-size: 0.9rem;
   }
-  .palette-group { padding: 0.4rem 0; }
-  .palette-group-title {
-    font-size: 0.72rem;
+  .palette-shell :global(.palette-group) { padding: 0.5rem 0; }
+  .palette-shell :global(.palette-group-title) {
+    /* Comme les intertitres du site : Bebas Neue, capitales, interlettrage. */
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted, #9a9aa2);
+    letter-spacing: 0.06em;
+    color: var(--muted);
     margin: 0;
-    padding: 0.4rem 1.2rem;
+    padding: 0.45rem 1.4rem 0.35rem;
   }
-  .palette-group ul {
+  .palette-shell :global(.palette-group ul) {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .palette-group li a {
+  .palette-shell :global(.palette-group li a) {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
-    padding: 0.6rem 1.2rem;
+    gap: 0.15rem;
+    /* Une cible confortable au doigt : 0.6rem laissait des lignes serrees. */
+    padding: 0.7rem 1.4rem;
     text-decoration: none;
     color: inherit;
   }
-  .palette-group li.is-active,
-  .palette-group li.is-active a {
-    background: var(--accent, #2a2a45);
-    color: var(--accent-text, #fff);
+  .palette-shell :global(.palette-group li a:hover) {
+    background: color-mix(in oklab, var(--text) 6%, transparent);
   }
-  .palette-title { font-weight: 600; font-size: 0.95rem; }
-  .palette-sub { font-size: 0.78rem; color: var(--muted, #9a9aa2); }
-  .palette-group li.is-active .palette-sub { color: inherit; opacity: 0.8; }
+  .palette-shell :global(.palette-group li.is-active),
+  .palette-shell :global(.palette-group li.is-active a) {
+    background: var(--accent);
+    color: var(--accent-text);
+  }
+  .palette-shell :global(.palette-title) {
+    /* Le titre d'une oeuvre s'ecrit ici comme sur sa carte. */
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.15rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .palette-shell :global(.palette-sub) { font-size: 0.78rem; color: var(--muted); }
+  .palette-shell :global(.palette-group li.is-active .palette-sub) {
+    color: inherit;
+    opacity: 0.85;
+  }
 
   :global(body.palette-open) { overflow: hidden; }
 
