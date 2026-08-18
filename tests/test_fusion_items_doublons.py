@@ -477,3 +477,190 @@ def test_palier2_ne_refait_pas_le_travail_du_palier1(tmp_path: Path):
     rapport = fid.executer(items, mentions, apply=True, palier2=True)
     assert rapport["fusions"] == 1, "une seule fusion, pas deux"
     assert len(list(items.glob("*.json"))) == 1
+
+
+# ===== Comptage des mentions (2026-08-18, signale a la relecture) =========
+def test_seules_les_mentions_PUBLIEES_designent_le_survivant(tmp_path: Path):
+    """Le corpus porte 1 799 mentions ecartees pour 1 211 publiees. Les
+    compter revient a choisir le survivant sur des donnees invisibles — et
+    m'a fait annoncer « 11 mentions » pour Breaking Bad quand la page en
+    affiche 4."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    for iid in ("aaa", "bbb"):
+        _ecrire(items, iid, title="X", creator="U",
+                externalIds={"tmdb": 1, "tmdbType": "movie"})
+    def mention(mid, item_id, statut):
+        (mentions / f"{mid}.json").write_text(json.dumps(
+            {"id": mid, "itemId": item_id, "status": statut}), encoding="utf-8")
+    mention("m1", "aaa", "validated")
+    mention("m2", "aaa", "validated")
+    mention("m3", "bbb", "validated")
+    for i in range(5):
+        mention(f"d{i}", "bbb", "discarded")   # bruit : ne doit pas peser
+    fid.executer(items, mentions, apply=True)
+    doc = json.loads(next(items.glob("*.json")).read_text(encoding="utf-8"))
+    assert doc["id"] == "aaa", "2 mentions publiees battent 1 publiee + 5 ecartees"
+
+
+# ===== Palier 3 : createurs qui se recoupent ===============================
+def test_palier3_fusionne_des_listes_PARTIELLES_du_meme_createur(tmp_path: Path):
+    """« Bref » existait en cinq exemplaires, credites « Kyan Khojandi »,
+    « Kyan Khojandi, Navo », « Kyan Khojandi, Alain Chabat »… — des listes
+    partielles de la meme equipe, que le palier 2 refusait parce qu'il exigeait
+    l'egalite stricte."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Bref", creator="Kyan Khojandi", types=["serie"])
+    _ecrire(items, "b", title="BREF", creator="Kyan Khojandi, Navo",
+            types=["autre", "serie"])
+    _ecrire(items, "c", title="Bref", creator="Kyan Khojandi, Alain Chabat",
+            types=["serie"])
+    rapport = fid.executer(items, mentions, apply=True, palier3=True)
+    assert rapport["fusions"] == 1
+    assert len(list(items.glob("*.json"))) == 1
+
+
+def test_palier3_emporte_les_items_SANS_createur_du_meme_groupe(tmp_path: Path):
+    """Un createur absent ne contredit rien — mais seulement si le groupe a
+    deja un noyau prouve par ailleurs."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Bref", creator="Kyan Khojandi", types=["serie"])
+    _ecrire(items, "b", title="Bref", creator="Kyan Khojandi, Navo", types=["serie"])
+    _ecrire(items, "c", title="Bref", types=["serie"])   # sans createur
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 1
+    assert len(list(items.glob("*.json"))) == 1
+
+
+def test_palier3_refuse_sans_NOYAU_prouve(tmp_path: Path):
+    """Un seul createur renseigne ne prouve aucun recoupement : sans deux
+    listes qui se recoupent, rien n'etablit qu'il s'agit de la meme oeuvre."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Pulsions", creator="Untel", types=["film"])
+    _ecrire(items, "b", title="Pulsions", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+
+
+def test_palier3_refuse_des_createurs_DISJOINTS(tmp_path: Path):
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Panique", creator="Julien Duvivier", types=["film"])
+    _ecrire(items, "b", title="Panique", creator="Autre Personne", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+
+
+def test_palier3_exige_un_TYPE_commun(tmp_path: Path):
+    """Meme titre, meme auteur, mais un livre et son adaptation restent deux
+    oeuvres. Le type les separe."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Untel, Autre", types=["livre"])
+    _ecrire(items, "b", title="X", creator="Untel", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+
+
+def test_palier3_refuse_si_les_identifiants_TMDB_divergent(tmp_path: Path):
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Untel, Autre", types=["film"],
+            externalIds={"tmdb": 111, "tmdbType": "movie"})
+    _ecrire(items, "b", title="X", creator="Untel", types=["film"],
+            externalIds={"tmdb": 222, "tmdbType": "movie"})
+    rapport = fid.executer(items, mentions, apply=True, palier3=True)
+    assert rapport["fusions"] == 0
+    assert len(rapport["refuses"]) == 1
+
+
+def test_palier3_est_DESACTIVE_par_defaut(tmp_path: Path):
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Bref", creator="Kyan Khojandi", types=["serie"])
+    _ecrire(items, "b", title="Bref", creator="Kyan Khojandi, Navo", types=["serie"])
+    assert fid.executer(items, mentions, apply=True)["fusions"] == 0
+
+
+def test_le_survivant_garde_la_liste_de_createurs_la_PLUS_COMPLETE(tmp_path: Path):
+    """« Kyan Khojandi » seul est vrai mais incomplet ; « Kyan Khojandi, Bruno
+    Muschio » l'est davantage. La page doit crediter les deux."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Bref", creator="Kyan Khojandi", types=["serie"])
+    _ecrire(items, "b", title="Bref", creator="Kyan Khojandi, Bruno Muschio",
+            types=["serie"])
+    fid.executer(items, mentions, apply=True, palier3=True)
+    doc = json.loads(next(items.glob("*.json")).read_text(encoding="utf-8"))
+    assert doc["creator"] == "Kyan Khojandi, Bruno Muschio"
+
+
+def test_palier3_ignore_un_item_SANS_TITRE(tmp_path: Path):
+    """Donnee heritee : un item peut n'avoir aucun titre. Il ne peut alors
+    rejoindre aucun groupe — le regrouper sous la chaine vide melangerait
+    des oeuvres sans rapport."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="", creator="Untel", types=["film"])
+    _ecrire(items, "b", title="", creator="Untel, Autre", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+    assert len(list(items.glob("*.json"))) == 2
+
+
+def test_palier3_ignore_un_titre_UNIQUE(tmp_path: Path):
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Seul", creator="Untel", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+
+
+def test_palier3_refuse_un_createur_PARTIELLEMENT_disjoint(tmp_path: Path):
+    """Trois listes : deux se recoupent, la troisieme non. Le groupe entier
+    est ecarte — on ne fusionne pas « ce qui va » en laissant l'intrus, car
+    rien ne dit lequel des trois est l'intrus."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Alpha, Beta", types=["film"])
+    _ecrire(items, "b", title="X", creator="Alpha", types=["film"])
+    _ecrire(items, "c", title="X", creator="Gamma", types=["film"])
+    assert fid.executer(items, mentions, apply=True, palier3=True)["fusions"] == 0
+
+
+def test_deux_listes_de_createurs_CONCURRENTES_ne_sont_pas_arbitrees(tmp_path: Path):
+    """« Bref » portait « Kyan Khojandi, Alain Chabat » ET « Kyan Khojandi,
+    Bruno Muschio » : deux sur-ensembles du meme noyau, qui ne s'emboitent
+    pas. Prendre l'un revient a trancher au hasard — et le premier jet a
+    retenu Chabat, qui a PRODUIT la serie sans la creer.
+
+    On garde alors le noyau commun, seul fait etabli, et on signale."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="Bref", types=["serie"])           # sans createur
+    _ecrire(items, "b", title="Bref", creator="Kyan Khojandi, Alain Chabat",
+            types=["serie"])
+    _ecrire(items, "c", title="Bref", creator="Kyan Khojandi, Bruno Muschio",
+            types=["serie"])
+    rapport = fid.executer(items, mentions, apply=True, palier3=True)
+    doc = json.loads(next(items.glob("*.json")).read_text(encoding="utf-8"))
+    assert doc["creator"] == "Kyan Khojandi", "le noyau, pas un des deux camps"
+    assert any("createur" in m for m in rapport["a_arbitrer"])
+
+
+def test_un_SEUL_surensemble_est_bien_retenu(tmp_path: Path):
+    """Sans concurrent, la liste la plus complete n'a rien d'arbitraire."""
+    items, mentions = tmp_path / "i", tmp_path / "m"
+    items.mkdir(); mentions.mkdir()
+    _ecrire(items, "a", title="X", creator="Alpha", types=["film"])
+    _ecrire(items, "b", title="X", creator="Alpha, Beta", types=["film"])
+    fid.executer(items, mentions, apply=True, palier3=True)
+    doc = json.loads(next(items.glob("*.json")).read_text(encoding="utf-8"))
+    assert doc["creator"] == "Alpha, Beta"
+
+
+def test_un_createur_present_mais_VIDE_ne_fait_pas_lever():
+    """Donnee heritee : `creator` peut etre une chaine vide ou n'etre porte
+    par aucun perdant. La boucle finale ne trouve alors rien a poser, et doit
+    laisser le survivant tel quel."""
+    survivant = {"id": "a", "title": "X", "types": ["film"], "creator": "Alpha"}
+    perdants = [{"id": "b", "title": "X", "types": ["film"], "creator": ""}]
+    fid.fusionner(survivant, perdants)
+    assert survivant["creator"] == "Alpha"

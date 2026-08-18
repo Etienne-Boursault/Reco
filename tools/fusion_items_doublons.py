@@ -157,6 +157,40 @@ def partitionner(cle: tuple[str, str],
     return list(parts.values())
 
 
+def noms_createur(item: dict[str, Any]) -> set[str]:
+    """Les noms cites par `creator`, normalises.
+
+    Le champ est une chaine libre : « Kyan Khojandi, Navo », « Baptiste
+    Lecaplain, Florent Bernard, Xavier Maingon ». On la decoupe pour pouvoir
+    comparer des listes PARTIELLES de la meme equipe.
+    """
+    brut = (item.get("creator") or "").replace("&", ",")
+    return {normaliser(x) for x in brut.split(",") if normaliser(x)}
+
+
+def _noyau_commun(groupe: Sequence[dict[str, Any]]) -> set[str]:
+    """Les noms que TOUTES les listes renseignees partagent.
+
+    Vide s'il y a moins de deux listes renseignees : un seul createur ne
+    prouve aucun recoupement, et fusionner sur cette base reviendrait a se
+    fier au seul titre.
+    """
+    listes = [n for n in (noms_createur(d) for d in groupe) if n]
+    if len(listes) < 2:
+        return set()
+    return set.intersection(*listes)
+
+
+def _types_compatibles(groupe: Sequence[dict[str, Any]]) -> bool:
+    """Tous les items partagent-ils au moins un type ?
+
+    Meme titre et meme auteur ne suffisent pas : un livre et son adaptation
+    resteraient deux oeuvres. Le type les separe.
+    """
+    ensembles = [set(d.get("types") or []) for d in groupe]
+    return bool(set.intersection(*ensembles)) if ensembles else False
+
+
 def choisir_survivant(groupe: Sequence[dict[str, Any]],
                       mentions: dict[str, int]) -> dict[str, Any]:
     """Le mieux etabli l'emporte : celui que le plus de mentions designent.
@@ -182,16 +216,93 @@ def _fusionner_listes(survivant: dict, perdant: dict, champ: str,
         survivant[champ] = a
 
 
+def _libelle_du_noyau(docs: Sequence[dict[str, Any]], noyau: set[str]) -> str:
+    """Ecrit le noyau avec l'orthographe des libelles d'origine.
+
+    Un item porte peut-etre exactement le noyau — on prend alors sa chaine
+    telle quelle. Sinon on la reconstruit fragment par fragment, en gardant
+    la casse et les accents tels qu'ils ont ete saisis : « Kyan Khojandi »
+    et non « kyan khojandi ».
+    """
+    for doc in docs:
+        if noms_createur(doc) == noyau and doc.get("creator"):
+            return doc["creator"]
+    fragments: dict[str, str] = {}
+    for doc in docs:
+        brut = (doc.get("creator") or "").replace("&", ",")
+        for morceau in brut.split(","):
+            cle = normaliser(morceau)
+            if cle in noyau and cle not in fragments:
+                fragments[cle] = morceau.strip()
+    return ", ".join(fragments[c] for c in sorted(noyau) if c in fragments)
+
+
+def _completer_createur(survivant: dict[str, Any],
+                        perdants: Sequence[dict[str, Any]],
+                        a_arbitrer: list[str]) -> None:
+    """Retient la liste de createurs la plus complete — si elle est unique.
+
+    Une liste qui CONTIENT celle du survivant n'est pas un desaccord, c'est un
+    complement : « Kyan Khojandi » face a « Kyan Khojandi, Bruno Muschio ».
+
+    Mais « Bref » portait AUSSI « Kyan Khojandi, Alain Chabat ». Deux
+    sur-ensembles du meme noyau qui ne s'emboitent pas : en retenir un revient
+    a trancher au hasard, et le premier jet a retenu Chabat — qui a PRODUIT la
+    serie sans la creer. On garde alors le noyau, seul fait etabli, et on
+    signale le cas pour arbitrage humain.
+    """
+    tous = [survivant, *perdants]
+    listes = [n for n in (noms_createur(d) for d in tous) if n]
+    if not listes:
+        return
+    # Les listes maximales : celles qu'aucune autre ne contient strictement.
+    maximales = [n for n in listes if not any(m > n for m in listes)]
+    distinctes = {frozenset(n) for n in maximales}
+    if len(distinctes) > 1:
+        noyau = set.intersection(*listes)
+        if not noyau:
+            # Aucun nom commun : ce n'est plus une liste tronquee mais un
+            # desaccord franc. La regle « le survivant n'est jamais ecrase »
+            # s'applique, et ecrire le noyau vide effacerait son createur.
+            a_arbitrer.append(
+                f"« {survivant.get('title')} » : createurs sans nom commun "
+                f"{[sorted(n) for n in distinctes]}")
+            return
+        a_arbitrer.append(
+            f"« {survivant.get('title')} » : createurs concurrents "
+            f"{[sorted(n) for n in distinctes]}, noyau conserve {sorted(noyau)}")
+        survivant["creator"] = _libelle_du_noyau(tous, noyau)
+        return
+    # Un seul ensemble maximal : la liste la plus complete n'a rien
+    # d'arbitraire. Elle vient forcement d'un document qui la porte — un
+    # ensemble non vide implique un `creator` non vide — d'ou l'absence de
+    # repli ici : en ecrire un serait du code inatteignable.
+    survivant["creator"] = _libelle_du_noyau(tous, maximales[0])
+
+
 def fusionner(survivant: dict[str, Any],
-              perdants: Sequence[dict[str, Any]]) -> None:
+              perdants: Sequence[dict[str, Any]],
+              a_arbitrer: list[str] | None = None) -> None:
     """Verse dans `survivant` ce que les perdants ont en plus. Mute en place.
 
     Le survivant n'est JAMAIS ecrase : on ne comble que ses manques. Un champ
     present des deux cotes et divergent est un desaccord qu'un script n'a pas
     a arbitrer.
     """
+    a_arbitrer = a_arbitrer if a_arbitrer is not None else []
+    # Un createur plus COMPLET remplace celui du survivant — mais seulement
+    # s'il le CONTIENT. « Kyan Khojandi » face a « Kyan Khojandi, Bruno
+    # Muschio » n'est pas un desaccord, c'est une liste tronquee, et la page
+    # doit crediter toute l'equipe.
+    #
+    # Deux noms qui ne s'emboitent pas restent un desaccord, qu'un script n'a
+    # pas a trancher : la regle « le survivant n'est jamais ecrase » tient
+    # pour eux.
+    _completer_createur(survivant, perdants, a_arbitrer)
     for perdant in perdants:
-        for champ in ("creator", "year", "recommendedBy"):
+        # `creator` est EXCLU : `_completer_createur` s'en charge, et le
+        # combler ici ecraserait le noyau qu'elle vient de trancher.
+        for champ in ("year", "recommendedBy"):
             if survivant.get(champ) in (None, "") and perdant.get(champ) not in (None, ""):
                 survivant[champ] = perdant[champ]
         _fusionner_listes(survivant, perdant, "types", lambda x: x)
@@ -232,7 +343,8 @@ def _imposer_titre(cle: tuple[str, str], item: dict[str, Any]) -> bool:
 
 
 def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
-             palier2: bool = False) -> dict[str, Any]:
+             palier2: bool = False,
+             palier3: bool = False) -> dict[str, Any]:
     """Fusionne les groupes prouves. Renvoie un rapport chiffre."""
     items: dict[str, tuple[Path, dict]] = {}
     for chemin in sorted(items_dir.rglob("*.json")):
@@ -251,7 +363,11 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
         except (OSError, json.JSONDecodeError):
             continue
         mentions[chemin.name] = (chemin, doc)
-        compte[doc.get("itemId") or ""] += 1
+        # Seules les mentions PUBLIEES designent le survivant : le corpus en
+        # porte 1 799 ecartees pour 1 211 publiees, et les compter reviendrait
+        # a trancher sur des donnees que personne ne voit.
+        if doc.get("status") != "discarded":
+            compte[doc.get("itemId") or ""] += 1
 
     groupes: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for _, doc in items.values():
@@ -261,6 +377,7 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
 
     fusions = reportees = supprimes = 0
     refuses: list[str] = []
+    a_arbitrer: list[str] = []
     for cle, groupe in sorted(groupes.items()):
         if len(groupe) < 2:
             # Un groupe deja fusionne n'a plus qu'un membre, mais son titre
@@ -280,7 +397,8 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
         for part in parts:
             if len(part) < 2:
                 continue
-            _fusionner_partition(cle, part, compte, items, mentions, apply)
+            _fusionner_partition(cle, part, compte, items, mentions, apply,
+                                 a_arbitrer)
             fusions += 1
             supprimes += len(part) - 1
             reportees += _reporter_mentions(part, compte, mentions, apply)
@@ -313,22 +431,64 @@ def executer(items_dir: Path, mentions_dir: Path, *, apply: bool,
                     f"identifiants TMDB divergents {sorted(ids)}")
                 continue
             _fusionner_partition(("titre", "createur"), part, compte, items,
-                                 mentions, apply)
+                                 mentions, apply, a_arbitrer)
+            fusions += 1
+            supprimes += len(part) - 1
+            reportees += _reporter_mentions(part, compte, mentions, apply)
+
+    if palier3:
+        # Les createurs sont des chaines libres, souvent PARTIELLES : « Bref »
+        # existait en cinq exemplaires credites « Kyan Khojandi », « Kyan
+        # Khojandi, Navo », « Kyan Khojandi, Alain Chabat »… Le palier 2, qui
+        # exige l'egalite stricte, les laissait tous en place.
+        vivants = [d for i, (chemin, d) in items.items() if chemin.exists()]
+        par_titre: dict[str, list[dict]] = defaultdict(list)
+        for doc in vivants:
+            titre = normaliser(doc.get("title") or "")
+            if titre:
+                par_titre[titre].append(doc)
+        for titre, part in sorted(par_titre.items()):
+            if len(part) < 2:
+                continue
+            # `_noyau_commun` est l'intersection de TOUTES les listes
+            # renseignees : elle est vide des qu'une seule est disjointe des
+            # autres. Aucune garde supplementaire n'est donc necessaire — j'en
+            # avais ecrit une, elle etait inatteignable.
+            #
+            # Un item SANS createur rejoint le groupe : son silence ne
+            # contredit rien, des lors que le noyau est prouve par ailleurs.
+            if not _noyau_commun(part):
+                continue
+            if not _types_compatibles(part):
+                refuses.append(f"« {titre} » : aucun type commun")
+                continue
+            ids = {str((d.get("externalIds") or {}).get("tmdb")) for d in part
+                   if (d.get("externalIds") or {}).get("tmdb")}
+            if len(ids) > 1:
+                refuses.append(
+                    f"« {titre} » : identifiants TMDB divergents {sorted(ids)}")
+                continue
+            _fusionner_partition(("titre", "createur-recoupe"), part, compte,
+                                 items, mentions, apply, a_arbitrer)
             fusions += 1
             supprimes += len(part) - 1
             reportees += _reporter_mentions(part, compte, mentions, apply)
 
     for motif in refuses:
         log.warning("REFUS %s", motif)
+    for motif in a_arbitrer:
+        log.warning("A ARBITRER %s", motif)
     return {"fusions": fusions, "items_supprimes": supprimes,
-            "mentions_reportees": reportees, "refuses": refuses}
+            "mentions_reportees": reportees, "refuses": refuses,
+            "a_arbitrer": a_arbitrer}
 
 
-def _fusionner_partition(cle, part, compte, items, mentions, apply):
+def _fusionner_partition(cle, part, compte, items, mentions, apply,
+                         a_arbitrer=None):
     """Fusionne une partition et ecrit le survivant. Renvoie son identifiant."""
     survivant = choisir_survivant(part, compte)
     perdants = [d for d in part if d is not survivant]
-    fusionner(survivant, perdants)
+    fusionner(survivant, perdants, a_arbitrer)
     _imposer_titre(cle, survivant)
     if apply:
         items[survivant["id"]][0].write_text(
@@ -368,6 +528,9 @@ def build_parser() -> argparse.ArgumentParser:
                     "Refuse tout groupe aux titres divergents non justifies.")
     parser.add_argument("--apply", action="store_true",
                         help="ecrit reellement (defaut : simulation)")
+    parser.add_argument("--palier3", action="store_true",
+                        help="fusionne aussi les items dont les listes de "
+                             "createurs se RECOUPENT (listes partielles)")
     parser.add_argument("--palier2", action="store_true",
                         help="fusionne aussi les items de meme titre ET "
                              "meme createur, sans identifiant TMDB")
@@ -380,7 +543,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     # Chemins resolus A L'APPEL : les figer a l'import ferait ecrire les tests
     # dans le vrai corpus (cf. le meme piege dans match_audit/sidecar).
     rapport = executer(common.ITEMS_DIR, common.MENTIONS_DIR,
-                       apply=args.apply, palier2=args.palier2)
+                       apply=args.apply, palier2=args.palier2,
+                       palier3=args.palier3)
     log.info("%d fusion(s), %d item(s) supprime(s), %d mention(s) reportee(s), "
              "%d refus", rapport["fusions"], rapport["items_supprimes"],
              rapport["mentions_reportees"], len(rapport["refuses"]))
