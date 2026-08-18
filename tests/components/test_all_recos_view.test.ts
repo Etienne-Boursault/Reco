@@ -156,7 +156,16 @@ describe('AllRecosView — échappement', () => {
     const html = await render({
       recos: [reco({ title: '<script>alert(1)</script><img src=x onerror=boom>' })],
     });
-    expect(squelette(html)).not.toMatch(/<script/i);
+    // Le composant émet DÉSORMAIS son propre script — celui qui câble le
+    // filtre, hoisté par Astro en `<script src>` sans corps (2026-08-18).
+    // « aucun `<script` » n'est donc plus la bonne assertion : ce qui compte
+    // est qu'aucun script ne porte de CORPS, seul endroit où du texte injecté
+    // pourrait s'exécuter.
+    const scripts = [...squelette(html).matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/gi)];
+    for (const [, attributs, corps] of scripts) {
+      expect(corps.trim(), 'un script à corps est apparu dans la sortie').toBe('');
+      expect(attributs, 'un script sans `src` est apparu').toContain('src=');
+    }
     // `onerror` DOIT être cherché À L'INTÉRIEUR d'une balise : `<` puis aucun
     // `>` avant l'attribut. Sans cette contrainte, l'assertion se déclenche sur
     // le texte échappé `&lt;img src=x onerror=boom&gt;`, qui est inoffensif —

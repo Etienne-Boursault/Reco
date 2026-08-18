@@ -294,64 +294,22 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
 </Layout>
 
 <script>
-  // Helpers de recherche tolérante (normalize / levenshtein / fuzzyMatch)
-  // partagés via src/utils/search.ts pour éviter la duplication entre pages.
+  // Toujours utilises par la grille des EPISODES, plus bas.
   import { fuzzyMatch } from '../utils/search';
-  // Boucle « filtrer les enfants → compter → annoncer », partagée par les
-  // DEUX grilles de cette page (recos et épisodes). Elle y était dupliquée ;
-  // elle vit maintenant dans un module testé (cf. tests/js/test_grid_filter).
-  // C7 : elle ne touche QUE le `textContent` de la région d'annonce, qui
-  // reste dans le DOM — sinon son `aria-live="polite"` serait muet.
   import { applyGridFilter } from '../utils/gridFilter';
   import { chargerFragment } from '../utils/chargerFragment';
+  import { cablerFiltreRecos } from '../utils/filtreRecos';
 
   // --- Filtrage 100 % client : par type (chips) et par texte (fuzzy) -------
   // Câblé DANS UNE FONCTION, et non au chargement : la grille des recos
   // n'existe plus dans le HTML initial (cf. la section « view-all »), elle
   // arrive au premier clic sur l'onglet. Chercher ses éléments trop tôt ne
   // trouverait rien, et le filtre serait mort.
-  let activeType = 'all';
-  let term = '';
-
-  function cablerFiltreRecos() {
-    const grid = document.getElementById('reco-grid');
-    if (!grid) return;
-    const search = document.getElementById('search') as HTMLInputElement | null;
-    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
-    const noresult = document.getElementById('noresult');
-
-    function apply() {
-      applyGridFilter({
-        grid,
-        status: noresult,
-        emptyMessage: 'Aucun résultat.',
-        matches: (card) => {
-          const okType =
-            activeType === 'all' ||
-            (card.dataset.types?.split(',').includes(activeType) ?? false);
-          const okText = !term || fuzzyMatch(term, card.dataset.search ?? '');
-          return okType && okText;
-        },
-      });
-    }
-
-    chips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        activeType = chip.dataset.filter ?? 'all';
-        chips.forEach((c) => {
-          const on = c === chip;
-          c.classList.toggle('is-active', on);
-          c.setAttribute('aria-pressed', String(on));
-        });
-        apply();
-      });
-    });
-
-    search?.addEventListener('input', () => {
-      term = search.value;
-      apply();
-    });
-  }
+  //
+  // La fonction VIT AILLEURS depuis le 2026-08-18 : `AllRecosView` rend la
+  // même interface sans monter ce composant, et Astro n'embarque que les
+  // scripts des composants rendus. Sur `/[source]/recos`, le champ et les
+  // puces existaient donc sans écouteur.
 
   // Bascule entre « Toutes les recos » et « Par épisode ».
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));

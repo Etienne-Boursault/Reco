@@ -95,3 +95,17 @@ const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
     aria-atomic="true"
   ></p>
 </div>
+
+<script>
+  // Cette page rend le champ `#search`, les puces `.chip` et la grille
+  // `#reco-grid` — mais le code qui les anime vivait dans `SourceCatalog`,
+  // que cette page ne monte pas. Astro n'embarque que les scripts des
+  // composants RENDUS : le champ existait donc sans écouteur, et taper dedans
+  // ne filtrait rien (signalé le 2026-08-18).
+  //
+  // La grille est ici présente dès le HTML initial — contrairement à la page
+  // d'accueil, où elle arrive par fragment — donc un simple appel suffit.
+  import { cablerFiltreRecos } from '../utils/filtreRecos';
+
+  cablerFiltreRecos();
+</script>
