@@ -59,6 +59,11 @@ RECOS_DIR: Path = CONTENT_DIR / "recos"
 # — ou l'oubliait. Plusieurs champs (`creator`, `externalIds`) vivent dans les
 # DEUX collections : n'en corriger qu'une désynchronise le corpus.
 ITEMS_DIR: Path = CONTENT_DIR / "items"
+# Les mentions REFERENCENT les items par `itemId` : toute fusion d'items
+# doit reporter ces references, sous peine de laisser des mentions
+# orphelines. La constante vit ici pour que les deux collections se
+# resolvent depuis la meme racine.
+MENTIONS_DIR: Path = CONTENT_DIR / "mentions"
 
 # Sorties propres au pipeline (transcriptions, audio temporaire) — hors src/.
 OUTPUT_DIR: Path = TOOLS_DIR / "output"

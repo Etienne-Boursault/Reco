@@ -61,6 +61,49 @@
       "ethics": "avoid",
       "name": "Amazon Video",
       "url": "https://www.primevideo.com/-/fr/search/?phrase=Rick%20et%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Rick%20and%20Morty"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Rick%20and%20Morty"
     }
+  ],
+  "aliases": [
+    "Rick and Morty"
   ]
 }
