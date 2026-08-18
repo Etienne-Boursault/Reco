@@ -11,7 +11,8 @@
   "episodeGuid": "630baf2b552ddd0013718a16",
   "externalIds": {
     "tmdb": "122228",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/122228-lol-qui-rit-sort/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -52,5 +53,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=LOL",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=LOL",
+      "ethics": "avoid"
+    }
   ]
 }

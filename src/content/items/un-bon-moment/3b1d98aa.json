@@ -2,7 +2,8 @@
   "creator": "James Cameron",
   "externalIds": {
     "tmdb": 597,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/597-titanic/watch?locale=FR"
   },
   "id": "3b1d98aa",
   "schemaVersion": 1,
@@ -10,5 +11,57 @@
   "types": [
     "film"
   ],
-  "year": 1997
+  "year": 1997,
+  "watchProviders": [
+    {
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Titanic",
+      "ethics": "neutral",
+      "name": "Disney Plus"
+    },
+    {
+      "url": "https://tv.apple.com/fr/search?term=Titanic",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://play.google.com/store/search?q=Titanic&c=movies",
+      "ethics": "neutral",
+      "name": "Google Play Movies"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Titanic",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=Titanic",
+      "ethics": "neutral",
+      "name": "YouTube"
+    },
+    {
+      "url": "https://rakuten.tv/fr/search?q=Titanic",
+      "ethics": "neutral",
+      "name": "Rakuten TV"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Titanic",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.pathehome.com/recherche?text=Titanic",
+      "ethics": "neutral",
+      "name": "Pathé Home"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Titanic",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Titanic",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    }
+  ]
 }

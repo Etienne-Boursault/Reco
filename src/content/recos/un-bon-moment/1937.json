@@ -12,7 +12,8 @@
   "episodeGuid": "69a169ac519334f049d06785",
   "externalIds": {
     "tmdb": "60715",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -60,5 +61,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref%202",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Bref%202",
+      "ethics": "neutral"
+    }
   ]
 }

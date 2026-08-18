@@ -15,7 +15,8 @@
   "episodeGuid": "c950798f-1d99-45a5-bed7-b1b0a61ba7ea",
   "externalIds": {
     "tmdb": "132344",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/132344-before-midnight/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -68,5 +69,67 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Before%20Midnight&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Before%20Midnight",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Before%20Midnight",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Before%20Midnight",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Before%20Midnight",
+      "ethics": "indie"
+    }
   ]
 }

@@ -21,7 +21,8 @@
   "externalIds": {
     "instagram": "cedklap",
     "tmdb": "121459",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/121459-salade-grecque/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -81,5 +82,22 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Salade%20grecque",
+      "ethics": "avoid"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Salade%20grecque",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Salade%20grecque",
+      "ethics": "avoid"
+    }
   ]
 }

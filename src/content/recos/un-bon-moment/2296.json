@@ -19,7 +19,8 @@
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
     "tmdb": "89785",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/89785-family-business/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -73,5 +74,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Family%20Business",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Family%20Business",
+      "ethics": "neutral"
+    }
   ]
 }

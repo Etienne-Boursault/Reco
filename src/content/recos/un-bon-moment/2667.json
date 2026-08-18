@@ -13,7 +13,8 @@
   "episodeGuid": "53f7f5ca-929f-42b2-95c5-1d9ebf18f887",
   "externalIds": {
     "tmdb": "200731",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/200731-love-on-the-spectrum/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -72,5 +73,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Love%20on%20the%20Spectrum",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Love%20on%20the%20Spectrum",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -2,7 +2,8 @@
   "creator": "Adam McKay",
   "externalIds": {
     "tmdb": 429197,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/429197-vice/watch?locale=FR"
   },
   "id": "05d956f0",
   "schemaVersion": 1,
@@ -10,5 +11,67 @@
   "types": [
     "film"
   ],
-  "year": 2018
+  "year": 2018,
+  "watchProviders": [
+    {
+      "url": "https://www.molotov.tv/search?q=Vice",
+      "ethics": "neutral",
+      "name": "Molotov TV"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice",
+      "ethics": "avoid",
+      "name": "Cine+ OCS Amazon Channel"
+    },
+    {
+      "url": "https://tv.apple.com/fr/search?term=Vice",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Vice",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Vice",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    },
+    {
+      "url": "https://rakuten.tv/fr/search?q=Vice",
+      "ethics": "neutral",
+      "name": "Rakuten TV"
+    },
+    {
+      "url": "https://www.sooner.fr/recherche?q=Vice",
+      "ethics": "neutral",
+      "name": "Sooner"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Vice",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.pathehome.com/recherche?text=Vice",
+      "ethics": "neutral",
+      "name": "Pathé Home"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Vice",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Vice",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    },
+    {
+      "url": "https://boutique.arte.tv/search?q=Vice",
+      "ethics": "indie",
+      "name": "ARTE Boutique"
+    }
+  ]
 }

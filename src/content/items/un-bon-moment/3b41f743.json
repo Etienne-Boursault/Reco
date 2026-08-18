@@ -2,12 +2,20 @@
   "creator": "Wallerbridge",
   "externalIds": {
     "tmdb": 87393,
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/87393-run/watch?locale=FR"
   },
   "id": "3b41f743",
   "schemaVersion": 1,
   "title": "Run",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Run",
+      "ethics": "avoid",
+      "name": "Lionsgate+ Amazon Channels"
+    }
   ]
 }

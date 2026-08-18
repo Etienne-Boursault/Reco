@@ -2,12 +2,20 @@
   "creator": "Jonah Hill",
   "externalIds": {
     "tmdb": 616825,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/616825-oil-capital-underground-the-genesis-evolution-of-punk-rock-in-tulsa-late-70-s-to-mid-90-s/watch?locale=FR"
   },
   "id": "288c8ce7",
   "schemaVersion": 1,
   "title": "Mid 90's",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://duckduckgo.com/?q=Mid%2090%27s%20Bloodstream",
+      "ethics": "neutral",
+      "name": "Bloodstream"
+    }
   ]
 }

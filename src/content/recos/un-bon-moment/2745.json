@@ -20,7 +20,8 @@
   "externalIds": {
     "instagram": "annaapter",
     "tmdb": "137117",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/137117-ce-sera-peut-etre-mieux-apres/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -74,5 +75,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=%C3%87a%20sera%20%28peut-%C3%AAtre%29%20mieux%20apr%C3%A8s",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=%C3%87a%20sera%20%28peut-%C3%AAtre%29%20mieux%20apr%C3%A8s",
+      "ethics": "avoid"
+    }
   ]
 }

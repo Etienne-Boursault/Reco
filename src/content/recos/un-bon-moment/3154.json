@@ -21,7 +21,8 @@
   "externalIds": {
     "instagram": "nathanfielder",
     "tmdb": "114655",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/114655-the-curse/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -80,5 +81,27 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Paramount Plus",
+      "url": "https://www.paramountplus.com/fr/search/?q=The%20Curse",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount+ Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Curse",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Paramount Plus Apple TV Channel",
+      "url": "https://tv.apple.com/fr/search?term=The%20Curse",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Paramount Plus Premium",
+      "url": "https://www.paramountplus.com/fr/search/?q=The%20Curse",
+      "ethics": "neutral"
+    }
   ]
 }

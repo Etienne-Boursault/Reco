@@ -3,7 +3,8 @@
   "externalIds": {
     "instagram": "barthelemymaurice",
     "tmdb": 59163,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/59163-papa/watch?locale=FR"
   },
   "id": "0cbdddeb",
   "schemaVersion": 1,
@@ -12,5 +13,37 @@
     "film",
     "autre"
   ],
-  "year": 2023
+  "year": 2023,
+  "watchProviders": [
+    {
+      "url": "https://tv.apple.com/fr/search?term=Papa",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papa",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Papa",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Papa",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Papa",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Papa",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    }
+  ]
 }

@@ -19,7 +19,8 @@
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
     "tmdb": "10531",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/10531-death-and-the-maiden/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -94,5 +95,22 @@
   "types": [
     "film"
   ],
-  "year": 1994
+  "year": 1994,
+  "watchProviders": [
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=La%20jeune%20fille%20et%20la%20mort",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=La%20jeune%20fille%20et%20la%20mort",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=La%20jeune%20fille%20et%20la%20mort",
+      "ethics": "indie"
+    }
+  ]
 }

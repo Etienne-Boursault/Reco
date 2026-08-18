@@ -14,7 +14,8 @@
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "979",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/979-irreversible/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -101,5 +102,72 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "MUBI",
+      "url": "https://mubi.com/fr/films?q=Irr%C3%A9versible",
+      "ethics": "indie"
+    },
+    {
+      "label": "Molotov TV",
+      "url": "https://www.molotov.tv/search?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Irr%C3%A9versible&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Irr%C3%A9versible",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Irr%C3%A9versible",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Irr%C3%A9versible",
+      "ethics": "indie"
+    }
   ]
 }

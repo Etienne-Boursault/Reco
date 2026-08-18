@@ -14,7 +14,8 @@
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "1290159",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1290159-a-house-of-dynamite/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -94,5 +95,17 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=House%20of%20Dynamite",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=House%20of%20Dynamite",
+      "ethics": "neutral"
+    }
   ]
 }

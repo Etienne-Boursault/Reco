@@ -19,7 +19,8 @@
   "episodeGuid": "68ea7880de9a2a62c42248f5",
   "externalIds": {
     "tmdb": "8514",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/8514-rupaul-s-drag-race/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -82,5 +83,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "WOW Presents Plus",
+      "url": "https://duckduckgo.com/?q=Drag%20Race%20WOW%20Presents%20Plus",
+      "ethics": "neutral"
+    }
   ]
 }

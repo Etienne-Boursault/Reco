@@ -18,7 +18,8 @@
   "episodeGuid": "8a62f70b-ba1d-4d53-9456-db52564e5e22",
   "externalIds": {
     "tmdb": "84777",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/84777-sunderland-til-i-die/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -81,5 +82,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Sunderland%20Till%20I%20Die",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Sunderland%20Till%20I%20Die",
+      "ethics": "neutral"
+    }
   ]
 }

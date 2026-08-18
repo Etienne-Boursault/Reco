@@ -21,7 +21,8 @@
   "externalIds": {
     "instagram": "cedklap",
     "tmdb": "352038",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/352038-in-transit/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -97,5 +98,27 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=In%20Transit",
+      "ethics": "neutral"
+    },
+    {
+      "label": "SFR Play",
+      "url": "https://www.sfrplay.fr/recherche?q=In%20Transit",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=In%20Transit",
+      "ethics": "indie"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=In%20Transit",
+      "ethics": "neutral"
+    }
   ]
 }

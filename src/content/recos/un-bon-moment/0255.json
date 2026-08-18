@@ -15,7 +15,8 @@
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "43462",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/43462-panique/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -103,5 +104,27 @@
   "types": [
     "film"
   ],
-  "year": 1948
+  "year": 1948,
+  "watchProviders": [
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Panique",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Panique",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Panique",
+      "ethics": "neutral"
+    },
+    {
+      "label": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Panique",
+      "ethics": "indie"
+    }
+  ]
 }

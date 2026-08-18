@@ -2,7 +2,8 @@
   "creator": "Ernst Lubitsch",
   "externalIds": {
     "tmdb": 198,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/198-to-be-or-not-to-be/watch?locale=FR"
   },
   "id": "332b5f30",
   "schemaVersion": 1,
@@ -10,5 +11,62 @@
   "types": [
     "film"
   ],
-  "year": 1942
+  "year": 1942,
+  "watchProviders": [
+    {
+      "url": "https://www.molotov.tv/search?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "Molotov TV"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "avoid",
+      "name": "Cine+ OCS Amazon Channel"
+    },
+    {
+      "url": "https://www.sfrplay.fr/recherche?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "SFR Play"
+    },
+    {
+      "url": "https://tv.apple.com/fr/search?term=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    },
+    {
+      "url": "https://www.sooner.fr/recherche?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "Sooner"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    },
+    {
+      "url": "https://www.lacinetek.com/fr/?text=To%20Be%20or%20Not%20to%20Be",
+      "ethics": "indie",
+      "name": "LaCinetek"
+    }
+  ]
 }

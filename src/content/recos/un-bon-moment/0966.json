@@ -15,7 +15,8 @@
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "68",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/68-brazil/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -94,5 +95,52 @@
   "types": [
     "film"
   ],
-  "year": 1985
+  "year": 1985,
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Brazil",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Brazil",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Brazil",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Brazil",
+      "ethics": "neutral"
+    }
+  ]
 }

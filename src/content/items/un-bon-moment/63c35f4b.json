@@ -2,7 +2,8 @@
   "creator": "Doria Tillier",
   "externalIds": {
     "tmdb": 271593,
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/271593-iris/watch?locale=FR"
   },
   "id": "63c35f4b",
   "schemaVersion": 1,
@@ -10,5 +11,12 @@
   "types": [
     "autre",
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Iris",
+      "ethics": "avoid",
+      "name": "Canal+ Séries"
+    }
   ]
 }

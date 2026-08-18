@@ -1,7 +1,8 @@
 {
   "externalIds": {
     "tmdb": 1317288,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1317288-marty-supreme/watch?locale=FR"
   },
   "id": "18a3ac48",
   "schemaVersion": 1,
@@ -11,5 +12,47 @@
   ],
   "aliases": [
     "Marty Suprem"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://tv.apple.com/fr/search?term=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Marty%20Supreme",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://rakuten.tv/fr/search?q=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "Rakuten TV"
+    },
+    {
+      "url": "https://www.sooner.fr/recherche?q=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "Sooner"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Marty%20Supreme",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.pathehome.com/recherche?text=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "Pathé Home"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Marty%20Supreme",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    }
   ]
 }

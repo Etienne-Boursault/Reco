@@ -13,7 +13,8 @@
   "externalIds": {
     "instagram": "panayotispascot",
     "tmdb": "270963",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/270963-loups-garous/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -71,5 +72,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Loup-Garou%20Saison%202",
+      "ethics": "avoid"
+    }
   ]
 }

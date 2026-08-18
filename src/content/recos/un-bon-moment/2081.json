@@ -15,7 +15,8 @@
   "episodeGuid": "68ef607e58893bb6e322c623",
   "externalIds": {
     "tmdb": "1437733",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1437733-bref-de-bons-amis/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -79,5 +80,12 @@
   "types": [
     "film"
   ],
-  "year": 2024
+  "year": 2024,
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref.%20De%20bons%20amis",
+      "ethics": "neutral"
+    }
+  ]
 }

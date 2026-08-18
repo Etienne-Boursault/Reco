@@ -2,7 +2,8 @@
   "creator": "Jean Marais",
   "externalIds": {
     "tmdb": 1871,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1871-fantomas/watch?locale=FR"
   },
   "id": "570ac224",
   "schemaVersion": 1,
@@ -10,5 +11,57 @@
   "types": [
     "film"
   ],
-  "year": 1964
+  "year": 1964,
+  "watchProviders": [
+    {
+      "url": "https://tv.apple.com/fr/search?term=Fantomas",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://play.google.com/store/search?q=Fantomas&c=movies",
+      "ethics": "neutral",
+      "name": "Google Play Movies"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Fantomas",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Fantomas",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    },
+    {
+      "url": "https://www.youtube.com/results?search_query=Fantomas",
+      "ethics": "neutral",
+      "name": "YouTube"
+    },
+    {
+      "url": "https://rakuten.tv/fr/search?q=Fantomas",
+      "ethics": "neutral",
+      "name": "Rakuten TV"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fantomas",
+      "ethics": "avoid",
+      "name": "Amazon Video"
+    },
+    {
+      "url": "https://www.pathehome.com/recherche?text=Fantomas",
+      "ethics": "neutral",
+      "name": "Pathé Home"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Fantomas",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Fantomas",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    }
+  ]
 }

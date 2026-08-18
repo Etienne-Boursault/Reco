@@ -2,7 +2,8 @@
   "creator": "pseudonyme inconnu",
   "externalIds": {
     "tmdb": 620249,
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/620249/watch?locale=FR"
   },
   "id": "8c792e21",
   "schemaVersion": 1,
@@ -11,5 +12,17 @@
     "serie",
     "video",
     "autre"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://animationdigitalnetwork.com/search?q=The%20Legend%20of%20Hei",
+      "ethics": "neutral",
+      "name": "Animation Digital Network"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Legend%20of%20Hei",
+      "ethics": "avoid",
+      "name": "Anime Digital Network Amazon Channel"
+    }
   ]
 }

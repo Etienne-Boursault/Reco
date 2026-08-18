@@ -19,7 +19,8 @@
   "episodeGuid": "6929611768e521ed8d86a91b",
   "externalIds": {
     "tmdb": "138502",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/138502-x-men-97/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -100,5 +101,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=X-Men%2097",
+      "ethics": "neutral"
+    }
   ]
 }

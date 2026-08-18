@@ -15,7 +15,8 @@
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "externalIds": {
     "tmdb": "19548",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/19548-le-grand-restaurant/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -74,5 +75,62 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Le%20Grand%20Restaurant&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Grand%20Restaurant",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Le%20Grand%20Restaurant",
+      "ethics": "avoid"
+    },
+    {
+      "label": "TF1+",
+      "url": "https://www.tf1.fr/recherche?q=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Le%20Grand%20Restaurant",
+      "ethics": "neutral"
+    }
   ]
 }

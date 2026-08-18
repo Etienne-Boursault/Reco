@@ -20,7 +20,8 @@
   "episodeGuid": "68fa552292f5a6f127100027",
   "externalIds": {
     "tmdb": "271593",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/271593-iris/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -95,5 +96,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Iris",
+      "ethics": "avoid"
+    }
   ]
 }

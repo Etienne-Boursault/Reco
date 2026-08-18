@@ -21,7 +21,8 @@
   "externalIds": {
     "instagram": "clementcotentin",
     "tmdb": "135184",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/135184-orelsan-montre-jamais-ca-a-personne/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -87,5 +88,17 @@
   "transcriptSource": "acast",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Montre%20jamais%20%C3%A7a%20%C3%A0%20personne",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Montre%20jamais%20%C3%A7a%20%C3%A0%20personne",
+      "ethics": "avoid"
+    }
   ]
 }

@@ -6,7 +6,8 @@
   "episodeGuid": "69f44dee2d4fd7b3bfd5f9d7",
   "externalIds": {
     "tmdb": "469019",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/469019-jim-andy-the-great-beyond/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -56,5 +57,17 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Jim%20and%20Andy",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Jim%20and%20Andy",
+      "ethics": "neutral"
+    }
   ]
 }

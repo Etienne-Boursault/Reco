@@ -15,7 +15,8 @@
   "episodeGuid": "6960deefb86949aa06496e27",
   "externalIds": {
     "tmdb": "1437733",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1437733-bref-de-bons-amis/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -97,5 +98,12 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref.%20De%20bons%20amis",
+      "ethics": "neutral"
+    }
   ]
 }

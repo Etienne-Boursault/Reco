@@ -20,7 +20,8 @@
   "episodeGuid": "183b0899-c1bc-43f0-b9c3-8073a973414f",
   "externalIds": {
     "tmdb": "87393",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/87393-run/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -92,5 +93,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Lionsgate+ Amazon Channels",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Run",
+      "ethics": "avoid"
+    }
   ]
 }

@@ -5,7 +5,8 @@
   "episodeGuid": "6a10a31516a6aa135ed729e1",
   "externalIds": {
     "tmdb": "1668",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1668-friends/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,5 +68,52 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Friends",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Friends",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Friends",
+      "ethics": "avoid"
+    }
   ]
 }

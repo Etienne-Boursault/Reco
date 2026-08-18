@@ -14,7 +14,8 @@
   "episodeGuid": "69207579d35aa096b5a8ee47",
   "externalIds": {
     "tmdb": "31011",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/31011-mr-nobody/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -82,5 +83,57 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Mr.%20Nobody",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Mr.%20Nobody",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Mr.%20Nobody",
+      "ethics": "neutral"
+    },
+    {
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Mr.%20Nobody",
+      "ethics": "indie"
+    }
   ]
 }

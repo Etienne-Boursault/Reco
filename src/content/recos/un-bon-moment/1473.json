@@ -19,7 +19,8 @@
   "episodeGuid": "699968af0e5c959d5971943f",
   "externalIds": {
     "tmdb": "34307",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/34307-shameless/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -100,5 +101,57 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Shameless",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Shameless",
+      "ethics": "neutral"
+    },
+    {
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Shameless",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "ethics": "avoid"
+    },
+    {
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Shameless",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Shameless",
+      "ethics": "avoid"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Shameless",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Shameless",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Shameless",
+      "ethics": "neutral"
+    }
   ]
 }

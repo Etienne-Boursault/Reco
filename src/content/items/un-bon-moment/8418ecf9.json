@@ -3,12 +3,60 @@
   "externalIds": {
     "instagram": "cedklap",
     "tmdb": 64165,
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/64165-dix-pour-cent/watch?locale=FR"
   },
   "id": "8418ecf9",
   "schemaVersion": 1,
   "title": "Dix pour cent",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://www.netflix.com/search?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "Netflix"
+    },
+    {
+      "url": "https://www.netflix.com/search?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "Netflix Standard with Ads"
+    },
+    {
+      "url": "https://www.sfrplay.fr/recherche?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "SFR Play"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dix%20pour%20cent",
+      "ethics": "avoid",
+      "name": "France TV Amazon Channel"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Dix%20pour%20cent",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://www.videofutur.fr/recherche?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "VIVA by videofutur"
+    },
+    {
+      "url": "https://www.premieremax.com/search?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "Premiere Max"
+    },
+    {
+      "url": "https://tv.apple.com/fr/search?term=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Dix%20pour%20cent",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    }
   ]
 }

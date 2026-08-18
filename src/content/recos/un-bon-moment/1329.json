@@ -9,7 +9,8 @@
   "episodeGuid": "6a05e43cc7ea4a3c85664972",
   "externalIds": {
     "tmdb": "1566481",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1566481-marave/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -79,5 +80,17 @@
   "types": [
     "film"
   ],
-  "year": 2023
+  "year": 2023,
+  "watchProviders": [
+    {
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Marave",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Marave",
+      "ethics": "avoid"
+    }
+  ]
 }

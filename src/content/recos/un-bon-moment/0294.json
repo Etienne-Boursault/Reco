@@ -15,7 +15,8 @@
   "episodeGuid": "693c1da59bb376c45d3fe84f",
   "externalIds": {
     "tmdb": "112747",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/112747-l-agence-l-immobilier-de-luxe-en-famille/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -87,5 +88,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=L%27agence",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=L%27agence",
+      "ethics": "neutral"
+    }
   ]
 }

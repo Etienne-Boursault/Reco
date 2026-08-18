@@ -14,7 +14,8 @@
   "episodeGuid": "63160ce353f4d80012fcd7d0",
   "externalIds": {
     "tmdb": "11680",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/11680-l-avare/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -67,5 +68,57 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=L%27Avare&c=movies",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=L%27Avare",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=L%27Avare",
+      "ethics": "avoid"
+    },
+    {
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=L%27Avare",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=L%27Avare",
+      "ethics": "neutral"
+    }
   ]
 }

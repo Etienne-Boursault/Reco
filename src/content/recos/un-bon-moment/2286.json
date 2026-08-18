@@ -19,7 +19,8 @@
   "episodeGuid": "26ae8544-ae7b-41c6-8aa0-7e790e035004",
   "externalIds": {
     "tmdb": "88192",
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/88192-france-kbek/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -73,5 +74,12 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "TF1+",
+      "url": "https://www.tf1.fr/recherche?q=FranceKebek",
+      "ethics": "neutral"
+    }
   ]
 }

@@ -15,7 +15,8 @@
   "episodeGuid": "6322ecf035ce9e00122a2a9e",
   "externalIds": {
     "tmdb": "776",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/776-la-regle-du-jeu/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -75,5 +76,17 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
+  ],
+  "watchProviders": [
+    {
+      "label": "Plex",
+      "url": "https://watch.plex.tv/search?q=La%20r%C3%A8gle%20du%20jeu",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Plex Channel",
+      "url": "https://watch.plex.tv/search?q=La%20r%C3%A8gle%20du%20jeu",
+      "ethics": "neutral"
+    }
   ]
 }

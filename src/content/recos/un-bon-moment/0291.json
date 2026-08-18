@@ -14,7 +14,8 @@
   "episodeGuid": "6932b125aef2c71c1dbba9c7",
   "externalIds": {
     "tmdb": "620249",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/620249/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -101,5 +102,17 @@
   "transcriptSource": "youtube",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "label": "Animation Digital Network",
+      "url": "https://animationdigitalnetwork.com/search?q=The%20Legend%20of%20Hei",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Anime Digital Network Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Legend%20of%20Hei",
+      "ethics": "avoid"
+    }
   ]
 }

@@ -12,7 +12,8 @@
   "episodeGuid": "633b2f213ca1cc001201a69f",
   "externalIds": {
     "tmdb": "823754",
-    "tmdbType": "movie"
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/823754-bo-burnham-inside/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -66,5 +67,17 @@
     "film",
     "autre"
   ],
-  "year": 2021
+  "year": 2021,
+  "watchProviders": [
+    {
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Inside",
+      "ethics": "neutral"
+    },
+    {
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Inside",
+      "ethics": "neutral"
+    }
+  ]
 }

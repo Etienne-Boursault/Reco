@@ -2,12 +2,40 @@
   "creator": "HBO",
   "externalIds": {
     "tmdb": 57774,
-    "tmdbType": "tv"
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/57774-looking/watch?locale=FR"
   },
   "id": "57ed6444",
   "schemaVersion": 1,
   "title": "Looking",
   "types": [
     "serie"
+  ],
+  "watchProviders": [
+    {
+      "url": "https://play.max.com/search?q=Looking",
+      "ethics": "neutral",
+      "name": "HBO Max"
+    },
+    {
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Looking",
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel"
+    },
+    {
+      "url": "https://tv.apple.com/fr/search?term=Looking",
+      "ethics": "neutral",
+      "name": "Apple TV Store"
+    },
+    {
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Looking",
+      "ethics": "avoid",
+      "name": "Canal VOD"
+    },
+    {
+      "url": "https://video.orange.fr/search?q=Looking",
+      "ethics": "neutral",
+      "name": "Orange VOD"
+    }
   ]
 }
