@@ -10,9 +10,9 @@
   "creator": "Nicolas Winding Refn",
   "episodeGuid": "69b595f063444515f923af4a",
   "externalIds": {
-    "tmdb": "1018",
+    "tmdb": "64690",
     "tmdbType": "movie",
-    "watchPage": "https://www.themoviedb.org/movie/1018-mulholland-drive/watch?locale=FR"
+    "watchPage": "https://www.themoviedb.org/movie/64690/watch?locale=FR"
   },
   "extractionHistory": [
     {
@@ -57,103 +57,6 @@
   "transcriptSource": "youtube",
   "types": [
     "film"
-  ],
-  "watchProviders": [
-    {
-      "ethics": "indie",
-      "label": "MUBI",
-      "url": "https://mubi.com/fr/films?q=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Sooner",
-      "url": "https://www.sooner.fr/recherche?q=Drive"
-    },
-    {
-      "ethics": "avoid",
-      "label": "Cine+ OCS Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive"
-    },
-    {
-      "ethics": "avoid",
-      "label": "MUBI Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "SFR Play",
-      "url": "https://www.sfrplay.fr/recherche?q=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "HBO Max",
-      "url": "https://play.max.com/search?q=Drive"
-    },
-    {
-      "ethics": "avoid",
-      "label": "HBO Max Amazon Channel",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Apple TV Store",
-      "url": "https://tv.apple.com/fr/search?term=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Google Play Movies",
-      "url": "https://play.google.com/store/search?q=Drive&c=movies"
-    },
-    {
-      "ethics": "avoid",
-      "label": "Canal VOD",
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Orange VOD",
-      "url": "https://video.orange.fr/search?q=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Rakuten TV",
-      "url": "https://rakuten.tv/fr/search?q=Drive"
-    },
-    {
-      "ethics": "indie",
-      "label": "LaCinetek",
-      "url": "https://www.lacinetek.com/fr/?text=Drive"
-    },
-    {
-      "ethics": "avoid",
-      "label": "Amazon Video",
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Pathé Home",
-      "url": "https://www.pathehome.com/recherche?text=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "VIVA by videofutur",
-      "url": "https://www.videofutur.fr/recherche?q=Drive"
-    },
-    {
-      "ethics": "neutral",
-      "label": "Premiere Max",
-      "url": "https://www.premieremax.com/search?q=Drive"
-    },
-    {
-      "ethics": "indie",
-      "label": "ARTE Boutique",
-      "url": "https://boutique.arte.tv/search?q=Drive"
-    }
   ],
   "year": 2011
 }
