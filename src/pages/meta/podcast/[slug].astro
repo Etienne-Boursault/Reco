@@ -58,7 +58,7 @@ const jsonLd: Record<string, unknown> = {
   description={registry.podcast.tagline ?? t('meta.subtitle')}
   jsonLd={jsonLd}
 >
-  <main id="main" class="meta-detail">
+  <main id="main" tabindex="-1" class="meta-detail">
     <p><a href="/meta/">{t('meta.podcast.back')}</a></p>
     <header>
       <h1>{registry.podcast.title}</h1>

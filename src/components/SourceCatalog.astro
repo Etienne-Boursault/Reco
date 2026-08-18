@@ -130,9 +130,9 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     </p>
   </header>
 
-  {/* C1/C5 : <main id="main"> enveloppe les 2 tabpanels ET la toolbar.
+  {/* C1/C5 : <main id="main" tabindex="-1"> enveloppe les 2 tabpanels ET la toolbar.
      Le skip-link cible bien le vrai <main>. */}
-  <main id="main">
+  <main id="main" tabindex="-1">
     <nav class="tabs wrap" aria-label={t('nav.tabsLabel')}>
       <div
         role="tablist"

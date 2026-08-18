@@ -34,7 +34,7 @@ const data = source.data;
 ---
 
 <Layout title={t('report.page.metaTitle', { title: reco.data.title })} theme={data.theme} noindex>
-  <main id="main" class="wrap">
+  <main id="main" tabindex="-1" class="wrap">
     <p class="back">
       <a href={`/${source.id}`}>{t('report.page.back')}</a>
     </p>

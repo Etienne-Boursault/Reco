@@ -8,7 +8,7 @@
  *
  * Build : statique. Aucune dépendance externe, aucun tracker, aucun iframe.
  * SEO : ogSlug par défaut ⇒ fallback `/og/default.png` (cf. Layout).
- * A11y : h1 unique, hiérarchie h2/h3, <main id="main">, lang=fr via Layout.
+ * A11y : h1 unique, hiérarchie h2/h3, <main id="main" tabindex="-1">, lang=fr via Layout.
  */
 import Layout from '../layouts/Layout.astro';
 import { t } from '../i18n';
@@ -70,7 +70,7 @@ const jsonLd = [
     <p class="lede">{t('about.subtitle')}</p>
   </header>
 
-  <main id="main" class="wrap prose">
+  <main id="main" tabindex="-1" class="wrap prose">
     <section aria-labelledby="who">
       <h2 id="who">{t('about.section.who')}</h2>
       <p>

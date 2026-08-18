@@ -123,9 +123,22 @@ function checkHtml(file) {
     fail(file, 'skip-link', 'skip-link ne pointe pas vers #main');
   }
 
-  // 3. Ancre #main présente
-  if (!/\bid=("|')main\1/.test(html)) {
+  // 3. Ancre #main présente ET FOCUSABLE
+  //
+  // Un `<main id="main">` sans `tabindex="-1"` n'est pas focusable : activer
+  // le skip-link deplace le DEFILEMENT mais laisse le focus clavier la ou il
+  // etait. La tabulation suivante repart du debut de la page, et l'utilisateur
+  // parcourt les elements un a un — exactement ce qu'il croyait eviter.
+  //
+  // Releve le 2026-08-18 a la relecture. La version precedente de ce test ne
+  // verifiait que la PRESENCE de l'ancre : elle etait verte sur 2 632 pages
+  // dont AUCUNE ne rendait le focus au contenu.
+  const ancre = html.match(/<[a-z]+\b[^>]*\bid=("|')main\1[^>]*>/i);
+  if (!ancre) {
     fail(file, 'skip-target', 'pas de #main comme cible de skip-link');
+  } else if (!/\btabindex=("|')-1\1/.test(ancre[0])) {
+    fail(file, 'skip-target',
+         'la cible #main n\'a pas tabindex="-1" : le focus clavier n\'y ira pas');
   }
 
   // 3b. Unicité des id (M22) : tout id doit être unique sur la page.

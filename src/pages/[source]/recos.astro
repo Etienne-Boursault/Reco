@@ -41,9 +41,9 @@ const titre = `Toutes les recommandations — ${source.data.title}`;
 >
   <a class="retour wrap" href="/">← retour au catalogue</a>
   {/* Cible du skip-link du gabarit. Elle est ici et non dans AllRecosView :
-      l'accueil rend ce meme composant DANS le <main id="main"> de
+      l'accueil rend ce meme composant DANS le <main id="main" tabindex="-1"> de
       SourceCatalog, et un second id="main" casserait l'unicite des id. */}
-  <main id="main">
+  <main id="main" tabindex="-1">
     <AllRecosView
       sourceId={source.id}
       recos={recos}
