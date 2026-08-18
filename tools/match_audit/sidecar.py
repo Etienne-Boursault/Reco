@@ -21,8 +21,9 @@ from pathlib import Path
 from tools.match_audit.service import MatchAuditResult
 from tools.match_audit.types import severity_value
 
+import common  # type: ignore[attr-defined]
 from audit_core.sidecar import _safe_segment
-from common import OUTPUT_DIR, atomic_write_text, slugify  # type: ignore[attr-defined]
+from common import atomic_write_text, slugify  # type: ignore[attr-defined]
 
 #: Version courante du schéma sidecar match_audit. R-01 (ADR 0019) :
 #: tous les sidecars écrits depuis Sprint 2 portent ``schemaVersion: 1``.
@@ -32,7 +33,22 @@ SIDECAR_SCHEMA_VERSION: int = 1
 
 _log = logging.getLogger("reco.match_audit.sidecar")
 
-MATCH_AUDIT_DIR: Path = OUTPUT_DIR / "match_audit"
+def _match_audit_dir() -> Path:
+    """Le repertoire de sortie, resolu A L'APPEL.
+
+    Ce fichier faisait `from common import OUTPUT_DIR` puis calculait la
+    constante a l'IMPORT. La valeur etait donc figee avant qu'un test ait
+    la moindre chance de la deplacer : `monkeypatch.setattr(common,
+    "OUTPUT_DIR", tmp_path)` restait sans effet et l'ecriture atterrissait
+    dans le VRAI `tools/output/`.
+
+    Le symptome n'etait pas un echec mais une POLLUTION silencieuse : le
+    test passait tant que le repertoire reel existait. Il n'a echoue que le
+    2026-08-18, quand un autre travail a nettoye `tools/output/` pendant son
+    execution.
+    """
+    return common.OUTPUT_DIR / "match_audit"
+
 
 
 def _safe(component: str, label: str) -> str:
@@ -54,7 +70,7 @@ def sidecar_path(
     """Chemin du sidecar pour un (source, guid) donné."""
     _safe(source_id, "source_id")
     _safe(episode_guid, "episode_guid")
-    root = base_dir if base_dir is not None else MATCH_AUDIT_DIR
+    root = base_dir if base_dir is not None else _match_audit_dir()
     return root / source_id / f"{slugify(episode_guid)}.json"
 
 
@@ -62,7 +78,7 @@ def sidecar_dir_for(
     source_id: str, *, base_dir: Path | None = None,
 ) -> Path:
     _safe(source_id, "source_id")
-    root = base_dir if base_dir is not None else MATCH_AUDIT_DIR
+    root = base_dir if base_dir is not None else _match_audit_dir()
     return root / source_id
 
 
@@ -180,7 +196,6 @@ def delete_sidecar(
 
 
 __all__ = [
-    "MATCH_AUDIT_DIR",
     "SIDECAR_SCHEMA_VERSION",
     "delete_sidecar",
     "iter_sidecars",

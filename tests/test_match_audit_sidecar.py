@@ -156,3 +156,40 @@ def test_delete_sidecar_removes_file(tmp_path):
     write_sidecar(_result(), "src", base_dir=tmp_path)
     assert delete_sidecar("src", "g1", base_dir=tmp_path) is True
     assert delete_sidecar("src", "g1", base_dir=tmp_path) is False
+
+
+# ===== Isolation des chemins (2026-08-18) ==================================
+def test_le_repertoire_de_sortie_est_resolu_A_L_APPEL(tmp_path, monkeypatch):
+    """`sidecar.py` faisait `from common import OUTPUT_DIR` puis calculait
+    `MATCH_AUDIT_DIR` au moment de l'IMPORT. La valeur etait donc figee avant
+    qu'un test ait la moindre chance de la deplacer : `monkeypatch.setattr(
+    common, "OUTPUT_DIR", tmp_path)` n'avait aucun effet, et l'ecriture
+    atterrissait dans le VRAI `tools/output/`.
+
+    Le symptome n'etait pas un echec mais une POLLUTION silencieuse : le test
+    passait tant que le repertoire reel existait. Il n'a echoue que le
+    2026-08-18, quand un autre travail a nettoye `tools/output/` pendant son
+    execution — `FileNotFoundError` sur `g1.json.tmp`.
+
+    Ce projet connait deja cette faute : les chemins doivent etre resolus A
+    L'APPEL, sans quoi les tests ecrivent dans les vraies donnees.
+    """
+    import common
+
+    import tools.match_audit.sidecar as sc
+
+    monkeypatch.setattr(common, "OUTPUT_DIR", tmp_path / "faux_output")
+    chemin = sc.sidecar_path("demo-source", "g1")
+    assert (tmp_path / "faux_output") in chemin.parents, (
+        f"le sidecar s'ecrirait dans {chemin}, hors du repertoire temporaire")
+
+
+def test_base_dir_explicite_reste_prioritaire(tmp_path, monkeypatch):
+    """Le correctif ne doit pas court-circuiter l'argument explicite."""
+    import common
+
+    import tools.match_audit.sidecar as sc
+
+    monkeypatch.setattr(common, "OUTPUT_DIR", tmp_path / "ignore")
+    chemin = sc.sidecar_path("demo-source", "g1", base_dir=tmp_path / "choisi")
+    assert (tmp_path / "choisi") in chemin.parents
