@@ -278,4 +278,64 @@ describe('StatChart — cadre et libellés (2026-08-19, seconde passe)', () => {
     });
     expect(basDesLibelles(html)).toBeLessThanOrEqual(hauteurCadre(html));
   });
+
+  // ===== Le bord GAUCHE aussi ============================================
+  //
+  // « [Image] Albums est tronqué » (relecture du 2026-08-19, seconde salve).
+  // Un libellé ancré par sa fin et tourné de -45° se projette vers le bas ET
+  // vers la gauche, de la même longueur. Seule la marge basse était réservée :
+  // le premier libellé sortait du cadre et perdait sa première lettre.
+  /** L'abscisse la plus à gauche atteinte par le premier libellé. */
+  const gaucheDuPremierLabel = (html: string): number => {
+    const x = Number(/<text[^>]*?x="([\d.]+)"[^>]*?class="bar-label"/.exec(html)?.[1] ?? NaN);
+    const texte = /class="bar-label"[^>]*>([^<]+)</.exec(html)?.[1] ?? '';
+    const incline = html.includes('rotate(-45');
+    // 7,2 px par glyphe à 12 px, projetés par cos(45°).
+    return x - (incline ? texte.length * 7.2 * Math.SQRT1_2 : 0);
+  };
+
+  it('garde le premier libellé incliné dans le cadre', async () => {
+    // Le cas exact : « Albums » ouvre la répartition par type, en ordre
+    // alphabétique, sur quatorze colonnes.
+    const html = await render({
+      title: 'T',
+      bars: ['Albums', 'Artistes', 'Autres', 'BD', 'Chaînes', 'Films', 'Jeux',
+        'Livres', 'Musique', 'Podcasts', 'Séries', 'Spectacles', 'Vidéos',
+        'Lieux'].map((label, i) => ({ label, value: 20 - i })),
+    });
+    expect(html).toContain('rotate(-45');
+    expect(gaucheDuPremierLabel(html)).toBeGreaterThanOrEqual(0);
+  });
+
+  it('réserve la marge gauche à la mesure du premier libellé, pas plus', async () => {
+    // Un libellé court ne doit pas rétrécir les barres pour rien.
+    const court = await render({
+      title: 'T', bars: Array.from({ length: 14 }, (_, i) => ({ label: 'BD', value: 14 - i })),
+    });
+    const long = await render({
+      title: 'T',
+      bars: Array.from({ length: 14 }, (_, i) => ({
+        label: i === 0 ? 'Documentaires animaliers' : 'BD', value: 14 - i,
+      })),
+    });
+    const premiereBarre = (html: string) =>
+      Number(/<rect x="([\d.]+)"/.exec(html)?.[1] ?? NaN);
+    expect(premiereBarre(long)).toBeGreaterThan(premiereBarre(court));
+    expect(gaucheDuPremierLabel(long)).toBeGreaterThanOrEqual(0);
+  });
+
+  it('ne réserve aucune marge gauche quand les libellés sont droits', async () => {
+    // Un libellé horizontal est centré sous sa barre : il ne sort pas à
+    // gauche, et rien ne justifie de rétrécir le graphique.
+    const premiereBarre = (html: string) =>
+      Number(/<rect x="([\d.]+)"/.exec(html)?.[1] ?? NaN);
+    const court = await render({ title: 'T', bars: barres(3) });
+    const long = await render({
+      title: 'T',
+      bars: [{ label: 'Documentaires animaliers', value: 1 },
+             { label: 'L1', value: 2 }, { label: 'L2', value: 3 }],
+    });
+    expect(court).not.toContain('rotate(-45');
+    expect(premiereBarre(long)).toBe(premiereBarre(court));
+  });
 });

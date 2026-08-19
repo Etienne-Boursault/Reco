@@ -35,9 +35,9 @@ from pathlib import Path
 
 import pytest
 
+import aligner_bref as ab
 import common
 import dataset_fixes as df
-import aligner_bref as ab
 
 
 @pytest.fixture
@@ -165,21 +165,33 @@ def test_main_dry_run_n_ecrit_pas(recos_root: Path):
 
 
 # ===== Deuxieme passe : YouTube en tete ====================================
-def test_youtube_est_le_PREMIER_lien():
+def test_youtube_est_le_PREMIER_lien_de_BREF():
     """La carte affiche les liens dans l'ordre : le premier est le plus vu.
 
     « il y a Disney+ mais il y a surtout YouTube en priorite ». La saison 1 se
     regarde librement sur la chaine ; Disney+ demande un abonnement.
     """
-    for titre, liens in ab.LIENS.items():
-        assert liens[0]["label"] == "YouTube", titre
-        assert liens[0]["url"] == "https://www.youtube.com/@Bref", titre
+    liens = ab.LIENS["bref"]
+    assert liens[0]["label"] == "YouTube"
+    assert liens[0]["url"] == "https://www.youtube.com/@Bref"
+    assert liens[1]["label"] == "Disney+"
 
 
-def test_disney_reste_juste_derriere():
-    """Il n'est pas retire : c'est la ou la saison 2 se regarde."""
-    for titre, liens in ab.LIENS.items():
-        assert liens[1]["label"] == "Disney+", titre
+def test_BREF_2_n_a_AUCUN_lien_youtube():
+    """« Attention pour Bref 2, tu as mis le lien YT de Bref » — signale le
+    2026-08-19. La chaine @Bref ne porte que la saison 1 ; la saison 2 est
+    exclusive a Disney+, et aucune chaine ne lui est dediee."""
+    liens = ab.LIENS["bref 2"]
+    assert not any("youtube" in lien["url"].lower() for lien in liens)
+    assert liens[0]["label"] == "Disney+"
+
+
+def test_les_deux_saisons_ne_partagent_aucun_lien_de_visionnage():
+    """Chacune a sa page : les confondre renvoie a une autre oeuvre."""
+    visionnage = {"streaming", "official"}
+    urls = {t: {lien["url"] for lien in liens if lien["kind"] in visionnage}
+            for t, liens in ab.LIENS.items()}
+    assert not (urls["bref"] & urls["bref 2"])
 
 
 def test_ou_regarder_est_SORTI_de_bref():

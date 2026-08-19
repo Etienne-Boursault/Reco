@@ -69,6 +69,7 @@ describe('les slugs', () => {
 describe('les libellés', () => {
   it('sont tous renseignés', () => {
     for (const g of TOUTES) {
+      expect(g.court.length).toBeGreaterThan(1);
       expect(g.titre.length).toBeGreaterThan(2);
       expect(g.unGe.length).toBeGreaterThan(2);
       expect(g.plusieurs.length).toBeGreaterThan(2);
@@ -83,6 +84,20 @@ describe('les libellés', () => {
 
   it('emploient l’apostrophe typographique, comme le reste du site', () => {
     for (const g of TOUTES) expect(g.vide).not.toContain("'");
+  });
+
+  it('donnent un nom court sans article', () => {
+    // « Tous les films » dans une colonne de quatorze entrées répétait un
+    // article que la mise en page rendait inutile (relecture du 2026-08-19).
+    for (const g of TOUTES) {
+      expect(g.court).not.toMatch(/^(Tous|Toutes|Tout|Le|La|Les)/);
+      expect(g.court.length).toBeLessThan(g.titre.length);
+    }
+  });
+
+  it('ne donnent jamais deux fois le même nom court', () => {
+    const courts = TOUTES.map((g) => g.court);
+    expect(new Set(courts).size).toBe(courts.length);
   });
 });
 

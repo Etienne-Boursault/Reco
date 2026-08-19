@@ -1,0 +1,269 @@
+"""Tests de `tools/corriger_attributions_erronees.py`.
+
+D'OU VIENNENT CES CAS
+---------------------
+Trois agents relisaient les 67 oeuvres rangees dans « autre » pour les
+retyper (2026-08-19). En cherchant le type, ils ont bute sur des `creator`
+qui ne tenaient pas debout : Arte credite comme realisateur d'un documentaire
+qu'il a seulement diffuse, Netflix comme auteur d'un spectacle, et Kyan
+Khojandi comme realisateur d'un court metrage d'Albert Dupontel — alors que
+la citation de l'episode est de Dupontel parlant de son propre film.
+
+CE QUE CES TESTS PROTEGENT
+--------------------------
+Une table de corrections curee est dangereuse par nature : elle ecrit sans
+condition ce qu'un humain y a mis. Les gardes-fous verifies ici sont donc
+ceux qui limitent sa portee — n'ecrire que sur la valeur fautive attendue,
+ne jamais toucher une oeuvre hors table, ne pas reveiller une reco ecartee.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pytest
+
+import common
+import corriger_attributions_erronees as cae
+
+
+@pytest.fixture
+def corpus(tmp_path: Path, monkeypatch) -> Path:
+    for nom in ("items", "recos"):
+        (tmp_path / nom).mkdir()
+    monkeypatch.setattr(common, "ITEMS_DIR", tmp_path / "items")
+    monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+    return tmp_path
+
+
+def poser(racine: Path, dossier: str, nom: str, doc: dict) -> Path:
+    chemin = racine / dossier / f"{nom}.json"
+    chemin.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+    return chemin
+
+
+DESIRE = next(c for c in cae.CORRECTIONS if c.item_id == "7033f440")
+ANGES = next(c for c in cae.CORRECTIONS if c.item_id == "278b0017")
+
+
+# ===== La table elle-meme ==================================================
+def test_chaque_correction_porte_une_preuve_ouvrable():
+    """Sans source, cette table ne vaudrait pas mieux que ce qu'elle corrige."""
+    for c in cae.CORRECTIONS:
+        assert c.preuve.startswith("https://"), c.item_id
+
+
+def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
+    for c in cae.CORRECTIONS:
+        assert c.createur_faux != c.createur, c.item_id
+
+
+def test_aucun_item_n_apparait_deux_fois():
+    ids = [c.item_id for c in cae.CORRECTIONS]
+    assert len(set(ids)) == len(ids)
+
+
+def test_aucun_titre_n_apparait_deux_fois():
+    """Les recos sont rattachees par titre : un doublon rendrait le choix
+    dependant de l'ordre de parcours."""
+    titres = [c.titre.strip().lower() for c in cae.CORRECTIONS]
+    assert len(set(titres)) == len(titres)
+
+
+# ===== L'item ==============================================================
+def test_le_createur_est_corrige(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux, "types": ["film"]})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == "Albert Dupontel"
+
+
+def test_l_annee_est_corrigee_quand_la_table_en_donne_une(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": ANGES.item_id, "title": ANGES.titre,
+        "creator": ANGES.createur_faux, "year": 1998})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["year"] == 1997
+
+
+def test_l_identifiant_externe_trompeur_est_retire(corpus: Path):
+    """Le compte Instagram etait celui de l'animateur, pas du realisateur."""
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux,
+        "externalIds": {"instagram": "kyankhojandi", "allocine": "58283"}})
+    cae.executer(apply=True)
+    externes = json.loads(item.read_text(encoding="utf-8"))["externalIds"]
+    assert "instagram" not in externes
+    assert externes["allocine"] == "58283"   # le reste est intact
+
+
+def test_le_reste_du_document_est_intact(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux, "types": ["film"], "year": 1993})
+    cae.executer(apply=True)
+    doc = json.loads(item.read_text(encoding="utf-8"))
+    assert doc["types"] == ["film"]
+    assert doc["year"] == 1993          # pas d'annee dans cette correction
+
+
+# ===== La portee ===========================================================
+def test_un_createur_DEJA_correct_n_est_pas_reecrit(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre, "creator": "Albert Dupontel"})
+    avant = item.read_text(encoding="utf-8")
+    rapport = cae.executer(apply=True)
+    assert item.read_text(encoding="utf-8") == avant
+    assert rapport["items"] == 0
+
+
+def test_un_createur_INATTENDU_n_est_pas_ecrase(corpus: Path):
+    """La table corrige UNE valeur fautive connue. Si le champ porte autre
+    chose, quelqu'un est passe apres : on ne sait plus quoi corriger."""
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre, "creator": "Quelqu'un d'autre"})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == "Quelqu'un d'autre"
+
+
+def test_une_oeuvre_HORS_TABLE_n_est_pas_touchee(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": "zzzzzzzz", "title": "Autre chose", "creator": "Netflix"})
+    avant = item.read_text(encoding="utf-8")
+    cae.executer(apply=True)
+    assert item.read_text(encoding="utf-8") == avant
+
+
+def test_la_simulation_n_ecrit_rien(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    avant = item.read_text(encoding="utf-8")
+    rapport = cae.executer(apply=False)
+    assert rapport["items"] == 1                       # le rapport annonce
+    assert item.read_text(encoding="utf-8") == avant   # rien n'est ecrit
+
+
+# ===== Les recos ===========================================================
+def test_la_reco_est_corrigee_par_son_titre(corpus: Path):
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
+        "status": "validated"})
+    rapport = cae.executer(apply=True)
+    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == "Albert Dupontel"
+    assert rapport["recos"] == 1
+
+
+def test_le_titre_est_compare_sans_la_casse(corpus: Path):
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": DESIRE.titre.upper(),
+        "creator": DESIRE.createur_faux, "status": "validated"})
+    cae.executer(apply=True)
+    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == "Albert Dupontel"
+
+
+def test_une_reco_ECARTEE_n_est_pas_touchee(corpus: Path):
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
+        "status": "discarded"})
+    avant = reco.read_text(encoding="utf-8")
+    cae.executer(apply=True)
+    assert reco.read_text(encoding="utf-8") == avant
+
+
+def test_une_reco_HORS_TABLE_n_est_pas_touchee(corpus: Path):
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": "Un titre sans rapport", "creator": "Netflix",
+        "status": "validated"})
+    avant = reco.read_text(encoding="utf-8")
+    cae.executer(apply=True)
+    assert reco.read_text(encoding="utf-8") == avant
+
+
+def test_une_reco_hors_table_n_interrompt_pas_le_parcours(corpus: Path):
+    """Le corpus compte 3 100 recos pour trois corrections : l'immense
+    majorite est ignoree, et la passe doit continuer jusqu'au bout."""
+    poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": "Sans rapport", "creator": "X",
+        "status": "validated"})
+    cible = poser(corpus, "recos", "2", {
+        "id": "ubm-2", "title": ANGES.titre, "creator": ANGES.createur_faux,
+        "status": "validated"})
+    assert cae.executer(apply=True)["recos"] == 1
+    assert json.loads(cible.read_text(encoding="utf-8"))["creator"] == "Jean-Pierre Thorn"
+
+
+def test_une_reco_DEJA_correcte_n_est_pas_reecrite(corpus: Path):
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": DESIRE.titre, "creator": "Albert Dupontel",
+        "status": "validated"})
+    avant = reco.read_text(encoding="utf-8")
+    assert cae.executer(apply=True)["recos"] == 0
+    assert reco.read_text(encoding="utf-8") == avant
+
+
+def test_un_externalIds_sans_la_cle_visee_est_laisse_tel_quel(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux, "externalIds": {"allocine": "58283"}})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["externalIds"] == {
+        "allocine": "58283"}
+
+
+def test_la_simulation_parcourt_TOUTES_les_recos(corpus: Path):
+    """Le dry-run doit annoncer l'ensemble du travail, pas s'arreter a la
+    premiere correction — c'est sur ce rapport que la decision se prend."""
+    a = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
+        "status": "validated"})
+    b = poser(corpus, "recos", "2", {
+        "id": "ubm-2", "title": ANGES.titre, "creator": ANGES.createur_faux,
+        "status": "validated"})
+    avant = (a.read_text(encoding="utf-8"), b.read_text(encoding="utf-8"))
+    assert cae.executer(apply=False)["recos"] == 2
+    assert (a.read_text(encoding="utf-8"), b.read_text(encoding="utf-8")) == avant
+
+
+def test_la_passe_est_idempotente(corpus: Path):
+    poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    cae.executer(apply=True)
+    assert cae.executer(apply=True) == {"items": 0, "recos": 0, "champs": []}
+
+
+def test_un_json_illisible_est_ignore(corpus: Path):
+    poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    (corpus / "items" / "casse.json").write_text("{ pas du json", encoding="utf-8")
+    (corpus / "recos" / "casse.json").write_text("{{{", encoding="utf-8")
+    assert cae.executer(apply=True)["items"] == 1
+
+
+def test_des_externalIds_absents_ne_font_pas_echouer(corpus: Path):
+    poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux, "externalIds": None})
+    assert cae.executer(apply=True)["items"] == 1
+
+
+# ===== CLI =================================================================
+def test_main_applique(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    assert cae.main(["--apply"]) == 0
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == "Albert Dupontel"
+
+
+def test_main_dry_run(corpus: Path):
+    item = poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    avant = item.read_text(encoding="utf-8")
+    assert cae.main([]) == 0
+    assert item.read_text(encoding="utf-8") == avant

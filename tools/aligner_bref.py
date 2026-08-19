@@ -28,11 +28,15 @@ distincte. Elle partage en revanche le meme createur.
 
 DEUXIEME PASSE (relecture du 2026-08-19)
 ----------------------------------------
-YOUTUBE PASSE EN TETE. « il y a Disney+ mais il y a surtout YouTube en
-priorite https://www.youtube.com/@Bref ». C'est la chaine officielle de la
-serie (verifiee : `bref.`, UCWxt-Sphj4wcAoaIfhsALRg), et c'est la que les
-episodes de la saison 1 se regardent librement — Disney+ demande un
-abonnement. Le lien le plus utile passe donc devant.
+YOUTUBE PASSE EN TETE — POUR LA SAISON 1 SEULEMENT. « il y a Disney+ mais il
+y a surtout YouTube en priorite https://www.youtube.com/@Bref ». C'est la
+chaine officielle (verifiee : `bref.`, UCWxt-Sphj4wcAoaIfhsALRg), et c'est la
+que les episodes se regardent librement — Disney+ demande un abonnement.
+
+La premiere version l'a aussi pose sur « Bref 2 », ce qui etait faux et signale
+aussitot : cette chaine ne porte QUE la saison 1. « Bref 2 » reste donc sur
+Disney+, ou elle est exclusive. Aucune chaine dediee n'existe — « @brefofficiel »
+est une chaine wolof homonyme de 79 abonnes.
 
 La carte plafonne a six liens : ajouter YouTube a « Bref » en faisait sept.
 « Ou regarder » sort — il pointait la page « watch » de TMDB, qui ne fait que
@@ -86,8 +90,12 @@ LIENS: dict[str, list[dict[str, str]]] = {
          "url": "https://www.instagram.com/kyankhojandi/"},
     ],
     "bref 2": [
-        {"ethics": "neutral", "kind": "official", "label": "YouTube",
-         "url": "https://www.youtube.com/@Bref"},
+        # PAS de lien YouTube ici. La chaine @Bref ne porte que la saison 1
+        # (« Bref. J'ai dragué cette fille », etc., verifie le 2026-08-19) ;
+        # la saison 2 est une exclusivite Disney+. L'y poser, comme la
+        # premiere version le faisait, envoyait le visiteur sur une autre
+        # oeuvre. Aucune chaine dediee n'existe : « @brefofficiel » est une
+        # chaine wolof homonyme de 79 abonnes.
         {"ethics": "neutral", "kind": "streaming", "label": "Disney+",
          "url": "https://www.disneyplus.com/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"},
         {"ethics": "neutral", "kind": "info", "label": "TMDB",

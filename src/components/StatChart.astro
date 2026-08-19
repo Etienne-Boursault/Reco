@@ -85,12 +85,14 @@ const isEmpty = bars.length === 0;
 const max = Math.max(1, ...bars.map((b) => b.value));
 const total = bars.reduce((acc, b) => acc + b.value, 0);
 const W = 600; // viewBox width — responsive via 100% width
-const padX = 8;
 const padTop = 8;
-const slotW = bars.length > 0 ? (W - padX * 2) / bars.length : 0;
-const barW = Math.max(2, slotW * 0.65);
 /** Hauteur minimale d'une barre visible (M26-7). */
 const MIN_BAR_H = 2;
+
+/** Marge horizontale de base, avant toute reservation pour un libelle. */
+const PAD_MINIMAL = 8;
+/** La largeur d'une colonne AVANT la reservation de marge gauche. */
+const slotBrut = bars.length > 0 ? (W - PAD_MINIMAL * 2) / bars.length : 0;
 
 // TOUS les libelles sont affiches, et aucun n'est tronque.
 //
@@ -101,18 +103,19 @@ const MIN_BAR_H = 2;
 // Quand les colonnes deviennent etroites, on INCLINE au lieu de masquer.
 const LARGEUR_LISIBLE = 46;
 const masquerLibelles = libelles === 'aucun';
-const inclinerLabels = !masquerLibelles && slotW < LARGEUR_LISIBLE;
+const inclinerLabels = !masquerLibelles && slotBrut < LARGEUR_LISIBLE;
 
-// La marge basse doit LOGER les libelles, sinon le cadre les coupe — c'est ce
-// qui est arrive a la premiere version inclinee.
+// UN LIBELLE INCLINE DEBORDE DANS DEUX DIRECTIONS, PAS UNE.
 //
-// Le calcul est GEOMETRIQUE, pas empirique : a 11 px, un caractere occupe
-// environ 6 px de large ; incline a -45°, il descend de `6 x sin(45°)`. Un
-// plafond fixe suffisait tant que les libelles restaient courts — celui de la
-// version precedente (96 px) aurait coupe tout libelle de plus de dix-sept
-// caracteres, ce que les noms d'invites atteignent sans peine.
-const LARGEUR_CARACTERE = 6;
-const DESCENTE_PAR_CARACTERE = LARGEUR_CARACTERE * Math.SQRT1_2;  // sin(45°)
+// Il est ancre par sa FIN (`text-anchor="end"`) sous le centre de sa barre,
+// puis tourne de -45°. Sa longueur `L` se projette donc a la fois vers le bas
+// — `L x sin(45°)` — et vers la GAUCHE — `L x cos(45°)`, la meme valeur. La
+// premiere version ne reservait que la marge basse : « Albums », premier
+// libellé du graphique par type, sortait du cadre a gauche et perdait son A.
+//
+// Les deux marges se calculent donc, plutot que de se figer :
+const LARGEUR_CARACTERE = 7.2;  // .bar-label est en 12 px ; 0,6 em par glyphe
+const PROJECTION = LARGEUR_CARACTERE * Math.SQRT1_2;  // sin(45°) = cos(45°)
 /** L'ecart entre le bas des barres et l'ancre du libelle, plus les descendantes. */
 const MARGE_LIBELLE = 20;
 const plusLongLabel = bars.reduce((n, b) => Math.max(n, b.label.length), 0);
@@ -121,9 +124,20 @@ const padBottom = masquerLibelles
   : inclinerLabels
     ? Math.min(
         140,  // au-dela, le graphique ne serait plus qu'un mur de texte
-        MARGE_LIBELLE + Math.ceil(plusLongLabel * DESCENTE_PAR_CARACTERE),
+        MARGE_LIBELLE + Math.ceil(plusLongLabel * PROJECTION),
       )
     : 28;
+
+// A gauche, seul le PREMIER libelle peut sortir : les suivants sont decales
+// d'au moins une colonne. On lui reserve ce qui lui manque, et rien de plus —
+// chaque pixel pris ici retreicit les barres.
+const padRight = PAD_MINIMAL;  // le texte part vers la gauche : rien ne sort a droite
+const debordGauche = inclinerLabels && bars.length > 0
+  ? Math.ceil((bars[0]?.label.length ?? 0) * PROJECTION - slotBrut / 2 + 6)
+  : 0;
+const padLeft = Math.max(PAD_MINIMAL, debordGauche);
+const slotW = bars.length > 0 ? (W - padLeft - padRight) / bars.length : 0;
+const barW = Math.max(2, slotW * 0.65);
 
 const H = height + Math.max(0, padBottom - 28);
 const barAreaH = H - padTop - padBottom;
@@ -170,8 +184,8 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
     {!isEmpty && separateurs.map(({ i }) => (
       <line
         class="separateur-groupe"
-        x1={padX + i * slotW}
-        x2={padX + i * slotW}
+        x1={padLeft + i * slotW}
+        x2={padLeft + i * slotW}
         y1={padTop}
         y2={H - padBottom}
       />
@@ -179,7 +193,7 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
     {!isEmpty && debutsDeGroupe.map(({ groupe, i }) => (
       <text
         class="label-groupe"
-        x={padX + i * slotW + 4}
+        x={padLeft + i * slotW + 4}
         y={padTop + 12}
         text-anchor="start"
       >{groupe}</text>
@@ -190,7 +204,7 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
       bars.map((b, i) => {
         const rawH = max > 0 ? (b.value / max) * barAreaH : 0;
         const h = b.value > 0 ? Math.max(MIN_BAR_H, rawH) : 0;
-        const x = padX + i * slotW + (slotW - barW) / 2;
+        const x = padLeft + i * slotW + (slotW - barW) / 2;
         const y = padTop + (barAreaH - h);
         const pct = total > 0 ? b.value / total : 0;
         return (

@@ -174,9 +174,9 @@ def test_le_repertoire_de_sortie_est_resolu_A_L_APPEL(tmp_path, monkeypatch):
     Ce projet connait deja cette faute : les chemins doivent etre resolus A
     L'APPEL, sans quoi les tests ecrivent dans les vraies donnees.
     """
-    import common
-
     import tools.match_audit.sidecar as sc
+
+    import common
 
     monkeypatch.setattr(common, "OUTPUT_DIR", tmp_path / "faux_output")
     chemin = sc.sidecar_path("demo-source", "g1")
@@ -186,9 +186,9 @@ def test_le_repertoire_de_sortie_est_resolu_A_L_APPEL(tmp_path, monkeypatch):
 
 def test_base_dir_explicite_reste_prioritaire(tmp_path, monkeypatch):
     """Le correctif ne doit pas court-circuiter l'argument explicite."""
-    import common
-
     import tools.match_audit.sidecar as sc
+
+    import common
 
     monkeypatch.setattr(common, "OUTPUT_DIR", tmp_path / "ignore")
     chemin = sc.sidecar_path("demo-source", "g1", base_dir=tmp_path / "choisi")
