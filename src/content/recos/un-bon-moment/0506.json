@@ -60,12 +60,6 @@
   "kind": "reco",
   "links": [
     {
-      "ethics": "neutral",
-      "kind": "buy",
-      "label": "BilletReduc",
-      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
-    },
-    {
       "ethics": "indie",
       "kind": "official",
       "label": "Théâtre du Marais",
@@ -73,9 +67,27 @@
     },
     {
       "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletRéduc",
+      "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    },
+    {
+      "ethics": "neutral",
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/pierrehillairet_/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Toutes ses dates",
+      "url": "https://www.billetreduc.com/spectacle-pierre-hillairet.htm"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Humorix",
+      "url": "https://humorix.fr/humoriste/pierre-hillairet/"
     }
   ],
   "quote": "tu as été le spectacle le plus recommandé d'un bon moment dans cette saison",

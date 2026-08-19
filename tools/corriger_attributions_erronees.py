@@ -180,6 +180,33 @@ CORRECTIONS: tuple[Correction, ...] = (
         liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
     ),
     Correction(
+        item_id="1c5928e1", titre="Pulsions",
+        # Navo est le nom de scene de Bruno Muschio. Les deux sont exacts,
+        # mais le site le nomme « Navo » partout ailleurs — un lecteur ne
+        # reconnaitrait pas « Bruno Muschio ». Arbitre le 2026-08-19 :
+        # « tu peux ajouter Navo en tant que co-createur pour toutes les
+        # cartes ».
+        createur_faux=("Kyan Khojandi", "Kyan Khojandi, Bruno Muschio"),
+        createur="Kyan Khojandi, Navo",
+        preuve="https://fr.wikipedia.org/wiki/Kyan_Khojandi",
+    ),
+    Correction(
+        item_id="7e2f2669", titre="FloodCast",
+        # « Flaubert, Adrien Meignel » est ce que la transcription a entendu.
+        # Le podcast est de Florent Bernard et Adrien Menielle, ce que la page
+        # officielle et les autres recos du corpus disent deja.
+        createur_faux="Flaubert, Adrien Meignel",
+        createur="Florent Bernard, Adrien Ménielle",
+        preuve="https://fr.wikipedia.org/wiki/Florent_Bernard",
+    ),
+    Correction(
+        item_id="f2b90f79", titre="Continue tu m'intéresses",
+        # « Patrick » tronque le nom ; iTunes (id1812415752) donne
+        # « Patrick Baud », deja retenu lors de l'arbitrage des doublons.
+        createur_faux="Patrick", createur="Patrick Baud",
+        preuve="https://itunes.apple.com/lookup?id=1812415752&country=fr",
+    ),
+    Correction(
         item_id="1c0535f8", titre="Gus",
         # SensCritique credite « Jeremie Dethelot et Haroun Saifi » (2019) ;
         # le co-auteur manquait aux deux fiches fusionnees.

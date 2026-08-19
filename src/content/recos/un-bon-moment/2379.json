@@ -41,6 +41,12 @@
     },
     {
       "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/kheiron_/"
+    },
+    {
+      "ethics": "neutral",
       "kind": "buy",
       "label": "Fnac Spectacles",
       "url": "https://www.fnacspectacles.com/artist/kheiron/"
@@ -55,5 +61,6 @@
   "transcriptSource": "youtube",
   "types": [
     "spectacle"
-  ]
+  ],
+  "creator": "Kheiron"
 }

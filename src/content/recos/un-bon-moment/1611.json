@@ -55,9 +55,15 @@
   "kind": "reco",
   "links": [
     {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "BilletReduc",
+      "url": "https://www.billetreduc.com/spectacle-adel-fugazi.htm"
+    },
+    {
       "ethics": "indie",
       "kind": "official",
-      "label": "Site officiel et dates de tournée",
+      "label": "Site officiel",
       "url": "https://www.adelfugazi.fr/"
     }
   ],

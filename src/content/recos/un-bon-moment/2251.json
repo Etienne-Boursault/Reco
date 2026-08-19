@@ -42,6 +42,12 @@
       "kind": "streaming",
       "label": "Netflix — Ricky Gervais: Armageddon",
       "url": "https://www.netflix.com/fr/title/81714181"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/rickygervais/"
     }
   ],
   "quote": "Je l'adore, c'est mon idole.",
@@ -53,5 +59,6 @@
   "transcriptSource": "youtube",
   "types": [
     "artiste"
-  ]
+  ],
+  "creator": "Ricky Gervais"
 }

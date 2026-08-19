@@ -120,6 +120,17 @@ GROUPES: tuple[Groupe, ...] = (
         types=("film",),
     ),
     Groupe(
+        survivant="1c5928e1", perdants=("02a01b94",),
+        titre="Pulsions",
+        # Le spectacle de Kyan Khojandi existait aussi au singulier, avec une
+        # mention publiee et un seul lien la ou l'autre fiche en porte cinq.
+        # Meme lien YouTube vers le spectacle integral des deux cotes.
+        raison="« Pulsion » au singulier, meme spectacle",
+        types=("spectacle", "video"),
+        createur="Kyan Khojandi, Navo",
+        titres_alternatifs=("Pulsion",),
+    ),
+    Groupe(
         survivant="c1be5cf1", perdants=("50b3cd38",),
         titre="Fouloscopie",
         # Arbitre a la relecture du 2026-08-19. Mehdi Moussaid tient une

@@ -459,7 +459,13 @@ const pageTitle = item.creator
 .work-link {
     display: inline-flex;
     align-items: center;
-    padding: 0.4em 0.9em;
+    /* L'espacement entre l'icône et le texte a été demandé deux fois. Le
+       premier essai avait atterri sur `.social-link` : les deux blocs
+       commencent par les mêmes trois lignes, et le remplacement a mordu sur
+       le mauvais. `em` plutôt que `px` pour qu'il suive la taille du
+       libellé. */
+    gap: 0.75em;
+    padding: 0.4em 1.05em 0.4em 0.75em;
     border-radius: 999px;
     background: color-mix(in oklab, var(--text) 6%, transparent);
     border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
