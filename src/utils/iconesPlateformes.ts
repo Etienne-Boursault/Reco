@@ -100,6 +100,27 @@ export const WHITELISTED_ICON_HOSTS = new Set<string>([
   'www.twitch.tv',
   'watch.plex.tv',
   'www.tf1.fr',
+  // Vague 5 (2026-08-19) : hôtes DÉJÀ fréquents dans les liens du corpus
+  // et qui n'avaient aucune icône — `www.imdb.com` à lui seul apparaît dans
+  // 353 liens. Leur tuile est la favicon officielle du site, récupérée une
+  // fois par `tools/recuperer_favicons.py` et intégrée en data URI.
+  'www.imdb.com',
+  'www.kyan.fr',
+  'verino.fr',
+  'www.infoconcert.com',
+  'www.mollat.com',
+  'theatredumarais.fr',
+  'www.offi.fr',
+  'encoreuntour.com',
+  'le-pacte.com',
+  'www.parislibrairies.fr',
+  'www.decitre.fr',
+  'www.jds.fr',
+  'www.albin-michel.fr',
+  'www.librest.com',
+  'apps.apple.com',
+  'louiemedia.com',
+  'www.m6.fr',
 ]);
 // Normalisation host → host whitelisté canonique. Couvre les VARIANTES d'un
 // même host (sous-domaines d'artistes Bandcamp/itch.io, YouTube mobile, alias
