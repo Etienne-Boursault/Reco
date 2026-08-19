@@ -121,6 +121,125 @@ GROUPES: tuple[Groupe, ...] = (
         raison="deux fiches pour une chaine, un livre et des videos",
         types=("chaine", "livre", "video"),
     ),
+
+    # --- Vingt-deux doublons FRANCS (2026-08-19) --------------------------
+    # Meme titre, meme type, createurs compatibles : il n'y a rien a
+    # arbitrer, et l'editeur a demande de les fusionner sans le deranger.
+    # Le survivant est la fiche la mieux renseignee — createur, identifiants
+    # externes, liens manuels, annee — et non la plus citee : une fiche
+    # pauvre tres citee reste pauvre.
+    #
+    # Aucun `types` n'est impose : les deux fiches s'accordent deja.
+    Groupe(
+        survivant="7f74a9dd", perdants=("b35c18df",),
+        titre="Adel Fugazi",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="372c8ea6", perdants=("2bae2669",),
+        titre="Barbès Comedy Club",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="4d802505", perdants=("3d447d4e",),
+        titre="Comment c'est loin",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="154970ac", perdants=("f70ffecf",),
+        titre="Euphoria",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="7e2f2669", perdants=("f1d88049",),
+        titre="Floodcast",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="fa52ae22", perdants=("fd6f56ee",),
+        titre="I Will Survive",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="e144b9b9", perdants=("909ec4b7",),
+        titre="L'Effondrement",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="de1ed6c0", perdants=("97aa4894",),
+        titre="Le Visiteur du futur",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="c14574a7", perdants=("706a7439",),
+        titre="Les mecs que je veux ken",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="f7d575cd", perdants=("043f9f4e",),
+        titre="Les Nouveaux Sauvages",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="348facf5", perdants=("34705998",),
+        titre="Les Pieds sur Terre",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="27f69c55", perdants=("27745c51",),
+        titre="Les Quatre Accords Toltèques",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="b600d479", perdants=("e12a58bf",),
+        titre="Loki",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="3476d875", perdants=("ad4eac0b",),
+        titre="Los años nuevos",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="765a0b3a", perdants=("c8c7aa04",),
+        titre="Lève-toi et tombe",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="7d95093f", perdants=("a167aa0d",),
+        titre="Message Personnel",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="0ce04c0f", perdants=("792a8bb7",),
+        titre="Pluribus",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="7d06a413", perdants=("0b4a4b06",),
+        titre="Ricky Gervais",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="f5c1e93f", perdants=("237187fc",),
+        titre="Sugar Sammy",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="235e92d1", perdants=("877b2d63",),
+        titre="The Great Review",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="9bd83eb2", perdants=("d140d440",),
+        titre="Théo Babac",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
+    Groupe(
+        survivant="45706764", perdants=("8be1a426",),
+        titre="White Fire",
+        raison="doublon franc : meme type, createurs compatibles",
+    ),
 )
 
 

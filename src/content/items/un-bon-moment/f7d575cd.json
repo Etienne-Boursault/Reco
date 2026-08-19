@@ -6,5 +6,77 @@
   "types": [
     "film"
   ],
-  "year": 2014
+  "year": 2014,
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Les%20Nouveaux%20Sauvages&c=movies"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "indie",
+      "name": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Les%20Nouveaux%20Sauvages"
+    },
+    {
+      "ethics": "indie",
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Les%20Nouveaux%20Sauvages"
+    }
+  ],
+  "externalIds": {
+    "tmdb": 265195,
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/265195-relatos-salvajes/watch?locale=FR"
+  }
 }

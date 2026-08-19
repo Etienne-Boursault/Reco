@@ -708,5 +708,37 @@
    "video"
   ],
   "motif": "arbitre (3 types)"
+ },
+ {
+  "id": "9007b397",
+  "titre": "Hot Ones",
+  "avant_item": [
+   "podcast",
+   "video"
+  ],
+  "avant_recos": [
+   "podcast",
+   "video"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "aucun flux podcast (arbitrage du 2026-08-17)"
+ },
+ {
+  "id": "aeed6ba0",
+  "titre": "ASKIP",
+  "avant_item": [
+   "video",
+   "podcast"
+  ],
+  "avant_recos": [
+   "podcast",
+   "video"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "aucun flux podcast (arbitrage du 2026-08-17)"
  }
 ]

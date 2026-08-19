@@ -322,8 +322,8 @@ const pageTitle = item.creator
                 ]}
               >
                 {l.icone ? (
-                  <img class="work-link-icone" src={l.icone} alt="" width="16"
-                       height="16" loading="lazy" decoding="async" />
+                  <img class="work-link-icone" src={l.icone} alt="" width="22"
+                       height="22" loading="lazy" decoding="async" />
                 ) : (
                   <span class="work-link-symbole" aria-hidden="true">{l.symbole}</span>
                 )}
@@ -459,7 +459,7 @@ const pageTitle = item.creator
 .work-link {
     display: inline-flex;
     align-items: center;
-    padding: 0.35em 0.8em;
+    padding: 0.4em 0.9em;
     border-radius: 999px;
     background: color-mix(in oklab, var(--text) 6%, transparent);
     border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
@@ -473,15 +473,17 @@ const pageTitle = item.creator
     color: var(--accent);
   }
   .work-link-icone {
-    width: 16px;
-    height: 16px;
+    /* Agrandies a la demande : a 16 px, les logos de plateforme se lisaient
+       mal a cote d'un texte de 0,85 rem. */
+    width: 22px;
+    height: 22px;
     border-radius: 3px;
     flex-shrink: 0;
     /* Le logo garde ses couleurs de marque, y compris au survol. */
     object-fit: contain;
   }
   .work-link-symbole {
-    font-size: 0.9em;
+    font-size: 1.15em;
     line-height: 1;
     flex-shrink: 0;
   }
