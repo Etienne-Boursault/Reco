@@ -18,6 +18,15 @@ l'editeur a choisie. Alain Chabat a PRODUIT la serie sans la creer : il sort.
 
 Les liens : ceux de la reco la plus complete, verifies un par un. Six pour
 « Bref », ce qui est exactement le plafond d'affichage de la carte.
+
+DEUXIEME PASSE (2026-08-19)
+---------------------------
+« il y a Disney+ mais il y a surtout YouTube en priorite » : la chaine
+officielle passe en tete, et « Ou regarder » sort pour tenir dans les six.
+
+« pense bien a mettre l'etoile "Leur oeuvre" puisque ce sont eux qui parlent de
+leur propre oeuvre » : Kyan et Navo sont les HOSTS du podcast, Bref est leur
+serie, et la politique du 2026-07-07 range ce cas sous `guestWork`.
 """
 from __future__ import annotations
 
@@ -58,8 +67,11 @@ def test_toutes_les_graphies_convergent(avant):
 
 
 def test_une_reco_deja_alignee_n_est_pas_reecrite():
+    # `guestWork` fait partie de l'alignement depuis la passe du 2026-08-19 :
+    # sans lui, la reco n'est pas « deja alignee ».
     reco = {"id": "x", "title": "Bref", "creator": "Kyan Khojandi, Navo",
-            "types": ["serie"], "links": [dict(lien) for lien in ab.LIENS["bref"]]}
+            "guestWork": True, "types": ["serie"],
+            "links": [dict(lien) for lien in ab.LIENS["bref"]]}
     assert ab.transform(reco) == []
 
 
@@ -150,3 +162,82 @@ def test_main_dry_run_n_ecrit_pas(recos_root: Path):
     avant = p.read_text(encoding="utf-8")
     assert ab.main([]) == 0
     assert p.read_text(encoding="utf-8") == avant
+
+
+# ===== Deuxieme passe : YouTube en tete ====================================
+def test_youtube_est_le_PREMIER_lien():
+    """La carte affiche les liens dans l'ordre : le premier est le plus vu.
+
+    « il y a Disney+ mais il y a surtout YouTube en priorite ». La saison 1 se
+    regarde librement sur la chaine ; Disney+ demande un abonnement.
+    """
+    for titre, liens in ab.LIENS.items():
+        assert liens[0]["label"] == "YouTube", titre
+        assert liens[0]["url"] == "https://www.youtube.com/@Bref", titre
+
+
+def test_disney_reste_juste_derriere():
+    """Il n'est pas retire : c'est la ou la saison 2 se regarde."""
+    for titre, liens in ab.LIENS.items():
+        assert liens[1]["label"] == "Disney+", titre
+
+
+def test_ou_regarder_est_SORTI_de_bref():
+    """Il redirigeait vers Disney+, deja present : un doublon qui coutait la
+    place du lien YouTube."""
+    labels = [lien["label"] for lien in ab.LIENS["bref"]]
+    assert "Où regarder" not in labels
+    assert len(labels) == 6  # le plafond, pas un de plus
+
+
+def test_une_reco_sans_youtube_est_corrigee():
+    reco = {"id": "x", "title": "Bref", "types": ["serie"],
+            "links": [dict(lien) for lien in ab.LIENS["bref"][1:]]}
+    ab.transform(reco)
+    assert reco["links"][0]["url"] == "https://www.youtube.com/@Bref"
+
+
+# ===== Deuxieme passe : l'etoile « Leur oeuvre » ===========================
+def test_l_etoile_leur_oeuvre_est_posee():
+    """Kyan et Navo animent le podcast : Bref est leur serie."""
+    reco = {"id": "x", "title": "Bref", "types": ["serie"]}
+    ab.transform(reco)
+    assert reco["guestWork"] is True
+
+
+def test_l_etoile_est_posee_meme_quand_un_INVITE_cite_la_serie():
+    """ubm-1547 : c'est Antoine Gouy qui en parle. L'oeuvre reste celle des
+    hosts, et le badge dit « Leur oeuvre » — l'oeuvre de qui parle."""
+    reco = {"id": "x", "title": "Bref", "types": ["serie"],
+            "recommendedBy": "Antoine Gouy"}
+    ab.transform(reco)
+    assert reco["guestWork"] is True
+    assert reco["recommendedBy"] == "Antoine Gouy"  # l'attribution est intacte
+
+
+def test_l_etoile_n_est_JAMAIS_posee_a_None():
+    """Le schema declare `guestWork` optionnel, pas nullable : un `null`
+    casserait le build Astro."""
+    reco = {"id": "x", "title": "Bref", "types": ["serie"]}
+    ab.transform(reco)
+    assert reco["guestWork"] is not None
+
+
+def test_l_etoile_deja_posee_ne_produit_aucun_changement():
+    reco = {"id": "x", "title": "Bref", "creator": ab.CREATEUR, "guestWork": True,
+            "types": ["serie"], "links": [dict(l) for l in ab.LIENS["bref"]]}
+    assert ab.transform(reco) == []
+
+
+def test_une_reco_ECARTEE_ne_recoit_pas_l_etoile():
+    reco = {"id": "x", "title": "Bref", "status": "discarded"}
+    ab.transform(reco)
+    assert "guestWork" not in reco
+
+
+def test_le_changement_guestWork_est_journalise():
+    """`dataset_fixes` construit son rapport a partir des `Change` : un champ
+    mute sans `Change` serait ecrit sans trace."""
+    reco = {"id": "x", "title": "Bref", "types": ["serie"]}
+    champs = [c.field for c in ab.transform(reco)]
+    assert "guestWork" in champs

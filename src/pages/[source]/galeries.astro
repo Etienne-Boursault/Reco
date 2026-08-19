@@ -34,6 +34,8 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
+import { publicMentions, selectByType } from '../../lib/gallery/aggregate';
+import { GALERIES_PAR_TYPE, PAGES_DEDIEES } from '../../lib/gallery/typesGaleries';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -45,52 +47,33 @@ const data = source.data;
 const id = source.id;
 
 const items = (await getCollection('items')).map((i) => i.data);
-const mentions = (await getCollection('mentions'))
-  .filter((m) => m.data.sourceRef.sourceId === id)
-  .map((m) => m.data);
+// `publicMentions` écarte les mentions `discarded`, comme le font les pages
+// elles-mêmes. Sans ce filtre, ce sommaire annonçait 450 films là où la page
+// en montre 198 — relevé à la relecture du 2026-08-19.
+const mentions = publicMentions(
+  (await getCollection('mentions'))
+    .filter((m) => m.data.sourceRef.sourceId === id)
+    .map((m) => m.data),
+);
 const mentionnes = new Set(mentions.map((m) => m.itemId));
 const vus = items.filter((it) => mentionnes.has(it.id));
 
-/** Compte les œuvres d'une galerie, pour que le sommaire annonce du réel. */
+/**
+ * Compte les œuvres d'une galerie EN PASSANT PAR LA MÊME FONCTION que les
+ * pages. Un compte réécrit ici finirait par diverger — c'est déjà arrivé.
+ */
 const compter = (types: string[]): number =>
-  vus.filter((it) => (it.types ?? []).some((t) => types.includes(t))).length;
+  selectByType(vus, mentions, types).length;
 
-// Les mêmes filtres que les pages elles-mêmes. S'ils divergeaient, ce sommaire
-// annoncerait des nombres que les pages ne montrent pas.
-const galeries = [
-  { url: `/${id}/films`, titre: 'Films', n: compter(['film']) },
-  { url: `/${id}/series`, titre: 'Séries', n: compter(['serie']) },
-  { url: `/${id}/musique`, titre: 'Musique', n: compter(['musique', 'album']) },
-  { url: `/${id}/livres`, titre: 'Livres et BD', n: compter(['livre', 'bd']) },
-  { url: `/${id}/chaines`, titre: 'Chaînes', n: compter(['chaine']) },
-];
-
-// TOUS les types, y compris ceux sans galerie dédiée — demandé à la relecture
-// du 2026-08-19. Ils n'ont pas de page à eux, mais la page « toutes les
-// recommandations » sait les filtrer : ses puces portent exactement ces
-// identifiants, et le lien y arrive avec le filtre déjà posé.
-const TOUS_LES_TYPES: { cle: string; titre: string }[] = [
-  { cle: 'film', titre: 'Films' },
-  { cle: 'serie', titre: 'Séries' },
-  { cle: 'artiste', titre: 'Artistes' },
-  { cle: 'musique', titre: 'Musique' },
-  { cle: 'album', titre: 'Albums' },
-  { cle: 'spectacle', titre: 'Spectacles' },
-  { cle: 'livre', titre: 'Livres' },
-  { cle: 'bd', titre: 'BD' },
-  { cle: 'video', titre: 'Vidéos' },
-  { cle: 'chaine', titre: 'Chaînes' },
-  { cle: 'podcast', titre: 'Podcasts' },
-  { cle: 'jeu', titre: 'Jeux' },
-  { cle: 'lieu', titre: 'Lieux' },
-  { cle: 'application', titre: 'Applications' },
-  { cle: 'autre', titre: 'Autres' },
-];
-
-const types = TOUS_LES_TYPES
-  .map((t) => ({ ...t, n: compter([t.cle]) }))
-  // Un type que le corpus ne porte pas n'apprend rien : on ne l'affiche pas.
-  .filter((t) => t.n > 0);
+// Une seule source pour les quatorze galeries : la table qui sert aussi la
+// route dynamique. Si elle divergeait de ce sommaire, les nombres annoncés ici
+// ne seraient pas ceux des pages.
+const galeries = [...PAGES_DEDIEES, ...GALERIES_PAR_TYPE]
+  .map((g) => ({ ...g, n: compter(g.types) }))
+  // Un type que le corpus ne porte pas n'a pas de page construite : le lister
+  // donnerait un lien mort.
+  .filter((g) => g.n > 0)
+  .sort((a, b) => b.n - a.n);
 
 const autres = [
   { url: `/${id}/recos`, titre: 'Toutes les recommandations',
@@ -122,26 +105,17 @@ const oeuvres = vus
       n'est pas indexée — elle sert à la relecture.
     </p>
 
-    <h2>Par type</h2>
+    <h2>Galeries par type</h2>
+    <p class="tag">
+      Quatorze galeries, une par type d'œuvre. Chacune a sa page — celles qui
+      n'en avaient pas renvoyaient vers « toutes les recommandations », ce qui
+      n'était pas la même chose.
+    </p>
     <ul class="liste">
       {galeries.map((g) => (
         <li>
-          <a href={g.url}>{g.titre}</a>
+          <a href={`/${id}/${g.slug}`}>{g.titre}</a>
           <span class="n">{g.n}</span>
-        </li>
-      ))}
-    </ul>
-
-    <h2>Tous les types</h2>
-    <p class="tag">
-      Les types sans galerie dédiée renvoient vers « toutes les
-      recommandations », dont les puces filtrent sur ces mêmes identifiants.
-    </p>
-    <ul class="liste">
-      {types.map((t) => (
-        <li>
-          <a href={`/${id}/recos`} data-type={t.cle}>{t.titre}</a>
-          <span class="n">{t.n}</span>
         </li>
       ))}
     </ul>

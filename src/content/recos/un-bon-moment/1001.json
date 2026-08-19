@@ -53,9 +53,16 @@
     "anthropic",
     "openai"
   ],
+  "guestWork": true,
   "id": "ubm-1001",
   "kind": "citation",
   "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Bref"
+    },
     {
       "ethics": "neutral",
       "kind": "streaming",

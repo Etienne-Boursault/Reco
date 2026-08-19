@@ -166,6 +166,10 @@ const topWorks = topWorksRaw.map((w) => ({
       <StatChart
         title={t('stats.heading.monthly')}
         bars={monthlyBars}
+        {/* Pas de libelle sous les barres : soixante-dix mois s'y entassaient
+            au point d'etre illisibles. Les reperes d'annee suffisent a se
+            situer, et le tableau accessible garde chaque mois. */}
+        libelles="aucun"
         valueHeader={t('stats.col.episodes')}
         emptyKey="stats.empty.monthly"
       />

@@ -164,3 +164,118 @@ describe('StatChart — tous les libellés, et les groupes (2026-08-19)', () => 
     expect(html).not.toContain('separateur-groupe');
   });
 });
+
+describe('StatChart — cadre et libellés (2026-08-19, seconde passe)', () => {
+  const barres = (n: number, long = false) =>
+    Array.from({ length: n }, (_, i) => ({
+      label: long ? `LibelléAssezLong${i}` : `L${i}`,
+      value: i + 1,
+    }));
+
+  it('agrandit la marge basse quand les libellés sont inclinés', async () => {
+    // Inclines a -45°, ils descendaient sous le cadre et s'y trouvaient
+    // coupes. Signale a la relecture : « les titres sont caches par le cadre ».
+    const droit = await render({ title: 'T', bars: barres(4) });
+    const incline = await render({ title: 'T', bars: barres(20, true) });
+    const hauteur = (html: string) =>
+      Number(/viewBox="0 0 600 (\d+)"/.exec(html)?.[1] ?? 0);
+    expect(hauteur(incline)).toBeGreaterThan(hauteur(droit));
+  });
+
+  it('n’écrit aucun libellé sous les barres quand on les désactive', async () => {
+    // Les mois s'entassaient au point d'etre illisibles : « mon idee pour les
+    // annees etait bonne pour les mois, tu peux les enlever ».
+    const html = await render({
+      title: 'Épisodes par mois',
+      libelles: 'aucun',
+      bars: [
+        { label: 'jan', value: 1, groupe: '2020' },
+        { label: 'fév', value: 2, groupe: '2020' },
+      ],
+    });
+    expect(html).not.toContain('class="bar-label"');
+  });
+
+  it('garde les libellés dans le tableau accessible, même désactivés', async () => {
+    // Le graphique reste lisible au lecteur d'ecran : ce qu'on retire, c'est
+    // l'encombrement visuel, jamais l'information.
+    const html = await render({
+      title: 'T', libelles: 'aucun',
+      bars: [{ label: 'jan', value: 1, groupe: '2020' }],
+    });
+    // Astro pose un attribut de portee sur chaque balise : on cherche le
+    // contenu de la cellule, pas la balise nue.
+    expect(html).toMatch(/<td[^>]*>jan<\/td>/);
+  });
+
+  it('garde les groupes quand les libellés sont désactivés', async () => {
+    const html = await render({
+      title: 'T', libelles: 'aucun',
+      bars: [
+        { label: 'jan', value: 1, groupe: '2020' },
+        { label: 'jan', value: 2, groupe: '2021' },
+      ],
+    });
+    expect(html).toContain('>2020<');
+    expect(html).toContain('separateur-groupe');
+  });
+
+  it('affiche les libellés par défaut', async () => {
+    const html = await render({ title: 'T', bars: barres(3) });
+    expect(html).toContain('class="bar-label"');
+  });
+
+  // ===== Le cadre loge les libelles ======================================
+  //
+  // « Les titres sont cachés par le cadre, tu peux ajuster ? Les titres et/ou
+  // le cadre ? » (relecture du 2026-08-19). Ces trois tests vérifient la
+  // géométrie plutôt que l'apparence : un libellé incliné à -45° descend de
+  // `longueur × 6 × sin(45°)` sous son ancre, et ce point doit rester dans le
+  // viewBox.
+  /** Le point le plus bas atteint par un libellé, en unités du viewBox. */
+  const basDesLibelles = (html: string): number => {
+    const ancre = /class="bar-label"[^>]*/.test(html)
+      ? Number(/<text[^>]*?y="([\d.]+)"[^>]*?class="bar-label"/.exec(html)?.[1] ?? NaN)
+      : NaN;
+    const textes = [...html.matchAll(/class="bar-label"[^>]*>([^<]+)</g)].map((m) => m[1]);
+    const plusLong = Math.max(0, ...textes.map((t) => t.length));
+    const incline = html.includes('rotate(-45');
+    return ancre + (incline ? plusLong * 6 * Math.SQRT1_2 : 0) + 3;
+  };
+
+  /** La hauteur du viewBox — le cadre visible. */
+  const hauteurCadre = (html: string): number =>
+    Number(/viewBox="0 0 600 (\d+)"/.exec(html)?.[1] ?? NaN);
+
+  it('loge les libellés courts sans agrandir le cadre', async () => {
+    const html = await render({
+      title: 'T',
+      bars: [{ label: 'Jeux', value: 3 }, { label: 'BD', value: 1 }],
+    });
+    expect(basDesLibelles(html)).toBeLessThanOrEqual(hauteurCadre(html));
+  });
+
+  it('agrandit le cadre pour loger quatorze libellés inclinés', async () => {
+    // Le cas signalé : la répartition par type, quatorze colonnes étroites.
+    const types = ['Films', 'Artistes', 'Musique', 'Séries', 'Livres',
+      'Spectacles', 'Chaînes', 'Vidéos', 'Autres', 'Podcasts', 'Albums',
+      'Jeux', 'BD', 'Lieux'];
+    const html = await render({
+      title: 'T', bars: types.map((label, i) => ({ label, value: 20 - i })),
+    });
+    expect(html).toContain('rotate(-45');
+    expect(basDesLibelles(html)).toBeLessThanOrEqual(hauteurCadre(html));
+  });
+
+  it('loge un libellé très long — le plafond fixe le coupait', async () => {
+    // La version précédente plafonnait la marge à 96 px, ce qui coupait tout
+    // libellé de plus de dix-sept caractères. Un nom d'invité y arrive.
+    const html = await render({
+      title: 'T',
+      bars: Array.from({ length: 14 }, (_, i) => ({
+        label: `Jean-Baptiste Machin ${i}`, value: 14 - i,
+      })),
+    });
+    expect(basDesLibelles(html)).toBeLessThanOrEqual(hauteurCadre(html));
+  });
+});

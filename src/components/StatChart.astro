@@ -53,6 +53,15 @@ interface Props {
   /** Message lorsqu'aucune barre n'est fournie. */
   emptyMessage?: string;
   /**
+   * `aucun` retire les libelles SOUS les barres. Le tableau accessible et les
+   * infobulles les gardent : ce qu'on enleve est l'encombrement visuel, jamais
+   * l'information.
+   *
+   * Sert au graphique mensuel, ou soixante-dix mois s'entassaient au point
+   * d'etre illisibles alors que les reperes d'annee suffisent a se situer.
+   */
+  libelles?: 'auto' | 'aucun';
+  /**
    * F-M-5 : clé i18n alternative pour le message vide (ex. `stats.empty.monthly`).
    * Si fournie, override `emptyMessage`. Permet aux callers de spécialiser
    * le message sans passer de string brute.
@@ -69,21 +78,63 @@ const {
   categoryHeader = t('stats.chart.categoryHeader'),
   emptyKey,
   emptyMessage = emptyKey ? t(emptyKey) : t('stats.chart.empty'),
+  libelles = 'auto',
 } = Astro.props;
 
 const isEmpty = bars.length === 0;
 const max = Math.max(1, ...bars.map((b) => b.value));
 const total = bars.reduce((acc, b) => acc + b.value, 0);
 const W = 600; // viewBox width — responsive via 100% width
-const H = height;
 const padX = 8;
 const padTop = 8;
-const padBottom = 28;
-const barAreaH = H - padTop - padBottom;
 const slotW = bars.length > 0 ? (W - padX * 2) / bars.length : 0;
 const barW = Math.max(2, slotW * 0.65);
 /** Hauteur minimale d'une barre visible (M26-7). */
 const MIN_BAR_H = 2;
+
+// TOUS les libelles sont affiches, et aucun n'est tronque.
+//
+// La version precedente en masquait un sur N au-dela de douze barres, et
+// coupait les autres a huit caracteres : sur « repartition par type », qui en
+// compte quatorze, la moitie etait invisible. Signale le 2026-08-19.
+//
+// Quand les colonnes deviennent etroites, on INCLINE au lieu de masquer.
+const LARGEUR_LISIBLE = 46;
+const masquerLibelles = libelles === 'aucun';
+const inclinerLabels = !masquerLibelles && slotW < LARGEUR_LISIBLE;
+
+// La marge basse doit LOGER les libelles, sinon le cadre les coupe — c'est ce
+// qui est arrive a la premiere version inclinee.
+//
+// Le calcul est GEOMETRIQUE, pas empirique : a 11 px, un caractere occupe
+// environ 6 px de large ; incline a -45°, il descend de `6 x sin(45°)`. Un
+// plafond fixe suffisait tant que les libelles restaient courts — celui de la
+// version precedente (96 px) aurait coupe tout libelle de plus de dix-sept
+// caracteres, ce que les noms d'invites atteignent sans peine.
+const LARGEUR_CARACTERE = 6;
+const DESCENTE_PAR_CARACTERE = LARGEUR_CARACTERE * Math.SQRT1_2;  // sin(45°)
+/** L'ecart entre le bas des barres et l'ancre du libelle, plus les descendantes. */
+const MARGE_LIBELLE = 20;
+const plusLongLabel = bars.reduce((n, b) => Math.max(n, b.label.length), 0);
+const padBottom = masquerLibelles
+  ? 12
+  : inclinerLabels
+    ? Math.min(
+        140,  // au-dela, le graphique ne serait plus qu'un mur de texte
+        MARGE_LIBELLE + Math.ceil(plusLongLabel * DESCENTE_PAR_CARACTERE),
+      )
+    : 28;
+
+const H = height + Math.max(0, padBottom - 28);
+const barAreaH = H - padTop - padBottom;
+
+/** L'indice de chaque barre ouvrant un nouveau groupe (l'annee, pour les mois). */
+const debutsDeGroupe = bars
+  .map((b, i) => ({ groupe: b.groupe, i }))
+  .filter(({ groupe, i }) => groupe && groupe !== bars[i - 1]?.groupe);
+// La premiere barre ouvre un bloc mais ne se separe de rien : un trait colle
+// au bord gauche ne separerait aucune paire.
+const separateurs = debutsDeGroupe.filter(({ i }) => i > 0);
 
 const captionId = `chart-${hashSlug(title)}`;
 // F-L-5 : `descId` est toujours posé sur `<figure aria-describedby={descId}>` ;
@@ -94,32 +145,6 @@ const descId = isEmpty ? `chart-desc-${hashSlug(title)}` : undefined;
 // figcaption secondaire (aria-describedby) pour éviter le double labelling.
 const emptyAria = ariaLabel ?? emptyMessage;
 
-/**
- * F-H-11 : politique d'affichage des libellés sous l'axe X.
- *  - `bars.length > 12` → on n'affiche qu'un libellé tous les
- *    `Math.ceil(bars.length / 12)` (anti-overlap, garde la grille lisible).
- *  - Sinon → tronqué à 8 chars + `…` quand nécessaire (évite l'overlap
- *    horizontal sur slots étroits).
- */
-// TOUS les libelles sont affiches, et aucun n'est tronque.
-//
-// La version precedente en masquait un sur N au-dela de douze barres, et
-// coupait les autres a huit caracteres. Sur « repartition par type », qui en
-// compte quatorze, un libelle sur deux etait invisible ; sur « episodes par
-// mois », les dates etaient illisibles. Signale a la relecture du 2026-08-19.
-//
-// Quand les colonnes deviennent etroites, on INCLINE au lieu de masquer :
-// c'est ce qui permet de tout montrer sans rien couper.
-const LARGEUR_LISIBLE = 46;
-const inclinerLabels = slotW < LARGEUR_LISIBLE;
-
-/** L'indice de chaque barre ouvrant un nouveau groupe (l'annee, pour les mois). */
-const debutsDeGroupe = bars
-  .map((b, i) => ({ groupe: b.groupe, i }))
-  .filter(({ groupe, i }) => groupe && groupe !== bars[i - 1]?.groupe);
-// La premiere barre ouvre un bloc mais ne se separe de rien : un trait colle
-// au bord gauche ne separerait aucune paire.
-const separateurs = debutsDeGroupe.filter(({ i }) => i > 0);
 
 // F-H-12 : on retire l'attribut `height` du <svg> ; on impose le ratio
 // via `aspect-ratio: W/H` en style inline pour que la largeur 100% pilote
@@ -172,7 +197,7 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
           <g class="bar-group">
             <title>{`${b.label} — ${formatCount(b.value)} (${formatPercent(pct)})`}</title>
             <rect x={x} y={y} width={barW} height={h} class="bar" rx="2" />
-            {inclinerLabels ? (
+            {masquerLibelles ? null : inclinerLabels ? (
               <text
                 x={x + barW / 2}
                 y={H - padBottom + 12}

@@ -1,0 +1,131 @@
+---
+/**
+ * /[source]/[galerie] — les galeries de type sans fichier dédié.
+ *
+ * POURQUOI UNE ROUTE DYNAMIQUE
+ * ----------------------------
+ * Cinq types avaient leur page — `films`, `series`, `musique`, `livres`,
+ * `chaines`. Les neuf autres n'en avaient aucune : le sommaire `/galeries` les
+ * renvoyait vers `/recos` avec un filtre pré-posé. Ce n'était pas la demande
+ * (relecture du 2026-08-19) : « je souhaitais avoir un accès par types comme
+ * /series mais pour chacun des types et donc qu'ils aient tous une galerie ».
+ *
+ * Dix pages de plus, c'était dix fichiers identiques à quelques mots près. Une
+ * route dynamique les sert toutes, et `src/lib/gallery/typesGaleries.ts` porte
+ * ce qui les distingue : slug, types retenus, titre, accords.
+ *
+ * PAS DE COLLISION AVEC LES CINQ AUTRES
+ * -------------------------------------
+ * `getStaticPaths` ne renvoie que les slugs de `GALERIES_PAR_TYPE`, dont un
+ * test garantit qu'ils ne recoupent jamais ceux des pages dédiées. Sans cette
+ * garantie, Astro construirait deux pages pour la même adresse.
+ *
+ * ON NE CONSTRUIT PAS LES GALERIES VIDES
+ * --------------------------------------
+ * Un type que le corpus ne porte pas — `application`, aujourd'hui — donnerait
+ * une page sans contenu, indexée et sans intérêt. Elle apparaîtra d'elle-même
+ * le jour où une œuvre portera ce type.
+ */
+import { getCollection } from 'astro:content';
+
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n';
+import { publicMentions, selectByType } from '../../lib/gallery/aggregate';
+import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page';
+import { GALERIES_PAR_TYPE } from '../../lib/gallery/typesGaleries';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  const items = (await getCollection('items')).map((i) => i.data);
+  const toutesLesMentions = (await getCollection('mentions')).map((m) => m.data);
+
+  return sources.flatMap((source) => {
+    // Mentions PUBLIQUES seulement : un type porté uniquement par des
+    // mentions écartées donnerait une page construite mais vide.
+    const mentions = publicMentions(
+      toutesLesMentions.filter((m) => m.sourceRef.sourceId === source.id),
+    );
+    const vus = new Set(mentions.map((m) => m.itemId));
+    const presents = new Set(
+      items.filter((it) => vus.has(it.id)).flatMap((it) => it.types ?? []),
+    );
+    return GALERIES_PAR_TYPE
+      .filter((g) => g.types.some((type) => presents.has(type)))
+      .map((galerie) => ({
+        params: { source: source.id, galerie: galerie.slug },
+        props: { source, galerie },
+      }));
+  });
+}
+
+const { source, galerie } = Astro.props;
+const data = source.data;
+
+const mentions = (await getCollection('mentions'))
+  .filter((m) => m.data.sourceRef.sourceId === source.id)
+  .map((m) => m.data);  // `selectByType` applique lui-même `publicMentions`.
+const mentionedIds = new Set(mentions.map((m) => m.itemId));
+const items = (await getCollection('items'))
+  .map((i) => i.data)
+  .filter((it) => mentionedIds.has(it.id));
+
+const entries = selectByType(items, mentions, galerie.types);
+
+const heading = galerie.titre;
+// Accord au nombre : 0 et 1 prennent le singulier (règle du projet,
+// cf. `src/utils/plural.ts`). Le libellé sert au compteur visible ET à la
+// meta description, d'où la variable partagée.
+const countLabel = entries.length >= 2 ? galerie.plusieurs : galerie.unGe;
+const description = `${entries.length} ${countLabel} dans ${data.title}.`;
+
+const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
+const homeUrl = new URL('/', Astro.site).toString();
+const galleryUrl = new URL(`/${source.id}/${galerie.slug}`, Astro.site).toString();
+
+const jsonLd = [
+  galleryItemListSchema(entries, { name: heading, description }),
+  galleryBreadcrumb({
+    homeUrl, sourceName: data.title, sourceUrl,
+    galleryName: heading, galleryUrl,
+  }),
+];
+---
+
+<Layout
+  title={`${heading} — ${data.title}`}
+  description={description}
+  theme={data.theme}
+  ogSlug={source.id}
+  jsonLd={jsonLd}
+>
+  <header class="head wrap" role="banner">
+    <a class="back" href={`/${source.id}`}>
+      <span aria-hidden="true">←</span> <span>{t('gallery.backToSource')} {data.title}</span>
+    </a>
+    <h1>{heading}</h1>
+    {/* Le pluriel porte deja l'accord (« bandes dessinees recommandees »),
+        ce que « Toutes les BD » ne permettrait pas de recoller. */}
+    <p class="tag">Les {galerie.plusieurs} dans <strong>{data.title}</strong>.</p>
+  </header>
+  <main id="main" tabindex="-1" class="wrap">
+    <h2 class="visually-hidden">{heading}</h2>
+    <GalleryGrid
+      heading={heading}
+      entries={entries}
+      countLabel={countLabel}
+      emptyMessage={galerie.vide}
+      sourceId={source.id}
+    />
+  </main>
+</Layout>
+
+<style>
+  .head { padding: clamp(2rem, 6vw, 4rem) 0 1.5rem; }
+  .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .back:hover { color: var(--accent); }
+  .head h1 { font-size: clamp(2.2rem, 7vw, 5rem); margin: 0.6rem 0 0.3rem; }
+  .tag { color: var(--text); margin: 0 0 0.5rem; }
+  main { padding-bottom: 4rem; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
