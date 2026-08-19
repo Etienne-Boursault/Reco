@@ -32,6 +32,11 @@ import type { I18nKey } from '../i18n/fr';
 export interface Bar {
   label: string;
   value: number;
+  /**
+   * Regroupement visuel — l'annee, pour les mois. Un trait separe deux
+   * groupes, et le nom s'affiche une fois par bloc. Absent : aucun effet.
+   */
+  groupe?: string;
 }
 
 interface Props {
@@ -96,11 +101,25 @@ const emptyAria = ariaLabel ?? emptyMessage;
  *  - Sinon → tronqué à 8 chars + `…` quand nécessaire (évite l'overlap
  *    horizontal sur slots étroits).
  */
-const labelStep = bars.length > 12 ? Math.ceil(bars.length / 12) : 1;
-function displayLabel(label: string, idx: number): string {
-  if (bars.length > 12) return idx % labelStep === 0 ? label : '';
-  return label.length > 8 ? `${label.slice(0, 8)}…` : label;
-}
+// TOUS les libelles sont affiches, et aucun n'est tronque.
+//
+// La version precedente en masquait un sur N au-dela de douze barres, et
+// coupait les autres a huit caracteres. Sur « repartition par type », qui en
+// compte quatorze, un libelle sur deux etait invisible ; sur « episodes par
+// mois », les dates etaient illisibles. Signale a la relecture du 2026-08-19.
+//
+// Quand les colonnes deviennent etroites, on INCLINE au lieu de masquer :
+// c'est ce qui permet de tout montrer sans rien couper.
+const LARGEUR_LISIBLE = 46;
+const inclinerLabels = slotW < LARGEUR_LISIBLE;
+
+/** L'indice de chaque barre ouvrant un nouveau groupe (l'annee, pour les mois). */
+const debutsDeGroupe = bars
+  .map((b, i) => ({ groupe: b.groupe, i }))
+  .filter(({ groupe, i }) => groupe && groupe !== bars[i - 1]?.groupe);
+// La premiere barre ouvre un bloc mais ne se separe de rien : un trait colle
+// au bord gauche ne separerait aucune paire.
+const separateurs = debutsDeGroupe.filter(({ i }) => i > 0);
 
 // F-H-12 : on retire l'attribut `height` du <svg> ; on impose le ratio
 // via `aspect-ratio: W/H` en style inline pour que la largeur 100% pilote
@@ -121,6 +140,25 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
     {/* F-H-10 : <title> enfant DIRECT du <svg> — exigé par WAI-ARIA pour
         que les ATs (NVDA, VoiceOver) annoncent le graphique nommément. */}
     <title>{title}</title>
+    {/* Les separateurs de groupe passent AVANT les barres : un trait derriere
+        la donnee se lit comme un repere, devant il la barre. */}
+    {!isEmpty && separateurs.map(({ i }) => (
+      <line
+        class="separateur-groupe"
+        x1={padX + i * slotW}
+        x2={padX + i * slotW}
+        y1={padTop}
+        y2={H - padBottom}
+      />
+    ))}
+    {!isEmpty && debutsDeGroupe.map(({ groupe, i }) => (
+      <text
+        class="label-groupe"
+        x={padX + i * slotW + 4}
+        y={padTop + 12}
+        text-anchor="start"
+      >{groupe}</text>
+    ))}
     {isEmpty ? (
       <text x={W / 2} y={H / 2} text-anchor="middle" class="empty-text">{emptyMessage}</text>
     ) : (
@@ -134,12 +172,22 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
           <g class="bar-group">
             <title>{`${b.label} — ${formatCount(b.value)} (${formatPercent(pct)})`}</title>
             <rect x={x} y={y} width={barW} height={h} class="bar" rx="2" />
-            <text
-              x={x + barW / 2}
-              y={H - padBottom + 14}
-              text-anchor="middle"
-              class="bar-label"
-            >{displayLabel(b.label, i)}</text>
+            {inclinerLabels ? (
+              <text
+                x={x + barW / 2}
+                y={H - padBottom + 12}
+                text-anchor="end"
+                class="bar-label"
+                transform={`rotate(-45 ${x + barW / 2} ${H - padBottom + 12})`}
+              >{b.label}</text>
+            ) : (
+              <text
+                x={x + barW / 2}
+                y={H - padBottom + 14}
+                text-anchor="middle"
+                class="bar-label"
+              >{b.label}</text>
+            )}
           </g>
         );
       })
@@ -189,6 +237,17 @@ const svgStyle = `aspect-ratio: ${W} / ${H}; width: 100%; height: auto;`;
   }
   /* M26-10 : 12px min + contraste WCAG AA (var(--text) — pas var(--muted)
    * dont le ratio sur var(--surface) peut tomber sous 4.5:1). */
+  /* Repere d'annee : discret, il guide sans concurrencer la donnee. */
+  .separateur-groupe {
+    stroke: color-mix(in oklab, var(--text) 22%, transparent);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+  .label-groupe {
+    fill: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+  }
   .bar-label {
     font-size: 12px;
     fill: var(--text);

@@ -250,23 +250,26 @@ describe('StatChart — série non vide', () => {
     expect(Math.min(...hauteurs)).toBeGreaterThanOrEqual(2);
   });
 
-  it('libellé long tronqué à 8 caractères quand la série est courte (F-H-11)', async () => {
+  // F-H-11 REVISE le 2026-08-19 : ces deux tests exigeaient une troncature a
+  // huit caracteres et un libelle sur N. Le graphique en devenait illisible —
+  // « affiche tous les noms de toutes les colonnes ». On INCLINE desormais
+  // plutot que de couper ; l'intention anti-chevauchement est la meme.
+  it('libellé long rendu en entier (F-H-11 révisé)', async () => {
     const html = await render(StatChart, {
       title: 'Par type',
       bars: [{ label: 'Documentaires animaliers', value: 4 }],
     });
-    expect(html).toContain('Document…');
+    expect(html).toContain('Documentaires animaliers');
+    expect(html).not.toContain('Document…');
   });
 
-  it('série > 12 barres → un libellé sur N seulement', async () => {
+  it('série > 12 barres → tous les libellés rendus, aucun vide', async () => {
     const bars = Array.from({ length: 26 }, (_, i) => ({ label: `M${i}`, value: i + 1 }));
     const html = await render(StatChart, { title: 'Par mois', bars });
     const labels = [...html.matchAll(/class="bar-label"[^>]*>([^<]*)</g)].map((m) => m[1]);
     expect(labels).toHaveLength(26);
-    // Pas de troncature ici : les libellés retenus sont rendus tels quels…
     expect(labels).toContain('M0');
-    // …et la majorité est vide pour éviter le chevauchement.
-    expect(labels.filter((l) => l === '').length).toBeGreaterThan(12);
+    expect(labels.filter((l) => l === '')).toHaveLength(0);
   });
 
   it('en-têtes de colonnes personnalisables', async () => {

@@ -63,3 +63,39 @@ describe('formatPercent', () => {
     expect(formatPercent(-0.5)).toBe('0%');
   });
 });
+
+describe('libellés des mois (2026-08-19)', () => {
+  it('abrège le mois et expose l’année comme groupe', async () => {
+    // Le graphique affichait « 2020-02 », « 2020-05 »… : illisible sur six
+    // ans. La relecture a demande « juste jan/fev/mar sous les mois » et des
+    // separateurs par annee.
+    const { moisEnBarre } = await import('../../src/lib/stats/formatter');
+    expect(moisEnBarre('2020-02', 7)).toEqual({
+      label: 'fév', value: 7, groupe: '2020',
+    });
+  });
+
+  it('couvre les douze mois', async () => {
+    const { moisEnBarre } = await import('../../src/lib/stats/formatter');
+    const attendus = ['jan', 'fév', 'mar', 'avr', 'mai', 'jun',
+                      'jui', 'aoû', 'sep', 'oct', 'nov', 'déc'];
+    for (let m = 1; m <= 12; m++) {
+      const mm = String(m).padStart(2, '0');
+      expect(moisEnBarre(`2024-${mm}`, 1).label).toBe(attendus[m - 1]);
+    }
+  });
+
+  it('laisse passer un mois illisible sans lever', async () => {
+    // Donnee heritee : le champ pourrait ne pas suivre le format attendu.
+    const { moisEnBarre } = await import('../../src/lib/stats/formatter');
+    expect(moisEnBarre('n’importe quoi', 3)).toEqual({
+      label: 'n’importe quoi', value: 3, groupe: undefined,
+    });
+  });
+
+  it('rejette un numéro de mois hors bornes', async () => {
+    const { moisEnBarre } = await import('../../src/lib/stats/formatter');
+    expect(moisEnBarre('2024-13', 1).label).toBe('2024-13');
+    expect(moisEnBarre('2024-00', 1).label).toBe('2024-00');
+  });
+});

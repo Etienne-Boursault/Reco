@@ -168,9 +168,11 @@ describe('loadStatsForPage (F-H-6)', () => {
     expect(r.topGuests.map((g) => g.label)).toEqual(['Alice', 'Bob']);
     expect(r.topWorks[0]).toEqual({ label: 'Parasite', count: 2, sub: 'film' });
     expect(r.distributionBars).toEqual([{ label: 'film', value: 1 }]);
+    // Le mois est abrege et l'annee sort en groupe depuis le 2026-08-19 : le
+    // graphique alignait des « 2026-05 » illisibles sur six ans de diffusion.
     expect(r.monthlyBars).toEqual([
-      { label: '2026-05', value: 1 },
-      { label: '2026-06', value: 1 },
+      { label: 'mai', value: 1, groupe: '2026' },
+      { label: 'jun', value: 1, groupe: '2026' },
     ]);
     expect((r.jsonLd as Record<string, unknown>)['@type']).toBe('Dataset');
   });

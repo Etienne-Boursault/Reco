@@ -64,3 +64,37 @@ function trim(x: number): string {
   const s = rounded.toFixed(1);
   return s.endsWith('.0') ? s.slice(0, -2) : s;
 }
+
+/** Les douze mois abrégés, dans l'ordre. Index 0 = janvier. */
+const MOIS_ABREGES = [
+  'jan', 'fév', 'mar', 'avr', 'mai', 'jun',
+  'jui', 'aoû', 'sep', 'oct', 'nov', 'déc',
+] as const;
+
+/**
+ * Transforme un mois `YYYY-MM` en barre lisible : le mois abrégé en libellé,
+ * l'année en groupe.
+ *
+ * Le graphique « épisodes par mois » affichait les clés brutes — « 2020-02 »,
+ * « 2020-05 » — sur six ans de diffusion. Illisible, et sans repère pour
+ * situer une année. Signalé à la relecture du 2026-08-19 : « je mettrais des
+ * séparateurs par années et juste jan/fev/mar sous les mois ».
+ *
+ * L'`groupe` est ce que `StatChart` utilise pour tracer un trait au changement
+ * d'année et écrire l'année une fois par bloc.
+ *
+ * Un mois qu'on ne sait pas lire est renvoyé tel quel, sans groupe : le
+ * corpus porte de la donnée héritée, et lever ici ferait tomber la page
+ * entière pour un libellé.
+ */
+export function moisEnBarre(
+  mois: string,
+  value: number,
+): { label: string; value: number; groupe: string | undefined } {
+  const trouve = /^(\d{4})-(\d{2})$/.exec(mois);
+  const numero = trouve ? Number(trouve[2]) : 0;
+  if (!trouve || numero < 1 || numero > 12) {
+    return { label: mois, value, groupe: undefined };
+  }
+  return { label: MOIS_ABREGES[numero - 1], value, groupe: trouve[1] };
+}

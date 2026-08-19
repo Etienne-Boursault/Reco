@@ -65,12 +65,37 @@ const galeries = [
   { url: `/${id}/chaines`, titre: 'Chaînes', n: compter(['chaine']) },
 ];
 
+// TOUS les types, y compris ceux sans galerie dédiée — demandé à la relecture
+// du 2026-08-19. Ils n'ont pas de page à eux, mais la page « toutes les
+// recommandations » sait les filtrer : ses puces portent exactement ces
+// identifiants, et le lien y arrive avec le filtre déjà posé.
+const TOUS_LES_TYPES: { cle: string; titre: string }[] = [
+  { cle: 'film', titre: 'Films' },
+  { cle: 'serie', titre: 'Séries' },
+  { cle: 'artiste', titre: 'Artistes' },
+  { cle: 'musique', titre: 'Musique' },
+  { cle: 'album', titre: 'Albums' },
+  { cle: 'spectacle', titre: 'Spectacles' },
+  { cle: 'livre', titre: 'Livres' },
+  { cle: 'bd', titre: 'BD' },
+  { cle: 'video', titre: 'Vidéos' },
+  { cle: 'chaine', titre: 'Chaînes' },
+  { cle: 'podcast', titre: 'Podcasts' },
+  { cle: 'jeu', titre: 'Jeux' },
+  { cle: 'lieu', titre: 'Lieux' },
+  { cle: 'application', titre: 'Applications' },
+  { cle: 'autre', titre: 'Autres' },
+];
+
+const types = TOUS_LES_TYPES
+  .map((t) => ({ ...t, n: compter([t.cle]) }))
+  // Un type que le corpus ne porte pas n'apprend rien : on ne l'affiche pas.
+  .filter((t) => t.n > 0);
+
 const autres = [
   { url: `/${id}/recos`, titre: 'Toutes les recommandations',
     quoi: 'une carte par mention, avec filtres et recherche' },
   { url: `/${id}/stats`, titre: 'Statistiques', quoi: 'chiffres du corpus' },
-  { url: `/${id}/reports`, titre: 'Signalements',
-    quoi: 'queue interne — construite seulement avec RECO_ADMIN=1' },
 ];
 
 // Un échantillon d'œuvres : les plus mentionnées. Les lister toutes ferait
@@ -107,6 +132,20 @@ const oeuvres = vus
       ))}
     </ul>
 
+    <h2>Tous les types</h2>
+    <p class="tag">
+      Les types sans galerie dédiée renvoient vers « toutes les
+      recommandations », dont les puces filtrent sur ces mêmes identifiants.
+    </p>
+    <ul class="liste">
+      {types.map((t) => (
+        <li>
+          <a href={`/${id}/recos`} data-type={t.cle}>{t.titre}</a>
+          <span class="n">{t.n}</span>
+        </li>
+      ))}
+    </ul>
+
     <h2>Autres pages</h2>
     <ul class="liste">
       {autres.map((a) => (
@@ -116,6 +155,18 @@ const oeuvres = vus
         </li>
       ))}
     </ul>
+
+    <h2>Signalements</h2>
+    <p class="tag">
+      La page <code>/{id}/reports</code> n'est <strong>pas construite</strong>
+      par défaut : elle affiche les adresses e-mail des personnes qui
+      signalent une erreur, et n'a rien à faire dans un build public. Pour la
+      consulter :
+    </p>
+    <pre class="cmd">python tools/manage_reports.py --list</pre>
+    <p class="tag">
+      ou <code>RECO_ADMIN=1 npm run build</code> pour l'obtenir en page.
+    </p>
 
     <h2>Pages d'œuvre</h2>
     <p class="tag">
@@ -161,5 +212,13 @@ const oeuvres = vus
   .liste a:hover { color: var(--accent); }
   /* `tabular-nums` : les compteurs s'alignent au lieu de danser. */
   .n { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .cmd {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
   .quoi { color: var(--muted); font-size: 0.8rem; text-align: right; }
 </style>

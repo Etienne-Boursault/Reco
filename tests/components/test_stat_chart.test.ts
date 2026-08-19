@@ -44,28 +44,33 @@ describe('StatChart — A11y / labels / dimensions', () => {
     expect(svgTag).toMatch(/aspect-ratio:\s*\d+\s*\/\s*\d+/);
   });
 
-  it('F-H-11 : ≤ 12 barres ⇒ libellés tronqués à 8 chars + ellipsis', async () => {
+  // F-H-11 REVISE le 2026-08-19. Ces deux tests exigeaient l'inverse : un
+  // libelle tronque a huit caracteres, et un sur N masque au-dela de douze
+  // barres. L'intention — eviter le chevauchement — reste la bonne ; la
+  // solution a change, parce que masquer et tronquer rendait le graphique
+  // illisible : « affiche tous les noms de toutes les colonnes ».
+  //
+  // On INCLINE desormais plutot que de couper. Les tests suivent.
+  it('F-H-11 : un libellé long n’est plus tronqué', async () => {
     const bars = Array.from({ length: 5 }, (_, i) => ({
       label: `LibelléTrèsLong${i}`,
       value: i + 1,
     }));
     const html = await render({ title: 'x', bars });
-    // Premier libellé devrait être tronqué (8 chars + …)
-    expect(html).toMatch(/>LibelléT…</);
+    expect(html).toContain('LibelléTrèsLong0');
+    expect(html).not.toMatch(/>LibelléT…</);
   });
 
-  it('F-H-11 : > 12 barres ⇒ affiche 1 label sur N (Math.ceil(n/12))', async () => {
+  it('F-H-11 : au-delà de douze barres, tous les libellés restent rendus', async () => {
     const bars = Array.from({ length: 24 }, (_, i) => ({
       label: `m${i.toString().padStart(2, '0')}`,
       value: i,
     }));
     const html = await render({ title: 'monthly', bars });
-    // ceil(24/12) = 2 → bars 0, 2, 4… affichées ; 1, 3, 5… vides.
-    // On compte les <text class="bar-label">…</text> non vides.
     const labels = [...html.matchAll(/<text[^>]*class="bar-label"[^>]*>([^<]*)<\/text>/g)];
-    const nonEmpty = labels.filter((m) => m[1].trim().length > 0);
+    const nonVides = labels.filter((m) => m[1].trim().length > 0);
     expect(labels.length).toBe(24);
-    expect(nonEmpty.length).toBe(12);
+    expect(nonVides.length).toBe(24);
   });
 
   it('F-M-5 : emptyKey override le message via i18n', async () => {
@@ -84,5 +89,78 @@ describe('StatChart — A11y / labels / dimensions', () => {
       emptyMessage: 'custom vide',
     });
     expect(html).toContain('custom vide');
+  });
+});
+
+describe('StatChart — tous les libellés, et les groupes (2026-08-19)', () => {
+  const barres = (n: number) =>
+    Array.from({ length: n }, (_, i) => ({ label: `L${i}`, value: i + 1 }));
+
+  it('affiche TOUS les libellés, même au-delà de douze barres', async () => {
+    // Le graphique « répartition par type » en compte quatorze : un sur deux
+    // etait masque, et la relecture du 2026-08-19 a demande a les voir tous.
+    const html = await render({ title: 'T', bars: barres(14) });
+    for (let i = 0; i < 14; i++) expect(html).toContain(`>L${i}<`);
+  });
+
+  it('ne tronque plus les libellés courts', async () => {
+    const html = await render({
+      title: 'T',
+      bars: [{ label: 'Applications', value: 1 }, { label: 'Spectacles', value: 2 }],
+    });
+    expect(html).toContain('Applications');
+    expect(html).not.toContain('Applicat…');
+  });
+
+  it('incline les libellés quand les colonnes sont étroites', async () => {
+    // Quatorze libellés horizontaux se chevaucheraient. L'inclinaison est ce
+    // qui permet de tous les montrer sans les tronquer.
+    const html = await render({ title: 'T', bars: barres(20) });
+    expect(html).toContain('rotate(-45');
+  });
+
+  it('laisse les libellés droits quand il y a de la place', async () => {
+    const html = await render({ title: 'T', bars: barres(4) });
+    expect(html).not.toContain('rotate(-45');
+  });
+
+  it('trace un séparateur à chaque changement de groupe', async () => {
+    // Les mois s'etalent sur six ans : sans repere, on cherche l'annee a
+    // l'oeil. Signale a la relecture.
+    const html = await render({
+      title: 'Épisodes par mois',
+      bars: [
+        { label: 'jan', value: 1, groupe: '2020' },
+        { label: 'fév', value: 2, groupe: '2020' },
+        { label: 'jan', value: 3, groupe: '2021' },
+      ],
+    });
+    expect(html).toContain('class="separateur-groupe"');
+  });
+
+  it('affiche le nom du groupe une seule fois par bloc', async () => {
+    const html = await render({
+      title: 'T',
+      bars: [
+        { label: 'jan', value: 1, groupe: '2020' },
+        { label: 'fév', value: 2, groupe: '2020' },
+        { label: 'jan', value: 3, groupe: '2021' },
+      ],
+    });
+    expect((html.match(/>2020</g) ?? []).length).toBe(1);
+    expect((html.match(/>2021</g) ?? []).length).toBe(1);
+  });
+
+  it('ne trace aucun séparateur avant la première barre', async () => {
+    // Une ligne collee au bord gauche ne separe rien.
+    const html = await render({
+      title: 'T', bars: [{ label: 'jan', value: 1, groupe: '2020' }],
+    });
+    expect(html).not.toContain('class="separateur-groupe"');
+  });
+
+  it('reste inchangé quand aucune barre ne porte de groupe', async () => {
+    const html = await render({ title: 'T', bars: barres(5) });
+    expect(html).not.toContain('separateur-groupe');
   });
 });

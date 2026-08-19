@@ -144,9 +144,13 @@ export interface StatsRow {
   sub?: string;
 }
 
+import { moisEnBarre } from './formatter';
+
 export interface StatsBar {
   label: string;
   value: number;
+  /** Regroupement visuel — l'annee, pour les mois. Cf. `StatChart`. */
+  groupe?: string;
 }
 
 export interface LoadStatsForPageResult {
@@ -192,10 +196,11 @@ export function loadStatsForPage(
   const distributionBars: StatsBar[] = Object.entries(
     snapshot.typeDistribution,
   ).map(([label, value]) => ({ label, value }));
-  const monthlyBars: StatsBar[] = snapshot.monthlyEpisodes.map((m) => ({
-    label: m.month,
-    value: m.count,
-  }));
+  // Le mois abrege en libelle, l'annee en groupe : le graphique trace un
+  // trait au changement d'annee au lieu d'aligner des « 2020-02 » illisibles.
+  const monthlyBars: StatsBar[] = snapshot.monthlyEpisodes.map(
+    (m) => moisEnBarre(m.month, m.count),
+  );
 
   const generatedLocal = formatGeneratedAt(snapshot.generatedAt, args.locale);
 
