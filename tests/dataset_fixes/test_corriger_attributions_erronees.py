@@ -29,10 +29,11 @@ import corriger_attributions_erronees as cae
 
 @pytest.fixture
 def corpus(tmp_path: Path, monkeypatch) -> Path:
-    for nom in ("items", "recos"):
+    for nom in ("items", "recos", "mentions"):
         (tmp_path / nom).mkdir()
     monkeypatch.setattr(common, "ITEMS_DIR", tmp_path / "items")
     monkeypatch.setattr(common, "RECOS_DIR", tmp_path / "recos")
+    monkeypatch.setattr(common, "MENTIONS_DIR", tmp_path / "mentions")
     return tmp_path
 
 
@@ -63,6 +64,7 @@ def test_un_champ_VIDE_peut_etre_une_valeur_fautive(corpus: Path):
     d'attribution sure. Il en existe une : le champ vide devient a son tour
     une valeur a corriger."""
     lol = next(c for c in cae.CORRECTIONS if None in _fautifs(c))
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": lol.item_id})
     reco = poser(corpus, "recos", "r", {
         "id": "ubm-1", "title": lol.titre, "status": "validated"})
     cae.executer(apply=True)
@@ -80,6 +82,7 @@ def test_une_correction_peut_viser_PLUSIEURS_valeurs_fautives(corpus: Path):
     """« LOL » se trompait de deux facons : la fiche creditait la plateforme,
     une reco creditait celui qui la recommande."""
     lol = next(c for c in cae.CORRECTIONS if len(_fautifs(c)) > 1)
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": lol.item_id})
     a, b = _fautifs(lol)[:2]
     item = poser(corpus, "items", "i", {
         "id": lol.item_id, "title": lol.titre, "creator": a})
@@ -152,6 +155,7 @@ def test_des_liens_sont_AJOUTES_a_la_fin(corpus: Path):
     plateformes à donner aux utilisateurs » — pour un corpus sans fiche
     unique, on ouvre la filmographie et deux façons de la regarder."""
     hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": hitch.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": hitch.titre, "status": "validated",
         "links": [{"kind": "info", "label": "Wikipédia",
@@ -164,6 +168,7 @@ def test_des_liens_sont_AJOUTES_a_la_fin(corpus: Path):
 
 def test_un_lien_deja_present_n_est_pas_ajoute_deux_fois(corpus: Path):
     hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": hitch.item_id})
     deja = dict(hitch.liens_a_ajouter[0])
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": hitch.titre, "status": "validated",
@@ -177,6 +182,7 @@ def test_TOUS_les_liens_deja_presents_ne_declenchent_aucune_ecriture(corpus: Pat
     """Une passe rejouee ne doit rien reecrire : c'est ce qui rend l'outil
     sur a relancer apres coup."""
     hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": hitch.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": hitch.titre, "status": "validated",
         "links": [dict(lien) for lien in hitch.liens_a_ajouter]})
@@ -247,15 +253,17 @@ def test_un_titre_fautif_est_corrige(corpus: Path):
     """« Shage » venait du transcript ; la chaine du corpus s'appelle
     « PLANET SHAGA »."""
     shaga = next(c for c in cae.CORRECTIONS if c.item_id == "227bf692")
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": shaga.item_id})
     item = poser(corpus, "items", "a", {
         "id": shaga.item_id, "title": shaga.titre, "types": ["artiste"]})
     cae.executer(apply=True)
     assert json.loads(item.read_text(encoding="utf-8"))["title"] == "Shaga"
 
 
-def test_la_reco_est_retrouvee_par_l_ANCIEN_titre(corpus: Path):
+def test_la_reco_suit_le_renommage_de_son_oeuvre(corpus: Path):
     """Au moment de la passe, elle porte encore la graphie fautive."""
     shaga = next(c for c in cae.CORRECTIONS if c.item_id == "227bf692")
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": shaga.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": shaga.titre, "status": "validated"})
     cae.executer(apply=True)
@@ -266,6 +274,7 @@ def test_un_lien_menant_a_une_AUTRE_oeuvre_est_retire(corpus: Path):
     """Le lien Deezer de « Mister Mystère » pointait un single de 2010, pas
     l'album de 2009."""
     mm = next(c for c in cae.CORRECTIONS if c.item_id == "e9d58ce6")
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": mm.item_id})
     faux = mm.liens_a_retirer[0]
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": mm.titre, "status": "validated",
@@ -280,6 +289,7 @@ def test_un_lien_menant_a_une_AUTRE_oeuvre_est_retire(corpus: Path):
 
 def test_les_AUTRES_liens_sont_intacts(corpus: Path):
     mm = next(c for c in cae.CORRECTIONS if c.item_id == "e9d58ce6")
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": mm.item_id})
     liens = [{"kind": "info", "label": "MusicBrainz", "url": "https://musicbrainz.org/x"},
              {"kind": "social", "label": "Instagram", "url": "https://instagram.com/y"}]
     reco = poser(corpus, "recos", "1", {
@@ -328,7 +338,37 @@ def test_la_simulation_n_ecrit_rien(corpus: Path):
 
 
 # ===== Les recos ===========================================================
-def test_la_reco_est_corrigee_par_son_titre(corpus: Path):
+def test_une_reco_est_rattachee_par_son_OEUVRE(corpus: Path):
+    """Le rattachement passe par la mention, qui porte l'itemId. Le titre ne
+    serait pas fiable : deux fiches distinctes s'appelaient « Vincent
+    Delerm » — l'artiste et la bande originale d'un de ses films."""
+    delerm = next(c for c in cae.CORRECTIONS if c.item_id == "c054d35a")
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": delerm.item_id})
+    poser(corpus, "mentions", "m2", {"id": "ubm-2", "itemId": "autre-fiche"})
+    bonne = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": delerm.titre, "status": "validated"})
+    voisine = poser(corpus, "recos", "2", {
+        "id": "ubm-2", "title": delerm.titre, "status": "validated"})
+    avant = voisine.read_text(encoding="utf-8")
+    cae.executer(apply=True)
+    assert json.loads(bonne.read_text(encoding="utf-8"))["title"] == delerm.titre_corrige
+    assert voisine.read_text(encoding="utf-8") == avant   # l'autre œuvre intacte
+
+
+def test_une_reco_SANS_mention_n_est_pas_touchee(corpus: Path):
+    """Le titre ne sert plus de repli : il reproduisait le defaut qu'il
+    devait rattraper. Une reco sans mention publiee ne s'affiche nulle part,
+    ne pas la corriger ne coute rien."""
+    delerm = next(c for c in cae.CORRECTIONS if c.item_id == "c054d35a")
+    orpheline = poser(corpus, "recos", "x", {
+        "id": "ubm-999", "title": delerm.titre, "status": "validated"})
+    avant = orpheline.read_text(encoding="utf-8")
+    cae.executer(apply=True)
+    assert orpheline.read_text(encoding="utf-8") == avant
+
+
+def test_la_reco_est_corrigee_via_sa_mention(corpus: Path):
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": DESIRE.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
         "status": "validated"})
@@ -337,7 +377,10 @@ def test_la_reco_est_corrigee_par_son_titre(corpus: Path):
     assert rapport["recos"] == 1
 
 
-def test_le_titre_est_compare_sans_la_casse(corpus: Path):
+def test_la_casse_du_titre_n_a_plus_d_importance(corpus: Path):
+    """Le rattachement passe par l'oeuvre : le titre de la reco peut
+    etre ecrit n'importe comment."""
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": DESIRE.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": DESIRE.titre.upper(),
         "creator": DESIRE.createur_faux, "status": "validated"})
@@ -346,6 +389,7 @@ def test_le_titre_est_compare_sans_la_casse(corpus: Path):
 
 
 def test_une_reco_ECARTEE_n_est_pas_touchee(corpus: Path):
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": DESIRE.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
         "status": "discarded"})
@@ -355,6 +399,7 @@ def test_une_reco_ECARTEE_n_est_pas_touchee(corpus: Path):
 
 
 def test_une_reco_HORS_TABLE_n_est_pas_touchee(corpus: Path):
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": "rien-a-voir"})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": "Un titre sans rapport", "creator": "Netflix",
         "status": "validated"})
@@ -369,6 +414,7 @@ def test_une_reco_hors_table_n_interrompt_pas_le_parcours(corpus: Path):
     poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": "Sans rapport", "creator": "X",
         "status": "validated"})
+    poser(corpus, "mentions", "m2", {"id": "ubm-2", "itemId": ANGES.item_id})
     cible = poser(corpus, "recos", "2", {
         "id": "ubm-2", "title": ANGES.titre, "creator": ANGES.createur_faux,
         "status": "validated"})
@@ -377,6 +423,7 @@ def test_une_reco_hors_table_n_interrompt_pas_le_parcours(corpus: Path):
 
 
 def test_une_reco_DEJA_correcte_n_est_pas_reecrite(corpus: Path):
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": DESIRE.item_id})
     reco = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": DESIRE.titre, "creator": "Albert Dupontel",
         "status": "validated"})
@@ -397,6 +444,8 @@ def test_un_externalIds_sans_la_cle_visee_est_laisse_tel_quel(corpus: Path):
 def test_la_simulation_parcourt_TOUTES_les_recos(corpus: Path):
     """Le dry-run doit annoncer l'ensemble du travail, pas s'arreter a la
     premiere correction — c'est sur ce rapport que la decision se prend."""
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": DESIRE.item_id})
+    poser(corpus, "mentions", "m2", {"id": "ubm-2", "itemId": ANGES.item_id})
     a = poser(corpus, "recos", "1", {
         "id": "ubm-1", "title": DESIRE.titre, "creator": DESIRE.createur_faux,
         "status": "validated"})
@@ -420,9 +469,24 @@ def test_un_json_illisible_est_ignore(corpus: Path):
     poser(corpus, "items", "a", {
         "id": DESIRE.item_id, "title": DESIRE.titre,
         "creator": DESIRE.createur_faux})
-    (corpus / "items" / "casse.json").write_text("{ pas du json", encoding="utf-8")
-    (corpus / "recos" / "casse.json").write_text("{{{", encoding="utf-8")
+    for dossier in ("items", "recos", "mentions"):
+        (corpus / dossier / "casse.json").write_text("{ nope", encoding="utf-8")
     assert cae.executer(apply=True)["items"] == 1
+
+
+def test_une_mention_sans_id_est_ignoree(corpus: Path):
+    """Un document technique sans `id` ne doit pas s'indexer sous la cle
+    vide, ce qui rattacherait n'importe quelle reco sans identifiant."""
+    poser(corpus, "items", "a", {
+        "id": DESIRE.item_id, "title": DESIRE.titre,
+        "creator": DESIRE.createur_faux})
+    poser(corpus, "mentions", "orpheline", {"itemId": DESIRE.item_id})
+    reco = poser(corpus, "recos", "1", {
+        "title": DESIRE.titre, "creator": DESIRE.createur_faux,
+        "status": "validated"})
+    avant = reco.read_text(encoding="utf-8")
+    assert cae.executer(apply=True)["items"] == 1
+    assert reco.read_text(encoding="utf-8") == avant
 
 
 def test_des_externalIds_absents_ne_font_pas_echouer(corpus: Path):

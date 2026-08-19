@@ -55,6 +55,18 @@ class Groupe:
     raison: str
     #: Types a poser sur le survivant apres fusion, si les fiches divergeaient.
     types: tuple[str, ...] = ()
+    #: Graphie du createur a imposer. Les fiches en double portent souvent
+    #: deux graphies, dont l'une vient du transcript et l'autre d'une source.
+    createur: str | None = None
+    #: Cles d'`externalIds` que le perdant NE DOIT PAS transmettre. Sert quand
+    #: l'identifiant designe autre chose que l'oeuvre — le compte personnel
+    #: d'un co-createur, par exemple.
+    externes_a_ne_pas_reprendre: tuple[str, ...] = ()
+    #: Titres que le groupe admet EN PLUS de celui du survivant. Sans cette
+    #: liste, le garde-fou des titres divergents bloque — et il a raison de
+    #: bloquer par defaut : deux titres differents signalent presque toujours
+    #: deux oeuvres. L'exception se declare, elle ne se devine pas.
+    titres_alternatifs: tuple[str, ...] = ()
     a_arbitrer: list[str] = field(default_factory=list)
 
 
@@ -240,6 +252,166 @@ GROUPES: tuple[Groupe, ...] = (
         titre="White Fire",
         raison="doublon franc : meme type, createurs compatibles",
     ),
+
+    # --- Seize fusions ARBITREES (2026-08-19) ----------------------------
+    # Trois agents ont examine ces groupes un par un et rendu un verdict
+    # source a l'appui ; les dix-sept sources ont ete ouvertes et verifiees,
+    # puis l'editeur a valide l'ensemble.
+    #
+    # Elles se distinguent des doublons francs ci-dessus par ce qui les
+    # rendait invisibles au groupement automatique : deux graphies de
+    # createur, dont l'une venait du transcript.
+    Groupe(
+        survivant="f2b90f79", perdants=("ed31790d",),
+        titre="Continue tu m'intéresses",
+        # Même podcast : les deux fiches portent exactement les mêmes liens (shows.acast.com/continue-tu-minteresses, Apple id1812415752, Deezer 1001857631, Spo
+        # Source : https://itunes.apple.com/lookup?id=1812415752&country=fr
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("podcast",),
+        createur="Patrick Baud",
+    ),
+    Groupe(
+        survivant="30fe030e", perdants=("c3e6abbd", "eb960ae6"),
+        titre="Des trains à travers la plaine",
+        # Un seul et même podcast : les trois fiches portent exactement les mêmes liens (shows.acast.com/des-trains-a-travers-la-plaine, Apple id1549461850, Spo
+        # Source : https://shows.acast.com/des-trains-a-travers-la-plaine
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("podcast",),
+        createur="Ambroise Carminati, Baptiste Pignon, Nicolas Roux",
+    ),
+    Groupe(
+        survivant="1c0535f8", perdants=("02664ef8",),
+        titre="Gus",
+        # Même œuvre : les deux fiches pointent vers la même vidéo (GgcJxj0yugM) et la même chaîne (@JÉRÉMIEDETHELOT). yt-dlp sur cette vidéo renvoie chaîne « J
+        # Source : https://www.senscritique.com/serie/GUS/38953092
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("serie",),
+        createur="Jérémie Dethelot",
+    ),
+    Groupe(
+        survivant="f395a970", perdants=("1747634f",),
+        titre="Invisible",
+        # Même œuvre : le programme Canal+ « Invisible » de Clément Cotentin. La page Apple TV du lien de la fiche serie donne le synopsis « Pour rendre visible
+        # Source : https://tv.apple.com/fr/show/invisible/umc.cmc.69qq448caxln83g9jadkqsaus
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("serie",),
+        createur="Clément Cotentin",
+    ),
+    Groupe(
+        survivant="82a4d2a6", perdants=("124d9468",),
+        titre="Jour de pluie",
+        # Même œuvre : les deux fiches portent le même externalId Instagram « pierrehillairet_ » et les mêmes liens (billetreduc 408073, theatredumarais.fr). La
+        # Source : https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("spectacle",),
+        createur="Pierre Hillairet",
+    ),
+    Groupe(
+        survivant="334b7420", perdants=("15f5edf7",),
+        titre="Julien Santini",
+        # Même humoriste : les deux fiches portent le même nom et exactement les mêmes quatre liens (santinicomedy.com, gaite.com, ngproductions.fr, fnacspectac
+        # Source : https://gaite.com/spectacles/julien-santini/
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("artiste", "spectacle"),
+        createur="Julien Santini",
+    ),
+    Groupe(
+        survivant="3de6f4e2", perdants=("2942b178",),
+        titre="Kheiron",
+        # Les deux fiches désignent la même personne : Manouchehr Tabib, dit Kheiron, humoriste et réalisateur franco-iranien. Elles pointent toutes deux vers l
+        # Source : https://fr.wikipedia.org/wiki/Kheiron
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("artiste", "spectacle"),
+        createur="Kheiron",
+    ),
+    Groupe(
+        survivant="27b7d50a", perdants=("95958aeb",),
+        titre="L'épreuve du feu",
+        # Un seul film, pas deux : les deux fiches portent exactement les mêmes trois liens (sooner.fr/films/l-epreuve-du-feu-1, AlloCiné 1000001690, JustWatch
+        # Source : https://www.allocine.fr/film/fichefilm_gen_cfilm=1000001690.html
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("film",),
+        createur="Aurélien Peyre",
+    ),
+    Groupe(
+        survivant="8bd96ef1", perdants=("9daec9c1",),
+        titre="La Course des géants",
+        # Même pièce : mêmes deux liens sur les deux fiches (Théâtre des Béliers Parisiens et Théâtre de la Renaissance). La page du Théâtre des Béliers Parisie
+        # Source : https://www.theatredesbeliersparisiens.com/spectacle/la-course-des-geants-tournee/
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("spectacle",),
+        createur="Mélody Mourey",
+    ),
+    Groupe(
+        survivant="1bf77f8a", perdants=("452a3c98",),
+        titre="Le Bureau des Légendes",
+        # Même série, sans ambiguïté : les quatre mentions parlent de la série française de Canal+ (« la meilleure série française au monde », « qui est sur MyC
+        # Source : https://fr.wikipedia.org/wiki/Le_Bureau_des_l%C3%A9gendes
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("serie",),
+        createur="Éric Rochant",
+    ),
+    Groupe(
+        survivant="5c481b82", perdants=("1a693d09",),
+        titre="Le Trône des Frogz",
+        # Même œuvre : les deux fiches portent les mêmes six liens, dont le même IMDb (tt5485592) et le même TMDB (tv/81160). La page TMDB ouverte crédite « Yac
+        # Source : https://www.themoviedb.org/tv/81160
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("serie", "video"),
+        createur="Yacine Belhousse",
+    ),
+    Groupe(
+        survivant="fdb364ab", perdants=("de1dd4f5",),
+        titre="Louis Chappey",
+        # Même personne : un seul humoriste porte ce nom, et les deux mentions viennent du même milieu stand-up (Jason Brokerss ubm-2878, Rémi Boyes ubm-3047 «
+        # Source : https://www.youtube.com/watch?v=gSUdYDNzJLk
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("artiste",),
+        createur="Louis Chappey",
+    ),
+    Groupe(
+        survivant="9e2e879d", perdants=("7210e327",),
+        titre="Pomme",
+        # Une seule œuvre : l'artiste. Les deux fiches portent rigoureusement les mêmes liens, tous des liens d'artiste et non d'œuvre (Deezer artist/5382747 —
+        # Source : https://api.deezer.com/artist/5382747
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("artiste", "musique", "spectacle"),
+        createur="Pomme",
+    ),
+    Groupe(
+        survivant="1c5928e1", perdants=("7e85327e",),
+        titre="Pulsions",
+        # Même œuvre, sans le moindre doute : titre, types, externalIds (instagram kyankhojandi) et les cinq liens sont rigoureusement identiques sur les deux f
+        # Source : https://fr.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&titles=Kyan%20Khojandi
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("spectacle", "video"),
+        createur="Kyan Khojandi, Navo",
+    ),
+    Groupe(
+        survivant="af15df89", perdants=("85902a09",),
+        titre="Validé",
+        # Même série Canal+ : les deux fiches portent les mêmes identifiants d'œuvre (AlloCiné 24293, IMDb tt11537880, TMDB 90816, Netflix 82157057). L'article
+        # Source : https://fr.wikipedia.org/wiki/Valid%C3%A9
+        raison="arbitre le 2026-08-19, source verifiee",
+        types=("serie",),
+        createur="Franck Gastambide",
+        # `85902a09` porte `instagram: xavier.lacaille` — le compte personnel
+        # d'un des quatre co-createurs, pas celui de la serie. Sans cette
+        # exclusion, la fusion le ferait migrer sur la fiche survivante.
+        externes_a_ne_pas_reprendre=("instagram",),
+    ),
+    Groupe(
+        survivant="815746f1", perdants=("9e67d5ae",),
+        titre="La Zone d'intérêt",
+        # Deux fiches pour le film de Jonathan Glazer, l'une sous son
+        # titre francais, l'autre sous l'anglais. Leurs deux mentions
+        # pointaient le meme instant (00:31:44) et la meme phrase.
+        # Source : https://www.themoviedb.org/movie/467244
+        raison="titre francais et titre anglais de la meme oeuvre",
+        types=("film",),
+        createur="Jonathan Glazer",
+        titres_alternatifs=("The Zone of Interest",),
+    ),
 )
 
 
@@ -279,8 +451,9 @@ def executer(groupes: Sequence[Groupe], *, apply: bool) -> dict[str, Any]:
 
         _, survivant = items[groupe.survivant]
         docs_perdants = [items[p][1] for p in presents]
+        admis = {(t or "").strip().lower() for t in groupe.titres_alternatifs}
         titres = {(d.get("title") or "").strip().lower()
-                  for d in [survivant, *docs_perdants]}
+                  for d in [survivant, *docs_perdants]} - admis
         if len(titres) > 1:
             # Un titre different signale que la table ne decrit plus le
             # corpus : mieux vaut s'arreter que fusionner deux oeuvres.
@@ -291,6 +464,12 @@ def executer(groupes: Sequence[Groupe], *, apply: bool) -> dict[str, Any]:
         fusionner(survivant, docs_perdants, groupe.a_arbitrer)
         if groupe.types:
             survivant["types"] = list(groupe.types)
+        if groupe.createur:
+            survivant["creator"] = groupe.createur
+        for cle in groupe.externes_a_ne_pas_reprendre:
+            externes = survivant.get("externalIds")
+            if isinstance(externes, dict) and cle in externes:
+                del externes[cle]
 
         for perdant in presents:
             for chemin_m, mention in mentions.values():

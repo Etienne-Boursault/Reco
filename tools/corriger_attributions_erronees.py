@@ -24,8 +24,20 @@ rapprochements : cela demandait un arbitrage, obtenu depuis. Deux graphies
 issues du transcript sont corrigees — « Shage » pour Shaga, « Dailyo » pour
 Daylio.
 
-Le rattachement des recos se fait par l'ANCIEN titre : c'est celui qu'elles
-portent encore au moment ou la passe s'execute.
+COMMENT UNE RECO EST RATTACHEE A SA CORRECTION
+----------------------------------------------
+Par son OEUVRE, et par elle seule : `mention.itemId` designe la fiche, et
+mention et reco partagent leur identifiant.
+
+La premiere version rattachait par TITRE, et ca s'est vu tout de suite : deux
+fiches distinctes s'appelaient « Vincent Delerm » — l'artiste, et la bande
+originale d'un de ses films. Renommer la seconde a renomme la reco de la
+premiere.
+
+Le titre a d'abord ete garde comme repli, pour les recos qu'aucune mention ne
+relie ; un test a montre que le repli reproduisait exactement le meme defaut.
+Il est parti. Une reco sans mention publiee ne s'affiche nulle part : ne pas
+la corriger ne coute rien.
 
 CE QUI N'EST PAS TRAITE ICI
 ---------------------------
@@ -168,6 +180,24 @@ CORRECTIONS: tuple[Correction, ...] = (
         liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
     ),
     Correction(
+        item_id="c054d35a", titre="Vincent Delerm",
+        titre_corrige="Je ne sais pas si c'est tout le monde (Bande originale du film)",
+        # Cette fiche n'est pas l'artiste mais un ALBUM : la citation dit « la
+        # BO du film qu'il a fait », et ses liens pointent la bande originale.
+        # Portant le nom de l'artiste, elle faisait un faux doublon avec la
+        # vraie fiche « Vincent Delerm ». Titre exact confirme par Deezer
+        # (album 122899792). Le createur perdait aussi un « e » de trop.
+        createur_faux="Vincent Delerme", createur="Vincent Delerm",
+        preuve="https://api.deezer.com/album/122899792",
+    ),
+    Correction(
+        item_id="27b7d50a", titre="L'épreuve du feu",
+        titre_corrige="L'Épreuve du feu",
+        # La fiche disparue dans la fusion portait la majuscule, celle qui
+        # survit ne l'avait pas. AlloCine ecrit « L'Épreuve du feu ».
+        preuve="https://www.allocine.fr/film/fichefilm_gen_cfilm=1000001690.html",
+    ),
+    Correction(
         item_id="86eb4e90", titre="LOL",
         # Deux erreurs differentes pour la meme oeuvre : la FICHE creditait la
         # plateforme de diffusion, une RECO creditait celui qui la recommande.
@@ -248,12 +278,25 @@ def _corriger_document(doc: dict[str, Any], correction: Correction, *,
     return touches
 
 
+def _corrections_par_reco() -> dict[str, Correction]:
+    """id de reco -> correction, via les mentions publiees de son oeuvre."""
+    par_item = {c.item_id: c for c in CORRECTIONS}
+    trouvees: dict[str, Correction] = {}
+    for chemin in common.MENTIONS_DIR.rglob("*.json"):
+        try:
+            mention = json.loads(chemin.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        correction = par_item.get(mention.get("itemId", ""))
+        if correction is not None and mention.get("id"):
+            trouvees[mention["id"]] = correction
+    return trouvees
+
+
 def executer(*, apply: bool) -> dict[str, Any]:
     """Corrige items et recos. Renvoie un rapport."""
     par_id: dict[str, Correction] = {c.item_id: c for c in CORRECTIONS}
-    # Les recos ne portent pas d'itemId : on les rattache par titre, ce qui
-    # suffit ici, ces trois titres etant sans homonyme dans le corpus.
-    par_titre = {c.titre.strip().lower(): c for c in CORRECTIONS}
+    par_reco = _corrections_par_reco()
 
     rapport = {"items": 0, "recos": 0, "champs": []}
     for chemin in sorted(common.ITEMS_DIR.rglob("*.json")):
@@ -286,7 +329,7 @@ def executer(*, apply: bool) -> dict[str, Any]:
         # la trace de ce qui a ete ecarte.
         if doc.get("status") == "discarded":
             continue
-        correction = par_titre.get((doc.get("title") or "").strip().lower())
+        correction = par_reco.get(doc.get("id", ""))
         if correction is None:
             continue
         touches = _corriger_document(doc, correction)

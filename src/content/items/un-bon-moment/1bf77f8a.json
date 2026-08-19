@@ -8,8 +8,7 @@
   "schemaVersion": 1,
   "title": "Le Bureau des Légendes",
   "types": [
-    "serie",
-    "podcast"
+    "serie"
   ],
   "watchProviders": [
     {
@@ -22,5 +21,6 @@
       "name": "Canal+ Séries",
       "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Bureau%20des%20L%C3%A9gendes"
     }
-  ]
+  ],
+  "creator": "Éric Rochant"
 }

@@ -53,16 +53,20 @@ def test_corrige_le_type_dune_piece_de_theatre():
 def test_corrige_type_ET_orthographe_du_createur():
     """Trois champs d'un coup, et la garde porte sur les trois.
 
-    Le TITRE fait partie de l'état attendu depuis le 2026-08-18 : il portait
-    lui aussi « Delerme » alors que le créateur était déjà corrigé, si bien que
-    la même carte affichait les deux orthographes.
+    L'entrée d'origine visait « ubm-1349 » (Vincent Delerm) ; elle a été
+    retirée le 2026-08-19, son travail accompli et son titre ayant changé une
+    dernière fois. Le mécanisme, lui, sert toujours : « Odieux Boby » corrige
+    d'un coup le titre, le créateur et un identifiant externe, et sa garde
+    porte sur le titre autant que sur les types.
     """
-    doc = _doc("ubm-1349", types=["autre", "musique"],
-               creator="Vincent Delerme", title="Vincent Delerme")
+    doc = _doc("ubm-1896", types=["artiste", "autre"], title="Bobby",
+               externalIds={"deezer": "un-homonyme"})
     fra.transform(doc)
-    assert doc["types"] == ["album"]
-    assert doc["creator"] == "Vincent Delerm"
-    assert doc["title"] == "Vincent Delerm"
+    assert doc["title"] == "Odieux Boby"
+    assert doc["creator"] == "Odieux Boby"
+    # Un faux positif d'une passe automatique : sans ce retrait, une passe
+    # ulterieure l'aurait promu en lien d'ecoute vers un musicien homonyme.
+    assert "deezer" not in (doc.get("externalIds") or {})
 
 
 def test_remplace_les_liens_dun_homonyme():

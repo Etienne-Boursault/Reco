@@ -121,6 +121,43 @@ def test_le_createur_du_survivant_n_est_pas_ECRASE(corpus: Path):
     assert json.loads(a.read_text(encoding="utf-8"))["creator"] == "Christophe Pauly"
 
 
+def test_le_createur_de_la_table_prime(corpus: Path):
+    """Les fiches en double portent souvent deux graphies, dont l'une vient
+    du transcript : « Jérémy Detlo » contre « Jérémie Dethelot »."""
+    a, _ = monter(corpus, survivant={
+        "id": "aaa", "title": "Balade Mentale", "creator": "Jérémy Detlo"})
+    groupe = fdc.Groupe(survivant="aaa", perdants=("bbb",),
+                        titre="Balade Mentale", raison="test",
+                        createur="Jérémie Dethelot")
+    fdc.executer([groupe], apply=True)
+    assert json.loads(a.read_text(encoding="utf-8"))["creator"] == "Jérémie Dethelot"
+
+
+def test_un_identifiant_externe_TROMPEUR_ne_migre_pas(corpus: Path):
+    """La fiche « Validé » qui disparaît porte le compte Instagram personnel
+    d'un co-créateur, pas celui de la série."""
+    a, _ = monter(corpus,
+                  survivant={"id": "aaa", "title": "Balade Mentale"},
+                  perdant={"id": "bbb", "title": "Balade Mentale",
+                           "externalIds": {"instagram": "xavier.lacaille",
+                                           "tmdb": 42}})
+    groupe = fdc.Groupe(survivant="aaa", perdants=("bbb",),
+                        titre="Balade Mentale", raison="test",
+                        externes_a_ne_pas_reprendre=("instagram",))
+    fdc.executer([groupe], apply=True)
+    externes = json.loads(a.read_text(encoding="utf-8")).get("externalIds") or {}
+    assert "instagram" not in externes
+    assert externes.get("tmdb") == 42      # le reste migre normalement
+
+
+def test_une_exclusion_sans_objet_ne_fait_rien(corpus: Path):
+    monter(corpus)
+    groupe = fdc.Groupe(survivant="aaa", perdants=("bbb",),
+                        titre="Balade Mentale", raison="test",
+                        externes_a_ne_pas_reprendre=("instagram",))
+    assert fdc.executer([groupe], apply=True)["fusions"] == 1
+
+
 def test_la_simulation_ne_supprime_RIEN(corpus: Path):
     a, b = monter(corpus)
     m = poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": "bbb"})
@@ -158,6 +195,29 @@ def test_des_TITRES_DIVERGENTS_bloquent_la_fusion(corpus: Path):
     rapport = fdc.executer([GROUPE], apply=True)
     assert b.exists()
     assert rapport["fusions"] == 0
+    assert any("titres divergents" in r for r in rapport["refus"])
+
+
+def test_un_titre_ALTERNATIF_declare_leve_le_blocage(corpus: Path):
+    """« La Zone d'intérêt » et « The Zone of Interest » sont le même film
+    sous deux langues. L'exception se déclare, elle ne se devine pas."""
+    _, b = monter(corpus, perdant={
+        "id": "bbb", "title": "The Zone of Interest", "types": ["film"]})
+    groupe = fdc.Groupe(survivant="aaa", perdants=("bbb",),
+                        titre="La Zone d'intérêt", raison="test",
+                        titres_alternatifs=("The Zone of Interest",))
+    assert fdc.executer([groupe], apply=True)["fusions"] == 1
+    assert not b.exists()
+
+
+def test_un_titre_alternatif_NON_declare_bloque_toujours(corpus: Path):
+    _, b = monter(corpus, perdant={
+        "id": "bbb", "title": "Un tout autre film", "types": ["film"]})
+    groupe = fdc.Groupe(survivant="aaa", perdants=("bbb",),
+                        titre="La Zone d'intérêt", raison="test",
+                        titres_alternatifs=("The Zone of Interest",))
+    rapport = fdc.executer([groupe], apply=True)
+    assert b.exists()
     assert any("titres divergents" in r for r in rapport["refus"])
 
 
@@ -209,6 +269,12 @@ def test_chaque_groupe_porte_une_raison():
     for g in fdc.GROUPES:
         assert len(g.raison) > 10, g.titre
         assert g.perdants, g.titre
+
+
+def test_chaque_createur_impose_est_non_vide():
+    for g in fdc.GROUPES:
+        if g.createur is not None:
+            assert g.createur.strip(), g.titre
 
 
 def test_les_types_de_la_table_sont_dans_l_enum():

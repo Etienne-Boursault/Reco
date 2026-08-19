@@ -53,26 +53,17 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
             "légitime d'accéder à l'œuvre."
         ),
     },
-    "ubm-1349": {
-        # La garde décrit l'état D'ORIGINE, pas celui d'arrivée : une entrée
-        # accrochée à son propre résultat ne pourrait plus jamais agir, et ne
-        # documenterait plus rien de reproductible.
-        "attendu": {"types": ["autre", "musique"], "title": "Vincent Delerme"},
-        "types": ["album"],
-        "creator": "Vincent Delerm",
-        # Le CREATEUR portait deja la bonne graphie — l'alias « Vincent
-        # Delherme » etait corrige de longue date — mais le TITRE gardait
-        # « Delerme ». La meme carte affichait donc les deux orthographes.
-        # Releve pendant la passe musicale du 2026-08-18.
-        "titre": "Vincent Delerm",
-        "pourquoi": (
-            "« Je recommande Vincent Delerm, la BO du film qu'il a fait » — "
-            "c'est une bande originale, donc un album (le lien Spotify pointe "
-            "bien un `/album/`). Le créateur portait « Vincent Delerme », "
-            "TROISIÈME graphie fautive rencontrée après « Delherme » et "
-            "« de Lerme » : l'article Wikipédia s'intitule « Vincent Delerm »."
-        ),
-    },
+    # « ubm-1349 » (Vincent Delerm) a ete RETIREE le 2026-08-19. Ses trois
+    # effets sont accomplis : le type est `album`, le createur porte la bonne
+    # graphie — « Vincent Delerm », apres « Delherme », « de Lerme » et
+    # « Delerme » —, et le titre a change une derniere fois.
+    #
+    # Il ne s'appelle plus « Vincent Delerm » mais « Je ne sais pas si c'est
+    # tout le monde (Bande originale du film) », son nom reel chez Deezer
+    # (album 122899792). La fiche portait le nom de l'artiste alors qu'elle
+    # designe une bande originale, ce qui creait un faux doublon avec la vraie
+    # fiche de l'artiste : « Je recommande Vincent Delerm, la BO du film qu'il
+    # a fait » dit bien qu'il s'agit du disque, pas de la personne.
     "ubm-1450": {
         "attendu": {"types": ["video"]},
         "types": ["film"],
