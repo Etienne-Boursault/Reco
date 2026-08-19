@@ -740,5 +740,80 @@
    "video"
   ],
   "motif": "aucun flux podcast (arbitrage du 2026-08-17)"
+ },
+ {
+  "id": "82a4d2a6",
+  "titre": "Jour de pluie",
+  "avant_item": [
+   "spectacle"
+  ],
+  "avant_recos": [
+   "artiste",
+   "spectacle"
+  ],
+  "cible": [
+   "spectacle"
+  ],
+  "motif": "arbitrage de fusion (2026-08-19)"
+ },
+ {
+  "id": "f395a970",
+  "titre": "Invisible",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "serie",
+   "video"
+  ],
+  "cible": [
+   "serie"
+  ],
+  "motif": "arbitrage de fusion (2026-08-19)"
+ },
+ {
+  "id": "1c0535f8",
+  "titre": "Gus",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "chaine",
+   "serie"
+  ],
+  "cible": [
+   "serie"
+  ],
+  "motif": "arbitrage de fusion (2026-08-19)"
+ },
+ {
+  "id": "1bf77f8a",
+  "titre": "Le Bureau des Légendes",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "podcast",
+   "serie"
+  ],
+  "cible": [
+   "serie"
+  ],
+  "motif": "arbitrage de fusion (2026-08-19)"
+ },
+ {
+  "id": "fdb364ab",
+  "titre": "Louis Chappey",
+  "avant_item": [
+   "artiste"
+  ],
+  "avant_recos": [
+   "artiste",
+   "chaine"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "arbitrage de fusion (2026-08-19)"
  }
 ]
