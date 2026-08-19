@@ -79,12 +79,28 @@ def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
         assert c.createur not in _fautifs(c), c.item_id
 
 
-def test_une_correction_peut_viser_PLUSIEURS_valeurs_fautives(corpus: Path):
-    """« LOL » s'est trompee de trois facons successives : la fiche creditait
-    la plateforme de diffusion, une reco creditait celui qui la recommande,
-    et une passe y a pose le presentateur. Aucune n'est le createur, et il
-    n'y en a pas de connu : le champ disparait, d'ou qu'il vienne."""
-    lol = next(c for c in cae.CORRECTIONS if len(_fautifs(c)) > 1)
+def test_plusieurs_valeurs_fautives_pour_un_REMPLACEMENT(corpus: Path):
+    """« Gus » etait credite « Jeremie Dethelot » sur sa fiche et « Jeremy
+    Detlo » — phonetique — sur une reco. Les deux mènent au même nom
+    complet."""
+    gus = next(c for c in cae.CORRECTIONS if c.item_id == "1c0535f8")
+    a, b = [f for f in _fautifs(gus) if f][:2]
+    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": gus.item_id})
+    item = poser(corpus, "items", "i", {
+        "id": gus.item_id, "title": gus.titre, "creator": a})
+    reco = poser(corpus, "recos", "r", {
+        "id": "ubm-1", "title": gus.titre, "creator": b, "status": "validated"})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == gus.createur
+    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == gus.createur
+
+
+def test_plusieurs_valeurs_fautives_pour_un_RETRAIT(corpus: Path):
+    """« LOL » s'est trompee de trois facons successives : la plateforme de
+    diffusion, celui qui la recommande, puis le presentateur. Aucune n'est le
+    createur, et il n'y en a pas de connu : le champ disparait, d'ou qu'il
+    vienne."""
+    lol = next(c for c in cae.CORRECTIONS if c.item_id == "86eb4e90")
     a, b = [f for f in _fautifs(lol) if f][:2]
     poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": lol.item_id})
     item = poser(corpus, "items", "i", {

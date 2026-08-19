@@ -183,7 +183,10 @@ CORRECTIONS: tuple[Correction, ...] = (
         item_id="1c0535f8", titre="Gus",
         # SensCritique credite « Jeremie Dethelot et Haroun Saifi » (2019) ;
         # le co-auteur manquait aux deux fiches fusionnees.
-        createur_faux="Jérémie Dethelot", createur="Jérémie Dethelot, Haroun Saifi",
+        # Les deux graphies sont visees : la fiche portait « Jeremie
+        # Dethelot », une reco portait encore « Jeremy Detlo », phonetique.
+        createur_faux=("Jérémie Dethelot", "Jérémy Detlo"),
+        createur="Jérémie Dethelot, Haroun Saifi",
         preuve="https://www.senscritique.com/serie/GUS/38953092",
     ),
     Correction(
