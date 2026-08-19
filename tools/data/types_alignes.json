@@ -1,0 +1,712 @@
+[
+ {
+  "id": "6f311f8f",
+  "titre": "Jardin d'hiver",
+  "avant_item": [
+   "album"
+  ],
+  "avant_recos": [
+   "musique"
+  ],
+  "cible": [
+   "musique"
+  ],
+  "motif": "cas isole"
+ },
+ {
+  "id": "3b0e8074",
+  "titre": "Les Femmes Marrantes",
+  "avant_item": [
+   "livre"
+  ],
+  "avant_recos": [
+   "podcast"
+  ],
+  "cible": [
+   "podcast"
+  ],
+  "motif": "cas isole"
+ },
+ {
+  "id": "41d34be6",
+  "titre": "Les grands classiques d'Hitchcock",
+  "avant_item": [
+   "film"
+  ],
+  "avant_recos": [
+   "autre"
+  ],
+  "cible": [
+   "autre"
+  ],
+  "motif": "corpus, pas une oeuvre"
+ },
+ {
+  "id": "b3aa31d1",
+  "titre": "Quand je marche",
+  "avant_item": [
+   "livre"
+  ],
+  "avant_recos": [
+   "musique"
+  ],
+  "cible": [
+   "musique"
+  ],
+  "motif": "cas isole"
+ },
+ {
+  "id": "c054d35a",
+  "titre": "Vincent Delerme",
+  "avant_item": [
+   "musique"
+  ],
+  "avant_recos": [
+   "album"
+  ],
+  "cible": [
+   "album"
+  ],
+  "motif": "cas isole"
+ },
+ {
+  "id": "73833582",
+  "titre": "Christophe Pauly",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "b473008d",
+  "titre": "Cocovoit",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "video"
+  ],
+  "cible": [
+   "serie"
+  ],
+  "motif": "serie (arbitre)"
+ },
+ {
+  "id": "3ec78c47",
+  "titre": "Creative Explained",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "artiste"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "2126ca3e",
+  "titre": "Daymolition",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "8e7e0d02",
+  "titre": "Et Bim",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "77bbe96a",
+  "titre": "Fabrizio Buccella",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "artiste"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "baf0e910",
+  "titre": "Freddy Fred",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "artiste"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "cf59a9b4",
+  "titre": "Hygiène Mentale",
+  "avant_item": [
+   "podcast",
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "6edede9f",
+  "titre": "La Meuf là",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "artiste"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "f21bc685",
+  "titre": "M. Phi",
+  "avant_item": [
+   "podcast"
+  ],
+  "avant_recos": [
+   "chaine",
+   "video"
+  ],
+  "cible": [
+   "chaine",
+   "video"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "a2e9dcac",
+  "titre": "McFly et Carlito",
+  "avant_item": [
+   "artiste"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "artiste",
+   "chaine"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "f67dd211",
+  "titre": "Mist",
+  "avant_item": [
+   "podcast"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "345440ae",
+  "titre": "Mitch CKofficiel",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "artiste"
+  ],
+  "cible": [
+   "artiste"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "8586a438",
+  "titre": "Stardust",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "235e92d1",
+  "titre": "The Great Review",
+  "avant_item": [
+   "podcast",
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "58937328",
+  "titre": "Zapping Sauvage",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "chaine"
+  ],
+  "cible": [
+   "chaine"
+  ],
+  "motif": "createur YouTube"
+ },
+ {
+  "id": "6371c792",
+  "titre": "Loup-Garou Saison 2",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "serie"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "fb0298ff",
+  "titre": "Sport Science",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "serie"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "68cf1743",
+  "titre": "Takeshi Castle",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "serie"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "4d200d99",
+  "titre": "The Voice",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "video"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "cb7f9035",
+  "titre": "True Story",
+  "avant_item": [
+   "podcast"
+  ],
+  "avant_recos": [
+   "serie"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "f50a4dd4",
+  "titre": "Quincy",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "film"
+  ],
+  "cible": [
+   "film"
+  ],
+  "motif": "film"
+ },
+ {
+  "id": "e6595fad",
+  "titre": "The Egg",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "film"
+  ],
+  "cible": [
+   "film"
+  ],
+  "motif": "film"
+ },
+ {
+  "id": "8ce94862",
+  "titre": "This is John",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "film"
+  ],
+  "cible": [
+   "film"
+  ],
+  "motif": "film"
+ },
+ {
+  "id": "b7cfe146",
+  "titre": "Un documentaire sur les baleines",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "film"
+  ],
+  "cible": [
+   "film"
+  ],
+  "motif": "film"
+ },
+ {
+  "id": "b1631e09",
+  "titre": "Civilisation",
+  "avant_item": [
+   "album"
+  ],
+  "avant_recos": [
+   "album",
+   "artiste"
+  ],
+  "cible": [
+   "album",
+   "artiste"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "e3aec491",
+  "titre": "Deadline",
+  "avant_item": [
+   "artiste",
+   "musique"
+  ],
+  "avant_recos": [
+   "album",
+   "artiste"
+  ],
+  "cible": [
+   "album",
+   "artiste",
+   "musique"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "375a1e27",
+  "titre": "Gaming Historian",
+  "avant_item": [
+   "chaine",
+   "podcast",
+   "video"
+  ],
+  "avant_recos": [
+   "chaine",
+   "video"
+  ],
+  "cible": [
+   "chaine",
+   "video"
+  ],
+  "motif": "union (podcast ecarte)"
+ },
+ {
+  "id": "43e4d7b9",
+  "titre": "Genre Humaine",
+  "avant_item": [
+   "serie"
+  ],
+  "avant_recos": [
+   "serie",
+   "video"
+  ],
+  "cible": [
+   "serie",
+   "video"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "d1b0d8e2",
+  "titre": "Guillermo Guiz",
+  "avant_item": [
+   "artiste"
+  ],
+  "avant_recos": [
+   "artiste",
+   "spectacle"
+  ],
+  "cible": [
+   "artiste",
+   "spectacle"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "9ac34f23",
+  "titre": "L'Ordre de Sipan",
+  "avant_item": [
+   "jeu"
+  ],
+  "avant_recos": [
+   "jeu",
+   "livre"
+  ],
+  "cible": [
+   "jeu",
+   "livre"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "52b67ed0",
+  "titre": "La Prochaine fois que tu mordras la poussière",
+  "avant_item": [
+   "livre"
+  ],
+  "avant_recos": [
+   "livre",
+   "spectacle"
+  ],
+  "cible": [
+   "livre",
+   "spectacle"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "34412f36",
+  "titre": "Le Précepteur",
+  "avant_item": [
+   "podcast",
+   "video"
+  ],
+  "avant_recos": [
+   "chaine",
+   "podcast"
+  ],
+  "cible": [
+   "chaine",
+   "podcast",
+   "video"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "8916c260",
+  "titre": "Le Trésor de l'Île au Crâne",
+  "avant_item": [
+   "jeu"
+  ],
+  "avant_recos": [
+   "jeu",
+   "livre"
+  ],
+  "cible": [
+   "jeu",
+   "livre"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "8abc2e38",
+  "titre": "Mesdames",
+  "avant_item": [
+   "album"
+  ],
+  "avant_recos": [
+   "album",
+   "musique"
+  ],
+  "cible": [
+   "album",
+   "musique"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "8b2be418",
+  "titre": "Michael Jackson",
+  "avant_item": [
+   "artiste",
+   "musique"
+  ],
+  "avant_recos": [
+   "artiste",
+   "musique",
+   "spectacle"
+  ],
+  "cible": [
+   "artiste",
+   "musique",
+   "spectacle"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "6f45212b",
+  "titre": "Shirley Souagnon",
+  "avant_item": [
+   "artiste"
+  ],
+  "avant_recos": [
+   "artiste",
+   "chaine"
+  ],
+  "cible": [
+   "artiste",
+   "chaine"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "e191f572",
+  "titre": "That's My People",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "musique",
+   "video"
+  ],
+  "cible": [
+   "musique",
+   "video"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "7693d750",
+  "titre": "Vérino",
+  "avant_item": [
+   "chaine"
+  ],
+  "avant_recos": [
+   "artiste",
+   "chaine"
+  ],
+  "cible": [
+   "artiste",
+   "chaine"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "864a1e8a",
+  "titre": "Zaho de Sagazan",
+  "avant_item": [
+   "album"
+  ],
+  "avant_recos": [
+   "album",
+   "artiste"
+  ],
+  "cible": [
+   "album",
+   "artiste"
+  ],
+  "motif": "union"
+ },
+ {
+  "id": "86eb4e90",
+  "titre": "LOL",
+  "avant_item": [
+   "video"
+  ],
+  "avant_recos": [
+   "serie",
+   "spectacle",
+   "video"
+  ],
+  "cible": [
+   "video"
+  ],
+  "motif": "emission TV"
+ },
+ {
+  "id": "c1be5cf1",
+  "titre": "Fouloscopie",
+  "avant_item": [
+   "chaine",
+   "livre",
+   "video"
+  ],
+  "avant_recos": [
+   "chaine",
+   "livre",
+   "video"
+  ],
+  "cible": [
+   "chaine",
+   "livre",
+   "video"
+  ],
+  "motif": "arbitre (3 types)"
+ }
+]

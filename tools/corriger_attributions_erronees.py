@@ -17,12 +17,19 @@ CHAQUE LIGNE A ETE VERIFIEE, UNE PAR UNE
 La verification est reportee dans le champ `preuve`, avec la source ouverte.
 Sans elle, cette table ne vaudrait pas mieux que ce qu'elle corrige.
 
+LES TITRES AUSSI, DEPUIS L'ARBITRAGE DU 2026-08-19
+--------------------------------------------------
+Renommer une oeuvre change son identite affichee et peut casser des
+rapprochements : cela demandait un arbitrage, obtenu depuis. Deux graphies
+issues du transcript sont corrigees — « Shage » pour Shaga, « Dailyo » pour
+Daylio.
+
+Le rattachement des recos se fait par l'ANCIEN titre : c'est celui qu'elles
+portent encore au moment ou la passe s'execute.
+
 CE QUI N'EST PAS TRAITE ICI
 ---------------------------
-Les graphies fautives de TITRE (« Shage » pour « Shaga », « Dailyo » pour
-« Daylio ») et les doublons d'items reperes au passage. Renommer un titre
-change l'identite affichee d'une oeuvre et peut casser des rapprochements :
-cela demande un arbitrage, pas une passe automatique.
+Les doublons d'items, qui relevent de `fusionner_doublons_cures.py`.
 """
 from __future__ import annotations
 
@@ -47,12 +54,16 @@ class Correction:
     """Une attribution fautive, sa correction, et la source qui l'atteste."""
     item_id: str
     titre: str
-    createur_faux: str
-    createur: str
     preuve: str
+    createur_faux: str | None = None
+    createur: str | None = None
     annee: int | None = None
     #: Identifiants externes a retirer : ils designent la mauvaise personne.
     externes_a_retirer: tuple[str, ...] = ()
+    #: Graphie corrigee du titre. Le rattachement reste sur `titre`, l'ancien.
+    titre_corrige: str | None = None
+    #: URLs a retirer : elles menent a une autre oeuvre.
+    liens_a_retirer: tuple[str, ...] = ()
 
 
 #: Table curee. Chaque entree a ete confrontee a la source citee.
@@ -82,6 +93,29 @@ CORRECTIONS: tuple[Correction, ...] = (
         # diffuseur. Un item jumeau (29890e6e) portait deja le bon nom.
         preuve="https://www.themoviedb.org/movie/498273",
     ),
+    Correction(
+        item_id="227bf692", titre="Shage", titre_corrige="Shaga",
+        # Graphie du transcript. La chaine du corpus est « PLANET SHAGA »
+        # (UCPnxhyAxViN6eEXglzsEiww, verifiee par yt-dlp) : c'est bien Shaga.
+        preuve="https://www.youtube.com/@planetshaga",
+    ),
+    Correction(
+        item_id="0cd44179", titre="Dailyo", titre_corrige="Daylio",
+        # Graphie du transcript. L'App Store la nomme « Daylio: Journal
+        # intime, Humeur », editeur Relaxio s.r.o. La reco l'ecrivait deja
+        # correctement.
+        preuve="https://apps.apple.com/fr/app/daylio-journal-intime-humeur/id1194023242",
+    ),
+    Correction(
+        item_id="e9d58ce6", titre="Mister Mystère",
+        # Le lien Deezer pointait `album/711471` — un SINGLE de 2010, une
+        # piste, verifie par l'API. L'album de -M- est de 2009 et compte 19
+        # titres ; il n'existe pas sur Deezer sous ce nom, alors que le lien
+        # Apple Music deja pose (1442791256) est le bon. Un lien qui mene a
+        # une autre oeuvre vaut moins que pas de lien.
+        preuve="https://api.deezer.com/album/711471",
+        liens_a_retirer=("https://www.deezer.com/album/711471",),
+    ),
 )
 
 
@@ -93,7 +127,7 @@ def _ecrire(chemin: Path, doc: dict[str, Any]) -> None:
 def _corriger_document(doc: dict[str, Any], correction: Correction) -> list[str]:
     """Applique une correction a un document. Renvoie les champs touches."""
     touches: list[str] = []
-    if doc.get("creator") == correction.createur_faux:
+    if correction.createur is not None and doc.get("creator") == correction.createur_faux:
         doc["creator"] = correction.createur
         touches.append("creator")
     if correction.annee is not None and doc.get("year") not in (None, correction.annee):
@@ -105,6 +139,17 @@ def _corriger_document(doc: dict[str, Any], correction: Correction) -> list[str]
             if cle in externes:
                 del externes[cle]
                 touches.append(f"externalIds.{cle}")
+    if correction.titre_corrige and doc.get("title") != correction.titre_corrige:
+        doc["title"] = correction.titre_corrige
+        touches.append("title")
+    if correction.liens_a_retirer:
+        avant = doc.get("links") or []
+        garde = [lien for lien in avant
+                 if not (isinstance(lien, dict)
+                         and lien.get("url") in correction.liens_a_retirer)]
+        if len(garde) != len(avant):
+            doc["links"] = garde
+            touches.append("links")
     return touches
 
 
@@ -127,9 +172,11 @@ def executer(*, apply: bool) -> dict[str, Any]:
         touches = _corriger_document(doc, correction)
         if not touches:
             continue
-        log.info("item %s « %s » : %s -> %s (%s)", correction.item_id,
-                 correction.titre, correction.createur_faux,
-                 correction.createur, ", ".join(touches))
+        # Le journal dit ce qui bouge vraiment : une entree peut ne corriger
+        # qu'un titre ou qu'un lien, sans toucher au createur.
+        quoi = (f"{correction.createur_faux} -> {correction.createur}"
+                if correction.createur else ", ".join(touches))
+        log.info("item %s « %s » : %s", correction.item_id, correction.titre, quoi)
         rapport["items"] += 1
         rapport["champs"].extend(touches)
         if apply:

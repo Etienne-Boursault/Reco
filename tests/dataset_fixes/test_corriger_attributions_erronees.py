@@ -55,7 +55,28 @@ def test_chaque_correction_porte_une_preuve_ouvrable():
 
 def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
     for c in cae.CORRECTIONS:
+        if c.createur is None:
+            continue          # cette entree corrige un titre ou un lien
         assert c.createur_faux != c.createur, c.item_id
+
+
+def test_chaque_correction_fait_QUELQUE_CHOSE():
+    """Une entree qui ne corrige rien serait un oubli silencieux."""
+    for c in cae.CORRECTIONS:
+        assert (c.createur or c.annee or c.externes_a_retirer
+                or c.titre_corrige or c.liens_a_retirer), c.item_id
+
+
+def test_un_titre_corrige_differe_de_l_ancien():
+    for c in cae.CORRECTIONS:
+        if c.titre_corrige:
+            assert c.titre_corrige != c.titre, c.item_id
+
+
+def test_les_liens_a_retirer_sont_des_urls():
+    for c in cae.CORRECTIONS:
+        for url in c.liens_a_retirer:
+            assert url.startswith("https://"), (c.item_id, url)
 
 
 def test_aucun_item_n_apparait_deux_fois():
@@ -107,6 +128,54 @@ def test_le_reste_du_document_est_intact(corpus: Path):
     doc = json.loads(item.read_text(encoding="utf-8"))
     assert doc["types"] == ["film"]
     assert doc["year"] == 1993          # pas d'annee dans cette correction
+
+
+# ===== Les titres et les liens ============================================
+def test_un_titre_fautif_est_corrige(corpus: Path):
+    """« Shage » venait du transcript ; la chaine du corpus s'appelle
+    « PLANET SHAGA »."""
+    shaga = next(c for c in cae.CORRECTIONS if c.item_id == "227bf692")
+    item = poser(corpus, "items", "a", {
+        "id": shaga.item_id, "title": shaga.titre, "types": ["artiste"]})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["title"] == "Shaga"
+
+
+def test_la_reco_est_retrouvee_par_l_ANCIEN_titre(corpus: Path):
+    """Au moment de la passe, elle porte encore la graphie fautive."""
+    shaga = next(c for c in cae.CORRECTIONS if c.item_id == "227bf692")
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": shaga.titre, "status": "validated"})
+    cae.executer(apply=True)
+    assert json.loads(reco.read_text(encoding="utf-8"))["title"] == "Shaga"
+
+
+def test_un_lien_menant_a_une_AUTRE_oeuvre_est_retire(corpus: Path):
+    """Le lien Deezer de « Mister Mystère » pointait un single de 2010, pas
+    l'album de 2009."""
+    mm = next(c for c in cae.CORRECTIONS if c.item_id == "e9d58ce6")
+    faux = mm.liens_a_retirer[0]
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": mm.titre, "status": "validated",
+        "links": [{"kind": "streaming", "label": "Deezer", "url": faux},
+                  {"kind": "streaming", "label": "Apple Music",
+                   "url": "https://music.apple.com/fr/album/x/1442791256"}]})
+    cae.executer(apply=True)
+    liens = json.loads(reco.read_text(encoding="utf-8"))["links"]
+    assert [lien["url"] for lien in liens] == [
+        "https://music.apple.com/fr/album/x/1442791256"]
+
+
+def test_les_AUTRES_liens_sont_intacts(corpus: Path):
+    mm = next(c for c in cae.CORRECTIONS if c.item_id == "e9d58ce6")
+    liens = [{"kind": "info", "label": "MusicBrainz", "url": "https://musicbrainz.org/x"},
+             {"kind": "social", "label": "Instagram", "url": "https://instagram.com/y"}]
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": mm.titre, "status": "validated",
+        "links": [dict(lien) for lien in liens]})
+    rapport = cae.executer(apply=True)
+    assert json.loads(reco.read_text(encoding="utf-8"))["links"] == liens
+    assert rapport["recos"] == 0     # rien a retirer, rien a ecrire
 
 
 # ===== La portee ===========================================================

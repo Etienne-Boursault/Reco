@@ -1056,6 +1056,9 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "la chaîne YouTube @MonsieurPhi. Aucun flux podcast.",
     },
     "ubm-0667": {
+        # Garde reaccrochee le 2026-08-19 : la passe d'alignement item/reco
+        # avait pose `podcast` en plus, venu de l'item. Il est retire — rien
+        # dans le corpus ne rattache Norman Caruso a un podcast.
         "attendu": {"types": ["chaine", "video"], "title": "Gaming Historian",
                     "creator": "YouTube"},
         "types": ["chaine", "video"],
@@ -1084,15 +1087,20 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "YouTube.",
     },
     # --- Émissions de plateforme étiquetées autrement -----------------------
-    "ubm-2230": {
-        "attendu": {"types": ["podcast"], "title": "True Story"},
-        "types": ["serie"],
-        "pourquoi": "« C'est un programme pour Amazon Prime qui consiste à "
-                    "inviter des guests » : ses deux liens sont Prime Video et "
-                    "une fiche série AlloCiné.",
-    },
+    # « ubm-2230 » (True Story) a été RETIRÉE le 2026-08-19. Son seul effet
+    # était de poser un type, et la passe d'alignement item/reco l'a fait
+    # depuis : l'entrée ne changeait plus rien, et une correction qui ne
+    # corrige rien est un piège — elle donne l'illusion d'une garde active.
+    #
+    # L'arbitrage, lui, reste valable et vaut d'être consigné : « C'est un
+    # programme pour Amazon Prime qui consiste à inviter des guests », ses
+    # deux liens sont Prime Video et une fiche série AlloCiné. C'est un
+    # programme de télévision non scénarisé, donc `video` par la règle posée
+    # ce jour-là — `serie` restant aux fictions.
     "ubm-2892": {
-        "attendu": {"types": ["serie"], "title": "LOL",
+        # Garde reaccrochee le 2026-08-19 : les trois fiches « LOL » ont ete
+        # fusionnees, et la regle du jour range ce programme sous `video`.
+        "attendu": {"types": ["video"], "title": "LOL",
                     "creator": "Amazon Prime"},
         # Kyan Khojandi dit « j'ai fait un jeu qui s'appelle LOL », mais il y
         # a PARTICIPE comme candidat : « faire » ne dit pas s'il l'a cree. On
@@ -1101,9 +1109,9 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         # Le type est DÉJÀ corrigé — la ligne ci-dessous ne fait plus rien,
         # mais elle documente l'arbitrage et redeviendrait active si le type
         # régressait. La garde, elle, porte sur l'état COURANT : la laisser
-        # sur `["jeu"]` aurait rendu l'entrée muette, et le lien ci-dessous
+        # sur un type dépassé rendrait l'entrée muette, et le lien ci-dessous
         # ne serait jamais posé.
-        "types": ["serie"],
+        "types": ["video"],
         "ajouter_liens": [{"label": "TMDB", "kind": "info",
                            "ethics": "neutral",
                            "url": "https://www.themoviedb.org/tv/122228"}],
@@ -1200,8 +1208,11 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
                     "déjà porté par le champ créateur.",
     },
     "ubm-1027": {
-        "attendu": {"types": ["podcast", "video"]},
-        "types": ["chaine", "video"],
+        # Garde reaccrochee le 2026-08-19. Les deux fiches « Fouloscopie » ont
+        # ete fusionnees et l'editeur a arbitre trois types : une chaine, un
+        # livre, et les videos que les recos pointent.
+        "attendu": {"types": ["chaine", "livre", "video"]},
+        "types": ["chaine", "livre", "video"],
         "creator": "Mehdi Moussaïd",
         "pourquoi": "Fouloscopie n'est PAS un podcast mais une chaîne YouTube "
                     "(et un livre) de Mehdi Moussaïd — c'est d'ailleurs le seul "
