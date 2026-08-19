@@ -4,6 +4,20 @@
   "schemaVersion": 1,
   "title": "Les grands classiques d'Hitchcock",
   "types": [
-    "autre"
+    "film"
+  ],
+  "customLinks": [
+    {
+      "label": "Filmographie (TMDB)",
+      "url": "https://www.themoviedb.org/person/2636-alfred-hitchcock"
+    },
+    {
+      "label": "Où regarder (JustWatch)",
+      "url": "https://www.justwatch.com/fr/recherche?q=Alfred+Hitchcock"
+    },
+    {
+      "label": "arte.tv",
+      "url": "https://www.arte.tv/fr/search/?q=hitchcock"
+    }
   ]
 }

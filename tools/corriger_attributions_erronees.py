@@ -55,7 +55,10 @@ class Correction:
     item_id: str
     titre: str
     preuve: str
-    createur_faux: str | None = None
+    #: La valeur fautive attendue. Plusieurs quand la fiche et ses recos ne
+    #: se trompent pas de la meme facon — « LOL » creditait la plateforme
+    #: cote oeuvre et le recommandeur cote reco.
+    createur_faux: str | tuple[str | None, ...] | None = None
     createur: str | None = None
     annee: int | None = None
     #: Identifiants externes a retirer : ils designent la mauvaise personne.
@@ -67,6 +70,8 @@ class Correction:
     #: Retire le champ `creator` au lieu de le remplacer. Sert quand la
     #: valeur est fausse et qu'aucune attribution sure ne peut la remplacer.
     retirer_createur: bool = False
+    #: Liens a POSER, en fin de liste, s'ils n'y sont pas deja.
+    liens_a_ajouter: tuple[dict[str, str], ...] = ()
 
 
 #: Table curee. Chaque entree a ete confrontee a la source citee.
@@ -132,14 +137,56 @@ CORRECTIONS: tuple[Correction, ...] = (
         liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
     ),
     Correction(
+        item_id="41d34be6", titre="Les grands classiques d'Hitchcock",
+        # « Je prefererais tout de meme trouver des oeuvres disponibles sur
+        # differentes plateformes a donner aux utilisateurs » (2026-08-19).
+        # L'oeuvre designe un CORPUS : aucune fiche unique n'existe, mais on
+        # peut ouvrir la filmographie et deux facons de la regarder.
+        #
+        # La fiche AlloCine n'y est pas : l'identifiant 1093, qu'on aurait pu
+        # croire le sien, est celui de Raymond Leblanc. Verifie avant de
+        # l'ecarter.
+        preuve="https://www.themoviedb.org/person/2636-alfred-hitchcock",
+        liens_a_ajouter=(
+            {"kind": "info", "ethics": "neutral",
+             "label": "Filmographie (TMDB)",
+             "url": "https://www.themoviedb.org/person/2636-alfred-hitchcock"},
+            {"kind": "streaming", "ethics": "neutral",
+             "label": "Où regarder (JustWatch)",
+             "url": "https://www.justwatch.com/fr/recherche?q=Alfred+Hitchcock"},
+            {"kind": "streaming", "ethics": "indie", "label": "arte.tv",
+             "url": "https://www.arte.tv/fr/search/?q=hitchcock"},
+        ),
+    ),
+    Correction(
+        item_id="f33795ad", titre="Les futurs lointains, un voyage en direction de l'éternité",
+        # Meme erreur que sur « Balade Mentale », dont cette video est issue :
+        # le compte Instagram est celui de Christophe Pauly, un journaliste
+        # sans rapport avec la chaine de Theo Drieu et Kevin Fauvre.
+        preuve="https://fr.wikipedia.org/wiki/Balade_Mentale",
+        externes_a_retirer=("instagram",),
+        liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
+    ),
+    Correction(
         item_id="86eb4e90", titre="LOL",
-        createur_faux="Paul de Saint Sernin", retirer_createur=True,
+        # Deux erreurs differentes pour la meme oeuvre : la FICHE creditait la
+        # plateforme de diffusion, une RECO creditait celui qui la recommande.
+        # `None` en fait partie : une passe anterieure avait vide le champ sur
+        # les recos, faute d'attribution sure. Il en existe une.
+        createur_faux=("Amazon Prime", "Paul de Saint Sernin", None),
+        createur="Philippe Lacheau",
         # Une reco creditait « LOL » a Paul de Saint Sernin, qui est celui qui
         # la RECOMMANDE dans l'episode — confusion classique de l'extraction.
-        # Aucune attribution sure ne la remplace : l'arbitrage du corpus
-        # (`corrections_reco_anomalies.py`, ubm-2892) dit de laisser le champ
-        # vide plutot que de substituer une attribution douteuse.
-        preuve="https://www.themoviedb.org/tv/122228",
+        # L'autre carte n'avait aucun createur : « il n'y a pas le createur »
+        # (2026-08-19).
+        #
+        # Wikipedia FR : « emission francaise de television diffusee sur
+        # Amazon Prime Video depuis 2021 et presentee par Philippe Lacheau ».
+        # TMDB ne renseigne aucun `created_by` pour cette fiche — le format
+        # original est le japonais « Documental » d'Hitoshi Matsumoto. C'est
+        # donc le PRESENTATEUR qui est credite, faute de createur identifie,
+        # et c'est ce que le public associe a l'emission.
+        preuve="https://fr.wikipedia.org/wiki/LOL_:_qui_rit,_sort_!",
     ),
 )
 
@@ -149,13 +196,21 @@ def _ecrire(chemin: Path, doc: dict[str, Any]) -> None:
                       encoding="utf-8")
 
 
-def _corriger_document(doc: dict[str, Any], correction: Correction) -> list[str]:
-    """Applique une correction a un document. Renvoie les champs touches."""
+def _corriger_document(doc: dict[str, Any], correction: Correction, *,
+                       champ_liens: str = "links") -> list[str]:
+    """Applique une correction a un document. Renvoie les champs touches.
+
+    `champ_liens` vaut `links` sur une reco et `customLinks` sur une fiche
+    d'oeuvre : les deux collections ne portent pas leurs liens de la meme
+    facon, et `customLinks` n'accepte que `label`, `url` et `logoUrl`.
+    """
     touches: list[str] = []
-    if correction.retirer_createur and doc.get("creator") == correction.createur_faux:
+    faux = correction.createur_faux
+    fautifs = (faux,) if isinstance(faux, str) else (faux or ())
+    if correction.retirer_createur and doc.get("creator") in fautifs:
         del doc["creator"]
         touches.append("creator")
-    elif correction.createur is not None and doc.get("creator") == correction.createur_faux:
+    elif correction.createur is not None and doc.get("creator") in fautifs:
         doc["creator"] = correction.createur
         touches.append("creator")
     if correction.annee is not None and doc.get("year") not in (None, correction.annee):
@@ -170,14 +225,26 @@ def _corriger_document(doc: dict[str, Any], correction: Correction) -> list[str]
     if correction.titre_corrige and doc.get("title") != correction.titre_corrige:
         doc["title"] = correction.titre_corrige
         touches.append("title")
+    if correction.liens_a_ajouter:
+        liens = list(doc.get(champ_liens) or [])
+        presentes = {lien.get("url") for lien in liens if isinstance(lien, dict)}
+        manquants = [
+            {"label": lien["label"], "url": lien["url"]}
+            if champ_liens == "customLinks" else dict(lien)
+            for lien in correction.liens_a_ajouter
+            if lien["url"] not in presentes
+        ]
+        if manquants:
+            doc[champ_liens] = [*liens, *manquants]
+            touches.append(f"+{len(manquants)} lien(s)")
     if correction.liens_a_retirer:
-        avant = doc.get("links") or []
+        avant = doc.get(champ_liens) or []
         garde = [lien for lien in avant
                  if not (isinstance(lien, dict)
                          and lien.get("url") in correction.liens_a_retirer)]
         if len(garde) != len(avant):
-            doc["links"] = garde
-            touches.append("links")
+            doc[champ_liens] = garde
+            touches.append(champ_liens)
     return touches
 
 
@@ -197,7 +264,7 @@ def executer(*, apply: bool) -> dict[str, Any]:
         correction = par_id.get(doc.get("id", ""))
         if correction is None:
             continue
-        touches = _corriger_document(doc, correction)
+        touches = _corriger_document(doc, correction, champ_liens="customLinks")
         if not touches:
             continue
         # Le journal dit ce qui bouge vraiment : une entree peut ne corriger

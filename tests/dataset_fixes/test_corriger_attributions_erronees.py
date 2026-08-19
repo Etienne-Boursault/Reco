@@ -53,11 +53,41 @@ def test_chaque_correction_porte_une_preuve_ouvrable():
         assert c.preuve.startswith("https://"), c.item_id
 
 
+def _fautifs(c) -> tuple:
+    faux = c.createur_faux
+    return (faux,) if isinstance(faux, str) else (faux or ())
+
+
+def test_un_champ_VIDE_peut_etre_une_valeur_fautive(corpus: Path):
+    """Une passe anterieure avait vide le createur de « LOL », faute
+    d'attribution sure. Il en existe une : le champ vide devient a son tour
+    une valeur a corriger."""
+    lol = next(c for c in cae.CORRECTIONS if None in _fautifs(c))
+    reco = poser(corpus, "recos", "r", {
+        "id": "ubm-1", "title": lol.titre, "status": "validated"})
+    cae.executer(apply=True)
+    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == lol.createur
+
+
 def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
     for c in cae.CORRECTIONS:
         if c.createur is None:
             continue          # cette entree corrige un titre ou un lien
-        assert c.createur_faux != c.createur, c.item_id
+        assert c.createur not in _fautifs(c), c.item_id
+
+
+def test_une_correction_peut_viser_PLUSIEURS_valeurs_fautives(corpus: Path):
+    """« LOL » se trompait de deux facons : la fiche creditait la plateforme,
+    une reco creditait celui qui la recommande."""
+    lol = next(c for c in cae.CORRECTIONS if len(_fautifs(c)) > 1)
+    a, b = _fautifs(lol)[:2]
+    item = poser(corpus, "items", "i", {
+        "id": lol.item_id, "title": lol.titre, "creator": a})
+    reco = poser(corpus, "recos", "r", {
+        "id": "ubm-1", "title": lol.titre, "creator": b, "status": "validated"})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == lol.createur
+    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == lol.createur
 
 
 def test_chaque_correction_fait_QUELQUE_CHOSE():
@@ -65,7 +95,7 @@ def test_chaque_correction_fait_QUELQUE_CHOSE():
     for c in cae.CORRECTIONS:
         assert (c.createur or c.annee or c.externes_a_retirer
                 or c.titre_corrige or c.liens_a_retirer
-                or c.retirer_createur), c.item_id
+                or c.retirer_createur or c.liens_a_ajouter), c.item_id
 
 
 def test_retirer_et_remplacer_s_excluent():
@@ -75,30 +105,84 @@ def test_retirer_et_remplacer_s_excluent():
 
 
 def test_un_createur_faux_SANS_remplacant_est_retire(corpus: Path):
-    """« Paul de Saint Sernin » creditait LOL alors qu'il la recommande.
-    Aucune attribution sure ne le remplace : le champ disparait."""
-    lol = next(c for c in cae.CORRECTIONS if c.retirer_createur)
-    item = poser(corpus, "items", "a", {
-        "id": lol.item_id, "title": lol.titre, "creator": lol.createur_faux,
-        "types": ["video"]})
-    cae.executer(apply=True)
-    doc = json.loads(item.read_text(encoding="utf-8"))
+    """Le mecanisme reste teste meme si la table ne l'emploie plus : il sert
+    des qu'une valeur est fausse sans attribution sure pour la remplacer."""
+    correction = cae.Correction(
+        item_id="zz", titre="Test", preuve="https://exemple.fr/",
+        createur_faux="Un Diffuseur", retirer_createur=True)
+    doc = {"id": "zz", "title": "Test", "creator": "Un Diffuseur",
+           "types": ["video"]}
+    assert cae._corriger_document(doc, correction) == ["creator"]
     assert "creator" not in doc
     assert doc["types"] == ["video"]        # le reste est intact
 
 
-def test_un_retrait_ne_touche_pas_un_AUTRE_createur(corpus: Path):
-    lol = next(c for c in cae.CORRECTIONS if c.retirer_createur)
-    item = poser(corpus, "items", "a", {
-        "id": lol.item_id, "title": lol.titre, "creator": "Quelqu'un d'autre"})
-    cae.executer(apply=True)
-    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == "Quelqu'un d'autre"
+def test_un_retrait_ne_touche_pas_un_AUTRE_createur():
+    correction = cae.Correction(
+        item_id="zz", titre="Test", preuve="https://exemple.fr/",
+        createur_faux="Un Diffuseur", retirer_createur=True)
+    doc = {"id": "zz", "title": "Test", "creator": "Quelqu'un d'autre"}
+    assert cae._corriger_document(doc, correction) == []
+    assert doc["creator"] == "Quelqu'un d'autre"
 
 
 def test_un_titre_corrige_differe_de_l_ancien():
     for c in cae.CORRECTIONS:
         if c.titre_corrige:
             assert c.titre_corrige != c.titre, c.item_id
+
+
+def test_les_liens_a_ajouter_sont_bien_formes():
+    admis = {"buy", "borrow", "streaming", "info", "official", "social"}
+    for c in cae.CORRECTIONS:
+        for lien in c.liens_a_ajouter:
+            assert lien["url"].startswith("https://"), (c.item_id, lien)
+            assert lien["kind"] in admis, (c.item_id, lien)
+            assert lien["label"].strip(), (c.item_id, lien)
+
+
+def test_un_lien_n_est_jamais_a_la_fois_ajoute_et_retire():
+    for c in cae.CORRECTIONS:
+        ajoutes = {lien["url"] for lien in c.liens_a_ajouter}
+        assert not (ajoutes & set(c.liens_a_retirer)), c.item_id
+
+
+def test_des_liens_sont_AJOUTES_a_la_fin(corpus: Path):
+    """« Je préférerais trouver des œuvres disponibles sur différentes
+    plateformes à donner aux utilisateurs » — pour un corpus sans fiche
+    unique, on ouvre la filmographie et deux façons de la regarder."""
+    hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": hitch.titre, "status": "validated",
+        "links": [{"kind": "info", "label": "Wikipédia",
+                   "url": "https://fr.wikipedia.org/wiki/Alfred_Hitchcock"}]})
+    cae.executer(apply=True)
+    urls = [lien["url"] for lien in json.loads(reco.read_text(encoding="utf-8"))["links"]]
+    assert urls[0] == "https://fr.wikipedia.org/wiki/Alfred_Hitchcock"  # inchangé
+    assert len(urls) == 1 + len(hitch.liens_a_ajouter)
+
+
+def test_un_lien_deja_present_n_est_pas_ajoute_deux_fois(corpus: Path):
+    hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    deja = dict(hitch.liens_a_ajouter[0])
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": hitch.titre, "status": "validated",
+        "links": [deja]})
+    cae.executer(apply=True)
+    urls = [lien["url"] for lien in json.loads(reco.read_text(encoding="utf-8"))["links"]]
+    assert urls.count(deja["url"]) == 1
+
+
+def test_TOUS_les_liens_deja_presents_ne_declenchent_aucune_ecriture(corpus: Path):
+    """Une passe rejouee ne doit rien reecrire : c'est ce qui rend l'outil
+    sur a relancer apres coup."""
+    hitch = next(c for c in cae.CORRECTIONS if c.liens_a_ajouter)
+    reco = poser(corpus, "recos", "1", {
+        "id": "ubm-1", "title": hitch.titre, "status": "validated",
+        "links": [dict(lien) for lien in hitch.liens_a_ajouter]})
+    avant = reco.read_text(encoding="utf-8")
+    assert cae.executer(apply=True)["recos"] == 0
+    assert reco.read_text(encoding="utf-8") == avant
 
 
 def test_les_liens_a_retirer_sont_des_urls():

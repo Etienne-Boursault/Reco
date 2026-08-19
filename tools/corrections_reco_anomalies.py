@@ -1103,9 +1103,14 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "attendu": {"types": ["video"], "title": "LOL",
                     "creator": "Amazon Prime"},
         # Kyan Khojandi dit « j'ai fait un jeu qui s'appelle LOL », mais il y
-        # a PARTICIPE comme candidat : « faire » ne dit pas s'il l'a cree. On
-        # retire la plateforme sans lui substituer une attribution douteuse.
-        "creator": None,
+        # a PARTICIPE comme candidat : « faire » ne dit pas s'il l'a cree.
+        #
+        # Cette entrée vidait le champ, faute d'attribution sûre. Il en existe
+        # une depuis le 2026-08-19 : Wikipédia FR présente l'émission comme
+        # « présentée par Philippe Lacheau », et TMDB ne renseigne aucun
+        # `created_by` (le format original est le japonais « Documental »).
+        # C'est `corriger_attributions_erronees.py` qui la pose ; la vider ici
+        # l'effacerait aussitôt.
         # Le type est DÉJÀ corrigé — la ligne ci-dessous ne fait plus rien,
         # mais elle documente l'arbitrage et redeviendrait active si le type
         # régressait. La garde, elle, porte sur l'état COURANT : la laisser

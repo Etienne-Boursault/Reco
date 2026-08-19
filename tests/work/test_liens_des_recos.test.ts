@@ -141,4 +141,52 @@ describe('tousLesLiens', () => {
   it('rend une liste vide des deux côtés vides', () => {
     expect(tousLesLiens([], [])).toEqual([]);
   });
+
+  it('efface un lien de RECHERCHE quand un lien direct existe', () => {
+    // « Bref » affichait « Disney Plus 🔎 » (recherche héritée de TMDB) ET
+    // « Disney+ » (l'adresse exacte, vérifiée à la main). Deux pastilles pour
+    // la même plateforme, dont une qui fait moins bien.
+    const out = tousLesLiens(
+      [{ label: 'Disney Plus', url: 'https://www.disneyplus.com/fr-fr/search?q=Bref',
+         recherche: true }],
+      [{ label: 'Disney+', url: 'https://www.disneyplus.com/fr-fr/series/bref/2rC' }],
+    );
+    expect(out.map((l) => l.label)).toEqual(['Disney+']);
+  });
+
+  it('garde un lien de recherche SANS équivalent direct', () => {
+    // Il est alors la seule piste offerte au visiteur.
+    const out = tousLesLiens(
+      [{ label: 'TF1+', url: 'https://www.tf1.fr/recherche?q=Bref', recherche: true }],
+      [{ label: 'Disney+', url: 'https://www.disneyplus.com/x' }],
+    );
+    expect(out.map((l) => l.label)).toEqual(['TF1+', 'Disney+']);
+  });
+
+  it('reconnaît la plateforme malgré le www.', () => {
+    const out = tousLesLiens(
+      [{ label: 'Disney Plus', url: 'https://www.disneyplus.com/search?q=x',
+         recherche: true }],
+      [{ label: 'Disney+', url: 'https://disneyplus.com/series/y' }],
+    );
+    expect(out).toHaveLength(1);
+  });
+
+  it('ne retire jamais deux liens directs de la même plateforme', () => {
+    // Une série et son film peuvent légitimement coexister.
+    const out = tousLesLiens(
+      [{ label: 'Disney+ série', url: 'https://www.disneyplus.com/a' }],
+      [{ label: 'Disney+ film', url: 'https://www.disneyplus.com/b' }],
+    );
+    expect(out).toHaveLength(2);
+  });
+
+  it('garde un lien de recherche à URL invalide', () => {
+    // Faute d'hôte comparable, on ne peut pas prouver le doublon.
+    const out = tousLesLiens(
+      [{ label: 'Cassé', url: 'pas-une-url', recherche: true }],
+      [{ label: 'Bon', url: 'https://exemple.fr/x' }],
+    );
+    expect(out).toHaveLength(2);
+  });
 });

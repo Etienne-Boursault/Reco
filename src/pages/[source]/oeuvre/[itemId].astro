@@ -18,6 +18,11 @@ import TrendingBadge from '../../../components/TrendingBadge.astro';
 import WorkCard from '../../../components/WorkCard.astro';
 import CreatorFlag from '../../../components/CreatorFlag.astro';
 import { TYPE_EMOJIS, TYPE_LABELS } from '../../../utils/recoTypes';
+import {
+  hostDeLUrl,
+  iconForHost,
+  KIND_SYMBOL,
+} from '../../../utils/iconesPlateformes';
 import { recoToSchema } from '../../../lib/seo/jsonld';
 import {
   buildWorkIndex,
@@ -180,7 +185,14 @@ const typeTitle = typeEmojis.map((te: { label: string }) => te.label).join(', ')
 
 // Les liens de la fiche d'œuvre ET ceux de ses recommandations. Les premiers
 // passent devant : ils ont été posés à la main sur l'œuvre.
-const links = tousLesLiens(workExternalLinks(item), liensRecos);
+const links = tousLesLiens(workExternalLinks(item), liensRecos).map((l) => ({
+  ...l,
+  // Le logo de la plateforme quand il existe localement, sinon un
+  // pictogramme selon la nature du lien. Jamais de favicon distante : elle
+  // fuiterait l'adresse IP du visiteur vers la plateforme (ADR 0034).
+  icone: iconForHost(hostDeLUrl(l.url)),
+  symbole: KIND_SYMBOL[l.kind ?? ''] ?? '🔗',
+}));
 
 // Comptes sociaux de l'artiste/créateur (handles vérifiés, cf. Phase B liens
 // sociaux). item.externalIds est typé Record<string, unknown> → garde de type.
@@ -309,7 +321,13 @@ const pageTitle = item.creator
                   { recherche: l.recherche },
                 ]}
               >
-                {l.label}
+                {l.icone ? (
+                  <img class="work-link-icone" src={l.icone} alt="" width="16"
+                       height="16" loading="lazy" decoding="async" />
+                ) : (
+                  <span class="work-link-symbole" aria-hidden="true">{l.symbole}</span>
+                )}
+                <span>{l.label}</span>
                 {l.recherche && (
                   <span class="work-link-loupe" aria-hidden="true">🔎</span>
                 )}
@@ -453,6 +471,19 @@ const pageTitle = item.creator
   .work-link:hover {
     border-color: var(--accent);
     color: var(--accent);
+  }
+  .work-link-icone {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    /* Le logo garde ses couleurs de marque, y compris au survol. */
+    object-fit: contain;
+  }
+  .work-link-symbole {
+    font-size: 0.9em;
+    line-height: 1;
+    flex-shrink: 0;
   }
   .work-link.indie {
     border-color: color-mix(in oklab, var(--accent) 55%, transparent);

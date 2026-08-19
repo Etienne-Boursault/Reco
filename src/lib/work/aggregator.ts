@@ -183,6 +183,9 @@ export interface WorkExternalLink {
   ethics?: 'indie' | 'neutral' | 'avoid';
   /** Le lien mène à une RECHERCHE, pas à l'œuvre — cf. `estRecherche`. */
   recherche?: boolean;
+  /** La nature du lien, qui donne son pictogramme de repli quand aucune
+   *  favicon locale n'existe pour l'hôte. */
+  kind?: string;
 }
 
 /**
@@ -294,6 +297,7 @@ export interface LienDeReco {
   label?: string | null;
   url?: string | null;
   ethics?: string | null;
+  kind?: string | null;
 }
 
 /**
@@ -336,10 +340,20 @@ export function liensDesRecommandations(
             ? lien.ethics
             : 'neutral',
         recherche: estRecherche(url),
+        kind: typeof lien.kind === 'string' ? lien.kind : undefined,
       });
     }
   }
   return Array.from(vus.values());
+}
+
+/** L'hôte d'une URL, sans `www.`. Chaîne vide si l'URL est invalide. */
+function hoteNu(url: string): string {
+  try {
+    return new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+  } catch {
+    return '';
+  }
 }
 
 /**
@@ -349,6 +363,17 @@ export function liensDesRecommandations(
  * à la main sur la fiche, et priment sur ce qu'une recommandation porte.
  * La déduplication se fait sur l'URL, pas sur le libellé : deux libellés
  * différents pour la même adresse restent un doublon.
+ *
+ * UN LIEN DE RECHERCHE S'EFFACE DEVANT UN LIEN DIRECT
+ * ---------------------------------------------------
+ * La fiche de « Bref » affichait « Disney Plus 🔎 » — une recherche
+ * `disneyplus.com/search?q=Bref`, héritée de TMDB — ET « Disney+ », l'adresse
+ * exacte de la série, vérifiée à la main. Deux pastilles pour la même
+ * plateforme, dont une qui fait moins bien que l'autre : « en choisir 1, pref
+ * pour Disney+ » (relecture du 2026-08-19).
+ *
+ * La règle ne retire que le doublon : un lien de recherche vers une
+ * plateforme SANS lien direct reste, car il est alors la seule piste offerte.
  */
 export function tousLesLiens(
   deLOeuvre: readonly WorkExternalLink[],
@@ -358,7 +383,11 @@ export function tousLesLiens(
   for (const l of [...deLOeuvre, ...desRecos]) {
     if (!vus.has(l.url)) vus.set(l.url, l);
   }
-  return Array.from(vus.values());
+  const tous = Array.from(vus.values());
+  const hotesDirects = new Set(
+    tous.filter((l) => !l.recherche).map((l) => hoteNu(l.url)).filter(Boolean),
+  );
+  return tous.filter((l) => !(l.recherche && hotesDirects.has(hoteNu(l.url))));
 }
 
 /**

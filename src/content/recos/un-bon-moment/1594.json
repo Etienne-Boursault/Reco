@@ -47,6 +47,24 @@
       "kind": "info",
       "label": "Wikipédia",
       "url": "https://fr.wikipedia.org/wiki/Alfred_Hitchcock"
+    },
+    {
+      "kind": "info",
+      "ethics": "neutral",
+      "label": "Filmographie (TMDB)",
+      "url": "https://www.themoviedb.org/person/2636-alfred-hitchcock"
+    },
+    {
+      "kind": "streaming",
+      "ethics": "neutral",
+      "label": "Où regarder (JustWatch)",
+      "url": "https://www.justwatch.com/fr/recherche?q=Alfred+Hitchcock"
+    },
+    {
+      "kind": "streaming",
+      "ethics": "indie",
+      "label": "arte.tv",
+      "url": "https://www.arte.tv/fr/search/?q=hitchcock"
     }
   ],
   "quote": "aller voir les grands classiques d'Hitchcock",
@@ -57,6 +75,6 @@
   "title": "Les grands classiques d'Hitchcock",
   "transcriptSource": "youtube",
   "types": [
-    "autre"
+    "film"
   ]
 }
