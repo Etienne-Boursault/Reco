@@ -129,6 +129,14 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
   .gcard-body {
     flex: 1;
     min-width: 0;
+    /* Le compteur de mentions se cale en bas de la carte : sur une grille
+       aux hauteurs egalisees, il s'alignait sinon juste sous le titre, a
+       des hauteurs differentes d'une carte a l'autre. */
+    display: flex;
+    flex-direction: column;
+  }
+  .gcard-count {
+    margin-top: auto;
   }
   .gcard-type {
     color: var(--muted);

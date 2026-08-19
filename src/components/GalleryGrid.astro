@@ -92,5 +92,17 @@ const n = entries.length;
   }
   .gal-item {
     margin: 0;
+    /* Les cartes d'une meme ligne s'alignent sur la plus haute. La grille
+       etirait deja l'element de liste, mais la carte a l'interieur gardait
+       sa hauteur propre : une ligne melangeait des cartes de trois tailles
+       (signale a la relecture du 2026-08-19 depuis /lieux). `display: flex`
+       ici, `width: 100%` sur la carte, et l'etirement se propage.
+       On egalise PAR LIGNE, pas sur toute la grille : `grid-auto-rows: 1fr`
+       imposait la hauteur du plus long titre a toutes les cartes du site,
+       soit 130 px de vide sous la plupart. */
+    display: flex;
+  }
+  .gal-item > :global(.gcard) {
+    width: 100%;
   }
 </style>

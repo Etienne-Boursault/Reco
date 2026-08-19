@@ -74,4 +74,33 @@ describe.skipIf(!hasBuild)('work canonical page — post-build', () => {
     );
     expect(sampled.some((h) => /<time[^>]*\sdatetime="/.test(h))).toBe(true);
   });
+
+  it('ne propose aucune œuvre du même créateur SANS page', () => {
+    // « Le lien est une page introuvable » (relecture du 2026-08-19, depuis
+    // la fiche de Kaamelott qui pointait « Kaamelott, Livre 6 »). La section
+    // listait toutes les œuvres du créateur, alors qu'une page n'est émise
+    // que pour celles qui sont mentionnées : 337 liens morts sur 230 fiches.
+    const emises = new Set(subdirs);
+    const morts: string[] = [];
+    for (const id of subdirs) {
+      const page = readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8');
+      const debut = page.indexOf('similar-grid');
+      if (debut < 0) continue;
+      const bloc = page.slice(debut, debut + 4000);
+      for (const m of bloc.matchAll(/href="\/un-bon-moment\/oeuvre\/([^"/]+)"/g)) {
+        if (!emises.has(m[1])) morts.push(`${id} -> ${m[1]}`);
+      }
+    }
+    expect(morts).toEqual([]);
+  });
+
+  it('affiche les liens de l’œuvre sur la grande majorité des fiches', () => {
+    // « Quand je clique sur une œuvre, j'aimerais aussi voir les liens ».
+    // Ils vivent sur les recommandations, pas sur la fiche : sans agrégation,
+    // presque aucune page n'en montrait.
+    const avecLiens = subdirs.filter((id) =>
+      readFileSync(join(oeuvreDir, id, 'index.html'), 'utf-8').includes('work-links'),
+    );
+    expect(avecLiens.length / subdirs.length).toBeGreaterThan(0.9);
+  });
 });

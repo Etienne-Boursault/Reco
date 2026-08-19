@@ -66,6 +66,12 @@
       "kind": "streaming",
       "label": "YT Music",
       "url": "https://music.youtube.com/channel/UCUvTgU3Ph690heH5EVhomCg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/channel/UCEnFzIYw3BrndPCddyQ6c5A"
     }
   ],
   "quote": "Moi, c'est beaucoup des rappeurs. Ouais, je te jure. Même, tu vois là, par exemple, si on prend Aurel San, que vous connaissez, et que j'aime beaucoup",
@@ -77,5 +83,6 @@
   "transcriptSource": "youtube",
   "types": [
     "artiste"
-  ]
+  ],
+  "creator": "Orelsan"
 }

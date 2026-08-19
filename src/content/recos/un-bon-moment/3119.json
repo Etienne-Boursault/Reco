@@ -36,10 +36,22 @@
   "kind": "reco",
   "links": [
     {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Théâtre du Marais",
+      "url": "https://theatredumarais.fr/spectacle/pierre-hillairet/"
+    },
+    {
       "ethics": "neutral",
       "kind": "buy",
-      "label": "BilletReduc",
+      "label": "BilletRéduc",
       "url": "https://www.billetreduc.com/spectacle/pierre-hillairet-dans-jour-de-pluie-408073"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/pierrehillairet_/"
     },
     {
       "ethics": "neutral",
@@ -52,12 +64,6 @@
       "kind": "info",
       "label": "Humorix",
       "url": "https://humorix.fr/humoriste/pierre-hillairet/"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "social",
-      "label": "Instagram",
-      "url": "https://www.instagram.com/pierrehillairet_/"
     }
   ],
   "quote": "Tu vois, dans les jeunes, à Pierre Illéret, moi, je trouve que ça fait... Un jeune artiste, encore.",

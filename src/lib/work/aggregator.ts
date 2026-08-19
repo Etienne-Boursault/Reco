@@ -289,6 +289,78 @@ export function workExternalLinks(item: ItemLike): WorkExternalLink[] {
   return Array.from(seen.values());
 }
 
+/** Un lien tel qu'il est stocké sur une recommandation. */
+export interface LienDeReco {
+  label?: string | null;
+  url?: string | null;
+  ethics?: string | null;
+}
+
+/**
+ * Les liens portés par les RECOMMANDATIONS d'une œuvre, rassemblés.
+ *
+ * POURQUOI ILS NE SONT PAS SUR L'ŒUVRE
+ * ------------------------------------
+ * Le travail de vérification des liens — plusieurs semaines — a été mené sur
+ * les recommandations, pas sur les fiches d'œuvre. « Kaamelott » porte ainsi
+ * sept liens vérifiés (SOONER, JustWatch, M6+, IMDb, TMDB, AlloCiné, site
+ * officiel) sur chacune de ses quatre recommandations, et sa fiche d'œuvre
+ * n'en affichait aucun : elle ne lisait que l'item, qui ne connaît qu'un
+ * compte Instagram.
+ *
+ * Demandé à la relecture du 2026-08-19 : « quand je clique sur une œuvre,
+ * j'aimerais aussi voir les liens ».
+ *
+ * L'ORDRE EST CELUI DE LA PREMIÈRE APPARITION
+ * -------------------------------------------
+ * Les recommandations d'une même œuvre portent souvent les mêmes liens dans
+ * le même ordre — celui qu'un humain leur a donné. Le respecter évite de
+ * présenter un classement arbitraire.
+ */
+export function liensDesRecommandations(
+  parReco: readonly (readonly LienDeReco[])[],
+): WorkExternalLink[] {
+  const vus = new Map<string, WorkExternalLink>();
+  for (const liens of parReco) {
+    for (const lien of liens ?? []) {
+      const url = lien?.url;
+      const label = lien?.label;
+      if (typeof url !== 'string' || !isSafeHttpUrl(url)) continue;
+      if (typeof label !== 'string' || !label.trim()) continue;
+      if (vus.has(url)) continue;
+      vus.set(url, {
+        label: label.trim(),
+        url,
+        ethics:
+          lien.ethics === 'indie' || lien.ethics === 'avoid'
+            ? lien.ethics
+            : 'neutral',
+        recherche: estRecherche(url),
+      });
+    }
+  }
+  return Array.from(vus.values());
+}
+
+/**
+ * Fusionne les liens de l'œuvre et ceux de ses recommandations.
+ *
+ * Les liens de l'ŒUVRE passent devant : ils viennent de `customLinks`, posés
+ * à la main sur la fiche, et priment sur ce qu'une recommandation porte.
+ * La déduplication se fait sur l'URL, pas sur le libellé : deux libellés
+ * différents pour la même adresse restent un doublon.
+ */
+export function tousLesLiens(
+  deLOeuvre: readonly WorkExternalLink[],
+  desRecos: readonly WorkExternalLink[],
+): WorkExternalLink[] {
+  const vus = new Map<string, WorkExternalLink>();
+  for (const l of [...deLOeuvre, ...desRecos]) {
+    if (!vus.has(l.url)) vus.set(l.url, l);
+  }
+  return Array.from(vus.values());
+}
+
 /**
  * Œuvres similaires : autres items du même créateur (excluant l'item
  * courant). Limité à `limit` (3 par défaut).

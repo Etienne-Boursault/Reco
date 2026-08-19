@@ -21,12 +21,15 @@ import { TYPE_EMOJIS, TYPE_LABELS } from '../../../utils/recoTypes';
 import { recoToSchema } from '../../../lib/seo/jsonld';
 import {
   buildWorkIndex,
+  liensDesRecommandations,
   similarByCreator,
+  tousLesLiens,
   workExternalLinks,
   type ItemLike,
   type MentionLike,
   type EpisodeLike,
   type WorkAggregate,
+  type WorkExternalLink,
 } from '../../../lib/work/aggregator';
 import { t } from '../../../i18n';
 
@@ -35,6 +38,12 @@ export async function getStaticPaths() {
   const items = await getCollection('items');
   const mentions = await getCollection('mentions');
   const episodes = await getCollection('episodes');
+  // Les liens vérifiés vivent sur les recommandations, pas sur les fiches
+  // d'œuvre. Mention et recommandation partagent leur identifiant : c'est la
+  // seule jointure entre les deux collections.
+  const recos = new Map(
+    (await getCollection('recos')).map((r) => [r.data.id, r.data]),
+  );
 
   const paths: Array<Record<string, unknown>> = [];
 
@@ -97,15 +106,35 @@ export async function getStaticPaths() {
       episodes: sEpisodes,
     });
 
-    const allItems = Array.from(dedupItems.values());
+    // Les candidats aux « œuvres du même créateur » se limitent à celles qui
+    // ONT une page. `buildWorkIndex` n'en crée une que pour les œuvres
+    // mentionnées ; proposer les autres produisait 337 liens vers des pages
+    // introuvables, sur 230 fiches — signalé à la relecture du 2026-08-19
+    // depuis la fiche de Kaamelott, qui pointait « Kaamelott, Livre 6 ».
+    const itemsAvecPage = Array.from(index.values()).map((w) => w.item);
+    // Les mentions PUBLIQUES de chaque œuvre, pour aller y chercher les liens.
+    const mentionsParItem = new Map<string, string[]>();
+    for (const m of sMentions) {
+      if (m.status === 'discarded') continue;
+      const liste = mentionsParItem.get(m.itemId) ?? [];
+      liste.push(m.id);
+      mentionsParItem.set(m.itemId, liste);
+    }
+
     for (const [itemId, work] of index) {
-      const similar = similarByCreator(work.item, allItems, 3);
+      const similar = similarByCreator(work.item, itemsAvecPage, 3);
+      const liensRecos = liensDesRecommandations(
+        (mentionsParItem.get(itemId) ?? []).map(
+          (mentionId) => recos.get(mentionId)?.links ?? [],
+        ),
+      );
       paths.push({
         params: { source: sId, itemId },
         props: {
           source,
           work,
           similar,
+          liensRecos,
         },
       });
     }
@@ -122,9 +151,10 @@ type Props = {
   source: CollectionEntry<'sources'>;
   work: WorkAggregate;
   similar: ItemLike[];
+  liensRecos: WorkExternalLink[];
 };
 
-const { source, work, similar } = Astro.props;
+const { source, work, similar, liensRecos } = Astro.props;
 const data = source.data;
 const { item, mentions, mentionCount, recoCount, trending } = work;
 
@@ -148,7 +178,9 @@ const typeEmojis = types.map((tp: string) => ({
 }));
 const typeTitle = typeEmojis.map((te: { label: string }) => te.label).join(', ');
 
-const links = workExternalLinks(item);
+// Les liens de la fiche d'œuvre ET ceux de ses recommandations. Les premiers
+// passent devant : ils ont été posés à la main sur l'œuvre.
+const links = tousLesLiens(workExternalLinks(item), liensRecos);
 
 // Comptes sociaux de l'artiste/créateur (handles vérifiés, cf. Phase B liens
 // sociaux). item.externalIds est typé Record<string, unknown> → garde de type.

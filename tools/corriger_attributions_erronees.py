@@ -64,6 +64,9 @@ class Correction:
     titre_corrige: str | None = None
     #: URLs a retirer : elles menent a une autre oeuvre.
     liens_a_retirer: tuple[str, ...] = ()
+    #: Retire le champ `creator` au lieu de le remplacer. Sert quand la
+    #: valeur est fausse et qu'aucune attribution sure ne peut la remplacer.
+    retirer_createur: bool = False
 
 
 #: Table curee. Chaque entree a ete confrontee a la source citee.
@@ -116,6 +119,28 @@ CORRECTIONS: tuple[Correction, ...] = (
         preuve="https://api.deezer.com/album/711471",
         liens_a_retirer=("https://www.deezer.com/album/711471",),
     ),
+    Correction(
+        item_id="6426d70c", titre="Balade Mentale",
+        createur_faux="Christophe Pauly", createur="Théo Drieu, Kévin Fauvre",
+        # Signale a la relecture du 2026-08-19 : « ce n'est pas le createur de
+        # BM ». Wikipedia FR : « chaine Youtube francaise de vulgarisation
+        # scientifique creee en 2015 par Theo Drieu et Kevin Fauvre ».
+        # Christophe Pauly est un journaliste et auteur de science-fiction ne
+        # en 1964 — quelqu'un d'autre. Le compte Instagram qui l'accompagnait
+        # etait le sien, pas celui de la chaine.
+        preuve="https://fr.wikipedia.org/wiki/Balade_Mentale",
+        liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
+    ),
+    Correction(
+        item_id="86eb4e90", titre="LOL",
+        createur_faux="Paul de Saint Sernin", retirer_createur=True,
+        # Une reco creditait « LOL » a Paul de Saint Sernin, qui est celui qui
+        # la RECOMMANDE dans l'episode — confusion classique de l'extraction.
+        # Aucune attribution sure ne la remplace : l'arbitrage du corpus
+        # (`corrections_reco_anomalies.py`, ubm-2892) dit de laisser le champ
+        # vide plutot que de substituer une attribution douteuse.
+        preuve="https://www.themoviedb.org/tv/122228",
+    ),
 )
 
 
@@ -127,7 +152,10 @@ def _ecrire(chemin: Path, doc: dict[str, Any]) -> None:
 def _corriger_document(doc: dict[str, Any], correction: Correction) -> list[str]:
     """Applique une correction a un document. Renvoie les champs touches."""
     touches: list[str] = []
-    if correction.createur is not None and doc.get("creator") == correction.createur_faux:
+    if correction.retirer_createur and doc.get("creator") == correction.createur_faux:
+        del doc["creator"]
+        touches.append("creator")
+    elif correction.createur is not None and doc.get("creator") == correction.createur_faux:
         doc["creator"] = correction.createur
         touches.append("creator")
     if correction.annee is not None and doc.get("year") not in (None, correction.annee):

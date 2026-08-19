@@ -44,6 +44,12 @@
       "kind": "streaming",
       "label": "Chaîne YouTube",
       "url": "https://www.youtube.com/@FabienOlicard"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/fabienolicard/"
     }
   ],
   "quote": "il y a une vidéo que Fabien Olicard avait faite qui est très bien où il parle justement",
@@ -56,5 +62,6 @@
   "types": [
     "artiste",
     "chaine"
-  ]
+  ],
+  "creator": "Fabien Olicard"
 }

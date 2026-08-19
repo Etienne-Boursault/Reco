@@ -64,7 +64,35 @@ def test_chaque_correction_fait_QUELQUE_CHOSE():
     """Une entree qui ne corrige rien serait un oubli silencieux."""
     for c in cae.CORRECTIONS:
         assert (c.createur or c.annee or c.externes_a_retirer
-                or c.titre_corrige or c.liens_a_retirer), c.item_id
+                or c.titre_corrige or c.liens_a_retirer
+                or c.retirer_createur), c.item_id
+
+
+def test_retirer_et_remplacer_s_excluent():
+    """Retirer le createur ET en poser un nouveau n'a pas de sens."""
+    for c in cae.CORRECTIONS:
+        assert not (c.retirer_createur and c.createur), c.item_id
+
+
+def test_un_createur_faux_SANS_remplacant_est_retire(corpus: Path):
+    """« Paul de Saint Sernin » creditait LOL alors qu'il la recommande.
+    Aucune attribution sure ne le remplace : le champ disparait."""
+    lol = next(c for c in cae.CORRECTIONS if c.retirer_createur)
+    item = poser(corpus, "items", "a", {
+        "id": lol.item_id, "title": lol.titre, "creator": lol.createur_faux,
+        "types": ["video"]})
+    cae.executer(apply=True)
+    doc = json.loads(item.read_text(encoding="utf-8"))
+    assert "creator" not in doc
+    assert doc["types"] == ["video"]        # le reste est intact
+
+
+def test_un_retrait_ne_touche_pas_un_AUTRE_createur(corpus: Path):
+    lol = next(c for c in cae.CORRECTIONS if c.retirer_createur)
+    item = poser(corpus, "items", "a", {
+        "id": lol.item_id, "title": lol.titre, "creator": "Quelqu'un d'autre"})
+    cae.executer(apply=True)
+    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == "Quelqu'un d'autre"
 
 
 def test_un_titre_corrige_differe_de_l_ancien():
