@@ -93,6 +93,65 @@ Les **notifs d'épisodes** marchent alors immédiatement (cron hebdo ou
 *Actions → RSS poll → Run workflow*). Les **notifs de signalements**
 s'activeront quand le site tournera en SSR (étape déploiement Infomaniak).
 
+## 7. Branche les notifs de SIGNALEMENTS (hébergement Infomaniak)
+
+Les trois mêmes valeurs servent **deux fois** : à GitHub Actions (§6, notifs de
+nouveaux épisodes) et à l'hébergement Infomaniak — les signalements sont postés
+par le site lui-même, quand un visiteur remplit le formulaire.
+
+Elles ne se **trouvent** pas chez Infomaniak : elles sont **produites sur le
+Pi** (§4), et seulement **déclarées** côté hébergement.
+
+| Variable | D'où vient la valeur |
+|---|---|
+| `RECO_MATRIX_HOMESERVER` | `https://` + le `MATRIX_DOMAIN` de ton `.env` du Pi, soit `https://matrix.unebonnere.co`. `register-bot.sh` le réaffiche. |
+| `RECO_MATRIX_TOKEN` | sortie de `./register-bot.sh` — le jeton d'accès du bot. |
+| `RECO_MATRIX_ROOM` | sortie de `./create-room.sh` — commence par `!`. |
+
+**Token perdu ?** Ne relance pas `register-bot.sh`, le compte existe déjà :
+reconnecte le bot pour en obtenir un neuf (`BOT_USER` / `BOT_PASS` sont dans le
+`.env` du Pi).
+
+```bash
+curl -s -XPOST https://matrix.unebonnere.co/_matrix/client/v3/login   -H 'Content-Type: application/json'   -d "{\"type\":\"m.login.password\",\"identifier\":{\"type\":\"m.id.user\",\"user\":\"$BOT_USER\"},\"password\":\"$BOT_PASS\"}"   | jq -r .access_token
+```
+
+**Room id perdu ?** Dans Element : le salon → Paramètres → Avancé → « ID interne
+du salon ».
+
+### Où les poser chez Infomaniak
+
+`npm start` vaut `node --env-file-if-exists=.env ./server.mjs`. Le site lit donc
+**les variables d'environnement du processus** ET, si le fichier existe, un
+`.env` à la racine du dossier déployé. Deux voies :
+
+1. **Les variables d'environnement de l'application Node.js**, dans le Manager
+   Infomaniak — même écran que la version de Node et la commande de démarrage.
+   À préférer : la valeur ne traîne pas dans un fichier du dossier web.
+2. **Un fichier `.env` à la racine**, déposé par SSH ou FTP, si cet écran
+   n'expose pas de variables. Il n'est **jamais** commité (`.gitignore`).
+
+Dans les deux cas, **redémarre l'application** ensuite : le processus garde
+sinon l'environnement avec lequel il a démarré.
+
+### Vérifier que ça marche
+
+Aucun redémarrage n'est nécessaire pour tester le homeserver lui-même :
+
+```bash
+RECO_MATRIX_ROOM='!ton-room:matrix.unebonnere.co' ./send-test.sh
+```
+
+Côté site, envoie un signalement depuis `/signaler` : le message doit arriver
+dans Element. S'il n'arrive pas, ce n'est **jamais** une erreur visible par le
+visiteur — `notifyReportMatrix` est silencieux quand la config manque ou que le
+réseau échoue, par choix (un signalement ne doit pas échouer parce que Matrix
+est tombé). Regarde les logs de l'application.
+
+> Le site attend d'autres variables en production, sans rapport avec Matrix :
+> `SITE_URL`, `RECO_SSR=1`, et `REPORTS_IP_SALT` (≥ 16 caractères, sinon le
+> compteur anti-abus est réinitialisé à chaque redémarrage).
+
 ## Maintenance
 
 - Logs : `docker compose logs -f conduit`
