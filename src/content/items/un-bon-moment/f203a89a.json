@@ -1,20 +1,19 @@
 {
+  "aliases": [
+    "BREF"
+  ],
+  "creator": "Kyan Khojandi",
+  "externalIds": {
+    "instagram": "kyankhojandi",
+    "tmdb": 60715,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR"
+  },
   "id": "f203a89a",
   "schemaVersion": 1,
   "title": "Bref",
   "types": [
-    "autre",
     "serie"
-  ],
-  "creator": "Kyan Khojandi",
-  "externalIds": {
-    "tmdb": 60715,
-    "tmdbType": "tv",
-    "watchPage": "https://www.themoviedb.org/tv/60715-bref/watch?locale=FR",
-    "instagram": "kyankhojandi"
-  },
-  "aliases": [
-    "BREF"
   ],
   "watchProviders": [
     {

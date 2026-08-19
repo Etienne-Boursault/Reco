@@ -35,6 +35,12 @@
   "links": [
     {
       "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+    },
+    {
+      "ethics": "neutral",
       "kind": "info",
       "label": "TMDB",
       "url": "https://www.themoviedb.org/tv/60715"
@@ -42,14 +48,14 @@
     {
       "ethics": "neutral",
       "kind": "streaming",
-      "label": "Disney+",
-      "url": "https://www.disneyplus.com/browse/entity-b329134e-b113-49d6-827e-dd4e0616457f"
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/serie/bref"
     },
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "JustWatch",
-      "url": "https://www.justwatch.com/fr/serie/bref"
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/kyankhojandi/"
     }
   ],
   "quote": "Je pense même que c'est pour ça qu'on l'a pas mis dans \"Bref 2\".",
@@ -64,14 +70,14 @@
   ],
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Disney Plus",
-      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref%202",
-      "ethics": "neutral"
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Bref%202"
     },
     {
+      "ethics": "neutral",
       "label": "YouTube",
-      "url": "https://www.youtube.com/results?search_query=Bref%202",
-      "ethics": "neutral"
+      "url": "https://www.youtube.com/results?search_query=Bref%202"
     }
   ]
 }

@@ -8,59 +8,58 @@
   "schemaVersion": 1,
   "title": "Police Flash 80",
   "types": [
-    "film",
-    "autre"
+    "film"
   ],
   "watchProviders": [
     {
-      "url": "https://tv.apple.com/fr/search?term=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "Apple TV Store"
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Police%20Flash%2080"
     },
     {
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Police%20Flash%2080",
       "ethics": "avoid",
-      "name": "Canal VOD"
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Police%20Flash%2080"
     },
     {
-      "url": "https://rakuten.tv/fr/search?q=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "Rakuten TV"
+      "name": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Police%20Flash%2080"
     },
     {
-      "url": "https://www.sooner.fr/recherche?q=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "Sooner"
+      "name": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Police%20Flash%2080"
     },
     {
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Police%20Flash%2080",
       "ethics": "avoid",
-      "name": "Amazon Video"
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Police%20Flash%2080"
     },
     {
-      "url": "https://www.tf1.fr/recherche?q=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "TF1+"
+      "name": "TF1+",
+      "url": "https://www.tf1.fr/recherche?q=Police%20Flash%2080"
     },
     {
-      "url": "https://www.pathehome.com/recherche?text=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "Pathé Home"
+      "name": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Police%20Flash%2080"
     },
     {
-      "url": "https://www.videofutur.fr/recherche?q=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "VIVA by videofutur"
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Police%20Flash%2080"
     },
     {
-      "url": "https://www.premieremax.com/search?q=Police%20Flash%2080",
       "ethics": "neutral",
-      "name": "Premiere Max"
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Police%20Flash%2080"
     },
     {
-      "url": "https://boutique.arte.tv/search?q=Police%20Flash%2080",
       "ethics": "indie",
-      "name": "ARTE Boutique"
+      "name": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Police%20Flash%2080"
     }
   ]
 }

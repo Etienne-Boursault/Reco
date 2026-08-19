@@ -9,14 +9,13 @@
   "schemaVersion": 1,
   "title": "Iris",
   "types": [
-    "autre",
     "serie"
   ],
   "watchProviders": [
     {
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Iris",
       "ethics": "avoid",
-      "name": "Canal+ Séries"
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Iris"
     }
   ]
 }

@@ -135,3 +135,41 @@ describe('GalleryCard — le reste du contenu est préservé', () => {
     expect(html).toContain('Autre');
   });
 });
+
+describe('type affiché — jamais « autre » quand un type dit quelque chose', () => {
+  it('préfère le type précis, quelle que soit sa position', async () => {
+    // La page /series affichait le badge « AUTRE » sur « Bref »,
+    // « Succession », « Iris »… — toutes des series. Cause : `types[0]` etait
+    // pris tel quel, et « autre » passe en tete par ordre alphabetique depuis
+    // que la fusion des doublons trie les types. Signale le 2026-08-19.
+    const html = await render({
+      id: 'x', title: 'Bref', types: ['autre', 'serie'],
+      mentionCount: 14, href: '/x',
+    });
+    expect(html).toContain('Série');
+    expect(html).not.toContain('>Autre<');
+  });
+
+  it('garde « autre » quand c’est le seul type', async () => {
+    // Son emploi legitime : l'oeuvre n'entre dans aucune categorie.
+    const html = await render({
+      id: 'x', title: 'Truc', types: ['autre'], mentionCount: 1, href: '/x',
+    });
+    expect(html).toContain('Autre');
+  });
+
+  it('respecte l’ordre entre deux types précis', async () => {
+    // On ne reordonne pas ce qui a du sens : seul « autre » est deprioritise.
+    const html = await render({
+      id: 'x', title: 'T', types: ['film', 'serie'], mentionCount: 1, href: '/x',
+    });
+    expect(html).toContain('Film');
+  });
+
+  it('ne lève pas sur une liste de types vide', async () => {
+    const html = await render({
+      id: 'x', title: 'T', types: [], mentionCount: 1, href: '/x',
+    });
+    expect(html).toContain('Autre');
+  });
+});

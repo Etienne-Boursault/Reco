@@ -350,10 +350,13 @@ describe('Galeries — particularités par page', () => {
     expect(visibleText(html)).toContain('2 livres et BD recommandés');
   });
 
-  it('musique englobe musique, album et artiste', async () => {
+  it('musique englobe morceaux et albums, PAS les artistes tout court', async () => {
+    // `artiste` a ete retire de ce filtre le 2026-08-19 : il est generique, et
+    // Albert Dupontel comme Hakim Jemili le portent — ils se retrouvaient dans
+    // la galerie musicale aux cotes d'Orelsan. Signale a la relecture.
     const a = pair('w1', 'Un morceau', ['musique']);
     const b = pair('w2', 'Un album', ['album']);
-    const c = pair('w3', 'Un artiste', ['artiste']);
+    const c = pair('w3', 'Un acteur', ['artiste']);
     const html = await renderWith(
       Musique,
       'musique',
@@ -363,8 +366,22 @@ describe('Galeries — particularités par page', () => {
 
     expect(html).toContain('Un morceau');
     expect(html).toContain('Un album');
-    expect(html).toContain('Un artiste');
-    expect(visibleText(html)).toContain('3 œuvres musicales recommandées');
+    expect(html).not.toContain('Un acteur');
+    expect(visibleText(html)).toContain('2 œuvres musicales recommandées');
+  });
+
+  it('musique garde les artistes MUSICAUX', async () => {
+    // Ils portent `musique` en plus d'`artiste`, pose par
+    // `marquer_artistes_musicaux.py` d'apres les liens d'ecoute de leurs
+    // recos. C'est ce qui distingue Orelsan d'Albert Dupontel.
+    const a = pair('w1', 'Un musicien', ['artiste', 'musique']);
+    const b = pair('w2', 'Un acteur', ['artiste']);
+    const html = await renderWith(
+      Musique, 'musique', [a.item, b.item], [a.mention, b.mention],
+    );
+
+    expect(html).toContain('Un musicien');
+    expect(html).not.toContain('Un acteur');
   });
 
   it('films est la seule galerie à afficher un `emptyHint` (pipeline)', async () => {

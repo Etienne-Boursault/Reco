@@ -37,8 +37,22 @@ export interface Props {
 // Le champ reste disponible sur la page œuvre, où il a du sens.
 const { id, title, types, creator, mentionCount, href } = Astro.props;
 
-// Type primaire : on prend le premier (cohérent avec les autres surfaces).
-const primary = types[0] ?? 'autre';
+// Type primaire : le premier qui DIT quelque chose.
+//
+// « autre » est le type de repli, et il ne devrait jamais l'emporter sur un
+// type precis. Il le faisait pourtant : la page /series affichait le badge
+// « AUTRE » sur « Bref », « Succession », « Iris »… — toutes des series
+// portant `types: ['autre', 'serie']`. Signale a la relecture du 2026-08-19.
+//
+// L'ordre alphabetique n'y etait pas pour rien : la fusion des doublons du
+// 2026-08-18 reunit les types avec `sorted(set(...))`, ce qui pousse « autre »
+// en tete. Les donnees ont ete nettoyees par `nettoyer_type_autre.py`, mais
+// la carte ne doit pas dependre de leur ordre : rien n'empeche un nouvel
+// import de le remettre.
+//
+// On ne REORDONNE pas les types precis entre eux — `['film', 'serie']` reste
+// un film. Seul « autre » est deprioritise.
+const primary = types.find((t) => t !== 'autre') ?? types[0] ?? 'autre';
 const emoji = TYPE_EMOJIS[primary] ?? TYPE_EMOJIS.autre;
 const typeLabel = TYPE_LABELS[primary] ?? 'Autre';
 const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';

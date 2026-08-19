@@ -64,20 +64,19 @@
   "transcriptSource": "youtube",
   "types": [
     "video",
-    "film",
-    "autre"
+    "film"
   ],
-  "year": 2021,
   "watchProviders": [
     {
+      "ethics": "neutral",
       "label": "Netflix",
-      "url": "https://www.netflix.com/search?q=Inside",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Inside"
     },
     {
+      "ethics": "neutral",
       "label": "Netflix Standard with Ads",
-      "url": "https://www.netflix.com/search?q=Inside",
-      "ethics": "neutral"
+      "url": "https://www.netflix.com/search?q=Inside"
     }
-  ]
+  ],
+  "year": 2021
 }

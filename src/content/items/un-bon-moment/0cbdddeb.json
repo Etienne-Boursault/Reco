@@ -10,40 +10,39 @@
   "schemaVersion": 1,
   "title": "Papa",
   "types": [
-    "film",
-    "autre"
+    "film"
   ],
-  "year": 2023,
   "watchProviders": [
     {
-      "url": "https://tv.apple.com/fr/search?term=Papa",
       "ethics": "neutral",
-      "name": "Apple TV Store"
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Papa"
     },
     {
-      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papa",
       "ethics": "avoid",
-      "name": "Canal VOD"
+      "name": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Papa"
     },
     {
-      "url": "https://video.orange.fr/search?q=Papa",
       "ethics": "neutral",
-      "name": "Orange VOD"
+      "name": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Papa"
     },
     {
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=Papa",
       "ethics": "avoid",
-      "name": "Amazon Video"
+      "name": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Papa"
     },
     {
-      "url": "https://www.videofutur.fr/recherche?q=Papa",
       "ethics": "neutral",
-      "name": "VIVA by videofutur"
+      "name": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Papa"
     },
     {
-      "url": "https://www.premieremax.com/search?q=Papa",
       "ethics": "neutral",
-      "name": "Premiere Max"
+      "name": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Papa"
     }
-  ]
+  ],
+  "year": 2023
 }

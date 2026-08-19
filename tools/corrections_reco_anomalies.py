@@ -295,7 +295,7 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "attendu": {"types": ["podcast", "autre", "video"]},
         # « Hot Ones » est diffusée sur YouTube et sur son propre site : aucun
         # flux podcast, malgré le type. Arbitrage du 2026-08-17.
-        "types": ["autre", "video"],
+        "types": ["video"],
         "creator": "First We Feast",
         "retirer_liens": ["89Ri8OIjgxI"],
         "pourquoi": (
@@ -898,7 +898,7 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
         "attendu": {"types": ["musique", "spectacle", "autre", "film",
                               "artiste"],
                     "title": "Michael Jackson"},
-        "types": ["musique", "spectacle", "autre", "artiste"],
+        "types": ["musique", "spectacle", "artiste"],
         "pourquoi": ("La reco porte sur la PERSONNE, pas sur une œuvre : "
                      "« je vous conseille Michael Jackson ». Le type `film` "
                      "réclamait une fiche d'œuvre et un moyen de la voir, "
@@ -1067,7 +1067,7 @@ CORRECTIONS: dict[str, dict[str, Any]] = {
     },
     "ubm-0647": {
         "attendu": {"types": ["autre", "video", "podcast"], "title": "ASKIP"},
-        "types": ["autre", "video"],
+        "types": ["video"],
         "pourquoi": "« c'est une émission sympa » : YouTube et Twitch, pas de "
                     "flux podcast.",
     },

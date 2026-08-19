@@ -10,19 +10,18 @@
   "title": "The Legend of Hei",
   "types": [
     "serie",
-    "video",
-    "autre"
+    "video"
   ],
   "watchProviders": [
     {
-      "url": "https://animationdigitalnetwork.com/search?q=The%20Legend%20of%20Hei",
       "ethics": "neutral",
-      "name": "Animation Digital Network"
+      "name": "Animation Digital Network",
+      "url": "https://animationdigitalnetwork.com/search?q=The%20Legend%20of%20Hei"
     },
     {
-      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Legend%20of%20Hei",
       "ethics": "avoid",
-      "name": "Anime Digital Network Amazon Channel"
+      "name": "Anime Digital Network Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=The%20Legend%20of%20Hei"
     }
   ]
 }

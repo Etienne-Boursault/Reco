@@ -1,6 +1,7 @@
 ---
 /**
- * /[source]/musique — Galerie musique (types: musique, album, artiste).
+ * /[source]/musique — Galerie musique (types: musique, album ; les
+ * artistes musicaux portent `musique`, cf. `marquer_artistes_musicaux`).
  * Cf. ADR 0031.
  */
 import { getCollection } from 'astro:content';
@@ -26,8 +27,17 @@ const items = (await getCollection('items'))
   .map((i) => i.data)
   .filter((it) => mentionedIds.has(it.id));
 
-// Galerie « musique » : morceaux, albums, artistes.
-const entries = selectByType(items, mentions, ['musique', 'album', 'artiste']);
+// Galerie « musique » : morceaux, albums, et artistes MUSICAUX.
+//
+// `artiste` a ete retire de ce filtre le 2026-08-19. Il est generique : Albert
+// Dupontel et Hakim Jemili le portent, et se retrouvaient dans la galerie
+// musicale aux cotes d'Orelsan. Signale a la relecture.
+//
+// Les artistes musicaux y restent : `marquer_artistes_musicaux.py` leur a
+// ajoute le type `musique`, en propageant une convention que 28 items
+// portaient deja. Le signal vient de leurs recos — un lien Deezer, Spotify ou
+// Bandcamp atteste d'un musicien, personne n'en pose sur un acteur.
+const entries = selectByType(items, mentions, ['musique', 'album']);
 
 const heading = t('gallery.musique.title');
 // Accord au nombre : 0 et 1 prennent le singulier (règle du projet,
