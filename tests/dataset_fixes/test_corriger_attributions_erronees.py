@@ -59,16 +59,17 @@ def _fautifs(c) -> tuple:
     return (faux,) if isinstance(faux, str) else (faux or ())
 
 
-def test_un_champ_VIDE_peut_etre_une_valeur_fautive(corpus: Path):
-    """Une passe anterieure avait vide le createur de « LOL », faute
-    d'attribution sure. Il en existe une : le champ vide devient a son tour
-    une valeur a corriger."""
-    lol = next(c for c in cae.CORRECTIONS if None in _fautifs(c))
-    poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": lol.item_id})
-    reco = poser(corpus, "recos", "r", {
-        "id": "ubm-1", "title": lol.titre, "status": "validated"})
-    cae.executer(apply=True)
-    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == lol.createur
+def test_un_champ_VIDE_peut_etre_une_valeur_fautive():
+    """Le mecanisme sert quand un champ vide n'est pas un manque mais une
+    erreur : « LOL » avait ete vide faute d'attribution sure, avant qu'on en
+    trouve une — puis re-vide, l'editeur ayant tranche que presenter n'est pas
+    creer. La table ne l'emploie plus, le mecanisme reste."""
+    correction = cae.Correction(
+        item_id="zz", titre="Test", preuve="https://exemple.fr/",
+        createur_faux=("Un Diffuseur", None), createur="Une Personne")
+    doc = {"id": "zz", "title": "Test"}
+    assert cae._corriger_document(doc, correction) == ["creator"]
+    assert doc["creator"] == "Une Personne"
 
 
 def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
@@ -79,18 +80,20 @@ def test_aucune_correction_ne_remplace_un_nom_par_lui_meme():
 
 
 def test_une_correction_peut_viser_PLUSIEURS_valeurs_fautives(corpus: Path):
-    """« LOL » se trompait de deux facons : la fiche creditait la plateforme,
-    une reco creditait celui qui la recommande."""
+    """« LOL » s'est trompee de trois facons successives : la fiche creditait
+    la plateforme de diffusion, une reco creditait celui qui la recommande,
+    et une passe y a pose le presentateur. Aucune n'est le createur, et il
+    n'y en a pas de connu : le champ disparait, d'ou qu'il vienne."""
     lol = next(c for c in cae.CORRECTIONS if len(_fautifs(c)) > 1)
+    a, b = [f for f in _fautifs(lol) if f][:2]
     poser(corpus, "mentions", "m1", {"id": "ubm-1", "itemId": lol.item_id})
-    a, b = _fautifs(lol)[:2]
     item = poser(corpus, "items", "i", {
         "id": lol.item_id, "title": lol.titre, "creator": a})
     reco = poser(corpus, "recos", "r", {
         "id": "ubm-1", "title": lol.titre, "creator": b, "status": "validated"})
     cae.executer(apply=True)
-    assert json.loads(item.read_text(encoding="utf-8"))["creator"] == lol.createur
-    assert json.loads(reco.read_text(encoding="utf-8"))["creator"] == lol.createur
+    assert "creator" not in json.loads(item.read_text(encoding="utf-8"))
+    assert "creator" not in json.loads(reco.read_text(encoding="utf-8"))
 
 
 def test_chaque_correction_fait_QUELQUE_CHOSE():

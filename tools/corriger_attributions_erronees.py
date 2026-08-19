@@ -180,6 +180,30 @@ CORRECTIONS: tuple[Correction, ...] = (
         liens_a_retirer=("https://www.instagram.com/christophepauly.tv/",),
     ),
     Correction(
+        item_id="1c0535f8", titre="Gus",
+        # SensCritique credite « Jeremie Dethelot et Haroun Saifi » (2019) ;
+        # le co-auteur manquait aux deux fiches fusionnees.
+        createur_faux="Jérémie Dethelot", createur="Jérémie Dethelot, Haroun Saifi",
+        preuve="https://www.senscritique.com/serie/GUS/38953092",
+    ),
+    Correction(
+        item_id="5c481b82", titre="Le Trône des Frogz",
+        # La fiche a herite du compte de l'AUTEUR lors de la fusion. Celui du
+        # studio producteur s'y ajoute : `externalIds.instagram` n'acceptant
+        # qu'un handle, le second passe par `customLinks`.
+        #
+        # Le handle vient de la description des videos de la chaine Golden
+        # Moustache elle-meme — @goldenoff, et non @goldenmoustache comme on
+        # l'aurait suppose. Instagram repondant 200 a n'importe quel profil,
+        # une verification par code HTTP n'aurait rien prouve.
+        preuve="https://www.youtube.com/@GoldenMoustache",
+        liens_a_ajouter=(
+            {"kind": "social", "ethics": "neutral",
+             "label": "Instagram — Golden Moustache",
+             "url": "https://www.instagram.com/goldenoff/"},
+        ),
+    ),
+    Correction(
         item_id="c054d35a", titre="Vincent Delerm",
         titre_corrige="Je ne sais pas si c'est tout le monde (Bande originale du film)",
         # Cette fiche n'est pas l'artiste mais un ALBUM : la citation dit « la
@@ -201,10 +225,15 @@ CORRECTIONS: tuple[Correction, ...] = (
         item_id="86eb4e90", titre="LOL",
         # Deux erreurs differentes pour la meme oeuvre : la FICHE creditait la
         # plateforme de diffusion, une RECO creditait celui qui la recommande.
-        # `None` en fait partie : une passe anterieure avait vide le champ sur
-        # les recos, faute d'attribution sure. Il en existe une.
-        createur_faux=("Amazon Prime", "Paul de Saint Sernin", None),
-        createur="Philippe Lacheau",
+        # Trois valeurs fautives se sont succede : la plateforme de diffusion
+        # cote fiche, celui qui la recommande cote reco, puis « Philippe
+        # Lacheau » — que j'avais pose faute de mieux, Wikipedia le donnant
+        # comme PRESENTATEUR. L'editeur a tranche le 2026-08-19 : presenter
+        # n'est pas creer, et TMDB ne renseigne aucun `created_by` pour cette
+        # fiche. Le champ reste vide.
+        createur_faux=("Amazon Prime", "Paul de Saint Sernin",
+                       "Philippe Lacheau"),
+        retirer_createur=True,
         # Une reco creditait « LOL » a Paul de Saint Sernin, qui est celui qui
         # la RECOMMANDE dans l'episode — confusion classique de l'extraction.
         # L'autre carte n'avait aucun createur : « il n'y a pas le createur »
