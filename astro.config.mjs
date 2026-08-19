@@ -88,6 +88,10 @@ export default defineConfig({
         // signalements admin) et /report/* (formulaires individuels, noindex).
         if (page.endsWith('/verifier') || page.endsWith('/verifier/')) return false;
         if (page.endsWith('/reports') || page.endsWith('/reports/')) return false;
+        // Sommaire interne des galeries : les pages qu'il liste sont
+        // publiques et indexees, mais le sommaire lui-meme n'a rien a faire
+        // dans les resultats de recherche — il sert a la relecture.
+        if (page.endsWith('/galeries') || page.endsWith('/galeries/')) return false;
         if (page.includes('/report/')) return false;
         // Fragments chargés à la demande : ce sont des MORCEAUX de page, sans
         // `<html>`, `<head>` ni titre. Indexés, ils entreraient en concurrence

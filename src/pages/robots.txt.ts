@@ -19,6 +19,10 @@ export const GET: APIRoute = ({ site }) => {
     'User-agent: *',
     'Disallow: /*/verifier',
     'Disallow: /*/reports',
+    // Sommaire interne des galeries. Les pages qu'il liste restent
+    // parfaitement indexables : c'est le sommaire, outil de relecture, qu'on
+    // garde hors des resultats.
+    'Disallow: /*/galeries',
     'Disallow: /*/report/',
     'Disallow: /api/',
     'Disallow: /search.json',

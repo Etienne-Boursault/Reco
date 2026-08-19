@@ -1,0 +1,165 @@
+---
+/**
+ * /[source]/galeries — l'index des pages de catalogue.
+ *
+ * POURQUOI ELLE EXISTE
+ * --------------------
+ * Le site expose des pages de catalogue — `/films`, `/series`, `/musique`,
+ * `/livres`, `/chaines` — et une page canonique par œuvre sous `/oeuvre/`.
+ * Aucune n'est atteignable depuis la navigation : on y arrive par la
+ * recherche, ou par une fiche d'invité. L'éditeur du site n'avait donc aucun
+ * moyen simple de les parcourir pour les relire.
+ *
+ * Demandé à la relecture du 2026-08-19 : « un accès quelque part pour que je
+ * puisse trouver ces liens, et qui ne soit pas facilement trouvable par
+ * l'utilisateur lambda ».
+ *
+ * DISCRÈTE, PAS SECRÈTE — ET LA NUANCE COMPTE
+ * -------------------------------------------
+ * Les pages listées ici sont PUBLIQUES : indexées, présentes dans le sitemap,
+ * conçues pour être vues. Cet index ne dévoile donc rien qui ne le soit déjà,
+ * et il ne porte aucune donnée personnelle.
+ *
+ * C'est ce qui le distingue de `/reports`, qui affiche les adresses e-mail des
+ * personnes ayant signalé une erreur : celle-là exige `RECO_ADMIN=1` et
+ * n'entre pas dans le build public. Ici, un tel garde obligerait à
+ * reconstruire le site pour consulter un simple sommaire — un coût sans
+ * contrepartie.
+ *
+ * On se contente donc de la rendre peu découvrable : `noindex`, absente du
+ * sitemap, absente de la navigation. Ce sont des mesures de DÉCOUVRABILITÉ,
+ * jamais d'ACCÈS — quiconque connaît l'adresse peut l'ouvrir, et c'est sans
+ * conséquence.
+ */
+import { getCollection } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({ params: { source: source.id }, props: { source } }));
+}
+
+const { source } = Astro.props;
+const data = source.data;
+const id = source.id;
+
+const items = (await getCollection('items')).map((i) => i.data);
+const mentions = (await getCollection('mentions'))
+  .filter((m) => m.data.sourceRef.sourceId === id)
+  .map((m) => m.data);
+const mentionnes = new Set(mentions.map((m) => m.itemId));
+const vus = items.filter((it) => mentionnes.has(it.id));
+
+/** Compte les œuvres d'une galerie, pour que le sommaire annonce du réel. */
+const compter = (types: string[]): number =>
+  vus.filter((it) => (it.types ?? []).some((t) => types.includes(t))).length;
+
+// Les mêmes filtres que les pages elles-mêmes. S'ils divergeaient, ce sommaire
+// annoncerait des nombres que les pages ne montrent pas.
+const galeries = [
+  { url: `/${id}/films`, titre: 'Films', n: compter(['film']) },
+  { url: `/${id}/series`, titre: 'Séries', n: compter(['serie']) },
+  { url: `/${id}/musique`, titre: 'Musique', n: compter(['musique', 'album']) },
+  { url: `/${id}/livres`, titre: 'Livres et BD', n: compter(['livre', 'bd']) },
+  { url: `/${id}/chaines`, titre: 'Chaînes', n: compter(['chaine']) },
+];
+
+const autres = [
+  { url: `/${id}/recos`, titre: 'Toutes les recommandations',
+    quoi: 'une carte par mention, avec filtres et recherche' },
+  { url: `/${id}/stats`, titre: 'Statistiques', quoi: 'chiffres du corpus' },
+  { url: `/${id}/reports`, titre: 'Signalements',
+    quoi: 'queue interne — construite seulement avec RECO_ADMIN=1' },
+];
+
+// Un échantillon d'œuvres : les plus mentionnées. Les lister toutes ferait
+// 1 092 liens, ce qui n'aiderait personne.
+const parItem = new Map<string, number>();
+for (const m of mentions) parItem.set(m.itemId, (parItem.get(m.itemId) ?? 0) + 1);
+const oeuvres = vus
+  .map((it) => ({ it, n: parItem.get(it.id) ?? 0 }))
+  .sort((a, b) => b.n - a.n || (a.it.title ?? '').localeCompare(b.it.title ?? ''))
+  .slice(0, 24);
+---
+
+<Layout
+  title={`Galeries — ${data.title}`}
+  description="Sommaire interne des pages de catalogue."
+  theme={data.theme}
+  noindex
+>
+  <main id="main" tabindex="-1" class="wrap galeries">
+    <p class="retour"><a href={`/${id}`}>← {data.title}</a></p>
+    <h1>Galeries</h1>
+    <p class="tag">
+      Sommaire des pages de catalogue. Cette page n'est liée nulle part et
+      n'est pas indexée — elle sert à la relecture.
+    </p>
+
+    <h2>Par type</h2>
+    <ul class="liste">
+      {galeries.map((g) => (
+        <li>
+          <a href={g.url}>{g.titre}</a>
+          <span class="n">{g.n}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Autres pages</h2>
+    <ul class="liste">
+      {autres.map((a) => (
+        <li>
+          <a href={a.url}>{a.titre}</a>
+          <span class="quoi">{a.quoi}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Pages d'œuvre</h2>
+    <p class="tag">
+      Une page par œuvre, {vus.length} au total. Voici les vingt-quatre les
+      plus citées ; les autres s'atteignent par les galeries ci-dessus ou par
+      la recherche du site.
+    </p>
+    <ul class="liste">
+      {oeuvres.map(({ it, n }) => (
+        <li>
+          <a href={`/${id}/oeuvre/${it.id}`}>{it.title}</a>
+          <span class="n">{n}</span>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .galeries { padding-block: 2rem 4rem; }
+  .retour { margin: 0 0 1.5rem; font-size: 0.9rem; }
+  .retour a { color: var(--muted); text-decoration: none; }
+  .retour a:hover { color: var(--accent); }
+  .tag { color: var(--muted); max-width: 44rem; }
+  h2 { margin-top: 2.5rem; }
+  .liste {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 0.4rem 1.4rem;
+  }
+  .liste li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  .liste a { color: var(--text); text-decoration: none; }
+  .liste a:hover { color: var(--accent); }
+  /* `tabular-nums` : les compteurs s'alignent au lieu de danser. */
+  .n { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .quoi { color: var(--muted); font-size: 0.8rem; text-align: right; }
+</style>
