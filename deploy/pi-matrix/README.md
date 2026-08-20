@@ -104,7 +104,7 @@ Pi** (§4), et seulement **déclarées** côté hébergement.
 
 | Variable | D'où vient la valeur |
 |---|---|
-| `RECO_MATRIX_HOMESERVER` | `https://` + le `MATRIX_DOMAIN` de ton `.env` du Pi, soit `https://matrix.unebonnere.co`. `register-bot.sh` le réaffiche. |
+| `RECO_MATRIX_HOMESERVER` | `https://` + le `MATRIX_DOMAIN` de ton `.env` du Pi. `register-bot.sh` le réaffiche. Sur l'installation en service : `https://matrix.source-internet.fr`. |
 | `RECO_MATRIX_TOKEN` | sortie de `./register-bot.sh` — le jeton d'accès du bot. |
 | `RECO_MATRIX_ROOM` | sortie de `./create-room.sh` — commence par `!`. |
 
@@ -113,8 +113,14 @@ reconnecte le bot pour en obtenir un neuf (`BOT_USER` / `BOT_PASS` sont dans le
 `.env` du Pi).
 
 ```bash
-curl -s -XPOST https://matrix.unebonnere.co/_matrix/client/v3/login   -H 'Content-Type: application/json'   -d "{\"type\":\"m.login.password\",\"identifier\":{\"type\":\"m.id.user\",\"user\":\"$BOT_USER\"},\"password\":\"$BOT_PASS\"}"   | jq -r .access_token
+IDENT='{"type":"m.id.user","user":"'"$BOT_USER"'"}'
+BODY="{\"type\":\"m.login.password\",\"identifier\":$IDENT,\"password\":\"$BOT_PASS\"}"
+curl -s -XPOST "https://$MATRIX_DOMAIN/_matrix/client/v3/login" -d "$BODY" | jq -r .access_token
 ```
+
+> Le domaine d'exemple de ce README est `matrix.unebonnere.co` ; l'installation
+> en service tourne sur **`matrix.source-internet.fr`** (le `server_name` est
+> gravé dans les IDs et ne se change pas après coup).
 
 **Room id perdu ?** Dans Element : le salon → Paramètres → Avancé → « ID interne
 du salon ».
@@ -139,7 +145,7 @@ sinon l'environnement avec lequel il a démarré.
 Aucun redémarrage n'est nécessaire pour tester le homeserver lui-même :
 
 ```bash
-RECO_MATRIX_ROOM='!ton-room:matrix.unebonnere.co' ./send-test.sh
+RECO_MATRIX_ROOM="!ton-room:$MATRIX_DOMAIN" ./send-test.sh
 ```
 
 Côté site, envoie un signalement depuis `/signaler` : le message doit arriver
