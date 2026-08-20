@@ -22,12 +22,19 @@
  * vérifier, par un test, qu'aucun type du corpus n'est laissé sans galerie.
  */
 
+import type { ItemType } from '../../content.config';
+
 /** Une galerie : un slug d'URL, les types qu'elle rassemble, ses libellés. */
 export interface Galerie {
   /** Le segment d'URL — `/un-bon-moment/<slug>`. */
   slug: string;
-  /** Les types d'item retenus. Plusieurs quand ils forment un tout. */
-  types: string[];
+  /**
+   * Les types d'item retenus. Plusieurs quand ils forment un tout.
+   *
+   * `ItemType` et non `string` : en `string[]`, une faute de frappe passait le
+   * compilateur et produisait une galerie vide en silence.
+   */
+  types: ItemType[];
   /** Le titre de la page, aussi porté par `<h1>`. */
   titre: string;
   /**

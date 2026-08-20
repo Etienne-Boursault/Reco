@@ -333,12 +333,27 @@ const itemExternalIds = z.object({
   tiktok: z.string().nullable().optional(),      // handle TikTok (sans @)
 });
 
-const itemType = z.enum([
+const ITEM_TYPES = [
   'livre', 'film', 'serie', 'musique', 'album',
   'artiste', 'podcast', 'jeu', 'bd', 'article',
   'spectacle', 'lieu', 'video', 'chaine', 'application',
   'autre',
-]);
+] as const;
+
+/**
+ * Les types d'oeuvre, cote TypeScript.
+ *
+ * Exporte parce que la table des galeries (`src/lib/gallery/typesGaleries.ts`)
+ * declarait ses types en `string[]` : le compilateur ne pouvait donc pas
+ * verifier qu'une entree correspond a un type reel, et une faute de frappe y
+ * aurait produit une galerie vide en silence.
+ *
+ * Derive du tableau et non de `z.infer` : `z` vient d'`astro:content` comme
+ * VALEUR, pas comme namespace, donc `z.infer<...>` ne resout pas ici.
+ */
+export type ItemType = (typeof ITEM_TYPES)[number];
+
+const itemType = z.enum(ITEM_TYPES);
 
 const items = defineCollection({
   loader: glob({

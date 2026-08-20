@@ -172,12 +172,12 @@ const topWorks = topWorksRaw.map((w) => ({
 
     <section aria-labelledby="monthly">
       <h2 id="monthly">{t('stats.heading.monthly')}</h2>
+      {/* `libelles="aucun"` : soixante-dix mois s'entassaient sous les
+          barres au point d'etre illisibles. Les reperes d'annee suffisent a
+          se situer, et le tableau accessible garde chaque mois. */}
       <StatChart
         title={t('stats.heading.monthly')}
         bars={monthlyBars}
-        {/* Pas de libelle sous les barres : soixante-dix mois s'y entassaient
-            au point d'etre illisibles. Les reperes d'annee suffisent a se
-            situer, et le tableau accessible garde chaque mois. */}
         libelles="aucun"
         valueHeader={t('stats.col.episodes')}
         emptyKey="stats.empty.monthly"
