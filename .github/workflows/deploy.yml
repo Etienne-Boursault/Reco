@@ -174,6 +174,32 @@ jobs:
           echo "    SON commit qui est en ligne — sans gravité." >&2
           exit 1
 
+      - name: Que s'est-il passé côté Infomaniak ?
+        # Le premier essai a échoué sans qu'on puisse distinguer « la commande
+        # de construction n'a pas été enregistrée » de « elle a tourné et a
+        # échoué ». Ces deux appels le disent, et n'exposent aucun secret : la
+        # configuration ne contient que des commandes, et un job que son
+        # statut.
+        if: failure()
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+        run: |
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
+          echo "--- configuration enregistrée ---"
+          curl -sS "$API/1/hostings/$HOSTING/nodejs/$APP?with=environments" \
+            -H "Authorization: Bearer $jeton" \
+            | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin).get("data",{}).get("environment",{}), indent=2, ensure_ascii=False))' \
+            || echo "(configuration illisible)"
+          echo "--- derniers travaux ---"
+          # `log_stream` porte un jeton d'accès aux journaux : on ne garde que
+          # le statut et la date.
+          curl -sS "$API/1/hostings/$HOSTING/nodejs/$APP/jobs" \
+            -H "Authorization: Bearer $jeton" \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin).get("data",[]); print(json.dumps([{k:j[k] for k in ("status","created_at") if k in j} for j in d], indent=2)) if d else print("aucun travail enregistré")' \
+            || echo "(travaux illisibles)"
+
       - name: Vérifier que le site répond
         run: |
           # Le marqueur est un fichier statique : il peut être servi alors que
