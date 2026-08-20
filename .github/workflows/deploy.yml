@@ -1,0 +1,157 @@
+# Déploiement en production (Infomaniak).
+#
+# POURQUOI CE FICHIER EXISTE
+# --------------------------
+# Le déploiement était manuel : ouvrir la console SSH de l'app dans le Manager
+# Infomaniak, coller `git fetch && git reset --hard && npm run build`, puis
+# cliquer sur « Redémarrer ». Résultat le 2026-08-20 : la production tournait
+# encore sur le code du 28 juillet, sans compression — 2,6 Mo envoyés à chaque
+# visiteur là où 200 Ko suffisaient. Un déploiement qu'on oublie de faire est
+# un déploiement qui n'a pas lieu.
+#
+# CE QUI SE PASSE CÔTÉ INFOMANIAK
+# -------------------------------
+# Ce workflow ne construit RIEN. Il appelle l'API pour redémarrer l'app, et
+# c'est la « commande de construction » configurée dans le Manager qui fait le
+# travail : `git reset --hard origin/main`, `npm ci`, `astro build`, puis elle
+# écrit le SHA déployé dans `dist/client/version.txt`. Ce fichier est la seule
+# preuve vérifiable que le bon code tourne — sans lui, le workflow annoncerait
+# « déployé » dès que le site répond, ce qu'il faisait déjà avant.
+#
+# L'endpoint n'est pas documenté publiquement. Il a été trouvé en observant
+# l'appel que le Manager émet lui-même quand on clique sur « Redémarrer » :
+#   POST /1/hostings/{hosting}/nodejs/{app}/actions/restart
+# Le préfixe est `hostings` au pluriel, et le site Node.js est un produit
+# distinct de l'hébergement web (`service_id` 57 contre 1) — d'où l'échec des
+# chemins en `/1/web/…`, qui répondent 403.
+#
+# POURQUOI IL SE DÉCLENCHE APRÈS LA CI, PAS SUR LE PUSH
+# ----------------------------------------------------
+# Déployer sur `push` mettrait en ligne du code dont on ignore s'il compile.
+# `workflow_run` attend que la CI ait conclu `success` sur `main`. Le premier
+# push de cette série avait justement une CI rouge : cinq erreurs de type et
+# la couverture sous son seuil.
+name: Déploiement
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+# Aucun job n'écrit sur le dépôt.
+permissions:
+  contents: read
+
+# `cancel-in-progress: false` : interrompre un déploiement en cours laisserait
+# l'app à moitié construite. Les déploiements s'enchaînent, ils ne se doublent
+# pas.
+concurrency:
+  group: deploiement-production
+  cancel-in-progress: false
+
+jobs:
+  deployer:
+    name: Redémarrer et vérifier
+    # Sur `workflow_dispatch` il n'y a pas de `workflow_run` à interroger.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SITE: https://unebonnere.co
+      API: https://api.infomaniak.com
+
+    steps:
+      - name: Identifier le commit à déployer
+        id: cible
+        run: |
+          # Sur `workflow_run`, `github.sha` désigne le commit du workflow
+          # déclencheur, pas celui qui a été testé : c'est `head_sha` qu'il
+          # faut lire, sans quoi on vérifierait le mauvais SHA.
+          sha="${{ github.event.workflow_run.head_sha || github.sha }}"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "Commit visé : $sha"
+
+      - name: Vérifier que la configuration est complète
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+        run: |
+          # Échouer ici, avec un message clair, plutôt que d'envoyer une
+          # requête sans jeton et de lire un 401 sans savoir pourquoi.
+          manquant=0
+          for nom in TOKEN HOSTING APP; do
+            if [ -z "${!nom}" ]; then
+              echo "::error::$nom est vide."
+              manquant=1
+            fi
+          done
+          if [ "$manquant" = 1 ]; then
+            echo "Attendus : le secret INFOMANIAK_API_TOKEN (portée « web »)," >&2
+            echo "et les variables INFOMANIAK_HOSTING_ID / INFOMANIAK_NODEJS_ID." >&2
+            exit 1
+          fi
+
+      - name: Déclencher la construction et le redémarrage
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+        run: |
+          set -euo pipefail
+          url="$API/1/hostings/$HOSTING/nodejs/$APP/actions/restart"
+          code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST "$url" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H 'Content-Type: application/json' -d '{}')
+          echo "HTTP $code"
+          cat reponse.json
+          echo
+          if [ "$code" != "200" ]; then
+            echo "::error::Le redémarrage a été refusé (HTTP $code)."
+            exit 1
+          fi
+
+      - name: Attendre que le commit visé soit en ligne
+        env:
+          ATTENDU: ${{ steps.cible.outputs.sha }}
+        run: |
+          # La réponse de l'API est immédiate — « Running » signifie que le
+          # travail a commencé, pas qu'il est fini. La construction dure
+          # plusieurs minutes : on interroge le marqueur jusqu'à ce qu'il
+          # porte le bon SHA.
+          #
+          # 60 tentatives × 15 s = 15 minutes, sous le `timeout-minutes: 20`
+          # du job pour que l'échec soit celui-ci, explicite, et non un job
+          # coupé net.
+          for essai in $(seq 1 60); do
+            sleep 15
+            enligne=$(curl -fsS --max-time 20 "$SITE/version.txt" 2>/dev/null | tr -d '[:space:]' || true)
+            if [ "$enligne" = "$ATTENDU" ]; then
+              echo "En ligne : $enligne (essai $essai)"
+              exit 0
+            fi
+            echo "essai $essai/60 — en ligne : ${enligne:-<indisponible>}"
+          done
+
+          echo "::error::Le commit $ATTENDU n'est pas en ligne après 15 minutes."
+          echo "Trois causes possibles :" >&2
+          echo " 1. la commande de construction du Manager n'écrit pas" >&2
+          echo "    dist/client/version.txt — le marqueur n'existera jamais ;" >&2
+          echo " 2. la construction a échoué (voir les journaux du site" >&2
+          echo "    Node.js dans le Manager Infomaniak) ;" >&2
+          echo " 3. un déploiement plus récent est passé devant, et c'est" >&2
+          echo "    SON commit qui est en ligne — sans gravité." >&2
+          exit 1
+
+      - name: Vérifier que le site répond
+        run: |
+          # Le marqueur est un fichier statique : il peut être servi alors que
+          # l'application, elle, ne démarre pas. On vérifie donc aussi une page
+          # rendue par le serveur.
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$SITE/")
+          echo "GET / -> $code"
+          [ "$code" = "200" ] || { echo "::error::Le site répond $code."; exit 1; }
