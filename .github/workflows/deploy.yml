@@ -96,6 +96,32 @@ jobs:
             exit 1
           fi
 
+      - name: Vérifier que le jeton est accepté
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+        run: |
+          set -euo pipefail
+          # Un jeton copié depuis Windows arrive souvent avec un `\r` collé à
+          # la valeur : l'en-tête `Authorization` devient invalide et l'API
+          # rend 401 sans autre explication. On nettoie avant d'appeler.
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            "$API/1/hostings/$HOSTING" -H "Authorization: Bearer $jeton")
+          case "$code" in
+            200) echo "Jeton accepté." ;;
+            401) echo "::error::Jeton refusé (401). Il est révoqué, expiré," \
+                   "ou la valeur du secret est altérée — un retour à la ligne" \
+                   "copié avec le jeton suffit. Recrée-le et repose-le avec" \
+                   "'gh secret set INFOMANIAK_API_TOKEN'."
+                 exit 1 ;;
+            403) echo "::error::Jeton valide mais sans droit sur cet" \
+                   "hébergement (403). Il lui manque la portée « web »."
+                 exit 1 ;;
+            *)   echo "::error::Réponse inattendue de l'API (HTTP $code)."
+                 exit 1 ;;
+          esac
+
       - name: Déclencher la construction et le redémarrage
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
@@ -103,9 +129,10 @@ jobs:
           APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
         run: |
           set -euo pipefail
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
           url="$API/1/hostings/$HOSTING/nodejs/$APP/actions/restart"
           code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST "$url" \
-            -H "Authorization: Bearer $TOKEN" \
+            -H "Authorization: Bearer $jeton" \
             -H 'Content-Type: application/json' -d '{}')
           echo "HTTP $code"
           cat reponse.json
