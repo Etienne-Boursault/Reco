@@ -11,21 +11,26 @@
 #
 # CE QU'IL A FALLU COMPRENDRE
 # ---------------------------
-# 1. L'API des sites Node.js n'est pas documentée. Le chemin a été trouvé en
-#    observant ce que le Manager émet lui-même. Le préfixe est `hostings` au
-#    pluriel, et le site Node.js est un produit distinct de l'hébergement web
-#    (`service_id` 57 contre 1) — d'où le 403 sur `/1/web/…`.
-# 2. « Redémarrer » ne reconstruit PAS. Trois redémarrages d'affilée, pas un
-#    seul travail créé : le seul que l'API connaissait datait de juillet.
-# 3. Renvoyer la configuration à l'identique ne reconstruit pas non plus.
-#    L'appel est accepté (`200 {"data":true}`) et il ne se passe rien.
-#    La construction se déclenche quand la configuration CHANGE — d'où le
-#    marqueur de déploiement ajouté à la commande de construction.
+# L'API des sites Node.js n'est pas documentée : les trois chemins ont été
+# trouvés en observant ce que le Manager émet lui-même.
 #
-# Chacune de ces trois étapes a été découverte parce que le workflow refuse
-# d'annoncer un succès qu'il n'a pas vérifié : il attend que le SHA déployé
-# apparaisse dans `version.txt`. Sans ce contrôle, les trois versions
-# précédentes auraient toutes affiché un joli coche vert.
+# 1. Le préfixe est `hostings` AU PLURIEL, et le site Node.js est un produit
+#    distinct de l'hébergement web (`service_id` 57 contre 1) — d'où le 403
+#    sur `/1/web/…`, qui a longtemps ressemblé à un problème de droits.
+# 2. `actions/restart` ne reconstruit PAS : il relance le processus. Trois
+#    redémarrages d'affilée, pas un seul travail créé.
+# 3. Enregistrer la configuration ne reconstruit pas non plus : `PATCH` répond
+#    `200 {"data":true}` et il ne se passe rien, même quand la valeur change
+#    réellement.
+#
+# C'est `actions/build` qu'il fallait — l'appel derrière le bouton « Build »
+# du Manager. Après une construction réussie, Infomaniak redémarre
+# l'application de lui-même.
+#
+# Chacune de ces impasses a été vue parce que le workflow refuse d'annoncer un
+# succès qu'il n'a pas vérifié : il attend que le SHA déployé apparaisse dans
+# `version.txt`. Sans ce contrôle, trois versions successives auraient affiché
+# un coche vert sur une production restée au 28 juillet.
 #
 # POURQUOI IL SE DÉCLENCHE APRÈS LA CI, PAS SUR LE PUSH
 # ----------------------------------------------------
@@ -35,24 +40,11 @@
 # la couverture sous son seuil.
 name: Déploiement
 
-# EN ATTENTE — déclenchement manuel seulement.
-#
-# Le maillon manquant : rien de ce qui est joignable à distance ne rejoue la
-# commande de construction. Ni `POST /actions/restart`, ni `PATCH` sur la
-# ressource — même en changeant réellement la valeur, ce qui est vérifié : la
-# configuration porte bien le marqueur du dernier commit, et le seul travail
-# que l'API connaisse date toujours du 28 juillet. L'intégration Git
-# d'Infomaniak, elle, est manuelle (dépôt bare + SSH), sans webhook.
-#
-# Tant que ce point n'est pas résolu, `workflow_run` ferait échouer un job de
-# quinze minutes à chaque push, pour rien. Le déclencheur automatique est donc
-# commenté — pas supprimé : tout le reste fonctionne et a été vérifié de bout
-# en bout (jeton, appels, estampillage, contrôle du déploiement).
 on:
-  # workflow_run:
-  #   workflows: [CI]
-  #   types: [completed]
-  #   branches: [main]
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 # Aucun job n'écrit sur le dépôt.
@@ -137,36 +129,27 @@ jobs:
                  exit 1 ;;
           esac
 
-      - name: Déclencher la construction
-        # On relit la configuration, on y estampille le commit visé, et on la
-        # renvoie. Le marqueur est un commentaire shell : il ne change rien à
-        # l'exécution de la commande, mais il rend la configuration DIFFÉRENTE
-        # de la précédente — sans quoi l'API accepte l'appel et ne reconstruit
-        # rien. Il dit aussi, dans le Manager, quel commit a été déployé en
-        # dernier.
+      - name: Lancer la construction
+        # `actions/build` est l'appel que le Manager émet derrière son bouton
+        # « Build ». C'est LUI qui rejoue la commande de construction —
+        # `actions/restart` ne fait que relancer le processus, et enregistrer
+        # la configuration ne déclenche rien. Après une construction réussie,
+        # Infomaniak redémarre l'application de lui-même : aucun redémarrage
+        # n'est à demander ici.
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
           HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
           APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
-          SHA: ${{ steps.cible.outputs.sha }}
         run: |
           set -euo pipefail
           jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
-          racine="$API/1/hostings/$HOSTING/nodejs/$APP"
-
-          curl -fsS "$racine?with=environments" \
-            -H "Authorization: Bearer $jeton" -o config.json
-          python3 -c 'import json, os; env = json.load(open("config.json"))["data"]["environment"]; garde = ("version", "start_command", "build_command", "port"); champs = {k: env[k] for k in garde if k in env}; base = champs.get("build_command", "").split("  # deploiement:")[0].rstrip(); champs["build_command"] = base + "  # deploiement:" + os.environ["SHA"]; json.dump(champs, open("corps.json", "w")); print("commande de construction :", champs["build_command"])'
-
-          # `PUT` rend 404 `method_not_found` sur cette ressource : c'est
-          # `PATCH` qu'elle attend.
-          code=$(curl -sS -o reponse.json -w '%{http_code}' -X PATCH \
-            "$racine" -H "Authorization: Bearer $jeton" \
-            -H 'Content-Type: application/json' --data @corps.json)
-          echo "PATCH -> $code  $(head -c 200 reponse.json)"
+          code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST \
+            "$API/1/hostings/$HOSTING/nodejs/$APP/actions/build" \
+            -H "Authorization: Bearer $jeton" \
+            -H 'Content-Type: application/json' -d '{}')
+          echo "HTTP $code  $(head -c 200 reponse.json)"
           if [ "$code" != "200" ]; then
-            echo "::error::La configuration a été refusée (HTTP $code) — la" \
-                 "construction n'a donc pas été relancée."
+            echo "::error::La construction a été refusée (HTTP $code)."
             exit 1
           fi
 
