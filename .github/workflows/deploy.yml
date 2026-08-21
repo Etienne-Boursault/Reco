@@ -35,11 +35,24 @@
 # la couverture sous son seuil.
 name: Déploiement
 
+# EN ATTENTE — déclenchement manuel seulement.
+#
+# Le maillon manquant : rien de ce qui est joignable à distance ne rejoue la
+# commande de construction. Ni `POST /actions/restart`, ni `PATCH` sur la
+# ressource — même en changeant réellement la valeur, ce qui est vérifié : la
+# configuration porte bien le marqueur du dernier commit, et le seul travail
+# que l'API connaisse date toujours du 28 juillet. L'intégration Git
+# d'Infomaniak, elle, est manuelle (dépôt bare + SSH), sans webhook.
+#
+# Tant que ce point n'est pas résolu, `workflow_run` ferait échouer un job de
+# quinze minutes à chaque push, pour rien. Le déclencheur automatique est donc
+# commenté — pas supprimé : tout le reste fonctionne et a été vérifié de bout
+# en bout (jeton, appels, estampillage, contrôle du déploiement).
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
-    branches: [main]
+  # workflow_run:
+  #   workflows: [CI]
+  #   types: [completed]
+  #   branches: [main]
   workflow_dispatch:
 
 # Aucun job n'écrit sur le dépôt.
