@@ -80,6 +80,9 @@ jobs:
           # faut lire, sans quoi on vérifierait le mauvais SHA.
           sha="${{ github.event.workflow_run.head_sha || github.sha }}"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          # L'instant du déclenchement sert à ne reconnaître que les travaux
+          # nés de CE déploiement — voir « Attendre la fin de la construction ».
+          echo "debut=$(date +%s)" >> "$GITHUB_OUTPUT"
           echo "Commit visé : $sha"
 
       - name: Vérifier que la configuration est complète
@@ -153,48 +156,70 @@ jobs:
             exit 1
           fi
 
-      - name: Attendre que le commit visé soit en ligne
+      - name: Attendre la fin de la construction
+        # Le marqueur seul ne suffit PAS à savoir que la construction est
+        # finie : quand on redéploie un commit déjà en ligne, il porte le bon
+        # SHA dès la première seconde, alors que le nouveau build vient à peine
+        # de démarrer. C'est ce qui a fait échouer le premier déploiement
+        # automatique — il a « constaté » le succès puis interrogé un site qui
+        # était, lui, en pleine reconstruction.
+        #
+        # On suit donc le travail, et on ne regarde que ceux nés de CE
+        # déploiement : un travail plus ancien ne prouve rien.
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+          DEBUT: ${{ steps.cible.outputs.debut }}
+        run: |
+          set -euo pipefail
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
+          vus_sans_travail=0
+          for essai in $(seq 1 60); do
+            sleep 15
+            statut=$(curl -fsS --max-time 20 "$API/1/hostings/$HOSTING/nodejs/$APP/jobs" \
+              -H "Authorization: Bearer $jeton" \
+              | python3 -c 'import json, sys, os; debut = int(os.environ["DEBUT"]) - 60; recents = sorted((j for j in json.load(sys.stdin).get("data", []) if j.get("created_at", 0) >= debut), key=lambda j: j["created_at"], reverse=True); print(recents[0]["status"] if recents else "aucun")') || statut="illisible"
+            echo "essai $essai/60 — construction : $statut"
+            case "$statut" in
+              Succeeded) echo "Construction terminée."; exit 0 ;;
+              Failed|Cancelled)
+                echo "::error::La construction a échoué ($statut). La console" \
+                     "« Build » du Manager en donne la ligne exacte."
+                exit 1 ;;
+              aucun)
+                vus_sans_travail=$((vus_sans_travail + 1))
+                if [ "$vus_sans_travail" -ge 12 ]; then
+                  echo "::error::Aucun travail n'est apparu en trois minutes —" \
+                       "la construction n'a pas démarré."
+                  exit 1
+                fi ;;
+            esac
+          done
+          echo "::error::La construction n'a pas abouti en quinze minutes."
+          exit 1
+
+      - name: Vérifier que le commit visé est en ligne
+        # Infomaniak redémarre l'application de lui-même après une construction
+        # réussie — il n'y a donc pas de redémarrage à demander ici. Il y en
+        # avait un dans la version précédente : il tombait au milieu du build
+        # suivant et coupait le site.
         env:
           ATTENDU: ${{ steps.cible.outputs.sha }}
         run: |
-          # La construction dure plusieurs minutes. Le seul signal qui compte
-          # est le marqueur écrit par la commande de construction elle-même :
-          # tant qu'il ne porte pas ce SHA, le nouveau code n'est pas en ligne.
-          #
-          # 60 tentatives × 15 s = 15 minutes, sous le `timeout-minutes: 25`
-          # du job pour que l'échec soit celui-ci, explicite, et non un job
-          # coupé net.
-          for essai in $(seq 1 60); do
+          for essai in $(seq 1 20); do
             sleep 15
             enligne=$(curl -fsS --max-time 20 "$SITE/version.txt" 2>/dev/null | tr -d '[:space:]' || true)
             if [ "$enligne" = "$ATTENDU" ]; then
               echo "En ligne : $enligne (essai $essai)"
               exit 0
             fi
-            echo "essai $essai/60 — en ligne : ${enligne:-<indisponible>}"
+            echo "essai $essai/20 — en ligne : ${enligne:-<indisponible>}"
           done
-
-          echo "::error::Le commit $ATTENDU n'est pas en ligne après 15 minutes."
+          echo "::error::Le commit $ATTENDU n'est pas en ligne. La construction" \
+               "a pourtant abouti : vérifier que la commande de construction" \
+               "écrit bien dist/client/version.txt."
           exit 1
-
-      - name: Redémarrer pour charger le nouveau code
-        # `server.mjs` importe `dist/server/entry.mjs` au démarrage : sans
-        # relance, le processus continue de servir l'ancien code même après une
-        # construction réussie. Le marqueur, lui, est un fichier statique — il
-        # peut être à jour alors que le serveur ne l'est pas.
-        env:
-          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
-          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
-          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
-        run: |
-          set -euo pipefail
-          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
-          code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST \
-            "$API/1/hostings/$HOSTING/nodejs/$APP/actions/restart" \
-            -H "Authorization: Bearer $jeton" \
-            -H 'Content-Type: application/json' -d '{}')
-          echo "HTTP $code  $(cat reponse.json)"
-          [ "$code" = "200" ] || { echo "::error::Redémarrage refusé."; exit 1; }
 
       - name: Que s'est-il passé côté Infomaniak ?
         # Sans cette étape, un échec ne disait pas si la commande de
@@ -225,8 +250,18 @@ jobs:
 
       - name: Vérifier que le site répond
         run: |
-          # Après un redémarrage, laisser le temps au processus de reprendre.
-          sleep 20
-          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$SITE/")
-          echo "GET / -> $code"
-          [ "$code" = "200" ] || { echo "::error::Le site répond $code."; exit 1; }
+          # Le marqueur est un fichier statique : il peut être servi alors que
+          # l'application, elle, n'a pas repris. On vérifie donc une page rendue
+          # par le serveur, et on laisse au processus le temps de démarrer
+          # plutôt que de conclure sur un seul appel.
+          for essai in $(seq 1 8); do
+            sleep 15
+            code=$(curl -sS -o page.html -w '%{http_code}' --max-time 30 "$SITE/" || echo 000)
+            if [ "$code" = "200" ] && ! grep -qi "under maintenance" page.html; then
+              echo "GET / -> 200 (essai $essai)"
+              exit 0
+            fi
+            echo "essai $essai/8 — GET / -> $code"
+          done
+          echo "::error::Le site ne répond pas normalement après la mise en ligne."
+          exit 1
