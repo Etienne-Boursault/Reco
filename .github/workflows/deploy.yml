@@ -4,26 +4,28 @@
 # --------------------------
 # Le déploiement était manuel : ouvrir la console SSH de l'app dans le Manager
 # Infomaniak, coller `git fetch && git reset --hard && npm run build`, puis
-# cliquer sur « Redémarrer ». Résultat le 2026-08-20 : la production tournait
-# encore sur le code du 28 juillet, sans compression — 2,6 Mo envoyés à chaque
-# visiteur là où 200 Ko suffisaient. Un déploiement qu'on oublie de faire est
-# un déploiement qui n'a pas lieu.
+# cliquer sur « Redémarrer ». Résultat mesuré le 2026-08-20 : la production
+# tournait encore sur le code du 28 juillet, sans compression — 2,6 Mo envoyés
+# à chaque visiteur là où 200 Ko suffisaient. Un déploiement qu'on oublie de
+# faire est un déploiement qui n'a pas lieu.
 #
-# CE QUI SE PASSE CÔTÉ INFOMANIAK
-# -------------------------------
-# Ce workflow ne construit RIEN. Il appelle l'API pour redémarrer l'app, et
-# c'est la « commande de construction » configurée dans le Manager qui fait le
-# travail : `git reset --hard origin/main`, `npm ci`, `astro build`, puis elle
-# écrit le SHA déployé dans `dist/client/version.txt`. Ce fichier est la seule
-# preuve vérifiable que le bon code tourne — sans lui, le workflow annoncerait
-# « déployé » dès que le site répond, ce qu'il faisait déjà avant.
+# CE QU'IL A FALLU COMPRENDRE
+# ---------------------------
+# 1. L'API des sites Node.js n'est pas documentée. Le chemin a été trouvé en
+#    observant ce que le Manager émet lui-même. Le préfixe est `hostings` au
+#    pluriel, et le site Node.js est un produit distinct de l'hébergement web
+#    (`service_id` 57 contre 1) — d'où le 403 sur `/1/web/…`.
+# 2. « Redémarrer » ne reconstruit PAS. Trois redémarrages d'affilée, pas un
+#    seul travail créé : le seul que l'API connaissait datait de juillet.
+# 3. Renvoyer la configuration à l'identique ne reconstruit pas non plus.
+#    L'appel est accepté (`200 {"data":true}`) et il ne se passe rien.
+#    La construction se déclenche quand la configuration CHANGE — d'où le
+#    marqueur de déploiement ajouté à la commande de construction.
 #
-# L'endpoint n'est pas documenté publiquement. Il a été trouvé en observant
-# l'appel que le Manager émet lui-même quand on clique sur « Redémarrer » :
-#   POST /1/hostings/{hosting}/nodejs/{app}/actions/restart
-# Le préfixe est `hostings` au pluriel, et le site Node.js est un produit
-# distinct de l'hébergement web (`service_id` 57 contre 1) — d'où l'échec des
-# chemins en `/1/web/…`, qui répondent 403.
+# Chacune de ces trois étapes a été découverte parce que le workflow refuse
+# d'annoncer un succès qu'il n'a pas vérifié : il attend que le SHA déployé
+# apparaisse dans `version.txt`. Sans ce contrôle, les trois versions
+# précédentes auraient toutes affiché un joli coche vert.
 #
 # POURQUOI IL SE DÉCLENCHE APRÈS LA CI, PAS SUR LE PUSH
 # ----------------------------------------------------
@@ -53,13 +55,13 @@ concurrency:
 
 jobs:
   deployer:
-    name: Redémarrer et vérifier
+    name: Construire et mettre en ligne
     # Sur `workflow_dispatch` il n'y a pas de `workflow_run` à interroger.
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     env:
       SITE: https://unebonnere.co
       API: https://api.infomaniak.com
@@ -73,9 +75,6 @@ jobs:
           # faut lire, sans quoi on vérifierait le mauvais SHA.
           sha="${{ github.event.workflow_run.head_sha || github.sha }}"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
-          # L'instant du déclenchement sert à ne reconnaître que les travaux
-          # nés de CE déploiement — voir « Attendre la fin de la construction ».
-          echo "debut=$(date +%s)" >> "$GITHUB_OUTPUT"
           echo "Commit visé : $sha"
 
       - name: Vérifier que la configuration est complète
@@ -126,21 +125,17 @@ jobs:
           esac
 
       - name: Déclencher la construction
-        # « Redémarrer » et « reconstruire » sont deux choses distinctes.
-        # `POST /actions/restart` relance le processus Node sans rejouer la
-        # commande de construction : vérifié le 2026-08-21, trois redémarrages
-        # d'affilée et pas un seul travail créé — le seul que l'API connaisse
-        # datait du déploiement initial de juillet. Le nouveau code n'était
-        # donc jamais récupéré, et le site répondait 200 avec l'ancien.
-        #
-        # C'est l'ENREGISTREMENT DE LA CONFIGURATION qui relance la
-        # construction. On renvoie donc la configuration telle quelle : le but
-        # n'est pas de la modifier mais de provoquer le travail, exactement ce
-        # que fait le Manager quand on sauvegarde les paramètres avancés.
+        # On relit la configuration, on y estampille le commit visé, et on la
+        # renvoie. Le marqueur est un commentaire shell : il ne change rien à
+        # l'exécution de la commande, mais il rend la configuration DIFFÉRENTE
+        # de la précédente — sans quoi l'API accepte l'appel et ne reconstruit
+        # rien. Il dit aussi, dans le Manager, quel commit a été déployé en
+        # dernier.
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
           HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
           APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+          SHA: ${{ steps.cible.outputs.sha }}
         run: |
           set -euo pipefail
           jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
@@ -148,59 +143,49 @@ jobs:
 
           curl -fsS "$racine?with=environments" \
             -H "Authorization: Bearer $jeton" -o config.json
-          python3 -c 'import json; env = json.load(open("config.json"))["data"]["environment"]; garde = ("version", "start_command", "build_command", "port"); champs = {k: env[k] for k in garde if k in env}; json.dump(champs, open("corps.json", "w")); print("configuration relue :", ", ".join(champs))'
+          python3 -c 'import json, os; env = json.load(open("config.json"))["data"]["environment"]; garde = ("version", "start_command", "build_command", "port"); champs = {k: env[k] for k in garde if k in env}; base = champs.get("build_command", "").split("  # deploiement:")[0].rstrip(); champs["build_command"] = base + "  # deploiement:" + os.environ["SHA"]; json.dump(champs, open("corps.json", "w")); print("commande de construction :", champs["build_command"])'
 
-          # La méthode n'est pas documentée. PUT d'abord — le verbe d'une
-          # ressource qu'on remplace ; PATCH ensuite. On s'arrête au premier
-          # qui aboutit, et on montre le refus des autres.
-          applique=0
-          for methode in PUT PATCH; do
-            code=$(curl -sS -o reponse.json -w '%{http_code}' -X "$methode" \
-              "$racine" -H "Authorization: Bearer $jeton" \
-              -H 'Content-Type: application/json' --data @corps.json)
-            echo "$methode -> $code  $(head -c 200 reponse.json)"
-            if [ "$code" = "200" ]; then applique=1; break; fi
-          done
-          if [ "$applique" != 1 ]; then
-            echo "::error::Aucune méthode n'a été acceptée pour enregistrer la" \
-                 "configuration — la construction n'a donc pas été relancée."
+          # `PUT` rend 404 `method_not_found` sur cette ressource : c'est
+          # `PATCH` qu'elle attend.
+          code=$(curl -sS -o reponse.json -w '%{http_code}' -X PATCH \
+            "$racine" -H "Authorization: Bearer $jeton" \
+            -H 'Content-Type: application/json' --data @corps.json)
+          echo "PATCH -> $code  $(head -c 200 reponse.json)"
+          if [ "$code" != "200" ]; then
+            echo "::error::La configuration a été refusée (HTTP $code) — la" \
+                 "construction n'a donc pas été relancée."
             exit 1
           fi
 
-      - name: Attendre la fin de la construction
+      - name: Attendre que le commit visé soit en ligne
         env:
-          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
-          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
-          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
-          DEBUT: ${{ steps.cible.outputs.debut }}
+          ATTENDU: ${{ steps.cible.outputs.sha }}
         run: |
-          set -euo pipefail
-          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
-          # Un travail plus ancien que ce déploiement ne prouve rien : c'est
-          # exactement ce qui masquait le problème — le seul job connu datait
-          # de juillet. On ne regarde que ceux nés après le déclenchement.
-          for essai in $(seq 1 40); do
+          # La construction dure plusieurs minutes. Le seul signal qui compte
+          # est le marqueur écrit par la commande de construction elle-même :
+          # tant qu'il ne porte pas ce SHA, le nouveau code n'est pas en ligne.
+          #
+          # 60 tentatives × 15 s = 15 minutes, sous le `timeout-minutes: 25`
+          # du job pour que l'échec soit celui-ci, explicite, et non un job
+          # coupé net.
+          for essai in $(seq 1 60); do
             sleep 15
-            statut=$(curl -fsS "$API/1/hostings/$HOSTING/nodejs/$APP/jobs" \
-              -H "Authorization: Bearer $jeton" \
-              | python3 -c 'import json, sys, os; debut = int(os.environ["DEBUT"]) - 60; recents = sorted((j for j in json.load(sys.stdin).get("data", []) if j.get("created_at", 0) >= debut), key=lambda j: j["created_at"], reverse=True); print(recents[0]["status"] if recents else "aucun")') || statut="illisible"
-            echo "essai $essai/40 — construction : $statut"
-            case "$statut" in
-              Succeeded) exit 0 ;;
-              Failed|Cancelled)
-                echo "::error::La construction a échoué ($statut). Les" \
-                     "journaux du site Node.js, dans le Manager, disent" \
-                     "sur quelle commande."
-                exit 1 ;;
-            esac
+            enligne=$(curl -fsS --max-time 20 "$SITE/version.txt" 2>/dev/null | tr -d '[:space:]' || true)
+            if [ "$enligne" = "$ATTENDU" ]; then
+              echo "En ligne : $enligne (essai $essai)"
+              exit 0
+            fi
+            echo "essai $essai/60 — en ligne : ${enligne:-<indisponible>}"
           done
-          echo "::error::La construction n'a pas abouti en 10 minutes."
+
+          echo "::error::Le commit $ATTENDU n'est pas en ligne après 15 minutes."
           exit 1
 
       - name: Redémarrer pour charger le nouveau code
-        # `server.mjs` importe `dist/server/entry.mjs` au démarrage : tant que
-        # le processus n'a pas été relancé, il sert l'ancien code même si la
-        # construction a réussi.
+        # `server.mjs` importe `dist/server/entry.mjs` au démarrage : sans
+        # relance, le processus continue de servir l'ancien code même après une
+        # construction réussie. Le marqueur, lui, est un fichier statique — il
+        # peut être à jour alors que le serveur ne l'est pas.
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
           HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
@@ -215,44 +200,12 @@ jobs:
           echo "HTTP $code  $(cat reponse.json)"
           [ "$code" = "200" ] || { echo "::error::Redémarrage refusé."; exit 1; }
 
-      - name: Attendre que le commit visé soit en ligne
-        env:
-          ATTENDU: ${{ steps.cible.outputs.sha }}
-        run: |
-          # La réponse de l'API est immédiate — « Running » signifie que le
-          # travail a commencé, pas qu'il est fini. La construction dure
-          # plusieurs minutes : on interroge le marqueur jusqu'à ce qu'il
-          # porte le bon SHA.
-          #
-          # 60 tentatives × 15 s = 15 minutes, sous le `timeout-minutes: 20`
-          # du job pour que l'échec soit celui-ci, explicite, et non un job
-          # coupé net.
-          for essai in $(seq 1 60); do
-            sleep 15
-            enligne=$(curl -fsS --max-time 20 "$SITE/version.txt" 2>/dev/null | tr -d '[:space:]' || true)
-            if [ "$enligne" = "$ATTENDU" ]; then
-              echo "En ligne : $enligne (essai $essai)"
-              exit 0
-            fi
-            echo "essai $essai/60 — en ligne : ${enligne:-<indisponible>}"
-          done
-
-          echo "::error::Le commit $ATTENDU n'est pas en ligne après 15 minutes."
-          echo "Trois causes possibles :" >&2
-          echo " 1. la commande de construction du Manager n'écrit pas" >&2
-          echo "    dist/client/version.txt — le marqueur n'existera jamais ;" >&2
-          echo " 2. la construction a échoué (voir les journaux du site" >&2
-          echo "    Node.js dans le Manager Infomaniak) ;" >&2
-          echo " 3. un déploiement plus récent est passé devant, et c'est" >&2
-          echo "    SON commit qui est en ligne — sans gravité." >&2
-          exit 1
-
       - name: Que s'est-il passé côté Infomaniak ?
-        # Le premier essai a échoué sans qu'on puisse distinguer « la commande
-        # de construction n'a pas été enregistrée » de « elle a tourné et a
-        # échoué ». Ces deux appels le disent, et n'exposent aucun secret : la
-        # configuration ne contient que des commandes, et un job que son
-        # statut.
+        # Sans cette étape, un échec ne disait pas si la commande de
+        # construction avait été enregistrée, si elle avait tourné, ou si elle
+        # avait échoué. Elle n'expose aucun secret : la configuration ne
+        # contient que des commandes, et `log_stream` — qui porte un jeton
+        # d'accès aux journaux — est écarté.
         if: failure()
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
@@ -266,18 +219,18 @@ jobs:
             | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin).get("data",{}).get("environment",{}), indent=2, ensure_ascii=False))' \
             || echo "(configuration illisible)"
           echo "--- derniers travaux ---"
-          # `log_stream` porte un jeton d'accès aux journaux : on ne garde que
-          # le statut et la date.
           curl -sS "$API/1/hostings/$HOSTING/nodejs/$APP/jobs" \
             -H "Authorization: Bearer $jeton" \
             | python3 -c 'import json,sys; d=json.load(sys.stdin).get("data",[]); print(json.dumps([{k:j[k] for k in ("status","created_at") if k in j} for j in d], indent=2)) if d else print("aucun travail enregistré")' \
             || echo "(travaux illisibles)"
+          echo "--- journaux du site Node.js ---"
+          echo "Le Manager les montre en clair ; l'API n'y donne accès qu'avec" \
+               "un jeton de flux qu'on ne veut pas faire transiter ici."
 
       - name: Vérifier que le site répond
         run: |
-          # Le marqueur est un fichier statique : il peut être servi alors que
-          # l'application, elle, ne démarre pas. On vérifie donc aussi une page
-          # rendue par le serveur.
+          # Après un redémarrage, laisser le temps au processus de reprendre.
+          sleep 20
           code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$SITE/")
           echo "GET / -> $code"
           [ "$code" = "200" ] || { echo "::error::Le site répond $code."; exit 1; }
