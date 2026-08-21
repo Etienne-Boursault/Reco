@@ -73,6 +73,9 @@ jobs:
           # faut lire, sans quoi on vérifierait le mauvais SHA.
           sha="${{ github.event.workflow_run.head_sha || github.sha }}"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          # L'instant du déclenchement sert à ne reconnaître que les travaux
+          # nés de CE déploiement — voir « Attendre la fin de la construction ».
+          echo "debut=$(date +%s)" >> "$GITHUB_OUTPUT"
           echo "Commit visé : $sha"
 
       - name: Vérifier que la configuration est complète
@@ -122,7 +125,18 @@ jobs:
                  exit 1 ;;
           esac
 
-      - name: Déclencher la construction et le redémarrage
+      - name: Déclencher la construction
+        # « Redémarrer » et « reconstruire » sont deux choses distinctes.
+        # `POST /actions/restart` relance le processus Node sans rejouer la
+        # commande de construction : vérifié le 2026-08-21, trois redémarrages
+        # d'affilée et pas un seul travail créé — le seul que l'API connaisse
+        # datait du déploiement initial de juillet. Le nouveau code n'était
+        # donc jamais récupéré, et le site répondait 200 avec l'ancien.
+        #
+        # C'est l'ENREGISTREMENT DE LA CONFIGURATION qui relance la
+        # construction. On renvoie donc la configuration telle quelle : le but
+        # n'est pas de la modifier mais de provoquer le travail, exactement ce
+        # que fait le Manager quand on sauvegarde les paramètres avancés.
         env:
           TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
           HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
@@ -130,17 +144,76 @@ jobs:
         run: |
           set -euo pipefail
           jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
-          url="$API/1/hostings/$HOSTING/nodejs/$APP/actions/restart"
-          code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST "$url" \
-            -H "Authorization: Bearer $jeton" \
-            -H 'Content-Type: application/json' -d '{}')
-          echo "HTTP $code"
-          cat reponse.json
-          echo
-          if [ "$code" != "200" ]; then
-            echo "::error::Le redémarrage a été refusé (HTTP $code)."
+          racine="$API/1/hostings/$HOSTING/nodejs/$APP"
+
+          curl -fsS "$racine?with=environments" \
+            -H "Authorization: Bearer $jeton" -o config.json
+          python3 -c 'import json; env = json.load(open("config.json"))["data"]["environment"]; garde = ("version", "start_command", "build_command", "port"); champs = {k: env[k] for k in garde if k in env}; json.dump(champs, open("corps.json", "w")); print("configuration relue :", ", ".join(champs))'
+
+          # La méthode n'est pas documentée. PUT d'abord — le verbe d'une
+          # ressource qu'on remplace ; PATCH ensuite. On s'arrête au premier
+          # qui aboutit, et on montre le refus des autres.
+          applique=0
+          for methode in PUT PATCH; do
+            code=$(curl -sS -o reponse.json -w '%{http_code}' -X "$methode" \
+              "$racine" -H "Authorization: Bearer $jeton" \
+              -H 'Content-Type: application/json' --data @corps.json)
+            echo "$methode -> $code  $(head -c 200 reponse.json)"
+            if [ "$code" = "200" ]; then applique=1; break; fi
+          done
+          if [ "$applique" != 1 ]; then
+            echo "::error::Aucune méthode n'a été acceptée pour enregistrer la" \
+                 "configuration — la construction n'a donc pas été relancée."
             exit 1
           fi
+
+      - name: Attendre la fin de la construction
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+          DEBUT: ${{ steps.cible.outputs.debut }}
+        run: |
+          set -euo pipefail
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
+          # Un travail plus ancien que ce déploiement ne prouve rien : c'est
+          # exactement ce qui masquait le problème — le seul job connu datait
+          # de juillet. On ne regarde que ceux nés après le déclenchement.
+          for essai in $(seq 1 40); do
+            sleep 15
+            statut=$(curl -fsS "$API/1/hostings/$HOSTING/nodejs/$APP/jobs" \
+              -H "Authorization: Bearer $jeton" \
+              | python3 -c 'import json, sys, os; debut = int(os.environ["DEBUT"]) - 60; recents = sorted((j for j in json.load(sys.stdin).get("data", []) if j.get("created_at", 0) >= debut), key=lambda j: j["created_at"], reverse=True); print(recents[0]["status"] if recents else "aucun")') || statut="illisible"
+            echo "essai $essai/40 — construction : $statut"
+            case "$statut" in
+              Succeeded) exit 0 ;;
+              Failed|Cancelled)
+                echo "::error::La construction a échoué ($statut). Les" \
+                     "journaux du site Node.js, dans le Manager, disent" \
+                     "sur quelle commande."
+                exit 1 ;;
+            esac
+          done
+          echo "::error::La construction n'a pas abouti en 10 minutes."
+          exit 1
+
+      - name: Redémarrer pour charger le nouveau code
+        # `server.mjs` importe `dist/server/entry.mjs` au démarrage : tant que
+        # le processus n'a pas été relancé, il sert l'ancien code même si la
+        # construction a réussi.
+        env:
+          TOKEN: ${{ secrets.INFOMANIAK_API_TOKEN }}
+          HOSTING: ${{ vars.INFOMANIAK_HOSTING_ID }}
+          APP: ${{ vars.INFOMANIAK_NODEJS_ID }}
+        run: |
+          set -euo pipefail
+          jeton=$(printf '%s' "$TOKEN" | tr -d '\r\n')
+          code=$(curl -sS -o reponse.json -w '%{http_code}' -X POST \
+            "$API/1/hostings/$HOSTING/nodejs/$APP/actions/restart" \
+            -H "Authorization: Bearer $jeton" \
+            -H 'Content-Type: application/json' -d '{}')
+          echo "HTTP $code  $(cat reponse.json)"
+          [ "$code" = "200" ] || { echo "::error::Redémarrage refusé."; exit 1; }
 
       - name: Attendre que le commit visé soit en ligne
         env:
