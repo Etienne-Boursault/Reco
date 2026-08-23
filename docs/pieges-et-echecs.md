@@ -221,6 +221,45 @@ normale du build : **c'est que la construction a échoué**.
 
 ---
 
+## Déléguer à des agents
+
+### Une consigne est un vœu ; un garde-fou refuse
+
+Ce qui doit être vrai se met dans le code, pas dans le prompt. Le plafond de
+six liens par carte est appliqué **à l'écriture** : aucune fiche ne le dépasse.
+Les règles qui n'étaient que demandées ont régulièrement été contournées, sans
+mauvaise volonté — un agent optimise ce qu'on lui décrit, pas ce qu'on espère.
+
+### Aucun agent n'écrit dans le corpus
+
+Ils rendent des candidats sourcés ; la vérification a lieu avant écriture. Sur
+une campagne de vingt-trois agents en parallèle, cette règle a intercepté :
+
+- un lien Deezer menant à **un autre podcast de la même animatrice** ;
+- un jeu télévisé canadien de 1974 sur le point d'être posé sur une série de
+  stand-up française, au seul motif d'un titre identique.
+
+Le contrôle rattrape aussi l'éditeur : un lien rejeté à tort s'est avéré bon —
+l'émission avait été renommée, et l'identifiant Apple déjà présent dans le
+corpus le prouvait.
+
+### Un agent qui tranche seul produit une erreur silencieuse
+
+Toute incertitude doit aller dans un champ dédié (`agentReview.flags` +
+`agentReview.note`), relu en une passe groupée. Un agent qui devine une
+attribution incertaine fabrique une donnée fausse que plus rien ne signale ;
+un agent qui la signale produit une décision à prendre.
+
+### Écrire la politique éditoriale AVANT de déléguer
+
+Sans règles écrites, deux agents rendent deux corpus incohérents, et le
+désaccord ne se voit qu'à la publication. Sur ce projet, dix règles ont été
+fixées après un **test à l'aveugle** — l'agent d'un côté, l'éditeur de l'autre,
+sur les mêmes épisodes, puis comparaison. Détail dans
+[`fork-guide.md`](fork-guide.md) §8 ter.
+
+---
+
 ## Vérifier ce qu'on mesure
 
 Deux fausses alertes ont coûté du temps sur ce dépôt, et toutes deux venaient

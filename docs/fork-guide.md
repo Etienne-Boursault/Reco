@@ -188,7 +188,8 @@ Le cœur du pipeline. Sans au moins l'une des deux, il n'y a rien à relire.
   tout l'intérêt de la double passe.
 
 Une seule des deux suffit pour démarrer : vous perdez le croisement, pas
-l'extraction.
+l'extraction. Et il existe une voie sans clé du tout — des agents pilotés au
+prompt, qui ont produit l'essentiel des corrections de ce corpus. Cf. §8 ter.
 
 ### Requises pour les enrichissements (P2.17, P1.7, P1.8)
 
@@ -239,6 +240,74 @@ chiffre inventé. Pour l'estimer avant de vous lancer :
    passe.
 
 La transcription, elle, est gratuite : Whisper tourne en local.
+
+## 8 ter. L'autre voie : des agents plutôt que des clés d'API
+
+`extract_recos.py` appelle les API d'Anthropic et d'OpenAI, et facture au
+token. Ce n'est pas la seule manière de faire, ni celle qui a produit le plus
+de travail sur ce projet.
+
+**Une grande partie du corpus a été corrigée par des agents pilotés au prompt**
+— Claude Code en l'occurrence — plutôt que par des appels programmatiques :
+attribution des recommandations, pose de 1 998 liens, réconciliation des types,
+fusion des doublons, audit de cohérence. Aucune clé d'API n'a servi à ça.
+
+### Quand chaque voie convient
+
+| | API programmatique | Agents au prompt |
+|---|---|---|
+| **Bon pour** | le volume répétitif : extraire N épisodes avec le même prompt | le travail de jugement : arbitrer un doublon, vérifier une attribution, décider d'un type |
+| **Coût** | au token, proportionnel au volume | l'abonnement, quel que soit le volume |
+| **Rythme** | non surveillé, parallélisable à l'infini | quelqu'un doit lire les rapports et arbitrer |
+| **Traçabilité** | le code dit ce qui a été fait | il faut exiger des rapports, sinon rien ne reste |
+
+Les deux se combinent : l'API défriche en masse, les agents reprennent ce qui
+demande un arbitrage.
+
+### Trois règles apprises à nos dépens
+
+**Aucun agent n'écrit dans le corpus.** Ils rendent des candidats sourcés, et
+la vérification a lieu avant écriture. Sur une seule campagne — vingt-trois
+agents en parallèle — cette règle a intercepté un lien Deezer menant à un autre
+podcast de la même animatrice, et un jeu télévisé canadien de 1974 sur le point
+d'être posé sur une série de stand-up française, au seul motif d'un titre
+identique.
+
+**Une consigne est un vœu ; un garde-fou refuse.** Ce qui doit être vrai se
+met dans le code, pas dans le prompt. Le plafond de six liens par carte est
+appliqué à l'écriture : aucune fiche ne le dépasse. Ce qui n'était que demandé
+a régulièrement été contourné.
+
+**Faites-les douter à voix haute.** Chaque incertitude va dans un champ dédié
+(`agentReview.flags` + `agentReview.note`), relu ensuite en une passe groupée.
+Un agent qui tranche seul une attribution incertaine produit une erreur
+silencieuse ; un agent qui la signale produit une décision à prendre.
+
+### Ce que ça donne quand ça marche
+
+La vérification ne fait pas que rattraper les agents — elle corrige aussi
+l'éditeur. Un lien que j'avais rejeté était en réalité bon : l'émission avait
+été renommée, et un agent l'a prouvé avec l'identifiant Apple déjà présent
+dans le corpus.
+
+Et ils trouvent ce qu'on ne cherchait pas : le mur anti-robot d'IMDb, une
+sortie réseau non française qui faussait les vérifications, un `channelId`
+YouTube qui désignait une chaîne recommandée et non celle consultée. Trois
+pièges d'outillage établis avec témoin, qu'aucune passe automatique n'aurait
+signalés.
+
+### Écrire la politique AVANT de déléguer
+
+Les décisions éditoriales ne s'improvisent pas agent par agent. Sur ce projet,
+dix règles ont été fixées après un test à l'aveugle — l'agent d'un côté,
+l'éditeur de l'autre, sur les mêmes épisodes — puis comparées. Par exemple :
+une mention instrumentale (un indice de jeu, une comparaison en passant) est
+écartée ; l'auto-promotion d'un invité est retenue, c'est une recommandation
+de fait ; une attribution incertaine laisse le champ **vide** plutôt que de
+deviner.
+
+Sans cette politique écrite, deux agents rendent deux corpus incohérents, et
+le désaccord ne se voit qu'au moment de publier.
 
 ## 9. Modules Phase 2
 
