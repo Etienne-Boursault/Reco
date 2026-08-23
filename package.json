@@ -22,7 +22,7 @@
     "test:og": "vitest run tests/og"
   },
   "dependencies": {
-    "@astrojs/node": "^11.0.3",
+    "@astrojs/node": "^11.1.4",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/bebas-neue": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
