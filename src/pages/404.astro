@@ -1,0 +1,89 @@
+---
+/**
+ * /404 — la page servie quand l'adresse ne mène nulle part.
+ *
+ * POURQUOI ELLE EXISTE
+ * --------------------
+ * Il n'y en avait aucune. Le site répondait seize octets de texte brut —
+ * « Page introuvable », en `text/plain` — le repli de `src/server/serveur.mjs`.
+ * Pas de navigation, pas de recherche, pas même la charte : le visiteur qui
+ * suivait un lien périmé se retrouvait devant un cul-de-sac.
+ *
+ * Ce n'est pas un cas rare sur ce site. Le catalogue compte 1 377 pages
+ * indexées, dont beaucoup de fiches d'œuvre dont l'identifiant peut changer
+ * après une fusion de doublons — et un partage sur les réseaux survit
+ * longtemps à la page qu'il désigne.
+ *
+ * CE QU'ELLE PROPOSE
+ * ------------------
+ * Trois sorties, dans l'ordre de ce qu'un visiteur perdu cherche vraiment :
+ * la recherche (il sait ce qu'il veut), le catalogue de la source (il veut
+ * fouiller), l'accueil. Pas d'excuse longue : une phrase, puis des liens.
+ *
+ * `noindex` : cette page ne doit pas se retrouver dans les résultats de
+ * recherche. Le statut 404 est porté par le serveur, pas par le document.
+ */
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// La source unique du fork sert de destination « catalogue ». S'il y en a
+// plusieurs, on renvoie à l'accueil, qui les liste — plutôt que d'en
+// privilégier une arbitrairement.
+const sources = await getCollection('sources');
+const seule = sources.length === 1 ? sources[0] : null;
+const theme = seule?.data.theme;
+---
+
+<Layout
+  title="Page introuvable"
+  description="Cette adresse ne correspond à aucune page du catalogue."
+  theme={theme}
+  noindex
+>
+  <main id="main" tabindex="-1" class="wrap intro">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Cette page n'existe pas.</h1>
+    <p class="tag">
+      L'adresse est peut-être erronée, ou la fiche a été fusionnée avec une
+      autre depuis que ce lien a été partagé.
+    </p>
+
+    <ul class="sorties">
+      <li>
+        <a href="/recherche">Rechercher une œuvre</a>
+        <span>si vous savez ce que vous cherchez</span>
+      </li>
+      {seule && (
+        <li>
+          {/* Pas « le catalogue de {titre} » : l'élision dépend du titre —
+              « de Radio Machin » mais « d'Un Bon Moment ». Un kit dupliqué
+              par n'importe quel podcast n'a pas à porter cette règle. */}
+          <a href={`/${seule.data.id}`}>Tout le catalogue</a>
+          <span>{seule.data.title} — par épisode, par invité ou par type</span>
+        </li>
+      )}
+      <li>
+        <a href="/">Accueil</a>
+        <span>repartir du début</span>
+      </li>
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .intro { padding: clamp(3rem, 10vh, 6rem) 0 4rem; max-width: 42rem; }
+  .code {
+    margin: 0; font-size: clamp(3rem, 12vw, 5rem); line-height: 1;
+    font-weight: 800; color: var(--accent); opacity: 0.35;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem); margin: 0.2rem 0 0.8rem;
+    line-height: 1.15;
+  }
+  .tag { color: var(--muted); margin: 0 0 2rem; }
+  .sorties { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+  .sorties li { display: grid; gap: 0.15rem; }
+  .sorties a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .sorties a:hover, .sorties a:focus-visible { text-decoration: underline; }
+  .sorties span { color: var(--muted); font-size: 0.9rem; }
+</style>

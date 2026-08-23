@@ -12,7 +12,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 
 // @ts-expect-error — module `.mjs` sans déclaration de types
-import { creerServeur, fermerProprement, traiter } from '../../src/server/serveur.mjs';
+import { creerServeur, fermerProprement, repondre404, traiter } from '../../src/server/serveur.mjs';
 import { demander, demarrer } from './_client';
 
 const LONG = 'Il pleure dans mon cœur comme il pleut sur la ville. '.repeat(60);
@@ -171,5 +171,70 @@ describe('fermerProprement', () => {
     const faux = { close: vi.fn() } as any;
     expect(fermerProprement(faux, { signaux: ['SIGUSR2'], sortie: vi.fn() })).toBe(faux);
     process.removeAllListeners('SIGUSR2');
+  });
+});
+
+describe('la page 404 construite', () => {
+  // Racine SEPAREE : les tests ci-dessus verifient le repli du repli — le
+  // texte brut quand `404.html` n'a pas ete construite. Poser le fichier dans
+  // leur racine leur ferait perdre leur objet.
+  let racine404: string;
+
+  beforeAll(() => {
+    racine404 = mkdtempSync(path.join(tmpdir(), 'reco-404-'));
+    writeFileSync(
+      path.join(racine404, '404.html'),
+      '<!doctype html><title>Page introuvable</title><a href="/recherche">Rechercher</a>',
+    );
+  });
+
+  afterAll(() => rmSync(racine404, { recursive: true, force: true }));
+
+  async function monter404() {
+    const serveur = creerServeur(fauxHandler({ recu: [] }, null), racine404);
+    const { port, arreter } = await demarrer(serveur);
+    arreterCourant = arreter;
+    return port;
+  }
+
+  it('sert la page construite plutot que le texte brut', async () => {
+    // Seize octets de `text/plain` laissaient le visiteur sans navigation.
+    const port = await monter404();
+    const r = await demander(port, '/nulle-part');
+
+    expect(r.statut).toBe(404);
+    expect(r.entetes['content-type']).toContain('text/html');
+    expect(r.texte).toContain('Rechercher');
+  });
+
+  it('garde le statut 404, pas 200', async () => {
+    // Une page d'erreur servie en 200 fait indexer le vide.
+    const port = await monter404();
+
+    expect((await demander(port, '/nulle-part')).statut).toBe(404);
+  });
+
+  it('annonce une longueur exacte', async () => {
+    const port = await monter404();
+    const r = await demander(port, '/nulle-part');
+
+    expect(Number(r.entetes['content-length'])).toBe(r.brut.length);
+  });
+
+  it('retombe sur le texte brut si la lecture echoue', async () => {
+    // Une erreur de lecture ne doit pas remonter : elle arreterait le
+    // processus, donc tout le site, pour une page manquante.
+    const res = {
+      writeHead: vi.fn(),
+      end: vi.fn(),
+    };
+    repondre404(res as never, '/peu-importe', {
+      lire: () => { throw new Error('disque en vrac'); },
+    });
+
+    expect(res.writeHead).toHaveBeenCalledWith(404, expect.objectContaining({
+      'Content-Type': 'text/plain; charset=utf-8',
+    }));
+    expect(res.end).toHaveBeenCalledWith('Page introuvable');
   });
 });

@@ -6,7 +6,9 @@
  * réel depuis `dist/server/entry.mjs`, n'existe qu'après un build, alors que
  * ce fichier-ci s'éprouve avec un faux gestionnaire en quelques millisecondes.
  */
+import { readFileSync } from 'node:fs';
 import http from 'node:http';
+import { join } from 'node:path';
 
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
@@ -31,14 +33,42 @@ export function traiter(handler, racine, req, res) {
   // l'exception arrêterait le processus, donc tout le site.
   if (chemin && servirFichier(req, res, chemin)) return undefined;
 
-  return handler(req, envelopper(req, res), () => {
-    const corps = 'Page introuvable';
+  return handler(req, envelopper(req, res), () => repondre404(res, racine));
+}
+
+/**
+ * Le dernier recours : la page 404 construite, ou du texte si elle manque.
+ *
+ * Ce repli servait seize octets de `text/plain` — « Page introuvable » — sans
+ * navigation ni charte. Sur un catalogue de plus de mille pages indexées, dont
+ * les fiches d'œuvre changent d'identifiant après une fusion de doublons, un
+ * lien périmé est un cas ordinaire, pas une bizarrerie. Le visiteur tombait
+ * dans un cul-de-sac.
+ *
+ * `dist/client/404.html` vient de `src/pages/404.astro` : même charte, mêmes
+ * sorties que le reste du site. Le texte brut reste en dernier recours, pour
+ * le cas où la page n'aurait pas été construite — un repli doit toujours avoir
+ * un repli.
+ */
+export function repondre404(res, racine, { lire = readFileSync } = {}) {
+  try {
+    const page = lire(join(racine, '404.html'));
     res.writeHead(404, {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Content-Length': Buffer.byteLength(corps),
+      'Content-Type': 'text/html; charset=utf-8',
+      'Content-Length': page.length,
     });
-    res.end(corps);
+    res.end(page);
+    return;
+  } catch {
+    // Page absente ou illisible : on ne laisse pas remonter, une erreur ici
+    // arrêterait le processus — donc tout le site — pour une page manquante.
+  }
+  const corps = 'Page introuvable';
+  res.writeHead(404, {
+    'Content-Type': 'text/plain; charset=utf-8',
+    'Content-Length': Buffer.byteLength(corps),
   });
+  res.end(corps);
 }
 
 /** Crée le serveur HTTP sans l'ouvrir : l'appelant décide quand écouter. */
