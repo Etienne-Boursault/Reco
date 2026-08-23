@@ -33,16 +33,56 @@
  */
 import { resolve } from 'node:path';
 
-// Export NOMMÉ : en mode `middleware`, l'entrée expose
-// `{ handler, options, startServer }` — il n'y a pas d'export par défaut.
-import { handler } from './dist/server/entry.mjs';
+import { creerServeurMaintenance } from './src/server/maintenance.mjs';
 import { creerServeur, fermerProprement } from './src/server/serveur.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
 const HOTE = process.env.HOST || '0.0.0.0';
 
-const serveur = fermerProprement(creerServeur(handler, resolve('./dist/client')));
+/**
+ * Charge l'entrée construite, ou rend `null` si elle est inutilisable.
+ *
+ * L'import est DYNAMIQUE et gardé. En statique — `import { handler } from
+ * './dist/server/entry.mjs'` en tête de fichier — l'absence du fichier
+ * empêche le module de se charger : le processus meurt avant même d'ouvrir le
+ * port, et le site est mort, pas dégradé. C'est ce qui s'est produit le
+ * 2026-08-21 pendant quarante minutes, une construction ayant échoué après
+ * qu'Astro a vidé `dist/`.
+ *
+ * Export NOMMÉ : en mode `middleware`, l'entrée expose `{ handler, options,
+ * startServer }` — il n'y a pas d'export par défaut.
+ */
+async function chargerGestionnaire() {
+  try {
+    const entree = await import('./dist/server/entry.mjs');
+    if (typeof entree.handler !== 'function') {
+      console.error('[server] dist/server/entry.mjs n’exporte pas `handler`.');
+      return null;
+    }
+    return entree.handler;
+  } catch (err) {
+    console.error('[server] dist/server/entry.mjs illisible :', err?.message ?? err);
+    return null;
+  }
+}
+
+const handler = await chargerGestionnaire();
+
+// Le serveur s'ouvre dans les deux cas. Répondre « le site revient » vaut
+// mieux que ne pas répondre : le visiteur comprend, et le 503 dit aux moteurs
+// de repasser au lieu de désindexer.
+const serveur = fermerProprement(
+  handler
+    ? creerServeur(handler, resolve('./dist/client'))
+    : creerServeurMaintenance(),
+);
 
 serveur.listen(PORT, HOTE, () => {
-  console.log(`Reco — serveur avec compression sur http://${HOTE}:${PORT}`);
+  console.log(
+    handler
+      ? `Reco — serveur avec compression sur http://${HOTE}:${PORT}`
+      : `Reco — MODE DÉGRADÉ sur http://${HOTE}:${PORT} : la construction a `
+        + 'échoué ou est incomplète. Les visiteurs voient une page d’attente '
+        + '(503). Relancer une construction corrige la situation.',
+  );
 });
