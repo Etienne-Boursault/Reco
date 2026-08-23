@@ -170,14 +170,17 @@ npx astro add node
 
 `astro.config.mjs` :
 
-```js
-import node from '@astrojs/node';
+Rien à modifier : l'adaptateur est déjà déclaré et s'active à la construction.
 
-export default defineConfig({
-  output: 'hybrid',          // statique par défaut, opt-in dynamique
-  adapter: node({ mode: 'standalone' }),
-});
+```bash
+RECO_SSR=1 SITE_URL=https://mon-podcast.fr npm run build
+npm start
 ```
+
+> `mode: 'middleware'` et non `'standalone'` : en standalone, Astro démarre son
+> propre serveur et rien ne peut s'insérer devant — or `@astrojs/node` ne
+> compresse pas. Mesuré : 2 599 Ko envoyés par visiteur au lieu de 199.
+> Voir [`../pieges-et-echecs.md`](../pieges-et-echecs.md).
 
 Sur les pages dynamiques :
 

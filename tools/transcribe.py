@@ -45,8 +45,22 @@ from common import (
     write_json_if_changed,
 )
 
-# Modèle Whisper par défaut : compromis qualité/vitesse pour du français.
-DEFAULT_MODEL = "small"
+# Modèle Whisper par défaut.
+#
+# `small` tenait ici au nom d'un « compromis qualité/vitesse ». Le corpus dit
+# autre chose : sur les 110 épisodes transcrits, 110 le sont en `large-v3`
+# (98) ou `large-v3-turbo` (12). Aucun n'a gardé ce défaut — il était donc
+# faux, et il envoyait dans le mur quiconque le suivait.
+#
+# En dessous de `large`, sur du français conversationnel à voix qui se
+# chevauchent, les noms propres deviennent inexploitables. Or ce sont eux
+# qu'on cherche : un titre d'œuvre, un nom d'auteur. Une recommandation dont
+# le titre est mal transcrit est perdue, et rien en aval ne la rattrape —
+# l'extraction LLM ne peut pas deviner ce que la transcription n'a pas entendu.
+#
+# Re-transcrire coûte plus cher que transcrire bien une fois : il faut aussi
+# re-extraire, puis re-relire à la main.
+DEFAULT_MODEL = "large-v3"
 # Taille de chunk de téléchargement (octets).
 _CHUNK = 1 << 16
 # Acast (et d'autres CDN) renvoient 403 sans User-Agent de navigateur.

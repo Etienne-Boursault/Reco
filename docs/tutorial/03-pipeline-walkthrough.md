@@ -69,7 +69,12 @@ python tools/transcribe.py --source mon-podcast --all --youtube
 
 **Moteurs interchangeables** (port `TranscriberEngine`) :
 
-- `faster-whisper` (CPU/CUDA, modèle `small` par défaut).
+- `faster-whisper` (CPU/CUDA, modèle `large-v3` par défaut).
+
+> ⚠️ **Ne descendez pas en dessous de `large`.** Le défaut était `small` ; sur
+> les 110 épisodes du corpus de référence, aucun ne l'a gardé. En dessous, les
+> noms propres — donc les titres d'œuvres — deviennent inexploitables. Voir
+> [`docs/pieges-et-echecs.md`](../pieges-et-echecs.md).
 - `whisper.cpp` (CUDA, vieux GPU compatibles `-DCMAKE_CUDA_ARCHITECTURES=50`).
 
 **Mode démo** (sans Whisper) :

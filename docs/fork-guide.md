@@ -178,12 +178,67 @@ automatique n'est pas en place (ADR 0022, limite assumée).
 - `TRUSTED_PROXIES` (CSV d'IPs reverse proxy) — autorise la lecture de
   `x-forwarded-for` côté handler.
 
+### Requises pour l'extraction des recommandations
+
+Le cœur du pipeline. Sans au moins l'une des deux, il n'y a rien à relire.
+
+- `ANTHROPIC_API_KEY` — extraction principale.
+- `OPENAI_API_KEY` — second modèle. Les recommandations trouvées par **les
+  deux** sont marquées ⭐ et remontent en tête de la pile de relecture ; c'est
+  tout l'intérêt de la double passe.
+
+Une seule des deux suffit pour démarrer : vous perdez le croisement, pas
+l'extraction.
+
 ### Requises pour les enrichissements (P2.17, P1.7, P1.8)
 
 - `TMDB_API_KEY` — clé v3 TMDB pour films/séries.
-- `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET` — pour Spotify
-  (P2.17 C4).
+- `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET` — ⚠️ **actuellement
+  inutilisable** : le jeton s'obtient, puis tous les endpoints répondent 403
+  (voir [`pieges-et-echecs.md`](pieges-et-echecs.md)). N'en dépendez pas.
 - `RECO_QUIET=1` — réduit la verbosité des CLIs (optionnel).
+
+## 8 bis. Ce que ça demande vraiment
+
+Chiffres relevés sur l'instance de référence — **110 épisodes, 165 heures
+d'audio**, qui ont produit 3 017 mentions candidates, ramenées à 1 217
+publiées après relecture.
+
+### Temps machine
+
+| Étape | Ordre de grandeur |
+|---|---|
+| Transcription, CPU | ~10 min par heure d'audio |
+| Transcription, GPU CUDA | ~1 min par heure d'audio |
+| Transcription, Mac (mlx, Apple Silicon) | 5 à 12 × le temps réel |
+| Transcription, vieux GPU 4 Go | ~1,9 × le temps réel |
+
+Pour 165 heures d'audio, comptez une nuit sur GPU correct, plusieurs jours sur
+CPU. C'est l'étape la plus longue et **elle ne se parallélise pas** sur une
+seule machine : un GPU de 4 Go n'accueille qu'un seul modèle à la fois.
+
+### Temps humain — le vrai coût
+
+**La relecture domine tout le reste.** 3 017 mentions candidates ont dû être
+examinées une par une pour en publier 1 217 : plus de la moitié sont écartées
+(mentions instrumentales, doublons, faux positifs). Aucun modèle ne fait ce tri
+à votre place de façon fiable — c'est un travail éditorial, pas technique.
+
+Prévoyez cette étape dans votre planning avant de lancer quoi que ce soit. Un
+podcast de 100 épisodes, c'est plusieurs semaines de relecture par intermittence.
+
+### Coût monétaire
+
+**Il n'a pas été mesuré sur ce projet**, et nous préférons ne pas avancer un
+chiffre inventé. Pour l'estimer avant de vous lancer :
+
+1. transcrivez **un** épisode représentatif ;
+2. lancez l'extraction dessus, relevez les tokens consommés sur les tableaux de
+   bord Anthropic et OpenAI ;
+3. multipliez par votre nombre d'épisodes, et par deux si vous gardez la double
+   passe.
+
+La transcription, elle, est gratuite : Whisper tourne en local.
 
 ## 9. Modules Phase 2
 
@@ -191,8 +246,8 @@ automatique n'est pas en place (ADR 0022, limite assumée).
 
 - Endpoint `/api/report` est statique par défaut : sans adapter SSR,
   le POST renvoie 405.
-- Pour activer le POST en prod : installer `@astrojs/node` (ou Vercel /
-  Netlify adapter), basculer `output: 'hybrid'` dans `astro.config.mjs`.
+- Pour activer le POST en prod : construire avec `RECO_SSR=1` (cf. §10).
+  L'adaptateur est déjà installé et la configuration s'en charge seule.
   Le marqueur `export const prerender = false;` est déjà présent dans
   `src/pages/api/report.ts` (P0-2 final Phase 2) — Astro 5 émet un
   warning au build static mais ne casse pas.
@@ -238,41 +293,48 @@ automatique n'est pas en place (ADR 0022, limite assumée).
   `MentionsTimeline.astro`.
 - Prop `audio` optionnelle dans `<RecoCard />` (slot opt-in).
 
-## 10. Adapter SSR & bascule `hybrid`
+## 10. SSR — recevoir les signalements
 
-Le kit est livré en `output: 'static'` par défaut pour permettre un
-déploiement sur n'importe quel hébergeur statique (GitHub Pages,
-Netlify drop, S3, OVH static…). Seul `/api/report` requiert SSR.
+Le kit est livré **statique** : `npm run build` produit des fichiers, et
+n'importe quel hébergeur les sert. Le SSR n'est nécessaire que pour **recevoir**
+les signalements des visiteurs.
 
-### Activer SSR pour `/api/report` uniquement
+### Activer le SSR
 
-1. Installer l'adapter cible :
-   ```bash
-   npm i @astrojs/node          # auto-host (Docker, VM, fly.io…)
-   # ou : npm i @astrojs/vercel
-   # ou : npm i @astrojs/netlify
-   ```
-2. Modifier `astro.config.mjs` :
-   ```js
-   import node from '@astrojs/node';
-   export default defineConfig({
-     output: 'hybrid',
-     adapter: node({ mode: 'standalone' }),
-     // … reste de la config
-   });
-   ```
-3. Vérifier que `src/pages/api/report.ts` exporte bien
-   `export const prerender = false;` (déjà présent).
-4. Rebuilder : `npm run build`. Toutes les pages restent prerenderées,
-   seul `/api/report` devient une route serveur.
-5. Définir `REPORTS_SECRET`, `REPORTS_IP_SALT`, `TRUSTED_PROXIES`
-   (cf. §8) côté hébergeur.
+Rien à installer ni à modifier : `@astrojs/node` est déjà là et
+`astro.config.mjs` l'active tout seul quand la variable est posée.
 
-### Rester en `static` (fallback mailto)
+```bash
+RECO_SSR=1 SITE_URL=https://mon-podcast.fr npm run build
+npm start        # node --env-file-if-exists=.env ./server.mjs
+```
+
+Sans `RECO_SSR=1`, aucun adaptateur n'est chargé : la CI et les hébergeurs
+statiques ne paient rien pour une fonctionnalité qu'ils n'utilisent pas.
+
+Puis définir `REPORTS_SECRET`, `REPORTS_IP_SALT` et `TRUSTED_PROXIES` (cf. §8)
+côté hébergeur.
+
+### Deux choix à ne pas défaire
+
+**`mode: 'middleware'`, pas `'standalone'`.** En standalone, Astro démarre son
+propre serveur HTTP et plus rien ne peut s'insérer devant — or `@astrojs/node`
+ne compresse pas. Mesuré sur l'instance de référence : **2 599 Ko envoyés à
+chaque visiteur au lieu de 199**. En middleware, l'entrée exporte un
+gestionnaire que `server.mjs` monte derrière sa propre couche de compression.
+C'est `server.mjs` que lance `npm start`.
+
+**Le `prerender` doit être un littéral.** Astro n'honore pas un
+`export const prerender` *calculé*. Les endpoints restaient donc pré-rendus, et
+leur fichier statique — un 405 figé — court-circuitait le gestionnaire
+dynamique : le POST ne l'atteignait jamais. D'où le hook `astro:route:setup`
+dans `astro.config.mjs`, qui fixe `route.prerender` de façon fiable au build.
+
+### Rester en statique (repli e-mail)
 
 1. Définir `siteConfig.contactEmail` dans `src/config/site.ts`.
-2. Le `ReportForm` activera automatiquement le bouton "Envoyer par
-   email" si le POST échoue (405) ou s'il n'y a pas de JS.
+2. Le `ReportForm` active automatiquement le bouton « Envoyer par e-mail » si
+   le POST échoue (405) ou s'il n'y a pas de JS.
 
 ## 11. Pipelines multi-source
 
@@ -441,7 +503,7 @@ posté vers `/api/click` (SSR opt-in).
 ### Activation
 
 1. SSR requis (`/api/click`) : suit la même procédure que `/api/report`
-   (cf. §10 — `output: 'hybrid'` + adapter).
+   (cf. §10 — construire avec `RECO_SSR=1`).
 2. Si SSR non activé : le beacon échoue silencieusement, le clic suit
    son cours normal (UX intacte).
 3. Côté script global (`Layout.astro`) : le tracking est désactivé

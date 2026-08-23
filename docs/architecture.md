@@ -59,8 +59,11 @@ différent, opérations de maintenance indépendantes
 ## Frontend Astro
 
 - **Build statique par défaut** (`astro build` → `dist/`).
-- **Mode hybride opt-in** (reports POST) : `astro add @astrojs/node` +
-  `output: 'hybrid'`. Cf. [ADR 0034 — Visitor reports](adr/0034-visitor-reports.md).
+- **SSR opt-in** (signalements POST) : construire avec `RECO_SSR=1`.
+  L'adaptateur `@astrojs/node` est déjà déclaré et s'active seul, en mode
+  `middleware` — `server.mjs` se monte devant pour compresser, ce que
+  `standalone` interdirait. Cf. [ADR 0034 — Visitor reports](adr/0034-visitor-reports.md)
+  et [pièges et échecs](pieges-et-echecs.md).
 - **Multi-source** : `getStaticPaths` génère `/[source]/…` pour chaque
   `src/content/sources/<slug>.json`.
 - **Search** : minisearch côté client, index pré-buildé. Cf. [ADR 0035](adr/0035-search-frontend.md).

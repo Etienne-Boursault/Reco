@@ -131,7 +131,7 @@ versions successives annonçaient un succès sur une production restée trois se
    └──────────┘         └─────┬────┘
                               ▼
                      ┌──────────────┐
-                     │ transcribe   │  Whisper (CPU / CUDA)
+                     │ transcribe   │  Whisper large-v3 (CPU / CUDA)
                      └──────┬───────┘
                             ▼
                      ┌──────────────┐
@@ -179,6 +179,7 @@ Vue détaillée : [`docs/architecture.md`](docs/architecture.md).
 | [`docs/tutorial/05-customize.md`](docs/tutorial/05-customize.md) | Personnaliser (theme, fonts, i18n) |
 | [`docs/architecture.md`](docs/architecture.md) | Vue d'ensemble système |
 | [`docs/fork-guide.md`](docs/fork-guide.md) | Forker pour son podcast |
+| [`docs/pieges-et-echecs.md`](docs/pieges-et-echecs.md) | **Ce qui n'a pas marché** — à lire avant de lancer le pipeline |
 | [`docs/manifeste-ethique.md`](docs/manifeste-ethique.md) | Manifeste éthique du projet |
 | [`docs/screencast-script.md`](docs/screencast-script.md) | Script du screencast 5 min |
 | [`docs/adr/`](docs/adr/) | 48 ADRs (décisions architecture) |

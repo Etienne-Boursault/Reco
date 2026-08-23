@@ -16,6 +16,7 @@
 
 - [architecture](architecture.md) — vue d'ensemble système (pipeline, DBs, frontend).
 - [fork-guide](fork-guide.md) — guide pour forker et adapter à son podcast.
+- [pieges-et-echecs](pieges-et-echecs.md) — ce qui n'a **pas** marché : modèles de transcription trop petits, sources audio mélangées, API mortes, faux positifs de rapprochement. À lire avant de lancer le pipeline.
 - [manifeste-ethique](manifeste-ethique.md) — principes éthiques (liens, vie privée, IA).
 - [screencast-script](screencast-script.md) — script narratif du screencast 5 min.
 - [yagni](yagni.md) — décisions "you ain't gonna need it".
