@@ -175,9 +175,48 @@ jobs:
   # par le workflow dédié `.github/workflows/a11y.yml` (cf. ADR 0024).
   # On ne la duplique pas ici.
 
+  build-prod:
+    name: Build production (comme l'hébergeur)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SITE_URL: https://example.com
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      # `--omit=dev` et `RECO_SSR=1` : c'est EXACTEMENT ce que fait la
+      # commande de construction d'Infomaniak. Le job `build` voisin, lui,
+      # installe tout et construit en statique — il ne pouvait donc pas voir
+      # ce qui a mis le site hors ligne quarante minutes le 2026-08-21 :
+      # `@fontsource/inter`, importée par `src/styles/global.css`, était
+      # rangée en devDependencies et disparaissait sous `--omit=dev`.
+      #
+      #   [vite] Unable to resolve `@import "@fontsource/inter/400.css"`
+      #
+      # En production, une construction ratée laisse le site MORT : Astro vide
+      # `dist/` avant de reconstruire, et l'application n'a plus d'entrée à
+      # charger. Ce job est la garde qui évite d'y arriver.
+      - run: npm ci --omit=dev
+
+      - name: Construire comme en production
+        run: RECO_SSR=1 npm run build
+
+      - name: L'entrée serveur existe-t-elle vraiment ?
+        run: |
+          # Sans ce contrôle, un build qui « réussit » sans produire l'entrée
+          # passerait : c'est ce fichier que `server.mjs` importe au démarrage,
+          # et son absence est exactement l'erreur qu'on a vue en production.
+          test -f dist/server/entry.mjs             || { echo "::error::dist/server/entry.mjs manquant après le build."; exit 1; }
+          echo "dist/server/entry.mjs présent."
+
   ci-summary:
     name: CI summary
-    needs: [lint-python, test-python, lint-js, test-vitest, build]
+    needs: [lint-python, test-python, lint-js, test-vitest, build, build-prod]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -203,6 +242,7 @@ jobs:
             lint-js=${{ needs.lint-js.result }}
             test-vitest=${{ needs.test-vitest.result }}
             build=${{ needs.build.result }}
+            build-prod=${{ needs.build-prod.result }}
         run: |
           echec=0
           while IFS='=' read -r job resultat; do
