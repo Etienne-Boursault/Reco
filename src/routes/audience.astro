@@ -335,6 +335,19 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           </div>
         </div>
 
+        {donnees.clicsHorsPeriode > 0 && (
+          <div class="avis">
+            <strong>
+              {fmt(donnees.clicsHorsPeriode)}
+              {donnees.clicsHorsPeriode > 1 ? ' clics écartés' : ' clic écarté'} du
+              rapport ci-dessus.
+            </strong> Ils datent de jours où les visites n’étaient pas encore
+            mesurées — les deux compteurs n’ont pas démarré ensemble. Les diviser
+            l’un par l’autre gonflerait le résultat. Ils restent comptés dans
+            « clics vers une œuvre », qui est une mesure et non un rapport.
+          </div>
+        )}
+
         <section class="graphe">
           <h2>Pages vues par jour</h2>
           <div class="barres">

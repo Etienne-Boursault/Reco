@@ -171,6 +171,49 @@ describe('clics par visiteur', () => {
     ecrire('clicks', '2026-08-25', [clic()]);
     expect(lire().clicsParVisiteur).toBeNull();
   });
+
+  it('n’additionne que les jours où les DEUX mesures existent', () => {
+    // Les clics sont enregistrés depuis le 2026-08-19, les visites seulement
+    // depuis le 2026-08-25 15 h 12 — le jour où le sel a été posé. Diviser
+    // sept jours de clics par une journée de visiteurs donnait 0,4 là où le
+    // vrai rapport du jour était 0,2. Un ratio n'a de sens que sur une
+    // période commune.
+    ecrire('clicks', '2026-08-19', [clic({ ts: '2026-08-19T10:00:00.000Z' })]);
+    ecrire('clicks', '2026-08-25', [clic()]);
+    ecrire('audience', '2026-08-25', [visite()]);
+
+    const a = lire();
+
+    // Le total de clics reste celui de la fenêtre : c'est une vraie mesure.
+    expect(a.clics).toBe(2);
+    // Le ratio, lui, ne retient que le jour où l'on sait qui est venu.
+    expect(a.clicsParVisiteur).toBe(1);
+    expect(a.clicsHorsPeriode).toBe(1);
+  });
+
+  it('ne signale rien quand les deux mesures se recouvrent', () => {
+    ecrire('audience', '2026-08-24', [visite({ ts: '2026-08-24T10:00:00.000Z' })]);
+    ecrire('audience', '2026-08-25', [visite({ visiteur: 'deuxieme-vis' })]);
+    ecrire('clicks', '2026-08-24', [clic({ ts: '2026-08-24T10:00:00.000Z' })]);
+    ecrire('clicks', '2026-08-25', [clic()]);
+
+    const a = lire();
+
+    expect(a.clicsParVisiteur).toBe(1);
+    expect(a.clicsHorsPeriode).toBe(0);
+  });
+
+  it('compte comme hors période un clic d’un jour sans aucune visite humaine', () => {
+    // Un jour où seuls des robots sont passés ne dit rien du taux de clic.
+    ecrire('audience', '2026-08-24', [visite({ ts: '2026-08-24T10:00:00.000Z', robot: true })]);
+    ecrire('clicks', '2026-08-24', [clic({ ts: '2026-08-24T10:00:00.000Z' })]);
+    ecrire('audience', '2026-08-25', [visite()]);
+
+    const a = lire();
+
+    expect(a.clicsParVisiteur).toBe(0);
+    expect(a.clicsHorsPeriode).toBe(1);
+  });
 });
 
 // ===== Plusieurs sources ==================================================

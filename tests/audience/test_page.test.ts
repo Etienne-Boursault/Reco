@@ -15,6 +15,9 @@
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 import Page from '../../src/routes/audience.astro';
 
@@ -41,6 +44,54 @@ async function rendre(query = '', entetes: Record<string, string> = {}) {
 async function corps(query = '', entetes: Record<string, string> = {}) {
   return (await rendre(query, entetes)).text();
 }
+
+/**
+ * Rend la page sur des mesures maîtrisées, dans un dossier jetable.
+ *
+ * `agreger` lit depuis `process.cwd()` : sans ce déplacement, la page rendue
+ * en test n'a AUCUNE donnée et affiche « Rien à afficher ». Trois assertions
+ * de ce fichier passaient pour cette seule raison — `indexOf` rendait -1 et
+ * `slice(-401, -1)` piochait la fin du document, où le motif cherché ne
+ * risquait pas de se trouver. Un test qui ne rend jamais le bloc qu'il
+ * prétend inspecter ne prouve rien.
+ */
+async function corpsAvecMesures(
+  lignes: { audience?: Record<string, unknown>[]; clics?: Record<string, unknown>[] },
+  query = `?cle=${CLE}`,
+) {
+  const avant = process.cwd();
+  const racine = mkdtempSync(path.join(tmpdir(), 'reco-page-'));
+  try {
+    for (const [genre, contenu] of [
+      ['audience', lignes.audience ?? []],
+      ['clicks', lignes.clics ?? []],
+    ] as const) {
+      if (!contenu.length) continue;
+      const dossier = path.join(racine, 'tools', 'output', genre, 'un-bon-moment');
+      mkdirSync(dossier, { recursive: true });
+      writeFileSync(
+        path.join(dossier, '2026-08-25.jsonl'),
+        contenu.map((l) => `${JSON.stringify(l)}\n`).join(''),
+        'utf8',
+      );
+    }
+    process.chdir(racine);
+    return await corps(query);
+  } finally {
+    process.chdir(avant);
+    rmSync(racine, { recursive: true, force: true });
+  }
+}
+
+const VISITE = {
+  ts: '2026-08-25T10:00:00.000Z', chemin: '/un-bon-moment/films', statut: 200,
+  robot: false, appareil: 'mobile', provenance: null, langue: 'fr', pays: 'FR',
+  visiteur: 'aaaaaaaaaaaa', dureeMs: 5,
+};
+const CLIC = {
+  ts: '2026-08-25T10:05:00.000Z', url: 'https://exemple.test/x', category: 'tmdb',
+  sourceId: 'un-bon-moment', recoId: 'ubm-1', ref: '/un-bon-moment/films',
+};
 
 // ===== Le garde ============================================================
 describe('accès', () => {
@@ -120,10 +171,31 @@ describe('structure', () => {
 
   it('n’affiche jamais « % » sur les clics par visiteur', async () => {
     // Le premier jet présentait ce rapport comme un taux et sortait 664 %.
-    const html = await corps(`?cle=${CLE}`);
-    const tuile = html.slice(html.indexOf('clics par visiteur') - 400, html.indexOf('clics par visiteur'));
+    const html = await corpsAvecMesures({ audience: [VISITE], clics: [CLIC, CLIC] });
+    const i = html.indexOf('clics par visiteur');
 
-    expect(tuile).not.toContain('%');
+    expect(i).toBeGreaterThan(-1);
+    expect(html.slice(i - 400, i)).not.toContain('%');
+    expect(html).not.toContain('taux de découverte');
+  });
+});
+
+// ===== Ce que la page avoue ===============================================
+describe('honnêteté des chiffres', () => {
+  it('avoue les clics écartés du rapport', async () => {
+    // Les deux compteurs n'ont pas démarré ensemble : les clics existaient
+    // depuis le 2026-08-19, les visites depuis le 2026-08-25. Écarter les
+    // clics orphelins sans le dire reviendrait à masquer une lacune.
+    const html = await corpsAvecMesures({ audience: [], clics: [CLIC] });
+
+    expect(html).toContain('clic écarté');
+  });
+
+  it('ne dit rien quand les deux mesures se recouvrent', async () => {
+    const html = await corpsAvecMesures({ audience: [VISITE], clics: [CLIC] });
+
+    expect(html).not.toContain('écarté');
+    expect(html).not.toContain('écartés');
   });
 });
 

@@ -76,6 +76,16 @@ export interface Agregat {
    * identifiant de visiteur, et c'est délibéré.
    */
   clicsParVisiteur: number | null;
+  /**
+   * Clics écartés du ratio, faute de savoir qui est venu ce jour-là.
+   *
+   * Les deux mesures n'ont pas commencé le même jour : les clics étaient
+   * enregistrés depuis le 2026-08-19, les visites depuis le 2026-08-25. Le
+   * ratio divisait donc sept jours de clics par une journée de visiteurs.
+   * Ce compteur permet à la page de dire ce qu'elle a laissé de côté plutôt
+   * que de l'escamoter.
+   */
+  clicsHorsPeriode: number;
   topPages: Compte[];
   provenances: Compte[];
   appareils: Compte[];
@@ -219,6 +229,13 @@ export function agreger({
   const humaines = visites.filter((v) => !v.robot);
   const visiteurs = new Set(humaines.map((v) => v.visiteur).filter(Boolean)).size;
 
+  // Un ratio n'a de sens que sur une période commune aux deux mesures. On ne
+  // retient donc que les clics des jours où l'on sait aussi qui est venu.
+  const joursAvecVisites = new Set(parJour.filter((j) => j.pages > 0).map((j) => j.jour));
+  const clicsComparables = parJour
+    .filter((j) => joursAvecVisites.has(j.jour))
+    .reduce((n, j) => n + j.clics, 0);
+
   return {
     du: jours[0] ?? null,
     au: jours[jours.length - 1] ?? null,
@@ -230,7 +247,8 @@ export function agreger({
     // La mesure qui approche le mieux la fonction du site — faire découvrir —
     // sans relier un clic à un visiteur. Arrondie au dixième.
     clicsParVisiteur:
-      visiteurs > 0 ? Math.round((clics.length / visiteurs) * 10) / 10 : null,
+      visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 10) / 10 : null,
+    clicsHorsPeriode: clics.length - clicsComparables,
     topPages: compter(humaines.filter((v) => v.statut === 200).map((v) => v.chemin)),
     provenances: compter(humaines.map((v) => v.provenance)),
     appareils: compter(humaines.map((v) => v.appareil), 4),
