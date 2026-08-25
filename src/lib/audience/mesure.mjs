@@ -77,10 +77,18 @@ export function sourcesDe(csv) {
   return slugs.length ? new Set(slugs) : null;
 }
 
+/**
+ * Sous quelle source ranger cette visite.
+ *
+ * Une source doit être DÉCLARÉE (`RECO_SOURCES`) pour exister : sans liste, le
+ * premier segment d'URL n'est qu'une chaîne venue du dehors, et lui faire
+ * confiance revenait à créer un dossier par racine visitée. Tout ce qui n'est
+ * pas reconnu va dans `_site` — ce qui reste juste, seulement moins précis.
+ */
 export function sourceDuChemin(chemin, sourcesConnues) {
   const segment = (chemin || '/').split('?')[0].split('/')[1] ?? '';
   if (!segment) return '_site';
-  if (sourcesConnues && !sourcesConnues.has(segment)) return '_site';
+  if (!sourcesConnues || !sourcesConnues.has(segment)) return '_site';
   return /^[a-z0-9_-]{1,128}$/.test(segment) ? segment : '_site';
 }
 

@@ -98,6 +98,26 @@ function joursDisponibles(dossier: string): string[] {
 }
 
 /**
+ * Les sources réellement mesurées, visites ET clics confondus.
+ *
+ * `sourceDuChemin` range sous `_site` tout ce qui ne commence pas par un
+ * segment de source connue : l'accueil, les 404, les pages transverses. Cette
+ * source n'est donc jamais déclarée dans `RECO_SOURCES` — il faut la découvrir
+ * sur le disque, sinon le tableau de bord ignore la page d'entrée du site.
+ */
+export function sourcesDisponibles(racine: string): string[] {
+  const dossiers = ['audience', 'clicks'].map((g) => join(racine, 'tools', 'output', g));
+  const noms = new Set<string>();
+  for (const dossier of dossiers) {
+    if (!existsSync(dossier)) continue;
+    for (const entree of readdirSync(dossier, { withFileTypes: true })) {
+      if (entree.isDirectory()) noms.add(entree.name);
+    }
+  }
+  return [...noms].sort();
+}
+
+/**
  * Lit un fichier JSONL en ignorant les lignes illisibles.
  *
  * Une ligne tronquée — coupure au milieu d'une écriture — ne doit pas faire
@@ -149,19 +169,29 @@ export function agreger({
   aujourdhui = new Date(),
 }: {
   racine: string;
-  sourceId: string;
+  /**
+   * Une source, ou plusieurs à fusionner. Le tableau de bord passe la liste
+   * complète : lire `un-bon-moment` seul cacherait l'accueil et les 404, qui
+   * vivent sous `_site`.
+   */
+  sourceId: string | string[];
   nbJours?: number;
   aujourdhui?: Date;
 }): Agregat {
-  const dossierVisites = join(racine, 'tools', 'output', 'audience', sourceId);
-  const dossierClics = join(racine, 'tools', 'output', 'clicks', sourceId);
+  const sources = Array.isArray(sourceId) ? sourceId : [sourceId];
+  const dossiers = sources.map((s) => ({
+    visites: join(racine, 'tools', 'output', 'audience', s),
+    clics: join(racine, 'tools', 'output', 'clicks', s),
+  }));
 
   const borne = new Date(aujourdhui);
   borne.setUTCDate(borne.getUTCDate() - (nbJours - 1));
   const depuis = borne.toISOString().slice(0, 10);
 
   const jours = [
-    ...new Set([...joursDisponibles(dossierVisites), ...joursDisponibles(dossierClics)]),
+    ...new Set(
+      dossiers.flatMap((d) => [...joursDisponibles(d.visites), ...joursDisponibles(d.clics)]),
+    ),
   ].filter((j) => j >= depuis).sort();
 
   const visites: Visite[] = [];
@@ -169,8 +199,8 @@ export function agreger({
   const parJour: Jour[] = [];
 
   for (const jour of jours) {
-    const v = lireJsonl<Visite>(join(dossierVisites, `${jour}.jsonl`));
-    const c = lireJsonl<Clic>(join(dossierClics, `${jour}.jsonl`));
+    const v = dossiers.flatMap((d) => lireJsonl<Visite>(join(d.visites, `${jour}.jsonl`)));
+    const c = dossiers.flatMap((d) => lireJsonl<Clic>(join(d.clics, `${jour}.jsonl`)));
     visites.push(...v);
     clics.push(...c);
 

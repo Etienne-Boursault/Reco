@@ -13,7 +13,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-import { agreger } from '../../src/lib/audience/agregat';
+import { agreger, sourcesDisponibles } from '../../src/lib/audience/agregat';
 
 let racine: string;
 const SOURCE = 'un-bon-moment';
@@ -47,8 +47,13 @@ function clic(over: Record<string, unknown> = {}) {
   };
 }
 
-function ecrire(genre: 'audience' | 'clicks', jour: string, lignes: unknown[]) {
-  const dossier = path.join(racine, 'tools', 'output', genre, SOURCE);
+function ecrire(
+  genre: 'audience' | 'clicks',
+  jour: string,
+  lignes: unknown[],
+  source = SOURCE,
+) {
+  const dossier = path.join(racine, 'tools', 'output', genre, source);
   mkdirSync(dossier, { recursive: true });
   writeFileSync(
     path.join(dossier, `${jour}.jsonl`),
@@ -165,6 +170,70 @@ describe('clics par visiteur', () => {
   it('rend null sans visiteur : une division n’est pas une mesure', () => {
     ecrire('clicks', '2026-08-25', [clic()]);
     expect(lire().clicsParVisiteur).toBeNull();
+  });
+});
+
+// ===== Plusieurs sources ==================================================
+describe('plusieurs sources', () => {
+  it('agrège les sources demandées en une seule vue', () => {
+    // `sourceDuChemin` range sous `_site` tout ce qui ne commence pas par un
+    // segment de source connue : l'ACCUEIL et les 404. Un tableau de bord qui
+    // ne lirait qu'`un-bon-moment` cacherait donc la page d'entrée du site et
+    // tous ses liens morts — vérifié en production le 2026-08-25, où il
+    // affichait « aucune page demandée en vain » alors que `_site` en portait
+    // trois.
+    ecrire('audience', '2026-08-25', [visite({ chemin: '/un-bon-moment/films' })]);
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/', visiteur: 'venu-de-la-ra' }),
+      visite({ chemin: '/lien-mort', statut: 404, visiteur: 'venu-de-la-ra' }),
+    ], '_site');
+
+    const a = agreger({ racine, sourceId: [SOURCE, '_site'], nbJours: 30, aujourdhui: AUJOURDHUI });
+
+    expect(a.pagesVues).toBe(3);
+    expect(a.visiteurs).toBe(2);
+    expect(a.topPages.map((p) => p.cle)).toContain('/');
+    expect(a.erreurs404[0]).toEqual({ cle: '/lien-mort', n: 1 });
+  });
+
+  it('additionne les clics de toutes les sources', () => {
+    ecrire('clicks', '2026-08-25', [clic()]);
+    ecrire('clicks', '2026-08-25', [clic()], 'autre-podcast');
+
+    expect(agreger({ racine, sourceId: [SOURCE, 'autre-podcast'], nbJours: 30, aujourdhui: AUJOURDHUI }).clics).toBe(2);
+  });
+
+  it('compte une seule fois un visiteur vu sur deux sources', () => {
+    // Même appareil, même jour, même identifiant : c'est UNE personne qui a
+    // traversé deux rubriques, pas deux visiteurs.
+    ecrire('audience', '2026-08-25', [visite()]);
+    ecrire('audience', '2026-08-25', [visite({ chemin: '/' })], '_site');
+
+    const a = agreger({ racine, sourceId: [SOURCE, '_site'], nbJours: 30, aujourdhui: AUJOURDHUI });
+
+    expect(a.pagesVues).toBe(2);
+    expect(a.visiteurs).toBe(1);
+  });
+
+  it('accepte encore une source unique en chaîne', () => {
+    // La signature d'origine reste valable : les appels existants ne cassent pas.
+    ecrire('audience', '2026-08-25', [visite()]);
+    expect(lire().pagesVues).toBe(1);
+  });
+});
+
+describe('sourcesDisponibles', () => {
+  it('liste les dossiers des visites ET des clics, sans doublon', () => {
+    ecrire('audience', '2026-08-25', [visite()]);
+    ecrire('clicks', '2026-08-25', [clic()]);
+    ecrire('audience', '2026-08-25', [visite()], '_site');
+    ecrire('clicks', '2026-08-25', [clic()], 'podcast-sans-visite');
+
+    expect(sourcesDisponibles(racine)).toEqual(['_site', 'podcast-sans-visite', SOURCE]);
+  });
+
+  it('rend une liste vide quand rien n’a encore été mesuré', () => {
+    expect(sourcesDisponibles(racine)).toEqual([]);
   });
 });
 

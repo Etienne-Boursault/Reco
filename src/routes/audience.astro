@@ -26,7 +26,7 @@
  * cette clé vaut, et ce qu'elle ne vaut pas.
  */
 import { acces } from '../lib/audience/acces.mjs';
-import { agreger } from '../lib/audience/agregat';
+import { agreger, sourcesDisponibles } from '../lib/audience/agregat';
 import type { Agregat, Compte } from '../lib/audience/agregat';
 
 const decision = acces(Astro.url.searchParams.get('cle'));
@@ -40,7 +40,22 @@ if (!decision.ouvert) {
   });
 }
 
-const source = Astro.url.searchParams.get('source') ?? 'un-bon-moment';
+// TOUTES les sources par défaut, pas seulement celles de `RECO_SOURCES`.
+// `sourceDuChemin` range sous `_site` ce qui ne commence pas par un segment de
+// source connue : l'accueil et les 404. Le premier jet lisait `un-bon-moment`
+// seul et affichait donc « aucune page demandée en vain » alors que trois
+// liens morts étaient bel et bien enregistrés — dont `/audience` elle-même.
+// `?source=` reste là pour isoler une source.
+const filtre = Astro.url.searchParams.get('source');
+const toutes = sourcesDisponibles(process.cwd());
+const source = filtre ? [filtre] : toutes;
+// Ce que le titre annonce. Les sources sont nommées même en vue d'ensemble :
+// un total dont on ignore le périmètre ne veut rien dire.
+const libelle = filtre
+  ? filtre
+  : toutes.length
+    ? `tout le site · ${toutes.join(', ')}`
+    : 'tout le site';
 const nbJours = Math.min(Math.max(Number(Astro.url.searchParams.get('jours')) || 30, 1), 365);
 
 let donnees: Agregat | null = null;
@@ -110,7 +125,7 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Audience — {source}</title>
+  <title>Audience — {filtre ?? 'tout le site'}</title>
   <style is:inline>
     :root {
       --bg: #0e0e10; --surface: #17171c; --haut: #1e1e25;
@@ -227,8 +242,8 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       <h1>Audience</h1>
       <p class="periode">
         {donnees?.du
-          ? <>{source} · du {donnees.du} au {donnees.au} · {nbJours} derniers jours</>
-          : <>{source} · aucune mesure sur les {nbJours} derniers jours</>}
+          ? <>{libelle} · du {donnees.du} au {donnees.au} · {nbJours} derniers jours</>
+          : <>{libelle} · aucune mesure sur les {nbJours} derniers jours</>}
       </p>
     </header>
 

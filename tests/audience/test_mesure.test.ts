@@ -185,6 +185,19 @@ describe('sourceDuChemin', () => {
   it('résiste à une tentative de traversée', () => {
     expect(sourceDuChemin('/../../etc/passwd', CONNUES)).toBe('_site');
   });
+
+  it('range TOUT sous `_site` quand aucune source n’est déclarée', () => {
+    // `sourcesDe` documente exactement cela : « rend null quand rien n'est
+    // déclaré — tout sera alors rangé dans `_site` ». Le code faisait
+    // l'inverse : il prenait le premier segment pour un nom de source. Un
+    // serveur lancé sans RECO_SOURCES créait donc un dossier par racine
+    // d'URL visitée — constaté en local avec `audience/`, `route/`,
+    // `nulle-part/`. Les tests d'origine passaient tous une liste non vide :
+    // le trou était là.
+    expect(sourceDuChemin('/un-bon-moment/films', null)).toBe('_site');
+    expect(sourceDuChemin('/nimporte-quoi', null)).toBe('_site');
+    expect(sourceDuChemin('/', null)).toBe('_site');
+  });
 });
 
 describe('configuration', () => {
