@@ -242,7 +242,24 @@ const pageTitle = item.creator
 <Layout
   title={pageTitle}
   description={description}
-  ogSlug={`${source.id}/oeuvre/${item.id}`}
+  {/*
+    La carte de la SOURCE, pas une carte par œuvre.
+
+    Cette page demandait `/og/{source}/oeuvre/{id}.png` — une route que
+    `src/pages/og/[...slug].png.ts` ne génère pas. Les 1 036 pages d'œuvre
+    déclaraient donc une image qui répondait 404, et ce sont justement les
+    plus partagées : « regarde cette reco ». Rien ne le signalait, la balise
+    étant syntaxiquement correcte.
+
+    Une carte par œuvre coûterait ~46 Ko × 1 036, soit une cinquantaine de
+    mégaoctets au build pour des pages dont la plupart ne seront jamais
+    partagées — le dépôt écarte déjà cette dépense pour les épisodes. Les
+    items ne portent par ailleurs aucune affiche à réutiliser : `title`,
+    `types`, `id`, rien d'autre.
+
+    Mieux vaut une carte juste et générique qu'une image absente.
+  */}
+  ogSlug={source.id}
   ogType="article"
   theme={data.theme}
   jsonLd={jsonLd}

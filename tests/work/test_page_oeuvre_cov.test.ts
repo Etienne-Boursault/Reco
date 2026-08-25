@@ -569,7 +569,17 @@ describe('page œuvre — SEO et similaires', () => {
     expect(schema['@type']).toBe('CreativeWork');
   });
 
-  it('l’image OG pointe la carte dédiée de l’œuvre et le type OG est `article`', async () => {
+  it('l’image OG pointe la carte de la SOURCE, la seule qui existe', async () => {
+    // Ce test exigeait `/og/ubm/oeuvre/w1.png` — une carte par œuvre que
+    // `src/pages/og/[...slug].png.ts` n'a jamais générée. Il verrouillait donc
+    // un défaut : les 1 036 pages d'œuvre du site déclaraient une image qui
+    // répondait 404, et ce sont les plus partagées.
+    //
+    // Une carte par œuvre coûterait une cinquantaine de mégaoctets au build,
+    // et les items ne portent aucune affiche à réutiliser. Mieux vaut une
+    // carte juste et générique qu'une image absente. Cf.
+    // `tests/build/test_og_images_existent.test.ts`, qui vérifie désormais sur
+    // le site construit que toute `og:image` locale existe vraiment.
     seed({
       sources: [SOURCE],
       items: [item('w1')],
@@ -578,7 +588,8 @@ describe('page œuvre — SEO et similaires', () => {
     });
     const html = await renderWork('w1');
 
-    expect(html).toContain(`content="${TEST_SITE}/og/ubm/oeuvre/w1.png"`);
+    expect(html).toContain(`content="${TEST_SITE}/og/ubm.png"`);
+    expect(html).not.toContain('/og/ubm/oeuvre/');
     expect(html).toContain('<meta property="og:type" content="article">');
   });
 
