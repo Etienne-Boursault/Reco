@@ -133,7 +133,22 @@ export function ogTemplate(input: OGTemplateInput) {
         position: 'relative',
       },
       children: [
-        // Bandeau type (emoji + label)
+        // Bandeau type.
+        //
+        // L'EMOJI N'EST PLUS RENDU. Satori ne dessine que ce que la police
+        // fournie contient, et Inter n'a aucun glyphe emoji : à la place, il
+        // écrivait un rectangle « NO GLYPH » en haut de chaque carte. Vu en
+        // production le 2026-08-25, juste après la remise en route du rendu.
+        //
+        // Trois voies existaient : embarquer une police emoji (Noto Emoji pèse
+        // plusieurs centaines de kilo-octets pour un seul glyphe utile),
+        // télécharger les images Twemoji au build (une dépendance réseau de
+        // plus dans une chaîne qui laisse le site mort si elle casse), ou s'en
+        // passer. Les trois cartes produites utilisent toutes le même 🎙️,
+        // redondant avec le label « PODCAST » posé juste à côté.
+        //
+        // Le champ `emoji` reste dans l'interface : il documente l'intention
+        // et redeviendra utile le jour où une police emoji sera embarquée.
         {
           type: 'div',
           props: {
@@ -145,7 +160,6 @@ export function ogTemplate(input: OGTemplateInput) {
               marginBottom: 24,
             },
             children: [
-              emoji ? { type: 'span', props: { style: { fontSize: 56, marginRight: 16 }, children: emoji } } : null,
               typeLabel ? { type: 'span', props: { style: { textTransform: 'uppercase', letterSpacing: 4 }, children: typeLabel } } : null,
             ].filter(Boolean),
           },

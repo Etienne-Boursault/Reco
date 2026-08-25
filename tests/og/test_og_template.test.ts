@@ -54,15 +54,21 @@ describe('ogTemplate', () => {
     expect(txt.length).toBeLessThanOrEqual(95);
   });
 
-  it('utilise emoji et typeLabel quand fournis', () => {
-    const tree = ogTemplate({
-      title: 'Titre',
-      emoji: '🎬',
-      typeLabel: 'Film',
-    });
-    const serialized = JSON.stringify(tree);
-    expect(serialized).toContain('🎬');
-    expect(serialized).toContain('Film');
+  it('affiche le label de type', () => {
+    const tree = ogTemplate({ title: 'Titre', typeLabel: 'Film' });
+
+    expect(JSON.stringify(tree)).toContain('Film');
+  });
+
+  it('n’écrit JAMAIS l’emoji dans la carte', () => {
+    // Satori ne dessine que ce que la police contient, et Inter n'a aucun
+    // glyphe emoji : il rendait un rectangle « NO GLYPH » en haut de chaque
+    // carte, visible en production le 2026-08-25. Le champ reste accepté —
+    // il documente l'intention — mais il ne doit pas atteindre le rendu tant
+    // qu'aucune police emoji n'est embarquée.
+    const tree = ogTemplate({ title: 'Titre', emoji: '🎬', typeLabel: 'Film' });
+
+    expect(JSON.stringify(tree)).not.toContain('🎬');
   });
 
   it('inclut sourceLabel et le branding par défaut', () => {
