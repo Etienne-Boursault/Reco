@@ -50,6 +50,22 @@ describe('estUnePage', () => {
     expect(estUnePage('/.well-known/reco-registry.json')).toBe(false);
   });
 
+  it('écarte le tableau de bord : il fausserait ses propres chiffres', () => {
+    // `/audience` arrivait en TÊTE des pages les plus consultées en
+    // production, et ses appels sans clé — qui répondent 404 — remplissaient
+    // la section « liens morts qui circulent ». Une page d'administration
+    // n'est pas de l'audience : plus on consulte ses chiffres, plus on les
+    // fausse.
+    expect(estUnePage('/audience')).toBe(false);
+    expect(estUnePage('/audience/')).toBe(false);
+    expect(estUnePage('/audience?cle=x&jours=7')).toBe(false);
+  });
+
+  it('ne confond pas avec une vraie page qui commence pareil', () => {
+    // Un préfixe nu écarterait aussi `/audiences-publiques`.
+    expect(estUnePage('/audiences-publiques')).toBe(true);
+  });
+
   it('ne compte que les GET', () => {
     // Un POST vers /api/report n'est pas une page vue.
     expect(estUnePage('/signaler', 'POST')).toBe(false);

@@ -49,6 +49,19 @@ const EXT_IGNOREES = new Set([
 const PREFIXES_IGNORES = ['/_astro/', '/api/', '/og/', '/.well-known/'];
 
 /**
+ * Pages d'administration : consultées par l'éditeur, pas par le public.
+ *
+ * Chemins EXACTS, pas des préfixes — `/audience` ne doit pas écarter
+ * `/audiences-publiques`, qui serait une page comme une autre.
+ *
+ * Sans cette garde, `/audience` est arrivée en tête des pages les plus
+ * consultées le jour même de sa mise en service, et ses appels sans clé — qui
+ * répondent 404 — ont rempli la section des liens morts. Un tableau de bord
+ * qui se compte lui-même dégrade ses chiffres à chaque consultation.
+ */
+const CHEMINS_IGNORES = new Set(['/audience']);
+
+/**
  * Marqueurs de robots.
  *
  * La liste est courte et le restera : elle sert à SÉPARER, pas à identifier.
@@ -69,6 +82,11 @@ export function estUnePage(chemin, methode = 'GET') {
   if (typeof chemin !== 'string' || !chemin.startsWith('/')) return false;
   const sansQuery = chemin.split('?')[0];
   if (PREFIXES_IGNORES.some((p) => sansQuery.startsWith(p))) return false;
+  // `trailingSlash: 'ignore'` : `/audience` et `/audience/` sont la même page.
+  const nu = sansQuery.length > 1 && sansQuery.endsWith('/')
+    ? sansQuery.slice(0, -1)
+    : sansQuery;
+  if (CHEMINS_IGNORES.has(nu)) return false;
   const point = sansQuery.lastIndexOf('.');
   if (point > sansQuery.lastIndexOf('/')) {
     return !EXT_IGNOREES.has(sansQuery.slice(point).toLowerCase());
