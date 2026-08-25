@@ -199,6 +199,31 @@ describe('pays', () => {
     expect(pays({ 'cf-ipcountry': 'T1' })).toBeNull(); // réseau Tor
     expect(pays({ 'cf-ipcountry': 'FRANCE' })).toBeNull();
   });
+
+  it('préfère l’en-tête à la table : l’hébergeur voit l’adresse réelle', () => {
+    // Nous ne voyons que ce que le proxy transmet dans `x-forwarded-for`.
+    const resoudre = () => 'US';
+    expect(pays({ 'cf-ipcountry': 'DE' }, '8.8.8.8', { resoudre })).toBe('DE');
+  });
+
+  it('se rabat sur la table quand aucun en-tête n’est posé', () => {
+    // Le cas d'Infomaniak, vérifié en production le 2026-08-25 : aucun des
+    // huit en-têtes reçus n'est une géolocalisation.
+    expect(pays({}, '8.8.8.8', { resoudre: () => 'US' })).toBe('US');
+  });
+
+  it('n’interroge pas la table sans adresse', () => {
+    let appels = 0;
+    const resoudre = () => { appels += 1; return 'US'; };
+    expect(pays({}, null, { resoudre })).toBeNull();
+    expect(appels).toBe(0);
+  });
+
+  it('reste null quand la table ne connaît pas l’adresse', () => {
+    // Adresse privée, plage non attribuée, table absente : trois façons de ne
+    // pas savoir, une seule réponse honnête.
+    expect(pays({}, '10.0.0.1', { resoudre: () => null })).toBeNull();
+  });
 });
 
 // ===== L'identifiant de visiteur ==========================================

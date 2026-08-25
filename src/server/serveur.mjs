@@ -84,9 +84,19 @@ export function repondre404(res, racine, { lire = readFileSync } = {}) {
   res.end(corps);
 }
 
-/** Crée le serveur HTTP sans l'ouvrir : l'appelant décide quand écouter. */
-export function creerServeur(handler, racine) {
-  return http.createServer((req, res) => traiter(handler, racine, req, res));
+/**
+ * Crée le serveur HTTP sans l'ouvrir : l'appelant décide quand écouter.
+ *
+ * `mesurer` est injectable pour la même raison que dans `traiter` : la mesure
+ * par défaut ÉCRIT SUR LE DISQUE, sous `tools/output/audience/`. Les tests du
+ * serveur passaient par ici sans la remplacer, et chaque exécution de la suite
+ * ajoutait de vraies lignes au corpus local — `/nulle-part`,
+ * `/../../../etc/passwd` et les autres chemins d'essai se retrouvaient dans le
+ * tableau de bord. Le piège est ancien dans ce dépôt : un chemin résolu au
+ * moment de l'appel finit toujours par pointer sur le vrai dossier.
+ */
+export function creerServeur(handler, racine, mesurer = mesurerVisite) {
+  return http.createServer((req, res) => traiter(handler, racine, req, res, mesurer));
 }
 
 /**

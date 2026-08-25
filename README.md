@@ -121,6 +121,17 @@ La clé transite dans l'URL pour qu'un signet suffise : c'est un secret partagé
 d'un lien non listé, **pas** une authentification. Ce que la mesure retient et ce qu'elle
 jette est détaillé dans [`src/lib/audience/derive.mjs`](src/lib/audience/derive.mjs).
 
+Le **pays** vient d'un en-tête de l'hébergeur quand il en pose un, sinon d'une table
+embarquée — aucune requête sortante, aucun tiers. Chez un hébergeur inconnu, commencer par
+regarder ce qui arrive vraiment : `/audience?cle=…&entetes=1` liste les en-têtes reçus.
+La table se rafraîchit ainsi, et n'a pas besoin de l'être souvent :
+
+```bash
+python tools/construire_table_pays.py        # ~2 Mo, écrit src/lib/audience/pays-ip.bin.gz
+```
+
+Sans elle le reste fonctionne : seul le pays manque, et la page le dit.
+
 L'instance de référence tourne sur un **site Node.js Infomaniak**, déployé
 automatiquement : [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) se déclenche
 quand la CI passe au vert sur `main`, lance la construction chez l'hébergeur, puis **vérifie

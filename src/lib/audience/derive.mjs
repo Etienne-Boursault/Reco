@@ -33,6 +33,7 @@
  * mesurer vaut moins que pas de champ.
  */
 import { createHash } from 'node:crypto';
+import { paysDeIP } from './geoip.mjs';
 
 /**
  * Ce qui n'est pas une page : on ne compte pas les feuilles de style.
@@ -163,8 +164,15 @@ const ENTETES_PAYS = [
   'x-vercel-ip-country',
 ];
 
-/** Le code pays sur deux lettres, s'il est fourni en amont. */
-export function pays(entetes) {
+/**
+ * Le code pays sur deux lettres.
+ *
+ * L'en-tête d'abord : quand l'hébergeur en pose un, il vaut mieux que notre
+ * table — il voit l'adresse réelle, là où nous ne voyons que ce que le proxy
+ * a bien voulu transmettre. Vérifié le 2026-08-25, Infomaniak n'en pose
+ * aucun ; d'où le repli sur `geoip.mjs` et sa table embarquée.
+ */
+export function pays(entetes, ip = null, { resoudre = paysDeIP } = {}) {
   for (const nom of ENTETES_PAYS) {
     const brut = entetes?.[nom];
     if (typeof brut !== 'string') continue;
@@ -172,7 +180,7 @@ export function pays(entetes) {
     // `XX` et `T1` sont les codes « inconnu » et « réseau Tor » de Cloudflare.
     if (/^[A-Z]{2}$/.test(code) && code !== 'XX' && code !== 'T1') return code;
   }
-  return null;
+  return ip ? resoudre(ip) : null;
 }
 
 /**
@@ -226,7 +234,7 @@ export function evenementDeVisite({
     appareil: appareil(entetes['user-agent']),
     provenance: provenance(entetes.referer, hoteDuSite),
     langue: langue(entetes['accept-language']),
-    pays: pays(entetes),
+    pays: pays(entetes, ip),
     visiteur: empreinteDuJour(ip, sel, jour),
     dureeMs: typeof dureeMs === 'number' ? Math.round(dureeMs) : null,
   };

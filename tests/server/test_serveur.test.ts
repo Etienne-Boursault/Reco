@@ -49,11 +49,21 @@ function fauxHandler(appels: Appels, reponse: string | null) {
 
 async function monter(reponse: string | null): Promise<{ port: number; appels: Appels }> {
   const appels: Appels = { recu: [] };
-  const serveur = creerServeur(fauxHandler(appels, reponse), racine);
+  const serveur = creerServeur(fauxHandler(appels, reponse), racine, sansMesure);
   const { port, arreter } = await demarrer(serveur);
   arreterCourant = arreter;
   return { port, appels };
 }
+
+/**
+ * Une mesure qui n'écrit rien.
+ *
+ * La vraie ajoute une ligne dans `tools/output/audience/` à chaque requête.
+ * Sans cette doublure, lancer la suite polluait le corpus local avec les
+ * chemins d'essai — `/nulle-part`, `/../../../etc/passwd` — qui remontaient
+ * ensuite dans le tableau de bord.
+ */
+const sansMesure = () => () => {};
 
 describe('traiter — qui répond ?', () => {
   it('un fichier construit est servi SANS déranger le gestionnaire', async () => {
@@ -130,7 +140,7 @@ describe('traiter — qui répond ?', () => {
     const req = { method: 'GET', headers: {} } as any;
     const res = { writeHead: vi.fn(), end: vi.fn(), getHeader: () => undefined } as any;
 
-    traiter(fauxHandler(appels, null), vide, req, res);
+    traiter(fauxHandler(appels, null), vide, req, res, sansMesure);
 
     expect(appels.recu).toEqual(['GET undefined']);
     expect(res.writeHead).toHaveBeenCalledWith(404, expect.any(Object));
@@ -191,7 +201,7 @@ describe('la page 404 construite', () => {
   afterAll(() => rmSync(racine404, { recursive: true, force: true }));
 
   async function monter404() {
-    const serveur = creerServeur(fauxHandler({ recu: [] }, null), racine404);
+    const serveur = creerServeur(fauxHandler({ recu: [] }, null), racine404, sansMesure);
     const { port, arreter } = await demarrer(serveur);
     arreterCourant = arreter;
     return port;
