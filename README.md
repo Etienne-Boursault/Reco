@@ -107,6 +107,20 @@ npm start        # node --env-file-if-exists=.env ./server.mjs
 `server.mjs` sert `dist/client` et compresse — `@astrojs/node` ne le fait pas, et sans lui
 la page d'accueil part en 2,6 Mo au lieu de 200 Ko.
 
+**Fréquentation** — en SSR, chaque requête traverse `server.mjs` : le site peut se mesurer
+lui-même, sans tracker, sans cookie et sans tiers. `/audience` lit ces mesures. Trois
+variables l'activent ; sans elles la page répond 404 et rien d'identifiable n'est écrit :
+
+| Variable | Rôle | Sans elle |
+|---|---|---|
+| `RECO_AUDIENCE_KEY` | ouvre `/audience?cle=…` (≥ 16 signes) | la page n'existe pas |
+| `RECO_AUDIENCE_SALT` | sale l'identifiant de visiteur du jour (≥ 16 signes) | les pages sont comptées, pas les visiteurs |
+| `RECO_SOURCES` | les sources mesurées, ex. `un-bon-moment` | aucun chemin n'est rattaché à une source |
+
+La clé transite dans l'URL pour qu'un signet suffise : c'est un secret partagé, du niveau
+d'un lien non listé, **pas** une authentification. Ce que la mesure retient et ce qu'elle
+jette est détaillé dans [`src/lib/audience/derive.mjs`](src/lib/audience/derive.mjs).
+
 L'instance de référence tourne sur un **site Node.js Infomaniak**, déployé
 automatiquement : [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) se déclenche
 quand la CI passe au vert sur `main`, lance la construction chez l'hébergeur, puis **vérifie
