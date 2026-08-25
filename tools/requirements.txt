@@ -42,4 +42,4 @@ requests-cache>=1.3.3,<2   # économise quota TMDB/MusicBrainz entre runs
 # jamais touché par les tests via DI). fastembed embarque onnxruntime CPU
 # (~80 MB modèle + ~50 MB runtime) — préféré à sentence-transformers qui
 # trainerait torch (~500 MB).
-fastembed>=0.3,<1
+fastembed>=0.8.0,<1
