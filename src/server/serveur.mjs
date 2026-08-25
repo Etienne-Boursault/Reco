@@ -10,8 +10,13 @@ import { readFileSync } from 'node:fs';
 import http from 'node:http';
 import { join } from 'node:path';
 
+import { hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
+
+/** Le domaine public et les sources connues — voir `lib/audience/mesure.mjs`. */
+const HOTE_DU_SITE = hoteDe(process.env.SITE_URL);
+const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
 
 /**
  * Traite une requête : fichier construit si l'URL en désigne un, sinon Astro.
@@ -20,7 +25,15 @@ import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
  * couvre l'écrasante majorité des requêtes et coûte le moins ; et parce qu'une
  * route à la demande ne doit jamais masquer un fichier réellement construit.
  */
-export function traiter(handler, racine, req, res) {
+export function traiter(handler, racine, req, res, mesurer = mesurerVisite) {
+  // La mesure se pose AVANT tout aiguillage, pour couvrir aussi bien une page
+  // servie depuis le disque qu'une route à la demande ou un 404. Elle
+  // n'écrit rien tout de suite : elle s'abonne à la fin de la réponse, quand
+  // le statut et le poids sont connus. Voir `src/lib/audience/mesure.mjs`.
+  //
+  // Injectable pour que les tests du serveur n'écrivent pas sur le disque.
+  mesurer?.(req, res, { hoteDuSite: HOTE_DU_SITE, sourcesConnues: SOURCES_CONNUES });
+
   // Seuls GET et HEAD se servent depuis le disque : un POST vers `/index.html`
   // doit atteindre le gestionnaire, qui répondra 405, et non recevoir la page
   // avec un 200 qui laisserait croire que l'envoi a été pris en compte.
