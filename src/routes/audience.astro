@@ -205,9 +205,23 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       color: var(--muted); font-size: 0.82rem;
     }
     footer code { color: var(--text); }
+    /* Le lien d'évitement, repris de `global.css` : cette page ne l'importe
+       pas — elle est autonome pour rester lisible même si le site casse. */
+    .skip-link {
+      position: absolute; top: 0; left: 0; z-index: 100;
+      background: var(--accent); color: var(--fond);
+      padding: 0.6em 1.1em; font-weight: 700; text-decoration: none;
+      border-radius: 0 0 8px 0;
+      transform: translateY(-110%); transition: transform 0.18s ease;
+    }
+    .skip-link:focus, .skip-link:focus-visible { transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .skip-link { transition-duration: 0.001ms; }
+    }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Aller au contenu</a>
   <div class="wrap">
     <header>
       <h1>Audience</h1>
@@ -217,6 +231,8 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           : <>{source} · aucune mesure sur les {nbJours} derniers jours</>}
       </p>
     </header>
+
+    <main id="main">
 
     {erreur && (
       <div class="avis">
@@ -349,6 +365,8 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
         </div>
       </>
     )}
+
+    </main>
 
     <footer>
       Mesuré sans tracker, sans cookie et sans tiers. Aucun en-tête n’est

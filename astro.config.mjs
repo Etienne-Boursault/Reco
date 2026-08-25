@@ -35,12 +35,29 @@ if (isProd && !siteUrl) {
  * c'est un no-op → tout reste pré-rendu, aucun adaptateur requis.
  */
 function ssrOnDemandRoutes() {
-  // `audience` : le tableau de bord lit les mesures du jour. Pré-rendu, il
-  // serait figé à la date du dernier déploiement.
-  const ONDEMAND = ['api/report', 'api/click', 'api/captcha', 'audience'];
+  const ONDEMAND = ['api/report', 'api/click', 'api/captcha'];
   return {
     name: 'reco-ssr-ondemand-routes',
     hooks: {
+      // `/audience` n'est PAS dans `src/pages/` : elle est injectée ici, et
+      // seulement quand RECO_SSR=1. Forcer `prerender = false` ne suffisait
+      // pas — sans RECO_SSR le hook est un no-op, la page repassait en
+      // pré-rendue et le build statique déposait un `audience/index.html`
+      // contenant le corps du 404. Inoffensif (la clé n'est jamais lue au
+      // build) mais faux : un fork déployé en statique se retrouvait avec une
+      // URL qui ne mesure rien. Le scan a11y l'a attrapé — la page n'a ni
+      // `<html>` ni lien d'évitement quand le 404 court-circuite le rendu.
+      //
+      // Hors du dossier `pages/`, la route n'existe tout simplement pas sans
+      // adaptateur : rien à pré-rendre, rien à exclure ensuite.
+      'astro:config:setup': ({ injectRoute }) => {
+        if (process.env.RECO_SSR !== '1') return;
+        injectRoute({
+          pattern: '/audience',
+          entrypoint: './src/routes/audience.astro',
+          prerender: false,
+        });
+      },
       'astro:route:setup': ({ route }) => {
         if (process.env.RECO_SSR !== '1') return;
         const comp = route.component ?? '';
