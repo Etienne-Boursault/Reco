@@ -133,8 +133,19 @@ export const POST: APIRoute = async (ctx) => {
     if (typeof v === 'string') formData[k] = v;
   }
 
-  const url = new URL(request.url);
-  const selfOrigin = `${url.protocol}//${url.host}`;
+  // Derrière un proxy, `request.url` porte l'hôte interne en clair — jamais
+  // `https://<domaine public>`. La comparaison d'origine échouait donc
+  // toujours en production. `ctx.site` vient de `SITE_URL`, obligatoire au
+  // build de production, et connaît le vrai domaine ; on ne retombe sur
+  // `request.url` qu'en développement et dans les tests, où il n'y a pas de
+  // proxy. Même correctif que `/api/click`, où le défaut se voyait mieux :
+  // le tracking de clics n'y enregistrait rien depuis la mise en ligne.
+  const selfOrigin = ctx.site
+    ? ctx.site.origin
+    : (() => {
+        const url = new URL(request.url);
+        return `${url.protocol}//${url.host}`;
+      })();
   const origin = request.headers.get('origin') ?? request.headers.get('referer');
 
   // H16-6 — On NE FAIT confiance à `x-forwarded-for` que si l'IP directe

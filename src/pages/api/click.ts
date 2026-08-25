@@ -91,7 +91,35 @@ function extractIp(request: Request, clientAddress: string | null): string | nul
   });
 }
 
-function selfOriginOf(request: Request): string {
+/**
+ * L'origine attendue pour la vérification CSRF.
+ *
+ * DERRIÈRE UN PROXY, `request.url` MENT
+ * -------------------------------------
+ * L'hébergeur termine TLS devant l'application et lui parle en clair. Le
+ * gestionnaire Astro voit donc `http://…`, alors que le navigateur annonce
+ * `Origin: https://unebonnere.co`. Les deux origines ne peuvent jamais
+ * correspondre, et l'endpoint répondait 403 à chaque clic — en silence, car
+ * `sendBeacon` avale l'erreur. Le tracking paraissait fonctionner et
+ * n'enregistrait rien.
+ *
+ * Reproduit en local le 2026-08-25, trois requêtes :
+ *
+ *   Origin http://127.0.0.1:4402 (l'hôte réel)   → 204
+ *   Origin https://unebonnere.co                 → 403
+ *      + `X-Forwarded-Proto: https`              → 403
+ *
+ * Le troisième cas est décisif : `@astrojs/node` en mode `middleware`
+ * n'honore pas cet en-tête, donc corriger le proxy n'y suffirait pas.
+ *
+ * `ctx.site` est l'URL déclarée dans `astro.config.mjs`, qui vient de
+ * `SITE_URL` — obligatoire en production, où le build échoue sans elle. C'est
+ * la seule valeur qui connaisse le vrai domaine public. On retombe sur
+ * `request.url` quand elle est absente : en développement et dans les tests,
+ * il n'y a pas de proxy et l'URL est exacte.
+ */
+function selfOriginOf(request: Request, site: URL | undefined): string {
+  if (site) return site.origin;
   const url = new URL(request.url);
   return `${url.protocol}//${url.host}`;
 }
@@ -162,7 +190,7 @@ export const POST: APIRoute = async (ctx) => {
     payload,
     origin,
     referer,
-    selfOrigin: selfOriginOf(request),
+    selfOrigin: selfOriginOf(request, ctx.site),
     ip,
     secGpc,
     // H25-3 : POST NE doit PAS accepter Referer comme fallback CSRF.
@@ -208,7 +236,7 @@ export const GET: APIRoute = (ctx) => {
       payload,
       origin,
       referer,
-      selfOrigin: selfOriginOf(request),
+      selfOrigin: selfOriginOf(request, ctx.site),
       ip,
       secGpc,
       allowReferer: true,

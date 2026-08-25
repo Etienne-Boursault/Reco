@@ -66,11 +66,18 @@ function makeRequest(
   });
 }
 
-function ctxFor(request: Request, clientAddress: string | null = '203.0.113.7') {
+function ctxFor(
+  request: Request,
+  clientAddress: string | null = '203.0.113.7',
+  site?: URL,
+) {
   return {
     request,
     url: new URL(request.url),
     clientAddress,
+    // Astro pose `site` depuis `astro.config.mjs` — donc depuis `SITE_URL`.
+    // Les tests qui ne le passent pas vérifient le comportement de repli.
+    site,
   } as unknown as Parameters<Awaited<ReturnType<typeof loadRoute>>['POST']>[0];
 }
 
@@ -415,5 +422,71 @@ describe('GET /api/click (pixel)', () => {
     expect(res.status).toBe(200);
     expect(warn).toHaveBeenCalled();
     warn.mockRestore();
+  });
+});
+
+describe('derrière un proxy — l’origine attendue vient de SITE_URL', () => {
+  // CE QUE CES TESTS PROTÈGENT
+  //
+  // L'hébergeur termine TLS devant l'application et lui parle en clair :
+  // `request.url` porte donc `http://<hôte interne>`, quand le navigateur
+  // annonce `Origin: https://unebonnere.co`. La comparaison échouait
+  // toujours, et l'endpoint répondait 403 à CHAQUE clic — sans que rien ne
+  // le signale, `sendBeacon` avalant l'erreur. Le tracking a paru
+  // fonctionner pendant des semaines en n'enregistrant rien.
+  //
+  // Reproduit en local le 2026-08-25 : ajouter `X-Forwarded-Proto: https`
+  // n'y changeait rien, `@astrojs/node` en mode middleware ne le lit pas.
+
+  const SITE = new URL('https://unebonnere.co');
+
+  function requeteDerriereProxy(origin: string) {
+    // L'URL que voit le serveur : hôte interne, en clair.
+    return new Request('http://10.0.0.4:3000/api/click', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: validJsonBody(),
+    });
+  }
+
+  it('accepte le domaine public alors que la requête arrive en clair', async () => {
+    const route = await loadRoute();
+    const res = await route.POST(
+      ctxFor(requeteDerriereProxy('https://unebonnere.co'), '203.0.113.7', SITE),
+    );
+
+    expect(res.status).toBe(204);
+  });
+
+  it('refuse toujours une origine étrangère', async () => {
+    // Le correctif ne doit pas désarmer la protection CSRF.
+    const route = await loadRoute();
+    const res = await route.POST(
+      ctxFor(requeteDerriereProxy('https://pirate.example'), '203.0.113.7', SITE),
+    );
+
+    expect(res.status).toBe(403);
+  });
+
+  it('refuse le même domaine sur un autre protocole', async () => {
+    const route = await loadRoute();
+    const res = await route.POST(
+      ctxFor(requeteDerriereProxy('http://unebonnere.co'), '203.0.113.7', SITE),
+    );
+
+    expect(res.status).toBe(403);
+  });
+
+  it('sans site configuré, retombe sur l’URL de la requête', async () => {
+    // Développement et tests : pas de proxy, `request.url` est exact.
+    const route = await loadRoute();
+    const req = new Request('http://localhost:4321/api/click', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin: 'http://localhost:4321' },
+      body: validJsonBody(),
+    });
+    const res = await route.POST(ctxFor(req));
+
+    expect(res.status).toBe(204);
   });
 });
