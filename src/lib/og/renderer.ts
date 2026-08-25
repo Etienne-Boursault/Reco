@@ -38,11 +38,31 @@ interface FontPair { regular: Buffer; bold: Buffer; }
 let fontPromise: Promise<FontPair> | null = null;
 
 async function doLoadFonts(): Promise<FontPair> {
-  // 1) Police commit dans le repo (`src/fonts/og/`) — source unique
-  //    contrôlée, licence OFL 1.1 (cf. NOTICE).
-  // 2) Fallback `node_modules/@fontsource/inter` si encore installé en dev.
+  // POURQUOI `process.cwd()` D'ABORD, ET PAS `__dirname`
+  //
+  // Les deux chemins d'origine partaient tous deux de `__dirname`. En build
+  // STATIQUE, Vite exécute ce module depuis les sources : `__dirname` vaut
+  // `<racine>/src/lib/og`, les deux chemins tombent juste, et les cartes se
+  // rendaient normalement. En build SSR (`RECO_SSR=1`), Astro bundle le code
+  // dans `dist/server/chunks/` : `__dirname` change, les deux chemins pointent
+  // dans le vide, et le rendu tombait sur le PNG 1×1 de repli.
+  //
+  // Personne ne s'en apercevait : le repli est silencieux côté site, l'erreur
+  // ne vit que dans les logs du build, et aucun test ne regardait la taille du
+  // PNG produit. La production a donc servi des vignettes de partage vides —
+  // un carré transparent d'un pixel — depuis le passage en SSR.
+  //
+  // `process.cwd()` est la racine du projet pendant `astro build`, et la
+  // racine du site chez l'hébergeur, qui déploie le dépôt entier. Il ne dépend
+  // ni du bundling ni du mode.
   const candidates = [
+    // 1) Polices commitées (`src/fonts/og/`) — source unique contrôlée,
+    //    licence OFL 1.1 (cf. NOTICE et src/fonts/og/LICENSE).
+    join(process.cwd(), 'src', 'fonts', 'og'),
+    // 2) Relatif au module : vaut tant que le code n'est pas bundlé.
     join(__dirname, '..', '..', 'fonts', 'og'),
+    // 3) Replis `@fontsource/inter`, aux deux emplacements possibles.
+    join(process.cwd(), 'node_modules', '@fontsource', 'inter', 'files'),
     join(__dirname, '..', '..', '..', 'node_modules', '@fontsource', 'inter', 'files'),
   ];
   let regular: Buffer | null = null;
@@ -58,9 +78,10 @@ async function doLoadFonts(): Promise<FontPair> {
   }
   if (!regular || !bold) {
     throw new Error(
-      "Police Inter introuvable. Place `inter-latin-400-normal.woff` et " +
-      "`inter-latin-700-normal.woff` dans `src/fonts/og/` (ou installe " +
-      "`@fontsource/inter` en dev).",
+      "Police Inter introuvable — les cartes OG seraient des PNG 1x1. " +
+      "Place `inter-latin-400-normal.woff` et `inter-latin-700-normal.woff` " +
+      "dans `src/fonts/og/` (ils y sont commités ; `@fontsource/inter` sert " +
+      `de repli). Cherché dans : ${candidates.join(', ')}`,
     );
   }
   return { regular, bold };

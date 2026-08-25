@@ -214,6 +214,28 @@ jobs:
           test -f dist/server/entry.mjs             || { echo "::error::dist/server/entry.mjs manquant après le build."; exit 1; }
           echo "dist/server/entry.mjs présent."
 
+      - name: Les cartes OG sont-elles autre chose qu'un pixel transparent ?
+        run: |
+          # Le rendu Satori tombe en silence sur un PNG 1x1 quand la police
+          # est introuvable : le build « réussit », le site sert des vignettes
+          # de partage vides, et l'erreur ne vit que dans les logs.
+          #
+          # C'est arrivé, et personne ne l'a vu. Les deux chemins de recherche
+          # partaient de `__dirname` : justes en build statique, faux une fois
+          # le code bundlé dans `dist/server/chunks/` par le mode SSR. Ce job
+          # est le seul à construire en SSR — c'est donc ici, et nulle part
+          # ailleurs, que le contrôle a un sens.
+          #
+          # 1 Ko : une vraie carte pèse ~46 Ko, le repli en fait 68 octets.
+          test -d dist/client/og || { echo "::error::dist/client/og absent : aucune carte OG produite."; exit 1; }
+          vides=$(find dist/client/og -name '*.png' -size -1k)
+          if [ -n "$vides" ]; then
+            echo "::error::Cartes OG vides (repli PNG 1x1) — police introuvable au build :"
+            echo "$vides"
+            exit 1
+          fi
+          echo "$(find dist/client/og -name '*.png' | wc -l) carte(s) OG, toutes au-dessus de 1 Ko."
+
   ci-summary:
     name: CI summary
     needs: [lint-python, test-python, lint-js, test-vitest, build, build-prod]
