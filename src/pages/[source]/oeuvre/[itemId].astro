@@ -237,28 +237,32 @@ const description = descriptionBits.join(' — ').slice(0, 160);
 const pageTitle = item.creator
   ? `${item.title} — ${item.creator}`
   : item.title;
+/*
+ * IMAGE DE PARTAGE : la carte de la SOURCE, pas une carte par œuvre.
+ *
+ * `ogSlug` valait `${source.id}/oeuvre/${item.id}`, qui demande
+ * `/og/<source>/oeuvre/<id>.png` — une route que
+ * `src/pages/og/[...slug].png.ts` ne génère pas. Les 1 036 pages d'œuvre
+ * déclaraient donc une image répondant 404, et ce sont justement les plus
+ * partagées : « regarde cette reco ». Rien ne le signalait, la balise étant
+ * syntaxiquement correcte.
+ *
+ * Une carte par œuvre coûterait ~46 Ko × 1 036, soit une cinquantaine de
+ * mégaoctets au build pour des pages dont la plupart ne seront jamais
+ * partagées — le dépôt écarte déjà cette dépense pour les épisodes. Les items
+ * ne portent par ailleurs aucune affiche à réutiliser : `id`, `title`,
+ * `types`, rien d'autre. Mieux vaut une carte juste et générique qu'une image
+ * absente.
+ *
+ * Ce commentaire est ICI et non dans la liste d'attributs de `<Layout>` : un
+ * `{/* … *​/}` y est toléré par Astro mais casse `astro check`, qui lit le
+ * fichier comme du TSX. Le piège s'était déjà refermé sur `<StatChart>`.
+ */
 ---
 
 <Layout
   title={pageTitle}
   description={description}
-  {/*
-    La carte de la SOURCE, pas une carte par œuvre.
-
-    Cette page demandait `/og/{source}/oeuvre/{id}.png` — une route que
-    `src/pages/og/[...slug].png.ts` ne génère pas. Les 1 036 pages d'œuvre
-    déclaraient donc une image qui répondait 404, et ce sont justement les
-    plus partagées : « regarde cette reco ». Rien ne le signalait, la balise
-    étant syntaxiquement correcte.
-
-    Une carte par œuvre coûterait ~46 Ko × 1 036, soit une cinquantaine de
-    mégaoctets au build pour des pages dont la plupart ne seront jamais
-    partagées — le dépôt écarte déjà cette dépense pour les épisodes. Les
-    items ne portent par ailleurs aucune affiche à réutiliser : `title`,
-    `types`, `id`, rien d'autre.
-
-    Mieux vaut une carte juste et générique qu'une image absente.
-  */}
   ogSlug={source.id}
   ogType="article"
   theme={data.theme}
