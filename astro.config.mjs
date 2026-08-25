@@ -35,7 +35,9 @@ if (isProd && !siteUrl) {
  * c'est un no-op → tout reste pré-rendu, aucun adaptateur requis.
  */
 function ssrOnDemandRoutes() {
-  const ONDEMAND = ['api/report', 'api/click', 'api/captcha'];
+  // `audience` : le tableau de bord lit les mesures du jour. Pré-rendu, il
+  // serait figé à la date du dernier déploiement.
+  const ONDEMAND = ['api/report', 'api/click', 'api/captcha', 'audience'];
   return {
     name: 'reco-ssr-ondemand-routes',
     hooks: {
@@ -102,6 +104,8 @@ export default defineConfig({
         if (page.endsWith('/recos-fragment') || page.endsWith('/recos-fragment/')) return false;
         // Recherche : page utilitaire (noindex) + endpoint d'index.
         if (page.endsWith('/recherche') || page.endsWith('/recherche/')) return false;
+        // Tableau de bord interne : protégé par une clé, jamais à indexer.
+        if (page.endsWith('/audience') || page.endsWith('/audience/')) return false;
         if (page.endsWith('/search.json')) return false;
         // F-M-10 : endpoints JSON (sidecars / registry) — pas des pages
         // HTML, on évite de polluer le sitemap (qui doit cibler des URLs

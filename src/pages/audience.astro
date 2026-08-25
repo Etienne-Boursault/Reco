@@ -1,0 +1,361 @@
+---
+/**
+ * /audience — le tableau de bord de fréquentation.
+ *
+ * POURQUOI CETTE PAGE EXISTE
+ * --------------------------
+ * Infomaniak ne fournit aucune statistique pour un site Node.js : il sert ses
+ * requêtes lui-même, le serveur web mutualisé n'en voit rien passer. La page
+ * `/statistics` du Manager existe mais reste vide, sans même un message.
+ *
+ * Le site est pourtant son propre serveur : `src/lib/audience/` compte les
+ * visites au passage, sans tracker ni cookie, et cette page les lit.
+ *
+ * RENDUE À LA DEMANDE
+ * -------------------
+ * Pré-rendue, elle serait figée à la date du dernier déploiement — un tableau
+ * de bord qui n'avance qu'au rythme des mises en production ne sert à rien.
+ * `astro.config.mjs` la déclare dans `ONDEMAND`.
+ *
+ * L'ACCÈS
+ * -------
+ * Une clé, pas seulement un `noindex`. Le dépôt a déjà livré une page interne
+ * — `/[source]/reports` — protégée par la seule discrétion : elle rendait des
+ * adresses e-mail de visiteurs, lisibles par quiconque connaissait l'URL.
+ * Découvrabilité n'est pas accès. Cf. `src/lib/audience/acces.mjs` pour ce que
+ * cette clé vaut, et ce qu'elle ne vaut pas.
+ */
+import { acces } from '../lib/audience/acces.mjs';
+import { agreger } from '../lib/audience/agregat';
+import type { Agregat, Compte } from '../lib/audience/agregat';
+
+const decision = acces(Astro.url.searchParams.get('cle'));
+
+// Sans clé valide, la page se comporte comme si elle n'existait pas : un 404
+// n'apprend rien à qui tâtonne, là où un 403 confirmerait l'adresse.
+if (!decision.ouvert) {
+  return new Response('Page introuvable', {
+    status: 404,
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+  });
+}
+
+const source = Astro.url.searchParams.get('source') ?? 'un-bon-moment';
+const nbJours = Math.min(Math.max(Number(Astro.url.searchParams.get('jours')) || 30, 1), 365);
+
+let donnees: Agregat | null = null;
+let erreur: string | null = null;
+try {
+  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours });
+} catch (e) {
+  erreur = e instanceof Error ? e.message : String(e);
+}
+
+Astro.response.headers.set('Cache-Control', 'no-store');
+// La clé est dans l'URL : sans cela, un lien sortant la ferait fuir.
+Astro.response.headers.set('Referrer-Policy', 'no-referrer');
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+
+const nf = new Intl.NumberFormat('fr-FR');
+const fmt = (n: number) => nf.format(n);
+
+/** La hauteur d'une barre, en pourcentage du maximum du jeu. */
+function hauteur(valeur: number, max: number): number {
+  if (max <= 0) return 0;
+  return Math.max(2, Math.round((valeur / max) * 100));
+}
+
+const jours = donnees?.jours ?? [];
+const maxPages = Math.max(1, ...jours.map((j) => j.pages));
+const aucuneDonnee = !erreur && (donnees?.jours.length ?? 0) === 0;
+
+/** Un jour au format court, pour l'axe du graphique. */
+function jourCourt(iso: string): string {
+  const [, m, d] = iso.split('-');
+  return `${d}/${m}`;
+}
+
+const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[] = donnees
+  ? [
+      {
+        titre: 'Pages les plus consultées',
+        note: 'hors robots, hors erreurs',
+        entrees: donnees.topPages,
+        vide: 'Aucune page consultée sur la période.',
+      },
+      {
+        titre: 'Provenances',
+        note: 'domaine seul, jamais l’URL complète',
+        entrees: donnees.provenances,
+        vide: 'Personne n’est encore arrivé depuis un autre site.',
+      },
+      {
+        titre: 'Plateformes cliquées',
+        note: 'où vont réellement les gens',
+        entrees: donnees.plateformes,
+        vide: 'Aucun clic sortant enregistré.',
+      },
+      {
+        titre: 'Liens morts qui circulent',
+        note: 'chaque ligne est une redirection à poser',
+        entrees: donnees.erreurs404,
+        vide: 'Aucune page demandée en vain. ',
+      },
+    ]
+  : [];
+---
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Audience — {source}</title>
+  <style is:inline>
+    :root {
+      --bg: #0e0e10; --surface: #17171c; --haut: #1e1e25;
+      --text: #f6f4ee; --muted: #9a99a3; --line: #2a2a33;
+      --accent: #ffd23f; --ok: #7bc47f; --alerte: #e2954a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6; font-size: 15px;
+    }
+    .wrap { max-width: 60rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+    header { margin-bottom: 2.5rem; }
+    h1 {
+      margin: 0 0 0.3rem; font-size: clamp(1.8rem, 5vw, 2.4rem);
+      letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .periode { color: var(--muted); margin: 0; font-size: 0.92rem; }
+
+    .chiffres {
+      display: grid; gap: 0.9rem; margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    }
+    .tuile {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 10px; padding: 1rem 1.1rem;
+    }
+    .tuile .valeur {
+      font-size: 1.85rem; font-weight: 700; line-height: 1.1;
+      font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+    }
+    .tuile .label {
+      color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem;
+      display: block;
+    }
+    .tuile.phare { border-color: var(--accent); }
+    .tuile.phare .valeur { color: var(--accent); }
+
+    .graphe {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.2rem 1.3rem 1rem; margin-bottom: 2.5rem;
+    }
+    .graphe h2 { margin: 0 0 1.2rem; font-size: 1rem; font-weight: 600; }
+    .barres {
+      display: flex; align-items: flex-end; gap: 3px; height: 9rem;
+      overflow-x: auto; padding-bottom: 0.3rem;
+    }
+    .barre { flex: 1 0 10px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+    .barre i {
+      display: block; background: var(--accent); border-radius: 2px 2px 0 0;
+      min-height: 2px;
+    }
+    .barre i.robots { background: var(--line); }
+    .axe {
+      display: flex; justify-content: space-between; color: var(--muted);
+      font-size: 0.72rem; margin-top: 0.5rem; font-variant-numeric: tabular-nums;
+    }
+    .legende { display: flex; gap: 1.1rem; color: var(--muted); font-size: 0.78rem; margin-top: 0.7rem; }
+    .legende span { display: flex; align-items: center; gap: 0.35rem; }
+    .pastille { width: 9px; height: 9px; border-radius: 2px; background: var(--accent); }
+    .pastille.gris { background: var(--line); }
+
+    .listes { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+    .liste {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.1rem 1.2rem;
+    }
+    .liste h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .liste .note { color: var(--muted); font-size: 0.78rem; margin: 0.1rem 0 0.9rem; }
+    .liste ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+    .liste li { display: grid; grid-template-columns: 1fr auto; gap: 0.8rem; align-items: baseline; }
+    .liste .cle {
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-size: 0.88rem;
+    }
+    .liste .n {
+      color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.85rem;
+    }
+    .liste .rien { color: var(--muted); font-size: 0.88rem; margin: 0; }
+
+    .avis {
+      background: var(--haut); border-left: 3px solid var(--alerte);
+      border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin-bottom: 2rem;
+      color: var(--muted); font-size: 0.9rem;
+    }
+    .avis strong { color: var(--text); }
+    .vide { text-align: center; padding: 3.5rem 1rem; color: var(--muted); }
+    .vide p { max-width: 32rem; margin: 0 auto 0.6rem; }
+    footer {
+      margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer code { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Audience</h1>
+      <p class="periode">
+        {donnees?.du
+          ? <>{source} · du {donnees.du} au {donnees.au} · {nbJours} derniers jours</>
+          : <>{source} · aucune mesure sur les {nbJours} derniers jours</>}
+      </p>
+    </header>
+
+    {erreur && (
+      <div class="avis">
+        <strong>Lecture impossible.</strong> {erreur}
+      </div>
+    )}
+
+    {aucuneDonnee && (
+      <div class="vide">
+        <p><strong>Rien à afficher pour l’instant.</strong></p>
+        <p>
+          La mesure démarre au premier déploiement qui embarque
+          <code>src/lib/audience/</code>. Si le site tourne déjà, vérifier que
+          <code>RECO_AUDIENCE_SALT</code> est bien posé côté hébergeur.
+        </p>
+      </div>
+    )}
+
+    {donnees && !aucuneDonnee && (
+      <>
+        <div class="chiffres">
+          <div class="tuile">
+            <span class="valeur">{fmt(donnees.pagesVues)}</span>
+            <span class="label">pages vues</span>
+          </div>
+          <div class="tuile">
+            <span class="valeur">{fmt(donnees.visiteurs)}</span>
+            <span class="label">visiteurs</span>
+          </div>
+          <div class="tuile phare">
+            <span class="valeur">
+              {donnees.clicsParVisiteur === null
+                ? '—'
+                : donnees.clicsParVisiteur.toLocaleString('fr-FR')}
+            </span>
+            {/* Une moyenne, jamais un pourcentage : un visiteur peut cliquer
+                plusieurs fois, et relier un clic à un visiteur est justement ce
+                que la mesure refuse de faire. */}
+            <span class="label">clics par visiteur</span>
+          </div>
+          <div class="tuile">
+            <span class="valeur">{fmt(donnees.clics)}</span>
+            <span class="label">clics vers une œuvre</span>
+          </div>
+          <div class="tuile">
+            <span class="valeur">{fmt(donnees.visitesRobots)}</span>
+            <span class="label">passages de robots</span>
+          </div>
+          <div class="tuile">
+            <span class="valeur">
+              {donnees.dureeMedianeMs === null ? '—' : `${donnees.dureeMedianeMs} ms`}
+            </span>
+            <span class="label">réponse médiane</span>
+          </div>
+        </div>
+
+        <section class="graphe">
+          <h2>Pages vues par jour</h2>
+          <div class="barres">
+            {jours.map((j) => (
+              <div class="barre" title={`${j.jour} — ${j.pages} pages, ${j.visiteurs} visiteurs, ${j.robots} robots`}>
+                <i class="robots" style={`height:${hauteur(j.robots, maxPages)}%`}></i>
+                <i style={`height:${hauteur(j.pages, maxPages)}%`}></i>
+              </div>
+            ))}
+          </div>
+          <div class="axe">
+            <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+            <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+          </div>
+          <div class="legende">
+            <span><i class="pastille"></i> visites humaines</span>
+            <span><i class="pastille gris"></i> robots</span>
+          </div>
+        </section>
+
+        {donnees.paysIndisponible && (
+          <div class="avis">
+            <strong>Le pays n’est pas mesurable ici.</strong> L’hébergeur ne
+            transmet aucun en-tête de géolocalisation. Pour l’obtenir, il
+            faudrait embarquer une base locale — la mesure est absente, elle
+            n’est pas fausse.
+          </div>
+        )}
+
+        <div class="listes">
+          {listes.map((l) => (
+            <section class="liste">
+              <h2>{l.titre}</h2>
+              <p class="note">{l.note}</p>
+              {l.entrees.length ? (
+                <ol>
+                  {l.entrees.map((e) => (
+                    <li>
+                      <span class="cle" title={e.cle}>{e.cle}</span>
+                      <span class="n">{fmt(e.n)}</span>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p class="rien">{l.vide}</p>
+              )}
+            </section>
+          ))}
+
+          <section class="liste">
+            <h2>Appareils et langues</h2>
+            <p class="note">deux catégories, jamais le modèle</p>
+            <ol>
+              {donnees.appareils.map((e) => (
+                <li><span class="cle">{e.cle}</span><span class="n">{fmt(e.n)}</span></li>
+              ))}
+              {donnees.langues.map((e) => (
+                <li><span class="cle">langue · {e.cle}</span><span class="n">{fmt(e.n)}</span></li>
+              ))}
+            </ol>
+          </section>
+
+          {!donnees.paysIndisponible && donnees.paysConnus.length > 0 && (
+            <section class="liste">
+              <h2>Pays</h2>
+              <p class="note">d’où arrivent les requêtes</p>
+              <ol>
+                {donnees.paysConnus.map((e) => (
+                  <li><span class="cle">{e.cle}</span><span class="n">{fmt(e.n)}</span></li>
+                ))}
+              </ol>
+            </section>
+          )}
+        </div>
+      </>
+    )}
+
+    <footer>
+      Mesuré sans tracker, sans cookie et sans tiers. Aucun en-tête n’est
+      conservé tel quel, l’identifiant de visiteur ne survit pas à la journée,
+      et les parcours ne sont pas reconstitués — voir
+      <code>src/lib/audience/derive.mjs</code>.
+    </footer>
+  </div>
+</body>
+</html>
