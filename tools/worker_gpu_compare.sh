@@ -11,7 +11,7 @@
 # Usage : bash worker_gpu_compare.sh [http://<main_ip>:8001]
 set -e
 
-MAIN_URL="${1:-http://192.168.1.58:8001}"
+MAIN_URL="${1:-http://etienne.home:8001}"
 SOURCE="un-bon-moment"
 WORK="$HOME/wc_tmp"
 mkdir -p "$WORK"

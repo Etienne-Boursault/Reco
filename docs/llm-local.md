@@ -209,13 +209,13 @@ Reponse attendue :
 Si `llm.local` ne se resout pas, utiliser l'IP locale observee :
 
 ```text
-192.168.1.127
+llm.local
 ```
 
 Exemple :
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing -Uri http://192.168.1.127:8080/health -TimeoutSec 10
+Invoke-WebRequest -UseBasicParsing -Uri http://llm.local:8080/health -TimeoutSec 10
 ```
 
 ## Appeler le modele directement
@@ -247,7 +247,7 @@ Equivalent avec l'IP :
 ```powershell
 Invoke-RestMethod `
   -Method Post `
-  -Uri "http://192.168.1.127:8080/v1/chat/completions" `
+  -Uri "http://llm.local:8080/v1/chat/completions" `
   -ContentType "application/json" `
   -Body $body
 ```
@@ -306,7 +306,7 @@ tools\.venv\Scripts\python.exe tools\eval_local_llm.py `
 Option fallback si DNS instable :
 
 ```powershell
---base-url http://192.168.1.127:8080/v1
+--base-url http://llm.local:8080/v1
 ```
 
 Parametres implicites importants du run :
@@ -421,7 +421,7 @@ Quelques erreurs venaient de la resolution de `llm.local`. Si cela revient,
 utiliser directement :
 
 ```text
-192.168.1.127
+llm.local
 ```
 
 ## Arreter le serveur

@@ -1,6 +1,6 @@
 """auto_compare_large.py — Orchestrateur de l'étude comparative large-v3.
 
-Polle le portable (192.168.1.127:8002), récupère les nouveaux transcripts
+Polle le portable (etienne.home:8002), récupère les nouveaux transcripts
 large-v3 au fil de l'eau, et pour chaque épisode :
 
   1. Backup du transcript actuel vers tools/output/whisper-cmp/baseline/
@@ -43,8 +43,8 @@ from common import (
 # deux et rapatrie le premier qui produit le .txt — l'autre worker passera
 # (idempotent : skip si .txt déjà présent à destination).
 SOURCES = [
-    ("http://192.168.1.127:8002", "un-bon-moment-large-v3-turbo"),  # portable GPU
-    ("http://192.168.1.168:8003", "un-bon-moment-large-v3-turbo"),  # Mac M4 Metal
+    ("http://etienne.home:8002", "un-bon-moment-large-v3-turbo"),  # portable GPU
+    ("http://mac.home:8003", "un-bon-moment-large-v3-turbo"),  # Mac M4 Metal
 ]
 LAPTOP_URL = SOURCES[0][0]  # rétrocompat / 1ère source
 LAPTOP_DIR = SOURCES[0][1]

@@ -2935,8 +2935,8 @@ def test_lan_mode_accepts_private_client_matching_origin(fake_source, monkeypatc
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", True)
     h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
     h.client_address = ("192.168.1.50", 12345)
-    h.headers["Host"] = "192.168.1.234:8000"
-    h.headers["Origin"] = "http://192.168.1.234:8000"
+    h.headers["Host"] = "llm.local:8000"
+    h.headers["Origin"] = "http://llm.local:8000"
     h.do_POST()
     assert h._status != 403
 
@@ -2947,7 +2947,7 @@ def test_lan_mode_still_rejects_cross_origin(fake_source, monkeypatch):
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", True)
     h = _FakeHandler(fake_source, "/delete-reco", b"id=ubm-001")
     h.client_address = ("192.168.1.50", 12345)
-    h.headers["Host"] = "192.168.1.234:8000"
+    h.headers["Host"] = "llm.local:8000"
     h.headers["Origin"] = "http://evil.com"
     h.do_POST()
     assert h._status == 403
@@ -2959,7 +2959,7 @@ def test_lan_mode_off_still_rejects_private_client(fake_source, monkeypatch):
     monkeypatch.setattr(review_handler_base, "ALLOW_LAN", False)
     h = _FakeHandler(fake_source, "/save", b"id=ubm-001&action=validate")
     h.client_address = ("192.168.1.50", 12345)
-    h.headers["Origin"] = "http://192.168.1.234:8000"
+    h.headers["Origin"] = "http://llm.local:8000"
     h.do_POST()
     assert h._status == 403
 

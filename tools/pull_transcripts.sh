@@ -7,7 +7,7 @@
 # Usage : bash tools/pull_transcripts.sh [http://<laptop_ip>:8002]
 set -e
 
-LAPTOP_URL="${1:-http://192.168.1.219:8002}"
+LAPTOP_URL="${1:-http://etienne.home:8002}"
 DEST="tools/output/transcripts/un-bon-moment"
 mkdir -p "$DEST"
 

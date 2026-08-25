@@ -9,7 +9,7 @@
 # Usage : bash worker_gpu.sh [http://<main_ip>:8001]
 set -e
 
-MAIN_URL="${1:-http://192.168.1.58:8001}"
+MAIN_URL="${1:-http://etienne.home:8001}"
 SOURCE="un-bon-moment"
 TRANS_DIR="$HOME/transcripts/$SOURCE"
 mkdir -p "$TRANS_DIR"

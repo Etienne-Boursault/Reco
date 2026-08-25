@@ -7,7 +7,7 @@
 # de relecture "?t=NNNs" pointent ainsi exactement au bon moment dans le player).
 set -e
 
-MAIN_FILESERVER="http://192.168.1.58:8001"
+MAIN_FILESERVER="http://etienne.home:8001"
 TRANS_DIR="$HOME/transcripts/un-bon-moment"
 WHISPER_BIN="$HOME/whisper.cpp/build/bin/whisper-cli"
 MODEL="$HOME/whisper.cpp/models/ggml-small.bin"

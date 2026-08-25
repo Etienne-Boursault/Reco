@@ -97,7 +97,7 @@ def test_listing_merges_sources_and_first_source_wins(paths, monkeypatch):
     """Un même transcript exposé par les deux workers : on garde le premier
     (le second passera, le rapatriement est idempotent)."""
     def fake_get(url, timeout=None):
-        if url.startswith("http://192.168.1.127"):
+        if url.startswith("http://etienne.home"):
             return _FakeResponse(text=_listing_html("a.txt", "b.txt"))
         return _FakeResponse(text=_listing_html("b.txt", "c.txt"))
 
@@ -105,14 +105,14 @@ def test_listing_merges_sources_and_first_source_wins(paths, monkeypatch):
     remote = acl._list_remote_transcripts()
 
     assert set(remote) == {"a.txt", "b.txt", "c.txt"}
-    assert remote["b.txt"].startswith("http://192.168.1.127")
-    assert remote["c.txt"].startswith("http://192.168.1.168")
+    assert remote["b.txt"].startswith("http://etienne.home")
+    assert remote["c.txt"].startswith("http://mac.home")
 
 
 def test_listing_tolerates_unreachable_worker(paths, monkeypatch):
     """Un worker éteint ne doit pas empêcher d'exploiter l'autre."""
     def fake_get(url, timeout=None):
-        if url.startswith("http://192.168.1.127"):
+        if url.startswith("http://etienne.home"):
             raise ConnectionError("portable éteint")
         return _FakeResponse(text=_listing_html("c.txt"))
 
@@ -122,7 +122,7 @@ def test_listing_tolerates_unreachable_worker(paths, monkeypatch):
 
 def test_listing_skips_worker_returning_http_error(paths, monkeypatch):
     def fake_get(url, timeout=None):
-        if url.startswith("http://192.168.1.127"):
+        if url.startswith("http://etienne.home"):
             return _FakeResponse(text=_listing_html("a.txt"), status_ok=False)
         return _FakeResponse(text=_listing_html("c.txt"))
 
