@@ -58,6 +58,19 @@ const libelle = filtre
     : 'tout le site';
 const nbJours = Math.min(Math.max(Number(Astro.url.searchParams.get('jours')) || 30, 1), 365);
 
+// `?entetes=1` — outil de diagnostic pour la géolocalisation.
+//
+// Le pays ne se déduit que d'un en-tête posé en amont par l'hébergeur, et les
+// noms varient : `cf-ipcountry` chez Cloudflare, `x-vercel-ip-country` chez
+// Vercel, rien de normalisé. Conclure « pas mesurable » sans avoir regardé ce
+// qui arrive vraiment serait une supposition, pas un constat.
+//
+// Les NOMS seulement, jamais les valeurs : un cookie, un `authorization` ou
+// une adresse IP n'ont rien à faire dans une page, fût-elle protégée.
+const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
+  ? [...Astro.request.headers.keys()].sort()
+  : null;
+
 let donnees: Agregat | null = null;
 let erreur: string | null = null;
 try {
@@ -330,7 +343,26 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
             transmet aucun en-tête de géolocalisation. Pour l’obtenir, il
             faudrait embarquer une base locale — la mesure est absente, elle
             n’est pas fausse.
+            {entetesRecus === null && (
+              <> <a href={`?cle=${encodeURIComponent(Astro.url.searchParams.get('cle') ?? '')}&entetes=1`}>Vérifier
+              les en-têtes reçus</a>.</>
+            )}
           </div>
+        )}
+
+        {entetesRecus && (
+          <section class="liste" style="margin-bottom: 2.5rem;">
+            <h2>En-têtes reçus par le serveur</h2>
+            <p class="note">
+              les noms seuls, jamais les valeurs — un en-tête de pays s’appelle
+              en général <code>…-country</code> ou <code>…-geo…</code>
+            </p>
+            <ol>
+              {entetesRecus.map((nom) => (
+                <li><span class="cle">{nom}</span></li>
+              ))}
+            </ol>
+          </section>
         )}
 
         <div class="listes">
