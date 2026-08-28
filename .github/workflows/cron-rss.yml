@@ -69,10 +69,16 @@ jobs:
           RECO_DISCORD_WEBHOOK: ${{ secrets.RECO_DISCORD_WEBHOOK }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          # Passer par env: plutôt que d'interpoler dans le `run:`. GitHub
+          # substitue les ${{ }} AVANT que le shell existe : une valeur contenant
+          # `"; curl … #` deviendrait du code exécuté. Via une variable, le shell
+          # reçoit une donnée, pas du texte à interpréter.
+          SOURCE: ${{ inputs.source || 'all' }}
+          NOTIFY: ${{ inputs.notify || 'matrix' }}
         run: |
           python tools/poll_rss.py \
-            --source "${{ inputs.source || 'all' }}" \
-            --notify "${{ inputs.notify || 'matrix' }}" \
+            --source "$SOURCE" \
+            --notify "$NOTIFY" \
             --dispatch-event \
             --json
 

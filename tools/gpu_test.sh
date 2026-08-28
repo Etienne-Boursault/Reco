@@ -12,7 +12,15 @@ sudo apt-get update -qq
 sudo apt-get install -y -qq python3-venv ffmpeg curl
 
 echo "== 2/6 Runtime JS (deno) pour yt-dlp =="
-if ! command -v deno >/dev/null 2>&1; then curl -fsSL https://deno.land/install.sh | sh; fi
+# Télécharger puis exécuter, plutôt que d'exécuter à l'aveugle ce que deno.land
+# renvoie ce jour-là. Le script reste consultable avant de tourner, et une
+# réponse tronquée ou détournée ne s'exécute pas à moitié.
+if ! command -v deno >/dev/null 2>&1; then
+  deno_installeur=$(mktemp)
+  curl -fsSL https://deno.land/install.sh -o "$deno_installeur"
+  sh "$deno_installeur"
+  rm -f "$deno_installeur"
+fi
 export PATH="$HOME/.deno/bin:$PATH"
 
 echo "== 3/6 Env Python + faster-whisper + libs CUDA =="

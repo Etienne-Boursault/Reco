@@ -49,6 +49,12 @@ export async function chargerFragment(
   const url = section.dataset.fragment;
   if (!url) return 'sans-url';
 
+  // Le fragment est injecté plus bas via innerHTML. L'URL vient d'un attribut
+  // data-fragment posé au build, donc maîtrisée — mais rien dans le code ne le
+  // garantit. On exige un chemin relatif : un data-fragment détourné ne peut
+  // alors pas faire charger du HTML d'une autre origine.
+  if (/^[a-z][a-z0-9+.-]*:|^\/\//i.test(url)) return 'sans-url';
+
   const cible = section.querySelector<HTMLElement>(SELECTEUR_CIBLE);
   const statut = document.getElementById(ID_STATUT);
   const dire = (message: string) => {

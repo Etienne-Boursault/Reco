@@ -94,6 +94,17 @@ RUN chmod +x docker/*.sh \
         tools/output/match_audit \
         tools/output/reports
 
+# L'image tournait en root : une évasion de conteneur aurait donné root sur
+# l'hôte. Les deux ports exposés (8000, 4321) sont au-dessus de 1024, aucun
+# privilège n'est donc nécessaire pour les ouvrir.
+#
+# Le chown couvre tout /app parce que l'application écrit dans tools/output/*
+# créé juste au-dessus, et lit le venv et dist/ copiés depuis les étapes
+# précédentes.
+RUN useradd --system --uid 10001 --shell /usr/sbin/nologin reco \
+ && chown -R reco:reco /app
+USER reco
+
 # Healthcheck — TCP check (review_server n'expose pas /healthz).
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD python -c "import socket,sys; s=socket.socket(); s.settimeout(3); \
