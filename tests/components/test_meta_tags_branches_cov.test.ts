@@ -10,6 +10,10 @@
 import { describe, it, expect } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import MetaTags from '../../src/components/MetaTags.astro';
+// Le suffixe de titre est le nom du site, que ce dépôt — un kit duplicable —
+// laisse chaque déploiement redéfinir. Coder « Reco » en dur ici faisait
+// échouer la suite au premier rebranding : on dérive donc de la config.
+import { siteConfig } from '../../src/config/site';
 
 const BASE = {
   title: 'Une page',
@@ -92,14 +96,14 @@ describe('MetaTags — balises conditionnelles', () => {
 });
 
 describe('MetaTags — suffixe de titre', () => {
-  it('ajoute « — Reco » par défaut', async () => {
+  it('ajoute « — <siteName> » par défaut', async () => {
     const html = await render();
-    expect(html).toContain('<title>Une page — Reco</title>');
+    expect(html).toContain(`<title>Une page — ${siteConfig.siteName}</title>`);
   });
 
   it('n’ajoute pas le suffixe s’il est déjà présent', async () => {
-    const html = await render({ title: 'Une page — Reco' });
-    expect(html).toContain('<title>Une page — Reco</title>');
+    const html = await render({ title: `Une page — ${siteConfig.siteName}` });
+    expect(html).toContain(`<title>Une page — ${siteConfig.siteName}</title>`);
   });
 
   it('appendSiteName=false force l’absence de suffixe', async () => {
@@ -108,8 +112,9 @@ describe('MetaTags — suffixe de titre', () => {
   });
 
   it('appendSiteName=true force l’ajout même si déjà suffixé', async () => {
-    const html = await render({ title: 'Une page — Reco', appendSiteName: true });
-    expect(html).toContain('<title>Une page — Reco — Reco</title>');
+    const n = siteConfig.siteName;
+    const html = await render({ title: `Une page — ${n}`, appendSiteName: true });
+    expect(html).toContain(`<title>Une page — ${n} — ${n}</title>`);
   });
 
   it('siteName personnalisé change suffixe et og:site_name', async () => {

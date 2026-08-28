@@ -49,6 +49,8 @@ vi.mock('node:fs', async (importOriginal) => {
   };
 });
 
+// Le suffixe de <title> suit `siteName`, redefini par chaque deploiement.
+import { siteConfig } from '../../src/config/site';
 import GlobalStats from '../../src/pages/stats.astro';
 import SourceStats, { getStaticPaths } from '../../src/pages/[source]/stats.astro';
 
@@ -321,7 +323,7 @@ describe('/[source]/stats — page par source', () => {
     sidecars.set('ubm', snapshot());
     const html = await render();
 
-    expect(html).toContain('<title>Statistiques publiques — Un Bon Moment — Reco</title>');
+    expect(html).toContain(`<title>Statistiques publiques — Un Bon Moment — ${siteConfig.siteName}</title>`);
     expect(html).toContain('--accent:#ff5500');
     expect(html).toContain('href="/ubm"');
     expect(visibleText(html)).toContain('retour au podcast Un Bon Moment');

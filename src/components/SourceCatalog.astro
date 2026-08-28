@@ -27,6 +27,7 @@ import { sortRecosByTimestamp } from '../utils/recoOrder';
 import { plural } from '../utils/plural';
 import { t } from '../i18n';
 import { sourceToPodcastSchema } from '../lib/seo/jsonld';
+import { siteConfig } from '../config/site';
 
 interface Props {
   source: CollectionEntry<'sources'>;
@@ -109,7 +110,7 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
 ---
 
 <Layout
-  title={`${data.title} — recommandations`}
+  title={isHome ? siteConfig.baseline : `${data.title} — recommandations`}
   description={data.description ?? `${trueRecos.length} ${plural(trueRecos.length, 'recommandation')} ${plural(trueRecos.length, 'extraite')} de ${episodesWithRecos.length} ${plural(episodesWithRecos.length, 'épisode')} du podcast ${data.title}.`}
   theme={data.theme}
   ogSlug={source.id}
@@ -123,8 +124,15 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
         </a>
       )
     }
-    <h1>{data.title}</h1>
-    {data.tagline && <p class="tag">{data.tagline}</p>}
+    {/* En mode mono-source, cette page EST la racine : elle porte le nom du
+       SITE, pas celui du podcast, et la baseline précise de quel podcast il
+       s'agit. Ailleurs (page source d'un déploiement multi-source, fiches
+       épisodes, fil d'Ariane, JSON-LD, cartes OG), `data.title` reste le nom
+       du podcast — le renommer là serait faux. */}
+    <h1>{isHome ? siteConfig.siteName : data.title}</h1>
+    {isHome
+      ? <p class="tag">{siteConfig.baseline}</p>
+      : data.tagline && <p class="tag">{data.tagline}</p>}
     <p class="stat">
       {trueRecos.length} {plural(trueRecos.length, 'recommandation')}
     </p>

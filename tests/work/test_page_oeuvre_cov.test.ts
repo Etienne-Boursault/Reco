@@ -27,6 +27,8 @@ vi.mock('astro:content', () => ({
   getCollection: (name: string) => getCollection(name),
 }));
 
+// Le suffixe de <title> suit `siteName`, redefini par chaque deploiement.
+import { siteConfig } from '../../src/config/site';
 import WorkPage, { getStaticPaths } from '../../src/pages/[source]/oeuvre/[itemId].astro';
 
 interface Entry {
@@ -493,7 +495,7 @@ describe('page œuvre — SEO et similaires', () => {
     });
     const html = await renderWork('w1');
 
-    expect(html).toContain('<title>Titre w1 — Bong Joon-ho — Reco</title>');
+    expect(html).toContain(`<title>Titre w1 — Bong Joon-ho — ${siteConfig.siteName}</title>`);
     expect(html).toContain(
       '<meta name="description" content="Titre w1 (Bong Joon-ho) — Recommandée 1 fois dans le podcast Un Bon Moment.">',
     );
@@ -508,7 +510,7 @@ describe('page œuvre — SEO et similaires', () => {
     });
     const html = await renderWork('w1');
 
-    expect(html).toContain('<title>Titre w1 — Reco</title>');
+    expect(html).toContain(`<title>Titre w1 — ${siteConfig.siteName}</title>`);
     expect(html).toContain(
       '<meta name="description" content="Titre w1 — Recommandée 1 fois dans le podcast Un Bon Moment.">',
     );

@@ -8,6 +8,9 @@
 
 import { describe, it, expect } from 'vitest';
 import { ogTemplate, TYPE_EMOJI, __testing } from '../../src/lib/og/template.js';
+// Le pied de carte affiche « <siteName> · <domainLabel> », deux valeurs que
+// chaque déploiement de ce kit redéfinit : on les lit dans la config.
+import { siteConfig } from '../../src/config/site';
 
 const { truncate, safeHex, lighten } = __testing;
 
@@ -75,7 +78,8 @@ describe('ogTemplate', () => {
     const tree = ogTemplate({ title: 'X', sourceLabel: 'Un Bon Moment' });
     const serialized = JSON.stringify(tree);
     expect(serialized).toContain('Un Bon Moment');
-    expect(serialized).toContain('source-internet.fr');
+    expect(serialized).toContain(siteConfig.domainLabel);
+    expect(serialized).toContain(siteConfig.siteName);
   });
 
   it('TYPE_EMOJI couvre tous les types de la collection recos', () => {

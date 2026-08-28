@@ -11,6 +11,9 @@
 import { describe, it, expect } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import MetaTags from '../../src/components/MetaTags.astro';
+// Le suffixe de titre suit `siteName`, redéfinissable par chaque déploiement
+// de ce kit : on le dérive de la config plutôt que de le figer.
+import { siteConfig } from '../../src/config/site';
 
 async function renderTags(props: Record<string, unknown>): Promise<string> {
   const container = await AstroContainer.create();
@@ -37,19 +40,20 @@ describe('MetaTags (Container API)', () => {
       canonicalUrl: 'https://x.fr/',
       socialImage: 'https://x.fr/og.png',
     });
-    expect(html).toContain('Mon titre — Reco');
+    expect(html).toContain(`Mon titre — ${siteConfig.siteName}`);
   });
 
   it("n'ajoute pas le suffixe si déjà présent", async () => {
+    const dejaSuffixe = `Accueil — ${siteConfig.siteName}`;
     const html = await renderTags({
-      title: 'Accueil — Reco',
+      title: dejaSuffixe,
       description: 'd',
       canonicalUrl: 'https://x.fr/',
       socialImage: 'https://x.fr/og.png',
     });
-    // Une seule occurrence de "— Reco" dans le <title>.
+    // Une seule occurrence du suffixe dans le <title>.
     const titleMatch = html.match(/<title>([^<]+)<\/title>/);
-    expect(titleMatch?.[1]).toBe('Accueil — Reco');
+    expect(titleMatch?.[1]).toBe(dejaSuffixe);
   });
 
   it('twitter:site et twitter:creator émis si fournis', async () => {

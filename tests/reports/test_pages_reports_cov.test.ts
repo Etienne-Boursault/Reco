@@ -22,6 +22,8 @@ vi.mock('../../src/lib/reports/storage.js', () => ({
   listReports: (sourceId: string) => listReports(sourceId),
 }));
 
+// Le suffixe de <title> suit `siteName`, redéfini par chaque déploiement.
+import { siteConfig } from '../../src/config/site';
 import ReportsQueue from '../../src/pages/[source]/reports.astro';
 import ReportForm, { getStaticPaths as formPaths } from '../../src/pages/[source]/report/[recoId].astro';
 
@@ -284,7 +286,7 @@ describe('/[source]/report/[recoId] — formulaire', () => {
       path: '/ubm/report/ubm-0001',
     });
 
-    expect(html).toContain('<title>Signaler — Parasite — Reco</title>');
+    expect(html).toContain(`<title>Signaler — Parasite — ${siteConfig.siteName}</title>`);
     expect(html).toContain('<meta name="robots" content="noindex, nofollow">');
     expect(html).toContain('href="/ubm"');
     expect(html).toContain('ubm-0001');

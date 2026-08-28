@@ -43,9 +43,9 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  siteName: 'Reco',
-  baseline: 'Catalogue de recommandations de podcasts',
-  domainLabel: 'source-internet.fr',
+  siteName: 'Une Bonne Reco',
+  baseline: 'Les recos de Kyan & Navo dans Un Bon Moment',
+  domainLabel: 'unebonnere.co',
   // Réutilise les tokens UI pour cohérence visuelle (cf. ADR 0030 + 0026).
   defaultAccent: defaultTheme.accent,
   defaultBg: defaultTheme.bg,

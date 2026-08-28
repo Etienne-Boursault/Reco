@@ -20,6 +20,8 @@ vi.mock('astro:content', () => ({
   getCollection: (name: string) => getCollection(name),
 }));
 
+// Nom et baseline du site sont redéfinis par chaque déploiement de ce kit.
+import { siteConfig } from '../../src/config/site';
 import Home from '../../src/pages/index.astro';
 import SourceIndex, { getStaticPaths } from '../../src/pages/[source]/index.astro';
 
@@ -224,8 +226,8 @@ describe('/ — annuaire multi-source', () => {
 
     expect(schema['@type']).toBe('WebSite');
     expect(schema.url).toBe(`${TEST_SITE}/`);
-    expect(schema.name).toBe('Reco');
-    expect(schema.description).toBe('Catalogue de recommandations de podcasts');
+    expect(schema.name).toBe(siteConfig.siteName);
+    expect(schema.description).toBe(siteConfig.baseline);
   });
 });
 
@@ -242,7 +244,10 @@ describe('/ — mode mono-source', () => {
     const html = await renderPage(Home, { path: '/' });
     const text = visibleText(html);
 
-    expect(text).toContain('Podcast ubm');
+    // En mono-source, la racine porte le nom du SITE (et la baseline dit de
+    // quel podcast il s'agit) ; le nom du podcast reste le h1 sur /<source>.
+    expect(text).toContain(siteConfig.siteName);
+    expect(text).toContain(siteConfig.baseline);
     // L'accroche de l'annuaire n'est pas rendue…
     expect(text).not.toContain('Tout ce que vos podcasts vous ont conseillé.');
     // …et le catalogue masque son lien « retour accueil » (isHome).
