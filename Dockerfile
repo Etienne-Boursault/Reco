@@ -72,18 +72,31 @@ RUN apt-get update \
         curl \
         jq \
  && rm -rf /var/lib/apt/lists/*
+# L'image tournait en root : une evasion de conteneur aurait donne root sur
+# l'hote. Les deux ports exposes (8000, 4321) sont au-dessus de 1024, aucun
+# privilege n'est donc necessaire.
+#
+# L'utilisateur est cree AVANT les COPY pour que chacune pose le bon
+# proprietaire via --chown. Un `chown -R /app` apres coup recopie toute
+# l'arborescence dans une nouvelle couche : mesure le 2026-08-28, +9,63 Go
+# et 526 s de construction pour un simple changement de proprietaire.
+RUN useradd --system --uid 999 --shell /usr/sbin/nologin reco
+
 
 # 1) venv Python
-COPY --from=python-builder /app/.venv /app/.venv
+COPY --from=python-builder --chown=reco:reco /app/.venv /app/.venv
 
 # 2) site statique builé
-COPY --from=node-builder /app/dist /app/dist
+COPY --from=node-builder --chown=reco:reco /app/dist /app/dist
 
 # 3) Code Python + données
-COPY tools ./tools
-COPY src/content ./src/content
-COPY pyproject.toml ./
-COPY docker ./docker
+COPY --chown=reco:reco tools ./tools
+COPY --chown=reco:reco src/content ./src/content
+COPY --chown=reco:reco pyproject.toml ./
+COPY --chown=reco:reco docker ./docker
+
+# Les repertoires de sortie doivent appartenir a reco : on bascule avant.
+USER reco
 
 RUN chmod +x docker/*.sh \
  && mkdir -p \
@@ -93,17 +106,6 @@ RUN chmod +x docker/*.sh \
         tools/output/enrich_audit \
         tools/output/match_audit \
         tools/output/reports
-
-# L'image tournait en root : une évasion de conteneur aurait donné root sur
-# l'hôte. Les deux ports exposés (8000, 4321) sont au-dessus de 1024, aucun
-# privilège n'est donc nécessaire pour les ouvrir.
-#
-# Le chown couvre tout /app parce que l'application écrit dans tools/output/*
-# créé juste au-dessus, et lit le venv et dist/ copiés depuis les étapes
-# précédentes.
-RUN useradd --system --uid 10001 --shell /usr/sbin/nologin reco \
- && chown -R reco:reco /app
-USER reco
 
 # Healthcheck — TCP check (review_server n'expose pas /healthz).
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
