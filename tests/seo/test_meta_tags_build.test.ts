@@ -15,6 +15,8 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { distRoot } from '../helpers/distRoot';
+// `og:site_name` vaut `siteName`, que chaque déploiement de ce kit redéfinit.
+import { siteConfig } from '../../src/config/site';
 
 // Racine résolue selon le MODE de build : `dist/` en statique,
 // `dist/client/` en SSR (mode `middleware`, celui de la production
@@ -41,8 +43,8 @@ describe.skipIf(!hasBuild)('build output — meta tags', () => {
     expect(html).toMatch(/<link rel="canonical" href="https?:\/\/[^"]+"/);
   });
 
-  it('contient og:site_name=Reco', () => {
-    expect(html).toContain('property="og:site_name" content="Reco"');
+  it('contient og:site_name = siteName', () => {
+    expect(html).toContain(`property="og:site_name" content="${siteConfig.siteName}"`);
   });
 
   it('contient hreflang fr et x-default', () => {
