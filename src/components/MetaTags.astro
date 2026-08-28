@@ -105,6 +105,12 @@ const extraAlternates = alternates.filter((a) => {
 <meta name="description" content={description} />
 {themeColor && <meta name="theme-color" content={themeColor} />}
 {noindex && <meta name="robots" content="noindex, nofollow" />}
+{/* Search Console : Google ne lit ce jeton que sur la racine, mais il
+    revalide la propriété au fil du temps — on l'émet donc partout plutôt
+    que de dépendre d'une page unique. Absent si le fork n'en configure pas. */}
+{siteConfig.googleSiteVerification && (
+  <meta name="google-site-verification" content={siteConfig.googleSiteVerification} />
+)}
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="canonical" href={canonicalStr} />

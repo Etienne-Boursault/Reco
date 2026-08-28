@@ -31,6 +31,15 @@ export interface SiteConfig {
    *  construit un `mailto:` vers cette adresse avec les champs saisis.
    *  Laisser `undefined` désactive le bouton fallback. */
   contactEmail?: string;
+  /** Jeton de vérification Google Search Console, rendu en `<meta
+   *  name="google-site-verification">`. La valeur n'est pas un secret : elle
+   *  est publique dans le HTML, et ne prouve la propriété que du couple
+   *  (domaine, jeton) — un fork qui la conserverait ne prendrait donc le
+   *  contrôle de rien. Elle serait simplement fausse chez lui : **un fork
+   *  doit y mettre son propre jeton, ou laisser `undefined`.**
+   *  Ne jamais retirer une fois vérifié : Google revalide périodiquement et
+   *  révoque la propriété si la balise disparaît. */
+  googleSiteVerification?: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -45,4 +54,5 @@ export const siteConfig: SiteConfig = {
   // Optionnel : si défini, ReportForm propose un fallback "Envoyer par
   // email" quand le POST `/api/report` échoue (build static sans adapter).
   contactEmail: undefined,
+  googleSiteVerification: 'ldAExERRaCmTqOPmJVgtqiLX4sBrmZTr8C_iH_6MlV8',
 };
