@@ -47,6 +47,11 @@ interface Props {
   /** Si vrai (défaut), monte le `<SiteFooter>` global. Mettre à `false`
    *  pour les pages internes qui ont leur propre footer (rare). */
   showFooter?: boolean;
+  /** Transmis tel quel à `MetaTags` : force (`true`) ou supprime (`false`)
+   *  le suffixe « — <siteName> » du `<title>`. Par défaut le suffixe est
+   *  ajouté sauf s'il est déjà là. À mettre à `false` quand le titre porte
+   *  déjà le nom du site en tête — sinon il apparaîtrait deux fois. */
+  appendSiteName?: boolean;
 }
 
 const {
@@ -60,6 +65,7 @@ const {
   jsonLd,
   lang = defaultLocale,
   showFooter = true,
+  appendSiteName,
 } = Astro.props;
 
 // URL canonique de la page (utilise `site` de astro.config + le pathname courant).
@@ -104,6 +110,7 @@ const themeColor = c?.bg ?? '#0e0e10';
       noindex={noindex}
       themeColor={themeColor}
       jsonLd={jsonLd}
+      appendSiteName={appendSiteName}
     />
 
     {/* P0-4 (Fixer final Phase 2, 2026-06-11) : Anton retiré. Le chargement

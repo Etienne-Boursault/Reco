@@ -91,6 +91,15 @@ const epLabel = episodeLabel;
 // l'URL canonique pointe donc sur `/` et le fil d'Ariane est superflu.
 const homeUrl = new URL('/', Astro.site).toString();
 const sourceUrl = isHome ? homeUrl : new URL(`/${source.id}`, Astro.site).toString();
+
+// Racine : le nom du site OUVRE le <title>. Un onglet de navigateur n'en
+// affiche qu'une quinzaine de caractères, un favori guère plus — avec la
+// baseline devant, on n'y lisait que « Les recos d… ». `appendSiteName={false}`
+// accompagne ce titre côté Layout : le suffixe automatique « — <siteName> »
+// ferait sinon apparaître le nom deux fois.
+const pageTitle = isHome
+  ? `${siteConfig.siteName} — ${siteConfig.baseline}`
+  : `${data.title} — recommandations`;
 const podcastSchema = sourceToPodcastSchema({
   id: source.id,
   title: data.title,
@@ -110,7 +119,8 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
 ---
 
 <Layout
-  title={isHome ? siteConfig.baseline : `${data.title} — recommandations`}
+  title={pageTitle}
+  appendSiteName={isHome ? false : undefined}
   description={data.description ?? `${trueRecos.length} ${plural(trueRecos.length, 'recommandation')} ${plural(trueRecos.length, 'extraite')} de ${episodesWithRecos.length} ${plural(episodesWithRecos.length, 'épisode')} du podcast ${data.title}.`}
   theme={data.theme}
   ogSlug={source.id}
