@@ -51,9 +51,25 @@ export async function chargerFragment(
 
   // Le fragment est injecté plus bas via innerHTML. L'URL vient d'un attribut
   // data-fragment posé au build, donc maîtrisée — mais rien dans le code ne le
-  // garantit. On exige un chemin relatif : un data-fragment détourné ne peut
-  // alors pas faire charger du HTML d'une autre origine.
-  if (/^[a-z][a-z0-9+.-]*:|^\/\//i.test(url)) return 'sans-url';
+  // garantit. On exige que la cible reste sur l'origine courante.
+  //
+  // La version précédente filtrait par motif (`^scheme:` ou `^//`). Contournable :
+  // la spécification URL retire les blancs de tête AVANT de résoudre, si bien que
+  // `" //evil.com"` passait le filtre et se résolvait en `https://evil.com/`
+  // (relevé par CodeRabbit sur la PR #38, reproduit). Tabulation et saut de ligne
+  // donnaient la même chose.
+  //
+  // On valide donc le résultat plutôt que la forme : on résout l'URL comme le fera
+  // `fetch`, puis on compare l'origine. Un schéma opaque (`javascript:`, `data:`)
+  // produit une origine `null`, donc différente : il est rejeté sans avoir à être
+  // énuméré.
+  let resolue: URL;
+  try {
+    resolue = new URL(url, document.baseURI);
+  } catch {
+    return 'sans-url';
+  }
+  if (resolue.origin !== globalThis.location.origin) return 'sans-url';
 
   const cible = section.querySelector<HTMLElement>(SELECTEUR_CIBLE);
   const statut = document.getElementById(ID_STATUT);

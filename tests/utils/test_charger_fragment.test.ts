@@ -184,6 +184,45 @@ describe('chargerFragment — échecs', () => {
     // Pas d'annonce non plus : il n'y a rien à annoncer.
     expect(statutTexte()).toBe('');
   });
+
+  // Le fragment part dans `innerHTML` : une URL hors origine ferait injecter du
+  // HTML tiers. Le filtre par motif d'origine (`^scheme:` / `^//`) était
+  // contournable — la spécification URL retire les blancs de tête AVANT de
+  // résoudre, donc `" //evil.com"` passait. La validation porte désormais sur
+  // l'origine résolue ; ces cas verrouillent les deux formes.
+  const horsOrigine = [
+    ['absolue', 'https://evil.com/x.html'],
+    ['relative au protocole', '//evil.com/x.html'],
+    ['schéma opaque', 'javascript:alert(1)'],
+    ['data:', 'data:text/html,<b>x</b>'],
+    ['casse mixte', 'HtTpS://evil.com/x.html'],
+    ['espace en tête', ' //evil.com/x.html'],
+    ['tabulation en tête', '\t//evil.com/x.html'],
+    ['saut de ligne en tête', '\n//evil.com/x.html'],
+    ['espace + absolue', ' https://evil.com/x.html'],
+  ] as const;
+
+  it.each(horsOrigine)('URL hors origine (%s) → refusée sans fetch', async (_cas, url) => {
+    const section = monterSection(url);
+    const recuperer = vi.fn();
+    const issue = await chargerFragment(section, () => {}, recuperer as never);
+
+    expect(issue).toBe('sans-url');
+    expect(recuperer).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['relative', 'fragment.html'],
+    ['absolue same-origin', '/un-bon-moment/recos-fragment/'],
+  ])('URL de même origine (%s) → acceptée', async (_cas, url) => {
+    const section = monterSection(url);
+    const recuperer = vi.fn(() =>
+      Promise.resolve(new Response('<p>ok</p>', { status: 200 })),
+    );
+    await chargerFragment(section, () => {}, recuperer as never);
+
+    expect(recuperer).toHaveBeenCalledOnce();
+  });
 });
 
 // ---------------------------------------------------------------------------
