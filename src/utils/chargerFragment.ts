@@ -69,6 +69,11 @@ export async function chargerFragment(
   } catch {
     return 'sans-url';
   }
+  // `origin === 'null'` est rejeté explicitement : si la page elle-même vit dans
+  // un contexte à origine opaque (iframe `sandbox` sans `allow-same-origin`),
+  // `location.origin` vaut aussi `'null'` et la seule comparaison laisserait
+  // alors passer un `data:` — deux origines opaques ne sont jamais « la même ».
+  if (resolue.origin === 'null') return 'sans-url';
   if (resolue.origin !== globalThis.location.origin) return 'sans-url';
 
   const cible = section.querySelector<HTMLElement>(SELECTEUR_CIBLE);

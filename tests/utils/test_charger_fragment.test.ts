@@ -211,6 +211,26 @@ describe('chargerFragment — échecs', () => {
     expect(recuperer).not.toHaveBeenCalled();
   });
 
+  it('origine opaque des DEUX côtés → toujours refusée', async () => {
+    // Page servie dans un contexte à origine opaque (iframe `sandbox` sans
+    // `allow-same-origin`) : `location.origin` vaut alors `'null'`, et comparer
+    // les deux origines suffirait à laisser passer un `data:`. Deux origines
+    // opaques ne sont jamais la même — d'où le rejet explicite.
+    const origine = vi
+      .spyOn(globalThis.location, 'origin', 'get')
+      .mockReturnValue('null');
+    try {
+      const section = monterSection('data:text/html,<b>x</b>');
+      const recuperer = vi.fn();
+      const issue = await chargerFragment(section, () => {}, recuperer as never);
+
+      expect(issue).toBe('sans-url');
+      expect(recuperer).not.toHaveBeenCalled();
+    } finally {
+      origine.mockRestore();
+    }
+  });
+
   it.each([
     ['relative', 'fragment.html'],
     ['absolue same-origin', '/un-bon-moment/recos-fragment/'],

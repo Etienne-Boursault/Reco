@@ -25,8 +25,21 @@ echo "== 2/6 Runtime JS (deno) pour yt-dlp =="
 #
 # Pour monter de version : changer DENO_VERSION, puis relever l'empreinte sur
 #   https://github.com/denoland/deno/releases/download/<version>/deno-x86_64-unknown-linux-gnu.zip.sha256sum
+# Épingler une version, c'est aussi épingler une architecture : `install.sh`
+# choisissait l'archive selon la machine, plus maintenant. On refuse donc
+# explicitement ce qu'on ne sait pas installer, plutôt que de déposer un binaire
+# x86_64 qui échouerait plus loin sur un « format incorrect » incompréhensible.
+# Le reste du script suppose de toute façon Ubuntu + CUDA (cf. en-tête).
 DENO_VERSION="v2.9.6"
 DENO_SHA256="394f07f4da2bebe6ce6f1e7ce0fa16429b29b08c35e3fac3fe25972676dff4b2"
+
+arch=$(uname -m)
+if [ "$arch" != "x86_64" ]; then
+  echo "ERREUR : architecture $arch non prise en charge (x86_64 attendu)." >&2
+  echo "  Pour l'ajouter : relever l'empreinte de l'archive deno correspondante sur" >&2
+  echo "  https://github.com/denoland/deno/releases/tag/${DENO_VERSION}" >&2
+  exit 1
+fi
 
 if ! command -v deno >/dev/null 2>&1; then
   deno_tmp=$(mktemp -d)
