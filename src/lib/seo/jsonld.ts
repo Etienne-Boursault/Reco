@@ -22,6 +22,27 @@ export type JsonLd = Record<string, unknown> | Record<string, unknown>[];
  * Mapping `recoType` (collection Astro) → `@type` schema.org.
  * Référence : https://schema.org/CreativeWork sous-types.
  * `as const` pour la lisibilité, `readonly` empêche la mutation accidentelle.
+ *
+ * ⚠️ N'utiliser ici QUE des types sans champ obligatoire côté Google.
+ *
+ * On ne dispose que de quatre informations par œuvre : nom, créateur, URL et
+ * description. Un type schema.org qui en exige davantage produit un balisage
+ * incomplet, que la Search Console remonte en « problème critique » et qui
+ * empêche la page de figurer dans les résultats enrichis. Trois mappings sont
+ * tombés dans ce piège avant d'être corrigés le 2026-08-29 :
+ *
+ *   - `spectacle: 'Event'`  → exige `startDate` + `location`. Un spectacle
+ *     recommandé dans un podcast est une œuvre, pas une représentation datée :
+ *     il n'a ni date ni lieu, et ne peut pas en avoir. 182 pages signalées.
+ *   - `video: 'VideoObject'` → exige `thumbnailUrl` + `uploadDate`. On ne
+ *     référence pas le fichier vidéo, seulement l'œuvre. 121 pages.
+ *   - `application: 'SoftwareApplication'` → exige `offers` ou
+ *     `aggregateRating`. On ne connaît ni prix ni note. 16 pages.
+ *
+ * Les sous-types de CreativeWork conservés ci-dessous (Movie, Book, TVSeries,
+ * MusicAlbum…) n'imposent rien : ils précisent la nature de l'œuvre sans
+ * risque. Avant d'ajouter une entrée, vérifier la page « Structured data »
+ * du type sur developers.google.com/search/docs/appearance/structured-data.
  */
 export const RECO_TYPE_TO_SCHEMA: Readonly<Record<string, string>> = {
   film: 'Movie',
@@ -32,12 +53,12 @@ export const RECO_TYPE_TO_SCHEMA: Readonly<Record<string, string>> = {
   album: 'MusicAlbum',
   podcast: 'PodcastSeries',
   jeu: 'VideoGame',
-  spectacle: 'Event',
+  spectacle: 'CreativeWork',
   lieu: 'Place',
   artiste: 'Person',
-  video: 'VideoObject',
+  video: 'CreativeWork',
   chaine: 'CreativeWorkSeries',
-  application: 'SoftwareApplication',
+  application: 'CreativeWork',
   autre: 'CreativeWork',
 } as const;
 

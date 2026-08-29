@@ -30,9 +30,15 @@ describe('recoToSchema — mapping créateur par @type', () => {
     expect(Object.keys(s).sort()).toEqual(['@context', '@type', 'name']);
   });
 
-  it("VideoObject : creator mappé sur 'director'", () => {
+  // `video` mappait sur VideoObject, qui exige `thumbnailUrl` + `uploadDate` :
+  // on ne les a pas, et la Search Console remontait le balisage en erreur.
+  // Le type est passé à CreativeWork, dont la propriété créateur est `creator`
+  // (`director` reste couvert par Movie et TVSeries dans test_jsonld.test.ts).
+  it("video → CreativeWork : creator mappé sur 'creator'", () => {
     const s = recoToSchema({ type: 'video', title: 'V', author: 'Réal' });
-    expect(s.director).toEqual({ '@type': 'Person', name: 'Réal' });
+    expect(s['@type']).toBe('CreativeWork');
+    expect(s.creator).toEqual({ '@type': 'Person', name: 'Réal' });
+    expect(s.director).toBeUndefined();
   });
 
   it("MusicRecording : creator mappé sur 'byArtist'", () => {
