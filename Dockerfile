@@ -72,6 +72,19 @@ RUN apt-get update \
         curl \
         jq \
  && rm -rf /var/lib/apt/lists/*
+# L'image tournait en root : une evasion de conteneur aurait donne root sur
+# l'hote. Les deux ports exposes (8000, 4321) sont au-dessus de 1024, aucun
+# privilege n'est donc necessaire.
+RUN useradd --system --uid 999 --shell /usr/sbin/nologin reco
+
+
+# Les COPY laissent volontairement les fichiers a root. `reco` execute
+# l'application sans pouvoir la reecrire : un attaquant qui compromettrait le
+# processus ne peut pas modifier le code pour s'y installer durablement.
+# Seuls les deux repertoires que l'application ecrit lui appartiennent, et le
+# `chown` ne porte donc que sur eux (32 Mo) au lieu des 9,63 Go de
+# l'arborescence complete -- c'est ce `chown -R /app` qui coutait une couche
+# entiere et 526 s de construction (mesure du 2026-08-28).
 
 # 1) venv Python
 COPY --from=python-builder /app/.venv /app/.venv
@@ -85,6 +98,10 @@ COPY src/content ./src/content
 COPY pyproject.toml ./
 COPY docker ./docker
 
+# Encore root ici : `chmod` et la creation des repertoires se font sur des
+# fichiers root, puis on donne a `reco` ce qu'il doit ecrire. `src/content` et
+# `tools/output` sont montes en volume par docker-compose ; le `chown` sert
+# aux executions sans volume.
 RUN chmod +x docker/*.sh \
  && mkdir -p \
         tools/output/logs \
@@ -92,7 +109,10 @@ RUN chmod +x docker/*.sh \
         tools/output/embeddings \
         tools/output/enrich_audit \
         tools/output/match_audit \
-        tools/output/reports
+        tools/output/reports \
+ && chown -R reco:reco tools/output src/content
+
+USER reco
 
 # Healthcheck — TCP check (review_server n'expose pas /healthz).
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \

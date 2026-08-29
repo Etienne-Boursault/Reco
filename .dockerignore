@@ -22,16 +22,14 @@ tools/.env
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
-tools/output/cache
-tools/output/embeddings
-tools/output/http_cache.sqlite
-tools/output/tmdb_cache
 
-# Pipeline outputs (re-générables, volumineux)
-tools/output/logs
-tools/output/reports
-tools/output/enrich_audit
-tools/output/match_audit
+# Sorties du pipeline — TOUT le répertoire, pas seulement quelques
+# sous-dossiers. Les exclusions étaient nommées une par une, si bien que ce qui
+# n'était pas listé partait dans l'image : `tools/output/audio` y pesait à lui
+# seul 8,4 Go. Or `docker-compose` monte `./tools/output` en volume dans les
+# deux services qui s'en servent, et le `mkdir -p` du Dockerfile recrée
+# l'arborescence vide : rien de tout cela n'a à voyager dans l'image.
+tools/output
 tools/dispatch
 
 # Python
