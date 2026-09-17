@@ -166,6 +166,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
              review_url: str,
              client_factory: Callable[[], Any] | None = None,
              extractor: Callable[..., int] | None = None,
+             preciseur: Callable[..., Any] | None = None,
              lock: Callable[[], contextlib.AbstractContextManager[None]] = _pipeline_lock,
              model: str | None = None) -> int:
     pending = a_extraire(source_id, state)
@@ -177,6 +178,8 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
         from extract_recos import extract_for_episode as extractor
     if model is None:
         from extract_recos import MODEL as model
+    if preciseur is None:
+        from preciser_citations import preciser_episode as preciseur
 
     try:
         client = client_factory()
@@ -193,7 +196,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
             for path, episode in pending:
                 _extract_one(source_id, path, episode, state, notify, client=client,
                              extractor=extractor, model=model, source=source,
-                             review_url=review_url)
+                             review_url=review_url, preciseur=preciseur)
     except LockBusy as exc:
         _report_once(state, "extraction:verrou",
                      f"⚠️ Extraction repoussée, la page de validation tient le verrou : {exc}",
@@ -215,8 +218,21 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
         return
     _clear_error(state, key)
     state["extracted"].append(guid)
+
+    # Réécoute ciblée : la citation publiée vient telle quelle de la
+    # transcription, qui écorche les noms propres ; l'extraction, elle, vient
+    # de les rétablir. Si elle échoue, l'épisode reste relisable.
+    citations = 0
+    try:
+        citations = len(kwargs["preciseur"](source_id, guid, apply=True).precisees)
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Citations non précisées pour %s : %s", guid, exc)
+    finally:
+        _remove_audio(source_id, guid)
+
+    precisees = f" {citations} citation(s) précisée(s)." if citations else ""
     link = f"{kwargs['review_url'].rstrip('/')}/ep?guid={urllib.parse.quote(guid, safe='')}"
-    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.\n{link}")
+    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}\n{link}")
 
 
 # ===== notification ==========================================================
