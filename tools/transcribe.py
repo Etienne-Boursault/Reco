@@ -179,10 +179,19 @@ def _resolve_audio(source_id: str, episode: dict[str, Any],
     )
 
 
-def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -> str:
+def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
+                      amorce: str | None = None) -> str:
     """
     Transcrit un fichier audio avec faster-whisper. Renvoie le texte annoté de
     timestamps, un segment par ligne : « [HH:MM:SS] texte ».
+
+    `amorce` est une phrase ponctuée, passée en `hotwords` : faster-whisper la
+    redonne au modèle À CHAQUE fenêtre de 30 s. Mesuré sur un épisode entier le
+    2026-09-17 : sans elle, la ponctuation s'éteint en cours de route (3,4
+    virgules pour 1000 caractères, et 0 sur les vingt dernières minutes) ; avec
+    elle, elle tient du début à la fin (19 à 29 par tranche de 10 min, contre
+    11 à 32 pour la transcription de référence du Mac). Une amorce donnée
+    seulement au démarrage (`initial_prompt`) s'épuise après ~50 minutes.
     """
     try:
         from faster_whisper import WhisperModel  # type: ignore
@@ -199,6 +208,7 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
     log.info("Transcription en cours (cela peut être long)…")
     segments, info = model.transcribe(
         str(audio_path),
+        hotwords=amorce or None,
         language=language,           # None = détection automatique.
         vad_filter=True,             # Coupe les silences -> plus rapide/propre.
         beam_size=5,
@@ -214,7 +224,8 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
                        language: str | None, force: bool,
-                       prefer_acast: bool = False) -> bool:
+                       prefer_acast: bool = False,
+                       amorce: str | None = None) -> bool:
     """
     Transcrit un épisode (fichier JSON donné). Renvoie True si une transcription
     a été produite (ou si le statut a été mis à jour), False si rien à faire.
@@ -233,7 +244,7 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
         return False
 
     audio_path, source_used = _resolve_audio(source_id, episode, prefer_acast)
-    text = _transcribe_audio(audio_path, model_name, language)
+    text = _transcribe_audio(audio_path, model_name, language, amorce)
 
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text(text, encoding="utf-8")
@@ -266,6 +277,10 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_MODEL,
                         help=f"Modèle Whisper (défaut: {DEFAULT_MODEL}). "
                              f"Ex: tiny, base, small, medium, large-v3.")
+    parser.add_argument("--amorce", default=None,
+                        help="Phrase ponctuée redonnée au modèle à chaque fenêtre "
+                             "(noms des intervenants, titre de l'épisode). Sans elle, "
+                             "la ponctuation s'éteint au fil d'un long épisode.")
     parser.add_argument("--language", default="fr",
                         help="Langue (défaut: fr). Vide pour détection auto.")
     parser.add_argument("--force", action="store_true",
@@ -285,7 +300,7 @@ def main() -> None:
     if args.guid:
         path = find_episode_by_guid(args.source, args.guid)
         transcribe_episode(args.source, path, args.model, language, args.force,
-                            prefer_acast=args.acast)
+                            prefer_acast=args.acast, amorce=args.amorce)
         return
 
     # Mode --all ou --guids-file.
@@ -302,7 +317,7 @@ def main() -> None:
         title = read_json(path).get("title", path.name)
         try:
             transcribe_episode(args.source, path, args.model, language, args.force,
-                            prefer_acast=args.acast)
+                            prefer_acast=args.acast, amorce=args.amorce)
             log.info("[%d/%d] ✓ %s", i, total, title)
         except Exception as exc:  # noqa: BLE001 — on continue sur l'épisode suivant.
             log.error("[%d/%d] ✗ %s : %s", i, total, title, exc)

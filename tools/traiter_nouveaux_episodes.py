@@ -50,6 +50,7 @@ from common import (
     write_json_if_changed,
 )
 from fetch_youtube_episodes import GUID_PREFIX, fetch_youtube_episodes
+from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
 # 82 min en ~17 min. `large-v3` y tient 1,4 × : une heure par épisode.
@@ -103,6 +104,22 @@ def _title(episode: dict[str, Any]) -> str:
     return episode.get("title") or episode["guid"]
 
 
+def amorce_pour(source: dict[str, Any], episode: dict[str, Any]) -> str:
+    """Phrase ponctuée redonnée au modèle à chaque fenêtre de transcription.
+
+    Elle ne contient que ce qu'on sait avant d'écouter : les animateurs et le
+    titre de la vidéo, où figure l'invité. Sans elle, la ponctuation s'éteint
+    au fil de l'épisode (mesuré le 2026-09-17) ; avec elle, elle tient.
+    """
+    suffixe = _build_suffix_regex(tuple(source.get("youtubeTitleSuffixPatterns") or ()))
+    titre = _title(episode)
+    if suffixe is not None:
+        titre = suffixe.sub("", titre)
+    hotes = ", ".join(source.get("hosts") or []) or "ses animateurs"
+    return (f"Bonjour et bienvenue dans {source.get('title', 'ce podcast')}, avec {hotes}. "
+            f"Aujourd'hui : {titre.strip()}.")
+
+
 # ===== étapes ================================================================
 def detecter(source_id: str, notify: Notify,
              fetch: Callable[[str], Any] = fetch_youtube_episodes) -> int:
@@ -132,12 +149,14 @@ def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
                model: str = WHISPER_MODEL) -> int:
     if transcriber is None:
         from transcribe import transcribe_episode as transcriber
+    source = load_source(source_id)
     for path, episode in _youtube_episodes(source_id):
         if episode.get("transcriptStatus", "none") != "none":
             continue
         key = f"transcription:{episode['guid']}"
         try:
-            transcriber(source_id, path, model, "fr", False)
+            transcriber(source_id, path, model, "fr", False,
+                        amorce=amorce_pour(source, episode))
         except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
             _report_once(state, key,
                          f"⚠️ Transcription impossible pour « {_title(episode)} » : {exc}",

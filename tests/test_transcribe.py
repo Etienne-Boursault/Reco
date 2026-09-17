@@ -218,7 +218,8 @@ def _install_fake_whisper(monkeypatch, segments=None, language="fr", proba=0.99)
         def __init__(self, name, device=None, compute_type=None):
             self.name = name
 
-        def transcribe(self, path, language=None, vad_filter=False, beam_size=5):
+        def transcribe(self, path, language=None, vad_filter=False, beam_size=5,
+                       hotwords=None):
             info = types.SimpleNamespace(language=language or "fr",
                                          language_probability=proba)
             return iter(segs), info
@@ -237,6 +238,28 @@ def test_transcribe_audio_formats_lines(tmp_path, monkeypatch):
     assert lines[0] == "[00:00:00] Bonjour"
     assert lines[1] == "[00:00:02] tout le monde."
     assert text.endswith("\n")
+
+
+def test_the_amorce_is_given_to_the_model_at_every_window(tmp_path, monkeypatch):
+    """Passée en `hotwords`, l'amorce est redonnée à CHAQUE fenêtre : sans elle,
+    la ponctuation s'éteint au fil d'un long épisode (mesuré le 2026-09-17)."""
+    _install_fake_whisper(monkeypatch)
+    vus = []
+    modele = sys.modules["faster_whisper"].WhisperModel
+    reel = modele.transcribe
+
+    def espion(self, path, **kwargs):
+        vus.append(kwargs.pop("hotwords", None))
+        return reel(self, path, **kwargs)
+
+    monkeypatch.setattr(modele, "transcribe", espion)
+    audio = tmp_path / "a.mp3"
+    audio.write_bytes(b"")
+
+    tr._transcribe_audio(audio, "small", "fr")
+    tr._transcribe_audio(audio, "small", "fr", "Bonjour, avec Kyan et Navo.")
+
+    assert vus == [None, "Bonjour, avec Kyan et Navo."]
 
 
 # ===== transcribe_episode ===================================================
@@ -319,7 +342,7 @@ def test_transcribe_episode_force_retranscribes(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang: "[00:00:00] nouveau\n")
+                        lambda audio, model, lang, amorce=None: "[00:00:00] nouveau\n")
 
     produced = tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"],
                                      "small", "fr", force=True)
@@ -336,7 +359,7 @@ def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang: "[00:00:00] x\n")
+                        lambda audio, model, lang, amorce=None: "[00:00:00] x\n")
 
     tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"], "small", "fr", force=False)
     data = json.loads(ep_setup["ep_path"].read_text(encoding="utf-8"))
@@ -358,9 +381,9 @@ def test_find_episode_by_guid_missing(ep_setup):
 def test_main_guid_mode(ep_setup, monkeypatch):
     called = {}
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False, amorce=None):
         called.update(src=src, path=path, model=model, lang=lang,
-                      force=force, prefer_acast=prefer_acast)
+                      force=force, prefer_acast=prefer_acast, amorce=amorce)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
     monkeypatch.setattr(sys, "argv", [
@@ -374,6 +397,18 @@ def test_main_guid_mode(ep_setup, monkeypatch):
     assert called["force"] is False
     # H1 — sans --acast, on préfère YouTube (prefer_acast=False).
     assert called["prefer_acast"] is False
+    assert called["amorce"] is None
+
+
+def test_main_amorce_option(ep_setup, monkeypatch):
+    called = {}
+    monkeypatch.setattr(tr, "transcribe_episode", lambda *a, **kw: called.update(kw))
+    monkeypatch.setattr(sys, "argv", [
+        "transcribe.py", "--source", ep_setup["src"], "--guid", "ep-1",
+        "--amorce", "Bonjour, avec Kyan et Navo.",
+    ])
+    tr.main()
+    assert called["amorce"] == "Bonjour, avec Kyan et Navo."
 
 
 def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
@@ -381,7 +416,7 @@ def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
     `--youtube`, passé positionnellement, faisait l'INVERSE de sa doc)."""
     called = {}
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False, amorce=None):
         called["prefer_acast"] = prefer_acast
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
@@ -395,7 +430,7 @@ def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
 def test_main_all_mode(ep_setup, monkeypatch):
     calls = []
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False, amorce=None):
         calls.append(path.name)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
@@ -426,7 +461,7 @@ def test_main_all_mode_handles_errors(ep_setup, monkeypatch):
     ep2.write_text(json.dumps({"guid": "ep-2", "title": "T2"}), encoding="utf-8")
     calls = []
 
-    def boom_then_ok(src, path, model, lang, force, prefer_acast=False):
+    def boom_then_ok(src, path, model, lang, force, prefer_acast=False, amorce=None):
         calls.append(path.name)
         if path.name == "ep-1.json":
             raise RuntimeError("boom")
