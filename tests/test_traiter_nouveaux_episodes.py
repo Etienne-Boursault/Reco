@@ -59,6 +59,11 @@ def _no_lock():
     return contextlib.nullcontext()
 
 
+def _sans_precision(*_a, **_k):
+    """La réécoute des citations ne trouve rien à corriger."""
+    return SimpleNamespace(precisees=[])
+
+
 # ===== detecter ==============================================================
 def test_detecter_announces_new_episodes_and_unrecognized_videos(content, inbox):
     _episode(content, "yt-new")
@@ -79,9 +84,11 @@ def test_transcrire_only_touches_youtube_episodes_not_yet_transcribed(content, i
     calls = []
 
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
-                   transcriber=lambda s, p, m, lang, force: calls.append((p.name, m, lang)))
+                   transcriber=lambda s, p, m, lang, force, amorce:
+                   calls.append((p.name, m, lang, amorce)))
 
-    assert calls == [("yt-todo.json", "large-v3-turbo", "fr")]
+    assert calls == [("yt-todo.json", "large-v3-turbo", "fr",
+                      "Bonjour et bienvenue dans Démo, avec A. Aujourd'hui : Titre yt-todo.")]
 
 
 def test_audio_is_removed_once_transcribed(content, inbox):
@@ -92,7 +99,7 @@ def test_audio_is_removed_once_transcribed(content, inbox):
     audio.parent.mkdir(parents=True)
     audio.write_bytes(b"x")
 
-    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a: None)
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a, **k: None)
 
     assert not audio.exists()
 
@@ -101,15 +108,25 @@ def test_a_lasting_transcription_failure_is_reported_once(content, inbox):
     _episode(content, "yt-todo")
     state = tne.load_state(SOURCE)
 
-    def broken(*_args):
+    def broken(*_args, **_kwargs):
         raise RuntimeError("yt-dlp : Sign in to confirm")
 
     tne.transcrire(SOURCE, inbox, state, transcriber=broken)
     tne.transcrire(SOURCE, inbox, state, transcriber=broken)
     assert len(inbox) == 1 and "Sign in to confirm" in inbox[0]
 
-    tne.transcrire(SOURCE, inbox, state, transcriber=lambda *a: None)
+    tne.transcrire(SOURCE, inbox, state, transcriber=lambda *a, **k: None)
     assert state["lastErrors"] == {}
+
+
+def test_the_amorce_uses_the_hosts_and_the_episode_title_without_its_suffix():
+    source = {"title": "Un Bon Moment", "hosts": ["Kyan Khojandi", "Navo"],
+              "youtubeTitleSuffixPatterns": ["un bon moment"]}
+    episode = {"guid": "yt-1", "title": "Orelsan, le boss final (Un Bon Moment, S6-E1)"}
+
+    assert tne.amorce_pour(source, episode) == (
+        "Bonjour et bienvenue dans Un Bon Moment, avec Kyan Khojandi, Navo. "
+        "Aujourd'hui : Orelsan, le boss final.")
 
 
 # ===== a-extraire / extraire =================================================
@@ -137,7 +154,7 @@ def test_extraire_marks_the_episode_and_sends_the_validation_link(content, inbox
 
     rc = tne.extraire(SOURCE, inbox, state, review_url="http://10.8.0.1:8000/",
                       client_factory=lambda: "client", extractor=extractor,
-                      lock=_no_lock, model="claude-test")
+                      lock=_no_lock, model="claude-test", preciseur=_sans_precision)
 
     assert rc == 0
     assert seen == [("yt-abc.json", "client", False, "claude-test", "Démo")]
@@ -146,8 +163,44 @@ def test_extraire_marks_the_episode_and_sends_the_validation_link(content, inbox
                       "http://10.8.0.1:8000/ep?guid=yt--abc")]
 
     tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "client",
-                 extractor=extractor, lock=_no_lock, model="m")
+                 extractor=extractor, lock=_no_lock, model="m", preciseur=_sans_precision)
     assert len(seen) == 1  # jamais ré-extrait, donc jamais refacturé
+
+
+def test_precised_quotes_are_announced_and_the_audio_is_dropped(content, inbox):
+    import common
+
+    _episode(content, "yt-ready", status="auto", transcript=True)
+    audio = common.AUDIO_DIR / SOURCE / "yt-ready-yt.m4a"
+    audio.parent.mkdir(parents=True)
+    audio.write_bytes(b"x")
+    vues = []
+
+    def preciseur(source_id, guid, *, apply):
+        vues.append((guid, apply))
+        return SimpleNamespace(precisees=[object(), object()])
+
+    tne.extraire(SOURCE, inbox, tne.load_state(SOURCE), review_url="u",
+                 client_factory=lambda: "c", extractor=lambda *a, **k: 4,
+                 lock=_no_lock, model="m", preciseur=preciseur)
+
+    assert vues == [("yt-ready", True)]
+    assert "2 citation(s) précisée(s)" in inbox[0]
+    assert not audio.exists()
+
+
+def test_a_failing_quote_pass_does_not_lose_the_episode(content, inbox):
+    _episode(content, "yt-ready", status="auto", transcript=True)
+
+    def preciseur(*_a, **_k):
+        raise RuntimeError("audio introuvable")
+
+    state = tne.load_state(SOURCE)
+    tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "c",
+                 extractor=lambda *a, **k: 4, lock=_no_lock, model="m", preciseur=preciseur)
+
+    assert state["extracted"] == ["yt-ready"]
+    assert "4 reco(s) à valider" in inbox[0] and "citation" not in inbox[0]
 
 
 def test_an_invalid_api_key_is_reported_once_and_nothing_is_marked(content, inbox):
@@ -176,7 +229,7 @@ def test_a_failing_episode_does_not_block_the_next_one(content, inbox):
         return 3
 
     tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "c",
-                 extractor=extractor, lock=_no_lock, model="m")
+                 extractor=extractor, lock=_no_lock, model="m", preciseur=_sans_precision)
 
     assert state["extracted"] == ["yt-b"]
     assert "overloaded" in inbox[0] and "3 reco(s)" in inbox[1]
@@ -210,7 +263,7 @@ def test_a_extraire_exit_code_drives_the_host_script(content):
 def test_state_survives_between_steps(content, monkeypatch):
     _episode(content, "yt-todo")
 
-    def broken(*_a):
+    def broken(*_a, **_k):
         raise RuntimeError("panne")
 
     monkeypatch.setattr(tne, "build_notify", lambda _c: lambda _t: None)

@@ -6,7 +6,10 @@ aucun portable ne soit allumé, venus :
 1. **détecte** la vidéo sur la chaîne et crée l'épisode (`yt-<id>`) ;
 2. **transcrit** l'audio sur son processeur — `large-v3-turbo`, ~17 min pour 82 min ;
 3. **extrait** les recos candidates, en brouillon ;
-4. **prévient sur Matrix**, avec le lien de la page de validation.
+4. **réécoute** les quelques secondes d'où vient chaque citation, en soufflant à Whisper
+   les noms que l'extraction a reconnus (`preciser_citations.py`) : la citation publiée
+   vient telle quelle de la transcription, qui écorche les noms propres ;
+5. **prévient sur Matrix**, avec le lien de la page de validation.
 
 La relecture reste humaine : la page de validation est le serveur de relecture
 habituel, joignable **par le VPN seulement**, sur <http://10.8.0.1:8000>.

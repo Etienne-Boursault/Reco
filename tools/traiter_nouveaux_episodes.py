@@ -50,6 +50,7 @@ from common import (
     write_json_if_changed,
 )
 from fetch_youtube_episodes import GUID_PREFIX, fetch_youtube_episodes
+from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
 # 82 min en ~17 min. `large-v3` y tient 1,4 × : une heure par épisode.
@@ -103,6 +104,22 @@ def _title(episode: dict[str, Any]) -> str:
     return episode.get("title") or episode["guid"]
 
 
+def amorce_pour(source: dict[str, Any], episode: dict[str, Any]) -> str:
+    """Phrase ponctuée redonnée au modèle à chaque fenêtre de transcription.
+
+    Elle ne contient que ce qu'on sait avant d'écouter : les animateurs et le
+    titre de la vidéo, où figure l'invité. Sans elle, la ponctuation s'éteint
+    au fil de l'épisode (mesuré le 2026-09-17) ; avec elle, elle tient.
+    """
+    suffixe = _build_suffix_regex(tuple(source.get("youtubeTitleSuffixPatterns") or ()))
+    titre = _title(episode)
+    if suffixe is not None:
+        titre = suffixe.sub("", titre)
+    hotes = ", ".join(source.get("hosts") or []) or "ses animateurs"
+    return (f"Bonjour et bienvenue dans {source.get('title', 'ce podcast')}, avec {hotes}. "
+            f"Aujourd'hui : {titre.strip()}.")
+
+
 # ===== étapes ================================================================
 def detecter(source_id: str, notify: Notify,
              fetch: Callable[[str], Any] = fetch_youtube_episodes) -> int:
@@ -132,12 +149,14 @@ def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
                model: str = WHISPER_MODEL) -> int:
     if transcriber is None:
         from transcribe import transcribe_episode as transcriber
+    source = load_source(source_id)
     for path, episode in _youtube_episodes(source_id):
         if episode.get("transcriptStatus", "none") != "none":
             continue
         key = f"transcription:{episode['guid']}"
         try:
-            transcriber(source_id, path, model, "fr", False)
+            transcriber(source_id, path, model, "fr", False,
+                        amorce=amorce_pour(source, episode))
         except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
             _report_once(state, key,
                          f"⚠️ Transcription impossible pour « {_title(episode)} » : {exc}",
@@ -166,6 +185,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
              review_url: str,
              client_factory: Callable[[], Any] | None = None,
              extractor: Callable[..., int] | None = None,
+             preciseur: Callable[..., Any] | None = None,
              lock: Callable[[], contextlib.AbstractContextManager[None]] = _pipeline_lock,
              model: str | None = None) -> int:
     pending = a_extraire(source_id, state)
@@ -177,6 +197,8 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
         from extract_recos import extract_for_episode as extractor
     if model is None:
         from extract_recos import MODEL as model
+    if preciseur is None:
+        from preciser_citations import preciser_episode as preciseur
 
     try:
         client = client_factory()
@@ -193,7 +215,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
             for path, episode in pending:
                 _extract_one(source_id, path, episode, state, notify, client=client,
                              extractor=extractor, model=model, source=source,
-                             review_url=review_url)
+                             review_url=review_url, preciseur=preciseur)
     except LockBusy as exc:
         _report_once(state, "extraction:verrou",
                      f"⚠️ Extraction repoussée, la page de validation tient le verrou : {exc}",
@@ -215,8 +237,21 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
         return
     _clear_error(state, key)
     state["extracted"].append(guid)
+
+    # Réécoute ciblée : la citation publiée vient telle quelle de la
+    # transcription, qui écorche les noms propres ; l'extraction, elle, vient
+    # de les rétablir. Si elle échoue, l'épisode reste relisable.
+    citations = 0
+    try:
+        citations = len(kwargs["preciseur"](source_id, guid, apply=True).precisees)
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Citations non précisées pour %s : %s", guid, exc)
+    finally:
+        _remove_audio(source_id, guid)
+
+    precisees = f" {citations} citation(s) précisée(s)." if citations else ""
     link = f"{kwargs['review_url'].rstrip('/')}/ep?guid={urllib.parse.quote(guid, safe='')}"
-    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.\n{link}")
+    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}\n{link}")
 
 
 # ===== notification ==========================================================
