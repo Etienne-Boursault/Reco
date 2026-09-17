@@ -266,13 +266,14 @@ def _poll_one_source(
     new_eps = detect_new_episodes(feed, state, limit=options.limit_new)
 
     # Premier run sur état vierge : tout est « nouveau » mais on ne veut
-    # PAS noyer Discord — on cap à `limit_new` (déjà fait dans le
-    # détecteur) et on log explicitement.
+    # PAS noyer le salon — on cap les notifications à `limit_new` (déjà fait
+    # dans le détecteur). L'état, lui, enregistre TOUT le flux plus bas : le
+    # run suivant ne verra que les vraies nouveautés.
     if not state.seen_guids and new_eps:
         log.info(
-            "Source %s : premier run, %d/%d épisodes seront marqués vus "
-            "(plafond notif --limit-new=%d).",
-            source_id, len(new_eps), len(feed.episodes), options.limit_new,
+            "Source %s : premier run (aucun état), %d épisode(s) notifié(s) "
+            "(plafond --limit-new=%d), les %d du flux marqués vus.",
+            source_id, len(new_eps), options.limit_new, len(feed.episodes),
         )
 
     notified = 0

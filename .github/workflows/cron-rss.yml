@@ -1,14 +1,30 @@
-name: RSS poll (weekly)
+name: RSS poll (daily)
 
-# Item roadmap #23 / ADR 0042 — poll hebdomadaire des flux RSS configurés,
-# notifie Discord/Slack/email et déclenche le pipeline si nouveau(x)
-# épisode(s). Voir tools/poll_rss.py pour l'implémentation.
+# Item roadmap #23 / ADR 0042 — veille des flux RSS configurés : notifie Matrix
+# (ou Discord/Slack/email) quand un nouvel épisode paraît. Voir tools/poll_rss.py.
+#
+# Elle NE déclenche PAS le traitement de l'épisode. Jusqu'au 2026-09-17 elle
+# passait `--dispatch-event`, qui postait un `repository_dispatch` : GitHub le
+# refusait (403, le jeton n'a pas `contents: write`) et aucun workflow ne
+# l'écoutait. Le traitement d'un épisode se lance ailleurs.
 
 on:
   schedule:
-    # Tous les lundis 06:00 UTC (08:00 Paris en été, 07:00 en hiver) —
-    # créneau calme pour les hébergeurs Acast/Megaphone.
-    - cron: '0 6 * * 1'
+    # Tous les jours à 09:00 UTC (11:00 Paris en été, 10:00 en hiver).
+    #
+    # POURQUOI QUOTIDIEN — constaté le 2026-09-17. L'état de la veille (les
+    # épisodes déjà vus) vit dans le cache GitHub Actions, et GitHub efface
+    # tout cache non lu depuis 7 jours. Au rythme hebdomadaire, la veille
+    # tournait tous les 7 jours ET quelques heures, GitHub retardant les
+    # tâches programmées d'une à sept heures : trois lundis sur quatre, le
+    # cache avait disparu, et la veille repartait de zéro en notifiant les
+    # 5 derniers épisodes, anciens compris. Lu chaque jour, il ne vieillit plus.
+    #
+    # Au passage, un épisode publié le dimanche matin est signalé le jour même.
+    #
+    # ⚠️ Dépôt public : GitHub désactive les tâches programmées après 60 jours
+    # sans commit. Deux mois sans épisode traité suffisent à couper la veille.
+    - cron: '0 9 * * *'
   workflow_dispatch:
     inputs:
       source:
@@ -20,11 +36,9 @@ on:
         default: 'matrix'
         required: false
 
-# Permissions minimales : `actions: write` est requis seulement pour le
-# repository_dispatch event qui déclenche le pipeline.
+# Lecture seule : la veille lit le dépôt et notifie, rien d'autre.
 permissions:
   contents: read
-  actions: write
 
 concurrency:
   group: cron-rss-${{ github.ref }}
@@ -50,8 +64,9 @@ jobs:
           pip install -r tools/requirements.txt
 
       - name: Restore RSS polling state
-        # L'état hebdo est petit (~10 KB / source) — on le persiste via
-        # cache GitHub Actions pour ne pas re-notifier à chaque run.
+        # L'état est petit (~10 KB / source) — on le persiste via le cache
+        # GitHub Actions pour ne pas re-notifier à chaque run. Il n'y survit
+        # que s'il est relu en moins de 7 jours : voir le `schedule` plus haut.
         uses: actions/cache@v6
         with:
           path: tools/output/rss
@@ -67,8 +82,6 @@ jobs:
           RECO_MATRIX_ROOM: ${{ secrets.RECO_MATRIX_ROOM }}
           # Discord conservé en repli optionnel (--notify discord).
           RECO_DISCORD_WEBHOOK: ${{ secrets.RECO_DISCORD_WEBHOOK }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
           # Passer par env: plutôt que d'interpoler dans le `run:`. GitHub
           # substitue les ${{ }} AVANT que le shell existe : une valeur contenant
           # `"; curl … #` deviendrait du code exécuté. Via une variable, le shell
@@ -79,7 +92,6 @@ jobs:
           python tools/poll_rss.py \
             --source "$SOURCE" \
             --notify "$NOTIFY" \
-            --dispatch-event \
             --json
 
       - name: Upload state diff artifact
