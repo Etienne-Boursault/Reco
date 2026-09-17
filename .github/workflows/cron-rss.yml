@@ -10,7 +10,7 @@ name: RSS poll (daily)
 
 on:
   schedule:
-    # Tous les jours à 09:00 UTC (11:00 Paris en été, 10:00 en hiver).
+    # Tous les jours à 05:00 UTC (07:00 Paris en été, 06:00 en hiver).
     #
     # POURQUOI QUOTIDIEN — constaté le 2026-09-17. L'état de la veille (les
     # épisodes déjà vus) vit dans le cache GitHub Actions, et GitHub efface
@@ -20,11 +20,16 @@ on:
     # cache avait disparu, et la veille repartait de zéro en notifiant les
     # 5 derniers épisodes, anciens compris. Lu chaque jour, il ne vieillit plus.
     #
-    # Au passage, un épisode publié le dimanche matin est signalé le jour même.
+    # POURQUOI 05:00 UTC — la vidéo YouTube d'un épisode sort le dimanche à
+    # 08:00 UTC, mais le flux Acast ne la reçoit que le lundi entre 03:00 et
+    # 04:00 UTC (relevé sur les cinq derniers épisodes de la saison 5). Une
+    # veille RSS ne peut donc rien signaler avant le lundi, quel que soit son
+    # rythme : on passe une à deux heures après Acast. GitHub retardant encore
+    # le départ, la notification arrive le lundi matin.
     #
     # ⚠️ Dépôt public : GitHub désactive les tâches programmées après 60 jours
     # sans commit. Deux mois sans épisode traité suffisent à couper la veille.
-    - cron: '0 9 * * *'
+    - cron: '0 5 * * *'
   workflow_dispatch:
     inputs:
       source:
