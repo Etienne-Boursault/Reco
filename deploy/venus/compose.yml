@@ -1,0 +1,47 @@
+# Reco — la chaîne automatique sur venus. Mode d'emploi : README.md à côté.
+#
+# Installé par un lien : /home/etienne/docker/reco/compose.yml -> ce fichier.
+# C'est l'emplacement qu'archive backup-venus-local.sh, et le compose suit le
+# dépôt à chaque `git pull`.
+name: reco
+
+x-atelier: &atelier
+  # Étiquette explicite, jamais :latest. À changer quand requirements.txt change.
+  image: reco-atelier:2026-09-17
+  build:
+    context: /home/etienne/docker/reco/depot
+    dockerfile: deploy/venus/Dockerfile
+  user: "1000:1000"
+  env_file: /home/etienne/docker/reco/.env
+  # Réseau de l'hôte : la page de validation écoute sur l'adresse du VPN
+  # (10.8.0.1, interface wg0), que le réseau Docker ne voit pas.
+  network_mode: host
+  volumes:
+    - /home/etienne/docker/reco/depot:/app
+    - /home/etienne/.cache/reco:/cache
+
+services:
+  # Page de validation, joignable UNIQUEMENT par le VPN : elle n'a pas
+  # d'authentification. Elle écoute sur 10.8.0.1 et non sur 0.0.0.0, donc ni le
+  # Wi-Fi de la maison ni Internet ne l'atteignent. Au démarrage de la machine,
+  # si wg0 n'est pas encore monté, le processus échoue à écouter et
+  # `restart: unless-stopped` le relance jusqu'à ce que l'adresse existe.
+  review:
+    <<: *atelier
+    container_name: reco-review
+    restart: unless-stopped
+    command: ["python", "review_server.py", "--source", "un-bon-moment",
+              "--host", "10.8.0.1", "--port", "8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(s.connect_ex(('10.8.0.1', 8000)))"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Outils lancés à la demande par tick.sh (`docker compose run --rm pipeline …`).
+  pipeline:
+    <<: *atelier
+    container_name: reco-pipeline
+    profiles: ["outils"]
