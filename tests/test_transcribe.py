@@ -239,6 +239,40 @@ def test_transcribe_audio_formats_lines(tmp_path, monkeypatch):
     assert text.endswith("\n")
 
 
+def test_transcribe_audio_defaults_to_int8_and_honours_compute_type(tmp_path, monkeypatch):
+    """Le type de calcul atteint bien le modèle : int8 par défaut, float32 sur demande."""
+    _install_fake_whisper(monkeypatch)
+    seen = []
+    fake_model = sys.modules["faster_whisper"].WhisperModel
+    real_init = fake_model.__init__
+
+    def spy(self, name, device=None, compute_type=None):
+        seen.append(compute_type)
+        real_init(self, name, device=device, compute_type=compute_type)
+
+    monkeypatch.setattr(fake_model, "__init__", spy)
+    audio = tmp_path / "a.mp3"
+    audio.write_bytes(b"")
+
+    tr._transcribe_audio(audio, "small", "fr")
+    tr._transcribe_audio(audio, "small", "fr", "float32")
+
+    assert seen == ["int8", "float32"]
+
+
+def test_transcribe_episode_forwards_the_compute_type(ep_setup, monkeypatch):
+    seen = []
+    monkeypatch.setattr(tr, "_resolve_audio",
+                        lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
+    monkeypatch.setattr(tr, "_transcribe_audio",
+                        lambda audio, model, lang, compute_type: seen.append(compute_type) or "x")
+
+    tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"], "small", "fr",
+                          force=True, compute_type="float32")
+
+    assert seen == ["float32"]
+
+
 # ===== transcribe_episode ===================================================
 @pytest.fixture
 def ep_setup(tmp_path, monkeypatch):
@@ -319,7 +353,7 @@ def test_transcribe_episode_force_retranscribes(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang: "[00:00:00] nouveau\n")
+                        lambda audio, model, lang, compute_type: "[00:00:00] nouveau\n")
 
     produced = tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"],
                                      "small", "fr", force=True)
@@ -336,7 +370,7 @@ def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang: "[00:00:00] x\n")
+                        lambda audio, model, lang, compute_type: "[00:00:00] x\n")
 
     tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"], "small", "fr", force=False)
     data = json.loads(ep_setup["ep_path"].read_text(encoding="utf-8"))
@@ -358,9 +392,10 @@ def test_find_episode_by_guid_missing(ep_setup):
 def test_main_guid_mode(ep_setup, monkeypatch):
     called = {}
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False,
+                    compute_type="int8"):
         called.update(src=src, path=path, model=model, lang=lang,
-                      force=force, prefer_acast=prefer_acast)
+                      force=force, prefer_acast=prefer_acast, compute_type=compute_type)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
     monkeypatch.setattr(sys, "argv", [
@@ -374,6 +409,19 @@ def test_main_guid_mode(ep_setup, monkeypatch):
     assert called["force"] is False
     # H1 — sans --acast, on préfère YouTube (prefer_acast=False).
     assert called["prefer_acast"] is False
+    assert called["compute_type"] == "int8"
+
+
+def test_main_compute_type_option(ep_setup, monkeypatch):
+    called = {}
+    monkeypatch.setattr(tr, "transcribe_episode",
+                        lambda *a, **kw: called.update(kw))
+    monkeypatch.setattr(sys, "argv", [
+        "transcribe.py", "--source", ep_setup["src"], "--guid", "ep-1",
+        "--compute-type", "float32",
+    ])
+    tr.main()
+    assert called["compute_type"] == "float32"
 
 
 def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
@@ -381,7 +429,8 @@ def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
     `--youtube`, passé positionnellement, faisait l'INVERSE de sa doc)."""
     called = {}
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False,
+                    compute_type="int8"):
         called["prefer_acast"] = prefer_acast
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
@@ -395,7 +444,8 @@ def test_main_acast_flag_forces_prefer_acast(ep_setup, monkeypatch):
 def test_main_all_mode(ep_setup, monkeypatch):
     calls = []
 
-    def fake_transcribe(src, path, model, lang, force, prefer_acast=False):
+    def fake_transcribe(src, path, model, lang, force, prefer_acast=False,
+                    compute_type="int8"):
         calls.append(path.name)
 
     monkeypatch.setattr(tr, "transcribe_episode", fake_transcribe)
@@ -426,7 +476,8 @@ def test_main_all_mode_handles_errors(ep_setup, monkeypatch):
     ep2.write_text(json.dumps({"guid": "ep-2", "title": "T2"}), encoding="utf-8")
     calls = []
 
-    def boom_then_ok(src, path, model, lang, force, prefer_acast=False):
+    def boom_then_ok(src, path, model, lang, force, prefer_acast=False,
+                    compute_type="int8"):
         calls.append(path.name)
         if path.name == "ep-1.json":
             raise RuntimeError("boom")

@@ -51,9 +51,15 @@ from common import (
 )
 from fetch_youtube_episodes import GUID_PREFIX, fetch_youtube_episodes
 
-# Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
-# 82 min en ~17 min. `large-v3` y tient 1,4 × : une heure par épisode.
+# Mesuré sur le CPU de venus le 2026-09-17, épisode de 82 min : `large-v3-turbo`
+# en float32 ~37 min (int8 ~18 min, `large-v3` en int8 ~1 h).
 WHISPER_MODEL = "large-v3-turbo"
+# float32 plutôt que l'int8 par défaut de transcribe.py : les citations affichées
+# sur le site sortent de la transcription telles quelles, et int8 les rendait
+# presque sans ponctuation (3,4 virgules pour 1000 caractères contre 15,1), de
+# façon instable d'un passage à l'autre. Doubler le temps ne gêne pas pour un
+# épisode par semaine.
+WHISPER_COMPUTE_TYPE = "float32"
 DEFAULT_REVIEW_URL = "http://10.8.0.1:8000"
 
 Notify = Callable[[str], None]
@@ -129,7 +135,8 @@ def _remove_audio(source_id: str, guid: str) -> None:
 
 def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
                transcriber: Callable[..., Any] | None = None,
-               model: str = WHISPER_MODEL) -> int:
+               model: str = WHISPER_MODEL,
+               compute_type: str = WHISPER_COMPUTE_TYPE) -> int:
     if transcriber is None:
         from transcribe import transcribe_episode as transcriber
     for path, episode in _youtube_episodes(source_id):
@@ -137,7 +144,7 @@ def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
             continue
         key = f"transcription:{episode['guid']}"
         try:
-            transcriber(source_id, path, model, "fr", False)
+            transcriber(source_id, path, model, "fr", False, compute_type=compute_type)
         except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
             _report_once(state, key,
                          f"⚠️ Transcription impossible pour « {_title(episode)} » : {exc}",

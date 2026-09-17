@@ -61,6 +61,13 @@ from common import (
 # Re-transcrire coûte plus cher que transcrire bien une fois : il faut aussi
 # re-extraire, puis re-relire à la main.
 DEFAULT_MODEL = "large-v3"
+# Type de calcul CTranslate2 sur CPU. int8 est deux fois plus rapide ; float32 ponctue
+# comme le Mac et reste stable d'un passage à l'autre — mesuré sur S5-E37 entier le
+# 2026-09-17 : 15,1 virgules pour 1000 caractères contre 3,4, concordance avec la
+# transcription du Mac 0,90 contre 0,88, et deux passages int8 du même épisode ont
+# donné 2 633 puis 3 711 lignes. Défaut int8 : le kit tourne aussi sur des CPU modestes.
+DEFAULT_COMPUTE_TYPE = "int8"
+COMPUTE_TYPES = ("int8", "float32")
 # Taille de chunk de téléchargement (octets).
 _CHUNK = 1 << 16
 # Acast (et d'autres CDN) renvoient 403 sans User-Agent de navigateur.
@@ -179,7 +186,8 @@ def _resolve_audio(source_id: str, episode: dict[str, Any],
     )
 
 
-def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -> str:
+def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
+                      compute_type: str = DEFAULT_COMPUTE_TYPE) -> str:
     """
     Transcrit un fichier audio avec faster-whisper. Renvoie le texte annoté de
     timestamps, un segment par ligne : « [HH:MM:SS] texte ».
@@ -192,9 +200,8 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
             "(pip install -r requirements.txt)."
         ) from exc
 
-    log.info("Chargement du modèle Whisper « %s » (CPU, int8)…", model_name)
-    # compute_type=int8 : rapide et léger en RAM sur CPU.
-    model = WhisperModel(model_name, device="cpu", compute_type="int8")
+    log.info("Chargement du modèle Whisper « %s » (CPU, %s)…", model_name, compute_type)
+    model = WhisperModel(model_name, device="cpu", compute_type=compute_type)
 
     log.info("Transcription en cours (cela peut être long)…")
     segments, info = model.transcribe(
@@ -214,7 +221,8 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None) -
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
                        language: str | None, force: bool,
-                       prefer_acast: bool = False) -> bool:
+                       prefer_acast: bool = False,
+                       compute_type: str = DEFAULT_COMPUTE_TYPE) -> bool:
     """
     Transcrit un épisode (fichier JSON donné). Renvoie True si une transcription
     a été produite (ou si le statut a été mis à jour), False si rien à faire.
@@ -233,7 +241,7 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
         return False
 
     audio_path, source_used = _resolve_audio(source_id, episode, prefer_acast)
-    text = _transcribe_audio(audio_path, model_name, language)
+    text = _transcribe_audio(audio_path, model_name, language, compute_type)
 
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text(text, encoding="utf-8")
@@ -266,6 +274,10 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_MODEL,
                         help=f"Modèle Whisper (défaut: {DEFAULT_MODEL}). "
                              f"Ex: tiny, base, small, medium, large-v3.")
+    parser.add_argument("--compute-type", dest="compute_type", choices=COMPUTE_TYPES,
+                        default=DEFAULT_COMPUTE_TYPE,
+                        help="Type de calcul (défaut: %(default)s). float32 : deux fois "
+                             "plus lent, ponctuation fidèle et résultat stable.")
     parser.add_argument("--language", default="fr",
                         help="Langue (défaut: fr). Vide pour détection auto.")
     parser.add_argument("--force", action="store_true",
@@ -285,7 +297,7 @@ def main() -> None:
     if args.guid:
         path = find_episode_by_guid(args.source, args.guid)
         transcribe_episode(args.source, path, args.model, language, args.force,
-                            prefer_acast=args.acast)
+                            prefer_acast=args.acast, compute_type=args.compute_type)
         return
 
     # Mode --all ou --guids-file.
@@ -302,7 +314,7 @@ def main() -> None:
         title = read_json(path).get("title", path.name)
         try:
             transcribe_episode(args.source, path, args.model, language, args.force,
-                            prefer_acast=args.acast)
+                            prefer_acast=args.acast, compute_type=args.compute_type)
             log.info("[%d/%d] ✓ %s", i, total, title)
         except Exception as exc:  # noqa: BLE001 — on continue sur l'épisode suivant.
             log.error("[%d/%d] ✗ %s : %s", i, total, title, exc)

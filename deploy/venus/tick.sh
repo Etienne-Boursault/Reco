@@ -13,7 +13,7 @@ cd /home/etienne/docker/reco || exit 1
 mkdir -p logs
 exec >>"logs/tick-$(date +%Y-%m).log" 2>&1
 
-# Un seul passage à la fois : une transcription dure ~17 min, et le cron repasse
+# Un seul passage à la fois : une transcription dure ~37 min, et le cron repasse
 # toutes les 10 min le dimanche.
 exec 9>/tmp/reco-tick.lock
 flock -n 9 || exit 0

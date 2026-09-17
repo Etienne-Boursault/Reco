@@ -4,7 +4,7 @@ Un épisode d'*Un bon moment* sort sur YouTube le dimanche à 10 h. Sans que le 
 aucun portable ne soit allumé, venus :
 
 1. **détecte** la vidéo sur la chaîne et crée l'épisode (`yt-<id>`) ;
-2. **transcrit** l'audio sur son processeur — `large-v3-turbo`, ~17 min pour 82 min ;
+2. **transcrit** l'audio sur son processeur — `large-v3-turbo` en `float32`, ~37 min pour 82 min ;
 3. **extrait** les recos candidates, en brouillon ;
 4. **prévient sur Matrix**, avec le lien de la page de validation.
 

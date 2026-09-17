@@ -79,9 +79,10 @@ def test_transcrire_only_touches_youtube_episodes_not_yet_transcribed(content, i
     calls = []
 
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
-                   transcriber=lambda s, p, m, lang, force: calls.append((p.name, m, lang)))
+                   transcriber=lambda s, p, m, lang, force, compute_type:
+                   calls.append((p.name, m, lang, compute_type)))
 
-    assert calls == [("yt-todo.json", "large-v3-turbo", "fr")]
+    assert calls == [("yt-todo.json", "large-v3-turbo", "fr", "float32")]
 
 
 def test_audio_is_removed_once_transcribed(content, inbox):
@@ -92,7 +93,7 @@ def test_audio_is_removed_once_transcribed(content, inbox):
     audio.parent.mkdir(parents=True)
     audio.write_bytes(b"x")
 
-    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a: None)
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a, **k: None)
 
     assert not audio.exists()
 
@@ -101,14 +102,14 @@ def test_a_lasting_transcription_failure_is_reported_once(content, inbox):
     _episode(content, "yt-todo")
     state = tne.load_state(SOURCE)
 
-    def broken(*_args):
+    def broken(*_args, **_kwargs):
         raise RuntimeError("yt-dlp : Sign in to confirm")
 
     tne.transcrire(SOURCE, inbox, state, transcriber=broken)
     tne.transcrire(SOURCE, inbox, state, transcriber=broken)
     assert len(inbox) == 1 and "Sign in to confirm" in inbox[0]
 
-    tne.transcrire(SOURCE, inbox, state, transcriber=lambda *a: None)
+    tne.transcrire(SOURCE, inbox, state, transcriber=lambda *a, **k: None)
     assert state["lastErrors"] == {}
 
 
@@ -210,7 +211,7 @@ def test_a_extraire_exit_code_drives_the_host_script(content):
 def test_state_survives_between_steps(content, monkeypatch):
     _episode(content, "yt-todo")
 
-    def broken(*_a):
+    def broken(*_a, **_k):
         raise RuntimeError("panne")
 
     monkeypatch.setattr(tne, "build_notify", lambda _c: lambda _t: None)
