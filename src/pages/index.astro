@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import SourceCatalog from '../components/SourceCatalog.astro';
 import { siteConfig } from '../config/site';
+import { recoPubliee } from '../utils/recoPubliee';
 import { plural } from '../utils/plural';
 
 const sources = await getCollection('sources');
@@ -25,7 +26,7 @@ interface SourceStats {
 const stats = new Map<string, SourceStats>();
 const epWithReco = new Map<string, Set<string>>(); // sourceId → guids d'épisodes
 for (const r of recos) {
-  if (r.data.status === 'discarded') continue;
+  if (!recoPubliee(r.data.status)) continue;
   // Le compteur « N recos » sur la page d'accueil ne décompte QUE les vraies
   // recommandations (kind=reco). Les citations restent visibles ailleurs mais
   // ne sont pas annoncées comme « recommandées par le podcast ».

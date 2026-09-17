@@ -13,6 +13,7 @@
 import Layout from '../layouts/Layout.astro';
 import { t } from '../i18n';
 import { plural } from '../utils/plural';
+import { recoPubliee } from '../utils/recoPubliee';
 import { siteConfig } from '../config/site';
 import { getCollection } from 'astro:content';
 
@@ -22,7 +23,7 @@ const recos = await getCollection('recos');
 const episodes = await getCollection('episodes');
 const nbSources = sources.length;
 const nbRecos = recos.filter(
-  (r) => r.data.status !== 'discarded' && r.data.kind !== 'citation',
+  (r) => recoPubliee(r.data.status) && r.data.kind !== 'citation',
 ).length;
 const nbEpisodes = episodes.length;
 function fmt(n: number): string {

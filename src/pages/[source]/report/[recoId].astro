@@ -12,6 +12,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import ReportForm from '../../../components/ReportForm.astro';
 import { t } from '../../../i18n';
+import { recoPubliee } from '../../../utils/recoPubliee';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -20,7 +21,7 @@ export async function getStaticPaths() {
   for (const reco of recos) {
     const src = sources.find((s) => s.id === reco.data.sourceId.id);
     if (!src) continue;
-    if (reco.data.status === 'discarded') continue; // pas signalable
+    if (!recoPubliee(reco.data.status)) continue; // seule une reco publiée se signale
     out.push({
       params: { source: src.id, recoId: reco.data.id },
       props: { source: src, reco },

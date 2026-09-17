@@ -11,6 +11,7 @@
 import { getCollection } from 'astro:content';
 
 import { sortRecosByTimestamp } from './recoOrder';
+import { recoPubliee } from './recoPubliee';
 
 export interface CatalogData {
   /** Recos ACTIVES de la source, triées chronologiquement. */
@@ -27,7 +28,7 @@ export async function loadCatalogData(sourceId: string): Promise<CatalogData> {
   // migration 5 → 7 a effectivement changé.
   const recos = sortRecosByTimestamp(
     (await getCollection('recos'))
-      .filter((r) => r.data.sourceId.id === sourceId && r.data.status !== 'discarded')
+      .filter((r) => r.data.sourceId.id === sourceId && recoPubliee(r.data.status))
       .map((r) => r.data),
   );
 
