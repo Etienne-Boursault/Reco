@@ -19,6 +19,7 @@ import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import { renderOG } from '../../lib/og/renderer.js';
 import { TYPE_EMOJI } from '../../lib/og/template.js';
+import { recoPubliee } from '../../utils/recoPubliee.js';
 
 // Alias de type et NON `interface` : `GetStaticPaths` attend des props
 // assignables a `Record<string, any>`, ce qu'une interface ne satisfait pas
@@ -85,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // — cf. CR senior H3.
   const recosBySrcGuid = new Set<string>();
   for (const r of recos) {
-    if (r.data.status === 'discarded') continue;
+    if (!recoPubliee(r.data.status)) continue;
     recosBySrcGuid.add(`${r.data.sourceId.id}::${r.data.episodeGuid}`);
   }
   const sourceById = new Map(sources.map((s) => [s.id, s]));
