@@ -259,9 +259,22 @@ def test_main_language_empty_becomes_none(monkeypatch, fake_modules):
 
 def test_main_extract_model_default_aligns_with_extract_recos(monkeypatch, fake_modules):
     """L4 (revue 2026-07-19) — le défaut --extract-model est la SSOT
-    extract_recos.MODEL (claude-haiku-4-5), pas une chaîne Sonnet dupliquée."""
+    extract_recos.MODEL, pas une chaîne dupliquée.
+
+    On ne fige PAS le nom du modèle ici : ce test l'a fait jusqu'au 2026-09-18
+    et il a cassé au premier changement de modèle, alors que c'est justement
+    l'alignement — et non la valeur — qu'il doit protéger."""
     captured = {}
     monkeypatch.setattr(rp, "run", lambda **kw: captured.update(kw))
     monkeypatch.setattr(sys, "argv", ["run_pipeline.py", "--source", "demo"])
     rp.main()
-    assert captured["extract_model"] == rp.DEFAULT_EXTRACT_MODEL == "claude-haiku-4-5"
+    assert captured["extract_model"] == rp.DEFAULT_EXTRACT_MODEL
+
+
+def test_default_extract_model_is_the_one_of_extract_recos():
+    """L'alignement lui-même, hors modules factices : `run_pipeline` ne doit pas
+    porter sa propre chaîne de modèle."""
+    import extract_recos
+    import run_pipeline
+
+    assert run_pipeline.DEFAULT_EXTRACT_MODEL == extract_recos.MODEL
