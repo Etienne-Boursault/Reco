@@ -1129,3 +1129,33 @@ def test_main_server_lock_busy_exits(tmp_source, monkeypatch):
             "extract_recos.py", "--source", tmp_source.source_id,
             "--guid", tmp_source.guid, "--dry-run",
         ])
+
+
+# ===== effort de raisonnement ===============================================
+def test_le_modele_par_defaut_est_opus_5_avec_un_effort_fixe():
+    """Le défaut d'Opus 5 est l'effort « high » : mesuré sur Sonnet 5, il coûte
+    40 % de plus et 6,7 fois plus de raisonnement sans retrouver une reco de
+    plus. On le fixe donc, sinon le coût mesuré (0,56 $/épisode) ne tient pas."""
+    assert extract_recos.MODEL == "claude-opus-5"
+    assert extract_recos.EFFORT == "medium"
+
+    params = extract_recos._request_params("claude-opus-5", "Démo", "A, B", "texte")
+
+    assert params["output_config"] == {"effort": "medium"}
+    assert params["max_tokens"] == extract_recos.MAX_TOKENS_RAISONNEMENT
+
+
+def test_haiku_ne_recoit_pas_d_effort():
+    """Haiku 4.5 renvoie une erreur 400 si on lui envoie `output_config.effort`."""
+    params = extract_recos._request_params("claude-haiku-4-5", "Démo", "A, B", "texte")
+
+    assert "output_config" not in params
+    assert params["max_tokens"] == extract_recos.MAX_TOKENS
+
+
+def test_l_effort_suit_le_modele_demande_meme_en_batch():
+    """Les requêtes du mode batch passent par le même constructeur."""
+    for modele in ("claude-sonnet-5", "claude-opus-4-8"):
+        assert "output_config" in extract_recos._request_params(modele, "D", "A", "t")
+    for modele in ("claude-haiku-4-5", "claude-sonnet-4-5"):
+        assert "output_config" not in extract_recos._request_params(modele, "D", "A", "t")

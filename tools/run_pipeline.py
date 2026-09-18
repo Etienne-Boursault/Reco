@@ -25,7 +25,7 @@ import argparse
 from common import list_episode_files, log, read_json
 
 # L4 (revue 2026-07-19) : le défaut d'extraction est la SSOT de extract_recos
-# (claude-haiku-4-5), pas une chaîne dupliquée qui dérive à chaque changement de
+# (cf. extract_recos.MODEL), pas une chaîne dupliquée qui dérive à chaque changement de
 # modèle. extract_recos ne tire aucune dépendance lourde à l'import (les SDK
 # LLM/whisper sont paresseux), donc l'importer ici ne coûte rien.
 from extract_recos import MODEL as DEFAULT_EXTRACT_MODEL

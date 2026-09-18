@@ -2,7 +2,7 @@
 extract_recos.py — Étape 3 du pipeline « Reco ».
 
 Lit la transcription d'un épisode et en extrait les recommandations d'œuvres
-via l'API Anthropic (SDK `anthropic`, modèle « claude-opus-4-7 »). Produit *un
+via l'API Anthropic (SDK `anthropic`, modèle « claude-opus-5 »). Produit *un
 fichier JSON par reco* dans `src/content/recos/<sourceId>/`, conforme au schéma.
 
 RÈGLES MÉTIER (cf. DATA_SCHEMA.md) :
@@ -71,12 +71,34 @@ from extraction_history import (
 )
 from review_lock import ServerLockBusy, acquire_pipeline_lock
 
-# Modèle d'extraction par défaut : Haiku 4.5 (basculé depuis Sonnet 4.6 le
-# 2026-06-04 après étude comparative 4-LLM sur 11 ép). Trouve ~60% des recos
-# de Sonnet pour 1/4 du coût, et catch en plus 40% que Sonnet rate (recall
-# supérieur sur les recos subtiles). Surchargé par --model.
-MODEL = "claude-haiku-4-5"
+# Modèle d'extraction par défaut : Opus 5 (basculé depuis Haiku 4.5 le
+# 2026-09-18). Comparaison sur trois épisodes déjà relus — 33 recos validées,
+# 15 écartées — face à la relecture humaine :
+#
+#   Haiku 4.5      0,09 $/ép.  50 candidats  24-27/33 retrouvées  13 déjà écartées reproposées
+#   Sonnet 5 med.  0,20 $/ép.  33 candidats  20-22/33              1
+#   Sonnet 5 high  0,28 $/ép.  42 candidats  20-22/33              1   (l'effort n'aide pas)
+#   Opus 5 med.    0,56 $/ép.  64 candidats  25-26/33              5
+#
+# Une reco manquée est perdue — la relecture ne peut pas la retrouver ; une
+# proposition en trop se refuse d'un clic. Haiku n'est en outre garanti que
+# jusqu'au 2026-10-15. Surchargé par --model.
+MODEL = "claude-opus-5"
 MAX_TOKENS = 8000
+# Les modèles à raisonnement adaptatif consomment le plafond de sortie pour
+# raisonner : on leur en laisse davantage, sans surcoût (la facturation suit
+# l'usage réel, pas le plafond).
+MAX_TOKENS_RAISONNEMENT = 16000
+# Effort de raisonnement. Le défaut de ces modèles est « high » : mesuré sur
+# Sonnet 5, il consomme 6,7 fois plus de raisonnement et coûte 40 % de plus
+# SANS retrouver une reco de plus. Les chiffres ci-dessus valent pour « medium ».
+EFFORT = "medium"
+# Seuls ces modèles acceptent `output_config.effort` ; Haiku 4.5 et Sonnet 4.5
+# renvoient une erreur 400 si on le leur envoie.
+MODELES_AVEC_EFFORT = frozenset({
+    "claude-opus-5", "claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6",
+    "claude-sonnet-5", "claude-sonnet-4-6", "claude-fable-5", "claude-fable-5-1",
+})
 # Nombre approximatif de caractères par chunk (~ contexte raisonnable + marge coût).
 CHUNK_CHARS = 24_000
 # Recouvrement entre chunks pour ne pas couper une reco en deux à la jonction.
@@ -302,12 +324,16 @@ def _request_params(model: str, podcast_title: str, hosts: str, chunk: str) -> d
         types=", ".join(sorted(VALID_TYPES)),
         chunk=chunk,
     )
-    return {
+    params: dict[str, Any] = {
         "model": model,
         "max_tokens": MAX_TOKENS,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
+    if model in MODELES_AVEC_EFFORT:
+        params["output_config"] = {"effort": EFFORT}
+        params["max_tokens"] = MAX_TOKENS_RAISONNEMENT
+    return params
 
 
 def _parse_recos_from_content(content: Any) -> list[dict[str, Any]]:
