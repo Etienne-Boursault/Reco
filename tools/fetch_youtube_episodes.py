@@ -183,8 +183,13 @@ def _known_episodes(source_id: str) -> tuple[set[str], set[tuple[int, int]]]:
 
 def fetch_youtube_episodes(source_id: str, *, limit: int = DEFAULT_LIMIT,
                            dry_run: bool = False,
-                           lister: Lister = list_channel_videos,
-                           detailer: Detailer = video_details) -> YoutubeFetchResult:
+                           lister: Lister | None = None,
+                           detailer: Detailer | None = None) -> YoutubeFetchResult:
+    # Résolus à l'appel et non dans la signature : un défaut figé à la
+    # définition ne peut plus être remplacé, et la ligne de commande devient
+    # intestable.
+    lister = lister or list_channel_videos
+    detailer = detailer or video_details
     source = load_source(source_id)
     channel = source.get("youtubeChannel")
     if not channel:
