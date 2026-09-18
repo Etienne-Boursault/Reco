@@ -191,3 +191,80 @@ def test_a_source_without_channel_is_an_error(content):
 def test_titles_are_requested_in_french():
     """Sans `lang=fr`, yt-dlp renvoie des titres traduits en anglais."""
     assert fy._YTDLP_BASE["extractor_args"] == {"youtube": {"lang": ["fr"]}}
+
+
+# ===== adaptateurs yt-dlp et ligne de commande ==============================
+def _faux_yt_dlp(monkeypatch, info):
+    import sys
+    import types
+
+    appels = {}
+
+    class FauxYDL:
+        def __init__(self, opts):
+            appels["opts"] = opts
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_a):
+            return False
+
+        def extract_info(self, url, download=False):
+            appels["url"] = url
+            appels["download"] = download
+            return info
+
+    module = types.ModuleType("yt_dlp")
+    module.YoutubeDL = FauxYDL
+    monkeypatch.setitem(sys.modules, "yt_dlp", module)
+    return appels
+
+
+def test_list_channel_videos_asks_for_the_videos_tab_in_french(monkeypatch):
+    appels = _faux_yt_dlp(monkeypatch, {"entries": [
+        {"id": "a", "title": "Un titre"}, {"id": None, "title": "sans id"}, None,
+    ]})
+
+    videos = fy.list_channel_videos("https://www.youtube.com/@Demo/", 15)
+
+    assert videos == [{"id": "a", "title": "Un titre"}]
+    assert appels["url"] == "https://www.youtube.com/@Demo/videos"
+    assert appels["opts"]["playlistend"] == 15
+    assert appels["opts"]["extract_flat"] is True
+    assert appels["opts"]["extractor_args"] == {"youtube": {"lang": ["fr"]}}
+
+
+def test_video_details_keeps_only_what_the_episode_needs(monkeypatch):
+    appels = _faux_yt_dlp(monkeypatch, {
+        "id": "abc", "title": "T", "description": "D", "duration": 42,
+        "release_timestamp": 1790150400, "timestamp": 1, "upload_date": "20260923",
+        "live_status": "not_live", "formats": ["à jeter"], "thumbnails": ["à jeter"],
+    })
+
+    details = fy.video_details("abc")
+
+    assert set(details) == {"id", "title", "description", "duration", "release_timestamp",
+                            "timestamp", "upload_date", "live_status"}
+    assert appels["url"] == "https://www.youtube.com/watch?v=abc"
+    assert appels["download"] is False
+
+
+def test_the_cli_reports_what_it_did(content, monkeypatch, capsys):
+    videos = [{"id": "ep", "title": "X (Un Bon Moment, S6-E1)"}]
+    monkeypatch.setattr(fy, "list_channel_videos", lambda _c, _l: videos)
+    monkeypatch.setattr(fy, "video_details", lambda vid: _details(vid))
+
+    assert fy.main(["--source", SOURCE, "--json"]) == 0
+
+    sortie = json.loads(capsys.readouterr().out)
+    assert sortie["created"] == ["yt-ep"] and sortie["first_run"] is True
+
+
+def test_the_cli_honours_dry_run(content, monkeypatch):
+    monkeypatch.setattr(fy, "list_channel_videos",
+                        lambda _c, _l: [{"id": "ep", "title": "X (Un Bon Moment, S6-E1)"}])
+    monkeypatch.setattr(fy, "video_details", lambda vid: _details(vid))
+
+    assert fy.main(["--source", SOURCE, "--dry-run"]) == 0
+    assert _episodes(content) == {}
