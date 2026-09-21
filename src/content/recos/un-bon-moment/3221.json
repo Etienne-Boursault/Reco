@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Virginie Efira",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "instagram": "efira_virginie"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:05:11",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3221",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/personne/fichepersonne_gen_cpersonne=97635.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/efira_virginie/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Virginie_Efira"
+    }
+  ],
+  "quote": "Et moi, c'est une de mes actrices préférées aujourd'hui.",
+  "recommendedBy": "Styleto",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:05:11",
+  "title": "Virginie Efira",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

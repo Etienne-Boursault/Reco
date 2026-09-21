@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:13",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3215",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel — tournée 2027",
+      "url": "https://www.grandcorpsmalade.fr/"
+    }
+  ],
+  "quote": "Grand Corps Malade en tournée, à partir de janvier on peut l'avoir dans toutes les villes, Zenith, Arena. N'hésitez pas à prendre vos tickets",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:13",
+  "title": "Grand Corps Malade en tournée",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

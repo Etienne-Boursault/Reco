@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Fabe",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/artist/13674"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:06:18",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3211",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/13674"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Fabe"
+    }
+  ],
+  "quote": "Fabe, c'est un rappeur à l'ancienne. Très bon rappeur à l'ancienne, mais qui a arrêté tôt, mais très fort.",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:06:18",
+  "title": "Fabe",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

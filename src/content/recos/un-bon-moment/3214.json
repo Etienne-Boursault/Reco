@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:25:18",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3214",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube — La fête de la chanson française (2012)",
+      "url": "https://www.youtube.com/watch?v=bKY5FhLWjF8"
+    }
+  ],
+  "quote": "C'est sur les réseaux sociaux, tu tapes Inch'Allah pour moi de live, un truc comme ça.",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:25:18",
+  "title": "Inch'Allah (live avec Redouane Bougheraba)",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

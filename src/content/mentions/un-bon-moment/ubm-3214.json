@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:25:18"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3214",
+  "itemId": "f20695f5",
+  "kind": "citation",
+  "quote": "C'est sur les réseaux sociaux, tu tapes Inch'Allah pour moi de live, un truc comme ça.",
+  "recommendedBy": "Grand Corps Malade",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:25:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
