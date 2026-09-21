@@ -116,7 +116,20 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     """
     Télécharge la piste audio d'une vidéo YouTube via yt-dlp (import paresseux).
     Renvoie le chemin du fichier audio extrait (m4a/mp3).
+
+    Un mp3 déjà là est réutilisé : yt-dlp, lui, retéléchargerait tout, car la
+    conversion en mp3 efface la piste d'origine qu'il saurait reconnaître. Or la
+    chaîne de venus écoute chaque épisode deux fois — transcription, puis
+    réécoute des citations — et retéléchargeait 62 Mo (vu le 2026-09-18).
     """
+    mp3 = dest_base.with_suffix(".mp3")
+    # yt-dlp n'efface la piste d'origine qu'une fois la conversion finie : s'il
+    # en reste une à côté du mp3 (ou un `.part`), il a été coupé en route et le
+    # mp3 est peut-être tronqué — on retélécharge.
+    if (mp3.exists() and mp3.stat().st_size > 0
+            and sorted(dest_base.parent.glob(dest_base.stem + ".*")) == [mp3]):
+        log.info("Audio déjà téléchargé : %s", mp3.name)
+        return mp3
     try:
         import yt_dlp  # type: ignore
     except ImportError as exc:  # pragma: no cover
@@ -132,6 +145,10 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
         "outtmpl": outtmpl,
         "quiet": True,
         "no_warnings": True,
+        # `quiet` ne coupe pas la barre de progression depuis l'API Python (seule
+        # la ligne de commande en déduit `noprogress`) : sans ceci, chaque
+        # téléchargement écrit des centaines de lignes dans le journal de venus.
+        "noprogress": True,
         # ffmpeg est installé : on extrait directement en mp3.
         "postprocessors": [
             {"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}
@@ -140,7 +157,6 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     log.info("Téléchargement YouTube (audio) : %s", url)
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
-    mp3 = dest_base.with_suffix(".mp3")
     if mp3.exists():
         return mp3
     # Repli : prend le premier fichier produit avec ce préfixe.

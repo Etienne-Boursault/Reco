@@ -151,6 +151,75 @@ def test_download_youtube_raises_when_nothing_produced(tmp_path, monkeypatch):
         tr._download_youtube("https://yt/v=x", dest_base)
 
 
+def _faux_yt_dlp(monkeypatch, dest_base: Path) -> list[dict]:
+    """yt_dlp factice : chaque téléchargement est noté, avec ses options."""
+    telechargements: list[dict] = []
+
+    class FakeYDL:
+        def __init__(self, opts):
+            self.opts = opts
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def download(self, urls):
+            telechargements.append(self.opts)
+            dest_base.with_suffix(".mp3").write_bytes(b"audio neuf")
+
+    monkeypatch.setitem(sys.modules, "yt_dlp", types.SimpleNamespace(YoutubeDL=FakeYDL))
+    return telechargements
+
+
+def test_download_youtube_hides_the_progress_bar(tmp_path, monkeypatch):
+    """`quiet` seul laisse la barre de progression envahir le journal de venus."""
+    dest_base = tmp_path / "video"
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert telechargements[0]["noprogress"] is True and telechargements[0]["quiet"] is True
+
+
+def test_download_youtube_reuses_a_complete_mp3(tmp_path, monkeypatch):
+    """La réécoute des citations suit la transcription : pas de second téléchargement."""
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"audio de la transcription")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    result = tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert result == dest_base.with_suffix(".mp3")
+    assert result.read_bytes() == b"audio de la transcription"
+    assert telechargements == []
+
+
+@pytest.mark.parametrize("reste", ["video.webm", "video.webm.part"])
+def test_download_youtube_downloads_again_after_an_interrupted_run(tmp_path, monkeypatch,
+                                                                  reste):
+    """Une piste d'origine encore là : la conversion a été coupée, le mp3 peut être tronqué."""
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"mp3 tronque")
+    (tmp_path / reste).write_bytes(b"x")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    result = tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert len(telechargements) == 1 and result.read_bytes() == b"audio neuf"
+
+
+def test_download_youtube_ignores_an_empty_mp3(tmp_path, monkeypatch):
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert len(telechargements) == 1
+
+
 # ===== _resolve_audio =======================================================
 @responses.activate
 def test_resolve_audio_youtube_by_default(tmp_path, monkeypatch):
