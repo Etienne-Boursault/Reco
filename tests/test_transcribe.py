@@ -151,6 +151,75 @@ def test_download_youtube_raises_when_nothing_produced(tmp_path, monkeypatch):
         tr._download_youtube("https://yt/v=x", dest_base)
 
 
+def _faux_yt_dlp(monkeypatch, dest_base: Path) -> list[dict]:
+    """yt_dlp factice : chaque téléchargement est noté, avec ses options."""
+    telechargements: list[dict] = []
+
+    class FakeYDL:
+        def __init__(self, opts):
+            self.opts = opts
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def download(self, urls):
+            telechargements.append(self.opts)
+            dest_base.with_suffix(".mp3").write_bytes(b"audio neuf")
+
+    monkeypatch.setitem(sys.modules, "yt_dlp", types.SimpleNamespace(YoutubeDL=FakeYDL))
+    return telechargements
+
+
+def test_download_youtube_hides_the_progress_bar(tmp_path, monkeypatch):
+    """`quiet` seul laisse la barre de progression envahir le journal de venus."""
+    dest_base = tmp_path / "video"
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert telechargements[0]["noprogress"] is True and telechargements[0]["quiet"] is True
+
+
+def test_download_youtube_reuses_a_complete_mp3(tmp_path, monkeypatch):
+    """La réécoute des citations suit la transcription : pas de second téléchargement."""
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"audio de la transcription")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    result = tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert result == dest_base.with_suffix(".mp3")
+    assert result.read_bytes() == b"audio de la transcription"
+    assert telechargements == []
+
+
+@pytest.mark.parametrize("reste", ["video.webm", "video.webm.part"])
+def test_download_youtube_downloads_again_after_an_interrupted_run(tmp_path, monkeypatch,
+                                                                  reste):
+    """Une piste d'origine encore là : la conversion a été coupée, le mp3 peut être tronqué."""
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"mp3 tronque")
+    (tmp_path / reste).write_bytes(b"x")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    result = tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert len(telechargements) == 1 and result.read_bytes() == b"audio neuf"
+
+
+def test_download_youtube_ignores_an_empty_mp3(tmp_path, monkeypatch):
+    dest_base = tmp_path / "video"
+    dest_base.with_suffix(".mp3").write_bytes(b"")
+    telechargements = _faux_yt_dlp(monkeypatch, dest_base)
+
+    tr._download_youtube("https://yt/v=x", dest_base)
+
+    assert len(telechargements) == 1
+
+
 # ===== _resolve_audio =======================================================
 @responses.activate
 def test_resolve_audio_youtube_by_default(tmp_path, monkeypatch):
@@ -260,6 +329,49 @@ def test_the_amorce_is_given_to_the_model_at_every_window(tmp_path, monkeypatch)
     tr._transcribe_audio(audio, "small", "fr", "Bonjour, avec Kyan et Navo.")
 
     assert vus == [None, "Bonjour, avec Kyan et Navo."]
+
+
+def test_a_passage_lost_by_the_long_transcription_is_heard_again(tmp_path, monkeypatch):
+    """Le comblement tourne avec le modèle DÉJÀ chargé (pas de second
+    chargement) et réécoute la fenêtre sans filtre de silence, amorce comprise."""
+    seg = types.SimpleNamespace
+    charges, appels = [], []
+
+    class FakeModel:
+        def __init__(self, name, device=None, compute_type=None):
+            charges.append(name)
+
+        def transcribe(self, path, **options):
+            appels.append(options)
+            info = seg(language="fr", language_probability=0.99)
+            if "clip_timestamps" in options:
+                return iter([seg(start=4591.0, text=" Le bouquin arrive très vite. C'est un "
+                                                     "livre des scripts de Bref 2."),
+                             seg(start=4600.0, text=" Il y a de jolies photos."),
+                             seg(start=4606.0, text=" C'est un livre pour ceux qui aiment Bref.")]), info
+            return iter([seg(start=4589.0, text=" C'est ça exactement."),
+                         seg(start=4591.0, text=" Le bouquin arrive très vite."),
+                         seg(start=4603.0, text=" Il y a de jolies photos."),
+                         seg(start=4606.0, text=" C'est un livre pour ceux qui aiment Bref.")]), info
+
+    fake_mod = types.ModuleType("faster_whisper")
+    fake_mod.WhisperModel = FakeModel
+    monkeypatch.setitem(sys.modules, "faster_whisper", fake_mod)
+    audio = tmp_path / "a.mp3"
+    audio.write_bytes(b"")
+
+    text = tr._transcribe_audio(audio, "large-v3-turbo", "fr", "Un bon moment, avec Navo.")
+
+    assert charges == ["large-v3-turbo"]
+    assert appels[1]["clip_timestamps"] == [4591.0]
+    assert appels[1]["vad_filter"] is False and appels[1]["language"] == "fr"
+    assert appels[1]["hotwords"] == "Un bon moment, avec Navo."
+    assert text.splitlines() == [
+        "[01:16:29] C'est ça exactement.",
+        "[01:16:31] Le bouquin arrive très vite. C'est un livre des scripts de Bref 2.",
+        "[01:16:43] Il y a de jolies photos.",
+        "[01:16:46] C'est un livre pour ceux qui aiment Bref.",
+    ]
 
 
 # ===== transcribe_episode ===================================================

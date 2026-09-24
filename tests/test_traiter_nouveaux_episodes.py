@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import contextlib
 import json
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -32,12 +33,13 @@ def content(tmp_path, monkeypatch):
     return tmp_path
 
 
-def _episode(root: Path, guid: str, status: str = "none", transcript: bool = False) -> Path:
+def _episode(root: Path, guid: str, status: str = "none", transcript: bool = False,
+             **champs) -> Path:
     import common
 
     path = root / "episodes" / SOURCE / f"{common.slugify(guid)}.json"
     path.write_text(json.dumps({"sourceId": SOURCE, "guid": guid, "title": f"Titre {guid}",
-                                "transcriptStatus": status}), encoding="utf-8")
+                                "transcriptStatus": status, **champs}), encoding="utf-8")
     if transcript:
         t = common.transcript_path_for(SOURCE, guid)
         t.parent.mkdir(parents=True, exist_ok=True)
@@ -91,17 +93,68 @@ def test_transcrire_only_touches_youtube_episodes_not_yet_transcribed(content, i
                       "Bonjour et bienvenue dans Démo, avec A. Aujourd'hui : Titre yt-todo.")]
 
 
-def test_audio_is_removed_once_transcribed(content, inbox):
+def test_audio_is_kept_after_transcription_for_the_quote_pass(content, inbox):
+    """La réécoute des citations en a besoin juste après : c'est `extraire` qui le retire."""
     import common
 
     _episode(content, "yt-todo")
-    audio = common.AUDIO_DIR / SOURCE / "yt-todo-yt.m4a"
+    audio = common.AUDIO_DIR / SOURCE / "yt-todo-yt.mp3"
     audio.parent.mkdir(parents=True)
     audio.write_bytes(b"x")
 
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a, **k: None)
 
-    assert not audio.exists()
+    assert audio.exists()
+
+
+def test_the_audio_is_downloaded_once_per_episode(content, inbox, monkeypatch):
+    """Vu sur venus le 2026-09-18 : 62 Mo retéléchargés pour la réécoute des citations.
+
+    Transcription et réécoute passent toutes deux par `transcribe._resolve_audio`,
+    comme les vraies ; seul yt-dlp est simulé.
+    """
+    import common
+    import transcribe
+
+    # `transcribe` a importé AUDIO_DIR par son nom : sans ceci, le test écrirait
+    # dans le vrai dossier audio.
+    monkeypatch.setattr(transcribe, "AUDIO_DIR", common.AUDIO_DIR)
+    telechargements = []
+
+    class FakeYDL:
+        def __init__(self, opts):
+            self.opts = opts
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def download(self, urls):
+            telechargements.extend(urls)
+            Path(self.opts["outtmpl"].replace(".%(ext)s", ".mp3")).write_bytes(b"audio")
+
+    monkeypatch.setitem(sys.modules, "yt_dlp", SimpleNamespace(YoutubeDL=FakeYDL))
+    chemin = _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+
+    def transcriber(source_id, path, model, lang, force, amorce):
+        transcribe._resolve_audio(source_id, json.loads(path.read_text(encoding="utf-8")))
+        _episode(content, "yt-todo", status="auto", transcript=True,
+                 youtubeUrl="https://www.youtube.com/watch?v=todo")
+
+    def preciseur(source_id, guid, *, apply):
+        transcribe._resolve_audio(source_id, json.loads(chemin.read_text(encoding="utf-8")))
+        return SimpleNamespace(precisees=[])
+
+    state = tne.load_state(SOURCE)
+    tne.transcrire(SOURCE, inbox, state, transcriber=transcriber)
+    tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "c",
+                 extractor=lambda *a, **k: 1, lock=_no_lock, model="m", preciseur=preciseur)
+
+    assert telechargements == ["https://www.youtube.com/watch?v=todo"]
+    assert state["extracted"] == ["yt-todo"]
+    assert list((common.AUDIO_DIR / SOURCE).iterdir()) == []
 
 
 def test_a_lasting_transcription_failure_is_reported_once(content, inbox):
@@ -273,3 +326,63 @@ def test_state_survives_between_steps(content, monkeypatch):
 
     saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
     assert "transcription:yt-todo" in saved["lastErrors"]
+
+
+def test_the_cli_detects_through_the_real_step(content, monkeypatch, caplog):
+    _episode(content, "yt-neuf")
+    monkeypatch.setattr(tne, "fetch_youtube_episodes", lambda source_id: SimpleNamespace(
+        created=["yt-neuf"],
+        unrecognized=[{"id": "abc", "title": "Bande-annonce"}]))
+
+    with caplog.at_level("INFO"):
+        assert tne.main(["detecter", "--source", SOURCE, "--notify", "none"]) == 0
+
+    messages = [r.getMessage() for r in caplog.records if "Notification" in r.getMessage()]
+    assert any("Titre yt-neuf" in m for m in messages)
+    assert any("Bande-annonce" in m and "youtube.com/watch?v=abc" in m for m in messages)
+
+
+def test_the_cli_passes_the_review_url_to_the_extraction(content, monkeypatch):
+    recu = {}
+    monkeypatch.setattr(tne, "build_notify", lambda canal: recu.setdefault("canal", canal))
+    monkeypatch.setattr(tne, "extraire",
+                        lambda source, notify, state, **kw: recu.update(kw) or 0)
+
+    assert tne.main(["extraire", "--source", SOURCE, "--notify", "none",
+                     "--review-url", "http://10.8.0.1:8000/"]) == 0
+    assert recu == {"canal": "none", "review_url": "http://10.8.0.1:8000/"}
+
+
+# ===== notifications =========================================================
+def test_without_a_channel_the_notification_is_only_logged(caplog):
+    notify = tne.build_notify("none")
+    with caplog.at_level("INFO"):
+        notify("coucou")
+    assert any("coucou" in r.getMessage() for r in caplog.records)
+
+
+def test_with_a_channel_the_notification_is_sent_as_text(monkeypatch):
+    import poll_rss
+
+    envoyes = []
+    monkeypatch.setattr(poll_rss, "_build_sender",
+                        lambda canal: SimpleNamespace(send=envoyes.append) if canal == "matrix"
+                        else pytest.fail(f"canal inattendu : {canal}"))
+
+    tne.build_notify("matrix")("coucou")
+
+    assert envoyes == [{"msgtype": "m.text", "body": "coucou"}]
+
+
+def test_the_extraction_asks_the_review_server_for_the_pipeline_lock(monkeypatch):
+    """Le verrou réel vient de review_lock, sans forcer : le serveur a priorité."""
+    import review_lock
+
+    demandes = []
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock",
+                        lambda force: demandes.append(force) or contextlib.nullcontext())
+
+    with tne._pipeline_lock():
+        pass
+
+    assert demandes == [False]

@@ -7,6 +7,9 @@ rétablit un nom que l'ancienne n'avait pas.
 from __future__ import annotations
 
 import json
+import sys
+import types
+from contextlib import contextmanager
 from pathlib import Path
 
 import pytest
@@ -40,6 +43,11 @@ def _reco(content: Path, reco_id: str, **champs) -> Path:
     chemin = content / "recos" / SOURCE / f"{reco_id}.json"
     chemin.write_text(json.dumps(reco, ensure_ascii=False), encoding="utf-8")
     return chemin
+
+
+@contextmanager
+def _rien():
+    yield
 
 
 def _lire(chemin: Path) -> dict:
@@ -172,3 +180,116 @@ def test_timestamps_in_minutes_and_seconds_are_accepted():
     assert pc._secondes("01:02:03") == 3723
     assert pc._secondes("hier") is None
     assert pc._secondes(None) is None
+
+
+def test_an_empty_window_leaves_the_quote_alone(corpus):
+    """Whisper peut ne rien rendre (silence, filtre VAD) : on ne touche à rien."""
+    chemin = _reco(corpus, "ubm-1")
+    avant = _lire(chemin)["quote"]
+
+    bilan = pc.preciser_episode(SOURCE, GUID, apply=True, transcripteur=_transcripteur([]),
+                                audio=Path("a.mp3"))
+
+    assert bilan.examinees == 1 and bilan.inchangees == 1 and not bilan.precisees
+    assert _lire(chemin)["quote"] == avant
+
+
+# ===== adaptateur Whisper ====================================================
+def test_the_whisper_adapter_hints_the_names_and_clips_the_window(monkeypatch):
+    """Le seul intérêt de l'adaptateur : les indices et la fenêtre découpée."""
+    appels = []
+
+    class FauxSegment:
+        def __init__(self, text):
+            self.text = text
+
+    class FauxModele:
+        def __init__(self, nom, device, compute_type):
+            appels.append({"charge": (nom, device, compute_type)})
+
+        def transcribe(self, audio, **options):
+            appels.append({"transcrit": audio, **options})
+            return iter([FauxSegment("  Stromae, oui.  ")]), None
+
+    monkeypatch.setitem(sys.modules, "faster_whisper",
+                        types.SimpleNamespace(WhisperModel=FauxModele))
+
+    transcrire = pc._transcripteur_whisper()
+    assert transcrire(Path("a.mp3"), 10.0, 50.0, "Stromae.") == ["Stromae, oui."]
+    transcrire(Path("a.mp3"), 60.0, 100.0, "Stromae.")
+
+    assert appels[0]["charge"] == (pc.MODELE, "cpu", "int8")
+    assert appels[1]["hotwords"] == "Stromae." and appels[1]["clip_timestamps"] == [10.0, 50.0]
+    assert appels[1]["language"] == "fr" and appels[1]["vad_filter"] is True
+    # Le modèle coûte cher à charger : une seule fois pour tout l'épisode.
+    assert [a for a in appels if "charge" in a] == appels[:1]
+
+
+def test_the_audio_and_the_transcriber_are_found_alone_when_not_given(corpus, monkeypatch):
+    import common
+    import transcribe
+
+    episodes = corpus / "episodes" / SOURCE
+    episodes.mkdir(parents=True)
+    monkeypatch.setattr(common, "EPISODES_DIR", corpus / "episodes")
+    (episodes / "ep.json").write_text(json.dumps({"guid": GUID, "title": "Épisode"}),
+                                      encoding="utf-8")
+    _reco(corpus, "ubm-1")
+    monkeypatch.setattr(transcribe, "_resolve_audio",
+                        lambda source_id, episode: (Path("trouve.mp3"), "youtube"))
+    monkeypatch.setattr(pc, "_transcripteur_whisper",
+                        lambda: _transcripteur(["Que Stromae lui à mon avis c'est un geek."]))
+
+    bilan = pc.preciser_episode(SOURCE, GUID)
+
+    assert [p.noms_repares for p in bilan.precisees] == [["Stromae"]]
+
+
+# ===== ligne de commande =====================================================
+def test_the_cli_simulates_by_default(corpus, monkeypatch, capsys):
+    """Sans --apply : pas de verrou, pas d'écriture, et le bilan sur stdout."""
+    chemin = _reco(corpus, "ubm-1")
+    avant = chemin.read_text(encoding="utf-8")
+    monkeypatch.setattr(pc, "preciser_episode",
+                        lambda source, guid, **kw: pc.Bilan(
+                            guid, examinees=1,
+                            precisees=[pc.Precision("ubm-1", "Straumai", "Stromae", ["Stromae"])],
+                            sans_horodatage=["ubm-2"]))
+
+    assert pc.main(["--source", SOURCE, "--guid", GUID, "--json"]) == 0
+
+    sortie = json.loads(capsys.readouterr().out)
+    assert sortie["precisees"][0]["noms_repares"] == ["Stromae"]
+    assert sortie["sans_horodatage"] == ["ubm-2"]
+    assert chemin.read_text(encoding="utf-8") == avant
+
+
+def test_the_cli_takes_the_pipeline_lock_before_writing(corpus, monkeypatch):
+    import review_lock
+
+    pris = []
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock",
+                        lambda force=False: pris.append(force) or _rien())
+    monkeypatch.setattr(pc, "preciser_episode",
+                        lambda source, guid, **kw: pris.append(kw) or pc.Bilan(guid))
+
+    assert pc.main(["--source", SOURCE, "--guid", GUID, "--apply", "--force"]) == 0
+    assert pris[0] is True and pris[1] == {"apply": True}
+
+
+def test_the_cli_gives_up_when_the_review_server_holds_the_lock(corpus, monkeypatch):
+    import review_lock
+
+    def occupe(force=False):
+        raise review_lock.LockBusy("le serveur de relecture tourne")
+
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock", occupe)
+    monkeypatch.setattr(pc, "preciser_episode", lambda *a, **k: pytest.fail("ne doit pas écrire"))
+
+    assert pc.main(["--source", SOURCE, "--guid", GUID, "--apply"]) == 2
+
+
+def test_the_cli_reports_an_episode_it_could_not_touch(corpus, monkeypatch):
+    monkeypatch.setattr(pc, "preciser_episode",
+                        lambda source, guid, **kw: pc.Bilan(guid, erreurs=["aucune reco"]))
+    assert pc.main(["--source", SOURCE, "--guid", GUID]) == 2

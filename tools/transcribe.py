@@ -5,7 +5,9 @@ Pour un épisode donné (identifié par son guid, ou tous les épisodes d'une
 source) :
   1. télécharge l'audio depuis `audioUrl` (requests), ou via yt-dlp s'il n'y a
      qu'une `youtubeUrl` ;
-  2. transcrit l'audio en local avec faster-whisper (CPU par défaut) ;
+  2. transcrit l'audio en local avec faster-whisper (CPU par défaut), puis
+     réécoute les passages que la transcription longue a sautés
+     (combler_trous.py) ;
   3. écrit la transcription dans
      `tools/output/transcripts/<sourceId>/<guid>.txt` avec timestamps ;
   4. met à jour `transcriptStatus="auto"` dans le JSON de l'épisode.
@@ -33,6 +35,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+from combler_trous import combler as combler_trous
 from common import (
     AUDIO_DIR,
     find_episode_by_guid,
@@ -116,7 +119,20 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     """
     Télécharge la piste audio d'une vidéo YouTube via yt-dlp (import paresseux).
     Renvoie le chemin du fichier audio extrait (m4a/mp3).
+
+    Un mp3 déjà là est réutilisé : yt-dlp, lui, retéléchargerait tout, car la
+    conversion en mp3 efface la piste d'origine qu'il saurait reconnaître. Or la
+    chaîne de venus écoute chaque épisode deux fois — transcription, puis
+    réécoute des citations — et retéléchargeait 62 Mo (vu le 2026-09-18).
     """
+    mp3 = dest_base.with_suffix(".mp3")
+    # yt-dlp n'efface la piste d'origine qu'une fois la conversion finie : s'il
+    # en reste une à côté du mp3 (ou un `.part`), il a été coupé en route et le
+    # mp3 est peut-être tronqué — on retélécharge.
+    if (mp3.exists() and mp3.stat().st_size > 0
+            and sorted(dest_base.parent.glob(dest_base.stem + ".*")) == [mp3]):
+        log.info("Audio déjà téléchargé : %s", mp3.name)
+        return mp3
     try:
         import yt_dlp  # type: ignore
     except ImportError as exc:  # pragma: no cover
@@ -132,6 +148,10 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
         "outtmpl": outtmpl,
         "quiet": True,
         "no_warnings": True,
+        # `quiet` ne coupe pas la barre de progression depuis l'API Python (seule
+        # la ligne de commande en déduit `noprogress`) : sans ceci, chaque
+        # téléchargement écrit des centaines de lignes dans le journal de venus.
+        "noprogress": True,
         # ffmpeg est installé : on extrait directement en mp3.
         "postprocessors": [
             {"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}
@@ -140,7 +160,6 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     log.info("Téléchargement YouTube (audio) : %s", url)
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
-    mp3 = dest_base.with_suffix(".mp3")
     if mp3.exists():
         return mp3
     # Repli : prend le premier fichier produit avec ce préfixe.
@@ -214,12 +233,24 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         beam_size=5,
     )
     log.info("Langue détectée : %s (p=%.2f)", info.language, info.language_probability)
+    entrees = [(seg.start, seg.text.strip()) for seg in segments]
 
-    lines: list[str] = []
-    for seg in segments:
-        ts = _format_timestamp(seg.start)
-        lines.append(f"[{ts}] {seg.text.strip()}")
-    return "\n".join(lines) + "\n"
+    # La transcription longue perd parfois un passage parlé sans le signaler
+    # (cf. combler_trous) : on réécoute les fenêtres suspectes avec le modèle
+    # déjà chargé, sans filtre de silence (mesuré sans, le 2026-09-21).
+    def reecouter(clip: list[float]) -> list[tuple[float, str]]:
+        rendus, _info = model.transcribe(
+            str(audio_path),
+            hotwords=amorce or None,
+            language=language or info.language,
+            vad_filter=False,
+            beam_size=5,
+            clip_timestamps=clip,
+        )
+        return [(seg.start, seg.text) for seg in rendus]
+
+    entrees, _bilan = combler_trous(entrees, reecouter)
+    return "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees) + "\n"
 
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
