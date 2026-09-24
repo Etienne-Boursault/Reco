@@ -326,3 +326,63 @@ def test_state_survives_between_steps(content, monkeypatch):
 
     saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
     assert "transcription:yt-todo" in saved["lastErrors"]
+
+
+def test_the_cli_detects_through_the_real_step(content, monkeypatch, caplog):
+    _episode(content, "yt-neuf")
+    monkeypatch.setattr(tne, "fetch_youtube_episodes", lambda source_id: SimpleNamespace(
+        created=["yt-neuf"],
+        unrecognized=[{"id": "abc", "title": "Bande-annonce"}]))
+
+    with caplog.at_level("INFO"):
+        assert tne.main(["detecter", "--source", SOURCE, "--notify", "none"]) == 0
+
+    messages = [r.getMessage() for r in caplog.records if "Notification" in r.getMessage()]
+    assert any("Titre yt-neuf" in m for m in messages)
+    assert any("Bande-annonce" in m and "youtube.com/watch?v=abc" in m for m in messages)
+
+
+def test_the_cli_passes_the_review_url_to_the_extraction(content, monkeypatch):
+    recu = {}
+    monkeypatch.setattr(tne, "build_notify", lambda canal: recu.setdefault("canal", canal))
+    monkeypatch.setattr(tne, "extraire",
+                        lambda source, notify, state, **kw: recu.update(kw) or 0)
+
+    assert tne.main(["extraire", "--source", SOURCE, "--notify", "none",
+                     "--review-url", "http://10.8.0.1:8000/"]) == 0
+    assert recu == {"canal": "none", "review_url": "http://10.8.0.1:8000/"}
+
+
+# ===== notifications =========================================================
+def test_without_a_channel_the_notification_is_only_logged(caplog):
+    notify = tne.build_notify("none")
+    with caplog.at_level("INFO"):
+        notify("coucou")
+    assert any("coucou" in r.getMessage() for r in caplog.records)
+
+
+def test_with_a_channel_the_notification_is_sent_as_text(monkeypatch):
+    import poll_rss
+
+    envoyes = []
+    monkeypatch.setattr(poll_rss, "_build_sender",
+                        lambda canal: SimpleNamespace(send=envoyes.append) if canal == "matrix"
+                        else pytest.fail(f"canal inattendu : {canal}"))
+
+    tne.build_notify("matrix")("coucou")
+
+    assert envoyes == [{"msgtype": "m.text", "body": "coucou"}]
+
+
+def test_the_extraction_asks_the_review_server_for_the_pipeline_lock(monkeypatch):
+    """Le verrou réel vient de review_lock, sans forcer : le serveur a priorité."""
+    import review_lock
+
+    demandes = []
+    monkeypatch.setattr(review_lock, "acquire_pipeline_lock",
+                        lambda force: demandes.append(force) or contextlib.nullcontext())
+
+    with tne._pipeline_lock():
+        pass
+
+    assert demandes == [False]
