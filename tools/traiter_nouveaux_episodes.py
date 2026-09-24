@@ -122,8 +122,10 @@ def amorce_pour(source: dict[str, Any], episode: dict[str, Any]) -> str:
 
 # ===== étapes ================================================================
 def detecter(source_id: str, notify: Notify,
-             fetch: Callable[[str], Any] = fetch_youtube_episodes) -> int:
-    result = fetch(source_id)
+             fetch: Callable[[str], Any] | None = None) -> int:
+    # Résolu à l'appel : un défaut figé dans la signature rend la ligne de
+    # commande intestable (voir le même choix dans fetch_youtube_episodes).
+    result = (fetch or fetch_youtube_episodes)(source_id)
     titles = {ep["guid"]: _title(ep) for _, ep in _youtube_episodes(source_id)}
     for guid in result.created:
         notify(f"🎙️ Nouvel épisode détecté : {titles.get(guid, guid)}. "
