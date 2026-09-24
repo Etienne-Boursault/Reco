@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade & Styleto",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/4039206471"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3209",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/4039206471"
+    }
+  ],
+  "quote": "Vous avez fait un duo qui s'appelle Le Prochain Rêve, qui est sorti le 18 juin. [...] Il y a déjà super morceau, trop cool.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:01:52",
+  "title": "Le prochain rêve",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Solann",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/artist/78965772",
+    "instagram": "solann_zla"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:59:59",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3220",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/78965772"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/solann_zla/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Solann"
+    }
+  ],
+  "quote": "Solann, une troisième, que j'adore aussi.",
+  "recommendedBy": "Styleto",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:59:59",
+  "title": "Solann",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

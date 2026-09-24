@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:55:31"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3217",
+  "itemId": "c9592e2f",
+  "kind": "citation",
+  "quote": "Regarde, moi j'écoute des musiques tristes. Hop, Ben Mazué, le blues, playlist Ben Mazué.",
+  "recommendedBy": "Styleto",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:55:31",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

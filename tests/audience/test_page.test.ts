@@ -70,7 +70,7 @@ async function corpsAvecMesures(
       const dossier = path.join(racine, 'tools', 'output', genre, 'un-bon-moment');
       mkdirSync(dossier, { recursive: true });
       writeFileSync(
-        path.join(dossier, '2026-08-25.jsonl'),
+        path.join(dossier, `${JOUR}.jsonl`),
         contenu.map((l) => `${JSON.stringify(l)}\n`).join(''),
         'utf8',
       );
@@ -83,13 +83,24 @@ async function corpsAvecMesures(
   }
 }
 
+/**
+ * Jour des mesures de test : hier.
+ *
+ * La page n'agrège que les 30 derniers jours (`nbJoursDemande`). Des mesures
+ * datées en dur finissent donc par en sortir : figées au 2026-08-25, elles ont
+ * rendu ce fichier rouge le 2026-09-24, un mois plus tard, sans qu'une ligne de
+ * code ait bougé — la page ne trouvait plus AUCUNE donnée. Hier plutôt
+ * qu'aujourd'hui : le jour en cours est encore incomplet.
+ */
+const JOUR = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
 const VISITE = {
-  ts: '2026-08-25T10:00:00.000Z', chemin: '/un-bon-moment/films', statut: 200,
+  ts: `${JOUR}T10:00:00.000Z`, chemin: '/un-bon-moment/films', statut: 200,
   robot: false, appareil: 'mobile', provenance: null, langue: 'fr', pays: 'FR',
   visiteur: 'aaaaaaaaaaaa', dureeMs: 5,
 };
 const CLIC = {
-  ts: '2026-08-25T10:05:00.000Z', url: 'https://exemple.test/x', category: 'tmdb',
+  ts: `${JOUR}T10:05:00.000Z`, url: 'https://exemple.test/x', category: 'tmdb',
   sourceId: 'un-bon-moment', recoId: 'ubm-1', ref: '/un-bon-moment/films',
 };
 

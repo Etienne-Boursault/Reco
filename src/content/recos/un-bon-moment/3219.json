@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Ben Mazué feat. Yoa",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/3116650911"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:00:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3219",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/3116650911"
+    }
+  ],
+  "quote": "elle a un feat avec Ben Mazué, qui est super, qui s'appelle Rupture",
+  "recommendedBy": "Styleto",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:00:36",
+  "title": "Rupture",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}
