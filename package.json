@@ -22,12 +22,12 @@
     "test:og": "vitest run tests/og"
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.4",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/node": "^11.1.6",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource/bebas-neue": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^7.1.5",
+    "astro": "^7.3.3",
     "minisearch": "^7.2.0",
     "satori": "^0.33.0"
   },
