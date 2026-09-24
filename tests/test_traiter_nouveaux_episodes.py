@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import contextlib
 import json
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -32,12 +33,13 @@ def content(tmp_path, monkeypatch):
     return tmp_path
 
 
-def _episode(root: Path, guid: str, status: str = "none", transcript: bool = False) -> Path:
+def _episode(root: Path, guid: str, status: str = "none", transcript: bool = False,
+             **champs) -> Path:
     import common
 
     path = root / "episodes" / SOURCE / f"{common.slugify(guid)}.json"
     path.write_text(json.dumps({"sourceId": SOURCE, "guid": guid, "title": f"Titre {guid}",
-                                "transcriptStatus": status}), encoding="utf-8")
+                                "transcriptStatus": status, **champs}), encoding="utf-8")
     if transcript:
         t = common.transcript_path_for(SOURCE, guid)
         t.parent.mkdir(parents=True, exist_ok=True)
@@ -91,17 +93,68 @@ def test_transcrire_only_touches_youtube_episodes_not_yet_transcribed(content, i
                       "Bonjour et bienvenue dans Démo, avec A. Aujourd'hui : Titre yt-todo.")]
 
 
-def test_audio_is_removed_once_transcribed(content, inbox):
+def test_audio_is_kept_after_transcription_for_the_quote_pass(content, inbox):
+    """La réécoute des citations en a besoin juste après : c'est `extraire` qui le retire."""
     import common
 
     _episode(content, "yt-todo")
-    audio = common.AUDIO_DIR / SOURCE / "yt-todo-yt.m4a"
+    audio = common.AUDIO_DIR / SOURCE / "yt-todo-yt.mp3"
     audio.parent.mkdir(parents=True)
     audio.write_bytes(b"x")
 
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a, **k: None)
 
-    assert not audio.exists()
+    assert audio.exists()
+
+
+def test_the_audio_is_downloaded_once_per_episode(content, inbox, monkeypatch):
+    """Vu sur venus le 2026-09-18 : 62 Mo retéléchargés pour la réécoute des citations.
+
+    Transcription et réécoute passent toutes deux par `transcribe._resolve_audio`,
+    comme les vraies ; seul yt-dlp est simulé.
+    """
+    import common
+    import transcribe
+
+    # `transcribe` a importé AUDIO_DIR par son nom : sans ceci, le test écrirait
+    # dans le vrai dossier audio.
+    monkeypatch.setattr(transcribe, "AUDIO_DIR", common.AUDIO_DIR)
+    telechargements = []
+
+    class FakeYDL:
+        def __init__(self, opts):
+            self.opts = opts
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def download(self, urls):
+            telechargements.extend(urls)
+            Path(self.opts["outtmpl"].replace(".%(ext)s", ".mp3")).write_bytes(b"audio")
+
+    monkeypatch.setitem(sys.modules, "yt_dlp", SimpleNamespace(YoutubeDL=FakeYDL))
+    chemin = _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+
+    def transcriber(source_id, path, model, lang, force, amorce):
+        transcribe._resolve_audio(source_id, json.loads(path.read_text(encoding="utf-8")))
+        _episode(content, "yt-todo", status="auto", transcript=True,
+                 youtubeUrl="https://www.youtube.com/watch?v=todo")
+
+    def preciseur(source_id, guid, *, apply):
+        transcribe._resolve_audio(source_id, json.loads(chemin.read_text(encoding="utf-8")))
+        return SimpleNamespace(precisees=[])
+
+    state = tne.load_state(SOURCE)
+    tne.transcrire(SOURCE, inbox, state, transcriber=transcriber)
+    tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "c",
+                 extractor=lambda *a, **k: 1, lock=_no_lock, model="m", preciseur=preciseur)
+
+    assert telechargements == ["https://www.youtube.com/watch?v=todo"]
+    assert state["extracted"] == ["yt-todo"]
+    assert list((common.AUDIO_DIR / SOURCE).iterdir()) == []
 
 
 def test_a_lasting_transcription_failure_is_reported_once(content, inbox):

@@ -139,7 +139,14 @@ def detecter(source_id: str, notify: Notify,
 
 
 def _remove_audio(source_id: str, guid: str) -> None:
-    """L'audio se retélécharge : inutile de garder ~70 Mo par épisode (ni de les sauvegarder)."""
+    """Retire l'audio d'un épisode, une fois l'extraction terminée.
+
+    Il sert deux fois dans le même passage de tick.sh : à la transcription, puis
+    à la réécoute des citations qui suit l'extraction. Le retirer dès la
+    transcription obligeait à retélécharger 62 Mo. Si l'extraction échoue, il
+    reste jusqu'au passage qui la réussit. Au-delà, il se retélécharge : inutile
+    de garder ~70 Mo par épisode (ni de les sauvegarder).
+    """
     folder = common.AUDIO_DIR / source_id
     for path in folder.glob(f"{slugify(guid)}*"):
         with contextlib.suppress(OSError):
@@ -165,7 +172,7 @@ def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
                          notify)
             continue
         _clear_error(state, key)
-        _remove_audio(source_id, episode["guid"])
+        # L'audio reste pour la réécoute des citations : `extraire` le retire.
     return 0
 
 
