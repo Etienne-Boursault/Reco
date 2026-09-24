@@ -153,6 +153,28 @@ def test_run_excluded_ids(root, monkeypatch):
     assert report.linked == []
 
 
+def test_run_ids_keeps_only_those_recos(root, monkeypatch):
+    """`--ids` est l'inverse d'`--exclude-ids` : le reste du corpus est ignoré.
+
+    C'est ce dont la chaîne a besoin pour n'enrichir qu'un épisode : lister les
+    3 000 autres recos en exclusion était intenable.
+    """
+    report = _run(root, monkeypatch, {"a-1": LINKED, "a-2": LINKED}, ids=["a-1"])
+    assert report.seen == 1
+    assert [c.reco_id for c in report.linked] == ["a-1"]
+
+
+def test_run_ids_does_not_even_count_the_others(root, monkeypatch):
+    report = _run(root, monkeypatch, {}, ids=["a-1"])
+    assert report.reasons[m.REASON_EXCLUDED] == 0
+    assert [c.reco_id for c in report.outcomes] == ["a-1"]
+
+
+def test_run_ids_empty_means_everything(root, monkeypatch):
+    report = _run(root, monkeypatch, {}, ids=[])
+    assert report.seen == 4
+
+
 def test_run_only_missing_skips_covered_recos(root, monkeypatch):
     _write(root, "src-a", {"id": "a-1", "title": "Civilisation",
                            "creator": "Orelsan", "types": ["album"],
@@ -233,6 +255,24 @@ def test_report_collects_ambiguous_refusals_for_review():
         (m.PLATFORM_APPLE, m.REASON_NO_MATCH, ""),
     ), m.REASON_ARTIST_MISMATCH))
     assert [c.reason for c in report.review] == [m.REASON_ARTIST_MISMATCH]
+
+
+def test_report_keeps_the_verdict_of_every_reco():
+    """`outcomes` dit, reco par reco, ce qu'elle a reçu ou pourquoi rien.
+
+    `review` ne garde que les refus ambigus et `reasons` ne compte que des
+    totaux : ni l'un ni l'autre ne permet de dresser la liste du reste à faire.
+    """
+    report = m.Report()
+    report.record({"id": "a-1", "title": "Civilisation", "types": ["album"]},
+                  m.RecoOutcome((DEEZER_LINK,), (), m.REASON_LINKED))
+    report.record({"id": "a-2", "title": "Fabe", "types": ["artiste"]},
+                  m.RecoOutcome((), (), m.REASON_NO_CREATOR))
+
+    assert [(c.reco_id, c.reason, c.links) for c in report.outcomes] == [
+        ("a-1", m.REASON_LINKED, 1),
+        ("a-2", m.REASON_NO_CREATOR, 0),
+    ]
 
 
 def test_format_report_is_readable():
@@ -323,6 +363,22 @@ def test_main_writes_json_report(cli, tmp_path):
 def test_main_accepts_filters(cli):
     assert m.main(["--source", "src-a", "--types", "album", "--limit", "1",
                    "--artists", "--only-missing", "--exclude-ids", "zzz"]) == 0
+
+
+def test_main_ids_restricts_the_pass(cli, tmp_path):
+    out = tmp_path / "rapport.json"
+    assert m.main(["--ids", "a-1", "--json", str(out)]) == 0
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    assert payload["seen"] == 1
+    assert [o["id"] for o in payload["outcomes"]] == ["a-1"]
+
+
+def test_main_ids_accepts_a_file(cli, tmp_path):
+    fichier = tmp_path / "ids.txt"
+    fichier.write_text("a-1\na-2\n", encoding="utf-8")
+    out = tmp_path / "rapport.json"
+    assert m.main(["--ids", f"@{fichier}", "--json", str(out)]) == 0
+    assert json.loads(out.read_text(encoding="utf-8"))["seen"] == 2
 
 
 def test_build_parser_defaults():

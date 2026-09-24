@@ -186,6 +186,7 @@ from music_links_pipeline import (
 )
 from music_links_report import (
     LinkedCase,
+    RecoCase,
     Report,
     ReviewCase,
     format_report,
@@ -244,6 +245,7 @@ __all__ = [
     "LinkedCase",
     "MusicLink",
     "Plan",
+    "RecoCase",
     "RecoOutcome",
     "Report",
     "Resolution",
@@ -307,6 +309,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Ne traiter que les recos sans AUCUN lien d'écoute.")
     p.add_argument("--exclude-ids", default=None,
                    help="Ids à ne PAS enrichir : « a,b,c » ou « @fichier ».")
+    p.add_argument("--ids", default=None,
+                   help="N'enrichir QUE ces ids : « a,b,c » ou « @fichier » "
+                        "(un id par ligne). Les autres recos ne sont pas même "
+                        "examinées.")
     p.add_argument("--json", dest="json_path", default=None,
                    help="Écrit le rapport détaillé (JSON) à ce chemin.")
     p.add_argument("--ignore-server-lock", action="store_true",
@@ -323,6 +329,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         root=RECOS_DIR, session=requests.Session(), source=args.source,
         types=types, limit=args.limit, apply=args.apply,
         exclude_ids=parse_exclude_ids(args.exclude_ids),
+        ids=parse_exclude_ids(args.ids),
         allow_artists=args.artists, only_missing=args.only_missing,
     )
 

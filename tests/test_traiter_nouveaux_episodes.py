@@ -326,3 +326,278 @@ def test_state_survives_between_steps(content, monkeypatch):
 
     saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
     assert "transcription:yt-todo" in saved["lastErrors"]
+
+
+# ===== finaliser =============================================================
+@pytest.fixture
+def recos(content, monkeypatch):
+    import common
+
+    dossier = content / "recos"
+    (dossier / SOURCE).mkdir(parents=True)
+    monkeypatch.setattr(common, "RECOS_DIR", dossier)
+    return dossier
+
+
+def _reco(dossier: Path, reco_id: str, guid: str, status: str = "validated",
+          **champs) -> Path:
+    chemin = dossier / SOURCE / f"{reco_id}.json"
+    chemin.write_text(json.dumps({"id": reco_id, "episodeGuid": guid, "sourceId": SOURCE,
+                                  "title": f"Titre {reco_id}", "types": ["album"],
+                                  "status": status, **champs}, ensure_ascii=False),
+                      encoding="utf-8")
+    return chemin
+
+
+def _rapport(liens: int = 0, raisons: dict[str, str] | None = None, servies=()):
+    """Double du rapport d'enrichissement musical (`servies` : ids qui ont reçu un lien)."""
+    return SimpleNamespace(
+        linked=[f"lien-{i}" for i in range(liens)],
+        outcomes=[SimpleNamespace(reco_id=rid, reason=raison,
+                                  links=1 if rid in servies else 0)
+                  for rid, raison in (raisons or {}).items()])
+
+
+def _plan(items_created=(), items_reused=(), mentions_created=(), errors=(), drafts=()):
+    """Double du plan de publication (cf. publier_episode.Plan)."""
+    return SimpleNamespace(items_created=list(items_created), items_reused=list(items_reused),
+                           mentions_created=list(mentions_created), errors=list(errors),
+                           drafts=list(drafts), refused=bool(errors or drafts))
+
+
+def _liens_vides(*_a, **_k):
+    return _rapport()
+
+
+def _publie_rien(*_a, **_k):
+    return _plan()
+
+
+def test_a_finaliser_waits_while_one_reco_is_still_a_draft(content, recos):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    _reco(recos, "r-2", "yt-1", status="draft")
+
+    assert tne.a_finaliser(SOURCE, tne.load_state(SOURCE)) == []
+
+
+def test_a_finaliser_ignores_an_episode_without_any_reco(content, recos):
+    _episode(content, "yt-1", status="auto")
+    assert tne.a_finaliser(SOURCE, tne.load_state(SOURCE)) == []
+
+
+def test_a_finaliser_takes_a_fully_reviewed_episode(content, recos):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    _reco(recos, "r-2", "yt-1", status="discarded")
+
+    pending = tne.a_finaliser(SOURCE, tne.load_state(SOURCE))
+
+    assert [ep["guid"] for _p, ep in pending] == ["yt-1"]
+
+
+def test_a_finaliser_ignores_an_episode_already_finalised(content, recos):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    state = tne.load_state(SOURCE)
+    state["finalized"].append("yt-1")
+
+    assert tne.a_finaliser(SOURCE, state) == []
+
+
+def test_finalisation_only_touches_the_recos_of_that_episode(content, recos, inbox):
+    """Les recos d'un autre épisode ne doivent jamais partir à l'enrichissement."""
+    _episode(content, "yt-1", status="auto")
+    _episode(content, "yt-2", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    _reco(recos, "r-2", "yt-1")
+    _reco(recos, "autre", "yt-2", status="draft")  # yt-2 n'est pas relu
+    vus = []
+    state = tne.load_state(SOURCE)
+
+    def liens(source_id, ids):
+        vus.append((source_id, set(ids)))
+        return _rapport()
+
+    tne.finaliser(SOURCE, inbox, state, liens=liens, publier=_publie_rien, lock=_no_lock)
+
+    assert vus == [(SOURCE, {"r-1", "r-2"})]
+    assert state["finalized"] == ["yt-1"]
+
+
+def test_finalisation_lists_what_is_left_to_do_by_hand(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-lie", "yt-1", links=[{"url": "https://www.deezer.com/album/1"}])
+    _reco(recos, "r-ambigu", "yt-1", types=["artiste"])
+    _reco(recos, "r-livre", "yt-1", types=["livre"])
+    _reco(recos, "r-ecartee", "yt-1", status="discarded")
+
+    def liens(_source_id, _ids):
+        return _rapport(liens=1, raisons={"r-lie": "linked", "r-ambigu": "ambiguous"},
+                        servies={"r-lie"})
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=liens,
+                  publier=lambda *_a, **_k: _plan(items_created=["i1", "i2"],
+                                                  items_reused=["i3"],
+                                                  mentions_created=["m1", "m2", "m3"]),
+                  lock=_no_lock)
+
+    message = inbox[0]
+    assert "1 lien(s) posé(s)" in message
+    assert "2 œuvre(s) créée(s), 1 réutilisée(s), 3 mention(s)" in message
+    assert "À compléter à la main (2)" in message
+    assert "Titre r-ambigu (artiste) — ambiguous" in message
+    assert f"Titre r-livre (livre) — {tne.HORS_PERIMETRE}" in message
+    assert "r-lie" not in message and "r-ecartee" not in message
+
+
+def test_a_reco_just_served_is_not_listed_as_remaining(content, recos, inbox):
+    """Le rapport fait foi autant que le disque : les deux doivent concorder."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")  # sur le disque, elle est encore nue
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE),
+                  liens=lambda *_a: _rapport(liens=1, raisons={"r-1": "linked"},
+                                             servies={"r-1"}),
+                  publier=_publie_rien, lock=_no_lock)
+
+    assert "Rien à compléter à la main." in inbox[0]
+
+
+def test_finalisation_says_when_nothing_is_left(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1", links=[{"url": "https://www.deezer.com/album/1"}])
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  publier=_publie_rien, lock=_no_lock)
+
+    assert "Rien à compléter à la main." in inbox[0]
+
+
+def test_a_very_long_list_is_cut_short(content, recos, inbox):
+    """Un message Matrix illisible ne sert personne : le détail reste sur la page."""
+    _episode(content, "yt-1", status="auto")
+    for i in range(tne.MAX_RESTES + 3):
+        _reco(recos, f"r-{i:02d}", "yt-1")
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  publier=_publie_rien, lock=_no_lock)
+
+    assert f"À compléter à la main ({tne.MAX_RESTES + 3})" in inbox[0]
+    assert inbox[0].count("•") == tne.MAX_RESTES
+    assert "… et 3 autre(s)." in inbox[0]
+
+
+def test_a_refused_publication_leaves_the_episode_to_be_retried(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    state = tne.load_state(SOURCE)
+
+    tne.finaliser(SOURCE, inbox, state, liens=_liens_vides,
+                  publier=lambda *_a, **_k: _plan(errors=["fiche illisible"]),
+                  lock=_no_lock)
+
+    assert state["finalized"] == []
+    assert "fiche illisible" in inbox[0] and "⚠️" in inbox[0]
+
+
+def test_a_failing_episode_does_not_block_the_next_one_at_finalisation(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _episode(content, "yt-2", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    _reco(recos, "r-2", "yt-2")
+    state = tne.load_state(SOURCE)
+
+    def liens(_source_id, ids):
+        if "r-1" in ids:
+            raise RuntimeError("Deezer injoignable")
+        return _rapport()
+
+    tne.finaliser(SOURCE, inbox, state, liens=liens, publier=_publie_rien, lock=_no_lock)
+
+    assert state["finalized"] == ["yt-2"]
+    assert "Deezer injoignable" in inbox[0]
+
+
+def test_finalisation_waits_when_the_review_server_holds_the_lock(content, recos, inbox):
+    from review_lock import ServerLockBusy
+
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    state = tne.load_state(SOURCE)
+
+    @contextlib.contextmanager
+    def busy():
+        raise ServerLockBusy("review_server actif")
+        yield  # pragma: no cover
+
+    rc = tne.finaliser(SOURCE, inbox, state, liens=_liens_vides, publier=_publie_rien,
+                       lock=busy)
+
+    assert rc == 1 and state["finalized"] == []
+    assert "verrou" in inbox[0]
+
+
+def test_finalisation_takes_the_lock_before_writing_anything(content, recos):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    ordre = []
+
+    @contextlib.contextmanager
+    def lock():
+        ordre.append("verrou")
+        yield
+
+    tne.finaliser(SOURCE, lambda _t: None, tne.load_state(SOURCE),
+                  liens=lambda *_a: ordre.append("liens") or _rapport(),
+                  publier=lambda *_a, **_k: ordre.append("publie") or _plan(),
+                  lock=lock)
+
+    assert ordre == ["verrou", "liens", "publie"]
+
+
+def test_finalisation_does_nothing_when_there_is_nothing_to_do(content, recos, inbox):
+    assert tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE),
+                         liens=lambda *_a: pytest.fail("rien à faire"),
+                         publier=_publie_rien, lock=_no_lock) == 0
+    assert inbox == []
+
+
+def test_the_music_pass_is_scoped_and_writes_but_never_guesses(recos, monkeypatch):
+    """L'adaptateur réel : périmètre, écriture, artistes ouverts, chemins à l'appel."""
+    import common
+    import music_links_pipeline
+
+    recu = {}
+    monkeypatch.setattr(music_links_pipeline, "run", lambda **kw: recu.update(kw) or "rapport")
+
+    assert tne._liens_musicaux(SOURCE, {"r-1"}) == "rapport"
+
+    assert recu["root"] == common.RECOS_DIR and recu["source"] == SOURCE
+    assert recu["ids"] == {"r-1"}
+    assert recu["apply"] is True and recu["allow_artists"] is True
+
+
+def test_the_cli_says_whether_there_is_something_to_finalise(content, recos):
+    assert tne.main(["a-finaliser", "--source", SOURCE]) == 1
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    assert tne.main(["a-finaliser", "--source", SOURCE]) == 0
+
+
+def test_the_cli_runs_the_finalisation_and_saves_the_state(content, recos, monkeypatch):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-1", "yt-1")
+    pris = []
+    monkeypatch.setattr(tne, "build_notify", lambda _c: lambda _t: None)
+    monkeypatch.setattr(tne, "_liens_musicaux", lambda *_a: _rapport())
+    monkeypatch.setattr("publier_episode.preparer", lambda *_a, **_k: _plan())
+    # Si le verrou n'était pas résolu à l'appel, c'est le VRAI qui serait pris.
+    monkeypatch.setattr(tne, "_pipeline_lock",
+                        lambda: pris.append(True) or contextlib.nullcontext())
+
+    assert tne.main(["finaliser", "--source", SOURCE, "--notify", "none"]) == 0
+    assert pris == [True]
+
+    saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
+    assert saved["finalized"] == ["yt-1"]

@@ -32,6 +32,23 @@ class LinkedCase:
 
 
 @dataclass(frozen=True)
+class RecoCase:
+    """Le sort d'UNE reco examinée : ce qu'elle a reçu, ou pourquoi rien.
+
+    `review` ne retient que les refus ambigus, et `reasons` ne compte que des
+    totaux : ni l'un ni l'autre ne dit « cette reco-là est repartie sans rien,
+    pour cette raison-là ». C'est pourtant ce qu'il faut pour dire à l'humain ce
+    qui lui reste à faire, reco par reco (cf. l'étape `finaliser` de la chaîne).
+    """
+
+    reco_id: str
+    title: str
+    type_: str
+    reason: str
+    links: int
+
+
+@dataclass(frozen=True)
 class ReviewCase:
     reco_id: str
     title: str
@@ -49,6 +66,7 @@ class Report:
     written: int = 0
     linked: list[LinkedCase] = field(default_factory=list)
     review: list[ReviewCase] = field(default_factory=list)
+    outcomes: list[RecoCase] = field(default_factory=list)
     reasons: Counter = field(default_factory=Counter)
     by_platform: Counter = field(default_factory=Counter)
     by_type: dict[str, Counter] = field(
@@ -62,6 +80,8 @@ class Report:
         reco_id = str(reco.get("id", ""))
         title = str(reco.get("title") or "")
         creator = str(reco.get("creator") or "")
+        self.outcomes.append(RecoCase(reco_id, title, type_, outcome.reason,
+                                      len(outcome.links)))
 
         for link in outcome.links:
             self.by_platform[link.platform] += 1
@@ -117,5 +137,10 @@ def report_payload(report: Report) -> dict[str, Any]:
             {"id": c.reco_id, "title": c.title, "type": c.type_,
              "platform": c.platform, "reason": c.reason, "detail": c.detail}
             for c in report.review
+        ],
+        "outcomes": [
+            {"id": c.reco_id, "title": c.title, "type": c.type_,
+             "reason": c.reason, "links": c.links}
+            for c in report.outcomes
         ],
     }

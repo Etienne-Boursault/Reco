@@ -1,13 +1,14 @@
 #!/bin/sh
 # Un passage de la chaîne Reco sur venus. Lancé par cron (cf. README.md).
 #
-# Ordre : mise à jour du dépôt, détection, transcription, extraction. Chaque
-# étape tourne dans un conteneur jetable (`docker compose run --rm`).
+# Ordre : mise à jour du dépôt, détection, transcription, extraction, puis
+# finalisation des épisodes que l'humain vient de relire. Chaque étape tourne
+# dans un conteneur jetable (`docker compose run --rm`).
 #
-# L'extraction prend le verrou pipeline que la page de validation tient tant
-# qu'elle tourne (tools/review_lock.py). On n'arrête donc `reco-review` que le
-# temps de cette étape — une à deux minutes — et seulement si `a-extraire`
-# répond qu'il y a du travail.
+# L'extraction et la finalisation prennent le verrou pipeline que la page de
+# validation tient tant qu'elle tourne (tools/review_lock.py). On n'arrête donc
+# `reco-review` que le temps de ces étapes — une à deux minutes — et seulement
+# si `a-extraire` ou `a-finaliser` répond qu'il y a du travail.
 set -u
 cd /home/etienne/docker/reco || exit 1
 mkdir -p logs
@@ -33,5 +34,11 @@ if outil a-extraire; then
   horodater "extraction : arrêt de la page de validation"
   docker compose stop review
   outil extraire || horodater "extraction en échec"
+  docker compose start review
+fi
+if outil a-finaliser; then
+  horodater "finalisation : arrêt de la page de validation"
+  docker compose stop review
+  outil finaliser || horodater "finalisation en échec"
   docker compose start review
 fi

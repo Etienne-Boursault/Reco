@@ -206,7 +206,8 @@ def iter_reco_paths(root: Path, source: str | None = None) -> list[Path]:
 
 
 def parse_exclude_ids(raw: str | None) -> set[str]:
-    """`--exclude-ids` : liste CSV, ou `@fichier` (un id par ligne, `#` = commentaire)."""
+    """Liste d'ids (`--ids`, `--exclude-ids`) : CSV, ou `@fichier` (un id par
+    ligne, `#` = commentaire)."""
     if not raw:
         return set()
     if raw.startswith("@"):
@@ -219,6 +220,7 @@ def run(*, root: Path, session: requests.Session | None,
         source: str | None = None, types: Sequence[str] | None = None,
         limit: int | None = None, apply: bool = False,
         exclude_ids: Iterable[str] = (),
+        ids: Iterable[str] = (),
         allow_artists: bool = False,
         only_missing: bool = False,
         sleep: float = RATE_LIMIT_SLEEP) -> Report:
@@ -226,8 +228,14 @@ def run(*, root: Path, session: requests.Session | None,
 
     `only_missing` restreint aux recos DÉPOURVUES de tout lien d'écoute — le
     gisement où le gain est réel, à traiter avant l'homogénéisation.
+
+    `ids` fait l'inverse d'`exclude_ids` : SEULES ces recos sont examinées, et
+    les autres ne comptent même pas comme vues. C'est ce dont la chaîne de venus
+    a besoin pour n'enrichir qu'un épisode fraîchement relu, sans rouvrir le
+    reste du corpus (`exclude_ids` obligeait à lister les 3 000 autres).
     """
     excluded = set(exclude_ids)
+    wanted_ids = set(ids)
     wanted = set(types) if types else None
     report = Report()
     resolved = 0
@@ -240,12 +248,14 @@ def run(*, root: Path, session: requests.Session | None,
             report.reasons[REASON_UNREADABLE] += 1
             continue
 
+        reco_id = str(reco.get("id", path.stem))
+        if wanted_ids and reco_id not in wanted_ids:
+            continue
         if not any(t in SUPPORTED_TYPES for t in (reco.get("types") or [])):
             continue
         if wanted and not (set(reco.get("types") or []) & wanted):
             continue
         report.seen += 1
-        reco_id = str(reco.get("id", path.stem))
 
         if reco.get("status") != "validated":
             report.record(reco, RecoOutcome((), (), REASON_NOT_VALIDATED))

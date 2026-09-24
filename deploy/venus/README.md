@@ -14,9 +14,15 @@ aucun portable ne soit allumé, venus :
 La relecture reste humaine : la page de validation est le serveur de relecture
 habituel, joignable **par le VPN seulement**, sur <http://10.8.0.1:8000>.
 
-La publication — conversion des recos validées en œuvres et mentions, puis poussée
-sur `main` — n'est pas encore automatisée : l'outil existant
-(`migrate_reco_to_item_mention.py`) réécrit tout le corpus et ne doit pas être lancé.
+Une fois l'épisode relu de bout en bout (plus aucune reco en brouillon), le passage
+suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qui n'écrit
+une URL que si Deezer ou Apple corrobore titre ET artiste —, puis conversion en œuvres
+et mentions par `publier_episode.py`, et un message Matrix qui liste **ce qui reste à
+faire à la main**, reco par reco. Ce qui demande un jugement (homonymes, livres,
+associations, vidéos, sites officiels) n'est jamais deviné.
+
+Ce qui n'est toujours pas automatisé : la poussée sur `main`. Et
+`migrate_reco_to_item_mention.py` ne doit jamais être lancé — il réécrit tout le corpus.
 
 ## Où sont les choses
 
