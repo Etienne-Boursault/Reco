@@ -331,6 +331,49 @@ def test_the_amorce_is_given_to_the_model_at_every_window(tmp_path, monkeypatch)
     assert vus == [None, "Bonjour, avec Kyan et Navo."]
 
 
+def test_a_passage_lost_by_the_long_transcription_is_heard_again(tmp_path, monkeypatch):
+    """Le comblement tourne avec le modèle DÉJÀ chargé (pas de second
+    chargement) et réécoute la fenêtre sans filtre de silence, amorce comprise."""
+    seg = types.SimpleNamespace
+    charges, appels = [], []
+
+    class FakeModel:
+        def __init__(self, name, device=None, compute_type=None):
+            charges.append(name)
+
+        def transcribe(self, path, **options):
+            appels.append(options)
+            info = seg(language="fr", language_probability=0.99)
+            if "clip_timestamps" in options:
+                return iter([seg(start=4591.0, text=" Le bouquin arrive très vite. C'est un "
+                                                     "livre des scripts de Bref 2."),
+                             seg(start=4600.0, text=" Il y a de jolies photos."),
+                             seg(start=4606.0, text=" C'est un livre pour ceux qui aiment Bref.")]), info
+            return iter([seg(start=4589.0, text=" C'est ça exactement."),
+                         seg(start=4591.0, text=" Le bouquin arrive très vite."),
+                         seg(start=4603.0, text=" Il y a de jolies photos."),
+                         seg(start=4606.0, text=" C'est un livre pour ceux qui aiment Bref.")]), info
+
+    fake_mod = types.ModuleType("faster_whisper")
+    fake_mod.WhisperModel = FakeModel
+    monkeypatch.setitem(sys.modules, "faster_whisper", fake_mod)
+    audio = tmp_path / "a.mp3"
+    audio.write_bytes(b"")
+
+    text = tr._transcribe_audio(audio, "large-v3-turbo", "fr", "Un bon moment, avec Navo.")
+
+    assert charges == ["large-v3-turbo"]
+    assert appels[1]["clip_timestamps"] == [4591.0]
+    assert appels[1]["vad_filter"] is False and appels[1]["language"] == "fr"
+    assert appels[1]["hotwords"] == "Un bon moment, avec Navo."
+    assert text.splitlines() == [
+        "[01:16:29] C'est ça exactement.",
+        "[01:16:31] Le bouquin arrive très vite. C'est un livre des scripts de Bref 2.",
+        "[01:16:43] Il y a de jolies photos.",
+        "[01:16:46] C'est un livre pour ceux qui aiment Bref.",
+    ]
+
+
 # ===== transcribe_episode ===================================================
 @pytest.fixture
 def ep_setup(tmp_path, monkeypatch):

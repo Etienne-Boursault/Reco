@@ -5,7 +5,9 @@ Pour un épisode donné (identifié par son guid, ou tous les épisodes d'une
 source) :
   1. télécharge l'audio depuis `audioUrl` (requests), ou via yt-dlp s'il n'y a
      qu'une `youtubeUrl` ;
-  2. transcrit l'audio en local avec faster-whisper (CPU par défaut) ;
+  2. transcrit l'audio en local avec faster-whisper (CPU par défaut), puis
+     réécoute les passages que la transcription longue a sautés
+     (combler_trous.py) ;
   3. écrit la transcription dans
      `tools/output/transcripts/<sourceId>/<guid>.txt` avec timestamps ;
   4. met à jour `transcriptStatus="auto"` dans le JSON de l'épisode.
@@ -33,6 +35,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+from combler_trous import combler as combler_trous
 from common import (
     AUDIO_DIR,
     find_episode_by_guid,
@@ -230,12 +233,24 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         beam_size=5,
     )
     log.info("Langue détectée : %s (p=%.2f)", info.language, info.language_probability)
+    entrees = [(seg.start, seg.text.strip()) for seg in segments]
 
-    lines: list[str] = []
-    for seg in segments:
-        ts = _format_timestamp(seg.start)
-        lines.append(f"[{ts}] {seg.text.strip()}")
-    return "\n".join(lines) + "\n"
+    # La transcription longue perd parfois un passage parlé sans le signaler
+    # (cf. combler_trous) : on réécoute les fenêtres suspectes avec le modèle
+    # déjà chargé, sans filtre de silence (mesuré sans, le 2026-09-21).
+    def reecouter(clip: list[float]) -> list[tuple[float, str]]:
+        rendus, _info = model.transcribe(
+            str(audio_path),
+            hotwords=amorce or None,
+            language=language or info.language,
+            vad_filter=False,
+            beam_size=5,
+            clip_timestamps=clip,
+        )
+        return [(seg.start, seg.text) for seg in rendus]
+
+    entrees, _bilan = combler_trous(entrees, reecouter)
+    return "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees) + "\n"
 
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
