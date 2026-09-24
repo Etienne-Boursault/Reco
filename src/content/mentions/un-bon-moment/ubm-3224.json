@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:14:50"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3224",
+  "itemId": "cdad5e39",
+  "kind": "reco",
+  "quote": "je souhaite apporter aussi mon soutien à l'association Linkee",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:14:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

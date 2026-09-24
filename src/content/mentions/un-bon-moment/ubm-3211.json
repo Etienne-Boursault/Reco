@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:06:18"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3211",
+  "itemId": "521735de",
+  "kind": "citation",
+  "quote": "Fabe, c'est un rappeur à l'ancienne. Très bon rappeur à l'ancienne, mais qui a arrêté tôt, mais très fort.",
+  "recommendedBy": "Grand Corps Malade",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:06:18",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:58"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3222",
+  "itemId": "db7c4906",
+  "kind": "reco",
+  "quote": "T'en as fait un magnifique film. Il y a peut-être encore des gens qui ne l'ont pas vu.",
+  "recommendedBy": "Kyan Khojandi & Navo & Grand Corps Malade",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

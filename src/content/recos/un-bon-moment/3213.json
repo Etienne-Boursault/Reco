@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/4039206411"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:17:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3213",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/4039206411"
+    }
+  ],
+  "quote": "Allez streamer ça fort ! Ça s'appelle mes doutes avec toi !",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:17:30",
+  "title": "Mes doutes avec toi",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

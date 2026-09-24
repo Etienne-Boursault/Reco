@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:14:50",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3224",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://linkee.co/"
+    }
+  ],
+  "quote": "je souhaite apporter aussi mon soutien à l'association Linkee",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:14:50",
+  "title": "Linkee",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

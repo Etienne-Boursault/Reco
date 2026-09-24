@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3223",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.sourirealavie.fr/"
+    }
+  ],
+  "quote": "l'association que je parraine depuis plus de 15 ans, qui s'appelle Sourire à la vie",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:19",
+  "title": "Sourire à la vie",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

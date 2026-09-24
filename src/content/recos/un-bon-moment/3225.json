@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Mona Guba",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/album/1041239822"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3225",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Une Bonne Boutique (vinyle)",
+      "url": "https://unebonneboutique.com/products/vinyle-un-bon-freestyle-mona-guba"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/1041239822"
+    }
+  ],
+  "quote": "plume très très aiguisée, bravo Mona, je suis fan",
+  "recommendedBy": "Grand Corps Malade",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:09",
+  "title": "Un Bon Freestyle",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

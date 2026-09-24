@@ -1,0 +1,45 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade feat. SDM",
+  "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/track/4039206401"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:32:18",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3216",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/4039206401"
+    }
+  ],
+  "quote": "streamez sa fort. Trace avec SDM, voir la mer le 18 septembre",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:32:18",
+  "title": "Traces",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

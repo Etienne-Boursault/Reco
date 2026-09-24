@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:59:27"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3218",
+  "itemId": "05dc1d42",
+  "kind": "citation",
+  "quote": "je vais vous parler d'une jeune femme, une artiste qui s'appelle Yoa",
+  "recommendedBy": "Styleto",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:59:27",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

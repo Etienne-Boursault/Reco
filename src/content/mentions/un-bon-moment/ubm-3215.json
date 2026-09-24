@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-18T10:26:40+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:32:13"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3215",
+  "itemId": "e494932b",
+  "kind": "reco",
+  "quote": "Grand Corps Malade en tournée, à partir de janvier on peut l'avoir dans toutes les villes, Zenith, Arena. N'hésitez pas à prendre vos tickets",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-wMdkIHguIkY",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:32:13",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
