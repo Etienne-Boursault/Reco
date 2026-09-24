@@ -1,31 +1,36 @@
 """
 traiter_nouveaux_episodes.py — la chaîne automatique d'un nouvel épisode.
 
-Lancé à intervalles réguliers sur venus, en quatre temps que le script d'hôte
+Lancé à intervalles réguliers sur venus, en six temps que le script d'hôte
 enchaîne (cf. deploy/venus/) :
 
-    detecter    nouvelles vidéos de la chaîne -> épisodes `yt-…`
-    transcrire  épisodes `yt-…` pas encore transcrits (faster-whisper, CPU)
-    a-extraire  code 0 s'il reste un épisode transcrit à extraire, 1 sinon
-    extraire    extraction des recos, puis message avec le lien de validation
+    detecter     nouvelles vidéos de la chaîne -> épisodes `yt-…`
+    transcrire   épisodes `yt-…` pas encore transcrits (faster-whisper, CPU)
+    a-extraire   code 0 s'il reste un épisode transcrit à extraire, 1 sinon
+    extraire     extraction des recos, puis message avec le lien de validation
+    a-finaliser  code 0 s'il reste un épisode entièrement relu, 1 sinon
+    finaliser    liens d'écoute + œuvres et mentions, puis message du reste à faire
 
-Pourquoi découper : l'extraction prend le verrou pipeline, que le review_server
-tient tant qu'il tourne (cf. review_lock.py). Le script d'hôte n'arrête donc la
-page de validation que le temps d'`extraire` — une à deux minutes — et
-seulement quand `a-extraire` a répondu qu'il y a du travail.
+Pourquoi découper : l'extraction et la finalisation prennent le verrou pipeline,
+que le review_server tient tant qu'il tourne (cf. review_lock.py). Le script
+d'hôte n'arrête donc la page de validation que le temps de ces étapes — une à
+deux minutes — et seulement quand `a-extraire` ou `a-finaliser` a répondu qu'il
+y a du travail.
 
 Seuls les épisodes `yt-…` sont concernés. Les épisodes Acast ont été traités à
 la main : les ré-extraire serait facturé et écraserait des mois de relecture.
 
-État : `tools/output/pipeline/<source>.json` — épisodes déjà extraits, et
-dernière erreur signalée par étape et par épisode, pour qu'une panne qui dure
-ne produise pas un message à chaque passage.
+État : `tools/output/pipeline/<source>.json` — épisodes déjà extraits, épisodes
+déjà finalisés, et dernière erreur signalée par étape et par épisode, pour
+qu'une panne qui dure ne produise pas un message à chaque passage.
 
 Usage :
     python traiter_nouveaux_episodes.py --source un-bon-moment detecter
     python traiter_nouveaux_episodes.py --source un-bon-moment transcrire
     python traiter_nouveaux_episodes.py --source un-bon-moment a-extraire
     python traiter_nouveaux_episodes.py --source un-bon-moment extraire
+    python traiter_nouveaux_episodes.py --source un-bon-moment a-finaliser
+    python traiter_nouveaux_episodes.py --source un-bon-moment finaliser
 """
 
 from __future__ import annotations
@@ -69,6 +74,7 @@ def load_state(source_id: str) -> dict[str, Any]:
     path = state_path(source_id)
     state = read_json(path) if path.exists() else {}
     state.setdefault("extracted", [])
+    state.setdefault("finalized", [])
     state.setdefault("lastErrors", {})
     return state
 
@@ -263,6 +269,139 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}\n{link}")
 
 
+# ===== finalisation ==========================================================
+#: Au-delà, le message Matrix devient illisible ; le détail reste sur la page.
+MAX_RESTES = 15
+HORS_PERIMETRE = "aucun outil automatique pour ce type"
+
+
+def _recos_de(source_id: str, guid: str) -> list[dict[str, Any]]:
+    from publier_episode import _episode_recos
+    return _episode_recos(source_id, guid)
+
+
+def a_finaliser(source_id: str, state: dict[str, Any]) -> list[tuple[Path, dict[str, Any]]]:
+    """Épisodes relus de bout en bout, pas encore finalisés.
+
+    Une seule reco encore en brouillon suffit à attendre : `publier_episode`
+    refuserait l'épisode entier, et poser des liens sur une reco qui sera
+    peut-être écartée serait du travail perdu.
+    """
+    pending = []
+    for path, episode in _youtube_episodes(source_id):
+        if episode["guid"] in state["finalized"]:
+            continue
+        statuts = [r.get("status", "draft") for r in _recos_de(source_id, episode["guid"])]
+        if statuts and "draft" not in statuts:
+            pending.append((path, episode))
+    return pending
+
+
+def _liens_musicaux(source_id: str, ids: set[str]) -> Any:
+    """Passe d'enrichissement musical, limitée aux recos de l'épisode.
+
+    Aucune invention : l'outil n'écrit une URL que si Deezer ou Apple corrobore
+    le titre ET l'artiste (cf. enrich_music_links). Les types `artiste` sont
+    ouverts, mais leurs homonymes finissent en « ambiguous » — donc dans la
+    liste du reste à faire, pas dans le corpus.
+    """
+    import requests
+
+    from music_links_pipeline import run as run_links
+    return run_links(root=common.RECOS_DIR, session=requests.Session(),
+                     source=source_id, ids=ids, apply=True, allow_artists=True)
+
+
+def _restes(rapport: Any, recos: list[dict[str, Any]]) -> list[str]:
+    """Ce qui reste à la main : une reco affichée sans aucun lien.
+
+    Deux sources concordantes, et non une seule : le fichier relu du disque, et
+    le rapport de la passe. Une reco que la passe vient de servir n'a rien à
+    faire dans la liste, même si la relecture du disque la donnait encore nue.
+    """
+    verdicts = {c.reco_id: c for c in rapport.outcomes}
+    lignes = []
+    for reco in recos:
+        reco_id = reco.get("id")
+        verdict = verdicts.get(reco_id)
+        if reco.get("links") or reco.get("status") == "discarded":
+            continue
+        if verdict is not None and verdict.links:
+            continue
+        types = "/".join(reco.get("types") or []) or "?"
+        raison = verdict.reason if verdict is not None else HORS_PERIMETRE
+        lignes.append(f"• {reco.get('title')} ({types}) — {raison}")
+    return lignes
+
+
+def _message_finalisation(episode: dict[str, Any], rapport: Any, plan: Any,
+                          recos: list[dict[str, Any]]) -> str:
+    tete = (f"🔗 {_title(episode)} : {len(rapport.linked)} lien(s) posé(s), "
+            f"{len(plan.items_created)} œuvre(s) créée(s), "
+            f"{len(plan.items_reused)} réutilisée(s), "
+            f"{len(plan.mentions_created)} mention(s).")
+    restes = _restes(rapport, recos)
+    if not restes:
+        return f"{tete}\nRien à compléter à la main."
+    suite = "" if len(restes) <= MAX_RESTES else f"\n… et {len(restes) - MAX_RESTES} autre(s)."
+    return (f"{tete}\nÀ compléter à la main ({len(restes)}) :\n"
+            + "\n".join(restes[:MAX_RESTES]) + suite)
+
+
+def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
+              liens: Callable[[str, set[str]], Any] | None = None,
+              publier: Callable[..., Any] | None = None,
+              lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
+    pending = a_finaliser(source_id, state)
+    if not pending:
+        return 0
+    # Résolus à l'appel : un défaut figé dans la signature est lié à la
+    # définition, et un test qui le remplace prendrait le VRAI verrou.
+    liens = liens or _liens_musicaux
+    lock = lock or _pipeline_lock
+    if publier is None:
+        from publier_episode import preparer as publier
+
+    from review_lock import LockBusy
+    try:
+        with lock():
+            _clear_error(state, "finalisation:verrou")
+            for _path, episode in pending:
+                _finaliser_un(source_id, episode, state, notify,
+                              liens=liens, publier=publier)
+    except LockBusy as exc:
+        _report_once(state, "finalisation:verrou",
+                     f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
+                     notify)
+        return 1
+    return 0
+
+
+def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any],
+                  notify: Notify, *, liens: Callable[[str, set[str]], Any],
+                  publier: Callable[..., Any]) -> None:
+    guid = episode["guid"]
+    key = f"finalisation:{guid}"
+    ids = {r["id"] for r in _recos_de(source_id, guid) if r.get("id")}
+    try:
+        rapport = liens(source_id, ids)
+        plan = publier(source_id, guid, apply=True)
+    except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
+        _report_once(state, key,
+                     f"⚠️ Finalisation impossible pour « {_title(episode)} » : {exc}", notify)
+        return
+    if plan.refused:
+        motif = ", ".join(plan.errors or plan.drafts)
+        _report_once(state, key,
+                     f"⚠️ Œuvres et mentions non écrites pour « {_title(episode)} » : {motif}",
+                     notify)
+        return
+    _clear_error(state, key)
+    state["finalized"].append(guid)
+    # Relu après la passe de liens : c'est elle qui vient d'en poser.
+    notify(_message_finalisation(episode, rapport, plan, _recos_de(source_id, guid)))
+
+
 # ===== notification ==========================================================
 def build_notify(channel: str) -> Notify:
     sender = None
@@ -279,7 +418,7 @@ def build_notify(channel: str) -> Notify:
 
 
 # ===== CLI ===================================================================
-STEPS = ("detecter", "transcrire", "a-extraire", "extraire")
+STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-finaliser", "finaliser")
 
 
 @contextlib.contextmanager
@@ -303,9 +442,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--modele-transcription", default=WHISPER_MODEL)
     args = parser.parse_args(argv)
 
-    if args.etape == "a-extraire":
-        pending = a_extraire(args.source, load_state(args.source))
-        log.info("%d épisode(s) à extraire.", len(pending))
+    if args.etape in ("a-extraire", "a-finaliser"):
+        state = load_state(args.source)
+        if args.etape == "a-extraire":
+            pending = a_extraire(args.source, state)
+            log.info("%d épisode(s) à extraire.", len(pending))
+        else:
+            pending = a_finaliser(args.source, state)
+            log.info("%d épisode(s) à finaliser.", len(pending))
         return 0 if pending else 1
 
     notify = build_notify(args.notify)
@@ -314,6 +458,8 @@ def main(argv: list[str] | None = None) -> int:
     with _state(args.source) as state:
         if args.etape == "transcrire":
             return transcrire(args.source, notify, state, model=args.modele_transcription)
+        if args.etape == "finaliser":
+            return finaliser(args.source, notify, state)
         return extraire(args.source, notify, state, review_url=args.review_url)
 
 
