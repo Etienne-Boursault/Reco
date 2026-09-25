@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:53:20"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3230",
+  "itemId": "b877364b",
+  "kind": "citation",
+  "quote": "C'est un gitan qui s'appelle El Camaron de la Isla",
+  "recommendedBy": "Clémentine Célarié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-jO7GMNTuHR0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:53:20",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

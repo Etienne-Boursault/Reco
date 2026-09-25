@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Benoîte Groult",
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:36",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3240",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253053552-les-vaisseaux-du-coeur-benoite-groult/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Le Livre de Poche",
+      "url": "https://www.livredepoche.com/livre/les-vaisseaux-du-coeur-9782253053552/"
+    }
+  ],
+  "quote": "C'est les « Vaisseaux du cœur » de Benoît Groutte. Une histoire d'amour.",
+  "recommendedBy": "Clémentine Célarié",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:36",
+  "title": "Les Vaisseaux du cœur",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

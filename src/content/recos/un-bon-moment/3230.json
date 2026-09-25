@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "externalIds": {
+    "deezer": "https://www.deezer.com/artist/7768"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:53:20",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3230",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/7768"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Camar%C3%B3n_de_la_Isla"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/artist/camar%C3%B3n-de-la-isla/13092994"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/camaron-de-la-isla/39051"
+    }
+  ],
+  "quote": "C'est un gitan qui s'appelle El Camaron de la Isla",
+  "recommendedBy": "Clémentine Célarié",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:53:20",
+  "title": "Camarón de la Isla",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

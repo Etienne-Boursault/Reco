@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Mobius Digital",
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:22",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3236",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/753640/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Mobius Digital (studio)",
+      "url": "https://www.mobiusdigitalgames.com/outer-wilds.html"
+    }
+  ],
+  "quote": "Ça met bien genre The Witness, Outer Wilds, Blue Prince.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:22",
+  "title": "Outer Wilds",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

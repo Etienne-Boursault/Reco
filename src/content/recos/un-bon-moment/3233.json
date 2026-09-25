@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "aliases": [
+    "Thirteen Lives"
+  ],
+  "creator": "Ron Howard",
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "externalIds": {
+    "tmdb": "698948",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/698948-thirteen-lives/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:32",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3233",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/thirteen-lives"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt12262116/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/698948"
+    }
+  ],
+  "quote": "J'ai vu un super film sur une plateforme qui s'appelle « Les 13 vies »",
+  "recommendedBy": "Clémentine Célarié",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:32",
+  "title": "Treize Vies",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2022
+}

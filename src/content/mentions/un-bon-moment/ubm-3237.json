@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:18:39"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3237",
+  "itemId": "936af87a",
+  "kind": "reco",
+  "quote": "Oh, regardez ça, c'est anglais, c'est génial.",
+  "recommendedBy": "Clémentine Célarié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-jO7GMNTuHR0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:18:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

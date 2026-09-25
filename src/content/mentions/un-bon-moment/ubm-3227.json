@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:01:28"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3227",
+  "itemId": "8e7e05ba",
+  "kind": "reco",
+  "quote": "Et vraiment, je vous encourage à aller le voir parce que c'est vraiment génial.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-jO7GMNTuHR0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:01:28",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
