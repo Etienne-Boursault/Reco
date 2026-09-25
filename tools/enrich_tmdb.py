@@ -21,6 +21,12 @@ Usage :
     python enrich_tmdb.py --source un-bon-moment --limit 10
     python enrich_tmdb.py --source un-bon-moment --force   # re-traiter même
                                                             # celles déjà enrichies
+    python enrich_tmdb.py --source un-bon-moment --ids ubm-1,ubm-2 --dry-run
+
+`--ids` restreint la passe à quelques recos : la chaîne de venus l'appelle sur
+le seul épisode qu'elle vient de finaliser, et lister les 3 000 autres recos en
+exclusion n'était pas tenable. `--dry-run` n'écrit rien — cet outil écrivait
+sans filet, là où l'enrichisseur musical simule par défaut.
 """
 from __future__ import annotations
 
@@ -28,7 +34,8 @@ import argparse
 import os
 import sys
 import time
-from urllib.parse import quote
+from collections.abc import Iterable
+from dataclasses import dataclass, field
 
 import requests
 from dotenv import load_dotenv
@@ -36,116 +43,16 @@ from dotenv import load_dotenv
 from common import (
     TOOLS_DIR,
     log,
+    parse_ids_option,
     read_json,
     recos_dir_for,
     write_json_if_changed,
 )
 from review_lock import ServerLockBusy, acquire_pipeline_lock
+from tmdb_providers import _provider_link
 
 TMDB_BASE = "https://api.themoviedb.org/3"
 RATE_LIMIT_SLEEP = 0.1  # 10 req/sec, bien sous la limite TMDB (50 req/sec).
-
-# Mapping nom-affiché-par-TMDB → URL de recherche directe + marqueur éthique.
-# Recherche d'abord par correspondance EXACTE, puis par PATTERN (substring) pour
-# couvrir les nombreuses variantes que TMDB renvoie (« Apple TV Store »,
-# « Netflix Standard with Ads », « X Amazon Channel », « Canal VOD », …).
-# Quand un provider ne match aucune règle, on retombe sur une recherche
-# DuckDuckGo neutre.
-PROVIDER_RULES: dict[str, dict[str, str]] = {
-    # --- Plateformes mainstream (neutres) ---
-    "Netflix":              {"url": "https://www.netflix.com/search?q={q}",                     "ethics": "neutral"},
-    "Apple TV":             {"url": "https://tv.apple.com/fr/search?term={q}",                  "ethics": "neutral"},
-    "Disney Plus":          {"url": "https://www.disneyplus.com/fr-fr/search?q={q}",            "ethics": "neutral"},
-    "Paramount Plus":       {"url": "https://www.paramountplus.com/fr/search/?q={q}",           "ethics": "neutral"},
-    "Max":                  {"url": "https://play.max.com/search?q={q}",                       "ethics": "neutral"},
-    "Crunchyroll":          {"url": "https://www.crunchyroll.com/fr/search?q={q}",              "ethics": "neutral"},
-    "YouTube":              {"url": "https://www.youtube.com/results?search_query={q}",         "ethics": "neutral"},
-    "Filmo TV":             {"url": "https://www.filmotv.fr/?txtsearch={q}",                    "ethics": "neutral"},
-    "Google Play Movies":   {"url": "https://play.google.com/store/search?q={q}&c=movies",      "ethics": "neutral"},
-    "Orange VOD":           {"url": "https://video.orange.fr/search?q={q}",                     "ethics": "neutral"},
-    "Sooner":               {"url": "https://www.sooner.fr/recherche?q={q}",                    "ethics": "neutral"},
-    "Pathé Home":           {"url": "https://www.pathehome.com/recherche?text={q}",             "ethics": "neutral"},
-    "Rakuten TV":           {"url": "https://rakuten.tv/fr/search?q={q}",                       "ethics": "neutral"},
-    "Molotov TV":           {"url": "https://www.molotov.tv/search?q={q}",                      "ethics": "neutral"},
-    "SFR Play":             {"url": "https://www.sfrplay.fr/recherche?q={q}",                   "ethics": "neutral"},
-    "TF1+":                 {"url": "https://www.tf1.fr/recherche?q={q}",                       "ethics": "neutral"},
-    "M6+":                  {"url": "https://www.6play.fr/recherche?q={q}",                     "ethics": "neutral"},
-    "VIVA by videofutur":   {"url": "https://www.videofutur.fr/recherche?q={q}",                "ethics": "neutral"},
-    "Premiere Max":         {"url": "https://www.premieremax.com/search?q={q}",                 "ethics": "neutral"},
-    "Animation Digital Network": {"url": "https://animationdigitalnetwork.com/search?q={q}",    "ethics": "neutral"},
-    "Cinemas a la Demande": {"url": "https://www.cinemasalademande.com/?s={q}",                 "ethics": "neutral"},
-    "Plex":                 {"url": "https://watch.plex.tv/search?q={q}",                       "ethics": "neutral"},
-    "Plex Channel":         {"url": "https://watch.plex.tv/search?q={q}",                       "ethics": "neutral"},
-    "Filmzie":              {"url": "https://www.filmzie.com/search?q={q}",                     "ethics": "indie"},
-    # --- Plateformes « indé » / culturelles ---
-    "Arte":                 {"url": "https://www.arte.tv/fr/search/?q={q}",                     "ethics": "indie"},
-    "ARTE Boutique":        {"url": "https://boutique.arte.tv/search?q={q}",                    "ethics": "indie"},
-    "Mubi":                 {"url": "https://mubi.com/fr/films?q={q}",                          "ethics": "indie"},
-    "MUBI":                 {"url": "https://mubi.com/fr/films?q={q}",                          "ethics": "indie"},
-    "Universcine":          {"url": "https://www.universcine.com/?query={q}",                   "ethics": "indie"},
-    "Tenk":                 {"url": "https://www.tenk.tv/search?q={q}",                         "ethics": "indie"},
-    "La Cinetek":           {"url": "https://www.lacinetek.com/fr/?text={q}",                   "ethics": "indie"},
-    "LaCinetek":            {"url": "https://www.lacinetek.com/fr/?text={q}",                   "ethics": "indie"},
-    "Artiflix":             {"url": "https://www.artiflix.com/search?q={q}",                    "ethics": "indie"},
-    "Shadowz":              {"url": "https://shadowz.fr/search?q={q}",                          "ethics": "indie"},
-    # --- ⚠️ Plateformes à éviter (Amazon, Bolloré) ---
-    "Amazon Prime Video":   {"url": "https://www.primevideo.com/-/fr/search/?phrase={q}",       "ethics": "avoid"},
-    "Amazon Video":         {"url": "https://www.primevideo.com/-/fr/search/?phrase={q}",       "ethics": "avoid"},
-    "Canal+":               {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
-    "myCANAL":              {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
-    "Canal+ Series":        {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
-    "Canal+ Séries":        {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
-    "Canal VOD":            {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",     "ethics": "avoid"},
-}
-
-# Patterns appliqués DANS L'ORDRE quand le nom du provider ne match aucune
-# entrée exacte. La 1ère règle qui matche gagne.
-# (substring insensible à la casse → règle exacte du dict ci-dessus)
-PROVIDER_PATTERNS: list[tuple[str, dict[str, str]]] = [
-    # Tout ce qui contient « Amazon » (channels, Prime Video with Ads, etc.).
-    ("amazon",         {"url": "https://www.primevideo.com/-/fr/search/?phrase={q}",   "ethics": "avoid"}),
-    # Toute variante de Canal (groupe Bolloré).
-    ("canal",          {"url": "https://www.canalplus.com/cmd/searchOnsite?query={q}",  "ethics": "avoid"}),
-    # Variantes Apple TV (« Apple TV Store », « Apple TV Plus », …).
-    ("apple tv",       {"url": "https://tv.apple.com/fr/search?term={q}",               "ethics": "neutral"}),
-    # Variantes Netflix (« Netflix Standard with Ads », « Netflix basic »).
-    ("netflix",        {"url": "https://www.netflix.com/search?q={q}",                  "ethics": "neutral"}),
-    # Variantes Disney+ / Paramount+ / HBO Max / Max.
-    ("disney",         {"url": "https://www.disneyplus.com/fr-fr/search?q={q}",         "ethics": "neutral"}),
-    ("paramount",      {"url": "https://www.paramountplus.com/fr/search/?q={q}",        "ethics": "neutral"}),
-    ("hbo max",        {"url": "https://play.max.com/search?q={q}",                     "ethics": "neutral"}),
-    # MUBI peut apparaître avec d'autres suffixes (« MUBI Amazon Channel »
-    # est déjà capté par "amazon channel" plus haut → avoid).
-    ("mubi",           {"url": "https://mubi.com/fr/films?q={q}",                       "ethics": "indie"}),
-    # ARTE et ses variantes.
-    ("arte",           {"url": "https://www.arte.tv/fr/search/?q={q}",                  "ethics": "indie"}),
-]
-
-
-def _provider_link(provider_name: str, title: str) -> dict:
-    """Construit un lien { label, url, ethics } pour un nom de provider TMDB.
-
-    Cascade : 1) règle exacte, 2) pattern substring (1er match), 3) fallback
-    DuckDuckGo. On garde toujours le `provider_name` original comme `label`
-    pour l'affichage (≠ de l'URL cible).
-    """
-    q = quote(title)
-    # 1) règle exacte
-    rule = PROVIDER_RULES.get(provider_name)
-    if rule:
-        return {"label": provider_name, "url": rule["url"].format(q=q), "ethics": rule["ethics"]}
-    # 2) pattern substring (premier match gagne)
-    name_lc = provider_name.lower()
-    for needle, r in PROVIDER_PATTERNS:
-        if needle in name_lc:
-            return {"label": provider_name, "url": r["url"].format(q=q), "ethics": r["ethics"]}
-    # 3) fallback : recherche neutre (DuckDuckGo, pas Google).
-    return {
-        "label": provider_name,
-        "url": f"https://duckduckgo.com/?q={quote(title + ' ' + provider_name)}",
-        "ethics": "neutral",
-    }
-
 
 class TMDBAPIError(RuntimeError):
     """Erreur HTTP ou réseau TMDB — distincte d'un « non trouvé » légitime.
@@ -271,6 +178,49 @@ def is_targetable(reco: dict) -> bool:
     return any(t in ("film", "serie") for t in (reco.get("types") or []))
 
 
+@dataclass(frozen=True)
+class CasTmdb:
+    """Sort d'une reco dans une passe : `raison` vaut `ok` ou `not_found`."""
+
+    reco_id: str
+    titre: str
+    raison: str
+    providers: int
+
+
+@dataclass
+class RapportTmdb:
+    """Agrégats d'une passe, pour la chaîne de venus et les rapports."""
+
+    vues: int = 0
+    ecrites: int = 0
+    cas: list[CasTmdb] = field(default_factory=list)
+
+    @property
+    def servies(self) -> set[str]:
+        """Ids des recos pour lesquelles TMDB a rendu une fiche."""
+        return {c.reco_id for c in self.cas if c.raison == "ok"}
+
+    @property
+    def introuvables(self) -> list[CasTmdb]:
+        return [c for c in self.cas if c.raison == "not_found"]
+
+
+def cle_api() -> str:
+    """Clé TMDB, depuis l'environnement ou `tools/.env`. Lève si elle manque.
+
+    Sur venus, la clé arrive par `env_file` (cf. deploy/venus/compose.yml) :
+    elle est déjà dans l'environnement, et `load_dotenv` ne fait rien.
+    """
+    load_dotenv(TOOLS_DIR / ".env")
+    cle = os.getenv("TMDB_API_KEY")
+    if not cle:
+        raise RuntimeError(
+            "TMDB_API_KEY absent (tools/.env en local, ~/docker/reco/.env sur venus). "
+            "Clé v3 sur https://www.themoviedb.org/settings/api.")
+    return cle
+
+
 def enrich_one(
     reco: dict,
     *,
@@ -346,6 +296,11 @@ def main():
                         help="Limiter le nombre de recos traitées (utile pour tester).")
     parser.add_argument("--force", action="store_true",
                         help="Re-traiter même les recos qui ont déjà un externalIds.tmdb.")
+    parser.add_argument("--ids", default=None,
+                        help="N'enrichir QUE ces recos : « a,b,c » ou « @fichier » "
+                             "(un id par ligne).")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="N'écrit rien : dit ce qui serait enrichi.")
     parser.add_argument("--ignore-server-lock", action="store_true",
                         help="Ignore le verrou review_server (à tes risques : "
                              "écritures concurrentes possibles).")
@@ -360,11 +315,10 @@ def main():
         sys.exit(1)
 
     try:
-        load_dotenv(TOOLS_DIR / ".env")
-        api_key = os.getenv("TMDB_API_KEY")
-        if not api_key:
-            log.error("TMDB_API_KEY absent de tools/.env. "
-                      "Crée un compte sur https://www.themoviedb.org/ → Settings → API.")
+        try:
+            api_key = cle_api()
+        except RuntimeError as exc:
+            log.error("%s", exc)
             sys.exit(1)
 
         _run_enrichment(args, api_key)
@@ -377,25 +331,43 @@ def main():
 
 def _run_enrichment(args, api_key):
     """Corps métier de enrich_tmdb — extrait pour wrapper avec le lock context."""
-    recos_dir = recos_dir_for(args.source)
+    run(source=args.source, api_key=api_key, ids=parse_ids_option(args.ids),
+        limit=args.limit, force=args.force, apply=not args.dry_run)
+
+
+def run(*, source: str, api_key: str, ids: Iterable[str] = (),
+        limit: int | None = None, force: bool = False, apply: bool = True,
+        session: requests.Session | None = None) -> RapportTmdb:
+    """Passe TMDB sur les recos film/série d'une source.
+
+    `ids` non vide → SEULES ces recos sont examinées (périmètre d'un épisode).
+    `apply=False` → rien n'est écrit, le rapport dit ce qui l'aurait été.
+    """
+    recos_dir = recos_dir_for(source)
+    voulus = set(ids)
+    rapport = RapportTmdb()
     targets = []
     for p in sorted(recos_dir.glob("*.json")):
         d = read_json(p)
         if not is_targetable(d):
             continue
+        if voulus and d.get("id") not in voulus:
+            continue
         ext = d.get("externalIds") or {}
-        if not args.force and ext.get("tmdb") and ext.get("watchPage"):
+        if not force and ext.get("tmdb") and ext.get("watchPage"):
             # Déjà enrichi complètement.
             continue
         targets.append((p, d))
 
-    if args.limit:
-        targets = targets[: args.limit]
-    log.info("%d reco(s) film/série à enrichir TMDB.", len(targets))
+    if limit:
+        targets = targets[:limit]
+    log.info("%d reco(s) film/série à enrichir TMDB%s.", len(targets),
+             " (simulation)" if not apply else "")
+    rapport.vues = len(targets)
     if not targets:
-        return
+        return rapport
 
-    session = requests.Session()
+    session = session or requests.Session()
     enriched = 0
     not_found = 0
     for i, (p, d) in enumerate(targets, 1):
@@ -415,25 +387,34 @@ def _run_enrichment(args, api_key):
             log.info("  ↻ TMDB id déjà connu : %s (%s)",
                      ext_pre["tmdb"], ext_pre["tmdbType"])
 
+        # Pas de `force=` ici : il ferait remonter les erreurs HTTP en exception
+        # (mode UI), alors que la passe batch doit sauter la reco et continuer.
+        # `--force` agit sur la SÉLECTION, plus haut (recos déjà enrichies).
         enrich_one(d, session=session, api_key=api_key)
         status = d.pop("_enrich_status", None)
+        reco_id = str(d.get("id") or p.stem)
         if status == "not_found":
             log.info("  → TMDB : pas trouvé")
             not_found += 1
+            rapport.cas.append(CasTmdb(reco_id, title, "not_found", 0))
             time.sleep(RATE_LIMIT_SLEEP)
             continue
         tmdb_id = d["externalIds"]["tmdb"]
         kind = d["externalIds"]["tmdbType"]
         watch_page_url = d["externalIds"].get("watchPage")
         providers = d.get("watchProviders") or []
-        if write_json_if_changed(p, d):
+        if apply and write_json_if_changed(p, d):
             enriched += 1
-        log.info("  → tmdb_id=%s (%s) · page « où regarder »=%s · %d providers info",
-                 tmdb_id, kind, "OK" if watch_page_url else "—", len(providers))
+        rapport.cas.append(CasTmdb(reco_id, title, "ok", len(providers)))
+        log.info("  → tmdb_id=%s (%s) · page « où regarder »=%s · %d providers info%s",
+                 tmdb_id, kind, "OK" if watch_page_url else "—", len(providers),
+                 " (simulation)" if not apply else "")
         time.sleep(RATE_LIMIT_SLEEP)
 
+    rapport.ecrites = enriched
     log.info("Terminé : %d enrichis · %d non trouvés · %d inchangés.",
              enriched, not_found, len(targets) - enriched - not_found)
+    return rapport
 
 
 if __name__ == "__main__":

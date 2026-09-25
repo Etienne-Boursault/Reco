@@ -19,6 +19,7 @@ import requests
 
 from common import (
     log,
+    parse_ids_option,
     read_json,
     write_json_if_changed,
 )
@@ -207,13 +208,12 @@ def iter_reco_paths(root: Path, source: str | None = None) -> list[Path]:
 
 def parse_exclude_ids(raw: str | None) -> set[str]:
     """Liste d'ids (`--ids`, `--exclude-ids`) : CSV, ou `@fichier` (un id par
-    ligne, `#` = commentaire)."""
-    if not raw:
-        return set()
-    if raw.startswith("@"):
-        lines = Path(raw[1:]).read_text(encoding="utf-8").splitlines()
-        return {ln.strip() for ln in lines if ln.strip() and not ln.startswith("#")}
-    return {part.strip() for part in raw.split(",") if part.strip()}
+    ligne, `#` = commentaire).
+
+    Nom conservé pour les appelants existants ; le format est celui de
+    `common.parse_ids_option`, partagé avec les autres enrichisseurs.
+    """
+    return parse_ids_option(raw)
 
 
 def run(*, root: Path, session: requests.Session | None,
