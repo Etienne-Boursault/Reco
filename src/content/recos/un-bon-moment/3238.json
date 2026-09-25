@@ -1,0 +1,50 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Mona Guba",
+  "enrichedAt": {
+    "links": "2026-09-25T12:31:38Z"
+  },
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:19:07",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3238",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/1041239822"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Une Bonne Boutique (vinyle)",
+      "url": "https://unebonneboutique.com/products/vinyle-un-bon-freestyle-mona-guba"
+    }
+  ],
+  "quote": "Nous, on vous recommande le disque de Mona, qui a repris les freestyles d'un bon moment",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:19:07",
+  "title": "Un Bon Freestyle",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

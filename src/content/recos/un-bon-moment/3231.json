@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-09-25T12:20:17Z"
+  },
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:57:27",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3231",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/91101"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Antonin_Artaud"
+    }
+  ],
+  "quote": "il m'a fait découvrir Antonin Artaud... extraordinaire, Antonin Artaud",
+  "recommendedBy": "Clémentine Célarié",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:57:27",
+  "title": "Antonin Artaud",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

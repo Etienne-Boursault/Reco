@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Swing Swing Submarine, La Poule Noire",
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:11",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3234",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam",
+      "url": "https://store.steampowered.com/app/2521170/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Swing Swing Submarine (studio)",
+      "url": "https://swingswingsubmarine.com/"
+    }
+  ],
+  "quote": "Le jeu vidéo Looking for Faël.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:11",
+  "title": "Looking for Fael",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:19:07"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3238",
+  "itemId": "ee9d4382",
+  "kind": "reco",
+  "quote": "Nous, on vous recommande le disque de Mona, qui a repris les freestyles d'un bon moment",
+  "recommendedBy": "Kyan Khojandi & Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-jO7GMNTuHR0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:19:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

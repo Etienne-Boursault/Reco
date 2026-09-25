@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:32"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3233",
+  "itemId": "7eb639b6",
+  "kind": "reco",
+  "quote": "J'ai vu un super film sur une plateforme qui s'appelle « Les 13 vies »",
+  "recommendedBy": "Clémentine Célarié",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-jO7GMNTuHR0",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:32",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3232",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Musée du quai Branly — l'exposition",
+      "url": "https://www.quaibranly.fr/fr/expositions-evenements/au-musee/expositions/details-de-levenement/e/plumes-du-paradis"
+    }
+  ],
+  "quote": "le nom de l'expo s'appelait « l'oiseau du paradis »",
+  "recommendedBy": "Géraldine Nakache",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:19",
+  "title": "Plumes du paradis",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

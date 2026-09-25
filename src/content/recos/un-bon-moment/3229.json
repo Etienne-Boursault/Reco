@@ -1,0 +1,56 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Camarón de la Isla",
+  "enrichedAt": {
+    "links": "2026-09-25T12:20:16Z"
+  },
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3229",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/como-el-agua/1442683349?uo=4"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/79876972"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/como-el-agua-camaron-de-la-isla/0060249871616"
+    }
+  ],
+  "quote": "C'est un sacré, c'est la pureté absolue, c'est extraordinaire. Je vous conseille d'écouter El Camarón, El Camarón de la Isla. Ça s'appelle Como el agua. Franchement, les gars, c'est impressionnant.",
+  "recommendedBy": "Clémentine Célarié",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:58",
+  "title": "Como el agua",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

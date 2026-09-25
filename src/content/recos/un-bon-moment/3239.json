@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kalindi Ramphul",
+  "episodeGuid": "yt-jO7GMNTuHR0",
+  "extractionHistory": [
+    {
+      "at": "2026-09-25T10:31:39+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:05",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3239",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782709677424-les-solitudes-de-petite-riviere-kalindi-ramphul/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "JC Lattès",
+      "url": "https://www.editions-jclattes.fr/livre/les-solitudes-de-petite-riviere-9782709677424/"
+    }
+  ],
+  "quote": "je recommande les « Solitudes de Petite Rivière »",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:05",
+  "title": "Les Solitudes de Petite Rivière",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}
