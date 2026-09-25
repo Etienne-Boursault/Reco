@@ -15,6 +15,10 @@ import pytest
 
 import traiter_nouveaux_episodes as tne
 
+# Capturée AVANT que la fixture `tmdb_hors_ligne` ne remplace l'attribut du
+# module : c'est la vraie passe, celle qui sert de défaut à `finaliser`.
+from traiter_nouveaux_episodes import _fiches_tmdb as _vraie_passe_tmdb
+
 SOURCE = "demo-source"
 
 
@@ -388,6 +392,22 @@ def test_the_extraction_asks_the_review_server_for_the_pipeline_lock(monkeypatch
     assert demandes == [False]
 
 # ===== finaliser =============================================================
+@pytest.fixture(autouse=True)
+def tmdb_hors_ligne(monkeypatch):
+    """Aucun test ne doit appeler TMDB.
+
+    `finaliser` résout sa passe TMDB à l'appel : sans ce double, un test qui ne
+    la fournit pas irait chercher la vraie clé et le vrai réseau.
+    """
+    monkeypatch.setattr(tne, "_fiches_tmdb", lambda *_a, **_k: _rapport_tmdb())
+
+
+def _rapport_tmdb(servies=(), introuvables=()):
+    """Double du rapport TMDB (cf. enrich_tmdb.RapportTmdb)."""
+    return SimpleNamespace(servies=set(servies), vues=len(servies) + len(introuvables),
+                           ecrites=len(servies), introuvables=list(introuvables))
+
+
 @pytest.fixture
 def recos(content, monkeypatch):
     import common
@@ -660,3 +680,85 @@ def test_the_cli_runs_the_finalisation_and_saves_the_state(content, recos, monke
 
     saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
     assert saved["finalized"] == ["yt-1"]
+
+
+# ===== finalisation : fiches TMDB ============================================
+def test_finalisation_asks_tmdb_for_the_same_ids_as_the_music_pass(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _episode(content, "yt-2", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+    _reco(recos, "r-album", "yt-1")
+    _reco(recos, "autre", "yt-2", status="draft")  # yt-2 n'est pas relu
+    vus = []
+
+    def fiches(source_id, ids):
+        vus.append((source_id, set(ids)))
+        return _rapport_tmdb()
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=fiches, publier=_publie_rien, lock=_no_lock)
+
+    assert vus == [(SOURCE, {"r-film", "r-album"})]
+
+
+def test_a_film_served_by_tmdb_leaves_the_list_and_is_counted(content, recos, inbox):
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+    _reco(recos, "r-livre", "yt-1", types=["livre"])
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=lambda *_a: _rapport_tmdb(servies={"r-film"}),
+                  publier=_publie_rien, lock=_no_lock)
+
+    message = inbox[0]
+    assert "1 fiche(s) TMDB" in message
+    assert "À compléter à la main (1)" in message
+    assert "Titre r-film" not in message
+    assert f"Titre r-livre (livre) — {tne.HORS_PERIMETRE}" in message
+
+
+def test_a_reco_that_already_has_watch_providers_is_not_listed(content, recos, inbox):
+    """Les fiches d'un passage précédent ne reviennent pas dans la liste."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"],
+          watchProviders=[{"label": "Netflix", "url": "https://x", "ethics": "neutral"}])
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=lambda *_a: _rapport_tmdb(), publier=_publie_rien, lock=_no_lock)
+
+    assert "Rien à compléter à la main." in inbox[0]
+
+
+def test_a_tmdb_failure_costs_nothing_but_a_warning(content, recos, inbox):
+    """Clé absente, 401 ou panne réseau : œuvres et mentions restent écrites."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+    ecrit = []
+
+    def panne(*_a, **_k):
+        raise RuntimeError("TMDB_API_KEY absent")
+
+    def publier(*_a, **_k):
+        ecrit.append(True)
+        return _plan(items_created=["i1"], mentions_created=["m1"])
+
+    state = tne.load_state(SOURCE)
+    code = tne.finaliser(SOURCE, inbox, state, liens=_liens_vides, fiches=panne,
+                         publier=publier, lock=_no_lock)
+
+    assert code == 0 and ecrit == [True]
+    # Finalisé quand même : sinon la chaîne repasserait l'épisode à chaque tour.
+    assert state["finalized"] == ["yt-1"]
+    assert "⚠️ TMDB indisponible : RuntimeError: TMDB_API_KEY absent" in inbox[0]
+    assert "1 œuvre(s) créée(s)" in inbox[0]
+
+
+def test_the_real_tmdb_pass_asks_for_the_episode_scope(monkeypatch):
+    """`_fiches_tmdb` doit passer le périmètre et écrire : c'est lui le défaut."""
+    appels = []
+    monkeypatch.setattr("enrich_tmdb.cle_api", lambda: "fake")
+    monkeypatch.setattr("enrich_tmdb.run", lambda **kw: appels.append(kw) or _rapport_tmdb())
+
+    _vraie_passe_tmdb(SOURCE, {"r-1"})
+
+    assert appels == [{"source": SOURCE, "api_key": "fake", "ids": {"r-1"}, "apply": True}]

@@ -55,6 +55,11 @@ from common import (
     write_json_if_changed,
 )
 from fetch_youtube_episodes import GUID_PREFIX, fetch_youtube_episodes
+
+# Ré-exportés : la section « finalisation » vit ici, son message dans son module.
+from finalisation_message import HORS_PERIMETRE, MAX_RESTES  # noqa: F401
+from finalisation_message import message as _message_finalisation
+from finalisation_message import restes as _restes  # noqa: F401
 from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
@@ -270,9 +275,6 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
 
 
 # ===== finalisation ==========================================================
-#: Au-delà, le message Matrix devient illisible ; le détail reste sur la page.
-MAX_RESTES = 15
-HORS_PERIMETRE = "aucun outil automatique pour ce type"
 
 
 def _recos_de(source_id: str, guid: str) -> list[dict[str, Any]]:
@@ -312,44 +314,23 @@ def _liens_musicaux(source_id: str, ids: set[str]) -> Any:
                      source=source_id, ids=ids, apply=True, allow_artists=True)
 
 
-def _restes(rapport: Any, recos: list[dict[str, Any]]) -> list[str]:
-    """Ce qui reste à la main : une reco affichée sans aucun lien.
+def _fiches_tmdb(source_id: str, ids: set[str]) -> Any:
+    """Passe TMDB sur les recos film/série de l'épisode.
 
-    Deux sources concordantes, et non une seule : le fichier relu du disque, et
-    le rapport de la passe. Une reco que la passe vient de servir n'a rien à
-    faire dans la liste, même si la relecture du disque la donnait encore nue.
+    L'outil musical ne connaît que Deezer et Apple : les films et séries
+    restaient donc dans la liste du reste à faire alors que TMDB sait les
+    servir (mesuré sur S6-E02 : 2 films et 2 séries sur 12 restes). Ce qu'elle
+    écrit, ce sont les `watchProviders` — le « où regarder » affiché sur la
+    fiche — et les identifiants TMDB, jamais une URL devinée.
     """
-    verdicts = {c.reco_id: c for c in rapport.outcomes}
-    lignes = []
-    for reco in recos:
-        reco_id = reco.get("id")
-        verdict = verdicts.get(reco_id)
-        if reco.get("links") or reco.get("status") == "discarded":
-            continue
-        if verdict is not None and verdict.links:
-            continue
-        types = "/".join(reco.get("types") or []) or "?"
-        raison = verdict.reason if verdict is not None else HORS_PERIMETRE
-        lignes.append(f"• {reco.get('title')} ({types}) — {raison}")
-    return lignes
-
-
-def _message_finalisation(episode: dict[str, Any], rapport: Any, plan: Any,
-                          recos: list[dict[str, Any]]) -> str:
-    tete = (f"🔗 {_title(episode)} : {len(rapport.linked)} lien(s) posé(s), "
-            f"{len(plan.items_created)} œuvre(s) créée(s), "
-            f"{len(plan.items_reused)} réutilisée(s), "
-            f"{len(plan.mentions_created)} mention(s).")
-    restes = _restes(rapport, recos)
-    if not restes:
-        return f"{tete}\nRien à compléter à la main."
-    suite = "" if len(restes) <= MAX_RESTES else f"\n… et {len(restes) - MAX_RESTES} autre(s)."
-    return (f"{tete}\nÀ compléter à la main ({len(restes)}) :\n"
-            + "\n".join(restes[:MAX_RESTES]) + suite)
+    from enrich_tmdb import cle_api
+    from enrich_tmdb import run as run_tmdb
+    return run_tmdb(source=source_id, api_key=cle_api(), ids=ids, apply=True)
 
 
 def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
               liens: Callable[[str, set[str]], Any] | None = None,
+              fiches: Callable[[str, set[str]], Any] | None = None,
               publier: Callable[..., Any] | None = None,
               lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
     pending = a_finaliser(source_id, state)
@@ -358,6 +339,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
     # Résolus à l'appel : un défaut figé dans la signature est lié à la
     # définition, et un test qui le remplace prendrait le VRAI verrou.
     liens = liens or _liens_musicaux
+    fiches = fiches or _fiches_tmdb
     lock = lock or _pipeline_lock
     if publier is None:
         from publier_episode import preparer as publier
@@ -368,7 +350,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
             _clear_error(state, "finalisation:verrou")
             for _path, episode in pending:
                 _finaliser_un(source_id, episode, state, notify,
-                              liens=liens, publier=publier)
+                              liens=liens, fiches=fiches, publier=publier)
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -379,6 +361,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
 
 def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any],
                   notify: Notify, *, liens: Callable[[str, set[str]], Any],
+                  fiches: Callable[[str, set[str]], Any],
                   publier: Callable[..., Any]) -> None:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
@@ -396,10 +379,20 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                      f"⚠️ Œuvres et mentions non écrites pour « {_title(episode)} » : {motif}",
                      notify)
         return
+    # TMDB en dernier, et jamais bloquant : clé absente, 401 ou panne réseau ne
+    # doivent pas priver l'épisode de ses œuvres et de ses mentions, déjà
+    # écrites ci-dessus. L'épisode reste finalisé, le message le signale.
+    tmdb, panne = None, ""
+    try:
+        tmdb = fiches(source_id, ids)
+    except Exception as exc:  # noqa: BLE001
+        panne = f"{type(exc).__name__}: {str(exc)[:120]}"
+        log.warning("Fiches TMDB non récupérées pour %s : %s", guid, panne)
     _clear_error(state, key)
     state["finalized"].append(guid)
-    # Relu après la passe de liens : c'est elle qui vient d'en poser.
-    notify(_message_finalisation(episode, rapport, plan, _recos_de(source_id, guid)))
+    # Relu après les passes : ce sont elles qui viennent d'écrire.
+    notify(_message_finalisation(_title(episode), rapport, plan,
+                                 _recos_de(source_id, guid), tmdb, panne))
 
 
 # ===== notification ==========================================================

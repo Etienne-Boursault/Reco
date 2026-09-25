@@ -16,10 +16,12 @@ habituel, joignable **par le VPN seulement**, sur <http://10.8.0.1:8000>.
 
 Une fois l'épisode relu de bout en bout (plus aucune reco en brouillon), le passage
 suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qui n'écrit
-une URL que si Deezer ou Apple corrobore titre ET artiste —, puis conversion en œuvres
-et mentions par `publier_episode.py`, et un message Matrix qui liste **ce qui reste à
-faire à la main**, reco par reco. Ce qui demande un jugement (homonymes, livres,
-associations, vidéos, sites officiels) n'est jamais deviné.
+une URL que si Deezer ou Apple corrobore titre ET artiste —, fiches « où regarder »
+des films et séries par `enrich_tmdb` (clé `TMDB_API_KEY` dans `.env` ; si elle manque
+ou si TMDB répond mal, l'épisode est finalisé quand même et le message le signale),
+puis conversion en œuvres et mentions par `publier_episode.py`, et un message Matrix
+qui liste **ce qui reste à faire à la main**, reco par reco. Ce qui demande un jugement
+(homonymes, livres, jeux, associations, vidéos, sites officiels) n'est jamais deviné.
 
 Ce qui n'est toujours pas automatisé : la poussée sur `main`. Et
 `migrate_reco_to_item_mention.py` ne doit jamais être lancé — il réécrit tout le corpus.

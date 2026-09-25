@@ -330,6 +330,26 @@ def transcript_path_for(source_id: str, guid: str) -> Path:
     return TRANSCRIPTS_DIR / source_id / f"{slugify(guid)}.txt"
 
 
+def parse_ids_option(raw: str | None) -> set[str]:
+    """Liste d'ids de recos (`--ids`, `--exclude-ids`) : CSV, ou `@fichier`.
+
+    Dans un fichier, UN id par ligne — une liste séparée par des virgules y
+    passerait pour un seul id, et le filtre ne retiendrait donc rien (piège
+    vécu le 2026-09-21). Les lignes vides et celles commençant par `#` sont
+    ignorées.
+
+    Centralisé ici parce que trois enrichisseurs (musique, TMDB, vidéo) ont
+    besoin du même format : la chaîne de venus les appelle sur les seules recos
+    d'un épisode, et lister les 3 000 autres en exclusion n'est pas tenable.
+    """
+    if not raw:
+        return set()
+    if raw.startswith("@"):
+        lignes = Path(raw[1:]).read_text(encoding="utf-8").splitlines()
+        return {ln.strip() for ln in lignes if ln.strip() and not ln.startswith("#")}
+    return {part.strip() for part in raw.split(",") if part.strip()}
+
+
 def list_episode_files(source_id: str) -> list[Path]:
     """Liste triée des fichiers JSON d'épisodes d'une source."""
     d = episodes_dir_for(source_id)
