@@ -46,12 +46,20 @@ ARTIST_MATCH_THRESHOLD = 0.88
 # --- Plateformes ------------------------------------------------------------
 PLATFORM_DEEZER = "deezer"
 PLATFORM_APPLE = "apple"
+PLATFORM_SPOTIFY = "spotify"
+PLATFORM_QOBUZ = "qobuz"
 
 #: Hôte canonique et libellé affiché de chaque plateforme. `host` sert à
 #: reconnaître un lien DÉJÀ posé (par un humain ou une passe précédente).
+#:
+#: L'ORDRE compte : c'est celui dans lequel les plateformes sont interrogées.
+#: Les APIs JSON d'abord, Qobuz en dernier — lui seul demande d'ouvrir des
+#: pages de ~300 Ko (cf. `music_links_qobuz`).
 PLATFORMS: dict[str, dict[str, str]] = {
     PLATFORM_DEEZER: {"host": "deezer.com", "label": "Deezer"},
     PLATFORM_APPLE: {"host": "music.apple.com", "label": "Apple Music"},
+    PLATFORM_SPOTIFY: {"host": "open.spotify.com", "label": "Spotify"},
+    PLATFORM_QOBUZ: {"host": "qobuz.com", "label": "Qobuz"},
 }
 
 #: Plateformes d'écoute reconnues au-delà de celles que l'outil sait remplir :
@@ -94,6 +102,11 @@ REASON_TYPE_UNSUPPORTED = "type-not-musical"
 REASON_ARTIST_TYPE_UNPROVEN = "artist-type-unproven"
 REASON_NO_CREATOR = "no-creator-to-verify"
 REASON_HTTP_ERROR = "http-error"
+#: Spotify exige `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` (cf. `tools/.env`).
+#: Sans eux, l'absence de lien n'est pas un refus de fond : elle dit que la
+#: machine n'était pas configurée. Le distinguer évite de conclure à tort qu'une
+#: œuvre est absente de Spotify — le cas de venus, où ces variables manquent.
+REASON_NO_CREDENTIALS = "no-credentials"
 REASON_NO_MATCH = "no-match"
 REASON_AMBIGUOUS = "ambiguous"
 REASON_TITLE_MISMATCH = "title-mismatch"

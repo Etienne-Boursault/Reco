@@ -13,6 +13,12 @@ import responses
 
 import enrich_music_links as m
 
+# Spotify et Qobuz se substituent dans les modules qui les portent : la façade
+# ne fait que ré-exporter, la patcher n'aurait aucun effet.
+import music_links_clients as clients
+import music_links_pipeline as pipeline
+import music_links_qobuz as qobuz
+
 DEEZER = "https://api.deezer.com"
 ITUNES = "https://itunes.apple.com"
 
@@ -179,7 +185,9 @@ def test_resolve_reco_refuses_artiste_without_opt_in(session):
 def test_resolve_reco_already_complete(session):
     reco = dict(ALBUM_RECO, links=[
         {"url": "https://www.deezer.com/album/1"},
-        {"url": "https://music.apple.com/fr/album/1"}])
+        {"url": "https://music.apple.com/fr/album/1"},
+        {"url": "https://open.spotify.com/album/1"},
+        {"url": "https://www.qobuz.com/fr-fr/album/x/1"}])
     out = m.resolve_reco(reco, session=session)
     assert (out.links, out.reason) == ((), m.REASON_ALREADY_COMPLETE)
 
@@ -248,7 +256,11 @@ def test_resolve_reco_reason_is_the_first_refusal(session):
     out = m.resolve_reco(ALBUM_RECO, session=session)
     assert out.links == ()
     assert out.reason == m.REASON_NO_MATCH
-    assert len(out.refusals) == 2
+    # Un refus par plateforme visée : Deezer et Apple n'ont rien trouvé,
+    # Spotify n'a pas d'identifiants et Qobuz est muet (cf. conftest).
+    assert len(out.refusals) == 4
+    assert [p for p, _r, _d in out.refusals][:2] == [m.PLATFORM_DEEZER,
+                                                     m.PLATFORM_APPLE]
 
 
 @responses.activate
@@ -263,3 +275,122 @@ def test_resolve_reco_track_search_for_musique(session):
             "types": ["musique"], "status": "validated"}
     out = m.resolve_reco(reco, session=session)
     assert out.links[0].url == "https://www.deezer.com/track/3"
+
+
+# ===== Spotify et Qobuz =====================================================
+SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
+SPOTIFY_API = "https://api.spotify.com/v1/search"
+QOBUZ_RECHERCHE = "https://www.qobuz.com/fr-fr/search"
+QOBUZ_HTML = "text/html; charset=utf-8"
+
+
+def _rien_ailleurs():
+    """Deezer et Apple muets : on n'éprouve ici que la nouvelle plateforme."""
+    responses.add(responses.GET, f"{DEEZER}/search/album", json={"data": []},
+                  status=200)
+    responses.add(responses.GET, f"{ITUNES}/search", json={"results": []},
+                  status=200)
+
+
+def _spotify_disponible(monkeypatch):
+    monkeypatch.setattr(pipeline, "spotify_credentials", lambda: ("id", "secret"))
+    monkeypatch.setattr(clients, "spotify_credentials", lambda: ("id", "secret"))
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200,
+                  json={"access_token": "jeton", "expires_in": 3600})
+
+
+@responses.activate
+def test_resolve_reco_posts_a_spotify_link_when_corroborated(session, monkeypatch):
+    _rien_ailleurs()
+    _spotify_disponible(monkeypatch)
+    responses.add(responses.GET, SPOTIFY_API, status=200, json={"albums": {"items": [
+        {"id": "0syn", "name": "Civilisation", "artists": [{"name": "Orelsan"}],
+         "external_urls": {"spotify": "https://open.spotify.com/album/0syn"}}]}})
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert [(link.platform, link.url) for link in out.links] == [
+        (m.PLATFORM_SPOTIFY, "https://open.spotify.com/album/0syn")]
+
+
+@responses.activate
+def test_resolve_reco_refuses_a_spotify_homonym(session, monkeypatch):
+    """Même titre, autre artiste : le garde-fou vaut pour Spotify comme pour Deezer."""
+    _rien_ailleurs()
+    _spotify_disponible(monkeypatch)
+    responses.add(responses.GET, SPOTIFY_API, status=200, json={"albums": {"items": [
+        {"id": "zzz", "name": "Civilisation", "artists": [{"name": "Autre Groupe"}],
+         "external_urls": {"spotify": "https://open.spotify.com/album/zzz"}}]}})
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert out.links == ()
+    assert (m.PLATFORM_SPOTIFY, m.REASON_ARTIST_MISMATCH) in [
+        (p, r) for p, r, _d in out.refusals]
+
+
+@responses.activate
+def test_resolve_reco_says_when_spotify_is_not_configured(session):
+    """Sur venus, les identifiants Spotify manquent : ce n'est pas une absence d'œuvre."""
+    _rien_ailleurs()
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert (m.PLATFORM_SPOTIFY, m.REASON_NO_CREDENTIALS) in [
+        (p, r) for p, r, _d in out.refusals]
+
+
+@responses.activate
+def test_resolve_reco_posts_a_qobuz_link_read_from_its_page(session, monkeypatch):
+    """Bout en bout, avec le vrai client Qobuz : seul le réseau est simulé."""
+    monkeypatch.setattr(pipeline, "qobuz_candidates", qobuz.candidates)
+    _rien_ailleurs()
+    responses.add(responses.GET, QOBUZ_RECHERCHE, status=200,
+                  content_type=QOBUZ_HTML,
+                  body='<a href="/fr-fr/album/civilisation/0123">x</a>')
+    responses.add(responses.GET, "https://www.qobuz.com/fr-fr/album/civilisation/0123",
+                  status=200, content_type=QOBUZ_HTML,
+                  body='<script type="application/ld+json">'
+                       '{"@type":"Product","name":"Civilisation",'
+                       '"brand":{"@type":"Brand","name":"Orelsan"}}</script>')
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert [(link.platform, link.url) for link in out.links] == [
+        (m.PLATFORM_QOBUZ,
+         "https://www.qobuz.com/fr-fr/album/civilisation/0123")]
+
+
+@responses.activate
+def test_resolve_reco_refuses_a_qobuz_page_about_someone_else(session, monkeypatch):
+    monkeypatch.setattr(pipeline, "qobuz_candidates", qobuz.candidates)
+    _rien_ailleurs()
+    responses.add(responses.GET, QOBUZ_RECHERCHE, status=200,
+                  content_type=QOBUZ_HTML,
+                  body='<a href="/fr-fr/album/autre/0999">x</a>')
+    responses.add(responses.GET, "https://www.qobuz.com/fr-fr/album/autre/0999",
+                  status=200, content_type=QOBUZ_HTML,
+                  body='<script type="application/ld+json">'
+                       '{"@type":"Product","name":"Civilisation",'
+                       '"brand":{"@type":"Brand","name":"Quelqu\'un d\'autre"}}</script>')
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert out.links == ()
+    assert (m.PLATFORM_QOBUZ, m.REASON_ARTIST_MISMATCH) in [
+        (p, r) for p, r, _d in out.refusals]
+
+
+@responses.activate
+def test_resolve_reco_leaves_an_existing_qobuz_link_alone(session, monkeypatch):
+    """Un lien posé à la main n'est jamais réinterrogé ni remplacé."""
+    appels = []
+    monkeypatch.setattr(pipeline, "qobuz_candidates",
+                        lambda *a, **k: appels.append(a) or [])
+    _rien_ailleurs()
+    reco = dict(ALBUM_RECO, links=[
+        {"url": "https://www.qobuz.com/fr-fr/album/deja/1"}])
+
+    m.resolve_reco(reco, session=session)
+
+    assert appels == []

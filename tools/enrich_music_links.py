@@ -27,12 +27,23 @@ SOURCES
     porte `title`, `artist.name` et `album.title` : de quoi corroborer.
   - **Apple Music** — API iTunes Search, publique, sans clé. Second avis
     INDÉPENDANT de Deezer, et seule façon d'homogénéiser vers `music.apple.com`.
+  - **Spotify** — API officielle, flux Client Credentials, identifiants dans
+    `tools/.env` (`SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET`). Corroboration
+    directe : `items[].name` et `items[].artists[].name`.
 
-  - **Spotify** — NON UTILISÉ. Les identifiants de `tools/.env` sont valides
-    (le token Client Credentials s'obtient en HTTP 200) mais TOUS les endpoints
-    répondent 403 « Active premium subscription required for the owner of the
-    app » (politique Spotify 2025). Bâtir dessus produirait du code mort. Le
-    jour où le compte repasse Premium, la stratégie s'ajoute ici.
+    ⚠️ Cette source DÉPEND d'un abonnement actif sur le compte propriétaire.
+    Sans lui, tous les endpoints répondent 403 « Active premium subscription
+    required for the owner of the app » : c'était le cas jusqu'à récemment, et
+    l'abonnement de l'éditeur court jusqu'à la mi-octobre 2026. Le 403 est donc
+    une panne ATTENDUE, traitée comme telle (raison traçable, les autres
+    plateformes continuent) — pas une régression à corriger. Identifiants
+    absents : raison `no-credentials`, distincte d'une absence d'œuvre. C'est le
+    cas de venus, où ces deux variables ne sont pas dans `~/docker/reco/.env`.
+  - **Qobuz** — pas d'API publique sans identifiant d'application : on lit sa
+    recherche web, puis la PAGE CIBLE, dont le JSON-LD nomme l'œuvre et
+    l'artiste (cf. `music_links_qobuz`). Seule source de ce dépôt qui repose sur
+    la structure d'une page : si Qobuz la change, cette plateforme cesse de
+    trouver des liens sans jamais en écrire de faux.
 
 STRATÉGIES (choisies par `plan()`)
 ----------------------------------
@@ -43,8 +54,15 @@ STRATÉGIES (choisies par `plan()`)
     vérifier : ce ne sont PAS des données certifiées.
   - `search-album`  : type `album`   → `/search/album`, cible = la page album.
   - `search-track`  : type `musique` → `/search/track`, cible = le morceau.
+    Exception Qobuz, qui n'a pas de page par morceau : la cible est l'album QUI
+    PORTE la piste, et seulement s'il la liste vraiment. Le corpus faisait déjà
+    ainsi à la main (le lien Qobuz d'« Une autre histoire d'amour » pointe sur
+    l'album « Qu'en restera-t-il »).
   - `search-artist` : type `artiste` → `/search/artist`, cible = la page
     ARTISTE (jamais un morceau). **Opt-in `--artists`** — cf. ci-dessous.
+
+Chaque plateforme manquante est traitée indépendamment : un lien déjà posé
+n'est jamais remplacé, seulement complété par les plateformes absentes.
 
 POURQUOI `artiste` EST OPT-IN
 -----------------------------
@@ -125,6 +143,8 @@ from music_links_matching import (
     LINK_KIND,
     PLATFORM_APPLE,
     PLATFORM_DEEZER,
+    PLATFORM_QOBUZ,
+    PLATFORM_SPOTIFY,
     PLATFORMS,
     RATE_LIMIT_SLEEP,
     REASON_ALREADY_COMPLETE,
@@ -136,6 +156,7 @@ from music_links_matching import (
     REASON_HTTP_ERROR,
     REASON_LINKED,
     REASON_NO_CREATOR,
+    REASON_NO_CREDENTIALS,
     REASON_NO_MATCH,
     REASON_NOT_VALIDATED,
     REASON_STORED_KIND_MISMATCH,
@@ -211,6 +232,8 @@ __all__ = [
     "PLATFORMS",
     "PLATFORM_APPLE",
     "PLATFORM_DEEZER",
+    "PLATFORM_QOBUZ",
+    "PLATFORM_SPOTIFY",
     "RATE_LIMIT_SLEEP",
     "REASON_ALREADY_COMPLETE",
     "REASON_AMBIGUOUS",
@@ -222,6 +245,7 @@ __all__ = [
     "REASON_LINKED",
     "REASON_NOT_VALIDATED",
     "REASON_NO_CREATOR",
+    "REASON_NO_CREDENTIALS",
     "REASON_NO_MATCH",
     "REASON_STORED_KIND_MISMATCH",
     "REASON_TITLE_MISMATCH",
@@ -288,7 +312,8 @@ __all__ = [
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Pose les liens d'écoute (Deezer, Apple Music) des recos "
+        description="Pose les liens d'écoute (Deezer, Apple Music, Spotify, "
+                    "Qobuz) des recos "
                     "musicales, uniquement à partir d'APIs interrogées dont la "
                     "réponse corrobore titre ET artiste.")
     p.add_argument("--source", default=None,
