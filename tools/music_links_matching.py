@@ -147,20 +147,68 @@ def names_match(a: str | None, b: str | None,
     return SequenceMatcher(None, na, nb).ratio() >= threshold
 
 
+#: Mentions de collaboration : elles séparent deux artistes et n'appartiennent
+#: jamais à un nom. Découper dessus est donc sans risque.
+#: Le point se place APRÈS la frontière de mot : `\b` ne s'accroche pas entre
+#: « . » et l'espace, si bien que `feat\.?\b` laissait le point dans le nom
+#: suivant (« . Yoa »).
+_RE_FEATURING = re.compile(r"\s*\b(?:feat|ft|featuring)\b\.?\s*", re.IGNORECASE)
+
+#: « & », lui, peut faire PARTIE d'un nom (« Simon & Garfunkel », « Sly & the
+#: Family Stone »). Le découpage est donc réservé à `collaborator_names`, dont
+#: les appelants doivent exiger une corroboration du titre en plus du nom.
+_RE_AMPERSAND = re.compile(r"\s*&\s*")
+
+
 def creator_names(creator: str | None) -> list[str]:
-    """Décompose un `creator` en noms individuels.
+    """Décompose un `creator` en noms individuels, sans prise de risque.
 
     Un `creator` peut porter plusieurs noms (« Damon Albarn, Jamie Hewlett »
     pour Gorillaz) : l'API n'en renverra qu'un, et il suffit qu'il corresponde
     à l'un d'eux.
+
+    On découpe sur les virgules ET sur les mentions de collaboration : l'API
+    crédite « Rupture » à « Ben Mazué » là où le corpus écrit « Ben Mazué feat.
+    Yoa », et comparer la chaîne entière refusait le lien (`artist-mismatch`).
+    Pas de découpage sur « & » ici : cf. `collaborator_names`.
     """
-    return [part.strip() for part in (creator or "").split(",") if part.strip()]
+    morceaux = (m for part in (creator or "").split(",")
+                for m in _RE_FEATURING.split(part))
+    return [m.strip() for m in morceaux if m.strip()]
+
+
+def collaborator_names(creator: str | None) -> list[str]:
+    """Noms gagnés EN PLUS en découpant sur « & » — vide s'il n'y a rien à gagner.
+
+    ⚠️ À n'utiliser que là où un TITRE D'ŒUVRE corrobore déjà, jamais seul :
+    « Simon & Garfunkel » est un nom entier, et se contenter d'un « Simon »
+    renvoyé par une API ferait pointer la reco vers un autre artiste. La liste
+    est vide quand aucun découpage n'a eu lieu, si bien qu'un appelant ne peut
+    pas relâcher le garde-fou sans le vouloir.
+    """
+    gagnes: list[str] = []
+    for nom in creator_names(creator):
+        morceaux = [m.strip() for m in _RE_AMPERSAND.split(nom) if m.strip()]
+        if len(morceaux) > 1:
+            gagnes.extend(morceaux)
+    return gagnes
 
 
 def artist_matches_creator(remote_artist: str | None,
                            creator: str | None) -> bool:
     """True si l'artiste renvoyé par l'API correspond au `creator` de la reco."""
     return any(names_match(remote_artist, name) for name in creator_names(creator))
+
+
+def artist_matches_collaborator(remote_artist: str | None,
+                                creator: str | None) -> bool:
+    """True si l'artiste renvoyé correspond à l'un des noms séparés par « & ».
+
+    Plus permissif que `artist_matches_creator` : réservé aux appels où le titre
+    de l'œuvre a déjà été vérifié (cf. `verdict`).
+    """
+    return any(names_match(remote_artist, name)
+               for name in collaborator_names(creator))
 
 
 def titles_match_strict(a: str | None, b: str | None) -> bool:
@@ -324,6 +372,13 @@ def verdict(reco: dict[str, Any], candidates: Sequence[Candidate],
     à comparer. Pour un morceau ou un album, le titre ET l'artiste doivent
     correspondre : c'est la double condition qui protège des homonymes.
 
+    Cette double condition est aussi ce qui autorise, pour un morceau ou un
+    album SEULEMENT, à reconnaître un nom séparé par « & » (« Grand Corps
+    Malade & Styleto » face à une API qui ne crédite que le premier) : le titre
+    fait alors office d'ancre. Une page ARTISTE n'a pas cette ancre, et s'en
+    passer suffirait à envoyer « Simon & Garfunkel » vers un « Simon » sans
+    rapport — d'où l'asymétrie assumée entre les deux branches.
+
     `anchored` distingue les candidats issus d'un IDENTIFIANT déjà stocké de
     ceux d'une recherche libre. Le diagnostic diffère : qu'une recherche ne
     ramène aucun titre correspondant est banal (`no-match`), mais qu'une fiche
@@ -346,7 +401,8 @@ def verdict(reco: dict[str, Any], candidates: Sequence[Candidate],
             continue
         # Le titre correspond mais pas l'artiste : c'est l'homonymie type
         # (« Amélie »), le cas que ce garde-fou existe pour arrêter.
-        if not artist_matches_creator(cand.artist, creator):
+        if not (artist_matches_creator(cand.artist, creator)
+                or artist_matches_collaborator(cand.artist, creator)):
             artist_mismatch = True
             continue
         kept.append(cand)
