@@ -119,22 +119,30 @@ def test_existing_hosts_without_links():
 
 
 def test_missing_platforms_all_when_no_links():
-    assert set(m.missing_platforms({})) == {m.PLATFORM_DEEZER, m.PLATFORM_APPLE}
+    assert set(m.missing_platforms({})) == {m.PLATFORM_DEEZER, m.PLATFORM_APPLE,
+                                           m.PLATFORM_SPOTIFY, m.PLATFORM_QOBUZ}
 
 
 def test_missing_platforms_excludes_existing():
     reco = {"links": [{"url": "https://www.deezer.com/album/1"}]}
-    assert m.missing_platforms(reco) == [m.PLATFORM_APPLE]
+    assert m.missing_platforms(reco) == [m.PLATFORM_APPLE, m.PLATFORM_SPOTIFY,
+                                        m.PLATFORM_QOBUZ]
 
 
 def test_missing_platforms_empty_when_complete():
     reco = {"links": [{"url": "https://www.deezer.com/album/1"},
-                      {"url": "https://music.apple.com/fr/album/1"}]}
+                      {"url": "https://music.apple.com/fr/album/1"},
+                      {"url": "https://open.spotify.com/album/1"},
+                      {"url": "https://www.qobuz.com/fr-fr/album/x/1"}]}
     assert m.missing_platforms(reco) == []
 
 
+def test_missing_platforms_order_puts_qobuz_last():
+    """Qobuz ouvre des pages de ~300 Ko : il passe après les APIs JSON."""
+    assert m.missing_platforms({})[-1] == m.PLATFORM_QOBUZ
+
+
 def test_has_any_listening_link_true_for_qobuz():
-    """Qobuz n'est pas remplissable par l'outil, mais compte comme couverture."""
     assert m.has_any_listening_link({"links": [{"url": "https://qobuz.com/a"}]})
 
 

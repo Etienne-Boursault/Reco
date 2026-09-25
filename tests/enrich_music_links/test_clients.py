@@ -214,3 +214,153 @@ def test_itunes_candidate_missing_artist_name():
         {"collectionId": 1, "collectionName": "X",
          "collectionViewUrl": "https://music.apple.com/a"}, "album")
     assert cand.artist == ""
+
+
+# ===== Spotify ==============================================================
+# Référence prise AVANT que le décor (conftest) ne remplace l'attribut du
+# module : c'est la vraie fonction qu'on éprouve ici.
+_vraies_identifiants = m.spotify_credentials
+SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
+SPOTIFY_API = "https://api.spotify.com/v1/search"
+
+
+def _identifiants(monkeypatch, paire=("id", "secret")):
+    monkeypatch.setattr(m, "spotify_credentials", lambda: paire)
+
+
+def test_spotify_credentials_none_when_environment_is_bare(monkeypatch, tmp_path):
+    """Sans variables NI fichier .env : la machine n'est pas configurée.
+
+    `TOOLS_DIR` est détourné vers un dossier vide, sinon le `.env` du poste
+    reviendrait par `load_dotenv` et le test dépendrait de la machine.
+    """
+    monkeypatch.setattr(m, "TOOLS_DIR", tmp_path)
+    monkeypatch.delenv("SPOTIFY_CLIENT_ID", raising=False)
+    monkeypatch.delenv("SPOTIFY_CLIENT_SECRET", raising=False)
+
+    assert _vraies_identifiants() is None
+
+
+def test_spotify_credentials_read_from_environment(monkeypatch, tmp_path):
+    monkeypatch.setattr(m, "TOOLS_DIR", tmp_path)
+    monkeypatch.setenv("SPOTIFY_CLIENT_ID", "abc")
+    monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "def")
+
+    assert _vraies_identifiants() == ("abc", "def")
+
+
+@responses.activate
+def test_spotify_token_is_fetched_once_and_cached(session, monkeypatch):
+    """Un jeton vaut une heure : le redemander à chaque reco serait absurde."""
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200,
+                  json={"access_token": "jeton", "expires_in": 3600})
+
+    assert m.spotify_token(session) == "jeton"
+    assert m.spotify_token(session) == "jeton"
+    assert len(responses.calls) == 1
+
+
+@responses.activate
+def test_spotify_token_none_on_http_error(session, monkeypatch):
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=400, json={})
+
+    assert m.spotify_token(session) is None
+
+
+@responses.activate
+def test_spotify_token_none_when_payload_has_no_token(session, monkeypatch):
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200, json={"scope": ""})
+
+    assert m.spotify_token(session) is None
+
+
+@responses.activate
+def test_spotify_token_none_on_non_json_answer(session, monkeypatch):
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200, body="<html>")
+
+    assert m.spotify_token(session) is None
+
+
+def test_spotify_token_none_on_network_failure(session, monkeypatch):
+    _identifiants(monkeypatch)
+    with responses.RequestsMock():
+        assert m.spotify_token(session) is None
+
+
+def test_spotify_token_none_without_credentials(session, monkeypatch):
+    monkeypatch.setattr(m, "spotify_credentials", lambda: None)
+    assert m.spotify_token(session) is None
+
+
+@responses.activate
+def test_spotify_search_returns_items(session, monkeypatch):
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200,
+                  json={"access_token": "jeton", "expires_in": 3600})
+    responses.add(responses.GET, SPOTIFY_API, status=200,
+                  json={"albums": {"items": [{"id": "1"}, "pas un objet"]}})
+
+    assert m.spotify_search(session, "album", "Civilisation Orelsan") == [{"id": "1"}]
+
+
+@responses.activate
+def test_spotify_search_empty_when_subscription_expires(session, monkeypatch):
+    """403 « Active premium subscription required » : panne attendue, pas un plantage."""
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200,
+                  json={"access_token": "jeton", "expires_in": 3600})
+    responses.add(responses.GET, SPOTIFY_API, status=403, json={"error": {}})
+
+    assert m.spotify_search(session, "album", "x") == []
+
+
+def test_spotify_search_empty_without_token(session, monkeypatch):
+    monkeypatch.setattr(m, "spotify_credentials", lambda: None)
+    assert m.spotify_search(session, "album", "x") == []
+
+
+@responses.activate
+def test_spotify_search_empty_when_shape_is_unexpected(session, monkeypatch):
+    _identifiants(monkeypatch)
+    responses.add(responses.POST, SPOTIFY_TOKEN, status=200,
+                  json={"access_token": "jeton", "expires_in": 3600})
+    responses.add(responses.GET, SPOTIFY_API, status=200, json={"albums": {}})
+
+    assert m.spotify_search(session, "album", "x") == []
+
+
+def test_spotify_candidate_album_keeps_only_the_main_artist():
+    """« Ben Mazué, Yoa » ferait dériver la comparaison : on garde le premier."""
+    cand = m.spotify_candidate(
+        {"id": "2Gv", "name": "Rupture",
+         "artists": [{"name": "Ben Mazué"}, {"name": "Yoa"}],
+         "external_urls": {"spotify": "https://open.spotify.com/album/2Gv"}},
+        "album")
+
+    assert (cand.artist, cand.title, cand.ident) == ("Ben Mazué", "Rupture", "2Gv")
+    assert cand.platform == m.PLATFORM_SPOTIFY
+
+
+def test_spotify_candidate_artist_uses_its_own_name():
+    cand = m.spotify_candidate(
+        {"id": "73B", "name": "Ben Mazué",
+         "external_urls": {"spotify": "https://open.spotify.com/artist/73B"}},
+        "artist")
+
+    assert (cand.artist, cand.title) == ("Ben Mazué", "")
+
+
+def test_spotify_candidate_without_url_is_none():
+    assert m.spotify_candidate({"id": "1", "name": "x"}, "album") is None
+
+
+def test_spotify_candidate_missing_artists_is_empty_string():
+    cand = m.spotify_candidate(
+        {"id": "1", "name": "x",
+         "external_urls": {"spotify": "https://open.spotify.com/album/1"}}, "album")
+
+    assert cand.artist == ""

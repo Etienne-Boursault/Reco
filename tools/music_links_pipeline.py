@@ -11,7 +11,7 @@ Extraite de `enrich_music_links.py` (cf. `music_links_matching`).
 from __future__ import annotations
 
 import time
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from pathlib import Path
 from typing import Any
 
@@ -33,9 +33,15 @@ from music_links_clients import (
     itunes_candidate,
     itunes_search,
     search_query,
+    spotify_candidate,
+    spotify_credentials,
+    spotify_search,
 )
 from music_links_matching import (
+    PLATFORM_APPLE,
     PLATFORM_DEEZER,
+    PLATFORM_QOBUZ,
+    PLATFORM_SPOTIFY,
     PLATFORMS,
     RATE_LIMIT_SLEEP,
     REASON_ALREADY_COMPLETE,
@@ -44,12 +50,14 @@ from music_links_matching import (
     REASON_HTTP_ERROR,
     REASON_LINKED,
     REASON_NO_CREATOR,
+    REASON_NO_CREDENTIALS,
     REASON_NO_MATCH,
     REASON_NOT_VALIDATED,
     REASON_STORED_KIND_MISMATCH,
     REASON_UNREADABLE,
     STRATEGY_PROMOTE_DEEZER_ID,
     SUPPORTED_TYPES,
+    Candidate,
     MusicLink,
     RecoOutcome,
     Resolution,
@@ -61,7 +69,47 @@ from music_links_matching import (
     plan,
     verdict,
 )
+from music_links_qobuz import candidates as qobuz_candidates
 from music_links_report import Report
+
+
+def _candidats_deezer(reco: dict[str, Any], session: requests.Session,
+                      kind: str, query: str) -> list[Candidate]:
+    raw = deezer_search(session, kind, query)
+    return [c for c in (deezer_candidate(p, kind) for p in raw) if c]
+
+
+def _candidats_apple(reco: dict[str, Any], session: requests.Session,
+                     kind: str, query: str) -> list[Candidate]:
+    raw = itunes_search(session, ITUNES_ENTITY[kind], query)
+    return [c for c in (itunes_candidate(p, kind) for p in raw) if c]
+
+
+def _candidats_spotify(reco: dict[str, Any], session: requests.Session,
+                       kind: str, query: str) -> list[Candidate]:
+    raw = spotify_search(session, kind, query)
+    return [c for c in (spotify_candidate(p, kind) for p in raw) if c]
+
+
+def _candidats_qobuz(reco: dict[str, Any], session: requests.Session,
+                     kind: str, query: str) -> list[Candidate]:
+    """Qobuz corrobore depuis la PAGE : il a besoin du titre cherché.
+
+    Pour un morceau, la page visée est celle de l'album, retenue seulement si
+    elle liste vraiment une piste à ce titre (cf. `music_links_qobuz`).
+    """
+    return qobuz_candidates(session, kind, query,
+                            wanted_title=reco.get("title"))
+
+
+#: Collecteur de candidats par plateforme. Toutes rendent des `Candidate`
+#: portant ce que la SOURCE affirme : les garde-fous sont les mêmes pour tous.
+_COLLECTEURS: dict[str, Callable[..., list[Candidate]]] = {
+    PLATFORM_DEEZER: _candidats_deezer,
+    PLATFORM_APPLE: _candidats_apple,
+    PLATFORM_SPOTIFY: _candidats_spotify,
+    PLATFORM_QOBUZ: _candidats_qobuz,
+}
 
 
 def _resolve_search(reco: dict[str, Any], session: requests.Session,
@@ -70,12 +118,10 @@ def _resolve_search(reco: dict[str, Any], session: requests.Session,
     want_artist_page = kind == "artist"
     query = search_query(reco, want_artist_page=want_artist_page)
 
-    if platform == PLATFORM_DEEZER:
-        raw = deezer_search(session, kind, query)
-        candidates = [c for c in (deezer_candidate(p, kind) for p in raw) if c]
-    else:
-        raw = itunes_search(session, ITUNES_ENTITY[kind], query)
-        candidates = [c for c in (itunes_candidate(p, kind) for p in raw) if c]
+    if platform == PLATFORM_SPOTIFY and spotify_credentials() is None:
+        return Resolution(None, REASON_NO_CREDENTIALS,
+                          "SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET absents")
+    candidates = _COLLECTEURS[platform](reco, session, kind, query)
 
     chosen, reason, detail = verdict(reco, candidates,
                                      want_artist_page=want_artist_page)
