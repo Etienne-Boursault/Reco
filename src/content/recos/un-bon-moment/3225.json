@@ -3,6 +3,9 @@
     "reviewedByHuman": true
   },
   "creator": "Mona Guba",
+  "enrichedAt": {
+    "links": "2026-09-26T06:59:37Z"
+  },
   "episodeGuid": "yt-wMdkIHguIkY",
   "externalIds": {
     "deezer": "https://www.deezer.com/album/1041239822"
@@ -35,6 +38,18 @@
       "kind": "streaming",
       "label": "Deezer",
       "url": "https://www.deezer.com/album/1041239822"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/album/3LUewkhwdSzdqpMvcog7zY"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/un-bon-freestyle-mona-guba/yhskgjdkyzhwg"
     }
   ],
   "quote": "plume très très aiguisée, bravo Mona, je suis fan",
