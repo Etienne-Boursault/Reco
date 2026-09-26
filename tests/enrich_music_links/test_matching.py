@@ -70,6 +70,46 @@ def test_artist_matches_creator_false_without_creator():
     assert not m.artist_matches_creator("Orelsan", None)
 
 
+@pytest.mark.parametrize("brut", [
+    "Ben Mazué feat. Yoa",
+    "Ben Mazué feat Yoa",
+    "Ben Mazué ft. Yoa",
+    "Ben Mazué  FT.  Yoa",
+    "Ben Mazué featuring Yoa",
+])
+def test_creator_names_splits_on_featuring_mentions(brut):
+    """Ces mentions séparent deux artistes et n'appartiennent jamais à un nom."""
+    assert m.creator_names(brut) == ["Ben Mazué", "Yoa"]
+
+
+def test_creator_names_keeps_a_featuring_mention_out_of_the_names():
+    # Le point restait collé au nom suivant (« . Yoa ») tant que la frontière de
+    # mot précédait le point.
+    assert all("." not in nom for nom in m.creator_names("Artiste feat. Autre"))
+
+
+def test_artist_matches_creator_on_the_credited_half_of_a_featuring():
+    # Deezer, Apple et Spotify créditent « Rupture » à Ben Mazué seul.
+    assert m.artist_matches_creator("Ben Mazué", "Ben Mazué feat. Yoa")
+
+
+# ===== collaborator_names ===================================================
+def test_creator_names_keeps_an_ampersand_name_whole():
+    """« Simon & Garfunkel » est UN nom : le découpage n'a pas lieu ici."""
+    assert m.creator_names("Simon & Garfunkel") == ["Simon & Garfunkel"]
+
+
+def test_collaborator_names_splits_on_the_ampersand():
+    assert m.collaborator_names("Grand Corps Malade & Styleto") == [
+        "Grand Corps Malade", "Styleto"]
+
+
+@pytest.mark.parametrize("brut", [None, "", "Ben Mazué", "Damon Albarn, Jamie Hewlett"])
+def test_collaborator_names_empty_when_nothing_was_split(brut):
+    """Vide sans « & » : un appelant ne peut pas relâcher le garde-fou par hasard."""
+    assert m.collaborator_names(brut) == []
+
+
 # ===== titles_match_strict ==================================================
 def test_titles_match_strict_normalizes():
     assert m.titles_match_strict("L'Horizon des Événements",
@@ -356,3 +396,53 @@ def test_verdict_artist_page_refuses_unrelated_name():
         want_artist_page=True)
     assert (chosen, reason) == (None, m.REASON_NO_MATCH)
     assert "page artiste" in detail
+
+
+# ===== créateurs multiples : ce que le titre autorise, et ce qu'il interdit ===
+DUO_RECO = {"title": "Le prochain rêve", "creator": "Grand Corps Malade & Styleto"}
+FEAT_RECO = {"title": "Rupture", "creator": "Ben Mazué feat. Yoa"}
+
+
+def test_verdict_accepts_a_featuring_credit():
+    """Les APIs créditent « Rupture » à Ben Mazué seul."""
+    chosen, reason, _ = m.verdict(
+        FEAT_RECO, [_cand("Ben Mazué", "Rupture", kind="track")],
+        want_artist_page=False)
+    assert reason == m.REASON_LINKED
+    assert chosen.artist == "Ben Mazué"
+
+
+def test_verdict_accepts_an_ampersand_half_when_the_title_anchors_it():
+    chosen, reason, _ = m.verdict(
+        DUO_RECO, [_cand("Grand Corps Malade", "Le prochain rêve", kind="track")],
+        want_artist_page=False)
+    assert reason == m.REASON_LINKED
+    assert chosen is not None
+
+
+def test_verdict_refuses_an_ampersand_half_when_the_title_does_not_match():
+    """Un nom seul ne suffit jamais : sans le titre, aucun lien."""
+    chosen, reason, _ = m.verdict(
+        DUO_RECO, [_cand("Grand Corps Malade", "Un autre titre", kind="track")],
+        want_artist_page=False)
+    assert (chosen, reason) == (None, m.REASON_NO_MATCH)
+
+
+def test_verdict_artist_page_refuses_half_of_an_ampersand_name():
+    """Le garde-fou de non-régression : « Simon & Garfunkel » n'est pas « Simon ».
+
+    Une page ARTISTE n'a aucun titre d'œuvre pour ancrer la comparaison. Y
+    accepter la moitié d'un nom enverrait la reco vers un artiste sans rapport.
+    """
+    chosen, reason, _ = m.verdict(
+        {"title": "Simon & Garfunkel", "creator": "Simon & Garfunkel"},
+        [_cand("Simon", kind="artist")], want_artist_page=True)
+    assert (chosen, reason) == (None, m.REASON_NO_MATCH)
+
+
+def test_verdict_still_refuses_a_homonym_that_shares_only_the_title():
+    """Le découpage ne doit pas rouvrir la porte fermée par le garde-fou d'origine."""
+    chosen, reason, _ = m.verdict(
+        DUO_RECO, [_cand("Un Inconnu", "Le prochain rêve", kind="track")],
+        want_artist_page=False)
+    assert (chosen, reason) == (None, m.REASON_ARTIST_MISMATCH)
