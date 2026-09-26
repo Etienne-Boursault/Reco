@@ -64,6 +64,11 @@ class Report:
 
     seen: int = 0
     written: int = 0
+    #: Vrai quand `RECO_QOBUZ=0` a coupé la passe Qobuz. Porté par le rapport et
+    #: non par les refus : une reco qui a trouvé Deezer et Spotify n'aurait
+    #: gardé aucune trace du Qobuz absent, et on conclurait à tort que Qobuz ne
+    #: connaît pas ces œuvres.
+    qobuz_disabled: bool = False
     linked: list[LinkedCase] = field(default_factory=list)
     review: list[ReviewCase] = field(default_factory=list)
     outcomes: list[RecoCase] = field(default_factory=list)
@@ -107,6 +112,8 @@ def format_report(report: Report) -> str:
     lines += ["-" * 72, "Liens par plateforme :"]
     for platform, n in sorted(report.by_platform.items()):
         lines.append(f"  {PLATFORMS[platform]['label']:14} {n:5}")
+    if report.qobuz_disabled:
+        lines.append("  Qobuz          COUPÉ (RECO_QOBUZ=0) — non interrogé")
     lines += ["Refus / raisons :"]
     for reason, n in report.reasons.most_common():
         lines.append(f"  {reason:26} {n:5}")
@@ -124,6 +131,7 @@ def report_payload(report: Report) -> dict[str, Any]:
     return {
         "seen": report.seen,
         "written": report.written,
+        "qobuzDisabled": report.qobuz_disabled,
         "reasons": dict(report.reasons),
         "byPlatform": dict(report.by_platform),
         "byType": {t: dict(c) for t, c in sorted(report.by_type.items())},
