@@ -14,7 +14,7 @@
 #                     (avertissement constaté sur venus le 2026-09-17) ;
 #   - git, openssh    la publication pousse sur main.
 
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
