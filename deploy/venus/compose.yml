@@ -7,7 +7,7 @@ name: reco
 
 x-atelier: &atelier
   # Étiquette explicite, jamais :latest. À changer quand requirements.txt change.
-  image: reco-atelier:2026-09-17
+  image: reco-atelier:2026-09-27
   build:
     context: /home/etienne/docker/reco/depot
     dockerfile: deploy/venus/Dockerfile

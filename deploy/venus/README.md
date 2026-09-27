@@ -86,7 +86,8 @@ tail -f logs/tick-$(date +%Y-%m).log                     # suivre un passage
 docker compose ps                                        # la page de validation tourne-t-elle ?
 depot/deploy/venus/tick.sh                               # forcer un passage
 docker compose run --rm pipeline python traiter_nouveaux_episodes.py --source un-bon-moment a-extraire
-docker compose build && docker compose up -d review      # après un changement de requirements.txt
+docker compose build && docker compose up -d review      # après un changement de requirements.txt,
+                                                         # du Dockerfile ou de l'étiquette de l'image
 ```
 
 ## Premier passage
