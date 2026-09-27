@@ -54,5 +54,14 @@ ENV PYTHONPATH=/app:/app/tools \
     XDG_CACHE_HOME=/cache \
     HF_HOME=/cache/huggingface
 
+# ssh exige une entrée utilisateur pour l'uid qui l'exécute : sans elle,
+# `getpwuid` échoue et il abandonne sur « No user exists for uid 1000 ». L'image
+# installait openssh POUR pousser, mais aucun uid 1000 n'existait — vérifié le
+# 2026-09-27 dans l'image en service : la publication n'aurait jamais pu pousser.
+# Le répertoire personnel pointe sur /cache, qui existe (volume) et est
+# accessible en écriture : ssh y écrit son known_hosts.
+RUN groupadd --gid 1000 reco \
+ && useradd --uid 1000 --gid 1000 --no-create-home --home-dir /cache --shell /bin/sh reco
+
 WORKDIR /app/tools
 USER 1000:1000

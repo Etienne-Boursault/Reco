@@ -1,7 +1,7 @@
 """
 traiter_nouveaux_episodes.py — la chaîne automatique d'un nouvel épisode.
 
-Lancé à intervalles réguliers sur venus, en six temps que le script d'hôte
+Lancé à intervalles réguliers sur venus, en huit temps que le script d'hôte
 enchaîne (cf. deploy/venus/) :
 
     detecter     nouvelles vidéos de la chaîne -> épisodes `yt-…`
@@ -10,6 +10,8 @@ enchaîne (cf. deploy/venus/) :
     extraire     extraction des recos, puis message avec le lien de validation
     a-finaliser  code 0 s'il reste un épisode entièrement relu, 1 sinon
     finaliser    liens d'écoute + œuvres et mentions, puis message du reste à faire
+    a-publier    code 0 s'il reste un épisode finalisé à pousser, 1 sinon
+    publier      commit + branche sur GitHub, puis message avec le lien de la PR
 
 Pourquoi découper : l'extraction et la finalisation prennent le verrou pipeline,
 que le review_server tient tant qu'il tourne (cf. review_lock.py). Le script
@@ -20,9 +22,9 @@ y a du travail.
 Seuls les épisodes `yt-…` sont concernés. Les épisodes Acast ont été traités à
 la main : les ré-extraire serait facturé et écraserait des mois de relecture.
 
-État : `tools/output/pipeline/<source>.json` — épisodes déjà extraits, épisodes
-déjà finalisés, et dernière erreur signalée par étape et par épisode, pour
-qu'une panne qui dure ne produise pas un message à chaque passage.
+État : `tools/output/pipeline/<source>.json` — épisodes déjà extraits, finalisés,
+publiés, et dernière erreur signalée par étape et par épisode, pour qu'une panne
+qui dure ne produise pas un message à chaque passage.
 
 Usage :
     python traiter_nouveaux_episodes.py --source un-bon-moment detecter
@@ -83,6 +85,7 @@ def load_state(source_id: str) -> dict[str, Any]:
     state = read_json(path) if path.exists() else {}
     state.setdefault("extracted", [])
     state.setdefault("finalized", [])
+    state.setdefault("published", [])
     state.setdefault("lastErrors", {})
     return state
 
@@ -385,6 +388,21 @@ def _passe_sans_bloquer(nom: str, unite: str, passe: Callable[[str, set[str]], A
     return Passe(nom, unite, frozenset(rapport.servies))
 
 
+# ===== publication ==========================================================
+def a_publier(source_id: str, state: dict[str, Any]) -> list[tuple[Path, dict[str, Any]]]:
+    """Épisodes finalisés — œuvres et mentions écrites — pas encore poussés."""
+    return [(path, episode) for path, episode in _youtube_episodes(source_id)
+            if episode["guid"] in state["finalized"]
+            and episode["guid"] not in state.get("published", [])]
+
+
+def publier(source_id: str, notify: Notify, state: dict[str, Any], **kwargs: Any) -> int:
+    """Pousse les épisodes en attente. La mécanique git vit dans `publication`."""
+    from publication import publier_les_episodes
+    return publier_les_episodes(source_id, a_publier(source_id, state), notify, state,
+                                rapporter=_report_once, oublier=_clear_error, **kwargs)
+
+
 # ===== notification ==========================================================
 def build_notify(channel: str) -> Notify:
     sender = None
@@ -401,7 +419,12 @@ def build_notify(channel: str) -> Notify:
 
 
 # ===== CLI ===================================================================
-STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-finaliser", "finaliser")
+STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-finaliser", "finaliser",
+         "a-publier", "publier")
+#: Étapes qui ne font que répondre « il y a du travail » (code 0) ou non (code 1).
+SONDES = {"a-extraire": ("à extraire", a_extraire),
+          "a-finaliser": ("à finaliser", a_finaliser),
+          "a-publier": ("à publier", a_publier)}
 
 
 @contextlib.contextmanager
@@ -425,14 +448,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--modele-transcription", default=WHISPER_MODEL)
     args = parser.parse_args(argv)
 
-    if args.etape in ("a-extraire", "a-finaliser"):
-        state = load_state(args.source)
-        if args.etape == "a-extraire":
-            pending = a_extraire(args.source, state)
-            log.info("%d épisode(s) à extraire.", len(pending))
-        else:
-            pending = a_finaliser(args.source, state)
-            log.info("%d épisode(s) à finaliser.", len(pending))
+    if args.etape in SONDES:
+        libelle, sonde = SONDES[args.etape]
+        pending = sonde(args.source, load_state(args.source))
+        log.info("%d épisode(s) %s.", len(pending), libelle)
         return 0 if pending else 1
 
     notify = build_notify(args.notify)
@@ -443,6 +462,8 @@ def main(argv: list[str] | None = None) -> int:
             return transcrire(args.source, notify, state, model=args.modele_transcription)
         if args.etape == "finaliser":
             return finaliser(args.source, notify, state)
+        if args.etape == "publier":
+            return publier(args.source, notify, state)
         return extraire(args.source, notify, state, review_url=args.review_url)
 
 
