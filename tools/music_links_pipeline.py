@@ -53,6 +53,7 @@ from music_links_matching import (
     REASON_NO_CREDENTIALS,
     REASON_NO_MATCH,
     REASON_NOT_VALIDATED,
+    REASON_QOBUZ_DISABLED,
     REASON_STORED_KIND_MISMATCH,
     REASON_UNREADABLE,
     STRATEGY_PROMOTE_DEEZER_ID,
@@ -69,7 +70,9 @@ from music_links_matching import (
     plan,
     verdict,
 )
+from music_links_qobuz import ENV_SWITCH as QOBUZ_ENV_SWITCH
 from music_links_qobuz import candidates as qobuz_candidates
+from music_links_qobuz import enabled as qobuz_enabled
 from music_links_report import Report
 
 
@@ -187,6 +190,13 @@ def resolve_reco(reco: dict[str, Any], *, session: requests.Session,
     if not targets:
         return RecoOutcome((), (), REASON_ALREADY_COMPLETE)
 
+    # Qobuz coupé : on ne l'interroge pas, et on le DIT plutôt que de laisser un
+    # « aucun lien » qui ressemblerait à une absence chez Qobuz.
+    if not qobuz_enabled():
+        targets = [p for p in targets if p != PLATFORM_QOBUZ]
+        if not targets:
+            return RecoOutcome((), (), REASON_QOBUZ_DISABLED)
+
     # Le titre seul ne prouve rien en musique : sans `creator`, aucune
     # corroboration n'est possible pour un morceau ou un album. Une page
     # ARTISTE fait exception — le titre de la reco EST le nom recherché.
@@ -283,8 +293,11 @@ def run(*, root: Path, session: requests.Session | None,
     excluded = set(exclude_ids)
     wanted_ids = set(ids)
     wanted = set(types) if types else None
-    report = Report()
+    report = Report(qobuz_disabled=not qobuz_enabled())
     resolved = 0
+    if report.qobuz_disabled:
+        log.info("  Qobuz coupé par %s : plateforme non interrogée",
+                 QOBUZ_ENV_SWITCH)
 
     for path in iter_reco_paths(root, source):
         try:

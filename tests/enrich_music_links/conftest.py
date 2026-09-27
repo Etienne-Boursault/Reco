@@ -9,7 +9,9 @@ dépendraient de la machine qui les lance :
     l'éditeur), `load_dotenv` les remettrait et la passe partirait sur le
     réseau. On remplace la fonction elle-même.
   - **Qobuz** ouvre de vraies pages web. Les tests qui ne parlent pas de Qobuz
-    n'ont pas à l'attendre.
+    n'ont pas à l'attendre. Son interrupteur d'exploitation (`RECO_QOBUZ`) est
+    remis à l'état actif pour la même raison : sur une machine qui l'a coupé,
+    les tests qui attendent un refus de Qobuz verraient un `qobuz-disabled`.
 
 Un test qui porte sur l'une des deux remplace simplement ces doubles : son
 `monkeypatch` s'applique après celui du décor.
@@ -29,3 +31,4 @@ def spotify_et_qobuz_muets(monkeypatch):
     monkeypatch.setattr(music_links_pipeline, "spotify_credentials", lambda: None)
     monkeypatch.setattr(music_links_pipeline, "qobuz_candidates",
                         lambda *_a, **_k: [])
+    monkeypatch.delenv("RECO_QOBUZ", raising=False)

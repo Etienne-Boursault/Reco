@@ -394,3 +394,68 @@ def test_resolve_reco_leaves_an_existing_qobuz_link_alone(session, monkeypatch):
     m.resolve_reco(reco, session=session)
 
     assert appels == []
+
+
+# ===== l'interrupteur ========================================================
+@pytest.mark.parametrize("valeur,actif", [
+    ("0", False), ("off", False), ("OFF", False), ("false", False),
+    ("no", False), ("non", False), (" 0 ", False),
+    ("1", True), ("on", True), ("", True), ("oui", True),
+])
+def test_qobuz_enabled_reads_the_switch(monkeypatch, valeur, actif):
+    monkeypatch.setenv(qobuz.ENV_SWITCH, valeur)
+    assert qobuz.enabled() is actif
+
+
+def test_qobuz_enabled_by_default(monkeypatch):
+    """Absence de variable = plateforme active : l'interrupteur sert à COUPER."""
+    monkeypatch.delenv(qobuz.ENV_SWITCH, raising=False)
+    assert qobuz.enabled() is True
+
+
+@responses.activate
+def test_resolve_reco_does_not_even_query_qobuz_when_switched_off(session,
+                                                                 monkeypatch):
+    """Coupé, Qobuz n'est pas interrogé — on n'ouvre pas ses pages pour rien."""
+    appels = []
+    monkeypatch.setattr(pipeline, "qobuz_candidates",
+                        lambda *a, **k: appels.append(a) or [])
+    monkeypatch.setenv(qobuz.ENV_SWITCH, "0")
+    _rien_ailleurs()
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert appels == []
+    assert m.PLATFORM_QOBUZ not in [p for p, _r, _d in out.refusals]
+
+
+@responses.activate
+def test_resolve_reco_says_qobuz_was_disabled_when_it_was_the_only_gap(
+        session, monkeypatch):
+    """Sans cette raison, le rapport dirait « aucun lien » : on croirait que
+    Qobuz ne connaît pas l'œuvre, alors qu'il n'a pas été interrogé."""
+    monkeypatch.setenv(qobuz.ENV_SWITCH, "0")
+    reco = dict(ALBUM_RECO, links=[
+        {"url": "https://www.deezer.com/album/1"},
+        {"url": "https://music.apple.com/fr/album/x/9"},
+        {"url": "https://open.spotify.com/album/abc"},
+    ])
+
+    out = m.resolve_reco(reco, session=session)
+
+    assert out.links == ()
+    assert out.reason == m.REASON_QOBUZ_DISABLED
+
+
+@responses.activate
+def test_the_other_platforms_still_work_when_qobuz_is_off(session, monkeypatch):
+    """Couper Qobuz ne doit rien casser d'autre."""
+    monkeypatch.setenv(qobuz.ENV_SWITCH, "0")
+    responses.add(responses.GET, f"{DEEZER}/search/album", status=200,
+                  json={"data": [_deezer_album()]})
+    responses.add(responses.GET, f"{ITUNES}/search", json={"results": []},
+                  status=200)
+
+    out = m.resolve_reco(ALBUM_RECO, session=session)
+
+    assert [link.platform for link in out.links] == [m.PLATFORM_DEEZER]

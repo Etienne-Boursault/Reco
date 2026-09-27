@@ -26,11 +26,43 @@ CE QUE LA PAGE DONNE (vérifié le 2026-09-25)
 
 Aucune URL n'est fabriquée : celles qu'on renvoie ont toutes été lues dans une
 page de Qobuz, puis corroborées par le contenu de la page cible.
+
+L'INTERRUPTEUR
+--------------
+`RECO_QOBUZ=0` (ou `off`, `false`, `no`, `non`) coupe cette passe. La variable
+est lue à CHAQUE appel, et non au chargement du module : la chaîne de venus se
+met à jour par `git pull` et ne redéploie rien, si bien qu'un réglage figé dans
+le code ne pourrait pas être changé sans commit. Coupé, Qobuz ne gêne personne :
+Deezer, Apple Music et Spotify continuent, et le rapport le DIT (`qobuz-disabled`)
+au lieu de laisser croire que Qobuz n'a rien trouvé. Cf. `deploy/venus/README.md`.
+
+CE QUI JUSTIFIE CET INTERRUPTEUR : LA PASSE N'EST PAS REPRODUCTIBLE
+-------------------------------------------------------------------
+Mesuré le 2026-09-25 : même code, deux essais, « Solann » donne un lien la
+première fois et une ambiguïté la seconde. Cause identifiée le 2026-09-26, et
+elle n'est PAS dans ce module :
+
+  - la recherche Qobuz ne classe pas ses résultats de façon stable, si bien que
+    les trois pages ouvertes (`MAX_PAGES`) ne sont pas toujours les mêmes ;
+  - « Solanna » et « Solann » — deux artistes DISTINCTS — atteignent 0,923 de
+    similarité, au-dessus du seuil de 0,88 (`ARTIST_MATCH_THRESHOLD`). Quand le
+    classement ramène les deux pages, deux identités survivent au garde-fou et
+    la passe refuse (`ambiguous`) ; quand il n'en ramène qu'une, elle conclut.
+
+Durcir le seuil pour les noms courts a été mesuré puis ÉCARTÉ : sur les 895 noms
+du corpus, les paires courtes que le seuil confond sont presque toutes le MÊME
+artiste mal transcrit (« Diam »/« Diams », « Orelsan »/« Relsan »,
+« Mona Guba »/« Monaguba »). Exiger l'égalité stricte en dessous de 8 caractères
+séparerait 8 paires, dont aucune ne désigne deux artistes différents : on
+perdrait la tolérance aux fautes de transcription sans rien gagner. La
+non-reproductibilité reste donc, assumée et bornée — elle ne produit jamais de
+faux lien, seulement un refus ou un lien selon le classement du jour.
 """
 from __future__ import annotations
 
 import html
 import json
+import os
 import re
 from typing import Any
 
@@ -44,6 +76,12 @@ from music_links_matching import (
 )
 
 QOBUZ_BASE = "https://www.qobuz.com/fr-fr"
+#: Nom de l'interrupteur d'exploitation (cf. « L'INTERRUPTEUR » en en-tête).
+ENV_SWITCH = "RECO_QOBUZ"
+#: Valeurs qui coupent la passe. Tout le reste — y compris l'absence de la
+#: variable — la laisse active : Qobuz est utile par défaut, l'interrupteur est
+#: là pour les jours où sa fragilité gêne.
+_OFF_VALUES = frozenset({"0", "off", "false", "no", "non"})
 #: Nombre maximum de pages ouvertes par reco. Une page Qobuz pèse ~300 Ko :
 #: au-delà de trois candidats, le coût dépasse le gain.
 MAX_PAGES = 3
@@ -66,6 +104,16 @@ _RE_DISCOGRAPHIE = re.compile(r"discographie de\s+(.+?)\s+-\s", re.IGNORECASE)
 #: l'album « Qu'en restera-t-il »).
 _PATH_PATTERN = {"album": _RE_ALBUM_PATH, "track": _RE_ALBUM_PATH,
                  "artist": _RE_ARTIST_PATH}
+
+
+def enabled() -> bool:
+    """False si l'interrupteur coupe la passe Qobuz.
+
+    Lu à chaque appel, à dessein : la chaîne tourne sur un serveur qui se met à
+    jour par `git pull`, donc sans redéploiement. Une variable d'environnement
+    est le seul réglage qu'on puisse y changer sans commit.
+    """
+    return os.environ.get(ENV_SWITCH, "").strip().lower() not in _OFF_VALUES
 
 
 def _get_html(session: requests.Session, url: str) -> str | None:

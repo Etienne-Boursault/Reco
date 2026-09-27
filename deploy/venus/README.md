@@ -16,7 +16,8 @@ habituel, joignable **par le VPN seulement**, sur <http://10.8.0.1:8000>.
 
 Une fois l'épisode relu de bout en bout (plus aucune reco en brouillon), le passage
 suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qui n'écrit
-une URL que si Deezer ou Apple corrobore titre ET artiste —, fiches « où regarder »
+une URL que si Deezer, Apple Music, Spotify ou Qobuz corrobore titre ET artiste, et
+dont la passe Qobuz se coupe par `RECO_QOBUZ=0` (voir plus bas) —, fiches « où regarder »
 des films et séries par `enrich_tmdb` (clé `TMDB_API_KEY` dans `.env` ; si elle manque
 ou si TMDB répond mal, l'épisode est finalisé quand même et le message le signale),
 puis conversion en œuvres et mentions par `publier_episode.py`, et un message Matrix
@@ -44,7 +45,26 @@ RECO_MATRIX_HOMESERVER=…       # les trois mêmes valeurs que les secrets GitH
 RECO_MATRIX_TOKEN=…
 RECO_MATRIX_ROOM=…
 RECO_REVIEW_URL=http://10.8.0.1:8000
+TMDB_API_KEY=…                 # « où regarder » des films et séries ; absente, l'épisode est finalisé quand même
+SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no-credentials » et non « aucun lien »
+SPOTIFY_CLIENT_SECRET=…
 ```
+
+### Couper Qobuz sans redéployer : `RECO_QOBUZ=0`
+
+Qobuz n'a pas d'API : la passe lit ses pages web, et c'est la seule source du dépôt
+qui dépende de la structure d'une page. Elle ne produit jamais de faux lien — chaque
+candidat est corroboré par la page cible — mais elle n'est pas reproductible : la
+recherche de Qobuz ne classe pas ses résultats de façon stable, si bien qu'un même
+artiste donne un lien à un essai et une ambiguïté au suivant (mesuré sur « Solann »,
+que 0,923 de similarité rend indistinguable de « Solanna »).
+
+Ajouter `RECO_QOBUZ=0` au `.env` la coupe au passage suivant, **sans commit ni
+redéploiement** : la variable est relue à chaque appel. Les autres plateformes
+continuent, et le rapport porte alors la mention « Qobuz COUPÉ » plutôt qu'un
+silence qui ferait croire que Qobuz ignore ces œuvres. Valeurs acceptées pour
+couper : `0`, `off`, `false`, `no`, `non` ; tout le reste — y compris l'absence de
+la variable — laisse Qobuz actif.
 
 ## Quand ça tourne
 

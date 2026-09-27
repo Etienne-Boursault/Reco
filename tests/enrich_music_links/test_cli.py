@@ -386,3 +386,33 @@ def test_build_parser_defaults():
     assert args.apply is False
     assert args.artists is False
     assert args.only_missing is False
+
+
+# ===== l'interrupteur Qobuz dans le rapport =================================
+def test_run_flags_a_disabled_qobuz_in_the_report(root, monkeypatch):
+    """La passe doit DIRE que Qobuz était coupé, une fois, au niveau du rapport.
+
+    Le porter dans les refus ne suffirait pas : une reco qui trouve Deezer et
+    Spotify n'en garderait aucune trace, et on conclurait que Qobuz ignore ces
+    œuvres.
+    """
+    monkeypatch.setenv("RECO_QOBUZ", "0")
+    monkeypatch.setattr(pipeline, "resolve_reco",
+                        lambda reco, **_k: m.RecoOutcome((), (), m.REASON_NO_MATCH))
+
+    report = m.run(root=root, session=None, source="src-a")
+
+    assert report.qobuz_disabled is True
+    assert "COUPÉ" in m.format_report(report)
+    assert m.report_payload(report)["qobuzDisabled"] is True
+
+
+def test_run_does_not_flag_qobuz_when_active(root, monkeypatch):
+    monkeypatch.delenv("RECO_QOBUZ", raising=False)
+    monkeypatch.setattr(pipeline, "resolve_reco",
+                        lambda reco, **_k: m.RecoOutcome((), (), m.REASON_NO_MATCH))
+
+    report = m.run(root=root, session=None, source="src-a")
+
+    assert report.qobuz_disabled is False
+    assert "COUPÉ" not in m.format_report(report)

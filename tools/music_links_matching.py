@@ -107,6 +107,10 @@ REASON_HTTP_ERROR = "http-error"
 #: machine n'était pas configurée. Le distinguer évite de conclure à tort qu'une
 #: œuvre est absente de Spotify — le cas de venus, où ces variables manquent.
 REASON_NO_CREDENTIALS = "no-credentials"
+#: Qobuz coupé par `RECO_QOBUZ=0` (cf. `music_links_qobuz.enabled`). Comme
+#: `no-credentials`, ce n'est pas un refus de fond : dire « aucun lien » sans le
+#: distinguer laisserait croire que l'œuvre est absente de Qobuz.
+REASON_QOBUZ_DISABLED = "qobuz-disabled"
 REASON_NO_MATCH = "no-match"
 REASON_AMBIGUOUS = "ambiguous"
 REASON_TITLE_MISMATCH = "title-mismatch"
@@ -196,19 +200,40 @@ def collaborator_names(creator: str | None) -> list[str]:
 
 def artist_matches_creator(remote_artist: str | None,
                            creator: str | None) -> bool:
-    """True si l'artiste renvoyé par l'API correspond au `creator` de la reco."""
-    return any(names_match(remote_artist, name) for name in creator_names(creator))
+    """True si l'artiste renvoyé par l'API correspond au `creator` de la reco.
+
+    Le découpage est SYMÉTRIQUE : la réponse de l'API porte elle aussi parfois
+    plusieurs noms. Apple crédite « Rupture » à « Ben Mazué & Yoa » quand le
+    corpus n'écrit qu'une moitié, et comparer les deux chaînes entières donnait
+    0,82 pour 0,88 requis — un refus injustifié (mesuré le 2026-09-25). Les deux
+    côtés sont donc décomposés de la même façon : virgules et mentions de
+    collaboration, jamais « & » (cf. `creator_names`).
+    """
+    distants = creator_names(remote_artist)
+    return any(names_match(distant, name)
+               for distant in distants for name in creator_names(creator))
 
 
 def artist_matches_collaborator(remote_artist: str | None,
                                 creator: str | None) -> bool:
-    """True si l'artiste renvoyé correspond à l'un des noms séparés par « & ».
+    """True si un nom séparé par « & » correspond, d'UN CÔTÉ OU DE L'AUTRE.
 
     Plus permissif que `artist_matches_creator` : réservé aux appels où le titre
     de l'œuvre a déjà été vérifié (cf. `verdict`).
+
+    Rend False quand aucun « & » n'a été découpé — ni dans notre `creator`, ni
+    dans la réponse de l'API. Sans ce garde, la fonction retomberait sur
+    `artist_matches_creator` et ses appelants relâcheraient le garde-fou sans le
+    savoir.
     """
-    return any(names_match(remote_artist, name)
-               for name in collaborator_names(creator))
+    cote_api = collaborator_names(remote_artist)
+    cote_reco = collaborator_names(creator)
+    if not cote_api and not cote_reco:
+        return False
+    distants = cote_api or creator_names(remote_artist)
+    locaux = cote_reco or creator_names(creator)
+    return any(names_match(distant, name)
+               for distant in distants for name in locaux)
 
 
 def titles_match_strict(a: str | None, b: str | None) -> bool:
@@ -373,11 +398,13 @@ def verdict(reco: dict[str, Any], candidates: Sequence[Candidate],
     correspondre : c'est la double condition qui protège des homonymes.
 
     Cette double condition est aussi ce qui autorise, pour un morceau ou un
-    album SEULEMENT, à reconnaître un nom séparé par « & » (« Grand Corps
-    Malade & Styleto » face à une API qui ne crédite que le premier) : le titre
-    fait alors office d'ancre. Une page ARTISTE n'a pas cette ancre, et s'en
-    passer suffirait à envoyer « Simon & Garfunkel » vers un « Simon » sans
-    rapport — d'où l'asymétrie assumée entre les deux branches.
+    album SEULEMENT, à reconnaître un nom séparé par « & » — des DEUX côtés :
+    « Grand Corps Malade & Styleto » face à une API qui ne crédite que le
+    premier, ou l'inverse, « Ben Mazué & Yoa » renvoyé par Apple face à un
+    `creator` qui n'en nomme qu'un. Le titre fait alors office d'ancre. Une page
+    ARTISTE n'a pas cette ancre, et s'en passer suffirait à envoyer « Simon &
+    Garfunkel » vers un « Simon » sans rapport, ou une reco de « Simon » vers la
+    page du duo — d'où l'asymétrie assumée entre les deux branches.
 
     `anchored` distingue les candidats issus d'un IDENTIFIANT déjà stocké de
     ceux d'une recherche libre. Le diagnostic diffère : qu'une recherche ne
