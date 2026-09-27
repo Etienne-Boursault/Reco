@@ -125,7 +125,10 @@ describe('AllRecosView — accessibilité', () => {
     // Sur la page `/[source]/recos`, cette vue est le contenu principal : son
     // titre doit être un `<h1>` réel, pas un titre réservé aux lecteurs
     // d'écran comme dans l'onglet du catalogue.
-    expect(await render()).toMatch(/<h2 class="visually-hidden">/);
+    // `[^>]*` comme pour le <h1> ci-dessous : Astro 7.3 ajoute des attributs de
+    // débogage (`data-astro-source-file`) au rendu, la balise ne se referme plus
+    // juste après la classe.
+    expect(await render()).toMatch(/<h2 class="visually-hidden"[^>]*>/);
     const autonome = await render({ titreVisible: true });
     expect(autonome).toMatch(/<h1[^>]*>Toutes les recommandations<\/h1>/);
   });
