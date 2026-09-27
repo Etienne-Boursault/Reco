@@ -42,3 +42,21 @@ if outil a-finaliser; then
   outil finaliser || horodater "finalisation en échec"
   docker compose start review
 fi
+# La publication ne prend pas le verrou : elle ne touche pas au corpus, elle le
+# pousse. Elle retire en revanche les fichiers de l'épisode du clone jusqu'à la
+# fusion de la PR — la page de validation ne l'affichera plus, sa relecture étant
+# terminée. Inutile donc de l'arrêter.
+if outil a-publier; then
+  outil publier || horodater "publication en échec"
+fi
+
+# Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se
+# remarque qu'au prochain épisode manqué. Kuma tourne sur venus et ne peut pas
+# interroger la page de validation, ouverte au seul VPN — c'est donc au passage
+# de se signaler. On extrait la seule variable utile du .env plutôt que de le
+# sourcer : le fichier porte aussi des clés d'API, qui n'ont rien à faire dans
+# l'environnement de tout ce que lance ce script. Un ping raté n'est jamais fatal.
+KUMA=$(sed -n 's/^RECO_KUMA_PUSH_URL=//p' .env 2>/dev/null | tail -1)
+if [ -n "${KUMA}" ]; then
+  curl -fsS -m 10 -o /dev/null "${KUMA}" || horodater "ping Kuma en échec"
+fi

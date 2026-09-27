@@ -6,8 +6,10 @@
 name: reco
 
 x-atelier: &atelier
-  # Étiquette explicite, jamais :latest. À changer quand requirements.txt change.
-  image: reco-atelier:2026-09-27
+  # Étiquette explicite, jamais :latest. À changer quand requirements.txt ou le
+  # Dockerfile change : sinon venus garde l'ancienne image et la mise à jour est
+  # inerte. Celle-ci ajoute l'utilisateur 1000, sans lequel ssh refuse de partir.
+  image: reco-atelier:2026-09-28
   build:
     context: /home/etienne/docker/reco/depot
     dockerfile: deploy/venus/Dockerfile
@@ -19,6 +21,11 @@ x-atelier: &atelier
   volumes:
     - /home/etienne/docker/reco/depot:/app
     - /home/etienne/.cache/reco:/cache
+    # Clé de dépôt (écriture sur ce seul dépôt), en LECTURE SEULE et au MÊME
+    # chemin que sur l'hôte : le `core.sshCommand` du clone la désigne par ce
+    # chemin absolu, et vaut donc des deux côtés. Sans elle, l'étape `publier`
+    # ne peut pas pousser.
+    - /home/etienne/.ssh/reco_deploy:/home/etienne/.ssh/reco_deploy:ro
 
 services:
   # Page de validation, joignable UNIQUEMENT par le VPN : elle n'a pas

@@ -24,8 +24,49 @@ puis conversion en œuvres et mentions par `publier_episode.py`, et un message M
 qui liste **ce qui reste à faire à la main**, reco par reco. Ce qui demande un jugement
 (homonymes, livres, jeux, associations, vidéos, sites officiels) n'est jamais deviné.
 
-Ce qui n'est toujours pas automatisé : la poussée sur `main`. Et
-`migrate_reco_to_item_mention.py` ne doit jamais être lancé — il réécrit tout le corpus.
+Le passage suivant **publie** : il commite les fichiers de l'épisode, les pousse sur une
+branche `contenu/<guid>` et ouvre la PR (voir plus bas). Il ne reste donc qu'un clic :
+fusionner. `migrate_reco_to_item_mention.py`, lui, ne doit jamais être lancé — il
+réécrit tout le corpus.
+
+## Publication : ce que venus pousse, et comment
+
+Une **clé de dépôt** ed25519 (`~/.ssh/reco_deploy`, droits 600) est déclarée en écriture
+sur ce dépôt seul. Le clone s'en sert par son `core.sshCommand`, et le compose la monte
+dans le conteneur **en lecture seule, au même chemin absolu** — c'est ce qui rend la
+configuration valable des deux côtés. Son homologue publique est déposée sur GitHub ;
+la partie privée n'a jamais quitté venus.
+
+La séquence évite un piège : le clone est sur `main`, et `tick.sh` fait `git pull
+--ff-only` à chaque passage. Un commit laissé sur `main` en local ferait échouer ce pull
+dès la fusion de la PR.
+
+1. `git add` des seuls fichiers de l'épisode — épisode, recos, mentions, œuvres ;
+2. commit, puis poussée sur `contenu/<guid>` ;
+3. **vérification** que la branche distante porte bien ce commit ;
+4. alors seulement, `main` revient sur `origin/main` (`reset --mixed`, jamais `--hard`,
+   qui emporterait une validation en cours) et les copies locales des fichiers poussés
+   sont retirées : la fusion de la PR les ramènera, suivies par git.
+
+Rien n'est retiré si la poussée échoue. L'étape refuse par ailleurs de travailler si une
+reco est encore en brouillon, ou si le clone porte la moindre modification étrangère à
+l'épisode — jamais emporter le travail de quelqu'un d'autre dans un commit.
+
+**Conséquence à connaître** : entre la poussée et la fusion, l'épisode n'apparaît plus
+sur la page de validation. Sa relecture est terminée à ce stade, et le message Matrix le
+rappelle.
+
+### Ouvrir la PR automatiquement : `RECO_GITHUB_TOKEN`
+
+Une clé de dépôt permet de pousser, pas d'ouvrir une PR : cela passe par l'API. Sans
+jeton, tout fonctionne et le message Matrix porte le **lien de comparaison**, qui ouvre
+le formulaire prérempli — un clic de plus. Avec un jeton, la PR est ouverte et le message
+porte son adresse.
+
+Le créer sur GitHub → *Settings* → *Developer settings* → *Personal access tokens* →
+*Fine-grained tokens*, en le restreignant au seul dépôt `Reco` et à la seule permission
+**Pull requests : Read and write**. Puis l'ajouter au `.env` : `RECO_GITHUB_TOKEN=…`.
+Aucune autre permission n'est nécessaire : la poussée passe par la clé, pas par le jeton.
 
 ## Où sont les choses
 
@@ -36,6 +77,7 @@ Ce qui n'est toujours pas automatisé : la poussée sur `main`. Et
 | `~/docker/reco/depot/` | clone du dépôt ; `tools/output/` y garde transcriptions et états | oui |
 | `~/docker/reco/logs/tick-AAAA-MM.log` | journal des passages | oui |
 | `~/.cache/reco/` | modèle Whisper (1,6 Go), caches yt-dlp — se retéléchargent | **non**, volontairement |
+| `~/.ssh/reco_deploy` | clé de dépôt (écriture sur ce dépôt seul), droits 600 | **non** : la sauvegarde ne couvre que `~/docker`. Une clé perdue se régénère et se redéclare sur GitHub |
 
 ## Le `.env`
 
@@ -48,6 +90,8 @@ RECO_REVIEW_URL=http://10.8.0.1:8000
 TMDB_API_KEY=…                 # « où regarder » des films et séries ; absente, l'épisode est finalisé quand même
 SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no-credentials » et non « aucun lien »
 SPOTIFY_CLIENT_SECRET=…
+RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
+RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 ```
 
 ### Couper Qobuz sans redéployer : `RECO_QOBUZ=0`
@@ -70,13 +114,40 @@ la variable — laisse Qobuz actif.
 
 ```
 */10 9-18 * * 0  /home/etienne/docker/reco/depot/deploy/venus/tick.sh
+*/10 11-16 * * 5 /home/etienne/docker/reco/depot/deploy/venus/tick.sh
 5    */2  * * *  /home/etienne/docker/reco/depot/deploy/venus/tick.sh
 ```
 
-Le dimanche de 9 h à 18 h toutes les 10 minutes, sinon toutes les deux heures. Un
-verrou (`flock`) empêche deux passages de se chevaucher. Interroger la chaîne plus
-souvent n'apporterait rien, et exposerait venus au blocage « Sign in to confirm
-you're not a bot » de YouTube.
+Toutes les 10 minutes dans les deux fenêtres de publication — dimanche 9 h-19 h et
+vendredi 11 h-17 h, la saison 6 ayant démarré un vendredi à midi —, sinon toutes les
+deux heures. Un verrou (`flock`) empêche deux passages de se chevaucher. Interroger la
+chaîne plus souvent n'apporterait rien, et exposerait venus au blocage « Sign in to
+confirm you're not a bot » de YouTube.
+
+## Savoir que la chaîne tourne encore : le moniteur « push » de Kuma
+
+Quand tout va bien, la chaîne est **silencieuse**. Si le cron meurt, si un conteneur
+casse, si le verrou reste coincé, rien ne le dit : cela se verrait au prochain épisode
+manqué. Kuma tourne sur venus et ne peut pas interroger la page de validation, ouverte
+au seul VPN (l'adresse d'un conteneur n'est pas dans la plage autorisée par ufw). C'est
+donc au passage de se signaler.
+
+À la **fin** de chaque passage, `tick.sh` appelle l'URL de `RECO_KUMA_PUSH_URL` si elle
+est définie. Un ping raté n'est jamais fatal : il est seulement journalisé.
+
+Côté Kuma : *Add New Monitor* → **Monitor Type : Push** → nommer (« Reco — chaîne
+venus ») → **Heartbeat Interval : 9000 s** (2 h 30) → *Save*. Kuma affiche alors une
+*Push URL* : la coller dans le `.env` sous `RECO_KUMA_PUSH_URL`.
+
+Pourquoi 2 h 30 : le passage le plus espacé tombe toutes les 2 heures, et un passage
+peut durer une demi-heure (transcription puis extraction). En dessous, Kuma alerterait
+pendant un passage normal ; beaucoup au-dessus, une panne du vendredi soir ne se
+verrait que le lendemain. Les fenêtres à 10 minutes envoient simplement plus de pings
+que nécessaire, ce qui ne gêne pas.
+
+**Limite à connaître** : Kuma est sur venus. Il signale une chaîne morte alors que la
+machine tourne — le cas courant — mais si venus s'arrête, Kuma s'arrête avec. Couvrir ça
+demanderait une surveillance hors de la maison.
 
 ## Opérations courantes
 
@@ -88,6 +159,8 @@ depot/deploy/venus/tick.sh                               # forcer un passage
 docker compose run --rm pipeline python traiter_nouveaux_episodes.py --source un-bon-moment a-extraire
 docker compose build && docker compose up -d review      # après un changement de requirements.txt,
                                                          # du Dockerfile ou de l'étiquette de l'image
+git -C depot ls-remote origin main                       # la clé de dépôt répond-elle ?
+docker compose run --rm pipeline git ls-remote origin main   # ... et depuis le conteneur
 ```
 
 ## Premier passage
@@ -99,5 +172,6 @@ reconnu mais absent du corpus est créé quand même.
 ## Retirer le service
 
 Dans l'ordre de `_shared/docs/process-installation-app.md` : `docker compose down`
-(sans `-v`), retirer les deux lignes de la crontab, la carte de Homepage, le moniteur
-d'Uptime Kuma, puis marquer le service retiré dans `hosts.md`.
+(sans `-v`), retirer les trois lignes de la crontab, la carte de Homepage, le moniteur
+d'Uptime Kuma, la clé de dépôt côté GitHub (*Settings* → *Deploy keys*) et le jeton s'il
+existe, puis marquer le service retiré dans `hosts.md`.
