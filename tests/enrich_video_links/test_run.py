@@ -367,3 +367,88 @@ def test_main_limit_option(root, monkeypatch, no_lock):
     assert evl.main(["--apply", "--limit", "1"]) == 0
     d = json.loads((root / "src-a" / "a-0002.json").read_text(encoding="utf-8"))
     assert "links" not in d
+
+
+def test_main_ids_option(root, monkeypatch, no_lock):
+    """`--ids` : c'est par là que la chaîne de venus limite la passe à un épisode."""
+    monkeypatch.setattr(evl, "RECOS_DIR", root)
+    monkeypatch.setattr(pipeline, "resolve_video_links",
+                        _fake_resolver({"a-0001": FILLED, "a-0002": FILLED_SEARCH}))
+    monkeypatch.setenv("TMDB_API_KEY", "k")
+
+    assert evl.main(["--apply", "--ids", "a-0001"]) == 0
+
+    assert json.loads((root / "src-a" / "a-0001.json").read_text(encoding="utf-8"))["links"]
+    assert "links" not in json.loads(
+        (root / "src-a" / "a-0002.json").read_text(encoding="utf-8"))
+
+
+# ===== Idempotence ==========================================================
+def test_a_second_pass_does_not_rewrite_for_the_timestamp_alone(root, monkeypatch):
+    """L'instabilité de `test_run_apply_is_idempotent` sur macOS, rendue déterministe.
+
+    `enrichedAt` est horodaté à la SECONDE : deux passes dans la même seconde ne
+    changeaient rien, deux passes qui enjambaient une seconde réécrivaient le
+    fichier pour cette seule horodate. L'idempotence dépendait donc de la
+    vitesse de la machine. Ici, l'horloge avance de force entre les deux passes,
+    ce qui reproduit le cas à coup sûr.
+    """
+    monkeypatch.setattr(pipeline, "resolve_video_links", _fake_resolver({"a-0001": FILLED}))
+    horloges = iter(["2026-09-26T10:00:00Z", "2026-09-26T10:00:01Z"])
+    monkeypatch.setattr(pipeline, "now_iso", lambda: next(horloges))
+
+    evl.run(root=root, session=None, api_key="k", apply=True, sleep=0)
+    second = evl.run(root=root, session=None, api_key="k", apply=True, sleep=0)
+
+    assert second.written == 0
+    reco = json.loads((root / "src-a" / "a-0001.json").read_text(encoding="utf-8"))
+    assert reco["enrichedAt"]["links"] == "2026-09-26T10:00:00Z"
+
+
+# ===== Périmètre par ids ====================================================
+def test_ids_restricts_the_pass_to_those_recos(root, monkeypatch):
+    """La chaîne appelle l'outil sur un épisode : rien d'autre ne doit bouger.
+
+    `a-0002` est choisie à dessein : le double la SERVIRAIT, et elle est bien du
+    bon type. Sans le filtre, elle recevrait ses liens — c'est ce qui donne sa
+    valeur au test.
+    """
+    monkeypatch.setattr(pipeline, "resolve_video_links",
+                        _fake_resolver({"a-0001": FILLED, "a-0002": FILLED_SEARCH}))
+
+    report = evl.run(root=root, session=None, api_key="k", ids={"a-0001"},
+                     apply=True, sleep=0)
+
+    assert report.written == 1
+    assert [c.reco_id for c in report.filled] == ["a-0001"]
+    intacte = json.loads((root / "src-a" / "a-0002.json").read_text(encoding="utf-8"))
+    assert "links" not in intacte
+
+
+def test_an_empty_ids_set_keeps_the_whole_corpus(root, monkeypatch):
+    """`ids` vide ne veut pas dire « aucune reco » : c'est l'absence de filtre."""
+    monkeypatch.setattr(pipeline, "resolve_video_links",
+                        _fake_resolver({"a-0001": FILLED, "a-0002": FILLED_SEARCH}))
+
+    report = evl.run(root=root, session=None, api_key="k", ids=set(), sleep=0)
+
+    assert sorted(c.reco_id for c in report.filled) == ["a-0001", "a-0002"]
+
+
+def test_ids_naming_a_non_video_reco_serves_nothing(root, monkeypatch):
+    """Le filtre d'ids ne contourne pas le filtre de type."""
+    monkeypatch.setattr(pipeline, "resolve_video_links", _fake_resolver({}))
+
+    report = evl.run(root=root, session=None, api_key="k", ids={"a-0002"}, sleep=0)
+
+    assert not report.filled
+
+
+def test_servies_lists_the_recos_that_got_a_link(root, monkeypatch):
+    """`servies` : même nom et même sens que du côté TMDB, pour le message de la chaîne."""
+    monkeypatch.setattr(pipeline, "resolve_video_links",
+                        _fake_resolver({"a-0001": FILLED, "a-0002": FILLED_SEARCH}))
+
+    report = evl.run(root=root, session=None, api_key="k", sleep=0)
+
+    assert report.servies == {"a-0001", "a-0002"}

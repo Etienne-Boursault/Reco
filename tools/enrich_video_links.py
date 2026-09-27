@@ -109,6 +109,7 @@ from common import (
     TOOLS_DIR,
     atomic_write_text,
     log,
+    parse_ids_option,
 )
 
 # Les garde-fous de recherche par titre sont CALIBRÉS SUR MESURE RÉELLE dans
@@ -285,6 +286,10 @@ def build_parser() -> argparse.ArgumentParser:
                         f"(défaut : {','.join(ALL_SITES)}).")
     p.add_argument("--exclude-ids", default=None,
                    help="Ids à ne PAS enrichir : « a,b,c » ou « @fichier ».")
+    p.add_argument("--ids", default=None,
+                   help="Restreint la passe à ces recos : « a,b,c » ou "
+                        "« @fichier ». La chaîne de venus l'appelle sur les "
+                        "seules recos de l'épisode qu'elle finalise.")
     p.add_argument("--json", dest="json_path", default=None,
                    help="Écrit le rapport détaillé (JSON) à ce chemin.")
     p.add_argument("--ignore-server-lock", action="store_true",
@@ -313,6 +318,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         root=RECOS_DIR, session=requests.Session(), api_key=api_key,
         source=args.source, limit=args.limit, apply=args.apply,
         exclude_ids=parse_exclude_ids(args.exclude_ids),
+        ids=parse_ids_option(args.ids),
         episode_years=load_episode_years(EPISODES_DIR, args.source),
         allow_search=args.search, sites=sites,
     )

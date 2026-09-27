@@ -57,9 +57,12 @@ from common import (
 from fetch_youtube_episodes import GUID_PREFIX, fetch_youtube_episodes
 
 # Ré-exportés : la section « finalisation » vit ici, son message dans son module.
-from finalisation_message import HORS_PERIMETRE, MAX_RESTES  # noqa: F401
+from finalisation_message import HORS_PERIMETRE, MAX_RESTES, Passe  # noqa: F401
 from finalisation_message import message as _message_finalisation
 from finalisation_message import restes as _restes  # noqa: F401
+from finalisation_passes import fiches_tmdb as _fiches_tmdb
+from finalisation_passes import fiches_video as _fiches_video
+from finalisation_passes import liens_musicaux as _liens_musicaux
 from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
@@ -299,38 +302,10 @@ def a_finaliser(source_id: str, state: dict[str, Any]) -> list[tuple[Path, dict[
     return pending
 
 
-def _liens_musicaux(source_id: str, ids: set[str]) -> Any:
-    """Passe d'enrichissement musical, limitée aux recos de l'épisode.
-
-    Aucune invention : l'outil n'écrit une URL que si Deezer ou Apple corrobore
-    le titre ET l'artiste (cf. enrich_music_links). Les types `artiste` sont
-    ouverts, mais leurs homonymes finissent en « ambiguous » — donc dans la
-    liste du reste à faire, pas dans le corpus.
-    """
-    import requests
-
-    from music_links_pipeline import run as run_links
-    return run_links(root=common.RECOS_DIR, session=requests.Session(),
-                     source=source_id, ids=ids, apply=True, allow_artists=True)
-
-
-def _fiches_tmdb(source_id: str, ids: set[str]) -> Any:
-    """Passe TMDB sur les recos film/série de l'épisode.
-
-    L'outil musical ne connaît que Deezer et Apple : les films et séries
-    restaient donc dans la liste du reste à faire alors que TMDB sait les
-    servir (mesuré sur S6-E02 : 2 films et 2 séries sur 12 restes). Ce qu'elle
-    écrit, ce sont les `watchProviders` — le « où regarder » affiché sur la
-    fiche — et les identifiants TMDB, jamais une URL devinée.
-    """
-    from enrich_tmdb import cle_api
-    from enrich_tmdb import run as run_tmdb
-    return run_tmdb(source=source_id, api_key=cle_api(), ids=ids, apply=True)
-
-
 def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
               liens: Callable[[str, set[str]], Any] | None = None,
               fiches: Callable[[str, set[str]], Any] | None = None,
+              video: Callable[[str, set[str]], Any] | None = None,
               publier: Callable[..., Any] | None = None,
               lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
     pending = a_finaliser(source_id, state)
@@ -340,6 +315,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
     # définition, et un test qui le remplace prendrait le VRAI verrou.
     liens = liens or _liens_musicaux
     fiches = fiches or _fiches_tmdb
+    video = video or _fiches_video
     lock = lock or _pipeline_lock
     if publier is None:
         from publier_episode import preparer as publier
@@ -349,8 +325,8 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
         with lock():
             _clear_error(state, "finalisation:verrou")
             for _path, episode in pending:
-                _finaliser_un(source_id, episode, state, notify,
-                              liens=liens, fiches=fiches, publier=publier)
+                _finaliser_un(source_id, episode, state, notify, liens=liens,
+                              fiches=fiches, video=video, publier=publier)
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -362,6 +338,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
 def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any],
                   notify: Notify, *, liens: Callable[[str, set[str]], Any],
                   fiches: Callable[[str, set[str]], Any],
+                  video: Callable[[str, set[str]], Any],
                   publier: Callable[..., Any]) -> None:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
@@ -379,20 +356,33 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                      f"⚠️ Œuvres et mentions non écrites pour « {_title(episode)} » : {motif}",
                      notify)
         return
-    # TMDB en dernier, et jamais bloquant : clé absente, 401 ou panne réseau ne
-    # doivent pas priver l'épisode de ses œuvres et de ses mentions, déjà
-    # écrites ci-dessus. L'épisode reste finalisé, le message le signale.
-    tmdb, panne = None, ""
-    try:
-        tmdb = fiches(source_id, ids)
-    except Exception as exc:  # noqa: BLE001
-        panne = f"{type(exc).__name__}: {str(exc)[:120]}"
-        log.warning("Fiches TMDB non récupérées pour %s : %s", guid, panne)
+    # Les passes vidéo en dernier, et jamais bloquantes : clé absente, 401 ou
+    # panne réseau ne doivent pas priver l'épisode de ses œuvres et de ses
+    # mentions, déjà écrites ci-dessus. L'épisode reste finalisé, le message le
+    # signale. Ordre imposé : TMDB pose `externalIds.tmdb`, dont la passe des
+    # fiches se sert ensuite pour éviter toute recherche par titre.
+    passes = [
+        _passe_sans_bloquer("TMDB", "fiche(s) TMDB", fiches, source_id, ids, guid),
+        _passe_sans_bloquer("Fiches de référence", "fiche(s) de référence",
+                            video, source_id, ids, guid),
+    ]
     _clear_error(state, key)
     state["finalized"].append(guid)
     # Relu après les passes : ce sont elles qui viennent d'écrire.
     notify(_message_finalisation(_title(episode), rapport, plan,
-                                 _recos_de(source_id, guid), tmdb, panne))
+                                 _recos_de(source_id, guid), passes))
+
+
+def _passe_sans_bloquer(nom: str, unite: str, passe: Callable[[str, set[str]], Any],
+                        source_id: str, ids: set[str], guid: str) -> Passe:
+    """Déroule une passe complémentaire ; une panne devient un message, pas un arrêt."""
+    try:
+        rapport = passe(source_id, ids)
+    except Exception as exc:  # noqa: BLE001 — l'épisode garde ses œuvres et mentions.
+        panne = f"{type(exc).__name__}: {str(exc)[:120]}"
+        log.warning("%s non récupéré(s) pour %s : %s", unite, guid, panne)
+        return Passe(nom, unite, panne=panne)
+    return Passe(nom, unite, frozenset(rapport.servies))
 
 
 # ===== notification ==========================================================

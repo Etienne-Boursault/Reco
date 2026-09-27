@@ -67,6 +67,15 @@ class Report:
     reasons_by_population: dict[str, Counter] = field(
         default_factory=lambda: defaultdict(Counter))
 
+    @property
+    def servies(self) -> set[str]:
+        """Ids des recos pour lesquelles au moins une fiche a été posée.
+
+        Même nom et même sens que `enrich_tmdb.Rapport.servies` : la chaîne
+        traite les deux passes de la même façon pour composer son message.
+        """
+        return {cas.reco_id for cas in self.filled}
+
     def record(self, reco: dict[str, Any], resolution: Resolution, path: Path,
                total_after: int) -> None:
         """Enregistre le sort d'une reco."""

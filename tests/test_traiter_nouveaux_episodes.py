@@ -18,6 +18,7 @@ import traiter_nouveaux_episodes as tne
 # Capturée AVANT que la fixture `tmdb_hors_ligne` ne remplace l'attribut du
 # module : c'est la vraie passe, celle qui sert de défaut à `finaliser`.
 from traiter_nouveaux_episodes import _fiches_tmdb as _vraie_passe_tmdb
+from traiter_nouveaux_episodes import _fiches_video as _vraie_passe_video
 
 SOURCE = "demo-source"
 
@@ -394,18 +395,27 @@ def test_the_extraction_asks_the_review_server_for_the_pipeline_lock(monkeypatch
 # ===== finaliser =============================================================
 @pytest.fixture(autouse=True)
 def tmdb_hors_ligne(monkeypatch):
-    """Aucun test ne doit appeler TMDB.
+    """Aucun test ne doit appeler TMDB, ni pour le « où regarder », ni pour les fiches.
 
-    `finaliser` résout sa passe TMDB à l'appel : sans ce double, un test qui ne
-    la fournit pas irait chercher la vraie clé et le vrai réseau.
+    `finaliser` résout ses passes à l'appel : sans ces doubles, un test qui n'en
+    fournit pas irait chercher la vraie clé et le vrai réseau. Les DEUX passes
+    vidéo en dépendent — la seconde a été oubliée ici pendant quelques minutes,
+    et les tests se contentaient de journaliser « TMDB_API_KEY absent ».
     """
     monkeypatch.setattr(tne, "_fiches_tmdb", lambda *_a, **_k: _rapport_tmdb())
+    monkeypatch.setattr(tne, "_fiches_video", lambda *_a, **_k: _rapport_video())
 
 
 def _rapport_tmdb(servies=(), introuvables=()):
     """Double du rapport TMDB (cf. enrich_tmdb.RapportTmdb)."""
     return SimpleNamespace(servies=set(servies), vues=len(servies) + len(introuvables),
                            ecrites=len(servies), introuvables=list(introuvables))
+
+
+def _rapport_video(servies=()):
+    """Double du rapport des fiches de référence (cf. video_links_report.Report)."""
+    return SimpleNamespace(servies=set(servies), seen=len(servies),
+                           written=len(servies), filled=[])
 
 
 @pytest.fixture
@@ -717,6 +727,82 @@ def test_a_film_served_by_tmdb_leaves_the_list_and_is_counted(content, recos, in
     assert f"Titre r-livre (livre) — {tne.HORS_PERIMETRE}" in message
 
 
+def test_a_film_served_by_the_reference_pass_leaves_the_list_and_is_counted(
+        content, recos, inbox):
+    """Les fiches IMDb/TMDB comptent comme les autres, et sortent de la liste."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+    _reco(recos, "r-jeu", "yt-1", types=["jeu"])
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=lambda *_a: _rapport_tmdb(),
+                  video=lambda *_a: _rapport_video(servies={"r-film"}),
+                  publier=_publie_rien, lock=_no_lock)
+
+    message = inbox[0]
+    assert "1 fiche(s) de référence" in message
+    assert "À compléter à la main (1)" in message
+    assert "Titre r-film" not in message
+    assert f"Titre r-jeu (jeu) — {tne.HORS_PERIMETRE}" in message
+
+
+def test_the_two_video_passes_receive_the_episode_ids_only(content, recos, inbox):
+    """Le périmètre passé aux deux outils : les recos de CET épisode."""
+    _episode(content, "yt-1", status="auto")
+    _episode(content, "yt-2", status="auto")
+    _reco(recos, "r-ici", "yt-1", types=["film"])
+    _reco(recos, "r-ailleurs", "yt-2", types=["film"])
+    recus = []
+
+    def note(cle, rapport):
+        def passe(_source, ids):
+            recus.append((cle, set(ids)))
+            return rapport
+        return passe
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=note("tmdb", _rapport_tmdb()),
+                  video=note("video", _rapport_video()),
+                  publier=_publie_rien, lock=_no_lock)
+
+    # Les deux épisodes sont finalisés tour à tour : chaque appel ne doit voir
+    # que les recos de l'épisode en cours, jamais celles de l'autre.
+    assert recus == [("tmdb", {"r-ici"}), ("video", {"r-ici"}),
+                     ("tmdb", {"r-ailleurs"}), ("video", {"r-ailleurs"})]
+
+
+def test_the_reference_pass_runs_after_tmdb(content, recos, inbox):
+    """Ordre imposé : TMDB pose l'identifiant dont les fiches se servent ensuite."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+    ordre = []
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  fiches=lambda *_a: ordre.append("tmdb") or _rapport_tmdb(),
+                  video=lambda *_a: ordre.append("video") or _rapport_video(),
+                  publier=_publie_rien, lock=_no_lock)
+
+    assert ordre == ["tmdb", "video"]
+
+
+def test_a_reference_pass_failure_costs_nothing_but_a_warning(content, recos, inbox):
+    """Une panne ne prive pas l'épisode de ses œuvres, et il reste finalisé."""
+    _episode(content, "yt-1", status="auto")
+    _reco(recos, "r-film", "yt-1", types=["film"])
+
+    def panne(*_a):
+        raise RuntimeError("réseau injoignable")
+
+    state = tne.load_state(SOURCE)
+    tne.finaliser(SOURCE, inbox, state, liens=_liens_vides,
+                  fiches=lambda *_a: _rapport_tmdb(servies={"r-film"}),
+                  video=panne, publier=_publie_rien, lock=_no_lock)
+
+    assert "⚠️ Fiches de référence indisponible : RuntimeError: réseau injoignable" in inbox[0]
+    assert "1 fiche(s) TMDB" in inbox[0]
+    assert state["finalized"] == ["yt-1"]
+
+
 def test_a_reco_that_already_has_watch_providers_is_not_listed(content, recos, inbox):
     """Les fiches d'un passage précédent ne reviennent pas dans la liste."""
     _episode(content, "yt-1", status="auto")
@@ -762,3 +848,28 @@ def test_the_real_tmdb_pass_asks_for_the_episode_scope(monkeypatch):
     _vraie_passe_tmdb(SOURCE, {"r-1"})
 
     assert appels == [{"source": SOURCE, "api_key": "fake", "ids": {"r-1"}, "apply": True}]
+
+
+def test_the_real_reference_pass_is_scoped_and_never_searches_by_title(monkeypatch):
+    """`_fiches_video` : périmètre, écriture, et SURTOUT pas de recherche par titre.
+
+    La recherche par titre est le seul endroit où cet outil peut se tromper. La
+    chaîne n'en a pas besoin, puisque la passe TMDB vient de poser les
+    identifiants — vérifié sur venus le 2026-09-26, les 4 recos de S6-E02 sont
+    servies par la population « id-existant ».
+    """
+    import common
+
+    appels = []
+    monkeypatch.setattr("enrich_tmdb.cle_api", lambda: "fake")
+    monkeypatch.setattr("enrich_creators.load_episode_years", lambda *_a: {"g1": 2026})
+    monkeypatch.setattr("video_links_pipeline.run",
+                        lambda **kw: appels.append(kw) or _rapport_video())
+
+    _vraie_passe_video(SOURCE, {"r-1"})
+
+    (recu,) = appels
+    assert recu["root"] == common.RECOS_DIR and recu["source"] == SOURCE
+    assert recu["ids"] == {"r-1"} and recu["apply"] is True
+    assert recu["api_key"] == "fake" and recu["episode_years"] == {"g1": 2026}
+    assert "allow_search" not in recu  # le défaut de l'outil est False

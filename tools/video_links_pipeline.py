@@ -201,18 +201,43 @@ def resolve_video_links(reco: dict[str, Any], *, session: requests.Session,
 # ===========================================================================
 def apply_video_links(reco: dict[str, Any], links: Sequence[dict[str, Any]],
                       *, timestamp: str | None = None) -> dict[str, Any]:
-    """Ajoute `links` à la fin de `reco["links"]` + audit trail, IN-PLACE."""
-    return partial_update(reco, "links", merge_links(reco, links),
+    """Ajoute `links` à la fin de `reco["links"]` + audit trail, IN-PLACE.
+
+    Une fusion qui n'apporte AUCUN lien nouveau ne touche à rien — pas même
+    `enrichedAt`. Sans cette garde, relancer la passe réécrivait le fichier
+    pour la seule horodate, qui a une granularité d'UNE SECONDE
+    (`enrichment.tracker.now_iso`) : deux passes dans la même seconde ne
+    changeaient rien, deux passes qui enjambaient une seconde réécrivaient.
+    L'idempotence dépendait donc de la vitesse de la machine — c'est ce qui
+    rendait `test_run_apply_is_idempotent` instable sur les runners macOS,
+    plus lents (diagnostic du 2026-09-26).
+    """
+    fusion = merge_links(reco, links)
+    trace = reco.get("enrichedAt")
+    if fusion == list(reco.get("links") or []) and (trace is None or isinstance(trace, dict)):
+        return reco
+    # Trace corrompue : on NE sort pas par la garde ci-dessus, même sans lien
+    # nouveau. `partial_update` doit lever, sinon un `enrichedAt` cassé passerait
+    # inaperçu tant qu'aucun lien n'est à ajouter.
+    return partial_update(reco, "links", fusion,
                           timestamp=timestamp or now_iso())
 
 def run(*, root: Path, session: requests.Session | None, api_key: str | None,
         source: str | None = None, limit: int | None = None,
         apply: bool = False, exclude_ids: Iterable[str] = (),
+        ids: Iterable[str] = (),
         episode_years: dict[str, int] | None = None,
         allow_search: bool = False, sites: Sequence[str] = ALL_SITES,
         sleep: float = RATE_LIMIT_SLEEP) -> Report:
-    """Passe complète : sélectionne, résout, journalise, écrit si `apply`."""
+    """Passe complète : sélectionne, résout, journalise, écrit si `apply`.
+
+    `ids` fait l'inverse d'`exclude_ids` : SEULES ces recos sont examinées.
+    C'est ce qui permet à la chaîne de venus de traiter UN épisode sans
+    retraiter le corpus (`exclude_ids` obligeait à lister les 3 000 autres).
+    Même forme que `music_links_pipeline.run` et `enrich_tmdb.run`.
+    """
     excluded = set(exclude_ids)
+    wanted_ids = set(ids)
     report = Report()
     resolved = 0
 
@@ -224,9 +249,11 @@ def run(*, root: Path, session: requests.Session | None, api_key: str | None,
             report.skipped[REASON_UNREADABLE] += 1
             continue
 
+        reco_id = reco.get("id", path.stem)
+        if wanted_ids and reco_id not in wanted_ids:
+            continue
         if not any(t in _VIDEO_TYPES for t in reco.get("types") or []):
             continue
-        reco_id = reco.get("id", path.stem)
 
         # `seen` compte le PÉRIMÈTRE réel : une reco écartée par la relecture
         # humaine n'a pas à peser sur les taux du rapport.
