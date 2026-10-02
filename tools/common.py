@@ -144,6 +144,15 @@ def reco_prefix(source_id: str) -> str:
 
 
 # --- Helpers texte ----------------------------------------------------------
+#: Ligatures que NFKD ne décompose PAS (elles n'ont pas de décomposition de
+#: compatibilité) : sans cette table, la ponctuation les remplaçait par une
+#: espace et « Les Vaisseaux du cœur » devenait « les vaisseaux du c ur », donc
+#: ne correspondait plus à « Les vaisseaux du coeur » tel que l'écrivent les
+#: APIs. Mesuré le 2026-10-02 : 9 champs du corpus concernés, dont trois
+#: « Œuvre de … » qui perdaient leur première lettre (« uvre de … »).
+_LIGATURES = {"œ": "oe", "Œ": "OE", "æ": "ae", "Æ": "AE", "ﬁ": "fi", "ﬂ": "fl"}
+
+
 def normalize_text(s: str | None) -> str:
     """Normalisation robuste pour l'appariement (sans accent, casse, ponct.).
 
@@ -153,6 +162,8 @@ def normalize_text(s: str | None) -> str:
     if not s:
         return ""
     s = s.lower()
+    for ligature, remplacement in _LIGATURES.items():
+        s = s.replace(ligature, remplacement)
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     s = _RE_NON_ALNUM_SPACE.sub(" ", s)
