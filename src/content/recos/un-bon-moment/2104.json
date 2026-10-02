@@ -14,7 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Anthony Passeron",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:12Z",
+    "links": "2026-10-02T09:47:12Z"
+  },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
+  "externalIds": {
+    "isbn": "9782253911050"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-05T12:01:49+00:00",
@@ -53,6 +60,12 @@
       "kind": "buy",
       "label": "Paris Librairies",
       "url": "https://www.parislibrairies.fr/livre/9782246843573-jacky-anthony-passeron/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253911050-jacky-anthony-passeron/"
     }
   ],
   "quote": "Ça s'appelle Jackie d'Anthony Passeron.",

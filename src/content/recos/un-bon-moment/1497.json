@@ -16,9 +16,14 @@
     "verdict": "validate"
   },
   "creator": "Fanny Ruwet",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:53Z",
+    "links": "2026-10-02T09:46:53Z"
+  },
   "episodeGuid": "69872f249a20cfbf330ae7ab",
   "externalIds": {
-    "instagram": "fannyruwet"
+    "instagram": "fannyruwet",
+    "isbn": "9782493909664"
   },
   "extractionHistory": [
     {
@@ -82,6 +87,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/fannyruwet/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782493909664-bien-sur-que-les-poissons-ont-froid-fanny-ruwet/"
     }
   ],
   "quote": "Moi, je l'ai écouté aussi en livre audio. Et c'est super.",

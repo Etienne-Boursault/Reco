@@ -14,7 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Malika Gherdis",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:44Z",
+    "links": "2026-10-02T09:46:44Z"
+  },
   "episodeGuid": "69e13325fb440758726a665f",
+  "externalIds": {
+    "isbn": "9791034609765"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-04T06:12:06+00:00",
@@ -52,6 +59,12 @@
       "kind": "official",
       "label": "Champ social éditions",
       "url": "https://champsocial.com/book-malika_l_histoire_d_une_psychanalyse,1686.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9791034609765-malika-l-histoire-d-une-psychanalyse-malika-gherdis/"
     }
   ],
   "quote": "Blague à part, c'est sur sa vie, c'est autobiographique.",

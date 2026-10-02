@@ -13,9 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Mehdi Moussaïd",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:57Z",
+    "links": "2026-10-02T09:46:57Z"
+  },
   "episodeGuid": "6985f143d4e01f1069c7d5d3",
   "externalIds": {
-    "instagram": "fouloscopie"
+    "instagram": "fouloscopie",
+    "isbn": "9782290440902"
   },
   "extractionHistory": [
     {
@@ -79,6 +84,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/fouloscopie/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782290440902-a-t-on-besoin-d-un-chef-mehdi-moussaid/"
     }
   ],
   "quote": "c'est peut-être le meilleur de cette année transcendant pour moi",

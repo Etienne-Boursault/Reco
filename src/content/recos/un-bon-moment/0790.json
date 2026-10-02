@@ -16,7 +16,14 @@
     "verdict": "validate"
   },
   "creator": "Jean-Baptiste Del Amo",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:15Z",
+    "links": "2026-10-02T09:46:15Z"
+  },
   "episodeGuid": "61b6528b97cccb0012aec8b5",
+  "externalIds": {
+    "isbn": "9782073002563"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -58,6 +65,12 @@
       "kind": "buy",
       "label": "Lalibrairie.com",
       "url": "https://www.lalibrairie.com/livres/le-fils-de-l-homme_0-9627529_9782073002563.html"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782073002563-le-fils-de-l-homme-jean-baptiste-del-amo/"
     }
   ],
   "quote": "Le Fils de l'Homme de Jean-Baptiste Delamaux",

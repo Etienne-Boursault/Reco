@@ -9,7 +9,14 @@
     "verdict": "validate"
   },
   "creator": "Milan Kundera",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:49Z",
+    "links": "2026-10-02T09:46:49Z"
+  },
   "episodeGuid": "6999f0a21b49b62cccf2e9bb",
+  "externalIds": {
+    "isbn": "9782072892653"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-04T10:40:06+00:00",
@@ -72,6 +79,12 @@
       "kind": "info",
       "label": "Fiche de l'éditeur Gallimard",
       "url": "https://www.gallimard.fr/catalogue/l-insoutenable-legerete-de-l-etre/9782072892653"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782072892653-l-insoutenable-legerete-de-l-etre-milan-kundera/"
     }
   ],
   "quote": "la plus connue que pour le moment celle sur laquelle j'ai le plus accroché c'est l'insoutenable légèreté de l'être",
