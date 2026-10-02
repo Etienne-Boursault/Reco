@@ -34,6 +34,27 @@ def liens_musicaux(source_id: str, ids: set[str]) -> Any:
                      source=source_id, ids=ids, apply=True, allow_artists=True)
 
 
+def liens_wikidata(source_id: str, ids: set[str]) -> Any:
+    """Site officiel, Instagram, AlloCiné, IMDb et Wikipédia des recos `artiste`.
+
+    Passe APRÈS `liens_musicaux`, et ce n'est pas indifférent : sa corroboration
+    la plus forte est l'identifiant Deezer ou Spotify que la reco porte DÉJÀ —
+    or c'est la passe musicale qui vient de le poser. Mesuré sur S6-E01 : Yoa
+    gagne trois liens par ce chemin, là où son titre d'article l'aurait manquée
+    (`fr.wikipedia.org/wiki/Yoa` est un village du Cameroun).
+
+    Volontairement limitée aux `artiste` : la passe s'abstient sur `lieu` et
+    `autre` faute d'entités (mesuré — ni l'exposition « Plumes du paradis », ni
+    Linkee, ni Sourire à la vie n'ont de fiche). Ces recos restent donc dans la
+    liste du reste à faire, ce qui est honnête.
+    """
+    import requests
+
+    from wikidata_links import run as run_wikidata
+    return run_wikidata(root=common.RECOS_DIR, session=requests.Session(),
+                        source=source_id, types=("artiste",), ids=ids, apply=True)
+
+
 def fiches_tmdb(source_id: str, ids: set[str]) -> Any:
     """« Où regarder » et identifiants TMDB des recos film/série de l'épisode.
 
