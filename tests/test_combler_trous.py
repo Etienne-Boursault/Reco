@@ -170,3 +170,59 @@ def test_without_suspect_nothing_is_heard_again():
 @pytest.mark.parametrize("ponctuation", ["?", "!", "…"])
 def test_lone_punctuation_does_not_count_as_words(ponctuation):
     assert ct._mots(["Donc", "on", "l'enlève", ponctuation]) == 3
+
+# ===== dernière ligne hors de portée de la réécoute ==========================
+# Cas réel de S6-E03 (2026-10-02) : la reco de Kyan, « toujours les pieds sur
+# terre, Sonia Kronlund », avalée par la transcription longue. La réécoute la
+# retrouvait, mais le recouvrement tombait à 0,565 et la fenêtre était jetée.
+RECO_PERDUE = (4318.0, "Eh ben…")
+PERSPECTIVE = (4331.0, "tu as une autre perspective du petit microcosme que t'as "
+                       "en te regardant en permanence.")
+C_EST_BEAU = (4337.0, "C'est beau ce que tu dis.")
+REECOUTE_PIEDS = [
+    (4318.0, " Eh bien, toujours les pieds sur terre, Sonia Croudlant. Vraiment un super "
+             "podcast à écouter quotidiennement,"),
+    (4324.32, " une petite demi-heure, deux portraits de gens sur une thématique. "
+              "C'est génial à écouter,"),
+    (4329.16, " ça ouvre sur le monde et ça te donne une autre perspective du petit "
+              "microcosme que tu as en te regardant en permanence."),
+]
+
+
+def _episode_pieds(*lignes):
+    """Comme `_episode`, mais autour des horodatages réels de S6-E03 (4318 s)."""
+    avant = [(4290.0 + 3 * k, f"Réplique numéro {k} de l'épisode.") for k in range(9)]
+    fin = lignes[-1][0]
+    apres = [(fin + 3 + 3 * k, f"Suite numéro {k} de l'épisode.") for k in range(9)]
+    return [*avant, *lignes, *apres]
+
+
+def test_a_last_line_the_rehearing_could_not_reach_does_not_sink_the_window():
+    """La borne de fin tombe sur un début de ligne : « C'est beau ce que tu dis. »
+    n'a qu'une seconde avant la fin de l'audio réécouté, donc la réécoute ne la
+    rend pas. Ses 6 mots sur 23 ne doivent pas faire jeter le passage retrouvé."""
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    apres, bilan = ct.combler(entrees, Reecoute(REECOUTE_PIEDS))
+    assert bilan.combles == 1
+    assert "les pieds sur terre" in _texte(apres)
+    assert "Sonia" in _texte(apres)
+    # Rien de l'existant n'est perdu ni déplacé.
+    assert C_EST_BEAU in apres and _texte(apres).count("C'est beau ce que tu dis.") == 1
+    assert [d for d, _t in apres] == sorted(d for d, _t in apres)
+
+
+def test_a_rehearing_about_something_else_is_still_refused_when_the_last_line_is_unreached():
+    """Le garde-fou ne doit pas tomber avec lui : une réécoute hors sujet ne
+    reprend aucune ligne, donc elle reste refusée."""
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    pub = [(4318.0, "Abonnez-vous à la chaîne et activez la cloche pour ne rien rater.")]
+    apres, bilan = ct.combler(entrees, Reecoute(pub))
+    assert apres == entrees and bilan.combles == 0
+
+
+def test_the_windows_left_alone_are_named_in_the_log(caplog):
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    ct.combler(entrees, Reecoute([(4318.0, "Eh ben…")]))
+    assert any("laissées telles quelles" in r.getMessage() and "01:11:58" in r.getMessage()
+               for r in caplog.records)
+

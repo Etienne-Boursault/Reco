@@ -8,8 +8,14 @@ name: reco
 x-atelier: &atelier
   # Étiquette explicite, jamais :latest. À changer quand requirements.txt ou le
   # Dockerfile change : sinon venus garde l'ancienne image et la mise à jour est
-  # inerte. Celle-ci ajoute l'utilisateur 1000, sans lequel ssh refuse de partir.
-  image: reco-atelier:2026-10-02
+  # inerte.
+  #
+  # Le suffixe nomme l'incident du 2026-10-02 : l'image reconstruite ce jour-là a
+  # installé PyAV 19, que faster-whisper 1.2.1 ne sait pas appeler, et PLUS AUCUNE
+  # transcription ne partait (TypeError sur `av.open`). Seule la borne `av<19`
+  # posée dans requirements.txt la rend de nouveau transcriptible — et il a fallu
+  # une étiquette neuve pour que venus la prenne.
+  image: reco-atelier:2026-10-02-av18
   build:
     context: /home/etienne/docker/reco/depot
     dockerfile: deploy/venus/Dockerfile

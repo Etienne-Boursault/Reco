@@ -171,6 +171,18 @@ git -C depot ls-remote origin main                       # la clé de dépôt r�
 docker compose run --rm pipeline git ls-remote origin main   # ... et depuis le conteneur
 ```
 
+⚠️ **Après une reconstruction, vérifier que la transcription part encore.** Un build vert
+ne prouve rien : le 2026-10-02, l'image reconstruite a installé PyAV 19, que
+faster-whisper 1.2.1 ne sait pas appeler, et toute transcription mourait sur
+`TypeError: open() got an unexpected keyword argument 'metadata_errors'`. Rien ne l'aurait
+signalé avant le lundi suivant, épisode non transcrit à la clé. D'où la borne `av<19` dans
+`tools/requirements.txt` et ce contrôle, qui tient en une ligne :
+
+```sh
+docker compose run --rm pipeline python -c \
+  "import av, faster_whisper as w; print('av', av.__version__, 'fw', w.__version__)"
+```
+
 ## Premier passage
 
 Au tout premier passage, la détection marque comme vues toutes les vidéos en ligne sans
