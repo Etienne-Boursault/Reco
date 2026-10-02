@@ -176,16 +176,16 @@ def test_lone_punctuation_does_not_count_as_words(ponctuation):
 # terre, Sonia Kronlund », avalée par la transcription longue. La réécoute la
 # retrouvait, mais le recouvrement tombait à 0,565 et la fenêtre était jetée.
 RECO_PERDUE = (4318.0, "Eh ben…")
-PERSPECTIVE = (4331.0, "tu as une autre perspective du petit microcosme que t'as "
-                       "en te regardant en permanence.")
+PERSPECTIVE = (4331.0, ("tu as une autre perspective du petit microcosme que t'as "
+                        "en te regardant en permanence."))
 C_EST_BEAU = (4337.0, "C'est beau ce que tu dis.")
 REECOUTE_PIEDS = [
-    (4318.0, " Eh bien, toujours les pieds sur terre, Sonia Croudlant. Vraiment un super "
-             "podcast à écouter quotidiennement,"),
-    (4324.32, " une petite demi-heure, deux portraits de gens sur une thématique. "
-              "C'est génial à écouter,"),
-    (4329.16, " ça ouvre sur le monde et ça te donne une autre perspective du petit "
-              "microcosme que tu as en te regardant en permanence."),
+    (4318.0, (" Eh bien, toujours les pieds sur terre, Sonia Croudlant. Vraiment un super "
+              "podcast à écouter quotidiennement,")),
+    (4324.32, (" une petite demi-heure, deux portraits de gens sur une thématique. "
+               "C'est génial à écouter,")),
+    (4329.16, (" ça ouvre sur le monde et ça te donne une autre perspective du petit "
+               "microcosme que tu as en te regardant en permanence.")),
 ]
 
 
