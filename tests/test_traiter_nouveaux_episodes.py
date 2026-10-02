@@ -19,6 +19,7 @@ import traiter_nouveaux_episodes as tne
 # module : ce sont les vraies passes, celles qui servent de défaut à `finaliser`.
 from traiter_nouveaux_episodes import _fiches_tmdb as _vraie_passe_tmdb
 from traiter_nouveaux_episodes import _fiches_video as _vraie_passe_video
+from traiter_nouveaux_episodes import _liens_boutique as _vraie_passe_boutique
 from traiter_nouveaux_episodes import _liens_wikidata as _vraie_passe_wikidata
 
 SOURCE = "demo-source"
@@ -409,6 +410,12 @@ def reseau_hors_ligne(monkeypatch):
     monkeypatch.setattr(tne, "_fiches_tmdb", lambda *_a, **_k: _rapport_tmdb())
     monkeypatch.setattr(tne, "_fiches_video", lambda *_a, **_k: _rapport_video())
     monkeypatch.setattr(tne, "_liens_wikidata", lambda *_a, **_k: _rapport_wikidata())
+    monkeypatch.setattr(tne, "_liens_boutique", lambda *_a, **_k: _rapport_boutique())
+
+
+def _rapport_boutique(servies=()):
+    """Double du rapport Steam / libraires (cf. boutique_links.RapportBoutique)."""
+    return SimpleNamespace(servies=set(servies), vues=len(servies), ecrites=len(servies))
 
 
 def _rapport_wikidata(servies=()):
@@ -941,3 +948,59 @@ def test_a_wikidata_outage_never_costs_the_episode_its_works(content, recos, inb
     assert state["finalized"] == ["yt-1"]
     (message,) = inbox
     assert "Wikidata indisponible" in message and "429" in message
+
+
+def test_the_real_boutique_pass_is_scoped_and_never_guesses_a_game(monkeypatch):
+    """`_liens_boutique` : périmètre, écriture, et jamais de jeu sans studio.
+
+    18 des 34 jeux du corpus ne nomment pas leur studio : sans lui, il n'y a rien
+    contre quoi corroborer le titre, et `storesearch` étiquette les bandes-son
+    comme des jeux. `permettre_sans_studio` reste donc à False, et ces jeux
+    partent dans la liste du reste à faire.
+    """
+    import common
+
+    appels = []
+    monkeypatch.setattr("boutique_links.run",
+                        lambda **kw: appels.append(kw) or _rapport_boutique())
+
+    _vraie_passe_boutique(SOURCE, {"r-1"})
+
+    (recu,) = appels
+    assert recu["root"] == common.RECOS_DIR and recu["source"] == SOURCE
+    assert recu["ids"] == {"r-1"} and recu["apply"] is True
+    assert "permettre_sans_studio" not in recu  # le défaut de l'outil est False
+
+
+def test_purchase_links_are_counted_and_leave_the_todo_list(content, recos, inbox, monkeypatch):
+    """Un jeu servi par Steam ne doit plus figurer dans le reste à faire."""
+    _episode(content, "yt-1", status="auto", transcript=True)
+    _reco(recos, "r-1", "yt-1", types=["jeu"])
+    monkeypatch.setattr(tne, "_liens_boutique",
+                        lambda *_a, **_k: _rapport_boutique(servies=("r-1",)))
+
+    tne.finaliser(SOURCE, inbox, tne.load_state(SOURCE), liens=_liens_vides,
+                  publier=_publie_rien, lock=_no_lock)
+
+    (message,) = inbox
+    assert "1 lien(s) d'achat" in message
+    assert "À compléter à la main" not in message
+
+
+def test_a_steam_outage_never_costs_the_episode_its_works(content, recos, inbox, monkeypatch):
+    """Steam ou le libraire en panne : l'épisode garde ses œuvres et reste finalisé."""
+    _episode(content, "yt-1", status="auto", transcript=True)
+    _reco(recos, "r-1", "yt-1", types=["livre"])
+
+    def panne(*_a, **_k):
+        raise RuntimeError("503 Service Unavailable")
+
+    monkeypatch.setattr(tne, "_liens_boutique", panne)
+    state = tne.load_state(SOURCE)
+
+    assert tne.finaliser(SOURCE, inbox, state, liens=_liens_vides,
+                         publier=_publie_rien, lock=_no_lock) == 0
+
+    assert state["finalized"] == ["yt-1"]
+    (message,) = inbox
+    assert "Steam et libraires indisponible" in message and "503" in message
