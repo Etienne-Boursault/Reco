@@ -2,7 +2,7 @@
   "agentReview": {
     "reviewedByHuman": true
   },
-  "creator": "Peter et Bobby Farrelly",
+  "creator": "Farrelly Brothers",
   "episodeGuid": "yt-7kh5yi46Xh8",
   "externalIds": {
     "tmdb": "8467",
@@ -25,7 +25,26 @@
   ],
   "id": "ubm-3246",
   "kind": "citation",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "JustWatch",
+      "url": "https://www.justwatch.com/fr/film/dumb-and-dumber"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0109686/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/8467"
+    }
+  ],
   "quote": "C'est un de mes films préférés.",
   "recommendedBy": "Babor",
   "sourceId": "un-bon-moment",
@@ -108,5 +127,5 @@
       "url": "https://www.youtube.com/results?search_query=Dumb%20and%20Dumber"
     }
   ],
-  "year": 2003
+  "year": 1994
 }

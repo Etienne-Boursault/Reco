@@ -2,6 +2,7 @@
   "agentReview": {
     "reviewedByHuman": true
   },
+  "creator": "G Milgram",
   "episodeGuid": "yt-7kh5yi46Xh8",
   "extractionHistory": [
     {
@@ -19,7 +20,14 @@
   ],
   "id": "ubm-3253",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube G Milgram",
+      "url": "https://www.youtube.com/@ggmilgram"
+    }
+  ],
   "quote": "je vais recommander la chaîne d'un copain à moi, un copain que j'ai jamais rencontré, mais qui s'appelle Jemil Gram",
   "recommendedBy": "Babor",
   "sourceId": "un-bon-moment",
@@ -28,6 +36,6 @@
   "title": "G Milgram",
   "transcriptSource": "youtube",
   "types": [
-    "video"
+    "chaine"
   ]
 }

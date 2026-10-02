@@ -2,7 +2,11 @@
   "agentReview": {
     "reviewedByHuman": true
   },
+  "creator": "Kyan Khojandi, Navo",
   "episodeGuid": "yt-7kh5yi46Xh8",
+  "externalIds": {
+    "isbn": "9782709677639"
+  },
   "extractionHistory": [
     {
       "at": "2026-10-02T10:29:53+00:00",
@@ -20,7 +24,20 @@
   "guestWork": true,
   "id": "ubm-3254",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Libraires Ensemble",
+      "url": "https://www.libraires-ensemble.com/livre/26501225-bref-2-le-livre-bruno-muschio-kyan-khojandi-lattes"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782709677639-bref-2-le-livre-bruno-muschio-kyan-khojandi-marianne-chaillan/"
+    }
+  ],
   "quote": "C'est les scripts, donc les scénarios des six épisodes de Bref 2",
   "recommendedBy": "Kyan Khojandi",
   "sourceId": "un-bon-moment",
