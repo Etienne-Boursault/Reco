@@ -2,6 +2,7 @@
   "agentReview": {
     "reviewedByHuman": true
   },
+  "creator": "Alexandre Mars",
   "episodeGuid": "yt-7kh5yi46Xh8",
   "extractionHistory": [
     {
@@ -19,7 +20,26 @@
   ],
   "id": "ubm-3252",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/pause-le-podcast-dalexandre-mars/id1449979526"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/2PegEL56lQxjyR6E4uTOQ1"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/show/339522"
+    }
+  ],
   "quote": "Podcast aussi, pause. J'aime bien écouter pause.",
   "recommendedBy": "Jenny Letellier",
   "sourceId": "un-bon-moment",
