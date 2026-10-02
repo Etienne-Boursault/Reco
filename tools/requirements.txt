@@ -23,16 +23,16 @@ yt-dlp>=2026.8.19             # téléchargement audio YouTube (si pas d'audioUr
 requests>=2.34.2,<3          # téléchargement des enclosures audio HTTP
 
 # Étape 3 — extraction des recos via LLM
-anthropic>=1.5.0            # SDK API Anthropic (modèle claude-opus-5)
-openai>=3.14.0                # SDK OpenAI (provider LLM alternatif — testé dans test_extract_recos)
+anthropic>=1.8.0            # SDK API Anthropic (modèle claude-opus-5)
+openai>=3.19.2                # SDK OpenAI (provider LLM alternatif — testé dans test_extract_recos)
 python-dotenv>=1.2.3,<2    # chargement de tools/.env (ANTHROPIC_API_KEY)
 
 # Coordination cross-process (review_server ↔ scripts pipeline)
-filelock>=3.32.3,<4          # verrou inter-processus (cf. tools/review_lock.py)
+filelock>=4.0.3,<5          # verrou inter-processus (cf. tools/review_lock.py)
 
 # Tests — parsing HTML structurel (review_server)
 beautifulsoup4>=4.15.0,<5  # assertions DOM robustes aux changements de markup
-responses>=0.26.2,<1         # mock des appels HTTP `requests` (enrich, fetch, ocr, transcribe)
+responses>=0.26.3,<1         # mock des appels HTTP `requests` (enrich, fetch, ocr, transcribe)
 
 # Cache HTTP SQLite pour `refresh_enrichment.py` (ADR 0023).
 requests-cache>=1.3.3,<2   # économise quota TMDB/MusicBrainz entre runs
@@ -42,4 +42,4 @@ requests-cache>=1.3.3,<2   # économise quota TMDB/MusicBrainz entre runs
 # jamais touché par les tests via DI). fastembed embarque onnxruntime CPU
 # (~80 MB modèle + ~50 MB runtime) — préféré à sentence-transformers qui
 # trainerait torch (~500 MB).
-fastembed>=0.8.0,<1
+fastembed>=0.8.1,<1
