@@ -9,7 +9,7 @@ x-atelier: &atelier
   # Étiquette explicite, jamais :latest. À changer quand requirements.txt ou le
   # Dockerfile change : sinon venus garde l'ancienne image et la mise à jour est
   # inerte. Celle-ci ajoute l'utilisateur 1000, sans lequel ssh refuse de partir.
-  image: reco-atelier:2026-09-28
+  image: reco-atelier:2026-10-02
   build:
     context: /home/etienne/docker/reco/depot
     dockerfile: deploy/venus/Dockerfile
