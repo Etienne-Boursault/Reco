@@ -12,7 +12,15 @@ aucun portable ne soit allumé, venus :
 5. **prévient sur Matrix**, avec le lien de la page de validation.
 
 La relecture reste humaine : la page de validation est le serveur de relecture
-habituel, joignable **par le VPN seulement**, sur <http://10.8.0.1:8000>.
+habituel, sur <http://192.168.1.59:8000> depuis le réseau local, ou
+<http://10.8.0.1:8000> par le VPN.
+
+⚠️ **Elle n'a aucune authentification.** Jusqu'au 2026-10-02 elle n'écoutait que sur
+l'adresse du VPN ; elle écoute désormais sur toutes les interfaces, et seul ufw la
+protège — port 8000 autorisé depuis `192.168.1.0/24` et `10.8.0.0/24`, Internet exclu
+par le refus par défaut. Tout appareil du Wi-Fi peut donc modifier le corpus. Pour
+refermer sans perdre l'accès local : exiger une clé dans l'URL et répondre 404 sans
+elle, comme le fait déjà `/audience` (`src/lib/audience/`).
 
 Une fois l'épisode relu de bout en bout (plus aucune reco en brouillon), le passage
 suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qui n'écrit
@@ -86,7 +94,7 @@ ANTHROPIC_API_KEY=…            # extraction ; sans elle, la chaîne s'arrête 
 RECO_MATRIX_HOMESERVER=…       # les trois mêmes valeurs que les secrets GitHub de la veille RSS
 RECO_MATRIX_TOKEN=…
 RECO_MATRIX_ROOM=…
-RECO_REVIEW_URL=http://10.8.0.1:8000
+RECO_REVIEW_URL=http://192.168.1.59:8000   # adresse mise dans les liens Matrix ; l'adresse du VPN (10.8.0.1) marche aussi
 TMDB_API_KEY=…                 # « où regarder » des films et séries ; absente, l'épisode est finalisé quand même
 SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no-credentials » et non « aucun lien »
 SPOTIFY_CLIENT_SECRET=…

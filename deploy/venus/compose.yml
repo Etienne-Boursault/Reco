@@ -28,20 +28,32 @@ x-atelier: &atelier
     - /home/etienne/.ssh/reco_deploy:/home/etienne/.ssh/reco_deploy:ro
 
 services:
-  # Page de validation, joignable UNIQUEMENT par le VPN : elle n'a pas
-  # d'authentification. Elle écoute sur 10.8.0.1 et non sur 0.0.0.0, donc ni le
-  # Wi-Fi de la maison ni Internet ne l'atteignent. Au démarrage de la machine,
-  # si wg0 n'est pas encore monté, le processus échoue à écouter et
-  # `restart: unless-stopped` le relance jusqu'à ce que l'adresse existe.
+  # Page de validation. Elle n'a AUCUNE authentification : ce qui la protège est
+  # le pare-feu, et lui seul.
+  #
+  # Jusqu'au 2026-10-02 elle n'écoutait que sur 10.8.0.1, l'adresse du VPN. Mais
+  # l'éditeur, chez lui, devait monter un VPN pour atteindre une machine à trois
+  # mètres de lui : décision prise d'ouvrir au réseau local. Elle écoute donc sur
+  # toutes les interfaces, et ufw n'autorise le port 8000 que depuis
+  # 192.168.1.0/24 et 10.8.0.0/24 — Internet reste exclu par le refus par défaut.
+  #
+  # ⚠️ Conséquence assumée : tout appareil du Wi-Fi peut valider, écarter ou
+  # modifier une reco. Pour refermer sans perdre l'accès local, le motif existe
+  # déjà dans le dépôt : `/audience` exige une clé dans l'URL et répond 404 sans
+  # elle (cf. `src/lib/audience/`).
+  #
+  # L'écoute réussit désormais même si wg0 n'est pas monté, d'où la sonde de
+  # santé sur 127.0.0.1 : viser l'adresse du VPN la ferait échouer à chaque
+  # démarrage antérieur au tunnel.
   review:
     <<: *atelier
     container_name: reco-review
     restart: unless-stopped
     command: ["python", "review_server.py", "--source", "un-bon-moment",
-              "--host", "10.8.0.1", "--port", "8000"]
+              "--host", "0.0.0.0", "--port", "8000"]
     healthcheck:
       test: ["CMD", "python", "-c",
-             "import socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(s.connect_ex(('10.8.0.1', 8000)))"]
+             "import socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(s.connect_ex(('127.0.0.1', 8000)))"]
       interval: 60s
       timeout: 10s
       retries: 3
