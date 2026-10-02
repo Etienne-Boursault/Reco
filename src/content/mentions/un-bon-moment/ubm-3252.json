@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:12:41"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3252",
+  "itemId": "685ef62c",
+  "kind": "reco",
+  "quote": "Podcast aussi, pause. J'aime bien écouter pause.",
+  "recommendedBy": "Jenny Letellier",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-7kh5yi46Xh8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:12:41",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kemar",
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:54:54",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3250",
+  "kind": "citation",
+  "links": [],
+  "quote": "j'ai vu une vidéo de Kemar hier, qu'il a généré à l'IA avec un chiot qui se bat (...) allez voir la vidéo, elle est trop drôle !",
+  "recommendedBy": "Babor",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:54:54",
+  "title": "Vidéo IA de Kemar (chiot contre un cobra)",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -113,8 +113,23 @@ def completer(lignes: Sequence[Entree], textes: Sequence[str]) -> tuple[list[Ent
     cles_a, cles_n = [_cle(j) for _k, j in anciens], [_cle(j) for j in nouveaux]
     blocs = difflib.SequenceMatcher(None, cles_a, cles_n, autojunk=False).get_matching_blocks()
 
-    a_reprendre = _mots([j for _k, j in anciens])
-    repris = _mots([anciens[x][1] for bloc in blocs for x in range(bloc.a, bloc.a + bloc.size)])
+    repris_idx = {x for bloc in blocs for x in range(bloc.a, bloc.a + bloc.size)}
+    # La borne de fin d'une fenêtre est posée sur un DÉBUT de ligne : la dernière
+    # ligne comparée peut n'avoir qu'une fraction de seconde avant la fin de
+    # l'audio réécouté, et la réécoute ne la rend alors pas du tout. Mesuré sur
+    # S6-E03 (2026-10-02) : « C'est beau ce que tu dis. », commencée 1 s avant la
+    # borne, pesait 6 mots sur 23 et faisait tomber le recouvrement à 0,57 — la
+    # réécoute, qui contenait pourtant la reco perdue (« toujours les pieds sur
+    # terre, Sonia Kronlund… »), était jetée. Une dernière ligne dont RIEN n'est
+    # repris est donc tenue pour hors de portée et non pour un désaccord. Les
+    # autres continuent de compter : une réécoute vraiment hors sujet n'en reprend
+    # aucune et reste refusée.
+    derniere = len(lignes) - 1
+    indices_derniere = {i for i, (k, _j) in enumerate(anciens) if k == derniere}
+    hors_de_portee = bool(derniere and indices_derniere and not indices_derniere & repris_idx)
+    a_reprendre = _mots([j for i, (k, j) in enumerate(anciens)
+                         if not (hors_de_portee and k == derniere)])
+    repris = _mots([anciens[x][1] for x in repris_idx])
     # La fenêtre et sa réécoute commencent et finissent aux mêmes instants : si
     # elles commencent (ou finissent) par les mêmes mots, c'est une ancre, même
     # courte — une ligne n'a parfois qu'un mot (« Ouais. », « Salut. »).
@@ -160,6 +175,10 @@ def combler(entrees: Sequence[Entree], reecouter: Reecoute) -> tuple[list[Entree
     suspects = candidats(entrees)
     bilan = Bilan(candidats=len(suspects))
     lignes = list(entrees)
+    # Les fenêtres laissées telles quelles sont nommées : sans elles, le journal
+    # disait « 14 candidat(s), 7 comblé(s) » sans dire lesquels, et il a fallu
+    # rejouer la réécoute à la main pour retrouver la reco perdue de S6-E03.
+    sans_suite: list[str] = []
     for debut, fin in fenetres(entrees, suspects):
         try:
             rendues = reecouter([debut] if fin is None else [debut, fin])
@@ -176,6 +195,10 @@ def combler(entrees: Sequence[Entree], reecouter: Reecoute) -> tuple[list[Entree
             bilan.mots_ajoutes += ajoutes
             log.info("Passage perdu retrouvé vers %s : %d mot(s).",
                      format_timestamp(debut), ajoutes)
+        else:
+            sans_suite.append(format_timestamp(debut))
     log.info("Trous de transcription : %d candidat(s), %d comblé(s), %d mot(s) retrouvé(s).",
              bilan.candidats, bilan.combles, bilan.mots_ajoutes)
+    if sans_suite:
+        log.info("Fenêtres laissées telles quelles : %s.", ", ".join(sans_suite))
     return lignes, bilan

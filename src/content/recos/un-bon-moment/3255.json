@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Clément Babor",
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:17:54",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3255",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de l'auteur",
+      "url": "https://www.baborentertainment.com/mes-romans-%C3%A9rotiques"
+    }
+  ],
+  "quote": "Clément Babor vient de nous offrir son magnifique roman érotique",
+  "recommendedBy": "Babor",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:17:54",
+  "title": "Tentations",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

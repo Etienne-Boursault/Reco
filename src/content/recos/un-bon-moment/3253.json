@@ -1,0 +1,41 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "G Milgram",
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:13:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3253",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Chaîne YouTube G Milgram",
+      "url": "https://www.youtube.com/@ggmilgram"
+    }
+  ],
+  "quote": "je vais recommander la chaîne d'un copain à moi, un copain que j'ai jamais rencontré, mais qui s'appelle Jemil Gram",
+  "recommendedBy": "Babor",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:13:37",
+  "title": "G Milgram",
+  "transcriptSource": "youtube",
+  "types": [
+    "chaine"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Babor Lelefan",
+  "enrichedAt": {
+    "links": "2026-10-02T14:50:19Z"
+  },
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "externalIds": {
+    "tmdb": "1456741",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1456741-irrealisable/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:05:03",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3242",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/films/irrealisable"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt36601685/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1456741"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/1456741-irrealisable/watch?locale=FR"
+    }
+  ],
+  "quote": "Déjà, bravo pour le film, c'est chanmé.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:05:03",
+  "title": "Irréalisable",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Irr%C3%A9alisable"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Molotov TV",
+      "url": "https://www.molotov.tv/search?q=Irr%C3%A9alisable"
+    }
+  ]
+}
