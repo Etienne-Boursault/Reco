@@ -65,6 +65,7 @@ from finalisation_message import restes as _restes  # noqa: F401
 from finalisation_passes import fiches_tmdb as _fiches_tmdb
 from finalisation_passes import fiches_video as _fiches_video
 from finalisation_passes import liens_musicaux as _liens_musicaux
+from finalisation_passes import liens_wikidata as _liens_wikidata
 from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
@@ -309,6 +310,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
               liens: Callable[[str, set[str]], Any] | None = None,
               fiches: Callable[[str, set[str]], Any] | None = None,
               video: Callable[[str, set[str]], Any] | None = None,
+              wikidata: Callable[[str, set[str]], Any] | None = None,
               publier: Callable[..., Any] | None = None,
               lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
     pending = a_finaliser(source_id, state)
@@ -319,6 +321,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
     liens = liens or _liens_musicaux
     fiches = fiches or _fiches_tmdb
     video = video or _fiches_video
+    wikidata = wikidata or _liens_wikidata
     lock = lock or _pipeline_lock
     if publier is None:
         from publier_episode import preparer as publier
@@ -329,7 +332,8 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
             _clear_error(state, "finalisation:verrou")
             for _path, episode in pending:
                 _finaliser_un(source_id, episode, state, notify, liens=liens,
-                              fiches=fiches, video=video, publier=publier)
+                              fiches=fiches, video=video, wikidata=wikidata,
+                              publier=publier)
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -342,6 +346,7 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                   notify: Notify, *, liens: Callable[[str, set[str]], Any],
                   fiches: Callable[[str, set[str]], Any],
                   video: Callable[[str, set[str]], Any],
+                  wikidata: Callable[[str, set[str]], Any],
                   publier: Callable[..., Any]) -> None:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
@@ -368,6 +373,7 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
         _passe_sans_bloquer("TMDB", "fiche(s) TMDB", fiches, source_id, ids, guid),
         _passe_sans_bloquer("Fiches de référence", "fiche(s) de référence",
                             video, source_id, ids, guid),
+        _passe_sans_bloquer("Wikidata", "lien(s) Wikidata", wikidata, source_id, ids, guid),
     ]
     _clear_error(state, key)
     state["finalized"].append(guid)
