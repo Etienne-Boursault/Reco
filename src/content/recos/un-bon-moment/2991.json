@@ -16,9 +16,14 @@
     "verdict": "guest-work"
   },
   "creator": "Laurent Baffie",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:48Z",
+    "links": "2026-10-02T09:47:48Z"
+  },
   "episodeGuid": "63614bd05e627e0011144c04",
   "externalIds": {
-    "instagram": "laurentbaffie"
+    "instagram": "laurentbaffie",
+    "isbn": "9782253238706"
   },
   "extractionHistory": [
     {
@@ -55,6 +60,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/laurentbaffie/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253238706-le-guide-de-la-repartie-laurent-baffie/"
     }
   ],
   "quote": "là il y a un bouquin sur la répartie qui va sortir le guide de la répartie",

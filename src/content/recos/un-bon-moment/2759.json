@@ -14,7 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Didier Eribon",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:34Z",
+    "links": "2026-10-02T09:47:34Z"
+  },
   "episodeGuid": "bcca5699-330f-4257-a4a9-7d5bdbb21694",
+  "externalIds": {
+    "isbn": "9782080484772"
+  },
   "extractionHistory": [
     {
       "at": "2026-06-06T01:09:00+00:00",
@@ -53,6 +60,12 @@
       "kind": "official",
       "label": "Éditions Flammarion",
       "url": "https://editions.flammarion.com/retour-a-reims/9782080484772"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782080484772-retour-a-reims-didier-eribon/"
     }
   ],
   "quote": "C'est un livre de sociologie qui est très bien écrit.",

@@ -14,9 +14,14 @@
     "verdict": "guest-work"
   },
   "creator": "Pénélope Bagieu",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:45:57Z",
+    "links": "2026-10-02T09:45:57Z"
+  },
   "episodeGuid": "6947cd11f7567117395ad287",
   "externalIds": {
-    "instagram": "penelopeb"
+    "instagram": "penelopeb",
+    "isbn": "9782075209793"
   },
   "extractionHistory": [
     {
@@ -81,6 +86,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/penelopeb/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782075209793-la-nuit-retrouvee-lola-lafon-penelope-bagieu/"
     }
   ],
   "quote": "la nuit retrouvée c'est là le roman graphique de de de pénélope bagieu",

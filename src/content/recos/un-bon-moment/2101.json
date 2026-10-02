@@ -14,9 +14,14 @@
     "verdict": "validate"
   },
   "creator": "Thomas VDB",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:09Z",
+    "links": "2026-10-02T09:47:09Z"
+  },
   "episodeGuid": "68ea7880de9a2a62c42248f5",
   "externalIds": {
-    "instagram": "thethomasvdb"
+    "instagram": "thethomasvdb",
+    "isbn": "9782283041277"
   },
   "extractionHistory": [
     {
@@ -62,6 +67,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/thethomasvdb/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782283041277-fiascorama-thomas-vdb/"
     }
   ],
   "quote": "C'est le livre Fiasco Rama de Thomas VDB.",

@@ -13,9 +13,14 @@
     "verdict": "guest-work"
   },
   "creator": "Laurent Baffie",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:45Z",
+    "links": "2026-10-02T09:47:45Z"
+  },
   "episodeGuid": "63614bd05e627e0011144c04",
   "externalIds": {
-    "instagram": "laurentbaffie"
+    "instagram": "laurentbaffie",
+    "isbn": "9782366581164"
   },
   "extractionHistory": [
     {
@@ -52,6 +57,12 @@
       "kind": "social",
       "label": "Instagram",
       "url": "https://www.instagram.com/laurentbaffie/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782366581164-500-questions-que-personne-ne-se-pose-laurent-baffie/"
     }
   ],
   "quote": "J'ai pris des meilleurs passages d'un bouquin. Je suis parti là-dessus. 500 questions que personne ne se pose.",

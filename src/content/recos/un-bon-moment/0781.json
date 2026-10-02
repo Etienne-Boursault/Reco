@@ -13,7 +13,14 @@
     "verdict": "validate"
   },
   "creator": "Delphine de Vigan",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:46:12Z",
+    "links": "2026-10-02T09:46:12Z"
+  },
   "episodeGuid": "61accf4f45d15e00135c6ef2",
+  "externalIds": {
+    "isbn": "9782253164265"
+  },
   "extractionHistory": [
     {
       "at": "2026-05-28T07:58:23+00:00",
@@ -55,6 +62,12 @@
       "kind": "buy",
       "label": "Paris Librairies (libraires indépendants)",
       "url": "https://www.parislibrairies.fr/livre/9782253164265-rien-ne-s-oppose-a-la-nuit-delphine-de-vigan/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253164265-rien-ne-s-oppose-a-la-nuit-delphine-de-vigan/"
     }
   ],
   "quote": "C'est vraiment extrêmement bien écrit. C'est quoi ? C'est très beau.",

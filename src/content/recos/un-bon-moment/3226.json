@@ -3,7 +3,14 @@
     "reviewedByHuman": true
   },
   "creator": "Kyan Khojandi, Navo",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-02T09:47:52Z",
+    "links": "2026-10-02T09:47:52Z"
+  },
   "episodeGuid": "yt-wMdkIHguIkY",
+  "externalIds": {
+    "isbn": "9782709677639"
+  },
   "guestWork": true,
   "id": "ubm-3226",
   "kind": "reco",
@@ -13,6 +20,12 @@
       "kind": "buy",
       "label": "Libraires Ensemble",
       "url": "https://www.libraires-ensemble.com/livre/26501225-bref-2-le-livre-bruno-muschio-kyan-khojandi-lattes"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782709677639-bref-2-le-livre-bruno-muschio-kyan-khojandi-marianne-chaillan/"
     }
   ],
   "quote": "Ah oui, si, si, on a sorti un bouquin. [...] C'est un livre des scripts de Bref 2, voilà. [...] Il y a quelques jolies photos, le livre est beau. C'est un livre pour ceux qui ont bien aimé Bref 2.",
