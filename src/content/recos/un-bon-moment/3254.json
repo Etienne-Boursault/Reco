@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:47",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3254",
+  "kind": "reco",
+  "links": [],
+  "quote": "C'est les scripts, donc les scénarios des six épisodes de Bref 2",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:47",
+  "title": "Bref 2, le livre",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

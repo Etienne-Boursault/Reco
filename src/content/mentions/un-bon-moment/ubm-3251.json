@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:10:02"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3251",
+  "itemId": "1dd1fc3a",
+  "kind": "reco",
+  "quote": "Il est d'ailleurs abonné à Métal Hurlant, c'est vrai aussi. [...] chaque numéro, c'est quasi 200 pages de BD, de plein d'auteurs de BD différents sur une thématique",
+  "recommendedBy": "Babor",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-7kh5yi46Xh8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:10:02",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:07:16"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3245",
+  "itemId": "62eb50ec",
+  "kind": "reco",
+  "quote": "j'ai eu envie d'en écrire un autre qui s'appelle Impionçable",
+  "recommendedBy": "Babor",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-7kh5yi46Xh8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:07:16",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

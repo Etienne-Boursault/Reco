@@ -1,0 +1,112 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Peter et Bobby Farrelly",
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "externalIds": {
+    "tmdb": "8467",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/8467-dumb-and-dumber/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:15:08",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3246",
+  "kind": "citation",
+  "links": [],
+  "quote": "C'est un de mes films préférés.",
+  "recommendedBy": "Babor",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:15:08",
+  "title": "Dumb and Dumber",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "avoid",
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE Boutique",
+      "url": "https://boutique.arte.tv/search?q=Dumb%20and%20Dumber"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Google Play Movies",
+      "url": "https://play.google.com/store/search?q=Dumb%20and%20Dumber&c=movies"
+    },
+    {
+      "ethics": "neutral",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/results?search_query=Dumb%20and%20Dumber"
+    }
+  ],
+  "year": 2003
+}

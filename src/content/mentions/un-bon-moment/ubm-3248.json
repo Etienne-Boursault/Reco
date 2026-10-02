@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:24:44"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3248",
+  "itemId": "e0605a30",
+  "kind": "reco",
+  "quote": "Si vous skiez au plateau des Résistances, n'hésitez pas à aller voir chez Régina.",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-7kh5yi46Xh8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:24:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

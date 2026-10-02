@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:20:01"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3247",
+  "itemId": "35e9f26c",
+  "kind": "citation",
+  "quote": "Vous avez vu Fleabag ou pas ? Oui. Elle, elle a fait un spectacle avant de faire sa série. C'est un peu le même genre.",
+  "recommendedBy": "Jenny Letellier",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-7kh5yi46Xh8",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:20:01",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

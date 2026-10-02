@@ -1,0 +1,73 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Phoebe Waller-Bridge",
+  "enrichedAt": {
+    "links": "2026-10-02T14:50:20Z"
+  },
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "externalIds": {
+    "tmdb": "67070",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:20:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3247",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt5687612/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/67070"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
+    }
+  ],
+  "quote": "Vous avez vu Fleabag ou pas ? Oui. Elle, elle a fait un spectacle avant de faire sa série. C'est un peu le même genre.",
+  "recommendedBy": "Jenny Letellier",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:20:01",
+  "title": "Fleabag",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Amazon Prime Video",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Amazon Prime Video with Ads",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Fleabag"
+    }
+  ]
+}

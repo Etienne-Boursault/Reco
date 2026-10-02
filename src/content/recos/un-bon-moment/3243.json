@@ -1,0 +1,31 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-7kh5yi46Xh8",
+  "extractionHistory": [
+    {
+      "at": "2026-10-02T10:29:53+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:52",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3243",
+  "links": [],
+  "quote": "C'est une vraie plateforme de streaming avec une sélection vraiment chouette, stylée.",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "00:11:52",
+  "title": "Sooner",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}
