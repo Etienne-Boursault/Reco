@@ -55,6 +55,26 @@ def liens_wikidata(source_id: str, ids: set[str]) -> Any:
                         source=source_id, types=("artiste",), ids=ids, apply=True)
 
 
+def liens_boutique(source_id: str, ids: set[str]) -> Any:
+    """Pages Steam des jeux et fiches libraire des livres de l'épisode.
+
+    Deux types que rien ne servait : sur S6-E01 et S6-E02, les quatre jeux et les
+    trois livres finissaient tous dans la liste du reste à faire, et je les ai
+    posés à la main. Éprouvée sur ces sept recos, la passe retrouve mes six liens
+    à l'identique et sert la septième — *Bref. 2, le livre*, dont je n'avais pas
+    obtenu l'EAN.
+
+    `permettre_sans_studio` reste à False : 18 des 34 jeux du corpus ne nomment
+    pas leur studio, et sans lui il n'y a rien contre quoi corroborer le titre.
+    Ces jeux sont signalés dans le reste à faire plutôt que devinés.
+    """
+    import requests
+
+    from boutique_links import run as run_boutique
+    return run_boutique(root=common.RECOS_DIR, session=requests.Session(),
+                        source=source_id, ids=ids, apply=True)
+
+
 def fiches_tmdb(source_id: str, ids: set[str]) -> Any:
     """« Où regarder » et identifiants TMDB des recos film/série de l'épisode.
 
