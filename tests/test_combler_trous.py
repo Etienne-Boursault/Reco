@@ -220,6 +220,22 @@ def test_a_rehearing_about_something_else_is_still_refused_when_the_last_line_is
     assert apres == entrees and bilan.combles == 0
 
 
+def test_the_bilan_carries_the_windows_left_alone_and_their_longest_silence():
+    """Ce que l'éditeur reçoit par Matrix : où, et combien de temps de silence —
+    c'est la durée qui dit si le passage vaut l'écoute."""
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    _apres, bilan = ct.combler(entrees, Reecoute([(4318.0, "Eh ben…")]))
+    assert bilan.combles == 0
+    assert [debut for debut, _silence in bilan.non_combles] == [4318.0]
+    assert bilan.non_combles[0][1] == pytest.approx(13.0)
+
+
+def test_a_filled_window_is_not_reported_as_left_alone():
+    entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
+    _apres, bilan = ct.combler(entrees, Reecoute(REECOUTE_PIEDS))
+    assert bilan.combles == 1 and bilan.non_combles == []
+
+
 def test_the_windows_left_alone_are_named_in_the_log(caplog):
     entrees = _episode_pieds(RECO_PERDUE, PERSPECTIVE, C_EST_BEAU)
     ct.combler(entrees, Reecoute([(4318.0, "Eh ben…")]))

@@ -48,6 +48,7 @@ from typing import Any
 
 import common
 from common import (
+    format_timestamp,
     list_episode_files,
     load_source,
     log,
@@ -172,6 +173,28 @@ def _remove_audio(source_id: str, guid: str) -> None:
             path.unlink()
 
 
+def _signaler_trous(episode: dict[str, Any], bilan: Any, notify: Notify) -> None:
+    """Dit à l'éditeur où la machine a renoncé à retrouver un passage.
+
+    Le comblement rattrape la plupart des trous, mais pas tous, et un trou non
+    rattrapé est invisible : le transcript enchaîne deux phrases sans marquer
+    qu'il manque quelque chose. C'est ainsi qu'une reco de Kyan a disparu de
+    S6-E03 (01:11:58) et qu'elle n'a été retrouvée que parce que l'éditeur
+    connaissait l'émission. Ces horodatages lui disent où tendre l'oreille.
+
+    Silencieux quand tout est comblé : un message qui arrive à chaque épisode
+    sans rien à dire finit par ne plus être lu.
+    """
+    if not getattr(bilan, "non_combles", None):
+        return
+    fenetres = ", ".join(f"{format_timestamp(debut)} (+{silence:.0f} s)"
+                         for debut, silence in bilan.non_combles)
+    notify(f"🕳️ {_title(episode)} : {len(bilan.non_combles)} passage(s) muet(s) que la "
+           f"réécoute n'a pas su retrouver — {fenetres}. "
+           f"La plupart sont de vrais silences ; à vérifier si l'un d'eux tombe dans "
+           f"les recommandations.")
+
+
 def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
                transcriber: Callable[..., Any] | None = None,
                model: str = WHISPER_MODEL) -> int:
@@ -184,7 +207,8 @@ def transcrire(source_id: str, notify: Notify, state: dict[str, Any],
         key = f"transcription:{episode['guid']}"
         try:
             transcriber(source_id, path, model, "fr", False,
-                        amorce=amorce_pour(source, episode))
+                        amorce=amorce_pour(source, episode),
+                        signaler=lambda bilan, ep=episode: _signaler_trous(ep, bilan, notify))
         except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
             _report_once(state, key,
                          f"⚠️ Transcription impossible pour « {_title(episode)} » : {exc}",

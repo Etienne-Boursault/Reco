@@ -13,6 +13,7 @@ from types import SimpleNamespace
 
 import pytest
 
+import combler_trous as ct
 import traiter_nouveaux_episodes as tne
 
 # Capturées AVANT que la fixture `reseau_hors_ligne` ne remplace les attributs du
@@ -93,7 +94,7 @@ def test_transcrire_only_touches_youtube_episodes_not_yet_transcribed(content, i
     calls = []
 
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
-                   transcriber=lambda s, p, m, lang, force, amorce:
+                   transcriber=lambda s, p, m, lang, force, amorce, signaler=None:
                    calls.append((p.name, m, lang, amorce)))
 
     assert calls == [("yt-todo.json", "large-v3-turbo", "fr",
@@ -112,6 +113,34 @@ def test_audio_is_kept_after_transcription_for_the_quote_pass(content, inbox):
     tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE), transcriber=lambda *a, **k: None)
 
     assert audio.exists()
+
+
+def test_unfilled_gaps_are_reported_to_the_editor(content, inbox):
+    """Un trou non comblé est invisible dans le transcript : il enchaîne deux
+    phrases sans marquer qu'il manque quelque chose. C'est ainsi qu'une reco de
+    Kyan a disparu de S6-E03. L'éditeur reçoit donc les horodatages."""
+    _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+    bilan = ct.Bilan(candidats=2, combles=1, mots_ajoutes=35,
+                     non_combles=[(4318.0, 13.0), (118.0, 10.0)])
+
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
+                   transcriber=lambda *_a, signaler=None, **_k: signaler(bilan))
+
+    assert len(inbox) == 1
+    assert "01:11:58 (+13 s)" in inbox[0] and "00:01:58 (+10 s)" in inbox[0]
+    assert "2 passage(s) muet(s)" in inbox[0]
+
+
+def test_nothing_is_said_when_every_gap_was_filled(content, inbox):
+    """Un message qui arrive à chaque épisode sans rien à dire finit par ne
+    plus être lu."""
+    _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+    tout_comble = ct.Bilan(candidats=3, combles=3, mots_ajoutes=120)
+
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
+                   transcriber=lambda *_a, signaler=None, **_k: signaler(tout_comble))
+
+    assert list(inbox) == []
 
 
 def test_the_audio_is_downloaded_once_per_episode(content, inbox, monkeypatch):
@@ -145,7 +174,7 @@ def test_the_audio_is_downloaded_once_per_episode(content, inbox, monkeypatch):
     monkeypatch.setitem(sys.modules, "yt_dlp", SimpleNamespace(YoutubeDL=FakeYDL))
     chemin = _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
 
-    def transcriber(source_id, path, model, lang, force, amorce):
+    def transcriber(source_id, path, model, lang, force, amorce, signaler=None):
         transcribe._resolve_audio(source_id, json.loads(path.read_text(encoding="utf-8")))
         _episode(content, "yt-todo", status="auto", transcript=True,
                  youtubeUrl="https://www.youtube.com/watch?v=todo")

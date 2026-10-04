@@ -14,6 +14,7 @@ import pytest
 import requests
 import responses
 
+import combler_trous as ct
 import transcribe as tr
 
 
@@ -302,7 +303,7 @@ def test_transcribe_audio_formats_lines(tmp_path, monkeypatch):
     _install_fake_whisper(monkeypatch)
     audio = tmp_path / "a.mp3"
     audio.write_bytes(b"")
-    text = tr._transcribe_audio(audio, "small", "fr")
+    text, _bilan = tr._transcribe_audio(audio, "small", "fr")
     lines = text.strip().split("\n")
     assert lines[0] == "[00:00:00] Bonjour"
     assert lines[1] == "[00:00:02] tout le monde."
@@ -360,7 +361,8 @@ def test_a_passage_lost_by_the_long_transcription_is_heard_again(tmp_path, monke
     audio = tmp_path / "a.mp3"
     audio.write_bytes(b"")
 
-    text = tr._transcribe_audio(audio, "large-v3-turbo", "fr", "Un bon moment, avec Navo.")
+    text, _bilan = tr._transcribe_audio(audio, "large-v3-turbo", "fr",
+                                        "Un bon moment, avec Navo.")
 
     assert charges == ["large-v3-turbo"]
     assert appels[1]["clip_timestamps"] == [4591.0]
@@ -454,12 +456,29 @@ def test_transcribe_episode_force_retranscribes(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang, amorce=None: "[00:00:00] nouveau\n")
+                        lambda audio, model, lang, amorce=None:
+                        ("[00:00:00] nouveau\n", ct.Bilan()))
 
     produced = tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"],
                                      "small", "fr", force=True)
     assert produced is True
     assert tpath.read_text(encoding="utf-8") == "[00:00:00] nouveau\n"
+
+
+def test_transcribe_episode_hands_the_gap_report_to_its_caller(ep_setup, monkeypatch):
+    """La chaîne s'en sert pour dire à l'éditeur où la réécoute a renoncé."""
+    monkeypatch.setattr(tr, "_resolve_audio",
+                        lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
+    bilan = ct.Bilan(candidats=2, combles=1, mots_ajoutes=35, non_combles=[(4318.0, 13.0)])
+    monkeypatch.setattr(tr, "_transcribe_audio",
+                        lambda audio, model, lang, amorce=None:
+                        ("[00:00:00] gap\n", bilan))
+    recus = []
+
+    tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"], "small", "fr",
+                          force=True, signaler=recus.append)
+
+    assert recus == [bilan]
 
 
 def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
@@ -471,7 +490,8 @@ def test_transcribe_episode_preserves_validated_status(ep_setup, monkeypatch):
     monkeypatch.setattr(tr, "_resolve_audio",
                         lambda src, ep, prefer_acast=False: (Path("ignore"), "youtube"))
     monkeypatch.setattr(tr, "_transcribe_audio",
-                        lambda audio, model, lang, amorce=None: "[00:00:00] x\n")
+                        lambda audio, model, lang, amorce=None:
+                        ("[00:00:00] x\n", ct.Bilan()))
 
     tr.transcribe_episode(ep_setup["src"], ep_setup["ep_path"], "small", "fr", force=False)
     data = json.loads(ep_setup["ep_path"].read_text(encoding="utf-8"))
