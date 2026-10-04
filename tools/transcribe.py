@@ -28,6 +28,7 @@ Usage :
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +36,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+from combler_trous import Bilan
 from combler_trous import combler as combler_trous
 from common import (
     AUDIO_DIR,
@@ -199,10 +201,12 @@ def _resolve_audio(source_id: str, episode: dict[str, Any],
 
 
 def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
-                      amorce: str | None = None) -> str:
+                      amorce: str | None = None) -> tuple[str, Bilan]:
     """
     Transcrit un fichier audio avec faster-whisper. Renvoie le texte annoté de
-    timestamps, un segment par ligne : « [HH:MM:SS] texte ».
+    timestamps, un segment par ligne « [HH:MM:SS] texte », et le bilan du
+    comblement des trous — dont les fenêtres laissées telles quelles, que
+    l'appelant signale à l'éditeur.
 
     `amorce` est une phrase ponctuée, passée en `hotwords` : faster-whisper la
     redonne au modèle À CHAQUE fenêtre de 30 s. Mesuré sur un épisode entier le
@@ -249,17 +253,24 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         )
         return [(seg.start, seg.text) for seg in rendus]
 
-    entrees, _bilan = combler_trous(entrees, reecouter)
-    return "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees) + "\n"
+    entrees, bilan = combler_trous(entrees, reecouter)
+    lignes = "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees)
+    return lignes + "\n", bilan
 
 
 def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
                        language: str | None, force: bool,
                        prefer_acast: bool = False,
-                       amorce: str | None = None) -> bool:
+                       amorce: str | None = None,
+                       signaler: Callable[[Bilan], None] | None = None) -> bool:
     """
     Transcrit un épisode (fichier JSON donné). Renvoie True si une transcription
     a été produite (ou si le statut a été mis à jour), False si rien à faire.
+
+    `signaler` reçoit le bilan du comblement quand une transcription a réellement
+    eu lieu. C'est par là que l'éditeur apprend où la machine a renoncé. Un rappel
+    plutôt qu'une valeur de retour : les appelants attendent un booléen d'ici, et
+    le cache en rend un sans rien transcrire.
     """
     episode = read_json(episode_path)
     guid = episode["guid"]
@@ -275,7 +286,9 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
         return False
 
     audio_path, source_used = _resolve_audio(source_id, episode, prefer_acast)
-    text = _transcribe_audio(audio_path, model_name, language, amorce)
+    text, bilan = _transcribe_audio(audio_path, model_name, language, amorce)
+    if signaler is not None:
+        signaler(bilan)
 
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text(text, encoding="utf-8")

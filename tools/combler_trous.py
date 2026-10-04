@@ -35,7 +35,7 @@ import bisect
 import difflib
 import re
 from collections.abc import Callable, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from common import format_timestamp, log
 
@@ -64,6 +64,11 @@ class Bilan:
     candidats: int = 0
     combles: int = 0
     mots_ajoutes: int = 0
+    # Fenêtres laissées telles quelles, en (début, plus long silence dedans),
+    # secondes. Beaucoup sont de vrais silences — mais pas toutes : sur S6-E03,
+    # celle de 01:11:58 cachait une reco, et personne n'avait de quoi savoir
+    # où tendre l'oreille. L'éditeur les reçoit maintenant par Matrix.
+    non_combles: list[tuple[float, float]] = field(default_factory=list)
 
 
 def candidats(entrees: Sequence[Entree]) -> list[int]:
@@ -196,7 +201,11 @@ def combler(entrees: Sequence[Entree], reecouter: Reecoute) -> tuple[list[Entree
             log.info("Passage perdu retrouvé vers %s : %d mot(s).",
                      format_timestamp(debut), ajoutes)
         else:
-            sans_suite.append(format_timestamp(debut))
+            # Le saut le plus long de la fenêtre : il dit si ça vaut l'écoute.
+            silence = max((lignes[k + 1][0] - lignes[k][0]
+                           for k in range(a, min(b, len(lignes)) - 1)), default=0.0)
+            bilan.non_combles.append((debut, silence))
+            sans_suite.append(f"{format_timestamp(debut)} (+{silence:.0f} s)")
     log.info("Trous de transcription : %d candidat(s), %d comblé(s), %d mot(s) retrouvé(s).",
              bilan.candidats, bilan.combles, bilan.mots_ajoutes)
     if sans_suite:
