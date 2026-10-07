@@ -30,7 +30,7 @@ SOURCE = "demo-source"
 def content(tmp_path, monkeypatch):
     import common
 
-    for name, sub in (("SOURCES_DIR", "sources"), ("EPISODES_DIR", "episodes"),
+    for name, sub in (("SOURCES_DIR", "sources"), ("EPISODES_DIR", "episodes"), ("RECOS_DIR", "recos"),
                       ("OUTPUT_DIR", "output"), ("TRANSCRIPTS_DIR", "output/transcripts"),
                       ("AUDIO_DIR", "output/audio")):
         monkeypatch.setattr(common, name, tmp_path / sub)
@@ -290,6 +290,41 @@ def test_a_failing_quote_pass_does_not_lose_the_episode(content, inbox):
 
     assert state["extracted"] == ["yt-ready"]
     assert "4 reco(s) à valider" in inbox[0] and "citation" not in inbox[0]
+
+
+def test_restored_names_and_retimed_quotes_are_announced(content, inbox):
+    _episode(content, "yt-ready", status="auto", transcript=True)
+    vus = []
+
+    def caleur(source_id, guid, *, apply):
+        vus.append((guid, apply))
+        return SimpleNamespace(noms=[("ubm-1", "Camelot", "Kaamelott")],
+                               minutages=[("ubm-1", "00:13:21", "00:58:15")])
+
+    tne.extraire(SOURCE, inbox, tne.load_state(SOURCE), review_url="u",
+                 client_factory=lambda: "c", extractor=lambda *a, **k: 4, lock=_no_lock,
+                 model="m", preciseur=_sans_precision, caleur=caleur)
+
+    assert vus == [("yt-ready", True)]
+    assert inbox == [("✅ Titre yt-ready : 4 reco(s) à valider.\n"
+                      "Noms rétablis dans les citations : Camelot → Kaamelott.\n"
+                      "1 minutage(s) recalé(s) sur la citation.\n"
+                      "u/ep?guid=yt-ready")]
+
+
+def test_a_failing_calage_does_not_lose_the_episode(content, inbox):
+    _episode(content, "yt-ready", status="auto", transcript=True)
+
+    def caleur(*_a, **_k):
+        raise RuntimeError("transcription illisible")
+
+    state = tne.load_state(SOURCE)
+    tne.extraire(SOURCE, inbox, state, review_url="u", client_factory=lambda: "c",
+                 extractor=lambda *a, **k: 4, lock=_no_lock, model="m",
+                 preciseur=_sans_precision, caleur=caleur)
+
+    assert state["extracted"] == ["yt-ready"]
+    assert inbox == ["✅ Titre yt-ready : 4 reco(s) à valider.\nu/ep?guid=yt-ready"]
 
 
 def test_an_invalid_api_key_is_reported_once_and_nothing_is_marked(content, inbox):

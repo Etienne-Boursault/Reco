@@ -47,6 +47,7 @@ from pathlib import Path
 from typing import Any
 
 import common
+from caler_citations import resume as _resume_calage
 from common import (
     format_timestamp,
     list_episode_files,
@@ -238,6 +239,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
              client_factory: Callable[[], Any] | None = None,
              extractor: Callable[..., int] | None = None,
              preciseur: Callable[..., Any] | None = None,
+             caleur: Callable[..., Any] | None = None,
              lock: Callable[[], contextlib.AbstractContextManager[None]] = _pipeline_lock,
              model: str | None = None) -> int:
     pending = a_extraire(source_id, state)
@@ -251,6 +253,8 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
         from extract_recos import MODEL as model
     if preciseur is None:
         from preciser_citations import preciser_episode as preciseur
+    if caleur is None:
+        from caler_citations import caler_episode as caleur
 
     try:
         client = client_factory()
@@ -267,7 +271,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
             for path, episode in pending:
                 _extract_one(source_id, path, episode, state, notify, client=client,
                              extractor=extractor, model=model, source=source,
-                             review_url=review_url, preciseur=preciseur)
+                             review_url=review_url, preciseur=preciseur, caleur=caleur)
     except LockBusy as exc:
         _report_once(state, "extraction:verrou",
                      f"⚠️ Extraction repoussée, la page de validation tient le verrou : {exc}",
@@ -301,9 +305,19 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     finally:
         _remove_audio(source_id, guid)
 
+    # Calage sur la transcription : le minutage sur la ligne où la citation est
+    # dite, les noms mal transcrits sur la graphie du titre et du créateur.
+    # Chaque nom rétabli est cité dans le message : la relecture tranche.
+    calage = ""
+    try:
+        calage = _resume_calage(kwargs["caleur"](source_id, guid, apply=True))
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Citations non calées pour %s : %s", guid, exc)
+
     precisees = f" {citations} citation(s) précisée(s)." if citations else ""
+    calage = f"\n{calage}" if calage else ""
     link = f"{kwargs['review_url'].rstrip('/')}/ep?guid={urllib.parse.quote(guid, safe='')}"
-    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}\n{link}")
+    notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}{calage}\n{link}")
 
 
 # ===== finalisation ==========================================================

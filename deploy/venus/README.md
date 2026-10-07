@@ -9,7 +9,13 @@ aucun portable ne soit allumé, venus :
 4. **réécoute** les quelques secondes d'où vient chaque citation, en soufflant à Whisper
    les noms que l'extraction a reconnus (`preciser_citations.py`) : la citation publiée
    vient telle quelle de la transcription, qui écorche les noms propres ;
-5. **prévient sur Matrix**, avec le lien de la page de validation.
+5. **cale** chaque citation sur la transcription (`caler_citations.py`) : le minutage
+   prend celui de la ligne où la phrase est dite — le modèle d'extraction le recopiait,
+   parfois avec une minute de trop —, et un nom mal transcrit (« Camelot ») prend la
+   graphie du titre ou du créateur (Kaamelott) ;
+6. **prévient sur Matrix**, avec le lien de la page de validation et chaque nom rétabli
+   (ancien → nouveau) : la relecture tranche, en particulier quand c'est la fiche qui
+   se trompe ou quand l'invité a dit le titre français.
 
 La relecture reste humaine : la page de validation est le serveur de relecture
 habituel, sur <http://192.168.1.59:8000> depuis le réseau local, ou
