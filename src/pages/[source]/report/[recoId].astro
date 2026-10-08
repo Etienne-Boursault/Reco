@@ -17,27 +17,54 @@ import { recoPubliee } from '../../../utils/recoPubliee';
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
   const recos = await getCollection('recos');
-  const out: { params: { source: string; recoId: string }; props: { source: typeof sources[number]; reco: typeof recos[number] } }[] = [];
+  // Épisodes connus, par source : le lien « retour » mène à l'épisode de la
+  // reco signalée quand sa page existe (cf. le gabarit plus bas).
+  const episodes = await getCollection('episodes');
+  const episodeConnu = new Set(
+    episodes.map((e) => `${e.data.sourceId.id}/${e.data.guid}`),
+  );
+  const out: {
+    params: { source: string; recoId: string };
+    props: {
+      source: typeof sources[number];
+      reco: typeof recos[number];
+      backHref: string;
+      backToEpisode: boolean;
+    };
+  }[] = [];
   for (const reco of recos) {
     const src = sources.find((s) => s.id === reco.data.sourceId.id);
     if (!src) continue;
     if (!recoPubliee(reco.data.status)) continue; // seule une reco publiée se signale
+    const backToEpisode = episodeConnu.has(`${src.id}/${reco.data.episodeGuid}`);
     out.push({
       params: { source: src.id, recoId: reco.data.id },
-      props: { source: src, reco },
+      props: {
+        source: src,
+        reco,
+        backHref: backToEpisode
+          ? `/${src.id}/episode/${reco.data.episodeGuid}`
+          : `/${src.id}`,
+        backToEpisode,
+      },
     });
   }
   return out;
 }
 
-const { source, reco } = Astro.props;
+const { source, reco, backHref, backToEpisode } = Astro.props;
 const data = source.data;
 ---
 
 <Layout title={t('report.page.metaTitle', { title: reco.data.title })} theme={data.theme} noindex>
+  {/* Le retour ramène à l'ÉPISODE de la reco : c'est de là qu'on vient presque
+     toujours, le ⚠ étant posé sur ses cartes. Il ramenait au catalogue, et il
+     fallait retrouver l'épisode parmi plus de cent (audit d'interface du
+     2026-10-07). Le catalogue reste le repli quand la page de l'épisode
+     n'existe pas. */}
   <main id="main" tabindex="-1" class="wrap">
     <p class="back">
-      <a href={`/${source.id}`}>{t('report.page.back')}</a>
+      <a href={backHref}>{backToEpisode ? t('report.page.backEpisode') : t('report.page.back')}</a>
     </p>
     <header class="head">
       <h1>{t('report.page.title')}</h1>
@@ -53,20 +80,32 @@ const data = source.data;
 </Layout>
 
 <style>
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 1.2rem 4rem;
+  /* La page suit la grille commune (`.wrap` de global.css), alignée à gauche
+     comme les fiches épisode et œuvre. Elle se redéfinissait en colonne de
+     760 px CENTRÉE : arrivé d'une fiche, on voyait le contenu sauter au milieu
+     de l'écran (audit d'interface du 2026-10-07). La largeur de lecture reste
+     bornée par le formulaire (640 px) et par le chapeau (60 caractères). */
+  main {
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0 4rem;
   }
   .back {
     margin: 0 0 1rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .back a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back a:hover {
+    color: var(--accent);
   }
   .head h1 {
     margin: 0 0 0.4rem;
   }
   .head .lede {
     color: var(--muted);
+    max-width: 60ch;
     margin: 0 0 1.6rem;
   }
 </style>

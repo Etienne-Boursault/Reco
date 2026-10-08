@@ -150,13 +150,27 @@ describe('/stats — page globale', () => {
     expect(getCollection).toHaveBeenCalledWith('items');
   });
 
+  it('sans sidecar, ouvre sur le récit des constats (audit d’interface du 2026-10-07)', async () => {
+    seedCollections();
+    const html = await render();
+    const text = visibleText(html);
+
+    expect(html).toMatch(/<h1[^>]*>[^<]*constats?<\/h1>/);
+    expect(text).toContain('des œuvres ne passent qu’une fois');
+    expect(text).toContain('Les chiffres en détail');
+    expect(getCollection).toHaveBeenCalledWith('recos');
+  });
+
   it('avec sidecar valide, l’utilise et n’ouvre AUCUNE collection', async () => {
     sidecars.set('_global', snapshot());
     seedCollections();
-    const text = visibleText(await render());
+    const html = await render();
+    const text = visibleText(html);
 
     expect(text).toContain('Œuvre du sidecar');
     expect(text).toContain('Sidecar Guest');
+    // Sans corpus chargé, pas de récit : l'en-tête simple reprend sa place.
+    expect(html).not.toContain('class="constat');
     // R-P1-24 : le sidecar court-circuite la lecture des collections lourdes.
     expect(heavyCollectionsLoaded()).toEqual([]);
   });

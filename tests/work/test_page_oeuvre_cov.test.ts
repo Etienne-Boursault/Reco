@@ -262,7 +262,21 @@ describe('page œuvre — getStaticPaths', () => {
 // ---------------------------------------------------------------------------
 // Rendu — compteurs
 // ---------------------------------------------------------------------------
-describe('page œuvre — libellé du compteur', () => {
+/**
+ * Les chiffres de l'en-tête (direction « La récurrence », 2026-10-07), lus
+ * comme des paires légende → valeur. Le `<dl>` place la légende AVANT le
+ * chiffre dans le DOM : le texte visible ne les lit donc pas dans l'ordre de
+ * l'écran, d'où cette lecture structurée.
+ */
+function chiffres(html: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const m of html.matchAll(/<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g)) {
+    out[m[1].trim()] = m[2].trim();
+  }
+  return out;
+}
+
+describe('page œuvre — chiffres de l’en-tête', () => {
   function seedWith(mentions: Entry[]): void {
     seed({
       sources: [SOURCE],
@@ -272,32 +286,38 @@ describe('page œuvre — libellé du compteur', () => {
     });
   }
 
-  it('une seule reco → « Recommandée 1 fois »', async () => {
+  it('une seule reco → 1 mention, 1 recommandation', async () => {
     seedWith([mention('m1', 'w1')]);
-    expect(visibleText(await renderWork('w1'))).toContain('Recommandée 1 fois');
+    const c = chiffres(await renderWork('w1'));
+    expect(c['mention dans le podcast']).toBe('1');
+    expect(c['recommandation']).toBe('1');
   });
 
-  it('plusieurs recos → « Recommandée N fois »', async () => {
+  it('plusieurs recos → le nombre de recommandations', async () => {
     seedWith([
       mention('m1', 'w1'),
       mention('m2', 'w1', { sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
     ]);
-    expect(visibleText(await renderWork('w1'))).toContain('Recommandée 2 fois');
+    const c = chiffres(await renderWork('w1'));
+    expect(c['mentions dans le podcast']).toBe('2');
+    expect(c['recommandations']).toBe('2');
   });
 
-  it('une seule citation (0 reco) → « Mentionnée 1 fois »', async () => {
+  it('une seule citation (0 reco) → pas de chiffre « recommandation »', async () => {
     seedWith([mention('m1', 'w1', { kind: 'citation' })]);
-    const text = visibleText(await renderWork('w1'));
-    expect(text).toContain('Mentionnée 1 fois');
-    expect(text).not.toContain('Recommandée');
+    const c = chiffres(await renderWork('w1'));
+    expect(c['mention dans le podcast']).toBe('1');
+    expect(Object.keys(c).some((k) => k.startsWith('recommandation'))).toBe(false);
   });
 
-  it('plusieurs citations (0 reco) → « Mentionnée N fois »', async () => {
+  it('plusieurs citations (0 reco) → seulement le total des mentions', async () => {
     seedWith([
       mention('m1', 'w1', { kind: 'citation' }),
       mention('m2', 'w1', { kind: 'citation', sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
     ]);
-    expect(visibleText(await renderWork('w1'))).toContain('Mentionnée 2 fois');
+    const c = chiffres(await renderWork('w1'));
+    expect(c['mentions dans le podcast']).toBe('2');
+    expect(Object.keys(c).some((k) => k.startsWith('recommandation'))).toBe(false);
   });
 
   it('le titre de section suit le total de MENTIONS (citations incluses)', async () => {
@@ -305,10 +325,50 @@ describe('page œuvre — libellé du compteur', () => {
       mention('m1', 'w1'),
       mention('m2', 'w1', { kind: 'citation', sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
     ]);
-    const text = visibleText(await renderWork('w1'));
-    // 1 reco + 1 citation → « Recommandée 1 fois » mais « 2 mentions ».
-    expect(text).toContain('Recommandée 1 fois');
-    expect(text).toContain('2 mentions dans le podcast');
+    const html = await renderWork('w1');
+    expect(chiffres(html)['recommandation']).toBe('1');
+    expect(visibleText(html)).toContain('2 mentions dans le podcast');
+  });
+
+  it('recos ET citations → les recommandations sont une part du total (#6)', async () => {
+    seedWith([
+      mention('m1', 'w1'),
+      mention('m2', 'w1', { kind: 'citation', sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
+      mention('m3', 'w1', { kind: 'citation', sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
+    ]);
+    const html = await renderWork('w1');
+    const c = chiffres(html);
+    expect(c['mentions dans le podcast']).toBe('3');
+    expect(c['recommandation']).toBe('1');
+    expect(visibleText(html)).toContain('3 mentions dans le podcast');
+  });
+
+  it('la période : une seule date → l’année, « en <mois> <année> »', async () => {
+    seedWith([mention('m1', 'w1')]);
+    const c = chiffres(await renderWork('w1'));
+    const legende = Object.keys(c).find((k) => k.startsWith('en '));
+    expect(legende).toBeTruthy();
+    expect(c[legende!]).toMatch(/^\d{4}$/);
+  });
+
+  it('la pastille « tendance » annonce le compte de la fenêtre, pas le total', async () => {
+    seed({
+      sources: [SOURCE],
+      items: [item('w1')],
+      mentions: [
+        mention('m1', 'w1'),
+        mention('m2', 'w1', { sourceRef: { sourceId: 'ubm', episodeGuid: 'g2' } }),
+        mention('m3', 'w1', { sourceRef: { sourceId: 'ubm', episodeGuid: 'old' } }),
+      ],
+      episodes: [
+        episode('g1'),
+        episode('g2'),
+        episode('old', { date: new Date('2019-01-01') }),
+      ],
+    });
+    const html = await renderWork('w1');
+    expect(html).toContain('2 mentions au cours des 12 derniers mois');
+    expect(visibleText(html)).toContain('3 mentions dans le podcast');
   });
 
   it('une mention unique → titre de section au singulier', async () => {
@@ -334,31 +394,24 @@ describe('page œuvre — libellé du compteur', () => {
 // Rendu — en-tête (types, créateur, année, réseaux sociaux)
 // ---------------------------------------------------------------------------
 describe('page œuvre — en-tête', () => {
-  it('rend un emoji + un libellé par type connu', async () => {
+  it('écrit les types en toutes lettres au-dessus du titre', async () => {
     seed({
       sources: [SOURCE],
       items: [item('w1', { types: ['film', 'livre'] })],
       mentions: [mention('m1', 'w1')],
       episodes: [episode('g1')],
     });
-    const html = await renderWork('w1');
-
-    expect(html).toContain('🎬');
-    expect(html).toContain('📖');
-    expect(html).toContain('aria-label="Film, Livre"');
+    expect(visibleText(await renderWork('w1'))).toContain('Film · Livre');
   });
 
-  it('type inconnu → emoji ✨ et libellé brut', async () => {
+  it('type inconnu → son libellé brut', async () => {
     seed({
       sources: [SOURCE],
       items: [item('w1', { types: ['ovni'] })],
       mentions: [mention('m1', 'w1')],
       episodes: [episode('g1')],
     });
-    const html = await renderWork('w1');
-
-    expect(html).toContain('✨');
-    expect(html).toContain('aria-label="ovni"');
+    expect(visibleText(await renderWork('w1'))).toContain('ovni');
   });
 
   it('créateur et année affichés quand présents', async () => {
@@ -571,17 +624,11 @@ describe('page œuvre — SEO et similaires', () => {
     expect(schema['@type']).toBe('CreativeWork');
   });
 
-  it('l’image OG pointe la carte de la SOURCE, la seule qui existe', async () => {
-    // Ce test exigeait `/og/ubm/oeuvre/w1.png` — une carte par œuvre que
-    // `src/pages/og/[...slug].png.ts` n'a jamais générée. Il verrouillait donc
-    // un défaut : les 1 036 pages d'œuvre du site déclaraient une image qui
-    // répondait 404, et ce sont les plus partagées.
-    //
-    // Une carte par œuvre coûterait une cinquantaine de mégaoctets au build,
-    // et les items ne portent aucune affiche à réutiliser. Mieux vaut une
-    // carte juste et générique qu'une image absente. Cf.
-    // `tests/build/test_og_images_existent.test.ts`, qui vérifie désormais sur
-    // le site construit que toute `og:image` locale existe vraiment.
+  it('l’image OG pointe la carte de l’œuvre, dès sa première mention', async () => {
+    // Une carte par fiche d'œuvre depuis le 2026-10-07 (« avoir un build long
+    // n'est pas un souci »). Avant, ce test exigeait la carte de la SOURCE,
+    // faute de carte d'œuvre générée. `tests/build/test_og_images_existent`
+    // vérifie sur le site construit que chaque `og:image` locale existe.
     seed({
       sources: [SOURCE],
       items: [item('w1')],
@@ -590,8 +637,7 @@ describe('page œuvre — SEO et similaires', () => {
     });
     const html = await renderWork('w1');
 
-    expect(html).toContain(`content="${TEST_SITE}/og/ubm.png"`);
-    expect(html).not.toContain('/og/ubm/oeuvre/');
+    expect(html).toContain(`content="${TEST_SITE}/og/ubm/oeuvre/w1.png"`);
     expect(html).toContain('<meta property="og:type" content="article">');
   });
 

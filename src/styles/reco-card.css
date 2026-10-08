@@ -41,18 +41,27 @@
       transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
       border-color 0.2s ease;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-    /* Au-dessus de la barre de filtres (z-index: 5) pendant le survol.
+  /* Survol réservé aux pointeurs qui survolent vraiment — cf. la convention
+     en tête de `global.css` (audit d'interface du 2026-10-07). Au doigt, la
+     carte restait soulevée et bordée d'accent après un simple toucher.
+     PAS d'`:active` sur la carte : ce n'est pas un lien, et `:active`
+     s'étend aux ancêtres de l'élément pressé — appuyer sur une icône de
+     plateforme ferait s'enfoncer la carte entière. L'appui se lit sur
+     l'icône elle-même (`.link:active`, plus bas). */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      /* Au-dessus de la barre de filtres (z-index: 5) pendant le survol.
 
-       Meme cause que sur les vignettes d'episode : le soulevement de 4 px
-       fait disparaitre un peu plus la carte sous la barre collante. Le
-       z-index porte sur `.card` elle-meme, qui a `content-visibility: auto`
-       et forme donc un contexte d'empilement — le poser sur un enfant
-       resterait sans effet. */
-    position: relative;
-    z-index: 6;
+         Meme cause que sur les vignettes d'episode : le soulevement de 4 px
+         fait disparaitre un peu plus la carte sous la barre collante. Le
+         z-index porte sur `.card` elle-meme, qui a `content-visibility: auto`
+         et forme donc un contexte d'empilement — le poser sur un enfant
+         resterait sans effet. */
+      position: relative;
+      z-index: 6;
+    }
   }
   /* Citation : œuvre simplement évoquée, pas recommandée. Visuel plus discret.
      PAS d'`opacity` sur la carte : elle valait 0.7 et atténuait TOUT son texte,
@@ -66,8 +75,10 @@
     border-style: dashed;
     background: color-mix(in oklab, var(--surface) 92%, var(--bg));
   }
-  .card.is-citation:hover {
-    background: var(--surface);
+  @media (hover: hover) and (pointer: fine) {
+    .card.is-citation:hover {
+      background: var(--surface);
+    }
   }
   /* Story 4 — badge « œuvre d'invité » : accent ambre pour se distinguer du
      badge citation (neutre) sans dépendre de l'accent variable de la source.
@@ -97,10 +108,12 @@
   }
   .type {
     display: inline-flex;
-    gap: 0.25rem;
-    font-size: 1.15rem;
+    gap: 0.3rem;
     line-height: 1;
-    /* Les emojis ne se compriment jamais : c'est le titre qui se replie. */
+    /* Icônes au trait dans l'accent (harmonisées avec l'onglet « Par type »
+       et les galeries le 2026-10-07). Elles ne se compriment jamais : c'est
+       le titre qui se replie. */
+    color: var(--accent);
     flex: 0 0 auto;
   }
   .type-emoji {
@@ -109,6 +122,19 @@
     cursor: help;
     display: inline-flex;
     align-items: center;
+  }
+  /* Taille à la mesure du titre qu'elles précèdent (1,4 à 1,85 rem) : à
+     20 px, les icônes paraissaient trop discrètes à côté des grands titres
+     (retour de l'éditeur, 2026-10-07). */
+  .type-emoji svg {
+    width: 28px;
+    height: 28px;
+  }
+  @media (max-width: 560px) {
+    .type-emoji svg {
+      width: 24px;
+      height: 24px;
+    }
   }
   .title {
     font-size: clamp(1.4rem, 2.4vw, 1.85rem);
@@ -119,6 +145,25 @@
     flex: 0 1 auto;
     min-width: 0;
     overflow-wrap: break-word;
+  }
+  /* Le titre mène à la fiche de l'œuvre (ajout après l'audit d'interface du
+     2026-10-07). Il garde l'allure d'un titre : pas de couleur de lien, pas de
+     soulignement au repos. Le soulignement au survol, réservé à la souris,
+     et l'accent à l'appui disent qu'il se clique ; le focus clavier reste
+     celui de la règle globale. */
+  .title-link {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 0.12em;
+    text-decoration-thickness: 0.06em;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .title-link:hover {
+      text-decoration: underline;
+    }
+  }
+  .title-link:active {
+    color: var(--accent);
   }
   .creator {
     margin: 0;
@@ -196,10 +241,21 @@
       border-color 0.16s ease,
       background 0.16s ease;
   }
-  .link:hover {
-    transform: translateY(-2px);
+  @media (hover: hover) and (pointer: fine) {
+    .link:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: color-mix(in oklab, var(--accent) 18%, transparent);
+    }
+  }
+  /* Appui : l'icône s'enfonce dès le contact (80 ms), au lieu de ne réagir
+     qu'au survol — qui n'existe pas au doigt. Après le survol dans la
+     feuille : à la souris, cliquer « repose » l'icône soulevée. */
+  .link:active {
+    transform: scale(0.94);
     border-color: var(--accent);
     background: color-mix(in oklab, var(--accent) 18%, transparent);
+    transition-duration: 0.08s;
   }
   /* P2-3 : `.link:focus-visible` retiré, la règle globale dans global.css
      (`:where(...):focus-visible`) gère désormais halo + outline-offset. */
@@ -235,8 +291,10 @@
     justify-content: center;
     line-height: 1;
   }
-  .link.avoid:hover {
-    filter: none;
+  @media (hover: hover) and (pointer: fine) {
+    .link.avoid:hover {
+      filter: none;
+    }
   }
   .link img {
     width: 28px;
@@ -253,6 +311,31 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+  /* Lien SANS logo : pastille symbole + nom (audit d'interface du
+     2026-10-07, item #8). Le symbole seul ne disait que la nature du lien
+     (🛒, ▶️) : deux librairies sans logo affichaient deux caddies identiques.
+     Même hauteur que les pastilles rondes, pour garder une rangée alignée ;
+     le nom est borné et tronqué, l'info-bulle et le nom accessible le
+     portent en entier. */
+  .link.link--libelle {
+    width: auto;
+    max-width: 100%;
+    border-radius: 999px;
+    gap: 0.35rem;
+    padding: 0 0.85em 0 0.65em;
+  }
+  .link--libelle .link-symbol {
+    font-size: 1.15rem;
+  }
+  .link-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 11em;
   }
   /* Repli TEXTE : n'apparaît QUE si une favicon a échoué au chargement (le
      span `.link-text` caché est révélé par la délégation `error` de
@@ -274,6 +357,25 @@
      dernières icônes de liens, jamais une ligne à lui seul. */
   .report-link {
     margin-left: auto;
+    /* Une cible de 44 × 44 px autour d'un pictogramme de 13 px.
+
+       Le ⚠ est le SEUL accès au signalement, et il mesurait 13 × 24 px —
+       sous le minimum de 24 px exigé par WCAG 2.5.8, loin des 44 px qu'un
+       pouce atteint sans viser (audit d'interface du 2026-10-07). Le glyphe
+       garde sa taille, discret comme voulu : seule la zone sensible grandit.
+
+       La zone est un PSEUDO-ÉLÉMENT, pas une `min-width` sur le lien. Avec
+       44 px de large, le lien occupait 30 px de la rangée au lieu de 13 : sur
+       une carte à quatre icônes, il passait seul à la ligne, et l'égalisation
+       par rangée étirait alors toutes les cartes voisines (vu à la fusion des
+       lots de l'audit). Le pseudo-élément agrandit la cible sans rien
+       réserver dans la mise en page. Il déborde surtout vers la DROITE, dans
+       le rembourrage de la carte, pour empiéter le moins possible sur la
+       dernière icône de lien. */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: var(--muted);
     text-decoration: none;
     /* PAS d'`opacity` ici. Elle valait 0.7 et ramenait le contraste à 3,76:1,
@@ -282,9 +384,30 @@
        d'épisode). Discrétion et lisibilité se règlent par la COULEUR, pas par
        la transparence — `--muted` est déjà en retrait de la couleur du texte. */
   }
-  .report-link:hover,
-  .report-link:focus-visible {
+  /* 13 + 13 + 18 = 44 px de large ; 24 + 2 × 10 = 44 px de haut.
+     18 px à droite et pas plus : la carte a `content-visibility: auto`, qui
+     ROGNE au bord de la carte tout ce qui en dépasse — y compris la zone
+     sensible. Le rembourrage droit de la carte (1.15rem) en laisse 18. */
+  .report-link::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -13px;
+    right: -18px;
+  }
+  /* Survol réservé à la souris, comme le reste des cartes (lot B de l'audit) :
+     au doigt, la teinte accent resterait collée après le toucher. */
+  @media (hover: hover) and (pointer: fine) {
+    .report-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+  .report-link:focus-visible,
+  .report-link:active {
     color: var(--accent);
-    opacity: 1;
+  }
+  .report-link:focus-visible {
     text-decoration: underline;
   }

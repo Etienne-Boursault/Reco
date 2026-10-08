@@ -3,7 +3,8 @@
  * WorkCard — vignette compacte pour les œuvres similaires (même créateur).
  * Renvoie vers la page canonique `/<source>/oeuvre/<itemId>`.
  */
-import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
+import { TYPE_LABELS } from '../utils/recoTypes';
+import { iconeDuType } from '../utils/iconesTypes';
 import type { ItemLike } from '../lib/work/aggregator';
 import CreatorFlag from './CreatorFlag.astro';
 
@@ -15,7 +16,7 @@ const { sourceId, item } = Astro.props;
 
 const types = item.types ?? [];
 const typeEmojis = types.map((tp) => ({
-  emoji: TYPE_EMOJIS[tp] ?? '✨',
+  icone: iconeDuType(tp),
   label: TYPE_LABELS[tp] ?? tp,
 }));
 const typeTitle = typeEmojis.map((te) => te.label).join(', ');
@@ -25,7 +26,7 @@ const typeTitle = typeEmojis.map((te) => te.label).join(', ');
   <span class="wcard-type" aria-label={typeTitle}>
     {typeEmojis.map((tp) => (
       <span class="wcard-emoji" role="img" title={tp.label}>
-        <span aria-hidden="true">{tp.emoji}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={tp.icone} /></svg>
         <span class="visually-hidden">{tp.label}</span>
       </span>
     ))}
@@ -55,15 +56,26 @@ const typeTitle = typeEmojis.map((te) => te.label).join(', ');
     text-decoration: none;
     transition: border-color 0.16s ease, transform 0.16s ease;
   }
-  .wcard:hover {
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .wcard:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+  }
+  .wcard:active {
+    transform: scale(0.98);
     border-color: var(--accent);
-    transform: translateY(-2px);
+    transition-duration: 0.08s;
   }
   .wcard-type {
     display: inline-flex;
     gap: 0.2rem;
-    font-size: 1.1rem;
     line-height: 1;
+    /* Icônes au trait dans l'accent, comme l'onglet « Par type » et les
+       galeries (audit d'interface du 2026-10-07, second passage). */
+    color: var(--accent);
   }
   .wcard-body {
     flex: 1;
@@ -71,8 +83,18 @@ const typeTitle = typeEmojis.map((te) => te.label).join(', ');
     flex-direction: column;
     min-width: 0;
   }
+  /* Titre en Bebas Neue capitales, comme sur les cartes de reco et de
+     galerie : une œuvre garde le même visage partout (audit d'interface du
+     2026-10-07). La police condensée laisse en prime passer plus de lettres
+     avant les points de suspension de cette ligne unique. */
   .wcard-title {
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    /* Assez haut pour l'accent des capitales (É, À) : la ligne coupe ce
+       qui dépasse, pour ses points de suspension. */
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

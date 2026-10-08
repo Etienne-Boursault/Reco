@@ -63,7 +63,8 @@ d('Galleries — fichiers générés au build', () => {
     // Le slug vient de slugify('Adrien Ménielle') = 'adrien-menielle'.
     const html = loadIfBuilt(`${SOURCE}/invite/adrien-menielle/index.html`);
     expect(html).not.toBeNull();
-    expect(html).toMatch(/<h1[^>]*>Recommandations de Adrien Ménielle<\/h1>/);
+    // Direction B (2026-10-07) : le titre est le nom seul.
+    expect(html).toMatch(/<h1[^>]*>Adrien Ménielle<\/h1>/);
     expect(html).toContain('"@type":"BreadcrumbList"');
   });
 

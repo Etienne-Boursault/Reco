@@ -11,11 +11,11 @@ import { describe, it, expect } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import MentionsTimeline from '../../src/components/MentionsTimeline.astro';
 
-async function render(mentions: unknown[]): Promise<string> {
+async function render(mentions: unknown[], creator?: string): Promise<string> {
   const container = await AstroContainer.create();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return container.renderToString(MentionsTimeline as any, {
-    props: { sourceId: 'ubm', mentions },
+    props: { sourceId: 'ubm', mentions, creator },
   });
 }
 
@@ -122,6 +122,21 @@ describe('MentionsTimeline — nature de la mention', () => {
     expect(html).toContain('Évoquée par Navo');
   });
 
+  it('œuvre d’invité présentée par son auteur → « Présentée par » (audit #9)', async () => {
+    const html = await render([jm({ guestWork: true, recommendedBy: 'Babor' })], 'Babor');
+    expect(html).toContain('Présentée par Babor');
+    expect(html).not.toContain('Recommandée par');
+  });
+
+  it('œuvre d’invité vantée par quelqu’un d’autre → « Recommandée par » (Pulsions)', async () => {
+    const html = await render(
+      [jm({ guestWork: true, recommendedBy: 'Kheiron' })],
+      'Kyan Khojandi, Navo',
+    );
+    expect(html).toContain('Recommandée par Kheiron');
+    expect(html).not.toContain('Présentée par');
+  });
+
   it('sans recommendedBy → aucune ligne « par … »', async () => {
     const html = await render([jm()]);
     expect(html).not.toContain('tl-by');
@@ -156,7 +171,7 @@ describe('MentionsTimeline — lien YouTube horodaté', () => {
     expect(html).not.toContain('tl-ts');
   });
 
-  it('URL YouTube + timestamp YouTube → lien profond avec offset', async () => {
+  it('URL YouTube + timestamp YouTube → l’extrait SEUL, sans second lien (audit #18)', async () => {
     const html = await render([
       jm(
         {
@@ -170,9 +185,31 @@ describe('MentionsTimeline — lien YouTube horodaté', () => {
         episode({ youtubeUrl: 'https://www.youtube.com/watch?v=abc12345678' }),
       ),
     ]);
-    expect(html).toContain('t=133s');
-    expect(html).toContain('00:02:13');
+    // Une seule commande pour un instant donné : l'extrait joué sur place.
+    // Le lien « ▶ 00:02:13 » vers YouTube faisait doublon, dans un autre format.
+    expect(html).toContain('Écouter à 2m13s');
+    expect(html).not.toContain('tl-ts');
+    expect(html).not.toContain('00:02:13');
+  });
+
+  it('transcript Acast → lien vers l’épisode SANS minutage (pas d’offset YT/Acast)', async () => {
+    const html = await render([
+      jm(
+        {
+          sourceRef: {
+            sourceId: 'ubm',
+            episodeGuid: 'ep-1',
+            timestamp: '00:14:29',
+            transcriptSource: 'acast',
+          },
+        },
+        episode({ youtubeUrl: 'https://www.youtube.com/watch?v=abc12345678' }),
+      ),
+    ]);
+    expect(html).toContain('tl-ts');
     expect(html).toContain('data-track="click"');
+    expect(html).not.toMatch(/[?&]t=\d+s/);
+    expect(html).not.toContain('00:14:29');
   });
 
   it('URL YouTube sans timestamp → lien nu et libellé de repli « YouTube »', async () => {
@@ -299,8 +336,11 @@ describe('MentionsTimeline — extrait audio inline', () => {
       ),
     ]);
     expect(html).not.toContain('tl-audio');
-    // Le lien horodaté reste rendu, avec le texte brut du timestamp.
-    expect(html).toContain('plus tard dans l’épisode');
+    // Le lien vers l'épisode reste rendu, sous son libellé unique : un
+    // minutage n'est plus écrit que par l'extrait (audit d'interface #18).
+    expect(html).toContain('tl-ts');
+    expect(html).toContain('YouTube');
+    expect(html).not.toContain('plus tard dans l’épisode');
   });
 
   it('mention orpheline horodatée → aucun extrait (pas d’épisode, donc pas d’URL)', async () => {

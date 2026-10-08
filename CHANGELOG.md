@@ -6,12 +6,23 @@ Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ce p
 ## [Non publié]
 
 ### Ajouté
+- Refonte de l'interface du 2026-10-07 ([rapport](docs/interface-rapport-2026-10-07.md)) : fiche œuvre « La récurrence » (chiffres, frise des mentions, « Qui en parle », « Où la trouver »), page invité « Bibliothèque », page épisode en chapitres d'écoute, statistiques en constats, onglet « Par type » et lien « Statistiques » dans le pied de page.
+- Carte de partage « Étiquette » pour l'accueil, les galeries, les épisodes et **chaque** œuvre (1 202 PNG) ; cache persistant `.cache/og` à clé sur le rendu (ADR 0050).
+- Le titre d'une carte de reco mène à la fiche de son œuvre ; les invités d'un épisode mènent à leur page.
+- ADRs 0050 (cartes de partage et cache), 0051 (conventions d'interface).
 - Phase 4 « Méta-agrégateur » (sem 11-13 roadmap) : méta-site `/meta/*` (ADR 0045) + endpoint `.well-known/reco-registry.json`, tracking clics sortants privacy-first (ADR 0046), stats publiques globales (ADR 0047) avec sidecar `stats.json` et JSON-LD Dataset.
 - ADRs 0045, 0046, 0047 + extension 0028 (frontière fork-vs-méta).
 - Helper `src/lib/stats/page.ts::loadStatsForPage` (DRY pages stats).
 - SSRF guard `tools/meta/url_safety.py` (whitelist HTTPS + bloque IPs privées/link-local).
 - Phase 3 « Kit déployable » (sem 8-10 roadmap) : Docker compose, wizard CLI `reco init`, README + tutoriels, LICENSE MIT + CITATION + CI publique, page À propos + manifeste éthique, poll RSS hebdo + notification webhook Discord/Slack/Email.
 - ADRs 0037 (Docker), 0038 (Wizard), 0039 (License), 0040 (Manifeste), 0041 (Doc strategy), 0042 (Cron RSS).
+
+### Modifié
+- Appui (`:active`) sur tout élément interactif, survols réservés à la souris, cibles de 44 px (signalement, retours, pied de page, chronologie) ; les liens de retour passent au-dessus des grands titres.
+- Grands chiffres et icônes de type dans la couleur d'accent partout ; icônes au trait à la place des emojis, cartes de reco comprises.
+- « Présentée par » réservé aux créateurs de l'œuvre ; sinon « Reco de » / « Recommandée par ».
+- Cartes égalisées par rangée et non plus sur tout le catalogue ; deux colonnes sur téléphone à l'accueil ; galeries en une ligne par œuvre sur téléphone.
+- Données : minutages de l'épisode #10, invités de la saison 6, créateurs de La Flamme et de Bloqués, mentions doublons écartées.
 
 ### Sécurité
 - Phase 4 V2 — 111 issues corrigées (11 CRITICAL, 22 HIGH, 40 MEDIUM, 28 LOW, 20 NIT) : SSRF `build_meta` fix, leak chemin serveur 500, fuite IP DuckDuckGo retirée, `_meta/` renommé `meta/` (Astro exclut préfixe `_`), validation Zod registry avant émission, HMAC IP+salt rate-limiter, cap POST body 8 KiB, normalisation slug FS lowercase, JSON-LD `PodcastSeries`.

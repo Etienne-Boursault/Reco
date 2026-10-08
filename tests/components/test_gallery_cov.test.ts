@@ -9,6 +9,7 @@
 import { describe, it, expect } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import GalleryCard from '../../src/components/GalleryCard.astro';
+import { ICONE_TYPE } from '../../src/utils/iconesTypes';
 import GalleryGrid from '../../src/components/GalleryGrid.astro';
 import EmptyState from '../../src/components/EmptyState.astro';
 
@@ -67,27 +68,60 @@ describe('GalleryCard — variante cliquable (<a>, X2)', () => {
 });
 
 describe('GalleryCard — type primaire', () => {
-  it('prend le premier type et son emoji', async () => {
+  // Icône au trait du type (second audit d'interface du 2026-10-07), plus
+  // d'emoji : la carte reprend le visage de l'onglet « Par type ».
+  it('prend le premier type et son icône', async () => {
     const html = await render(GalleryCard, { ...BASE, types: ['livre', 'film'] });
-    expect(html).toContain('📖');
+    expect(html).toContain(`d="${ICONE_TYPE.livre}"`);
     expect(html).toContain('>Livre</p>');
+  });
+
+  // Kaamelott, série ET film, s'affichait « SÉRIE » dans « Tous les films »
+  // (audit d'interface du 2026-10-07, item #19).
+  it('dans une galerie typée, prend le type de la galerie', async () => {
+    const html = await render(GalleryCard, {
+      ...BASE,
+      types: ['serie', 'film'],
+      galleryTypes: ['film'],
+    });
+    expect(html).toContain('>Film</p>');
+    expect(html).not.toContain('>Série</p>');
+  });
+
+  it('type de galerie absent de l’œuvre → règle par défaut', async () => {
+    const html = await render(GalleryCard, {
+      ...BASE,
+      types: ['livre', 'film'],
+      galleryTypes: ['serie'],
+    });
+    expect(html).toContain('>Livre</p>');
+  });
+
+  it('la grille transmet ses types aux cartes', async () => {
+    const html = await render(GalleryGrid, {
+      heading: 'Films',
+      countLabel: 'films',
+      galleryTypes: ['film'],
+      entries: [{ ...BASE, types: ['serie', 'film'], creator: null }],
+    });
+    expect(html).toContain('>Film</p>');
   });
 
   it('liste de types vide → repli sur « autre »', async () => {
     const html = await render(GalleryCard, { ...BASE, types: [] });
-    expect(html).toContain('✨');
+    expect(html).toContain(`d="${ICONE_TYPE.autre}"`);
     expect(html).toContain('>Autre</p>');
   });
 
-  it('type inconnu → emoji et libellé de repli « autre »', async () => {
+  it('type inconnu → icône et libellé de repli « autre »', async () => {
     const html = await render(GalleryCard, { ...BASE, types: ['zarbi'] });
-    expect(html).toContain('✨');
+    expect(html).toContain(`d="${ICONE_TYPE.autre}"`);
     expect(html).toContain('>Autre</p>');
   });
 
-  it('l’emoji est décoratif, le type est préfixé par du texte réel', async () => {
+  it('l’icône est décorative, le type est préfixé par du texte réel', async () => {
     const html = await render(GalleryCard, BASE);
-    expect(html).toMatch(/<div class="gcard-icon" aria-hidden="true"[^>]*>🎬<\/div>/);
+    expect(html).toMatch(/<div class="gcard-icon"[^>]*><svg[^>]*aria-hidden="true"/);
     // `aria-label` sur un `<p>` est SANS EFFET : ARIA ne l'autorise que sur les
     // éléments porteurs d'un rôle. Le préfixe doit donc exister dans le DOM.
     expect(html).not.toContain('aria-label="Type : Film"');

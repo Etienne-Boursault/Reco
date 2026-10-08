@@ -1,0 +1,286 @@
+---
+/**
+ * StatsRecit — le haut de la page /stats : « un constat par écran ».
+ *
+ * Maquette retenue après l'audit d'interface du 2026-10-07 (direction A du
+ * canevas « Statistiques en récit ») : chaque constat a son grand chiffre,
+ * une phrase et un graphique à l'échelle. Les chiffres viennent de
+ * `lib/stats/constats.ts`, les phrases de `lib/stats/recit.ts` — rien n'est
+ * écrit en dur ici.
+ *
+ * Le composant charge lui-même ses collections : la page globale et la page
+ * d'une source n'ont qu'à le poser, avec ou sans `sourceId`.
+ *
+ * Graphiques : des barres HTML, pas de bibliothèque. Leur longueur est
+ * proportionnelle à la valeur (la plus grande remplit la piste) ; la valeur
+ * exacte est écrite à côté. Les barres sont décoratives pour les lecteurs
+ * d'écran, qui lisent la liste « libellé : valeur ».
+ */
+import { getCollection } from 'astro:content';
+import { calculerConstats } from '../lib/stats/constats';
+import { rediger, type BarreRecit } from '../lib/stats/recit';
+
+interface Props {
+  /** Restreint le récit à une source ; absent = tout le corpus. */
+  sourceId?: string;
+}
+const { sourceId } = Astro.props;
+
+const sources = await getCollection('sources');
+const corpus = {
+  sources: sources.map((s) => ({ id: s.id, title: s.data.title, hosts: s.data.hosts ?? [] })),
+  recos: (await getCollection('recos')).map((r) => ({
+    id: r.data.id,
+    sourceId: r.data.sourceId.id,
+    episodeGuid: r.data.episodeGuid,
+    status: r.data.status,
+    kind: r.data.kind ?? null,
+    recommendedBy: r.data.recommendedBy ?? null,
+  })),
+  mentions: (await getCollection('mentions')).map((m) => ({
+    itemId: m.data.itemId,
+    status: m.data.status,
+    sourceRef: { sourceId: m.data.sourceRef.sourceId, episodeGuid: m.data.sourceRef.episodeGuid ?? null },
+  })),
+  items: (await getCollection('items')).map((i) => ({
+    id: i.data.id, title: i.data.title, types: i.data.types, creator: i.data.creator ?? null,
+  })),
+  episodes: (await getCollection('episodes')).map((e) => ({
+    guid: e.data.guid,
+    sourceId: e.data.sourceId.id,
+    title: e.data.title,
+    date: e.data.date ?? null,
+    season: e.data.season ?? null,
+    number: e.data.number ?? null,
+  })),
+};
+const podcasts = new Map(sources.map((s) => [s.id, s.data.title]));
+const recit = rediger(calculerConstats(corpus, sourceId), podcasts);
+
+/**
+ * Largeur de chaque barre, en % de la plus grande du graphique, et la barre
+ * mise en accent : celle que le constat désigne, la première à défaut.
+ */
+function pistes(barres: BarreRecit[]) {
+  const max = Math.max(...barres.map((b) => b.valeur), 0);
+  const designee = barres.some((b) => b.enAvant);
+  return barres.map((b, i) => ({
+    ...b,
+    pct: max > 0 ? (b.valeur / max) * 100 : 0,
+    accent: designee ? b.enAvant === true : i === 0,
+  }));
+}
+---
+
+<header class="recit-tete wrap">
+  {recit.surtitre && <p class="recit-surtitre">{recit.surtitre}</p>}
+  <h1 class="recit-titre">{recit.titre}</h1>
+  <p class="recit-chapeau">{recit.chapeau}</p>
+</header>
+
+{recit.constats.map((c) => (
+  <section class="constat wrap" aria-labelledby={`constat-${c.id}`}>
+    <div class="constat-texte">
+      <h2 id={`constat-${c.id}`}>
+        <span class="constat-chiffre">{c.chiffre}</span>
+        <span class="constat-legende">{c.legende}</span>
+      </h2>
+      <p class="constat-phrase">{c.phrase}</p>
+    </div>
+    <figure class="constat-graphique">
+      <figcaption>{c.graphique.titre}</figcaption>
+      {c.id === 'une-fois' ? (
+        /* Deux parts d'un même tout : une barre partagée se lit mieux que
+           deux barres côte à côte. */
+        <>
+          <div class="partage" aria-hidden="true">
+            {c.graphique.barres.map((b) => <span style={`flex: ${b.valeur} 1 0`}></span>)}
+          </div>
+          <ul class="partage-legende">
+            {c.graphique.barres.map((b) => <li><strong>{b.affiche}</strong> {b.label.toLocaleLowerCase('fr')}</li>)}
+          </ul>
+        </>
+      ) : (
+        <ol class:list={['barres', { 'barres--empilees': c.graphique.libellesLongs }]}>
+          {pistes(c.graphique.barres).map((b) => (
+            <li class:list={{ 'barre--accent': b.accent }}>
+              <span class="barre-label">{b.label}</span>
+              <span class="barre-piste" aria-hidden="true"><span style={`width: ${b.pct.toFixed(1)}%`}></span></span>
+              <span class="barre-valeur"><span class="visually-hidden"> : </span>{b.affiche}</span>
+              {b.detail && <span class="barre-detail">{b.detail}</span>}
+            </li>
+          ))}
+        </ol>
+      )}
+      {c.graphique.note && <p class="constat-note">{c.graphique.note}</p>}
+    </figure>
+  </section>
+))}
+
+<style>
+  .recit-tete {
+    padding: clamp(2.5rem, 7vw, 4.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  .recit-surtitre {
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .recit-titre {
+    font-size: clamp(2.6rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    max-width: 14ch;
+  }
+  .recit-chapeau {
+    margin: 1.4rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    max-width: 58ch;
+  }
+
+  .constat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    align-items: center;
+    padding: clamp(3rem, 8vw, 6rem) 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  }
+  .constat h2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-transform: none;
+  }
+  .constat-chiffre {
+    font-family: var(--font-display);
+    /* 10 rem au plus : à 13,75 rem (220 px) le chiffre occupait presque tout
+       l'écran d'un portable (second audit d'interface du 2026-10-07). */
+    font-size: clamp(6.5rem, 14vw, 10rem);
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .constat-legende {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .constat-phrase {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    max-width: 46ch;
+  }
+
+  .constat-graphique {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-width: 0;
+  }
+  .constat-graphique figcaption {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .barres {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .barres li {
+    display: grid;
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto;
+    grid-template-areas: 'label piste valeur' '. detail .';
+    column-gap: 0.9rem;
+    align-items: center;
+  }
+  .barre-label {
+    grid-area: label;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .barre-piste {
+    grid-area: piste;
+    height: 0.85rem;
+    border-radius: 999px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .barre-piste > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--text) 75%, transparent);
+  }
+  /* La barre dont parle le constat porte l'accent. */
+  .barre--accent .barre-piste > span {
+    background: var(--accent);
+  }
+  .barre-valeur {
+    grid-area: valeur;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .barre-detail {
+    grid-area: detail;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .partage {
+    display: flex;
+    gap: 3px;
+    height: 3.5rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .partage > span:first-child { background: var(--accent); }
+  .partage > span + span { background: color-mix(in oklab, var(--text) 75%, transparent); }
+  .partage-legende {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+  .partage-legende li:first-child strong { color: var(--accent); }
+  .constat-note {
+    margin: 0.25rem 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* Libellé AU-DESSUS de sa barre : pour les titres d'épisodes partout, et
+     pour tous les graphiques sur téléphone — sinon les titres seraient
+     coupés à quelques lettres. */
+  .barres--empilees li {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'label valeur' 'piste piste' 'detail detail';
+    row-gap: 0.35rem;
+  }
+  @media (max-width: 560px) {
+    .barres li {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'label valeur' 'piste piste' 'detail detail';
+      row-gap: 0.35rem;
+    }
+  }
+</style>

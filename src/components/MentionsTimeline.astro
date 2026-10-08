@@ -12,6 +12,8 @@
 import type { JoinedMention } from '../lib/work/aggregator';
 import { youtubeDeepLink } from '../lib/work/aggregator';
 import { episodeLabel } from '../utils/recoTypes';
+import { titreEpisodeAffiche } from '../utils/titreEpisode';
+import { verbeMention } from '../utils/verbeMention';
 import { t } from '../i18n';
 import {
   extractYoutubeId,
@@ -23,8 +25,21 @@ import OutboundLink from './OutboundLink.astro';
 interface Props {
   sourceId: string;
   mentions: JoinedMention[];
+  /** Nom du podcast, pour retirer des titres le suffixe « (Un Bon Moment,
+   *  S6-E03) » qui répète le numéro affiché juste devant. */
+  podcastTitle?: string;
+  /** Créateur de l'œuvre : « Présentée par » n'est juste que pour lui
+   *  (cf. `utils/verbeMention.ts`). */
+  creator?: string | null;
 }
-const { sourceId, mentions } = Astro.props;
+const { sourceId, mentions, podcastTitle, creator } = Astro.props;
+
+/** Le verbe de la ligne, dans le libellé propre à la chronologie. */
+const CLE_DU_VERBE = {
+  'Évoquée par': 'work.mentions.byCitation',
+  'Présentée par': 'work.mentions.byGuestWork',
+  'Reco de': 'work.mentions.byReco',
+} as const;
 
 function fmtDate(d?: Date): string {
   if (!d || !(d instanceof Date) || Number.isNaN(d.getTime())) return '';
@@ -57,13 +72,24 @@ function fmtDate(d?: Date): string {
       m.sourceRef.transcriptSource === 'youtube'
         ? parseTimecode(m.sourceRef.timestamp ?? null) ?? 0
         : 0;
+    // UNE seule commande pour un instant donné (audit d'interface du
+    // 2026-10-07, item #18). La fiche en offrait deux, l'une sous l'autre et
+    // dans deux formats : « ▶ 00:42:20 », lien vers YouTube, et « Écouter à
+    // 42m20s », l'extrait joué sur place. Quand l'extrait existe, il est seul.
+    const extraitDisponible = Boolean(ytId) && startSeconds > 0;
+    // Sinon, le lien vers l'épisode reste — mais SANS minutage. Il n'en porte
+    // un vrai que dans le cas où l'extrait existe déjà ; ailleurs, il affichait
+    // l'horodatage d'une transcription Acast à côté d'un lien YouTube qui ne
+    // s'y cale pas, ce que la politique des transcripts interdit (jamais
+    // d'offset entre les deux).
+    const lienSeul = ytLink && !extraitDisponible;
     return (
       <li class:list={['tl-item', { 'tl-citation': isCitation }]}>
         <div class="tl-head">
           {ep ? (
             <a class="tl-ep" href={`/${sourceId}/episode/${ep.guid}`}>
               {episodeLabel(ep) && <span class="tl-epnum">{episodeLabel(ep)}</span>}
-              <span class="tl-eptitle">{ep.youtubeTitle ?? ep.title}</span>
+              <span class="tl-eptitle">{titreEpisodeAffiche(ep.youtubeTitle ?? ep.title, podcastTitle)}</span>
             </a>
           ) : (
             <span class="tl-eptitle tl-eptitle-orphan">{t('work.mentions.unknownEpisode')}</span>
@@ -85,10 +111,10 @@ function fmtDate(d?: Date): string {
           )}
           {m.recommendedBy && (
             <span class="tl-by">
-              {isCitation ? t('work.mentions.byCitation') : t('work.mentions.byReco')} {m.recommendedBy}
+              {t(CLE_DU_VERBE[verbeMention({ ...m, creator })])} {m.recommendedBy}
             </span>
           )}
-          {ytLink && (
+          {lienSeul && (
             <OutboundLink
               class="tl-ts"
               href={ytLink}
@@ -98,14 +124,14 @@ function fmtDate(d?: Date): string {
               ariaLabel={`${t('work.mentions.youtubeA11y')} ${t('a11y.externalLinkSuffix')}`}
             >
               <span aria-hidden="true">▶</span>
-              {m.sourceRef.timestamp ?? t('work.mentions.youtubeFallback')}
+              {t('work.mentions.youtubeFallback')}
             </OutboundLink>
           )}
         </div>
 
         {m.quote && <blockquote class="tl-quote">« {m.quote} »</blockquote>}
 
-        {ytId && startSeconds > 0 && (
+        {extraitDisponible && (
           <div class="tl-audio">
             <AudioExcerpt
               youtubeId={ytId}
@@ -201,16 +227,25 @@ function fmtDate(d?: Date): string {
     padding: 0.05em 0.5em;
     font-size: 0.78rem;
   }
-  .tl-ts {
+  /* `:global` : ce lien est rendu par `OutboundLink`, et Astro limite les
+     styles d'un composant aux éléments qu'il écrit lui-même. La règle
+     `.tl-ts` ne l'atteignait pas : la hauteur de 44 px déclarée au premier
+     audit n'avait jamais pris, le lien mesurait toujours 22 px (second audit
+     d'interface du 2026-10-07). Ancrée sous `.timeline`, elle ne déborde pas
+     du composant. */
+  .timeline :global(.tl-ts) {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
+    min-height: 44px;
     color: var(--accent);
     text-decoration: none;
     font-variant-numeric: tabular-nums;
   }
-  .tl-ts:hover {
-    text-decoration: underline;
+  @media (hover: hover) and (pointer: fine) {
+    .timeline :global(.tl-ts:hover) {
+      text-decoration: underline;
+    }
   }
   .tl-audio {
     margin-top: 0.6rem;

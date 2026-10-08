@@ -33,6 +33,7 @@ export const GET: APIRoute = async () => {
       sourceId: e.data.sourceId.id,
       guests: e.data.guests,
       number: e.data.number ?? null,
+      season: e.data.season ?? null,
     })),
     items: items.map((it) => ({
       id: it.data.id,

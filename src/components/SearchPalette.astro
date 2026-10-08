@@ -10,10 +10,30 @@
  *
  * CSP-friendly : le script est externalisé par Astro (pas d'inline).
  * Cf. ADR 0035.
+ *
+ * Prop `part` — DÉCLENCHEUR ET DIALOGUE SE RENDENT SÉPARÉMENT.
+ * Le bouton était rendu à la suite du pied de page, sans position : il
+ * finissait collé au bord gauche, sous le footer — à 27 000 px du haut de
+ * l'accueil mobile. C'était pourtant le seul accès à la recherche au doigt
+ * ou à la souris (audit d'interface du 2026-10-07). Le Layout place
+ * désormais le déclencheur dans la barre du haut (`part="trigger"`) et le
+ * dialogue en fin de document (`part="dialog"`) : un dialogue modal n'a rien
+ * à faire à l'intérieur d'un repère de navigation. Sans `part`, les deux sont
+ * rendus côte à côte, comme avant. Astro n'embarque le script qu'une fois par
+ * page, quel que soit le nombre d'instances.
  */
 import { t } from '../i18n';
+import { RACCOURCI_PAR_DEFAUT } from '../utils/raccourciRecherche';
+
+interface Props {
+  part?: 'trigger' | 'dialog' | 'all';
+}
+const { part = 'all' } = Astro.props;
+const rendreDeclencheur = part !== 'dialog';
+const rendreDialogue = part !== 'trigger';
 ---
 
+{rendreDeclencheur && (
 <button
   type="button"
   class="palette-trigger"
@@ -23,10 +43,14 @@ import { t } from '../i18n';
 >
   <span aria-hidden="true">⌕</span>
   <span class="palette-trigger-label">{t('search.title')}</span>
-  <kbd class="palette-trigger-kbd" aria-hidden="true">⌘ K</kbd>
+  {/* « Ctrl K » au rendu serveur, corrigé en « ⌘ K » côté client sur un
+     appareil Apple — cf. `utils/raccourciRecherche.ts`. */}
+  <kbd class="palette-trigger-kbd" aria-hidden="true" data-search-palette-kbd>{RACCOURCI_PAR_DEFAUT}</kbd>
   <span class="visually-hidden">{t('search.paletteOpen')}</span>
 </button>
+)}
 
+{rendreDialogue && (
 <div
   id="search-palette-dialog"
   class="palette-backdrop"
@@ -67,9 +91,11 @@ import { t } from '../i18n';
     ></output>
   </div>
 </div>
+)}
 
 <script>
   import { createSearchIndex, searchGrouped, type GroupedHits, type PaletteHit } from '../lib/search/client';
+  import { libelleRaccourci } from '../utils/raccourciRecherche';
   import type { SearchIndexFile } from '../lib/search/types';
   import type MiniSearch from 'minisearch';
   import type { SearchDoc } from '../lib/search/types';
@@ -110,6 +136,11 @@ import { t } from '../i18n';
   const results = document.querySelector<HTMLElement>('[data-search-palette-results]');
   const closeBtn = document.querySelector<HTMLElement>('[data-search-palette-close]');
   const shell = document.querySelector<HTMLElement>('[data-search-palette-shell]');
+
+  // Le raccourci affiché est celui qui marche sur CETTE machine : ⌘ n'existe
+  // pas hors Apple, où la palette écoute Ctrl+K.
+  const kbd = document.querySelector<HTMLElement>('[data-search-palette-kbd]');
+  if (kbd) kbd.textContent = libelleRaccourci(navigator);
 
   if (!dialog || !input || !results || !trigger) {
     // Composant pas monté correctement — on n'attache rien.
@@ -366,12 +397,26 @@ import { t } from '../i18n';
     border: 1px solid color-mix(in oklab, var(--text) 22%, transparent);
     border-radius: 999px;
     font-size: 0.9rem;
+    /* Cible tactile pleine : c'est désormais le point d'entrée principal de
+       la recherche, en haut de chaque page. */
+    min-height: 44px;
     cursor: pointer;
     font-family: inherit;
   }
-  .palette-trigger:hover,
+  /* Même convention que le reste du site (audit d'interface du 2026-10-07) :
+     le survol est réservé aux vrais pointeurs — au doigt, la bordure accent
+     restait collée après le toucher —, et l'appui répond tout de suite. */
   .palette-trigger:focus-visible {
     border-color: var(--accent);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .palette-trigger:hover {
+      border-color: var(--accent);
+    }
+  }
+  .palette-trigger:active {
+    border-color: var(--accent);
+    transform: scale(0.97);
   }
   .palette-trigger-kbd {
     font-family: ui-monospace, SFMono-Regular, monospace;
@@ -381,6 +426,19 @@ import { t } from '../i18n';
     border: 1px solid color-mix(in oklab, var(--text) 22%, transparent);
     border-radius: 6px;
     padding: 0.05rem 0.35rem;
+  }
+
+  /* Écran SEULEMENT tactile : pas de clavier physique, donc ni raccourci à
+     annoncer sur le bouton, ni « Échap · ↑↓ · Entrée » à expliquer dans la
+     palette — des touches qui n'existent pas sur un téléphone (audit
+     d'interface du 2026-10-07). Les DEUX conditions : un portable à écran
+     tactile garde un pointeur fin et un clavier, il doit garder l'aide.
+     L'indice reste dans le DOM : `aria-describedby` le lit même masqué. */
+  @media (hover: none) and (pointer: coarse) {
+    .palette-trigger-kbd,
+    .palette-hint {
+      display: none;
+    }
   }
 
   .palette-backdrop[hidden] { display: none; }
@@ -394,6 +452,16 @@ import { t } from '../i18n';
     align-items: flex-start;
     justify-content: center;
     padding: 8vh 1rem 1rem;
+  }
+  /* Transparence réduite demandée par le système : le flou et le fond
+     translucide gênent la lecture de certaines personnes. Fond presque
+     opaque, aucun flou — la palette reste au premier plan sans rien laisser
+     deviner derrière elle (audit d'interface du 2026-10-07). */
+  @media (prefers-reduced-transparency: reduce) {
+    .palette-backdrop {
+      background: color-mix(in oklab, var(--bg) 94%, transparent);
+      backdrop-filter: none;
+    }
   }
   .palette-shell {
     width: min(640px, 100%);
@@ -409,6 +477,12 @@ import { t } from '../i18n';
     align-items: center;
     border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   }
+  /* Indicateur de focus du champ (cf. `.palette-input:focus-visible`) : un
+     trait d'accent de 2 px sous la barre, contraste ≥ 3:1 sur --surface
+     comme l'exige WCAG 1.4.11 pour un indicateur non textuel. */
+  .palette-form:focus-within {
+    box-shadow: inset 0 -2px 0 var(--accent);
+  }
   .palette-input {
     flex: 1;
     /* Plus genereux que les 1rem d'origine : le champ est le point d'entree
@@ -420,6 +494,24 @@ import { t } from '../i18n';
     border: 0;
     outline: 0;
     font-family: inherit;
+  }
+  /* L'ENCADRÉ SOMBRE autour du champ, visible sur mobile, était le halo de la
+     règle globale `:where(...):focus-visible` (global.css) : `outline: 0`
+     ci-dessus retirait le contour, mais laissait passer son `box-shadow` de
+     4 px et son `border-radius` de 6 px — un cadre arrondi décalé dans une
+     barre à angles droits (audit d'interface du 2026-10-07).
+     Le contrat de global.css impose de RÉINTRODUIRE un indicateur quand on
+     écarte le sien : il est porté par le formulaire (`:focus-within`
+     plus bas), un trait d'accent sur toute la largeur de la barre. */
+  .palette-input:focus-visible {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  /* Le bouton natif « effacer » du champ ferait un second ✕ collé au bouton
+     de fermeture : deux croix voisines aux effets différents. Échap et le
+     bouton ✕ suffisent ; effacer se fait au clavier. */
+  .palette-input::-webkit-search-cancel-button {
+    display: none;
   }
   .palette-input::placeholder { color: var(--muted); }
   .palette-close {

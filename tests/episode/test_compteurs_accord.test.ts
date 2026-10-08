@@ -30,9 +30,9 @@ describe('compteurs d’épisode — le nombre vient du compte, jamais de la cl�
     ['episode.count.recommendations', 1, '1 recommandation'],
     ['episode.count.recommendations', 2, '2 recommandations'],
     ['episode.count.recommendations', 12, '12 recommandations'],
-    ['episode.count.citations', 0, '0 mention'],
-    ['episode.count.citations', 1, '1 mention'],
-    ['episode.count.citations', 3, '3 mentions'],
+    ['episode.count.citations', 0, '0 œuvre évoquée'],
+    ['episode.count.citations', 1, '1 œuvre évoquée'],
+    ['episode.count.citations', 3, '3 œuvres évoquées'],
   ])('%s à %i → « %s »', (base, n, attendu) => {
     expect(libelle(n, base)).toBe(attendu);
   });

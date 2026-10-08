@@ -27,9 +27,11 @@ export const fr = {
   'nav.nextEpisode': 'Épisode suivant',
   'nav.episodeNav': 'Navigation entre épisodes',
   'nav.tabsLabel': 'Vue du catalogue',
+  'nav.siteBar': 'Accès rapides',
 
   // Footer
   'footer.tagline': 'Projet ouvert et duplicable — une source = un podcast.',
+  'footer.stats': 'Statistiques',
   'footer.about': 'À propos',
   'footer.manifesto': 'Manifeste éthique',
   'footer.nav.label': 'Liens secondaires',
@@ -130,11 +132,25 @@ export const fr = {
     'Œuvre mentionnée dans l’épisode mais pas explicitement recommandée',
 
   // Page épisode — sections & ledes (M2). Apostrophes typographiques (N1).
+  // VOCABULAIRE UNIQUE (audit d'interface du 2026-10-07, item #6) :
+  //  - « mention »        = toute apparition d'une œuvre dans le podcast ;
+  //  - « recommandation » = mention `kind=reco`, œuvres d'invité·es comprises ;
+  //  - « œuvre évoquée »  = mention `kind=citation`, citée sans être conseillée.
+  // Recommandations + œuvres évoquées = mentions, sur chaque page. Avant, le
+  // même mot « mention » désignait tantôt le tout, tantôt les seules
+  // citations, et les nombres affichés ne s'additionnaient plus.
   'episode.section.recommendations': 'Recommandations',
+  // Quand l'épisode a aussi des œuvres d'invité·es : la section ne porte que
+  // les recos SPONTANÉES, et l'en-tête annonce le total des deux. Sans ce
+  // qualificatif, on lisait « 10 recommandations » puis « Recommandations
+  // (4) » juste en dessous.
+  'episode.section.recommendations.spontaneous': 'Recommandations spontanées',
   'episode.section.guestWorks': 'Leurs œuvres',
-  'episode.section.citations': 'Mentionné dans l’épisode',
+  'episode.section.citations': 'Évoqué dans l’épisode',
+  // « distinctes des recommandations » contredisait l'en-tête, qui les compte
+  // parmi elles (décision produit CR Story 4).
   'episode.lede.guestWorks':
-    'Œuvres présentées par les invité·es ou les hosts de l’épisode (spectacle, album, livre…) — distinctes des recommandations.',
+    'Œuvres que les invité·es ou les hosts présentent eux-mêmes (spectacle, album, livre…), comptées parmi les recommandations de l’épisode.',
   'episode.lede.citations':
     'Œuvres évoquées par l’équipe ou les invité·es mais pas explicitement recommandées.',
   // Compteur d'en-tête (L1/N2). `{count}` = spontanées + « leurs œuvres »
@@ -142,10 +158,10 @@ export const fr = {
   // « dont … » quand il y a des œuvres présentées, sinon rien.
   'episode.count.recommendations.one': '{count} recommandation',
   'episode.count.recommendations.many': '{count} recommandations',
-  'episode.count.guestWorks.one': 'dont 1 œuvre présentée dans l’épisode',
-  'episode.count.guestWorks.many': 'dont {count} œuvres présentées dans l’épisode',
-  'episode.count.citations.one': '{count} mention',
-  'episode.count.citations.many': '{count} mentions',
+  'episode.count.guestWorks.one': 'dont 1 de leurs œuvres',
+  'episode.count.guestWorks.many': 'dont {count} de leurs œuvres',
+  'episode.count.citations.one': '{count} œuvre évoquée',
+  'episode.count.citations.many': '{count} œuvres évoquées',
 
   // Œuvre (item #11, X2)
   'work.openA11y': 'Voir la page complète de l’œuvre',
@@ -157,8 +173,14 @@ export const fr = {
   'work.year.a11y': 'Année {year}',
   'work.stats.reco.one': 'Recommandée 1 fois',
   'work.stats.reco.many': 'Recommandée {count} fois',
-  'work.stats.mention.one': 'Mentionnée 1 fois',
-  'work.stats.mention.many': 'Mentionnée {count} fois',
+  // Œuvre seulement évoquée (0 reco) : « Évoquée », le verbe de la timeline.
+  'work.stats.mention.one': 'Évoquée 1 fois',
+  'work.stats.mention.many': 'Évoquée {count} fois',
+  // Suite de « Recommandée N fois » quand l'œuvre est AUSSI évoquée : les deux
+  // nombres s'additionnent en « N mentions dans le podcast », le titre de la
+  // chronologie juste en dessous.
+  'work.stats.evoked.one': 'évoquée 1 fois',
+  'work.stats.evoked.many': 'évoquée {count} fois',
   'work.description.reco.one': 'Recommandée 1 fois dans le podcast {source}.',
   'work.description.reco.many': 'Recommandée {count} fois dans le podcast {source}.',
   'work.description.mention.one': 'Mentionnée dans le podcast {source}.',
@@ -177,12 +199,19 @@ export const fr = {
   'work.mentions.unknownEpisode': 'Épisode inconnu',
   'work.mentions.byReco': 'Recommandée par',
   'work.mentions.byCitation': 'Évoquée par',
+  // Œuvre d'invité : présentée, pas recommandée (audit d'interface du
+  // 2026-10-07, item #9 — même verbe que la ligne méta des cartes).
+  'work.mentions.byGuestWork': 'Présentée par',
   'work.mentions.youtubeA11y': 'Ouvrir sur YouTube',
   'work.mentions.youtubeFallback': 'YouTube',
 
   // TrendingBadge
+  // La pastille affichait « 🔥 14× » : un troisième nombre, sans unité, à côté
+  // de « Recommandée 5 fois » et « 14 mentions ». Elle dit désormais ce qu'elle
+  // est ; le compte, celui de la fenêtre, passe dans l'info-bulle.
+  'work.trending.badge': 'Tendance',
   'work.trending.label':
-    'Mentionnée {count} fois au cours des {months} derniers mois',
+    '{count} mentions au cours des {months} derniers mois',
 
   // Reports — formulaire (item #16, X3)
   'report.form.context.prefix': 'Signalement concernant :',
@@ -223,6 +252,7 @@ export const fr = {
   // Reports — page formulaire (/[source]/report/[recoId])
   'report.page.metaTitle': 'Signaler — {title}',
   'report.page.back': '← retour au catalogue',
+  'report.page.backEpisode': '← retour à l’épisode',
   'report.page.title': 'Signaler un problème',
   'report.page.lede':
     'Tu as repéré une erreur, un lien cassé, ou tu veux nous suggérer une amélioration sur cette recommandation ? Merci !',
@@ -314,7 +344,10 @@ export const fr = {
   'stats.heading.monthly': 'Épisodes par mois',
   'stats.card.podcasts': 'podcasts indexés',
   'stats.card.episodes': 'épisodes',
-  'stats.card.recommendations': 'recommandations',
+  // Le total compte TOUTES les mentions publiques, œuvres évoquées comprises
+  // (`recommendationsCount` = mentions non écartées) : « recommandations »
+  // annonçait 1 260 là où l'accueil en dit 903 (audit du 2026-10-07, #6).
+  'stats.card.recommendations': 'mentions',
   'stats.card.uniqueWorks': 'œuvres uniques',
   'stats.card.uniqueGuests': 'invités uniques',
   'stats.empty.topGuests': 'Aucun invité à classer pour l’instant.',

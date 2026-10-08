@@ -8,6 +8,9 @@ Fonts
   The Inter WOFF/WOFF2 files redistributed under src/fonts/og/ are
   covered by the OFL 1.1. See src/fonts/og/LICENSE (or
   https://github.com/rsms/inter/blob/master/LICENSE.txt) for full terms.
+- Bebas Neue (https://github.com/dharmatype/Bebas-Neue) — SIL Open Font
+  License 1.1. The WOFF file redistributed under src/fonts/og/ is covered by
+  the OFL 1.1. See src/fonts/og/LICENSE-bebas-neue for full terms.
 
 JavaScript / Astro dependencies (see package.json for the full list)
 -------------------------------------------------------------------
@@ -15,7 +18,7 @@ JavaScript / Astro dependencies (see package.json for the full list)
 - minisearch (https://lucaong.github.io/minisearch/) — MIT
 - satori (https://github.com/vercel/satori) — MPL-2.0
 - @resvg/resvg-js — MPL-2.0
-- @fontsource/inter — MIT (font files OFL 1.1)
+- @fontsource/inter, @fontsource/bebas-neue — MIT (font files OFL 1.1)
 - vitest, @vitest/coverage-v8 — MIT
 
 Python dependencies (see tools/requirements.txt for the full list)

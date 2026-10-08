@@ -171,18 +171,29 @@ describe('/[source]/invite/[name] — rendu', () => {
     });
   }
 
-  it('titre « Recommandations de <invité> » et intro nommant la source', async () => {
+  it('le titre est le nom de la personne, suivi du résumé (direction B)', async () => {
     const html = await render('Bruno', 'bruno', {
       items: [item('w1', 'Parasite')],
       mentions: [mention('w1', 'Bruno')],
     });
 
-    expect(html).toMatch(/<h1[^>]*>Recommandations de Bruno<\/h1>/);
-    // `<strong>` autour des noms → on tolère l'espace laissé par le
-    // détagage (« Un Bon Moment . »).
-    expect(visibleText(html)).toContain(
-      'Toutes les œuvres recommandées par Bruno dans Un Bon Moment',
-    );
+    expect(html).toMatch(/<h1[^>]*>Bruno<\/h1>/);
+    expect(visibleText(html)).toContain('1 recommandation.');
+    expect(visibleText(html)).toContain('Ce que Bruno recommande');
+  });
+
+  it('les œuvres dont la personne est créatrice passent dans « Ses œuvres »', async () => {
+    const html = await render('Bruno', 'bruno', {
+      items: [
+        { data: { id: 'w1', title: 'Son Spectacle', types: ['spectacle'], creator: 'Bruno' } },
+        item('w2', 'Parasite'),
+      ],
+      mentions: [mention('w1', 'Bruno'), mention('w2', 'Bruno')],
+    });
+    const text = visibleText(html);
+
+    expect(text).toContain('Ses œuvres');
+    expect(text).toContain('1 recommandation, et 1 de ses œuvres présentée dans le podcast.');
   });
 
   it('ne garde que les œuvres recommandées par CET invité', async () => {
@@ -227,7 +238,7 @@ describe('/[source]/invite/[name] — rendu', () => {
     // En français, 0 prend le SINGULIER (cf. src/utils/plural.ts).
     expect(text).toContain('0 recommandation');
     expect(text).not.toContain('0 recommandations');
-    expect(text).toContain('Pas encore de recommandation pour cet invité.');
+    expect(text).toContain('Pas encore de recommandation de Bruno dans ce podcast.');
   });
 
   it('le fil d’Ariane pointe le slug de l’URL et nomme l’invité au 3ᵉ niveau', async () => {

@@ -40,8 +40,8 @@ describe('i18n FR — page épisode (M2/L1)', () => {
       '3 recommandations',
     );
     expect(t('episode.count.guestWorks.many', { count: 2 })).toBe(
-      'dont 2 œuvres présentées dans l’épisode',
+      'dont 2 de leurs œuvres',
     );
-    expect(t('episode.count.citations.many', { count: 4 })).toBe('4 mentions');
+    expect(t('episode.count.citations.many', { count: 4 })).toBe('4 œuvres évoquées');
   });
 });

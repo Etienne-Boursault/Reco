@@ -31,6 +31,7 @@ export interface EpisodeLike {
   sourceId: string;
   guests?: readonly string[];
   number?: number | null;
+  season?: number | null;
 }
 
 export interface ItemLike {
@@ -64,6 +65,20 @@ export function itemToDoc(item: ItemLike, sourceId: string): SearchDoc {
   };
 }
 
+/**
+ * Sous-titre d'un épisode dans la palette de recherche.
+ *
+ * « Épisode 3 » ne désignait aucun épisode : la numérotation repart à 1 à
+ * chaque saison, et le site entier écrit « S6·E3 » (audit d'interface du
+ * 2026-10-07, item #7). La palette n'a pas de badge à côté du titre : on
+ * écrit donc la saison en toutes lettres quand on la connaît.
+ */
+function sousTitreEpisode(ep: EpisodeLike): string | undefined {
+  if (ep.number == null) return undefined;
+  if (ep.season != null) return `Saison ${ep.season}, épisode ${ep.number}`;
+  return `Épisode ${ep.number}`;
+}
+
 /** Construit un doc `episode`. */
 export function episodeToDoc(ep: EpisodeLike): SearchDoc {
   const guests = ep.guests?.length ? ep.guests.join(' ') : undefined;
@@ -71,7 +86,7 @@ export function episodeToDoc(ep: EpisodeLike): SearchDoc {
     id: `episode:${ep.sourceId}:${ep.guid}`,
     kind: 'episode',
     title: ep.title,
-    subtitle: ep.number != null ? `Épisode ${ep.number}` : undefined,
+    subtitle: sousTitreEpisode(ep),
     text: guests,
     source: ep.sourceId,
     url: `/${ep.sourceId}/episode/${ep.guid}`,

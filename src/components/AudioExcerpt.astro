@@ -138,6 +138,10 @@ const buttonAria = tcA11y
   .audio-excerpt {
     display: flex;
     flex-direction: column;
+    /* Le bouton garde sa largeur naturelle. En colonne, `stretch` par défaut
+       l'étirait sur toute la largeur de la fiche œuvre : une pilule de
+       1 160 px pour « Écouter à 42m20s » (audit d'interface du 2026-10-07). */
+    align-items: flex-start;
     gap: 0.5rem;
     width: 100%;
   }
@@ -145,6 +149,9 @@ const buttonAria = tcA11y
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    /* Cible tactile de 44 px : c'est désormais la seule commande d'écoute
+       de la mention (audit d'interface du 2026-10-07, item #18). */
+    min-height: 44px;
     padding: 0.32rem 0.7rem;
     border-radius: 999px;
     border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent);
@@ -160,9 +167,19 @@ const buttonAria = tcA11y
       border-color 0.16s ease,
       transform 0.16s ease;
   }
-  .audio-trigger:hover {
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .audio-trigger:hover {
+      background: color-mix(in oklab, var(--accent) 22%, transparent);
+      border-color: var(--accent);
+    }
+  }
+  .audio-trigger:active {
+    transform: scale(0.97);
     background: color-mix(in oklab, var(--accent) 22%, transparent);
     border-color: var(--accent);
+    transition-duration: 0.08s;
   }
   .audio-trigger[aria-pressed='true'] {
     background: var(--accent);
@@ -177,6 +194,8 @@ const buttonAria = tcA11y
     border-style: dashed;
   }
   .audio-frame {
+    /* Le lecteur révélé, lui, reprend toute la largeur. */
+    align-self: stretch;
     width: 100%;
     border-radius: var(--radius);
     overflow: hidden;
@@ -201,7 +220,13 @@ const buttonAria = tcA11y
     padding: 0.25rem 0.4rem;
     border-radius: 999px;
   }
-  .audio-close:hover {
+  @media (hover: hover) and (pointer: fine) {
+    .audio-close:hover {
+      color: var(--text);
+      background: color-mix(in oklab, var(--text) 8%, transparent);
+    }
+  }
+  .audio-close:active {
     color: var(--text);
     background: color-mix(in oklab, var(--text) 8%, transparent);
   }

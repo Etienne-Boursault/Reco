@@ -85,6 +85,11 @@ describe('episodeToDoc', () => {
     expect(doc.subtitle).toBe('Épisode 5');
   });
 
+  it('écrit la saison quand elle est connue', () => {
+    const doc = episodeToDoc({ guid: 'g', sourceId: 's', title: 'T', number: 3, season: 6 });
+    expect(doc.subtitle).toBe('Saison 6, épisode 3');
+  });
+
   it('text undefined si pas d’invités', () => {
     expect(episodeToDoc({ guid: 'g', sourceId: 's', title: 'T' }).text).toBeUndefined();
   });

@@ -22,6 +22,7 @@ import '../styles/fragment-recos.css';
 import EmptyState from './EmptyState.astro';
 import RecoCard from './RecoCard.astro';
 import { TYPE_LABELS_PLURAL } from '../utils/recoTypes';
+import { lienOeuvre } from '../utils/oeuvreDesRecos';
 
 interface Props {
   sourceId: string;
@@ -31,9 +32,11 @@ interface Props {
   types: [string, number][];
   /** `true` dans la page autonome : le titre y devient visible et principal. */
   titreVisible?: boolean;
+  /** Identifiant de reco → œuvre : le titre de chaque carte mène à sa fiche. */
+  oeuvres?: Map<string, string>;
 }
 
-const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
+const { sourceId, recos, epByGuid, types, titreVisible = false, oeuvres } = Astro.props;
 ---
 
 <div class="toolbar wrap">
@@ -83,8 +86,10 @@ const { sourceId, recos, epByGuid, types, titreVisible = false } = Astro.props;
           <RecoCard
             reco={r}
             episodeNumber={epByGuid.get(r.episodeGuid)?.number}
+            episodeSeason={epByGuid.get(r.episodeGuid)?.season}
             episodeTitle={epByGuid.get(r.episodeGuid)?.title}
             sourceId={sourceId}
+            oeuvreHref={lienOeuvre(oeuvres, sourceId, r.id)}
           />
         ))}
       </ul>

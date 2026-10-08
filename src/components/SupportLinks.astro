@@ -86,12 +86,26 @@ const valid = links.filter(
     text-decoration: none;
     color: var(--text);
     border: 1px solid color-mix(in oklab, var(--text) 20%, transparent);
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
   }
-  .support-link:hover,
-  .support-link:focus-visible {
-    color: var(--accentText, var(--bg));
+  /* Le focus clavier garde son état plein ; le SURVOL seul est réservé aux
+     vrais pointeurs (au doigt, il restait accroché après le toucher) — cf.
+     la convention en tête de `global.css`, audit d'interface du 2026-10-07. */
+  .support-link:focus-visible,
+  .support-link:active {
+    color: var(--accent-text, var(--bg));
     background: var(--accent);
     border-color: var(--accent);
+  }
+  .support-link:active {
+    transform: scale(0.96);
+    transition-duration: 0.08s;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .support-link:hover {
+      color: var(--accent-text, var(--bg));
+      background: var(--accent);
+      border-color: var(--accent);
+    }
   }
 </style>

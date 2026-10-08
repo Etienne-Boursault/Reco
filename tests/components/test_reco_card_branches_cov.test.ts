@@ -8,6 +8,7 @@
  * Acast, et la clé de recherche SSR construite avec des champs manquants.
  */
 import { describe, it, expect } from 'vitest';
+import { ICONE_TYPE } from '../../src/utils/iconesTypes';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import RecoCard from '../../src/components/RecoCard.astro';
 
@@ -30,9 +31,9 @@ function searchKey(html: string): string {
 }
 
 describe('RecoCard — types inconnus', () => {
-  it('type hors catalogue → emoji ✨ et libellé = clé brute', async () => {
+  it('type hors catalogue → icône « autre » et libellé = clé brute', async () => {
     const html = await render({ reco: { ...baseReco, types: ['zarbi'] } });
-    expect(html).toContain('✨');
+    expect(html).toContain(`d="${ICONE_TYPE.autre}"`);
     expect(html).toContain('aria-label="zarbi"');
     expect(html).toContain('data-types="zarbi"');
   });

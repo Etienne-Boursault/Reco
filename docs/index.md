@@ -42,12 +42,15 @@ Index complet dans [`adr/`](adr/). Sélection structurante :
 | [0040](adr/0040-manifeste-ethique.md) | Manifeste éthique |
 | [0041](adr/0041-doc-tutorial-strategy.md) | Stratégie doc + tutorial |
 | [0042](adr/0042-cron-rss-auto-notification.md) | Cron RSS auto + notification |
+| [0050](adr/0050-cartes-partage-cache-persistant.md) | Carte de partage par œuvre, cache persistant |
+| [0051](adr/0051-conventions-interface.md) | Conventions d'interface (appui, cibles, accent, vocabulaire) |
 
 ## Rapports de phase
 
 - [phase-1-report-2026-06-10](phase-1-report-2026-06-10.md) — Phase 1 (P1.1–P1.10).
 - [phase-2-report-2026-06-11](phase-2-report-2026-06-11.md) — Phase 2 (P2.11–P2.17).
 - [phase-3-report-2026-06-12](phase-3-report-2026-06-12.md) — Phase 3 (P3.18–P3.23).
+- [interface-rapport-2026-10-07](interface-rapport-2026-10-07.md) — refonte de l'interface : deux audits, six maquettes, cartes de partage, ce qu'il reste à vérifier.
 
 ## Vision & roadmap
 
