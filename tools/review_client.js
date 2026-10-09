@@ -35,6 +35,9 @@
   function undoToast(message) {
     const zone = document.getElementById('toast-zone');
     if (!zone) return;
+    // La pile d'annulation du serveur est unique (dernier entré, premier
+    // sorti) : seul le toast le plus récent annule la bonne décision.
+    zone.querySelectorAll('.toast-undo').forEach((t) => t.remove());
     const el = document.createElement('div');
     el.className = 'toast toast-success toast-undo';
     const span = document.createElement('span');
@@ -56,7 +59,20 @@
         });
         const data = await r.json();
         if (!data.restored) { toast(data.message || 'Rien à annuler.', 'warning'); return; }
-        window.location.reload();  // la reco rétablie réapparaît dans la file
+        // Page épisode (mode focus) : on remet la carte en place et on y
+        // revient, sans recharger. Ailleurs (/doutes), la reco rétablie
+        // réapparaît dans la file au rechargement.
+        if (window.location.pathname === '/ep' && data.reco_id) {
+          const c = await fetch('/card?id=' + encodeURIComponent(data.reco_id));
+          if (c.ok) {
+            replaceCard(data.reco_id, await c.text());
+            document.dispatchEvent(new CustomEvent('reco:restored', { detail: { id: data.reco_id } }));
+            el.remove();
+            toast('Décision annulée : la reco est de retour.', 'success');
+            return;
+          }
+        }
+        window.location.reload();
       } catch (err) {
         toast('Erreur réseau : ' + err.message, 'error');
       }
@@ -89,7 +105,10 @@
       if (li.dataset.origIdx !== undefined && fresh.dataset) {
         fresh.dataset.origIdx = li.dataset.origIdx;
       }
+      // La carte active le reste : en mode focus, c'est la seule visible.
+      if (li.classList.contains('active')) fresh.classList.add('active');
       li.replaceWith(fresh);
+      document.dispatchEvent(new CustomEvent('reco:replaced', { detail: { li: fresh } }));
     }
   }
 
@@ -149,9 +168,18 @@
       } else if (data.card_html) {
         replaceCard(reco_id, data.card_html);
       }
+      // Page épisode : le mode focus est passé à la suivante dès l'envoi
+      // (reco:deciding) ; il confirme ici, ou revient sur la carte en erreur.
+      if (action === '/save' && !onDoutes) {
+        const ev = data.kind === 'error' ? 'reco:failed' : 'reco:decided';
+        document.dispatchEvent(new CustomEvent(ev, { detail: { id: reco_id } }));
+      }
       // Décision terminale sur /doutes → toast AVEC bouton « ↩ Annuler » (le
       // backend a empilé un instantané) au lieu du toast simple.
-      if (terminalDoutes) {
+      // Idem sur la page épisode : le mode focus passe seul à la suivante, une
+      // touche malheureuse doit pouvoir s'annuler sans revenir en arrière.
+      const decidedOnEp = action === '/save' && !onDoutes && data.kind !== 'error';
+      if (terminalDoutes || decidedOnEp) {
         undoToast(data.message || 'Traité — reco suivante.');
       } else if (data.message) {
         toast(data.message, data.kind || 'info');
@@ -175,6 +203,9 @@
       }
     } catch (err) {
       toast('Erreur réseau : ' + err.message, 'error');
+      if (action === '/save' && window.location.pathname !== '/doutes') {
+        document.dispatchEvent(new CustomEvent('reco:failed', { detail: { id: reco_id } }));
+      }
     }
   }
 
@@ -388,6 +419,14 @@
     if (e.submitter && e.submitter.name) fd.set(e.submitter.name, e.submitter.value);
     const reco_id = fd.get('id');
     if (!reco_id) return;
+    // Le serveur met plus d'une seconde à répondre : le mode focus n'attend
+    // pas, il passe tout de suite à la suivante (sinon une 2ᵉ touche pressée
+    // entre-temps décidait encore la même carte).
+    if (action === '/save' && window.location.pathname !== '/doutes') {
+      document.dispatchEvent(new CustomEvent('reco:deciding', {
+        detail: { id: String(reco_id), action: String(fd.get('action') || '') },
+      }));
+    }
     ajaxPost(action, fd, reco_id);
   });
 

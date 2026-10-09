@@ -30,7 +30,13 @@ from review_handler_base import (
     _parse_post_data,
     _reco_path,
 )
-from review_render import _load_groups, _reco_card, _render_episode, _render_index
+from review_render import (
+    _load_groups,
+    _reco_card,
+    _render_episode,
+    _render_index,
+    refresh_reco_in_cache,
+)
 from review_routes_merge import MergeRoutesMixin
 
 # _allocate_new_reco ré-exporté pour la compat (review_server + tests l'importent
@@ -284,7 +290,7 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
             guid, flash, kind = self._dispatch_edit(path, reco_id, data)
         elif route == "/reenrich":
             guid, flash, kind = apply_reenrich(path, reco_id)
-            _invalidate_reco_path_cache(self.source_id)
+            refresh_reco_in_cache(self.source_id, path)
         else:
             guid, flash, kind = self._save_status(path, reco_id, data)
         self._reply_post(guid, flash, kind, flash, reco_id)
@@ -316,7 +322,6 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
                 flash = ("Modification refusée : type manquant ou "
                          "inconnu (sélectionne au moins un type).")
             return guid, flash, "error"
-        _invalidate_reco_path_cache(self.source_id)
         if from_doutes and pre_edit is not None:
             _undo.push_snapshot(self.source_id, reco_id, str(path),
                                 pre_edit, label="edit")
@@ -338,10 +343,11 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
                 else:
                     reco.setdefault("agentReview", {})["reviewedByHuman"] = True
                 write_json_if_changed(path, reco)
-                from review_render import _GROUPS_CACHE
-                _GROUPS_CACHE.pop(self.source_id, None)
             except (OSError, ValueError) as exc:
                 log.warning("post-édition %s : %s", reco_id, exc)
+        # Une seule mise à jour du cache pour les deux écritures (édition puis
+        # décision) : seul ce fichier a changé, inutile de tout relire.
+        refresh_reco_in_cache(self.source_id, path)
         log.info("Édité : %s", reco_id)
         return guid, "Modifications enregistrées.", "success"
 
@@ -355,11 +361,16 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
         recharge la page pour ré-afficher la reco), sinon 303 PRG.
         """
         result = _undo.pop_and_restore(self.source_id)
-        _invalidate_reco_path_cache(self.source_id)
-        from review_render import _GROUPS_CACHE
-        _GROUPS_CACHE.pop(self.source_id, None)
         restored = bool(result.get("restored"))
         reco_id = result.get("reco_id", "")
+        # La restauration réécrit le fichier de CETTE reco à son chemin d'origine
+        # → mise à jour ciblée du cache ; sinon (rien restauré, chemin inconnu)
+        # invalidation complète, comme avant.
+        path = _reco_path(self.source_id, reco_id) if restored and reco_id else None
+        if path is not None:
+            refresh_reco_in_cache(self.source_id, path)
+        else:
+            _invalidate_reco_path_cache(self.source_id)
         guid = result.get("guid", "")
         if restored:
             msg, kind = f"Annulé : {reco_id} rétablie.", "success"
@@ -473,7 +484,8 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
           - `flash`/`kind` : message de confirmation (m3) ou d'erreur (m4).
 
         #2 review — pas de @_invalidates_reco_cache : on mute le contenu
-        d'un fichier existant (même path, même id), donc le cache reste valide.
+        d'un fichier existant (même path, même id) → mise à jour ciblée du
+        cache des groupes, sans tout relire.
         """
         # #14 sécu / #17 — single-pass : combine who/other et strip une fois.
         names = [n.strip() for n in (data.get("who", []) + data.get("other", []))
@@ -494,12 +506,10 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
                             copy.deepcopy(reco), label=action)
         self._apply_save_action(reco, action, recommended, reco_id)
         write_json_if_changed(path, reco)
-        # Note : pas d'invalidation du cache reco_id→Path — voir docstring
-        # (#2 review : le path n'a pas changé). On invalide quand même le
-        # cache groups (contenu muté → un nouveau render doit voir le statut
-        # mis à jour, indépendamment de la granularité mtime du FS).
-        from review_render import _GROUPS_CACHE
-        _GROUPS_CACHE.pop(self.source_id, None)
+        # Contenu muté → un nouveau render doit voir le statut à jour,
+        # indépendamment de la granularité mtime du FS : on relit CE fichier
+        # dans le cache des groupes (pas les ~3000 recos — cf. review_render).
+        refresh_reco_in_cache(self.source_id, path)
         # m3 (revue 2026-07-19) : synthétiser un flash succès — sinon le POST
         # /save en JSON (fetch) ne renvoyait aucun toast, et la redirection
         # non-JS ne confirmait rien à l'utilisateur·rice.

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import html
 import urllib.parse
+from pathlib import Path
 
 from common import (
     list_episode_files,
@@ -26,7 +27,7 @@ from review_edit import is_reenrichable, render_edit_form, render_type_badges
 # bloc se retrouve alors orphelin, laissant `ruff --fix` supprimer les noms
 # (constaté le 2026-07-29 : import de `review_server` cassé).
 from review_guests import collect_guests as _collect_guests
-from review_guests import is_placeholder as _is_placeholder  # noqa: F401
+from review_guests import is_placeholder as _is_placeholder
 from review_guests import render_guests_panel as _render_guests_panel  # noqa: F401
 from review_guests import split_names as _split_names
 
@@ -68,6 +69,7 @@ from review_render_common import (  # noqa: F401 — ré-exports rétro-compat
     _yt_timecode_link_parts,
     _yt_watch_link,
 )
+from review_signals import reco_signals, render_signals
 
 # Tri chronologique des cartes (ordre d'apparition dans l'épisode) — facilite
 # la détection visuelle de doublons à fusionner. Les discarded sont relégués
@@ -100,31 +102,32 @@ def _reco_candidates(r: dict, ep: dict, hosts: list[str],
     et les `recommendedBy` des recos. On y ajoute un fallback `parsed`
     (parsing du titre à la volée) pour les épisodes pas encore migrés.
 
-    L3 — `parsed` peut être fourni par l'appelant (`_render_episode` le calcule
-    UNE fois et le propage à toutes les cartes) pour éviter de reparser le
-    titre par carte. `None` = calcul à la volée (compat des appelants isolés :
-    /card, /doutes, JSON post).
+    L3 — `parsed` peut venir de l'appelant (`_render_episode` le calcule UNE
+    fois) ; `None` = calcul à la volée (/card, /doutes, JSON post).
     """
     # Fallback : si pas de snapshot persisté, on parse à la volée pour ne
     # rien casser sur les épisodes legacy.
     if parsed is None:
         parsed = (ep.get("guestsParsed")
                   or _parse_guests(ep.get("title", ""), hosts))
-    # Inclut la reco courante + ses siblings pour conserver le même périmètre
-    # qu'avant le refactor. N1 — `siblings` contient DÉJÀ `r` chez tous les
-    # appelants (liste complète des recos de l'épisode) : on filtre `r` par id
-    # pour ne pas le compter deux fois. (collect_guests dédupe les noms, donc
-    # c'était sans conséquence fonctionnelle, mais inutilement redondant.)
+    # Inclut la reco courante + ses siblings. N1 — `siblings` contient DÉJÀ
+    # `r` chez tous les appelants : on filtre `r` par id (pas de doublon).
     rid = r.get("id")
-    all_recs: list[dict] = [r]
-    for s in (siblings or []):
-        if rid and s.get("id") == rid:
-            continue
-        all_recs.append(s)
+    all_recs = [r] + [s for s in (siblings or []) if not (rid and s.get("id") == rid)]
     guests = _collect_guests(ep, all_recs, hosts, parsed=parsed)
-    # Hosts d'abord (ordre stable, attendu par les UX existantes), puis
-    # invités collectés dédupés contre les hosts (déjà fait par collect_guests).
-    return list(hosts) + guests
+    # Hosts d'abord (ordre stable attendu par l'UX), puis invités collectés.
+    candidates = list(hosts) + guests
+    # INVARIANT : chaque nom du `recommendedBy` de CETTE reco garde sa case
+    # cochée, même un prénom seul écarté par collect_guests (« Jenny » / Jenny
+    # Letellier) : « Valider » reconstruit recommendedBy depuis les cases (sinon
+    # le nom serait perdu en silence) et « Corriger en … » la décoche.
+    # Seuls les placeholders et les exclus restent écartés (nettoyage voulu).
+    excluded = {n.casefold() for n in (ep.get("guestsExcluded") or [])}
+    for n in _split_names(r.get("recommendedBy", "")):
+        if (n not in candidates and not _is_placeholder(n)
+                and n.casefold() not in excluded):
+            candidates.append(n)
+    return candidates
 
 
 def _reco_checkboxes(candidates: list[str], current: str) -> str:
@@ -136,7 +139,7 @@ def _reco_checkboxes(candidates: list[str], current: str) -> str:
     """
     current_names = _split_names(current)
     return "".join(
-        f'<label><input type="checkbox" name="who" value="{html.escape(c)}"'
+        f'<label class="who-name"><input type="checkbox" name="who" value="{html.escape(c)}"'
         f'{" checked" if c in current_names else ""}> {html.escape(c)}</label>'
         for c in candidates
     )
@@ -172,7 +175,7 @@ def _reco_action_buttons(r: dict, edit_origin: str = "/ep") -> str:
         f'<input type="hidden" name="id" value="{reco_id_esc}">'
         f'<button type="submit" class="btn-delete" '
         f'onclick="return confirm(\'Supprimer définitivement cette reco ?\')" '
-        f'title="Supprimer définitivement (irréversible)">🗑</button>'
+        f'title="Supprimer définitivement (irréversible)">🗑 Supprimer</button>'
         f'</form>'
     )
     return edit_btn + reenrich_btn + delete_btn
@@ -202,9 +205,25 @@ def _reco_context_block(r: dict, ep: dict, source_id: str,
     return f'<div class="context">{" ".join(spans)}</div>'
 
 
-def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
-    """En-tête d'une carte reco : checkbox merge + types + title + actions."""
+def _status_label(r: dict) -> str:
+    """État lisible d'une reco : ce que la relecture en a décidé."""
     status = r.get("status", "draft")
+    if status == "discarded":
+        return "écartée"
+    if status != "validated":
+        return "à relire"
+    if r.get("kind") == "citation":
+        return "évoquée"
+    return "leur œuvre" if r.get("guestWork") else "validée"
+
+
+def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
+    """En-tête d'une carte reco : types, titre, créateur, écoute, menu ⋯.
+
+    Les actions rares (fusion, édition, ré-enrichissement, suppression)
+    vivent dans le menu ⋯ : la carte ne montre d'emblée que ce qui sert à
+    décider.
+    """
     reco_id_for_select = html.escape(r.get("id", ""))
     # `episodeGuid` propagé dans r pour le bouton edit (peut être absent).
     r_with_guid = r if r.get("episodeGuid") else {**r, "episodeGuid": ep.get("guid", "")}
@@ -214,16 +233,18 @@ def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
                     f"{flag_badge_html(r.get('creator'))}"
                     if r.get("creator") else "")
     return (
-        f'<div class="hd"><label class="merge-select" title="Sélectionner pour fusion manuelle">'
-        f'<input type="checkbox" data-merge-select value="{reco_id_for_select}"></label>'
+        f'<div class="hd">'
         f'<span class="type">{render_type_badges(r.get("types", []))}</span>'
         f'<b>{html.escape(r.get("title", ""))}</b>'
         f'{creator_html}'
-        f'{link}'
-        f'{conf_badge}'
-        f'{_reco_agent_badge(r)}'
-        f'<span class="st">{html.escape(status)}</span>'
-        f'{actions}</div>'
+        f'<span class="hd-meta">{link}{conf_badge}{_reco_agent_badge(r)}</span>'
+        f'<span class="st">{html.escape(_status_label(r))}</span>'
+        f'<details class="more"><summary title="Plus d’actions" '
+        f'aria-label="Plus d’actions">⋯</summary><div class="more-panel">'
+        f'<label class="merge-select" title="Sélectionner pour fusion manuelle">'
+        f'<input type="checkbox" data-merge-select value="{reco_id_for_select}">'
+        f' Sélectionner pour fusion</label>'
+        f'{actions}</div></details></div>'
     )
 
 
@@ -274,8 +295,12 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
     """
     if edit_id and r.get("id") == edit_id:
         return render_edit_form(r, ep, siblings, hosts, edit_origin)
+    if parsed is None:
+        parsed = (ep.get("guestsParsed")
+                  or _parse_guests(ep.get("title", ""), hosts))
     tcl = _yt_timecode_link_parts(r, ep)  # #4 : un seul calcul de secs
     header = _reco_header(r, ep, tcl.html, edit_origin)
+    signals = reco_signals(r, ep, hosts, parsed)
     ctx_html = _reco_context_block(r, ep, source_id, tcl.secs)
     quote_html = _reco_quote_block(r)
     boxes = _reco_checkboxes(
@@ -284,110 +309,167 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
     )
     cls = _reco_row_class(r)
     reco_id_for_select = html.escape(r.get("id", ""))
+    # Ordre de lecture : quoi (en-tête) → ce qui cloche → ce qui a été dit →
+    # qui le dit → la décision. Le texte des boutons de décision porte leur
+    # raccourci clavier, la seule aide qu'il faut avoir sous les yeux.
     return f"""
-    <li class="row {cls}" data-reco-id="{reco_id_for_select}">
+    <li class="row {cls}" data-reco-id="{reco_id_for_select}" data-signals="{len(signals)}">
       {header}
-      {ctx_html}
+      {render_signals(signals)}
       {quote_html}
+      {ctx_html}
       <form method="post" action="/save">
         <input type="hidden" name="id" value="{html.escape(r.get('id',''))}">
-        <div class="who">{boxes}
-          <input type="text" name="other" placeholder="autre nom…" value="">
-          <button type="submit" name="action" value="validate">Valider</button>
-          <button type="submit" name="action" value="citation" class="citation-btn" title="Œuvre évoquée mais pas recommandée">📝 Citation</button>
+        <div class="who"><span class="who-label">Qui recommande ?</span>{boxes}
+          <input type="text" name="other" placeholder="autre nom…" value="" aria-label="Autre nom">
+        </div>
+        <div class="decide">
+          <button type="submit" name="action" value="validate" class="ok">Valider <kbd>V</kbd></button>
+          <button type="submit" name="action" value="citation" class="citation-btn" title="Citation : œuvre évoquée mais pas recommandée">Seulement évoquée <kbd>C</kbd></button>
+          <button type="submit" name="action" value="discard" class="discard">Pas une reco <kbd>D</kbd></button>
           <button type="submit" name="action" value="guest-work" class="guestwork-btn" title="Auto-promo d'un·e invité·e ou d'un host : reste comptée comme reco, mais présentée à part sur la page épisode">⭐ Leur œuvre</button>
-          <button type="submit" name="action" value="discard" class="discard">Pas une reco</button>
         </div>
       </form>
     </li>"""
 
 
 # ---- Cache _load_groups (#mtime-reload) ------------------------------------
-# Le serveur tourne en single-threaded mais peut servir BEAUCOUP de pages
-# successives sur les mêmes données. Sans cache, chaque page relit ~80
-# épisodes + ~1000 recos depuis le disque (= O(N) syscalls). Avec un cache
-# indexé sur (max(mtime_ns), files_signature), on évite tout ré-lit tant
-# que le pipeline n'a rien modifié.
+# Sans cache, chaque page relirait ~80 épisodes + ~3000 recos. Signature =
+# (max `st_mtime_ns`, nombre de fichiers) des dossiers recos/<src>/ ET
+# episodes/<src>/ : 2*N stats au lieu de 2*N read+parse JSON.
 #
-# Signature = max des `st_mtime_ns` + nombre de fichiers, sur les dossiers
-# recos/<src>/ ET episodes/<src>/. Coût : 2*N stats (rapide) au lieu de
-# 2*N read+parse JSON.
-#
-# Bonus : si la signature recos a changé, on invalide aussi
-# `_RECO_PATH_CACHE[source_id]` côté review_handler_base — sinon un
-# fichier nouvellement créé par le pipeline ne serait pas trouvé.
-_GROUPS_CACHE: dict[str, tuple[tuple, tuple]] = {}
+# Entrée : (signature, (source, episodes, groups), fichiers) où `fichiers`
+# = {nom → (mtime_ns, reco)} — c'est ce qui permet à `refresh_reco_in_cache`
+# de remplacer UNE reco écrite par le serveur sans tout relire.
+_GROUPS_CACHE: dict[str, tuple[tuple, tuple, dict]] = {}
+
+
+def _dir_mtimes(directory) -> dict[str, int]:
+    """{nom → st_mtime_ns} des .json d'un dossier ({} s'il n'existe pas)."""
+    if not directory.exists():
+        return {}
+    mtimes: dict[str, int] = {}
+    for p in directory.glob("*.json"):
+        try:
+            mtimes[p.name] = p.stat().st_mtime_ns
+        except OSError:
+            continue
+    return mtimes
+
+
+def _mtimes_signature(mtimes: dict[str, int]) -> tuple[int, int]:
+    return (max(mtimes.values(), default=0), len(mtimes))
 
 
 def _dir_signature(directory) -> tuple[int, int]:
-    """(max_mtime_ns, count) sur les .json d'un dossier — None-safe.
+    """(max_mtime_ns, count) sur les .json d'un dossier — (0, 0) s'il manque."""
+    return _mtimes_signature(_dir_mtimes(directory))
 
-    Renvoie (0, 0) si le dossier n'existe pas. Très peu coûteux : un seul
-    listdir + N stats (pas de lecture du contenu).
-    """
-    if not directory.exists():
-        return (0, 0)
-    max_mtime = 0
-    count = 0
-    for p in directory.glob("*.json"):
-        try:
-            st = p.stat()
-        except OSError:
-            continue
-        max_mtime = max(max_mtime, st.st_mtime_ns)
-        count += 1
-    return (max_mtime, count)
+
+def _group_key(r: dict) -> tuple:
+    # À timestamp égal, plus d'extractors d'abord (canonique d'un cluster).
+    return (*_order_key(r), -len(r.get("extractors") or []))
 
 
 def _load_groups(source_id: str):
     """Renvoie (source, episodes_par_guid, recos_par_guid triés).
 
-    Cache mtime-based : si ni le dossier recos/<src>/ ni episodes/<src>/
-    n'ont changé depuis le dernier appel, on retourne le résultat caché.
-    Sinon on re-scanne et on invalide aussi `_RECO_PATH_CACHE` côté
-    handler_base (un fichier reco créé en arrière-plan par le pipeline
-    pourrait sinon rester invisible).
+    Cache mtime-based (cf. ci-dessus). Un re-scan reconstruit aussi
+    `_RECO_PATH_CACHE` (handler_base) depuis les recos lues : une reco créée
+    par le pipeline y devient trouvable sans relire les ~3000 fichiers.
     """
     from common import episodes_dir_for
-    from review_handler_base import _invalidate_reco_path_cache
+    from review_handler_base import _RECO_PATH_CACHE, _invalidate_reco_path_cache
 
     recos_dir = recos_dir_for(source_id)
-    episodes_dir = episodes_dir_for(source_id)
-    sig = (_dir_signature(recos_dir), _dir_signature(episodes_dir))
+    mtimes = _dir_mtimes(recos_dir)
+    sig = (_mtimes_signature(mtimes),
+           _dir_signature(episodes_dir_for(source_id)))
 
     cached = _GROUPS_CACHE.get(source_id)
     if cached is not None and cached[0] == sig:
         return cached[1]
 
-    # Cache miss ou stale → re-scan complet + invalidation cache reco_path
-    # (un nouveau fichier reco créé par extract_recos n'apparaît dans
-    # `_RECO_PATH_CACHE` qu'après rebuild).
+    # Cache miss ou stale → re-scan complet.
     _invalidate_reco_path_cache(source_id)
 
     source = load_source(source_id)
-    episodes: dict[str, dict] = {}
-    for p in list_episode_files(source_id):
-        ep = read_json(p)
-        episodes[ep["guid"]] = ep
-    recos = [read_json(p) for p in sorted(recos_dir.glob("*.json"))]
+    episodes = {ep["guid"]: ep for ep in map(read_json, list_episode_files(source_id))}
+    # mtime 0 pour un fichier apparu après le stat : la signature suivante
+    # différera de toute façon → nouveau re-scan, jamais d'état faux.
+    files = {p.name: (mtimes.get(p.name, 0), read_json(p))
+             for p in sorted(recos_dir.glob("*.json"))}
     groups: dict[str, list[dict]] = {}
-    for r in recos:
+    for _mtime, r in files.values():
         groups.setdefault(r.get("episodeGuid", ""), []).append(r)
     for g in groups.values():
-        # Tiebreaker : à timestamp identique, plus d'extractors d'abord
-        # (confiance plus haute → généralement le canonique d'un cluster).
-        g.sort(key=lambda r: (*_order_key(r),
-                              -len(r.get("extractors") or [])))
+        g.sort(key=_group_key)
     result = (source, episodes, groups)
-    _GROUPS_CACHE[source_id] = (sig, result)
+    _GROUPS_CACHE[source_id] = (sig, result, files)
+    _RECO_PATH_CACHE[source_id] = {r["id"]: recos_dir / name
+                                   for name, (_m, r) in files.items()
+                                   if r.get("id")}
     return result
+
+
+def refresh_reco_in_cache(source_id: str, path) -> bool:
+    """Met à jour le cache pour la SEULE reco `path` que le serveur vient
+    d'écrire, de créer ou de supprimer, au lieu de tout relire (~0,4 s).
+
+    Recompose son ou ses groupes (ancien et nouvel `episodeGuid`) dans
+    l'ordre d'un re-scan et enregistre la nouvelle signature. Au moindre
+    doute (pas de cache, chemin hors du dossier, fichier illisible, AUTRE
+    reco ou épisode changé entre-temps) : invalidation complète, jamais
+    d'état faux. Renvoie True si la mise à jour s'est faite en place.
+    """
+    from common import episodes_dir_for
+    from review_handler_base import _RECO_PATH_CACHE, _invalidate_reco_path_cache
+
+    path = Path(path)
+    recos_dir = recos_dir_for(source_id)
+    cached = _GROUPS_CACHE.get(source_id)
+    if cached is None or path.parent != recos_dir:
+        _invalidate_reco_path_cache(source_id)
+        return False
+    (_rsig, ep_sig), (source, episodes, groups), files = cached
+    name = path.name
+    mtimes = _dir_mtimes(recos_dir)
+    others_now = {n: m for n, m in mtimes.items() if n != name}
+    others_cached = {n: fm[0] for n, fm in files.items() if n != name}
+    try:
+        stale = (others_now != others_cached
+                 or _dir_signature(episodes_dir_for(source_id)) != ep_sig)
+        new = read_json(path) if name in mtimes and not stale else None
+    except (OSError, ValueError):
+        stale = True
+    if stale:
+        _invalidate_reco_path_cache(source_id)
+        return False
+    old = files.pop(name, (0, None))[1]
+    if new is not None:
+        files[name] = (mtimes[name], new)
+    for guid in {r.get("episodeGuid", "") for r in (old, new) if r is not None}:
+        # Ordre des fichiers puis tri stable : identique à un re-scan.
+        members = sorted((r for n, (_m, r) in sorted(files.items())
+                          if r.get("episodeGuid", "") == guid), key=_group_key)
+        if members:
+            groups[guid] = members
+        else:
+            groups.pop(guid, None)
+    bucket = _RECO_PATH_CACHE.get(source_id)
+    if bucket is not None:
+        if old is not None and bucket.get(old.get("id")) == path:
+            del bucket[old["id"]]
+        if new is not None and new.get("id"):
+            bucket[new["id"]] = path
+    _GROUPS_CACHE[source_id] = ((_mtimes_signature(mtimes), ep_sig),
+                                (source, episodes, groups), files)
+    return True
 
 
 def _clear_groups_cache() -> None:
     """Reset hard du cache (utile aux tests + au démarrage du serveur)."""
     _GROUPS_CACHE.clear()
-
-
 
 
 # ---- API publique (#15) — alias sans underscore pour consommateurs externes

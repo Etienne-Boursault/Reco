@@ -175,6 +175,7 @@ ignore = [
 # ailleurs : c'est lui qui attrape un test qui en masque silencieusement un
 # autre — le dépôt a déjà perdu 45 tests de cette façon côté frontend.
 "tests/test_review_routes_edge.py" = ["F811"]
+"tests/test_review_cache_refresh.py" = ["F811"]
 # Les scripts CLI communiquent par `print` : c'est leur sortie, pas du debug.
 "tools/*.py" = ["T20"]
 "scripts/*.py" = ["T20"]
