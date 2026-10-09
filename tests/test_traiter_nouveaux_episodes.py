@@ -475,6 +475,8 @@ def reseau_hors_ligne(monkeypatch):
     monkeypatch.setattr(tne, "_fiches_video", lambda *_a, **_k: _rapport_video())
     monkeypatch.setattr(tne, "_liens_wikidata", lambda *_a, **_k: _rapport_wikidata())
     monkeypatch.setattr(tne, "_liens_boutique", lambda *_a, **_k: _rapport_boutique())
+    # Sans clé ni réseau, mais elle relirait tout le corpus réel : même doublure.
+    monkeypatch.setattr(tne, "_meme_oeuvre", lambda *_a, **_k: _rapport_boutique())
 
 
 def _rapport_boutique(servies=()):

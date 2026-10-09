@@ -69,6 +69,7 @@ from finalisation_passes import fiches_video as _fiches_video
 from finalisation_passes import liens_boutique as _liens_boutique
 from finalisation_passes import liens_musicaux as _liens_musicaux
 from finalisation_passes import liens_wikidata as _liens_wikidata
+from finalisation_passes import meme_oeuvre as _meme_oeuvre
 from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
@@ -351,6 +352,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
               video: Callable[[str, set[str]], Any] | None = None,
               wikidata: Callable[[str, set[str]], Any] | None = None,
               boutique: Callable[[str, set[str]], Any] | None = None,
+              oeuvre: Callable[[str, set[str]], Any] | None = None,
               publier: Callable[..., Any] | None = None,
               lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
     pending = a_finaliser(source_id, state)
@@ -363,6 +365,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
     video = video or _fiches_video
     wikidata = wikidata or _liens_wikidata
     boutique = boutique or _liens_boutique
+    oeuvre = oeuvre or _meme_oeuvre
     lock = lock or _pipeline_lock
     if publier is None:
         from publier_episode import preparer as publier
@@ -374,7 +377,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
             for _path, episode in pending:
                 _finaliser_un(source_id, episode, state, notify, liens=liens,
                               fiches=fiches, video=video, wikidata=wikidata,
-                              boutique=boutique, publier=publier)
+                              boutique=boutique, oeuvre=oeuvre, publier=publier)
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -389,10 +392,15 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                   video: Callable[[str, set[str]], Any],
                   wikidata: Callable[[str, set[str]], Any],
                   boutique: Callable[[str, set[str]], Any],
+                  oeuvre: Callable[[str, set[str]], Any],
                   publier: Callable[..., Any]) -> None:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
     ids = {r["id"] for r in _recos_de(source_id, guid) if r.get("id")}
+    # D'abord les liens déjà relus d'une même œuvre : les passes suivantes ne
+    # chercheront que les plateformes encore absentes.
+    aligne = _passe_sans_bloquer("Même œuvre", "lien(s) repris du corpus",
+                                 oeuvre, source_id, ids, guid)
     try:
         rapport = liens(source_id, ids)
         plan = publier(source_id, guid, apply=True)
@@ -412,6 +420,7 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
     # signale. Ordre imposé : TMDB pose `externalIds.tmdb`, dont la passe des
     # fiches se sert ensuite pour éviter toute recherche par titre.
     passes = [
+        aligne,
         _passe_sans_bloquer("TMDB", "fiche(s) TMDB", fiches, source_id, ids, guid),
         _passe_sans_bloquer("Fiches de référence", "fiche(s) de référence",
                             video, source_id, ids, guid),

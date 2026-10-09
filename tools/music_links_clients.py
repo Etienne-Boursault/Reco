@@ -30,6 +30,7 @@ from music_links_matching import (
     SEARCH_LIMIT,
     Candidate,
 )
+from title_variants import split_suffix
 
 SPOTIFY_AUTH_URL = "https://accounts.spotify.com/api/token"
 SPOTIFY_BASE = "https://api.spotify.com/v1"
@@ -186,8 +187,14 @@ def spotify_candidate(payload: dict[str, Any], kind: str) -> Candidate | None:
                     if isinstance(a, dict) and a.get("name")]
         artist = str(artistes[0]) if artistes else ""
         title = payload.get("name") or ""
+    # Pour un morceau, l'album qui le porte ; pour un album, lui-même.
+    album = payload.get("album") if kind == "track" else payload
+    album = album if isinstance(album, dict) else {}
     return Candidate(PLATFORM_SPOTIFY, kind, str(url), str(artist), str(title),
-                     ident=str(payload.get("id") or ""))
+                     ident=str(payload.get("id") or ""),
+                     release=str(album.get("release_date") or ""),
+                     isrc=str((payload.get("external_ids") or {}).get("isrc") or ""),
+                     compilation=album.get("album_type") == "compilation")
 
 
 def itunes_search(session: requests.Session, entity: str,
@@ -225,8 +232,12 @@ def deezer_candidate(payload: dict[str, Any], kind: str) -> Candidate | None:
 
 
 #: Champ iTunes portant l'URL publique, selon l'entité recherchée.
+#: Pour un artiste, c'est `artistLinkUrl` : `artistViewUrl` n'existe que sur
+#: les morceaux et albums. Lire ce dernier rendait toutes les pages artiste
+#: introuvables — aucune n'a jamais été posée par la chaîne (constaté sur
+#: Carla de Coignac, S6-E04).
 _ITUNES_URL_FIELD = {"song": "trackViewUrl", "album": "collectionViewUrl",
-                     "musicArtist": "artistViewUrl"}
+                     "musicArtist": "artistLinkUrl"}
 #: Entité iTunes correspondant à chaque type de contenu Deezer.
 ITUNES_ENTITY = {"track": "song", "album": "album", "artist": "musicArtist"}
 
@@ -245,11 +256,21 @@ def itunes_candidate(payload: dict[str, Any], kind: str) -> Candidate | None:
         title = payload.get("trackName") or ""
     return Candidate(PLATFORM_APPLE, kind, str(url), str(artist), str(title),
                      ident=str(payload.get("artistId" if kind == "artist"
-                                            else "collectionId") or ""))
+                                            else "collectionId") or ""),
+                     release=str(payload.get("releaseDate") or "")[:10])
 
 
 def search_query(reco: dict[str, Any], *, want_artist_page: bool) -> str:
-    """Requête envoyée aux APIs : titre + artiste, ou le seul nom d'artiste."""
+    """Requête envoyée aux APIs : titre + artiste, ou le seul nom d'artiste.
+
+    Le titre est envoyé SANS son suffixe éditorial : « Sauf si c'est toi
+    (reprise française de Until I Found You) Carla de Coignac » ne ramenait
+    rien chez Deezer, « Sauf si c'est toi Carla de Coignac » ramène le morceau.
+    Seule la requête est élargie — `verdict` compare toujours le titre entier
+    d'abord, et ne retient le noyau qu'avec l'artiste.
+    """
     if want_artist_page:
         return (reco.get("title") or "").strip()
-    return f"{reco.get('title') or ''} {reco.get('creator') or ''}".strip()
+    title = reco.get("title") or ""
+    title = split_suffix(title)[0] or title
+    return f"{title} {reco.get('creator') or ''}".strip()

@@ -14,6 +14,7 @@ la liste du reste à faire, envoyée à l'éditeur.
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any
 
 import common
@@ -112,3 +113,46 @@ def fiches_video(source_id: str, ids: set[str]) -> Any:
         root=common.RECOS_DIR, session=requests.Session(), api_key=cle_api(),
         source=source_id, ids=ids, apply=True,
         episode_years=load_episode_years(common.EPISODES_DIR, source_id))
+
+
+@dataclass(frozen=True)
+class Alignement:
+    """Rapport de `meme_oeuvre` : les recos servies, au format des passes."""
+
+    servies: frozenset[str]
+
+
+def meme_oeuvre(source_id: str, ids: set[str]) -> Alignement:
+    """Liens déjà relus d'une même œuvre, recopiés sur les recos de l'épisode.
+
+    Tourne EN PREMIER : ce qui est déjà dans le corpus a été vérifié par un
+    humain, et c'est gratuit. Sur S6-E04, Fleabag était recommandée pour la
+    quatrième fois ; ses trois recos précédentes portaient Apple TV, Prime Video
+    et AlloCiné, et la chaîne a tout recherché de zéro sans les retrouver. Les
+    passes suivantes ne cherchent ensuite que les plateformes encore absentes.
+
+    La planification et ses garde-fous (titre trop court, types ou créateurs
+    incompatibles, identifiants contradictoires) sont ceux
+    d'`align_same_work_links`. Une seule différence, voulue : SEULES les recos
+    de l'épisode sont réécrites. Les autres épisodes, déjà publiés, ne changent
+    pas en douce au détour d'une finalisation.
+    """
+    from align_same_work_links import planifier, transform_factory
+
+    cibles, rapport = planifier(source_id)
+    cibles = {rid: liens for rid, liens in cibles.items() if rid in ids}
+    transform = transform_factory(cibles, rapport)
+    servies: set[str] = set()
+    for path in common.recos_dir_for(source_id).glob("*.json"):
+        doc = common.read_json(path)
+        voulus = {link["url"] for link in cibles.get(doc.get("id") or "", ())}
+        actuels = {link.get("url") for link in doc.get("links") or []
+                   if isinstance(link, dict)}
+        # Rien de NOUVEAU (seulement un autre ordre) : on ne touche à rien,
+        # et la reco ne compte pas comme servie.
+        if not voulus - actuels:
+            continue
+        if transform(doc):
+            common.write_json_if_changed(path, doc)
+            servies.add(doc["id"])
+    return Alignement(frozenset(servies))

@@ -347,14 +347,27 @@ def test_verdict_anchored_title_mismatch_flags_a_wrong_stored_id():
     assert (chosen, reason) == (None, m.REASON_TITLE_MISMATCH)
 
 
-def test_verdict_ambiguous_when_two_distinct_candidates_survive():
+def test_verdict_ambiguous_when_two_distinct_recordings_survive():
+    """Même titre, même artiste, mais deux ISRC : deux enregistrements."""
     chosen, reason, detail = m.verdict(
         ALBUM_RECO,
-        [_cand("Orelsan", "Civilisation", ident="1"),
-         _cand("Orelsan", "Civilisation", ident="2")],
+        [m.Candidate(m.PLATFORM_SPOTIFY, "album", "https://s/1", "Orelsan",
+                     "Civilisation", ident="1", isrc="FR1"),
+         m.Candidate(m.PLATFORM_SPOTIFY, "album", "https://s/2", "Orelsan",
+                     "Civilisation", ident="2", isrc="FR2")],
         want_artist_page=False)
     assert (chosen, reason) == (None, m.REASON_AMBIGUOUS)
     assert "2 candidats distincts" in detail
+
+
+def test_verdict_two_releases_of_one_work_keep_the_first():
+    """Même titre, même artiste, rien pour les distinguer : deux parutions
+    d'une même œuvre, pas une ambiguïté (cf. music_links_editions)."""
+    first = _cand("Orelsan", "Civilisation", ident="1")
+    chosen, reason, _ = m.verdict(
+        ALBUM_RECO, [first, _cand("Orelsan", "Civilisation", ident="2")],
+        want_artist_page=False)
+    assert (chosen, reason) == (first, m.REASON_LINKED)
 
 
 def test_verdict_same_identity_twice_is_not_ambiguous():
@@ -371,8 +384,10 @@ def test_verdict_falls_back_to_url_when_ident_missing():
                     "Civilisation", ident="")
     b = m.Candidate(m.PLATFORM_DEEZER, "album", "https://d/2", "Orelsan",
                     "Civilisation", ident="")
+    # Deux URL, donc deux identités ; même titre et même artiste : la
+    # première parution est retenue (cf. music_links_editions).
     chosen, reason, _ = m.verdict(ALBUM_RECO, [a, b], want_artist_page=False)
-    assert (chosen, reason) == (None, m.REASON_AMBIGUOUS)
+    assert (chosen, reason) == (a, m.REASON_LINKED)
 
 
 def test_verdict_artist_page_matches_on_reco_title():
