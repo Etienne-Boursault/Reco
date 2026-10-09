@@ -105,7 +105,8 @@ def test_finaliser_runs_it_first_and_counts_it(tmp_path, monkeypatch):
     ordre = []
     vide = SimpleNamespace(servies=set(), vues=0, ecrites=0, seen=0, written=0,
                            filled=[], introuvables=[])
-    for nom in ("_fiches_tmdb", "_fiches_video", "_liens_wikidata", "_liens_boutique"):
+    for nom in ("_fiches_tmdb", "_fiches_video", "_liens_wikidata", "_liens_boutique",
+                "_liens_plateformes", "_liens_jeux", "_liens_youtube_music"):
         monkeypatch.setattr(tne, nom, lambda *_a, n=nom, **_k: ordre.append(n) or vide)
 
     def oeuvre(_source, ids):
