@@ -67,18 +67,23 @@ def _run(videos, details=None, **kwargs):
 
 # ===== création =============================================================
 def test_a_new_episode_is_created_from_the_video_alone(content):
-    videos = [{"id": "-abcDEF123", "title": "Invité (Un Bon Moment, S6-E1)"}]
+    titre = "Félix Radu et Carla de Coignac mettent de la poésie partout (Un Bon Moment, S6-E1)"
+    videos = [{"id": "-abcDEF123", "title": titre}]
 
-    result = _run(videos)
+    result = _run(videos, details={"-abcDEF123": _details("-abcDEF123", title=titre)})
 
     assert result.created == ["yt--abcDEF123"]
     episode = _episodes(content)["yt--abcDEF123"]
+    # Les invités sont lus dans le titre, dès la création (S6-E04, 2026-10-09).
     assert episode == {
         "sourceId": SOURCE, "guid": "yt--abcDEF123",
-        "title": "Invité (Un Bon Moment, S6-E1)",
-        "youtubeTitle": "Invité (Un Bon Moment, S6-E1)",
+        "title": titre,
+        "youtubeTitle": titre,
         "youtubeUrl": "https://www.youtube.com/watch?v=-abcDEF123",
-        "season": 6, "number": 1, "guests": [], "transcriptStatus": "none",
+        "season": 6, "number": 1,
+        "guests": ["Félix Radu", "Carla de Coignac"],
+        "guestsParsed": ["Félix Radu", "Carla de Coignac"],
+        "transcriptStatus": "none",
         "date": "2026-09-23", "youtubeDuration": 4950, "description": "Description.",
     }
 
