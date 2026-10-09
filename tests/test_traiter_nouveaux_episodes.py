@@ -477,6 +477,10 @@ def reseau_hors_ligne(monkeypatch):
     monkeypatch.setattr(tne, "_liens_boutique", lambda *_a, **_k: _rapport_boutique())
     # Sans clé ni réseau, mais elle relirait tout le corpus réel : même doublure.
     monkeypatch.setattr(tne, "_meme_oeuvre", lambda *_a, **_k: _rapport_boutique())
+    # Les trois passes du 2026-10-10 (plateformes, jeux, YouTube Music) : sans
+    # clé elles non plus, donc un oubli ici sortirait sur le réseau en silence.
+    for passe in ("_liens_plateformes", "_liens_jeux", "_liens_youtube_music"):
+        monkeypatch.setattr(tne, passe, lambda *_a, **_k: _rapport_boutique())
 
 
 def _rapport_boutique(servies=()):

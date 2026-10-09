@@ -156,3 +156,46 @@ def meme_oeuvre(source_id: str, ids: set[str]) -> Alignement:
             common.write_json_if_changed(path, doc)
             servies.add(doc["id"])
     return Alignement(frozenset(servies))
+
+
+def liens_plateformes(source_id: str, ids: set[str]) -> Any:
+    """Liens directs Netflix, Prime Video, Disney+, Apple TV, ARTE.tv (+ AlloCiné).
+
+    Passe APRÈS `fiches_tmdb` et `fiches_video` : elle lit l'identifiant TMDB et
+    les fournisseurs français que la première vient de poser, et range ses liens
+    en tête, devant les fiches de la seconde. Sur S6-E04, ces liens directs
+    étaient tous posés à la main (Acharnés, Fleabag, Samuel, Les Groos).
+    """
+    import requests
+
+    from streaming_links import run as run_plateformes
+    return run_plateformes(root=common.RECOS_DIR, session=requests.Session(),
+                           source=source_id, ids=ids, apply=True)
+
+
+def liens_jeux(source_id: str, ids: set[str]) -> Any:
+    """Site officiel et Steam des jeux SANS studio, là où `liens_boutique` s'abstient.
+
+    Ancrés sur une entité Wikidata unique, de nature « jeu vidéo », au libellé
+    exact et dotée d'un article Wikipédia (cf. `jeux_wikidata`). Les jeux qui
+    nomment leur studio restent à `liens_boutique`.
+    """
+    import requests
+
+    from jeux_wikidata import run as run_jeux
+    return run_jeux(root=common.RECOS_DIR, session=requests.Session(),
+                    source=source_id, ids=ids, apply=True)
+
+
+def liens_youtube_music(source_id: str, ids: set[str]) -> Any:
+    """YT Music des morceaux et artistes, et l'Instagram de l'artiste.
+
+    Passe APRÈS `liens_wikidata` : un Instagram que Wikidata a déjà donné n'est
+    pas reposé (un hôte présent ne l'est jamais). Elle sert l'artiste que
+    Wikidata ne connaît pas — Carla de Coignac, « no-entity » sur S6-E04.
+    """
+    import requests
+
+    from youtube_music_links import run as run_youtube_music
+    return run_youtube_music(root=common.RECOS_DIR, session=requests.Session(),
+                             source=source_id, ids=ids, apply=True)
