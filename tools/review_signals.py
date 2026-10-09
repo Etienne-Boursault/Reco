@@ -18,10 +18,14 @@ from __future__ import annotations
 
 import html
 import re
-import unicodedata
 from typing import NamedTuple
 
-from review_guests import is_placeholder, split_names
+# `episode_people` est ré-exporté (tests, appelants historiques) : le repérage
+# des personnes de l'épisode et du prénom seul vit dans review_guests, partagé
+# avec `collect_guests` (review_guests ne peut pas importer ce module : cycle).
+from review_guests import episode_people, split_names
+from review_guests import fold_name as _fold
+from review_guests import partial_match as _partial_match
 from review_render_common import _safe_int, _ts_seconds
 
 
@@ -49,12 +53,6 @@ _ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4, "v": 5, "vi": 6, "vii": 7,
           "viii": 8, "ix": 9, "x": 10}
 
 
-def _fold(s: str) -> str:
-    """Minuscules sans accents, pour comparer des noms saisis à la main."""
-    s = unicodedata.normalize("NFD", s or "")
-    return "".join(c for c in s if unicodedata.category(c) != "Mn").casefold().strip()
-
-
 def _as_int(token: str) -> int | None:
     token = token.lower()
     if token.isdigit():
@@ -73,38 +71,6 @@ def _numbers(text: str) -> dict[str, set[int]]:
         key = {"vol": "volume", "episode": "épisode"}.get(key, key)
         found.setdefault(key, set()).add(n)
     return found
-
-
-def episode_people(ep: dict, hosts: list[str],
-                   parsed: list[str] | None = None) -> list[str]:
-    """Animateurs + invités connus de l'épisode (hors recommandeurs saisis).
-
-    Contrairement à `collect_guests`, n'inclut PAS les noms déjà présents dans
-    les `recommendedBy` : on veut justement savoir si ces noms sont connus.
-    """
-    excluded = {_fold(n) for n in (ep.get("guestsExcluded") or [])}
-    names = list(hosts)
-    names += ep.get("guests") or []
-    names += ep.get("guestsParsed") or parsed or []
-    out: list[str] = []
-    seen: set[str] = set()
-    for n in names:
-        k = _fold(n)
-        if not k or k in seen or k in excluded or is_placeholder(n):
-            continue
-        seen.add(k)
-        out.append(n)
-    return out
-
-
-def _partial_match(name: str, people: list[str]) -> str:
-    """Nom complet dont `name` n'est que le prénom (ou le nom), si unique."""
-    key = _fold(name)
-    if not key or " " in key:
-        return ""
-    hits = [p for p in people
-            if " " in _fold(p) and key in _fold(p).split()]
-    return hits[0] if len(hits) == 1 else ""
 
 
 def _who_signals(r: dict, people: list[str]) -> list[Signal]:

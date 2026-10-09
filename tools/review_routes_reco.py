@@ -28,10 +28,9 @@ from reco_dedup_merge import BACKUP_DIR
 from review_handler_base import (
     _RE_GUID,
     _RE_RECO_ID,
-    _invalidates_reco_cache,
     _reco_path,
 )
-from review_render import _load_groups
+from review_render import _load_groups, refresh_reco_in_cache
 
 
 def _allocate_new_reco(source_id: str, episode_guid: str) -> tuple[str, Path]:
@@ -102,11 +101,12 @@ class RecoCrudRoutesMixin:
     # Renseigné par BaseHandler.__init__ — déclaré ici pour les type-checkers.
     source_id: str
 
-    @_invalidates_reco_cache
     def _handle_add_reco(self, data: dict) -> None:
         """POST /add-reco : crée un stub de reco vide rattaché à un épisode.
 
         #6 sécu — `guid` validé via `_RE_GUID` AVANT toute lecture épisode.
+        Seul le fichier créé entre dans le cache (`refresh_reco_in_cache`) ;
+        les sorties anticipées n'ont rien écrit dans le dossier des recos.
         """
         guid = (data.get("guid") or [""])[0].strip()
         if not guid or not _RE_GUID.match(guid):
@@ -140,6 +140,7 @@ class RecoCrudRoutesMixin:
                 pass
             self._send_redirect("/")
             return
+        refresh_reco_in_cache(self.source_id, new_path)
         log.info("Reco manuelle créée : %s (episode %s)", new_id, guid)
         loc = (f"/ep?guid={urllib.parse.quote(guid)}"
                f"&edit={urllib.parse.quote(new_id)}"
@@ -147,7 +148,6 @@ class RecoCrudRoutesMixin:
                f"&kind=info")
         self._send_redirect(loc)
 
-    @_invalidates_reco_cache
     def _handle_delete_reco(self, data: dict) -> None:
         """POST /delete-reco : supprime DÉFINITIVEMENT le fichier JSON.
 
@@ -159,6 +159,8 @@ class RecoCrudRoutesMixin:
         #13 sécu — un manifest récent référençant cet id peut faire
         "ressusciter" la reco via un undo postérieur. On le flash en
         warning si on détecte le cas.
+
+        Seule la reco supprimée sort du cache (`refresh_reco_in_cache`).
         """
         reco_id = (data.get("id") or [""])[0]
         if not _RE_RECO_ID.match(reco_id):
@@ -189,6 +191,7 @@ class RecoCrudRoutesMixin:
             log.warning("Suppression refusée %s : %s", reco_id, exc)
             self._send_redirect("/")
             return
+        refresh_reco_in_cache(self.source_id, path)
         log.info("Reco supprimée définitivement : %s", reco_id)
         flash_msg = f"Reco {reco_id} supprimée."
         # #13 sécu — warning si un backup récent référence cet id.
