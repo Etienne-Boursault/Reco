@@ -54,14 +54,6 @@ body:has(.audio-bar:not(.hidden)) #toast-zone{bottom:4.6rem;}
 .pick-list .muted{color:#9a99a3;font-size:.82rem;}
 .player-close:hover{border-color:#ffd23f;color:#ffd23f;}
 .cnt{color:#9a99a3;font-size:.75rem;font-weight:400;}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;max-width:920px;margin:1rem auto 2rem;}
-.thumb{position:relative;aspect-ratio:16/9;border-radius:10px;background:#17171c;background-size:cover;background-position:center;border:1px solid #2a2a30;text-decoration:none;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
-.thumb:hover{outline:2px solid #ffd23f;outline-offset:1px;}
-.thumb.done{opacity:.4;}
-.thumb.empty{opacity:.55;outline:1px dashed #7a4d00;}
-.thumb.empty .tcount{color:#ffb74d;}
-.tbadge{align-self:flex-start;background:rgba(14,14,16,.8);color:#ffd23f;font-size:.72rem;font-weight:700;padding:.15em .55em;border-radius:0 0 6px 0;}
-.tcount{background:rgba(14,14,16,.8);color:#f6f4ee;font-size:.72rem;padding:.2em .55em;text-align:center;}
 ul{list-style:none;padding:0;margin:0;}
 .row{background:#17171c;border:1px solid #2a2a30;border-left:3px solid #ffd23f;border-radius:10px;padding:.7rem 1rem;margin:.5rem 0;}
 .row.done{border-left-color:#5ab68a;opacity:1;background:#172019;}
@@ -229,27 +221,6 @@ a.ov-label:hover{text-decoration:underline;}
 .agent-badge{cursor:help;font-size:.8rem;opacity:.75;}
 .doubts-link{color:#a2c4ee;text-decoration:none;font-weight:600;}
 .doubts-link:hover{color:#ffd23f;}
-/* --- Barre d'outils épisode : tri (#2) + repli des traités (#1) ----------- */
-.review-toolbar{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:.5rem 0 .7rem;}
-.review-toolbar .rt-sort{background:transparent;border:0;padding:0;color:#9a99a3;font-size:.82rem;display:inline-flex;align-items:center;gap:.4rem;cursor:default;}
-.review-toolbar select{background:#0e0e10;border:1px solid #2a2a30;color:#f6f4ee;border-radius:8px;padding:.3em .6em;font-size:.82rem;cursor:pointer;}
-.review-toolbar select:hover{border-color:#ffd23f;}
-.review-toolbar [data-collapse-toggle]{background:transparent;color:#9a99a3;border:1px solid #3a3a40;border-radius:999px;padding:.3em .9em;font-size:.82rem;font-weight:600;cursor:pointer;}
-.review-toolbar [data-collapse-toggle][aria-pressed="true"]{color:#ffd23f;border-color:#ffd23f;background:#1f1c0a;}
-.review-toolbar [data-collapse-toggle]:hover{color:#ffd23f;border-color:#ffd23f;}
-/* Repli : cache tout sauf l'en-tête .hd des cartes traitées (sauf .force-expand). */
-body.collapse-done .row.done:not(.force-expand) > *:not(.hd),
-body.collapse-done .row.citation:not(.force-expand) > *:not(.hd),
-body.collapse-done .row.discarded:not(.force-expand) > *:not(.hd){display:none !important;}
-body.collapse-done .row.done:not(.force-expand),
-body.collapse-done .row.citation:not(.force-expand),
-body.collapse-done .row.discarded:not(.force-expand){padding-top:.35rem;padding-bottom:.35rem;}
-body.collapse-done .row.done:not(.force-expand) .hd,
-body.collapse-done .row.citation:not(.force-expand) .hd,
-body.collapse-done .row.discarded:not(.force-expand) .hd{cursor:pointer;}
-body.collapse-done .row.done:not(.force-expand) .hd::after,
-body.collapse-done .row.citation:not(.force-expand) .hd::after,
-body.collapse-done .row.discarded:not(.force-expand) .hd::after{content:'▸';color:#9a99a3;font-size:.8rem;margin-left:.3rem;}
 /* Étiquette du type de doute (grouping par épisode, 2026-07-06). */
 .doubt-kind{border:1px solid #1f3a5c;border-radius:999px;padding:.05em .6em;font-size:.72rem;font-weight:600;color:#a2c4ee;background:#0f1825;}
 .doubt-kind-pending{color:#ffd23f;border-color:#5a4a14;background:#27220a;}

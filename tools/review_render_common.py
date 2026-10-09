@@ -33,7 +33,8 @@ _CSS_PATH = _TOOLS_DIR / "review_server.css"
 #: Même règle que pour le JS client plus bas : des fichiers de 500 lignes au
 #: plus. Ces règles s'appuient sur les variables et la base de `_CSS_PATH` et
 #: ne tiennent pas seules — l'ordre n'est donc pas indifférent.
-_CSS_EXTRA_PATHS = (_TOOLS_DIR / "review_table.css",)
+_CSS_EXTRA_PATHS = (_TOOLS_DIR / "review_table.css",
+                    _TOOLS_DIR / "review_focus.css")
 
 
 # ---- Schémas URL sûrs (#5 — XSS via youtubeUrl:javascript:…) -----------------
@@ -325,7 +326,7 @@ _CLIENT_JS_FILES = (
     "review_client.js",           # core : toast, AJAX, flash, merge bar, player
     "review_client_cluster.js",   # ajout/retrait manuel de cluster
     "review_client_keyboard.js",  # nav clavier, carte active, YT, recherche
-    "review_client_toolbar.js",   # tri + repli des traités
+    "review_client_focus.js",     # /ep : une reco à la fois, liste, fin
     "review_client_table.js",     # /tableau : tri des colonnes + autosave
     "review_client_resize.js",    # /tableau : largeur des colonnes ajustable
     "review_client_filter.js",    # /tableau : filtre par épisode

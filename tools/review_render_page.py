@@ -17,6 +17,7 @@ import html
 import urllib.parse
 
 import review_render as _rr
+import review_render_focus as _focus
 
 __all__ = [
     "render_episode",
@@ -93,39 +94,23 @@ def _ep_header(
 
 
 def _render_index(source_id: str) -> str:
-    """Page d'accueil : galerie de miniatures, tous les épisodes."""
+    """Accueil : à relire d'abord, état de la chaîne, puis tous les épisodes."""
     source, episodes, groups = _rr._load_groups(source_id)
 
     def _key(guid: str):
         ep = episodes.get(guid, {})
         return (ep.get("season") or 0, ep.get("number") or 9999)
 
-    thumbs = []
-    todo = 0
-    for guid in sorted(episodes.keys(), key=_key):
-        ep = episodes.get(guid, {})
-        recs = groups.get(guid, [])
-        n_draft = sum(1 for r in recs if r.get("status", "draft") == "draft")
-        todo += n_draft
-        season, num = ep.get("season"), ep.get("number")
-        ep_num = f"S{season}·E{num}" if season and num else (f"#{num}" if num else "?")
-        vid = _rr._yt_id(ep.get("youtubeUrl", ""))
-        style = f'style="background-image:url(https://i.ytimg.com/vi/{vid}/mqdefault.jpg)"' if vid else ""
-        cls = "thumb"
-        if not recs:
-            cls += " empty"
-        elif n_draft == 0:
-            cls += " done"
-        href = f"/ep?guid={urllib.parse.quote(guid)}"
-        count_label = f"{n_draft} à valider" if recs else "0 reco"
-        thumbs.append(
-            f'<a class="{cls}" href="{href}" {style}>'
-            f'<span class="tbadge">{ep_num}</span>'
-            f'<span class="tcount">{count_label}</span></a>'
-        )
-
-    inner = (f'<div class="gallery">{"".join(thumbs)}</div>' if thumbs
-             else "<p>Aucune reco — lance l’extraction d’abord.</p>")
+    ordered = sorted(episodes.keys(), key=_key)
+    todo = sum(1 for g in ordered for r in groups.get(g, [])
+               if r.get("status", "draft") == "draft")
+    if ordered:
+        inner = (_focus.render_todo(ordered, episodes, groups,
+                                    source.get("hosts", []))
+                 + _focus.render_chain(_pipeline_state(source_id), episodes, groups)
+                 + _focus.render_all_episodes(ordered, episodes, groups))
+    else:
+        inner = "<p>Aucune reco — lance l’extraction d’abord.</p>"
     n_with = sum(1 for g in episodes if g in groups)
     # Lien vers la file des doutes agent (si non vide). Import différé :
     # review_doubts importe review_render (anti-cycle).
@@ -141,22 +126,42 @@ def _render_index(source_id: str) -> str:
     # Le tableau de pilotage est l'autre porte d'entrée de la relecture (vue
     # transversale, triable) : sans lien ici, il faudrait connaître l'URL.
     table_link = ' · <a class="doubts-link" href="/tableau">📊 Tableau de pilotage</a>'
-    subtitle = (f"<b>{todo}</b> recos à valider · {len(episodes)} épisodes ({n_with} avec recos). "
-                f"Clique une miniature.{doubts_link}{table_link}")
+    subtitle = (f"<b>{todo}</b> recos à relire · {len(episodes)} épisodes "
+                f"({n_with} avec recos).{doubts_link}{table_link}")
     return _rr._shell(source.get("title", source_id), subtitle, inner)
+
+
+def _pipeline_state(source_id: str) -> dict | None:
+    """État de la chaîne automatique, ou None si elle n'a jamais tourné ici."""
+    # Même chemin que `traiter_nouveaux_episodes.state_path`, sans importer
+    # la chaîne entière (transcription, passes réseau) dans le serveur.
+    import common
+    path = common.OUTPUT_DIR / "pipeline" / f"{common.slugify(source_id)}.json"
+    if not path.exists():
+        return None
+    try:
+        return common.read_json(path)
+    except (OSError, ValueError):
+        return None
 
 
 def _render_with_clusters(
     recs: list[dict], ep: dict, hosts: list[str], source_id: str,
     edit_id: str | None, parsed: list[str] | None = None,
+    entries: list[dict] | None = None,
 ) -> str:
     """Rendu de la liste des recos, en regroupant les doublons en clusters.
 
     L3 — `parsed` (invités parsés du titre, calculé une fois par
     `_render_episode`) est propagé à chaque `_reco_card`.
+
+    `entries`, si fourni, reçoit une entrée de liste focus par carte rendue
+    (reco ou grappe), dans l'ordre des cartes.
     """
     from reco_dedup import cluster_recos
+    sink = entries if entries is not None else []
     if edit_id:
+        sink.extend(_focus.reco_entry(r, ep, hosts, parsed) for r in recs)
         return "".join(
             _rr._reco_card(r, ep, hosts, source_id, edit_id, siblings=recs,
                            parsed=parsed)
@@ -186,10 +191,12 @@ def _render_with_clusters(
                 out.append(_rr._dedup_cluster_card(
                     c, ep, source_id, hosts, other_recos=other_recos,
                 ))
+                sink.append(_focus.cluster_entry(c.canonical_id, c.members))
                 rendered_clusters.add(c.canonical_id)
             continue
         out.append(_rr._reco_card(r, ep, hosts, source_id, edit_id,
                                   siblings=recs, parsed=parsed))
+        sink.append(_focus.reco_entry(r, ep, hosts, parsed))
     return "".join(out)
 
 
@@ -318,23 +325,31 @@ def _render_episode(
     )
     # L3 — propage `parsed_guests` (calculé une fois ci-dessus) aux cartes pour
     # éviter que chaque `_reco_card` reparse le titre de l'épisode.
+    entries: list[dict] = []
     cards = _render_with_clusters(
         recs, ep, hosts, source_id, edit_id, parsed=parsed_guests,
+        entries=entries,
     )
     add_reco_btn = (
-        '<li class="row add-reco-row">'
         '<form method="post" action="/add-reco" class="add-reco-form">'
         f'<input type="hidden" name="guid" value="{html.escape(guid)}">'
         '<button type="submit" class="btn-add-reco" '
         'title="Créer une reco manuelle pour cet épisode">'
-        '+ Ajouter une reco manuellement</button></form></li>'
+        '+ Ajouter une reco manuellement</button></form>'
     )
-    cards = cards + add_reco_btn
+    next_guid_todo = _focus.next_to_review(ordered, guid, groups)
+    end = _focus.render_end(entries, ep, episodes.get(next_guid_todo or ""))
     banner = _rr._flash_banner(flash, flash_kind)
+    # Mode focus : la liste à gauche, UNE carte à droite (le client masque les
+    # autres une fois prêt — sans JS, toutes les cartes restent visibles).
     inner = (f'{back}{banner}{_PLAYER_WRAP_HTML}{_render_merge_bar(guid)}'
-             f'<section class="ep">'
+             f'<div class="focus" data-focus>'
              f'{_ep_header(ep, recs, prev_guid=prev_guid, next_guid=next_guid)}'
-             f'{guests_panel}<ul>{cards}</ul></section>')
+             f'{_focus.render_progress(entries)}'
+             f'<div class="fx-body">'
+             f'<div class="fx-side">{_focus.render_list(entries)}{add_reco_btn}</div>'
+             f'<section class="ep">{guests_panel}{end}'
+             f'<ul>{cards}</ul></section></div></div>')
     return _rr._shell(source.get("title", source_id), "Relecture d'un épisode.", inner)
 
 

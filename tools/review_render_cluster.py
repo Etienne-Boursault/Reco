@@ -129,7 +129,8 @@ def _dedup_cluster_card(cluster, ep: dict, source_id: str,
             f'</div>'
         )
     return (
-        f'<li class="row cluster">{header}'
+        f'<li class="row cluster" '
+        f'data-cluster-id="{html.escape(cluster.canonical_id)}">{header}'
         f'<form method="post" action="/merge-recos" class="cluster-form">'
         f'<input type="hidden" name="guid" value="{html.escape(guid)}">'
         f'<input type="hidden" name="cluster_ids" value="{html.escape(cluster_ids)}">'

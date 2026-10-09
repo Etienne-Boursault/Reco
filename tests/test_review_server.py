@@ -669,9 +669,10 @@ def test_render_index(fake_source):
     assert "S1·E1" in out
     assert "#7" in out
     # ep-002 sans reco -> classe empty
-    assert "thumb empty" in out
-    assert "1 à valider" in out  # 1 draft pour ep-001
+    assert "ep-line empty" in out
+    assert "1 à relire sur 3" in out  # 1 draft pour ep-001
     assert "0 reco" in out  # ep-002 vide
+    assert "À relire" in out and "Tous les épisodes" in out
 
 
 def test_render_index_empty(tmp_path, monkeypatch):
@@ -1897,8 +1898,9 @@ def test_render_index_done_class_when_all_validated(fake_source):
         d["status"] = "validated"
         p.write_text(json.dumps(d), encoding="utf-8")
     out = rs._render_index(fake_source)
-    # Avant : 1 draft → not done. Après : 0 draft → "thumb done".
-    assert "thumb done" in out
+    # Avant : 1 draft → not done. Après : 0 draft → "ep-line done".
+    assert "ep-line done" in out
+    assert "Rien à relire" in out
 
 
 def test_post_edit_json_with_error_returns_error_kind(fake_source):
@@ -2078,13 +2080,13 @@ def test_post_save_discard_preserves_existing_kind(fake_source):
 
 
 def test_reco_card_renders_citation_button(fake_source):
-    """La carte propose un bouton « Citation » à côté de Valider/Pas une reco."""
+    """La carte propose « Seulement évoquée » (citation) à côté de Valider/Pas une reco."""
     r = {"id": "x", "title": "T", "types": ["film"], "status": "draft"}
     ep = {"guid": "g", "title": "Ep"}
     out = rs._reco_card(r, ep, [], fake_source)
     soup = parse(out)
     assert soup.find(attrs={"value": "citation"}) is not None
-    assert "Citation" in text_of(soup)
+    assert "Seulement évoquée" in text_of(soup)
 
 
 def test_reco_card_shows_citation_class_when_kind_citation(fake_source):
@@ -3292,7 +3294,7 @@ def test_reco_header_includes_basics():
     assert "Titre" in text
     assert soup.find(class_="merge-select") is not None  # checkbox merge
     assert soup.find(attrs={"value": "x"}) is not None
-    assert "draft" in text  # status badge
+    assert "à relire" in text  # état lisible (draft)
 
 
 def test_reco_header_propagates_episode_guid_when_missing():

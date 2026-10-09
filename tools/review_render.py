@@ -68,6 +68,7 @@ from review_render_common import (  # noqa: F401 — ré-exports rétro-compat
     _yt_timecode_link_parts,
     _yt_watch_link,
 )
+from review_signals import reco_signals, render_signals
 
 # Tri chronologique des cartes (ordre d'apparition dans l'épisode) — facilite
 # la détection visuelle de doublons à fusionner. Les discarded sont relégués
@@ -136,7 +137,7 @@ def _reco_checkboxes(candidates: list[str], current: str) -> str:
     """
     current_names = _split_names(current)
     return "".join(
-        f'<label><input type="checkbox" name="who" value="{html.escape(c)}"'
+        f'<label class="who-name"><input type="checkbox" name="who" value="{html.escape(c)}"'
         f'{" checked" if c in current_names else ""}> {html.escape(c)}</label>'
         for c in candidates
     )
@@ -202,9 +203,25 @@ def _reco_context_block(r: dict, ep: dict, source_id: str,
     return f'<div class="context">{" ".join(spans)}</div>'
 
 
-def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
-    """En-tête d'une carte reco : checkbox merge + types + title + actions."""
+def _status_label(r: dict) -> str:
+    """État lisible d'une reco : ce que la relecture en a décidé."""
     status = r.get("status", "draft")
+    if status == "discarded":
+        return "écartée"
+    if status != "validated":
+        return "à relire"
+    if r.get("kind") == "citation":
+        return "évoquée"
+    return "leur œuvre" if r.get("guestWork") else "validée"
+
+
+def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
+    """En-tête d'une carte reco : types, titre, créateur, écoute, menu ⋯.
+
+    Les actions rares (fusion, édition, ré-enrichissement, suppression)
+    vivent dans le menu ⋯ : la carte ne montre d'emblée que ce qui sert à
+    décider.
+    """
     reco_id_for_select = html.escape(r.get("id", ""))
     # `episodeGuid` propagé dans r pour le bouton edit (peut être absent).
     r_with_guid = r if r.get("episodeGuid") else {**r, "episodeGuid": ep.get("guid", "")}
@@ -214,16 +231,18 @@ def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
                     f"{flag_badge_html(r.get('creator'))}"
                     if r.get("creator") else "")
     return (
-        f'<div class="hd"><label class="merge-select" title="Sélectionner pour fusion manuelle">'
-        f'<input type="checkbox" data-merge-select value="{reco_id_for_select}"></label>'
+        f'<div class="hd">'
         f'<span class="type">{render_type_badges(r.get("types", []))}</span>'
         f'<b>{html.escape(r.get("title", ""))}</b>'
         f'{creator_html}'
-        f'{link}'
-        f'{conf_badge}'
-        f'{_reco_agent_badge(r)}'
-        f'<span class="st">{html.escape(status)}</span>'
-        f'{actions}</div>'
+        f'<span class="hd-meta">{link}{conf_badge}{_reco_agent_badge(r)}</span>'
+        f'<span class="st">{html.escape(_status_label(r))}</span>'
+        f'<details class="more"><summary title="Plus d’actions" '
+        f'aria-label="Plus d’actions">⋯</summary><div class="more-panel">'
+        f'<label class="merge-select" title="Sélectionner pour fusion manuelle">'
+        f'<input type="checkbox" data-merge-select value="{reco_id_for_select}">'
+        f' Sélectionner pour fusion</label>'
+        f'{actions}</div></details></div>'
     )
 
 
@@ -274,8 +293,12 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
     """
     if edit_id and r.get("id") == edit_id:
         return render_edit_form(r, ep, siblings, hosts, edit_origin)
+    if parsed is None:
+        parsed = (ep.get("guestsParsed")
+                  or _parse_guests(ep.get("title", ""), hosts))
     tcl = _yt_timecode_link_parts(r, ep)  # #4 : un seul calcul de secs
     header = _reco_header(r, ep, tcl.html, edit_origin)
+    signals = reco_signals(r, ep, hosts, parsed)
     ctx_html = _reco_context_block(r, ep, source_id, tcl.secs)
     quote_html = _reco_quote_block(r)
     boxes = _reco_checkboxes(
@@ -284,19 +307,25 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
     )
     cls = _reco_row_class(r)
     reco_id_for_select = html.escape(r.get("id", ""))
+    # Ordre de lecture : quoi (en-tête) → ce qui cloche → ce qui a été dit →
+    # qui le dit → la décision. Le texte des boutons de décision porte leur
+    # raccourci clavier, la seule aide qu'il faut avoir sous les yeux.
     return f"""
-    <li class="row {cls}" data-reco-id="{reco_id_for_select}">
+    <li class="row {cls}" data-reco-id="{reco_id_for_select}" data-signals="{len(signals)}">
       {header}
-      {ctx_html}
+      {render_signals(signals)}
       {quote_html}
+      {ctx_html}
       <form method="post" action="/save">
         <input type="hidden" name="id" value="{html.escape(r.get('id',''))}">
-        <div class="who">{boxes}
-          <input type="text" name="other" placeholder="autre nom…" value="">
-          <button type="submit" name="action" value="validate">Valider</button>
-          <button type="submit" name="action" value="citation" class="citation-btn" title="Œuvre évoquée mais pas recommandée">📝 Citation</button>
+        <div class="who"><span class="who-label">Qui recommande ?</span>{boxes}
+          <input type="text" name="other" placeholder="autre nom…" value="" aria-label="Autre nom">
+        </div>
+        <div class="decide">
+          <button type="submit" name="action" value="validate" class="ok">Valider <kbd>V</kbd></button>
+          <button type="submit" name="action" value="citation" class="citation-btn" title="Citation : œuvre évoquée mais pas recommandée">Seulement évoquée <kbd>C</kbd></button>
+          <button type="submit" name="action" value="discard" class="discard">Pas une reco <kbd>D</kbd></button>
           <button type="submit" name="action" value="guest-work" class="guestwork-btn" title="Auto-promo d'un·e invité·e ou d'un host : reste comptée comme reco, mais présentée à part sur la page épisode">⭐ Leur œuvre</button>
-          <button type="submit" name="action" value="discard" class="discard">Pas une reco</button>
         </div>
       </form>
     </li>"""
