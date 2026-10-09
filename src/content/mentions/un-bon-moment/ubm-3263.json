@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:44"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3263",
+  "itemId": "213afe7b",
+  "kind": "reco",
+  "quote": "C'est L'hygiène de l'assassin, qui est un petit... C'est un petit livre.",
+  "recommendedBy": "Carla de Coignac",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-Ce6vuPq7Gvo",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:44",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

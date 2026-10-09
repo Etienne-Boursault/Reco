@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Grand Corps Malade",
+  "enrichedAt": {
+    "links": "2026-10-09T20:05:24Z"
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:10:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3259",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/track/142749614"
+    }
+  ],
+  "quote": "Magnifique, cette chanson. [...] je trouve que cette chanson, elle est fabuleuse",
+  "recommendedBy": "Carla de Coignac",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:10:00",
+  "title": "Roméo Kiffe Juliette",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}

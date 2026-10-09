@@ -1,0 +1,53 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-09T20:05:28Z"
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "externalIds": {
+    "tmdb": "324143",
+    "tmdbType": "tv"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:02",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3264",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt43089715/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/324143"
+    }
+  ],
+  "quote": "J'ai aimé la mini-série Arte Bro. [...] Les bros. Je trouve ça vraiment super.",
+  "recommendedBy": "Félix Radu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:02",
+  "title": "Les Groos",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

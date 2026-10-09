@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:30",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3266",
+  "kind": "reco",
+  "links": [],
+  "quote": "J'aime trop Dofus aussi.",
+  "recommendedBy": "Félix Radu",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:30",
+  "title": "Dofus",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ]
+}

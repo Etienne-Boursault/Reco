@@ -1,0 +1,35 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Carla de Coignac & Félix Radu",
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:09:32",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3258",
+  "kind": "reco",
+  "links": [],
+  "quote": "Et ça s'appelle Sauf si c'est toi, en français.",
+  "recommendedBy": "Félix Radu & Carla de Coignac",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:09:55",
+  "title": "Sauf si c'est toi (reprise française de Until I Found You)",
+  "transcriptSource": "youtube",
+  "types": [
+    "musique"
+  ]
+}
