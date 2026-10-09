@@ -14,6 +14,7 @@ Les cartes elles-mêmes restent dans `review_render._reco_card`.
 from __future__ import annotations
 
 import html
+import re
 import urllib.parse
 from typing import Any
 
@@ -23,6 +24,16 @@ from review_signals import reco_signals
 
 #: États d'une entrée de liste. `pending` regroupe ce qui reste à décider.
 PENDING_STATES = frozenset({"draft", "cluster"})
+
+# « … irremplaçables (Un Bon Moment, S6-E03) » : le suffixe répète le numéro
+# déjà affiché à côté du titre.
+_EP_SUFFIX = re.compile(r"\s*\((?:[^()]*,\s*)?S\d+\s*[-·]?\s*E\d+\)\s*$", re.IGNORECASE)
+
+
+def short_title(title: str | None) -> str:
+    """Titre d'épisode sans son suffixe « (Émission, S6-E03) »."""
+    full = (title or "").strip()
+    return _EP_SUFFIX.sub("", full).strip() or full
 
 _COUNT_LABELS = (
     ("done", "validée", "validées"),
@@ -112,9 +123,18 @@ def render_progress(entries: list[dict[str, Any]]) -> str:
         f'<span class="fx-progress-txt"><b data-fx-done>{done}</b> sur '
         f'<span data-fx-total>{total}</span> traitées</span>'
         '<span class="fx-bar" aria-hidden="true">'
-        f'<span class="fx-bar-fill" data-fx-bar style="width:{pct}%"></span>'
+        f'<span class="fx-bar-fill" data-fx-bar style="{_bar_style(pct)}"></span>'
         '</span></div>'
     )
+
+
+def _bar_style(pct: int) -> str:
+    """Remplissage d'une barre de progression.
+
+    `transform` plutôt que `width` : l'animation reste sur le compositeur
+    (pas de recalcul de mise en page à chaque image).
+    """
+    return f"transform:scaleX({pct / 100:.2f})"
 
 
 def _ep_label(ep: dict) -> str:
@@ -146,10 +166,11 @@ def render_end(entries: list[dict[str, Any]], ep: dict,
         chain = "Épisode traité à la main : rien ne part tout seul."
     if next_ep:
         guid_q = urllib.parse.quote(next_ep.get("guid", ""))
-        label = " ".join(x for x in (_ep_label(next_ep),
-                                     html.escape(next_ep.get("title") or "")) if x)
+        label = " · ".join(x for x in (_ep_label(next_ep),
+                                       html.escape(short_title(next_ep.get("title")))) if x)
         go = (f'<a class="fx-end-go" href="/ep?guid={guid_q}">'
-              f'Épisode suivant à relire : {label} →</a>')
+              f'<span>Épisode suivant →</span>'
+              f'<small class="fx-end-next">{label}</small></a>')
     else:
         go = '<a class="fx-end-go" href="/">Plus rien à relire · accueil</a>'
     return (
@@ -196,9 +217,9 @@ def _todo_card(ep: dict, recs: list[dict], hosts: list[str]) -> str:
     return (
         f'<a class="todo-card" href="/ep?guid={urllib.parse.quote(guid)}">{img}'
         f'<span class="todo-body"><span class="todo-num">{_ep_label(ep)}</span>'
-        f'<span class="todo-title">{html.escape(ep.get("title") or "?")}</span>'
+        f'<span class="todo-title">{html.escape(short_title(ep.get("title")) or "?")}</span>'
         f'<span class="todo-meta">{n_draft} à relire sur {len(recs)}{sig}</span>'
-        f'<span class="fx-bar"><span class="fx-bar-fill" style="width:{pct}%">'
+        f'<span class="fx-bar"><span class="fx-bar-fill" style="{_bar_style(pct)}">'
         f'</span></span><span class="todo-cta">{cta} →</span></span></a>'
     )
 
@@ -266,7 +287,7 @@ def render_all_episodes(ordered: list[str], episodes: dict[str, dict],
             f'<li class="ep-line {cls}" data-ep-row>'
             f'<a href="/ep?guid={urllib.parse.quote(guid)}">'
             f'<span class="ep-line-num">{_ep_label(ep) or "?"}</span>'
-            f'<span class="ep-line-title">{html.escape(ep.get("title") or "?")}</span>'
+            f'<span class="ep-line-title">{html.escape(short_title(ep.get("title")) or "?")}</span>'
             f'<span class="ep-line-count">{label}</span></a></li>'
         )
     return (

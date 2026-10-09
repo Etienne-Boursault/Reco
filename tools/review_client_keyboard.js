@@ -421,6 +421,8 @@
   // --- Autoplay toggle button (injecté dans merge-bar form ou flottant) ---
   function ensureAutoplayToggle() {
     if (document.querySelector('[data-autoplay-toggle]')) return;
+    // Sans lecteur sur la page (accueil, tableau…), le bouton ne pilote rien.
+    if (!document.querySelector('[data-player-wrap], [data-audio-bar]')) return;
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-autoplay-toggle', '1');

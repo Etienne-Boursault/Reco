@@ -173,7 +173,7 @@ def _reco_action_buttons(r: dict, edit_origin: str = "/ep") -> str:
         f'<input type="hidden" name="id" value="{reco_id_esc}">'
         f'<button type="submit" class="btn-delete" '
         f'onclick="return confirm(\'Supprimer définitivement cette reco ?\')" '
-        f'title="Supprimer définitivement (irréversible)">🗑</button>'
+        f'title="Supprimer définitivement (irréversible)">🗑 Supprimer</button>'
         f'</form>'
     )
     return edit_btn + reenrich_btn + delete_btn

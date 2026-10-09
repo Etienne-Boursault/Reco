@@ -346,10 +346,14 @@ def _shell(source_title: str, subtitle: str, inner: str) -> str:
         '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         f"<title>Relecture — {html.escape(source_title)}</title>"
-        f"<style>{_style()}</style></head><body>"
+        f"<style>{_style()}</style></head><body><main>"
         f"<h1>Relecture — {html.escape(source_title)}</h1>"
         f'<p class="meta">{subtitle}</p>{inner}'
         '<div id="toast-zone" aria-live="polite" aria-atomic="true"></div>'
+        # Annonce aux lecteurs d'écran (ex. « Reco 3 sur 15 : Brazil ») —
+        # le mode focus change de carte sans changer de page.
+        '<div class="sr-only" data-announce aria-live="polite" aria-atomic="true"></div>'
+        "</main>"
         f"<script>{_CLIENT_JS}</script>"
         "</body></html>"
     )

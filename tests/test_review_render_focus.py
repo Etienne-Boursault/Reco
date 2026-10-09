@@ -67,8 +67,8 @@ def test_render_progress():
     entries = [{"state": "draft"}, {"state": "done"}, {"state": "cluster"},
                {"state": "discarded"}]
     out = rf.render_progress(entries)
-    assert "data-fx-done>2<" in out and "width:50%" in out
-    assert "width:100%" in rf.render_progress([])
+    assert "data-fx-done>2<" in out and "scaleX(0.50)" in out
+    assert "scaleX(1.00)" in rf.render_progress([])
 
 
 def test_render_end_hidden_until_everything_is_decided():
@@ -83,7 +83,8 @@ def test_render_end_hidden_until_everything_is_decided():
     assert "seulement évoquée<" in out          # 1 → singulier
     assert "0</b> <span" in out and "écartée<" in out  # 0 → singulier
     assert "la chaîne pose les liens" in out
-    assert 'href="/ep?guid=yt-2"' in out and "S6·E5 Suite" in out
+    assert 'href="/ep?guid=yt-2"' in out and "Épisode suivant →" in out
+    assert "S6·E5 · Suite" in out
 
 
 def test_render_end_for_a_hand_made_episode_without_next():
@@ -219,3 +220,40 @@ def test_card_shows_signals_and_decision_bar(fake_source):  # noqa: F811
 ])
 def test_status_label(r, label):
     assert rr._status_label(r) == label
+
+
+@pytest.mark.parametrize("title,short", [
+    ("Babor et Jenny Letellier irremplaçables (Un Bon Moment, S6-E03)",
+     "Babor et Jenny Letellier irremplaçables"),
+    ("Orelsan (S5-E37)", "Orelsan"),
+    ("Spécial (Un Bon Moment, S5·E9)", "Spécial"),
+    ("Un titre (sans numéro)", "Un titre (sans numéro)"),
+    ("(Un Bon Moment, S6-E03)", "(Un Bon Moment, S6-E03)"),  # rien d'autre : on garde
+    (None, ""),
+])
+def test_short_title(title, short):
+    assert rf.short_title(title) == short
+
+
+def test_short_titles_on_home_and_header(fake_source, monkeypatch):  # noqa: F811
+    import common
+    path = common.EPISODES_DIR / fake_source / "ep-001.json"
+    ep = json.loads(path.read_text(encoding="utf-8"))
+    ep["title"] = "Charlie au top (Démo Podcast, S1-E01)"
+    path.write_text(json.dumps(ep), encoding="utf-8")
+    home = rr._render_index(fake_source)
+    assert "Charlie au top" in home and "(Démo Podcast, S1-E01)" not in home
+    page = rr._render_episode(fake_source, "ep-001")
+    assert "(Démo Podcast, S1-E01)" not in parse(page).select_one(".eph").get_text()
+
+
+def test_pages_have_a_main_landmark_and_an_announcer(fake_source):  # noqa: F811
+    soup = parse(rr._render_episode(fake_source, "ep-001"))
+    main = soup.select_one("main")
+    assert main is not None and main.select_one("h1") is not None
+    assert main.select_one("[data-announce][aria-live]") is not None
+
+
+def test_delete_is_labelled_in_the_menu(fake_source):  # noqa: F811
+    soup = parse(rr._render_episode(fake_source, "ep-001"))
+    assert "Supprimer" in soup.select_one(".more .btn-delete").get_text()

@@ -71,7 +71,8 @@
     const elDone = document.querySelector('[data-fx-done]');
     const bar = document.querySelector('[data-fx-bar]');
     if (elDone) elDone.textContent = String(done);
-    if (bar) bar.style.width = (all.length ? Math.round(100 * done / all.length) : 100) + '%';
+    // transform (et non width) : l'animation reste sur le compositeur.
+    if (bar) bar.style.transform = 'scaleX(' + (all.length ? done / all.length : 1).toFixed(2) + ')';
   }
 
   // Bilan de l'écran de fin (validées, évoquées, etc.).
@@ -100,10 +101,31 @@
     return finished;
   }
 
+  // Position de la carte affichée juste avant : donne le sens du changement.
+  let lastPos = 0;
+
+  // La carte entre du côté où l'on va : de la droite quand on avance, de la
+  // gauche quand on revient. Rien au premier affichage.
+  function animateEnter(li, pos) {
+    if (!li || !lastPos || pos === lastPos) return;
+    li.classList.remove('fx-enter-next', 'fx-enter-prev');
+    void li.offsetWidth;  // relance l'animation si la classe était déjà là
+    li.classList.add(pos > lastPos ? 'fx-enter-next' : 'fx-enter-prev');
+    li.addEventListener('animationend', () => {
+      li.classList.remove('fx-enter-next', 'fx-enter-prev');
+    }, { once: true });
+  }
+
+  function announce(text) {
+    const zone = document.querySelector('[data-announce]');
+    if (zone) zone.textContent = text;
+  }
+
   function markCurrent(li) {
     const id = li ? rowId(li) : '';
     let pos = 0;
-    items().forEach((item, i) => {
+    const all = items();
+    all.forEach((item, i) => {
       const on = item.getAttribute('data-fx-target') === id;
       item.classList.toggle('current', on);
       if (on) {
@@ -116,6 +138,12 @@
     });
     const elPos = document.querySelector('[data-fx-pos]');
     if (elPos && pos) elPos.textContent = String(pos);
+    if (pos) {
+      animateEnter(li, pos);
+      const t = all[pos - 1].querySelector('.fx-t');
+      if (lastPos) announce('Reco ' + pos + ' sur ' + all.length + ' : ' + (t ? t.textContent : ''));
+      lastPos = pos;
+    }
   }
 
   // Prochaine reco à décider après `id`, dans l'ordre de la liste (en boucle).
@@ -184,8 +212,9 @@
     if (root()) updateCounts();
   });
 
-  // Échec de l'enregistrement : retour sur la carte, avec son vrai état.
-  document.addEventListener('reco:failed', (e) => {
+  // Échec de l'enregistrement, ou décision annulée (« ↩ Annuler ») : retour
+  // sur la carte, avec son vrai état.
+  function backTo(e) {
     if (!root() || !e.detail) return;
     const li = findRow(e.detail.id);
     if (!li) return;
@@ -193,7 +222,24 @@
     updateProgress();
     updateEnd();
     activate(li);
-  });
+  }
+  document.addEventListener('reco:failed', backTo);
+  document.addEventListener('reco:restored', backTo);
+
+  // Menu ⋯ : se ferme comme un menu (clic à côté, Échap), pas seulement en
+  // recliquant sur ⋯.
+  function closeMenus(except) {
+    document.querySelectorAll('details.more[open]').forEach((d) => {
+      if (d !== except) d.open = false;
+    });
+  }
+  document.addEventListener('click', (e) => closeMenus(e.target.closest('details.more')), true);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.querySelector('details.more[open]')) {
+      closeMenus(null);
+      e.stopImmediatePropagation();  // Échap ferme le menu, pas l'édition en cours
+    }
+  }, true);
 
   document.addEventListener('click', (e) => {
     const target = e.target.closest('[data-fx-target]');
@@ -264,6 +310,12 @@
     const r = root();
     if (!r) return;
     r.classList.add('fx-ready');
+    // Au téléphone, le panneau des invités (ouvert par défaut) repousserait
+    // la carte sous la moitié de l'écran : il se replie.
+    const guests = r.querySelector('details.guests');
+    if (guests && window.matchMedia && window.matchMedia('(max-width:760px)').matches) {
+      guests.open = false;
+    }
     markCurrent(document.querySelector('li.row.active'));
     updateProgress();
     updateEnd();

@@ -51,7 +51,9 @@ def _ep_header(
     # tooltip quand il diffère (utile pour vérifier le match YT).
     rss_title = ep.get("title") or ""
     yt_title = ep.get("youtubeTitle") or ""
-    title = html.escape(rss_title or yt_title or "?")
+    # Le suffixe « (Un Bon Moment, S6-E03) » répète le badge S·E affiché juste
+    # avant : on ne garde que le titre lui-même.
+    title = html.escape(_focus.short_title(rss_title or yt_title) or "?")
     tooltip = (f' title="YouTube : {html.escape(yt_title)}"'
                if rss_title and yt_title and yt_title != rss_title else "")
     yt = _rr._safe_url(ep.get("youtubeUrl"))  # #5 : XSS guard sur href.

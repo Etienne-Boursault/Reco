@@ -190,6 +190,50 @@ describe('mode focus : enchaînement des décisions', () => {
   });
 });
 
+describe('mode focus : retouches de l’audit', () => {
+  it('reco:restored (« ↩ Annuler ») ramène sur la carte rétablie', () => {
+    mountFocus([['r1', '', 'A'], ['r2', '', 'B']]);
+    fire('reco:deciding', { id: 'r1', action: 'validate' });
+    expect(activeId()).toBe('r2');
+    fire('reco:restored', { id: 'r1' });
+    expect(activeId()).toBe('r1');
+    expect(document.querySelector('[data-fx-target="r1"]')!.getAttribute('data-state')).toBe('draft');
+  });
+
+  it('la barre de progression avance en scaleX', () => {
+    mountFocus([['r1', '', 'A'], ['r2', '', 'B']]);
+    fire('reco:deciding', { id: 'r1', action: 'discard' });
+    expect((document.querySelector('[data-fx-bar]') as HTMLElement).style.transform).toBe('scaleX(0.50)');
+  });
+
+  it('changer de carte l’annonce et l’anime dans le bon sens', () => {
+    mountFocus([['r1', '', 'A'], ['r2', '', 'B']]);
+    document.body.insertAdjacentHTML('beforeend', '<div data-announce aria-live="polite"></div>');
+    const setActive = (window as any).__reco.setActiveRow;
+    setActive(document.querySelector('[data-reco-id="r1"]'), { noScroll: true });
+    setActive(document.querySelector('[data-reco-id="r2"]'), { noScroll: true });
+    expect(document.querySelector('[data-announce]')!.textContent).toBe('Reco 2 sur 2 : B');
+    expect(document.querySelector('[data-reco-id="r2"]')!.classList.contains('fx-enter-next')).toBe(true);
+    setActive(document.querySelector('[data-reco-id="r1"]'), { noScroll: true });
+    expect(document.querySelector('[data-reco-id="r1"]')!.classList.contains('fx-enter-prev')).toBe(true);
+  });
+
+  it('le menu ⋯ se ferme au clic à côté et sur Échap', () => {
+    mountFocus([['r1', '', 'A']]);
+    const li = document.querySelector('[data-reco-id="r1"]') as HTMLElement;
+    li.insertAdjacentHTML('afterbegin',
+      '<details class="more" open><summary>⋯</summary><div class="more-panel"><a href="#x">Éditer</a></div></details>');
+    const menu = li.querySelector('details.more') as HTMLDetailsElement;
+    (menu.querySelector('a') as HTMLElement).dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(menu.open).toBe(true);  // clic DANS le menu : il reste ouvert
+    (li.querySelector('b') as HTMLElement).click();
+    expect(menu.open).toBe(false);
+    menu.open = true;
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    expect(menu.open).toBe(false);
+  });
+});
+
 describe('encadré « À vérifier »', () => {
   it('« Corriger » décoche le prénom et coche le nom complet', () => {
     mountFocus([['r1', '', 'A']]);
