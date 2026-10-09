@@ -1,0 +1,89 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Émilie Tronche",
+  "enrichedAt": {
+    "links": "2026-10-09T20:05:28Z"
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "externalIds": {
+    "tmdb": "248664",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/248664-samuel/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:12:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3265",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "streaming",
+      "label": "ARTE.tv",
+      "url": "https://www.arte.tv/fr/videos/RC-024878/samuel/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt15498808/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/248664"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/248664-samuel/watch?locale=FR"
+    }
+  ],
+  "quote": "Je pense que tu vas adorer Samuel. [...] La série Samuel, c'est super. Émilie Tronche.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:12:19",
+  "title": "Samuel",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Samuel"
+    },
+    {
+      "ethics": "neutral",
+      "label": "TF1+",
+      "url": "https://www.tf1.fr/recherche?q=Samuel"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Samuel"
+    },
+    {
+      "ethics": "indie",
+      "label": "Arte",
+      "url": "https://www.arte.tv/fr/search/?q=Samuel"
+    }
+  ]
+}

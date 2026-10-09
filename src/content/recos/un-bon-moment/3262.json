@@ -4,9 +4,9 @@
   },
   "creator": "Phoebe Waller-Bridge",
   "enrichedAt": {
-    "links": "2026-10-02T14:50:20Z"
+    "links": "2026-10-09T20:05:28Z"
   },
-  "episodeGuid": "yt-7kh5yi46Xh8",
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
   "externalIds": {
     "tmdb": "67070",
     "tmdbType": "tv",
@@ -14,10 +14,10 @@
   },
   "extractionHistory": [
     {
-      "at": "2026-10-02T10:29:53+00:00",
+      "at": "2026-10-09T10:27:21+00:00",
       "llmModel": "claude-opus-5",
       "llmProvider": "anthropic",
-      "timestamp_at_extraction": "00:20:01",
+      "timestamp_at_extraction": "01:11:21",
       "transcriptModel": "large-v3-turbo",
       "transcriptSource": "youtube",
       "worker": "main-cpu"
@@ -26,8 +26,8 @@
   "extractors": [
     "anthropic"
   ],
-  "id": "ubm-3247",
-  "kind": "citation",
+  "id": "ubm-3262",
+  "kind": "reco",
   "links": [
     {
       "ethics": "neutral",
@@ -66,11 +66,11 @@
       "url": "https://www.themoviedb.org/tv/67070-fleabag/watch?locale=FR"
     }
   ],
-  "quote": "Vous avez vu Fleabag ou pas ? Oui. Elle, elle a fait un spectacle avant de faire sa série. C'est un peu le même genre.",
-  "recommendedBy": "Jenny Letellier",
+  "quote": "une série que j'ai adoré, que j'ai vraiment adoré, qui s'appelle Fleabag",
+  "recommendedBy": "Carla de Coignac",
   "sourceId": "un-bon-moment",
   "status": "validated",
-  "timestamp": "00:20:01",
+  "timestamp": "01:11:21",
   "title": "Fleabag",
   "transcriptSource": "youtube",
   "types": [

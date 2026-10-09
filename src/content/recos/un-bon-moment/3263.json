@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Amélie Nothomb",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-09T20:05:32Z",
+    "links": "2026-10-09T20:05:32Z"
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "externalIds": {
+    "isbn": "9782253111184"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3263",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253111184-hygiene-de-l-assassin-amelie-nothomb/"
+    }
+  ],
+  "quote": "C'est L'hygiène de l'assassin, qui est un petit... C'est un petit livre.",
+  "recommendedBy": "Carla de Coignac",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:44",
+  "title": "Hygiène de l'assassin",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}
