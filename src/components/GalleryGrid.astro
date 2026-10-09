@@ -27,6 +27,9 @@ export interface Props {
    * compat ascendante (sans sourceId, les cartes restent non-cliquables).
    */
   sourceId?: string;
+  /** Types de la galerie, transmis aux cartes pour choisir leur badge
+   *  (cf. `GalleryCard`). Absent sur les pages non typées (invité). */
+  galleryTypes?: readonly string[];
 }
 
 const {
@@ -36,6 +39,7 @@ const {
   emptyMessage = 'Aucune recommandation pour cette galerie.',
   emptyHint,
   sourceId,
+  galleryTypes,
 } = Astro.props;
 
 const n = entries.length;
@@ -60,6 +64,7 @@ const n = entries.length;
               creator={e.creator}
               mentionCount={e.mentionCount}
               href={sourceId ? `/${sourceId}/oeuvre/${e.id}` : undefined}
+              galleryTypes={galleryTypes}
             />
           </li>
         ))}

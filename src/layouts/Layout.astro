@@ -4,6 +4,7 @@ import MetaTags from '../components/MetaTags.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SearchPalette from '../components/SearchPalette.astro';
 import { t, defaultLocale, type Locale } from '../i18n';
+import { siteConfig } from '../config/site';
 
 interface ThemeColors {
   bg: string;
@@ -94,6 +95,9 @@ const styleVars = c
   : undefined;
 // Couleur de thème mobile (status bar Android, barre adresse iOS).
 const themeColor = c?.bg ?? '#0e0e10';
+// À la racine, le titre de la page porte déjà le nom du site (ou la liste des
+// podcasts) : la barre du haut n'y répète pas le lien d'accueil.
+const estAccueil = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -128,14 +132,30 @@ const themeColor = c?.bg ?? '#0e0e10';
     <noscript>
       <p class="noscript-warning">{t('a11y.noscript', lang)}</p>
     </noscript>
+    {/* Barre du haut : le nom du site (retour à l'accueil) et la recherche.
+       Avant elle, le bouton de recherche tombait SOUS le pied de page, collé
+       au bord gauche — le seul accès à la recherche au doigt ou à la souris
+       était au bout de 27 000 px de défilement sur l'accueil mobile (audit
+       d'interface du 2026-10-07).
+       Un `<nav>` et NON un `<header>` : chaque page porte déjà son propre
+       `<header role="banner">`, et un second repère `banner` est interdit.
+       PAS collante : la barre de filtres du catalogue l'est déjà (`top: 0`),
+       les deux se disputeraient le haut de l'écran.
+       Le nom du site est omis à la racine, où le titre de la page le porte
+       déjà en grand juste en dessous. */}
+    <nav class="site-bar wrap" aria-label={t('nav.siteBar', lang)}>
+      {!estAccueil && <a class="site-bar-home" href="/">{siteConfig.siteName}</a>}
+      <SearchPalette part="trigger" />
+    </nav>
     <slot />
     {showFooter && <SiteFooter />}
 
     {/* P0-1 (Fixer final Phase 2, 2026-06-11) : palette globale Cmd+K /
        Ctrl+K / "/" — monté ici pour être disponible sur TOUTE page (avant,
        seule `/recherche` la montait). L'index `/search.json` est chargé
-       lazy au premier open. Cf. ADR 0035. */}
-    <SearchPalette />
+       lazy au premier open. Cf. ADR 0035.
+       Seul le DIALOGUE vit ici ; son déclencheur est dans la barre du haut. */}
+    <SearchPalette part="dialog" />
 
     {/* A11y — H5 : gestion centralisée du fallback icône logo (img onerror
        inline serait CSP-unfriendly). Délégation d'événement sur error
@@ -166,6 +186,16 @@ const themeColor = c?.bg ?? '#0e0e10';
         },
         true,
       );
+    </script>
+
+    {/* Retour à l'appui sur iOS (audit d'interface du 2026-10-07).
+       Safari iOS n'applique `:active` au toucher que si un écouteur
+       `touchstart` existe sur l'élément ou un ancêtre. Sans celui-ci, tous
+       les états d'appui du site restaient muets sur iPhone — précisément
+       l'appareil pour lequel ils ont été écrits. Passif et vide : il
+       n'intercepte rien et ne retarde aucun défilement. */}
+    <script>
+      document.addEventListener('touchstart', () => {}, { passive: true });
     </script>
 
     {/* Tracking clics sortants (item #25 / ADR 0046).
@@ -239,3 +269,39 @@ const themeColor = c?.bg ?? '#0e0e10';
     </script>
   </body>
 </html>
+
+<style>
+  /* Barre du haut (cf. le commentaire du balisage). Le bouton de recherche
+     est à DROITE, là où on cherche une loupe ; le nom du site, à gauche,
+     ramène à l'accueil — deux réflexes que tout le web a appris.
+     `flex-end` + `margin-right: auto` sur le lien : sans lien (racine), le
+     bouton reste à droite au lieu de glisser à gauche. */
+  .site-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 0.9rem;
+  }
+  .site-bar-home {
+    margin-right: auto;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+    /* Cible tactile : le texte seul ne fait que 22 px de haut. */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .site-bar-home:hover {
+      color: var(--accent);
+    }
+  }
+  .site-bar-home:active {
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+/**
+ * WorkVoix — « Qui en parle » : qui recommande ou évoque l'œuvre, et combien
+ * de fois, sur sa fiche (direction « La récurrence », retenue le 2026-10-07).
+ *
+ * Chaque barre est à l'échelle du total des mentions, et le nombre exact est
+ * écrit à côté : la barre se lit d'un coup d'œil, le chiffre se vérifie. Les
+ * mentions sans auteur identifié — les transcripts ne sont pas diarisés —
+ * ont leur ligne « Sans attribution » plutôt que de disparaître du compte.
+ */
+import type { QuiEnParle } from '../lib/work/recurrence';
+import { plural } from '../utils/plural';
+
+interface Props {
+  qui: QuiEnParle;
+}
+
+const { qui } = Astro.props;
+const lignes = [
+  ...qui.voix.map((v) => ({ nom: v.nom, n: v.n, part: v.part, anonyme: false })),
+  ...(qui.sansAttribution > 0
+    ? [{
+        nom: 'Sans attribution',
+        n: qui.sansAttribution,
+        part: qui.total > 0 ? Math.round((qui.sansAttribution / qui.total) * 10000) / 100 : 0,
+        anonyme: true,
+      }]
+    : []),
+];
+---
+
+<section class="voix" aria-labelledby="voix-titre">
+  <h2 id="voix-titre" class="voix-titre">Qui en parle</h2>
+  <ul class="voix-liste">
+    {lignes.map((l) => (
+      <li class:list={['voix-ligne', { anonyme: l.anonyme }]}>
+        <span class="voix-nom">{l.nom}</span>
+        <span class="voix-n">{l.n} {plural(l.n, 'mention')}</span>
+        <span class="voix-barre" aria-hidden="true">
+          <span class="voix-remplie" style={`--part:${l.part}%`}></span>
+        </span>
+      </li>
+    ))}
+  </ul>
+  {qui.aDesVoixCommunes && (
+    <p class="voix-note">Une mention peut avoir plusieurs voix : le total des lignes dépasse alors celui des mentions.</p>
+  )}
+</section>
+
+<style>
+  .voix {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+  .voix-titre {
+    font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+    margin: 0;
+  }
+  .voix-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .voix-ligne {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'nom n'
+      'barre barre';
+    row-gap: 0.35rem;
+    column-gap: 0.75rem;
+    font-size: 0.95rem;
+  }
+  .voix-nom {
+    grid-area: nom;
+    font-weight: 600;
+    overflow-wrap: break-word;
+  }
+  .anonyme .voix-nom {
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .voix-n {
+    grid-area: n;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .voix-barre {
+    grid-area: barre;
+    display: block;
+    height: 8px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--text) 10%, transparent);
+  }
+  .voix-remplie {
+    display: block;
+    height: 100%;
+    width: var(--part);
+    border-radius: 999px;
+    background: var(--accent);
+  }
+  .anonyme .voix-remplie {
+    background: color-mix(in oklab, var(--text) 35%, transparent);
+  }
+  .voix-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+</style>

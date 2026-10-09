@@ -2,9 +2,11 @@
  * Endpoint OG PNG dynamique (résolu au build via `getStaticPaths`).
  *
  * Routes générées :
- *  - /og/default.png                            (carte de repli + homepage)
- *  - /og/<source>.png                           (page source/podcast)
- *  - /og/<source>/episode/<guid>.png            (page épisode)
+ *  - /og/default.png                            (carte de repli)
+ *  - /og/<source>.png                           (source, accueil mono-source)
+ *  - /og/<source>/episode/<guid>.png            (épisode avec ≥ 1 reco)
+ *  - /og/<source>/galerie/<slug>.png            (galerie par type)
+ *  - /og/<source>/oeuvre/<itemId>.png           (œuvre assez citée)
  *
  * Le rendu se produit pendant `astro build` — aucune dépendance runtime.
  *
@@ -17,113 +19,79 @@
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { renderOG } from '../../lib/og/renderer.js';
-import { TYPE_EMOJI } from '../../lib/og/template.js';
-import { recoPubliee } from '../../utils/recoPubliee.js';
-
-// Alias de type et NON `interface` : `GetStaticPaths` attend des props
-// assignables a `Record<string, any>`, ce qu'une interface ne satisfait pas
-// (pas d'index signature implicite). Les champs sont inchanges.
-type PageProps = {
-  title: string;
-  subtitle?: string;
-  emoji?: string;
-  typeLabel?: string;
-  sourceLabel?: string;
-  accent?: string;
-  bg?: string;
-};
+import { renderOG, type OGCarte } from '../../lib/og/renderer.js';
+import { cartesDuSite } from '../../lib/og/cartes.js';
 
 /**
- * Slug-safe : garde uniquement [a-z0-9-_/] pour rester valable côté URL.
- * Guarde-fou si un guid contient un jour un caractère exotique
- * (UUID / hex actuels ne posent pas problème). Cohérent avec
- * `src/pages/[source]/episode/[guid].astro` qui consomme le `guid` brut.
+ * Les cartes « Étiquette » (audit d'interface du 2026-10-07) : accueil,
+ * sources, épisodes, galeries et fiches d'œuvre. Le choix des cartes et leurs
+ * chiffres vivent dans `lib/og/cartes.ts` ; ici, seulement la lecture des
+ * collections et leur mise à plat.
  */
-function safeSlugSegment(s: string): string {
-  return s.toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/-+/g, '-');
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const sources = await getCollection('sources');
-  const episodes = await getCollection('episodes');
-  const recos = await getCollection('recos');
+  const [sources, episodes, recos, items, mentions] = await Promise.all([
+    getCollection('sources'),
+    getCollection('episodes'),
+    getCollection('recos'),
+    getCollection('items'),
+    getCollection('mentions'),
+  ]);
 
-  const paths: Array<{ params: { slug: string }; props: PageProps }> = [];
-
-  // 1. Carte par défaut (homepage).
-  paths.push({
-    params: { slug: 'default' },
-    props: {
-      title: 'Reco',
-      subtitle: 'Catalogue de recommandations de podcasts',
-      emoji: '🎙️',
-      typeLabel: 'Catalogue',
-      sourceLabel: 'source-internet.fr',
-    },
+  const cartes = cartesDuSite({
+    sources: sources.map((s) => ({
+      id: s.id,
+      title: s.data.title,
+      tagline: s.data.tagline,
+      accent: s.data.theme?.colors?.accent,
+      bg: s.data.theme?.colors?.bg,
+    })),
+    episodes: episodes.map((e) => ({
+      guid: e.data.guid,
+      sourceId: e.data.sourceId.id,
+      title: e.data.title,
+      number: e.data.number,
+      season: e.data.season,
+    })),
+    recos: recos.map((r) => ({
+      id: r.data.id,
+      sourceId: r.data.sourceId.id,
+      episodeGuid: r.data.episodeGuid,
+      status: r.data.status,
+      title: r.data.title,
+      kind: r.data.kind,
+      guestWork: r.data.guestWork,
+      timestamp: r.data.timestamp,
+    })),
+    // L'identifiant d'entrée d'un item est son chemin, `<source>/<id>` : c'est
+    // la seule trace de sa source (cf. la page œuvre, qui filtre de même).
+    items: items.map((it) => ({
+      id: it.data.id,
+      sourceId: it.id.split('/')[0] ?? '',
+      title: it.data.title,
+      types: it.data.types,
+      creator: it.data.creator ?? null,
+    })),
+    mentions: mentions.map((m) => ({
+      id: m.data.id,
+      itemId: m.data.itemId,
+      sourceRef: {
+        sourceId: m.data.sourceRef.sourceId,
+        episodeGuid: m.data.sourceRef.episodeGuid ?? null,
+        timestamp: m.data.sourceRef.timestamp ?? null,
+        transcriptSource: m.data.sourceRef.transcriptSource ?? null,
+      },
+      recommendedBy: m.data.recommendedBy ?? null,
+      kind: m.data.kind,
+      guestWork: m.data.guestWork ?? null,
+      status: m.data.status,
+    })),
   });
 
-  // 2. Une carte par source/podcast.
-  for (const source of sources) {
-    const d = source.data;
-    paths.push({
-      params: { slug: source.id },
-      props: {
-        title: d.title,
-        subtitle: d.tagline ?? d.description?.slice(0, 80),
-        emoji: '🎙️',
-        typeLabel: 'Podcast',
-        sourceLabel: d.title,
-        accent: d.theme?.colors?.accent,
-        bg: d.theme?.colors?.bg,
-      },
-    });
-  }
-
-  // 3. Une carte par épisode (qui a au moins une reco validée).
-  // Set<string> : on n'a besoin que de `has()` (lookup membership).
-  // Typage `ReturnType<typeof Array.prototype.map>` collapsait en `any[]`
-  // — cf. CR senior H3.
-  const recosBySrcGuid = new Set<string>();
-  for (const r of recos) {
-    if (!recoPubliee(r.data.status)) continue;
-    recosBySrcGuid.add(`${r.data.sourceId.id}::${r.data.episodeGuid}`);
-  }
-  const sourceById = new Map(sources.map((s) => [s.id, s]));
-
-  for (const ep of episodes) {
-    const srcId = ep.data.sourceId.id;
-    const key = `${srcId}::${ep.data.guid}`;
-    if (!recosBySrcGuid.has(key)) continue;
-    const src = sourceById.get(srcId);
-    if (!src) continue;
-    // P2-P (Fixer coordination Vague 1) : skip les épisodes ayant une
-    // miniature YouTube. La page épisode passe déjà `ogImage={thumb}` au
-    // Layout, qui a priorité sur `ogSlug`. Générer une carte Satori
-    // orpheline gaspillerait ~80 KB × N épisodes (8 MB total) sans aucune
-    // utilisation. Cf. ADR 0021 §1 + section « Coordination finale 2026-06-11 ».
-    const hasYtThumb = /[?&]v=([\w-]+)/.test(ep.data.youtubeUrl ?? '');
-    if (hasYtThumb) continue;
-    const epTitle = ep.data.youtubeTitle ?? ep.data.title;
-    paths.push({
-      params: { slug: `${safeSlugSegment(srcId)}/episode/${safeSlugSegment(ep.data.guid)}` },
-      props: {
-        title: epTitle,
-        subtitle: src.data.title,
-        emoji: TYPE_EMOJI.podcast,
-        typeLabel: 'Épisode',
-        sourceLabel: src.data.title,
-        accent: src.data.theme?.colors?.accent,
-        bg: src.data.theme?.colors?.bg,
-      },
-    });
-  }
-
-  return paths;
+  return cartes.map(({ slug, carte }) => ({ params: { slug }, props: carte }));
 };
 
 export const GET: APIRoute = async ({ props }) => {
-  const png = await renderOG(props as PageProps);
+  const png = await renderOG(props as OGCarte);
   // Note : on retourne un Buffer/Uint8Array — Astro l'écrit tel quel dans dist/.
   // Pas de Cache-Control ici : le mensonge au build statique (cf. H4).
   // TS 5.7 a rendu `Uint8Array` generique sur son buffer ; `BodyInit`

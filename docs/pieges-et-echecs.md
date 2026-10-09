@@ -209,6 +209,22 @@ et il attrape ce que le build laisse filer — cinq erreurs réelles au dernier
 comptage, dont un commentaire placé au milieu d'une liste d'attributs, toléré
 par le compilateur Astro et refusé par TypeScript.
 
+### Rien de ce qu'on range dans `dist/` ne survit au build suivant
+
+`astro build` vide `dist/` au début de chaque build. Le cache des cartes de
+partage vivait dans `dist/.cache/og` : il n'avait **jamais** servi d'un build
+à l'autre, ce qu'un fichier témoin a montré en une minute. Un cache se range à
+la racine (`.cache/`, ignoré par git), où le `git reset --hard` du déploiement
+ne le touche pas — et sa clé doit alors porter sur ce qui est **rendu**, pas
+sur les données, sinon il ressert l'ancienne image après une retouche du
+gabarit (ADR [0050](adr/0050-cartes-partage-cache-persistant.md)).
+
+### `SITE_URL` manque dans un arbre de travail neuf
+
+Le build exige `SITE_URL`. Un `git worktree add`, ou un agent lancé dans son
+propre arbre, ne l'a pas : le build échoue avant d'avoir rien construit.
+Lancer avec `SITE_URL=https://unebonnere.co npm run build`.
+
 ### Un déploiement coupe ~25 secondes, pas plus
 
 Mesuré en sondant le site toutes les 2 s pendant un déploiement complet :
@@ -218,6 +234,39 @@ construction.
 
 Si vous observez plusieurs minutes d'indisponibilité, ce n'est pas la durée
 normale du build : **c'est que la construction a échoué**.
+
+---
+
+## Interface
+
+### Un style scopé n'atteint pas l'élément rendu par un composant enfant
+
+Une règle du `<style>` d'un composant Astro ne s'applique qu'aux éléments
+écrits dans ce composant. Les 44 px donnés au lien « ▶ YouTube » de la
+chronologie n'ont jamais pris : le lien est rendu par `OutboundLink`. Aucune
+erreur, aucun avertissement — seule une mesure dans le navigateur l'a montré.
+Ancrer la règle : `.timeline :global(.tl-ts)`.
+
+### Un grand titre peut avaler le lien qui le précède
+
+Sur la page d'un invité, le nom en Bebas sur 7 rem, interligne 0,88, déborde
+de sa boîte vers le haut. Venant après le lien « retour au podcast » dans le
+document, il passait par-dessus et captait les clics : le lien était visible
+et mort. Les liens de retour portent désormais `position: relative; z-index: 1`
+(`global.css`). Pour vérifier, `document.elementFromPoint` au centre du lien
+doit renvoyer le lien, pas le titre.
+
+### Le défilement doux trompe les tests de clic
+
+`scroll-behavior: smooth` fait qu'un `scrollTo` rend la main avant d'arriver.
+Un test qui défile puis mesure ou clique tombe à côté. Dans Playwright,
+`window.scrollTo({ top, behavior: 'instant' })`.
+
+### `astro preview` survit à l'arrêt de sa tâche
+
+Arrêter la tâche qui l'a lancé laisse le serveur Node en vie, port 4321
+occupé — et `npm ci` échoue ensuite en `EPERM` sur les fichiers qu'il tient
+ouverts. Trouver le processus par son port et l'arrêter.
 
 ---
 

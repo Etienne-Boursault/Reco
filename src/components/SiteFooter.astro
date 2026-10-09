@@ -29,6 +29,10 @@ const support = primary?.data.support ?? [];
   <slot />
   <SupportLinks links={support} />
   <nav class="site-footer-nav" aria-label={t('footer.nav.label')}>
+    {/* Les statistiques étaient publiques et indexées, mais rien n'y menait
+       (audit d'interface du 2026-10-07). */}
+    <a href="/stats">{t('footer.stats')}</a>
+    <span aria-hidden="true">·</span>
     <a href="/a-propos">{t('footer.about')}</a>
     <span aria-hidden="true">·</span>
     <a href="/manifeste">{t('footer.manifesto')}</a>
@@ -55,9 +59,19 @@ const support = primary?.data.support ?? [];
     align-items: baseline;
   }
   .site-footer-nav a {
+    position: relative;
     color: var(--text);
     text-decoration: none;
     border-bottom: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
+  }
+  /* Zone tactile de 44 px sans déplacer le soulignement, porté par la
+     bordure : un pseudo-élément agrandit la cible autour du texte (23 px).
+     « Statistiques » est désormais le seul accès aux stats (second audit
+     d'interface du 2026-10-07). */
+  .site-footer-nav a::after {
+    content: '';
+    position: absolute;
+    inset: -11px -4px;
   }
   .site-footer-nav a:hover,
   .site-footer-nav a:focus-visible {

@@ -197,9 +197,11 @@ describe('page épisode — sections de recos', () => {
     });
     const text = visibleText(await renderEpisode('g1'));
 
-    expect(text).toContain('Recommandations (1)');
+    // Avec des œuvres d'invité·es, la première section ne porte que les recos
+    // spontanées : son titre le dit, pour ne pas contredire l'en-tête (#6).
+    expect(text).toContain('Recommandations spontanées (1)');
     expect(text).toContain('Leurs œuvres (1)');
-    expect(text).toContain('Mentionné dans l’épisode (1)');
+    expect(text).toContain('Évoqué dans l’épisode (1)');
     expect(text).toContain('Spontanée');
     expect(text).toContain('Invitée');
     expect(text).toContain('Citée');
@@ -214,7 +216,7 @@ describe('page épisode — sections de recos', () => {
     const text = visibleText(await renderEpisode('g1'));
 
     expect(text).toContain('2 recommandations');
-    expect(text).toContain('dont 1 œuvre présentée dans l’épisode');
+    expect(text).toContain('dont 1 de leurs œuvres');
   });
 
   it('accorde le breakdown au pluriel au-delà d’une œuvre d’invité·e', async () => {
@@ -228,7 +230,7 @@ describe('page épisode — sections de recos', () => {
     });
 
     expect(visibleText(await renderEpisode('g1'))).toContain(
-      'dont 2 œuvres présentées dans l’épisode',
+      'dont 2 de leurs œuvres',
     );
   });
 
@@ -245,13 +247,24 @@ describe('page épisode — sections de recos', () => {
     expect(text).not.toContain('mention');
   });
 
+  it('sans œuvre d’invité·e, la section garde le titre « Recommandations » (#6)', async () => {
+    seed({
+      sources: [SOURCE],
+      episodes: [episode('g1')],
+      recos: [reco('a', 'g1'), reco('b', 'g1')],
+    });
+    const text = visibleText(await renderEpisode('g1'));
+    expect(text).toContain('Recommandations (2)');
+    expect(text).not.toContain('spontanées');
+  });
+
   it('compteur de citations au singulier puis au pluriel', async () => {
     seed({
       sources: [SOURCE],
       episodes: [episode('g1')],
       recos: [reco('c1', 'g1', { kind: 'citation' })],
     });
-    expect(visibleText(await renderEpisode('g1'))).toContain('1 mention');
+    expect(visibleText(await renderEpisode('g1'))).toContain('1 œuvre évoquée');
 
     seed({
       sources: [SOURCE],
@@ -261,7 +274,7 @@ describe('page épisode — sections de recos', () => {
         reco('c2', 'g1', { kind: 'citation' }),
       ],
     });
-    expect(visibleText(await renderEpisode('g1'))).toContain('2 mentions');
+    expect(visibleText(await renderEpisode('g1'))).toContain('2 œuvres évoquées');
   });
 
   it('épisode sans aucune reco → message dédié, aucune section', async () => {
@@ -465,7 +478,7 @@ describe('page épisode — SEO', () => {
     );
   });
 
-  it('la miniature YouTube devient l’image OG (prioritaire sur la carte Satori)', async () => {
+  it('sans reco, la miniature YouTube reste l’image OG', async () => {
     seed({
       sources: [SOURCE],
       episodes: [episode('g1', { youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' })],
@@ -476,11 +489,23 @@ describe('page épisode — SEO', () => {
     );
   });
 
-  it('sans miniature, l’image OG retombe sur la carte générée de l’épisode', async () => {
-    seed({ sources: [SOURCE], episodes: [episode('g1')] });
+  it('avec une reco, la carte « Étiquette » de l’épisode passe devant la miniature', async () => {
+    seed({
+      sources: [SOURCE],
+      episodes: [episode('g1', { youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' })],
+      recos: [reco('r1', 'g1')],
+    });
 
     expect(await renderEpisode('g1')).toContain(
       `<meta property="og:image" content="${TEST_SITE}/og/ubm/episode/g1.png">`,
+    );
+  });
+
+  it('sans reco ni miniature, la carte de la SOURCE — l’épisode n’a pas de carte', async () => {
+    seed({ sources: [SOURCE], episodes: [episode('g1')] });
+
+    expect(await renderEpisode('g1')).toContain(
+      `<meta property="og:image" content="${TEST_SITE}/og/ubm.png">`,
     );
   });
 });

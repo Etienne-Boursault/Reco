@@ -3,7 +3,11 @@
  * `windowMonths` derniers mois.
  */
 import { describe, it, expect } from 'vitest';
-import { isTrending, type JoinedMention } from '../../src/lib/work/aggregator';
+import {
+  isTrending,
+  recentMentionCount,
+  type JoinedMention,
+} from '../../src/lib/work/aggregator';
 
 function jm(date?: string): JoinedMention {
   return {
@@ -46,5 +50,21 @@ describe('isTrending', () => {
     expect(isTrending([jm('2025-10-01'), jm('2026-04-01')], now, 3)).toBe(false);
     // 12 mois → ok
     expect(isTrending([jm('2025-10-01'), jm('2026-04-01')], now, 12)).toBe(true);
+  });
+});
+
+// Le nombre que la pastille annonce « au cours des 12 derniers mois ». Elle
+// affichait le total de toutes les époques (audit d'interface du 2026-10-07).
+describe('recentMentionCount', () => {
+  const now = new Date('2026-06-01');
+
+  it('ne compte que les mentions datées de la fenêtre', () => {
+    expect(
+      recentMentionCount([jm('2020-01-01'), jm('2025-10-01'), jm('2026-04-01'), jm()], now),
+    ).toBe(2);
+  });
+
+  it('suit la fenêtre demandée', () => {
+    expect(recentMentionCount([jm('2025-10-01'), jm('2026-04-01')], now, 3)).toBe(1);
   });
 });

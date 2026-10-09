@@ -12,6 +12,7 @@ import { readFile } from 'node:fs/promises';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 
 import RecoCard from '../../src/components/RecoCard.astro';
+import { ICONE_TYPE } from '../../src/utils/iconesTypes';
 
 import { baseReco, parse, render, renderProps } from './_reco_card';
 
@@ -63,7 +64,7 @@ describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
     // au-dessus de « Reco de … » et disait deux fois la même chose.
     // L'information est portée par le VERBE de la ligne méta.
     const html = await render({ ...baseReco, kind: 'citation', recommendedBy: 'Navo' });
-    expect(html).toContain('Mention de');
+    expect(html).toContain('Évoquée par');
     expect(html).not.toContain('Reco de');
     expect(html).not.toContain('kind-badge');
   });
@@ -74,7 +75,7 @@ describe('RecoCard — marqueur œuvre d\'invité (Story 4)', () => {
     });
     // Les deux informations coexistent sans se disputer la place : le verbe
     // pour la mention, l'étoile pour l'œuvre de la personne.
-    expect(html).toContain('Mention de');
+    expect(html).toContain('Évoquée par');
     expect(html).toContain('⭐');
     expect(html).toContain('guestwork-star');
   });
@@ -93,6 +94,18 @@ describe('RecoCard — titre sur la rangée des types', () => {
     expect(title!.textContent).toBe('Mon spectacle');
   });
 
+  it('sans adresse de fiche, le titre reste du texte', async () => {
+    const doc = parse(await render({ ...baseReco, types: ['film'] }));
+    expect(doc.querySelector('h3.title a')).toBeNull();
+  });
+
+  it('avec une adresse de fiche, le TITRE mène à l’œuvre (audit du 2026-10-07)', async () => {
+    const html = await renderProps({ reco: { ...baseReco, types: ['film'] }, oeuvreHref: '/ubm/oeuvre/f203a89a' });
+    const lien = parse(html).querySelector('.card-top > h3.title > a.title-link');
+    expect(lien?.getAttribute('href')).toBe('/ubm/oeuvre/f203a89a');
+    expect(lien?.textContent).toBe('Mon spectacle');
+  });
+
   it('les icônes de type précèdent le titre dans la rangée', async () => {
     const doc = parse(await render({ ...baseReco, types: ['film'] }));
     const enfants = Array.from(doc.querySelector('.card-top')!.children);
@@ -104,9 +117,10 @@ describe('RecoCard — titre sur la rangée des types', () => {
     const doc = parse(await render({ ...baseReco, types: ['film', 'livre'] }));
     expect(doc.querySelector('[role="img"] h3')).toBeNull();
     expect(doc.querySelector('[role="img"] .title')).toBeNull();
-    // Le conteneur d'emojis ne contient QUE des emojis décoratifs.
+    // Le conteneur ne contient QUE des icônes décoratives : aucun texte.
     const type = doc.querySelector('.type[role="img"]')!;
-    expect(type.textContent!.trim()).toBe('🎬📖');
+    expect(type.textContent!.trim()).toBe('');
+    expect(type.querySelectorAll('svg')).toHaveLength(2);
   });
 
   it('un seul <h3> par carte (le titre n’est pas dupliqué par le déplacement)', async () => {
@@ -163,7 +177,7 @@ describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
     // de « Reco de … ». Le verbe porte la même information sans rien coûter.
     const doc = parse(await render({ ...baseReco, kind: 'citation', recommendedBy: 'Navo' }));
     expect(doc.querySelector('.card-top .kind-badge')).toBeNull();
-    expect(doc.querySelector('.meta')!.textContent).toContain('Mention de Navo');
+    expect(doc.querySelector('.meta')!.textContent).toContain('Évoquée par Navo');
   });
 
   it('combo citation + guestWork : chaque information à sa place', async () => {
@@ -173,7 +187,7 @@ describe('RecoCard — badge « Leur œuvre » sur la ligne créateur', () => {
     // L'étoile qualifie la PERSONNE : ligne créateur.
     expect(doc.querySelector('.creator .guestwork-star')).not.toBeNull();
     // La mention qualifie la RECO : ligne méta.
-    expect(doc.querySelector('.meta')!.textContent).toContain('Mention de');
+    expect(doc.querySelector('.meta')!.textContent).toContain('Évoquée par');
   });
 
   it('showGuestWorkBadge=false sans créateur → aucune ligne créateur du tout', async () => {
@@ -284,11 +298,11 @@ describe('RecoCard — marqueurs éthiques', () => {
 // Multi-types (emoji par type + data-types)
 // ---------------------------------------------------------------------------
 describe('RecoCard — multi-types', () => {
-  it('affiche un emoji par type et expose data-types', async () => {
+  it('affiche une icône par type et expose data-types', async () => {
     const html = await render({ ...baseReco, types: ['film', 'livre'] });
     expect(html).toContain('data-types="film,livre"');
-    expect(html).toContain('🎬'); // film
-    expect(html).toContain('📖'); // livre
+    expect(html).toContain(`d="${ICONE_TYPE.film}"`);
+    expect(html).toContain(`d="${ICONE_TYPE.livre}"`);
   });
 });
 

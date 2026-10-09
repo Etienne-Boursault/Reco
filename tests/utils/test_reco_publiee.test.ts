@@ -27,7 +27,8 @@ const PAGES_QUI_LISENT_LES_RECOS = [
   'src/pages/[source]/episode/[guid].astro',
   'src/pages/a-propos.astro',
   'src/pages/index.astro',
-  'src/pages/og/[...slug].png.ts',
+  // Les cartes de partage : l'endpoint délègue le filtrage à ce module.
+  'src/lib/og/cartes.ts',
   'src/pages/[source]/report/[recoId].astro',
 ];
 

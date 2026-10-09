@@ -74,6 +74,14 @@ export interface WorkAggregate {
   recoCount: number;
   /** Trending si ≥2 mentions dans les 12 derniers mois. */
   trending: boolean;
+  /**
+   * Mentions des 12 derniers mois — le nombre que la pastille « tendance »
+   * annonce. Elle recevait `mentionCount`, le total de TOUTES les époques,
+   * tout en le présentant comme « au cours des 12 derniers mois » : la fiche
+   * de Bref affichait « 🔥 14× », soit son total, à côté de « Recommandée
+   * 5 fois » et « 14 mentions » (audit d'interface du 2026-10-07, item #6).
+   */
+  recentCount: number;
   /** Date de mention la plus récente (utile pour SEO). */
   lastMentionedAt: Date | null;
 }
@@ -98,13 +106,25 @@ export function isTrending(
   windowMonths = 12,
 ): boolean {
   if (joinedMentions.length < 2) return false;
+  return recentMentionCount(joinedMentions, now, windowMonths) >= 2;
+}
+
+/**
+ * Nombre de mentions datées dans la fenêtre des `windowMonths` derniers mois.
+ * Même règle que `isTrending`, qui s'appuie dessus : une mention sans date
+ * d'épisode connue n'est pas comptée.
+ */
+export function recentMentionCount(
+  joinedMentions: JoinedMention[],
+  now: Date = new Date(),
+  windowMonths = 12,
+): number {
   const cutoff = new Date(now);
   cutoff.setMonth(cutoff.getMonth() - windowMonths);
-  const recent = joinedMentions.filter((jm) => {
+  return joinedMentions.filter((jm) => {
     const d = jm.episode?.date;
     return d instanceof Date && !Number.isNaN(d.getTime()) && d >= cutoff;
-  });
-  return recent.length >= 2;
+  }).length;
 }
 
 /**
@@ -166,6 +186,7 @@ export function buildWorkIndex(opts: {
       mentionCount: joined.length,
       recoCount,
       trending: isTrending(joined, now),
+      recentCount: recentMentionCount(joined, now),
       lastMentionedAt: lastDate,
     });
   }

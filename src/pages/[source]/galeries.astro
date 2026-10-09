@@ -34,8 +34,8 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
-import { publicMentions, selectByType } from '../../lib/gallery/aggregate';
-import { GALERIES_PAR_TYPE, PAGES_DEDIEES } from '../../lib/gallery/typesGaleries';
+import { publicMentions } from '../../lib/gallery/aggregate';
+import { sommaireGaleries } from '../../lib/gallery/sommaire';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -58,22 +58,9 @@ const mentions = publicMentions(
 const mentionnes = new Set(mentions.map((m) => m.itemId));
 const vus = items.filter((it) => mentionnes.has(it.id));
 
-/**
- * Compte les œuvres d'une galerie EN PASSANT PAR LA MÊME FONCTION que les
- * pages. Un compte réécrit ici finirait par diverger — c'est déjà arrivé.
- */
-const compter = (types: string[]): number =>
-  selectByType(vus, mentions, types).length;
-
-// Une seule source pour les quatorze galeries : la table qui sert aussi la
-// route dynamique. Si elle divergeait de ce sommaire, les nombres annoncés ici
-// ne seraient pas ceux des pages.
-const galeries = [...PAGES_DEDIEES, ...GALERIES_PAR_TYPE]
-  .map((g) => ({ ...g, n: compter(g.types) }))
-  // Un type que le corpus ne porte pas n'a pas de page construite : le lister
-  // donnerait un lien mort.
-  .filter((g) => g.n > 0)
-  .sort((a, b) => b.n - a.n);
+// Une seule source pour les galeries et leurs nombres, partagée avec
+// l'onglet « Par type » du catalogue : cf. `lib/gallery/sommaire.ts`.
+const galeries = sommaireGaleries(items, mentions);
 
 const autres = [
   { url: `/${id}/recos`, titre: 'Toutes les recommandations',

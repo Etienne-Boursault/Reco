@@ -17,7 +17,9 @@ import {
   type RecoLinkKind,
   type Ethics,
 } from '../data/merchants';
-import { TYPE_LABELS, TYPE_EMOJIS } from '../utils/recoTypes';
+import { TYPE_LABELS, episodeLabel } from '../utils/recoTypes';
+import { iconeDuType } from '../utils/iconesTypes';
+import { verbeMention } from '../utils/verbeMention';
 import { t } from '../i18n';
 import AudioExcerpt from './AudioExcerpt.astro';
 import OutboundLink from './OutboundLink.astro';
@@ -51,6 +53,9 @@ interface Props {
   };
   episodeTitle?: string;
   episodeNumber?: number;
+  /** Saison de l'épisode : avec `episodeNumber`, donne « S6·E3 », comme le
+   *  badge des vignettes. Sans elle, la carte retombe sur « #3 ». */
+  episodeSeason?: number;
   /**
    * Item #12 : extrait audio compact en bas de card (opt-in).
    * Slot par défaut désactivé pour ne pas casser les vues existantes.
@@ -74,15 +79,24 @@ interface Props {
    * (galeries, catalogue, timeline, page œuvre).
    */
   showGuestWorkBadge?: boolean;
+  /**
+   * Adresse de la fiche de l'œuvre (`/<source>/oeuvre/<itemId>`). Si fournie,
+   * le TITRE devient le lien — la carte entière ne peut pas l'être, elle
+   * contient déjà les liens vers les plateformes. Calculée par l'appelant
+   * (cf. `utils/oeuvreDesRecos.ts`) ; sans elle, le titre reste du texte.
+   */
+  oeuvreHref?: string;
 }
 
 const {
   reco,
   episodeTitle,
   episodeNumber,
+  episodeSeason,
   audio,
   sourceId,
   showGuestWorkBadge = true,
+  oeuvreHref,
 } = Astro.props;
 
 // Liens : ceux fournis par le pipeline, sinon générés (éthiques) à la volée.
@@ -242,15 +256,30 @@ const links = Array.from(linkSeen.values()).slice(0, 6).map((l) => {
 // portés par title= sur chaque span pour l'accessibilité et le hover).
 const types = reco.types ?? [];
 const typeLabels = types.map((t) => TYPE_LABELS[t] ?? t);
+// Icônes au trait dans la couleur d'accent, comme l'onglet « Par type », les
+// galeries et « Du même créateur » : les cartes de reco étaient le dernier
+// endroit du site à afficher des emojis de type (harmonisé le 2026-10-07).
 const typeEmojis = types.map((t) => ({
-  emoji: TYPE_EMOJIS[t] ?? '✨',
+  icone: iconeDuType(t),
   label: TYPE_LABELS[t] ?? t,
 }));
 const typeLabel = typeLabels.join(' ');
 const typeTitle = typeLabels.join(', ');
-const epLabel = episodeNumber ? `#${episodeNumber}` : episodeTitle ?? '';
+// Le MÊME libellé que le badge des vignettes et de la page épisode. La carte
+// écrivait « #3 » quand le badge disait « S6·E3 » — or il existe un #3 dans
+// chaque saison, et le numéro seul ne désignait plus aucun épisode (audit
+// d'interface du 2026-10-07, item #7). `episodeLabel` garde « #3 » pour les
+// épisodes sans saison.
+const epLabel =
+  episodeLabel({ season: episodeSeason, number: episodeNumber }) || (episodeTitle ?? '');
 const isCitation = reco.kind === 'citation';
 const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
+// Le verbe de la ligne méta dit CE QUE la personne a fait de l'œuvre :
+// « Présentée par » pour l'auteur qui parle de son œuvre, « Reco de » pour
+// quelqu'un qui recommande celle d'un autre — même quand elle porte
+// `guestWork` —, « Évoquée par » pour une citation. Règle et cas réels
+// (Pulsions recommandé par Kheiron) : `utils/verbeMention.ts`.
+const verbeMeta = verbeMention(reco);
 ---
 
 <li
@@ -278,13 +307,15 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
        visually-hidden) provoquait une double annonce et un rôle mal ancré. */}
     <span class="type" role="img" aria-label={typeTitle}>
       {typeEmojis.map((tp) => (
-        <span class="type-emoji" title={tp.label} aria-hidden="true">{tp.emoji}</span>
+        <span class="type-emoji" title={tp.label} aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d={tp.icone} /></svg>
+        </span>
       ))}
     </span>
     {/* Titre SUR LA MÊME RANGÉE que les icônes de type (retour utilisateur
        2026-07-30). Il reste un FRÈRE du conteneur `role="img"` : l'y imbriquer
        le ferait annoncer comme une partie de l'image (cf. A1 ci-dessus). */}
-    <h3 class="title">{reco.title}</h3>
+    <h3 class="title">{oeuvreHref ? <a class="title-link" href={oeuvreHref}>{reco.title}</a> : reco.title}</h3>
     {/* Le badge « Mentionné » a été RETIRÉ (retour utilisateur 2026-08-17) : il
        flottait seul au-dessus de « Reco de … » et disait deux fois la même
        chose. L'information passe désormais par le verbe de la ligne méta —
@@ -339,7 +370,7 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
   {(reco.recommendedBy || epLabel) && (
     <p class="meta">
       {reco.recommendedBy && (
-        <span class="by">{isCitation ? 'Mention de' : 'Reco de'} {reco.recommendedBy}</span>
+        <span class="by">{verbeMeta} {reco.recommendedBy}</span>
       )}
       {/* Espaces INSÉCABLES (U+00A0) : ils écartent le numéro du nom tout en
          interdisant la coupure entre les deux. Un échappement CSS
@@ -368,10 +399,18 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
           // D4 : on ne recalcule PAS `categorizeUrl(l.url)` ici — OutboundLink
           // dérive lui-même la catégorie quand `category` est omise (même
           // helper, résultat identique). Évite un import + une redondance.
+          // Sans logo, le lien porte son NOM en toutes lettres à côté du
+          // symbole. Le symbole seul ne dit que la nature du lien : deux
+          // librairies sans logo donnaient deux caddies identiques, et la
+          // page « où regarder » de TMDB un ▶️ bleu voisin de la tuile TMDB
+          // — indiscernables sans survol, donc sans recours au doigt (audit
+          // d'interface du 2026-10-07, item #8). Les liens à logo restent
+          // des pastilles rondes : un logo de marque se reconnaît seul.
           const className = [
             'link',
             l.ethics === 'indie' ? 'indie' : '',
             l.ethics === 'avoid' ? 'avoid' : '',
+            l.icon ? '' : 'link--libelle',
           ]
             .filter(Boolean)
             .join(' ');
@@ -406,7 +445,10 @@ const isGuestWork = reco.guestWork === true && showGuestWorkBadge;
                   <span class="link-text" hidden>{l.label}</span>
                 </>
               ) : (
-                <span class="link-symbol" aria-hidden="true">{l.symbol}</span>
+                <>
+                  <span class="link-symbol" aria-hidden="true">{l.symbol}</span>
+                  <span class="link-label">{l.label}</span>
+                </>
               )}
             </OutboundLink>
           );

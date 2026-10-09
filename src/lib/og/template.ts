@@ -83,7 +83,7 @@ function safeHex(c: string | undefined, fallback: string): string {
  * - Détecte tout whitespace (`\s`) au point de coupe, pas uniquement
  *   l'espace ASCII (CR senior M3 : nbsp ` `, espaces fines, etc.).
  */
-function truncate(s: string, max: number): string {
+export function truncate(s: string, max: number): string {
   const cps = Array.from(s);
   if (cps.length <= max) return s;
   const slice = cps.slice(0, max).join('');

@@ -31,18 +31,35 @@ const SEUIL_HAUT = 120;
 const SEUIL_MOUVEMENT = 8;
 
 /**
- * Câble le masquage au défilement sur la barre présente dans le document.
+ * Câble le masquage au défilement sur CHAQUE barre du document qui ne l'est
+ * pas encore.
  *
- * Renvoie `false` si la barre est absente — c'est le cas sur l'accueil tant
- * que l'onglet « Toutes les recos » n'a pas été ouvert — ou si elle est déjà
- * câblée. L'appelant peut donc relancer la fonction après une injection de
- * fragment sans empiler les écouteurs.
+ * TOUTES les barres, et non la première : sur l'accueil, deux barres
+ * coexistent. Celle de « Par épisode » est dans le HTML initial, celle de
+ * « Toutes les recos » arrive avec le fragment, au premier clic sur l'onglet.
+ * La version précédente ne câblait que la première trouvée — celle de
+ * l'onglet « Par épisode » — si bien que la barre des recos, la seule qui
+ * s'empile sur quatre lignes de puces, restait collée en haut de l'écran
+ * mobile et n'en disparaissait jamais (audit d'interface du 2026-10-07,
+ * vérifié dans Chrome : `data-defilement-cable` absent sur la barre visible).
+ *
+ * Renvoie `true` si au moins une barre vient d'être câblée, `false` sinon —
+ * aucune barre, ou toutes déjà câblées. L'appelant peut donc relancer la
+ * fonction après une injection de fragment sans empiler les écouteurs.
  */
 export function cablerBarreFiltres(): boolean {
-  const barre = document.querySelector<HTMLElement>('.toolbar');
-  if (!barre || barre.dataset.defilementCable === '1') return false;
-  barre.dataset.defilementCable = '1';
+  let cablees = 0;
+  for (const barre of document.querySelectorAll<HTMLElement>('.toolbar')) {
+    if (barre.dataset.defilementCable === '1') continue;
+    barre.dataset.defilementCable = '1';
+    cablerUneBarre(barre);
+    cablees += 1;
+  }
+  return cablees > 0;
+}
 
+/** Un écouteur de défilement par barre : chacune suit son propre état. */
+function cablerUneBarre(barre: HTMLElement): void {
   let precedent = window.scrollY;
 
   const surDefilement = (): void => {
@@ -64,5 +81,4 @@ export function cablerBarreFiltres(): boolean {
   };
 
   window.addEventListener('scroll', surDefilement, { passive: true });
-  return true;
 }

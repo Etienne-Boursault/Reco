@@ -11,7 +11,8 @@
  *  - `<h3>` (la page parent posera h1 + h2)
  *  - emoji décoratif via `aria-hidden` + libellé textuel en label
  */
-import { TYPE_EMOJIS, TYPE_LABELS } from '../utils/recoTypes';
+import { TYPE_LABELS } from '../utils/recoTypes';
+import { iconeDuType } from '../utils/iconesTypes';
 import { t } from '../i18n';
 import CreatorFlag from './CreatorFlag.astro';
 
@@ -28,6 +29,13 @@ export interface Props {
    * non-cliquable (compat ascendante).
    */
   href?: string | null;
+  /**
+   * Types de la galerie qui affiche la carte. Une œuvre à plusieurs types y
+   * prend celui de la galerie : Kaamelott, série ET film, apparaissait dans
+   * « Tous les films » sous le badge « SÉRIE » (audit d'interface du
+   * 2026-10-07, item #19). Absent : règle par défaut, inchangée.
+   */
+  galleryTypes?: readonly string[];
 }
 
 // NB : pas de prop `year`. L'année de création d'une œuvre ne dit rien à qui
@@ -35,7 +43,7 @@ export interface Props {
 // été retirée. Elle restait ici, et produisait en prime une aberration : sans
 // créateur, elle s'affichait à sa place, dans un `<p class="gcard-creator">`.
 // Le champ reste disponible sur la page œuvre, où il a du sens.
-const { id, title, types, creator, mentionCount, href } = Astro.props;
+const { id, title, types, creator, mentionCount, href, galleryTypes } = Astro.props;
 
 // Type primaire : le premier qui DIT quelque chose.
 //
@@ -52,8 +60,13 @@ const { id, title, types, creator, mentionCount, href } = Astro.props;
 //
 // On ne REORDONNE pas les types precis entre eux — `['film', 'serie']` reste
 // un film. Seul « autre » est deprioritise.
-const primary = types.find((t) => t !== 'autre') ?? types[0] ?? 'autre';
-const emoji = TYPE_EMOJIS[primary] ?? TYPE_EMOJIS.autre;
+//
+// Dans une galerie typée, le type de la galerie passe d'abord, s'il est l'un
+// de ceux de l'œuvre : la carte ne contredit pas la page qui la porte.
+const typeDeLaGalerie = galleryTypes?.length
+  ? types.find((t) => galleryTypes.includes(t))
+  : undefined;
+const primary = typeDeLaGalerie ?? types.find((t) => t !== 'autre') ?? types[0] ?? 'autre';
 const typeLabel = TYPE_LABELS[primary] ?? 'Autre';
 const mentionLabel = mentionCount > 1 ? 'mentions' : 'mention';
 
@@ -74,7 +87,10 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
 ---
 
 <Root {...rootAttrs} data-item-id={id} data-types={types.join(',')}>
-  <div class="gcard-icon" aria-hidden="true">{emoji}</div>
+  {/* Icône au trait dans la couleur d'accent, comme l'onglet « Par type »
+     (audit d'interface du 2026-10-07, second passage) : l'emoji donnait aux
+     galeries un autre visage que l'onglet qui y mène. */}
+  <div class="gcard-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={iconeDuType(primary)} /></svg></div>
   <div class="gcard-body">
     {/* `aria-label` sur un `<p>` est SANS EFFET : ARIA ne l'autorise que sur
        les éléments porteurs d'un rôle. Le préfixe passe donc par du texte
@@ -106,9 +122,13 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
     align-items: flex-start;
     transition: border-color 0.16s ease, transform 0.16s ease;
   }
-  .gcard:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .gcard:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
   }
   /* X2 — variante cliquable : on retire la décoration de lien et on hérite
      la couleur du texte. Le focus-ring global s'applique via :focus-visible
@@ -118,12 +138,21 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
     color: inherit;
     cursor: pointer;
   }
-  a.gcard--link:hover .gcard-title {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    a.gcard--link:hover .gcard-title {
+      color: var(--accent);
+    }
+  }
+  /* Seule la variante LIEN réagit à l'appui : une carte inerte qui
+     s'enfonce promettrait une action qui n'existe pas. */
+  a.gcard--link:active {
+    transform: scale(0.98);
+    border-color: var(--accent);
+    transition-duration: 0.08s;
   }
   .gcard-icon {
-    font-size: 1.6rem;
-    line-height: 1;
+    display: flex;
+    color: var(--accent);
     flex-shrink: 0;
   }
   .gcard-body {
@@ -146,14 +175,21 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
     margin: 0 0 0.2rem;
     font-weight: 600;
   }
+  /* Le titre d'une œuvre s'écrit ici comme sur sa carte de reco et dans la
+     palette de recherche : Bebas Neue en capitales, la police des titres du
+     site (h3 global). Il était composé en Inter gras, si bien que la même
+     œuvre changeait de visage d'une page à l'autre (audit d'interface du
+     2026-10-07). Corps plus petit que sur `RecoCard` : la galerie aligne
+     cinq cartes de front, la carte de reco quatre. */
   .gcard-title {
-    font-family: var(--font-body);
-    text-transform: none;
-    letter-spacing: normal;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.25;
-    margin: 0 0 0.25rem;
+    font-size: 1.35rem;
+    /* Interligne ET rembourrage haut : le titre coupe ce qui dépasse
+       (`overflow: hidden`, plus bas), et l'accent d'une capitale — le É
+       d'« Amélie » — monte au-dessus de la ligne. À l'interligne serré des
+       autres titres Bebas (0,98), il était rogné : « AMELIE POULAIN ». */
+    line-height: 1.1;
+    padding-top: 0.12em;
+    margin: 0 0 0.3rem;
     /* Évite que des titres très longs cassent la grid */
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -173,5 +209,63 @@ const rootAttrs = href ? { class: 'gcard gcard--link', href } : { class: 'gcard'
   .gcard-count-n {
     color: var(--accent);
     font-weight: 700;
+  }
+
+  /* Téléphone : une LIGNE par œuvre. Les cartes hautes, une par rangée,
+     faisaient de « Tous les films » une page de 30 631 px (audit d'interface
+     du 2026-10-07, second passage). Icône, titre et créateur à gauche, le
+     nombre de mentions en grand chiffre jaune à droite — la forme de l'onglet
+     « Par type ». Le type, redondant dans une galerie typée, n'est plus
+     affiché mais reste lu par les lecteurs d'écran. */
+  @media (max-width: 560px) {
+    .gcard {
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+    }
+    .gcard-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'titre n'
+        'createur n';
+      column-gap: 0.75rem;
+      align-items: center;
+    }
+    .gcard-type {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .gcard-title {
+      grid-area: titre;
+      margin: 0;
+      font-size: 1.3rem;
+      -webkit-line-clamp: 2;
+    }
+    .gcard-creator {
+      grid-area: createur;
+      margin: 0;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gcard-count {
+      grid-area: n;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .gcard-count-n {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.9rem;
+      line-height: 0.9;
+    }
   }
 </style>

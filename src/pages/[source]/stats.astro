@@ -18,6 +18,7 @@ import Layout from '../../layouts/Layout.astro';
 import StatCard from '../../components/StatCard.astro';
 import TopList from '../../components/TopList.astro';
 import StatChart from '../../components/StatChart.astro';
+import StatsRecit from '../../components/StatsRecit.astro';
 import { t } from '../../i18n';
 import { loadStatsForPage } from '../../lib/stats/page';
 import { statsSnapshotSchema, type StatsSnapshot } from '../../lib/stats/types';
@@ -109,19 +110,30 @@ const topWorks = topWorksRaw.map((w) => ({
   ogSlug={source.id}
   jsonLd={jsonLd}
 >
-  <header class="hero wrap">
-    <a class="back" href={`/${source.id}`}>
-      <span aria-hidden="true">←</span>
-      <span>{t('stats.back.source')} {data.title}</span>
-    </a>
-    <h1>{t('stats.title')}</h1>
-    <p class="lede">{t('stats.subtitle.source', { source: data.title })}</p>
-    <p class="generated">{t('stats.generatedAt', { date: generatedLocal })}</p>
-  </header>
+  <main id="main" tabindex="-1">
+    <p class="wrap retour">
+      <a class="back" href={`/${source.id}`}>
+        <span aria-hidden="true">←</span>
+        <span>{t('stats.back.source')} {data.title}</span>
+      </a>
+    </p>
+    {/* Le récit, restreint à cette source (cf. `/stats` et l'audit
+        d'interface du 2026-10-07). Avec un sidecar pré-calculé, aucune
+        collection n'est ouverte : en-tête simple, comme sur `/stats`. */}
+    {sidecar ? (
+      <header class="wrap tete-simple">
+        <h1>{t('stats.title')}</h1>
+        <p class="lede">{t('stats.subtitle.source', { source: data.title })}</p>
+      </header>
+    ) : (
+      <StatsRecit sourceId={source.id} />
+    )}
 
-  <main id="main" tabindex="-1" class="wrap">
+    <div class="wrap detail">
+    <h2 class="detail-titre">Les chiffres en détail</h2>
+    <p class="generated">{t('stats.generatedAt', { date: generatedLocal })}</p>
     <section aria-labelledby="global">
-      <h2 id="global">{t('stats.heading.global')}</h2>
+      <h3 id="global">{t('stats.heading.global')}</h3>
       <div class="cards">
         <StatCard value={snapshot.global.episodesCount} label={t('stats.card.episodes')} />
         <StatCard value={snapshot.global.recommendationsCount} label={t('stats.card.recommendations')} />
@@ -131,7 +143,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="top-guests">
-      <h2 id="top-guests">{t('stats.heading.topGuests')}</h2>
+      <h3 id="top-guests">{t('stats.heading.topGuests')}</h3>
       <TopList
         caption={t('stats.heading.topGuests')}
         rows={topGuests}
@@ -141,7 +153,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="top-works">
-      <h2 id="top-works">{t('stats.heading.topWorks')}</h2>
+      <h3 id="top-works">{t('stats.heading.topWorks')}</h3>
       <TopList
         caption={t('stats.heading.topWorks')}
         rows={topWorks}
@@ -151,7 +163,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="dist">
-      <h2 id="dist">{t('stats.heading.typeDistribution')}</h2>
+      <h3 id="dist">{t('stats.heading.typeDistribution')}</h3>
       <StatChart
         title={t('stats.heading.typeDistribution')}
         bars={distributionBars}
@@ -162,7 +174,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="monthly">
-      <h2 id="monthly">{t('stats.heading.monthly')}</h2>
+      <h3 id="monthly">{t('stats.heading.monthly')}</h3>
       {/* `libelles="aucun"` : soixante-dix mois s'entassaient sous les
           barres au point d'etre illisibles. Les reperes d'annee suffisent a
           se situer, et le tableau accessible garde chaque mois. */}
@@ -176,12 +188,29 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <p class="privacy muted">{t('stats.privacyNote')}</p>
+    </div>
   </main>
 </Layout>
 
 <style>
-  .hero {
-    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+  .retour {
+    margin: clamp(1rem, 3vw, 1.5rem) auto 0;
+  }
+  .detail {
+    padding-top: clamp(3rem, 8vw, 5rem);
+  }
+  .tete-simple h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 0.5rem 0 0.6rem;
+  }
+  .lede {
+    color: var(--text);
+    max-width: 60ch;
+    margin: 0;
+  }
+  .detail-titre {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 0.4rem;
   }
   .back {
     color: var(--muted);
@@ -190,15 +219,6 @@ const topWorks = topWorksRaw.map((w) => ({
     font-weight: 600;
   }
   .back:hover { color: var(--accent); }
-  .hero h1 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    margin: 0.5rem 0 0.6rem;
-  }
-  .lede {
-    color: var(--text);
-    max-width: 60ch;
-    margin: 0 0 0.4rem;
-  }
   .generated {
     color: var(--muted);
     font-size: 0.85rem;
@@ -206,13 +226,15 @@ const topWorks = topWorksRaw.map((w) => ({
   }
   main { padding-bottom: 4rem; }
   main section { margin: 2.2rem 0; }
-  main h2 {
+  main .detail h3 {
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     margin: 0 0 1rem;
   }
+  /* Deux cartes de front sur téléphone, comme sur /stats (audit d'interface
+     du 2026-10-07). */
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
     gap: 1rem;
   }
   .note {

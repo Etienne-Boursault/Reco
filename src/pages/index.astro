@@ -152,9 +152,18 @@ const websiteSchema = {
       transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
       border-color 0.2s ease;
   }
-  .src a:hover {
-    transform: translateY(-4px);
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .src a:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+  }
+  .src a:active {
+    transform: scale(0.98);
     border-color: var(--accent);
+    transition-duration: 0.08s;
   }
   .src-count {
     font-size: 0.78rem;

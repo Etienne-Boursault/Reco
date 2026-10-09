@@ -3,10 +3,10 @@
  * `src/lib/og/renderer.ts` : cache disque froid (miss → écriture → hit) et
  * repli PNG 1×1 quand la police est introuvable.
  *
- * Le cache est keyé sur `join(process.cwd(), 'dist', '.cache', 'og')`, évalué
- * à l'import du module. On stubbe donc `process.cwd()` AVANT un import
- * dynamique : le test travaille dans un dossier temporaire et n'écrit jamais
- * dans le `dist/` partagé du dépôt.
+ * Le cache vit dans `join(process.cwd(), '.cache', 'og')`, évalué à l'import
+ * du module. On stubbe donc `process.cwd()` AVANT un import dynamique : le
+ * test travaille dans un dossier temporaire et n'écrit jamais dans le cache
+ * réel du dépôt.
  */
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { mkdtempSync, rmSync, readdirSync, existsSync } from 'node:fs';
@@ -40,7 +40,7 @@ describe('renderOG — cache disque froid', () => {
   it('miss → rendu + écriture du PNG ; hit → relecture identique', async () => {
     ROOT = mkdtempSync(join(tmpdir(), 'reco-og-cache-'));
     const { renderOG } = await importRendererWithCwd(ROOT);
-    const cacheDir = join(ROOT, 'dist', '.cache', 'og');
+    const cacheDir = join(ROOT, '.cache', 'og');
     expect(existsSync(cacheDir)).toBe(false);
 
     const input = { title: 'Carte de test', sourceLabel: 'Un Bon Moment' };
@@ -58,12 +58,22 @@ describe('renderOG — cache disque froid', () => {
     expect(readdirSync(cacheDir)).toHaveLength(1);
   });
 
+  it('la clé suit le DESSIN : même données, gabarit différent → autre clé', async () => {
+    ROOT = mkdtempSync(join(tmpdir(), 'reco-og-cle-'));
+    const { __testing } = await importRendererWithCwd(ROOT);
+    const a = __testing.cacheKey({ type: 'div', props: { style: { color: '#fff' } } }, { width: 1200, height: 630 }, 'p');
+    const b = __testing.cacheKey({ type: 'div', props: { style: { color: '#000' } } }, { width: 1200, height: 630 }, 'p');
+    const c = __testing.cacheKey({ type: 'div', props: { style: { color: '#fff' } } }, { width: 1200, height: 630 }, 'autre');
+    expect(a).not.toBe(b);
+    expect(a).not.toBe(c);
+  });
+
   it('noCache → ni lecture ni écriture de cache', async () => {
     ROOT = mkdtempSync(join(tmpdir(), 'reco-og-nocache-'));
     const { renderOG } = await importRendererWithCwd(ROOT);
     const png = await renderOG({ title: 'Sans cache' }, { noCache: true });
     expect(isPNG(png)).toBe(true);
-    expect(existsSync(join(ROOT, 'dist', '.cache', 'og'))).toBe(false);
+    expect(existsSync(join(ROOT, '.cache', 'og'))).toBe(false);
   });
 });
 
@@ -97,6 +107,6 @@ describe('renderOG — police introuvable', () => {
     expect(png.length).toBe(68);
     expect(error).toHaveBeenCalledOnce();
     expect(String(error.mock.calls[0][0])).toContain('Sans police');
-    expect(String(error.mock.calls[0][1])).toMatch(/Police Inter introuvable/);
+    expect(String(error.mock.calls[0][1])).toMatch(/Police Inter ou Bebas Neue introuvable/);
   });
 });

@@ -71,6 +71,17 @@ describe('AllRecosView — grille des recos', () => {
     });
     expect(html).toContain('Parasite');
   });
+
+  it('le titre d’une carte mène à la fiche de son œuvre, quand elle en a une', async () => {
+    const html = await render({
+      recos: [reco(), reco({ id: 'ubm-0002', title: 'Drive' })],
+      types: [['film', 2]],
+      oeuvres: new Map([['ubm-0001', 'a1b2c3d4']]),
+    });
+    expect(html).toContain('href="/ubm/oeuvre/a1b2c3d4"');
+    // « Drive » n'a pas de mention visible : pas de lien inventé.
+    expect(html.match(/class="title-link"/g)?.length).toBe(1);
+  });
 });
 
 // ---------------------------------------------------------------------------

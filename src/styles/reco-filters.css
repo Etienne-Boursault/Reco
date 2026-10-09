@@ -140,37 +140,26 @@
     margin: 0;
   }
 
-/* TOUTES les cartes à la même hauteur (demande utilisateur 2026-08-17).
+/* Cartes égalisées RANGÉE PAR RANGÉE — retour partiel sur la demande du
+   2026-08-17 (audit d'interface du 2026-10-07).
 
-   Par défaut, une grille égalise les hauteurs À L'INTÉRIEUR d'une rangée, mais
-   pas d'une rangée à l'autre : deux cartes voisines verticalement pouvaient
-   avoir des tailles très différentes. `grid-auto-rows: 1fr` aligne toutes les
-   rangées sur la plus haute.
+   La demande était : « toutes les cartes à la même hauteur ». Elle avait été
+   tenue au pied de la lettre par `grid-auto-rows: 1fr`, qui aligne TOUTES les
+   rangées sur la plus haute du corpus. Avec 1 259 cartes, la plus haute est
+   celle au titre de trois lignes et aux six liens : une carte de deux lignes
+   en héritait la hauteur, et montrait un grand vide entre son créateur et sa
+   ligne « Reco de … » (relevé sur « Before Sunrise »). Le même défaut avait
+   déjà fait retirer la règle sous 560 px le 2026-08-18.
 
-   `align-items: stretch` (valeur par défaut, rappelée ici) garantit que la
-   carte OCCUPE la hauteur de sa rangée au lieu de flotter en haut. */
+   Ce qui reste de la demande, et qui en était le but : deux cartes CÔTE À
+   CÔTE ont la même hauteur, et leurs pieds — ligne méta, icônes — s'alignent.
+   C'est le comportement par défaut d'une grille (`align-items: stretch`
+   égalise les cellules d'une même rangée), joint au `margin-top: auto` du
+   pied dans `reco-card.css`. Seul l'alignement d'une rangée sur l'autre est
+   abandonné, et avec lui le vide.
+
+   Pour revenir à l'égalisation totale : rétablir `grid-auto-rows: 1fr` ici
+   (et `auto` sous 560 px), ou annuler ce commit. */
 #reco-grid {
-  grid-auto-rows: 1fr;
   align-items: stretch;
-}
-
-/* ... SAUF sur une seule colonne, ou l'egalisation n'a plus d'objet.
-
-   Signale a la relecture du 2026-08-18 : « les cartes contiennent beaucoup
-   trop de vide » sur mobile. Cause exacte : `grid-auto-rows: 1fr` aligne
-   toutes les rangees sur la plus haute. A plusieurs colonnes c'est l'effet
-   demande — deux cartes cote a cote se repondent. A UNE colonne, chaque
-   rangee ne contient qu'une carte : elles se retrouvent toutes a la hauteur
-   du plus long titre du corpus. Une carte de 111 px de contenu en occupait
-   322, dont 158 px de vide pousse par le `margin-top: auto` du pied.
-
-   Le seuil est MESURE, pas devine : la grille bascule a une colonne vers
-   550 px de conteneur. En dessous de 560 px de viewport, le conteneur ne peut
-   pas etre plus large, donc on est forcement a une colonne. Au-dessus, on ne
-   touche a rien — l'egalisation reste celle qui a ete demandee le
-   2026-08-17. */
-@media (max-width: 560px) {
-  #reco-grid {
-    grid-auto-rows: auto;
-  }
 }

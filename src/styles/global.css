@@ -83,6 +83,9 @@ h3 {
   font-family: var(--font-display);
   font-weight: 400;
   line-height: 0.98;
+  /* Approche positive pour les titres de carte et de section (h2, h3), qui
+     se lisent entre 20 et 30 px : à ces tailles, des capitales condensées
+     gagnent à respirer. Les h1 sont resserrés juste en dessous. */
   letter-spacing: 0.01em;
   /* Choix design assumé (titres ALL CAPS). Documenté ADR 0022.
      N'altère pas la sémantique pour les lecteurs d'écran (le DOM reste
@@ -91,9 +94,51 @@ h3 {
   margin: 0;
 }
 
+/* L'approche se RESSERRE quand le corps grandit (audit d'interface du
+   2026-10-07). Les h1 vont jusqu'à 104 px : à cette taille, le +0,01em des
+   titres courants ajoutait un pixel entre chaque lettre, et l'œil lit des
+   capitales trop écartées comme du texte qui flotte. C'est la règle des
+   fondeurs — et celle des tables d'approche d'Apple : négatif en grand,
+   positif en petit. -0,01em reste prudent pour Bebas Neue, déjà serrée,
+   dont les lettres ne doivent jamais se toucher. */
+h1 {
+  letter-spacing: -0.01em;
+}
+
 .wrap {
   width: min(100% - 2rem, var(--maxw));
   margin-inline: auto;
+}
+
+/* Liens « ← retour » : une cible de 44 px de haut, sans bouger la page.
+
+   Ils mesuraient 16 px de haut (audit d'interface du 2026-10-07) — c'est
+   pourtant LE chemin de sortie de chaque fiche, celui qu'on vise du pouce.
+   Le rembourrage agrandit la zone qui reçoit le toucher ; la marge négative
+   égale le rend à la mise en page, si bien que rien d'autre ne se décale.
+   `inline-block` est nécessaire : sur un élément `inline`, le rembourrage
+   vertical déborde sans être compté, et le navigateur ne l'attribue pas
+   toujours au lien.
+
+   Trois formes cohabitent dans les pages : `a.back` (fiches, galeries par
+   type), `p.back > a` (formulaire de signalement), `p.retour > a`
+   (sommaire des galeries).
+
+   AU-DESSUS de ce qui suit (`position` + `z-index`). Le titre qui suit est
+   souvent énorme, en interligne serré (0.88 sur 7 rem pour un nom
+   d'invité) : ses lettres débordent de sa boîte vers le haut, et, venant
+   après le lien dans le document, il captait les clics. Sur la page d'un
+   invité, le lien de retour n'était plus cliquable du tout ; sur les
+   galeries, le bas de sa zone tactile était mangé (signalé et mesuré le
+   2026-10-07 avec `elementFromPoint`). */
+a.back,
+.back > a,
+.retour > a {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding-block: 0.75rem;
+  margin-block: -0.75rem;
 }
 
 /* Boutons / puces ---------------------------------------------------------- */
@@ -110,12 +155,39 @@ h3 {
   min-height: 28px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.18s ease;
+  /* Propriétés EXPLICITES plutôt que `all` (audit d'interface du
+     2026-10-07) : `all` animait jusqu'au moindre changement de style, y
+     compris ceux qu'on ne voit pas. */
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
   white-space: nowrap;
 }
 
-.chip:hover {
+/* SURVOL ET APPUI — CONVENTION DU SITE (audit d'interface du 2026-10-07)
+ *
+ * 1. Le survol est réservé aux pointeurs qui survolent vraiment :
+ *    `@media (hover: hover) and (pointer: fine)`. Au doigt, `:hover`
+ *    s'accroche au dernier élément touché et y reste — la carte demeurait
+ *    soulevée, bordée d'accent, longtemps après le toucher.
+ * 2. L'appui (`:active`) répond dès que le doigt se pose, pas au relâchement :
+ *    descente brève (80 ms), remontée à la durée normale de la transition.
+ *    Petit contrôle : `scale(0.96)` ; grande surface : `scale(0.98)`, une
+ *    grande carte qui rétrécit beaucoup paraît se dérober.
+ * Le focus clavier (`:focus-visible`, plus bas) n'est concerné ni par l'un ni
+ * par l'autre : il reste visible partout.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover {
+    border-color: var(--accent);
+  }
+}
+.chip:active {
+  transform: scale(0.96);
   border-color: var(--accent);
+  transition-duration: 0.08s;
 }
 
 .chip[aria-pressed='true'],
@@ -139,9 +211,26 @@ h3 {
    `to {}` documenté : on retient les valeurs « idle » par défaut
    (opacity 1, transform 0) ; pas besoin d'un bloc to{} explicite,
    l'élément retombe sur ses propres styles. */
+/* PLAFONNÉE aux douze premières cartes (audit d'interface du 2026-10-07).
+   La classe est posée sur chaque carte : à l'ouverture de « Toutes les
+   recos », les 1 259 cartes jaillissaient en même temps — un seul bloc qui
+   monte, et autant d'animations à tenir pour des cartes que personne ne
+   voit encore. Douze couvrent le premier écran au plus large ; au-delà, la
+   carte est simplement là quand on y arrive.
+   Léger décalage par rangée (40 ms) pour que l'apparition se lise de haut en
+   bas, sans jamais faire attendre : la dernière part à 120 ms. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
+  .reveal:nth-child(-n + 12) {
     animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .reveal:nth-child(n + 4):nth-child(-n + 12) {
+    animation-delay: 40ms;
+  }
+  .reveal:nth-child(n + 7):nth-child(-n + 12) {
+    animation-delay: 80ms;
+  }
+  .reveal:nth-child(n + 10):nth-child(-n + 12) {
+    animation-delay: 120ms;
   }
   @keyframes rise {
     from {
@@ -243,14 +332,21 @@ img {
 }
 
 /* A11y — Safari : styliser le bouton « ✕ » du <input type="search">
-   (L18). Sans ça, focus invisible sur certaines combinaisons fond/accent. */
+   (L18). Sans ça, focus invisible sur certaines combinaisons fond/accent.
+
+   La CROIX est dessinée par un masque. Le bouton n'était qu'un disque gris
+   de 14 px, sans aucun signe dedans : un point qui traînait au bout du champ
+   et ne disait pas qu'il effaçait (audit d'interface du 2026-10-07). Le
+   masque découpe un ✕ dans la couleur de fond, qui suit donc le thème et
+   passe à l'accent au survol, comme avant. */
 input[type='search']::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: color-mix(in oklab, var(--text) 30%, transparent);
+  width: 16px;
+  height: 16px;
+  background: color-mix(in oklab, var(--text) 60%, transparent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5l9 9m0-9l-9 9' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5l9 9m0-9l-9 9' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
   cursor: pointer;
 }
 input[type='search']::-webkit-search-cancel-button:hover {

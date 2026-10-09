@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 const { source } = Astro.props;
-const { recos, epByGuid, types } = await loadCatalogData(source.id);
+const { recos, epByGuid, types, oeuvres } = await loadCatalogData(source.id);
 ---
 
 <AllRecosView
@@ -36,4 +36,5 @@ const { recos, epByGuid, types } = await loadCatalogData(source.id);
   recos={recos}
   epByGuid={epByGuid}
   types={types}
+  oeuvres={oeuvres}
 />

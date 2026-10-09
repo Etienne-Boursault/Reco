@@ -37,6 +37,7 @@ import StatCard from '../components/StatCard.astro';
 export const prerender = true;
 import TopList from '../components/TopList.astro';
 import StatChart from '../components/StatChart.astro';
+import StatsRecit from '../components/StatsRecit.astro';
 import { t } from '../i18n';
 import { loadStatsForPage } from '../lib/stats/page';
 import { statsSnapshotSchema, type StatsSnapshot } from '../lib/stats/types';
@@ -119,19 +120,37 @@ const topWorks = topWorksRaw.map((w) => ({
   description={t('stats.subtitle')}
   jsonLd={jsonLd}
 >
-  <header class="hero wrap">
-    <h1>{t('stats.title')}</h1>
-    <p class="lede">{t('stats.subtitle')}</p>
+  <main id="main" tabindex="-1">
+    {/* Le récit d'abord : un constat par écran (maquette retenue après
+        l'audit d'interface du 2026-10-07). Les chiffres détaillés restent
+        dessous, pour qui veut le tableau complet.
+        Le récit a besoin du corpus entier. Quand un sidecar pré-calculé
+        existe — il est fait pour les corpus trop gros pour être chargés
+        (R-P1-24) —, la page n'ouvre aucune collection et garde son en-tête
+        simple au-dessus des chiffres. */}
+    {sidecar ? (
+      <header class="wrap tete-simple">
+        <h1>{t('stats.title')}</h1>
+        <p class="lede">{t('stats.subtitle')}</p>
+      </header>
+    ) : (
+      <StatsRecit />
+    )}
+
+    <div class="wrap detail">
+    <h2 class="detail-titre">Les chiffres en détail</h2>
     <p class="generated">
       {t('stats.generatedAt', { date: generatedLocal })}
     </p>
-  </header>
-
-  <main id="main" tabindex="-1" class="wrap">
     <section aria-labelledby="global">
-      <h2 id="global">{t('stats.heading.global')}</h2>
+      <h3 id="global">{t('stats.heading.global')}</h3>
       <div class="cards">
-        <StatCard value={snapshot.global.podcastsCount} label={t('stats.card.podcasts')} />
+        {/* « 1 podcast indexé » n'apprend rien sur un déploiement à une seule
+            source — le titre du site le dit déjà. La carte ne paraît que
+            lorsque le chiffre informe (audit d'interface du 2026-10-07). */}
+        {snapshot.global.podcastsCount > 1 && (
+          <StatCard value={snapshot.global.podcastsCount} label={t('stats.card.podcasts')} />
+        )}
         <StatCard value={snapshot.global.episodesCount} label={t('stats.card.episodes')} />
         <StatCard value={snapshot.global.recommendationsCount} label={t('stats.card.recommendations')} />
         <StatCard value={snapshot.global.uniqueWorksCount} label={t('stats.card.uniqueWorks')} />
@@ -140,7 +159,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="top-guests">
-      <h2 id="top-guests">{t('stats.heading.topGuests')}</h2>
+      <h3 id="top-guests">{t('stats.heading.topGuests')}</h3>
       <TopList
         caption={t('stats.heading.topGuests')}
         rows={topGuests}
@@ -150,7 +169,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="top-works">
-      <h2 id="top-works">{t('stats.heading.topWorks')}</h2>
+      <h3 id="top-works">{t('stats.heading.topWorks')}</h3>
       <TopList
         caption={t('stats.heading.topWorks')}
         rows={topWorks}
@@ -160,7 +179,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="dist">
-      <h2 id="dist">{t('stats.heading.typeDistribution')}</h2>
+      <h3 id="dist">{t('stats.heading.typeDistribution')}</h3>
       <StatChart
         title={t('stats.heading.typeDistribution')}
         bars={distributionBars}
@@ -171,7 +190,7 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <section aria-labelledby="monthly">
-      <h2 id="monthly">{t('stats.heading.monthly')}</h2>
+      <h3 id="monthly">{t('stats.heading.monthly')}</h3>
       {/* `libelles="aucun"` : soixante-dix mois s'entassaient sous les
           barres au point d'etre illisibles. Les reperes d'annee suffisent a
           se situer, et le tableau accessible garde chaque mois. */}
@@ -185,20 +204,28 @@ const topWorks = topWorksRaw.map((w) => ({
     </section>
 
     <p class="privacy muted">{t('stats.privacyNote')}</p>
+    </div>
   </main>
 </Layout>
 
 <style>
-  .hero {
-    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+  .detail {
+    padding-top: clamp(3rem, 8vw, 5rem);
   }
-  .hero h1 {
+  .tete-simple {
+    padding: clamp(2rem, 6vw, 4rem) 0 0;
+  }
+  .tete-simple h1 {
     font-size: clamp(2.2rem, 6vw, 4rem);
     margin: 0 0 0.6rem;
   }
   .lede {
     color: var(--muted);
     max-width: 60ch;
+    margin: 0;
+  }
+  .detail-titre {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
     margin: 0 0 0.4rem;
   }
   .generated {
@@ -212,13 +239,16 @@ const topWorks = topWorksRaw.map((w) => ({
   main section {
     margin: 2.2rem 0;
   }
-  main h2 {
+  main .detail h3 {
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     margin: 0 0 1rem;
   }
+  /* 140 px et non 180 : sur un téléphone de 390 px, deux cartes tiennent de
+     front au lieu d'une. Les chiffres-clés s'empilaient un par un, cinq
+     cartes pour un écran et demi (audit d'interface du 2026-10-07). */
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
     gap: 1rem;
   }
   .note {

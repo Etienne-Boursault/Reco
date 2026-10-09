@@ -1,0 +1,203 @@
+---
+/**
+ * WorkLiens — « Où la trouver » sur la fiche d'une œuvre : les liens vers les
+ * plateformes et les comptes sociaux du créateur.
+ *
+ * Sortis de la page œuvre le 2026-10-07, quand la direction « La récurrence »
+ * leur a donné leur propre bloc, à côté de « Qui en parle » : la page
+ * dépassait les 500 lignes, et ce bloc a ses propres règles (liens de
+ * recherche en pointillé, plateformes à éviter atténuées).
+ */
+import { t } from '../i18n';
+
+export interface LienAffiche {
+  url: string;
+  label: string;
+  ethics?: string | null;
+  recherche?: boolean;
+  icone: string;
+  symbole: string;
+}
+
+interface Props {
+  links: LienAffiche[];
+  titreOeuvre: string;
+  igHandle: string | null;
+  tkHandle: string | null;
+}
+
+const { links, titreOeuvre, igHandle: igBrut, tkHandle: tkBrut } = Astro.props;
+
+/* Un compte social déjà présent parmi les liens n'est pas répété en pastille.
+   La fiche de Bref affichait deux fois le même Instagram (relevé aux deux
+   audits d'interface du 2026-10-07). Comparaison sans `www.`, sans casse ni
+   barre finale : les deux adresses viennent de chemins différents. */
+const normaliser = (url: string) =>
+  url.toLowerCase().replace(/^https?:\/\/(www\.)?/, '').replace(/\/+$/, '');
+const dejaLa = new Set(links.map((l) => normaliser(l.url)));
+const igHandle = igBrut && !dejaLa.has(normaliser(`https://www.instagram.com/${igBrut}/`)) ? igBrut : null;
+const tkHandle = tkBrut && !dejaLa.has(normaliser(`https://www.tiktok.com/@${tkBrut}`)) ? tkBrut : null;
+---
+
+<section class="liens" aria-labelledby="liens-titre">
+  <h2 id="liens-titre" class="liens-titre">Où la trouver</h2>
+
+  {links.length > 0 && (
+    <ul class="work-links" aria-label={t('work.links.a11y')}>
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={l.recherche
+              ? t('work.links.search', { provider: l.label, title: titreOeuvre })
+              : undefined}
+            aria-label={l.recherche
+              ? t('work.links.search', { provider: l.label, title: titreOeuvre })
+              : undefined}
+            class:list={[
+              'work-link',
+              { indie: l.ethics === 'indie' },
+              { avoid: l.ethics === 'avoid' },
+              { recherche: l.recherche },
+            ]}
+          >
+            {l.icone ? (
+              <img class="work-link-icone" src={l.icone} alt="" width="22"
+                   height="22" loading="lazy" decoding="async" />
+            ) : (
+              <span class="work-link-symbole" aria-hidden="true">{l.symbole}</span>
+            )}
+            <span>{l.label}</span>
+            {l.recherche && (
+              <span class="work-link-loupe" aria-hidden="true">🔎</span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  {(igHandle || tkHandle) && (
+    <div class="work-social">
+      {igHandle && (
+        <a class="social-link" href={`https://www.instagram.com/${igHandle}/`}
+           target="_blank" rel="noopener noreferrer">Instagram</a>
+      )}
+      {tkHandle && (
+        <a class="social-link" href={`https://www.tiktok.com/@${tkHandle}`}
+           target="_blank" rel="noopener noreferrer">TikTok</a>
+      )}
+    </div>
+  )}
+</section>
+
+<style>
+  .liens {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+  .liens-titre {
+    font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+    margin: 0;
+  }
+  .work-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .work-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    min-height: 44px;
+    padding: 0 1em;
+    border: 1px solid color-mix(in oklab, var(--text) 15%, transparent);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    /* L'espacement entre l'icône et le texte a été demandé deux fois. `em`
+       plutôt que `px` pour qu'il suive la taille du libellé. */
+    gap: 0.75em;
+    min-height: 44px;
+    padding: 0 1.05em 0 0.75em;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    .social-link:hover,
+    .work-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
+  .social-link,
+  .work-link {
+    transition:
+      border-color 0.16s ease,
+      color 0.16s ease,
+      transform 0.16s ease;
+  }
+  .social-link:active,
+  .work-link:active {
+    transform: scale(0.96);
+    border-color: var(--accent);
+    color: var(--accent);
+    transition-duration: 0.08s;
+  }
+  /* Un lien qui mène à une RECHERCHE chez le diffuseur, non à l'œuvre : la
+     loupe et le pointillé le disent avant le clic. Cf. `estRecherche`. */
+  .work-link.recherche {
+    border-style: dashed;
+  }
+  .work-link-loupe {
+    margin-inline-start: 0.35em;
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+  .work-link-icone {
+    /* Agrandies à la demande : à 16 px, les logos de plateforme se lisaient
+       mal à côté d'un texte de 0,85 rem. */
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    /* Le logo garde ses couleurs de marque, y compris au survol. */
+    object-fit: contain;
+  }
+  .work-link-symbole {
+    font-size: 1.15em;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .work-link.indie {
+    border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  }
+  .work-link.avoid {
+    opacity: 0.55;
+  }
+</style>

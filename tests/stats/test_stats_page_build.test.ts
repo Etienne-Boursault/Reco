@@ -54,8 +54,15 @@ describe.skipIf(!hasBuild)('build output — /stats', () => {
     expect(html).toMatch(/role="img"/);
   });
 
-  it('contient les 5 compteurs principaux (cards)', () => {
-    expect(html).toContain('podcasts indexés');
+  it('contient les compteurs principaux (cards)', () => {
+    // La carte « podcasts indexés » n'est rendue que s'il y a plusieurs
+    // sources : « 1 podcast indexé » n'informe pas (audit d'interface du
+    // 2026-10-07). On compte les sources déclarées pour savoir l'attendre.
+    const nbSources = readdirSync(join(process.cwd(), 'src', 'content', 'sources')).filter(
+      (f) => f.endsWith('.json'),
+    ).length;
+    if (nbSources > 1) expect(html).toContain('podcasts indexés');
+    else expect(html).not.toContain('podcasts indexés');
     expect(html).toContain('recommandations');
     expect(html).toContain('œuvres uniques');
     expect(html).toContain('invités uniques');

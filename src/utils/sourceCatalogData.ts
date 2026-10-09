@@ -12,6 +12,7 @@ import { getCollection } from 'astro:content';
 
 import { sortRecosByTimestamp } from './recoOrder';
 import { recoPubliee } from './recoPubliee';
+import { oeuvreParReco } from './oeuvreDesRecos';
 
 export interface CatalogData {
   /** Recos ACTIVES de la source, triées chronologiquement. */
@@ -20,6 +21,8 @@ export interface CatalogData {
   epByGuid: Map<string, any>;
   /** `[type, nombre]`, du plus fréquent au moins fréquent (ordre des filtres). */
   types: [string, number][];
+  /** Identifiant de reco → œuvre de sa mention visible (lien vers sa fiche). */
+  oeuvres: Map<string, string>;
 }
 
 export async function loadCatalogData(sourceId: string): Promise<CatalogData> {
@@ -42,5 +45,11 @@ export async function loadCatalogData(sourceId: string): Promise<CatalogData> {
   for (const r of recos) for (const t of r.types) counts.set(t, (counts.get(t) ?? 0) + 1);
   const types = [...counts.entries()].sort((a, b) => b[1] - a[1]) as [string, number][];
 
-  return { recos, epByGuid, types };
+  const oeuvres = oeuvreParReco(
+    (await getCollection('mentions'))
+      .filter((m) => m.data.sourceRef.sourceId === sourceId)
+      .map((m) => m.data),
+  );
+
+  return { recos, epByGuid, types, oeuvres };
 }

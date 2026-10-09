@@ -16,13 +16,25 @@ export function galleryItemListSchema(
     description?: string;
     maxItems?: number;
     urlBuilder?: (entry: GalleryEntry) => string | undefined;
+    /**
+     * Types de la galerie. Une œuvre à plusieurs types y est décrite sous
+     * celui de la galerie : « Tous les films » déclarait Kaamelott comme
+     * `TVSeries` (audit d'interface du 2026-10-07, item #19) — la même
+     * contradiction que son badge, côté moteurs de recherche.
+     */
+    galleryTypes?: readonly string[];
   },
 ): Record<string, unknown> {
-  const { name, description, maxItems = 100, urlBuilder } = options;
+  const { name, description, maxItems = 100, urlBuilder, galleryTypes } = options;
   const slice = entries.slice(0, maxItems);
   const itemListElement = slice.map((entry, idx) => {
     const itemSchema = recoToSchema({
-      type: entry.types[0] ?? 'autre',
+      type:
+        (galleryTypes?.length
+          ? entry.types.find((t) => galleryTypes.includes(t))
+          : undefined) ??
+        entry.types[0] ??
+        'autre',
       title: entry.title,
       author: entry.creator ?? undefined,
       url: urlBuilder?.(entry),

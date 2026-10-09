@@ -37,6 +37,7 @@ describe('SiteFooter — structure', () => {
     const html = await render();
     expect(html).toContain('role="contentinfo"');
     expect(html).toMatch(/<nav class="site-footer-nav"[^>]*aria-label="Liens secondaires"/);
+    expect(html).toContain('href="/stats"');
     expect(html).toContain('href="/a-propos"');
     expect(html).toContain('href="/manifeste"');
   });

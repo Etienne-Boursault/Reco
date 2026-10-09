@@ -1,0 +1,183 @@
+---
+/**
+ * EpisodeGuests — la ligne « Avec » d'une page épisode : les invités, en
+ * pastilles qui mènent à leur page.
+ *
+ * Les pages invité existaient, mais aucun lien n'y menait : on n'y arrivait
+ * que par la recherche (audit d'interface du 2026-10-07). La maquette retenue
+ * place l'accès là où l'on rencontre la personne : sous le titre de
+ * l'épisode. Chaque pastille dit combien de fois la personne est venue —
+ * « 4 passages » donne une raison de cliquer.
+ *
+ * Un invité qui n'a jamais rien recommandé n'a pas de page (elles naissent
+ * des `recommendedBy`) : sa pastille reste un simple nom, sans lien mort.
+ * Le composant calcule tout lui-même, pour que la page épisode ne le monte
+ * qu'en une ligne.
+ */
+import { getCollection } from 'astro:content';
+import { listGuests } from '../lib/gallery/aggregate';
+import { buildGuestIndex, slugify } from '../lib/gallery/slug';
+import { initiales, passagesDeLInvite } from '../lib/gallery/invite';
+import { plural } from '../utils/plural';
+
+interface Props {
+  sourceId: string;
+  guests?: readonly string[];
+}
+
+const { sourceId, guests = [] } = Astro.props;
+
+let invites: { nom: string; href: string | null; passages: number }[] = [];
+if (guests.length > 0) {
+  const source = (await getCollection('sources')).find((s) => s.id === sourceId);
+  const mentions = (await getCollection('mentions'))
+    .filter((m) => m.data.sourceRef.sourceId === sourceId)
+    .map((m) => m.data);
+  const episodes = (await getCollection('episodes'))
+    .filter((e) => e.data.sourceId.id === sourceId)
+    .map((e) => e.data);
+  const pages = buildGuestIndex(listGuests(mentions, source?.data.hosts ?? []));
+  invites = guests.map((nom) => {
+    const slug = slugify(nom);
+    return {
+      nom,
+      href: pages.has(slug) ? `/${sourceId}/invite/${slug}` : null,
+      passages: passagesDeLInvite(nom, episodes, mentions).length,
+    };
+  });
+}
+---
+
+{invites.length > 0 && (
+  <div class="avec">
+    <span class="avec-label">Avec</span>
+    <ul>
+      {invites.map((i) => (
+        <li>
+          {i.href ? (
+            <a class="invite" href={i.href}>
+              <span class="pastille" aria-hidden="true">{initiales(i.nom)}</span>
+              <span class="invite-texte">
+                <span>{i.nom}</span>
+                {i.passages >= 2 && (
+                  <span class="passages">{i.passages} {plural(i.passages, 'passage')}</span>
+                )}
+              </span>
+              <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+            </a>
+          ) : (
+            <span class="invite invite-sans-page">
+              <span class="pastille" aria-hidden="true">{initiales(i.nom)}</span>
+              <span>{i.nom}</span>
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .avec {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  .avec-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .invite {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 0.7rem 0 0.4rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .invite-sans-page {
+    font-weight: 400;
+    padding-right: 0.9rem;
+  }
+  .pastille {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: color-mix(in oklab, var(--text) 12%, var(--surface));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  .invite-texte {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .invite-texte > span {
+    white-space: nowrap;
+  }
+  .passages {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+  /* Sur téléphone, la colonne du titre est étroite (les flèches d'épisode
+     l'encadrent) : « Florent Bernard 4 passages » se coupait en quatre
+     morceaux. Le nombre de passages passe sous le nom, chaque ligne entière. */
+  @media (max-width: 560px) {
+    .invite-texte {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      line-height: 1.2;
+      padding-block: 0.3rem;
+    }
+    /* Les pastilles se SUIVENT au lieu de s'empiler : sans les initiales,
+       deux invités tiennent sur une ligne de la colonne étroite que laissent
+       les flèches d'épisode. Empilées, elles repoussaient la première reco
+       sous l'écran (audit d'interface du 2026-10-07, second passage). Le nom
+       complet reste dans la pastille, les initiales n'ajoutaient rien. */
+    .pastille,
+    .chevron {
+      display: none;
+    }
+    .invite {
+      padding: 0 0.8rem;
+      font-size: 0.88rem;
+    }
+    .avec,
+    ul {
+      gap: 0.4rem;
+    }
+  }
+  /* Survol réservé aux vrais pointeurs, appui immédiat : conventions de
+     l'audit d'interface du 2026-10-07 (cf. `global.css`). */
+  @media (hover: hover) and (pointer: fine) {
+    a.invite:hover {
+      border-color: var(--accent);
+    }
+  }
+  a.invite:active {
+    border-color: var(--accent);
+    transform: scale(0.97);
+  }
+</style>

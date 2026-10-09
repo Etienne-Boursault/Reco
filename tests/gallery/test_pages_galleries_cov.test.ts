@@ -309,8 +309,8 @@ describe.each(GALLERIES)(
 
       // theme.colors → variables CSS inline sur <html>.
       expect(html).toContain('--accent:#ff5500');
-      // ogSlug = source.id → carte OG dédiée.
-      expect(html).toContain(`content="${TEST_SITE}/og/ubm.png"`);
+      // La galerie a SA carte « Étiquette » (audit d'interface du 2026-10-07).
+      expect(html).toContain(`content="${TEST_SITE}/og/ubm/galerie/${slug}.png"`);
       expect(html).toContain(`<link rel="canonical" href="${TEST_SITE}/ubm/${slug}">`);
     });
 

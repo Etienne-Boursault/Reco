@@ -214,23 +214,31 @@ const mailtoHref = contactEmail
   fieldset.categories {
     border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
     border-radius: var(--radius, 8px);
-    padding: 0.6rem 0.9rem 0.8rem;
+    padding: 0.4rem 0.9rem 0.5rem;
     display: grid;
-    gap: 0.35rem;
+    gap: 0;
   }
   fieldset.categories legend {
     padding: 0 0.3rem;
     font-weight: 600;
   }
-  fieldset.categories label {
+  /* Chaque option est une rangée de 44 px : c'est le LIBELLÉ entier qui se
+     touche, pas seulement la pastille (audit d'interface du 2026-10-07). */
+  fieldset.categories label,
+  .checkbox {
     display: flex;
-    gap: 0.5rem;
-    align-items: flex-start;
+    gap: 0.65rem;
+    align-items: center;
+    min-height: 44px;
     cursor: pointer;
   }
+  /* `align-content: start` : la rangée Nom | Email étire ses cellules à la
+     même hauteur, et celle du Nom — sans texte d'aide — répartissait le
+     surplus entre libellé et champ, qui descendait sous celui de l'Email. */
   .field {
     display: grid;
     gap: 0.3rem;
+    align-content: start;
   }
   .field label {
     font-weight: 600;
@@ -243,7 +251,6 @@ const mailtoHref = contactEmail
   .row {
     display: grid;
     gap: 0.9rem;
-    grid-template-columns: 1fr;
   }
   @media (min-width: 540px) {
     .row {
@@ -266,11 +273,53 @@ const mailtoHref = contactEmail
     resize: vertical;
     min-height: 6em;
   }
-  .checkbox {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  /* Pastilles et case aux couleurs du thème : en natif, des ronds BLANCS de
+     13 px (`accent-color` ne colore que l'état coché). Bordure à 55 % du
+     texte : contraste ≥ 3:1 exigé pour un composant (WCAG 1.4.11). */
+  .report-form input[type='radio'],
+  .report-form input[type='checkbox'] {
+    appearance: none;
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    border: 2px solid color-mix(in oklab, var(--text) 55%, transparent);
+    border-radius: 0.3rem;
+    background: var(--surface);
     cursor: pointer;
+    display: inline-grid;
+    place-content: center;
+  }
+  .report-form input[type='radio'] {
+    border-radius: 50%;
+  }
+  .report-form input:checked {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .report-form input[type='radio']:checked {
+    box-shadow: inset 0 0 0 0.2rem var(--surface); /* le point central */
+  }
+  .report-form input[type='checkbox']:checked::before {
+    content: '';
+    width: 0.65rem;
+    height: 0.65rem;
+    background: var(--accent-text);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  /* Survol réservé aux vrais pointeurs (convention de `global.css`, audit
+     d'interface du 2026-10-07) : au doigt, il resterait accroché. */
+  @media (hover: hover) and (pointer: fine) {
+    .report-form label:hover input:not(:checked) {
+      border-color: var(--accent);
+    }
+  }
+  /* Contraste forcé : le système efface le fond qui marque l'état coché. */
+  @media (forced-colors: active) {
+    .report-form input[type='radio'],
+    .report-form input[type='checkbox'] {
+      appearance: auto;
+    }
   }
   .captcha label {
     font-weight: 600;
@@ -307,9 +356,14 @@ const mailtoHref = contactEmail
     border-radius: var(--radius, 6px);
     text-decoration: none;
   }
-  .mailto-fallback:hover,
-  .mailto-fallback:focus-visible {
+  .mailto-fallback:focus-visible,
+  .mailto-fallback:active {
     background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .mailto-fallback:hover {
+      background: color-mix(in oklab, var(--accent) 12%, transparent);
+    }
   }
   button[type='submit'] {
     font: inherit;
@@ -321,19 +375,30 @@ const mailtoHref = contactEmail
     border-radius: var(--radius, 6px);
     cursor: pointer;
   }
-  button[type='submit']:hover {
-    filter: brightness(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    button[type='submit']:hover {
+      filter: brightness(1.05);
+    }
+  }
+  .mailto-fallback:active,
+  button[type='submit']:active {
+    transform: scale(0.97);
   }
   .status {
     margin: 0;
     font-size: 0.9rem;
     min-height: 1.2em;
   }
+  /* Teintes ÉCLAIRCIES (audit d'interface du 2026-10-07) : sur le fond
+     sombre du thème, #2a7a2a et #c84a4a plafonnaient vers 3,5:1, sous les
+     4,5:1 exigés pour du texte. Le check de contraste ne les voyait pas :
+     le message n'existe qu'après un envoi. Mélangées au texte du thème, elles
+     restent lisibles sur un thème clair comme sur un sombre. */
   .status.is-ok {
-    color: #2a7a2a;
+    color: color-mix(in oklab, #3fb950 55%, var(--text));
   }
   .status.is-error {
-    color: #c84a4a;
+    color: color-mix(in oklab, #f85149 60%, var(--text));
   }
 </style>
 

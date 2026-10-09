@@ -1,0 +1,215 @@
+---
+/**
+ * GalleryIndex — l'onglet « Par type » du catalogue : une carte par galerie.
+ *
+ * Les galeries par type (films, séries, livres…) étaient publiques, indexées,
+ * présentes dans le sitemap — et aucun lien du site n'y menait. On n'y
+ * arrivait que par la recherche ou par une fiche d'invité. Décidé à la suite
+ * de l'audit d'interface du 2026-10-07 : un troisième onglet, à côté de
+ * « Par épisode » et « Toutes les recos », reprend un geste que le visiteur
+ * connaît déjà au lieu d'ajouter un menu.
+ *
+ * LA CARTE (variante 4 des maquettes, retenue le 2026-10-07)
+ * ----------------------------------------------------------
+ * Le nombre d'œuvres en grand, le nom du type dessous, une icône au trait
+ * dans la couleur d'accent, les trois œuvres les plus citées, et « Voir la
+ * galerie ». Le nombre est jaune, comme tous les grands chiffres du site
+ * (décision du 2026-10-07, second audit). Sur téléphone, la carte devient une ligne :
+ * l'icône, le nom, le nombre à droite, les titres à la suite.
+ *
+ * Rendu côté serveur, sans chargement à la demande : quinze liens pèsent
+ * quelques kilo-octets, rien à voir avec les 2,7 Mo de « Toutes les recos ».
+ *
+ * Le sommaire interne `/[source]/galeries` reste hors navigation : il porte
+ * des indications réservées à l'éditeur.
+ */
+import type { EntreeSommaire } from '../lib/gallery/sommaire';
+import { iconeDuType } from '../utils/iconesTypes';
+import { plural } from '../utils/plural';
+
+interface Props {
+  sourceId: string;
+  galeries: EntreeSommaire[];
+}
+
+const { sourceId, galeries } = Astro.props;
+---
+
+<h2 class="visually-hidden">Galeries par type d'œuvre</h2>
+<ul class="galeries-index" aria-label="Galeries par type d'œuvre">
+  {galeries.map((g) => (
+    <li>
+      <a class="galerie-carte" href={`/${sourceId}/${g.slug}`}>
+        <span class="galerie-n">
+          {g.n}<span class="visually-hidden"> {plural(g.n, 'œuvre')}</span>
+        </span>
+        <span class="galerie-nom">{g.court}</span>
+        <svg
+          class="galerie-icone"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d={iconeDuType(g.types[0])} />
+        </svg>
+        {g.apercu.length > 0 && (
+          <span class="galerie-apercu">
+            {g.apercu.map((titre) => <span class="galerie-titre">{titre}</span>)}
+          </span>
+        )}
+        <span class="galerie-voir" aria-hidden="true">Voir la galerie →</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .galeries-index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  @media (max-width: 900px) {
+    .galeries-index {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .galerie-carte {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'n icone'
+      'nom nom'
+      'apercu apercu'
+      'voir voir';
+    align-content: start;
+    height: 100%;
+    padding: 1.15rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.2s ease;
+  }
+  .galerie-n {
+    grid-area: n;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 4.5vw, 4rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  .galerie-nom {
+    grid-area: nom;
+    margin-top: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--text) 85%, transparent);
+    overflow-wrap: break-word;
+  }
+  .galerie-icone {
+    grid-area: icone;
+    color: var(--accent);
+    margin-top: 0.25rem;
+  }
+  .galerie-apercu {
+    grid-area: apercu;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.85rem;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: var(--muted);
+    min-width: 0;
+  }
+  .galerie-titre {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .galerie-voir {
+    grid-area: voir;
+    align-self: end;
+    margin-top: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* Téléphone : la carte devient une ligne — icône, nom, nombre à droite, et
+     les titres à la suite sur une ligne. Quinze cartes hautes feraient
+     défiler pour rien ; « Voir la galerie » est le geste même de la ligne. */
+  @media (max-width: 560px) {
+    .galeries-index {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+    .galerie-carte {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        'icone nom n'
+        'apercu apercu apercu';
+      align-items: center;
+      column-gap: 0.65rem;
+      padding: 0.85rem 1rem;
+    }
+    .galerie-icone {
+      margin-top: 0;
+      width: 22px;
+      height: 22px;
+    }
+    .galerie-nom {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+    .galerie-n {
+      font-size: 2.35rem;
+    }
+    .galerie-apercu {
+      display: block;
+      margin-top: 0.4rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .galerie-titre + .galerie-titre::before {
+      content: ' · ';
+    }
+    .galerie-voir {
+      display: none;
+    }
+  }
+
+  /* Survol réservé aux vrais pointeurs, appui immédiat : conventions posées
+     par l'audit d'interface du 2026-10-07 (cf. `global.css`). */
+  @media (hover: hover) and (pointer: fine) {
+    .galerie-carte:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+  }
+  .galerie-carte:active {
+    transform: scale(0.98);
+    border-color: var(--accent);
+    transition-duration: 0.08s;
+  }
+</style>

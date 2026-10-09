@@ -23,9 +23,12 @@ import { recoPubliee } from '../utils/recoPubliee';
 // un effet de bord que le bundler ne peut pas supprimer.
 import '../styles/fragment-recos.css';
 import EmptyState from './EmptyState.astro';
+import GalleryIndex from './GalleryIndex.astro';
+import { sommaireGaleries } from '../lib/gallery/sommaire';
 import { TYPE_LABELS_PLURAL, episodeLabel } from '../utils/recoTypes';
 import { sortRecosByTimestamp } from '../utils/recoOrder';
 import { plural } from '../utils/plural';
+import { titreEpisodeAffiche } from '../utils/titreEpisode';
 import { t } from '../i18n';
 import { sourceToPodcastSchema } from '../lib/seo/jsonld';
 import { siteConfig } from '../config/site';
@@ -54,6 +57,9 @@ const recos = sortRecosByTimestamp(
     .map((r) => r.data),
 );
 const trueRecos = recos.filter((r) => r.kind !== 'citation');
+// Œuvres citées sans être conseillées (`kind=citation`) — le reste des cartes
+// de l'onglet « Toutes les recos ».
+const evoquees = recos.length - trueRecos.length;
 
 // Épisodes indexés par guid pour afficher le numéro/titre sur les cartes.
 const episodes = (await getCollection('episodes')).filter(
@@ -117,6 +123,15 @@ const breadcrumb = {
   ],
 };
 const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
+
+// Onglet « Par type » : les galeries de la source, avec les MÊMES nombres que
+// leurs pages (calcul partagé, cf. `lib/gallery/sommaire.ts`).
+const galeries = sommaireGaleries(
+  (await getCollection('items')).map((i) => i.data),
+  (await getCollection('mentions'))
+    .filter((m) => m.data.sourceRef.sourceId === source.id)
+    .map((m) => m.data),
+);
 ---
 
 <Layout
@@ -144,12 +159,21 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     {isHome
       ? <p class="tag">{siteConfig.baseline}</p>
       : data.tagline && <p class="tag">{data.tagline}</p>}
+    {/* Les deux nombres dont l'onglet « Toutes les recos » fait la somme. Seul
+       le premier était écrit : on lisait « 903 recommandations » puis l'onglet
+       en montrait 1 259, œuvres évoquées comprises, sans que rien ne l'explique
+       (audit d'interface du 2026-10-07, item #6). */}
     <p class="stat">
       {trueRecos.length} {plural(trueRecos.length, 'recommandation')}
+      {evoquees > 0 && (
+        <>
+          {' '}<span aria-hidden="true">·</span> {evoquees} {plural(evoquees, 'œuvre')} {plural(evoquees, 'évoquée')}
+        </>
+      )}
     </p>
   </header>
 
-  {/* C1/C5 : <main id="main" tabindex="-1"> enveloppe les 2 tabpanels ET la toolbar.
+  {/* C1/C5 : <main id="main" tabindex="-1"> enveloppe les tabpanels ET la toolbar.
      Le skip-link cible bien le vrai <main>. */}
   <main id="main" tabindex="-1">
     <nav class="tabs wrap" aria-label={t('nav.tabsLabel')}>
@@ -181,8 +205,30 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
         >
           Toutes les recos
         </button>
+        {galeries.length > 0 && (
+          <button
+            class="tab"
+            data-view="types"
+            role="tab"
+            id="tab-types"
+            aria-selected="false"
+            aria-controls="view-types"
+            tabindex="-1"
+          >
+            Par type
+          </button>
+        )}
       </div>
     </nav>
+
+    {/* Vue 3 : les galeries par type d'œuvre. Rendue d'emblée (quinze liens),
+       masquée jusqu'au clic. Ajoutée à la suite de l'audit d'interface du
+       2026-10-07 : ces pages publiques n'étaient reliées à rien. */}
+    {galeries.length > 0 && (
+      <section id="view-types" class="wrap vue-types" role="tabpanel" aria-labelledby="tab-types" hidden>
+        <GalleryIndex sourceId={source.id} galeries={galeries} />
+      </section>
+    )}
 
     {/* Vue 1 : toutes les recos — CHARGÉE À LA DEMANDE.
        Elle pesait 2681 Ko et 24 887 balises, soit 96 % du document, alors
@@ -210,6 +256,17 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
          section entière. */}
       <p id="recos-statut" class="visually-hidden" role="status"
          aria-live="polite" aria-atomic="true"></p>
+      {/* Indicateur VISUEL du chargement, affiché tant que la section porte
+         `aria-busy="true"` (posé par `chargerFragment`). Sans lui, sur un
+         réseau mobile, l'onglet basculait puis rien ne se passait pendant
+         1,7 s — mesuré à l'audit d'interface du 2026-10-07. `aria-hidden` :
+         l'annonce aux lecteurs d'écran est déjà faite par `#recos-statut`,
+         la doubler la ferait entendre deux fois. Hors du conteneur remplacé,
+         pour la même raison que la zone d'annonce. */}
+      <div class="wrap chargement-recos" aria-hidden="true">
+        <span class="chargement-barre"></span>
+        <span class="chargement-texte">Chargement des recommandations…</span>
+      </div>
       <div data-recos-cible>
         <p class="wrap repli-recos">
           <a href={`/${source.id}/recos`}>Voir les {recos.length} recommandations →</a>
@@ -255,7 +312,11 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
               const thumb = ytThumb(e.youtubeUrl) ?? e.imageUrl ?? null;
               // Titre FRANÇAIS du flux (e.title) plutôt que le titre YouTube,
               // parfois en anglais (ex. « A Good Time with BROUTE »).
-              const epTitle = e.title;
+              // Sans le suffixe « (Un Bon Moment, S6-E03) » : le badge de la
+              // vignette dit déjà le numéro, et c'est ce suffixe que la coupe
+              // à deux lignes mangeait (audit d'interface du 2026-10-07). La
+              // clé de recherche, elle, garde le titre complet.
+              const epTitle = titreEpisodeAffiche(e.title, data.title);
               const epLabelStr = epLabel(e);
               // Normalisation SSR (sans accents + lowercase) pour la recherche
               // tolérante côté client. On garde le titre YouTube dans la clé
@@ -331,16 +392,30 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   // scripts des composants rendus. Sur `/[source]/recos`, le champ et les
   // puces existaient donc sans écouteur.
 
-  // La barre de filtres est dans le HTML initial — elle enveloppe les deux
-  // onglets — contrairement a la grille, qui arrive par fragment. Un appel
-  // direct suffit donc, sans attendre le premier clic.
+  // DEUX barres de filtres sur cette page, une par onglet. Celle de « Par
+  // épisode » est dans le HTML initial : on la câble tout de suite. Celle de
+  // « Toutes les recos » arrive AVEC le fragment, et ne peut être câblée
+  // qu'après son injection — cf. `apresInjection` plus bas.
+  //
+  // Ce commentaire disait l'inverse (« la barre enveloppe les deux onglets,
+  // un appel direct suffit ») depuis le passage au chargement à la demande :
+  // c'était vrai avant, et la barre des recos, sur mobile, ne se masquait
+  // plus jamais (audit d'interface du 2026-10-07).
   cablerBarreFiltres();
+
+  /** Ce qu'il faut câbler une fois le fragment en place : les filtres ET le
+   *  masquage au défilement de sa barre, qui n'existaient pas avant. */
+  function apresInjection(): void {
+    cablerFiltreRecos();
+    cablerBarreFiltres();
+  }
 
   // Bascule entre « Toutes les recos » et « Par épisode ».
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));
   const views: Record<string, HTMLElement | null> = {
     all: document.getElementById('view-all'),
     episodes: document.getElementById('view-episodes'),
+    types: document.getElementById('view-types'),
   };
   /**
    * Charge la vue « toutes les recos » au premier affichage, puis jamais plus.
@@ -355,19 +430,60 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
    * et cette logique y échapperait à toute mesure de couverture.
    */
   let chargement: Promise<unknown> | null = null;
+  /** Vrai une fois le fragment injecté — y compris s'il l'a été en avance,
+   *  par le préchargement, pendant que l'onglet était encore masqué. */
+  let charge = false;
   function chargerRecos(section: HTMLElement): Promise<unknown> {
     if (chargement) return chargement;
-    chargement = chargerFragment(section, cablerFiltreRecos)
+    chargement = chargerFragment(section, apresInjection)
       // Un échec ne doit pas figer la vue : on relâche la promesse retenue
       // pour qu'un second clic puisse retenter.
       .then((issue) => {
         if (issue === 'echec') chargement = null;
+        if (issue === 'charge') charge = true;
       });
     return chargement;
   }
 
+  /**
+   * Le chargement part dès l'INTENTION, pas au clic.
+   *
+   * Mesuré à l'audit d'interface du 2026-10-07 : sur un réseau mobile, il
+   * s'écoulait 1,7 s entre le clic et l'apparition des cartes. `pointerdown`
+   * précède le `click` du temps que le doigt reste posé, et `pointerenter`,
+   * à la souris, de tout le temps que met le curseur à atteindre l'onglet —
+   * autant de gagné. La promesse retenue dans `chargement` garantit qu'il n'y
+   * aura jamais deux requêtes.
+   *
+   * Pas de `focus` : avec le tabindex itinérant, l'onglet inactif n'est pas
+   * dans l'ordre Tab, et les flèches l'activent aussitôt — c'est déjà le clic.
+   */
+  const ongletRecos = tabs.find((t) => t.dataset.view === 'all');
+  const prechargerRecos = (): void => {
+    if (views.all) void chargerRecos(views.all);
+  };
+  ongletRecos?.addEventListener('pointerenter', prechargerRecos, { once: true });
+  ongletRecos?.addEventListener('pointerdown', prechargerRecos, { once: true });
+
+  /**
+   * Une annonce faite pendant que la section était MASQUÉE n'est entendue
+   * par personne : un lecteur d'écran ignore les régions `aria-live` cachées.
+   * Si le préchargement a tout fini avant l'affichage de l'onglet, on répète
+   * donc le dernier message une fois la section visible.
+   */
+  function reannoncer(): void {
+    const statut = document.getElementById('recos-statut');
+    const message = statut?.textContent;
+    if (!statut || !message) return;
+    statut.textContent = '';
+    requestAnimationFrame(() => {
+      statut.textContent = message;
+    });
+  }
+
   function activateTab(tab: HTMLButtonElement) {
     const view = tab.dataset.view ?? 'all';
+    const dejaCharge = charge;
     if (view === 'all' && views.all) void chargerRecos(views.all);
     tabs.forEach((t) => {
       const on = t === tab;
@@ -380,6 +496,7 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     for (const [key, el] of Object.entries(views)) {
       if (el) el.hidden = key !== view;
     }
+    if (view === 'all' && dejaCharge) reannoncer();
   }
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => activateTab(tab));
@@ -431,8 +548,12 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
 </script>
 
 <style>
+  /* Le haut de page porte désormais la barre de recherche (Layout) : l'ancien
+     espace de 2 à 4 rem au-dessus du titre s'y ajoutait, et sur téléphone le
+     bouton flottait seul au-dessus d'un grand vide (fusion de l'audit
+     d'interface du 2026-10-07). */
   .head {
-    padding: clamp(2rem, 6vw, 4rem) 0 1.5rem;
+    padding: clamp(0.5rem, 3vw, 2rem) 0 1.5rem;
   }
   .back {
     color: var(--muted);
@@ -440,7 +561,16 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     font-size: 0.85rem;
     font-weight: 600;
   }
-  .back:hover {
+  /* Survol réservé aux pointeurs qui SURVOLENT vraiment (souris, pavé).
+     Au doigt, `:hover` s'accroche au dernier élément touché et y reste :
+     la carte demeurait soulevée et bordée d'accent après un simple toucher
+     (audit d'interface du 2026-10-07). Même garde partout dans le site. */
+  @media (hover: hover) and (pointer: fine) {
+    .back:hover {
+      color: var(--accent);
+    }
+  }
+  .back:active {
     color: var(--accent);
   }
   .head h1 {
@@ -478,15 +608,41 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     padding: 0.45em 1.1em;
     /* L20 : Firefox parfois ne met pas cursor:pointer sur <button>. */
     cursor: pointer;
-    transition: all 0.16s ease;
+    /* Propriétés EXPLICITES plutôt que `all` : `all` anime aussi ce qu'on ne
+       voit pas (et rejoue la mise en page à chaque changement de style). */
+    transition:
+      color 0.16s ease,
+      background-color 0.16s ease,
+      border-color 0.16s ease,
+      transform 0.16s ease;
   }
-  .tab:hover {
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .tab:hover {
+      color: var(--text);
+    }
+  }
+  /* Retour à l'APPUI, pas au relâchement : l'onglet s'enfonce dès que le
+     doigt se pose. La descente est brève (80 ms), la remontée garde la durée
+     normale — un appui se sent, un relâchement se laisse aller. */
+  .tab:active {
+    transform: scale(0.96);
+    transition-duration: 0.08s;
   }
   .tab.is-active {
     background: var(--accent);
     color: var(--accent-text);
     border-color: var(--accent);
+  }
+  /* Trois onglets sur 358 px utiles (téléphone de 390 px) : avec le
+     rembourrage d'origine, « Par type » débordait de 9 px. On resserre les
+     côtés des pastilles plutôt que de laisser l'un d'eux passer à la ligne. */
+  @media (max-width: 420px) {
+    .tab {
+      padding-inline: 0.8em;
+    }
+  }
+  .vue-types {
+    padding-block: 1.4rem 0;
   }
   .ep-count {
     color: var(--muted);
@@ -502,6 +658,62 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   .repli-recos a {
     color: var(--accent);
     font-weight: 600;
+  }
+  /* Chargement de l'onglet « Toutes les recos » — n'existe à l'écran que le
+     temps de la requête. Pendant ce temps, le lien de repli s'efface : il
+     disait « voir les recommandations » au moment même où elles arrivent. */
+  .chargement-recos {
+    display: none;
+    margin: 2rem auto;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  #view-all[aria-busy='true'] .chargement-recos {
+    display: block;
+  }
+  #view-all[aria-busy='true'] .repli-recos {
+    display: none;
+  }
+  .chargement-barre {
+    display: block;
+    position: relative;
+    width: min(240px, 60%);
+    height: 3px;
+    margin: 0 auto 0.8rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--text) 12%, transparent);
+  }
+  /* Barre indéterminée : un segment d'accent qui traverse. `transform`
+     seulement — composité, sans recalcul de mise en page. */
+  .chargement-barre::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    border-radius: inherit;
+    background: var(--accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .chargement-barre::after {
+      animation: chargement-traverse 1.1s ease-in-out infinite;
+    }
+    @keyframes chargement-traverse {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(250%);
+      }
+    }
+  }
+  /* Mouvement réduit : un état STATIQUE suffit. Le segment reste posé au
+     centre, et le texte porte l'information. */
+  @media (prefers-reduced-motion: reduce) {
+    .chargement-barre::after {
+      left: 30%;
+    }
   }
   /* Grille « par épisode » */
   .ep-grid {
@@ -550,9 +762,20 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
     object-fit: cover;
     display: block;
   }
-  .ep-card a:hover .ep-thumb {
-    transform: translateY(-4px);
+  @media (hover: hover) and (pointer: fine) {
+    .ep-card a:hover .ep-thumb {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+  }
+  /* Appui : la vignette s'enfonce légèrement, dès le contact. Plus discret
+     que sur un petit contrôle — une grande surface qui rétrécit beaucoup
+     paraît se dérober. Placé APRÈS le survol pour l'emporter sur le
+     soulèvement : à la souris, cliquer « repose » la vignette. */
+  .ep-card a:active .ep-thumb {
+    transform: scale(0.98);
     border-color: var(--accent);
+    transition-duration: 0.08s;
   }
 
   /* La vignette survolee passe AU-DESSUS de la barre de filtres.
@@ -569,9 +792,11 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
      6, soit un de plus que la barre (z-index: 5). Le recouvrement ne dure que
      le survol, et ne porte que sur la largeur d'une vignette : on voit
      entierement ce qu'on s'apprete a cliquer. */
-  .ep-card:hover {
-    position: relative;
-    z-index: 6;
+  @media (hover: hover) and (pointer: fine) {
+    .ep-card:hover {
+      position: relative;
+      z-index: 6;
+    }
   }
   .ep-badge {
     position: absolute;
@@ -607,6 +832,29 @@ const jsonLd = isHome ? [podcastSchema] : [podcastSchema, breadcrumb];
   .ep-cnt {
     color: var(--muted);
     font-size: 0.8rem;
+  }
+  /* DEUX vignettes par rangée sur téléphone (audit d'interface du
+     2026-10-07) : à une colonne, l'accueil mobile mesurait 27 000 px pour
+     113 épisodes. Titre et numéro suffisent à reconnaître un épisode. 560 px
+     est le seuil où la grille automatique tombait à une colonne. */
+  @media (max-width: 560px) {
+    .ep-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem 0.7rem;
+    }
+    .ep-card {
+      contain-intrinsic-size: auto 190px;
+    }
+    .ep-badge {
+      font-size: 0.68rem;
+    }
+    .ep-ttl {
+      font-size: 0.88rem;
+      -webkit-line-clamp: 3;
+    }
+    .ep-cnt {
+      font-size: 0.75rem;
+    }
   }
   main {
     padding-bottom: 4rem;

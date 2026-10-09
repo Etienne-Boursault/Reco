@@ -40,7 +40,7 @@ const SOURCE = {
   },
 };
 
-function seed(map: Partial<Record<'sources' | 'recos', Entry[]>>): void {
+function seed(map: Partial<Record<'sources' | 'recos' | 'episodes', Entry[]>>): void {
   getCollection.mockImplementation(async (name: string) => map[name as never] ?? []);
 }
 
@@ -288,10 +288,42 @@ describe('/[source]/report/[recoId] — formulaire', () => {
 
     expect(html).toContain(`<title>Signaler — Parasite — ${siteConfig.siteName}</title>`);
     expect(html).toContain('<meta name="robots" content="noindex, nofollow">');
+    // Aucun épisode connu : le retour retombe sur le catalogue.
     expect(html).toContain('href="/ubm"');
+    expect(visibleText(html)).toContain('retour au catalogue');
     expect(html).toContain('ubm-0001');
     expect(visibleText(html)).toContain('Signaler un problème');
     // Le thème de la source est bien transmis.
     expect(html).toContain('--accent:#ff5500');
+  });
+
+  // Audit d'interface du 2026-10-07 : le ⚠ se touche depuis les cartes d'un
+  // épisode, le retour doit y ramener plutôt qu'au catalogue.
+  it("le retour ramène à l'épisode de la reco quand sa page existe", async () => {
+    seed({
+      sources: [SOURCE],
+      recos: [reco('ubm-0001')],
+      episodes: [{ data: { guid: 'g1', sourceId: { id: 'ubm' } } }],
+    });
+    const p = await paths();
+    const html = await renderPage(ReportForm, {
+      params: p[0].params,
+      props: p[0].props,
+      path: '/ubm/report/ubm-0001',
+    });
+
+    expect(html).toContain('href="/ubm/episode/g1"');
+    expect(visibleText(html)).toContain('retour à l’épisode');
+    expect(html).not.toContain('href="/ubm"');
+  });
+
+  it("un épisode homonyme d'une AUTRE source ne compte pas", async () => {
+    seed({
+      sources: [SOURCE],
+      recos: [reco('ubm-0001')],
+      episodes: [{ data: { guid: 'g1', sourceId: { id: 'autre' } } }],
+    });
+
+    expect((await paths())[0].props.backHref).toBe('/ubm');
   });
 });

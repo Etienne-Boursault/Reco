@@ -48,6 +48,26 @@ describe('galleryItemListSchema', () => {
     expect(item.name).toBe('Titre');
   });
 
+  // « Tous les films » déclarait Kaamelott (série ET film) comme TVSeries
+  // (audit d'interface du 2026-10-07, item #19).
+  it('une œuvre multi-types est décrite sous le type de la galerie', () => {
+    const node = galleryItemListSchema([entry({ types: ['serie', 'film'] })], {
+      name: 'Films',
+      galleryTypes: ['film'],
+    });
+    const item = (node.itemListElement as Record<string, unknown>[])[0].item as Record<string, unknown>;
+    expect(item['@type']).toBe('Movie');
+  });
+
+  it("type de galerie absent de l'entrée → premier type de l'entrée", () => {
+    const node = galleryItemListSchema([entry({ types: ['serie', 'film'] })], {
+      name: 'Livres',
+      galleryTypes: ['livre'],
+    });
+    const item = (node.itemListElement as Record<string, unknown>[])[0].item as Record<string, unknown>;
+    expect(item['@type']).toBe('TVSeries');
+  });
+
   it("mappe le premier type de l'entrée ; types vide → 'autre' (CreativeWork)", () => {
     const node = galleryItemListSchema([entry({ types: [] })], { name: 'X' });
     const item = (node.itemListElement as Record<string, unknown>[])[0]

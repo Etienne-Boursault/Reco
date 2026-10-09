@@ -99,6 +99,36 @@ describe('cablerBarreFiltres', () => {
     expect(barre.dataset.defilementCable).toBe('1');
   });
 
+  it('cable TOUTES les barres, pas seulement la premiere', () => {
+    // L'accueil porte deux barres, une par onglet. Seule la premiere etait
+    // cablee : la barre visible de « Toutes les recos » restait collee en
+    // haut de l'ecran mobile (audit d'interface du 2026-10-07).
+    document.body.innerHTML =
+      '<div class="toolbar" id="a"></div><div class="toolbar" id="b"></div>' +
+      '<div style="height:5000px"></div>';
+    cablerBarreFiltres();
+    defiler(400);
+    expect(document.getElementById('a')?.classList.contains('toolbar--masquee')).toBe(true);
+    expect(document.getElementById('b')?.classList.contains('toolbar--masquee')).toBe(true);
+  });
+
+  it('cable la barre d un fragment injecte apres coup', () => {
+    // Scenario exact de l'accueil : une barre au chargement, une seconde qui
+    // arrive avec le fragment. Le second appel doit cabler la nouvelle, et
+    // elle seule.
+    poserBarre();
+    cablerBarreFiltres();
+    const injectee = document.createElement('div');
+    injectee.className = 'toolbar';
+    document.body.prepend(injectee);
+    expect(cablerBarreFiltres()).toBe(true);
+    expect(injectee.dataset.defilementCable).toBe('1');
+    defiler(400);
+    expect(injectee.classList.contains('toolbar--masquee')).toBe(true);
+    defiler(300);
+    expect(injectee.classList.contains('toolbar--masquee')).toBe(false);
+  });
+
   it('ne masque jamais la barre quand le focus est dedans', () => {
     // On tape dans le champ de recherche, le clavier virtuel s'ouvre et la
     // page defile : masquer la barre escamoterait le champ en cours de

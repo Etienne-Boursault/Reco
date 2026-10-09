@@ -259,10 +259,18 @@ import { t } from '../i18n';
     border: 1px solid var(--muted);
     background: var(--surface);
   }
-  .search-results :global(.r-group a:hover),
-  .search-results :global(.r-group a:focus-visible) {
+  /* Focus et appui pour tous ; survol réservé aux vrais pointeurs — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  .search-results :global(.r-group a:focus-visible),
+  .search-results :global(.r-group a:active) {
     border-color: var(--accent);
     outline: 2px solid transparent;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .search-results :global(.r-group a:hover) {
+      border-color: var(--accent);
+      outline: 2px solid transparent;
+    }
   }
   .search-results :global(.r-title) { font-weight: 600; }
   .search-results :global(.r-sub) {

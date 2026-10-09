@@ -9,6 +9,7 @@
 import { describe, it, expect } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import MetaPodcastCard from '../../src/components/MetaPodcastCard.astro';
+import { ICONE_TYPE } from '../../src/utils/iconesTypes';
 import WorkCard from '../../src/components/WorkCard.astro';
 import AudioPlayer from '../../src/components/AudioPlayer.astro';
 import TrendingBadge from '../../src/components/TrendingBadge.astro';
@@ -115,17 +116,17 @@ describe('WorkCard — vignette « du même créateur »', () => {
     expect(html).toContain('Memories of Murder');
   });
 
-  it('un emoji par type, avec libellé accessible dupliqué en visually-hidden', async () => {
+  it('une icône par type, avec libellé accessible dupliqué en visually-hidden', async () => {
     const html = await render(WorkCard, { sourceId: 'ubm', item: item({ types: ['film', 'livre'] }) });
-    expect(html).toContain('🎬');
-    expect(html).toContain('📖');
+    expect(html).toContain(`d="${ICONE_TYPE.film}"`);
+    expect(html).toContain(`d="${ICONE_TYPE.livre}"`);
     expect(html).toContain('aria-label="Film, Livre"');
     expect(html).toContain('<span class="visually-hidden"');
   });
 
-  it('type inconnu → emoji ✨ et libellé = clé brute', async () => {
+  it('type inconnu → icône « autre » et libellé = clé brute', async () => {
     const html = await render(WorkCard, { sourceId: 'ubm', item: item({ types: ['zarbi'] }) });
-    expect(html).toContain('✨');
+    expect(html).toContain(`d="${ICONE_TYPE.autre}"`);
     expect(html).toContain('aria-label="zarbi"');
   });
 
@@ -228,13 +229,16 @@ describe('AudioPlayer — lecteur natif', () => {
 describe('TrendingBadge — pastille « tendance »', () => {
   it('fenêtre par défaut de 12 mois dans le libellé', async () => {
     const html = await render(TrendingBadge, { count: 3 });
-    expect(html).toContain('Mentionnée 3 fois au cours des 12 derniers mois');
-    expect(html).toContain('3×');
+    expect(html).toContain('3 mentions au cours des 12 derniers mois');
+    // La pastille dit ce qu'elle est ; le nombre vit dans l'info-bulle — un
+    // « 3× » nu ajoutait un troisième compteur sans unité (audit #6).
+    expect(html).toContain('Tendance');
+    expect(html).not.toContain('3×');
   });
 
   it('fenêtre personnalisée reprise dans le libellé', async () => {
     const html = await render(TrendingBadge, { count: 2, windowMonths: 6 });
-    expect(html).toContain('Mentionnée 2 fois au cours des 6 derniers mois');
+    expect(html).toContain('2 mentions au cours des 6 derniers mois');
   });
 
   it('le 🔥 est décoratif, le badge porte role=img + aria-label', async () => {
@@ -272,5 +276,25 @@ describe('SearchPalette — palette Cmd+K', () => {
   it('la zone de résultats est un <output> aria-live', async () => {
     const html = await render(SearchPalette);
     expect(html).toMatch(/<output[^>]*id="search-palette-results"[^>]*aria-live="polite"/);
+  });
+
+  // Audit d'interface du 2026-10-07 : le Layout rend le déclencheur dans la
+  // barre du haut et le dialogue en fin de document, séparément.
+  it('part="trigger" rend le bouton seul, sans dialogue', async () => {
+    const html = await render(SearchPalette, { part: 'trigger' });
+    expect(html).toContain('data-search-palette-trigger');
+    expect(html).not.toContain('id="search-palette-dialog"');
+  });
+
+  it('part="dialog" rend le dialogue seul, sans bouton', async () => {
+    const html = await render(SearchPalette, { part: 'dialog' });
+    expect(html).toContain('id="search-palette-dialog"');
+    expect(html).not.toContain('data-search-palette-trigger');
+  });
+
+  it('le serveur annonce « Ctrl K », corrigé côté client sur Apple', async () => {
+    const html = await render(SearchPalette, { part: 'trigger' });
+    expect(html).toMatch(/<kbd[^>]*data-search-palette-kbd[^>]*>Ctrl K<\/kbd>/);
+    expect(html).not.toContain('⌘ K');
   });
 });

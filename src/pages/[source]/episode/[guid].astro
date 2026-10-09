@@ -2,13 +2,18 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import RecoCard from '../../../components/RecoCard.astro';
+import EpisodeGuests from '../../../components/EpisodeGuests.astro';
 import { episodeLabel } from '../../../utils/recoTypes';
+import { titreEpisodeAffiche } from '../../../utils/titreEpisode';
 import { recoPubliee } from '../../../utils/recoPubliee';
 import { sortRecosByTimestamp } from '../../../utils/recoOrder';
 import { plural } from '../../../utils/plural';
 import { t } from '../../../i18n';
 import { episodeToSchema, recoToSchema } from '../../../lib/seo/jsonld';
 import { splitEpisodeRecos } from '../../../lib/episode/splitRecos';
+import { lienOeuvre, oeuvreParReco } from '../../../utils/oeuvreDesRecos';
+import { decouperEnMoments } from '../../../lib/episode/chapitres';
+import EpisodeChapitres from '../../../components/EpisodeChapitres.astro';
 
 export async function getStaticPaths() {
   const sources = await getCollection('sources');
@@ -61,6 +66,16 @@ export async function getStaticPaths() {
 const { source, episode, recos, prevGuid, nextGuid } = Astro.props;
 const data = source.data;
 
+// Le titre de chaque carte mène à la fiche de son œuvre (cf. `oeuvreDesRecos`).
+const oeuvres = oeuvreParReco(
+  (await getCollection('mentions'))
+    .filter((m) => m.data.sourceRef.sourceId === source.id)
+    .map((m) => m.data),
+);
+const ficheOeuvre = (recoId: string) => lienOeuvre(oeuvres, source.id, recoId);
+// En moments de l'écoute (« Les chapitres ») ; `null` → sections par nature.
+const moments = decouperEnMoments(recos, episode.youtubeDuration);
+
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
 // Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl).
 const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : (episode.imageUrl ?? null);
@@ -74,6 +89,11 @@ const thumbSize = ytId ? { width: 480, height: 360 } : {};
 const epNum = episodeLabel(episode);
 // Titre français du flux plutôt que le titre YouTube (parfois en anglais).
 const epTitle = episode.title;
+// Le grand titre perd le suffixe « (Un Bon Moment, S6-E03) » : le numéro est
+// écrit juste au-dessus, et ce suffixe occupait une ligne entière du h1
+// (audit d'interface du 2026-10-07). `epTitle`, complet, reste celui du
+// <title>, de la description et du JSON-LD — lus sans le badge à côté.
+const epTitleAffiche = titreEpisodeAffiche(episode.title, data.title);
 
 // Répartition en 3 seaux pour la PRÉSENTATION de la page épisode (helper pur
 // testable). Décision produit (CR Story 4) : les œuvres d'invité·es restent
@@ -108,6 +128,14 @@ const guestWorkCountLabel =
       ? t('episode.count.guestWorks.many', { count: guestWorks.length })
       : t('episode.count.guestWorks.one', { count: guestWorks.length })
     : null;
+// La section des recos spontanées n'en porte qu'une partie quand l'épisode a
+// aussi des œuvres d'invité·es : « Recommandations (4) » sous un en-tête
+// « 10 recommandations » se lisait comme une contradiction (audit d'interface
+// du 2026-10-07, item #6). Le qualificatif n'apparaît que dans ce cas.
+const titreRecosSpontanees =
+  guestWorks.length > 0
+    ? t('episode.section.recommendations.spontaneous')
+    : t('episode.section.recommendations');
 const citationCountLabel =
   citations.length > 0
     ? citations.length >= 2
@@ -118,8 +146,9 @@ const citationCountLabel =
 // JSON-LD : PodcastEpisode + toutes les recommandations (spontanées ET œuvres
 // d'invités — elles restent des recos au sens catalogue). Seules les citations
 // sont exclues. Cf. ADR 0021 §7.
-// Si l'épisode n'a PAS de thumbnail YouTube, le Layout dérivera l'image OG
-// depuis `ogSlug` (carte Satori dynamique). Sinon, `ogImage` (thumb) gagne.
+// Image de partage : la carte « Étiquette » (`ogSlug`) dès que l'épisode a une
+// recommandation — elle dit ce qu'il recommande, la vignette YouTube non
+// (audit d'interface du 2026-10-07). Sans reco, pas de carte : la vignette.
 const episodeUrl = new URL(`/${source.id}/episode/${episode.guid}`, Astro.site).toString();
 const sourceUrl = new URL(`/${source.id}`, Astro.site).toString();
 const jsonLd: Record<string, unknown>[] = [
@@ -146,8 +175,8 @@ const jsonLd: Record<string, unknown>[] = [
 <Layout
   title={`${epTitle} — ${data.title}`}
   description={`${recommendationCount} ${plural(recommendationCount, 'recommandation')} ${plural(recommendationCount, 'extraite')} de ${epTitle}, épisode du podcast ${data.title}.`}
-  ogImage={thumb ?? undefined}
-  ogSlug={`${source.id}/episode/${episode.guid}`}
+  ogImage={recommendationCount > 0 ? undefined : thumb ?? undefined}
+  ogSlug={recommendationCount > 0 ? `${source.id}/episode/${episode.guid}` : source.id}
   ogType="article"
   theme={data.theme}
   jsonLd={jsonLd}
@@ -201,7 +230,7 @@ const jsonLd: Record<string, unknown>[] = [
         }
         <div class="ep-info">
           {epNum && <span class="epnum">{epNum}</span>}
-          <h1>{epTitle}</h1>
+          <h1>{epTitleAffiche}</h1>
           <p class="count">
             {recoCountLabel}
             {guestWorkCountLabel && (
@@ -215,6 +244,7 @@ const jsonLd: Record<string, unknown>[] = [
               </>
             )}
           </p>
+          <EpisodeGuests sourceId={source.id} guests={episode.guests} />
         </div>
       </div>
     </div>
@@ -228,22 +258,25 @@ const jsonLd: Record<string, unknown>[] = [
         Aucune recommandation extraite de cet épisode pour le moment.
       </p>
     )}
-    {spontaneousRecos.length > 0 && (
+    {moments && <EpisodeChapitres {moments} sourceId={source.id} {episode} {epTitle} {oeuvres} />}
+    {!moments && spontaneousRecos.length > 0 && (
       <section class="reco-section">
-        <h2 class="sec-title">{t('episode.section.recommendations')} ({spontaneousRecos.length})</h2>
+        <h2 class="sec-title">{titreRecosSpontanees} ({spontaneousRecos.length})</h2>
         <ul class="grid">
           {spontaneousRecos.map((r) => (
             <RecoCard
               reco={r}
               episodeNumber={episode.number}
+              episodeSeason={episode.season}
               episodeTitle={epTitle}
               sourceId={source.id}
+              oeuvreHref={ficheOeuvre(r.id)}
             />
           ))}
         </ul>
       </section>
     )}
-    {guestWorks.length > 0 && (
+    {!moments && guestWorks.length > 0 && (
       <section class="reco-section guestwork-section">
         <h2 class="sec-title">{t('episode.section.guestWorks')} ({guestWorks.length})</h2>
         <p class="sec-lede">{t('episode.lede.guestWorks')}</p>
@@ -255,15 +288,17 @@ const jsonLd: Record<string, unknown>[] = [
             <RecoCard
               reco={r}
               episodeNumber={episode.number}
+              episodeSeason={episode.season}
               episodeTitle={epTitle}
               sourceId={source.id}
+              oeuvreHref={ficheOeuvre(r.id)}
               showGuestWorkBadge={false}
             />
           ))}
         </ul>
       </section>
     )}
-    {citations.length > 0 && (
+    {!moments && citations.length > 0 && (
       <section class="reco-section citation-section">
         <h2 class="sec-title">{t('episode.section.citations')} ({citations.length})</h2>
         <p class="sec-lede">{t('episode.lede.citations')}</p>
@@ -272,8 +307,10 @@ const jsonLd: Record<string, unknown>[] = [
             <RecoCard
               reco={r}
               episodeNumber={episode.number}
+              episodeSeason={episode.season}
               episodeTitle={epTitle}
               sourceId={source.id}
+              oeuvreHref={ficheOeuvre(r.id)}
             />
           ))}
         </ul>
@@ -292,7 +329,12 @@ const jsonLd: Record<string, unknown>[] = [
     font-size: 0.85rem;
     font-weight: 600;
   }
-  .back:hover {
+  @media (hover: hover) and (pointer: fine) {
+    .back:hover {
+      color: var(--accent);
+    }
+  }
+  .back:active {
     color: var(--accent);
   }
   /* M1 : rangée hero + flèches. La grille place `prev | hero | next` sans que
@@ -337,12 +379,29 @@ const jsonLd: Record<string, unknown>[] = [
     text-decoration: none;
     font-size: 1.8rem;
     line-height: 1;
-    transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease;
+    transition:
+      border-color 0.16s ease,
+      color 0.16s ease,
+      background 0.16s ease,
+      transform 0.16s ease;
   }
-  .ep-arrow:hover {
+  /* Survol réservé aux vrais pointeurs, appui immédiat pour tous — cf. la
+     convention en tête de `global.css` (audit d'interface du 2026-10-07). */
+  @media (hover: hover) and (pointer: fine) {
+    a.ep-arrow:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: color-mix(in oklab, var(--accent) 12%, transparent);
+    }
+  }
+  /* `a.` : la flèche désactivée est un <span>, rien ne doit réagir à son
+     appui. */
+  a.ep-arrow:active {
+    transform: scale(0.92);
     border-color: var(--accent);
     color: var(--accent);
     background: color-mix(in oklab, var(--accent) 12%, transparent);
+    transition-duration: 0.08s;
   }
   .ep-arrow.disabled {
     opacity: 0.25;
@@ -375,8 +434,24 @@ const jsonLd: Record<string, unknown>[] = [
     opacity: 0;
     transition: opacity 0.2s ease;
   }
-  a.thumb:hover .play {
+  @media (hover: hover) and (pointer: fine) {
+    a.thumb:hover .play {
+      opacity: 1;
+    }
+  }
+  /* Sans survol, le pictogramme ▶ n'apparaissait JAMAIS : au doigt, rien ne
+     disait que la vignette ouvre la vidéo. On le montre donc en permanence,
+     sans le voile sombre qui ternirait l'image. */
+  @media (hover: none) {
+    a.thumb .play {
+      opacity: 1;
+      background: transparent;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    }
+  }
+  a.thumb:active .play {
     opacity: 1;
+    transition-duration: 0.08s;
   }
   .ep-info {
     flex: 1 1 280px;

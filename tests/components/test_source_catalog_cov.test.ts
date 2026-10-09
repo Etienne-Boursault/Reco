@@ -58,14 +58,26 @@ const episode = (over: Record<string, unknown> = {}) =>
     ...over,
   });
 
-/** Programme les 3 collections lues (recos, episodes, sources). */
-function collections(recos: Entry[], episodes: Entry[], sources: Entry[] = []) {
+/** Programme les collections lues (recos, episodes, items, mentions, sources). */
+function collections(
+  recos: Entry[],
+  episodes: Entry[],
+  sources: Entry[] = [],
+  items: Entry[] = [],
+  mentions: Entry[] = [],
+) {
   getCollection.mockImplementation(async (name: string) => {
     if (name === 'recos') return recos;
     if (name === 'episodes') return episodes;
+    if (name === 'items') return items;
+    if (name === 'mentions') return mentions;
     return sources;
   });
 }
+
+const item = (id: string, types: string[]) => entry({ id, title: id, types });
+const mention = (id: string, itemId: string, over: Record<string, unknown> = {}) =>
+  entry({ id, itemId, status: 'validated', sourceRef: { sourceId: 'ubm' }, ...over });
 
 async function render(
   props: Record<string, unknown> = {},
@@ -84,6 +96,17 @@ describe('SourceCatalog — header de source', () => {
     expect(html).toContain('Un Bon Moment');
     expect(html).toContain('Des invités, des recos');
     expect(html).toMatch(/1 recommandation\s*<\/p>/);
+    // Sans citation, pas de second compteur.
+    expect(html).not.toContain('évoquée');
+  });
+
+  it('écrit aussi les œuvres évoquées, que l’onglet « Toutes les recos » ajoute (#6)', async () => {
+    collections(
+      [reco(), reco({ id: 'ubm-0002', kind: 'citation' }), reco({ id: 'ubm-0003', kind: 'citation' })],
+      [episode()],
+    );
+    const text = (await render()).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    expect(text).toMatch(/1 recommandation · 2 œuvres évoquées/);
   });
 
   it('accorde le pluriel du compteur à partir de 2 recos', async () => {
@@ -179,7 +202,10 @@ describe('SourceCatalog — filtrage des recos', () => {
       [reco(), reco({ id: 'ubm-2', title: 'Simple citation', kind: 'citation' })],
       [episode()],
     );
-    expect(await render()).toMatch(/1 recommandation\s*<\/p>/);
+    // La citation n'entre pas dans « 1 recommandation » : elle a son propre
+    // compteur juste à côté (audit d'interface du 2026-10-07, #6).
+    const text = (await render()).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    expect(text).toMatch(/1 recommandation · 1 œuvre évoquée/);
   });
 });
 
@@ -407,5 +433,47 @@ describe('SourceCatalog — structure a11y (onglets, live regions)', () => {
     const html = await render();
     expect(html).not.toContain('undefined');
     expect(html).toMatch(/1 recommandation/);
+  });
+});
+
+describe('SourceCatalog — onglet « Par type » (audit d’interface du 2026-10-07)', () => {
+  it('sans galerie non vide, ni onglet ni panneau', async () => {
+    const html = await render();
+    expect(html).not.toContain('id="tab-types"');
+    expect(html).not.toContain('id="view-types"');
+  });
+
+  it('un onglet et un panneau masqué listent les galeries de la source', async () => {
+    collections(
+      [reco()],
+      [episode()],
+      [],
+      [item('f1', ['film']), item('f2', ['film']), item('s1', ['serie'])],
+      [mention('m1', 'f1'), mention('m2', 'f2'), mention('m3', 's1')],
+    );
+    const html = await render();
+    expect(html).toMatch(/<button[^>]*data-view="types"[^>]*aria-controls="view-types"/);
+    expect(html).toMatch(/<section[^>]*id="view-types"[^>]*hidden/);
+    expect(html).toContain('href="/ubm/films"');
+    expect(html).toContain('href="/ubm/series"');
+    // Les films, plus nombreux, passent en premier.
+    expect(html.indexOf('href="/ubm/films"')).toBeLessThan(html.indexOf('href="/ubm/series"'));
+    // Le nombre s'affiche seul, en grand ; « œuvres » est dit aux lecteurs
+    // d'écran (variante 4 des maquettes de l'onglet).
+    expect(html).toMatch(/2<span class="visually-hidden[^"]*"[^>]*> œuvres<\/span>/);
+  });
+
+  it('ignore les mentions d’une autre source et les mentions écartées', async () => {
+    collections(
+      [reco()],
+      [episode()],
+      [],
+      [item('f1', ['film']), item('s1', ['serie'])],
+      [
+        mention('m1', 'f1', { sourceRef: { sourceId: 'autre' } }),
+        mention('m2', 's1', { status: 'discarded' }),
+      ],
+    );
+    expect(await render()).not.toContain('id="tab-types"');
   });
 });

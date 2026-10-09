@@ -1,0 +1,307 @@
+---
+/**
+ * EpisodeChapitres — les recos d'un épisode dans l'ordre de l'écoute.
+ *
+ * Direction « Les chapitres », retenue parmi les maquettes du 2026-10-07 :
+ * l'épisode se lit de haut en bas, en moments séparés par les creux. Une
+ * colonne de minutage à gauche, un rail qui relie les cartes, et la nature
+ * de chaque œuvre dite deux fois — par la forme du repère (rond plein :
+ * recommandée ; losange : leur œuvre ; rond pointillé : évoquée) et par un
+ * mot sous le minutage, pour ne jamais dépendre de la seule forme.
+ *
+ * Le découpage vit dans `lib/episode/chapitres.ts` ; la page ne monte ce
+ * composant que s'il a abouti, et garde sinon ses sections par nature.
+ *
+ * L'ÉCOUTE
+ * --------
+ * La maquette montrait un lecteur d'épisode complet. Le site n'a pas de flux
+ * audio à piloter : chaque carte garde donc son extrait YouTube calé sur le
+ * minutage (`AudioExcerpt`), et seulement quand ce minutage vient de la
+ * transcription YouTube — jamais d'offset entre YouTube et Acast.
+ */
+import RecoCard from './RecoCard.astro';
+import type { Moment } from '../lib/episode/chapitres';
+import { minutageCourt } from '../lib/episode/chapitres';
+import { extractYoutubeId } from '../lib/audio/timecode';
+import { lienOeuvre } from '../utils/oeuvreDesRecos';
+import { plural } from '../utils/plural';
+
+interface Props {
+  // Les recos telles que la page les reçoit de la collection.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  moments: Moment<any>[];
+  sourceId: string;
+  episode: { number?: number; season?: number; youtubeUrl?: string };
+  epTitle: string;
+  oeuvres: Map<string, string>;
+}
+
+const { moments, sourceId, episode, epTitle, oeuvres } = Astro.props;
+const youtubeId = extractYoutubeId(episode.youtubeUrl ?? null);
+
+type Nature = 'reco' | 'oeuvre' | 'evoquee';
+const NATURE_LABEL: Record<Nature, string> = {
+  reco: 'Recommandée',
+  oeuvre: 'Leur œuvre',
+  evoquee: 'Évoquée',
+};
+/** Même partage que `splitEpisodeRecos` : la citation prime. */
+function natureDe(reco: { kind?: string; guestWork?: boolean }): Nature {
+  if ((reco.kind ?? 'reco') === 'citation') return 'evoquee';
+  return reco.guestWork === true ? 'oeuvre' : 'reco';
+}
+/** « 4318 » → « PT1H11M58S », pour l'attribut `datetime` de `<time>`. */
+function dureeIso(s: number): string {
+  return `PT${Math.floor(s / 3600)}H${Math.floor((s % 3600) / 60)}M${s % 60}S`;
+}
+---
+
+<div class="chapitres">
+<p class="chap-legende">
+  <span class="legende-intro">Dans l'ordre de l'écoute :</span>
+  <span class="legende-item"><span class="noeud noeud--reco" aria-hidden="true"></span> recommandée</span>
+  <span class="legende-item"><span class="noeud noeud--oeuvre" aria-hidden="true"></span> leur œuvre</span>
+  <span class="legende-item"><span class="noeud noeud--evoquee" aria-hidden="true"></span> évoquée</span>
+</p>
+
+{moments.map((m, i) => (
+  <section class="moment" aria-labelledby={`moment-${i}`}>
+    <header class="moment-tete">
+      <h2 id={`moment-${i}`} class="moment-titre">{m.titre}</h2>
+      <span class="moment-plage">{m.plage} · {m.recos.length} {plural(m.recos.length, 'œuvre')}</span>
+    </header>
+    <ol class="moment-liste">
+      {m.recos.map(({ reco, secondes }) => {
+        const nature = natureDe(reco);
+        const extrait =
+          youtubeId && reco.transcriptSource === 'youtube' && secondes > 0
+            ? { youtubeId, startSeconds: secondes }
+            : undefined;
+        return (
+          <li class={`ligne ligne--${nature}`}>
+            <span class="ligne-temps">
+              <time datetime={dureeIso(secondes)}>{minutageCourt(secondes)}</time>
+              <span class="ligne-nature">{NATURE_LABEL[nature]}</span>
+            </span>
+            <span class="ligne-rail" aria-hidden="true">
+              <span class={`noeud noeud--${nature}`}></span>
+            </span>
+            <ul class="ligne-carte">
+              {/* Le badge « œuvre d'invité » ferait doublon avec le mot
+                 « Leur œuvre » écrit sous le minutage. */}
+              <RecoCard
+                reco={reco}
+                episodeNumber={episode.number}
+                episodeSeason={episode.season}
+                episodeTitle={epTitle}
+                sourceId={sourceId}
+                oeuvreHref={lienOeuvre(oeuvres, sourceId, reco.id)}
+                showGuestWorkBadge={false}
+                audio={extrait}
+              />
+            </ul>
+          </li>
+        );
+      })}
+    </ol>
+    {m.creuxApresMin !== null && (
+      <p class="creux">
+        <span class="creux-rail" aria-hidden="true"></span>
+        <span class="creux-texte">{m.creuxApresMin} minutes sans œuvre citée</span>
+      </p>
+    )}
+  </section>
+))}
+</div>
+
+<style>
+  /* Une seule colonne de cartes : sur toute la largeur du site (1 200 px),
+     chaque carte laissait les deux tiers de sa surface vides. La frise garde
+     la largeur d'une colonne de lecture, comme sur la maquette. */
+  .chapitres {
+    max-width: 56rem;
+  }
+  .chap-legende {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1.1rem;
+    margin: 0 0 1.5rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+  .legende-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  /* Téléphone : la légende tient sur UNE ligne. Avec son introduction, elle
+     en prenait deux, qui s'ajoutaient à l'en-tête et à la ligne « Avec » :
+     la première reco n'apparaissait qu'après un écran entier (audit
+     d'interface du 2026-10-07, second passage). L'introduction reste lue
+     par les lecteurs d'écran. */
+  @media (max-width: 560px) {
+    .chap-legende {
+      gap: 0.4rem 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+    }
+    .legende-intro {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
+  .moment + .moment {
+    margin-top: 0.5rem;
+  }
+  .moment-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 1rem;
+    padding: 0.5rem 0 0.9rem;
+  }
+  .moment-titre {
+    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+  }
+  .moment-plage {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .moment-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  /* Trois colonnes : le minutage, le rail, la carte. Le rail court sur toute
+     la hauteur de la ligne, si bien que les lignes successives le forment
+     d'un seul trait. */
+  .ligne {
+    display: grid;
+    grid-template-columns: 6rem 1.75rem minmax(0, 1fr);
+    column-gap: 0.9rem;
+  }
+  .ligne-temps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    padding-top: 1.1rem;
+    text-align: right;
+  }
+  .ligne-temps time {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .ligne-nature {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ligne--reco .ligne-nature {
+    color: var(--accent);
+  }
+  .ligne--oeuvre .ligne-nature {
+    color: var(--guestwork);
+  }
+  .ligne-rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .ligne-rail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: color-mix(in oklab, var(--text) 14%, transparent);
+  }
+  .ligne-rail .noeud {
+    position: relative;
+    margin-top: 1.35rem;
+  }
+  .ligne-carte {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0;
+    min-width: 0;
+  }
+
+  /* Les repères : la FORME distingue la nature, la couleur la renforce. */
+  .noeud {
+    display: inline-block;
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+  .noeud--reco {
+    background: var(--accent);
+  }
+  .noeud--oeuvre {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 3px;
+    background: var(--guestwork);
+    transform: rotate(45deg);
+  }
+  .noeud--evoquee {
+    background: var(--bg);
+    border: 2px dashed var(--muted);
+  }
+
+  /* Le creux prolonge le rail en pointillés, et dit sa durée. */
+  .creux {
+    display: grid;
+    grid-template-columns: 6rem 1.75rem minmax(0, 1fr);
+    column-gap: 0.9rem;
+    align-items: center;
+    min-height: 3.5rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+  .creux-rail {
+    grid-column: 2;
+    align-self: stretch;
+    justify-self: center;
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--text) 22%, transparent) 0 6px,
+      transparent 6px 12px
+    );
+  }
+  .creux-texte {
+    grid-column: 3;
+  }
+
+  /* Téléphone : la colonne de minutage se resserre, le rail aussi. */
+  @media (max-width: 560px) {
+    .ligne,
+    .creux {
+      grid-template-columns: 3.6rem 1.1rem minmax(0, 1fr);
+      column-gap: 0.55rem;
+    }
+    .ligne-temps time {
+      font-size: 1.35rem;
+    }
+    .ligne-nature {
+      font-size: 0.66rem;
+      letter-spacing: 0.03em;
+    }
+  }
+</style>

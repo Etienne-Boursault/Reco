@@ -84,7 +84,7 @@ const homeUrl = new URL('/', Astro.site).toString();
 const galleryUrl = new URL(`/${source.id}/${galerie.slug}`, Astro.site).toString();
 
 const jsonLd = [
-  galleryItemListSchema(entries, { name: heading, description }),
+  galleryItemListSchema(entries, { name: heading, description, galleryTypes: galerie.types }),
   galleryBreadcrumb({
     homeUrl, sourceName: data.title, sourceUrl,
     galleryName: heading, galleryUrl,
@@ -96,7 +96,7 @@ const jsonLd = [
   title={`${heading} — ${data.title}`}
   description={description}
   theme={data.theme}
-  ogSlug={source.id}
+  ogSlug={entries.length > 0 ? `${source.id}/galerie/${galerie.slug}` : source.id}
   jsonLd={jsonLd}
 >
   <header class="head wrap" role="banner">
@@ -111,6 +111,7 @@ const jsonLd = [
   <main id="main" tabindex="-1" class="wrap">
     <h2 class="visually-hidden">{heading}</h2>
     <GalleryGrid
+      galleryTypes={galerie.types}
       heading={heading}
       entries={entries}
       countLabel={countLabel}

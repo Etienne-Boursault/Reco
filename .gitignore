@@ -59,3 +59,6 @@ Thumbs.db
 
 # Secrets du homeserver Matrix (Pi)
 deploy/pi-matrix/.env
+
+# Cache des cartes de partage (src/lib/og/renderer.ts) : survit aux builds.
+.cache/

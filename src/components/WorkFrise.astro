@@ -1,0 +1,193 @@
+---
+/**
+ * WorkFrise — la frise des mentions d'une œuvre, sur sa fiche.
+ *
+ * Direction « La récurrence » des maquettes de la fiche œuvre (retenue le
+ * 2026-10-07) : chaque mention est un point placé à sa date, plein pour une
+ * recommandation, cerclé pour une œuvre seulement évoquée. On voit d'un
+ * regard si l'œuvre revient chaque saison ou a eu son heure.
+ *
+ * Chaque point est un lien vers son épisode, avec une cible de 44 px ; deux
+ * points trop proches s'empilent (`lib/work/recurrence.ts`, `ECART_MIN`).
+ * L'équivalent texte, épisode par épisode, est la liste « année par année »
+ * juste en dessous : la frise en est le résumé visuel.
+ *
+ * Les positions viennent du build et passent par des variables CSS
+ * (`--x`, `--voie`) : aucun script, aucun calcul dans le navigateur.
+ */
+import type { Frise } from '../lib/work/recurrence';
+
+interface Props {
+  frise: Frise;
+  titre: string;
+  legende: string;
+}
+
+const { frise, titre, legende } = Astro.props;
+---
+
+<section class="frise" aria-labelledby="frise-titre" style={`--voies:${frise.voies}`}>
+  <div class="frise-tete">
+    <h2 id="frise-titre" class="frise-titre">{titre}</h2>
+    <p class="frise-legende-texte">{legende}</p>
+    <p class="frise-cles">
+      <span class="frise-cle"><span class="frise-puce plein" aria-hidden="true"></span>Recommandée</span>
+      <span class="frise-cle"><span class="frise-puce cercle" aria-hidden="true"></span>Évoquée</span>
+    </p>
+  </div>
+  <div class="frise-trace">
+    <span class="frise-axe" aria-hidden="true"></span>
+    {frise.annees.map((a) => (
+      <span class="frise-annee" style={`--x:${a.gauche}%`} aria-hidden="true">{a.annee}</span>
+    ))}
+    <ul class="frise-points" aria-label="Mentions, de la plus ancienne à la plus récente">
+      {frise.points.map((p) => (
+        <li>
+          <a class="frise-point" href={p.href} aria-label={p.libelle} title={p.libelle}
+             style={`--x:${p.gauche}%;--voie:${p.voie}`}>
+            <span class:list={['frise-puce', p.recommandee ? 'plein' : 'cercle']} aria-hidden="true"></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .frise {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border-radius: var(--radius);
+    padding: 1.5rem clamp(1rem, 3vw, 2rem) 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .frise-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 1.25rem;
+    row-gap: 0.4rem;
+  }
+  .frise-titre {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: 0;
+  }
+  .frise-legende-texte {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .frise-cles {
+    margin: 0 0 0 auto;
+    display: flex;
+    gap: 1.1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .frise-cle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .frise-puce {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  .frise-cle .frise-puce {
+    width: 12px;
+    height: 12px;
+  }
+  .frise-puce.plein {
+    background: var(--accent);
+  }
+  .frise-puce.cercle {
+    border: 2px solid var(--muted);
+    background: var(--surface);
+  }
+
+  /* La trace : axe à 34 px du bas, graduations sous l'axe, une rangée de
+     40 px par voie au-dessus. La hauteur suit le nombre de voies. */
+  .frise-trace {
+    position: relative;
+    height: calc(46px + var(--voies) * 40px + 18px);
+    margin: 0 22px;
+  }
+  .frise-axe {
+    position: absolute;
+    left: -22px;
+    right: -22px;
+    bottom: 34px;
+    height: 1px;
+    background: color-mix(in oklab, var(--text) 22%, transparent);
+  }
+  .frise-annee {
+    position: absolute;
+    bottom: 0;
+    left: var(--x);
+    transform: translateX(-50%);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .frise-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .frise-point {
+    position: absolute;
+    left: var(--x);
+    bottom: calc(46px + var(--voie) * 40px - 22px);
+    width: 44px;
+    height: 44px;
+    margin-left: -22px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.16s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .frise-point:hover {
+      transform: scale(1.25);
+    }
+  }
+  .frise-point:active {
+    transform: scale(1.15);
+    transition-duration: 0.08s;
+  }
+
+  @media (max-width: 560px) {
+    .frise-cles {
+      margin-left: 0;
+      width: 100%;
+    }
+    /* Téléphone : un APERÇU compact. Sur 315 px, les points proches
+       s'empilaient sur six voies de 40 px — près de 450 px de haut pour les
+       quatorze mentions de Bref (audit d'interface du 2026-10-07, second
+       passage). Resserrer les voies sans toucher aux cibles aurait fait se
+       chevaucher les zones tactiles de 44 px ; les points cessent donc
+       d'être des cibles au doigt. Les mêmes mentions sont des liens à la
+       bonne taille dans la liste par année, juste en dessous. Le clavier
+       garde l'accès aux points (focus inchangé). */
+    .frise-trace {
+      height: calc(40px + var(--voies) * 22px + 14px);
+    }
+    .frise-point {
+      width: 16px;
+      height: 16px;
+      margin-left: -8px;
+      bottom: calc(40px + var(--voie) * 22px - 8px);
+      pointer-events: none;
+    }
+    .frise-point .frise-puce {
+      width: 12px;
+      height: 12px;
+    }
+  }
+</style>

@@ -13,11 +13,17 @@
  */
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
+import { oeuvreAUneCarte } from '../../../lib/og/cartes';
 import MentionsTimeline from '../../../components/MentionsTimeline.astro';
 import TrendingBadge from '../../../components/TrendingBadge.astro';
 import WorkCard from '../../../components/WorkCard.astro';
 import CreatorFlag from '../../../components/CreatorFlag.astro';
-import { TYPE_EMOJIS, TYPE_LABELS } from '../../../utils/recoTypes';
+import WorkFrise from '../../../components/WorkFrise.astro';
+import WorkVoix from '../../../components/WorkVoix.astro';
+import WorkLiens from '../../../components/WorkLiens.astro';
+import { TYPE_LABELS } from '../../../utils/recoTypes';
+import { plural } from '../../../utils/plural';
+import { frise, parAnnee, periode, quiEnParle } from '../../../lib/work/recurrence';
 import {
   hostDeLUrl,
   iconForHost,
@@ -161,27 +167,35 @@ type Props = {
 
 const { source, work, similar, liensRecos } = Astro.props;
 const data = source.data;
-const { item, mentions, mentionCount, recoCount, trending } = work;
+const { item, mentions, mentionCount, recoCount, trending, recentCount } = work;
 
-// L4 — Le libellé « Recommandée N fois » ne compte QUE les recommandations
-// (recoCount = mentions hors citation, œuvres d'invité·es incluses). Une œuvre
-// seulement évoquée (recoCount === 0) bascule sur « Mentionnée » (total des
-// mentions). La timeline ci-dessous affiche, elle, TOUTES les mentions.
-const statLabel =
-  recoCount > 0
-    ? recoCount > 1
-      ? t('work.stats.reco.many', { count: recoCount })
-      : t('work.stats.reco.one')
-    : mentionCount > 1
-      ? t('work.stats.mention.many', { count: mentionCount })
-      : t('work.stats.mention.one');
+// LA RÉCURRENCE (direction retenue le 2026-10-07 pour la fiche œuvre)
+// ------------------------------------------------------------------
+// On arrive sur cette page depuis une carte de reco, pour voir que l'œuvre
+// REVIENT. L'en-tête le dit en trois chiffres : le total des mentions, celles
+// qui sont des recommandations, et depuis quand on en parle. Ils remplacent la
+// ligne « Recommandée 5 fois · évoquée 9 fois » : mêmes nombres, mais lisibles
+// d'un regard. Calculs : `lib/work/recurrence.ts`.
+const laPeriode = periode(mentions);
+const laFrise = frise(mentions, source.id);
+const qui = quiEnParle(mentions);
+const groupes = parAnnee(mentions);
+const chiffres = [
+  {
+    valeur: String(mentionCount),
+    legende: `${plural(mentionCount, 'mention')} dans le podcast`,
+    accent: true,
+  },
+  ...(recoCount > 0
+    ? [{ valeur: String(recoCount), legende: plural(recoCount, 'recommandation'), accent: true }]
+    : []),
+  ...(laPeriode
+    ? [{ valeur: laPeriode.chiffre, legende: laPeriode.legende, accent: true }]
+    : []),
+];
 
 const types = item.types ?? [];
-const typeEmojis = types.map((tp: string) => ({
-  emoji: TYPE_EMOJIS[tp] ?? '✨',
-  label: TYPE_LABELS[tp] ?? tp,
-}));
-const typeTitle = typeEmojis.map((te: { label: string }) => te.label).join(', ');
+const typeLabels = types.map((tp: string) => TYPE_LABELS[tp] ?? tp);
 
 // Les liens de la fiche d'œuvre ET ceux de ses recommandations. Les premiers
 // passent devant : ils ont été posés à la main sur l'œuvre.
@@ -238,21 +252,12 @@ const pageTitle = item.creator
   ? `${item.title} — ${item.creator}`
   : item.title;
 /*
- * IMAGE DE PARTAGE : la carte de la SOURCE, pas une carte par œuvre.
- *
- * `ogSlug` valait `${source.id}/oeuvre/${item.id}`, qui demande
- * `/og/<source>/oeuvre/<id>.png` — une route que
- * `src/pages/og/[...slug].png.ts` ne génère pas. Les 1 036 pages d'œuvre
- * déclaraient donc une image répondant 404, et ce sont justement les plus
- * partagées : « regarde cette reco ». Rien ne le signalait, la balise étant
- * syntaxiquement correcte.
- *
- * Une carte par œuvre coûterait ~46 Ko × 1 036, soit une cinquantaine de
- * mégaoctets au build pour des pages dont la plupart ne seront jamais
- * partagées — le dépôt écarte déjà cette dépense pour les épisodes. Les items
- * ne portent par ailleurs aucune affiche à réutiliser : `id`, `title`,
- * `types`, rien d'autre. Mieux vaut une carte juste et générique qu'une image
- * absente.
+ * IMAGE DE PARTAGE : la carte « Étiquette » de l'œuvre (`oeuvreAUneCarte`,
+ * partagée avec l'endpoint OG ; la carte de la SOURCE en repli). Avant
+ * l'audit d'interface du 2026-10-07, toutes les pages d'œuvre réclamaient
+ * `/og/<source>/oeuvre/<id>.png`, une image que personne ne générait : un 404
+ * sur les pages les plus partagées. Le coût d'une carte par œuvre au build
+ * est accepté, et amorti par le cache persistant de `renderer.ts`.
  *
  * Ce commentaire est ICI et non dans la liste d'attributs de `<Layout>` : un
  * `{/* … *​/}` y est toléré par Astro mais casse `astro check`, qui lit le
@@ -263,7 +268,7 @@ const pageTitle = item.creator
 <Layout
   title={pageTitle}
   description={description}
-  ogSlug={source.id}
+  ogSlug={oeuvreAUneCarte(mentionCount) ? `${source.id}/oeuvre/${item.id}` : source.id}
   ogType="article"
   theme={data.theme}
   jsonLd={jsonLd}
@@ -274,100 +279,63 @@ const pageTitle = item.creator
     </a>
 
     <div class="work-hero">
-      <div class="work-types" aria-label={typeTitle}>
-        {typeEmojis.map((tp: { emoji: string; label: string }) => (
-          <span class="work-emoji" role="img" title={tp.label}>
-            <span aria-hidden="true">{tp.emoji}</span>
-            <span class="visually-hidden">{tp.label}</span>
-          </span>
-        ))}
-      </div>
-      <h1>{item.title}</h1>
-      <div class="work-sub">
-        {item.creator && <span class="creator">{item.creator}</span>}
-        <CreatorFlag name={item.creator} />
-        {item.year && (
-          <span class="year" aria-label={t('work.year.a11y', { year: item.year })}>· {item.year}</span>
-        )}
-      </div>
-
-      {(igHandle || tkHandle) && (
-        <div class="work-social">
-          {igHandle && (
-            <a
-              class="social-link"
-              href={`https://www.instagram.com/${igHandle}/`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
+      <div class="work-ident">
+        <p class="work-kicker">
+          <span class="work-types">{typeLabels.join(' · ')}</span>
+          {item.creator && (
+            <>
+              <span aria-hidden="true"> · </span>
+              <span class="creator">{item.creator}</span>
+              <CreatorFlag name={item.creator} />
+            </>
           )}
-          {tkHandle && (
-            <a
-              class="social-link"
-              href={`https://www.tiktok.com/@${tkHandle}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              TikTok
-            </a>
+          {item.year && (
+            <span class="year" aria-label={t('work.year.a11y', { year: item.year })}> · {item.year}</span>
           )}
-        </div>
-      )}
-
-      <div class="work-stats">
-        <span class="count">{statLabel}</span>
-        {trending && <TrendingBadge count={mentionCount} />}
+        </p>
+        <h1>{item.title}</h1>
       </div>
 
-      {links.length > 0 && (
-        <ul class="work-links" aria-label={t('work.links.a11y')}>
-          {links.map((l) => (
-            <li>
-              <a
-                href={l.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={l.recherche
-                  ? t('work.links.search', { provider: l.label, title: item.title })
-                  : undefined}
-                aria-label={l.recherche
-                  ? t('work.links.search', { provider: l.label, title: item.title })
-                  : undefined}
-                class:list={[
-                  'work-link',
-                  { indie: l.ethics === 'indie' },
-                  { avoid: l.ethics === 'avoid' },
-                  { recherche: l.recherche },
-                ]}
-              >
-                {l.icone ? (
-                  <img class="work-link-icone" src={l.icone} alt="" width="22"
-                       height="22" loading="lazy" decoding="async" />
-                ) : (
-                  <span class="work-link-symbole" aria-hidden="true">{l.symbole}</span>
-                )}
-                <span>{l.label}</span>
-                {l.recherche && (
-                  <span class="work-link-loupe" aria-hidden="true">🔎</span>
-                )}
-              </a>
-            </li>
+      <div class="work-chiffres-bloc">
+        <dl class="work-chiffres">
+          {chiffres.map((c) => (
+            <div class="work-chiffre">
+              <dt>{c.legende}</dt>
+              <dd class:list={[{ accent: c.accent }]}>{c.valeur}</dd>
+            </div>
           ))}
-        </ul>
-      )}
+        </dl>
+        {trending && <TrendingBadge count={recentCount} />}
+      </div>
     </div>
   </header>
 
   <main id="main" tabindex="-1" class="wrap">
+    {laFrise && laPeriode && (
+      <WorkFrise frise={laFrise} titre="Au fil des épisodes" legende={laPeriode.legende} />
+    )}
+
+    {(qui.voix.length > 0 || links.length > 0 || igHandle || tkHandle) && (
+      <div class="work-duo">
+        {qui.voix.length > 0 && <WorkVoix qui={qui} />}
+        {(links.length > 0 || igHandle || tkHandle) && (
+          <WorkLiens links={links} titreOeuvre={item.title} igHandle={igHandle} tkHandle={tkHandle} />
+        )}
+      </div>
+    )}
+
     <section aria-labelledby="mentions-heading">
       <h2 id="mentions-heading" class="sec-title">
         {mentionCount > 1
           ? t('work.heading.mention.many', { count: mentionCount })
           : t('work.heading.mention.one')}
       </h2>
-      <MentionsTimeline sourceId={source.id} mentions={mentions} />
+      {groupes.map((g) => (
+        <section class="annee" aria-labelledby={`annee-${g.annee ?? 'sans-date'}`}>
+          <h3 class="annee-titre" id={`annee-${g.annee ?? 'sans-date'}`}>{g.annee ?? 'Date inconnue'}</h3>
+          <MentionsTimeline sourceId={source.id} mentions={g.mentions} podcastTitle={data.title} creator={item.creator} />
+        </section>
+      ))}
     </section>
 
     {similar.length > 0 && (
@@ -386,149 +354,137 @@ const pageTitle = item.creator
 </Layout>
 
 <style>
-  .head {
-    padding: clamp(1.5rem, 4vw, 2.5rem) 0 1.5rem;
-  }
+  .head { padding: clamp(1.5rem, 4vw, 2.5rem) 0 1.5rem; }
   .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    min-height: 44px;
     color: var(--muted);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
   }
-  .back:hover {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .back:hover { color: var(--accent); }
   }
+  .back:active { color: var(--accent); }
+  /* L'identité de l'œuvre à gauche, ses trois chiffres à droite ; ils passent
+     dessous dès que la place manque. */
   .work-hero {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem 2.5rem;
+  }
+  .work-ident {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.6rem;
+    min-width: 0;
+    flex: 1 1 22rem;
   }
-  .work-types {
-    display: flex;
-    gap: 0.35rem;
-    font-size: 1.6rem;
-    line-height: 1;
-  }
-  .work-emoji {
-    display: inline-flex;
-  }
-  .work-hero h1 {
-    font-size: clamp(1.8rem, 5vw, 3rem);
+  .work-kicker {
     margin: 0;
-  }
-  .work-sub {
-    color: var(--muted);
-    font-size: 1rem;
-  }
-  .work-sub .creator {
-    font-weight: 600;
-    color: var(--text);
-  }
-  .work-social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.6rem;
-  }
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    padding: 0.25em 0.7em;
-    border: 1px solid color-mix(in oklab, var(--text) 15%, transparent);
-    border-radius: 999px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
-  .social-link:hover {
-    border-color: var(--accent);
     color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
-  .work-stats {
+  .work-kicker .year { color: var(--muted); }
+  .work-hero h1 {
+    margin: 0;
+    font-size: clamp(3.25rem, 11vw, 8.75rem);
+    line-height: 0.88;
+    /* Place des accents des capitales (« ÉLITE »), qui sortent de la boîte du
+       titre avec cet interligne et mordaient sur la ligne des types. */
+    padding-top: 0.16em;
+    overflow-wrap: break-word;
+  }
+  .work-chiffres-bloc {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.7rem;
-    margin-top: 0.4rem;
-    font-size: 0.95rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 0 1 34rem;
+    min-width: min(100%, 18rem);
+  }
+  .work-chiffres {
+    margin: 0;
+    width: 100%;
+    display: grid;
+    /* 5,5 rem : les trois chiffres tiennent de front sur un téléphone de
+       390 px, comme dans la maquette. */
+    grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr));
+    gap: 1rem;
+  }
+  /* Le chiffre AU-DESSUS de sa légende à l'écran, mais dans l'ordre dt → dd
+     pour les lecteurs d'écran : la légende annonce le chiffre. */
+  .work-chiffre {
+    display: flex;
+    flex-direction: column-reverse;
+    /* En colonne inversée, `flex-end` cale en HAUT : les trois chiffres
+       restent alignés, même quand une légende passe sur deux lignes. */
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+  .work-chiffre dt {
     color: var(--muted);
-  }
-  .work-stats .count {
-    font-weight: 600;
-  }
-  .work-links {
-    list-style: none;
-    padding: 0;
-    margin: 0.6rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  /* Un lien qui mène à une RECHERCHE chez le diffuseur, non à l'œuvre : la
-   loupe et le pointillé le disent avant le clic. Cf. `estRecherche`. */
-.work-link.recherche {
-  border-style: dashed;
-}
-.work-link-loupe {
-  margin-inline-start: 0.35em;
-  font-size: 0.85em;
-  opacity: 0.7;
-}
-.work-link {
-    display: inline-flex;
-    align-items: center;
-    /* L'espacement entre l'icône et le texte a été demandé deux fois. Le
-       premier essai avait atterri sur `.social-link` : les deux blocs
-       commencent par les mêmes trois lignes, et le remplacement a mordu sur
-       le mauvais. `em` plutôt que `px` pour qu'il suive la taille du
-       libellé. */
-    gap: 0.75em;
-    padding: 0.4em 1.05em 0.4em 0.75em;
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--text) 6%, transparent);
-    border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
-    color: var(--text);
-    text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 600;
+    line-height: 1.3;
   }
-  .work-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+  .work-chiffre dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
+    line-height: 0.88;
+    font-variant-numeric: tabular-nums;
   }
-  .work-link-icone {
-    /* Agrandies a la demande : a 16 px, les logos de plateforme se lisaient
-       mal a cote d'un texte de 0,85 rem. */
-    width: 22px;
-    height: 22px;
-    border-radius: 3px;
-    flex-shrink: 0;
-    /* Le logo garde ses couleurs de marque, y compris au survol. */
-    object-fit: contain;
-  }
-  .work-link-symbole {
-    font-size: 1.15em;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .work-link.indie {
-    border-color: color-mix(in oklab, var(--accent) 55%, transparent);
-  }
-  .work-link.avoid {
-    opacity: 0.55;
-  }
+  /* Tous les grands chiffres du site sont jaunes (décision du 2026-10-07,
+     second audit) : onglet « Par type », galeries, fiche œuvre, stats. */
+  .work-chiffre dd.accent { color: var(--accent); }
   main {
     padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.75rem;
   }
+  .work-duo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem 3rem;
+  }
+  .work-duo > :global(*) { flex: 1 1 20rem; }
   .sec-title {
-    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-    margin: 0 0 1rem;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  }
+  /* Année par année : l'année à gauche sur grand écran, au-dessus sur
+     téléphone. */
+  .annee {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2.5rem;
+    padding: 1rem 0;
+  }
+  .annee-titre {
+    flex: 0 0 6.5rem;
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 2.75rem);
+    line-height: 1;
+    /* À cette taille, l'interlettrage positif des petits titres (h3 global)
+       écarte trop les chiffres : il se resserre aux grands corps. */
+    letter-spacing: 0;
+    color: var(--accent);
+  }
+  .annee > :global(.timeline) {
+    flex: 1 1 32rem;
+    min-width: 0;
   }
   .similar-grid {
     list-style: none;
