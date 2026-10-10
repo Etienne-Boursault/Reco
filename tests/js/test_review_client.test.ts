@@ -312,3 +312,29 @@ describe('clearEditParamFromUrl (#4)', () => {
     expect(window.location.search).toBe('?guid=g2');
   });
 });
+
+describe('bloc Liens : le ✕ passe par AJAX', () => {
+  it('envoie /retirer-lien sans recharger et remplace la carte', async () => {
+    document.body.innerHTML =
+      '<ul><li class="row active" data-reco-id="r1"><form method="post" action="/retirer-lien">' +
+      '<input type="hidden" name="id" value="r1"><input type="hidden" name="url" value="https://x.fr/a">' +
+      '<button type="submit">✕</button></form></li></ul><div id="toast-zone"></div>';
+    const appels: Array<[string, string]> = [];
+    (window as any).fetch = async (url: string, opts: any) => {
+      appels.push([url, String(opts.body)]);
+      return { json: async () => ({ kind: 'success', message: 'Lien retiré.',
+        card_html: '<li class="row" data-reco-id="r1"><input name="id" value="r1">neuve</li>' }) };
+    };
+    const form = document.querySelector('form') as HTMLFormElement;
+    const ev = new Event('submit', { bubbles: true, cancelable: true });
+    form.dispatchEvent(ev);
+    await new Promise((r) => setTimeout(r, 0));
+    await new Promise((r) => setTimeout(r, 0));
+    expect(ev.defaultPrevented).toBe(true);
+    expect(appels[0][0]).toBe('/retirer-lien');
+    expect(appels[0][1]).toContain('url=https%3A%2F%2Fx.fr%2Fa');
+    const li = document.querySelector('li.row') as HTMLElement;
+    expect(li.textContent).toContain('neuve');
+    expect(li.classList.contains('active')).toBe(true);  // reste la carte affichée
+  });
+});

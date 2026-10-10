@@ -42,6 +42,7 @@ from review_routes_merge import MergeRoutesMixin
 # _allocate_new_reco ré-exporté pour la compat (review_server + tests l'importent
 # depuis review_routes) ; RecoCrudRoutesMixin fournit /add-reco et /delete-reco.
 from review_routes_reco import (
+    LienRoutesMixin,
     RecoCrudRoutesMixin,
     _allocate_new_reco,
 )
@@ -91,8 +92,8 @@ def _cleanup_orphan_tmp_files(source_id: str) -> int:
     return n
 
 
-class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
-              BaseHandler):
+class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
+              TableRoutesMixin, BaseHandler):
     """Handler HTTP métier — assemble GET/POST sur les routes du review_server.
 
     Hérite de :
@@ -251,6 +252,9 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, TableRoutesMixin,
             return
         if route == "/delete-reco":
             self._handle_delete_reco(data)
+            return
+        if route == "/retirer-lien":
+            self._handle_retirer_lien(data)
             return
         if route == "/merge-recos":
             self._handle_merge_recos(data)
