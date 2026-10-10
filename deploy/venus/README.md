@@ -28,6 +28,12 @@ par le refus par défaut. Tout appareil du Wi-Fi peut donc modifier le corpus. P
 refermer sans perdre l'accès local : exiger une clé dans l'URL et répondre 404 sans
 elle, comme le fait déjà `/audience` (`src/lib/audience/`).
 
+Juste après l'extraction, le même passage **cherche les liens** des brouillons
+(`chercher-liens`, cf. `tools/liens_avant_relecture.py`) avec les passes de la
+finalisation, sans arrêter la page de validation : chaque carte montre ensuite ses
+liens, et un lien faux se retire d'un clic (son URL est notée dans `linksRejected`
+et ne revient plus). Un message Matrix dit combien de liens ont été trouvés.
+
 Une fois l'épisode relu de bout en bout (plus aucune reco en brouillon), le passage
 suivant le **finalise** : liens d'écoute posés par `enrich_music_links` — qui n'écrit
 une URL que si Deezer, Apple Music, Spotify ou Qobuz corrobore titre ET artiste, et

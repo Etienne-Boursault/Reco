@@ -30,6 +30,11 @@ from review_guests import collect_guests as _collect_guests
 from review_guests import is_placeholder as _is_placeholder
 from review_guests import render_guests_panel as _render_guests_panel  # noqa: F401
 from review_guests import split_names as _split_names
+from review_render_carte import (
+    _reco_agent_badge,
+    _status_label,
+    render_liens,
+)
 
 # #11/#12 review — `_other_episode_recos_for_cluster` était importé dans
 # `_render_with_clusters` au runtime (hot path) ; on remonte l'import.
@@ -205,16 +210,6 @@ def _reco_context_block(r: dict, ep: dict, source_id: str,
     return f'<div class="context">{" ".join(spans)}</div>'
 
 
-def _status_label(r: dict) -> str:
-    """État lisible d'une reco : ce que la relecture en a décidé."""
-    status = r.get("status", "draft")
-    if status == "discarded":
-        return "écartée"
-    if status != "validated":
-        return "à relire"
-    if r.get("kind") == "citation":
-        return "évoquée"
-    return "leur œuvre" if r.get("guestWork") else "validée"
 
 
 def _reco_header(r: dict, ep: dict, link: str, edit_origin: str = "/ep") -> str:
@@ -262,23 +257,6 @@ def _reco_row_class(r: dict) -> str:
     return cls
 
 
-def _reco_agent_badge(r: dict) -> str:
-    """Badge 🤖 discret si la reco a été traitée par un agent de review.
-
-    Le détail complet (raison, flags, correction humaine) vit sur /doutes ;
-    ici on n'affiche que verdict + confiance en title= pour ne pas alourdir
-    les cartes.
-    """
-    ar = r.get("agentReview")
-    if not ar:
-        return ""
-    conf = ar.get("confidence")
-    tip = f'{ar.get("verdict", "?")}' + (f" · conf {conf}" if conf is not None else "")
-    if ar.get("reason"):
-        tip += f' — {ar["reason"]}'
-    return (f'<span class="agent-badge" title="{html.escape(tip)}" '
-            f'aria-label="Traité par agent : {html.escape(str(ar.get("verdict", "?")))}">'
-            f'🤖</span>')
 
 
 def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
@@ -318,6 +296,7 @@ def _reco_card(r: dict, ep: dict, hosts: list, source_id: str,
       {render_signals(signals)}
       {quote_html}
       {ctx_html}
+      {render_liens(r)}
       <form method="post" action="/save">
         <input type="hidden" name="id" value="{html.escape(r.get('id',''))}">
         <div class="who"><span class="who-label">Qui recommande ?</span>{boxes}

@@ -47,6 +47,7 @@ from pathlib import Path
 from typing import Any
 
 import common
+import liens_avant_relecture as _liens_avant
 from caler_citations import resume as _resume_calage
 from common import (
     format_timestamp,
@@ -427,6 +428,8 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
     # finalisé, le message le signale.
     passes = [aligne] + [_passe_sans_bloquer(nom, unite, passe, source_id, ids, guid)
                          for nom, unite, passe in complements]
+    # Un lien retiré pendant la relecture ne doit pas revenir par une passe.
+    _liens_avant.purger_rejetes(source_id, ids)
     _clear_error(state, key)
     state["finalized"].append(guid)
     # Relu après les passes : ce sont elles qui viennent d'écrire.
@@ -477,10 +480,11 @@ def build_notify(channel: str) -> Notify:
 
 
 # ===== CLI ===================================================================
-STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-finaliser", "finaliser",
-         "a-publier", "publier")
+STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-chercher-liens",
+         "chercher-liens", "a-finaliser", "finaliser", "a-publier", "publier")
 #: Étapes qui ne font que répondre « il y a du travail » (code 0) ou non (code 1).
 SONDES = {"a-extraire": ("à extraire", a_extraire),
+          "a-chercher-liens": ("aux liens à chercher", lambda s, st: _liens_avant.a_chercher(s, st)),
           "a-finaliser": ("à finaliser", a_finaliser),
           "a-publier": ("à publier", a_publier)}
 
@@ -518,6 +522,8 @@ def main(argv: list[str] | None = None) -> int:
     with _state(args.source) as state:
         if args.etape == "transcrire":
             return transcrire(args.source, notify, state, model=args.modele_transcription)
+        if args.etape == "chercher-liens":
+            return _liens_avant.chercher(args.source, notify, state)
         if args.etape == "finaliser":
             return finaliser(args.source, notify, state)
         if args.etape == "publier":

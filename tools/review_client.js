@@ -410,7 +410,8 @@
     const action = form.getAttribute('action') || '';
     // /save inclus (refonte 2026-07-21) : Valider/Citation/Leur œuvre/Pas une
     // reco se faisaient en POST natif → rechargement + retour en haut de page.
-    if (action !== '/edit' && action !== '/reenrich' && action !== '/save') return;
+    // /retirer-lien : le ✕ d'un lien de la carte, remplacée sans recharger.
+    if (!['/edit', '/reenrich', '/save', '/retirer-lien'].includes(action)) return;
     e.preventDefault();
     const fd = new FormData(form);
     // FormData n'inclut PAS le bouton submit cliqué (name="action"
