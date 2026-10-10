@@ -199,10 +199,14 @@ def test_itunes_candidate_track():
 
 
 def test_itunes_candidate_artist():
+    # La vraie réponse iTunes (`entity=musicArtist`) porte `artistLinkUrl` ;
+    # ce test utilisait `artistViewUrl`, qui n'existe que sur les morceaux et
+    # albums — c'est ce qui a caché que la chaîne ne posait aucune page artiste.
     cand = m.itunes_candidate(
         {"artistId": 12, "artistName": "Gorillaz",
-         "artistViewUrl": "https://music.apple.com/fr/artist/12"}, "artist")
+         "artistLinkUrl": "https://music.apple.com/fr/artist/12"}, "artist")
     assert (cand.artist, cand.title, cand.ident) == ("Gorillaz", "", "12")
+    assert cand.url == "https://music.apple.com/fr/artist/12"
 
 
 def test_itunes_candidate_without_url_is_none():
@@ -364,3 +368,13 @@ def test_spotify_candidate_missing_artists_is_empty_string():
          "external_urls": {"spotify": "https://open.spotify.com/album/1"}}, "album")
 
     assert cand.artist == ""
+
+
+def test_search_query_drops_the_editorial_suffix():
+    """La requête perd le suffixe ; la comparaison, elle, le garde (cf. verdict)."""
+    reco = {"title": "Sauf si c'est toi (reprise française de Until I Found You)",
+            "creator": "Carla de Coignac & Félix Radu"}
+    assert m.search_query(reco, want_artist_page=False) == (
+        "Sauf si c'est toi Carla de Coignac & Félix Radu")
+    assert m.search_query({"title": "Bref (saison 2)", "creator": "Kyan Khojandi"},
+                          want_artist_page=False) == "Bref (saison 2) Kyan Khojandi"

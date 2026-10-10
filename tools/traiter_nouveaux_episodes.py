@@ -67,8 +67,12 @@ from finalisation_message import restes as _restes  # noqa: F401
 from finalisation_passes import fiches_tmdb as _fiches_tmdb
 from finalisation_passes import fiches_video as _fiches_video
 from finalisation_passes import liens_boutique as _liens_boutique
+from finalisation_passes import liens_jeux as _liens_jeux
 from finalisation_passes import liens_musicaux as _liens_musicaux
+from finalisation_passes import liens_plateformes as _liens_plateformes
 from finalisation_passes import liens_wikidata as _liens_wikidata
+from finalisation_passes import liens_youtube_music as _liens_youtube_music
+from finalisation_passes import meme_oeuvre as _meme_oeuvre
 from match_youtube import _build_suffix_regex
 
 # Mesuré sur le CPU de venus le 2026-09-17 : 4,8 × le temps réel, un épisode de
@@ -77,6 +81,7 @@ WHISPER_MODEL = "large-v3-turbo"
 DEFAULT_REVIEW_URL = "http://10.8.0.1:8000"
 
 Notify = Callable[[str], None]
+PasseLiens = Callable[[str, set[str]], Any]
 
 
 # ===== état ==================================================================
@@ -346,11 +351,11 @@ def a_finaliser(source_id: str, state: dict[str, Any]) -> list[tuple[Path, dict[
 
 
 def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
-              liens: Callable[[str, set[str]], Any] | None = None,
-              fiches: Callable[[str, set[str]], Any] | None = None,
-              video: Callable[[str, set[str]], Any] | None = None,
-              wikidata: Callable[[str, set[str]], Any] | None = None,
-              boutique: Callable[[str, set[str]], Any] | None = None,
+              liens: PasseLiens | None = None, fiches: PasseLiens | None = None,
+              video: PasseLiens | None = None, wikidata: PasseLiens | None = None,
+              boutique: PasseLiens | None = None, plateformes: PasseLiens | None = None,
+              jeux: PasseLiens | None = None, youtube_music: PasseLiens | None = None,
+              oeuvre: PasseLiens | None = None,
               publier: Callable[..., Any] | None = None,
               lock: Callable[[], contextlib.AbstractContextManager[None]] | None = None) -> int:
     pending = a_finaliser(source_id, state)
@@ -359,10 +364,19 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
     # Résolus à l'appel : un défaut figé dans la signature est lié à la
     # définition, et un test qui le remplace prendrait le VRAI verrou.
     liens = liens or _liens_musicaux
-    fiches = fiches or _fiches_tmdb
-    video = video or _fiches_video
-    wikidata = wikidata or _liens_wikidata
-    boutique = boutique or _liens_boutique
+    oeuvre = oeuvre or _meme_oeuvre
+    # Ordre imposé : TMDB pose `externalIds.tmdb` et les fournisseurs FR, dont
+    # se servent les fiches puis les plateformes ; YouTube Music suit Wikidata
+    # pour ne pas doubler l'Instagram que celui-ci aurait donné.
+    complements = [
+        ("TMDB", "fiche(s) TMDB", fiches or _fiches_tmdb),
+        ("Fiches de référence", "fiche(s) de référence", video or _fiches_video),
+        ("Wikidata", "lien(s) Wikidata", wikidata or _liens_wikidata),
+        ("Steam et libraires", "lien(s) d'achat", boutique or _liens_boutique),
+        ("Plateformes vidéo", "lien(s) de plateforme", plateformes or _liens_plateformes),
+        ("Jeux par Wikidata", "lien(s) de jeu", jeux or _liens_jeux),
+        ("YouTube Music", "lien(s) YouTube Music", youtube_music or _liens_youtube_music),
+    ]
     lock = lock or _pipeline_lock
     if publier is None:
         from publier_episode import preparer as publier
@@ -373,8 +387,7 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
             _clear_error(state, "finalisation:verrou")
             for _path, episode in pending:
                 _finaliser_un(source_id, episode, state, notify, liens=liens,
-                              fiches=fiches, video=video, wikidata=wikidata,
-                              boutique=boutique, publier=publier)
+                              complements=complements, oeuvre=oeuvre, publier=publier)
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -384,15 +397,17 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
 
 
 def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any],
-                  notify: Notify, *, liens: Callable[[str, set[str]], Any],
-                  fiches: Callable[[str, set[str]], Any],
-                  video: Callable[[str, set[str]], Any],
-                  wikidata: Callable[[str, set[str]], Any],
-                  boutique: Callable[[str, set[str]], Any],
+                  notify: Notify, *, liens: PasseLiens,
+                  complements: list[tuple[str, str, PasseLiens]],
+                  oeuvre: PasseLiens,
                   publier: Callable[..., Any]) -> None:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
     ids = {r["id"] for r in _recos_de(source_id, guid) if r.get("id")}
+    # D'abord les liens déjà relus d'une même œuvre : les passes suivantes ne
+    # chercheront que les plateformes encore absentes.
+    aligne = _passe_sans_bloquer("Même œuvre", "lien(s) repris du corpus",
+                                 oeuvre, source_id, ids, guid)
     try:
         rapport = liens(source_id, ids)
         plan = publier(source_id, guid, apply=True)
@@ -406,19 +421,12 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                      f"⚠️ Œuvres et mentions non écrites pour « {_title(episode)} » : {motif}",
                      notify)
         return
-    # Les passes vidéo en dernier, et jamais bloquantes : clé absente, 401 ou
-    # panne réseau ne doivent pas priver l'épisode de ses œuvres et de ses
-    # mentions, déjà écrites ci-dessus. L'épisode reste finalisé, le message le
-    # signale. Ordre imposé : TMDB pose `externalIds.tmdb`, dont la passe des
-    # fiches se sert ensuite pour éviter toute recherche par titre.
-    passes = [
-        _passe_sans_bloquer("TMDB", "fiche(s) TMDB", fiches, source_id, ids, guid),
-        _passe_sans_bloquer("Fiches de référence", "fiche(s) de référence",
-                            video, source_id, ids, guid),
-        _passe_sans_bloquer("Wikidata", "lien(s) Wikidata", wikidata, source_id, ids, guid),
-        _passe_sans_bloquer("Steam et libraires", "lien(s) d'achat",
-                            boutique, source_id, ids, guid),
-    ]
+    # Les passes complémentaires en dernier, et jamais bloquantes : clé
+    # absente, 401 ou panne réseau ne doivent pas priver l'épisode de ses
+    # œuvres et de ses mentions, déjà écrites ci-dessus. L'épisode reste
+    # finalisé, le message le signale.
+    passes = [aligne] + [_passe_sans_bloquer(nom, unite, passe, source_id, ids, guid)
+                         for nom, unite, passe in complements]
     _clear_error(state, key)
     state["finalized"].append(guid)
     # Relu après les passes : ce sont elles qui viennent d'écrire.
