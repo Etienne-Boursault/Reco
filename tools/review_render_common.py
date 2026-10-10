@@ -239,26 +239,14 @@ def _safe_int(x, default: int = 0) -> int:
 
 # ---- Guests parsing ----------------------------------------------------------
 def _parse_guests(title: str, hosts: list[str]) -> list[str]:
-    """Devine les invités d'un épisode depuis son titre (heuristique)."""
-    t = (title or "").strip()
-    m = re.search(r"\bavec\b(.+)", t, re.IGNORECASE)
-    seg = m.group(1) if m else t
-    seg = _STOP.split(seg)[0]
-    parts = re.split(r"\s+et\s+|,|&|/", seg, flags=re.IGNORECASE)
+    """Invités d'un épisode depuis son titre — même lecture que la chaîne (`invites_titre`).
 
-    hosts_low = {h.casefold() for h in hosts}
-    guests: list[str] = []
-    seen: set[str] = set()
-    for p in parts:
-        name = p.strip(" .\"'»«")
-        if not name or len(name.split()) > 4 or not re.search(r"[A-Za-zÀ-ÿ]", name):
-            continue
-        name = name.title() if name.isupper() else name
-        key = name.casefold()
-        if key not in hosts_low and key not in seen:
-            seen.add(key)
-            guests.append(name)
-    return guests
+    L'ancienne heuristique coupait sur une liste de verbes : sur les titres de la
+    saison 6, elle rendait « Jenny Letellier irremplaçables » ou perdait le
+    second invité (22 titres justes sur 40, contre 37 désormais).
+    """
+    from invites_titre import invites_du_titre
+    return invites_du_titre(title, hosts)
 
 
 # ---- Transcript --------------------------------------------------------------

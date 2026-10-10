@@ -55,6 +55,7 @@ from common import (
     slugify,
     write_json_if_changed,
 )
+from invites_titre import invites_du_titre
 from match_youtube import _build_suffix_regex, _parse_se
 
 # isort: on
@@ -119,10 +120,17 @@ def _publication_date(details: dict[str, Any]) -> str | None:
 
 
 def build_episode(source_id: str, details: dict[str, Any], season: int,
-                  number: int) -> dict[str, Any]:
-    """Épisode au schéma `episodes`, construit depuis la vidéo seule."""
+                  number: int, hosts: list[str] | tuple[str, ...] = ()) -> dict[str, Any]:
+    """Épisode au schéma `episodes`, construit depuis la vidéo seule.
+
+    Les invités sont lus dans le titre, où ils figurent toujours : sans eux, la
+    page épisode n'avait pas de pastilles « Avec », les pages invité ne voyaient
+    pas l'épisode, et l'extraction attribuait les recos à de simples prénoms
+    (saison 6, épisodes 1 à 4). `guestsParsed` garde ce que le titre a donné.
+    """
     video_id = details["id"]
     title = (details.get("title") or "").strip()
+    invites = invites_du_titre(title, hosts)
     episode: dict[str, Any] = {
         "sourceId": source_id,
         "guid": GUID_PREFIX + video_id,
@@ -131,7 +139,8 @@ def build_episode(source_id: str, details: dict[str, Any], season: int,
         "youtubeUrl": f"https://www.youtube.com/watch?v={video_id}",
         "season": season,
         "number": number,
-        "guests": [],
+        "guests": invites,
+        "guestsParsed": list(invites),
         "transcriptStatus": "none",
     }
     date = _publication_date(details)
@@ -230,7 +239,8 @@ def fetch_youtube_episodes(source_id: str, *, limit: int = DEFAULT_LIMIT,
                      video_id, details.get("live_status"))
             result.deferred.append(video_id)
             continue
-        episode = build_episode(source_id, details, season, number)
+        episode = build_episode(source_id, details, season, number,
+                                hosts=source.get("hosts") or ())
         if not dry_run:
             path = episodes_dir_for(source_id) / f"{slugify(episode['guid'])}.json"
             path.parent.mkdir(parents=True, exist_ok=True)

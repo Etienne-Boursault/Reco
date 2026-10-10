@@ -712,6 +712,22 @@ def _persist_recos(source_id: str, guid: str,
     return new_count + upd_count
 
 
+def _intervenants(source: dict[str, Any], episode: dict[str, Any]) -> str:
+    """Animateurs et invités de l'épisode, pour la consigne du modèle.
+
+    Avec les seuls animateurs, le modèle attribuait les recos des invités à leur
+    prénom (« Carla », « Félix » sur S6-E04, 2026-10-09). Les invités viennent de
+    l'épisode, sinon de son titre, où ils figurent toujours.
+    """
+    from invites_titre import invites_du_titre
+    hotes = list(source.get("hosts", []))
+    invites = list(episode.get("guests") or []) or invites_du_titre(episode.get("title"), hotes)
+    texte = ", ".join(hotes) or "inconnus"
+    if invites:
+        texte += f" ; invités de l'épisode : {', '.join(invites)}"
+    return texte
+
+
 def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
                         dry_run: bool, model: str = MODEL,
                         provider: str = "anthropic",
@@ -743,7 +759,7 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
     text = transcript_path.read_text(encoding="utf-8")
     chunks = _chunk_transcript(text)
     podcast_title = source.get("title", source_id)
-    hosts = ", ".join(source.get("hosts", [])) or "inconnus"
+    hosts = _intervenants(source, episode)
 
     log.info("Épisode %s : transcription de %d caractères -> %d chunk(s).",
              guid, len(text), len(chunks))
