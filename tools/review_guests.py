@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html
 import re
+import unicodedata
 import urllib.parse
 from collections.abc import Callable
 from pathlib import Path
@@ -51,6 +52,49 @@ def split_names(s: str) -> list[str]:
     return [n.strip() for n in _NAME_SPLIT.split(s or "") if n.strip()]
 
 
+def fold_name(s: str) -> str:
+    """Minuscules sans accents, pour comparer des noms saisis à la main."""
+    s = unicodedata.normalize("NFD", s or "")
+    return "".join(c for c in s if unicodedata.category(c) != "Mn").casefold().strip()
+
+
+def episode_people(ep: dict, hosts: list[str],
+                   parsed: list[str] | None = None) -> list[str]:
+    """Animateurs + invités connus de l'épisode (hors recommandeurs saisis).
+
+    Contrairement à `collect_guests`, n'inclut PAS les noms déjà présents dans
+    les `recommendedBy` : on veut justement savoir si ces noms sont connus.
+    """
+    excluded = {fold_name(n) for n in (ep.get("guestsExcluded") or [])}
+    names = list(hosts)
+    names += ep.get("guests") or []
+    names += ep.get("guestsParsed") or parsed or []
+    out: list[str] = []
+    seen: set[str] = set()
+    for n in names:
+        k = fold_name(n)
+        if not k or k in seen or k in excluded or is_placeholder(n):
+            continue
+        seen.add(k)
+        out.append(n)
+    return out
+
+
+def partial_match(name: str, people: list[str]) -> str:
+    """Nom complet dont `name` n'est que le prénom (ou le nom), si unique.
+
+    Source unique : l'encadré « À vérifier » (review_signals) en tire sa
+    correction « sans doute … », `collect_guests` y renonce à compter le
+    prénom seul comme un invité de plus.
+    """
+    key = fold_name(name)
+    if not key or " " in key:
+        return ""
+    hits = [p for p in people
+            if " " in fold_name(p) and key in fold_name(p).split()]
+    return hits[0] if len(hits) == 1 else ""
+
+
 def collect_guests(
     ep: dict, recs: list[dict], hosts: list[str],
     *, parsed: list[str] | None = None,
@@ -63,7 +107,11 @@ def collect_guests(
       - `parsed` (optionnel : parsing à la volée — utilisé en fallback
         SEULEMENT quand `guestsParsed` est absent/vide, pour ne pas
         double-alimenter la liste sur les épisodes déjà migrés)
-      - les noms cités dans `recommendedBy` des recos.
+      - les noms cités dans `recommendedBy` des recos, SAUF un mot seul qui
+        désigne un unique nom complet connu (« Jenny » quand Jenny Letellier
+        est invitée) : c'est la même personne, pas un invité de plus —
+        l'encadré « À vérifier » propose de corriger l'attribution. Sur sa
+        propre carte, la case reste (cf. `review_render._reco_candidates`).
 
     Retrait : `ep.guestsExcluded` (autorité ultime, comparaison casefold).
     Filtre : hosts, placeholders. Préserve l'ordre de 1ère occurrence.
@@ -77,10 +125,10 @@ def collect_guests(
     # présent (sinon les mêmes noms seraient ajoutés deux fois — cf. N2).
     if parsed and not ep.get("guestsParsed"):
         sources.extend(parsed)
+    people = episode_people(ep, hosts, parsed)
     for r in recs:
-        rb = r.get("recommendedBy", "")
-        if rb:
-            sources.extend(split_names(rb))
+        sources.extend(n for n in split_names(r.get("recommendedBy", ""))
+                       if not partial_match(n, people))
     for n in sources:
         key = n.casefold()
         if (key in host_keys or key in excluded_keys

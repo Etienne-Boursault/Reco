@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:04:46"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3257",
+  "itemId": "29df0ef6",
+  "kind": "reco",
+  "quote": "Allez vous abonner à son Instagram, il y a plein de réécritures, il y a plein de musique, il y a plein de mélodies.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-Ce6vuPq7Gvo",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:04:46",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kyan Khojandi",
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:46",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3261",
+  "links": [],
+  "quote": "Ah oui, bah oui, la saison 3 de Bref, évidemment.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:08:46",
+  "title": "Bref (saison 2)",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ]
+}

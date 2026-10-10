@@ -1,0 +1,238 @@
+/* Feuille de style de la relecture FOCUS (/ep) et de l'accueil (/).
+
+   Une reco à la fois : la liste de l'épisode à gauche, une seule carte à
+   droite, la décision en bas de carte. Concaténée après review_server.css,
+   dont elle reprend les couleurs : fond #0e0e10, surface #17171c, bord
+   #2a2a30, texte #f6f4ee, gris #9a99a3, accent #ffd23f. États : vert validé,
+   bleu évoqué, ambre œuvre d'invité, rouge écarté, cuivre doublons. */
+
+/* ---- Mise en page ------------------------------------------------------- */
+.focus{max-width:min(1180px,100%);margin:0 auto;}
+.focus .eph-row{margin-top:.6rem;}
+.fx-body{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);
+  gap:1.2rem;align-items:start;margin-top:.8rem;}
+.fx-side{position:sticky;top:.8rem;max-height:calc(100vh - 1.6rem);overflow:auto;
+  display:flex;flex-direction:column;gap:.6rem;}
+.focus .ep{margin:0;max-width:none;}
+/* Une fois le client prêt, seule la carte active est montrée. Sans JS, toutes
+   restent visibles : la page reste utilisable. */
+.fx-ready .ep > ul > li.row:not(.active){display:none;}
+.fx-ready.is-done .ep > ul{display:none;}
+
+/* ---- Progression -------------------------------------------------------- */
+.fx-progress{display:flex;align-items:center;gap:.8rem;margin:.2rem 0 0;}
+.fx-progress-txt{color:#9a99a3;font-size:.82rem;white-space:nowrap;
+  font-variant-numeric:tabular-nums;}
+.fx-progress-txt b{color:#f6f4ee;}
+.fx-bar{flex:1;display:block;height:6px;border-radius:999px;background:#2a2a30;
+  overflow:hidden;}
+.fx-bar-fill{display:block;height:100%;background:#ffd23f;border-radius:999px;
+  transform-origin:left center;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
+
+/* ---- Liste des recos ---------------------------------------------------- */
+.fx-list ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.fx-list-toggle{display:none;}
+.fx-item{all:unset;box-sizing:border-box;width:100%;display:grid;
+  grid-template-columns:.6rem 1.6rem minmax(0,1fr) auto;align-items:center;gap:.45rem;
+  padding:.45rem .6rem;border-radius:8px;cursor:pointer;color:#cfcdc6;
+  border-left:3px solid transparent;}
+.fx-item:hover{background:#17171c;}
+.fx-item:focus-visible{outline:2px solid #ffd23f;outline-offset:-2px;}
+.fx-item.current{background:#1f1c0a;border-left-color:#ffd23f;color:#f6f4ee;}
+.fx-dot{width:.55rem;height:.55rem;border-radius:50%;border:2px solid #ffd23f;
+  box-sizing:border-box;}
+.fx-item[data-state="done"] .fx-dot{background:#5ab68a;border-color:#5ab68a;}
+.fx-item[data-state="citation"] .fx-dot{background:#4a8edb;border-color:#4a8edb;}
+.fx-item[data-state="guestwork"] .fx-dot{background:#d29a3a;border-color:#d29a3a;}
+.fx-item[data-state="discarded"] .fx-dot{background:#6b3a3a;border-color:#6b3a3a;}
+.fx-item[data-state="cluster"] .fx-dot{border-color:#b87333;border-radius:2px;}
+.fx-item[data-state="discarded"] .fx-t{text-decoration:line-through;color:#7a7a82;}
+.fx-num{color:#8a8992;font-size:.72rem;font-variant-numeric:tabular-nums;text-align:right;}
+.fx-txt{display:flex;flex-direction:column;min-width:0;}
+.fx-t{font-weight:600;font-size:.88rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.fx-m{color:#8a8992;font-size:.72rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-variant-numeric:tabular-nums;}
+.fx-sig{color:#0e0e10;background:#d29a3a;border-radius:999px;width:1.1rem;height:1.1rem;
+  display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;}
+.fx-side .add-reco-form .btn-add-reco{font-size:.8rem;padding:.5em .8em;}
+
+/* ---- Carte en mode focus ------------------------------------------------ */
+.focus .row{padding:1.1rem 1.3rem 1.2rem;margin:0;border-radius:14px;}
+.focus .row.active{box-shadow:none;border-left-width:3px;}
+.focus .hd{gap:.5rem .6rem;align-items:center;}
+.focus .hd > b{font-size:1.45rem;line-height:1.2;letter-spacing:-.01em;}
+.focus .hd > i{color:#cfcdc6;font-style:normal;font-size:1rem;}
+.hd-meta{display:inline-flex;align-items:center;gap:.4rem;}
+.st{border:1px solid #2a2a30;border-radius:999px;padding:.1em .6em;letter-spacing:.03em;}
+.row.done .st{border-color:#2c5a38;}
+
+/* Menu ⋯ : fusion, édition, ré-enrichissement, suppression. */
+.more{position:relative;}
+.more > summary{list-style:none;cursor:pointer;color:#9a99a3;border:1px solid #3a3a40;
+  border-radius:999px;width:2rem;height:1.6rem;display:inline-flex;align-items:center;
+  justify-content:center;font-weight:800;user-select:none;}
+.more > summary::-webkit-details-marker{display:none;}
+.more > summary:hover,.more[open] > summary{color:#ffd23f;border-color:#ffd23f;}
+.more-panel{position:absolute;right:0;top:calc(100% + .35rem);z-index:60;display:flex;
+  flex-direction:column;align-items:stretch;gap:.4rem;min-width:13rem;padding:.6rem;
+  background:#1a1a22;border:1px solid #3a3a40;border-radius:10px;
+  box-shadow:0 10px 28px rgba(0,0,0,.55);}
+.more-panel .merge-select{margin:0;padding:.3em .6em;}
+.more-panel .btn-edit,.more-panel .btn-reenrich,.more-panel .btn-delete{display:block;
+  width:100%;text-align:left;font-size:.82rem;padding:.4em .7em;box-sizing:border-box;}
+.more-panel form{display:block;}
+
+/* Encadré « À vérifier ». */
+.verif{background:#201a10;border:1px solid #5a4314;border-left:3px solid #d29a3a;
+  border-radius:10px;padding:.6em .9em;margin:.8rem 0 .2rem;}
+.verif-h{display:block;color:#e7b45c;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:.25rem;}
+.verif ul{list-style:disc;padding-left:1.1rem;margin:0;color:#f1dfbd;font-size:.9rem;line-height:1.5;}
+.verif-fix{margin-left:.4rem;background:transparent;color:#ffd23f;border:1px solid #ffd23f88;
+  padding:.15em .7em;font-size:.78rem;}
+.verif-fix:hover{background:#ffd23f;color:#0e0e10;}
+.verif-fix[disabled]{color:#5ab68a;border-color:#2c5a38;background:transparent;cursor:default;}
+
+/* Citation en avant, extrait du transcript en retrait. */
+.focus .q{font-size:1.05rem;line-height:1.55;color:#f6f4ee;border-left:3px solid #ffd23f55;
+  padding-left:.9rem;margin:.9rem 0 .5rem;}
+.focus .context{opacity:.8;}
+
+/* « Qui recommande ? » : des noms à cocher, présentés comme des boutons. */
+.who{margin-top:.9rem;}
+.who-label{color:#9a99a3;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;
+  margin-right:.2rem;}
+.who-name{display:inline-flex;align-items:center;gap:.35em;}
+.who-name input{accent-color:#ffd23f;margin:0;}
+.who-name:has(input:checked){border-color:#ffd23f;color:#ffd23f;background:#1f1c0a;}
+
+/* Barre de décision. */
+.decide{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:1rem;
+  padding-top:.9rem;border-top:1px solid #2a2a30;}
+.decide button{padding:.55em 1.2em;font-size:.92rem;}
+.decide .ok{background:#ffd23f;color:#0e0e10;}
+.decide .guestwork-btn{margin-left:auto;}
+.decide kbd{font:600 .7rem ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.6;
+  border:1px solid currentColor;border-radius:4px;padding:0 .3em;margin-left:.3em;}
+
+/* ---- Fin d'épisode ------------------------------------------------------ */
+.fx-end{background:#17171c;border:1px solid #2a2a30;border-top:3px solid #5ab68a;
+  border-radius:14px;padding:1.6rem 1.6rem 1.4rem;text-align:center;}
+.fx-end[hidden]{display:none;}
+.fx-end-k{color:#5ab68a;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin:0;}
+.fx-end-h{font-size:1.6rem;margin:.3rem 0 1rem;}
+.fx-end-counts{list-style:none;padding:0;margin:0 auto 1rem;display:flex;flex-wrap:wrap;
+  justify-content:center;gap:.5rem 1.4rem;color:#cfcdc6;}
+.fx-end-counts b{color:#f6f4ee;font-size:1.3rem;font-variant-numeric:tabular-nums;}
+.fx-end-chain{color:#9a99a3;font-size:.9rem;max-width:34rem;margin:0 auto 1.2rem;line-height:1.5;}
+.fx-end-actions{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;align-items:center;}
+.fx-end-go{display:inline-flex;flex-direction:column;align-items:center;gap:.1rem;
+  max-width:100%;background:#ffd23f;color:#0e0e10;border-radius:18px;padding:.55em 1.3em;
+  font-weight:700;text-decoration:none;}
+.fx-end-next{font-weight:500;font-size:.78rem;max-width:22rem;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;}
+.fx-end-again{background:transparent;color:#9a99a3;border:1px solid #3a3a40;}
+.fx-end-again:hover{color:#ffd23f;border-color:#ffd23f;}
+
+/* ---- Accueil ------------------------------------------------------------ */
+.home-sec{max-width:min(1120px,100%);margin:1.4rem auto;}
+.home-h{font-size:1rem;color:#9a99a3;text-transform:uppercase;letter-spacing:.06em;
+  margin:0 0 .7rem;}
+.home-empty{color:#9a99a3;}
+.todo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.9rem;}
+.todo-card{display:flex;flex-direction:column;background:#17171c;border:1px solid #2a2a30;
+  border-radius:14px;overflow:hidden;text-decoration:none;color:#f6f4ee;}
+.todo-card:hover{border-color:#ffd23f;}
+.todo-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0e0e10;}
+.todo-body{display:flex;flex-direction:column;gap:.35rem;padding:.8rem .9rem .9rem;}
+.todo-num{color:#ffd23f;font-size:.75rem;font-weight:700;}
+.todo-title{font-weight:700;line-height:1.3;}
+.todo-meta{color:#9a99a3;font-size:.82rem;}
+.todo-sig{color:#e7b45c;}
+.todo-cta{color:#ffd23f;font-weight:700;font-size:.88rem;margin-top:.2rem;}
+.chain-list{list-style:none;padding:0;margin:0;color:#cfcdc6;font-size:.9rem;line-height:1.7;}
+.ep-filter{width:min(28rem,100%);box-sizing:border-box;background:#17171c;border:1px solid #2a2a30;
+  color:#f6f4ee;border-radius:999px;padding:.45em 1em;margin-bottom:.6rem;font:inherit;}
+.ep-filter:focus-visible{outline:2px solid #ffd23f;outline-offset:1px;}
+.ep-lines{list-style:none;padding:0;margin:0;}
+.ep-line a{display:grid;grid-template-columns:4.5rem minmax(0,1fr) auto;gap:.8rem;
+  align-items:center;padding:.5rem .4rem;border-bottom:1px solid #23232a;
+  color:#e6e4dd;text-decoration:none;}
+.ep-line a:hover .ep-line-title{color:#ffd23f;}
+.ep-line-num{color:#ffd23f;font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums;}
+.ep-line-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ep-line-count{color:#9a99a3;font-size:.8rem;white-space:nowrap;}
+.ep-line.todo .ep-line-count{color:#ffd23f;}
+.ep-line.empty{opacity:.55;}
+.ep-line[hidden]{display:none;}
+
+/* ---- Téléphone ---------------------------------------------------------- */
+@media (max-width:760px){
+  .fx-body{grid-template-columns:minmax(0,1fr);gap:.7rem;}
+  .fx-side{position:static;max-height:none;overflow:visible;}
+  .fx-list-toggle{display:block;width:100%;text-align:center;background:#17171c;
+    color:#f6f4ee;border:1px solid #2a2a30;border-radius:10px;padding:.6em 1em;}
+  .fx-ready .fx-list:not(.open) ol,.fx-ready .fx-side:not(:has(.fx-list.open)) .add-reco-form{display:none;}
+  .focus .row{padding:.9rem .9rem 1rem;}
+  .focus .hd > b{font-size:1.2rem;}
+  /* En-tête d'épisode sur une ligne : le titre complet reste dans la liste. */
+  .focus .eph{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .focus .eph .dur,.focus .eph .tmodel{display:none;}
+  .decide kbd{display:none;}
+  /* La décision reste sous le pouce : barre fixe en bas, trois gros boutons. */
+  .fx-ready .row.active .decide{position:fixed;left:0;right:0;bottom:0;z-index:140;margin:0;
+    display:grid;grid-template-columns:repeat(3,1fr);align-items:stretch;gap:.4rem;padding:.55rem .6rem;
+    background:#15151b;border-top:1px solid #2a2a30;box-shadow:0 -6px 20px rgba(0,0,0,.45);}
+  .fx-ready .row.active .decide button{padding:.8em .3em;font-size:.88rem;}
+  .fx-ready .row.active .decide .guestwork-btn{grid-column:1/-1;order:-1;margin:0;
+    padding:.35em;font-size:.78rem;}
+  body:has(.fx-ready .row.active .decide){padding-bottom:7.5rem;}
+  body:has(.audio-bar:not(.hidden)) .fx-ready .row.active .decide{bottom:3.6rem;}
+  #reco-autoplay-toggle{display:none;}
+  .ep-line a{grid-template-columns:3.6rem minmax(0,1fr);}
+  .ep-line-count{grid-column:2;}
+}
+/* Le compteur de l'en-tête est remplacé par la barre de progression (à jour). */
+.focus .eph .cnt{display:none;}
+
+/* Page en mode focus : le titre de l'outil se fait discret, la place va à
+   la carte (le sous-titre « Relecture d'un épisode » ne dit rien de plus). */
+body:has([data-focus]) h1{font-size:.95rem;color:#9a99a3;margin:0 0 .3rem;}
+body:has([data-focus]) .meta{display:none;}
+
+/* Réponse à l'appui, dès le pointer-down (pas au relâchement). */
+button:active,.fx-end-go:active,.todo-card:active{transform:scale(.97);}
+button,.fx-end-go,.todo-card{transition:transform .1s ease-out;}
+
+/* La carte entre du côté où l'on va (cf. review_client_focus.animateEnter). */
+@keyframes fx-in-next{from{opacity:0;transform:translateX(14px);}to{opacity:1;transform:none;}}
+@keyframes fx-in-prev{from{opacity:0;transform:translateX(-14px);}to{opacity:1;transform:none;}}
+@keyframes fx-in-fade{from{opacity:0;}to{opacity:1;}}
+.fx-enter-next{animation:fx-in-next .14s cubic-bezier(.2,.8,.2,1);}
+.fx-enter-prev{animation:fx-in-prev .14s cubic-bezier(.2,.8,.2,1);}
+
+/* Moins d'animations demandées : fondu court, ni glissement ni échelle. */
+@media (prefers-reduced-motion:reduce){
+  .fx-bar-fill,button,.fx-end-go,.todo-card{transition:none;}
+  button:active,.fx-end-go:active,.todo-card:active{transform:none;}
+  .fx-enter-next,.fx-enter-prev{animation:fx-in-fade .12s linear;}
+}
+
+/* Lu par les lecteurs d'écran, invisible à l'écran. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+/* Liens de la reco, cherchés avant la relecture : visibles pour qu'un lien faux
+   se retire ici (✕), et non après la publication. */
+.liens{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;margin:.8rem 0 0;}
+.liens-h{color:#9a99a3;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-right:.2rem;}
+.liens ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem;}
+.liens li{display:inline-flex;align-items:center;border:1px solid #2a2a30;border-radius:999px;background:#0e0e10;}
+.liens li > a,.liens li > span{color:#f6f4ee;text-decoration:none;font-size:.8rem;padding:.25em .15em .25em .75em;}
+.liens li > a:hover{color:#ffd23f;}
+.liens li > a.lien-avoid{color:#9a99a3;}
+.lien-retirer{margin:0;display:inline;}
+.lien-retirer button{background:transparent;color:#9a99a3;border:0;border-radius:999px;padding:.25em .6em;font-size:.75rem;}
+.lien-retirer button:hover,.lien-retirer button:focus-visible{color:#ff9a9a;}
+.liens-rien{color:#9a99a3;font-size:.8rem;}
+@media (max-width:760px){.lien-retirer button{padding:.45em .75em;}}

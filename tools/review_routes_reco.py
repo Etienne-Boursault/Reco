@@ -23,15 +23,15 @@ from common import (
     read_json,
     reco_prefix,
     recos_dir_for,
+    write_json_if_changed,
 )
 from reco_dedup_merge import BACKUP_DIR
 from review_handler_base import (
     _RE_GUID,
     _RE_RECO_ID,
-    _invalidates_reco_cache,
     _reco_path,
 )
-from review_render import _load_groups
+from review_render import _load_groups, refresh_reco_in_cache
 
 
 def _allocate_new_reco(source_id: str, episode_guid: str) -> tuple[str, Path]:
@@ -102,11 +102,12 @@ class RecoCrudRoutesMixin:
     # Renseigné par BaseHandler.__init__ — déclaré ici pour les type-checkers.
     source_id: str
 
-    @_invalidates_reco_cache
     def _handle_add_reco(self, data: dict) -> None:
         """POST /add-reco : crée un stub de reco vide rattaché à un épisode.
 
         #6 sécu — `guid` validé via `_RE_GUID` AVANT toute lecture épisode.
+        Seul le fichier créé entre dans le cache (`refresh_reco_in_cache`) ;
+        les sorties anticipées n'ont rien écrit dans le dossier des recos.
         """
         guid = (data.get("guid") or [""])[0].strip()
         if not guid or not _RE_GUID.match(guid):
@@ -140,6 +141,7 @@ class RecoCrudRoutesMixin:
                 pass
             self._send_redirect("/")
             return
+        refresh_reco_in_cache(self.source_id, new_path)
         log.info("Reco manuelle créée : %s (episode %s)", new_id, guid)
         loc = (f"/ep?guid={urllib.parse.quote(guid)}"
                f"&edit={urllib.parse.quote(new_id)}"
@@ -147,7 +149,6 @@ class RecoCrudRoutesMixin:
                f"&kind=info")
         self._send_redirect(loc)
 
-    @_invalidates_reco_cache
     def _handle_delete_reco(self, data: dict) -> None:
         """POST /delete-reco : supprime DÉFINITIVEMENT le fichier JSON.
 
@@ -159,6 +160,8 @@ class RecoCrudRoutesMixin:
         #13 sécu — un manifest récent référençant cet id peut faire
         "ressusciter" la reco via un undo postérieur. On le flash en
         warning si on détecte le cas.
+
+        Seule la reco supprimée sort du cache (`refresh_reco_in_cache`).
         """
         reco_id = (data.get("id") or [""])[0]
         if not _RE_RECO_ID.match(reco_id):
@@ -189,6 +192,7 @@ class RecoCrudRoutesMixin:
             log.warning("Suppression refusée %s : %s", reco_id, exc)
             self._send_redirect("/")
             return
+        refresh_reco_in_cache(self.source_id, path)
         log.info("Reco supprimée définitivement : %s", reco_id)
         flash_msg = f"Reco {reco_id} supprimée."
         # #13 sécu — warning si un backup récent référence cet id.
@@ -230,3 +234,44 @@ class RecoCrudRoutesMixin:
             if reco_id == m.get("keep_id") or reco_id in (m.get("loser_ids") or []):
                 return True
         return False
+
+
+class LienRoutesMixin:
+    """Route /retirer-lien : retirer un lien trouvé, sans qu'il revienne.
+
+    Les liens sont cherchés avant la relecture (`liens_avant_relecture`) et
+    affichés sur la carte. Retirer un lien faux l'ôte de `links` et note son
+    URL dans `linksRejected` : ni la recherche suivante, ni les passes de la
+    finalisation ne le reposeront (`purger_rejetes`).
+    """
+
+    source_id: str
+
+    def _handle_retirer_lien(self, data: dict) -> None:
+        reco_id = (data.get("id") or [""])[0]
+        url = (data.get("url") or [""])[0].strip()
+        if not _RE_RECO_ID.match(reco_id) or not url or len(url) > 2000:
+            self._reply_post("", "", "error", "Requête invalide.", reco_id)
+            return
+        path = _reco_path(self.source_id, reco_id)
+        if path is None or not path.exists():
+            self._reply_post("", "", "error", "Reco introuvable.", reco_id)
+            return
+        reco = read_json(path)
+        liens = reco.get("links") or []
+        gardes = [link for link in liens
+                  if not (isinstance(link, dict) and link.get("url") == url)]
+        if len(gardes) == len(liens):
+            self._reply_post(reco.get("episodeGuid", ""), "", "warning",
+                             "Ce lien n'est plus sur la reco.", reco_id)
+            return
+        reco["links"] = gardes
+        rejetes = list(reco.get("linksRejected") or [])
+        if url not in rejetes:
+            rejetes.append(url)
+        reco["linksRejected"] = rejetes
+        write_json_if_changed(path, reco)
+        refresh_reco_in_cache(self.source_id, path)
+        log.info("Lien retiré : %s → %s", reco_id, url)
+        self._reply_post(reco.get("episodeGuid", ""), "Lien retiré.", "success",
+                         "Lien retiré : il ne reviendra pas.", reco_id)

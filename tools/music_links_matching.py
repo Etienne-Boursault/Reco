@@ -19,6 +19,8 @@ from typing import Any
 from urllib.parse import urlparse
 
 from common import normalize_text
+from music_links_editions import same_recording
+from title_variants import cores_match
 
 # --- Constantes réseau ------------------------------------------------------
 DEEZER_BASE = "https://api.deezer.com"
@@ -350,6 +352,10 @@ class Candidate:
 
     `title` est vide pour un candidat de type `artist` : c'est `artist` qui
     porte alors le nom recherché.
+
+    `release`, `isrc` et `compilation` ne servent qu'à départager plusieurs
+    parutions d'un même enregistrement (cf. `music_links_editions`) ; vides
+    quand la plateforme ne les fournit pas.
     """
 
     platform: str
@@ -358,6 +364,9 @@ class Candidate:
     artist: str
     title: str = ""
     ident: str = ""
+    release: str = ""
+    isrc: str = ""
+    compilation: bool = False
 
 
 @dataclass(frozen=True)
@@ -418,21 +427,27 @@ def verdict(reco: dict[str, Any], candidates: Sequence[Candidate],
 
     kept: list[Candidate] = []
     artist_mismatch = False
-    for cand in candidates:
-        if want_artist_page:
-            if names_match(cand.artist, title) or artist_matches_creator(
-                    cand.artist, creator):
-                kept.append(cand)
-            continue
-        if not titles_match_strict(title, cand.title):
-            continue
-        # Le titre correspond mais pas l'artiste : c'est l'homonymie type
-        # (« Amélie »), le cas que ce garde-fou existe pour arrêter.
-        if not (artist_matches_creator(cand.artist, creator)
-                or artist_matches_collaborator(cand.artist, creator)):
-            artist_mismatch = True
-            continue
-        kept.append(cand)
+    # Deux tours : le titre exact d'abord ; le NOYAU de titre (sans suffixe,
+    # cf. `title_variants`) seulement si aucun candidat n'a le titre exact —
+    # un titre exact disponible prime toujours sur un rapprochement.
+    for same_title in (titles_match_strict, cores_match):
+        for cand in candidates:
+            if want_artist_page:
+                if names_match(cand.artist, title) or artist_matches_creator(
+                        cand.artist, creator):
+                    kept.append(cand)
+                continue
+            if not same_title(title, cand.title):
+                continue
+            # Le titre correspond mais pas l'artiste : c'est l'homonymie type
+            # (« Amélie »), le cas que ce garde-fou existe pour arrêter.
+            if not (artist_matches_creator(cand.artist, creator)
+                    or artist_matches_collaborator(cand.artist, creator)):
+                artist_mismatch = True
+                continue
+            kept.append(cand)
+        if kept or want_artist_page:
+            break
 
     if not kept:
         if artist_mismatch:
@@ -443,6 +458,11 @@ def verdict(reco: dict[str, Any], candidates: Sequence[Candidate],
 
     identities = {c.ident or c.url for c in kept}
     if len(identities) > 1:
+        # Plusieurs parutions d'un même enregistrement (album, compilation) ne
+        # sont pas une ambiguïté sur l'œuvre : on garde l'originale.
+        original = same_recording(kept)
+        if original is not None:
+            return original, REASON_LINKED, ""
         return None, REASON_AMBIGUOUS, (
             f"{len(identities)} candidats distincts : "
             + " · ".join(f"{c.artist} — {c.title or 'page artiste'}" for c in kept[:3])

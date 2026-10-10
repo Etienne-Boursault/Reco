@@ -74,6 +74,7 @@ from music_links_matching import (
     PLATFORM_QOBUZ,
     Candidate,
 )
+from title_variants import cores_match
 
 QOBUZ_BASE = "https://www.qobuz.com/fr-fr"
 #: Nom de l'interrupteur d'exploitation (cf. « L'INTERRUPTEUR » en en-tête).
@@ -228,8 +229,12 @@ def candidates(session: requests.Session, kind: str, query: str,
                                      ident=_ident(url)))
             continue
         cible = normalize_text(wanted_title)
-        piste = next((n for n in track_names(page)
-                      if cible and normalize_text(n) == cible), None)
+        pistes = track_names(page)
+        # Titre exact d'abord ; à défaut le noyau (« … (reprise française de
+        # …) » face à « … (Adaptation de …) »), que `verdict` ne retiendra
+        # qu'avec l'artiste — mêmes règles que Deezer, Apple et Spotify.
+        piste = (next((n for n in pistes if cible and normalize_text(n) == cible), None)
+                 or next((n for n in pistes if cores_match(wanted_title, n)), None))
         if piste:
             trouves.append(Candidate(PLATFORM_QOBUZ, kind, url, artiste, piste,
                                      ident=_ident(url)))

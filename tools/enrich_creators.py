@@ -97,6 +97,7 @@ from common import (
 from enrichment.field_refresher import EnrichedAtCorruptedError, partial_update
 from enrichment.tracker import now_iso
 from review_lock import ServerLockBusy, acquire_pipeline_lock
+from title_variants import variants
 
 # --- Constantes réseau ------------------------------------------------------
 TMDB_BASE = "https://api.themoviedb.org/3"
@@ -224,8 +225,20 @@ def titles_match(a: str | None, b: str | None,
 
 def any_title_matches(reco_title: str | None,
                       candidates: Iterable[str | None]) -> bool:
-    """True si au moins un titre distant correspond (titre VF *ou* original)."""
-    return any(titles_match(reco_title, c) for c in candidates)
+    """True si au moins un titre distant correspond (titre VF *ou* original).
+
+    Le corpus écrit volontiers « Titre VF (Titre original) » — « Acharnés
+    (Beef) » — là où TMDB répond « Acharnés » et « BEEF » séparément : chaque
+    partie du titre est donc aussi comparée, mais seulement par ÉGALITÉ (après
+    normalisation). Ce comparateur ne sert que derrière un identifiant TMDB
+    déjà posé, qui ancre le résultat ; la recherche libre garde
+    `titles_match_strict`.
+    """
+    candidates = list(candidates)
+    if any(titles_match(reco_title, c) for c in candidates):
+        return True
+    parts = set(variants(reco_title)[1:])
+    return any(normalize_text(c) in parts for c in candidates)
 
 
 def titles_match_strict(a: str | None, b: str | None) -> bool:

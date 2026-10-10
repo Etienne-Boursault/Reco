@@ -36,6 +36,12 @@ if outil a-extraire; then
   outil extraire || horodater "extraction en échec"
   docker compose start review
 fi
+# Les liens sont cherchés AVANT la relecture, pour que la page les montre. Sans
+# verrou : l'étape n'écrit que les liens nouveaux, dans la reco relue à
+# l'instant d'écrire — la page de validation reste ouverte pendant ce temps.
+if outil a-chercher-liens; then
+  outil chercher-liens || horodater "recherche de liens en échec"
+fi
 if outil a-finaliser; then
   horodater "finalisation : arrêt de la page de validation"
   docker compose stop review

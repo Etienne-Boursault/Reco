@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:21"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3262",
+  "itemId": "35e9f26c",
+  "kind": "reco",
+  "quote": "une série que j'ai adoré, que j'ai vraiment adoré, qui s'appelle Fleabag",
+  "recommendedBy": "Carla de Coignac",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-Ce6vuPq7Gvo",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,76 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-Ce6vuPq7Gvo",
+  "externalIds": {
+    "tmdb": "154385",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/154385-beef/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-09T10:27:21+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:01",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3260",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/title/81447461"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt14403178/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/154385"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/154385-beef/watch?locale=FR"
+    }
+  ],
+  "quote": "Et ça fait la série Biff, qui est super. [...] Je recommande Acharné Biff en anglais.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:01",
+  "title": "Acharnés (Beef)",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Netflix",
+      "url": "https://www.netflix.com/search?q=Acharn%C3%A9s%20%28Beef%29"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Netflix Standard with Ads",
+      "url": "https://www.netflix.com/search?q=Acharn%C3%A9s%20%28Beef%29"
+    }
+  ],
+  "year": 2023
+}

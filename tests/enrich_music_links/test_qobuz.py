@@ -294,3 +294,18 @@ def test_artist_identity_falls_back_when_json_ld_has_no_name():
             "<title>Discographie de Solann - Qobuz</title>")
 
     assert q.artist_identity(page) == "Solann"
+
+
+@responses.activate
+def test_candidates_track_falls_back_to_the_title_core(session):
+    """« Gitana te quiero (version de la reco) » : la piste est trouvée par son
+    noyau de titre ; `verdict` exigera ensuite l'artiste."""
+    responses.add(responses.GET, RECHERCHE, status=200, content_type=HTML,
+                  body=_recherche_html("/fr-fr/album/aa/111"))
+    responses.add(responses.GET, "https://www.qobuz.com/fr-fr/album/aa/111",
+                  status=200, content_type=HTML, body=_album_html())
+
+    trouves = q.candidates(session, "track", "x",
+                           wanted_title="Gitana te quiero (précision éditoriale)")
+
+    assert [c.title for c in trouves] == ["Gitana Te Quiero (Bulerías)"]

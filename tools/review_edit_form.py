@@ -395,7 +395,7 @@ def render_edit_form(
         type_radio_block = ('<fieldset class="sig-type"><legend>Type :</legend>'
                             f'{_radios}</fieldset>')
     return f"""
-    <li class="row editing">
+    <li class="row editing" data-reco-id="{html.escape(reco_id)}">
       {recap_block}
       <form class="edit-form" method="post" action="/edit">
         <input type="hidden" name="id" value="{html.escape(reco_id)}">

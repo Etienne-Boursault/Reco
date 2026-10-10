@@ -19,8 +19,9 @@
   // - Auto-play optionnel (toggle 🔁 en haut, localStorage `reco-autoplay`).
   //
   // Compromis acceptés (cf. brief) :
-  // - /save n'est pas AJAX-able aujourd'hui : V/C/D submit le form et
-  //   provoquent un reload (la page se rafraîchit, OK pour cette itération).
+  // - V/C/D passent par l'AJAX de /save quand la carte porte le bouton de la
+  //   décision (page épisode) ; ailleurs (/doutes) le form est soumis et la
+  //   page se recharge.
   // - YouTube IFrame API : sur l'iframe `name="ytplayer"`, on ajoute `id` au
   //   boot et on instancie `YT.Player` une fois l'API JS chargée.
 
@@ -40,15 +41,31 @@
     return 'reco-active-' + (guid || window.location.pathname);
   }
 
+  // Une carte navigable : une reco (data-reco-id) ou une grappe de doublons
+  // (data-cluster-id, mode focus — sinon elle serait inatteignable).
+  const ROW_SELECTOR = 'li.row[data-reco-id], li.row.cluster[data-cluster-id]';
+
+  function rowId(li) {
+    return li.getAttribute('data-reco-id') || li.getAttribute('data-cluster-id') || '';
+  }
+
+  function findRowById(id) {
+    if (!id) return null;
+    const q = CSS.escape(id);
+    return document.querySelector(
+      'li.row[data-reco-id="' + q + '"], li.row[data-cluster-id="' + q + '"]'
+    );
+  }
+
   function getRows(includeDiscarded) {
-    const all = Array.from(document.querySelectorAll('li.row[data-reco-id]'));
+    const all = Array.from(document.querySelectorAll(ROW_SELECTOR));
     const filtered = all.filter((li) => !li.classList.contains('hidden-by-search'));
     if (includeDiscarded) return filtered;
     return filtered.filter((li) => !li.classList.contains('discarded'));
   }
 
   function getActiveRow() {
-    return document.querySelector('li.row.active[data-reco-id]');
+    return document.querySelector('li.row.active[data-reco-id], li.row.active[data-cluster-id]');
   }
 
   function setActiveRow(li, opts) {
@@ -56,13 +73,17 @@
     document.querySelectorAll('li.row.active').forEach((n) => n.classList.remove('active'));
     li.classList.add('active');
     // L4 — clé scindée par guid (ou pathname en repli) : jamais de clé vide.
-    try { sessionStorage.setItem(activeStorageKey(), li.getAttribute('data-reco-id') || ''); } catch (_) {}
+    try { sessionStorage.setItem(activeStorageKey(), rowId(li)); } catch (_) {}
     if (!opts || !opts.noScroll) {
-      li.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      // Mode focus : la carte est seule à l'écran, on remonte juste à son
+      // début. Ailleurs (liste complète), on la centre.
+      const focus = !!document.querySelector('[data-focus]');
+      li.scrollIntoView({ block: focus ? 'nearest' : 'center', behavior: 'smooth' });
     }
     if (window.__recoAutoplayEnabled && (!opts || !opts.noAutoplay)) {
       scheduleAutoplay(li);
     }
+    document.dispatchEvent(new CustomEvent('reco:active', { detail: { li: li } }));
   }
 
   function moveActive(direction, includeDiscarded) {
@@ -82,15 +103,13 @@
     // L4 — lecture via la même clé scindée (guid ou pathname) que l'écriture.
     let stored = '';
     try { stored = sessionStorage.getItem(activeStorageKey()) || ''; } catch (_) {}
-    let target = null;
-    if (stored) {
-      target = document.querySelector(
-        'li.row[data-reco-id="' + CSS.escape(stored) + '"]'
-      );
-    }
+    // Formulaire d'édition ouvert (?edit=) : c'est lui qu'on regarde.
+    let target = document.querySelector('li.row.editing');
+    if (!target && stored) target = findRowById(stored);
     if (!target) {
+      // Première reco encore à décider, sinon la première tout court.
       const rows = getRows(false);
-      target = rows[0] || null;
+      target = rows.find((li) => !li.classList.contains('done')) || rows[0] || null;
     }
     if (target) setActiveRow(target, { noScroll: true, noAutoplay: true });
   }
@@ -357,8 +376,8 @@
         <section><h3>Actions</h3>
           <dl>
             <dt>V</dt><dd>Valider la carte active</dd>
-            <dt>C</dt><dd>Marquer comme citation</dd>
-            <dt>D</dt><dd>Discard (pas une reco)</dd>
+            <dt>C</dt><dd>Seulement évoquée (citation)</dd>
+            <dt>D</dt><dd>Pas une reco</dd>
             <dt>E</dt><dd>Éditer (toggle)</dd>
             <dt>R</dt><dd>Ré-enrichir</dd>
           </dl>
@@ -402,6 +421,8 @@
   // --- Autoplay toggle button (injecté dans merge-bar form ou flottant) ---
   function ensureAutoplayToggle() {
     if (document.querySelector('[data-autoplay-toggle]')) return;
+    // Sans lecteur sur la page (accueil, tableau…), le bouton ne pilote rien.
+    if (!document.querySelector('[data-player-wrap], [data-audio-bar]')) return;
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-autoplay-toggle', '1');
@@ -419,6 +440,16 @@
     if (!li) return;
     const form = li.querySelector('form[action="/save"]');
     if (!form) return;
+    // Carte d'épisode : le bouton de la décision existe → soumission AJAX
+    // (requestSubmit passe par le délégué `submit` du core, avec le bon
+    // `submitter`), sans recharger la page — la suivante s'affiche aussitôt.
+    const btn = form.querySelector(
+      'button[name="action"][value="' + CSS.escape(actionValue) + '"]'
+    );
+    if (btn && typeof form.requestSubmit === 'function') {
+      form.requestSubmit(btn);
+      return;
+    }
     // Crée un hidden `action` puis submit programmatiquement (les <button name=action>
     // ne soumettent leur value que si c'est eux qui ont déclenché le submit).
     let hidden = form.querySelector('input[type=hidden][name="action"]');
