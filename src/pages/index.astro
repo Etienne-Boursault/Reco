@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import SourceCatalog from '../components/SourceCatalog.astro';
-import { siteConfig } from '../config/site';
+import { siteToWebsiteSchema } from '../lib/seo/jsonld';
 import { recoPubliee } from '../utils/recoPubliee';
 import { plural } from '../utils/plural';
 
@@ -50,13 +50,7 @@ function fmt(n: number): string {
 
 // JSON-LD : WebSite global (homepage). Cf. ADR 0021 §7.
 const homeUrl = new URL('/', Astro.site).toString();
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: siteConfig.siteName,
-  description: siteConfig.baseline,
-  url: homeUrl,
-};
+const websiteSchema = siteToWebsiteSchema(homeUrl);
 ---
 
 {homeSource ? (

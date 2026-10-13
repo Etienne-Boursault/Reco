@@ -169,20 +169,57 @@ export interface SourceLike {
   id: string;
   title: string;
   description?: string;
+  /** Page du site consacrée au podcast (repli si la page officielle manque). */
   url: string;
+  /** Page OFFICIELLE du podcast (plateforme d'écoute, site de l'émission). */
+  officialUrl?: string;
+  /** Autres présences officielles du podcast (chaîne YouTube…). */
+  sameAs?: readonly string[];
   rssUrl?: string;
 }
 
-/** Source (podcast) → PodcastSeries. */
+/**
+ * Source (podcast) → PodcastSeries.
+ *
+ * Le podcast n'est pas celui du site : son `url` est sa page officielle quand
+ * on la connaît, et aucun `publisher` n'est déclaré. Jusqu'au 2026-10-13,
+ * l'accueil annonçait « Un Bon Moment », à l'adresse unebonnere.co, publié
+ * par Une Bonne Reco — de quoi faire prendre le site pour la page officielle
+ * de l'émission.
+ */
 export function sourceToPodcastSchema(s: SourceLike): Record<string, unknown> {
   const node: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'PodcastSeries',
     name: s.title,
-    url: s.url,
-    publisher: { '@type': 'Organization', name: siteConfig.siteName },
+    url: s.officialUrl ?? s.url,
   };
   if (s.description) node.description = s.description;
   if (s.rssUrl) node.webFeed = s.rssUrl;
+  if (s.sameAs?.length) node.sameAs = [...s.sameAs];
+  return node;
+}
+
+/**
+ * Le site lui-même → WebSite, pour la page d'accueil.
+ *
+ * C'est ce bloc que Google lit pour nommer le site dans ses résultats et
+ * reconnaître une recherche de son nom (`name` + `alternateName`). `sameAs`
+ * relie la marque à ses comptes officiels. `about` dit de quel podcast il
+ * parle, sans s'en dire l'auteur.
+ */
+export function siteToWebsiteSchema(url: string, about?: string): Record<string, unknown> {
+  const node: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteConfig.siteName,
+    url,
+    description: siteConfig.baseline,
+    inLanguage: 'fr-FR',
+  };
+  if (siteConfig.alternateNames?.length) node.alternateName = [...siteConfig.alternateNames];
+  const sameAs = (siteConfig.socials ?? []).map((s) => s.url);
+  if (sameAs.length) node.sameAs = sameAs;
+  if (about) node.about = { '@type': 'PodcastSeries', name: about };
   return node;
 }
