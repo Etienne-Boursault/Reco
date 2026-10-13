@@ -8,8 +8,10 @@ import {
   recoToSchema,
   episodeToSchema,
   sourceToPodcastSchema,
+  siteToWebsiteSchema,
   RECO_TYPE_TO_SCHEMA,
 } from '../../src/lib/seo/jsonld.js';
+import { siteConfig } from '../../src/config/site.js';
 
 describe('safeJsonLd (anti-XSS)', () => {
   it("échappe </script> en \\u003c/script>", () => {
@@ -104,13 +106,55 @@ describe('episodeToSchema', () => {
 });
 
 describe('sourceToPodcastSchema', () => {
-  it('produit un PodcastSeries avec publisher', () => {
+  it("ne se dit pas l'éditeur du podcast, et retombe sur la page du site", () => {
     const s = sourceToPodcastSchema({
       id: 'ubm',
       title: 'Un Bon Moment',
       url: 'https://x.fr/ubm',
     });
     expect(s['@type']).toBe('PodcastSeries');
-    expect((s.publisher as Record<string, unknown>)['@type']).toBe('Organization');
+    expect(s.url).toBe('https://x.fr/ubm');
+    expect(s).not.toHaveProperty('publisher');
+    expect(s).not.toHaveProperty('sameAs');
+  });
+
+  it('pointe vers la page officielle et les autres présences du podcast', () => {
+    const s = sourceToPodcastSchema({
+      id: 'ubm',
+      title: 'Un Bon Moment',
+      url: 'https://x.fr/',
+      officialUrl: 'https://podcasts.apple.com/fr/podcast/x/id1',
+      sameAs: ['https://www.youtube.com/@KyanKhojandi'],
+      rssUrl: 'https://feed.x/rss',
+      description: 'Desc',
+    });
+    expect(s.url).toBe('https://podcasts.apple.com/fr/podcast/x/id1');
+    expect(s.sameAs).toEqual(['https://www.youtube.com/@KyanKhojandi']);
+    expect(s.webFeed).toBe('https://feed.x/rss');
+  });
+});
+
+describe('siteToWebsiteSchema', () => {
+  it('nomme le site, ses autres noms et ses comptes officiels', () => {
+    const w = siteToWebsiteSchema('https://unebonnere.co/', 'Un Bon Moment');
+    expect(w['@type']).toBe('WebSite');
+    expect(w.name).toBe(siteConfig.siteName);
+    expect(w.url).toBe('https://unebonnere.co/');
+    expect(w.alternateName).toEqual(siteConfig.alternateNames);
+    expect(w.sameAs).toEqual((siteConfig.socials ?? []).map((s) => s.url));
+    expect(w.about).toEqual({ '@type': 'PodcastSeries', name: 'Un Bon Moment' });
+  });
+
+  it("n'invente rien quand la configuration est vide", () => {
+    const avant = { alternateNames: siteConfig.alternateNames, socials: siteConfig.socials };
+    Object.assign(siteConfig, { alternateNames: undefined, socials: undefined });
+    try {
+      const w = siteToWebsiteSchema('https://x.fr/');
+      expect(w).not.toHaveProperty('alternateName');
+      expect(w).not.toHaveProperty('sameAs');
+      expect(w).not.toHaveProperty('about');
+    } finally {
+      Object.assign(siteConfig, avant);
+    }
   });
 });

@@ -40,6 +40,14 @@ export interface SiteConfig {
    *  Ne jamais retirer une fois vérifié : Google revalide périodiquement et
    *  révoque la propriété si la balise disparaît. */
   googleSiteVerification?: string;
+  /** Autres noms sous lesquels on cherche le site (« UneBonneReco »,
+   *  le domaine…). Publiés en `alternateName` du JSON-LD `WebSite` : Google
+   *  s'en sert pour reconnaître une recherche du nom du site. */
+  alternateNames?: readonly string[];
+  /** Comptes officiels DU SITE (pas du podcast) : liés dans le pied de page et
+   *  publiés en `sameAs` du JSON-LD, qui relie la marque à ses profils. Un fork
+   *  y met les siens, ou laisse la liste vide. */
+  socials?: readonly { label: string; url: string }[];
 }
 
 export const siteConfig: SiteConfig = {
@@ -55,4 +63,6 @@ export const siteConfig: SiteConfig = {
   // email" quand le POST `/api/report` échoue (build static sans adapter).
   contactEmail: undefined,
   googleSiteVerification: 'ldAExERRaCmTqOPmJVgtqiLX4sBrmZTr8C_iH_6MlV8',
+  alternateNames: ['UneBonneReco', 'unebonnere.co'],
+  socials: [{ label: 'Instagram', url: 'https://www.instagram.com/unebonnere.co/' }],
 };

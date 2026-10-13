@@ -10,6 +10,7 @@
 import { getCollection } from 'astro:content';
 import { t } from '../i18n';
 import SupportLinks from './SupportLinks.astro';
+import { siteConfig } from '../config/site';
 
 interface Props {
   /** Texte d'accroche du pied de page. Par défaut = string i18n. */
@@ -23,6 +24,8 @@ const { tagline = t('footer.tagline') } = Astro.props;
 const sources = await getCollection('sources');
 const primary = sources.find((s) => s.data.enabled !== false) ?? sources[0];
 const support = primary?.data.support ?? [];
+// Comptes officiels du site (Instagram…), cf. `siteConfig.socials`.
+const socials = siteConfig.socials ?? [];
 ---
 
 <footer class="wrap site-footer" role="contentinfo">
@@ -36,6 +39,12 @@ const support = primary?.data.support ?? [];
     <a href="/a-propos">{t('footer.about')}</a>
     <span aria-hidden="true">·</span>
     <a href="/manifeste">{t('footer.manifesto')}</a>
+    {socials.map((s) => (
+      <>
+        <span aria-hidden="true">·</span>
+        <a href={s.url} rel="me noopener" target="_blank">{s.label}</a>
+      </>
+    ))}
   </nav>
   <p>{tagline}</p>
 </footer>
