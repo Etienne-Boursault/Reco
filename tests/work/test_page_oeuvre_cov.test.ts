@@ -462,7 +462,9 @@ describe('page œuvre — en-tête', () => {
       mentions: [mention('m1', 'w1')],
       episodes: [episode('g1')],
     });
-    const html = await renderWork('w1');
+    // Hors pied de page : celui-ci porte le compte Instagram DU SITE
+    // (siteConfig.socials), qui n'a rien à voir avec les comptes de l'œuvre.
+    const html = horsPiedDePage(await renderWork('w1'));
 
     expect(html).not.toContain('instagram.com');
     expect(html).not.toContain('tiktok.com');
@@ -476,7 +478,7 @@ describe('page œuvre — en-tête', () => {
       mentions: [mention('m1', 'w1')],
       episodes: [episode('g1')],
     });
-    const html = await renderWork('w1');
+    const html = horsPiedDePage(await renderWork('w1'));
 
     expect(html).toContain('https://www.tiktok.com/@seul');
     expect(html).not.toContain('instagram.com');
@@ -486,6 +488,11 @@ describe('page œuvre — en-tête', () => {
 // ---------------------------------------------------------------------------
 // Rendu — liens externes
 // ---------------------------------------------------------------------------
+/** La page sans son pied de page (comptes officiels du site). */
+function horsPiedDePage(html: string): string {
+  return html.split('<footer')[0];
+}
+
 describe('page œuvre — liens externes', () => {
   it('affiche les liens et marque leur classe éthique', async () => {
     seed({

@@ -254,7 +254,7 @@ describe('/ — mode mono-source', () => {
     expect(text).not.toContain('retour à l’accueil');
   });
 
-  it('le JSON-LD du mode mono-source est le PodcastSeries, sans fil d’Ariane', async () => {
+  it('le JSON-LD du mode mono-source nomme le site puis le podcast, sans fil d’Ariane', async () => {
     seed({
       sources: [source('ubm')],
       recos: [reco('r1', 'ubm', 'g1')],
@@ -264,7 +264,11 @@ describe('/ — mode mono-source', () => {
     const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
     const blocks = JSON.parse(m![1]) as Record<string, unknown>[];
 
-    expect(blocks.map((b) => b['@type'])).toEqual(['PodcastSeries']);
+    // Le site se présente d'abord LUI-MÊME (son nom, ses comptes), puis le
+    // podcast dont il parle — sans se dire son éditeur.
+    expect(blocks.map((b) => b['@type'])).toEqual(['WebSite', 'PodcastSeries']);
+    expect(blocks[0].name).toBe('Une Bonne Reco');
+    expect(blocks[1]).not.toHaveProperty('publisher');
   });
 });
 
