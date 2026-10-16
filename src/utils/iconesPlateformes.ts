@@ -94,9 +94,8 @@ export const WHITELISTED_ICON_HOSTS = new Set<string>([
   'www.premieremax.com',
   'www.videofutur.fr',
   // Vague 4 (2026-07-29) : lot BORNÉ de marques dont le logo est simple et
-  // non ambigu. Les autres hosts de la traîne (librairies indépendantes, sites
-  // perso d'artistes, éditeurs) restent VOLONTAIREMENT au symbole de repli :
-  // un logo inventé « plausible » serait pire qu'un symbole honnête.
+  // non ambigu. Un logo inventé « plausible » serait pire qu'un symbole
+  // honnête : la traîne attendait sa vraie favicon (vague 6).
   'www.twitch.tv',
   'watch.plex.tv',
   'www.tf1.fr',
@@ -121,6 +120,68 @@ export const WHITELISTED_ICON_HOSTS = new Set<string>([
   'apps.apple.com',
   'louiemedia.com',
   'www.m6.fr',
+  // Vague 6 (2026-10-16) : la favicon officielle dès qu'elle existe, y compris
+  // pour la traîne (sites d'artistes, éditeurs, librairies, salles). Récupérées
+  // par `tools/recuperer_favicons.py` ; écartées à la relecture : les favicons
+  // par défaut d'un CMS ou d'un hébergeur (WordPress, cube gris, Linkfire),
+  // qui ne disent rien du site. Les favicons illisibles sur fond sombre sont
+  // posées sur une tuile claire.
+  '20h40.fr', 'a24films.com', 'adibalkhalidey.com', 'alexandrekominek.fr',
+  'animationdigitalnetwork.com', 'anthonyjeselnik.com', 'archive.org', 'auvio.rtbf.be',
+  'barbescomedyclub.com', 'berengerekrief.fr', 'bigfloetoli.com', 'billburr.com', 'boutique.so',
+  'catalogue.ina.fr', 'cemantix.certitudes.org', 'champsocial.com', 'chrisflemingfleming.com',
+  'crackingthecryptic.com', 'darksmile.tv', 'daylio.net', 'docs.python.org', 'eddydepretto.com',
+  'fr-fr.facebook.com', 'fr.linkedin.com', 'france3-regions.franceinfo.fr', 'gaite.com',
+  'georgecarlin.com', 'getbrick.com', 'gorillaz.com', 'halldulivre.com', 'icijesse.com',
+  'jim-queen.lefilm.co', 'jonimitchell.com', 'kinolorber.com', 'lascenebarbes.fr',
+  'latabledessavoirs.fr', 'lavoixdanstatete.com', 'lefridgecomedy.com', 'lepireguide.com',
+  'linkee.co', 'lyndalemay.com', 'madelen.ina.fr', 'maisonfurieuse.net', 'marineleonardi.com',
+  'maudelandry.com', 'murmuration-lespectacle.com', 'musicbrainz.org', 'nardwuar.com',
+  'nateland.com', 'numero.com', 'orsomedia.io', 'paris.celinedion.com', 'parishilton.com',
+  'patriceoneal.com', 'pattonoswalt.com', 'pluto.tv', 'podcastaddict.com', 'polytopia.io',
+  'procreate.com', 'romanfrayssinet.fr', 'sofiabelabbes.fr', 'soundcloud.com', 'splice.com',
+  'store.playstation.com', 'store.potemkine.fr', 'stromae.com', 'swingswingsubmarine.com',
+  'sympacool.com', 'theohaggai.com', 'toystory.disney.com', 'undertale.com',
+  'vod.blanchegardin.com', 'vod.mediatheque-numerique.com', 'vrac-asso.org', 'wame-brand.com',
+  'www.adelfugazi.fr', 'www.alainsouchon.net', 'www.albertdupontel.com', 'www.amazon.fr',
+  'www.annachedid.fr', 'www.apple.com', 'www.arteradio.com', 'www.audiogram.com',
+  'www.aurevoircharlie.com', 'www.baborentertainment.com', 'www.benmazue.fr',
+  'www.bibliosansfrontieres.org', 'www.billetweb.fr', 'www.binge.audio', 'www.blanchegardin.com',
+  'www.blandinelehout.com', 'www.blink182.com', 'www.boburnham.com', 'www.brefcinema.com',
+  'www.buchetchastel.fr', 'www.caramba.fr', 'www.casinodeparis.fr', 'www.celinedion.com',
+  'www.centrepompidou.fr', 'www.cinematheque.fr', 'www.corywongmusic.com',
+  'www.creativeexplained.com', 'www.cultura.com', 'www.dargaud.com', 'www.detourfilm.com',
+  'www.disneypixar.fr', 'www.dixit.fr', 'www.dofus.com', 'www.dupuis.com',
+  'www.editions-jclattes.fr', 'www.editions-tredaniel.com', 'www.editionsdutresor.com',
+  'www.empreintedigitale.net', 'www.epicgames.com', 'www.eric-emmanuel-schmitt.com',
+  'www.estherperel.com', 'www.exemplaire-editions.fr', 'www.eyrolles.com', 'www.fabienolicard.fr',
+  'www.facebook.com', 'www.felduptv.com', 'www.france.tv', 'www.franceinfo.fr',
+  'www.francetelevisions.fr', 'www.franciscabrel.com', 'www.funambule-montmartre.com',
+  'www.furet.com', 'www.gastonlagaffe.com', 'www.geev.com', 'www.geoguessr.com',
+  'www.gerard-lenorman.com', 'www.glenat.com', 'www.grandcorpsmalade.fr', 'www.grandpalais.fr',
+  'www.guillaumegrando.com', 'www.humano.com', 'www.ina.fr', 'www.infinitix.be',
+  'www.jayshetty.me', 'www.jeuxvideo.com', 'www.johnnyhallydayofficiel.com', 'www.jojimusic.com',
+  'www.juliendoreofficiel.com', 'www.junglejunglejungle.com', 'www.kana.fr', 'www.ki-oon.com',
+  'www.lalettre-spectacle.fr', 'www.lapetiteloge.fr', 'www.lauradomenge.com',
+  'www.le-precepteur.fr', 'www.legorafi.fr', 'www.lekings.be', 'www.leloup.org',
+  'www.lepointvirgule.com', 'www.lesabattoirs.org', 'www.lesmots-leschoses.fr',
+  'www.levisiteurdufutur.com', 'www.librairie-de-paris.fr', 'www.librairie-des-femmes.fr',
+  'www.librairie-gallimard.com', 'www.librairie-sciencespo.fr', 'www.librairies-alip.fr',
+  'www.librairiesindependantes.com', 'www.linkedin.com', 'www.manga-news.com',
+  'www.meghan-trainor.com', 'www.michaeljackson.com', 'www.mobiusdigitalgames.com',
+  'www.morganecadignan.fr', 'www.museedusport.fr', 'www.nanarland.com', 'www.nintendo.com',
+  'www.outplayfilms.com', 'www.panayotispascot.fr', 'www.pasquinade.fr', 'www.passiondujeu.fr',
+  'www.pathe.fr', 'www.patisserie-cabosse.fr', 'www.philibertnet.com', 'www.pol-editeur.com',
+  'www.printemps-bourges.com', 'www.python.org', 'www.quaibranly.fr', 'www.radiohead.com',
+  'www.richardpryor.com', 'www.rosalia.com', 'www.rts.ch', 'www.ruqspectacles.fr',
+  'www.ryoyatakashima.com', 'www.sebmellia.fr', 'www.seuil.com', 'www.shirleysouagnon.com',
+  'www.siamusic.net', 'www.slate.fr', 'www.soldoutprod.com', 'www.sortiraparis.com',
+  'www.sourirealavie.fr', 'www.stage-entertainment.fr', 'www.strasbourg.eu', 'www.studiocanal.fr',
+  'www.sum41.com', 'www.theatredelarenaissance.com', 'www.theatredesbeliersparisiens.com',
+  'www.theatrelabruyere.com', 'www.thecure.com', 'www.thetvdb.com', 'www.thomaswiesel.com',
+  'www.ticketingcine.com', 'www.ugc.fr', 'www.virginiefortin.com', 'www.walydia.fr',
+  'www.welovecomedy.fr', 'www.wooga.com', 'www.worldchasetag.com', 'www.yohannmetay.com', 'x.com',
+  'zelda.nintendo.com',
 ]);
 // Normalisation host → host whitelisté canonique. Couvre les VARIANTES d'un
 // même host (sous-domaines d'artistes Bandcamp/itch.io, YouTube mobile, alias

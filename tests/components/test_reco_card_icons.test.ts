@@ -13,6 +13,8 @@
 import { describe, it, expect } from 'vitest';
 import { readFile } from 'node:fs/promises';
 
+import { WHITELISTED_ICON_HOSTS } from '../../src/utils/iconesPlateformes';
+
 import { baseReco, parse, render, renderProps } from './_reco_card';
 
 // ---------------------------------------------------------------------------
@@ -160,7 +162,8 @@ describe('RecoCard — normalisation des hosts', () => {
   it('www.librairie-gallimard.com n’est PAS aliasé (librairie ≠ maison d’édition)', async () => {
     const html = await iconFor('https://www.librairie-gallimard.com/livre/x');
     expect(html).not.toContain('/icons/platforms/www.gallimard.fr.svg');
-    expect(html).toContain('link-symbol');
+    // Depuis la vague 6, la librairie a SA favicon, distincte de la maison.
+    expect(html).toContain('/icons/platforms/www.librairie-gallimard.com.svg');
   });
 });
 
@@ -256,3 +259,35 @@ describe('RecoCard — icône Deezer (cœur violet)', () => {
   });
 });
 
+
+// ---------------------------------------------------------------------------
+// Vague 6 (2026-10-16) : la favicon officielle dès qu'elle existe. Avec plus de
+// trois cents hôtes, un fichier oublié ne se verrait qu'à l'affichage, en image
+// cassée : chaque hôte de la liste blanche doit avoir le sien.
+// ---------------------------------------------------------------------------
+describe('RecoCard — liste blanche des icônes', () => {
+  it('chaque hôte whitelisté a son SVG 24×24 dans public/icons/platforms/', async () => {
+    const manquants: string[] = [];
+    for (const host of WHITELISTED_ICON_HOSTS) {
+      try {
+        const svg = await readFile(
+          new URL(`../../public/icons/platforms/${host}.svg`, import.meta.url),
+          'utf8',
+        );
+        if (!svg.includes('viewBox="0 0 24 24"')) manquants.push(`${host} (pas 24×24)`);
+      } catch {
+        manquants.push(host);
+      }
+    }
+    expect(manquants).toEqual([]);
+  });
+
+  it('TMDB affiche sa favicon officielle, plus une tuile dessinée en lettres', async () => {
+    const svg = await readFile(
+      new URL('../../public/icons/platforms/www.themoviedb.org.svg', import.meta.url),
+      'utf8',
+    );
+    expect(svg).toContain('data:image/png;base64,');
+    expect(svg).not.toContain('<text');
+  });
+});

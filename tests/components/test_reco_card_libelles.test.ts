@@ -77,8 +77,10 @@ describe('RecoCard — liens sans logo nommés en toutes lettres (#8)', () => {
     ...baseReco,
     types: ['livre'],
     links: [
-      { label: 'Leslibraires.fr', url: 'https://www.leslibraires.fr/livre/1', kind: 'buy', ethics: 'indie' },
-      { label: 'Librairie des femmes', url: 'https://www.librairie-des-femmes.fr/livre/2', kind: 'buy', ethics: 'indie' },
+      // Hôtes fictifs : depuis la vague 6 (2026-10-16), toute librairie réelle peut
+      // recevoir sa favicon et cesser d'être un lien « sans logo ».
+      { label: 'Leslibraires.fr', url: 'https://autre-librairie.example/livre/1', kind: 'buy', ethics: 'indie' },
+      { label: 'Ma librairie', url: 'https://librairie.example/livre/2', kind: 'buy', ethics: 'indie' },
       { label: 'Instagram', url: 'https://www.instagram.com/quelquun/', kind: 'social', ethics: 'neutral' },
     ],
   };
@@ -86,7 +88,7 @@ describe('RecoCard — liens sans logo nommés en toutes lettres (#8)', () => {
   it('deux liens au même symbole se distinguent par leur nom visible', async () => {
     const doc = parse(await renderProps({ reco }));
     const libelles = [...doc.querySelectorAll('.link--libelle .link-label')].map((e) => e.textContent);
-    expect(libelles).toEqual(['Leslibraires.fr', 'Librairie des femmes']);
+    expect(libelles).toEqual(['Leslibraires.fr', 'Ma librairie']);
   });
 
   it('un lien à logo reste une pastille ronde, sans libellé visible', async () => {
