@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:07:59"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3274",
+  "itemId": "8316e7cb",
+  "kind": "reco",
+  "quote": "Et moi, savoir que l'École du micro d'argent, c'est le meilleur album d'IAM, je suis déjà au courant.",
+  "recommendedBy": "Amandine Lourdel",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-dpM43BlLhZI",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:07:59",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

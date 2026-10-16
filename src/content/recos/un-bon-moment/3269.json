@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:30:19",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3269",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@nardwuar?si=lDSo3Udap1livTyR"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://nardwuar.com/"
+    }
+  ],
+  "quote": "Et d'ailleurs, si vous avez aimé les choc-manteau, allez voir Nardwuar, l'américain qui a inventé les choc-manteau, qui est formidable.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:30:19",
+  "title": "Nardwuar",
+  "transcriptSource": "youtube",
+  "types": [
+    "chaine"
+  ],
+  "creator": "Nardwuar the Human Serviette"
+}

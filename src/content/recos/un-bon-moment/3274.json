@@ -1,0 +1,64 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "IAM",
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:07:59",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3274",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/album/lecole-du-micro-dargent-iam/0825646397280"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/intl-fr/album/3atPIVCVIIgak6KeB1ANnK"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/album/7295343"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/album/l%C3%A9cole-du-micro-dargent/698793153"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/playlist?list=OLAK5uy_kJ20Rx3MEMWxaJ2hXf_Hx4z-N7BnBbuhM"
+    }
+  ],
+  "quote": "Et moi, savoir que l'École du micro d'argent, c'est le meilleur album d'IAM, je suis déjà au courant.",
+  "recommendedBy": "Amandine Lourdel",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:07:59",
+  "title": "L'École du micro d'argent",
+  "transcriptSource": "youtube",
+  "types": [
+    "album"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Kyan Khojandi, Navo",
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:50",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3279",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Libraires Ensemble",
+      "url": "https://www.libraires-ensemble.com/livre/26501225-bref-2-le-livre-bruno-muschio-kyan-khojandi-lattes"
+    },
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782709677639-bref-2-le-livre-bruno-muschio-kyan-khojandi-marianne-chaillan/"
+    }
+  ],
+  "quote": "on sort le livre bref dedans, il y a des scripts",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:50",
+  "title": "Bref. 2, le livre",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ],
+  "externalIds": {
+    "isbn": "9782709677639"
+  }
+}

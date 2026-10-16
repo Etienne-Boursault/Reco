@@ -1,0 +1,80 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Blake Crouch",
+  "enrichedAt": {
+    "links": "2026-10-16T12:05:34Z"
+  },
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "externalIds": {
+    "imdb": "tt19231492",
+    "tmdb": "196322",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/196322-dark-matter/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:20:22",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3277",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/dark-matter/umc.cmc.4luj45vtqpmjsvb6sc2675oeg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt19231492/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/196322"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/196322-dark-matter/watch?locale=FR"
+    }
+  ],
+  "quote": "Dark Matter, la saison 2, c'est toutes les semaines, il y a un épisode et j'aime bien !",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:20:22",
+  "title": "Dark Matter",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Dark%20Matter"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dark%20Matter"
+    }
+  ]
+}

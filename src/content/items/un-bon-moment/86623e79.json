@@ -1,0 +1,25 @@
+{
+  "externalIds": {
+    "tmdb": 206828,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/206828-dtf-st-louis/watch?locale=FR"
+  },
+  "id": "86623e79",
+  "schemaVersion": 1,
+  "title": "DTF St. Louis",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "HBO Max",
+      "url": "https://play.max.com/search?q=DTF%20St.%20Louis"
+    },
+    {
+      "ethics": "avoid",
+      "name": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=DTF%20St.%20Louis"
+    }
+  ]
+}

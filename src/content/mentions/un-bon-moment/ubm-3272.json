@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:16:07"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3272",
+  "itemId": "41197195",
+  "kind": "reco",
+  "quote": "Et avant ça, si on parle de série, Dying for Sex !",
+  "recommendedBy": "Sebastian Marx",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-dpM43BlLhZI",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:16:07",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

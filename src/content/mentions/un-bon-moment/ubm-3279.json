@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:50"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3279",
+  "itemId": "768099a8",
+  "kind": "reco",
+  "quote": "on sort le livre bref dedans, il y a des scripts",
+  "recommendedBy": "Navo",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-dpM43BlLhZI",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:50",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

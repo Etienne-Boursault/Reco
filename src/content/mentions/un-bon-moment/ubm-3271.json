@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:15:58"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3271",
+  "itemId": "644c7a68",
+  "kind": "reco",
+  "quote": "Parce que j'allais parler de Widow's Bay, que je suis en train de regarder, qui a tout gagné !",
+  "recommendedBy": "Sebastian Marx",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-dpM43BlLhZI",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:15:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "discarded"
+}

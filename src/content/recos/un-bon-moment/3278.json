@@ -1,0 +1,44 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Phoebe Waller-Bridge",
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:28",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3278",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Leslibraires.fr",
+      "url": "https://www.leslibraires.fr/livre/20393716-fleabag-the-scriptures-the-sunday-times-bestseller-phoebe-waller-bridge-sceptre?srsltid=AfmBOo7cm-hWtEMMAsEgIvn2UPc4ghsEQoSkeFg7T1CmQBimVc"
+    }
+  ],
+  "quote": "Il y a le livre et tous les scripts de Super Série, allez voir.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:23:28",
+  "title": "Fleabag: The Scriptures",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ],
+  "externalIds": {
+    "isbn": "9781529341799"
+  }
+}

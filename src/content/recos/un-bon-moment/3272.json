@@ -1,0 +1,73 @@
+{
+  "creator": "Liz Meriwether",
+  "enrichedAt": {
+    "links": "2026-10-16T10:35:26Z"
+  },
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "externalIds": {
+    "tmdb": "241405",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/241405-dying-for-sex/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:16:07",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3272",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Disney+",
+      "url": "https://www.disneyplus.com/fr-fr/browse/entity-9d447bb4-a5f0-4ef4-a946-698012ea51b4"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt30252752/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/241405"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/241405-dying-for-sex/watch?locale=FR"
+    }
+  ],
+  "quote": "Et avant ça, si on parle de série, Dying for Sex !",
+  "recommendedBy": "Sebastian Marx",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:16:07",
+  "title": "Dying for Sex",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=Dying%20for%20Sex"
+    }
+  ],
+  "agentReview": {
+    "reviewedByHuman": true
+  }
+}
