@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-16T10:35:14Z"
+  },
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "externalIds": {
+    "tmdb": "206828",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/206828-dtf-st-louis/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:27",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3270",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt34385331/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/206828"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/206828-dtf-st-louis/watch?locale=FR"
+    }
+  ],
+  "quote": "Moi je recommande l'exceptionnelle série dont j'avais jamais entendu parler, DTF St. Louis.",
+  "recommendedBy": "Navo",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:15:27",
+  "title": "DTF St. Louis",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "HBO Max",
+      "url": "https://play.max.com/search?q=DTF%20St.%20Louis"
+    },
+    {
+      "ethics": "avoid",
+      "label": "HBO Max Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=DTF%20St.%20Louis"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "externalIds": {
+    "tmdb": 270476,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/270476-widow-s-bay/watch?locale=FR"
+  },
+  "id": "644c7a68",
+  "schemaVersion": 1,
+  "title": "Widow's Bay",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Widow%27s%20Bay"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Widow%27s%20Bay"
+    }
+  ]
+}

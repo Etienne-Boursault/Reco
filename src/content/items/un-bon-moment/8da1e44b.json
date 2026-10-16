@@ -1,0 +1,26 @@
+{
+  "creator": "Liz Meriwether",
+  "externalIds": {
+    "tmdb": 1420,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/1420-new-girl/watch?locale=FR"
+  },
+  "id": "8da1e44b",
+  "schemaVersion": 1,
+  "title": "New Girl",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "name": "Disney Plus",
+      "url": "https://www.disneyplus.com/fr-fr/search?q=New%20Girl"
+    },
+    {
+      "ethics": "neutral",
+      "name": "Apple TV Store",
+      "url": "https://tv.apple.com/fr/search?term=New%20Girl"
+    }
+  ]
+}

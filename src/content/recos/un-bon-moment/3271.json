@@ -1,0 +1,84 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-16T10:35:25Z"
+  },
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "externalIds": {
+    "tmdb": "270476",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/270476-widow-s-bay/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:15:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3271",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt33332385/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/270476"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/series/ficheserie_gen_cserie=37485.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/270476-widow-s-bay/watch?locale=FR"
+    }
+  ],
+  "quote": "Parce que j'allais parler de Widow's Bay, que je suis en train de regarder, qui a tout gagné !",
+  "recommendedBy": "Sebastian Marx",
+  "sourceId": "un-bon-moment",
+  "status": "discarded",
+  "timestamp": "01:15:58",
+  "title": "Widow's Bay",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Widow%27s%20Bay"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Widow%27s%20Bay"
+    }
+  ]
+}

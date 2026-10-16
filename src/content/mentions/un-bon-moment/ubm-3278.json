@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:23:28"
+      },
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3278",
+  "itemId": "0813b2a1",
+  "kind": "citation",
+  "quote": "Il y a le livre et tous les scripts de Super Série, allez voir.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-dpM43BlLhZI",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:23:28",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

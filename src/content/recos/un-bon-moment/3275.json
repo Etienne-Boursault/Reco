@@ -1,0 +1,47 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Hélène Vieilletoile",
+  "episodeGuid": "yt-dpM43BlLhZI",
+  "extractionHistory": [
+    {
+      "at": "2026-10-16T10:31:31+00:00",
+      "llmModel": "claude-opus-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:18:00",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3275",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Le Funambule Montmartre",
+      "url": "https://www.funambule-montmartre.com/kabinet"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "L'Officiel des spectacles",
+      "url": "https://www.offi.fr/theatre/le-funambule-2362/kabinet-107425.html"
+    }
+  ],
+  "quote": "Ça s'appelle Kabinet, et c'est un seul en scène, et c'est sur trois grands principes de la psychanalyse",
+  "recommendedBy": "Amandine Lourdel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:18:13",
+  "title": "Kabinet",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}
