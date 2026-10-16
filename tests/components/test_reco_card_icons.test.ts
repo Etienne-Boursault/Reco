@@ -121,6 +121,12 @@ describe('RecoCard — normalisation des hosts', () => {
     );
   });
 
+  it('lien de partage YouTube (youtu.be) → favicon www.youtube.com', async () => {
+    expect(await iconFor('https://youtu.be/x?si=y&t=225', 'streaming')).toContain(
+      '/icons/platforms/www.youtube.com.svg',
+    );
+  });
+
   it('en.wikipedia.org → favicon fr.wikipedia.org (même logo)', async () => {
     expect(await iconFor('https://en.wikipedia.org/wiki/Fez')).toContain(
       '/icons/platforms/fr.wikipedia.org.svg',

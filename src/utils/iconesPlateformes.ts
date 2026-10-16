@@ -130,6 +130,8 @@ export const WHITELISTED_ICON_HOSTS = new Set<string>([
 // identiques (même logo) pour ne jamais afficher un logo trompeur.
 export const HOST_ALIASES: Record<string, string> = {
   'm.youtube.com': 'www.youtube.com',
+  // Liens de partage (`youtu.be/<id>?si=…`) : le raccourci officiel de YouTube.
+  'youtu.be': 'www.youtube.com',
   'sooner.fr': 'www.sooner.fr',
   'www.rakuten.tv': 'rakuten.tv',
   'vod.viva.videofutur.fr': 'www.videofutur.fr',
