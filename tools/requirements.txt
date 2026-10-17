@@ -25,7 +25,7 @@ faster-whisper>=1.2.1,<2     # transcription Whisper en local (CTranslate2, CPU/
 # Mesuré le 2026-10-02 — l'image reconstruite ce jour-là a installé av 19.0.0 et ne
 # transcrivait plus rien, là où celle du 2026-09-28 (av 18.1.0) marchait. À relever
 # quand faster-whisper publiera une version qui n'utilise plus cet argument.
-av>=11,<19
+av>=19.0.0,<20
 yt-dlp>=2026.8.19             # téléchargement audio YouTube (si pas d'audioUrl)
 requests>=2.34.2,<3          # téléchargement des enclosures audio HTTP
 
