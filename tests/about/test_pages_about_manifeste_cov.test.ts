@@ -142,7 +142,7 @@ describe('/a-propos', () => {
     const html = await render();
 
     expect(html).toContain('href="/manifeste"');
-    expect(html).toContain('https://github.com/etiennebsl/Reco');
+    expect(html).toContain('https://github.com/Etienne-Boursault/Reco');
   });
 
   it('sans `contactEmail` configuré, replie sur l’adresse par défaut', async () => {
