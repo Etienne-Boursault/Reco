@@ -61,7 +61,7 @@ export const siteConfig: SiteConfig = {
   defaultMuted: defaultTheme.muted,
   // Optionnel : si défini, ReportForm propose un fallback "Envoyer par
   // email" quand le POST `/api/report` échoue (build static sans adapter).
-  contactEmail: undefined,
+  contactEmail: 'contact@unebonnere.co',
   googleSiteVerification: 'ldAExERRaCmTqOPmJVgtqiLX4sBrmZTr8C_iH_6MlV8',
   alternateNames: ['UneBonneReco', 'unebonnere.co'],
   socials: [{ label: 'Instagram', url: 'https://www.instagram.com/unebonnere.co/' }],

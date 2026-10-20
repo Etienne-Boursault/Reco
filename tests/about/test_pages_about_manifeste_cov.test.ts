@@ -146,7 +146,25 @@ describe('/a-propos', () => {
   });
 
   it('sans `contactEmail` configuré, replie sur l’adresse par défaut', async () => {
-    expect(await render()).toContain('mailto:contact@source-internet.fr');
+    vi.resetModules();
+    vi.doMock('../../src/config/site', () => ({
+      siteConfig: {
+        siteName: 'Reco',
+        baseline: 'Catalogue de recommandations de podcasts',
+        contactEmail: undefined,
+      },
+    }));
+    const { default: AboutFork } = await import('../../src/pages/a-propos.astro');
+    const html = await renderPage(AboutFork, { path: '/a-propos' });
+
+    expect(html).toContain('mailto:contact@source-internet.fr');
+
+    vi.doUnmock('../../src/config/site');
+    vi.resetModules();
+  });
+
+  it('affiche l’adresse de contact du site', async () => {
+    expect(await render()).toContain('mailto:contact@unebonnere.co');
   });
 });
 
