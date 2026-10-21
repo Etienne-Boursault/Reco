@@ -130,6 +130,37 @@ silence qui ferait croire que Qobuz ignore ces œuvres. Valeurs acceptées pour
 couper : `0`, `off`, `false`, `no`, `non` ; tout le reste — y compris l'absence de
 la variable — laisse Qobuz actif.
 
+### Poster les recos sous la vidéo YouTube : `RECO_YT_COMMENTAIRES=1`
+
+Une fois l'épisode en ligne sur le site, l'étape `commenter` poste sous sa vidéo un
+commentaire de la chaîne « Une Bonne Reco » : les recos avec leur minutage
+cliquable, les évocations à part, puis le lien vers la page de l'épisode. Elle
+attend que la page porte les recos (PR fusionnée ET déploiement terminé), et ne
+commente que les épisodes sortis depuis `RECO_YT_COMMENTAIRES_DEPUIS` (défaut :
+2026-10-22). Aperçu sans rien poster : `python commentaire_youtube.py --apercu <guid>`.
+
+Mise en place, une seule fois :
+
+1. Google Cloud : un projet, l'API « YouTube Data API v3 » activée, un écran de
+   consentement **publié** (en mode « Test », le jeton expire au bout de 7 jours),
+   et des identifiants OAuth de type « Application de bureau ». Télécharger leur
+   `client_secret.json`.
+2. Sur un poste avec navigateur : `python tools/youtube_autoriser.py client_secret.json`,
+   choisir la chaîne « Une Bonne Reco » au consentement. Le script écrit trois
+   lignes dans `~/reco-youtube.env`.
+3. Les recopier dans le `.env` de venus avec `RECO_YT_COMMENTAIRES=1`, puis
+   supprimer `~/reco-youtube.env`.
+
+```
+RECO_YT_COMMENTAIRES=1
+RECO_YT_CLIENT_ID=…
+RECO_YT_CLIENT_SECRET=…
+RECO_YT_REFRESH_TOKEN=…
+```
+
+Retirer `RECO_YT_COMMENTAIRES=1` coupe l'étape au passage suivant. Chaque
+commentaire coûte 50 unités de quota sur 10 000 par jour.
+
 ## Quand ça tourne
 
 ```
