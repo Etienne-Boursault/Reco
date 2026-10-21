@@ -84,6 +84,9 @@ class Correction:
     retirer_createur: bool = False
     #: Liens a POSER, en fin de liste, s'ils n'y sont pas deja.
     liens_a_ajouter: tuple[dict[str, str], ...] = ()
+    #: Types a poser sur l'oeuvre ET ses recos publiees. Vide : on n'y touche
+    #: pas. Sert quand une personne est rangee en « album », ou l'inverse.
+    types: tuple[str, ...] = ()
 
 
 #: Table curee. Chaque entree a ete confrontee a la source citee.
@@ -302,6 +305,9 @@ def _corriger_document(doc: dict[str, Any], correction: Correction, *,
     elif correction.createur is not None and doc.get("creator") in fautifs:
         doc["creator"] = correction.createur
         touches.append("creator")
+    if correction.types and doc.get("types") != list(correction.types):
+        doc["types"] = list(correction.types)
+        touches.append("types")
     if correction.annee is not None and doc.get("year") not in (None, correction.annee):
         doc["year"] = correction.annee
         touches.append("year")
@@ -337,9 +343,11 @@ def _corriger_document(doc: dict[str, Any], correction: Correction, *,
     return touches
 
 
-def _corrections_par_reco() -> dict[str, Correction]:
+def _corrections_par_reco(
+    corrections: Sequence[Correction] = CORRECTIONS,
+) -> dict[str, Correction]:
     """id de reco -> correction, via les mentions publiees de son oeuvre."""
-    par_item = {c.item_id: c for c in CORRECTIONS}
+    par_item = {c.item_id: c for c in corrections}
     trouvees: dict[str, Correction] = {}
     for chemin in common.MENTIONS_DIR.rglob("*.json"):
         try:
@@ -352,10 +360,15 @@ def _corrections_par_reco() -> dict[str, Correction]:
     return trouvees
 
 
-def executer(*, apply: bool) -> dict[str, Any]:
-    """Corrige items et recos. Renvoie un rapport."""
-    par_id: dict[str, Correction] = {c.item_id: c for c in CORRECTIONS}
-    par_reco = _corrections_par_reco()
+def executer(*, apply: bool,
+             corrections: Sequence[Correction] = CORRECTIONS) -> dict[str, Any]:
+    """Corrige items et recos. Renvoie un rapport.
+
+    `corrections` permet a une autre table (un audit date, par exemple) de
+    reutiliser ce moteur sans grossir celle-ci.
+    """
+    par_id: dict[str, Correction] = {c.item_id: c for c in corrections}
+    par_reco = _corrections_par_reco(corrections)
 
     rapport = {"items": 0, "recos": 0, "champs": []}
     for chemin in sorted(common.ITEMS_DIR.rglob("*.json")):

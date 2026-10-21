@@ -42,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import common
 from fusion_items_doublons import fusionner
+from redirections_oeuvres import noter_fusion
 
 log = logging.getLogger("doublons_cures")
 
@@ -498,6 +499,7 @@ def executer(groupes: Sequence[Groupe], *, apply: bool) -> dict[str, Any]:
         if apply:
             _ecrire(items[groupe.survivant][0], survivant)
             for perdant in presents:
+                noter_fusion(items[perdant][0], groupe.survivant)
                 items[perdant][0].unlink()
     return rapport
 

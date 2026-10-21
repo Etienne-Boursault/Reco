@@ -70,6 +70,7 @@ from pathlib import Path
 from typing import Any
 
 import common  # type: ignore[attr-defined]
+from redirections_oeuvres import noter_fusion
 
 log = logging.getLogger("fusion_items")
 
@@ -495,6 +496,7 @@ def _fusionner_partition(cle, part, compte, items, mentions, apply,
             json.dumps(survivant, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8")
         for d in perdants:
+            noter_fusion(items[d["id"]][0], survivant["id"])
             items[d["id"]][0].unlink()
     log.info("fusion %s/%s -> %s (%d perdant·s)", cle[0], cle[1],
              survivant["id"], len(perdants))
