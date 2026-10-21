@@ -464,6 +464,13 @@ def publier(source_id: str, notify: Notify, state: dict[str, Any], **kwargs: Any
                                 rapporter=_report_once, oublier=_clear_error, **kwargs)
 
 
+def commenter(source_id: str, notify: Notify, state: dict[str, Any]) -> int:
+    """Poste les recos sous la vidéo, une fois la page en ligne."""
+    import commentaire_youtube
+    return commentaire_youtube.commenter(source_id, notify, state, _youtube_episodes(source_id),
+                                         rapporter=_report_once, oublier=_clear_error)
+
+
 # ===== notification ==========================================================
 def build_notify(channel: str) -> Notify:
     sender = None
@@ -481,12 +488,19 @@ def build_notify(channel: str) -> Notify:
 
 # ===== CLI ===================================================================
 STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-chercher-liens",
-         "chercher-liens", "a-finaliser", "finaliser", "a-publier", "publier")
+         "chercher-liens", "a-finaliser", "finaliser", "a-publier", "publier",
+         "a-commenter", "commenter")
 #: Étapes qui ne font que répondre « il y a du travail » (code 0) ou non (code 1).
 SONDES = {"a-extraire": ("à extraire", a_extraire),
           "a-chercher-liens": ("aux liens à chercher", lambda s, st: _liens_avant.a_chercher(s, st)),
           "a-finaliser": ("à finaliser", a_finaliser),
-          "a-publier": ("à publier", a_publier)}
+          "a-publier": ("à publier", a_publier),
+          "a-commenter": ("à commenter sur YouTube", lambda s, st: _a_commenter(s, st))}
+
+
+def _a_commenter(source_id: str, state: dict[str, Any]) -> list:
+    import commentaire_youtube
+    return commentaire_youtube.a_commenter(source_id, state, _youtube_episodes(source_id))
 
 
 @contextlib.contextmanager
@@ -528,6 +542,8 @@ def main(argv: list[str] | None = None) -> int:
             return finaliser(args.source, notify, state)
         if args.etape == "publier":
             return publier(args.source, notify, state)
+        if args.etape == "commenter":
+            return commenter(args.source, notify, state)
         return extraire(args.source, notify, state, review_url=args.review_url)
 
 

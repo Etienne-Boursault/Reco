@@ -55,6 +55,12 @@ fi
 if outil a-publier; then
   outil publier || horodater "publication en échec"
 fi
+# Le commentaire YouTube attend que la page de l'épisode soit en ligne : la
+# sonde répond « oui » dès la PR fusionnée, l'étape repasse tant que le
+# déploiement n'a pas fini. Inerte sans RECO_YT_COMMENTAIRES=1 dans le .env.
+if outil a-commenter; then
+  outil commenter || horodater "commentaire YouTube en échec"
+fi
 
 # Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se
 # remarque qu'au prochain épisode manqué. Kuma tourne sur venus et ne peut pas
