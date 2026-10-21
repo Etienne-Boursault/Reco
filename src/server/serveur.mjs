@@ -13,6 +13,7 @@ import { join } from 'node:path';
 import { hoteDe, mesurerVisite, sourcesDe } from '../lib/audience/mesure.mjs';
 import { envelopper } from './compression.mjs';
 import { METHODES_STATIQUES, fichierPour, servirFichier } from './fichiers.mjs';
+import { chargerRedirections, rediriger } from './redirections.mjs';
 
 /** Le domaine public et les sources connues — voir `lib/audience/mesure.mjs`. */
 const HOTE_DU_SITE = hoteDe(process.env.SITE_URL);
@@ -25,7 +26,8 @@ const SOURCES_CONNUES = sourcesDe(process.env.RECO_SOURCES);
  * couvre l'écrasante majorité des requêtes et coûte le moins ; et parce qu'une
  * route à la demande ne doit jamais masquer un fichier réellement construit.
  */
-export function traiter(handler, racine, req, res, mesurer = mesurerVisite) {
+export function traiter(handler, racine, req, res, mesurer = mesurerVisite,
+  redirections = new Map()) {
   // La mesure se pose AVANT tout aiguillage, pour couvrir aussi bien une page
   // servie depuis le disque qu'une route à la demande ou un 404. Elle
   // n'écrit rien tout de suite : elle s'abonne à la fin de la réponse, quand
@@ -33,6 +35,9 @@ export function traiter(handler, racine, req, res, mesurer = mesurerVisite) {
   //
   // Injectable pour que les tests du serveur n'écrivent pas sur le disque.
   mesurer?.(req, res, { hoteDuSite: HOTE_DU_SITE, sourcesConnues: SOURCES_CONNUES });
+
+  // Une fiche fusionnée n'a plus de page : son adresse renvoie au survivant.
+  if (rediriger(redirections, req, res)) return undefined;
 
   // Seuls GET et HEAD se servent depuis le disque : un POST vers `/index.html`
   // doit atteindre le gestionnaire, qui répondra 405, et non recevoir la page
@@ -95,8 +100,10 @@ export function repondre404(res, racine, { lire = readFileSync } = {}) {
  * tableau de bord. Le piège est ancien dans ce dépôt : un chemin résolu au
  * moment de l'appel finit toujours par pointer sur le vrai dossier.
  */
-export function creerServeur(handler, racine, mesurer = mesurerVisite) {
-  return http.createServer((req, res) => traiter(handler, racine, req, res, mesurer));
+export function creerServeur(handler, racine, mesurer = mesurerVisite,
+  redirections = chargerRedirections()) {
+  return http.createServer(
+    (req, res) => traiter(handler, racine, req, res, mesurer, redirections));
 }
 
 /**
