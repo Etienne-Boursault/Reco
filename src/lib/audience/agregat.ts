@@ -23,6 +23,8 @@ export interface Visite {
   chemin: string;
   statut: number;
   robot: boolean;
+  /** Absent des mesures d'avant le 2026-10-21 : elles restent comptées. */
+  prechargement?: boolean;
   appareil: string;
   provenance: string | null;
   langue: string | null;
@@ -46,6 +48,8 @@ export interface Jour {
   pages: number;
   visiteurs: number;
   robots: number;
+  /** Pages préchargées au survol d'un lien, jamais comptées comme vues. */
+  prechargements: number;
   clics: number;
 }
 
@@ -62,6 +66,7 @@ export interface Agregat {
   pagesVues: number;
   visiteurs: number;
   visitesRobots: number;
+  prechargements: number;
   clics: number;
   /**
    * Clics vers une œuvre rapportés au nombre de visiteurs.
@@ -96,6 +101,28 @@ export interface Agregat {
   erreurs404: Compte[];
   plateformes: Compte[];
   dureeMedianeMs: number | null;
+}
+
+/**
+ * Une page réellement consultée : ni préchargée au survol, ni en erreur.
+ *
+ * Les 404 d'un navigateur humain sont surtout des robots déguisés qui sondent
+ * `/wp-login.php` ou `/.env` : ils restent dans « Liens morts qui circulent »,
+ * pas dans la fréquentation.
+ */
+function estConsultation(v: Visite): boolean {
+  return !v.prechargement && v.statut < 400;
+}
+
+/**
+ * Les personnes distinctes d'une journée : celles qui ont obtenu au moins une
+ * page. Un préchargement compte — il suppose une page déjà ouverte, et vient
+ * de la même adresse —, une erreur non.
+ */
+function compterVisiteurs(humaines: Visite[]): number {
+  return new Set(
+    humaines.filter((x) => x.statut < 400).map((x) => x.visiteur).filter(Boolean),
+  ).size;
 }
 
 /** Les jours disponibles pour une racine donnée, du plus ancien au plus récent. */
@@ -217,21 +244,26 @@ export function agreger({
     const humaines = v.filter((x) => !x.robot);
     parJour.push({
       jour,
-      pages: humaines.length,
+      pages: humaines.filter(estConsultation).length,
       // Les identifiants ne sont comparés qu'À L'INTÉRIEUR d'une journée : le
       // sel change de portée chaque jour, deux jours ne se recousent pas.
-      visiteurs: new Set(humaines.map((x) => x.visiteur).filter(Boolean)).size,
+      visiteurs: compterVisiteurs(humaines),
       robots: v.length - humaines.length,
+      prechargements: humaines.filter((x) => x.prechargement).length,
       clics: c.length,
     });
   }
 
   const humaines = visites.filter((v) => !v.robot);
-  const visiteurs = new Set(humaines.map((v) => v.visiteur).filter(Boolean)).size;
+  const consultees = humaines.filter(estConsultation);
+  // Additionner les visiteurs de chaque jour, et non dédoublonner sur la
+  // période : un même identifiant d'un jour à l'autre ne serait qu'un hasard,
+  // le sel changeant chaque jour.
+  const visiteurs = parJour.reduce((n, j) => n + j.visiteurs, 0);
 
   // Un ratio n'a de sens que sur une période commune aux deux mesures. On ne
   // retient donc que les clics des jours où l'on sait aussi qui est venu.
-  const joursAvecVisites = new Set(parJour.filter((j) => j.pages > 0).map((j) => j.jour));
+  const joursAvecVisites = new Set(parJour.filter((j) => j.visiteurs > 0).map((j) => j.jour));
   const clicsComparables = parJour
     .filter((j) => joursAvecVisites.has(j.jour))
     .reduce((n, j) => n + j.clics, 0);
@@ -240,26 +272,27 @@ export function agreger({
     du: jours[0] ?? null,
     au: jours[jours.length - 1] ?? null,
     jours: parJour,
-    pagesVues: humaines.length,
+    pagesVues: consultees.length,
     visiteurs,
     visitesRobots: visites.length - humaines.length,
+    prechargements: humaines.filter((v) => v.prechargement).length,
     clics: clics.length,
     // La mesure qui approche le mieux la fonction du site — faire découvrir —
     // sans relier un clic à un visiteur. Arrondie au dixième.
     clicsParVisiteur:
       visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 10) / 10 : null,
     clicsHorsPeriode: clics.length - clicsComparables,
-    topPages: compter(humaines.filter((v) => v.statut === 200).map((v) => v.chemin)),
-    provenances: compter(humaines.map((v) => v.provenance)),
-    appareils: compter(humaines.map((v) => v.appareil), 4),
-    langues: compter(humaines.map((v) => v.langue), 8),
-    paysConnus: compter(humaines.map((v) => v.pays), 12),
-    paysIndisponible: humaines.length > 0 && humaines.every((v) => !v.pays),
+    topPages: compter(consultees.filter((v) => v.statut === 200).map((v) => v.chemin)),
+    provenances: compter(consultees.map((v) => v.provenance)),
+    appareils: compter(consultees.map((v) => v.appareil), 4),
+    langues: compter(consultees.map((v) => v.langue), 8),
+    paysConnus: compter(consultees.map((v) => v.pays), 12),
+    paysIndisponible: consultees.length > 0 && consultees.every((v) => !v.pays),
     // Les 404 disent quels liens périmés circulent encore.
     erreurs404: compter(visites.filter((v) => v.statut === 404).map((v) => v.chemin)),
     plateformes: compter(clics.map((c) => c.category), 10),
     dureeMedianeMs: mediane(
-      humaines.map((v) => v.dureeMs).filter((d): d is number => typeof d === 'number'),
+      consultees.map((v) => v.dureeMs).filter((d): d is number => typeof d === 'number'),
     ),
   };
 }

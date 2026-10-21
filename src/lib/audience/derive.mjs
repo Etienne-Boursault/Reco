@@ -122,6 +122,27 @@ export function provenance(referer, hoteDuSite) {
   return hote.slice(0, 128);
 }
 
+/**
+ * Un préchargement n'est pas une visite.
+ *
+ * Le site précharge une page dès qu'on survole un lien (`prefetch: hover`
+ * dans `astro.config.mjs`) : parcourir une liste de douze recos à la souris
+ * envoyait douze requêtes, toutes comptées comme pages vues. Le navigateur
+ * les signale — `Sec-Purpose: prefetch` pour `<link rel="prefetch">`, et un
+ * `Sec-Fetch-Mode` autre que `navigate` pour le repli `fetch()` d'Astro.
+ * Un navigateur qui n'envoie aucun de ces en-têtes est compté, faute de
+ * pouvoir trancher.
+ */
+export function estPrechargement(entetes = {}) {
+  const intention = [entetes['sec-purpose'], entetes.purpose, entetes['x-moz']]
+    .filter((v) => typeof v === 'string')
+    .join(' ')
+    .toLowerCase();
+  if (intention.includes('prefetch')) return true;
+  const mode = entetes['sec-fetch-mode'];
+  return typeof mode === 'string' && mode !== 'navigate';
+}
+
 /** Robot ou humain — un booléen, l'en-tête lui-même n'est jamais écrit. */
 export function estRobot(userAgent) {
   if (!userAgent) return true; // Un client sans agent n'est pas un navigateur.
@@ -231,6 +252,7 @@ export function evenementDeVisite({
     chemin: cheminSeul(chemin),
     statut,
     robot: estRobot(entetes['user-agent']),
+    prechargement: estPrechargement(entetes),
     appareil: appareil(entetes['user-agent']),
     provenance: provenance(entetes.referer, hoteDuSite),
     langue: langue(entetes['accept-language']),
