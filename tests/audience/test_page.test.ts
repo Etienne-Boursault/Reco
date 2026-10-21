@@ -202,6 +202,22 @@ describe('honnêteté des chiffres', () => {
     expect(html).toContain('clic écarté');
   });
 
+  it('trace les visiteurs par jour, pas les pages ni les robots', async () => {
+    // Le graphique empilait robots et pages vues ; les préchargements au
+    // survol gonflaient les secondes. Il montre désormais des personnes.
+    const html = await corpsAvecMesures({
+      audience: [
+        VISITE,
+        { ...VISITE, chemin: '/un-bon-moment/oeuvre/a', prechargement: true },
+        { ...VISITE, robot: true },
+      ],
+    });
+
+    expect(html).toContain('Visiteurs par jour');
+    expect(html).not.toContain('Pages vues par jour');
+    expect(html).toContain('1 visiteurs, 1 pages vues, 1 passages de robots');
+  });
+
   it('ne dit rien quand les deux mesures se recouvrent', async () => {
     const html = await corpsAvecMesures({ audience: [VISITE], clics: [CLIC] });
 

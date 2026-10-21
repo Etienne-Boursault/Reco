@@ -233,7 +233,8 @@ describe('plusieurs sources', () => {
 
     const a = agreger({ racine, sourceId: [SOURCE, '_site'], nbJours: 30, aujourdhui: AUJOURDHUI });
 
-    expect(a.pagesVues).toBe(3);
+    // La 404 reste dans les liens morts, pas dans les pages vues.
+    expect(a.pagesVues).toBe(2);
     expect(a.visiteurs).toBe(2);
     expect(a.topPages.map((p) => p.cle)).toContain('/');
     expect(a.erreurs404[0]).toEqual({ cle: '/lien-mort', n: 1 });
@@ -404,5 +405,34 @@ describe('robustesse', () => {
       visite({ dureeMs: 10 }), visite({ dureeMs: 20 }), visite({ dureeMs: 90 }),
     ]);
     expect(lire().dureeMedianeMs).toBe(20);
+  });
+});
+
+describe('ce qui compte comme une visite', () => {
+  it('un préchargement au survol n’est pas une page vue, mais son auteur est un visiteur', () => {
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/un-bon-moment/films' }),
+      visite({ chemin: '/un-bon-moment/oeuvre/a', prechargement: true }),
+      visite({ chemin: '/un-bon-moment/oeuvre/b', prechargement: true }),
+    ]);
+    const a = lire();
+    expect(a.pagesVues).toBe(1);
+    expect(a.prechargements).toBe(2);
+    expect(a.visiteurs).toBe(1);
+    expect(a.topPages).toEqual([{ cle: '/un-bon-moment/films', n: 1 }]);
+    expect(a.jours[0]).toMatchObject({ pages: 1, visiteurs: 1, prechargements: 2 });
+  });
+
+  it('un navigateur qui n’obtient que des erreurs n’est pas un visiteur', () => {
+    // Un robot déguisé en navigateur sonde `/wp-login.php` : 404 sur 404.
+    ecrire('audience', '2026-08-25', [
+      visite({ visiteur: 'humain' }),
+      visite({ chemin: '/wp-login.php', statut: 404, visiteur: 'sonde' }),
+      visite({ chemin: '/.env', statut: 404, visiteur: 'sonde' }),
+    ]);
+    const a = lire();
+    expect(a.visiteurs).toBe(1);
+    expect(a.pagesVues).toBe(1);
+    expect(a.erreurs404).toHaveLength(2);
   });
 });

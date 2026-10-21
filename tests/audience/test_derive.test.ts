@@ -20,6 +20,7 @@ import {
   appareil,
   cheminSeul,
   empreinteDuJour,
+  estPrechargement,
   estRobot,
   estUnePage,
   evenementDeVisite,
@@ -122,6 +123,29 @@ describe('provenance', () => {
 });
 
 // ===== Robot ou humain =====================================================
+describe('estPrechargement', () => {
+  it('reconnaît le préchargement au survol, sous ses trois en-têtes', () => {
+    expect(estPrechargement({ 'sec-purpose': 'prefetch' })).toBe(true);
+    expect(estPrechargement({ purpose: 'prefetch' })).toBe(true);
+    expect(estPrechargement({ 'x-moz': 'prefetch' })).toBe(true);
+  });
+
+  it('reconnaît le repli `fetch()` d’Astro : tout sauf une navigation', () => {
+    expect(estPrechargement({ 'sec-fetch-mode': 'cors' })).toBe(true);
+    expect(estPrechargement({ 'sec-fetch-mode': 'navigate' })).toBe(false);
+  });
+
+  it('compte comme vue une requête sans aucun de ces en-têtes', () => {
+    expect(estPrechargement({})).toBe(false);
+    expect(estPrechargement()).toBe(false);
+  });
+
+  it('figure dans l’événement enregistré', () => {
+    const ev = evenementDeVisite({ chemin: '/', entetes: { 'sec-purpose': 'prefetch' } });
+    expect(ev.prechargement).toBe(true);
+  });
+});
+
 describe('estRobot', () => {
   it('reconnaît les robots courants', () => {
     expect(estRobot('Mozilla/5.0 (compatible; Googlebot/2.1)')).toBe(true);

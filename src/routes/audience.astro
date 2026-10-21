@@ -93,7 +93,7 @@ function hauteur(valeur: number, max: number): number {
 }
 
 const jours = donnees?.jours ?? [];
-const maxPages = Math.max(1, ...jours.map((j) => j.pages));
+const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
 const aucuneDonnee = !erreur && (donnees?.jours.length ?? 0) === 0;
 
 /** Un jour au format court, pour l'axe du graphique. */
@@ -191,15 +191,15 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       display: block; background: var(--accent); border-radius: 2px 2px 0 0;
       min-height: 2px;
     }
-    .barre i.robots { background: var(--line); }
+    .barre .nombre {
+      color: var(--muted); font-size: 0.65rem; text-align: center;
+      font-variant-numeric: tabular-nums; line-height: 1.2;
+    }
     .axe {
       display: flex; justify-content: space-between; color: var(--muted);
       font-size: 0.72rem; margin-top: 0.5rem; font-variant-numeric: tabular-nums;
     }
-    .legende { display: flex; gap: 1.1rem; color: var(--muted); font-size: 0.78rem; margin-top: 0.7rem; }
-    .legende span { display: flex; align-items: center; gap: 0.35rem; }
-    .pastille { width: 9px; height: 9px; border-radius: 2px; background: var(--accent); }
-    .pastille.gris { background: var(--line); }
+    .legende { color: var(--muted); font-size: 0.78rem; margin: 0.7rem 0 0; }
 
     .listes { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
     .liste {
@@ -349,12 +349,15 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
         )}
 
         <section class="graphe">
-          <h2>Pages vues par jour</h2>
+          {/* Les visiteurs, et non les pages : une page vue de plus ne dit pas
+              qu'une personne de plus est venue, et les robots, souvent dix fois
+              plus nombreux, écrasaient l'échelle. Le détail reste au survol. */}
+          <h2>Visiteurs par jour</h2>
           <div class="barres">
             {jours.map((j) => (
-              <div class="barre" title={`${j.jour} — ${j.pages} pages, ${j.visiteurs} visiteurs, ${j.robots} robots`}>
-                <i class="robots" style={`height:${hauteur(j.robots, maxPages)}%`}></i>
-                <i style={`height:${hauteur(j.pages, maxPages)}%`}></i>
+              <div class="barre" title={`${j.jour} — ${j.visiteurs} visiteurs, ${j.pages} pages vues, ${j.robots} passages de robots`}>
+                <span class="nombre">{j.visiteurs || ''}</span>
+                <i style={`height:${hauteur(j.visiteurs, maxVisiteurs)}%`}></i>
               </div>
             ))}
           </div>
@@ -362,10 +365,11 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
             <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
             <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
           </div>
-          <div class="legende">
-            <span><i class="pastille"></i> visites humaines</span>
-            <span><i class="pastille gris"></i> robots</span>
-          </div>
+          <p class="legende">
+            Personnes distinctes ayant ouvert au moins une page dans la journée,
+            hors robots et hors erreurs. Les pages préchargées au survol d’un
+            lien ne comptent pas comme vues.
+          </p>
         </section>
 
         {donnees.paysIndisponible && (
