@@ -286,7 +286,7 @@ reconnue par son empreinte, et le payeur des appels se déduit de la clé.
 ```sh
 docker compose run --rm pipeline python metrics_report.py coverage --source un-bon-moment
 docker compose run --rm pipeline python metrics_report.py cohort --source un-bon-moment --season 6
-docker compose run --rm pipeline python metrics_report.py recover   # après un arrêt brutal
+docker compose run --rm pipeline python metrics_report.py recover   # tick.sh le fait chaque semaine
 ```
 
 Contrat et limites : `docs/workflow-metrics.md`. Après la mise à jour, redémarrer

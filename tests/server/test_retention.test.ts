@@ -130,4 +130,16 @@ describe('planifierRetention', () => {
 
     expect(journal.error).toHaveBeenCalledWith('[retention] échec :', expect.anything());
   });
+
+  it('lance les purges asynchrones et en journalise le résultat ou l’échec', async () => {
+    const journal = { log: vi.fn(), error: vi.fn() };
+    const purges = [async () => 2, async () => 0, async () => { throw new Error('Matrix muet'); }];
+
+    clearInterval(planifierRetention(racine, { journal, purges }));
+    await new Promise((r) => setTimeout(r, 0));
+
+    expect(journal.log).toHaveBeenCalledTimes(1);
+    expect(journal.log).toHaveBeenCalledWith('[retention] 2 notification(s) de signalement effacée(s)');
+    expect(journal.error).toHaveBeenCalledWith('[retention] échec :', expect.objectContaining({ message: 'Matrix muet' }));
+  });
 });

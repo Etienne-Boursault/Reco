@@ -35,6 +35,7 @@ import { resolve } from 'node:path';
 
 import { creerServeurMaintenance } from './src/server/maintenance.mjs';
 import { planifierRetention } from './src/server/retention.mjs';
+import { purgerNotificationsMatrix } from './src/server/retention-matrix.mjs';
 import { creerServeur, fermerProprement } from './src/server/serveur.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -79,7 +80,7 @@ const serveur = fermerProprement(
 );
 
 // Les durées de conservation annoncées sur /mentions-legales.
-planifierRetention(process.cwd());
+planifierRetention(process.cwd(), { purges: [() => purgerNotificationsMatrix()] });
 
 serveur.listen(PORT, HOTE, () => {
   console.log(

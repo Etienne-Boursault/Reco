@@ -65,6 +65,18 @@ fi
 # plus récent dans sa famille. Un message Matrix, jamais de bascule automatique.
 outil veiller-modeles || horodater "veille des modèles en échec"
 
+# Une fois par semaine : les runs de télémétrie restés « started » (arrêt brutal
+# d'un conteneur) passent en « interrupted » au-delà de 24 h. Rien n'est effacé
+# (cf. docs/workflow-metrics.md). La semaine ISO marque le passage déjà fait.
+SEMAINE="logs/.recover-$(date +%G-W%V)"
+if [ ! -e "${SEMAINE}" ]; then
+  if docker compose run --rm -T pipeline python metrics_report.py recover >/dev/null; then
+    touch "${SEMAINE}"
+  else
+    horodater "récupération des runs interrompus en échec"
+  fi
+fi
+
 # Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se
 # remarque qu'au prochain épisode manqué. Kuma tourne sur venus et ne peut pas
 # interroger la page de validation, ouverte au seul VPN — c'est donc au passage
