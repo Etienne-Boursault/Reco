@@ -28,6 +28,7 @@ Usage :
 from __future__ import annotations
 
 import argparse
+import time
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -36,6 +37,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+import telemetry
+import transcription_mesures as _mesures
 from combler_trous import Bilan
 from combler_trous import combler as combler_trous
 from common import (
@@ -102,8 +105,10 @@ def _download_http(url: str, dest: Path) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists() and dest.stat().st_size > 0:
         log.info("Audio déjà téléchargé : %s", dest.name)
+        telemetry.current_stage().measure("audio_cache_hit", True, "bool")
         return dest
     log.info("Téléchargement de l'audio : %s", url)
+    debut = time.perf_counter_ns()
     session = _make_http_session()
     with session.get(url, stream=True, timeout=60, headers=_HTTP_HEADERS) as resp:
         resp.raise_for_status()
@@ -114,6 +119,7 @@ def _download_http(url: str, dest: Path) -> Path:
                     fh.write(chunk)
         tmp.replace(dest)
     log.info("Audio enregistré : %s (%d octets)", dest.name, dest.stat().st_size)
+    _mesures.telechargement(dest, debut)
     return dest
 
 
@@ -134,6 +140,7 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
     if (mp3.exists() and mp3.stat().st_size > 0
             and sorted(dest_base.parent.glob(dest_base.stem + ".*")) == [mp3]):
         log.info("Audio déjà téléchargé : %s", mp3.name)
+        telemetry.current_stage().measure("audio_cache_hit", True, "bool")
         return mp3
     try:
         import yt_dlp  # type: ignore
@@ -160,14 +167,17 @@ def _download_youtube(url: str, dest_base: Path) -> Path:
         ],
     }
     log.info("Téléchargement YouTube (audio) : %s", url)
+    debut = time.perf_counter_ns()
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
     if mp3.exists():
+        _mesures.telechargement(mp3, debut)
         return mp3
     # Repli : prend le premier fichier produit avec ce préfixe.
     candidates = sorted(dest_base.parent.glob(dest_base.stem + ".*"))
     if not candidates:
         raise RuntimeError("yt-dlp n'a produit aucun fichier audio.")
+    _mesures.telechargement(candidates[0], debut)
     return candidates[0]
 
 
@@ -225,10 +235,14 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         ) from exc
 
     log.info("Chargement du modèle Whisper « %s » (CPU, int8)…", model_name)
+    etape = telemetry.current_stage()
+    debut = time.perf_counter_ns()
     # compute_type=int8 : rapide et léger en RAM sur CPU.
     model = WhisperModel(model_name, device="cpu", compute_type="int8")
+    etape.measure("model_load_ms", _mesures.ms_depuis(debut), "ms")
 
     log.info("Transcription en cours (cela peut être long)…")
+    debut = time.perf_counter_ns()
     segments, info = model.transcribe(
         str(audio_path),
         hotwords=amorce or None,
@@ -237,7 +251,9 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         beam_size=5,
     )
     log.info("Langue détectée : %s (p=%.2f)", info.language, info.language_probability)
+    # Les segments sont un générateur : la transcription a lieu ICI.
     entrees = [(seg.start, seg.text.strip()) for seg in segments]
+    _mesures.transcription(etape, info, debut)
 
     # La transcription longue perd parfois un passage parlé sans le signaler
     # (cf. combler_trous) : on réécoute les fenêtres suspectes avec le modèle
@@ -253,7 +269,9 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         )
         return [(seg.start, seg.text) for seg in rendus]
 
+    debut = time.perf_counter_ns()
     entrees, bilan = combler_trous(entrees, reecouter)
+    _mesures.comblement(etape, bilan, debut)
     lignes = "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees)
     return lignes + "\n", bilan
 
@@ -273,11 +291,27 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
     le cache en rend un sans rien transcrire.
     """
     episode = read_json(episode_path)
+    config = _mesures.configuration(model_name, language, amorce, prefer_acast)
+    with telemetry.stage("transcribe", source_id=source_id, command="transcribe",
+                         episode_guid=episode["guid"], season=_mesures.saison(episode),
+                         config=config) as etape:
+        etape.set(model=model_name, provider="local")
+        return _transcribe_episode(source_id, episode_path, episode, model_name, language,
+                                   force, prefer_acast, amorce, signaler, etape)
+
+
+def _transcribe_episode(source_id: str, episode_path: Path, episode: dict[str, Any],
+                        model_name: str, language: str | None, force: bool,
+                        prefer_acast: bool, amorce: str | None,
+                        signaler: Callable[[Bilan], None] | None,
+                        etape: telemetry.StageHandle) -> bool:
     guid = episode["guid"]
     transcript_path = transcript_path_for(source_id, guid)
 
-    # Cache : transcription déjà présente.
+    # Cache : transcription déjà présente. Ce n'est pas une transcription :
+    # aucune durée de calcul, aucun coût.
     if transcript_path.exists() and not force:
+        etape.skip("cache_hit")
         log.info("Transcription déjà présente pour %s — ignorée (cache).", guid)
         # On s'assure tout de même que le statut reflète la réalité.
         if episode.get("transcriptStatus") == "none":
@@ -286,7 +320,9 @@ def transcribe_episode(source_id: str, episode_path: Path, model_name: str,
         return False
 
     audio_path, source_used = _resolve_audio(source_id, episode, prefer_acast)
+    _mesures.media(etape, episode, audio_path, source_used)
     text, bilan = _transcribe_audio(audio_path, model_name, language, amorce)
+    etape.set(transcript_id_or_hash=_mesures.empreinte_texte(text))
     if signaler is not None:
         signaler(bilan)
 
@@ -332,13 +368,24 @@ def main() -> None:
     # H1 (revue 2026-07-19) : ex-`--youtube` qui, passé positionnellement à
     # `prefer_acast`, faisait l'INVERSE de sa doc (il forçait Acast) — et
     # YouTube est de toute façon le défaut. Remplacé par `--acast` explicite.
+    parser.add_argument("--intent", choices=sorted(telemetry.INTENTS), default=None,
+                        help="Raison de l'exécution, pour les métriques (défaut : "
+                             "$RECO_RUN_INTENT ou unknown). Ex. source_migration pour "
+                             "retranscrire depuis une autre source.")
     parser.add_argument("--acast", action="store_true",
                         help="Force la transcription depuis l'audio Acast. Par "
                              "défaut on prend la vidéo YouTube quand elle existe "
                              "(timecodes alignés, offset nul) ; Acast n'est qu'un "
                              "repli. Utile pour un épisode sans vidéo ou à recaler.")
     args = parser.parse_args()
+    with telemetry.workflow_run(args.source, trigger="cli", command="transcribe",
+                                intent=args.intent,
+                                config={"model": args.model, "language": args.language,
+                                        "acast": args.acast, "force": args.force}):
+        _main(args)
 
+
+def _main(args: argparse.Namespace) -> None:
     language = args.language or None
 
     if args.guid:

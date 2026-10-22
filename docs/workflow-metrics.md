@@ -94,3 +94,60 @@ Jamais dans la base : clés d'API, prompts remplis, transcriptions, texte des
 œuvres, IP, URL avec paramètres. Les messages d'erreur sont expurgés (URL et
 secrets masqués, 160 caractères). Le nom de la machine n'est gardé qu'en
 empreinte (`machine_id`). Le fichier est créé en `0600` sous POSIX.
+
+## Points de mesure
+
+### Runs
+
+| Invocation | `trigger` | `command` | `intent` |
+|---|---|---|---|
+| chaîne de venus (`traiter_nouveaux_episodes.py <étape>`, lancée par `tick.sh`) | `scheduler` (`RECO_TRIGGER` pour surcharger) | `traiter_nouveaux_episodes:<étape>` | `standard_first_pass` déclaré, qualifié par tentative |
+| `run_pipeline.py` | `cli` | `run_pipeline` | `--intent`, sinon `RECO_RUN_INTENT`, sinon `unknown` |
+| `transcribe.py`, `extract_recos.py` seuls | `cli` | nom du script | idem |
+| fonction appelée hors de tout run | `library` | nom de l'étape | `unknown` |
+
+Les sondes de `tick.sh` (`a-extraire`, `a-finaliser`…) et la détection ne sont
+pas mesurées : elles tournent à chaque passage (toutes les dix minutes le
+dimanche) pour presque rien. Un run n'est écrit qu'à sa première étape, ou s'il
+échoue : un passage sans travail ne laisse aucune ligne.
+
+### Étapes
+
+| `stage` | Où | Ce qui est mesuré |
+|---|---|---|
+| `fetch` | `run_pipeline` | durée de la collecte RSS |
+| `transcribe` | `transcribe.transcribe_episode` | voir ci-dessous |
+| `extract` | `extract_recos` | PR3 |
+| `quote_relisten` | chaîne, après l'extraction | réécoute ciblée des citations (Whisper) : durée |
+| `quote_align` | chaîne, après l'extraction | calage des citations sur la transcription : durée |
+| `finalize` | chaîne, par épisode | liens, œuvres, mentions : durée, échec si refusée |
+| `link_search`, `publish`, `comment` | chaîne, d'un bloc | durée ; pas de découpe par épisode |
+
+### Transcription
+
+Origine **réellement** utilisée (`media_origin` : `youtube`, `acast`, `other`),
+jamais l'option demandée. `media_identifier` : `youtube:<id>` (public) ou
+l'empreinte de l'URL Acast, jamais l'URL. `media_checksum` : SHA-256 du fichier
+audio. `media_duration_ms` : durée **de l'audio**, rendue par le décodeur
+(`null` si absente) — jamais confondue avec le temps de calcul.
+
+| Mesure | Unité | |
+|---|---|---|
+| `audio_cache_hit` | bool | audio réutilisé : pas de téléchargement |
+| `download_ms`, `download_bytes` | ms, octets | seulement si téléchargé |
+| `audio_bytes` | octets | taille du fichier transcrit |
+| `model_load_ms` | ms | chargement du modèle Whisper |
+| `transcribe_ms` | ms | transcription longue (VAD) |
+| `speech_duration_ms` | ms | parole après VAD |
+| `gap_repair_ms` | ms | réécoute des trous (`combler_trous`), chronométrée à part |
+| `gap_candidates`, `gaps_filled`, `gap_words_added`, `gaps_unfilled` | nombre | bilan de la réécoute |
+| `language_detected`, `language_probability` | ISO 639-1, ratio | |
+
+Une transcription déjà présente donne `skipped` / `cache_hit` : ni durée de
+calcul ni coût. La configuration (moteur et versions, modèle, `int8`, faisceau,
+VAD, présence de l'amorce, réglages de la réécoute) fait l'empreinte
+`config_fingerprint` ; le texte de l'amorce n'y entre pas (il cite le titre).
+
+Coût : transcription locale, `cost_owner = local_machine`, **aucun coût
+fournisseur**. Un coût d'exploitation se déduira plus tard d'un profil matériel
+(`machine_json` du run : CPU, nombre de cœurs, empreinte de la machine).
