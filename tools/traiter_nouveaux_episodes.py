@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import functools
 import os
 import sys
 import urllib.parse
@@ -49,6 +50,7 @@ from typing import Any
 import common
 import liens_avant_relecture as _liens_avant
 import modeles_llm
+import telemetry
 from caler_citations import resume as _resume_calage
 from common import (
     format_timestamp,
@@ -130,6 +132,11 @@ def _youtube_episodes(source_id: str) -> list[tuple[Path, dict[str, Any]]]:
 
 def _title(episode: dict[str, Any]) -> str:
     return episode.get("title") or episode["guid"]
+
+
+def _saison(episode: dict[str, Any]) -> int | None:
+    from transcription_mesures import saison
+    return saison(episode)
 
 
 def amorce_pour(source: dict[str, Any], episode: dict[str, Any]) -> str:
@@ -307,8 +314,11 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     # transcription, qui écorche les noms propres ; l'extraction, elle, vient
     # de les rétablir. Si elle échoue, l'épisode reste relisable.
     citations = 0
+    mesure = functools.partial(telemetry.stage, source_id=source_id, episode_guid=guid,
+                               season=_saison(episode))
     try:
-        citations = len(kwargs["preciseur"](source_id, guid, apply=True).precisees)
+        with mesure("quote_relisten"):
+            citations = len(kwargs["preciseur"](source_id, guid, apply=True).precisees)
     except Exception as exc:  # noqa: BLE001
         log.warning("Citations non précisées pour %s : %s", guid, exc)
     finally:
@@ -319,7 +329,8 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     # Chaque nom rétabli est cité dans le message : la relecture tranche.
     calage = ""
     try:
-        calage = _resume_calage(kwargs["caleur"](source_id, guid, apply=True))
+        with mesure("quote_align"):
+            calage = _resume_calage(kwargs["caleur"](source_id, guid, apply=True))
     except Exception as exc:  # noqa: BLE001
         log.warning("Citations non calées pour %s : %s", guid, exc)
 
@@ -432,8 +443,13 @@ def finaliser(source_id: str, notify: Notify, state: dict[str, Any], *,
         with lock():
             _clear_error(state, "finalisation:verrou")
             for _path, episode in pending:
-                _finaliser_un(source_id, episode, state, notify, liens=liens,
-                              complements=complements, oeuvre=oeuvre, publier=publier)
+                with telemetry.stage("finalize", source_id=source_id,
+                                     episode_guid=episode["guid"],
+                                     season=_saison(episode)) as etape:
+                    if not _finaliser_un(source_id, episode, state, notify, liens=liens,
+                                         complements=complements, oeuvre=oeuvre,
+                                         publier=publier):
+                        etape.fail("finalisation refusée ou en panne (cf. lastErrors)")
     except LockBusy as exc:
         _report_once(state, "finalisation:verrou",
                      f"⚠️ Finalisation repoussée, la page de validation tient le verrou : {exc}",
@@ -446,7 +462,7 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
                   notify: Notify, *, liens: PasseLiens,
                   complements: list[tuple[str, str, PasseLiens]],
                   oeuvre: PasseLiens,
-                  publier: Callable[..., Any]) -> None:
+                  publier: Callable[..., Any]) -> bool:
     guid = episode["guid"]
     key = f"finalisation:{guid}"
     ids = {r["id"] for r in _recos_de(source_id, guid) if r.get("id")}
@@ -460,13 +476,13 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
     except Exception as exc:  # noqa: BLE001 — l'épisode suivant doit passer quand même.
         _report_once(state, key,
                      f"⚠️ Finalisation impossible pour « {_title(episode)} » : {exc}", notify)
-        return
+        return False
     if plan.refused:
         motif = ", ".join(plan.errors or plan.drafts)
         _report_once(state, key,
                      f"⚠️ Œuvres et mentions non écrites pour « {_title(episode)} » : {motif}",
                      notify)
-        return
+        return False
     # Les passes complémentaires en dernier, et jamais bloquantes : clé
     # absente, 401 ou panne réseau ne doivent pas priver l'épisode de ses
     # œuvres et de ses mentions, déjà écrites ci-dessus. L'épisode reste
@@ -480,6 +496,7 @@ def _finaliser_un(source_id: str, episode: dict[str, Any], state: dict[str, Any]
     # Relu après les passes : ce sont elles qui viennent d'écrire.
     notify(_message_finalisation(_title(episode), rapport, plan,
                                  _recos_de(source_id, guid), passes))
+    return True
 
 
 def _passe_sans_bloquer(nom: str, unite: str, passe: Callable[[str, set[str]], Any],
@@ -585,6 +602,34 @@ def main(argv: list[str] | None = None) -> int:
     notify = build_notify(args.notify)
     if args.etape == "detecter":
         return detecter(args.source, notify)
+    # Le chemin nominal : chaque tentative y est qualifiée d'après l'historique
+    # de la base (première passe, reprise…). Cf. docs/workflow-metrics.md.
+    with telemetry.workflow_run(
+            args.source, trigger=os.environ.get("RECO_TRIGGER") or "scheduler",
+            command=f"traiter_nouveaux_episodes:{args.etape}",
+            intent=os.environ.get(telemetry.context.ENV_INTENT) or "standard_first_pass",
+            config={"etape": args.etape, "modele_transcription": args.modele_transcription,
+                    "modele_extraction": modeles_llm.modele_extraction(),
+                    "modele_secours": modeles_llm.modele_secours()}):
+        return _executer(args, notify)
+
+
+#: Étapes mesurées d'un bloc, faute de grain plus fin : on sait leur durée.
+_ETAPES_GLOBALES = {"chercher-liens": "link_search", "publier": "publish",
+                    "commenter": "comment"}
+
+
+def _executer(args: argparse.Namespace, notify: Notify) -> int:
+    if args.etape in _ETAPES_GLOBALES:
+        with telemetry.stage(_ETAPES_GLOBALES[args.etape], source_id=args.source) as etape:
+            code = _executer_etape(args, notify)
+            if code:
+                etape.fail(f"code de sortie {code}")
+            return code
+    return _executer_etape(args, notify)
+
+
+def _executer_etape(args: argparse.Namespace, notify: Notify) -> int:
     with _state(args.source) as state:
         if args.etape == "transcrire":
             return transcrire(args.source, notify, state, model=args.modele_transcription)

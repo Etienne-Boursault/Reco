@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 
+import telemetry
 from common import list_episode_files, log, read_json
 
 # L4 (revue 2026-07-19) : le défaut d'extraction est la SSOT de extract_recos
@@ -48,8 +49,24 @@ def _parse_steps(raw: str) -> list[str]:
 
 def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
         extract_model: str, batch: bool, language: str | None, dry_run: bool,
-        force: bool) -> None:
-    """Exécute les étapes demandées dans l'ordre."""
+        force: bool, intent: str | None = None) -> None:
+    """Exécute les étapes demandées dans l'ordre, sous un seul run mesuré.
+
+    Les étapes appelées (transcription, extraction) rejoignent ce run au lieu
+    d'en ouvrir un chacune.
+    """
+    config = {"steps": steps, "limit": limit, "whisper_model": whisper_model,
+              "extract_model": extract_model, "batch": batch, "language": language,
+              "dry_run": dry_run, "force": force}
+    with telemetry.workflow_run(source_id, trigger="cli", command="run_pipeline",
+                                intent=intent, config=config):
+        _run(source_id, steps, limit, whisper_model, extract_model, batch, language,
+             dry_run, force)
+
+
+def _run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
+         extract_model: str, batch: bool, language: str | None, dry_run: bool,
+         force: bool) -> None:
     # Imports paresseux : on ne charge les deps lourdes que si l'étape est demandée.
     log.info("=== Pipeline Reco — source « %s » — étapes : %s ===",
              source_id, ", ".join(steps))
@@ -64,7 +81,8 @@ def run(source_id: str, steps: list[str], limit: int | None, whisper_model: str,
         log.info("--- [1/?] FETCH ---")
         from fetch_episodes import fetch_episodes
         try:
-            fetch_episodes(source_id, limit=limit)
+            with telemetry.stage("fetch", source_id=source_id):
+                fetch_episodes(source_id, limit=limit)
         except Exception as exc:  # noqa: BLE001
             fetch_failed = True
             log.error("Étape fetch échouée : %s", exc)
@@ -179,6 +197,9 @@ def main() -> None:
                         help="Extraction : n'appelle pas l'API, n'écrit rien.")
     parser.add_argument("--force", action="store_true",
                         help="Transcription : ignore le cache et retranscrit.")
+    parser.add_argument("--intent", choices=sorted(telemetry.INTENTS), default=None,
+                        help="Raison de l'exécution, pour les métriques (défaut : "
+                             "$RECO_RUN_INTENT ou unknown).")
     args = parser.parse_args()
 
     steps = _parse_steps(args.steps)
@@ -192,6 +213,7 @@ def main() -> None:
         language=args.language or None,
         dry_run=args.dry_run,
         force=args.force,
+        intent=args.intent,
     )
 
 
