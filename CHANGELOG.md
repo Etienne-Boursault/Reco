@@ -44,7 +44,7 @@ Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ce p
 
 ### Corrigé
 - Audience : « clics par visiteur » s'arrondissait à 0 (0,033) ; provenance interne comptée faute de `SITE_URL` au démarrage chez Infomaniak (la page lit `Astro.site`) ; `/a-propos` et `/a-propos/` comptées séparément ; sondes de failles listées comme liens morts (#121, #122).
-- Modèles d'extraction : les capacités rendues par le SDK `anthropic` 1.11 sont des objets, pas des dicts — leur lecture échouait (`TypeError`) et la règle du nom s'appliquait toujours. La veille signale aussi un retrait annoncé (`retires_at`, `deprecated_at`), que l'API publie bel et bien.
+- Modèles d'extraction (#128) : les capacités rendues par le SDK `anthropic` 1.11 sont des objets, pas des dicts — leur lecture échouait (`TypeError`) et la règle du nom s'appliquait toujours. La veille signale aussi un retrait annoncé (`retires_at`, `deprecated_at`), que l'API publie bel et bien.
 
 ### Sécurité
 - Vie privée : plus aucune ressource tierce chargée à l'affichage d'une page (vignettes YouTube et Acast retirées, #125) ; plus aucune donnée conservée sans limite (#123).

@@ -149,6 +149,20 @@ RECO_MODELE_SECOURS=claude-opus-5-5    # défaut ; « aucun » coupe le secours
 - L'effort de raisonnement n'est envoyé qu'aux modèles qui l'acceptent, d'après l'API
   des modèles : un nouveau modèle n'exige pas de modifier le code.
 
+**Choix en service : Opus 5.5 depuis le 2026-10-22**, Opus 5 en secours
+(`.env` de venus ; l'ancien fichier est gardé en `.env.avant-opus-5-5`). Banc du
+même jour, sur S6-E03 à E05 (35 recos relues) :
+
+| Modèle | $/épisode | Retrouvées | Déjà écartées reproposées | Autres | Durée |
+|---|---|---|---|---|---|
+| Opus 5 | 0,42 | 25 / 35 | 4 | 8 | 78 s |
+| Opus 5.5 | 0,39 | 26 / 35 | 3 | 5 | 145 s |
+
+Écart dans le bruit sur trois épisodes, mais Opus 5.5 ne fait moins bien sur
+aucune colonne. Manquées par les deux : Bref. 2 le livre, Renversée, Les Groos,
+Rose et Massimo, Impionçable, la vidéo IA de Kemar — le modèle n'y peut rien.
+Pour revenir en arrière : remettre `.env.avant-opus-5-5` en place.
+
 ### Couper Qobuz sans redéployer : `RECO_QOBUZ=0`
 
 Qobuz n'a pas d'API : la passe lit ses pages web, et c'est la seule source du dépôt

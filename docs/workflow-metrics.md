@@ -4,7 +4,8 @@ Mesure de **chaque exécution réelle** du pipeline et des décisions de relectu
 qui en découlent, pour calibrer plus tard un estimateur (« Reco Estimator ») sur
 des observations, pas sur des souvenirs. Module : `tools/telemetry/`.
 
-Principe : *instrument first, optimize later*. L'instrumentation est additive :
+Décision : [ADR 0054](adr/0054-metriques-de-workflow.md). Principe : *instrument first,
+optimize later*. L'instrumentation est additive :
 elle ne change ni les CLI, ni les JSON éditoriaux, ni la relecture.
 
 ## Où vivent les observations

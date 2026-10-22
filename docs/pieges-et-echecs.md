@@ -252,6 +252,19 @@ la ferme, et elle ne peut plus être rouverte. Il faut en ouvrir une nouvelle
 depuis la même branche (#124 → #125), ou fusionner la première sans supprimer
 sa branche.
 
+Méthode qui marche (pile #129 → #133, 2026-10-22) : fusionner la première,
+**recibler** la suivante sur `main` (`gh pr edit N --base main`) puis la
+fusionner, et ainsi de suite ; ne supprimer les branches qu'à la fin.
+
+### Une pile de PR n'a pas de CI
+
+La CI ne se déclenche que sur les PR **vers `main`**. Dans une pile, seule la
+première est testée ; les suivantes ne reçoivent que CodeRabbit, et un vert
+« 1 pass » ne prouve rien. Pour tester la pile entière sans rien fusionner :
+une PR **brouillon** de la dernière branche vers `main`, fermée dès la CI
+terminée (#134). Vérifier ensuite que `main` fusionné est identique à l'arbre
+testé (`git diff` vide).
+
 ---
 
 ## Interface
@@ -323,6 +336,63 @@ désaccord ne se voit qu'à la publication. Sur ce projet, dix règles ont été
 fixées après un **test à l'aveugle** — l'agent d'un côté, l'éditeur de l'autre,
 sur les mêmes épisodes, puis comparaison. Détail dans
 [`fork-guide.md`](fork-guide.md) §8 ter.
+
+---
+
+## Modèles et mesures
+
+### Un repli silencieux cache une erreur
+
+La lecture des capacités d'un modèle (« accepte-t-il l'effort ? ») avait un
+repli sur une règle tirée de son nom. Avec le SDK `anthropic` 1.11, les
+capacités sont des objets, pas des dictionnaires : la lecture levait un
+`TypeError` **à chaque fois**, le repli prenait le relais, et rien ne se voyait
+— le message était au niveau `INFO`. Découvert par hasard dans le journal du
+banc d'essai (#128). La même inspection a montré que l'API publie les dates de
+retrait (`retires_at`, `deprecated_at`), alors que la documentation de #127
+affirmait le contraire sans l'avoir vérifié.
+
+> Un repli doit être rare. S'il sert à chaque appel, c'est une panne. Et une
+> limite d'API s'affirme après avoir regardé la réponse, pas avant.
+
+### Une méthode disparaît sans décision
+
+En juin, les épisodes historiques étaient extraits **deux fois** (Haiku 4.5 et
+gpt-4o-mini), et la relecture voyait leur accord (« confirmé par 2 LLM » : 856
+recos sur 3 082). La chaîne de venus, écrite le 2026-09-17, n'a gardé qu'un
+modèle — sans que le commit le dise —, et le passage à Opus 5 a été mesuré
+contre des modèles **seuls**, jamais contre l'union des deux. L'éditeur croyait
+la double extraction toujours en place un mois plus tard.
+
+> Quand on réécrit un chemin, lister ce que l'ancien faisait et dire ce qu'on
+> en abandonne.
+
+### Un réglage déclaratif ne doit pas remplacer un contrôle
+
+Première version de la cohorte de référence (#133) : un profil déclaré
+(`RECO_PIPELINE_PROFILE`) remplaçait l'empreinte de configuration. Changer de
+modèle sans renommer le profil aurait mêlé deux configurations dans les
+moyennes, sans alerte. L'empreinte change d'elle-même : le profil n'est plus
+qu'une étiquette.
+
+### Une mesure ne doit pas coûter ce qu'elle mesure
+
+Le journal de relecture (#132) compare l'état des recos avant et après chaque
+action. Sa première version relisait le cache de la page **après** l'action :
+elle rechargeait les ~3 000 recos que le handler venait volontairement
+d'invalider. C'est un test du cache (`test_undo_save_sans_rien_a_annuler_invalide`)
+qui l'a vu. La photo ne lit plus que les fichiers visés, plus le listage du
+dossier.
+
+### Deux processus qui créent une base SQLite se la disputent
+
+Passer en journal WAL (`PRAGMA journal_mode=wal`) exige un verrou exclusif que
+SQLite **n'attend pas**, même avec `busy_timeout` : deux processus qui ouvrent
+la base neuve en même temps — la chaîne et la page de relecture, sur venus —
+obtiennent « database is locked ». On ne change le mode que s'il diffère, avec
+quelques nouvelles tentatives (`telemetry/store.py`). Et un point-virgule dans
+un commentaire SQL coupe une instruction en deux quand on découpe un script à
+la main.
 
 ---
 
