@@ -154,9 +154,16 @@ const MISE_A_JOUR = '22 octobre 2026';
     <section aria-labelledby="credits">
       <h2 id="credits">Crédits</h2>
       <ul>
-        <li>
+        <li class="credit-logo">
+          <a href="https://www.themoviedb.org/" rel="noopener">
+            <img src="/credits/tmdb.svg" alt="TMDB" width="110" height="14" loading="lazy" />
+          </a>
           Ce site utilise l’API de <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>,
           sans être approuvé ni certifié par TMDB.
+        </li>
+        <li>
+          Plateformes de visionnage (« où regarder ») : données de
+          <a href="https://www.justwatch.com/fr" rel="noopener">JustWatch</a>, transmises par TMDB.
         </li>
         <li>
           Géolocalisation par pays :
@@ -171,6 +178,10 @@ const MISE_A_JOUR = '22 octobre 2026';
 </Layout>
 
 <style>
+  .credit-logo img {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
   .hero {
     padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(1rem, 3vw, 2rem);
   }

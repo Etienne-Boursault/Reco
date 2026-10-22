@@ -89,6 +89,12 @@ from telemetry import llm as _llm
 # jusqu'au 2026-10-15. Surchargé par --model, et par `RECO_MODELE_EXTRACTION`
 # dans le `.env` de venus (cf. `modeles_llm.py`).
 MODEL = MODELE_EXTRACTION_DEFAUT
+# Repli OpenAI (`--provider openai`, hors de la chaîne de venus). GPT-4o mini
+# est retiré le 2027-01-14 ; le guide de migration d'OpenAI (octobre 2026)
+# recommande GPT-6 Luna, avec l'effort de raisonnement à « none » pour reprendre
+# un usage GPT-4.x. Jamais passé au banc d'essai : à mesurer avant tout usage.
+OPENAI_MODEL = "gpt-6-luna"
+OPENAI_EFFORT = "none"
 MAX_TOKENS = 8000
 # Les modèles à raisonnement adaptatif consomment le plafond de sortie pour
 # raisonner : on leur en laisse davantage, sans surcoût (la facturation suit
@@ -389,17 +395,22 @@ class _OpenAIExtractor:
             podcast_title=podcast_title, hosts=hosts,
             types=", ".join(sorted(VALID_TYPES)), chunk=chunk,
         )
-        with _llm.appel("openai", model, request={"max_tokens": MAX_TOKENS},
-                        client=self.client) as appel:
-            resp = self.client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": prompt},
-                ],
-                response_format={"type": "json_object"},
-                max_tokens=MAX_TOKENS,
-            )
+        params: dict[str, Any] = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+            "response_format": {"type": "json_object"},
+            # `max_tokens` est refusé par les modèles à raisonnement ; son
+            # successeur est accepté par tous, GPT-4o compris.
+            "max_completion_tokens": MAX_TOKENS,
+        }
+        if model.startswith("gpt-6"):
+            params["reasoning_effort"] = OPENAI_EFFORT
+        requete = {"max_tokens": MAX_TOKENS, "effort": params.get("reasoning_effort")}
+        with _llm.appel("openai", model, request=requete, client=self.client) as appel:
+            resp = self.client.chat.completions.create(**params)
             appel.reponse(resp)
             raw = resp.choices[0].message.content or ""
             try:
@@ -1085,7 +1096,7 @@ def _main(args: argparse.Namespace) -> None:
         elif args.provider == "openai":
             client = make_openai_client()
             if args.model == modele_extraction():  # encore le défaut Anthropic -> on switche
-                args.model = "gpt-4o-mini"
+                args.model = OPENAI_MODEL
             if args.batch:
                 log.warning("--batch ignoré avec --provider openai (mode synchrone).")
                 args.batch = False
