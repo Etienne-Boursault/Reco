@@ -143,6 +143,7 @@ class StageHandle:
         self.calls = 0
         self.calls_without_usage = 0
         self._lost_before = recorder.lost
+        self._debut = (time.perf_counter_ns(), time.process_time_ns())
 
     def measure(self, name: str, value: Any, unit: str) -> None:
         """Une mesure nommée, avec son unité. `None` = non mesuré, gardé tel quel."""
@@ -217,10 +218,12 @@ class RunHandle:
             return "unknown", None
         return "retry", anterieures[-1]["id"]
 
-    @contextlib.contextmanager
-    def stage(self, stage: str, *, episode_guid: str | None = None, season: int | None = None,
-              intent: str | None = None, config: Mapping[str, Any] | None = None,
-              retry_of_attempt_id: str | None = None, **fields: Any) -> Iterator[StageHandle]:
+    def open_stage(self, stage: str, *, episode_guid: str | None = None,
+                   season: int | None = None, intent: str | None = None,
+                   config: Mapping[str, Any] | None = None,
+                   retry_of_attempt_id: str | None = None, **fields: Any) -> StageHandle:
+        """Ouvre une tentative sans l'activer : pour plusieurs tentatives à la fois
+        (un lot couvre plusieurs épisodes). La fermer par `close_stage`."""
         if intent is None:
             intent, retry_of = self._intent_for(stage, episode_guid)
             retry_of_attempt_id = retry_of_attempt_id or retry_of
@@ -236,28 +239,48 @@ class RunHandle:
                "config_fingerprint": fingerprint(config) if config else None, **fields}
         self.recorder.start_stage(row)
         handle = StageHandle(self.recorder, row)
-        jeton = _STAGE.set(handle)
-        debut, cpu = time.perf_counter_ns(), time.process_time_ns()
+        handle._debut = (time.perf_counter_ns(), time.process_time_ns())
+        return handle
+
+    def close_stage(self, handle: StageHandle, exc: BaseException | None = None) -> None:
+        """Finalise une tentative, une seule fois. Une exception la marque en échec."""
+        debut, cpu = handle._debut
         fin: dict[str, Any] = {}
-        try:
-            yield handle
-            status = handle.status or "succeeded"
-        except BaseException as exc:
+        status = handle.status or "succeeded"
+        if exc is not None:
             status = "failed" if isinstance(exc, Exception) else "interrupted"
             fin.update(safe_error(exc))
+        if status == "failed":
+            self.failed_stages += 1
+        fin.update(handle.fields)
+        fin.update({"status": status, "skip_reason": handle.skip_reason,
+                    "ended_at": now_iso(),
+                    "elapsed_ms": (time.perf_counter_ns() - debut) // 1_000_000,
+                    "cpu_time_ms": (time.process_time_ns() - cpu) // 1_000_000,
+                    "measurements_json": handle.measurements,
+                    "telemetry_complete": int(handle._complete(status))})
+        self.recorder.finish_stage(handle.id, fin)
+
+    @contextlib.contextmanager
+    def stage(self, stage: str, **kwargs: Any) -> Iterator[StageHandle]:
+        handle = self.open_stage(stage, **kwargs)
+        try:
+            with activate(handle):
+                yield handle
+        except BaseException as exc:
+            self.close_stage(handle, exc)
             raise
-        finally:
-            _STAGE.reset(jeton)
-            if status == "failed":
-                self.failed_stages += 1
-            fin.update(handle.fields)
-            fin.update({"status": status, "skip_reason": handle.skip_reason,
-                        "ended_at": now_iso(),
-                        "elapsed_ms": (time.perf_counter_ns() - debut) // 1_000_000,
-                        "cpu_time_ms": (time.process_time_ns() - cpu) // 1_000_000,
-                        "measurements_json": handle.measurements,
-                        "telemetry_complete": int(handle._complete(status))})
-            self.recorder.finish_stage(handle.id, fin)
+        self.close_stage(handle)
+
+
+@contextlib.contextmanager
+def activate(handle: StageHandle) -> Iterator[StageHandle]:
+    """Fait de `handle` l'étape courante le temps du bloc."""
+    jeton = _STAGE.set(handle)
+    try:
+        yield handle
+    finally:
+        _STAGE.reset(jeton)
 
 
 @contextlib.contextmanager

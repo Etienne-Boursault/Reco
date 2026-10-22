@@ -41,6 +41,8 @@ Provider = Literal["anthropic", "openai"]
 
 from dotenv import load_dotenv
 
+import extraction_mesures as _mesures
+import telemetry
 from common import (
     TOOLS_DIR,
     find_episode_by_guid,
@@ -71,6 +73,7 @@ from extraction_history import (
 )
 from modeles_llm import MODELE_EXTRACTION_DEFAUT, accepte_effort, modele_extraction
 from review_lock import ServerLockBusy, acquire_pipeline_lock
+from telemetry import llm as _llm
 
 # Modèle d'extraction par défaut : Opus 5 (basculé depuis Haiku 4.5 le
 # 2026-09-18). Comparaison sur trois épisodes déjà relus — 33 recos validées,
@@ -349,6 +352,7 @@ def _parse_recos_from_content(content: Any) -> list[dict[str, Any]]:
         data = _extract_json_block(raw)
     except json.JSONDecodeError:
         log.warning("Réponse non-JSON ignorée pour un chunk.")
+        _llm.parse_echouee()
         return []
     return data.get("recos", []) if isinstance(data, dict) else []
 
@@ -363,8 +367,14 @@ class _AnthropicExtractor:
     def extract(self, model: str, podcast_title: str, hosts: str,
                 chunk: str) -> list[dict[str, Any]]:
         params = _request_params(model, podcast_title, hosts, chunk)
-        message = self.client.messages.create(**params)
-        return _parse_recos_from_content(message.content)
+        # L'usage est relevé sur la réponse AVANT d'en extraire les recos.
+        with _llm.appel("anthropic", model, request=_llm.requete(params),
+                        client=self.client) as appel:
+            message = self.client.messages.create(**params)
+            appel.reponse(message)
+            recos = _parse_recos_from_content(message.content)
+            appel.candidats(len(recos))
+        return recos
 
 
 class _OpenAIExtractor:
@@ -379,22 +389,28 @@ class _OpenAIExtractor:
             podcast_title=podcast_title, hosts=hosts,
             types=", ".join(sorted(VALID_TYPES)), chunk=chunk,
         )
-        resp = self.client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt},
-            ],
-            response_format={"type": "json_object"},
-            max_tokens=MAX_TOKENS,
-        )
-        raw = resp.choices[0].message.content or ""
-        try:
-            data = _extract_json_block(raw)
-        except json.JSONDecodeError:
-            log.warning("Réponse non-JSON ignorée pour un chunk (OpenAI).")
-            return []
-        return data.get("recos", []) if isinstance(data, dict) else []
+        with _llm.appel("openai", model, request={"max_tokens": MAX_TOKENS},
+                        client=self.client) as appel:
+            resp = self.client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                response_format={"type": "json_object"},
+                max_tokens=MAX_TOKENS,
+            )
+            appel.reponse(resp)
+            raw = resp.choices[0].message.content or ""
+            try:
+                data = _extract_json_block(raw)
+            except json.JSONDecodeError:
+                log.warning("Réponse non-JSON ignorée pour un chunk (OpenAI).")
+                _llm.parse_echouee()
+                return []
+            recos = data.get("recos", []) if isinstance(data, dict) else []
+            appel.candidats(len(recos))
+        return recos
 
 
 _EXTRACTOR_REGISTRY: dict[str, type] = {
@@ -656,6 +672,7 @@ def _persist_recos(source_id: str, guid: str,
     log.info("Épisode %s : %d reco(s) candidate(s) après normalisation.",
              guid, len(normalized))
     if not normalized:
+        _mesures.mesurer_ecritures(0, 0, 0)
         return 0
 
     if run_index is None:
@@ -713,6 +730,7 @@ def _persist_recos(source_id: str, guid: str,
     run_index.next_index = index
     log.info("Épisode %s : %d nouvelle(s), %d mise(s) à jour.",
              guid, new_count, upd_count)
+    _mesures.mesurer_ecritures(len(normalized), new_count, upd_count)
     return new_count + upd_count
 
 
@@ -748,14 +766,30 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
     `run_index` (M4) : index de run partagé, à construire une fois par run
     multi-épisodes pour éviter de relire tous les fichiers recos à chaque
     épisode. Transmis tel quel à `_persist_recos`.
+
+    Mesurée comme une tentative `extract` (cf. `extraction_mesures`).
     """
+    episode = read_json(episode_path)
+    from transcription_mesures import saison
+    with telemetry.stage("extract", source_id=source_id, command="extract_recos",
+                         episode_guid=episode["guid"], season=saison(episode),
+                         **_mesures.champs_etape(provider, model, "sync")):
+        return _extract_for_episode(source_id, episode, client, dry_run, model, provider,
+                                    source, worker, run_index)
+
+
+def _extract_for_episode(source_id: str, episode: dict[str, Any], client: Any | None,
+                         dry_run: bool, model: str, provider: str,
+                         source: dict[str, Any] | None, worker: str | None,
+                         run_index: _RunIndex | None) -> int:
     if source is None:
         source = load_source(source_id)
-    episode = read_json(episode_path)
     guid = episode["guid"]
     transcript_path = transcript_path_for(source_id, guid)
+    etape = telemetry.current_stage()
 
     if not transcript_path.exists():
+        etape.skip("missing_input")
         log.warning("Pas de transcription pour %s (%s). Lance transcribe.py d'abord.",
                     guid, transcript_path.name)
         return 0
@@ -768,7 +802,11 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
     log.info("Épisode %s : transcription de %d caractères -> %d chunk(s).",
              guid, len(text), len(chunks))
 
+    _mesures.mesurer_episode(text, chunks)
     if dry_run:
+        # Aucun appel n'est fait : un plan, pas une exécution (hors cohortes).
+        etape.skip("dry_run")
+        etape.measure("planned_calls", len(chunks), "count")
         log.info("[DRY-RUN] %d appel(s) API seraient effectués (modèle %s). "
                  "Aucune écriture.", len(chunks), model)
         return 0
@@ -779,8 +817,10 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
     raw_recos: list[dict[str, Any]] = []
     for i, chunk in enumerate(chunks, 1):
         log.info("  Chunk %d/%d…", i, len(chunks))
-        raw_recos.extend(_call_llm(client, model, podcast_title, hosts, chunk,
-                                   provider))  # type: ignore[arg-type]
+        with _llm.chunk(i - 1, len(chunks), len(chunk)):
+            raw_recos.extend(_call_llm(client, model, podcast_title, hosts, chunk,
+                                       provider))  # type: ignore[arg-type]
+    etape.measure("raw_candidates", len(raw_recos), "count")
 
     return _persist_recos(
         source_id, guid, raw_recos, provider,
@@ -795,12 +835,14 @@ def extract_for_episode(source_id: str, episode_path: Path, client: Any | None,
 # --- Batch helpers ---------------------------------------------------------
 def _build_batch_requests(source_id: str, episode_paths: list[Path],
                           podcast_title: str, hosts: str,
-                          model: str) -> tuple[list[dict[str, Any]],
-                                               dict[str, str],
-                                               list[str]]:
+                          model: str,
+                          meta: dict[str, dict[str, Any]] | None = None,
+                          ) -> tuple[list[dict[str, Any]], dict[str, str], list[str]]:
     """Prépare les requêtes batch.
 
-    Renvoie (requests, custom_id → guid, liste des guids traitables).
+    Renvoie (requests, custom_id → guid, liste des guids traitables). `meta`,
+    s'il est fourni, reçoit pour chaque custom_id son épisode et son chunk
+    (télémétrie : attribution des résultats du lot).
     """
     requests: list[dict[str, Any]] = []
     cid_to_guid: dict[str, str] = {}
@@ -814,8 +856,11 @@ def _build_batch_requests(source_id: str, episode_paths: list[Path],
             continue
         chunks = _chunk_transcript(transcript_path.read_text(encoding="utf-8"))
         guids.append(guid)
-        for chunk in chunks:
+        for index, chunk in enumerate(chunks):
             cid = f"req-{n}"
+            if meta is not None:
+                meta[cid] = {"guid": guid, "chunk_index": index,
+                             "chunk_count": len(chunks), "chars_in_chunk": len(chunk)}
             requests.append({
                 "custom_id": cid,
                 "params": _request_params(model, podcast_title, hosts, chunk),
@@ -834,7 +879,8 @@ def _submit_batch(client: Any, requests: list[dict[str, Any]]) -> str:
 
 def _poll_batch_until_done(client: Any, batch_id: str,
                            poll_seconds: int,
-                           timeout_seconds: int = BATCH_TIMEOUT_SECONDS) -> None:
+                           timeout_seconds: int = BATCH_TIMEOUT_SECONDS,
+                           on_status: Any = None) -> None:
     """Scrute le statut d'un batch jusqu'à un état terminal.
 
     Lève `TimeoutError` si le batch dépasse `timeout_seconds`.
@@ -843,6 +889,8 @@ def _poll_batch_until_done(client: Any, batch_id: str,
     while True:
         batch = client.messages.batches.retrieve(batch_id)
         status = batch.processing_status
+        if on_status is not None:
+            on_status(status)
         if status in TERMINAL_STATUSES:
             if status != "ended":
                 log.warning("Batch %s terminé avec statut=%s", batch_id, status)
@@ -858,8 +906,12 @@ def _poll_batch_until_done(client: Any, batch_id: str,
 
 def _collect_results(client: Any, batch_id: str,
                      cid_to_guid: dict[str, str],
-                     guids: list[str]) -> dict[str, list[dict[str, Any]]]:
-    """Récupère les résultats batch et regroupe les recos brutes par guid."""
+                     guids: list[str],
+                     on_entry: Any = None) -> dict[str, list[dict[str, Any]]]:
+    """Récupère les résultats batch et regroupe les recos brutes par guid.
+
+    `on_entry(entry, candidats)` reçoit chaque résultat (télémétrie).
+    """
     raw_by_guid: dict[str, list[dict[str, Any]]] = {g: [] for g in guids}
     errors = 0
     for entry in client.messages.batches.results(batch_id):
@@ -867,10 +919,13 @@ def _collect_results(client: Any, batch_id: str,
         if guid is None:
             continue
         if entry.result.type == "succeeded":
-            raw_by_guid[guid].extend(
-                _parse_recos_from_content(entry.result.message.content)
-            )
+            recos = _parse_recos_from_content(entry.result.message.content)
+            raw_by_guid[guid].extend(recos)
+            if on_entry is not None:
+                on_entry(entry, len(recos))
         else:
+            if on_entry is not None:
+                on_entry(entry, None)
             errors += 1
             log.warning("  Requête %s en échec : %s",
                         entry.custom_id, entry.result.type)
@@ -891,12 +946,21 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     un seul batch, puis on attend la fin du traitement et on écrit les recos par
     épisode.
     """
+    with telemetry.workflow_run(source_id, trigger="library", command="extract_recos:batch"):
+        return _extract_all_batch(source_id, episode_paths, client, model, poll_seconds,
+                                  provider, worker)
+
+
+def _extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
+                       model: str, poll_seconds: int, provider: str,
+                       worker: str | None) -> int:
     source = load_source(source_id)
     podcast_title = source.get("title", source_id)
     hosts = ", ".join(source.get("hosts", [])) or "inconnus"
 
+    meta: dict[str, dict[str, Any]] = {}
     requests, cid_to_guid, guids = _build_batch_requests(
-        source_id, episode_paths, podcast_title, hosts, model
+        source_id, episode_paths, podcast_title, hosts, model, meta=meta
     )
     if not requests:
         log.warning("Aucun chunk à traiter (transcriptions manquantes ?).")
@@ -904,10 +968,30 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     log.info("Batch : %d requête(s) sur %d épisode(s), modèle %s.",
              len(requests), len(guids), model)
 
-    batch_id = _submit_batch(client, requests)
-    _poll_batch_until_done(client, batch_id, poll_seconds)
-    raw_by_guid = _collect_results(client, batch_id, cid_to_guid, guids)
+    suivi = _mesures.SuiviLot(source_id, provider, model, episode_paths, guids, meta,
+                              client=client)
+    try:
+        debut = time.perf_counter_ns()
+        batch_id = _submit_batch(client, requests)
+        suivi.soumis(batch_id, debut)
+        _poll_batch_until_done(client, batch_id, poll_seconds, on_status=suivi.statut)
+        suivi.attente_terminee()
+        raw_by_guid = _collect_results(client, batch_id, cid_to_guid, guids,
+                                       on_entry=suivi.entree)
+        total = _persist_batch(source_id, episode_paths, guids, raw_by_guid, provider,
+                               model, worker, suivi)
+    except BaseException as exc:
+        suivi.fermer(exc)
+        raise
+    suivi.fermer()
+    log.info("Batch terminé : %d nouvelle(s) reco(s) écrite(s) au total.", total)
+    return total
 
+
+def _persist_batch(source_id: str, episode_paths: list[Path], guids: list[str],
+                   raw_by_guid: dict[str, list[dict[str, Any]]], provider: str,
+                   model: str, worker: str | None, suivi: Any) -> int:
+    """Écrit les recos de chaque épisode du lot, dans SA tentative."""
     total = 0
     worker_resolved = worker or os.environ.get("RECO_WORKER") or "main-cpu"
     # M2 (revue 2026-07-19) : relire les épisodes par guid pour propager le VRAI
@@ -929,14 +1013,15 @@ def extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     run_index = _RunIndex.build(source_id)
     for guid in guids:
         ep = ep_by_guid.get(guid, {})
-        total += _persist_recos(
-            source_id, guid, raw_by_guid[guid], provider,
-            transcript_source=ep.get("transcriptSource") or "acast",
-            transcript_model=ep.get("transcriptModel"),
-            llm_model=model, worker=worker_resolved,
-            run_index=run_index,
-        )
-    log.info("Batch terminé : %d nouvelle(s) reco(s) écrite(s) au total.", total)
+        with telemetry.activate(suivi.etape(guid)):
+            telemetry.current_stage().measure("raw_candidates", len(raw_by_guid[guid]), "count")
+            total += _persist_recos(
+                source_id, guid, raw_by_guid[guid], provider,
+                transcript_source=ep.get("transcriptSource") or "acast",
+                transcript_model=ep.get("transcriptModel"),
+                llm_model=model, worker=worker_resolved,
+                run_index=run_index,
+            )
     return total
 
 
@@ -970,7 +1055,19 @@ def main() -> None:
     parser.add_argument("--force", action="store_true",
                         help="Ignore le verrou serveur (à tes risques : "
                              "écritures concurrentes possibles avec review_server).")
+    parser.add_argument("--intent", choices=sorted(telemetry.INTENTS), default=None,
+                        help="Raison de l'exécution, pour les métriques (défaut : "
+                             "$RECO_RUN_INTENT ou unknown). Ex. experiment, "
+                             "source_migration, manual_rerun.")
     args = parser.parse_args()
+    with telemetry.workflow_run(args.source, trigger="cli", command="extract_recos",
+                                intent=args.intent,
+                                config={"model": args.model, "provider": args.provider,
+                                        "batch": args.batch, "dry_run": args.dry_run}):
+        _main(args)
+
+
+def _main(args: argparse.Namespace) -> None:
 
     # Coordination avec review_server : refuse de démarrer si le serveur
     # tourne (sauf --force). Cf. tools/review_lock.py.

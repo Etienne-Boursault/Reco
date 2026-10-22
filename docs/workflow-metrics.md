@@ -117,7 +117,7 @@ dimanche) pour presque rien. Un run n'est écrit qu'à sa première étape, ou s
 |---|---|---|
 | `fetch` | `run_pipeline` | durée de la collecte RSS |
 | `transcribe` | `transcribe.transcribe_episode` | voir ci-dessous |
-| `extract` | `extract_recos` | PR3 |
+| `extract` | `extract_recos.extract_for_episode`, lot, banc d'essai | voir ci-dessous |
 | `quote_relisten` | chaîne, après l'extraction | réécoute ciblée des citations (Whisper) : durée |
 | `quote_align` | chaîne, après l'extraction | calage des citations sur la transcription : durée |
 | `finalize` | chaîne, par épisode | liens, œuvres, mentions : durée, échec si refusée |
@@ -151,3 +151,67 @@ VAD, présence de l'amorce, réglages de la réécoute) fait l'empreinte
 Coût : transcription locale, `cost_owner = local_machine`, **aucun coût
 fournisseur**. Un coût d'exploitation se déduira plus tard d'un profil matériel
 (`machine_json` du run : CPU, nombre de cœurs, empreinte de la machine).
+
+### Extraction LLM
+
+Une tentative `extract` par épisode. Configuration et empreinte : fournisseur,
+modèle, transport (`sync` | `batch`), `max_tokens` effectif, effort, chunks
+(`24 000` caractères, recouvrement `500`), `prompt_version`
+(`recos-extraction-v1`), `prompt_sha256` — empreinte des **gabarits** système et
+consigne, jamais du prompt rempli —, `recipe_version`
+(`cultural-recommendations-v1`). La température n'est pas fixée : `null`.
+
+Un appel fournisseur réel = une ligne de `llm_calls`, écrite par l'adaptateur
+(`_AnthropicExtractor`, `_OpenAIExtractor`) qui continue de rendre ses recos :
+`chunk_index` (à partir de 0), `chunk_count`, `chars_in_chunk`, durée,
+identifiant de requête du fournisseur, jetons, `candidates_raw`, `parse_status`
+(`json` | `empty` | `non_json`).
+
+| Fournisseur | Jetons relevés |
+|---|---|
+| Anthropic | `usage.input_tokens`, `output_tokens`, `cache_read_input_tokens`, `cache_creation_input_tokens` ; raisonnement compris dans la sortie (`reasoning_tokens` = `null`) |
+| OpenAI | `prompt_tokens`, `completion_tokens`, `prompt_tokens_details.cached_tokens`, `completion_tokens_details.reasoning_tokens` |
+
+Réponse sans usage : jetons `null`, `usage_source = unavailable`, coût inconnu,
+tentative incomplète. Requête refusée (4xx) : `failed` ; autre échec (délai,
+coupure, 5xx) : `billing_uncertain`, coût inconnu.
+
+Par épisode : `raw_candidates` (somme des chunks, doublons compris),
+`unique_candidates` (après normalisation et déduplication), `recos_created`,
+`recos_updated`. Un `--dry-run` est un `skipped` / `dry_run` avec
+`planned_calls` ; une transcription absente, `skipped` / `missing_input`.
+
+**Lot** (`--batch`). Une tentative par épisode, ouvertes ensemble. Le lot
+(`llm_batches` : `submit_elapsed_ms`, `wait_ms`, `result_processing_ms`, dernier
+statut) et la correspondance `custom_id` → épisode et chunk (`batch_requests`)
+sont écrits **avant** de scruter : un lot interrompu reste attribuable. Chaque
+résultat va dans l'épisode de sa requête, une seule fois (index unique
+fournisseur + lot + `custom_id`) : une collecte rejouée ne compte pas double.
+L'attente du lot n'est **pas** répartie entre épisodes. Une requête du lot en
+échec rend sa tentative `failed`.
+
+**Secours** (modèle disparu, 404) : la tentative du modèle disparu est `failed`
+(`error_code = 404`) ; celle du secours est une `retry` qui lui est rattachée.
+
+**Banc d'essai** (`banc_modeles.py`) : run et tentatives `experiment`, jamais
+mêlés aux passes nominales.
+
+### Coûts
+
+Tarifs datés dans `tools/telemetry/tarifs.json` (version, `valid_from`, source,
+date de relevé), aucun dans le code. Un appel est valorisé **à sa date** et le
+montant est figé dans sa ligne (`cost_decimal`, `pricing_snapshot_id`) : un
+rapport recalculé plus tard donne le même montant. Calcul en `Decimal`, sans
+arrondi par appel.
+
+Coût **inconnu** (`null`), jamais zéro, quand : les jetons manquent ; le modèle
+ou le transport n'a pas de tarif (OpenAI n'est pas relevé) ; l'appel lit ou
+écrit du cache sans prix de cache relevé ; l'appel a échoué. Le lot a son
+propre tarif (−50 %). `observed_cost_decimal` (facture rapprochée) reste `null`.
+
+`cost_owner` (`user_byok` | `reco_managed` | `local_machine` | `unknown`) est
+déduit du client, à sa création, selon d'où vient sa clé : un client fait par
+`common.make_anthropic_client` / `make_openai_client` (clé du `.env` de
+l'opérateur) est `reco_managed`. Un futur client à clé fournie par
+l'utilisateur sera `user_byok` (des jetons qu'il paie ne sont pas à refacturer
+par Reco). Un client sans marque : `unknown`, jamais une supposition.

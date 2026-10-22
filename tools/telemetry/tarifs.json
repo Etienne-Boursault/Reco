@@ -1,0 +1,19 @@
+{
+  "pricing_version": "2026-10-22",
+  "currency": "USD",
+  "unit": "par million de jetons",
+  "note": "Tarifs publics relevés le 2026-10-22 (mêmes valeurs que modeles_llm.PRIX). valid_from = date du relevé : un appel antérieur n'est pas valorisé par ce tableau. Lot = -50 % (Message Batches API). Prix du cache non relevés : un appel qui lit ou écrit du cache reste sans coût connu. OpenAI non relevé : sans coût connu.",
+  "entries": [
+    {"provider": "anthropic", "model": "claude-fable-5-1", "transport": "sync", "valid_from": "2026-10-22", "input": "10", "output": "50", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-fable-5", "transport": "sync", "valid_from": "2026-10-22", "input": "10", "output": "50", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-opus-5-5", "transport": "sync", "valid_from": "2026-10-22", "input": "4", "output": "20", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-opus-5", "transport": "sync", "valid_from": "2026-10-22", "input": "5", "output": "25", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-sonnet-5-5", "transport": "sync", "valid_from": "2026-10-22", "input": "2", "output": "10", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-sonnet-5", "transport": "sync", "valid_from": "2026-10-22", "input": "2", "output": "10", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-haiku-5-5", "transport": "sync", "valid_from": "2026-10-22", "input": "0.10", "output": "0.50", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-opus-5-5", "transport": "batch", "valid_from": "2026-10-22", "input": "2", "output": "10", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic, lot -50 %", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-opus-5", "transport": "batch", "valid_from": "2026-10-22", "input": "2.5", "output": "12.5", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic, lot -50 %", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-sonnet-5-5", "transport": "batch", "valid_from": "2026-10-22", "input": "1", "output": "5", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic, lot -50 %", "verified_at": "2026-10-22"},
+    {"provider": "anthropic", "model": "claude-haiku-5-5", "transport": "batch", "valid_from": "2026-10-22", "input": "0.05", "output": "0.25", "cache_read": null, "cache_write": null, "source": "tarifs publics Anthropic, lot -50 %", "verified_at": "2026-10-22"}
+  ]
+}

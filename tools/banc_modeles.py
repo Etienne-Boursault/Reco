@@ -38,7 +38,9 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import common
+import extraction_mesures
 import modeles_llm
+import telemetry
 from common import (
     atomic_write_text,
     list_episode_files,
@@ -56,6 +58,8 @@ from extract_recos import (
     _parse_recos_from_content,
     _request_params,
 )
+from telemetry import llm
+from transcription_mesures import saison
 
 log = logging.getLogger("reco.banc")
 
@@ -146,11 +150,19 @@ def extraire(client: Any, modele: str, source: dict[str, Any], episode: dict[str
     titre = source.get("title", source.get("id", ""))
     hotes = _intervenants(source, episode)
     brutes: list[dict[str, Any]] = []
-    for morceau in _chunk_transcript(texte):
-        message = client.messages.create(**_request_params(modele, titre, hotes, morceau))
-        resultat.jetons_entree += message.usage.input_tokens
-        resultat.jetons_sortie += message.usage.output_tokens
-        brutes.extend(_parse_recos_from_content(message.content))
+    morceaux = _chunk_transcript(texte)
+    for index, morceau in enumerate(morceaux):
+        params = _request_params(modele, titre, hotes, morceau)
+        with llm.chunk(index, len(morceaux), len(morceau)), \
+                llm.appel("anthropic", modele, request=llm.requete(params),
+                          client=client) as appel:
+            message = client.messages.create(**params)
+            appel.reponse(message)
+            resultat.jetons_entree += message.usage.input_tokens
+            resultat.jetons_sortie += message.usage.output_tokens
+            recos = _parse_recos_from_content(message.content)
+            appel.candidats(len(recos))
+        brutes.extend(recos)
     return _dedupe([r for r in (_normalize_reco(b) for b in brutes) if r])
 
 
@@ -165,7 +177,14 @@ def mesurer(client: Any, source_id: str, modeles: list[str],
         debut = horloge()
         for episode in episodes:
             texte = transcript_path_for(source_id, episode["guid"]).read_text(encoding="utf-8")
-            propositions = extraire(client, modele, source, episode, texte, resultat)
+            # Une expérience : jamais mêlée aux passes nominales des métriques.
+            with telemetry.stage("extract", source_id=source_id, command="banc_modeles",
+                                 episode_guid=episode["guid"], season=saison(episode),
+                                 intent="experiment",
+                                 **extraction_mesures.champs_etape("anthropic", modele, "sync")
+                                 ) as etape:
+                propositions = extraire(client, modele, source, episode, texte, resultat)
+                etape.measure("unique_candidates", len(propositions), "count")
             comparer(propositions, relues.get(episode["guid"], []), resultat)
             resultat.episodes += 1
         resultat.secondes = horloge() - debut
@@ -211,7 +230,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     from common import make_anthropic_client
-    resultats = mesurer(make_anthropic_client(), args.source, modeles, episodes)
+    with telemetry.workflow_run(args.source, trigger="cli", command="banc_modeles",
+                                intent="experiment",
+                                config={"modeles": modeles,
+                                        "episodes": [e["guid"] for e in episodes]}):
+        resultats = mesurer(make_anthropic_client(), args.source, modeles, episodes)
     rapport = tableau(resultats)
     print(rapport)
     horodatage = datetime.now(UTC).strftime("%Y-%m-%dT%H%M%SZ")
