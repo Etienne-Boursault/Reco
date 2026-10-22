@@ -138,7 +138,17 @@ function estHumaine(v: Visite): boolean {
  * `/wp-login.php`. Ce ne sont pas des liens morts — personne ne les a jamais
  * publiés —, et ils remplissaient toute la liste des 404.
  */
-const SONDE = /(^|\/)\.[^/]|\.(php\d?|aspx?|jsp|cgi|sql|bak|old|zip|tar|gz|rar|7z)$|(^|\/)(wp-|cgi-bin)/i;
+const SONDE = new RegExp(
+  [
+    // Fichiers cachés : `/.env`, `/.git/config`, `/backend/.env`.
+    String.raw`(^|/)\.[^/]`,
+    // Extensions de code, de configuration ou d'archive : le site n'en sert aucune.
+    String.raw`\.(php\d?|aspx?|jsp|cgi|sql|bak|old|zip|tar|gz|rar|7z|ya?ml|env|ini|conf|cfg|toml|properties|log|sh|py|pem|key)$`,
+    // Noms que seuls les scanners demandent (`/env`, `/phpinfo`, `/Dockerfile`).
+    String.raw`(^|/)(wp-[^/]*|cgi-bin|phpinfo|_profiler|phpmyadmin|credentials|dockerfile|env|actuator|server-status|vendor)(/|$)`,
+  ].join('|'),
+  'i',
+);
 
 export function estSonde(chemin: string): boolean {
   return SONDE.test(chemin);

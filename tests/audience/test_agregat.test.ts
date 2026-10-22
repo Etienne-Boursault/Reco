@@ -13,7 +13,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-import { agreger, sourcesDisponibles } from '../../src/lib/audience/agregat';
+import { agreger, estSonde, sourcesDisponibles } from '../../src/lib/audience/agregat';
 
 let racine: string;
 const SOURCE = 'un-bon-moment';
@@ -474,6 +474,24 @@ describe('ce qui compte comme une visite', () => {
     const a = lire();
     expect(a.erreurs404).toEqual([{ cle: '/un-bon-moment/oeuvre/disparue', n: 2 }]);
     expect(a.sondes).toBe(2);
+  });
+
+  it('reconnaît les sondes vues en production le 2026-10-22', () => {
+    // Elles occupaient encore toute la liste après le premier filtre.
+    for (const chemin of [
+      '/_profiler/phpinfo', '/env', '/config/aws.yml', '/docker-compose.yml', '/phpinfo',
+      '/config.env', '/config.yaml', '/credentials', '/Dockerfile', '/sendgrid.env',
+      '/credentials.ini',
+    ]) {
+      expect(estSonde(chemin), chemin).toBe(true);
+    }
+    // Les pages du site, et un vrai lien mort, n'en sont pas.
+    for (const chemin of [
+      '/', '/mentions-legales', '/un-bon-moment/oeuvre/0099e3e6', '/un-bon-moment/recos',
+      '/environnement', '/un-bon-moment/episode/yt-dpM43BlLhZI',
+    ]) {
+      expect(estSonde(chemin), chemin).toBe(false);
+    }
   });
 
   it('compte /a-propos et /a-propos/ comme une seule page', () => {
