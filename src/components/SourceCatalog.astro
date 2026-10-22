@@ -29,6 +29,7 @@ import { TYPE_LABELS_PLURAL, episodeLabel } from '../utils/recoTypes';
 import { sortRecosByTimestamp } from '../utils/recoOrder';
 import { plural } from '../utils/plural';
 import { titreEpisodeAffiche } from '../utils/titreEpisode';
+import { vignette } from '../utils/vignettes';
 import { t } from '../i18n';
 import { siteToWebsiteSchema, sourceToPodcastSchema } from '../lib/seo/jsonld';
 import { siteConfig } from '../config/site';
@@ -86,10 +87,6 @@ const episodesWithRecos = episodes
   .map((e) => e.data)
   .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
 
-const ytThumb = (url?: string) => {
-  const id = url?.match(/[?&]v=([\w-]+)/)?.[1];
-  return id ? `https://i.ytimg.com/vi/${id}/mqdefault.jpg` : null;
-};
 const epLabel = episodeLabel;
 
 // JSON-LD : PodcastSeries + BreadcrumbList (Accueil → Source).
@@ -316,7 +313,8 @@ const galeries = sommaireGaleries(
               const auDessusDeLaLigne = i < 3;
               // Miniature : vignette YouTube si dispo, sinon artwork Acast
               // (imageUrl) — évite les cartes sans image (ex. Alice David #18).
-              const thumb = ytThumb(e.youtubeUrl) ?? e.imageUrl ?? null;
+              // Copie locale : cf. `utils/vignettes.ts`.
+              const thumb = vignette(e, 'mq');
               // Titre FRANÇAIS du flux (e.title) plutôt que le titre YouTube,
               // parfois en anglais (ex. « A Good Time with BROUTE »).
               // Sans le suffixe « (Un Bon Moment, S6-E03) » : le badge de la
