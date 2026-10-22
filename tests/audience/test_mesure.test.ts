@@ -75,6 +75,19 @@ describe('ce qui est compté', () => {
     expect(ecrire).not.toHaveBeenCalled();
   });
 
+  it('sans SITE_URL, reconnaît la navigation interne à l’hôte demandé', () => {
+    // Chez Infomaniak, `SITE_URL` manque à la commande de démarrage : le site
+    // arrivait en tête de ses propres provenances.
+    const ecrire = vi.fn();
+    for (const referer of ['https://unebonnere.co/', 'https://www.google.com/']) {
+      const { req, res } = couple('/a-propos/', { host: 'unebonnere.co', referer });
+      mesurerVisite(req, res, { ecrire });
+      res.emit('finish');
+    }
+
+    expect(ecrire.mock.calls.map((c) => c[0].provenance)).toEqual([null, 'www.google.com']);
+  });
+
   it('compte une page absente : les 404 disent quels liens circulent', () => {
     const ecrire = vi.fn();
     const { req, res } = couple('/fiche-supprimee');

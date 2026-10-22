@@ -73,7 +73,7 @@ const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
 let donnees: Agregat | null = null;
 let erreur: string | null = null;
 try {
-  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours });
+  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours, hoteDuSite: Astro.url.hostname });
 } catch (e) {
   erreur = e instanceof Error ? e.message : String(e);
 }
@@ -125,7 +125,9 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       },
       {
         titre: 'Liens morts qui circulent',
-        note: 'chaque ligne est une redirection à poser',
+        note: donnees.sondes
+          ? `chaque ligne est une redirection à poser · ${fmt(donnees.sondes)} tentatives d’intrusion écartées (/.env, /wp-login.php…)`
+          : 'chaque ligne est une redirection à poser',
         entrees: donnees.erreurs404,
         vide: 'Aucune page demandée en vain. ',
       },
@@ -318,8 +320,7 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
             </span>
             {/* Une moyenne, jamais un pourcentage : un visiteur peut cliquer
                 plusieurs fois, et relier un clic à un visiteur est justement ce
-                que la mesure refuse de faire. Pour 100, sinon elle s'arrondit
-                à 0. */}
+                que la mesure refuse de faire. Pour 100 : sinon, arrondie à 0. */}
             <span class="label">clics pour 100 visiteurs</span>
           </div>
           <div class="tuile">
@@ -392,9 +393,9 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
             <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
           </div>
           <p class="legende">
-            Requêtes dont l’agent se déclare robot (moteurs, aperçus de liens,
-            aspirateurs). Un robot qui se fait passer pour un navigateur compte
-            parmi les visiteurs.
+            Requêtes qui se déclarent robots (moteurs, aperçus de liens,
+            aspirateurs), et celles qui se disent navigateurs sans annoncer de
+            langue — ce qu’un vrai navigateur fait toujours.
           </p>
         </section>
 

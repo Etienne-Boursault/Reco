@@ -446,6 +446,58 @@ describe('ce qui compte comme une visite', () => {
     const a = lire();
     expect(a.visiteurs).toBe(1);
     expect(a.pagesVues).toBe(1);
-    expect(a.erreurs404).toHaveLength(2);
+    // Des sondes de failles, pas des liens morts : comptées à part.
+    expect(a.erreurs404).toHaveLength(0);
+    expect(a.sondes).toBe(2);
+  });
+
+  it('tient pour robot une requête sans langue', () => {
+    // Le 2026-10-22, la moitié des pages vues n'annonçaient aucune langue.
+    ecrire('audience', '2026-08-25', [
+      visite({ visiteur: 'humain' }),
+      visite({ chemin: '/', langue: null, visiteur: 'faux-chrome' }),
+    ]);
+    const a = lire();
+    expect(a.visiteurs).toBe(1);
+    expect(a.pagesVues).toBe(1);
+    expect(a.visitesRobots).toBe(1);
+    expect(a.jours[0]).toMatchObject({ visiteurs: 1, robots: 1 });
+  });
+
+  it('garde les vrais liens morts à côté des sondes', () => {
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/backend/.env', statut: 404 }),
+      visite({ chemin: '/xmlrpc.php', statut: 404 }),
+      visite({ chemin: '/un-bon-moment/oeuvre/disparue/', statut: 404 }),
+      visite({ chemin: '/un-bon-moment/oeuvre/disparue', statut: 404 }),
+    ]);
+    const a = lire();
+    expect(a.erreurs404).toEqual([{ cle: '/un-bon-moment/oeuvre/disparue', n: 2 }]);
+    expect(a.sondes).toBe(2);
+  });
+
+  it('compte /a-propos et /a-propos/ comme une seule page', () => {
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/a-propos' }),
+      visite({ chemin: '/a-propos/' }),
+      visite({ chemin: '/' }),
+    ]);
+    expect(lire().topPages).toEqual([
+      { cle: '/a-propos', n: 2 },
+      { cle: '/', n: 1 },
+    ]);
+  });
+
+  it('n’affiche pas le site lui-même dans les provenances', () => {
+    // Sans `SITE_URL` au démarrage, le serveur notait chaque clic interne.
+    ecrire('audience', '2026-08-25', [
+      visite({ provenance: 'unebonnere.co' }),
+      visite({ provenance: 'www.unebonnere.co' }),
+      visite({ provenance: 'unebonnereco.fr' }),
+    ]);
+    const a = agreger({
+      racine, sourceId: SOURCE, aujourdhui: AUJOURDHUI, hoteDuSite: 'unebonnere.co',
+    });
+    expect(a.provenances).toEqual([{ cle: 'unebonnereco.fr', n: 1 }]);
   });
 });
