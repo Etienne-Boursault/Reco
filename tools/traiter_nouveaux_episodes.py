@@ -48,6 +48,7 @@ from typing import Any
 
 import common
 import liens_avant_relecture as _liens_avant
+import modeles_llm
 from caler_citations import resume as _resume_calage
 from common import (
     format_timestamp,
@@ -256,7 +257,8 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
     if extractor is None:
         from extract_recos import extract_for_episode as extractor
     if model is None:
-        from extract_recos import MODEL as model
+        model = modeles_llm.modele_extraction()
+    secours = modeles_llm.modele_secours()
     if preciseur is None:
         from preciser_citations import preciser_episode as preciseur
     if caleur is None:
@@ -268,6 +270,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
         _report_once(state, "extraction:client", f"⚠️ Extraction impossible : {exc}", notify)
         return 1
     _clear_error(state, "extraction:client")
+    modeles_llm.noter_capacites(client, model)
 
     from review_lock import LockBusy
     try:
@@ -277,6 +280,7 @@ def extraire(source_id: str, notify: Notify, state: dict[str, Any], *,
             for path, episode in pending:
                 _extract_one(source_id, path, episode, state, notify, client=client,
                              extractor=extractor, model=model, source=source,
+                             secours=secours if secours != model else None,
                              review_url=review_url, preciseur=preciseur, caleur=caleur)
     except LockBusy as exc:
         _report_once(state, "extraction:verrou",
@@ -291,8 +295,7 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     guid = episode["guid"]
     key = f"extraction:{guid}"
     try:
-        count = kwargs["extractor"](source_id, path, kwargs["client"], False,
-                                    model=kwargs["model"], source=kwargs["source"])
+        count = _extraire_ou_secourir(source_id, path, episode, notify, kwargs)
     except Exception as exc:  # noqa: BLE001
         _report_once(state, key,
                      f"⚠️ Extraction impossible pour « {_title(episode)} » : {exc}", notify)
@@ -324,6 +327,48 @@ def _extract_one(source_id: str, path: Path, episode: dict[str, Any],
     calage = f"\n{calage}" if calage else ""
     link = f"{kwargs['review_url'].rstrip('/')}/ep?guid={urllib.parse.quote(guid, safe='')}"
     notify(f"✅ {_title(episode)} : {count} reco(s) à valider.{precisees}{calage}\n{link}")
+
+
+def _extraire_ou_secourir(source_id: str, path: Path, episode: dict[str, Any],
+                         notify: Notify, kwargs: dict[str, Any]) -> int:
+    """Extrait avec le modèle configuré ; s'il a disparu (404), avec le secours.
+
+    Un modèle retiré arrêtait la chaîne en plein épisode. Le secours la fait
+    tourner, et le message demande de choisir un remplaçant mesuré.
+    """
+    def extraire_avec(modele: str) -> int:
+        return kwargs["extractor"](source_id, path, kwargs["client"], False,
+                                   model=modele, source=kwargs["source"])
+
+    secours = kwargs.get("secours")
+    try:
+        return extraire_avec(kwargs["model"])
+    except Exception as exc:
+        if not (secours and modeles_llm.modele_introuvable(exc)):
+            raise
+    modeles_llm.noter_capacites(kwargs["client"], secours)
+    count = extraire_avec(secours)
+    notify(f"⚠️ Modèle « {kwargs['model']} » introuvable : « {_title(episode)} » a été "
+           f"extrait avec le secours « {secours} ». Choisir un remplaçant au banc "
+           f"d'essai (banc_modeles.py), puis changer {modeles_llm.ENV_MODELE} dans le .env.")
+    return count
+
+
+# ===== veille des modèles ====================================================
+def veiller_modeles(source_id: str, notify: Notify, state: dict[str, Any], *,
+                    client_factory: Callable[[], Any] | None = None) -> int:
+    """Une fois par semaine : modèle disparu, ou plus récent dans sa famille."""
+    if client_factory is None:
+        from common import make_anthropic_client as client_factory
+    try:
+        modeles_llm.veiller(client_factory(), state, notify, source_id=source_id,
+                            modele=modeles_llm.modele_extraction(),
+                            secours=modeles_llm.modele_secours())
+    except Exception as exc:  # noqa: BLE001 — la chaîne continue sans veille.
+        _report_once(state, "veille-modeles", f"⚠️ Veille des modèles impossible : {exc}", notify)
+        return 1
+    _clear_error(state, "veille-modeles")
+    return 0
 
 
 # ===== finalisation ==========================================================
@@ -496,7 +541,7 @@ def build_notify(channel: str) -> Notify:
 # ===== CLI ===================================================================
 STEPS = ("detecter", "transcrire", "a-extraire", "extraire", "a-chercher-liens",
          "chercher-liens", "a-finaliser", "finaliser", "a-publier", "publier",
-         "a-commenter", "commenter")
+         "a-commenter", "commenter", "veiller-modeles")
 #: Étapes qui ne font que répondre « il y a du travail » (code 0) ou non (code 1).
 SONDES = {"a-extraire": ("à extraire", a_extraire),
           "a-chercher-liens": ("aux liens à chercher", lambda s, st: _liens_avant.a_chercher(s, st)),
@@ -551,6 +596,8 @@ def main(argv: list[str] | None = None) -> int:
             return publier(args.source, notify, state)
         if args.etape == "commenter":
             return commenter(args.source, notify, state)
+        if args.etape == "veiller-modeles":
+            return veiller_modeles(args.source, notify, state)
         return extraire(args.source, notify, state, review_url=args.review_url)
 
 

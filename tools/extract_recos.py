@@ -69,6 +69,7 @@ from extraction_history import (
 from extraction_history import (
     to_dict as _entry_to_dict,
 )
+from modeles_llm import MODELE_EXTRACTION_DEFAUT, accepte_effort, modele_extraction
 from review_lock import ServerLockBusy, acquire_pipeline_lock
 
 # Modèle d'extraction par défaut : Opus 5 (basculé depuis Haiku 4.5 le
@@ -82,8 +83,9 @@ from review_lock import ServerLockBusy, acquire_pipeline_lock
 #
 # Une reco manquée est perdue — la relecture ne peut pas la retrouver ; une
 # proposition en trop se refuse d'un clic. Haiku n'est en outre garanti que
-# jusqu'au 2026-10-15. Surchargé par --model.
-MODEL = "claude-opus-5"
+# jusqu'au 2026-10-15. Surchargé par --model, et par `RECO_MODELE_EXTRACTION`
+# dans le `.env` de venus (cf. `modeles_llm.py`).
+MODEL = MODELE_EXTRACTION_DEFAUT
 MAX_TOKENS = 8000
 # Les modèles à raisonnement adaptatif consomment le plafond de sortie pour
 # raisonner : on leur en laisse davantage, sans surcoût (la facturation suit
@@ -94,7 +96,9 @@ MAX_TOKENS_RAISONNEMENT = 16000
 # SANS retrouver une reco de plus. Les chiffres ci-dessus valent pour « medium ».
 EFFORT = "medium"
 # Seuls ces modèles acceptent `output_config.effort` ; Haiku 4.5 et Sonnet 4.5
-# renvoient une erreur 400 si on le leur envoie.
+# renvoient une erreur 400 si on le leur envoie. Liste historique : la décision
+# passe désormais par `modeles_llm.accepte_effort`, qui interroge l'API des
+# modèles et couvre les modèles sortis depuis.
 MODELES_AVEC_EFFORT = frozenset({
     "claude-opus-5", "claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6",
     "claude-sonnet-5", "claude-sonnet-4-6", "claude-fable-5", "claude-fable-5-1",
@@ -330,7 +334,7 @@ def _request_params(model: str, podcast_title: str, hosts: str, chunk: str) -> d
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
-    if model in MODELES_AVEC_EFFORT:
+    if accepte_effort(model):
         params["output_config"] = {"effort": EFFORT}
         params["max_tokens"] = MAX_TOKENS_RAISONNEMENT
     return params
@@ -950,7 +954,7 @@ def main() -> None:
                        help="Traite tous les épisodes (transcrits) de la source.")
     parser.add_argument("--limit", type=int, default=None,
                         help="Avec --all : limite le nombre d'épisodes.")
-    parser.add_argument("--model", default=MODEL,
+    parser.add_argument("--model", default=modele_extraction(),
                         help="Modèle LLM d'extraction (défaut: %(default)s).")
     parser.add_argument("--provider", choices=["anthropic", "openai"], default="anthropic",
                         help="Fournisseur LLM. OpenAI utile en repli si Anthropic est en panne.")
@@ -983,7 +987,7 @@ def main() -> None:
             client = None
         elif args.provider == "openai":
             client = make_openai_client()
-            if args.model == MODEL:  # encore le défaut Anthropic -> on switche
+            if args.model == modele_extraction():  # encore le défaut Anthropic -> on switche
                 args.model = "gpt-4o-mini"
             if args.batch:
                 log.warning("--batch ignoré avec --provider openai (mode synchrone).")

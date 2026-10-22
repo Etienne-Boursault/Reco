@@ -114,6 +114,38 @@ RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le messa
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 ```
 
+### Changer de modèle d'extraction : `RECO_MODELE_EXTRACTION`
+
+Les fournisseurs retirent leurs modèles tous les quelques mois. Le modèle se choisit
+dans le `.env`, **sans commit ni redéploiement** — mais jamais à l'aveugle : un autre
+modèle change ce que la chaîne trouve (mesuré le 2026-09-17, cf. `tools/extract_recos.py`).
+
+```
+RECO_MODELE_EXTRACTION=claude-opus-5   # défaut s'il est absent
+RECO_MODELE_SECOURS=claude-opus-5-5    # défaut ; « aucun » coupe le secours
+```
+
+- **Veille** : l'étape `veiller-modeles`, une fois par semaine, interroge la liste des
+  modèles d'Anthropic. Message Matrix si le modèle configuré (ou le secours) a disparu,
+  ou si un modèle plus récent de la même famille est sorti — chacun signalé une fois.
+  L'API ne donne pas les dates de retrait : elles arrivent par e-mail, trois mois avant.
+- **Banc d'essai**, avant tout changement — il rejoue l'extraction sur les épisodes
+  relus les plus récents et compare à la relecture (recos retrouvées, déjà écartées,
+  autres, coût par épisode). Rien n'est écrit dans le corpus ; compter ~0,56 $ par
+  épisode et par modèle avec Opus 5 :
+
+  ```sh
+  docker compose run --rm pipeline python banc_modeles.py --source un-bon-moment --plan
+  docker compose run --rm pipeline python banc_modeles.py --source un-bon-moment \
+    --modeles claude-opus-5 claude-opus-5-5
+  ```
+
+- **Secours** : si le fournisseur répond « modèle inconnu » (404), l'épisode est
+  extrait avec `RECO_MODELE_SECOURS` et un message le signale. Toute autre erreur
+  reste une erreur.
+- L'effort de raisonnement n'est envoyé qu'aux modèles qui l'acceptent, d'après l'API
+  des modèles : un nouveau modèle n'exige pas de modifier le code.
+
 ### Couper Qobuz sans redéployer : `RECO_QOBUZ=0`
 
 Qobuz n'a pas d'API : la passe lit ses pages web, et c'est la seule source du dépôt
