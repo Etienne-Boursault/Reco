@@ -17,6 +17,7 @@ from telemetry.context import (
     WORKFLOW_VERSION,
     RunHandle,
     StageHandle,
+    activate,
     current_run,
     current_stage,
     fingerprint,
@@ -36,7 +37,7 @@ from telemetry.recorder import (
 
 __all__ = [
     "INTENTS", "WORKFLOW_VERSION", "NoopTelemetryRecorder", "RunHandle",
-    "SQLiteTelemetryRecorder", "StageHandle", "TelemetryError", "TelemetryRecorder",
+    "SQLiteTelemetryRecorder", "StageHandle", "TelemetryError", "TelemetryRecorder", "activate",
     "current_run", "current_stage", "fingerprint", "get_recorder", "now_iso",
     "reset_cache", "safe_error", "stage", "workflow_run",
 ]
