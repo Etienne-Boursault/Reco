@@ -16,7 +16,8 @@
  *   jours.
  * - Signalements : le signalement reste — il retrace une correction —, mais
  *   le nom et l'e-mail laissés par le visiteur sont effacés au bout de 12
- *   mois.
+ *   mois, du fichier comme de la notification Matrix (`retention-matrix.mjs`,
+ *   passée par `server.mjs` dans `purges`).
  */
 import { existsSync, readdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -96,11 +97,14 @@ export function anonymiserSignalements(racine, maintenant = new Date(), mois = M
 /**
  * Applique les deux règles maintenant, puis chaque jour.
  *
+ * `purges` : purges asynchrones en plus (notifications Matrix), chacune
+ * rendant le nombre d'éléments effacés.
+ *
  * Une erreur est journalisée, jamais propagée : servir le site passe avant
  * le ménage. Le minuteur ne retient pas le processus (`unref`), pour ne pas
  * gêner l'arrêt propre au redéploiement.
  */
-export function planifierRetention(racine, { journal = console, intervalleMs = JOUR_MS } = {}) {
+export function planifierRetention(racine, { journal = console, intervalleMs = JOUR_MS, purges = [] } = {}) {
   const passer = () => {
     try {
       const mesures = purgerMesures(racine);
@@ -110,6 +114,14 @@ export function planifierRetention(racine, { journal = console, intervalleMs = J
       }
     } catch (err) {
       journal.error('[retention] échec :', err);
+    }
+    for (const purge of purges) {
+      Promise.resolve()
+        .then(purge)
+        .then((effaces) => {
+          if (effaces) journal.log(`[retention] ${effaces} notification(s) de signalement effacée(s)`);
+        })
+        .catch((err) => journal.error('[retention] échec :', err));
     }
   };
   passer();

@@ -286,7 +286,8 @@ python metrics_report.py purge --activity-days 395                  # battements
 ```
 
 Lecture seule, sauf `recover` (passe en `interrupted` ce qui est resté `started`
-au-delà du seuil, sans rien effacer) et `purge`. Une base absente donne des
+au-delà du seuil, sans rien effacer ; `tick.sh` le lance une fois par semaine) et
+`purge`. Une base absente donne des
 rapports vides, sans créer de fichier. Les exports vivent sous `tools/output/`
 (ignoré par Git), jamais sous `public/`.
 
