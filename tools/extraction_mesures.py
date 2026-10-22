@@ -82,8 +82,9 @@ class SuiviLot:
 
     def __init__(self, source_id: str, provider: str, model: str,
                  episode_paths: Iterable[Path], guids: list[str],
-                 meta: dict[str, dict[str, Any]]) -> None:
+                 meta: dict[str, dict[str, Any]], client: Any = None) -> None:
         self.provider, self.model, self.meta = provider, model, meta
+        self.client = client
         self.run = telemetry.current_run()
         self.batch_id: str | None = None
         self.etapes: dict[str, telemetry.StageHandle] = {}
@@ -139,7 +140,7 @@ class SuiviLot:
         m = self.meta.get(entry.custom_id)
         if m is None or m["guid"] not in self.etapes:
             return
-        appel = llm.Appel(self.provider, self.model, "batch", None)
+        appel = llm.Appel(self.provider, self.model, "batch", None, self.client)
         if entry.result.type == "succeeded":
             appel.reponse(entry.result.message)
             if candidats is not None:
