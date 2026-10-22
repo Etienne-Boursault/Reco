@@ -248,6 +248,12 @@ def test_un_run_qui_leve_est_en_echec_et_une_interruption_est_marquee(metrics_db
     assert _lignes(metrics_db, "SELECT status FROM stage_attempts")[0]["status"] == "interrupted"
 
 
+def test_un_passage_sans_travail_ne_laisse_aucun_run(metrics_db):
+    with telemetry.workflow_run(SOURCE, trigger="scheduler", command="transcrire"):
+        pass
+    assert _lignes(metrics_db, "SELECT id FROM workflow_runs") == []
+
+
 def test_un_saut_n_est_pas_une_execution(metrics_db):
     with telemetry.workflow_run(SOURCE, trigger="cli", command="t") as run, \
             run.stage("transcribe", episode_guid="g") as etape:
@@ -374,7 +380,7 @@ def test_en_mode_strict_une_perte_arrete_l_execution(tmp_path, monkeypatch):
     monkeypatch.setenv("RECO_METRICS_STRICT", "1")
     monkeypatch.setenv("RECO_METRICS_DB", str(bloque / "m.sqlite"))
     with pytest.raises(telemetry.TelemetryError):
-        with telemetry.workflow_run(SOURCE, trigger="cli", command="t"):
+        with telemetry.workflow_run(SOURCE, trigger="cli", command="t") as run,                 run.stage("transcribe"):
             pass
 
 

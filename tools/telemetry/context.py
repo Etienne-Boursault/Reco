@@ -193,10 +193,18 @@ class _NullStage(StageHandle):
 class RunHandle:
     def __init__(self, recorder: TelemetryRecorder, row: dict[str, Any]) -> None:
         self.recorder = recorder
+        self.row = row
         self.id: str = row["id"]
         self.source_id: str = row["source_id"]
         self.intent: str = row["intent"]
         self.failed_stages = 0
+        self.started = False
+
+    def ensure_started(self) -> None:
+        """Écrit le run à sa première étape : un passage sans travail ne laisse rien."""
+        if not self.started:
+            self.started = True
+            self.recorder.start_run(self.row)
 
     def _intent_for(self, stage: str, episode_guid: str | None) -> tuple[str, str | None]:
         if self.intent != "standard_first_pass":
@@ -219,6 +227,7 @@ class RunHandle:
         if intent not in INTENTS:
             raise ValueError(f"intention inconnue : {intent}")
         config = dict(config or {})
+        self.ensure_started()
         row = {"id": str(uuid.uuid4()), "workflow_run_id": self.id, "source_id": self.source_id,
                "episode_guid": episode_guid, "season": season, "stage": stage, "intent": intent,
                "correlation_id": f"{self.source_id}:{episode_guid}" if episode_guid else None,
@@ -255,7 +264,12 @@ class RunHandle:
 def workflow_run(source_id: str, *, trigger: str, command: str, intent: str | None = None,
                  config: Mapping[str, Any] | None = None, parent_run_id: str | None = None,
                  recorder: TelemetryRecorder | None = None) -> Iterator[RunHandle]:
-    """Ouvre un run racine, ou rejoint celui qui est déjà ouvert."""
+    """Ouvre un run racine, ou rejoint celui qui est déjà ouvert.
+
+    Le run n'est écrit qu'à sa première étape, ou s'il échoue : la chaîne de
+    venus passe toutes les dix minutes le dimanche, et un passage sans travail
+    n'est pas une exécution.
+    """
     deja = _RUN.get()
     if deja is not None:
         yield deja
@@ -272,7 +286,6 @@ def workflow_run(source_id: str, *, trigger: str, command: str, intent: str | No
            "config_fingerprint": fingerprint(config), "config_json": config,
            "machine_json": machine_profile(), "parent_run_id": parent_run_id,
            "started_at": now_iso(), "status": "started"}
-    recorder.start_run(row)
     handle = RunHandle(recorder, row)
     jeton = _RUN.set(handle)
     debut, cpu, pertes = time.perf_counter_ns(), time.process_time_ns(), recorder.lost
@@ -286,12 +299,15 @@ def workflow_run(source_id: str, *, trigger: str, command: str, intent: str | No
         _RUN.reset(jeton)
         if status == "succeeded" and handle.failed_stages:
             status = "partial"
+        if status != "succeeded":
+            handle.ensure_started()
         perdues = recorder.lost - pertes
-        recorder.finish_run(handle.id, {
-            "status": status, "ended_at": now_iso(),
-            "elapsed_ms": (time.perf_counter_ns() - debut) // 1_000_000,
-            "cpu_time_ms": (time.process_time_ns() - cpu) // 1_000_000,
-            "lost_observations": recorder.lost - pertes})
+        if handle.started:
+            recorder.finish_run(handle.id, {
+                "status": status, "ended_at": now_iso(),
+                "elapsed_ms": (time.perf_counter_ns() - debut) // 1_000_000,
+                "cpu_time_ms": (time.process_time_ns() - cpu) // 1_000_000,
+                "lost_observations": recorder.lost - pertes})
         if perdues:
             import logging
             logging.getLogger("reco.telemetry").warning(
