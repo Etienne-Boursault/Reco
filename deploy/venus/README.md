@@ -130,8 +130,8 @@ RECO_MODELE_SECOURS=claude-opus-5-5    # défaut ; « aucun » coupe le secours
 
 - **Veille** : l'étape `veiller-modeles`, une fois par semaine, interroge la liste des
   modèles d'Anthropic. Message Matrix si le modèle configuré (ou le secours) a disparu,
-  ou si un modèle plus récent de la même famille est sorti — chacun signalé une fois.
-  L'API ne donne pas les dates de retrait : elles arrivent par e-mail, trois mois avant.
+  si son retrait est annoncé (`retires_at` ou `deprecated_at` de l'API), ou si un modèle
+  plus récent de la même famille est sorti — chacun signalé une fois.
 - **Banc d'essai**, avant tout changement — il rejoue l'extraction sur les épisodes
   relus les plus récents et compare à la relecture (recos retrouvées, déjà écartées,
   autres, coût par épisode). Rien n'est écrit dans le corpus ; compter ~0,56 $ par

@@ -23,8 +23,8 @@ CE QU'IL FOURNIT
   (`noter_capacites`), sinon deduit du nom.
 - `cout(modele, entree, sortie)` : tarifs publics, pour le banc d'essai.
 - `veiller(...)` : une fois par semaine, signale un modele configure qui a
-  disparu, ou un modele plus recent de la meme famille. L'API ne donne pas les
-  dates de retrait : celles-ci arrivent par e-mail, trois mois a l'avance.
+  disparu ou dont le retrait est annonce (`retires_at`, `deprecated_at` de
+  l'API des modeles), ou un modele plus recent de la meme famille.
 """
 from __future__ import annotations
 
@@ -112,6 +112,11 @@ def accepte_effort(modele: str) -> bool:
     return _effort_selon_le_nom(modele)
 
 
+def _champ(objet: Any, nom: str) -> Any:
+    """Le SDK rend des objets types (`capabilities.effort`), pas des dicts."""
+    return objet[nom] if isinstance(objet, Mapping) else getattr(objet, nom)
+
+
 def noter_capacites(client: Any, modele: str) -> None:
     """Demande a l'API si le modele accepte `output_config.effort`.
 
@@ -119,7 +124,8 @@ def noter_capacites(client: Any, modele: str) -> None:
     """
     try:
         info = client.models.retrieve(modele)
-        _CAPACITES_EFFORT[modele] = bool(info.capabilities["effort"]["supported"])
+        effort = _champ(_champ(info, "capabilities"), "effort")
+        _CAPACITES_EFFORT[modele] = bool(_champ(effort, "supported"))
     except Exception as exc:  # noqa: BLE001 — la regle du nom prend le relais.
         log.info("Capacites de %s non lues (%s) : regle du nom.", modele, type(exc).__name__)
 
@@ -146,11 +152,11 @@ def _present(modele: str, ids: Mapping[str, Any]) -> Any | None:
 def veiller(client: Any, etat: dict[str, Any], notify: Callable[[str], None], *,
             source_id: str, modele: str, secours: str | None,
             maintenant: datetime | None = None) -> int:
-    """Une fois par semaine : modele disparu, ou plus recent dans sa famille.
+    """Une fois par semaine : modele disparu, retrait annonce, ou plus recent.
 
-    Rend le nombre de messages envoyes. Chaque nouveau modele n'est signale
-    qu'une fois (`etat["veilleModeles"]["signales"]`). Une erreur d'API remonte
-    a l'appelant, qui la signale une seule fois.
+    Rend le nombre de messages envoyes. Chaque nouveau modele, et chaque date de
+    retrait, n'est signale qu'une fois (`etat["veilleModeles"]["signales"]`).
+    Une erreur d'API remonte a l'appelant, qui la signale une seule fois.
     """
     maintenant = maintenant or datetime.now(UTC)
     veille = etat.setdefault("veilleModeles", {})
@@ -159,17 +165,31 @@ def veiller(client: Any, etat: dict[str, Any], notify: Callable[[str], None], *,
         return 0
 
     ids = {m.id: m for m in client.models.list()}
+    deja = set(veille.get("signales", []))
     messages = []
     for role, nom, variable in (("d'extraction", modele, ENV_MODELE),
                                 ("de secours", secours, ENV_SECOURS)):
-        if nom and _present(nom, ids) is None:
-            messages.append(
-                f"⚠️ Le modèle {role} « {nom} » n'est plus proposé par Anthropic. "
-                f"Choisir un remplaçant au banc d'essai, puis changer {variable} "
-                f"dans le .env de venus.")
+        if not nom:
+            continue
+        info = _present(nom, ids)
+        remplacer = (f"Choisir un remplaçant au banc d'essai, puis changer {variable} "
+                     f"dans le .env de venus.")
+        if info is None:
+            messages.append(f"⚠️ Le modèle {role} « {nom} » n'est plus proposé par "
+                            f"Anthropic. {remplacer}")
+            continue
+        # Champs hors du schema du SDK (1.11) : lus tels quels, vides jusqu'a
+        # l'annonce d'un retrait.
+        retrait = getattr(info, "retires_at", None)
+        obsolete = getattr(info, "deprecated_at", None)
+        cle = f"retrait:{nom}:{retrait or obsolete}"
+        if (retrait or obsolete) and cle not in deja:
+            quand = (f"sera retiré le {str(retrait)[:10]}" if retrait
+                     else f"est obsolète depuis le {str(obsolete)[:10]}")
+            messages.append(f"⏳ Le modèle {role} « {nom} » {quand}. {remplacer}")
+            deja.add(cle)
 
     reference = _present(modele, ids)
-    deja = set(veille.get("signales", []))
     if reference is not None and famille(modele):
         recents = sorted(
             (m for m in ids.values()

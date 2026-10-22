@@ -66,6 +66,17 @@ def test_l_api_des_modeles_prime_sur_le_nom():
     assert ml.accepte_effort("claude-opus-5") is False
 
 
+def test_les_capacites_typees_du_sdk_sont_lues():
+    # Forme rendue par anthropic 1.11 : des objets, pas des dicts.
+    effort = SimpleNamespace(supported=False)
+    info = SimpleNamespace(capabilities=SimpleNamespace(effort=effort))
+    client = SimpleNamespace(models=SimpleNamespace(retrieve=lambda modele: info))
+
+    ml.noter_capacites(client, "claude-opus-5")
+
+    assert ml.accepte_effort("claude-opus-5") is False
+
+
 def test_une_api_muette_laisse_la_regle_du_nom():
     ml.noter_capacites(SimpleNamespace(), "claude-opus-5")
     assert ml.accepte_effort("claude-opus-5") is True
@@ -119,6 +130,24 @@ def test_la_veille_signale_un_modele_disparu():
     assert len(recus) == 1  # l'alias couvre sa version datee
     assert "« claude-opus-5 » n'est plus proposé" in recus[0]
     assert "RECO_MODELE_EXTRACTION" in recus[0]
+
+
+def test_la_veille_signale_un_retrait_annonce_une_seule_fois():
+    opus = _modele("claude-opus-5", 1)
+    opus.retires_at = "2027-04-01T00:00:00Z"
+    secours = _modele("claude-sonnet-5", 1)
+    secours.deprecated_at = "2026-12-01T00:00:00Z"
+    client = _client(opus, secours)
+    etat, recus = {}, []
+
+    assert ml.veiller(client, etat, recus.append, source_id=SOURCE, modele="claude-opus-5",
+                      secours="claude-sonnet-5", maintenant=LUNDI) == 2
+    assert "« claude-opus-5 » sera retiré le 2027-04-01" in recus[0]
+    assert "RECO_MODELE_EXTRACTION" in recus[0]
+    assert "« claude-sonnet-5 » est obsolète depuis le 2026-12-01" in recus[1]
+
+    assert ml.veiller(client, etat, recus.append, source_id=SOURCE, modele="claude-opus-5",
+                      secours="claude-sonnet-5", maintenant=LUNDI + timedelta(days=7)) == 0
 
 
 # ===== cablage dans la chaine ===============================================
