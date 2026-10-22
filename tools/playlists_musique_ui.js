@@ -76,7 +76,11 @@ window.__lotSp = async (cle, ids, nom) => {
   for (const id of ids) {
     if (faits.includes(id)) continue;
     let r = 'err';
-    for (let essai = 0; essai < 2 && !['ok', 'doublon'].includes(r); essai++) {
+    for (let essai = 0; essai < 4 && !['ok', 'doublon'].includes(r); essai++) {
+      if (essai) {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        await __att(2500 * essai);
+      }
       try { r = await __ajout1(id, nom); } catch (e) { r = 'err ' + e.message; }
     }
     if (['ok', 'doublon'].includes(r)) {
