@@ -251,7 +251,7 @@ def test_un_run_qui_leve_est_en_echec_et_une_interruption_est_marquee(metrics_db
 def test_un_passage_sans_travail_ne_laisse_aucun_run(metrics_db):
     with telemetry.workflow_run(SOURCE, trigger="scheduler", command="transcrire"):
         pass
-    assert _lignes(metrics_db, "SELECT id FROM workflow_runs") == []
+    assert not metrics_db.exists()  # rien d'écrit, pas même la base
 
 
 def test_un_saut_n_est_pas_une_execution(metrics_db):
