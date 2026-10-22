@@ -35,7 +35,7 @@ def _statements(script: str) -> Iterable[str]:
 
 
 _TABLES = frozenset({"workflow_runs", "stage_attempts", "llm_batches", "batch_requests",
-                     "llm_calls", "review_events"})
+                     "llm_calls", "review_events", "review_activity"})
 _IDENTIFIANT = re.compile(r"^[a-z][a-z0-9_]*$")
 
 

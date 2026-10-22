@@ -47,6 +47,7 @@ from review_routes_reco import (
     _allocate_new_reco,
 )
 from review_routes_table import TableRoutesMixin
+from review_telemetrie import ReviewJournalMixin
 
 __all__ = [
     "Handler",
@@ -93,7 +94,7 @@ def _cleanup_orphan_tmp_files(source_id: str) -> int:
 
 
 class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
-              TableRoutesMixin, BaseHandler):
+              TableRoutesMixin, ReviewJournalMixin, BaseHandler):
     """Handler HTTP métier — assemble GET/POST sur les routes du review_server.
 
     Hérite de :
@@ -244,6 +245,14 @@ class Handler(MergeRoutesMixin, RecoCrudRoutesMixin, LienRoutesMixin,
             return
         data = _parse_post_data(self.rfile.read(length))
         route = urllib.parse.urlparse(self.path).path
+        if route == "/activite":
+            self._handle_activite(data)
+            return
+        # Avant/après sur disque : seules les écritures réussies sont journalisées.
+        with self._journal_revue(route, data):
+            self._router_post(route, data)
+
+    def _router_post(self, route: str, data: dict) -> None:
         if route == "/rename-guest":
             self._handle_rename_guest(data)
             return

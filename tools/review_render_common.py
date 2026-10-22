@@ -318,6 +318,7 @@ _CLIENT_JS_FILES = (
     "review_client_table.js",     # /tableau : tri des colonnes + autosave
     "review_client_resize.js",    # /tableau : largeur des colonnes ajustable
     "review_client_filter.js",    # /tableau : filtre par épisode
+    "review_client_activite.js",  # battements du temps actif (télémétrie locale)
 )
 try:
     _CLIENT_JS = "\n".join(

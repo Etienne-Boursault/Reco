@@ -87,6 +87,9 @@ class TelemetryRecorder:
     def record_review_event(self, row: Mapping[str, Any]) -> bool:
         return False
 
+    def record_activity(self, row: Mapping[str, Any]) -> bool:
+        return False
+
     def prior_attempts(self, source_id: str, episode_guid: str | None,
                        stage: str) -> list[dict[str, Any]]:
         return []
@@ -175,6 +178,10 @@ class SQLiteTelemetryRecorder(TelemetryRecorder):
     def record_review_event(self, row: Mapping[str, Any]) -> bool:
         return self._garde("événement de relecture", False,
                            lambda s: s.insert("review_events", row))
+
+    def record_activity(self, row: Mapping[str, Any]) -> bool:
+        return self._garde("battement d'activité", False,
+                           lambda s: s.insert("review_activity", row))
 
     # --- lectures utiles à l'exécution --------------------------------------
     def prior_attempts(self, source_id: str, episode_guid: str | None,

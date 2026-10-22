@@ -44,6 +44,7 @@ from typing import Any
 
 from common import log, read_json, recos_dir_for, write_json_if_changed
 from review_actions import SAVE_ACTIONS, apply_review_action
+from review_telemetrie import enregistrer_evenement
 
 VERDICTS: frozenset[str] = SAVE_ACTIONS | {"unsure"}
 
@@ -155,6 +156,12 @@ def apply_verdicts(raw: dict[str, Any], recos: dict[str, Draft], *, model: str,
                                             model=model, today=today)
         if not dry_run and write_json_if_changed(draft.path, reco):
             written += 1
+            # Verdict d'AGENT : journalisé à part, sans aucun temps humain.
+            verdict = entry["verdict"]
+            enregistrer_evenement(str(reco.get("sourceId") or ""), reco_id,
+                                  "mark_unsure" if verdict == "unsure" else verdict,
+                                  draft.reco, reco, actor_kind="agent",
+                                  metadata={"model": model})
     return written
 
 
