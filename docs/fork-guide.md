@@ -199,6 +199,40 @@ prompt, qui ont produit l'essentiel des corrections de ce corpus. Cf. §8 ter.
   (voir [`pieges-et-echecs.md`](pieges-et-echecs.md)). N'en dépendez pas.
 - `RECO_QUIET=1` — réduit la verbosité des CLIs (optionnel).
 
+### Mesure d'audience sans traceur (`/audience`)
+
+À poser au **runtime** (chez Infomaniak : en préfixe de la commande
+d'exécution, l'hébergeur n'a pas d'écran de variables). Sans elles, la page
+répond 404 et la mesure ne distingue pas les visiteurs.
+
+- `RECO_AUDIENCE_KEY` (≥ 16 caractères) — ouvre `/audience?cle=…`.
+- `RECO_AUDIENCE_SALT` (≥ 16 caractères) — sale l'empreinte quotidienne du
+  visiteur ; l'adresse IP n'est jamais écrite.
+- `RECO_SOURCES` (CSV de slugs) — rattache chaque chemin à sa source.
+
+Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
+(`src/server/retention.mjs`, ADR 0052).
+
+### Commentaire YouTube des recos (chaîne venus, optionnel)
+
+Inerte par défaut. Procédure complète dans `deploy/venus/README.md`.
+
+- `RECO_YT_COMMENTAIRES=1` — active l'étape.
+- `RECO_YT_CLIENT_ID`, `RECO_YT_CLIENT_SECRET`, `RECO_YT_REFRESH_TOKEN` —
+  obtenus une fois avec `tools/youtube_autoriser.py` (écran de consentement
+  Google **publié**, sinon le jeton expire en 7 jours).
+- `RECO_YT_COMMENTAIRES_DEPUIS` (AAAA-MM-JJ) — seuls les épisodes sortis
+  depuis cette date sont commentés.
+
+### Mentions légales — à réécrire pour votre instance
+
+`src/pages/mentions-legales.astro` décrit **cette** instance : éditeur
+anonyme, hébergement Infomaniak, données mesurées. Remplacez l'éditeur et
+l'hébergeur par les vôtres. Les durées de conservation, elles, viennent de
+`src/server/retention.mjs` : changez-les là, la page suit. Toute ressource
+tierce ajoutée (image, police, script) doit y être déclarée — par défaut,
+afficher une page ne contacte aucun autre service (ADR 0052).
+
 ## 8 bis. Ce que ça demande vraiment
 
 Chiffres relevés sur l'instance de référence — **110 épisodes, 165 heures

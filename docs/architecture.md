@@ -70,6 +70,23 @@ différent, opérations de maintenance indépendantes
 - **Tokens design** : `src/lib/tokens.ts` — contrast WCAG AA vérifié en CI.
   Cf. [ADR 0030 — Design tokens theming](adr/0030-design-tokens-theming.md).
 
+## Serveur de production (`server.mjs`)
+
+Un serveur Node sans dépendance, devant l'adaptateur Astro, derrière le proxy
+de l'hébergeur (pas de CDN). Toute sa logique vit dans `src/server/` et y est
+testée à 100 % des branches :
+
+- **Redirections** (`redirections.mjs`) — 301 des fiches d'œuvre fusionnées,
+  avant tout le reste ([ADR 0053](adr/0053-redirections-fiches-fusionnees.md)).
+- **Fichiers et compression** (`fichiers.mjs`, `compression.mjs`) — sert
+  `dist/client`, y compris `public/vignettes/`.
+- **Mesure d'audience** (`src/lib/audience/`) — une ligne par page servie, sans
+  cookie ni IP ; lue par `/audience`.
+- **Conservation** (`retention.mjs`) — purge des mesures à 13 mois, nom et
+  e-mail des signalements effacés à 12 mois
+  ([ADR 0052](adr/0052-donnees-visiteurs-durees-et-tiers.md)).
+- **Maintenance** (`maintenance.mjs`) — page 503 si la construction a échoué.
+
 ## Multi-source
 
 ```
