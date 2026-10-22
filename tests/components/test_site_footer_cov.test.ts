@@ -40,6 +40,7 @@ describe('SiteFooter — structure', () => {
     expect(html).toContain('href="/stats"');
     expect(html).toContain('href="/a-propos"');
     expect(html).toContain('href="/manifeste"');
+    expect(html).toContain('href="/mentions-legales"');
   });
 
   it('tagline i18n par défaut', async () => {
