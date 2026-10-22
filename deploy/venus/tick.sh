@@ -61,6 +61,9 @@ fi
 if outil a-commenter; then
   outil commenter || horodater "commentaire YouTube en échec"
 fi
+# Une fois par semaine (l'étape se l'impose) : modèle d'extraction disparu, ou
+# plus récent dans sa famille. Un message Matrix, jamais de bascule automatique.
+outil veiller-modeles || horodater "veille des modèles en échec"
 
 # Moniteur « push » Uptime Kuma : sans lui, une chaîne qui s'arrête ne se
 # remarque qu'au prochain épisode manqué. Kuma tourne sur venus et ne peut pas
