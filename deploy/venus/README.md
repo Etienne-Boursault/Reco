@@ -61,7 +61,10 @@ La séquence évite un piège : le clone est sur `main`, et `tick.sh` fait `git 
 --ff-only` à chaque passage. Un commit laissé sur `main` en local ferait échouer ce pull
 dès la fusion de la PR.
 
-1. `git add` des seuls fichiers de l'épisode — épisode, recos, mentions, œuvres ;
+1. `git add` des seuls fichiers de l'épisode — épisode, recos, mentions, œuvres, et ses
+   vignettes (`public/vignettes/`), téléchargées juste avant par
+   `tools/vignettes_episodes.py`. Une vignette introuvable ne bloque pas la publication :
+   la carte s'affiche alors sans image (ADR 0052) ;
 2. commit, puis poussée sur `contenu/<guid>` ;
 3. **vérification** que la branche distante porte bien ce commit ;
 4. alors seulement, `main` revient sur `origin/main` (`reset --mixed`, jamais `--hard`,

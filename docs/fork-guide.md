@@ -199,6 +199,52 @@ prompt, qui ont produit l'essentiel des corrections de ce corpus. Cf. §8 ter.
   (voir [`pieges-et-echecs.md`](pieges-et-echecs.md)). N'en dépendez pas.
 - `RECO_QUIET=1` — réduit la verbosité des CLIs (optionnel).
 
+### Mesure d'audience sans traceur (`/audience`)
+
+À poser au **runtime** (chez Infomaniak : en préfixe de la commande
+d'exécution, l'hébergeur n'a pas d'écran de variables). Sans elles, la page
+répond 404 et la mesure ne distingue pas les visiteurs.
+
+- `RECO_AUDIENCE_KEY` (≥ 16 caractères) — ouvre `/audience?cle=…`.
+- `RECO_AUDIENCE_SALT` (≥ 16 caractères) — sale l'empreinte quotidienne du
+  visiteur ; l'adresse IP n'est jamais écrite.
+- `RECO_SOURCES` (CSV de slugs) — rattache chaque chemin à sa source.
+
+Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
+(`src/server/retention.mjs`, ADR 0052).
+
+### Modèle d'extraction (chaîne venus)
+
+- `RECO_MODELE_EXTRACTION` — modèle utilisé par la chaîne (défaut :
+  `claude-opus-5`). À changer **après** un passage au banc d'essai
+  (`tools/banc_modeles.py`), qui compare un modèle à vos épisodes déjà relus :
+  un autre modèle change ce que la chaîne trouve.
+- `RECO_MODELE_SECOURS` — modèle de repli quand le fournisseur ne connaît plus
+  le modèle configuré (défaut : `claude-opus-5-5` ; `aucun` le coupe).
+
+L'étape `veiller-modeles` prévient chaque semaine d'un modèle disparu ou d'un
+plus récent dans la même famille. Procédure : `deploy/venus/README.md`.
+
+### Commentaire YouTube des recos (chaîne venus, optionnel)
+
+Inerte par défaut. Procédure complète dans `deploy/venus/README.md`.
+
+- `RECO_YT_COMMENTAIRES=1` — active l'étape.
+- `RECO_YT_CLIENT_ID`, `RECO_YT_CLIENT_SECRET`, `RECO_YT_REFRESH_TOKEN` —
+  obtenus une fois avec `tools/youtube_autoriser.py` (écran de consentement
+  Google **publié**, sinon le jeton expire en 7 jours).
+- `RECO_YT_COMMENTAIRES_DEPUIS` (AAAA-MM-JJ) — seuls les épisodes sortis
+  depuis cette date sont commentés.
+
+### Mentions légales — à réécrire pour votre instance
+
+`src/pages/mentions-legales.astro` décrit **cette** instance : éditeur
+anonyme, hébergement Infomaniak, données mesurées. Remplacez l'éditeur et
+l'hébergeur par les vôtres. Les durées de conservation, elles, viennent de
+`src/server/retention.mjs` : changez-les là, la page suit. Toute ressource
+tierce ajoutée (image, police, script) doit y être déclarée — par défaut,
+afficher une page ne contacte aucun autre service (ADR 0052).
+
 ## 8 bis. Ce que ça demande vraiment
 
 Chiffres relevés sur l'instance de référence — **110 épisodes, 165 heures

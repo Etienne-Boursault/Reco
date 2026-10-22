@@ -44,6 +44,8 @@ Index complet dans [`adr/`](adr/). Sélection structurante :
 | [0042](adr/0042-cron-rss-auto-notification.md) | Cron RSS auto + notification |
 | [0050](adr/0050-cartes-partage-cache-persistant.md) | Carte de partage par œuvre, cache persistant |
 | [0051](adr/0051-conventions-interface.md) | Conventions d'interface (appui, cibles, accent, vocabulaire) |
+| [0052](adr/0052-donnees-visiteurs-durees-et-tiers.md) | Données des visiteurs : durées appliquées, aucun tiers à l'affichage |
+| [0053](adr/0053-redirections-fiches-fusionnees.md) | Redirections 301 des fiches d'œuvre fusionnées |
 
 ## Rapports de phase
 

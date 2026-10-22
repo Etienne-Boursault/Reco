@@ -235,6 +235,23 @@ construction.
 Si vous observez plusieurs minutes d'indisponibilité, ce n'est pas la durée
 normale du build : **c'est que la construction a échoué**.
 
+### Au runtime, le serveur ne connaît pas son propre domaine
+
+Chez Infomaniak, la commande de démarrage ne définit pas `SITE_URL`, et le
+proxy placé devant l'application ne transmet pas le domaine public :
+`Astro.url` ne le porte pas non plus. Le tableau d'audience comptait donc
+chaque clic interne comme une arrivée depuis `unebonnere.co`, en tête des
+provenances. Ce qui doit connaître le domaine en production lit
+**`Astro.site`**, fixé au build (PR #122).
+
+### Une PR empilée meurt avec la branche qu'elle vise
+
+Une PR ouverte sur la branche d'une autre PR n'est **pas** reciblée sur `main`
+quand cette branche est supprimée par `gh pr merge --delete-branch` : GitHub
+la ferme, et elle ne peut plus être rouverte. Il faut en ouvrir une nouvelle
+depuis la même branche (#124 → #125), ou fusionner la première sans supprimer
+sa branche.
+
 ---
 
 ## Interface
@@ -323,3 +340,19 @@ de l'outil de mesure, pas du système mesuré :
 
 > Avant de conclure qu'un système est cassé, vérifiez la commande qui vous l'a
 > fait croire.
+
+Le tableau d'audience, lui, a menti trois fois en affichant des chiffres
+plausibles :
+
+- **« 0 clic par visiteur »** : 39 clics pour 1 182 visiteurs font 0,033,
+  arrondi au dixième. Le rapport est désormais donné pour 100 visiteurs.
+- **Les survols comptaient comme des pages vues** : `prefetch: hover`
+  d'Astro charge une page dès qu'on survole son lien. Le navigateur le dit
+  (`Sec-Purpose: prefetch`, ou `Sec-Fetch-Mode` autre que `navigate`).
+- **La moitié des « visiteurs » étaient des scripts** : un robot qui se fait
+  passer pour Chrome ne contient pas « bot » dans son agent, mais n'envoie
+  presque jamais `Accept-Language`. Indices concordants : 95 % « ordinateur »,
+  pays de centres de données, presque tout sur l'accueil.
+
+> Un tableau de bord ne tombe pas en panne : il affiche un chiffre plausible.
+> Recoupez-le avec un signal indépendant (ici, les clics et les pays).
