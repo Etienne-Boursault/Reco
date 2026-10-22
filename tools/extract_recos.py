@@ -368,7 +368,8 @@ class _AnthropicExtractor:
                 chunk: str) -> list[dict[str, Any]]:
         params = _request_params(model, podcast_title, hosts, chunk)
         # L'usage est relevé sur la réponse AVANT d'en extraire les recos.
-        with _llm.appel("anthropic", model, request=_llm.requete(params)) as appel:
+        with _llm.appel("anthropic", model, request=_llm.requete(params),
+                        client=self.client) as appel:
             message = self.client.messages.create(**params)
             appel.reponse(message)
             recos = _parse_recos_from_content(message.content)
@@ -388,7 +389,8 @@ class _OpenAIExtractor:
             podcast_title=podcast_title, hosts=hosts,
             types=", ".join(sorted(VALID_TYPES)), chunk=chunk,
         )
-        with _llm.appel("openai", model, request={"max_tokens": MAX_TOKENS}) as appel:
+        with _llm.appel("openai", model, request={"max_tokens": MAX_TOKENS},
+                        client=self.client) as appel:
             resp = self.client.chat.completions.create(
                 model=model,
                 messages=[
@@ -966,7 +968,8 @@ def _extract_all_batch(source_id: str, episode_paths: list[Path], client: Any,
     log.info("Batch : %d requête(s) sur %d épisode(s), modèle %s.",
              len(requests), len(guids), model)
 
-    suivi = _mesures.SuiviLot(source_id, provider, model, episode_paths, guids, meta)
+    suivi = _mesures.SuiviLot(source_id, provider, model, episode_paths, guids, meta,
+                              client=client)
     try:
         debut = time.perf_counter_ns()
         batch_id = _submit_batch(client, requests)
