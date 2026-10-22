@@ -137,6 +137,34 @@ def _isolate_review_lock_paths(tmp_path_factory, monkeypatch):
     )
 
 
+@pytest.fixture(autouse=True)
+def _telemetrie_coupee(monkeypatch):
+    """Aucun test n'écrit dans la vraie base de télémétrie (tools/output).
+
+    Les tests de la télémétrie la rallument sur une base temporaire
+    (fixture `metrics_db`).
+    """
+    import telemetry
+    monkeypatch.setenv("RECO_METRICS_ENABLED", "0")
+    monkeypatch.delenv("RECO_METRICS_DB", raising=False)
+    monkeypatch.delenv("RECO_METRICS_STRICT", raising=False)
+    monkeypatch.delenv("RECO_PIPELINE_PROFILE", raising=False)
+    monkeypatch.delenv("RECO_RUN_INTENT", raising=False)
+    yield
+    telemetry.reset_cache()
+
+
+@pytest.fixture
+def metrics_db(tmp_path, monkeypatch):
+    """Télémétrie active sur une base temporaire ; rend son chemin."""
+    import telemetry
+    telemetry.reset_cache()
+    chemin = tmp_path / "telemetry" / "reco_metrics.sqlite"
+    monkeypatch.setenv("RECO_METRICS_ENABLED", "1")
+    monkeypatch.setenv("RECO_METRICS_DB", str(chemin))
+    return chemin
+
+
 @pytest.fixture
 def anthropic_client_returning():
     """Factory : fabrique un MagicMock Anthropic dont messages.create renvoie
