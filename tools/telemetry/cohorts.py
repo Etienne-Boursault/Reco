@@ -9,8 +9,11 @@ honnête (`insufficient_data`), pas une panne du rapport.
 Un épisode est retenu si, pour CHAQUE étape requise (transcription, extraction) :
   1. sa saison est écrite dans le catalogue et vaut la saison demandée ;
   2. une tentative `standard_first_pass` a RÉUSSI (pas un saut, pas un cache) ;
-  3. cette tentative a la configuration de référence (profil déclaré, sinon
-     l'empreinte de configuration la plus fréquente parmi les candidats) ;
+  3. cette tentative a la configuration de référence : l'empreinte de
+     configuration la plus fréquente parmi les candidats. Un profil déclaré
+     (`RECO_PIPELINE_PROFILE`) n'est qu'une étiquette : il ne remplace jamais
+     l'empreinte, qui change d'elle-même avec le modèle, le prompt, le
+     découpage ou le moteur ;
   4. l'origine du média est celle de la référence ;
   5. aucune migration de source ni expérience réétiquetée n'a touché l'épisode ;
   6. les mesures indispensables sont là (durée audio ; usage de chaque appel).
@@ -44,13 +47,8 @@ def _passe_nominale(tentatives: list[dict[str, Any]], etape: str) -> dict[str, A
                  and t["intent"] == "standard_first_pass" and t["status"] == "succeeded"), None)
 
 
-def _cle_config(tentative: dict[str, Any], profils: dict[str, str | None]) -> str | None:
-    profil = profils.get(tentative["workflow_run_id"])
-    return f"profil:{profil}" if profil else tentative.get("config_fingerprint")
-
-
 def _exclusion(tentatives: list[dict[str, Any]], appels: dict[str, list[dict[str, Any]]],
-               reference: dict[str, Any], profils: dict[str, str | None]) -> str | None:
+               reference: dict[str, Any]) -> str | None:
     if not tentatives:
         return "no_telemetry"
     intents = {t["intent"] for t in tentatives}
@@ -71,7 +69,7 @@ def _exclusion(tentatives: list[dict[str, Any]], appels: dict[str, list[dict[str
             return "retry_only" if repris else "not_succeeded"
     for etape in REQUIRED_STAGES:
         passe = _passe_nominale(tentatives, etape)
-        if _cle_config(passe, profils) != reference["config"].get(etape):
+        if passe.get("config_fingerprint") != reference["config"].get(etape):
             return "mixed_configuration"
     transcription = _passe_nominale(tentatives, "transcribe")
     if transcription.get("media_origin") != reference["media_origin"]:
@@ -85,30 +83,35 @@ def _exclusion(tentatives: list[dict[str, Any]], appels: dict[str, list[dict[str
     return None
 
 
-def reference(par_episode: dict[str, list[dict[str, Any]]], candidats: list[str],
-              profils: dict[str, str | None], profil: str | None) -> dict[str, Any]:
-    """Configuration de référence : le profil demandé, sinon la plus fréquente."""
+def reference(par_episode: dict[str, list[dict[str, Any]]],
+              candidats: list[str]) -> dict[str, Any]:
+    """Configuration de référence : l'empreinte la plus fréquente, par étape."""
     config: dict[str, str | None] = {}
     for etape in REQUIRED_STAGES:
-        cles = Counter(_cle_config(p, profils) for g in candidats
+        cles = Counter(p.get("config_fingerprint") for g in candidats
                        if (p := _passe_nominale(par_episode.get(g, []), etape)) is not None)
-        config[etape] = (f"profil:{profil}" if profil
-                         else (cles.most_common(1)[0][0] if cles else None))
+        config[etape] = cles.most_common(1)[0][0] if cles else None
     origines = Counter(p.get("media_origin") for g in candidats
                        if (p := _passe_nominale(par_episode.get(g, []), "transcribe")) is not None)
-    return {"profile": profil, "config": config,
+    return {"config": config,
             "media_origin": origines.most_common(1)[0][0] if origines else None,
-            "chosenBy": "profile" if profil else "most_frequent_fingerprint"}
+            "chosenBy": "most_frequent_fingerprint"}
+
+
+def _etiquette(donnees: Donnees, episodes: list[str]) -> str | None:
+    """Le profil déclaré des runs retenus, s'il est unique : une étiquette, rien de plus."""
+    runs = {t["workflow_run_id"] for t in donnees.attempts if t.get("episode_guid") in episodes}
+    profils = {r.get("pipeline_profile") for r in donnees.runs if r["id"] in runs}
+    return profils.pop() if len(profils) == 1 else None
 
 
 def selection(donnees: Donnees, catalogue: dict[str, dict[str, Any]], *, season: int,
-              profil: str | None = None, min_episodes: int = MIN_EPISODES) -> dict[str, Any]:
+              min_episodes: int = MIN_EPISODES) -> dict[str, Any]:
     """Rapport de sélection : retenus, exclus avec leur code, et référence."""
     par_episode = donnees.tentatives_par_episode()
     appels = donnees.appels_de()
-    profils = {r["id"]: r.get("pipeline_profile") for r in donnees.runs}
     de_la_saison = [g for g, ep in catalogue.items() if _saison(ep.get("season")) == season]
-    ref = reference(par_episode, de_la_saison, profils, profil)
+    ref = reference(par_episode, de_la_saison)
 
     episodes, exclus = [], defaultdict(list)
     for guid in sorted(catalogue):
@@ -119,7 +122,7 @@ def selection(donnees: Donnees, catalogue: dict[str, dict[str, Any]], *, season:
         elif saison != season:
             code = "not_season"
         else:
-            code = _exclusion(par_episode.get(guid, []), appels, ref, profils)
+            code = _exclusion(par_episode.get(guid, []), appels, ref)
         if code is None:
             episodes.append(guid)
         else:
@@ -128,7 +131,7 @@ def selection(donnees: Donnees, catalogue: dict[str, dict[str, Any]], *, season:
     return {
         "selector": f"s{season}-standard-first-pass",
         "season": season, "intent": "standard_first_pass",
-        "workflowProfile": profil, "reference": ref,
+        "workflowProfile": _etiquette(donnees, episodes), "reference": ref,
         "requiredStages": list(REQUIRED_STAGES), "minEpisodes": min_episodes,
         "candidateEpisodeCount": len(de_la_saison),
         "includedEpisodeCount": len(episodes), "includedEpisodes": episodes,

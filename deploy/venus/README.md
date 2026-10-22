@@ -266,9 +266,8 @@ docker compose run --rm pipeline python -c \
 Chaque étape de la chaîne écrit ses mesures dans
 `depot/tools/output/telemetry/reco_metrics.sqlite` (durées, origine du média,
 jetons et coût des appels, actions et temps actif de la page de validation).
-Rien à commiter, rien à configurer. Réglages facultatifs du `.env` :
-`RECO_PIPELINE_PROFILE` (nom de la configuration de référence, par exemple
-`ubm-s6-prod-2026-10`), `RECO_COST_OWNER=reco_managed`.
+Rien à commiter, rien à configurer : la configuration de chaque passe est
+reconnue par son empreinte, et le payeur des appels se déduit de la clé.
 
 ```sh
 docker compose run --rm pipeline python metrics_report.py coverage --source un-bon-moment

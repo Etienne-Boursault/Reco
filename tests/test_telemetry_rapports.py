@@ -134,14 +134,26 @@ def test_trop_peu_d_episodes_est_un_resultat_honnete(jeu):
     assert sel["status"] == "insufficient_data" and sel["includedEpisodeCount"] == 3
 
 
-def test_un_profil_declare_devient_la_reference(jeu, monkeypatch, corpus):
+def test_un_profil_n_efface_jamais_un_changement_de_configuration(metrics_db, corpus,
+                                                                  monkeypatch):
+    # Même étiquette, mais le modèle a changé sans qu'on la renomme.
     monkeypatch.setenv("RECO_PIPELINE_PROFILE", "ubm-s6-prod-2026-10")
-    corpus("s6-profil", 6)
-    passe("s6-profil")
-    sel = cohorts.selection(_donnees(jeu), catalogue(SOURCE), season=6,
-                            profil="ubm-s6-prod-2026-10", min_episodes=1)
-    assert sel["includedEpisodes"] == ["s6-profil"]
-    assert sel["reference"]["chosenBy"] == "profile"
+    for guid in ("s6-a", "s6-b", "s6-c"):
+        corpus(guid, 6)
+        passe(guid)
+    corpus("s6-sonnet", 6)
+    passe("s6-sonnet", config_e={**CONFIG_E, "model": "claude-sonnet-5-5"})
+    sel = cohorts.selection(_donnees(metrics_db), catalogue(SOURCE), season=6)
+    assert sel["includedEpisodes"] == ["s6-a", "s6-b", "s6-c"]
+    assert sel["excluded"] == [{"reason": "mixed_configuration", "count": 1,
+                                "episodes": ["s6-sonnet"]}]
+    assert sel["workflowProfile"] == "ubm-s6-prod-2026-10"  # étiquette, rien de plus
+    assert sel["reference"]["chosenBy"] == "most_frequent_fingerprint"
+
+
+def test_plusieurs_profils_ne_donnent_pas_d_etiquette(jeu):
+    assert cohorts.selection(_donnees(jeu), catalogue(SOURCE), season=6)[
+        "workflowProfile"] is None
 
 
 def test_l_echec_sans_reprise_n_est_pas_qualifie(metrics_db, corpus):

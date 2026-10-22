@@ -18,7 +18,7 @@ métrique ne demande aucun commit.
 | `RECO_METRICS_DB` | `tools/output/telemetry/reco_metrics.sqlite` | chemin de la base (ignorée par Git) |
 | `RECO_METRICS_STRICT` | `0` | `1` : une observation impossible à écrire arrête l'exécution |
 | `RECO_METRICS_JOURNAL` | `wal` | `delete` sur un disque réseau, où le WAL est déconseillé |
-| `RECO_PIPELINE_PROFILE` | — | profil déclaré de la configuration (ex. `ubm-s6-prod-2026-10`) |
+| `RECO_PIPELINE_PROFILE` | — | étiquette lisible des runs (ex. `ubm-s6-opus55-2026-10`) ; n'entre pas dans la sélection de cohorte |
 | `RECO_RUN_INTENT` | `unknown` | intention par défaut d'un run lancé à la main |
 
 Sur venus, `tools/output/` est dans le clone monté en `/app` : la base survit
@@ -317,8 +317,10 @@ pour la transcription ET l'extraction :
 1. sa saison est écrite dans le catalogue (`season` de l'épisode, tirée du
    titre « S6-E05 » à la détection) et vaut 6 ;
 2. une tentative `standard_first_pass` a **réussi** (pas un cache, pas un saut) ;
-3. elle a la configuration de référence : le profil déclaré (`--profile`), sinon
-   l'empreinte de configuration la plus fréquente parmi les candidats ;
+3. elle a la configuration de référence : l'empreinte de configuration la plus
+   fréquente parmi les candidats. L'empreinte change d'elle-même avec le
+   modèle, le prompt, le découpage ou la version du moteur ; un profil déclaré
+   n'est qu'une étiquette et ne la remplace jamais ;
 4. l'origine du média est celle de la référence (YouTube) ;
 5. aucune migration de source n'a touché l'épisode ;
 6. la durée audio et l'usage de **chaque** appel sont mesurés.

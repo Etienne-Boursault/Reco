@@ -3,7 +3,7 @@ metrics_report.py — lire la télémétrie du pipeline, sans la mélanger.
 
     python metrics_report.py coverage --source un-bon-moment
     python metrics_report.py workflows --source un-bon-moment --format json|csv
-    python metrics_report.py cohort --source un-bon-moment --season 6 [--profile P]
+    python metrics_report.py cohort --source un-bon-moment --season 6
     python metrics_report.py summary --source un-bon-moment --cohort qualified|all \\
         --format markdown|json
     python metrics_report.py export --source un-bon-moment --season 6 \\
@@ -47,7 +47,7 @@ def _imprimer(objet: Any, sortie: Path | None = None) -> None:
 
 def _cohorte(args: argparse.Namespace, donnees: Donnees) -> dict[str, Any]:
     return cohorts.selection(donnees, catalogue(args.source), season=args.season,
-                             profil=args.profile, min_episodes=args.min_episodes)
+                             min_episodes=args.min_episodes)
 
 
 def _finaliser_interrompus(base: Path, heures: float, maintenant: datetime) -> dict[str, int]:
@@ -89,8 +89,6 @@ def main(argv: list[str] | None = None, *, maintenant: datetime | None = None) -
     parser.add_argument("--intent", default="standard_first_pass",
                         choices=["standard_first_pass"],
                         help="Seule la première passe nominale forme une cohorte.")
-    parser.add_argument("--profile", default=None,
-                        help="Profil de référence (RECO_PIPELINE_PROFILE des runs).")
     parser.add_argument("--min-episodes", type=int, default=cohorts.MIN_EPISODES)
     parser.add_argument("--cohort", choices=["qualified", "all"], default="qualified")
     parser.add_argument("--format", choices=["json", "markdown", "csv"], default="json")
