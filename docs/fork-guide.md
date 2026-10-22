@@ -222,8 +222,29 @@ Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
 - `RECO_MODELE_SECOURS` — modèle de repli quand le fournisseur ne connaît plus
   le modèle configuré (défaut : `claude-opus-5-5` ; `aucun` le coupe).
 
-L'étape `veiller-modeles` prévient chaque semaine d'un modèle disparu ou d'un
-plus récent dans la même famille. Procédure : `deploy/venus/README.md`.
+L'étape `veiller-modeles` prévient chaque semaine d'un modèle disparu, d'un
+retrait annoncé par le fournisseur ou d'un plus récent dans la même famille.
+Procédure : `deploy/venus/README.md`.
+
+### Métriques du pipeline (actives par défaut)
+
+Chaque exécution (transcription, extraction, finalisation…) et chaque décision
+de relecture est mesurée dans `tools/output/telemetry/reco_metrics.sqlite`,
+hors du catalogue : rien à commiter. Contrat et limites :
+[`workflow-metrics.md`](workflow-metrics.md), ADR 0054.
+
+- `RECO_METRICS_ENABLED` — `0` coupe la mesure (défaut : active).
+- `RECO_METRICS_DB` — autre emplacement pour la base.
+- `RECO_METRICS_STRICT` — `1` : une mesure impossible à écrire arrête
+  l'exécution (calibrations) ; sinon elle est comptée perdue, jamais en zéro.
+- `RECO_METRICS_JOURNAL=delete` — si `tools/output` est sur un disque réseau.
+- `RECO_RUN_INTENT` — raison d'une exécution lancée à la main
+  (`experiment`, `source_migration`…), comme l'option `--intent` des CLI.
+
+Lire les mesures : `python tools/metrics_report.py coverage|cohort|summary|export
+--source <votre-source>`. Le coût des appels suit `tools/telemetry/tarifs.json`
+(tarifs datés) : à compléter pour un fournisseur ou un modèle qui n'y est pas,
+sinon le coût reste inconnu.
 
 ### Commentaire YouTube des recos (chaîne venus, optionnel)
 

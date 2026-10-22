@@ -47,6 +47,7 @@ Index complet dans [`adr/`](adr/). Sélection structurante :
 | [0051](adr/0051-conventions-interface.md) | Conventions d'interface (appui, cibles, accent, vocabulaire) |
 | [0052](adr/0052-donnees-visiteurs-durees-et-tiers.md) | Données des visiteurs : durées appliquées, aucun tiers à l'affichage |
 | [0053](adr/0053-redirections-fiches-fusionnees.md) | Redirections 301 des fiches d'œuvre fusionnées |
+| [0054](adr/0054-metriques-de-workflow.md) | Mesurer les exécutions du pipeline, sans rien reconstruire |
 
 ## Rapports de phase
 
