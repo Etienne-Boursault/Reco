@@ -215,3 +215,57 @@ déduit du client, à sa création, selon d'où vient sa clé : un client fait p
 l'opérateur) est `reco_managed`. Un futur client à clé fournie par
 l'utilisateur sera `user_byok` (des jetons qu'il paie ne sont pas à refacturer
 par Reco). Un client sans marque : `unknown`, jamais une supposition.
+
+### Relecture
+
+Journal append-only (`review_events`), écrit **après** l'écriture du fichier de
+la reco, jamais à l'ouverture d'un formulaire. Un seul branchement : chaque POST
+de la page de relecture relit sur disque les recos visées avant et après
+l'action (et repère au listage du dossier les recos apparues) ; seul ce qui a
+changé est journalisé. Une action refusée, un aperçu, une annulation sans objet
+n'écrivent rien.
+
+| Action | Origine |
+|---|---|
+| `validate`, `discard`, `citation`, `guest-work` | `POST /save`, ou décision de `/consolidate` |
+| `edit` | `/edit`, `/retirer-lien`, `/accept-type`, `/rename-guest` |
+| `add`, `delete`, `merge`, `undo`, `reenrich` | routes du même nom (`undo` : `/undo-save`, `/undo-merge`) |
+| `mark_unsure` | verdict `unsure` d'un agent |
+
+Champs modifiés : leurs **noms**, jamais leurs valeurs. Catégories **dérivées**
+(pas une seconde action) : `reassign_speaker` (`recommendedBy`),
+`timestamp_corrected`, `type_corrected`, `external_link_corrected` (`links`,
+`linksRejected`), `title_corrected`, `creator_corrected`, `year_corrected`,
+`quote_corrected`, `kind_changed`.
+
+Acteur : un clic de la page → `human` ; `apply_verdicts.py` → `agent`. Un
+verdict d'agent ne produit aucun temps humain.
+
+Attribution à l'extraction (`source_stage_attempt_id`) : seulement si la base
+connaît **une seule** extraction réussie de l'épisode (`provenance_quality =
+inferred`) ; sinon `null` / `unknown`. Jamais « la dernière » par défaut.
+
+### Temps de relecture actif
+
+La durée d'un `POST` est une latence serveur, pas un temps de relecture. Le
+temps actif vient de battements (`POST /activite`, table `review_activity`) :
+
+- le navigateur en envoie un toutes les **15 s**, seulement si l'onglet est
+  **visible** et qu'une interaction (clic, touche, défilement, saisie) a eu
+  lieu depuis moins de **60 s** (`review_client_activite.js`) ;
+- le serveur fixe la valeur d'un battement (15 s) et ignore un battement à
+  moins de 10 s du précédent de la même session ;
+- le temps se calcule au rapport par **union** des intervalles : deux onglets
+  ouverts ensemble ne comptent pas double ; par épisode, seulement les
+  battements qui portent l'épisode affiché ;
+- sans battement : `human_active_ms = null`, jamais 0.
+
+Une session est un identifiant tiré au hasard par l'onglet (cookie de session
+`reco_revue_session`, envoyé aussi avec les décisions pour les relier au temps
+actif). Ni texte, ni identité, ni IP : la page de relecture est locale.
+
+**À calibrer** : les seuils (15 s, 60 s) sont des choix, pas des mesures. Avant
+d'utiliser ces durées dans l'estimateur, les comparer à une relecture
+chronométrée à la main.
+
+Une panne de télémétrie n'interrompt jamais la relecture.

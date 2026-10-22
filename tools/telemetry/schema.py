@@ -167,6 +167,20 @@ MIGRATIONS: list[str] = [
       WHERE batch_id IS NOT NULL;
     CREATE INDEX idx_review_episode ON review_events(source_id, episode_guid, occurred_at);
     """,
+    # --- v2 : battements d'activité de la page de relecture -----------------
+    """
+    CREATE TABLE review_activity (
+      id TEXT PRIMARY KEY,
+      source_id TEXT NOT NULL,
+      session_id TEXT NOT NULL,              -- tirée au hasard par l'onglet, sans identité
+      received_at TEXT NOT NULL,
+      page TEXT NOT NULL,                    -- chemin seul (/ep, /doutes…), sans paramètre
+      episode_guid TEXT,
+      interval_ms INTEGER NOT NULL           -- fixé par le serveur, pas par le client
+    );
+
+    CREATE INDEX idx_activity_time ON review_activity(source_id, received_at);
+    """,
 ]
 
 SCHEMA_VERSION = len(MIGRATIONS)
