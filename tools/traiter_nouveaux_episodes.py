@@ -459,7 +459,14 @@ def a_publier(source_id: str, state: dict[str, Any]) -> list[tuple[Path, dict[st
 
 def publier(source_id: str, notify: Notify, state: dict[str, Any], **kwargs: Any) -> int:
     """Pousse les épisodes en attente. La mécanique git vit dans `publication`."""
+    import vignettes_episodes
     from publication import publier_les_episodes
+    for _path, episode in a_publier(source_id, state):
+        # Sans vignette, la carte s'affiche sans image : jamais bloquant.
+        try:
+            vignettes_episodes.recuperer(episode)
+        except Exception as exc:  # noqa: BLE001 — la publication passe avant l'image.
+            log.warning("vignette non récupérée pour %s : %s", episode.get("guid"), exc)
     return publier_les_episodes(source_id, a_publier(source_id, state), notify, state,
                                 rapporter=_report_once, oublier=_clear_error, **kwargs)
 

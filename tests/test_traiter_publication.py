@@ -110,3 +110,28 @@ def test_a_publication_failure_is_reported_once(content, monkeypatch):
 
     assert len(envoyes) == 1 and "cle refusee" in envoyes[0]
     assert state["published"] == []
+
+
+def test_la_vignette_est_recuperee_avant_publication_sans_jamais_bloquer(content, monkeypatch):
+    import vignettes_episodes
+
+    _episode(content, "yt-relu")
+    _episode(content, "yt-autre")
+    tne.save_state(SOURCE, _etat(finalized=["yt-relu", "yt-autre"]))
+    vus = []
+
+    def recuperer(episode):
+        vus.append(episode["guid"])
+        if episode["guid"] == "yt-relu":
+            raise OSError("reseau")
+        return []
+
+    monkeypatch.setattr(vignettes_episodes, "recuperer", recuperer)
+    monkeypatch.setattr(tne, "build_notify", lambda _c: lambda _t: None)
+    monkeypatch.setattr(pub, "publier_episode",
+                        lambda _s, guid, *_a, **_k: pub.Publication(guid, fichiers=1))
+
+    assert tne.main(["publier", "--source", SOURCE, "--notify", "none"]) == 0
+    assert sorted(vus) == ["yt-autre", "yt-relu"]
+    saved = json.loads(tne.state_path(SOURCE).read_text(encoding="utf-8"))
+    assert sorted(saved["published"]) == ["yt-autre", "yt-relu"]

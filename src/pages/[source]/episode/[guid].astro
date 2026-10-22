@@ -13,6 +13,7 @@ import { episodeToSchema, recoToSchema } from '../../../lib/seo/jsonld';
 import { splitEpisodeRecos } from '../../../lib/episode/splitRecos';
 import { lienOeuvre, oeuvreParReco } from '../../../utils/oeuvreDesRecos';
 import { decouperEnMoments } from '../../../lib/episode/chapitres';
+import { vignette } from '../../../utils/vignettes';
 import EpisodeChapitres from '../../../components/EpisodeChapitres.astro';
 
 export async function getStaticPaths() {
@@ -77,8 +78,9 @@ const ficheOeuvre = (recoId: string) => lienOeuvre(oeuvres, source.id, recoId);
 const moments = decouperEnMoments(recos, episode.youtubeDuration);
 
 const ytId = episode.youtubeUrl?.match(/[?&]v=([\w-]+)/)?.[1];
-// Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl).
-const thumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : (episode.imageUrl ?? null);
+// Miniature : vignette YouTube si dispo, sinon artwork Acast (imageUrl), en
+// copie locale (cf. `utils/vignettes.ts`).
+const thumb = vignette(episode, 'hq');
 // Dimensions posées UNIQUEMENT pour la vignette YouTube : `hqdefault.jpg` fait
 // toujours 480×360. Sans elles, le navigateur réserve zéro place puis décale
 // la page quand l'image arrive — c'est du CLS, et c'était la SEULE image du

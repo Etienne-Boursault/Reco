@@ -167,6 +167,9 @@ def fichiers_episode(source_id: str, guid: str, chemin_episode: Path) -> list[Pa
             oeuvre = items_dir / f"{item}.json"
             if oeuvre.exists():
                 fichiers.append(oeuvre)
+    # Ses vignettes, téléchargées juste avant : le site les sert lui-même.
+    import vignettes_episodes
+    fichiers.extend(vignettes_episodes.fichiers(read_json(chemin_episode)))
     return sorted(set(fichiers))
 
 

@@ -16,6 +16,19 @@ const getCollection = vi.fn();
 vi.mock('astro:content', () => ({
   getCollection: (name: string) => getCollection(name),
 }));
+// Vignettes servies en copie locale : on les suppose toutes téléchargées, et on
+// vérifie qu'aucune adresse d'origine (YouTube, Acast) n'atteint la page.
+vi.mock('../../src/utils/vignettes', async (importer) => {
+  const vrai = await importer<typeof import('../../src/utils/vignettes')>();
+  return {
+    ...vrai,
+    vignette: (e: Parameters<typeof vrai.nomVignette>[0], t: Parameters<typeof vrai.nomVignette>[1]) => {
+      const nom = vrai.nomVignette(e, t);
+      return nom ? `/vignettes/${nom}` : null;
+    },
+  };
+});
+import { nomVignette } from '../../src/utils/vignettes';
 
 const { renderWithSite } = await import('./_container');
 const SourceCatalog = (await import('../../src/components/SourceCatalog.astro')).default;
@@ -301,7 +314,8 @@ describe('SourceCatalog — miniatures d’épisode', () => {
   it('vignette YouTube dérivée de l’URL watch?v=', async () => {
     collections([], [episode({ youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' })]);
     const html = await render();
-    expect(html).toContain('https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg');
+    expect(html).toContain('/vignettes/yt-dQw4w9WgXcQ-mq.jpg');
+    expect(html).not.toContain('i.ytimg.com');
   });
 
   it('URL YouTube sans paramètre v → repli sur l’artwork Acast', async () => {
@@ -311,13 +325,15 @@ describe('SourceCatalog — miniatures d’épisode', () => {
     );
     const html = await render();
     expect(html).not.toContain('i.ytimg.com');
-    expect(html).toContain('https://acast.example/art.jpg');
+    expect(html).toContain(`/vignettes/${nomVignette({ imageUrl: 'https://acast.example/art.jpg' }, 'mq')}`);
+    expect(html).not.toContain('acast.example');
   });
 
   it('sans URL YouTube, l’artwork Acast est utilisé', async () => {
     collections([], [episode({ imageUrl: 'https://acast.example/art.jpg' })]);
     const html = await render();
-    expect(html).toContain('https://acast.example/art.jpg');
+    expect(html).toMatch(/\/vignettes\/ep-[0-9a-f]{12}\.jpg/);
+    expect(html).not.toContain('acast.example');
   });
 
   it('sans vignette ni artwork, aucune <img> n’est rendue', async () => {

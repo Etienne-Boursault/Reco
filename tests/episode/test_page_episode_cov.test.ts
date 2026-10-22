@@ -23,6 +23,19 @@ const getCollection = vi.fn();
 vi.mock('astro:content', () => ({
   getCollection: (name: string) => getCollection(name),
 }));
+// Vignettes servies en copie locale : on les suppose toutes téléchargées, et on
+// vérifie qu'aucune adresse d'origine (YouTube, Acast) n'atteint la page.
+vi.mock('../../src/utils/vignettes', async (importer) => {
+  const vrai = await importer<typeof import('../../src/utils/vignettes')>();
+  return {
+    ...vrai,
+    vignette: (e: Parameters<typeof vrai.nomVignette>[0], t: Parameters<typeof vrai.nomVignette>[1]) => {
+      const nom = vrai.nomVignette(e, t);
+      return nom ? `/vignettes/${nom}` : null;
+    },
+  };
+});
+import { nomVignette } from '../../src/utils/vignettes';
 
 import EpisodePage, { getStaticPaths } from '../../src/pages/[source]/episode/[guid].astro';
 
@@ -312,7 +325,8 @@ describe('page épisode — en-tête et navigation', () => {
     });
     const html = await renderEpisode('g1');
 
-    expect(html).toContain('https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
+    expect(html).toContain('/vignettes/yt-dQw4w9WgXcQ-hq.jpg');
+    expect(html).not.toContain('i.ytimg.com');
     expect(html).toContain('href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"');
     expect(html).toContain('target="_blank"');
   });
@@ -325,7 +339,7 @@ describe('page épisode — en-tête et navigation', () => {
     });
     const html = await renderEpisode('g1');
 
-    expect(html).toContain('https://acast.example/cover.jpg');
+    expect(html).toContain(`/vignettes/${nomVignette({ imageUrl: 'https://acast.example/cover.jpg' }, 'hq')}`);
     expect(html).not.toContain('i.ytimg.com');
     expect(html).not.toContain('class="play"');
   });
@@ -485,7 +499,7 @@ describe('page épisode — SEO', () => {
     });
 
     expect(await renderEpisode('g1')).toContain(
-      '<meta property="og:image" content="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg">',
+      `<meta property="og:image" content="${new URL('/vignettes/yt-dQw4w9WgXcQ-hq.jpg', TEST_SITE)}">`,
     );
   });
 
