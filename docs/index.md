@@ -15,6 +15,7 @@
 ## Référence
 
 - [architecture](architecture.md) — vue d'ensemble système (pipeline, DBs, frontend).
+- [workflow-metrics](workflow-metrics.md) — métriques des exécutions du pipeline et de la relecture : contrat, null ≠ 0, cohorte saison 6, rapports.
 - [fork-guide](fork-guide.md) — guide pour forker et adapter à son podcast.
 - [pieges-et-echecs](pieges-et-echecs.md) — ce qui n'a **pas** marché : modèles de transcription trop petits, sources audio mélangées, API mortes, faux positifs de rapprochement. À lire avant de lancer le pipeline.
 - [manifeste-ethique](manifeste-ethique.md) — principes éthiques (liens, vie privée, IA).

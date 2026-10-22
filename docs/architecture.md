@@ -56,6 +56,13 @@ Séparation justifiée : invalidations différentes, taux de croissance
 différent, opérations de maintenance indépendantes
 (`vacuum`, `--reset-cache`).
 
+Une quatrième base n'est **pas** un cache :
+`tools/output/telemetry/reco_metrics.sqlite` garde les observations
+append-only des exécutions (runs, tentatives d'étape, appels LLM, lots,
+actions et temps de relecture). Vider un cache ne la touche pas. Module
+`tools/telemetry/`, rapports `tools/metrics_report.py`, contrat
+[`workflow-metrics.md`](workflow-metrics.md).
+
 ## Frontend Astro
 
 - **Build statique par défaut** (`astro build` → `dist/`).

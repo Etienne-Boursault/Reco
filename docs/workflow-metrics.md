@@ -266,3 +266,83 @@ d'utiliser ces durées dans l'estimateur, les comparer à une relecture
 chronométrée à la main.
 
 Une panne de télémétrie n'interrompt jamais la relecture.
+
+## Rapports
+
+```bash
+cd tools
+python metrics_report.py coverage --source un-bon-moment            # ce qui est mesuré, et les trous
+python metrics_report.py workflows --source un-bon-moment --format csv
+python metrics_report.py cohort --source un-bon-moment --season 6   # sélection et exclusions
+python metrics_report.py summary --source un-bon-moment --cohort qualified --format markdown
+python metrics_report.py export --source un-bon-moment --season 6 \
+  --output output/telemetry/export.json                             # pour l'estimateur
+python metrics_report.py recover --older-than-hours 24              # runs restés « started »
+python metrics_report.py purge --activity-days 395                  # battements bruts anciens
+```
+
+Lecture seule, sauf `recover` (passe en `interrupted` ce qui est resté `started`
+au-delà du seuil, sans rien effacer) et `purge`. Une base absente donne des
+rapports vides, sans créer de fichier. Les exports vivent sous `tools/output/`
+(ignoré par Git), jamais sous `public/`.
+
+Règles de calcul :
+
+- une somme sur une valeur absente est `null` (pas une somme partielle
+  présentée comme totale) ; un coût ne s'additionne que dans sa devise ;
+- **nominal** = premières passes ; **surcoût opérationnel** = `retry`,
+  `manual_rerun`, `experiment`, `source_migration`, `backfill`, `unknown`,
+  chacun à part ; un épisode retraité ne compte qu'une fois dans le nominal ;
+- `processing` (machine), temps humain actif et délai de bout en bout (avec
+  attentes de lot et de relecture) ne se confondent pas ;
+- ratios (`costPerAudioHour`, `candidatesPerAudioHour`,
+  `humanMinutesPerReviewAction`, `manualReworkRate`) : seulement sur une
+  cohorte **qualifiée**, avec `sampleSize` ; `reviewMinutesPerCandidate` reste
+  `null` (plusieurs fiches sont relues ensemble) ;
+- `manualReworkRate` = recos retouchées par un humain (`edit`, `merge`) /
+  recos ayant reçu une décision humaine — jamais déduit des seuls statuts.
+
+L'export suit la forme de la spécification (`schemaVersion` 1 : `cohort`,
+`coverage`, `observed`, plus `derived`, `overhead`, `warnings`) et est validé
+avant d'être écrit (`reports.valider`) ; un export non conforme échoue.
+
+## Cohorte de référence : *Un Bon Moment*, saison 6
+
+La saison 6 est une cohorte **candidate**. Un épisode n'est retenu que si,
+pour la transcription ET l'extraction :
+
+1. sa saison est écrite dans le catalogue (`season` de l'épisode, tirée du
+   titre « S6-E05 » à la détection) et vaut 6 ;
+2. une tentative `standard_first_pass` a **réussi** (pas un cache, pas un saut) ;
+3. elle a la configuration de référence : le profil déclaré (`--profile`), sinon
+   l'empreinte de configuration la plus fréquente parmi les candidats ;
+4. l'origine du média est celle de la référence (YouTube) ;
+5. aucune migration de source n'a touché l'épisode ;
+6. la durée audio et l'usage de **chaque** appel sont mesurés.
+
+Codes d'exclusion, dans l'ordre où ils s'appliquent : `season_unknown`,
+`not_season`, `no_telemetry`, `source_migration`, `experiment_only`,
+`retry_only`, `not_standard`, `not_succeeded`, `mixed_configuration`,
+`media_mismatch`, `missing_duration`, `missing_usage`.
+
+Statut `qualified` à partir de 3 épisodes retenus (`--min-episodes`), sinon
+`insufficient_data` — résultat honnête, pas une panne.
+
+Les épisodes traités **avant** la télémétrie (S6-E01 à E05, et les 110 épisodes
+Acast/YouTube historiques) sont exclus pour `no_telemetry` : leurs appels,
+reprises, jetons et temps humain ne sont **pas** reconstruits. Seul leur état
+final (catalogue : source et modèle de transcription, statuts des recos) est
+rapporté (`finalState`).
+
+## Ce qui reste non mesuré
+
+| Donnée | Pourquoi |
+|---|---|
+| `gpu_active_ms` | aucune instrumentation GPU fiable (venus transcrit en CPU) |
+| coût d'exploitation local (électricité, amortissement) | pas de profil matériel chiffré : seul le temps est mesuré |
+| prix du cache, tarifs OpenAI | non relevés : coût inconnu tant qu'ils ne sont pas dans `tarifs.json` |
+| facture réelle (`observed_cost_decimal`) | pas de rapprochement avec la facturation du fournisseur |
+| latence par requête d'un lot | non observable |
+| détection (liste yt-dlp) | tourne à chaque passage, coût négligeable, non mesurée |
+| temps humain par fiche | les battements disent l'épisode affiché, pas la fiche |
+| curation (`/curation`), passes automatiques de liens | hors journal de relecture |

@@ -261,6 +261,25 @@ docker compose run --rm pipeline python -c \
   "import av, faster_whisper as w; print('av', av.__version__, 'fw', w.__version__)"
 ```
 
+### Métriques du pipeline
+
+Chaque étape de la chaîne écrit ses mesures dans
+`depot/tools/output/telemetry/reco_metrics.sqlite` (durées, origine du média,
+jetons et coût des appels, actions et temps actif de la page de validation).
+Rien à commiter, rien à configurer. Réglages facultatifs du `.env` :
+`RECO_PIPELINE_PROFILE` (nom de la configuration de référence, par exemple
+`ubm-s6-prod-2026-10`), `RECO_COST_OWNER=reco_managed`.
+
+```sh
+docker compose run --rm pipeline python metrics_report.py coverage --source un-bon-moment
+docker compose run --rm pipeline python metrics_report.py cohort --source un-bon-moment --season 6
+docker compose run --rm pipeline python metrics_report.py recover   # après un arrêt brutal
+```
+
+Contrat et limites : `docs/workflow-metrics.md`. Après la mise à jour, redémarrer
+la page de validation (`docker compose restart review`) pour qu'elle serve le
+script du temps actif.
+
 ## Premier passage
 
 Au tout premier passage, la détection marque comme vues toutes les vidéos en ligne sans
