@@ -34,6 +34,7 @@
 import { resolve } from 'node:path';
 
 import { creerServeurMaintenance } from './src/server/maintenance.mjs';
+import { planifierRetention } from './src/server/retention.mjs';
 import { creerServeur, fermerProprement } from './src/server/serveur.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -76,6 +77,9 @@ const serveur = fermerProprement(
     ? creerServeur(handler, resolve('./dist/client'))
     : creerServeurMaintenance(),
 );
+
+// Les durées de conservation annoncées sur /mentions-legales.
+planifierRetention(process.cwd());
 
 serveur.listen(PORT, HOTE, () => {
   console.log(

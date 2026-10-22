@@ -1,0 +1,232 @@
+---
+/**
+ * /mentions-legales — éditeur, hébergeur, données personnelles, crédits.
+ *
+ * POURQUOI CETTE PAGE
+ * -------------------
+ * Le 2026-10-22, le tableau d'audience montrait `/mentions-legales` demandée
+ * quatorze fois en un mois, et répondant 404. La loi (LCEN) les exige de tout
+ * site, et le RGPD exige d'informer de ce qui est mesuré.
+ *
+ * CE QUI LA REND JUSTE
+ * --------------------
+ * Chaque durée annoncée ici est appliquée par `src/server/retention.mjs`, et
+ * chaque donnée décrite correspond à ce qu'écrivent `src/lib/audience/`,
+ * `src/lib/tracking/` et `src/lib/reports/`. Modifier l'un sans l'autre rend
+ * la page mensongère.
+ *
+ * L'éditeur est un particulier qui a choisi l'anonymat que la LCEN permet aux
+ * éditeurs non professionnels : son identité est connue de l'hébergeur, et
+ * n'est pas publiée ici (arbitrage du 2026-10-22).
+ */
+import Layout from '../layouts/Layout.astro';
+import { t } from '../i18n';
+import { siteConfig } from '../config/site';
+import { MOIS_COORDONNEES, MOIS_MESURES } from '../server/retention.mjs';
+
+const contact = siteConfig.contactEmail;
+const MISE_A_JOUR = '22 octobre 2026';
+---
+
+<Layout title={t('legal.title')} description={t('legal.subtitle')}>
+  <header class="hero wrap" role="banner">
+    <p class="kicker">{siteConfig.siteName}</p>
+    <h1>{t('legal.title')}</h1>
+    <p class="lede">{t('legal.subtitle')}</p>
+  </header>
+
+  <main id="main" tabindex="-1" class="wrap prose">
+    <section aria-labelledby="editeur">
+      <h2 id="editeur">Éditeur</h2>
+      <p>
+        {siteConfig.siteName} est un site personnel et non commercial, édité
+        par un particulier. Comme la loi pour la confiance dans l’économie
+        numérique le permet aux éditeurs non professionnels, son identité n’est
+        pas publiée : elle a été communiquée à l’hébergeur.
+      </p>
+      {contact && (
+        <p>Contact, y compris pour le directeur de la publication : <a href={`mailto:${contact}`}>{contact}</a>.</p>
+      )}
+      <p>
+        C’est un site de fan, <strong>non officiel</strong> : il n’a aucun lien
+        avec les podcasts dont il recense les recommandations, ni avec leurs
+        auteurs ou leurs producteurs.
+      </p>
+    </section>
+
+    <section aria-labelledby="hebergeur">
+      <h2 id="hebergeur">Hébergeur</h2>
+      <address>
+        Infomaniak Network SA<br />
+        Rue Eugène Marziano 25<br />
+        1227 Les Acacias (GE), Suisse<br />
+        <a href="tel:+41228203541">+41 22 820 35 41</a> ·
+        <a href="https://www.infomaniak.com/fr/cgv/mentions-legales" rel="noopener">infomaniak.com</a>
+      </address>
+    </section>
+
+    <section aria-labelledby="donnees">
+      <h2 id="donnees">Données personnelles</h2>
+      <p>
+        <strong>Aucun cookie, aucun traceur, aucune publicité.</strong> Le site
+        ne dépose rien dans votre navigateur et ne fait appel à aucun service de
+        statistiques. Le responsable de traitement est l’éditeur, joignable à
+        l’adresse ci-dessus.
+      </p>
+
+      <h3>Mesure de fréquentation</h3>
+      <p>
+        Le serveur du site note chaque page servie : son adresse, l’heure
+        arrondie, le type d’appareil (« mobile » ou « ordinateur »), la langue
+        du navigateur, le domaine du site d’où vous venez, le pays, et un
+        identifiant valable une seule journée. Cet identifiant est une empreinte
+        de votre adresse IP, mêlée à un secret et à la date : il permet de
+        compter les visiteurs d’un jour sans les suivre d’un jour à l’autre.
+        L’adresse IP elle-même n’est jamais enregistrée, et le pays est déduit
+        sur le serveur, sans interroger aucun service extérieur.
+      </p>
+      <p>
+        Les clics vers une plateforme (librairie, service de streaming…) sont
+        comptés de la même façon : lien suivi, type de plateforme, page de
+        départ, date — sans aucun identifiant.
+      </p>
+      <p>
+        Ces mesures servent uniquement à savoir quelles pages sont lues et si le
+        site remplit son rôle (intérêt légitime de l’éditeur). Elles sont
+        supprimées automatiquement au bout de {MOIS_MESURES} mois.
+      </p>
+
+      <h3>Signalements d’erreur</h3>
+      <p>
+        Le formulaire de signalement enregistre votre message et l’œuvre
+        concernée. Votre nom et votre e-mail sont facultatifs : ils servent
+        seulement à vous répondre ou à vous créditer si vous le demandez. Une
+        notification est envoyée à l’éditeur sur son propre serveur de
+        messagerie. Le nom et l’e-mail sont effacés automatiquement au bout de
+        {MOIS_COORDONNEES} mois ; le signalement, lui, reste, car il retrace une
+        correction. Votre adresse IP sert un instant à limiter les envois
+        répétés, n’est conservée qu’en mémoire et sous forme d’empreinte.
+      </p>
+
+      <h3>Courriels</h3>
+      <p>Les messages envoyés à l’adresse de contact sont conservés le temps de l’échange.</p>
+
+      <h3>Contenus venant d’autres sites</h3>
+      <p>
+        Les vignettes d’épisodes sont chargées depuis YouTube et Acast, qui
+        reçoivent donc votre adresse IP à l’affichage. Le lecteur vidéo de
+        YouTube, en mode « sans cookie », ne se charge que si vous cliquez sur
+        « Écouter » : la politique de confidentialité de YouTube s’applique dès
+        lors. Les liens vers les plateformes vous font quitter le site.
+      </p>
+      <p>
+        L’hébergeur peut tenir ses propres journaux techniques, selon ses
+        conditions. Les données du site sont hébergées en Suisse, pays reconnu
+        par l’Union européenne comme offrant une protection adéquate.
+      </p>
+
+      <h3>Vos droits</h3>
+      <p>
+        Vous pouvez demander l’accès à vos données, leur rectification, leur
+        effacement ou vous opposer à leur traitement en écrivant à l’adresse de
+        contact. Les mesures de fréquentation ne contenant ni nom ni adresse IP,
+        elles ne permettent pas de retrouver vos visites. En cas de désaccord,
+        vous pouvez saisir la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="propriete">
+      <h2 id="propriete">Propriété intellectuelle</h2>
+      <p>
+        Les podcasts, leurs titres, leurs visuels et les œuvres citées
+        appartiennent à leurs auteurs et ayants droit. Le site n’en reproduit
+        que de courts extraits, pour indiquer d’où vient chaque recommandation,
+        et renvoie aux sources. Pour toute demande de retrait, écrivez à
+        l’adresse de contact.
+      </p>
+      <p>
+        Le code du site est publié sous licence MIT sur
+        <a href="https://github.com/Etienne-Boursault/Reco" rel="noopener">GitHub</a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="credits">
+      <h2 id="credits">Crédits</h2>
+      <ul>
+        <li>
+          Ce site utilise l’API de <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>,
+          sans être approuvé ni certifié par TMDB.
+        </li>
+        <li>
+          Géolocalisation par pays :
+          <a href="https://db-ip.com" rel="noopener">IP Geolocation by DB-IP</a>,
+          sous licence <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.
+        </li>
+      </ul>
+    </section>
+
+    <p class="maj">Dernière mise à jour : {MISE_A_JOUR}.</p>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(1rem, 3vw, 2rem);
+  }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0 0 0.6rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    margin: 0 0 0.8rem;
+  }
+  .lede {
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .prose {
+    max-width: 70ch;
+    padding-bottom: 4rem;
+  }
+  .prose section {
+    margin: 2.4rem 0;
+  }
+  .prose h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin: 0 0 0.6rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    padding-bottom: 0.3rem;
+  }
+  .prose h3 {
+    font-size: 1.1rem;
+    margin: 1.6rem 0 0.4rem;
+  }
+  .prose p,
+  .prose li,
+  .prose address {
+    line-height: 1.6;
+  }
+  .prose address {
+    font-style: normal;
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose a:hover,
+  .prose a:focus-visible {
+    text-decoration-thickness: 2px;
+  }
+  .maj {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

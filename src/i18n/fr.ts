@@ -34,6 +34,7 @@ export const fr = {
   'footer.stats': 'Statistiques',
   'footer.about': 'À propos',
   'footer.manifesto': 'Manifeste éthique',
+  'footer.legal': 'Mentions légales',
   'footer.nav.label': 'Liens secondaires',
   'footer.support': 'Soutenir le projet',
 
@@ -47,6 +48,11 @@ export const fr = {
   'about.section.credits': 'Crédits & ressources',
   'about.section.links': 'Liens utiles',
   'about.cta.contribute': 'Contribuer / forker le kit',
+
+  // Mentions légales
+  'legal.title': 'Mentions légales',
+  'legal.subtitle':
+    'Qui édite le site, qui l’héberge, ce qui est mesuré et combien de temps c’est gardé.',
 
   // Manifeste éthique (item #22)
   'manifesto.title': 'Manifeste éthique',
