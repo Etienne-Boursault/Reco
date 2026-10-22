@@ -79,8 +79,12 @@ export interface Agregat {
    * moins une fois, donc de relier un clic à un visiteur. C'est précisément ce
    * que le module de mesure refuse de faire : les clics ne portent aucun
    * identifiant de visiteur, et c'est délibéré.
+   *
+   * Pour 100 visiteurs, et non par visiteur : le rapport réel tourne autour de
+   * 0,03. Arrondi au dixième, il s'affichait « 0 » le 2026-10-22 avec 39 clics
+   * pour 1 182 visiteurs — un chiffre faux qui avait l'air d'une panne.
    */
-  clicsParVisiteur: number | null;
+  clicsPour100Visiteurs: number | null;
   /**
    * Clics écartés du ratio, faute de savoir qui est venu ce jour-là.
    *
@@ -99,6 +103,8 @@ export interface Agregat {
   /** `true` si aucune visite ne porte de pays : la mesure est absente. */
   paysIndisponible: boolean;
   erreurs404: Compte[];
+  /** Requêtes de robots qui cherchent une faille (`/.env`, `/wp-login.php`). */
+  sondes: number;
   plateformes: Compte[];
   dureeMedianeMs: number | null;
 }
@@ -112,6 +118,49 @@ export interface Agregat {
  */
 function estConsultation(v: Visite): boolean {
   return !v.prechargement && v.statut < 400;
+}
+
+/**
+ * Une requête humaine : ni robot déclaré, ni requête sans langue.
+ *
+ * Un navigateur envoie toujours `Accept-Language` ; un script presque jamais.
+ * Le 2026-10-22, la moitié des pages vues n'en portaient pas, venaient
+ * « d'ordinateurs » aux États-Unis ou à Singapour et frappaient l'accueil :
+ * des robots qui se font passer pour Chrome. Le critère se lit dans les
+ * mesures déjà écrites, il s'applique donc aussi à l'historique.
+ */
+function estHumaine(v: Visite): boolean {
+  return !v.robot && Boolean(v.langue);
+}
+
+/**
+ * Une sonde de faille : un robot qui essaie `/.env`, `/.git/config`,
+ * `/wp-login.php`. Ce ne sont pas des liens morts — personne ne les a jamais
+ * publiés —, et ils remplissaient toute la liste des 404.
+ */
+const SONDE = /(^|\/)\.[^/]|\.(php\d?|aspx?|jsp|cgi|sql|bak|old|zip|tar|gz|rar|7z)$|(^|\/)(wp-|cgi-bin)/i;
+
+export function estSonde(chemin: string): boolean {
+  return SONDE.test(chemin);
+}
+
+/** `/a-propos` et `/a-propos/` sont la même page : une seule ligne. */
+function cheminNormalise(chemin: string): string {
+  return chemin.length > 1 ? chemin.replace(/\/+$/, '') || '/' : chemin;
+}
+
+/**
+ * Le site lui-même n'est pas une provenance.
+ *
+ * Le serveur écarte la navigation interne en comparant le référent à
+ * `SITE_URL` — absente de la commande de démarrage chez Infomaniak, si bien
+ * que `unebonnere.co` arrivait en tête des provenances. La page passe donc
+ * aussi l'hôte sous lequel on la consulte, pour nettoyer l'historique.
+ */
+function estInterne(provenance: string | null, hote: string | null): boolean {
+  if (!provenance || !hote) return false;
+  const racine = hote.replace(/^www\./, '');
+  return provenance === racine || provenance.endsWith(`.${racine}`);
 }
 
 /**
@@ -204,6 +253,7 @@ export function agreger({
   sourceId,
   nbJours = 30,
   aujourdhui = new Date(),
+  hoteDuSite = null,
 }: {
   racine: string;
   /**
@@ -214,6 +264,8 @@ export function agreger({
   sourceId: string | string[];
   nbJours?: number;
   aujourdhui?: Date;
+  /** L'hôte du tableau de bord : ses propres pages ne sont pas une provenance. */
+  hoteDuSite?: string | null;
 }): Agregat {
   const sources = Array.isArray(sourceId) ? sourceId : [sourceId];
   const dossiers = sources.map((s) => ({
@@ -241,7 +293,7 @@ export function agreger({
     visites.push(...v);
     clics.push(...c);
 
-    const humaines = v.filter((x) => !x.robot);
+    const humaines = v.filter(estHumaine);
     parJour.push({
       jour,
       pages: humaines.filter(estConsultation).length,
@@ -254,8 +306,9 @@ export function agreger({
     });
   }
 
-  const humaines = visites.filter((v) => !v.robot);
+  const humaines = visites.filter(estHumaine);
   const consultees = humaines.filter(estConsultation);
+  const introuvables = visites.filter((v) => v.statut === 404);
   // Additionner les visiteurs de chaque jour, et non dédoublonner sur la
   // période : un même identifiant d'un jour à l'autre ne serait qu'un hasard,
   // le sel changeant chaque jour.
@@ -279,17 +332,24 @@ export function agreger({
     clics: clics.length,
     // La mesure qui approche le mieux la fonction du site — faire découvrir —
     // sans relier un clic à un visiteur. Arrondie au dixième.
-    clicsParVisiteur:
-      visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 10) / 10 : null,
+    clicsPour100Visiteurs:
+      visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 1000) / 10 : null,
     clicsHorsPeriode: clics.length - clicsComparables,
-    topPages: compter(consultees.filter((v) => v.statut === 200).map((v) => v.chemin)),
-    provenances: compter(consultees.map((v) => v.provenance)),
+    topPages: compter(
+      consultees.filter((v) => v.statut === 200).map((v) => cheminNormalise(v.chemin)),
+    ),
+    provenances: compter(
+      consultees.map((v) => (estInterne(v.provenance, hoteDuSite) ? null : v.provenance)),
+    ),
     appareils: compter(consultees.map((v) => v.appareil), 4),
     langues: compter(consultees.map((v) => v.langue), 8),
     paysConnus: compter(consultees.map((v) => v.pays), 12),
     paysIndisponible: consultees.length > 0 && consultees.every((v) => !v.pays),
     // Les 404 disent quels liens périmés circulent encore.
-    erreurs404: compter(visites.filter((v) => v.statut === 404).map((v) => v.chemin)),
+    erreurs404: compter(
+      introuvables.filter((v) => !estSonde(v.chemin)).map((v) => cheminNormalise(v.chemin)),
+    ),
+    sondes: introuvables.filter((v) => estSonde(v.chemin)).length,
     plateformes: compter(clics.map((c) => c.category), 10),
     dureeMedianeMs: mediane(
       consultees.map((v) => v.dureeMs).filter((d): d is number => typeof d === 'number'),

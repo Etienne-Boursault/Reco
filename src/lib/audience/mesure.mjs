@@ -124,7 +124,9 @@ export function mesurerVisite(req, res, options = {}) {
         entetes: req.headers ?? {},
         ip: adresseCliente(req),
         sel,
-        hoteDuSite,
+        // Sans `SITE_URL` — c'est le cas chez Infomaniak —, l'hôte demandé
+        // fait foi : sinon chaque clic interne comptait comme une provenance.
+        hoteDuSite: hoteDuSite ?? hoteDe(req.headers?.host && `https://${req.headers.host}`),
         dureeMs: horloge() - debut,
         maintenant: new Date(),
       });

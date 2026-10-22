@@ -79,7 +79,7 @@ describe('sans aucune mesure', () => {
     expect(a.visiteurs).toBe(0);
     expect(a.du).toBeNull();
     expect(a.jours).toEqual([]);
-    expect(a.clicsParVisiteur).toBeNull();
+    expect(a.clicsPour100Visiteurs).toBeNull();
   });
 
   it('ne prétend pas que le pays est indisponible quand rien n’est mesuré', () => {
@@ -141,7 +141,7 @@ describe('définitions', () => {
 });
 
 // ===== Clics par visiteur =================================================
-describe('clics par visiteur', () => {
+describe('clics pour 100 visiteurs', () => {
   it('rapporte les clics aux visiteurs, pas aux pages', () => {
     // Cliquer une fois par visite suffit à avoir découvert quelque chose.
     ecrire('audience', '2026-08-25', [
@@ -154,22 +154,35 @@ describe('clics par visiteur', () => {
     ecrire('clicks', '2026-08-25', [clic(), clic(), clic()]);
 
     // 4 visiteurs, 3 clics.
-    expect(lire().clicsParVisiteur).toBe(0.8);
+    expect(lire().clicsPour100Visiteurs).toBe(75);
   });
 
-  it('peut dépasser 1 : ce n’est PAS un pourcentage', () => {
+  it('peut dépasser 100 : ce n’est PAS un pourcentage', () => {
     // Le premier jet l'affichait comme un « taux de découverte » et sortait
     // 664 % sur un jeu d'essai. Un visiteur peut cliquer plusieurs fois, et
     // relier un clic à un visiteur est justement ce qu'on refuse de faire.
     ecrire('audience', '2026-08-25', [visite()]);
     ecrire('clicks', '2026-08-25', [clic(), clic(), clic(), clic(), clic()]);
 
-    expect(lire().clicsParVisiteur).toBe(5);
+    expect(lire().clicsPour100Visiteurs).toBe(500);
+  });
+
+  it('ne s’écrase pas à 0 quand les clics sont rares', () => {
+    // Le 2026-10-22, 39 clics pour 1 182 visiteurs s'affichaient « 0 clic par
+    // visiteur » : 0,033 arrondi au dixième. Rapporté à 100, il reste lisible.
+    ecrire(
+      'audience',
+      '2026-08-25',
+      Array.from({ length: 30 }, (_, i) => visite({ visiteur: `v${String(i).padStart(11, '0')}` })),
+    );
+    ecrire('clicks', '2026-08-25', [clic()]);
+
+    expect(lire().clicsPour100Visiteurs).toBe(3.3);
   });
 
   it('rend null sans visiteur : une division n’est pas une mesure', () => {
     ecrire('clicks', '2026-08-25', [clic()]);
-    expect(lire().clicsParVisiteur).toBeNull();
+    expect(lire().clicsPour100Visiteurs).toBeNull();
   });
 
   it('n’additionne que les jours où les DEUX mesures existent', () => {
@@ -187,7 +200,7 @@ describe('clics par visiteur', () => {
     // Le total de clics reste celui de la fenêtre : c'est une vraie mesure.
     expect(a.clics).toBe(2);
     // Le ratio, lui, ne retient que le jour où l'on sait qui est venu.
-    expect(a.clicsParVisiteur).toBe(1);
+    expect(a.clicsPour100Visiteurs).toBe(100);
     expect(a.clicsHorsPeriode).toBe(1);
   });
 
@@ -199,7 +212,7 @@ describe('clics par visiteur', () => {
 
     const a = lire();
 
-    expect(a.clicsParVisiteur).toBe(1);
+    expect(a.clicsPour100Visiteurs).toBe(100);
     expect(a.clicsHorsPeriode).toBe(0);
   });
 
@@ -211,7 +224,7 @@ describe('clics par visiteur', () => {
 
     const a = lire();
 
-    expect(a.clicsParVisiteur).toBe(0);
+    expect(a.clicsPour100Visiteurs).toBe(0);
     expect(a.clicsHorsPeriode).toBe(1);
   });
 });
@@ -433,6 +446,58 @@ describe('ce qui compte comme une visite', () => {
     const a = lire();
     expect(a.visiteurs).toBe(1);
     expect(a.pagesVues).toBe(1);
-    expect(a.erreurs404).toHaveLength(2);
+    // Des sondes de failles, pas des liens morts : comptées à part.
+    expect(a.erreurs404).toHaveLength(0);
+    expect(a.sondes).toBe(2);
+  });
+
+  it('tient pour robot une requête sans langue', () => {
+    // Le 2026-10-22, la moitié des pages vues n'annonçaient aucune langue.
+    ecrire('audience', '2026-08-25', [
+      visite({ visiteur: 'humain' }),
+      visite({ chemin: '/', langue: null, visiteur: 'faux-chrome' }),
+    ]);
+    const a = lire();
+    expect(a.visiteurs).toBe(1);
+    expect(a.pagesVues).toBe(1);
+    expect(a.visitesRobots).toBe(1);
+    expect(a.jours[0]).toMatchObject({ visiteurs: 1, robots: 1 });
+  });
+
+  it('garde les vrais liens morts à côté des sondes', () => {
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/backend/.env', statut: 404 }),
+      visite({ chemin: '/xmlrpc.php', statut: 404 }),
+      visite({ chemin: '/un-bon-moment/oeuvre/disparue/', statut: 404 }),
+      visite({ chemin: '/un-bon-moment/oeuvre/disparue', statut: 404 }),
+    ]);
+    const a = lire();
+    expect(a.erreurs404).toEqual([{ cle: '/un-bon-moment/oeuvre/disparue', n: 2 }]);
+    expect(a.sondes).toBe(2);
+  });
+
+  it('compte /a-propos et /a-propos/ comme une seule page', () => {
+    ecrire('audience', '2026-08-25', [
+      visite({ chemin: '/a-propos' }),
+      visite({ chemin: '/a-propos/' }),
+      visite({ chemin: '/' }),
+    ]);
+    expect(lire().topPages).toEqual([
+      { cle: '/a-propos', n: 2 },
+      { cle: '/', n: 1 },
+    ]);
+  });
+
+  it('n’affiche pas le site lui-même dans les provenances', () => {
+    // Sans `SITE_URL` au démarrage, le serveur notait chaque clic interne.
+    ecrire('audience', '2026-08-25', [
+      visite({ provenance: 'unebonnere.co' }),
+      visite({ provenance: 'www.unebonnere.co' }),
+      visite({ provenance: 'unebonnereco.fr' }),
+    ]);
+    const a = agreger({
+      racine, sourceId: SOURCE, aujourdhui: AUJOURDHUI, hoteDuSite: 'unebonnere.co',
+    });
+    expect(a.provenances).toEqual([{ cle: 'unebonnereco.fr', n: 1 }]);
   });
 });

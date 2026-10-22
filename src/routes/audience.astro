@@ -73,7 +73,7 @@ const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
 let donnees: Agregat | null = null;
 let erreur: string | null = null;
 try {
-  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours });
+  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours, hoteDuSite: Astro.url.hostname });
 } catch (e) {
   erreur = e instanceof Error ? e.message : String(e);
 }
@@ -94,6 +94,7 @@ function hauteur(valeur: number, max: number): number {
 
 const jours = donnees?.jours ?? [];
 const maxVisiteurs = Math.max(1, ...jours.map((j) => j.visiteurs));
+const maxRobots = Math.max(1, ...jours.map((j) => j.robots));
 const aucuneDonnee = !erreur && (donnees?.jours.length ?? 0) === 0;
 
 /** Un jour au format court, pour l'axe du graphique. */
@@ -124,7 +125,9 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       },
       {
         titre: 'Liens morts qui circulent',
-        note: 'chaque ligne est une redirection à poser',
+        note: donnees.sondes
+          ? `chaque ligne est une redirection à poser · ${fmt(donnees.sondes)} tentatives d’intrusion écartées (/.env, /wp-login.php…)`
+          : 'chaque ligne est une redirection à poser',
         entrees: donnees.erreurs404,
         vide: 'Aucune page demandée en vain. ',
       },
@@ -191,6 +194,7 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
       display: block; background: var(--accent); border-radius: 2px 2px 0 0;
       min-height: 2px;
     }
+    .robots .barre i { background: var(--muted); }
     .barre .nombre {
       color: var(--muted); font-size: 0.65rem; text-align: center;
       font-variant-numeric: tabular-nums; line-height: 1.2;
@@ -310,14 +314,14 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
           </div>
           <div class="tuile phare">
             <span class="valeur">
-              {donnees.clicsParVisiteur === null
+              {donnees.clicsPour100Visiteurs === null
                 ? '—'
-                : donnees.clicsParVisiteur.toLocaleString('fr-FR')}
+                : donnees.clicsPour100Visiteurs.toLocaleString('fr-FR')}
             </span>
             {/* Une moyenne, jamais un pourcentage : un visiteur peut cliquer
                 plusieurs fois, et relier un clic à un visiteur est justement ce
-                que la mesure refuse de faire. */}
-            <span class="label">clics par visiteur</span>
+                que la mesure refuse de faire. Pour 100 : sinon, arrondie à 0. */}
+            <span class="label">clics pour 100 visiteurs</span>
           </div>
           <div class="tuile">
             <span class="valeur">{fmt(donnees.clics)}</span>
@@ -369,6 +373,29 @@ const listes: { titre: string; note: string; entrees: Compte[]; vide: string }[]
             Personnes distinctes ayant ouvert au moins une page dans la journée,
             hors robots et hors erreurs. Les pages préchargées au survol d’un
             lien ne comptent pas comme vues.
+          </p>
+        </section>
+
+        <section class="graphe">
+          {/* À part, sur sa propre échelle : empilés avec les visiteurs, les
+              robots les écrasaient. */}
+          <h2>Passages de robots par jour</h2>
+          <div class="barres robots">
+            {jours.map((j) => (
+              <div class="barre" title={`${j.jour} — ${j.robots} passages de robots`}>
+                <span class="nombre">{j.robots || ''}</span>
+                <i style={`height:${hauteur(j.robots, maxRobots)}%`}></i>
+              </div>
+            ))}
+          </div>
+          <div class="axe">
+            <span>{jours.length ? jourCourt(jours[0].jour) : ''}</span>
+            <span>{jours.length ? jourCourt(jours[jours.length - 1].jour) : ''}</span>
+          </div>
+          <p class="legende">
+            Requêtes qui se déclarent robots (moteurs, aperçus de liens,
+            aspirateurs), et celles qui se disent navigateurs sans annoncer de
+            langue — ce qu’un vrai navigateur fait toujours.
           </p>
         </section>
 
