@@ -47,6 +47,7 @@ class ClientAnthropic:
     def __init__(self, titres=("Alien", "Brazil"), usage=True, erreur=None):
         self.n, self.titres, self.usage, self.erreur = 0, titres, usage, erreur
         self.messages = SimpleNamespace(create=self.create)
+        self.reco_cost_owner = "reco_managed"
 
     def create(self, **params):
         if self.erreur is not None:
@@ -115,7 +116,8 @@ def test_deux_episodes_sont_isoles_et_les_jetons_sont_exacts(metrics_db, depot):
     assert premier["candidates_raw"] == 2 and premier["transport"] == "sync"
     assert premier["cache_read_input_tokens"] == 0  # mesuré à zéro, pas inconnu
     assert Decimal(premier["cost_decimal"]) == Decimal("0.006")  # 1000 x 4 $ + 100 x 20 $
-    assert premier["cost_currency"] == "USD" and premier["cost_owner"] == "unknown"
+    assert premier["cost_currency"] == "USD"
+    assert premier["cost_owner"] == "reco_managed"  # marque du client
     assert premier["pricing_snapshot_id"].startswith("2026-10-22:anthropic:claude-opus-5-5:sync")
     requete = json.loads(premier["request_json"])
     assert requete["max_tokens"] == er.MAX_TOKENS_RAISONNEMENT and requete["effort"] == "medium"
@@ -422,12 +424,21 @@ def test_les_tarifs_sont_dates_et_sans_defaut():
     assert pricing.cout(t, {"input_tokens": 1, "output_tokens": 0}) == Decimal("0.000004")
 
 
-def test_le_proprietaire_du_cout_se_declare(monkeypatch):
-    assert llm.cost_owner() == "unknown"
-    monkeypatch.setenv("RECO_COST_OWNER", "reco_managed")
-    assert llm.cost_owner() == "reco_managed"
-    monkeypatch.setenv("RECO_COST_OWNER", "n'importe")
-    assert llm.cost_owner() == "unknown"
+def test_le_proprietaire_du_cout_vient_du_client(monkeypatch):
+    import anthropic
+    import openai
+
+    import common
+    assert llm.cost_owner(None) == "unknown"
+    assert llm.cost_owner(SimpleNamespace(reco_cost_owner="n'importe")) == "unknown"
+    assert llm.cost_owner(SimpleNamespace(reco_cost_owner="user_byok")) == "user_byok"
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test")
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    monkeypatch.setattr(common, "load_dotenv", lambda *_a, **_k: None, raising=False)
+    assert isinstance(common.make_anthropic_client(), anthropic.Anthropic)
+    assert llm.cost_owner(common.make_anthropic_client()) == "reco_managed"
+    assert isinstance(common.make_openai_client(), openai.OpenAI)
+    assert llm.cost_owner(common.make_openai_client()) == "reco_managed"
 
 
 def test_un_usage_illisible_ne_casse_rien(caplog):

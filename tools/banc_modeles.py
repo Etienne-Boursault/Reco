@@ -154,7 +154,8 @@ def extraire(client: Any, modele: str, source: dict[str, Any], episode: dict[str
     for index, morceau in enumerate(morceaux):
         params = _request_params(modele, titre, hotes, morceau)
         with llm.chunk(index, len(morceaux), len(morceau)), \
-                llm.appel("anthropic", modele, request=llm.requete(params)) as appel:
+                llm.appel("anthropic", modele, request=llm.requete(params),
+                          client=client) as appel:
             message = client.messages.create(**params)
             appel.reponse(message)
             resultat.jetons_entree += message.usage.input_tokens

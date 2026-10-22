@@ -209,9 +209,12 @@ ou le transport n'a pas de tarif (OpenAI n'est pas relevé) ; l'appel lit ou
 écrit du cache sans prix de cache relevé ; l'appel a échoué. Le lot a son
 propre tarif (−50 %). `observed_cost_decimal` (facture rapprochée) reste `null`.
 
-`cost_owner` : `RECO_COST_OWNER` (`user_byok` | `reco_managed` |
-`local_machine` | `unknown`, défaut `unknown`). Des jetons payés par
-l'utilisateur avec sa propre clé ne sont pas à refacturer par Reco.
+`cost_owner` (`user_byok` | `reco_managed` | `local_machine` | `unknown`) est
+déduit du client, à sa création, selon d'où vient sa clé : un client fait par
+`common.make_anthropic_client` / `make_openai_client` (clé du `.env` de
+l'opérateur) est `reco_managed`. Un futur client à clé fournie par
+l'utilisateur sera `user_byok` (des jetons qu'il paie ne sont pas à refacturer
+par Reco). Un client sans marque : `unknown`, jamais une supposition.
 
 ### Relecture
 

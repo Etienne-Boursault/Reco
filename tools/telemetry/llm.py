@@ -24,7 +24,6 @@ from __future__ import annotations
 import contextlib
 import hashlib
 import logging
-import os
 import time
 import uuid
 from collections.abc import Iterator
@@ -34,8 +33,10 @@ from typing import Any
 from telemetry import pricing
 from telemetry.context import StageHandle, current_stage, now_iso
 
-ENV_COST_OWNER = "RECO_COST_OWNER"
 COST_OWNERS = frozenset({"user_byok", "reco_managed", "local_machine", "unknown"})
+#: Marque posée sur un client à sa création, selon d'où vient sa clé
+#: (`common.make_anthropic_client` : clé de l'opérateur -> `reco_managed`).
+ATTRIBUT_PROPRIETAIRE = "reco_cost_owner"
 
 _CHUNK: ContextVar[dict[str, int] | None] = ContextVar("reco_telemetry_chunk", default=None)
 _APPEL: ContextVar[Appel | None] = ContextVar("reco_telemetry_appel", default=None)
@@ -50,9 +51,15 @@ def prompt_sha256(*templates: str) -> str:
     return h.hexdigest()
 
 
-def cost_owner() -> str:
-    proprietaire = (os.environ.get(ENV_COST_OWNER) or "unknown").strip()
-    return proprietaire if proprietaire in COST_OWNERS else "unknown"
+def cost_owner(client: Any) -> str:
+    """Qui paie les jetons, déduit du client : sa clé dit à qui elle est.
+
+    Un client sans marque (doublure de test, client construit ailleurs) donne
+    `unknown`, jamais une supposition.
+    """
+    proprietaire = getattr(client, ATTRIBUT_PROPRIETAIRE, None)
+    return proprietaire if isinstance(proprietaire, str) and proprietaire in COST_OWNERS \
+        else "unknown"
 
 
 @contextlib.contextmanager
@@ -127,8 +134,9 @@ _LECTEURS = {"anthropic": usage_anthropic, "openai": usage_openai}
 
 class Appel:
     def __init__(self, provider: str, model: str, transport: str,
-                 request: dict[str, Any] | None) -> None:
+                 request: dict[str, Any] | None, client: Any = None) -> None:
         self.provider, self.model, self.transport = provider, model, transport
+        self.cost_owner = cost_owner(client)
         self.request = dict(request or {})
         self.usage: dict[str, Any] = {}
         self.status = "succeeded"
@@ -185,7 +193,7 @@ def enregistrer(etape: StageHandle, appel: Appel, *, extra: dict[str, Any] | Non
         "pricing_snapshot_id": pricing.snapshot_id(tarif) if montant is not None else None,
         "cost_decimal": str(montant) if montant is not None else None,
         "cost_currency": tarif["currency"] if montant is not None else None,
-        "cost_owner": cost_owner(), "error_code": appel.error_code, "recorded_at": a_quand,
+        "cost_owner": appel.cost_owner, "error_code": appel.error_code, "recorded_at": a_quand,
         "provider_usage_json": appel.usage.get("provider_usage_json") or {},
     }
     return etape.recorder.record_llm_call(ligne)
@@ -193,9 +201,9 @@ def enregistrer(etape: StageHandle, appel: Appel, *, extra: dict[str, Any] | Non
 
 @contextlib.contextmanager
 def appel(provider: str, model: str, *, transport: str = "sync",
-          request: dict[str, Any] | None = None) -> Iterator[Appel]:
+          request: dict[str, Any] | None = None, client: Any = None) -> Iterator[Appel]:
     """Chronomètre un appel synchrone et l'écrit dans l'étape courante."""
-    courant = Appel(provider, model, transport, request)
+    courant = Appel(provider, model, transport, request, client)
     jeton = _APPEL.set(courant)
     debut = time.perf_counter_ns()
     try:

@@ -410,7 +410,10 @@ def make_anthropic_client():
             "Copie tools/.env.example en tools/.env et renseigne la clé, "
             "ou exporte-la dans ton shell."
         )
-    return anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
+    # Clé de l'opérateur (son .env) : c'est lui qui paie (télémétrie, cost_owner).
+    client.reco_cost_owner = "reco_managed"
+    return client
 
 
 def make_openai_client():
@@ -428,4 +431,6 @@ def make_openai_client():
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("Variable d'environnement OPENAI_API_KEY manquante.")
-    return openai.OpenAI(api_key=api_key)
+    client = openai.OpenAI(api_key=api_key)
+    client.reco_cost_owner = "reco_managed"  # cf. make_anthropic_client
+    return client
