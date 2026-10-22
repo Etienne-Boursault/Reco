@@ -79,8 +79,12 @@ export interface Agregat {
    * moins une fois, donc de relier un clic à un visiteur. C'est précisément ce
    * que le module de mesure refuse de faire : les clics ne portent aucun
    * identifiant de visiteur, et c'est délibéré.
+   *
+   * Pour 100 visiteurs, et non par visiteur : le rapport réel tourne autour de
+   * 0,03. Arrondi au dixième, il s'affichait « 0 » le 2026-10-22 avec 39 clics
+   * pour 1 182 visiteurs — un chiffre faux qui avait l'air d'une panne.
    */
-  clicsParVisiteur: number | null;
+  clicsPour100Visiteurs: number | null;
   /**
    * Clics écartés du ratio, faute de savoir qui est venu ce jour-là.
    *
@@ -279,8 +283,8 @@ export function agreger({
     clics: clics.length,
     // La mesure qui approche le mieux la fonction du site — faire découvrir —
     // sans relier un clic à un visiteur. Arrondie au dixième.
-    clicsParVisiteur:
-      visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 10) / 10 : null,
+    clicsPour100Visiteurs:
+      visiteurs > 0 ? Math.round((clicsComparables / visiteurs) * 1000) / 10 : null,
     clicsHorsPeriode: clics.length - clicsComparables,
     topPages: compter(consultees.filter((v) => v.statut === 200).map((v) => v.chemin)),
     provenances: compter(consultees.map((v) => v.provenance)),

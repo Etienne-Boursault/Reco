@@ -180,10 +180,10 @@ describe('structure', () => {
     expect(html).not.toContain('tout le site ·');
   });
 
-  it('n’affiche jamais « % » sur les clics par visiteur', async () => {
+  it('n’affiche jamais « % » sur les clics pour 100 visiteurs', async () => {
     // Le premier jet présentait ce rapport comme un taux et sortait 664 %.
     const html = await corpsAvecMesures({ audience: [VISITE], clics: [CLIC, CLIC] });
-    const i = html.indexOf('clics par visiteur');
+    const i = html.indexOf('clics pour 100 visiteurs');
 
     expect(i).toBeGreaterThan(-1);
     expect(html.slice(i - 400, i)).not.toContain('%');
@@ -202,9 +202,10 @@ describe('honnêteté des chiffres', () => {
     expect(html).toContain('clic écarté');
   });
 
-  it('trace les visiteurs par jour, pas les pages ni les robots', async () => {
+  it('trace les visiteurs et les robots sur deux graphiques séparés', async () => {
     // Le graphique empilait robots et pages vues ; les préchargements au
-    // survol gonflaient les secondes. Il montre désormais des personnes.
+    // survol gonflaient les secondes. Il montre désormais des personnes, et
+    // les robots ont le leur, à leur propre échelle.
     const html = await corpsAvecMesures({
       audience: [
         VISITE,
@@ -216,6 +217,8 @@ describe('honnêteté des chiffres', () => {
     expect(html).toContain('Visiteurs par jour');
     expect(html).not.toContain('Pages vues par jour');
     expect(html).toContain('1 visiteurs, 1 pages vues, 1 passages de robots');
+    expect(html).toContain('Passages de robots par jour');
+    expect(html).toContain('clics pour 100 visiteurs');
   });
 
   it('ne dit rien quand les deux mesures se recouvrent', async () => {
