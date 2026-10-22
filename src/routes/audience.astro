@@ -73,7 +73,9 @@ const entetesRecus = Astro.url.searchParams.get('entetes') === '1'
 let donnees: Agregat | null = null;
 let erreur: string | null = null;
 try {
-  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours, hoteDuSite: Astro.url.hostname });
+  // `Astro.site` : derrière le proxy, `Astro.url` n'a pas le domaine public (constaté le 2026-10-22).
+  const hoteDuSite = Astro.site?.hostname ?? Astro.url.hostname;
+  donnees = agreger({ racine: process.cwd(), sourceId: source, nbJours, hoteDuSite });
 } catch (e) {
   erreur = e instanceof Error ? e.message : String(e);
 }
