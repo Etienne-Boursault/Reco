@@ -6,6 +6,7 @@ Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ce p
 ## [Non publié]
 
 ### Ajouté
+- Métriques de workflow (#129 à #133) : base SQLite append-only `tools/output/telemetry/` hors du catalogue ; runs de la chaîne de venus, de `run_pipeline` et des CLI ; transcription (origine réelle du média, durée audio, chronos distincts, cache) ; appels LLM synchrones et par lot (jetons du fournisseur, coût figé au tarif daté, `null` quand il n'est pas fondé) ; journal de relecture `human`/`agent` et temps actif par battements ; `metrics_report.py` (couverture, cohorte saison 6 avec codes d'exclusion, résumé nominal/surcoût, export validé). Contrat : `docs/workflow-metrics.md`.
 - Page `/mentions-legales` (#123) : éditeur anonyme (régime LCEN des non-professionnels), hébergeur, données mesurées et leurs durées, droits et recours CNIL, crédits TMDB et DB-IP ; lien dans le pied de page (ADR 0052).
 - Durées de conservation appliquées par le serveur (#123) : `src/server/retention.mjs` supprime visites et clics à 13 mois et efface nom et e-mail des signalements à 12 mois, au démarrage puis chaque jour.
 - Vignettes d'épisodes servies par le site (#125) : `public/vignettes/` (229 fichiers), `tools/vignettes_episodes.py`, `src/utils/vignettes.ts` ; venus récupère la vignette avant de publier un épisode.
