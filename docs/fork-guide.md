@@ -213,6 +213,18 @@ répond 404 et la mesure ne distingue pas les visiteurs.
 Les fichiers de mesure sont supprimés au bout de 13 mois par le serveur
 (`src/server/retention.mjs`, ADR 0052).
 
+### Modèle d'extraction (chaîne venus)
+
+- `RECO_MODELE_EXTRACTION` — modèle utilisé par la chaîne (défaut :
+  `claude-opus-5`). À changer **après** un passage au banc d'essai
+  (`tools/banc_modeles.py`), qui compare un modèle à vos épisodes déjà relus :
+  un autre modèle change ce que la chaîne trouve.
+- `RECO_MODELE_SECOURS` — modèle de repli quand le fournisseur ne connaît plus
+  le modèle configuré (défaut : `claude-opus-5-5` ; `aucun` le coupe).
+
+L'étape `veiller-modeles` prévient chaque semaine d'un modèle disparu ou d'un
+plus récent dans la même famille. Procédure : `deploy/venus/README.md`.
+
 ### Commentaire YouTube des recos (chaîne venus, optionnel)
 
 Inerte par défaut. Procédure complète dans `deploy/venus/README.md`.
