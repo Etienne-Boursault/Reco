@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Modèle — fin d’épisode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0e0e10}a:hover{color:#2a2a30}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 88px 88px 80px; background: {{accent}}; color: #0e0e10; font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; justify-content: space-between">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <svg aria-hidden="true" width="80" height="80" viewBox="0 0 24 24"><path d="M12 4l2.2 4.9 5.3.5-4 3.6 1.2 5.2L12 15.9 7.3 18.7l1.2-5.2-4-3.6 5.3-.5z" fill="#0e0e10"></path></svg>
+    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; line-height: 1; color: {{accent}}; background: #0e0e10; border-radius: 12px; padding: 10px 18px 6px">{{numero}}</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 40px">
+    <h2 style="margin: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 168px; line-height: 0.88; letter-spacing: -0.005em">Les {{nbRecos}} recos<br>de l’épisode</h2>
+    <p style="margin: 0; font-size: 40px; line-height: 1.3; max-width: 860px">Avec le moment exact où elles sont citées, et des liens pour les écouter, les voir ou les lire.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="background: #0e0e10; color: {{accent}}; border-radius: 999px; padding: 26px 44px; display: flex; align-items: center; justify-content: space-between">
+      <span style="font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; letter-spacing: 0.03em">unebonnere.co</span>
+      <span style="font-size: 30px; font-weight: 700; color: #f6f4ee">Lien en bio</span>
+    </div>
+    <div style="font-size: 24px; text-align: center">Site de fan, non officiel · Un Bon Moment, avec Kyan Khojandi et Navo</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"numero":{"editor":"text","default":"S6 · E04","section":"Épisode"},"nbRecos":{"editor":"int","default":9,"min":1,"max":99,"section":"Épisode"},"accent":{"editor":"color","default":"#ffd23f","options":["#ffd23f","#ff8a5c","#7fd0aa"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#ffd23f',
+      numero: this.props.numero ?? 'S6 · E04',
+      nbRecos: this.props.nbRecos ?? 9,
+    };
+  }
+}
+</script>
+</body>
+</html>

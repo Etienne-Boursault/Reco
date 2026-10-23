@@ -16,13 +16,12 @@ repond 403 depuis la fin de l'abonnement Premium du proprietaire de l'app.
 
 MISE A JOUR
 -----------
-`python tools/playlists_musique.py` compare au dernier etat publie
-(`tools/data/playlists_spotify.json`) et affiche, par playlist, les titres a
-ajouter en fin de liste. Les ajouts se font dans le lecteur web, connecte au
-compte, avec `tools/playlists_musique_ui.js`. Une fois faits :
-`--enregistrer` met a jour l'etat publie. Si un titre doit s'inserer au milieu
-(lien pose apres coup sur un vieil episode), l'outil le dit : il faut alors
-vider puis remplir la playlist (`__vider`, puis `__lotSp`).
+Apres chaque episode, tools/reseaux_episode.py ajoute en fin de liste les
+titres de ce seul episode (docs/reseaux-episode.md) : les titres phares d'un
+artiste changent avec le temps, recalculer les anciens episodes deplacerait
+des titres deja publies. `python tools/playlists_musique.py` recalcule tout et
+compare a l'etat publie (`tools/data/playlists_spotify.json`) : un controle,
+qui signale aussi ces derives. `--enregistrer` remplace l'etat par le calcul.
 """
 from __future__ import annotations
 
@@ -87,7 +86,7 @@ def entrees() -> list[dict[str, Any]]:
             continue
         ep = episodes.get(m["sourceRef"]["episodeGuid"], {})
         e = {"item": item["id"], "titre": item["title"], "url": url, "date": ep.get("date") or "",
-             "playlist": nom_playlist(ep.get("season")),
+             "playlist": nom_playlist(ep.get("season")), "guid": m["sourceRef"]["episodeGuid"],
              "type": next(t for t in TYPES if t in item["types"])}
         cle = (e["playlist"], e["item"])
         if cle not in retenues or e["date"] < retenues[cle]["date"]:
@@ -103,12 +102,22 @@ class Embed:
         self.session.headers["User-Agent"] = "Mozilla/5.0"
         self.cache: dict[tuple[str, str], list[tuple[str, str]]] = {}
         self.infos: dict[str, tuple[str, str]] = {}
+        self.durees: dict[str, int] = {}
 
     def _entite(self, genre: str, sid: str) -> dict[str, Any]:
-        page = self.session.get(f"https://open.spotify.com/embed/{genre}/{sid}", timeout=20).text
-        m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page)
-        time.sleep(0.3)
-        return json.loads(m.group(1))["props"]["pageProps"]["state"]["data"]["entity"] if m else {}
+        """Entite de la page embed ; sous charge, Spotify renvoie une page d'erreur : on reessaie."""
+        for essai in range(5):
+            try:
+                page = self.session.get(f"https://open.spotify.com/embed/{genre}/{sid}", timeout=20).text
+                m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page)
+                etat = json.loads(m.group(1))["props"]["pageProps"].get("state") if m else None
+                if etat:
+                    time.sleep(0.3)
+                    return etat["data"]["entity"]
+            except requests.RequestException:
+                pass
+            time.sleep(3 + 5 * essai)
+        raise RuntimeError(f"page embed illisible : {genre}/{sid}")
 
     def pistes(self, genre: str, sid: str) -> list[tuple[str, str]]:
         if (genre, sid) not in self.cache:
@@ -116,6 +125,7 @@ class Embed:
                      if t.get("isPlayable", True) and t.get("uri", "").startswith("spotify:track:")]
             for t in liste:
                 self.infos[t["uri"].split(":")[-1]] = (t["title"], t.get("subtitle", ""))
+                self.durees[t["uri"].split(":")[-1]] = t.get("duration") or 0
             self.cache[(genre, sid)] = [(t["uri"].split(":")[-1], t["title"]) for t in liste]
         return self.cache[(genre, sid)]
 
@@ -123,7 +133,14 @@ class Embed:
         if tid not in self.infos:
             ent = self._entite("track", tid)
             self.infos[tid] = (ent.get("title", ""), ", ".join(a["name"] for a in ent.get("artists", [])))
+            self.durees[tid] = ent.get("duration") or 0
         return self.infos[tid]
+
+    def duree(self, tid: str) -> int:
+        """Duree en millisecondes (0 si inconnue)."""
+        if tid not in self.durees:
+            self.titre_artiste(tid)
+        return self.durees.get(tid, 0)
 
     def artiste_de_album(self, sid: str) -> str | None:
         page = self.session.get(f"https://open.spotify.com/album/{sid}", timeout=20).text

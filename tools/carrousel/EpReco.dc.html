@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Modèle — une reco</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#ffd23f}a:hover{color:#ffe27a}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 88px 88px 80px; background: #0e0e10; color: #f6f4ee; font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; justify-content: space-between">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <span style="font-size: 26px; font-weight: 700; color: #0e0e10; background: {{accent}}; border-radius: 999px; padding: 12px 26px; text-transform: uppercase; letter-spacing: 0.06em">{{type}}</span>
+    <div style="font-size: 24px; color: #9a99a3; font-weight: 600">{{rang}} / {{total}}</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 22px">
+    <h2 style="margin: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 190px; line-height: 0.86; letter-spacing: -0.005em">{{titre}}</h2>
+    <div style="font-size: 40px; color: #c9c7c0">{{createur}}</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 36px">
+    <svg aria-hidden="true" width="88" height="66" viewBox="0 0 48 36"><path d="M0 36V22C0 9 6 2 18 0l2 5c-6 2-9 6-9 12h8v19zm28 0V22c0-13 6-20 18-22l2 5c-6 2-9 6-9 12h8v19z" fill="{{accent}}"></path></svg>
+    <p style="margin: 0; font-size: 48px; line-height: 1.32; font-style: italic; max-width: 900px">{{citation}}</p>
+    <div style="display: flex; align-items: center; gap: 16px; font-size: 30px; border-top: 2px solid #2a2a30; padding-top: 32px">
+      <span>Reco de <strong>{{qui}}</strong></span>
+      <span aria-hidden="true" style="color: #6f6e78">·</span>
+      <span style="color: #c9c7c0">à {{moment}}</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"type":{"editor":"text","default":"Série","section":"Reco"},"titre":{"editor":"text","default":"Fleabag","section":"Reco"},"createur":{"editor":"text","default":"Phoebe Waller-Bridge","section":"Reco"},"citation":{"editor":"text","default":"Une série que j&#39;ai adoré, que j&#39;ai vraiment adoré, qui s&#39;appelle Fleabag.","section":"Reco"},"qui":{"editor":"text","default":"Carla de Coignac","section":"Reco"},"moment":{"editor":"text","default":"1:11:21","section":"Reco"},"rang":{"editor":"int","default":2,"min":1,"max":99,"section":"Position"},"total":{"editor":"int","default":9,"min":1,"max":99,"section":"Position"},"accent":{"editor":"color","default":"#ffd23f","options":["#ffd23f","#ff8a5c","#7fd0aa"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      accent: p.accent ?? '#ffd23f',
+      type: p.type ?? 'Série',
+      titre: p.titre ?? 'Fleabag',
+      createur: p.createur ?? 'Phoebe Waller-Bridge',
+      citation: p.citation ?? "Une série que j'ai adoré, que j'ai vraiment adoré, qui s'appelle Fleabag.",
+      qui: p.qui ?? 'Carla de Coignac',
+      moment: p.moment ?? '1:11:21',
+      rang: p.rang ?? 2,
+      total: p.total ?? 9,
+    };
+  }
+}
+</script>
+</body>
+</html>
