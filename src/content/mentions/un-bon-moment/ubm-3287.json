@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:06:21"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3287",
+  "itemId": "48e7601e",
+  "kind": "reco",
+  "quote": "Changer l'eau des fleurs, qui est un super roman qui sort d'ailleurs au cinéma.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:06:21",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:34:03",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3284",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/watch?v=gpDbvlAI_A0"
+    }
+  ],
+  "quote": "Ils sont réunis d'un coup et ils font tous le thème de Jean Valjean. C'est exceptionnel à voir, vraiment je vous le recommande.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:34:51",
+  "title": "Tribute des Jean Valjean (Les Misérables)",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Valérie Perrin",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-23T10:32:52Z",
+    "links": "2026-10-23T10:32:52Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "externalIds": {
+    "isbn": "9782253238027"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:06:21",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3287",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782253238027-changer-l-eau-des-fleurs-valerie-perrin/"
+    }
+  ],
+  "quote": "Changer l'eau des fleurs, qui est un super roman qui sort d'ailleurs au cinéma.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:06:21",
+  "title": "Changer l'eau des fleurs",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ],
+  "year": 2018
+}

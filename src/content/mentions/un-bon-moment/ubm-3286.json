@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:42:35"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3286",
+  "itemId": "c077f030",
+  "kind": "reco",
+  "quote": "C'est le spectacle que je vous recommande. Il joue en ce moment au Théâtre du Marais.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:42:35",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

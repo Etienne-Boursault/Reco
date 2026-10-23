@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Fred Cavayé",
+  "enrichedAt": {
+    "links": "2026-10-23T11:50:44Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "externalIds": {
+    "tmdb": "1241803",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1241803/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:03:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3282",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt35518109/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1241803"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=326160.html"
+    }
+  ],
+  "quote": "Et bien vous êtes là à l'occasion du film Les Misérables, un film que franchement j'ai aimé, j'ai adoré ce film, j'ai eu l'occasion de le voir en juin avec la presse.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:03:39",
+  "title": "Les Misérables",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2026
+}
