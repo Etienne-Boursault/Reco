@@ -19,13 +19,20 @@
   ],
   "id": "ubm-3293",
   "kind": "reco",
-  "links": [],
-  "quote": "Et l'autre c'est MIA, créée par des intermittents du spectacle.",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.miaa.fr/"
+    }
+  ],
+  "quote": "Et l'autre c'est MIAA, créée par des intermittents du spectacle.",
   "recommendedBy": "Benjamin Lavernhe",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:11:10",
-  "title": "MIA",
+  "title": "MIAA",
   "transcriptSource": "youtube",
   "types": [
     "autre"
