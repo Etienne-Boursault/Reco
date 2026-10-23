@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Fabrice Florent",
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:08:49",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3289",
+  "kind": "reco",
+  "links": [],
+  "quote": "mais ils existent toujours et j'avais adoré, c'est « Histoires de darons ».",
+  "recommendedBy": "Marie Colomb",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:08:49",
+  "title": "Histoires de darons",
+  "transcriptSource": "youtube",
+  "types": [
+    "podcast"
+  ]
+}

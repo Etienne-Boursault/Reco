@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:10:44",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3292",
+  "kind": "reco",
+  "links": [],
+  "quote": "Coucou Nous Voilou, c'est une association qui travaille pour l'accueil des enfants en hôpitaux.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:10:44",
+  "title": "Coucou Nous Voilou",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}

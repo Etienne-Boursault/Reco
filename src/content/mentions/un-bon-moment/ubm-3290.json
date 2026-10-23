@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:09:06"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3290",
+  "itemId": "8b971273",
+  "kind": "reco",
+  "quote": "d'une jeune chanteuse qui est extraordinaire qui s'appelle Noor. N-O-O-R.",
+  "recommendedBy": "Marie Colomb",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:09:06",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

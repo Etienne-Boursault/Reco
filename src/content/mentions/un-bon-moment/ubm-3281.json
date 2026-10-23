@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:01:58"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3281",
+  "itemId": "5bf5e02f",
+  "kind": "reco",
+  "quote": "J'ai fait tout un pèlerinage à Montmartre. J'étais fou de ce film.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:01:58",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

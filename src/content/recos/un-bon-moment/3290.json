@@ -1,0 +1,43 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-23T10:33:21Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:06",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3290",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/166240247"
+    }
+  ],
+  "quote": "d'une jeune chanteuse qui est extraordinaire qui s'appelle Noor. N-O-O-R.",
+  "recommendedBy": "Marie Colomb",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:09:06",
+  "title": "Noor",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

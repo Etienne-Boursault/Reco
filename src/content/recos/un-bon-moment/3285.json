@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Les Inconnus",
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:37:04",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3285",
+  "kind": "reco",
+  "links": [],
+  "quote": "On rappelle ce sketch des inconnus, Jésus II, le retour.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:37:04",
+  "title": "Jésus II, le retour",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

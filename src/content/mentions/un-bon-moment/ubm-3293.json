@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:11:10"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3293",
+  "itemId": "a9f91686",
+  "kind": "reco",
+  "quote": "Et l'autre c'est MIA, créée par des intermittents du spectacle.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:11:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

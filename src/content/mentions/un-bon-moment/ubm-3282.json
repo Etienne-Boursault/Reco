@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:03:39"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3282",
+  "itemId": "237f9f1d",
+  "kind": "reco",
+  "quote": "Et bien vous êtes là à l'occasion du film Les Misérables, un film que franchement j'ai aimé, j'ai adoré ce film, j'ai eu l'occasion de le voir en juin avec la presse.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:39",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

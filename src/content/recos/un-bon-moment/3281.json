@@ -1,0 +1,115 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Jean-Pierre Jeunet",
+  "enrichedAt": {
+    "links": "2026-10-23T10:32:54Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "externalIds": {
+    "tmdb": "194",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:01:58",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3281",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt0211915/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/194"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=27063.html"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain/watch?locale=FR"
+    }
+  ],
+  "quote": "J'ai fait tout un pèlerinage à Montmartre. J'étais fou de ce film.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:01:58",
+  "title": "Le Fabuleux Destin d'Amélie Poulain",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Orange VOD",
+      "url": "https://video.orange.fr/search?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Rakuten TV",
+      "url": "https://rakuten.tv/fr/search?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal VOD",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Sooner",
+      "url": "https://www.sooner.fr/recherche?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Pathé Home",
+      "url": "https://www.pathehome.com/recherche?text=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "neutral",
+      "label": "VIVA by videofutur",
+      "url": "https://www.videofutur.fr/recherche?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "neutral",
+      "label": "Premiere Max",
+      "url": "https://www.premieremax.com/search?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "indie",
+      "label": "LaCinetek",
+      "url": "https://www.lacinetek.com/fr/?text=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    },
+    {
+      "ethics": "indie",
+      "label": "ARTE VOD",
+      "url": "https://www.arte.tv/fr/search/?q=Le%20Fabuleux%20Destin%20d%27Am%C3%A9lie%20Poulain"
+    }
+  ],
+  "year": 2001
+}
