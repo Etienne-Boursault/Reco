@@ -21,6 +21,32 @@ Dans `Images/unebonnere.co/<date>-S6E06/` :
 La musique ne prend que les recos **de cet épisode**. Les titres phares d'un artiste changent avec le
 temps, et recalculer les anciens épisodes déplacerait des titres déjà publiés.
 
+### Liens Spotify manquants
+
+Sans Premium, la chaîne ne cherche pas de lien Spotify (voir « Spotify : API ou lecteur » plus bas).
+La commande liste alors les recos musicales et les podcasts de l'épisode qui n'en ont pas, avec
+l'onglet de recherche à utiliser. Les playlists se calculent d'après ces liens : il faut les poser
+**avant** la suite.
+
+Coller la partie Spotify de `tools/reseaux_episode_ui.js` dans un onglet open.spotify.com, puis pour
+chaque reco listée :
+
+```js
+await __spChercher('Noor', 'artists')   // « id [texte de la ligne] », 5 candidats au plus
+```
+
+Choisir le candidat d'après le nom et le créateur. En cas de doute, ne rien poser et le signaler.
+
+```bash
+python -X utf8 tools/reseaux_episode.py --lien-spotify ubm-3290=https://open.spotify.com/artist/3fguWOo99xwsT4VgVeSvJO
+python -X utf8 tools/reseaux_episode.py S6-E06   # relancer : les playlists tiennent compte des nouveaux liens
+```
+
+Les recos modifiées partent dans la même PR que `tools/data/`. Avec Premium, la liste est vide : la
+chaîne a déjà posé les liens.
+
+### Playlists à créer
+
 Une **ALERTE** signale une playlist à créer, par exemple au début d'une saison 7. Il faut alors la
 créer sur Spotify et sur Deezer, publique, avec la même description. On l'ajoute ensuite aux deux
 fichiers `tools/data/playlists_*.json`, puis on relance la commande.
@@ -99,7 +125,19 @@ Cette commande met à jour les états de Spotify et de SensCritique, et relit De
 affiche ensuite le nombre de titres de chaque playlist sur les deux plateformes, qui doit être le même
 des deux côtés.
 
-Ensuite, commiter `tools/data/` dans une PR.
+Ensuite, commiter `tools/data/` dans une PR, avec les recos dont on a posé le lien Spotify.
+
+## Spotify : API ou lecteur
+
+Une seule ligne du `.env` de venus choisit, sans commit ni redéploiement :
+
+- **`RECO_SPOTIFY=0`** (sans Premium) : la chaîne n'interroge pas l'API, qui répondrait 403. Les liens
+  Spotify se posent à la publication, comme décrit plus haut ;
+- **ligne absente** (avec Premium, même une offre d'essai) : la chaîne cherche les liens Spotify
+  avant la relecture, avec Deezer et les autres. La liste des manquants est alors vide.
+
+Les identifiants `SPOTIFY_CLIENT_ID` et `SPOTIFY_CLIENT_SECRET` restent en place dans les deux cas.
+Quand un abonnement reprend ou s'arrête, il suffit de retirer ou de remettre la ligne.
 
 ## Pourquoi ces chemins détournés
 

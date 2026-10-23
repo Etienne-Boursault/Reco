@@ -197,6 +197,7 @@ prompt, qui ont produit l'essentiel des corrections de ce corpus. Cf. §8 ter.
 - `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET` — ⚠️ **actuellement
   inutilisable** : le jeton s'obtient, puis tous les endpoints répondent 403
   (voir [`pieges-et-echecs.md`](pieges-et-echecs.md)). N'en dépendez pas.
+  Sans abonnement, `RECO_SPOTIFY=0` coupe l'API sans retirer les identifiants.
 - `RECO_QUIET=1` — réduit la verbosité des CLIs (optionnel).
 
 ### Mesure d'audience sans traceur (`/audience`)

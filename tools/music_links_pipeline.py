@@ -123,7 +123,8 @@ def _resolve_search(reco: dict[str, Any], session: requests.Session,
 
     if platform == PLATFORM_SPOTIFY and spotify_credentials() is None:
         return Resolution(None, REASON_NO_CREDENTIALS,
-                          "SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET absents")
+                          "SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET absents, "
+                          "ou API coupée par RECO_SPOTIFY=0")
     candidates = _COLLECTEURS[platform](reco, session, kind, query)
 
     chosen, reason, detail = verdict(reco, candidates,

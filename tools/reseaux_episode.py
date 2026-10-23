@@ -12,6 +12,14 @@ Dans DOSSIER (par defaut Images/unebonnere.co/<date>-S6E06) :
 - `plan.json` : les titres a ajouter aux playlists Spotify (puis Deezer, via
   playlists_deezer.py) et les oeuvres a ajouter aux listes SensCritique.
 
+Sans Premium, la chaine ne cherche pas de lien Spotify (`RECO_SPOTIFY=0`) : la
+commande liste les recos musicales et les podcasts qui n'en ont pas. Les liens
+trouves dans le lecteur se posent avec
+
+  python tools/reseaux_episode.py --lien-spotify ubm-3290=https://open.spotify.com/artist/...
+
+avant de relancer la preparation, qui calcule les playlists d'apres ces liens.
+
 Les ajouts se font dans le navigateur avec tools/reseaux_episode_ui.js ; le
 deroule complet est dans docs/reseaux-episode.md. Une fois tout publie :
 
@@ -33,6 +41,7 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import playlists_deezer
 import playlists_musique as pm
+from common import write_json_if_changed
 
 DATA = Path(__file__).resolve().parent / "data"
 SENSCRITIQUE = DATA / "senscritique.json"
@@ -43,6 +52,10 @@ LIBELLES = {
     "autre": "Autre",
 }
 CODE = re.compile(r"^S(\d+)-?E(\d+)$", re.IGNORECASE)
+#: Onglet de la recherche du lecteur Spotify ou chercher chaque type.
+ONGLETS_SPOTIFY = {"artiste": "artists", "album": "albums", "musique": "tracks",
+                   "podcast": "podcastAndEpisodes"}
+ECOUTE = re.compile(r"deezer\.com|music\.apple\.com|qobuz\.com|bandcamp\.com|music\.youtube\.com")
 
 
 def typo(texte: str | None) -> str:
@@ -146,6 +159,59 @@ def musique(voulu: dict[str, list[str]], etat_sp: dict[str, Any],
     return plan, alertes
 
 
+def spotify_manquants(ep: dict[str, Any], mentions: list[dict[str, Any]], items: dict[str, dict[str, Any]],
+                      recos: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Recos musicales et podcasts de l'episode sans lien Spotify, citations comprises.
+
+    Un `artiste` n'est un musicien que si sa fiche porte aussi `musique` ou si la
+    reco a deja un lien d'ecoute, comme pour marquer_artistes_musicaux.py : un
+    humoriste ou un magicien n'a rien a chercher sur Spotify.
+    """
+    sortie = []
+    for m in mentions_validees(ep, mentions):
+        item = items[m["itemId"]]
+        types = item.get("types", [])
+        onglet = next((ONGLETS_SPOTIFY[t] for t in types if t in ONGLETS_SPOTIFY), None)
+        urls = [li.get("url", "") for li in recos.get(m["id"], {}).get("links") or []]
+        if not onglet or item["id"] in pm.EXCLUS or any("open.spotify.com" in u for u in urls):
+            continue
+        if types == ["artiste"] and not any(ECOUTE.search(u) for u in urls):
+            continue
+        sortie.append({"reco": m["id"], "titre": item["title"], "createur": item.get("creator") or "",
+                       "onglet": onglet})
+    return sortie
+
+
+def lien_spotify(reco: dict[str, Any], url: str) -> bool:
+    """Ajoute le lien Spotify a la reco ; False si elle en a deja un. L'URL est remise sous forme canonique."""
+    genre, sid = pm.forme(url)
+    if not genre:
+        raise SystemExit(f"lien Spotify illisible : {url}")
+    liens = reco.setdefault("links", [])
+    if any("open.spotify.com" in li.get("url", "") for li in liens):
+        return False
+    liens.insert(0, {"ethics": "neutral", "kind": "streaming", "label": "Spotify",
+                     "url": f"https://open.spotify.com/{genre}/{sid}"})
+    return True
+
+
+def poser_liens(paires: list[str]) -> int:
+    for paire in paires:
+        reco_id, _, url = paire.partition("=")
+        chemin = pm.RECOS_DIR / pm.SOURCE / f"{reco_id.removeprefix('ubm-')}.json"
+        if not chemin.exists():
+            raise SystemExit(f"reco introuvable : {reco_id}")
+        reco = json.loads(chemin.read_text(encoding="utf-8"))
+        if reco.get("id") != reco_id:
+            raise SystemExit(f"{chemin} porte {reco.get('id')}, pas {reco_id}")
+        if lien_spotify(reco, url):
+            write_json_if_changed(chemin, reco)
+            print(f"{reco_id} {reco['title']} : {reco['links'][0]['url']}")
+        else:
+            print(f"{reco_id} {reco['title']} : a deja un lien Spotify, inchange")
+    return 0
+
+
 def preparer(code: str, sortie: Path | None) -> int:
     episodes = pm._lire(pm.EPISODES_DIR)
     ep = trouver_episode(code, episodes)
@@ -163,8 +229,12 @@ def preparer(code: str, sortie: Path | None) -> int:
     spotify, alertes = musique(pm.playlists(du_jour, embed), etat_sp,
                                lambda i: pm.meme_chanson(*embed.titre_artiste(i)))
     sc = senscritique(ep, mentions, items, json.loads(SENSCRITIQUE.read_text(encoding="utf-8")))
+    manquants = spotify_manquants(ep, mentions, items, recos)
+    if manquants:
+        alertes.append(f"{len(manquants)} reco(s) sans lien Spotify : les chercher dans le lecteur, les poser avec "
+                       "--lien-spotify, puis relancer (les playlists en dependent)")
     plan = {"episode": {"guid": ep["guid"], "code": f"S{ep['season']}-E{ep['number']:02d}", "titre": ep["title"]},
-            "spotify": spotify, "senscritique": sc, "alertes": alertes}
+            "spotify": spotify, "spotifyManquants": manquants, "senscritique": sc, "alertes": alertes}
     (sortie / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     print(f"{plan['episode']['code']} — {ep['title']}\n{sortie}")
@@ -173,6 +243,9 @@ def preparer(code: str, sortie: Path | None) -> int:
         print(f"Spotify {nom} : {len(p['ajouts'])} titre(s) a ajouter")
     for univers, s in sc.items():
         print(f"SensCritique {univers} : {[o['titre'] for o in s['oeuvres']]}")
+    for r in manquants:
+        de = f" ({r['createur']})" if r["createur"] else ""
+        print(f"Sans lien Spotify : {r['reco']} {r['titre']}{de} -> onglet {r['onglet']}")
     for a in alertes:
         print("ALERTE :", a)
     sans_qui = [r["titre"] for r in brouillon["recos"] if not r["qui"]]
@@ -211,9 +284,12 @@ def main() -> int:
     parser.add_argument("episode", nargs="?", help="S6-E06 ou guid")
     parser.add_argument("--sortie", type=Path)
     parser.add_argument("--enregistrer", type=Path, metavar="PLAN", help="reporter un plan publie dans les etats")
+    parser.add_argument("--lien-spotify", nargs="+", metavar="RECO=URL", help="poser des liens Spotify trouves a la main")
     args = parser.parse_args()
     if args.enregistrer:
         return enregistrer(args.enregistrer)
+    if args.lien_spotify:
+        return poser_liens(args.lien_spotify)
     if not args.episode:
         parser.error("episode manquant")
     return preparer(args.episode, args.sortie)

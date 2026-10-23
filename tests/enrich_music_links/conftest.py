@@ -32,3 +32,4 @@ def spotify_et_qobuz_muets(monkeypatch):
     monkeypatch.setattr(music_links_pipeline, "qobuz_candidates",
                         lambda *_a, **_k: [])
     monkeypatch.delenv("RECO_QOBUZ", raising=False)
+    monkeypatch.delenv("RECO_SPOTIFY", raising=False)
