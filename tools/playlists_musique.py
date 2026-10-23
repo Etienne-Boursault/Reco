@@ -102,17 +102,28 @@ class Embed:
         self.session = session or requests.Session()
         self.session.headers["User-Agent"] = "Mozilla/5.0"
         self.cache: dict[tuple[str, str], list[tuple[str, str]]] = {}
+        self.infos: dict[str, tuple[str, str]] = {}
+
+    def _entite(self, genre: str, sid: str) -> dict[str, Any]:
+        page = self.session.get(f"https://open.spotify.com/embed/{genre}/{sid}", timeout=20).text
+        m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page)
+        time.sleep(0.3)
+        return json.loads(m.group(1))["props"]["pageProps"]["state"]["data"]["entity"] if m else {}
 
     def pistes(self, genre: str, sid: str) -> list[tuple[str, str]]:
         if (genre, sid) not in self.cache:
-            page = self.session.get(f"https://open.spotify.com/embed/{genre}/{sid}", timeout=20).text
-            m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page)
-            ent = json.loads(m.group(1))["props"]["pageProps"]["state"]["data"]["entity"] if m else {}
-            self.cache[(genre, sid)] = [
-                (t["uri"].split(":")[-1], t["title"]) for t in ent.get("trackList", [])
-                if t.get("isPlayable", True) and t.get("uri", "").startswith("spotify:track:")]
-            time.sleep(0.3)
+            liste = [t for t in self._entite(genre, sid).get("trackList", [])
+                     if t.get("isPlayable", True) and t.get("uri", "").startswith("spotify:track:")]
+            for t in liste:
+                self.infos[t["uri"].split(":")[-1]] = (t["title"], t.get("subtitle", ""))
+            self.cache[(genre, sid)] = [(t["uri"].split(":")[-1], t["title"]) for t in liste]
         return self.cache[(genre, sid)]
+
+    def titre_artiste(self, tid: str) -> tuple[str, str]:
+        if tid not in self.infos:
+            ent = self._entite("track", tid)
+            self.infos[tid] = (ent.get("title", ""), ", ".join(a["name"] for a in ent.get("artists", [])))
+        return self.infos[tid]
 
     def artiste_de_album(self, sid: str) -> str | None:
         page = self.session.get(f"https://open.spotify.com/album/{sid}", timeout=20).text
@@ -142,12 +153,24 @@ def titres(e: dict[str, Any], embed: Embed) -> list[str]:
     return choisis + [i for i in ids if i not in choisis][:3 - len(choisis)]
 
 
+def meme_chanson(titre: str, artistes: str) -> str:
+    """Cle commune aux versions d'une chanson : « Le prochain rêve » et « Le prochain rêve (feat. X) »."""
+    titre = re.sub(r"\(.*?\)|\[.*?\]|\s-\s.*$", "", titre)
+    return norm(titre) + "|" + norm(artistes.split(",")[0])
+
+
 def playlists(liste: list[dict[str, Any]], embed: Embed) -> dict[str, list[str]]:
+    """Titres de chaque playlist ; une chanson presente sous deux versions n'entre qu'une fois."""
     sortie: dict[str, list[str]] = {TOUT: []}
+    vues: dict[str, set[str]] = {}
     for e in liste:
         for cle in (e["playlist"], TOUT):
-            cible = sortie.setdefault(cle, [])
-            cible.extend(i for i in titres(e, embed) if i not in cible)
+            cible, deja = sortie.setdefault(cle, []), vues.setdefault(cle, set())
+            for i in titres(e, embed):
+                chanson = meme_chanson(*embed.titre_artiste(i))
+                if i not in cible and chanson not in deja:
+                    cible.append(i)
+                    deja.add(chanson)
     return sortie
 
 

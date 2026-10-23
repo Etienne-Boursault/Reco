@@ -7,9 +7,13 @@ import playlists_musique as pm
 class FauxEmbed:
     """Pages embed simulees : (genre, id) -> [(id_titre, titre)]."""
 
-    def __init__(self, pistes, artistes=None):
+    def __init__(self, pistes, artistes=None, infos=None):
         self._pistes = pistes
         self._artistes = artistes or {}
+        self._infos = infos or {}
+
+    def titre_artiste(self, tid):
+        return self._infos.get(tid, (tid, ""))
 
     def pistes(self, genre, sid):
         return self._pistes.get((genre, sid), [])
@@ -56,6 +60,14 @@ def test_playlists_dedoublonne_et_cumule_dans_l_ordre():
     sortie = pm.playlists(liste, embed)
     assert sortie[pm.TOUT] == ["t1", "t2"]
     assert sortie["Saison 5"] == ["t2", "t1"]
+
+
+def test_playlists_ne_garde_qu_une_version_d_une_chanson():
+    embed = FauxEmbed({}, infos={"t1": ("Le prochain rêve", "Grand Corps Malade, Styleto"),
+                                 "t2": ("Le prochain rêve (feat. Styleto)", "Grand Corps Malade, Styleto"),
+                                 "t3": ("Le prochain rêve", "Autre Artiste")})
+    liste = [entree(f"https://open.spotify.com/track/{t}", "musique", t) for t in ("t1", "t2", "t3")]
+    assert pm.playlists(liste, embed)["Saison 5"] == ["t1", "t3"]
 
 
 def test_a_ajouter_en_fin_de_liste():
