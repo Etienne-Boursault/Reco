@@ -807,9 +807,13 @@ def test_main_openai_switches_default_model(tmp_source, monkeypatch):
         "extract_recos.py", "--source", tmp_source.source_id,
         "--guid", tmp_source.guid, "--provider", "openai",
     ])
-    # Le modèle envoyé doit être gpt-4o-mini (switch auto).
+    # Le défaut OpenAI : GPT-6 Luna (GPT-4o mini est retiré le 2027-01-14),
+    # effort de raisonnement « none », et `max_completion_tokens`.
     kwargs = fake_client.chat.completions.create.call_args.kwargs
-    assert kwargs["model"] == "gpt-4o-mini"
+    assert kwargs["model"] == extract_recos.OPENAI_MODEL == "gpt-6-luna"
+    assert kwargs["reasoning_effort"] == "none"
+    assert kwargs["max_completion_tokens"] == extract_recos.MAX_TOKENS
+    assert "max_tokens" not in kwargs
 
 
 def test_main_openai_batch_warning(tmp_source, monkeypatch, caplog):
@@ -1095,6 +1099,8 @@ def test_call_openai_alias():
         {"recos": [{"title": "Y", "type": "film"}]})
     out = _call_openai(client, "gpt-4o-mini", "P", "hosts", "chunk")
     assert out == [{"title": "Y", "type": "film"}]
+    # Un modèle GPT-4.x explicite ne reçoit pas d'effort : il le refuserait.
+    assert "reasoning_effort" not in client.chat.completions.create.call_args.kwargs
 
 
 # ===== _poll_batch_until_done (couverture timeout / statut non-ended) ======
