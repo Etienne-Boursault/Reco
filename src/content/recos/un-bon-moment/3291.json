@@ -1,0 +1,62 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Albert Dupontel",
+  "enrichedAt": {
+    "links": "2026-10-23T11:50:45Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "externalIds": {
+    "tmdb": "1193614",
+    "tmdbType": "movie",
+    "watchPage": "https://www.themoviedb.org/movie/1193614/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:09:39",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3291",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt39562962/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/movie/1193614"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "AlloCiné",
+      "url": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000039483.html"
+    }
+  ],
+  "quote": "Il faut brûler maman d'Albert Dupontel, qui est un super film et qui a des acteurs exceptionnels.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:09:39",
+  "title": "Il faut brûler maman",
+  "transcriptSource": "youtube",
+  "types": [
+    "film"
+  ],
+  "year": 2026
+}

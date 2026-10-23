@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3283",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/channel/UC8h8NJG9gacZ5lAJJvhD0fQ"
+    }
+  ],
+  "quote": "Si vous aimez les chocs mentaux, allez voir Nardwuar et Bigflo & Oli, ce sont les spécialistes de ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:34",
+  "title": "Nardwuar",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

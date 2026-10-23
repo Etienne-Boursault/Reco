@@ -1,0 +1,79 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-23T11:51:10Z"
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:29:34",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3295",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/5mmEMfYChd6MImBagU7zCs"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/5497121"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Qobuz",
+      "url": "https://www.qobuz.com/fr-fr/interpreter/bigflo-oli/1595551"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://bigfloetoli.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/bigfloetoli/"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Bigflo_et_Oli"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/channel/UCTivty7Vid_mnIJUXP5EawA"
+    }
+  ],
+  "quote": "Si vous aimez les chocs mentaux, allez voir Nardwuar et Bigflo & Oli, ce sont les spécialistes de ça.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:29:34",
+  "title": "Bigflo & Oli",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

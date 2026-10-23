@@ -113,6 +113,7 @@ RECO_REVIEW_URL=http://192.168.1.59:8000   # adresse mise dans les liens Matrix 
 TMDB_API_KEY=…                 # « où regarder » des films et séries ; absente, l'épisode est finalisé quand même
 SPOTIFY_CLIENT_ID=…            # liens Spotify ; absents, le rapport dit « no-credentials » et non « aucun lien »
 SPOTIFY_CLIENT_SECRET=…
+RECO_SPOTIFY=0                 # sans Premium, l'API répond 403 : liens posés à la publication (docs/reseaux-episode.md)
 RECO_GITHUB_TOKEN=…            # ouvre la PR de publication ; absent, le message porte le lien de comparaison
 RECO_KUMA_PUSH_URL=…           # moniteur « push » Uptime Kuma ; absent, aucun ping n'est envoyé
 ```

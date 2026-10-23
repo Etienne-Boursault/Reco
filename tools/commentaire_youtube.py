@@ -51,6 +51,10 @@ LONGUEUR_MAX = 10_000
 SECRETS = ("RECO_YT_CLIENT_ID", "RECO_YT_CLIENT_SECRET", "RECO_YT_REFRESH_TOKEN")
 #: Episodes sortis avant l'arrivee de l'etape : jamais commentes.
 DEPUIS_PAR_DEFAUT = "2026-10-22"
+#: Les memes que sur le carrousel (tools/carrousel_episode.py).
+EMOJIS = {"film": "🎬", "serie": "📺", "spectacle": "🎭", "livre": "📚", "bd": "💭", "musique": "🎵",
+          "album": "🎵", "artiste": "🎤", "chaine": "🎤", "podcast": "🎙️", "jeu": "🎮", "lieu": "📍",
+          "video": "📹", "application": "📱"}
 
 Notify = Callable[[str], None]
 
@@ -77,7 +81,13 @@ def recos_publiees(source_id: str, guid: str) -> list[dict[str, Any]]:
         doc = json.loads(chemin.read_text(encoding="utf-8"))
         if doc.get("episodeGuid") == guid and doc.get("status") == "validated":
             recos.append(doc)
-    return sorted(recos, key=lambda r: r.get("timestamp") or "99:99:99")
+    return sorted(recos, key=lambda r: (r.get("timestamp") or "99:99:99", r.get("id", "")))
+
+
+def _quand(r: dict[str, Any]) -> str | None:
+    # Un minutage releve sur l'audio Acast ne correspond pas a la video :
+    # mieux vaut aucun minutage qu'un minutage faux.
+    return minutage(r.get("timestamp")) if r.get("transcriptSource") == "youtube" else None
 
 
 def _ligne(r: dict[str, Any]) -> str:
@@ -85,10 +95,22 @@ def _ligne(r: dict[str, Any]) -> str:
     createur = r.get("creator")
     if createur and createur.casefold() != titre.casefold():
         titre = f"{titre} ({createur})"
-    # Un minutage releve sur l'audio Acast ne correspond pas a la video :
-    # mieux vaut aucun minutage qu'un minutage faux.
-    quand = minutage(r.get("timestamp")) if r.get("transcriptSource") == "youtube" else None
-    return f"{quand} {titre}" if quand else f"• {titre}"
+    emoji = EMOJIS.get((r.get("types") or ["autre"])[0], "✨")
+    quand = _quand(r)
+    # Le minutage reste en tete de ligne : c'est ainsi que YouTube le rend cliquable.
+    return f"{quand} {emoji} {titre}" if quand else f"{emoji} {titre}"
+
+
+def _et(noms: list[str]) -> str:
+    return " et ".join(noms) if len(noms) < 3 else ", ".join(noms[:-1]) + " et " + noms[-1]
+
+
+def _evocations(recos: list[dict[str, Any]]) -> str:
+    """« Nardwuar et Bigflo & Oli (29:34) » : une seule ligne, regroupee par minutage."""
+    par_moment: dict[str | None, list[str]] = {}
+    for r in recos:
+        par_moment.setdefault(_quand(r), []).append(r["title"])
+    return ", ".join(f"{_et(noms)} ({quand})" if quand else _et(noms) for quand, noms in par_moment.items())
 
 
 def adresse_episode(source_id: str, guid: str, site: str) -> str:
@@ -99,17 +121,16 @@ def texte(recos: list[dict[str, Any]], adresse: str) -> str:
     """Les recommandations d'abord ; les simples evocations a part, comme sur
     le site, pour ne pas les faire passer pour des conseils."""
     conseils = [_ligne(r) for r in recos if r.get("kind") != "citation"]
-    evocations = [_ligne(r) for r in recos if r.get("kind") == "citation"]
+    evocations = [r for r in recos if r.get("kind") == "citation"]
     parties = []
     if conseils:
-        parties.append("Les recos de l'épisode :\n\n" + "\n".join(conseils))
+        parties.append("🎙️ Les recos de l'épisode\n\n" + "\n".join(conseils))
     if evocations:
-        parties.append("Aussi évoqués :\n\n" + "\n".join(evocations))
+        parties.append("💬 Aussi évoqués : " + _evocations(evocations))
     message = (
         "\n\n".join(parties) + "\n\n"
-        f"Tous les liens pour les écouter, les voir ou les lire : {adresse}\n\n"
-        "Une Bonne Reco, le site de fan (non officiel) qui garde toutes les "
-        "recos d'Un Bon Moment depuis le début."
+        f"👉 Toutes les recos avec leurs liens : {adresse}\n"
+        "Une Bonne Reco ⭐ site de fan, non officiel"
     )
     return message[:LONGUEUR_MAX]
 

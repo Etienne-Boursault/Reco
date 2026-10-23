@@ -41,6 +41,11 @@ _SPOTIFY_CACHE_ATTR = "_reco_spotify_token"
 #: Marge retirée à la durée de vie annoncée (3 600 s), pour ne pas présenter un
 #: jeton expiré entre-temps.
 _SPOTIFY_CACHE_MARGIN = 60.0
+#: Interrupteur d'exploitation : `RECO_SPOTIFY=0` coupe l'API, sans toucher aux
+#: identifiants. Sans Premium, elle répond 403 ; les liens Spotify se posent
+#: alors à la publication (cf. docs/reseaux-episode.md).
+SPOTIFY_SWITCH = "RECO_SPOTIFY"
+_SPOTIFY_OFF = frozenset({"0", "off", "false", "no", "non"})
 
 
 def get_json(session: requests.Session, url: str,
@@ -108,9 +113,12 @@ def spotify_credentials() -> tuple[str, str] | None:
     `tools/.env` est chargé paresseusement, comme dans `common` : le module
     s'importe sans secret, et une machine non configurée le dit clairement
     (`no-credentials`) au lieu de conclure à une absence sur Spotify.
+    `RECO_SPOTIFY=0` produit le même effet, identifiants gardés.
     """
     from dotenv import load_dotenv
     load_dotenv(TOOLS_DIR / ".env")
+    if os.environ.get(SPOTIFY_SWITCH, "").strip().lower() in _SPOTIFY_OFF:
+        return None
     cid = os.environ.get("SPOTIFY_CLIENT_ID", "").strip()
     secret = os.environ.get("SPOTIFY_CLIENT_SECRET", "").strip()
     return (cid, secret) if cid and secret else None

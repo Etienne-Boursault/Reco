@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:34:03"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3284",
+  "itemId": "50f786a1",
+  "kind": "reco",
+  "quote": "Ils sont réunis d'un coup et ils font tous le thème de Jean Valjean. C'est exceptionnel à voir, vraiment je vous le recommande.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ziKyRjHi5mc",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:34:51",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,40 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-ziKyRjHi5mc",
+  "extractionHistory": [
+    {
+      "at": "2026-10-23T10:28:25+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:11:10",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3293",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.miaa.fr/"
+    }
+  ],
+  "quote": "Et l'autre c'est MIAA, créée par des intermittents du spectacle.",
+  "recommendedBy": "Benjamin Lavernhe",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:11:10",
+  "title": "MIAA",
+  "transcriptSource": "youtube",
+  "types": [
+    "autre"
+  ]
+}
