@@ -98,7 +98,7 @@ def textes(ep: dict[str, Any]) -> dict[str, Any]:
     liste = "\n".join(f"{e} {', '.join(groupes[e])}" for e in ordre)
     numero = ep["numero"].replace(" ", "")
     tete = f"Les {n} recos d’Un Bon Moment {numero}, avec {' et '.join(ep['invites'])} 🎙️\n\n{liste}\n\n"
-    pied = "Chaque reco avec le moment exact où elle est citée, et des liens pour la voir, l’écouter ou la lire"
+    pied = "Toutes les recos, au moment près et avec leurs liens"
     alts = [(f"Couverture : les {n} recos de l’épisode {numero} d’Un Bon Moment, « {ep['titre']} », "
              f"avec {' et '.join(ep['invites'])}.")]
     for i, r in enumerate(recos, 1):

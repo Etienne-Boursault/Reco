@@ -89,16 +89,31 @@ def test_texte_separe_recos_et_evocations():
          "transcriptSource": "youtube", "kind": "citation"},
     ], "https://site/ep/")
     recos, evocations = message.split("Aussi évoqués")
-    assert "1:10 Renversée (Amandine Lourdel)" in recos
-    # Un createur identique au titre ne se repete pas.
-    assert "1:19:51 Bo Burnham\n" in evocations
+    # Un createur identique au titre ne se repete pas, et le type donne l'emoji.
+    assert "1:10 ✨ Renversée (Amandine Lourdel)" in recos
+    assert evocations.startswith(" : Bo Burnham (1:19:51)\n")
     assert "https://site/ep/" in message and "non officiel" in message
+
+
+def test_l_emoji_suit_le_type():
+    message = cy.texte([{"title": "Noor", "types": ["artiste"], "timestamp": "01:09:06",
+                         "transcriptSource": "youtube"}], "https://site/")
+    assert "1:09:06 🎤 Noor" in message
+
+
+def test_les_evocations_d_un_meme_moment_tiennent_en_une_ligne():
+    message = cy.texte([
+        {"title": "Nardwuar", "timestamp": "00:29:34", "transcriptSource": "youtube", "kind": "citation"},
+        {"title": "Bigflo & Oli", "timestamp": "00:29:34", "transcriptSource": "youtube", "kind": "citation"},
+        {"title": "Linky", "timestamp": "01:00:00", "transcriptSource": "youtube", "kind": "citation"},
+    ], "https://site/")
+    assert "💬 Aussi évoqués : Nardwuar et Bigflo & Oli (29:34), Linky (1:00:00)\n" in message
 
 
 def test_un_minutage_acast_n_est_pas_donne_pour_la_video():
     message = cy.texte([{"title": "X", "timestamp": "00:10:00",
                          "transcriptSource": "acast"}], "https://site/")
-    assert "• X" in message and "10:00" not in message
+    assert "✨ X" in message and "10:00" not in message
 
 
 def test_recos_publiees_dans_l_ordre_sans_les_ecartees(recos: Path):
@@ -141,7 +156,7 @@ def test_poste_quand_la_page_est_en_ligne(recos: Path):
     envoi = session.postes[0]
     assert envoi["headers"] == {"Authorization": "Bearer acces"}
     assert envoi["json"]["snippet"]["videoId"] == "abc"
-    assert "1:15:58 Widow's Bay" in envoi["json"]["snippet"]["topLevelComment"]["snippet"]["textOriginal"]
+    assert "1:15:58 ✨ Widow's Bay" in envoi["json"]["snippet"]["topLevelComment"]["snippet"]["textOriginal"]
     assert "lc=UgzCommentaire" in vus["notify"][0]
 
 
@@ -177,7 +192,7 @@ def test_un_episode_sans_reco_ne_recoit_pas_de_commentaire_vide(recos: Path):
 def test_l_apercu_affiche_le_texte(recos: Path, capsys):
     poser(recos, "1", title="Titre", timestamp="00:01:00")
     assert cy.main(["--source", "ubm", "--apercu", "yt-abc"]) == 0
-    assert "1:00 Titre" in capsys.readouterr().out
+    assert "1:00 ✨ Titre" in capsys.readouterr().out
 
 
 # ===== L'autorisation ======================================================
