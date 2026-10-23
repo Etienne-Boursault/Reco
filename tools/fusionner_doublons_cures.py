@@ -424,6 +424,16 @@ GROUPES: tuple[Groupe, ...] = (
         createur="Jonathan Glazer",
         titres_alternatifs=("The Zone of Interest",),
     ),
+    Groupe(
+        survivant="cdd07217", perdants=("4af2e2f0", "324225cf"),
+        titre="Nardwuar",
+        # « Nardwuarserviette » soude le nom a son surnom (« Nardwuar the
+        # Human Serviette ») ; « Nardwuar vs » reprend le titre de ses videos.
+        # Relevees a la relecture de S6-E06 (2026-10-23).
+        raison="trois fiches pour la meme chaine YouTube",
+        types=("chaine",),
+        titres_alternatifs=("Nardwuarserviette", "Nardwuar vs"),
+    ),
 )
 
 
