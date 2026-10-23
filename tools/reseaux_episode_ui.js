@@ -78,6 +78,24 @@ window.__spRetirer = async (pl, id) => {
   return `statut ${r.status}, ${avant.ids.length} -> ${apres.ids.length}, conforme: ${conforme}`;
 };
 
+// Candidats de la recherche du lecteur, sans API : « id [texte de la ligne] », a
+// choisir a la main d'apres le nom et le createur. `onglet` vient de
+// plan.spotifyManquants : artists, albums, tracks ou podcastAndEpisodes.
+window.__spChercher = async (requete, onglet = 'artists') => {
+  const seg = { artists: 'artist', albums: 'album', tracks: 'track', podcastAndEpisodes: 'show' }[onglet];
+  history.pushState({}, '', '/search/' + encodeURIComponent(requete) + '/' + onglet);
+  window.dispatchEvent(new PopStateEvent('popstate', { state: {} }));
+  await new Promise((r) => setTimeout(r, 4000));
+  const vus = new Set();
+  return [...document.querySelectorAll('main a[href*="/' + seg + '/"]')].flatMap((a) => {
+    const id = a.getAttribute('href').split('/').pop().split('?')[0];
+    if (vus.has(id) || vus.size >= 5) return [];
+    vus.add(id);
+    const ligne = a.closest('[role="row"]') || a.closest('[data-encore-id="card"]') || a.parentElement.parentElement;
+    return [id + ' [' + (ligne ? ligne.innerText : a.textContent).replace(/\s+/g, ' ').slice(0, 70) + ']'];
+  });
+};
+
 // ISRC de chaque titre, pour retrouver le meme enregistrement sur Deezer :
 // renvoie « id=ISRC id=ISRC … », a passer a tools/playlists_deezer.py.
 window.__spIsrc = async (ids) => {

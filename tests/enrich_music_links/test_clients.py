@@ -378,3 +378,16 @@ def test_search_query_drops_the_editorial_suffix():
         "Sauf si c'est toi Carla de Coignac & Félix Radu")
     assert m.search_query({"title": "Bref (saison 2)", "creator": "Kyan Khojandi"},
                           want_artist_page=False) == "Bref (saison 2) Kyan Khojandi"
+
+
+@pytest.mark.parametrize("valeur", ["0", "off", "NON"])
+def test_reco_spotify_coupe_l_api_sans_toucher_aux_identifiants(monkeypatch, tmp_path, valeur):
+    """Sans Premium, l'API répond 403 : l'interrupteur la coupe, identifiants gardés."""
+    monkeypatch.setattr(m, "TOOLS_DIR", tmp_path)
+    monkeypatch.setenv("SPOTIFY_CLIENT_ID", "abc")
+    monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "def")
+    monkeypatch.setenv("RECO_SPOTIFY", valeur)
+
+    assert _vraies_identifiants() is None
+    monkeypatch.setenv("RECO_SPOTIFY", "1")
+    assert _vraies_identifiants() == ("abc", "def")

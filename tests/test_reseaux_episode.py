@@ -84,3 +84,33 @@ def test_musique_ajoute_en_fin_sans_doublon_de_chanson():
 def test_musique_signale_une_playlist_a_creer():
     plan, alertes = re_.musique({"Saison 7": ["t1"]}, {}, str)
     assert plan == {} and "Saison 7" in alertes[0]
+
+
+def test_spotify_manquants_musique_et_podcasts_sans_lien():
+    items = {**ITEMS,
+             "e": {"id": "e", "title": "Noor", "types": ["artiste"]},
+             "f": {"id": "f", "title": "Un podcast", "types": ["podcast"], "creator": "Une Voix"},
+             "g": {"id": "g", "title": "Un album", "types": ["album"]},
+             "h": {"id": "h", "title": "Un magicien", "types": ["artiste"]},
+             "162d3378": {"id": "162d3378", "title": "Greer Barnes", "types": ["artiste"]}}
+    mentions = [mention("m1", "e", "00:01:00", kind="citation"), mention("m2", "f", "00:02:00"),
+                mention("m3", "g", "00:03:00"), mention("m4", "a", "00:04:00"),
+                mention("m5", "162d3378", "00:05:00"), mention("m6", "h", "00:06:00")]
+    recos = {"m1": {"links": [{"url": "https://www.deezer.com/artist/1"}]},
+             "m3": {"links": [{"url": "https://open.spotify.com/album/x"}]},
+             "m5": {"links": [{"url": "https://www.deezer.com/artist/2"}]},
+             "m6": {"links": [{"url": "https://fr.wikipedia.org/wiki/Un_magicien"}]}}
+    assert re_.spotify_manquants(EP, mentions, items, recos) == [
+        {"reco": "m1", "titre": "Noor", "createur": "", "onglet": "artists"},
+        {"reco": "m2", "titre": "Un podcast", "createur": "Une Voix", "onglet": "podcastAndEpisodes"}]
+
+
+def test_lien_spotify_canonique_en_tete_et_jamais_en_double():
+    reco = {"links": [{"label": "Deezer", "url": "https://www.deezer.com/artist/1"}]}
+    assert re_.lien_spotify(reco, "https://open.spotify.com/intl-fr/artist/3fgu?si=abc")
+    assert reco["links"][0] == {"ethics": "neutral", "kind": "streaming", "label": "Spotify",
+                                "url": "https://open.spotify.com/artist/3fgu"}
+    assert not re_.lien_spotify(reco, "https://open.spotify.com/artist/autre")
+    assert len(reco["links"]) == 2
+    with pytest.raises(SystemExit):
+        re_.lien_spotify({}, "https://www.deezer.com/artist/1")
