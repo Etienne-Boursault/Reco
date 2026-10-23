@@ -31,7 +31,12 @@ AVERTISSEMENTS = [
      "final (catalogue) est rapporté."),
     ("Le temps humain repose sur des battements (15 s, inactivité 60 s) à calibrer contre "
      "une relecture chronométrée avant tout usage dans l'estimateur."),
+    ("Le temps humain est encadré par deux bornes : l'actif oublie les recherches faites "
+     "hors de la page, le bout en bout compte aussi les pauses."),
 ]
+#: Au-delà de cette pause, l'éditeur a quitté la relecture : une nouvelle
+#: séance commence. Un choix, pas une mesure (S6-E06 : 3 min de pause au plus).
+PAUSE_SEANCE = timedelta(minutes=30)
 
 
 def _ratio(n: int, d: int) -> float | None:
@@ -50,13 +55,13 @@ def _somme(valeurs: Iterable[int | None]) -> int | None:
     return total if vues else None
 
 
-def temps_actif_ms(battements: list[dict[str, Any]]) -> int | None:
-    """Union des intervalles ]t - intervalle, t] : deux onglets ne comptent pas double."""
-    if not battements:
-        return None
-    intervalles = sorted(
-        (instant(b["received_at"]) - timedelta(milliseconds=b["interval_ms"]),
-         instant(b["received_at"])) for b in battements)
+def _intervalles(battements: list[dict[str, Any]]) -> list[tuple[datetime, datetime]]:
+    return sorted((instant(b["received_at"]) - timedelta(milliseconds=b["interval_ms"]),
+                   instant(b["received_at"])) for b in battements)
+
+
+def _union_ms(intervalles: list[tuple[datetime, datetime]]) -> int:
+    intervalles = sorted(intervalles)
     total, (debut, fin) = timedelta(0), intervalles[0]
     for d, f in intervalles[1:]:
         if d <= fin:
@@ -66,6 +71,39 @@ def temps_actif_ms(battements: list[dict[str, Any]]) -> int | None:
             debut, fin = d, f
     total += fin - debut
     return int(total.total_seconds() * 1000)
+
+
+def temps_actif_ms(battements: list[dict[str, Any]]) -> int | None:
+    """Union des intervalles ]t - intervalle, t] : deux onglets ne comptent pas double.
+
+    Borne basse : une recherche faite dans un autre onglet n'y figure pas."""
+    if not battements:
+        return None
+    return _union_ms(_intervalles(battements))
+
+
+def temps_bout_en_bout_ms(battements: list[dict[str, Any]]) -> int | None:
+    """Du premier au dernier battement de chaque séance, pauses comprises.
+
+    Borne haute : compte les recherches hors de la page, mais aussi ce qui
+    n'est pas de la relecture. Les séances se découpent par épisode, puis
+    s'unissent : passer d'un épisode à l'autre ne compte pas double."""
+    if not battements:
+        return None
+    par_episode: dict[Any, list[dict[str, Any]]] = defaultdict(list)
+    for b in battements:
+        par_episode[b.get("episode_guid")].append(b)
+    seances = []
+    for siens in par_episode.values():
+        intervalles = _intervalles(siens)
+        debut, fin = intervalles[0]
+        for d, f in intervalles[1:]:
+            if d - fin >= PAUSE_SEANCE:
+                seances.append((debut, fin))
+                debut = d
+            fin = max(fin, f)
+        seances.append((debut, fin))
+    return _union_ms(seances)
 
 
 def couts(appels: list[dict[str, Any]]) -> dict[str, Any]:
@@ -153,6 +191,8 @@ def resume(donnees: Donnees, cohorte: dict[str, Any] | None = None) -> dict[str,
     evenements = [e for e in donnees.events if cohorte is None or e.get("episode_guid") in retenus]
     corrections = Counter(c for e in evenements if e["actor_kind"] == "human"
                           for c in _liste(e.get("derived_categories_json")))
+    battements = [b for b in donnees.activity
+                  if cohorte is None or b.get("episode_guid") in retenus]
     return {
         "nominal": _bloc(nominal, appels),
         "operationalOverhead": {i: _bloc(t, appels) for i, t in sorted(surcout.items())},
@@ -160,9 +200,8 @@ def resume(donnees: Donnees, cohorte: dict[str, Any] | None = None) -> dict[str,
             "actionsByActor": dict(sorted(Counter(e["actor_kind"] for e in evenements).items())),
             "actionsByType": dict(sorted(Counter(e["action"] for e in evenements).items())),
             "humanCorrectionCategories": dict(corrections.most_common()),
-            "humanActiveMs": temps_actif_ms(
-                [b for b in donnees.activity if cohorte is None
-                 or b.get("episode_guid") in retenus]),
+            "humanActiveMs": temps_actif_ms(battements),
+            "humanElapsedMs": temps_bout_en_bout_ms(battements),
         },
     }
 
@@ -177,7 +216,8 @@ def _liste(valeur: Any) -> list[str]:
 
 def _observe(donnees: Donnees, cohorte: dict[str, Any]) -> dict[str, Any]:
     retenus = set(cohorte["includedEpisodes"])
-    vide = {k: None for k in ("processingElapsedMs", "humanActiveMs", "llmInputTokens",
+    vide = {k: None for k in ("processingElapsedMs", "humanActiveMs", "humanElapsedMs",
+                              "llmInputTokens",
                               "llmOutputTokens", "costKnown", "costCurrency",
                               "uniqueCandidates", "reviewActions", "audioDurationMs")}
     if not retenus:
@@ -191,10 +231,11 @@ def _observe(donnees: Donnees, cohorte: dict[str, Any]) -> dict[str, Any]:
     devise = next(iter(cout["known"])) if cout["known"] and len(cout["known"]) == 1 else None
     humains = [e for e in donnees.events if e["actor_kind"] == "human"
                and e.get("episode_guid") in retenus]
+    battements = [b for b in donnees.activity if b.get("episode_guid") in retenus]
     return {
         "processingElapsedMs": _somme(t.get("elapsed_ms") for t in nominales),
-        "humanActiveMs": temps_actif_ms([b for b in donnees.activity
-                                         if b.get("episode_guid") in retenus]),
+        "humanActiveMs": temps_actif_ms(battements),
+        "humanElapsedMs": temps_bout_en_bout_ms(battements),
         "llmInputTokens": _somme(a.get("input_tokens") for a in siens),
         "llmOutputTokens": _somme(a.get("output_tokens") for a in siens),
         "costKnown": cout["known"][devise] if devise else None,
@@ -264,7 +305,7 @@ _FORME: dict[str, Any] = {
     "coverage": {"llmUsage": (float, int, type(None)), "audioDuration": (float, int, type(None)),
                  "humanActiveTime": (float, int, type(None)), "pricing": (float, int, type(None))},
     "observed": {k: (int, str, type(None)) for k in (
-        "processingElapsedMs", "humanActiveMs", "llmInputTokens", "llmOutputTokens",
+        "processingElapsedMs", "humanActiveMs", "humanElapsedMs", "llmInputTokens", "llmOutputTokens",
         "costKnown", "costCurrency", "uniqueCandidates", "reviewActions")},
     "warnings": list,
 }
@@ -332,7 +373,8 @@ def markdown(couverture_: dict[str, Any], resume_: dict[str, Any],
                "| | Valeur |", "|---|---|"]
     for etape, ms in nominal["elapsedMsByStage"].items():
         lignes.append(f"| traitement `{etape}` (nominal) | {_ms(ms)} |")
-    lignes += [f"| relecture active (humain) | {_ms(review['humanActiveMs'])} |", "",
+    lignes += [f"| relecture active (humain) | {_ms(review['humanActiveMs'])} |",
+               f"| relecture de bout en bout (humain) | {_ms(review['humanElapsedMs'])} |", "",
                "## Modèles et coûts (nominal)", ""]
     for modele, n in nominal["llmCallsByModel"].items():
         lignes.append(f"- `{modele}` : {n} appel(s)")

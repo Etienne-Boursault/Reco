@@ -256,6 +256,27 @@ def test_le_temps_actif_fait_l_union_des_onglets():
     assert reports.temps_actif_ms([battement(15), battement(300)]) == 30_000
 
 
+def test_le_bout_en_bout_garde_les_pauses_mais_pas_les_seances_d_ecart():
+    t0 = datetime(2026, 10, 22, 10, 0, tzinfo=UTC)
+
+    def battement(s, episode="a"):
+        return {"received_at": (t0 + timedelta(seconds=s)).isoformat(), "interval_ms": 15_000,
+                "episode_guid": episode}
+    assert reports.temps_bout_en_bout_ms([]) is None
+    # Trois minutes de recherches hors de la page : actif 30 s, bout en bout 5 min.
+    pause = [battement(15), battement(300)]
+    assert (reports.temps_actif_ms(pause), reports.temps_bout_en_bout_ms(pause)) == (
+        30_000, 300_000)
+    # Une heure d'écart : deux séances de 15 s, pas une heure de relecture.
+    assert reports.temps_bout_en_bout_ms([battement(15), battement(3615)]) == 30_000
+    # Le trou entre deux épisodes relus à la suite n'est pas de la relecture.
+    assert reports.temps_bout_en_bout_ms([battement(15), battement(30), battement(600, "b"),
+                                          battement(615, "b")]) == 60_000
+    # Aller-retour entre deux épisodes : le chevauchement ne compte pas double.
+    assert reports.temps_bout_en_bout_ms([battement(15), battement(300), battement(150, "b"),
+                                          battement(165, "b")]) == 300_000
+
+
 def test_le_temps_humain_et_les_corrections_par_cohorte(jeu):
     import review_telemetrie as rt
     recorder = telemetry.get_recorder()
@@ -273,11 +294,14 @@ def test_le_temps_humain_et_les_corrections_par_cohorte(jeu):
     sel = cohorts.selection(donnees, catalogue(SOURCE), season=6)
     exp = reports.export(donnees, sel)
     assert exp["observed"]["humanActiveMs"] == 30_000 and exp["observed"]["reviewActions"] == 2
+    assert exp["observed"]["humanElapsedMs"] == 30_000
     assert exp["derived"]["humanMinutesPerReviewAction"] == 0.25
     assert exp["derived"]["manualReworkRate"] == 0.5
     assert exp["coverage"]["humanActiveTime"] == 1.0
     resume = reports.resume(donnees, sel)
     assert resume["review"]["humanCorrectionCategories"] == {"title_corrected": 1}
+    assert (resume["review"]["humanActiveMs"], resume["review"]["humanElapsedMs"]) == (
+        30_000, 30_000)
 
 
 # ===== ligne de commande =====================================================
@@ -291,6 +315,7 @@ def test_la_ligne_de_commande_produit_chaque_rapport(jeu, tmp_path, capsys):
     texte = capsys.readouterr().out
     assert "Cohorte `s6-standard-first-pass` : **qualified**" in texte
     assert "surcoût".lower() in texte.lower() and "`retry`" in texte
+    assert "| relecture de bout en bout (humain) | non mesuré |" in texte
     assert metrics_report.main(["workflows", *base, "--format", "csv"]) == 0
     csv = capsys.readouterr().out.splitlines()
     assert csv[0].startswith("started_at,workflow_run_id") and len(csv) > 10

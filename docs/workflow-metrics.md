@@ -269,6 +269,21 @@ actif). Ni texte, ni identité, ni IP : la page de relecture est locale.
 d'utiliser ces durées dans l'estimateur, les comparer à une relecture
 chronométrée à la main.
 
+Première comparaison, S6-E06 (2026-10-23) : 22 min chronométrées, 13 min
+actives. Les 9 minutes manquantes mêlaient des recherches pour la relecture dans
+d'autres onglets et une discussion sans rapport. Une seule séance ne suffit pas à
+régler un seuil, donc le rapport donne deux bornes :
+
+- **actif** (`humanActiveMs`), la borne basse : oublie les recherches faites
+  hors de la page ;
+- **de bout en bout** (`humanElapsedMs`), la borne haute : du premier au dernier
+  battement de chaque séance, pauses comprises. Une pause de **30 min** ou plus
+  ouvre une nouvelle séance (un choix aussi). Les séances se découpent par
+  épisode, puis s'unissent : le trou entre deux épisodes relus à la suite ne
+  compte pas.
+
+À recalibrer sur une relecture sans interruption.
+
 Une panne de télémétrie n'interrompt jamais la relecture.
 
 ## Rapports
