@@ -269,6 +269,13 @@ actif). Ni texte, ni identité, ni IP : la page de relecture est locale.
 d'utiliser ces durées dans l'estimateur, les comparer à une relecture
 chronométrée à la main.
 
+Première comparaison, S6-E06 (2026-10-23) : 22 min chronométrées, 13 min 15 s
+actives, et 22 min 13 s du premier au dernier battement. Les 9 minutes manquantes
+mêlaient des recherches pour la relecture dans d'autres onglets et une
+discussion sans rapport : le temps actif est une borne basse. Une seule séance
+ne suffit pas à régler un seuil ; à recalibrer sur une relecture sans
+interruption.
+
 Une panne de télémétrie n'interrompt jamais la relecture.
 
 ## Rapports
