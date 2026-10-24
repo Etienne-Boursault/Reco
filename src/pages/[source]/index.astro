@@ -1,14 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../lib/catalog/reader';
 import SourceCatalog from '../../components/SourceCatalog.astro';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
   return sources.map((source) => ({
     params: { source: source.id },
     props: { source },
   }));
 }
+
+const catalogue = lecteur(Astro);
 
 const { source } = Astro.props;
 
@@ -16,7 +19,7 @@ const { source } = Astro.props;
 // affiche déjà ce catalogue (cf. pages/index.astro). L'index de la source
 // (/${source.id}) redirige alors vers `/` pour éviter le contenu dupliqué —
 // les sous-pages (/${source.id}/episode/…) restent servies normalement.
-const sources = await getCollection('sources');
+const sources = await catalogue.collection('sources');
 if (sources.length === 1) {
   return Astro.redirect('/', 301);
 }

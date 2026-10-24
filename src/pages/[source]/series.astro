@@ -3,7 +3,7 @@
  * /[source]/series — Galerie de toutes les séries (type: serie).
  * Cf. ADR 0031.
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../lib/catalog/reader';
 import Layout from '../../layouts/Layout.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
 import { selectByType } from '../../lib/gallery/aggregate';
@@ -11,18 +11,21 @@ import { galleryBreadcrumb, galleryItemListSchema } from '../../lib/gallery/page
 import { t } from '../../i18n';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
   return sources.map((source) => ({ params: { source: source.id }, props: { source } }));
 }
+
+const catalogue = lecteur(Astro);
 
 const { source } = Astro.props;
 const data = source.data;
 
-const mentions = (await getCollection('mentions'))
+const mentions = (await catalogue.collection('mentions'))
   .filter((m) => m.data.sourceRef.sourceId === source.id)
   .map((m) => m.data);
 const mentionedIds = new Set(mentions.map((m) => m.itemId));
-const items = (await getCollection('items'))
+const items = (await catalogue.collection('items'))
   .map((i) => i.data)
   .filter((it) => mentionedIds.has(it.id));
 

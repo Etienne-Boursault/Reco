@@ -8,7 +8,7 @@
  * filtrage des recos écartées sont exactement le genre de détail qui se perd
  * dans une copie.
  */
-import { getCollection } from 'astro:content';
+import type { CatalogReader } from '../lib/catalog/reader';
 
 import { sortRecosByTimestamp } from './recoOrder';
 import { recoPubliee } from './recoPubliee';
@@ -25,17 +25,20 @@ export interface CatalogData {
   oeuvres: Map<string, string>;
 }
 
-export async function loadCatalogData(sourceId: string): Promise<CatalogData> {
+export async function loadCatalogData(
+  catalogue: CatalogReader,
+  sourceId: string,
+): Promise<CatalogData> {
   // Tri CHRONOLOGIQUE explicite : sans lui, l'ordre serait celui d'énumération
   // du chargeur de fichiers d'Astro — un détail d'implémentation que la
   // migration 5 → 7 a effectivement changé.
   const recos = sortRecosByTimestamp(
-    (await getCollection('recos'))
+    (await catalogue.collection('recos'))
       .filter((r) => r.data.sourceId.id === sourceId && recoPubliee(r.data.status))
       .map((r) => r.data),
   );
 
-  const episodes = (await getCollection('episodes')).filter(
+  const episodes = (await catalogue.collection('episodes')).filter(
     (e) => e.data.sourceId.id === sourceId,
   );
   const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
@@ -46,7 +49,7 @@ export async function loadCatalogData(sourceId: string): Promise<CatalogData> {
   const types = [...counts.entries()].sort((a, b) => b[1] - a[1]) as [string, number][];
 
   const oeuvres = oeuvreParReco(
-    (await getCollection('mentions'))
+    (await catalogue.collection('mentions'))
       .filter((m) => m.data.sourceRef.sourceId === sourceId)
       .map((m) => m.data),
   );

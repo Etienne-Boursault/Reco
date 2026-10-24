@@ -18,7 +18,7 @@
  */
 
 import type { APIRoute, GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../lib/catalog/reader';
 import { renderOG, type OGCarte } from '../../lib/og/renderer.js';
 import { cartesDuSite } from '../../lib/og/cartes.js';
 
@@ -29,12 +29,13 @@ import { cartesDuSite } from '../../lib/og/cartes.js';
  * collections et leur mise à plat.
  */
 export const getStaticPaths: GetStaticPaths = async () => {
+  const catalogue = lecteur();
   const [sources, episodes, recos, items, mentions] = await Promise.all([
-    getCollection('sources'),
-    getCollection('episodes'),
-    getCollection('recos'),
-    getCollection('items'),
-    getCollection('mentions'),
+    catalogue.collection('sources'),
+    catalogue.collection('episodes'),
+    catalogue.collection('recos'),
+    catalogue.collection('items'),
+    catalogue.collection('mentions'),
   ]);
 
   const cartes = cartesDuSite({

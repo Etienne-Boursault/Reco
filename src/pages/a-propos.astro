@@ -15,12 +15,14 @@ import { t } from '../i18n';
 import { plural } from '../utils/plural';
 import { recoPubliee } from '../utils/recoPubliee';
 import { siteConfig } from '../config/site';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
+
+const catalogue = lecteur(Astro);
 
 // Stats publiques calculées build-time (cf. index.astro).
-const sources = await getCollection('sources');
-const recos = await getCollection('recos');
-const episodes = await getCollection('episodes');
+const sources = await catalogue.collection('sources');
+const recos = await catalogue.collection('recos');
+const episodes = await catalogue.collection('episodes');
 const nbSources = sources.length;
 const nbRecos = recos.filter(
   (r) => recoPubliee(r.data.status) && r.data.kind !== 'citation',

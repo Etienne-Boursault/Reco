@@ -14,11 +14,13 @@
  * Le composant calcule tout lui-même, pour que la page épisode ne le monte
  * qu'en une ligne.
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import { listGuests } from '../lib/gallery/aggregate';
 import { buildGuestIndex, slugify } from '../lib/gallery/slug';
 import { initiales, passagesDeLInvite } from '../lib/gallery/invite';
 import { plural } from '../utils/plural';
+
+const catalogue = lecteur(Astro);
 
 interface Props {
   sourceId: string;
@@ -29,11 +31,11 @@ const { sourceId, guests = [] } = Astro.props;
 
 let invites: { nom: string; href: string | null; passages: number }[] = [];
 if (guests.length > 0) {
-  const source = (await getCollection('sources')).find((s) => s.id === sourceId);
-  const mentions = (await getCollection('mentions'))
+  const source = (await catalogue.collection('sources')).find((s) => s.id === sourceId);
+  const mentions = (await catalogue.collection('mentions'))
     .filter((m) => m.data.sourceRef.sourceId === sourceId)
     .map((m) => m.data);
-  const episodes = (await getCollection('episodes'))
+  const episodes = (await catalogue.collection('episodes'))
     .filter((e) => e.data.sourceId.id === sourceId)
     .map((e) => e.data);
   const pages = buildGuestIndex(listGuests(mentions, source?.data.hosts ?? []));

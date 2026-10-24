@@ -24,12 +24,14 @@
  * recherche. Le statut 404 est porté par le serveur, pas par le document.
  */
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
+
+const catalogue = lecteur(Astro);
 
 // La source unique du fork sert de destination « catalogue ». S'il y en a
 // plusieurs, on renvoie à l'accueil, qui les liste — plutôt que d'en
 // privilégier une arbitrairement.
-const sources = await getCollection('sources');
+const sources = await catalogue.collection('sources');
 const seule = sources.length === 1 ? sources[0] : null;
 const theme = seule?.data.theme;
 ---

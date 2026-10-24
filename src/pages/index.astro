@@ -1,20 +1,22 @@
 ---
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import Layout from '../layouts/Layout.astro';
 import SourceCatalog from '../components/SourceCatalog.astro';
 import { siteToWebsiteSchema } from '../lib/seo/jsonld';
 import { recoPubliee } from '../utils/recoPubliee';
 import { plural } from '../utils/plural';
 
-const sources = await getCollection('sources');
+const catalogue = lecteur(Astro);
+
+const sources = await catalogue.collection('sources');
 // Mode mono-source : si le déploiement n'a qu'un seul podcast (ex.
 // unebonnere.co = Un Bon Moment uniquement), la page d'accueil affiche
 // directement son catalogue au lieu de lister les sources. Le kit reste
 // multi-source : dès qu'il y a ≥2 sources, on retombe sur la liste ci-dessous.
 const homeSource = sources.length === 1 ? sources[0] : null;
 
-const recos = await getCollection('recos');
-const episodes = await getCollection('episodes');
+const recos = await catalogue.collection('recos');
+const episodes = await catalogue.collection('episodes');
 
 // Stats par source : nb recos (hors discarded), nb ⭐ confirmées (≥2 LLMs),
 // nb épisodes ayant au moins une reco non-discarded.

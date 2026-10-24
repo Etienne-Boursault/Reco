@@ -7,10 +7,12 @@
  * Slot optionnel pour insérer du contenu spécifique avant la tagline (rarement
  * utilisé : on garde un footer minimal pour la cohérence du kit).
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import { t } from '../i18n';
 import SupportLinks from './SupportLinks.astro';
 import { siteConfig } from '../config/site';
+
+const catalogue = lecteur(Astro);
 
 interface Props {
   /** Texte d'accroche du pied de page. Par défaut = string i18n. */
@@ -21,7 +23,7 @@ const { tagline = t('footer.tagline') } = Astro.props;
 
 // Liens « Soutenir » : lus depuis la source primaire (le kit est mono-source
 // par déploiement). getCollection est mis en cache par Astro → coût nul.
-const sources = await getCollection('sources');
+const sources = await catalogue.collection('sources');
 const primary = sources.find((s) => s.data.enabled !== false) ?? sources[0];
 const support = primary?.data.support ?? [];
 // Comptes officiels du site (Instagram…), cf. `siteConfig.socials`.

@@ -14,13 +14,14 @@
  */
 export const partial = true;
 
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../lib/catalog/reader';
 
 import AllRecosView from '../../components/AllRecosView.astro';
 import { loadCatalogData } from '../../utils/sourceCatalogData';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
   return sources.map((source) => ({
     params: { source: source.id },
     props: { source },
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
 }
 
 const { source } = Astro.props;
-const { recos, epByGuid, types, oeuvres } = await loadCatalogData(source.id);
+const { recos, epByGuid, types, oeuvres } = await loadCatalogData(lecteur(Astro), source.id);
 ---
 
 <AllRecosView

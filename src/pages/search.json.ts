@@ -14,15 +14,16 @@
  */
 
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import { buildSearchIndex } from '../lib/search/build-index';
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async (contexte) => {
+  const catalogue = lecteur(contexte);
   const [sources, episodes, items, mentions] = await Promise.all([
-    getCollection('sources'),
-    getCollection('episodes'),
-    getCollection('items'),
-    getCollection('mentions'),
+    catalogue.collection('sources'),
+    catalogue.collection('episodes'),
+    catalogue.collection('items'),
+    catalogue.collection('mentions'),
   ]);
 
   const index = buildSearchIndex({

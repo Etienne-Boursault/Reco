@@ -8,18 +8,19 @@
  *
  * Cf. ADR 0034 (alternatives, scaling).
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../../lib/catalog/reader';
 import Layout from '../../../layouts/Layout.astro';
 import ReportForm from '../../../components/ReportForm.astro';
 import { t } from '../../../i18n';
 import { recoPubliee } from '../../../utils/recoPubliee';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
-  const recos = await getCollection('recos');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
+  const recos = await catalogue.collection('recos');
   // Épisodes connus, par source : le lien « retour » mène à l'épisode de la
   // reco signalée quand sa page existe (cf. le gabarit plus bas).
-  const episodes = await getCollection('episodes');
+  const episodes = await catalogue.collection('episodes');
   const episodeConnu = new Set(
     episodes.map((e) => `${e.data.sourceId.id}/${e.data.guid}`),
   );

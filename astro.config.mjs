@@ -57,6 +57,16 @@ function ssrOnDemandRoutes() {
           entrypoint: './src/routes/audience.astro',
           prerender: false,
         });
+        // Route de TEST : compte les collections lues pendant une requête
+        // (cf. `tests/ssr/verifier-collections-ssr.mjs`). Jamais construite en
+        // production, qui ne pose pas RECO_TEST_ROUTES.
+        if (process.env.RECO_TEST_ROUTES === '1') {
+          injectRoute({
+            pattern: '/__tests/collections',
+            entrypoint: './tests/ssr/route-collections.ts',
+            prerender: false,
+          });
+        }
       },
       'astro:route:setup': ({ route }) => {
         if (process.env.RECO_SSR !== '1') return;

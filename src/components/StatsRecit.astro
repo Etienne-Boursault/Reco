@@ -16,9 +16,11 @@
  * exacte est écrite à côté. Les barres sont décoratives pour les lecteurs
  * d'écran, qui lisent la liste « libellé : valeur ».
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import { calculerConstats } from '../lib/stats/constats';
 import { rediger, type BarreRecit } from '../lib/stats/recit';
+
+const catalogue = lecteur(Astro);
 
 interface Props {
   /** Restreint le récit à une source ; absent = tout le corpus. */
@@ -26,10 +28,10 @@ interface Props {
 }
 const { sourceId } = Astro.props;
 
-const sources = await getCollection('sources');
+const sources = await catalogue.collection('sources');
 const corpus = {
   sources: sources.map((s) => ({ id: s.id, title: s.data.title, hosts: s.data.hosts ?? [] })),
-  recos: (await getCollection('recos')).map((r) => ({
+  recos: (await catalogue.collection('recos')).map((r) => ({
     id: r.data.id,
     sourceId: r.data.sourceId.id,
     episodeGuid: r.data.episodeGuid,
@@ -37,15 +39,15 @@ const corpus = {
     kind: r.data.kind ?? null,
     recommendedBy: r.data.recommendedBy ?? null,
   })),
-  mentions: (await getCollection('mentions')).map((m) => ({
+  mentions: (await catalogue.collection('mentions')).map((m) => ({
     itemId: m.data.itemId,
     status: m.data.status,
     sourceRef: { sourceId: m.data.sourceRef.sourceId, episodeGuid: m.data.sourceRef.episodeGuid ?? null },
   })),
-  items: (await getCollection('items')).map((i) => ({
+  items: (await catalogue.collection('items')).map((i) => ({
     id: i.data.id, title: i.data.title, types: i.data.types, creator: i.data.creator ?? null,
   })),
-  episodes: (await getCollection('episodes')).map((e) => ({
+  episodes: (await catalogue.collection('episodes')).map((e) => ({
     guid: e.data.guid,
     sourceId: e.data.sourceId.id,
     title: e.data.title,

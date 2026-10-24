@@ -29,7 +29,7 @@
 // déjà top-level async). Cohérent avec la version `/[source]/stats.astro`.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import Layout from '../layouts/Layout.astro';
 import StatCard from '../components/StatCard.astro';
 
@@ -46,6 +46,8 @@ import { siteConfig } from '../config/site';
 // pour distributionBars et `topWorks.sub`. Centralisé via `recoTypes` pour
 // rester cohérent avec les cartes catalogue.
 import { TYPE_LABELS, TYPE_LABELS_PLURAL } from '../utils/recoTypes';
+
+const catalogue = lecteur(Astro);
 
 const SIDECAR_PATH = join(process.cwd(), 'tools', 'output', 'stats', '_global', 'stats.json');
 
@@ -64,21 +66,21 @@ const sidecar = readSidecar();
 const collections = sidecar
   ? { sources: [], episodes: [], mentions: [], items: [] }
   : {
-      sources: (await getCollection('sources')).map((s) => ({
+      sources: (await catalogue.collection('sources')).map((s) => ({
         id: s.id,
         hosts: s.data.hosts ?? [],
       })),
-      episodes: (await getCollection('episodes')).map((e) => ({
+      episodes: (await catalogue.collection('episodes')).map((e) => ({
         sourceId: e.data.sourceId.id,
         date: e.data.date ?? null,
       })),
-      mentions: (await getCollection('mentions')).map((m) => ({
+      mentions: (await catalogue.collection('mentions')).map((m) => ({
         itemId: m.data.itemId,
         recommendedBy: m.data.recommendedBy ?? null,
         status: m.data.status,
         sourceRef: { sourceId: m.data.sourceRef.sourceId },
       })),
-      items: (await getCollection('items')).map((i) => ({
+      items: (await catalogue.collection('items')).map((i) => ({
         id: i.data.id,
         title: i.data.title,
         types: i.data.types,

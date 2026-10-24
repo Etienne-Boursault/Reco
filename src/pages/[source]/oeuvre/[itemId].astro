@@ -11,7 +11,8 @@
  * fallback `/og/default.png` (le générateur Satori n'est pas étendu ici
  * pour ne pas empiéter sur la zone du Dev #15/#16).
  */
-import { getCollection, type CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { lecteur } from '../../../lib/catalog/reader';
 import Layout from '../../../layouts/Layout.astro';
 import { oeuvreAUneCarte } from '../../../lib/og/cartes';
 import MentionsTimeline from '../../../components/MentionsTimeline.astro';
@@ -45,15 +46,16 @@ import {
 import { t } from '../../../i18n';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
-  const items = await getCollection('items');
-  const mentions = await getCollection('mentions');
-  const episodes = await getCollection('episodes');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
+  const items = await catalogue.collection('items');
+  const mentions = await catalogue.collection('mentions');
+  const episodes = await catalogue.collection('episodes');
   // Les liens vérifiés vivent sur les recommandations, pas sur les fiches
   // d'œuvre. Mention et recommandation partagent leur identifiant : c'est la
   // seule jointure entre les deux collections.
   const recos = new Map(
-    (await getCollection('recos')).map((r) => [r.data.id, r.data]),
+    (await catalogue.collection('recos')).map((r) => [r.data.id, r.data]),
   );
 
   const paths: Array<Record<string, unknown>> = [];

@@ -19,7 +19,7 @@
  * page. Les passages, eux, comptent aussi les épisodes où la personne était
  * invitée sans rien recommander.
  */
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../../lib/catalog/reader';
 import Layout from '../../../layouts/Layout.astro';
 import { listGuests, selectByGuest } from '../../../lib/gallery/aggregate';
 import { buildGuestIndex } from '../../../lib/gallery/slug';
@@ -30,8 +30,9 @@ import { plural } from '../../../utils/plural';
 import { t } from '../../../i18n';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
-  const allMentions = await getCollection('mentions');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
+  const allMentions = await catalogue.collection('mentions');
   const paths: Array<{
     params: { source: string; name: string };
     props: { source: (typeof sources)[number]; guestName: string };
@@ -53,17 +54,19 @@ export async function getStaticPaths() {
   return paths;
 }
 
+const catalogue = lecteur(Astro);
+
 const { source, guestName } = Astro.props;
 const data = source.data;
 
-const mentions = (await getCollection('mentions'))
+const mentions = (await catalogue.collection('mentions'))
   .filter((m) => m.data.sourceRef.sourceId === source.id)
   .map((m) => m.data);
 const mentionedIds = new Set(mentions.map((m) => m.itemId));
-const items = (await getCollection('items'))
+const items = (await catalogue.collection('items'))
   .map((i) => i.data)
   .filter((it) => mentionedIds.has(it.id));
-const episodes = (await getCollection('episodes'))
+const episodes = (await catalogue.collection('episodes'))
   .filter((e) => e.data.sourceId.id === source.id)
   .map((e) => e.data);
 

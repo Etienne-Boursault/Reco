@@ -16,7 +16,7 @@
  */
 
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { lecteur, type CatalogReader } from '../../lib/catalog/reader';
 import { handleReport } from '../../lib/reports/handler.js';
 import { notifyReportMatrix, type ReportNotifyContext } from '../../lib/reports/notify.js';
 import type { Report } from '../../lib/reports/types.js';
@@ -92,16 +92,17 @@ export const prerender = process.env.RECO_SSR !== '1';
  * le coût du `getCollection` par requête est négligeable.
  */
 async function buildReportContext(
+  catalogue: CatalogReader,
   report: Report,
   selfOrigin: string,
 ): Promise<ReportNotifyContext> {
   try {
-    const recos = await getCollection('recos');
+    const recos = await catalogue.collection('recos');
     const reco = recos.find(
       (r) => r.data.id === report.recoId && r.data.sourceId.id === report.sourceId,
     );
     if (!reco) return {};
-    const episodes = await getCollection('episodes');
+    const episodes = await catalogue.collection('episodes');
     const ep = episodes.find(
       (e) => e.data.guid === reco.data.episodeGuid && e.data.sourceId.id === report.sourceId,
     );
@@ -171,7 +172,7 @@ export const POST: APIRoute = async (ctx) => {
   // On enrichit d'abord le message (titre de l'œuvre, épisode, lien direct)
   // pour que le signalement soit exploitable sans avoir à chercher l'id.
   if (result.status === 200 && result.report) {
-    const context = await buildReportContext(result.report, selfOrigin);
+    const context = await buildReportContext(lecteur(ctx), result.report, selfOrigin);
     await notifyReportMatrix(result.report, { context });
   }
 

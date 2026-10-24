@@ -12,7 +12,7 @@
  * `/${source.id}`.
  */
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import Layout from '../layouts/Layout.astro';
 import { recoPubliee } from '../utils/recoPubliee';
 // Styles des cartes, importés BIEN QUE cette page n'en rende aucune : elle en
@@ -34,6 +34,8 @@ import { t } from '../i18n';
 import { siteToWebsiteSchema, sourceToPodcastSchema } from '../lib/seo/jsonld';
 import { siteConfig } from '../config/site';
 
+const catalogue = lecteur(Astro);
+
 interface Props {
   source: CollectionEntry<'sources'>;
   /** À `true`, ce catalogue est rendu à la racine `/` (site mono-source). */
@@ -53,7 +55,7 @@ const data = source.data;
 // d'énumération du chargeur de fichiers d'Astro — un détail d'implémentation
 // que la migration 5 → 7 a effectivement changé. Cf. `src/utils/recoOrder.ts`.
 const recos = sortRecosByTimestamp(
-  (await getCollection('recos'))
+  (await catalogue.collection('recos'))
     .filter((r) => r.data.sourceId.id === source.id && recoPubliee(r.data.status))
     .map((r) => r.data),
 );
@@ -63,7 +65,7 @@ const trueRecos = recos.filter((r) => r.kind !== 'citation');
 const evoquees = recos.length - trueRecos.length;
 
 // Épisodes indexés par guid pour afficher le numéro/titre sur les cartes.
-const episodes = (await getCollection('episodes')).filter(
+const episodes = (await catalogue.collection('episodes')).filter(
   (e) => e.data.sourceId.id === source.id,
 );
 const epByGuid = new Map(episodes.map((e) => [e.data.guid, e.data]));
@@ -131,8 +133,8 @@ const jsonLd = isHome
 // Onglet « Par type » : les galeries de la source, avec les MÊMES nombres que
 // leurs pages (calcul partagé, cf. `lib/gallery/sommaire.ts`).
 const galeries = sommaireGaleries(
-  (await getCollection('items')).map((i) => i.data),
-  (await getCollection('mentions'))
+  (await catalogue.collection('items')).map((i) => i.data),
+  (await catalogue.collection('mentions'))
     .filter((m) => m.data.sourceRef.sourceId === source.id)
     .map((m) => m.data),
 );

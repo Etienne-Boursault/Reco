@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../../lib/catalog/reader';
 import Layout from '../../../layouts/Layout.astro';
 import RecoCard from '../../../components/RecoCard.astro';
 import EpisodeGuests from '../../../components/EpisodeGuests.astro';
@@ -17,9 +17,10 @@ import { vignette } from '../../../utils/vignettes';
 import EpisodeChapitres from '../../../components/EpisodeChapitres.astro';
 
 export async function getStaticPaths() {
-  const sources = await getCollection('sources');
-  const recos = await getCollection('recos');
-  const episodes = await getCollection('episodes');
+  const catalogue = lecteur();
+  const sources = await catalogue.collection('sources');
+  const recos = await catalogue.collection('recos');
+  const episodes = await catalogue.collection('episodes');
 
   const paths = [];
   for (const source of sources) {
@@ -64,12 +65,14 @@ export async function getStaticPaths() {
   return paths;
 }
 
+const catalogue = lecteur(Astro);
+
 const { source, episode, recos, prevGuid, nextGuid } = Astro.props;
 const data = source.data;
 
 // Le titre de chaque carte mène à la fiche de son œuvre (cf. `oeuvreDesRecos`).
 const oeuvres = oeuvreParReco(
-  (await getCollection('mentions'))
+  (await catalogue.collection('mentions'))
     .filter((m) => m.data.sourceRef.sourceId === source.id)
     .map((m) => m.data),
 );

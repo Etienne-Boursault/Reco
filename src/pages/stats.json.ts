@@ -13,7 +13,7 @@
  * dans `dist/stats.json` (compatible `output: 'static'`).
  */
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../lib/catalog/reader';
 import { buildStatsSnapshot } from '../lib/stats/aggregator';
 
 // F-CRIT-3 — endpoint statique généré au build (cohérent avec le reste
@@ -35,12 +35,13 @@ function deterministicNowIso(env: NodeJS.ProcessEnv = process.env): string {
   return new Date().toISOString();
 }
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async (contexte) => {
+  const catalogue = lecteur(contexte);
   const [sources, episodes, mentions, items] = await Promise.all([
-    getCollection('sources'),
-    getCollection('episodes'),
-    getCollection('mentions'),
-    getCollection('items'),
+    catalogue.collection('sources'),
+    catalogue.collection('episodes'),
+    catalogue.collection('mentions'),
+    catalogue.collection('items'),
   ]);
 
   const snapshot = buildStatsSnapshot({

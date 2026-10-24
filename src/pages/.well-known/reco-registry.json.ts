@@ -19,7 +19,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { lecteur } from '../../lib/catalog/reader';
 import { buildRegistry } from '../../lib/registry/generator';
 import { parseRegistry } from '../../lib/registry/types';
 import pkg from '../../../package.json';
@@ -72,17 +72,19 @@ function jsonResponse(payload: unknown, status: number = 200): Response {
   });
 }
 
-export const GET: APIRoute = async ({ site }) => {
+export const GET: APIRoute = async (contexte) => {
+  const { site } = contexte;
+  const catalogue = lecteur(contexte);
   // `site` est défini par astro.config.mjs (SITE_URL en prod).
   // M24-9 : si non configuré, on retombe sur un domaine IANA-reserved
   // explicite plutôt qu'un `reco.example` ambigu.
   const siteUrl = site?.toString().replace(/\/$/, '') ?? 'https://example.invalid';
 
   const [sources, episodes, items, mentions] = await Promise.all([
-    getCollection('sources'),
-    getCollection('episodes'),
-    getCollection('items'),
-    getCollection('mentions'),
+    catalogue.collection('sources'),
+    catalogue.collection('episodes'),
+    catalogue.collection('items'),
+    catalogue.collection('mentions'),
   ]);
 
   // On expose UN registry par fork. Convention : si plusieurs sources, on
