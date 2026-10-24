@@ -15,7 +15,8 @@
  * -------------------
  * Pré-rendue, elle serait figée à la date du dernier déploiement — un tableau
  * de bord qui n'avance qu'au rythme des mises en production ne sert à rien.
- * `astro.config.mjs` la déclare dans `ONDEMAND`.
+ * `astro.config.mjs` l'injecte comme route rendue à la demande (`injectRoute`,
+ * `prerender: false`), seulement quand `RECO_SSR=1`.
  *
  * L'ACCÈS
  * -------

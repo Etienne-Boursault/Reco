@@ -21,6 +21,7 @@
 - [manifeste-ethique](manifeste-ethique.md) — principes éthiques (liens, vie privée, IA).
 - [screencast-script](screencast-script.md) — script narratif du screencast 5 min.
 - [yagni](yagni.md) — décisions "you ain't gonna need it".
+- [v2](v2/README.md) — Reco V2 : publier sans rebuild ; modèle canonique, décisions prises et en attente, plan des PR.
 
 ## ADRs (Architecture Decision Records)
 
@@ -48,6 +49,13 @@ Index complet dans [`adr/`](adr/). Sélection structurante :
 | [0052](adr/0052-donnees-visiteurs-durees-et-tiers.md) | Données des visiteurs : durées appliquées, aucun tiers à l'affichage |
 | [0053](adr/0053-redirections-fiches-fusionnees.md) | Redirections 301 des fiches d'œuvre fusionnées |
 | [0054](adr/0054-metriques-de-workflow.md) | Mesurer les exécutions du pipeline, sans rien reconstruire |
+| [0055](adr/0055-modele-canonique.md) | Modèle canonique : l'œuvre, la citation, l'épisode (proposée) |
+| [0056](adr/0056-identifiants-oeuvre-permanents.md) | Identifiants d'œuvre permanents (proposée) |
+| [0058](adr/0058-publication-par-revisions.md) | Publication par révisions du catalogue (proposée) |
+| [0059](adr/0059-approbation-publication.md) | Approbation humaine des publications (proposée) |
+| [0060](adr/0060-autorite-editoriale-sauvegardes.md) | Autorité éditoriale et sauvegardes (proposée) |
+| [0061](adr/0061-invariants-catalogue-public.md) | Invariants du catalogue public (proposée) |
+| [0062](adr/0062-orientation-community-cloud.md) | Orientation Community + Cloud (proposée) |
 
 ## Rapports de phase
 

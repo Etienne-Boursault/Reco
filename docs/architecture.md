@@ -36,7 +36,7 @@
               └──────┬───────┘
                      ▼
               ┌──────────────┐
-              │ build_cache  │ → tools/output/cache.json
+              │ build_cache  │ → tools/output/cache/reco.sqlite
               └──────┬───────┘
                      ▼
               ┌──────────────┐
@@ -44,13 +44,16 @@
               └──────────────┘
 ```
 
-## Persistence — 3 SQLite séparés
+Astro lit directement `src/content/`. L'index FTS5 de `build_cache` sert aux
+outils de recherche hors ligne (`tools/search/`) et aux tests, pas au site.
+
+## Persistence — SQLite séparés
 
 | DB | Rôle | Pourquoi séparé ? |
 |---|---|---|
-| `tools/output/cache.sqlite` | Cache enrichments (TMDB, Spotify…) | Reset enrichments sans toucher embeddings. |
-| `tools/output/embeddings.sqlite` | Vecteurs sémantiques (search, dédup) | Reset coûteux (regénération) — isolé. |
-| `tools/output/http_cache.sqlite` | Cache HTTP brut (requests-cache) | TTL court (24 h) ; ne doit pas faire bouger les autres. |
+| `tools/output/cache/reco.sqlite` | Index FTS5 du catalogue (`build_cache.py`) | Reconstructible à tout moment depuis `src/content/` ; le site ne le lit pas. |
+| `tools/output/embeddings/embeddings.sqlite` | Vecteurs sémantiques (search, dédup) | Reset coûteux (regénération) — isolé. |
+| `tools/output/http_cache.sqlite` | Cache HTTP brut (requests-cache) des enrichissements | TTL court (24 h) ; ne doit pas faire bouger les autres. `build_meta.py` garde le sien, `tools/output/http_cache_meta.sqlite`. |
 
 Séparation justifiée : invalidations différentes, taux de croissance
 différent, opérations de maintenance indépendantes

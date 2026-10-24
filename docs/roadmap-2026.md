@@ -147,6 +147,10 @@ Objectif : **valider l'hypothèse audience publique + créer l'effet réseau via
 
 ## ❌ Out of scope (vision-driven)
 
+> Note (2026-10-25) : l'orientation Community + Cloud (vision, décision 4 ;
+> ADR 0062) ne rouvre aucun de ces refus tant que la spécification du Cloud
+> n'est pas arbitrée.
+
 **Refusés par vision** :
 - Newsletter (explicite, non)
 - Multi-rôles complexes (chaque host gère)

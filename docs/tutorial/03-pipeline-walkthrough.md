@@ -161,7 +161,9 @@ python tools/build_cache.py    --source mon-podcast
 python tools/lint_dataset.py   --source mon-podcast
 ```
 
-**Sorties** : `tools/output/cache.json` consommé par Astro au build.
+**Sorties** : `tools/output/cache/reco.sqlite`, un index FTS5 pour les outils de
+recherche hors ligne (`tools/search/`). Astro ne le lit pas : le site lit
+directement `src/content/`.
 
 **Lints** : détecte recos orphelines, champs manquants, doublons.
 

@@ -39,6 +39,7 @@ export default getViteConfig({
       'tests/server/**/*.test.ts',
       'tests/audience/**/*.test.ts',
       'tests/build/**/*.test.ts',
+      'tests/scripts/**/*.test.ts',
     ],
     environment: 'node',
     globals: false,

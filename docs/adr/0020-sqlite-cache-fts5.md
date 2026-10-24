@@ -1,6 +1,9 @@
 # ADR 0020 — Cache d'index SQLite + FTS5 (read-through depuis JSON)
 
 - Statut : **Acceptée — implémentée** (Phase 2 Vague 1, P2.8, livraison 2026-06-10)
+- Note (2026-10-25) : implémentée, mais **sans consommateur en production**. Le
+  site lit `src/content/` ; l'index (`tools/output/cache/reco.sqlite`) ne sert
+  qu'aux outils de recherche hors ligne (`tools/search/`) et aux tests.
 - Date : 2026-06-10
 - Décideurs : équipe Reco
 - ADRs liés : 0001 (architecture multi-source), 0019 (audit_core)

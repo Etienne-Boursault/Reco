@@ -133,6 +133,21 @@ Pas obligatoire mais aide à cadrer l'investissement.
 
 ---
 
+## Décision 4 — Orientation Community + Cloud
+
+> **Date de décision** : 2026-10-24
+
+**Décidé** : le projet suit deux voies. **Community** : le kit open-source
+(licence MIT, ADR 0039), que chaque podcast installe et fait tourner lui-même.
+**Cloud** : une offre hébergée, à venir.
+
+**Pas encore arbitré** : la spécification du Cloud, le multi-tenant et le
+financement. Une instance isolée par client est une hypothèse, pas une
+décision. Rien de multi-tenant n'est construit, et aucune fondation de la V2 ne
+dépend du Cloud (ADR 0062).
+
+---
+
 ## Cadre de décision long-terme
 
 Une fois les décisions 1, 2, 3 prises, voici **comment elles cascadent** :
@@ -168,3 +183,4 @@ Décision 3 (volume)
 | Date | Décision | Notes |
 |---|---|---|
 | _2026-06-10_ | _à remplir_ | _à remplir_ |
+| 2026-10-24 | Décision 4 : orientation Community + Cloud | Spécification, multi-tenant et financement non arbitrés (ADR 0062) |
