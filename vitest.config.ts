@@ -21,6 +21,7 @@ export default getViteConfig({
       'tests/og/**/*.test.ts',
       'tests/gallery/**/*.test.ts',
       'tests/work/**/*.test.ts',
+      'tests/catalog/**/*.test.ts',
       'tests/reports/**/*.test.ts',
       'tests/audio/**/*.test.ts',
       'tests/search-frontend/**/*.test.ts',

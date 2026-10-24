@@ -236,6 +236,28 @@ jobs:
           fi
           echo "$(find dist/client/og -name '*.png' | wc -l) carte(s) OG, toutes au-dessus de 1 Ko."
 
+  # Invariants du corpus (ADR 0061) : doublons, fichiers illisibles, orphelins,
+  # redirections, et écarts entre les recos et leurs mentions ou leurs œuvres,
+  # comparés à la référence datée `tests/fixtures/corpus/divergences-connues.json`.
+  #
+  # NON BLOQUANT pour l'instant (`continue-on-error`, absent de `ci-summary`) :
+  # il le deviendra après une semaine sans alerte. Pas de `npm ci` : le script
+  # n'utilise que Node, qui exécute le TypeScript tel quel.
+  invariants-corpus:
+    name: Invariants du corpus (non bloquant)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Vérifier le corpus
+        run: node scripts/verifier-corpus.ts
+
   ci-summary:
     name: CI summary
     needs: [lint-python, test-python, lint-js, test-vitest, build, build-prod]
