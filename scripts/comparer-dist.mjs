@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url';
 
 /**
  * Valeurs qui dépendent de l'horloge ou du hasard du build, et non du site.
- * Relevé le 2026-10-25 : deux builds du même commit différaient sur 1 302
+ * Relevé le 2026-10-25 : deux builds du même commit différaient sur 1 306
  * fichiers, tous expliqués par ces six règles. Chacune est limitée aux
  * fichiers où la valeur varie, pour ne masquer aucun vrai changement ailleurs.
  */
