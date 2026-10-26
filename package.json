@@ -22,17 +22,17 @@
     "test:og": "vitest run tests/og"
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.8",
+    "@astrojs/node": "^11.1.9",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource/bebas-neue": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^7.4.0",
+    "astro": "^7.4.2",
     "minisearch": "^7.2.0",
     "satori": "^0.33.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@vitest/coverage-v8": "^5.0.5",
     "happy-dom": "^21.0.3",
     "typescript": "^6.0.3",
