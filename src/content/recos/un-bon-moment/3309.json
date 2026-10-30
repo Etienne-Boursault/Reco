@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Christian Bobin",
+  "enrichedAt": {
+    "externalIds.isbn": "2026-10-30T11:41:15Z",
+    "links": "2026-10-30T11:41:15Z"
+  },
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "externalIds": {
+    "isbn": "9782955211953"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:57",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3309",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782955211953-le-platrier-siffleur-christian-bobin/"
+    }
+  ],
+  "quote": "j'ai un livre en français de Christian Bobin qui s'appelle Le Plâtrier Siffleur",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:57",
+  "title": "Le Plâtrier siffleur",
+  "transcriptSource": "youtube",
+  "types": [
+    "livre"
+  ]
+}

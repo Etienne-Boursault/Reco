@@ -1,0 +1,48 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Anton Wallén",
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:33:21",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3302",
+  "kind": "citation",
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel de GeoGuessr",
+      "url": "https://www.geoguessr.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "buy",
+      "label": "Steam — GeoGuessr Steam Edition",
+      "url": "https://store.steampowered.com/app/3478870/"
+    }
+  ],
+  "quote": "Mais c'est assez rigolo à faire.",
+  "recommendedBy": "Thomas Wiesel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:33:21",
+  "title": "GeoGuessr",
+  "transcriptSource": "youtube",
+  "types": [
+    "jeu"
+  ],
+  "year": 2013
+}

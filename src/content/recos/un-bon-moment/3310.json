@@ -1,0 +1,61 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-30T11:41:31Z"
+  },
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:09",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3310",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Deezer",
+      "url": "https://www.deezer.com/artist/111084372"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple Music",
+      "url": "https://music.apple.com/fr/artist/marie-jay/1549832383?uo=4"
+    },
+    {
+      "ethics": "indie",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://marie-jay.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "YT Music",
+      "url": "https://music.youtube.com/channel/UCPgRnjA7iugEjAfR3E6C7Pw"
+    }
+  ],
+  "quote": "Ah moi j'ai un album aussi, une chanteuse, Marie Jay, une Suissesse qui écrit bien, qui a des textes drôles",
+  "recommendedBy": "Thomas Wiesel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:23:09",
+  "title": "Marie Jay",
+  "transcriptSource": "youtube",
+  "types": [
+    "artiste"
+  ]
+}

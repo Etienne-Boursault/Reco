@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:30:45"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3315",
+  "itemId": "136ce1ea",
+  "kind": "reco",
+  "quote": "quand je regarde Blaise, je suis totalement spectateur, et ça c'est rare pour les humoristes, donc j'apprécie beaucoup.",
+  "recommendedBy": "Thomas Wiesel",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:30:45",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

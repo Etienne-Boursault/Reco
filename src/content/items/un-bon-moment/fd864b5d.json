@@ -1,0 +1,25 @@
+{
+  "externalIds": {
+    "tmdb": 235904,
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/235904-spinners/watch?locale=FR"
+  },
+  "id": "fd864b5d",
+  "schemaVersion": 1,
+  "title": "Spinners",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "name": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Spinners"
+    },
+    {
+      "ethics": "avoid",
+      "name": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Spinners"
+    }
+  ]
+}

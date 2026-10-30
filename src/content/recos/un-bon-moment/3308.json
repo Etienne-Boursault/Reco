@@ -1,0 +1,72 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "enrichedAt": {
+    "links": "2026-10-30T11:41:07Z"
+  },
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "externalIds": {
+    "tmdb": "235904",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/235904-spinners/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:22:14",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3308",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt21627122/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/235904"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/235904-spinners/watch?locale=FR"
+    }
+  ],
+  "quote": "J'ai une série sud-africaine qui s'appelle Spinners qui sera sortie sur Canal !",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:22:14",
+  "title": "Spinners",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "avoid",
+      "label": "Canal+",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Spinners"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Canal+ Séries",
+      "url": "https://www.canalplus.com/cmd/searchOnsite?query=Spinners"
+    }
+  ]
+}

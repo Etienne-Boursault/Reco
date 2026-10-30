@@ -1,0 +1,42 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Thomas Wiesel",
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:11:02",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3300",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site de Thomas Wiesel",
+      "url": "https://thomaswiesel.com/"
+    }
+  ],
+  "quote": "Donc t'es en tournée, Théâtre de la Scala l'année prochaine à Paris.",
+  "recommendedBy": "Kyan Khojandi & Thomas Wiesel",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:13:51",
+  "title": "Société Écran",
+  "transcriptSource": "youtube",
+  "types": [
+    "spectacle"
+  ]
+}

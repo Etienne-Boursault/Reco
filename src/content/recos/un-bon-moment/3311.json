@@ -1,0 +1,77 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "Blake Crouch",
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "externalIds": {
+    "tmdb": "196322",
+    "tmdbType": "tv",
+    "watchPage": "https://www.themoviedb.org/tv/196322-dark-matter/watch?locale=FR"
+  },
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "01:23:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3311",
+  "kind": "reco",
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/show/dark-matter/umc.cmc.4luj45vtqpmjsvb6sc2675oeg"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "IMDb",
+      "url": "https://www.imdb.com/title/tt19231492/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "info",
+      "label": "TMDB",
+      "url": "https://www.themoviedb.org/tv/196322"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "streaming",
+      "label": "Où regarder",
+      "url": "https://www.themoviedb.org/tv/196322-dark-matter/watch?locale=FR"
+    }
+  ],
+  "quote": "Faites moi confiance, allez voir Dark Matter, il y a deux saisons pour l'instant, mais la première saison est super.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "01:23:54",
+  "title": "Dark Matter",
+  "transcriptSource": "youtube",
+  "types": [
+    "serie"
+  ],
+  "watchProviders": [
+    {
+      "ethics": "neutral",
+      "label": "Apple TV",
+      "url": "https://tv.apple.com/fr/search?term=Dark%20Matter"
+    },
+    {
+      "ethics": "avoid",
+      "label": "Apple TV Amazon Channel",
+      "url": "https://www.primevideo.com/-/fr/search/?phrase=Dark%20Matter"
+    }
+  ],
+  "year": 2024
+}
