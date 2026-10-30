@@ -21,7 +21,14 @@
   "guestWork": true,
   "id": "ubm-3300",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site de Thomas Wiesel",
+      "url": "https://thomaswiesel.com/"
+    }
+  ],
   "quote": "Donc t'es en tournée, Théâtre de la Scala l'année prochaine à Paris.",
   "recommendedBy": "Kyan Khojandi & Thomas Wiesel",
   "sourceId": "un-bon-moment",

@@ -20,7 +20,14 @@
   "guestWork": true,
   "id": "ubm-3298",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "indie",
+      "kind": "buy",
+      "label": "Place des Libraires",
+      "url": "https://www.placedeslibraires.fr/livre/9782378806156-autant-que-l-amour-charlotte-pudlowski/"
+    }
+  ],
   "quote": "Tu ris, tu pleures, c'est vachement beau.",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",

@@ -19,13 +19,20 @@
   ],
   "id": "ubm-3314",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://louiscattelat.fr/"
+    }
+  ],
   "quote": "Le dernier spectacle que j'ai vu, c'est un français, c'était Louis Catlat et c'est extraordinaire.",
   "recommendedBy": "Marina Rollman",
   "sourceId": "un-bon-moment",
   "status": "validated",
   "timestamp": "01:29:38",
-  "title": "Louis Catlat",
+  "title": "Louis Cattelat",
   "transcriptSource": "youtube",
   "types": [
     "artiste"

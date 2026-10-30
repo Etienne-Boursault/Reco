@@ -19,7 +19,26 @@
   ],
   "id": "ubm-3307",
   "kind": "reco",
-  "links": [],
+  "links": [
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://www.pdc.tv/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/channel/UCRvCwDp_1DwOlOpnlJf9iYw"
+    },
+    {
+      "ethics": "indie",
+      "kind": "info",
+      "label": "Wikipédia",
+      "url": "https://fr.wikipedia.org/wiki/Professional_Darts_Corporation"
+    }
+  ],
   "quote": "Il y a la chaîne YouTube de la ligue officielle qui s'appelle PDC, Pro Dart Championship",
   "recommendedBy": "Thomas Wiesel",
   "sourceId": "un-bon-moment",
