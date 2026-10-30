@@ -6,6 +6,31 @@ commentaire YouTube part tout seul depuis venus. Tout le reste suit ces étapes,
 Les comptes sont ceux d'« Une Bonne Reco » : Instagram et Threads `@unebonnere.co`, Spotify, Deezer,
 SensCritique `unebonnereco`. Ils sont tous connectés dans le Chrome de l'éditeur.
 
+## Où « Une Bonne Reco » publie
+
+| Plateforme | Compte ou liste | Adresse |
+|---|---|---|
+| Site | unebonnere.co | https://unebonnere.co/ |
+| Instagram | `@unebonnere.co` | https://www.instagram.com/unebonnere.co/ |
+| Threads | `@unebonnere.co` | https://www.threads.com/@unebonnere.co |
+| YouTube | chaîne « Une Bonne Reco » (commentaire sous chaque vidéo) | https://www.youtube.com/@unebonnereco |
+| Spotify | playlist Saison 6 | https://open.spotify.com/playlist/7cLC4Tb2Uq9U3T5BDH6cLN |
+| Spotify | playlist Saison 5 | https://open.spotify.com/playlist/0alKtRHpLqgRectbA3aofv |
+| Spotify | playlist Saisons 1 à 4 (2020-2024) | https://open.spotify.com/playlist/0by8HhnsJTvt7HrAcYIB1U |
+| Spotify | playlist Toutes les recos musicales | https://open.spotify.com/playlist/4MO9RDFbo5RRFVcUaL16uY |
+| Deezer | playlist Saison 6 | https://www.deezer.com/fr/playlist/15885712903 |
+| Deezer | playlist Saison 5 | https://www.deezer.com/fr/playlist/15885712963 |
+| Deezer | playlist Saisons 1 à 4 (2020-2024) | https://www.deezer.com/fr/playlist/15885712763 |
+| Deezer | playlist Toutes les recos musicales | https://www.deezer.com/fr/playlist/15885712683 |
+| SensCritique | compte `unebonnereco` | https://www.senscritique.com/unebonnereco |
+| SensCritique | liste des films | https://www.senscritique.com/liste/les_films_recommandes_dans_un_bon_moment/4414481 |
+| SensCritique | liste des séries | https://www.senscritique.com/liste/les_series_recommandees_dans_un_bon_moment/4414486 |
+| SensCritique | liste des livres | https://www.senscritique.com/liste/les_livres_recommandes_dans_un_bon_moment/4414489 |
+| SensCritique | liste des BD | https://www.senscritique.com/liste/les_bd_recommandees_dans_un_bon_moment/4414494 |
+
+Les stories Instagram (et le sticker lien) ne se publient que depuis l'application du téléphone : la
+procédure ne prépare que l'image ou la vidéo.
+
 ## 1. Préparer
 
 ```bash
