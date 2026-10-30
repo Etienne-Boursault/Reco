@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:46:09"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3304",
+  "itemId": "6920dced",
+  "kind": "citation",
+  "quote": "Non, il y a un endroit où j'aime trop commenter, je trouve ça super. Reddit.",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:46:09",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

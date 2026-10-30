@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:23:37"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3311",
+  "itemId": "de75a9b0",
+  "kind": "reco",
+  "quote": "Faites moi confiance, allez voir Dark Matter, il y a deux saisons pour l'instant, mais la première saison est super.",
+  "recommendedBy": "Kyan Khojandi",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:23:54",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

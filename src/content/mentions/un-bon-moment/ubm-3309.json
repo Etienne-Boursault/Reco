@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:22:57"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3309",
+  "itemId": "b932ed9c",
+  "kind": "reco",
+  "quote": "j'ai un livre en français de Christian Bobin qui s'appelle Le Plâtrier Siffleur",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:22:57",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

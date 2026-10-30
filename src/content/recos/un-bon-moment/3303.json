@@ -1,0 +1,34 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "creator": "McFly & Carlito",
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:50:37",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3303",
+  "kind": "reco",
+  "links": [],
+  "quote": "Il vous conseille une vidéo de McFly & Carlito avec Jonathan Cohen où justement ils lisent tous les avis que Carlito laisse dans les hôtels et les restaurants.",
+  "recommendedBy": "Kyan Khojandi",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:50:37",
+  "title": "Vidéo McFly & Carlito avec Jonathan Cohen (lecture des avis de Carlito)",
+  "transcriptSource": "youtube",
+  "types": [
+    "video"
+  ]
+}

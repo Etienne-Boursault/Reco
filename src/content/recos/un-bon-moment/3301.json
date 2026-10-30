@@ -1,0 +1,33 @@
+{
+  "agentReview": {
+    "reviewedByHuman": true
+  },
+  "episodeGuid": "yt-ISWd1C8WTug",
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "timestamp_at_extraction": "00:16:55",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3301",
+  "kind": "citation",
+  "links": [],
+  "quote": "Mais c'est dans une très belle région, les Grisons. Allez dans les Grisons si vous voulez.",
+  "recommendedBy": "Marina Rollman",
+  "sourceId": "un-bon-moment",
+  "status": "validated",
+  "timestamp": "00:16:55",
+  "title": "Les Grisons",
+  "transcriptSource": "youtube",
+  "types": [
+    "lieu"
+  ]
+}

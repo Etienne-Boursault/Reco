@@ -1,0 +1,31 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "01:20:46"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "id": "ubm-3306",
+  "itemId": "86623e79",
+  "kind": "reco",
+  "quote": "Là pour le coup c'est d'une humanité, d'une bizarrerie, d'une spécificité d'un to fuck St Louis c'est magnifique !",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "01:21:14",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}

@@ -1,0 +1,32 @@
+{
+  "extractionHistory": [
+    {
+      "at": "2026-10-30T11:34:29+00:00",
+      "extra": {
+        "timestamp_at_extraction": "00:02:00"
+      },
+      "llmModel": "claude-opus-5-5",
+      "llmProvider": "anthropic",
+      "transcriptModel": "large-v3-turbo",
+      "transcriptSource": "youtube",
+      "worker": "main-cpu"
+    }
+  ],
+  "extractors": [
+    "anthropic"
+  ],
+  "guestWork": true,
+  "id": "ubm-3298",
+  "itemId": "9f82951e",
+  "kind": "reco",
+  "quote": "Tu ris, tu pleures, c'est vachement beau.",
+  "recommendedBy": "Marina Rollman",
+  "schemaVersion": 1,
+  "sourceRef": {
+    "episodeGuid": "yt-ISWd1C8WTug",
+    "sourceId": "un-bon-moment",
+    "timestamp": "00:03:10",
+    "transcriptSource": "youtube"
+  },
+  "status": "validated"
+}
