@@ -6,6 +6,9 @@
     "links": "2026-10-30T11:41:42Z"
   },
   "episodeGuid": "yt-ISWd1C8WTug",
+  "externalIds": {
+    "instagram": "blaise.bersinger"
+  },
   "extractionHistory": [
     {
       "at": "2026-10-30T11:34:29+00:00",
@@ -25,18 +28,6 @@
   "links": [
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Deezer",
-      "url": "https://www.deezer.com/artist/288529791"
-    },
-    {
-      "ethics": "neutral",
-      "kind": "streaming",
-      "label": "Apple Music",
-      "url": "https://music.apple.com/fr/artist/blaise-bersinger/1546863161?uo=4"
-    },
-    {
-      "ethics": "neutral",
       "kind": "info",
       "label": "IMDb",
       "url": "https://www.imdb.com/name/nm11804803/"
@@ -49,9 +40,15 @@
     },
     {
       "ethics": "neutral",
-      "kind": "streaming",
-      "label": "YT Music",
-      "url": "https://music.youtube.com/channel/UCam0myA7FjA0a3KGD4U_w8Q"
+      "kind": "official",
+      "label": "Site officiel",
+      "url": "https://blaisebersinger.com/"
+    },
+    {
+      "ethics": "neutral",
+      "kind": "official",
+      "label": "Chaîne YouTube",
+      "url": "https://www.youtube.com/@BlaiseBersinger"
     }
   ],
   "quote": "quand je regarde Blaise, je suis totalement spectateur, et ça c'est rare pour les humoristes, donc j'apprécie beaucoup.",
