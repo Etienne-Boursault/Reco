@@ -394,6 +394,48 @@ quelques nouvelles tentatives (`telemetry/store.py`). Et un point-virgule dans
 un commentaire SQL coupe une instruction en deux quand on découpe un script à
 la main.
 
+### Une boucle de Whisper efface une recommandation, et aucun contrôle ne la voit
+
+**À corriger plus tard** (constaté le 2026-10-30 sur S6-E07, rien n'est encore
+modifié dans l'outillage).
+
+Entre 01:29:52 et 01:30:40, la transcription longue a écrit « Frère. » 37
+fois, une ligne par seconde. Le vrai passage tenait en 30 secondes : la
+première partie de Louis Cattelat, puis la recommandation de Fiona Gianilla.
+L'extraction ne pouvait pas la deviner ; l'éditeur l'a repérée à la relecture.
+
+Pourquoi la chaîne n'a rien dit :
+
+- `combler_trous` cherche un **saut** d'au moins 9 s entre deux lignes. Une
+  boucle produit des lignes rapprochées : aucun saut, aucun candidat.
+- Les 4 « passages muets » signalés sur Matrix étaient de **faux positifs** :
+  réécoutés le 2026-10-30, ils contiennent un blind-test (00:40:14), une
+  histoire de « dieu de l'arrache » (00:56:16), la fin de l'émission
+  (01:32:16) et un échange sur le livre (00:03:17). Aucune recommandation
+  perdue. Le message regardait donc au mauvais endroit.
+- En silence, Whisper invente aussi des génériques : « Sous-titrage Société
+  Radio-Canada » à 00:39:50.
+
+Mesure sur les 7 épisodes de la saison 6 : 21 séquences d'au moins 4 lignes
+identiques d'affilée, presque toutes de vraies répétitions parlées (4 à 7
+lignes). Deux sont à vérifier : « C'est bon. » ×11 à 00:45:58 sur S6-E01, et
+« Dark Matter. » ×6 à 01:24:16 sur S6-E07. La seule boucle longue est celle-ci.
+
+Ce qui a rendu le passage : la réécoute de la fenêtre avec
+`condition_on_previous_text=False` et `vad_filter=False`, beam 5, sur l'audio
+retéléchargé (`clip_timestamps=[5385, 5450]`).
+
+Pistes, dans l'ordre :
+
+1. Dans `combler_trous` (ou à côté), repérer **N lignes identiques d'affilée**
+   (N ≥ 8 suffit pour ne pas toucher aux répétitions parlées) et réécouter la
+   fenêtre avec `condition_on_previous_text=False`.
+2. Passer `condition_on_previous_text=False` à la transcription longue : c'est
+   ce réglage qui entretient la boucle. À mesurer d'abord sur un épisode
+   complet, car il peut dégrader la ponctuation (cf. l'amorce `hotwords`).
+3. Dire dans le message Matrix quelles boucles ont été vues et réécoutées, et
+   écarter les génériques connus (« Sous-titrage … »).
+
 ---
 
 ## Vérifier ce qu'on mesure
