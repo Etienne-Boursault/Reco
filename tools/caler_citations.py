@@ -23,8 +23,15 @@ Deux défauts mesurés le 2026-10-07 sur les 1 259 recos publiées :
     * chaque mot du passage répond, dans l'ordre, à un mot du nom (« Jason
       Seagal » répond à Jason Segel ; « demi de Fellini » ne répond pas à
       Federico Fellini) ;
-    * le passage n'est pas un mot courant de l'épisode (« franchement » pour
-      *L'attachement*, « musique » pour *Muse*) ;
+    * le passage n'est pas un mot courant de l'émission (« franchement » pour
+      *L'attachement*, « musique » pour *Muse*). Un mot est courant s'il
+      apparaît dans au moins 30 % des transcriptions de la source. La règle
+      d'avant, un mot dit au moins 4 fois dans l'épisode, écartait justement
+      les noms répétés : « Catlat », dit 4 fois sur S6-E07, restait écorché.
+      Mesuré le 2026-11-01 sur les 149 noms que l'éditeur a corrigés à la main
+      dans les citations : 122 rétablis au lieu de 104, et toujours 13
+      citations validées modifiées sur 1 260. Sans 20 transcriptions pour
+      juger, on revient à la règle de l'épisode ;
     * le nom n'est pas un titre descriptif (parenthèse, plus de six mots).
 
 Chaque correction est rendue au message de validation (ancien → nouveau) : la
@@ -58,6 +65,8 @@ SEUIL_AILLEURS = 0.80  # … et ailleurs dans l'épisode
 SEUIL_RIVAL = 0.75    # un second endroit aussi ressemblant rend la phrase ambiguë
 SEUIL_NOM = 0.72
 MOT_COURANT = 4       # occurrences dans l'épisode au-delà desquelles un mot est courant
+PART_EPISODES = 0.30  # part des transcriptions où un mot doit être pour être courant
+CORPUS_MIN = 20       # transcriptions qu'il faut pour juger sur la source entière
 MOTS_VIDES = frozenset(
     "le la les l un une des de du d et a au aux the of en sur pour par".split())
 MOT = re.compile(r"[^\W_]+", re.UNICODE)
@@ -302,6 +311,23 @@ def mots_courants(lignes: list[Ligne]) -> set[str]:
     return {w for w, n in compte.items() if n >= MOT_COURANT}
 
 
+def mots_courants_source(source_id: str) -> set[str] | None:
+    """Les mots présents dans au moins `PART_EPISODES` des transcriptions de la source.
+
+    `None` sous `CORPUS_MIN` transcriptions : trop peu d'épisodes pour juger.
+    Seules les transcriptions de production comptent (`<guid>.txt`), pas les
+    copies de côté (`.avant-comblement`, `.acast.txt`, `.SMALL.bak.txt`).
+    """
+    dossier = transcript_path_for(source_id, "x").parent
+    fichiers = [p for p in sorted(dossier.glob("*.txt")) if p.name.count(".") == 1]
+    if len(fichiers) < CORPUS_MIN:
+        return None
+    presence: Counter[str] = Counter()
+    for fichier in fichiers:
+        presence.update({w for _t, ws in lire_transcription(fichier) for w in ws})
+    return {w for w, n in presence.items() if n >= PART_EPISODES * len(fichiers)}
+
+
 # ===== épisode ===============================================================
 def caler_episode(source_id: str, guid: str, *, apply: bool = False) -> Bilan:
     bilan = Bilan(guid)
@@ -310,7 +336,9 @@ def caler_episode(source_id: str, guid: str, *, apply: bool = False) -> Bilan:
         bilan.erreurs.append(f"pas de transcription pour {guid}")
         return bilan
     lignes = lire_transcription(chemin)
-    courants = mots_courants(lignes)
+    courants = mots_courants_source(source_id)
+    if courants is None:
+        courants = mots_courants(lignes)
     dossier = recos_dir_for(source_id)
     for fichier in sorted(dossier.glob("*.json")) if dossier.is_dir() else []:
         reco = read_json(fichier)

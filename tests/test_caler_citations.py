@@ -178,3 +178,63 @@ def test_le_resume_cite_chaque_nom_et_compte_les_minutages():
     assert cc.resume(bilan) == ("Noms rétablis dans les citations : Camelot → Kaamelott ; "
                                 "Aurel San → Orelsan.\n1 minutage(s) recalé(s) sur la citation.")
     assert cc.resume(cc.Bilan(GUID)) == ""
+
+
+# ===== mots courants de la source ============================================
+def _transcriptions(racine: Path, nombre: int, ligne: str) -> None:
+    dossier = racine / "transcripts" / SOURCE
+    for k in range(nombre):
+        (dossier / f"autre-{k}.txt").write_text(f"[00:00:0{k % 10}] {ligne}\n", encoding="utf-8")
+
+
+CATLAT = ("[01:29:39] c'était Louis Catlat et c'est extraordinaire\n"
+          "[01:29:45] je ne sais même pas qui est Louis Catlat\n"
+          "[01:30:03] le spectacle de Louis Catlat\n"
+          "[01:30:05] Louis Catlat est très fort\n")
+
+
+def test_un_nom_repete_dans_l_episode_est_retabli_s_il_est_rare_dans_la_source(corpus):
+    """S6-E07 : « Catlat », dit 4 fois, passait pour un mot courant de l'épisode."""
+    import common
+
+    common.transcript_path_for(SOURCE, GUID).write_text(CATLAT, encoding="utf-8")
+    _transcriptions(corpus, 25, "franchement on a passé un bon moment")
+    _reco(corpus, "ubm-1", title="Louis Cattelat", timestamp="01:29:39",
+          quote="c'était Louis Catlat et c'est extraordinaire")
+
+    bilan = cc.caler_episode(SOURCE, GUID)
+
+    assert bilan.noms == [("ubm-1", "Louis Catlat", "Louis Cattelat")]
+
+
+def test_un_mot_present_dans_toute_la_source_reste_courant(corpus):
+    import common
+
+    common.transcript_path_for(SOURCE, GUID).write_text(
+        "[00:10:00] Franchement, j'étais tellement ému à sept minutes.\n", encoding="utf-8")
+    _transcriptions(corpus, 25, "franchement on a passé un bon moment")
+    _reco(corpus, "ubm-1", title="L'attachement", timestamp="00:10:00",
+          quote="Franchement, j'étais tellement ému à sept minutes.")
+
+    assert cc.caler_episode(SOURCE, GUID).noms == []
+
+
+def test_sous_vingt_transcriptions_la_regle_de_l_episode_s_applique(corpus):
+    import common
+
+    common.transcript_path_for(SOURCE, GUID).write_text(CATLAT, encoding="utf-8")
+    _transcriptions(corpus, 5, "franchement on a passé un bon moment")
+    _reco(corpus, "ubm-1", title="Louis Cattelat", timestamp="01:29:39",
+          quote="c'était Louis Catlat et c'est extraordinaire")
+
+    assert cc.mots_courants_source(SOURCE) is None
+    assert cc.caler_episode(SOURCE, GUID).noms == []
+
+
+def test_les_copies_de_cote_ne_comptent_pas_dans_la_source(corpus):
+    dossier = corpus / "transcripts" / SOURCE
+    for k in range(25):
+        (dossier / f"autre-{k}.txt.avant-comblement").write_text("[00:00:01] mot\n",
+                                                                 encoding="utf-8")
+        (dossier / f"autre-{k}.SMALL.bak.txt").write_text("[00:00:01] mot\n", encoding="utf-8")
+    assert cc.mots_courants_source(SOURCE) is None
