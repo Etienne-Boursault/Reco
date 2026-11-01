@@ -473,6 +473,23 @@ remplacé les 37 « Frère. » par le passage, Fiona G. et « elle est sur Inter
 compris. En dehors de ce passage, une seule ligne change : un trou comblé à
 00:56:16.
 
+#### Un vocabulaire de l'émission dans l'amorce : rien de gagné
+
+Mesuré le 2026-11-01 sur S6-E07. Pour chacune des 22 recos validées, on a réécouté
+l'extrait [t - 15 s, t + 25 s] deux fois : avec l'amorce de la chaîne, puis avec
+l'amorce suivie de « On y parle de YouTube, Netflix, TikTok, Instagram, Canal+,
+MyCanal, Prime Video, Disney+, Bref, Pulsions, Orelsan ». Ces termes, fixés
+avant le banc, sont ceux qui reviennent dans les recos des autres épisodes.
+
+Sur les 49 mots du titre et du créateur, l'amorce de la chaîne en retrouve 27,
+et l'amorce avec le vocabulaire 26 : « Bersinger » est perdu une fois, aucun
+nom n'est gagné. Les 22 textes varient un peu, sans mot du vocabulaire ajouté à
+tort ni boucle. Le réglage n'est pas gardé.
+
+Cela confirme la mesure du 2026-09-17 : une liste générique n'aide pas, seuls
+les noms justes aident. Or on ne les connaît qu'après l'extraction : c'est le
+rôle de la seconde passe sur les citations (`preciser_citations.py`).
+
 #### Deux pièges vus pendant l'essai
 
 - **Whisper ne redonne pas le même texte d'une machine à l'autre.** Le même
