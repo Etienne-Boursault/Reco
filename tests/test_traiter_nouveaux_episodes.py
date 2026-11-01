@@ -128,7 +128,7 @@ def test_unfilled_gaps_are_reported_to_the_editor(content, inbox):
 
     assert len(inbox) == 1
     assert "01:11:58 (+13 s)" in inbox[0] and "00:01:58 (+10 s)" in inbox[0]
-    assert "2 passage(s) muet(s)" in inbox[0]
+    assert "2 passage(s) où la réécoute entend plus" in inbox[0]
 
 
 def test_nothing_is_said_when_every_gap_was_filled(content, inbox):
@@ -141,6 +141,33 @@ def test_nothing_is_said_when_every_gap_was_filled(content, inbox):
                    transcriber=lambda *_a, signaler=None, **_k: signaler(tout_comble))
 
     assert list(inbox) == []
+
+
+def test_a_repeated_transcript_window_is_reported_to_the_editor(content, inbox):
+    _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+    bilan = ct.Bilan(boucles_reparees=[(5412.0, 30)],
+                     boucles_non_reparees=[(780.0, 8)])
+
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
+                   transcriber=lambda *_a, signaler=None, **_k: signaler(bilan))
+
+    assert len(inbox) == 1
+    assert "01:30:12 (30 lignes)" in inbox[0]
+    assert "00:13:00 (8 lignes)" in inbox[0]
+    assert "à vérifier" in inbox[0]
+
+
+def test_an_interleaved_phrase_repetition_is_reported_to_the_editor(content, inbox):
+    _episode(content, "yt-todo", youtubeUrl="https://www.youtube.com/watch?v=todo")
+    bilan = ct.Bilan(repetitions_suspectes=[(1157.0, 1170.0, 8,
+                                            "c est une bonne raison")])
+
+    tne.transcrire(SOURCE, inbox, tne.load_state(SOURCE),
+                   transcriber=lambda *_a, signaler=None, **_k: signaler(bilan))
+
+    assert len(inbox) == 1
+    assert "00:19:17–00:19:30" in inbox[0]
+    assert "8 fois" in inbox[0]
 
 
 def test_the_audio_is_downloaded_once_per_episode(content, inbox, monkeypatch):

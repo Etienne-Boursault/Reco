@@ -396,8 +396,8 @@ la main.
 
 ### Une boucle de Whisper efface une recommandation, et aucun contrôle ne la voit
 
-**À corriger plus tard** (constaté le 2026-10-30 sur S6-E07, rien n'est encore
-modifié dans l'outillage).
+Constaté le 2026-10-30 sur S6-E07 ; garde posée le 2026-11-01 (voir « Ce que
+fait la garde », plus bas).
 
 Entre 01:29:52 et 01:30:40, la transcription longue a écrit « Frère. » 37
 fois, une ligne par seconde. Le vrai passage tenait en 30 secondes : la
@@ -435,6 +435,55 @@ Pistes, dans l'ordre :
    complet, car il peut dégrader la ponctuation (cf. l'amorce `hotwords`).
 3. Dire dans le message Matrix quelles boucles ont été vues et réécoutées, et
    écarter les génériques connus (« Sous-titrage … »).
+
+#### Inventaire du dépôt (2026-11-01)
+
+Les 113 transcriptions de `tools/output/transcripts/` (copie locale : S6-E04 à
+S6-E07 n'y sont pas), relues sans rien modifier :
+
+| Raté | Mesure | Garde |
+|---|---|---|
+| Boucles d'au moins 8 lignes identiques | 65 dans 38 épisodes, **46 min** d'audio en tout ; la plus longue : 477 lignes, 10 min 45 s (2026-01-19, Tom Baldetti et Yassir), puis 361 lignes, 8 min 51 s (Clément Cotentin) | zones réécoutées dès 15 lignes, signalées dès 8 |
+| Suites de 5 à 7 lignes | 59, presque toutes parlées (« Bonne année ! », « ça va ? ») | aucune, sauf morceau d'une boucle |
+| Boucle en morceaux | S6-E07 : 7 « Frère. », 12 lignes de parole, 30 « Frère. » | suites de 4 lignes et plus, à moins de 20 s, réunies |
+| Phrase de 4 mots revenue 8 fois en 25 s | 32 dans 28 épisodes, hors boucles | signalée |
+| Générique inventé | « Sous-titrage Société Radio-Canada » ×8, « Sous-titrage ST' 501 » ×9, « Sous-titres par Jérémy Diaz » ×2 | retiré ; le trou laissé est réécouté |
+| Fenêtre de 30 s sautée | 37 sauts d'exactement 30 s dans 27 épisodes | comblement des trous (déjà en place) |
+| Ponctuation qui s'éteint | `large-v3` : le dernier quart tombe sous la moitié du premier dans 24 épisodes sur 98 ; `large-v3-turbo` avec amorce : 2 sur 15 | amorce `hotwords` (déjà en place) |
+| Noms d'invités | 84 noms de famille sur 198 jamais écrits tels quels, mais on appelle souvent l'invité par son prénom : la mesure ne prouve rien | seconde passe sur les citations (déjà en place) |
+
+Les boucles des anciens épisodes ne sont **pas** corrigées : leur reprise
+attend la demande de l'éditeur.
+
+#### Ce que fait la garde
+
+- `combler_trous.zones_de_boucle` réunit les morceaux d'une même boucle.
+  `reparer_boucles` remplace une zone d'au moins 15 lignes par sa réécoute,
+  sans `condition_on_previous_text`. Il le fait seulement si la réécoute
+  retrouve les deux bords, ne boucle pas elle-même, et reprend la parole prise
+  entre les morceaux. Sinon la zone reste telle quelle et part sur Matrix.
+- Les génériques inventés sont retirés avant le repérage des trous.
+- Une fenêtre non comblée n'est signalée que si sa réécoute entend au moins
+  10 mots de plus que la transcription. Les trois faux « passages muets » du
+  2026-10-30 avaient de -61 à +1 mot de plus.
+
+Essai réel sur venus (2026-11-01) : la garde a été rejouée sur la transcription
+de production de S6-E07, avec le vrai modèle pour les réécoutes. Elle a
+remplacé les 37 « Frère. » par le passage, Fiona G. et « elle est sur Inter »
+compris. En dehors de ce passage, une seule ligne change : un trou comblé à
+00:56:16.
+
+#### Deux pièges vus pendant l'essai
+
+- **Whisper ne redonne pas le même texte d'une machine à l'autre.** Le même
+  audio, transcrit sur 8 cœurs au lieu de tous, n'a pas refait la boucle. Il a
+  perdu le passage autrement (le comblement l'a rattrapé), et il a mis chaque
+  ligne entre « ». Une garde se vérifie donc en la rejouant sur la
+  transcription fautive (`combler()` avec de vraies réécoutes), pas en
+  retranscrivant.
+- **La transcription d'un épisode de 93 min monte à 5 à 6 Go de mémoire.** Un
+  conteneur plafonné à 6 Go a été tué au bout de 24 minutes ; à 10 Go, le pic
+  relevé était de 5,0 Go.
 
 ---
 

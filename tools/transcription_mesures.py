@@ -66,7 +66,10 @@ def configuration(model: str, language: str | None, amorce: str | None,
         "cpu_threads": os.environ.get("OMP_NUM_THREADS") or "auto",
         "gap_repair": {"saut_min_s": combler_trous.SAUT_MIN,
                        "fenetre_min_s": combler_trous.FENETRE_MIN,
-                       "recouvrement_min": combler_trous.RECOUVREMENT_MIN},
+                       "recouvrement_min": combler_trous.RECOUVREMENT_MIN,
+                       "boucle_min": combler_trous.BOUCLE_MIN,
+                       "boucle_reparation_min": combler_trous.BOUCLE_REPARATION_MIN,
+                       "repetition_phrase_min": combler_trous.REPETITION_PHRASE_MIN},
     }
 
 
@@ -139,6 +142,10 @@ def comblement(etape: telemetry.StageHandle, bilan: Any, debut_ns: int) -> None:
     etape.measure("gaps_filled", bilan.combles, "count")
     etape.measure("gap_words_added", bilan.mots_ajoutes, "count")
     etape.measure("gaps_unfilled", len(bilan.non_combles), "count")
+    etape.measure("loops_repaired", len(bilan.boucles_reparees), "count")
+    etape.measure("loops_unrepaired", len(bilan.boucles_non_reparees), "count")
+    etape.measure("phrase_repetitions_suspect", len(bilan.repetitions_suspectes), "count")
+    etape.measure("generic_lines_removed", len(bilan.generiques_retires), "count")
 
 
 def empreinte_texte(texte: str) -> str:

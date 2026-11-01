@@ -269,8 +269,19 @@ def _transcribe_audio(audio_path: Path, model_name: str, language: str | None,
         )
         return [(seg.start, seg.text) for seg in rendus]
 
+    def reecouter_boucle(clip: list[float]) -> list[tuple[float, str]]:
+        # Une boucle du contexte précédent peut effacer une recommandation sans
+        # créer le moindre trou horodaté. On repart de l'audio, sans ce contexte.
+        rendus, _info = model.transcribe(
+            str(audio_path), hotwords=amorce or None,
+            language=language or info.language, vad_filter=False, beam_size=5,
+            condition_on_previous_text=False, clip_timestamps=clip,
+        )
+        return [(seg.start, seg.text) for seg in rendus]
+
     debut = time.perf_counter_ns()
-    entrees, bilan = combler_trous(entrees, reecouter)
+    entrees, bilan = combler_trous(entrees, reecouter, reecouter_boucle,
+                                  duree_audio=getattr(info, "duration", None))
     _mesures.comblement(etape, bilan, debut)
     lignes = "\n".join(f"[{_format_timestamp(debut)}] {texte}" for debut, texte in entrees)
     return lignes + "\n", bilan

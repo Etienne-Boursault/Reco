@@ -142,6 +142,9 @@ audio. `media_duration_ms` : durée **de l'audio**, rendue par le décodeur
 | `speech_duration_ms` | ms | parole après VAD |
 | `gap_repair_ms` | ms | réécoute des trous (`combler_trous`), chronométrée à part |
 | `gap_candidates`, `gaps_filled`, `gap_words_added`, `gaps_unfilled` | nombre | bilan de la réécoute |
+| `loops_repaired`, `loops_unrepaired` | nombre | boucles d'au moins 8 lignes identiques, réécoutées et remplacées, ou laissées à relire |
+| `phrase_repetitions_suspect` | nombre | phrase de quatre mots revenue au moins 8 fois en 25 s, signalée sans correction |
+| `generic_lines_removed` | nombre | génériques de sous-titrage inventés (« Sous-titrage Société Radio-Canada »), retirés |
 | `language_detected`, `language_probability` | ISO 639-1, ratio | |
 
 Une transcription déjà présente donne `skipped` / `cache_hit` : ni durée de
